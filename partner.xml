@@ -12,11 +12,11 @@
       <field name="arch" type="xml">
         <![CDATA[
          <tree string="Partner Addresses">
-           <field name="partner" />
-           <field name="name" />
-           <field name="type"/>
-           <field name="phone"/>
-           <field name="email"/>
+           <field name="partner" select="1"/>
+           <field name="name" select="1"/>
+           <field name="type" select="2"/>
+           <field name="phone" select="2"/>
+           <field name="email" select="2"/>
          </tree>
 	]]>
       </field>
@@ -29,36 +29,36 @@
         <![CDATA[
           <form string="Partner Addresses">
             <label name="partner"/>
-            <field name="partner" select="1"/>
+            <field name="partner"/>
             <newline/>
             <label name="name"/>
-            <field name="name" select="1"/>
+            <field name="name"/>
             <label name="type"/>
-            <field name="type" select="2"/>
+            <field name="type"/>
             <label name="street"/>
-            <field name="street" select="2"/>
+            <field name="street"/>
             <label name="streetbis"/>
             <field name="streetbis"/>
             <newline/>
             <label name="zip"/>
-            <field name="zip" select="2"/>
+            <field name="zip"/>
             <label name="city"/>
-            <field name="city" select="2"/>
+            <field name="city"/>
             <newline/>
             <label name="country"/>
-            <field name="country" select="1" completion="1"/>
+            <field name="country" completion="1"/>
             <label name="state"/>
-            <field name="state" select="2"/>
+            <field name="state"/>
             <newline/>
             <label name="phone"/>
-            <field name="phone" select="2"/>
+            <field name="phone"/>
             <label name="fax"/>
             <field name="fax"/>
             <newline/>
             <label name="mobile"/>
-            <field name="mobile" select="2"/>
+            <field name="mobile"/>
             <label name="email"/>
-            <field name="email" select="2"/>
+            <field name="email"/>
           </form>
         ]]>
       </field>
@@ -252,11 +252,11 @@
       <field name="arch" type="xml">
         <![CDATA[
           <form string="Partner categories">
-            <label name="name" />
-            <field name="name" select="1"/>
-            <label name="active" />
-            <field name="active" select="1" />
-            <label name="parent" />
+            <label name="name"/>
+            <field name="name"/>
+            <label name="active"/>
+            <field name="active"/>
+            <label name="parent"/>
             <field name="parent"/>
           </form>
         ]]>
