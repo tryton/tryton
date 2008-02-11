@@ -8,7 +8,7 @@ class CorporationType(OSV):
     _description = __doc__
     _order= 'name'
     _columns = {
-        'name': fields.char('Name', required=True, size=64),
+        'name': fields.Char('Name', required=True, size=64),
     }
 
 CorporationType()
@@ -45,14 +45,14 @@ class Category(OSV):
             ids,parent="parent")
 
     _columns = {
-        'name': fields.char('Category Name', required=True, size=64),
-        'parent': fields.many2one('partner.category', 'Parent Category',
+        'name': fields.Char('Category Name', required=True, size=64),
+        'parent': fields.Many2One('partner.category', 'Parent Category',
                 select=True),
-        'complete_name': fields.function(_name_get_fnc, method=True,
+        'complete_name': fields.Function(_name_get_fnc, method=True,
                 type="char", string='Name'),
-        'childs': fields.one2many('partner.category', 'parent',
+        'childs': fields.One2Many('partner.category', 'parent',
             'Childs Category'),
-        'active' : fields.boolean('Active'),
+        'active' : fields.Boolean('Active'),
     }
 
     _defaults = {
@@ -74,17 +74,17 @@ class Partner(OSV):
     _order = "name"
 
     _columns = {
-        'name': fields.char('Name', size=128, required=True, select=True),
-        'corp_type': fields.many2one("partner.corporation_type", "Corp. Type"),
-        'lang': fields.many2one("ir.lang", 'Language'),
-        'vat': fields.char('VAT',size=32 ,help="Value Added Tax number"),
-        'website': fields.char('Website',size=64),
-        'addresses': fields.one2many('partner.address', 'partner',
+        'name': fields.Char('Name', size=128, required=True, select=True),
+        'corp_type': fields.Many2One("partner.corporation_type", "Corp. Type"),
+        'lang': fields.Many2One("ir.lang", 'Language'),
+        'vat': fields.Char('VAT',size=32 ,help="Value Added Tax number"),
+        'website': fields.Char('Website',size=64),
+        'addresses': fields.One2Many('partner.address', 'partner',
                                      'Addresses'),
-        'categories': fields.many2many(
+        'categories': fields.Many2Many(
                 'partner.category', 'partner_category_rel',
                 'partner', 'category', 'Categories'),
-        'active': fields.boolean('Active'),
+        'active': fields.Boolean('Active'),
     }
     _defaults = {
         'active': lambda *a: True,
@@ -105,9 +105,9 @@ class Country(OSV):
     _order='code'
 
     _columns = {
-        'name': fields.char('Country Name', size=64,
+        'name': fields.Char('Country Name', size=64,
                 help='The full name of the country.', required=True),
-        'code': fields.char('Country Code', size=2,
+        'code': fields.Char('Country Code', size=2,
                 help='The ISO country code in two chars.\n'
                 'You can use this field for quick search.', required=True),
     }
@@ -158,10 +158,10 @@ class State(OSV):
     _order = 'code'
 
     _columns = {
-        'country': fields.many2one('partner.country', 'Country',
+        'country': fields.Many2One('partner.country', 'Country',
                                    required=True),
-        'name': fields.char('State Name', size=64, required=True),
-        'code': fields.char('State Code', size=3, required=True),
+        'name': fields.Char('State Name', size=64, required=True),
+        'code': fields.Char('State Code', size=3, required=True),
 	}
 
     def create(self, cursor, user, vals, context=None):
@@ -190,24 +190,24 @@ class Address(OSV):
 
 
     _columns = {
-        'partner': fields.many2one('partner.partner', 'Partner', required=True,
+        'partner': fields.Many2One('partner.partner', 'Partner', required=True,
                                    ondelete='cascade', select=True),
-        'type': fields.selection( [ ('default','Default'),('invoice','Invoice'),
+        'type': fields.Selection( [ ('default','Default'),('invoice','Invoice'),
             ('delivery','Delivery'), ('contact','Contact'), ('other','Other') ],
             'Address Type'),
-        'name': fields.char('Contact Name', size=64),
-        'street': fields.char('Street', size=128),
-        'streetbis': fields.char('Street (bis)', size=128),
-        'zip': fields.char('Zip', change_default=True, size=24),
-        'city': fields.char('City', size=128),
-        'state': fields.many2one("partner.state", 'State',
+        'name': fields.Char('Contact Name', size=64),
+        'street': fields.Char('Street', size=128),
+        'streetbis': fields.Char('Street (bis)', size=128),
+        'zip': fields.Char('Zip', change_default=True, size=24),
+        'city': fields.Char('City', size=128),
+        'state': fields.Many2One("partner.state", 'State',
                                  domain="[('country_id','=',country_id)]"),
-        'country': fields.many2one('partner.country', 'Country'),
-        'email': fields.char('E-Mail', size=64),
-        'phone': fields.char('Phone', size=64),
-        'fax': fields.char('Fax', size=64),
-        'mobile': fields.char('Mobile', size=64),
-        'active': fields.boolean('Active'),
+        'country': fields.Many2One('partner.country', 'Country'),
+        'email': fields.Char('E-Mail', size=64),
+        'phone': fields.Char('Phone', size=64),
+        'fax': fields.Char('Fax', size=64),
+        'mobile': fields.Char('Mobile', size=64),
+        'active': fields.Boolean('Active'),
     }
     _defaults = {
         'active': lambda *a: 1,
