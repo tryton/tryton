@@ -2,6 +2,19 @@ from trytond.osv import fields, OSV
 STATES = {'readonly': "active == False",}
 
 
+class PartnerType(OSV):
+    "Corporation Type"
+
+    _name = 'partner.partner.type'
+    _description = __doc__
+    _order= 'name'
+    _columns = {
+        'name': fields.Char('Name', required=True, size=64),
+    }
+
+PartnerType()
+
+
 class Partner(OSV):
     "Partner"
 
@@ -12,7 +25,7 @@ class Partner(OSV):
     _columns = {
         'name': fields.Char('Name', size=128, required=True, select=True,
                 states= STATES,),
-        'corp_type': fields.Many2One("partner.corporation_type", "Corp. Type",
+        'type': fields.Many2One("partner.partner.type", "Corp. Type",
                 states= STATES,),
         'lang': fields.Many2One("ir.lang", 'Language',
                 states= STATES,),

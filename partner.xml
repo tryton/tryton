@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <tryton>
-  <data>
+  <data demo="1">
     <menuitem name="Partners" sequence="0" id="menu_partner"/>
 
 
@@ -134,7 +134,7 @@
         <![CDATA[
           <tree string="Partners">
             <field name="name" select="1"/>
-            <field name="corp_type" select="2"/>
+            <field name="type" select="2"/>
             <field name="lang" select="2"/>
             <field name="website"/>
             <field name="vat" select="1"/>
