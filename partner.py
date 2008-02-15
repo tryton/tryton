@@ -1,6 +1,7 @@
 from trytond.osv import fields, OSV
 STATES = {'readonly': "active == False",}
 
+
 class Partner(OSV):
     "Partner"
 
