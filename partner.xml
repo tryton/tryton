@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <tryton>
   <data>
-    <menuitem name="Partners" sequence="0" icon="terp-partner" 
-              id="menu_partner"/>
+    <menuitem name="Partners" sequence="0" id="menu_partner"/>
 
 
     <!--Partner Address -->
@@ -17,8 +16,9 @@
            <field name="type" select="2"/>
            <field name="phone" select="2"/>
            <field name="email" select="2"/>
+           <field name="active" select="2" invisible="1"/>
          </tree>
-	]]>
+        ]]>
       </field>
     </record>
 
@@ -59,6 +59,8 @@
             <field name="mobile"/>
             <label name="email"/>
             <field name="email"/>
+            <label name="active"/>
+            <field name="active" invisible="0"/>
           </form>
         ]]>
       </field>
@@ -72,14 +74,14 @@
       <field name="view_type">form</field>
     </record>
 
-    <record model="ir.action.act_window.view" 
+    <record model="ir.action.act_window.view"
             id="action_partner_address_list_view1">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_address_tree"/>
       <field name="act_window_id" ref="action_partner_address_list"/>
     </record>
 
-    <record model="ir.action.act_window.view" 
+    <record model="ir.action.act_window.view"
             id="action_partner_address_list_view2">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_address_form1"/>
@@ -87,8 +89,8 @@
     </record>
 
     <menuitem name="Partner Address" parent_id="menu_partner"
-	      sequence="2"
-	      action="action_partner_address_list" 
+              sequence="2"
+              action="action_partner_address_list"
               id="menu_partner_address_list"/>
 
 
@@ -99,23 +101,23 @@
       <field name="view_type">form</field>
     </record>
 
-    <record model="ir.action.act_window.view" 
+    <record model="ir.action.act_window.view"
             id="action_partner_address_form_view1">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_address_tree"/>
       <field name="act_window_id" ref="action_partner_address_form"/>
     </record>
 
-    <record model="ir.action.act_window.view" 
+    <record model="ir.action.act_window.view"
             id="action_partner_address_form_view2">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_address_form1"/>
       <field name="act_window_id" ref="action_partner_address_form"/>
     </record>
 
-    <menuitem name="New Address" 
-	      parent_id="menu_partner_address_list"
-	      action="action_partner_address_form" 
+    <menuitem name="New Address"
+              parent_id="menu_partner_address_list"
+              action="action_partner_address_form"
               id="menu_partner_address_form"/>
 
 
@@ -136,6 +138,7 @@
             <field name="lang" select="2"/>
             <field name="website"/>
             <field name="vat" select="1"/>
+           <field name="active" select="2" invisible="1"/>
           </tree>
         ]]>
       </field>
@@ -146,22 +149,20 @@
       <field name="type">form</field>
       <field name="arch" type="xml">
         <![CDATA[
-          <form string="Partners">
+          <form string="Partners" col="6">
             <label name="name"/>
             <field name="name"/>
-            <label name="lang"/>
-            <field name="lang"/>
-            <label name="active"/>
-            <field name="active"/>
+            <notebook colspan="6">
+            <page string="General" col="6">
 
-            <field name="addresses" mode="form,tree" colspan="4">
+            <field name="addresses" mode="form,tree" colspan="6">
               <form string="Partner addresses" col="6">
-                <label name="name"/> 
+                <label name="name"/>
                 <field name="name" />
-                <label name="type"/> 
+                <label name="type"/>
                 <field name="type" />
-		<newline/>
-                <label name="street"/> 
+                <newline/>
+                <label name="street"/>
                 <field name="street" />
                 <label name="streetbis"/>
                 <field name="streetbis"/>
@@ -189,9 +190,14 @@
                 <field name="country"/>
               </tree>
             </field>
+            <label name="lang"/>
+            <field name="lang" widget="selection"/>
+            <label name="active" invisible="0"/>
+            <field name="active"/>
             <separator string="Categories" colspan="4"/>
-            <label name="categories" />
             <field name="categories" colspan="4" nolabel="1"/>
+            </page>
+            </notebook>
           </form>
         ]]>
       </field>
@@ -213,10 +219,10 @@
       <field name="view_id" ref="view_partner_form"/>
       <field name="act_window_id" ref="action_partner_list"/>
     </record>
-    <menuitem name="Partners" parent_id="menu_partner" 
-	      action="action_partner_list" 
-	      sequence="1"
-	      id="menu_partner_list"/>
+    <menuitem name="Partners" parent_id="menu_partner"
+              action="action_partner_list"
+              sequence="1"
+              id="menu_partner_list"/>
 
 
 
@@ -237,9 +243,9 @@
       <field name="act_window_id" ref="action_partner_form"/>
     </record>
     <menuitem name="New Partner"
-	      action="action_partner_form" 
-	      parent_id="menu_partner_list"
-	      id="menu_partner_form"/>
+              action="action_partner_form"
+              parent_id="menu_partner_list"
+              id="menu_partner_form"/>
 
 
 
@@ -255,7 +261,7 @@
             <label name="name"/>
             <field name="name"/>
             <label name="active"/>
-            <field name="active"/>
+            <field name="active" invisible="0"/>
             <label name="parent"/>
             <field name="parent"/>
           </form>
@@ -272,6 +278,7 @@
         <![CDATA[
           <tree string="Partner Categories">
             <field name="name" select="1"/>
+           <field name="active" select="2" invisible="1"/>
           </tree>
         ]]>
       </field>
@@ -290,7 +297,7 @@
 
     <record model="ir.action.keyword" id="keyword_partner_by_category">
       <field name="keyword" eval="'tree_open'"/>
-      <field name="model">partner.category,0</field> 
+      <field name="model">partner.category,0</field>
       <field name="action" ref="action_partner_by_category"/>
     </record>
 
@@ -303,23 +310,23 @@
       <field name="domain">[('parent','=',False)]</field>
     </record>
     <record model="ir.action.act_window.view"
-	    id="action_partner_category_tree">
+            id="action_partner_category_tree">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_category_tree"/>
       <field name="act_window_id" ref="action_partner_category"/>
     </record>
     <record model="ir.action.act_window.view"
-	    id="action_partner_category_form">
+            id="action_partner_category_form">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_category_form"/>
       <field name="act_window_id" ref="action_partner_category"/>
     </record>
     <menuitem
-	name="Category Tree" 
-	parent_id="menu_partner" 
-	sequence="3"
-	action="action_partner_category" 
-	id="menu_partner_category"/>
+        name="Categories"
+        parent_id="menu_partner"
+        sequence="3"
+        action="action_partner_category"
+        id="menu_partner_category"/>
 
 
     <record model="ir.action.act_window" id="action_partner_category_edit">
@@ -328,22 +335,46 @@
       <field name="res_model">partner.category</field>
       <field name="view_type">form</field>
     </record>
-    <record model="ir.action.act_window.view" 
-	    id="action_partner_category_tree_edit">
+    <record model="ir.action.act_window.view"
+            id="action_partner_category_tree_edit">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_category_tree"/>
       <field name="act_window_id" ref="action_partner_category_edit"/>
     </record>
 
-    <record model="ir.action.act_window.view" 
-	    id="action_partner_category_form_edit">
+    <record model="ir.action.act_window.view"
+            id="action_partner_category_form_edit">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_category_form"/>
       <field name="act_window_id" ref="action_partner_category_edit"/>
     </record>
     <menuitem name="Edit Categories" parent_id="menu_partner_category"
-	      action="action_partner_category_edit" 
-	      id="menu_partner_category_form"/>
+              action="action_partner_category_edit"
+              id="menu_partner_category_list"/>
+
+
+    <record model="ir.action.act_window" id="action_partner_category_new">
+      <field name="name">New Category</field>
+      <field name="type">ir.action.act_window</field>
+      <field name="res_model">partner.category</field>
+      <field name="view_type">form</field>
+    </record>
+    <record model="ir.action.act_window.view"
+            id="action_view_partner_category_new">
+      <field name="sequence" eval="20"/>
+      <field name="view_id" ref="view_partner_category_tree"/>
+      <field name="act_window_id" ref="action_partner_category_new"/>
+    </record>
+
+    <record model="ir.action.act_window.view"
+            id="action_view_partner_category_form">
+      <field name="sequence" eval="10"/>
+      <field name="view_id" ref="view_partner_category_form"/>
+      <field name="act_window_id" ref="action_partner_category_new"/>
+    </record>
+    <menuitem name="New category" parent_id="menu_partner_category"
+              action="action_partner_category_new"
+              id="menu_partner_category_form"/>
 
 
 
