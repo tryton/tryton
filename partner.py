@@ -20,11 +20,6 @@ class Category(OSV):
     _description = __doc__
     _order = 'parent,name'
     _parent_name = 'parent'
-
-    def check_recursion(self, cursor, user, ids, parent=None):
-        return super(Category, self).check_recursion(cursor, user,
-            ids,parent="parent")
-
     _columns = {
         'name': fields.Char('Category Name', required=True, size=64),
         'parent': fields.Many2One('partner.category', 'Parent Category',
@@ -35,13 +30,11 @@ class Category(OSV):
             'Childs Category'),
         'active' : fields.Boolean('Active'),
     }
-
     _defaults = {
         'active' : lambda *a: 1,
     }
-
     _constraints = [
-        (check_recursion,
+        ('check_recursion',
          'Error ! You can not create recursive categories.', ['parent'])
     ]
 
