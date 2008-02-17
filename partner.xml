@@ -78,14 +78,14 @@
             id="action_partner_address_list_view1">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_address_tree"/>
-      <field name="act_window_id" ref="action_partner_address_list"/>
+      <field name="act_window" ref="action_partner_address_list"/>
     </record>
 
     <record model="ir.action.act_window.view"
             id="action_partner_address_list_view2">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_address_form1"/>
-      <field name="act_window_id" ref="action_partner_address_list"/>
+      <field name="act_window" ref="action_partner_address_list"/>
     </record>
 
     <menuitem name="Partner Address" parent_id="menu_partner"
@@ -105,14 +105,14 @@
             id="action_partner_address_form_view1">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_address_tree"/>
-      <field name="act_window_id" ref="action_partner_address_form"/>
+      <field name="act_window" ref="action_partner_address_form"/>
     </record>
 
     <record model="ir.action.act_window.view"
             id="action_partner_address_form_view2">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_address_form1"/>
-      <field name="act_window_id" ref="action_partner_address_form"/>
+      <field name="act_window" ref="action_partner_address_form"/>
     </record>
 
     <menuitem name="New Address"
@@ -212,12 +212,12 @@
     <record model="ir.action.act_window.view" id="action_partner_list_view1">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_tree"/>
-      <field name="act_window_id" ref="action_partner_list"/>
+      <field name="act_window" ref="action_partner_list"/>
     </record>
     <record model="ir.action.act_window.view" id="action_partner_list_view2">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_form"/>
-      <field name="act_window_id" ref="action_partner_list"/>
+      <field name="act_window" ref="action_partner_list"/>
     </record>
     <menuitem name="Partners" parent_id="menu_partner"
               action="action_partner_list"
@@ -235,12 +235,12 @@
     <record model="ir.action.act_window.view" id="action_partner_form_view1">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_tree"/>
-      <field name="act_window_id" ref="action_partner_form"/>
+      <field name="act_window" ref="action_partner_form"/>
     </record>
     <record model="ir.action.act_window.view" id="action_partner_form_view2">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_form"/>
-      <field name="act_window_id" ref="action_partner_form"/>
+      <field name="act_window" ref="action_partner_form"/>
     </record>
     <menuitem name="New Partner"
               action="action_partner_form"
@@ -313,13 +313,13 @@
             id="action_partner_category_tree">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_category_tree"/>
-      <field name="act_window_id" ref="action_partner_category"/>
+      <field name="act_window" ref="action_partner_category"/>
     </record>
     <record model="ir.action.act_window.view"
             id="action_partner_category_form">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_category_form"/>
-      <field name="act_window_id" ref="action_partner_category"/>
+      <field name="act_window" ref="action_partner_category"/>
     </record>
     <menuitem
         name="Categories"
@@ -339,14 +339,14 @@
             id="action_partner_category_tree_edit">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_category_tree"/>
-      <field name="act_window_id" ref="action_partner_category_edit"/>
+      <field name="act_window" ref="action_partner_category_edit"/>
     </record>
 
     <record model="ir.action.act_window.view"
             id="action_partner_category_form_edit">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_category_form"/>
-      <field name="act_window_id" ref="action_partner_category_edit"/>
+      <field name="act_window" ref="action_partner_category_edit"/>
     </record>
     <menuitem name="Edit Categories" parent_id="menu_partner_category"
               action="action_partner_category_edit"
@@ -363,14 +363,14 @@
             id="action_view_partner_category_new">
       <field name="sequence" eval="20"/>
       <field name="view_id" ref="view_partner_category_tree"/>
-      <field name="act_window_id" ref="action_partner_category_new"/>
+      <field name="act_window" ref="action_partner_category_new"/>
     </record>
 
     <record model="ir.action.act_window.view"
             id="action_view_partner_category_form">
       <field name="sequence" eval="10"/>
       <field name="view_id" ref="view_partner_category_form"/>
-      <field name="act_window_id" ref="action_partner_category_new"/>
+      <field name="act_window" ref="action_partner_category_new"/>
     </record>
     <menuitem name="New category" parent_id="menu_partner_category"
               action="action_partner_category_new"
