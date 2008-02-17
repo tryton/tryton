@@ -26,7 +26,8 @@
 #
 ##############################################################################
 
-import partner
-import state
-import country
-import address
+from category import *
+from partner import *
+from country import *
+from state import *
+from address import *

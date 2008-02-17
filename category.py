@@ -26,8 +26,8 @@ class Category(OSV):
     }
 
     _constraints = [
-        (check_recursion,
-         'Error ! You can not create recursive categories.', ['parent'])
+        ('check_recursion',
+         'Error! You can not create recursive categories.', ['parent'])
     ]
 
     def complete_name(self, cursor, user, obj_id, name, value, arg,

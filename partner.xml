@@ -27,40 +27,35 @@
       <field name="type">form</field>
       <field name="arch" type="xml">
         <![CDATA[
-          <form string="Partner Addresses">
+          <form string="Partner Addresses" col="6">
             <label name="partner"/>
-            <field name="partner"/>
-            <newline/>
+            <field name="partner" colspan="5"/>
             <label name="name"/>
             <field name="name"/>
             <label name="type"/>
             <field name="type"/>
+            <label name="active"/>
+            <field name="active" invisible="0"/>
             <label name="street"/>
             <field name="street"/>
             <label name="streetbis"/>
             <field name="streetbis"/>
-            <newline/>
             <label name="zip"/>
             <field name="zip"/>
             <label name="city"/>
             <field name="city"/>
-            <newline/>
             <label name="country"/>
             <field name="country" completion="1"/>
             <label name="state"/>
             <field name="state"/>
-            <newline/>
             <label name="phone"/>
             <field name="phone"/>
             <label name="fax"/>
             <field name="fax"/>
-            <newline/>
             <label name="mobile"/>
             <field name="mobile"/>
             <label name="email"/>
-            <field name="email"/>
-            <label name="active"/>
-            <field name="active" invisible="0"/>
+            <field name="email" widget="email"/>
           </form>
         ]]>
       </field>
@@ -138,7 +133,7 @@
             <field name="lang" select="2"/>
             <field name="website"/>
             <field name="vat" select="1"/>
-           <field name="active" select="2" invisible="1"/>
+           <field name="active" select="2"/>
           </tree>
         ]]>
       </field>
@@ -149,54 +144,55 @@
       <field name="type">form</field>
       <field name="arch" type="xml">
         <![CDATA[
-          <form string="Partners" col="6">
+          <form string="Partners">
             <label name="name"/>
             <field name="name"/>
-            <notebook colspan="6">
-            <page string="General" col="6">
-
-            <field name="addresses" mode="form,tree" colspan="6">
-              <form string="Partner addresses" col="6">
-                <label name="name"/>
-                <field name="name" />
-                <label name="type"/>
-                <field name="type" />
-                <newline/>
-                <label name="street"/>
-                <field name="street" />
-                <label name="streetbis"/>
-                <field name="streetbis"/>
-                <label name="zip"/>
-                <field name="zip" />
-                <label name="city"/>
-                <field name="city" />
-                <label name="country"/>
-                <field name="country" completion="1"/>
-                <label name="state"/>
-                <field name="state" />
-                <label name="phone"/>
-                <field name="phone"/>
-                <label name="fax"/>
-                <field name="fax"/>
-                <label name="mobile"/>
-                <field name="mobile"/>
-                <label name="email"/>
-                <field name="email" widget="email" />
-              </form>
-              <tree string="Partner Addresses">
-                <field name="name" />
-                <field name="zip"/>
-                <field name="city"/>
-                <field name="country"/>
-              </tree>
-            </field>
-            <label name="lang"/>
-            <field name="lang" widget="selection"/>
-            <label name="active" invisible="0"/>
-            <field name="active"/>
-            <separator string="Categories" colspan="4"/>
-            <field name="categories" colspan="4" nolabel="1"/>
-            </page>
+            <notebook colspan="4">
+                <page string="General">
+                    <field name="addresses" mode="form,tree" colspan="4">
+                        <form string="Partner addresses" col="6">
+                            <label name="name"/>
+                            <field name="name"/>
+                            <label name="type"/>
+                            <field name="type"/>
+                            <label name="active"/>
+                            <field name="active" invisible="0"/>
+                            <label name="street"/>
+                            <field name="street"/>
+                            <label name="streetbis"/>
+                            <field name="streetbis"/>
+                            <label name="zip"/>
+                            <field name="zip"/>
+                            <label name="city"/>
+                            <field name="city"/>
+                            <label name="country"/>
+                            <field name="country" completion="1"/>
+                            <label name="state"/>
+                            <field name="state"/>
+                            <label name="phone"/>
+                            <field name="phone"/>
+                            <label name="fax"/>
+                            <field name="fax"/>
+                            <label name="mobile"/>
+                            <field name="mobile"/>
+                            <label name="email"/>
+                            <field name="email" widget="email"/>
+                        </form>
+                        <tree string="Partner Addresses">
+                            <field name="name"/>
+                            <field name="zip"/>
+                            <field name="city"/>
+                            <field name="country"/>
+                            <field name="active" invisible="1"/>
+                        </tree>
+                    </field>
+                    <label name="lang"/>
+                    <field name="lang" widget="selection"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <separator string="Categories" colspan="4"/>
+                    <field name="categories" colspan="4"/>
+                </page>
             </notebook>
           </form>
         ]]>
