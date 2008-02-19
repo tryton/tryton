@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="company_view_form">
+            <field name="model">company.company</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Company">
+                        <label name="name"/>
+                        <field name="name" colspan="3"/>
+                        <label name="partner"/>
+                        <field name="partner"/>
+                        <label name="parent"/>
+                        <field name="parent"/>
+                        <separator name="childs" colspan="4"/>
+                        <field name="childs" colspan="4"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="company_view_tree">
+            <field name="model">company.company</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Companies">
+                        <field name="name" select="1"/>
+                        <field name="partner" select="1"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_company_tree">
+            <field name="name">Companies</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">company.company</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_tree_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="company_view_tree"/>
+            <field name="act_window" ref="act_company_tree"/>
+        </record>
+        <menuitem parent="partner.menu_partner" action="act_company_tree"
+            id="menu_company_tree"/>
+        <record model="ir.action.act_window" id="act_company_form">
+            <field name="name">Companies</field>
+            <field name="type">ir.action.act_window</field>
+            <field name="res_model">company.company</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="company_view_tree"/>
+            <field name="act_window" ref="act_company_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="company_view_form"/>
+            <field name="act_window" ref="act_company_form"/>
+        </record>
+        <menuitem parent="menu_company_tree" action="act_company_form"
+            id="menu_company_form" name="Edit Companies"/>
+        <record model="ir.ui.view" id="user_view_form">
+            <field name="model">res.user</field>
+            <field name="inherit" ref="res.user_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <data>
+                        <xpath
+                            expr="/form/notebook/page/separator[@name=&quot;signature&quot;]"
+                            position="before">
+                            <label name="main_company"/>
+                            <field name="main_company"/>
+                            <label name="company"/>
+                            <field name="company"/>
+                        </xpath>
+                    </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="property_view_form">
+            <field name="model">ir.property</field>
+            <field name="inherit" ref="ir.property_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <data>
+                        <xpath
+                            expr="/form/field[@name=&quot;name&quot;]"
+                            position="after">
+                            <label name="company"/>
+                            <field name="company" colspan="3"/>
+                        </xpath>
+                    </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="property_view_tree">
+            <field name="model">ir.property</field>
+            <field name="inherit" ref="ir.property_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <data>
+                        <xpath
+                            expr="/tree/field[@name=&quot;name&quot;]"
+                            position="after">
+                            <field name="company" select="1"/>
+                        </xpath>
+                    </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
