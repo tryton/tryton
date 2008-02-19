@@ -1,5 +1,5 @@
 {
-    "name" : "Partners",
+    "name" : "partner",
     "version" : "0.1",
     "author" : "B2CK",
     "category" : "Generic Modules",
