@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <tryton>
-  <data demo="1">
+  <data>
     <menuitem name="Partners" sequence="0" id="menu_partner"/>
 
 
