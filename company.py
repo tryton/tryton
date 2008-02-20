@@ -44,16 +44,19 @@ class User(OSV):
             self._constraints = self._constraints + [
                     ('check_company',
                         'Error! You can not set a company that is not ' \
-                                'a child of your mani company.', ['company']),
+                                'a child of your main company.', ['company']),
                     ]
 
-    def check_company(self, cursor, user, ids):
+    def check_company(self, cursor, user_id, ids):
         company_obj = self.pool.get('company.company')
-        for user in self.browse(cursor, user, ids):
-            companies = company_obj.search(cursor, user, [
-                ('parent', 'child_of', [user.main_company]),
-                ], context=context)
-            if user.company.id not in companies:
+        for user in self.browse(cursor, user_id, ids):
+            if user.main_company:
+                companies = company_obj.search(cursor, user_id, [
+                    ('parent', 'child_of', [user.main_company.id]),
+                    ])
+                if user.company.id not in companies:
+                    return False
+            elif user.company:
                 return False
         return True
 
