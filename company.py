@@ -1,5 +1,6 @@
 "Company"
 
+import copy
 from trytond.osv import fields, OSV
 
 
@@ -35,6 +36,7 @@ class User(OSV):
     def __init__(self, pool):
         super(User, self).__init__(pool)
         if pool:
+            self._columns = copy.copy(self._columns)
             self._columns['main_company'] = fields.Many2One('company.company',
                     'Main Company')
             self._columns['company'] = fields.Many2One('company.company',
@@ -54,11 +56,19 @@ class User(OSV):
                 companies = company_obj.search(cursor, user_id, [
                     ('parent', 'child_of', [user.main_company.id]),
                     ])
-                if user.company.id not in companies:
+                if user.company.id and (user.company.id not in companies):
                     return False
             elif user.company:
                 return False
         return True
+
+    def get_preferences(self, cursor, user, context_only=False, context=None):
+        res = super(User, self).get_preferences(cursor, user,
+                context_only=context_only, context=context)
+        if not context_only:
+            user = self.browse(cursor, 0, user, context=context)
+            res['main_company'] = user.main_company.id
+        return res
 
     def get_preferences_fields_view(self, cursor, user, context=None):
         res = super(User, self).get_preferences_fields_view(cursor, user,
@@ -77,6 +87,7 @@ class Property(OSV):
     def __init__(self, pool):
         super(Property, self).__init__(pool)
         if pool:
+            self._columns = copy.copy(self._columns)
             self._columns['company'] = fields.Many2One('company.company',
                     'Company')
 
