@@ -28,7 +28,8 @@ class Address(OSV):
     fax = fields.Char('Fax', size=64, states=STATES)
     mobile = fields.Char('Mobile', size=64, states=STATES)
     active = fields.Boolean('Active')
-    _defaults = {
-        'active': lambda *a: 1,
-    }
+
+    def default_active(self, cursor, user, context=None):
+        return 1
+
 Address()

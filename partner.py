@@ -37,12 +37,12 @@ class Partner(OSV):
             'partner', 'category', 'Categories',
             states=STATES)
     active = fields.Boolean('Active')
-    _defaults = {
-        'active': lambda *a: True,
-    }
     _sql_constraints = [
         ('name_uniq', 'unique (name)',
          'The name of the partner must be unique !')
     ]
+
+    def default_active(self, cursor, user, context=None):
+        return 1
 
 Partner()
