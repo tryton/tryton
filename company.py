@@ -29,7 +29,8 @@ Company()
 
 class User(OSV):
     _name = 'res.user'
-    main_company = fields.Many2One('company.company', 'Main Company')
+    main_company = fields.Many2One('company.company', 'Main Company',
+            on_change=['main_company'])
     company = fields.Many2One('company.company', 'Current Company',
             domain="[('parent', 'child_of', [main_company])]")
 
@@ -42,6 +43,12 @@ class User(OSV):
                         'Error! You can not set a company that is not ' \
                                 'a child of your main company.', ['company']),
                     ]
+            self._rpc_allowed = self._rpc_allowed + [
+                    'on_change_main_company',
+                    ]
+
+    def on_change_main_company(self, cursor, user, ids, vals, context=None):
+        return {'company': vals.get('main_company', False)}
 
     def check_company(self, cursor, user_id, ids):
         company_obj = self.pool.get('company.company')
