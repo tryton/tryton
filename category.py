@@ -1,30 +1,27 @@
 from trytond.osv import fields, OSV
-STATES = {'readonly': "active == False",}
+STATES = {
+    'readonly': "active == False",
+}
+
 
 class Category(OSV):
     "Partner Category"
-
     _name = "partner.category"
     _description = __doc__
     _order = 'parent,name'
     _parent_name = 'parent'
-
-    _columns = {
-        'name': fields.Char('Category Name', required=True, size=64,
-                states= STATES,),
-        'parent': fields.Many2One('partner.category', 'Parent Category',
-                select=True, states= STATES,),
-        'complete_name': fields.Function('complete_name',
-                type="char", string='Name', states= STATES,),
-        'childs': fields.One2Many('partner.category', 'parent',
-            'Childs Category', states= STATES,),
-        'active' : fields.Boolean('Active'),
-    }
-
+    name = fields.Char('Category Name', required=True, size=64,
+           states=STATES)
+    parent = fields.Many2One('partner.category', 'Parent Category',
+           select=1, states=STATES)
+    complete_name = fields.Function('complete_name',
+           type="char", string='Name', states=STATES)
+    childs = fields.One2Many('partner.category', 'parent',
+       'Childs Category', states=STATES)
+    active = fields.Boolean('Active')
     _defaults = {
         'active' : lambda *a: 1,
     }
-
     _constraints = [
         ('check_recursion',
          'Error! You can not create recursive categories.', ['parent'])
