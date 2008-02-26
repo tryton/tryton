@@ -6,15 +6,12 @@ from trytond.osv import fields, OSV
 
 class Company(OSV):
     'Company'
-
     _name = 'company.company'
     _description = __doc__
-    _columns = {
-        'name': fields.Char('Name', size=128, required=True),
-        'partner':fields.Many2One('partner.partner', 'Partner', required=True),
-        'parent': fields.Many2One('company.company', 'Parent'),
-        'childs': fields.One2Many('company.company', 'parent', 'Childs'),
-    }
+    name = fields.Char('Name', size=128, required=True)
+    partner = fields.Many2One('partner.partner', 'Partner', required=True)
+    parent = fields.Many2One('company.company', 'Parent')
+    childs = fields.One2Many('company.company', 'parent', 'Childs')
     _constraints = [
         ('check_recursion',
             'Error! You can not create recursive companies.', ['parent']),
@@ -32,16 +29,13 @@ Company()
 
 class User(OSV):
     _name = 'res.user'
+    main_company = fields.Many2One('company.company', 'Main Company')
+    company = fields.Many2One('company.company', 'Current Company',
+            domain="[('parent', 'child_of', [main_company])]")
 
     def __init__(self, pool):
         super(User, self).__init__(pool)
         if pool:
-            self._columns = copy.copy(self._columns)
-            self._columns['main_company'] = fields.Many2One('company.company',
-                    'Main Company')
-            self._columns['company'] = fields.Many2One('company.company',
-                    'Current Company',
-                    domain="[('parent', 'child_of', [main_company])]")
             self._context_fields = self._context_fields + ['company']
             self._constraints = self._constraints + [
                     ('check_company',
@@ -83,13 +77,7 @@ User()
 
 class Property(OSV):
     _name = 'ir.property'
-
-    def __init__(self, pool):
-        super(Property, self).__init__(pool)
-        if pool:
-            self._columns = copy.copy(self._columns)
-            self._columns['company'] = fields.Many2One('company.company',
-                    'Company')
+    company = fields.Many2One('company.company', 'Company')
 
     def set(self, cursor, user, name, model, res_id, val, context=None):
         res = super(Property, self).set(cursor, user, name, model, res_id, val,
