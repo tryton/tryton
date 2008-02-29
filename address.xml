@@ -30,25 +30,30 @@
                     <label name="type"/>
                     <field name="type"/>
                     <label name="active"/>
-                    <field name="active" invisible="0"/>
+                    <field name="active" invisible="0"
+                        xexpand="0" width="100"/>
                     <label name="street"/>
                     <field name="street"/>
                     <label name="streetbis"/>
                     <field name="streetbis"/>
+                    <newline/>
                     <label name="zip"/>
                     <field name="zip"/>
                     <label name="city"/>
                     <field name="city"/>
+                    <newline/>
                     <label name="country"/>
                     <field name="country" completion="1"/>
                     <label name="state"/>
                     <field name="state"/>
+                    <newline/>
                     <label name="phone"/>
                     <field name="phone"/>
-                    <label name="fax"/>
-                    <field name="fax"/>
                     <label name="mobile"/>
                     <field name="mobile"/>
+                    <newline/>
+                    <label name="fax"/>
+                    <field name="fax"/>
                     <label name="email"/>
                     <field name="email" widget="email"/>
                 </form>

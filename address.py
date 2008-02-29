@@ -19,10 +19,10 @@ class Address(OSV):
     zip = fields.Char('Zip', change_default=True, size=24,
            states=STATES)
     city = fields.Char('City', size=128, states=STATES)
-    state = fields.Many2One("partner.state", 'State',
-           domain="[('country_id','=',country_id)]", states=STATES)
     country = fields.Many2One('partner.country', 'Country',
            states=STATES)
+    state = fields.Many2One("partner.country.state", 'State',
+           domain="[('country', '=', country)]", states=STATES)
     email = fields.Char('E-Mail', size=64, states=STATES)
     phone = fields.Char('Phone', size=64, states=STATES)
     fax = fields.Char('Fax', size=64, states=STATES)
