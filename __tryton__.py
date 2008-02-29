@@ -7,5 +7,9 @@
     "category" : "Generic Modules",
     "description": "Define partners, addresses and co.",
     "depends" : ["ir","res"],
-    "xml" : ["partner.xml"],
+    "xml" : [
+        "category.xml",
+        "partner.xml",
+        "address.xml",
+    ],
 }
