@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<tryton>
+  <data>
+
+    <record model="ir.ui.view" id="product_uom_list_view">
+      <field name="model">product.uom</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <![CDATA[
+        <tree string="Units of Measure">
+          <field name="name" select="1"/>
+          <field name="category" select="1"/>
+          <field name="factor"  select="2"/>
+          <field name="rate"  select="2"/>
+          <field name="rounding" select="2"/>
+          <field name="active" select="2" invisible="1"/>
+        </tree>
+        ]]>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_uom_form_view">
+      <field name="model">product.uom</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <![CDATA[
+        <form string="Unit of Measure" col="6">
+          <label name="name"/>
+          <field name="name" select="1"/>
+          <label name="category"/>
+          <field name="category" select="1"/>
+          <label name="active"/>
+          <field name="active" invisible="0"/>
+
+          <label name="factor"/>
+          <field name="factor" select="1"/>
+          <label name="rate"/>
+          <field name="rate" select="1"/>
+          <newline/>
+          <label name="rounding"/>
+          <field name="rounding" />
+        </form>
+        ]]>
+      </field>
+    </record>
+
+
+
+    <record model="ir.action.act_window" id="product_uom_list_action">
+      <field name="name">Units of measure</field>
+      <field name="type">ir.action.act_window</field>
+      <field name="res_model">product.uom</field>
+      <field name="view_type">form</field>
+    </record>
+
+    <record model="ir.action.act_window.view" id="action_uom_form_view">
+      <field name="sequence" eval="10"/>
+      <field name="view" ref="product_uom_list_view"/>
+      <field name="act_window" ref="product_uom_list_action"/>
+    </record>
+
+    <record model="ir.action.act_window.view" id="action_uom_list_view">
+      <field name="sequence" eval="20"/>
+      <field name="view" ref="product_uom_form_view"/>
+      <field name="act_window" ref="product_uom_list_action"/>
+    </record>
+
+    <menuitem name="Units of Measure" parent="menu_main_product"
+    sequence="2" id="menu_product_uom" action="product_uom_list_action"/>
+
+
+    <record model="ir.action.act_window" id="product_uom_form_action">
+      <field name="name">Units of measure</field>
+      <field name="type">ir.action.act_window</field>
+      <field name="res_model">product.uom</field>
+      <field name="view_type">form</field>
+    </record>
+
+    <record model="ir.action.act_window.view" id="action_uom_form_view2">
+      <field name="sequence" eval="20"/>
+      <field name="view" ref="product_uom_list_view"/>
+      <field name="act_window" ref="product_uom_form_action"/>
+    </record>
+
+    <record model="ir.action.act_window.view" id="action_uom_list_view2">
+      <field name="sequence" eval="10"/>
+      <field name="view" ref="product_uom_form_view"/>
+      <field name="act_window" ref="product_uom_form_action"/>
+    </record>
+
+    <menuitem name="New Unit of Measure"
+              id="menu_new_product_uom"
+              parent="menu_product_uom"
+              sequence="1"
+              action="product_uom_form_action"
+              />
+
+-----------uom categ---------------
+
+    <record model="ir.ui.view" id="product_uom_categ_list_view">
+      <field name="model">product.uom.category</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <![CDATA[
+        <tree string="Categories of Unit of Measure">
+          <field name="name" select="1"/>
+          <field name="parent" select="1"/>
+          <field name="complete_name"/>
+        </tree>
+        ]]>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_uom_categ_form_view">
+      <field name="model">product.uom.category</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <![CDATA[
+        <form string="Category of Unit of Measure" col="6">
+          <label name="name"/>
+          <field name="name" select="1"/>
+          <label name="parent"/>
+          <field name="parent" select="1"/>
+          <label name="complete_name"/>
+          <field name="complete_name" />
+          <label name="childs"/>
+          <field name="childs" />
+        </form>
+        ]]>
+      </field>
+    </record>
+
+
+
+    <record model="ir.action.act_window" id="product_uom_categ_list_action">
+      <field name="name">Categories of Unit of Measure</field>
+      <field name="type">ir.action.act_window</field>
+      <field name="res_model">product.uom.category</field>
+      <field name="view_type">form</field>
+    </record>
+
+    <record model="ir.action.act_window.view" id="action_uom_categ_form_view">
+      <field name="sequence" eval="10"/>
+      <field name="view" ref="product_uom_categ_list_view"/>
+      <field name="act_window" ref="product_uom_categ_list_action"/>
+    </record>
+
+    <record model="ir.action.act_window.view" id="action_uom_categ_list_view">
+      <field name="sequence" eval="20"/>
+      <field name="view" ref="product_uom_categ_form_view"/>
+      <field name="act_window" ref="product_uom_categ_list_action"/>
+    </record>
+
+    <menuitem name="Categories" parent="menu_product_uom"
+    sequence="2" id="menu_product_uom_categ" action="product_uom_categ_list_action"/>
+
+
+    <record model="ir.action.act_window" id="product_uom_categ_form_action">
+      <field name="name">Categories of Unit of measure</field>
+      <field name="type">ir.action.act_window</field>
+      <field name="res_model">product.uom.category</field>
+      <field name="view_type">form</field>
+    </record>
+
+    <record model="ir.action.act_window.view" id="action_uom_categ_form_view2">
+      <field name="sequence" eval="20"/>
+      <field name="view" ref="product_uom_categ_list_view"/>
+      <field name="act_window" ref="product_uom_categ_form_action"/>
+    </record>
+
+    <record model="ir.action.act_window.view" id="action_uom_categ_list_view2">
+      <field name="sequence" eval="10"/>
+      <field name="view" ref="product_uom_categ_form_view"/>
+      <field name="act_window" ref="product_uom_categ_form_action"/>
+    </record>
+
+    <menuitem name="New Category"
+              id="menu_new_product_uom_categ"
+              parent="menu_product_uom_categ"
+              action="product_uom_categ_form_action"
+              />
+
+  </data>
+</tryton>
