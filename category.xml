@@ -7,7 +7,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Partner categories">
+                <form string="Category">
                     <label name="name"/>
                     <field name="name"/>
                     <label name="active"/>
@@ -24,7 +24,7 @@
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Partner Categories">
+                <tree string="Categories">
                     <field name="name" select="1"/>
                     <field name="active" select="2" invisible="1"/>
                 </tree>

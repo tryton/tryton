@@ -30,25 +30,30 @@
                     <label name="type"/>
                     <field name="type"/>
                     <label name="active"/>
-                    <field name="active" invisible="0"/>
+                    <field name="active" invisible="0"
+                        xexpand="0" width="100"/>
                     <label name="street"/>
                     <field name="street"/>
                     <label name="streetbis"/>
                     <field name="streetbis"/>
+                    <newline/>
                     <label name="zip"/>
                     <field name="zip"/>
                     <label name="city"/>
                     <field name="city"/>
+                    <newline/>
                     <label name="country"/>
                     <field name="country" completion="1"/>
                     <label name="state"/>
                     <field name="state"/>
+                    <newline/>
                     <label name="phone"/>
                     <field name="phone"/>
-                    <label name="fax"/>
-                    <field name="fax"/>
                     <label name="mobile"/>
                     <field name="mobile"/>
+                    <newline/>
+                    <label name="fax"/>
+                    <field name="fax"/>
                     <label name="email"/>
                     <field name="email" widget="email"/>
                 </form>
@@ -79,9 +84,9 @@
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_address_form2_view1">
-          <field name="sequence" eval="10"/>
-          <field name="view" ref="address_view_form"/>
-          <field name="act_window" ref="act_address_form2"/>
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="address_view_form"/>
+            <field name="act_window" ref="act_address_form2"/>
         </record>
         <record model="ir.action.act_window.view" id="act_address_form2_view2">
             <field name="sequence" eval="20"/>

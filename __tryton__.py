@@ -10,6 +10,7 @@
     "xml" : [
         "category.xml",
         "partner.xml",
+        "country.xml",
         "address.xml",
     ],
 }
