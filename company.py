@@ -34,18 +34,17 @@ class User(OSV):
     company = fields.Many2One('company.company', 'Current Company',
             domain="[('parent', 'child_of', [main_company])]")
 
-    def __init__(self, pool):
-        super(User, self).__init__(pool)
-        if pool:
-            self._context_fields = self._context_fields + ['company']
-            self._constraints = self._constraints + [
-                    ('check_company',
-                        'Error! You can not set a company that is not ' \
-                                'a child of your main company.', ['company']),
-                    ]
-            self._rpc_allowed = self._rpc_allowed + [
-                    'on_change_main_company',
-                    ]
+    def __init__(self):
+        super(User, self).__init__()
+        self._context_fields = self._context_fields + ['company']
+        self._constraints = self._constraints + [
+                ('check_company',
+                    'Error! You can not set a company that is not ' \
+                            'a child of your main company.', ['company']),
+                ]
+        self._rpc_allowed += [
+                'on_change_main_company',
+                ]
 
     def on_change_main_company(self, cursor, user, ids, vals, context=None):
         return {'company': vals.get('main_company', False)}
