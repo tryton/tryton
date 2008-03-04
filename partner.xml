@@ -12,7 +12,7 @@
                     <field name="lang" select="2"/>
                     <field name="website"/>
                     <field name="vat" select="1"/>
-                    <field name="active" select="2"/>
+                    <field name="active" select="2" invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -68,7 +68,6 @@
                                     <field name="zip"/>
                                     <field name="city"/>
                                     <field name="country"/>
-                                    <field name="active" invisible="1"/>
                                 </tree>
                             </field>
                             <label name="lang"/>
