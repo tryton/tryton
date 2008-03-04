@@ -36,8 +36,8 @@ class User(OSV):
 
     def __init__(self):
         super(User, self).__init__()
-        self._context_fields = self._context_fields + ['company']
-        self._constraints = self._constraints + [
+        self._context_fields += ['company']
+        self._constraints += [
                 ('check_company',
                     'Error! You can not set a company that is not ' \
                             'a child of your main company.', ['company']),
