@@ -19,10 +19,13 @@ class Category(OSV):
     childs = fields.One2Many('partner.category', 'parent',
        'Childs Category', states=STATES)
     active = fields.Boolean('Active')
-    _constraints = [
-        ('check_recursion',
-         'Error! You can not create recursive categories.', ['parent'])
-    ]
+
+    def __init__(self):
+        super(Category, self).__init__()
+        self._constraints += [
+            ('check_recursion',
+             'Error! You can not create recursive categories.', ['parent'])
+        ]
 
     def default_active(self, cursor, user, context=None):
         return 1

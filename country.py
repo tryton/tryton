@@ -15,12 +15,15 @@ class Country(OSV):
            help='The ISO country code in two chars.\n'
            'You can use this field for quick search.', required=True)
     state = fields.One2Many('partner.country.state', 'country', 'State')
-    _sql_constraints = [
-        ('name_uniq', 'unique (name)',
-         'The name of the country must be unique !'),
-        ('code_uniq', 'unique (code)',
-         'The code of the country must be unique !')
-    ]
+
+    def __init__(self):
+        super(Country, self).__init__()
+        self._sql_constraints += [
+            ('name_uniq', 'UNIQUE(name)',
+             'The name of the country must be unique!'),
+            ('code_uniq', 'UNIQUE(code)',
+             'The code of the country must be unique!'),
+        ]
 
     def name_search(self, cr, user, name='', args=None, operator='ilike',
                     context=None, limit=80):
