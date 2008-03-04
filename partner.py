@@ -20,6 +20,7 @@ class Partner(OSV):
     _description = __doc__
     _name = "partner.partner"
     _order = "name"
+
     name = fields.Char('Name', size=128, required=True, select=True,
            states=STATES)
     type = fields.Many2One("partner.partner.type", "Type",
@@ -47,5 +48,20 @@ class Partner(OSV):
 
     def default_active(self, cursor, user, context=None):
         return 1
+
+    def address_get(self, cursor, user, partner_ids, adr_pref=['default']):
+        cursor.execute('select type,id from res_partner_address where partner_id in ('+','.join(map(str,partner_ids))+')')
+        res = cursor.fetchall()
+        adr = dict(res)
+        # get the id of the (first) default address if there is one,
+        # otherwise get the id of the first address in the list
+        if res:
+            default_address = adr.get('default', res[0][1])
+        else:
+            default_address = False
+        result = {}
+        for a in adr_pref:
+            result[a] = adr.get(a, default_address)
+        return result
 
 Partner()
