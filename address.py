@@ -52,8 +52,6 @@ class Address(OSV):
     def name_search(self, cursor, user, name, args=None, operator='ilike', context=None, limit=80):
         if not args:
             args=[]
-        if not context:
-            context={}
 
         ids = self.search(cursor, user, [('zip','=',name)] + args, limit=limit, context=context)
         if not ids:
