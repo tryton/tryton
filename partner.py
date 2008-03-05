@@ -49,7 +49,22 @@ class Partner(OSV):
     def default_active(self, cursor, user, context=None):
         return 1
 
-    def address_get(self, cursor, user, partner_ids, adr_pref=['default']):
+    def address_get(self, cursor, user, partner_id, types=None):
+        """
+        For each type in types, return the first matching address.
+        Types are : 'type_invoice','type_delivery','type_contact'.
+        """
+        if not types:
+            types = []
+        res = {}
+        partner = self.browse(cursor, user, partner_id)
+        for address in partner.addresses:
+            for type in types:
+                if address[type] and not res.get(type):
+                    res[type] = address.id
+
+        return res
+
         cursor.execute('select type,id from res_partner_address where partner_id in ('+','.join(map(str,partner_ids))+')')
         res = cursor.fetchall()
         adr = dict(res)
