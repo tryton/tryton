@@ -40,15 +40,6 @@ class Address(OSV):
     def default_sequence(self, cursor, user, context=None):
         return 10
 
-    def default_type_invoice(self, cursor, user, context=None):
-        return True
-
-    def default_type_delivery(self, cursor, user, context=None):
-        return True
-
-    def default_type_contact(self, cursor, user, context=None):
-        return True
-
     def name_get(self, cursor, user, ids, context=None):
         if not len(ids):
             return []
