@@ -32,4 +32,13 @@ class Address(OSV):
     def default_active(self, cursor, user, context=None):
         return 1
 
+
+    def name_get(self, cursor, user, ids, context=None):
+        if not len(ids):
+            return []
+        res = []
+        for address in self.browse(cursor, user, ids, context):
+            res.append((address.id, ", ".join(x for x in [address.name, address.partner.name, address.zip, address.city] if x)))
+        return res
+
 Address()
