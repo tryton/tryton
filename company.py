@@ -36,7 +36,7 @@ class User(OSV):
 
     def __init__(self):
         super(User, self).__init__()
-        self._context_fields += ['company']
+        self._context_fields.insert(0, 'company')
         self._constraints += [
                 ('check_company',
                     'Error! You can not set a company that is not ' \
