@@ -42,9 +42,6 @@ class User(OSV):
                     'Error! You can not set a company that is not ' \
                             'a child of your main company.', ['company']),
                 ]
-        self._rpc_allowed += [
-                'on_change_main_company',
-                ]
 
     def on_change_main_company(self, cursor, user, ids, vals, context=None):
         return {'company': vals.get('main_company', False)}
