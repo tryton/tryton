@@ -23,7 +23,6 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Addresses" col="6">
-                    <field name="add"/>
                     <label name="partner"/>
                     <field name="partner" colspan="5"/>
                     <label name="name"/>
