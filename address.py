@@ -7,7 +7,7 @@ class Address(OSV):
     "Partner Address"
     _name = 'partner.address'
     _description = __doc__
-    _order = 'partner, sequence'
+    _order = 'partner, sequence, id'
     partner = fields.Many2One('partner.partner', 'Partner', required=True,
            ondelete='cascade', select=True,  states=STATES)
     type_invoice = fields.Boolean("Invoice", states=STATES,
