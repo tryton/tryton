@@ -7,11 +7,9 @@ STATES = {
 
 class UomCategory(OSV):
     'Product uom category'
-
     _name = 'product.uom.category'
     _description = __doc__
     _order = 'name'
-
     name = fields.Char('Name', size=64, required=True)
 
 
@@ -20,22 +18,35 @@ UomCategory()
 
 class Uom(OSV):
     'Unit of measure'
-
     _name = 'product.uom'
     _description = __doc__
     _order = 'name'
+    name = fields.Char('Name', size=64, required=True, states=STATES)
+    category = fields.Many2One('product.uom.category', 'UOM Category',
+            required=True, ondelete='cascade', states=STATES)
+    rate = fields.Float('Rate', digits=(12, 6), required=True,
+            on_change = ['rate'],states=STATES,
+            help='The coefficient for the formula:\n' \
+            '1 (base unit) = coef (this unit)')
+    factor = fields.Function("_factor", fnct_inv="_factor_inv",
+            digits=(12, 6),states=STATES, method=True, string='Factor',
+            on_change = ['factor'], help='The coefficient for the formula:\n' \
+            'coef (base unit) = 1 (this unit)')
+    factor_data = fields.Float('Factor', digits=(12, 6), states=STATES)
+    rounding = fields.Float('Rounding Precision', digits=(16, 3),
+            required=True, states=STATES)
+    active = fields.Boolean('Active')
 
-    def __init__(self, pool):
-        super(Uom, self).__init__(pool)
-        if pool:
-            self._rpc_allowed.extend([
-                    'default_rate',
-                    'default_factor',
-                    'default_active',
-                    'default_rounding',
-                    'on_change_factor',
-                    'on_change_rate',
-                    ])
+    def __init__(self):
+        super(Uom, self).__init__()
+        self._rpc_allowed.extend([
+                'default_rate',
+                'default_factor',
+                'default_active',
+                'default_rounding',
+                'on_change_factor',
+                'on_change_rate',
+                ])
 
     def _factor(self, cursor, user, ids, name, arg, context):
         res = {}
@@ -67,27 +78,6 @@ class Uom(OSV):
                 'factor_data': 0.0,
                 }, context=ctx)
 
-
-    name = fields.Char('Name', size=64, required=True, states=STATES,)
-    category = fields.Many2One('product.uom.category', 'UOM Category',
-                               required=True, ondelete='cascade',
-                               states=STATES,)
-    rate = fields.Float('Rate', digits=(12, 6), required=True,
-                        on_change = ['rate'],states=STATES,
-                        help='The coefficient for the formula:\n' \
-                            '1 (base unit) = coef (this unit)')
-    factor = fields.Function("_factor", fnct_inv="_factor_inv",
-                             digits=(12, 6),states=STATES,
-                             method=True, string='Factor',
-                             on_change = ['factor'],
-                             help='The coefficient for the formula:\n' \
-                                 'coef (base unit) = 1 (this unit)')
-    factor_data = fields.Float('Factor', digits=(12, 6), states=STATES,)
-    rounding = fields.Float('Rounding Precision', digits=(16, 3),
-                            required=True,states=STATES,)
-    active = fields.Boolean('Active')
-
-
     def default_rate(self, cursor, user, context=None):
         return 1.0
 
@@ -99,7 +89,6 @@ class Uom(OSV):
 
     def default_rounding(self, cursor, user, context=None):
         return 0.01
-
 
     def on_change_factor(self, cursor, user, ids, value, context=None):
         if value.get('factor', 0.0) == 0.0:

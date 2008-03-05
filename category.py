@@ -14,7 +14,7 @@ class Category(OSV):
             string='Child Categories')
 
     def __init__(self):
-        super(Category, self).__init__(pool)
+        super(Category, self).__init__()
         self._rpc_allowed.extend([
                 'complete_name',
                 'name_get',
