@@ -44,8 +44,6 @@ class Uom(OSV):
                 'default_factor',
                 'default_active',
                 'default_rounding',
-                'on_change_factor',
-                'on_change_rate',
                 ])
 
     def _factor(self, cursor, user, ids, name, arg, context):
