@@ -1,90 +1,71 @@
 <?xml version="1.0"?>
 <tryton>
-  <data>
-
-    <record model="ir.ui.view" id="product_categ_list_view">
-      <field name="model">product.category</field>
-      <field name="type">tree</field>
-      <field name="arch" type="xml">
-        <![CDATA[
-        <tree string="Product Categories">
-          <field name="name" select="1"/>
-          <field name="parent" select="1"/>
-          <field name="complete_name" />
-        </tree>
-        ]]>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="product_categ_form_view">
-      <field name="model">product.category</field>
-      <field name="type">form</field>
-      <field name="arch" type="xml">
-        <![CDATA[
-        <form string="Product Category">
-          <label name="name"/>
-          <field name="name" select="1"/>
-          <label name="parent"/>
-          <field name="parent" select="1"/>
-          <label name="complete_name"/>
-          <field name="complete_name"/>
-          <separator name="childs" colspan="4"/>
-          <field name="childs" colspan="4"/>
-        </form>
-        ]]>
-      </field>
-    </record>
-
-
-
-
-    <record model="ir.action.act_window" id="product_categ_list_action">
-      <field name="name">Product category</field>
-      <field name="type">ir.action.act_window</field>
-      <field name="res_model">product.category</field>
-      <field name="view_type">form</field>
-    </record>
-
-    <record model="ir.action.act_window.view" id="action_categ_form_view">
-      <field name="sequence" eval="10"/>
-      <field name="view" ref="product_categ_list_view"/>
-      <field name="act_window" ref="product_categ_list_action"/>
-    </record>
-
-    <record model="ir.action.act_window.view" id="action_categ_list_view">
-      <field name="sequence" eval="20"/>
-      <field name="view" ref="product_categ_form_view"/>
-      <field name="act_window" ref="product_categ_list_action"/>
-    </record>
-
-    <menuitem name="Categories" parent="menu_product_product"
-    sequence="3" id="menu_product_categ" action="product_categ_list_action"/>
-
-
-    <record model="ir.action.act_window" id="product_categ_form_action">
-      <field name="name">Product Category</field>
-      <field name="type">ir.action.act_window</field>
-      <field name="res_model">product.category</field>
-      <field name="view_type">form</field>
-    </record>
-
-    <record model="ir.action.act_window.view" id="action_categ_form_view2">
-      <field name="sequence" eval="20"/>
-      <field name="view" ref="product_categ_list_view"/>
-      <field name="act_window" ref="product_categ_form_action"/>
-    </record>
-
-    <record model="ir.action.act_window.view" id="action_categ_list_view2">
-      <field name="sequence" eval="10"/>
-      <field name="view" ref="product_categ_form_view"/>
-      <field name="act_window" ref="product_categ_form_action"/>
-    </record>
-
-    <menuitem name="New Category"
-              id="menu_new_product_categ"
-              parent="menu_product_categ"
-              action="product_categ_form_action"
-              />
-
-  </data>
+    <data>
+        <record model="ir.ui.view" id="category_view_tree">
+            <field name="model">product.category</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Product Categories">
+                    <field name="name" select="1"/>
+                    <field name="parent" select="1"/>
+                    <field name="complete_name"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">product.category</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Product Category">
+                    <label name="name"/>
+                    <field name="name" select="1"/>
+                    <label name="parent"/>
+                    <field name="parent" select="1"/>
+                    <label name="complete_name"/>
+                    <field name="complete_name"/>
+                    <separator name="childs" colspan="4"/>
+                    <field name="childs" colspan="4"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_category_form">
+            <field name="name">Product Categories</field>
+            <field name="res_model">product.category</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="category_view_tree"/>
+            <field name="act_window" ref="act_category_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="category_view_form"/>
+            <field name="act_window" ref="act_category_form"/>
+        </record>
+        <menuitem name="Categories" parent="menu_product"
+            sequence="2" id="menu_category_form"
+            action="act_category_form"/>
+        <record model="ir.action.act_window" id="act_category_form2">
+            <field name="name">Product Categories</field>
+            <field name="res_model">product.category</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="category_view_form"/>
+            <field name="act_window" ref="act_category_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="category_view_tree"/>
+            <field name="act_window" ref="act_category_form2"/>
+        </record>
+        <menuitem name="New Category" id="menu_category_form2"
+              parent="menu_category_form" action="act_category_form2"/>
+    </data>
 </tryton>
