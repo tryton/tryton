@@ -12,21 +12,11 @@ class Category(OSV):
     childs = fields.One2Many('product.category', 'parent',
                              string='Child Categories')
 
-    def __init__(self, pool):
-        super(Category, self).__init__(pool)
-        if pool:
-            self._rpc_allowed.extend([
-                    'complete_name',
-                    'name_get',
-                    ])
-
-    def complete_name(self, cursor, user, obj_id, name, value, arg,
-            context=None):
+    def complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context)
         return dict(res)
 
     def name_get(self, cursor, user, ids, context=None):
-
         if not len(ids):
             return []
         categories = self.browse(cursor, user, ids, context=context)
