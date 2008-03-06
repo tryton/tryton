@@ -49,34 +49,22 @@ class Partner(OSV):
     def default_active(self, cursor, user, context=None):
         return 1
 
-    def address_get(self, cursor, user, partner_id, types=None):
+    def address_get(self, cursor, user, partner_id, type=None):
         """
-        For each type in types, return the first matching address.
-        Types are : 'type_invoice','type_delivery','type_contact'.
+        Try to find an address for the given type, if no type match
+        the first address is return.
         """
-        if not types:
-            types = []
-        res = {}
-        partner = self.browse(cursor, user, partner_id)
-        for address in partner.addresses:
-            for type in types:
-                if address[type] and not res.get(type):
-                    res[type] = address.id
-
-        return res
-
-        cursor.execute('select type,id from res_partner_address where partner_id in ('+','.join(map(str,partner_ids))+')')
-        res = cursor.fetchall()
-        adr = dict(res)
-        # get the id of the (first) default address if there is one,
-        # otherwise get the id of the first address in the list
-        if res:
-            default_address = adr.get('default', res[0][1])
-        else:
-            default_address = False
-        result = {}
-        for a in adr_pref:
-            result[a] = adr.get(a, default_address)
-        return result
+        address_obj = self.pool.get("partner.address")
+        address_ids = address_obj.search(
+            cursor, user, [("partner","=",partner_id),("active","=",True)])
+        if not address_ids:
+            return None
+        default_address = address_ids[0]
+        if not type:
+            return default_address
+        for address in address_obj.browse(cursor, user, address_ids):
+            if address[type]:
+                    return address.id
+        return default_address
 
 Partner()
