@@ -24,50 +24,6 @@ class Uom(OSV):
     _name = 'product.uom'
     _description = __doc__
     _order = 'name'
-
-    def __init__(self, pool):
-        super(Uom, self).__init__(pool)
-        if pool:
-            self._rpc_allowed.extend([
-                    'default_rate',
-                    'default_factor',
-                    'default_active',
-                    'default_rounding',
-                    'on_change_factor',
-                    'on_change_rate',
-                    ])
-
-    def _factor(self, cursor, user, ids, name, arg, context):
-        res = {}
-        for uom in self.browse(cursor, user, ids, context=context):
-            if uom.rate:
-                if uom.factor_data:
-                    res[uom.id] = uom.factor_data
-                else:
-                    res[uom.id] = round(1 / uom.rate, 6)
-            else:
-                res[uom.id] = 0.0
-        return res
-
-    def _factor_inv(self, cursor, user, id, name, value, arg, context):
-        ctx = context.copy()
-        if 'read_delta' in ctx:
-            del ctx['read_delta']
-        if value:
-            data = 0.0
-            if round(1 / round(1/value, 6), 6) != value:
-                data = value
-            self.write(cursor, user, id, {
-                'rate': round(1/value, 6),
-                'factor_data': data,
-                }, context=ctx)
-        else:
-            self.write(cursor, user, id, {
-                'factor': 0.0,
-                'factor_data': 0.0,
-                }, context=ctx)
-
-
     name = fields.Char('Name', size=64, required=True, states=STATES,)
     category = fields.Many2One('product.uom.category', 'UOM Category',
                                required=True, ondelete='cascade',
@@ -88,6 +44,37 @@ class Uom(OSV):
     active = fields.Boolean('Active')
 
 
+    def _factor(self, cursor, user, ids, name, arg, context):
+        res = {}
+        for uom in self.browse(cursor, user, ids, context=context):
+            if uom.rate:
+                if uom.factor_data:
+                    res[uom.id] = uom.factor_data
+                else:
+                    res[uom.id] = round(1 / uom.rate, 6)
+            else:
+                res[uom.id] = 0.0
+        return res
+
+    def _factor_inv(self, cursor, user, id, name, value, arg, context=None):
+        if context and 'read_delta' in context:
+            context = context.copy()
+            del context['read_delta']
+
+        if value:
+            data = 0.0
+            if round(1 / round(1/value, 6), 6) != value:
+                data = value
+            self.write(cursor, user, id, {
+                'rate': round(1/value, 6),
+                'factor_data': data,
+                }, context=context)
+        else:
+            self.write(cursor, user, id, {
+                'rate': 0.0,
+                'factor_data': 0.0,
+                }, context=context)
+
     def default_rate(self, cursor, user, context=None):
         return 1.0
 
@@ -104,11 +91,53 @@ class Uom(OSV):
     def on_change_factor(self, cursor, user, ids, value, context=None):
         if value.get('factor', 0.0) == 0.0:
             return {'value': {'rate': 0}}
-        return {'value': {'rate': round(1/value['factor'], 6)}}
+        return {'rate': round(1/value['factor'], 6)}
 
     def on_change_rate(self, cursor, user, ids, value, context=None):
         if value.get('rate', 0.0) == 0.0:
             return {'value': {'factor': 0}}
-        return {'value': {'factor': round(1/value['rate'], 6)}}
+        return {'factor': round(1/value['rate'], 6)}
+
+
+    def _compute_qty(self, cursor, user, from_uom_id, qty, to_uom=False):
+        """
+        Convert quantity for given uom's. from_uom and to_uom should
+        be browse records.
+        """
+        if not from_uom or not qty or not to_uom:
+            return qty
+        if from_uom.category.id <> to_uom.category.id:
+            return qty
+        if from_uom.factor_data:
+            amount = qty * from_uom.factor_data
+        else:
+            amount = qty / from_uom.factor
+        if to_uom:
+            if to_uom.factor_data:
+                amount = rounding(amount / to_uom.factor_data, to_uom.rounding)
+            else:
+                amount = rounding(amount * to_uom.factor, to_uom.rounding)
+        return amount
+
+    def _compute_price(self, cursor, user, from_uom, price, to_uom=False):
+        """
+        Convert price for given uom's. from_uom and to_uom should be
+        browse records.
+        """
+        if not from_uom or not price or not to_uom:
+            return price
+        if from_uom.category.id <> to_uom.category.id:
+            return price
+        if from_uom.factor_data:
+            new_price = float(price) / from_uom.factor_data
+        else:
+            new_price = float(price) * from_uom.factor
+
+        if to_uom.factor_data:
+            new_price = new_price * to_uom.factor_data
+        else:
+            new_price = new_price / to_uom.factor
+
+        return new_price
 
 Uom()
