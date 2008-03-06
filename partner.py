@@ -57,7 +57,7 @@ class Partner(OSV):
         address_obj = self.pool.get("partner.address")
         address_ids = address_obj.search(
             cursor, user, [("partner","=",partner_id),("active","=",True)],
-            order="sequence")
+            order="sequence, id")
         if not address_ids:
             return None
         default_address = address_ids[0]
