@@ -45,20 +45,26 @@ class Address(OSV):
             return []
         res = []
         for address in self.browse(cursor, user, ids, context):
-            res.append((address.id, ", ".join(x for x in [address.name, address.partner.name, address.zip, address.city] if x)))
+            res.append((address.id, ", ".join(x for x in [address.name,
+                address.partner.name, address.zip, address.city] if x)))
         return res
 
 
-    def name_search(self, cursor, user, name, args=None, operator='ilike', context=None, limit=80):
+    def name_search(self, cursor, user, name, args=None, operator='ilike',
+                    context=None, limit=80):
         if not args:
             args=[]
 
-        ids = self.search(cursor, user, [('zip','=',name)] + args, limit=limit, context=context)
+        ids = self.search(cursor, user, [('zip','=',name)] + args,
+                          limit=limit, context=context)
         if not ids:
-            ids = self.search(cursor, user, [('city',operator,name)] + args, limit=limit, context=context)
+            ids = self.search(cursor, user, [('city',operator,name)] + args,
+                              limit=limit, context=context)
         if name:
-            ids += self.search(cursor, user, [('name',operator,name)] + args, limit=limit, context=context)
-            ids += self.search(cursor, user, [('partner',operator,name)] + args, limit=limit, context=context)
+            ids += self.search(cursor, user, [('name',operator,name)] + args,
+                               limit=limit, context=context)
+            ids += self.search(cursor, user, [('partner',operator,name)] + args,
+                               limit=limit, context=context)
         return self.name_get(cursor, user, ids, context=context)
 
 Address()
