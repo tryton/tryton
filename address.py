@@ -10,12 +10,6 @@ class Address(OSV):
     _order = 'partner, sequence, id'
     partner = fields.Many2One('partner.partner', 'Partner', required=True,
            ondelete='cascade', select=True,  states=STATES)
-    type_invoice = fields.Boolean("Invoice", states=STATES,
-        help="Make this address of type invoicing")
-    type_delivery = fields.Boolean("Delivery", states=STATES,
-        help="Make this address of type delivery")
-    type_contact = fields.Boolean("Contact", states=STATES,
-        help="Make this address of type contact")
     name = fields.Char('Contact Name', size=64, states=STATES)
     street = fields.Char('Street', size=128, states=STATES)
     streetbis = fields.Char('Street (bis)', size=128, states=STATES)

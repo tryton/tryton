@@ -33,9 +33,12 @@
                                 <form string="Addresses" col="6">
                                     <label name="name"/>
                                     <field name="name"/>
-                                    <label name="active"/>
-                                    <field name="active"
-                                    xexpand="0" width="100"/>
+                                    <group colspan="2" col="20">
+                                        <label name="active"/>
+                                        <field name="active"
+                                               xexpand="0" width="20"/>
+                                        <!-- Add here some checkboxes -->
+                                    </group>
                                     <newline/>
                                     <label name="street"/>
                                     <field name="street"/>
@@ -63,22 +66,13 @@
                                     <field name="email" widget="email"/>
                                     <newline/>
                                     <label name="sequence"/>
-                                    <field name="sequence"/>             
+                                    <field name="sequence"/>
                                     <separator string="Types" colspan="6"/>
-                                    <label name="type_invoice"/>
-                                    <field name="type_invoice"/>
-                                    <label name="type_delivery"/>
-                                    <field name="type_delivery"/>
-                                    <label name="type_contact"/>
-                                    <field name="type_contact"/>
                                 </form>
                                 <tree string="Addresses">
                                     <field name="name" select="1"/>
                                     <field name="phone" select="2"/>
                                     <field name="email" select="2"/>
-                                    <field name="type_invoice"/>
-                                    <field name="type_delivery"/>
-                                    <field name="type_contact"/>
                                     <field name="active" select="2"/>
                                 </tree>
                             </field>
