@@ -7,11 +7,9 @@ STATES = {
 
 class UomCategory(OSV):
     'Product uom category'
-
     _name = 'product.uom.category'
     _description = __doc__
     _order = 'name'
-
     name = fields.Char('Name', size=64, required=True)
 
 
@@ -20,7 +18,6 @@ UomCategory()
 
 class Uom(OSV):
     'Unit of measure'
-
     _name = 'product.uom'
     _description = __doc__
     _order = 'name'
@@ -42,7 +39,6 @@ class Uom(OSV):
     rounding = fields.Float('Rounding Precision', digits=(16, 3),
                             required=True,states=STATES,)
     active = fields.Boolean('Active')
-
 
     def _factor(self, cursor, user, ids, name, arg, context):
         res = {}
@@ -86,7 +82,6 @@ class Uom(OSV):
 
     def default_rounding(self, cursor, user, context=None):
         return 0.01
-
 
     def on_change_factor(self, cursor, user, ids, value, context=None):
         if value.get('factor', 0.0) == 0.0:
