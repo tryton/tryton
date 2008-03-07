@@ -8,13 +8,12 @@ class Category(OSV):
     _order = "parent,name"
 
     name = fields.Char('Name', size=64, required=True)
-    complete_name = fields.Function('complete_name', type="char", string='Name')
+    complete_name = fields.Function('_complete_name', type="char", string='Complete Name')
     parent = fields.Many2One('product.category','Parent Category', select=True)
     childs = fields.One2Many('product.category', 'parent',
             string='Child Categories')
 
-    def complete_name(self, cursor, user, obj_id, name, value, arg,
-            context=None):
+    def _complete_name(self, cursor, user, ids, name, arg, context):
         res = self.name_get(cursor, user, ids, context)
         return dict(res)
 
