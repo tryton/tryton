@@ -1,5 +1,6 @@
 from trytond.osv import fields, OSV
 
+
 class Product(OSV):
     "Product"
     _name = "product.product"
@@ -7,11 +8,9 @@ class Product(OSV):
     _inherits = {'product.template': 'product_template'}
 
     product_template = fields.Many2One('product.template', 'Product Template',
-                                        required=True)
-    code = fields.Char("Code", size=1,) # TODO will be change to None
-                                        # when implemeted
-    description = fields.Text("Description",)
-
+            required=True)
+    code = fields.Char("Code", size=None)
+    description = fields.Text("Description", translate=True)
 
     def name_search(self, cursor, user, name,  args=None, operator='ilike',
                     context=None, limit=80):
