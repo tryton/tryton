@@ -26,12 +26,11 @@
                     <field name="partner" colspan="5"/>
                     <label name="name"/>
                     <field name="name"/>
-
                     <group colspan="2" col="20">
-                      <label name="active"/>
-                      <field name="active"
-                             xexpand="0" width="25"/>
-		      <!-- Add here some checkboxes ! -->
+                        <label name="active"/>
+                        <field name="active"
+                            xexpand="0" width="25"/>
+                        <!-- Add here some checkboxes ! -->
                     </group>
                     <newline/>
                     <label name="street"/>
@@ -58,10 +57,6 @@
                     <field name="fax"/>
                     <label name="email"/>
                     <field name="email" widget="email"/>
-                    <newline/>
-                    <label name="sequence"/>
-                    <field name="sequence"/>
-
                 </form>
                 ]]>
             </field>
