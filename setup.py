@@ -32,6 +32,7 @@ setup(name='trytond-' + info['name'].lower(),
     ],
     package_data={
         'trytond.modules.' + info['name'].lower(): info.get('xml', []),
+        'trytond.modules.' + info['name'].lower(): ['label.odt'],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

@@ -93,5 +93,16 @@
             <field name="model">partner.category,0</field>
             <field name="action" ref="act_partner_by_category"/>
         </record>
+        <record model="ir.action.report" id="report_label">
+            <field name="name">Labels</field>
+            <field name="model">partner.partner</field>
+            <field name="report_name">partner.label</field>
+            <field name="report">partner/label.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_label_partner">
+            <field name="keyword">form_print</field>
+            <field name="model">partner.partner,0</field>
+            <field name="action" ref="report_label"/>
+        </record>
     </data>
 </tryton>
