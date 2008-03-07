@@ -30,50 +30,12 @@
                     <notebook colspan="4">
                         <page string="General">
                             <field name="addresses" mode="form,tree" colspan="4">
-                                <form string="Addresses" col="6">
-                                    <label name="name"/>
+                                <tree string="Addresses" sequence="sequence">
+                                    <field name="sequence" invisible="1"/>
                                     <field name="name"/>
-                                    <group colspan="2" col="20">
-                                        <label name="active"/>
-                                        <field name="active"
-                                               xexpand="0" width="20"/>
-                                        <!-- Add here some checkboxes -->
-                                    </group>
-                                    <newline/>
-                                    <label name="street"/>
-                                    <field name="street"/>
-                                    <label name="streetbis"/>
-                                    <field name="streetbis"/>
-                                    <newline/>
-                                    <label name="zip"/>
-                                    <field name="zip"/>
-                                    <label name="city"/>
-                                    <field name="city"/>
-                                    <newline/>
-                                    <label name="country"/>
-                                    <field name="country" completion="1"/>
-                                    <label name="state"/>
-                                    <field name="state"/>
-                                    <newline/>
-                                    <label name="phone"/>
                                     <field name="phone"/>
-                                    <label name="mobile"/>
-                                    <field name="mobile"/>
-                                    <newline/>
-                                    <label name="fax"/>
-                                    <field name="fax"/>
-                                    <label name="email"/>
-                                    <field name="email" widget="email"/>
-                                    <newline/>
-                                    <label name="sequence"/>
-                                    <field name="sequence"/>
-                                    <separator string="Types" colspan="6"/>
-                                </form>
-                                <tree string="Addresses">
-                                    <field name="name" select="1"/>
-                                    <field name="phone" select="2"/>
-                                    <field name="email" select="2"/>
-                                    <field name="active" select="2"/>
+                                    <field name="email"/>
+                                    <field name="active"/>
                                 </tree>
                             </field>
                             <label name="lang"/>
