@@ -17,13 +17,12 @@ class Template(OSV):
                             'Type', required=True, states=STATES,)
     category = fields.Many2One('product.category','Category', required=True,
                                states=STATES,)
-    list_price_db = fields.Numeric('DB List Price', states=STATES,)
-    list_price = fields.Function(
-        '_list_price',fnct_inv="_list_price_inv", string='List Price',
-        type="numeric", digits=(12, 2),)
-    cost_price = fields.numeric('Cost Price', states=STATES, digits=(12, 2))
+    list_price = fields.Numeric('List Price', states=STATES,)
+    list_price_uom = fields.Function('get_list_price_uom', string='List Price',
+                                      type="numeric", digits=(12, 2),)
+    cost_price = fields.Numeric('Cost Price', states=STATES, digits=(12, 2))
     cost_price_method = fields.Selection(
-        [("static","Static cost"),("average","Weighted average")],
+        [("fixed","Fixed Price"),("average","Average Cost Price")],
         "Cost Method")
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
                                   states=STATES,)
@@ -38,7 +37,7 @@ class Template(OSV):
     def default_cost_price_method(self, cursor, user, context=None):
         return 'static'
 
-    def _list_price(self, cursor, user, ids, name, arg, context=None):
+    def get_list_price_uom(self, cursor, user, ids, name, arg, context=None):
         product_uom_obj = self.pool.get('product.uom')
         res = {}
         if context and 'uom' in context:
@@ -46,19 +45,11 @@ class Template(OSV):
                 cursor, user, context['uom'], context=context)
             for product in self.browse(cursor, user, ids, context=context):
                 res[product.id] = product_uom_obj._compute_price(
-                    cursor, user, product.default_uom, product.list_price_db,
+                    cursor, user, product.default_uom, product.list_price,
                     to_uom)
         else:
             for product in self.browse(cursor, user, ids, context=context):
-                res[product.id] = product.list_price_db
+                res[product.id] = product.list_price
         return res
-
-    def _list_price_inv(self, cursor, user, id, name, value, arg, context=None):
-        if context and 'read_delta' in context:
-            context = context.copy()
-            del context['read_delta']
-
-        return self.write(cursor, user, id, {'list_price_db': value},
-                          context=context)
 
 Template()
