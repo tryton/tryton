@@ -29,47 +29,10 @@ class Uom(OSV):
                         on_change = ['rate'],states=STATES,
                         help='The coefficient for the formula:\n' \
                             '1 (base unit) = coef (this unit)')
-    factor = fields.Function("_factor", fnct_inv="_factor_inv",
-                             digits=(12, 6),states=STATES,
-                             method=True, string='Factor',
-                             on_change = ['factor'],
-                             help='The coefficient for the formula:\n' \
-                                 'coef (base unit) = 1 (this unit)')
-    factor_data = fields.Float('Factor', digits=(12, 6), states=STATES,)
+    factor = fields.Float('Factor', digits=(12, 6), states=STATES,)
     rounding = fields.Float('Rounding Precision', digits=(16, 3),
                             required=True,states=STATES,)
     active = fields.Boolean('Active')
-
-    def _factor(self, cursor, user, ids, name, arg, context):
-        res = {}
-        for uom in self.browse(cursor, user, ids, context=context):
-            if uom.rate:
-                if uom.factor_data:
-                    res[uom.id] = uom.factor_data
-                else:
-                    res[uom.id] = round(1 / uom.rate, 6)
-            else:
-                res[uom.id] = 0.0
-        return res
-
-    def _factor_inv(self, cursor, user, id, name, value, arg, context=None):
-        if context and 'read_delta' in context:
-            context = context.copy()
-            del context['read_delta']
-
-        if value:
-            data = 0.0
-            if round(1 / round(1/value, 6), 6) != value:
-                data = value
-            self.write(cursor, user, id, {
-                'rate': round(1/value, 6),
-                'factor_data': data,
-                }, context=context)
-        else:
-            self.write(cursor, user, id, {
-                'rate': 0.0,
-                'factor_data': 0.0,
-                }, context=context)
 
     def default_rate(self, cursor, user, context=None):
         return 1.0
@@ -93,6 +56,53 @@ class Uom(OSV):
             return {'value': {'factor': 0}}
         return {'factor': round(1/value['rate'], 6)}
 
+    @staticmethod
+    def check_factor_and_rate(values):
+        factor = None
+        rate = None
+
+        if ('factor' not in values) and ('rate' not in values):
+            return values
+        elif 'factor' in values and 'rate' in values:
+            if values['rate'] == 0.0 and values['factor'] == 0.0:
+                return values
+            elif values['factor'] != 0.0 and \
+                    values['rate'] != 0.0:
+                if values['rate'] == round(1/values['factor'], 6) or \
+                        values['factor'] == round(1/values['rate'], 6):
+                    return values
+                else:
+                    factor = round(1/values['rate'], 6)
+            elif values['rate'] != 0.0 and \
+                    values['factor'] != round(1/values['rate'], 6):
+                factor = round(1/values['rate'], 6)
+            elif values['factor'] != 0.0 and \
+                    values['rate'] != round(1/values['factor'], 6):
+                rate = round(1/values['factor'], 6)
+        elif 'rate' in values:
+            if values['rate'] != 0.0:
+                factor = round(1/values['rate'], 6)
+            else:
+                factor = 0.0
+        elif 'factor' in values:
+            if values['factor'] != 0.0:
+                rate = round(1/values['factor'], 6)
+            else:
+                rate = 0.0
+
+        if rate != None or factor != None:
+            values = values.copy()
+            if rate != None: values['rate'] = rate
+            if factor != None: values['factor'] = factor
+        return values
+
+    def create(self, cursor, user, values, context):
+        values = self.check_factor_and_rate(values)
+        return super(Uom, self).create(cursor, user, values, context)
+
+    def write(self, cursor, user, ids, values, context):
+        values = self.check_factor_and_rate(values)
+        return super(Uom, self).write(cursor, user, ids, values, context)
 
     def _compute_qty(self, cursor, user, from_uom_id, qty, to_uom=False):
         """
