@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="res.group" id="group_account">
+            <field name="name">Account</field>
+        </record>
+        <record model="res.group" id="group_account_admin">
+            <field name="name">Account admin</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[(4, ref('group_account')), (4, ref('group_account_admin'))]"/>
+        </record>
+        <menuitem name="Financial Management" id="menu_account" sequence="2"
+            groups="group_account,group_account_admin"/>
+        <menuitem name="Configuration" parent="menu_account"
+            id="menu_account_configuration" groups="group_account_admin"/>
+    </data>
+</tryton>
