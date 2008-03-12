@@ -31,7 +31,7 @@
                         <page string="General">
                             <field name="addresses" mode="form,tree" colspan="4">
                                 <tree string="Addresses" sequence="sequence">
-                                    <field name="sequence" invisible="1"/>
+                                    <field name="sequence" tree_invisible="1"/>
                                     <field name="name"/>
                                     <field name="phone"/>
                                     <field name="email"/>

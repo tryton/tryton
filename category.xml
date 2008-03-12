@@ -11,7 +11,7 @@
                     <label name="name"/>
                     <field name="name"/>
                     <label name="active"/>
-                    <field name="active" invisible="0"/>
+                    <field name="active"/>
                     <label name="parent"/>
                     <field name="parent"/>
                 </form>
@@ -26,7 +26,7 @@
                 <![CDATA[
                 <tree string="Categories">
                     <field name="name" select="1"/>
-                    <field name="active" select="2" invisible="1"/>
+                    <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
