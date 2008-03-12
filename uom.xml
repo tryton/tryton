@@ -12,7 +12,7 @@
                     <field name="factor" select="2"/>
                     <field name="rate" select="2"/>
                     <field name="rounding" select="2"/>
-                    <field name="active" select="2" invisible="1"/>
+                    <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -28,7 +28,7 @@
                     <label name="category"/>
                     <field name="category" select="1"/>
                     <label name="active"/>
-                    <field name="active" invisible="0"/>
+                    <field name="active"/>
                     <label name="factor"/>
                     <field name="factor" select="1"/>
                     <label name="rate"/>
