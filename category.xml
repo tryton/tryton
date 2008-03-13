@@ -78,5 +78,29 @@
         </record>
         <menuitem name="New category" parent="menu_category_tree"
               action="act_category_form2" id="menu_category_form2"/>
+
+        <record model="res.group" id="group_partner_admin">
+            <field name="name">Partner administration</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[(4, ref('group_partner_admin'))]"/>
+        </record>
+
+        <record model="ir.model.access" id="access_partner_category">
+            <field name="model" search="[('model', '=', 'partner.category')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_partner_category_admin">
+            <field name="model" search="[('model', '=', 'partner.category')]"/>
+            <field name="group" ref="group_partner_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
     </data>
 </tryton>
