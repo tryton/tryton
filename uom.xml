@@ -13,7 +13,7 @@
                     <field name="factor" select="2"/>
                     <field name="rate" select="2"/>
                     <field name="rounding" select="2"/>
-                    <field name="active" select="2"/>
+                    <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
