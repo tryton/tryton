@@ -74,15 +74,17 @@ class Currency(OSV):
         'Return True if the amount can be considered as zero for the currency'
         return abs(self.round(cursor, user, currency, amount)) < currency.rounding
 
-    def compute(self, cursor, user, from_currency_id, amount, to_currency_id,
+    def compute(self, cursor, user, from_currency, amount, to_currency,
             round=True, context=None):
         '''
-        Take a currency id and an amount
+        Take a currency and an amount
         Return the amount to the new currency
         Use the rate of the date of the context or the current date
         '''
-        from_currency = self.browse(cursor, user, from_currency_id, context=context)
-        to_currency = self.browse(cursor, user, to_currency_id, context=context)
+        if isinstance(from_currency, (int, long)):
+            from_currency = self.browse(cursor, user, from_currency, context=context)
+        if isinstance(to_currency, (int, long)):
+            to_currency = self.browse(cursor, user, to_currency, context=context)
         if (not from_currency.rate) or (not to_currency.rate):
             date = context.get('date', time.strftime('%Y-%m-%d'))
             if not from_currency.rate:

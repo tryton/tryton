@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="journal_type_form">
+            <field name="model">account.journal.type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Journal Type">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="journal_type_tree">
+            <field name="model">account.journal.type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Journal Types">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_journal_type_form">
+            <field name="name">Journal Types</field>
+            <field name="res_model">account.journal.type</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_type_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_type_tree"/>
+            <field name="act_window" ref="act_journal_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_type_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="journal_type_form"/>
+            <field name="act_window" ref="act_journal_type_form"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_journal_type_form" id="menu_journal_type_form"/>
+        <record model="ir.model.access" id="access_journal_type">
+            <field name="model" search="[('model', '=', 'account.journal.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_type_account_admin">
+            <field name="model" search="[('model', '=', 'account.journal.type')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record model="account.journal.type" id="journal_type_general">
+            <field name="name">General</field>
+            <field name="code">general</field>
+        </record>
+        <record model="account.journal.type" id="journal_type_revenue">
+            <field name="name">Revenue</field>
+            <field name="code">revenue</field>
+        </record>
+        <record model="account.journal.type" id="journal_type_expense">
+            <field name="name">Expense</field>
+            <field name="code">expense</field>
+        </record>
+        <record model="account.journal.type" id="journal_type_cash">
+            <field name="name">Cash</field>
+            <field name="code">cash</field>
+        </record>
+        <record model="account.journal.type" id="journal_type_situation">
+            <field name="name">Situation</field>
+            <field name="code">situation</field>
+        </record>
+
+        <record model="ir.ui.view" id="journal_view_view_form">
+            <field name="model">account.journal.view</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Journal View" col="2">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <field name="columns" colspan="2">
+                        <tree string="View Columns" sequence="sequence" editable="bottom">
+                            <field name="name"/>
+                            <field name="field"/>
+                            <field name="required"/>
+                            <field name="readonly"/>
+                            <field name="sequence" tree_invisible="1"/>
+                        </tree>
+                        <form string="View Column">
+                            <label name="name"/>
+                            <field name="name"/>
+                            <label name="sequence"/>
+                            <field name="sequence"/>
+                            <label name="field"/>
+                            <field name="field"/>
+                            <newline/>
+                            <label name="required"/>
+                            <field name="required"/>
+                            <label name="readonly"/>
+                            <field name="readonly"/>
+                        </form>
+                    </field>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="journal_view_view_tree">
+            <field name="model">account.journal.view</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Journal Views">
+                    <field name="name" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_journal_view_form">
+            <field name="name">Journal Views</field>
+            <field name="res_model">account.journal.view</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_view_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_view_view_tree"/>
+            <field name="act_window" ref="act_journal_view_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_view_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="journal_view_view_form"/>
+            <field name="act_window" ref="act_journal_view_form"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_journal_view_form" id="menu_journal_view_form"/>
+        <record model="ir.model.access" id="access_journal_view">
+            <field name="model" search="[('model', '=', 'account.journal.view')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_view_account_admin">
+            <field name="model" search="[('model', '=', 'account.journal.view')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="journal_view_form">
+            <field name="model">account.journal</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Journal" col="6">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="6">
+                        <page string="General Information">
+                            <label name="type"/>
+                            <field name="type"/>
+                            <label name="sequence"/>
+                            <field name="sequence"/>
+                            <label name="view"/>
+                            <field name="view"/>
+                            <newline/>
+                            <label name="credit_account"/>
+                            <field name="credit_account"/>
+                            <label name="debit_account"/>
+                            <field name="debit_account"/>
+                            <label name="centralisation"/>
+                            <field name="centralisation"/>
+                            <newline/>
+                            <label name="update_posted"/>
+                            <field name="update_posted"/>
+                            <newline/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="journal_view_tree">
+            <field name="model">account.journal</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Journals">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="type" select="1"/>
+                    <field name="active" tree_invisible="1" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_journal_form">
+            <field name="name">Journals</field>
+            <field name="res_model">account.journal</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_view_tree"/>
+            <field name="act_window" ref="act_journal_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="journal_view_form"/>
+            <field name="act_window" ref="act_journal_form"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_journal_form" id="menu_journal_form"/>
+        <record model="ir.model.access" id="access_journal">
+            <field name="model" search="[('model', '=', 'account.journal')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_account_admin">
+            <field name="model" search="[('model', '=', 'account.journal')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_journal">
+            <field name="name">Account Journal</field>
+            <field name="code">account.journal</field>
+        </record>
+        <record model="ir.sequence" id="sequence_account_journal">
+            <field name="name">Default account journal</field>
+            <field name="code">account.journal</field>
+        </record>
+        <record model="account.journal" id="journal_revenue">
+            <field name="name">Revenue</field>
+            <field name="code">REV</field>
+            <field name="type">revenue</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+        <record model="account.journal" id="journal_expense">
+            <field name="name">Expense</field>
+            <field name="code">EXP</field>
+            <field name="type">expense</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+        <record model="account.journal" id="journal_cash">
+            <field name="name">Cash</field>
+            <field name="code">CASH</field>
+            <field name="type">cash</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+        <record model="account.journal" id="journal_stock">
+            <field name="name">Stock</field>
+            <field name="code">STO</field>
+            <field name="type">general</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+    </data>
+</tryton>

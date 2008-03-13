@@ -14,5 +14,8 @@
     'xml': [
         'account.xml',
         'currency.xml',
+        'fiscalyear.xml',
+        'period.xml',
+        'journal.xml',
     ],
 }

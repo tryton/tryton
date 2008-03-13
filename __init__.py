@@ -1,3 +1,4 @@
+# Copyright (c) 2004-2006 Tiny SPRL. (http://tiny.be)
 # Copyright (c) 2007 Cedric Krier.
 #
 # WARNING: This program as such is intended to be used by professional
@@ -25,3 +26,6 @@
 
 from currency import *
 from account import *
+from fiscalyear import *
+from period import *
+from journal import *

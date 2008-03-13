@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="fiscalyear_view_form">
+            <field name="model">account.fiscalyear</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Fiscal Year">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="start_date"/>
+                    <field name="start_date"/>
+                    <label name="end_date"/>
+                    <field name="end_date"/>
+                    <field name="periods" colspan="4"/>
+                    <group col="2" colspan="4">
+                        <button name="create_period" string="Create Monthly Periods"
+                            type="object"
+                            states="{'invisible': '''state != 'open' or periods '''}"/>
+                        <button name="create_period_3" string="Create 3 Months Periods"
+                            type="object"
+                            states="{'invisible': '''state != 'open' or periods '''}"/>
+                    </group>
+                    <field name="state" colspan="4"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="fiscalyear_view_tree">
+            <field name="model">account.fiscalyear</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Fiscal Years">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="state" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_fiscalyear_form">
+            <field name="name">Fiscal Years</field>
+            <field name="res_model">account.fiscalyear</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_fiscalyear_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="fiscalyear_view_tree"/>
+            <field name="act_window" ref="act_fiscalyear_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_fiscalyear_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="fiscalyear_view_form"/>
+            <field name="act_window" ref="act_fiscalyear_form"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_fiscalyear_form" id="menu_fiscalyear_form"/>
+    </data>
+</tryton>

@@ -14,5 +14,226 @@
             groups="group_account,group_account_admin"/>
         <menuitem name="Configuration" parent="menu_account"
             id="menu_account_configuration" groups="group_account_admin"/>
+        <menuitem name="General Account" parent="menu_account_configuration"
+            id="menu_general_account_configuration"/>
+
+        <record model="ir.ui.view" id="account_type_view_form">
+            <field name="model">account.account.type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Type">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="partner_account"/>
+                    <field name="partner_account"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="account_type_view_tree">
+            <field name="model">account.account.type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Types">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="partner_account" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_type_form">
+            <field name="name">Account Types</field>
+            <field name="res_model">account.account.type</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_type_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_type_view_tree"/>
+            <field name="act_window" ref="act_account_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_type_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_type_view_form"/>
+            <field name="act_window" ref="act_account_type_form"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_account_type_form" id="menu_account_type_form"/>
+        <record model="ir.model.access" id="access_account_type">
+            <field name="model" search="[('model', '=', 'account.account.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_type_account_admin">
+            <field name="model" search="[('model', '=', 'account.account.type')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record model="account.account.type" id="account_type_receivable">
+            <field name="name">Receivable</field>
+            <field name="code">receivable</field>
+            <field name="partner_account" eval="True"/>
+        </record>
+        <record model="account.account.type" id="account_type_payable">
+            <field name="name">Payable</field>
+            <field name="code">payable</field>
+            <field name="partner_account" eval="True"/>
+        </record>
+        <record model="account.account.type" id="account_type_view">
+            <field name="name">View</field>
+            <field name="code">view</field>
+        </record>
+        <record model="account.account.type" id="account_type_income">
+            <field name="name">Income</field>
+            <field name="code">income</field>
+        </record>
+        <record model="account.account.type" id="account_type_expense">
+            <field name="name">Expense</field>
+            <field name="code">expense</field>
+        </record>
+        <record model="account.account.type" id="account_type_tax">
+            <field name="name">Tax</field>
+            <field name="code">tax</field>
+        </record>
+        <record model="account.account.type" id="account_type_cash">
+            <field name="name">Cash</field>
+            <field name="code">cash</field>
+        </record>
+        <record model="account.account.type" id="account_type_asset">
+            <field name="name">Asset</field>
+            <field name="code">asset</field>
+        </record>
+        <record model="account.account.type" id="account_type_equity">
+            <field name="name">Equity</field>
+            <field name="code">equity</field>
+        </record>
+        <record model="account.account.type" id="account_type_closed">
+            <field name="name">Closed</field>
+            <field name="code">closed</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_view_form">
+            <field name="model">account.account</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account" col="6">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="6">
+                        <page string="General Information">
+                            <label name="company"/>
+                            <field name="company"/>
+                            <label name="type"/>
+                            <field name="type"/>
+                            <label name="currency"/>
+                            <field name="currency"/>
+                            <label name="second_currency"/>
+                            <field name="second_currency"/>
+                            <label name="close_method"/>
+                            <field name="close_method"/>
+                            <label name="reconcile"/>
+                            <field name="reconcile"/>
+                            <field name="parents" colspan="4"/>
+                        </page>
+                        <page string="Notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="account_view_tree">
+            <field name="model">account.account</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Accounts">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="company" select="2"/>
+                    <field name="type" select="2"/>
+                    <field name="active" select="2" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_form">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree"/>
+            <field name="act_window" ref="act_account_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_form"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_account_form" id="menu_account_form"/>
+        <record model="ir.action.act_window" id="act_account_tree">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+            <field name="view_type">tree</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree"/>
+            <field name="act_window" ref="act_account_tree"/>
+        </record>
+        <menuitem parent="menu_account_form"
+            action="act_account_tree" id="menu_account_tree"/>
+        <record model="ir.ui.view" id="account_view_tree2">
+            <field name="model">account.account</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Accounts">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
+                    <field name="balance"/>
+                    <field name="currency"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.model.access" id="access_account">
+            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_account_admin">
+            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
     </data>
 </tryton>
