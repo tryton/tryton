@@ -1275,5 +1275,38 @@
             <field name="code">wy</field>
             <field name="country" ref="us"/>
         </record>
+
+        <record model="ir.model.access" id="access_country">
+            <field name="model" search="[('model', '=', 'partner.country')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_country_admin">
+            <field name="model" search="[('model', '=', 'partner.country')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_country_state">
+            <field name="model" search="[('model', '=', 'partner.country.state')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_country_state_admin">
+            <field name="model" search="[('model', '=', 'partner.country.state')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
     </data>
 </tryton>
