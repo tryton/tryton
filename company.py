@@ -12,10 +12,13 @@ class Company(OSV):
     partner = fields.Many2One('partner.partner', 'Partner', required=True)
     parent = fields.Many2One('company.company', 'Parent')
     childs = fields.One2Many('company.company', 'parent', 'Childs')
-    _constraints = [
-        ('check_recursion',
-            'Error! You can not create recursive companies.', ['parent']),
-    ]
+
+    def __init__(self):
+        super(Company, self).__init__()
+        self._constraints += [
+            ('check_recursion',
+                'Error! You can not create recursive companies.', ['parent']),
+        ]
 
     def write(self, cursor, user, ids, vals, context=None):
         res = super(Company, self).write(cursor, user, ids, vals,
