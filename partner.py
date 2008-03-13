@@ -21,7 +21,7 @@ class Partner(OSV):
     _name = "partner.partner"
     _order = "name"
 
-    name = fields.Char('Name', size=128, required=True, select=True,
+    name = fields.Char('Name', size=128, required=True, select=1,
            states=STATES)
     type = fields.Many2One("partner.partner.type", "Type",
            states=STATES)
@@ -37,7 +37,7 @@ class Partner(OSV):
             'partner.category', 'partner_category_rel',
             'partner', 'category', 'Categories',
             states=STATES)
-    active = fields.Boolean('Active')
+    active = fields.Boolean('Active', select=1)
 
     def __init__(self):
         super(Partner, self).__init__()
