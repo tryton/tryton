@@ -76,5 +76,23 @@
         <menuitem name="Edit Categories" parent="menu_category_tree"
             sequence="2" id="menu_category_form"
             action="act_category_form"/>
+
+        <record model="ir.model.access" id="access_product_category">
+            <field name="model" search="[('model', '=', 'product.category')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_category_admin">
+            <field name="model" search="[('model', '=', 'product.category')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+
     </data>
 </tryton>
