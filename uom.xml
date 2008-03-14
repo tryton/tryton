@@ -413,7 +413,7 @@
         </record>
         <record model="ir.model.access" id="access_uom_admin">
             <field name="model" search="[('model', '=', 'product.uom')]"/>
-            <field name="group" ref="res.group_admin"/>
+            <field name="group" ref="group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
@@ -429,7 +429,7 @@
         </record>
         <record model="ir.model.access" id="access_uom_category_admin">
           <field name="model" search="[('model', '=', 'product.uom.category')]"/>
-            <field name="group" ref="res.group_admin"/>
+            <field name="group" ref="group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>

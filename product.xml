@@ -105,6 +105,15 @@
                   sequence="1" id="menu_product_product_new"
                   action="act_product_form2"/>
 
+
+
+        <record model="res.group" id="group_product_admin">
+            <field name="name">Product administration</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[(4, ref('group_product_admin'))]"/>
+        </record>
+
         <record model="ir.model.access" id="access_product">
             <field name="model" search="[('model', '=', 'product.product')]"/>
             <field name="perm_read" eval="True"/>
@@ -114,7 +123,7 @@
         </record>
         <record model="ir.model.access" id="access_product_admin">
             <field name="model" search="[('model', '=', 'product.product')]"/>
-            <field name="group" ref="res.group_admin"/>
+            <field name="group" ref="group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
@@ -130,7 +139,7 @@
         </record>
         <record model="ir.model.access" id="access_product_template_admin">
             <field name="model" search="[('model', '=', 'product.template')]"/>
-            <field name="group" ref="res.group_admin"/>
+            <field name="group" ref="group_product_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
