@@ -50,13 +50,22 @@ class Uom(OSV):
 
     def on_change_factor(self, cursor, user, ids, value, context=None):
         if value.get('factor', 0.0) == 0.0:
-            return {'factor': 1.0, 'rate': 1.0}
+            return {'rate': 0.0}
         return {'rate': round(1.0/value['factor'], 6)}
 
     def on_change_rate(self, cursor, user, ids, value, context=None):
         if value.get('rate', 0.0) == 0.0:
-            return {'factor': 1.0, 'rate': 1.0}
+            return {'factor': 0.0}
         return {'factor': round(1.0/value['rate'], 6)}
+
+
+    def __init__(self):
+        super(Uom, self).__init__()
+        self._sql_constraints += [
+            ('non_zero_rate_factor', 'CHECK((rate != 0.0) or (factor != 0.0))',
+                'Rate and factor can not be both equal to zero.')
+        ]
+
 
     @staticmethod
     def round(number, precision=1.0):
@@ -150,6 +159,6 @@ class Uom(OSV):
         else:
             new_price = new_price / to_uom.rate
 
-        return new_price        # XXX no rounding ?
+        return new_price
 
 Uom()
