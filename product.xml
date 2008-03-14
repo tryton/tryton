@@ -2,7 +2,7 @@
 <tryton>
     <data>
 
-        <menuitem name="Products"  id="menu_main_product" sequence="1"/>
+        <menuitem name="Product" id="menu_main_product" sequence="1"/>
 
         <record model="ir.ui.view" id="product_view_tree">
             <field name="model">product.product</field>
@@ -12,8 +12,7 @@
                     <tree string="Products">
                         <field name="name" select="1"/>
                         <field name="code" select="1"/>
-                        <field name="list_price" select="2"/>
-                        <field name="list_price_uom"/>
+                        <field name="list_price_uom" select="2"/>
                         <field name="cost_price"/>
                         <field name="type" select="2"/>
                         <field name="category" select="1"/>
