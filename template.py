@@ -23,7 +23,7 @@ class Template(OSV):
     cost_price = fields.Numeric('Cost Price', states=STATES, digits=(12, 2))
     cost_price_method = fields.Selection(
         [("fixed","Fixed Price"),("average","Average Cost Price")],
-        "Cost Method")
+        "Cost Method", required=True)
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
                                   states=STATES,)
     active = fields.Boolean('Active',)
@@ -32,10 +32,10 @@ class Template(OSV):
         return 1
 
     def default_type(self, cursor, user, context=None):
-        return 'consumable'
+        return 'stockable'
 
     def default_cost_price_method(self, cursor, user, context=None):
-        return 'static'
+        return 'fixed'
 
     def get_list_price_uom(self, cursor, user, ids, name, arg, context=None):
         product_uom_obj = self.pool.get('product.uom')
