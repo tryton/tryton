@@ -1,6 +1,13 @@
 "Journal"
 
 from trytond.osv import fields, OSV
+STATES = {
+    'readonly': "state == 'close'",
+}
+_ICONS = {
+    'open': 'STOCK_OPEN',
+    'close': 'STOCK_CLOSE',
+}
 
 
 class Type(OSV):
@@ -66,7 +73,7 @@ class Journal(OSV):
     active = fields.Boolean('Active', select=2)
     type = fields.Selection('get_types', 'Type', required=True)
     view = fields.Many2One('account.journal.view', 'View')
-    centralisation = fields.Boolean('Centralised counterpart')
+    centralised = fields.Boolean('Centralised counterpart')
     update_posted = fields.Boolean('Allow cancelling moves')
     sequence = fields.Many2One('ir.sequence', 'Sequence', required=True,
             domain="[('code', '=', 'account.journal')]")
@@ -101,3 +108,63 @@ class Journal(OSV):
         return res
 
 Journal()
+
+
+class Period(OSV):
+    'Journal - Period'
+    _name = 'account.journal.period'
+    _description = __doc__
+    _order = 'name, id'
+
+    name = fields.Char('Name', size=None, required=True)
+    journal = fields.Many2One('account.journal', 'Journal', required=True,
+            ondelete='CASCADE', states=STATES)
+    period = fields.Many2One('account.period', 'Period', required=True,
+            ondelete='CASCADE', states=STATES)
+    icon = fields.Function('get_icon', string='Icon', type='char')
+    active = fields.Boolean('Active', select=2, states=STATES)
+    state = fields.Selection([
+        ('open', 'Open'),
+        ('close', 'Close'),
+        ], 'State', readonly=True, required=True)
+
+    def __init__(self):
+        super(Period, self).__init__()
+        self._sql_constraints += [
+            ('journal_period_uniq', 'UNIQUE(journal, period)',
+                'You can only open one journal per period!'),
+        ]
+
+    def default_active(self, cursor, user, context=None):
+        return True
+
+    def default_state(self, cursor, user, context=None):
+        return 'open'
+
+    def get_icon(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for period in self.browse(cursor, user, ids, context=context):
+            res[period.id] = _ICONS.get(period.state, '')
+        return res
+
+    def _check(self, cursor, user, ids, context=None):
+        move_obj = self.pool.get('account.move')
+        for period in self.browse(cursor, user, ids, context=context):
+            move_ids = move_line_obj.search(cursor, user, [
+                ('journal', '=', period.journal.id),
+                ('period', '=', period.period.id),
+                ], limit=1, context=context)
+            if move_ids:
+                raise ExceptORM('Error', 'You can not modify/delete ' \
+                        'a journal - period with moves!')
+        return
+
+    def write(self, cursor, user, ids, vals, context=None):
+        self._check(cursor, user, ids, context=context)
+        return super(Period, self).write(cursor, user, ids, vals, context=context)
+
+    def unlink(self, cursor, user, ids, context=None):
+        self._check(cursor, user, ids, context=context)
+        return super(Period, self).unlink(cursor, user, ids, vals, context=context)
+
+Period()

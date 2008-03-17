@@ -183,8 +183,8 @@
                             <field name="credit_account"/>
                             <label name="debit_account"/>
                             <field name="debit_account"/>
-                            <label name="centralisation"/>
-                            <field name="centralisation"/>
+                            <label name="centralised"/>
+                            <field name="centralised"/>
                             <newline/>
                             <label name="update_posted"/>
                             <field name="update_posted"/>
@@ -246,7 +246,7 @@
             <field name="code">account.journal</field>
         </record>
         <record model="ir.sequence" id="sequence_account_journal">
-            <field name="name">Default account journal</field>
+            <field name="name">Default Account Journal</field>
             <field name="code">account.journal</field>
         </record>
         <record model="account.journal" id="journal_revenue">
@@ -272,6 +272,70 @@
             <field name="code">STO</field>
             <field name="type">general</field>
             <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+
+        <record model="ir.ui.view" id="journal_period_view_tree">
+            <field name="model">account.journal.period</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Journals - Periods">
+                    <field name="name" icon="icon"/>
+                    <field name="period"/>
+                    <field name="journal"/>
+                    <field name="state"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_journal_period_tree">
+            <field name="name">Journals - Periods</field>
+            <field name="res_model">account.journal.period</field>
+            <field name="view_type">tree</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_period_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_period_view_tree"/>
+            <field name="act_window" ref="act_journal_period_tree"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_journal_period_tree"
+            id="menu_journal_period_tree"/>
+        <record model="ir.action.act_window" id="act_journal_period_tree2">
+            <field name="name">Open Journals</field>
+            <field name="res_model">account.journal.period</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('state', '!=', 'close')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_period_tree2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_period_view_tree"/>
+            <field name="act_window" ref="act_journal_period_tree2"/>
+        </record>
+        <menuitem parent="menu_entries" action="act_journal_period_tree2"
+            id="menu_journal_period_tree2"/>
+
+        <record model="ir.model.access" id="access_journal_period">
+            <field name="model" search="[('model', '=', 'account.journal.period')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_period_account">
+            <field name="model" search="[('model', '=', 'account.journal.period')]"/>
+            <field name="group" ref="group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_period_account_admin">
+            <field name="model" search="[('model', '=', 'account.journal.period')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
         </record>
     </data>
 </tryton>

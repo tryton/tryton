@@ -17,7 +17,9 @@
                     <field name="end_date"/>
                     <label name="fiscalyear"/>
                     <field name="fiscalyear"/>
-                    <field name="state" colspan="4"/>
+                    <newline/>
+                    <label name="state"/>
+                    <field name="state" colspan="3"/>
                 </form>
                 ]]>
             </field>

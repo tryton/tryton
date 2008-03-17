@@ -10,6 +10,7 @@
         'ir',
         'res',
         'company',
+        'partner',
     ],
     'xml': [
         'account.xml',
@@ -17,5 +18,6 @@
         'fiscalyear.xml',
         'period.xml',
         'journal.xml',
+        'move.xml',
     ],
 }

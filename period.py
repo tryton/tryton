@@ -2,7 +2,7 @@
 
 from trytond.osv import fields, OSV, ExceptORM
 import datetime
-STATES = {
+_STATES = {
     'readonly': "state == 'close'",
 }
 
@@ -15,19 +15,19 @@ class Period(OSV):
 
     name = fields.Char('Name', size=None, required=True)
     code = fields.Char('Code', size=None)
-    start_date = fields.Date('Starting Date', required=True, states=STATES)
-    end_date = fields.Date('Ending Date', required=True, states=STATES)
+    start_date = fields.Date('Starting Date', required=True, states=_STATES)
+    end_date = fields.Date('Ending Date', required=True, states=_STATES)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True, states=STATES)
+            required=True, states=_STATES)
     state = fields.Selection([
         ('open', 'Open'),
         ('close', 'Close'),
-        ], 'State', readonly=True)
+        ], 'State', readonly=True, required=True)
 
     def default_state(self, cursor, user, context=None):
         return 'open'
 
-    def find(self, cursor, user, date, exception=True, context=None):
+    def find(self, cursor, user, date=None, exception=True, context=None):
         '''
         Return the period for the date or the current date.
         If exception is set the function will raise an exception

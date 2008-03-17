@@ -1,6 +1,7 @@
 "Account"
 
 from trytond.osv import fields, OSV
+from trytond.osv.orm import ID_MAX
 
 
 class Type(OSV):
@@ -70,7 +71,7 @@ class Account(OSV):
     def __init__(self):
         super(Account, self).__init__()
         self._constraints += [
-            ('check_recursion',
+            ('check_recursion_parents',
                 'Error! You can not create recursive accounts.', ['parents']),
         ]
 
@@ -90,6 +91,25 @@ class Account(OSV):
 
     def default_close_method(self, cursor, user, context=None):
         return 'balance'
+
+    def check_recursion_parents(self, cursor, user, ids):
+        ids_parent = ids[:]
+        while len(ids_parent):
+            ids_parent2 = []
+            for i in range((len(ids) / ID_MAX) + \
+                    ((len(ids) % ID_MAX) and 1 or 0)):
+                sub_ids_parent = ids_parent[ID_MAX * i:ID_MAX * (i + 1)]
+                cursor.execute('SELECT distinct parent ' \
+                        'FROM account_account_rel ' \
+                        'WHERE child IN ' \
+                            '(' + ','.join([str(x) for x in sub_ids_parent]) + ')')
+                ids_parent2.extend(filter(None,
+                    [x[0] for x in cursor.fetchall()]))
+            ids_parent = ids_parent2
+            for i in ids_parent:
+                if i in ids:
+                    return False
+        return True
 
     def get_currency(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('account.currency')

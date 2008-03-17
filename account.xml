@@ -16,6 +16,10 @@
             id="menu_account_configuration" groups="group_account_admin"/>
         <menuitem name="General Account" parent="menu_account_configuration"
             id="menu_general_account_configuration"/>
+        <menuitem name="Entries" parent="menu_account"
+            id="menu_entries"/>
+        <menuitem name="Reporting" parent="menu_account"
+            id="menu_reporting"/>
 
         <record model="ir.ui.view" id="account_type_view_form">
             <field name="model">account.account.type</field>
@@ -147,6 +151,7 @@
                             <field name="close_method"/>
                             <label name="reconcile"/>
                             <field name="reconcile"/>
+                            <separator name="parents" colspan="4"/>
                             <field name="parents" colspan="4"/>
                         </page>
                         <page string="Notes">
@@ -194,6 +199,7 @@
             <field name="name">Accounts</field>
             <field name="res_model">account.account</field>
             <field name="view_type">tree</field>
+            <field name="domain">[('parents', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_tree_view1">
             <field name="sequence" eval="10"/>
@@ -234,6 +240,44 @@
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="True"/>
+        </record>
+        <record model="account.account" id="account_root">
+            <field name="name">Root</field>
+            <field name="close_method">none</field>
+            <field name="type">view</field>
+            <field name="company" ref="company.main"/>
+        </record>
+        <record model="account.account" id="account_receivable">
+            <field name="name">Main Receivable</field>
+            <field name="type">receivable</field>
+            <field name="company" ref="company.main"/>
+            <field name="reconcile" eval="True"/>
+            <field name="parents" eval="[(4, ref('account_root'))]"/>
+        </record>
+        <record model="account.account" id="account_payable">
+            <field name="name">Main Payable</field>
+            <field name="type">payable</field>
+            <field name="company" ref="company.main"/>
+            <field name="reconcile" eval="True"/>
+            <field name="parents" eval="[(4, ref('account_root'))]"/>
+        </record>
+        <record model="account.account" id="account_income">
+            <field name="name">Main Income</field>
+            <field name="type">income</field>
+            <field name="company" ref="company.main"/>
+            <field name="parents" eval="[(4, ref('account_root'))]"/>
+        </record>
+        <record model="account.account" id="account_expense">
+            <field name="name">Main Expense</field>
+            <field name="type">expense</field>
+            <field name="company" ref="company.main"/>
+            <field name="parents" eval="[(4, ref('account_root'))]"/>
+        </record>
+        <record model="account.account" id="account_cash">
+            <field name="name">Main Cash</field>
+            <field name="type">cash</field>
+            <field name="company" ref="company.main"/>
+            <field name="parents" eval="[(4, ref('account_root'))]"/>
         </record>
     </data>
 </tryton>

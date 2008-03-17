@@ -2,6 +2,7 @@
 
 from trytond.osv import fields, OSV, ExceptOSV
 import time
+from decimal import Decimal
 
 
 class Currency(OSV):
@@ -68,7 +69,7 @@ class Currency(OSV):
 
     def round(self, cursor, user, currency, amount):
         'Round the amount depending of the currency'
-        return round(amount / currency.rounding) * currency.rounding
+        return (amount / currency.rounding).quantize(Decimal('1.')) * currency.rounding
 
     def is_zero(self, cursor, user, currency, amount):
         'Return True if the amount can be considered as zero for the currency'

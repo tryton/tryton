@@ -23,7 +23,7 @@ class FiscalYear(OSV):
     state = fields.Selection([
         ('open', 'Open'),
         ('close', 'Close'),
-        ], 'State', readonly=True)
+        ], 'State', readonly=True, required=True)
 
     def __init__(self):
         super(FiscalYear, self).__init__()

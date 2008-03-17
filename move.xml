@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">account.move</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Move">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="reference"/>
+                    <field name="reference"/>
+                    <label name="period"/>
+                    <field name="period"/>
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="date"/>
+                    <field name="date"/>
+                    <field name="lines" colspan="4"/>
+                    <label name="state"/>
+                    <field name="state"/>
+                    <group col="2" colspan="2">
+                        <button string="Post" name="button_post" type="object"
+                            states="{'invisible': '''state == 'posted' '''}"/>
+                        <button string="Draft" name="button_draft" type="object"
+                            states="{'invisible': '''state == 'draft' '''}"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="move_view_tree">
+            <field name="model">account.move</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Moves">
+                    <field name="name" select="1"/>
+                    <field name="reference" select="1"/>
+                    <field name="period" select="1"/>
+                    <field name="journal" select="1"/>
+                    <field name="date" select="2"/>
+                    <field name="state" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_move_form">
+            <field name="name">Account Moves</field>
+            <field name="res_model">account.move</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <menuitem parent="menu_entries" action="act_move_form"
+            id="menu_move_form"/>
+        <record model="ir.sequence.type" id="sequence_type_account_move">
+            <field name="name">Account Move</field>
+            <field name="code">account.move</field>
+        </record>
+        <record model="ir.sequence" id="sequence_account_move">
+            <field name="name">Default Account Move</field>
+            <field name="code">account.move</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_form">
+            <field name="model">account.move.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Move Line">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="4">
+                        <page string="General Information">
+                            <label name="account"/>
+                            <field name="account"/>
+                            <label name="date"/>
+                            <field name="date"/>
+                            <label name="reference"/>
+                            <field name="reference"/>
+                            <label name="partner"/>
+                            <field name="partner"/>
+                            <label name="journal"/>
+                            <field name="journal"/>
+                            <label name="period"/>
+                            <field name="period"/>
+                            <label name="debit"/>
+                            <field name="debit"/>
+                            <label name="credit"/>
+                            <field name="credit"/>
+                            <separator string="Optional Information" colspan="4"/>
+                            <label name="amount_second_currency"/>
+                            <field name="amount_second_currency"/>
+                            <label name="second_currency"/>
+                            <field name="second_currency"/>
+                            <label name="move"/>
+                            <field name="move" required="0"/>
+                            <newline/>
+                            <label name="maturity_date"/>
+                            <field name="maturity_date"/>
+                            <label name="create_date"/>
+                            <field name="create_date"/>
+                            <label name="blocked"/>
+                            <field name="blocked"/>
+                            <label name="state"/>
+                            <field name="state"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="move_line_view_tree">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Move Lines" editable="top"
+                    on_write="on_write" colors="red:state=='draft'">
+                    <field name="move" select="1" required="0"/>
+                    <field name="name" select="1"/>
+                    <field name="reference" select="2"/>
+                    <field name="date" select="1"/>
+                    <field name="partner" select="2"/>
+                    <field name="account" select="2"/>
+                    <field name="debit" select="2"/>
+                    <field name="credit" select="2"/>
+                    <field name="state" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.wizard" id="act_open_journal">
+            <field name="name">Open Journal</field>
+            <field name="wiz_name">account.move.open_journal</field>
+        </record>
+        <menuitem parent="menu_entries" action="act_open_journal"
+            icon="STOCK_INDENT" id="menu_open_journal"/>
+    </data>
+</tryton>

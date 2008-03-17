@@ -145,5 +145,8 @@
             <field name="code">CHF</field>
             <field name="rounding" eval="0.01"/>
         </record>
+        <record model="company.company" id="company.main">
+            <field name="currency" ref="eur"/>
+        </record>
     </data>
 </tryton>
