@@ -22,7 +22,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Partners">
+                <form string="Partner">
                     <label name="name"/>
                     <field name="name" xexpand="1"/>
                     <label name="active"/>
@@ -82,7 +82,7 @@
             <field name="view" ref="partner_view_tree"/>
             <field name="act_window" ref="act_partner_form2"/>
         </record>
-        <menuitem name="New Partner" parent="menu_partner_form"
+        <menuitem name="New Partner" parent="menu_partner_form" sequence="1"
             action="act_partner_form2" id="menu_partner_form2"/>
         <record model="ir.action.act_window" id="act_partner_by_category">
             <field name="name">Partners by Category</field>
@@ -106,5 +106,49 @@
             <field name="model">partner.partner,0</field>
             <field name="action" ref="report_label"/>
         </record>
+
+
+
+        <record model="ir.ui.view" id="partner_type_view_tree">
+            <field name="model">partner.partner.type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Partner types">
+                    <field name="name" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="partner_type_view_form">
+            <field name="model">partner.partner.type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Partner type">
+                    <label name="name"/>
+                    <field name="name"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_partner_type_form">
+            <field name="name">Partner types</field>
+            <field name="res_model">partner.partner.type</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_partner_type_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="partner_type_view_tree"/>
+            <field name="act_window" ref="act_partner_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_partner_type_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="partner_type_view_form"/>
+            <field name="act_window" ref="act_partner_type_form"/>
+        </record>
+        <menuitem name="Partner types" parent="menu_partner_form" sequence="2"
+            action="act_partner_type_form" id="menu_partner_type_form"/>
+
     </data>
 </tryton>
