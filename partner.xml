@@ -104,5 +104,9 @@
             <field name="model">partner.partner,0</field>
             <field name="action" ref="report_label"/>
         </record>
+        <record model="partner.partner" id="main">
+            <field name="name">B2CK</field>
+            <field name="website">http://www.b2ck.com/</field>
+        </record>
     </data>
 </tryton>
