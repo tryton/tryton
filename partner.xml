@@ -38,6 +38,8 @@
                                     <field name="active"/>
                                 </tree>
                             </field>
+                            <label name="type"/>
+                            <field name="type" select="2"/>
                             <label name="lang"/>
                             <field name="lang" widget="selection"/>
                             <separator string="Categories" colspan="4"/>
