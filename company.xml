@@ -114,5 +114,9 @@
                 ]]>
             </field>
         </record>
+        <record model="company.company" id="main">
+            <field name="name">B2CK</field>
+            <field name="partner" ref="partner.main"/>
+        </record>
     </data>
 </tryton>
