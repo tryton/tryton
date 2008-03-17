@@ -209,11 +209,14 @@ class Line(OSV):
     move = fields.Many2One('account.move', 'Move', states=_LINE_STATES,
             select=1, required=True)
     journal = fields.Function('get_move_field', fnct_inv='set_move_field',
-            type='many2one', relation='account.journal', string='Journal')
+            type='many2one', relation='account.journal', string='Journal',
+            fnct_search='search_move_field')
     period = fields.Function('get_move_field', fnct_inv='set_move_field',
-            type='many2one', relation='account.period', string='Period')
+            type='many2one', relation='account.period', string='Period',
+            fnct_search='search_move_field')
     date = fields.Function('get_move_field', fnct_inv='set_move_field',
-            type='date', string='Effective Date', required=True)
+            type='date', string='Effective Date', required=True,
+            fnct_search='search_move_field')
     reference = fields.char('Reference', size=None)
     amount_second_currency = fields.Numeric('Amount Second Currency',
             digits=(16, 2), help='The amount expressed in a second currency')
@@ -383,6 +386,14 @@ class Line(OSV):
             name: value,
             }, context=context)
 
+    def search_move_field(cursor, user, obj, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            args2.append(('move.' + args[i][0], args[i][1], args[i][2]))
+            i += 1
+        return args2
+
     def query_get(self, cursor, user, obj='l', context=None):
         '''
         Return SQL clause for account move line.
@@ -421,9 +432,12 @@ class Line(OSV):
                             ')' \
                         ')'
 
-    def on_write(self, cursor, user, id, context=None):
-        line = self.browse(cursor, user, id, context)
-        return [x.id for x in line.move.lines]
+    def on_write(self, cursor, user, ids, context=None):
+        lines = self.browse(cursor, user, ids, context)
+        res = []
+        for line in lines:
+            res.extend([x.id for x in line.move.lines])
+        return list({}.fromkeys(res))
 
     def check_account(self, cursor, user, ids):
         for line in self.browse(cursor, user, ids):
@@ -610,6 +624,12 @@ class OpenJournal(Wizard):
     states = {
         'init': {
             'result': {
+                'type': 'choice',
+                'next_state': '_next',
+            },
+        },
+        'ask': {
+            'result': {
                 'type': 'form',
                 'object': 'account.move.open_journal.init',
                 'state': [
@@ -627,17 +647,44 @@ class OpenJournal(Wizard):
         },
     }
 
+    def _next(self, cursor, user, data, context=None):
+        if data.get('model', '') == 'account.journal.period' \
+                and data.get('id'):
+            return 'open'
+        return 'ask'
+
+    def _get_journal_period(self, cursor, user, data, context=None):
+        journal_period_obj = self.pool.get('account.journal.period')
+        if data.get('model', '') == 'account.journal.period' \
+                and data.get('id'):
+            journal_period = journal_period_obj.browse(cursor, user,
+                    data['id'], context=context)
+            return {
+                'journal': journal_period.journal.id,
+                'period': journal_period.period.id,
+            }
+        return {}
+
     def _action_open_journal(self, cursor, user, data, context=None):
         journal_period_obj = self.pool.get('account.journal.period')
         journal_obj = self.pool.get('account.journal')
         period_obj = self.pool.get('account.period')
+        if data.get('model', '') == 'account.journal.period' \
+                and data.get('id'):
+            journal_period = journal_period_obj.browse(cursor, user,
+                    data['id'], context=context)
+            journal_id = journal_period.journal.id
+            period_id = journal_period.period.id
+        else:
+            journal_id = data['form']['journal']
+            period_id = data['form']['period']
         if not journal_period_obj.search(cursor, user, [
-            ('journal', '=', data['form']['journal']),
-            ('period', '=', data['form']['period']),
+            ('journal', '=', journal_id),
+            ('period', '=', period_id),
             ], context=context):
-            journal = journal_obj.browse(cursor, user, data['form']['journal'],
+            journal = journal_obj.browse(cursor, user, journal_id,
                     context=context)
-            period = period_obj.browse(cursor, user, data['form']['period'],
+            period = period_obj.browse(cursor, user, period_id,
                     context=context)
             journal_period_obj.create(cursor, user, {
                 'name': journal.name + ' - ' + period.name,
@@ -646,16 +693,16 @@ class OpenJournal(Wizard):
                 }, context=context)
         return {
             'domain': str([
-                ('journal', '=', data['form']['journal']),
-                ('period', '=', data['form']['period']),
+                ('journal', '=', journal_id),
+                ('period', '=', period_id),
                 ]),
             'view_type': 'form',
             'view_mode': 'tree,form',
             'res_model': 'account.move.line',
             'type': 'ir.action.act_window',
             'context': str({
-                'journal': data['form']['journal'],
-                'period': data['form']['period'],
+                'journal': journal_id,
+                'period': period_id,
             }),
         }
 

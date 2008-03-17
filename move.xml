@@ -146,6 +146,11 @@
             <field name="name">Open Journal</field>
             <field name="wiz_name">account.move.open_journal</field>
         </record>
+        <record model="ir.action.keyword" id="act_open_journal_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.journal.period,0</field>
+            <field name="action" ref="act_open_journal"/>
+        </record>
         <menuitem parent="menu_entries" action="act_open_journal"
             icon="STOCK_INDENT" id="menu_open_journal"/>
     </data>
