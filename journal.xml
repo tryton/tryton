@@ -274,16 +274,36 @@
             <field name="sequence" ref="sequence_account_journal"/>
         </record>
 
+        <record model="ir.ui.view" id="journal_period_view_form">
+            <field name="model">account.journal.period</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Journal - Period">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <label name="period"/>
+                    <field name="period"/>
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="state"/>
+                    <field name="state" colspan="3"/>
+                </form>
+                ]]>
+            </field>
+        </record>
         <record model="ir.ui.view" id="journal_period_view_tree">
             <field name="model">account.journal.period</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Journals - Periods">
-                    <field name="name" icon="icon"/>
-                    <field name="period"/>
-                    <field name="journal"/>
-                    <field name="state"/>
+                    <field name="name" icon="icon" select="1"/>
+                    <field name="period" select="1"/>
+                    <field name="journal" select="1"/>
+                    <field name="state" select="2"/>
                 </tree>
                 ]]>
             </field>
