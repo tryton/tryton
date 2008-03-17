@@ -107,8 +107,6 @@
             <field name="action" ref="report_label"/>
         </record>
 
-
-
         <record model="ir.ui.view" id="partner_type_view_tree">
             <field name="model">partner.partner.type</field>
             <field name="type">tree</field>
@@ -150,5 +148,9 @@
         <menuitem name="Partner types" parent="menu_partner_form" sequence="2"
             action="act_partner_type_form" id="menu_partner_type_form"/>
 
+        <record model="partner.partner" id="main">
+            <field name="name">B2CK</field>
+            <field name="website">http://www.b2ck.com/</field>
+        </record>
     </data>
 </tryton>
