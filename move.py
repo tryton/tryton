@@ -347,12 +347,25 @@ class Line(OSV):
 
     def on_change_partner(self, cursor, user, ids, vals, context=None):
         partner_obj = self.pool.get('partner.partner')
+        journal_obj = self.pool.get('account.journal')
+        account_obj = self.pool.get('account.account')
+        res = {}
         if (not vals.get('partner')) or vals.get('account'):
-            return {}
+            return res
         partner = partner_obj.browse(cursor, user, vals.get('partner'),
                 context=context)
-        #TODO add property on partner
-        return {}
+        #TODO add debit/credit, account for partner, account not reconciled
+        journal_id = vals.get('journal') or context.get('journal')
+        if journal_id and partner:
+            journal = journal_obj.browse(cursor, user, journal_id,
+                    context=context)
+            if journal.type == 'revenue':
+                res.setdefault('account', account_obj.name_get(cursor, user,
+                        partner.account_receivable.id, context=context)[0])
+            elif journal.type == 'expense':
+                res.setdefault('account', account_obj.name_get(cursor, user,
+                        partner.account_payable.id, context=context)[0])
+        return res
 
     def get_move_field(self, cursor, user, ids, name, arg, context=None):
         if name not in ('period', 'journal', 'date'):

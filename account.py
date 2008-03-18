@@ -327,3 +327,17 @@ class OpenChartAccount(Wizard):
         return res
 
 OpenChartAccount()
+
+
+class Partner(OSV):
+    _name = 'partner.partner'
+    account_payable = fields.Property('account.account', type='many2one',
+            relation='account.account', string='Account Payable',
+            group_name='Accounting Properties', view_load=True,
+            domain="[('type', '=', 'payable')]", required=True)
+    account_receivable = fields.Property('account.account', type='many2one',
+            relation='account.account', string='Account Receivable',
+            group_name='Accounting Properties', view_load=True,
+            domain="[('type', '=', 'receivable')]", required=True)
+
+Partner()

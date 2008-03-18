@@ -298,5 +298,19 @@
             <field name="company" ref="company.main"/>
             <field name="parents" eval="[(4, ref('account_root'))]"/>
         </record>
+        <record model="ir.property" id="property_account_receivable">
+            <field name="name">account_receivable</field>
+            <field name="field"
+                search="[('model.model', '=', 'partner.partner'), ('name', '=', 'account_receivable')]"/>
+            <field name="value" eval="'account.account,' + str(ref('account_receivable'))"/>
+            <field name="company" ref="company.main"/>
+        </record>
+        <record model="ir.property" id="property_account_payable">
+            <field name="name">account_payable</field>
+            <field name="field"
+                search="[('model.model', '=', 'partner.partner'), ('name', '=', 'account_payable')]"/>
+            <field name="value" eval="'account.account,' + str(ref('account_payable'))"/>
+            <field name="company" ref="company.main"/>
+        </record>
     </data>
 </tryton>
