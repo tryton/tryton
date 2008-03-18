@@ -112,7 +112,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Partner types">
+                <tree string="Partner Types">
                     <field name="name" select="1"/>
                 </tree>
                 ]]>
@@ -123,7 +123,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Partner type">
+                <form string="Partner Type">
                     <label name="name"/>
                     <field name="name"/>
                 </form>
@@ -131,7 +131,7 @@
             </field>
         </record>
         <record model="ir.action.act_window" id="act_partner_type_form">
-            <field name="name">Partner types</field>
+            <field name="name">Partner Types</field>
             <field name="res_model">partner.partner.type</field>
             <field name="view_type">form</field>
         </record>
@@ -145,7 +145,7 @@
             <field name="view" ref="partner_type_view_form"/>
             <field name="act_window" ref="act_partner_type_form"/>
         </record>
-        <menuitem name="Partner types" parent="menu_partner_form" sequence="2"
+        <menuitem  parent="menu_partner_form" sequence="2"
             action="act_partner_type_form" id="menu_partner_type_form"/>
 
         <record model="partner.partner" id="main">
