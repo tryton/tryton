@@ -400,7 +400,7 @@ class Line(OSV):
             name: value,
             }, context=context)
 
-    def search_move_field(cursor, user, obj, name, args, context=None):
+    def search_move_field(self, cursor, user, name, args, context=None):
         args2 = []
         i = 0
         while i < len(args):
@@ -771,3 +771,113 @@ class OpenAccount(Wizard):
         return res
 
 OpenAccount()
+
+
+class Partner(OSV):
+    _name = 'partner.partner'
+    receivable = fields.Function('get_receivable_payable',
+            fnct_search='search_receivable_payable', string='Receivable')
+    payable = fields.Function('get_receivable_payable',
+            fnct_search='search_receivable_payable', string='Payable')
+
+    def get_receivable_payable(self, cursor, user_id, ids, name, arg,
+            context=None):
+        res = {}
+        move_line_obj = self.pool.get('account.move.line')
+        company_obj = self.pool.get('company.company')
+        user_obj = self.pool.get('res.user')
+
+        if context is None:
+            context = {}
+
+        if name not in ('receivable', 'payable'):
+            raise Exception('Bad argument')
+
+        for i in ids:
+            res[i] = Decimal('0.0')
+
+        company_id = None
+        user = user_obj.browse(cursor, user_id, user_id, context=context)
+        if context.get('company'):
+            child_company_ids = company_obj.search(cursor, user_id, [
+                ('parent', 'child_of', [user.main_company.id]),
+                ], context=context)
+            if context['company'] in child_company_ids:
+                company_id = context['company']
+
+        if not company_id:
+            company_id = user.company.id or user.main_company.id
+
+        if not company_id:
+            return res
+
+        line_query = move_line_obj.query_get(cursor, user_id, context=context)
+
+        cursor.execute('SELECT l.partner, ' \
+                    'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
+                'FROM account_move_line AS l, ' \
+                    'account_account AS a ' \
+                'WHERE a.id = l.account ' \
+                    'AND a.active ' \
+                    'AND a.type = %s ' \
+                    'AND l.partner IN ' \
+                        '(' + ','.join(['%s' for x in ids]) + ') ' \
+        #TODO add reconcile clause
+                    'AND ' + line_query + ' ' \
+                    'AND a.company = %s ' \
+                'GROUP BY l.partner', (name,) + tuple(ids) + (company_id,))
+        for partner_id, sum in cursor.fetchall():
+            res[partner_id] = sum
+        return res
+
+    def search_receivable_payable(self, cursor, user_id, name, args,
+            context=None):
+        if not len(args):
+            return []
+        move_line_obj = self.pool.get('account.move.line')
+        company_obj = self.pool.get('company.company')
+        user_obj = self.pool.get('res.user')
+
+        if context is None:
+            context = {}
+
+        if name not in ('receivable', 'payable'):
+            raise Exception('Bad argument')
+
+        company_id = None
+        user = user_obj.browse(cursor, user_id, user_id, context=context)
+        if context.get('company'):
+            child_company_ids = company_obj.search(cursor, user_id, [
+                ('parent', 'child_of', [user.main_company.id]),
+                ], context=context)
+            if context['company'] in child_company_ids:
+                company_id = context['company']
+
+        if not company_id:
+            company_id = user.company.id or user.main_company.id
+
+        if not company_id:
+            return []
+
+        line_query = move_line_obj.query_get(cursor, user_id, context=context)
+
+        cursor.execute('SELECT l.partner ' \
+                'FROM account_move_line AS l, ' \
+                    'account_account AS a ' \
+                'WHERE a.id = l.account ' \
+                    'AND a.active ' \
+                    'AND a.type = %s ' \
+                    'AND l.partner IS NOT NULL ' \
+        #TODO add reconcile clause
+                    'AND ' + line_query + ' ' \
+                    'AND a.company = %s ' \
+                'GROUP BY l.partner ' \
+                'HAVING ' + \
+                    'AND'.join(['(SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
+                        + ' ' + x[1] + ' ' + str(x[2]) + ') ' for x in args]),
+                    (name, company_id))
+        if not cursor.rowcount:
+            return [('id', '=', 0)]
+        return [('id', 'in', [x[0] for x in cursor.fetchall()])]
+
+Partner()

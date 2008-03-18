@@ -177,5 +177,41 @@
         </record>
         <menuitem parent="menu_entries" action="act_open_journal"
             icon="STOCK_INDENT" id="menu_open_journal"/>
+        <record model="ir.ui.view" id="partner_view_tree">
+            <field name="model">partner.partner</field>
+            <field name="inherit" ref="partner.partner_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/tree/field[@name=&quot;vat&quot;]"
+                        position="after">
+                        <field name="receivable" select="2"/>
+                        <field name="payable" select="2"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="partner_view_form">
+            <field name="model">partner.partner</field>
+            <field name="inherit" ref="partner.partner_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@string=&quot;General&quot;]"
+                        position="after">
+                        <page string="Accounting">
+                            <label name="receivable"/>
+                            <field name="receivable"/>
+                            <label name="payable"/>
+                            <field name="payable"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
     </data>
 </tryton>
