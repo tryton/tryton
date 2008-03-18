@@ -607,8 +607,8 @@ class Line(OSV):
 Line()
 
 
-class OpenJournalInit(WizardOSV):
-    _name = 'account.move.open_journal.init'
+class OpenJournalAsk(WizardOSV):
+    _name = 'account.move.open_journal.ask'
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     period = fields.Many2One('account.period', 'Period', required=True)
 
@@ -616,7 +616,7 @@ class OpenJournalInit(WizardOSV):
         period_obj = self.pool.get('account.period')
         return period_obj.find(cursor, user, exception=False, context=context)
 
-OpenJournalInit()
+OpenJournalAsk()
 
 
 class OpenJournal(Wizard):
@@ -632,7 +632,7 @@ class OpenJournal(Wizard):
         'ask': {
             'result': {
                 'type': 'form',
-                'object': 'account.move.open_journal.init',
+                'object': 'account.move.open_journal.ask',
                 'state': [
                     ('end', 'Cancel', 'gtk-cancel'),
                     ('open', 'Open', 'gtk-ok', True),
