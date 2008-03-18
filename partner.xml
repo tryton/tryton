@@ -45,6 +45,9 @@
                             <separator string="Categories" colspan="4"/>
                             <field name="categories" colspan="4"/>
                         </page>
+                        <page string="Properties">
+                            <properties/>
+                        </page>
                     </notebook>
                 </form>
                 ]]>
