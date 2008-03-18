@@ -321,7 +321,7 @@
         <menuitem parent="menu_reporting" action="act_journal_period_tree"
             id="menu_journal_period_tree"/>
         <record model="ir.action.act_window" id="act_journal_period_tree2">
-            <field name="name">Open Journals</field>
+            <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
             <field name="view_type">tree</field>
             <field name="domain">[('state', '!=', 'close')]</field>
