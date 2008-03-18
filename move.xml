@@ -142,6 +142,30 @@
                 ]]>
             </field>
         </record>
+        <record model="ir.action.act_window" id="act_move_line_form">
+            <field name="name">Account Move Lines</field>
+            <field name="res_model">account.move.line</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_line_view_tree"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_line_view_form"/>
+            <field name="act_window" ref="act_move_line_form"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_account">
+            <field name="name">Open Move Account</field>
+            <field name="wiz_name">account.move.open_account</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_account_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.account,0</field>
+            <field name="action" ref="act_open_account"/>
+        </record>
         <record model="ir.action.wizard" id="act_open_journal">
             <field name="name">Open Journal</field>
             <field name="wiz_name">account.move.open_journal</field>

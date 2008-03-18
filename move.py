@@ -708,3 +708,53 @@ class OpenJournal(Wizard):
         }
 
 OpenJournal()
+
+
+class OpenAccount(Wizard):
+    'Open Account'
+    _name = 'account.move.open_account'
+    states = {
+        'init': {
+            'result': {
+                'type': 'action',
+                'action': '_action_open_account',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_open_account(self, cursor, user, data, context=None):
+        if context is None:
+            context = {}
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+        fiscalyear_obj = self.pool.get('account.fiscalyear')
+
+        if not context.get('fiscalyear'):
+            fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
+                ('state', '=', 'open'),
+                ], context=context)
+        else:
+            fiscalyear_ids = [context['fiscalyear']]
+
+        period_ids = []
+        for fiscalyear in fiscalyear_obj.browse(cursor, user, fiscalyear_ids,
+                context=context):
+            for period in fiscalyear.periods:
+                period_ids.append(period.id)
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_move_line_form'),
+            ('module', '=', 'account'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res['domain'] = str([
+            ('period', 'in', period_ids),
+            ('account', '=', data['id']),
+            ])
+        res['context'] = str({'fiscalyear': context.get('fiscalyear')})
+        return res
+
+OpenAccount()
