@@ -17,6 +17,7 @@ class Move(OSV):
     'Account Move'
     _name = 'account.move'
     _description = __doc__
+    _order = 'id DESC'
 
     name = fields.Char('Name', size=None, required=True)
     reference = fields.Char('Reference', size=None, readonly=True)
