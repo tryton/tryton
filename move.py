@@ -587,9 +587,9 @@ class Line(OSV):
                 fields.append(column.field.name)
                 attrs = []
                 if column.field.name == 'debit':
-                    attrs.append('sum="Total debit"')
+                    attrs.append('sum="Debit"')
                 elif column.field.name == 'credit':
-                    attrs.append('sum="Total credit"')
+                    attrs.append('sum="Credit"')
                 if column.readonly:
                     attrs.append('readonly="1"')
                 if column.required:

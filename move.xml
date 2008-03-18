@@ -135,8 +135,8 @@
                     <field name="date" select="1"/>
                     <field name="partner" select="2"/>
                     <field name="account" select="2"/>
-                    <field name="debit" select="2"/>
-                    <field name="credit" select="2"/>
+                    <field name="debit" select="2" sum="Debit"/>
+                    <field name="credit" select="2" sum="Credit"/>
                     <field name="state" select="2"/>
                 </tree>
                 ]]>
