@@ -18,6 +18,8 @@
             id="menu_general_account_configuration"/>
         <menuitem name="Entries" parent="menu_account"
             id="menu_entries"/>
+        <menuitem name="Charts" parent="menu_account"
+            id="menu_charts"/>
         <menuitem name="Reporting" parent="menu_account"
             id="menu_reporting"/>
 
@@ -226,6 +228,23 @@
                 ]]>
             </field>
         </record>
+        <record model="ir.action.act_window" id="act_account_tree2">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parents', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree2"/>
+            <field name="act_window" ref="act_account_tree2"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_chart_account">
+            <field name="name">Open Chart of Account</field>
+            <field name="wiz_name">account.account.open_chart_account</field>
+        </record>
+        <menuitem parent="menu_charts" action="act_open_chart_account"
+            icon="STOCK_INDENT" id="menu_open_chart_account"/>
         <record model="ir.model.access" id="access_account">
             <field name="model" search="[('model', '=', 'account.account')]"/>
             <field name="perm_read" eval="True"/>

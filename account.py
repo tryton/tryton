@@ -2,6 +2,8 @@
 
 from trytond.osv import fields, OSV
 from trytond.osv.orm import ID_MAX
+from trytond.wizard import Wizard, WizardOSV
+from decimal import Decimal
 
 
 class Type(OSV):
@@ -145,8 +147,7 @@ class Account(OSV):
         all_ids = {}.fromkeys(ids + child_ids).keys()
         line_query = move_line_obj.query_get(cursor, user, context=context)
         cursor.execute('SELECT a.id, ' \
-                    'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))), ' \
-                    'a.company ' \
+                    'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
                 'FROM account_account a ' \
                     'LEFT JOIN account_move_line l ' \
                     'ON (a.id = l.account) ' \
@@ -155,21 +156,20 @@ class Account(OSV):
                         ','.join([str(x) for x in all_ids]) + ') ' \
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
-                'GROUP BY a.id, a.company')
-        account2company = {}
+                'GROUP BY a.id')
         account_sum = {}
-        for account_id, sum, company_id in cursor.fetchall():
+        for account_id, sum in cursor.fetchall():
             account_sum[account_id] = sum
-            account2company[account_id] = company_id
 
-        companies = company_obj.browse(cursor, user,
-                {}.fromkeys(account2company.values()).keys(), context=context)
+        account2company = {}
         id2company = {}
-        for company in companies:
-            id2company[company.id] = company
+        accounts = self.browse(cursor, user, all_ids, context=context)
+        for account in accounts:
+            account2company[account.id] = account.company.id
+            id2company[account.company.id] = account.company
 
         for account_id in ids:
-            res.setdefault(account_id, 0.0)
+            res.setdefault(account_id, Decimal('0.0'))
             child_ids = self.search(cursor, user, [
                 ('parents', 'child_of', [account_id]),
                 ], context=context)
@@ -177,9 +177,9 @@ class Account(OSV):
             to_currency = id2company[company_id].currency
             for child_id in child_ids:
                 child_company_id = account2company[child_id]
-                from_currency = account2company[child_company_id].currency
+                from_currency = id2company[child_company_id].currency
                 res[account_id] += currency_obj.compute(cursor, user,
-                        from_currency, account_sum.get(child_id, 0.0),
+                        from_currency, account_sum.get(child_id, Decimal('0.0')),
                         to_currency, round=True, context=context)
             res[account_id] = currency_obj.round(cursor, user, to_currency,
                     res[account_id])
@@ -196,8 +196,7 @@ class Account(OSV):
 
         line_query = move_line_obj.query_get(cursor, user, context=context)
         cursor.execute('SELECT a.id, ' \
-                    'SUM(COALESCE(l.' + name + ', 0)), ' \
-                    'a.company ' \
+                    'SUM(COALESCE(l.' + name + ', 0)) ' \
                 'FROM account_account a ' \
                     'LEFT JOIN account_move_line l ' \
                     'ON (a.id = l.account) ' \
@@ -207,19 +206,18 @@ class Account(OSV):
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
                 'GROUP BY a.id')
-        account2company = {}
-        for account_id, sum, company_id in cursor.fetchall():
+        for account_id, sum in cursor.fetchall():
             res[account_id] = sum
-            account2company[account_id] = company_id
 
-        companies = company_obj.browse(cursor, user,
-                {}.fromkeys(account2company.values()).keys(), context=context)
+        account2company = {}
         id2company = {}
-        for company in companies:
-            id2company[company.id] = company
+        accounts = self.browse(cursor, user, ids, context=context)
+        for account in accounts:
+            account2company[account.id] = account.company.id
+            id2company[account.company.id] = account.company
 
         for account_id in ids:
-            res.setdefault(account_id, 0.0)
+            res.setdefault(account_id, Decimal('0.0'))
             company_id = account2company[account_id]
             currency = id2company[company_id].currency
             res[account_id] = currency_obj.round(cursor, user, currency,
@@ -281,3 +279,51 @@ class Account(OSV):
                 context=context)
 
 Account()
+
+
+class OpenChartAccountInit(WizardOSV):
+    _name = 'account.account.open_chart_account.init'
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+            help='Keep empty for all open fiscal year')
+
+OpenChartAccountInit()
+
+
+class OpenChartAccount(Wizard):
+    'Open Chart Of Account'
+    _name = 'account.account.open_chart_account'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.account.open_chart_account.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('open', 'Open', 'gtk-ok', True),
+                ],
+            },
+        },
+        'open': {
+            'result': {
+                'type': 'action',
+                'action': '_action_open_chart',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_open_chart(self, cursor, user, data, context=None):
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_account_tree2'),
+            ('module', '=', 'account'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res['context'] = str({'fiscalyear': data['form']['fiscalyear']})
+        return res
+
+OpenChartAccount()
