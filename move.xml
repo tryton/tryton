@@ -72,6 +72,39 @@
             <field name="code">account.move</field>
         </record>
 
+        <record model="ir.ui.view" id="move_reconciliation_view_form">
+            <field name="model">account.move.reconciliation</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Reconciliation" col="2">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <field name="lines" colspan="2"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="move_reconciliation_view_tree">
+            <field name="model">account.move.reconciliation</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Reconciliations">
+                    <field name="name" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_move_reconciliation">
+            <field name="name">Account Move Reconciliation</field>
+            <field name="code">account.move.reconciliation</field>
+        </record>
+        <record model="ir.sequence" id="sequence_account_move_reconciliation">
+            <field name="name">Default Account Move Reconciliation</field>
+            <field name="code">account.move.reconciliation</field>
+        </record>
+
         <record model="ir.ui.view" id="move_line_view_form">
             <field name="model">account.move.line</field>
             <field name="type">form</field>
@@ -107,7 +140,8 @@
                             <field name="second_currency"/>
                             <label name="move"/>
                             <field name="move" required="0"/>
-                            <newline/>
+                            <label name="reconciliation"/>
+                            <field name="reconciliation"/>
                             <label name="maturity_date"/>
                             <field name="maturity_date"/>
                             <label name="create_date"/>
@@ -137,6 +171,7 @@
                     <field name="account" select="2"/>
                     <field name="debit" select="2" sum="Debit"/>
                     <field name="credit" select="2" sum="Credit"/>
+                    <field name="reconciliation" select="2"/>
                     <field name="state" select="2"/>
                 </tree>
                 ]]>
@@ -177,6 +212,40 @@
         </record>
         <menuitem parent="menu_entries" action="act_open_journal"
             icon="STOCK_INDENT" id="menu_open_journal"/>
+
+        <record model="ir.ui.view" id="reconcile_lines_writeoff_view_form">
+            <field name="model">account.move.reconcile_lines.writeoff</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Write-Off">
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="period"/>
+                    <field name="period"/>
+                    <label name="account"/>
+                    <field name="account"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.wizard" id="act_reconcile_lines">
+            <field name="name">Reconcile Lines</field>
+            <field name="wiz_name">account.move.reconcile_lines</field>
+        </record>
+        <record model="ir.action.keyword" id="act_reconcile_lines_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move.line,0</field>
+            <field name="action" ref="act_reconcile_lines"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_reconcile_lines">
+            <field name="name">Open Reconcile Lines</field>
+            <field name="wiz_name">account.move.open_reconcile_lines</field>
+        </record>
+        <menuitem name="Reconcile Lines" parent="menu_entries"
+            action="act_open_reconcile_lines" icon="STOCK_JUSTIFY_FILL"
+            id="menu_open_reconcile_lines"/>
+
         <record model="ir.ui.view" id="partner_view_tree">
             <field name="model">partner.partner</field>
             <field name="inherit" ref="partner.partner_view_tree"/>

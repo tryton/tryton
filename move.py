@@ -4,6 +4,7 @@ from trytond.osv import fields, OSV, ExceptORM
 from trytond.wizard import Wizard, WizardOSV
 from decimal import Decimal
 import datetime
+from trytond.netsvc import LocalService
 
 _MOVE_STATES = {
     'readonly': "state == 'posted'",
@@ -195,6 +196,57 @@ class Move(OSV):
 Move()
 
 
+class Reconciliation(OSV):
+    'Account Move Reconciliation Lines'
+    _name = 'account.move.reconciliation'
+
+    name = fields.Char('Name', size=None, required=True)
+    lines = fields.One2Many('account.move.line', 'reconciliation',
+            'Lines')
+
+    def __init__(self):
+        super(Reconciliation, self).__init__()
+        self._constraints += [
+            ('check_lines', 'You can not create reconciliation \n' \
+                    'where lines are not balanced, not valid, \n' \
+                    'not in the same account!',
+                    ['lines']),
+        ]
+
+    def default_name(self, cursor, user, context=None):
+        sequence_obj = self.pool.get('ir.sequence')
+        return sequence_obj.get(cursor, user, 'account.move.reconciliation')
+
+    def create(self, cursor, user, vals, context=None):
+        workflow_service = LocalService('workflow')
+        res = super(Reconciliation, self).create(cursor, user, vals, context=context)
+        reconciliation = self.browse(cursor, user, res, context=context)
+        for line in reconciliation.lines:
+            workflow_service.trg_trigger(user, 'account.move.line', line.id,
+                    cursor)
+        return res
+
+    def check_lines(self, cursor, user, ids):
+        currency_obj = self.pool.get('account.currency')
+        for reconciliation in self.browse(cursor, user, ids):
+            amount = Decimal('0.0')
+            account = None
+            for line in reconciliation.lines:
+                if line.state != 'valid':
+                    return False
+                amount += line.debit - line.credit
+                if not account:
+                    account = line.account
+                elif account.id != line.account.id:
+                    return False
+            if not currency_obj.is_zero(cursor, user, account.company.currency,
+                    amount):
+                return False
+        return True
+
+Reconciliation()
+
+
 class Line(OSV):
     'Account Move Line'
     _name = 'account.move.line'
@@ -236,7 +288,8 @@ class Line(OSV):
         ('valid', 'Valid'),
         ], 'State', readonly=True, required=True)
     active = fields.Boolean('Active', select=2)
-    #TODO add reconcile
+    reconciliation = fields.Many2One('account.move.reconciliation',
+            'Reconciliation', readonly=True, ondelete='SET NULL', select=2)
 
     def __init__(self):
         super(Line, self).__init__()
@@ -349,12 +402,68 @@ class Line(OSV):
         partner_obj = self.pool.get('partner.partner')
         journal_obj = self.pool.get('account.journal')
         account_obj = self.pool.get('account.account')
+        currency_obj = self.pool.get('account.currency')
         res = {}
         if (not vals.get('partner')) or vals.get('account'):
             return res
         partner = partner_obj.browse(cursor, user, vals.get('partner'),
                 context=context)
-        #TODO add debit/credit, account for partner, account not reconciled
+
+        if partner and (not vals.get('debit')) and (not vals.get('credit')):
+            query = 'SELECT ' \
+                        'COALESCE(SUM(' \
+                            '(COALESCE(debit, 0) - COALESCE(credit, 0))' \
+                        '), 0)::NUMERIC ' \
+                    'FROM account_move_line ' \
+                    'WHERE reconciliation IS NULL ' \
+                        'AND partner = %s ' \
+                        'AND account = %s'
+            cursor.execute(query, (partner.id, partner.account_receivable.id))
+            amount = cursor.fetchone()[0]
+            if not currency_obj.is_zero(cursor, user,
+                    partner.account_receivable.currency, amount):
+                if amount > 0:
+                    res['credit'] = currency_obj.round(cursor, user,
+                            partner.account_receivable.currency, amount)
+                    res['debit'] = Decimal('0.0')
+                else:
+                    res['credit'] = Decimal('0.0')
+                    res['debit'] = - currency_obj.round(cursor, user,
+                            partner.account_receivable.currency, amount)
+                res['account'] = account_obj.name_get(cursor, user,
+                        partner.account_receivable.id, context=context)[0]
+            else:
+                cursor.execute(query, (partner.id, partner.account_payable.id))
+                amount = cursor.fetchone()[0]
+                if not currency_obj.is_zero(cursor, user,
+                        partner.account_payable.currency, amount):
+                    if amount > 0:
+                        res['credit'] = currency_obj.round(cursor, user,
+                                partner.account_payable.currency, amount)
+                        res['debit'] = Decimal('0.0')
+                    else:
+                        res['credit'] = Decimal('0.0')
+                        res['debit'] = - currency_obj.round(cursor, user,
+                                partner.account_payable.currency, amount)
+                    res['account'] = account_obj.name_get(cursor, user,
+                            partner.account_payable.id, context=context)[0]
+
+        if partner and vals.get('debit'):
+            if vals['debit'] > 0:
+                res.setdefault('account', account_obj.name_get(cursor, user,
+                    partner.account_receivable.id, context=context)[0])
+            else:
+                res.setdefault('account', account_obj.name_get(cursor, user,
+                    partner.account_payable.id, context=context)[0])
+
+        if partner and vals.get('credit'):
+            if vals['credit'] > 0:
+                res.setdefault('account', account_obj.name_get(cursor, user,
+                    partner.account_payable.id, context=context)[0])
+            else:
+                res.setdefault('account', account_obj.name_get(cursor, user,
+                    partner.account_receivable.id, context=context)[0])
+
         journal_id = vals.get('journal') or context.get('journal')
         if journal_id and partner:
             journal = journal_obj.browse(cursor, user, journal_id,
@@ -502,7 +611,9 @@ class Line(OSV):
             if line.move.state == 'posted':
                 raise ExceptORM('UserError',
                         'You can not modify line from a posted move!')
-            #TODO add reconcile
+            if line.reconciliation:
+                raise ExceptORM('UserError',
+                        'You can not modify reconciled line!')
             journal_period = (line.journal.id, line.period.id)
             if journal_period not in journal_period_done:
                 self.check_journal_period_modify(cursor, user, line.period.id,
@@ -616,6 +727,49 @@ class Line(OSV):
                     context=context)
             #TODO add hexmd5
         return result
+
+    def reconcile(self, cursor, user, ids, journal_id=False, period_id=False,
+            account_id=False, context=None):
+        move_obj = self.pool.get('account.move')
+        currency_obj = self.pool.get('account.currency')
+        reconciliation_obj = self.pool.get('account.move.reconciliation')
+        ids = ids[:]
+        if journal_id and period_id and account_id:
+            account = None
+            amount = Decimal('0.0')
+            for line in self.browse(cursor, user, ids, context=context):
+                amount += line.debit - line.credit
+                if not account:
+                    account = line.account
+            amount = currency_obj.round(cursor, user, account.currency, amount)
+            move_id = move_obj.create(cursor, user, {
+                'journal': journal_id,
+                'period': period_id,
+                'date': datetime.date.today(),
+                'lines': [
+                    (0, 0, {
+                        'name': 'Write-Off',
+                        'account': account.id,
+                        'debit': amount < 0 and -amount or Decimal('0.0'),
+                        'credit': amount > 0 and amount or Decimal('0.0'),
+                    }),
+                    (0, 0, {
+                        'name': 'Write-Off',
+                        'account': account_id,
+                        'debit': amount > 0 and amount or Decimal('0.0'),
+                        'credit': amount < 0 and - amount or Decimal('0.0'),
+                    }),
+                ],
+                }, context=context)
+            ids += self.search(cursor, user, [
+                ('move', '=', move_id),
+                ('account', '=', account.id),
+                ('debit', '=', amount < 0 and -amount or Decimal('0.0')),
+                ('credit', '=', amount > 0 and amount or Decimal('0.0')),
+                ], limit=1, context=context)
+        return reconciliation_obj.create(cursor, user, {
+            'lines': [(4, x) for x in ids],
+            }, context=context)
 
 Line()
 
@@ -773,6 +927,134 @@ class OpenAccount(Wizard):
 OpenAccount()
 
 
+class ReconcileLinesWriteOff(WizardOSV):
+    'Reconcile Lines Write-Off'
+    _name = 'account.move.reconcile_lines.writeoff'
+    journal = fields.Many2One('account.journal', 'Journal', required=True)
+    period = fields.Many2One('account.period', 'Period', required=True)
+    account = fields.Many2One('account.account', 'Account', required=True,
+            domain=[('type', '!=', 'view'), ('type', '!=', 'closed')])
+
+    def default_period(self, cursor, user, context=None):
+        period_obj = self.pool.get('account.period')
+        return period_obj.find(cursor, user, exception=False, context=context)
+
+ReconcileLinesWriteOff()
+
+
+class ReconcileLines(Wizard):
+    'Reconcile Lines'
+    _name = 'account.move.reconcile_lines'
+    states = {
+        'init': {
+            'result': {
+                'type': 'choice',
+                'next_state': '_check_writeoff',
+            },
+        },
+        'writeoff': {
+            'result': {
+                'type': 'form',
+                'object': 'account.move.reconcile_lines.writeoff',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('reconcile', 'Reconcile', 'gtk-ok', True),
+                ],
+            },
+        },
+        'reconcile': {
+            'actions': ['_reconcile'],
+            'result': {
+                'type': 'state',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _check_writeoff(self, cursor, user, data, context=None):
+        line_obj = self.pool.get('account.move.line')
+        currency_obj = self.pool.get('account.currency')
+
+        company = None
+        amount = Decimal('0.0')
+        for line in line_obj.browse(cursor, user, data['ids'],
+                context=context):
+            amount += line.debit - line.credit
+            if not company:
+                company = line.account.company
+        if currency_obj.is_zero(cursor, user, company.currency, amount):
+            return 'reconcile'
+        return 'writeoff'
+
+    def _reconcile(self, cursor, user, data, context=None):
+        line_obj = self.pool.get('account.move.line')
+
+        if data['form']:
+            journal_id = data['form'].get('journal')
+            period_id = data['form'].get('period')
+            account_id = data['form'].get('account')
+        else:
+            journal_id = False
+            period_id = False
+            account_id = False
+        line_obj.reconcile(cursor, user, data['ids'], journal_id, period_id,
+                account_id, context=context)
+        return {}
+
+ReconcileLines()
+
+
+class OpenReconcileLinesInit(WizardOSV):
+    _name = 'account.move.open_reconcile_lines.init'
+    account = fields.Many2One('account.account', 'Account', required=True,
+            domain=[('type', '!=', 'view'), ('reconcile', '=', True)])
+
+OpenReconcileLinesInit()
+
+
+class OpenReconcileLines(Wizard):
+    'Open Reconcile Lines'
+    _name = 'account.move.open_reconcile_lines'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.move.open_reconcile_lines.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('open', 'Open', 'gtk-ok', True),
+                ],
+            },
+        },
+        'open': {
+            'result': {
+                'type': 'action',
+                'action': '_action_open_reconcile_lines',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_open_reconcile_lines(self, cursor, user, data, context=None):
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_move_line_form'),
+            ('module', '=', 'account'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res['domain'] = str([
+            ('account', '=', data['form']['account']),
+            ('reconciliation', '=', False),
+            ])
+        return res
+
+OpenReconcileLines()
+
+
 class Partner(OSV):
     _name = 'partner.partner'
     receivable = fields.Function('get_receivable_payable',
@@ -822,7 +1104,7 @@ class Partner(OSV):
                     'AND a.type = %s ' \
                     'AND l.partner IN ' \
                         '(' + ','.join(['%s' for x in ids]) + ') ' \
-        #TODO add reconcile clause
+                    'AND l.reconciliation IS NULL ' \
                     'AND ' + line_query + ' ' \
                     'AND a.company = %s ' \
                 'GROUP BY l.partner', (name,) + tuple(ids) + (company_id,))
@@ -868,7 +1150,7 @@ class Partner(OSV):
                     'AND a.active ' \
                     'AND a.type = %s ' \
                     'AND l.partner IS NOT NULL ' \
-        #TODO add reconcile clause
+                    'AND l.reconciliation IS NOT NULL ' \
                     'AND ' + line_query + ' ' \
                     'AND a.company = %s ' \
                 'GROUP BY l.partner ' \
