@@ -209,7 +209,7 @@ class Reconciliation(OSV):
         self._constraints += [
             ('check_lines', 'You can not create reconciliation \n' \
                     'where lines are not balanced, not valid, \n' \
-                    'not in the same account!',
+                    'not in the same account, not in account to reconcile!',
                     ['lines']),
         ]
 
@@ -238,6 +238,8 @@ class Reconciliation(OSV):
                 if not account:
                     account = line.account
                 elif account.id != line.account.id:
+                    return False
+                if not account.reconcile:
                     return False
             if not currency_obj.is_zero(cursor, user, account.company.currency,
                     amount):
