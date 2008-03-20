@@ -299,6 +299,29 @@
             <field name="model">account.move.line,0</field>
             <field name="action" ref="act_reconcile_lines"/>
         </record>
+
+        <record model="ir.ui.view" id="unreconcile_lines_init_view_form">
+            <field name="model">account.move.unreconcile_lines.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Unreconcile" col="2">
+                    <image name="gtk-dialog-info"/>
+                    <label string="If you unreconcile lines, the workflows, on those lines, will not be canceled."/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.wizard" id="act_unreconcile_lines">
+            <field name="name">Unreconcile Lines</field>
+            <field name="wiz_name">account.move.unreconcile_lines</field>
+        </record>
+        <record model="ir.action.keyword" id="act_unreconcile_lines_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move.line,0</field>
+            <field name="action" ref="act_unreconcile_lines"/>
+        </record>
+
         <record model="ir.action.wizard" id="act_open_reconcile_lines">
             <field name="name">Open Reconcile Lines</field>
             <field name="wiz_name">account.move.open_reconcile_lines</field>

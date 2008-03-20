@@ -207,9 +207,9 @@ class Reconciliation(OSV):
     def __init__(self):
         super(Reconciliation, self).__init__()
         self._constraints += [
-            ('check_lines', 'You can not create reconciliation \n' \
-                    'where lines are not balanced, not valid, \n' \
-                    'not in the same account, not in account to reconcile!',
+            ('check_lines', 'You can not create reconciliation ' \
+                    'where lines are not balanced, nor valid, ' \
+                    'nor in the same account, nor in account to reconcile!',
                     ['lines']),
         ]
 
@@ -225,6 +225,9 @@ class Reconciliation(OSV):
             workflow_service.trg_trigger(user, 'account.move.line', line.id,
                     cursor)
         return res
+
+    def write(self, cursor, user, ids, vals, context=None):
+        raise ExceptORM('UserError', 'You can not modify a reconciliation!')
 
     def check_lines(self, cursor, user, ids):
         currency_obj = self.pool.get('account.currency')
@@ -1004,6 +1007,51 @@ class ReconcileLines(Wizard):
         return {}
 
 ReconcileLines()
+
+
+class UnreconcileLinesInit(WizardOSV):
+    'Unreconcile Lines Init'
+    _name = 'account.move.unreconcile_lines.init'
+
+UnreconcileLinesInit()
+
+
+class UnreconcileLines(Wizard):
+    'Unreconcile Lines'
+    _name = 'account.move.unreconcile_lines'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.move.unreconcile_lines.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('unreconcile', 'Unreconcile', 'gtk-ok', True),
+                ],
+            },
+        },
+        'unreconcile': {
+            'actions': ['_unreconcile'],
+            'result': {
+                'type': 'state',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _unreconcile(self, cursor, user, data, context=None):
+        line_obj = self.pool.get('account.move.line')
+        reconciliation_obj = self.pool.get('account.move.reconciliation')
+
+        lines = line_obj.browse(cursor, user, data['ids'], context=context)
+        reconciliation_ids = [x.reconciliation.id for x in lines \
+                if x.reconciliation]
+        if reconciliation_ids:
+            reconciliation_obj.unlink(cursor, user, reconciliation_ids,
+                    context=context)
+        return {}
+
+UnreconcileLines()
 
 
 class OpenReconcileLinesInit(WizardOSV):
