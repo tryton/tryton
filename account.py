@@ -31,7 +31,7 @@ class Account(OSV):
     'Account'
     _name = 'account.account'
     _description = __doc__
-    _order = 'code'
+    _order = 'code, id'
     _parent_name = 'parents'
 
     name = fields.Char('Name', size=None, required=True, translate=True,
@@ -153,10 +153,10 @@ class Account(OSV):
                     'ON (a.id = l.account) ' \
                 'WHERE a.type != \'view\' ' \
                     'AND a.id IN (' + \
-                        ','.join([str(x) for x in all_ids]) + ') ' \
+                        ','.join(['%s' for x in all_ids]) + ') ' \
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
-                'GROUP BY a.id')
+                'GROUP BY a.id', all_ids)
         account_sum = {}
         for account_id, sum in cursor.fetchall():
             account_sum[account_id] = sum
@@ -202,10 +202,10 @@ class Account(OSV):
                     'ON (a.id = l.account) ' \
                 'WHERE a.type != \'view\' ' \
                     'AND a.id IN (' + \
-                        ','.join([str(x) for x in ids]) + ') ' \
+                        ','.join(['%s' for x in ids]) + ') ' \
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
-                'GROUP BY a.id')
+                'GROUP BY a.id', ids)
         for account_id, sum in cursor.fetchall():
             res[account_id] = sum
 
