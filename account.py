@@ -334,10 +334,12 @@ class Partner(OSV):
     account_payable = fields.Property('account.account', type='many2one',
             relation='account.account', string='Account Payable',
             group_name='Accounting Properties', view_load=True,
-            domain="[('type', '=', 'payable')]", required=True)
+            domain="[('type', '=', 'payable'), ('company', '=', company)]",
+            required=True)
     account_receivable = fields.Property('account.account', type='many2one',
             relation='account.account', string='Account Receivable',
             group_name='Accounting Properties', view_load=True,
-            domain="[('type', '=', 'receivable')]", required=True)
+            domain="[('type', '=', 'receivable'), ('company', '=', company)]",
+            required=True)
 
 Partner()
