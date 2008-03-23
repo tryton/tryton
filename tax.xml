@@ -1,0 +1,302 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <menuitem name="Taxes" parent="menu_account_configuration"
+            id="menu_taxes"/>
+
+        <record model="ir.ui.view" id="tax_code_view_form">
+            <field name="model">account.tax.code</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Tax Code" col="6">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
+                    <field name="childs" colspan="6"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="tax_code_view_tree">
+            <field name="model">account.tax.code</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Tax Codes">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="company" select="1"/>
+                    <field name="active" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_tax_code_form">
+            <field name="name">Tax Codes</field>
+            <field name="res_model">account.tax.code</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_code_view_tree"/>
+            <field name="act_window" ref="act_tax_code_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_code_view_form"/>
+            <field name="act_window" ref="act_tax_code_form"/>
+        </record>
+        <menuitem parent="menu_taxes" action="act_tax_code_form"
+            id="menu_tax_code_form"/>
+        <record model="ir.action.act_window" id="act_tax_code_tree">
+            <field name="name">Tax Codes</field>
+            <field name="res_model">account.tax.code</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_code_view_tree"/>
+            <field name="act_window" ref="act_tax_code_tree"/>
+        </record>
+        <menuitem parent="menu_tax_code_form" action="act_tax_code_tree"
+            id="menu_tax_code_tree"/>
+        <record model="ir.ui.view" id="tax_code_view_tree2">
+            <field name="model">account.tax.code</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Tax Codes">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="sum"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_tax_code_tree2">
+            <field name="name">Tax Codes</field>
+            <field name="res_model">account.tax.code</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('company', '=', company), ('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_tree2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_code_view_tree2"/>
+            <field name="act_window" ref="act_tax_code_tree2"/>
+        </record>
+        <record model="ir.ui.view" id="open_chart_code_init">
+            <field name="model">account.tax.open_chart_code.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Chart Of Tax Code" col="1">
+                    <field name="method"/>
+                    <field name="fiscalyear"/>
+                    <field name="periods"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.wizard" id="act_open_chart_code">
+            <field name="name">Open Chart of Tax Code</field>
+            <field name="wiz_name">account.tax.open_chart_code</field>
+        </record>
+        <menuitem parent="menu_charts" action="act_open_chart_code"
+            icon="STOCK_INDENT" id="menu_open_chart_code"/>
+
+        <record model="ir.ui.view" id="tax_view_form">
+            <field name="model">account.tax</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Tax">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <field name="parent" invisible="1" colspan="4"/>
+                    <notebook colspan="4">
+                        <page string="General Information">
+                            <label name="group"/>
+                            <field name="group" widget="selection"/>
+                            <label name="sequence"/>
+                            <field name="sequence"/>
+                            <label name="type"/>
+                            <field name="type"/>
+                            <group col="1">
+                                <label name="amount" fill="1" xexpand="1"/>
+                                <label name="percentage" fill="1" xexpand="1"/>
+                            </group>
+                            <group col="1">
+                                <field name="amount"/>
+                                <field name="percentage"/>
+                            </group>
+                            <label name="company"/>
+                            <field name="company"/>
+                            <newline/>
+                            <label name="invoice_account"/>
+                            <field name="invoice_account"/>
+                            <newline/>
+                            <label name="refund_account"/>
+                            <field name="refund_account"/>
+                            <newline/>
+                            <field name="childs" colspan="4" sequence="sequence">
+                                <tree string="Taxes" sequence="sequence">
+                                    <field name="name" select="1"/>
+                                    <field name="type" select="1"/>
+                                    <field name="active" select="2"/>
+                                    <field name="sequence" tree_invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Code">
+                            <separator string="Invoice" colspan="4"/>
+                            <label name="invoice_base_code"/>
+                            <field name="invoice_base_code"/>
+                            <label name="invoice_base_sign"/>
+                            <field name="invoice_base_sign"/>
+                            <label name="invoice_tax_code"/>
+                            <field name="invoice_tax_code"/>
+                            <label name="invoice_tax_sign"/>
+                            <field name="invoice_tax_sign"/>
+                            <separator string="Refund" colspan="4"/>
+                            <label name="refund_base_code"/>
+                            <field name="refund_base_code"/>
+                            <label name="refund_base_sign"/>
+                            <field name="refund_base_sign"/>
+                            <label name="refund_tax_code"/>
+                            <field name="refund_tax_code"/>
+                            <label name="refund_tax_sign"/>
+                            <field name="refund_tax_sign"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="tax_view_tree">
+            <field name="model">account.tax</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Taxes" sequence="sequence">
+                    <field name="name" select="1"/>
+                    <field name="group" select="1"/>
+                    <field name="type" select="1"/>
+                    <field name="active" select="2"/>
+                    <field name="sequence" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_tax_form">
+            <field name="name">Taxes</field>
+            <field name="res_model">account.tax</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('company', '=', company), ('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_view_tree"/>
+            <field name="act_window" ref="act_tax_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_view_form"/>
+            <field name="act_window" ref="act_tax_form"/>
+        </record>
+        <menuitem parent="menu_taxes" action="act_tax_form"
+            id="menu_tax_form"/>
+        <record model="ir.action.act_window" id="act_tax_tree">
+            <field name="name">Taxes</field>
+            <field name="res_model">account.tax</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('company', '=', company), ('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_view_tree"/>
+            <field name="act_window" ref="act_tax_tree"/>
+        </record>
+        <menuitem parent="menu_tax_form" action="act_tax_tree"
+            id="menu_tax_tree"/>
+
+        <record model="account.tax.group" id="tax_group_none">
+            <field name="name">None</field>
+            <field name="code">none</field>
+        </record>
+        <record model="account.tax.group" id="tax_group_vat">
+            <field name="name">VAT</field>
+            <field name="code">vat</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_line_view_form">
+            <field name="model">account.tax.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Tax Line">
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="tax_line_view_tree">
+            <field name="model">account.tax.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Tax Lines" editable="bottom">
+                    <field name="amount" select="1"/>
+                    <field name="code" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_tax_line_form">
+            <field name="name">Tax Lines</field>
+            <field name="res_model">account.tax.line</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_line_view_tree"/>
+            <field name="act_window" ref="act_tax_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_line_view_form"/>
+            <field name="act_window" ref="act_tax_line_form"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_tax_code">
+            <field name="name">Open Tax Code</field>
+            <field name="wiz_name">account.tax.open_code</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_tax_code_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.tax.code,0</field>
+            <field name="action" ref="act_open_tax_code"/>
+        </record>
+
+        <record model="ir.property" id="property_tax_vat">
+            <field name="name">tax_vat</field>
+            <field name="field"
+                search="[('model.model', '=', 'partner.partner'), ('name', '=', 'tax_vat')]"/>
+        </record>
+    </data>
+</tryton>

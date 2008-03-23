@@ -155,6 +155,8 @@
                             <field name="reconcile"/>
                             <separator name="parents" colspan="4"/>
                             <field name="parents" colspan="4"/>
+                            <separator name="taxes" colspan="4"/>
+                            <field name="taxes" colspan="4"/>
                         </page>
                         <page string="Notes">
                             <field name="note"/>

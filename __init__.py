@@ -30,3 +30,4 @@ from fiscalyear import *
 from period import *
 from journal import *
 from move import *
+from tax import *

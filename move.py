@@ -151,9 +151,6 @@ class Move(OSV):
                     [x.id for x in draft_lines], {
                         'state': 'valid',
                         }, context=context)
-            if move.journal.type not in ('expense', 'revenue'):
-                continue
-            #TODO compute tax
         return
 
     def post(self, cursor, user, ids, context=None):
@@ -295,6 +292,7 @@ class Line(OSV):
     active = fields.Boolean('Active', select=2)
     reconciliation = fields.Many2One('account.move.reconciliation',
             'Reconciliation', readonly=True, ondelete='SET NULL', select=2)
+    tax_lines = fields.One2Many('account.tax.line', 'move_line', 'Tax Lines')
 
     def __init__(self):
         super(Line, self).__init__()
@@ -543,11 +541,7 @@ class Line(OSV):
                     'AND ' + obj + '.state != \'draft\' ' \
                     'AND ' + obj + '.move IN (' \
                         'SELECT id FROM account_move ' \
-                            'WHERE period IN (' \
-                                'SELECT id FROM account_period ' \
-                                'WHERE fiscalyear IN (' + fiscalyear_clause + ') ' \
-                                    'AND id IN (' + ids + ')' \
-                            ')' \
+                            'WHERE period IN (' + ids + ')' \
                         ')'
         else:
             return obj + '.active ' \
@@ -661,7 +655,7 @@ class Line(OSV):
             journal = journal_obj.browse(cursor, user, journal_id,
                     context=context)
             if journal.centralised:
-                #TODO journalised
+                #TODO centralised
                 raise Exception('Not implemented')
             else:
                 vals['move'] = move_obj.create(cursor, user, {

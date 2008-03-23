@@ -19,5 +19,6 @@
         'period.xml',
         'journal.xml',
         'move.xml',
+        'tax.xml',
     ],
 }

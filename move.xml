@@ -180,6 +180,7 @@
                             <label name="credit"/>
                             <field name="credit"/>
                             <separator string="Optional Information" colspan="4"/>
+                            <field name="tax_lines" colspan="4"/>
                             <label name="amount_second_currency"/>
                             <field name="amount_second_currency"/>
                             <label name="second_currency"/>
@@ -217,6 +218,7 @@
                     <field name="account" select="2"/>
                     <field name="debit" select="2" sum="Debit"/>
                     <field name="credit" select="2" sum="Credit"/>
+                    <field name="tax_lines"/>
                     <field name="reconciliation" select="2"/>
                     <field name="state" select="2"/>
                 </tree>
