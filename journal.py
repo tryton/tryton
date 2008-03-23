@@ -53,7 +53,7 @@ class Column(OSV):
 
     def default_sequence(self, cursor, user, context=None):
         cursor.execute('SELECT MAX(sequence) ' \
-                'FROM ' + self._table)
+                'FROM "' + self._table+'"')
         res = cursor.fetchone()
         if res:
             return res[0]
