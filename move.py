@@ -256,11 +256,17 @@ class Line(OSV):
     _order = 'id DESC'
 
     name = fields.Char('Name', size=None, required=True)
-    debit = fields.Numeric('Debit', digits=(16, 2))
-    credit = fields.Numeric('Credit', digits=(16, 2))
+    debit = fields.Numeric('Debit', digits=(16, 2),
+            on_change=['account', 'debit', 'credit', 'tax_lines',
+                'journal', 'move'])
+    credit = fields.Numeric('Credit', digits=(16, 2),
+            on_change=['account', 'debit', 'credit', 'tax_lines',
+                'journal', 'move'])
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('type', '!=', 'view'), ('type', '!=', 'closed')],
-            select=1)
+            select=1,
+            on_change=['account', 'debit', 'credit', 'tax_lines',
+                'journal', 'move'])
     move = fields.Many2One('account.move', 'Move', states=_LINE_STATES,
             select=1, required=True)
     journal = fields.Function('get_move_field', fnct_inv='set_move_field',
@@ -346,6 +352,9 @@ class Line(OSV):
         if context is None:
             context = {}
         move_obj = self.pool.get('account.move')
+        tax_obj = self.pool.get('account.tax')
+        account_obj = self.pool.get('account.account')
+        tax_code_obj = self.pool.get('account.tax.code')
         values = super(Line, self).default_get(cursor, user, fields,
                 context=context)
 
@@ -370,6 +379,8 @@ class Line(OSV):
 
         move = move_obj.browse(cursor, user, values['move'], context=context)
         total = Decimal('0.0')
+        taxes = {}
+        no_code_taxes = []
         for line in move.lines:
             total += line.debit - line.credit
             if line.partner and 'partner' in fields:
@@ -378,7 +389,40 @@ class Line(OSV):
                 values.setdefault('reference', line.reference)
             if 'name' in fields:
                 values.setdefault('name', line.name)
-            #TODO taxes
+            if move.journal.type in ('expense', 'revenue'):
+                line_code_taxes = [x.code.id for x in line.tax_lines]
+                for tax in line.account.taxes:
+                    if move.journal.type == 'revenue':
+                        if line.debit:
+                            base_id = tax.refund_base_code.id
+                            code_id = tax.refund_tax_code.id
+                            account_id = tax.refund_account.id
+                        else:
+                            base_id = tax.invoice_base_code.id
+                            code_id = tax.invoice_tax_code.id
+                            account_id = tax.invoice_account.id
+                    else:
+                        if line.debit:
+                            base_id = tax.invoice_base_code.id
+                            code_id = tax.invoice_tax_code.id
+                            account_id = tax.invoice_account.id
+                        else:
+                            base_id = tax.refund_base_code.id
+                            code_id = tax.refund_tax_code.id
+                            account_id = tax.refund_account.id
+                    if not account_id:
+                        account_id = line.account.id
+                    if base_id in line_code_taxes or not base_id:
+                        taxes.setdefault((account_id, code_id), False)
+                for tax_line in line.tax_lines:
+                    taxes[(line.account.id, tax_line.code.id)] = True
+                if not line.tax_lines and line.account.taxes:
+                    if line.account.id in no_code_taxes:
+                        taxes[(line.account.id, False)] = True
+                    else:
+                        no_code_taxes.append(line.account.id)
+                elif not line.tax_lines:
+                    taxes[(line.account.id, False)] = True
 
         if 'account' in fields:
             if total >= 0.0:
@@ -387,19 +431,158 @@ class Line(OSV):
             else:
                 values.setdefault('account', move.journal.debit_account \
                         and move.journal.debit_account.id or False)
-            if values['account']:
-                #TODO add taxes code
-                pass
 
-        if move.journal.type in ('expense', 'revenue'):
-            #TODO taxes
-            pass
-
-        #Compute last line
         if ('debit' in fields) or ('credit' in fields):
             values.setdefault('debit',  total < 0 and - total or False)
             values.setdefault('credit', total > 0 and total or False)
+
+        if move.journal.type in ('expense', 'revenue'):
+            for account_id, code_id in taxes:
+                if taxes[(account_id, code_id)]:
+                    continue
+                for line in move.lines:
+                    if move.journal.type == 'revenue':
+                        if line.debit:
+                            key = 'refund'
+                        else:
+                            key = 'invoice'
+                    else:
+                        if line.debit:
+                            key = 'invoice'
+                        else:
+                            key = 'refund'
+                    line_amount = Decimal('0.0')
+                    tax_amount = Decimal('0.0')
+                    for tax_line in tax_obj.compute(cursor, user,
+                            [x.id for x in line.account.taxes],
+                            line.debit or line.credit, 1, context=context):
+                        if (tax_line['tax'][key + '_account'].id \
+                                or line.account.id) == account_id \
+                            and tax_line['tax'][key + '_tax_code'].id \
+                                    == code_id:
+                            if line.debit:
+                                line_amount += tax_line['amount']
+                            else:
+                                line_amount -= tax_line['amount']
+                            tax_amount += tax_line['amount'] * \
+                                    tax_line['tax'][key + '_tax_sign']
+                    if ('debit' in fields):
+                        values['debit'] = line_amount > 0 and line_amount \
+                                or Decimal('0.0')
+                    if ('credit' in fields):
+                        values['credit'] = line_amount < 0 and - line_amount \
+                                or Decimal('0.0')
+                    if 'account' in fields:
+                        values['account'] = account_obj.name_get(cursor, user,
+                                account_id, context=context)[0]
+                    if 'tax_lines' in fields and code_id:
+                        values['tax_lines'] = [
+                            {
+                                'amount': tax_amount,
+                                'code': tax_code_obj.name_get(cursor, user,
+                                    code_id, context=context)[0],
+                            },
+                        ]
         return values
+
+    def on_change_debit(self, cursor, user, ids, vals, context=None):
+        res = {}
+        if context is None:
+            context = {}
+        journal_obj = self.pool.get('account.journal')
+        if vals.get('journal', context.get('journal')):
+            journal = journal_obj.browse(cursor, user,
+                    vals.get('journal', context.get('journal')),
+                    context=context)
+            if journal.type in ('expense', 'revenue'):
+                res['tax_lines'] = self._compute_tax_lines(cursor, user,
+                        ids, vals, journal.type, context=context)
+                if not res['tax_lines']:
+                    del res['tax_lines']
+        if vals.get('debit'):
+            res['credit'] = Decimal('0.0')
+        return res
+
+    def on_change_credit(self, cursor, user, ids, vals, context=None):
+        res = {}
+        if context is None:
+            context = {}
+        journal_obj = self.pool.get('account.journal')
+        if vals.get('journal', context.get('journal')):
+            journal = journal_obj.browse(cursor, user,
+                    vals.get('journal', context.get('journal')),
+                    context=context)
+            if journal.type in ('expense', 'revenue'):
+                res['tax_lines'] = self._compute_tax_lines(cursor, user,
+                        ids, vals, journal.type, context=context)
+                if not res['tax_lines']:
+                    del res['tax_lines']
+        if vals.get('credit'):
+            res['debit'] = Decimal('0.0')
+        return res
+
+    def on_change_account(self, cursor, user, ids, vals, context=None):
+        res = {}
+        if context is None:
+            context = {}
+        journal_obj = self.pool.get('account.journal')
+        if context.get('journal'):
+            journal = journal_obj.browse(cursor, user,
+                    context['journal'], context=context)
+            if journal.type in ('expense', 'revenue'):
+                res['tax_lines'] = self._compute_tax_lines(cursor, user,
+                        ids, vals, journal.type, context=context)
+                if not res['tax_lines']:
+                    del res['tax_lines']
+        return res
+
+    def _compute_tax_lines(self, cursor, user, ids, vals, journal_type,
+            context=None):
+        res = {}
+        account_obj = self.pool.get('account.account')
+        tax_code_obj = self.pool.get('account.tax.code')
+        tax_obj = self.pool.get('account.tax')
+        move_obj = self.pool.get('account.move')
+        if vals.get('move'):
+            #Only for first line
+            return res
+        if ids:
+            line = self.browse(cursor, user, ids[0], context=context)
+            if line.tax_lines:
+                res['remove'] = [x.id for x in line.tax_lines]
+        if vals.get('account'):
+            account = account_obj.browse(cursor, user, vals['account'],
+                    context=context)
+            debit = vals.get('debit', Decimal('0.0'))
+            credit = vals.get('credit', Decimal('0.0'))
+            for tax in account.taxes:
+                if journal_type == 'revenue':
+                    if debit:
+                        key = 'refund'
+                    else:
+                        key = 'invoice'
+                else:
+                    if debit:
+                        key = 'invoice'
+                    else:
+                        key = 'refund'
+                base_amounts = {}
+                for tax_line in tax_obj.compute(cursor, user,
+                        [x.id for x in account.taxes],
+                        debit or credit, 1, context=context):
+                    code_id = tax_line['tax'][key + '_base_code'].id
+                    base_amounts.setdefault(code_id, Decimal('0.0'))
+                    base_amounts[code_id] += tax_line['base'] * \
+                            tax_line['tax'][key + '_tax_sign']
+                for code_id in base_amounts:
+                    if not code_id:
+                        continue
+                    res.setdefault('add', []).append({
+                        'amount': base_amounts[code_id],
+                        'code': tax_code_obj.name_get(cursor, user,
+                            code_id, context=context)[0],
+                    })
+        return res
 
     def on_change_partner(self, cursor, user, ids, vals, context=None):
         partner_obj = self.pool.get('partner.partner')

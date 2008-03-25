@@ -229,7 +229,7 @@ class Tax(OSV):
                 'readonly': "type == 'none'",
             })
     refund_account = fields.Many2One('account.account', 'Refund Account',
-            domain="[('company', '=', company')]",
+            domain="[('company', '=', company)]",
             help='Keep empty to use the default refund account',
             states={
                 'readonly': "type == 'none'",
@@ -334,7 +334,7 @@ class Tax(OSV):
                 'tax': tax,
             }
 
-    def _unit_compute(cursor, user, taxes, price_unit, context=None):
+    def _unit_compute(self, cursor, user, taxes, price_unit, context=None):
         res = []
         for tax in taxes:
             if tax.type != 'none':
@@ -432,7 +432,7 @@ class Line(OSV):
     amount = fields.Numeric('Amount', digits=(16, 2))
     code = fields.Many2One('account.tax.code', 'Code', select=1, required=True)
     move_line = fields.Many2One('account.move.line', 'Move Line',
-            required=True, select=1)
+            required=True, select=1, ondelete='CASCADE')
 
 Line()
 
