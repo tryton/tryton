@@ -532,7 +532,7 @@ class Line(OSV):
             fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
                 ('state', '=', 'open'),
                 ], context=context)
-            fiscalyear_clause = (','.join([str(x) for x in fiscalyear_ids])) or 'False'
+            fiscalyear_clause = (','.join([str(x) for x in fiscalyear_ids])) or '0'
         else:
             fiscalyear_clause = '%s' % int(context.get('fiscalyear'))
         if context.get('periods', False):
