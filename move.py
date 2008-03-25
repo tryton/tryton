@@ -746,13 +746,13 @@ class Line(OSV):
                 'period': period_id,
                 'date': datetime.date.today(),
                 'lines': [
-                    (0, 0, {
+                    ('create', {
                         'name': 'Write-Off',
                         'account': account.id,
                         'debit': amount < 0 and -amount or Decimal('0.0'),
                         'credit': amount > 0 and amount or Decimal('0.0'),
                     }),
-                    (0, 0, {
+                    ('create', {
                         'name': 'Write-Off',
                         'account': account_id,
                         'debit': amount > 0 and amount or Decimal('0.0'),
@@ -767,7 +767,7 @@ class Line(OSV):
                 ('credit', '=', amount > 0 and amount or Decimal('0.0')),
                 ], limit=1, context=context)
         return reconciliation_obj.create(cursor, user, {
-            'lines': [(4, x) for x in ids],
+            'lines': [('add', x) for x in ids],
             }, context=context)
 
 Line()

@@ -8,7 +8,7 @@
             <field name="name">Account admin</field>
         </record>
         <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[(4, ref('group_account')), (4, ref('group_account_admin'))]"/>
+            <field name="groups" eval="[('add', ref('group_account')), ('add', ref('group_account_admin'))]"/>
         </record>
         <menuitem name="Financial Management" id="menu_account" sequence="2"
             groups="group_account,group_account_admin"/>
@@ -273,32 +273,32 @@
             <field name="type">receivable</field>
             <field name="company" ref="company.main"/>
             <field name="reconcile" eval="True"/>
-            <field name="parents" eval="[(4, ref('account_root'))]"/>
+            <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
         <record model="account.account" id="account_payable">
             <field name="name">Main Payable</field>
             <field name="type">payable</field>
             <field name="company" ref="company.main"/>
             <field name="reconcile" eval="True"/>
-            <field name="parents" eval="[(4, ref('account_root'))]"/>
+            <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
         <record model="account.account" id="account_income">
             <field name="name">Main Income</field>
             <field name="type">income</field>
             <field name="company" ref="company.main"/>
-            <field name="parents" eval="[(4, ref('account_root'))]"/>
+            <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
         <record model="account.account" id="account_expense">
             <field name="name">Main Expense</field>
             <field name="type">expense</field>
             <field name="company" ref="company.main"/>
-            <field name="parents" eval="[(4, ref('account_root'))]"/>
+            <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
         <record model="account.account" id="account_cash">
             <field name="name">Main Cash</field>
             <field name="type">cash</field>
             <field name="company" ref="company.main"/>
-            <field name="parents" eval="[(4, ref('account_root'))]"/>
+            <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
         <record model="ir.property" id="property_account_receivable">
             <field name="name">account_receivable</field>

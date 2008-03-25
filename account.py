@@ -258,7 +258,7 @@ class Account(OSV):
                 new_child_ids.append(
                         self.copy(cursor, user, child.id, default,
                             context=context))
-            default['childs'] = [(6, 0, new_child_ids)]
+            default['childs'] = [('set', new_child_ids)]
         else:
             default['childs'] = False
         return super(Account, self).copy(cursor, user, object_id, default,
