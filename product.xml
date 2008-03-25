@@ -2,6 +2,13 @@
 <tryton>
     <data>
 
+        <record model="res.group" id="group_product_admin">
+            <field name="name">Product administration</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_product_admin'))]"/>
+        </record>
+
         <menuitem name="Product" id="menu_main_product" sequence="1"/>
 
         <record model="ir.ui.view" id="product_view_tree">
@@ -104,14 +111,6 @@
                   sequence="1" id="menu_product_product_new"
                   action="act_product_form2"/>
 
-
-
-        <record model="res.group" id="group_product_admin">
-            <field name="name">Product administration</field>
-        </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[(4, ref('group_product_admin'))]"/>
-        </record>
 
         <record model="ir.model.access" id="access_product">
             <field name="model" search="[('model', '=', 'product.product')]"/>
