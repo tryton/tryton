@@ -114,6 +114,24 @@
                 ]]>
             </field>
         </record>
+
+        <record model="ir.rule.group" id="rule_group_property">
+            <field name="model" search="[('model', '=', 'ir.property')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_property1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'ir.property')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_property"/>
+        </record>
+        <record model="ir.rule" id="rule_property2">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'ir.property')]"/>
+            <field name="operator">=</field>
+            <field name="operand">False</field>
+            <field name="rule_group" ref="rule_group_property"/>
+        </record>
+
         <record model="company.company" id="main">
             <field name="name">B2CK</field>
             <field name="partner" ref="partner.main"/>
