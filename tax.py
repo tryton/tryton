@@ -178,7 +178,7 @@ class OpenChartCode(Wizard):
         if data['form']['method'] == 'fiscalyear':
             res['context'] = str({'fiscalyear': data['form']['fiscalyear']})
         else:
-            res['context'] = str({'periods': data['form']['periods'][0][2]})
+            res['context'] = str({'periods': data['form']['periods'][0][1]})
         return res
 
 OpenChartCode()
