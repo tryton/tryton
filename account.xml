@@ -13,17 +13,18 @@
         <menuitem name="Financial Management" id="menu_account" sequence="2"
             groups="group_account,group_account_admin"/>
         <menuitem name="Configuration" parent="menu_account"
-            id="menu_account_configuration" groups="group_account_admin"/>
+            id="menu_account_configuration" groups="group_account_admin"
+            sequence="10"/>
         <menuitem name="General Account" parent="menu_account_configuration"
             id="menu_general_account_configuration"/>
         <menuitem name="Entries" parent="menu_account"
-            id="menu_entries"/>
+            id="menu_entries" sequence="20"/>
         <menuitem name="Charts" parent="menu_account"
-            id="menu_charts"/>
+            id="menu_charts" sequence="30"/>
         <menuitem name="Processing" parent="menu_account"
-            id="menu_processing"/>
+            id="menu_processing" sequence="40"/>
         <menuitem name="Reporting" parent="menu_account"
-            id="menu_reporting"/>
+            id="menu_reporting" sequence="50"/>
 
         <record model="ir.ui.view" id="account_type_view_form">
             <field name="model">account.account.type</field>
