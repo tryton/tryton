@@ -334,6 +334,44 @@
         <menuitem parent="menu_entries" action="act_journal_period_tree2"
             id="menu_journal_period_tree2"/>
 
+        <record model="ir.action.wizard" id="act_close_journal_period">
+            <field name="name">Close Journals - Periods</field>
+            <field name="wiz_name">account.journal.close_period</field>
+        </record>
+        <record model="ir.action.keyword" id="act_close_journal_period_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.journal.period,0</field>
+            <field name="action" ref="act_close_journal_period"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_reopen_journal_period">
+            <field name="name">Re-Open Journals - Periods</field>
+            <field name="wiz_name">account.journal.reopen_period</field>
+        </record>
+        <record model="ir.action.keyword" id="act_reopen_journal_period_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.journal.period,0</field>
+            <field name="action" ref="act_reopen_journal_period"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_journal_period_form">
+            <field name="name">Journals - Periods</field>
+            <field name="res_model">account.journal.period</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_period_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="journal_period_view_tree"/>
+            <field name="act_window" ref="act_journal_period_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_journal_period_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="journal_period_view_form"/>
+            <field name="act_window" ref="act_journal_period_form"/>
+        </record>
+        <menuitem parent="menu_processing" action="act_journal_period_form"
+            id="menu_journal_period_form" name="Close Journals - Periods"/>
+
         <record model="ir.model.access" id="access_journal_period">
             <field name="model" search="[('model', '=', 'account.journal.period')]"/>
             <field name="perm_read" eval="True"/>

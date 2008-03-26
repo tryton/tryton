@@ -20,6 +20,8 @@
             id="menu_entries"/>
         <menuitem name="Charts" parent="menu_account"
             id="menu_charts"/>
+        <menuitem name="Processing" parent="menu_account"
+            id="menu_processing"/>
         <menuitem name="Reporting" parent="menu_account"
             id="menu_reporting"/>
 

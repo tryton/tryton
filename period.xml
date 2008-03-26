@@ -54,5 +54,26 @@
         </record>
         <menuitem parent="menu_general_account_configuration"
             action="act_period_form" id="menu_period_form"/>
+
+        <record model="ir.action.wizard" id="act_close_period">
+            <field name="name">Close Periods</field>
+            <field name="wiz_name">account.period.close_period</field>
+        </record>
+        <record model="ir.action.keyword" id="act_close_period_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.period,0</field>
+            <field name="action" ref="act_close_period"/>
+        </record>
+        <record model="ir.action.wizard" id="act_reopen_period">
+            <field name="name">Re-Open Periods</field>
+            <field name="wiz_name">account.period.reopen_period</field>
+        </record>
+        <record model="ir.action.keyword" id="act_reopen_period_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.period,0</field>
+            <field name="action" ref="act_reopen_period"/>
+        </record>
+        <menuitem parent="menu_processing" action="act_period_form"
+            id="menu_period_form2" name="Close Periods"/>
     </data>
 </tryton>

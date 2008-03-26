@@ -1,7 +1,9 @@
 'Period'
 
 from trytond.osv import fields, OSV, ExceptORM
+from trytond.wizard import Wizard
 import datetime
+
 _STATES = {
     'readonly': "state == 'close'",
 }
@@ -46,4 +48,98 @@ class Period(OSV):
                 return False
         return ids[0]
 
+    def _check(self, cursor, user, ids, context=None):
+        move_obj = self.pool.get('account.move')
+        move_ids = move_obj.search(cursor, user, [
+            ('period', 'in', ids),
+            ], limit=1, context=context)
+        if move_ids:
+            raise ExceptORM('UserError', 'You can not modify/delete ' \
+                    'a period with moves!')
+        return
+
+    def create(self, cursor, user, vals, context=None):
+        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        if vals.get('fiscalyear'):
+            fiscalyear = fiscalyear_obj.browse(cursor, user, vals['fiscalyear'],
+                    context=context)
+            if fiscalyear.state == 'close':
+                raise ExceptORM('UserError', 'You can not create ' \
+                        'a period on a closed fiscal year!')
+        return super(Period, self).create(cursor, user, vals, context=context)
+
+    def write(self, cursor, user, ids, vals, context=None):
+        if vals != {'state': 'close'} \
+                and vals != {'state': 'open'}:
+            self._check(cursor, user, ids, context=context)
+        if vals.get('state') == 'open':
+            for period in self.browse(cursor, user, ids,
+                    context=context):
+                if period.fiscalyear.state == 'close':
+                    raise ExceptORM('UserError', 'You can not open ' \
+                            'a period from a closed fiscal year!')
+        return super(Period, self).write(cursor, user, ids, vals,
+                context=context)
+
+    def unlink(self, cursor, user, ids, context=None):
+        self._check(cursor, user, ids, context=context)
+        return super(Period, self).unlink(cursor, user, ids, vals,
+                context=context)
+
 Period()
+
+
+class ClosePeriod(Wizard):
+    'Close Period'
+    _name = 'account.period.close_period'
+    states = {
+        'init': {
+            'actions': ['_close'],
+            'result': {
+                'type': 'state',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _close(self, cursor, user, data, context=None):
+        period_obj = self.pool.get('account.period')
+        journal_period_obj = self.pool.get('account.journal.period')
+
+        #First close the period to be sure
+        #it will not have new journal.period created between.
+        period_obj.write(cursor, user, data['ids'], {
+            'state': 'close',
+            }, context=context)
+        journal_period_ids = journal_period_obj.search(cursor, user, [
+            ('period', 'in', data['ids']),
+            ], context=context)
+        journal_period_obj.write(cursor, user, journal_period_ids, {
+            'state': 'close',
+            }, context=context)
+        return {}
+
+ClosePeriod()
+
+
+class ReOpenPeriod(Wizard):
+    'Re-Open Period'
+    _name = 'account.period.reopen_period'
+    states = {
+        'init': {
+            'actions': ['_reopen'],
+            'result': {
+                'type': 'state',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _reopen(self, cursor, user, data, context=None):
+        period_obj = self.pool.get('account.period')
+        period_obj.write(cursor, user, data['ids'], {
+            'state': 'open',
+            }, context=context)
+        return {}
+
+ReOpenPeriod()
