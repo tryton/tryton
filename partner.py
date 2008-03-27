@@ -10,8 +10,7 @@ class PartnerType(OSV):
     _name = 'partner.partner.type'
     _description = __doc__
     _order= 'name'
-    name = fields.Char('Name', required=True, size=64)
-
+    name = fields.Char('Name', required=True, size=None)
 PartnerType()
 
 

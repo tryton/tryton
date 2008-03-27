@@ -39,7 +39,7 @@
                                 </tree>
                             </field>
                             <label name="type"/>
-                            <field name="type" select="2"/>
+                            <field name="type" select="2" widget="selection"/>
                             <label name="lang"/>
                             <field name="lang" widget="selection"/>
                             <separator string="Categories" colspan="4"/>
@@ -151,9 +151,60 @@
         <menuitem  parent="menu_partner_form" sequence="2"
             action="act_partner_type_form" id="menu_partner_type_form"/>
 
+
+        <record model="ir.model.access" id="access_partner_type">
+            <field name="model" search="[('model', '=', 'partner.partner.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_partner_type_admin">
+            <field name="model" search="[('model', '=', 'partner.partner.type')]"/>
+            <field name="group" ref="group_partner_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record model="partner.partner.type" id="type_sprl">
+            <field name="name">SPRL</field>
+        </record>
+        <record model="partner.partner.type" id="type_sa">
+            <field name="name">SA</field>
+        </record>
+        <record model="partner.partner.type" id="type_nv">
+            <field name="name">NV</field>
+        </record>
+        <record model="partner.partner.type" id="type_bvba">
+            <field name="name">BVBA</field>
+        </record>
+        <record model="partner.partner.type" id="type_sarl">
+            <field name="name">SARL</field>
+        </record>
+        <record model="partner.partner.type" id="type_corp">
+            <field name="name">Corp.</field>
+        </record>
+        <record model="partner.partner.type" id="type_inc">
+            <field name="name">Inc.</field>
+        </record>
+        <record model="partner.partner.type" id="type_ltd">
+            <field name="name">Ltd.</field>
+        </record>
+        <record model="partner.partner.type" id="type_co">
+            <field name="name">Co.</field>
+        </record>
+        <record model="partner.partner.type" id="type_ultd">
+            <field name="name">Ultd.</field>
+        </record>
+
+
         <record model="partner.partner" id="main">
             <field name="name">B2CK</field>
             <field name="website">http://www.b2ck.com/</field>
+            <field name="type" ref="type_sprl"/>
         </record>
+
     </data>
 </tryton>
