@@ -276,6 +276,7 @@
             <field name="type">receivable</field>
             <field name="company" ref="company.main"/>
             <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
             <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
         <record model="account.account" id="account_payable">
@@ -283,6 +284,7 @@
             <field name="type">payable</field>
             <field name="company" ref="company.main"/>
             <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
             <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
         <record model="account.account" id="account_income">

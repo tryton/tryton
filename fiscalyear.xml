@@ -59,5 +59,43 @@
         </record>
         <menuitem parent="menu_general_account_configuration"
             action="act_fiscalyear_form" id="menu_fiscalyear_form"/>
+
+        <record model="ir.ui.view" id="fiscalyear_close_fiscalyear_init_view_form">
+            <field name="model">account.fiscalyear.close_fiscalyear.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Close Fiscal Year">
+                    <label name="close_fiscalyear"/>
+                    <field name="close_fiscalyear"/>
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <label name="period"/>
+                    <field name="period"/>
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="entries_name"/>
+                    <field name="entries_name" colspan="3"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_close_fiscalyear">
+            <field name="name">Close Fiscal Year</field>
+            <field name="wiz_name">account.fiscalyear.close_fiscalyear</field>
+        </record>
+        <menuitem parent="menu_processing" action="act_close_fiscalyear"
+            id="menu_close_fiscalyear"/>
+
+        <record model="ir.action.wizard" id="act_reopen_fiscalyear">
+            <field name="name">Re-Open Fiscal Years</field>
+            <field name="wiz_name">account.fiscalyear.reopen_fiscalyear</field>
+        </record>
+        <record model="ir.action.keyword" id="act_reopen_fiscalyear_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.fiscalyear,0</field>
+            <field name="action" ref="act_reopen_fiscalyear"/>
+        </record>
     </data>
 </tryton>

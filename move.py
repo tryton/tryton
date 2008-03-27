@@ -33,6 +33,8 @@ class Move(OSV):
         ], 'State', required=True, readonly=True)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
             states=_MOVE_STATES)
+    centralised_line = fields.Many2One('account.move.line', 'Centralised Line',
+            readonly=True)
 
     def __init__(self):
         super(Move, self).__init__()
@@ -77,6 +79,7 @@ class Move(OSV):
                 move_ids = self.search(cursor, user, [
                     ('period', '=', move.period.id),
                     ('journal', '=', move.journal.id),
+                    ('state', '!=', 'posted'),
                     ], limit=2)
                 if len(move_ids) > 1:
                     return False
@@ -98,7 +101,19 @@ class Move(OSV):
         return res
 
     def create(self, cursor, user, vals, context=None):
+        move_line_obj = self.pool.get('account.move.line')
+
         res = super(Move, self).create(cursor, user, vals, context=context)
+        move = self.browse(cursor, user, res, context=context)
+        if move.journal.centralised:
+            line_id = move_line_obj.create(cursor, user, {
+                'account': move.journal.credit_account.id,
+                'move': move.id,
+                'name': 'Centralised Counterpart',
+                }, context=context)
+            self.write(cursor, user, move.id, {
+                'centralised_line': line_id,
+                }, context=context)
         if 'lines' in vals:
             self.validate(cursor, user, [res], context=context)
         return res
@@ -136,14 +151,29 @@ class Move(OSV):
                 if line.state == 'draft':
                     draft_lines.append(line)
             if not currency_obj.is_zero(cursor, user, company.currency, amount):
-                if move.journal.centralised:
-                    #TODO centralised move
-                    raise Exception('Not implemented')
-                else:
+                if not move.journal.centralised:
                     move_line_obj.write(cursor, user,
                             [x.id for x in move.lines if x.state != 'draft'], {
                                 'state': 'draft',
                                 }, context=context)
+                else:
+                    centralised_amount = move.centralised_line.debit \
+                                - move.centralised_line.credit \
+                                - amount
+                    if centralised_amount >= Decimal('0.0'):
+                        debit = centralised_amount
+                        credit = Decimal('0.0')
+                        account_id = move.journal.debit_account.id
+                    else:
+                        debit = Decimal('0.0')
+                        credit = - centralised_amount
+                        account_id = move.journal.credit_account.id
+                    move_line_obj.write(cursor, user,
+                            move.centralised_line.id, {
+                                'debit': debit,
+                                'credit': credit,
+                                'account': account_id,
+                            }, context=context)
                 continue
             if not draft_lines:
                 continue
@@ -304,7 +334,7 @@ class Line(OSV):
         super(Line, self).__init__()
         self._sql_constraints += [
             ('credit_debit',
-                'CHECK((credit * debit = 0) AND (credit + debit >= 0))',
+                'CHECK((credit * debit = 0.0) AND (credit + debit >= 0.0))',
                 'Wrong credit/debit values!'),
         ]
         self._constraints += [
@@ -425,7 +455,7 @@ class Line(OSV):
                     taxes[(line.account.id, False)] = True
 
         if 'account' in fields:
-            if total >= 0.0:
+            if total >= Decimal('0.0'):
                 values.setdefault('account', move.journal.credit_account \
                         and move.journal.credit_account.id or False)
             else:
@@ -467,11 +497,11 @@ class Line(OSV):
                             tax_amount += tax_line['amount'] * \
                                     tax_line['tax'][key + '_tax_sign']
                     if ('debit' in fields):
-                        values['debit'] = line_amount > 0 and line_amount \
-                                or Decimal('0.0')
+                        values['debit'] = line_amount > Decimal('0.0') \
+                                and line_amount or Decimal('0.0')
                     if ('credit' in fields):
-                        values['credit'] = line_amount < 0 and - line_amount \
-                                or Decimal('0.0')
+                        values['credit'] = line_amount < Decimal('0.0') \
+                                and - line_amount or Decimal('0.0')
                     if 'account' in fields:
                         values['account'] = account_obj.name_get(cursor, user,
                                 account_id, context=context)[0]
@@ -608,7 +638,7 @@ class Line(OSV):
             amount = cursor.fetchone()[0]
             if not currency_obj.is_zero(cursor, user,
                     partner.account_receivable.currency, amount):
-                if amount > 0:
+                if amount > Decimal('0.0'):
                     res['credit'] = currency_obj.round(cursor, user,
                             partner.account_receivable.currency, amount)
                     res['debit'] = Decimal('0.0')
@@ -623,7 +653,7 @@ class Line(OSV):
                 amount = cursor.fetchone()[0]
                 if not currency_obj.is_zero(cursor, user,
                         partner.account_payable.currency, amount):
-                    if amount > 0:
+                    if amount > Decimal('0.0'):
                         res['credit'] = currency_obj.round(cursor, user,
                                 partner.account_payable.currency, amount)
                         res['debit'] = Decimal('0.0')
@@ -635,7 +665,7 @@ class Line(OSV):
                             partner.account_payable.id, context=context)[0]
 
         if partner and vals.get('debit'):
-            if vals['debit'] > 0:
+            if vals['debit'] > Decimal('0.0'):
                 res.setdefault('account', account_obj.name_get(cursor, user,
                     partner.account_receivable.id, context=context)[0])
             else:
@@ -643,7 +673,7 @@ class Line(OSV):
                     partner.account_payable.id, context=context)[0])
 
         if partner and vals.get('credit'):
-            if vals['credit'] > 0:
+            if vals['credit'] > Decimal('0.0'):
                 res.setdefault('account', account_obj.name_get(cursor, user,
                     partner.account_payable.id, context=context)[0])
             else:
@@ -805,6 +835,8 @@ class Line(OSV):
 
     def unlink(self, cursor, user, ids, context=None):
         move_obj = self.pool.get('account.move')
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         self.check_modify(cursor, user, ids, context=context)
         lines = self.browse(cursor, user, ids, context=context)
         move_ids = [x.move.id for x in lines]
@@ -814,6 +846,8 @@ class Line(OSV):
 
     def write(self, cursor, user, ids, vals, context=None):
         move_obj = self.pool.get('account.move')
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         self.check_modify(cursor, user, ids, context=context)
         lines = self.browse(cursor, user, ids, context=context)
         move_ids = [x.move.id for x in lines]
@@ -838,9 +872,16 @@ class Line(OSV):
             journal = journal_obj.browse(cursor, user, journal_id,
                     context=context)
             if journal.centralised:
-                #TODO centralised
-                raise Exception('Not implemented')
-            else:
+                move_ids = move_obj.search(cursor, user, [
+                    ('period', '=',
+                        vals.get('period', context.get('period'))),
+                    ('journal', '=',
+                        vals.get('journal', context.get('journal'))),
+                    ('state', '!=', 'posted'),
+                    ], limit=1, context=context)
+                if move_ids:
+                    vals['move'] = move_ids[0]
+            if not vals.get('move'):
                 vals['move'] = move_obj.create(cursor, user, {
                     'period': vals.get('period', context.get('period')),
                     'journal': vals.get('journal', context.get('journal')),
@@ -851,6 +892,16 @@ class Line(OSV):
                 line.journal.id, context=context)
         move_obj.validate(cursor, user, [vals['move']], context=context)
         return res
+
+    def copy(self, cursor, user, object_id, default=None, context=None):
+        if default is None:
+            default = {}
+        if 'move' not in default:
+            default['move'] = False
+        if 'reconciliation' not in default:
+            default['reconciliation'] = False
+        return super(Line, self).copy(cursor, user, object_id, default=default,
+                context=context)
 
     def view_header_get(self, cursor, user, view_id=None, view_type='form',
             context=None):
@@ -932,22 +983,28 @@ class Line(OSV):
                     ('create', {
                         'name': 'Write-Off',
                         'account': account.id,
-                        'debit': amount < 0 and -amount or Decimal('0.0'),
-                        'credit': amount > 0 and amount or Decimal('0.0'),
+                        'debit': amount < Decimal('0.0') and - amount \
+                                or Decimal('0.0'),
+                        'credit': amount > Decimal('0.0') and amount \
+                                or Decimal('0.0'),
                     }),
                     ('create', {
                         'name': 'Write-Off',
                         'account': account_id,
-                        'debit': amount > 0 and amount or Decimal('0.0'),
-                        'credit': amount < 0 and - amount or Decimal('0.0'),
+                        'debit': amount > Decimal('0.0') and amount \
+                                or Decimal('0.0'),
+                        'credit': amount < Decimal('0.0') and - amount \
+                                or Decimal('0.0'),
                     }),
                 ],
                 }, context=context)
             ids += self.search(cursor, user, [
                 ('move', '=', move_id),
                 ('account', '=', account.id),
-                ('debit', '=', amount < 0 and -amount or Decimal('0.0')),
-                ('credit', '=', amount > 0 and amount or Decimal('0.0')),
+                ('debit', '=', amount < Decimal('0.0') and - amount \
+                        or Decimal('0.0')),
+                ('credit', '=', amount > Decimal('0.0') and amount \
+                        or Decimal('0.0')),
                 ], limit=1, context=context)
         return reconciliation_obj.create(cursor, user, {
             'lines': [('add', x) for x in ids],
@@ -1280,6 +1337,14 @@ class OpenReconcileLines(Wizard):
         return res
 
 OpenReconcileLines()
+
+
+class FiscalYear(OSV):
+    _name = 'account.fiscalyear'
+    close_lines = fields.Many2Many('account.move.line',
+            'account_fiscalyear_line_rel', 'fiscalyear', 'line', 'Close Lines')
+
+FiscalYear()
 
 
 class Partner(OSV):

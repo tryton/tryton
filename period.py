@@ -86,6 +86,20 @@ class Period(OSV):
         return super(Period, self).unlink(cursor, user, ids, vals,
                 context=context)
 
+    def close(self, cursor, user, ids, context=None):
+        journal_period_obj = self.pool.get('account.journal.period')
+        #First close the period to be sure
+        #it will not have new journal.period created between.
+        self.write(cursor, user, ids, {
+            'state': 'close',
+            }, context=context)
+        journal_period_ids = journal_period_obj.search(cursor, user, [
+            ('period', 'in', ids),
+            ], context=context)
+        journal_period_obj.close(cursor, user, journal_period_ids,
+                context=context)
+        return
+
 Period()
 
 
@@ -104,19 +118,7 @@ class ClosePeriod(Wizard):
 
     def _close(self, cursor, user, data, context=None):
         period_obj = self.pool.get('account.period')
-        journal_period_obj = self.pool.get('account.journal.period')
-
-        #First close the period to be sure
-        #it will not have new journal.period created between.
-        period_obj.write(cursor, user, data['ids'], {
-            'state': 'close',
-            }, context=context)
-        journal_period_ids = journal_period_obj.search(cursor, user, [
-            ('period', 'in', data['ids']),
-            ], context=context)
-        journal_period_obj.write(cursor, user, journal_period_ids, {
-            'state': 'close',
-            }, context=context)
+        period_obj.close(cursor, user, data['ids'], context=context)
         return {}
 
 ClosePeriod()

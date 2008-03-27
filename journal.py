@@ -79,6 +79,8 @@ class Journal(OSV):
     update_posted = fields.Boolean('Allow cancelling moves')
     sequence = fields.Many2One('ir.sequence', 'Sequence', required=True,
             domain="[('code', '=', 'account.journal')]")
+    #XXX chance to properties to be multi-company
+    #    must be required if centralised
     credit_account = fields.Many2One('account.account', 'Default credit account')
     debit_account = fields.Many2One('account.account', 'Default debit account')
 
@@ -189,6 +191,12 @@ class Period(OSV):
         return super(Period, self).unlink(cursor, user, ids, vals,
                 context=context)
 
+    def close(self, cursor, user, ids, context=None):
+        self.write(cursor, user, ids, {
+            'state': 'close',
+            }, context=context)
+        return
+
 Period()
 
 
@@ -230,9 +238,7 @@ class ReOpenPeriod(Wizard):
 
     def _reopen(self, cursor, user, data, context=None):
         journal_period_obj = self.pool.get('account.journal.period')
-        journal_period_obj.write(cursor, user, data['ids'], {
-            'state': 'open',
-            }, context=context)
+        journal_period_obj.close(cursor, user, data['ids'], context=context)
         return {}
 
 ReOpenPeriod()
