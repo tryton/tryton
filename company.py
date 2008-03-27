@@ -91,7 +91,7 @@ class Property(OSV):
         if res:
             user_obj = self.pool.get('res.user')
             company = user_obj.browse(cursor, user, user, context=context)
-            self.write(cursor, user, {
+            self.write(cursor, user, res, {
                 'company': company.id,
                 }, context=context)
         return res
