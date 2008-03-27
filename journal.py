@@ -79,10 +79,18 @@ class Journal(OSV):
     update_posted = fields.Boolean('Allow cancelling moves')
     sequence = fields.Many2One('ir.sequence', 'Sequence', required=True,
             domain="[('code', '=', 'account.journal')]")
-    #XXX chance to properties to be multi-company
-    #    must be required if centralised
-    credit_account = fields.Many2One('account.account', 'Default credit account')
-    debit_account = fields.Many2One('account.account', 'Default debit account')
+    credit_account = fields.Property('account.account', type='many2one',
+            relation='account.account', string='Default Credit Account',
+            domain="[('type', '!=', 'view'), ('company', '=', company)]",
+            states={
+                'required': "centralised",
+            })
+    debit_account = fields.Property('account.account', type='many2one',
+            relation='account.account', string='Default Debit Account',
+            domain="[('type', '!=', 'view'), ('company', '=', company)]",
+            states={
+                'required': "centralised",
+            })
 
     def default_active(self, cursor, user, context=None):
         return True
