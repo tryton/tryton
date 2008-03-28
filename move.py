@@ -33,8 +33,6 @@ class Move(OSV):
         ], 'State', required=True, readonly=True)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
             states=_MOVE_STATES)
-    centralised_line = fields.Many2One('account.move.line', 'Centralised Line',
-            readonly=True)
 
     def __init__(self):
         super(Move, self).__init__()
@@ -1011,6 +1009,14 @@ class Line(OSV):
             }, context=context)
 
 Line()
+
+
+class Move2(OSV):
+    _name = 'account.move'
+    centralised_line = fields.Many2One('account.move.line', 'Centralised Line',
+            readonly=True)
+
+Move2()
 
 
 class OpenJournalAsk(WizardOSV):
