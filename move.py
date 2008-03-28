@@ -748,22 +748,43 @@ class Line(OSV):
             fiscalyear_clause = '%s' % int(context.get('fiscalyear'))
         if context.get('periods', False):
             ids = ','.join([str(int(x)) for x in context['periods']])
-            return obj + '.active ' \
-                    'AND ' + obj + '.state != \'draft\' ' \
-                    'AND ' + obj + '.move IN (' \
-                        'SELECT id FROM account_move ' \
-                            'WHERE period IN (' + ids + ')' \
-                        ')'
+            if context.get('posted'):
+                return obj + '.active ' \
+                        'AND ' + obj + '.state != \'draft\' ' \
+                        'AND ' + obj + '.move IN (' \
+                            'SELECT id FROM account_move ' \
+                                'WHERE period IN (' + ids + ') ' \
+                                    'AND state = \'posted\' ' \
+                            ')'
+            else:
+                return obj + '.active ' \
+                        'AND ' + obj + '.state != \'draft\' ' \
+                        'AND ' + obj + '.move IN (' \
+                            'SELECT id FROM account_move ' \
+                                'WHERE period IN (' + ids + ')' \
+                            ')'
         else:
-            return obj + '.active ' \
-                    'AND ' + obj + '.state != \'draft\' ' \
-                    'AND ' + obj + '.move IN (' \
-                        'SELECT id FROM account_move ' \
-                            'WHERE period IN (' \
-                                'SELECT id FROM account_period ' \
-                                'WHERE fiscalyear IN (' + fiscalyear_clause + ')' \
-                            ')' \
-                        ')'
+            if context.get('posted'):
+                return obj + '.active ' \
+                        'AND ' + obj + '.state != \'draft\' ' \
+                        'AND ' + obj + '.move IN (' \
+                            'SELECT id FROM account_move ' \
+                                'WHERE period IN (' \
+                                    'SELECT id FROM account_period ' \
+                                    'WHERE fiscalyear IN (' + fiscalyear_clause + ')' \
+                                    ') ' \
+                                    'AND state = \'posted\' ' \
+                            ')'
+            else:
+                return obj + '.active ' \
+                        'AND ' + obj + '.state != \'draft\' ' \
+                        'AND ' + obj + '.move IN (' \
+                            'SELECT id FROM account_move ' \
+                                'WHERE period IN (' \
+                                    'SELECT id FROM account_period ' \
+                                    'WHERE fiscalyear IN (' + fiscalyear_clause + ')' \
+                                ')' \
+                            ')'
 
     def on_write(self, cursor, user, ids, context=None):
         lines = self.browse(cursor, user, ids, context)

@@ -1,8 +1,9 @@
 "Account"
 
 from trytond.osv import fields, OSV
-from trytond.osv.orm import ID_MAX
+from trytond.osv.orm import ID_MAX, exclude
 from trytond.wizard import Wizard, WizardOSV
+from trytond.report import Report
 from decimal import Decimal
 
 
@@ -335,11 +336,202 @@ class Partner(OSV):
             relation='account.account', string='Account Payable',
             group_name='Accounting Properties', view_load=True,
             domain="[('type', '=', 'payable'), ('company', '=', company)]",
-            required=True)
+            states={
+                'required': "company",
+                'invisible': "not company",
+            })
     account_receivable = fields.Property('account.account', type='many2one',
             relation='account.account', string='Account Receivable',
             group_name='Accounting Properties', view_load=True,
             domain="[('type', '=', 'receivable'), ('company', '=', company)]",
-            required=True)
+            states={
+                'required': "company",
+                'invisible': "not company",
+            })
 
 Partner()
+
+
+class PrintGeneralLegderInit(WizardOSV):
+    _name = 'account.account.open_general_ledger.init'
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+            required=True)
+    #TODO add domain for start_period <= end_period
+    start_period = fields.Many2One('account.period', 'Start Period',
+            domain="[('fiscalyear', '=', fiscalyear)]")
+    end_period = fields.Many2One('account.period', 'End Period',
+            domain="[('fiscalyear', '=', fiscalyear)]")
+    company = fields.Many2One('company.company', 'Company', required=True)
+    posted = fields.Boolean('Posted Move', help='Only posted move')
+
+    def default_fiscalyear(self, cursor, user, context=None):
+        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_id = fiscalyear_obj.find(cursor, user, exception=False,
+                context=context)
+        if fiscalyear_id:
+            return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
+                    context=context)[0]
+        return False
+
+    def default_company(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        company_obj = self.pool.get('company.company')
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
+    def default_posted(self, cursor, user, context=None):
+        return False
+
+PrintGeneralLegderInit()
+
+
+class PrintGeneralLegder(Wizard):
+    'Print General Legder'
+    _name = 'account.account.print_general_ledger'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.account.open_general_ledger.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('print', 'Print', 'gtk-print', True),
+                ],
+            },
+        },
+        'print': {
+            'result': {
+                'type': 'print',
+                'report': 'account.account.general_ledger',
+                'state': 'end',
+            },
+        },
+    }
+
+PrintGeneralLegder()
+
+
+class GeneralLegder(Report):
+    _name = 'account.account.general_ledger'
+
+    def _get_objects(self, cursor, user, ids, model, context):
+        #Don't browse false account
+        return None
+
+    def parse(self, cursor, user, content, objects, datas, context):
+        if context is None:
+            context = {}
+        context = context.copy()
+        account_obj = self.pool.get('account.account')
+        period_obj = self.pool.get('account.period')
+        company_obj = self.pool.get('company.company')
+
+        company = company_obj.browse(cursor, user,
+                datas['form']['company'], context=context)
+
+        account_ids = account_obj.search(cursor, user, [
+            ('company', '=', datas['form']['company']),
+            ], order='code, id', context=context)
+
+        start_period_ids = []
+        if datas['form']['start_period']:
+            start_period = period_obj.browse(cursor, user,
+                    datas['form']['start_period'], context=context)
+            start_period_ids = period_obj.search(cursor, user, [
+                ('fiscalyear', '=', datas['form']['fiscalyear']),
+                ('end_date', '<=', start_period.start_date),
+                ], context=context)
+        if not start_period_ids:
+            start_period_ids = [0]
+
+        start_context = context.copy()
+        start_context['fiscalyear'] = datas['form']['fiscalyear']
+        start_context['periods'] = start_period_ids
+        start_context['posted'] = datas['form']['posted']
+        start_accounts = account_obj.browse(cursor, user, account_ids,
+                context=start_context)
+        id2start_account = {}
+        for account in start_accounts:
+            id2start_account[account.id] = account
+
+        end_period_ids = []
+        if datas['form']['end_period']:
+            end_period = period_obj.browse(cursor, user,
+                    datas['form']['end_period'], context=context)
+            end_period_ids = period_obj.search(cursor, user, [
+                ('fiscalyear', '=', datas['form']['fiscalyear']),
+                ('end_date', '<=', end_period.start_date),
+                ], context=context)
+            end_period_ids = exclude(end_period_ids, start_period_ids)
+            if datas['form']['end_period'] not in end_period_ids:
+                end_period_ids.append(datas['form']['end_period'])
+        else:
+            end_period_ids = period_obj.search(cursor, user, [
+                ('fiscalyear', '=', datas['form']['fiscalyear']),
+                ], context=context)
+            end_period_ids = exclude(end_period_ids, start_period_ids)
+
+        end_context = context.copy()
+        end_context['fiscalyear'] = datas['form']['fiscalyear']
+        end_context['periods'] = end_period_ids
+        end_context['posted'] = datas['form']['posted']
+        end_accounts = account_obj.browse(cursor, user, account_ids,
+                context=end_context)
+        id2end_account = {}
+        for account in end_accounts:
+            id2end_account[account.id] = account
+
+        periods = period_obj.browse(cursor, user, end_period_ids,
+                context=context)
+        periods.sort(lambda x, y: cmp(x.start_date, y.start_date))
+        context['start_period'] = periods[0]
+        periods.sort(lambda x, y: cmp(x.end_date, y.end_date))
+        context['end_period'] = periods[-1]
+
+        context['accounts'] = account_obj.browse(cursor, user, account_ids,
+                context=context)
+        context['id2start_account'] = id2start_account
+        context['id2end_account'] = id2end_account
+        context['digits'] = company.currency.digits
+        context['lines'] = lambda account_id: self.lines(cursor, user,
+                account_id, end_period_ids, datas['form']['posted'], context)
+        context['company'] = company
+
+        return super(GeneralLegder, self).parse(cursor, user, content, objects,
+                datas, context)
+
+    def lines(self, cursor, user, account_id, period_ids, posted, context):
+        move_line_obj = self.pool.get('account.move.line')
+        period_obj = self.pool.get('account.period')
+        res = []
+
+        clause = [
+            ('account', '=', account_id),
+            ('period', 'in', period_ids),
+            ('state', '!=', 'draft'),
+            ]
+        if posted:
+            clause.append(('move.state', '=', 'posted'))
+        move_line_ids = move_line_obj.search(cursor, user, clause,
+                context=context)
+        move_lines = move_line_obj.browse(cursor, user, move_line_ids,
+                context=context)
+        move_lines.sort(lambda x, y: cmp(x.date, y.date))
+
+        balance = Decimal('0.0')
+        for line in move_lines:
+            balance += line.debit - line.credit
+            res.append({
+                'date': line.date,
+                'debit': line.debit,
+                'credit': line.credit,
+                'balance': balance,
+                'name': line.name,
+                'state': line.move.state,
+                })
+        return res
+
+GeneralLegder()

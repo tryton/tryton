@@ -319,5 +319,41 @@
             <field name="value" eval="'account.account,' + str(ref('account_payable'))"/>
             <field name="company" ref="company.main"/>
         </record>
+
+        <record model="ir.ui.view" id="print_general_ledger_init_view_form">
+            <field name="model">account.account.open_general_ledger.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Print General Ledger">
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <newline/>
+                    <label name="start_period"/>
+                    <field name="start_period"/>
+                    <label name="end_period"/>
+                    <field name="end_period"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_general_ledger">
+            <field name="name">Print General Legder</field>
+            <field name="wiz_name">account.account.print_general_ledger</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_print_general_ledger"
+            id="menu_print_general_ledger" icon="STOCK_PRINT"/>
+
+        <record model="ir.action.report" id="report_general_ledger">
+            <field name="name">General Ledger</field>
+            <field name="model">account.account</field>
+            <field name="report_name">account.account.general_ledger</field>
+            <field name="report">account/general_ledger.odt</field>
+        </record>
     </data>
 </tryton>
