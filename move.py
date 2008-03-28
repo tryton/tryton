@@ -18,7 +18,7 @@ class Move(OSV):
     'Account Move'
     _name = 'account.move'
     _description = __doc__
-    _order = 'id DESC'
+    _order = 'COALESCE(post_date, date) DESC, reference DESC, id DESC'
 
     name = fields.Char('Name', size=None, required=True)
     reference = fields.Char('Reference', size=None, readonly=True)
