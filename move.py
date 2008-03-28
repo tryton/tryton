@@ -27,6 +27,7 @@ class Move(OSV):
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             states=_MOVE_STATES)
     date = fields.Date('Effective Date', required=True, states=_MOVE_STATES)
+    post_date = fields.Date('Post Date', readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
@@ -187,6 +188,9 @@ class Move(OSV):
         moves = self.browse(cursor, user, ids, context=context)
         for move in moves:
             amount = Decimal('0.0')
+            if not move.lines:
+                raise ExceptORM('UserError',
+                        'You can not post an empty move!')
             company = None
             for line in move.lines:
                 amount += line.debit - line.credit
@@ -200,6 +204,7 @@ class Move(OSV):
             self.write(cursor, user, move.id, {
                 'reference': reference,
                 'state': 'posted',
+                'post_date': datetime.date.today(),
                 }, context=context)
         return
 
