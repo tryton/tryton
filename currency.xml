@@ -15,6 +15,9 @@
                     <field name="active" xexpand="0" width="100"/>
                     <label name="rounding"/>
                     <field name="rounding"/>
+                    <label name="digits"/>
+                    <field name="digits"/>
+                    <newline/>
                     <label name="rate"/>
                     <field name="rate"/>
                     <field name="rates" colspan="6" mode="tree,form">
@@ -129,6 +132,7 @@
             <field name="name">Euro</field>
             <field name="code">EUR</field>
             <field name="rounding" eval="0.01"/>
+            <field name="digits" eval="2"/>
         </record>
         <record model="account.currency.rate" id="eur_rate">
             <field name="date" eval="time.strftime('%Y-01-01')"/>
@@ -139,11 +143,13 @@
             <field name="name">United States dollar</field>
             <field name="code">USD</field>
             <field name="rounding" eval="0.01"/>
+            <field name="digits" eval="2"/>
         </record>
         <record model="account.currency" id="chf">
             <field name="name">Swiss franc</field>
             <field name="code">CHF</field>
             <field name="rounding" eval="0.01"/>
+            <field name="digits" eval="2"/>
         </record>
         <record model="company.company" id="company.main">
             <field name="currency" ref="eur"/>

@@ -15,6 +15,7 @@ class Currency(OSV):
     rate = fields.Function('get_rate', string='Current rate', digits=(12, 6))
     rates = fields.One2Many('account.currency.rate', 'currency', 'Rates')
     rounding = fields.Numeric('Rounding factor', digits=(12, 6))
+    digits = fields.Integer('Diplay Digits')
     active = fields.Boolean('Active')
 
     def default_active(self, cursor, user, context=None):
@@ -22,6 +23,9 @@ class Currency(OSV):
 
     def default_rounding(self, cursor, user, context=None):
         return 0.01
+
+    def default_digits(self, cursor, user, context=None):
+        return 2
 
     def name_search(self, cursor, user, name, args=None, operator='ilike',
             context=None, limit=None):
