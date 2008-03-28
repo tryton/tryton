@@ -1183,10 +1183,13 @@ class OpenAccount(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['domain'] = str([
+        res['domain'] = [
             ('period', 'in', period_ids),
             ('account', '=', data['id']),
-            ])
+            ]
+        if context.get('posted'):
+            res['domain'].append(('move.state', '=', 'posted'))
+        res['domain'] = str(res['domain'])
         res['context'] = str({'fiscalyear': context.get('fiscalyear')})
         return res
 

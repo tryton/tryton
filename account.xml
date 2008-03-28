@@ -320,6 +320,21 @@
             <field name="company" ref="company.main"/>
         </record>
 
+        <record model="ir.ui.view" id="open_chart_account_init_view_form">
+            <field name="model">account.account.open_chart_account.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Chart of Account" col="2">
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="print_general_ledger_init_view_form">
             <field name="model">account.account.open_general_ledger.init</field>
             <field name="type">form</field>

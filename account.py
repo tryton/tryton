@@ -286,6 +286,10 @@ class OpenChartAccountInit(WizardOSV):
     _name = 'account.account.open_chart_account.init'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             help='Keep empty for all open fiscal year')
+    posted = fields.Boolean('Posted Move', help='Only posted move')
+
+    def default_posted(self, cursor, user, context=None):
+        return False
 
 OpenChartAccountInit()
 
@@ -324,7 +328,10 @@ class OpenChartAccount(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['context'] = str({'fiscalyear': data['form']['fiscalyear']})
+        res['context'] = str({
+            'fiscalyear': data['form']['fiscalyear'],
+            'posted': data['form']['posted'],
+            })
         return res
 
 OpenChartAccount()
