@@ -363,11 +363,12 @@ class PrintGeneralLegderInit(WizardOSV):
     _name = 'account.account.open_general_ledger.init'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True)
-    #TODO add domain for start_period <= end_period
     start_period = fields.Many2One('account.period', 'Start Period',
-            domain="[('fiscalyear', '=', fiscalyear)]")
+            domain="[('fiscalyear', '=', fiscalyear), " \
+                    "('end_date', '<', (end_period, 'start_date'))]")
     end_period = fields.Many2One('account.period', 'End Period',
-            domain="[('fiscalyear', '=', fiscalyear)]")
+            domain="[('fiscalyear', '=', fiscalyear), " \
+                    "('start_date', '>', (start_period, 'end_date'))]")
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Only posted move')
 

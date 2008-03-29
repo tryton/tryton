@@ -58,6 +58,24 @@ class Period(OSV):
                     'a period with moves!')
         return
 
+    def search(self, cursor, user, args, offset=0, limit=None, order=None,
+            context=None, count=False, query_string=False):
+        args = args[:]
+        i = 0
+        while i < len(args):
+            if args[i][0] in ('start_date', 'end_date'):
+                if isinstance(args[i][2], (list, tuple)):
+                    if not args[i][2][0]:
+                        args[i] = ('id', '!=', '0')
+                    else:
+                        period = self.browse(cursor, user, args[i][2][0],
+                                context=context)
+                        args[i] = (args[i][0], args[i][1], period[args[i][2][1]])
+            i += 1
+        return super(Period, self).search(cursor, user, args, offset=offset,
+                limit=limit, order=order, context=context, count=count,
+                query_string=query_string)
+
     def create(self, cursor, user, vals, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
         if vals.get('fiscalyear'):
