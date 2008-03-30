@@ -2,6 +2,7 @@
 
 from trytond.osv import fields, OSV, ExceptORM
 from trytond.wizard import Wizard, WizardOSV
+from trytond.report import Report
 from decimal import Decimal
 import datetime
 from trytond.netsvc import LocalService
@@ -1527,3 +1528,97 @@ class Partner(OSV):
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
 Partner()
+
+
+class PrintGeneralJournalInit(WizardOSV):
+    _name = 'account.move.print_general_journal.init'
+    from_date = fields.Date('From Date', required=True)
+    to_date = fields.Date('To Date', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True)
+    posted = fields.Boolean('Posted Move', help='Only posted move')
+
+    def default_from_date(self, cursor, user, context=None):
+        return datetime.datetime(datetime.datetime.today().year, 1, 1)
+
+    def default_to_date(self, cursor, user, context=None):
+        return datetime.datetime.today()
+
+    def default_company(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        company_obj = self.pool.get('company.company')
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
+    def default_posted(self, cursor, user, context=None):
+        return False
+
+PrintGeneralJournalInit()
+
+
+class PrintGeneralJournal(Wizard):
+    'Print General Journal'
+    _name = 'account.move.print_general_journal'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.move.print_general_journal.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('print', 'Print', 'gtk-print', True),
+                ],
+            },
+        },
+        'print': {
+            'result': {
+                'type': 'print',
+                'report': 'account.move.general_journal',
+                'state': 'end',
+            },
+        },
+    }
+
+PrintGeneralJournal()
+
+
+class GeneralJournal(Report):
+    _name = 'account.move.general_journal'
+
+    def _get_objects(self, cursor, user, ids, model, datas, context):
+        move_obj = self.pool.get('account.move')
+
+        if datas['form']['posted']:
+            move_ids = move_obj.search(cursor, user, [
+                ('post_date', '>=', datas['form']['from_date']),
+                ('post_date', '<=', datas['form']['to_date']),
+                ('state', '=', 'posted'),
+                ], order='post_date, reference, id', context=context)
+        else:
+            move_ids = move_obj.search(cursor, user, [
+                ('date', '>=', datas['form']['from_date']),
+                ('date', '<=', datas['form']['to_date']),
+                ], order='COALESCE(post_date, date), reference, id',
+                context=context)
+        return move_obj.browse(cursor, user, move_ids, context=context)
+
+    def parse(self, cursor, user, content, objects, datas, context):
+        if context is None:
+            context = {}
+        company_obj = self.pool.get('company.company')
+        context = context.copy()
+
+        company = company_obj.browse(cursor, user,
+                datas['form']['company'], context=context)
+
+        context['company'] = company
+        context['digits'] = company.currency.digits
+        context['from_date'] = datas['form']['from_date']
+        context['to_date'] = datas['form']['to_date']
+
+        return super(GeneralJournal, self).parse(cursor, user, content,
+                objects, datas, context)
+
+GeneralJournal()

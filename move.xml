@@ -375,5 +375,38 @@
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="print_general_journal_init_view_form">
+            <field name="model">account.move.print_general_journal.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Print General Journal">
+                    <label name="from_date"/>
+                    <field name="from_date"/>
+                    <label name="to_date"/>
+                    <field name="to_date"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_general_journal">
+            <field name="name">Print General Journal</field>
+            <field name="wiz_name">account.move.print_general_journal</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_print_general_journal"
+            id="menu_print_general_journal" icon="STOCK_PRINT"/>
+
+        <record model="ir.action.report" id="report_general_journal">
+            <field name="name">General Journal</field>
+            <field name="model">account.move</field>
+            <field name="report_name">account.move.general_journal</field>
+            <field name="report">account/general_journal.odt</field>
+        </record>
     </data>
 </tryton>
