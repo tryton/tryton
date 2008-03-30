@@ -21,7 +21,8 @@ class Move(OSV):
     _order = 'COALESCE(post_date, date) DESC, reference DESC, id DESC'
 
     name = fields.Char('Name', size=None, required=True)
-    reference = fields.Char('Reference', size=None, readonly=True)
+    reference = fields.Char('Reference', size=None, readonly=True,
+            help='Also known as Folio Number')
     period = fields.Many2One('account.period', 'Period', required=True,
             states=_MOVE_STATES)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
@@ -93,6 +94,30 @@ class Move(OSV):
                 if line.account.company.id != company_id:
                     return False
         return True
+
+    def name_get(self, cursor, user, ids, context=None):
+        if not ids:
+            return []
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        return [(r['id'], str(r['reference'] or r[self._rec_name])) \
+                for r in self.read(cursor, user, ids,
+                    [self._rec_name, 'reference'], context,
+                    load='_classic_write')]
+
+    def name_search(self, cursor, user, name='', args=None, operator='ilike',
+            context=None, limit=None):
+        if args is None:
+            args = []
+        if name:
+            args2 = args[:]
+            args2 += [('reference', operator, name)]
+            ids = self.search(cursor, user, args2, limit=limit,
+                    context=context)
+            res = self.name_get(cursor, user, ids, context=context)
+        res += super(Move, self).name_search(cursor, user, name=name,
+                args=args, operator=operator, context=context, limit=limit)
+        return res
 
     def write(self, cursor, user, ids, vals, context=None):
         res = super(Move, self).write(cursor, user, ids, vals, context=context)
@@ -321,7 +346,7 @@ class Line(OSV):
                 'journal'])
     blocked = fields.Boolean('Litigation',
             help='Mark the line as litigation with the partner.')
-    maturity_date = fields.Date('Muturity Date',
+    maturity_date = fields.Date('Maturity Date',
             help='This field is used for payable and receivable linees. \n' \
                     'You can put the limit date for the payment.')
     state = fields.Selection([
@@ -332,6 +357,11 @@ class Line(OSV):
     reconciliation = fields.Many2One('account.move.reconciliation',
             'Reconciliation', readonly=True, ondelete='SET NULL', select=2)
     tax_lines = fields.One2Many('account.tax.line', 'move_line', 'Tax Lines')
+    move_state = fields.Function('get_move_field', type='selection',
+            selection=[
+                ('draft', 'Draft'),
+                ('posted', 'Posted'),
+            ], string='Move State', fnct_search='search_move_field')
 
     def __init__(self):
         super(Line, self).__init__()
@@ -696,16 +726,18 @@ class Line(OSV):
         return res
 
     def get_move_field(self, cursor, user, ids, name, arg, context=None):
-        if name not in ('period', 'journal', 'date'):
+        if name == 'move_state':
+            name = 'state'
+        if name not in ('period', 'journal', 'date', 'state'):
             raise Exception('Invalid name')
         obj = self.pool.get('account.' + name)
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
-            if name in ('date',):
+            if name in ('date', 'state'):
                 res[line.id] = line.move[name]
             else:
                 res[line.id] = line.move[name].id
-        if name in ('date',):
+        if name in ('date', 'state'):
             return res
         obj_names = {}
         for obj_id, obj_name in obj.name_get(cursor, user,
@@ -720,7 +752,9 @@ class Line(OSV):
         return res
 
     def set_move_field(self, cursor, user, id, name, value, arg, context=None):
-        if name not in ('period', 'journal', 'date'):
+        if name == 'move_state':
+            name = 'state'
+        if name not in ('period', 'journal', 'date', 'state'):
             raise Exception('Invalid name')
         move_obj = self.pool.get('account.move')
         line = self.browse(cursor, user, id, context=context)
@@ -732,7 +766,10 @@ class Line(OSV):
         args2 = []
         i = 0
         while i < len(args):
-            args2.append(('move.' + args[i][0], args[i][1], args[i][2]))
+            field = args[i][0]
+            if args[i][0] == 'move_state':
+                field = 'state'
+            args2.append(('move.' + field, args[i][1], args[i][2]))
             i += 1
         return args2
 

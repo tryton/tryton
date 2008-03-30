@@ -190,8 +190,11 @@
                             <field name="second_currency"/>
                             <label name="move"/>
                             <field name="move" required="0"/>
+                            <label name="move_state"/>
+                            <field name="move_state"/>
                             <label name="reconciliation"/>
                             <field name="reconciliation"/>
+                            <newline/>
                             <label name="maturity_date"/>
                             <field name="maturity_date"/>
                             <label name="create_date"/>
@@ -224,6 +227,7 @@
                     <field name="tax_lines"/>
                     <field name="reconciliation" select="2"/>
                     <field name="state" select="2"/>
+                    <field name="move_state" select="2"/>
                 </tree>
                 ]]>
             </field>
