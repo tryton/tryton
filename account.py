@@ -360,7 +360,7 @@ Partner()
 
 
 class PrintGeneralLegderInit(WizardOSV):
-    _name = 'account.account.open_general_ledger.init'
+    _name = 'account.account.print_general_ledger.init'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True)
     start_period = fields.Many2One('account.period', 'Start Period',
@@ -403,7 +403,7 @@ class PrintGeneralLegder(Wizard):
         'init': {
             'result': {
                 'type': 'form',
-                'object': 'account.account.open_general_ledger.init',
+                'object': 'account.account.print_general_ledger.init',
                 'state': [
                     ('end', 'Cancel', 'gtk-cancel'),
                     ('print', 'Print', 'gtk-print', True),
