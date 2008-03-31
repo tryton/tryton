@@ -26,8 +26,32 @@ class Period(OSV):
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
 
+    def __init__(self):
+        super(Period, self).__init__()
+        self._constraints += [
+            ('check_dates',
+                'Error! You can not have 2 periods that overlaps!',
+                ['start_date', 'end_date']),
+        ]
+
     def default_state(self, cursor, user, context=None):
         return 'open'
+
+    def check_dates(self, cursor, user, ids):
+        for period in self.browse(cursor, user, ids):
+            cursor.execute('SELECT id ' \
+                    'FROM ' + self._table + ' ' \
+                    'WHERE ((start_date <= %s AND end_date >= %s) ' \
+                            'OR (start_date <= %s AND end_date >= %s) ' \
+                            'OR (start_date >= %s AND end_date <= %s)) ' \
+                        'AND id != %s',
+                    (period.start_date, period.start_date,
+                        period.end_date, period.end_date,
+                        period.start_date, period.end_date,
+                        period.id))
+            if cursor.rowcount:
+                return False
+        return True
 
     def find(self, cursor, user, date=None, exception=True, context=None):
         '''
@@ -101,7 +125,7 @@ class Period(OSV):
 
     def unlink(self, cursor, user, ids, context=None):
         self._check(cursor, user, ids, context=context)
-        return super(Period, self).unlink(cursor, user, ids, vals,
+        return super(Period, self).unlink(cursor, user, ids,
                 context=context)
 
     def close(self, cursor, user, ids, context=None):

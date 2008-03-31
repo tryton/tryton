@@ -34,9 +34,30 @@ class FiscalYear(OSV):
             'create_period',
             'create_period_3',
         ]
+        self._constraints += [
+            ('check_dates',
+                'Error! You can not have 2 fiscal years that overlaps!',
+                ['start_date', 'end_date']),
+        ]
 
     def default_state(self, cursor, user, context=None):
         return 'open'
+
+    def check_dates(self, cursor, user, ids):
+        for fiscalyear in self.browse(cursor, user, ids):
+            cursor.execute('SELECT id ' \
+                    'FROM ' + self._table + ' ' \
+                    'WHERE ((start_date <= %s AND end_date >= %s) ' \
+                            'OR (start_date <= %s AND end_date >= %s) ' \
+                            'OR (start_date >= %s AND end_date <= %s)) ' \
+                        'AND id != %s',
+                    (fiscalyear.start_date, fiscalyear.start_date,
+                        fiscalyear.end_date, fiscalyear.end_date,
+                        fiscalyear.start_date, fiscalyear.end_date,
+                        fiscalyear.id))
+            if cursor.rowcount:
+                return False
+        return True
 
     def create_period(self, cursor, user, ids, context=None, interval=1):
         '''
@@ -51,6 +72,9 @@ class FiscalYear(OSV):
             while period_start_date < end_date:
                 period_end_date = period_start_date + \
                         mx.DateTime.RelativeDateTime(months=interval)
+                period_end_date = mx.DateTime.DateTime(period_end_date.year,
+                        period_end_date.month, 1) - \
+                        mx.DateTime.RelativeDateTime(days=1)
                 if period_end_date > end_date:
                     period_end_date = end_date
                 period_obj.create(cursor, user, {
@@ -60,8 +84,8 @@ class FiscalYear(OSV):
                     'end_date': period_end_date.strftime('%Y-%m-%d'),
                     'fiscalyear': fiscalyear.id,
                     }, context=context)
-                period_start_date = period_start_date + \
-                        mx.DateTime.RelativeDateTime(months=interval)
+                period_start_date = period_end_date + \
+                        mx.DateTime.RelativeDateTime(days=1)
         return True
 
     def create_period_3(self, cursor, user, ids, context=None):
