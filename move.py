@@ -107,16 +107,6 @@ class Move(OSV):
                 return False
         return True
 
-    def name_get(self, cursor, user, ids, context=None):
-        if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        return [(r['id'], str(r['reference'] or r[self._rec_name])) \
-                for r in self.read(cursor, user, ids,
-                    [self._rec_name, 'reference'], context,
-                    load='_classic_write')]
-
     def name_search(self, cursor, user, name='', args=None, operator='ilike',
             context=None, limit=None):
         if args is None:
