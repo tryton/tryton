@@ -73,7 +73,23 @@
             <field name="model">account.period,0</field>
             <field name="action" ref="act_reopen_period"/>
         </record>
-        <menuitem parent="menu_processing" action="act_period_form"
+        <record model="ir.action.act_window" id="act_period_form2">
+            <field name="name">Periods</field>
+            <field name="res_model">account.period</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', 'in', ['open'])]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="period_view_tree"/>
+            <field name="act_window" ref="act_period_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_period_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="period_view_form"/>
+            <field name="act_window" ref="act_period_form2"/>
+        </record>
+        <menuitem parent="menu_processing" action="act_period_form2"
             id="menu_period_form2" name="Close Periods"/>
     </data>
 </tryton>
