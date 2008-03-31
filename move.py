@@ -46,6 +46,10 @@ class Move(OSV):
             ('check_company',
                 'Error! You can not create lines on account \n' \
                         'from different company in the same move!', ['lines']),
+            ('check_dates',
+                'Error! You can not create move ' \
+                        'with dates outside the period!',
+                        ['date', 'post_date']),
         ]
         self._rpc_allowed += [
             'button_post',
@@ -93,6 +97,19 @@ class Move(OSV):
                 if company_id < 0:
                     company_id = line.account.company.id
                 if line.account.company.id != company_id:
+                    return False
+        return True
+
+    def check_dates(self, cursor, user, ids):
+        for move in self.browse(cursor, user, ids):
+            if move.date < move.period.start_date:
+                return False
+            if move.date > move.period.end_date:
+                return False
+            if move.post_date:
+                if move.post_date < move.period.start_date:
+                    return False
+                if move.post_date > move.period.end_date:
                     return False
         return True
 
@@ -227,10 +244,13 @@ class Move(OSV):
                         'You can not post a unbalanced move!')
         for move in moves:
             reference = sequence_obj.get_id(cursor, user, move.journal.sequence.id)
+            post_date = datetime.date.today()
+            if post_date > move.period.end_date:
+                post_date = move.period.end_date
             self.write(cursor, user, move.id, {
                 'reference': reference,
                 'state': 'posted',
-                'post_date': datetime.date.today(),
+                'post_date': post_date,
                 }, context=context)
         return
 
