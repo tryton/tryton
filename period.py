@@ -130,6 +130,17 @@ class Period(OSV):
 
     def close(self, cursor, user, ids, context=None):
         journal_period_obj = self.pool.get('account.journal.period')
+        move_obj = self.pool.get('account.move')
+
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
+        if move_obj.search(cursor, user, [
+            ('period', 'in', ids),
+            ('state', '!=' 'posted'),
+            ], context=context):
+            raise ExceptORM('UserError', 'You can not close ' \
+                    'a period with non posted moves!')
         #First close the period to be sure
         #it will not have new journal.period created between.
         self.write(cursor, user, ids, {
