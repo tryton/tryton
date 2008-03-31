@@ -137,7 +137,7 @@ class Period(OSV):
 
         if move_obj.search(cursor, user, [
             ('period', 'in', ids),
-            ('state', '!=' 'posted'),
+            ('state', '!=', 'posted'),
             ], context=context):
             raise ExceptORM('UserError', 'You can not close ' \
                     'a period with non posted moves!')
