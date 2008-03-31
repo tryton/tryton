@@ -19,7 +19,7 @@ class Move(OSV):
     'Account Move'
     _name = 'account.move'
     _description = __doc__
-    _order = 'COALESCE(post_date, date) DESC, reference DESC, id DESC'
+    _order = 'date DESC, reference DESC, id DESC'
 
     name = fields.Char('Name', size=None, required=True)
     reference = fields.Char('Reference', size=None, readonly=True,
@@ -46,10 +46,9 @@ class Move(OSV):
             ('check_company',
                 'Error! You can not create lines on account \n' \
                         'from different company in the same move!', ['lines']),
-            ('check_dates',
+            ('check_date',
                 'Error! You can not create move ' \
-                        'with dates outside the period!',
-                        ['date', 'post_date']),
+                        'with date outside the period!', ['date']),
         ]
         self._rpc_allowed += [
             'button_post',
@@ -100,17 +99,12 @@ class Move(OSV):
                     return False
         return True
 
-    def check_dates(self, cursor, user, ids):
+    def check_date(self, cursor, user, ids):
         for move in self.browse(cursor, user, ids):
             if move.date < move.period.start_date:
                 return False
             if move.date > move.period.end_date:
                 return False
-            if move.post_date:
-                if move.post_date < move.period.start_date:
-                    return False
-                if move.post_date > move.period.end_date:
-                    return False
         return True
 
     def name_get(self, cursor, user, ids, context=None):
@@ -244,13 +238,10 @@ class Move(OSV):
                         'You can not post a unbalanced move!')
         for move in moves:
             reference = sequence_obj.get_id(cursor, user, move.journal.sequence.id)
-            post_date = datetime.date.today()
-            if post_date > move.period.end_date:
-                post_date = move.period.end_date
             self.write(cursor, user, move.id, {
                 'reference': reference,
                 'state': 'posted',
-                'post_date': post_date,
+                'post_date': datetime.date.today(),
                 }, context=context)
         return
 
@@ -1610,18 +1601,14 @@ class GeneralJournal(Report):
     def _get_objects(self, cursor, user, ids, model, datas, context):
         move_obj = self.pool.get('account.move')
 
+        clause = [
+            ('date', '>=', datas['form']['from_date']),
+            ('date', '<=', datas['form']['to_date']),
+            ]
         if datas['form']['posted']:
-            move_ids = move_obj.search(cursor, user, [
-                ('post_date', '>=', datas['form']['from_date']),
-                ('post_date', '<=', datas['form']['to_date']),
-                ('state', '=', 'posted'),
-                ], order='post_date, reference, id', context=context)
-        else:
-            move_ids = move_obj.search(cursor, user, [
-                ('date', '>=', datas['form']['from_date']),
-                ('date', '<=', datas['form']['to_date']),
-                ], order='COALESCE(post_date, date), reference, id',
-                context=context)
+            clause.append(('state', '=', 'posted'))
+        move_ids = move_obj.search(cursor, user, clause,
+                order='date, reference, id', context=context)
         return move_obj.browse(cursor, user, move_ids, context=context)
 
     def parse(self, cursor, user, content, objects, datas, context):
