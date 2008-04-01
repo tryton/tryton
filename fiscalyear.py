@@ -27,6 +27,8 @@ class FiscalYear(OSV):
         ('open', 'Open'),
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
+    post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
+            required=True, domain="[('code', '=', 'account.move')]")
 
     def __init__(self):
         super(FiscalYear, self).__init__()
@@ -38,6 +40,9 @@ class FiscalYear(OSV):
             ('check_dates',
                 'Error! You can not have 2 fiscal years that overlaps!',
                 ['start_date', 'end_date']),
+            ('check_post_move_sequence',
+                'Error! You must have different post move sequence ' \
+                        'per fiscal year!', ['post_move_sequence']),
         ]
 
     def default_state(self, cursor, user, context=None):
@@ -58,6 +63,27 @@ class FiscalYear(OSV):
             if cursor.rowcount:
                 return False
         return True
+
+    def check_post_move_sequence(self, cursor, user, ids):
+        for fiscalyear in self.browse(cursor, user, ids):
+            if self.search(cursor, user, [
+                ('post_move_sequence', '=', fiscalyear.post_move_sequence.id),
+                ('id', '!=', fiscalyear.id),
+                ]):
+                return False
+        return True
+
+    def write(self, cursor, user, ids, vals, context=None):
+        move_obj = self.pool.get('account.move')
+        if vals.get('post_move_sequence'):
+            for fiscalyear in self.browse(cursor, user, ids, context=context):
+                if fiscalyear.post_move_sequence and \
+                        fiscalyear.post_move_sequence.id != \
+                        vals['post_move_sequence']:
+                    raise ExceptORM('UserError', 'You can not change ' \
+                            'the post move sequence')
+        return super(FiscalYear, self).write(cursor, user, ids, vals,
+                context=context)
 
     def create_period(self, cursor, user, ids, context=None, interval=1):
         '''
@@ -83,6 +109,7 @@ class FiscalYear(OSV):
                     'start_date': period_start_date.strftime('%Y-%m-%d'),
                     'end_date': period_end_date.strftime('%Y-%m-%d'),
                     'fiscalyear': fiscalyear.id,
+                    'post_move_sequence': fiscalyear.post_move_sequence.id,
                     }, context=context)
                 period_start_date = period_end_date + \
                         mx.DateTime.RelativeDateTime(days=1)

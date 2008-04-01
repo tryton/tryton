@@ -18,6 +18,9 @@
                     <label name="fiscalyear"/>
                     <field name="fiscalyear"/>
                     <newline/>
+                    <label name="post_move_sequence"/>
+                    <field name="post_move_sequence" required="0"/>
+                    <newline/>
                     <label name="state"/>
                     <field name="state" colspan="3"/>
                 </form>

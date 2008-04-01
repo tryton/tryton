@@ -25,6 +25,8 @@ class Period(OSV):
         ('open', 'Open'),
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
+    post_move_sequence =fields.Many2One('ir.sequence', 'Post Move Sequence',
+            required=True, domain="[('code', '=', 'account.move')]")
 
     def __init__(self):
         super(Period, self).__init__()
@@ -32,6 +34,9 @@ class Period(OSV):
             ('check_dates',
                 'Error! You can not have 2 periods that overlaps!',
                 ['start_date', 'end_date']),
+            ('check_post_move_sequence',
+                'Error! You must have different post move sequence ' \
+                        'per fiscal year!', ['post_move_sequence']),
         ]
 
     def default_state(self, cursor, user, context=None):
@@ -50,6 +55,15 @@ class Period(OSV):
                         period.start_date, period.end_date,
                         period.id))
             if cursor.rowcount:
+                return False
+        return True
+
+    def check_post_move_sequence(self, cursor, user, ids):
+        for period in self.browse(cursor, user, ids):
+            if self.search(cursor, user, [
+                ('post_move_sequence', '=', period.post_move_sequence.id),
+                ('fiscalyear', '!=', period.fiscalyear.id),
+                ]):
                 return False
         return True
 
@@ -108,9 +122,12 @@ class Period(OSV):
             if fiscalyear.state == 'close':
                 raise ExceptORM('UserError', 'You can not create ' \
                         'a period on a closed fiscal year!')
+            if not vals.get('post_move_sequence'):
+                vals['post_move_sequence'] = fiscalyear.post_move_sequence.id
         return super(Period, self).create(cursor, user, vals, context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
+        move_obj = self.pool.get('account.move')
         if vals != {'state': 'close'} \
                 and vals != {'state': 'open'}:
             self._check(cursor, user, ids, context=context)
@@ -120,6 +137,18 @@ class Period(OSV):
                 if period.fiscalyear.state == 'close':
                     raise ExceptORM('UserError', 'You can not open ' \
                             'a period from a closed fiscal year!')
+        if vals.get('post_move_sequence'):
+            for period in self.browse(cursor, user, ids, context=context):
+                if period.post_move_sequence and \
+                        period.post_move_sequence.id != \
+                        vals['post_move_sequence']:
+                    if move_obj.search(cursor, user, [
+                        ('period', '=', period.id),
+                        ('state', '=', 'posted'),
+                        ], context=context):
+                        raise ExceptORM('UserError', 'You can not change ' \
+                                'the post move sequence \n' \
+                                'if there is already posted move in the period')
         return super(Period, self).write(cursor, user, ids, vals,
                 context=context)
 

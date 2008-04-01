@@ -63,10 +63,6 @@ class Move(OSV):
             cursor.execute('CREATE INDEX account_move_journal_period_index ' \
                     'ON account_move (period, journal)')
 
-    def default_name(self, cursor, user, context=None):
-        sequence_obj = self.pool.get('ir.sequence')
-        return sequence_obj.get(cursor, user, 'account.move')
-
     def default_period(self, cursor, user, context=None):
         period_obj = self.pool.get('account.period')
         return period_obj.find(cursor, user, exception=False, context=context)
@@ -128,6 +124,18 @@ class Move(OSV):
 
     def create(self, cursor, user, vals, context=None):
         move_line_obj = self.pool.get('account.move.line')
+        sequence_obj = self.pool.get('ir.sequence')
+        journal_obj = self.pool.get('account.journal')
+
+        if context is None:
+            context = {}
+
+        if not vals.get('name'):
+            vals = vals.copy()
+            journal = journal_obj.browse(cursor, user,
+                    vals.get('journal', context.get('journal')),
+                    context=context)
+            vals['name'] = sequence_obj.get_id(cursor, user, journal.sequence.id)
 
         res = super(Move, self).create(cursor, user, vals, context=context)
         move = self.browse(cursor, user, res, context=context)
@@ -227,7 +235,8 @@ class Move(OSV):
                 raise ExceptORM('UserError',
                         'You can not post a unbalanced move!')
         for move in moves:
-            reference = sequence_obj.get_id(cursor, user, move.journal.sequence.id)
+            reference = sequence_obj.get_id(cursor, user,
+                    move.period.post_move_sequence.id)
             self.write(cursor, user, move.id, {
                 'reference': reference,
                 'state': 'posted',
