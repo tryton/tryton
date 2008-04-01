@@ -362,13 +362,13 @@ Partner()
 class PrintGeneralLegderInit(WizardOSV):
     _name = 'account.account.print_general_ledger.init'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True)
+            required=True, on_change=['fiscalyear'])
     start_period = fields.Many2One('account.period', 'Start Period',
             domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('end_date', '<', (end_period, 'start_date'))]")
+                    "('start_date', '<=', (end_period, 'start_date'))]")
     end_period = fields.Many2One('account.period', 'End Period',
             domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '>', (start_period, 'end_date'))]")
+                    "('start_date', '>=', (start_period, 'start_date'))]")
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Only posted move')
 
@@ -392,6 +392,12 @@ class PrintGeneralLegderInit(WizardOSV):
 
     def default_posted(self, cursor, user, context=None):
         return False
+
+    def on_change_fiscalyear(self, cursor, user, ids, vals, context=None):
+        return {
+            'start_period': False,
+            'end_period': False,
+        }
 
 PrintGeneralLegderInit()
 
@@ -444,7 +450,7 @@ class GeneralLegder(Report):
             ('company', '=', datas['form']['company']),
             ], order='code, id', context=context)
 
-        start_period_ids = []
+        start_period_ids = [0]
         if datas['form']['start_period']:
             start_period = period_obj.browse(cursor, user,
                     datas['form']['start_period'], context=context)
@@ -452,8 +458,6 @@ class GeneralLegder(Report):
                 ('fiscalyear', '=', datas['form']['fiscalyear']),
                 ('end_date', '<=', start_period.start_date),
                 ], context=context)
-        if not start_period_ids:
-            start_period_ids = [0]
 
         start_context = context.copy()
         start_context['fiscalyear'] = datas['form']['fiscalyear']
@@ -543,3 +547,148 @@ class GeneralLegder(Report):
         return res
 
 GeneralLegder()
+
+
+class PrintTrialBalanceInit(WizardOSV):
+    _name = 'account.account.print_trial_balance.init'
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+            required=True, on_change=['fiscalyear'])
+    start_period = fields.Many2One('account.period', 'Start Period',
+            domain="[('fiscalyear', '=', fiscalyear), " \
+                    "('start_date', '<=', (end_period, 'start_date'))]")
+    end_period = fields.Many2One('account.period', 'End Period',
+            domain="[('fiscalyear', '=', fiscalyear), " \
+                    "('start_date', '>=', (start_period, 'start_date'))]")
+    company = fields.Many2One('company.company', 'Company', required=True)
+    posted = fields.Boolean('Posted Move', help='Only posted move')
+
+    def default_fiscalyear(self, cursor, user, context=None):
+        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_id = fiscalyear_obj.find(cursor, user, exception=False,
+                context=context)
+        if fiscalyear_id:
+            return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
+                    context=context)[0]
+        return False
+
+    def default_company(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        company_obj = self.pool.get('company.company')
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
+    def default_posted(self, cursor, user, context=None):
+        return False
+
+    def on_change_fiscalyear(self, cursor, user, ids, vals, context=None):
+        return {
+            'start_period': False,
+            'end_period': False,
+        }
+
+PrintTrialBalanceInit()
+
+
+class PrintTrialBalance(Wizard):
+    'Print Trial Balance'
+    _name = 'account.account.print_trial_balance'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.account.print_trial_balance.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('print', 'Print', 'gtk-print', True),
+                ],
+            },
+        },
+        'print': {
+            'result': {
+                'type': 'print',
+                'report': 'account.account.trial_balance',
+                'state': 'end',
+            },
+        },
+    }
+
+PrintTrialBalance()
+
+
+class TrialBalance(Report):
+    _name = 'account.account.trial_balance'
+
+    def _get_objects(self, cursor, user, ids, model, datas, context):
+        return None
+
+    def parse(self, cursor, user, content, objects, datas, context):
+        if context is None:
+            context = {}
+        context = context.copy()
+        account_obj = self.pool.get('account.account')
+        period_obj = self.pool.get('account.period')
+        company_obj = self.pool.get('company.company')
+
+        company = company_obj.browse(cursor, user,
+                datas['form']['company'], context=context)
+
+        account_ids = account_obj.search(cursor, user, [
+            ('type', '!=', 'view'),
+            ], context=context)
+
+        start_period_ids = [0]
+        if datas['form']['start_period']:
+            start_period = period_obj.browse(cursor, user,
+                    datas['form']['start_period'], context=context)
+            start_period_ids = period_obj.search(cursor, user, [
+                ('fiscalyear', '=', datas['form']['fiscalyear']),
+                ('end_date', '<=', start_period.start_date),
+                ], context=context)
+
+        end_period_ids = []
+        if datas['form']['end_period']:
+            end_period = period_obj.browse(cursor, user,
+                    datas['form']['end_period'], context=context)
+            end_period_ids = period_obj.search(cursor, user, [
+                ('fiscalyear', '=', datas['form']['fiscalyear']),
+                ('end_date', '<=', end_period.start_date),
+                ], context=context)
+            end_period_ids = exclude(end_period_ids, start_period_ids)
+            if datas['form']['end_period'] not in end_period_ids:
+                end_period_ids.append(datas['form']['end_period'])
+        else:
+            end_period_ids = period_obj.search(cursor, user, [
+                ('fiscalyear', '=', datas['form']['fiscalyear']),
+                ], context=context)
+            end_period_ids = exclude(end_period_ids, start_period_ids)
+
+        ctx = context.copy()
+        ctx['fiscalyear'] = datas['form']['fiscalyear']
+        ctx['periods'] = end_period_ids
+        accounts = account_obj.browse(cursor, user, account_ids,
+                context=ctx)
+
+        periods = period_obj.browse(cursor, user, end_period_ids,
+                context=context)
+
+        context['accounts'] = accounts
+        context['start_period'] = periods[0]
+        context['end_period'] = periods[-1]
+        context['company'] = company
+        context['digits'] = company.currency.digits
+        context['sum'] = lambda accounts, field: self.sum(cursor, user,
+                accounts, field, context)
+
+        return super(TrialBalance, self).parse(cursor, user, content, objects,
+                datas, context)
+
+    def sum(self, cursor, user, accounts, field, context):
+        amount = Decimal('0.0')
+        for account in accounts:
+            amount += account[field]
+        return amount
+
+TrialBalance()

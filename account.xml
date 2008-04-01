@@ -370,5 +370,41 @@
             <field name="report_name">account.account.general_ledger</field>
             <field name="report">account/general_ledger.odt</field>
         </record>
+
+        <record model="ir.ui.view" id="print_trial_balance_init_view_form">
+            <field name="model">account.account.print_trial_balance.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Print Trial Balance">
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <newline/>
+                    <label name="start_period"/>
+                    <field name="start_period"/>
+                    <label name="end_period"/>
+                    <field name="end_period"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_trial_balance">
+            <field name="name">Print Trial Balance</field>
+            <field name="wiz_name">account.account.print_trial_balance</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_print_trial_balance"
+            id="menu_print_trial_balance" icon="STOCK_PRINT"/>
+
+        <record model="ir.action.report" id="report_trial_balance">
+            <field name="name">Trial Balance</field>
+            <field name="model">account.account</field>
+            <field name="report_name">account.account.trial_balance</field>
+            <field name="report">account/trial_balance.odt</field>
+        </record>
     </data>
 </tryton>
