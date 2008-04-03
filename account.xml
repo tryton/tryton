@@ -36,6 +36,12 @@
                     <field name="name"/>
                     <label name="code"/>
                     <field name="code"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <label name="account_type"/>
+                    <field name="account_type"/>
                     <label name="partner_account"/>
                     <field name="partner_account"/>
                 </form>
@@ -45,11 +51,13 @@
         <record model="ir.ui.view" id="account_type_view_tree">
             <field name="model">account.account.type</field>
             <field name="type">tree</field>
+            <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Types">
                     <field name="name" select="1"/>
                     <field name="code" select="1"/>
+                    <field name="account_type" select="2"/>
                     <field name="partner_account" select="2"/>
                 </tree>
                 ]]>
@@ -72,6 +80,19 @@
         </record>
         <menuitem parent="menu_general_account_configuration"
             action="act_account_type_form" id="menu_account_type_form"/>
+        <record model="ir.action.act_window" id="act_account_type_tree">
+            <field name="name">Account Types</field>
+            <field name="res_model">account.account.type</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_type_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_type_view_tree"/>
+            <field name="act_window" ref="act_account_type_tree"/>
+        </record>
+        <menuitem parent="menu_account_type_form"
+            action="act_account_type_tree" id="menu_account_type_tree"/>
         <record model="ir.model.access" id="access_account_type">
             <field name="model" search="[('model', '=', 'account.account.type')]"/>
             <field name="perm_read" eval="True"/>
@@ -87,47 +108,95 @@
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="True"/>
         </record>
-        <record model="account.account.type" id="account_type_receivable">
-            <field name="name">Receivable</field>
-            <field name="code">receivable</field>
-            <field name="partner_account" eval="True"/>
-        </record>
-        <record model="account.account.type" id="account_type_payable">
-            <field name="name">Payable</field>
-            <field name="code">payable</field>
-            <field name="partner_account" eval="True"/>
-        </record>
-        <record model="account.account.type" id="account_type_view">
-            <field name="name">View</field>
-            <field name="code">view</field>
-        </record>
-        <record model="account.account.type" id="account_type_income">
-            <field name="name">Income</field>
-            <field name="code">income</field>
-        </record>
-        <record model="account.account.type" id="account_type_expense">
-            <field name="name">Expense</field>
-            <field name="code">expense</field>
-        </record>
-        <record model="account.account.type" id="account_type_tax">
-            <field name="name">Tax</field>
-            <field name="code">tax</field>
-        </record>
-        <record model="account.account.type" id="account_type_cash">
-            <field name="name">Cash</field>
-            <field name="code">cash</field>
-        </record>
         <record model="account.account.type" id="account_type_asset">
             <field name="name">Asset</field>
             <field name="code">asset</field>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.account.type" id="account_type_asset_current">
+            <field name="name">Current</field>
+            <field name="parent" ref="account_type_asset"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.account.type" id="account_type_asset_current_cash">
+            <field name="name">Cash</field>
+            <field name="code">cash</field>
+            <field name="parent" ref="account_type_asset_current"/>
+            <field name="sequence" eval="10"/>
+            <field name="account_type" eval="True"/>
+        </record>
+        <record model="account.account.type" id="account_type_asset_current_receivable">
+            <field name="name">Receivable</field>
+            <field name="code">receivable</field>
+            <field name="parent" ref="account_type_asset_current"/>
+            <field name="partner_account" eval="True"/>
+            <field name="sequence" eval="20"/>
+            <field name="account_type" eval="True"/>
+        </record>
+        <record model="account.account.type" id="account_type_asset_long_term">
+            <field name="name">Long-term</field>
+            <field name="parent" ref="account_type_asset"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record model="account.account.type" id="account_type_liability">
+            <field name="name">Liability</field>
+            <field name="code">liability</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record model="account.account.type" id="account_type_liability_current">
+            <field name="name">Current</field>
+            <field name="parent" ref="account_type_liability"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.account.type" id="account_type_liability_current_payable">
+            <field name="name">Payable</field>
+            <field name="code">payable</field>
+            <field name="parent" ref="account_type_liability_current"/>
+            <field name="partner_account" eval="True"/>
+            <field name="sequence" eval="10"/>
+            <field name="account_type" eval="True"/>
+        </record>
+        <record model="account.account.type" id="account_type_liability_current_tax">
+            <field name="name">Tax</field>
+            <field name="code">tax</field>
+            <field name="parent" ref="account_type_liability_current"/>
+            <field name="sequence" eval="20"/>
+            <field name="account_type" eval="True"/>
+        </record>
+        <record model="account.account.type" id="account_type_liability_long_term">
+            <field name="name">Long-term</field>
+            <field name="parent" ref="account_type_liability"/>
+            <field name="sequence" eval="20"/>
         </record>
         <record model="account.account.type" id="account_type_equity">
             <field name="name">Equity</field>
             <field name="code">equity</field>
+            <field name="sequence" eval="30"/>
+            <field name="account_type" eval="True"/>
+        </record>
+        <record model="account.account.type" id="account_type_revenue">
+            <field name="name">Revenue</field>
+            <field name="code">revenue</field>
+            <field name="sequence" eval="40"/>
+            <field name="account_type" eval="True"/>
+        </record>
+        <record model="account.account.type" id="account_type_expense">
+            <field name="name">Expense</field>
+            <field name="code">expense</field>
+            <field name="sequence" eval="50"/>
+            <field name="account_type" eval="True"/>
+        </record>
+        <record model="account.account.type" id="account_type_view">
+            <field name="name">View</field>
+            <field name="code">view</field>
+            <field name="sequence" eval="60"/>
+            <field name="account_type" eval="True"/>
         </record>
         <record model="account.account.type" id="account_type_closed">
             <field name="name">Closed</field>
             <field name="code">closed</field>
+            <field name="sequence" eval="70"/>
+            <field name="account_type" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="account_view_form">
@@ -147,7 +216,7 @@
                             <label name="company"/>
                             <field name="company"/>
                             <label name="type"/>
-                            <field name="type"/>
+                            <field name="type" widget="selection"/>
                             <label name="currency"/>
                             <field name="currency"/>
                             <label name="second_currency"/>
@@ -268,12 +337,12 @@
         <record model="account.account" id="account_root">
             <field name="name">Root</field>
             <field name="close_method">none</field>
-            <field name="type">view</field>
+            <field name="type" ref="account_type_view"/>
             <field name="company" ref="company.main"/>
         </record>
         <record model="account.account" id="account_receivable">
             <field name="name">Main Receivable</field>
-            <field name="type">receivable</field>
+            <field name="type" ref="account_type_asset_current_receivable"/>
             <field name="company" ref="company.main"/>
             <field name="reconcile" eval="True"/>
             <field name="close_method">unreconciled</field>
@@ -281,27 +350,27 @@
         </record>
         <record model="account.account" id="account_payable">
             <field name="name">Main Payable</field>
-            <field name="type">payable</field>
+            <field name="type" ref="account_type_liability_current_payable"/>
             <field name="company" ref="company.main"/>
             <field name="reconcile" eval="True"/>
             <field name="close_method">unreconciled</field>
             <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
-        <record model="account.account" id="account_income">
-            <field name="name">Main Income</field>
-            <field name="type">income</field>
+        <record model="account.account" id="account_revenue">
+            <field name="name">Main Revenue</field>
+            <field name="type" ref="account_type_revenue"/>
             <field name="company" ref="company.main"/>
             <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
         <record model="account.account" id="account_expense">
             <field name="name">Main Expense</field>
-            <field name="type">expense</field>
+            <field name="type" ref="account_type_expense"/>
             <field name="company" ref="company.main"/>
             <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
         <record model="account.account" id="account_cash">
             <field name="name">Main Cash</field>
-            <field name="type">cash</field>
+            <field name="type" ref="account_type_asset_current_cash"/>
             <field name="company" ref="company.main"/>
             <field name="parents" eval="[('add', ref('account_root'))]"/>
         </record>
@@ -406,5 +475,56 @@
             <field name="report_name">account.account.trial_balance</field>
             <field name="report">account/trial_balance.odt</field>
         </record>
+
+        <record model="ir.ui.view" id="open_balance_sheet_init_view_form">
+            <field name="model">account.account.open_balance_sheet.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Balance Sheet" col="2">
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_balance_sheet_view_tree">
+            <field name="model">account.account.type</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Balance Sheet">
+                    <field name="name"/>
+                    <field name="amount"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_balance_sheet_tree">
+            <field name="name">Balance Sheet</field>
+            <field name="res_model">account.account.type</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_balance_sheet_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_balance_sheet_view_tree"/>
+            <field name="act_window" ref="act_account_balance_sheet_tree"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_open_balance_sheet">
+            <field name="name">Open Balance Sheet</field>
+            <field name="wiz_name">account.account.open_balance_sheet</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_open_balance_sheet"
+            id="menu_print_balance_sheet" icon="STOCK_INDENT"
+            name="Balance Sheet"/>
+
     </data>
 </tryton>

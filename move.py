@@ -332,7 +332,7 @@ class Line(OSV):
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'])
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('type', '!=', 'view'), ('type', '!=', 'closed')],
+            domain=[('type.code', '!=', 'view'), ('type.code', '!=', 'closed')],
             select=1,
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'])
@@ -786,12 +786,44 @@ class Line(OSV):
 
     def query_get(self, cursor, user, obj='l', context=None):
         '''
-        Return SQL clause for account move line.
+        Return SQL clause for account move line depending of the context.
         obj is the SQL alias of the account_move_line in the query.
         '''
         fiscalyear_obj = self.pool.get('account.fiscalyear')
         if context is None:
             context = {}
+
+        if context.get('date'):
+            fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
+                ('start_date', '<=', context['date']),
+                ('end_date', '>=', context['date']),
+                ], limit=1, context=context)
+            if context.get('posted'):
+                return obj + '.active ' \
+                        'AND ' + obj + '.state != \'draft\' ' \
+                        'AND ' + obj + '.move IN (' \
+                            'SELECT m.id FROM account_move AS m, ' \
+                                'account_period AS p ' \
+                                'WHERE m.period = p.id ' \
+                                    'AND p.fiscalyear = ' + \
+                                        str(fiscalyear_ids[0]) + ' ' \
+                                    'AND m.date <= \'' + \
+                                        str(context['date']) + '\' ' \
+                                    'AND m.state = \'posted\' ' \
+                            ')'
+            else:
+                return obj + '.active ' \
+                        'AND ' + obj + '.state != \'draft\' ' \
+                        'AND ' + obj + '.move IN (' \
+                            'SELECT m.id FROM account_move AS m, ' \
+                                'account_period AS p ' \
+                                'WHERE m.period = p.id ' \
+                                    'AND p.fiscalyear = ' + \
+                                        str(fiscalyear_ids[0]) + ' ' \
+                                    'AND m.date <= \'' + \
+                                        str(context['date']) + '\'' \
+                            ')'
+
         if not context.get('fiscalyear', False):
             fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
                 ('state', '=', 'open'),
@@ -799,6 +831,7 @@ class Line(OSV):
             fiscalyear_clause = (','.join([str(x) for x in fiscalyear_ids])) or '0'
         else:
             fiscalyear_clause = '%s' % int(context.get('fiscalyear'))
+
         if context.get('periods', False):
             ids = ','.join([str(int(x)) for x in context['periods']])
             if context.get('posted'):
@@ -848,7 +881,7 @@ class Line(OSV):
 
     def check_account(self, cursor, user, ids):
         for line in self.browse(cursor, user, ids):
-            if line.account.type in ('view', 'closed'):
+            if line.account.type.code in ('view', 'closed'):
                 return False
             if not line.account.active:
                 return False
@@ -1255,7 +1288,7 @@ class ReconcileLinesWriteOff(WizardOSV):
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     period = fields.Many2One('account.period', 'Period', required=True)
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('type', '!=', 'view'), ('type', '!=', 'closed')])
+            domain=[('type.code', '!=', 'view'), ('type.code', '!=', 'closed')])
 
     def default_period(self, cursor, user, context=None):
         period_obj = self.pool.get('account.period')
@@ -1374,7 +1407,7 @@ UnreconcileLines()
 class OpenReconcileLinesInit(WizardOSV):
     _name = 'account.move.open_reconcile_lines.init'
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('type', '!=', 'view'), ('reconcile', '=', True)])
+            domain=[('type.code', '!=', 'view'), ('reconcile', '=', True)])
 
 OpenReconcileLinesInit()
 
@@ -1473,10 +1506,12 @@ class Partner(OSV):
         cursor.execute('SELECT l.partner, ' \
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
                 'FROM account_move_line AS l, ' \
-                    'account_account AS a ' \
+                    'account_account AS a, ' \
+                    'account_account_type AS t ' \
                 'WHERE a.id = l.account ' \
                     'AND a.active ' \
-                    'AND a.type = %s ' \
+                    'AND a.type = t.id ' \
+                    'AND t.code = %s ' \
                     'AND l.partner IN ' \
                         '(' + ','.join(['%s' for x in ids]) + ') ' \
                     'AND l.reconciliation IS NULL ' \
@@ -1520,10 +1555,12 @@ class Partner(OSV):
 
         cursor.execute('SELECT l.partner ' \
                 'FROM account_move_line AS l, ' \
-                    'account_account AS a ' \
+                    'account_account AS a, ' \
+                    'account_account_type AS t ' \
                 'WHERE a.id = l.account ' \
                     'AND a.active ' \
-                    'AND a.type = %s ' \
+                    'AND a.type = t.id ' \
+                    'AND t.code = %s ' \
                     'AND l.partner IS NOT NULL ' \
                     'AND l.reconciliation IS NOT NULL ' \
                     'AND ' + line_query + ' ' \

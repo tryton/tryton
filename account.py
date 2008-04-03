@@ -5,25 +5,85 @@ from trytond.osv.orm import ID_MAX, exclude
 from trytond.wizard import Wizard, WizardOSV
 from trytond.report import Report
 from decimal import Decimal
+import datetime
+import time
+import locale
+import os
+from trytond.report.report import _LOCALE2WIN32
 
 
 class Type(OSV):
     'Account Type'
     _name = 'account.account.type'
-    _order = 'code'
+    _order = 'sequence, id'
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, translate=True)
-    code = fields.Char('Code', size=None, required=True)
+    code = fields.Char('Code', size=None)
+    parent = fields.Many2One('account.account.type', 'Parent')
+    childs = fields.One2Many('account.account.type', 'parent', 'Childs')
+    sequence = fields.Integer('Sequence', required=True,
+            help='Use to order the account type')
+    #TODO add constraint (only for end level)
+    account_type = fields.Boolean('Account Type',
+            help='Can be use as type for account')
     partner_account = fields.Boolean('Partner account')
-
-    def __init__(self):
-        super(Type, self).__init__()
-        self._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'Code must be unique!'),
-        ]
+    #TODO fix digits depend of the currency
+    amount = fields.Function('get_amount', digits=(16, 2), string='Amount')
 
     def default_partner_account(self, cursor, user, context=None):
         return False
+
+    def default_sequence(self, cursor, user, context=None):
+        cursor.execute('SELECT MAX(sequence) ' \
+                'FROM "' + self._table + '"')
+        res = cursor.fetchone()
+        if res:
+            return res[0]
+        return 0
+
+    def default_account_type(self, cursor, user, context=None):
+        return False
+
+    def get_amount(self, cursor, user, ids, name, arg, context=None):
+        company_obj = self.pool.get('company.company')
+        account_obj = self.pool.get('account.account')
+        currency_obj = self.pool.get('account.currency')
+
+        if context is None:
+            context = {}
+        res = {}
+        for type_id in ids:
+            res[type_id] = Decimal('0.0')
+
+        if not context.get('company'):
+            return res
+        company = company_obj.browse(cursor, user, context['company'],
+                context=context)
+
+        child_ids = self.search(cursor, user, [
+            ('parent', 'child_of', ids),
+            ], context=context)
+        type_sum = {}
+        for type_id in child_ids:
+            type_sum[type_id] = Decimal('0.0')
+
+        account_ids = account_obj.search(cursor, user, [
+            ('type', 'in', child_ids),
+            ('company', '=', company.id),
+            ], context=context)
+        for account in account_obj.browse(cursor, user, account_ids,
+                context=context):
+            type_sum[account.type.id] += currency_obj.round(cursor, user,
+                    company.currency, account.debit - account.credit)
+        for type_id in ids:
+            child_ids = self.search(cursor, user, [
+                ('parent', 'child_of', [type_id]),
+                ], context=context)
+            for child_id in child_ids:
+                res[type_id] += type_sum[child_id]
+            res[type_id] = currency_obj.round(cursor, user,
+                        company.currency, res[type_id])
+        return res
 
 Type()
 
@@ -45,7 +105,8 @@ class Account(OSV):
     second_currency = fields.Many2One('account.currency', 'Secondary currency',
             help='Force all moves for this account \n' \
                     'to have this secondary currency.')
-    type = fields.Selection('get_types', 'Type', required=True)
+    type = fields.Many2One('account.account.type', 'Type', required=True,
+            domain=[('account_type', '=', True)])
     parents = fields.Many2Many('account.account', 'account_account_rel',
             'child', 'parent', 'Parents')
     childs = fields.Many2Many('account.account', 'account_account_rel',
@@ -87,7 +148,11 @@ class Account(OSV):
         return context.get('company', False)
 
     def default_type(self, cursor, user, context=None):
-        return 'view'
+        type_obj = self.pool.get('account.account.type')
+        types = type_obj.search(cursor, user, [
+            ('code', '=', 'view'),
+            ], limit=1, context=context)
+        return type_obj.name_get(cursor, user, types, context=context)[0]
 
     def default_reconcile(self, cursor, user, context=None):
         return False
@@ -131,12 +196,6 @@ class Account(OSV):
                 res[i] = False
         return res
 
-    def get_types(self, cursor, user, context=None):
-        type_obj = self.pool.get('account.account.type')
-        type_ids = type_obj.search(cursor, user, [], context=context)
-        types = type_obj.browse(cursor, user, type_ids, context=context)
-        return [(x.code, x.name) for x in types]
-
     def get_balance(self, cursor, user, ids, name, arg, context=None):
         res = {}
         company_obj = self.pool.get('company.company')
@@ -152,7 +211,9 @@ class Account(OSV):
                 'FROM account_account a ' \
                     'LEFT JOIN account_move_line l ' \
                     'ON (a.id = l.account) ' \
-                'WHERE a.type != \'view\' ' \
+                    'JOIN account_account_type t ' \
+                    'ON (a.type = t.id) ' \
+                'WHERE t.code != \'view\' ' \
                     'AND a.id IN (' + \
                         ','.join(['%s' for x in all_ids]) + ') ' \
                     'AND ' + line_query + ' ' \
@@ -201,7 +262,9 @@ class Account(OSV):
                 'FROM account_account a ' \
                     'LEFT JOIN account_move_line l ' \
                     'ON (a.id = l.account) ' \
-                'WHERE a.type != \'view\' ' \
+                    'JOIN account_account_type t ' \
+                    'ON (a.type = t.id) ' \
+                'WHERE t.code != \'view\' ' \
                     'AND a.id IN (' + \
                         ','.join(['%s' for x in ids]) + ') ' \
                     'AND ' + line_query + ' ' \
@@ -342,7 +405,7 @@ class Partner(OSV):
     account_payable = fields.Property('account.account', type='many2one',
             relation='account.account', string='Account Payable',
             group_name='Accounting Properties', view_load=True,
-            domain="[('type', '=', 'payable'), ('company', '=', company)]",
+            domain="[('type.code', '=', 'payable'), ('company', '=', company)]",
             states={
                 'required': "company",
                 'invisible': "not company",
@@ -350,7 +413,7 @@ class Partner(OSV):
     account_receivable = fields.Property('account.account', type='many2one',
             relation='account.account', string='Account Receivable',
             group_name='Accounting Properties', view_load=True,
-            domain="[('type', '=', 'receivable'), ('company', '=', company)]",
+            domain="[('type.code', '=', 'receivable'), ('company', '=', company)]",
             states={
                 'required': "company",
                 'invisible': "not company",
@@ -636,7 +699,7 @@ class TrialBalance(Report):
                 datas['form']['company'], context=context)
 
         account_ids = account_obj.search(cursor, user, [
-            ('type', '!=', 'view'),
+            ('type.code', '!=', 'view'),
             ], context=context)
 
         start_period_ids = [0]
@@ -668,6 +731,7 @@ class TrialBalance(Report):
         ctx = context.copy()
         ctx['fiscalyear'] = datas['form']['fiscalyear']
         ctx['periods'] = end_period_ids
+        ctx['posted'] = datas['form']['posted']
         accounts = account_obj.browse(cursor, user, account_ids,
                 context=ctx)
 
@@ -692,3 +756,96 @@ class TrialBalance(Report):
         return amount
 
 TrialBalance()
+
+
+class OpenBalanceSheet(WizardOSV):
+    _name = 'account.account.open_balance_sheet.init'
+    date = fields.Date('Date', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True)
+    posted = fields.Boolean('Posted Move', help='Only posted move')
+
+    def default_date(self, cursor, user, context=None):
+        return datetime.date.today()
+
+    def default_company(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        company_obj = self.pool.get('company.company')
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
+    def default_posted(self, cursor, user, context=None):
+        return False
+
+OpenBalanceSheet()
+
+
+class OpenBalanceSheet(Wizard):
+    'Open Balance Sheet'
+    _name = 'account.account.open_balance_sheet'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.account.open_balance_sheet.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('open', 'Open', 'gtk-ok', True),
+                ],
+            },
+        },
+        'open': {
+            'result': {
+                'type': 'action',
+                'action': '_action_open',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _get_root_codes(self, cursor, user, data, context=None):
+        return ('asset', 'liability', 'equity')
+
+    def _action_open(self, cursor, user, data, context=None):
+        if context is None:
+            context = {}
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+        company_obj = self.pool.get('company.company')
+
+        company = company_obj.browse(cursor, user, data['form']['company'],
+                context=context)
+        lang = context.get('language', False) or 'en_US'
+        try:
+            if os.name == 'nt':
+                locale.setlocale(locale.LC_ALL,
+                        _LOCALE2WIN32.get(lang, lang) + '.' + encoding)
+            else:
+                locale.setlocale(locale.LC_ALL, lang + '.' + encoding)
+        except:
+            pass
+        date = time.strptime(str(data['form']['date']), '%Y-%m-%d')
+        date = time.strftime(locale.nl_langinfo(locale.D_FMT).\
+                replace('%y', '%Y'), date)
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_account_balance_sheet_tree'),
+            ('module', '=', 'account'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res['context'] = str({
+            'date': data['form']['date'],
+            'posted': data['form']['posted'],
+            'company': data['form']['company'],
+            })
+        res['domain'] = res['domain'][:-1] + ', ' + \
+                str(('code', 'in', self._get_root_codes(cursor, user, data,
+                    context=context))) + res['domain'][-1]
+        res['name'] = res['name'] + ' - '+ date + ' - ' + company.name
+        return res
+
+OpenBalanceSheet()
