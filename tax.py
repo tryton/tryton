@@ -287,14 +287,6 @@ class Tax(OSV):
         return group_obj.name_get(cursor, user, group_ids[0],
                 context=context)
 
-    def default_sequence(self, cursor, user, context=None):
-        cursor.execute('SELECT MAX(sequence) ' \
-                'FROM "' + self._table + '"')
-        res = cursor.fetchone()
-        if res:
-            return res[0]
-        return 0
-
     def default_type(self, cursor, user, context=None):
         return 'percentage'
 

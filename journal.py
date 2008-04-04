@@ -53,14 +53,6 @@ class Column(OSV):
     required = fields.Boolean('Required')
     readonly = fields.Boolean('Readonly')
 
-    def default_sequence(self, cursor, user, context=None):
-        cursor.execute('SELECT MAX(sequence) ' \
-                'FROM "' + self._table+'"')
-        res = cursor.fetchone()
-        if res:
-            return res[0]
-        return 0
-
 Column()
 
 
