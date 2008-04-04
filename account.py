@@ -758,7 +758,7 @@ class TrialBalance(Report):
 TrialBalance()
 
 
-class OpenBalanceSheet(WizardOSV):
+class OpenBalanceSheetInit(WizardOSV):
     _name = 'account.account.open_balance_sheet.init'
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
@@ -779,7 +779,7 @@ class OpenBalanceSheet(WizardOSV):
     def default_posted(self, cursor, user, context=None):
         return False
 
-OpenBalanceSheet()
+OpenBalanceSheetInit()
 
 
 class OpenBalanceSheet(Wizard):
@@ -805,17 +805,17 @@ class OpenBalanceSheet(Wizard):
         },
     }
 
-    def _get_root_codes(self, cursor, user, data, context=None):
+    def _get_root_codes(self, cursor, user, datas, context=None):
         return ('asset', 'liability', 'equity')
 
-    def _action_open(self, cursor, user, data, context=None):
+    def _action_open(self, cursor, user, datas, context=None):
         if context is None:
             context = {}
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         company_obj = self.pool.get('company.company')
 
-        company = company_obj.browse(cursor, user, data['form']['company'],
+        company = company_obj.browse(cursor, user, datas['form']['company'],
                 context=context)
         lang = context.get('language', False) or 'en_US'
         try:
@@ -826,7 +826,7 @@ class OpenBalanceSheet(Wizard):
                 locale.setlocale(locale.LC_ALL, lang + '.' + encoding)
         except:
             pass
-        date = time.strptime(str(data['form']['date']), '%Y-%m-%d')
+        date = time.strptime(str(datas['form']['date']), '%Y-%m-%d')
         date = time.strftime(locale.nl_langinfo(locale.D_FMT).\
                 replace('%y', '%Y'), date)
 
@@ -838,14 +838,136 @@ class OpenBalanceSheet(Wizard):
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
         res['context'] = str({
-            'date': data['form']['date'],
-            'posted': data['form']['posted'],
-            'company': data['form']['company'],
+            'date': datas['form']['date'],
+            'posted': datas['form']['posted'],
+            'company': datas['form']['company'],
             })
         res['domain'] = res['domain'][:-1] + ', ' + \
-                str(('code', 'in', self._get_root_codes(cursor, user, data,
+                str(('code', 'in', self._get_root_codes(cursor, user, datas,
                     context=context))) + res['domain'][-1]
         res['name'] = res['name'] + ' - '+ date + ' - ' + company.name
         return res
 
 OpenBalanceSheet()
+
+
+class OpenIncomeStatementInit(WizardOSV):
+    _name = 'account.account.open_income_statement.init'
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+            required=True, on_change=['fiscalyear'])
+    start_period = fields.Many2One('account.period', 'Start Period',
+            domain="[('fiscalyear', '=', fiscalyear), " \
+                    "('start_date', '<=', (end_period, 'start_date'))]")
+    end_period = fields.Many2One('account.period', 'End Period',
+            domain="[('fiscalyear', '=', fiscalyear), " \
+                    "('start_date', '>=', (start_period, 'start_date'))]")
+    company = fields.Many2One('company.company', 'Company', required=True)
+    posted = fields.Boolean('Posted Move', help='Only posted move')
+
+    def default_fiscalyear(self, cursor, user, context=None):
+        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_id = fiscalyear_obj.find(cursor, user, exception=False,
+                context=context)
+        if fiscalyear_id:
+            return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
+                    context=context)[0]
+        return False
+
+    def default_company(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        company_obj = self.pool.get('company.company')
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
+    def default_posted(self, cursor, user, context=None):
+        return False
+
+    def on_change_fiscalyear(self, cursor, user, ids, vals, context=None):
+        return {
+            'start_period': False,
+            'end_period': False,
+        }
+
+OpenIncomeStatementInit()
+
+
+class OpenIncomeStatement(Wizard):
+    'Open Income Statement'
+    _name = 'account.account.open_income_statement'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.account.open_income_statement.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('open', 'Open', 'gtk-ok', True),
+                ],
+            },
+        },
+        'open': {
+            'result': {
+                'type': 'action',
+                'action': '_action_open',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _get_root_codes(self, cursor, user, datas, context=None):
+        return ('income',)
+
+    def _action_open(self, cursor, user, datas, context=None):
+        if context is None:
+            context = {}
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+        period_obj = self.pool.get('account.period')
+
+        start_period_ids = [0]
+        if datas['form']['start_period']:
+            start_period = period_obj.browse(cursor, user,
+                    datas['form']['start_period'], context=context)
+            start_period_ids = period_obj.search(cursor, user, [
+                ('fiscalyear', '=', datas['form']['fiscalyear']),
+                ('end_date', '<=', start_period.start_date),
+                ], context=context)
+
+        end_period_ids = []
+        if datas['form']['end_period']:
+            end_period = period_obj.browse(cursor, user,
+                    datas['form']['end_period'], context=context)
+            end_period_ids = period_obj.search(cursor, user, [
+                ('fiscalyear', '=', datas['form']['fiscalyear']),
+                ('end_date', '<=', end_period.start_date),
+                ], context=context)
+            end_period_ids = exclude(end_period_ids, start_period_ids)
+            if datas['form']['end_period'] not in end_period_ids:
+                end_period_ids.append(datas['form']['end_period'])
+        else:
+            end_period_ids = period_obj.search(cursor, user, [
+                ('fiscalyear', '=', datas['form']['fiscalyear']),
+                ], context=context)
+            end_period_ids = exclude(end_period_ids, start_period_ids)
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_account_income_statement_tree'),
+            ('module', '=', 'account'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res['context'] = str({
+            'periods': end_period_ids,
+            'posted': datas['form']['posted'],
+            'company': datas['form']['company'],
+            })
+        res['domain'] = res['domain'][:-1] + ', ' + \
+                str(('code', 'in', self._get_root_codes(cursor, user, datas,
+                    context=context))) + res['domain'][-1]
+        return res
+
+OpenIncomeStatement()

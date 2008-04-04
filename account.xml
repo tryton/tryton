@@ -174,28 +174,35 @@
             <field name="sequence" eval="30"/>
             <field name="account_type" eval="True"/>
         </record>
+        <record model="account.account.type" id="account_type_income">
+            <field name="name">Income</field>
+            <field name="code">income</field>
+            <field name="sequence" eval="40"/>
+        </record>
         <record model="account.account.type" id="account_type_revenue">
             <field name="name">Revenue</field>
             <field name="code">revenue</field>
-            <field name="sequence" eval="40"/>
+            <field name="parent" ref="account_type_income"/>
+            <field name="sequence" eval="10"/>
             <field name="account_type" eval="True"/>
         </record>
         <record model="account.account.type" id="account_type_expense">
             <field name="name">Expense</field>
             <field name="code">expense</field>
-            <field name="sequence" eval="50"/>
+            <field name="parent" ref="account_type_income"/>
+            <field name="sequence" eval="20"/>
             <field name="account_type" eval="True"/>
         </record>
         <record model="account.account.type" id="account_type_view">
             <field name="name">View</field>
             <field name="code">view</field>
-            <field name="sequence" eval="60"/>
+            <field name="sequence" eval="50"/>
             <field name="account_type" eval="True"/>
         </record>
         <record model="account.account.type" id="account_type_closed">
             <field name="name">Closed</field>
             <field name="code">closed</field>
-            <field name="sequence" eval="70"/>
+            <field name="sequence" eval="60"/>
             <field name="account_type" eval="True"/>
         </record>
 
@@ -523,8 +530,63 @@
             <field name="wiz_name">account.account.open_balance_sheet</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_open_balance_sheet"
-            id="menu_print_balance_sheet" icon="STOCK_INDENT"
+            id="menu_open_balance_sheet" icon="STOCK_INDENT"
             name="Balance Sheet"/>
+
+        <record model="ir.ui.view" id="open_income_statement_init_view_form">
+            <field name="model">account.account.open_income_statement.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Income Statement">
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <newline/>
+                    <label name="start_period"/>
+                    <field name="start_period"/>
+                    <label name="end_period"/>
+                    <field name="end_period"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_income_statement_view_tree">
+            <field name="model">account.account.type</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Income Statement">
+                    <field name="name"/>
+                    <field name="amount"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_income_statement_tree">
+            <field name="name">Income Statement</field>
+            <field name="res_model">account.account.type</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_income_statement_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_income_statement_view_tree"/>
+            <field name="act_window" ref="act_account_income_statement_tree"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_open_income_statement">
+            <field name="name">Open Income Statement</field>
+            <field name="wiz_name">account.account.open_income_statement</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_open_income_statement"
+            id="menu_open_income_statement" icon="STOCK_INDENT"
+            name="Income Statement"/>
 
     </data>
 </tryton>
