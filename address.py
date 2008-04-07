@@ -31,9 +31,6 @@ class Address(OSV):
     def default_active(self, cursor, user, context=None):
         return 1
 
-    def default_sequence(self, cursor, user, context=None):
-        return 10
-
     def name_get(self, cursor, user, ids, context=None):
         if not len(ids):
             return []
