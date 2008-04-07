@@ -135,8 +135,8 @@
                             <label name="type"/>
                             <field name="type"/>
                             <group col="1">
-                                <label name="amount" fill="1" xexpand="1"/>
-                                <label name="percentage" fill="1" xexpand="1"/>
+                                <label name="amount" fill="1" xexpand="1" expand="1"/>
+                                <label name="percentage" fill="1" xexpand="1" expand="1"/>
                             </group>
                             <group col="1">
                                 <field name="amount"/>
