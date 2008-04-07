@@ -332,7 +332,7 @@ class Line(OSV):
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'])
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('type.code', '!=', 'view'), ('type.code', '!=', 'closed')],
+            domain=[('type.code', '!=', 'view')],
             select=1,
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'])
@@ -383,7 +383,7 @@ class Line(OSV):
         ]
         self._constraints += [
             ('check_account', 'You can not create move line \n' \
-                    'on view/closed/inactive account!', ['account']),
+                    'on view/inactive account!', ['account']),
         ]
         self._rpc_allowed += [
             'on_write',
@@ -881,7 +881,7 @@ class Line(OSV):
 
     def check_account(self, cursor, user, ids):
         for line in self.browse(cursor, user, ids):
-            if line.account.type.code in ('view', 'closed'):
+            if line.account.type.code in ('view',):
                 return False
             if not line.account.active:
                 return False
@@ -1288,7 +1288,7 @@ class ReconcileLinesWriteOff(WizardOSV):
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     period = fields.Many2One('account.period', 'Period', required=True)
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('type.code', '!=', 'view'), ('type.code', '!=', 'closed')])
+            domain=[('type.code', '!=', 'view')])
 
     def default_period(self, cursor, user, context=None):
         period_obj = self.pool.get('account.period')
