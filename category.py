@@ -9,9 +9,9 @@ class Category(OSV):
 
     name = fields.Char('Name', size=64, required=True)
     complete_name = fields.Function('get_complete_name', type="char", string='Complete Name')
-    parent = fields.Many2One('product.category','Parent Category', select=True)
+    parent = fields.Many2One('product.category','Parent', select=True)
     childs = fields.One2Many('product.category', 'parent',
-            string='Child Categories')
+            string='Childs')
 
     def get_complete_name(self, cursor, user, ids, name, arg, context):
         res = self.name_get(cursor, user, ids, context)
