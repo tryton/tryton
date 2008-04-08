@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">stock.move</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Move" col="6">
+                        <label name="product"/>
+                        <field name="product"/>
+                        <label name="quantity"/>
+                        <field name="quantity"/>
+                        <label name="uom"/>
+                        <field name="uom"/>
+                        <label name="from_location"/>
+                        <field name="from_location"/>
+                        <label name="to_location"/>
+                        <field name="to_location"/>
+                        <label name="lot"/>
+                        <field name="lot"/>
+                        <label name="packing"/>
+                        <field name="packing"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <group col="4" colspan="4">
+                            <button string="Set Waiting" name="set_state_waiting" type="object"
+                                    states="{'invisible': '''state in ('done','cancel','waiting',) '''}"/>
+                            <button string="set Done" name="set_state_done" type="object"
+                                    states="{'invisible': '''state in ('cancel','done',) '''}"/>
+                            <button string="set Draft" name="set_state_draft" type="object"
+                                    states="{'invisible': '''state in
+                                    ('waiting','done', 'draft') '''}"/>
+                            <button string="Cancel" name="set_state_cancel" type="object"
+                                    states="{'invisible': '''state in
+                                    ('draft', 'cancel') '''}"/>
+                        </group>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="move_view_tree">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="moves">
+                        <field name="product" select="1"/>
+                        <field name="from_location" select="1"/>
+                        <field name="to_location" select="1"/>
+                        <field name="quantity" select="2"/>
+                        <field name="uom" select="2"/>
+                        <field name="lot" select="2"/>
+                        <field name="packing" select="2"/>
+                        <field name="state" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_move_form">
+            <field name="name">Moves</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="3"
+            action="act_move_form" id="menu_move_form"/>
+
+
+        <record model="ir.ui.view" id="productbylocation_view_form">
+            <field name="model">stock.product_by_location</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Product by location">
+                        <label name="product"/>
+                        <field name="product"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="productbylocation_view_tree">
+            <field name="model">stock.product_by_location</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Product by locations">
+                        <field name="location"/>
+                        <field name="product"/>
+                        <field name="quantity"/>
+                        <field name="uom"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_productbylocation_form">
+            <field name="name">Products by Location</field>
+            <field name="res_model">stock.product_by_location</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_productbylocation_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="productbylocation_view_tree"/>
+            <field name="act_window" ref="act_productbylocation_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_productbylocation_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="productbylocation_view_form"/>
+            <field name="act_window" ref="act_productbylocation_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="2"
+            action="act_productbylocation_form" id="menu_productbylocation_form"/>
+
+
+        <record model="ir.ui.view" id="productbywarehouse_view_form">
+            <field name="model">stock.product_by_warehouse</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Product by stock">
+                        <label name="product"/>
+                        <field name="product"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="productbywarehouse_view_tree">
+            <field name="model">stock.product_by_warehouse</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Product by warehouses">
+                        <field name="warehouse"/>
+                        <field name="product"/>
+                        <field name="quantity"/>
+                        <field name="uom"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_productbywarehouse_form">
+            <field name="name">Products by Warehouse</field>
+            <field name="res_model">stock.product_by_warehouse</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_productbywarehouse_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="productbywarehouse_view_tree"/>
+            <field name="act_window" ref="act_productbywarehouse_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_productbywarehouse_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="productbywarehouse_view_form"/>
+            <field name="act_window" ref="act_productbywarehouse_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="2"
+            action="act_productbywarehouse_form" id="menu_productbywarehouse_form"/>
+
+        <record model="ir.ui.view" id="packing_create_warn_view_form">
+            <field name="model">stock.move.create_packing.warn</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Create packing" col="2">
+                    <image name="gtk-dialog-info"/>
+                    <label string="Moves already in a shipment will be ignored."/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_create_packing">
+            <field name="name">Create Packing</field>
+            <field name="wiz_name">stock.move.create_packing</field>
+        </record>
+
+        <record model="ir.action.keyword" id="act_create_packing_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.move,0</field>
+            <field name="action" ref="act_create_packing"/>
+        </record>
+
+
+    </data>
+</tryton>

@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!--Packing in -->
+        <record model="ir.ui.view" id="packing_in_view_form">
+            <field name="model">stock.packing.in</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Supplier Packing" col="6">
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <separator name="moves" colspan="6"/>
+                        <field name="moves" colspan="6"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <group col="4" colspan="4">
+                          <button string="Set Done" name="set_state_done" type="object"
+                                  states="{'invisible': '''state in ('cancel','done',) '''}"/>
+                          <button string="Set Draft" name="set_state_draft" type="object"
+                                  states="{'invisible': '''state in ('draft','done','waiting',) '''}"/>
+                          <button string="Set Waiting" name="set_state_waiting" type="object"
+                                  states="{'invisible': '''state in ('waiting','done','cancel',) '''}"/>
+                          <button string="Cancel" name="set_state_cancel" type="object"
+                                  states="{'invisible': '''state in ('draft','cancel',) '''}"/>
+                        </group>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="packing_in_view_tree">
+            <field name="model">stock.packing.in</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Supplier Packings">
+                        <field name="code" select="1"/>
+                        <field name="state" select="1"/>
+                        <field name="effective_date" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_packing_in_form">
+            <field name="name">Supplier Packings</field>
+            <field name="res_model">stock.packing.in</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_in_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_in_view_tree"/>
+            <field name="act_window" ref="act_packing_in_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_in_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_in_view_form"/>
+            <field name="act_window" ref="act_packing_in_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="7"
+            action="act_packing_in_form" id="menu_packing_in_form"/>
+
+
+
+        <record model="ir.sequence.type" id="sequence_type_packing_in">
+                <field name="name">Supplier Packing</field>
+                <field name="code">stock.packing.in</field>
+        </record>
+
+        <record model="ir.sequence" id="sequence_packing_in">
+                <field name="name">Supplier Packing</field>
+                <field name="code">stock.packing.in</field>
+                <field name="prefix">PA-IN: </field>
+                <field name="padding">7</field>
+                <field name="number_next">1</field>
+                <field name="number_increment">1</field>
+        </record>
+
+        <!--Packing out -->
+        <record model="ir.ui.view" id="packing_out_view_form">
+            <field name="model">stock.packing.out</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Customer Packing" col="6">
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <separator name="moves" colspan="6"/>
+                        <field name="moves" colspan="6"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <group col="4" colspan="4">
+                          <button string="Set Done" name="set_state_done" type="object"
+                                  states="{'invisible': '''state in ('cancel','done',) '''}"/>
+                          <button string="Set Draft" name="set_state_draft" type="object"
+                                  states="{'invisible': '''state in ('draft','done','waiting',) '''}"/>
+                          <button string="Set Waiting" name="set_state_waiting" type="object"
+                                  states="{'invisible': '''state in ('waiting','done','cancel',) '''}"/>
+                          <button string="Cancel" name="set_state_cancel" type="object"
+                                  states="{'invisible': '''state in ('draft','cancel',) '''}"/>
+                        </group>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="packing_out_view_tree">
+            <field name="model">stock.packing.out</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Customer Packings">
+                        <field name="code" select="1"/>
+                        <field name="state" select="1"/>
+                        <field name="effective_date" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_packing_out_form">
+            <field name="name">Customer Packings</field>
+            <field name="res_model">stock.packing.out</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_out_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_out_view_tree"/>
+            <field name="act_window" ref="act_packing_out_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_out_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_out_view_form"/>
+            <field name="act_window" ref="act_packing_out_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="7"
+            action="act_packing_out_form" id="menu_packing_out_form"/>
+
+
+
+        <record model="ir.sequence.type" id="sequence_type_packing_out">
+                <field name="name">Customer Packing</field>
+                <field name="code">stock.packing.out</field>
+        </record>
+
+        <record model="ir.sequence" id="sequence_packing_out">
+                <field name="name">Customer Packing</field>
+                <field name="code">stock.packing.out</field>
+                <field name="prefix">PA-OUT: </field>
+                <field name="padding">7</field>
+                <field name="number_next">1</field>
+                <field name="number_increment">1</field>
+        </record>
+
+
+<!-- TODO workflow -->
+
+<!--         <record model="workflow" id="wkf_packingin"> -->
+<!--             <field name="name">Supplier Packing</field> -->
+<!--             <field name="osv">stock.packing.in</field> -->
+<!--             <field name="on_create">True</field> -->
+<!--         </record> -->
+<!--         <record model="workflow.activity" id="packingin_act_draft"> -->
+<!--             <field name="wkf_id" ref="wkf_packingin"/> -->
+<!--             <field name="flow_start">True</field> -->
+<!--             <field name="name">draft</field> -->
+<!--         </record> -->
+<!--         <record model="workflow.activity" id="packingin_act_cancel"> -->
+<!--             <field name="workflow" ref="wkf_packingin"/> -->
+<!--             <field name="flow_stop">True</field> -->
+<!--             <field name="name">cancel</field> -->
+<!--             <field name="action">set_state_cancel()</field> -->
+<!--         </record> -->
+<!--         <record model="workflow.activity" id="packingin_act_done"> -->
+<!--             <field name="workflow" ref="wkf_packingin"/> -->
+<!--             <field name="flow_stop">True</field> -->
+<!--             <field name="name">done</field> -->
+<!--             <field name="action">set_state_done()</field> -->
+<!--         </record> -->
+<!--         <record model="workflow.activity" id="packingin_act_waiting"> -->
+<!--             <field name="workflow" ref="wkf_packingin"/> -->
+<!--             <field name="flow_stop">True</field> -->
+<!--             <field name="name">waiting</field> -->
+<!--             <field name="action">set_state_waiting()</field> -->
+<!--         </record> -->
+
+<!--         <record model="workflow.transition" id="packingin_trans_waiting_done"> -->
+<!--             <field name="act_from" ref="packingin_act_waiting"/> -->
+<!--             <field name="act_to" ref="packingin_act_done"/> -->
+<!--             <field name="signal">set_done</field> -->
+<!--         </record> -->
+<!--         <record model="workflow.transition" id="packingin_trans_draft_waiting"> -->
+<!--             <field name="act_from" ref="packingin_act_draft"/> -->
+<!--             <field name="act_to" ref="packingin_act_waiting"/> -->
+<!--             <field name="signal">set_waiting</field> -->
+<!--         </record> -->
+<!--         <record model="workflow.transition" id="packingin_trans_draft_cencel"> -->
+<!--             <field name="act_from" ref="packingin_act_draft"/> -->
+<!--             <field name="act_to" ref="packingin_act_cancel"/> -->
+<!--             <field name="signal">set_cancel</field> -->
+<!--         </record> -->
+
+
+    </data>
+</tryton>

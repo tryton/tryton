@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="location_view_form">
+            <field name="model">stock.location</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Location">
+                        <label name="name"/>
+                        <field name="name"/>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="usage"/>
+                        <field name="usage"/>
+                        <label name="active"/>
+                        <field name="active"/>
+			<newline/>
+                        <label name="input_zone"/>
+                        <field name="input_zone"/>
+                        <label name="output_zone"/>
+                        <field name="output_zone"/>
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="location_view_tree">
+            <field name="model">stock.location</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="locations">
+                        <field name="name" select="1"/>
+                        <field name="code" select="2"/>
+                        <field name="usage" select="1"/>
+                        <field name="input_zone" select="2"/>
+                        <field name="output_zone" select="2"/>
+                        <field name="warehouse" select="2"/>
+                        <field name="active" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_location_form">
+            <field name="name">Locations</field>
+            <field name="res_model">stock.location</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="location_view_tree"/>
+            <field name="act_window" ref="act_location_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="location_view_form"/>
+            <field name="act_window" ref="act_location_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="2"
+            action="act_location_form" id="menu_location_form"/>
+
+    </data>
+</tryton>
