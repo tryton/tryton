@@ -10,6 +10,7 @@ class UomCategory(OSV):
     _description = __doc__
     _order = 'name'
     name = fields.Char('Name', size=64, required=True)
+    uoms = fields.One2Many('product.uom', 'category', 'Unit of Measures')
 
 UomCategory()
 
