@@ -49,7 +49,7 @@ class Partner(OSV):
     def default_active(self, cursor, user, context=None):
         return 1
 
-    def address_get(self, cursor, user, partner_id, type=None):
+    def address_get(self, cursor, user, partner_id, type=None, context=None):
         """
         Try to find an address for the given type, if no type match
         the first address is return.
@@ -57,13 +57,14 @@ class Partner(OSV):
         address_obj = self.pool.get("partner.address")
         address_ids = address_obj.search(
             cursor, user, [("partner","=",partner_id),("active","=",True)],
-            order="sequence, id")
+            order="sequence, id", context=context)
         if not address_ids:
-            return None
+            return False
         default_address = address_ids[0]
         if not type:
             return default_address
-        for address in address_obj.browse(cursor, user, address_ids):
+        for address in address_obj.browse(cursor, user, address_ids,
+                context=context):
             if address[type]:
                     return address.id
         return default_address
