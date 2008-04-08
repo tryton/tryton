@@ -37,8 +37,14 @@
                     <field name="parent"/>
                     <label name="complete_name"/>
                     <field name="complete_name" colspan="3"/>
-                    <separator name="childs" colspan="4"/>
-                    <field name="childs" colspan="4"/>
+                    <notebook colspan="4">
+                        <page string="Childs" col="1">
+                            <field name="childs"/>
+                        </page>
+                        <page string="Properties">
+                            <properties/>
+                        </page>
+                    </notebook>
                 </form>
                 ]]>
             </field>
