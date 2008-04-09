@@ -1,7 +1,10 @@
+'Address'
 from trytond.osv import fields, OSV
+
 STATES = {
     'readonly': "active == False",
 }
+
 
 class Address(OSV):
     "Partner Address"
@@ -27,19 +30,19 @@ class Address(OSV):
     active = fields.Boolean('Active')
     sequence = fields.Integer("Sequence")
 
-
     def default_active(self, cursor, user, context=None):
         return 1
 
     def name_get(self, cursor, user, ids, context=None):
-        if not len(ids):
+        if not ids:
             return []
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         res = []
         for address in self.browse(cursor, user, ids, context):
             res.append((address.id, ", ".join(x for x in [address.name,
                 address.partner.name, address.zip, address.city] if x)))
         return res
-
 
     def name_search(self, cursor, user, name, args=None, operator='ilike',
                     context=None, limit=80):
