@@ -19,10 +19,10 @@ class Template(OSV):
         ], 'Type', required=True, states=STATES)
     category = fields.Many2One('product.category','Category', required=True,
             states=STATES)
-    list_price = fields.Numeric('List Price', states=STATES)
+    list_price = fields.Numeric('List Price', states=STATES, digits=(16, 4))
     list_price_uom = fields.Function('get_list_price_uom', string='List Price',
             type="numeric", digits=(16, 4))
-    cost_price = fields.Numeric('Cost Price', states=STATES, digits=(12, 2))
+    cost_price = fields.Numeric('Cost Price', states=STATES, digits=(16, 4))
     cost_price_method = fields.Selection([
         ("fixed", "Fixed"),
         ("average", "Average")
