@@ -352,7 +352,7 @@ class Tax(OSV):
         res = self._unit_compute(cursor, user, taxes, price_unit,
                 context=context)
         for row in res:
-            row['amount'] *= quantity
+            row['amount'] *= Decimal(str(quantity))
         return res
 
     def _process_tax_inv(self, cursor, user, tax, price_unit, context=None):
