@@ -498,7 +498,7 @@ Account()
 
 class Partner(OSV):
     _name = 'partner.partner'
-    tax_vat = fields.Property('account.tax', type='many2one',
+    tax_vat = fields.Property(type='many2one',
             relation='account.tax', string='VAT',
             group_name='Accounting Properties', view_load=True,
             domain="[('group.code', '=', 'vat'), ('company', '=', company)]",

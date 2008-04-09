@@ -394,7 +394,7 @@ OpenChartAccount()
 
 class Partner(OSV):
     _name = 'partner.partner'
-    account_payable = fields.Property('account.account', type='many2one',
+    account_payable = fields.Property(type='many2one',
             relation='account.account', string='Account Payable',
             group_name='Accounting Properties', view_load=True,
             domain="[('type.code', '=', 'payable'), ('company', '=', company)]",
@@ -402,7 +402,7 @@ class Partner(OSV):
                 'required': "company",
                 'invisible': "not company",
             })
-    account_receivable = fields.Property('account.account', type='many2one',
+    account_receivable = fields.Property(type='many2one',
             relation='account.account', string='Account Receivable',
             group_name='Accounting Properties', view_load=True,
             domain="[('type.code', '=', 'receivable'), ('company', '=', company)]",

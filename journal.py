@@ -71,13 +71,13 @@ class Journal(OSV):
     update_posted = fields.Boolean('Allow cancelling moves')
     sequence = fields.Many2One('ir.sequence', 'Sequence', required=True,
             domain="[('code', '=', 'account.journal')]")
-    credit_account = fields.Property('account.account', type='many2one',
+    credit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Credit Account',
             domain="[('type', '!=', 'view'), ('company', '=', company)]",
             states={
                 'required': "centralised",
             })
-    debit_account = fields.Property('account.account', type='many2one',
+    debit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Debit Account',
             domain="[('type', '!=', 'view'), ('company', '=', company)]",
             states={
