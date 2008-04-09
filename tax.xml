@@ -239,7 +239,7 @@
         </record>
         <record model="account.tax.group" id="tax_group_vat">
             <field name="name">VAT</field>
-            <field name="code">vat</field>
+            <field name="code">tax_vat</field>
         </record>
 
         <record model="ir.ui.view" id="tax_line_view_form">
