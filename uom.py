@@ -121,7 +121,7 @@ class Uom(OSV):
         values = self.check_factor_and_rate(values)
         return super(Uom, self).write(cursor, user, ids, values, context)
 
-    def _compute_qty(self, cursor, user, from_uom, qty, to_uom=False):
+    def compute_qty(self, cursor, user, from_uom, qty, to_uom=False):
         """
         Convert quantity for given uom's. from_uom and to_uom should
         be browse records.
@@ -141,7 +141,7 @@ class Uom(OSV):
                 amount = self.round(amount * to_uom.rate, to_uom.rounding)
         return amount
 
-    def _compute_price(self, cursor, user, from_uom, price, to_uom=False):
+    def compute_price(self, cursor, user, from_uom, price, to_uom=False):
         """
         Convert price for given uom's. from_uom and to_uom should be
         browse records.
