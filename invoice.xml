@@ -1,0 +1,536 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <menuitem name="Invoices" parent="account.menu_account_configuration"
+            id="menu_invoices_configuration"/>
+        <menuitem name="Invoices" parent="account.menu_account"
+            id="menu_invoices" sequence="20"/>
+
+        <record model="ir.ui.view" id="payment_term_view_form">
+            <field name="model">account.invoice.payment_term</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Payment Term">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <field name="description" colspan="4"/>
+                    <field name="lines" colspan="4">
+                        <tree string="Payment Term Line" sequence="sequence">
+                            <field name="type"/>
+                            <field name="percent"/>
+                            <field name="amount"/>
+                            <field name="currency"/>
+                            <field name="days"/>
+                            <field name="delay"/>
+                            <field name="sequence" tree_invisible="1"/>
+                        </tree>
+                        <form string="Payment Term Lines">
+                            <label name="type"/>
+                            <field name="type"/>
+                            <group col="1">
+                                <label name="percent" fill="1" xexpand="1" expand="1"/>
+                                <label name="amount" fill="1" xexpand="1" expand="1"/>
+                            </group>
+                            <group col="3">
+                                <field name="percent" colspan="3"/>
+                                <field name="amount"/>
+                                <label name="currency"/>
+                                <field name="currency"/>
+                            </group>
+                            <label name="days"/>
+                            <field name="days"/>
+                            <label name="delay"/>
+                            <field name="delay"/>
+                        </form>
+                    </field>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="payment_term_view_tree">
+            <field name="model">account.invoice.payment_term</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Payment Terms">
+                    <field name="name" select="1"/>
+                    <field name="active" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_payment_term_form">
+            <field name="name">Payment Terms</field>
+            <field name="res_model">account.invoice.payment_term</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_term_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="payment_term_view_tree"/>
+            <field name="act_window" ref="act_payment_term_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_payment_term_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="payment_term_view_form"/>
+            <field name="act_window" ref="act_payment_term_form"/>
+        </record>
+        <menuitem parent="menu_invoices_configuration" action="act_payment_term_form"
+            id="menu_payment_term_form"/>
+
+        <record model="account.invoice.payment_term.line.type"
+            id="payment_term_line_type_fixed">
+            <field name="name">Fixed</field>
+            <field name="code">fixed</field>
+        </record>
+        <record model="account.invoice.payment_term.line.type"
+            id="payment_term_line_type_percent">
+            <field name="name">Percent</field>
+            <field name="code">percent</field>
+        </record>
+        <record model="account.invoice.payment_term.line.type"
+            id="payment_term_line_type_remainder">
+            <field name="name">Remainder</field>
+            <field name="code">remainder</field>
+        </record>
+
+        <record model="account.invoice.payment_term.line.delay"
+            id="payment_term_line_delay_net_days">
+            <field name="name">Net Days</field>
+            <field name="code">net_days</field>
+        </record>
+        <record model="account.invoice.payment_term.line.delay"
+            id="payment_term_line_delay_end_month">
+            <field name="name">End Month</field>
+            <field name="code">end_month</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Invoice" col="6">
+                    <label name="type"/>
+                    <field name="type"/>
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="number"/>
+                    <field name="number"/>
+                    <label name="partner"/>
+                    <field name="partner"/>
+                    <label name="contact_address"/>
+                    <field name="contact_address"/>
+                    <label name="invoice_address"/>
+                    <field name="invoice_address"/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
+                    <label name="reference"/>
+                    <field name="reference"/>
+                    <notebook colspan="6">
+                        <page string="Invoice">
+                            <label name="invoice_date"/>
+                            <field name="invoice_date"/>
+                            <label name="payment_term"/>
+                            <field name="payment_term"/>
+                            <label name="account"/>
+                            <field name="account"/>
+                            <label name="currency"/>
+                            <field name="currency"/>
+                            <field name="lines" colspan="4">
+                                <tree string="Lines" sequence="sequence">
+                                    <field name="type" select="1"/>
+                                    <field name="product" select="1"/>
+                                    <field name="account" select="2" tree_invisible="1"/>
+                                    <field name="description" select="1"/>
+                                    <field name="quantity" select="2"/>
+                                    <field name="unit" select="2"/>
+                                    <field name="unit_price" select="2"/>
+                                    <field name="taxes"/>
+                                    <field name="amount"/>
+                                    <field name="sequence" tree_invisible="1"/>
+                                </tree>
+                            </field>
+                            <group col="1" colspan="2">
+                                <field name="taxes">
+                                    <tree string="Taxes" sequence="sequence">
+                                        <field name="description" select="1"/>
+                                        <field name="base"/>
+                                        <field name="amount"/>
+                                        <field name="sequence" tree_invisible="1"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group col="4" colspan="2">
+                                <label colspan="2"/>
+                                <label name="untaxed_amount"/>
+                                <field name="untaxed_amount"/>
+                                <button name="button_reset_taxes" string="Reset Taxes"
+                                    type="object" colspan="2"/>
+                                <label name="tax_amount"/>
+                                <field name="tax_amount"/>
+                                <button name="button_compute" string="Compute"
+                                    type="object" colspan="2"/>
+                                <label name="total_amount"/>
+                                <field name="total_amount"/>
+                                <label name="reconciled"/>
+                                <field name="reconciled"/>
+                                <label name="state"/>
+                                <field name="state"/>
+                                <group col="4" colspan="4">
+                                    <button name="proforma" string="Pro Forma"
+                                        states="{'invisible': '''state != 'draft' '''}"/>
+                                    <button name="open" string="Open"
+                                        states="{'invisible': '''state not in ('draft', 'proforma') '''}"/>
+                                    <button name="cancel" string="Cancel"
+                                        states="{'invisible': '''state not in ('draft', 'proforma') '''}"/>
+                                    <button name="button_draft" string="Reset to Draft"
+                                        type="object"
+                                        states="{'invisible': '''state != 'cancel' '''}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Other Info">
+                            <label name="company"/>
+                            <field name="company"/>
+                            <label name="move"/>
+                            <field name="move"/>
+                            <separator name="comment" colspan="4"/>
+                            <field name="comment" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="invoice_view_tree">
+            <field name="model">account.invoice</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Invoices">
+                    <field name="description" select="1"/>
+                    <field name="type" select="2"/>
+                    <field name="number" select="1"/>
+                    <field name="partner" select="1"/>
+                    <field name="currency" select="2"/>
+                    <field name="untaxed_amount" select="2"/>
+                    <field name="tax_amount" select="2"/>
+                    <field name="total_amount" select="2"/>
+                    <field name="state" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_invoice_form">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_form"/>
+        </record>
+        <menuitem parent="menu_invoices" action="act_invoice_form"
+            id="menu_invoice_form"/>
+        <record model="ir.sequence.type" id="sequence_type_account_invoice_out_invoice">
+            <field name="name">Customer Invoice</field>
+            <field name="code">account.invoice.out_invoice</field>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_invoice_in_invoice">
+            <field name="name">Supplier Invoice</field>
+            <field name="code">account.invoice.in_invoice</field>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_invoice_out_refund">
+            <field name="name">Customer Refund</field>
+            <field name="code">account.invoice.out_refund</field>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_account_invoice_in_refund">
+            <field name="name">Supplier Refund</field>
+            <field name="code">account.invoice.in_refund</field>
+        </record>
+        <record model="workflow" id="invoice_workflow">
+            <field name="name">Invoice workflow</field>
+            <field name="osv">account.invoice</field>
+            <field name="on_create" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="invoice_activity_draft">
+            <field name="name">Draft</field>
+            <field name="workflow" ref="invoice_workflow"/>
+            <field name="kind">dummy</field>
+            <field name="flow_start" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="invoice_activity_proforma">
+            <field name="name">Pro forma</field>
+            <field name="workflow" ref="invoice_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'proforma'})</field>
+        </record>
+        <record model="workflow.activity" id="invoice_activity_open">
+            <field name="name">Open</field>
+            <field name="workflow" ref="invoice_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">set_number()&#10;create_move()&#10;write({'state': 'open'})</field>
+        </record>
+        <record model="workflow.activity" id="invoice_activity_paid">
+            <field name="name">Paid</field>
+            <field name="workflow" ref="invoice_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'paid'})</field>
+            <field name="flow_stop" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="invoice_activity_cancel">
+            <field name="name">Cancel</field>
+            <field name="workflow" ref="invoice_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'cancel'})</field>
+            <field name="flow_stop" eval="True"/>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_draft_proforma">
+            <field name="act_from" ref="invoice_activity_draft"/>
+            <field name="act_to" ref="invoice_activity_proforma"/>
+            <field name="signal">proforma</field>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_draft_open">
+            <field name="act_from" ref="invoice_activity_draft"/>
+            <field name="act_to" ref="invoice_activity_open"/>
+            <field name="signal">open</field>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_proforma_open">
+            <field name="act_from" ref="invoice_activity_proforma"/>
+            <field name="act_to" ref="invoice_activity_open"/>
+            <field name="signal">open</field>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_open_paid">
+            <field name="act_from" ref="invoice_activity_open"/>
+            <field name="act_to" ref="invoice_activity_paid"/>
+            <field name="trigger_model">account.move.line</field>
+            <field name="trigger_expr_id">payment_lines</field>
+            <field name="condition">reconciled</field>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_draft_cancel">
+            <field name="act_from" ref="invoice_activity_draft"/>
+            <field name="act_to" ref="invoice_activity_cancel"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_proforma_cancel">
+            <field name="act_from" ref="invoice_activity_proforma"/>
+            <field name="act_to" ref="invoice_activity_cancel"/>
+            <field name="signal">cancel</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_line_view_form">
+            <field name="model">account.invoice.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Invoice Line">
+                    <label name="invoice"/>
+                    <field name="invoice" colspan="3"/>
+                    <label name="type"/>
+                    <field name="type"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <label name="product"/>
+                    <field name="product"/>
+                    <label name="account"/>
+                    <field name="account"/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
+                    <label name="quantity"/>
+                    <field name="quantity"/>
+                    <label name="unit"/>
+                    <field name="unit"/>
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="unit_price"/>
+                    <field name="unit_price"/>
+                    <separator name="taxes" colspan="4"/>
+                    <field name="taxes" colspan="4"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="invoice_line_view_tree">
+            <field name="model">account.invoice.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Invoice Lines">
+                    <field name="invoice" select="1"/>
+                    <field name="type" select="1"/>
+                    <field name="product" select="1"/>
+                    <field name="account" select="2"/>
+                    <field name="description" select="1"/>
+                    <field name="quantity" select="2"/>
+                    <field name="unit" select="2"/>
+                    <field name="unit_price" select="2"/>
+                    <field name="taxes"/>
+                    <field name="amount"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_tax_view_form">
+            <field name="model">account.invoice.tax</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Invoice Tax">
+                    <label name="invoice"/>
+                    <field name="invoice" colspan="3"/>
+                    <label name="description"/>
+                    <field name="description"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <label name="account"/>
+                    <field name="account"/>
+                    <label name="manual"/>
+                    <field name="manual"/>
+                    <group col="6" colspan="4" string="Tax Code">
+                        <label name="amount"/>
+                        <field name="amount"/>
+                        <label name="tax_code"/>
+                        <field name="tax_code"/>
+                        <label name="tax_sign"/>
+                        <field name="tax_sign"/>
+                        <label name="base"/>
+                        <field name="base"/>
+                        <label name="base_code"/>
+                        <field name="base_code"/>
+                        <label name="base_sign"/>
+                        <field name="base_sign"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="invoice_tax_view_tree">
+            <field name="model">account.invoice.tax</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Invoice Taxes">
+                    <field name="invoice" select="1"/>
+                    <field name="description" select="1"/>
+                    <field name="account" select="1"/>
+                    <field name="manual" select="2"/>
+                    <field name="base"/>
+                    <field name="amount"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="address_view_tree">
+            <field name="model">partner.address</field>
+            <field name="inherit" ref="partner.address_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/tree/field[@name=&quot;email&quot;]" position="after">
+                        <field name="invoice" select="2"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="address_view_form">
+            <field name="model">partner.address</field>
+            <field name="inherit" ref="partner.address_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/group/field[@name=&quot;active&quot;]"
+                        position="after">
+                        <label name="invoice"/>
+                        <field name="invoice" xexpand="0" width="25"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_form">
+            <field name="model">product.product</field>
+            <field name="inherit" ref="product.product_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@string=&quot;Properties&quot;]"
+                        position="before">
+                        <page string="Taxes" col="1">
+                            <separator name="customer_taxes"/>
+                            <field name="customer_taxes"/>
+                            <separator name="supplier_taxes"/>
+                            <field name="supplier_taxes"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="fiscalyear_view_form">
+            <field name="model">account.fiscalyear</field>
+            <field name="inherit" ref="account.fiscalyear_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@string=&quot;Sequences&quot;]/field[@name=&quot;post_move_sequence&quot;]"
+                        position="after">
+                        <newline/>
+                        <label name="out_invoice_sequence"/>
+                        <field name="out_invoice_sequence"/>
+                        <label name="in_invoice_sequence"/>
+                        <field name="in_invoice_sequence"/>
+                        <label name="out_refund_sequence"/>
+                        <field name="out_refund_sequence"/>
+                        <label name="in_refund_sequence"/>
+                        <field name="in_refund_sequence"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="period_view_form">
+            <field name="model">account.period</field>
+            <field name="inherit" ref="account.period_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/field[@name=&quot;post_move_sequence&quot;]"
+                        position="after">
+                        <newline/>
+                        <label name="out_invoice_sequence"/>
+                        <field name="out_invoice_sequence"/>
+                        <label name="in_invoice_sequence"/>
+                        <field name="in_invoice_sequence"/>
+                        <label name="out_refund_sequence"/>
+                        <field name="out_refund_sequence"/>
+                        <label name="in_refund_sequence"/>
+                        <field name="in_refund_sequence"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
