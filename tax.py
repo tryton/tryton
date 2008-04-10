@@ -352,6 +352,7 @@ class Tax(OSV):
         res = self._unit_compute(cursor, user, taxes, price_unit,
                 context=context)
         for row in res:
+            row['base'] *= Decimal(str(quantity))
             row['amount'] *= Decimal(str(quantity))
         return res
 
