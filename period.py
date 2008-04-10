@@ -116,6 +116,7 @@ class Period(OSV):
 
     def create(self, cursor, user, vals, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
+        vals = vals.copy()
         if vals.get('fiscalyear'):
             fiscalyear = fiscalyear_obj.browse(cursor, user, vals['fiscalyear'],
                     context=context)
