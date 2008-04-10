@@ -220,6 +220,10 @@ class Move(OSV):
     def post(self, cursor, user, ids, context=None):
         currency_obj = self.pool.get('account.currency')
         sequence_obj = self.pool.get('ir.sequence')
+
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
         moves = self.browse(cursor, user, ids, context=context)
         for move in moves:
             amount = Decimal('0.0')
