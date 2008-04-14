@@ -179,9 +179,11 @@
                                 <field name="reconciled"/>
                                 <label name="state"/>
                                 <field name="state"/>
-                                <group col="4" colspan="4">
+                                <group col="5" colspan="4">
                                     <button name="proforma" string="Pro Forma"
                                         states="{'invisible': '''state != 'draft' '''}"/>
+                                    <button name="draft" string="Draft"
+                                        states="{'invisible': '''state != 'proforma' '''}"/>
                                     <button name="open" string="Open"
                                         states="{'invisible': '''state not in ('draft', 'proforma') '''}"/>
                                     <button name="cancel" string="Cancel"
@@ -265,7 +267,8 @@
         <record model="workflow.activity" id="invoice_activity_draft">
             <field name="name">Draft</field>
             <field name="workflow" ref="invoice_workflow"/>
-            <field name="kind">dummy</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'draft'})</field>
             <field name="flow_start" eval="True"/>
         </record>
         <record model="workflow.activity" id="invoice_activity_proforma">
@@ -298,6 +301,11 @@
             <field name="act_from" ref="invoice_activity_draft"/>
             <field name="act_to" ref="invoice_activity_proforma"/>
             <field name="signal">proforma</field>
+        </record>
+        <record model="workflow.transition" id="invoice_transition_proforma_draft">
+            <field name="act_from" ref="invoice_activity_proforma"/>
+            <field name="act_to" ref="invoice_activity_draft"/>
+            <field name="signal">draft</field>
         </record>
         <record model="workflow.transition" id="invoice_transition_draft_open">
             <field name="act_from" ref="invoice_activity_draft"/>
