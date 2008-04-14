@@ -13,6 +13,10 @@
                         <field name="partner"/>
                         <label name="parent"/>
                         <field name="parent"/>
+                        <separator name="header" colspan="4"/>
+                        <field name="header" colspan="4"/>
+                        <separator name="footer" colspan="4"/>
+                        <field name="footer" colspan="4"/>
                         <separator name="childs" colspan="4"/>
                         <field name="childs" colspan="4"/>
                     </form>
