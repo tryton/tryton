@@ -1651,7 +1651,7 @@ class GeneralJournal(Report):
                 order='date, reference, id', context=context)
         return move_obj.browse(cursor, user, move_ids, context=context)
 
-    def parse(self, cursor, user, content, objects, datas, context):
+    def parse(self, cursor, user, report, objects, datas, context):
         if context is None:
             context = {}
         company_obj = self.pool.get('company.company')
@@ -1665,7 +1665,7 @@ class GeneralJournal(Report):
         context['from_date'] = datas['form']['from_date']
         context['to_date'] = datas['form']['to_date']
 
-        return super(GeneralJournal, self).parse(cursor, user, content,
+        return super(GeneralJournal, self).parse(cursor, user, report,
                 objects, datas, context)
 
 GeneralJournal()

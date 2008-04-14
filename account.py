@@ -490,7 +490,7 @@ class GeneralLegder(Report):
         #Don't browse false account
         return None
 
-    def parse(self, cursor, user, content, objects, datas, context):
+    def parse(self, cursor, user, report, objects, datas, context):
         if context is None:
             context = {}
         context = context.copy()
@@ -567,7 +567,7 @@ class GeneralLegder(Report):
                 account_id, end_period_ids, datas['form']['posted'], context)
         context['company'] = company
 
-        return super(GeneralLegder, self).parse(cursor, user, content, objects,
+        return super(GeneralLegder, self).parse(cursor, user, report, objects,
                 datas, context)
 
     def lines(self, cursor, user, account_id, period_ids, posted, context):
@@ -679,7 +679,7 @@ class TrialBalance(Report):
     def _get_objects(self, cursor, user, ids, model, datas, context):
         return None
 
-    def parse(self, cursor, user, content, objects, datas, context):
+    def parse(self, cursor, user, report, objects, datas, context):
         if context is None:
             context = {}
         context = context.copy()
@@ -738,7 +738,7 @@ class TrialBalance(Report):
         context['sum'] = lambda accounts, field: self.sum(cursor, user,
                 accounts, field, context)
 
-        return super(TrialBalance, self).parse(cursor, user, content, objects,
+        return super(TrialBalance, self).parse(cursor, user, report, objects,
                 datas, context)
 
     def sum(self, cursor, user, accounts, field, context):
