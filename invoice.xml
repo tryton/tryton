@@ -248,6 +248,7 @@
             <field name="model">account.invoice</field>
             <field name="report_name">account.invoice</field>
             <field name="report">account_invoice/invoice.odt</field>
+            <field name="style">company/header_A4.odt</field>
         </record>
         <record model="ir.action.keyword" id="report_invoice_keyword">
             <field name="keyword">form_print</field>

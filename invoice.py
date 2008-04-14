@@ -1160,6 +1160,35 @@ class InvoiceTax(OSV):
 InvoiceTax()
 
 
+class InvoiceReport(Report):
+    _name = 'account.invoice'
+
+    def _get_objects(self, cursor, user_id, ids, model, datas, context):
+        invoice_obj = self.pool.get('account.invoice')
+        user_obj = self.pool.get('res.user')
+        user = user_obj.browse(cursor, user_id, user_id, context)
+        context = context.copy()
+        if 'language' in context:
+            del context['language']
+        invoice_ids = invoice_obj.search(cursor, user_id, [
+            ('id', 'in', ids),
+            ('company', '=', user.company.id),
+            ], context=context)
+        return invoice_obj.browse(cursor, user_id, invoice_ids, context=context)
+
+    def parse(self, cursor, user_id, report, objects, datas, context):
+        user_obj = self.pool.get('res.user')
+        user = user_obj.browse(cursor, user_id, user_id, context)
+        if context is None:
+            context = {}
+        context = context.copy()
+        context['company'] = user.company
+        return super(InvoiceReport, self).parse(cursor, user_id, report, objects,
+                datas, context)
+
+InvoiceReport()
+
+
 class Address(OSV):
     _name = 'partner.address'
     invoice = fields.Boolean('Invoice')
