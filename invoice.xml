@@ -243,6 +243,17 @@
         </record>
         <menuitem parent="menu_invoices" action="act_invoice_form"
             id="menu_invoice_form"/>
+        <record model="ir.action.report" id="report_invoice">
+            <field name="name">Invoice</field>
+            <field name="model">account.invoice</field>
+            <field name="report_name">account.invoice</field>
+            <field name="report">account_invoice/invoice.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_invoice_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.invoice,0</field>
+            <field name="action" ref="report_invoice"/>
+        </record>
         <record model="ir.sequence.type" id="sequence_type_account_invoice_out_invoice">
             <field name="name">Customer Invoice</field>
             <field name="code">account.invoice.out_invoice</field>

@@ -5,6 +5,7 @@ import datetime
 import mx.DateTime
 from decimal import Decimal
 from trytond.netsvc import LocalService
+from trytond.report import Report
 
 _STATES = {
     'readonly': "state != 'draft'",
@@ -176,11 +177,12 @@ class Invoice(OSV):
     company = fields.Many2One('company.company', 'Company', required=True,
             states=_STATES)
     type = fields.Selection([
-        ('out_invoice', 'Customer Invoice'),
+        ('out_invoice', 'Invoice'),
         ('in_invoice', 'Supplier Invoice'),
-        ('out_refund', 'Customer Refund'),
+        ('out_refund', 'Refund'),
         ('in_refund', 'Supplier Refund'),
         ], 'Type', select=1, on_change=['type'], required=True, states=_STATES)
+    type_name = fields.Function('get_type_name', type='char', string='Type')
     number = fields.Char('Number', size=None, readonly=True, select=1)
     reference = fields.Char('Reference', size=None)
     description = fields.Char('Description', size=None, states=_STATES)
@@ -323,6 +325,16 @@ class Invoice(OSV):
         if res['payment_term']:
             res['payment_term'] = payment_term_obj.name_get(cursor, user,
                     res['payment_term'], context=context)[0]
+        return res
+
+    def get_type_name(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        type2name = {}
+        for type, name in self.fields_get(cursor, user, fields_names=['type'],
+                context=context)['type']['selection']:
+            type2name[type] = name
+        for invoice in self.browse(cursor, user, ids, context=context):
+            res[invoice.id] = type2name[invoice.type]
         return res
 
     def get_untaxed_amount(self, cursor, user, ids, name, arg, context=None):
