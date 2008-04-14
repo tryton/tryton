@@ -172,7 +172,6 @@ class Invoice(OSV):
     'Invoice'
     _name = 'account.invoice'
     _order = 'number, id'
-    _rec_name = 'description'
     _description = __doc__
     company = fields.Many2One('company.company', 'Company', required=True,
             states=_STATES)
@@ -184,8 +183,7 @@ class Invoice(OSV):
         ], 'Type', select=1, on_change=['type'], required=True, states=_STATES)
     number = fields.Char('Number', size=None, readonly=True, select=1)
     reference = fields.Char('Reference', size=None)
-    description = fields.Char('Description', size=None, required=True,
-            states=_STATES)
+    description = fields.Char('Description', size=None, states=_STATES)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('proforma', 'Pro forma'),
@@ -638,6 +636,30 @@ class Invoice(OSV):
                         'You can not modify invoice that is ' \
                                 'open, paid or canceled!')
         return
+
+    def name_get(self, cursor, user, ids, context=None):
+        if not ids:
+            return []
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        res = []
+        for invoice in self.browse(cursor, user, ids, context=context):
+            res.append((invoice.id, invoice.number or invoice.invoice_date + \
+                    invoice.partner.name))
+        return res
+
+    def name_search(self, cursor, user, name='', args=None, operator='ilike',
+            context=None, limit=None):
+        if args is None:
+            args = []
+        if name:
+            ids = self.search(cursor, user, [('number', operator, name)] + args,
+                    limit=limit, context=context)
+        if not ids:
+            ids = self.search(cursor, user, [('partner', operator, name)] + args,
+                    limit=limit, context=context)
+        res = self.name_get(cursor, user, ids, context=context)
+        return res
 
     def unlink(self, cursor, user, ids, context=None):
         if isinstance(ids, (int, long)):
