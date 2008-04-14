@@ -358,14 +358,13 @@
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;General&quot;]"
+                        expr="/form/notebook/page[@string=&quot;Accounting&quot;]/field[@name=&quot;vat&quot;]"
                         position="after">
-                        <page string="Accounting">
-                            <label name="receivable"/>
-                            <field name="receivable"/>
-                            <label name="payable"/>
-                            <field name="payable"/>
-                        </page>
+                        <newline/>
+                        <label name="receivable"/>
+                        <field name="receivable"/>
+                        <label name="payable"/>
+                        <field name="payable"/>
                     </xpath>
                 </data>
                 ]]>
