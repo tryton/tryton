@@ -75,13 +75,13 @@ class Journal(OSV):
             relation='account.account', string='Default Credit Account',
             domain="[('type', '!=', 'view'), ('company', '=', company)]",
             states={
-                'required': "centralised",
+                'required': "centralised or type == 'cash'",
             })
     debit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Debit Account',
             domain="[('type', '!=', 'view'), ('company', '=', company)]",
             states={
-                'required': "centralised",
+                'required': "centralised or type == 'cash'",
             })
 
     def default_active(self, cursor, user, context=None):
