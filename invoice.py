@@ -6,6 +6,7 @@ import mx.DateTime
 from decimal import Decimal
 from trytond.netsvc import LocalService
 from trytond.report import Report
+from trytond.wizard import Wizard, WizardOSV
 
 _STATES = {
     'readonly': "state != 'draft'",
@@ -46,7 +47,7 @@ class PaymentTerm(OSV):
         currency_obj = self.pool.get('account.currency')
         res = []
         if date is None:
-            date = datetime.datetime.today()
+            date = datetime.date.today()
         remainder = amount
         for line in payment_term.lines:
             value = type_obj.get_value(cursor, user, line, remainder, currency,
@@ -225,8 +226,15 @@ class Invoice(OSV):
             digits=(16, 2), string='Total')
     reconciled = fields.Function('get_reconciled', type='boolean',
             string='Reconciled')
-    payment_lines = fields.Function('get_payment_lines', type='one2many',
-            relation='account.move.line', string='Payment Lines')
+    lines_to_pay = fields.Function('get_lines_to_pay', type='one2many',
+            relation='account.move.line', string='Lines to Pay')
+    payment_lines = fields.Many2Many('account.move.line',
+            'invoice_payment_lines_rel', 'invoice', 'line', readonly=True,
+            string='Payment Lines')
+    amount_to_pay_today = fields.Function('get_amount_to_pay',
+            type='numeric', digits=(16, 2), string='Amount to Pay Today')
+    amount_to_pay = fields.Function('get_amount_to_pay',
+            type='numeric', digits=(16, 2), string='Amount to Pay')
 
     def __init__(self):
         super(Invoice, self).__init__()
@@ -252,7 +260,7 @@ class Invoice(OSV):
         return 'draft'
 
     def default_invoice_date(self, cursor, user, context=None):
-        return datetime.datetime.today()
+        return datetime.date.today()
 
     def default_currency(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
@@ -377,22 +385,69 @@ class Invoice(OSV):
 
     def get_reconciled(self, cursor, user, ids, name, arg, context=None):
         res = {}
-        for invoice in self.browse(cursor, user, ids, context):
+        for invoice in self.browse(cursor, user, ids, context=context):
             res[invoice.id] = True
-            for line in invoice.payment_lines:
+            if not invoice.lines_to_pay:
+                res[invoice.id] = False
+                break
+            for line in invoice.lines_to_pay:
                 if not line.reconciliation:
                     res[invoice.id] = False
                     break
         return res
 
-    def get_payment_lines(self, cursor, user, ids, name, args, context=None):
+    def get_lines_to_pay(self, cursor, user, ids, name, args, context=None):
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
-            res[invoice.id] = []
+            lines = []
             if invoice.move:
                 for line in invoice.move.lines:
                     if line.account.id == invoice.account.id:
-                        res[invoice.id].append(line.id)
+                        lines.append(line)
+            lines.sort(lambda x, y: cmp(x.maturity_date, y.maturity_date))
+            res[invoice.id] = [x.id for x in lines]
+        return res
+
+    def get_amount_to_pay(self, cursor, user, ids, name, arg,
+            context=None):
+        currency_obj = self.pool.get('account.currency')
+        res = {}
+        for invoice in self.browse(cursor, user, ids, context=context):
+            amount = Decimal('0.0')
+            amount_currency = Decimal('0.0')
+            for line in invoice.lines_to_pay:
+                if line.reconciliation:
+                    continue
+                if name == 'amount_to_pay_today' \
+                        and line.maturity_date > datetime.date.today():
+                    continue
+                if line.second_currency.id == invoice.currency.id:
+                    if line.debit - line.credit > Decimal('0.0'):
+                        amount_currency += line.amount_second_currency
+                    else:
+                        amount_currency -= line.amount_second_currency
+                else:
+                    amount += line.debit - line.credit
+            for line in invoice.payment_lines:
+                if line.reconciliation:
+                    continue
+                if line.second_currency.id == invoice.currency.id:
+                    if line.debit - line.credit > Decimal('0.0'):
+                        amount_currency += line.amount_second_currency
+                    else:
+                        amount_currency -= line.amount_second_currency
+                else:
+                    amount += line.debit - line.credit
+            if invoice.type in ('in_invoice', 'out_refund'):
+                amount = - amount
+                amount_currency = - amount_currency
+            if amount != Decimal('0.0'):
+                amount_currency += currency_obj.compute(cursor, user,
+                        invoice.company.currency, amount, invoice.currency,
+                        context=context)
+            if amount_currency < Decimal('0.0'):
+                amount_currency = Decimal('0.0')
+            res[invoice.id] = amount_currency
         return res
 
     def button_draft(self, cursor, user, ids, context=None):
@@ -565,7 +620,8 @@ class Invoice(OSV):
         res['account'] = invoice.account.id
         res['maturity_date'] = date
         res['reference'] = invoice.reference
-        res['description'] = invoice.description
+        res['name'] = invoice.number
+        res['partner'] = invoice.partner.id
         return res
 
     def create_move(self, cursor, user, invoice_id, context=None):
@@ -684,7 +740,7 @@ class Invoice(OSV):
         if isinstance(ids, (int, long)):
             ids = [ids]
         keys = vals.keys()
-        for key in ('state',):
+        for key in ('state', 'payment_lines'):
             if key in keys:
                 keys.remove(key)
         if len(keys):
@@ -705,6 +761,144 @@ class Invoice(OSV):
                         and line.account.id == invoice.account.id:
                     return False
         return True
+
+    def get_reconcile_lines_for_amount(self, cursor, user, invoice, amount,
+            exclude_ids=None, context=None):
+        '''
+        Return list of line ids and the remainder to make reconciliation.
+        '''
+        currency_obj = self.pool.get('account.currency')
+
+        if exclude_ids is None:
+            exclude_ids = []
+        payment_amount = Decimal('0.0')
+        remainder = invoice.total_amount
+        lines = []
+        payment_lines = []
+
+        for line in invoice.payment_lines:
+            if line.reconciliation:
+                continue
+            payment_amount += line.debit - line.credit
+            payment_lines.append(line.id)
+
+        if invoice.type in ('out_invoice', 'in_refund'):
+            amount = - abs(amount)
+        else:
+            amount = abs(amount)
+
+        for line in invoice.lines_to_pay:
+
+            if line.reconciliation:
+                continue
+            if line.id in exclude_ids:
+                continue
+
+            test_amount = amount + (line.debit - line.credit)
+            if currency_obj.is_zero(cursor, user, invoice.currency,
+                    test_amount):
+                return ([line.id], Decimal('0.0'))
+            if abs(test_amount) < abs(remainder):
+                lines = [line.id]
+                remainder = test_amount
+
+            test_amount = (amount + payment_amount) + (line.debit - line.credit)
+            if currency_obj.is_zero(cursor, user, invoice.currency,
+                    test_amount):
+                return ([line.id] + payment_lines, Decimal('0.0'))
+            if abs(test_amount) < abs(remainder):
+                lines = [line.id] + payment_lines
+                remainder = test_amount
+
+            exclude_ids2 = exclude_ids[:]
+            exclude_ids2.append(line.id)
+            res = self.get_reconcile_lines_for_amount(cursor, user, invoice,
+                    (amount + (line.debit - line.credit)),
+                    exclude_ids=exclude_ids2, context=context)
+            if res[1] == Decimal('0.0'):
+                res[0].append(line.id)
+                return res
+            if abs(res[1]) < abs(remainder):
+                res[0].append(line.id)
+                lines = res[0]
+                remainder = res[1]
+
+        return (lines, remainder)
+
+    def pay_invoice(self, cursor, user, invoice_id, amount, journal_id, date,
+            description, amount_second_currency=False, second_currency=False,
+            context=None):
+        journal_obj = self.pool.get('account.journal')
+        move_obj = self.pool.get('account.move')
+        period_obj = self.pool.get('account.period')
+
+        lines = []
+        invoice = self.browse(cursor, user, invoice_id, context=context)
+        journal = journal_obj.browse(cursor, user, journal_id, context=context)
+
+        if invoice.type in ('out_invoice', 'in_refund'):
+            lines.append({
+                'name': description,
+                'account': invoice.account.id,
+                'partner': invoice.partner.id,
+                'debit': Decimal('0.0'),
+                'credit': amount,
+                'amount_second_currency': amount_second_currency,
+                'second_currency': second_currency,
+            })
+            lines.append({
+                'name': description,
+                'account': journal.debit_account.id,
+                'partner': invoice.partner.id,
+                'debit': amount,
+                'credit': Decimal('0.0'),
+                'amount_second_currency': amount_second_currency,
+                'second_currency': second_currency,
+            })
+            if invoice.account.id == journal.debit_account.id:
+                raise ExceptORM('Error', 'Debit account on journal is ' \
+                        'the same than the invoice account!')
+        else:
+            lines.append({
+                'name': description,
+                'account': invoice.account.id,
+                'partner': invoice.partner.id,
+                'debit': amount,
+                'credit': Decimal('0.0'),
+                'amount_second_currency': amount_second_currency,
+                'second_currency': second_currency,
+            })
+            lines.append({
+                'name': description,
+                'account': journal.credit_account.id,
+                'partner': invoice.partner.id,
+                'debit': Decimal('0.0'),
+                'credit': amount,
+                'amount_second_currency': amount_second_currency,
+                'second_currency': second_currency,
+            })
+            if invoice.account.id == journal.debit_account.id:
+                raise ExceptORM('Error', 'Credit account on journal is ' \
+                        'the same than the invoice account!')
+
+        period_id = period_obj.find(cursor, user, date=date, context=context)
+
+        move_id = move_obj.create(cursor, user, {
+            'journal': journal.id,
+            'period': period_id,
+            'date': date,
+            'lines': [('create', x) for x in lines],
+            }, context=context)
+
+        move = move_obj.browse(cursor, user, move_id, context=context)
+
+        for line in move.lines:
+            if line.account.id == invoice.account.id:
+                self.write(cursor, user, invoice.id, {
+                    'payment_lines': [('add', line.id)],
+                    }, context=context)
+                return line.id
+        raise Exception('Missing account')
 
 Invoice()
 
@@ -980,7 +1174,7 @@ class InvoiceLine(OSV):
         res = {}
         if line.type != 'line':
             return res
-        res['description'] = line.description
+        res['name'] = line.description
         if line.invoice.currency.id != line.invoice.company.currency.id:
             amount = currency_obj.compute(cursor, user,
                     line.invoice.currency, line.amount,
@@ -999,6 +1193,7 @@ class InvoiceLine(OSV):
             res['credit'] = amount
             res['amount_second_currency'] = - res['amount_second_currency']
         res['account'] = line.account.id
+        res['partner'] = line.invoice.partner.id
         computed_taxes = self._compute_taxes(cursor, user, line,
                 context=context)
         for tax in computed_taxes:
@@ -1121,7 +1316,7 @@ class InvoiceTax(OSV):
         '''
         currency_obj = self.pool.get('account.currency')
         res = {}
-        res['description'] = tax.description
+        res['name'] = tax.description
         if tax.invoice.currency.id != tax.invoice.company.currency.id:
             amount = currency_obj.compute(cursor, user,
                     tax.invoice.currency, tax.amount,
@@ -1150,6 +1345,7 @@ class InvoiceTax(OSV):
                 res['debit'] = - amount
                 res['credit'] = Decimal('0.0')
         res['account'] = tax.account.id
+        res['partner'] = tax.invoice.partner.id
         if tax.tax_code:
             res['tax_lines'] = [('create', {
                 'code': tax.tax_code.id,
@@ -1435,3 +1631,190 @@ class Period(OSV):
                 context=context)
 
 Period()
+
+
+class PayInvoiceInit(WizardOSV):
+    _name = 'account.invoice.pay_invoice.init'
+    amount = fields.Numeric('Amount', digits=(16, 2), required=True)
+    currency = fields.Many2One('account.currency', 'Currency', required=True)
+    description = fields.char('Description', size=None, required=True)
+    journal = fields.Many2One('account.journal', 'Journal', required=True,
+            domain=[('type', '=', 'cash')])
+    date = fields.Date('Date', required=True)
+
+    def default_date(self, cursor, user, context=None):
+        return datetime.date.today()
+
+PayInvoiceInit()
+
+
+class PayInvoiceAsk(WizardOSV):
+    _name = 'account.invoice.pay_invoice.ask'
+    type = fields.Selection([
+        ('writeoff', 'Write-Off'),
+        ('partial', 'Partial Payment'),
+        ], 'Type', required=True)
+    journal_writeoff = fields.Many2One('account.journal', 'Journal',
+            states={
+                'invisible': "type != 'writeoff'",
+                'required': "type == 'writeoff'",
+            })
+    account_writeoff = fields.Many2One('account.account', 'Account',
+            domain="[('type.code', '!=', 'view'), ('company', '=', company)]",
+            states={
+                'invisible': "type != 'writeoff'",
+                'required': "type == 'writeoff'",
+            })
+    amount = fields.Numeric('Amount', digits=(16, 2), readonly=True)
+    currency = fields.Many2One('account.currency', 'Currency', readonly=True)
+    lines_to_pay = fields.Char(string='Lines to Pay', size=None)
+    lines = fields.One2Many('account.move.line', 'ham', 'Lines',
+            domain="[('id', 'in', eval(lines_to_pay)), " \
+                    "('reconciliation', '=', False)]",
+            states={
+                'invisible': "type != 'writeoff'",
+            })
+    description = fields.char('Description', size=None, readonly=True)
+    journal = fields.Many2One('account.journal', 'Journal', readonly=True,
+            domain=[('type', '=', 'cash')])
+    date = fields.Date('Date', readonly=True)
+    company = fields.Many2One('company.company', 'Company', readonly=True)
+    account = fields.Many2One('account.account', 'Account', readonly=True)
+
+    def default_type(self, cursor, user, context=None):
+        return 'writeoff'
+
+PayInvoiceAsk()
+
+
+class PayInvoice(Wizard):
+    'Pay Invoice'
+    _name = 'account.invoice.pay_invoice'
+    states = {
+        'init': {
+            'actions': ['_init'],
+            'result': {
+                'type': 'form',
+                'object': 'account.invoice.pay_invoice.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('choice', 'Ok', 'gtk-ok', True),
+                ],
+            },
+        },
+        'choice': {
+            'result': {
+                'type': 'choice',
+                'next_state': '_choice',
+            },
+        },
+        'ask': {
+            'actions': ['_ask'],
+            'result': {
+                'type': 'form',
+                'object': 'account.invoice.pay_invoice.ask',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('pay', 'Ok', 'gtk-ok', True),
+                ],
+            },
+        },
+        'pay': {
+            'result': {
+                'type': 'action',
+                'action': '_action_pay',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _init(self, cursor, user, data, context=None):
+        invoice_obj = self.pool.get('account.invoice')
+        res = {}
+        invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
+        res['currency'] = invoice.currency.id
+        res['amount'] = invoice.amount_to_pay_today
+        res['description'] = invoice.number
+        return res
+
+    def _choice(self, cursor, user, data, context=None):
+        invoice_obj = self.pool.get('account.invoice')
+        currency_obj = self.pool.get('account.currency')
+
+        invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
+
+        ctx = context.copy()
+        ctx['date'] = data['form']['date']
+        amount = currency_obj.compute(cursor, user, data['form']['currency'],
+                data['form']['amount'], invoice.company.currency,
+                context=context)
+        res = invoice_obj.get_reconcile_lines_for_amount(cursor, user, invoice,
+                amount)
+        if res[1] == Decimal('0.0'):
+            return 'pay'
+        return 'ask'
+
+    def _ask(self, cursor, user, data, context=None):
+        invoice_obj = self.pool.get('account.invoice')
+        currency_obj = self.pool.get('account.currency')
+
+        res = {}
+        invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
+        res['lines_to_pay'] = str(
+                [x.id for x in invoice.lines_to_pay if not x.reconciliation] + \
+                [x.id for x in invoice.payment_lines if not x.reconciliation])
+
+        res['amount'] = data['form']['amount']
+        res['currency'] = data['form']['currency']
+        res['description'] = data['form']['description']
+        res['journal'] = data['form']['journal']
+        res['date'] = data['form']['date']
+        res['company'] = invoice.company.id
+        amount = currency_obj.compute(cursor, user, data['form']['currency'],
+                data['form']['amount'], invoice.company.currency,
+                context=context)
+        res['lines'] = invoice_obj.get_reconcile_lines_for_amount(cursor, user, invoice,
+                amount)[0]
+        return res
+
+    def _action_pay(self, cursor, user, data, context=None):
+        invoice_obj = self.pool.get('account.invoice')
+        currency_obj = self.pool.get('account.currency')
+        move_line_obj = self.pool.get('account.move.line')
+
+        invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
+
+        ctx = context.copy()
+        ctx['date'] = data['form']['date']
+        amount = currency_obj.compute(cursor, user, data['form']['currency'],
+                data['form']['amount'], invoice.company.currency,
+                context=context)
+
+        reconcile_lines = invoice_obj.get_reconcile_lines_for_amount(cursor,
+                user, invoice, amount)
+
+        amount_second_currency = False
+        second_currency = False
+        if data['form']['currency'] != invoice.company.currency.id:
+            amount_second_currency = data['form']['amount']
+            second_currency = data['form']['currency']
+
+        line_id = invoice_obj.pay_invoice(cursor, user, data['id'], amount,
+                data['form']['journal'], data['form']['date'],
+                data['form']['description'], amount_second_currency,
+                second_currency, context=context)
+
+        if reconcile_lines[1] != Decimal('0.0'):
+            if data['form'].get('type') == 'writeoff':
+                line_ids = [line_id] + data['form']['lines'][0][1]
+                move_line_obj.reconcile(cursor, user, line_ids,
+                        journal_id=data['form']['journal_writeoff'],
+                        date=data['form']['date'],
+                        account_id=data['form']['account_writeoff'],
+                        context=context)
+        else:
+            line_ids = reconcile_lines[0] + [line_id]
+            move_line_obj.reconcile(cursor, user, line_ids, context=context)
+        return {}
+
+PayInvoice()

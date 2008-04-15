@@ -168,11 +168,13 @@
                                 <label name="untaxed_amount"/>
                                 <field name="untaxed_amount"/>
                                 <button name="button_reset_taxes" string="Reset Taxes"
-                                    type="object" colspan="2"/>
+                                    type="object" colspan="2"
+                                    states="{'readonly': '''state in ('open', 'paid')'''}"/>
                                 <label name="tax_amount"/>
                                 <field name="tax_amount"/>
                                 <button name="button_compute" string="Compute"
-                                    type="object" colspan="2"/>
+                                    type="object" colspan="2"
+                                    states="{'readonly': '''state in ('open', 'paid')'''}"/>
                                 <label name="total_amount"/>
                                 <field name="total_amount"/>
                                 <label name="reconciled"/>
@@ -191,6 +193,9 @@
                                     <button name="button_draft" string="Reset to Draft"
                                         type="object"
                                         states="{'invisible': '''state != 'cancel' '''}"/>
+                                    <button name="%(wizard_pay_invoice)d" string="Pay"
+                                        type="action"
+                                        states="{'invisible': '''state != 'open' '''}"/>
                                 </group>
                             </group>
                         </page>
@@ -201,6 +206,23 @@
                             <field name="move"/>
                             <separator name="comment" colspan="4"/>
                             <field name="comment" colspan="4"/>
+                        </page>
+                        <page string="Payment">
+                            <label name="amount_to_pay_today"/>
+                            <field name="amount_to_pay_today"/>
+                            <label name="amount_to_pay"/>
+                            <field name="amount_to_pay"/>
+                            <separator name="payment_lines" colspan="4"/>
+                            <field name="payment_lines" colspan="4">
+                                <tree string="Payment Lines">
+                                    <field name="date"/>
+                                    <field name="debit" sum="Debit"/>
+                                    <field name="credit" sum="Credit"/>
+                                    <field name="amount_second_currency"
+                                        sum="Amount Second Currency"/>
+                                    <field name="second_currency"/>
+                                </tree>
+                            </field>
                         </page>
                     </notebook>
                 </form>
@@ -335,7 +357,7 @@
             <field name="act_from" ref="invoice_activity_open"/>
             <field name="act_to" ref="invoice_activity_paid"/>
             <field name="trigger_model">account.move.line</field>
-            <field name="trigger_expr_id">payment_lines</field>
+            <field name="trigger_expr_id">lines_to_pay</field>
             <field name="condition">reconciled</field>
         </record>
         <record model="workflow.transition" id="invoice_transition_draft_cancel">
@@ -552,5 +574,69 @@
                 ]]>
             </field>
         </record>
+
+
+        <record model="ir.action.wizard" id="wizard_pay_invoice">
+            <field name="name">Pay Invoice</field>
+            <field name="wiz_name">account.invoice.pay_invoice</field>
+        </record>
+
+        <record model="ir.ui.view" id="pay_invoice_init_view_form">
+            <field name="model">account.invoice.pay_invoice.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Pay Invoice">
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="currency"/>
+                    <field name="currency"/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="date"/>
+                    <field name="date"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="pay_invoice_ask_view_form">
+            <field name="model">account.invoice.pay_invoice.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Pay Invoice">
+                    <label name="type"/>
+                    <field name="type" colspan="3"/>
+                    <label name="journal_writeoff"/>
+                    <field name="journal_writeoff"/>
+                    <label name="account_writeoff"/>
+                    <field name="account_writeoff"/>
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="currency"/>
+                    <field name="currency"/>
+                    <separator name="lines" colspan="4"/>
+                    <field name="lines" colspan="4" widget="many2many">
+                        <tree string="Lines to Pay">
+                            <field name="maturity_date"/>
+                            <field name="debit" sum="Debit"/>
+                            <field name="credit" sum="Credit"/>
+                            <field name="amount_second_currency" sum="Amount Second Currency"/>
+                            <field name="second_currency"/>
+                        </tree>
+                    </field>
+                    <field name="lines_to_pay" invisible="1"/>
+                    <field name="description" invisible="1"/>
+                    <field name="journal" invisible="1"/>
+                    <field name="date" invisible="1"/>
+                    <field name="company" invisible="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
     </data>
 </tryton>
