@@ -287,8 +287,8 @@
                 <form string="Write-Off">
                     <label name="journal"/>
                     <field name="journal"/>
-                    <label name="period"/>
-                    <field name="period"/>
+                    <label name="date"/>
+                    <field name="date"/>
                     <label name="account"/>
                     <field name="account"/>
                 </form>

@@ -1070,13 +1070,17 @@ class Line(OSV):
             #TODO add hexmd5
         return result
 
-    def reconcile(self, cursor, user, ids, journal_id=False, period_id=False,
+    def reconcile(self, cursor, user, ids, journal_id=False, date=False,
             account_id=False, context=None):
         move_obj = self.pool.get('account.move')
         currency_obj = self.pool.get('account.currency')
         reconciliation_obj = self.pool.get('account.move.reconciliation')
+        period_obj = self.pool.get('account.period')
+
         ids = ids[:]
-        if journal_id and period_id and account_id:
+        if journal_id and account_id:
+            if not date:
+                date = datetime.date.today()
             account = None
             amount = Decimal('0.0')
             for line in self.browse(cursor, user, ids, context=context):
@@ -1084,10 +1088,11 @@ class Line(OSV):
                 if not account:
                     account = line.account
             amount = currency_obj.round(cursor, user, account.currency, amount)
+            period_id = period_obj.find(cursor, user, date=date, context=context)
             move_id = move_obj.create(cursor, user, {
                 'journal': journal_id,
                 'period': period_id,
-                'date': datetime.date.today(),
+                'date': date,
                 'lines': [
                     ('create', {
                         'name': 'Write-Off',
@@ -1290,13 +1295,12 @@ class ReconcileLinesWriteOff(WizardOSV):
     'Reconcile Lines Write-Off'
     _name = 'account.move.reconcile_lines.writeoff'
     journal = fields.Many2One('account.journal', 'Journal', required=True)
-    period = fields.Many2One('account.period', 'Period', required=True)
+    date = fields.Date('Date', required=True)
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('type.code', '!=', 'view')])
 
-    def default_period(self, cursor, user, context=None):
-        period_obj = self.pool.get('account.period')
-        return period_obj.find(cursor, user, exception=False, context=context)
+    def default_date(self, cursor, user, context=None):
+        return datetime.date.today()
 
 ReconcileLinesWriteOff()
 
@@ -1350,13 +1354,13 @@ class ReconcileLines(Wizard):
 
         if data['form']:
             journal_id = data['form'].get('journal')
-            period_id = data['form'].get('period')
+            date = data['form'].get('date')
             account_id = data['form'].get('account')
         else:
             journal_id = False
-            period_id = False
+            date = False
             account_id = False
-        line_obj.reconcile(cursor, user, data['ids'], journal_id, period_id,
+        line_obj.reconcile(cursor, user, data['ids'], journal_id, date,
                 account_id, context=context)
         return {}
 
