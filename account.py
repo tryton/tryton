@@ -18,22 +18,33 @@ class Type(OSV):
     _order = 'sequence, id'
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, translate=True)
-    code = fields.Char('Code', size=None)
+    code = fields.Selection([
+        (None, ''),
+        ('payable', 'Payable'),
+        ('revenue', 'Revenue'),
+        ('receivable', 'Receivable'),
+        ('expense', 'Expense'),
+        ('income', 'Income'),
+        ('view', 'View'),
+        ], 'Code')
     parent = fields.Many2One('account.account.type', 'Parent')
     childs = fields.One2Many('account.account.type', 'parent', 'Childs')
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
-    #TODO add constraint (only for end level)
     account_type = fields.Boolean('Account Type',
             help='Can be use as type for account')
-    partner_account = fields.Boolean('Partner account')
     #TODO fix digits depend of the currency
     amount = fields.Function('get_amount', digits=(16, 2), string='Amount')
-
-    def default_partner_account(self, cursor, user, context=None):
-        return False
+    balance_sheet = fields.Boolean('Balance Sheet')
+    income_statement = fields.Boolean('Income Statement')
 
     def default_account_type(self, cursor, user, context=None):
+        return False
+
+    def default_balance_sheet(self, cursor, user, context=None):
+        return False
+
+    def default_income_statement(self, cursor, user, context=None):
         return False
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
@@ -797,9 +808,6 @@ class OpenBalanceSheet(Wizard):
         },
     }
 
-    def _get_root_codes(self, cursor, user, datas, context=None):
-        return ('asset', 'liability', 'equity')
-
     def _action_open(self, cursor, user, datas, context=None):
         if context is None:
             context = {}
@@ -834,9 +842,6 @@ class OpenBalanceSheet(Wizard):
             'posted': datas['form']['posted'],
             'company': datas['form']['company'],
             })
-        res['domain'] = res['domain'][:-1] + ', ' + \
-                str(('code', 'in', self._get_root_codes(cursor, user, datas,
-                    context=context))) + res['domain'][-1]
         res['name'] = res['name'] + ' - '+ date + ' - ' + company.name
         return res
 
@@ -909,9 +914,6 @@ class OpenIncomeStatement(Wizard):
         },
     }
 
-    def _get_root_codes(self, cursor, user, datas, context=None):
-        return ('income',)
-
     def _action_open(self, cursor, user, datas, context=None):
         if context is None:
             context = {}
@@ -957,9 +959,6 @@ class OpenIncomeStatement(Wizard):
             'posted': datas['form']['posted'],
             'company': datas['form']['company'],
             })
-        res['domain'] = res['domain'][:-1] + ', ' + \
-                str(('code', 'in', self._get_root_codes(cursor, user, datas,
-                    context=context))) + res['domain'][-1]
         return res
 
 OpenIncomeStatement()

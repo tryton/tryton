@@ -42,8 +42,12 @@
                     <field name="sequence"/>
                     <label name="account_type"/>
                     <field name="account_type"/>
-                    <label name="partner_account"/>
-                    <field name="partner_account"/>
+                    <newline/>
+                    <label name="balance_sheet"/>
+                    <field name="balance_sheet"/>
+                    <newline/>
+                    <label name="income_statement"/>
+                    <field name="income_statement"/>
                 </form>
                 ]]>
             </field>
@@ -57,8 +61,6 @@
                 <tree string="Account Types">
                     <field name="name" select="1"/>
                     <field name="code" select="1"/>
-                    <field name="account_type" select="2"/>
-                    <field name="partner_account" select="2"/>
                 </tree>
                 ]]>
             </field>
@@ -110,8 +112,8 @@
         </record>
         <record model="account.account.type" id="account_type_asset">
             <field name="name">Asset</field>
-            <field name="code">asset</field>
             <field name="sequence" eval="10"/>
+            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type" id="account_type_asset_current">
             <field name="name">Current</field>
@@ -120,7 +122,6 @@
         </record>
         <record model="account.account.type" id="account_type_asset_current_cash">
             <field name="name">Cash</field>
-            <field name="code">cash</field>
             <field name="parent" ref="account_type_asset_current"/>
             <field name="sequence" eval="10"/>
             <field name="account_type" eval="True"/>
@@ -129,7 +130,6 @@
             <field name="name">Receivable</field>
             <field name="code">receivable</field>
             <field name="parent" ref="account_type_asset_current"/>
-            <field name="partner_account" eval="True"/>
             <field name="sequence" eval="20"/>
             <field name="account_type" eval="True"/>
         </record>
@@ -140,8 +140,8 @@
         </record>
         <record model="account.account.type" id="account_type_liability">
             <field name="name">Liability</field>
-            <field name="code">liability</field>
             <field name="sequence" eval="20"/>
+            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type" id="account_type_liability_current">
             <field name="name">Current</field>
@@ -152,13 +152,11 @@
             <field name="name">Payable</field>
             <field name="code">payable</field>
             <field name="parent" ref="account_type_liability_current"/>
-            <field name="partner_account" eval="True"/>
             <field name="sequence" eval="10"/>
             <field name="account_type" eval="True"/>
         </record>
         <record model="account.account.type" id="account_type_liability_current_tax">
             <field name="name">Tax</field>
-            <field name="code">tax</field>
             <field name="parent" ref="account_type_liability_current"/>
             <field name="sequence" eval="20"/>
             <field name="account_type" eval="True"/>
@@ -170,18 +168,18 @@
         </record>
         <record model="account.account.type" id="account_type_equity">
             <field name="name">Equity</field>
-            <field name="code">equity</field>
             <field name="sequence" eval="30"/>
             <field name="account_type" eval="True"/>
+            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type" id="account_type_income">
             <field name="name">Income</field>
             <field name="code">income</field>
             <field name="sequence" eval="40"/>
+            <field name="income_statement" eval="True"/>
         </record>
         <record model="account.account.type" id="account_type_revenue">
             <field name="name">Revenue</field>
-            <field name="code">revenue</field>
             <field name="parent" ref="account_type_income"/>
             <field name="sequence" eval="10"/>
             <field name="account_type" eval="True"/>
@@ -511,7 +509,7 @@
             <field name="name">Balance Sheet</field>
             <field name="res_model">account.account.type</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('parent', '=', False)]</field>
+            <field name="domain">[('parent', '=', False), ('balance_sheet', '=', True)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_balance_sheet_view1">
             <field name="sequence" eval="10"/>
@@ -566,7 +564,7 @@
             <field name="name">Income Statement</field>
             <field name="res_model">account.account.type</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('parent', '=', False)]</field>
+            <field name="domain">[('parent', '=', False), ('income_statement', '=', True)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_income_statement_view1">
             <field name="sequence" eval="10"/>
