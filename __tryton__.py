@@ -12,6 +12,7 @@
         'partner',
         'product',
         'res',
+        'workflow',
     ],
     'xml': [
         'invoice.xml',

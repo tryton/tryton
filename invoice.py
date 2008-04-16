@@ -7,6 +7,8 @@ from decimal import Decimal
 from trytond.netsvc import LocalService
 from trytond.report import Report
 from trytond.wizard import Wizard, WizardOSV
+from trytond.pooler import get_pool_report
+import base64
 
 _STATES = {
     'readonly': "state != 'draft'",
@@ -235,6 +237,7 @@ class Invoice(OSV):
             type='numeric', digits=(16, 2), string='Amount to Pay Today')
     amount_to_pay = fields.Function('get_amount_to_pay',
             type='numeric', digits=(16, 2), string='Amount to Pay')
+    invoice_report = fields.Binary('Invoice Report', readonly=True)
 
     def __init__(self):
         super(Invoice, self).__init__()
@@ -389,7 +392,7 @@ class Invoice(OSV):
             res[invoice.id] = True
             if not invoice.lines_to_pay:
                 res[invoice.id] = False
-                break
+                continue
             for line in invoice.lines_to_pay:
                 if not line.reconciliation:
                     res[invoice.id] = False
@@ -740,7 +743,7 @@ class Invoice(OSV):
         if isinstance(ids, (int, long)):
             ids = [ids]
         keys = vals.keys()
-        for key in ('state', 'payment_lines'):
+        for key in ('state', 'payment_lines', 'invoice_report'):
             if key in keys:
                 keys.remove(key)
         if len(keys):
@@ -899,6 +902,18 @@ class Invoice(OSV):
                     }, context=context)
                 return line.id
         raise Exception('Missing account')
+
+    def print_invoice(self, cursor, user, invoice_id, context=None):
+        '''
+        Generate invoice report and store it in invoice_report field.
+        '''
+        invoice_report = get_pool_report(cursor.dbname).get('account.invoice')
+        val = invoice_report.execute(cursor, user, [invoice_id], {},
+                context=context)
+        self.write(cursor, user, invoice_id, {
+            'invoice_report': val[1],
+            }, context=context)
+        return
 
 Invoice()
 
@@ -1355,32 +1370,122 @@ class InvoiceTax(OSV):
 
 InvoiceTax()
 
+class PrintInvoiceReportWarning(WizardOSV):
+    _name = 'account.invoice.print_invoice_report.warning'
+
+PrintInvoiceReportWarning()
+
+
+class PrintInvoiceReport(Wizard):
+    'Print Invoice Report'
+    _name = 'account.invoice.print_invoice_report'
+    states = {
+        'init': {
+            'result': {
+                'type': 'choice',
+                'next_state': '_choice',
+            },
+        },
+        'warning': {
+            'result': {
+                'type': 'form',
+                'object': 'account.invoice.print_invoice_report.warning',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('print', 'Print', 'gtk-ok', True),
+                ],
+            },
+        },
+        'print': {
+            'actions': ['_print_init'],
+            'result': {
+                'type': 'print',
+                'report': 'account.invoice',
+                'state': 'print_next',
+                'get_id_from_action': True,
+            },
+        },
+        'print_next': {
+            'actions': ['_next_id'],
+            'result': {
+                'type': 'choice',
+                'next_state': '_print_next',
+            },
+        }
+    }
+
+    def _choice(self, cursor, user, data, context=None):
+        if len(data['ids']) > 1:
+            return 'warning'
+        return 'print'
+
+    def _print_init(self, cursor, user, data, context=None):
+        res = {}
+        if 'ids' in data['form']:
+            res['ids'] = data['form']['ids']
+        else:
+            res['ids'] = data['ids']
+        return res
+
+    def _next_id(self, cursor, user, data, context=None):
+        res = {}
+        if data['form']['ids']:
+            data['form']['ids'].pop(0)
+        res['ids'] = data['form']['ids']
+        return res
+
+    def _print_next(self, cursor, user, data, context=None):
+        if not data['form']['ids']:
+            return 'end'
+        return 'print'
+
+PrintInvoiceReport()
+
 
 class InvoiceReport(Report):
     _name = 'account.invoice'
 
+    def execute(self, cursor, user, ids, datas, context=None):
+        if context is None:
+            context = {}
+        res = super(InvoiceReport, self).execute(cursor, user, ids, datas,
+                context=context)
+        if len(ids) > 1 or datas['id'] != ids[0]:
+            res = (res[0], res[1], True)
+        return res
+
     def _get_objects(self, cursor, user_id, ids, model, datas, context):
         invoice_obj = self.pool.get('account.invoice')
-        user_obj = self.pool.get('res.user')
-        user = user_obj.browse(cursor, user_id, user_id, context)
+
+        if context is None:
+            context = {}
+
         context = context.copy()
         if 'language' in context:
             del context['language']
-        invoice_ids = invoice_obj.search(cursor, user_id, [
-            ('id', 'in', ids),
-            ('company', '=', user.company.id),
-            ], context=context)
-        return invoice_obj.browse(cursor, user_id, invoice_ids, context=context)
+        return invoice_obj.browse(cursor, user_id, [ids[0]], context=context)
 
     def parse(self, cursor, user_id, report, objects, datas, context):
         user_obj = self.pool.get('res.user')
+        invoice_obj = self.pool.get('account.invoice')
+
+        invoice = objects[0]
+
+        if invoice.invoice_report:
+            return ('odt', base64.decodestring(invoice.invoice_report))
+
         user = user_obj.browse(cursor, user_id, user_id, context)
         if context is None:
             context = {}
         context = context.copy()
         context['company'] = user.company
-        return super(InvoiceReport, self).parse(cursor, user_id, report, objects,
+        res = super(InvoiceReport, self).parse(cursor, user_id, report, objects,
                 datas, context)
+        if invoice.state in ('open', 'paid'):
+            invoice_obj.write(cursor, user_id, invoice.id, {
+                'invoice_report': base64.encodestring(res[1]),
+                }, context=context)
+        return res
 
 InvoiceReport()
 

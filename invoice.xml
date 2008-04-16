@@ -244,6 +244,8 @@
                             <field name="company"/>
                             <label name="move"/>
                             <field name="move"/>
+                            <label name="invoice_report"/>
+                            <field name="invoice_report"/>
                             <separator name="comment" colspan="4"/>
                             <field name="comment" colspan="4"/>
                         </page>
@@ -327,11 +329,6 @@
             <field name="report">account_invoice/invoice.odt</field>
             <field name="style">company/header_A4.odt</field>
         </record>
-        <record model="ir.action.keyword" id="report_invoice_keyword">
-            <field name="keyword">form_print</field>
-            <field name="model">account.invoice,0</field>
-            <field name="action" ref="report_invoice"/>
-        </record>
         <record model="ir.sequence.type" id="sequence_type_account_invoice_out_invoice">
             <field name="name">Customer Invoice</field>
             <field name="code">account.invoice.out_invoice</field>
@@ -370,7 +367,7 @@
             <field name="name">Open</field>
             <field name="workflow" ref="invoice_workflow"/>
             <field name="kind">function</field>
-            <field name="action">set_number()&#10;create_move()&#10;write({'state': 'open'})</field>
+            <field name="action">set_number()&#10;create_move()&#10;write({'state': 'open'})&#10;print_invoice()</field>
         </record>
         <record model="workflow.activity" id="invoice_activity_paid">
             <field name="name">Paid</field>
@@ -724,6 +721,35 @@
                 </form>
                 ]]>
             </field>
+        </record>
+
+        <record model="ir.ui.view" id="print_invoice_report_warning_view_form">
+            <field name="model">account.invoice.print_invoice_report.warning</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Print Invoice" col="2">
+                    <separator string="&lt;b&gt;Warning!&lt;/b&gt;" colspan="2" align="0.5"/>
+                    <image name="gtk-info"/>
+                    <group col="1">
+                        <label string="You have selected more than one invoice to print."
+                            align="0.0"/>
+                        <label string="The invoices will be sent &lt;i&gt;directly&lt;/i&gt; to the printer."
+                            align="0.0"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="print_invoice_report">
+            <field name="name">Invoice</field>
+            <field name="wiz_name">account.invoice.print_invoice_report</field>
+        </record>
+        <record model="ir.action.keyword" id="print_invoice_report_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.invoice,0</field>
+            <field name="action" ref="print_invoice_report"/>
         </record>
 
     </data>
