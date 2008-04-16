@@ -77,6 +77,38 @@
             <field name="view" ref="payment_term_view_form"/>
             <field name="act_window" ref="act_payment_term_form"/>
         </record>
+        <record model="ir.model.access" id="access_payment_term">
+            <field name="model" search="[('model', '=', 'account.invoice.payment_term')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_term_account_admin">
+            <field name="model" search="[('model', '=', 'account.invoice.payment_term')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_term_line">
+            <field name="model" search="[('model', '=', 'account.invoice.payment_term.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_payment_term_line_account_admin">
+            <field name="model"
+                search="[('model', '=', 'account.invoice.payment_term.line')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
         <menuitem parent="menu_invoices_configuration" action="act_payment_term_form"
             id="menu_payment_term_form"/>
 
@@ -105,6 +137,14 @@
             id="payment_term_line_delay_end_month">
             <field name="name">End Month</field>
             <field name="code">end_month</field>
+        </record>
+        <record model="ir.model.access" id="access_payment_term_line_type">
+            <field name="model"
+                search="[('model', '=', 'account.invoice.payment_term.line.type')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
         </record>
 
         <record model="ir.ui.view" id="invoice_view_form">
@@ -187,15 +227,15 @@
                                     <button name="draft" string="Draft"
                                         states="{'invisible': '''state != 'proforma' '''}"/>
                                     <button name="open" string="Open"
-                                        states="{'invisible': '''state not in ('draft', 'proforma') '''}"/>
+                                        states="{'invisible': '''state not in ('draft', 'proforma') ''', 'readonly': ''' %(account.group_account)d not in groups '''}"/>
                                     <button name="cancel" string="Cancel"
-                                        states="{'invisible': '''state not in ('draft', 'proforma') '''}"/>
+                                        states="{'invisible': '''state not in ('draft', 'proforma') ''', 'readonly': ''' %(account.group_account)d not in groups '''}"/>
                                     <button name="button_draft" string="Reset to Draft"
                                         type="object"
                                         states="{'invisible': '''state != 'cancel' '''}"/>
                                     <button name="%(wizard_pay_invoice)d" string="Pay"
                                         type="action"
-                                        states="{'invisible': '''state != 'open' '''}"/>
+                                        states="{'invisible': '''state != 'open' ''', 'readonly': ''' %(account.group_account)d not in groups '''}"/>
                                 </group>
                             </group>
                         </page>
@@ -262,6 +302,21 @@
             <field name="sequence" eval="20"/>
             <field name="view" ref="invoice_view_form"/>
             <field name="act_window" ref="act_invoice_form"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice_account">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
         </record>
         <menuitem parent="menu_invoices" action="act_invoice_form"
             id="menu_invoice_form"/>
@@ -364,11 +419,13 @@
             <field name="act_from" ref="invoice_activity_draft"/>
             <field name="act_to" ref="invoice_activity_cancel"/>
             <field name="signal">cancel</field>
+            <field name="group" ref="account.group_account"/>
         </record>
         <record model="workflow.transition" id="invoice_transition_proforma_cancel">
             <field name="act_from" ref="invoice_activity_proforma"/>
             <field name="act_to" ref="invoice_activity_cancel"/>
             <field name="signal">cancel</field>
+            <field name="group" ref="account.group_account"/>
         </record>
 
         <record model="ir.ui.view" id="invoice_line_view_form">
@@ -423,6 +480,21 @@
                 ]]>
             </field>
         </record>
+        <record model="ir.model.access" id="access_invoice_line">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice_line_account">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
 
         <record model="ir.ui.view" id="invoice_tax_view_form">
             <field name="model">account.invoice.tax</field>
@@ -474,6 +546,22 @@
                 ]]>
             </field>
         </record>
+        <record model="ir.model.access" id="access_invoice_tax">
+            <field name="model" search="[('model', '=', 'account.invoice.tax')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_invoice_tax_account">
+            <field name="model" search="[('model', '=', 'account.invoice.tax')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
 
         <record model="ir.ui.view" id="address_view_tree">
             <field name="model">partner.address</field>
