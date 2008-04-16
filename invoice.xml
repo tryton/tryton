@@ -752,5 +752,28 @@
             <field name="action" ref="print_invoice_report"/>
         </record>
 
+        <record model="ir.ui.view" id="refund_invoice_init_view_form">
+            <field name="model">account.invoice.refund_invoice.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Refund Invoice" col="2">
+                    <image name="gtk-info"/>
+                    <label string="Are you sure to refund those/this invoice(s)?"
+                        align="0.0"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="refund_invoice">
+            <field name="name">Refund</field>
+            <field name="wiz_name">account.invoice.refund_invoice</field>
+        </record>
+        <record model="ir.action.keyword" id="refund_invoice_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.invoice,0</field>
+            <field name="action" ref="refund_invoice"/>
+        </record>
     </data>
 </tryton>

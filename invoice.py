@@ -944,6 +944,56 @@ class Invoice(OSV):
             }, context=context)
         return
 
+    def _refund(self, cursor, user, invoice, context=None):
+        '''
+        Return values to refund invoice.
+        '''
+        invoice_line_obj = self.pool.get('account.invoice.line')
+        invoice_tax_obj = self.pool.get('account.invoice.tax')
+
+        res = {}
+        if invoice.type == 'out_invoice':
+            res['type'] = 'out_refund'
+        elif invoice.type == 'in_invoice':
+            res['type'] = 'in_refund'
+        elif invoice.type == 'out_refund':
+            res['type'] = 'out_invoice'
+        elif invoice.type == 'in_refund':
+            res['type'] = 'in_invoice'
+
+        for field in ('reference', 'description', 'comment'):
+            res[field] = invoice[field]
+
+        for field in ('company', 'partner', 'contact_address',
+                'invoice_address', 'currency', 'journal', 'account',
+                'payment_term'):
+            res[field] = invoice[field].id
+
+        res['lines'] = []
+        for line in invoice.lines:
+            value = invoice_line_obj._refund(cursor, user, line,
+                    context=context)
+            res['lines'].append(('create', value))
+
+        res['taxes'] = []
+        for tax in invoice.taxes:
+            if not tax.manual:
+                continue
+            value = invoice_tax_obj._refund(cursor, user, tax,
+                    context=context)
+            res[taxes].append(('create', value))
+        return res
+
+    def refund(self, cursor, user, ids, context=None):
+        '''
+        Refund invoices and return ids of new invoices.
+        '''
+        new_ids = []
+        for invoice in self.browse(cursor, user, ids, context=context):
+            vals = self._refund(cursor, user, invoice, context=context)
+            new_ids.append(self.create(cursor, user, vals, context=context))
+        return new_ids
+
 Invoice()
 
 
@@ -1245,6 +1295,24 @@ class InvoiceLine(OSV):
             res.tax_lines.append(('create', tax))
         return res
 
+    def _refund(self, cursor, user, line, context=None):
+        '''
+        Return values to refund line.
+        '''
+        res = {}
+
+        for field in ('sequence', 'type', 'quantity', 'unit_price',
+                'description'):
+            res[field] = line[field]
+
+        for field in ('unit', 'product', 'account'):
+            res[field] = line[field].id
+
+        res['taxes'] = []
+        for tax in line.taxes:
+            res['taxes'].append(('add', tax.id))
+        return res
+
 InvoiceLine()
 
 
@@ -1395,6 +1463,20 @@ class InvoiceTax(OSV):
                 'code': tax.tax_code.id,
                 'amount': tax.amount * tax.tax_sign,
             })]
+        return res
+
+    def _refund(self, cursor, user, tax, context=None):
+        '''
+        Return values to refund tax.
+        '''
+        res = {}
+
+        for field in ('description', 'sequence', 'base', 'amount',
+                'manual', 'base_sign', 'tax_sign'):
+            res[field] = tax[field]
+
+        for field in ('account', 'base_code', 'tax_code'):
+            res[field] = tax[field].id
         return res
 
 InvoiceTax()
@@ -1952,3 +2034,55 @@ class PayInvoice(Wizard):
         return {}
 
 PayInvoice()
+
+
+class RefundInvoiceInit(WizardOSV):
+    _name = 'account.invoice.refund_invoice.init'
+
+RefundInvoiceInit()
+
+
+class RefundInvoice(Wizard):
+    'Refund Invoice'
+    _name = 'account.invoice.refund_invoice'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.invoice.refund_invoice.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('refund', 'Refund', 'gtk-ok', True),
+                ],
+            }
+        },
+        'refund': {
+            'result': {
+                'type': 'action',
+                'action': '_action_refund',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_refund(self, cursor, user, data, context=None):
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+        invoice_obj = self.pool.get('account.invoice')
+
+        invoice_ids = invoice_obj.refund(cursor, user, data['ids'],
+                context=context)
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_invoice_form'),
+            ('module', '=', 'account_invoice'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res['res_id'] = invoice_ids
+        if len(invoice_ids) == 1:
+            res['views'].reverse()
+        return res
+
+RefundInvoice()
