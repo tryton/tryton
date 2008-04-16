@@ -751,6 +751,35 @@ class Invoice(OSV):
         return super(Invoice, self).write(cursor, user, ids, vals,
                 context=context)
 
+    def copy(self, cursor, user, invoice_id, default=None, context=None):
+        line_obj = self.pool.get('account.invoice.line')
+        tax_obj = self.pool.get('account.invoice.tax')
+
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['state'] = 'draft'
+        default['number'] = False
+        default['move'] = False
+        default['invoice_report'] = False
+        default['payment_lines'] = False
+        default['lines'] = False
+        default['taxes'] = False
+        new_id = super(Invoice, self).copy(cursor, user, invoice_id,
+                default=default, context=context)
+
+        invoice = self.browse(cursor, user, invoice_id, context=context)
+        for line in invoice.lines:
+            line_obj.copy(cursor, user, line.id, default={
+                'invoice': new_id,
+                }, context=context)
+
+        for tax in invoice.taxes:
+            tax_obj.copy(cursor, user, tax.id, default={
+                'invoice': new_id,
+                }, context=context)
+        return new_id
+
     def check_account(self, cursor, user, ids):
         for invoice in self.browse(cursor, user, ids):
             if invoice.account.company.id != invoice.company.id:
