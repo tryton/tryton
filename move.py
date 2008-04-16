@@ -1477,6 +1477,10 @@ class Partner(OSV):
             fnct_search='search_receivable_payable', string='Receivable')
     payable = fields.Function('get_receivable_payable',
             fnct_search='search_receivable_payable', string='Payable')
+    receivable_today = fields.Function('get_receivable_payable',
+            fnct_search='search_receivable_payable', string='Receivable Today')
+    payable_today = fields.Function('get_receivable_payable',
+            fnct_search='search_receivable_payable', string='Payable Today')
 
     def get_receivable_payable(self, cursor, user_id, ids, name, arg,
             context=None):
@@ -1488,7 +1492,8 @@ class Partner(OSV):
         if context is None:
             context = {}
 
-        if name not in ('receivable', 'payable'):
+        if name not in ('receivable', 'payable',
+                'receivable_today', 'payable_today'):
             raise Exception('Bad argument')
 
         for i in ids:
@@ -1509,6 +1514,15 @@ class Partner(OSV):
         if not company_id:
             return res
 
+        code = name
+        today_query = ''
+        today_value = []
+        if name in ('receivable_today', 'payable_today'):
+            code = name[:-6]
+            today_query = 'AND (l.maturity_date <= %s ' \
+                    'OR l.maturity_date IS NULL) '
+            today_value = [datetime.date.today()]
+
         line_query = move_line_obj.query_get(cursor, user_id, context=context)
 
         cursor.execute('SELECT l.partner, ' \
@@ -1524,8 +1538,10 @@ class Partner(OSV):
                         '(' + ','.join(['%s' for x in ids]) + ') ' \
                     'AND l.reconciliation IS NULL ' \
                     'AND ' + line_query + ' ' \
+                    + today_query + \
                     'AND a.company = %s ' \
-                'GROUP BY l.partner', (name,) + tuple(ids) + (company_id,))
+                'GROUP BY l.partner',
+                [code,] + ids + today_value + [company_id])
         for partner_id, sum in cursor.fetchall():
             res[partner_id] = sum
         return res
@@ -1541,7 +1557,8 @@ class Partner(OSV):
         if context is None:
             context = {}
 
-        if name not in ('receivable', 'payable'):
+        if name not in ('receivable', 'payable',
+                'receivable_today', 'payable_today'):
             raise Exception('Bad argument')
 
         company_id = None
@@ -1559,6 +1576,15 @@ class Partner(OSV):
         if not company_id:
             return []
 
+        code = name
+        today_query = ''
+        today_value = []
+        if name in ('receivable_today', 'payable_today'):
+            code = name[:-6]
+            today_query = 'AND (l.maturity_date <= %s ' \
+                    'OR l.maturity_date IS NULL) '
+            today_value = [datetime.date.today()]
+
         line_query = move_line_obj.query_get(cursor, user_id, context=context)
 
         cursor.execute('SELECT l.partner ' \
@@ -1570,14 +1596,15 @@ class Partner(OSV):
                     'AND a.type = t.id ' \
                     'AND t.code = %s ' \
                     'AND l.partner IS NOT NULL ' \
-                    'AND l.reconciliation IS NOT NULL ' \
+                    'AND l.reconciliation IS NULL ' \
                     'AND ' + line_query + ' ' \
+                    + today_query + \
                     'AND a.company = %s ' \
                 'GROUP BY l.partner ' \
                 'HAVING ' + \
                     'AND'.join(['(SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
                         + ' ' + x[1] + ' ' + str(x[2]) + ') ' for x in args]),
-                    (name, company_id))
+                    [code] + today_value + [company_id])
         if not cursor.rowcount:
             return [('id', '=', 0)]
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
@@ -1593,10 +1620,10 @@ class PrintGeneralJournalInit(WizardOSV):
     posted = fields.Boolean('Posted Move', help='Only posted move')
 
     def default_from_date(self, cursor, user, context=None):
-        return datetime.datetime(datetime.datetime.today().year, 1, 1)
+        return datetime.date(datetime.date.today().year, 1, 1)
 
     def default_to_date(self, cursor, user, context=None):
-        return datetime.datetime.today()
+        return datetime.date.today()
 
     def default_company(self, cursor, user, context=None):
         if context is None:

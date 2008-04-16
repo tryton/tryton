@@ -344,8 +344,8 @@
                     <xpath
                         expr="/tree/field[@name=&quot;vat&quot;]"
                         position="after">
-                        <field name="receivable" select="2"/>
-                        <field name="payable" select="2"/>
+                        <field name="receivable_today" select="2"/>
+                        <field name="payable_today" select="2"/>
                     </xpath>
                 </data>
                 ]]>
@@ -361,6 +361,10 @@
                         expr="/form/notebook/page[@string=&quot;Accounting&quot;]/field[@name=&quot;vat&quot;]"
                         position="after">
                         <newline/>
+                        <label name="receivable_today"/>
+                        <field name="receivable_today"/>
+                        <label name="payable_today"/>
+                        <field name="payable_today"/>
                         <label name="receivable"/>
                         <field name="receivable"/>
                         <label name="payable"/>
