@@ -58,22 +58,22 @@ class Move(OSV):
             ]
 
     def default_to_location(self, cursor, user, context=None):
-        if context and 'wh_incoming' in context:
+        if context and context.get('wh_incoming'):
             warehouse = self.pool.get('stock.warehouse').browse(
                 cursor, user, context['wh_incoming'], context=context)
             return warehouse.input_location.id
-        if context and 'wh_inv_out' in context:
+        if context and context.get('wh_inv_out'):
             warehouse = self.pool.get('stock.warehouse').browse(
                 cursor, user, context['wh_inv_out'], context=context)
             return warehouse.output_location.id
         return False
 
     def default_from_location(self, cursor, user, context=None):
-        if context and 'wh_inv_in' in context:
+        if context and context.get('wh_inv_in'):
             warehouse = self.pool.get('stock.warehouse').browse(
                 cursor, user, context['wh_inv_in'], context=context)
             return warehouse.input_location.id
-        if context and 'wh_outgoing' in context:
+        if context and context.get('wh_outgoing'):
             warehouse = self.pool.get('stock.warehouse').browse(
                 cursor, user, context['wh_outgoing'], context=context)
             return warehouse.output_location.id
@@ -231,86 +231,3 @@ class CreatePacking(Wizard):
 
 CreatePacking()
 
-class ProductByLocation(OSV):
-    "Product by Location"
-    _name = "stock.product_by_location"
-    _description = __doc__
-    _auto = False
-    _log_access = False
-
-    location = fields.Many2One(
-        "stock.location", "Location", readonly=True, select=True)
-    product = fields.Many2One(
-        "product.product", "Product", readonly=True, select=True)
-    quantity = fields.Float("Quantity", digits=(12, 6), readonly=True)
-    uom = fields.Many2One("product.uom", "Uom", readonly=True,)
-
-    def init(self, cursor, module):
-        cursor.execute(
-            "create or replace view stock_product_by_location as ( "\
-             "select location, product, uom, sum(quantity) as quantity, "\
-                    "min(id) as id "\
-              "from ( "\
-                "SELECT to_location as location, product, uom, "\
-                       "sum(quantity) as quantity, min(id) as id  "\
-                "FROM stock_move "\
-                "WHERE state = 'done'"\
-                "GROUP by to_location, product ,uom  "\
-              "UNION  "\
-                "SELECT from_location as location, product, uom, "\
-                       "-sum(quantity) as quantity, min(-id) as id "\
-                "FROM stock_move "\
-                "WHERE state = 'done'"\
-                "GROUP by from_location, product, uom "\
-              ")  "\
-             "as T group by T.location, T.product, T.uom)" )
-
-ProductByLocation()
-
-
-class ProductByWarehouse(OSV):
-    "Product by Warehouse"
-    _name = "stock.product_by_warehouse"
-    _description = __doc__
-    _auto = False
-
-    warehouse = fields.Many2One(
-        "stock.warehouse", "Warehouse", readonly=True, select=True)
-    product = fields.Many2One(
-        "product.product", "Product", readonly=True, select=True)
-    quantity = fields.Float("Quantity", digits=(12, 6), readonly=True)
-    uom = fields.Many2One("product.uom", "Uom", readonly=True,)
-
-    def init(self, cursor, module):
-        cursor.execute(
-            "create or replace view stock_product_by_warehouse as ( "\
-             "select warehouse, product, uom, sum(quantity) as quantity,  "\
-                    "min(id) as id "\
-              "from ( "\
-                "SELECT l_from.warehouse as warehouse, m.product, m.uom, "\
-                       "sum(m.quantity) as quantity, min(m.id) as id  "\
-                "FROM stock_move m "\
-                     "join stock_location l_from on (l_from.id=m.from_location) "\
-                     "join stock_location l_to on (l_to.id=m.to_location) "\
-                "WHERE m.state = 'done' and ( "\
-                      "(l_to.warehouse != l_from.warehouse) or "\
-                      "(l_to.warehouse is null and l_from.warehouse is not null) or "\
-                      "(l_from.warehouse is null and l_to.warehouse is not null) "\
-                      ") "\
-                "GROUP by l_from.warehouse, m.product ,m.uom "\
-              "UNION  "\
-                "SELECT l_to.warehouse as warehouse, m.product, m.uom, "\
-                       "-sum(m.quantity) as quantity, -min(m.id) as id "\
-                "FROM stock_move m "\
-                     "join stock_location l_to on (l_to.id=m.to_location)"\
-                     "join stock_location l_from on (l_from.id=m.from_location) "\
-                "WHERE m.state = 'done' and ( "\
-                      "(l_to.warehouse != l_from.warehouse) or "\
-                      "(l_to.warehouse is null and l_from.warehouse is not null) or "\
-                      "(l_from.warehouse is null and l_to.warehouse is not null) "\
-                      ") "\
-                "GROUP by l_to.warehouse, m.product, m.uom "\
-              ")  "\
-             "as T group by T.warehouse, T.product, T.uom)" )
-
-ProductByWarehouse()

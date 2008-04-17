@@ -253,23 +253,28 @@ class PackingOut(OSV):
         return super(PackingOut, self).create(cursor, user, values,
                                               context=context)
 
+
+    def pick_product(self, cursor, user, product, quantity, uom, locations, context=None):
+        """
+        Pick the product across the location. Naive (fast) implementation.
+        """
+
+
     def assign_try(self, cursor, user, id, context=None):
+        """
+        Try to assign products for a given customer packing.
+        """
+
         location_obj = self.pool.get('stock.location')
         packing = self.browse(cursor, user, id, context=context)
-        product_ids = dict.fromkeys(
-            [m.product.id for m in packing.outgoing_moves]).keys()
-        if not product_ids:
+        if not packing.outgoing_moves:
             return False
+        product_ids = [m.product.id for m in packing.outgoing_moves]
         location_ids = [l.id for l in packing.warehouse.locations]
 
         print location_obj.products_by_location(
             cursor, user, location_ids, product_ids, context=context)
 
-        #TODO :)
-
-        # Strategy: get the smallest qty that match the need. If no
-        # one take the biggest and try to complete it with the
-        # smallests. But first agglomerate outgoing moves by products.
 
         return False #True
 
