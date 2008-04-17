@@ -42,8 +42,6 @@ class PackingIn(OSV):
             'set_state_received',
             'create_inventory_moves',
             ]
-    def default_code(self, cursor, user, context=None):
-        return "Undefined"
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
