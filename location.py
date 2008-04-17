@@ -21,7 +21,7 @@ class Location(OSV):
                              'Location type', states=STATES,)
     warehouse = fields.Many2One("stock.warehouse", "Warehouse", select="1")
 
-    # TODO: champ calculé vers product (retournant les product dispo)
+    # TODO: champ calcule vers product (retournant les product dispo)
     # + context qui passe la location courante et permet de calculer
     # les qtt des produits. et on ne met ce o2m que dans une certaine vue
 
