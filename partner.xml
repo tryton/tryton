@@ -45,6 +45,10 @@
                             <separator string="Categories" colspan="4"/>
                             <field name="categories" colspan="4"/>
                         </page>
+                        <page string="Accounting">
+                            <label name="vat"/>
+                            <field name="vat"/>
+                        </page>
                         <page string="Properties">
                             <properties/>
                         </page>
