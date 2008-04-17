@@ -13,7 +13,8 @@ class Warehouse(OSV):
     _description = __doc__
     name = fields.Char("Name", size=64, required=True, select=True)
     address = fields.Many2One("partner.address", "Address")
-    locations = fields.One2Many("stock.location", "warehouse", "Storage locations",)
+    locations = fields.One2Many(
+        "stock.location", "warehouse", "Storage locations",)
     active = fields.Boolean('Active', select=True)
 
     def default_active(self, cursor, user, context=None):

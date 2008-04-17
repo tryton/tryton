@@ -19,8 +19,6 @@
                         <field name="to_location"/>
                         <label name="lot"/>
                         <field name="lot"/>
-                        <label name="packing"/>
-                        <field name="packing"/>
                         <label name="planned_date"/>
                         <field name="planned_date"/>
                         <label name="effective_date"/>
@@ -55,7 +53,6 @@
                         <field name="quantity" select="2"/>
                         <field name="uom" select="2"/>
                         <field name="lot" select="2"/>
-                        <field name="packing" select="2"/>
                         <field name="state" select="2"/>
                     </tree>
                 ]]>
@@ -78,6 +75,85 @@
         </record>
         <menuitem parent="menu_stock" sequence="3"
             action="act_move_form" id="menu_move_form"/>
+
+
+        <record model="ir.action.act_window" id="act_move_form_supp">
+            <field name="name">Moves from suppliers</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+	    <field name="domain">[('from_location.usage', '=', 'supplier')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_supp_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form_supp"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_supp_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_supp"/>
+        </record>
+        <menuitem parent="menu_move_form" sequence="1"
+            action="act_move_form_supp" id="menu_move_form_supp"/>
+
+        <record model="ir.action.act_window" id="act_move_form_supp_proceed">
+            <field name="name">Moves from suppliers to proceed</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+	    <field name="domain">[('from_location.usage', '=', 'supplier'),('state','in',['draft','waiting']),('incoming_packing_in','=',False),('inventory_packing_in','=',False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_supp_proceed_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form_supp_proceed"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_supp_proceed_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_supp_proceed"/>
+        </record>
+        <menuitem parent="menu_move_form" sequence="2"
+            action="act_move_form_supp_proceed" id="menu_move_form_supp_proceed"/>
+
+
+        <record model="ir.action.act_window" id="act_move_form_cust">
+            <field name="name">Moves to customers</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+	    <field name="domain">[('to_location.usage', '=', 'customer')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_cust_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form_cust"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_cust_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_cust"/>
+        </record>
+        <menuitem parent="menu_move_form" sequence="3"
+            action="act_move_form_cust" id="menu_move_form_cust"/>
+
+
+        <record model="ir.action.act_window" id="act_move_form_cust_proceed">
+            <field name="name">Moves to customers to proceed</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+	    <field name="domain">[('to_location.usage', '=', 'customer'),('state','in',['draft','waiting'])]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_cust_proceed_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_move_form_cust_proceed"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_cust_proceed_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_cust_proceed"/>
+        </record>
+        <menuitem parent="menu_move_form" sequence="4"
+            action="act_move_form_cust_proceed" id="menu_move_form_cust_proceed"/>
 
 
         <record model="ir.ui.view" id="productbylocation_view_form">

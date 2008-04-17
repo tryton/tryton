@@ -16,6 +16,8 @@
                         <field name="input_location"/>
                         <label name="output_location"/>
                         <field name="output_location"/>
+                        <label name="store_location"/>
+                        <field name="store_location"/>
                         <separator name="locations" colspan="4"/>
                         <field name="locations" colspan="4"/>
                     </form>

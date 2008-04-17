@@ -19,6 +19,6 @@ class Lot(OSV):
 
     def create(self, cursor, user, values, context):
         values['code'] = self.pool.get('ir.sequence').get(cursor, user, 'stock.lot')
-        return super(Lot,self).create(cursor, user, values, context)
+        return super(Lot, self).create(cursor, user, values, context)
 
 Lot()
