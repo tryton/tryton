@@ -136,9 +136,25 @@
             <field name="rule_group" ref="rule_group_property"/>
         </record>
 
-        <record model="company.company" id="main">
-            <field name="name">B2CK</field>
-            <field name="partner" ref="partner.main"/>
+        <record model="ir.ui.view" id="company_config_init_view_form">
+            <field name="model">company.company.config.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Create Company" col="2">
+                    <separator string="Create Company" align="0.0" colspan="2"/>
+                    <image name="gtk-info"/>
+                    <group col="1">
+                        <label string="You can now add your company into the system."
+                            align="0.0"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.module.module.config_wizard.item"
+            id="config_wizard_item_company">
+            <field name="name">company.company.config</field>
         </record>
     </data>
 </tryton>

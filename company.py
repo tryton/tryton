@@ -2,6 +2,7 @@
 
 import copy
 from trytond.osv import fields, OSV
+from trytond.wizard import Wizard, WizardOSV
 
 
 class Company(OSV):
@@ -99,3 +100,60 @@ class Property(OSV):
         return res
 
 Property()
+
+
+class CompanyConfigInit(WizardOSV):
+    _name = 'company.company.config.init'
+
+CompanyConfigInit()
+
+
+class CompanyConfig(Wizard):
+    'Configure companies'
+    _name = 'company.company.config'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'company.company.config.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('company', 'Ok', 'gtk-ok', True),
+                ],
+            },
+        },
+        'company': {
+            'result': {
+                'type': 'form',
+                'object': 'company.company',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('add', 'Add', 'gtk-ok', True),
+                ],
+            },
+        },
+        'add': {
+            'result': {
+                'type': 'action',
+                'action': '_add',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _add(self, cursor, user, data, context=None):
+        company_obj = self.pool.get('company.company')
+        user_obj = self.pool.get('res.user')
+
+        company_id = company_obj.create(cursor, user, data['form'],
+                context=context)
+        user_ids = user_obj.search(cursor, user, [
+            ('main_company', '=', False),
+            ], context=context)
+        user_obj.write(cursor, user, user_ids, {
+            'main_company': company_id,
+            'company': company_id,
+            }, context=context)
+        return {}
+
+CompanyConfig()
