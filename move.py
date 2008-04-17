@@ -39,7 +39,7 @@ class Move(OSV):
     packing_out = fields.Many2One(
         "stock.packing.out", "Customer Packing", states=STATES, select=True)
     planned_date = fields.Date("Planned Date", states=STATES,)
-    effective_date = fields.Date("Effective Date",  states=STATES, readonly=True)
+    effective_date = fields.Date("Effective Date", readonly=True)
     state = fields.Selection(
         [('draft', 'Draft'),('done', 'Done'),('cancel', 'Cancel'),
          ('waiting', 'Waiting')], 'State', select=True, readonly=True)
