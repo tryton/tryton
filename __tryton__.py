@@ -13,7 +13,6 @@
         'warehouse.xml',
         'location.xml',
         'move.xml',
-        'lot.xml',
         'packing.xml',
     ],
 }

@@ -26,6 +26,5 @@
 
 from warehouse import *
 from location import *
-from lot import *
 from packing import *
 from move import *

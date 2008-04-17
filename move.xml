@@ -17,8 +17,6 @@
                         <field name="from_location"/>
                         <label name="to_location"/>
                         <field name="to_location"/>
-                        <label name="lot"/>
-                        <field name="lot"/>
                         <label name="planned_date"/>
                         <field name="planned_date"/>
                         <label name="effective_date"/>
@@ -52,7 +50,6 @@
                         <field name="to_location" select="1"/>
                         <field name="quantity" select="2"/>
                         <field name="uom" select="2"/>
-                        <field name="lot" select="2"/>
                         <field name="state" select="2"/>
                     </tree>
                 ]]>
