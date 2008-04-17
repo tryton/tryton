@@ -487,6 +487,15 @@ class OpenCode(Wizard):
 OpenCode()
 
 
+class AccountTemplate(OSV):
+    _name = 'account.account.template'
+    taxes = fields.Many2Many('account.tax', 'account_account_template_tax_rel',
+            'account', 'tax', 'Default Taxes',
+            domain="[('parent', '=', False)]")
+
+AccountTemplate()
+
+
 class Account(OSV):
     _name = 'account.account'
     taxes = fields.Many2Many('account.tax', 'account_account_tax_rel',

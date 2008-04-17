@@ -198,6 +198,164 @@
             <field name="account_type" eval="True"/>
         </record>
 
+        <record model="ir.ui.view" id="account_template_view_form">
+            <field name="model">account.account.template</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Template" col="6">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="type"/>
+                    <field name="type" widget="selection"/>
+                    <label name="close_method"/>
+                    <field name="close_method"/>
+                    <label name="reconcile"/>
+                    <field name="reconcile"/>
+                    <separator name="parents" colspan="6"/>
+                    <field name="parents" colspan="6"/>
+                    <separator name="taxes" colspan="6"/>
+                    <field name="taxes" colspan="6"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="account_template_view_tree">
+            <field name="model">account.account.template</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Templates">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="type" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_template_tree">
+            <field name="name">Account Templates</field>
+            <field name="res_model">account.account.template</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parents', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_template_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_template_view_tree"/>
+            <field name="act_window" ref="act_account_template_tree"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_account_template_tree" id="menu_account_template_tree"/>
+        <record model="ir.model.access" id="access_account_template">
+            <field name="model" search="[('model', '=', 'account.account.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="account.account.template" id="account_template_root">
+            <field name="name">Minimal Account Chart</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account_type_view"/>
+        </record>
+        <record model="account.account.template" id="account_template_receivable">
+            <field name="name">Main Receivable</field>
+            <field name="type" ref="account_type_asset_current_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="parents" eval="[('add', ref('account_template_root'))]"/>
+        </record>
+        <record model="account.account.template" id="account_template_payable">
+            <field name="name">Main Payable</field>
+            <field name="type" ref="account_type_liability_current_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="parents" eval="[('add', ref('account_template_root'))]"/>
+        </record>
+        <record model="account.account.template" id="account_template_revenue">
+            <field name="name">Main Revenue</field>
+            <field name="type" ref="account_type_revenue"/>
+            <field name="close_method">none</field>
+            <field name="parents" eval="[('add', ref('account_template_root'))]"/>
+        </record>
+        <record model="account.account.template" id="account_template_expense">
+            <field name="name">Main Expense</field>
+            <field name="type" ref="account_type_expense"/>
+            <field name="close_method">none</field>
+            <field name="parents" eval="[('add', ref('account_template_root'))]"/>
+        </record>
+        <record model="account.account.template" id="account_template_cash">
+            <field name="name">Main Cash</field>
+            <field name="type" ref="account_type_asset_current_cash"/>
+            <field name="close_method">balance</field>
+            <field name="parents" eval="[('add', ref('account_template_root'))]"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_create_chart_account_init_view_form">
+            <field name="model">account.account.create_chart_account.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Create Chart of Account" col="2">
+                    <separator string="Create Chart of Account" align="0.0"
+                        colspan="2"/>
+                    <image name="gtk-info"/>
+                    <group col="1">
+                        <label string="You can now create a chart of account for your company"
+                            align="0.0"/>
+                        <label string="by selecting a chart of account template."
+                            align="0.0"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_create_chart_account_account_view_form">
+            <field name="model">account.account.create_chart_account.account</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Create Chart of Account" col="2">
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="account_template"/>
+                    <field name="account_template"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_create_chart_account_properties_view_form">
+            <field name="model">account.account.create_chart_account.properties</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Create Default Properties" col="2">
+                    <label name="account_receivable"/>
+                    <field name="account_receivable"/>
+                    <label name="account_payable"/>
+                    <field name="account_payable"/>
+                    <field name="company" invisible="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_create_chart_account">
+            <field name="name">Create Chart of Account from Template</field>
+            <field name="wiz_name">account.account.create_chart_account</field>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="wizard_create_chart_account" id="menu_create_chart_account"/>
+        <record model="ir.module.module.config_wizard.item"
+            id="config_wizard_item_chart_account">
+            <field name="name">account.account.create_chart_account</field>
+        </record>
+
         <record model="ir.ui.view" id="account_view_form">
             <field name="model">account.account</field>
             <field name="type">form</field>
@@ -332,60 +490,6 @@
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="True"/>
-        </record>
-        <record model="account.account" id="account_root">
-            <field name="name">Root</field>
-            <field name="close_method">none</field>
-            <field name="type" ref="account_type_view"/>
-            <field name="company" ref="company.main"/>
-        </record>
-        <record model="account.account" id="account_receivable">
-            <field name="name">Main Receivable</field>
-            <field name="type" ref="account_type_asset_current_receivable"/>
-            <field name="company" ref="company.main"/>
-            <field name="reconcile" eval="True"/>
-            <field name="close_method">unreconciled</field>
-            <field name="parents" eval="[('add', ref('account_root'))]"/>
-        </record>
-        <record model="account.account" id="account_payable">
-            <field name="name">Main Payable</field>
-            <field name="type" ref="account_type_liability_current_payable"/>
-            <field name="company" ref="company.main"/>
-            <field name="reconcile" eval="True"/>
-            <field name="close_method">unreconciled</field>
-            <field name="parents" eval="[('add', ref('account_root'))]"/>
-        </record>
-        <record model="account.account" id="account_revenue">
-            <field name="name">Main Revenue</field>
-            <field name="type" ref="account_type_revenue"/>
-            <field name="company" ref="company.main"/>
-            <field name="parents" eval="[('add', ref('account_root'))]"/>
-        </record>
-        <record model="account.account" id="account_expense">
-            <field name="name">Main Expense</field>
-            <field name="type" ref="account_type_expense"/>
-            <field name="company" ref="company.main"/>
-            <field name="parents" eval="[('add', ref('account_root'))]"/>
-        </record>
-        <record model="account.account" id="account_cash">
-            <field name="name">Main Cash</field>
-            <field name="type" ref="account_type_asset_current_cash"/>
-            <field name="company" ref="company.main"/>
-            <field name="parents" eval="[('add', ref('account_root'))]"/>
-        </record>
-        <record model="ir.property" id="property_account_receivable">
-            <field name="name">account_receivable</field>
-            <field name="field"
-                search="[('model.model', '=', 'partner.partner'), ('name', '=', 'account_receivable')]"/>
-            <field name="value" eval="'account.account,' + str(ref('account_receivable'))"/>
-            <field name="company" ref="company.main"/>
-        </record>
-        <record model="ir.property" id="property_account_payable">
-            <field name="name">account_payable</field>
-            <field name="field"
-                search="[('model.model', '=', 'partner.partner'), ('name', '=', 'account_payable')]"/>
-            <field name="value" eval="'account.account,' + str(ref('account_payable'))"/>
-            <field name="company" ref="company.main"/>
         </record>
 
         <record model="ir.ui.view" id="open_chart_account_init_view_form">

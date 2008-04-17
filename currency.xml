@@ -151,8 +151,5 @@
             <field name="rounding" eval="0.01"/>
             <field name="digits" eval="2"/>
         </record>
-        <record model="company.company" id="company.main">
-            <field name="currency" ref="eur"/>
-        </record>
     </data>
 </tryton>

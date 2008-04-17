@@ -91,6 +91,72 @@ class Type(OSV):
 Type()
 
 
+class AccountTemplate(OSV):
+    'Account Template'
+    _name = 'account.account.template'
+    _description = __doc__
+    _order = 'code, id'
+    _parent_name = 'parents'
+
+    name = fields.Char('Name', size=None, required=True, translate=True,
+            select=1)
+    code = fields.Char('Code', size=None, select=1)
+    type = fields.Many2One('account.account.type', 'Type', required=True,
+            domain=[('account_type', '=', True)])
+    parents = fields.Many2Many('account.account.template',
+            'account_account_template_rel', 'child', 'parent', 'Parents')
+    childs = fields.Many2Many('account.account.template',
+            'account_account_template_rel', 'parent', 'child', 'Childs')
+    reconcile = fields.Boolean('Reconcile')
+    close_method = fields.Selection([
+        ('none', 'None'),
+        ('balance', 'Balance'),
+        ('detail', 'Detail'),
+        ('unreconciled', 'Unreconciled'),
+        ], 'Deferral method', required=True)
+
+    def _get_account_value(self, cursor, user, template, context=None):
+        res = {}
+        res['name'] = template.name
+        res['code'] = template.code
+        res['type'] = template.type.id
+        res['reconcile'] = template.reconcile
+        res['close_method'] = template.close_method
+        res['taxes'] = [('add', x.id) for x in template.taxes]
+        return res
+
+    def create_account(self, cursor, user, template, company_id, context=None,
+            template2account=None):
+        account_obj = self.pool.get('account.account')
+
+        if template2account is None:
+            template2account = {}
+
+        if isinstance(template, (int, long)):
+            template = self.browse(cursor, user, template, context=context)
+
+        if template.id not in template2account:
+            vals = self._get_account_value(cursor, user, template, context=context)
+            vals['company'] = company_id
+
+            new_id = account_obj.create(cursor, user, vals, context=context)
+            template2account[template.id] = new_id
+        else:
+            new_id = template2account[template.id]
+
+        new_childs = []
+        for child in template.childs:
+            new_childs.append(self.create_account(cursor, user, child,
+                company_id, context=context, template2account=template2account))
+        if new_childs:
+            account_obj.write(cursor, user, new_childs, {
+                'parents': [('add', new_id)],
+                }, context=context)
+        return new_id
+
+AccountTemplate()
+
+
 class Account(OSV):
     'Account'
     _name = 'account.account'
@@ -962,3 +1028,126 @@ class OpenIncomeStatement(Wizard):
         return res
 
 OpenIncomeStatement()
+
+
+class CreateChartAccountInit(WizardOSV):
+    _name = 'account.account.create_chart_account.init'
+
+CreateChartAccountInit()
+
+
+class CreateChartAccountAccount(WizardOSV):
+    _name = 'account.account.create_chart_account.account'
+    company = fields.Many2One('company.company', 'Company', required=True)
+    account_template = fields.Many2One('account.account.template',
+            'Account Template', required=True, domain=[('parents', '=', False)])
+
+CreateChartAccountAccount()
+
+
+class CreateChartAccountPropertites(WizardOSV):
+    _name = 'account.account.create_chart_account.properties'
+    company = fields.Many2One('company.company', 'Company')
+    account_receivable = fields.Many2One('account.account',
+            'Default Receivable Account',
+            domain="[('company', '=', company)]")
+    account_payable = fields.Many2One('account.account',
+            'Default Payable Account',
+            domain="[('company', '=', company)]")
+
+CreateChartAccountPropertites()
+
+
+class CreateChartAccount(Wizard):
+    'Create chart account from template'
+    _name = 'account.account.create_chart_account'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.account.create_chart_account.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('account', 'Ok', 'gtk-ok', True),
+                ],
+            },
+        },
+        'account': {
+            'result': {
+                'type': 'form',
+                'object': 'account.account.create_chart_account.account',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('create_account', 'Create', 'gtk-ok', True),
+                ],
+            },
+        },
+        'create_account': {
+            'actions': ['_action_create_account'],
+            'result': {
+                'type': 'form',
+                'object': 'account.account.create_chart_account.properties',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('create_properties', 'Create', 'gtk-ok', True),
+                ],
+            },
+        },
+        'create_properties': {
+            'result': {
+                'type': 'action',
+                'action': '_action_create_properties',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_create_account(self, cursor, user, datas, context=None):
+        account_template_obj = self.pool.get('account.account.template')
+        account_template_obj.create_account(cursor, user,
+                datas['form']['account_template'], datas['form']['company'],
+                context=context)
+        return {'company': datas['form']['company']}
+
+    def _action_create_properties(self, cursor, user, datas, context=None):
+        property_obj = self.pool.get('ir.property')
+        model_field_obj = self.pool.get('ir.model.field')
+
+        account_receivable_field_id = model_field_obj.search(cursor, user, [
+            ('model.model', '=', 'partner.partner'),
+            ('name', '=', 'account_receivable'),
+            ], limit=1, context=context)[0]
+        property_ids = property_obj.search(cursor, user, [
+            ('field', '=', account_receivable_field_id),
+            ('res', '=', False),
+            ('company', '=', datas['form']['company']),
+            ], context=context)
+        property_obj.unlink(cursor, user, property_ids, context=context)
+        property_obj.create(cursor, user, {
+            'name': 'account_receivable',
+            'field': account_receivable_field_id,
+            'value': 'account.account,' + \
+                    str(datas['form']['account_receivable']),
+            'company': datas['form']['company'],
+            }, context=context)
+
+        account_payable_field_id = model_field_obj.search(cursor, user, [
+            ('model.model', '=', 'partner.partner'),
+            ('name', '=', 'account_payable'),
+            ], limit=1, context=context)[0]
+        property_ids = property_obj.search(cursor, user, [
+            ('field', '=', account_payable_field_id),
+            ('res', '=', False),
+            ('company', '=', datas['form']['company']),
+            ], context=context)
+        property_obj.unlink(cursor, user, property_ids, context=context)
+        property_obj.create(cursor, user, {
+            'name': 'account_payable',
+            'field': account_payable_field_id,
+            'value': 'account.account,' + \
+                    str(datas['form']['account_payable']),
+            'company': datas['form']['company'],
+            }, context=context)
+        return {}
+
+CreateChartAccount()
