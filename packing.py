@@ -164,8 +164,7 @@ class PackingOut(OSV):
     effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime('Planned Date', readonly=True)
     warehouse = fields.Many2One(
-        'stock.warehouse',"Warehouse", required=True,
-        states=STATES, on_change=['warehouse'])
+        'stock.warehouse',"Warehouse", required=True, states=STATES,)
     outgoing_moves = fields.One2Many(
         'stock.move', 'outgoing_packing_out', 'Outgoing Moves',
         states=STATES,
@@ -197,28 +196,6 @@ class PackingOut(OSV):
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
-
-    def on_change_warehouse(self, cursor, user, ids, value, context=None):
-        move_obj = self.pool.get('stock.move')
-        if 'warehouse' in value and value['warehouse']:
-            warehouse = self.pool.get('stock.warehouse').browse(
-                cursor, user, value['warehouse'], context=context)
-            outgoing_moves= []
-            inventory_moves= []
-            for packing in self.browse(cursor, user, ids, context=context):
-                outgoing_moves.extend([m.id for m in packing.outgoing_moves])
-                inventory_moves.extend([m.id for m in packing.inventory_moves])
-            if outgoing_moves:
-                move_obj.write(
-                    cursor, user, outgoing_moves,
-                    {'from_location': warehouse.output_location.id},
-                    context=context)
-            if inventory_moves:
-                move_obj.write(
-                    cursor, user, inventory_moves,
-                    {'to_location': warehouse.output_location.id},
-                    context=context)
-        return {}
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
