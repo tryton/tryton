@@ -937,8 +937,8 @@ class Invoice(OSV):
         Generate invoice report and store it in invoice_report field.
         '''
         invoice_report = get_pool_report(cursor.dbname).get('account.invoice')
-        val = invoice_report.execute(cursor, user, [invoice_id], {},
-                context=context)
+        val = invoice_report.execute(cursor, user, [invoice_id],
+                {'id': invoice_id}, context=context)
         self.write(cursor, user, invoice_id, {
             'invoice_report': val[1],
             }, context=context)
