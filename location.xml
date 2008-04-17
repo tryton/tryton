@@ -61,5 +61,22 @@
         <menuitem parent="menu_stock" sequence="2"
             action="act_location_form" id="menu_location_form"/>
 
+
+        <record model="ir.model.access" id="access_location">
+            <field name="model" search="[('model', '=', 'stock.location')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_location_admin">
+            <field name="model" search="[('model', '=', 'stock.location')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
     </data>
 </tryton>

@@ -54,5 +54,31 @@
         <menuitem parent="menu_stock" sequence="1"
             action="act_warehouse_form" id="menu_warehouse_form"/>
 
+
+
+        <record model="res.group" id="group_stock_admin">
+            <field name="name">Stock administration</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_stock_admin'))]"/>
+        </record>
+
+        <record model="ir.model.access" id="access_warehouse">
+            <field name="model" search="[('model', '=', 'stock.warehouse')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.warehouse')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+
     </data>
 </tryton>
