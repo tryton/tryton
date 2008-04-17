@@ -715,8 +715,7 @@ class Invoice(OSV):
             ids = [ids]
         res = []
         for invoice in self.browse(cursor, user, ids, context=context):
-            res.append((invoice.id, invoice.number or invoice.invoice_date + \
-                    invoice.partner.name))
+            res.append((invoice.id, invoice.number or '/' + ' ' + invoice.partner.name))
         return res
 
     def name_search(self, cursor, user, name='', args=None, operator='ilike',
