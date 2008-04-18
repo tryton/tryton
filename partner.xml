@@ -155,7 +155,6 @@
         <menuitem  parent="menu_partner_form" sequence="2"
             action="act_partner_type_form" id="menu_partner_type_form"/>
 
-
         <record model="ir.model.access" id="access_partner_type">
             <field name="model" search="[('model', '=', 'partner.partner.type')]"/>
             <field name="perm_read" eval="True"/>
@@ -203,12 +202,6 @@
             <field name="name">Ultd.</field>
         </record>
 
-
-        <record model="partner.partner" id="main">
-            <field name="name">B2CK</field>
-            <field name="website">http://www.b2ck.com/</field>
-            <field name="type" ref="type_sprl"/>
-        </record>
 
     </data>
 </tryton>
