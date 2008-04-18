@@ -42,17 +42,8 @@ class Location(OSV):
         result = self.name_get(cursor, user, ids, context)
         return result
 
-    def products_by_location(self, cursor, user, location_ids,
+    def raw_products_by_location(self, cursor, user, location_ids,
                             product_ids=None, context=None):
-        if not location_ids:
-            return []
-        uom_obj = self.pool.get("product.uom")
-        product_obj = self.pool.get("product.product")
-        uom_ids = uom_obj.search(cursor, user, [], context=context)
-        uom_by_id = dict((x.id, x) for x in uom_obj.browse(
-                cursor, user, uom_ids, context=context))
-        uom_by_prod = dict((x.id, x.default_uom) for x in product_obj.browse(
-                cursor, user, product_ids, context=context))
         select_clause = \
             "select location, product, uom, sum(quantity) as quantity "\
              "from ( "\
@@ -79,6 +70,22 @@ class Location(OSV):
             where_ids += product_ids
         cursor.execute(select_clause % (where_clause, where_clause),
                        where_ids + where_ids)
+
+        return cursor.fetchall()
+
+    def products_by_location(self, cursor, user, location_ids,
+                            product_ids=None, context=None):
+
+        if not location_ids:
+            return []
+        uom_obj = self.pool.get("product.uom")
+        product_obj = self.pool.get("product.product")
+        uom_ids = uom_obj.search(cursor, user, [], context=context)
+        uom_by_id = dict((x.id, x) for x in uom_obj.browse(
+                cursor, user, uom_ids, context=context))
+        uom_by_prod = dict((x.id, x.default_uom) for x in product_obj.browse(
+                cursor, user, product_ids, context=context))
+
         res = {}
         for line in cursor.fetchall():
             location, product, uom, quantity= line
