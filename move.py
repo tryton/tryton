@@ -488,8 +488,6 @@ class Line(OSV):
                             base_id = tax.refund_base_code.id
                             code_id = tax.refund_tax_code.id
                             account_id = tax.refund_account.id
-                    if not account_id:
-                        account_id = line.account.id
                     if base_id in line_code_taxes or not base_id:
                         taxes.setdefault((account_id, code_id), False)
                 for tax_line in line.tax_lines:

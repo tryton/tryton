@@ -222,17 +222,21 @@ class Tax(OSV):
     childs = fields.One2Many('account.tax', 'parent', 'Childs')
 
     company = fields.Many2One('company.company', 'Company', required=True)
-    invoice_account = fields.Many2One('account.account', 'Invoice Account',
+    invoice_account = fields.Property(type='many2one',
+            relation='account.account', string='Invoice Account',
             domain="[('company', '=', company)]",
             help='Keep empty to use the default invoice account',
             states={
-                'readonly': "type == 'none'",
+                'readonly': "type == 'none' or not company",
+                'required': "company",
             })
-    refund_account = fields.Many2One('account.account', 'Refund Account',
+    refund_account = fields.Property(type='many2one',
+            relation='account.account', string='Refund Account',
             domain="[('company', '=', company)]",
             help='Keep empty to use the default refund account',
             states={
-                'readonly': "type == 'none'",
+                'readonly': "type == 'none' or not company",
+                'required': "company",
             })
 
     invoice_base_code = fields.Many2One('account.tax.code',
