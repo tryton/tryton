@@ -499,15 +499,13 @@ class Invoice(OSV):
                     val['base_sign'] = tax['tax'].invoice_base_sign
                     val['tax_code'] = tax['tax'].invoice_tax_code.id
                     val['tax_sign'] = tax['tax'].invoice_tax_sign
-                    val['account'] = tax['tax'].invoice_account.id or \
-                            line.account.id
+                    val['account'] = tax['tax'].invoice_account.id
                 else:
                     val['base_code'] = tax['tax'].refund_base_code.id
                     val['base_sign'] = tax['tax'].refund_base_sign
                     val['tax_code'] = tax['tax'].refund_tax_code.id
                     val['tax_sign'] = tax['tax'].refund_tax_sign
-                    val['account'] = tax['tax'].refund_account.id or \
-                            line.account.id
+                    val['account'] = tax['tax'].refund_account.id
                 key = (val['base_code'], val['base_sign'],
                         val['tax_code'], val['tax_sign'],
                         val['account'], val['description'])
