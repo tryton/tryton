@@ -119,7 +119,7 @@ class Rate(OSV):
     _name = 'account.currency.rate'
     _description = __doc__
     _rec_name = 'date'
-    _order = 'date DESC'
+    _order = 'date DESC, id'
     date = fields.Date('Date', required=True, select=1)
     rate = fields.Numeric('Rate', digits=(12, 6), required=1)
     currency = fields.Many2One('account.currency', 'Currency')
