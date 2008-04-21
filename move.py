@@ -43,9 +43,6 @@ class Move(OSV):
          ('waiting', 'Waiting')], 'State', select=True, readonly=True)
 
 
-    # TODO : constrains: moves on the same packing must share the
-    # same locations (and this location must own to the selected wh.)
-
     def __init__(self):
         super(Move, self).__init__()
         self._rpc_allowed += [
@@ -54,6 +51,48 @@ class Move(OSV):
             'set_state_draft',
             'set_state_cancel',
             ]
+        self._sql_constraints += [
+            ('check_move_qty_pos',
+                'CHECK(quantity >= 0.0)', 'Move quantity must be positive'),
+        ]
+        self._constraints += [
+            ('check_locations',
+                'Invalid locations', []),
+        ]
+
+    def check_locations(self, cursor, user, ids, context=None):
+        for move in self.browse(cursor, user, ids, context=context):
+            if move.from_location.id == move.to_location.id:
+                return False
+            if move.incoming_packing_in:
+                if move.incoming_packing_in.warehouse.input_location.id \
+                        != move.to_location.id:
+                    return False
+                if move.from_location.usage and \
+                        move.from_location.usage not in ('supplier', 'customer'):
+                    return False
+                for packing_move in move.incoming_packing_in.incoming_moves:
+                    if packing_move.from_location.id != move.from_location.id:
+                        return False
+            if move.inventory_packing_in and \
+                    move.inventory_packing_in.warehouse.input_location.id \
+                    != move.from_location.id:
+                return False
+            if move.inventory_packing_out and \
+                    move.inventory_packing_out.warehouse.output_location.id \
+                    != move.to_location.id:
+                return False
+            if move.outgoing_packing_out:
+                if move.outgoing_packing_out.warehouse.output_location.id \
+                        != move.from_location.id:
+                    return False
+                if move.to_location.usage and \
+                        move.to_location.usage not in ('supplier','customer'):
+                    return False
+                for packing_move in move.outgoing_packing_out.outgoing_moves:
+                    if packing_move.to_location.id != move.to_location.id:
+                        return False
+        return True
 
     def default_to_location(self, cursor, user, context=None):
         if context and context.get('wh_incoming'):
