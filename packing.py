@@ -170,9 +170,6 @@ class PackingOut(OSV):
             'assign_force',
             ]
 
-    def default_code(self, cursor, user, context=None):
-        return "Undefined"
-
     def default_state(self, cursor, user, context=None):
         return 'draft'
 
