@@ -103,6 +103,10 @@ class Move(OSV):
             warehouse = self.pool.get('stock.warehouse').browse(
                 cursor, user, context['wh_inv_out'], context=context)
             return warehouse.output_location.id
+        if context and context.get('wh_inv_in'):
+            warehouse = self.pool.get('stock.warehouse').browse(
+                cursor, user, context['wh_inv_in'], context=context)
+            return warehouse.store_location.id
         return False
 
     def default_from_location(self, cursor, user, context=None):
@@ -114,6 +118,10 @@ class Move(OSV):
             warehouse = self.pool.get('stock.warehouse').browse(
                 cursor, user, context['wh_outgoing'], context=context)
             return warehouse.output_location.id
+        if context and context.get('wh_inv_out'):
+            warehouse = self.pool.get('stock.warehouse').browse(
+                cursor, user, context['wh_inv_out'], context=context)
+            return warehouse.store_location.id
         return False
 
     def default_state(self, cursor, user, context=None):
