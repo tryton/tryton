@@ -20,10 +20,11 @@ class PackingIn(OSV):
         'stock.warehouse',"Warehouse", required=True, states=STATES,)
     incoming_moves = fields.One2Many(
         'stock.move', 'incoming_packing_in', 'Incoming Moves',
-        states=STATES,
+        states={'readonly':"state in ('received','done')",},
         context="{'wh_incoming': warehouse, 'pack_incoming_state': state}")
     inventory_moves = fields.One2Many(
         'stock.move', 'inventory_packing_in', 'Inventory Moves',
+        states={'readonly':"state in ('draft','waiting')",},
         context="{'wh_inv_in': warehouse, 'pack_inv_in_state': state}")
     code = fields.Char("Code", size=None, select=1, readonly=True,)
     state = fields.Selection(
@@ -148,6 +149,7 @@ class PackingOut(OSV):
         context="{'wh_outgoing': warehouse, 'pack_outgoing_state': state}")
     inventory_moves = fields.One2Many(
         'stock.move', 'inventory_packing_out', 'Inventory Moves',
+        states={'readonly':"state not in ('assigned')",},
         context="{'wh_inv_out': warehouse, 'pack_inv_out_state': state}")
     code = fields.Char("Code", size=None, select=1, readonly=True,)
     state = fields.Selection(
