@@ -229,32 +229,136 @@ class PackingOut(OSV):
         return super(PackingOut, self).create(cursor, user, values,
                                               context=context)
 
-
-    def pick_product(self, cursor, user, product, quantity, uom, locations, context=None):
+    def pick_product(self, cursor, user, total_qty, location_quantities,
+                     product=None, location_index=None, context=None):
         """
-        Pick the product across the location. Naive (fast) implementation.
+        Pick the product across the location. Naive (fast)
+        implementation.  Product is a browse record and location_index
+        is the index of the browse record of all the locations.
         """
+        to_pick = {}
+        for location,qty in location_quantities.iteritems():
+            if total_qty <= qty:
+                to_pick[location]= total_qty
+                return to_pick
+            else:
+                to_pick[location]= qty
+                total_qty -= qty
+        return False
 
+    def _location_quantities(self, cursor, user, target_product, target_uom,
+                             raw_data, uom_index, context=None):
+        """
+        Take a raw list of product by location by uom and convert it
+        to the target uom.
+        """
+        uom_obj = self.pool.get('product.uom')
+        res = {}
+        for line in raw_data:
+            location, product, uom, qty = line
+            if product != target_product:
+                return []
+            if location not in res:
+                res[location] = 0
+            res[location] += uom_obj.compute_qty(
+                cursor, user, uom_index[uom], qty, uom_index[target_uom])
+        return res
 
     def assign_try(self, cursor, user, id, context=None):
         """
         Try to assign products for a given customer packing.
         """
-
         location_obj = self.pool.get('stock.location')
+        move_obj = self.pool.get('stock.move')
+        uom_obj = self.pool.get('product.uom')
         packing = self.browse(cursor, user, id, context=context)
         if not packing.outgoing_moves:
             return False
+
+        # Remove potentialy existing inventory moves:
+        move_obj.unlink(
+            cursor, user, [m.id for m in packing.inventory_moves],
+            context=context)
+
+        uom_ids = uom_obj.search(cursor, user, [], context=context)
+        uom_index = dict((x.id, x) for x in uom_obj.browse(
+                cursor, user, uom_ids, context=context))
         product_ids = [m.product.id for m in packing.outgoing_moves]
-        location_ids = [l.id for l in packing.warehouse.locations]
+        location_index = dict([(l.id,l) for l in packing.warehouse.locations])
 
-        print location_obj.products_by_location(
-            cursor, user, location_ids, product_ids, context=context)
+        # Fetch location contents:
+        raw_results = location_obj.raw_products_by_location(
+            cursor, user, location_index.keys(), product_ids, context=context)
+        # XXX: Maybe index results by products to speed things
 
+        moves_to_create = []
+        success = True
+        for move in packing.outgoing_moves:
+            # Process data for the given product and uom:
+            location_quantities = self._location_quantities(
+                cursor, user, move.product.id, move.uom.id, raw_results,
+                uom_index, context=context)
+            # Chose how to pick products:
+            to_pick = self.pick_product(
+                cursor, user, move.quantity, location_quantities,
+                product=move.product, location_index= location_index, context=context)
+            if to_pick == False:
+                success = False
+            else:
+                for location, qty in to_pick.iteritems():
+                    # Update raw data:
+                    raw_results.append((location, move.product.id, move.uom.id, -qty))
+                    # Remember what to create:
+                    moves_to_create.append((location, move.product.id, move.uom.id, qty))
 
-        return False #True
+        # Create moves:
+        for line in moves_to_create:
+            location, product, uom, qty = line
+            move_obj.create(cursor, user, {
+                    'from_location': location,
+                    'to_location': packing.warehouse.output_location.id,
+                    'product': product,
+                    'uom': uom,
+                    'quantity': qty,
+                    'inventory_packing_out': packing.id,
+                    'state': success and 'waiting' or 'draft',
+                    }, context=context)
+        return success
 
     def assign_force(self, cursor, user, id, context=None):
+        # Try to assign normally:
+        res = self.assign_try(cursor, user, id, context=context)
+        if res: return True
+        packing = self.browse(cursor, user, id, context=context)
+        move_obj = self.pool.get('stock.move')
+        # Find missing items:
+        missing_moves = {}
+        for move in packing.outgoing_moves:
+            product, uom = move.product, move.uom
+            if (product, uom) in missing_moves:
+                missing_moves[(product, uom)] += move.quantity
+            else:
+                missing_moves[(product, uom)] = move.quantity
+
+        for move in packing.inventory_moves:
+            product, uom = move.product, move.uom
+            if (product, uom) in missing_moves:
+                missing_moves[(product, uom)] -= move.quantity
+            else:
+                raise "Unexpected Error"
+        # Create them
+        for (product,uom),quantity in missing_moves.iteritems():
+            values = {
+                'product': product,
+                'uom': uom,
+                'quantity': quantity,
+                'from_location': packing.warehouse.output_location.id,
+                'to_location': packing.warehouse.store_location.id,
+                'inventory_packing_out': packing.id,
+                'state': 'waiting',
+                }
+            move_obj.create(cursor, user, values, context=context)
+
         return True
 
 PackingOut()

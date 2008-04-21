@@ -76,10 +76,13 @@ class Location(OSV):
     def products_by_location(self, cursor, user, location_ids,
                             product_ids=None, context=None):
 
-        if not location_ids:
-            return []
         uom_obj = self.pool.get("product.uom")
         product_obj = self.pool.get("product.product")
+        if not location_ids:
+            return []
+        if not product_ids:
+            product_ids = product_obj.search(cursor, user, [], context=context)
+
         uom_ids = uom_obj.search(cursor, user, [], context=context)
         uom_by_id = dict((x.id, x) for x in uom_obj.browse(
                 cursor, user, uom_ids, context=context))
@@ -87,7 +90,9 @@ class Location(OSV):
                 cursor, user, product_ids, context=context))
 
         res = {}
-        for line in cursor.fetchall():
+        for line in self.raw_products_by_location(
+            cursor, user, location_ids, product_ids, context=context):
+
             location, product, uom, quantity= line
             key = (location, product, uom)
             if key not in res:
