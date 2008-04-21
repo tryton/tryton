@@ -125,7 +125,7 @@ class PackingIn(OSV):
                         'from_location':location,
                         'to_location': packing.warehouse.store_location.id,
                         'inventory_packing_in': packing.id,
-                        'state': 'done',
+                        'state': 'waiting',
                         }
                     move_obj.create(cursor, user, values, context=context)
 
