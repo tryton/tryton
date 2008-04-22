@@ -5,11 +5,12 @@ STATES = {
 
 
 class PartnerType(OSV):
-    "Corporation Type"
+    "Partner Type"
 
     _name = 'partner.partner.type'
     _description = __doc__
-    name = fields.Char('Name', required=True, size=None)
+    name = fields.Char('Name', required=True, size=None, translate=True)
+    # TODO add into localisation modules: http://en.wikipedia.org/wiki/Types_of_companies
 
     def __init__(self):
         super(PartnerType, self).__init__()
