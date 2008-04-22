@@ -8,7 +8,6 @@ STATES = {
 class Location(OSV):
     "Stock Location"
     _name = 'stock.location'
-    _order = 'name'
     _description = __doc__
     name = fields.Char("Name", size=64, required=True, states=STATES,)
     code = fields.Char("Code", size=32, states=STATES, select=True,)
@@ -24,6 +23,10 @@ class Location(OSV):
     # TODO: champ calcule vers product (retournant les product dispo)
     # + context qui passe la location courante et permet de calculer
     # les qtt des produits. et on ne met ce o2m que dans une certaine vue
+
+    def __init__(self):
+        super(Location, self).__init__()
+        self._order.insert(0, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return True

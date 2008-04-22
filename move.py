@@ -11,7 +11,6 @@ class Move(OSV):
     "Stock Move"
     _name = 'stock.move'
     _description = __doc__
-    _order = "id DESC"
     _rec_name = "product"
     product = fields.Many2One(
         "product.product", "Product", required=True, select=True, states=STATES,
@@ -59,6 +58,7 @@ class Move(OSV):
             ('check_locations',
                 'Invalid locations', []),
         ]
+        self._order[0] = ('id', 'DESC')
 
     def check_locations(self, cursor, user, ids, context=None):
         for move in self.browse(cursor, user, ids, context=context):
