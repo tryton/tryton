@@ -25,13 +25,16 @@ _TYPE2JOURNAL = {
 class PaymentTerm(OSV):
     'Payment Term'
     _name = 'account.invoice.payment_term'
-    _order = 'name, id'
     _description = __doc__
     name = fields.Char('Payment Term', size=None, required=True, translate=True)
     active = fields.Boolean('Active')
     description = fields.Text('Description', translate=True)
     lines = fields.One2Many('account.invoice.payment_term.line', 'payment',
             'Lines')
+
+    def __init__(self):
+        super(PaymentTerm, self).__init__()
+        self._order.insert(0, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return True
@@ -69,7 +72,6 @@ PaymentTerm()
 class PaymentTermLineType(OSV):
     'Payment Term Line Type'
     _name = 'account.invoice.payment_term.line.type'
-    _order = 'name, id'
     _description = __doc__
     name = fields.Char('Name', size=None, translate=True, required=True)
     code = fields.Char('Code', size=None, required=True)
@@ -79,6 +81,7 @@ class PaymentTermLineType(OSV):
         self._sql_constraints += [
             ('code_uniq', 'UNIQUE(code)', 'Code must be unqiue!'),
         ]
+        self._order.insert(0, ('name', 'ASC'))
 
     def get_value(self, cursor, user, line, amount, currency, context=None):
         currency_obj = self.pool.get('account.currency')
@@ -97,7 +100,6 @@ PaymentTermLineType()
 class PaymentTermLineDelay(OSV):
     'Payment Term Line Delay'
     _name = 'account.invoice.payment_term.line.delay'
-    _order = 'name, id'
     _description = __doc__
     name = fields.Char('Name', size=None, translate=True, required=True)
     code = fields.Char('Code', size=None, required=True)
@@ -107,6 +109,7 @@ class PaymentTermLineDelay(OSV):
         self._sql_constraints += [
             ('code_uniq', 'UNIQUE(code)', 'Code must be unqiue!'),
         ]
+        self._order.insert(0, ('name', 'ASC'))
 
     def get_date(self, cursor, user, line, date, context=None):
         if line.delay == 'net_days':
@@ -124,7 +127,6 @@ PaymentTermLineDelay()
 class PaymentTermLine(OSV):
     'Payment Term Line'
     _name = 'account.invoice.payment_term.line'
-    _order = 'sequence, id'
     _description = __doc__
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order lines in ascending order')
@@ -149,6 +151,10 @@ class PaymentTermLine(OSV):
             })
     days = fields.Integer('Number of Days', required=True)
     delay = fields.Selection('get_delay', 'Condition', required=True)
+
+    def __init__(self):
+        super(PaymentTermLine, self).__init__()
+        self._order.insert(0, ('sequence', 'ASC'))
 
     def default_type(self, cursor, user, context=None):
         return 'remainder'
@@ -175,7 +181,6 @@ PaymentTermLine()
 class Invoice(OSV):
     'Invoice'
     _name = 'account.invoice'
-    _order = 'number, id'
     _description = __doc__
     company = fields.Many2One('company.company', 'Company', required=True,
             states=_STATES)
@@ -253,6 +258,7 @@ class Invoice(OSV):
             ('check_account2', 'You can not use the same account \n' \
                     'than on invoice line account!', ['account']),
         ]
+        self._order.insert(0, ('number', 'ASC'))
 
     def default_type(self, cursor, user, context=None):
         if context is None:
@@ -997,7 +1003,6 @@ Invoice()
 class InvoiceLine(OSV):
     'Invoice Line'
     _name = 'account.invoice.line'
-    _order = 'sequence, id'
     _rec_name = 'description'
     _description = __doc__
 
@@ -1063,6 +1068,7 @@ class InvoiceLine(OSV):
             ('check_account2', 'You can not use the same account \n' \
                     'than the invoice account!', ['account']),
         ]
+        self._order.insert(0, ('sequence', 'ASC'))
 
     def default_type(self, cursor, user, context=None):
         return 'line'
@@ -1316,7 +1322,6 @@ InvoiceLine()
 class InvoiceTax(OSV):
     'Invoice Tax'
     _name = 'account.invoice.tax'
-    _order = 'sequence, id'
     _rec_name = 'description'
     _description = __doc__
 
@@ -1353,6 +1358,7 @@ class InvoiceTax(OSV):
                     'with account or code from a different invoice company!',
                     ['account', 'base_code', 'tax_code']),
         ]
+        self._order.insert(0, ('sequence', 'ASC'))
 
     def default_base(self, cursor, user, context=None):
         return Decimal('0.0')
