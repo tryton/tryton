@@ -10,7 +10,6 @@ class Address(OSV):
     "Partner Address"
     _name = 'partner.address'
     _description = __doc__
-    _order = 'partner, sequence, id'
     partner = fields.Many2One('partner.partner', 'Partner', required=True,
            ondelete='cascade', select=True,  states=STATES)
     name = fields.Char('Contact Name', size=64, states=STATES)
@@ -29,6 +28,12 @@ class Address(OSV):
     mobile = fields.Char('Mobile', size=64, states=STATES)
     active = fields.Boolean('Active')
     sequence = fields.Integer("Sequence")
+
+    def __init__(self):
+        super(Address, self).__init__()
+        self._order.insert(0, ('partner', 'ASC'))
+        self._order.insert(1, ('sequence', 'ASC'))
+        self._order.insert(2, ('id', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return 1

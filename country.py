@@ -8,7 +8,6 @@ class Country(OSV):
     'Country'
     _name = 'partner.country'
     _description = __doc__
-    _order='code'
     name = fields.Char('Country Name', size=64,
            help='The full name of the country.', required=True, translate=True)
     code = fields.Char('Country Code', size=2,
@@ -24,6 +23,7 @@ class Country(OSV):
             ('code_uniq', 'UNIQUE(code)',
              'The code of the country must be unique!'),
         ]
+        self._order.insert(0, ('code', 'ASC'))
 
     def name_search(self, cr, user, name='', args=None, operator='ilike',
                     context=None, limit=80):
@@ -58,11 +58,14 @@ class State(OSV):
     "State"
     _name = 'partner.country.state'
     _description = __doc__
-    _order = 'code'
     country = fields.Many2One('partner.country', 'Country',
             required=True)
     name = fields.Char('State Name', size=64, required=True)
     code = fields.Char('State Code', size=3, required=True)
+
+    def __init__(self):
+        super(State, self).__init__()
+        self._order.insert(0, ('code', 'ASC'))
 
     def create(self, cursor, user, vals, context=None):
         if 'code' in vals:

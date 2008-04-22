@@ -9,8 +9,12 @@ class PartnerType(OSV):
 
     _name = 'partner.partner.type'
     _description = __doc__
-    _order= 'name'
     name = fields.Char('Name', required=True, size=None)
+
+    def __init__(self):
+        super(PartnerType, self).__init__()
+        self._order.insert(0, ('name', 'ASC'))
+
 PartnerType()
 
 
@@ -18,7 +22,6 @@ class Partner(OSV):
     "Partner"
     _description = __doc__
     _name = "partner.partner"
-    _order = "name"
 
     name = fields.Char('Name', size=128, required=True, select=1,
            states=STATES)
@@ -44,6 +47,7 @@ class Partner(OSV):
             ('name_uniq', 'unique (name)',
              'The name of the partner must be unique!')
         ]
+        self._order.insert(0, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return 1
@@ -56,7 +60,7 @@ class Partner(OSV):
         address_obj = self.pool.get("partner.address")
         address_ids = address_obj.search(
             cursor, user, [("partner","=",partner_id),("active","=",True)],
-            order="sequence, id", context=context)
+            order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)
         if not address_ids:
             return False
         default_address = address_ids[0]

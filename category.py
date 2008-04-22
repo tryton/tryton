@@ -8,7 +8,6 @@ class Category(OSV):
     "Partner Category"
     _name = "partner.category"
     _description = __doc__
-    _order = 'parent,name'
     _parent_name = 'parent'
     name = fields.Char('Category Name', required=True, size=64,
            states=STATES)
@@ -26,6 +25,8 @@ class Category(OSV):
             ('check_recursion',
              'Error! You can not create recursive categories.', ['parent'])
         ]
+        self._order.insert(0, ('parent', 'ASC'))
+        self._order.insert(1, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return 1
