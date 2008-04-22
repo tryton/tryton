@@ -151,11 +151,11 @@
                             <label name="refund_account"/>
                             <field name="refund_account"/>
                             <newline/>
-                            <field name="childs" colspan="4" sequence="sequence">
+                            <field name="childs" colspan="4">
                                 <tree string="Taxes" sequence="sequence">
-                                    <field name="name" select="1"/>
-                                    <field name="type" select="1"/>
-                                    <field name="active" select="2"/>
+                                    <field name="name"/>
+                                    <field name="type"/>
+                                    <field name="active"/>
                                     <field name="sequence" tree_invisible="1"/>
                                 </tree>
                             </field>
