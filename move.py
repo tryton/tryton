@@ -19,7 +19,6 @@ class Move(OSV):
     'Account Move'
     _name = 'account.move'
     _description = __doc__
-    _order = 'date DESC, reference DESC, id DESC'
 
     name = fields.Char('Name', size=None, required=True)
     reference = fields.Char('Reference', size=None, readonly=True,
@@ -54,6 +53,8 @@ class Move(OSV):
             'button_post',
             'button_draft',
         ]
+        self._order.insert(0, ('date', 'DESC'))
+        self._order.insert(1, ('reference', 'DESC'))
 
     def _auto_init(self, cursor, module_name):
         super(Move, self)._auto_init(cursor, module_name)
@@ -326,7 +327,6 @@ class Line(OSV):
     'Account Move Line'
     _name = 'account.move.line'
     _description = __doc__
-    _order = 'id DESC'
 
     name = fields.Char('Name', size=None, required=True)
     debit = fields.Numeric('Debit', digits=(16, 2),
@@ -392,6 +392,7 @@ class Line(OSV):
         self._rpc_allowed += [
             'on_write',
         ]
+        self._order[0] = ('id', 'DESC')
 
     def default_date(self, cursor, user, context=None):
         '''
@@ -407,7 +408,7 @@ class Line(OSV):
             line_ids = self.search(cursor, user, [
                 ('journal', '=', context['journal']),
                 ('period', '=', context['period']),
-                ], order='id DESC', limit=1, context=context)
+                ], order=[('id', 'DESC')], limit=1, context=context)
             if line_ids:
                 line = self.browse(cursor, user, line_ids[0], context=context)
                 res = line.date
@@ -446,7 +447,7 @@ class Line(OSV):
                 ('move.period', '=', context['period']),
                 ('create_uid', '=', user),
                 ('state', '=', 'draft'),
-                ], order='id DESC', limit=1, context=context)
+                ], order=[('id', 'DESC')], limit=1, context=context)
             if not line_ids:
                 return values
             line = self.browse(cursor, user, line_ids[0], context=context)
@@ -1677,7 +1678,8 @@ class GeneralJournal(Report):
         if datas['form']['posted']:
             clause.append(('state', '=', 'posted'))
         move_ids = move_obj.search(cursor, user, clause,
-                order='date, reference, id', context=context)
+                order=[('date', 'ASC'), ('reference', 'ASC'), ('id', 'ASC')],
+                context=context)
         return move_obj.browse(cursor, user, move_ids, context=context)
 
     def parse(self, cursor, user, report, objects, datas, context):

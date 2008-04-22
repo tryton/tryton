@@ -15,7 +15,6 @@ from trytond.report.report import _LOCALE2WIN32
 class Type(OSV):
     'Account Type'
     _name = 'account.account.type'
-    _order = 'sequence, id'
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Selection([
@@ -37,6 +36,10 @@ class Type(OSV):
     amount = fields.Function('get_amount', digits=(16, 2), string='Amount')
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
+
+    def __init__(self):
+        super(Type, self).__init__()
+        self._order.insert(0, ('sequence', 'ASC'))
 
     def default_account_type(self, cursor, user, context=None):
         return False
@@ -95,7 +98,6 @@ class AccountTemplate(OSV):
     'Account Template'
     _name = 'account.account.template'
     _description = __doc__
-    _order = 'code, id'
     _parent_name = 'parents'
 
     name = fields.Char('Name', size=None, required=True, translate=True,
@@ -114,6 +116,10 @@ class AccountTemplate(OSV):
         ('detail', 'Detail'),
         ('unreconciled', 'Unreconciled'),
         ], 'Deferral method', required=True)
+
+    def __init__(self):
+        super(AccountTemplate, self).__init__()
+        self._order.insert(0, ('code', 'ASC'))
 
     def _get_account_value(self, cursor, user, template, context=None):
         res = {}
@@ -161,7 +167,6 @@ class Account(OSV):
     'Account'
     _name = 'account.account'
     _description = __doc__
-    _order = 'code, id'
     _parent_name = 'parents'
 
     name = fields.Char('Name', size=None, required=True, translate=True,
@@ -207,6 +212,7 @@ class Account(OSV):
             ('check_recursion_parents',
                 'Error! You can not create recursive accounts.', ['parents']),
         ]
+        self._order.insert(0, ('code', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return True
@@ -580,7 +586,7 @@ class GeneralLegder(Report):
 
         account_ids = account_obj.search(cursor, user, [
             ('company', '=', datas['form']['company']),
-            ], order='code, id', context=context)
+            ], order=[('code', 'ASC'), ('id', 'ASC')], context=context)
 
         start_period_ids = [0]
         if datas['form']['start_period']:

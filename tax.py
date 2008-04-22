@@ -26,7 +26,6 @@ class Code(OSV):
     'Tax Code'
     _name = 'account.tax.code'
     _description = __doc__
-    _order = 'code, id'
 
     name = fields.Char('Name', size=None, required=True, select=1)
     code = fields.Char('Code', size=None, select=1)
@@ -44,6 +43,7 @@ class Code(OSV):
             ('check_recursion',
                 'Error! You can not create recursive tax code!', ['parent']),
         ]
+        self._order.insert(0, ('code', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return True
@@ -195,7 +195,6 @@ class Tax(OSV):
     '''
     _name = 'account.tax'
     _description = 'Account Tax'
-    _order = 'sequence, id'
 
     name = fields.Char('Name', size=None, required=True, translate=True)
     group = fields.Many2One('account.tax.group', 'Group', required=True,
@@ -280,6 +279,10 @@ class Tax(OSV):
                 'readonly': "type == 'none'",
             })
 
+    def __init__(self):
+        super(Tax, self).__init__()
+        self._order.insert(0, ('sequence', 'ASC'))
+
     def default_active(self, cursor, user, context=None):
         return True
 
@@ -351,7 +354,7 @@ class Tax(OSV):
         '''
         ids = self.search(cursor, user, [
             ('id', 'in', ids),
-            ], order='sequence, id', context=context)
+            ], order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)
         taxes = self.browse(cursor, user, ids, context=context)
         res = self._unit_compute(cursor, user, taxes, price_unit,
                 context=context)
@@ -407,7 +410,7 @@ class Tax(OSV):
         '''
         ids = self.search(cursor, user, [
             ('id', 'in', ids),
-            ], order='sequence, id', context=context)
+            ], order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)
         taxes = self.browse(cursor, user, ids, context=context)
         taxes.reverse()
         res = self._unit_compute_inv(cursor, user, taxes, price_unit,

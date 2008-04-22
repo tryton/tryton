@@ -15,7 +15,6 @@ _ICONS = {
 class Type(OSV):
     'Journal Type'
     _name = 'account.journal.type'
-    _order = 'code'
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None, required=True)
@@ -25,6 +24,7 @@ class Type(OSV):
         self._sql_constraints += [
             ('code_uniq', 'UNIQUE(code)', 'Code must be unique!'),
         ]
+        self._order.insert(0, ('code', 'ASC'))
 
 Type()
 
@@ -33,9 +33,12 @@ class View(OSV):
     'Journal View'
     _name = 'account.journal.view'
     _description = __doc__
-    _order = 'name, id'
     name = fields.Char('Name', size=None, required=True)
     columns = fields.One2Many('account.journal.view.column', 'view', 'Columns')
+
+    def __init__(self):
+        super(View, self).__init__()
+        self._order.insert(0, ('name', 'ASC'))
 
 View()
 
@@ -44,7 +47,6 @@ class Column(OSV):
     'Journal View Column'
     _name = 'account.journal.view.column'
     _description = __doc__
-    _order = 'sequence, id'
     name = fields.Char('Name', size=None, required=True)
     field = fields.Many2One('ir.model.field', 'Field', required=True,
             domain="[('model.model', '=', 'account.move.line')]")
@@ -53,6 +55,10 @@ class Column(OSV):
     required = fields.Boolean('Required')
     readonly = fields.Boolean('Readonly')
 
+    def __init__(self):
+        super(Column, self).__init__()
+        self._order.insert(0, ('sequence', 'ASC'))
+
 Column()
 
 
@@ -60,7 +66,6 @@ class Journal(OSV):
     'Journal'
     _name = 'account.journal'
     _description = __doc__
-    _order = 'name, id'
 
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None)
@@ -83,6 +88,10 @@ class Journal(OSV):
             states={
                 'required': "centralised or type == 'cash'",
             })
+
+    def __init__(self):
+        super(Journal, self).__init__()
+        self._order.insert(0, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return True
@@ -118,7 +127,6 @@ class Period(OSV):
     'Journal - Period'
     _name = 'account.journal.period'
     _description = __doc__
-    _order = 'name, id'
 
     name = fields.Char('Name', size=None, required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
@@ -138,6 +146,7 @@ class Period(OSV):
             ('journal_period_uniq', 'UNIQUE(journal, period)',
                 'You can only open one journal per period!'),
         ]
+        self._order.insert(0, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return True

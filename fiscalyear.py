@@ -15,7 +15,6 @@ class FiscalYear(OSV):
     'Fiscal Year'
     _name = 'account.fiscalyear'
     _description = __doc__
-    _order = 'start_date'
 
     name = fields.Char('Name', size=None, required=True)
     code = fields.Char('Code', size=None)
@@ -44,6 +43,7 @@ class FiscalYear(OSV):
                 'Error! You must have different post move sequence ' \
                         'per fiscal year!', ['post_move_sequence']),
         ]
+        self._order.insert(0, ('start_date', 'ASC'))
 
     def default_state(self, cursor, user, context=None):
         return 'open'
@@ -133,7 +133,7 @@ class FiscalYear(OSV):
         ids = self.search(cursor, user, [
             ('start_date', '<=', date),
             ('end_date', '>=', date),
-            ], order='start_date DESC', limit=1, context=context)
+            ], order=[('start_date', 'DESC')], limit=1, context=context)
         if not ids:
             if exception:
                 raise ExceptORM('Error', 'No fiscal year defined for this date!')

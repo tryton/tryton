@@ -9,7 +9,6 @@ class Currency(OSV):
     'Currency'
     _name = 'account.currency'
     _description = __doc__
-    _order = 'code'
     name = fields.Char('Name', size=128, required=True, translate=True)
     code = fields.Char('Code', size=3, required=True)
     rate = fields.Function('get_rate', string='Current rate', digits=(12, 6))
@@ -17,6 +16,10 @@ class Currency(OSV):
     rounding = fields.Numeric('Rounding factor', digits=(12, 6))
     digits = fields.Integer('Diplay Digits')
     active = fields.Boolean('Active')
+
+    def __init__(self):
+        super(Currency, self).__init__()
+        self._order.insert(0, ('code', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return True
@@ -56,7 +59,7 @@ class Currency(OSV):
             rate_ids = rate_obj.search(cursor, user, [
                 ('currency', '=', currency_id),
                 ('date', '<=', date),
-                ], limit=1, order='date DESC')
+                ], limit=1, order=[('date', 'DESC')])
             if rate_ids:
                 res[currency_id] = rate_ids[0]
             else:
@@ -119,7 +122,6 @@ class Rate(OSV):
     _name = 'account.currency.rate'
     _description = __doc__
     _rec_name = 'date'
-    _order = 'date DESC, id'
     date = fields.Date('Date', required=True, select=1)
     rate = fields.Numeric('Rate', digits=(12, 6), required=1)
     currency = fields.Many2One('account.currency', 'Currency')
@@ -130,6 +132,7 @@ class Rate(OSV):
             ('date_currency_uniq', 'UNIQUE(date, currency)',
                 'A currency can only have one rate by date!'),
         ]
+        self._order.insert(0, ('date', 'DESC'))
 
     def default_date(self, cursor, user, context=None):
         return time.strftime('%Y-%m-%d')
