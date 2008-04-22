@@ -186,13 +186,13 @@
                             <field name="currency"/>
                             <field name="lines" colspan="4">
                                 <tree string="Lines" sequence="sequence">
-                                    <field name="type" select="1"/>
-                                    <field name="product" select="1"/>
-                                    <field name="account" select="2" tree_invisible="1"/>
-                                    <field name="description" select="1"/>
-                                    <field name="quantity" select="2"/>
-                                    <field name="unit" select="2"/>
-                                    <field name="unit_price" select="2"/>
+                                    <field name="type"/>
+                                    <field name="product"/>
+                                    <field name="account" tree_invisible="1"/>
+                                    <field name="description"/>
+                                    <field name="quantity"/>
+                                    <field name="unit"/>
+                                    <field name="unit_price"/>
                                     <field name="taxes"/>
                                     <field name="amount"/>
                                     <field name="sequence" tree_invisible="1"/>
@@ -201,7 +201,7 @@
                             <group col="1" colspan="2">
                                 <field name="taxes">
                                     <tree string="Taxes" sequence="sequence">
-                                        <field name="description" select="1"/>
+                                        <field name="description"/>
                                         <field name="base"/>
                                         <field name="amount"/>
                                         <field name="sequence" tree_invisible="1"/>
