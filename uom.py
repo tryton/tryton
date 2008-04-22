@@ -8,9 +8,12 @@ class UomCategory(OSV):
     'Product uom category'
     _name = 'product.uom.category'
     _description = __doc__
-    _order = 'name'
     name = fields.Char('Name', size=64, required=True)
     uoms = fields.One2Many('product.uom', 'category', 'Unit of Measures')
+
+    def __init__(self):
+        super(UomCategory, self).__init__()
+        self._order.insert(0, ('name', 'ASC'))
 
 UomCategory()
 
@@ -19,7 +22,6 @@ class Uom(OSV):
     'Unit of measure'
     _name = 'product.uom'
     _description = __doc__
-    _order = 'name'
     name = fields.Char('Name', size=64, required=True, states=STATES,)
     symbol = fields.Char('Symbol', size=10, required=True, states=STATES,)
     category = fields.Many2One('product.uom.category', 'UOM Category',
@@ -36,6 +38,10 @@ class Uom(OSV):
     rounding = fields.Float('Rounding Precision', digits=(12, 6),
                               required=True, states=STATES,)
     active = fields.Boolean('Active')
+
+    def __init__(self):
+        super(Uom, self).__init__()
+        self._order.insert(0, ('name', 'ASC'))
 
     def default_rate(self, cursor, user, context=None):
         return 1.0

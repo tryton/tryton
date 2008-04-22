@@ -5,13 +5,17 @@ class Category(OSV):
     "Product Category"
     _name = "product.category"
     _description = __doc__
-    _order = "parent,name"
 
     name = fields.Char('Name', size=64, required=True)
     complete_name = fields.Function('get_complete_name', type="char", string='Complete Name')
     parent = fields.Many2One('product.category','Parent', select=True)
     childs = fields.One2Many('product.category', 'parent',
             string='Childs')
+
+    def __init__(self):
+        super(Category, self).__init__()
+        self._order.insert(0, ('parent', 'ASC'))
+        self._order.insert(1, ('name', 'ASC'))
 
     def get_complete_name(self, cursor, user, ids, name, arg, context):
         res = self.name_get(cursor, user, ids, context)
