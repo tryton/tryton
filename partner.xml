@@ -39,7 +39,7 @@
                                 </tree>
                             </field>
                             <label name="type"/>
-                            <field name="type" select="2" widget="selection"/>
+                            <field name="type" widget="selection"/>
                             <label name="lang"/>
                             <field name="lang" widget="selection"/>
                             <separator string="Categories" colspan="4"/>
