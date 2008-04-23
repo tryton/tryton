@@ -207,9 +207,9 @@ class Invoice(OSV):
         required=True, states=_STATES, on_change=['partner', 'invoice_date',
             'payment_term', 'type'])
     contact_address = fields.Many2One('partner.address', 'Contact Address',
-        required=True, states=_STATES)
+        required=True, states=_STATES, domain="[('partner', '=', partner)]")
     invoice_address = fields.Many2One('partner.address', 'Invoice Address',
-        required=True, states=_STATES)
+        required=True, states=_STATES, domain="[('partner', '=', partner)]")
     currency = fields.Many2One('account.currency', 'Currency', required=True,
         states=_STATES)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
