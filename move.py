@@ -20,12 +20,12 @@ class Move(OSV):
     quantity = fields.Float(
         "Quantity", digits=(12, 6), required=True,
         states=STATES,)
-    from_location =fields.Many2One(
+    from_location = fields.Many2One(
         "stock.location", "From Location", select=True, required=True,
-        states=STATES,)
+        states=STATES, domain="[('type', '!=', 'warehouse')]",)
     to_location = fields.Many2One(
         "stock.location", "To Location", select=True, required=True,
-        states=STATES,)
+        states=STATES,domain="[('type', '!=', 'warehouse')]",)
     incoming_packing_in = fields.Many2One(
         "stock.packing.in", "Supplier Packing", states=STATES, select=True)
     inventory_packing_in = fields.Many2One(
@@ -95,59 +95,47 @@ class Move(OSV):
         return True
 
     def default_to_location(self, cursor, user, context=None):
-        if context and context.get('wh_incoming'):
-            warehouse = self.pool.get('stock.warehouse').browse(
-                cursor, user, context['wh_incoming'], context=context)
-            return warehouse.input_location.id
-        if context and context.get('wh_inv_out'):
-            warehouse = self.pool.get('stock.warehouse').browse(
-                cursor, user, context['wh_inv_out'], context=context)
-            return warehouse.output_location.id
-        if context and context.get('wh_inv_in'):
-            warehouse = self.pool.get('stock.warehouse').browse(
-                cursor, user, context['wh_inv_in'], context=context)
-            return warehouse.store_location.id
-        return False
+        if context and context.get('warehouse') and context.get('type'):
+            wh_location = self.pool.get('stock.location').browse(
+                cursor, user, context['warehouse'], context=context)
+            field = {'inventory_in': 'storage_location',
+                     'inventory_out': 'output_location',
+                     'incoming': 'input_location',}.get(context['type'])
+            return field and wh_location[field].id or False
 
     def default_from_location(self, cursor, user, context=None):
-        if context and context.get('wh_inv_in'):
-            warehouse = self.pool.get('stock.warehouse').browse(
-                cursor, user, context['wh_inv_in'], context=context)
-            return warehouse.input_location.id
-        if context and context.get('wh_outgoing'):
-            warehouse = self.pool.get('stock.warehouse').browse(
-                cursor, user, context['wh_outgoing'], context=context)
-            return warehouse.output_location.id
-        if context and context.get('wh_inv_out'):
-            warehouse = self.pool.get('stock.warehouse').browse(
-                cursor, user, context['wh_inv_out'], context=context)
-            return warehouse.store_location.id
-        return False
+        if context and context.get('warehouse') and context.get('type'):
+            wh_location = self.pool.get('stock.location').browse(
+                cursor, user, context['warehouse'], context=context)
+            field = {'inventory_in': 'input_location',
+                     'inventory_out': 'storage_location',
+                     'outgoing': 'output_location',}.get(context['type'])
+            return field and wh_location[field].id or False
 
     def default_state(self, cursor, user, context=None):
-        if not context: return 'draft'
-        if 'pack_incoming_state' in context:
-            if context['pack_incoming_state'] == 'waiting':
-                return 'waiting'
-            if context['pack_incoming_state'] in ('received', 'done'):
-                return 'done'
-        if 'pack_inv_in_state' in context:
-            if context['pack_inv_in_state'] == 'received':
-                return 'waiting'
-            if context['pack_inv_in_state'] == 'done':
-                return 'done'
-        if 'pack_outgoing_state' in context:
-            if context['pack_outgoing_state'] in \
-                    ('waiting', 'assigned', 'ready'):
-                return 'waiting'
-            if context['pack_outgoing_state'] in 'done':
-                return 'done'
-        if 'pack_inv_out_state' in context:
-            if context['pack_inv_out_state'] == 'assigned':
-                return 'waiting'
-            if context['pack_inv_out_state'] == 'ready':
-                return 'done'
-
+#TODO
+#         if not context: return 'draft'
+#         if 'pack_incoming_state' in context:
+#             if context['pack_incoming_state'] == 'waiting':
+#                 return 'waiting'
+#             if context['pack_incoming_state'] in ('received', 'done'):
+#                 return 'done'
+#         if 'pack_inv_in_state' in context:
+#             if context['pack_inv_in_state'] == 'received':
+#                 return 'waiting'
+#             if context['pack_inv_in_state'] == 'done':
+#                 return 'done'
+#         if 'pack_outgoing_state' in context:
+#             if context['pack_outgoing_state'] in \
+#                     ('waiting', 'assigned', 'ready'):
+#                 return 'waiting'
+#             if context['pack_outgoing_state'] in 'done':
+#                 return 'done'
+#         if 'pack_inv_out_state' in context:
+#             if context['pack_inv_out_state'] == 'assigned':
+#                 return 'waiting'
+#             if context['pack_inv_out_state'] == 'ready':
+#                 return 'done'
         return 'draft'
 
     def on_change_product(self, cursor, user, ids, value, context=None):
@@ -217,7 +205,7 @@ class CreatePacking(Wizard):
 
         move_obj = self.pool.get('stock.move')
         packing_obj = self.pool.get('stock.packing.in')
-        warehouse_obj = self.pool.get('stock.warehouse')
+        location_obj = self.pool.get('stock.location')
 
         moves = move_obj.browse(cursor, user, data['ids'], context=context)
         # Collect moves by incoming location
@@ -237,25 +225,26 @@ class CreatePacking(Wizard):
                 moves_by_location[location].append(move.id)
 
         # Fetch warehouse for these locations
-        warehouse_ids = warehouse_obj.search(
+        wh_location_ids = location_obj.search(
             cursor, user,
             [('input_location', 'in',
-              [l for l in moves_by_location])])
-        warehouses = warehouse_obj.browse(
+              [l for l in moves_by_location]),
+             ('usage','=','warehouse')])
+        wh_locations = location_obj.browse(
             cursor, user, warehouse_ids, context=context)
-        loc2wh = dict([( wh.input_location.id, wh.id) for wh in warehouses])
+        loc2wh = dict([( whl.input_location.id, whl.id) for whl in wh_locations])
 
         packing_ids = []
         for location, move_ids in moves_by_location.iteritems():
-            wh = loc2wh.get(location)
-            if not wh:
+            whl = loc2wh.get(location)
+            if not whl:
                 raise ExceptWizard(
                     'UserError',
                     'Moves must have a final destination '\
                     'who is an input location of a wharehouse.')
             pid = packing_obj.create(
                 cursor, user,
-                {'incoming_moves': [('set',move_ids)], 'warehouse': wh},
+                {'incoming_moves': [('set',move_ids)], 'warehouse': whl},
                 context=context)
 
             packing_ids.append(pid)
