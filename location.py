@@ -32,7 +32,7 @@ class Location(OSV):
         return True
 
     def name_search(self, cursor, user, name,  args=None, operator='ilike',
-                    context=None, limit=80):
+                    context=None, limit=None):
         if not args:
             args=[]
         ids = self.search(
