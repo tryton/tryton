@@ -26,7 +26,7 @@ class Country(OSV):
         self._order.insert(0, ('code', 'ASC'))
 
     def name_search(self, cr, user, name='', args=None, operator='ilike',
-                    context=None, limit=80):
+                    context=None, limit=None):
         if not args:
             args=[]
         if not context:
