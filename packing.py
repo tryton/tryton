@@ -10,14 +10,13 @@ STATES = {
 class PackingIn(OSV):
     "Supplier Packing"
     _name = 'stock.packing.in'
-    _order = 'id DESC'
     _description = __doc__
     _rec_name = 'code'
 
     effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime('Planned Date', readonly=True)
     warehouse = fields.Many2One(
-        'stock.location',"Warehouse", required=True, states=STATES, 
+        'stock.location',"Warehouse", required=True, states=STATES,
         domain="[('type', '=', 'warehouse')]",)
     incoming_moves = fields.One2Many(
         'stock.move', 'incoming_packing_in', 'Incoming Moves',
@@ -42,6 +41,7 @@ class PackingIn(OSV):
             'set_state_received',
             'create_inventory_moves',
             ]
+        self._order[0] = ('id', 'DESC')
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
@@ -135,7 +135,6 @@ PackingIn()
 class PackingOut(OSV):
     "Customer Packing"
     _name = 'stock.packing.out'
-    _order = 'id DESC'
     _description = __doc__
     _rec_name = 'code'
 
@@ -170,6 +169,7 @@ class PackingOut(OSV):
             'assign_try',
             'assign_force',
             ]
+        self._order[0] = ('id', 'DESC')
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
