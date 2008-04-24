@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
+        <menuitem name="Inventory Management" sequence="3" id="menu_stock"/>
         <record model="ir.ui.view" id="location_view_form">
             <field name="model">stock.location</field>
             <field name="type">form</field>
@@ -11,17 +12,21 @@
                         <field name="name"/>
                         <label name="code"/>
                         <field name="code"/>
-                        <label name="usage"/>
-                        <field name="usage"/>
+                        <label name="parent"/>
+                        <field name="parent"/>
                         <label name="active"/>
                         <field name="active"/>
+                        <label name="type"/>
+                        <field name="type"/>
 			<newline/>
-                        <label name="input_zone"/>
-                        <field name="input_zone"/>
-                        <label name="output_zone"/>
-                        <field name="output_zone"/>
-                        <label name="warehouse"/>
-                        <field name="warehouse"/>
+                        <label name="address"/>
+                        <field name="address"/>
+                        <label name="input_location"/>
+                        <field name="input_location"/>
+                        <label name="output_location"/>
+                        <field name="output_location"/>
+                        <label name="storage_location"/>
+                        <field name="storage_location"/>
                     </form>
                 ]]>
             </field>
@@ -29,22 +34,39 @@
         <record model="ir.ui.view" id="location_view_tree">
             <field name="model">stock.location</field>
             <field name="type">tree</field>
+            <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="locations">
                         <field name="name" select="1"/>
                         <field name="code" select="2"/>
-                        <field name="usage" select="1"/>
-                        <field name="input_zone" select="2"/>
-                        <field name="output_zone" select="2"/>
-                        <field name="warehouse" select="2"/>
+                        <field name="type" select="1"/>
+                        <field name="input_location" select="2"/>
+                        <field name="output_location" select="2"/>
+                        <field name="storage_location" select="2"/>
+                        <field name="parent" select="2"/>
                         <field name="active" select="2"/>
                     </tree>
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_location_form">
+
+        <record model="ir.action.act_window" id="act_location_tree">
             <field name="name">Locations</field>
+            <field name="res_model">stock.location</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_tree_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_view_tree"/>
+            <field name="act_window" ref="act_location_tree"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="1"
+            action="act_location_tree" id="menu_location_tree"/>
+
+        <record model="ir.action.act_window" id="act_location_form">
+            <field name="name">Edit Locations</field>
             <field name="res_model">stock.location</field>
             <field name="view_type">form</field>
         </record>
@@ -58,10 +80,17 @@
             <field name="view" ref="location_view_form"/>
             <field name="act_window" ref="act_location_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="2"
+        <menuitem parent="menu_location_tree" sequence="1"
             action="act_location_form" id="menu_location_form"/>
 
 
+	<!-- Model Access -->
+        <record model="res.group" id="group_stock_admin">
+            <field name="name">Stock administration</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_stock_admin'))]"/>
+        </record>
         <record model="ir.model.access" id="access_location">
             <field name="model" search="[('model', '=', 'stock.location')]"/>
             <field name="perm_read" eval="True"/>
@@ -77,6 +106,37 @@
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="True"/>
         </record>
+
+
+	<!-- Default locations -->
+
+        <record model="stock.location" id="location_input">
+            <field name="name">Input Zone</field>
+            <field name="code">IN</field>
+            <field name="type">storage</field>
+        </record>
+        <record model="stock.location" id="location_output">
+            <field name="name">Output Zone</field>
+            <field name="code">OUT</field>
+            <field name="type">storage</field>
+        </record>
+        <record model="stock.location" id="location_storage">
+            <field name="name">Storage Zone</field>
+            <field name="code">STO</field>
+            <field name="type">storage</field>
+        </record>
+        <record model="stock.location" id="location_warehouse">
+            <field name="name">Warehouse</field>
+            <field name="code">WH</field>
+            <field name="type">warehouse</field>
+            <field name="input_location" ref="location_input"/>
+            <field name="output_location" ref="location_output"/>
+            <field name="storage_location" ref="location_storage"/>
+        </record>
+<!--         <record model="stock.location" id="location_storage"> -->
+<!--             <field name="parent" ref="location_warehouse"/> -->
+<!--         </record> -->
+
 
     </data>
 </tryton>

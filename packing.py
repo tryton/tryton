@@ -16,20 +16,20 @@ class PackingIn(OSV):
     effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime('Planned Date', readonly=True)
     warehouse = fields.Many2One(
-        'stock.warehouse',"Warehouse", required=True, states=STATES,)
+        'stock.location',"Warehouse", required=True, states=STATES,
+        domain="[('type', '=', 'warehouse')]",)
     incoming_moves = fields.One2Many(
         'stock.move', 'incoming_packing_in', 'Incoming Moves',
         states={'readonly':"state in ('received','done')",},
-        context="{'wh_incoming': warehouse, 'pack_incoming_state': state}")
+        context="{'warehouse': warehouse, 'packing_state': state, 'type':'incoming'}")
     inventory_moves = fields.One2Many(
         'stock.move', 'inventory_packing_in', 'Inventory Moves',
         states={'readonly':"state in ('draft','waiting')",},
-        context="{'wh_inv_in': warehouse, 'pack_inv_in_state': state}")
+        context="{'warehouse': warehouse, 'packing_state': state, 'type':'inventory_in'}")
     code = fields.Char("Code", size=None, select=1, readonly=True,)
     state = fields.Selection(
         [('draft','Draft'),('done','Done'),('cancel','Cancel'),
          ('waiting','Waiting'),('received','Received')], 'State', readonly=True)
-
 
     def __init__(self):
         super(PackingIn, self).__init__()
@@ -141,15 +141,16 @@ class PackingOut(OSV):
     effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime('Planned Date', readonly=True)
     warehouse = fields.Many2One(
-        'stock.warehouse',"Warehouse", required=True, states=STATES,)
+        'stock.location',"Warehouse", required=True, states=STATES,
+        domain="[('type', '=', 'warehouse')]",)
     outgoing_moves = fields.One2Many(
         'stock.move', 'outgoing_packing_out', 'Outgoing Moves',
         states=STATES,
-        context="{'wh_outgoing': warehouse, 'pack_outgoing_state': state}")
+        context="{'warehouse': warehouse, 'packing_state': state, 'type':'outgoing',}")
     inventory_moves = fields.One2Many(
         'stock.move', 'inventory_packing_out', 'Inventory Moves',
         states={'readonly':"state not in ('assigned')",},
-        context="{'wh_inv_out': warehouse, 'pack_inv_out_state': state}")
+        context="{'warehouse': warehouse, 'packing_state': state, 'type':'inventory_out',}")
     code = fields.Char("Code", size=None, select=1, readonly=True,)
     state = fields.Selection(
         [('draft','Draft'),('done','Done'),('cancel','Cancel'),

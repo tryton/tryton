@@ -2,9 +2,12 @@
 from trytond.osv import fields, OSV
 
 STATES = {
-    'readonly': "active == False",
+    'readonly': "not active",
 }
-
+STATES_WH = {
+    'readonly': "(not active) or type != 'warehouse'",
+    'required': "type == 'warehouse' and active",
+}
 class Location(OSV):
     "Stock Location"
     _name = 'stock.location'
@@ -12,13 +15,26 @@ class Location(OSV):
     name = fields.Char("Name", size=64, required=True, states=STATES,)
     code = fields.Char("Code", size=32, states=STATES, select=True,)
     active = fields.Boolean('Active', select=True)
-    usage = fields.Selection([('supplier', 'Supplier'),
+    address = fields.Many2One("partner.address", "Address", states=STATES_WH,)
+    type = fields.Selection([('supplier', 'Supplier'),
                               ('customer', 'Customer'),
                               ('inventory', 'Inventory'),
                               ('procurement', 'Procurement'),
+                              ('warehouse', 'Warehouse'),
+                              ('storage', 'Storage'),
                               ('production', 'Production')],
                              'Location type', states=STATES,)
-    warehouse = fields.Many2One("stock.warehouse", "Warehouse", select="1")
+    parent = fields.Many2One("stock.location", "Parent", select="1")
+    childs = fields.One2Many("stock.location", "parent", "Childs",)
+    input_location = fields.Many2One(
+        "stock.location", "Input", states=STATES_WH,
+        domain="[('type','=','storage')]",)
+    output_location = fields.Many2One(
+        "stock.location", "Output", states=STATES_WH,
+        domain="[('type','=','storage')]",)
+    storage_location = fields.Many2One(
+        "stock.location", "Storage", states=STATES_WH,
+        domain="[('type','=','storage')]")
 
     # TODO: champ calcule vers product (retournant les product dispo)
     # + context qui passe la location courante et permet de calculer
@@ -30,6 +46,9 @@ class Location(OSV):
 
     def default_active(self, cursor, user, context=None):
         return True
+
+    def default_type(self, cursor, user, context=None):
+            return 'storage'
 
     def name_search(self, cursor, user, name,  args=None, operator='ilike',
                     context=None, limit=None):
@@ -110,12 +129,3 @@ class Location(OSV):
 
 Location()
 
-
-class Warehouse(OSV):
-    _name = "stock.warehouse"
-    _inherit = "stock.warehouse"
-    input_location = fields.Many2One("stock.location", "Input location", required=True,)
-    output_location = fields.Many2One("stock.location", "Output location", required=True,)
-    store_location = fields.Many2One("stock.location", "Default store location", required=True,)
-
-Warehouse()
