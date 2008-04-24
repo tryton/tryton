@@ -27,7 +27,7 @@ class Company(OSV):
         res = super(Company, self).write(cursor, user, ids, vals,
                 context=context)
         # Restart the cache on the domain_get method
-        self.pool.get('ir.rule').domain_get()
+        self.pool.get('ir.rule').domain_get(cursor.dbname)
         return res
 
 Company()
