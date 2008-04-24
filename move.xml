@@ -17,10 +17,12 @@
                         <field name="from_location"/>
                         <label name="to_location"/>
                         <field name="to_location"/>
+			<newline/>
                         <label name="planned_date"/>
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
+			<newline/>
                         <label name="state"/>
                         <field name="state"/>
                         <group col="4" colspan="4">
