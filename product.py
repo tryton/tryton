@@ -13,7 +13,7 @@ class Product(OSV):
         if not (context and context.get('locations')):
             return dict([(id, False) for id in ids])
         location_ids = self.pool.get('stock.location').search(
-            cursor, user, [('parent', 'child_of', context['locations'])], 
+            cursor, user, [('parent', 'child_of', context['locations'])],
             context=context)
         pbl = self.products_by_location(
             cursor, user, location_ids=location_ids, context=None)
@@ -23,11 +23,11 @@ class Product(OSV):
         res = True
         for field, operator, operand in domain:
             value = line.get(field)
-            if not value: 
+            if not value:
                 return False
             if operator not in ("=", ">=", "<=", ">", "<", "!="):
                 return False
-            if operator == "=": 
+            if operator == "=":
                 operator= "=="
             res = res and (eval(str(value) + operator + str(operand)))
         return res
@@ -36,14 +36,14 @@ class Product(OSV):
         if not (context and context.get('locations')):
             return []
         location_ids = self.pool.get('stock.location').search(
-            cursor, user, [('parent', 'child_of', context['locations'])], 
+            cursor, user, [('parent', 'child_of', context['locations'])],
             context=context)
         pbl = self.products_by_location(
             cursor, user, location_ids=location_ids, context=None)
         res= [line['product'] for line in pbl \
                     if self._eval_domain(line,domain)]
         return [('id', 'in', res)]
-            
+
 
     def raw_products_by_location(self, cursor, user, location_ids,
                             product_ids=None, context=None):

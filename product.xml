@@ -13,7 +13,7 @@
                         <field name="list_price_uom" select="2"/>
                         <field name="cost_price"/>
                         <field name="type" select="2"/>
-			<field name="quantity" select="2"/>
+                        <field name="quantity" select="2"/>
                         <field name="category" select="1"/>
                         <field name="default_uom" select="2"/>
                         <field name="active" select="2"/>

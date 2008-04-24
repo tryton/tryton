@@ -51,7 +51,7 @@ class Location(OSV):
             return 'storage'
 
     def name_search(self, cursor, user, name,  args=None, operator='ilike',
-                    context=None, limit=80):
+                    context=None, limit=None):
         if not args:
             args=[]
         ids = self.search(
@@ -65,4 +65,3 @@ class Location(OSV):
         return result
 
 Location()
-

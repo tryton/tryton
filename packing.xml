@@ -109,7 +109,7 @@
                       <group col="6" colspan="4">
                         <button string="Cancel" name="signal_cancel"
                                 states="{'invisible': '''state in ('cancel','done') '''}"/>
-                        <button string="Set Done" name="signal_done" 
+                        <button string="Set Done" name="signal_done"
                                 states="{'invisible': '''state != 'ready' '''}"/>
                         <button string="Set Waiting" name="signal_waiting"
                                 states="{'invisible': '''state != 'draft' '''}"/>
