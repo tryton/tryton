@@ -88,14 +88,14 @@ class Property(OSV):
     _name = 'ir.property'
     company = fields.Many2One('company.company', 'Company')
 
-    def set(self, cursor, user, name, model, res_id, val, context=None):
-        res = super(Property, self).set(cursor, user, name, model, res_id, val,
+    def set(self, cursor, user_id, name, model, res_id, val, context=None):
+        res = super(Property, self).set(cursor, user_id, name, model, res_id, val,
                 context=context)
         if res:
             user_obj = self.pool.get('res.user')
-            company = user_obj.browse(cursor, user, user, context=context)
-            self.write(cursor, user, res, {
-                'company': company.id,
+            user = user_obj.browse(cursor, user_id, user_id, context=context)
+            self.write(cursor, user_id, res, {
+                'company': user.company.id,
                 }, context=context)
         return res
 
