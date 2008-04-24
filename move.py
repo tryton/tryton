@@ -24,7 +24,7 @@ class Move(OSV):
         states=STATES, domain="[('type', '!=', 'warehouse')]",)
     to_location = fields.Many2One(
         "stock.location", "To Location", select=True, required=True,
-        states=STATES,domain="[('type', '!=', 'warehouse')]",)
+        states=STATES, domain="[('type', '!=', 'warehouse')]",)
     incoming_packing_in = fields.Many2One(
         "stock.packing.in", "Supplier Packing", states=STATES, select=True)
     inventory_packing_in = fields.Many2One(
