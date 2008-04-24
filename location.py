@@ -28,10 +28,10 @@ class Location(OSV):
     childs = fields.One2Many("stock.location", "parent", "Childs",)
     input_location = fields.Many2One(
         "stock.location", "Input", states=STATES_WH,
-        domain="[('type','=','storage')]",)
+        domain="[('type','=','supplier')]",)
     output_location = fields.Many2One(
         "stock.location", "Output", states=STATES_WH,
-        domain="[('type','=','storage')]",)
+        domain="[('type','=','customer')]",)
     storage_location = fields.Many2One(
         "stock.location", "Storage", states=STATES_WH,
         domain="[('type','=','storage')]")
