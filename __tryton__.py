@@ -10,6 +10,7 @@
         'partner', 'product'
     ],
     'xml': [
+        'product.xml',
         'location.xml',
         'move.xml',
         'packing.xml',

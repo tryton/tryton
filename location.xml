@@ -83,6 +83,29 @@
         <menuitem parent="menu_location_tree" sequence="1"
             action="act_location_form" id="menu_location_form"/>
 
+        <record model="ir.action.act_window" id="act_product_by_location">
+            <field name="name">Products by Locations</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('quantity', '!=', 0)]</field>
+	    <field name="context">{'locations':active_ids}</field>
+        </record>
+        <record model="ir.action.keyword" id="act_product_by_location_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">stock.location,0</field>
+            <field name="action" ref="act_product_by_location"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_view_form_qty"/>
+            <field name="act_window" ref="act_product_by_location"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_form_view2">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_view_tree_qty"/>
+            <field name="act_window" ref="act_product_by_location"/>
+        </record>
+
 
 	<!-- Model Access -->
         <record model="res.group" id="group_stock_admin">

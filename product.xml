@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="product_view_tree_qty">
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Products">
+                        <field name="name" select="1"/>
+                        <field name="code" select="1"/>
+                        <field name="list_price_uom" select="2"/>
+                        <field name="cost_price"/>
+                        <field name="type" select="2"/>
+			<field name="quantity" select="2"/>
+                        <field name="category" select="1"/>
+                        <field name="default_uom" select="2"/>
+                        <field name="active" select="2"/>
+                    </tree>
+                    ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_view_form_qty">
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Product">
+                      <label name="name"/>
+                      <field name="name" xexpand="1"/>
+                      <label name="active"/>
+                      <field name="active" xexpand="0" width="100"/>
+                      <notebook colspan="4">
+                          <page string="General">
+                              <label name="code"/>
+                              <field name="code"/>
+                              <label name="type"/>
+                              <field name="type"/>
+                              <label name="category"/>
+                              <field name="category" />
+                              <label name="default_uom"/>
+                              <field name="default_uom" />
+                              <label name="list_price"/>
+                              <field name="list_price"/>
+                              <newline/>
+                              <label name="cost_price"/>
+                              <field name="cost_price"/>
+                              <label name="cost_price_method"/>
+                              <field name="cost_price_method"/>
+                              <label name="quantity"/>
+                              <field name="quantity"/>
+                              <separator name="description" colspan="4"/>
+                              <field name="description" colspan="4"/>
+                          </page>
+                          <page string="Properties">
+                              <properties/>
+                          </page>
+                      </notebook>
+                    </form>
+                    ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>
