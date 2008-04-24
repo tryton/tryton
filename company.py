@@ -91,7 +91,7 @@ class Property(OSV):
     def set(self, cursor, user_id, name, model, res_id, val, context=None):
         res = super(Property, self).set(cursor, user_id, name, model, res_id, val,
                 context=context)
-        if res:
+        if res and user_id:
             user_obj = self.pool.get('res.user')
             user = user_obj.browse(cursor, user_id, user_id, context=context)
             self.write(cursor, user_id, res, {
