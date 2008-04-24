@@ -18,7 +18,7 @@
                         <field name="active"/>
                         <label name="type"/>
                         <field name="type"/>
-			<newline/>
+                        <newline/>
                         <label name="address"/>
                         <field name="address"/>
                         <label name="input_location"/>
@@ -84,7 +84,7 @@
             action="act_location_form" id="menu_location_form"/>
 
 
-	<!-- Model Access -->
+        <!-- Model Access -->
         <record model="res.group" id="group_stock_admin">
             <field name="name">Stock administration</field>
         </record>
@@ -108,8 +108,7 @@
         </record>
 
 
-	<!-- Default locations -->
-
+        <!-- Default locations -->
         <record model="stock.location" id="location_input">
             <field name="name">Input Zone</field>
             <field name="code">IN</field>
