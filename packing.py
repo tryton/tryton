@@ -123,7 +123,7 @@ class PackingIn(OSV):
                         'uom': uom,
                         'quantity': quantity,
                         'from_location':location,
-                        'to_location': packing.warehouse.store_location.id,
+                        'to_location': packing.warehouse.storage_location.id,
                         'inventory_packing_in': packing.id,
                         'state': 'waiting',
                         }
@@ -354,7 +354,7 @@ class PackingOut(OSV):
                 'uom': uom,
                 'quantity': quantity,
                 'from_location': packing.warehouse.output_location.id,
-                'to_location': packing.warehouse.store_location.id,
+                'to_location': packing.warehouse.storage_location.id,
                 'inventory_packing_out': packing.id,
                 'state': 'waiting',
                 }
