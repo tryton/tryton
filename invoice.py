@@ -204,8 +204,8 @@ class Invoice(OSV):
     invoice_date = fields.Date('Invoice Date', required=True,
         states=_STATES)
     partner = fields.Many2One('partner.partner', 'Partner', change_default=True,
-        required=True, states=_STATES, on_change=['partner', 'invoice_date',
-            'payment_term', 'type'])
+        required=True, states=_STATES, on_change=['partner', 'payment_term',
+            'type'])
     contact_address = fields.Many2One('partner.address', 'Contact Address',
         required=True, states=_STATES, domain="[('partner', '=', partner)]")
     invoice_address = fields.Many2One('partner.address', 'Invoice Address',
@@ -1483,6 +1483,7 @@ class InvoiceTax(OSV):
         return res
 
 InvoiceTax()
+
 
 class PrintInvoiceReportWarning(WizardOSV):
     _name = 'account.invoice.print_invoice_report.warning'
