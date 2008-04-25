@@ -3,6 +3,7 @@
 from trytond.osv import fields, OSV, ExceptOSV
 import time
 from decimal import Decimal
+import datetime
 
 
 class Currency(OSV):
@@ -135,7 +136,7 @@ class Rate(OSV):
         self._order.insert(0, ('date', 'DESC'))
 
     def default_date(self, cursor, user, context=None):
-        return time.strftime('%Y-%m-%d')
+        return datetime.date.today()
 
 Rate()
 
