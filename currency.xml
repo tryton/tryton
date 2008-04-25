@@ -20,7 +20,7 @@
                     <newline/>
                     <label name="rate"/>
                     <field name="rate"/>
-                    <field name="rates" colspan="6" mode="tree,form">
+                    <field name="rates" colspan="6" mode="tree,form,graph">
                         <tree string="Rates">
                             <field name="date"/>
                             <field name="rate"/>
@@ -31,6 +31,14 @@
                             <label name="rate"/>
                             <field name="rate"/>
                         </form>
+                        <graph string="Rates" type="line">
+                            <x>
+                                <field name="date"/>
+                            </x>
+                            <y>
+                                <field name="rate" fill="1" empty="0"/>
+                            </y>
+                        </graph>
                     </field>
                 </form>
                 ]]>
