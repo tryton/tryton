@@ -6,7 +6,8 @@ class Product(OSV):
     _name = "product.product"
     _inherit = "product.product"
 
-    quantity = fields.Function('get_quantity', type='float', string='Quantity', fnct_search='search_quantity', readonly=True) #fct_inv ?
+    quantity = fields.Function('get_quantity', type='float', string='Quantity',
+                               fnct_search='search_quantity', readonly=True)
 
 
     def get_quantity(self, cursor, user, ids, name, args, context=None):
@@ -47,19 +48,29 @@ class Product(OSV):
 
     def raw_products_by_location(self, cursor, user, location_ids,
                             product_ids=None, context=None):
+        """
+        Return a list like : [(location, product, uom, qty)] for each
+        location and product given as argument. Null qty are not
+        returned and the tuple (location, product,uom) is unique.
+        """
+        if not location_ids:
+            return []
+        in_states = context and context.get('in_states') or ['done']
+        out_states = context and context.get('out_states') or ['done']
+
         select_clause = \
             "select location, product, uom, sum(quantity) as quantity "\
              "from ( "\
                "SELECT to_location as location, product, uom, "\
                       "sum(quantity) as quantity "\
                "FROM stock_move "\
-               "WHERE state = 'done' and to_%s "\
-               "GROUP by to_location, product ,uom  "\
+               "WHERE state in (%s) and to_%s "\
+               "GROUP by to_location, product ,uom "\
              "UNION  "\
                "SELECT from_location as location, product, uom, "\
                       "-sum(quantity) as quantity "\
                "FROM stock_move "\
-               "WHERE state = 'done' and from_%s "\
+               "WHERE state in (%s) and from_%s "\
                "GROUP by from_location, product, uom "\
              ") "\
             "as T group by T.location, T.product, T.uom "\
@@ -71,8 +82,11 @@ class Product(OSV):
             where_clause += "AND product in (" + \
                 ",".join(["%s" for i in product_ids]) + ")"
             where_ids += product_ids
-        cursor.execute(select_clause % (where_clause, where_clause),
-                       where_ids + where_ids)
+        cursor.execute(
+            select_clause % (
+                ",".join(["%s" for i in in_states]), where_clause,
+                ",".join(["%s" for i in out_states]), where_clause),
+            in_states + where_ids + out_states + where_ids)
 
         return cursor.fetchall()
 

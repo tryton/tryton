@@ -38,8 +38,8 @@ class Move(OSV):
     planned_date = fields.Date("Planned Date", states=STATES,)
     effective_date = fields.Date("Effective Date", readonly=True)
     state = fields.Selection(
-        [('draft', 'Draft'),('done', 'Done'),('cancel', 'Cancel'),
-         ('waiting', 'Waiting')], 'State', select=True, readonly=True)
+        [('draft', 'Draft'), ('done', 'Done'), ('cancel', 'Cancel'),
+         ('waiting', 'Waiting'), ('assigned', 'Assigned')], 'State', select=True, readonly=True)
 
 
     def __init__(self):
@@ -154,8 +154,8 @@ class Move(OSV):
 
     def set_state_done(self, cursor, user, ids, context=None):
         self.set_by_state(
-            cursor, user, ids, ['draft', 'waiting'],
-            {'state':'done',
+            cursor, user, ids, ['draft', 'waiting', 'assigned'],
+            {'state': 'done',
              'effective_date': time.strftime('%Y-%m-%d %H:%M:%S')})
 
     def set_state_draft(self, cursor, user, ids, context=None):
@@ -165,22 +165,27 @@ class Move(OSV):
 
     def set_state_cancel(self, cursor, user, ids, context=None):
         self.set_by_state(
-            cursor, user, ids, ['done', 'waiting'],
-            {'state':'cancel',})
+            cursor, user, ids, ['done', 'waiting', 'assigned'],
+            {'state': 'cancel',})
+
     def set_state_waiting(self, cursor, user, ids, context=None):
         self.set_by_state(
             cursor, user, ids, ['draft',],
             {'state':'waiting',})
 
+    def set_state_assigned(self, cursor, user, ids, context=None):
+        self.set_by_state(
+            cursor, user, ids, ['draft', 'waiting'],
+            {'state': 'waiting',})
+
     def unlink(self, cursor, user, ids, context=None):
         move_ids = self.search(
             cursor, user, [('id', 'in', ids), ('state', 'in',
             ['done', 'waiting', 'cancel'])], context)
-
         if move_ids:
             raise ExceptORM('UserError', 'You can only delete draft moves !')
-
         return super(Move, self).unlink(cursor, user, ids, context=context)
+
 Move()
 
 

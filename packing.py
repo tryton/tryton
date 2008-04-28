@@ -102,27 +102,24 @@ class PackingIn(OSV):
         move_obj = self.pool.get('stock.move')
         for packing in self.browse(cursor, user, ids, context=context):
             product_balance = {}
-            for move in packing.incoming_moves:
-                key = (move.product.id, move.uom.id, move.to_location.id)
+            for move in packing.inventory_moves:
+                key = (move.product.id, move.uom.id, move.from_location.id)
                 if key in product_balance:
                     product_balance[key] += move.quantity
                 else:
                     product_balance[key] = move.quantity
 
-            for move in packing.inventory_moves:
-                key = (move.product.id, move.uom.id, move.from_location.id)
-                if key in product_balance:
+            for move in packing.incoming_moves:
+                key = (move.product.id, move.uom.id, move.to_location.id)
+                if key in product_balance and \
+                        product_balance[key] >= move.quantity:
                     product_balance[key] -= move.quantity
                 else:
-                    product_balance[key] = -move.quantity
-
-            for (product,uom,location),quantity in product_balance.iteritems():
-                if quantity>0:
                     values = {
-                        'product': product,
-                        'uom': uom,
-                        'quantity': quantity,
-                        'from_location':location,
+                        'product': move.product.id,
+                        'uom': move.uom.id,
+                        'quantity': move.quantity,
+                        'from_location': move.to_location.id,
                         'to_location': packing.warehouse.storage_location.id,
                         'inventory_packing_in': packing.id,
                         'state': 'waiting',
@@ -141,20 +138,25 @@ class PackingOut(OSV):
     effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime('Planned Date', readonly=True)
     warehouse = fields.Many2One(
-        'stock.location',"Warehouse", required=True, states=STATES,
+        'stock.location', "Warehouse", required=True,
+        states={'readonly': "state != 'draft'",},
         domain="[('type', '=', 'warehouse')]",)
+    customer_location = fields.Many2One(
+        'stock.location', "Customer Location", required=True,
+        states={'readonly': "state != 'draft'",},
+        domain="[('type', '=', 'customer')]",)
     outgoing_moves = fields.One2Many(
         'stock.move', 'outgoing_packing_out', 'Outgoing Moves',
-        states=STATES,
+        states={'readonly':"state != 'ready'",},
         context="{'warehouse': warehouse, 'packing_state': state, 'type':'outgoing',}")
     inventory_moves = fields.One2Many(
         'stock.move', 'inventory_packing_out', 'Inventory Moves',
-        states={'readonly':"state not in ('assigned')",},
+        states={'readonly':"state in ('ready', 'done')",},
         context="{'warehouse': warehouse, 'packing_state': state, 'type':'inventory_out',}")
     code = fields.Char("Code", size=None, select=1, readonly=True,)
     state = fields.Selection(
-        [('draft','Draft'),('done','Done'),('cancel','Cancel'),
-         ('ready','Ready'), ('assigned','Assigned'),('waiting','Waiting')],
+        [('draft', 'Draft'), ('done', 'Done'), ('cancel', 'Cancel'),
+         ('assigned', 'Assigned'),('ready', 'Ready'), ('waiting', 'Waiting')],
         'State', readonly=True)
 
     def __init__(self):
@@ -174,13 +176,20 @@ class PackingOut(OSV):
     def default_state(self, cursor, user, context=None):
         return 'draft'
 
+    def set_state_assigned(self, cursor, user, packing_id, context=None):
+        self.write(cursor, user, packing_id, {'state':'assigned'},
+                   context=context)
+
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.set_state_done(
             cursor, user, [m.id for m in packing.outgoing_moves],
             context=context)
-        self.write(cursor, user, packing_id, {'state':'done'}, context=context)
+        self.write(
+            cursor, user, packing_id,
+            {'state':'done', 'effective_date': time.strftime('%Y-%m-%d %H:%M:%S')},
+            context=context)
 
     def set_state_ready(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -190,6 +199,16 @@ class PackingOut(OSV):
             context=context)
         self.write(cursor, user, packing_id, {'state':'ready'},
                    context=context)
+        for move in packing.inventory_moves:
+            move_obj.create(cursor, user, {
+                    'from_location': move.to_location.id,
+                    'to_location': packing.customer_location.id,
+                    'product': move.product.id,
+                    'uom': move.uom.id,
+                    'quantity': move.quantity,
+                    'outgoing_packing_out': packing.id,
+                    'state': 'waiting',
+                    }, context=context)
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -205,7 +224,7 @@ class PackingOut(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.set_state_waiting(
-            cursor, user, [m.id for m in packing.outgoing_moves],
+            cursor, user, [m.id for m in packing.inventory_moves],
             context=context)
         self.write(cursor, user, packing_id, {'state':'waiting'},
                    context=context)
@@ -221,8 +240,6 @@ class PackingOut(OSV):
             context=context)
         self.write(cursor, user, packing_id, {'state':'draft'}, context=context)
 
-    def set_state_assigned(self, cursor, user, packing_id, context=None):
-        self.write(cursor, user, packing_id, {'state':'assigned'}, context=context)
 
     def create(self, cursor, user, values, context=None):
         values['code'] = self.pool.get('ir.sequence').get(
@@ -237,129 +254,112 @@ class PackingOut(OSV):
         implementation.  Product is a browse record and location_index
         is the index of the browse record of all the locations.
         """
-        to_pick = {}
-        for location,qty in location_quantities.iteritems():
+        to_pick = []
+        for location,qty in location_quantities:
             if total_qty <= qty:
-                to_pick[location]= total_qty
+                to_pick.append((location, total_qty))
                 return to_pick
             else:
-                to_pick[location]= qty
+                to_pick.append((location, qty))
                 total_qty -= qty
         return False
 
-    def _location_quantities(self, cursor, user, target_product, target_uom,
-                             raw_data, uom_index, context=None):
+    def _location_amount(self, cursor, user, target_uom,
+                             qty_uom, uom_index, context=None):
         """
-        Take a raw list of product by location by uom and convert it
-        to the target uom.
+        Take a raw list of quantities and uom and convert it to
+        the target uom.
         """
         uom_obj = self.pool.get('product.uom')
-        res = {}
-        for line in raw_data:
-            location, product, uom, qty = line
-            if product != target_product:
-                return []
-            if location not in res:
-                res[location] = 0
-            res[location] += uom_obj.compute_qty(
+        res = 0
+        for uom,qty in qty_uom:
+            res += uom_obj.compute_qty(
                 cursor, user, uom_index[uom], qty, uom_index[target_uom])
         return res
 
+
     def assign_try(self, cursor, user, id, context=None):
-        """
-        Try to assign products for a given customer packing.
-        """
         location_obj = self.pool.get('stock.location')
         move_obj = self.pool.get('stock.move')
-        uom_obj = self.pool.get('product.uom')
+        product_obj = self.pool.get('product.product')
         packing = self.browse(cursor, user, id, context=context)
-        if not packing.outgoing_moves:
-            return False
+        parent_to_locations = {}
+        inventory_moves = []
+        uom_index = {}
+        location_index = {}
+        # Fetch child_of for each location
+        for move in packing.inventory_moves:
+            if move.state != 'waiting': continue
+            inventory_moves.append(move)
+            uom_index[move.uom.id] = move.uom
+            location_index[move.from_location.id] = move.from_location
+            if move.from_location.id in parent_to_locations:
+                continue
+            childs = location_obj.search(
+                cursor, user, [('parent', 'child_of', [move.from_location.id])])
+            parent_to_locations[move.from_location.id] = childs
 
-        # Remove potentialy existing inventory moves:
-        move_obj.unlink(
-            cursor, user, [m.id for m in packing.inventory_moves],
+        # Collect all raw quantities
+        context = context or {}
+        context.update({'in_states': ['done', 'assigned'],
+                        'out_states': ['done', 'assigned']})
+        raw_data = product_obj.raw_products_by_location(
+            cursor, user,
+            location_ids=reduce(
+                lambda x,y:x+y, parent_to_locations.values(), []),
+            product_ids=[move.product.id for move in inventory_moves],
             context=context)
-
-        uom_ids = uom_obj.search(cursor, user, [], context=context)
-        uom_index = dict((x.id, x) for x in uom_obj.browse(
-                cursor, user, uom_ids, context=context))
-        product_ids = [m.product.id for m in packing.outgoing_moves]
-        location_index = dict([(l.id,l) for l in packing.warehouse.locations])
-
-        # Fetch location contents:
-        raw_results = location_obj.raw_products_by_location(
-            cursor, user, location_index.keys(), product_ids, context=context)
-        # XXX: Maybe index results by products to speed things
-
-        moves_to_create = []
+        # convert raw data to something like:
+        # {(location,product):[(qty,uom), ...],}
+        processed_data = {}
+        for line in raw_data:
+            if line[:2] in processed_data:
+                processed_data[line[:2]].append(line[2:])
+            else:
+                processed_data[line[:2]] = [line[2:]]
         success = True
-        for move in packing.outgoing_moves:
-            # Process data for the given product and uom:
-            location_quantities = self._location_quantities(
-                cursor, user, move.product.id, move.uom.id, raw_results,
-                uom_index, context=context)
-            # Chose how to pick products:
+        for move in inventory_moves:
+            location_qties = []
+            for location in parent_to_locations[move.from_location.id]:
+                qty = self._location_amount(
+                    cursor, user, move.uom.id,
+                    processed_data[(move.from_location.id, move.product.id)],
+                    uom_index, context=context,)
+                location_qties.append((location, qty))
+
             to_pick = self.pick_product(
-                cursor, user, move.quantity, location_quantities,
-                product=move.product, location_index= location_index, context=context)
+                cursor, user, move.quantity, location_qties,
+                product=move.product, location_index=location_index,
+                context=context)
+
             if to_pick == False:
                 success = False
-            else:
-                for location, qty in to_pick.iteritems():
-                    # Update raw data:
-                    raw_results.append((location, move.product.id, move.uom.id, -qty))
-                    # Remember what to create:
-                    moves_to_create.append((location, move.product.id, move.uom.id, qty))
+                continue
 
-        # Create moves:
-        for line in moves_to_create:
-            location, product, uom, qty = line
-            move_obj.create(cursor, user, {
+            first = True
+            for location, qty in to_pick:
+                values = {
                     'from_location': location,
                     'to_location': packing.warehouse.output_location.id,
-                    'product': product,
-                    'uom': uom,
+                    'product': move.product.id,
+                    'uom': move.uom.id,
                     'quantity': qty,
                     'inventory_packing_out': packing.id,
-                    'state': success and 'waiting' or 'draft',
-                    }, context=context)
+                    'state': 'assigned',
+                    }
+                if first:
+                    move_obj.write(cursor, user, move.id, values,
+                                   context=context)
+                else:
+                    move_obj.create(cursor, user, values, context=context)
+                processed_data[(location, move.product.id)].append((move.uom.id, -qty))
+
         return success
 
     def assign_force(self, cursor, user, id, context=None):
-        # Try to assign normally:
-        res = self.assign_try(cursor, user, id, context=context)
-        if res: return True
         packing = self.browse(cursor, user, id, context=context)
         move_obj = self.pool.get('stock.move')
-        # Find missing items:
-        missing_moves = {}
-        for move in packing.outgoing_moves:
-            product, uom = move.product, move.uom
-            if (product, uom) in missing_moves:
-                missing_moves[(product, uom)] += move.quantity
-            else:
-                missing_moves[(product, uom)] = move.quantity
-
-        for move in packing.inventory_moves:
-            product, uom = move.product, move.uom
-            if (product, uom) in missing_moves:
-                missing_moves[(product, uom)] -= move.quantity
-            else:
-                raise "Unexpected Error"
-        # Create them
-        for (product,uom),quantity in missing_moves.iteritems():
-            values = {
-                'product': product,
-                'uom': uom,
-                'quantity': quantity,
-                'from_location': packing.warehouse.output_location.id,
-                'to_location': packing.warehouse.storage_location.id,
-                'inventory_packing_out': packing.id,
-                'state': 'waiting',
-                }
-            move_obj.create(cursor, user, values, context=context)
-
+        move_obj.write(cursor, user, [m.id for m in packing.inventory_moves], {'state':'assigned'})
         return True
 
 PackingOut()

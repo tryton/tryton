@@ -89,24 +89,26 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Supplier Packing" col="6">
+                    <form string="Supplier Packing" col="4">
                       <label name="code"/>
                       <field name="code"/>
-                      <label name="warehouse"/>
-                      <field name="warehouse"/>
                       <label name="effective_date"/>
                       <field name="effective_date"/>
-                      <notebook colspan="6">
-                        <page string="Outgoing Moves">
-                          <field name="outgoing_moves" colspan="4"/>
-                        </page>
+                      <label name="warehouse"/>
+                      <field name="warehouse"/>
+                      <label name="customer_location"/>
+                      <field name="customer_location"/>
+                      <notebook colspan="4">
                         <page string="Inventory Moves">
                           <field name="inventory_moves" colspan="4"/>
+                        </page>
+                        <page string="Outgoing Moves">
+                          <field name="outgoing_moves" colspan="4"/>
                         </page>
                       </notebook>
                       <label name="state"/>
                       <field name="state"/>
-                      <group col="6" colspan="4">
+                      <group col="6" colspan="2">
                         <button string="Cancel" name="signal_cancel"
                                 states="{'invisible': '''state in ('cancel','done') '''}"/>
                         <button string="Set Done" name="signal_done"
