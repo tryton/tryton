@@ -71,6 +71,43 @@
         <menuitem parent="menu_stock" sequence="7"
             action="act_packing_in_form" id="menu_packing_in_form"/>
 
+        <record model="ir.action.act_window" id="act_packing_in_form_waiting">
+            <field name="name">Supplier Packing Waiting Arrival</field>
+            <field name="res_model">stock.packing.in</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_in_waiting_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_in_view_tree"/>
+            <field name="act_window" ref="act_packing_in_form_waiting"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_in_waiting_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_in_view_form"/>
+            <field name="act_window" ref="act_packing_in_form_waiting"/>
+        </record>
+        <menuitem parent="menu_packing_in_form" sequence="1"
+            action="act_packing_in_form_waiting" id="menu_packing_in_waiting"/>
+
+        <record model="ir.action.act_window" id="act_packing_in_form_received">
+            <field name="name">Received Supplier packings</field>
+            <field name="res_model">stock.packing.in</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'received')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_in_received_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_in_view_tree"/>
+            <field name="act_window" ref="act_packing_in_form_received"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_in_received_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_in_view_form"/>
+            <field name="act_window" ref="act_packing_in_form_received"/>
+        </record>
+        <menuitem parent="menu_packing_in_form" sequence="2"
+            action="act_packing_in_form_received" id="menu_packing_in_received"/>
 
         <record model="ir.sequence.type" id="sequence_type_packing_in">
                 <field name="name">Supplier Packing</field>
@@ -157,8 +194,65 @@
         <menuitem parent="menu_stock" sequence="7"
             action="act_packing_out_form" id="menu_packing_out_form"/>
 
+        <record model="ir.action.act_window" id="act_packing_out_form_waiting">
+            <field name="name">Customer Packings Waiting Assignation</field>
+            <field name="res_model">stock.packing.out</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_out_waiting_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_out_view_tree"/>
+            <field name="act_window" ref="act_packing_out_form_waiting"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_out_waiting_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_out_view_form"/>
+            <field name="act_window" ref="act_packing_out_form_waiting"/>
+        </record>
+        <menuitem parent="menu_packing_out_form" sequence="1"
+            action="act_packing_out_form_waiting" id="menu_packing_out_waiting"/>
+
+        <record model="ir.action.act_window" id="act_packing_out_form_assigned">
+            <field name="name">Assigned Customer Packings</field>
+            <field name="res_model">stock.packing.out</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'assigned')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_out_assigned_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_out_view_tree"/>
+            <field name="act_window" ref="act_packing_out_form_assigned"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_out_assigned_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_out_view_form"/>
+            <field name="act_window" ref="act_packing_out_form_assigned"/>
+        </record>
+        <menuitem parent="menu_packing_out_form" sequence="2"
+            action="act_packing_out_form_assigned" id="menu_packing_out_assigned"/>
+
+        <record model="ir.action.act_window" id="act_packing_out_form_ready">
+            <field name="name">Customer Packings Ready for Shipping</field>
+            <field name="res_model">stock.packing.out</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'ready')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_out_ready_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_out_view_tree"/>
+            <field name="act_window" ref="act_packing_out_form_ready"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_packing_out_ready_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_out_view_form"/>
+            <field name="act_window" ref="act_packing_out_form_ready"/>
+        </record>
+        <menuitem parent="menu_packing_out_form" sequence="3"
+            action="act_packing_out_form_ready" id="menu_packing_out_ready"/>
 
 
+	<!-- Sequence packing in -->
         <record model="ir.sequence.type" id="sequence_type_packing_out">
                 <field name="name">Customer Packing</field>
                 <field name="code">stock.packing.out</field>
