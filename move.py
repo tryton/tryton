@@ -87,7 +87,7 @@ class Move(OSV):
                         != move.from_location.id:
                     return False
                 if move.to_location.type and \
-                        move.to_location.type not in ('supplier','customer'):
+                        move.to_location.type not in ('supplier', 'customer'):
                     return False
                 for packing_move in move.outgoing_packing_out.outgoing_moves:
                     if packing_move.to_location.id != move.to_location.id:
@@ -161,7 +161,7 @@ class Move(OSV):
     def set_state_draft(self, cursor, user, ids, context=None):
         self.set_by_state(
             cursor, user, ids, ['cancel', 'waiting'],
-            {'state':'draft',})
+            {'state': 'draft',})
 
     def set_state_cancel(self, cursor, user, ids, context=None):
         self.set_by_state(
@@ -174,7 +174,7 @@ class Move(OSV):
 
     def unlink(self, cursor, user, ids, context=None):
         move_ids = self.search(
-            cursor, user, [('id', 'in',ids),('state', 'in',
+            cursor, user, [('id', 'in', ids), ('state', 'in',
             ['done', 'waiting', 'cancel'])], context)
 
         if move_ids:
@@ -229,7 +229,7 @@ class CreatePacking(Wizard):
             cursor, user,
             [('input_location', 'in',
               [l for l in moves_by_location]),
-             ('type','=','warehouse')], context=context)
+             ('type', '=', 'warehouse')], context=context)
         wh_locations = location_obj.browse(
             cursor, user, warehouse_ids, context=context)
         loc2wh = dict([( whl.input_location.id, whl.id) for whl in wh_locations])
@@ -259,7 +259,7 @@ class CreatePacking(Wizard):
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id,
                                   context=context)
-        res["domain"]= str([('id', 'in',packing_ids)])
+        res["domain"]= str([('id', 'in', packing_ids)])
 
         return res
 

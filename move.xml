@@ -99,7 +99,9 @@
             <field name="name">Moves from suppliers to proceed</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
-            <field name="domain">[('from_location.usage', '=', 'supplier'),('state','in',['draft','waiting']),('incoming_packing_in','=',False),('inventory_packing_in','=',False)]</field>
+            <field name="domain">[('from_location.type', '=', 'supplier'),
+                ('state','in',['draft','waiting']),('incoming_packing_in','=',False),
+                ('inventory_packing_in','=',False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_supp_proceed_view1">
             <field name="sequence" eval="1"/>
@@ -139,7 +141,8 @@
             <field name="name">Moves to customers to proceed</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
-            <field name="domain">[('to_location.usage', '=', 'customer'),('state','in',['draft','waiting'])]</field>
+            <field name="domain">[('to_location.type', '=', 'customer'),
+                ('state','in',['draft','waiting'])]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_cust_proceed_view1">
             <field name="sequence" eval="1"/>
