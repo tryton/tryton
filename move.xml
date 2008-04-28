@@ -80,7 +80,7 @@
             <field name="name">Moves from suppliers</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
-            <field name="domain">[('from_location.usage', '=', 'supplier')]</field>
+            <field name="domain">[('from_location.type', '=', 'supplier')]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_supp_view1">
             <field name="sequence" eval="1"/>
@@ -121,7 +121,7 @@
             <field name="name">Moves to customers</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
-            <field name="domain">[('to_location.usage', '=', 'customer')]</field>
+            <field name="domain">[('to_location.type', '=', 'customer')]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_cust_view1">
             <field name="sequence" eval="1"/>
