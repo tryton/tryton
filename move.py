@@ -231,7 +231,7 @@ class CreatePacking(Wizard):
               [l for l in moves_by_location]),
              ('type', '=', 'warehouse')], context=context)
         wh_locations = location_obj.browse(
-            cursor, user, warehouse_ids, context=context)
+            cursor, user, wh_location_ids, context=context)
         loc2wh = dict([( whl.input_location.id, whl.id) for whl in wh_locations])
 
         packing_ids = []
