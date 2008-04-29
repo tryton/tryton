@@ -13,8 +13,8 @@ class Location(OSV):
     _name = 'stock.location'
     _description = __doc__
     name = fields.Char("Name", size=64, required=True, states=STATES,)
-    code = fields.Char("Code", size=32, states=STATES, select=True,)
-    active = fields.Boolean('Active', select=True)
+    code = fields.Char("Code", size=32, states=STATES, select=1)
+    active = fields.Boolean('Active', select=1)
     address = fields.Many2One("partner.address", "Address",
             states=STATES_WH)
     type = fields.Selection([('supplier', 'Supplier'),
@@ -25,17 +25,17 @@ class Location(OSV):
                               ('storage', 'Storage'),
                               ('production', 'Production')],
                              'Location type', states=STATES,)
-    parent = fields.Many2One("stock.location", "Parent", select="1")
+    parent = fields.Many2One("stock.location", "Parent", select=1)
     childs = fields.One2Many("stock.location", "parent", "Childs",)
     input_location = fields.Many2One(
         "stock.location", "Input", states=STATES_WH,
-        domain="[('type','=','supplier')]",)
+        domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
     output_location = fields.Many2One(
         "stock.location", "Output", states=STATES_WH,
-        domain="[('type','=','customer')]",)
+        domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
     storage_location = fields.Many2One(
         "stock.location", "Storage", states=STATES_WH,
-        domain="[('type','=','storage')]")
+        domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
 
     # TODO: champ calcule vers product (retournant les product dispo)
     # + context qui passe la location courante et permet de calculer
