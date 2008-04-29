@@ -680,7 +680,7 @@ class Invoice(OSV):
             'move': move_id,
             }, context=context)
         move_obj.post(cursor, user, move_id, context=context)
-        return True
+        return move_id
 
     def set_number(self, cursor, user, invoice_id, context=None):
         period_obj = self.pool.get('account.period')
