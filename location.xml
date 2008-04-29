@@ -44,10 +44,6 @@
                         <field name="name" select="1"/>
                         <field name="code" select="2"/>
                         <field name="type" select="1"/>
-                        <field name="input_location" select="2"/>
-                        <field name="output_location" select="2"/>
-                        <field name="storage_location" select="2"/>
-                        <field name="parent" select="2"/>
                         <field name="active" select="2"/>
                     </tree>
                 ]]>
