@@ -5,8 +5,8 @@ STATES = {
     'readonly': "not active",
 }
 STATES_WH = {
-    'readonly': "(not active) or type != 'warehouse'",
-    'required': "type == 'warehouse' and active",
+    'invisible': "type != 'warehouse'",
+    'readonly': "not active",
 }
 class Location(OSV):
     "Stock Location"
@@ -15,7 +15,8 @@ class Location(OSV):
     name = fields.Char("Name", size=64, required=True, states=STATES,)
     code = fields.Char("Code", size=32, states=STATES, select=True,)
     active = fields.Boolean('Active', select=True)
-    address = fields.Many2One("partner.address", "Address", states=STATES_WH,)
+    address = fields.Many2One("partner.address", "Address",
+            states=STATES_WH)
     type = fields.Selection([('supplier', 'Supplier'),
                               ('customer', 'Customer'),
                               ('inventory', 'Inventory'),

@@ -21,10 +21,13 @@
                         <newline/>
                         <label name="address"/>
                         <field name="address"/>
+                        <newline/>
                         <label name="input_location"/>
                         <field name="input_location"/>
+                        <newline/>
                         <label name="output_location"/>
                         <field name="output_location"/>
+                        <newline/>
                         <label name="storage_location"/>
                         <field name="storage_location"/>
                     </form>
@@ -132,22 +135,28 @@
 
 
         <!-- Default locations -->
+        <record model="stock.location" id="location_warehouse">
+            <field name="name">Warehouse</field>
+        </record>
         <record model="stock.location" id="location_input">
             <field name="name">Input Zone</field>
             <field name="code">IN</field>
             <field name="type">storage</field>
+            <field name="parent" ref="location_warehouse"/>
         </record>
         <record model="stock.location" id="location_output">
             <field name="name">Output Zone</field>
             <field name="code">OUT</field>
             <field name="type">storage</field>
+            <field name="parent" ref="location_warehouse"/>
         </record>
         <record model="stock.location" id="location_storage">
             <field name="name">Storage Zone</field>
             <field name="code">STO</field>
             <field name="type">storage</field>
+            <field name="parent" ref="location_warehouse"/>
         </record>
-        <record model="stock.location" id="location_warehouse">
+        <record model="stock.location" id="location_warehouse" update="1">
             <field name="name">Warehouse</field>
             <field name="code">WH</field>
             <field name="type">warehouse</field>
@@ -155,10 +164,6 @@
             <field name="output_location" ref="location_output"/>
             <field name="storage_location" ref="location_storage"/>
         </record>
-<!--         <record model="stock.location" id="location_storage"> -->
-<!--             <field name="parent" ref="location_warehouse"/> -->
-<!--         </record> -->
-
 
     </data>
 </tryton>
