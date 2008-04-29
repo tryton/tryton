@@ -743,6 +743,7 @@ class Invoice(OSV):
                 context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
+        workflow_service = LocalService('workflow')
         if isinstance(ids, (int, long)):
             ids = [ids]
         keys = vals.keys()
@@ -751,8 +752,13 @@ class Invoice(OSV):
                 keys.remove(key)
         if len(keys):
             self.check_modify(cursor, user, ids, context=context)
-        return super(Invoice, self).write(cursor, user, ids, vals,
+        res = super(Invoice, self).write(cursor, user, ids, vals,
                 context=context)
+        if 'state' in vals and vals['state'] in ('paid', 'cancel'):
+            for invoice_id in ids:
+                workflow_service.trg_trigger(user, self._name, invoice_id,
+                        cursor)
+        return res
 
     def copy(self, cursor, user, invoice_id, default=None, context=None):
         line_obj = self.pool.get('account.invoice.line')
