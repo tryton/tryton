@@ -98,6 +98,9 @@ class PackingIn(OSV):
         return super(PackingIn, self).create(
             cursor, user, values, context=context)
 
+    def _store_location(self, cursor, user, incoming_move, context=None):
+        return incoming_move.incoming_packing_in.warehouse.storage_location.id
+
     def create_inventory_moves(self, cursor, user, ids, context=None):
         move_obj = self.pool.get('stock.move')
         for packing in self.browse(cursor, user, ids, context=context):
@@ -120,7 +123,8 @@ class PackingIn(OSV):
                         'uom': move.uom.id,
                         'quantity': move.quantity,
                         'from_location': move.to_location.id,
-                        'to_location': packing.warehouse.storage_location.id,
+                        'to_location': self._store_location(
+                            cursor, user, move, context=context),
                         'inventory_packing_in': packing.id,
                         'state': 'waiting',
                         }
