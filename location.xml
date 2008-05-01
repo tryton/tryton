@@ -40,7 +40,7 @@
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="locations">
+                    <tree string="Locations">
                         <field name="name" select="1"/>
                         <field name="code" select="2"/>
                         <field name="type" select="1"/>
