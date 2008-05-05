@@ -8,6 +8,8 @@ STATES_WH = {
     'invisible': "type != 'warehouse'",
     'readonly': "not active",
 }
+
+
 class Location(OSV):
     "Stock Location"
     _name = 'stock.location'
@@ -49,7 +51,7 @@ class Location(OSV):
         return True
 
     def default_type(self, cursor, user, context=None):
-            return 'storage'
+        return 'storage'
 
     def name_search(self, cursor, user, name,  args=None, operator='ilike',
                     context=None, limit=None):
@@ -66,3 +68,21 @@ class Location(OSV):
         return result
 
 Location()
+
+
+class Partner(OSV):
+    _name = 'partner.partner'
+    supplier_location = fields.Property(type='many2one',
+            relation='stock.location', string='Supplier Location',
+            group_name='Stock Properties', view_load=True,
+            domain=[('type', '=', 'supplier')],
+            help='The default source location ' \
+                    'when receiving products from the partner.')
+    customer_location = fields.Property(type='many2one',
+            relation='stock.location', string='Customer Location',
+            group_name='Stock Properties', view_load=True,
+            domain=[('type', '=', 'customer')],
+            help='The default destination location ' \
+                    'when sending products to the partner.')
+
+Partner()
