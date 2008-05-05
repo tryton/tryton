@@ -7,40 +7,44 @@ STATES = {
     'readonly': "(state in ('cancel', 'done'))",
 }
 
+
 class Move(OSV):
     "Stock Move"
     _name = 'stock.move'
     _description = __doc__
     _rec_name = "product"
     product = fields.Many2One(
-        "product.product", "Product", required=True, select=True, states=STATES,
+        "product.product", "Product", required=True, select=1, states=STATES,
         on_change=['product'])
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,)
     quantity = fields.Float(
         "Quantity", digits=(12, 6), required=True,
         states=STATES,)
     from_location = fields.Many2One(
-        "stock.location", "From Location", select=True, required=True,
+        "stock.location", "From Location", select=1, required=True,
         states=STATES, domain="[('type', '!=', 'warehouse')]",)
     to_location = fields.Many2One(
-        "stock.location", "To Location", select=True, required=True,
+        "stock.location", "To Location", select=1, required=True,
         states=STATES, domain="[('type', '!=', 'warehouse')]",)
     incoming_packing_in = fields.Many2One(
-        "stock.packing.in", "Supplier Packing", states=STATES, select=True)
+        "stock.packing.in", "Supplier Packing", states=STATES, select=1)
     inventory_packing_in = fields.Many2One(
         "stock.packing.in", "Inventory Supplier Packing", states=STATES,
-        select=True)
+        select=1)
     outgoing_packing_out = fields.Many2One(
-        "stock.packing.out", "Customer Packing", states=STATES, select=True)
+        "stock.packing.out", "Customer Packing", states=STATES, select=1)
     inventory_packing_out = fields.Many2One(
         "stock.packing.out", "Inventory Customer Packing", states=STATES,
-        select=True)
+        select=1)
     planned_date = fields.Date("Planned Date", states=STATES,)
     effective_date = fields.Date("Effective Date", readonly=True)
-    state = fields.Selection(
-        [('draft', 'Draft'), ('done', 'Done'), ('cancel', 'Cancel'),
-         ('waiting', 'Waiting'), ('assigned', 'Assigned')], 'State', select=True, readonly=True)
-
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+        ('cancel', 'Cancel'),
+        ('waiting', 'Waiting'),
+        ('assigned', 'Assigned'),
+        ], 'State', select=1, readonly=True)
 
     def __init__(self):
         super(Move, self).__init__()
@@ -191,7 +195,9 @@ Move()
 
 class CreatePackingWarn(WizardOSV):
     _name = 'stock.move.create_packing.warn'
+
 CreatePackingWarn()
+
 
 class CreatePacking(Wizard):
     'Create Packing'
@@ -202,10 +208,11 @@ class CreatePacking(Wizard):
                 'type': 'action',
                 'action': '_create',
                 'state': 'end',
-                },
             },
+        },
 
-        }
+    }
+
     def _create(self, cursor, user, data, context=None):
 
         move_obj = self.pool.get('stock.move')
