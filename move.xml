@@ -46,7 +46,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="moves">
+                    <tree string="Moves">
                         <field name="product" select="1"/>
                         <field name="from_location" select="1"/>
                         <field name="to_location" select="1"/>
