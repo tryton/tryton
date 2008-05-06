@@ -117,29 +117,27 @@ class Move(OSV):
             return field and wh_location[field].id or False
 
     def default_state(self, cursor, user, context=None):
-#TODO
-#         if not context: return 'draft'
-#         if 'pack_incoming_state' in context:
-#             if context['pack_incoming_state'] == 'waiting':
-#                 return 'waiting'
-#             if context['pack_incoming_state'] in ('received', 'done'):
-#                 return 'done'
-#         if 'pack_inv_in_state' in context:
-#             if context['pack_inv_in_state'] == 'received':
-#                 return 'waiting'
-#             if context['pack_inv_in_state'] == 'done':
-#                 return 'done'
-#         if 'pack_outgoing_state' in context:
-#             if context['pack_outgoing_state'] in \
-#                     ('waiting', 'assigned', 'ready'):
-#                 return 'waiting'
-#             if context['pack_outgoing_state'] in 'done':
-#                 return 'done'
-#         if 'pack_inv_out_state' in context:
-#             if context['pack_inv_out_state'] == 'assigned':
-#                 return 'waiting'
-#             if context['pack_inv_out_state'] == 'ready':
-#                 return 'done'
+        if not context: return 'draft'
+        if context.get('type') == 'incoming':
+            if context['packing_state'] == 'waiting':
+                return 'waiting'
+            if context['packing_state'] in ('received', 'done'):
+                return 'done'
+        if context.get('type') == 'inventory_in':
+            if context['packing_state'] == 'received':
+                return 'waiting'
+            if context['packing_state'] == 'done':
+                return 'done'
+        if context.get('type') == 'outgoing':
+            if context['packing_state'] == 'ready':
+                return 'waiting'
+            if context['packing_state'] == 'done':
+                return 'done'
+        if context.get('type') == 'inventory_out':
+            if context['packing_state'] in ('waiting','assigned'):
+                return context['packing_state']
+            if context['packing_state'] in ('ready','done'):
+                return 'done'
         return 'draft'
 
     def on_change_product(self, cursor, user, ids, value, context=None):
