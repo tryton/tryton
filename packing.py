@@ -300,7 +300,6 @@ class PackingOut(OSV):
         for move in packing.inventory_moves:
             if move.state != 'waiting': continue
             inventory_moves.append(move)
-            uom_index[move.uom.id] = move.uom
             location_index[move.from_location.id] = move.from_location
             if move.from_location.id in parent_to_locations:
                 continue
