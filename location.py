@@ -39,10 +39,6 @@ class Location(OSV):
         "stock.location", "Storage", states=STATES_WH,
         domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
 
-    # TODO: champ calcule vers product (retournant les product dispo)
-    # + context qui passe la location courante et permet de calculer
-    # les qtt des produits. et on ne met ce o2m que dans une certaine vue
-
     def __init__(self):
         super(Location, self).__init__()
         self._order.insert(0, ('name', 'ASC'))
