@@ -109,20 +109,18 @@ class Product(OSV):
         uom_ids = uom_obj.search(cursor, user, [], context=context)
         uom_by_id = dict((x.id, x) for x in uom_obj.browse(
                 cursor, user, uom_ids, context=context))
-        uom_by_prod = dict((x.id, x.default_uom) for x in product_obj.browse(
+        default_uom = dict((x.id, x.default_uom) for x in product_obj.browse(
                 cursor, user, product_ids, context=context))
 
         res = {}
         for line in self.raw_products_by_location(
             cursor, user, location_ids, product_ids, context=context):
-
             location, product, uom, quantity= line
-            key = (location, product, uom)
+            key = (location, product, default_uom[product].id)
             if key not in res:
                 res[key] = 0
             res[key] += uom_obj.compute_qty(
-                cursor, user, uom_by_id[uom], quantity, uom_by_prod[product])
-
+                cursor, user, uom_by_id[uom], quantity, default_uom[product])
         return [{'location': key[0],
                  'product':key[1],
                  'uom': key[2],
