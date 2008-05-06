@@ -42,6 +42,8 @@
                             <field name="type" widget="selection"/>
                             <label name="lang"/>
                             <field name="lang" widget="selection"/>
+                            <label name="website"/>
+                            <field name="website" widget="url"/>
                             <separator string="Categories" colspan="4"/>
                             <field name="categories" colspan="4"/>
                         </page>
