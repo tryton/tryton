@@ -18,7 +18,13 @@ class Product(OSV):
             context=context)
         pbl = self.products_by_location(
             cursor, user, location_ids=location_ids, context=None)
-        return dict([(line['product'], line['quantity']) for line in pbl])
+        res = {}
+        for line in pbl:
+            if line['product'] in res:
+                res[line['product']] += line['quantity']
+            else:
+                res[line['product']] = line['quantity']
+        return res
 
     def _eval_domain(self, line, domain):
         res = True
