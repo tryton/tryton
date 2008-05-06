@@ -287,10 +287,14 @@ class PackingOut(OSV):
         location_obj = self.pool.get('stock.location')
         move_obj = self.pool.get('stock.move')
         product_obj = self.pool.get('product.product')
+        uom_obj = self.pool.get('product.uom')
         packing = self.browse(cursor, user, id, context=context)
         parent_to_locations = {}
         inventory_moves = []
-        uom_index = {}
+        uom_ids = uom_obj.search(cursor, user, [], context=context)
+        uom_index = dict( (uom.id, uom) for uom in \
+            uom_obj.browse(cursor, user, uom_ids, context=context))
+
         location_index = {}
         # Fetch child_of for each location
         for move in packing.inventory_moves:
