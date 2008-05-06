@@ -1301,7 +1301,7 @@ class InvoiceLine(OSV):
                 context=context)
         for tax in computed_taxes:
             res.setdefault('tax_lines', [])
-            res.tax_lines.append(('create', tax))
+            res['tax_lines'].append(('create', tax))
         return res
 
     def _refund(self, cursor, user, line, context=None):
