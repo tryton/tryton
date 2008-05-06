@@ -91,11 +91,11 @@
                             <field name="comment" colspan="4"/>
                         </page>
                         <page string="Invoices">
-                            <field name="invoices" colspan="4"/>
+                            <field name="invoices" colspan="4" widget="one2many"/>
                         </page>
                         <page string="Packings">
-                            <field name="moves" colspan="4"/>
-                            <field name="packings" colspan="4"/>
+                            <field name="moves" colspan="4" widget="one2many"/>
+                            <field name="packings" colspan="4" widget="one2many"/>
                         </page>
                     </notebook>
                 </form>
