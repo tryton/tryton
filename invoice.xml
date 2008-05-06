@@ -141,7 +141,7 @@
         <record model="ir.model.access" id="access_payment_term_line_type">
             <field name="model"
                 search="[('model', '=', 'account.invoice.payment_term.line.type')]"/>
-            <field name="perm_read" eval="False"/>
+            <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
