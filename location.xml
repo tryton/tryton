@@ -160,6 +160,28 @@
             <field name="output_location" ref="location_output"/>
             <field name="storage_location" ref="location_storage"/>
         </record>
+        <record model="stock.location" id="location_supplier">
+            <field name="name">Supplier</field>
+            <field name="code">SUP</field>
+            <field name="type">supplier</field>
+        </record>
+        <record model="stock.location" id="location_customer">
+            <field name="name">Customer</field>
+            <field name="code">CUS</field>
+            <field name="type">customer</field>
+        </record>
 
+        <record model="ir.property" id="property_supplier_location">
+            <field name="name">supplier_location</field>
+            <field name="field"
+                search="[('model.model', '=', 'partner.partner'), ('name', '=', 'supplier_location')]"/>
+            <field name="value" eval="'stock.location,' + str(ref('location_supplier'))"/>
+        </record>
+        <record model="ir.property" id="property_customer_location">
+            <field name="name">customer_location</field>
+            <field name="field"
+                search="[('model.model', '=', 'partner.partner'), ('name', '=', 'customer_location')]"/>
+            <field name="value" eval="'stock.location,' + str(ref('location_customer'))"/>
+        </record>
     </data>
 </tryton>

@@ -7,6 +7,7 @@ STATES = {
     'readonly': "state in ('cancel', 'done')",
 }
 
+
 class PackingIn(OSV):
     "Supplier Packing"
     _name = 'stock.packing.in'

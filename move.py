@@ -7,6 +7,7 @@ STATES = {
     'readonly': "(state in ('cancel', 'done'))",
 }
 
+
 class Move(OSV):
     "Stock Move"
     _name = 'stock.move'
@@ -37,10 +38,13 @@ class Move(OSV):
         select=1)
     planned_date = fields.Date("Planned Date", states=STATES,)
     effective_date = fields.Date("Effective Date", readonly=True)
-    state = fields.Selection(
-        [('draft', 'Draft'), ('done', 'Done'), ('cancel', 'Cancel'),
-         ('waiting', 'Waiting'), ('assigned', 'Assigned')], 'State', select=1, readonly=True)
-
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+        ('cancel', 'Cancel'),
+        ('waiting', 'Waiting'),
+        ('assigned', 'Assigned'),
+        ], 'State', select=1, readonly=True)
 
     def __init__(self):
         super(Move, self).__init__()
@@ -191,7 +195,9 @@ Move()
 
 class CreatePackingWarn(WizardOSV):
     _name = 'stock.move.create_packing.warn'
+
 CreatePackingWarn()
+
 
 class CreatePacking(Wizard):
     'Create Packing'
@@ -202,10 +208,11 @@ class CreatePacking(Wizard):
                 'type': 'action',
                 'action': '_create',
                 'state': 'end',
-                },
             },
+        },
 
-        }
+    }
+
     def _create(self, cursor, user, data, context=None):
 
         move_obj = self.pool.get('stock.move')
