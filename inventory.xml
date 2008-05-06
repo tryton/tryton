@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="inventory_view_form">
+            <field name="model">stock.inventory</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Inventory">
+                        <label name="location"/>
+                        <field name="location"/>
+                        <label name="date"/>
+                        <field name="date"/>
+                        <field name="lines" colspan="4"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <button string="Set Done"
+                            name="set_state_done" type="object"
+                            states="{'invisible': '''state == 'done' '''}"/>
+                        <button string="Set Draft"
+                            name="set_state_draft" type="object"
+                            states="{'invisible': '''state == 'draft' '''}"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="inventory_view_tree">
+            <field name="model">stock.inventory</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Inventories">
+                        <field name="location" select="1"/>
+                        <field name="date" select="1"/>
+                        <field name="state" select="1"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_inventory_form">
+            <field name="name">Inventories</field>
+            <field name="res_model">stock.inventory</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_inventory_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="inventory_view_tree"/>
+            <field name="act_window" ref="act_inventory_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_inventory_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="inventory_view_form"/>
+            <field name="act_window" ref="act_inventory_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="3"
+            action="act_inventory_form" id="menu_inventory_form"/>
+
+        <record model="ir.ui.view" id="inventory_line_view_form">
+            <field name="model">stock.inventory.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Inventory Line" col="6">
+                        <label name="product"/>
+                        <field name="product"/>
+                        <label name="uom"/>
+                        <field name="uom"/>
+                        <label name="quantity"/>
+                        <field name="quantity"/>
+                        <label name="inventory"/>
+                        <field name="inventory"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="inventory_line_view_tree">
+            <field name="model">stock.inventory.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Inventory Lines">
+                        <field name="product" select="1"/>
+                        <field name="uom" select="2"/>
+                        <field name="quantity" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+
+
+    </data>
+</tryton>

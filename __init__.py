@@ -28,3 +28,4 @@ from location import *
 from packing import *
 from move import *
 from product import *
+from inventory import *

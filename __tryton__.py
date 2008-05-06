@@ -14,5 +14,6 @@
         'location.xml',
         'move.xml',
         'packing.xml',
+        'inventory.xml',
     ],
 }
