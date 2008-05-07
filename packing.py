@@ -16,27 +16,32 @@ class PackingIn(OSV):
 
     effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime('Planned Date', readonly=True)
-    warehouse = fields.Many2One(
-        'stock.location', "Warehouse", required=True, states=STATES,
-        domain="[('type', '=', 'warehouse')]",)
-    incoming_moves = fields.One2Many(
-        'stock.move', 'incoming_packing_in', 'Incoming Moves',
-        states={'readonly': "state in ('received', 'done')",},
-        context="{'warehouse': warehouse, "\
-            "'packing_state': state, 'type':'incoming'}")
-    inventory_moves = fields.One2Many(
-        'stock.move', 'inventory_packing_in', 'Inventory Moves',
-        states={'readonly': "state in ('draft', 'waiting')",},
-        context="{'warehouse': warehouse, "\
-            "'packing_state': state, 'type':'inventory_in'}")
+    warehouse = fields.Many2One('stock.location', "Warehouse",
+            required=True, states=STATES, domain="[('type', '=', 'warehouse')]")
+    incoming_moves = fields.Function('get_incoming_moves', type='one2many',
+            relation='stock.move', string='Incoming Moves',
+            fnct_inv='set_incoming_moves',
+            states={
+                'readonly': "state in ('received', 'done')",
+            }, context="{'warehouse': warehouse, "\
+                    "'packing_state': state, 'type':'incoming'}")
+    inventory_moves = fields.Function('get_inventory_moves', type='one2many',
+            relation='stock.move', string='Inventory Moves',
+            fnct_inv='set_inventory_moves',
+            states={
+                'readonly': "state in ('draft', 'waiting')",
+            }, context="{'warehouse': warehouse, "\
+                    "'packing_state': state, 'type':'inventory_in'}")
+    moves = fields.One2Many('stock.move', 'packing_in', 'Moves',
+            readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True,)
-    state = fields.Selection(
-        [('draft', 'Draft'),
-         ('done', 'Done'),
-         ('cancel', 'Cancel'),
-         ('waiting', 'Waiting'),
-         ('received', 'Received')],
-        'State', readonly=True)
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+        ('cancel', 'Cancel'),
+        ('waiting', 'Waiting'),
+        ('received', 'Received'),
+        ], 'State', readonly=True)
 
     def __init__(self):
         super(PackingIn, self).__init__()
@@ -46,12 +51,97 @@ class PackingIn(OSV):
             'set_state_draft',
             'set_state_cancel',
             'set_state_received',
-            'create_inventory_moves',
             ]
         self._order[0] = ('id', 'DESC')
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
+
+    def get_incoming_moves(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for packing in self.browse(cursor, user, ids, context=context):
+            res[packing.id] = []
+            for move in packing.moves:
+                if move.to_location.id == packing.warehouse.input_location.id:
+                    res[packing.id].append(move.id)
+        return res
+
+    def set_incoming_moves(self, cursor, user, packing_id, name, value, arg,
+            context=None):
+        move_obj = self.pool.get('stock.move')
+        packing = self.browse(cursor, user, packing_id, context=context)
+        for act in value:
+            if act[0] == 'create':
+                if 'to_location' in act[1]:
+                    if act[1]['to_location'] != \
+                            packing.warehouse.input_location.id:
+                        raise ExceptORM('UserError', 'Incoming Moves must ' \
+                                'have input location as destination location!')
+            elif act[0] == 'write':
+                if 'to_location' in act[2]:
+                    if act[2]['to_location'] != \
+                            packing.warehouse.input_location.id:
+                        raise ExceptORM('UserError', 'Incoming Moves must ' \
+                                'have input location as destination location!')
+            elif act[0] == 'add':
+                move = move_obj.browse(cursor, user, act[1], context=context)
+                if move.to_location.id != \
+                        packing.warehouse.input_location.id:
+                    raise ExceptORM('UserError', 'Incoming Moves must ' \
+                            'have input location as destination location!')
+            elif act[0] == 'set':
+                moves = move_obj.browse(cursor, user, act[1], context=context)
+                for move in moves:
+                    if move.to_location.id != \
+                            packing.warehouse.input_location.id:
+                        raise ExceptORM('UserError', 'Incoming Moves must ' \
+                                'have input location as destination location!')
+        self.write(cursor, user, packing_id, {
+            'moves': value,
+            }, context=context)
+
+    def get_inventory_moves(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for packing in self.browse(cursor, user, ids, context=context):
+            res[packing.id] = []
+            for move in packing.moves:
+                if move.from_location.id == packing.warehouse.input_location.id:
+                    res[packing.id].append(move.id)
+        return res
+
+    def set_inventory_moves(self, cursor, user, packing_id, name, value, arg,
+            context=None):
+        move_obj = self.pool.get('stock.move')
+        packing = self.browse(cursor, user, packing_id, context=context)
+        for act in value:
+            if act[0] == 'create':
+                if 'from_location' in act[1]:
+                    if act[1]['from_location'] != \
+                            packing.warehouse.input_location.id:
+                        raise ExceptORM('UserError', 'Inventory Moves must ' \
+                                'have input location as source location!')
+            elif act[0] == 'write':
+                if 'from_location' in act[2]:
+                    if act[2]['from_location'] != \
+                            packing.warehouse.input_location.id:
+                        raise ExceptORM('UserError', 'Inventory Moves must ' \
+                                'have input location as source location!')
+            elif act[0] == 'add':
+                move = move_obj.browse(cursor, user, act[1], context=context)
+                if move.from_location.id != \
+                        packing.warehouse.input_location.id:
+                    raise ExceptORM('UserError', 'Inventory Moves must ' \
+                            'have input location as source location!')
+            elif act[0] == 'set':
+                moves = move_obj.browse(cursor, user, act[1], context=context)
+                for move in moves:
+                    if move.from_location.id != \
+                            packing.warehouse.input_location.id:
+                        raise ExceptORM('UserError', 'Inventory Moves must ' \
+                                'have input location as source location!')
+        self.write(cursor, user, packing_id, {
+            'moves': value,
+            }, context=context)
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -88,8 +178,6 @@ class PackingIn(OSV):
             cursor, user, [m.id for m in packing.incoming_moves], context)
         self.write(
             cursor, user, packing_id, {'state':'received'}, context=context)
-        self.create_inventory_moves(
-            cursor, user, [packing_id], context=context)
 
     def set_state_draft(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -107,37 +195,28 @@ class PackingIn(OSV):
         return super(PackingIn, self).create(
             cursor, user, values, context=context)
 
-    def _store_location(self, cursor, user, incoming_move, context=None):
-        return incoming_move.incoming_packing_in.warehouse.storage_location.id
+    def _get_inventory_moves(self, cursor, user, incoming_move, context=None):
+        res = {}
+        if incoming_move.quantity <= 0.0:
+            return None
+        res['product'] = incoming_move.product.id
+        res['uom'] = incoming_move.uom.id
+        res['quantity'] = incoming_move.quantity
+        res['from_location'] = incoming_move.to_location.id
+        res['to_location'] = incoming_move.packing_in.warehouse.\
+                storage_location.id
+        res['state'] = 'waiting'
+        return res
 
-    def create_inventory_moves(self, cursor, user, ids, context=None):
-        move_obj = self.pool.get('stock.move')
-        for packing in self.browse(cursor, user, ids, context=context):
-            product_balance = {}
-            for move in packing.inventory_moves:
-                key = (move.product.id, move.uom.id, move.from_location.id)
-                if key in product_balance:
-                    product_balance[key] += move.quantity
-                else:
-                    product_balance[key] = move.quantity
-
-            for move in packing.incoming_moves:
-                key = (move.product.id, move.uom.id, move.to_location.id)
-                if key in product_balance and \
-                        product_balance[key] >= move.quantity:
-                    product_balance[key] -= move.quantity
-                else:
-                    values = {
-                        'product': move.product.id,
-                        'uom': move.uom.id,
-                        'quantity': move.quantity,
-                        'from_location': move.to_location.id,
-                        'to_location': self._store_location(
-                            cursor, user, move, context=context),
-                        'inventory_packing_in': packing.id,
-                        'state': 'waiting',
-                        }
-                    move_obj.create(cursor, user, values, context=context)
+    def create_inventory_moves(self, cursor, user, packing_id, context=None):
+        packing = self.browse(cursor, user, packing_id, context=context)
+        for incoming_move in packing.incoming_moves:
+            vals = self._get_inventory_moves(cursor, user, incoming_move,
+                    context=context)
+            if vals:
+                self.write(cursor, user, packing.id, {
+                    'inventory_moves': [('create', vals)]
+                    }, context=context)
 
 PackingIn()
 
@@ -150,33 +229,39 @@ class PackingOut(OSV):
 
     effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime('Planned Date', readonly=True)
-    warehouse = fields.Many2One(
-        'stock.location', "Warehouse", required=True,
-        states={'readonly': "state != 'draft'",},
-        domain="[('type', '=', 'warehouse')]",)
-    customer_location = fields.Many2One(
-        'stock.location', "Customer Location", required=True,
-        states={'readonly': "state != 'draft'",},
-        domain="[('type', '=', 'customer')]",)
-    outgoing_moves = fields.One2Many(
-        'stock.move', 'outgoing_packing_out', 'Outgoing Moves',
-        states={'readonly':"state != 'ready'",},
-        context="{'warehouse': warehouse, "\
-            "'packing_state': state, 'type':'outgoing',}")
-    inventory_moves = fields.One2Many(
-        'stock.move', 'inventory_packing_out', 'Inventory Moves',
-        states={'readonly':"state in ('ready', 'done')",},
-        context="{'warehouse': warehouse, "\
-            "'packing_state': state, 'type':'inventory_out',}")
-    code = fields.Char("Code", size=None, select=1, readonly=True,)
-    state = fields.Selection(
-        [('draft', 'Draft'),
-         ('done', 'Done'),
-         ('cancel', 'Cancel'),
-         ('assigned', 'Assigned'),
-         ('ready', 'Ready'),
-         ('waiting', 'Waiting')],
-        'State', readonly=True)
+    warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
+            states={
+                'readonly': "state != 'draft'",
+            }, domain="[('type', '=', 'warehouse')]")
+    customer_location = fields.Many2One('stock.location', "Customer Location",
+            required=True, states={
+                'readonly': "state != 'draft'",
+            }, domain="[('type', '=', 'customer')]")
+    outgoing_moves = fields.Function('get_outgoing_moves', type='one2many',
+            relation='stock.move', string='Outgoing Moves',
+            fnct_inv='set_outgoing_moves',
+            states={
+                'readonly':"state != 'ready'",
+            }, context="{'warehouse': warehouse, "\
+                    "'packing_state': state, 'type':'outgoing',}")
+    inventory_moves = fields.Function('get_inventory_moves', type='one2many',
+            relation='stock.move', string='Inventory Moves',
+            fnct_inv='set_inventory_moves',
+            states={
+                'readonly':"state in ('ready', 'done')",
+            }, context="{'warehouse': warehouse, "\
+                    "'packing_state': state, 'type':'inventory_out',}")
+    moves = fields.One2Many('stock.move', 'packing_in', 'Moves',
+            readonly=True)
+    code = fields.Char("Code", size=None, select=1, readonly=True)
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+        ('cancel', 'Cancel'),
+        ('assigned', 'Assigned'),
+        ('ready', 'Ready'),
+        ('waiting', 'Waiting'),
+        ], 'State', readonly=True)
 
     def __init__(self):
         super(PackingOut, self).__init__()
@@ -194,6 +279,94 @@ class PackingOut(OSV):
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
+
+    def get_outgoing_moves(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for packing in self.browse(cursor, user, ids, context=context):
+            res[packing.id] = []
+            for move in packing.moves:
+                if move.from_location.id == \
+                        packing.warehouse.output_location.id:
+                    res[packing.id].append(move.id)
+        return res
+
+    def set_outgoing_moves(self, cursor, user, packing_id, name, value, arg,
+            context=None):
+        move_obj = self.pool.get('stock.move')
+        packing = self.browse(cursor, user, packing_id, context=context)
+        for act in value:
+            if act[0] == 'create':
+                if 'from_location' in act[1]:
+                    if act[1]['from_location'] != \
+                            packing.warehouse.output_location.id:
+                        raise ExceptORM('UserError', 'Outgoing Moves must ' \
+                                'have output location as source location!')
+            elif act[0] == 'write':
+                if 'from_location' in act[2]:
+                    if act[2]['from_location'] != \
+                            packing.warehouse.output_location.id:
+                        raise ExceptORM('UserError', 'Outgoing Moves must ' \
+                                'have output location as source location!')
+            elif act[0] == 'add':
+                move = move_obj.browse(cursor, user, act[1], context=context)
+                if move.from_location.id != \
+                        packing.warehouse.output_location.id:
+                    raise ExceptORM('UserError', 'Outgoing Moves must ' \
+                            'have output location as source location!')
+            elif act[0] == 'set':
+                moves = move_obj.browse(cursor, user, act[1], context=context)
+                for move in moves:
+                    if move.from_location.id != \
+                            packing.warehouse.output_location.id:
+                        raise ExceptORM('UserError', 'Outgoing Moves must ' \
+                                'have output location as source location!')
+        self.write(cursor, user, packing_id, {
+            'moves': value,
+            }, context=context)
+
+    def get_inventory_moves(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for packing in self.browse(cursor, user, ids, context=context):
+            res[packing.id] = []
+            for move in packing.moves:
+                if move.to_location.id == \
+                        packing.warehouse.output_location.id:
+                    res[packing.id].append(move.id)
+        return res
+
+    def set_inventory_moves(self, cursor, user, packing_id, name, value, arg,
+            context=None):
+        move_obj = self.pool.get('stock.move')
+        packing = self.browse(cursor, user, packing_id, context=context)
+        for act in value:
+            if act[0] == 'create':
+                if 'to_location' in act[1]:
+                    if act[1]['to_location'] != \
+                            packing.warehouse.output_location.id:
+                        raise ExceptORM('UserError', 'Inventory Moves must ' \
+                                'have output location as destination location!')
+            elif act[0] == 'write':
+                if 'to_location' in act[2]:
+                    if act[2]['to_location'] != \
+                            packing.warehouse.output_location.id:
+                        raise ExceptORM('UserError', 'Inventory Moves must ' \
+                                'have output location as destination location!')
+            elif act[0] == 'add':
+                move = move_obj.browse(cursor, user, act[1], context=context)
+                if move.to_location.id != \
+                        packing.warehouse.output_location.id:
+                    raise ExceptORM('UserError', 'Inventory Moves must ' \
+                            'have output location as destination location!')
+            elif act[0] == 'set':
+                moves = move_obj.browse(cursor, user, act[1], context=context)
+                for move in moves:
+                    if move.to_location.id != \
+                            packing.warehouse.output_location.id:
+                        raise ExceptORM('UserError', 'Inventory Moves must ' \
+                                'have output location as destination location!')
+        self.write(cursor, user, packing_id, {
+            'moves': value,
+            }, context=context)
 
     def set_state_assigned(self, cursor, user, packing_id, context=None):
         self.write(cursor, user, packing_id, {'state':'assigned'},

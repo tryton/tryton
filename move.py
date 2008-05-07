@@ -26,16 +26,10 @@ class Move(OSV):
     to_location = fields.Many2One(
         "stock.location", "To Location", select=1, required=True,
         states=STATES, domain="[('type', '!=', 'warehouse')]",)
-    incoming_packing_in = fields.Many2One(
-        "stock.packing.in", "Supplier Packing", states=STATES, select=1)
-    inventory_packing_in = fields.Many2One(
-        "stock.packing.in", "Inventory Supplier Packing", states=STATES,
-        select=1)
-    outgoing_packing_out = fields.Many2One(
-        "stock.packing.out", "Customer Packing", states=STATES, select=1)
-    inventory_packing_out = fields.Many2One(
-        "stock.packing.out", "Inventory Customer Packing", states=STATES,
-        select=1)
+    packing_in = fields.Many2One('stock.packing.in', 'Supplier Packing',
+            readonly=True, select=1)
+    packing_out = fields.Many2One('stock.packing.out', 'Customer Packing',
+            readonly=True, select=1)
     planned_date = fields.Date("Planned Date", states=STATES,)
     effective_date = fields.Date("Effective Date", readonly=True)
     state = fields.Selection([
@@ -57,46 +51,15 @@ class Move(OSV):
         self._sql_constraints += [
             ('check_move_qty_pos',
                 'CHECK(quantity >= 0.0)', 'Move quantity must be positive'),
-        ]
-        self._constraints += [
-            ('check_locations',
-                'Invalid locations', []),
+            ('check_from_to_locations',
+                'CHECK(from_location != to_location)',
+                'Source and destination location must be different'),
+            ('check_packing_in_out',
+                'CHECK(NOT(packing_in IS NOT NULL ' \
+                        'AND packing_out IS NOT NULL))',
+                'Move can not be in both Supplier and Customer Packing'),
         ]
         self._order[0] = ('id', 'DESC')
-
-    def check_locations(self, cursor, user, ids, context=None):
-        for move in self.browse(cursor, user, ids, context=context):
-            if move.from_location.id == move.to_location.id:
-                return False
-            if move.incoming_packing_in:
-                if move.incoming_packing_in.warehouse.input_location.id \
-                        != move.to_location.id:
-                    return False
-                if move.from_location.type and move.from_location.type \
-                        not in ('supplier', 'customer'):
-                    return False
-                for packing_move in move.incoming_packing_in.incoming_moves:
-                    if packing_move.from_location.id != move.from_location.id:
-                        return False
-            if move.inventory_packing_in and \
-                    move.inventory_packing_in.warehouse.input_location.id \
-                    != move.from_location.id:
-                return False
-            if move.inventory_packing_out and \
-                    move.inventory_packing_out.warehouse.output_location.id \
-                    != move.to_location.id:
-                return False
-            if move.outgoing_packing_out:
-                if move.outgoing_packing_out.warehouse.output_location.id \
-                        != move.from_location.id:
-                    return False
-                if move.to_location.type and \
-                        move.to_location.type not in ('supplier', 'customer'):
-                    return False
-                for packing_move in move.outgoing_packing_out.outgoing_moves:
-                    if packing_move.to_location.id != move.to_location.id:
-                        return False
-        return True
 
     def default_to_location(self, cursor, user, context=None):
         if context and context.get('warehouse') and context.get('type'):
@@ -191,12 +154,6 @@ class Move(OSV):
 Move()
 
 
-class CreatePackingWarn(WizardOSV):
-    _name = 'stock.move.create_packing.warn'
-
-CreatePackingWarn()
-
-
 class CreatePacking(Wizard):
     'Create Packing'
     _name = 'stock.move.create_packing'
@@ -221,7 +178,7 @@ class CreatePacking(Wizard):
         # Collect moves by incoming location
         moves_by_location = {}
         for move in moves:
-            if move.incoming_packing_in or move.inventory_packing_in:
+            if move.packing_in:
                 raise ExceptWizard(
                     'UserError', 'Moves cannot be already in a packing.')
             if move.state != 'waiting':
@@ -235,15 +192,14 @@ class CreatePacking(Wizard):
                 moves_by_location[location].append(move.id)
 
         # Fetch warehouse for these locations
-        wh_location_ids = location_obj.search(
-            cursor, user,
-            [('input_location', 'in',
-              [l for l in moves_by_location]),
-             ('type', '=', 'warehouse')], context=context)
+        wh_location_ids = location_obj.search(cursor, user, [
+            ('input_location', 'in', moves_by_location.keys()),
+             ('type', '=', 'warehouse'),
+             ], context=context)
         wh_locations = location_obj.browse(
             cursor, user, wh_location_ids, context=context)
         loc2wh = dict(
-            [( whl.input_location.id, whl.id) for whl in wh_locations])
+            [(whl.input_location.id, whl.id) for whl in wh_locations])
 
         packing_ids = []
         for location, move_ids in moves_by_location.iteritems():
@@ -253,10 +209,10 @@ class CreatePacking(Wizard):
                     'UserError',
                     'Moves must have a final destination '\
                     'who is an input location of a wharehouse.')
-            pid = packing_obj.create(
-                cursor, user,
-                {'incoming_moves': [('set',move_ids)], 'warehouse': whl},
-                context=context)
+            pid = packing_obj.create(cursor, user, {
+                'incoming_moves': [('set', move_ids)],
+                'warehouse': whl,
+                }, context=context)
 
             packing_ids.append(pid)
 
@@ -269,10 +225,8 @@ class CreatePacking(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id,
-                                  context=context)
-        res["domain"]= str([('id', 'in', packing_ids)])
-
+                context=context)
+        res["domain"] = str([('id', 'in', packing_ids)])
         return res
 
 CreatePacking()
-

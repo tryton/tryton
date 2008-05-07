@@ -110,9 +110,7 @@
             <field name="name">Moves from suppliers to proceed</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
-            <field name="domain">[('from_location.type', '=', 'supplier'),
-                ('state','in',['draft','waiting']),('incoming_packing_in','=',False),
-                ('inventory_packing_in','=',False)]</field>
+            <field name="domain">[('from_location.type', '=', 'supplier'), ('state','in',['draft','waiting']), ('_packing_in','=',False)]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_move_form_supp_proceed_view1">
@@ -177,22 +175,6 @@
                   action="act_move_form_cust_proceed"
                   id="menu_move_form_cust_proceed"/>
 
-
-
-        <record model="ir.ui.view" id="packing_create_warn_view_form">
-            <field name="model">stock.move.create_packing.warn</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Create packing" col="2">
-                    <image name="gtk-dialog-info"/>
-                    <label string="Moves already in a shipment will be
-                                   ignored."/>
-                </form>
-                ]]>
-            </field>
-        </record>
-
         <record model="ir.action.wizard" id="act_create_packing">
             <field name="name">Create Packing</field>
             <field name="wiz_name">stock.move.create_packing</field>
@@ -203,7 +185,6 @@
             <field name="model">stock.move,0</field>
             <field name="action" ref="act_create_packing"/>
         </record>
-
 
     </data>
 </tryton>

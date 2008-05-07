@@ -329,7 +329,7 @@
             <field name="name">Received</field>
             <field name="kind">function</field>
             <field name="workflow" ref="wkf_packingin"/>
-            <field name="action">set_state_received()</field>
+            <field name="action">set_state_received()&#10;create_inventory_moves()</field>
         </record>
 
         <record model="workflow.transition"
