@@ -235,9 +235,9 @@ class Purchase(OSV):
             res[purchase.id] = []
             for line in purchase.lines:
                 for move in line.moves:
-                    if move.incoming_packing_in:
-                        if move.incoming_packing_in.id not in res[purchase.id]:
-                            res[purchase.id].append(move.incoming_packing_in.id)
+                    if move.packing_in:
+                        if move.packing_in.id not in res[purchase.id]:
+                            res[purchase.id].append(move.packing_in.id)
         return res
 
     def get_moves(self, cursor, user, ids, name, args, context=None):
