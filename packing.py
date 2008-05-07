@@ -22,15 +22,21 @@ class PackingIn(OSV):
     incoming_moves = fields.One2Many(
         'stock.move', 'incoming_packing_in', 'Incoming Moves',
         states={'readonly': "state in ('received', 'done')",},
-        context="{'warehouse': warehouse, 'packing_state': state, 'type':'incoming'}")
+        context="{'warehouse': warehouse, "\
+            "'packing_state': state, 'type':'incoming'}")
     inventory_moves = fields.One2Many(
         'stock.move', 'inventory_packing_in', 'Inventory Moves',
         states={'readonly': "state in ('draft', 'waiting')",},
-        context="{'warehouse': warehouse, 'packing_state': state, 'type':'inventory_in'}")
+        context="{'warehouse': warehouse, "\
+            "'packing_state': state, 'type':'inventory_in'}")
     code = fields.Char("Code", size=None, select=1, readonly=True,)
     state = fields.Selection(
-        [('draft', 'Draft'), ('done', 'Done'), ('cancel', 'Cancel'),
-         ('waiting', 'Waiting'), ('received', 'Received')], 'State', readonly=True)
+        [('draft', 'Draft'),
+         ('done', 'Done'),
+         ('cancel', 'Cancel'),
+         ('waiting', 'Waiting'),
+         ('received', 'Received')],
+        'State', readonly=True)
 
     def __init__(self):
         super(PackingIn, self).__init__()
@@ -82,7 +88,8 @@ class PackingIn(OSV):
             cursor, user, [m.id for m in packing.incoming_moves], context)
         self.write(
             cursor, user, packing_id, {'state':'received'}, context=context)
-        self.create_inventory_moves(cursor, user, [packing_id], context=context)
+        self.create_inventory_moves(
+            cursor, user, [packing_id], context=context)
 
     def set_state_draft(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -91,7 +98,8 @@ class PackingIn(OSV):
             cursor, user, [m.id for m in packing.incoming_moves], context)
         move_obj.set_state_cancel(
             cursor, user, [m.id for m in packing.inventory_moves], context)
-        self.write(cursor, user, packing_id, {'state':'draft'}, context=context)
+        self.write(
+            cursor, user, packing_id, {'state':'draft'}, context=context)
 
     def create(self, cursor, user, values, context=None):
         values['code'] = self.pool.get('ir.sequence').get(
@@ -153,15 +161,21 @@ class PackingOut(OSV):
     outgoing_moves = fields.One2Many(
         'stock.move', 'outgoing_packing_out', 'Outgoing Moves',
         states={'readonly':"state != 'ready'",},
-        context="{'warehouse': warehouse, 'packing_state': state, 'type':'outgoing',}")
+        context="{'warehouse': warehouse, "\
+            "'packing_state': state, 'type':'outgoing',}")
     inventory_moves = fields.One2Many(
         'stock.move', 'inventory_packing_out', 'Inventory Moves',
         states={'readonly':"state in ('ready', 'done')",},
-        context="{'warehouse': warehouse, 'packing_state': state, 'type':'inventory_out',}")
+        context="{'warehouse': warehouse, "\
+            "'packing_state': state, 'type':'inventory_out',}")
     code = fields.Char("Code", size=None, select=1, readonly=True,)
     state = fields.Selection(
-        [('draft', 'Draft'), ('done', 'Done'), ('cancel', 'Cancel'),
-         ('assigned', 'Assigned'),('ready', 'Ready'), ('waiting', 'Waiting')],
+        [('draft', 'Draft'),
+         ('done', 'Done'),
+         ('cancel', 'Cancel'),
+         ('assigned', 'Assigned'),
+         ('ready', 'Ready'),
+         ('waiting', 'Waiting')],
         'State', readonly=True)
 
     def __init__(self):
@@ -193,7 +207,8 @@ class PackingOut(OSV):
             context=context)
         self.write(
             cursor, user, packing_id,
-            {'state':'done', 'effective_date': time.strftime('%Y-%m-%d %H:%M:%S')},
+            {'state':'done',
+             'effective_date': time.strftime('%Y-%m-%d %H:%M:%S')},
             context=context)
 
     def set_state_ready(self, cursor, user, packing_id, context=None):
@@ -243,7 +258,8 @@ class PackingOut(OSV):
         move_obj.set_state_cancel(
             cursor, user, [m.id for m in packing.inventory_moves],
             context=context)
-        self.write(cursor, user, packing_id, {'state':'draft'}, context=context)
+        self.write(
+            cursor, user, packing_id, {'state':'draft'}, context=context)
 
 
     def create(self, cursor, user, values, context=None):
@@ -304,7 +320,8 @@ class PackingOut(OSV):
             if move.from_location.id in parent_to_locations:
                 continue
             childs = location_obj.search(
-                cursor, user, [('parent', 'child_of', [move.from_location.id])])
+                cursor, user,
+                [('parent', 'child_of', [move.from_location.id])])
             parent_to_locations[move.from_location.id] = childs
 
         # Collect all raw quantities
@@ -360,14 +377,17 @@ class PackingOut(OSV):
                                    context=context)
                 else:
                     move_obj.create(cursor, user, values, context=context)
-                processed_data[(location, move.product.id)].append((move.uom.id, -qty))
+                processed_data[
+                    (location, move.product.id)].append((move.uom.id, -qty))
 
         return success
 
     def assign_force(self, cursor, user, id, context=None):
         packing = self.browse(cursor, user, id, context=context)
         move_obj = self.pool.get('stock.move')
-        move_obj.write(cursor, user, [m.id for m in packing.inventory_moves], {'state':'assigned'})
+        move_obj.write(
+            cursor, user, [m.id for m in packing.inventory_moves],
+            {'state':'assigned'})
         return True
 
 PackingOut()

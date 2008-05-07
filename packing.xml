@@ -16,26 +16,29 @@
                       <label name="effective_date"/>
                       <field name="effective_date"/>
                       <notebook colspan="6">
-                        <page string="Incoming Moves">
-                          <field name="incoming_moves" colspan="4"/>
-                        </page>
-                        <page string="Inventory Moves">
-                          <field name="inventory_moves" colspan="4"/>
-                        </page>
+                          <page string="Incoming Moves">
+                              <field name="incoming_moves" colspan="4"/>
+                          </page>
+                          <page string="Inventory Moves">
+                              <field name="inventory_moves" colspan="4"/>
+                          </page>
                       </notebook>
                       <label name="state"/>
                       <field name="state"/>
                       <group col="4" colspan="4">
-                        <button string="Cancel" name="signal_cancel"
-                                states="{'invisible': '''state in ('cancel','done',) '''}"/>
-                        <button string="Set Done" name="signal_done"
-                                states="{'invisible': '''state != 'received' '''}"/>
-                        <button string="Set Waiting" name="signal_waiting"
-                                states="{'invisible': '''state != 'draft' '''}"/>
-                        <button string="Received" name="signal_received"
-                                states="{'invisible': '''state != 'waiting' '''}"/>
+                          <button string="Cancel" name="signal_cancel"
+                                  states="{'invisible': '''state in
+                                  ('cancel','done',) '''}"/>
+                          <button string="Set Done" name="signal_done"
+                                  states="{'invisible': '''state !=
+                                  'received' '''}"/>
+                          <button string="Set Waiting" name="signal_waiting"
+                                  states="{'invisible': '''state !=
+                                  'draft' '''}"/>
+                          <button string="Received" name="signal_received"
+                                  states="{'invisible': '''state !=
+                                  'waiting' '''}"/>
                       </group>
-
                     </form>
                     ]]>
             </field>
@@ -58,12 +61,14 @@
             <field name="res_model">stock.packing.in</field>
             <field name="view_type">form</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_in_form_view1">
+        <record model="ir.action.act_window.view"
+                id="act_packing_in_form_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="packing_in_view_tree"/>
             <field name="act_window" ref="act_packing_in_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_in_form_view2">
+        <record model="ir.action.act_window.view"
+                id="act_packing_in_form_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="packing_in_view_form"/>
             <field name="act_window" ref="act_packing_in_form"/>
@@ -77,12 +82,14 @@
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'waiting')]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_in_waiting_form_view1">
+        <record model="ir.action.act_window.view"
+                id="act_packing_in_waiting_form_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="packing_in_view_tree"/>
             <field name="act_window" ref="act_packing_in_form_waiting"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_in_waiting_form_view2">
+        <record model="ir.action.act_window.view"
+            id="act_packing_in_waiting_form_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="packing_in_view_form"/>
             <field name="act_window" ref="act_packing_in_form_waiting"/>
@@ -96,18 +103,21 @@
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'received')]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_in_received_form_view1">
+        <record model="ir.action.act_window.view"
+                id="act_packing_in_received_form_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="packing_in_view_tree"/>
             <field name="act_window" ref="act_packing_in_form_received"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_in_received_form_view2">
+        <record model="ir.action.act_window.view"
+            id="act_packing_in_received_form_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="packing_in_view_form"/>
             <field name="act_window" ref="act_packing_in_form_received"/>
         </record>
         <menuitem parent="menu_packing_in_form" sequence="2"
-            action="act_packing_in_form_received" id="menu_packing_in_received"/>
+            action="act_packing_in_form_received"
+            id="menu_packing_in_received"/>
 
         <record model="ir.sequence.type" id="sequence_type_packing_in">
                 <field name="name">Supplier Packing</field>
@@ -127,40 +137,47 @@
             <field name="arch" type="xml">
                 <![CDATA[
                     <form string="Supplier Packing" col="4">
-                      <label name="code"/>
-                      <field name="code"/>
-                      <label name="effective_date"/>
-                      <field name="effective_date"/>
-                      <label name="warehouse"/>
-                      <field name="warehouse"/>
-                      <label name="customer_location"/>
-                      <field name="customer_location"/>
-                      <notebook colspan="4">
-                        <page string="Inventory Moves">
-                          <field name="inventory_moves" colspan="4"/>
-                        </page>
-                        <page string="Outgoing Moves">
-                          <field name="outgoing_moves" colspan="4"/>
-                        </page>
-                      </notebook>
-                      <label name="state"/>
-                      <field name="state"/>
-                      <group col="6" colspan="2">
-                        <button string="Cancel" name="signal_cancel"
-                                states="{'invisible': '''state in ('cancel','done') '''}"/>
-                        <button string="Set Done" name="signal_done"
-                                states="{'invisible': '''state != 'ready' '''}"/>
-                        <button string="Set Waiting" name="signal_waiting"
-                                states="{'invisible': '''state != 'draft' '''}"/>
-                        <button string="Force Assign" name="signal_force_assign"
-                                states="{'invisible': '''state != 'waiting' '''}"/>
-                        <button string="Assign" name="signal_assign"
-                                states="{'invisible': '''state != 'waiting' '''}"/>
-                        <button string="Set ready" name="signal_ready"
-                                states="{'invisible': '''state != 'assigned' '''}"/>
-                      </group>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
+                        <label name="customer_location"/>
+                        <field name="customer_location"/>
+                        <notebook colspan="4">
+                            <page string="Inventory Moves">
+                                <field name="inventory_moves" colspan="4"/>
+                            </page>
+                            <page string="Outgoing Moves">
+                                <field name="outgoing_moves" colspan="4"/>
+                            </page>
+                        </notebook>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <group col="6" colspan="2">
+                            <button string="Cancel" name="signal_cancel"
+                                    states="{'invisible': '''state in
+                                    ('cancel','done') '''}"/>
+                            <button string="Set Done" name="signal_done"
+                                    states="{'invisible': '''state !=
+                                    'ready' '''}"/>
+                            <button string="Set Waiting" name="signal_waiting"
+                                    states="{'invisible': '''state !=
+                                    'draft' '''}"/>
+                            <button string="Force Assign"
+                                    name="signal_force_assign"
+                                    states="{'invisible': '''state !=
+                                    'waiting' '''}"/>
+                            <button string="Assign" name="signal_assign"
+                                    states="{'invisible': '''state !=
+                                    'waiting' '''}"/>
+                            <button string="Set ready" name="signal_ready"
+                                    states="{'invisible': '''state !=
+                                    'assigned' '''}"/>
+                        </group>
                     </form>
-                ]]>
+                    ]]>
             </field>
         </record>
         <record model="ir.ui.view" id="packing_out_view_tree">
@@ -181,12 +198,14 @@
             <field name="res_model">stock.packing.out</field>
             <field name="view_type">form</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_out_form_view1">
+        <record model="ir.action.act_window.view"
+                id="act_packing_out_form_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="packing_out_view_tree"/>
             <field name="act_window" ref="act_packing_out_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_out_form_view2">
+        <record model="ir.action.act_window.view"
+            id="act_packing_out_form_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="packing_out_view_form"/>
             <field name="act_window" ref="act_packing_out_form"/>
@@ -200,37 +219,44 @@
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'waiting')]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_out_waiting_form_view1">
+        <record model="ir.action.act_window.view"
+                id="act_packing_out_waiting_form_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="packing_out_view_tree"/>
             <field name="act_window" ref="act_packing_out_form_waiting"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_out_waiting_form_view2">
+        <record model="ir.action.act_window.view"
+            id="act_packing_out_waiting_form_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="packing_out_view_form"/>
             <field name="act_window" ref="act_packing_out_form_waiting"/>
         </record>
         <menuitem parent="menu_packing_out_form" sequence="1"
-            action="act_packing_out_form_waiting" id="menu_packing_out_waiting"/>
+                  action="act_packing_out_form_waiting"
+                  id="menu_packing_out_waiting"/>
 
-        <record model="ir.action.act_window" id="act_packing_out_form_assigned">
+        <record model="ir.action.act_window"
+                  id="act_packing_out_form_assigned">
             <field name="name">Assigned Customer Packings</field>
             <field name="res_model">stock.packing.out</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'assigned')]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_out_assigned_form_view1">
+        <record model="ir.action.act_window.view"
+                id="act_packing_out_assigned_form_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="packing_out_view_tree"/>
             <field name="act_window" ref="act_packing_out_form_assigned"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_out_assigned_form_view2">
+        <record model="ir.action.act_window.view"
+            id="act_packing_out_assigned_form_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="packing_out_view_form"/>
             <field name="act_window" ref="act_packing_out_form_assigned"/>
         </record>
         <menuitem parent="menu_packing_out_form" sequence="2"
-            action="act_packing_out_form_assigned" id="menu_packing_out_assigned"/>
+            action="act_packing_out_form_assigned"
+            id="menu_packing_out_assigned"/>
 
         <record model="ir.action.act_window" id="act_packing_out_form_ready">
             <field name="name">Customer Packings Ready for Shipping</field>
@@ -238,12 +264,14 @@
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'ready')]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_out_ready_form_view1">
+        <record model="ir.action.act_window.view"
+                id="act_packing_out_ready_form_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="packing_out_view_tree"/>
             <field name="act_window" ref="act_packing_out_form_ready"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_packing_out_ready_form_view2">
+        <record model="ir.action.act_window.view"
+            id="act_packing_out_ready_form_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="packing_out_view_form"/>
             <field name="act_window" ref="act_packing_out_form_ready"/>
@@ -252,7 +280,7 @@
             action="act_packing_out_form_ready" id="menu_packing_out_ready"/>
 
 
-	<!-- Sequence packing in -->
+        <!-- Sequence packing in -->
         <record model="ir.sequence.type" id="sequence_type_packing_out">
                 <field name="name">Customer Packing</field>
                 <field name="code">stock.packing.out</field>
@@ -304,7 +332,8 @@
             <field name="action">set_state_received()</field>
         </record>
 
-        <record model="workflow.transition" id="packingin_trans_waiting_received">
+        <record model="workflow.transition"
+                id="packingin_trans_waiting_received">
             <field name="act_from" ref="packingin_act_waiting"/>
             <field name="act_to" ref="packingin_act_received"/>
             <field name="signal">signal_received</field>
@@ -319,7 +348,8 @@
             <field name="act_to" ref="packingin_act_waiting"/>
             <field name="signal">signal_waiting</field>
         </record>
-        <record model="workflow.transition" id="packingin_trans_waiting_cancel">
+        <record model="workflow.transition"
+                id="packingin_trans_waiting_cancel">
             <field name="act_from" ref="packingin_act_waiting"/>
             <field name="act_to" ref="packingin_act_cancel"/>
             <field name="signal">signal_cancel</field>
@@ -329,7 +359,8 @@
             <field name="act_to" ref="packingin_act_cancel"/>
             <field name="signal">signal_cancel</field>
         </record>
-        <record model="workflow.transition" id="packingin_trans_received_cancel">
+        <record model="workflow.transition"
+                id="packingin_trans_received_cancel">
             <field name="act_from" ref="packingin_act_received"/>
             <field name="act_to" ref="packingin_act_cancel"/>
             <field name="signal">signal_cancel</field>
@@ -380,49 +411,58 @@
             <field name="action">set_state_ready()</field>
         </record>
 
-        <record model="workflow.transition" id="packingout_trans_waiting_assigned">
+        <record model="workflow.transition"
+                id="packingout_trans_waiting_assigned">
             <field name="act_from" ref="packingout_act_waiting"/>
             <field name="act_to" ref="packingout_act_assigned"/>
             <field name="signal">signal_assign</field>
             <field name="condition">assign_try()</field>
         </record>
-        <record model="workflow.transition" id="packingout_trans_waiting_assigned_force">
+        <record model="workflow.transition"
+                id="packingout_trans_waiting_assigned_force">
             <field name="act_from" ref="packingout_act_waiting"/>
             <field name="act_to" ref="packingout_act_assigned"/>
             <field name="signal">signal_force_assign</field>
             <field name="condition">assign_force()</field>
         </record>
-        <record model="workflow.transition" id="packingout_trans_draft_waiting">
+        <record model="workflow.transition"
+                id="packingout_trans_draft_waiting">
             <field name="act_from" ref="packingout_act_draft"/>
             <field name="act_to" ref="packingout_act_waiting"/>
             <field name="signal">signal_waiting</field>
         </record>
-        <record model="workflow.transition" id="packingout_trans_waiting_cancel">
+        <record model="workflow.transition"
+                id="packingout_trans_waiting_cancel">
             <field name="act_from" ref="packingout_act_waiting"/>
             <field name="act_to" ref="packingout_act_cancel"/>
             <field name="signal">signal_cancel</field>
         </record>
-        <record model="workflow.transition" id="packingout_trans_draft_cancel">
+        <record model="workflow.transition"
+                id="packingout_trans_draft_cancel">
             <field name="act_from" ref="packingout_act_draft"/>
             <field name="act_to" ref="packingout_act_cancel"/>
             <field name="signal">signal_cancel</field>
         </record>
-        <record model="workflow.transition" id="packingout_trans_assigned_ready">
+        <record model="workflow.transition"
+                id="packingout_trans_assigned_ready">
             <field name="act_from" ref="packingout_act_assigned"/>
             <field name="act_to" ref="packingout_act_ready"/>
             <field name="signal">signal_ready</field>
         </record>
-        <record model="workflow.transition" id="packingout_trans_ready_done">
+        <record model="workflow.transition"
+                id="packingout_trans_ready_done">
             <field name="act_from" ref="packingout_act_ready"/>
             <field name="act_to" ref="packingout_act_done"/>
             <field name="signal">signal_done</field>
         </record>
-        <record model="workflow.transition" id="packingout_trans_assigned_cancel">
+        <record model="workflow.transition"
+                id="packingout_trans_assigned_cancel">
             <field name="act_from" ref="packingout_act_assigned"/>
             <field name="act_to" ref="packingout_act_cancel"/>
             <field name="signal">signal_cancel</field>
         </record>
-        <record model="workflow.transition" id="packingout_trans_ready_cancel">
+        <record model="workflow.transition"
+                id="packingout_trans_ready_cancel">
             <field name="act_from" ref="packingout_act_ready"/>
             <field name="act_to" ref="packingout_act_cancel"/>
             <field name="signal">signal_cancel</field>

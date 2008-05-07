@@ -89,7 +89,8 @@
             <field name="domain">[('quantity', '!=', 0)]</field>
             <field name="context">{'locations':active_ids}</field>
         </record>
-        <record model="ir.action.keyword" id="act_product_by_location_keyword1">
+        <record model="ir.action.keyword"
+                id="act_product_by_location_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model">stock.location,0</field>
             <field name="action" ref="act_product_by_location"/>
@@ -174,13 +175,15 @@
         <record model="ir.property" id="property_supplier_location">
             <field name="name">supplier_location</field>
             <field name="field"
-                search="[('model.model', '=', 'partner.partner'), ('name', '=', 'supplier_location')]"/>
+                   search="[('model.model', '=', 'partner.partner'),
+                           ('name', '=', 'supplier_location')]"/>
             <field name="value" eval="'stock.location,' + str(ref('location_supplier'))"/>
         </record>
         <record model="ir.property" id="property_customer_location">
             <field name="name">customer_location</field>
             <field name="field"
-                search="[('model.model', '=', 'partner.partner'), ('name', '=', 'customer_location')]"/>
+                   search="[('model.model', '=', 'partner.partner'),
+                           ('name', '=', 'customer_location')]"/>
             <field name="value" eval="'stock.location,' + str(ref('location_customer'))"/>
         </record>
     </data>

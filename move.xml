@@ -26,16 +26,26 @@
                         <label name="state"/>
                         <field name="state"/>
                         <group col="4" colspan="4">
-                            <button string="Set Waiting" name="set_state_waiting" type="object"
-                                    states="{'invisible': '''state in ('done','cancel','waiting',) '''}"/>
-                            <button string="set Done" name="set_state_done" type="object"
-                                    states="{'invisible': '''state in ('cancel','done',) '''}"/>
-                            <button string="set Draft" name="set_state_draft" type="object"
+                            <button string="Set Waiting"
+                                    name="set_state_waiting"
+                                    type="object"
                                     states="{'invisible': '''state in
-                                    ('waiting','done', 'draft') '''}"/>
-                            <button string="Cancel" name="set_state_cancel" type="object"
+                                            ('done','cancel','waiting',) '''}"/>
+                            <button string="set Done"
+                                    name="set_state_done"
+                                    type="object"
                                     states="{'invisible': '''state in
-                                    ('draft', 'cancel') '''}"/>
+                                            ('cancel','done',) '''}"/>
+                            <button string="set Draft"
+                                    name="set_state_draft"
+                                    type="object"
+                                    states="{'invisible': '''state in
+                                            ('waiting','done', 'draft') '''}"/>
+                            <button string="Cancel"
+                                    name="set_state_cancel"
+                                    type="object"
+                                    states="{'invisible': '''state in
+                                            ('draft', 'cancel') '''}"/>
                         </group>
                     </form>
                 ]]>
@@ -87,7 +97,8 @@
             <field name="view" ref="move_view_tree"/>
             <field name="act_window" ref="act_move_form_supp"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_move_form_supp_view2">
+        <record model="ir.action.act_window.view"
+                id="act_move_form_supp_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="move_view_form"/>
             <field name="act_window" ref="act_move_form_supp"/>
@@ -103,32 +114,38 @@
                 ('state','in',['draft','waiting']),('incoming_packing_in','=',False),
                 ('inventory_packing_in','=',False)]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_move_form_supp_proceed_view1">
+        <record model="ir.action.act_window.view"
+                id="act_move_form_supp_proceed_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="move_view_tree"/>
             <field name="act_window" ref="act_move_form_supp_proceed"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_move_form_supp_proceed_view2">
+        <record model="ir.action.act_window.view"
+                id="act_move_form_supp_proceed_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="move_view_form"/>
             <field name="act_window" ref="act_move_form_supp_proceed"/>
         </record>
         <menuitem parent="menu_move_form" sequence="2"
-            action="act_move_form_supp_proceed" id="menu_move_form_supp_proceed"/>
+                  action="act_move_form_supp_proceed"
+                  id="menu_move_form_supp_proceed"/>
 
 
         <record model="ir.action.act_window" id="act_move_form_cust">
             <field name="name">Moves to customers</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
-            <field name="domain">[('to_location.type', '=', 'customer')]</field>
+            <field name="domain">
+              [('to_location.type', '=', 'customer')]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_move_form_cust_view1">
+        <record model="ir.action.act_window.view"
+                id="act_move_form_cust_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="move_view_tree"/>
             <field name="act_window" ref="act_move_form_cust"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_move_form_cust_view2">
+        <record model="ir.action.act_window.view"
+            id="act_move_form_cust_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="move_view_form"/>
             <field name="act_window" ref="act_move_form_cust"/>
@@ -144,18 +161,21 @@
             <field name="domain">[('to_location.type', '=', 'customer'),
                 ('state','in',['draft','waiting'])]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_move_form_cust_proceed_view1">
+        <record model="ir.action.act_window.view"
+                id="act_move_form_cust_proceed_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="move_view_tree"/>
             <field name="act_window" ref="act_move_form_cust_proceed"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_move_form_cust_proceed_view2">
+        <record model="ir.action.act_window.view"
+                id="act_move_form_cust_proceed_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="move_view_form"/>
             <field name="act_window" ref="act_move_form_cust_proceed"/>
         </record>
         <menuitem parent="menu_move_form" sequence="4"
-            action="act_move_form_cust_proceed" id="menu_move_form_cust_proceed"/>
+                  action="act_move_form_cust_proceed"
+                  id="menu_move_form_cust_proceed"/>
 
 
 
@@ -166,7 +186,8 @@
                 <![CDATA[
                 <form string="Create packing" col="2">
                     <image name="gtk-dialog-info"/>
-                    <label string="Moves already in a shipment will be ignored."/>
+                    <label string="Moves already in a shipment will be
+                                   ignored."/>
                 </form>
                 ]]>
             </field>

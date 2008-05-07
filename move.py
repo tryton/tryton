@@ -72,8 +72,8 @@ class Move(OSV):
                 if move.incoming_packing_in.warehouse.input_location.id \
                         != move.to_location.id:
                     return False
-                if move.from_location.type and \
-                        move.from_location.type not in ('supplier', 'customer'):
+                if move.from_location.type and move.from_location.type \
+                        not in ('supplier', 'customer'):
                     return False
                 for packing_move in move.incoming_packing_in.incoming_moves:
                     if packing_move.from_location.id != move.from_location.id:
@@ -242,7 +242,8 @@ class CreatePacking(Wizard):
              ('type', '=', 'warehouse')], context=context)
         wh_locations = location_obj.browse(
             cursor, user, wh_location_ids, context=context)
-        loc2wh = dict([( whl.input_location.id, whl.id) for whl in wh_locations])
+        loc2wh = dict(
+            [( whl.input_location.id, whl.id) for whl in wh_locations])
 
         packing_ids = []
         for location, move_ids in moves_by_location.iteritems():
