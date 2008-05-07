@@ -34,7 +34,7 @@ class PackingIn(OSV):
                     "'packing_state': state, 'type':'inventory_in'}")
     moves = fields.One2Many('stock.move', 'packing_in', 'Moves',
             readonly=True)
-    code = fields.Char("Code", size=None, select=1, readonly=True,)
+    code = fields.Char("Code", size=None, select=1, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -190,6 +190,7 @@ class PackingIn(OSV):
             cursor, user, packing_id, {'state':'draft'}, context=context)
 
     def create(self, cursor, user, values, context=None):
+        values = values.copy()
         values['code'] = self.pool.get('ir.sequence').get(
             cursor, user, 'stock.packing.in')
         return super(PackingIn, self).create(
