@@ -1,6 +1,63 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
+
+        <record model="ir.ui.view" id="inventory_day_view_form">
+            <field name="model">stock.inventory.day</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Inventory Day">
+                        <label name="date"/>
+                        <field name="date"/>
+                        <label name="lost_found"/>
+                        <field name="lost_found"/>
+                        <field name="inventories" colspan="4"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <button string="Confirm"
+                            name="set_state_done" type="object"
+                            states="{'invisible': '''state == 'done' '''}"/>
+                        <button string="Re-Open"
+                            name="set_state_open" type="object"
+                            states="{'invisible': '''state == 'open' '''}"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="inventory_day_view_tree">
+            <field name="model">stock.inventory.day</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Inventory Days">
+                        <field name="date" select="1"/>
+                        <field name="lost_found" select="1"/>
+                        <field name="state" select="1"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_inventory_day_form">
+            <field name="name">Inventory Days</field>
+            <field name="res_model">stock.inventory.day</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_inventory_day_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="inventory_day_view_tree"/>
+            <field name="act_window" ref="act_inventory_day_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_inventory_day_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="inventory_day_view_form"/>
+            <field name="act_window" ref="act_inventory_day_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="3"
+            action="act_inventory_day_form" id="menu_inventory_day_form"/>
+
         <record model="ir.ui.view" id="inventory_view_form">
             <field name="model">stock.inventory</field>
             <field name="type">form</field>
@@ -9,17 +66,11 @@
                     <form string="Inventory">
                         <label name="location"/>
                         <field name="location"/>
-                        <label name="date"/>
-                        <field name="date"/>
+                        <label name="inventory_day"/>
+                        <field name="inventory_day"/>
                         <field name="lines" colspan="4"/>
                         <label name="state"/>
                         <field name="state"/>
-                        <button string="Set Done"
-                            name="set_state_done" type="object"
-                            states="{'invisible': '''state == 'done' '''}"/>
-                        <button string="Set Draft"
-                            name="set_state_draft" type="object"
-                            states="{'invisible': '''state == 'draft' '''}"/>
                     </form>
                 ]]>
             </field>
@@ -42,17 +93,19 @@
             <field name="res_model">stock.inventory</field>
             <field name="view_type">form</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_inventory_form_view1">
+        <record model="ir.action.act_window.view"
+                id="act_inventory_form_view1">
             <field name="sequence" eval="1"/>
             <field name="view" ref="inventory_view_tree"/>
             <field name="act_window" ref="act_inventory_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_inventory_form_view2">
+        <record model="ir.action.act_window.view"
+            id="act_inventory_form_view2">
             <field name="sequence" eval="2"/>
             <field name="view" ref="inventory_view_form"/>
             <field name="act_window" ref="act_inventory_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="3"
+        <menuitem parent="menu_inventory_day_form" sequence="3"
             action="act_inventory_form" id="menu_inventory_form"/>
 
         <record model="ir.ui.view" id="inventory_line_view_form">
@@ -63,10 +116,10 @@
                     <form string="Inventory Line" col="6">
                         <label name="product"/>
                         <field name="product"/>
-                        <label name="uom"/>
-                        <field name="uom"/>
                         <label name="quantity"/>
                         <field name="quantity"/>
+                        <label name="uom"/>
+                        <field name="uom"/>
                         <label name="inventory"/>
                         <field name="inventory"/>
                     </form>
@@ -78,15 +131,24 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Inventory Lines">
+                    <tree string="Inventory Lines" editable="bottom">
                         <field name="product" select="1"/>
-                        <field name="uom" select="2"/>
                         <field name="quantity" select="2"/>
+                        <field name="uom" select="2"/>
                     </tree>
                 ]]>
             </field>
         </record>
 
+        <record model="ir.action.wizard" id="act_complete_inventory">
+            <field name="name">Complete Inventory</field>
+            <field name="wiz_name">stock.inventory.complete</field>
+        </record>
+        <record model="ir.action.keyword" id="act_complete_inventory_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.inventory,0</field>
+            <field name="action" ref="act_complete_inventory"/>
+        </record>
 
     </data>
 </tryton>

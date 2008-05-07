@@ -1,7 +1,11 @@
 'Inventory'
 from trytond.osv import fields, OSV, ExceptORM
-import time
+from trytond.wizard import Wizard, WizardOSV, ExceptWizard
+import datetime
 
+STATES = {
+    'readonly': "state == 'done'",
+}
 
 class InventoryDay(OSV):
     'Stock Inventory Day'
@@ -13,88 +17,72 @@ class InventoryDay(OSV):
     date = fields.Date('Date', readonly=True)
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
-        domain='[('type', '=', 'inventory')]',)
-    warehouse = fields.Many2One(
-        'stock.location', "Warehouse", required=True, states=STATES,
-        domain="[('type', '=', 'warehouse')]",)
+        domain="[('type', '=', 'inventory')]", states=STATES,)
     inventories = fields.One2Many(
-        'stock.inventory', 'inventory_day', 'Inventories')
+        'stock.inventory', 'inventory_day', 'Inventories', states=STATES,)
     state = fields.Selection(
-        [('draft','Draft'),('done','Done')], 'State', readonly=True,)
+        [('open','Open'),('done','Done')], 'State', readonly=True,)
 
-    # TODO name_get : date - wh
-    # TODO constrain: one open date by location
+    def __init__(self):
+        super(InventoryDay, self).__init__()
+        self._rpc_allowed += [
+            'set_state_done',
+            'set_state_open',
+            ]
+    def default_state(self, cursor, user, context=None):
+        return 'open'
 
-    def set_state_draft(self, cursor, user, ids, context=None):
-        #TODO
-        self.write(cursor, user, ids, {'state','draft'})
+    def default_date(self, cursor, user, context=None):
+        return datetime.date.today()
 
-    def _location_amount(self, cursor, user, target_uom,
-                             qty_uom, uom_index, context=None):
-        """
-        Take a raw list of quantities and uom and convert it to
-        the target uom.
-        """
-        uom_obj = self.pool.get('product.uom')
-        res = 0
-        for uom,qty in qty_uom:
-            res += uom_obj.compute_qty(
-                cursor, user, uom_index[uom], qty, uom_index[target_uom])
-        return res
-
-    # FIXME : factorize code above, to mush level of loop under.
+    def set_state_open(self, cursor, user, ids, context=None):
+        #TODO: check that this was the last inventory
+        self.write(cursor, user, ids, {'state':'open'})
 
     def set_state_done(self, cursor, user, ids, context=None):
         product_obj = self.pool.get('product.product')
-        move_obj = self.pool.get('product.uom')
+        move_obj = self.pool.get('stock.move')
+        inventory_obj = self.pool.get('stock.inventory')
 
         for inventory_day in self.browse(cursor, user, ids, context=context):
             location_ids = []
             inv_by_loc = {}
 
-            for inventory in inventories:
+            for inventory in inventory_day.inventories:
                 location_ids.append(inventory.location.id)
                 inv_by_loc[inventory.location.id] = inventory.id
-            raw_data = product_obj.raw_product_by_location(
-                cursor, user, location_ids, context=context):
+            raw_data = product_obj.raw_products_by_location(
+                cursor, user, location_ids, context=context)
 
-            processed_data = {}
-            for line in raw_data:
-                if line[:2] in processed_data:
-                    processed_data[line[:2]].append(line[2:])
-                else:
-                    processed_data[line[:2]] = [line[2:]]
+            indexed_data = dict([(line[:3], line[3]) for line in raw_data])
 
-            for inventory in inventories:
-                moves = []
+            for inventory in inventory_day.inventories:
                 for line in inventory.lines:
-                    qty = self._location_amount(
-                        cursor, user, line.uom.id,
-                        processed_data[(inventory.location.id, line.product.id)],
-                        uom_index, context=context,)
-                    qty = line.quantity - qty
-                    from_location = inventory.date.lost_found.id
+                    key = (inventory.location.id, line.product.id, line.uom.id)
+                    expected_qty = indexed_data.get(key, 0.0)
+                    delta_qty = line.quantity - expected_qty
+                    indexed_data[key] = 0
+
+                    from_location = inventory.inventory_day.lost_found.id
                     to_location = inventory.location.id
-                    if qty<0:
-                        (from_location, to_location, qty) = \
-                            (to_location, from_location, -qty)
+                    if delta_qty < 0:
+                        (from_location, to_location, delta_qty) = \
+                            (to_location, from_location, -delta_qty)
+
                     move_id = move_obj.create(
                         cursor, user,
-                        {
-                            'from_location': from_location,
-                            'to_location': to_location,
-                            'quantity': qty,
-                            'product': line.product.id,
-                            'uom': line.uom.id,
+                        {'from_location': from_location,
+                         'to_location': to_location,
+                         'quantity': delta_qty,
+                         'product': line.product.id,
+                         'uom': line.uom.id,
+                         'state': 'done'
                          },
                         context=context,
                         )
-                    moves.append(move_id)
                 inventory_obj.write(
-                    cursor, user, inventory.id,
-                    {'moves': [('add',moves)], 'state': 'done'})
-
-        self.write(cursor, user, ids, {'state','done'})
+                    cursor, user, inventory.id, {'state': 'done'})
+        self.write(cursor, user, ids, {'state':'done'})
 
 InventoryDay()
 
@@ -106,27 +94,25 @@ class Inventory(OSV):
 
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
-        domain='[('type', '=', 'store')]',)
-    inventory_day = fields.Many2One('stock.inventory.day', "Inventory Day", required=True)
+        domain="[('type', '=', 'storage')]", states=STATES,)
+    inventory_day = fields.Many2One(
+        'stock.inventory.day', "Inventory Day", required=True,
+        domain="[('state', '=', 'open')]", states=STATES,)
     lines = fields.One2Many(
-        'stock.inventory.line', 'inventory', 'Inventory Lines', readonly=True,)
-    moves = fields.Many2Many('stock.move', 'inventory', 'move', 'Moves')
+        'stock.inventory.line', 'inventory', 'Inventory Lines', states=STATES,)
     state = fields.Selection(
-        [('draft','Draft'),('done','Done')], 'State', readonly=True,)
+        [('open','Open'),('done','Done')], 'State', readonly=True,)
 
     def __init__(self):
-        super(Move, self).__init__()
-        self._rpc_allowed += [
-            'set_state_done',
-            'set_state_draft',
-            ]
+        super(Inventory, self).__init__()
+        self._sql_constraints += [
+            ('location_day_uniq', 'UNIQUE(location,inventory_day)',
+             'Only one inventory for a given location is allowed '\
+                 'for an inventory day.'),
+        ]
 
     def default_state(self, cursor, user, context=None):
-        return 'draft'
-
-    #TODO :
-    # - constraint on location : unique by day.
-    # -             "          : child of day warehouse.
+        return 'open'
 
 Inventory()
 
@@ -137,12 +123,24 @@ class InventoryLine(OSV):
     _rec_name = 'product'
 
     product = fields.Many2One(
-        'product.product', 'Product', required=True,)
+        'product.product', 'Product', required=True, on_change=['product'],)
     uom = fields.Many2One('product.uom', 'Uom', required=True, select=1,)
     quantity = fields.Float('Quantity', digits=(12, 6),)
     inventory = fields.Many2One('stock.inventory', 'Inventory')
 
-    # TODO constrain : unique (product,uom,inventory)
+    def __init__(self):
+        super(InventoryLine, self).__init__()
+        self._sql_constraints += [
+            ('check_line_qty_pos',
+                'CHECK(quantity >= 0.0)', 'Move quantity must be positive'),
+        ]
+
+    def on_change_product(self, cursor, user, ids, value, context=None):
+        if 'product' in value and value['product']:
+            product = self.pool.get('product.product').browse(
+                cursor, user, value['product'])
+            return {'uom': product.default_uom.id}
+        return {}
 
 InventoryLine()
 
@@ -158,25 +156,25 @@ class CompleteInventory(Wizard):
                 'state': 'end',
                 },
             },
-
         }
     def _complete(self, cursor, user, data, context=None):
         line_obj = self.pool.get('stock.inventory.line')
+        inventory_obj = self.pool.get('stock.inventory')
         product_obj = self.pool.get('product.product')
         inventories = inventory_obj.browse(cursor, user, data['ids'],
                                            context=context)
-        locations_ids = []
+        location_ids = []
         inv_by_loc = {}
         for inventory in inventories:
             location_ids.append(inventory.location.id)
             inv_by_loc[inventory.location.id] = inventory.id
-        prod_by_loc =  product_obj.product_by_location(
-            cursor, user, location_ids, context=context):
-
+            prod_by_loc =  product_obj.products_by_location(
+                cursor, user, location_ids, context=context)
         for item in prod_by_loc:
             item['inventory'] = inv_by_loc[item['location']]
             del item['location']
             line_obj.create(cursor, user, item, context=context)
 
+        return {}
 
 CompleteInventory()
