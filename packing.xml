@@ -73,7 +73,7 @@
             <field name="view" ref="packing_in_view_form"/>
             <field name="act_window" ref="act_packing_in_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="7"
+        <menuitem parent="menu_stock" sequence="3"
             action="act_packing_in_form" id="menu_packing_in_form"/>
 
         <record model="ir.action.act_window" id="act_packing_in_form_waiting">
@@ -210,7 +210,7 @@
             <field name="view" ref="packing_out_view_form"/>
             <field name="act_window" ref="act_packing_out_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="7"
+        <menuitem parent="menu_stock" sequence="4"
             action="act_packing_out_form" id="menu_packing_out_form"/>
 
         <record model="ir.action.act_window" id="act_packing_out_form_waiting">

@@ -82,7 +82,7 @@
             <field name="view" ref="move_view_form"/>
             <field name="act_window" ref="act_move_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="3"
+        <menuitem parent="menu_stock" sequence="2"
             action="act_move_form" id="menu_move_form"/>
 
 
