@@ -7,6 +7,7 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Partners">
+                    <field name="code" select="1"/>
                     <field name="name" select="1"/>
                     <field name="type" select="2"/>
                     <field name="lang" select="2"/>
@@ -22,12 +23,14 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Partner">
+                <form string="Partner" col="6">
                     <label name="name"/>
                     <field name="name" xexpand="1"/>
+                    <label name="code"/>
+                    <field name="code"/>
                     <label name="active"/>
                     <field name="active" xexpand="0" width="100"/>
-                    <notebook colspan="4">
+                    <notebook colspan="6">
                         <page string="General">
                             <field name="addresses" mode="form,tree" colspan="4">
                                 <tree string="Addresses" sequence="sequence">
@@ -171,6 +174,14 @@
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="True"/>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_partner">
+            <field name="name">Partner</field>
+            <field name="code">partner.partner</field>
+        </record>
+        <record model="ir.sequence" id="sequence_partner">
+            <field name="name">Partner</field>
+            <field name="code">partner.partner</field>
         </record>
     </data>
 </tryton>

@@ -24,15 +24,17 @@ class Partner(OSV):
     _description = __doc__
     _name = "partner.partner"
 
-    name = fields.Char('Name', size=128, required=True, select=1,
+    name = fields.Char('Name', size=None, required=True, select=1,
            states=STATES)
+    code = fields.Char('Code', size=None, required=True, select=1,
+            readonly=True)
     type = fields.Many2One("partner.partner.type", "Type",
            states=STATES)
     lang = fields.Many2One("ir.lang", 'Language',
            states=STATES)
-    vat = fields.Char('VAT',size=32 ,help="Value Added Tax number",
+    vat = fields.Char('VAT',size=None, help="Value Added Tax number",
            states=STATES)
-    website = fields.Char('Website',size=64,
+    website = fields.Char('Website',size=None,
            states=STATES)
     addresses = fields.One2Many('partner.address', 'partner',
            'Addresses',states=STATES)
@@ -45,13 +47,20 @@ class Partner(OSV):
     def __init__(self):
         super(Partner, self).__init__()
         self._sql_constraints = [
-            ('name_uniq', 'unique (name)',
-             'The name of the partner must be unique!')
+            ('code_uniq', 'UNIQUE(code)',
+             'The code of the partner must be unique!')
         ]
         self._order.insert(0, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return 1
+
+    def create(self, cursor, user, values, context=None):
+        values = values.copy()
+        values['code'] = self.pool.get('ir.sequence').get(
+                cursor, user, 'partner.partner')
+        return super(Partner, self).create(cursor, user, values,
+                context=context)
 
     def address_get(self, cursor, user, partner_id, type=None, context=None):
         """
