@@ -49,18 +49,15 @@
                         <label name="state"/>
                         <field name="state"/>
                         <group col="4" colspan="2">
-                            <button string="Cancel" name="signal_cancel"
-                                    states="{'invisible': '''state in
-                                    ('cancel','done',) '''}"/>
-                            <button string="Set Done" name="signal_done"
-                                    states="{'invisible': '''state !=
-                                    'received' '''}"/>
-                            <button string="Set Waiting" name="signal_waiting"
-                                    states="{'invisible': '''state !=
-                                    'draft' '''}"/>
-                            <button string="Received" name="signal_received"
-                                    states="{'invisible': '''state !=
-                                    'waiting' '''}"/>
+                            <button string="Cancel" name="cancel"
+                                states="{'invisible': '''state in ('cancel', 'done') '''}"/>
+                            <button string="Set Done" name="done"
+                                states="{'invisible': '''state != 'received' '''}"/>
+                            <button string="Received" name="received"
+                                states="{'invisible': '''state != 'draft' '''}"/>
+                            <button string="Reset to Draft" name="button_draft"
+                                type="object"
+                                states="{'invisible': '''state != 'cancel' '''}"/>
                         </group>
                     </group>
                     </form>
@@ -344,12 +341,6 @@
             <field name="kind">function</field>
             <field name="action">set_state_done()</field>
         </record>
-        <record model="workflow.activity" id="packingin_act_waiting">
-            <field name="name">Waiting</field>
-            <field name="kind">function</field>
-            <field name="workflow" ref="wkf_packingin"/>
-            <field name="action">set_state_waiting()</field>
-        </record>
         <record model="workflow.activity" id="packingin_act_received">
             <field name="name">Received</field>
             <field name="kind">function</field>
@@ -358,37 +349,26 @@
         </record>
 
         <record model="workflow.transition"
-                id="packingin_trans_waiting_received">
-            <field name="act_from" ref="packingin_act_waiting"/>
+                id="packingin_trans_draft_received">
+            <field name="act_from" ref="packingin_act_draft"/>
             <field name="act_to" ref="packingin_act_received"/>
-            <field name="signal">signal_received</field>
+            <field name="signal">received</field>
         </record>
         <record model="workflow.transition" id="packingin_trans_received_done">
             <field name="act_from" ref="packingin_act_received"/>
             <field name="act_to" ref="packingin_act_done"/>
-            <field name="signal">signal_done</field>
-        </record>
-        <record model="workflow.transition" id="packingin_trans_draft_waiting">
-            <field name="act_from" ref="packingin_act_draft"/>
-            <field name="act_to" ref="packingin_act_waiting"/>
-            <field name="signal">signal_waiting</field>
-        </record>
-        <record model="workflow.transition"
-                id="packingin_trans_waiting_cancel">
-            <field name="act_from" ref="packingin_act_waiting"/>
-            <field name="act_to" ref="packingin_act_cancel"/>
-            <field name="signal">signal_cancel</field>
+            <field name="signal">done</field>
         </record>
         <record model="workflow.transition" id="packingin_trans_draft_cancel">
             <field name="act_from" ref="packingin_act_draft"/>
             <field name="act_to" ref="packingin_act_cancel"/>
-            <field name="signal">signal_cancel</field>
+            <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="packingin_trans_received_cancel">
             <field name="act_from" ref="packingin_act_received"/>
             <field name="act_to" ref="packingin_act_cancel"/>
-            <field name="signal">signal_cancel</field>
+            <field name="signal">cancel</field>
         </record>
 
 

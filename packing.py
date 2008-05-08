@@ -2,6 +2,7 @@
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 import time
+from trytond.netsvc import LocalService
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -29,7 +30,7 @@ class PackingIn(OSV):
             relation='stock.move', string='Inventory Moves',
             fnct_inv='set_inventory_moves',
             states={
-                'readonly': "state in ('draft', 'waiting')",
+                'readonly': "state == 'draft'",
             }, context="{'warehouse': warehouse, "\
                     "'packing_state': state, 'type':'inventory_in'}")
     moves = fields.One2Many('stock.move', 'packing_in', 'Moves',
@@ -39,19 +40,14 @@ class PackingIn(OSV):
         ('draft', 'Draft'),
         ('done', 'Done'),
         ('cancel', 'Cancel'),
-        ('waiting', 'Waiting'),
         ('received', 'Received'),
         ], 'State', readonly=True)
 
     def __init__(self):
         super(PackingIn, self).__init__()
         self._rpc_allowed += [
-            'set_state_done',
-            'set_state_waiting',
-            'set_state_draft',
-            'set_state_cancel',
-            'set_state_received',
-            ]
+            'button_draft',
+        ]
         self._order[0] = ('id', 'DESC')
 
     def default_state(self, cursor, user, context=None):
@@ -163,14 +159,6 @@ class PackingIn(OSV):
         self.write(cursor, user, packing_id, {'state':'cancel'},
                    context=context)
 
-    def set_state_waiting(self, cursor, user, packing_id, context=None):
-        move_obj = self.pool.get('stock.move')
-        packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_waiting(
-            cursor, user, [m.id for m in packing.incoming_moves], context)
-        self.write(cursor, user, packing_id, {'state':'waiting'},
-                   context=context)
-
     def set_state_received(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
@@ -184,7 +172,9 @@ class PackingIn(OSV):
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.set_state_draft(
             cursor, user, [m.id for m in packing.incoming_moves], context)
-        move_obj.set_state_cancel(
+        move_obj.set_state_waiting(
+            cursor, user, [m.id for m in packing.incoming_moves], context)
+        move_obj.unlink(
             cursor, user, [m.id for m in packing.inventory_moves], context)
         self.write(
             cursor, user, packing_id, {'state':'draft'}, context=context)
@@ -218,6 +208,12 @@ class PackingIn(OSV):
                 self.write(cursor, user, packing.id, {
                     'inventory_moves': [('create', vals)]
                     }, context=context)
+
+    def button_draft(self, cursor, user, ids, context=None):
+        workflow_service = LocalService('workflow')
+        for packing in self.browse(cursor, user, ids, context=context):
+            workflow_service.trg_create(user, self._name, packing.id, cursor)
+        return True
 
 PackingIn()
 

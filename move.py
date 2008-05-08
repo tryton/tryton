@@ -146,7 +146,7 @@ class Move(OSV):
     def unlink(self, cursor, user, ids, context=None):
         move_ids = self.search(
             cursor, user, [('id', 'in', ids), ('state', 'in',
-            ['done', 'waiting', 'cancel'])], context)
+            ['done', 'waiting'])], context)
         if move_ids:
             raise ExceptORM('UserError', 'You can only delete draft moves !')
         return super(Move, self).unlink(cursor, user, ids, context=context)
