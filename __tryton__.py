@@ -12,8 +12,8 @@
     'xml': [
         'product.xml',
         'location.xml',
-        'move.xml',
         'packing.xml',
+        'move.xml',
         'inventory.xml',
     ],
 }

@@ -2,6 +2,23 @@
 <tryton>
     <data>
 
+        <record model="ir.ui.view" id="packing_in_select_move_init_view_form">
+            <field name="model">stock.packing.in.select_move.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Select Moves" col="1">
+                    <field name="moves" width="600" height="400"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_select_move">
+            <field name="name">Select Move</field>
+            <field name="wiz_name">stock.packing.in.select_move</field>
+        </record>
+
         <!--Packing in view-->
         <record model="ir.ui.view" id="packing_in_view_form">
             <field name="model">stock.packing.in</field>
@@ -15,6 +32,11 @@
                       <field name="warehouse"/>
                       <label name="effective_date"/>
                       <field name="effective_date"/>
+                      <label colspan="4"/>
+                      <button name="%(wizard_select_move)d" string="Select Moves"
+                          type="action"
+                          states="{'readonly': '''state in ('received', 'done') '''}"
+                          colspan="2"/>
                       <notebook colspan="6">
                           <page string="Incoming Moves">
                               <field name="incoming_moves" colspan="4"/>
@@ -23,22 +45,24 @@
                               <field name="inventory_moves" colspan="4"/>
                           </page>
                       </notebook>
-                      <label name="state"/>
-                      <field name="state"/>
-                      <group col="4" colspan="4">
-                          <button string="Cancel" name="signal_cancel"
-                                  states="{'invisible': '''state in
-                                  ('cancel','done',) '''}"/>
-                          <button string="Set Done" name="signal_done"
-                                  states="{'invisible': '''state !=
-                                  'received' '''}"/>
-                          <button string="Set Waiting" name="signal_waiting"
-                                  states="{'invisible': '''state !=
-                                  'draft' '''}"/>
-                          <button string="Received" name="signal_received"
-                                  states="{'invisible': '''state !=
-                                  'waiting' '''}"/>
-                      </group>
+                      <group col="4" colspan="6">
+                        <label name="state"/>
+                        <field name="state"/>
+                        <group col="4" colspan="2">
+                            <button string="Cancel" name="signal_cancel"
+                                    states="{'invisible': '''state in
+                                    ('cancel','done',) '''}"/>
+                            <button string="Set Done" name="signal_done"
+                                    states="{'invisible': '''state !=
+                                    'received' '''}"/>
+                            <button string="Set Waiting" name="signal_waiting"
+                                    states="{'invisible': '''state !=
+                                    'draft' '''}"/>
+                            <button string="Received" name="signal_received"
+                                    states="{'invisible': '''state !=
+                                    'waiting' '''}"/>
+                        </group>
+                    </group>
                     </form>
                     ]]>
             </field>
@@ -76,26 +100,25 @@
         <menuitem parent="menu_stock" sequence="7"
             action="act_packing_in_form" id="menu_packing_in_form"/>
 
-        <record model="ir.action.act_window" id="act_packing_in_form_waiting">
-            <field name="name">Supplier Packing Waiting Arrival</field>
+        <record model="ir.action.act_window" id="act_packing_in_form2">
+            <field name="name">New Supplier Packings</field>
             <field name="res_model">stock.packing.in</field>
             <field name="view_type">form</field>
-            <field name="domain">[('state', '=', 'waiting')]</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_in_waiting_form_view1">
+                id="act_packing_in_form2_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_in_view_tree"/>
-            <field name="act_window" ref="act_packing_in_form_waiting"/>
+            <field name="view" ref="packing_in_view_form"/>
+            <field name="act_window" ref="act_packing_in_form2"/>
         </record>
         <record model="ir.action.act_window.view"
-            id="act_packing_in_waiting_form_view2">
+                id="act_packing_in_form2_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_in_view_form"/>
-            <field name="act_window" ref="act_packing_in_form_waiting"/>
+            <field name="view" ref="packing_in_view_tree"/>
+            <field name="act_window" ref="act_packing_in_form2"/>
         </record>
         <menuitem parent="menu_packing_in_form" sequence="1"
-            action="act_packing_in_form_waiting" id="menu_packing_in_waiting"/>
+            action="act_packing_in_form2" id="menu_packing_in_form2"/>
 
         <record model="ir.action.act_window" id="act_packing_in_form_received">
             <field name="name">Received Supplier packings</field>
@@ -115,7 +138,7 @@
             <field name="view" ref="packing_in_view_form"/>
             <field name="act_window" ref="act_packing_in_form_received"/>
         </record>
-        <menuitem parent="menu_packing_in_form" sequence="2"
+        <menuitem parent="menu_packing_in_form" sequence="3"
             action="act_packing_in_form_received"
             id="menu_packing_in_received"/>
 
@@ -153,28 +176,30 @@
                                 <field name="outgoing_moves" colspan="4"/>
                             </page>
                         </notebook>
-                        <label name="state"/>
-                        <field name="state"/>
-                        <group col="6" colspan="2">
-                            <button string="Cancel" name="signal_cancel"
-                                    states="{'invisible': '''state in
-                                    ('cancel','done') '''}"/>
-                            <button string="Set Done" name="signal_done"
-                                    states="{'invisible': '''state !=
-                                    'ready' '''}"/>
-                            <button string="Set Waiting" name="signal_waiting"
-                                    states="{'invisible': '''state !=
-                                    'draft' '''}"/>
-                            <button string="Force Assign"
-                                    name="signal_force_assign"
-                                    states="{'invisible': '''state !=
-                                    'waiting' '''}"/>
-                            <button string="Assign" name="signal_assign"
-                                    states="{'invisible': '''state !=
-                                    'waiting' '''}"/>
-                            <button string="Set ready" name="signal_ready"
-                                    states="{'invisible': '''state !=
-                                    'assigned' '''}"/>
+                        <group col="4" colspan="4">
+                            <label name="state"/>
+                            <field name="state"/>
+                            <group col="6" colspan="2">
+                                <button string="Cancel" name="signal_cancel"
+                                        states="{'invisible': '''state in
+                                        ('cancel','done') '''}"/>
+                                <button string="Set Done" name="signal_done"
+                                        states="{'invisible': '''state !=
+                                        'ready' '''}"/>
+                                <button string="Set Waiting" name="signal_waiting"
+                                        states="{'invisible': '''state !=
+                                        'draft' '''}"/>
+                                <button string="Force Assign"
+                                        name="signal_force_assign"
+                                        states="{'invisible': '''state !=
+                                        'waiting' '''}"/>
+                                <button string="Assign" name="signal_assign"
+                                        states="{'invisible': '''state !=
+                                        'waiting' '''}"/>
+                                <button string="Set ready" name="signal_ready"
+                                        states="{'invisible': '''state !=
+                                        'assigned' '''}"/>
+                            </group>
                         </group>
                     </form>
                     ]]>
