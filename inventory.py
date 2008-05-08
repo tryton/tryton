@@ -4,7 +4,7 @@ from trytond.wizard import Wizard, WizardOSV, ExceptWizard
 import datetime
 
 STATES = {
-    'readonly': "state == 'done'",
+    'readonly': "state != 'open'",
 }
 
 class Inventory(OSV):
@@ -16,34 +16,42 @@ class Inventory(OSV):
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain="[('type', '=', 'storage')]", states=STATES,)
-    date = fields.Date('Date', readonly=True)
+    date = fields.DateTime('Date', readonly=True)
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
         domain="[('type', '=', 'inventory')]", states=STATES,)
     lines = fields.One2Many(
         'stock.inventory.line', 'inventory', 'Inventory Lines', states=STATES,)
+    moves = fields.Many2Many(
+        'stock.move', 'inventory_move_rel', 'inventory', 'move',
+        'Generated moves')
     state = fields.Selection(
-        [('open','Open'),('done','Done')], 'State', readonly=True,)
+        [('open','Open'),
+         ('done','Done'),
+         ('cancel','Cancel')],
+        'State', readonly=True, select=1)
 
     def __init__(self):
         super(Inventory, self).__init__()
+        self._order.insert(0, ('date', 'DESC'))
         self._rpc_allowed += [
             'set_state_done',
-            'set_state_open',
+            'set_state_cancel', # TODO remove it and wrap it with a wizard giving a warning.
             ]
-
-    # TODO only one open inventory by location
 
     def default_state(self, cursor, user, context=None):
         return 'open'
 
     def default_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        return datetime.datetime.today()
 
-    def set_state_open(self, cursor, user, ids, context=None):
-        #TODO: check that this was the last inventory, and removes
-        #generetated moves.
-        self.write(cursor, user, ids, {'state':'open'})
+    def set_state_cancel(self, cursor, user, ids, context=None):
+        move_obj = self.pool.get("stock.move")
+        inventories = self.browse(cursor, user, ids, context=context)
+        move_ids = \
+            [move.id for inventory in inventories for move in inventory.moves]
+        move_obj.set_state_cancel(cursor, user, move_ids, context=context)
+        self.write(cursor, user, ids, {'state':'cancel'})
 
     def set_state_done(self, cursor, user, ids, context=None):
         product_obj = self.pool.get('product.product')

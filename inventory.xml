@@ -16,12 +16,16 @@
                         <field name="lines" colspan="6"/>
                         <label name="state"/>
                         <field name="state"/>
-                        <button string="Confirm"
-                            name="set_state_done" type="object"
-                            states="{'invisible': '''state == 'done' '''}"/>
-                        <button string="Re-Open"
-                            name="set_state_open" type="object"
-                            states="{'invisible': '''state == 'open' '''}"/>
+			<group colspan="4" col="2">
+                            <button string="Confirm"
+                                name="set_state_done" type="object"
+                                states="{'invisible': '''state in
+                                ('done','cancel') '''}"/>
+                            <button string="Cancel"
+                                name="set_state_cancel" type="object"
+                                states="{'invisible': '''state in
+                                ('open','cancel') '''}"/>
+			</group>
                     </form>
                 ]]>
             </field>
