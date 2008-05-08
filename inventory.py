@@ -66,14 +66,18 @@ class Inventory(OSV):
         raw_data = product_obj.raw_products_by_location(
             cursor, user, location_ids, context=context)
 
-        indexed_data = dict([(line[:3], line[3]) for line in raw_data])
+        indexed_data = {}
+        for location, product, uom, qty in raw_data:
+            indexed_data.setdefault(location,{})[(product,uom)] = qty
 
-        for inventory in inventories: #!! BUG quand il y a pls uom en stock et que lon encode que une seule !!
+        for inventory in inventories:
+            moves = []
+            location_data = indexed_data.get(inventory.location.id, {})
             for line in inventory.lines:
-                key = (inventory.location.id, line.product.id, line.uom.id)
-                expected_qty = indexed_data.get(key, 0.0)
+                key = (line.product.id, line.uom.id)
+                expected_qty = location_data.get(key, 0.0)
                 delta_qty = line.quantity - expected_qty
-                indexed_data[key] = 0
+                location_data[key] = 0
 
                 from_location = inventory.lost_found.id
                 to_location = inventory.location.id
@@ -92,7 +96,34 @@ class Inventory(OSV):
                      },
                     context=context,
                     )
-        self.write(cursor, user, ids, {'state':'done'})
+                moves.append(move_id)
+            # Create move for all missing products
+            for (product, uom), qty in location_data.iteritems():
+                if qty == 0:
+                    continue
+                from_location = inventory.location.id
+                to_location = inventory.lost_found.id
+                if qty < 0:
+                    (from_location, to_location, qty) = \
+                        (to_location, from_location, -qty)
+
+                move_id = move_obj.create(
+                    cursor, user,
+                    {'from_location': from_location,
+                     'to_location': to_location,
+                     'quantity': qty,
+                     'product': product,
+                     'uom': uom,
+                     'state': 'done'
+                     },
+                    context=context,
+                    )
+                moves.append(move_id)
+
+        self.write(cursor, user, ids,
+                   {'state':'done',
+                    'date': datetime.datetime.today(),
+                    'moves': [('set',moves)]})
 
 Inventory()
 
@@ -137,6 +168,7 @@ class CompleteInventory(Wizard):
                 },
             },
         }
+
     def _complete(self, cursor, user, data, context=None):
         line_obj = self.pool.get('stock.inventory.line')
         inventory_obj = self.pool.get('stock.inventory')
@@ -148,13 +180,26 @@ class CompleteInventory(Wizard):
         for inventory in inventories:
             location_ids.append(inventory.location.id)
             inv_by_loc[inventory.location.id] = inventory.id
-            prod_by_loc =  product_obj.products_by_location(
-                cursor, user, location_ids, context=context)
-        for item in prod_by_loc:
-            item['inventory'] = inv_by_loc[item['location']]
-            del item['location']
-            line_obj.create(cursor, user, item, context=context)
 
+        pbl =  product_obj.products_by_location(
+            cursor, user, location_ids, context=context)
+        indexed_data = {}
+        for line in pbl:
+            indexed_data.setdefault(line['location'], []).append(
+                (line['product'], line['uom'], line['quantity']))
+
+        for inventory in inventories:
+            products = [line.product.id for line in inventory.lines]
+            for (product, uom, qty) in indexed_data[inventory.location.id]:
+                if product in products:
+                    continue
+                line_obj.create(
+                    cursor, user,
+                    {'product': product,
+                     'uom': uom,
+                     'quantity': qty,
+                     'inventory': inventory.id,},
+                    context=context)
         return {}
 
 CompleteInventory()
