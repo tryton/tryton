@@ -1,5 +1,6 @@
 # Copyright (c) 2004-2006 Tiny SPRL. (http://tiny.be)
 # Copyright (c) 2007 Bertrand Chenal
+# Copyright (c) 2008 Cedric Krier
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
