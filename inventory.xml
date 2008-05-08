@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Cancel Inventory" col="1">
-		    <separator string="Warning"/>
+                    <separator string="Warning"/>
                     <label string="All generated moves will be cancelled."/>
                 </form>
                 ]]>
@@ -32,18 +32,18 @@
                         <label name="date"/>
                         <field name="date"/>
                         <field name="lines" colspan="6"/>
-                        <label name="state"/>
-                        <field name="state"/>
-			<group colspan="4" col="2">
-                            <button string="Confirm"
-                                name="set_state_done" type="object"
-                                states="{'invisible': '''state in
-                                ('done','cancel') '''}"/>
-                            <button string="Cancel"
-                                name="%(wizard_inventory_cancel)d" type="action"
-                                states="{'invisible': '''state in
-                                ('open','cancel') '''}"/>
-			</group>
+                        <group col="4" colspan="6">
+                            <label name="state"/>
+                            <field name="state"/>
+                            <group colspan="2" col="2">
+                                <button string="Confirm"
+                                    name="set_state_done" type="object"
+                                    states="{'invisible': '''state in ('done','cancel') '''}"/>
+                                <button string="Cancel"
+                                    name="%(wizard_inventory_cancel)d" type="action"
+                                    states="{'invisible': '''state in ('open','cancel') '''}"/>
+                            </group>
+                        </group>
                     </form>
                 ]]>
             </field>
