@@ -7,6 +7,7 @@ STATES = {
     'readonly': "state != 'open'",
 }
 
+
 class Inventory(OSV):
     'Stock Inventory'
     _name = 'stock.inventory'
@@ -126,6 +127,7 @@ class Inventory(OSV):
 
 Inventory()
 
+
 class InventoryLine(OSV):
     'Stock Inventory Line'
     _name = 'stock.inventory.line'
@@ -203,9 +205,11 @@ class CompleteInventory(Wizard):
 
 CompleteInventory()
 
+
 class CancelInventoryInit(WizardOSV):
     _name = 'stock.inventory.cancel.init'
 CancelInventoryInit()
+
 
 class CancelInventory(Wizard):
     'Cancel Inventory'
