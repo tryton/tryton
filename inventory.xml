@@ -1,6 +1,24 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
+
+        <record model="ir.ui.view" id="inventory_select_init_view_form">
+            <field name="model">stock.inventory.cancel.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Cancel Inventory" col="1">
+		    <separator string="Warning"/>
+                    <label string="All generated moves will be cancelled."/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_inventory_cancel">
+            <field name="name">Cancel Inventory</field>
+            <field name="wiz_name">stock.inventory.cancel</field>
+        </record>
+
         <record model="ir.ui.view" id="inventory_view_form">
             <field name="model">stock.inventory</field>
             <field name="type">form</field>
@@ -22,7 +40,7 @@
                                 states="{'invisible': '''state in
                                 ('done','cancel') '''}"/>
                             <button string="Cancel"
-                                name="set_state_cancel" type="object"
+                                name="%(wizard_inventory_cancel)d" type="action"
                                 states="{'invisible': '''state in
                                 ('open','cancel') '''}"/>
 			</group>

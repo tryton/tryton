@@ -36,7 +36,6 @@ class Inventory(OSV):
         self._order.insert(0, ('date', 'DESC'))
         self._rpc_allowed += [
             'set_state_done',
-            'set_state_cancel', # TODO remove it and wrap it with a wizard giving a warning.
             ]
 
     def default_state(self, cursor, user, context=None):
@@ -203,3 +202,38 @@ class CompleteInventory(Wizard):
         return {}
 
 CompleteInventory()
+
+class CancelInventoryInit(WizardOSV):
+    _name = 'stock.inventory.cancel.init'
+CancelInventoryInit()
+
+class CancelInventory(Wizard):
+    'Cancel Inventory'
+    _name = 'stock.inventory.cancel'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'stock.inventory.cancel.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('cancel', 'Ok', 'gtk-ok', True),
+                ],
+            },
+        },
+        'cancel': {
+            'result': {
+                'type': 'action',
+                'action': '_action_cancel',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_cancel(self, cursor, user, data, context=None):
+        inventory_obj = self.pool.get('stock.inventory')
+        inventory_obj.set_state_cancel(
+            cursor, user, data['ids'], context=context)
+        return {}
+
+CancelInventory()
