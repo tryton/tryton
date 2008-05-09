@@ -856,6 +856,7 @@ class Move(OSV):
 
         res = {}
         for move in self.browse(cursor, user, ids, context=context):
+            res[move.id] = False
             if move.purchase_line:
                 res[move.id] = move.purchase_line.purchase.id
 
