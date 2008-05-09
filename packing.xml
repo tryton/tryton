@@ -34,40 +34,49 @@
             <field name="arch" type="xml">
                 <![CDATA[
                     <form string="Supplier Packing" col="6">
-                      <label name="code"/>
-                      <field name="code"/>
-                      <label name="warehouse"/>
-                      <field name="warehouse"/>
-                      <label name="effective_date"/>
-                      <field name="effective_date"/>
-                      <label colspan="4"/>
-                      <button name="%(wizard_select_move)d" string="Select Moves"
-                          type="action"
-                          states="{'readonly': '''state in ('received', 'done') '''}"
-                          colspan="2"/>
-                      <notebook colspan="6">
-                          <page string="Incoming Moves">
-                              <field name="incoming_moves" colspan="4"/>
-                          </page>
-                          <page string="Inventory Moves">
-                              <field name="inventory_moves" colspan="4"/>
-                          </page>
-                      </notebook>
-                      <group col="4" colspan="6">
-                        <label name="state"/>
-                        <field name="state"/>
-                        <group col="4" colspan="2">
-                            <button string="Cancel" name="cancel"
-                                states="{'invisible': '''state in ('cancel', 'done') '''}"/>
-                            <button string="Set Done" name="done"
-                                states="{'invisible': '''state != 'received' '''}"/>
-                            <button string="Received" name="received"
-                                states="{'invisible': '''state != 'draft' '''}"/>
-                            <button string="Reset to Draft" name="button_draft"
-                                type="object"
-                                states="{'invisible': '''state != 'cancel' '''}"/>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <label colspan="4"/>
+                        <button name="%(wizard_select_move)d" string="Select Moves"
+                            type="action"
+                            states="{'readonly': '''state in ('received', 'done') '''}"
+                            colspan="2"/>
+                        <notebook colspan="6">
+                            <page string="Incoming Moves">
+                                <field name="incoming_moves" colspan="4">
+                                  <tree string="Moves">
+                                      <field name="product"/>
+                                      <field name="from_location"/>
+                                      <field name="to_location"/>
+                                      <field name="quantity"/>
+                                      <field name="uom"/>
+                                      <field name="state"/>
+                                  </tree>
+                                </field>
+                            </page>
+                            <page string="Inventory Moves">
+                                <field name="inventory_moves" colspan="4"/>
+                            </page>
+                        </notebook>
+                        <group col="4" colspan="6">
+                            <label name="state"/>
+                            <field name="state"/>
+                            <group col="4" colspan="2">
+                                <button string="Cancel" name="cancel"
+                                    states="{'invisible': '''state in ('cancel', 'done') '''}"/>
+                                <button string="Set Done" name="done"
+                                    states="{'invisible': '''state != 'received' '''}"/>
+                                <button string="Received" name="received"
+                                    states="{'invisible': '''state != 'draft' '''}"/>
+                                <button string="Reset to Draft" name="button_draft"
+                                    type="object"
+                                    states="{'invisible': '''state != 'cancel' '''}"/>
+                            </group>
                         </group>
-                    </group>
                     </form>
                     ]]>
             </field>
