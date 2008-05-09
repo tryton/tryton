@@ -7,7 +7,11 @@
     'category': 'Generic Modules',
     'description': 'Stock Management and Inventory Control',
     'depends': [
-        'partner', 'product'
+        'ir',
+        'workflow',
+        'partner',
+        'product',
+        'company',
     ],
     'xml': [
         'product.xml',

@@ -22,6 +22,9 @@
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
+                        <newline/>
+                        <label name="company"/>
+                        <field name="company"/>
                         <separator colspan="6"/>
                         <group col="4" colspan="6">
                             <label name="state"/>
@@ -134,8 +137,7 @@
             <field name="name">Moves to customers</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
-            <field name="domain">
-              [('to_location.type', '=', 'customer')]</field>
+            <field name="domain">[('to_location.type', '=', 'customer')]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_move_form_cust_view1">
@@ -151,5 +153,16 @@
         </record>
         <menuitem parent="menu_move_form" sequence="3"
             action="act_move_form_cust" id="menu_move_form_cust"/>
+
+        <record model="ir.rule.group" id="rule_group_move">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_move">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'stock.move')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_move"/>
+        </record>
     </data>
 </tryton>

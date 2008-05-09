@@ -39,6 +39,10 @@ class Move(OSV):
         ('waiting', 'Waiting'),
         ('assigned', 'Assigned'),
         ], 'State', select=1, readonly=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+            states={
+                'readonly': "state != 'draft'",
+            })
 
     def __init__(self):
         super(Move, self).__init__()
@@ -102,6 +106,15 @@ class Move(OSV):
             if context['packing_state'] in ('ready','done'):
                 return 'done'
         return 'draft'
+
+    def default_company(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
 
     def on_change_product(self, cursor, user, ids, value, context=None):
         if 'product' in value and value['product']:
