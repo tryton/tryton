@@ -643,5 +643,20 @@
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="packing_in_select_move_init_view_form">
+            <field name="model">stock.packing.in.select_move.init</field>
+            <field name="inherit" ref="stock.packing_in_select_move_init_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/field/tree/field[@name=&quot;product&quot;]"
+                        position="before">
+                        <field name="purchase"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
     </data>
 </tryton>

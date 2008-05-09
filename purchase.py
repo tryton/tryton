@@ -470,8 +470,8 @@ class PurchaseLine(OSV):
     invoice_lines = fields.Many2Many('account.invoice.line',
             'purchase_line_invoice_lines_rel', 'purchase_line', 'invoice_line',
             'Invoice Lines', readonly=True)
-    moves = fields.Many2Many('stock.move', 'purchase_line_moves_rel',
-            'purchase_line', 'move', 'Moves', readonly=True)
+    moves = fields.One2Many('stock.move', 'purchase_line', 'Moves',
+            readonly=True)
     moves_ignored = fields.Many2Many('stock.move', 'purchase_line_moves_ignored_rel',
             'purchase_line', 'move', 'Moves Ignored', readonly=True)
     move_done = fields.Function('get_move_done', type='boolean',
@@ -842,6 +842,43 @@ PackingIn()
 
 class Move(OSV):
     _name = 'stock.move'
+
+    purchase_line = fields.Many2One('purchase.line', select=1,
+            states={
+                'readonly': "state != 'draft'",
+            })
+    purchase = fields.Function('get_purchase', type='many2one',
+            relation='purchase.purchase', string='Purchase',
+            fnct_search='search_purchase', select=1)
+
+    def get_purchase(self, cursor, user, ids, name, arg, context=None):
+        purchase_obj = self.pool.get('purchase.purchase')
+
+        res = {}
+        for move in self.browse(cursor, user, ids, context=context):
+            if move.purchase_line:
+                res[move.id] = move.purchase_line.purchase.id
+
+        purchase_names = {}
+        for purchase_id, purchase_name in purchase_obj.name_get(cursor,
+                user, [x for x in res.values() if x], context=context):
+            purchase_names[purchase_id] = purchase_name
+
+        for i in res.keys():
+            if res[i] and res[i] in purchase_names:
+                res[i] = (res[i], purchase_names[res[i]])
+            else:
+                res[i] = False
+        return res
+
+    def search_purchase(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            field = args[i][0]
+            args2.append(('purchase_line.' + field, args[i][1], args[i][2]))
+            i += 1
+        return args2
 
     def write(self, cursor, user, ids, vals, context=None):
         workflow_service = LocalService('workflow')
