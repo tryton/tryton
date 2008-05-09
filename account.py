@@ -1056,10 +1056,10 @@ class CreateChartAccountPropertites(WizardOSV):
     company = fields.Many2One('company.company', 'Company')
     account_receivable = fields.Many2One('account.account',
             'Default Receivable Account',
-            domain="[('company', '=', company)]")
+            domain="[('type.code', '=', 'receivable'), ('company', '=', company)]")
     account_payable = fields.Many2One('account.account',
             'Default Payable Account',
-            domain="[('company', '=', company)]")
+            domain="[('type.code', '=', 'payable'), ('company', '=', company)]")
 
 CreateChartAccountPropertites()
 
