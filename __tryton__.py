@@ -13,6 +13,7 @@
         'product',
         'res',
         'workflow',
+        'currency',
     ],
     'xml': [
         'invoice.xml',

@@ -49,7 +49,7 @@ class PaymentTerm(OSV):
         type_obj = self.pool.get('account.invoice.payment_term.line.type')
         delay_obj = self.pool.get(
                 'account.invoice.payment_term.line.delay')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = []
         if date is None:
             date = datetime.date.today()
@@ -84,7 +84,7 @@ class PaymentTermLineType(OSV):
         self._order.insert(0, ('name', 'ASC'))
 
     def get_value(self, cursor, user, line, amount, currency, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         if line.type == 'fixed':
             return currency_obj.compute(cursor, user, line.currency,
                     line.amount, currency, context=context)
@@ -145,7 +145,7 @@ class PaymentTermLine(OSV):
                 'invisible': "type != 'fixed'",
                 'required': "type == 'fixed'",
             })
-    currency = fields.Many2One('account.currency', 'Currency',
+    currency = fields.Many2One('currency.currency', 'Currency',
             states={
                 'invisible': "type != 'fixed'",
                 'required': "type == 'fixed'",
@@ -222,7 +222,7 @@ class Invoice(OSV):
         required=True, states=_STATES, domain="[('partner', '=', partner)]")
     invoice_address = fields.Many2One('partner.address', 'Invoice Address',
         required=True, states=_STATES, domain="[('partner', '=', partner)]")
-    currency = fields.Many2One('account.currency', 'Currency', required=True,
+    currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states=_STATES)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states=_STATES, domain=[('centralisation', '=', False)])
@@ -285,7 +285,7 @@ class Invoice(OSV):
 
     def default_currency(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         if context is None:
             context = {}
         company = None
@@ -367,7 +367,7 @@ class Invoice(OSV):
         return res
 
     def get_untaxed_amount(self, cursor, user, ids, name, arg, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
             res.setdefault(invoice.id, Decimal('0.0'))
@@ -380,7 +380,7 @@ class Invoice(OSV):
         return res
 
     def get_tax_amount(self, cursor, user, ids, name, arg, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         cursor.execute('SELECT invoice, ' \
                     'COALESCE(SUM(amount), 0)::DECIMAL ' \
@@ -397,7 +397,7 @@ class Invoice(OSV):
         return res
 
     def get_total_amount(self, cursor, user, ids, name, arg, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
             res[invoice.id] = currency_obj.round(cursor, user, invoice.currency,
@@ -431,7 +431,7 @@ class Invoice(OSV):
 
     def get_amount_to_pay(self, cursor, user, ids, name, arg,
             context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
             amount = Decimal('0.0')
@@ -490,7 +490,7 @@ class Invoice(OSV):
 
     def _compute_taxes(self, cursor, user, invoice, context=None):
         tax_obj = self.pool.get('account.tax')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         if context is None:
             context = {}
 
@@ -536,7 +536,7 @@ class Invoice(OSV):
 
     def button_compute(self, cursor, user, ids, context=None, exception=False):
         tax_obj = self.pool.get('account.invoice.tax')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         for invoice in self.browse(cursor, user, ids, context=context):
             computed_taxes = self._compute_taxes(cursor, user, invoice,
                     context=context)
@@ -646,7 +646,7 @@ class Invoice(OSV):
     def create_move(self, cursor, user, invoice_id, context=None):
         tax_obj = self.pool.get('account.invoice.tax')
         payment_term_obj = self.pool.get('account.invoice.payment_term')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         move_obj = self.pool.get('account.move')
         period_obj = self.pool.get('account.period')
 
@@ -820,7 +820,7 @@ class Invoice(OSV):
         '''
         Return list of line ids and the remainder to make reconciliation.
         '''
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
 
         if exclude_ids is None:
             exclude_ids = []
@@ -1098,7 +1098,7 @@ class InvoiceLine(OSV):
         return Decimal('0.0')
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             if line.type == 'line':
@@ -1126,7 +1126,7 @@ class InvoiceLine(OSV):
         account_obj = self.pool.get('account.account')
         uom_obj = self.pool.get('product.uom')
         company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         if context is None:
             context = {}
         if not vals.get('product'):
@@ -1251,7 +1251,7 @@ class InvoiceLine(OSV):
 
     def _compute_taxes(self, cursor, user, line, context=None):
         tax_obj = self.pool.get('account.tax')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         invoice_obj = self.pool.get('account.invoice')
         if context is None:
             context = {}
@@ -1285,7 +1285,7 @@ class InvoiceLine(OSV):
         '''
         Return move line value for invoice line
         '''
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         if line.type != 'line':
             return res
@@ -1447,7 +1447,7 @@ class InvoiceTax(OSV):
         '''
         Return move line value for invoice tax
         '''
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         res['name'] = tax.description
         if tax.invoice.currency.id != tax.invoice.company.currency.id:
@@ -1874,7 +1874,7 @@ Period()
 class PayInvoiceInit(WizardOSV):
     _name = 'account.invoice.pay_invoice.init'
     amount = fields.Numeric('Amount', digits=(16, 2), required=True)
-    currency = fields.Many2One('account.currency', 'Currency', required=True)
+    currency = fields.Many2One('currency.currency', 'Currency', required=True)
     description = fields.char('Description', size=None, required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             domain=[('type', '=', 'cash')])
@@ -1904,7 +1904,7 @@ class PayInvoiceAsk(WizardOSV):
                 'required': "type == 'writeoff'",
             })
     amount = fields.Numeric('Amount', digits=(16, 2), readonly=True)
-    currency = fields.Many2One('account.currency', 'Currency', readonly=True)
+    currency = fields.Many2One('currency.currency', 'Currency', readonly=True)
     lines_to_pay = fields.Char(string='Lines to Pay', size=None)
     lines = fields.One2Many('account.move.line', 'ham', 'Lines',
             domain="[('id', 'in', eval(lines_to_pay)), " \
@@ -1977,7 +1977,7 @@ class PayInvoice(Wizard):
 
     def _choice(self, cursor, user, data, context=None):
         invoice_obj = self.pool.get('account.invoice')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
 
         invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
 
@@ -1994,7 +1994,7 @@ class PayInvoice(Wizard):
 
     def _ask(self, cursor, user, data, context=None):
         invoice_obj = self.pool.get('account.invoice')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
 
         res = {}
         invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
@@ -2017,7 +2017,7 @@ class PayInvoice(Wizard):
 
     def _action_pay(self, cursor, user, data, context=None):
         invoice_obj = self.pool.get('account.invoice')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         move_line_obj = self.pool.get('account.move.line')
 
         invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
