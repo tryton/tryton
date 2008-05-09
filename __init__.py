@@ -24,7 +24,6 @@
 #
 ##############################################################################
 
-from currency import *
 from account import *
 from fiscalyear import *
 from period import *

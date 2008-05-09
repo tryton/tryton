@@ -56,7 +56,7 @@ class Code(OSV):
     def get_sum(self, cursor, user, ids, name, arg, context=None):
         res = {}
         move_line_obj = self.pool.get('account.move.line')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
 
         child_ids = self.search(cursor, user, [('parent', 'child_of', ids)],
                 context=context)

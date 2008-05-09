@@ -169,7 +169,7 @@ class Move(OSV):
         '''
         Validate balanced move and centralise it if in centralised journal
         '''
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         move_line_obj = self.pool.get('account.move.line')
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -219,7 +219,7 @@ class Move(OSV):
         return
 
     def post(self, cursor, user, ids, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         sequence_obj = self.pool.get('ir.sequence')
 
         if isinstance(ids, (int, long)):
@@ -301,7 +301,7 @@ class Reconciliation(OSV):
         raise ExceptORM('UserError', 'You can not modify a reconciliation!')
 
     def check_lines(self, cursor, user, ids):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         for reconciliation in self.browse(cursor, user, ids):
             amount = Decimal('0.0')
             account = None
@@ -354,7 +354,7 @@ class Line(OSV):
     reference = fields.char('Reference', size=None)
     amount_second_currency = fields.Numeric('Amount Second Currency',
             digits=(16, 2), help='The amount expressed in a second currency')
-    second_currency = fields.Many2One('account.currency', 'Second Currency',
+    second_currency = fields.Many2One('currency.currency', 'Second Currency',
             help='The second currency')
     partner = fields.Many2One('partner.partner', 'Partner',
             on_change=['move', 'partner', 'account', 'debit', 'credit',
@@ -665,7 +665,7 @@ class Line(OSV):
         partner_obj = self.pool.get('partner.partner')
         journal_obj = self.pool.get('account.journal')
         account_obj = self.pool.get('account.account')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         if (not vals.get('partner')) or vals.get('account'):
             return res
@@ -1072,7 +1072,7 @@ class Line(OSV):
     def reconcile(self, cursor, user, ids, journal_id=False, date=False,
             account_id=False, context=None):
         move_obj = self.pool.get('account.move')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         reconciliation_obj = self.pool.get('account.move.reconciliation')
         period_obj = self.pool.get('account.period')
 
@@ -1335,7 +1335,7 @@ class ReconcileLines(Wizard):
 
     def _check_writeoff(self, cursor, user, data, context=None):
         line_obj = self.pool.get('account.move.line')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
 
         company = None
         amount = Decimal('0.0')

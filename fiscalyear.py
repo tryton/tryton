@@ -210,7 +210,7 @@ class CloseFiscalYear(Wizard):
         '''
         Method to override to implement new close method
         '''
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         move_line_obj = self.pool.get('account.move.line')
         fiscalyear_obj = self.pool.get('account.fiscalyear')
 

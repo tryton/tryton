@@ -53,7 +53,7 @@ class Type(OSV):
     def get_amount(self, cursor, user, ids, name, arg, context=None):
         company_obj = self.pool.get('company.company')
         account_obj = self.pool.get('account.account')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
 
         if context is None:
             context = {}
@@ -175,8 +175,8 @@ class Account(OSV):
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True)
     currency = fields.Function('get_currency', type='many2one',
-            relation='account.currency', string='Currency')
-    second_currency = fields.Many2One('account.currency', 'Secondary currency',
+            relation='currency.currency', string='Currency')
+    second_currency = fields.Many2One('currency.currency', 'Secondary currency',
             help='Force all moves for this account \n' \
                     'to have this secondary currency.')
     type = fields.Many2One('account.account.type', 'Type', required=True,
@@ -255,7 +255,7 @@ class Account(OSV):
         return True
 
     def get_currency(self, cursor, user, ids, name, arg, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         for account in self.browse(cursor,user, ids, context=context):
             res[account.id] = account.company.currency.id
@@ -274,7 +274,7 @@ class Account(OSV):
     def get_balance(self, cursor, user, ids, name, arg, context=None):
         res = {}
         company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         move_line_obj = self.pool.get('account.move.line')
 
         child_ids = self.search(cursor, user, [('parents', 'child_of', ids)],
@@ -326,7 +326,7 @@ class Account(OSV):
         res = {}
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
 
         if name not in ('credit', 'debit'):
             raise Exception('Bad argument')
