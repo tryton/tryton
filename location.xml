@@ -97,7 +97,7 @@
         </record>
         <record model="ir.action.act_window.view" id="act_product_form_view">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="product_view_form_qty"/>
+            <field name="view" ref="product.product_view_form"/>
             <field name="act_window" ref="act_product_by_location"/>
         </record>
         <record model="ir.action.act_window.view" id="act_product_form_view2">

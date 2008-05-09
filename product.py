@@ -9,7 +9,6 @@ class Product(OSV):
     quantity = fields.Function('get_quantity', type='float', string='Quantity',
                                fnct_search='search_quantity', readonly=True)
 
-
     def get_quantity(self, cursor, user, ids, name, args, context=None):
         if not (context and context.get('locations')):
             return dict([(id, False) for id in ids])
@@ -17,7 +16,8 @@ class Product(OSV):
             cursor, user, [('parent', 'child_of', context['locations'])],
             context=context)
         pbl = self.products_by_location(
-            cursor, user, location_ids=location_ids, context=None)
+            cursor, user, location_ids=location_ids, product_ids=ids,
+            context=context)
         res = {}
         for line in pbl:
             if line['product'] in res:
@@ -46,14 +46,14 @@ class Product(OSV):
             cursor, user, [('parent', 'child_of', context['locations'])],
             context=context)
         pbl = self.products_by_location(
-            cursor, user, location_ids=location_ids, context=None)
+            cursor, user, location_ids=location_ids, context=context)
         res= [line['product'] for line in pbl \
-                    if self._eval_domain(line,domain)]
+                    if self._eval_domain(line, domain)]
         return [('id', 'in', res)]
 
 
     def raw_products_by_location(self, cursor, user, location_ids,
-                            product_ids=None, context=None):
+            product_ids=None, context=None):
         """
         Return a list like : [(location, product, uom, qty)] for each
         location and product given as argument. Null qty are not
@@ -101,8 +101,10 @@ class Product(OSV):
 
         uom_obj = self.pool.get("product.uom")
         product_obj = self.pool.get("product.product")
+
         if not location_ids:
             return []
+
         if not product_ids:
             product_ids = product_obj.search(cursor, user, [], context=context)
 
@@ -117,13 +119,12 @@ class Product(OSV):
             cursor, user, location_ids, product_ids, context=context):
             location, product, uom, quantity= line
             key = (location, product, default_uom[product].id)
-            if key not in res:
-                res[key] = 0
+            res.setdefault(key, 0.0)
             res[key] += uom_obj.compute_qty(
                 cursor, user, uom_by_id[uom], quantity, default_uom[product])
         return [{'location': key[0],
                  'product':key[1],
                  'uom': key[2],
-                 'quantity': val} for key,val in res.iteritems()]
+                 'quantity': val} for key, val in res.iteritems()]
 
 Product()
