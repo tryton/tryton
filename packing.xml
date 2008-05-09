@@ -8,7 +8,15 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Select Moves" col="1">
-                    <field name="moves" width="600" height="400"/>
+                    <field name="moves" width="600" height="400">
+                        <tree string="Incoming Moves">
+                            <field name="product"/>
+                            <field name="from_location"/>
+                            <field name="to_location"/>
+                            <field name="quantity"/>
+                            <field name="uom"/>
+                        </tree>
+                    </field>
                 </form>
                 ]]>
             </field>
