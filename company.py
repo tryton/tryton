@@ -15,6 +15,7 @@ class Company(OSV):
     childs = fields.One2Many('company.company', 'parent', 'Childs')
     header = fields.Text('Header')
     footer = fields.text('Footer')
+    currency = fields.Many2One('currency.currency', 'Currency', required=True)
 
     def __init__(self):
         super(Company, self).__init__()

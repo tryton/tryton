@@ -13,6 +13,8 @@
                         <field name="partner"/>
                         <label name="parent"/>
                         <field name="parent"/>
+                        <label name="currency"/>
+                        <field name="currency"/>
                         <separator name="header" colspan="4"/>
                         <field name="header" colspan="4"/>
                         <separator name="footer" colspan="4"/>
@@ -32,6 +34,7 @@
                     <tree string="Companies">
                         <field name="name" select="1"/>
                         <field name="partner" select="1"/>
+                        <field name="currency" select="1"/>
                     </tree>
                 ]]>
             </field>

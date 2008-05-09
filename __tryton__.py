@@ -6,6 +6,11 @@
     'website': 'http://www.tryton.org/',
     'category': 'Generic Modules',
     'description': 'Define company',
-    'depends': ['ir', 'res', 'partner'],
+    'depends': [
+        'ir',
+        'res',
+        'partner',
+        'currency',
+    ],
     'xml': ['company.xml'],
 }
