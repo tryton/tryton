@@ -16,6 +16,7 @@
         'workflow',
         'res',
         'ir',
+        'currency',
     ],
     'xml': [
         'purchase.xml',

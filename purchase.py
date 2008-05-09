@@ -37,7 +37,7 @@ class Purchase(OSV):
             domain="[('partner', '=', partner)]", states=_STATES)
     warehouse = fields.Many2One('stock.location', 'Warehouse',
             domain=[('type', '=', 'warehouse')], required=True, states=_STATES)
-    currency = fields.Many2One('account.currency', 'Currency', required=True,
+    currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states=_STATES)
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
             states=_STATES)
@@ -107,7 +107,7 @@ class Purchase(OSV):
 
     def default_currency(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         if context is None:
             context = {}
         company = None
@@ -158,7 +158,7 @@ class Purchase(OSV):
         return res
 
     def get_untaxed_amount(self, cursor, user, ids, name, arg, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         for purchase in self.browse(cursor, user, ids, context=context):
             res.setdefault(purchase.id, Decimal('0.0'))
@@ -177,7 +177,7 @@ class Purchase(OSV):
         return res
 
     def get_tax_amount(self, cursor, user, ids, name, arg, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         tax_obj = self.pool.get('account.tax')
         res = {}
         for purchase in self.browse(cursor, user, ids, context=context):
@@ -196,7 +196,7 @@ class Purchase(OSV):
         return res
 
     def get_total_amount(self, cursor, user, ids, name, arg, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         for purchase in self.browse(cursor, user, ids, context=context):
             res[purchase.id] = currency_obj.round(cursor, user, purchase.currency,
@@ -575,7 +575,7 @@ class PurchaseLine(OSV):
         return res
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             if line.type == 'line':
@@ -712,7 +712,7 @@ class Product(OSV):
         '''
         uom_obj = self.pool.get('product.uom')
         user_obj = self.pool.get('res.user')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         for product in self.browse(cursor, user, ids, context=context):
             res[product.id] = product.cost_price
@@ -791,7 +791,7 @@ class ProductSupplierPrice(OSV):
 
     def default_currency(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('account.currency')
+        currency_obj = self.pool.get('currency.currency')
         if context is None:
             context = {}
         company = None
