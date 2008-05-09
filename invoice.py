@@ -132,7 +132,8 @@ class PaymentTermLine(OSV):
             help='Use to order lines in ascending order')
     payment = fields.Many2One('account.invoice.payment_term', 'Payment Term',
             required=True)
-    type = fields.Selection('get_type', 'Type', required=True)
+    type = fields.Selection('get_type', 'Type', required=True,
+            on_change=['type'])
     percent = fields.Numeric('Percent', digits=(16, 8),
             states={
                 'invisible': "type != 'percent'",
@@ -174,6 +175,17 @@ class PaymentTermLine(OSV):
         delays = delay_obj.browse(cursor, user, delay_ids,
                 context=context)
         return [(x.code, x.name) for x in delays]
+
+    def on_change_type(self, cursor, user, ids, vals, context=None):
+        if not 'type' in vals:
+            return {}
+        res = {}
+        if vals['type'] != 'fixed':
+            res['amount'] = Decimal('0.0')
+            res['currency'] =  False
+        if vals['type'] != 'percent':
+            res['percent'] =  Decimal('0.0')
+        return res
 
 PaymentTermLine()
 
