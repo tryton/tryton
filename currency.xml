@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="res.group" id="group_currency_admin">
+            <field name="name">Currency admin</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_currency_admin'))]"/>
+        </record>
+        <menuitem name="Currency Management" id="menu_currency" sequence="3"
+            groups="group_currency_admin"/>
+
+        <record model="ir.ui.view" id="currency_view_form">
+            <field name="model">currency.currency</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Currency" col="6">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <label name="rounding"/>
+                    <field name="rounding"/>
+                    <label name="digits"/>
+                    <field name="digits"/>
+                    <newline/>
+                    <label name="rate"/>
+                    <field name="rate"/>
+                    <field name="rates" colspan="6" mode="tree,form,graph">
+                        <tree string="Rates">
+                            <field name="date"/>
+                            <field name="rate"/>
+                        </tree>
+                        <form string="Rate">
+                            <label name="date"/>
+                            <field name="date"/>
+                            <label name="rate"/>
+                            <field name="rate"/>
+                        </form>
+                        <graph string="Rates" type="line">
+                            <x>
+                                <field name="date"/>
+                            </x>
+                            <y>
+                                <field name="rate" fill="1" empty="0"/>
+                            </y>
+                        </graph>
+                    </field>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="currency_view_tree">
+            <field name="model">currency.currency</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Currencies">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="rate"/>
+                    <field name="active" tree_invisible="1" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_currency_form">
+            <field name="name">Currencies</field>
+            <field name="res_model">currency.currency</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_currency_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="currency_view_tree"/>
+            <field name="act_window" ref="act_currency_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_currency_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="currency_view_form"/>
+            <field name="act_window" ref="act_currency_form"/>
+        </record>
+        <menuitem parent="menu_currency" action="act_currency_form"
+            id="menu_currency_form"/>
+        <record model="ir.model.access" id="access_currency">
+            <field name="model" search="[('model', '=', 'currency.currency')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_currency_currency_admin">
+            <field name="model" search="[('model', '=', 'currency.currency')]"/>
+            <field name="group" ref="group_currency_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_currency_rate">
+            <field name="model" search="[('model', '=', 'currency.currency.rate')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_currency_rate_currency_admin">
+            <field name="model" search="[('model', '=', 'currency.currency.rate')]"/>
+            <field name="group" ref="group_currency_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record model="currency.currency" id="eur">
+            <field name="name">Euro</field>
+            <field name="code">EUR</field>
+            <field name="rounding" eval="0.01"/>
+            <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency.rate" id="eur_rate">
+            <field name="date" eval="time.strftime('%Y-01-01')"/>
+            <field name="rate" eval="1.0"/>
+            <field name="currency" ref="eur"/>
+        </record>
+        <record model="currency.currency" id="usd">
+            <field name="name">United States dollar</field>
+            <field name="code">USD</field>
+            <field name="rounding" eval="0.01"/>
+            <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="chf">
+            <field name="name">Swiss franc</field>
+            <field name="code">CHF</field>
+            <field name="rounding" eval="0.01"/>
+            <field name="digits" eval="2"/>
+        </record>
+    </data>
+</tryton>
