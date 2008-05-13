@@ -492,7 +492,7 @@
             <field name="act_from" ref="invoice_activity_open"/>
             <field name="act_to" ref="invoice_activity_paid"/>
             <field name="trigger_model">account.move.line</field>
-            <field name="trigger_expr_id">lines_to_pay</field>
+            <field name="trigger_expr_id">[x.id for x in lines_to_pay]</field>
             <field name="condition">reconciled</field>
         </record>
         <record model="workflow.transition" id="invoice_transition_draft_cancel">
