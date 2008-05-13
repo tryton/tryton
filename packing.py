@@ -265,15 +265,8 @@ class PackingOut(OSV):
     def __init__(self):
         super(PackingOut, self).__init__()
         self._rpc_allowed += [
-            'set_state_done',
-            'set_state_waiting',
-            'set_state_draft',
-            'set_state_cancel',
-            'set_state_assigned',
-            'set_state_ready',
-            'assign_try',
-            'assign_force',
-            ]
+            'button_draft',
+        ]
         self._order[0] = ('id', 'DESC')
 
     def default_state(self, cursor, user, context=None):
@@ -480,6 +473,8 @@ class PackingOut(OSV):
         if context is None:
             context = {}
 
+        cursor.execute('LOCK TABLE stock_move')
+
         packing = self.browse(cursor, user, id, context=context)
         parent_to_locations = {}
         inventory_moves = []
@@ -565,6 +560,11 @@ class PackingOut(OSV):
             cursor, user, [m.id for m in packing.inventory_moves],
             {'state':'assigned'})
         return True
+
+    def button_draft(self, cursor, user, ids, context=None):
+        workflow_service = LocalService('workflow')
+        for packing in self.browse(cursor, user, ids, context=context):
+            workflow_service.trg_create(user, self._name, packing.id, cursor)
 
 PackingOut()
 

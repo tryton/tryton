@@ -175,7 +175,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Supplier Packing" col="4">
+                    <form string="Customer Packing" col="4">
                         <label name="code"/>
                         <field name="code"/>
                         <label name="effective_date"/>
@@ -195,26 +195,29 @@
                         <group col="4" colspan="4">
                             <label name="state"/>
                             <field name="state"/>
-                            <group col="6" colspan="2">
-                                <button string="Cancel" name="signal_cancel"
+                            <group col="7" colspan="2">
+                                <button string="Cancel" name="cancel"
                                         states="{'invisible': '''state in
                                         ('cancel','done') '''}"/>
-                                <button string="Set Done" name="signal_done"
+                                <button string="Set Done" name="done"
                                         states="{'invisible': '''state !=
                                         'ready' '''}"/>
-                                <button string="Set Waiting" name="signal_waiting"
+                                <button string="Set Waiting" name="waiting"
                                         states="{'invisible': '''state !=
                                         'draft' '''}"/>
                                 <button string="Force Assign"
-                                        name="signal_force_assign"
+                                        name="force_assign"
                                         states="{'invisible': '''state !=
                                         'waiting' '''}"/>
-                                <button string="Assign" name="signal_assign"
+                                <button string="Assign" name="assign"
                                         states="{'invisible': '''state !=
                                         'waiting' '''}"/>
-                                <button string="Set ready" name="signal_ready"
+                                <button string="Set ready" name="ready"
                                         states="{'invisible': '''state !=
                                         'assigned' '''}"/>
+                                <button string="Reset to Draft" name="button_draft"
+                                    type="object"
+                                    states="{'invisible': '''state != 'cancel' '''}"/>
                             </group>
                         </group>
                     </form>
@@ -439,57 +442,57 @@
                 id="packingout_trans_waiting_assigned">
             <field name="act_from" ref="packingout_act_waiting"/>
             <field name="act_to" ref="packingout_act_assigned"/>
-            <field name="signal">signal_assign</field>
+            <field name="signal">assign</field>
             <field name="condition">assign_try()</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_waiting_assigned_force">
             <field name="act_from" ref="packingout_act_waiting"/>
             <field name="act_to" ref="packingout_act_assigned"/>
-            <field name="signal">signal_force_assign</field>
+            <field name="signal">force_assign</field>
             <field name="condition">assign_force()</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_draft_waiting">
             <field name="act_from" ref="packingout_act_draft"/>
             <field name="act_to" ref="packingout_act_waiting"/>
-            <field name="signal">signal_waiting</field>
+            <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_waiting_cancel">
             <field name="act_from" ref="packingout_act_waiting"/>
             <field name="act_to" ref="packingout_act_cancel"/>
-            <field name="signal">signal_cancel</field>
+            <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_draft_cancel">
             <field name="act_from" ref="packingout_act_draft"/>
             <field name="act_to" ref="packingout_act_cancel"/>
-            <field name="signal">signal_cancel</field>
+            <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_assigned_ready">
             <field name="act_from" ref="packingout_act_assigned"/>
             <field name="act_to" ref="packingout_act_ready"/>
-            <field name="signal">signal_ready</field>
+            <field name="signal">ready</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_ready_done">
             <field name="act_from" ref="packingout_act_ready"/>
             <field name="act_to" ref="packingout_act_done"/>
-            <field name="signal">signal_done</field>
+            <field name="signal">done</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_assigned_cancel">
             <field name="act_from" ref="packingout_act_assigned"/>
             <field name="act_to" ref="packingout_act_cancel"/>
-            <field name="signal">signal_cancel</field>
+            <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_ready_cancel">
             <field name="act_from" ref="packingout_act_ready"/>
             <field name="act_to" ref="packingout_act_cancel"/>
-            <field name="signal">signal_cancel</field>
+            <field name="signal">cancel</field>
         </record>
 
     </data>
