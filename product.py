@@ -11,7 +11,7 @@ class Product(OSV):
 
     def get_quantity(self, cursor, user, ids, name, args, context=None):
         if not (context and context.get('locations')):
-            return dict([(id, False) for id in ids])
+            return dict([(id, 0.0) for id in ids])
         location_ids = self.pool.get('stock.location').search(
             cursor, user, [('parent', 'child_of', context['locations'])],
             context=context)
@@ -19,11 +19,10 @@ class Product(OSV):
             cursor, user, location_ids=location_ids, product_ids=ids,
             context=context)
         res = {}
+        for product_id in ids:
+            res[product_id] = 0.0
         for line in pbl:
-            if line['product'] in res:
-                res[line['product']] += line['quantity']
-            else:
-                res[line['product']] = line['quantity']
+            res[line['product']] += line['quantity']
         return res
 
     def _eval_domain(self, line, domain):
