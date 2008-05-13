@@ -235,7 +235,7 @@ class Move(OSV):
 
     def set_state_assigned(self, cursor, user, ids, context=None):
         return self.write(cursor, user, ids, {
-            'state': 'waiting',
+            'state': 'assigned',
             }, context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
