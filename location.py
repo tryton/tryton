@@ -14,19 +14,19 @@ class Location(OSV):
     "Stock Location"
     _name = 'stock.location'
     _description = __doc__
-    name = fields.Char("Name", size=64, required=True, states=STATES,)
-    code = fields.Char("Code", size=32, states=STATES, select=1)
+    name = fields.Char("Name", size=None, required=True, states=STATES)
+    code = fields.Char("Code", size=None, states=STATES, select=1)
     active = fields.Boolean('Active', select=1)
     address = fields.Many2One("partner.address", "Address",
             states=STATES_WH)
-    type = fields.Selection([('supplier', 'Supplier'),
-                              ('customer', 'Customer'),
-                              ('inventory', 'Inventory'),
-                              ('procurement', 'Procurement'),
-                              ('warehouse', 'Warehouse'),
-                              ('storage', 'Storage'),
-                              ('production', 'Production')],
-                             'Location type', states=STATES,)
+    type = fields.Selection([
+        ('supplier', 'Supplier'),
+        ('customer', 'Customer'),
+        ('inventory', 'Inventory'),
+        ('warehouse', 'Warehouse'),
+        ('storage', 'Storage'),
+        ('production', 'Production'),
+        ], 'Location type', states=STATES)
     parent = fields.Many2One("stock.location", "Parent", select=1)
     childs = fields.One2Many("stock.location", "parent", "Childs",)
     input_location = fields.Many2One(
