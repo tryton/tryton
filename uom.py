@@ -1,4 +1,5 @@
 from trytond.osv import fields, OSV
+from decimal import Decimal
 
 STATES = {
     'readonly': "active == False",
@@ -156,15 +157,16 @@ class Uom(OSV):
             return price
         if from_uom.category.id <> to_uom.category.id:
             return price
+
         if from_uom.factor >= 1.0:
-            new_price = float(price) / from_uom.factor
+            new_price = price / Decimal(str(from_uom.factor))
         else:
-            new_price = float(price) * from_uom.rate
+            new_price = price * Decimal(str(from_uom.rate))
 
         if to_uom.factor >= 1.0:
-            new_price = new_price * to_uom.factor
+            new_price = new_price * Decimal(str(to_uom.factor))
         else:
-            new_price = new_price / to_uom.rate
+            new_price = new_price / Decimal(str(to_uom.rate))
 
         return new_price
 
