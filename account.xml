@@ -180,6 +180,7 @@
         </record>
         <record model="account.account.type" id="account_type_revenue">
             <field name="name">Revenue</field>
+            <field name="code">revenue</field>
             <field name="parent" ref="account_type_income"/>
             <field name="sequence" eval="10"/>
             <field name="account_type" eval="True"/>
