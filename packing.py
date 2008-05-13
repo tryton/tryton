@@ -3,6 +3,7 @@ from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 import time
 from trytond.netsvc import LocalService
+import datetime
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -144,11 +145,10 @@ class PackingIn(OSV):
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.set_state_done(
             cursor, user, [m.id for m in packing.inventory_moves], context)
-        self.write(
-            cursor, user, packing_id,
-            {'state':'done',
-             'effective_date':time.strftime('%Y-%m-%d %H:%M:%S')},
-            context=context)
+        self.write(cursor, user, packing_id,{
+            'state': 'done',
+            'effective_date': datetime.datetime.now(),
+            }, context=context)
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -162,10 +162,11 @@ class PackingIn(OSV):
     def set_state_received(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_done(
-            cursor, user, [m.id for m in packing.incoming_moves], context)
-        self.write(
-            cursor, user, packing_id, {'state':'received'}, context=context)
+        move_obj.set_state_done(cursor, user,
+                [m.id for m in packing.incoming_moves], context=context)
+        self.write(cursor, user, packing_id, {
+            'state': 'received'
+            }, context=context)
 
     def set_state_draft(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -197,6 +198,7 @@ class PackingIn(OSV):
         res['to_location'] = incoming_move.packing_in.warehouse.\
                 storage_location.id
         res['state'] = 'waiting'
+        res['company'] = incoming_move.company.id
         return res
 
     def create_inventory_moves(self, cursor, user, packing_id, context=None):
