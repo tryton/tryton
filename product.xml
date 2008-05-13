@@ -16,5 +16,42 @@
                     ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="location_quantity_view_tree">
+            <field name="model">stock.location</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Locations">
+                        <field name="name" select="1"/>
+                        <field name="code" select="2"/>
+                        <field name="type" select="1"/>
+                        <field name="quantity" select="1"/>
+                        <field name="active" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_location_quantity_tree">
+            <field name="name">Product Availability</field>
+            <field name="src_model">product.product</field>
+            <field name="res_model">stock.location</field>
+            <field name="view_type">tree</field>
+            <field name="context">{'product': active_id}</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_quantity_tree_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_quantity_view_tree"/>
+            <field name="act_window" ref="act_location_quantity_tree"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_location_quantity_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,0</field>
+            <field name="action" ref="act_location_quantity_tree"/>
+        </record>
+
     </data>
 </tryton>
