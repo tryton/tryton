@@ -54,6 +54,8 @@
                                       <field name="to_location"/>
                                       <field name="quantity"/>
                                       <field name="uom"/>
+                                      <field name="unit_price"/>
+                                      <field name="currency"/>
                                       <field name="state"/>
                                   </tree>
                                 </field>
