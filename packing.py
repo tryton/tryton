@@ -476,6 +476,10 @@ class PackingOut(OSV):
         move_obj = self.pool.get('stock.move')
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
+
+        if context is None:
+            context = {}
+
         packing = self.browse(cursor, user, id, context=context)
         parent_to_locations = {}
         inventory_moves = []
@@ -497,7 +501,7 @@ class PackingOut(OSV):
             parent_to_locations[move.from_location.id] = childs
 
         # Collect all raw quantities
-        context = context or {}
+        context = context.copy()
         context.update({'in_states': ['done', 'assigned'],
                         'out_states': ['done', 'assigned']})
         raw_data = product_obj.raw_products_by_location(
