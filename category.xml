@@ -4,6 +4,7 @@
         <record model="ir.ui.view" id="category_view_tree">
             <field name="model">product.category</field>
             <field name="type">tree</field>
+            <field name="priority">10</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Product Categories">
@@ -16,6 +17,7 @@
         <record model="ir.ui.view" id="category_view_tree2">
             <field name="model">product.category</field>
             <field name="type">tree</field>
+            <field name="priority">20</field>
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
