@@ -3,6 +3,7 @@ from trytond.osv import fields, OSV, ExceptORM
 from trytond.wizard import Wizard, WizardOSV, ExceptWizard
 import time
 from decimal import Decimal
+import datetime
 
 STATES = {
     'readonly': "(state in ('cancel', 'done'))",
@@ -49,13 +50,13 @@ class Move(OSV):
             states={
                 'invisible': "type not in ('input', 'output')",
                 'required': "type in ('input', 'output')",
-                'readonly': "state != 'draft'",
+                'readonly': "state not in ('draft', 'waiting')",
             })
     currency = fields.Many2One('currency.currency', 'Currency',
             states={
                 'invisible': "type not in ('input', 'output')",
                 'required': "type in ('input', 'output')",
-                'readonly': "state != 'draft'",
+                'readonly': "state not in ('draft', 'waiting')",
             })
     type = fields.Function('get_type', type='selection',
             selection=[
@@ -211,38 +212,82 @@ class Move(OSV):
         return self._on_change_location(cursor, user, ids, vals,
                 context=context)
 
-    def set_by_state(self, cursor, user, ids, from_states, valss,
-                     context=None):
-        move_ids = self.search(
-            cursor, user, [('id', 'in', ids),
-                           ('state', 'in', from_states)])
-        return self.write(cursor, user, move_ids, valss, context=context)
-
     def set_state_done(self, cursor, user, ids, context=None):
-        self.set_by_state(
-            cursor, user, ids, ['draft', 'waiting', 'assigned'],
-            {'state': 'done',
-             'effective_date': time.strftime('%Y-%m-%d %H:%M:%S')})
+        return self.write(cursor, user, ids, {
+            'state': 'done',
+            'effective_date': datetime.datetime.now(),
+            }, context=context)
 
     def set_state_draft(self, cursor, user, ids, context=None):
-        self.set_by_state(
-            cursor, user, ids, ['cancel', 'waiting'],
-            {'state': 'draft',})
+        return self.write(cursor, user, ids, {
+            'state': 'draft',
+            }, context=context)
 
     def set_state_cancel(self, cursor, user, ids, context=None):
-        self.set_by_state(
-            cursor, user, ids, ['done', 'waiting', 'assigned'],
-            {'state': 'cancel',})
+        return self.write(cursor, user, ids, {
+            'state': 'cancel',
+            }, context=context)
 
     def set_state_waiting(self, cursor, user, ids, context=None):
-        self.set_by_state(
-            cursor, user, ids, ['draft',],
-            {'state':'waiting',})
+        return self.write(cursor, user, ids, {
+            'state': 'waiting',
+            }, context=context)
 
     def set_state_assigned(self, cursor, user, ids, context=None):
-        self.set_by_state(
-            cursor, user, ids, ['draft', 'waiting'],
-            {'state': 'waiting',})
+        return self.write(cursor, user, ids, {
+            'state': 'waiting',
+            }, context=context)
+
+    def write(self, cursor, user, ids, vals, context=None):
+        uom_obj = self.pool.get('product.uom')
+        product_obj = self.pool.get('product.product')
+        location_obj = self.pool.get('stock.location')
+        if context is None:
+            context = {}
+
+        if 'state' in vals:
+            for move in self.browse(cursor, user, ids, context=context):
+                if vals['state'] == 'draft':
+                    if move.state in ('assigned', 'done'):
+                        raise ExceptORM('UserError', 'You can not set ' \
+                                'state to draft!')
+                elif vals['state'] == 'waiting':
+                    if move.state in ('cancel', 'assigned', 'done'):
+                        raise ExceptORM('UserError', 'You can not set ' \
+                                'state to waiting!')
+                elif vals['state'] == 'assigned':
+                    if move.state in ('cancel', 'done'):
+                        raise ExceptORM('UserError', 'You can not set ' \
+                                'state to assigned!')
+                elif vals['state'] == 'done':
+                    if move.state in ('cancel'):
+                        raise ExceptORM('UserError', 'You can not set ' \
+                                'state to done!')
+                    if move.type == 'input' \
+                            and move.product.cost_price_method == 'average':
+                        ctx = context.copy()
+                        ctx['locations'] = location_obj.search(cursor, user, [
+                            ('type', 'in', 'storage'),
+                            ], context=context)
+                        product = product_obj.browse(cursor, user,
+                                move.product.id, context=ctx)
+
+                        qty = uom_obj.compute_qty(cursor, user, move.uom,
+                                move.quantity, product.default_uom)
+
+                        if qty > 0:
+                            qty = Decimal(str(qty))
+                            product_qty = Decimal(str(product.quantity))
+                            unit_price = uom_obj.compute_price(cursor, user,
+                                    move.uom, move.unit_price, product.default_uom)
+                            new_cost_price = (\
+                                    (product.cost_price * product_qty) \
+                                    + (unit_price * qty)) \
+                                    / (product_qty + qty)
+                            product_obj.write(cursor, user, product.id, {
+                                'cost_price': new_cost_price,
+                                }, context=context)
+        return super(Move, self).write(cursor, user, ids, vals, context=context)
 
     def unlink(self, cursor, user, ids, context=None):
         move_ids = self.search(
