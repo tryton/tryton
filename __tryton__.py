@@ -12,6 +12,7 @@
         'partner',
         'product',
         'company',
+        'currency',
     ],
     'xml': [
         'product.xml',

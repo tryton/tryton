@@ -6,27 +6,29 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Move" col="6">
-                        <label name="product"/>
-                        <field name="product"/>
-                        <label name="quantity"/>
-                        <field name="quantity"/>
-                        <label name="uom"/>
-                        <field name="uom"/>
+                    <form string="Move" col="4">
                         <label name="from_location"/>
                         <field name="from_location"/>
                         <label name="to_location"/>
                         <field name="to_location"/>
-                        <newline/>
+                        <label name="product"/>
+                        <field name="product"/>
+                        <label name="company"/>
+                        <field name="company"/>
+                        <label name="quantity"/>
+                        <field name="quantity"/>
+                        <label name="uom"/>
+                        <field name="uom"/>
+                        <label name="unit_price"/>
+                        <field name="unit_price"/>
+                        <label name="currency"/>
+                        <field name="currency"/>
                         <label name="planned_date"/>
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
-                        <newline/>
-                        <label name="company"/>
-                        <field name="company"/>
-                        <separator colspan="6"/>
-                        <group col="4" colspan="6">
+                        <separator colspan="4"/>
+                        <group col="4" colspan="4">
                             <label name="state"/>
                             <field name="state"/>
                             <group col="4" colspan="2">
@@ -52,6 +54,7 @@
                                                 ('draft', 'cancel') '''}"/>
                             </group>
                         </group>
+                        <field name="type" invisible="1"/>
                     </form>
                 ]]>
             </field>

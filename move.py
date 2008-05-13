@@ -2,6 +2,7 @@
 from trytond.osv import fields, OSV, ExceptORM
 from trytond.wizard import Wizard, WizardOSV, ExceptWizard
 import time
+from decimal import Decimal
 
 STATES = {
     'readonly': "(state in ('cancel', 'done'))",
@@ -13,24 +14,25 @@ class Move(OSV):
     _name = 'stock.move'
     _description = __doc__
     _rec_name = "product"
-    product = fields.Many2One(
-        "product.product", "Product", required=True, select=1, states=STATES,
-        on_change=['product'])
-    uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,)
-    quantity = fields.Float(
-        "Quantity", digits=(12, 6), required=True,
-        states=STATES,)
-    from_location = fields.Many2One(
-        "stock.location", "From Location", select=1, required=True,
-        states=STATES, domain="[('type', '!=', 'warehouse')]",)
-    to_location = fields.Many2One(
-        "stock.location", "To Location", select=1, required=True,
-        states=STATES, domain="[('type', '!=', 'warehouse')]",)
+    product = fields.Many2One("product.product", "Product", required=True,
+            select=1, states=STATES,
+            on_change=['product', 'type', 'currency', 'uom', 'company'])
+    uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES)
+    quantity = fields.Float("Quantity", digits=(12, 6), required=True,
+            states=STATES)
+    from_location = fields.Many2One("stock.location", "From Location", select=1,
+            required=True, states=STATES,
+            domain=[('type', '!=', 'warehouse')],
+            on_change=['from_location', 'to_location'])
+    to_location = fields.Many2One("stock.location", "To Location", select=1,
+            required=True, states=STATES,
+            domain=[('type', '!=', 'warehouse')],
+            on_change=['from_location', 'to_location'])
     packing_in = fields.Many2One('stock.packing.in', 'Supplier Packing',
             readonly=True, select=1)
     packing_out = fields.Many2One('stock.packing.out', 'Customer Packing',
             readonly=True, select=1)
-    planned_date = fields.Date("Planned Date", states=STATES,)
+    planned_date = fields.Date("Planned Date", states=STATES)
     effective_date = fields.Date("Effective Date", readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -43,6 +45,24 @@ class Move(OSV):
             states={
                 'readonly': "state != 'draft'",
             })
+    unit_price = fields.Numeric('Unit Price', digits=(16, 4),
+            states={
+                'invisible': "type not in ('input', 'output')",
+                'required': "type in ('input', 'output')",
+                'readonly': "state != 'draft'",
+            })
+    currency = fields.Many2One('currency.currency', 'Currency',
+            states={
+                'invisible': "type not in ('input', 'output')",
+                'required': "type in ('input', 'output')",
+                'readonly': "state != 'draft'",
+            })
+    type = fields.Function('get_type', type='selection',
+            selection=[
+                ('input', 'Input'),
+                ('output', 'Output'),
+                ('internal', 'Internal'),
+            ], string='Type')
 
     def __init__(self):
         super(Move, self).__init__()
@@ -116,19 +136,87 @@ class Move(OSV):
                     context=context)[0]
         return False
 
-    def on_change_product(self, cursor, user, ids, value, context=None):
-        if 'product' in value and value['product']:
-            product = self.pool.get('product.product').browse(
-                cursor, user, value['product'])
-            return {'uom': product.default_uom.id}
-        return {}
+    def default_currency(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        currency_obj = self.pool.get('currency.currency')
+        if context is None:
+            context = {}
+        company = None
+        if context.get('company'):
+            company = company_obj.browse(cursor, user, context['company'],
+                    context=context)
+            return currency_obj.name_get(cursor, user, company.currency.id,
+                    context=context)[0]
+        return False
 
-    def set_by_state(self, cursor, user, ids, from_states, values,
+    def get_type(self, cursor, user, ids, name, args, context=None):
+        res = {}
+        for move in self.browse(cursor, user, ids, context=context):
+            res[move.id] = 'internal'
+            if move.from_location.type == 'supplier':
+                res[move.id] = 'input'
+            if move.to_location.type == 'customer':
+                res[move.id] = 'output'
+        return res
+
+    def on_change_product(self, cursor, user, ids, vals, context=None):
+        product_obj = self.pool.get('product.product')
+        uom_obj = self.pool.get('product.uom')
+        currency_obj = self.pool.get('currency.currency')
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        res = {'unit_price': Decimal('0.0')}
+        if vals.get('product'):
+            product = product_obj.browse(cursor, user, vals['product'],
+                    context=context)
+            res['uom'] = uom_obj.name_get(cursor, user,
+                    product.default_uom.id, context=context)[0]
+            if vals.get('type', 'internal') == 'input':
+                unit_price = product.cost_price
+                if vals.get('uom') and vals['uom'] != product.default_uom.id:
+                    unit_price = uom_obj.compute_price(cursor, user,
+                            product.default_uom, unit_price, vals['uom'])
+                if vals.get('currency') and vals.get('company'):
+                    currency = currency_obj.browse(cursor, user,
+                            vals['currency'], context=context)
+                    company = company_obj.browse(cursor, user,
+                            vals['company'], context=context)
+                    unit_price = currency_obj.compute(cursor, user,
+                            company.currency, unit_price, currency,
+                            context=context)
+                res['unit_price'] = unit_price
+        return res
+
+    def _on_change_location(self, cursor, user, ids, vals, context=None):
+        location_obj = self.pool.get('stock.location')
+        res = {'type': 'internal'}
+        if vals.get('from_location'):
+            location = location_obj.browse(cursor, user, vals['from_location'],
+                    context=context)
+            if location.type == 'supplier':
+                res['type'] = 'input'
+        if vals.get('to_location'):
+            location = location_obj.browse(cursor, user, vals['to_location'],
+                    context=context)
+            if location.type == 'customer':
+                res['type'] = 'output'
+        return res
+
+    def on_change_from_location(self, cursor, user, ids, vals, context=None):
+        return self._on_change_location(cursor, user, ids, vals,
+                context=context)
+
+    def on_change_to_location(self, cursor, user, ids, vals, context=None):
+        return self._on_change_location(cursor, user, ids, vals,
+                context=context)
+
+    def set_by_state(self, cursor, user, ids, from_states, valss,
                      context=None):
         move_ids = self.search(
             cursor, user, [('id', 'in', ids),
                            ('state', 'in', from_states)])
-        return self.write(cursor, user, move_ids, values, context=context)
+        return self.write(cursor, user, move_ids, valss, context=context)
 
     def set_state_done(self, cursor, user, ids, context=None):
         self.set_by_state(
