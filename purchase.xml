@@ -142,6 +142,63 @@
         <menuitem parent="menu_purchase" action="act_purchase_form"
             id="menu_purchase_form"/>
 
+        <record model="ir.action.act_window" id="act_purchase_form_draft">
+            <field name="name">Draft Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_draft_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_form_draft"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_draft_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_form_draft"/>
+        </record>
+        <menuitem parent="menu_purchase_form" action="act_purchase_form_draft"
+            id="menu_purchase_form_draft"/>
+
+        <record model="ir.action.act_window" id="act_purchase_form_quotation">
+            <field name="name">Purchases in Quotation</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'quotation')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_quotation_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_form_quotation"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_quotation_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_form_quotation"/>
+        </record>
+        <menuitem parent="menu_purchase_form" action="act_purchase_form_quotation"
+            id="menu_purchase_form_quotation"/>
+
+        <record model="ir.action.act_window" id="act_purchase_form_confirmed">
+            <field name="name">Confirmed Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'confirmed')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_confirmed_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_form_confirmed"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_confirmed_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_form_confirmed"/>
+        </record>
+        <menuitem parent="menu_purchase_form" action="act_purchase_form_confirmed"
+            id="menu_purchase_form_confirmed"/>
+
         <record model="ir.model.access" id="access_purchase">
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
             <field name="perm_read" eval="True"/>
@@ -456,6 +513,19 @@
         <record model="workflow.transition" id="purchase_transition_invoice_packing_done_done">
             <field name="act_from" ref="purchase_activity_invoice_packing_method_done"/>
             <field name="act_to" ref="purchase_activity_done"/>
+        </record>
+
+        <record model="ir.action.report" id="report_purchase">
+            <field name="name">Purchase</field>
+            <field name="model">purchase.purchase</field>
+            <field name="report_name">purchase.purchase</field>
+            <field name="report">purchase/purchase.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_purchase_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">purchase.purchase,0</field>
+            <field name="action" ref="report_purchase"/>
         </record>
 
         <record model="ir.ui.view" id="purchase_line_view_form">
