@@ -95,7 +95,7 @@
 
 
         <record model="ir.action.act_window" id="act_move_form_supp">
-            <field name="name">Moves from suppliers</field>
+            <field name="name">Moves from Suppliers</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
             <field name="domain">[('from_location.type', '=', 'supplier')]</field>
@@ -137,7 +137,7 @@
                   id="menu_move_form_supp_proceed"/>
 
         <record model="ir.action.act_window" id="act_move_form_cust">
-            <field name="name">Moves to customers</field>
+            <field name="name">Moves to Customers</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
             <field name="domain">[('to_location.type', '=', 'customer')]</field>
