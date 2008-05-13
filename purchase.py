@@ -664,7 +664,7 @@ class PurchaseLine(OSV):
         vals['state'] = 'waiting'
         vals['company'] = line.purchase.company.id
         vals['unit_price'] = line.unit_price
-        vals['currency'] = line.currency.id
+        vals['currency'] = line.purchase.currency.id
 
         move_id = move_obj.create(cursor, user, vals, context=context)
 
