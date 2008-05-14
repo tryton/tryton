@@ -250,7 +250,7 @@ class PackingOut(OSV):
                 'readonly':"state in ('ready', 'done')",
             }, context="{'warehouse': warehouse, "\
                     "'packing_state': state, 'type':'inventory_out',}")
-    moves = fields.One2Many('stock.move', 'packing_in', 'Moves',
+    moves = fields.One2Many('stock.move', 'packing_out', 'Moves',
             readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True)
     state = fields.Selection([
