@@ -171,6 +171,10 @@
             <field name="code">CUS</field>
             <field name="type">customer</field>
         </record>
+        <record model="stock.location" id="location_lost_found">
+            <field name="name">Lost and Found</field>
+            <field name="type">lost_found</field>
+        </record>
 
         <record model="ir.property" id="property_supplier_location">
             <field name="name">supplier_location</field>

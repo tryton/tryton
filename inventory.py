@@ -20,7 +20,7 @@ class Inventory(OSV):
     date = fields.DateTime('Date', readonly=True)
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
-        domain="[('type', '=', 'inventory')]", states=STATES,)
+        domain="[('type', '=', 'lost_found')]", states=STATES,)
     lines = fields.One2Many(
         'stock.inventory.line', 'inventory', 'Inventory Lines', states=STATES,)
     moves = fields.Many2Many(
