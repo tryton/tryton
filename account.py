@@ -102,6 +102,8 @@ class AccountTemplate(OSV):
 
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
+    complete_name = fields.Function('get_complete_name', type='char',
+            string='Name')
     code = fields.Char('Code', size=None, select=1)
     type = fields.Many2One('account.account.type', 'Type', required=True,
             domain=[('account_type', '=', True)])
@@ -120,6 +122,35 @@ class AccountTemplate(OSV):
     def __init__(self):
         super(AccountTemplate, self).__init__()
         self._order.insert(0, ('code', 'ASC'))
+
+    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
+        res = self.name_get(cursor, user, ids, context=context)
+        return dict(res)
+
+    def name_search(self, cursor, user, name='', args=None, operator='ilike',
+            context=None, limit=None):
+        if name:
+            ids = self.search(cursor, user,
+                    [('code', 'like', name + '%')] + args,
+                    limit=limit, context=context)
+            if not ids:
+                ids = self.search(cursor, user,
+                        [(self._rec_name, operator, name)] + args,
+                        limit=limit, context=context)
+        else:
+            ids = self.search(cursor, user, args, limit=limit, context=context)
+        res = self.name_get(cursor, user, ids, context=context)
+        return res
+
+    def name_get(self, cursor, user, ids, context=None):
+        if not ids:
+            return []
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        return [(r['id'], r['code'] and r['code'] + ' - ' + str(r[self._rec_name]) \
+                or str(r[self._rec_name])) for r in self.read(cursor, user, ids,
+                    [self._rec_name, 'code'], context=context, load='_classic_write')]
+
 
     def _get_account_value(self, cursor, user, template, context=None):
         res = {}
@@ -171,6 +202,8 @@ class Account(OSV):
 
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
+    complete_name = fields.Function('get_complete_name', type='char',
+            string='Name')
     code = fields.Char('Code', size=None, select=1)
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True)
@@ -253,6 +286,10 @@ class Account(OSV):
                 if i in ids:
                     return False
         return True
+
+    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
+        res = self.name_get(cursor, user, ids, context=context)
+        return dict(res)
 
     def get_currency(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')

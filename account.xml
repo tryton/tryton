@@ -198,6 +198,11 @@
             <field name="sequence" eval="50"/>
             <field name="account_type" eval="True"/>
         </record>
+        <record model="account.account.type" id="account_type_off_balance">
+            <field name="name">Off-Balance</field>
+            <field name="sequence" eval="60"/>
+            <field name="account_type" eval="True"/>
+        </record>
 
         <record model="ir.ui.view" id="account_template_view_form">
             <field name="model">account.account.template</field>
@@ -230,9 +235,10 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Templates">
-                    <field name="name" select="1"/>
-                    <field name="code" select="1"/>
+                    <field name="complete_name"/>
                     <field name="type" select="2"/>
+                    <field name="name" select="1" tree_invisible="1"/>
+                    <field name="code" select="1" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -403,11 +409,12 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Accounts">
-                    <field name="name" select="1"/>
-                    <field name="code" select="1"/>
+                    <field name="complete_name"/>
                     <field name="company" select="2"/>
                     <field name="type" select="2"/>
                     <field name="active" select="2" tree_invisible="1"/>
+                    <field name="name" select="1" tree_invisible="1"/>
+                    <field name="code" select="1" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
