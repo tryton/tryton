@@ -1,22 +1,9 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
-
-        <record model="ir.ui.view" id="inventory_select_init_view_form">
-            <field name="model">stock.inventory.cancel.init</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Cancel Inventory" col="1">
-                    <separator string="Warning"/>
-                    <label string="All generated moves will be cancelled."/>
-                </form>
-                ]]>
-            </field>
-        </record>
-        <record model="ir.action.wizard" id="wizard_inventory_cancel">
-            <field name="name">Cancel Inventory</field>
-            <field name="wiz_name">stock.inventory.cancel</field>
+        <record model="ir.action.wizard" id="wizard_complete_inventory">
+            <field name="name">Complete Inventory</field>
+            <field name="wiz_name">stock.inventory.complete</field>
         </record>
 
         <record model="ir.ui.view" id="inventory_view_form">
@@ -31,17 +18,27 @@
                         <field name="lost_found"/>
                         <label name="date"/>
                         <field name="date"/>
+                        <label colspan="4"/>
+                        <button string="Complete Inventory" type="action"
+                            name="%(wizard_complete_inventory)d"
+                            states="{'readonly': '''state != 'open' '''}"
+                            colspan="2"
+                            help="Add an inventory line for each missing products"/>
                         <field name="lines" colspan="6"/>
                         <group col="4" colspan="6">
                             <label name="state"/>
                             <field name="state"/>
-                            <group colspan="2" col="2">
+                            <group colspan="2" col="3">
+                                <button string="Cancel"
+                                    name="set_state_cancel" type="object"
+                                    states="{'invisible': '''state == 'cancel' '''}"
+                                    confirm="All generated moves will be cancelled!"/>
+                                <button string="Re-Open"
+                                    name="set_state_open" type="object"
+                                    states="{'invisible': '''state != 'cancel' '''}"/>
                                 <button string="Confirm"
                                     name="set_state_done" type="object"
                                     states="{'invisible': '''state in ('done','cancel') '''}"/>
-                                <button string="Cancel"
-                                    name="%(wizard_inventory_cancel)d" type="action"
-                                    states="{'invisible': '''state in ('open','cancel') '''}"/>
                             </group>
                         </group>
                     </form>
@@ -112,16 +109,5 @@
                 ]]>
             </field>
         </record>
-
-        <record model="ir.action.wizard" id="act_complete_inventory">
-            <field name="name">Complete Inventory</field>
-            <field name="wiz_name">stock.inventory.complete</field>
-        </record>
-        <record model="ir.action.keyword" id="act_complete_inventory_keyword">
-            <field name="keyword">form_action</field>
-            <field name="model">stock.inventory,0</field>
-            <field name="action" ref="act_complete_inventory"/>
-        </record>
-
     </data>
 </tryton>

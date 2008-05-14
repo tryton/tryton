@@ -36,8 +36,10 @@ class Inventory(OSV):
         super(Inventory, self).__init__()
         self._order.insert(0, ('date', 'DESC'))
         self._rpc_allowed += [
-            'set_state_done',
-            ]
+                'set_state_cancel',
+                'set_state_open',
+                'set_state_done',
+        ]
 
     def default_state(self, cursor, user, context=None):
         return 'open'
@@ -46,14 +48,29 @@ class Inventory(OSV):
         return datetime.datetime.today()
 
     def set_state_cancel(self, cursor, user, ids, context=None):
+        self.write(cursor, user, ids, {
+            'state': 'cancel',
+            }, context=context)
+
+    def set_state_open(self, cursor, user, ids, context=None):
+        self.write(cursor, user, ids, {
+            'state': 'open',
+            }, context=context)
+
+
+    def set_state_done(self, cursor, user, ids, context=None):
+        self.write(cursor, user, ids, {
+            'state': 'done',
+            }, context=context)
+
+    def _cancel(self, cursor, user, ids, context=None):
         move_obj = self.pool.get("stock.move")
         inventories = self.browse(cursor, user, ids, context=context)
         move_ids = \
             [move.id for inventory in inventories for move in inventory.moves]
-        move_obj.set_state_cancel(cursor, user, move_ids, context=context)
-        self.write(cursor, user, ids, {'state':'cancel'})
+        return move_obj.set_state_cancel(cursor, user, move_ids, context=context)
 
-    def set_state_done(self, cursor, user, ids, context=None):
+    def _done(self, cursor, user, ids, context=None):
         product_obj = self.pool.get('product.product')
         move_obj = self.pool.get('stock.move')
         inventories = self.browse(cursor, user, ids, context=context)
@@ -63,14 +80,16 @@ class Inventory(OSV):
         for inventory in inventories:
             location_ids.append(inventory.location.id)
             inv_by_loc[inventory.location.id] = inventory.id
-        raw_data = product_obj.raw_products_by_location(
-            cursor, user, location_ids, context=context)
+        raw_data = product_obj.raw_products_by_location(cursor, user,
+                location_ids, context=context)
 
         indexed_data = {}
         for location, product, uom, qty in raw_data:
-            indexed_data.setdefault(location,{})[(product,uom)] = qty
+            indexed_data.setdefault(location,{})[(product, uom)] = qty
 
         for inventory in inventories:
+            if inventory.state != 'open':
+                continue
             moves = []
             location_data = indexed_data.get(inventory.location.id, {})
             for line in inventory.lines:
@@ -85,17 +104,14 @@ class Inventory(OSV):
                     (from_location, to_location, delta_qty) = \
                         (to_location, from_location, -delta_qty)
 
-                move_id = move_obj.create(
-                    cursor, user,
-                    {'from_location': from_location,
-                     'to_location': to_location,
-                     'quantity': delta_qty,
-                     'product': line.product.id,
-                     'uom': line.uom.id,
-                     'state': 'done'
-                     },
-                    context=context,
-                    )
+                move_id = move_obj.create(cursor, user, {
+                    'from_location': from_location,
+                    'to_location': to_location,
+                    'quantity': delta_qty,
+                    'product': line.product.id,
+                    'uom': line.uom.id,
+                    'state': 'done',
+                    }, context=context)
                 moves.append(move_id)
             # Create move for all missing products
             for (product, uom), qty in location_data.iteritems():
@@ -107,23 +123,29 @@ class Inventory(OSV):
                     (from_location, to_location, qty) = \
                         (to_location, from_location, -qty)
 
-                move_id = move_obj.create(
-                    cursor, user,
-                    {'from_location': from_location,
-                     'to_location': to_location,
-                     'quantity': qty,
-                     'product': product,
-                     'uom': uom,
-                     'state': 'done'
-                     },
-                    context=context,
-                    )
+                move_id = move_obj.create(cursor, user, {
+                    'from_location': from_location,
+                    'to_location': to_location,
+                    'quantity': qty,
+                    'product': product,
+                    'uom': uom,
+                    'state': 'done',
+                    }, context=context)
                 moves.append(move_id)
 
-        self.write(cursor, user, ids,
-                   {'state':'done',
-                    'date': datetime.datetime.today(),
-                    'moves': [('set',moves)]})
+        return self.write(cursor, user, ids, {
+            'date': datetime.datetime.today(),
+            'moves': [('add', x) for x in moves],
+            }, context=context)
+
+    def write(self, cursor, user, ids, vals, context=None):
+        if 'state' in vals:
+            if vals['state'] == 'done':
+                self._done(cursor, user, ids, context=context)
+            elif vals['state'] == 'cancel':
+                self._cancel(cursor, user, ids, context=context)
+        return super(Inventory, self).write(cursor, user, ids, vals,
+                context=context)
 
 Inventory()
 
@@ -145,6 +167,8 @@ class InventoryLine(OSV):
         self._sql_constraints += [
             ('check_line_qty_pos',
                 'CHECK(quantity >= 0.0)', 'Move quantity must be positive'),
+            ('inventory_product_uniq', 'UNIQUE(inventory, product)',
+                'Product must be unique by inventory!'),
         ]
 
     def on_change_product(self, cursor, user, ids, value, context=None):
@@ -175,7 +199,7 @@ class CompleteInventory(Wizard):
         inventory_obj = self.pool.get('stock.inventory')
         product_obj = self.pool.get('product.product')
         inventories = inventory_obj.browse(cursor, user, data['ids'],
-                                           context=context)
+                context=context)
         location_ids = []
         inv_by_loc = {}
         for inventory in inventories:
@@ -204,40 +228,3 @@ class CompleteInventory(Wizard):
         return {}
 
 CompleteInventory()
-
-
-class CancelInventoryInit(WizardOSV):
-    _name = 'stock.inventory.cancel.init'
-CancelInventoryInit()
-
-
-class CancelInventory(Wizard):
-    'Cancel Inventory'
-    _name = 'stock.inventory.cancel'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'stock.inventory.cancel.init',
-                'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('cancel', 'Ok', 'gtk-ok', True),
-                ],
-            },
-        },
-        'cancel': {
-            'result': {
-                'type': 'action',
-                'action': '_action_cancel',
-                'state': 'end',
-            },
-        },
-    }
-
-    def _action_cancel(self, cursor, user, data, context=None):
-        inventory_obj = self.pool.get('stock.inventory')
-        inventory_obj.set_state_cancel(
-            cursor, user, data['ids'], context=context)
-        return {}
-
-CancelInventory()
