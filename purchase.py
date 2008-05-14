@@ -4,7 +4,7 @@ from trytond.osv import fields, OSV
 from decimal import Decimal
 import datetime
 from trytond.netsvc import LocalService
-from trytond.report import Report
+from trytond.report import CompanyReport
 
 _STATES = {
     'readonly': "state != 'draft'",
@@ -687,20 +687,9 @@ class PurchaseLine(OSV):
 PurchaseLine()
 
 
-class PurchaseReport(Report):
+class PurchaseReport(CompanyReport):
     _name = 'purchase.purchase'
 
-    def parse(self, cursor, user_id, report, objects, datas, context):
-        user_obj = self.pool.get('res.user')
-
-        user = user_obj.browse(cursor, user_id, user_id, context)
-        if context is None:
-            context = {}
-        context = context.copy()
-        context['company'] = user.company
-
-        return super(PurchaseReport, self).parse(cursor, user_id, report,
-                objects, datas, context)
 PurchaseReport()
 
 
