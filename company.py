@@ -3,6 +3,7 @@
 import copy
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
+from trytond.report import Report
 
 
 class Company(OSV):
@@ -158,3 +159,21 @@ class CompanyConfig(Wizard):
         return {}
 
 CompanyConfig()
+
+
+class CompanyReport(Report):
+
+    def parse(self, cursor, user_id, report, objects, datas, context):
+        user_obj = self.pool.get('res.user')
+
+        user = user_obj.browse(cursor, user_id, user_id, context)
+        if context is None:
+            context = {}
+        context = context.copy()
+        context['company'] = user.company
+
+        return super(CompanyReport, self).parse(cursor, user_id, report,
+                objects, datas, context)
+
+import trytond.report
+trytond.report.CompanyReport = CompanyReport
