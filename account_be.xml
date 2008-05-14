@@ -1,0 +1,402 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="account.account.template" id="root">
+            <field name="name">Belgium Chart</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+        </record>
+
+        <record model="account.account.template" id="0">
+            <field name="name">Droits &amp; engagements hors bilan</field>
+            <field name="code">0</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('root'))]"/>
+        </record>
+
+        <record model="account.account.template" id="00">
+            <field name="name">Garanties constituees par des tiers pour compte de l'entreprise</field>
+            <field name="code">00</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('0'))]"/>
+        </record>
+
+        <record model="account.account.template" id="000">
+            <field name="name">Créanciers, bénéficiaires de garanties de tiers</field>
+            <field name="code">000</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('00'))]"/>
+        </record>
+
+        <record model="account.account.template" id="001">
+            <field name="name">Tiers constituants de garanties pour compte de l'entreprise</field>
+            <field name="code">001</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('00'))]"/>
+        </record>
+
+        <record model="account.account.template" id="01">
+            <field name="name">Garanties constituees pour compte de tiers</field>
+            <field name="code">01</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('0'))]"/>
+        </record>
+
+        <record model="account.account.template" id="010">
+            <field name="name">Débiteurs pour engagements sur effets</field>
+            <field name="code">010</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('01'))]"/>
+        </record>
+
+        <record model="account.account.template" id="011">
+            <field name="name">Créanciers d'engagements sur effets</field>
+            <field name="code">011</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('01'))]"/>
+        </record>
+
+        <record model="account.account.template" id="0110">
+            <field name="name">Effets cédés par l'entreprise sous endos</field>
+            <field name="code">0110</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('011'))]"/>
+        </record>
+
+        <record model="account.account.template" id="0111">
+            <field name="name">Autres engagements sur effets en circulation</field>
+            <field name="code">0111</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('011'))]"/>
+        </record>
+
+        <record model="account.account.template" id="012">
+            <field name="name">Débiteurs pour autres garanties personnelles</field>
+            <field name="code">012</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('01'))]"/>
+        </record>
+
+        <record model="account.account.template" id="013">
+            <field name="name">Créanciers d'autres garanties personnelles</field>
+            <field name="code">013</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('01'))]"/>
+        </record>
+
+        <record model="account.account.template" id="02">
+            <field name="name">Garanties reelles constituees sur avoirs propres</field>
+            <field name="code">02</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('0'))]"/>
+        </record>
+
+        <record model="account.account.template" id="020">
+            <field name="name">Créanciers de l'entreprise, bénéficiaires de garanties réelles</field>
+            <field name="code">020</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('02'))]"/>
+        </record>
+
+        <record model="account.account.template" id="021">
+            <field name="name">Garanties réelles constituées pour compte propre</field>
+            <field name="code">021</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('02'))]"/>
+        </record>
+
+        <record model="account.account.template" id="022">
+            <field name="name">Créanciers de tiers, bénéficiaires de garanties réelles</field>
+            <field name="code">022</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('02'))]"/>
+        </record>
+
+        <record model="account.account.template" id="023">
+            <field name="name">Garanties réelles constituées pour compte de tiers</field>
+            <field name="code">023</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('02'))]"/>
+        </record>
+
+        <record model="account.account.template" id="03">
+            <field name="name">Garanties reçues</field>
+            <field name="code">03</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('0'))]"/>
+        </record>
+
+        <record model="account.account.template" id="030">
+            <field name="name">Dépôts statutaires</field>
+            <field name="code">030</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('03'))]"/>
+        </record>
+
+        <record model="account.account.template" id="031">
+            <field name="name">Déposants statutaires</field>
+            <field name="code">031</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('03'))]"/>
+        </record>
+
+        <record model="account.account.template" id="032">
+            <field name="name">Garanties reçues</field>
+            <field name="code">032</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('03'))]"/>
+        </record>
+
+        <record model="account.account.template" id="033">
+            <field name="name">Constituants de garanties</field>
+            <field name="code">033</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('03'))]"/>
+        </record>
+
+        <record model="account.account.template" id="04">
+            <field name="name">Biens et valeurs detenus par des tiers en leur nom mais aux risques et profits de l'entreprise</field>
+            <field name="code">04</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('0'))]"/>
+        </record>
+
+        <record model="account.account.template" id="040">
+            <field name="name">Tiers, détenteurs en leur nom mais aux risques et profits de l'entreprise de biens et de valeurs</field>
+            <field name="code">040</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('04'))]"/>
+        </record>
+
+        <record model="account.account.template" id="041">
+            <field name="name">Biens et valeurs détenus par des tiers en leur nom mais aux risques et profits de l'entreprise</field>
+            <field name="code">041</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('04'))]"/>
+        </record>
+
+        <record model="account.account.template" id="05">
+            <field name="name">Engagements d'acquisition et de cession d'immobilisation</field>
+            <field name="code">05</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('0'))]"/>
+        </record>
+
+        <record model="account.account.template" id="050">
+            <field name="name">Engagements d'acquisition</field>
+            <field name="code">050</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('05'))]"/>
+        </record>
+
+        <record model="account.account.template" id="051">
+            <field name="name">Créanciers d'engagements d'acquisition</field>
+            <field name="code">051</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('05'))]"/>
+        </record>
+
+        <record model="account.account.template" id="052">
+            <field name="name">Débiteurs pour engagements de cession</field>
+            <field name="code">052</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('05'))]"/>
+        </record>
+
+        <record model="account.account.template" id="053">
+            <field name="name">Engagements de cession</field>
+            <field name="code">053</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('05'))]"/>
+        </record>
+
+        <record model="account.account.template" id="06">
+            <field name="name">Marches à terme</field>
+            <field name="code">06</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('0'))]"/>
+        </record>
+
+        <record model="account.account.template" id="060">
+            <field name="name">Marchandises achetées à terme - à recevoir</field>
+            <field name="code">060</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('06'))]"/>
+        </record>
+
+        <record model="account.account.template" id="061">
+            <field name="name">Créanciers pour marchandises achetées à terme</field>
+            <field name="code">061</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('06'))]"/>
+        </record>
+
+        <record model="account.account.template" id="062">
+            <field name="name">Débiteurs pour marchandises vendues à terme - à livrer</field>
+            <field name="code">062</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('06'))]"/>
+        </record>
+
+        <record model="account.account.template" id="063">
+            <field name="name">Marchandises vendues à terme - à livrer</field>
+            <field name="code">063</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('06'))]"/>
+        </record>
+
+        <record model="account.account.template" id="064">
+            <field name="name">Devises achetées à terme - à recevoir</field>
+            <field name="code">064</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('06'))]"/>
+        </record>
+
+        <record model="account.account.template" id="065">
+            <field name="name">Créanciers pour devises achetées à terme</field>
+            <field name="code">065</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('06'))]"/>
+        </record>
+
+        <record model="account.account.template" id="067">
+            <field name="name">Débiteurs pour devises vendues à terme</field>
+            <field name="code">067</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('06'))]"/>
+        </record>
+
+        <record model="account.account.template" id="068">
+            <field name="name">Devises vendues à terme - à livrer</field>
+            <field name="code">068</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('06'))]"/>
+        </record>
+
+        <record model="account.account.template" id="07">
+            <field name="name">Biens et valeurs de tiers detenus par l'entreprise</field>
+            <field name="code">07</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('0'))]"/>
+        </record>
+
+        <record model="account.account.template" id="070">
+            <field name="name">Droits d'usage à long terme</field>
+            <field name="code">070</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('07'))]"/>
+        </record>
+
+        <record model="account.account.template" id="0700">
+            <field name="name">Sur terrains et constructions</field>
+            <field name="code">0700</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('070'))]"/>
+        </record>
+
+        <record model="account.account.template" id="0701">
+            <field name="name">Sur installations, machines et outillage</field>
+            <field name="code">0701</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('070'))]"/>
+        </record>
+
+        <record model="account.account.template" id="0702">
+            <field name="name">Sur mobilier et matériel roulant</field>
+            <field name="code">0702</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('070'))]"/>
+        </record>
+
+        <record model="account.account.template" id="071">
+            <field name="name">Créanciers de loyers et redevances</field>
+            <field name="code">071</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('07'))]"/>
+        </record>
+
+        <record model="account.account.template" id="072">
+            <field name="name">Biens et valeurs de tiers reçus en dépôt, en consignation, ou à façon</field>
+            <field name="code">072</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('07'))]"/>
+        </record>
+
+        <record model="account.account.template" id="073">
+            <field name="name">Commettants et déposants de biens et valeurs</field>
+            <field name="code">073</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('07'))]"/>
+        </record>
+
+        <record model="account.account.template" id="074">
+            <field name="name">Biens et valeurs détenus pour compte ou aux risques et profits de tiers</field>
+            <field name="code">074</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('07'))]"/>
+        </record>
+
+        <record model="account.account.template" id="075">
+            <field name="name">Créanciers de biens et valeurs détenus pour compte de tiers ou à leurs risques et profits</field>
+            <field name="code">075</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('07'))]"/>
+        </record>
+
+        <record model="account.account.template" id="09">
+            <field name="name">Droits et engagements divers</field>
+            <field name="code">09</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parents" eval="[('add', ref('0'))]"/>
+        </record>
+    </data>
+</tryton>
