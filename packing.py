@@ -398,7 +398,8 @@ class PackingOut(OSV):
                     'product': move.product.id,
                     'uom': move.uom.id,
                     'quantity': move.quantity,
-                    'outgoing_packing_out': packing.id,
+                    'packing_out': packing.id,
+                    'type': 'output',
                     'state': 'waiting',
                     }, context=context)
 
