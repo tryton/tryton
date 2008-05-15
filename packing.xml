@@ -178,12 +178,16 @@
                     <form string="Supplier Packing" col="4">
                         <label name="code"/>
                         <field name="code"/>
-                        <label name="effective_date"/>
-                        <field name="effective_date"/>
+                        <label name="customer_address"/>
+                        <field name="customer_address"/>
                         <label name="warehouse"/>
                         <field name="warehouse"/>
                         <label name="customer_location"/>
                         <field name="customer_location"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
                         <notebook colspan="4">
                             <page string="Inventory Moves">
                                 <field name="inventory_moves" colspan="4"/>
@@ -229,7 +233,9 @@
                     <tree string="Customer Packings">
                         <field name="code" select="1"/>
                         <field name="state" select="1"/>
+                        <field name="planned_date" select="2"/>
                         <field name="effective_date" select="2"/>
+                        <field name="customer_address"/>
                     </tree>
                 ]]>
             </field>
