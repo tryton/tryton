@@ -536,7 +536,8 @@ class PackingOut(OSV):
             for location in parent_to_locations[move.from_location.id]:
                 qty = self._location_amount(
                     cursor, user, move.uom.id,
-                    processed_data[(move.from_location.id, move.product.id)],
+                    processed_data.get(
+                        (move.from_location.id, move.product.id), []),
                     uom_index, context=context,)
                 location_qties.append((location, qty))
 
