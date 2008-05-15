@@ -401,6 +401,7 @@ class PackingOut(OSV):
                     'packing_out': packing.id,
                     'type': 'output',
                     'state': 'waiting',
+                    'company': move.company.id,
                     }, context=context)
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
