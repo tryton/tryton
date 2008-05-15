@@ -498,5 +498,20 @@
             <field name="signal">signal_cancel</field>
         </record>
 
+
+        <record model="ir.action.report" id="report_packing_out">
+            <field name="name">Supplier Packing</field>
+            <field name="model">stock.packing.out</field>
+            <field name="report_name">stock.packing.out</field>
+            <field name="report">stock/packing_out.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_packing_out_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.packing.out,0</field>
+            <field name="action" ref="report_packing_out"/>
+        </record>
+
     </data>
 </tryton>

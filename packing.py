@@ -4,6 +4,7 @@ from trytond.wizard import Wizard, WizardOSV
 import time
 from trytond.netsvc import LocalService
 import datetime
+from trytond.report import CompanyReport
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -639,3 +640,9 @@ class SelectMove(Wizard):
         return {}
 
 SelectMove()
+
+
+class PackingOutReport(CompanyReport):
+    _name = 'stock.packing.out'
+
+PackingOutReport()
