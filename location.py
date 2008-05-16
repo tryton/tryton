@@ -22,7 +22,7 @@ class Location(OSV):
     type = fields.Selection([
         ('supplier', 'Supplier'),
         ('customer', 'Customer'),
-        ('inventory', 'Inventory'),
+        ('lost_found', 'Lost and Found'),
         ('warehouse', 'Warehouse'),
         ('storage', 'Storage'),
         ('production', 'Production'),
