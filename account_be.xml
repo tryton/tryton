@@ -398,5 +398,813 @@
             <field name="type" ref="account.account_type_off_balance"/>
             <field name="parents" eval="[('add', ref('0'))]"/>
         </record>
+
+        <record model="account.account.template" id="1">
+            <field name="name">Fonds propres, provisions pour risques &amp; charges et Dettes à plus d'un an</field>
+            <field name="code">1</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('root'))]"/>
+        </record>
+
+        <record model="account.account.template" id="10">
+            <field name="name">Capital</field>
+            <field name="code">10</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1'))]"/>
+        </record>
+
+        <record model="account.account.template" id="100">
+            <field name="name">Capital souscrit ou capital personnel</field>
+            <field name="code">100</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('10'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1000">
+            <field name="name">Capital non amorti</field>
+            <field name="code">1000</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('100'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1001">
+            <field name="name">Capital amorti</field>
+            <field name="code">1001</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('100'))]"/>
+        </record>
+
+        <record model="account.account.template" id="101">
+            <field name="name">Capital non appelé</field>
+            <field name="code">101</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('10'))]"/>
+        </record>
+
+        <record model="account.account.template" id="109">
+            <field name="name">Compte de l'exploitant</field>
+            <field name="code">109</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('10'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1090">
+            <field name="name">Opérations courantes</field>
+            <field name="code">1090</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('109'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1091">
+            <field name="name">Impôts personnels</field>
+            <field name="code">1091</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('109'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1092">
+            <field name="name">Rémunérations et autres avantages</field>
+            <field name="code">1092</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('109'))]"/>
+        </record>
+
+        <record model="account.account.template" id="11">
+            <field name="name">Primes d'émission</field>
+            <field name="code">11</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1'))]"/>
+        </record>
+
+        <record model="account.account.template" id="12">
+            <field name="name">Plus-values de réévaluation</field>
+            <field name="code">12</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1'))]"/>
+        </record>
+
+        <record model="account.account.template" id="120">
+            <field name="name">Plus-values de réévaluation sur immobilisations incorporelles</field>
+            <field name="code">120</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('12'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1200">
+            <field name="name">Plus-values de réévaluation</field>
+            <field name="code">1200</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('120'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1201">
+            <field name="name">Reprises de réductions de valeur</field>
+            <field name="code">1201</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('120'))]"/>
+        </record>
+
+        <record model="account.account.template" id="121">
+            <field name="name">Plus-values de réévaluation sur immobilisations corporelles</field>
+            <field name="code">121</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('12'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1210">
+            <field name="name">Plus-values de réévaluation</field>
+            <field name="code">1210</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('121'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1211">
+            <field name="name">Reprises de réductions de valeur</field>
+            <field name="code">1211</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('121'))]"/>
+        </record>
+
+        <record model="account.account.template" id="122">
+            <field name="name">Plus-values de réévaluation sur immobilisations financières</field>
+            <field name="code">122</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('12'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1220">
+            <field name="name">Plus-values de réévaluation</field>
+            <field name="code">1220</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('122'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1221">
+            <field name="name">Reprises de réductions de valeur</field>
+            <field name="code">1221</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('122'))]"/>
+        </record>
+
+        <record model="account.account.template" id="123">
+            <field name="name">Plus-values de réévaluation sur stocks</field>
+            <field name="code">123</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('12'))]"/>
+        </record>
+
+        <record model="account.account.template" id="124">
+            <field name="name">Reprises de réductions de valeur sur placements de trésorerie</field>
+            <field name="code">124</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('12'))]"/>
+        </record>
+
+        <record model="account.account.template" id="13">
+            <field name="name">Reserves</field>
+            <field name="code">13</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1'))]"/>
+        </record>
+
+        <record model="account.account.template" id="130">
+            <field name="name">Réserve légale</field>
+            <field name="code">130</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('13'))]"/>
+        </record>
+
+        <record model="account.account.template" id="131">
+            <field name="name">Réserves indisponibles</field>
+            <field name="code">131</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('13'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1310">
+            <field name="name">Réserve pour actions propres</field>
+            <field name="code">1310</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('131'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1311">
+            <field name="name">Autres réserves indisponibles</field>
+            <field name="code">1311</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('131'))]"/>
+        </record>
+
+        <record model="account.account.template" id="132">
+            <field name="name">Réserves immunisées</field>
+            <field name="code">132</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('13'))]"/>
+        </record>
+
+        <record model="account.account.template" id="133">
+            <field name="name">Réserves disponibles</field>
+            <field name="code">133</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('13'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1330">
+            <field name="name">Réserve pour régularisation de dividendes</field>
+            <field name="code">1330</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('133'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1331">
+            <field name="name">Réserve pour renouvellement des immobilisations</field>
+            <field name="code">1331</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('133'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1332">
+            <field name="name">Réserve pour installations en faveur du personnel</field>
+            <field name="code">1332</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('133'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1333">
+            <field name="name">Réserves libres</field>
+            <field name="code">1333</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('133'))]"/>
+        </record>
+
+        <record model="account.account.template" id="14">
+            <field name="name">Bénéfice reporté (ou perte reportée)</field>
+            <field name="code">14</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1'))]"/>
+        </record>
+
+        <record model="account.account.template" id="140">
+            <field name="name">Bénéfice reporté</field>
+            <field name="code">140</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('14'))]"/>
+        </record>
+
+        <record model="account.account.template" id="141">
+            <field name="name">Perte reportée (-)</field>
+            <field name="code">141</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('14'))]"/>
+        </record>
+
+        <record model="account.account.template" id="15">
+            <field name="name">Subsides en capital</field>
+            <field name="code">15</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1'))]"/>
+        </record>
+
+        <record model="account.account.template" id="150">
+            <field name="name">Montants obtenus</field>
+            <field name="code">150</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('15'))]"/>
+        </record>
+
+        <record model="account.account.template" id="151">
+            <field name="name">Montants transférés aux résultats</field>
+            <field name="code">151</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('15'))]"/>
+        </record>
+
+        <record model="account.account.template" id="16">
+            <field name="name">Provisions pour risques et charges</field>
+            <field name="code">16</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1'))]"/>
+        </record>
+
+        <record model="account.account.template" id="160">
+            <field name="name">Provisions pour pensions et obligations similaires</field>
+            <field name="code">160</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('16'))]"/>
+        </record>
+
+        <record model="account.account.template" id="161">
+            <field name="name">Provisions pour charges fiscales</field>
+            <field name="code">161</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('16'))]"/>
+        </record>
+
+        <record model="account.account.template" id="162">
+            <field name="name">Provisions pour grosses réparations et gros entretiens</field>
+            <field name="code">162</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('16'))]"/>
+        </record>
+
+        <record model="account.account.template" id="163-169">
+            <field name="name">Provisions pour autres risques et charges</field>
+            <field name="code">163-169</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('16'))]"/>
+        </record>
+
+        <record model="account.account.template" id="164">
+            <field name="name">Provisions pour sûretés personnelles ou réelles constituées à l'appui de dettes et d'engagements de tiers</field>
+            <field name="code">164</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('163-169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="165">
+            <field name="name">Provisions pour engagements relatifs à l'acquisition ou à la cession d'immobilisations</field>
+            <field name="code">165</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('163-169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="166">
+            <field name="name">Provisions pour exécution de commandes passées ou reçues</field>
+            <field name="code">166</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('163-169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="167">
+            <field name="name">Provisions pour positions et marchés à terme en devises ou positions et marchés à terme en marchandises</field>
+            <field name="code">167</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('163-169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="168">
+            <field name="name">Provisions pour garanties techniques attachées aux ventes et prestations déjà effectuées par l'entreprise</field>
+            <field name="code">168</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('163-169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="169">
+            <field name="name">Provisions pour autres risques et charges</field>
+            <field name="code">169</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('163-169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1690">
+            <field name="name">Pour litiges en cours</field>
+            <field name="code">1690</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1691">
+            <field name="name">Pour amendes, doubles droits, pénalités</field>
+            <field name="code">1691</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1692">
+            <field name="name">Pour propre assureur</field>
+            <field name="code">1692</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1693">
+            <field name="name">Pour risques inhérents aux opérations de crédits à moyen ou long terme</field>
+            <field name="code">1693</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1695">
+            <field name="name">Provision pour charge de liquidation</field>
+            <field name="code">1695</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1696">
+            <field name="name">Provision pour départ de personnel</field>
+            <field name="code">1696</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1699">
+            <field name="name">Pour risques divers</field>
+            <field name="code">1699</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('169'))]"/>
+        </record>
+
+        <record model="account.account.template" id="17">
+            <field name="name">Dettes à plus d'un an</field>
+            <field name="code">17</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1'))]"/>
+        </record>
+
+        <record model="account.account.template" id="170">
+            <field name="name">Emprunts subordonnés</field>
+            <field name="code">170</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('17'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1700">
+            <field name="name">Convertibles</field>
+            <field name="code">1700</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('170'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1701">
+            <field name="name">Non convertibles</field>
+            <field name="code">1701</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('170'))]"/>
+        </record>
+
+        <record model="account.account.template" id="171">
+            <field name="name">Emprunts obligataires non subordonnés</field>
+            <field name="code">171</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('17'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1710">
+            <field name="name">Convertibles</field>
+            <field name="code">1710</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('171'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1711">
+            <field name="name">Non convertibles</field>
+            <field name="code">1711</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('171'))]"/>
+        </record>
+
+        <record model="account.account.template" id="172">
+            <field name="name">Dettes de location-financement et assimilés</field>
+            <field name="code">172</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('17'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1720">
+            <field name="name">Dettes de location-financement de biens immobiliers</field>
+            <field name="code">1720</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('172'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1721">
+            <field name="name">Dettes de location-financement de biens mobiliers</field>
+            <field name="code">1721</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('172'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1722">
+            <field name="name">Dettes sur droits réels sur immeubles</field>
+            <field name="code">1722</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('172'))]"/>
+        </record>
+
+        <record model="account.account.template" id="173">
+            <field name="name">Etablissements de crédit</field>
+            <field name="code">173</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('17'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1730">
+            <field name="name">Dettes en compte</field>
+            <field name="code">1730</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('173'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1731">
+            <field name="name">Promesses</field>
+            <field name="code">1731</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('173'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1732">
+            <field name="name">Crédits d'acceptation</field>
+            <field name="code">1732</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('173'))]"/>
+        </record>
+
+        <record model="account.account.template" id="174">
+            <field name="name">Autres emprunts</field>
+            <field name="code">174</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175">
+            <field name="name">Dettes commerciales</field>
+            <field name="code">175</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('17'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1750">
+            <field name="name">Fournisseurs : dettes en compte</field>
+            <field name="code">1750</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('175'))]"/>
+        </record>
+
+        <record model="account.account.template" id="17500">
+            <field name="name">Entreprises apparentées</field>
+            <field name="code">17500</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1750'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175000">
+            <field name="name">Entreprises liées</field>
+            <field name="code">175000</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17500'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175001">
+            <field name="name">Entreprises avec lesquelles il existe un lien de participation</field>
+            <field name="code">175001</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17500'))]"/>
+        </record>
+
+        <record model="account.account.template" id="17501">
+            <field name="name">Fournisseurs ordinaires</field>
+            <field name="code">17501</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1750'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175010">
+            <field name="name">Fournisseurs belges</field>
+            <field name="code">175010</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17501'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175011">
+            <field name="name">Fournisseurs C.E.E.</field>
+            <field name="code">175011</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17501'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175012">
+            <field name="name">Fournisseurs importation</field>
+            <field name="code">175012</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17501'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1751">
+            <field name="name">Effets à payer</field>
+            <field name="code">1751</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('175'))]"/>
+        </record>
+
+        <record model="account.account.template" id="17510">
+            <field name="name">Entreprises apparentées</field>
+            <field name="code">17510</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1751'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175100">
+            <field name="name">Entreprises liées</field>
+            <field name="code">175100</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17510'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175101">
+            <field name="name">Entreprises avec lesquelles il existe un lien de participation</field>
+            <field name="code">175101</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17510'))]"/>
+        </record>
+
+        <record model="account.account.template" id="17511">
+            <field name="name">Fournisseurs ordinaires</field>
+            <field name="code">17511</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1751'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175110">
+            <field name="name">Fournisseurs belges</field>
+            <field name="code">175110</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17511'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175111">
+            <field name="name">Fournisseurs C.E.E.</field>
+            <field name="code">175111</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17511'))]"/>
+        </record>
+
+        <record model="account.account.template" id="175112">
+            <field name="name">Fournisseurs importation</field>
+            <field name="code">175112</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17511'))]"/>
+        </record>
+
+        <record model="account.account.template" id="176">
+            <field name="name">Acomptes reçus sur commandes</field>
+            <field name="code">176</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17'))]"/>
+        </record>
+
+        <record model="account.account.template" id="178">
+            <field name="name">Cautionnements reçus en numéraires</field>
+            <field name="code">178</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('17'))]"/>
+        </record>
+
+        <record model="account.account.template" id="179">
+            <field name="name">Dettes diverses</field>
+            <field name="code">179</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('17'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1790">
+            <field name="name">Entreprises liées</field>
+            <field name="code">1790</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('179'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1791">
+            <field name="name">Autres entreprises avec lesquelles il existe un lien de participation</field>
+            <field name="code">1791</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('179'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1792">
+            <field name="name">Administrateurs, gérants, associés</field>
+            <field name="code">1792</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('179'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1794">
+            <field name="name">Rentes viagères capitalisées</field>
+            <field name="code">1794</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('179'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1798">
+            <field name="name">Dettes envers les coparticipants des associations momentanées et en participation</field>
+            <field name="code">1798</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('179'))]"/>
+        </record>
+
+        <record model="account.account.template" id="1799">
+            <field name="name">Autres dettes diverses</field>
+            <field name="code">1799</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('179'))]"/>
+        </record>
+
+        <record model="account.account.template" id="18">
+            <field name="name">Comptes de liaison des établissements et succursales</field>
+            <field name="code">18</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('1'))]"/>
+        </record>
     </data>
 </tryton>
