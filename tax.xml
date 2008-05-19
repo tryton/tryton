@@ -88,7 +88,7 @@
             <field name="name">Tax Codes</field>
             <field name="res_model">account.tax.code</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('company', '=', company), ('parent', '=', False)]</field>
+            <field name="domain">[('company', '=', locals().get('company', False)), ('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_code_tree2_view1">
             <field name="sequence" eval="10"/>
@@ -205,7 +205,7 @@
             <field name="name">Taxes</field>
             <field name="res_model">account.tax</field>
             <field name="view_type">form</field>
-            <field name="domain">[('company', '=', company), ('parent', '=', False)]</field>
+            <field name="domain">[('company', '=', locals().get('company', False)), ('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_form_view1">
             <field name="sequence" eval="10"/>
@@ -223,7 +223,7 @@
             <field name="name">Taxes</field>
             <field name="res_model">account.tax</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('company', '=', company), ('parent', '=', False)]</field>
+            <field name="domain">[('company', '=', locals().get('company', False)), ('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_tree_view1">
             <field name="sequence" eval="10"/>
