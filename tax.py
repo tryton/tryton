@@ -207,11 +207,11 @@ class Tax(OSV):
     amount = fields.Numeric('Amount', digits=(16, 2),
             states={
                 'invisible': "type != 'fixed'",
-            }, invisible=True)
+            }, help='In company\'s currency')
     percentage = fields.Numeric('Percentage', digits=(16, 8),
             states={
                 'invisible': "type != 'percentage'",
-            })
+            }, help='In %')
     type = fields.Selection([
         ('percentage', 'Percentage'),
         ('fixed', 'Fixed'),
@@ -319,7 +319,7 @@ class Tax(OSV):
 
     def _process_tax(self, cursor, user, tax, price_unit, context=None):
         if tax.type == 'percentage':
-            amount = price_unit * tax.percentage
+            amount = price_unit * tax.percentage / Decimal('100')
             return {
                 'base': price_unit,
                 'amount': amount,
