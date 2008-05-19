@@ -1742,16 +1742,16 @@ class FiscalYear(OSV):
     _name = 'account.fiscalyear'
     out_invoice_sequence = fields.Many2One('ir.sequence',
             'Customer Invoice Sequence', required=True,
-            domain="[('code', '=', 'account.invoice.out_invoice')]")
+            domain="[('code', '=', 'account.invoice')]")
     in_invoice_sequence = fields.Many2One('ir.sequence',
             'Supplier Invoice Sequence', required=True,
-            domain="[('code', '=', 'account.invoice.in_invoice')]")
+            domain="[('code', '=', 'account.invoice')]")
     out_refund_sequence = fields.Many2One('ir.sequence',
             'Customer Refund Sequence', required=True,
-            domain="[('code', '=', 'account.invoice.out_refund')]")
+            domain="[('code', '=', 'account.invoice')]")
     in_refund_sequence = fields.Many2One('ir.sequence',
             'Supplier Refund Sequence', required=True,
-            domain="[('code', '=', 'account.invoice.in_refund')]")
+            domain="[('code', '=', 'account.invoice')]")
 
     def __init__(self):
         super(FiscalYear, self).__init__()
@@ -1803,16 +1803,16 @@ class Period(OSV):
     _name = 'account.period'
     out_invoice_sequence = fields.Many2One('ir.sequence',
             'Customer Invoice Sequence', required=True,
-            domain="[('code', '=', 'account.invoice.out_invoice')]")
+            domain="[('code', '=', 'account.invoice')]")
     in_invoice_sequence = fields.Many2One('ir.sequence',
             'Supplier Invoice Sequence', required=True,
-            domain="[('code', '=', 'account.invoice.in_invoice')]")
+            domain="[('code', '=', 'account.invoice')]")
     out_refund_sequence = fields.Many2One('ir.sequence',
             'Customer Refund Sequence', required=True,
-            domain="[('code', '=', 'account.invoice.out_refund')]")
+            domain="[('code', '=', 'account.invoice')]")
     in_refund_sequence = fields.Many2One('ir.sequence',
             'Supplier Refund Sequence', required=True,
-            domain="[('code', '=', 'account.invoice.in_refund')]")
+            domain="[('code', '=', 'account.invoice')]")
 
     def __init__(self):
         super(Period, self).__init__()

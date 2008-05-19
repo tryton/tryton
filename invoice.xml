@@ -412,21 +412,9 @@
             <field name="report">account_invoice/invoice.odt</field>
             <field name="style">company/header_A4.odt</field>
         </record>
-        <record model="ir.sequence.type" id="sequence_type_account_invoice_out_invoice">
-            <field name="name">Customer Invoice</field>
-            <field name="code">account.invoice.out_invoice</field>
-        </record>
-        <record model="ir.sequence.type" id="sequence_type_account_invoice_in_invoice">
-            <field name="name">Supplier Invoice</field>
-            <field name="code">account.invoice.in_invoice</field>
-        </record>
-        <record model="ir.sequence.type" id="sequence_type_account_invoice_out_refund">
-            <field name="name">Customer Refund</field>
-            <field name="code">account.invoice.out_refund</field>
-        </record>
-        <record model="ir.sequence.type" id="sequence_type_account_invoice_in_refund">
-            <field name="name">Supplier Refund</field>
-            <field name="code">account.invoice.in_refund</field>
+        <record model="ir.sequence.type" id="sequence_type_account_invoice">
+            <field name="name">Invoice</field>
+            <field name="code">account.invoice</field>
         </record>
         <record model="workflow" id="invoice_workflow">
             <field name="name">Invoice workflow</field>
