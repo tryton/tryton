@@ -503,7 +503,7 @@
 
 
         <record model="ir.action.report" id="report_packing_out">
-            <field name="name">Supplier Packing</field>
+            <field name="name">Customer Packing</field>
             <field name="model">stock.packing.out</field>
             <field name="report_name">stock.packing.out</field>
             <field name="report">stock/packing_out.odt</field>
