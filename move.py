@@ -245,6 +245,9 @@ class Move(OSV):
         if context is None:
             context = {}
 
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
         if 'state' in vals:
             for move in self.browse(cursor, user, ids, context=context):
                 if vals['state'] == 'draft':
