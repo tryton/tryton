@@ -19,6 +19,13 @@ class PackingIn(OSV):
 
     effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime('Planned Date', readonly=True)
+    supplier = fields.Many2One(
+        'partner.partner', 'Supplier',
+        states={'readonly': "state != 'draft'",}, on_change=['supplier',])
+    contact_address = fields.Many2One(
+        'partner.address', 'Contact Address',
+        states={'readonly': "state != 'draft'",},
+        domain="[('partner', '=', supplier)]")
     warehouse = fields.Many2One('stock.location', "Warehouse",
             required=True, states=STATES, domain="[('type', '=', 'warehouse')]")
     incoming_moves = fields.Function('get_incoming_moves', type='one2many',
@@ -54,6 +61,14 @@ class PackingIn(OSV):
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
+
+    def on_change_supplier(self, cursor, user, ids, values, context=None):
+        if not values.get('supplier'):
+            return {}
+        partner_obj = self.pool.get("partner.partner")
+        address_id = partner_obj.address_get(cursor, user, values['supplier'],
+                                          context=context)
+        return {'contact_address': address_id}
 
     def get_incoming_moves(self, cursor, user, ids, name, arg, context=None):
         res = {}
@@ -593,6 +608,8 @@ class PackingOut(OSV):
         workflow_service = LocalService('workflow')
         for packing in self.browse(cursor, user, ids, context=context):
             workflow_service.trg_create(user, self._name, packing.id, cursor)
+            self.write(
+                cursor, user, packing.id, {'state':'draft'}, context=context)
 
 PackingOut()
 
