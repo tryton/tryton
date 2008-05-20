@@ -649,4 +649,25 @@ SelectMove()
 class PackingOutReport(CompanyReport):
     _name = 'stock.packing.out'
 
+    def parse(self, cursor, user, report, objects, datas, context):
+        if context is None:
+            context = {}
+        context = context.copy()
+        context['product_id2name'] = {}
+        context['product_names'] = lambda moves, lang: self.product_names(
+                cursor, user, moves, lang, context)
+        return super(PackingOutReport, self).parse(cursor, user, report,
+                objects, datas, context)
+
+    def product_names(self, cursor, user, moves, lang, context):
+        product_obj = self.pool.get('product.product')
+        ctx = context.copy()
+        ctx['language'] = lang
+        product_ids = [x.product.id for x in moves]
+        if product_ids:
+            for product_id, product_name in product_obj.name_get(cursor, user,
+                    product_ids, context=ctx):
+                context['product_id2name'][product_id] = product_name
+        return ''
+
 PackingOutReport()
