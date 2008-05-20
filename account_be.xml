@@ -3238,5 +3238,357 @@
             <field name="type" ref="account.account_type_asset_long_term"/>
             <field name="parents" eval="[('add', ref('291'))]"/>
         </record>
+
+        <record model="account.account.template" id="3">
+            <field name="name">Stock &amp; commandes en cours d'exécution</field>
+            <field name="code">3</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('root'))]"/>
+        </record>
+
+        <record model="account.account.template" id="30">
+            <field name="name">Approvisionnements - matières premières</field>
+            <field name="code">30</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('3'))]"/>
+        </record>
+
+        <record model="account.account.template" id="300">
+            <field name="name">Valeur d'acquisition</field>
+            <field name="code">300</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('30'))]"/>
+        </record>
+
+        <record model="account.account.template" id="309">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">309</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('30'))]"/>
+        </record>
+
+        <record model="account.account.template" id="31">
+            <field name="name">Approvisionnements et fournitures</field>
+            <field name="code">31</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('3'))]"/>
+        </record>
+
+        <record model="account.account.template" id="310">
+            <field name="name">Valeur d'acquisition</field>
+            <field name="code">310</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('31'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3100">
+            <field name="name">Matières d'approvisionnement</field>
+            <field name="code">3100</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('310'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3101">
+            <field name="name">Energie (Charbon, coke, Mazout, essence, propane, ...)</field>
+            <field name="code">3101</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('310'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3102">
+            <field name="name">Produits d'entretien</field>
+            <field name="code">3102</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('310'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3103">
+            <field name="name">Fournitures diverses et petit outillage</field>
+            <field name="code">3103</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('310'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3104">
+            <field name="name">Imprimés et fournitures de bureau</field>
+            <field name="code">3104</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('310'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3105">
+            <field name="name">Fournitures de services sociaux</field>
+            <field name="code">3105</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('310'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3106">
+            <field name="name">Emballages commerciaux</field>
+            <field name="code">3106</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('310'))]"/>
+        </record>
+
+        <record model="account.account.template" id="31060">
+            <field name="name">Emballages perdus</field>
+            <field name="code">31060</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('3106'))]"/>
+        </record>
+
+        <record model="account.account.template" id="31061">
+            <field name="name">Emballages récupérables</field>
+            <field name="code">31061</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('3106'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3109">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">3109</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('310'))]"/>
+        </record>
+
+        <record model="account.account.template" id="32">
+            <field name="name">En cours de fabrication</field>
+            <field name="code">32</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('3'))]"/>
+        </record>
+
+        <record model="account.account.template" id="320">
+            <field name="name">Valeur d'acquisition</field>
+            <field name="code">320</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('32'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3200">
+            <field name="name">Produits semi-ouvrés</field>
+            <field name="code">3200</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('320'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3201">
+            <field name="name">Produits en cours de fabrication</field>
+            <field name="code">3201</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('320'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3202">
+            <field name="name">Travaux en cours</field>
+            <field name="code">3202</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('320'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3205">
+            <field name="name">Déchets</field>
+            <field name="code">3205</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('320'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3206">
+            <field name="name">Rebuts</field>
+            <field name="code">3206</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('320'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3209">
+            <field name="name">Travaux en association momentanée</field>
+            <field name="code">3209</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('320'))]"/>
+        </record>
+
+        <record model="account.account.template" id="329">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">329</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('32'))]"/>
+        </record>
+
+        <record model="account.account.template" id="33">
+            <field name="name">Produits finis</field>
+            <field name="code">33</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('3'))]"/>
+        </record>
+
+        <record model="account.account.template" id="330">
+            <field name="name">Valeur d'acquisition</field>
+            <field name="code">330</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('33'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3300">
+            <field name="name">Produits finis</field>
+            <field name="code">3300</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('330'))]"/>
+        </record>
+
+        <record model="account.account.template" id="3301">
+            <field name="name">Sous-produits</field>
+            <field name="code">3301</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('330'))]"/>
+        </record>
+
+        <record model="account.account.template" id="339">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">339</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('33'))]"/>
+        </record>
+
+        <record model="account.account.template" id="34">
+            <field name="name">Marchandises</field>
+            <field name="code">34</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('3'))]"/>
+        </record>
+
+        <record model="account.account.template" id="340">
+            <field name="name">Valeur d'acquisition</field>
+            <field name="code">340</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('34'))]"/>
+        </record>
+
+        <record model="account.account.template" id="349">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">349</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('34'))]"/>
+        </record>
+
+        <record model="account.account.template" id="35">
+            <field name="name">Immeubles destinés à la vente</field>
+            <field name="code">35</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('3'))]"/>
+        </record>
+
+        <record model="account.account.template" id="350">
+            <field name="name">Valeur d'acquisition</field>
+            <field name="code">350</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('35'))]"/>
+        </record>
+
+        <record model="account.account.template" id="351">
+            <field name="name">Immeubles construits en vue de leur revente</field>
+            <field name="code">351</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('35'))]"/>
+        </record>
+
+        <record model="account.account.template" id="359">
+            <field name="name">Réductions de valeurs actées</field>
+            <field name="code">359</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('35'))]"/>
+        </record>
+
+        <record model="account.account.template" id="36">
+            <field name="name">Acomptes versés sur achats pour stocks</field>
+            <field name="code">36</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('3'))]"/>
+        </record>
+
+        <record model="account.account.template" id="360">
+            <field name="name">Acomptes versés (à ventiler éventuellement par catégorie)</field>
+            <field name="code">360</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('36'))]"/>
+        </record>
+
+        <record model="account.account.template" id="369">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">369</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('36'))]"/>
+        </record>
+
+        <record model="account.account.template" id="37">
+            <field name="name">Commandes en cours d'éxécution</field>
+            <field name="code">37</field>
+            <field name="close_method">none</field>
+            <field name="type" ref="account.account_type_view"/>
+            <field name="parents" eval="[('add', ref('3'))]"/>
+        </record>
+
+        <record model="account.account.template" id="370">
+            <field name="name">Valeur d'acquisition</field>
+            <field name="code">370</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('37'))]"/>
+        </record>
+
+        <record model="account.account.template" id="371">
+            <field name="name">Bénéfice pris en compte</field>
+            <field name="code">371</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('37'))]"/>
+        </record>
+
+        <record model="account.account.template" id="379">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">379</field>
+            <field name="close_method">balance</field>
+            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="parents" eval="[('add', ref('37'))]"/>
+        </record>
     </data>
 </tryton>
