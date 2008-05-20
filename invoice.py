@@ -1166,8 +1166,9 @@ class InvoiceLine(OSV):
             res['taxes'] = []
             for tax in product.supplier_taxes:
                 if partner:
-                    if partner.get(tax.group.code):
-                        res['taxes'].append(partner.get(tax.group.code).id)
+                    if tax.group.code in partner_obj._columns \
+                            and partner[tax.group.code]:
+                        res['taxes'].append(partner[tax.group.code].id)
                         continue
                 res['taxes'].append(tax.id)
         else:
@@ -1182,7 +1183,8 @@ class InvoiceLine(OSV):
             res['taxes'] = []
             for tax in product.customer_taxes:
                 if partner:
-                    if tax.group.code in partner_obj._columns:
+                    if tax.group.code in partner_obj._columns \
+                            and partner[tax.group.code]:
                         res['taxes'].append(partner[tax.group.code].id)
                         continue
                 res['taxes'].append(tax.id)
