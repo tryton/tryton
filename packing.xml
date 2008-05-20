@@ -178,8 +178,12 @@
                     <form string="Customer Packing" col="4">
                         <label name="code"/>
                         <field name="code"/>
-                        <label name="customer_address"/>
-                        <field name="customer_address"/>
+                        <label name="reference"/>
+                        <field name="reference"/>
+                        <label name="customer"/>
+                        <field name="customer"/>
+                        <label name="delivery_address"/>
+                        <field name="delivery_address"/>
                         <label name="warehouse"/>
                         <field name="warehouse"/>
                         <label name="customer_location"/>
@@ -514,6 +518,38 @@
             <field name="keyword">form_print</field>
             <field name="model">stock.packing.out,0</field>
             <field name="action" ref="report_packing_out"/>
+        </record>
+
+
+        <record model="ir.ui.view" id="address_view_tree">
+            <field name="model">partner.address</field>
+            <field name="inherit" ref="partner.address_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/tree/field[@name=&quot;email&quot;]" position="after">
+                        <field name="delivery" select="2"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="address_view_form">
+            <field name="model">partner.address</field>
+            <field name="inherit" ref="partner.address_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/group/field[@name=&quot;active&quot;]"
+                        position="after">
+                        <label name="delivery"/>
+                        <field name="delivery" xexpand="0" width="25"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
         </record>
 
     </data>

@@ -233,9 +233,16 @@ class PackingOut(OSV):
     planned_date = fields.DateTime(
         'Planned Date', readonly=True,
         states={'readonly': "state != 'draft'",},)
-    customer_address = fields.Many2One(
+    customer = fields.Many2One(
+        'partner.partner', 'Customer', required=True,
+        states={'readonly': "state != 'draft'",}, on_change=['customer',])
+    delivery_address = fields.Many2One(
         'partner.address', 'Delivery Address', required=True,
-        states={'readonly': "state != 'draft'",}, on_change=['customer_address',])
+        states={'readonly': "state != 'draft'",},
+        domain="[('partner', '=', customer)]")
+    reference = fields.Char(
+        "Reference", size=None, select=1,
+        states={'readonly': "state != 'draft'",},)
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
             states={
                 'readonly': "state != 'draft'",
@@ -280,12 +287,15 @@ class PackingOut(OSV):
     def default_state(self, cursor, user, context=None):
         return 'draft'
 
-    def on_change_customer_address(self, cursor, user, ids, values, context=None):
-        if not values.get('customer_address'):
+    def on_change_customer(self, cursor, user, ids, values, context=None):
+        if not values.get('customer'):
             return {}
-        address_obj = self.pool.get("partner.address")
-        address = address_obj.browse(cursor, user, values['customer_address'], context=context)
-        return {'customer_location': address.partner.customer_location.id}
+        partner_obj = self.pool.get("partner.partner")
+        address_id = partner_obj.address_get(cursor, user, values['customer'],
+                                          type='delivery', context=context)
+        partner = partner_obj.browse(cursor, user, values['customer'], context=context)
+        return  {'delivery_address': address_id,
+                 'customer_location': partner.customer_location.id}
 
     def get_outgoing_moves(self, cursor, user, ids, name, arg, context=None):
         res = {}
@@ -585,6 +595,13 @@ class PackingOut(OSV):
             workflow_service.trg_create(user, self._name, packing.id, cursor)
 
 PackingOut()
+
+
+class Address(OSV):
+    _name = 'partner.address'
+    delivery = fields.Boolean('Delivery')
+
+Address()
 
 
 class SelectMoveInit(WizardOSV):
