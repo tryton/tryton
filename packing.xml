@@ -209,7 +209,7 @@
                                         ('cancel','done') '''}"/>
                                 <button string="Set Done" name="done"
                                         states="{'invisible': '''state !=
-                                        'ready' '''}"/>
+                                        'packed' '''}"/>
                                 <button string="Set Waiting" name="waiting"
                                         states="{'invisible': '''state !=
                                         'draft' '''}"/>
@@ -220,7 +220,7 @@
                                 <button string="Assign" name="assign"
                                         states="{'invisible': '''state !=
                                         'waiting' '''}"/>
-                                <button string="Set ready" name="ready"
+                                <button string="Make packing" name="packed"
                                         states="{'invisible': '''state !=
                                         'assigned' '''}"/>
                                 <button string="Reset to Draft" name="button_draft"
@@ -316,7 +316,7 @@
             <field name="name">Customer Packings Ready for Shipping</field>
             <field name="res_model">stock.packing.out</field>
             <field name="view_type">form</field>
-            <field name="domain">[('state', '=', 'ready')]</field>
+            <field name="domain">[('state', '=', 'packed')]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_packing_out_ready_form_view1">
@@ -441,11 +441,11 @@
             <field name="workflow" ref="wkf_packingout"/>
             <field name="action">set_state_assigned()</field>
         </record>
-        <record model="workflow.activity" id="packingout_act_ready">
-            <field name="name">Ready</field>
+        <record model="workflow.activity" id="packingout_act_packed">
+            <field name="name">Packed</field>
             <field name="kind">function</field>
             <field name="workflow" ref="wkf_packingout"/>
-            <field name="action">set_state_ready()</field>
+            <field name="action">set_state_packed()</field>
         </record>
 
         <record model="workflow.transition"
@@ -481,14 +481,14 @@
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_assigned_ready">
+                id="packingout_trans_assigned_packed">
             <field name="act_from" ref="packingout_act_assigned"/>
-            <field name="act_to" ref="packingout_act_ready"/>
-            <field name="signal">ready</field>
+            <field name="act_to" ref="packingout_act_packed"/>
+            <field name="signal">packed</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_ready_done">
-            <field name="act_from" ref="packingout_act_ready"/>
+                id="packingout_trans_packed_done">
+            <field name="act_from" ref="packingout_act_packed"/>
             <field name="act_to" ref="packingout_act_done"/>
             <field name="signal">done</field>
         </record>
@@ -499,8 +499,8 @@
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_ready_cancel">
-            <field name="act_from" ref="packingout_act_ready"/>
+                id="packingout_trans_packed_cancel">
+            <field name="act_from" ref="packingout_act_packed"/>
             <field name="act_to" ref="packingout_act_cancel"/>
             <field name="signal">cancel</field>
         </record>

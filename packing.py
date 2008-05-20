@@ -255,14 +255,14 @@ class PackingOut(OSV):
             relation='stock.move', string='Outgoing Moves',
             fnct_inv='set_outgoing_moves',
             states={
-                'readonly':"state != 'ready'",
+                'readonly':"state != 'packed'",
             }, context="{'warehouse': warehouse, "\
                     "'packing_state': state, 'type':'outgoing',}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
             relation='stock.move', string='Inventory Moves',
             fnct_inv='set_inventory_moves',
             states={
-                'readonly':"state in ('ready', 'done')",
+                'readonly':"state in ('packed', 'done')",
             }, context="{'warehouse': warehouse, "\
                     "'packing_state': state, 'type':'inventory_out',}")
     moves = fields.One2Many('stock.move', 'packing_out', 'Moves',
@@ -273,7 +273,7 @@ class PackingOut(OSV):
         ('done', 'Done'),
         ('cancel', 'Cancel'),
         ('assigned', 'Assigned'),
-        ('ready', 'Ready'),
+        ('packed', 'Packed'),
         ('waiting', 'Waiting'),
         ], 'State', readonly=True)
 
@@ -401,13 +401,13 @@ class PackingOut(OSV):
              'effective_date': time.strftime('%Y-%m-%d %H:%M:%S')},
             context=context)
 
-    def set_state_ready(self, cursor, user, packing_id, context=None):
+    def set_state_packed(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.set_state_done(
             cursor, user, [m.id for m in packing.inventory_moves],
             context=context)
-        self.write(cursor, user, packing_id, {'state':'ready'},
+        self.write(cursor, user, packing_id, {'state':'packed'},
                    context=context)
         for move in packing.inventory_moves:
             move_obj.create(cursor, user, {
