@@ -1011,7 +1011,7 @@ class Line(OSV):
         return super(Line, self).copy(cursor, user, object_id, default=default,
                 context=context)
 
-    def view_header_get(self, cursor, user, view_id=None, view_type='form',
+    def view_header_get(self, cursor, user, value, view_type='form',
             context=None):
         if context is None:
             context = {}
