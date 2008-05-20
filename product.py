@@ -12,7 +12,20 @@ class Product(OSV):
     code = fields.Char("Code", size=None)
     description = fields.Text("Description", translate=True)
 
-    def name_search(self, cursor, user, name,  args=None, operator='ilike',
+    def name_get(self, cursor, user, ids, context=None):
+        if not ids:
+            return []
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        res = []
+        for product in self.browse(cursor, user, ids, context=context):
+            name = product.name
+            if product.code:
+                name = '[' + product.code + '] ' + product.name
+            res.append((product.id, name))
+        return res
+
+    def name_search(self, cursor, user, name, args=None, operator='ilike',
                     context=None, limit=80):
         if not args:
             args=[]
