@@ -95,6 +95,22 @@ class Location(OSV):
         self._tree_qty(qty_by_ltn, childs, ids, to_compute)
         return qty_by_ltn
 
+    def view_header_get(self, cursor, user, value, view_type='form',
+            context=None):
+        product_obj = self.pool.get('product.product')
+        uom_obj = self.pool.get('product.uom')
+        if context is None:
+            context = {}
+        if context.get('product'):
+            product_name = product_obj.name_get(cursor, user, context['product'],
+                    context=context)[0][1]
+            product = product_obj.browse(cursor, user, context['product'],
+                    context=context)
+            uom_name = uom_obj.name_get(cursor, user, product.default_uom.id,
+                    context=context)[0][1]
+            return value + ': ' + product_name + ' (' + uom_name + ')'
+        return False
+
 Location()
 
 

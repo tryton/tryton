@@ -13,7 +13,7 @@
                         <field name="default_uom" select="2"/>
                         <field name="active" select="2"/>
                     </tree>
-                    ]]>
+                ]]>
             </field>
         </record>
 
@@ -23,23 +23,21 @@
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Locations">
-                        <field name="name" select="1"/>
-                        <field name="code" select="2"/>
-                        <field name="type" select="1"/>
-                        <field name="quantity" select="1"/>
-                        <field name="active" select="2"/>
+                    <tree string="Product Stock">
+                        <field name="name"/>
+                        <field name="quantity"/>
                     </tree>
                 ]]>
             </field>
         </record>
         <record model="ir.action.act_window" id="act_location_quantity_tree">
-            <field name="name">Product Availability</field>
+            <field name="name">Product Stock</field>
             <field name="src_model">product.product</field>
             <field name="res_model">stock.location</field>
             <field name="view_type">tree</field>
             <field name="context">{'product': active_id}</field>
             <field name="domain">[('parent', '=', False)]</field>
+            <field name="window_name" eval="False"/>
         </record>
         <record model="ir.action.act_window.view" id="act_location_quantity_tree_view">
             <field name="sequence" eval="10"/>
