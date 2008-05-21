@@ -168,8 +168,8 @@
                             <field name="date"/>
                             <label name="reference"/>
                             <field name="reference"/>
-                            <label name="partner"/>
-                            <field name="partner"/>
+                            <label name="party"/>
+                            <field name="party"/>
                             <label name="journal"/>
                             <field name="journal"/>
                             <label name="period"/>
@@ -216,7 +216,7 @@
                     <field name="name" select="1"/>
                     <field name="reference" select="2"/>
                     <field name="date" select="1"/>
-                    <field name="partner" select="2"/>
+                    <field name="party" select="2"/>
                     <field name="account" select="2"/>
                     <field name="debit" select="2" sum="Debit"/>
                     <field name="credit" select="2" sum="Credit"/>
@@ -335,9 +335,9 @@
             action="act_open_reconcile_lines" icon="STOCK_JUSTIFY_FILL"
             id="menu_open_reconcile_lines"/>
 
-        <record model="ir.ui.view" id="partner_view_tree">
-            <field name="model">partner.partner</field>
-            <field name="inherit" ref="partner.partner_view_tree"/>
+        <record model="ir.ui.view" id="party_view_tree">
+            <field name="model">relationship.party</field>
+            <field name="inherit" ref="relationship.party_view_tree"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
@@ -351,9 +351,9 @@
                 ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="partner_view_form">
-            <field name="model">partner.partner</field>
-            <field name="inherit" ref="partner.partner_view_form"/>
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">relationship.party</field>
+            <field name="inherit" ref="relationship.party_view_form"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>

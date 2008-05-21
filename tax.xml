@@ -296,7 +296,7 @@
         <record model="ir.property" id="property_tax_vat">
             <field name="name">tax_vat</field>
             <field name="field"
-                search="[('model.model', '=', 'partner.partner'), ('name', '=', 'tax_vat')]"/>
+                search="[('model.model', '=', 'relationship.party'), ('name', '=', 'tax_vat')]"/>
         </record>
     </data>
 </tryton>

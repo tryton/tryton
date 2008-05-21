@@ -356,11 +356,11 @@ class Line(OSV):
             digits=(16, 2), help='The amount expressed in a second currency')
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
             help='The second currency')
-    partner = fields.Many2One('partner.partner', 'Partner',
-            on_change=['move', 'partner', 'account', 'debit', 'credit',
+    party = fields.Many2One('relationship.party', 'Party',
+            on_change=['move', 'party', 'account', 'debit', 'credit',
                 'journal'])
     blocked = fields.Boolean('Litigation',
-            help='Mark the line as litigation with the partner.')
+            help='Mark the line as litigation with the party.')
     maturity_date = fields.Date('Maturity Date',
             help='This field is used for payable and receivable linees. \n' \
                     'You can put the limit date for the payment.')
@@ -462,8 +462,8 @@ class Line(OSV):
         no_code_taxes = []
         for line in move.lines:
             total += line.debit - line.credit
-            if line.partner and 'partner' in fields:
-                values.setdefault('partner', line.partner.id)
+            if line.party and 'party' in fields:
+                values.setdefault('party', line.party.id)
             if 'reference' in fields:
                 values.setdefault('reference', line.reference)
             if 'name' in fields:
@@ -661,82 +661,82 @@ class Line(OSV):
                     })
         return res
 
-    def on_change_partner(self, cursor, user, ids, vals, context=None):
-        partner_obj = self.pool.get('partner.partner')
+    def on_change_party(self, cursor, user, ids, vals, context=None):
+        party_obj = self.pool.get('relationship.party')
         journal_obj = self.pool.get('account.journal')
         account_obj = self.pool.get('account.account')
         currency_obj = self.pool.get('currency.currency')
         res = {}
-        if (not vals.get('partner')) or vals.get('account'):
+        if (not vals.get('party')) or vals.get('account'):
             return res
-        partner = partner_obj.browse(cursor, user, vals.get('partner'),
+        party = party_obj.browse(cursor, user, vals.get('party'),
                 context=context)
 
-        if partner and (not vals.get('debit')) and (not vals.get('credit')):
+        if party and (not vals.get('debit')) and (not vals.get('credit')):
             query = 'SELECT ' \
                         'COALESCE(SUM(' \
                             '(COALESCE(debit, 0) - COALESCE(credit, 0))' \
                         '), 0)::NUMERIC ' \
                     'FROM account_move_line ' \
                     'WHERE reconciliation IS NULL ' \
-                        'AND partner = %s ' \
+                        'AND party = %s ' \
                         'AND account = %s'
-            cursor.execute(query, (partner.id, partner.account_receivable.id))
+            cursor.execute(query, (party.id, party.account_receivable.id))
             amount = cursor.fetchone()[0]
             if not currency_obj.is_zero(cursor, user,
-                    partner.account_receivable.currency, amount):
+                    party.account_receivable.currency, amount):
                 if amount > Decimal('0.0'):
                     res['credit'] = currency_obj.round(cursor, user,
-                            partner.account_receivable.currency, amount)
+                            party.account_receivable.currency, amount)
                     res['debit'] = Decimal('0.0')
                 else:
                     res['credit'] = Decimal('0.0')
                     res['debit'] = - currency_obj.round(cursor, user,
-                            partner.account_receivable.currency, amount)
+                            party.account_receivable.currency, amount)
                 res['account'] = account_obj.name_get(cursor, user,
-                        partner.account_receivable.id, context=context)[0]
+                        party.account_receivable.id, context=context)[0]
             else:
-                cursor.execute(query, (partner.id, partner.account_payable.id))
+                cursor.execute(query, (party.id, party.account_payable.id))
                 amount = cursor.fetchone()[0]
                 if not currency_obj.is_zero(cursor, user,
-                        partner.account_payable.currency, amount):
+                        party.account_payable.currency, amount):
                     if amount > Decimal('0.0'):
                         res['credit'] = currency_obj.round(cursor, user,
-                                partner.account_payable.currency, amount)
+                                party.account_payable.currency, amount)
                         res['debit'] = Decimal('0.0')
                     else:
                         res['credit'] = Decimal('0.0')
                         res['debit'] = - currency_obj.round(cursor, user,
-                                partner.account_payable.currency, amount)
+                                party.account_payable.currency, amount)
                     res['account'] = account_obj.name_get(cursor, user,
-                            partner.account_payable.id, context=context)[0]
+                            party.account_payable.id, context=context)[0]
 
-        if partner and vals.get('debit'):
+        if party and vals.get('debit'):
             if vals['debit'] > Decimal('0.0'):
                 res.setdefault('account', account_obj.name_get(cursor, user,
-                    partner.account_receivable.id, context=context)[0])
+                    party.account_receivable.id, context=context)[0])
             else:
                 res.setdefault('account', account_obj.name_get(cursor, user,
-                    partner.account_payable.id, context=context)[0])
+                    party.account_payable.id, context=context)[0])
 
-        if partner and vals.get('credit'):
+        if party and vals.get('credit'):
             if vals['credit'] > Decimal('0.0'):
                 res.setdefault('account', account_obj.name_get(cursor, user,
-                    partner.account_payable.id, context=context)[0])
+                    party.account_payable.id, context=context)[0])
             else:
                 res.setdefault('account', account_obj.name_get(cursor, user,
-                    partner.account_receivable.id, context=context)[0])
+                    party.account_receivable.id, context=context)[0])
 
         journal_id = vals.get('journal') or context.get('journal')
-        if journal_id and partner:
+        if journal_id and party:
             journal = journal_obj.browse(cursor, user, journal_id,
                     context=context)
             if journal.type == 'revenue':
                 res.setdefault('account', account_obj.name_get(cursor, user,
-                        partner.account_receivable.id, context=context)[0])
+                        party.account_receivable.id, context=context)[0])
             elif journal.type == 'expense':
                 res.setdefault('account', account_obj.name_get(cursor, user,
-                        partner.account_payable.id, context=context)[0])
+                        party.account_payable.id, context=context)[0])
         return res
 
     def get_move_field(self, cursor, user, ids, name, arg, context=None):
@@ -1470,8 +1470,8 @@ class FiscalYear(OSV):
 FiscalYear()
 
 
-class Partner(OSV):
-    _name = 'partner.partner'
+class Party(OSV):
+    _name = 'relationship.party'
     receivable = fields.Function('get_receivable_payable',
             fnct_search='search_receivable_payable', string='Receivable')
     payable = fields.Function('get_receivable_payable',
@@ -1524,7 +1524,7 @@ class Partner(OSV):
 
         line_query = move_line_obj.query_get(cursor, user_id, context=context)
 
-        cursor.execute('SELECT l.partner, ' \
+        cursor.execute('SELECT l.party, ' \
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
                 'FROM account_move_line AS l, ' \
                     'account_account AS a, ' \
@@ -1533,16 +1533,16 @@ class Partner(OSV):
                     'AND a.active ' \
                     'AND a.type = t.id ' \
                     'AND t.code = %s ' \
-                    'AND l.partner IN ' \
+                    'AND l.party IN ' \
                         '(' + ','.join(['%s' for x in ids]) + ') ' \
                     'AND l.reconciliation IS NULL ' \
                     'AND ' + line_query + ' ' \
                     + today_query + \
                     'AND a.company = %s ' \
-                'GROUP BY l.partner',
+                'GROUP BY l.party',
                 [code,] + ids + today_value + [company_id])
-        for partner_id, sum in cursor.fetchall():
-            res[partner_id] = sum
+        for party_id, sum in cursor.fetchall():
+            res[party_id] = sum
         return res
 
     def search_receivable_payable(self, cursor, user_id, name, args,
@@ -1586,7 +1586,7 @@ class Partner(OSV):
 
         line_query = move_line_obj.query_get(cursor, user_id, context=context)
 
-        cursor.execute('SELECT l.partner ' \
+        cursor.execute('SELECT l.party ' \
                 'FROM account_move_line AS l, ' \
                     'account_account AS a, ' \
                     'account_account_type AS t ' \
@@ -1594,12 +1594,12 @@ class Partner(OSV):
                     'AND a.active ' \
                     'AND a.type = t.id ' \
                     'AND t.code = %s ' \
-                    'AND l.partner IS NOT NULL ' \
+                    'AND l.party IS NOT NULL ' \
                     'AND l.reconciliation IS NULL ' \
                     'AND ' + line_query + ' ' \
                     + today_query + \
                     'AND a.company = %s ' \
-                'GROUP BY l.partner ' \
+                'GROUP BY l.party ' \
                 'HAVING ' + \
                     'AND'.join(['(SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
                         + ' ' + x[1] + ' ' + str(x[2]) + ') ' for x in args]),
@@ -1608,7 +1608,7 @@ class Partner(OSV):
             return [('id', '=', 0)]
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
-Partner()
+Party()
 
 
 class PrintGeneralJournalInit(WizardOSV):

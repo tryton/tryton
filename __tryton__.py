@@ -10,7 +10,7 @@
         'ir',
         'res',
         'company',
-        'partner',
+        'relationship',
         'currency',
     ],
     'xml': [

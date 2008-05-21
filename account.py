@@ -512,8 +512,8 @@ class OpenChartAccount(Wizard):
 OpenChartAccount()
 
 
-class Partner(OSV):
-    _name = 'partner.partner'
+class Party(OSV):
+    _name = 'relationship.party'
     account_payable = fields.Property(type='many2one',
             relation='account.account', string='Account Payable',
             group_name='Accounting Properties', view_load=True,
@@ -531,7 +531,7 @@ class Partner(OSV):
                 'invisible': "not company",
             })
 
-Partner()
+Party()
 
 
 class PrintGeneralLegderInit(WizardOSV):
@@ -1157,7 +1157,7 @@ class CreateChartAccount(Wizard):
         model_field_obj = self.pool.get('ir.model.field')
 
         account_receivable_field_id = model_field_obj.search(cursor, user, [
-            ('model.model', '=', 'partner.partner'),
+            ('model.model', '=', 'relationship.party'),
             ('name', '=', 'account_receivable'),
             ], limit=1, context=context)[0]
         property_ids = property_obj.search(cursor, user, [
@@ -1175,7 +1175,7 @@ class CreateChartAccount(Wizard):
             }, context=context)
 
         account_payable_field_id = model_field_obj.search(cursor, user, [
-            ('model.model', '=', 'partner.partner'),
+            ('model.model', '=', 'relationship.party'),
             ('name', '=', 'account_payable'),
             ], limit=1, context=context)[0]
         property_ids = property_obj.search(cursor, user, [
