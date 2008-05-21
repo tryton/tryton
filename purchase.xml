@@ -12,8 +12,8 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Purchase" col="6">
-                    <label name="partner"/>
-                    <field name="partner"/>
+                    <label name="party"/>
+                    <field name="party"/>
                     <label name="contact_address"/>
                     <field name="contact_address"/>
                     <label name="invoice_address"/>
@@ -110,7 +110,7 @@
                 <tree string="Purchases">
                     <field name="reference" select="1"/>
                     <field name="purchase_date" select="1"/>
-                    <field name="partner" select="1"/>
+                    <field name="party" select="1"/>
                     <field name="warehouse"/>
                     <field name="currency" select="2"/>
                     <field name="untaxed_amount" select="2"/>
@@ -605,8 +605,8 @@
                 <form string="Product Supplier">
                     <label name="product"/>
                     <field name="product" colspan="4"/>
-                    <label name="partner"/>
-                    <field name="partner"/>
+                    <label name="party"/>
+                    <field name="party"/>
                     <label name="sequence"/>
                     <field name="sequence"/>
                     <label name="name"/>
@@ -625,7 +625,7 @@
                 <![CDATA[
                 <tree string="Product Suppliers">
                     <field name="product" select="1"/>
-                    <field name="partner" select="1"/>
+                    <field name="party" select="1"/>
                     <field name="name" select="1"/>
                     <field name="code" select="1"/>
                     <field name="sequence" select="2"/>
@@ -687,7 +687,7 @@
                             <field name="purchasable"/>
                             <field name="product_suppliers" colspan="4">
                                 <tree string="Product Suppliers" sequence="sequence">
-                                    <field name="partner"/>
+                                    <field name="party"/>
                                     <field name="name"/>
                                     <field name="code"/>
                                     <field name="sequence" tree_invisible="1"/>

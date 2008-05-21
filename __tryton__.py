@@ -8,7 +8,7 @@
     'description': 'Purchase Management',
     'depends': [
         'company',
-        'partner',
+        'relationship',
         'stock',
         'account',
         'product',

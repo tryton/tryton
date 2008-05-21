@@ -30,12 +30,12 @@ class Purchase(OSV):
     purchase_date = fields.Date('Purchase Date', required=True, states=_STATES)
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES)
-    partner = fields.Many2One('partner.partner', 'Partner', change_default=True,
-            required=True, states=_STATES, on_change=['partner', 'payment_term'])
-    contact_address = fields.Many2One('partner.address', 'Contact Address',
-            domain="[('partner', '=', partner)]", states=_STATES)
-    invoice_address = fields.Many2One('partner.address', 'Invoice Address',
-            domain="[('partner', '=', partner)]", states=_STATES)
+    party = fields.Many2One('relationship.party', 'Party', change_default=True,
+            required=True, states=_STATES, on_change=['party', 'payment_term'])
+    contact_address = fields.Many2One('relationship.address', 'Contact Address',
+            domain="[('party', '=', party)]", states=_STATES)
+    invoice_address = fields.Many2One('relationship.address', 'Invoice Address',
+            domain="[('party', '=', party)]", states=_STATES)
     warehouse = fields.Many2One('stock.location', 'Warehouse',
             domain=[('type', '=', 'warehouse')], required=True, states=_STATES)
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
@@ -128,24 +128,24 @@ class Purchase(OSV):
     def default_packing_state(self, cursor, user, context=None):
         return 'none'
 
-    def on_change_partner(self, cursor, user, ids, vals, context=None):
-        partner_obj = self.pool.get('partner.partner')
-        address_obj = self.pool.get('partner.address')
+    def on_change_party(self, cursor, user, ids, vals, context=None):
+        party_obj = self.pool.get('relationship.party')
+        address_obj = self.pool.get('relationship.address')
         payment_term_obj = self.pool.get('account.invoice.payment_term')
         res = {
             'invoice_address': False,
             'contact_address': False,
             'payment_term': False,
         }
-        if vals.get('partner'):
-            partner = partner_obj.browse(cursor, user, vals['partner'],
+        if vals.get('party'):
+            party = party_obj.browse(cursor, user, vals['party'],
                     context=context)
-            res['contact_address'] = partner_obj.address_get(cursor, user,
-                    partner.id, type=None, context=context)
-            res['invoice_address'] = partner_obj.address_get(cursor, user,
-                    partner.id, type='invoice', context=context)
-            if partner.payment_term:
-                res['payment_term'] = partner.payment_term.id
+            res['contact_address'] = party_obj.address_get(cursor, user,
+                    party.id, type=None, context=context)
+            res['invoice_address'] = party_obj.address_get(cursor, user,
+                    party.id, type='invoice', context=context)
+            if party.payment_term:
+                res['payment_term'] = party.payment_term.id
 
         if res['contact_address']:
             res['contact_address'] = address_obj.name_get(cursor, user,
@@ -173,8 +173,8 @@ class Purchase(OSV):
 
     def get_tax_context(self, cursor, user, purchase, context=None):
         res = {}
-        if purchase.partner.lang:
-            res['language'] = purchase.partner.lang.code
+        if purchase.party.lang:
+            res['language'] = purchase.party.lang.code
         return res
 
     def get_tax_amount(self, cursor, user, ids, name, arg, context=None):
@@ -280,8 +280,8 @@ class Purchase(OSV):
             ids = [ids]
         res = []
         for purchase in self.browse(cursor, user, ids, context=context):
-            res.append((purchase.id, purchase.reference or '/' + ' ' \
-                    + purchase.partner.name))
+            res.append((purchase.id, purchase.reference or str(purchase.id) \
+                    + ' ' + purchase.party.name))
         return res
 
     def name_search(self, cursor, user, name='', args=None, operator='ilike',
@@ -292,7 +292,7 @@ class Purchase(OSV):
             ids = self.search(cursor, user, [('reference', operator, name)] + args,
                     limit=limit, context=context)
         if not ids:
-            ids = self.search(cursor, user, [('partner', operator, name)] + args,
+            ids = self.search(cursor, user, [('party', operator, name)] + args,
                     limit=limit, context=context)
         res = self.name_get(cursor, user, ids, context=context)
         return res
@@ -365,11 +365,11 @@ class Purchase(OSV):
             'type': 'in_invoice',
             'reference': purchase.reference,
             'journal': journal_id,
-            'partner': purchase.partner.id,
+            'party': purchase.party.id,
             'contact_address': purchase.contact_address.id,
             'invoice_address': purchase.invoice_address.id,
             'currency': purchase.currency.id,
-            'account': purchase.partner.account_payable.id,
+            'account': purchase.party.account_payable.id,
             'payment_term': purchase.payment_term.id,
         }, context=context)
 
@@ -448,7 +448,7 @@ class PurchaseLine(OSV):
             states={
                 'invisible': "type != 'line'",
             }, on_change=['product', 'unit', 'quantity', 'description',
-                'parent.partner', 'parent.currency'])
+                'parent.party', 'parent.currency'])
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
                 'invisible': "type != 'line'",
@@ -527,7 +527,7 @@ class PurchaseLine(OSV):
         return res
 
     def on_change_product(self, cursor, user, ids, vals, context=None):
-        partner_obj = self.pool.get('partner.partner')
+        party_obj = self.pool.get('relationship.party')
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
         if context is None:
@@ -537,12 +537,12 @@ class PurchaseLine(OSV):
         res = {}
 
         ctx = context.copy()
-        partner = None
-        if vals.get('parent.partner'):
-            partner = partner_obj.browse(cursor, user, vals['parent.partner'],
+        party = None
+        if vals.get('parent.party'):
+            party = party_obj.browse(cursor, user, vals['parent.party'],
                     context=context)
-            if partner.lang:
-                ctx['language'] = partner.lang.code
+            if party.lang:
+                ctx['language'] = party.lang.code
 
         product = product_obj.browse(cursor, user, vals['product'],
                 context=context)
@@ -550,17 +550,17 @@ class PurchaseLine(OSV):
         ctx2 = context.copy()
         if vals.get('parent.currency'):
             ctx2['currency'] = vals['parent.currency']
-        if vals.get('parent.partner'):
-            ctx2['supplier'] = vals['parent.partner']
+        if vals.get('parent.party'):
+            ctx2['supplier'] = vals['parent.party']
         if vals.get('unit'):
             ctx2['uom'] = vals['unit']
         res['unit_price'] = product_obj.get_purchase_price(cursor, user,
                 [product.id], vals.get('quantity', 0), context=ctx2)[product.id]
         res['taxes'] = []
         for tax in product.supplier_taxes:
-            if partner:
-                if partner.get(tax.group.code):
-                    res['taxes'].append(partner.get(tax.group.code).id)
+            if party:
+                if party.get(tax.group.code):
+                    res['taxes'].append(party.get(tax.group.code).id)
                     continue
             res['taxes'].append(tax.id)
 
@@ -660,7 +660,7 @@ class PurchaseLine(OSV):
         vals['quantity'] = quantity
         vals['uom'] = line.unit
         vals['product'] = line.product.id
-        vals['from_location'] = line.purchase.partner.supplier_location.id
+        vals['from_location'] = line.purchase.party.supplier_location.id
         vals['to_location'] = line.purchase.warehouse.input_location.id
         vals['state'] = 'waiting'
         vals['company'] = line.purchase.company.id
@@ -728,7 +728,7 @@ class Product(OSV):
             if context.get('supplier') and product.product_suppliers:
                 supplier_id = context['supplier']
                 for product_supplier in product.product_suppliers:
-                    if product_supplier.partner.id == supplier_id:
+                    if product_supplier.party.id == supplier_id:
                         for price in product_supplier.prices:
                             if price.quantity <= quantity:
                                 res[product.id] = price.price
@@ -759,7 +759,7 @@ class ProductSupplier(OSV):
 
     product = fields.Many2One('product.template', 'Product', required=True,
             ondelete='CASCADE', select=1)
-    partner = fields.Many2One('partner.partner', 'Partner', required=True,
+    party = fields.Many2One('relationship.party', 'Supplier', required=True,
             ondelete='CASCADE', select=1)
     name = fields.Char('Name', size=None, translate=True, select=1)
     code = fields.Char('Code', size=None, select=1)
