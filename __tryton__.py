@@ -9,7 +9,7 @@
     'depends': [
         'ir',
         'res',
-        'partner',
+        'relationship',
         'currency',
     ],
     'xml': ['company.xml'],

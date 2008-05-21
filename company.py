@@ -11,7 +11,7 @@ class Company(OSV):
     _name = 'company.company'
     _description = __doc__
     name = fields.Char('Name', size=128, required=True)
-    partner = fields.Many2One('partner.partner', 'Partner', required=True)
+    party = fields.Many2One('relationship.party', 'Party', required=True)
     parent = fields.Many2One('company.company', 'Parent')
     childs = fields.One2Many('company.company', 'parent', 'Childs')
     header = fields.Text('Header')

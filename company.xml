@@ -9,8 +9,8 @@
                     <form string="Company">
                         <label name="name"/>
                         <field name="name" colspan="3"/>
-                        <label name="partner"/>
-                        <field name="partner"/>
+                        <label name="party"/>
+                        <field name="party"/>
                         <label name="parent"/>
                         <field name="parent"/>
                         <label name="currency"/>
@@ -33,7 +33,7 @@
                 <![CDATA[
                     <tree string="Companies">
                         <field name="name" select="1"/>
-                        <field name="partner" select="1"/>
+                        <field name="party" select="1"/>
                         <field name="currency" select="1"/>
                     </tree>
                 ]]>
@@ -51,7 +51,7 @@
             <field name="view" ref="company_view_tree"/>
             <field name="act_window" ref="act_company_tree"/>
         </record>
-        <menuitem parent="partner.menu_partner" action="act_company_tree"
+        <menuitem parent="relationship.menu_relationship" action="act_company_tree"
             id="menu_company_tree"/>
         <record model="ir.action.act_window" id="act_company_form">
             <field name="name">Companies</field>
