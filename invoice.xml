@@ -164,8 +164,8 @@
                     <field name="journal"/>
                     <label name="number"/>
                     <field name="number"/>
-                    <label name="partner"/>
-                    <field name="partner"/>
+                    <label name="party"/>
+                    <field name="party"/>
                     <label name="contact_address"/>
                     <field name="contact_address"/>
                     <label name="invoice_address"/>
@@ -285,7 +285,7 @@
                     <field name="type" select="2"/>
                     <field name="number" select="1"/>
                     <field name="invoice_date" select="1"/>
-                    <field name="partner" select="1"/>
+                    <field name="party" select="1"/>
                     <field name="currency" select="2"/>
                     <field name="untaxed_amount" select="2"/>
                     <field name="tax_amount" select="2"/>
@@ -632,8 +632,8 @@
 
 
         <record model="ir.ui.view" id="address_view_tree">
-            <field name="model">partner.address</field>
-            <field name="inherit" ref="partner.address_view_tree"/>
+            <field name="model">relationship.address</field>
+            <field name="inherit" ref="relationship.address_view_tree"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
@@ -646,8 +646,8 @@
             </field>
         </record>
         <record model="ir.ui.view" id="address_view_form">
-            <field name="model">partner.address</field>
-            <field name="inherit" ref="partner.address_view_form"/>
+            <field name="model">relationship.address</field>
+            <field name="inherit" ref="relationship.address_view_form"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>

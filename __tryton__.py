@@ -9,7 +9,7 @@
     'depends': [
         'account',
         'company',
-        'partner',
+        'relationship',
         'product',
         'res',
         'workflow',

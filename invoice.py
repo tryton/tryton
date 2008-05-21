@@ -215,13 +215,13 @@ class Invoice(OSV):
         ], 'State', readonly=True)
     invoice_date = fields.Date('Invoice Date', required=True,
         states=_STATES)
-    partner = fields.Many2One('partner.partner', 'Partner', change_default=True,
-        required=True, states=_STATES, on_change=['partner', 'payment_term',
+    party = fields.Many2One('relationship.party', 'Party', change_default=True,
+        required=True, states=_STATES, on_change=['party', 'payment_term',
             'type'])
-    contact_address = fields.Many2One('partner.address', 'Contact Address',
-        required=True, states=_STATES, domain="[('partner', '=', partner)]")
-    invoice_address = fields.Many2One('partner.address', 'Invoice Address',
-        required=True, states=_STATES, domain="[('partner', '=', partner)]")
+    contact_address = fields.Many2One('relationship.address', 'Contact Address',
+        required=True, states=_STATES, domain="[('party', '=', party)]")
+    invoice_address = fields.Many2One('relationship.address', 'Invoice Address',
+        required=True, states=_STATES, domain="[('party', '=', party)]")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states=_STATES)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
@@ -317,9 +317,9 @@ class Invoice(OSV):
                     context=context)[0]
         return res
 
-    def on_change_partner(self, cursor, user, ids, vals, context=None):
-        partner_obj = self.pool.get('partner.partner')
-        address_obj = self.pool.get('partner.address')
+    def on_change_party(self, cursor, user, ids, vals, context=None):
+        party_obj = self.pool.get('relationship.party')
+        address_obj = self.pool.get('relationship.address')
         account_obj = self.pool.get('account.account')
         payment_term_obj = self.pool.get('account.invoice.payment_term')
         res = {
@@ -328,19 +328,19 @@ class Invoice(OSV):
             'payment_term': False,
             'account': False,
         }
-        if vals.get('partner'):
-            partner = partner_obj.browse(cursor, user, vals['partner'],
+        if vals.get('party'):
+            party = party_obj.browse(cursor, user, vals['party'],
                     context=context)
-            res['contact_address'] = partner_obj.address_get(cursor, user,
-                    partner.id, type=None, context=context)
-            res['invoice_address'] = partner_obj.address_get(cursor, user,
-                    partner.id, type='invoice', context=context)
+            res['contact_address'] = party_obj.address_get(cursor, user,
+                    party.id, type=None, context=context)
+            res['invoice_address'] = party_obj.address_get(cursor, user,
+                    party.id, type='invoice', context=context)
             if vals.get('type') in ('out_invoice', 'out_refund'):
-                res['account'] = partner.account_receivable.id
+                res['account'] = party.account_receivable.id
             else:
-                res['account'] = partner.account_payable.id
-            if partner.payment_term:
-                res['payment_term'] = partner.payment_term.id
+                res['account'] = party.account_payable.id
+            if party.payment_term:
+                res['payment_term'] = party.payment_term.id
 
         if res['contact_address']:
             res['contact_address'] = address_obj.name_get(cursor, user,
@@ -484,8 +484,8 @@ class Invoice(OSV):
 
     def get_tax_context(self, cursor, user, invoice, context=None):
         res = {}
-        if invoice.partner.lang:
-            res['language'] = invoice.partner.lang.code
+        if invoice.party.lang:
+            res['language'] = invoice.party.lang.code
         return res
 
     def _compute_taxes(self, cursor, user, invoice, context=None):
@@ -640,7 +640,7 @@ class Invoice(OSV):
         res['maturity_date'] = date
         res['reference'] = invoice.reference
         res['name'] = invoice.number
-        res['partner'] = invoice.partner.id
+        res['party'] = invoice.party.id
         return res
 
     def create_move(self, cursor, user, invoice_id, context=None):
@@ -732,7 +732,7 @@ class Invoice(OSV):
         res = []
         for invoice in self.browse(cursor, user, ids, context=context):
             res.append((invoice.id,
-                invoice.number or str(invoice.id) + ' ' + invoice.partner.name))
+                invoice.number or str(invoice.id) + ' ' + invoice.party.name))
         return res
 
     def name_search(self, cursor, user, name='', args=None, operator='ilike',
@@ -743,7 +743,7 @@ class Invoice(OSV):
             ids = self.search(cursor, user, [('number', operator, name)] + args,
                     limit=limit, context=context)
         if not ids:
-            ids = self.search(cursor, user, [('partner', operator, name)] + args,
+            ids = self.search(cursor, user, [('party', operator, name)] + args,
                     limit=limit, context=context)
         res = self.name_get(cursor, user, ids, context=context)
         return res
@@ -894,7 +894,7 @@ class Invoice(OSV):
             lines.append({
                 'name': description,
                 'account': invoice.account.id,
-                'partner': invoice.partner.id,
+                'party': invoice.party.id,
                 'debit': Decimal('0.0'),
                 'credit': amount,
                 'amount_second_currency': amount_second_currency,
@@ -903,7 +903,7 @@ class Invoice(OSV):
             lines.append({
                 'name': description,
                 'account': journal.debit_account.id,
-                'partner': invoice.partner.id,
+                'party': invoice.party.id,
                 'debit': amount,
                 'credit': Decimal('0.0'),
                 'amount_second_currency': amount_second_currency,
@@ -916,7 +916,7 @@ class Invoice(OSV):
             lines.append({
                 'name': description,
                 'account': invoice.account.id,
-                'partner': invoice.partner.id,
+                'party': invoice.party.id,
                 'debit': amount,
                 'credit': Decimal('0.0'),
                 'amount_second_currency': amount_second_currency,
@@ -925,7 +925,7 @@ class Invoice(OSV):
             lines.append({
                 'name': description,
                 'account': journal.credit_account.id,
-                'partner': invoice.partner.id,
+                'party': invoice.party.id,
                 'debit': Decimal('0.0'),
                 'credit': amount,
                 'amount_second_currency': amount_second_currency,
@@ -986,7 +986,7 @@ class Invoice(OSV):
         for field in ('reference', 'description', 'comment'):
             res[field] = invoice[field]
 
-        for field in ('company', 'partner', 'contact_address',
+        for field in ('company', 'party', 'contact_address',
                 'invoice_address', 'currency', 'journal', 'account',
                 'payment_term'):
             res[field] = invoice[field].id
@@ -1048,7 +1048,7 @@ class InvoiceLine(OSV):
             states={
                 'invisible': "type != 'line'",
             }, on_change=['product', 'unit', 'quantity', 'description',
-                'parent.type', 'parent.partner', 'parent.currency'])
+                'parent.type', 'parent.party', 'parent.currency'])
     account = fields.Many2One('account.account', 'Account',
             domain="[('type.code', '!=', 'view'), " \
                     "('company', '=', parent.company), " \
@@ -1124,7 +1124,7 @@ class InvoiceLine(OSV):
 
     def on_change_product(self, cursor, user, ids, vals, context=None):
         product_obj = self.pool.get('product.product')
-        partner_obj = self.pool.get('partner.partner')
+        party_obj = self.pool.get('relationship.party')
         account_obj = self.pool.get('account.account')
         uom_obj = self.pool.get('product.uom')
         company_obj = self.pool.get('company.company')
@@ -1136,12 +1136,12 @@ class InvoiceLine(OSV):
         res = {}
 
         ctx = context.copy()
-        partner = None
-        if vals.get('parent.partner'):
-            partner = partner_obj.browse(cursor, user, vals['parent.partner'],
+        party = None
+        if vals.get('parent.party'):
+            party = party_obj.browse(cursor, user, vals['parent.party'],
                     context=context)
-            if partner.lang:
-                ctx['language'] = partner.lang.code
+            if party.lang:
+                ctx['language'] = party.lang.code
 
         product = product_obj.browse(cursor, user, vals['product'],
                 context=context)
@@ -1167,10 +1167,10 @@ class InvoiceLine(OSV):
                     product.account_expense_used.id, context=context)[0]
             res['taxes'] = []
             for tax in product.supplier_taxes:
-                if partner:
-                    if tax.group.code in partner_obj._columns \
-                            and partner[tax.group.code]:
-                        res['taxes'].append(partner[tax.group.code].id)
+                if party:
+                    if tax.group.code in party_obj._columns \
+                            and party[tax.group.code]:
+                        res['taxes'].append(party[tax.group.code].id)
                         continue
                 res['taxes'].append(tax.id)
         else:
@@ -1184,10 +1184,10 @@ class InvoiceLine(OSV):
                     product.account_revenue_used.id, context=context)[0]
             res['taxes'] = []
             for tax in product.customer_taxes:
-                if partner:
-                    if tax.group.code in partner_obj._columns \
-                            and partner[tax.group.code]:
-                        res['taxes'].append(partner[tax.group.code].id)
+                if party:
+                    if tax.group.code in party_obj._columns \
+                            and party[tax.group.code]:
+                        res['taxes'].append(party[tax.group.code].id)
                         continue
                 res['taxes'].append(tax.id)
 
@@ -1312,7 +1312,7 @@ class InvoiceLine(OSV):
             res['credit'] = amount
             res['amount_second_currency'] = - res['amount_second_currency']
         res['account'] = line.account.id
-        res['partner'] = line.invoice.partner.id
+        res['party'] = line.invoice.party.id
         computed_taxes = self._compute_taxes(cursor, user, line,
                 context=context)
         for tax in computed_taxes:
@@ -1482,7 +1482,7 @@ class InvoiceTax(OSV):
                 res['debit'] = - amount
                 res['credit'] = Decimal('0.0')
         res['account'] = tax.account.id
-        res['partner'] = tax.invoice.partner.id
+        res['party'] = tax.invoice.party.id
         if tax.tax_code:
             res['tax_lines'] = [('create', {
                 'code': tax.tax_code.id,
@@ -1628,20 +1628,20 @@ InvoiceReport()
 
 
 class Address(OSV):
-    _name = 'partner.address'
+    _name = 'relationship.address'
     invoice = fields.Boolean('Invoice')
 
 Address()
 
 
-class Partner(OSV):
-    _name = 'partner.partner'
+class Party(OSV):
+    _name = 'relationship.party'
     payment_term = fields.Property(type='many2one',
             relation='account.invoice.payment_term',
             string='Invoice Payment Term', group_name='Accounting Properties',
             view_load=True)
 
-Partner()
+Party()
 
 
 class Category(OSV):
