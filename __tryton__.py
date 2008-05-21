@@ -9,7 +9,7 @@
     'depends': [
         'ir',
         'workflow',
-        'partner',
+        'relationship',
         'product',
         'company',
         'currency',

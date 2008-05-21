@@ -20,16 +20,17 @@ class PackingIn(OSV):
     effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime(
         'Planned Date', states={'readonly': "state != 'draft'",},)
-    supplier = fields.Many2One(
-        'partner.partner', 'Supplier',
-        states={'readonly': "state != 'draft'",}, on_change=['supplier',])
-    contact_address = fields.Many2One(
-        'partner.address', 'Contact Address',
-        states={'readonly': "state != 'draft'",},
-        domain="[('partner', '=', supplier)]")
     reference = fields.Char(
         "Reference", size=None, select=1,
         states={'readonly': "state != 'draft'",},)
+    supplier = fields.Many2One('relationship.party', 'Supplier',
+            states={
+                'readonly': "state != 'draft'",
+            }, on_change=['supplier'])
+    contact_address = fields.Many2One('relationship.address', 'Contact Address',
+            states={
+                'readonly': "state != 'draft'",
+            }, domain="[('party', '=', supplier)]")
     warehouse = fields.Many2One('stock.location', "Warehouse",
             required=True, states=STATES, domain="[('type', '=', 'warehouse')]")
     incoming_moves = fields.Function('get_incoming_moves', type='one2many',
@@ -69,8 +70,8 @@ class PackingIn(OSV):
     def on_change_supplier(self, cursor, user, ids, values, context=None):
         if not values.get('supplier'):
             return {}
-        partner_obj = self.pool.get("partner.partner")
-        address_id = partner_obj.address_get(cursor, user, values['supplier'],
+        party_obj = self.pool.get("relationship.party")
+        address_id = party_obj.address_get(cursor, user, values['supplier'],
                                           context=context)
         return {'contact_address': address_id}
 
@@ -246,22 +247,27 @@ class PackingOut(OSV):
     _description = __doc__
     _rec_name = 'code'
 
-    effective_date =fields.DateTime(
-        'Effective Date', readonly=True,
-        states={'readonly': "state != 'draft'",},)
-    planned_date = fields.DateTime(
-        'Planned Date', readonly=True,
-        states={'readonly': "state != 'draft'",},)
-    customer = fields.Many2One(
-        'partner.partner', 'Customer', required=True,
-        states={'readonly': "state != 'draft'",}, on_change=['customer',])
-    delivery_address = fields.Many2One(
-        'partner.address', 'Delivery Address', required=True,
-        states={'readonly': "state != 'draft'",},
-        domain="[('partner', '=', customer)]")
-    reference = fields.Char(
-        "Reference", size=None, select=1,
-        states={'readonly': "state != 'draft'",},)
+    effective_date =fields.DateTime('Effective Date', readonly=True,
+            states={
+                'readonly': "state != 'draft'",
+            })
+    planned_date = fields.DateTime('Planned Date', readonly=True,
+            states={
+                'readonly': "state != 'draft'",
+            })
+    customer = fields.Many2One('relationship.party', 'Customer', required=True,
+            states={
+                'readonly': "state != 'draft'",
+            }, on_change=['customer'])
+    delivery_address = fields.Many2One('relationship.address',
+            'Delivery Address', required=True,
+            states={
+                'readonly': "state != 'draft'",
+            }, domain="[('party', '=', customer)]")
+    reference = fields.Char("Reference", size=None, select=1,
+            states={
+                'readonly': "state != 'draft'",
+            })
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
             states={
                 'readonly': "state != 'draft'",
@@ -309,12 +315,14 @@ class PackingOut(OSV):
     def on_change_customer(self, cursor, user, ids, values, context=None):
         if not values.get('customer'):
             return {}
-        partner_obj = self.pool.get("partner.partner")
-        address_id = partner_obj.address_get(cursor, user, values['customer'],
-                                          type='delivery', context=context)
-        partner = partner_obj.browse(cursor, user, values['customer'], context=context)
-        return  {'delivery_address': address_id,
-                 'customer_location': partner.customer_location.id}
+        party_obj = self.pool.get("relationship.party")
+        address_id = party_obj.address_get(cursor, user, values['customer'],
+                type='delivery', context=context)
+        party = party_obj.browse(cursor, user, values['customer'], context=context)
+        return {
+                'delivery_address': address_id,
+                'customer_location': party.customer_location.id,
+            }
 
     def get_outgoing_moves(self, cursor, user, ids, name, arg, context=None):
         res = {}
@@ -619,7 +627,7 @@ PackingOut()
 
 
 class Address(OSV):
-    _name = 'partner.address'
+    _name = 'relationship.address'
     delivery = fields.Boolean('Delivery')
 
 Address()

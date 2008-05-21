@@ -17,7 +17,7 @@ class Location(OSV):
     name = fields.Char("Name", size=None, required=True, states=STATES)
     code = fields.Char("Code", size=None, states=STATES, select=1)
     active = fields.Boolean('Active', select=1)
-    address = fields.Many2One("partner.address", "Address",
+    address = fields.Many2One("relationship.address", "Address",
             states=STATES_WH)
     type = fields.Selection([
         ('supplier', 'Supplier'),
@@ -114,19 +114,19 @@ class Location(OSV):
 Location()
 
 
-class Partner(OSV):
-    _name = 'partner.partner'
+class Party(OSV):
+    _name = 'relationship.party'
     supplier_location = fields.Property(type='many2one',
             relation='stock.location', string='Supplier Location',
             group_name='Stock Properties', view_load=True,
             domain=[('type', '=', 'supplier')],
             help='The default source location ' \
-                    'when receiving products from the partner.')
+                    'when receiving products from the party.')
     customer_location = fields.Property(type='many2one',
             relation='stock.location', string='Customer Location',
             group_name='Stock Properties', view_load=True,
             domain=[('type', '=', 'customer')],
             help='The default destination location ' \
-                    'when sending products to the partner.')
+                    'when sending products to the party.')
 
-Partner()
+Party()

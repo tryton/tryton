@@ -221,7 +221,6 @@ class CompleteInventory(Wizard):
                     continue
                 if qty <= 0.0:
                     qty = 0
-                if product in products: continue
                 line_obj.create(
                     cursor, user,
                     {'product': product,

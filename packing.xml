@@ -534,8 +534,8 @@
 
 
         <record model="ir.ui.view" id="address_view_tree">
-            <field name="model">partner.address</field>
-            <field name="inherit" ref="partner.address_view_tree"/>
+            <field name="model">relationship.address</field>
+            <field name="inherit" ref="relationship.address_view_tree"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
@@ -548,8 +548,8 @@
             </field>
         </record>
         <record model="ir.ui.view" id="address_view_form">
-            <field name="model">partner.address</field>
-            <field name="inherit" ref="partner.address_view_form"/>
+            <field name="model">relationship.address</field>
+            <field name="inherit" ref="relationship.address_view_form"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
