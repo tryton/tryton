@@ -215,7 +215,7 @@ class CompleteInventory(Wizard):
 
         for inventory in inventories:
             products = [line.product.id for line in inventory.lines]
-            for (product, uom, qty) in indexed_data[inventory.location.id]:
+            for (product, uom, qty) in indexed_data.get(inventory.location.id,[]):
                 # Skip products already in the inventory:
                 if product in products:
                     continue
