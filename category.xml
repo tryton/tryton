@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
-        <record model="res.group" id="group_partner_admin">
-            <field name="name">Partner administration</field>
+        <record model="res.group" id="group_relationship_admin">
+            <field name="name">Party administration</field>
         </record>
         <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_partner_admin'))]"/>
+            <field name="groups" eval="[('add', ref('group_relationship_admin'))]"/>
         </record>
 
-        <menuitem name="Partner" sequence="0" id="menu_partner"/>
+        <menuitem name="Relationship" sequence="0" id="menu_relationship"/>
         <record model="ir.ui.view" id="category_view_form">
-            <field name="model">partner.category</field>
+            <field name="model">relationship.category</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -26,7 +26,7 @@
             </field>
         </record>
         <record model="ir.ui.view" id="category_view_tree">
-            <field name="model">partner.category</field>
+            <field name="model">relationship.category</field>
             <field name="type">tree</field>
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
@@ -40,7 +40,7 @@
         </record>
         <record model="ir.action.act_window" id="act_category_tree">
             <field name="name">Categories</field>
-            <field name="res_model">partner.category</field>
+            <field name="res_model">relationship.category</field>
             <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
@@ -49,11 +49,11 @@
             <field name="view" ref="category_view_tree"/>
             <field name="act_window" ref="act_category_tree"/>
         </record>
-        <menuitem parent="menu_partner" sequence="3"
+        <menuitem parent="menu_relationship" sequence="3"
             action="act_category_tree" id="menu_category_tree"/>
         <record model="ir.action.act_window" id="act_category_form">
             <field name="name">Categories</field>
-            <field name="res_model">partner.category</field>
+            <field name="res_model">relationship.category</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_category_form_view1">
@@ -70,7 +70,7 @@
             action="act_category_form" id="menu_category_form"/>
         <record model="ir.action.act_window" id="act_category_form2">
             <field name="name">Categories</field>
-            <field name="res_model">partner.category</field>
+            <field name="res_model">relationship.category</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_category_form2_view1">
@@ -86,16 +86,16 @@
         <menuitem name="New category" parent="menu_category_tree"
               action="act_category_form2" id="menu_category_form2"/>
 
-        <record model="ir.model.access" id="access_partner_category">
-            <field name="model" search="[('model', '=', 'partner.category')]"/>
+        <record model="ir.model.access" id="access_relationship_category">
+            <field name="model" search="[('model', '=', 'relationship.category')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_partner_category_admin">
-            <field name="model" search="[('model', '=', 'partner.category')]"/>
-            <field name="group" ref="group_partner_admin"/>
+        <record model="ir.model.access" id="access_relationship_category_admin">
+            <field name="model" search="[('model', '=', 'relationship.category')]"/>
+            <field name="group" ref="group_relationship_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>

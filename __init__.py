@@ -26,6 +26,6 @@
 ##############################################################################
 
 from category import *
-from partner import *
+from party import *
 from country import *
 from address import *

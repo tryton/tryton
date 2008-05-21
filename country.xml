@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
-        <menuitem name="Partner" id="menu_partner_admin"
-            parent="ir.menu_administration"/>
         <record model="ir.ui.view" id="country_view_form">
-            <field name="model">partner.country</field>
+            <field name="model">relationship.country</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -31,7 +29,7 @@
             </field>
         </record>
         <record model="ir.ui.view" id="country_view_tree">
-            <field name="model">partner.country</field>
+            <field name="model">relationship.country</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -44,7 +42,7 @@
         </record>
         <record model="ir.action.act_window" id="act_country_form">
             <field name="name">Countries</field>
-            <field name="res_model">partner.country</field>
+            <field name="res_model">relationship.country</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_country_form_view1">
@@ -57,1234 +55,1234 @@
             <field name="view" ref="country_view_form"/>
             <field name="act_window" ref="act_country_form"/>
         </record>
-        <menuitem parent="menu_partner_admin" action="act_country_form"
+        <menuitem parent="ir.menu_administration" action="act_country_form"
             id="menu_country_form"/>
-        <record model="partner.country" id="ad">
+        <record model="relationship.country" id="ad">
             <field name="name">Andorra, Principality of</field>
             <field name="code">ad</field>
         </record>
-        <record model="partner.country" id="ae">
+        <record model="relationship.country" id="ae">
             <field name="name">United Arab Emirates</field>
             <field name="code">ae</field>
         </record>
-        <record model="partner.country" id="af">
+        <record model="relationship.country" id="af">
             <field name="name">Afghanistan, Islamic State of</field>
             <field name="code">af</field>
         </record>
-        <record model="partner.country" id="ag">
+        <record model="relationship.country" id="ag">
             <field name="name">Antigua and Barbuda</field>
             <field name="code">ag</field>
         </record>
-        <record model="partner.country" id="ai">
+        <record model="relationship.country" id="ai">
             <field name="name">Anguilla</field>
             <field name="code">ai</field>
         </record>
-        <record model="partner.country" id="al">
+        <record model="relationship.country" id="al">
             <field name="name">Albania</field>
             <field name="code">al</field>
         </record>
-        <record model="partner.country" id="am">
+        <record model="relationship.country" id="am">
             <field name="name">Armenia</field>
             <field name="code">am</field>
         </record>
-        <record model="partner.country" id="an">
+        <record model="relationship.country" id="an">
             <field name="name">Netherlands Antilles</field>
             <field name="code">an</field>
         </record>
-        <record model="partner.country" id="ao">
+        <record model="relationship.country" id="ao">
             <field name="name">Angola</field>
             <field name="code">ao</field>
         </record>
-        <record model="partner.country" id="aq">
+        <record model="relationship.country" id="aq">
             <field name="name">Antarctica</field>
             <field name="code">aq</field>
         </record>
-        <record model="partner.country" id="ar">
+        <record model="relationship.country" id="ar">
             <field name="name">Argentina</field>
             <field name="code">ar</field>
         </record>
-        <record model="partner.country" id="as">
+        <record model="relationship.country" id="as">
             <field name="name">American Samoa</field>
             <field name="code">as</field>
         </record>
-        <record model="partner.country" id="at">
+        <record model="relationship.country" id="at">
             <field name="name">Austria</field>
             <field name="code">at</field>
         </record>
-        <record model="partner.country" id="au">
+        <record model="relationship.country" id="au">
             <field name="name">Australia</field>
             <field name="code">au</field>
         </record>
-        <record model="partner.country" id="aw">
+        <record model="relationship.country" id="aw">
             <field name="name">Aruba</field>
             <field name="code">aw</field>
         </record>
-        <record model="partner.country" id="az">
+        <record model="relationship.country" id="az">
             <field name="name">Azerbaidjan</field>
             <field name="code">az</field>
         </record>
-        <record model="partner.country" id="ba">
+        <record model="relationship.country" id="ba">
             <field name="name">Bosnia-Herzegovina</field>
             <field name="code">ba</field>
         </record>
-        <record model="partner.country" id="bb">
+        <record model="relationship.country" id="bb">
             <field name="name">Barbados</field>
             <field name="code">bb</field>
         </record>
-        <record model="partner.country" id="bd">
+        <record model="relationship.country" id="bd">
             <field name="name">Bangladesh</field>
             <field name="code">bd</field>
         </record>
-        <record model="partner.country" id="be">
+        <record model="relationship.country" id="be">
             <field name="name">Belgium</field>
             <field name="code">be</field>
         </record>
-        <record model="partner.country" id="bf">
+        <record model="relationship.country" id="bf">
             <field name="name">Burkina Faso</field>
             <field name="code">bf</field>
         </record>
-        <record model="partner.country" id="bg">
+        <record model="relationship.country" id="bg">
             <field name="name">Bulgaria</field>
             <field name="code">bg</field>
         </record>
-        <record model="partner.country" id="bh">
+        <record model="relationship.country" id="bh">
             <field name="name">Bahrain</field>
             <field name="code">bh</field>
         </record>
-        <record model="partner.country" id="bi">
+        <record model="relationship.country" id="bi">
             <field name="name">Burundi</field>
             <field name="code">bi</field>
         </record>
-        <record model="partner.country" id="bj">
+        <record model="relationship.country" id="bj">
             <field name="name">Benin</field>
             <field name="code">bj</field>
         </record>
-        <record model="partner.country" id="bm">
+        <record model="relationship.country" id="bm">
             <field name="name">Bermuda</field>
             <field name="code">bm</field>
         </record>
-        <record model="partner.country" id="bn">
+        <record model="relationship.country" id="bn">
             <field name="name">Brunei Darussalam</field>
             <field name="code">bn</field>
         </record>
-        <record model="partner.country" id="bo">
+        <record model="relationship.country" id="bo">
             <field name="name">Bolivia</field>
             <field name="code">bo</field>
         </record>
-        <record model="partner.country" id="br">
+        <record model="relationship.country" id="br">
             <field name="name">Brazil</field>
             <field name="code">br</field>
         </record>
-        <record model="partner.country" id="bs">
+        <record model="relationship.country" id="bs">
             <field name="name">Bahamas</field>
             <field name="code">bs</field>
         </record>
-        <record model="partner.country" id="bt">
+        <record model="relationship.country" id="bt">
             <field name="name">Bhutan</field>
             <field name="code">bt</field>
         </record>
-        <record model="partner.country" id="bv">
+        <record model="relationship.country" id="bv">
             <field name="name">Bouvet Island</field>
             <field name="code">bv</field>
         </record>
-        <record model="partner.country" id="bw">
+        <record model="relationship.country" id="bw">
             <field name="name">Botswana</field>
             <field name="code">bw</field>
         </record>
-        <record model="partner.country" id="by">
+        <record model="relationship.country" id="by">
             <field name="name">Belarus</field>
             <field name="code">by</field>
         </record>
-        <record model="partner.country" id="bz">
+        <record model="relationship.country" id="bz">
             <field name="name">Belize</field>
             <field name="code">bz</field>
         </record>
-        <record model="partner.country" id="ca">
+        <record model="relationship.country" id="ca">
             <field name="name">Canada</field>
             <field name="code">ca</field>
         </record>
-        <record model="partner.country" id="cc">
+        <record model="relationship.country" id="cc">
             <field name="name">Cocos (Keeling) Islands</field>
             <field name="code">cc</field>
         </record>
-        <record model="partner.country" id="cf">
+        <record model="relationship.country" id="cf">
             <field name="name">Central African Republic</field>
             <field name="code">cf</field>
         </record>
-        <record model="partner.country" id="cd">
+        <record model="relationship.country" id="cd">
             <field name="name">Congo, The Democratic Republic of the</field>
             <field name="code">cd</field>
         </record>
-        <record model="partner.country" id="cg">
+        <record model="relationship.country" id="cg">
             <field name="name">Congo</field>
             <field name="code">cg</field>
         </record>
-        <record model="partner.country" id="ch">
+        <record model="relationship.country" id="ch">
             <field name="name">Suisse</field>
             <field name="code">ch</field>
         </record>
-        <record model="partner.country" id="ci">
+        <record model="relationship.country" id="ci">
             <field name="name">Ivory Coast (Cote D'Ivoire)</field>
             <field name="code">ci</field>
         </record>
-        <record model="partner.country" id="ck">
+        <record model="relationship.country" id="ck">
             <field name="name">Cook Islands</field>
             <field name="code">ck</field>
         </record>
-        <record model="partner.country" id="cl">
+        <record model="relationship.country" id="cl">
             <field name="name">Chile</field>
             <field name="code">cl</field>
         </record>
-        <record model="partner.country" id="cm">
+        <record model="relationship.country" id="cm">
             <field name="name">Cameroon</field>
             <field name="code">cm</field>
         </record>
-        <record model="partner.country" id="cn">
+        <record model="relationship.country" id="cn">
             <field name="name">China</field>
             <field name="code">cn</field>
         </record>
-        <record model="partner.country" id="co">
+        <record model="relationship.country" id="co">
             <field name="name">Colombia</field>
             <field name="code">co</field>
         </record>
-        <record model="partner.country" id="cr">
+        <record model="relationship.country" id="cr">
             <field name="name">Costa Rica</field>
             <field name="code">cr</field>
         </record>
-        <record model="partner.country" id="cs">
+        <record model="relationship.country" id="cs">
             <field name="name">Serbia and Montenegro</field>
             <field name="code">cs</field>
         </record>
-        <record model="partner.country" id="cu">
+        <record model="relationship.country" id="cu">
             <field name="name">Cuba</field>
             <field name="code">cu</field>
         </record>
-        <record model="partner.country" id="cv">
+        <record model="relationship.country" id="cv">
             <field name="name">Cape Verde</field>
             <field name="code">cv</field>
         </record>
-        <record model="partner.country" id="cx">
+        <record model="relationship.country" id="cx">
             <field name="name">Christmas Island</field>
             <field name="code">cx</field>
         </record>
-        <record model="partner.country" id="cy">
+        <record model="relationship.country" id="cy">
             <field name="name">Cyprus</field>
             <field name="code">cy</field>
         </record>
-        <record model="partner.country" id="cz">
+        <record model="relationship.country" id="cz">
             <field name="name">Czech Republic</field>
             <field name="code">cz</field>
         </record>
-        <record model="partner.country" id="de">
+        <record model="relationship.country" id="de">
             <field name="name">Germany</field>
             <field name="code">de</field>
         </record>
-        <record model="partner.country" id="dj">
+        <record model="relationship.country" id="dj">
             <field name="name">Djibouti</field>
             <field name="code">dj</field>
         </record>
-        <record model="partner.country" id="dk">
+        <record model="relationship.country" id="dk">
             <field name="name">Denmark</field>
             <field name="code">dk</field>
         </record>
-        <record model="partner.country" id="dm">
+        <record model="relationship.country" id="dm">
             <field name="name">Dominica</field>
             <field name="code">dm</field>
         </record>
-        <record model="partner.country" id="do">
+        <record model="relationship.country" id="do">
             <field name="name">Dominican Republic</field>
             <field name="code">do</field>
         </record>
-        <record model="partner.country" id="dz">
+        <record model="relationship.country" id="dz">
             <field name="name">Algeria</field>
             <field name="code">dz</field>
         </record>
-        <record model="partner.country" id="ec">
+        <record model="relationship.country" id="ec">
             <field name="name">Ecuador</field>
             <field name="code">ec</field>
         </record>
-        <record model="partner.country" id="ee">
+        <record model="relationship.country" id="ee">
             <field name="name">Estonia</field>
             <field name="code">ee</field>
         </record>
-        <record model="partner.country" id="eg">
+        <record model="relationship.country" id="eg">
             <field name="name">Egypt</field>
             <field name="code">eg</field>
         </record>
-        <record model="partner.country" id="eh">
+        <record model="relationship.country" id="eh">
             <field name="name">Western Sahara</field>
             <field name="code">eh</field>
         </record>
-        <record model="partner.country" id="er">
+        <record model="relationship.country" id="er">
             <field name="name">Eritrea</field>
             <field name="code">er</field>
         </record>
-        <record model="partner.country" id="es">
+        <record model="relationship.country" id="es">
             <field name="name">Spain</field>
             <field name="code">es</field>
         </record>
-        <record model="partner.country" id="et">
+        <record model="relationship.country" id="et">
             <field name="name">Ethiopia</field>
             <field name="code">et</field>
         </record>
-        <record model="partner.country" id="fi">
+        <record model="relationship.country" id="fi">
             <field name="name">Finland</field>
             <field name="code">fi</field>
         </record>
-        <record model="partner.country" id="fj">
+        <record model="relationship.country" id="fj">
             <field name="name">Fiji</field>
             <field name="code">fj</field>
         </record>
-        <record model="partner.country" id="fk">
+        <record model="relationship.country" id="fk">
             <field name="name">Falkland Islands</field>
             <field name="code">fk</field>
         </record>
-        <record model="partner.country" id="fm">
+        <record model="relationship.country" id="fm">
             <field name="name">Micronesia</field>
             <field name="code">fm</field>
         </record>
-        <record model="partner.country" id="fo">
+        <record model="relationship.country" id="fo">
             <field name="name">Faroe Islands</field>
             <field name="code">fo</field>
         </record>
-        <record model="partner.country" id="fr">
+        <record model="relationship.country" id="fr">
             <field name="name">France</field>
             <field name="code">fr</field>
         </record>
-        <record model="partner.country" id="ga">
+        <record model="relationship.country" id="ga">
             <field name="name">Gabon</field>
             <field name="code">ga</field>
         </record>
-        <record model="partner.country" id="gd">
+        <record model="relationship.country" id="gd">
             <field name="name">Grenada</field>
             <field name="code">gd</field>
         </record>
-        <record model="partner.country" id="ge">
+        <record model="relationship.country" id="ge">
             <field name="name">Georgia</field>
             <field name="code">ge</field>
         </record>
-        <record model="partner.country" id="gf">
+        <record model="relationship.country" id="gf">
             <field name="name">French Guyana</field>
             <field name="code">gf</field>
         </record>
-        <record model="partner.country" id="gh">
+        <record model="relationship.country" id="gh">
             <field name="name">Ghana</field>
             <field name="code">gh</field>
         </record>
-        <record model="partner.country" id="gi">
+        <record model="relationship.country" id="gi">
             <field name="name">Gibraltar</field>
             <field name="code">gi</field>
         </record>
-        <record model="partner.country" id="gl">
+        <record model="relationship.country" id="gl">
             <field name="name">Greenland</field>
             <field name="code">gl</field>
         </record>
-        <record model="partner.country" id="gm">
+        <record model="relationship.country" id="gm">
             <field name="name">Gambia</field>
             <field name="code">gm</field>
         </record>
-        <record model="partner.country" id="gn">
+        <record model="relationship.country" id="gn">
             <field name="name">Guinea</field>
             <field name="code">gn</field>
         </record>
-        <record model="partner.country" id="gp">
+        <record model="relationship.country" id="gp">
             <field name="name">Guadeloupe (French)</field>
             <field name="code">gp</field>
         </record>
-        <record model="partner.country" id="gq">
+        <record model="relationship.country" id="gq">
             <field name="name">Equatorial Guinea</field>
             <field name="code">gq</field>
         </record>
-        <record model="partner.country" id="gr">
+        <record model="relationship.country" id="gr">
             <field name="name">Greece</field>
             <field name="code">gr</field>
         </record>
-        <record model="partner.country" id="gs">
+        <record model="relationship.country" id="gs">
             <field name="name">S. Georgia &amp; S. Sandwich Isls.</field>
             <field name="code">gs</field>
         </record>
-        <record model="partner.country" id="gt">
+        <record model="relationship.country" id="gt">
             <field name="name">Guatemala</field>
             <field name="code">gt</field>
         </record>
-        <record model="partner.country" id="gu">
+        <record model="relationship.country" id="gu">
             <field name="name">Guam (USA)</field>
             <field name="code">gu</field>
         </record>
-        <record model="partner.country" id="gw">
+        <record model="relationship.country" id="gw">
             <field name="name">Guinea Bissau</field>
             <field name="code">gw</field>
         </record>
-        <record model="partner.country" id="gy">
+        <record model="relationship.country" id="gy">
             <field name="name">Guyana</field>
             <field name="code">gy</field>
         </record>
-        <record model="partner.country" id="hk">
+        <record model="relationship.country" id="hk">
             <field name="name">Hong Kong</field>
             <field name="code">hk</field>
         </record>
-        <record model="partner.country" id="hm">
+        <record model="relationship.country" id="hm">
             <field name="name">Heard and McDonald Islands</field>
             <field name="code">hm</field>
         </record>
-        <record model="partner.country" id="hn">
+        <record model="relationship.country" id="hn">
             <field name="name">Honduras</field>
             <field name="code">hn</field>
         </record>
-        <record model="partner.country" id="hr">
+        <record model="relationship.country" id="hr">
             <field name="name">Croatia</field>
             <field name="code">hr</field>
         </record>
-        <record model="partner.country" id="ht">
+        <record model="relationship.country" id="ht">
             <field name="name">Haiti</field>
             <field name="code">ht</field>
         </record>
-        <record model="partner.country" id="hu">
+        <record model="relationship.country" id="hu">
             <field name="name">Hungary</field>
             <field name="code">hu</field>
         </record>
-        <record model="partner.country" id="id">
+        <record model="relationship.country" id="id">
             <field name="name">Indonesia</field>
             <field name="code">id</field>
         </record>
-        <record model="partner.country" id="ie">
+        <record model="relationship.country" id="ie">
             <field name="name">Ireland</field>
             <field name="code">ie</field>
         </record>
-        <record model="partner.country" id="il">
+        <record model="relationship.country" id="il">
             <field name="name">Israel</field>
             <field name="code">il</field>
         </record>
-        <record model="partner.country" id="in">
+        <record model="relationship.country" id="in">
             <field name="name">India</field>
             <field name="code">in</field>
         </record>
-        <record model="partner.country" id="io">
+        <record model="relationship.country" id="io">
             <field name="name">British Indian Ocean Territory</field>
             <field name="code">io</field>
         </record>
-        <record model="partner.country" id="iq">
+        <record model="relationship.country" id="iq">
             <field name="name">Iraq</field>
             <field name="code">iq</field>
         </record>
-        <record model="partner.country" id="ir">
+        <record model="relationship.country" id="ir">
             <field name="name">Iran</field>
             <field name="code">ir</field>
         </record>
-        <record model="partner.country" id="is">
+        <record model="relationship.country" id="is">
             <field name="name">Iceland</field>
             <field name="code">is</field>
         </record>
-        <record model="partner.country" id="it">
+        <record model="relationship.country" id="it">
             <field name="name">Italy</field>
             <field name="code">it</field>
         </record>
-        <record model="partner.country" id="jm">
+        <record model="relationship.country" id="jm">
             <field name="name">Jamaica</field>
             <field name="code">jm</field>
         </record>
-        <record model="partner.country" id="jo">
+        <record model="relationship.country" id="jo">
             <field name="name">Jordan</field>
             <field name="code">jo</field>
         </record>
-        <record model="partner.country" id="jp">
+        <record model="relationship.country" id="jp">
             <field name="name">Japan</field>
             <field name="code">jp</field>
         </record>
-        <record model="partner.country" id="ke">
+        <record model="relationship.country" id="ke">
             <field name="name">Kenya</field>
             <field name="code">ke</field>
         </record>
-        <record model="partner.country" id="kg">
+        <record model="relationship.country" id="kg">
             <field name="name">Kyrgyz Republic (Kyrgyzstan)</field>
             <field name="code">kg</field>
         </record>
-        <record model="partner.country" id="kh">
+        <record model="relationship.country" id="kh">
             <field name="name">Cambodia, Kingdom of</field>
             <field name="code">kh</field>
         </record>
-        <record model="partner.country" id="ki">
+        <record model="relationship.country" id="ki">
             <field name="name">Kiribati</field>
             <field name="code">ki</field>
         </record>
-        <record model="partner.country" id="km">
+        <record model="relationship.country" id="km">
             <field name="name">Comoros</field>
             <field name="code">km</field>
         </record>
-        <record model="partner.country" id="kn">
+        <record model="relationship.country" id="kn">
             <field name="name">Saint Kitts &amp; Nevis Anguilla</field>
             <field name="code">kn</field>
         </record>
-        <record model="partner.country" id="kp">
+        <record model="relationship.country" id="kp">
             <field name="name">North Korea</field>
             <field name="code">kp</field>
         </record>
-        <record model="partner.country" id="kr">
+        <record model="relationship.country" id="kr">
             <field name="name">South Korea</field>
             <field name="code">kr</field>
         </record>
-        <record model="partner.country" id="kw">
+        <record model="relationship.country" id="kw">
             <field name="name">Kuwait</field>
             <field name="code">kw</field>
         </record>
-        <record model="partner.country" id="ky">
+        <record model="relationship.country" id="ky">
             <field name="name">Cayman Islands</field>
             <field name="code">ky</field>
         </record>
-        <record model="partner.country" id="kz">
+        <record model="relationship.country" id="kz">
             <field name="name">Kazakhstan</field>
             <field name="code">kz</field>
         </record>
-        <record model="partner.country" id="la">
+        <record model="relationship.country" id="la">
             <field name="name">Laos</field>
             <field name="code">la</field>
         </record>
-        <record model="partner.country" id="lb">
+        <record model="relationship.country" id="lb">
             <field name="name">Lebanon</field>
             <field name="code">lb</field>
         </record>
-        <record model="partner.country" id="lc">
+        <record model="relationship.country" id="lc">
             <field name="name">Saint Lucia</field>
             <field name="code">lc</field>
         </record>
-        <record model="partner.country" id="li">
+        <record model="relationship.country" id="li">
             <field name="name">Liechtenstein</field>
             <field name="code">li</field>
         </record>
-        <record model="partner.country" id="lk">
+        <record model="relationship.country" id="lk">
             <field name="name">Sri Lanka</field>
             <field name="code">lk</field>
         </record>
-        <record model="partner.country" id="lr">
+        <record model="relationship.country" id="lr">
             <field name="name">Liberia</field>
             <field name="code">lr</field>
         </record>
-        <record model="partner.country" id="ls">
+        <record model="relationship.country" id="ls">
             <field name="name">Lesotho</field>
             <field name="code">ls</field>
         </record>
-        <record model="partner.country" id="lt">
+        <record model="relationship.country" id="lt">
             <field name="name">Lithuania</field>
             <field name="code">lt</field>
         </record>
-        <record model="partner.country" id="lu">
+        <record model="relationship.country" id="lu">
             <field name="name">Luxembourg</field>
             <field name="code">lu</field>
         </record>
-        <record model="partner.country" id="lv">
+        <record model="relationship.country" id="lv">
             <field name="name">Latvia</field>
             <field name="code">lv</field>
         </record>
-        <record model="partner.country" id="ly">
+        <record model="relationship.country" id="ly">
             <field name="name">Libya</field>
             <field name="code">ly</field>
         </record>
-        <record model="partner.country" id="ma">
+        <record model="relationship.country" id="ma">
             <field name="name">Morocco</field>
             <field name="code">ma</field>
         </record>
-        <record model="partner.country" id="mc">
+        <record model="relationship.country" id="mc">
             <field name="name">Monaco</field>
             <field name="code">mc</field>
         </record>
-        <record model="partner.country" id="md">
+        <record model="relationship.country" id="md">
             <field name="name">Moldavia</field>
             <field name="code">md</field>
         </record>
-        <record model="partner.country" id="mg">
+        <record model="relationship.country" id="mg">
             <field name="name">Madagascar</field>
             <field name="code">mg</field>
         </record>
-        <record model="partner.country" id="mh">
+        <record model="relationship.country" id="mh">
             <field name="name">Marshall Islands</field>
             <field name="code">mh</field>
         </record>
-        <record model="partner.country" id="mk">
+        <record model="relationship.country" id="mk">
             <field name="name">Macedonia</field>
             <field name="code">mk</field>
         </record>
-        <record model="partner.country" id="ml">
+        <record model="relationship.country" id="ml">
             <field name="name">Mali</field>
             <field name="code">ml</field>
         </record>
-        <record model="partner.country" id="mm">
+        <record model="relationship.country" id="mm">
             <field name="name">Myanmar</field>
             <field name="code">mm</field>
         </record>
-        <record model="partner.country" id="mn">
+        <record model="relationship.country" id="mn">
             <field name="name">Mongolia</field>
             <field name="code">mn</field>
         </record>
-        <record model="partner.country" id="mo">
+        <record model="relationship.country" id="mo">
             <field name="name">Macau</field>
             <field name="code">mo</field>
         </record>
-        <record model="partner.country" id="mp">
+        <record model="relationship.country" id="mp">
             <field name="name">Northern Mariana Islands</field>
             <field name="code">mp</field>
         </record>
-        <record model="partner.country" id="mq">
+        <record model="relationship.country" id="mq">
             <field name="name">Martinique (French)</field>
             <field name="code">mq</field>
         </record>
-        <record model="partner.country" id="mr">
+        <record model="relationship.country" id="mr">
             <field name="name">Mauritania</field>
             <field name="code">mr</field>
         </record>
-        <record model="partner.country" id="ms">
+        <record model="relationship.country" id="ms">
             <field name="name">Montserrat</field>
             <field name="code">ms</field>
         </record>
-        <record model="partner.country" id="mt">
+        <record model="relationship.country" id="mt">
             <field name="name">Malta</field>
             <field name="code">mt</field>
         </record>
-        <record model="partner.country" id="mu">
+        <record model="relationship.country" id="mu">
             <field name="name">Mauritius</field>
             <field name="code">mu</field>
         </record>
-        <record model="partner.country" id="mv">
+        <record model="relationship.country" id="mv">
             <field name="name">Maldives</field>
             <field name="code">mv</field>
         </record>
-        <record model="partner.country" id="mw">
+        <record model="relationship.country" id="mw">
             <field name="name">Malawi</field>
             <field name="code">mw</field>
         </record>
-        <record model="partner.country" id="mx">
+        <record model="relationship.country" id="mx">
             <field name="name">Mexico</field>
             <field name="code">mx</field>
         </record>
-        <record model="partner.country" id="my">
+        <record model="relationship.country" id="my">
             <field name="name">Malaysia</field>
             <field name="code">my</field>
         </record>
-        <record model="partner.country" id="mz">
+        <record model="relationship.country" id="mz">
             <field name="name">Mozambique</field>
             <field name="code">mz</field>
         </record>
-        <record model="partner.country" id="na">
+        <record model="relationship.country" id="na">
             <field name="name">Namibia</field>
             <field name="code">na</field>
         </record>
-        <record model="partner.country" id="nc">
+        <record model="relationship.country" id="nc">
             <field name="name">New Caledonia (French)</field>
             <field name="code">nc</field>
         </record>
-        <record model="partner.country" id="ne">
+        <record model="relationship.country" id="ne">
             <field name="name">Niger</field>
             <field name="code">ne</field>
         </record>
-        <record model="partner.country" id="nf">
+        <record model="relationship.country" id="nf">
             <field name="name">Norfolk Island</field>
             <field name="code">nf</field>
         </record>
-        <record model="partner.country" id="ng">
+        <record model="relationship.country" id="ng">
             <field name="name">Nigeria</field>
             <field name="code">ng</field>
         </record>
-        <record model="partner.country" id="ni">
+        <record model="relationship.country" id="ni">
             <field name="name">Nicaragua</field>
             <field name="code">ni</field>
         </record>
-        <record model="partner.country" id="nl">
+        <record model="relationship.country" id="nl">
             <field name="name">Netherlands</field>
             <field name="code">nl</field>
         </record>
-        <record model="partner.country" id="no">
+        <record model="relationship.country" id="no">
             <field name="name">Norway</field>
             <field name="code">no</field>
         </record>
-        <record model="partner.country" id="np">
+        <record model="relationship.country" id="np">
             <field name="name">Nepal</field>
             <field name="code">np</field>
         </record>
-        <record model="partner.country" id="nr">
+        <record model="relationship.country" id="nr">
             <field name="name">Nauru</field>
             <field name="code">nr</field>
         </record>
-        <record model="partner.country" id="nt">
+        <record model="relationship.country" id="nt">
             <field name="name">Neutral Zone</field>
             <field name="code">nt</field>
         </record>
-        <record model="partner.country" id="nu">
+        <record model="relationship.country" id="nu">
             <field name="name">Niue</field>
             <field name="code">nu</field>
         </record>
-        <record model="partner.country" id="nz">
+        <record model="relationship.country" id="nz">
             <field name="name">New Zealand</field>
             <field name="code">nz</field>
         </record>
-        <record model="partner.country" id="om">
+        <record model="relationship.country" id="om">
             <field name="name">Oman</field>
             <field name="code">om</field>
         </record>
-        <record model="partner.country" id="pa">
+        <record model="relationship.country" id="pa">
             <field name="name">Panama</field>
             <field name="code">pa</field>
         </record>
-        <record model="partner.country" id="pe">
+        <record model="relationship.country" id="pe">
             <field name="name">Peru</field>
             <field name="code">pe</field>
         </record>
-        <record model="partner.country" id="pf">
+        <record model="relationship.country" id="pf">
             <field name="name">Polynesia (French)</field>
             <field name="code">pf</field>
         </record>
-        <record model="partner.country" id="pg">
+        <record model="relationship.country" id="pg">
             <field name="name">Papua New Guinea</field>
             <field name="code">pg</field>
         </record>
-        <record model="partner.country" id="ph">
+        <record model="relationship.country" id="ph">
             <field name="name">Philippines</field>
             <field name="code">ph</field>
         </record>
-        <record model="partner.country" id="pk">
+        <record model="relationship.country" id="pk">
             <field name="name">Pakistan</field>
             <field name="code">pk</field>
         </record>
-        <record model="partner.country" id="pl">
+        <record model="relationship.country" id="pl">
             <field name="name">Poland</field>
             <field name="code">pl</field>
         </record>
-        <record model="partner.country" id="pm">
+        <record model="relationship.country" id="pm">
             <field name="name">Saint Pierre and Miquelon</field>
             <field name="code">pm</field>
         </record>
-        <record model="partner.country" id="pn">
+        <record model="relationship.country" id="pn">
             <field name="name">Pitcairn Island</field>
             <field name="code">pn</field>
         </record>
-        <record model="partner.country" id="pr">
+        <record model="relationship.country" id="pr">
             <field name="name">Puerto Rico</field>
             <field name="code">pr</field>
         </record>
-        <record model="partner.country" id="pt">
+        <record model="relationship.country" id="pt">
             <field name="name">Portugal</field>
             <field name="code">pt</field>
         </record>
-        <record model="partner.country" id="pw">
+        <record model="relationship.country" id="pw">
             <field name="name">Palau</field>
             <field name="code">pw</field>
         </record>
-        <record model="partner.country" id="py">
+        <record model="relationship.country" id="py">
             <field name="name">Paraguay</field>
             <field name="code">py</field>
         </record>
-        <record model="partner.country" id="qa">
+        <record model="relationship.country" id="qa">
             <field name="name">Qatar</field>
             <field name="code">qa</field>
         </record>
-        <record model="partner.country" id="re">
+        <record model="relationship.country" id="re">
             <field name="name">Reunion (French)</field>
             <field name="code">re</field>
         </record>
-        <record model="partner.country" id="ro">
+        <record model="relationship.country" id="ro">
             <field name="name">Romania</field>
             <field name="code">ro</field>
         </record>
-        <record model="partner.country" id="ru">
+        <record model="relationship.country" id="ru">
             <field name="name">Russian Federation</field>
             <field name="code">ru</field>
         </record>
-        <record model="partner.country" id="rw">
+        <record model="relationship.country" id="rw">
             <field name="name">Rwanda</field>
             <field name="code">rw</field>
         </record>
-        <record model="partner.country" id="sa">
+        <record model="relationship.country" id="sa">
             <field name="name">Saudi Arabia</field>
             <field name="code">sa</field>
         </record>
-        <record model="partner.country" id="sb">
+        <record model="relationship.country" id="sb">
             <field name="name">Solomon Islands</field>
             <field name="code">sb</field>
         </record>
-        <record model="partner.country" id="sc">
+        <record model="relationship.country" id="sc">
             <field name="name">Seychelles</field>
             <field name="code">sc</field>
         </record>
-        <record model="partner.country" id="sd">
+        <record model="relationship.country" id="sd">
             <field name="name">Sudan</field>
             <field name="code">sd</field>
         </record>
-        <record model="partner.country" id="se">
+        <record model="relationship.country" id="se">
             <field name="name">Sweden</field>
             <field name="code">se</field>
         </record>
-        <record model="partner.country" id="sg">
+        <record model="relationship.country" id="sg">
             <field name="name">Singapore</field>
             <field name="code">sg</field>
         </record>
-        <record model="partner.country" id="sh">
+        <record model="relationship.country" id="sh">
             <field name="name">Saint Helena</field>
             <field name="code">sh</field>
         </record>
-        <record model="partner.country" id="si">
+        <record model="relationship.country" id="si">
             <field name="name">Slovenia</field>
             <field name="code">si</field>
         </record>
-        <record model="partner.country" id="sj">
+        <record model="relationship.country" id="sj">
             <field name="name">Svalbard and Jan Mayen Islands</field>
             <field name="code">sj</field>
         </record>
-        <record model="partner.country" id="sk">
+        <record model="relationship.country" id="sk">
             <field name="name">Slovak Republic</field>
             <field name="code">sk</field>
         </record>
-        <record model="partner.country" id="sl">
+        <record model="relationship.country" id="sl">
             <field name="name">Sierra Leone</field>
             <field name="code">sl</field>
         </record>
-        <record model="partner.country" id="sm">
+        <record model="relationship.country" id="sm">
             <field name="name">San Marino</field>
             <field name="code">sm</field>
         </record>
-        <record model="partner.country" id="sn">
+        <record model="relationship.country" id="sn">
             <field name="name">Senegal</field>
             <field name="code">sn</field>
         </record>
-        <record model="partner.country" id="so">
+        <record model="relationship.country" id="so">
             <field name="name">Somalia</field>
             <field name="code">so</field>
         </record>
-        <record model="partner.country" id="sr">
+        <record model="relationship.country" id="sr">
             <field name="name">Suriname</field>
             <field name="code">sr</field>
         </record>
-        <record model="partner.country" id="st">
+        <record model="relationship.country" id="st">
             <field name="name">Saint Tome (Sao Tome) and Principe</field>
             <field name="code">st</field>
         </record>
-        <record model="partner.country" id="sv">
+        <record model="relationship.country" id="sv">
             <field name="name">El Salvador</field>
             <field name="code">sv</field>
         </record>
-        <record model="partner.country" id="sy">
+        <record model="relationship.country" id="sy">
             <field name="name">Syria</field>
             <field name="code">sy</field>
         </record>
-        <record model="partner.country" id="sz">
+        <record model="relationship.country" id="sz">
             <field name="name">Swaziland</field>
             <field name="code">sz</field>
         </record>
-        <record model="partner.country" id="tc">
+        <record model="relationship.country" id="tc">
             <field name="name">Turks and Caicos Islands</field>
             <field name="code">tc</field>
         </record>
-        <record model="partner.country" id="td">
+        <record model="relationship.country" id="td">
             <field name="name">Chad</field>
             <field name="code">td</field>
         </record>
-        <record model="partner.country" id="tf">
+        <record model="relationship.country" id="tf">
             <field name="name">French Southern Territories</field>
             <field name="code">tf</field>
         </record>
-        <record model="partner.country" id="tg">
+        <record model="relationship.country" id="tg">
             <field name="name">Togo</field>
             <field name="code">tg</field>
         </record>
-        <record model="partner.country" id="th">
+        <record model="relationship.country" id="th">
             <field name="name">Thailand</field>
             <field name="code">th</field>
         </record>
-        <record model="partner.country" id="tj">
+        <record model="relationship.country" id="tj">
             <field name="name">Tadjikistan</field>
             <field name="code">tj</field>
         </record>
-        <record model="partner.country" id="tk">
+        <record model="relationship.country" id="tk">
             <field name="name">Tokelau</field>
             <field name="code">tk</field>
         </record>
-        <record model="partner.country" id="tm">
+        <record model="relationship.country" id="tm">
             <field name="name">Turkmenistan</field>
             <field name="code">tm</field>
         </record>
-        <record model="partner.country" id="tn">
+        <record model="relationship.country" id="tn">
             <field name="name">Tunisia</field>
             <field name="code">tn</field>
         </record>
-        <record model="partner.country" id="to">
+        <record model="relationship.country" id="to">
             <field name="name">Tonga</field>
             <field name="code">to</field>
         </record>
-        <record model="partner.country" id="tp">
+        <record model="relationship.country" id="tp">
             <field name="name">East Timor</field>
             <field name="code">tp</field>
         </record>
-        <record model="partner.country" id="tr">
+        <record model="relationship.country" id="tr">
             <field name="name">Turkey</field>
             <field name="code">tr</field>
         </record>
-        <record model="partner.country" id="tt">
+        <record model="relationship.country" id="tt">
             <field name="name">Trinidad and Tobago</field>
             <field name="code">tt</field>
         </record>
-        <record model="partner.country" id="tv">
+        <record model="relationship.country" id="tv">
             <field name="name">Tuvalu</field>
             <field name="code">tv</field>
         </record>
-        <record model="partner.country" id="tw">
+        <record model="relationship.country" id="tw">
             <field name="name">Taiwan</field>
             <field name="code">tw</field>
         </record>
-        <record model="partner.country" id="tz">
+        <record model="relationship.country" id="tz">
             <field name="name">Tanzania</field>
             <field name="code">tz</field>
         </record>
-        <record model="partner.country" id="ua">
+        <record model="relationship.country" id="ua">
             <field name="name">Ukraine</field>
             <field name="code">ua</field>
         </record>
-        <record model="partner.country" id="ug">
+        <record model="relationship.country" id="ug">
             <field name="name">Uganda</field>
             <field name="code">ug</field>
         </record>
-        <record model="partner.country" id="uk">
+        <record model="relationship.country" id="uk">
             <field name="name">United Kingdom</field>
             <field name="code">uk</field>
         </record>
-        <record model="partner.country" id="um">
+        <record model="relationship.country" id="um">
             <field name="name">USA Minor Outlying Islands</field>
             <field name="code">um</field>
         </record>
-        <record model="partner.country" id="us">
+        <record model="relationship.country" id="us">
             <field name="name">United States</field>
             <field name="code">us</field>
         </record>
-        <record model="partner.country" id="uy">
+        <record model="relationship.country" id="uy">
             <field name="name">Uruguay</field>
             <field name="code">uy</field>
         </record>
-        <record model="partner.country" id="uz">
+        <record model="relationship.country" id="uz">
             <field name="name">Uzbekistan</field>
             <field name="code">uz</field>
         </record>
-        <record model="partner.country" id="va">
+        <record model="relationship.country" id="va">
             <field name="name">Holy See (Vatican City State)</field>
             <field name="code">va</field>
         </record>
-        <record model="partner.country" id="vc">
+        <record model="relationship.country" id="vc">
             <field name="name">Saint Vincent &amp; Grenadines</field>
             <field name="code">vc</field>
         </record>
-        <record model="partner.country" id="ve">
+        <record model="relationship.country" id="ve">
             <field name="name">Venezuela</field>
             <field name="code">ve</field>
         </record>
-        <record model="partner.country" id="vg">
+        <record model="relationship.country" id="vg">
             <field name="name">Virgin Islands (British)</field>
             <field name="code">vg</field>
         </record>
-        <record model="partner.country" id="vi">
+        <record model="relationship.country" id="vi">
             <field name="name">Virgin Islands (USA)</field>
             <field name="code">vi</field>
         </record>
-        <record model="partner.country" id="vn">
+        <record model="relationship.country" id="vn">
             <field name="name">Vietnam</field>
             <field name="code">vn</field>
         </record>
-        <record model="partner.country" id="vu">
+        <record model="relationship.country" id="vu">
             <field name="name">Vanuatu</field>
             <field name="code">vu</field>
         </record>
-        <record model="partner.country" id="wf">
+        <record model="relationship.country" id="wf">
             <field name="name">Wallis and Futuna Islands</field>
             <field name="code">wf</field>
         </record>
-        <record model="partner.country" id="ws">
+        <record model="relationship.country" id="ws">
             <field name="name">Samoa</field>
             <field name="code">ws</field>
         </record>
-        <record model="partner.country" id="ye">
+        <record model="relationship.country" id="ye">
             <field name="name">Yemen</field>
             <field name="code">ye</field>
         </record>
-        <record model="partner.country" id="yt">
+        <record model="relationship.country" id="yt">
             <field name="name">Mayotte</field>
             <field name="code">yt</field>
         </record>
-        <record model="partner.country" id="yu">
+        <record model="relationship.country" id="yu">
             <field name="name">Yugoslavia</field>
             <field name="code">yu</field>
         </record>
-        <record model="partner.country" id="za">
+        <record model="relationship.country" id="za">
             <field name="name">South Africa</field>
             <field name="code">za</field>
         </record>
-        <record model="partner.country" id="zm">
+        <record model="relationship.country" id="zm">
             <field name="name">Zambia</field>
             <field name="code">zm</field>
         </record>
-        <record model="partner.country" id="zw">
+        <record model="relationship.country" id="zw">
             <field name="name">Zimbabwe</field>
             <field name="code">zw</field>
         </record>
         <!-- USA States -->
-        <record model="partner.country.state" id="us-al">
+        <record model="relationship.country.state" id="us-al">
             <field name="name">Alabama</field>
             <field name="code">al</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ak">
+        <record model="relationship.country.state" id="us-ak">
             <field name="name">Alaska</field>
             <field name="code">ak</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-az">
+        <record model="relationship.country.state" id="us-az">
             <field name="name">Arizona</field>
             <field name="code">az</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ar">
+        <record model="relationship.country.state" id="us-ar">
             <field name="name">Arkansas</field>
             <field name="code">ar</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ca">
+        <record model="relationship.country.state" id="us-ca">
             <field name="name">California</field>
             <field name="code">ca</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-co">
+        <record model="relationship.country.state" id="us-co">
             <field name="name">Colorado</field>
             <field name="code">co</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ct">
+        <record model="relationship.country.state" id="us-ct">
             <field name="name">Connecticut</field>
             <field name="code">ct</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-dc">
+        <record model="relationship.country.state" id="us-dc">
             <field name="name">District of Columbia</field>
             <field name="code">dc</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-de">
+        <record model="relationship.country.state" id="us-de">
             <field name="name">Delaware</field>
             <field name="code">de</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-fl">
+        <record model="relationship.country.state" id="us-fl">
             <field name="name">Florida</field>
             <field name="code">fl</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ga">
+        <record model="relationship.country.state" id="us-ga">
             <field name="name">Georgia</field>
             <field name="code">ga</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-hi">
+        <record model="relationship.country.state" id="us-hi">
             <field name="name">Hawaii</field>
             <field name="code">hi</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-id">
+        <record model="relationship.country.state" id="us-id">
             <field name="name">Idaho</field>
             <field name="code">id</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-il">
+        <record model="relationship.country.state" id="us-il">
             <field name="name">Illinois</field>
             <field name="code">il</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-in">
+        <record model="relationship.country.state" id="us-in">
             <field name="name">Indiana</field>
             <field name="code">in</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ia">
+        <record model="relationship.country.state" id="us-ia">
             <field name="name">Iowa</field>
             <field name="code">ia</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ks">
+        <record model="relationship.country.state" id="us-ks">
             <field name="name">Kansas</field>
             <field name="code">ks</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ky">
+        <record model="relationship.country.state" id="us-ky">
             <field name="name">Kentucky</field>
             <field name="code">ky</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-la">
+        <record model="relationship.country.state" id="us-la">
             <field name="name">Louisiana</field>
             <field name="code">la</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-me">
+        <record model="relationship.country.state" id="us-me">
             <field name="name">Maine</field>
             <field name="code">me</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-md">
+        <record model="relationship.country.state" id="us-md">
             <field name="name">Maryland</field>
             <field name="code">md</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ma">
+        <record model="relationship.country.state" id="us-ma">
             <field name="name">Massachusetts</field>
             <field name="code">ma</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-mi">
+        <record model="relationship.country.state" id="us-mi">
             <field name="name">Michigan</field>
             <field name="code">mi</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-mn">
+        <record model="relationship.country.state" id="us-mn">
             <field name="name">Minnesota</field>
             <field name="code">mn</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ms">
+        <record model="relationship.country.state" id="us-ms">
             <field name="name">Mississippi</field>
             <field name="code">ms</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-mo">
+        <record model="relationship.country.state" id="us-mo">
             <field name="name">Missouri</field>
             <field name="code">mo</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-mt">
+        <record model="relationship.country.state" id="us-mt">
             <field name="name">Montana</field>
             <field name="code">mt</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ne">
+        <record model="relationship.country.state" id="us-ne">
             <field name="name">Nebraska</field>
             <field name="code">ne</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-nv">
+        <record model="relationship.country.state" id="us-nv">
             <field name="name">Nevada</field>
             <field name="code">nv</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-nh">
+        <record model="relationship.country.state" id="us-nh">
             <field name="name">New Hampshire</field>
             <field name="code">nh</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-nj">
+        <record model="relationship.country.state" id="us-nj">
             <field name="name">New Jersey</field>
             <field name="code">nj</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-nm">
+        <record model="relationship.country.state" id="us-nm">
             <field name="name">New Mexico</field>
             <field name="code">nm</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ny">
+        <record model="relationship.country.state" id="us-ny">
             <field name="name">New York</field>
             <field name="code">ny</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-nc">
+        <record model="relationship.country.state" id="us-nc">
             <field name="name">North Carolina</field>
             <field name="code">nc</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-nd">
+        <record model="relationship.country.state" id="us-nd">
             <field name="name">North Dakota</field>
             <field name="code">nd</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-oh">
+        <record model="relationship.country.state" id="us-oh">
             <field name="name">Ohio</field>
             <field name="code">oh</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ok">
+        <record model="relationship.country.state" id="us-ok">
             <field name="name">Oklahoma</field>
             <field name="code">ok</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-or">
+        <record model="relationship.country.state" id="us-or">
             <field name="name">Oregon</field>
             <field name="code">or</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-pa">
+        <record model="relationship.country.state" id="us-pa">
             <field name="name">Pennsylvania</field>
             <field name="code">pa</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ri">
+        <record model="relationship.country.state" id="us-ri">
             <field name="name">Rhode Island</field>
             <field name="code">ri</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-sc">
+        <record model="relationship.country.state" id="us-sc">
             <field name="name">South Carolina</field>
             <field name="code">sc</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-sd">
+        <record model="relationship.country.state" id="us-sd">
             <field name="name">South Dakota</field>
             <field name="code">sd</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-tn">
+        <record model="relationship.country.state" id="us-tn">
             <field name="name">Tennessee</field>
             <field name="code">tn</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-tx">
+        <record model="relationship.country.state" id="us-tx">
             <field name="name">Texas</field>
             <field name="code">tx</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-ut">
+        <record model="relationship.country.state" id="us-ut">
             <field name="name">Utah</field>
             <field name="code">ut</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-vt">
+        <record model="relationship.country.state" id="us-vt">
             <field name="name">Vermont</field>
             <field name="code">vt</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-va">
+        <record model="relationship.country.state" id="us-va">
             <field name="name">Virginia</field>
             <field name="code">va</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-wa">
+        <record model="relationship.country.state" id="us-wa">
             <field name="name">Washington</field>
             <field name="code">wa</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-wv">
+        <record model="relationship.country.state" id="us-wv">
             <field name="name">West Virginia</field>
             <field name="code">wv</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-wi">
+        <record model="relationship.country.state" id="us-wi">
             <field name="name">Wisconsin</field>
             <field name="code">wi</field>
             <field name="country" ref="us"/>
         </record>
-        <record model="partner.country.state" id="us-wy">
+        <record model="relationship.country.state" id="us-wy">
             <field name="name">Wyoming</field>
             <field name="code">wy</field>
             <field name="country" ref="us"/>
         </record>
 
         <record model="ir.model.access" id="access_country">
-            <field name="model" search="[('model', '=', 'partner.country')]"/>
+            <field name="model" search="[('model', '=', 'relationship.country')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_country_admin">
-            <field name="model" search="[('model', '=', 'partner.country')]"/>
+            <field name="model" search="[('model', '=', 'relationship.country')]"/>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -1293,14 +1291,14 @@
         </record>
 
         <record model="ir.model.access" id="access_country_state">
-            <field name="model" search="[('model', '=', 'partner.country.state')]"/>
+            <field name="model" search="[('model', '=', 'relationship.country.state')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_country_state_admin">
-            <field name="model" search="[('model', '=', 'partner.country.state')]"/>
+            <field name="model" search="[('model', '=', 'relationship.country.state')]"/>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

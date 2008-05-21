@@ -6,14 +6,14 @@ STATES = {
 
 class Country(OSV):
     'Country'
-    _name = 'partner.country'
+    _name = 'relationship.country'
     _description = __doc__
     name = fields.Char('Country Name', size=64,
            help='The full name of the country.', required=True, translate=True)
     code = fields.Char('Country Code', size=2,
            help='The ISO country code in two chars.\n'
            'You can use this field for quick search.', required=True)
-    state = fields.One2Many('partner.country.state', 'country', 'State')
+    state = fields.One2Many('relationship.country.state', 'country', 'State')
 
     def __init__(self):
         super(Country, self).__init__()
@@ -56,9 +56,9 @@ Country()
 
 class State(OSV):
     "State"
-    _name = 'partner.country.state'
+    _name = 'relationship.country.state'
     _description = __doc__
-    country = fields.Many2One('partner.country', 'Country',
+    country = fields.Many2One('relationship.country', 'Country',
             required=True)
     name = fields.Char('State Name', size=64, required=True)
     code = fields.Char('State Code', size=3, required=True)

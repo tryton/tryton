@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
-        <record model="ir.ui.view" id="partner_view_tree">
-            <field name="model">partner.partner</field>
+        <record model="ir.ui.view" id="party_view_tree">
+            <field name="model">relationship.party</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Partners">
+                <tree string="Parties">
                     <field name="code" select="1"/>
                     <field name="name" select="1"/>
                     <field name="type" select="2"/>
@@ -18,12 +18,12 @@
                 ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="partner_view_form">
-            <field name="model">partner.partner</field>
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">relationship.party</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Partner" col="6">
+                <form string="Party" col="6">
                     <label name="name"/>
                     <field name="name" xexpand="1"/>
                     <label name="code"/>
@@ -62,126 +62,126 @@
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_partner_form">
-            <field name="name">Partners</field>
-            <field name="res_model">partner.partner</field>
+        <record model="ir.action.act_window" id="act_party_form">
+            <field name="name">Parties</field>
+            <field name="res_model">relationship.party</field>
             <field name="view_type">form</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_partner_form_view1">
+        <record model="ir.action.act_window.view" id="act_party_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="partner_view_tree"/>
-            <field name="act_window" ref="act_partner_form"/>
+            <field name="view" ref="party_view_tree"/>
+            <field name="act_window" ref="act_party_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_partner_form_view2">
+        <record model="ir.action.act_window.view" id="act_party_form_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="partner_view_form"/>
-            <field name="act_window" ref="act_partner_form"/>
+            <field name="view" ref="party_view_form"/>
+            <field name="act_window" ref="act_party_form"/>
         </record>
-        <menuitem parent="menu_partner" sequence="1"
-            action="act_partner_form" id="menu_partner_form"/>
-        <record model="ir.action.act_window" id="act_partner_form2">
-            <field name="name">Partners</field>
-            <field name="res_model">partner.partner</field>
+        <menuitem parent="menu_relationship" sequence="1"
+            action="act_party_form" id="menu_party_form"/>
+        <record model="ir.action.act_window" id="act_party_form2">
+            <field name="name">Parties</field>
+            <field name="res_model">relationship.party</field>
             <field name="view_type">form</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_partner_form2_view1">
+        <record model="ir.action.act_window.view" id="act_party_form2_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="partner_view_form"/>
-            <field name="act_window" ref="act_partner_form2"/>
+            <field name="view" ref="party_view_form"/>
+            <field name="act_window" ref="act_party_form2"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_partner_form2_view2">
+        <record model="ir.action.act_window.view" id="act_party_form2_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="partner_view_tree"/>
-            <field name="act_window" ref="act_partner_form2"/>
+            <field name="view" ref="party_view_tree"/>
+            <field name="act_window" ref="act_party_form2"/>
         </record>
-        <menuitem name="New Partner" parent="menu_partner_form" sequence="1"
-            action="act_partner_form2" id="menu_partner_form2"/>
-        <record model="ir.action.act_window" id="act_partner_by_category">
-            <field name="name">Partners by Category</field>
-            <field name="res_model">partner.partner</field>
+        <menuitem name="New Party" parent="menu_party_form" sequence="1"
+            action="act_party_form2" id="menu_party_form2"/>
+        <record model="ir.action.act_window" id="act_party_by_category">
+            <field name="name">Parties by Category</field>
+            <field name="res_model">relationship.party</field>
             <field name="view_type">form</field>
             <field name="domain">[('categories', 'child_of', [active_id])]</field>
         </record>
-        <record model="ir.action.keyword" id="act_partner_by_category_keyword1">
+        <record model="ir.action.keyword" id="act_party_by_category_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model">partner.category,0</field>
-            <field name="action" ref="act_partner_by_category"/>
+            <field name="model">relationship.category,0</field>
+            <field name="action" ref="act_party_by_category"/>
         </record>
         <record model="ir.action.report" id="report_label">
             <field name="name">Labels</field>
-            <field name="model">partner.partner</field>
-            <field name="report_name">partner.label</field>
-            <field name="report">partner/label.odt</field>
+            <field name="model">relationship.party</field>
+            <field name="report_name">party.label</field>
+            <field name="report">relationship/label.odt</field>
         </record>
-        <record model="ir.action.keyword" id="report_label_partner">
+        <record model="ir.action.keyword" id="report_label_party">
             <field name="keyword">form_print</field>
-            <field name="model">partner.partner,0</field>
+            <field name="model">relationship.party,0</field>
             <field name="action" ref="report_label"/>
         </record>
 
-        <record model="ir.ui.view" id="partner_type_view_tree">
-            <field name="model">partner.partner.type</field>
+        <record model="ir.ui.view" id="party_type_view_tree">
+            <field name="model">relationship.party.type</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Partner Types">
+                <tree string="Party Types">
                     <field name="name" select="1"/>
                 </tree>
                 ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="partner_type_view_form">
-            <field name="model">partner.partner.type</field>
+        <record model="ir.ui.view" id="party_type_view_form">
+            <field name="model">relationship.party.type</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Partner Type">
+                <form string="Party Type">
                     <label name="name"/>
                     <field name="name"/>
                 </form>
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_partner_type_form">
-            <field name="name">Partner Types</field>
-            <field name="res_model">partner.partner.type</field>
+        <record model="ir.action.act_window" id="act_party_type_form">
+            <field name="name">Party Types</field>
+            <field name="res_model">relationship.party.type</field>
             <field name="view_type">form</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_partner_type_form_view1">
+        <record model="ir.action.act_window.view" id="act_party_type_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="partner_type_view_tree"/>
-            <field name="act_window" ref="act_partner_type_form"/>
+            <field name="view" ref="party_type_view_tree"/>
+            <field name="act_window" ref="act_party_type_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_partner_type_form_view2">
+        <record model="ir.action.act_window.view" id="act_party_type_form_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="partner_type_view_form"/>
-            <field name="act_window" ref="act_partner_type_form"/>
+            <field name="view" ref="party_type_view_form"/>
+            <field name="act_window" ref="act_party_type_form"/>
         </record>
-        <menuitem  parent="menu_partner_form" sequence="2"
-            action="act_partner_type_form" id="menu_partner_type_form"/>
+        <menuitem  parent="menu_party_form" sequence="2"
+            action="act_party_type_form" id="menu_party_type_form"/>
 
-        <record model="ir.model.access" id="access_partner_type">
-            <field name="model" search="[('model', '=', 'partner.partner.type')]"/>
+        <record model="ir.model.access" id="access_party_type">
+            <field name="model" search="[('model', '=', 'relationship.party.type')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_partner_type_admin">
-            <field name="model" search="[('model', '=', 'partner.partner.type')]"/>
-            <field name="group" ref="group_partner_admin"/>
+        <record model="ir.model.access" id="access_party_type_admin">
+            <field name="model" search="[('model', '=', 'relationship.party.type')]"/>
+            <field name="group" ref="group_relationship_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="True"/>
         </record>
-        <record model="ir.sequence.type" id="sequence_type_partner">
-            <field name="name">Partner</field>
-            <field name="code">partner.partner</field>
+        <record model="ir.sequence.type" id="sequence_type_party">
+            <field name="name">Party</field>
+            <field name="code">relationship.party</field>
         </record>
-        <record model="ir.sequence" id="sequence_partner">
-            <field name="name">Partner</field>
-            <field name="code">partner.partner</field>
+        <record model="ir.sequence" id="sequence_party">
+            <field name="name">Party</field>
+            <field name="code">relationship.party</field>
         </record>
     </data>
 </tryton>

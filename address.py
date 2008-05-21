@@ -7,10 +7,10 @@ STATES = {
 
 
 class Address(OSV):
-    "Partner Address"
-    _name = 'partner.address'
+    "Address"
+    _name = 'relationship.address'
     _description = __doc__
-    partner = fields.Many2One('partner.partner', 'Partner', required=True,
+    party = fields.Many2One('relationship.party', 'Party', required=True,
            ondelete='cascade', select=True,  states=STATES)
     name = fields.Char('Contact Name', size=64, states=STATES)
     street = fields.Char('Street', size=128, states=STATES)
@@ -18,9 +18,9 @@ class Address(OSV):
     zip = fields.Char('Zip', change_default=True, size=24,
            states=STATES)
     city = fields.Char('City', size=128, states=STATES)
-    country = fields.Many2One('partner.country', 'Country',
+    country = fields.Many2One('relationship.country', 'Country',
            states=STATES)
-    state = fields.Many2One("partner.country.state", 'State',
+    state = fields.Many2One("relationship.country.state", 'State',
            domain="[('country', '=', country)]", states=STATES)
     email = fields.Char('E-Mail', size=64, states=STATES)
     phone = fields.Char('Phone', size=64, states=STATES)
@@ -31,7 +31,7 @@ class Address(OSV):
 
     def __init__(self):
         super(Address, self).__init__()
-        self._order.insert(0, ('partner', 'ASC'))
+        self._order.insert(0, ('party', 'ASC'))
         self._order.insert(1, ('sequence', 'ASC'))
         self._order.insert(2, ('id', 'ASC'))
 
@@ -46,7 +46,7 @@ class Address(OSV):
         res = []
         for address in self.browse(cursor, user, ids, context):
             res.append((address.id, ", ".join(x for x in [address.name,
-                address.partner.name, address.zip, address.city] if x)))
+                address.party.name, address.zip, address.city] if x)))
         return res
 
     def name_search(self, cursor, user, name, args=None, operator='ilike',
@@ -54,15 +54,15 @@ class Address(OSV):
         if not args:
             args=[]
 
-        ids = self.search(cursor, user, [('zip','=',name)] + args,
+        ids = self.search(cursor, user, [('zip', '=', name)] + args,
                           limit=limit, context=context)
         if not ids:
-            ids = self.search(cursor, user, [('city',operator,name)] + args,
+            ids = self.search(cursor, user, [('city', operator, name)] + args,
                               limit=limit, context=context)
         if name:
-            ids += self.search(cursor, user, [('name',operator,name)] + args,
+            ids += self.search(cursor, user, [('name', operator, name)] + args,
                                limit=limit, context=context)
-            ids += self.search(cursor, user, [('partner',operator,name)] + args,
+            ids += self.search(cursor, user, [('party', operator, name)] + args,
                                limit=limit, context=context)
         return self.name_get(cursor, user, ids, context=context)
 
