@@ -11,21 +11,23 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Inventory" col="6">
+                    <form string="Inventory" col="4">
                         <label name="location"/>
                         <field name="location"/>
                         <label name="lost_found"/>
                         <field name="lost_found"/>
                         <label name="date"/>
                         <field name="date"/>
+                        <label name="company"/>
+                        <field name="company"/>
                         <label colspan="4"/>
                         <button string="Complete Inventory" type="action"
                             name="%(wizard_complete_inventory)d"
                             states="{'readonly': '''state != 'open' '''}"
-                            colspan="2"
+                            colspan="1"
                             help="Add an inventory line for each missing products"/>
-                        <field name="lines" colspan="6"/>
-                        <group col="4" colspan="6">
+                        <field name="lines" colspan="4"/>
+                        <group col="4" colspan="4">
                             <label name="state"/>
                             <field name="state"/>
                             <group colspan="2" col="3">
@@ -54,6 +56,7 @@
                         <field name="location" select="1"/>
                         <field name="date" select="1"/>
                         <field name="state" select="1"/>
+                        <field name="company" select="2"/>
                     </tree>
                 ]]>
             </field>

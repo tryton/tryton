@@ -26,6 +26,10 @@ class Inventory(OSV):
     moves = fields.Many2Many(
         'stock.move', 'inventory_move_rel', 'inventory', 'move',
         'Generated moves')
+    company = fields.Many2One(
+        'company.company', 'Company', required=True, states=STATES,)
+
+
     state = fields.Selection(
         [('open','Open'),
          ('done','Done'),
@@ -47,6 +51,13 @@ class Inventory(OSV):
     def default_date(self, cursor, user, context=None):
         return datetime.datetime.today()
 
+    def default_company(self, cursor, user, context=None):
+        if context.get('company'):
+            return context.get('company')
+        user_obj = self.pool.get('res.user')
+        user = user_obj.browse(cursor, user, user, context=context)
+        return user.company.id
+
     def set_state_cancel(self, cursor, user, ids, context=None):
         self.write(cursor, user, ids, {
             'state': 'cancel',
@@ -56,7 +67,6 @@ class Inventory(OSV):
         self.write(cursor, user, ids, {
             'state': 'open',
             }, context=context)
-
 
     def set_state_done(self, cursor, user, ids, context=None):
         self.write(cursor, user, ids, {
@@ -226,6 +236,7 @@ class CompleteInventory(Wizard):
                     {'product': product,
                      'uom': uom,
                      'quantity': qty,
+                     'company': inventory.company.id,
                      'inventory': inventory.id,},
                     context=context)
         return {}
