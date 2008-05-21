@@ -18,7 +18,8 @@ class PackingIn(OSV):
     _rec_name = 'code'
 
     effective_date =fields.DateTime('Effective Date', readonly=True)
-    planned_date = fields.DateTime('Planned Date', readonly=True)
+    planned_date = fields.DateTime(
+        'Planned Date', states={'readonly': "state != 'draft'",},)
     supplier = fields.Many2One(
         'partner.partner', 'Supplier',
         states={'readonly': "state != 'draft'",}, on_change=['supplier',])
@@ -26,6 +27,9 @@ class PackingIn(OSV):
         'partner.address', 'Contact Address',
         states={'readonly': "state != 'draft'",},
         domain="[('partner', '=', supplier)]")
+    reference = fields.Char(
+        "Reference", size=None, select=1,
+        states={'readonly': "state != 'draft'",},)
     warehouse = fields.Many2One('stock.location', "Warehouse",
             required=True, states=STATES, domain="[('type', '=', 'warehouse')]")
     incoming_moves = fields.Function('get_incoming_moves', type='one2many',
