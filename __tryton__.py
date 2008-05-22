@@ -8,6 +8,7 @@
     "description": "Define parties, addresses and co.",
     "depends" : ["ir","res"],
     "xml" : [
+        "relationship.xml",
         "category.xml",
         "party.xml",
         "country.xml",

@@ -1,14 +1,6 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
-        <record model="res.group" id="group_relationship_admin">
-            <field name="name">Party administration</field>
-        </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_relationship_admin'))]"/>
-        </record>
-
-        <menuitem name="Relationship" sequence="0" id="menu_relationship"/>
         <record model="ir.ui.view" id="category_view_form">
             <field name="model">relationship.category</field>
             <field name="type">form</field>
