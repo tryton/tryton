@@ -86,6 +86,13 @@ class Move(OSV):
         ]
         self._order[0] = ('id', 'DESC')
 
+    def default_company(self, cursor, user, context=None):
+        if context.get('company'):
+            return context.get('company')
+        user_obj = self.pool.get('res.user')
+        user = user_obj.browse(cursor, user, user, context=context)
+        return user.company.id
+
     def default_to_location(self, cursor, user, context=None):
         if context and context.get('warehouse') and context.get('type'):
             wh_location = self.pool.get('stock.location').browse(
