@@ -1,5 +1,5 @@
 "Packing"
-from trytond.osv import fields, OSV
+from trytond.osv import fields, OSV, ExceptORM
 from trytond.wizard import Wizard, WizardOSV
 import time
 from trytond.netsvc import LocalService
