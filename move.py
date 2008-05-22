@@ -351,7 +351,7 @@ class Line(OSV):
     date = fields.Function('get_move_field', fnct_inv='set_move_field',
             type='date', string='Effective Date', required=True,
             fnct_search='search_move_field')
-    reference = fields.char('Reference', size=None)
+    reference = fields.Char('Reference', size=None)
     amount_second_currency = fields.Numeric('Amount Second Currency',
             digits=(16, 2), help='The amount expressed in a second currency')
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
