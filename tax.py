@@ -313,9 +313,13 @@ class Tax(OSV):
         return 1
 
     def default_company(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
-        return context.get('company', False)
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
 
     def _process_tax(self, cursor, user, tax, price_unit, context=None):
         if tax.type == 'percentage':

@@ -251,9 +251,13 @@ class Account(OSV):
         return True
 
     def default_company(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
-        return context.get('company', False)
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
 
     def default_type(self, cursor, user, context=None):
         type_obj = self.pool.get('account.account.type')
