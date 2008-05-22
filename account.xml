@@ -5,7 +5,7 @@
             <field name="name">Account</field>
         </record>
         <record model="res.group" id="group_account_admin">
-            <field name="name">Account admin</field>
+            <field name="name">Account Admin</field>
         </record>
         <record model="res.user" id="res.user_admin">
             <field name="groups" eval="[('add', ref('group_account')), ('add', ref('group_account_admin'))]"/>
