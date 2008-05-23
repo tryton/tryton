@@ -3,7 +3,7 @@
     "version" : "0.1",
     "author" : "B2CK",
     'website': 'http://www.tryton.org/',
-    "category" : "Generic Modules",
+    "category" : "Generic",
     "description": "Define products, categories of product, units" \
         "of measure, categories of units of measure.",
     "depends" : ["ir", "res"],
