@@ -1036,7 +1036,7 @@ class Line(OSV):
                 view_id=view_id, view_type=view_type, context=context,
                 toolbar=toolbar, hexmd5=hexmd5)
         if view_type == 'tree' and 'journal' in context:
-            title = self.view_header_get(cursor, user, view_id=view_id,
+            title = self.view_header_get(cursor, user, '',
                     view_type=view_type, context=context)
             journal = journal_obj.browse(cursor, user, context['journal'],
                     context=context)
