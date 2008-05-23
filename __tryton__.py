@@ -4,7 +4,7 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Generic Modules',
+    'category': 'Purchase',
     'description': 'Purchase Management',
     'depends': [
         'company',
