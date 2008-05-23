@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="line_view_form">
+            <field name="model">analytic_account.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Analytic Line">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="4">
+                        <page string="General Information">
+                            <label name="account"/>
+                            <field name="account"/>
+                            <label name="date"/>
+                            <field name="date"/>
+                            <label name="reference"/>
+                            <field name="reference"/>
+                            <label name="party"/>
+                            <field name="party"/>
+                            <label name="journal"/>
+                            <field name="journal"/>
+                            <label name="move_line"/>
+                            <field name="move_line"/>
+                            <label name="debit"/>
+                            <field name="debit"/>
+                            <label name="credit"/>
+                            <field name="credit"/>
+                            <label name="currency"/>
+                            <field name="currency"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="line_view_tree">
+            <field name="model">analytic_account.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Analytic Lines" editable="top">
+                    <field name="move_line" select="1"/>
+                    <field name="journal" select="2"/>
+                    <field name="name" select="1"/>
+                    <field name="reference" select="2"/>
+                    <field name="date" select="1"/>
+                    <field name="party" select="2"/>
+                    <field name="account" select="2"/>
+                    <field name="debit" select="2"/>
+                    <field name="credit" select="2"/>
+                    <field name="currency" select="2"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_line_form">
+            <field name="name">Analytic Lines</field>
+            <field name="res_model">analytic_account.line</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="line_view_tree"/>
+            <field name="act_window" ref="act_line_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_line_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="line_view_form"/>
+            <field name="act_window" ref="act_line_form"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_account">
+            <field name="name">Open Account</field>
+            <field name="wiz_name">analytic_account.line.open_account</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_account_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">analytic_account.account,0</field>
+            <field name="action" ref="act_open_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_form">
+            <field name="model">account.move.line</field>
+            <field name="inherit" ref="account.move_line_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook/page[@string=&quot;General Information&quot;]"
+                        position="after">
+                        <page string="Analytic" col="1">
+                            <separator name="analytic_lines"/>
+                            <field name="analytic_lines"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>

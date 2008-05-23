@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="res.group" id="group_analytic">
+            <field name="name">Analytic</field>
+        </record>
+        <record model="res.group" id="group_analytic_admin">
+            <field name="name">Analytic Admin</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_analytic')), ('add', ref('group_analytic_admin'))]"/>
+        </record>
+    </data>
+</tryton>
