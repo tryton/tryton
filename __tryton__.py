@@ -4,7 +4,7 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Generic Modules',
+    'category': 'Inventory',
     'description': 'Stock Management and Inventory Control',
     'depends': [
         'ir',
