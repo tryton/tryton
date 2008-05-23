@@ -219,14 +219,15 @@ class CloseFiscalYear(Wizard):
         if account.close_method == 'none':
             return
         if account.close_method == 'balance':
+            balance = account.debit - account.credit
             if not currency_obj.is_zero(cursor, user, account.currency,
-                    account.balance):
+                    balance):
                 line_id = move_line_obj.create(cursor, user, {
                     'name': name,
-                    'debit': account.balance > Decimal('0.0') \
-                            and account.balance or Decimal('0.0'),
-                    'credit': account.balance < Decimal('0.0') \
-                            and - account.balance or Decimal('0.0'),
+                    'debit': balance > Decimal('0.0') \
+                            and balance or Decimal('0.0'),
+                    'credit': balance < Decimal('0.0') \
+                            and - balance or Decimal('0.0'),
                     'account': account.id,
                     'journal': journal.id,
                     'period': period.id,

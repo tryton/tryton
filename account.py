@@ -30,25 +30,30 @@ class Type(OSV):
     childs = fields.One2Many('account.account.type', 'parent', 'Childs')
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
-    account_type = fields.Boolean('Account Type',
-            help='Can be use as type for account')
     #TODO fix digits depend of the currency
     amount = fields.Function('get_amount', digits=(16, 2), string='Amount')
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
+    display_balance = fields.Selection([
+        ('debit-credit', 'Debit - Credit'),
+        ('credit-debit', 'Credit - Debit'),
+        ], 'Display Balance', required=True)
 
     def __init__(self):
         super(Type, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
 
-    def default_account_type(self, cursor, user, context=None):
-        return False
+    def default_code(self, cursor, user, context=None):
+        return 'view'
 
     def default_balance_sheet(self, cursor, user, context=None):
         return False
 
     def default_income_statement(self, cursor, user, context=None):
         return False
+
+    def default_display_balance(self, cursor, user, context=None):
+        return 'debit-credit'
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
         company_obj = self.pool.get('company.company')
@@ -81,14 +86,18 @@ class Type(OSV):
                 context=context):
             type_sum[account.type.id] += currency_obj.round(cursor, user,
                     company.currency, account.debit - account.credit)
-        for type_id in ids:
+
+        types = self.browse(cursor, user, ids, context=context)
+        for type in types:
             child_ids = self.search(cursor, user, [
-                ('parent', 'child_of', [type_id]),
+                ('parent', 'child_of', [type.id]),
                 ], context=context)
             for child_id in child_ids:
-                res[type_id] += type_sum[child_id]
-            res[type_id] = currency_obj.round(cursor, user,
-                        company.currency, res[type_id])
+                res[type.id] += type_sum[child_id]
+            res[type.id] = currency_obj.round(cursor, user,
+                        company.currency, res[type.id])
+            if type.display_balance == 'credit-debit':
+                res[type.id] = - res[type.id]
         return res
 
 Type()
@@ -105,8 +114,7 @@ class AccountTemplate(OSV):
     complete_name = fields.Function('get_complete_name', type='char',
             string='Name')
     code = fields.Char('Code', size=None, select=1)
-    type = fields.Many2One('account.account.type', 'Type', required=True,
-            domain=[('account_type', '=', True)])
+    type = fields.Many2One('account.account.type', 'Type', required=True)
     parents = fields.Many2Many('account.account.template',
             'account_account_template_rel', 'child', 'parent', 'Parents')
     childs = fields.Many2Many('account.account.template',
@@ -212,8 +220,7 @@ class Account(OSV):
     second_currency = fields.Many2One('currency.currency', 'Secondary currency',
             help='Force all moves for this account \n' \
                     'to have this secondary currency.')
-    type = fields.Many2One('account.account.type', 'Type', required=True,
-            domain=[('account_type', '=', True)])
+    type = fields.Many2One('account.account.type', 'Type', required=True)
     parents = fields.Many2Many('account.account', 'account_account_rel',
             'child', 'parent', 'Parents')
     childs = fields.Many2Many('account.account', 'account_account_rel',
@@ -341,10 +348,12 @@ class Account(OSV):
 
         account2company = {}
         id2company = {}
+        id2account = {}
         accounts = self.browse(cursor, user, all_ids, context=context)
         for account in accounts:
             account2company[account.id] = account.company.id
             id2company[account.company.id] = account.company
+            id2account[account.id] = account
 
         for account_id in ids:
             res.setdefault(account_id, Decimal('0.0'))
@@ -361,6 +370,8 @@ class Account(OSV):
                         to_currency, round=True, context=context)
             res[account_id] = currency_obj.round(cursor, user, to_currency,
                     res[account_id])
+            if id2account[account_id].type.display_balance == 'credit-debit':
+                res[account_id] = - res[account_id]
         return res
 
     def get_credit_debit(self, cursor, user, ids, name, arg, context=None):
