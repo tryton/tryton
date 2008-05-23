@@ -4,7 +4,7 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Generic Modules',
+    'category': 'Accounting',
     'description': 'Financial and Accounting Module',
     'depends': [
         'ir',
