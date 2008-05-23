@@ -7,6 +7,7 @@
     'category': 'Accounting',
     'description': 'Invoice',
     'depends': [
+        'ir',
         'account',
         'company',
         'relationship',
