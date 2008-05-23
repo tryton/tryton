@@ -4,7 +4,7 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Generic Modules',
+    'category': 'Generic',
     'description': 'Currency Module',
     'depends': [
         'ir',
