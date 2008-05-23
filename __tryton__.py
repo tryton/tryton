@@ -4,7 +4,7 @@
     "author" : "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    "category" : "Generic Modules",
+    "category" : "Generic",
     "description": "Define parties, addresses and co.",
     "depends" : ["ir","res"],
     "xml" : [
