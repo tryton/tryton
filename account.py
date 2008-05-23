@@ -100,6 +100,21 @@ class Type(OSV):
                 res[type.id] = - res[type.id]
         return res
 
+    def name_get(self, cursor, user, ids, context=None):
+        if not ids:
+            return []
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        res = []
+        def _name(type):
+            if type.parent:
+                return _name(type.parent) + '\\' + type.name
+            else:
+                return type.name
+        for type in self.browse(cursor, user, ids, context=context):
+            res.append((type.id, _name(type)))
+        return res
+
 Type()
 
 
