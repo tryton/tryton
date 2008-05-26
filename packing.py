@@ -475,22 +475,26 @@ class PackingOut(OSV):
         return super(PackingOut, self).create(cursor, user, values,
                                               context=context)
 
-    def pick_product(self, cursor, user, total_qty, location_quantities,
-                     product=None, location_index=None, context=None):
+    def pick_product(self, cursor, user, needed_qty, location_quantities,
+                     move=None, location_index=None, context=None):
         """
         Pick the product across the location. Naive (fast)
         implementation.  Product is a browse record and location_index
         is the index of the browse record of all the locations.
         """
         to_pick = []
-        for location,qty in location_quantities:
-            if total_qty <= qty:
-                to_pick.append((location, total_qty))
+        for location, available_qty in location_quantities:
+            if needed_qty <= available_qty:
+                to_pick.append((location, needed_qty))
                 return to_pick
             else:
-                to_pick.append((location, qty))
-                total_qty -= qty
-        return False
+                to_pick.append((location, available_qty))
+                needed_qty -= available_qty
+        # Force assignation for consumables:
+        if move.product.type == "consumable":
+            to_pick.append((move.from_location.id, needed_qty))
+            return to_pick
+        return None
 
     def _location_amount(self, cursor, user, target_uom,
                              qty_uom, uom_index, context=None):
@@ -571,10 +575,9 @@ class PackingOut(OSV):
 
             to_pick = self.pick_product(
                 cursor, user, move.quantity, location_qties,
-                product=move.product, location_index=location_index,
+                move=move, location_index=location_index,
                 context=context)
-
-            if to_pick == False:
+            if to_pick == None:
                 success = False
                 continue
 
