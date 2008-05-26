@@ -33,7 +33,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Supplier Packing" col="4">
+                    <form string="Supplier Packing" col="4" cursor="supplier">
                         <label name="code"/>
                         <field name="code"/>
                         <label name="reference"/>
@@ -186,7 +186,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Customer Packing" col="4">
+                    <form string="Customer Packing" col="4" cursor="customer">
                         <label name="code"/>
                         <field name="code"/>
                         <label name="reference"/>
