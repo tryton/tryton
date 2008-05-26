@@ -252,6 +252,8 @@ class Account(OSV):
     def analytic_accounts_fields_get(self, cursor, user, field,
             fields_names=None, context=None):
         res = {}
+        if fields_names is None:
+            fields_names = []
 
         root_account_ids = self.search(cursor, user, [
             ('parent', '=', False),
@@ -259,7 +261,7 @@ class Account(OSV):
         for account in self.browse(cursor, user, root_account_ids,
                 context=context):
             name = 'analytic_account_' + str(account.id)
-            if name in fields_names:
+            if name in fields_names or not fields_names:
                 res[name] = field.copy()
                 res[name]['required'] = False
                 res[name]['string'] = account.name
@@ -326,9 +328,10 @@ class AccountSelection(OSV):
     'Analytic Account Selection'
     _name = 'analytic_account.account.selection'
     _description = __doc__
+    _rec_name = 'id'
 
     accounts = fields.Many2Many('analytic_account.account',
-            'analytic_account_account_selection_rel', 'account', 'selection',
+            'analytic_account_account_selection_rel', 'selection', 'account',
             'Accounts')
 
     def __init__(self):
