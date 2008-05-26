@@ -17,7 +17,8 @@ class Move(OSV):
     _rec_name = "product"
     product = fields.Many2One("product.product", "Product", required=True,
             select=1, states=STATES,
-            on_change=['product', 'type', 'currency', 'uom', 'company'])
+            on_change=['product', 'type', 'currency', 'uom', 'company'],
+            domain=[('type', '!=', 'service')],)
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES)
     quantity = fields.Float("Quantity", digits=(12, 6), required=True,
             states=STATES)
@@ -83,6 +84,10 @@ class Move(OSV):
                 'CHECK(NOT(packing_in IS NOT NULL ' \
                         'AND packing_out IS NOT NULL))',
                 'Move can not be in both Supplier and Customer Packing'),
+        ]
+        self._constraints += [
+            ('check_product_type',
+             'Error! You can not use service product for a move.', ['product'])
         ]
         self._order[0] = ('id', 'DESC')
 
@@ -203,6 +208,12 @@ class Move(OSV):
             if location.type == 'customer':
                 res['type'] = 'output'
         return res
+
+    def check_product_type(self, cursor, user, ids):
+        for move in self.browse(cursor, user, ids):
+            if move.type == 'service':
+                    return False
+        return True
 
     def on_change_from_location(self, cursor, user, ids, vals, context=None):
         return self._on_change_location(cursor, user, ids, vals,
