@@ -469,19 +469,6 @@ class PackingOut(OSV):
         self.write(cursor, user, packing_id, {'state':'waiting'},
                    context=context)
 
-    def set_state_draft(self, cursor, user, packing_id, context=None):
-        move_obj = self.pool.get('stock.move')
-        packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_draft(
-            cursor, user, [m.id for m in packing.outgoing_moves],
-            context=context)
-        move_obj.set_state_cancel(
-            cursor, user, [m.id for m in packing.inventory_moves],
-            context=context)
-        self.write(
-            cursor, user, packing_id, {'state':'draft'}, context=context)
-
-
     def create(self, cursor, user, values, context=None):
         values['code'] = self.pool.get('ir.sequence').get(
             cursor, user, 'stock.packing.out')
@@ -619,10 +606,14 @@ class PackingOut(OSV):
 
     def button_draft(self, cursor, user, ids, context=None):
         workflow_service = LocalService('workflow')
+        move_obj = self.pool.get('stock.move')
         for packing in self.browse(cursor, user, ids, context=context):
             workflow_service.trg_create(user, self._name, packing.id, cursor)
             self.write(
                 cursor, user, packing.id, {'state':'draft'}, context=context)
+            move_obj.set_state_draft(
+                cursor, user, [m.id for m in packing.inventory_moves],
+                context=context)
 
 PackingOut()
 
