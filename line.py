@@ -117,12 +117,15 @@ class OpenAccount(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['domain'] = []
+        res['domain'] = [
+            ('account', '=', data['id']),
+        ]
 
         if context.get('start_date'):
             res['domain'].append(('date', '>=', context['start_date']))
         if context.get('end_date'):
             res['domain'].append(('date', '<=', context['end_date']))
+        res['domain'] = str(res['domain'])
         return res
 
 OpenAccount()
