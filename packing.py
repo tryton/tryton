@@ -548,13 +548,16 @@ class PackingOut(OSV):
             product_ids=[move.product.id for move in inventory_moves],
             context=context)
         # convert raw data to something like:
-        # {(location,product):[(qty,uom), ...],}
+        # {(location,product):[(uom,qty), ...],}
         processed_data = {}
         for line in raw_data:
+            if line[3] == 0.0: # skip when qty == 0.0
+                continue
             if line[:2] in processed_data:
                 processed_data[line[:2]].append(line[2:])
             else:
                 processed_data[line[:2]] = [line[2:]]
+
         success = True
         for move in inventory_moves:
             location_qties = []
