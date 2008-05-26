@@ -157,7 +157,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Invoice" col="6">
+                <form string="Invoice" col="6" cursor="party">
                     <label name="type"/>
                     <field name="type"/>
                     <label name="journal"/>
