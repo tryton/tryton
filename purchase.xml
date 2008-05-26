@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="purchase_line_view_form">
+            <field name="model">purchase.line</field>
+            <field name="inherit" ref="purchase.purchase_line_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/separator[@name=&quot;comment&quot;]"
+                        position="before">
+                        <group col="4" colspan="4" string="Analytic Accounts">
+                            <field name="analytic_accounts"/>
+                        </group>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
