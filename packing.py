@@ -420,7 +420,8 @@ class PackingOut(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.set_state_done(
-            cursor, user, [m.id for m in packing.outgoing_moves],
+            cursor, user,
+            [m.id for m in packing.outgoing_moves if m.state == 'waiting'],
             context=context)
         self.write(
             cursor, user, packing_id,
