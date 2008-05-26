@@ -65,9 +65,13 @@ class InvoiceLine(OSV):
                     selection_vals.setdefault('accounts', [])
                     selection_vals['accounts'].append(('add', vals[field]))
                 del vals[field]
-        selection_id = selection_obj.create(cursor, user, selection_vals,
-                context=context)
-        vals['analytic_accounts'] = selection_id
+        if 'analytic_accounts' in vals:
+            selection_obj.write(cursor, user, vals['analytic_accounts'],
+                    selection_vals, context=context)
+        else:
+            selection_id = selection_obj.create(cursor, user, selection_vals,
+                    context=context)
+            vals['analytic_accounts'] = selection_id
         return super(InvoiceLine, self).create(cursor, user, vals,
                 context=context)
 
@@ -91,6 +95,10 @@ class InvoiceLine(OSV):
                             accounts.append(value)
                     else:
                         accounts.append(account.id)
+                for account_id in selection_vals.values():
+                    if account_id \
+                            and account_id not in accounts:
+                        accounts.append(account_id)
                 selection_obj.write(cursor, user, line.analytic_accounts.id, {
                     'accounts': [('set', accounts)],
                     }, context=context)
@@ -109,6 +117,18 @@ class InvoiceLine(OSV):
                 context=context)
         selection_obj.unlink(cursor, user, selection_ids, context=context)
         return res
+
+    def copy(self, cursor, user, line_id, default=None, context=None):
+        selection_obj = self.pool.get('analytic_account.account.selection')
+
+        if default is None:
+            default = {}
+        default = default.copy()
+        line = self.browse(cursor, user, line_id, context=context)
+        default['analytic_accounts'] = selection_obj.copy(cursor, user,
+                line.analytic_accounts.id, context=context)
+        return super(InvoiceLine, self).copy(cursor, user, line_id,
+                default=default, context=context)
 
     def get_move_line(self, cursor, user, line, context=None):
         res = super(InvoiceLine, self).get_move_line(cursor, user, line,
