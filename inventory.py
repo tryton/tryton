@@ -120,6 +120,7 @@ class Inventory(OSV):
                     'quantity': delta_qty,
                     'product': line.product.id,
                     'uom': line.uom.id,
+                    'company': inventory.company.id,
                     'state': 'done',
                     }, context=context)
                 moves.append(move_id)
@@ -139,6 +140,7 @@ class Inventory(OSV):
                     'quantity': qty,
                     'product': product,
                     'uom': uom,
+                    'company': inventory.company.id,
                     'state': 'done',
                     }, context=context)
                 moves.append(move_id)
@@ -236,7 +238,6 @@ class CompleteInventory(Wizard):
                     {'product': product,
                      'uom': uom,
                      'quantity': qty,
-                     'company': inventory.company.id,
                      'inventory': inventory.id,},
                     context=context)
         return {}
