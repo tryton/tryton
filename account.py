@@ -3,6 +3,8 @@
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 from decimal import Decimal
+from xml.dom import minidom
+from xml import xpath
 
 
 class Account(OSV):
@@ -18,10 +20,22 @@ class Account(OSV):
     company = fields.Many2One('company.company', 'Company')
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     type = fields.Selection([
+        ('root', 'Root'),
         ('view', 'View'),
         ('normal', 'Normal'),
         ], 'Type', required=True)
-    parent = fields.Many2One('analytic_account.account', 'Parent', select=2)
+    root = fields.Many2One('analytic_account.account', 'Root', select=2,
+            domain=[('parent', '=', False)],
+            states={
+                'invisible': "type == 'root'",
+                'required': "type != 'root'",
+            })
+    parent = fields.Many2One('analytic_account.account', 'Parent', select=2,
+            domain="[('parent', 'child_of', root)]",
+            states={
+                'invisible': "type == 'root'",
+                'required': "type != 'root'",
+            })
     childs = fields.One2Many('analytic_account.account', 'parent', 'Childs')
     #TODO fix digits depend of the currency
     balance = fields.Function('get_balance', digits=(16, 2), string='Balance')
@@ -216,6 +230,44 @@ class Account(OSV):
                 or str(r[self._rec_name])) for r in self.read(cursor, user, ids,
                     [self._rec_name, 'code'], context=context, load='_classic_write')]
 
+    def convert_view(self, cursor, user, node, context=None):
+        res = xpath.Evaluate('//field[@name=\'analytic_accounts\']', node)
+        if not res:
+            return
+        node_accounts = res[0]
+
+        root_account_ids = self.search(cursor, user, [
+            ('parent', '=', False),
+            ], context=context)
+        for account_id in root_account_ids:
+            newnode = node_accounts.cloneNode(1)
+            newnode.tagName = 'label'
+            newnode.setAttribute('name', 'analytic_account_' + str(account_id))
+            node_accounts.parentNode.insertBefore(newnode, node_accounts)
+            newnode = node_accounts.cloneNode(1)
+            newnode.setAttribute('name', 'analytic_account_' + str(account_id))
+            node_accounts.parentNode.insertBefore(newnode, node_accounts)
+        node_accounts.parentNode.removeChild(node_accounts)
+
+    def analytic_accounts_fields_get(self, cursor, user, field,
+            fields_names=None, context=None):
+        res = {}
+
+        root_account_ids = self.search(cursor, user, [
+            ('parent', '=', False),
+            ], context=context)
+        for account in self.browse(cursor, user, root_account_ids,
+                context=context):
+            name = 'analytic_account_' + str(account.id)
+            if name in fields_names:
+                res[name] = field.copy()
+                res[name]['required'] = False
+                res[name]['string'] = account.name
+                res[name]['relation'] = self._name
+                res[name]['domain'] = [('root', '=', account.id),
+                        ('type', '=', 'normal')]
+        return res
+
 Account()
 
 
@@ -268,3 +320,33 @@ class OpenChartAccount(Wizard):
         return res
 
 OpenChartAccount()
+
+
+class AccountSelection(OSV):
+    'Analytic Account Selection'
+    _name = 'analytic_account.account.selection'
+    _description = __doc__
+
+    accounts = fields.Many2Many('analytic_account.account',
+            'analytic_account_account_selection_rel', 'account', 'selection',
+            'Accounts')
+
+    def __init__(self):
+        super(AccountSelection, self).__init__()
+        self._constraints += [
+            ('check_root', 'Can not have many accounts with the same root!',
+                ['accounts']),
+        ]
+
+    def check_root(self, cursor, user, ids):
+        "Check Root"
+        selections = self.browse(cursor, user, ids)
+        for selection in selections:
+            roots = []
+            for account in selection.accounts:
+                if account.root.id in roots:
+                    return False
+                roots.append(account.root.id)
+        return True
+
+AccountSelection()

@@ -18,16 +18,18 @@
                     <field name="active" xexpand="0" width="100"/>
                     <notebook colspan="6">
                         <page string="General Information">
-                            <label name="parent"/>
-                            <field name="parent"/>
                             <label name="type"/>
                             <field name="type"/>
+                            <label name="display_balance"/>
+                            <field name="display_balance"/>
+                            <label name="root"/>
+                            <field name="root"/>
+                            <label name="parent"/>
+                            <field name="parent"/>
                             <label name="company"/>
                             <field name="company"/>
                             <label name="currency"/>
                             <field name="currency"/>
-                            <label name="display_balance"/>
-                            <field name="display_balance"/>
                         </page>
                         <page string="Notes">
                             <field name="note"/>
