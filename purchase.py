@@ -498,6 +498,9 @@ class PurchaseLine(OSV):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             val = True
+            if line.product.type == 'service':
+                res[line.id] = True
+                continue
             ignored_ids = [x.id for x in line.moves_ignored]
             quantity = line.quantity
             for move in line.moves:
@@ -650,6 +653,8 @@ class PurchaseLine(OSV):
 
         vals = {}
         if line.type != 'line':
+            return
+        if line.product.type == 'service':
             return
         quantity = line.quantity
         for move in line.moves:
