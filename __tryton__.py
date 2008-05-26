@@ -5,7 +5,7 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Accounting',
-    'description': 'Invoice',
+    'description': 'Analytic Invoice',
     'depends': [
         'account_invoice',
         'analytic_account',
