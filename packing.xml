@@ -54,18 +54,7 @@
                             colspan="2"/>
                         <notebook colspan="6">
                             <page string="Incoming Moves">
-                                <field name="incoming_moves" colspan="4">
-                                  <tree string="Moves">
-                                      <field name="product"/>
-                                      <field name="from_location"/>
-                                      <field name="to_location"/>
-                                      <field name="quantity"/>
-                                      <field name="uom"/>
-                                      <field name="unit_price"/>
-                                      <field name="currency"/>
-                                      <field name="state"/>
-                                  </tree>
-                                </field>
+                                <field name="incoming_moves" colspan="4"/>
                             </page>
                             <page string="Inventory Moves">
                                 <field name="inventory_moves" colspan="4"/>
