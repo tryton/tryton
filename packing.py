@@ -569,9 +569,10 @@ class PackingOut(OSV):
                 qty = self._location_amount(
                     cursor, user, move.uom.id,
                     processed_data.get(
-                        (move.from_location.id, move.product.id), []),
+                        (location, move.product.id), []),
                     uom_index, context=context,)
-                location_qties.append((location, qty))
+                if qty != 0.0:
+                    location_qties.append((location, qty))
 
             to_pick = self.pick_product(
                 cursor, user, move.quantity, location_qties,
@@ -589,16 +590,19 @@ class PackingOut(OSV):
                     'product': move.product.id,
                     'uom': move.uom.id,
                     'quantity': qty,
-                    'inventory_packing_out': packing.id,
+                    'packing_out': packing.id,
                     'state': 'assigned',
+                    'type': 'internal',
+                    'company': move.company.id,
                     }
                 if first:
                     move_obj.write(cursor, user, move.id, values,
                                    context=context)
+                    first = False
                 else:
                     move_obj.create(cursor, user, values, context=context)
-                processed_data[
-                    (location, move.product.id)].append((move.uom.id, -qty))
+                processed_data.get((location, move.product.id), []).append(
+                    (move.uom.id, -qty))
 
         return success
 
