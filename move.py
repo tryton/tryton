@@ -211,8 +211,8 @@ class Move(OSV):
 
     def check_product_type(self, cursor, user, ids):
         for move in self.browse(cursor, user, ids):
-            if move.type == 'service':
-                    return False
+            if move.product.type == 'service':
+                return False
         return True
 
     def on_change_from_location(self, cursor, user, ids, vals, context=None):
