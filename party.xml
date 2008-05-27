@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.action.wizard" id="act_open_supplier">
+            <field name="name">Active Suppliers</field>
+            <field name="wiz_name">relationship.party.open_supplier</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_supplier_keyword1">
+            <field name="action" ref="act_open_supplier"/>
+            <field name="keyword">form_action</field>
+            <field name="model">relationship.party,0</field>
+        </record>
+        <menuitem name="Suppliers"
+            parent="relationship.menu_party_form"
+            action="act_open_supplier"
+            type="wizard"
+            icon="STOCK_JUSTIFY_FILL"
+            id="menu_open_supplier"/>
+    </data>
+</tryton>
