@@ -728,20 +728,5 @@
                 ]]>
             </field>
         </record>
-
-        <record model="ir.ui.view" id="packing_in_view_form">
-            <field name="model">stock.packing.in</field>
-            <field name="inherit" ref="stock.packing_in_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/form/notebook/page/field[@name=&quot;incoming_moves&quot;]/tree/field[@name=&quot;product&quot;]"
-                        position="before">
-                        <field name="purchase"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
-        </record>
     </data>
 </tryton>
