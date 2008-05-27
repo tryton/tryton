@@ -501,7 +501,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Invoice Line">
+                <form string="Invoice Line" cursor="product">
                     <label name="invoice"/>
                     <field name="invoice" colspan="3"/>
                     <label name="type"/>
