@@ -88,6 +88,7 @@
             <field name="view_type">form</field>
             <field name="domain">[('quantity', '!=', 0)]</field>
             <field name="context">{'locations':active_ids}</field>
+            <field name="window_name" eval="False"/>
         </record>
         <record model="ir.action.keyword"
                 id="act_product_by_location_keyword1">

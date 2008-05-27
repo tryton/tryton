@@ -126,4 +126,14 @@ class Product(OSV):
                  'uom': key[2],
                  'quantity': val} for key, val in res.iteritems()]
 
+    def view_header_get(self, cursor, user, value, view_type='form',
+            context=None):
+        if not context.get('locations'):
+            return False
+        location_obj = self.pool.get('stock.location')
+        locations = location_obj.browse(cursor, user, context.get('locations'),
+                                        context=context)
+        return "Products by location (" + \
+            ",".join([l.name for l in locations]) + ")"
+
 Product()
