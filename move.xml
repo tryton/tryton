@@ -6,7 +6,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Move" col="4" cursor="product">
+                    <form string="Move" col="4">
                         <label name="from_location"/>
                         <field name="from_location"/>
                         <label name="to_location"/>
