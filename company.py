@@ -10,7 +10,8 @@ class Company(OSV):
     'Company'
     _name = 'company.company'
     _description = __doc__
-    name = fields.Char('Name', size=128, required=True)
+    _inherits = {'relationship.party': 'party'}
+
     party = fields.Many2One('relationship.party', 'Party', required=True)
     parent = fields.Many2One('company.company', 'Parent')
     childs = fields.One2Many('company.company', 'parent', 'Childs')
