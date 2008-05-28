@@ -18,6 +18,7 @@ class Company(OSV):
     header = fields.Text('Header')
     footer = fields.text('Footer')
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
+    employees = fields.One2Many('company.employee', 'company', 'Employees')
 
     def __init__(self):
         super(Company, self).__init__()
@@ -36,12 +37,26 @@ class Company(OSV):
 Company()
 
 
+class Employee(OSV):
+    'Employee'
+    _name = 'company.employee'
+    _description = __doc__
+    _inherits = {'relationship.party': 'party'}
+
+    party = fields.Many2One('relationship.party', 'Party', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True)
+
+Employee()
+
+
 class User(OSV):
     _name = 'res.user'
     main_company = fields.Many2One('company.company', 'Main Company',
             on_change=['main_company'])
     company = fields.Many2One('company.company', 'Current Company',
             domain="[('parent', 'child_of', [main_company])]")
+    employee = fields.Many2One('company.employee', 'Employee',
+            domain="[('company', '=', main_company)]")
 
     def __init__(self):
         super(User, self).__init__()

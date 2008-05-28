@@ -29,11 +29,15 @@
                             <label name="website"/>
                             <field name="website" widget="url"/>
                         </page>
+                        <page string="Employees" col="1">
+                            <separator name="employees"/>
+                            <field name="employees"/>
+                        </page>
                         <page string="Reports" col="1">
-                            <separator name="header" colspan="4"/>
-                            <field name="header" colspan="4"/>
-                            <separator name="footer" colspan="4"/>
-                            <field name="footer" colspan="4"/>
+                            <separator name="header"/>
+                            <field name="header"/>
+                            <separator name="footer"/>
+                            <field name="footer"/>
                         </page>
                     </notebook>
                 </form>
@@ -46,11 +50,10 @@
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Companies">
-                        <field name="name" select="1"/>
-                        <field name="party" select="1"/>
-                        <field name="currency" select="1"/>
-                    </tree>
+                <tree string="Companies">
+                    <field name="name" select="1"/>
+                    <field name="currency" select="1"/>
+                </tree>
                 ]]>
             </field>
         </record>
@@ -100,6 +103,8 @@
                             <field name="main_company"/>
                             <label name="company"/>
                             <field name="company"/>
+                            <label name="employee"/>
+                            <field name="employee"/>
                         </xpath>
                     </data>
                 ]]>
@@ -174,5 +179,64 @@
             id="config_wizard_item_company">
             <field name="name">company.company.config</field>
         </record>
+
+        <record model="ir.ui.view" id="employee_view_form">
+            <field name="model">company.employee</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Employee" col="6">
+                    <label name="name"/>
+                    <field name="name" xexpand="1"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="6">
+                        <page string="General">
+                            <field name="addresses" mode="form,tree" colspan="4" width="600">
+                                <tree string="Addresses" sequence="sequence">
+                                    <field name="sequence" tree_invisible="1"/>
+                                    <field name="name"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                    <field name="active"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="employee_view_tree">
+            <field name="model">company.employee</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Employess">
+                    <field name="name" select="1"/>
+                    <field name="company"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_employee_form">
+            <field name="name">Employees</field>
+            <field name="res_model">company.employee</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_employee_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="employee_view_tree"/>
+            <field name="act_window" ref="act_employee_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_employee_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="employee_view_form"/>
+            <field name="act_window" ref="act_employee_form"/>
+        </record>
+        <menuitem parent="menu_company_tree" action="act_employee_form"
+            id="menu_employee_form"/>
     </data>
 </tryton>
