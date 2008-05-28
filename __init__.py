@@ -26,5 +26,4 @@
 ##############################################################################
 from uom import *
 from category import *
-from template import *
 from product import *
