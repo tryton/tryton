@@ -801,6 +801,8 @@ class Line(OSV):
                 ('start_date', '<=', context['date']),
                 ('end_date', '>=', context['date']),
                 ], limit=1, context=context)
+            if not fiscalyear_ids:
+                fiscalyear_ids = [0]
             if context.get('posted'):
                 return obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
