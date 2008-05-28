@@ -2,7 +2,7 @@
 <tryton>
     <data>
         <record model="res.group" id="group_relationship_admin">
-            <field name="name">Relationship administration</field>
+            <field name="name">Relationship Administration</field>
         </record>
         <record model="res.user" id="res.user_admin">
             <field name="groups" eval="[('add', ref('group_relationship_admin'))]"/>
