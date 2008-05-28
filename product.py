@@ -69,9 +69,9 @@ class Product(OSV):
     "Product"
     _name = "product.product"
     _description = __doc__
-    _inherits = {'product.template': 'product_template'}
+    _inherits = {'product.template': 'template'}
 
-    product_template = fields.Many2One('product.template', 'Product Template',
+    template = fields.Many2One('product.template', 'Product Template',
             required=True)
     code = fields.Char("Code", size=None)
     description = fields.Text("Description", translate=True)
