@@ -133,7 +133,6 @@ class Product(OSV):
         location_obj = self.pool.get('stock.location')
         locations = location_obj.browse(cursor, user, context.get('locations'),
                                         context=context)
-        return "Products by location (" + \
-            ",".join([l.name for l in locations]) + ")"
+        return value + " (" + ",".join([l.name for l in locations]) + ")"
 
 Product()
