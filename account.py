@@ -239,6 +239,9 @@ class Account(OSV):
         root_account_ids = self.search(cursor, user, [
             ('parent', '=', False),
             ], context=context)
+        if not root_account_ids:
+            node_accounts.parentNode.parentNode.removeChild(node_accounts.parentNode)
+            return
         for account_id in root_account_ids:
             newnode = node_accounts.cloneNode(1)
             newnode.tagName = 'label'
