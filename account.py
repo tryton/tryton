@@ -51,6 +51,9 @@ class Account(OSV):
         ('debit-credit', 'Debit - Credit'),
         ('credit-debit', 'Credit - Debit'),
         ], 'Display Balance', required=True)
+    mandatory = fields.Boolean('Mandatory', states={
+        'invisible': "type != 'root'",
+        })
 
     def __init__(self):
         super(Account, self).__init__()
@@ -92,6 +95,9 @@ class Account(OSV):
 
     def default_display_balance(self, cursor, user, context=None):
         return 'credit-debit'
+
+    def default_mandatory(self, cursor, user, context=None):
+        return False
 
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
@@ -266,7 +272,7 @@ class Account(OSV):
             name = 'analytic_account_' + str(account.id)
             if name in fields_names or not fields_names:
                 res[name] = field.copy()
-                res[name]['required'] = False
+                res[name]['required'] = account.mandatory
                 res[name]['string'] = account.name
                 res[name]['relation'] = self._name
                 res[name]['domain'] = [('root', '=', account.id),
@@ -340,12 +346,20 @@ class AccountSelection(OSV):
     def __init__(self):
         super(AccountSelection, self).__init__()
         self._constraints += [
-            ('check_root', 'Can not have many accounts with the same root!',
+            ('check_root', 'Can not have many accounts with the same root ' \
+                    'or a missing mandatory root account!',
                 ['accounts']),
         ]
 
     def check_root(self, cursor, user, ids):
         "Check Root"
+        account_obj = self.pool.get('analytic_account.account')
+
+        root_account_ids = account_obj.search(cursor, user, [
+            ('parent', '=', False),
+            ])
+        root_accounts = account_obj.browse(cursor, user, root_account_ids)
+
         selections = self.browse(cursor, user, ids)
         for selection in selections:
             roots = []
@@ -353,6 +367,10 @@ class AccountSelection(OSV):
                 if account.root.id in roots:
                     return False
                 roots.append(account.root.id)
+            for account in root_accounts:
+                if account.mandatory:
+                    if not account.id in roots:
+                        return False
         return True
 
 AccountSelection()

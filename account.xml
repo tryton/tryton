@@ -30,6 +30,8 @@
                             <field name="company"/>
                             <label name="currency"/>
                             <field name="currency"/>
+                            <label name="mandatory"/>
+                            <field name="mandatory"/>
                         </page>
                         <page string="Notes">
                             <field name="note"/>
