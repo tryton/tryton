@@ -131,9 +131,14 @@ class PurchaseLine(OSV):
                 default=default, context=context)
 
     def get_invoice_line(self, cursor, user, line, context=None):
+        account_selection_obj = self.pool.get('analytic_account.account.selection')
+
         res = super(PurchaseLine, self).get_invoice_line(cursor, user, line,
                 context=context)
-        res['analytic_accounts'] = line.analytic_accounts.id
+
+        selection_id = account_selection_obj.copy(cursor, user,
+                line.analytic_accounts.id, context=context)
+        res['analytic_accounts'] = selection_id
         return res
 
 PurchaseLine()
