@@ -728,5 +728,16 @@
                 ]]>
             </field>
         </record>
+
+        <record model="ir.action.wizard" id="act_open_supplier">
+            <field name="name">Suppliers</field>
+            <field name="wiz_name">purchase.open_supplier</field>
+        </record>
+        <menuitem name="Suppliers"
+            parent="relationship.menu_party_form"
+            action="act_open_supplier"
+            type="wizard"
+            icon="STOCK_JUSTIFY_FILL"
+            id="menu_supplier"/>
     </data>
 </tryton>

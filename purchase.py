@@ -5,6 +5,7 @@ from decimal import Decimal
 import datetime
 from trytond.netsvc import LocalService
 from trytond.report import CompanyReport
+from trytond.wizard import Wizard
 
 _STATES = {
     'readonly': "state != 'draft'",
@@ -917,3 +918,48 @@ class Move(OSV):
         return res
 
 Move()
+
+
+class OpenSupplier(Wizard):
+    'Open Suppliers'
+    _name = 'purchase.open_supplier'
+    states = {
+        'init': {
+            'result': {
+                'type': 'action',
+                'action': '_action_open',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_open(self, cursor, user, datas, context=None):
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+        wizard_obj = self.pool.get('ir.action.wizard')
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_party_form'),
+            ('module', '=', 'relationship'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id,
+                context=context)
+        cursor.execute("SELECT DISTINCT(party) FROM purchase_purchase")
+        supplier_ids = [line[0] for line in cursor.fetchall()]
+        res['domain'] = str([('id', 'in', supplier_ids)])
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_open_supplier'),
+            ('module', '=', 'purchase'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        wizard = wizard_obj.browse(cursor, user, model_data.db_id,
+                context=context)
+
+        res['name'] = wizard.name
+        return res
+
+OpenSupplier()

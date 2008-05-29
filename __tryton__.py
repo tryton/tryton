@@ -20,6 +20,5 @@
     ],
     'xml': [
         'purchase.xml',
-        'party.xml',
     ],
 }
