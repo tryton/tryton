@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="res.group" id="group_timesheet_admin">
+            <field name="name">Timesheet Administration</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
+        </record>
+
+        <menuitem name="Timesheet Management" sequence="6" id="menu_timesheet"/>
+        <menuitem name="Configuration" parent="menu_timesheet"
+            id="menu_timesheet_configuration" groups="group_timesheet_admin"
+            sequence="10"/>
+        <menuitem name="Reporting" parent="menu_timesheet"
+            id="menu_reporting" sequence="100"/>
+    </data>
+</tryton>
