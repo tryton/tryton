@@ -59,7 +59,7 @@ class PaymentTerm(OSV):
                     context)
             value_date = delay_obj.get_date(cursor, user, line, date, context)
             if not value or not value_date:
-                if not remainder:
+                if (not remainder) and line.amount:
                     raise ExceptORM('Error', 'Invalid payment term line!')
                 else:
                     continue
