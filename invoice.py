@@ -231,7 +231,8 @@ class Invoice(OSV):
         states=_STATES, domain=[('centralisation', '=', False)])
     move = fields.Many2One('account.move', 'Move', readonly=True)
     account = fields.Many2One('account.account', 'Account', required=True,
-        states=_STATES, domain="[('company', '=', company)]")
+        states=_STATES,
+        domain="[('company', '=', company), ('type.code', '!=', 'view')]")
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES)
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
