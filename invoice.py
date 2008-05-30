@@ -66,7 +66,7 @@ class PaymentTerm(OSV):
             res.append((value_date, value))
             remainder -= value
         if not currency_obj.is_zero(cursor, user, currency, remainder):
-            raise ExceptORM('Error', 'Payment term computation have a remainder!')
+            raise ExceptORM('Error', 'Payment term missing a remainder line!')
         return res
 
 PaymentTerm()
