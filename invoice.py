@@ -1651,7 +1651,7 @@ Party()
 class Category(OSV):
     _name = 'product.category'
     account_expense = fields.Property(type='many2one',
-            relation='account.account', string='Account Expence',
+            relation='account.account', string='Account Expense',
             group_name='Accounting Properties', view_load=True,
             domain="[('type.code', '=', 'expense'), ('company', '=', company)]",
             states={
@@ -1671,7 +1671,7 @@ Category()
 class Template(OSV):
     _name = 'product.template'
     account_expense = fields.Property(type='many2one',
-            string='Account Expence', group_name='Accounting Properties',
+            string='Account Expense', group_name='Accounting Properties',
             view_load=True, relation='account.account',
             domain="[('type.code', '=', 'expense'), ('company', '=', company)]",
             states={
@@ -1687,7 +1687,7 @@ class Template(OSV):
             }, help='This account will be used instead of the one defined ' \
                     'on the category.')
     account_expense_used = fields.Function('get_account', type='many2one',
-            relation='account.account', string='Account Expence Used')
+            relation='account.account', string='Account Expense Used')
     account_revenue_used = fields.Function('get_account', type='many2one',
             relation='account.account', string='Account Revenue Used')
     customer_taxes = fields.Many2Many('account.tax',
