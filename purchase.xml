@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
-        <menuitem name="Purchase" id="menu_purchase" sequence="4"/>
+        <menuitem name="Purchase Management" id="menu_purchase" sequence="4"/>
         <record model="res.group" id="group_purchase">
             <field name="name">Purchase</field>
         </record>
