@@ -20,6 +20,13 @@ class WorkType(OSV):
         ('normal', 'Normal'),
         ], 'Type', required=True, select=1)
 
+    def __init__(self):
+        super(WorkType, self).__init__()
+        self._constraints += [
+            ('check_recursion',
+             'Error! You can not create recursive work types.', ['parent'])
+        ]
+
     def default_active(self, cursor, user, context=None):
         return True
 
