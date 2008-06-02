@@ -31,9 +31,8 @@ setup(name='trytond-' + info['name'].lower(),
         'trytond.modules.' + info['name'].lower(),
     ],
     package_data={
-        'trytond.modules.' + info['name'].lower(): info.get('xml', []),
-        'trytond.modules.' + info['name'].lower(): ['general_journal.odt',
-            'general_ledger.odt', 'trial_balance.odt'],
+        'trytond.modules.' + info['name'].lower(): info.get('xml', []) + \
+                ['general_journal.odt', 'general_ledger.odt', 'trial_balance.odt'],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
