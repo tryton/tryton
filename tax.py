@@ -202,7 +202,7 @@ class Tax(OSV):
                 'invisible': "locals().get('parent', True)",
             })
     active = fields.Boolean('Active')
-    sequence = fields.Integer('Sequence', required=True,
+    sequence = fields.Integer('Sequence',
             help='Use to order the taxes')
     amount = fields.Numeric('Amount', digits=(16, 2),
             states={
