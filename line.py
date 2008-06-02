@@ -18,6 +18,13 @@ class Line(OSV):
             required=True, select=1, domain=[('type', '!=', 'view')])
     description = fields.Char('Description')
 
+    def __init__(self):
+        super(Line, self).__init__()
+        self._sql_constraints += [
+            ('check_move_hours_pos',
+             'CHECK(hours >= 0.0)', 'Hours field must be positive'),
+            ]
+
     def default_employee(self, cursor, user_id, context=None):
         user_obj = self.pool.get('res.user')
         employee_obj = self.pool.get('company.employee')
