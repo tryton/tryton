@@ -9,6 +9,12 @@
                 <form string="Work Type">
                     <label name="name"/>
                     <field name="name"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
+                    <label name="type"/>
+                    <field name="type"/>
                 </form>
                 ]]>
             </field>
@@ -20,7 +26,9 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Work Types">
-                    <field name="name" select="1"/>
+                    <field name="complete_name"/>
+                    <field name="name" select="1" tree_invisible="1"/>
+                    <field name="active" select="1" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -44,6 +52,34 @@
         </record>
         <menuitem parent="menu_timesheet_configuration" action="act_work_type_form"
             id="menu_work_type_form"/>
+        <record model="ir.ui.view" id="work_type_view_tree2">
+            <field name="model">timesheet.work_type</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="16"/>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Work Types">
+                    <field name="name" select="1"/>
+                    <field name="type" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_work_type_tree">
+            <field name="name">Work Types</field>
+            <field name="res_model">timesheet.work_type</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_type_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_type_view_tree2"/>
+            <field name="act_window" ref="act_work_type_tree"/>
+        </record>
+        <menuitem parent="menu_work_type_form" action="act_work_type_tree"
+            id="menu_work_type_tree"/>
         <record model="ir.model.access" id="access_work_type">
             <field name="model" search="[('model', '=', 'timesheet.work_type')]"/>
             <field name="perm_read" eval="True"/>
