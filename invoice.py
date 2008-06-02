@@ -131,7 +131,7 @@ class PaymentTermLine(OSV):
     'Payment Term Line'
     _name = 'account.invoice.payment_term.line'
     _description = __doc__
-    sequence = fields.Integer('Sequence', required=True,
+    sequence = fields.Integer('Sequence',
             help='Use to order lines in ascending order')
     payment = fields.Many2One('account.invoice.payment_term', 'Payment Term',
             required=True)
@@ -153,7 +153,7 @@ class PaymentTermLine(OSV):
                 'invisible': "type != 'fixed'",
                 'required': "type == 'fixed'",
             })
-    days = fields.Integer('Number of Days', required=True)
+    days = fields.Integer('Number of Days')
     delay = fields.Selection('get_delay', 'Condition', required=True)
 
     def __init__(self):
