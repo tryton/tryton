@@ -297,7 +297,7 @@
             </field>
         </record>
         <record model="ir.action.act_window" id="act_invoice_form">
-            <field name="name">Invoices</field>
+            <field name="name">All Invoices</field>
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
         </record>
@@ -312,7 +312,7 @@
             <field name="act_window" ref="act_invoice_form"/>
         </record>
         <menuitem parent="menu_invoices" action="act_invoice_form"
-            id="menu_invoice_form"/>
+            id="menu_invoice_form" sequence="5"/>
 
         <record model="ir.action.act_window" id="act_invoice_out_invoice_form">
             <field name="name">Invoices</field>
@@ -330,8 +330,8 @@
             <field name="view" ref="invoice_view_form"/>
             <field name="act_window" ref="act_invoice_out_invoice_form"/>
         </record>
-        <menuitem parent="menu_invoice_form" action="act_invoice_out_invoice_form"
-            id="menu_invoice_out_invoice_form"/>
+        <menuitem parent="menu_invoices" action="act_invoice_out_invoice_form"
+            id="menu_invoice_out_invoice_form" sequence="1"/>
 
         <record model="ir.action.act_window" id="act_invoice_out_refund_form">
             <field name="name">Refunds</field>
@@ -349,8 +349,8 @@
             <field name="view" ref="invoice_view_form"/>
             <field name="act_window" ref="act_invoice_out_refund_form"/>
         </record>
-        <menuitem parent="menu_invoice_form" action="act_invoice_out_refund_form"
-            id="menu_invoice_out_refund_form"/>
+        <menuitem parent="menu_invoices" action="act_invoice_out_refund_form"
+            id="menu_invoice_out_refund_form" sequence="2"/>
 
         <record model="ir.action.act_window" id="act_invoice_in_invoice_form">
             <field name="name">Supplier Invoices</field>
@@ -368,11 +368,11 @@
             <field name="view" ref="invoice_view_form"/>
             <field name="act_window" ref="act_invoice_in_invoice_form"/>
         </record>
-        <menuitem parent="menu_invoice_form" action="act_invoice_in_invoice_form"
-            id="menu_invoice_in_invoice_form"/>
+        <menuitem parent="menu_invoices" action="act_invoice_in_invoice_form"
+            id="menu_invoice_in_invoice_form" sequence="3"/>
 
         <record model="ir.action.act_window" id="act_invoice_in_refund_form">
-            <field name="name">Refunds</field>
+            <field name="name">Supplier Refunds</field>
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_refund')]</field>
@@ -387,8 +387,8 @@
             <field name="view" ref="invoice_view_form"/>
             <field name="act_window" ref="act_invoice_in_refund_form"/>
         </record>
-        <menuitem parent="menu_invoice_form" action="act_invoice_in_refund_form"
-            id="menu_invoice_in_refund_form"/>
+        <menuitem parent="menu_invoices" action="act_invoice_in_refund_form"
+            id="menu_invoice_in_refund_form" sequence="4"/>
 
         <record model="ir.model.access" id="access_invoice">
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
