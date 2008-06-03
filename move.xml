@@ -332,7 +332,7 @@
             <field name="wiz_name">account.move.open_reconcile_lines</field>
         </record>
         <menuitem name="Reconcile Lines" parent="menu_entries"
-            action="act_open_reconcile_lines" icon="STOCK_JUSTIFY_FILL"
+            action="act_open_reconcile_lines"
             id="menu_open_reconcile_lines"/>
 
         <record model="ir.ui.view" id="party_view_tree">
