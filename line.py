@@ -123,9 +123,9 @@ class EnterLines(Wizard):
             })
 
         if data['form']['employee']:
-            employee = employee_obj.browse(
+            employee_name = employee_obj.name_get(
                 cursor, user, data['form']['employee'], context=context)
-            res['name'] += " (" + employee.name + ")"
+            res['name'] += " - " + employee_name[0][1]
 
         return res
 
