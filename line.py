@@ -50,6 +50,15 @@ class Line(OSV):
             return context['date']
         return datetime.date.today()
 
+    def view_header_get(self, cursor, user, value, view_type='form',
+            context=None):
+        if not context.get('employee'):
+            return False
+        employee_obj = self.pool.get('company.employee')
+        employee = employee_obj.browse(cursor, user, context['employee'],
+                                       context=context)
+        return value + " (" + employee.name + ")"
+
 Line()
 
 
