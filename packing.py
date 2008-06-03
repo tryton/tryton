@@ -247,10 +247,7 @@ class PackingOut(OSV):
     _description = __doc__
     _rec_name = 'code'
 
-    effective_date =fields.DateTime('Effective Date', readonly=True,
-            states={
-                'readonly': "state != 'draft'",
-            })
+    effective_date =fields.DateTime('Effective Date', readonly=True,)
     planned_date = fields.DateTime('Planned Date', readonly=True,
             states={
                 'readonly': "state != 'draft'",
