@@ -13,7 +13,7 @@
                     <field name="lang" select="2"/>
                     <field name="website"/>
                     <field name="vat" select="1"/>
-                    <field name="active" select="2"/>
+                    <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -38,7 +38,6 @@
                                     <field name="name"/>
                                     <field name="phone"/>
                                     <field name="email"/>
-                                    <field name="active"/>
                                 </tree>
                             </field>
                             <label name="type"/>

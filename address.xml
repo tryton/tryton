@@ -11,7 +11,7 @@
                     <field name="name" select="1"/>
                     <field name="phone" select="2"/>
                     <field name="email" select="2"/>
-                    <field name="active" select="2"/>
+                    <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
