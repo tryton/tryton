@@ -104,6 +104,7 @@ class EnterLines(Wizard):
     def _action_enter_lines(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
+        employee_obj = self.pool.get('company.employee')
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_line_form'),
@@ -120,6 +121,12 @@ class EnterLines(Wizard):
             'employee': data['form']['employee'],
             'date': data['form']['date'],
             })
+
+        if data['form']['employee']:
+            employee = employee_obj.browse(
+                cursor, user, data['form']['employee'], context=context)
+            res['name'] += " (" + employee.name + ")"
+
         return res
 
 EnterLines()
