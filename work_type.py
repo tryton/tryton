@@ -60,10 +60,10 @@ class WorkType(OSV):
         date_cond = ""
         args = []
         if context.get('from_date'):
-            date_cond = " AND date >= '%s'"
+            date_cond = " AND date >= %s"
             args.append(context['from_date'])
         if context.get('to_date'):
-            date_cond += " AND date <= '%s'"
+            date_cond += " AND date <= %s"
             args.append(context['to_date'])
         clause += date_cond + " GROUP BY work_type"
 
