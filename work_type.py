@@ -182,3 +182,39 @@ class OpenWorkType2(OpenWorkType):
         return res
 
 OpenWorkType2()
+
+
+class OpenWorkTypeGraph(Wizard):
+    _name = 'timesheet.work_type.open_graph'
+    states = {
+        'init': {
+            'result': {
+                'type': 'action',
+                'action': '_action_open_work_type',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_open_work_type(self, cursor, user, data, context=None):
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+        work_type_obj = self.pool.get('timesheet.work_type')
+
+        if context is None:
+            context = {}
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_work_type_form3'),
+            ('module', '=', 'timesheet'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        if 'active_id' in context:
+            name = work_type_obj.name_get(cursor, user, context['active_id'],
+                    context=context)[0][1]
+            res['name'] = res['name'] + ' - ' + name
+        return res
+
+OpenWorkTypeGraph()
