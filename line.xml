@@ -196,52 +196,5 @@
         </record>
         <menuitem parent="menu_reporting" action="act_open_hours_employee"
             icon="STOCK_JUSTIFY_FILL" id="menu_open_hours_employee"/>
-
-        <record model="ir.ui.view" id="hours_employee_work_type_view_tree">
-            <field name="model">timesheet.hours_employee_work_type</field>
-            <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Hours per Employee and Work Type">
-                    <field name="employee"/>
-                    <field name="work_type"/>
-                    <field name="hours" widget="float_time" sum="Hours"/>
-                </tree>
-                ]]>
-            </field>
-        </record>
-        <record model="ir.action.act_window" id="act_hours_employee_work_type_form">
-            <field name="name">Hours per Employee and Work Type</field>
-            <field name="res_model">timesheet.hours_employee_work_type</field>
-            <field name="view_type">form</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_hours_employee_work_type_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="hours_employee_work_type_view_tree"/>
-            <field name="act_window" ref="act_hours_employee_work_type_form"/>
-        </record>
-
-        <record model="ir.ui.view" id="open_hours_employee_work_type_init_view_form">
-            <field name="model">timesheet.open_hours_employee_work_type.init</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Hours per Employee and Work Type">
-                    <label name="start_date"/>
-                    <field name="start_date"/>
-                    <label name="end_date"/>
-                    <field name="end_date"/>
-                </form>
-                ]]>
-            </field>
-        </record>
-        <record model="ir.action.wizard" id="act_open_hours_employee_work_type">
-            <field name="name">Hours per Employee and Work Type</field>
-            <field name="wiz_name">timesheet.open_hours_employee_work_type</field>
-        </record>
-        <menuitem parent="menu_reporting" action="act_open_hours_employee_work_type"
-            icon="STOCK_JUSTIFY_FILL" id="menu_open_hours_employee_work_type"/>
-
     </data>
 </tryton>
