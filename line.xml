@@ -85,7 +85,7 @@
                         <field name="employee"/>
                     </x>
                     <y>
-                        <field name="hours"/>
+                        <field name="hours" widget="float_time"/>
                     </y>
                 </graph>
                 ]]>

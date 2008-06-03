@@ -124,7 +124,7 @@
                         <field name="name"/>
                     </x>
                     <y>
-                        <field name="hours"/>
+                        <field name="hours" widget="float_time"/>
                     </y>
                 </graph>
                 ]]>
