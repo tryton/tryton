@@ -61,13 +61,13 @@ class WorkType(OSV):
         args = []
         if context.get('from_date'):
             date_cond = " AND date >= '%s'"
-            args.append(str(context['from_date']))
+            args.append(context['from_date'])
         if context.get('to_date'):
             date_cond += " AND date <= '%s'"
-            args.append(str(context['to_date']))
+            args.append(context['to_date'])
         clause += date_cond + " GROUP BY work_type"
 
-        cursor.execute(clause, all_ids+args)
+        cursor.execute(clause, all_ids + args)
 
         hours_by_wt = dict([(i[0], i[1]) for i in cursor.fetchall()])
         to_compute = dict.fromkeys(all_ids, True)
