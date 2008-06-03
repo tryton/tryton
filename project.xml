@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <menuitem name="Project Management" sequence="7" id="menu_project"/>
+
+        <record model="ir.ui.view" id="project_view_tree">
+            <field name="model">project.project</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Projects">
+                    <field name="complete_name"/>
+                    <field name="name" select="1" tree_invisible="1"/>
+                    <field name="active" select="1" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="project_view_form">
+            <field name="model">project.project</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Project">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
+                    <notebook colspan="4">
+                        <page string="General">
+                            <label name="party"/>
+                            <field name="party"/>
+                            <label name="party_address"/>
+                            <field name="party_address"/>
+                        </page>
+                        <page string="Other Info">
+                            <separator name="comment" colspan="4"/>
+                            <field name="comment" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_project_form">
+            <field name="name">Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_project_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="project_view_tree"/>
+            <field name="act_window" ref="act_project_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_project_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="project_view_form"/>
+            <field name="act_window" ref="act_project_form"/>
+        </record>
+        <menuitem parent="menu_project" action="act_project_form"
+            id="menu_project_form"/>
+    </data>
+</tryton>
