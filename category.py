@@ -31,7 +31,7 @@ class Category(OSV):
     def default_active(self, cursor, user, context=None):
         return 1
 
-    def get_complete_name(self, cursor, user, obj_id, name, value, arg,
+    def get_complete_name(self, cursor, user, ids, name, arg,
             context=None):
         res = self.name_get(cursor, user, ids, context)
         return dict(res)
