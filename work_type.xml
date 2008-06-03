@@ -90,7 +90,6 @@
                 <![CDATA[
                 <tree string="Work Types">
                     <field name="name" select="1"/>
-                    <field name="type" select="1"/>
                     <field name="hours" widget="float_time"/>
                 </tree>
                 ]]>
@@ -109,11 +108,82 @@
             <field name="act_window" ref="act_work_type_tree2"/>
         </record>
         <record model="ir.action.wizard" id="act_open_work_type">
-            <field name="name">Open Work Types</field>
+            <field name="name">Hours per Work Type</field>
             <field name="wiz_name">timesheet.work_type.open</field>
         </record>
-        <menuitem parent="menu_timesheet" action="act_open_work_type"
-            id="menu_work_type_tree2" icon="STOCK_INDENT" sequence="40"/>
+        <menuitem parent="menu_reporting" action="act_open_work_type"
+            id="menu_work_type_tree2" icon="STOCK_INDENT"/>
+
+        <record model="ir.ui.view" id="work_type_view_graph">
+            <field name="model">timesheet.work_type</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <graph string="Hours per Work Type" type="pie">
+                    <x>
+                        <field name="name"/>
+                    </x>
+                    <y>
+                        <field name="hours"/>
+                    </y>
+                </graph>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_work_type_form2">
+            <field name="name">Hours per Work Type</field>
+            <field name="res_model">timesheet.work_type</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_type_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_type_view_graph"/>
+            <field name="act_window" ref="act_work_type_form2"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_work_type2">
+            <field name="name">Hours per Work Type</field>
+            <field name="wiz_name">timesheet.work_type.open2</field>
+        </record>
+        <record model="ir.ui.view" id="work_type_open_init_view_form">
+            <field name="model">timesheet.work_type.open.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Hours per Work Type">
+                    <label name="from_date"/>
+                    <field name="from_date"/>
+                    <label name="to_date"/>
+                    <field name="to_date"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <menuitem parent="menu_work_type_tree2" action="act_open_work_type2"
+            id="menu_work_type_form2"/>
+
+        <record model="ir.action.act_window" id="act_work_type_form3">
+            <field name="name">Hours per Work Type</field>
+            <field name="res_model">timesheet.work_type</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('parent', 'in', active_ids)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_type_form3_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_type_view_graph"/>
+            <field name="act_window" ref="act_work_type_form3"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_work_type_graph">
+            <field name="name">Hours per Work Type</field>
+            <field name="wiz_name">timesheet.work_type.open_graph</field>
+        </record>
+        <record model="ir.action.keyword" id="act_work_type_keyword">
+            <field name="keyword">graph_open</field>
+            <field name="model">timesheet.work_type,0</field>
+            <field name="action" ref="act_open_work_type_graph"/>
+        </record>
 
         <record model="ir.model.access" id="access_work_type">
             <field name="model" search="[('model', '=', 'timesheet.work_type')]"/>
