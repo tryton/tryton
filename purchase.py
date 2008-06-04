@@ -188,8 +188,9 @@ class Purchase(OSV):
                 purchase, context=context))
             res.setdefault(purchase.id, Decimal('0.0'))
             for line in purchase.lines:
-                for tax in tax_obj.compute(cursor, user, line.taxes,
-                        line.unit_price, line.quantity, context=ctx):
+                for tax in tax_obj.compute(
+                    cursor, user, [t.id for t in line.taxes], line.unit_price,
+                    line.quantity, context=ctx):
                     res[purchase.id] += tax['amount']
                 res[purchase.id] = currency_obj.round(cursor, user, purchase.currency,
                         res[purchase.id])
