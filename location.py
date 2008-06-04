@@ -1,5 +1,6 @@
 "Wharehouse"
 from trytond.osv import fields, OSV
+from trytond.wizard import Wizard, WizardOSV
 
 STATES = {
     'readonly': "not active",
@@ -39,6 +40,8 @@ class Location(OSV):
         "stock.location", "Storage", states=STATES_WH,
         domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
     quantity = fields.Function('get_quantity', type='float', string='Quantity',)
+    forecast_quantity = fields.Function('get_quantity', type='float',
+                                        string='Quantity',)
 
     def __init__(self):
         super(Location, self).__init__()
@@ -82,9 +85,14 @@ class Location(OSV):
             return dict([(i,0) for i in ids])
         product_obj = self.pool.get('product.product')
         all_ids = self.search(cursor, user, [('parent', 'child_of', ids)])
-        pbl = product_obj.products_by_location(
-            cursor, user, location_ids=all_ids,
-            product_ids=[context['product']], context=context)
+        if name == 'forecast_quantity':
+            pbl = product_obj.products_by_location(
+                cursor, user, location_ids=all_ids,
+                product_ids=[context['product']], forecast=True, context=context)
+        else:
+            pbl = product_obj.products_by_location(
+                cursor, user, location_ids=all_ids,
+                product_ids=[context['product']], context=context)
         qty_by_ltn = dict([(i['location'], i['quantity']) for i in pbl])
         to_compute = dict.fromkeys(all_ids, True)
         locations = self.browse(cursor, user, all_ids, context=context)
@@ -130,3 +138,58 @@ class Party(OSV):
                     'when sending products to the party.')
 
 Party()
+
+
+class ChooseForecatsDateInit(WizardOSV):
+    _name = 'stock.choose_forecast_date.init'
+    forecast_date = fields.Date(
+        'Forecast Date', help='Allow to compute expected '\
+            'stock quantities for this date.\n'\
+            '* An empty value is an infinite date in the future.\n'\
+            '* A date in the past will provide historical values.')
+ChooseForecatsDateInit()
+
+
+class OpenProduct(Wizard):
+    'Open Products'
+    _name = 'stock.product.open'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'stock.choose_forecast_date.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('open', 'Open', 'gtk-ok', True),
+                ],
+            },
+        },
+        'open': {
+            'result': {
+                'type': 'action',
+                'action': '_action_open_product',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_open_product(self, cursor, user, data, context=None):
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_product_by_location'),
+            ('module', '=', 'stock'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+
+        context = {'locations': data['ids']}
+        if data['form']['forecast_date']:
+            context['forecast_date'] = data['form']['forecast_date']
+        res['context'] = str(context)
+
+        return res
+
+OpenProduct()

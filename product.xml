@@ -10,6 +10,7 @@
                         <field name="name" select="1"/>
                         <field name="code" select="1"/>
                         <field name="quantity" select="2"/>
+                        <field name="forecast_quantity" select="2"/>
                         <field name="default_uom" select="2"/>
                         <field name="active" select="2"/>
                     </tree>
@@ -26,6 +27,7 @@
                     <tree string="Product Stock">
                         <field name="name"/>
                         <field name="quantity"/>
+                        <field name="forecast_quantity"/>
                     </tree>
                 ]]>
             </field>
@@ -35,7 +37,6 @@
             <field name="src_model">product.product</field>
             <field name="res_model">stock.location</field>
             <field name="view_type">tree</field>
-            <field name="context">{'product': active_id}</field>
             <field name="domain">[('parent', '=', False)]</field>
             <field name="window_name" eval="False"/>
         </record>
@@ -44,11 +45,28 @@
             <field name="view" ref="location_quantity_view_tree"/>
             <field name="act_window" ref="act_location_quantity_tree"/>
         </record>
+        <record model="ir.action.wizard" id="wizard_open_location">
+            <field name="name">Product by Location</field>
+            <field name="wiz_name">stock.location.open</field>
+        </record>
         <record model="ir.action.keyword"
                 id="act_location_quantity_keyword1">
-            <field name="keyword">form_relate</field>
+            <field name="keyword">form_action</field>
             <field name="model">product.product,0</field>
-            <field name="action" ref="act_location_quantity_tree"/>
+            <field name="action" ref="wizard_open_location"/>
+        </record>
+
+        <record model="ir.ui.view" id="stock.choose_forecast_date_init_view_form">
+            <field name="model">stock.choose_forecast_date.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Product Quantity.">
+                    <label name="forecast_date"/>
+                    <field name="forecast_date"/>
+                </form>
+                ]]>
+            </field>
         </record>
 
     </data>

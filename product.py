@@ -1,5 +1,6 @@
 from trytond.osv import fields, OSV
-
+from trytond.wizard import Wizard, WizardOSV
+import datetime
 
 class Product(OSV):
     "Product"
@@ -8,6 +9,9 @@ class Product(OSV):
 
     quantity = fields.Function('get_quantity', type='float', string='Quantity',
                                fnct_search='search_quantity', readonly=True)
+    forecast_quantity = fields.Function(
+        'get_quantity', type='float', string='Forecast Quantity',
+        fnct_search='search_quantity', readonly=True)
 
     def get_quantity(self, cursor, user, ids, name, args, context=None):
         if not (context and context.get('locations')):
@@ -15,9 +19,14 @@ class Product(OSV):
         location_ids = self.pool.get('stock.location').search(
             cursor, user, [('parent', 'child_of', context['locations'])],
             context=context)
-        pbl = self.products_by_location(
-            cursor, user, location_ids=location_ids, product_ids=ids,
-            context=context)
+        if name == 'forecast_quantity':
+            pbl = self.products_by_location(
+                cursor, user, location_ids=location_ids, product_ids=ids,
+                forecast=True, context=context)
+        else:
+            pbl = self.products_by_location(
+                cursor, user, location_ids=location_ids, product_ids=ids,
+                context=context)
         res = {}
         for product_id in ids:
             res[product_id] = 0.0
@@ -44,15 +53,24 @@ class Product(OSV):
         location_ids = self.pool.get('stock.location').search(
             cursor, user, [('parent', 'child_of', context['locations'])],
             context=context)
-        pbl = self.products_by_location(
-            cursor, user, location_ids=location_ids, context=context)
+        if name == 'forecast_quantity':
+            pbl = self.products_by_location(
+                cursor, user, location_ids=location_ids, forecast=True,
+                context=context)
+            for line in pbl:
+                line['forecast_quantity'] = line['quantity']
+                del line['quantity']
+        else:
+            pbl = self.products_by_location(
+                cursor, user, location_ids=location_ids, context=context)
+
         res= [line['product'] for line in pbl \
                     if self._eval_domain(line, domain)]
         return [('id', 'in', res)]
 
 
     def raw_products_by_location(self, cursor, user, location_ids,
-            product_ids=None, context=None):
+            product_ids=None, forecast=False, context=None):
         """
         Return a list like : [(location, product, uom, qty)] for each
         location and product given as argument. Null qty are not
@@ -60,8 +78,14 @@ class Product(OSV):
         """
         if not location_ids:
             return []
-        in_states = context and context.get('in_states') or ['done']
-        out_states = context and context.get('out_states') or ['done']
+
+        if forecast and not (context.get('forecast_date') and \
+                context['forecast_date'] < datetime.date.today()):
+            in_states = ['done', 'assigned', 'waiting']
+            out_states = ['done', 'assigned', 'waiting']
+        else:
+            in_states = context and context.get('in_states') or ['done']
+            out_states = context and context.get('out_states') or ['done']
 
         select_clause = \
             "select location, product, uom, sum(quantity) as quantity "\
@@ -87,16 +111,27 @@ class Product(OSV):
             where_clause += "AND product in (" + \
                 ",".join(["%s" for i in product_ids]) + ")"
             where_ids += product_ids
+
+        if forecast and context.get('forecast_date'):
+            where_clause += ' AND ('\
+                '(effective_date IS NULL '\
+                'AND ( planned_date <= %s or planned_date IS NULL)) '\
+                'OR effective_date <= %s'\
+                ')'
+            where_date = [context['forecast_date'],context['forecast_date']]
+        else:
+            where_date = []
+
         cursor.execute(
             select_clause % (
                 ",".join(["%s" for i in in_states]), where_clause,
                 ",".join(["%s" for i in out_states]), where_clause),
-            in_states + where_ids + out_states + where_ids)
+            in_states + where_ids + where_date + out_states + where_ids + where_date)
 
         return cursor.fetchall()
 
     def products_by_location(self, cursor, user, location_ids,
-                            product_ids=None, context=None):
+                            product_ids=None, forecast=False, context=None):
 
         uom_obj = self.pool.get("product.uom")
         product_obj = self.pool.get("product.product")
@@ -115,7 +150,8 @@ class Product(OSV):
 
         res = {}
         for line in self.raw_products_by_location(
-            cursor, user, location_ids, product_ids, context=context):
+            cursor, user, location_ids, product_ids, forecast=forecast,
+            context=context):
             location, product, uom, quantity= line
             key = (location, product, default_uom[product].id)
             res.setdefault(key, 0.0)
@@ -136,3 +172,48 @@ class Product(OSV):
         return value + " (" + ",".join([l.name for l in locations]) + ")"
 
 Product()
+
+
+class OpenLocation(Wizard):
+    'Products by Locations'
+    _name = 'stock.location.open'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'stock.choose_forecast_date.init',
+                'state': [
+                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('open', 'Open', 'gtk-ok', True),
+                ],
+            },
+        },
+        'open': {
+            'result': {
+                'type': 'action',
+                'action': '_action_open_location',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_open_location(self, cursor, user, data, context=None):
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_location_quantity_tree'),
+            ('module', '=', 'stock'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+
+        context = {'product': data['id']}
+        if data['form']['forecast_date']:
+            context['forecast_date'] = data['form']['forecast_date']
+        res['context'] = str(context)
+
+        return res
+
+OpenLocation()

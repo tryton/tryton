@@ -86,15 +86,17 @@
             <field name="name">Products by Locations</field>
             <field name="res_model">product.product</field>
             <field name="view_type">form</field>
-            <field name="domain">[('quantity', '!=', 0)]</field>
-            <field name="context">{'locations':active_ids}</field>
             <field name="window_name" eval="False"/>
+        </record>
+        <record model="ir.action.wizard" id="wizard_open_product">
+            <field name="name">Product Quantities</field>
+            <field name="wiz_name">stock.product.open</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_product_by_location_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model">stock.location,0</field>
-            <field name="action" ref="act_product_by_location"/>
+            <field name="action" ref="wizard_open_product"/>
         </record>
         <record model="ir.action.act_window.view" id="act_product_form_view">
             <field name="sequence" eval="20"/>
