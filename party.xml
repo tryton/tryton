@@ -12,7 +12,7 @@
                     <field name="type" select="2"/>
                     <field name="lang" select="2"/>
                     <field name="website"/>
-                    <field name="vat" select="1"/>
+                    <field name="vat_number" select="1"/>
                     <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
@@ -50,8 +50,8 @@
                             <field name="categories" colspan="4"/>
                         </page>
                         <page string="Accounting">
-                            <label name="vat"/>
-                            <field name="vat"/>
+                            <label name="vat_number"/>
+                            <field name="vat_number"/>
                         </page>
                         <page string="Properties">
                             <properties/>

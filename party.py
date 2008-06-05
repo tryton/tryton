@@ -32,8 +32,8 @@ class Party(OSV):
            states=STATES)
     lang = fields.Many2One("ir.lang", 'Language',
            states=STATES)
-    vat = fields.Char('VAT',size=None, help="Value Added Tax number",
-           states=STATES)
+    vat_number = fields.Char('VAT Number',size=None,
+            help="Value Added Tax number", states=STATES)
     website = fields.Char('Website',size=None,
            states=STATES)
     addresses = fields.One2Many('relationship.address', 'party',
