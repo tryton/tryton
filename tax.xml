@@ -233,6 +233,17 @@
         <menuitem parent="menu_tax_form" action="act_tax_tree"
             id="menu_tax_tree"/>
 
+        <record model="ir.rule.group" id="rule_group_tax">
+            <field name="model" search="[('model', '=', 'account.tax')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_tax1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.tax')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_tax"/>
+        </record>
+
         <record model="account.tax.group" id="tax_group_none">
             <field name="name">None</field>
             <field name="code">none</field>
