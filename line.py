@@ -64,8 +64,8 @@ Line()
 
 class EnterLinesInit(WizardOSV):
     _name = 'timesheet.enter_lines.init'
-    employee = fields.Many2One('company.employee', 'Employee')
-    date = fields.Date('Date')
+    employee = fields.Many2One('company.employee', 'Employee', required=True)
+    date = fields.Date('Date', required=True)
 
     def default_employee(self, cursor, user, context=None):
         line_obj = self.pool.get('timesheet.line')

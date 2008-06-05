@@ -56,6 +56,21 @@
         <menuitem parent="menu_timesheet" action="act_line_form"
             id="menu_line_form" sequence="30"/>
 
+        <record model="ir.ui.view" id="enter_lines_init_view_form">
+            <field name="model">timesheet.enter_lines.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Enter Timesheet">
+                    <label name="employee"/>
+                    <field name="employee"/>
+                    <label name="date"/>
+                    <field name="date"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.action.wizard" id="act_enter_lines">
             <field name="name">Enter Timesheet</field>
             <field name="wiz_name">timesheet.enter_lines</field>
