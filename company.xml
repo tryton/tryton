@@ -9,8 +9,8 @@
                 <form string="Company">
                     <label name="name"/>
                     <field name="name"/>
-                    <label name="vat"/>
-                    <field name="vat"/>
+                    <label name="vat_number"/>
+                    <field name="vat_number"/>
                     <label name="parent"/>
                     <field name="parent"/>
                     <label name="currency"/>
