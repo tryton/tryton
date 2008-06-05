@@ -250,7 +250,7 @@
         </record>
         <record model="account.tax.group" id="tax_group_vat">
             <field name="name">VAT</field>
-            <field name="code">tax_vat</field>
+            <field name="code">vat</field>
         </record>
 
         <record model="ir.ui.view" id="tax_line_view_form">
@@ -304,10 +304,10 @@
             <field name="action" ref="act_open_tax_code"/>
         </record>
 
-        <record model="ir.property" id="property_tax_vat">
-            <field name="name">tax_vat</field>
+        <record model="ir.property" id="property_vat">
+            <field name="name">vat</field>
             <field name="field"
-                search="[('model.model', '=', 'relationship.party'), ('name', '=', 'tax_vat')]"/>
+                search="[('model.model', '=', 'relationship.party'), ('name', '=', 'vat')]"/>
         </record>
     </data>
 </tryton>

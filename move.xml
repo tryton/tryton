@@ -342,7 +342,7 @@
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/tree/field[@name=&quot;vat&quot;]"
+                        expr="/tree/field[@name=&quot;vat_number&quot;]"
                         position="after">
                         <field name="receivable_today" select="2"/>
                         <field name="payable_today" select="2"/>
@@ -358,7 +358,7 @@
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;Accounting&quot;]/field[@name=&quot;vat&quot;]"
+                        expr="/form/notebook/page[@string=&quot;Accounting&quot;]/field[@name=&quot;vat_number&quot;]"
                         position="after">
                         <newline/>
                         <label name="receivable_today"/>
