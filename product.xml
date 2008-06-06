@@ -9,7 +9,8 @@
             <field name="groups" eval="[('add', ref('group_product_admin'))]"/>
         </record>
 
-        <menuitem name="Product" id="menu_main_product" sequence="1"/>
+        <menuitem name="Product" id="menu_main_product" sequence="1"
+            icon="tryton-package"/>
 
         <record model="ir.ui.view" id="product_view_tree">
             <field name="model">product.product</field>
