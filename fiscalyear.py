@@ -191,8 +191,8 @@ class CloseFiscalYear(Wizard):
                 'type': 'form',
                 'object': 'account.fiscalyear.close_fiscalyear.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('close', 'Close', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('close', 'Close', 'tryton-ok', True),
                 ],
             },
         },

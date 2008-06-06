@@ -1166,8 +1166,8 @@ class OpenJournal(Wizard):
                 'type': 'form',
                 'object': 'account.move.open_journal.ask',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('open', 'Open', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('open', 'Open', 'tryton-ok', True),
                 ],
             },
         },
@@ -1324,8 +1324,8 @@ class ReconcileLines(Wizard):
                 'type': 'form',
                 'object': 'account.move.reconcile_lines.writeoff',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('reconcile', 'Reconcile', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('reconcile', 'Reconcile', 'tryton-ok', True),
                 ],
             },
         },
@@ -1387,8 +1387,8 @@ class UnreconcileLines(Wizard):
                 'type': 'form',
                 'object': 'account.move.unreconcile_lines.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('unreconcile', 'Unreconcile', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('unreconcile', 'Unreconcile', 'tryton-ok', True),
                 ],
             },
         },
@@ -1433,8 +1433,8 @@ class OpenReconcileLines(Wizard):
                 'type': 'form',
                 'object': 'account.move.open_reconcile_lines.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('open', 'Open', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('open', 'Open', 'tryton-ok', True),
                 ],
             },
         },
@@ -1653,7 +1653,7 @@ class PrintGeneralJournal(Wizard):
                 'type': 'form',
                 'object': 'account.move.print_general_journal.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
+                    ('end', 'Cancel', 'tryton-cancel'),
                     ('print', 'Print', 'tryton-print', True),
                 ],
             },

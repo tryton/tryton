@@ -150,8 +150,8 @@ class OpenChartCode(Wizard):
                 'type': 'form',
                 'object': 'account.tax.open_chart_code.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('open', 'Open', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('open', 'Open', 'tryton-ok', True),
                 ],
             },
         },
