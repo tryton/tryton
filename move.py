@@ -1654,7 +1654,7 @@ class PrintGeneralJournal(Wizard):
                 'object': 'account.move.print_general_journal.init',
                 'state': [
                     ('end', 'Cancel', 'gtk-cancel'),
-                    ('print', 'Print', 'gtk-print', True),
+                    ('print', 'Print', 'tryton-print', True),
                 ],
             },
         },

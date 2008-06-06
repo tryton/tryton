@@ -311,7 +311,7 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Unreconcile" col="2">
-                    <image name="gtk-dialog-info"/>
+                    <image name="tryton-dialog-information"/>
                     <label string="If you unreconcile lines, the workflows, on those lines, will not be canceled."/>
                 </form>
                 ]]>

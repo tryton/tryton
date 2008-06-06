@@ -314,7 +314,7 @@
                 <form string="Create Chart of Account" col="2">
                     <separator string="Create Chart of Account" align="0.0"
                         colspan="2"/>
-                    <image name="gtk-info"/>
+                    <image name="tryton-dialog-information"/>
                     <group col="1">
                         <label string="You can now create a chart of account for your company"
                             align="0.0"/>
