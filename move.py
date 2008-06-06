@@ -439,6 +439,9 @@ class Line(OSV):
 
         if 'move' not in fields:
             #Not manual entry
+            if 'date' in values:
+                values = values.copy()
+                del values['date']
             return values
 
         if context.get('journal') and context.get('period'):
