@@ -299,8 +299,8 @@ class OpenChartAccount(Wizard):
                 'type': 'form',
                 'object': 'analytic_account.account.open_chart_account.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('open', 'Open', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('open', 'Open', 'tryton-ok', True),
                 ],
             },
         },
