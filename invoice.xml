@@ -796,7 +796,7 @@
                 <![CDATA[
                 <form string="Print Invoice" col="2">
                     <separator string="&lt;b&gt;Warning!&lt;/b&gt;" colspan="2" align="0.5"/>
-                    <image name="gtk-info"/>
+                    <image name="tryton-dialog-information"/>
                     <group col="1">
                         <label string="You have selected more than one invoice to print."
                             align="0.0"/>
@@ -824,7 +824,7 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Refund Invoice" col="2">
-                    <image name="gtk-info"/>
+                    <image name="tryton-dialog-information"/>
                     <label string="Are you sure to refund those/this invoice(s)?"
                         align="0.0"/>
                 </form>
