@@ -166,7 +166,7 @@
                 <![CDATA[
                 <form string="Create Company" col="2">
                     <separator string="Create Company" align="0.0" colspan="2"/>
-                    <image name="gtk-info"/>
+                    <image name="tryton-dialog-information"/>
                     <group col="1">
                         <label string="You can now add your company into the system."
                             align="0.0"/>
