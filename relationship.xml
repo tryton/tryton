@@ -8,6 +8,7 @@
             <field name="groups" eval="[('add', ref('group_relationship_admin'))]"/>
         </record>
 
-        <menuitem name="Relationship Management" sequence="0" id="menu_relationship"/>
+        <menuitem name="Relationship Management" sequence="0" id="menu_relationship"
+            icon="tryton-users"/>
     </data>
 </tryton>
