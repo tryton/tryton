@@ -488,7 +488,7 @@
             <field name="wiz_name">account.account.open_chart_account</field>
         </record>
         <menuitem parent="menu_charts" action="act_open_chart_account"
-            icon="STOCK_INDENT" id="menu_open_chart_account"/>
+            icon="tryton-tree" id="menu_open_chart_account"/>
         <record model="ir.model.access" id="access_account">
             <field name="model" search="[('model', '=', 'account.account')]"/>
             <field name="perm_read" eval="True"/>
@@ -547,7 +547,7 @@
             <field name="wiz_name">account.account.print_general_ledger</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_print_general_ledger"
-            id="menu_print_general_ledger" icon="STOCK_PRINT"/>
+            id="menu_print_general_ledger" icon="tryton-print"/>
 
         <record model="ir.action.report" id="report_general_ledger">
             <field name="name">General Ledger</field>
@@ -583,7 +583,7 @@
             <field name="wiz_name">account.account.print_trial_balance</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_print_trial_balance"
-            id="menu_print_trial_balance" icon="STOCK_PRINT"/>
+            id="menu_print_trial_balance" icon="tryton-print"/>
 
         <record model="ir.action.report" id="report_trial_balance">
             <field name="name">Trial Balance</field>
@@ -639,7 +639,7 @@
             <field name="wiz_name">account.account.open_balance_sheet</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_open_balance_sheet"
-            id="menu_open_balance_sheet" icon="STOCK_INDENT"
+            id="menu_open_balance_sheet" icon="tryton-tree"
             name="Balance Sheet"/>
 
         <record model="ir.ui.view" id="open_income_statement_init_view_form">
@@ -694,7 +694,7 @@
             <field name="wiz_name">account.account.open_income_statement</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_open_income_statement"
-            id="menu_open_income_statement" icon="STOCK_INDENT"
+            id="menu_open_income_statement" icon="tryton-tree"
             name="Income Statement"/>
 
     </data>

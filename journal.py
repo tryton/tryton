@@ -7,8 +7,8 @@ STATES = {
     'readonly': "state == 'close'",
 }
 _ICONS = {
-    'open': 'STOCK_OPEN',
-    'close': 'STOCK_CLOSE',
+    'open': 'tryton-open',
+    'close': 'tryton-readonly',
 }
 
 

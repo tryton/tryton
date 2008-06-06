@@ -262,7 +262,7 @@
             <field name="action" ref="act_open_journal"/>
         </record>
         <menuitem parent="menu_entries" action="act_open_journal"
-            icon="STOCK_INDENT" id="menu_open_journal"/>
+            icon="tryton-tree" id="menu_open_journal"/>
         <record model="ir.model.access" id="access_move_line">
             <field name="model" search="[('model', '=', 'account.move.line')]"/>
             <field name="perm_read" eval="False"/>
@@ -399,7 +399,7 @@
             <field name="wiz_name">account.move.print_general_journal</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_print_general_journal"
-            id="menu_print_general_journal" icon="STOCK_PRINT"/>
+            id="menu_print_general_journal" icon="tryton-print"/>
 
         <record model="ir.action.report" id="report_general_journal">
             <field name="name">General Journal</field>

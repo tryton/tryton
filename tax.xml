@@ -113,7 +113,7 @@
             <field name="wiz_name">account.tax.open_chart_code</field>
         </record>
         <menuitem parent="menu_charts" action="act_open_chart_code"
-            icon="STOCK_INDENT" id="menu_open_chart_code"/>
+            icon="tryton-tree" id="menu_open_chart_code"/>
 
         <record model="ir.ui.view" id="tax_view_form">
             <field name="model">account.tax</field>
