@@ -127,8 +127,8 @@ class OpenWorkType(Wizard):
                 'type': 'form',
                 'object': 'timesheet.work_type.open.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('open', 'Open', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('open', 'Open', 'tryton-ok', True),
                 ],
             },
         },

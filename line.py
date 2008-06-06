@@ -87,8 +87,8 @@ class EnterLines(Wizard):
                 'type': 'form',
                 'object': 'timesheet.enter_lines.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('enter', 'Enter', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('enter', 'Enter', 'tryton-ok', True),
                 ],
             },
         },
@@ -177,8 +177,8 @@ class OpenHoursEmployee(Wizard):
                 'type': 'form',
                 'object': 'timesheet.open_hours_employee.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('open', 'Open', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('open', 'Open', 'tryton-ok', True),
                 ],
             },
         },
