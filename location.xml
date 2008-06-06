@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
-        <menuitem name="Inventory Management" sequence="3" id="menu_stock"/>
         <record model="ir.ui.view" id="location_view_form">
             <field name="model">stock.location</field>
             <field name="type">form</field>

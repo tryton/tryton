@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <menuitem name="Inventory Management" sequence="3" id="menu_stock"
+            icon="tryton-package"/>
+    </data>
+</tryton>

@@ -15,6 +15,7 @@
         'currency',
     ],
     'xml': [
+        'stock.xml',
         'product.xml',
         'location.xml',
         'packing.xml',
