@@ -1532,8 +1532,8 @@ class PrintInvoiceReport(Wizard):
                 'type': 'form',
                 'object': 'account.invoice.print_invoice_report.warning',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('print', 'Print', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('print', 'Print', 'tryton-ok', True),
                 ],
             },
         },
@@ -1943,8 +1943,8 @@ class PayInvoice(Wizard):
                 'type': 'form',
                 'object': 'account.invoice.pay_invoice.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('choice', 'Ok', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('choice', 'Ok', 'tryton-ok', True),
                 ],
             },
         },
@@ -1960,8 +1960,8 @@ class PayInvoice(Wizard):
                 'type': 'form',
                 'object': 'account.invoice.pay_invoice.ask',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('pay', 'Ok', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('pay', 'Ok', 'tryton-ok', True),
                 ],
             },
         },
@@ -2081,8 +2081,8 @@ class RefundInvoice(Wizard):
                 'type': 'form',
                 'object': 'account.invoice.refund_invoice.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('refund', 'Refund', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('refund', 'Refund', 'tryton-ok', True),
                 ],
             }
         },
