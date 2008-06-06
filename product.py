@@ -183,8 +183,8 @@ class OpenLocation(Wizard):
                 'type': 'form',
                 'object': 'stock.choose_forecast_date.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('open', 'Open', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('open', 'Open', 'tryton-ok', True),
                 ],
             },
         },

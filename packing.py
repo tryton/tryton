@@ -665,8 +665,8 @@ class SelectMove(Wizard):
                 'type': 'form',
                 'object': 'stock.packing.in.select_move.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('set', 'Ok', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('set', 'Ok', 'tryton-ok', True),
                 ],
             },
         },
