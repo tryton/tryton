@@ -135,8 +135,8 @@ class CompanyConfig(Wizard):
                 'type': 'form',
                 'object': 'company.company.config.init',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('company', 'Ok', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('company', 'Ok', 'tryton-ok', True),
                 ],
             },
         },
@@ -145,8 +145,8 @@ class CompanyConfig(Wizard):
                 'type': 'form',
                 'object': 'company.company',
                 'state': [
-                    ('end', 'Cancel', 'gtk-cancel'),
-                    ('add', 'Add', 'gtk-ok', True),
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('add', 'Add', 'tryton-ok', True),
                 ],
             },
         },
