@@ -112,7 +112,7 @@
             <field name="wiz_name">timesheet.work_type.open</field>
         </record>
         <menuitem parent="menu_reporting" action="act_open_work_type"
-            id="menu_work_type_tree2" icon="STOCK_INDENT"/>
+            id="menu_work_type_tree2" icon="tryton-tree"/>
 
         <record model="ir.ui.view" id="work_type_view_graph">
             <field name="model">timesheet.work_type</field>
@@ -161,7 +161,7 @@
             </field>
         </record>
         <menuitem parent="menu_work_type_tree2" action="act_open_work_type2"
-            id="menu_work_type_form2"/>
+            id="menu_work_type_form2" icon="tryton-presentation"/>
 
         <record model="ir.action.act_window" id="act_work_type_form3">
             <field name="name">Hours per Work Type</field>

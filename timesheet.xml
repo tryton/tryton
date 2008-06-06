@@ -8,7 +8,8 @@
             <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
         </record>
 
-        <menuitem name="Timesheet Management" sequence="6" id="menu_timesheet"/>
+        <menuitem name="Timesheet Management" sequence="6" id="menu_timesheet"
+            icon="tryton-clock"/>
         <menuitem name="Configuration" parent="menu_timesheet"
             id="menu_timesheet_configuration" groups="group_timesheet_admin"
             sequence="10"/>
