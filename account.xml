@@ -126,7 +126,7 @@
             <field name="wiz_name">analytic_account.account.open_chart_account</field>
         </record>
         <menuitem parent="account.menu_charts" action="act_open_chart_account"
-            icon="STOCK_INDENT" id="menu_open_chart_account"/>
+            icon="tryton-tree" id="menu_open_chart_account"/>
         <record model="ir.model.access" id="access_account">
             <field name="model" search="[('model', '=', 'analytic_account.account')]"/>
             <field name="perm_read" eval="True"/>
