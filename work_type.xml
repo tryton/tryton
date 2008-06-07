@@ -161,7 +161,7 @@
             </field>
         </record>
         <menuitem parent="menu_work_type_tree2" action="act_open_work_type2"
-            id="menu_work_type_form2" icon="tryton-presentation"/>
+            id="menu_work_type_form2" icon="tryton-graph"/>
 
         <record model="ir.action.act_window" id="act_work_type_form3">
             <field name="name">Hours per Work Type</field>
