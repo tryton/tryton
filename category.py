@@ -23,8 +23,10 @@ class Category(OSV):
         return dict(res)
 
     def name_get(self, cursor, user, ids, context=None):
-        if not len(ids):
+        if not ids:
             return []
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         categories = self.browse(cursor, user, ids, context=context)
         res = []
         for category in categories:
