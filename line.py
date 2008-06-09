@@ -14,7 +14,7 @@ class Line(OSV):
             select=1)
     date = fields.Date('Date', required=True, select=1)
     hours = fields.Float('Hours', digits=(16, 2), required=True)
-    work_type = fields.Many2One('timesheet.work_type', 'Work Type',
+    work = fields.Many2One('timesheet.work', 'Work Type',
             required=True, select=1, domain=[('type', '!=', 'view')])
     description = fields.Char('Description')
 

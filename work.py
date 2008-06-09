@@ -1,20 +1,20 @@
-"Work Type"
+"Work"
 
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 
 
-class WorkType(OSV):
-    'Work Type'
-    _name = 'timesheet.work_type'
+class Work(OSV):
+    'Work'
+    _name = 'timesheet.work'
     _description = __doc__
 
     name = fields.Char('Name', required=True)
     complete_name = fields.Function('get_complete_name', type='char',
             string='Name')
     active = fields.Boolean('Active')
-    parent = fields.Many2One('timesheet.work_type', 'Parent', select=2)
-    childs = fields.One2Many('timesheet.work_type', 'parent', 'Childs')
+    parent = fields.Many2One('timesheet.work', 'Parent', select=2)
+    childs = fields.One2Many('timesheet.work', 'parent', 'Childs')
     hours = fields.Function('get_hours', digits=(16, 2), string='Hours')
     type = fields.Selection([
         ('view', 'View'),
@@ -22,10 +22,10 @@ class WorkType(OSV):
         ], 'Type', required=True, select=1)
 
     def __init__(self):
-        super(WorkType, self).__init__()
+        super(Work, self).__init__()
         self._constraints += [
             ('check_recursion',
-             'Error! You can not create recursive work types.', ['parent'])
+             'Error! You can not create recursive works.', ['parent'])
         ]
 
     def default_active(self, cursor, user, context=None):
@@ -54,8 +54,8 @@ class WorkType(OSV):
 
     def get_hours(self, cursor, user, ids, name, arg, context=None):
         all_ids = self.search(cursor, user, [('parent', 'child_of', ids)])
-        clause = "SELECT work_type, sum(hours) FROM timesheet_line "\
-                     "WHERE work_type IN (%s) "\
+        clause = "SELECT work, sum(hours) FROM timesheet_line "\
+                     "WHERE work IN (%s) "\
                      % ",".join(["%s" for id in all_ids])
         date_cond = ""
         args = []
@@ -65,17 +65,17 @@ class WorkType(OSV):
         if context.get('to_date'):
             date_cond += " AND date <= %s"
             args.append(context['to_date'])
-        clause += date_cond + " GROUP BY work_type"
+        clause += date_cond + " GROUP BY work"
 
         cursor.execute(clause, all_ids + args)
 
         hours_by_wt = dict([(i[0], i[1]) for i in cursor.fetchall()])
         to_compute = dict.fromkeys(all_ids, True)
-        work_types = self.browse(cursor, user, all_ids, context=context)
+        works = self.browse(cursor, user, all_ids, context=context)
         childs = {}
-        for work_type in work_types:
-            if work_type.parent:
-                childs.setdefault(work_type.parent.id, []).append(work_type.id)
+        for work in works:
+            if work.parent:
+                childs.setdefault(work.parent.id, []).append(work.id)
         self._tree_qty(hours_by_wt, childs, ids, to_compute)
         return hours_by_wt
 
@@ -85,13 +85,14 @@ class WorkType(OSV):
         if isinstance(ids, (int, long)):
             ids = [ids]
         res = []
-        def _name(work_type):
-            if work_type.parent:
-                return _name(work_type.parent) + '\\' + work_type.name
+
+        def _name(work):
+            if work.parent:
+                return _name(work.parent) + '\\' + work.name
             else:
-                return work_type.name
-        for work_type in self.browse(cursor, user, ids, context=context):
-            res.append((work_type.id, _name(work_type)))
+                return work.name
+        for work in self.browse(cursor, user, ids, context=context):
+            res.append((work.id, _name(work)))
         return res
 
     def write(self, cursor, user, ids, vals, context=None):
@@ -100,7 +101,7 @@ class WorkType(OSV):
             child_ids = self.search(cursor, user, [
                 ('parent', 'child_of', ids),
                 ], context=context)
-        res = super(WorkType, self).write(cursor, user, ids, vals,
+        res = super(Work, self).write(cursor, user, ids, vals,
                 context=context)
         if child_ids:
             self.write(cursor, user, child_ids, {
@@ -108,24 +109,24 @@ class WorkType(OSV):
                 }, context=context)
         return res
 
-WorkType()
+Work()
 
 
-class OpenWorkTypeInit(WizardOSV):
-    _name = 'timesheet.work_type.open.init'
+class OpenWorkInit(WizardOSV):
+    _name = 'timesheet.work.open.init'
     from_date = fields.Date('From Date')
     to_date = fields.Date('To Date')
-OpenWorkTypeInit()
+OpenWorkInit()
 
 
-class OpenWorkType(Wizard):
-    'Open Work Types'
-    _name = 'timesheet.work_type.open'
+class OpenWork(Wizard):
+    'Open Work'
+    _name = 'timesheet.work.open'
     states = {
         'init': {
             'result': {
                 'type': 'form',
-                'object': 'timesheet.work_type.open.init',
+                'object': 'timesheet.work.open.init',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('open', 'Open', 'tryton-ok', True),
@@ -135,18 +136,18 @@ class OpenWorkType(Wizard):
         'open': {
             'result': {
                 'type': 'action',
-                'action': '_action_open_work_type',
+                'action': '_action_open_work',
                 'state': 'end',
             },
         },
     }
 
-    def _action_open_work_type(self, cursor, user, data, context=None):
+    def _action_open_work(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
 
         model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_work_type_tree2'),
+            ('fs_id', '=', 'act_work_tree2'),
             ('module', '=', 'timesheet'),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
@@ -158,18 +159,18 @@ class OpenWorkType(Wizard):
             })
         return res
 
-OpenWorkType()
+OpenWork()
 
 
-class OpenWorkType2(OpenWorkType):
-    _name = 'timesheet.work_type.open2'
+class OpenWork2(OpenWork):
+    _name = 'timesheet.work.open2'
 
-    def _action_open_work_type(self, cursor, user, data, context=None):
+    def _action_open_work(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
 
         model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_work_type_form2'),
+            ('fs_id', '=', 'act_work_form2'),
             ('module', '=', 'timesheet'),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
@@ -181,40 +182,40 @@ class OpenWorkType2(OpenWorkType):
             })
         return res
 
-OpenWorkType2()
+OpenWork2()
 
 
-class OpenWorkTypeGraph(Wizard):
-    _name = 'timesheet.work_type.open_graph'
+class OpenWorkGraph(Wizard):
+    _name = 'timesheet.work.open_graph'
     states = {
         'init': {
             'result': {
                 'type': 'action',
-                'action': '_action_open_work_type',
+                'action': '_action_open_work',
                 'state': 'end',
             },
         },
     }
 
-    def _action_open_work_type(self, cursor, user, data, context=None):
+    def _action_open_work(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        work_type_obj = self.pool.get('timesheet.work_type')
+        work_obj = self.pool.get('timesheet.work')
 
         if context is None:
             context = {}
 
         model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_work_type_form3'),
+            ('fs_id', '=', 'act_work_form3'),
             ('module', '=', 'timesheet'),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
         if 'active_id' in context:
-            name = work_type_obj.name_get(cursor, user, context['active_id'],
+            name = work_obj.name_get(cursor, user, context['active_id'],
                     context=context)[0][1]
             res['name'] = res['name'] + ' - ' + name
         return res
 
-OpenWorkTypeGraph()
+OpenWorkGraph()

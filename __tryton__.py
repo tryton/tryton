@@ -13,7 +13,7 @@
     ],
     'xml': [
         'timesheet.xml',
-        'work_type.xml',
+        'work.xml',
         'line.xml',
     ],
 }

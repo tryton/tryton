@@ -13,8 +13,8 @@
                     <field name="date"/>
                     <label name="hours"/>
                     <field name="hours" widget="float_time"/>
-                    <label name="work_type"/>
-                    <field name="work_type"/>
+                    <label name="work"/>
+                    <field name="work"/>
                     <label name="description"/>
                     <field name="description"/>
                 </form>
@@ -30,7 +30,7 @@
                     <field name="employee" select="1"/>
                     <field name="date" select="1"/>
                     <field name="hours" widget="float_time" sum="Hours"/>
-                    <field name="work_type" select="1" width="300"/>
+                    <field name="work" select="1" width="300"/>
                     <field name="description"/>
                 </tree>
                 ]]>

@@ -23,5 +23,5 @@
 #
 ##############################################################################
 
-from work_type import *
+from work import *
 from line import *
