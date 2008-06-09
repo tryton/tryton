@@ -11,8 +11,8 @@
         <menuitem name="Timesheet Management" sequence="6" id="menu_timesheet"
             icon="tryton-clock"/>
         <menuitem name="Configuration" parent="menu_timesheet"
-            id="menu_timesheet_configuration" groups="group_timesheet_admin"
-            sequence="10"/>
+            id="menu_configuration" groups="group_timesheet_admin"
+            sequence="10" icon="tryton-preferences"/>
         <menuitem name="Reporting" parent="menu_timesheet"
             id="menu_reporting" sequence="100"/>
     </data>
