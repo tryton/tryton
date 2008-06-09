@@ -8,10 +8,12 @@
             <field name="name">Account Admin</field>
         </record>
         <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_account')), ('add', ref('group_account_admin'))]"/>
+            <field name="groups"
+                eval="[('add', ref('group_account')), ('add', ref('group_account_admin'))]"/>
         </record>
         <menuitem name="Financial Management" id="menu_account" sequence="2"
-            groups="group_account,group_account_admin"/>
+            groups="group_account,group_account_admin"
+            icon="tryton-calculator"/>
         <menuitem name="Configuration" parent="menu_account"
             id="menu_account_configuration" groups="group_account_admin"
             sequence="10" icon="tryton-preferences"/>
