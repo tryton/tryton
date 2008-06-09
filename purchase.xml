@@ -737,7 +737,7 @@
             parent="relationship.menu_party_form"
             action="act_open_supplier"
             type="wizard"
-            icon="tryton-spreadsheet"
+            icon="tryton-list"
             id="menu_supplier"/>
     </data>
 </tryton>
