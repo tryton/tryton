@@ -362,7 +362,7 @@ class Line(OSV):
     blocked = fields.Boolean('Litigation',
             help='Mark the line as litigation with the party.')
     maturity_date = fields.Date('Maturity Date',
-            help='This field is used for payable and receivable linees. \n' \
+            help='This field is used for payable and receivable lines. \n' \
                     'You can put the limit date for the payment.')
     state = fields.Selection([
         ('draft', 'Draft'),
