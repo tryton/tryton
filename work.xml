@@ -8,6 +8,8 @@
                 <![CDATA[
                 <tree string="Works">
                     <field name="complete_name"/>
+                    <field name="project_type"/>
+                    <field name="state"/>
                     <field name="name" select="1" tree_invisible="1"/>
                     <field name="active" select="1" tree_invisible="1"/>
                 </tree>
@@ -22,10 +24,16 @@
                 <form string="Work">
                     <label name="name"/>
                     <field name="name"/>
-                    <label name="active"/>
-                    <field name="active"/>
+                    <label name="state"/>
+                    <group col="3" colspan="1">
+                        <field name="state"/>
+                        <label name="active"/>
+                        <field name="active"/>
+                    </group>
                     <label name="parent"/>
                     <field name="parent"/>
+                    <label name="project_type"/>
+                    <field name="project_type"/>
                     <notebook colspan="4">
                         <page string="General">
                             <label name="party"/>
@@ -59,8 +67,48 @@
             <field name="view" ref="work_view_form"/>
             <field name="act_window" ref="act_work_form"/>
         </record>
-        <menuitem parent="menu_project" action="act_work_form"
+        <menuitem parent="menu_configuration" action="act_work_form"
             id="menu_work_form"/>
+
+        <record model="ir.model.access" id="access_work">
+            <field name="model" search="[('model', '=', 'project.work')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_work_admin">
+            <field name="model" search="[('model', '=', 'project.work')]"/>
+            <field name="group" ref="group_project_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <menuitem parent="menu_project" action="timesheet.act_work_tree"
+            id="menu_project_tree" name="Projects"/>
+
+        <record model="ir.action.act_window" id="act_project_form">
+            <field name="name">Projects</field>
+            <field name="res_model">project.work</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('project_type', '=', 'project')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_project_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_tree"/>
+            <field name="act_window" ref="act_project_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_project_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_project_form"/>
+        </record>
+        <menuitem parent="menu_project_tree" action="act_project_form"
+            id="menu_project_form"/>
 
     </data>
 </tryton>

@@ -1,6 +1,24 @@
 "Project"
 
 from trytond.osv import fields, OSV
+import copy
+
+
+class TimesheetWork(OSV):
+    _name = 'timesheet.work'
+
+    def __init__(self):
+        super(TimesheetWork, self).__init__()
+        self.parent = copy.copy(self.parent)
+        if not self.parent._context:
+            self.parent._context = "{'project_type': locals().get('project_type')}"
+        else:
+            self.parent._context = self.parent._context[:-1] + \
+                    ",'project_type': locals().get('project_type')" + \
+                    self.parent._context[-1:]
+        self._reset_columns()
+
+TimesheetWork()
 
 
 class Work(OSV):
@@ -11,9 +29,18 @@ class Work(OSV):
 
     work = fields.Many2One('timesheet.work', 'Work',
             required=True)
-    party = fields.Many2One('relationship.party', 'Party')
+    project_type = fields.Selection([
+        ('project', 'Project'),
+        ], 'Type', required=True, select=1)
+    party = fields.Many2One('relationship.party', 'Party',
+            states={
+                'invisible': "project_type != 'project'",
+            })
     party_address = fields.Many2One('relationship.address', 'Contact Address',
-            domain="[('party', '=', party)]")
+            domain="[('party', '=', party)]",
+            states={
+                'invisible': "project_type != 'project'",
+            })
     comment = fields.Text('Comment')
 
 Work()
