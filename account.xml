@@ -14,7 +14,7 @@
             groups="group_account,group_account_admin"/>
         <menuitem name="Configuration" parent="menu_account"
             id="menu_account_configuration" groups="group_account_admin"
-            sequence="10"/>
+            sequence="10" icon="tryton-preferences"/>
         <menuitem name="General Account" parent="menu_account_configuration"
             id="menu_general_account_configuration"/>
         <menuitem name="Entries" parent="menu_account"
