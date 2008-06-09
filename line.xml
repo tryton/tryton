@@ -143,6 +143,6 @@
             <field name="wiz_name">timesheet.open_hours_employee</field>
         </record>
         <menuitem parent="menu_reporting" action="act_open_hours_employee"
-            icon="tryton-spreadsheet" id="menu_open_hours_employee"/>
+            icon="tryton-list" id="menu_open_hours_employee"/>
     </data>
 </tryton>
