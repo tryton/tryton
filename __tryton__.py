@@ -13,5 +13,6 @@
     ],
     'xml': [
         'project.xml',
+        'work.xml',
     ],
 }
