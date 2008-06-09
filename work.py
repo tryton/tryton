@@ -20,6 +20,10 @@ class Work(OSV):
         ('view', 'View'),
         ('normal', 'Normal'),
         ], 'Type', required=True, select=1)
+    state = fields.Selection([
+        ('opened', 'Opened'),
+        ('closed', 'Closed'),
+        ], 'State', required=True, select=1)
 
     def __init__(self):
         super(Work, self).__init__()
@@ -33,6 +37,9 @@ class Work(OSV):
 
     def default_type(self, cursor, user, context=None):
         return 'normal'
+
+    def default_state(self, cursor, user, context=None):
+        return 'opened'
 
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
