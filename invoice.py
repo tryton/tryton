@@ -916,6 +916,9 @@ class Invoice(OSV):
             if invoice.account.id == journal.debit_account.id:
                 raise ExceptORM('Error', 'Debit account on journal is ' \
                         'the same than the invoice account!')
+            if not journal.debit_account:
+                raise ExceptORM('Error', 'The debit account on journal is ' \
+                        'missing!')
         else:
             lines.append({
                 'name': description,
@@ -938,6 +941,9 @@ class Invoice(OSV):
             if invoice.account.id == journal.debit_account.id:
                 raise ExceptORM('Error', 'Credit account on journal is ' \
                         'the same than the invoice account!')
+            if not journal.credit_account:
+                raise ExceptORM('Error', 'The credit account on journal is ' \
+                        'missing!')
 
         period_id = period_obj.find(cursor, user, date=date, context=context)
 
