@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="statement_view_form">
+            <field name="model">statement.statement</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Bank Statement">
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="start_balance"/>
+                    <field name="start_balance"/>
+                    <label name="end_balance"/>
+                    <field name="end_balance"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="currency"/>
+                    <field name="currency"/>
+                    <label name="move"/>
+                    <field name="move"/>
+                    <field name="lines" colspan="4">
+                      <tree string="Bank Statement Lines" editable="bottom">
+                        <field name="date"/>
+                        <field name="amount"/>
+                        <field name="party"/>
+                        <field name="account"/>
+                        <field name="description"/>
+                      </tree>
+                    </field>
+                    <group col="5" colspan="4">
+                      <label name="state"/>
+                      <field name="state"/>
+                      <button string="Set Waiting" name="waiting"
+                              states="{'invisible': '''state != 'draft' '''}"/>
+                      <button string="Set Done" name="done"
+                              states="{'invisible': '''state != 'waiting' '''}"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="statement_view_tree">
+            <field name="model">statement.statement</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Bank Statements">
+                    <field name="journal"/>
+                    <field name="date"/>
+                    <field name="start_balance"/>
+                    <field name="end_balance"/>
+                    <field name="company"/>
+                    <field name="currency"/>
+                    <field name="state"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_statement_form">
+            <field name="name">Bank Statement</field>
+            <field name="res_model">statement.statement</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_statement_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_view_tree"/>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_statement_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="statement_view_form"/>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <menuitem parent="account.menu_entries"
+            action="act_statement_form" id="menu_statement_form"/>
+
+        <record model="ir.ui.view" id="statement_line_view_form">
+            <field name="model">statement.statement.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Bank Statement Line">
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="party"/>
+                    <field name="party"/>
+                    <label name="account"/>
+                    <field name="account"/>
+                    <label name="description"/>
+                    <field name="description"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="statement_line_view_tree">
+            <field name="model">statement.statement.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Bank Statement Lines">
+                    <field name="date"/>
+                    <field name="amount"/>
+                    <field name="party"/>
+                    <field name="account"/>
+                    <field name="description"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <!-- Statement workflow -->
+        <record model="workflow" id="wkf_statement">
+            <field name="name">Statement</field>
+            <field name="osv">statement.statement</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="statement_act_draft">
+            <field name="workflow" ref="wkf_statement"/>
+            <field name="flow_start">True</field>
+            <field name="name">Draft</field>
+        </record>
+        <record model="workflow.activity" id="statement_act_waiting">
+            <field name="workflow" ref="wkf_statement"/>
+            <field name="kind">function</field>
+            <field name="action">set_state_waiting()</field>
+            <field name="name">Waiting</field>
+        </record>
+        <record model="workflow.activity" id="statement_act_done">
+            <field name="workflow" ref="wkf_statement"/>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+            <field name="name">Done</field>
+            <field name="flow_stop" eval="True"/>
+        </record>
+        <record model="workflow.transition" id="statement_trans_draft_waiting">
+            <field name="act_from" ref="statement_act_draft"/>
+            <field name="act_to" ref="statement_act_waiting"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition" id="statement_trans_waiting_done">
+            <field name="act_from" ref="statement_act_waiting"/>
+            <field name="act_to" ref="statement_act_done"/>
+            <field name="signal">done</field>
+        </record>
+
+    </data>
+</tryton>
