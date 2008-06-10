@@ -169,6 +169,19 @@
             <field name="type">lost_found</field>
         </record>
 
+        <record model="ir.ui.view" id="stock.product_forecast_date_init_view_form">
+            <field name="model">stock.product_forecast_date.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Product Quantity.">
+                    <label name="forecast_date"/>
+                    <field name="forecast_date"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.property" id="property_supplier_location">
             <field name="name">supplier_location</field>
             <field name="field"

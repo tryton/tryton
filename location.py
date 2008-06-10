@@ -141,7 +141,7 @@ Party()
 
 
 class ChooseForecatsDateInit(WizardOSV):
-    _name = 'stock.choose_forecast_date.init'
+    _name = 'stock.location_forecast_date.init'
     forecast_date = fields.Date(
         'Forecast Date', help='Allow to compute expected '\
             'stock quantities for this date.\n'\
@@ -157,7 +157,7 @@ class OpenProduct(Wizard):
         'init': {
             'result': {
                 'type': 'form',
-                'object': 'stock.choose_forecast_date.init',
+                'object': 'stock.location_forecast_date.init',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('open', 'Open', 'tryton-ok', True),

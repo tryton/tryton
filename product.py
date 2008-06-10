@@ -174,6 +174,15 @@ class Product(OSV):
 Product()
 
 
+class ChooseForecatsDateInit(WizardOSV):
+    _name = 'stock.product_forecast_date.init'
+    forecast_date = fields.Date(
+        'Forecast Date', help='Allow to compute expected '\
+            'stock quantities for this date.\n'\
+            '* An empty value is an infinite date in the future.\n'\
+            '* A date in the past will provide historical values.')
+ChooseForecatsDateInit()
+
 class OpenLocation(Wizard):
     'Products by Locations'
     _name = 'stock.location.open'
@@ -181,7 +190,7 @@ class OpenLocation(Wizard):
         'init': {
             'result': {
                 'type': 'form',
-                'object': 'stock.choose_forecast_date.init',
+                'object': 'stock.product_forecast_date.init',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('open', 'Open', 'tryton-ok', True),
