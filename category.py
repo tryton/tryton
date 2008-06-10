@@ -15,8 +15,7 @@ class Category(OSV):
 
     def __init__(self):
         super(Category, self).__init__()
-        self._order.insert(0, ('parent', 'ASC'))
-        self._order.insert(1, ('name', 'ASC'))
+        self._order.insert(0, ('name', 'ASC'))
 
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
