@@ -41,7 +41,7 @@ class Location(OSV):
         domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
     quantity = fields.Function('get_quantity', type='float', string='Quantity',)
     forecast_quantity = fields.Function('get_quantity', type='float',
-                                        string='Quantity',)
+                                        string='Forecast Quantity',)
 
     def __init__(self):
         super(Location, self).__init__()
