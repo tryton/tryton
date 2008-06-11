@@ -29,7 +29,7 @@ class Location(OSV):
         ('production', 'Production'),
         ], 'Location type', states=STATES)
     parent = fields.Many2One("stock.location", "Parent", select=1)
-    childs = fields.One2Many("stock.location", "parent", "Childs",)
+    childs = fields.One2Many("stock.location", "parent", "Childs")
     input_location = fields.Many2One(
         "stock.location", "Input", states=STATES_WH,
         domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
@@ -39,9 +39,9 @@ class Location(OSV):
     storage_location = fields.Many2One(
         "stock.location", "Storage", states=STATES_WH,
         domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
-    quantity = fields.Function('get_quantity', type='float', string='Quantity',)
+    quantity = fields.Function('get_quantity', type='float', string='Quantity')
     forecast_quantity = fields.Function('get_quantity', type='float',
-                                        string='Forecast Quantity',)
+                                        string='Forecast Quantity')
 
     def __init__(self):
         super(Location, self).__init__()

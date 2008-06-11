@@ -16,18 +16,18 @@ class Inventory(OSV):
 
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
-        domain="[('type', '=', 'storage')]", states=STATES,)
+        domain="[('type', '=', 'storage')]", states=STATES)
     date = fields.DateTime('Date', readonly=True)
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
-        domain="[('type', '=', 'lost_found')]", states=STATES,)
+        domain="[('type', '=', 'lost_found')]", states=STATES)
     lines = fields.One2Many(
-        'stock.inventory.line', 'inventory', 'Inventory Lines', states=STATES,)
+        'stock.inventory.line', 'inventory', 'Inventory Lines', states=STATES)
     moves = fields.Many2Many(
         'stock.move', 'inventory_move_rel', 'inventory', 'move',
         'Generated moves')
     company = fields.Many2One(
-        'company.company', 'Company', required=True, states=STATES,)
+        'company.company', 'Company', required=True, states=STATES)
 
 
     state = fields.Selection(
@@ -169,9 +169,9 @@ class InventoryLine(OSV):
     _rec_name = 'product'
 
     product = fields.Many2One(
-        'product.product', 'Product', required=True, on_change=['product'],)
-    uom = fields.Many2One('product.uom', 'Uom', required=True, select=1,)
-    quantity = fields.Float('Quantity', digits=(12, 6),)
+        'product.product', 'Product', required=True, on_change=['product'])
+    uom = fields.Many2One('product.uom', 'Uom', required=True, select=1)
+    quantity = fields.Float('Quantity', digits=(12, 6))
     inventory = fields.Many2One('stock.inventory', 'Inventory')
 
     def __init__(self):

@@ -19,10 +19,10 @@ class PackingIn(OSV):
 
     effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime(
-        'Planned Date', states={'readonly': "state != 'draft'",},)
+        'Planned Date', states={'readonly': "state != 'draft'",})
     reference = fields.Char(
         "Reference", size=None, select=1,
-        states={'readonly': "state != 'draft'",},)
+        states={'readonly': "state != 'draft'",})
     supplier = fields.Many2One('relationship.party', 'Supplier',
             states={
                 'readonly': "state != 'draft'",
@@ -247,7 +247,7 @@ class PackingOut(OSV):
     _description = __doc__
     _rec_name = 'code'
 
-    effective_date =fields.DateTime('Effective Date', readonly=True,)
+    effective_date =fields.DateTime('Effective Date', readonly=True)
     planned_date = fields.DateTime('Planned Date', readonly=True,
             states={
                 'readonly': "state != 'draft'",
@@ -567,7 +567,7 @@ class PackingOut(OSV):
                     cursor, user, move.uom.id,
                     processed_data.get(
                         (location, move.product.id), []),
-                    uom_index, context=context,)
+                    uom_index, context=context)
                 if qty != 0.0:
                     location_qties.append((location, qty))
 

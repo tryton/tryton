@@ -18,7 +18,7 @@ class Move(OSV):
     product = fields.Many2One("product.product", "Product", required=True,
             select=1, states=STATES,
             on_change=['product', 'type', 'currency', 'uom', 'company'],
-            domain=[('type', '!=', 'service')],)
+            domain=[('type', '!=', 'service')])
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES)
     quantity = fields.Float("Quantity", digits=(12, 6), required=True,
             states=STATES)
