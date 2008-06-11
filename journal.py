@@ -7,11 +7,11 @@ class Journal(OSV):
     _name = 'statement.journal'
     _description = __doc__
 
-    name = fields.Char('Name', size=None, required=True,)
+    name = fields.Char('Name', size=None, required=True)
     journal = fields.Many2One(
         'account.journal', 'Bank Journal', required=True,
-        domain="[('type','=','bank')]")
-    balance = fields.Numeric('Balance', digits=(12, 6),)
+        domain="[('type', '=', 'bank')]")
+    balance = fields.Numeric('Balance', digits=(12, 6))
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
 
