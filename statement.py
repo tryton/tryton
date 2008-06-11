@@ -18,9 +18,6 @@ class Statement(OSV):
         'Start Balance', digits=(16, 2), states=_STATES,)
     end_balance = fields.Function(
         'get_end_balance', string='End Balance', type='numeric',)
-    company = fields.Many2One(
-        'company.company', 'Company', required=True, select=True)
-    currency = fields.Many2One('currency.currency', 'Currency', required=True)
     lines = fields.One2Many(
         'statement.statement.line', 'statement', 'Transactions',
         states=_STATES,)
