@@ -575,7 +575,7 @@ class PackingOut(OSV):
                 cursor, user, move.quantity, location_qties,
                 move=move, location_index=location_index,
                 context=context)
-            if to_pick == None:
+            if to_pick is None:
                 success = False
                 continue
 
