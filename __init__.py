@@ -1,4 +1,5 @@
 # Copyright (c) 2008 Cedric Krier.
+# Copyright (c) 2008 B2CK.
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
