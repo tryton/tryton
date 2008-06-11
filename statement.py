@@ -12,21 +12,23 @@ class Statement(OSV):
 
     journal = fields.Many2One(
         'statement.journal', 'Journal', required=True, states=_STATES,
-        on_change=['journal'], select=True)
-    date = fields.Date('date', required=True, states=_STATES, select=True)
+        on_change=['journal'], select=1)
+    date = fields.Date('date', required=True, states=_STATES, select=1)
     start_balance = fields.Numeric(
-        'Start Balance', digits=(16, 2), states=_STATES,)
+        'Start Balance', digits=(16, 2), states=_STATES)
     end_balance = fields.Function(
-        'get_end_balance', string='End Balance', type='numeric',)
+        'get_end_balance', string='End Balance', type='numeric')
     lines = fields.One2Many(
         'statement.statement.line', 'statement', 'Transactions',
-        states=_STATES,)
+        states=_STATES)
     move = fields.Many2One(
-        'account.move', 'Move', readonly=True,)
+        'account.move', 'Move', readonly=True)
     state = fields.Selection(
-        [('draft', 'Draft'), ('waiting','Waiting'),
-         ('cancel','Cancel'), ('done', 'Done'),],
-        'State', readonly=True, select=True)
+        [('draft', 'Draft'),
+         ('waiting', 'Waiting'),
+         ('cancel', 'Cancel'),
+         ('done', 'Done'),],
+        'State', readonly=True, select=1)
 
     def __init__(self):
         super(Statement, self).__init__()
@@ -161,7 +163,7 @@ class Statement(OSV):
                           context=context)
         other_statements = self.search(
             cursor, user,
-            [('state','=','draft'), ('journal','=',statement.journal.id)],
+            [('state', '=', 'draft'), ('journal', '=', statement.journal.id)],
             context=context)
         self.write(
             cursor, user, other_statements,
@@ -188,14 +190,14 @@ class Line(OSV):
     _description = __doc__
 
     statement = fields.Many2One(
-        'statement.statement','Statement', required=True,  ondelete='CASCADE',)
+        'statement.statement', 'Statement', required=True,  ondelete='CASCADE')
     date = fields.Date('Date', required=True)
     amount = fields.Numeric(
-        'Amount', digits=(16,2), required=True, on_change=['amount','party'])
+        'Amount', digits=(16,2), required=True, on_change=['amount', 'party'])
     party = fields.Many2One(
-        'relationship.party', 'Party', on_change=['amount','party'])
+        'relationship.party', 'Party', on_change=['amount', 'party'])
     account = fields.Many2One(
-        'account.account', 'Account', required=True,)
+        'account.account', 'Account', required=True)
     description = fields.Char('Description', size=None)
 
     def on_change_party(self, cursor, user, ids, value, context=None):
