@@ -23,11 +23,11 @@ class Uom(OSV):
     'Unit of measure'
     _name = 'product.uom'
     _description = __doc__
-    name = fields.Char('Name', size=None, required=True, states=STATES,)
-    symbol = fields.Char('Symbol', size=10, required=True, states=STATES,)
+    name = fields.Char('Name', size=None, required=True, states=STATES)
+    symbol = fields.Char('Symbol', size=10, required=True, states=STATES)
     category = fields.Many2One('product.uom.category', 'UOM Category',
                                required=True, ondelete='cascade',
-                               states=STATES,)
+                               states=STATES)
     rate = fields.Float('Rate', digits=(12, 6), required=True,
                         on_change = ['rate'],states=STATES,
                         help='The coefficient for the formula:\n' \
@@ -37,7 +37,7 @@ class Uom(OSV):
                           help='The coefficient for the formula:\n' \
                               'coef (base unit) = 1 (this unit)')
     rounding = fields.Float('Rounding Precision', digits=(12, 6),
-                              required=True, states=STATES,)
+                              required=True, states=STATES)
     active = fields.Boolean('Active')
 
     def __init__(self):
