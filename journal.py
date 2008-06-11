@@ -1,9 +1,6 @@
 "Statement Journal"
 
 from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
-from decimal import Decimal
-import datetime
 
 class Journal(OSV):
     'Statement Journal'

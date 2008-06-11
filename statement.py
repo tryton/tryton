@@ -1,9 +1,7 @@
 "Statement"
 
 from trytond.osv import fields, OSV, ExceptORM
-from trytond.wizard import Wizard, WizardOSV
-from decimal import Decimal
-import datetime
+from trytond.netsvc import LocalService
 
 _STATES = {'readonly': 'state != "draft"'}
 
