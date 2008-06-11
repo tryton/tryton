@@ -12,7 +12,7 @@ class Statement(OSV):
 
     journal = fields.Many2One(
         'statement.journal', 'Journal', required=True, states=_STATES,
-        on_change=['journal'])
+        on_change=['journal'], select=True)
     date = fields.Date('date', required=True, states=_STATES, select=True)
     start_balance = fields.Numeric('Start Balance', digits=(16, 2),)
     end_balance = fields.Function(
