@@ -11,7 +11,6 @@
         'company',
         'currency',
         'relationship',
-        'company',
         ],
     'xml': [
         'statement.xml',
