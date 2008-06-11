@@ -55,15 +55,9 @@ class Statement(OSV):
         if not value.get('journal'):
             return {}
         journal_obj = self.pool.get('statement.journal')
-        currency_obj = self.pool.get('currency.currency')
-        company_obj = self.pool.get('company.company')
         journal= journal_obj.browse(cursor, user, value['journal'],
                                     context=context)
-        return {'currency': currency_obj.name_get(
-                    cursor, user, journal.currency.id, context=context)[0],
-                'company': company_obj.name_get(
-                    cursor, user, journal.company.id, context=context)[0],
-                'start_balance': journal.balance}
+        return {'start_balance': journal.balance}
 
     def get_end_balance(self, cursor, user, ids, name, arg, context=None):
         statements = self.browse(cursor, user, ids, context=context)
