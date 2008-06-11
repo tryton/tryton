@@ -140,7 +140,7 @@ class Line(OSV):
     _description = __doc__
 
     statement = fields.Many2One(
-        'statement.statement','Statement', required=True)
+        'statement.statement','Statement', required=True,  ondelete='CASCADE',)
     date = fields.Date('Date', required=True)
     amount = fields.Numeric(
         'Amount', digits=(16,2), required=True, on_change=['amount','party'])
