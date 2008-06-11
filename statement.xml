@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
+        <menuitem name="Statements" parent="account.menu_account"
+            id="menu_statements" sequence="45"/>
         <record model="ir.ui.view" id="statement_view_form">
             <field name="model">statement.statement</field>
             <field name="type">form</field>
@@ -30,13 +32,18 @@
                         <field name="description"/>
                       </tree>
                     </field>
-                    <group col="5" colspan="4">
+                    <group col="6" colspan="4">
                       <label name="state"/>
                       <field name="state"/>
                       <button string="Set Waiting" name="waiting"
                               states="{'invisible': '''state != 'draft' '''}"/>
+                      <button string="Set cancel" name="cancel"
+                              states="{'invisible': '''state != 'waiting' '''}"/>
                       <button string="Set Done" name="done"
                               states="{'invisible': '''state != 'waiting' '''}"/>
+                      <button string="Reset to Draft" name="draft_workflow"
+                              type="object"
+                              states="{'invisible': '''state != 'cancel' '''}"/>
                     </group>
                 </form>
                 ]]>
@@ -59,8 +66,65 @@
                 ]]>
             </field>
         </record>
+        <record model="ir.action.act_window" id="act_draft_statement_form">
+            <field name="name">Draft Statements</field>
+            <field name="res_model">statement.statement</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_draft_statement_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_view_tree"/>
+            <field name="act_window" ref="act_draft_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_draft_statement_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="statement_view_form"/>
+            <field name="act_window" ref="act_draft_statement_form"/>
+        </record>
+        <menuitem parent="menu_statements" sequence="1"
+            action="act_draft_statement_form" id="menu_draft_statement_form"/>
+
+        <record model="ir.action.act_window" id="act_waiting_statement_form">
+            <field name="name">Waiting Statement</field>
+            <field name="res_model">statement.statement</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_waiting_statement_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_view_tree"/>
+            <field name="act_window" ref="act_waiting_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_waiting_statement_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="statement_view_form"/>
+            <field name="act_window" ref="act_waiting_statement_form"/>
+        </record>
+        <menuitem parent="menu_statements" sequence="2"
+            action="act_waiting_statement_form" id="menu_waiting_statement_form"/>
+
+        <record model="ir.action.act_window" id="act_done_statement_form">
+            <field name="name">Done Statements</field>
+            <field name="res_model">statement.statement</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'done')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_done_statement_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_view_tree"/>
+            <field name="act_window" ref="act_done_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_done_statement_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="statement_view_form"/>
+            <field name="act_window" ref="act_done_statement_form"/>
+        </record>
+        <menuitem parent="menu_statements" sequence="3"
+            action="act_done_statement_form" id="menu_done_statement_form"/>
+
         <record model="ir.action.act_window" id="act_statement_form">
-            <field name="name">Bank Statement</field>
+            <field name="name">All Statement</field>
             <field name="res_model">statement.statement</field>
             <field name="view_type">form</field>
         </record>
@@ -74,7 +138,7 @@
             <field name="view" ref="statement_view_form"/>
             <field name="act_window" ref="act_statement_form"/>
         </record>
-        <menuitem parent="account.menu_entries"
+        <menuitem parent="menu_statements" sequence="4"
             action="act_statement_form" id="menu_statement_form"/>
 
         <record model="ir.ui.view" id="statement_line_view_form">
@@ -137,6 +201,13 @@
             <field name="name">Done</field>
             <field name="flow_stop" eval="True"/>
         </record>
+        <record model="workflow.activity" id="statement_act_cancel">
+            <field name="workflow" ref="wkf_statement"/>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+            <field name="name">Cancel</field>
+            <field name="flow_stop" eval="True"/>
+        </record>
         <record model="workflow.transition" id="statement_trans_draft_waiting">
             <field name="act_from" ref="statement_act_draft"/>
             <field name="act_to" ref="statement_act_waiting"/>
@@ -146,6 +217,11 @@
             <field name="act_from" ref="statement_act_waiting"/>
             <field name="act_to" ref="statement_act_done"/>
             <field name="signal">done</field>
+        </record>
+        <record model="workflow.transition" id="statement_trans_waiting_cancel">
+            <field name="act_from" ref="statement_act_waiting"/>
+            <field name="act_to" ref="statement_act_cancel"/>
+            <field name="signal">cancel</field>
         </record>
 
     </data>

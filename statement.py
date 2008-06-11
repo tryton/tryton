@@ -24,8 +24,9 @@ class Statement(OSV):
     move = fields.Many2One(
         'account.move', 'Move', readonly=True,)
     state = fields.Selection(
-        [('draft', 'Draft'), ('waiting','Waiting'), ('done', 'Done'),],'State',
-        readonly=True, select=True)
+        [('draft', 'Draft'), ('waiting','Waiting'),
+         ('cancel','Cancel'), ('done', 'Done'),],
+        'State', readonly=True, select=True)
 
     def __init__(self):
         super(Statement, self).__init__()
@@ -35,6 +36,10 @@ class Statement(OSV):
                  'for the same journal.',
              ['journal']),
             ]
+        self._rpc_allowed += [
+            'draft_workflow',
+        ]
+        self._order[0] = ('id', 'DESC')
 
     def check_unique_waiting_statement(self, cursor, user, ids, parent=None):
         """Ensure that only one statement is in waiting state
@@ -72,10 +77,11 @@ class Statement(OSV):
         move_obj = self.pool.get('account.move')
         move_line_obj = self.pool.get('account.move.line')
         period_obj = self.pool.get('account.period')
+        journal_obj = self.pool.get('statement.journal')
         statement = self.browse(cursor, user, statement_id, context=context)
-
         period = period_obj.find(cursor, user, date=statement.date,
                                  context=context)
+
         move_id = move_obj.create(
             cursor, user,
             {'name': statement.date, #XXX
@@ -117,6 +123,18 @@ class Statement(OSV):
                  },             # second currency?
                 context=context)
 
+        journal_obj.write(cursor, user, statement.journal.id,
+                          {'balance': statement.end_balance},
+                          context=context)
+        other_statements = self.search(
+            cursor, user,
+            [('state', '=', 'draft'), ('journal', '=', statement.journal.id),
+             ('id', '!=', statement.id)],
+            context=context)
+        self.write(
+            cursor, user, other_statements,
+            {'start_balance': statement.end_balance},
+            context=context)
         self.write(cursor, user, statement_id,
                    {'state':'waiting',
                     'start_balance': statement.journal.balance,
@@ -131,6 +149,36 @@ class Statement(OSV):
             context=context)
         self.write(
             cursor, user, statement_id, {'state':'done'}, context=context)
+
+    def set_state_cancel(self, cursor, user, statement_id, context=None):
+        move_obj = self.pool.get('account.move')
+        journal_obj = self.pool.get('statement.journal')
+        statement = self.browse(cursor, user, statement_id, context=context)
+        if statement.move:
+            move_obj.unlink(cursor, user, statement.move.id, context=context)
+        journal_obj.write(cursor, user, statement.journal.id,
+                          {'balance': statement.start_balance},
+                          context=context)
+        other_statements = self.search(
+            cursor, user,
+            [('state','=','draft'), ('journal','=',statement.journal.id)],
+            context=context)
+        self.write(
+            cursor, user, other_statements,
+            {'start_balance': statement.start_balance},
+            context=context)
+        self.write(cursor, user, statement_id,
+                   {'state':'cancel',},
+                   context=context)
+
+    def draft_workflow(self, cursor, user, ids, context=None):
+        workflow_service = LocalService('workflow')
+        for statement in self.browse(cursor, user, ids, context=context):
+            workflow_service.trg_create(user, self._name, statement.id, cursor)
+            self.write(
+                cursor, user, statement.id,
+                {'state': 'draft', 'start_balance': statement.journal.balance})
+        return True
 
 Statement()
 
