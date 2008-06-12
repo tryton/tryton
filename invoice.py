@@ -709,9 +709,6 @@ class Invoice(OSV):
 
         period_id = period_obj.find(cursor, user, date=invoice.invoice_date,
                 context=context)
-        if not period_id:
-            raise ExceptORM('UserError',
-                    'There is not period for the invoice date!')
         period = period_obj.browse(cursor, user, period_id, context=context)
         sequence_id = period[invoice.type + '_sequence'].id
         if not sequence_id:
