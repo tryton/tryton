@@ -67,6 +67,13 @@ class User(OSV):
                             'a child of your main company.', ['company']),
                 ]
 
+    def get_status_bar(self, cursor, user_id, ids, name, arg, context=None):
+        res = super(User, self).get_status_bar(cursor, user_id, ids, name, arg,
+                context=context)
+        for user in self.browse(cursor, user_id, ids, context=context):
+            res[user.id] += ' ' + user.company.name
+        return res
+
     def on_change_main_company(self, cursor, user, ids, vals, context=None):
         return {'company': vals.get('main_company', False)}
 
