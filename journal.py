@@ -78,13 +78,13 @@ class Journal(OSV):
             domain="[('code', '=', 'account.journal')]")
     credit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Credit Account',
-            domain="[('type', '!=', 'view'), ('company', '=', company)]",
+            domain="[('type.code', '!=', 'view'), ('company', '=', company)]",
             states={
                 'required': "centralised or type == 'cash'",
             })
     debit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Debit Account',
-            domain="[('type', '!=', 'view'), ('company', '=', company)]",
+            domain="[('type.code', '!=', 'view'), ('company', '=', company)]",
             states={
                 'required': "centralised or type == 'cash'",
             })
