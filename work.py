@@ -43,4 +43,7 @@ class Work(OSV):
             })
     comment = fields.Text('Comment')
 
+    def default_project_type(self, cursor, user, context=None):
+        return 'project'
+
 Work()
