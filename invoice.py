@@ -709,8 +709,14 @@ class Invoice(OSV):
 
         period_id = period_obj.find(cursor, user, date=invoice.invoice_date,
                 context=context)
+        if not period_id:
+            raise ExceptORM('UserError',
+                    'There is not period for the invoice date!')
         period = period_obj.browse(cursor, user, period_id, context=context)
         sequence_id = period[invoice.type + '_sequence'].id
+        if not sequence_id:
+            raise ExceptORM('UserError',
+                    'There is not invoice sequence on the period/fiscal year!')
         number = sequence_obj.get_id(cursor, user, sequence_id)
         self.write(cursor, user, invoice_id, {
             'number': number,
