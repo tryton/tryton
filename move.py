@@ -773,6 +773,8 @@ class Line(OSV):
             name = 'state'
         if name not in ('period', 'journal', 'date', 'state'):
             raise Exception('Invalid name')
+        if not value:
+            return
         move_obj = self.pool.get('account.move')
         line = self.browse(cursor, user, id, context=context)
         move_obj.write(cursor, user, line.move.id, {
