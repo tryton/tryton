@@ -44,13 +44,13 @@ class Statement(OSV):
         self._order[0] = ('id', 'DESC')
 
     def check_unique_waiting_statement(self, cursor, user, ids, parent=None):
-        """Ensure that only one statement is in waiting state
-        for a given journal"""
-        cursor.execute('SELECT max(nb_waiting) AS max_nb_waiting '\
-                       'FROM (SELECT count(\'\') AS nb_waiting '\
-                           'FROM statement_statement '\
-                           'WHERE state = \'waiting\' '\
-                           'GROUP BY company, journal) AS sub_query')
+        """
+        Ensure that only one statement is in waiting state for a given journal
+        """
+        cursor.execute('SELECT count(1) AS nb_waiting ' \
+                'FROM statement_statement ' \
+                'WHERE state = \'waiting\' ' \
+                'GROUP BY journal ORDER BY nb_waiting DESC')
         if cursor.rowcount and cursor.fetchone()[0] > 1:
             return False
         return True
