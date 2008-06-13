@@ -624,6 +624,7 @@ class Invoice(OSV):
         '''
         Return move line
         '''
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         if invoice.currency.id != invoice.company.currency.id:
             res['amount_second_currency'] = currency_obj.compute(cursor, user,
