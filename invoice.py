@@ -82,7 +82,7 @@ class PaymentTermLineType(OSV):
     def __init__(self):
         super(PaymentTermLineType, self).__init__()
         self._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'Code must be unqiue!'),
+            ('code_uniq', 'UNIQUE(code)', 'Code must be unique!'),
         ]
         self._order.insert(0, ('name', 'ASC'))
 
@@ -110,7 +110,7 @@ class PaymentTermLineDelay(OSV):
     def __init__(self):
         super(PaymentTermLineDelay, self).__init__()
         self._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'Code must be unqiue!'),
+            ('code_uniq', 'UNIQUE(code)', 'Code must be unique!'),
         ]
         self._order.insert(0, ('name', 'ASC'))
 
