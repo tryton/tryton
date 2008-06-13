@@ -90,6 +90,8 @@ class Currency(OSV):
         Return the amount to the new currency
         Use the rate of the date of the context or the current date
         '''
+        if context is None:
+            context = {}
         if isinstance(from_currency, (int, long)):
             from_currency = self.browse(cursor, user, from_currency, context=context)
         if isinstance(to_currency, (int, long)):
