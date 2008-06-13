@@ -386,6 +386,9 @@ class Line(OSV):
             ('credit_debit',
                 'CHECK((credit * debit = 0.0) AND (credit + debit >= 0.0))',
                 'Wrong credit/debit values!'),
+            ('check_amount_second_currency',
+                'CHECK(amount_second_currency >= 0.0)',
+                'Amount Second Currency mus tbe Positive!'),
         ]
         self._constraints += [
             ('check_account', 'You can not create move line \n' \
