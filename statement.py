@@ -2,7 +2,7 @@
 
 from trytond.osv import fields, OSV, ExceptORM
 from trytond.netsvc import LocalService
-
+from decimal import Decimal
 _STATES = {'readonly': 'state != "draft"'}
 
 class Statement(OSV):
@@ -21,8 +21,8 @@ class Statement(OSV):
     lines = fields.One2Many(
         'statement.statement.line', 'statement', 'Transactions',
         states=_STATES)
-    move = fields.Many2One(
-        'account.move', 'Move', readonly=True)
+    moves = fields.One2Many(
+        'account.move', 'statement', 'Move', readonly=True)
     state = fields.Selection(
         [('draft', 'Draft'),
          ('waiting', 'Waiting'),
@@ -75,6 +75,19 @@ class Statement(OSV):
                 res[statement.id] += line.amount
         return res
 
+    def _get_currency_handler(self, cursor, user, company_currency,
+                              journal_currency, context=None):
+        if company_currency.id == journal_currency.id:
+            return lambda amount: (amount, False, False)
+
+        currency_obj = self.pool.get('currency.currency')
+        def currency_handler(amount):
+            new_amount = currency_obj.compute(
+                cursor, user, journal_currency, amount,
+                company_currency, context=context)
+            return (new_amount, amount, journal_currency)
+        return currency_handler
+
     def set_state_waiting(self, cursor, user, statement_id, context=None):
         move_obj = self.pool.get('account.move')
         move_line_obj = self.pool.get('account.move.line')
@@ -84,25 +97,35 @@ class Statement(OSV):
         period = period_obj.find(cursor, user, date=statement.date,
                                  context=context)
 
-        move_id = move_obj.create(
-            cursor, user,
-            {'name': statement.date, #XXX
-             'period': period,
-             'journal': statement.journal.journal.id,
-             'date': statement.date,
-             },
-            context=context)
+        currency_handler = self._get_currency_handler(
+            cursor, user, statement.journal.company.currency,
+            statement.journal.currency, context=context)
+        zero = Decimal("0.0")
 
         for line in statement.lines:
+            amount, amount_second_currency, second_currency = \
+                currency_handler(line.amount)
+            move_id = move_obj.create(
+                cursor, user,
+                {'name': statement.date, #XXX
+                 'period': period,
+                 'journal': statement.journal.journal.id,
+                 'date': line.date,
+                 'statement': statement.id,
+                 },
+            context=context)
+
             move_line_obj.create(
                 cursor, user,
-                {'name': '?',
-                 'debit': line.amount>=0 and line.amount,
-                 'credit': line.amount<0 and -line.amount,
+                {'name': '?', #FIXME
+                 'debit': amount >= zero and amount or zero,
+                 'credit': amount < zero and -amount or zero,
                  'account': line.account.id,
                  'move': move_id,
                  'party': line.party and line.party.id,
-                 },             # second currency?
+                 'second_currency': second_currency,
+                 'amount_second_currency': abs(amount_second_currency),
+                 },
                 context=context)
 
             journal = line.statement.journal.journal
@@ -116,13 +139,15 @@ class Statement(OSV):
 
             move_line_obj.create(
                 cursor, user,
-                {'name': '?',
-                 'debit': line.amount < 0 and -line.amount or 0.0,
-                 'credit': line.amount >= 0 and line.amount or 0.0,
+                {'name': '?', #FIXME
+                 'debit': amount < zero and -amount or zero,
+                 'credit': amount >= zero and amount or zero,
                  'account': account.id,
                  'move': move_id,
                  'party': line.party and line.party.id,
-                 },             # second currency?
+                 'second_currency': second_currency,
+                 'amount_second_currency': abs(amount_second_currency),
+                 },
                 context=context)
 
         journal_obj.write(cursor, user, statement.journal.id,
@@ -139,15 +164,14 @@ class Statement(OSV):
             context=context)
         self.write(cursor, user, statement_id,
                    {'state':'waiting',
-                    'start_balance': statement.journal.balance,
-                    'move': move_id,},
+                    'start_balance': statement.journal.balance,},
                    context=context)
 
     def set_state_done(self, cursor, user, statement_id, context=None):
         move_obj = self.pool.get('account.move')
         statement = self.browse(cursor, user, statement_id, context=context)
         move_obj.write(
-            cursor, user, statement.move.id, {'state': 'posted'},
+            cursor, user, [m.id for m in statement.moves], {'state': 'posted'},
             context=context)
         self.write(
             cursor, user, statement_id, {'state':'done'}, context=context)
@@ -156,8 +180,9 @@ class Statement(OSV):
         move_obj = self.pool.get('account.move')
         journal_obj = self.pool.get('statement.journal')
         statement = self.browse(cursor, user, statement_id, context=context)
-        if statement.move:
-            move_obj.unlink(cursor, user, statement.move.id, context=context)
+        if statement.moves:
+            move_obj.unlink(
+                cursor, user, [m.id for m in statement.moves], context=context)
         journal_obj.write(cursor, user, statement.journal.id,
                           {'balance': statement.start_balance},
                           context=context)
@@ -216,3 +241,11 @@ class Line(OSV):
     def on_change_amount(self, cursor, user, ids, value, context=None):
         return self.on_change_party(cursor, user, ids, value, context=context)
 Line()
+
+
+class Move(OSV):
+    _name = 'account.move'
+
+    statement = fields.Many2One('statement.statement','Statement')
+
+Move()

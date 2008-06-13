@@ -21,17 +21,22 @@
                     <field name="company"/>
                     <label name="currency"/>
                     <field name="currency"/>
-                    <label name="move"/>
-                    <field name="move"/>
-                    <field name="lines" colspan="4">
-                      <tree string="Bank Statement Lines" editable="bottom">
-                        <field name="date"/>
-                        <field name="amount"/>
-                        <field name="party"/>
-                        <field name="account"/>
-                        <field name="description"/>
-                      </tree>
-                    </field>
+                    <notebook>
+                        <page string="Lines">
+                            <field name="lines" colspan="4">
+                                <tree string="Bank Statement Lines" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="amount"/>
+                                    <field name="party"/>
+                                    <field name="account"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Moves">
+                            <field name="moves"/>
+                        </page>
+                    </notebook>
                     <group col="6" colspan="4">
                       <label name="state"/>
                       <field name="state"/>
