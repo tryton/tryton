@@ -129,9 +129,10 @@ class Period(OSV):
 
     def write(self, cursor, user, ids, vals, context=None):
         move_obj = self.pool.get('account.move')
-        if vals != {'state': 'close'} \
-                and vals != {'state': 'open'}:
-            self._check(cursor, user, ids, context=context)
+        for key in vals.keys():
+            if key in ('start_date', 'end_date', 'fiscalyear'):
+                self._check(cursor, user, ids, context=context)
+                break
         if vals.get('state') == 'open':
             for period in self.browse(cursor, user, ids,
                     context=context):
