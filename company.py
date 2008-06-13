@@ -71,7 +71,8 @@ class User(OSV):
         res = super(User, self).get_status_bar(cursor, user_id, ids, name, arg,
                 context=context)
         for user in self.browse(cursor, user_id, ids, context=context):
-            res[user.id] += ' ' + user.company.name
+            if user.company:
+                res[user.id] += ' ' + user.company.name
         return res
 
     def on_change_main_company(self, cursor, user, ids, vals, context=None):
