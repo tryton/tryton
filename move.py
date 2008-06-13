@@ -154,6 +154,8 @@ class Move(OSV):
         return res
 
     def unlink(self, cursor, user, ids, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         move_line_obj = self.pool.get('account.move.line')
         for move in self.browse(cursor, user, ids, context=context):
             if move.state == 'posted':
