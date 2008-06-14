@@ -3,7 +3,6 @@
 from trytond.osv import fields, OSV, ExceptORM
 import datetime
 import mx.DateTime
-import time
 from decimal import Decimal
 from trytond.netsvc import LocalService
 from trytond.report import Report
@@ -117,10 +116,10 @@ class PaymentTermLineDelay(OSV):
 
     def get_date(self, cursor, user, line, date, context=None):
         if line.delay == 'net_days':
-            return mx.DateTime.mktime(time.strptime(str(date), '%Y-%m-%d')) + \
+            return mx.DateTime.strptime(str(date), '%Y-%m-%d') + \
                     mx.DateTime.RelativeDateTime(days=line.days)
         elif line.delay == 'end_month':
-            return mx.DateTime.mktime(time.strptime(str(date), '%Y-%m-%d')) + \
+            return mx.DateTime.strptime(str(date), '%Y-%m-%d') + \
                     mx.DateTime.RelativeDateTime(days=line.days) + \
                     mx.DateTime.RelativeDateTime(day=-1)
         return None
