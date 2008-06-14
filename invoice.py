@@ -1631,6 +1631,8 @@ class InvoiceReport(Report):
         context['company'] = user.company
         res = super(InvoiceReport, self).parse(cursor, user_id, report, objects,
                 datas, context)
+        #If the invoice is open or paid and the report not saved in invoice_report
+        #there was an error somewhere. So we save it now in invoice_report
         if invoice.state in ('open', 'paid'):
             invoice_obj.write(cursor, user_id, invoice.id, {
                 'invoice_report': base64.encodestring(res[1]),
