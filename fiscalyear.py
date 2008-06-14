@@ -3,6 +3,7 @@
 from trytond.osv import fields, OSV, ExceptORM
 from trytond.wizard import Wizard, WizardOSV, ExceptWizard
 import mx.DateTime
+import time
 import datetime
 from decimal import Decimal
 
@@ -91,10 +92,10 @@ class FiscalYear(OSV):
         '''
         period_obj = self.pool.get('account.period')
         for fiscalyear in self.browse(cursor, user, ids, context=context):
-            end_date = mx.DateTime.strptime(str(fiscalyear.end_date),
-                    '%Y-%m-%d')
-            period_start_date = mx.DateTime.strptime(str(fiscalyear.start_date),
-                    '%Y-%m-%d')
+            end_date = mx.DateTime.mktime(time.strptime(
+                str(fiscalyear.end_date), '%Y-%m-%d'))
+            period_start_date = mx.DateTime.mktime(time.strptime(
+                str(fiscalyear.start_date), '%Y-%m-%d'))
             while period_start_date < end_date:
                 period_end_date = period_start_date + \
                         mx.DateTime.RelativeDateTime(months=interval)
