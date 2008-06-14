@@ -82,7 +82,7 @@ class PaymentTermLineType(OSV):
     def __init__(self):
         super(PaymentTermLineType, self).__init__()
         self._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'Code must be unqiue!'),
+            ('code_uniq', 'UNIQUE(code)', 'Code must be unique!'),
         ]
         self._order.insert(0, ('name', 'ASC'))
 
@@ -110,7 +110,7 @@ class PaymentTermLineDelay(OSV):
     def __init__(self):
         super(PaymentTermLineDelay, self).__init__()
         self._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'Code must be unqiue!'),
+            ('code_uniq', 'UNIQUE(code)', 'Code must be unique!'),
         ]
         self._order.insert(0, ('name', 'ASC'))
 
@@ -624,11 +624,13 @@ class Invoice(OSV):
         '''
         Return move line
         '''
+        currency_obj = self.pool.get('currency.currency')
         res = {}
         if invoice.currency.id != invoice.company.currency.id:
             res['amount_second_currency'] = currency_obj.compute(cursor, user,
                     invoice.company.currency, amount,
                     invoice.currency, context=context)
+            res['amount_second_currency'] = abs(res['amount_second_currency'])
             res['second_currency'] = invoice.currency.id
         else:
             res['amount_second_currency'] = Decimal('0.0')
@@ -636,7 +638,6 @@ class Invoice(OSV):
         if amount >= Decimal('0.0'):
             res['debit'] = Decimal('0.0')
             res['credit'] = amount
-            res['amount_second_currency'] = - res['amount_second_currency']
         else:
             res['debit'] = - amount
             res['credit'] = Decimal('0.0')
