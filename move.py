@@ -154,6 +154,8 @@ class Move(OSV):
         return res
 
     def unlink(self, cursor, user, ids, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         move_line_obj = self.pool.get('account.move.line')
         for move in self.browse(cursor, user, ids, context=context):
             if move.state == 'posted':
@@ -384,6 +386,9 @@ class Line(OSV):
             ('credit_debit',
                 'CHECK((credit * debit = 0.0) AND (credit + debit >= 0.0))',
                 'Wrong credit/debit values!'),
+            ('check_amount_second_currency',
+                'CHECK(amount_second_currency >= 0.0)',
+                'Amount Second Currency must be positive!'),
         ]
         self._constraints += [
             ('check_account', 'You can not create move line \n' \
