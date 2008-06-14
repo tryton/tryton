@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
+        <menuitem name="Journals" parent="menu_account_configuration"
+            id="menu_journal_configuration"/>
         <record model="ir.ui.view" id="journal_type_form">
             <field name="model">account.journal.type</field>
             <field name="type">form</field>
@@ -42,7 +44,7 @@
             <field name="view" ref="journal_type_form"/>
             <field name="act_window" ref="act_journal_type_form"/>
         </record>
-        <menuitem parent="menu_general_account_configuration"
+        <menuitem parent="menu_journal_configuration"
             action="act_journal_type_form" id="menu_journal_type_form"/>
         <record model="ir.model.access" id="access_journal_type">
             <field name="model" search="[('model', '=', 'account.journal.type')]"/>
@@ -140,7 +142,7 @@
             <field name="view" ref="journal_view_view_form"/>
             <field name="act_window" ref="act_journal_view_form"/>
         </record>
-        <menuitem parent="menu_general_account_configuration"
+        <menuitem parent="menu_journal_configuration"
             action="act_journal_view_form" id="menu_journal_view_form"/>
         <record model="ir.model.access" id="access_journal_view">
             <field name="model" search="[('model', '=', 'account.journal.view')]"/>
@@ -224,7 +226,7 @@
             <field name="view" ref="journal_view_form"/>
             <field name="act_window" ref="act_journal_form"/>
         </record>
-        <menuitem parent="menu_general_account_configuration"
+        <menuitem parent="menu_journal_configuration"
             action="act_journal_form" id="menu_journal_form"/>
         <record model="ir.model.access" id="access_journal">
             <field name="model" search="[('model', '=', 'account.journal')]"/>

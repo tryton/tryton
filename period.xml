@@ -55,7 +55,7 @@
             <field name="view" ref="period_view_form"/>
             <field name="act_window" ref="act_period_form"/>
         </record>
-        <menuitem parent="menu_general_account_configuration"
+        <menuitem parent="menu_fiscalyear_form"
             action="act_period_form" id="menu_period_form"/>
 
         <record model="ir.action.wizard" id="act_close_period">

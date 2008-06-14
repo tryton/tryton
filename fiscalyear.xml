@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
+        <menuitem name="Fiscal Years" parent="menu_account_configuration"
+            id="menu_fiscalyear_configuration"/>
         <record model="ir.ui.view" id="fiscalyear_view_form">
             <field name="model">account.fiscalyear</field>
             <field name="type">form</field>
@@ -66,7 +68,7 @@
             <field name="view" ref="fiscalyear_view_form"/>
             <field name="act_window" ref="act_fiscalyear_form"/>
         </record>
-        <menuitem parent="menu_general_account_configuration"
+        <menuitem parent="menu_fiscalyear_configuration"
             action="act_fiscalyear_form" id="menu_fiscalyear_form"/>
 
         <record model="ir.ui.view" id="fiscalyear_close_fiscalyear_init_view_form">
