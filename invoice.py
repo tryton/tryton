@@ -329,7 +329,6 @@ class Invoice(OSV):
         res = {
             'invoice_address': False,
             'contact_address': False,
-            'payment_term': False,
             'account': False,
         }
         if vals.get('party'):
