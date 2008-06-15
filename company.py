@@ -91,12 +91,14 @@ class User(OSV):
                 return False
         return True
 
-    def get_preferences(self, cursor, user, context_only=False, context=None):
-        res = super(User, self).get_preferences(cursor, user,
+    def get_preferences(self, cursor, user_id, context_only=False, context=None):
+        res = super(User, self).get_preferences(cursor, user_id,
                 context_only=context_only, context=context)
+        user = self.browse(cursor, 0, user_id, context=context)
         if not context_only:
-            user = self.browse(cursor, 0, user, context=context)
             res['main_company'] = user.main_company.id
+        if user.employee:
+            res['employee'] = user.employee.id
         return res
 
     def get_preferences_fields_view(self, cursor, user, context=None):
