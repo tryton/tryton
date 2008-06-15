@@ -354,7 +354,7 @@ class Invoice(OSV):
         if res['account']:
             res['account'] = account_obj.name_get(cursor, user,
                     res['account'], context=context)[0]
-        if res['payment_term']:
+        if res.get('payment_term'):
             res['payment_term'] = payment_term_obj.name_get(cursor, user,
                     res['payment_term'], context=context)[0]
         return res
