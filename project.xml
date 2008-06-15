@@ -11,7 +11,7 @@
         <menuitem name="Project Management" sequence="7" id="menu_project"
             icon="tryton-development"/>
         <menuitem name="Configuration" parent="menu_project"
-            id="menu_configuration" groupd="group_project_admin"
+            id="menu_configuration" groups="group_project_admin"
             sequence="10" icon="tryton-preferences"/>
         <menuitem name="Reporting" parent="menu_project"
             id="menu_reporting" sequence="100"/>
