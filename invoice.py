@@ -12,11 +12,11 @@ class InvoiceLine(OSV):
                 'invisible': "type != 'line'",
             })
 
-    def _view_look_dom_arch(self, cursor, user, node, context=None):
+    def _view_look_dom_arch(self, cursor, user, tree, context=None):
         analytic_account_obj = self.pool.get('analytic_account.account')
-        analytic_account_obj.convert_view(cursor, user, node, context=context)
+        analytic_account_obj.convert_view(cursor, user, tree, context=context)
         arch, fields = super(InvoiceLine, self)._view_look_dom_arch(cursor,
-                user, node, context=context)
+                user, tree, context=context)
         return arch, fields
 
     def fields_get(self, cursor, user, fields_names=None, context=None):
