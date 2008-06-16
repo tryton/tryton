@@ -88,6 +88,41 @@ class Statement(OSV):
             return (new_amount, amount, journal_currency)
         return currency_handler
 
+    def _get_move_lines(self, cursor, user, statement_line, currency_handler,
+                        context=None):
+        zero = Decimal("0.0")
+        amount, amount_second_currency, second_currency = \
+            currency_handler(statement_line.amount)
+        vals = []
+        vals.append(
+            {'name': '?', #FIXME
+             'debit': amount >= zero and amount or zero,
+             'credit': amount < zero and -amount or zero,
+             'account': statement_line.account.id,
+             'party': statement_line.party and statement_line.party.id,
+             'second_currency': second_currency,
+             'amount_second_currency': abs(amount_second_currency),
+             })
+
+        journal = statement_line.statement.journal.journal
+        if statement_line.amount < 0:
+            account = journal.credit_account
+        else:
+            account = journal.debit_account
+        if not account:
+            raise ExceptORM('Error:', 'Please provide debit and '\
+                                'credit account on bank journal.')
+        vals.append(
+            {'name': '?', #FIXME
+             'debit': amount < zero and -amount or zero,
+             'credit': amount >= zero and amount or zero,
+             'account': account.id,
+             'party': statement_line.party and statement_line.party.id,
+             'second_currency': second_currency,
+             'amount_second_currency': abs(amount_second_currency),
+             })
+        return vals
+
     def set_state_waiting(self, cursor, user, statement_id, context=None):
         move_obj = self.pool.get('account.move')
         move_line_obj = self.pool.get('account.move.line')
@@ -100,11 +135,11 @@ class Statement(OSV):
         currency_handler = self._get_currency_handler(
             cursor, user, statement.journal.company.currency,
             statement.journal.currency, context=context)
-        zero = Decimal("0.0")
 
         for line in statement.lines:
-            amount, amount_second_currency, second_currency = \
-                currency_handler(line.amount)
+            move_lines = self._get_move_lines(
+                cursor, user, line, currency_handler, context=context)
+
             move_id = move_obj.create(
                 cursor, user,
                 {'name': statement.date, #XXX
@@ -112,43 +147,9 @@ class Statement(OSV):
                  'journal': statement.journal.journal.id,
                  'date': line.date,
                  'statement': statement.id,
+                 'lines': [('create', x) for x in move_lines],
                  },
             context=context)
-
-            move_line_obj.create(
-                cursor, user,
-                {'name': '?', #FIXME
-                 'debit': amount >= zero and amount or zero,
-                 'credit': amount < zero and -amount or zero,
-                 'account': line.account.id,
-                 'move': move_id,
-                 'party': line.party and line.party.id,
-                 'second_currency': second_currency,
-                 'amount_second_currency': abs(amount_second_currency),
-                 },
-                context=context)
-
-            journal = line.statement.journal.journal
-            if line.amount < 0:
-                account = journal.credit_account
-            else:
-                account = journal.debit_account
-            if not account:
-                raise ExceptORM('Error:', 'Please provide debit and '\
-                                    'credit account on bank journal.')
-
-            move_line_obj.create(
-                cursor, user,
-                {'name': '?', #FIXME
-                 'debit': amount < zero and -amount or zero,
-                 'credit': amount >= zero and amount or zero,
-                 'account': account.id,
-                 'move': move_id,
-                 'party': line.party and line.party.id,
-                 'second_currency': second_currency,
-                 'amount_second_currency': abs(amount_second_currency),
-                 },
-                context=context)
 
         journal_obj.write(cursor, user, statement.journal.id,
                           {'balance': statement.end_balance},
