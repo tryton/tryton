@@ -3,8 +3,7 @@
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 from decimal import Decimal
-from xml.dom import minidom
-from xml import xpath
+import copy
 
 
 class Account(OSV):
@@ -236,27 +235,28 @@ class Account(OSV):
                 or str(r[self._rec_name])) for r in self.read(cursor, user, ids,
                     [self._rec_name, 'code'], context=context, load='_classic_write')]
 
-    def convert_view(self, cursor, user, node, context=None):
-        res = xpath.Evaluate('//field[@name=\'analytic_accounts\']', node)
+    def convert_view(self, cursor, user, tree, context=None):
+        res = tree.xpath('//field[@name=\'analytic_accounts\']')
         if not res:
             return
-        node_accounts = res[0]
+        element_accounts = res[0]
 
         root_account_ids = self.search(cursor, user, [
             ('parent', '=', False),
             ], context=context)
         if not root_account_ids:
-            node_accounts.parentNode.parentNode.removeChild(node_accounts.parentNode)
+            element_accounts.getparent().getparent().remove(
+                    element_accounts.getparent())
             return
         for account_id in root_account_ids:
-            newnode = node_accounts.cloneNode(1)
-            newnode.tagName = 'label'
-            newnode.setAttribute('name', 'analytic_account_' + str(account_id))
-            node_accounts.parentNode.insertBefore(newnode, node_accounts)
-            newnode = node_accounts.cloneNode(1)
-            newnode.setAttribute('name', 'analytic_account_' + str(account_id))
-            node_accounts.parentNode.insertBefore(newnode, node_accounts)
-        node_accounts.parentNode.removeChild(node_accounts)
+            newelement = copy.copy(element_accounts)
+            newelement.tag = 'label'
+            newelement.set('name', 'analytic_account_' + str(account_id))
+            element_accounts.getparent().addprevious(newelement)
+            newelement = copy.copy(element_accounts)
+            newelement.set('name', 'analytic_account_' + str(account_id))
+            element_accounts.getparent().addprevious(newelement)
+        element_accounts.getparent().remove(element_accounts)
 
     def analytic_accounts_fields_get(self, cursor, user, field,
             fields_names=None, context=None):
