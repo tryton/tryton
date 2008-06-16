@@ -11,8 +11,6 @@
                     <field name="name"/>
                     <label name="journal"/>
                     <field name="journal"/>
-                    <label name="balance"/>
-                    <field name="balance"/>
                     <label name="currency"/>
                     <field name="currency"/>
                     <label name="company"/>

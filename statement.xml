@@ -162,6 +162,8 @@
                     <field name="account"/>
                     <label name="description"/>
                     <field name="description"/>
+                    <label name="move"/>
+                    <field name="move"/>
                 </form>
                 ]]>
             </field>

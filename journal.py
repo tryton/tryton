@@ -11,7 +11,6 @@ class Journal(OSV):
     journal = fields.Many2One(
         'account.journal', 'Bank Journal', required=True,
         domain="[('type', '=', 'bank')]")
-    balance = fields.Numeric('Balance', digits=(12, 6))
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
 

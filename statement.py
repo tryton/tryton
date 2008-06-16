@@ -15,14 +15,12 @@ class Statement(OSV):
         on_change=['journal'], select=1)
     date = fields.Date('date', required=True, states=_STATES, select=1)
     start_balance = fields.Numeric(
-        'Start Balance', digits=(16, 2), states=_STATES)
-    end_balance = fields.Function(
-        'get_end_balance', string='End Balance', type='numeric')
+        'Start Balance', digits=(16, 2), required=True, states=_STATES)
+    end_balance = fields.Numeric(
+        'End Balance', digits=(16, 2), required=True, states=_STATES)
     lines = fields.One2Many(
         'statement.statement.line', 'statement', 'Transactions',
         states=_STATES)
-    moves = fields.One2Many(
-        'account.move', 'statement', 'Move', readonly=True)
     state = fields.Selection(
         [('draft', 'Draft'),
          ('waiting', 'Waiting'),
@@ -32,28 +30,10 @@ class Statement(OSV):
 
     def __init__(self):
         super(Statement, self).__init__()
-        self._constraints += [
-            ('check_unique_waiting_statement',
-             'Error: You can only have one waiting statement '\
-                 'for the same journal.',
-             ['journal']),
-            ]
         self._rpc_allowed += [
             'draft_workflow',
         ]
         self._order[0] = ('id', 'DESC')
-
-    def check_unique_waiting_statement(self, cursor, user, ids, parent=None):
-        """
-        Ensure that only one statement is in waiting state for a given journal
-        """
-        cursor.execute('SELECT count(1) AS nb_waiting ' \
-                'FROM statement_statement ' \
-                'WHERE state = \'waiting\' ' \
-                'GROUP BY journal ORDER BY nb_waiting DESC')
-        if cursor.rowcount and cursor.fetchone()[0] > 1:
-            return False
-        return True
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
@@ -61,10 +41,11 @@ class Statement(OSV):
     def on_change_journal(self, cursor, user, ids, value, context=None):
         if not value.get('journal'):
             return {}
-        journal_obj = self.pool.get('statement.journal')
-        journal= journal_obj.browse(cursor, user, value['journal'],
-                                    context=context)
-        return {'start_balance': journal.balance}
+        cursor.execute('SELECT end_balance FROM statement_statement '\
+                           'ORDER BY date DESC limit 1')
+        if not cursor.rowcount:
+            return {}
+        return {'start_balance': cursor.fetchone()[0]}
 
     def get_end_balance(self, cursor, user, ids, name, arg, context=None):
         statements = self.browse(cursor, user, ids, context=context)
@@ -75,24 +56,21 @@ class Statement(OSV):
                 res[statement.id] += line.amount
         return res
 
-    def _get_currency_handler(self, cursor, user, company_currency,
-                              journal_currency, context=None):
-        if company_currency.id == journal_currency.id:
-            return lambda amount: (amount, False, False)
-
+    def _get_move_lines(self, cursor, user, statement_line, context=None):
         currency_obj = self.pool.get('currency.currency')
-        def currency_handler(amount):
-            new_amount = currency_obj.compute(
-                cursor, user, journal_currency, amount,
-                company_currency, context=context)
-            return (new_amount, amount, journal_currency)
-        return currency_handler
-
-    def _get_move_lines(self, cursor, user, statement_line, currency_handler,
-                        context=None):
         zero = Decimal("0.0")
-        amount, amount_second_currency, second_currency = \
-            currency_handler(statement_line.amount)
+        amount = currency_obj.compute(
+            cursor, user, statement_line.statement.journal.currency,
+            statement_line.amount,
+            statement_line.statement.journal.company.currency, context=context)
+        if statement_line.statement.journal.currency.id != \
+                statement_line.statement.journal.company.currency.id:
+            second_currency = statement_line.statement.journal.currency.id
+            amount_second_currency = abs(statement_line.amount)
+        else:
+            amount_second_currency = False
+            second_currency = None
+
         vals = []
         vals.append(
             {'name': '?', #FIXME
@@ -101,7 +79,7 @@ class Statement(OSV):
              'account': statement_line.account.id,
              'party': statement_line.party and statement_line.party.id,
              'second_currency': second_currency,
-             'amount_second_currency': abs(amount_second_currency),
+             'amount_second_currency': amount_second_currency,
              })
 
         journal = statement_line.statement.journal.journal
@@ -119,7 +97,7 @@ class Statement(OSV):
              'account': account.id,
              'party': statement_line.party and statement_line.party.id,
              'second_currency': second_currency,
-             'amount_second_currency': abs(amount_second_currency),
+             'amount_second_currency': amount_second_currency,
              })
         return vals
 
@@ -128,73 +106,55 @@ class Statement(OSV):
         move_line_obj = self.pool.get('account.move.line')
         period_obj = self.pool.get('account.period')
         journal_obj = self.pool.get('statement.journal')
+        statement_line_obj = self.pool.get('statement.statement.line')
         statement = self.browse(cursor, user, statement_id, context=context)
         period = period_obj.find(cursor, user, date=statement.date,
                                  context=context)
 
-        currency_handler = self._get_currency_handler(
-            cursor, user, statement.journal.company.currency,
-            statement.journal.currency, context=context)
+
+        computed_end_balance = statement.start_balance
+        for line in statement.lines:
+            computed_end_balance += line.amount
+        if computed_end_balance != statement.end_balance:
+            raise ExceptORM('Error:', 'Wrong End balance:\n'\
+                                ' * Expected: %s\n'\
+                                ' * Computed: %s'%\
+                                (statement.end_balance, computed_end_balance))
+
 
         for line in statement.lines:
             move_lines = self._get_move_lines(
-                cursor, user, line, currency_handler, context=context)
-
+                cursor, user, line, context=context)
             move_id = move_obj.create(
                 cursor, user,
                 {'name': statement.date, #XXX
                  'period': period,
                  'journal': statement.journal.journal.id,
                  'date': line.date,
-                 'statement': statement.id,
                  'lines': [('create', x) for x in move_lines],
                  },
             context=context)
+            statement_line_obj.write(
+                cursor, user, line.id, {'move': move_id}, context=context)
 
-        journal_obj.write(cursor, user, statement.journal.id,
-                          {'balance': statement.end_balance},
-                          context=context)
-        other_statements = self.search(
-            cursor, user,
-            [('state', '=', 'draft'), ('journal', '=', statement.journal.id),
-             ('id', '!=', statement.id)],
-            context=context)
-        self.write(
-            cursor, user, other_statements,
-            {'start_balance': statement.end_balance},
-            context=context)
         self.write(cursor, user, statement_id,
-                   {'state':'waiting',
-                    'start_balance': statement.journal.balance,},
+                   {'state':'waiting',},
                    context=context)
 
     def set_state_done(self, cursor, user, statement_id, context=None):
         move_obj = self.pool.get('account.move')
         statement = self.browse(cursor, user, statement_id, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in statement.moves], {'state': 'posted'},
-            context=context)
+            cursor, user, [l.move.id for l in statement.lines],
+            {'state': 'posted'}, context=context)
         self.write(
             cursor, user, statement_id, {'state':'done'}, context=context)
 
     def set_state_cancel(self, cursor, user, statement_id, context=None):
         move_obj = self.pool.get('account.move')
-        journal_obj = self.pool.get('statement.journal')
         statement = self.browse(cursor, user, statement_id, context=context)
-        if statement.moves:
-            move_obj.unlink(
-                cursor, user, [m.id for m in statement.moves], context=context)
-        journal_obj.write(cursor, user, statement.journal.id,
-                          {'balance': statement.start_balance},
-                          context=context)
-        other_statements = self.search(
-            cursor, user,
-            [('state', '=', 'draft'), ('journal', '=', statement.journal.id)],
-            context=context)
-        self.write(
-            cursor, user, other_statements,
-            {'start_balance': statement.start_balance},
-            context=context)
+        move_obj.unlink(
+            cursor, user, [l.move.id for l in statement.lines], context=context)
         self.write(cursor, user, statement_id,
                    {'state':'cancel',},
                    context=context)
@@ -205,7 +165,7 @@ class Statement(OSV):
             workflow_service.trg_create(user, self._name, statement.id, cursor)
             self.write(
                 cursor, user, statement.id,
-                {'state': 'draft', 'start_balance': statement.journal.balance})
+                {'state': 'draft',})
         return True
 
 Statement()
@@ -225,6 +185,8 @@ class Line(OSV):
     account = fields.Many2One(
         'account.account', 'Account', required=True)
     description = fields.Char('Description', size=None)
+    move = fields.Many2One(
+        'account.move', 'Account Move', readonly=True)
 
     def on_change_party(self, cursor, user, ids, value, context=None):
         if not (value.get('party') and value.get('amount')):
@@ -242,11 +204,3 @@ class Line(OSV):
     def on_change_amount(self, cursor, user, ids, value, context=None):
         return self.on_change_party(cursor, user, ids, value, context=context)
 Line()
-
-
-class Move(OSV):
-    _name = 'account.move'
-
-    statement = fields.Many2One('statement.statement','Statement')
-
-Move()
