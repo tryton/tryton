@@ -79,8 +79,6 @@ class Statement(OSV):
                                 ' * Expected: %s\n'\
                                 ' * Computed: %s'%\
                                 (statement.end_balance, computed_end_balance))
-
-
         for line in statement.lines:
             move_lines = statement_line_obj._get_move_lines(
                 cursor, user, line, context=context)
