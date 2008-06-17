@@ -259,6 +259,7 @@ class Invoice(OSV):
     amount_to_pay = fields.Function('get_amount_to_pay',
             type='numeric', digits=(16, 2), string='Amount to Pay')
     invoice_report = fields.Binary('Invoice Report', readonly=True)
+    invoice_report_format = fields.Char('Invoice Report Format', readonly=True)
 
     def __init__(self):
         super(Invoice, self).__init__()
@@ -767,7 +768,8 @@ class Invoice(OSV):
         if isinstance(ids, (int, long)):
             ids = [ids]
         keys = vals.keys()
-        for key in ('state', 'payment_lines', 'invoice_report'):
+        for key in ('state', 'payment_lines',
+                'invoice_report', 'invoice_report_format'):
             if key in keys:
                 keys.remove(key)
         if len(keys):
@@ -791,6 +793,7 @@ class Invoice(OSV):
         default['number'] = False
         default['move'] = False
         default['invoice_report'] = False
+        default['invoice_report_format'] = False
         default['payment_lines'] = False
         default['lines'] = False
         default['taxes'] = False
@@ -975,6 +978,7 @@ class Invoice(OSV):
         val = invoice_report.execute(cursor, user, [invoice_id],
                 {'id': invoice_id}, context=context)
         self.write(cursor, user, invoice_id, {
+            'invoice_report_format': val[0],
             'invoice_report': val[1],
             }, context=context)
         return
@@ -1622,7 +1626,8 @@ class InvoiceReport(Report):
         invoice = objects[0]
 
         if invoice.invoice_report:
-            return ('odt', base64.decodestring(invoice.invoice_report))
+            return (invoice.invoice_report_format,
+                    base64.decodestring(invoice.invoice_report))
 
         user = user_obj.browse(cursor, user_id, user_id, context)
         if context is None:
@@ -1635,6 +1640,7 @@ class InvoiceReport(Report):
         #there was an error somewhere. So we save it now in invoice_report
         if invoice.state in ('open', 'paid'):
             invoice_obj.write(cursor, user_id, invoice.id, {
+                'invoice_report_format': res[0],
                 'invoice_report': base64.encodestring(res[1]),
                 }, context=context)
         return res
