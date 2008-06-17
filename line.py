@@ -138,6 +138,7 @@ EnterLines()
 class HoursEmployee(OSV):
     'Hours per Employee'
     _name = 'timesheet.hours_employee'
+    _description = __doc__
 
     employee = fields.Many2One('company.employee', 'Employee', select=1)
     hours = fields.Float('Hours', digits=(16, 2))
