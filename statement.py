@@ -41,9 +41,10 @@ class Statement(OSV):
     def on_change_journal(self, cursor, user, ids, value, context=None):
         if not value.get('journal'):
             return {}
-        cursor.execute('SELECT end_balance FROM statement_statement '\
-                           'ORDER BY date DESC limit 1')
-        if not cursor.rowcount:
+        statement_ids = self.search(
+            cursor, user, [('journal', '=', value['journal'])],
+            order=[('date','DESC')], limit=1, context=context)
+        if not statement_ids:
             return {}
         return {'start_balance': cursor.fetchone()[0]}
 
