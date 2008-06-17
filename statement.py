@@ -3,7 +3,9 @@
 from trytond.osv import fields, OSV, ExceptORM
 from trytond.netsvc import LocalService
 from decimal import Decimal
+
 _STATES = {'readonly': 'state != "draft"'}
+
 
 class Statement(OSV):
     'Bank Statement'
@@ -13,7 +15,7 @@ class Statement(OSV):
     journal = fields.Many2One(
         'statement.journal', 'Journal', required=True, states=_STATES,
         on_change=['journal'], select=1)
-    date = fields.Date('date', required=True, states=_STATES, select=1)
+    date = fields.Date('Date', required=True, states=_STATES, select=1)
     start_balance = fields.Numeric(
         'Start Balance', digits=(16, 2), states=_STATES)
     end_balance = fields.Numeric(
@@ -126,6 +128,7 @@ class Statement(OSV):
         return True
 
 Statement()
+
 
 class Line(OSV):
     'Bank Statement Line'
