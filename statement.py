@@ -191,7 +191,7 @@ class Line(OSV):
              })
 
         journal = statement_line.statement.journal.journal
-        if statement_line.amount < 0:
+        if statement_line.amount < Decimal('0.0'):
             account = journal.credit_account
         else:
             account = journal.debit_account
