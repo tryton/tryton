@@ -15,9 +15,9 @@ class Statement(OSV):
         on_change=['journal'], select=1)
     date = fields.Date('date', required=True, states=_STATES, select=1)
     start_balance = fields.Numeric(
-        'Start Balance', digits=(16, 2), required=True, states=_STATES)
+        'Start Balance', digits=(16, 2), states=_STATES)
     end_balance = fields.Numeric(
-        'End Balance', digits=(16, 2), required=True, states=_STATES)
+        'End Balance', digits=(16, 2), states=_STATES)
     lines = fields.One2Many(
         'statement.statement.line', 'statement', 'Transactions',
         states=_STATES)
