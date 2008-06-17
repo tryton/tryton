@@ -168,9 +168,6 @@ class Line(OSV):
         party_obj = self.pool.get('relationship.party')
         account_obj = self.pool.get('account.account')
         party = party_obj.browse(cursor, user, value['party'], context=context)
-        print value
-        print (
-            party.account_receivable.id, party.account_payable.id)
         if value.get('account') and value['account'] not in (
             party.account_receivable.id, party.account_payable.id):
             # The user has entered a non-default value, we keep it.
