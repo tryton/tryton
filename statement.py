@@ -23,7 +23,7 @@ class Statement(OSV):
         states=_STATES)
     state = fields.Selection(
         [('draft', 'Draft'),
-         ('waiting', 'Waiting'),
+         ('validated', 'Validated'),
          ('cancel', 'Cancel'),
          ('done', 'Done'),],
         'State', readonly=True, select=1)
@@ -46,7 +46,8 @@ class Statement(OSV):
             order=[('date','DESC')], limit=1, context=context)
         if not statement_ids:
             return {}
-        return {'start_balance': cursor.fetchone()[0]}
+        statement = self.browse(cursor, user, statement_ids[0], context=context)
+        return {'start_balance': statement.end_balance}
 
     def get_end_balance(self, cursor, user, ids, name, arg, context=None):
         statements = self.browse(cursor, user, ids, context=context)
@@ -102,7 +103,7 @@ class Statement(OSV):
              })
         return vals
 
-    def set_state_waiting(self, cursor, user, statement_id, context=None):
+    def set_state_validated(self, cursor, user, statement_id, context=None):
         move_obj = self.pool.get('account.move')
         move_line_obj = self.pool.get('account.move.line')
         period_obj = self.pool.get('account.period')
@@ -139,7 +140,7 @@ class Statement(OSV):
                 cursor, user, line.id, {'move': move_id}, context=context)
 
         self.write(cursor, user, statement_id,
-                   {'state':'waiting',},
+                   {'state':'validated',},
                    context=context)
 
     def set_state_done(self, cursor, user, statement_id, context=None):

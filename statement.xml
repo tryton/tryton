@@ -33,12 +33,12 @@
                     <group col="6" colspan="4">
                       <label name="state"/>
                       <field name="state"/>
-                      <button string="Set Waiting" name="waiting"
+                      <button string="Validate" name="validated"
                               states="{'invisible': '''state != 'draft' '''}"/>
-                      <button string="Set cancel" name="cancel"
-                              states="{'invisible': '''state != 'waiting' '''}"/>
-                      <button string="Set Done" name="done"
-                              states="{'invisible': '''state != 'waiting' '''}"/>
+                      <button string="Cancel" name="cancel"
+                              states="{'invisible': '''state != 'validated' '''}"/>
+                      <button string="Done" name="done"
+                              states="{'invisible': '''state != 'validated' '''}"/>
                       <button string="Reset to Draft" name="draft_workflow"
                               type="object"
                               states="{'invisible': '''state != 'cancel' '''}"/>
@@ -83,24 +83,24 @@
         <menuitem parent="menu_statements" sequence="1"
             action="act_draft_statement_form" id="menu_draft_statement_form"/>
 
-        <record model="ir.action.act_window" id="act_waiting_statement_form">
-            <field name="name">Waiting Statement</field>
+        <record model="ir.action.act_window" id="act_validated_statement_form">
+            <field name="name">Validated Statement</field>
             <field name="res_model">statement.statement</field>
             <field name="view_type">form</field>
-            <field name="domain">[('state', '=', 'waiting')]</field>
+            <field name="domain">[('state', '=', 'validated')]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_waiting_statement_form_view1">
+        <record model="ir.action.act_window.view" id="act_validated_statement_form_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="statement_view_tree"/>
-            <field name="act_window" ref="act_waiting_statement_form"/>
+            <field name="act_window" ref="act_validated_statement_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_waiting_statement_form_view2">
+        <record model="ir.action.act_window.view" id="act_validated_statement_form_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="statement_view_form"/>
-            <field name="act_window" ref="act_waiting_statement_form"/>
+            <field name="act_window" ref="act_validated_statement_form"/>
         </record>
         <menuitem parent="menu_statements" sequence="2"
-            action="act_waiting_statement_form" id="menu_waiting_statement_form"/>
+            action="act_validated_statement_form" id="menu_validated_statement_form"/>
 
         <record model="ir.action.act_window" id="act_done_statement_form">
             <field name="name">Done Statements</field>
@@ -188,11 +188,11 @@
             <field name="flow_start">True</field>
             <field name="name">Draft</field>
         </record>
-        <record model="workflow.activity" id="statement_act_waiting">
+        <record model="workflow.activity" id="statement_act_validated">
             <field name="workflow" ref="wkf_statement"/>
             <field name="kind">function</field>
-            <field name="action">set_state_waiting()</field>
-            <field name="name">Waiting</field>
+            <field name="action">set_state_validated()</field>
+            <field name="name">Validated</field>
         </record>
         <record model="workflow.activity" id="statement_act_done">
             <field name="workflow" ref="wkf_statement"/>
@@ -208,18 +208,18 @@
             <field name="name">Cancel</field>
             <field name="flow_stop" eval="True"/>
         </record>
-        <record model="workflow.transition" id="statement_trans_draft_waiting">
+        <record model="workflow.transition" id="statement_trans_draft_validated">
             <field name="act_from" ref="statement_act_draft"/>
-            <field name="act_to" ref="statement_act_waiting"/>
-            <field name="signal">waiting</field>
+            <field name="act_to" ref="statement_act_validated"/>
+            <field name="signal">validated</field>
         </record>
-        <record model="workflow.transition" id="statement_trans_waiting_done">
-            <field name="act_from" ref="statement_act_waiting"/>
+        <record model="workflow.transition" id="statement_trans_validated_done">
+            <field name="act_from" ref="statement_act_validated"/>
             <field name="act_to" ref="statement_act_done"/>
             <field name="signal">done</field>
         </record>
-        <record model="workflow.transition" id="statement_trans_waiting_cancel">
-            <field name="act_from" ref="statement_act_waiting"/>
+        <record model="workflow.transition" id="statement_trans_validated_cancel">
+            <field name="act_from" ref="statement_act_validated"/>
             <field name="act_to" ref="statement_act_cancel"/>
             <field name="signal">cancel</field>
         </record>
