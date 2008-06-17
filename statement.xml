@@ -37,7 +37,7 @@
                               states="{'invisible': '''state != 'draft' '''}"/>
                       <button string="Cancel" name="cancel"
                               states="{'invisible': '''state != 'validated' '''}"/>
-                      <button string="Done" name="done"
+                      <button string="Post" name="posted"
                               states="{'invisible': '''state != 'validated' '''}"/>
                       <button string="Reset to Draft" name="draft_workflow"
                               type="object"
@@ -102,24 +102,24 @@
         <menuitem parent="menu_statements" sequence="2"
             action="act_validated_statement_form" id="menu_validated_statement_form"/>
 
-        <record model="ir.action.act_window" id="act_done_statement_form">
-            <field name="name">Done Statements</field>
+        <record model="ir.action.act_window" id="act_posted_statement_form">
+            <field name="name">Posted Statements</field>
             <field name="res_model">statement.statement</field>
             <field name="view_type">form</field>
-            <field name="domain">[('state', '=', 'done')]</field>
+            <field name="domain">[('state', '=', 'posted')]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_done_statement_form_view1">
+        <record model="ir.action.act_window.view" id="act_posted_statement_form_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="statement_view_tree"/>
-            <field name="act_window" ref="act_done_statement_form"/>
+            <field name="act_window" ref="act_posted_statement_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_done_statement_form_view2">
+        <record model="ir.action.act_window.view" id="act_posted_statement_form_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="statement_view_form"/>
-            <field name="act_window" ref="act_done_statement_form"/>
+            <field name="act_window" ref="act_posted_statement_form"/>
         </record>
         <menuitem parent="menu_statements" sequence="3"
-            action="act_done_statement_form" id="menu_done_statement_form"/>
+            action="act_posted_statement_form" id="menu_posted_statement_form"/>
 
         <record model="ir.action.act_window" id="act_statement_form">
             <field name="name">All Statement</field>
@@ -194,11 +194,11 @@
             <field name="action">set_state_validated()</field>
             <field name="name">Validated</field>
         </record>
-        <record model="workflow.activity" id="statement_act_done">
+        <record model="workflow.activity" id="statement_act_posted">
             <field name="workflow" ref="wkf_statement"/>
             <field name="kind">function</field>
-            <field name="action">set_state_done()</field>
-            <field name="name">Done</field>
+            <field name="action">set_state_posted()</field>
+            <field name="name">Posted</field>
             <field name="flow_stop" eval="True"/>
         </record>
         <record model="workflow.activity" id="statement_act_cancel">
@@ -213,10 +213,10 @@
             <field name="act_to" ref="statement_act_validated"/>
             <field name="signal">validated</field>
         </record>
-        <record model="workflow.transition" id="statement_trans_validated_done">
+        <record model="workflow.transition" id="statement_trans_validated_posted">
             <field name="act_from" ref="statement_act_validated"/>
-            <field name="act_to" ref="statement_act_done"/>
-            <field name="signal">done</field>
+            <field name="act_to" ref="statement_act_posted"/>
+            <field name="signal">posted</field>
         </record>
         <record model="workflow.transition" id="statement_trans_validated_cancel">
             <field name="act_from" ref="statement_act_validated"/>

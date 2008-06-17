@@ -25,7 +25,7 @@ class Statement(OSV):
         [('draft', 'Draft'),
          ('validated', 'Validated'),
          ('cancel', 'Cancel'),
-         ('done', 'Done'),],
+         ('posted', 'Posted'),],
         'State', readonly=True, select=1)
 
     def __init__(self):
@@ -98,14 +98,14 @@ class Statement(OSV):
                    {'state':'validated',},
                    context=context)
 
-    def set_state_done(self, cursor, user, statement_id, context=None):
+    def set_state_posted(self, cursor, user, statement_id, context=None):
         move_obj = self.pool.get('account.move')
         statement = self.browse(cursor, user, statement_id, context=context)
         move_obj.write(
             cursor, user, [l.move.id for l in statement.lines],
             {'state': 'posted'}, context=context)
         self.write(
-            cursor, user, statement_id, {'state':'done'}, context=context)
+            cursor, user, statement_id, {'state':'posted'}, context=context)
 
     def set_state_cancel(self, cursor, user, statement_id, context=None):
         move_obj = self.pool.get('account.move')
