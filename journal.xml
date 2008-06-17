@@ -25,11 +25,10 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Statement Journals">
-                    <field name="name"/>
-                    <field name="journal"/>
-                    <field name="balance"/>
-                    <field name="currency"/>
-                    <field name="company"/>
+                    <field name="name" select="1"/>
+                    <field name="journal" select="2"/>
+                    <field name="currency" select="2"/>
+                    <field name="company" select="1"/>
                 </tree>
                 ]]>
             </field>
