@@ -139,7 +139,8 @@ class Line(OSV):
         'statement.statement', 'Statement', required=True,  ondelete='CASCADE')
     date = fields.Date('Date', required=True)
     amount = fields.Numeric(
-        'Amount', digits=(16,2), required=True, on_change=['amount', 'party'])
+        'Amount', digits=(16,2), required=True,
+        on_change=['amount', 'party', 'account'])
     party = fields.Many2One(
         'relationship.party', 'Party', on_change=['amount', 'party'])
     account = fields.Many2One(
@@ -162,7 +163,25 @@ class Line(OSV):
                 cursor, user, account.id, context=context)[0]}
 
     def on_change_amount(self, cursor, user, ids, value, context=None):
-        return self.on_change_party(cursor, user, ids, value, context=context)
+        if not (value.get('party') and value.get('amount')):
+            return {}
+        party_obj = self.pool.get('relationship.party')
+        account_obj = self.pool.get('account.account')
+        party = party_obj.browse(cursor, user, value['party'], context=context)
+        print value
+        print (
+            party.account_receivable.id, party.account_payable.id)
+        if value.get('account') and value['account'] not in (
+            party.account_receivable.id, party.account_payable.id):
+            # The user has entered a non-default value, we keep it.
+            return {}
+        if value['amount'] > 0:
+            account = party.account_receivable
+        else:
+            account = party.account_payable
+        return {'account': account_obj.name_get(
+                cursor, user, account.id, context=context)[0]}
+
 
     def _get_move_lines(self, cursor, user, statement_line, context=None):
         currency_obj = self.pool.get('currency.currency')
