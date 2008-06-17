@@ -218,6 +218,7 @@
         <record model="workflow.transition" id="statement_trans_validated_posted">
             <field name="act_from" ref="statement_act_validated"/>
             <field name="act_to" ref="statement_act_posted"/>
+            <field name="group" ref="account.group_account_admin"/>
             <field name="signal">posted</field>
         </record>
         <record model="workflow.transition" id="statement_trans_validated_cancel">

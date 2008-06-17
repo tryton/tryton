@@ -56,5 +56,21 @@
         <menuitem parent="menu_statement_configuration" sequence="1"
             action="act_statement_journal_form" id="menu_statement_journal_form"/>
 
+        <record model="ir.model.access" id="access_statement_journal_term">
+            <field name="model" search="[('model', '=', 'statement.journal')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_statement_journal_admin">
+            <field name="model" search="[('model', '=', 'statement.journal')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
     </data>
 </tryton>
