@@ -2,12 +2,13 @@
 
 from trytond.osv import fields, OSV
 
+
 class Journal(OSV):
     'Statement Journal'
     _name = 'statement.journal'
     _description = __doc__
 
-    name = fields.Char('Name', size=None, required=True)
+    name = fields.Char('Name', required=True)
     journal = fields.Many2One(
         'account.journal', 'Bank Journal', required=True,
         domain="[('type', '=', 'bank')]")

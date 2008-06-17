@@ -3,7 +3,9 @@
 from trytond.osv import fields, OSV, ExceptORM
 from trytond.netsvc import LocalService
 from decimal import Decimal
+
 _STATES = {'readonly': 'state != "draft"'}
+
 
 class Statement(OSV):
     'Bank Statement'
@@ -171,6 +173,7 @@ class Statement(OSV):
         return True
 
 Statement()
+
 
 class Line(OSV):
     'Bank Statement Line'
