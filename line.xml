@@ -142,6 +142,24 @@
             <field name="act_window" ref="act_hours_employee_form"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_hours_employee">
+            <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_hours_employee1">
+            <field name="field" search="[('name', '=', 'employee'), ('model.model', '=', 'timesheet.hours_employee')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Employee</field>
+            <field name="rule_group" ref="rule_group_hours_employee"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_hours_employee_admin">
+            <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+            <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
+        </record>
+
         <record model="ir.ui.view" id="open_hours_employee_init_view_form">
             <field name="model">timesheet.open_hours_employee.init</field>
             <field name="type">form</field>
