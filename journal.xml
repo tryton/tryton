@@ -38,5 +38,25 @@
             <field name="code">bank</field>
         </record>
 
+        <record model="ir.action.act_window" id="act_statement_journal_form">
+            <field name="name">Statement Journals</field>
+            <field name="res_model">statement.journal</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_statement_journal_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_journal_view_tree"/>
+            <field name="act_window" ref="act_statement_journal_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_statement_journal_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="statement_journal_view_form"/>
+            <field name="act_window" ref="act_statement_journal_form"/>
+        </record>
+        <menuitem name="Statements" parent="account.menu_account_configuration"
+            id="menu_statement_configuration" sequence="70"/>
+        <menuitem parent="menu_statement_configuration" sequence="1"
+            action="act_statement_journal_form" id="menu_statement_journal_form"/>
+
     </data>
 </tryton>
