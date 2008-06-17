@@ -195,7 +195,7 @@ class Line(OSV):
 
         vals = []
         vals.append(
-            {'name': '?', #FIXME
+            {'name': statement_line.date,
              'debit': amount >= zero and amount or zero,
              'credit': amount < zero and -amount or zero,
              'account': statement_line.account.id,
@@ -213,7 +213,7 @@ class Line(OSV):
             raise ExceptORM('Error:', 'Please provide debit and '\
                                 'credit account on bank journal.')
         vals.append(
-            {'name': '?', #FIXME
+            {'name': statement_line.date,
              'debit': amount < zero and -amount or zero,
              'credit': amount >= zero and amount or zero,
              'account': account.id,
