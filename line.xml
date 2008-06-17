@@ -180,5 +180,61 @@
         </record>
         <menuitem parent="menu_reporting" action="act_open_hours_employee"
             icon="tryton-list" id="menu_open_hours_employee"/>
+
+        <record model="ir.ui.view" id="hours_employee_weekly_view_tree">
+            <field name="model">timesheet.hours_employee_weekly</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Hours per Employee per Week">
+                    <field name="year" select="1"/>
+                    <field name="week" select="1"/>
+                    <field name="employee" select="1"/>
+                    <field name="hours" select="1" widget="float_time"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_hours_employee_weekly_form">
+            <field name="name">Hours per Employee per Week</field>
+            <field name="res_model">timesheet.hours_employee_weekly</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_hours_employee_weekly_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="hours_employee_weekly_view_tree"/>
+            <field name="act_window" ref="act_hours_employee_weekly_form"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_hours_employee_weekly_form"
+            id="menu_open_hours_employee_weekly"/>
+
+        <record model="ir.ui.view" id="hours_employee_monthly_view_tree">
+            <field name="model">timesheet.hours_employee_monthly</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Hours per Employee per Month">
+                    <field name="year" select="1"/>
+                    <field name="month" select="1"/>
+                    <field name="employee" select="1"/>
+                    <field name="hours" select="1" widget="float_time"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_hours_employee_monthly_form">
+            <field name="name">Hours per Employee per Month</field>
+            <field name="res_model">timesheet.hours_employee_monthly</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_hours_employee_monthly_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="hours_employee_monthly_view_tree"/>
+            <field name="act_window" ref="act_hours_employee_monthly_form"/>
+        </record>
+        <menuitem parent="menu_reporting" action="act_hours_employee_monthly_form"
+            id="menu_open_hours_employee_monthly"/>
     </data>
 </tryton>

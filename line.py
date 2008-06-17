@@ -213,3 +213,61 @@ class OpenHoursEmployee(Wizard):
         return res
 
 OpenHoursEmployee()
+
+
+class HoursEmployeeWeekly(OSV):
+    'Hours per Employee per Week'
+    _name = 'timesheet.hours_employee_weekly'
+    _description = __doc__
+
+    year = fields.Integer('Year', select=1)
+    week = fields.Integer('Week', select=1)
+    employee = fields.Many2One('company.employee', 'Employee', select=1)
+    hours = fields.Float('Hours', digits=(16, 2), select=1)
+
+    def __init__(self):
+        super(HoursEmployeeWeekly, self).__init__()
+        self._order.insert(0, ('year', 'DESC'))
+        self._order.insert(1, ('week', 'DESC'))
+        self._order.insert(2, ('employee', 'ASC'))
+
+    def table_query(self, context=None):
+        return ('SELECT EXTRACT(YEAR FROM date) ' \
+                        '|| EXTRACT(WEEK FROM date) ' \
+                        '|| employee AS id, ' \
+                    'EXTRACT(YEAR FROM date) AS year, ' \
+                    'EXTRACT(WEEK FROM date) AS week, employee, ' \
+                    'SUM(COALESCE(hours, 0)) AS hours ' \
+                'FROM timesheet_line ' \
+                'GROUP BY year, week, employee', [])
+
+HoursEmployeeWeekly()
+
+
+class HoursEmployeeMonthly(OSV):
+    'Hours per Employee per Month'
+    _name = 'timesheet.hours_employee_monthly'
+    _description = __doc__
+
+    year = fields.Integer('Year', select=1)
+    month = fields.Integer('Month', select=1)
+    employee = fields.Many2One('company.employee', 'Employee', select=1)
+    hours = fields.Float('Hours', digits=(16, 2), select=1)
+
+    def __init__(self):
+        super(HoursEmployeeMonthly, self).__init__()
+        self._order.insert(0, ('year', 'DESC'))
+        self._order.insert(1, ('month', 'DESC'))
+        self._order.insert(2, ('employee', 'ASC'))
+
+    def table_query(self, context=None):
+        return ('SELECT EXTRACT(YEAR FROM date) ' \
+                        '|| EXTRACT(MONTH FROM date) ' \
+                        '|| employee AS id, ' \
+                    'EXTRACT(YEAR FROM date) AS year, ' \
+                    'EXTRACT(MONTH FROM date) AS month, employee, ' \
+                    'SUM(COALESCE(hours, 0)) AS hours ' \
+                'FROM timesheet_line ' \
+                'GROUP BY year, month, employee', [])
+
+HoursEmployeeMonthly()
