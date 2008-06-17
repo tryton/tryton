@@ -53,8 +53,6 @@
             <field name="view" ref="statement_journal_view_form"/>
             <field name="act_window" ref="act_statement_journal_form"/>
         </record>
-        <menuitem name="Statements" parent="account.menu_account_configuration"
-            id="menu_statement_configuration" sequence="70"/>
         <menuitem parent="menu_statement_configuration" sequence="1"
             action="act_statement_journal_form" id="menu_statement_journal_form"/>
 

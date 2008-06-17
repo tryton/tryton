@@ -3,6 +3,8 @@
     <data>
         <menuitem name="Statements" parent="account.menu_account"
             id="menu_statements" sequence="45"/>
+        <menuitem name="Statements" parent="account.menu_account_configuration"
+            id="menu_statement_configuration" sequence="70"/>
         <record model="ir.ui.view" id="statement_view_form">
             <field name="model">statement.statement</field>
             <field name="type">form</field>
