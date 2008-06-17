@@ -132,7 +132,7 @@ class Line(OSV):
         party_obj = self.pool.get('relationship.party')
         account_obj = self.pool.get('account.account')
         party = party_obj.browse(cursor, user, value['party'], context=context)
-        if value['amount'] > 0:
+        if value['amount'] > Decimal("0.0"):
             account = party.account_receivable
         else:
             account = party.account_payable
@@ -149,7 +149,7 @@ class Line(OSV):
             party.account_receivable.id, party.account_payable.id):
             # The user has entered a non-default value, we keep it.
             return {}
-        if value['amount'] > 0:
+        if value['amount'] > Decimal("0.0"):
             account = party.account_receivable
         else:
             account = party.account_payable
@@ -211,7 +211,7 @@ class Line(OSV):
              })
 
         journal = statement_line.statement.journal.journal
-        if statement_line.amount < Decimal('0.0'):
+        if statement_line.amount < zero:
             account = journal.credit_account
         else:
             account = journal.debit_account
