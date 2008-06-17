@@ -43,14 +43,14 @@
                     <label name="sequence"/>
                     <field name="sequence"/>
                     <newline/>
+                    <label name="display_balance"/>
+                    <field name="display_balance"/>
+                    <newline/>
                     <label name="balance_sheet"/>
                     <field name="balance_sheet"/>
                     <newline/>
                     <label name="income_statement"/>
                     <field name="income_statement"/>
-                    <newline/>
-                    <label name="display_balance"/>
-                    <field name="display_balance"/>
                 </form>
                 ]]>
             </field>

@@ -31,8 +31,12 @@ class Type(OSV):
             help='Use to order the account type')
     #TODO fix digits depend of the currency
     amount = fields.Function('get_amount', digits=(16, 2), string='Amount')
-    balance_sheet = fields.Boolean('Balance Sheet')
-    income_statement = fields.Boolean('Income Statement')
+    balance_sheet = fields.Boolean('Balance Sheet', states={
+        'invisible': "parent",
+        })
+    income_statement = fields.Boolean('Income Statement', states={
+        'invisible': "parent",
+        })
     display_balance = fields.Selection([
         ('debit-credit', 'Debit - Credit'),
         ('credit-debit', 'Credit - Debit'),
