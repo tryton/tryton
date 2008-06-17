@@ -61,15 +61,8 @@ class Statement(OSV):
         return res
 
     def set_state_validated(self, cursor, user, statement_id, context=None):
-        move_obj = self.pool.get('account.move')
-        move_line_obj = self.pool.get('account.move.line')
-        period_obj = self.pool.get('account.period')
-        journal_obj = self.pool.get('statement.journal')
         statement_line_obj = self.pool.get('statement.statement.line')
         statement = self.browse(cursor, user, statement_id, context=context)
-        period = period_obj.find(cursor, user, date=statement.date,
-                                 context=context)
-
 
         computed_end_balance = statement.start_balance
         for line in statement.lines:
@@ -80,38 +73,24 @@ class Statement(OSV):
                                 ' * Computed: %s'%\
                                 (statement.end_balance, computed_end_balance))
         for line in statement.lines:
-            move_lines = statement_line_obj._get_move_lines(
-                cursor, user, line, context=context)
-            move_id = move_obj.create(
-                cursor, user,
-                {'name': statement.date, #XXX
-                 'period': period,
-                 'journal': statement.journal.journal.id,
-                 'date': line.date,
-                 'lines': [('create', x) for x in move_lines],
-                 },
-            context=context)
-            statement_line_obj.write(
-                cursor, user, line.id, {'move': move_id}, context=context)
-
+            statement_line_obj.create_move(cursor, user, line, context=context)
         self.write(cursor, user, statement_id,
                    {'state':'validated',},
                    context=context)
 
     def set_state_posted(self, cursor, user, statement_id, context=None):
-        move_obj = self.pool.get('account.move')
+        statement_line_obj = self.pool.get('statement.statement.line')
         statement = self.browse(cursor, user, statement_id, context=context)
-        move_obj.write(
-            cursor, user, [l.move.id for l in statement.lines],
-            {'state': 'posted'}, context=context)
+        statement_line_obj.post_move(
+            cursor, user, statement.lines, context=context)
         self.write(
             cursor, user, statement_id, {'state':'posted'}, context=context)
 
     def set_state_cancel(self, cursor, user, statement_id, context=None):
-        move_obj = self.pool.get('account.move')
+        statement_line_obj = self.pool.get('statement.statement.line')
         statement = self.browse(cursor, user, statement_id, context=context)
-        move_obj.unlink(
-            cursor, user, [l.move.id for l in statement.lines], context=context)
+        statement_line_obj.unlink_move(
+            cursor, user, statement.lines, context=context)
         self.write(cursor, user, statement_id,
                    {'state':'cancel',},
                    context=context)
@@ -177,8 +156,35 @@ class Line(OSV):
         return {'account': account_obj.name_get(
                 cursor, user, account.id, context=context)[0]}
 
+    def create_move(self, cursor, user, line, context=None):
+        move_obj = self.pool.get('account.move')
+        period_obj = self.pool.get('account.period')
+        period = period_obj.find(cursor, user, date=line.date,
+                                 context=context)
 
-    def _get_move_lines(self, cursor, user, statement_line, context=None):
+        move_lines = self.get_move_lines(
+            cursor, user, line, context=context)
+        move_id = move_obj.create(
+            cursor, user,
+            {'name': line.date,
+             'period': period,
+             'journal': line.statement.journal.journal.id,
+             'date': line.date,
+             'lines': [('create', x) for x in move_lines],
+             },
+            context=context)
+        self.write(
+            cursor, user, line.id, {'move': move_id}, context=context)
+
+    def post_move(self, cursor, user, lines, context=None):
+        move_obj = self.pool.get('account.move')
+        move_obj.post(cursor, user, [l.move.id for l in lines], context=context)
+
+    def unlink_move(self, cursor, user, lines, context=None):
+        move_obj = self.pool.get('account.move')
+        move_obj.unlink(
+            cursor, user, [l.move.id for l in lines], context=context)
+    def get_move_lines(self, cursor, user, statement_line, context=None):
         currency_obj = self.pool.get('currency.currency')
         zero = Decimal("0.0")
         amount = currency_obj.compute(
