@@ -58,51 +58,6 @@ class Statement(OSV):
                 res[statement.id] += line.amount
         return res
 
-    def _get_move_lines(self, cursor, user, statement_line, context=None):
-        currency_obj = self.pool.get('currency.currency')
-        zero = Decimal("0.0")
-        amount = currency_obj.compute(
-            cursor, user, statement_line.statement.journal.currency,
-            statement_line.amount,
-            statement_line.statement.journal.company.currency, context=context)
-        if statement_line.statement.journal.currency.id != \
-                statement_line.statement.journal.company.currency.id:
-            second_currency = statement_line.statement.journal.currency.id
-            amount_second_currency = abs(statement_line.amount)
-        else:
-            amount_second_currency = False
-            second_currency = None
-
-        vals = []
-        vals.append(
-            {'name': '?', #FIXME
-             'debit': amount >= zero and amount or zero,
-             'credit': amount < zero and -amount or zero,
-             'account': statement_line.account.id,
-             'party': statement_line.party and statement_line.party.id,
-             'second_currency': second_currency,
-             'amount_second_currency': amount_second_currency,
-             })
-
-        journal = statement_line.statement.journal.journal
-        if statement_line.amount < 0:
-            account = journal.credit_account
-        else:
-            account = journal.debit_account
-        if not account:
-            raise ExceptORM('Error:', 'Please provide debit and '\
-                                'credit account on bank journal.')
-        vals.append(
-            {'name': '?', #FIXME
-             'debit': amount < zero and -amount or zero,
-             'credit': amount >= zero and amount or zero,
-             'account': account.id,
-             'party': statement_line.party and statement_line.party.id,
-             'second_currency': second_currency,
-             'amount_second_currency': amount_second_currency,
-             })
-        return vals
-
     def set_state_validated(self, cursor, user, statement_id, context=None):
         move_obj = self.pool.get('account.move')
         move_line_obj = self.pool.get('account.move.line')
@@ -125,7 +80,7 @@ class Statement(OSV):
 
 
         for line in statement.lines:
-            move_lines = self._get_move_lines(
+            move_lines = statement_line_obj._get_move_lines(
                 cursor, user, line, context=context)
             move_id = move_obj.create(
                 cursor, user,
@@ -205,4 +160,50 @@ class Line(OSV):
 
     def on_change_amount(self, cursor, user, ids, value, context=None):
         return self.on_change_party(cursor, user, ids, value, context=context)
+
+    def _get_move_lines(self, cursor, user, statement_line, context=None):
+        currency_obj = self.pool.get('currency.currency')
+        zero = Decimal("0.0")
+        amount = currency_obj.compute(
+            cursor, user, statement_line.statement.journal.currency,
+            statement_line.amount,
+            statement_line.statement.journal.company.currency, context=context)
+        if statement_line.statement.journal.currency.id != \
+                statement_line.statement.journal.company.currency.id:
+            second_currency = statement_line.statement.journal.currency.id
+            amount_second_currency = abs(statement_line.amount)
+        else:
+            amount_second_currency = False
+            second_currency = None
+
+        vals = []
+        vals.append(
+            {'name': '?', #FIXME
+             'debit': amount >= zero and amount or zero,
+             'credit': amount < zero and -amount or zero,
+             'account': statement_line.account.id,
+             'party': statement_line.party and statement_line.party.id,
+             'second_currency': second_currency,
+             'amount_second_currency': amount_second_currency,
+             })
+
+        journal = statement_line.statement.journal.journal
+        if statement_line.amount < 0:
+            account = journal.credit_account
+        else:
+            account = journal.debit_account
+        if not account:
+            raise ExceptORM('Error:', 'Please provide debit and '\
+                                'credit account on bank journal.')
+        vals.append(
+            {'name': '?', #FIXME
+             'debit': amount < zero and -amount or zero,
+             'credit': amount >= zero and amount or zero,
+             'account': account.id,
+             'party': statement_line.party and statement_line.party.id,
+             'second_currency': second_currency,
+             'amount_second_currency': amount_second_currency,
+             })
+        return vals
+
 Line()
