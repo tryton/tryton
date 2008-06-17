@@ -23,7 +23,6 @@ class Type(OSV):
         ('revenue', 'Revenue'),
         ('receivable', 'Receivable'),
         ('expense', 'Expense'),
-        ('income', 'Income'),
         ('view', 'View'),
         ], 'Code')
     parent = fields.Many2One('account.account.type', 'Parent')
