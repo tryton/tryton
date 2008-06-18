@@ -10,7 +10,8 @@ class Currency(OSV):
     'Currency'
     _name = 'currency.currency'
     _description = __doc__
-    name = fields.Char('Name', size=128, required=True, translate=True)
+    name = fields.Char('Name', required=True, translate=True)
+    symbol = fields.Char('Symbol', size=10, required=True)
     code = fields.Char('Code', size=3, required=True)
     rate = fields.Function('get_rate', string='Current rate', digits=(12, 6))
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates')

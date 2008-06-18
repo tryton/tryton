@@ -17,11 +17,13 @@
                 <![CDATA[
                 <form string="Currency" col="6">
                     <label name="name"/>
-                    <field name="name"/>
-                    <label name="code"/>
-                    <field name="code"/>
+                    <field name="name" colspan="3"/>
                     <label name="active"/>
                     <field name="active" xexpand="0" width="100"/>
+                    <label name="symbol"/>
+                    <field name="symbol"/>
+                    <label name="code"/>
+                    <field name="code"/>
                     <label name="rounding"/>
                     <field name="rounding"/>
                     <label name="digits"/>
@@ -60,6 +62,7 @@
                 <![CDATA[
                 <tree string="Currencies">
                     <field name="name" select="1"/>
+                    <field name="symbol"/>
                     <field name="code" select="1"/>
                     <field name="rate"/>
                     <field name="active" tree_invisible="1" select="2"/>
@@ -117,6 +120,7 @@
         <record model="currency.currency" id="eur">
             <field name="name">Euro</field>
             <field name="code">EUR</field>
+            <field name="symbol">€</field>
             <field name="rounding" eval="0.01"/>
             <field name="digits" eval="2"/>
         </record>
@@ -128,12 +132,14 @@
         <record model="currency.currency" id="usd">
             <field name="name">United States dollar</field>
             <field name="code">USD</field>
+            <field name="symbol">$</field>
             <field name="rounding" eval="0.01"/>
             <field name="digits" eval="2"/>
         </record>
         <record model="currency.currency" id="chf">
             <field name="name">Swiss franc</field>
             <field name="code">CHF</field>
+            <field name="symbol">Fr.</field>
             <field name="rounding" eval="0.01"/>
             <field name="digits" eval="2"/>
         </record>
