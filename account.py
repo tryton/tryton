@@ -252,11 +252,12 @@ class Account(OSV):
             newelement = copy.copy(element_accounts)
             newelement.tag = 'label'
             newelement.set('name', 'analytic_account_' + str(account_id))
-            element_accounts.getparent().addprevious(newelement)
+            element_accounts.addprevious(newelement)
             newelement = copy.copy(element_accounts)
             newelement.set('name', 'analytic_account_' + str(account_id))
-            element_accounts.getparent().addprevious(newelement)
-        element_accounts.getparent().remove(element_accounts)
+            element_accounts.addprevious(newelement)
+        parent = element_accounts.getparent()
+        parent.remove(element_accounts)
 
     def analytic_accounts_fields_get(self, cursor, user, field,
             fields_names=None, context=None):
