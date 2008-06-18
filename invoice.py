@@ -512,7 +512,7 @@ class Invoice(OSV):
                 val = {}
                 val['manual'] = False
                 val['invoice'] = invoice.id
-                val['description'] = tax['tax'].name
+                val['description'] = tax['tax'].description
                 val['base'] = tax['base']
                 val['amount'] = tax['amount']
 
