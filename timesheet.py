@@ -83,12 +83,12 @@ class Product(OSV):
         while i < len(args):
             if args[i][0] == '_employee':
                 if not args[i][2]:
-                    args[i] = ('id', '==', '0')
+                    args[i] = ('id', '=', '0')
                 else:
                     employee = employee_obj.browse(cursor, user, args[i][2],
                             context=context)
                     if not employee.services:
-                        args[i] = ('id', '==', '0')
+                        args[i] = ('id', '=', '0')
                     else:
                         args[i] = ('id', 'in',
                                 [x.product.id for x in employee.services])
