@@ -193,32 +193,40 @@
             <field name="name">Second</field>
             <field name="symbol">s</field>
             <field name="category" ref="uom_cat_time"/>
-            <field name="rate" eval="1"/>
-            <field name="factor" eval="1"/>
+            <field name="rate" eval="3600"/>
+            <field name="factor" eval="1.0/3600"/>
             <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_minute">
             <field name="name">Minute</field>
             <field name="symbol">min</field>
             <field name="category" ref="uom_cat_time"/>
-            <field name="rate" eval="1.0/60"/>
-            <field name="factor" eval="60"/>
+            <field name="rate" eval="60"/>
+            <field name="factor" eval="1.0/60"/>
             <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_hour">
             <field name="name">Hour</field>
             <field name="symbol">h</field>
             <field name="category" ref="uom_cat_time"/>
-            <field name="rate" eval="1.0/3600"/>
-            <field name="factor" eval="3600"/>
+            <field name="rate" eval="1"/>
+            <field name="factor" eval="1"/>
+            <field name="rounding" eval="0.001"/>
+        </record>
+        <record model="product.uom" id="uom_work_day">
+            <field name="name">Work Day</field>
+            <field name="symbol">wd</field>
+            <field name="category" ref="uom_cat_time"/>
+            <field name="rate" eval="1.0/8"/>
+            <field name="factor" eval="8"/>
             <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_day">
             <field name="name">Day</field>
             <field name="symbol">d</field>
             <field name="category" ref="uom_cat_time"/>
-            <field name="rate" eval="1.0/(3600*24)"/>
-            <field name="factor" eval="3600*24"/>
+            <field name="rate" eval="1.0/24"/>
+            <field name="factor" eval="24"/>
             <field name="rounding" eval="0.001"/>
         </record>
 
