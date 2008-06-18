@@ -196,7 +196,9 @@ class Tax(OSV):
     _name = 'account.tax'
     _description = 'Account Tax'
 
-    name = fields.Char('Name', size=None, required=True, translate=True)
+    name = fields.Char('Name', required=True, translate=True)
+    description = fields.Char('Description', required=True, translate=True,
+            help="The name that will be used in reports")
     group = fields.Many2One('account.tax.group', 'Group', required=True,
             states={
                 'invisible': "locals().get('parent', True)",

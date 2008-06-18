@@ -125,6 +125,8 @@
                     <field name="name"/>
                     <label name="active"/>
                     <field name="active" xexpand="0" width="100"/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
                     <field name="parent" invisible="1" colspan="4"/>
                     <notebook colspan="4">
                         <page string="General Information">
