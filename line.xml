@@ -8,7 +8,7 @@
                 <![CDATA[
                 <form string="Timesheet Line">
                     <label name="employee"/>
-                    <field name="employee" colspan="4"/>
+                    <field name="employee" colspan="3"/>
                     <label name="date"/>
                     <field name="date"/>
                     <label name="hours"/>
