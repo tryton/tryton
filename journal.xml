@@ -56,7 +56,7 @@
         <menuitem parent="menu_statement_configuration" sequence="1"
             action="act_statement_journal_form" id="menu_statement_journal_form"/>
 
-        <record model="ir.model.access" id="access_statement_journal_term">
+        <record model="ir.model.access" id="access_statement_journal">
             <field name="model" search="[('model', '=', 'statement.journal')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
