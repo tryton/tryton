@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="service_view_form">
+            <field name="model">project_revenue.service</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Service" col="2">
+                    <label name="employee"/>
+                    <field name="employee"/>
+                    <label name="product"/>
+                    <field name="product"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="employee_view_form">
+            <field name="model">company.employee</field>
+            <field name="inherit" ref="company.employee_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@string=&quot;General&quot;]"
+                        position="after">
+                        <page string="Services" col="1">
+                            <field name="services">
+                                <tree string="Services" sequence="sequence">
+                                    <field name="sequence" tree_invisible="1"/>
+                                    <field name="product"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
