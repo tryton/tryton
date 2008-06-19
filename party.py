@@ -57,8 +57,9 @@ class Party(OSV):
 
     def create(self, cursor, user, values, context=None):
         values = values.copy()
-        values['code'] = self.pool.get('ir.sequence').get(
-                cursor, user, 'relationship.party')
+        if not values.get('code'):
+            values['code'] = self.pool.get('ir.sequence').get(
+                    cursor, user, 'relationship.party')
         return super(Party, self).create(cursor, user, values,
                 context=context)
 
