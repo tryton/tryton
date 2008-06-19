@@ -8,7 +8,7 @@
             <field name="groups" eval="[('add', ref('group_currency_admin'))]"/>
         </record>
         <menuitem name="Currency Management" id="menu_currency" sequence="3"
-            groups="group_currency_admin" icon="tryton-dollars"/>
+            groups="group_currency_admin" icon="tryton-currency"/>
 
         <record model="ir.ui.view" id="currency_view_form">
             <field name="model">currency.currency</field>
