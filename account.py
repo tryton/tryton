@@ -131,7 +131,7 @@ class AccountTemplate(OSV):
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
     complete_name = fields.Function('get_complete_name', type='char',
-            string='Name')
+            string='Name', order_field='code')
     code = fields.Char('Code', size=None, select=1)
     type = fields.Many2One('account.account.type', 'Type', required=True)
     parents = fields.Many2Many('account.account.template',
@@ -149,6 +149,7 @@ class AccountTemplate(OSV):
     def __init__(self):
         super(AccountTemplate, self).__init__()
         self._order.insert(0, ('code', 'ASC'))
+        self._order.insert(1, ('name', 'ASC'))
 
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
@@ -230,7 +231,7 @@ class Account(OSV):
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
     complete_name = fields.Function('get_complete_name', type='char',
-            string='Name')
+            string='Name', order_field='code')
     code = fields.Char('Code', size=None, select=1)
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True)
@@ -272,6 +273,7 @@ class Account(OSV):
                 'Error! You can not create recursive accounts.', ['parents']),
         ]
         self._order.insert(0, ('code', 'ASC'))
+        self._order.insert(1, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return True
