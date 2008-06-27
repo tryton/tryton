@@ -263,7 +263,7 @@
             <field name="action" ref="act_open_journal"/>
         </record>
         <menuitem parent="menu_entries" action="act_open_journal"
-            icon="tryton-tree" id="menu_open_journal"/>
+            icon="tryton-list" id="menu_open_journal"/>
         <record model="ir.model.access" id="access_move_line">
             <field name="model" search="[('model', '=', 'account.move.line')]"/>
             <field name="perm_read" eval="False"/>
