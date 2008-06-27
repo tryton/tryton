@@ -108,7 +108,7 @@
             <field name="action" ref="act_party_by_category"/>
         </record>
         <record model="ir.action.report" id="report_label">
-            <field name="name">_Labels</field>
+            <field name="name">La_bels</field>
             <field name="model">relationship.party</field>
             <field name="report_name">party.label</field>
             <field name="report">relationship/label.odt</field>
