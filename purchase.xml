@@ -34,7 +34,7 @@
                             <label name="currency"/>
                             <field name="currency"/>
                             <field name="lines" colspan="4">
-                                <tree string="Lines" sequence="sequence">
+                                <tree string="Lines" sequence="sequence" fill="1">
                                     <field name="type"/>
                                     <field name="product"/>
                                     <field name="description"/>
