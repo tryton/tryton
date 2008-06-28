@@ -221,7 +221,7 @@ class Invoice(OSV):
         states=_STATES)
     party = fields.Many2One('relationship.party', 'Party', change_default=True,
         required=True, states=_STATES, on_change=['party', 'payment_term',
-            'type'])
+            'type', 'company'])
     contact_address = fields.Many2One('relationship.address', 'Contact Address',
         required=True, states=_STATES, domain="[('party', '=', party)]")
     invoice_address = fields.Many2One('relationship.address', 'Invoice Address',
@@ -328,6 +328,7 @@ class Invoice(OSV):
         address_obj = self.pool.get('relationship.address')
         account_obj = self.pool.get('account.account')
         payment_term_obj = self.pool.get('account.invoice.payment_term')
+        company_obj = self.pool.get('company.company')
         res = {
             'invoice_address': False,
             'contact_address': False,
@@ -342,12 +343,20 @@ class Invoice(OSV):
                     party.id, type='invoice', context=context)
             if vals.get('type') in ('out_invoice', 'out_refund'):
                 res['account'] = party.account_receivable.id
-                if party.payment_term:
+                if vals['type'] == 'out_invoice' and party.payment_term:
                     res['payment_term'] = party.payment_term.id
-            else:
+            elif vals.get('type') in ('in_invoice', 'in_refund'):
                 res['account'] = party.account_payable.id
-                if party.supplier_payment_term:
+                if vals['type'] == 'in_invoice' and party.supplier_payment_term:
                     res['payment_term'] = party.supplier_payment_term.id
+
+        if vals.get('company'):
+            company = company_obj.browse(cursor, user, vals['company'],
+                    context=context)
+            if vals.get('type') == 'out_refund':
+                res['payment_term'] = company.payment_term.id
+            elif vals.get('type') == 'in_refund':
+                res['payment_term'] = company.supplier_payment_term.id
 
         if res['contact_address']:
             res['contact_address'] = address_obj.name_get(cursor, user,
