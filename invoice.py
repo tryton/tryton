@@ -1197,9 +1197,10 @@ class InvoiceLine(OSV):
             res['taxes'] = []
             for tax in product.supplier_taxes:
                 if party:
-                    if tax.group.code in party_obj._columns \
-                            and party[tax.group.code]:
-                        res['taxes'].append(party[tax.group.code].id)
+                    if 'supplier_' + tax.group.code in party_obj._columns \
+                            and party['supplier_' + tax.group.code]:
+                        res['taxes'].append(
+                                party['supplier_' + tax.group.code].id)
                         continue
                 res['taxes'].append(tax.id)
         else:
