@@ -528,5 +528,11 @@ class Party(OSV):
             group_name='Accounting Properties', view_load=True,
             domain="[('group.code', '=', 'vat'), ('company', '=', company)]",
             help='This tax will be used, instead of the default VAT.')
+    supplier_vat = fields.Property(type='many2one',
+            relation='account.tax', string='Supplier VAT',
+            group_name='Accounting Properties', view_load=True,
+            domain="[('group.code', '=', 'vat'), ('company', '=', company)]",
+            help='This tax will be used, instead of the default VAT ' \
+                    'for supplier invoices.')
 
 Party()
