@@ -342,10 +342,12 @@ class Invoice(OSV):
                     party.id, type='invoice', context=context)
             if vals.get('type') in ('out_invoice', 'out_refund'):
                 res['account'] = party.account_receivable.id
+                if party.payment_term:
+                    res['payment_term'] = party.payment_term.id
             else:
                 res['account'] = party.account_payable.id
-            if party.payment_term:
-                res['payment_term'] = party.payment_term.id
+                if party.supplier_payment_term:
+                    res['payment_term'] = party.supplier_payment_term.id
 
         if res['contact_address']:
             res['contact_address'] = address_obj.name_get(cursor, user,
@@ -1661,6 +1663,10 @@ class Party(OSV):
     payment_term = fields.Property(type='many2one',
             relation='account.invoice.payment_term',
             string='Invoice Payment Term', group_name='Accounting Properties',
+            view_load=True)
+    supplier_payment_term = fields.Property(type='many2one',
+            relation='account.invoice.payment_term',
+            string='Supplier Payment Term', group_name='Accounting Properties',
             view_load=True)
 
 Party()
