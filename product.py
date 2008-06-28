@@ -107,7 +107,7 @@ class Product(OSV):
 
         where_clause = "location IN (" + \
             ",".join(["%s" for i in location_ids]) + ") "
-        where_ids = location_ids
+        where_ids = location_ids[:]
         if product_ids:
             where_clause += "AND product in (" + \
                 ",".join(["%s" for i in product_ids]) + ")"
