@@ -146,8 +146,8 @@ class Purchase(OSV):
                     party.id, type=None, context=context)
             res['invoice_address'] = party_obj.address_get(cursor, user,
                     party.id, type='invoice', context=context)
-            if party.payment_term:
-                res['payment_term'] = party.payment_term.id
+            if party.supplier_payment_term:
+                res['payment_term'] = party.supplier_payment_term.id
 
         if res['contact_address']:
             res['contact_address'] = address_obj.name_get(cursor, user,
