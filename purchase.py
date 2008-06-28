@@ -565,8 +565,9 @@ class PurchaseLine(OSV):
         res['taxes'] = []
         for tax in product.supplier_taxes:
             if party:
-                if party.get(tax.group.code):
-                    res['taxes'].append(party.get(tax.group.code).id)
+                if party.get('supplier_' + tax.group.code):
+                    res['taxes'].append(
+                            party.get('supplier_' + tax.group.code).id)
                     continue
             res['taxes'].append(tax.id)
 
