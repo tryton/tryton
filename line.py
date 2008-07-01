@@ -233,9 +233,9 @@ class HoursEmployeeWeekly(OSV):
         self._order.insert(2, ('employee', 'ASC'))
 
     def table_query(self, context=None):
-        return ('SELECT EXTRACT(YEAR FROM date) ' \
-                        '|| EXTRACT(WEEK FROM date) ' \
-                        '|| employee AS id, ' \
+        return ('SELECT EXTRACT(WEEK FROM date) + ' \
+                        'EXTRACT(YEAR FROM date) * 100 + ' \
+                        'employee * 1000000 AS id, ' \
                     'EXTRACT(YEAR FROM date) AS year, ' \
                     'EXTRACT(WEEK FROM date) AS week, employee, ' \
                     'SUM(COALESCE(hours, 0)) AS hours ' \
@@ -262,9 +262,9 @@ class HoursEmployeeMonthly(OSV):
         self._order.insert(2, ('employee', 'ASC'))
 
     def table_query(self, context=None):
-        return ('SELECT EXTRACT(YEAR FROM date) ' \
-                        '|| EXTRACT(MONTH FROM date) ' \
-                        '|| employee AS id, ' \
+        return ('SELECT EXTRACT(MONTH FROM date) + ' \
+                        'EXTRACT(YEAR FROM date) * 100 + ' \
+                        'employee * 1000000 AS id, ' \
                     'EXTRACT(YEAR FROM date) AS year, ' \
                     'EXTRACT(MONTH FROM date) AS month, employee, ' \
                     'SUM(COALESCE(hours, 0)) AS hours ' \
