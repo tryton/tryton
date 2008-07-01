@@ -11,6 +11,7 @@ import time
 import locale
 import os
 from trytond.report.report import _LOCALE2WIN32
+from _strptime import LocaleTime
 
 
 class Type(OSV):
@@ -972,8 +973,7 @@ class OpenBalanceSheet(Wizard):
         except:
             pass
         date = time.strptime(str(datas['form']['date']), '%Y-%m-%d')
-        date = time.strftime(locale.nl_langinfo(locale.D_FMT).\
-                replace('%y', '%Y'), date)
+        date = time.strftime(LocaleTime().LC_date.replace('%y', '%Y'), date)
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_account_balance_sheet_tree'),
