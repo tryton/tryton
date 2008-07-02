@@ -108,7 +108,7 @@ class Party(OSV):
             return []
         res = {}
         for party in self.browse(cursor, user, ids, context=context):
-            res[party.id] = party.vat_country + party.vat_number
+            res[party.id] = (party.vat_country or '') + (party.vat_number or '')
         return res
 
     def create(self, cursor, user, values, context=None):
