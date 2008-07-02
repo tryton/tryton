@@ -37,8 +37,7 @@ class Category(OSV):
         return dict(res)
 
     def name_get(self, cursor, user, ids, context=None):
-
-        if not len(ids):
+        if not ids:
             return []
         categories = self.browse(cursor, user, ids, context=context)
         res = []
