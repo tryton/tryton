@@ -68,9 +68,11 @@ class Period(OSV):
                 return False
         return True
 
-    def find(self, cursor, user, date=None, exception=True, context=None):
+    def find(self, cursor, user, company_id, date=None, exception=True, 
+            context=None):
         '''
-        Return the period for the date or the current date.
+        Return the period for the company_id
+            at the date or the current date.
         If exception is set the function will raise an exception
             if any period is found.
         '''
@@ -79,6 +81,7 @@ class Period(OSV):
         ids = self.search(cursor, user, [
             ('start_date', '<=', date),
             ('end_date', '>=', date),
+            ('fiscalyear.company', '=', company_id),
             ], order=[('start_date', 'DESC')], limit=1, context=context)
         if not ids:
             if exception:

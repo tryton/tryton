@@ -586,8 +586,10 @@ class PrintGeneralLegderInit(WizardOSV):
 
     def default_fiscalyear(self, cursor, user, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
-        fiscalyear_id = fiscalyear_obj.find(cursor, user, exception=False,
-                context=context)
+        if context is None:
+            context = {}
+        fiscalyear_id = fiscalyear_obj.find(cursor, user,
+                context.get('company', False), exception=False, context=context)
         if fiscalyear_id:
             return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
                     context=context)[0]
@@ -776,8 +778,10 @@ class PrintTrialBalanceInit(WizardOSV):
 
     def default_fiscalyear(self, cursor, user, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
-        fiscalyear_id = fiscalyear_obj.find(cursor, user, exception=False,
-                context=context)
+        if context is None:
+            context = {}
+        fiscalyear_id = fiscalyear_obj.find(cursor, user,
+                context.get('company', False), exception=False, context=context)
         if fiscalyear_id:
             return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
                     context=context)[0]
@@ -1008,8 +1012,10 @@ class OpenIncomeStatementInit(WizardOSV):
 
     def default_fiscalyear(self, cursor, user, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
-        fiscalyear_id = fiscalyear_obj.find(cursor, user, exception=False,
-                context=context)
+        if context is None:
+            context = {}
+        fiscalyear_id = fiscalyear_obj.find(cursor, user,
+                context.get('company', False), exception=False, context=context)
         if fiscalyear_id:
             return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
                     context=context)[0]

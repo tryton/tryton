@@ -18,8 +18,10 @@
                     <field name="start_date"/>
                     <label name="end_date"/>
                     <field name="end_date"/>
+                    <label name="company"/>
+                    <field name="company"/>
                     <label name="state"/>
-                    <field name="state" colspan="3"/>
+                    <field name="state"/>
                     <notebook colspan="4">
                         <page string="Periods">
                             <field name="periods" colspan="4"/>

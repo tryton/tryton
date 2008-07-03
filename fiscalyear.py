@@ -29,6 +29,7 @@ class FiscalYear(OSV):
         ], 'State', readonly=True, required=True)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
             required=True, domain="[('code', '=', 'account.move')]")
+    company = fields.Many2One('company.company', 'Company', required=True)
 
     def __init__(self):
         super(FiscalYear, self).__init__()
@@ -48,6 +49,15 @@ class FiscalYear(OSV):
 
     def default_state(self, cursor, user, context=None):
         return 'open'
+
+    def default_company(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
 
     def check_dates(self, cursor, user, ids):
         for fiscalyear in self.browse(cursor, user, ids):
@@ -123,9 +133,11 @@ class FiscalYear(OSV):
         return self.create_period(cursor, user, ids, context=context,
                 interval=3)
 
-    def find(self, cursor, user, date=None, exception=True, context=None):
+    def find(self, cursor, user, company_id, date=None, exception=True,
+            context=None):
         '''
-        Return the fiscal year for the date or the current date.
+        Return the fiscal year for the company_id
+            at the date or the current date.
         If exception is set the function will raise an exception
             if any fiscal year is found.
         '''
@@ -134,6 +146,7 @@ class FiscalYear(OSV):
         ids = self.search(cursor, user, [
             ('start_date', '<=', date),
             ('end_date', '>=', date),
+            ('company', '=', company_id),
             ], order=[('start_date', 'DESC')], limit=1, context=context)
         if not ids:
             if exception:

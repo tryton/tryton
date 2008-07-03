@@ -67,7 +67,10 @@ class Move(OSV):
 
     def default_period(self, cursor, user, context=None):
         period_obj = self.pool.get('account.period')
-        return period_obj.find(cursor, user, exception=False, context=context)
+        if context is None:
+            context = {}
+        return period_obj.find(cursor, user, context.get('company', False),
+                exception=False, context=context)
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
@@ -1100,7 +1103,8 @@ class Line(OSV):
                 if not account:
                     account = line.account
             amount = currency_obj.round(cursor, user, account.currency, amount)
-            period_id = period_obj.find(cursor, user, date=date, context=context)
+            period_id = period_obj.find(cursor, user, account.company.id,
+                    date=date, context=context)
             move_id = move_obj.create(cursor, user, {
                 'journal': journal_id,
                 'period': period_id,
@@ -1154,7 +1158,10 @@ class OpenJournalAsk(WizardOSV):
 
     def default_period(self, cursor, user, context=None):
         period_obj = self.pool.get('account.period')
-        return period_obj.find(cursor, user, exception=False, context=context)
+        if context is None:
+            context = {}
+        return period_obj.find(cursor, user, context.get('company', False),
+                exception=False, context=context)
 
 OpenJournalAsk()
 
