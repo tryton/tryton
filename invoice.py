@@ -696,8 +696,8 @@ class Invoice(OSV):
                 remainder_total_currency):
             move_lines[-1]['amount_second_currency'] += remainder_total_currency
 
-        period_id = period_obj.find(cursor, user, date=invoice.invoice_date,
-                context=context)
+        period_id = period_obj.find(cursor, user, invoice.company.id,
+                date=invoice.invoice_date, context=context)
 
         move_id = move_obj.create(cursor, user, {
             'journal': invoice.journal.id,
@@ -720,8 +720,8 @@ class Invoice(OSV):
         if invoice.number:
             return True
 
-        period_id = period_obj.find(cursor, user, date=invoice.invoice_date,
-                context=context)
+        period_id = period_obj.find(cursor, user, invoice.company.id,
+                date=invoice.invoice_date, context=context)
         period = period_obj.browse(cursor, user, period_id, context=context)
         sequence_id = period[invoice.type + '_sequence'].id
         if not sequence_id:
@@ -963,7 +963,8 @@ class Invoice(OSV):
                 raise ExceptORM('Error', 'The credit account on journal is ' \
                         'missing!')
 
-        period_id = period_obj.find(cursor, user, date=date, context=context)
+        period_id = period_obj.find(cursor, user, invoice.company.id,
+                date=date, context=context)
 
         move_id = move_obj.create(cursor, user, {
             'journal': journal.id,
