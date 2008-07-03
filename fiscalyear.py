@@ -66,11 +66,12 @@ class FiscalYear(OSV):
                     'WHERE ((start_date <= %s AND end_date >= %s) ' \
                             'OR (start_date <= %s AND end_date >= %s) ' \
                             'OR (start_date >= %s AND end_date <= %s)) ' \
+                        'AND company = %s ' \
                         'AND id != %s',
                     (fiscalyear.start_date, fiscalyear.start_date,
                         fiscalyear.end_date, fiscalyear.end_date,
                         fiscalyear.start_date, fiscalyear.end_date,
-                        fiscalyear.id))
+                        fiscalyear.company.id, fiscalyear.id))
             if cursor.rowcount:
                 return False
         return True

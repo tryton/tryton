@@ -50,11 +50,12 @@ class Period(OSV):
                     'WHERE ((start_date <= %s AND end_date >= %s) ' \
                             'OR (start_date <= %s AND end_date >= %s) ' \
                             'OR (start_date >= %s AND end_date <= %s)) ' \
+                        'fiscalyear = %s ' \
                         'AND id != %s',
                     (period.start_date, period.start_date,
                         period.end_date, period.end_date,
                         period.start_date, period.end_date,
-                        period.id))
+                        period.fiscalyear.id, period.id))
             if cursor.rowcount:
                 return False
         return True
