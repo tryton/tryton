@@ -160,22 +160,22 @@ class Line(OSV):
     def create_move(self, cursor, user, line, context=None):
         move_obj = self.pool.get('account.move')
         period_obj = self.pool.get('account.period')
-        period = period_obj.find(cursor, user, date=line.date,
-                                 context=context)
+        period_id = period_obj.find(cursor, user,
+                line.statement.journal.company.id, date=line.date,
+                context=context)
 
-        move_lines = self.get_move_lines(
-            cursor, user, line, context=context)
+        move_lines = self.get_move_lines(cursor, user, line, context=context)
         move_id = move_obj.create(
-            cursor, user,
-            {'name': line.date,
-             'period': period,
-             'journal': line.statement.journal.journal.id,
-             'date': line.date,
-             'lines': [('create', x) for x in move_lines],
-             },
-            context=context)
-        self.write(
-            cursor, user, line.id, {'move': move_id}, context=context)
+            cursor, user, {
+                'name': line.date,
+                'period': period_id,
+                'journal': line.statement.journal.journal.id,
+                'date': line.date,
+                'lines': [('create', x) for x in move_lines],
+             }, context=context)
+        self.write(cursor, user, line.id, {
+            'move': move_id,
+            }, context=context)
 
     def post_move(self, cursor, user, lines, context=None):
         move_obj = self.pool.get('account.move')
