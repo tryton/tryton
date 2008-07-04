@@ -15,4 +15,7 @@
         "country.xml",
         "address.xml",
     ],
+    'translation': [
+        'fr_FR.csv',
+    ],
 }
