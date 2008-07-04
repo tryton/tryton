@@ -10,14 +10,14 @@ class Category(OSV):
     _name = "relationship.category"
     _description = __doc__
     _parent_name = 'parent'
-    name = fields.Char('Category Name', required=True, size=64,
+    name = fields.Char('Name', required=True, size=64,
            states=STATES)
-    parent = fields.Many2One('relationship.category', 'Parent Category',
+    parent = fields.Many2One('relationship.category', 'Parent',
            select=1, states=STATES)
     complete_name = fields.Function('get_complete_name',
            type="char", string='Name', states=STATES)
     childs = fields.One2Many('relationship.category', 'parent',
-       'Childs Category', states=STATES)
+       'Childs', states=STATES)
     active = fields.Boolean('Active')
 
     def __init__(self):
