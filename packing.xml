@@ -23,11 +23,6 @@
             </field>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_select_move">
-            <field name="name">Select Move</field>
-            <field name="wiz_name">stock.packing.in.select_move</field>
-        </record>
-
         <!--Packing in view-->
         <record model="ir.ui.view" id="packing_in_view_form">
             <field name="model">stock.packing.in</field>
@@ -49,13 +44,19 @@
                         <field name="effective_date"/>
                         <label name="warehouse"/>
                         <field name="warehouse"/>
-                        <button name="%(wizard_select_move)d" string="Select Moves"
-                            type="action"
-                            states="{'readonly': '''state in ('received', 'done') '''}"
-                            colspan="2"/>
                         <notebook colspan="6">
                             <page string="Incoming Moves">
-                                <field name="incoming_moves" colspan="4"/>
+                                <field name="incoming_moves" colspan="4">
+                                    <tree string="Moves">
+                                        <field name="product" select="1"/>
+                                        <field name="from_location" select="2"/>
+                                        <field name="to_location" select="2"/>
+                                        <field name="quantity" select="1"/>
+                                        <field name="uom" select="1"/>
+                                        <field name="planned_date" select="1"/>
+                                        <field name="state" select="2"/>
+                                    </tree>
+                                </field>
                             </page>
                             <page string="Inventory Moves">
                                 <field name="inventory_moves" colspan="4"/>

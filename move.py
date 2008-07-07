@@ -250,6 +250,26 @@ class Move(OSV):
             'state': 'assigned',
             }, context=context)
 
+    def search(self, cursor, user, args, offset=0, limit=None, order=None,
+            context=None, count=False, query_string=False):
+        location_obj = self.pool.get('stock.location')
+
+        args = args[:]
+        i = 0
+        while i < len(args):
+            if args[i][0] == 'to_location_warehouse':
+                location_id = False
+                if args[i][2]:
+                    location = location_obj.browse(cursor, user,
+                            args[i][2], context=context)
+                    if location.type == 'warehouse':
+                        location_id = location.input_location.id
+                args[i] = ('to_location', args[i][1], location_id)
+            i += 1
+        return super(Move, self).search(cursor, user, args, offset=offset,
+                limit=limit, order=order, context=context, count=count,
+                query_string=query_string)
+
     def write(self, cursor, user, ids, vals, context=None):
         uom_obj = self.pool.get('product.uom')
         product_obj = self.pool.get('product.product')

@@ -36,7 +36,12 @@ class PackingIn(OSV):
             required=True, states=STATES, domain="[('type', '=', 'warehouse')]")
     incoming_moves = fields.Function('get_incoming_moves', type='one2many',
             relation='stock.move', string='Incoming Moves',
-            fnct_inv='set_incoming_moves',
+            fnct_inv='set_incoming_moves', add_remove="[" \
+                "('packing_in', '=', False),"\
+                "('from_location.type', '=', 'supplier'),"\
+                "('state', 'in', ['draft', 'waiting']),"\
+                "('to_location_warehouse', '=', warehouse),"\
+            "]",
             states={
                 'readonly': "state in ('received', 'done')",
             }, context="{'warehouse': warehouse, "\
@@ -631,65 +636,6 @@ class Address(OSV):
     delivery = fields.Boolean('Delivery')
 
 Address()
-
-
-class SelectMoveInit(WizardOSV):
-    _name = 'stock.packing.in.select_move.init'
-    moves = fields.Many2Many('stock.move', None, None, None, 'Moves',
-            domain=[
-                ('from_location.type', '=', 'supplier'),
-                ('state', 'in', ['draft', 'waiting']),
-                ('packing_in', '=', False),
-            ])
-
-    def fields_get(self, cursor, user, fields_names=None, context=None):
-        packing_obj = self.pool.get('stock.packing.in')
-
-        res = super(SelectMoveInit, self).fields_get(cursor, user,
-                fields_names=fields_names, context=context)
-        if 'moves' in res and context.get('active_id'):
-            packing = packing_obj.browse(cursor, user, context['active_id'],
-                    context=context)
-            res['moves']['domain'].append(('to_location', '=',
-                packing.warehouse.input_location.id))
-        return res
-
-SelectMoveInit()
-
-
-class SelectMove(Wizard):
-    'Select Moves'
-    _name = 'stock.packing.in.select_move'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'stock.packing.in.select_move.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('set', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-        'set': {
-            'result': {
-                'type': 'action',
-                'action': '_action_set',
-                'state': 'end',
-            },
-        },
-    }
-
-
-    def _action_set(self, cursor, user, datas, context=None):
-        packing_obj = self.pool.get('stock.packing.in')
-
-        packing_obj.write(cursor, user, datas['id'], {
-            'incoming_moves': datas['form']['moves'],
-            }, context=context)
-        return {}
-
-SelectMove()
 
 
 class PackingOutReport(CompanyReport):
