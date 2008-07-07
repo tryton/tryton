@@ -32,27 +32,19 @@
                         <group col="4" colspan="4">
                             <label name="state"/>
                             <field name="state"/>
-                            <group col="4" colspan="2">
-                                <button string="Set Waiting"
-                                        name="set_state_waiting"
-                                        type="object"
-                                        states="{'invisible': '''state in
-                                                ('done','cancel','waiting',) '''}"/>
+                            <group col="3" colspan="2">
                                 <button string="Set Done"
                                         name="set_state_done"
                                         type="object"
-                                        states="{'invisible': '''state in
-                                                ('cancel','done',) '''}"/>
+                                        states="{'invisible': '''state in ('cancel', 'done') '''}"/>
                                 <button string="Set Draft"
                                         name="set_state_draft"
                                         type="object"
-                                        states="{'invisible': '''state in
-                                                ('waiting','done', 'draft') '''}"/>
+                                        states="{'invisible': '''state in ('done', 'draft') '''}"/>
                                 <button string="Cancel"
                                         name="set_state_cancel"
                                         type="object"
-                                        states="{'invisible': '''state in
-                                                ('draft', 'cancel') '''}"/>
+                                        states="{'invisible': '''state == 'cancel' '''}"/>
                             </group>
                         </group>
                         <field name="type" invisible="1"/>
@@ -91,7 +83,7 @@
             <field name="view" ref="move_view_form"/>
             <field name="act_window" ref="act_move_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="2"
+        <menuitem parent="menu_stock" sequence="40"
             action="act_move_form" id="menu_move_form"/>
 
 
@@ -119,7 +111,7 @@
             <field name="name">Moves from Suppliers Waiting Arrival</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
-            <field name="domain">[('from_location.type', '=', 'supplier'), ('state','in',['draft','waiting']), ('packing_in','=',False)]</field>
+            <field name="domain">[('from_location.type', '=', 'supplier'), ('state', '=', 'draft'), ('packing_in', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_move_form_supp_proceed_view1">

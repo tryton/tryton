@@ -82,28 +82,29 @@ class Product(OSV):
 
         if forecast and not (context.get('forecast_date') and \
                 context['forecast_date'] < datetime.date.today()):
-            in_states = ['done', 'assigned', 'waiting']
-            out_states = ['done', 'assigned', 'waiting']
+            in_states = ['done', 'assigned', 'draft']
+            out_states = ['done', 'assigned', 'draft']
         else:
             in_states = context and context.get('in_states') or ['done']
             out_states = context and context.get('out_states') or ['done']
 
         select_clause = \
-            "select location, product, uom, sum(quantity) as quantity "\
-             "from ( "\
-               "SELECT to_location as location, product, uom, "\
-                      "sum(quantity) as quantity "\
-               "FROM stock_move "\
-               "WHERE state in (%s) and to_%s "\
-               "GROUP by to_location, product ,uom "\
-             "UNION  "\
-               "SELECT from_location as location, product, uom, "\
-                      "-sum(quantity) as quantity "\
-               "FROM stock_move "\
-               "WHERE state in (%s) and from_%s "\
-               "GROUP by from_location, product, uom "\
-             ") "\
-            "as T group by T.location, T.product, T.uom "\
+                "SELECT location, product, uom, sum(quantity) AS quantity "\
+                "FROM ( "\
+                    "SELECT to_location AS location, product, uom, "\
+                        "sum(quantity) AS quantity "\
+                    "FROM stock_move "\
+                    "WHERE state IN (%s) " \
+                        "AND to_%s "\
+                    "GROUP BY to_location, product ,uom "\
+                    "UNION  "\
+                    "SELECT from_location AS location, product, uom, "\
+                        "-sum(quantity) AS quantity "\
+                    "FROM stock_move "\
+                    "WHERE state IN (%s) " \
+                        "AND from_%s "\
+                    "GROUP BY from_location, product, uom "\
+                ") AS T GROUP BY T.location, T.product, T.uom"
 
         where_clause = "location IN (" + \
             ",".join(["%s" for i in location_ids]) + ") "
@@ -123,11 +124,11 @@ class Product(OSV):
         else:
             where_date = []
 
-        cursor.execute(
-            select_clause % (
-                ",".join(["%s" for i in in_states]), where_clause,
-                ",".join(["%s" for i in out_states]), where_clause),
-            in_states + where_ids + where_date + out_states + where_ids + where_date)
+        cursor.execute(select_clause % (
+            ",".join(["%s" for i in in_states]), where_clause,
+            ",".join(["%s" for i in out_states]), where_clause),
+            in_states + where_ids + where_date + \
+                    out_states + where_ids + where_date)
 
         return cursor.fetchall()
 

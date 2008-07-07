@@ -79,7 +79,7 @@
             <field name="view" ref="inventory_view_form"/>
             <field name="act_window" ref="act_inventory_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="5"
+        <menuitem parent="menu_stock" sequence="50"
             action="act_inventory_form" id="menu_inventory_form"/>
 
         <record model="ir.ui.view" id="inventory_line_view_form">

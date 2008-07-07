@@ -39,10 +39,9 @@ class Move(OSV):
     effective_date = fields.Date("Effective Date", readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
+        ('assigned', 'Assigned'),
         ('done', 'Done'),
         ('cancel', 'Cancel'),
-        ('waiting', 'Waiting'),
-        ('assigned', 'Assigned'),
         ], 'State', select=1, readonly=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             states={
@@ -52,13 +51,13 @@ class Move(OSV):
             states={
                 'invisible': "type not in ('input', 'output')",
                 'required': "type in ('input', 'output')",
-                'readonly': "state not in ('draft', 'waiting')",
+                'readonly': "state not in ('draft',)",
             })
     currency = fields.Many2One('currency.currency', 'Currency',
             states={
                 'invisible': "type not in ('input', 'output')",
                 'required': "type in ('input', 'output')",
-                'readonly': "state not in ('draft', 'waiting')",
+                'readonly': "state not in ('draft',)",
             })
     type = fields.Function('get_type', type='selection',
             selection=[
@@ -71,7 +70,6 @@ class Move(OSV):
         super(Move, self).__init__()
         self._rpc_allowed += [
             'set_state_done',
-            'set_state_waiting',
             'set_state_draft',
             'set_state_cancel',
             ]
@@ -111,27 +109,6 @@ class Move(OSV):
             return field and wh_location[field].id or False
 
     def default_state(self, cursor, user, context=None):
-        if not context: return 'draft'
-        if context.get('type') == 'incoming':
-            if context['packing_state'] == 'waiting':
-                return 'waiting'
-            if context['packing_state'] in ('received', 'done'):
-                return 'done'
-        if context.get('type') == 'inventory_in':
-            if context['packing_state'] == 'received':
-                return 'waiting'
-            if context['packing_state'] == 'done':
-                return 'done'
-        if context.get('type') == 'outgoing':
-            if context['packing_state'] == 'ready':
-                return 'waiting'
-            if context['packing_state'] == 'done':
-                return 'done'
-        if context.get('type') == 'inventory_out':
-            if context['packing_state'] in ('waiting','assigned'):
-                return context['packing_state']
-            if context['packing_state'] in ('ready','done'):
-                return 'done'
         return 'draft'
 
     def default_company(self, cursor, user, context=None):
@@ -240,11 +217,6 @@ class Move(OSV):
             'state': 'cancel',
             }, context=context)
 
-    def set_state_waiting(self, cursor, user, ids, context=None):
-        return self.write(cursor, user, ids, {
-            'state': 'waiting',
-            }, context=context)
-
     def set_state_assigned(self, cursor, user, ids, context=None):
         return self.write(cursor, user, ids, {
             'state': 'assigned',
@@ -286,10 +258,6 @@ class Move(OSV):
                     if move.state in ('assigned', 'done'):
                         raise ExceptORM('UserError', 'You can not set ' \
                                 'state to draft!')
-                elif vals['state'] == 'waiting':
-                    if move.state in ('cancel', 'assigned', 'done'):
-                        raise ExceptORM('UserError', 'You can not set ' \
-                                'state to waiting!')
                 elif vals['state'] == 'assigned':
                     if move.state in ('cancel', 'done'):
                         raise ExceptORM('UserError', 'You can not set ' \
@@ -325,11 +293,10 @@ class Move(OSV):
         return super(Move, self).write(cursor, user, ids, vals, context=context)
 
     def unlink(self, cursor, user, ids, context=None):
-        move_ids = self.search(
-            cursor, user, [('id', 'in', ids), ('state', 'in',
-            ['done', 'waiting'])], context)
-        if move_ids:
-            raise ExceptORM('UserError', 'You can only delete draft moves !')
+        for move in self.browse(cursor, user, ids, context=context):
+            if move.state != 'draft':
+                raise ExceptORM('UserError',
+                        'You can only delete draft moves!')
         return super(Move, self).unlink(cursor, user, ids, context=context)
 
 Move()

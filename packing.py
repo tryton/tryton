@@ -39,20 +39,18 @@ class PackingIn(OSV):
             fnct_inv='set_incoming_moves', add_remove="[" \
                 "('packing_in', '=', False),"\
                 "('from_location.type', '=', 'supplier'),"\
-                "('state', 'in', ['draft', 'waiting']),"\
+                "('state', '=', 'draft'),"\
                 "('to_location_warehouse', '=', warehouse),"\
             "]",
             states={
                 'readonly': "state in ('received', 'done')",
-            }, context="{'warehouse': warehouse, "\
-                    "'packing_state': state, 'type':'incoming'}")
+            }, context="{'warehouse': warehouse, 'type': 'incoming'}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
             relation='stock.move', string='Inventory Moves',
             fnct_inv='set_inventory_moves',
             states={
-                'readonly': "state == 'draft'",
-            }, context="{'warehouse': warehouse, "\
-                    "'packing_state': state, 'type':'inventory_in'}")
+                'readonly': "state in ('draft', 'done')",
+            }, context="{'warehouse': warehouse, 'type':'inventory_in'}")
     moves = fields.One2Many('stock.move', 'packing_in', 'Moves',
             readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True)
@@ -198,14 +196,13 @@ class PackingIn(OSV):
     def set_state_draft(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_draft(
-            cursor, user, [m.id for m in packing.incoming_moves], context)
-        move_obj.set_state_waiting(
-            cursor, user, [m.id for m in packing.incoming_moves], context)
-        move_obj.unlink(
-            cursor, user, [m.id for m in packing.inventory_moves], context)
-        self.write(
-            cursor, user, packing_id, {'state':'draft'}, context=context)
+        move_obj.set_state_draft(cursor, user,
+                [m.id for m in packing.incoming_moves], context=context)
+        move_obj.unlink(cursor, user,
+                [m.id for m in packing.inventory_moves], context=context)
+        self.write(cursor, user, packing_id, {
+            'state': 'draft',
+            }, context=context)
 
     def create(self, cursor, user, values, context=None):
         values = values.copy()
@@ -224,7 +221,7 @@ class PackingIn(OSV):
         res['from_location'] = incoming_move.to_location.id
         res['to_location'] = incoming_move.packing_in.warehouse.\
                 storage_location.id
-        res['state'] = 'waiting'
+        res['state'] = 'draft'
         res['company'] = incoming_move.company.id
         return res
 
@@ -284,15 +281,13 @@ class PackingOut(OSV):
             fnct_inv='set_outgoing_moves',
             states={
                 'readonly':"state != 'packed'",
-            }, context="{'warehouse': warehouse, "\
-                    "'packing_state': state, 'type':'outgoing',}")
+            }, context="{'warehouse': warehouse, 'type':'outgoing',}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
             relation='stock.move', string='Inventory Moves',
             fnct_inv='set_inventory_moves',
             states={
                 'readonly':"state in ('packed', 'done')",
-            }, context="{'warehouse': warehouse, "\
-                    "'packing_state': state, 'type':'inventory_out',}")
+            }, context="{'warehouse': warehouse, 'type':'inventory_out',}")
     moves = fields.One2Many('stock.move', 'packing_out', 'Moves',
             readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True)
@@ -422,15 +417,13 @@ class PackingOut(OSV):
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_done(
-            cursor, user,
-            [m.id for m in packing.outgoing_moves if m.state == 'waiting'],
+        move_obj.set_state_done(cursor, user,
+            [m.id for m in packing.outgoing_moves if m.state == 'draft'],
             context=context)
-        self.write(
-            cursor, user, packing_id,
-            {'state':'done',
-             'effective_date': time.strftime('%Y-%m-%d %H:%M:%S')},
-            context=context)
+        self.write(cursor, user, packing_id, {
+            'state':'done',
+            'effective_date': datetime.datetime.now(),
+            }, context=context)
 
     def set_state_packed(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -449,7 +442,7 @@ class PackingOut(OSV):
                     'quantity': move.quantity,
                     'packing_out': packing.id,
                     'type': 'output',
-                    'state': 'waiting',
+                    'state': 'draft',
                     'company': move.company.id,
                     }, context=context)
 
@@ -466,11 +459,12 @@ class PackingOut(OSV):
     def set_state_waiting(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_waiting(
-            cursor, user, [m.id for m in packing.inventory_moves],
-            context=context)
-        self.write(cursor, user, packing_id, {'state':'waiting'},
-                   context=context)
+        move_obj.set_state_draft(cursor, user,
+                [m.id for m in packing.inventory_moves],
+                context=context)
+        self.write(cursor, user, packing_id, {
+            'state': 'waiting',
+            }, context=context)
 
     def create(self, cursor, user, values, context=None):
         values['code'] = self.pool.get('ir.sequence').get(
@@ -513,7 +507,7 @@ class PackingOut(OSV):
         return res
 
 
-    def assign_try(self, cursor, user, id, context=None):
+    def assign_try(self, cursor, user, packing_id, context=None):
         location_obj = self.pool.get('stock.location')
         move_obj = self.pool.get('stock.move')
         product_obj = self.pool.get('product.product')
@@ -524,7 +518,7 @@ class PackingOut(OSV):
 
         cursor.execute('LOCK TABLE stock_move')
 
-        packing = self.browse(cursor, user, id, context=context)
+        packing = self.browse(cursor, user, packing_id, context=context)
         parent_to_locations = {}
         inventory_moves = []
         uom_ids = uom_obj.search(cursor, user, [], context=context)
@@ -534,20 +528,23 @@ class PackingOut(OSV):
         location_index = {}
         # Fetch child_of for each location
         for move in packing.inventory_moves:
-            if move.state != 'waiting': continue
+            if move.state != 'draft':
+                continue
             inventory_moves.append(move)
             location_index[move.from_location.id] = move.from_location
             if move.from_location.id in parent_to_locations:
                 continue
-            childs = location_obj.search(
-                cursor, user,
-                [('parent', 'child_of', [move.from_location.id])])
+            childs = location_obj.search(cursor, user, [
+                ('parent', 'child_of', [move.from_location.id]),
+                ], context=context)
             parent_to_locations[move.from_location.id] = childs
 
         # Collect all raw quantities
         context = context.copy()
-        context.update({'in_states': ['done', 'assigned'],
-                        'out_states': ['done', 'assigned']})
+        context.update({
+            'in_states': ['done', 'assigned'],
+            'out_states': ['done', 'assigned'],
+            })
         raw_data = product_obj.raw_products_by_location(
             cursor, user,
             location_ids=reduce(
@@ -609,8 +606,8 @@ class PackingOut(OSV):
 
         return success
 
-    def assign_force(self, cursor, user, id, context=None):
-        packing = self.browse(cursor, user, id, context=context)
+    def assign_force(self, cursor, user, packing_id, context=None):
+        packing = self.browse(cursor, user, packing_id, context=context)
         move_obj = self.pool.get('stock.move')
         move_obj.write(
             cursor, user, [m.id for m in packing.inventory_moves],
