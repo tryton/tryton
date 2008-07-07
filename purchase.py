@@ -672,7 +672,7 @@ class PurchaseLine(OSV):
         vals['product'] = line.product.id
         vals['from_location'] = line.purchase.party.supplier_location.id
         vals['to_location'] = line.purchase.warehouse.input_location.id
-        vals['state'] = 'waiting'
+        vals['state'] = 'draft'
         vals['company'] = line.purchase.company.id
         vals['unit_price'] = line.unit_price
         vals['currency'] = line.purchase.currency.id
