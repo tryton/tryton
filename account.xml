@@ -128,7 +128,7 @@
         </record>
         <record model="account.account.type" id="account_type_asset_current_cash">
             <field name="name">Cash</field>
-            <field name="code">view</field>
+            <field name="code"></field>
             <field name="parent" ref="account_type_asset_current"/>
             <field name="sequence" eval="10"/>
         </record>
@@ -164,7 +164,7 @@
         </record>
         <record model="account.account.type" id="account_type_liability_current_tax">
             <field name="name">Tax</field>
-            <field name="code">view</field>
+            <field name="code"></field>
             <field name="parent" ref="account_type_liability_current"/>
             <field name="sequence" eval="20"/>
         </record>
