@@ -29,7 +29,10 @@ class Location(OSV):
         ('storage', 'Storage'),
         ('production', 'Production'),
         ], 'Location type', states=STATES)
-    parent = fields.Many2One("stock.location", "Parent", select=1)
+    parent = fields.Many2One("stock.location", "Parent", select=1,
+            left="left", right="right")
+    left = fields.Integer('Left', required=True)
+    right = fields.Integer('Right', required=True)
     childs = fields.One2Many("stock.location", "parent", "Childs")
     input_location = fields.Many2One(
         "stock.location", "Input", states=STATES_WH,
