@@ -160,7 +160,8 @@ class Move(OSV):
                 unit_price = product.cost_price
                 if vals.get('uom') and vals['uom'] != product.default_uom.id:
                     unit_price = uom_obj.compute_price(cursor, user,
-                            product.default_uom, unit_price, vals['uom'])
+                            product.default_uom, unit_price, vals['uom'],
+                            context=context)
                 if vals.get('currency') and vals.get('company'):
                     currency = currency_obj.browse(cursor, user,
                             vals['currency'], context=context)
@@ -276,13 +277,15 @@ class Move(OSV):
                                 move.product.id, context=ctx)
 
                         qty = uom_obj.compute_qty(cursor, user, move.uom,
-                                move.quantity, product.default_uom)
+                                move.quantity, product.default_uom,
+                                context=context)
 
                         if qty > 0:
                             qty = Decimal(str(qty))
                             product_qty = Decimal(str(product.quantity))
                             unit_price = uom_obj.compute_price(cursor, user,
-                                    move.uom, move.unit_price, product.default_uom)
+                                    move.uom, move.unit_price,
+                                    product.default_uom, context=context)
                             new_cost_price = (\
                                     (product.cost_price * product_qty) \
                                     + (unit_price * qty)) \
