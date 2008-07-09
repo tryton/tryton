@@ -158,7 +158,8 @@ class Product(OSV):
             key = (location, product, default_uom[product].id)
             res.setdefault(key, 0.0)
             res[key] += uom_obj.compute_qty(
-                cursor, user, uom_by_id[uom], quantity, default_uom[product])
+                cursor, user, uom_by_id[uom], quantity, default_uom[product],
+                context=context)
         return [{'location': key[0],
                  'product':key[1],
                  'uom': key[2],

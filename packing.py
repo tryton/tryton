@@ -503,7 +503,8 @@ class PackingOut(OSV):
         res = 0
         for uom,qty in qty_uom:
             res += uom_obj.compute_qty(
-                cursor, user, uom_index[uom], qty, uom_index[target_uom])
+                cursor, user, uom_index[uom], qty, uom_index[target_uom],
+                context=context)
         return res
 
 
