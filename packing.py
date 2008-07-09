@@ -494,14 +494,14 @@ class PackingOut(OSV):
         return None
 
     def _location_amount(self, cursor, user, target_uom,
-                             qty_uom, uom_index, context=None):
+            qty_uom, uom_index, context=None):
         """
         Take a raw list of quantities and uom and convert it to
         the target uom.
         """
         uom_obj = self.pool.get('product.uom')
         res = 0
-        for uom,qty in qty_uom:
+        for uom, qty in qty_uom:
             res += uom_obj.compute_qty(
                 cursor, user, uom_index[uom], qty, uom_index[target_uom])
         return res
@@ -520,10 +520,8 @@ class PackingOut(OSV):
 
         packing = self.browse(cursor, user, packing_id, context=context)
         parent_to_locations = {}
+        location_ids = []
         inventory_moves = []
-        uom_ids = uom_obj.search(cursor, user, [], context=context)
-        uom_index = dict( (uom.id, uom) for uom in \
-            uom_obj.browse(cursor, user, uom_ids, context=context))
 
         location_index = {}
         # Fetch child_of for each location
@@ -534,10 +532,11 @@ class PackingOut(OSV):
             location_index[move.from_location.id] = move.from_location
             if move.from_location.id in parent_to_locations:
                 continue
-            childs = location_obj.search(cursor, user, [
+            child_ids = location_obj.search(cursor, user, [
                 ('parent', 'child_of', [move.from_location.id]),
                 ], context=context)
-            parent_to_locations[move.from_location.id] = childs
+            parent_to_locations[move.from_location.id] = child_ids
+            location_ids.append(move.from_location.id)
 
         # Collect all raw quantities
         context = context.copy()
@@ -545,22 +544,25 @@ class PackingOut(OSV):
             'in_states': ['done', 'assigned'],
             'out_states': ['done', 'assigned'],
             })
-        raw_data = product_obj.raw_products_by_location(
-            cursor, user,
-            location_ids=reduce(
-                lambda x,y:x+y, parent_to_locations.values(), []),
+        raw_data = product_obj.raw_products_by_location(cursor, user,
+            location_ids=location_ids, with_childs=True,
             product_ids=[move.product.id for move in inventory_moves],
             context=context)
         # convert raw data to something like:
         # {(location,product):[(uom,qty), ...],}
         processed_data = {}
+        uom_ids = []
         for line in raw_data:
+            uom_ids.append(line[2])
             if line[3] == 0.0: # skip when qty == 0.0
                 continue
             if line[:2] in processed_data:
                 processed_data[line[:2]].append(line[2:])
             else:
                 processed_data[line[:2]] = [line[2:]]
+
+        uom_index = dict([(uom.id, uom) for uom in \
+            uom_obj.browse(cursor, user, uom_ids, context=context)])
 
         success = True
         for move in inventory_moves:
@@ -597,7 +599,7 @@ class PackingOut(OSV):
                     }
                 if first:
                     move_obj.write(cursor, user, move.id, values,
-                                   context=context)
+                            context=context)
                     first = False
                 else:
                     move_obj.create(cursor, user, values, context=context)

@@ -17,16 +17,10 @@ class Product(OSV):
     def get_quantity(self, cursor, user, ids, name, args, context=None):
         if not (context and context.get('locations')):
             return dict([(id, 0.0) for id in ids])
-        location_ids = self.pool.get('stock.location').search(
-            cursor, user, [('parent', 'child_of', context['locations'])],
-            context=context)
-        if name == 'forecast_quantity':
-            pbl = self.products_by_location(
-                cursor, user, location_ids=location_ids, product_ids=ids,
-                forecast=True, context=context)
-        else:
-            pbl = self.products_by_location(
-                cursor, user, location_ids=location_ids, product_ids=ids,
+
+        pbl = self.products_by_location(cursor, user,
+                location_ids=context['locations'], product_ids=ids,
+                forecast=(name == 'forecast_quantity'), with_childs=True,
                 context=context)
         res = {}
         for product_id in ids:
@@ -35,7 +29,7 @@ class Product(OSV):
             res[line['product']] += line['quantity']
         return res
 
-    def _eval_domain(self, line, domain):
+    def _search_quantity_eval_domain(self, line, domain):
         res = True
         for field, operator, operand in domain:
             value = line.get(field)
@@ -51,32 +45,30 @@ class Product(OSV):
     def search_quantity(self, cursor, user, name, domain=[], context=None):
         if not (context and context.get('locations')):
             return []
-        location_ids = self.pool.get('stock.location').search(
-            cursor, user, [('parent', 'child_of', context['locations'])],
-            context=context)
-        if name == 'forecast_quantity':
-            pbl = self.products_by_location(
-                cursor, user, location_ids=location_ids, forecast=True,
+
+        pbl = self.products_by_location(cursor, user,
+                location_ids=context['locations'],
+                forecast=(name == 'forecast_quantity'), with_childs=True,
                 context=context)
+
+        if name == 'forecast_quantity':
             for line in pbl:
                 line['forecast_quantity'] = line['quantity']
                 del line['quantity']
-        else:
-            pbl = self.products_by_location(
-                cursor, user, location_ids=location_ids, context=context)
 
         res= [line['product'] for line in pbl \
-                    if self._eval_domain(line, domain)]
+                    if self._search_quantity_eval_domain(line, domain)]
         return [('id', 'in', res)]
 
 
     def raw_products_by_location(self, cursor, user, location_ids,
-            product_ids=None, forecast=False, context=None):
+            product_ids=None, forecast=False, with_childs=False, context=None):
         """
         Return a list like : [(location, product, uom, qty)] for each
         location and product given as argument. Null qty are not
         returned and the tuple (location, product,uom) is unique.
         """
+        location_obj = self.pool.get('stock.location')
         if not location_ids:
             return []
 
@@ -95,20 +87,27 @@ class Product(OSV):
                         "sum(quantity) AS quantity "\
                     "FROM stock_move "\
                     "WHERE state IN (%s) " \
-                        "AND to_%s "\
+                        "AND to_location %s "\
                     "GROUP BY to_location, product ,uom "\
                     "UNION  "\
                     "SELECT from_location AS location, product, uom, "\
                         "-sum(quantity) AS quantity "\
                     "FROM stock_move "\
                     "WHERE state IN (%s) " \
-                        "AND from_%s "\
+                        "AND from_location %s "\
                     "GROUP BY from_location, product, uom "\
                 ") AS T GROUP BY T.location, T.product, T.uom"
 
-        where_clause = "location IN (" + \
-            ",".join(["%s" for i in location_ids]) + ") "
-        where_ids = location_ids[:]
+        if with_childs:
+            query, args = location_obj.search(cursor, user, [
+                ('parent', 'child_of', location_ids),
+                ], context=context, query_string=True)
+            where_clause = " IN (" + query + ") "
+            where_ids = args
+        else:
+            where_clause = " IN (" + \
+                ",".join(["%s" for i in location_ids]) + ") "
+            where_ids = location_ids[:]
         if product_ids:
             where_clause += "AND product in (" + \
                 ",".join(["%s" for i in product_ids]) + ")"
@@ -133,7 +132,7 @@ class Product(OSV):
         return cursor.fetchall()
 
     def products_by_location(self, cursor, user, location_ids,
-                            product_ids=None, forecast=False, context=None):
+            product_ids=None, forecast=False, with_childs=False, context=None):
 
         uom_obj = self.pool.get("product.uom")
         product_obj = self.pool.get("product.product")
@@ -141,28 +140,34 @@ class Product(OSV):
         if not location_ids:
             return []
 
-        if not product_ids:
-            product_ids = product_obj.search(cursor, user, [], context=context)
+        res = {}
+        raw_lines = self.raw_products_by_location(cursor, user, location_ids,
+                product_ids, forecast=forecast, with_childs=with_childs,
+                context=context)
 
-        uom_ids = uom_obj.search(cursor, user, [], context=context)
-        uom_by_id = dict((x.id, x) for x in uom_obj.browse(
-                cursor, user, uom_ids, context=context))
+        uom_ids = []
+        product_ids = []
+        for line in raw_lines:
+            uom_ids.append(line[2])
+            product_ids.append(line[1])
+
+        uom_by_id = dict([(x.id, x) for x in uom_obj.browse(
+                cursor, user, uom_ids, context=context)])
         default_uom = dict((x.id, x.default_uom) for x in product_obj.browse(
                 cursor, user, product_ids, context=context))
 
-        res = {}
-        for line in self.raw_products_by_location(
-            cursor, user, location_ids, product_ids, forecast=forecast,
-            context=context):
-            location, product, uom, quantity= line
+        for line in raw_lines:
+            location, product, uom, quantity = line
             key = (location, product, default_uom[product].id)
             res.setdefault(key, 0.0)
-            res[key] += uom_obj.compute_qty(
-                cursor, user, uom_by_id[uom], quantity, default_uom[product])
-        return [{'location': key[0],
-                 'product':key[1],
-                 'uom': key[2],
-                 'quantity': val} for key, val in res.iteritems()]
+            res[key] += uom_obj.compute_qty(cursor, user, uom_by_id[uom],
+                    quantity, default_uom[product])
+        return [{
+            'location': key[0],
+            'product':key[1],
+            'uom': key[2],
+            'quantity': val,
+            } for key, val in res.iteritems()]
 
     def view_header_get(self, cursor, user, value, view_type='form',
             context=None):

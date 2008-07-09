@@ -219,8 +219,8 @@ class CompleteInventory(Wizard):
             location_ids.append(inventory.location.id)
             inv_by_loc[inventory.location.id] = inventory.id
 
-        pbl =  product_obj.products_by_location(
-            cursor, user, location_ids, context=context)
+        pbl = product_obj.products_by_location(cursor, user, location_ids,
+                context=context)
         indexed_data = {}
         for line in pbl:
             indexed_data.setdefault(line['location'], []).append(
@@ -234,13 +234,12 @@ class CompleteInventory(Wizard):
                     continue
                 if qty <= 0.0:
                     qty = 0
-                line_obj.create(
-                    cursor, user,
-                    {'product': product,
-                     'uom': uom,
-                     'quantity': qty,
-                     'inventory': inventory.id,},
-                    context=context)
+                line_obj.create(cursor, user, {
+                    'product': product,
+                    'uom': uom,
+                    'quantity': qty,
+                    'inventory': inventory.id,
+                    }, context=context)
         return {}
 
 CompleteInventory()
