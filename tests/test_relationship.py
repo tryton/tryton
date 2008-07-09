@@ -8,8 +8,8 @@ if os.path.isdir(DIR):
     sys.path.insert(0, os.path.dirname(DIR))
 
 import unittest
-import trytond.test
-from trytond.test import RPCProxy, CONTEXT, SOCK
+import trytond.tests
+from trytond.tests import RPCProxy, CONTEXT, SOCK
 
 
 class RelationshipTestCase(unittest.TestCase):
@@ -18,7 +18,7 @@ class RelationshipTestCase(unittest.TestCase):
     '''
 
     def setUp(self):
-        trytond.test.install_module('relationship')
+        trytond.tests.install_module('relationship')
         self.category = RPCProxy('relationship.category')
         self.party = RPCProxy('relationship.party')
         self.address = RPCProxy('relationship.address')
@@ -98,7 +98,7 @@ def suite():
     return unittest.TestLoader().loadTestsFromTestCase(RelationshipTestCase)
 
 if __name__ == '__main__':
-    suiteTrytond = trytond.test.suite()
+    suiteTrytond = trytond.tests.suite()
     suiteRelationship = suite()
     alltests = unittest.TestSuite([suiteTrytond, suiteRelationship])
     unittest.TextTestRunner(verbosity=2).run(alltests)
