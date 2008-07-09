@@ -127,7 +127,6 @@ class AccountTemplate(OSV):
     'Account Template'
     _name = 'account.account.template'
     _description = __doc__
-    _parent_name = 'parents'
 
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
@@ -227,7 +226,6 @@ class Account(OSV):
     'Account'
     _name = 'account.account'
     _description = __doc__
-    _parent_name = 'parents'
 
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
