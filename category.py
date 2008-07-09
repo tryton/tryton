@@ -9,7 +9,6 @@ class Category(OSV):
     "Category"
     _name = "relationship.category"
     _description = __doc__
-    _parent_name = 'parent'
     name = fields.Char('Name', required=True, size=64,
            states=STATES)
     parent = fields.Many2One('relationship.category', 'Parent',
