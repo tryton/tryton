@@ -80,6 +80,9 @@ class Product(OSV):
         if not location_ids:
             return []
 
+        rule_obj = self.pool.get('ir.rule')
+        move_query, move_val = rule_obj.domain_get(cursor, user, 'stock.move')
+
         if forecast and not (context.get('forecast_date') and \
                 context['forecast_date'] < datetime.date.today()):
             in_states = ['done', 'assigned', 'draft']
@@ -108,11 +111,15 @@ class Product(OSV):
 
         where_clause = "location IN (" + \
             ",".join(["%s" for i in location_ids]) + ") "
-        where_ids = location_ids[:]
+        where_vals = location_ids[:]
+
+        where_clause += " AND " + move_query + " "
+        where_vals += move_val
+
         if product_ids:
             where_clause += "AND product in (" + \
                 ",".join(["%s" for i in product_ids]) + ")"
-            where_ids += product_ids
+            where_vals += product_ids
 
         if forecast and context.get('forecast_date'):
             where_clause += ' AND ('\
@@ -123,12 +130,11 @@ class Product(OSV):
             where_date = [context['forecast_date'],context['forecast_date']]
         else:
             where_date = []
-
         cursor.execute(select_clause % (
             ",".join(["%s" for i in in_states]), where_clause,
             ",".join(["%s" for i in out_states]), where_clause),
-            in_states + where_ids + where_date + \
-                    out_states + where_ids + where_date)
+            in_states + where_vals + where_date + \
+                    out_states + where_vals + where_date)
 
         return cursor.fetchall()
 
