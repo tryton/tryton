@@ -57,7 +57,7 @@ class Template(OSV):
             for product in self.browse(cursor, user, ids, context=context):
                 res[product.id] = product_uom_obj.compute_price(
                         cursor, user, product.default_uom, product[field],
-                        to_uom)
+                        to_uom, context=context)
         else:
             for product in self.browse(cursor, user, ids, context=context):
                 res[product.id] = product[field]
