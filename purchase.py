@@ -512,7 +512,7 @@ class PurchaseLine(OSV):
                     val = False
                     break
                 quantity -= uom_obj.compute_qty(cursor, user, move.uom,
-                     move.quantity, line.unit)
+                     move.quantity, line.unit, context=context)
             if val:
                 if quantity > 0.0:
                     val = False
@@ -625,10 +625,11 @@ class PurchaseLine(OSV):
             for move in line.moves:
                 if move.state == 'done':
                     quantity += uom_obj.compute_qty(cursor, user, move.uom,
-                            move.quantity, line.unit)
+                            move.quantity, line.unit, context=context)
             for invoice_line in line.invoice_lines:
                 quantity -= uom_obj.compute_qty(cursor, user,
-                        invoice_line.unit, invoice_line.quantity, line.unit)
+                        invoice_line.unit, invoice_line.quantity, line.unit,
+                        context=context)
             res['quantity'] = quantity
         if res['quantity'] <= 0.0:
             return None
@@ -664,7 +665,7 @@ class PurchaseLine(OSV):
         quantity = line.quantity
         for move in line.moves:
             quantity -= uom_obj.compute_qty(cursor, user, move.uom,
-                    move.quantity, line.unit)
+                    move.quantity, line.unit, context=context)
         if quantity <= 0.0:
             return
         vals['quantity'] = quantity
@@ -748,7 +749,7 @@ class Product(OSV):
                         context=context)
                 res[product.id] = uom_obj.compute_price(cursor,
                         user, product.default_uom, res[product.id],
-                        uom)
+                        uom, context=context)
             if context.get('currency'):
                 currency = currency_obj.browse(cursor, user,
                         context['currency'], context=context)
