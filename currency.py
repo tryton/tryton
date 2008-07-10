@@ -98,6 +98,11 @@ class Currency(OSV):
             from_currency = self.browse(cursor, user, from_currency, context=context)
         if isinstance(to_currency, (int, long)):
             to_currency = self.browse(cursor, user, to_currency, context=context)
+        if to_currency == from_currency:
+            if round:
+                return self.round(cursor, user, to_currency, amount)
+            else:
+                return amount
         if (not from_currency.rate) or (not to_currency.rate):
             date = context.get('date', time.strftime('%Y-%m-%d'))
             if not from_currency.rate:
@@ -107,17 +112,11 @@ class Currency(OSV):
             raise ExceptOSV('UserError', 'No rate found \n' \
                     'for the currency: %s \n' \
                     'at the date: %s' % (name, date))
-        if to_currency == from_currency:
-            if round:
-                return self.round(cursor, user, to_currency, amount)
-            else:
-                return amount
+        if round:
+            return self.round(cursor, user, to_currency,
+                    amount * to_currency.rate / from_currency.rate)
         else:
-            if round:
-                return self.round(cursor, user, to_currency,
-                        amount * to_currency.rate / from_currency.rate)
-            else:
-                return amount * to_currency.rate / from_currency.rate
+            return amount * to_currency.rate / from_currency.rate
 
 Currency()
 
