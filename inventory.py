@@ -18,7 +18,7 @@ class Inventory(OSV):
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain="[('type', '=', 'storage')]", states=STATES)
-    date = fields.DateTime('Date', readonly=True)
+    date = fields.Date('Date',)
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
         domain="[('type', '=', 'lost_found')]", states=STATES)
@@ -50,7 +50,7 @@ class Inventory(OSV):
         return 'open'
 
     def default_date(self, cursor, user, context=None):
-        return datetime.datetime.today()
+        return datetime.date.today()
 
     def default_company(self, cursor, user, context=None):
         if context.get('company'):
@@ -89,28 +89,15 @@ class Inventory(OSV):
         inv_by_loc = {}
 
         for inventory in inventories:
-            location_ids.append(inventory.location.id)
-            inv_by_loc[inventory.location.id] = inventory.id
-        raw_data = product_obj.raw_products_by_location(cursor, user,
-                location_ids, context=context)
-
-        indexed_data = {}
-        for location, product, uom, qty in raw_data:
-            indexed_data.setdefault(location,{})[(product, uom)] = qty
-
-        for inventory in inventories:
             if inventory.state != 'open':
                 continue
             moves = []
-            location_data = indexed_data.get(inventory.location.id, {})
             for line in inventory.lines:
-                key = (line.product.id, line.uom.id)
-                expected_qty = location_data.get(key, 0.0)
-                delta_qty = line.quantity - expected_qty
-                location_data[key] = 0
-
-                from_location = inventory.lost_found.id
-                to_location = inventory.location.id
+                delta_qty = line.expected_quantity - line.quantity
+                if delta_qty == 0.0:
+                    continue
+                from_location = inventory.location.id
+                to_location = inventory.lost_found.id
                 if delta_qty < 0:
                     (from_location, to_location, delta_qty) = \
                         (to_location, from_location, -delta_qty)
@@ -125,31 +112,11 @@ class Inventory(OSV):
                     'state': 'done',
                     }, context=context)
                 moves.append(move_id)
-            # Create move for all missing products
-            for (product, uom), qty in location_data.iteritems():
-                if qty == 0:
-                    continue
-                from_location = inventory.location.id
-                to_location = inventory.lost_found.id
-                if qty < 0:
-                    (from_location, to_location, qty) = \
-                        (to_location, from_location, -qty)
 
-                move_id = move_obj.create(cursor, user, {
-                    'from_location': from_location,
-                    'to_location': to_location,
-                    'quantity': qty,
-                    'product': product,
-                    'uom': uom,
-                    'company': inventory.company.id,
-                    'state': 'done',
+            self.write(cursor, user, ids, {
+                    'date': datetime.date.today(),
+                    'moves': [('add', x) for x in moves],
                     }, context=context)
-                moves.append(move_id)
-
-        return self.write(cursor, user, ids, {
-            'date': datetime.datetime.today(),
-            'moves': [('add', x) for x in moves],
-            }, context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
         if 'state' in vals:
@@ -172,6 +139,8 @@ class InventoryLine(OSV):
     product = fields.Many2One(
         'product.product', 'Product', required=True, on_change=['product'])
     uom = fields.Many2One('product.uom', 'Uom', required=True, select=1)
+    expected_quantity = fields.Float(
+        'Expected Quantity', digits=(12, 6), readonly=True)
     quantity = fields.Float('Quantity', digits=(12, 6))
     inventory = fields.Many2One('stock.inventory', 'Inventory')
 
@@ -211,36 +180,65 @@ class CompleteInventory(Wizard):
         line_obj = self.pool.get('stock.inventory.line')
         inventory_obj = self.pool.get('stock.inventory')
         product_obj = self.pool.get('product.product')
+        uom_obj = self.pool.get('product.uom')
         inventories = inventory_obj.browse(cursor, user, data['ids'],
                 context=context)
-        location_ids = []
-        inv_by_loc = {}
-        for inventory in inventories:
-            location_ids.append(inventory.location.id)
-            inv_by_loc[inventory.location.id] = inventory.id
-
-        pbl =  product_obj.products_by_location(
-            cursor, user, location_ids, context=context)
-        indexed_data = {}
-        for line in pbl:
-            indexed_data.setdefault(line['location'], []).append(
-                (line['product'], line['uom'], line['quantity']))
 
         for inventory in inventories:
-            products = [line.product.id for line in inventory.lines]
-            for (product, uom, qty) in indexed_data.get(inventory.location.id,[]):
-                # Skip products already in the inventory:
-                if product in products:
-                    continue
-                if qty <= 0.0:
-                    qty = 0
-                line_obj.create(
-                    cursor, user,
-                    {'product': product,
-                     'uom': uom,
-                     'quantity': qty,
-                     'inventory': inventory.id,},
+            # Compute product quantities
+            if inventory.date:
+                context = context.copy()
+                context['forecast_date'] = inventory.date
+                pbl = product_obj.products_by_location(
+                    cursor, user, [inventory.location.id], forecast=True,
                     context=context)
-        return {}
+            else:
+                pbl = product_obj.products_by_location(
+                    cursor, user, [inventory.location.id], context=context)
+            # Index some data
+            uom_by_id = {}
+            for uom in uom_obj.browse(
+                cursor, user, [line['uom'] for line in pbl], context=context):
+                uom_by_id[uom.id] = uom
+            product_qty = {}
+            for line in pbl:
+                product_qty[line['product']] = (line['quantity'],
+                                                uom_by_id[line['uom']])
+            # Update existing lines
+            for line in inventory.lines:
+                if line.product.id in product_qty:
+                    quantity, uom = product_qty[line.product.id]
+                    del product_qty[line.product.id]
+                    # if nothing as changed, continue
+                    if line.quantity == line.expected_quantity == quantity \
+                            and line.uom.id == uom.id:
+                        continue
+                    values = {'expected_quantity': quantity,
+                              'uom': uom.id}
+                    # update also quantity field if not edited
+                    if line.quantity == line.expected_quantity:
+                        values['quantity'] = quantity
+                else:
+                    values = {'expected_quantity': 0.0,}
+                    if line.quantity == line.expected_quantity:
+                        values['quantity'] = 0
 
+
+                line_obj.write(
+                    cursor, user, line.id, values, context=context)
+
+            # Create lines if needed
+            for product in product_qty:
+                quantity, uom = product_qty[product]
+                values = {
+                    'product': product,
+                    'expected_quantity': quantity,
+                    'quantity': quantity,
+                    'uom': uom.id,
+                    'inventory': inventory.id,
+                    }
+                line_obj.create(
+                    cursor, user, values, context=context)
+
+        return {}
 CompleteInventory()
