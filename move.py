@@ -297,9 +297,9 @@ class Move(OSV):
 
     def unlink(self, cursor, user, ids, context=None):
         for move in self.browse(cursor, user, ids, context=context):
-            if move.state != 'draft':
+            if move.state not in  ('draft', 'cancel'):
                 raise ExceptORM('UserError',
-                        'You can only delete draft moves!')
+                        'You can only delete draft or cancelled moves!')
         return super(Move, self).unlink(cursor, user, ids, context=context)
 
 Move()
