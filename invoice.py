@@ -233,7 +233,7 @@ class Invoice(OSV):
     move = fields.Many2One('account.move', 'Move', readonly=True)
     account = fields.Many2One('account.account', 'Account', required=True,
         states=_STATES,
-        domain="[('company', '=', company), ('type.code', '!=', 'view')]")
+        domain="[('company', '=', company), ('kind', '!=', 'view')]")
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES)
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
@@ -1080,7 +1080,7 @@ class InvoiceLine(OSV):
             }, on_change=['product', 'unit', 'quantity', 'description',
                 'parent.type', 'parent.party', 'parent.currency'])
     account = fields.Many2One('account.account', 'Account',
-            domain="[('type.code', '!=', 'view'), " \
+            domain="[('kind', '!=', 'view'), " \
                     "('company', '=', parent.company), " \
                     "('id', '!=', parent.account)]",
             states={
@@ -1383,7 +1383,7 @@ class InvoiceTax(OSV):
     description = fields.Char('Description', size=None, required=True)
     sequence = fields.Integer('Sequence')
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain="[('type.code', '!=', 'view'), " \
+            domain="[('kind', '!=', 'view'), " \
                 "('company', '=', parent.company)]")
     base = fields.Numeric('Base', digits=(16, 2),
             states={
@@ -1688,14 +1688,14 @@ class Category(OSV):
     account_expense = fields.Property(type='many2one',
             relation='account.account', string='Account Expense',
             group_name='Accounting Properties', view_load=True,
-            domain="[('type.code', '=', 'expense'), ('company', '=', company)]",
+            domain="[('kind', '=', 'expense'), ('company', '=', company)]",
             states={
                 'invisible': "not company",
             })
     account_revenue = fields.Property(type='many2one',
             relation='account.account', string='Account Revenue',
             group_name='Accounting Properties', view_load=True,
-            domain="[('type.code', '=', 'revenue'), ('company', '=', company)]",
+            domain="[('kind', '=', 'revenue'), ('company', '=', company)]",
             states={
                 'invisible': "not company",
             })
@@ -1708,7 +1708,7 @@ class Template(OSV):
     account_expense = fields.Property(type='many2one',
             string='Account Expense', group_name='Accounting Properties',
             view_load=True, relation='account.account',
-            domain="[('type.code', '=', 'expense'), ('company', '=', company)]",
+            domain="[('kind', '=', 'expense'), ('company', '=', company)]",
             states={
                 'invisible': "not company",
             }, help='This account will be used instead of the one defined ' \
@@ -1716,7 +1716,7 @@ class Template(OSV):
     account_revenue = fields.Property(type='many2one',
             string='Account Revenue', group_name='Accounting Properties',
             view_load=True, relation='account.account',
-            domain="[('type.code', '=', 'revenue'), ('company', '=', company)]",
+            domain="[('kind', '=', 'revenue'), ('company', '=', company)]",
             states={
                 'invisible': "not company",
             }, help='This account will be used instead of the one defined ' \
@@ -1941,7 +1941,7 @@ class PayInvoiceAsk(WizardOSV):
                 'required': "type == 'writeoff'",
             })
     account_writeoff = fields.Many2One('account.account', 'Account',
-            domain="[('type.code', '!=', 'view'), ('company', '=', company)]",
+            domain="[('kind', '!=', 'view'), ('company', '=', company)]",
             states={
                 'invisible': "type != 'writeoff'",
                 'required': "type == 'writeoff'",
