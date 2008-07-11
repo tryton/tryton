@@ -198,6 +198,8 @@
                     <field name="name"/>
                     <label name="code"/>
                     <field name="code"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
                     <label name="kind"/>
                     <field name="kind"/>
                     <label name="type"/>
@@ -206,8 +208,6 @@
                     <field name="close_method"/>
                     <label name="reconcile"/>
                     <field name="reconcile"/>
-                    <separator name="parents" colspan="6"/>
-                    <field name="parents" colspan="6"/>
                     <separator name="taxes" colspan="6"/>
                     <field name="taxes" colspan="6"/>
                 </form>
@@ -233,7 +233,7 @@
             <field name="name">Account Templates</field>
             <field name="res_model">account.account.template</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('parents', '=', False)]</field>
+            <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_template_tree_view1">
             <field name="sequence" eval="10"/>
@@ -257,7 +257,7 @@
             <field name="type" ref="account_type_asset_current_receivable"/>
             <field name="reconcile" eval="True"/>
             <field name="close_method">unreconciled</field>
-            <field name="parents" eval="[('add', ref('account_template_root'))]"/>
+            <field name="parent" ref="account_template_root"/>
             <field name="kind">receivable</field>
         </record>
         <record model="account.account.template" id="account_template_payable">
@@ -265,28 +265,28 @@
             <field name="type" ref="account_type_liability_current_payable"/>
             <field name="reconcile" eval="True"/>
             <field name="close_method">unreconciled</field>
-            <field name="parents" eval="[('add', ref('account_template_root'))]"/>
+            <field name="parent" ref="account_template_root"/>
             <field name="kind">payable</field>
         </record>
         <record model="account.account.template" id="account_template_revenue">
             <field name="name">Main Revenue</field>
             <field name="type" ref="account_type_revenue"/>
             <field name="close_method">none</field>
-            <field name="parents" eval="[('add', ref('account_template_root'))]"/>
+            <field name="parent" ref="account_template_root"/>
             <field name="kind">revenue</field>
         </record>
         <record model="account.account.template" id="account_template_expense">
             <field name="name">Main Expense</field>
             <field name="type" ref="account_type_expense"/>
             <field name="close_method">none</field>
-            <field name="parents" eval="[('add', ref('account_template_root'))]"/>
+            <field name="parent" ref="account_template_root"/>
             <field name="kind">expense</field>
         </record>
         <record model="account.account.template" id="account_template_cash">
             <field name="name">Main Cash</field>
             <field name="type" ref="account_type_asset_current_cash"/>
             <field name="close_method">balance</field>
-            <field name="parents" eval="[('add', ref('account_template_root'))]"/>
+            <field name="parent" ref="account_template_root"/>
             <field name="kind"></field>
         </record>
 
@@ -368,7 +368,8 @@
                         <page string="General Information">
                             <label name="company"/>
                             <field name="company"/>
-                            <newline/>
+                            <label name="parent"/>
+                            <field name="parent"/>
                             <label name="kind"/>
                             <field name="kind"/>
                             <label name="type"/>
@@ -381,8 +382,6 @@
                             <field name="currency"/>
                             <label name="second_currency"/>
                             <field name="second_currency"/>
-                            <separator name="parents" colspan="4"/>
-                            <field name="parents" colspan="4"/>
                             <separator name="taxes" colspan="4"/>
                             <field name="taxes" colspan="4"/>
                         </page>
@@ -432,7 +431,7 @@
             <field name="name">Accounts</field>
             <field name="res_model">account.account</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('parents', '=', False)]</field>
+            <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_tree_view1">
             <field name="sequence" eval="10"/>
@@ -463,7 +462,7 @@
             <field name="name">Accounts</field>
             <field name="res_model">account.account</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('parents', '=', False)]</field>
+            <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_tree2_view1">
             <field name="sequence" eval="10"/>

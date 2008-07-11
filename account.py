@@ -130,10 +130,8 @@ class AccountTemplate(OSV):
                 'invisible': "kind == 'view'",
                 'required': "kind != 'view'",
             })
-    parents = fields.Many2Many('account.account.template',
-            'account_account_template_rel', 'child', 'parent', 'Parents')
-    childs = fields.Many2Many('account.account.template',
-            'account_account_template_rel', 'parent', 'child', 'Childs')
+    parent = fields.Many2One('account.account.template', 'Parent', select=1)
+    childs = fields.One2Many('account.account.template', 'parent', 'Childs')
     reconcile = fields.Boolean('Reconcile',
             states={
                 'invisible': "kind == 'view'",
@@ -159,6 +157,10 @@ class AccountTemplate(OSV):
 
     def __init__(self):
         super(AccountTemplate, self).__init__()
+        self._constraints += [
+            ('check_recursion',
+                'Error! You can not create recursive accounts.', ['parent']),
+        ]
         self._order.insert(0, ('code', 'ASC'))
         self._order.insert(1, ('name', 'ASC'))
 
@@ -205,7 +207,7 @@ class AccountTemplate(OSV):
         return res
 
     def create_account(self, cursor, user, template, company_id, context=None,
-            template2account=None):
+            template2account=None, parent_id=False):
         account_obj = self.pool.get('account.account')
 
         if template2account is None:
@@ -217,6 +219,7 @@ class AccountTemplate(OSV):
         if template.id not in template2account:
             vals = self._get_account_value(cursor, user, template, context=context)
             vals['company'] = company_id
+            vals['parent'] = parent_id
 
             new_id = account_obj.create(cursor, user, vals, context=context)
             template2account[template.id] = new_id
@@ -226,11 +229,8 @@ class AccountTemplate(OSV):
         new_childs = []
         for child in template.childs:
             new_childs.append(self.create_account(cursor, user, child,
-                company_id, context=context, template2account=template2account))
-        if new_childs:
-            account_obj.write(cursor, user, new_childs, {
-                'parents': [('add', new_id)],
-                }, context=context)
+                company_id, context=context, template2account=template2account,
+                parent_id=new_id))
         return new_id
 
 AccountTemplate()
@@ -258,10 +258,8 @@ class Account(OSV):
                 'invisible': "kind == 'view'",
                 'required': "kind != 'view'",
             })
-    parents = fields.Many2Many('account.account', 'account_account_rel',
-            'child', 'parent', 'Parents')
-    childs = fields.Many2Many('account.account', 'account_account_rel',
-            'parent', 'child', 'Childs')
+    parent = fields.Many2One('account.account', 'Parent', select=1)
+    childs = fields.One2Many('account.account', 'parent', 'Childs')
     #TODO fix digits depend of the currency
     balance = fields.Function('get_balance', digits=(16, 2), string='Balance')
     credit = fields.Function('get_credit_debit', digits=(16, 2), string='Credit')
@@ -301,8 +299,8 @@ class Account(OSV):
     def __init__(self):
         super(Account, self).__init__()
         self._constraints += [
-            ('check_recursion_parents',
-                'Error! You can not create recursive accounts.', ['parents']),
+            ('check_recursion',
+                'Error! You can not create recursive accounts.', ['parent']),
         ]
         self._order.insert(0, ('code', 'ASC'))
         self._order.insert(1, ('name', 'ASC'))
@@ -327,25 +325,6 @@ class Account(OSV):
 
     def default_kind(self, cursor, user, context=None):
         return 'view'
-
-    def check_recursion_parents(self, cursor, user, ids):
-        ids_parent = ids[:]
-        while len(ids_parent):
-            ids_parent2 = []
-            for i in range((len(ids) / ID_MAX) + \
-                    ((len(ids) % ID_MAX) and 1 or 0)):
-                sub_ids_parent = ids_parent[ID_MAX * i:ID_MAX * (i + 1)]
-                cursor.execute('SELECT distinct parent ' \
-                        'FROM account_account_rel ' \
-                        'WHERE child IN ' \
-                            '(' + ','.join([str(x) for x in sub_ids_parent]) + ')')
-                ids_parent2.extend(filter(None,
-                    [x[0] for x in cursor.fetchall()]))
-            ids_parent = ids_parent2
-            for i in ids_parent:
-                if i in ids:
-                    return False
-        return True
 
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
@@ -374,7 +353,7 @@ class Account(OSV):
         currency_obj = self.pool.get('currency.currency')
         move_line_obj = self.pool.get('account.move.line')
 
-        child_ids = self.search(cursor, user, [('parents', 'child_of', ids)],
+        child_ids = self.search(cursor, user, [('parent', 'child_of', ids)],
                 context=context)
         all_ids = {}.fromkeys(ids + child_ids).keys()
         line_query = move_line_obj.query_get(cursor, user, context=context)
@@ -407,7 +386,7 @@ class Account(OSV):
         for account_id in ids:
             res.setdefault(account_id, Decimal('0.0'))
             child_ids = self.search(cursor, user, [
-                ('parents', 'child_of', [account_id]),
+                ('parent', 'child_of', [account_id]),
                 ], context=context)
             company_id = account2company[account_id]
             to_currency = id2company[company_id].currency
@@ -419,8 +398,6 @@ class Account(OSV):
                         to_currency, round=True, context=context)
             res[account_id] = currency_obj.round(cursor, user, to_currency,
                     res[account_id])
-            if id2account[account_id].type.display_balance == 'credit-debit':
-                res[account_id] = - res[account_id]
         return res
 
     def get_credit_debit(self, cursor, user, ids, name, arg, context=None):
@@ -490,7 +467,7 @@ class Account(OSV):
 
     def copy(self, cursor, user, object_id, default=None, context=None):
         account = self.browse(cursor, user, object_id, context=context)
-        default['parents'] = False
+        default['parent'] = False
         if account:
             #Also duplicate all childs
             new_child_ids = []
@@ -508,7 +485,7 @@ class Account(OSV):
         if not vals.get('active', True):
             move_line_obj = self.pool.get('account.move.line')
             account_ids = self.search(cursor, user, [
-                ('parents', 'child_of', ids),
+                ('parent', 'child_of', ids),
                 ], context=context)
             if move_line_obj.search(cursor, user, [
                 ('account', 'in', account_ids),
@@ -1152,7 +1129,7 @@ class CreateChartAccountAccount(WizardOSV):
     _name = 'account.account.create_chart_account.account'
     company = fields.Many2One('company.company', 'Company', required=True)
     account_template = fields.Many2One('account.account.template',
-            'Account Template', required=True, domain=[('parents', '=', False)])
+            'Account Template', required=True, domain=[('parent', '=', False)])
 
 CreateChartAccountAccount()
 
