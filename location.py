@@ -2,6 +2,7 @@
 "Wharehouse"
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
+import datetime
 
 STATES = {
     'readonly': "not active",
@@ -77,11 +78,13 @@ class Location(OSV):
         if (not context) or (not context.get('product')):
             return dict([(i,0) for i in ids])
 
+        if name != 'forecast_quantity' and context.get('stock_date'):
+            if context['stock_date'] != datetime.date.today():
+                context = context.copy()
+                del context['stock_date']
         pbl = product_obj.products_by_location(cursor, user, location_ids=ids,
-            product_ids=[context['product']],
-            forecast=(name == 'forecast_quantity'), with_childs=True,
+            product_ids=[context['product']], with_childs=True,
             context=context)
-
         qty_by_ltn = dict([(i['location'], i['quantity']) for i in pbl])
         res = {}
         for location_id in ids:
@@ -130,14 +133,14 @@ class Party(OSV):
 Party()
 
 
-class ChooseForecatsDateInit(WizardOSV):
-    _name = 'stock.location_forecast_date.init'
+class ChooseStockDateInit(WizardOSV):
+    _name = 'stock.location_stock_date.init'
     forecast_date = fields.Date(
         'Forecast Date', help='Allow to compute expected '\
             'stock quantities for this date.\n'\
             '* An empty value is an infinite date in the future.\n'\
             '* A date in the past will provide historical values.')
-ChooseForecatsDateInit()
+ChooseStockDateInit()
 
 
 class OpenProduct(Wizard):
@@ -147,7 +150,7 @@ class OpenProduct(Wizard):
         'init': {
             'result': {
                 'type': 'form',
-                'object': 'stock.location_forecast_date.init',
+                'object': 'stock.location_stock_date.init',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('open', 'Open', 'tryton-ok', True),
@@ -175,9 +178,10 @@ class OpenProduct(Wizard):
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
 
-        context = {'locations': data['ids']}
+        if context == None: context = {}
+        context['locations'] = data['ids']
         if data['form']['forecast_date']:
-            context['forecast_date'] = data['form']['forecast_date']
+            context['stock_date'] = data['form']['forecast_date']
         res['context'] = str(context)
 
         return res

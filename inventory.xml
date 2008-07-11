@@ -87,13 +87,15 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Inventory Line" col="6">
+                    <form string="Inventory Line" col="4">
                         <label name="product"/>
                         <field name="product"/>
-                        <label name="quantity"/>
-                        <field name="quantity"/>
                         <label name="uom"/>
                         <field name="uom"/>
+                        <label name="expected_quantity"/>
+                        <field name="expected_quantity"/>
+                        <label name="quantity"/>
+                        <field name="quantity"/>
                         <label name="inventory"/>
                         <field name="inventory"/>
                     </form>
@@ -107,6 +109,7 @@
                 <![CDATA[
                     <tree string="Inventory Lines" editable="bottom">
                         <field name="product" select="1"/>
+                        <field name="expected_quantity"/>
                         <field name="quantity" select="2"/>
                         <field name="uom" select="2"/>
                     </tree>
