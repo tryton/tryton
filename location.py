@@ -2,6 +2,7 @@
 "Wharehouse"
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
+import datetime
 
 STATES = {
     'readonly': "not active",
@@ -86,14 +87,13 @@ class Location(OSV):
             return dict([(i,0) for i in ids])
         product_obj = self.pool.get('product.product')
         all_ids = self.search(cursor, user, [('parent', 'child_of', ids)])
-        if name == 'forecast_quantity':
-            pbl = product_obj.products_by_location(
-                cursor, user, location_ids=all_ids,
-                product_ids=[context['product']], forecast=True, context=context)
-        else:
-            pbl = product_obj.products_by_location(
-                cursor, user, location_ids=all_ids,
-                product_ids=[context['product']], context=context)
+        if name != 'forecast_quantity' and context.get('stock_date'):
+            if context['stock_date'] != datetime.date.today():
+                context = context.copy()
+                del context['stock_date']
+        pbl = product_obj.products_by_location(
+            cursor, user, location_ids=all_ids,
+            product_ids=[context['product']], context=context)
         qty_by_ltn = dict([(i['location'], i['quantity']) for i in pbl])
         to_compute = dict.fromkeys(all_ids, True)
         locations = self.browse(cursor, user, all_ids, context=context)
@@ -141,14 +141,14 @@ class Party(OSV):
 Party()
 
 
-class ChooseForecatsDateInit(WizardOSV):
-    _name = 'stock.location_forecast_date.init'
+class ChooseStockDateInit(WizardOSV):
+    _name = 'stock.location_stock_date.init'
     forecast_date = fields.Date(
         'Forecast Date', help='Allow to compute expected '\
             'stock quantities for this date.\n'\
             '* An empty value is an infinite date in the future.\n'\
             '* A date in the past will provide historical values.')
-ChooseForecatsDateInit()
+ChooseStockDateInit()
 
 
 class OpenProduct(Wizard):
@@ -158,7 +158,7 @@ class OpenProduct(Wizard):
         'init': {
             'result': {
                 'type': 'form',
-                'object': 'stock.location_forecast_date.init',
+                'object': 'stock.location_stock_date.init',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('open', 'Open', 'tryton-ok', True),
@@ -186,9 +186,10 @@ class OpenProduct(Wizard):
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
 
-        context = {'locations': data['ids']}
+        if context == None: context = {}
+        context['locations'] = data['ids']
         if data['form']['forecast_date']:
-            context['forecast_date'] = data['form']['forecast_date']
+            context['stock_date'] = data['form']['forecast_date']
         res['context'] = str(context)
 
         return res

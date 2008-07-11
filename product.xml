@@ -57,8 +57,8 @@
             <field name="action" ref="wizard_open_location"/>
         </record>
 
-        <record model="ir.ui.view" id="product_forecast_date_init_view_form">
-            <field name="model">product_forecast_date.init</field>
+        <record model="ir.ui.view" id="product_stock_date_init_view_form">
+            <field name="model">product_stock_date.init</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[

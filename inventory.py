@@ -18,7 +18,7 @@ class Inventory(OSV):
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain="[('type', '=', 'storage')]", states=STATES)
-    date = fields.Date('Date',)
+    date = fields.Date('Date')
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
         domain="[('type', '=', 'lost_found')]", states=STATES)
@@ -188,9 +188,9 @@ class CompleteInventory(Wizard):
             # Compute product quantities
             if inventory.date:
                 context = context.copy()
-                context['forecast_date'] = inventory.date
+                context['stock_date'] = inventory.date
                 pbl = product_obj.products_by_location(
-                    cursor, user, [inventory.location.id], forecast=True,
+                    cursor, user, [inventory.location.id],
                     context=context)
             else:
                 pbl = product_obj.products_by_location(
