@@ -342,7 +342,7 @@ class Line(OSV):
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'])
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('type.code', '!=', 'view')],
+            domain=[('kind', '!=', 'view')],
             select=1,
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'])
@@ -900,7 +900,7 @@ class Line(OSV):
 
     def check_account(self, cursor, user, ids):
         for line in self.browse(cursor, user, ids):
-            if line.account.type.code in ('view',):
+            if line.account.kind in ('view',):
                 return False
             if not line.account.active:
                 return False
@@ -1316,7 +1316,7 @@ class ReconcileLinesWriteOff(WizardOSV):
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     date = fields.Date('Date', required=True)
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('type.code', '!=', 'view')])
+            domain=[('kind', '!=', 'view')])
 
     def default_date(self, cursor, user, context=None):
         return datetime.date.today()
@@ -1434,7 +1434,7 @@ UnreconcileLines()
 class OpenReconcileLinesInit(WizardOSV):
     _name = 'account.move.open_reconcile_lines.init'
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('type.code', '!=', 'view'), ('reconcile', '=', True)])
+            domain=[('kind', '!=', 'view'), ('reconcile', '=', True)])
 
 OpenReconcileLinesInit()
 
@@ -1547,12 +1547,10 @@ class Party(OSV):
         cursor.execute('SELECT l.party, ' \
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
                 'FROM account_move_line AS l, ' \
-                    'account_account AS a, ' \
-                    'account_account_type AS t ' \
+                    'account_account AS a ' \
                 'WHERE a.id = l.account ' \
                     'AND a.active ' \
-                    'AND a.type = t.id ' \
-                    'AND t.code = %s ' \
+                    'AND a.kind = %s ' \
                     'AND l.party IN ' \
                         '(' + ','.join(['%s' for x in ids]) + ') ' \
                     'AND l.reconciliation IS NULL ' \
@@ -1608,12 +1606,10 @@ class Party(OSV):
 
         cursor.execute('SELECT l.party ' \
                 'FROM account_move_line AS l, ' \
-                    'account_account AS a, ' \
-                    'account_account_type AS t ' \
+                    'account_account AS a ' \
                 'WHERE a.id = l.account ' \
                     'AND a.active ' \
-                    'AND a.type = t.id ' \
-                    'AND t.code = %s ' \
+                    'AND a.kind = %s ' \
                     'AND l.party IS NOT NULL ' \
                     'AND l.reconciliation IS NULL ' \
                     'AND ' + line_query + ' ' \

@@ -19,14 +19,6 @@ class Type(OSV):
     _name = 'account.account.type'
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, translate=True)
-    code = fields.Selection([
-        (None, ''),
-        ('payable', 'Payable'),
-        ('revenue', 'Revenue'),
-        ('receivable', 'Receivable'),
-        ('expense', 'Expense'),
-        ('view', 'View'),
-        ], 'Code')
     parent = fields.Many2One('account.account.type', 'Parent')
     childs = fields.One2Many('account.account.type', 'parent', 'Childs')
     sequence = fields.Integer('Sequence', required=True,
@@ -133,23 +125,45 @@ class AccountTemplate(OSV):
     complete_name = fields.Function('get_complete_name', type='char',
             string='Name', order_field='code')
     code = fields.Char('Code', size=None, select=1)
-    type = fields.Many2One('account.account.type', 'Type', required=True)
+    type = fields.Many2One('account.account.type', 'Type',
+            states={
+                'invisible': "kind == 'view'",
+                'required': "kind != 'view'",
+            })
     parents = fields.Many2Many('account.account.template',
             'account_account_template_rel', 'child', 'parent', 'Parents')
     childs = fields.Many2Many('account.account.template',
             'account_account_template_rel', 'parent', 'child', 'Childs')
-    reconcile = fields.Boolean('Reconcile')
+    reconcile = fields.Boolean('Reconcile',
+            states={
+                'invisible': "kind == 'view'",
+            })
     close_method = fields.Selection([
         ('none', 'None'),
         ('balance', 'Balance'),
         ('detail', 'Detail'),
         ('unreconciled', 'Unreconciled'),
-        ], 'Deferral method', required=True)
+        ], 'Deferral method',
+            states={
+                'invisible': "kind == 'view'",
+                'required': "kind != 'view'",
+            })
+    kind = fields.Selection([
+        (None, ''),
+        ('payable', 'Payable'),
+        ('revenue', 'Revenue'),
+        ('receivable', 'Receivable'),
+        ('expense', 'Expense'),
+        ('view', 'View'),
+        ], 'Kind')
 
     def __init__(self):
         super(AccountTemplate, self).__init__()
         self._order.insert(0, ('code', 'ASC'))
         self._order.insert(1, ('name', 'ASC'))
+
+    def default_kind(self, cursor, user, context=None):
+        return 'view'
 
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
@@ -239,7 +253,11 @@ class Account(OSV):
     second_currency = fields.Many2One('currency.currency', 'Secondary currency',
             help='Force all moves for this account \n' \
                     'to have this secondary currency.')
-    type = fields.Many2One('account.account.type', 'Type', required=True)
+    type = fields.Many2One('account.account.type', 'Type',
+            states={
+                'invisible': "kind == 'view'",
+                'required': "kind != 'view'",
+            })
     parents = fields.Many2Many('account.account', 'account_account_rel',
             'child', 'parent', 'Parents')
     childs = fields.Many2Many('account.account', 'account_account_rel',
@@ -250,20 +268,35 @@ class Account(OSV):
     debit = fields.Function('get_credit_debit', digits=(16, 2), string='Debit')
     reconcile = fields.Boolean('Reconcile',
             help='Check if the account can be used \n' \
-                    'for reconciliation.')
+                    'for reconciliation.',
+            states={
+                'invisible': "kind == 'view'",
+            })
     close_method = fields.Selection([
         ('none', 'None'),
         ('balance', 'Balance'),
         ('detail', 'Detail'),
         ('unreconciled', 'Unreconciled'),
-        ], 'Deferral method', required=True,
-        help='How to process the lines of this account ' \
-                'when closing the fiscal year\n' \
-                '- None: to start with an empty account\n'
-                '- Balance: to create one entry to keep the balance\n'
-                '- Detail: to keep all entries\n'
-                '- Unreconciled: to keep all unreconciled entries')
+        ], 'Deferral method',
+            help='How to process the lines of this account ' \
+                    'when closing the fiscal year\n' \
+                    '- None: to start with an empty account\n'
+                    '- Balance: to create one entry to keep the balance\n'
+                    '- Detail: to keep all entries\n'
+                    '- Unreconciled: to keep all unreconciled entries',
+            states={
+                'invisible': "kind == 'view'",
+                'required': "kind != 'view'",
+            })
     note = fields.Text('Note')
+    kind = fields.Selection([
+        (None, ''),
+        ('payable', 'Payable'),
+        ('revenue', 'Revenue'),
+        ('receivable', 'Receivable'),
+        ('expense', 'Expense'),
+        ('view', 'View'),
+        ], 'Kind')
 
     def __init__(self):
         super(Account, self).__init__()
@@ -286,18 +319,14 @@ class Account(OSV):
                     context=context)[0]
         return False
 
-    def default_type(self, cursor, user, context=None):
-        type_obj = self.pool.get('account.account.type')
-        types = type_obj.search(cursor, user, [
-            ('code', '=', 'view'),
-            ], limit=1, context=context)
-        return type_obj.name_get(cursor, user, types, context=context)[0]
-
     def default_reconcile(self, cursor, user, context=None):
         return False
 
     def default_close_method(self, cursor, user, context=None):
         return 'balance'
+
+    def default_kind(self, cursor, user, context=None):
+        return 'view'
 
     def check_recursion_parents(self, cursor, user, ids):
         ids_parent = ids[:]
@@ -552,7 +581,7 @@ class Party(OSV):
     account_payable = fields.Property(type='many2one',
             relation='account.account', string='Account Payable',
             group_name='Accounting Properties', view_load=True,
-            domain="[('type.code', '=', 'payable'), ('company', '=', company)]",
+            domain="[('kind', '=', 'payable'), ('company', '=', company)]",
             states={
                 'required': "company",
                 'invisible': "not company",
@@ -560,7 +589,7 @@ class Party(OSV):
     account_receivable = fields.Property(type='many2one',
             relation='account.account', string='Account Receivable',
             group_name='Accounting Properties', view_load=True,
-            domain="[('type.code', '=', 'receivable'), ('company', '=', company)]",
+            domain="[('kind', '=', 'receivable'), ('company', '=', company)]",
             states={
                 'required': "company",
                 'invisible': "not company",
@@ -850,7 +879,7 @@ class TrialBalance(Report):
                 datas['form']['company'], context=context)
 
         account_ids = account_obj.search(cursor, user, [
-            ('type.code', '!=', 'view'),
+            ('kind', '!=', 'view'),
             ], context=context)
 
         start_period_ids = [0]
@@ -1133,10 +1162,10 @@ class CreateChartAccountPropertites(WizardOSV):
     company = fields.Many2One('company.company', 'Company')
     account_receivable = fields.Many2One('account.account',
             'Default Receivable Account',
-            domain="[('type.code', '=', 'receivable'), ('company', '=', company)]")
+            domain="[('kind', '=', 'receivable'), ('company', '=', company)]")
     account_payable = fields.Many2One('account.account',
             'Default Payable Account',
-            domain="[('type.code', '=', 'payable'), ('company', '=', company)]")
+            domain="[('kind', '=', 'payable'), ('company', '=', company)]")
 
 CreateChartAccountPropertites()
 
