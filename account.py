@@ -258,7 +258,10 @@ class Account(OSV):
                 'invisible': "kind == 'view'",
                 'required': "kind != 'view'",
             })
-    parent = fields.Many2One('account.account', 'Parent', select=1)
+    parent = fields.Many2One('account.account', 'Parent', select=1,
+            left="left", right="right")
+    left = fields.Integer('Left', required=True)
+    right = fields.Integer('Right', required=True)
     childs = fields.One2Many('account.account', 'parent', 'Childs')
     #TODO fix digits depend of the currency
     balance = fields.Function('get_balance', digits=(16, 2), string='Balance')
@@ -353,9 +356,9 @@ class Account(OSV):
         currency_obj = self.pool.get('currency.currency')
         move_line_obj = self.pool.get('account.move.line')
 
-        child_ids = self.search(cursor, user, [('parent', 'child_of', ids)],
-                context=context)
-        all_ids = {}.fromkeys(ids + child_ids).keys()
+        query_ids, args_ids = self.search(cursor, user, [
+            ('parent', 'child_of', ids),
+            ], context=context, query_string=True)
         line_query = move_line_obj.query_get(cursor, user, context=context)
         cursor.execute('SELECT a.id, ' \
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
@@ -365,11 +368,10 @@ class Account(OSV):
                     'JOIN account_account_type t ' \
                     'ON (a.type = t.id) ' \
                 'WHERE t.code != \'view\' ' \
-                    'AND a.id IN (' + \
-                        ','.join(['%s' for x in all_ids]) + ') ' \
+                    'AND a.id IN (' + query_ids + ') ' \
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
-                'GROUP BY a.id', all_ids)
+                'GROUP BY a.id', args_ids)
         account_sum = {}
         for account_id, sum in cursor.fetchall():
             account_sum[account_id] = sum
@@ -377,6 +379,8 @@ class Account(OSV):
         account2company = {}
         id2company = {}
         id2account = {}
+        all_ids = self.search(cursor, user, [('parent', 'child_of', ids)],
+                context=context)
         accounts = self.browse(cursor, user, all_ids, context=context)
         for account in accounts:
             account2company[account.id] = account.company.id
