@@ -40,9 +40,6 @@ class Type(OSV):
         super(Type, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
 
-    def default_code(self, cursor, user, context=None):
-        return 'view'
-
     def default_balance_sheet(self, cursor, user, context=None):
         return False
 
@@ -330,6 +327,9 @@ class Account(OSV):
     def default_kind(self, cursor, user, context=None):
         return 'view'
 
+    def default_code(self, cursor, user, context=None):
+        return 'view'
+
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
         return dict(res)
@@ -420,9 +420,7 @@ class Account(OSV):
                 'FROM account_account a ' \
                     'LEFT JOIN account_move_line l ' \
                     'ON (a.id = l.account) ' \
-                    'JOIN account_account_type t ' \
-                    'ON (a.type = t.id) ' \
-                'WHERE t.code != \'view\' ' \
+                'WHERE a.code != \'view\' ' \
                     'AND a.id IN (' + \
                         ','.join(['%s' for x in ids]) + ') ' \
                     'AND ' + line_query + ' ' \
