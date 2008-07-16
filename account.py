@@ -200,6 +200,7 @@ class AccountTemplate(OSV):
         res = {}
         res['name'] = template.name
         res['code'] = template.code
+        res['kind'] = template.kind
         res['type'] = template.type.id
         res['reconcile'] = template.reconcile
         res['close_method'] = template.close_method
