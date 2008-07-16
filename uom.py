@@ -24,8 +24,10 @@ class Uom(OSV):
     'Unit of measure'
     _name = 'product.uom'
     _description = __doc__
-    name = fields.Char('Name', size=None, required=True, states=STATES)
-    symbol = fields.Char('Symbol', size=10, required=True, states=STATES)
+    name = fields.Char('Name', size=None, required=True, states=STATES,
+            translate=True)
+    symbol = fields.Char('Symbol', size=10, required=True, states=STATES,
+            translate=True)
     category = fields.Many2One('product.uom.category', 'UOM Category',
                                required=True, ondelete='cascade',
                                states=STATES)
