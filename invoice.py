@@ -836,6 +836,8 @@ class Invoice(OSV):
         default['payment_lines'] = False
         default['lines'] = False
         default['taxes'] = False
+        default['date'] = datetime.date.today()
+        default['lines_to_pay'] = False
         new_id = super(Invoice, self).copy(cursor, user, invoice_id,
                 default=default, context=context)
 
