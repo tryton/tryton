@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 'Address'
-from trytond.osv import fields, OSV, ExceptORM
+from trytond.osv import fields, OSV
 
 STATES = {
     'readonly': "active == False",
@@ -35,6 +35,9 @@ class Address(OSV):
         self._order.insert(0, ('party', 'ASC'))
         self._order.insert(1, ('sequence', 'ASC'))
         self._order.insert(2, ('id', 'ASC'))
+        self._error_messages.update({
+            'write_party': 'You can not modify the party of an address!',
+            })
 
     def default_active(self, cursor, user, context=None):
         return 1
@@ -71,8 +74,8 @@ class Address(OSV):
         if 'party' in vals:
             for address in self.browse(cursor, user, ids, context=context):
                 if address.party.id != vals['party']:
-                    raise ExceptORM('UserError', 'You can not modify ' \
-                            'the party of an address!')
+                    self.raise_user_error(cursor, 'write_party',
+                            context=context)
         return super(Address, self).write(cursor, user, ids, vals,
                 context=context)
 
