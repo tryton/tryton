@@ -327,9 +327,6 @@ class Account(OSV):
     def default_kind(self, cursor, user, context=None):
         return 'view'
 
-    def default_code(self, cursor, user, context=None):
-        return 'view'
-
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
         return dict(res)
@@ -366,9 +363,7 @@ class Account(OSV):
                 'FROM account_account a ' \
                     'LEFT JOIN account_move_line l ' \
                     'ON (a.id = l.account) ' \
-                    'JOIN account_account_type t ' \
-                    'ON (a.type = t.id) ' \
-                'WHERE t.code != \'view\' ' \
+                'WHERE a.kind != \'view\' ' \
                     'AND a.id IN (' + query_ids + ') ' \
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
@@ -420,7 +415,7 @@ class Account(OSV):
                 'FROM account_account a ' \
                     'LEFT JOIN account_move_line l ' \
                     'ON (a.id = l.account) ' \
-                'WHERE a.code != \'view\' ' \
+                'WHERE a.kind != \'view\' ' \
                     'AND a.id IN (' + \
                         ','.join(['%s' for x in ids]) + ') ' \
                     'AND ' + line_query + ' ' \
