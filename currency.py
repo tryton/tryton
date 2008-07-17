@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 "Currency"
 
-from trytond.osv import fields, OSV, ExceptOSV
+from trytond.osv import fields, OSV
 import time
 from decimal import Decimal
 import datetime
@@ -23,6 +23,9 @@ class Currency(OSV):
     def __init__(self):
         super(Currency, self).__init__()
         self._order.insert(0, ('code', 'ASC'))
+        self._error_messages.update({
+            'no_rate': 'No rate found for the currency: %s at the date: %s',
+            })
 
     def default_active(self, cursor, user, context=None):
         return True
@@ -109,9 +112,8 @@ class Currency(OSV):
                 name = from_currency.name
             else:
                 name = to_currency.name
-            raise ExceptOSV('UserError', 'No rate found \n' \
-                    'for the currency: %s \n' \
-                    'at the date: %s' % (name, date))
+            self.raise_user_error(cursor, 'no_rate', (name, date),
+                    context=context)
         if round:
             return self.round(cursor, user, to_currency,
                     amount * to_currency.rate / from_currency.rate)
