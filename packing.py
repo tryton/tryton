@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 "Packing"
-from trytond.osv import fields, OSV, ExceptORM
+from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 import time
 from trytond.netsvc import LocalService
@@ -67,6 +67,16 @@ class PackingIn(OSV):
             'button_draft',
         ]
         self._order[0] = ('id', 'DESC')
+        self._error_messages.update({
+            'incoming_move_input_dest': 'Incoming Moves must ' \
+                    'have input location as destination location!',
+            'inventory_move_input_source': 'Inventory Moves must ' \
+                    'have input location as source location!',
+            'outgoing_move_output_source': 'Outgoing Moves must ' \
+                    'have output location as source location!',
+            'inventory_move_output_dest': 'Inventory Moves must ' \
+                    'have output location as destination location!',
+            })
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
@@ -97,27 +107,27 @@ class PackingIn(OSV):
                 if 'to_location' in act[1]:
                     if act[1]['to_location'] != \
                             packing.warehouse.input_location.id:
-                        raise ExceptORM('UserError', 'Incoming Moves must ' \
-                                'have input location as destination location!')
+                        self.raise_user_error(cursor,
+                                'incoming_move_input_dest', context=context)
             elif act[0] == 'write':
                 if 'to_location' in act[2]:
                     if act[2]['to_location'] != \
                             packing.warehouse.input_location.id:
-                        raise ExceptORM('UserError', 'Incoming Moves must ' \
-                                'have input location as destination location!')
+                        self.raise_user_error(cursor,
+                                'incoming_move_input_dest', context=context)
             elif act[0] == 'add':
                 move = move_obj.browse(cursor, user, act[1], context=context)
                 if move.to_location.id != \
                         packing.warehouse.input_location.id:
-                    raise ExceptORM('UserError', 'Incoming Moves must ' \
-                            'have input location as destination location!')
+                    self.raise_user_error(cursor,
+                            'incoming_move_input_dest', context=context)
             elif act[0] == 'set':
                 moves = move_obj.browse(cursor, user, act[1], context=context)
                 for move in moves:
                     if move.to_location.id != \
                             packing.warehouse.input_location.id:
-                        raise ExceptORM('UserError', 'Incoming Moves must ' \
-                                'have input location as destination location!')
+                        self.raise_user_error(cursor,
+                                'incoming_move_input_dest', context=context)
         self.write(cursor, user, packing_id, {
             'moves': value,
             }, context=context)
@@ -140,27 +150,27 @@ class PackingIn(OSV):
                 if 'from_location' in act[1]:
                     if act[1]['from_location'] != \
                             packing.warehouse.input_location.id:
-                        raise ExceptORM('UserError', 'Inventory Moves must ' \
-                                'have input location as source location!')
+                        self.raise_user_error(cursor,
+                                'inventory_move_input_source', context=context)
             elif act[0] == 'write':
                 if 'from_location' in act[2]:
                     if act[2]['from_location'] != \
                             packing.warehouse.input_location.id:
-                        raise ExceptORM('UserError', 'Inventory Moves must ' \
-                                'have input location as source location!')
+                        self.raise_user_error(cursor,
+                                'inventory_move_input_source', context=context)
             elif act[0] == 'add':
                 move = move_obj.browse(cursor, user, act[1], context=context)
                 if move.from_location.id != \
                         packing.warehouse.input_location.id:
-                    raise ExceptORM('UserError', 'Inventory Moves must ' \
-                            'have input location as source location!')
+                    self.raise_user_error(cursor,
+                            'inventory_move_input_source', context=context)
             elif act[0] == 'set':
                 moves = move_obj.browse(cursor, user, act[1], context=context)
                 for move in moves:
                     if move.from_location.id != \
                             packing.warehouse.input_location.id:
-                        raise ExceptORM('UserError', 'Inventory Moves must ' \
-                                'have input location as source location!')
+                        self.raise_user_error(cursor,
+                                'inventory_move_input_source', context=context)
         self.write(cursor, user, packing_id, {
             'moves': value,
             }, context=context)
@@ -341,27 +351,27 @@ class PackingOut(OSV):
                 if 'from_location' in act[1]:
                     if act[1]['from_location'] != \
                             packing.warehouse.output_location.id:
-                        raise ExceptORM('UserError', 'Outgoing Moves must ' \
-                                'have output location as source location!')
+                        self.raise_user_error(cursor,
+                                'outgoing_move_output_source', context=context)
             elif act[0] == 'write':
                 if 'from_location' in act[2]:
                     if act[2]['from_location'] != \
                             packing.warehouse.output_location.id:
-                        raise ExceptORM('UserError', 'Outgoing Moves must ' \
-                                'have output location as source location!')
+                        self.raise_user_error(cursor,
+                                'outgoing_move_output_source', context=context)
             elif act[0] == 'add':
                 move = move_obj.browse(cursor, user, act[1], context=context)
                 if move.from_location.id != \
                         packing.warehouse.output_location.id:
-                    raise ExceptORM('UserError', 'Outgoing Moves must ' \
-                            'have output location as source location!')
+                    self.raise_user_error(cursor,
+                            'outgoing_move_output_source', context=context)
             elif act[0] == 'set':
                 moves = move_obj.browse(cursor, user, act[1], context=context)
                 for move in moves:
                     if move.from_location.id != \
                             packing.warehouse.output_location.id:
-                        raise ExceptORM('UserError', 'Outgoing Moves must ' \
-                                'have output location as source location!')
+                        self.raise_user_error(cursor,
+                                'outgoing_move_output_source', context=context)
         self.write(cursor, user, packing_id, {
             'moves': value,
             }, context=context)
@@ -385,27 +395,27 @@ class PackingOut(OSV):
                 if 'to_location' in act[1]:
                     if act[1]['to_location'] != \
                             packing.warehouse.output_location.id:
-                        raise ExceptORM('UserError', 'Inventory Moves must ' \
-                                'have output location as destination location!')
+                        self.raise_user_error(cursor,
+                                'inventory_move_output_dest', context=context)
             elif act[0] == 'write':
                 if 'to_location' in act[2]:
                     if act[2]['to_location'] != \
                             packing.warehouse.output_location.id:
-                        raise ExceptORM('UserError', 'Inventory Moves must ' \
-                                'have output location as destination location!')
+                        self.raise_user_error(cursor,
+                                'inventory_move_output_dest', context=context)
             elif act[0] == 'add':
                 move = move_obj.browse(cursor, user, act[1], context=context)
                 if move.to_location.id != \
                         packing.warehouse.output_location.id:
-                    raise ExceptORM('UserError', 'Inventory Moves must ' \
-                            'have output location as destination location!')
+                    self.raise_user_error(cursor,
+                            'inventory_move_output_dest', context=context)
             elif act[0] == 'set':
                 moves = move_obj.browse(cursor, user, act[1], context=context)
                 for move in moves:
                     if move.to_location.id != \
                             packing.warehouse.output_location.id:
-                        raise ExceptORM('UserError', 'Inventory Moves must ' \
-                                'have output location as destination location!')
+                        self.raise_user_error(cursor,
+                                'inventory_move_output_dest', context=context)
         self.write(cursor, user, packing_id, {
             'moves': value,
             }, context=context)

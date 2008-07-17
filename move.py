@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 "Move"
-from trytond.osv import fields, OSV, ExceptORM
-from trytond.wizard import Wizard, WizardOSV, ExceptWizard
+from trytond.osv import fields, OSV
+from trytond.wizard import Wizard, WizardOSV
 import time
 from decimal import Decimal
 import datetime
@@ -89,6 +89,12 @@ class Move(OSV):
              'Error! You can not use service product for a move.', ['product'])
         ]
         self._order[0] = ('id', 'DESC')
+        self._error_messages.update({
+            'set_state_draft': 'You can not set state to draft!',
+            'set_state_assigned': 'You can not set state to assigned!',
+            'set_state_done': 'You can not set state to done!',
+            'del_draft_cancel': 'You can only delete draft or cancelled moves!',
+            })
 
     def default_to_location(self, cursor, user, context=None):
         if context and context.get('warehouse') and context.get('type'):
@@ -257,16 +263,16 @@ class Move(OSV):
             for move in self.browse(cursor, user, ids, context=context):
                 if vals['state'] == 'draft':
                     if move.state in ('assigned', 'done'):
-                        raise ExceptORM('UserError', 'You can not set ' \
-                                'state to draft!')
+                        self.raise_user_error(cursor, 'set_state_draft',
+                                context=context)
                 elif vals['state'] == 'assigned':
                     if move.state in ('cancel', 'done'):
-                        raise ExceptORM('UserError', 'You can not set ' \
-                                'state to assigned!')
+                        self.raise_user_error(cursor, 'set_state_assigned',
+                                context=context)
                 elif vals['state'] == 'done':
                     if move.state in ('cancel'):
-                        raise ExceptORM('UserError', 'You can not set ' \
-                                'state to done!')
+                        self.raise_user_error(cursor, 'set_state_done',
+                                context=context)
                     if move.type == 'input' \
                             and move.product.cost_price_method == 'average':
                         ctx = context.copy()
@@ -298,8 +304,8 @@ class Move(OSV):
     def unlink(self, cursor, user, ids, context=None):
         for move in self.browse(cursor, user, ids, context=context):
             if move.state not in  ('draft', 'cancel'):
-                raise ExceptORM('UserError',
-                        'You can only delete draft or cancelled moves!')
+                self.raise_user_error(cursor, 'del_draft_cancel',
+                        context=context)
         return super(Move, self).unlink(cursor, user, ids, context=context)
 
 Move()
