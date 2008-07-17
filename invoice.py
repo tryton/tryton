@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 "Invoice"
 
-from trytond.osv import fields, OSV, ExceptORM
+from trytond.osv import fields, OSV
 import datetime
 import mx.DateTime
 from decimal import Decimal
@@ -36,6 +36,10 @@ class PaymentTerm(OSV):
     def __init__(self):
         super(PaymentTerm, self).__init__()
         self._order.insert(0, ('name', 'ASC'))
+        self._error_messages.update({
+            'invalid_line': 'Invalid payment term line!',
+            'missing_remainder': 'Payment term missing a remainder line!',
+            })
 
     def default_active(self, cursor, user, context=None):
         return True
@@ -61,13 +65,15 @@ class PaymentTerm(OSV):
             value_date = delay_obj.get_date(cursor, user, line, date, context)
             if not value or not value_date:
                 if (not remainder) and line.amount:
-                    raise ExceptORM('Error', 'Invalid payment term line!')
+                    self.raise_user_error(cursor, 'invalid_line',
+                            context=context)
                 else:
                     continue
             res.append((value_date, value))
             remainder -= value
         if not currency_obj.is_zero(cursor, user, currency, remainder):
-            raise ExceptORM('Error', 'Payment term missing a remainder line!')
+            self.raise_user_error(cursor, 'missing_remainder',
+                    context=context)
         return res
 
 PaymentTerm()
@@ -277,6 +283,31 @@ class Invoice(OSV):
                     'than on invoice line account!', ['account']),
         ]
         self._order.insert(0, ('number', 'ASC'))
+        self._error_messages.update({
+            'reset_draft': 'You can not reset to draft ' \
+                    'an invoice that have move!',
+            'missing_tax_line': 'Taxes defined ' \
+                    'but not in invoice lines!\n' \
+                    'Re-compute the invoice.',
+            'diff_tax_line': 'Base taxes ' \
+                    'different from invoice lines!\n' \
+                    'Re-compute the invoice.',
+            'missing_tax_line2': 'Taxes defined ' \
+                    'on invoice lines but not on invoice!\n' \
+                    'Re-compute the invoice.',
+            'no_invoice_sequence': 'There is no invoice sequence ' \
+                    'on the period/fiscal year!',
+            'modify_invoice': 'You can not modify invoice that is ' \
+                    'open, paid or canceled!',
+            'same_debit_account': 'Debit account on journal is ' \
+                    'the same than the invoice account!',
+            'missing_debit_account': 'The debit account on journal is ' \
+                    'missing!',
+            'same_credit_account': 'Credit account on journal is ' \
+                    'the same than the invoice account!',
+            'missing_credit_account': 'The credit account on journal is ' \
+                    'missing!',
+            })
 
     def default_type(self, cursor, user, context=None):
         if context is None:
@@ -491,8 +522,8 @@ class Invoice(OSV):
         workflow_service = LocalService('workflow')
         for invoice in self.browse(cursor, user, ids, context=context):
             if invoice.move:
-                raise ExceptORM('Error', 'You can not reset to draft ' \
-                        'an invoice that have move!')
+                self.raise_user_error(cursor, 'reset_draft',
+                        context=context)
             workflow_service.trg_create(user, 'account.invoice',
                     invoice.id, cursor)
         self.write(cursor, user, ids, {'state': 'draft'})
@@ -570,9 +601,8 @@ class Invoice(OSV):
                     tax_keys.append(key)
                     if not key in computed_taxes:
                         if exception:
-                            raise ExceptORM('Warning', 'Taxes defined ' \
-                                    'but not in invoice lines!\n' \
-                                    'Re-compute the invoice.')
+                            self.raise_user_error(cursor, 'missing_tax_line',
+                                    context=context)
                         tax_obj.unlink(cursor, user, tax.id,
                                 context=context)
                         continue
@@ -580,17 +610,15 @@ class Invoice(OSV):
                             invoice.currency,
                             computed_taxes[key]['base'] - tax.base):
                         if exception:
-                            raise ExceptORM('Warning', 'Base taxes ' \
-                                    'different from invoice lines!\n' \
-                                    'Re-compute the invoice.')
+                            self.raise_user_error(cursor, 'diff_tax_line',
+                                    context=context)
                         tax_obj.write(cursor, user, tax.id,
                                 computed_taxes[key], context=context)
                 for key in computed_taxes:
                     if not key in tax_keys:
                         if exception:
-                            raise ExceptORM('Warning', 'Taxes defined ' \
-                                    'on invoice lines but not on invoice!\n' \
-                                    'Re-compute the invoice.')
+                            self.raise_user_error(cursor, 'missing_tax_line',
+                                    context=context)
                         tax_obj.create(cursor, user, computed_taxes[key],
                                 context=context)
         return True
@@ -725,8 +753,8 @@ class Invoice(OSV):
         period = period_obj.browse(cursor, user, period_id, context=context)
         sequence_id = period[invoice.type + '_sequence'].id
         if not sequence_id:
-            raise ExceptORM('UserError',
-                    'There is not invoice sequence on the period/fiscal year!')
+            self.raise_user_error(cursor, 'no_invoice_sequence',
+                    context=context)
         number = sequence_obj.get_id(cursor, user, sequence_id)
         self.write(cursor, user, invoice_id, {
             'number': number,
@@ -739,9 +767,8 @@ class Invoice(OSV):
         '''
         for invoice in self.browse(cursor, user, ids, context=context):
             if invoice.state in ('open', 'paid'):
-                raise ExceptORM('UserError',
-                        'You can not modify invoice that is ' \
-                                'open, paid or canceled!')
+                self.raise_user_error(cursor, 'modify_invoice',
+                        context=context)
         return
 
     def name_get(self, cursor, user, ids, context=None):
@@ -932,11 +959,11 @@ class Invoice(OSV):
                 'second_currency': second_currency,
             })
             if invoice.account.id == journal.debit_account.id:
-                raise ExceptORM('Error', 'Debit account on journal is ' \
-                        'the same than the invoice account!')
+                self.raise_user_error(cursor, 'same_debit_account',
+                        context=context)
             if not journal.debit_account:
-                raise ExceptORM('Error', 'The debit account on journal is ' \
-                        'missing!')
+                self.raise_user_error(cursor, 'missing_debit_account',
+                        context=context)
         else:
             lines.append({
                 'name': description,
@@ -957,11 +984,11 @@ class Invoice(OSV):
                 'second_currency': second_currency,
             })
             if invoice.account.id == journal.debit_account.id:
-                raise ExceptORM('Error', 'Credit account on journal is ' \
-                        'the same than the invoice account!')
+                self.raise_user_error(cursor, 'same_credit_account',
+                        context=context)
             if not journal.credit_account:
-                raise ExceptORM('Error', 'The credit account on journal is ' \
-                        'missing!')
+                self.raise_user_error(cursor, 'missing_credit_account',
+                        context=context)
 
         period_id = period_obj.find(cursor, user, invoice.company.id,
                 date=date, context=context)
@@ -1119,6 +1146,12 @@ class InvoiceLine(OSV):
                     'than the invoice account!', ['account']),
         ]
         self._order.insert(0, ('sequence', 'ASC'))
+        self._error_messages.update({
+            'modify': 'You can not modify line from an invoice ' \
+                    'that is open, paid or canceled!',
+            'create': 'You can not add a line to an invoice ' \
+                    'that is open, paid or canceled!',
+            })
 
     def default_type(self, cursor, user, context=None):
         return 'line'
@@ -1239,9 +1272,7 @@ class InvoiceLine(OSV):
         '''
         for line in self.browse(cursor, user, ids, context=context):
             if line.invoice.state in ('open', 'paid', 'cancel'):
-                raise ExceptORM('UserError',
-                        'You can not modify line from an invoice ' \
-                                'that is open, paid or canceled!')
+                self.raise_user_error(cursor, 'modify', context=context)
         return
 
     def unlink(self, cursor, user, ids, context=None):
@@ -1264,9 +1295,7 @@ class InvoiceLine(OSV):
             invoice = invoice_obj.browse(cursor, user, vals['invoice'],
                     context=context)
             if invoice.state in ('open', 'paid', 'cancel'):
-                raise ExceptORM('UserError',
-                        'You can not add a line to an invoice ' \
-                                'that is open, paid or canceled!')
+                self.raise_user_error(cursor, 'create', context=context)
         return super(InvoiceLine, self).create(cursor, user, vals,
                 context=context)
 
@@ -1412,6 +1441,12 @@ class InvoiceTax(OSV):
                     ['account', 'base_code', 'tax_code']),
         ]
         self._order.insert(0, ('sequence', 'ASC'))
+        self._error_messages.update({
+            'modify': 'You can not modify tax from an invoice ' \
+                    'that is open, paid or canceled!',
+            'create': 'You can not add a line to an invoice ' \
+                    'that is open, paid or canceled!',
+            })
 
     def default_base(self, cursor, user, context=None):
         return Decimal('0.0')
@@ -1434,9 +1469,8 @@ class InvoiceTax(OSV):
         '''
         for tax in self.browse(cursor, user, ids, context=context):
             if tax.invoice.state in ('open', 'paid', 'cancel'):
-                raise ExceptORM('UserError',
-                        'You can not modify tax from an invoice ' \
-                                'that is open, paid or canceled!')
+                self.raise_user_error(cursor, 'modify',
+                        context=context)
         return
 
     def unlink(self, cursor, user, ids, context=None):
@@ -1459,9 +1493,7 @@ class InvoiceTax(OSV):
             invoice = invoice_obj.browse(cursor, user, vals['invoice'],
                     context=context)
             if invoice.state in ('open', 'paid', 'cancel'):
-                raise ExceptORM('UserError',
-                        'You can not add a line to an invoice ' \
-                                'that is open, paid or canceled!')
+                self.raise_user_error(cursor, 'create', context=context)
         return super(InvoiceTax, self).create(cursor, user, vals,
                 context=context)
 
@@ -1732,6 +1764,14 @@ class Template(OSV):
             'product_supplier_taxes_rel', 'product', 'tax',
             'Supplier Taxes', domain=[('parent', '=', False)])
 
+    def __init__(self):
+        super(Template, self).__init__()
+        self._error_messages.update({
+            'missing_account': 'There is no account ' \
+                    'expense/revenue define on the product ' \
+                    '%s (%d)',
+            })
+
     def get_account(self, cursor, user, ids, name, arg, context=None):
         account_obj = self.pool.get('account.account')
         res = {}
@@ -1745,9 +1785,8 @@ class Template(OSV):
                     res[product.id] = account_obj.name_get(cursor, user,
                             product.category[name].id, context=context)[0]
                 else:
-                    raise ExceptORM('Error', 'There is no account ' \
-                            'expense/revenue define on the product ' \
-                            '%s (%d)' % (product.name, product.id))
+                    self.raise_user_error(cursor, 'missing_account',
+                            (product.name, product.id), context=context)
         return res
 
 Template()
@@ -1805,6 +1844,11 @@ class FiscalYear(OSV):
                             'in_invoice_sequence', 'out_refund_sequence',
                             'in_refund_sequence']),
         ]
+        self._error_messages.update({
+            'change_invoice_sequence': 'You can not change ' \
+                    'the invoice sequence if there is already ' \
+                    'an invoice opened in the fiscalyear',
+            })
 
     def check_invoice_sequences(self, cursor, user, ids):
         for fiscalyear in self.browse(cursor, user, ids):
@@ -1833,9 +1877,8 @@ class FiscalYear(OSV):
                             ('number', '!=', False),
                             ('type', '=', sequence[:-9]),
                             ], context=context):
-                            raise ExceptORM('UserError', 'You can not change ' \
-                                    'the invoice sequence if there is already ' \
-                                    'an invoice opened in the fiscalyear')
+                            self.raise_user_error(cursor,
+                                    'change_invoice_sequence', context=context)
         return super(FiscalYear, self).write(cursor, user, ids, vals,
                 context=context)
 
@@ -1866,6 +1909,11 @@ class Period(OSV):
                             'in_invoice_sequence', 'out_refund_sequence',
                             'in_refund_sequence']),
         ]
+        self._error_messages.update({
+            'change_invoice_sequence': 'You can not change ' \
+                    'the invoice sequence if there is already ' \
+                    'an invoice opened in the period',
+            })
 
     def check_invoice_sequences(self, cursor, user, ids):
         for period in self.browse(cursor, user, ids):
@@ -1905,9 +1953,8 @@ class Period(OSV):
                             ('number', '!=', False),
                             ('type', '=', sequence[:-9]),
                             ], context=context):
-                            raise ExceptORM('UserError', 'You can not change ' \
-                                    'the invoice sequence if there is already ' \
-                                    'an invoice opened in the period')
+                            self.raise_user_error(cursor,
+                                    'change_invoice_sequence', context=context)
         return super(Period, self).write(cursor, user, ids, vals,
                 context=context)
 
