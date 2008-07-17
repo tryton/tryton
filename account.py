@@ -1243,3 +1243,114 @@ class CreateChartAccount(Wizard):
         return {}
 
 CreateChartAccount()
+
+
+class OpenThirdPartyBalanceInit(WizardOSV):
+    _name = 'account.account.open_third_party_balance.init'
+    company = fields.Many2One('company.company', 'Company', required=True)
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+            required=True)
+    posted = fields.Boolean('Posted Move', help='Only posted move')
+
+
+    def default_fiscalyear(self, cursor, user, context=None):
+        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        if context is None:
+            context = {}
+        fiscalyear_id = fiscalyear_obj.find(cursor, user,
+                context.get('company', False), exception=False, context=context)
+        if fiscalyear_id:
+            return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
+                    context=context)[0]
+        return False
+
+    def default_posted(self, cursor, user, context=None):
+        return False
+
+    def default_company(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        company_obj = self.pool.get('company.company')
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
+OpenThirdPartyBalanceInit()
+
+
+class OpenThirdPartyBalance(Wizard):
+    'Open Third Party Balance'
+    _name = 'account.account.open_third_party_balance'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.account.open_third_party_balance.init',
+                'state': [
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('print', 'Print', 'tryton-ok', True),
+                ],
+            },
+        },
+        'print': {
+            'result': {
+                'type': 'print',
+                'report': 'account.account.third_party_balance',
+                'state': 'end',
+            },
+        },
+    }
+
+OpenThirdPartyBalance()
+
+
+class ThirdPartyBalance(Report):
+    _name = 'account.account.third_party_balance'
+
+    def _get_objects(self, cursor, user, ids, model, datas, context):
+        party_obj = self.pool.get('relationship.party')
+        move_line_obj = self.pool.get('account.move.line')
+        company_obj = self.pool.get('company.company')
+        company = company_obj.browse(cursor, user,
+                datas['form']['company'], context=context)
+        context['company'] = company
+        context['digits'] = company.currency.digits
+        context['fiscalyear'] = datas['form']['fiscalyear']
+        line_query = move_line_obj.query_get(cursor, user, context=context)
+        if datas['form']['posted']:
+            posted_clause = "and m.state = 'posted' "
+        else:
+            posted_clause = ""
+
+        cursor.execute('SELECT l.party, SUM(l.debit), SUM(l.credit) ' \
+                       'FROM account_move_line l ' \
+                         'JOIN account_move m on (l.move = m.id) '
+                         'JOIN account_account a on (l.account = a.id) '
+                       'WHERE l.party is not null '\
+                         'AND a.active ' \
+                         'AND a.kind in (\'payable\',\'receivable\') ' \
+                         'AND l.reconciliation IS NULL ' \
+                         'AND a.company = %s ' \
+                         'AND (l.maturity_date <= %s ' \
+                               'OR l.maturity_date IS NULL) '\
+                         'AND ' + line_query + ' ' \
+                         + posted_clause + \
+                       'GROUP BY l.party',
+                       (datas['form']['company'],datetime.date.today()))
+
+        res = cursor.fetchall()
+        party_name = dict(party_obj.name_get(
+                cursor, user, [x[0] for x in res],
+                context=context))
+        objects = [{'name': party_name[x[0]],
+                 'debit': x[1],
+                 'credit': x[2],
+                 'solde': x[1]-x[2]} for x in res]
+        objects.sort(lambda x,y: cmp(x['name'],y['name']))
+        context['total_debit'] = sum((o['debit'] for o in objects))
+        context['total_credit'] = sum((o['credit'] for o in objects))
+        context['total_solde'] = sum((o['solde'] for o in objects))
+        return objects
+
+ThirdPartyBalance()

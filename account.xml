@@ -683,5 +683,35 @@
             id="menu_open_income_statement" icon="tryton-tree"
             name="Income Statement"/>
 
+        <record model="ir.ui.view" id="open_third_party_balance_init_view_form">
+            <field name="model">account.account.open_third_party_balance.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Third Party Balance" col="2">
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.report" id="report_third_party_balance">
+            <field name="name">Third Party Balance</field>
+            <field name="model">relationship.partner</field>
+            <field name="report_name">account.account.third_party_balance</field>
+            <field name="report">account/third_party_balance.odt</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_open_third_party_balance">
+            <field name="name">Open Third Party Balance</field>
+            <field name="wiz_name">account.account.open_third_party_balance</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_open_third_party_balance"
+            id="menu_third_party_balance" icon="tryton-print"
+            name="Third Party Balance"/>
+
     </data>
 </tryton>
