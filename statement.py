@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 "Statement"
 
-from trytond.osv import fields, OSV, ExceptORM
+from trytond.osv import fields, OSV
 from trytond.netsvc import LocalService
 from decimal import Decimal
 
@@ -37,6 +37,11 @@ class Statement(OSV):
             'draft_workflow',
         ]
         self._order[0] = ('id', 'DESC')
+        self._error_messages.update({
+            'wrong_end_balance': 'Wrong End balance:\n' \
+                    ' * Expected: %s\n' \
+                    ' * Computed: %s',
+            })
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
@@ -69,10 +74,9 @@ class Statement(OSV):
         for line in statement.lines:
             computed_end_balance += line.amount
         if computed_end_balance != statement.end_balance:
-            raise ExceptORM('Error:', 'Wrong End balance:\n'\
-                                ' * Expected: %s\n'\
-                                ' * Computed: %s'%\
-                                (statement.end_balance, computed_end_balance))
+            self.raise_user_error(cursor, 'wrong_end_balance',
+                    (statement.end_balance, computed_end_balance),
+                    context=context)
         for line in statement.lines:
             statement_line_obj.create_move(cursor, user, line, context=context)
         self.write(cursor, user, statement_id,
@@ -126,6 +130,13 @@ class Line(OSV):
     description = fields.Char('Description', size=None)
     move = fields.Many2One(
         'account.move', 'Account Move', readonly=True)
+
+    def __init__(self):
+        super(Line, self).__init__()
+        self._error_messages.update({
+            'debit_credit_account_bank_journal': 'Please provide debit and ' \
+                    'credit account on bank journal.',
+            })
 
     def on_change_party(self, cursor, user, ids, value, context=None):
         if not (value.get('party') and value.get('amount')):
@@ -217,8 +228,8 @@ class Line(OSV):
         else:
             account = journal.debit_account
         if not account:
-            raise ExceptORM('Error:', 'Please provide debit and '\
-                                'credit account on bank journal.')
+            self.raise_user_error(cursor, 'debit_credit_account_bank_journal',
+                    context=context)
         vals.append(
             {'name': statement_line.date,
              'debit': amount < zero and -amount or zero,
