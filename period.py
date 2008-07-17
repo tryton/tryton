@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 'Period'
 
-from trytond.osv import fields, OSV, ExceptORM
+from trytond.osv import fields, OSV
 from trytond.wizard import Wizard
 import datetime
 
@@ -39,6 +39,20 @@ class Period(OSV):
                         'per fiscal year!', ['post_move_sequence']),
         ]
         self._order.insert(0, ('start_date', 'ASC'))
+        self._error_messages.update({
+            'no_period_date': 'No period defined for this date!',
+            'modify_del_period_moves': 'You can not modify/delete ' \
+                    'a period with moves!',
+            'create_period_closed_fiscalyear': 'You can not create ' \
+                    'a period on a closed fiscal year!',
+            'open_period_closed_fiscalyear': 'You can not open ' \
+                    'a period from a closed fiscal year!',
+            'change_post_move_sequence': 'You can not change ' \
+                    'the post move sequence ' \
+                    'if there is already posted move in the period',
+            'close_period_non_posted_move': 'You can not close ' \
+                    'a period with non posted moves!',
+            })
 
     def default_state(self, cursor, user, context=None):
         return 'open'
@@ -86,7 +100,8 @@ class Period(OSV):
             ], order=[('start_date', 'DESC')], limit=1, context=context)
         if not ids:
             if exception:
-                raise ExceptORM('Error', 'No period defined for this date!')
+                self.raise_user_error(cursor, 'no_period_date',
+                        context=context)
             else:
                 return False
         return ids[0]
@@ -97,8 +112,8 @@ class Period(OSV):
             ('period', 'in', ids),
             ], limit=1, context=context)
         if move_ids:
-            raise ExceptORM('UserError', 'You can not modify/delete ' \
-                    'a period with moves!')
+            self.raise_user_error(cursor, 'modify_del_period_moves',
+                    context=context)
         return
 
     def search(self, cursor, user, args, offset=0, limit=None, order=None,
@@ -126,8 +141,8 @@ class Period(OSV):
             fiscalyear = fiscalyear_obj.browse(cursor, user, vals['fiscalyear'],
                     context=context)
             if fiscalyear.state == 'close':
-                raise ExceptORM('UserError', 'You can not create ' \
-                        'a period on a closed fiscal year!')
+                self.raise_user_error(cursor,
+                        'create_period_closed_fiscalyear', context=context)
             if not vals.get('post_move_sequence'):
                 vals['post_move_sequence'] = fiscalyear.post_move_sequence.id
         return super(Period, self).create(cursor, user, vals, context=context)
@@ -142,8 +157,8 @@ class Period(OSV):
             for period in self.browse(cursor, user, ids,
                     context=context):
                 if period.fiscalyear.state == 'close':
-                    raise ExceptORM('UserError', 'You can not open ' \
-                            'a period from a closed fiscal year!')
+                    self.raise_user_error(cursor,
+                            'open_period_closed_fiscalyear', context=context)
         if vals.get('post_move_sequence'):
             for period in self.browse(cursor, user, ids, context=context):
                 if period.post_move_sequence and \
@@ -153,9 +168,8 @@ class Period(OSV):
                         ('period', '=', period.id),
                         ('state', '=', 'posted'),
                         ], context=context):
-                        raise ExceptORM('UserError', 'You can not change ' \
-                                'the post move sequence \n' \
-                                'if there is already posted move in the period')
+                        self.raise_user_error(cursor,
+                                'change_post_move_sequence', context=context)
         return super(Period, self).write(cursor, user, ids, vals,
                 context=context)
 
@@ -175,8 +189,8 @@ class Period(OSV):
             ('period', 'in', ids),
             ('state', '!=', 'posted'),
             ], context=context):
-            raise ExceptORM('UserError', 'You can not close ' \
-                    'a period with non posted moves!')
+            self.raise_user_error(cursor, 'close_period_non_posted_move',
+                    context=context)
         #First close the period to be sure
         #it will not have new journal.period created between.
         self.write(cursor, user, ids, {

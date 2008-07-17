@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 "Journal"
 
-from trytond.osv import fields, OSV, ExceptORM
+from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 
 STATES = {
@@ -148,6 +148,14 @@ class Period(OSV):
                 'You can only open one journal per period!'),
         ]
         self._order.insert(0, ('name', 'ASC'))
+        self._error_messages.update({
+            'modify_del_journal_period': 'You can not modify/delete ' \
+                    'a journal - period with moves!',
+            'create_journal_period': 'You can not create ' \
+                    'a journal - period on a closed period!',
+            'open_journal_period': 'You can not open ' \
+                    'a journal - period from a closed period!',
+            })
 
     def default_active(self, cursor, user, context=None):
         return True
@@ -169,8 +177,8 @@ class Period(OSV):
                 ('period', '=', period.period.id),
                 ], limit=1, context=context)
             if move_ids:
-                raise ExceptORM('Error', 'You can not modify/delete ' \
-                        'a journal - period with moves!')
+                self.raise_user_error(cursor, 'modify_del_journal_period',
+                        context=context)
         return
 
     def create(self, cursor, user, vals, context=None):
@@ -179,8 +187,8 @@ class Period(OSV):
             period = period_obj.browse(cursor, user, vals['period'],
                     context=context)
             if period.state == 'close':
-                raise ExceptORM('UserError', 'You can not create ' \
-                        'a journal - period on a closed period!')
+                self.raise_user_error(cursor, 'create_journal_period',
+                        context=context)
         return super(Period, self).create(cursor, user, vals, context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
@@ -191,8 +199,8 @@ class Period(OSV):
             for journal_period in self.browse(cursor, user, ids,
                     context=context):
                 if journal_period.period.state == 'close':
-                    raise ExceptORM('UserError', 'You can not open ' \
-                            'a journal - period from a closed period!')
+                    self.raise_user_error(cursor, 'open_journal_period',
+                            context=context)
         return super(Period, self).write(cursor, user, ids, vals,
                 context=context)
 

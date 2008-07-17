@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 'Move'
 
-from trytond.osv import fields, OSV, ExceptORM
+from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 from trytond.report import Report
 from decimal import Decimal
@@ -56,6 +56,13 @@ class Move(OSV):
         ]
         self._order.insert(0, ('date', 'DESC'))
         self._order.insert(1, ('reference', 'DESC'))
+        self._error_messages.update({
+            'del_posted_move': 'You can not delete posted move!',
+            'post_empty_move': 'You can not post an empty move!',
+            'post_unbalanced_move': 'You can not post a unbalanced move!',
+            'modify_posted_move': 'You can not modify a posted move ' \
+                    'in this journal!',
+            })
 
     def _auto_init(self, cursor, module_name):
         super(Move, self)._auto_init(cursor, module_name)
@@ -163,8 +170,8 @@ class Move(OSV):
         move_line_obj = self.pool.get('account.move.line')
         for move in self.browse(cursor, user, ids, context=context):
             if move.state == 'posted':
-                raise ExceptORM('UserError',
-                        'You can not delete posted move!')
+                self.raise_user_error(cursor, 'del_posted_move',
+                        context=context)
             if move.lines:
                 move_line_ids = [x.id for x in move.lines]
                 move_line_obj.unlink(cursor, user, move_line_ids,
@@ -235,16 +242,16 @@ class Move(OSV):
         for move in moves:
             amount = Decimal('0.0')
             if not move.lines:
-                raise ExceptORM('UserError',
-                        'You can not post an empty move!')
+                self.raise_user_error(cursor, 'post_empty_move',
+                        context=context)
             company = None
             for line in move.lines:
                 amount += line.debit - line.credit
                 if not company:
                     company = line.account.company
             if not currency_obj.is_zero(cursor, user, company.currency, amount):
-                raise ExceptORM('UserError',
-                        'You can not post a unbalanced move!')
+                self.raise_user_error(cursor, 'post_unbalanced_move',
+                        context=context)
         for move in moves:
             reference = sequence_obj.get_id(cursor, user,
                     move.period.post_move_sequence.id)
@@ -258,8 +265,8 @@ class Move(OSV):
     def draft(self, cursor, user, ids, context=None):
         for move in self.browse(cursor, user, ids, context=context):
             if not move.journal.update_posted:
-                raise ExceptORM('UserError',
-                        'You can not modify a posted move in this journal!')
+                self.raise_user_error(cursor, 'modify_posted_move',
+                        context=context)
         return self.write(cursor, user, ids, {
             'state': 'draft',
             }, context=context)
@@ -289,6 +296,9 @@ class Reconciliation(OSV):
                     'nor in the same account, nor in account to reconcile!',
                     ['lines']),
         ]
+        self._error_messages.update({
+            'modify': 'You can not modify a reconciliation!',
+            })
 
     def default_name(self, cursor, user, context=None):
         sequence_obj = self.pool.get('ir.sequence')
@@ -304,7 +314,7 @@ class Reconciliation(OSV):
         return res
 
     def write(self, cursor, user, ids, vals, context=None):
-        raise ExceptORM('UserError', 'You can not modify a reconciliation!')
+        self.raise_user_error(cursor, 'modify', context=context)
 
     def check_lines(self, cursor, user, ids):
         currency_obj = self.pool.get('currency.currency')
@@ -402,6 +412,13 @@ class Line(OSV):
             'on_write',
         ]
         self._order[0] = ('id', 'DESC')
+        self._error_messages.update({
+            'add_modify_closed_journal_period': 'You can not ' \
+                    'add/modify lines in a closed journal period!',
+            'modify_posted_move': 'You can not modify line from a posted move!',
+            'modify_reconciled': 'You can not modify reconciled line!',
+            'no_journal': 'No journal defined!',
+            })
 
     def default_date(self, cursor, user, context=None):
         '''
@@ -923,9 +940,8 @@ class Line(OSV):
             journal_period = journal_period_obj.browse(cursor, user,
                     journal_period_ids[0], context=context)
             if journal_period.state == 'close':
-                raise ExceptORM('UserError',
-                        'You can not add/modify lines \n' \
-                                'in a closed journal period!')
+                self.raise_user_error(cursor,
+                        'add_modify_closed_journal_period', context=context)
         else:
             journal = journal_obj.browse(cursor, user, journal_id,
                     context=context)
@@ -945,11 +961,11 @@ class Line(OSV):
         journal_period_done = []
         for line in self.browse(cursor, user, ids, context=context):
             if line.move.state == 'posted':
-                raise ExceptORM('UserError',
-                        'You can not modify line from a posted move!')
+                self.raise_user_error(cursor, 'modify_posted_move',
+                        context=context)
             if line.reconciliation:
-                raise ExceptORM('UserError',
-                        'You can not modify reconciled line!')
+                self.raise_user_error(cursor, 'modify_reconciled',
+                        context=context)
             journal_period = (line.journal.id, line.period.id)
             if journal_period not in journal_period_done:
                 self.check_journal_period_modify(cursor, user, line.period.id,
@@ -992,7 +1008,8 @@ class Line(OSV):
         if not vals.get('move'):
             journal_id = vals.get('journal', context.get('journal'))
             if not journal_id:
-                raise ExceptORM('Error', 'No journal defined!')
+                self.raise_user_error(cursor, 'no_journal',
+                        context=context)
             journal = journal_obj.browse(cursor, user, journal_id,
                     context=context)
             if journal.centralised:

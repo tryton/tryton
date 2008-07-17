@@ -1,8 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 'Fiscal Year'
 
-from trytond.osv import fields, OSV, ExceptORM
-from trytond.wizard import Wizard, WizardOSV, ExceptWizard
+from trytond.osv import fields, OSV
+from trytond.wizard import Wizard, WizardOSV
 import mx.DateTime
 import datetime
 from decimal import Decimal
@@ -46,6 +46,11 @@ class FiscalYear(OSV):
                         'per fiscal year!', ['post_move_sequence']),
         ]
         self._order.insert(0, ('start_date', 'ASC'))
+        self._error_messages.update({
+            'change_post_move_sequence': 'You can not change ' \
+                    'the post move sequence',
+            'no_fiscalyear_date': 'No fiscal year defined for this date!',
+            })
 
     def default_state(self, cursor, user, context=None):
         return 'open'
@@ -92,8 +97,8 @@ class FiscalYear(OSV):
                 if fiscalyear.post_move_sequence and \
                         fiscalyear.post_move_sequence.id != \
                         vals['post_move_sequence']:
-                    raise ExceptORM('UserError', 'You can not change ' \
-                            'the post move sequence')
+                    self.raise_user_error(cursor, 'change_post_move_sequence',
+                            context=context)
         return super(FiscalYear, self).write(cursor, user, ids, vals,
                 context=context)
 
@@ -151,7 +156,8 @@ class FiscalYear(OSV):
             ], order=[('start_date', 'DESC')], limit=1, context=context)
         if not ids:
             if exception:
-                raise ExceptORM('Error', 'No fiscal year defined for this date!')
+                self.raise_user_error(cursor, 'no_fiscalyear_date',
+                        context=context)
             else:
                 return False
         return ids[0]
@@ -219,6 +225,17 @@ class CloseFiscalYear(Wizard):
             },
         },
     }
+
+    def __init__(self):
+        super(CloseFiscalYear, self).__init__()
+        self._error_messages.update({
+            'diff_fiscalyear': 'The fiscal years must be different!',
+            'period_in_fiscalyear': 'The period must be ' \
+                    'in the selected fiscal year!',
+            'centralised_journal': 'The journal must be centralised!',
+            'journal_default_debit_credit_account': 'The journal must have ' \
+                    'default debit/credit accounts!',
+            })
 
     def _process_account(self, cursor, user, account, period, journal, name,
             fiscalyear_id, period_ids, context=None):
@@ -308,23 +325,25 @@ class CloseFiscalYear(Wizard):
         account_obj = self.pool.get('account.account')
 
         if data['form']['close_fiscalyear'] == data['form']['fiscalyear']:
-            raise ExceptWizard('UserError',
-                    'The fiscal years must be different!')
+            self.raise_user_error(cursor, 'diff_fiscalyear',
+                    context=context)
 
         period = period_obj.browse(cursor, user, data['form']['period'],
                 context=context)
         if period.fiscalyear.id != data['form']['fiscalyear']:
-            raise ExceptWizard('UserError', 'The period must be ' \
-                    'in the selected fiscal year!')
+            self.raise_user_error(cursor, 'period_in_fiscalyear',
+                    context=context)
 
         journal = journal_obj.browse(cursor, user, data['form']['journal'],
                 context=context)
         if not journal.centralised:
-            raise ExceptWizard('UserError', 'The journal must be centralised!')
+            self.raise_user_error(cursor, 'centralised_journal',
+                    context=context)
 
         if not journal.credit_account or not journal.debit_account:
-            raise ExceptWizard('UserError', 'The journal must have ' \
-                    'default debit/credit accounts!')
+            self.raise_user_error(cursor,
+                    'journal_default_debit_credit_account',
+                    context=context)
 
         ctx = context.copy()
         ctx['fiscalyear'] = data['form']['close_fiscalyear']
