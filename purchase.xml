@@ -534,30 +534,30 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Purchase Line">
+                <form string="Purchase Line" cursor="product">
                     <label name="purchase"/>
                     <field name="purchase" colspan="3"/>
                     <label name="type"/>
                     <field name="type"/>
                     <label name="sequence"/>
                     <field name="sequence"/>
-                    <label name="quantity"/>
-                    <field name="quantity"/>
-                    <label name="unit"/>
-                    <field name="unit"/>
                     <label name="product"/>
                     <field name="product"/>
                     <newline/>
                     <label name="description"/>
                     <field name="description" colspan="3"/>
-                    <label name="amount"/>
-                    <field name="amount"/>
+                    <label name="quantity"/>
+                    <field name="quantity"/>
+                    <label name="unit"/>
+                    <field name="unit"/>
                     <label name="unit_price"/>
                     <field name="unit_price"/>
-                    <separator name="comment" colspan="4"/>
-                    <field name="comment" colspan="4"/>
+                    <label name="amount"/>
+                    <field name="amount"/>
                     <separator name="taxes" colspan="4"/>
                     <field name="taxes" colspan="4"/>
+                    <separator name="comment" colspan="4"/>
+                    <field name="comment" colspan="4"/>
                 </form>
                 ]]>
             </field>
