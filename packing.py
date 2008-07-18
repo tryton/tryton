@@ -43,13 +43,13 @@ class PackingIn(OSV):
                 "('to_location_warehouse', '=', warehouse),"\
             "]",
             states={
-                'readonly': "state in ('received', 'done')",
+                'readonly': "state in ('received', 'done', 'cancel')",
             }, context="{'warehouse': warehouse, 'type': 'incoming'}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
             relation='stock.move', string='Inventory Moves',
             fnct_inv='set_inventory_moves',
             states={
-                'readonly': "state in ('draft', 'done')",
+                'readonly': "state in ('draft', 'done', 'cancel')",
             }, context="{'warehouse': warehouse, 'type':'inventory_in'}")
     moves = fields.One2Many('stock.move', 'packing_in', 'Moves',
             readonly=True)
