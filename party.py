@@ -145,11 +145,26 @@ class Party(OSV):
         http://sima-pc.com/nif.php
         '''
         for party in self.browse(cursor, user, ids):
-            if not party.vat_number:
+            vat_number = party.vat_number
+
+            if not vat_number:
                 continue
+
             if not getattr(self, 'check_vat_' + \
-                    party.vat_country.lower())(party.vat_number):
-                return False
+                    party.vat_country.lower())(vat_number):
+
+                #Check if user doesn't have put country code in number
+                if vat_number.startswith(party.vat_country):
+                    vat_number = vat_number[len(party.vat_country):]
+                    self.write(cursor, user, party.id, {
+                        'vat_number': vat_number,
+                        })
+
+                    if not getattr(self, 'check_vat_' + \
+                        party.vat_country.lower())(vat_number):
+                        return False
+                else:
+                    return False
         return True
 
     def check_vat_at(self, vat):
