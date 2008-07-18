@@ -188,8 +188,8 @@ class AccountTemplate(OSV):
             return []
         if isinstance(ids, (int, long)):
             ids = [ids]
-        return [(r['id'], r['code'] and r['code'] + ' - ' + str(r[self._rec_name]) \
-                or str(r[self._rec_name])) for r in self.read(cursor, user, ids,
+        return [(r['id'], r['code'] and r['code'] + ' - ' + unicode(r[self._rec_name]) \
+                or unicode(r[self._rec_name])) for r in self.read(cursor, user, ids,
                     [self._rec_name, 'code'], context=context, load='_classic_write')]
 
 
@@ -459,8 +459,8 @@ class Account(OSV):
             return []
         if isinstance(ids, (int, long)):
             ids = [ids]
-        return [(r['id'], r['code'] and r['code'] + ' - ' + str(r[self._rec_name]) \
-                or str(r[self._rec_name])) for r in self.read(cursor, user, ids,
+        return [(r['id'], r['code'] and r['code'] + ' - ' + unicode(r[self._rec_name]) \
+                or unicode(r[self._rec_name])) for r in self.read(cursor, user, ids,
                     [self._rec_name, 'code'], context=context, load='_classic_write')]
 
     def copy(self, cursor, user, object_id, default=None, context=None):
