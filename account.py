@@ -970,12 +970,15 @@ class OpenBalanceSheet(Wizard):
         company = company_obj.browse(cursor, user, datas['form']['company'],
                 context=context)
         lang = context.get('language', False) or 'en_US'
+        encoding = locale.getdefaultlocale()[1]
+        if encoding == 'utf':
+            encoding = 'UTF-8'
+        if encoding == 'cp1252':
+            encoding = '1252'
         try:
             if os.name == 'nt':
-                locale.setlocale(locale.LC_ALL,
-                        _LOCALE2WIN32.get(lang, lang) + '.' + encoding)
-            else:
-                locale.setlocale(locale.LC_ALL, lang + '.' + encoding)
+                lang = _LOCALE2WIN32.get(lang, lang)
+            locale.setlocale(locale.LC_ALL, str(lang + '.' + encoding))
         except:
             pass
         date = time.strptime(str(datas['form']['date']), '%Y-%m-%d')
