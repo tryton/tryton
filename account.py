@@ -194,6 +194,15 @@ class AccountTemplate(OSV):
 
 
     def _get_account_value(self, cursor, user, template, context=None):
+        '''
+        Set the values for account creation.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the BrowseRecord of the template
+        :param context: the context
+        :return: a dictionary with account fields as key and values as value
+        '''
         res = {}
         res['name'] = template.name
         res['code'] = template.code
@@ -206,6 +215,23 @@ class AccountTemplate(OSV):
 
     def create_account(self, cursor, user, template, company_id, context=None,
             template2account=None, parent_id=False):
+        '''
+        Create recursively accounts based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the template id or the BrowseRecord of template
+                used for account creation
+        :param company_id: the id of the company for which accounts
+                are created
+        :param context: the context
+        :param template2account: a dictionary with template id as key
+                and account id as value, used to convert template id
+                into account. The dictionary is filled with new accounts
+        :param parent_id: the account id of the parent of the accounts
+                that must be created
+        :return: id of the account created
+        '''
         account_obj = self.pool.get('account.account')
 
         if template2account is None:
@@ -1194,9 +1220,36 @@ class CreateChartAccount(Wizard):
 
     def _action_create_account(self, cursor, user, datas, context=None):
         account_template_obj = self.pool.get('account.account.template')
+        tax_code_template_obj = self.pool.get('account.tax.code.template')
+        tax_template_obj = self.pool.get('account.tax.template')
+
+        template2account = {}
         account_template_obj.create_account(cursor, user,
                 datas['form']['account_template'], datas['form']['company'],
-                context=context)
+                context=context, template2account=template2account)
+
+        template2tax_code = {}
+        tax_code_template_ids = tax_code_template_obj.search(cursor, user, [
+            ('account', '=', datas['form']['account_template']),
+            ], context=context)
+        for tax_code_template in tax_code_template_obj.browse(cursor, user,
+                tax_code_template_ids, context=context):
+            tax_code_obj.create_tax_code(cursor, user, tax_code_template,
+                    datas['form']['company'], context=context,
+                    template2tax_code=template2tax_code)
+
+        template2tax = {}
+        tax_template_ids = tax_template_obj.search(cursor, user, [
+            ('account', '=', datas['form']['account_template']),
+            ], context=context)
+        for tax_template in tax_template_obj.browse(cursor, user,
+                tax_template_ids, context=context):
+            tax_template_obj.create_tax(cursor, user, tax_template,
+                    datas['form']['company'],
+                    template2tax_code=template2tax_code,
+                    template2account=template2account,
+                    context=context, template2tax=template2tax)
+
         return {'company': datas['form']['company']}
 
     def _action_create_properties(self, cursor, user, datas, context=None):

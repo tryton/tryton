@@ -23,6 +23,90 @@ class Group(OSV):
 Group()
 
 
+class CodeTemplate(OSV):
+    'Tax Code Template'
+    _name = 'account.tax.code.template'
+    _description = __doc__
+
+    name = fields.Char('Name', required=True)
+    code = fields.Char('Code')
+    parent = fields.Many2One('account.tax.code.template', 'Parent')
+    childs = fields.One2Many('account.tax.code.template', 'parent', 'Childs')
+    account = fields.Many2One('account.account.template', 'Account Template',
+            domain=[('parent', '=', False)], required=True)
+
+    def __init__(self):
+        super(CodeTemplate, self).__init__()
+        self._constraints += [
+            ('check_recursion',
+                'Error! You can not create recursive tax code!', ['parent']),
+        ]
+        self._order.insert(0, ('code', 'ASC'))
+        self._order.insert(0, ('account', 'ASC'))
+
+    def _get_tax_code_value(self, cursor, user, template, context=None):
+        '''
+        Set values for tax code creation.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the BrowseRecord of the template
+        :param context: the context
+        :return: a dictionary with account fields as key and values as value
+        '''
+        res = {}
+        res['name'] = template.name
+        res['code'] = template.code
+        return res
+
+    def create_tax_code(self, cursor, user, template, company_id, context=None,
+            template2tax_code=None, parent_id=False):
+        '''
+        Create recursively tax codes based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the template id or the BrowseRecord of template
+                used for tax code creation
+        :param company_id: the id of the company for which tax codes are
+                created
+        :param context: the context
+        :param template2tax_code: a dictionary with tax code template id as key
+                and tax code id as value, used to convert template id into
+                tax code. The dictionary is filled with new tax codes
+        :param parent_id: the tax code id of the parent of the tax codes that
+                must be created
+        :return: id of the tax code created
+        '''
+        tax_code_obj = self.pool.get('account.tax.code')
+
+        if template2tax_code is None:
+            template2tax_code = {}
+
+        if isinstance(template, (int, long)):
+            template = self.browse(cursor, user, template, context=context)
+
+        if template.id not in template2tax_code:
+            vals = self._get_tax_code_value(cursor, user, template,
+                    context=context)
+            vals['company'] = company_id
+            vals['parent'] = parent_id
+
+            new_id = tax_code_obj.create(cursor, user, vals, context=context)
+            template2tax_code[template.id] = new_id
+        else:
+            new_id = template2tax_code[template.id]
+
+        new_childs = []
+        for child in template.childs:
+            new_childs.append(self.create_tax_code(cursor, user, child,
+                template2account, company_id, context=context,
+                template2tax_code=template2tax_code, parent_id=new_id))
+        return new_id
+
+CodeTemplate()
+
+
 class Code(OSV):
     'Tax Code'
     _name = 'account.tax.code'
@@ -185,6 +269,160 @@ class OpenChartCode(Wizard):
 OpenChartCode()
 
 
+class TaxTemplate(OSV):
+    '''
+    Account Tax Template
+    '''
+    _name = 'account.tax.template'
+    _description = __doc__
+
+    name = fields.Char('Name', required=True, translate=True)
+    description = fields.Char('Description', required=True, translate=True)
+    group = fields.Many2One('account.tax.group', 'Group', required=True)
+    sequence = fields.Integer('Sequence')
+    amount = fields.Numeric('Amount', digits=(16, 2))
+    percentage = fields.Numeric('Percentage', digits=(16, 8))
+    type = fields.Selection([
+        ('percentage', 'Percentage'),
+        ('fixed', 'Fixed'),
+        ('none', 'None'),
+        ], 'Type', required=True)
+    parent = fields.Many2One('account.tax.template', 'Parent')
+    childs = fields.One2Many('account.tax.template', 'parent', 'Childs')
+    invoice_account = fields.Many2One('account.account.template',
+            'Invoice Account')
+    refund_account = fields.Many2One('account.account.template',
+            'Refund Account')
+    invoice_base_code = fields.Many2One('account.tax.code.template',
+            'Invoice Base Code')
+    invoice_base_sign = fields.Numeric('Invoice Base Sign', digits=(2, 0))
+    invoice_tax_code = fields.Many2One('account.tax.code.template',
+            'Invoice Tax Code')
+    invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0))
+    refund_base_code = fields.Many2One('account.tax.code.template',
+            'Refund Base Code')
+    refund_base_sign = fields.Numeric('Refund Base Sign', digits=(2, 0))
+    refund_tax_code = fields.Many2One('account.tax.code.template',
+            'Refund Tax Code')
+    refund_tax_sign = fields.Numeric('Refund Tax Sign', digits=(2, 0))
+    account = fields.Many2One('account.account.template', 'Account Template',
+            domain=[('parent', '=', False)], required=True)
+
+    def __init__(self):
+        super(TaxTemplate, self).__init__()
+        self._order.insert(0, ('sequence', 'ASC'))
+        self._order.insert(0, ('account', 'ASC'))
+
+    def default_group(self, cursor, user, context=None):
+        group_obj = self.pool.get('account.tax.group')
+        group_ids = group_obj.search(cursor, user, [
+            ('code', '=', 'none'),
+            ], limit=1, context=context)
+        return group_obj.name_get(cursor, user, group_ids[0],
+                context=context)
+
+    def default_type(self, cursor, user, context=None):
+        return 'percentage'
+
+    def default_include_base_amount(self, cursor, user, context=None):
+        return False
+
+    def default_invoice_base_sign(self, cursor, user, context=None):
+        return 1
+
+    def default_invoice_tax_sign(self, cursor, user, context=None):
+        return 1
+
+    def default_refund_base_sign(self, cursor, user, context=None):
+        return 1
+
+    def default_refund_tax_sign(self, cursor, user, context=None):
+        return 1
+
+    def _get_tax_code_value(self, cursor, user, template, context=None):
+        '''
+        Set values for tax creation.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the BrowseRecord of the template
+        :param context: the context
+        :return: a dictionary with account fields as key and values as value
+        '''
+        res = {}
+        for field in ('name', 'description', 'sequence', 'amount',
+                'percentage', 'type', 'invoice_base_sign', 'invoice_tax_sign',
+                'refund_base_sign', 'refund_tax_sign'):
+            res[field] = template[field]
+        for field in ('group',):
+            res[field] = template[field].id
+        return res
+
+    def create_tax(self, cursor, user, template, company_id,
+            template2tax_code, template2account, context=None,
+            template2tax=None, parent_id=False):
+        '''
+        Create recursively taxes based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the template id or the BrowseRecord of template
+                used for tax creation
+        :param company_id: the id of the company for which taxes are created
+        :param template2tax_code: a dictionary with tax code template id as key
+                and tax code id as value, used to convert tax code template into
+                tax code
+        :param template2account: a dictionary with account template id as key
+                and account id as value, used to convert account template into
+                account code
+        :param context: the context
+        :param template2tax: a dictionary with tax template id as key and
+                tax id as value, used to convert template id into tax.
+                The dictionary is filled with new taxes
+        :param parent_id: the tax id of the parent of the tax that must be
+                created
+        :return: id of the tax created
+        '''
+        tax_obj = self.pool.get('account.tax')
+
+        if template2tax is None:
+            template2tax = {}
+
+        if isinstance(template, (int, long)):
+            template = self.browse(cursor, user, template, context=context)
+
+        if template.id not in template2tax:
+            vals = self._get_tax_value(cursor, user, template, context=context)
+            vals['company'] = company_id
+            vals['parent'] = parent_id
+            vals['invoice_account'] = \
+                    template2account[template.invoice_account.id]
+            vals['refund_account'] = \
+                    template2account[template.refund_account.id]
+            vals['invoice_base_code'] = \
+                    template2tax_code[template.invoice_base_code.id]
+            vals['invoice_tax_code'] = \
+                    template2tax_code[template.invoice_tax_code.id]
+            vals['refund_base_code'] = \
+                    template2tax_code[template.refund_base_code.id]
+            vals['refund_tax_code'] = \
+                    template2tax_code[template.refund_tax_code.id]
+
+            new_id = tax_obj.create(cursor, user, vals, context=context)
+            template2tax[template.id] = new_id
+        else:
+            new_id = template2tax[template.id]
+
+        new_childs = []
+        for child in template.childs:
+            new_childs.append(self.create_tax(cursor, user, child,
+                template2tax_code, template2account, company_id,
+                context=context, template2tax=template2tax, parent_id=new_id))
+        return new_id
+
+TaxTemplate()
+
+
 class Tax(OSV):
     '''
     Account Tax
@@ -195,7 +433,7 @@ class Tax(OSV):
         none: tax = none
     '''
     _name = 'account.tax'
-    _description = 'Account Tax'
+    _description = __doc__
 
     name = fields.Char('Name', required=True, translate=True)
     description = fields.Char('Description', required=True, translate=True,
@@ -225,16 +463,14 @@ class Tax(OSV):
     childs = fields.One2Many('account.tax', 'parent', 'Childs')
 
     company = fields.Many2One('company.company', 'Company', required=True)
-    invoice_account = fields.Property(type='many2one',
-            relation='account.account', string='Invoice Account',
+    invoice_account = fields.Many2One('account.account', 'Invoice Account',
             domain="[('company', '=', company)]",
             help='Keep empty to use the default invoice account',
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "company",
             })
-    refund_account = fields.Property(type='many2one',
-            relation='account.account', string='Refund Account',
+    refund_account = fields.Many2One('account.account', 'Refund Account',
             domain="[('company', '=', company)]",
             help='Keep empty to use the default refund account',
             states={
@@ -504,7 +740,7 @@ OpenCode()
 
 class AccountTemplate(OSV):
     _name = 'account.account.template'
-    taxes = fields.Many2Many('account.tax', 'account_account_template_tax_rel',
+    taxes = fields.Many2Many('account.tax.template', 'account_account_template_tax_rel',
             'account', 'tax', 'Default Taxes',
             domain="[('parent', '=', False)]")
 
