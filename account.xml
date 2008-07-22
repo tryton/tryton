@@ -537,7 +537,7 @@
 
         <record model="ir.action.report" id="report_general_ledger">
             <field name="name">General Ledger</field>
-            <field name="model">account.account</field>
+            <field name="model"></field>
             <field name="report_name">account.account.general_ledger</field>
             <field name="report">account/general_ledger.odt</field>
         </record>

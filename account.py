@@ -673,10 +673,6 @@ PrintGeneralLegder()
 class GeneralLegder(Report):
     _name = 'account.account.general_ledger'
 
-    def _get_objects(self, cursor, user, ids, model, datas, context):
-        #Don't browse false account
-        return None
-
     def parse(self, cursor, user, report, objects, datas, context):
         if context is None:
             context = {}
