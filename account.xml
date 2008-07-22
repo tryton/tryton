@@ -713,5 +713,49 @@
             id="menu_third_party_balance" icon="tryton-print"
             name="Third Party Balance"/>
 
+        <record model="ir.ui.view" id="open_aged_balance_init_view_form">
+            <field name="model">account.account.open_aged_balance.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Aged Balance" col="4">
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                        <label name="balance_type"/>
+                        <field name="balance_type"/>
+                        <label name="posted"/>
+                        <field name="posted"/>
+                    <group string="Terms" colspan="2">
+                        <label name="term1"/>
+                        <field name="term1"/>
+                        <newline/>
+                        <label name="term2"/>
+                        <field name="term2"/>
+                        <newline/>
+                        <label name="term3"/>
+                        <field name="term3"/>
+                        <label name="unit"/>
+                        <field name="unit"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.report" id="report_aged_balance">
+            <field name="name">Aged Balance</field>
+            <field name="model">relationship.partner</field>
+            <field name="report_name">account.account.aged_balance</field>
+            <field name="report">account/aged_balance.odt</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_open_aged_balance">
+            <field name="name">Open Aged Balance</field>
+            <field name="wiz_name">account.account.open_aged_balance</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_open_aged_balance"
+            id="menu_aged_balance" icon="tryton-print"
+            name="Aged Balance"/>
+
     </data>
 </tryton>

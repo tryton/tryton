@@ -1405,3 +1405,194 @@ class ThirdPartyBalance(Report):
         return objects
 
 ThirdPartyBalance()
+
+
+class OpenAgedBalanceInit(WizardOSV):
+    _name = 'account.account.open_aged_balance.init'
+    company = fields.Many2One('company.company', 'Company', required=True)
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+            required=True)
+    balance_type = fields.Selection(
+        [('customer', 'Customer'), ('supplier', 'Supplier'), ('both', 'Both')],
+        "Type", required=True)
+    term1 = fields.Integer("First Term", required=True)
+    term2 = fields.Integer("Second Term", required=True)
+    term3 = fields.Integer("Third Term", required=True)
+    unit = fields.selection(
+        [('day', 'Day'), ('month', 'Month')], "Unit", required=True)
+    posted = fields.Boolean('Posted Move', help='Only posted move')
+
+    def default_fiscalyear(self, cursor, user, context=None):
+        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        if context is None:
+            context = {}
+        fiscalyear_id = fiscalyear_obj.find(cursor, user,
+                context.get('company', False), exception=False, context=context)
+        if fiscalyear_id:
+            return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
+                    context=context)[0]
+        return False
+
+    def default_balance_type(self, cursor, user, context=None):
+        return "customer"
+
+    def default_posted(self, cursor, user, context=None):
+        return False
+
+    def default_term1(self, cursor, user, context=None):
+        return 30
+
+    def default_term2(self, cursor, user, context=None):
+        return 60
+
+    def default_term3(self, cursor, user, context=None):
+        return 90
+
+    def default_unit(self, cursor, user, context=None):
+        return 'day'
+
+    def default_company(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        company_obj = self.pool.get('company.company')
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
+OpenAgedBalanceInit()
+
+
+class OpenAgedBalance(Wizard):
+    'Open Aged Party Balance'
+    _name = 'account.account.open_aged_balance'
+
+    def __init__(self):
+        super(OpenAgedBalance, self).__init__()
+        self._error_messages.update({
+                'warning': 'Warning',
+                'term_overlap_desc': 'You cannot define overlapping terms'})
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.account.open_aged_balance.init',
+                'state': [
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('print', 'Print', 'tryton-ok', True),
+                ],
+            },
+        },
+        'print': {
+            'actions': ['check',],
+            'result': {
+                'type': 'print',
+                'report': 'account.account.aged_balance',
+                'state': 'end',
+            },
+        },
+    }
+
+    def check(self, cursor, user, datas, context=None):
+        if not (datas['form']['term1'] < datas['form']['term2'] \
+                  < datas['form']['term3']):
+            self.raise_user_error(cursor, error="warning",
+                                  error_description="term_overlap_desc")
+        return {}
+
+OpenAgedBalance()
+
+
+class AgedBalance(Report):
+    _name = 'account.account.aged_balance'
+
+    def _get_objects(self, cursor, user, ids, model, datas, context):
+        import traceback
+        traceback.print_stack()
+        party_obj = self.pool.get('relationship.party')
+        move_line_obj = self.pool.get('account.move.line')
+        company_obj = self.pool.get('company.company')
+        company = company_obj.browse(cursor, user,
+                datas['form']['company'], context=context)
+        context['company'] = company
+        context['digits'] = company.currency.digits
+        context['fiscalyear'] = datas['form']['fiscalyear']
+        line_query = move_line_obj.query_get(cursor, user, context=context)
+        if datas['form']['posted']:
+            posted_clause = "and m.state = 'posted' "
+        else:
+            posted_clause = ""
+
+        terms = (datas['form']['term1'],
+                  datas['form']['term2'],
+                  datas['form']['term3'])
+        if datas['form']['unit'] == 'month':
+            coef = 30
+        else:
+            coef = 1
+
+        kind = {'both': ('payable','receivable'),
+                'supplier': ('payable',),
+                'customer': ('receivable',),
+                }[datas['form']['balance_type']]
+
+        res = {}
+        for position in range(len(terms)):
+            if position == 0:
+                term_query = '(l.maturity_date <= %s '\
+                    'OR l.maturity_date IS NULL) '
+                term_args = (datetime.date.today() + \
+                    datetime.timedelta(days=terms[position]*coef),)
+            else:
+                term_query = '(l.maturity_date <= %s '\
+                    'AND l.maturity_date >= %s) '
+                term_args = (
+                    datetime.date.today() + \
+                        datetime.timedelta(days=terms[position]*coef),
+                    datetime.date.today() + \
+                        datetime.timedelta(days=terms[position-1]*coef),
+                    )
+
+            cursor.execute(
+                'SELECT l.party, SUM(l.debit) - SUM(l.credit) ' \
+                  'FROM account_move_line l ' \
+                  'JOIN account_move m on (l.move = m.id) '
+                  'JOIN account_account a on (l.account = a.id) '
+                'WHERE l.party is not null '\
+                  'AND a.active ' \
+                  'AND a.kind in ('+ ','.join('%s' for i in kind) + ") "\
+                  'AND l.reconciliation IS NULL ' \
+                  'AND a.company = %s ' \
+                  'AND '+ term_query+\
+                  'AND ' + line_query + ' ' \
+                  + posted_clause + \
+                  'GROUP BY l.party',
+                kind + (datas['form']['company'],) + term_args)
+            for party, solde in cursor.fetchall():
+                if party in res:
+                    res[party][position] = solde
+                else:
+                    res[party] = [i == position and solde or Decimal("0.0")\
+                                      for i in range(len(terms))]
+
+        context['main_title'] = {
+            'both': u'Suppliers and Customers',
+            'supplier': u'Suppliers',
+            'customer': u'Customers',
+            }[datas['form']['balance_type']]
+        unit = {'day': u'Days', 'month': u'Months'}[datas['form']['unit']] #FIXME: translation !
+        for i in range(3):
+            context['total' + str(i)] = sum((v[i] for v in res.itervalues()))
+            context['title' + str(i)] = str(terms[i]) + " " + unit
+
+        parties = party_obj.name_get(
+                cursor, user, [k for k in res.iterkeys()], context=context)
+        parties.sort(lambda x,y: cmp(x[1],y[1]))
+
+        return ({'name': p[1],
+                 'amount0': res[p[0]][0],
+                 'amount1': res[p[0]][1],
+                 'amount2': res[p[0]][2],
+                 } for p in parties)
+
+AgedBalance()
