@@ -144,13 +144,13 @@ class AccountTemplate(OSV):
                 'required': "kind != 'view'",
             })
     kind = fields.Selection([
-        (None, ''),
+        ('other', 'Other'),
         ('payable', 'Payable'),
         ('revenue', 'Revenue'),
         ('receivable', 'Receivable'),
         ('expense', 'Expense'),
         ('view', 'View'),
-        ], 'Kind')
+        ], 'Kind', required=True)
 
     def __init__(self):
         super(AccountTemplate, self).__init__()
@@ -315,13 +315,13 @@ class Account(OSV):
             })
     note = fields.Text('Note')
     kind = fields.Selection([
-        (None, ''),
+        ('other', 'Other'),
         ('payable', 'Payable'),
         ('revenue', 'Revenue'),
         ('receivable', 'Receivable'),
         ('expense', 'Expense'),
         ('view', 'View'),
-        ], 'Kind')
+        ], 'Kind', required=True)
 
     def __init__(self):
         super(Account, self).__init__()
