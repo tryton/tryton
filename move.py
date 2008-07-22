@@ -773,7 +773,6 @@ class Line(OSV):
             name = 'state'
         if name not in ('period', 'journal', 'date', 'state'):
             raise Exception('Invalid name')
-        obj = self.pool.get('account.' + name)
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             if name in ('date', 'state'):
@@ -782,6 +781,7 @@ class Line(OSV):
                 res[line.id] = line.move[name].id
         if name in ('date', 'state'):
             return res
+        obj = self.pool.get('account.' + name)
         obj_names = {}
         for obj_id, obj_name in obj.name_get(cursor, user,
                 [x for x in res.values() if x], context=context):
