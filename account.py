@@ -1495,7 +1495,6 @@ class OpenAgedBalance(Wizard):
                 'term_overlap_desc': 'You cannot define overlapping terms'})
 
     def check(self, cursor, user, datas, context=None):
-        print datas
         if not (datas['form']['term1'] < datas['form']['term2'] \
                   < datas['form']['term3']):
             self.raise_user_error(cursor, error="warning",
