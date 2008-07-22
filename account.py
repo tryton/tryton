@@ -1507,7 +1507,7 @@ OpenAgedBalance()
 class AgedBalance(Report):
     _name = 'account.account.aged_balance'
 
-    def _get_objects(self, cursor, user, ids, model, datas, context):
+    def parse(self, cursor, user, report, objects, datas, context):
         party_obj = self.pool.get('relationship.party')
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
@@ -1579,10 +1579,13 @@ class AgedBalance(Report):
             context['term' + str(i)] = terms[i]
 
         context['company'] = company
-        return ({'name': p[1],
-                 'amount0': res[p[0]][0],
-                 'amount1': res[p[0]][1],
-                 'amount2': res[p[0]][2],
-                 } for p in parties)
+        context['parties']= ({'name': p[1],
+                              'amount0': res[p[0]][0],
+                              'amount1': res[p[0]][1],
+                              'amount2': res[p[0]][2],
+                              } for p in parties)
+
+        return super(AgedBalance, self).parse(cursor, user, report, objects,
+                datas, context)
 
 AgedBalance()
