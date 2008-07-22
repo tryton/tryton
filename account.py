@@ -1467,11 +1467,6 @@ class OpenAgedBalance(Wizard):
     'Open Aged Party Balance'
     _name = 'account.account.open_aged_balance'
 
-    def __init__(self):
-        super(OpenAgedBalance, self).__init__()
-        self._error_messages.update({
-                'warning': 'Warning',
-                'term_overlap_desc': 'You cannot define overlapping terms'})
     states = {
         'init': {
             'result': {
@@ -1493,12 +1488,19 @@ class OpenAgedBalance(Wizard):
         },
     }
 
+    def __init__(self):
+        super(OpenAgedBalance, self).__init__()
+        self._error_messages.update({
+                'warning': 'Warning',
+                'term_overlap_desc': 'You cannot define overlapping terms'})
+
     def check(self, cursor, user, datas, context=None):
+        print datas
         if not (datas['form']['term1'] < datas['form']['term2'] \
                   < datas['form']['term3']):
             self.raise_user_error(cursor, error="warning",
                                   error_description="term_overlap_desc")
-        return {}
+        return datas['form']
 
 OpenAgedBalance()
 
@@ -1512,14 +1514,10 @@ class AgedBalance(Report):
         company_obj = self.pool.get('company.company')
         company = company_obj.browse(cursor, user,
                 datas['form']['company'], context=context)
-        context['company'] = company
         context['digits'] = company.currency.digits
         context['fiscalyear'] = datas['form']['fiscalyear']
+        context['posted'] = datas['form']['posted']
         line_query = move_line_obj.query_get(cursor, user, context=context)
-        if datas['form']['posted']:
-            posted_clause = "and m.state = 'posted' "
-        else:
-            posted_clause = ""
 
         terms = (datas['form']['term1'],
                   datas['form']['term2'],
@@ -1535,18 +1533,18 @@ class AgedBalance(Report):
                 }[datas['form']['balance_type']]
 
         res = {}
-        for position in range(len(terms)):
+        for position,term in enumerate(terms):
             if position == 0:
                 term_query = '(l.maturity_date <= %s '\
                     'OR l.maturity_date IS NULL) '
                 term_args = (datetime.date.today() + \
-                    datetime.timedelta(days=terms[position]*coef),)
+                    datetime.timedelta(days=term*coef),)
             else:
                 term_query = '(l.maturity_date <= %s '\
                     'AND l.maturity_date >= %s) '
                 term_args = (
                     datetime.date.today() + \
-                        datetime.timedelta(days=terms[position]*coef),
+                        datetime.timedelta(days=term*coef),
                     datetime.date.today() + \
                         datetime.timedelta(days=terms[position-1]*coef),
                     )
@@ -1563,30 +1561,25 @@ class AgedBalance(Report):
                   'AND a.company = %s ' \
                   'AND '+ term_query+\
                   'AND ' + line_query + ' ' \
-                  + posted_clause + \
                   'GROUP BY l.party',
                 kind + (datas['form']['company'],) + term_args)
             for party, solde in cursor.fetchall():
                 if party in res:
                     res[party][position] = solde
                 else:
-                    res[party] = [i == position and solde or Decimal("0.0")\
-                                      for i in range(len(terms))]
-
-        context['main_title'] = {
-            'both': u'Suppliers and Customers',
-            'supplier': u'Suppliers',
-            'customer': u'Customers',
-            }[datas['form']['balance_type']]
-        unit = {'day': u'Days', 'month': u'Months'}[datas['form']['unit']] #FIXME: translation !
-        for i in range(3):
-            context['total' + str(i)] = sum((v[i] for v in res.itervalues()))
-            context['title' + str(i)] = str(terms[i]) + " " + unit
-
+                    res[party] = [i[0] == position and solde or Decimal("0.0")\
+                                      for i in enumerate(terms)]
         parties = party_obj.name_get(
                 cursor, user, [k for k in res.iterkeys()], context=context)
         parties.sort(lambda x,y: cmp(x[1],y[1]))
 
+        context['main_title'] = datas['form']['balance_type']
+        context['unit'] = datas['form']['unit']
+        for i in range(3):
+            context['total' + str(i)] = sum((v[i] for v in res.itervalues()))
+            context['term' + str(i)] = terms[i]
+
+        context['company'] = company
         return ({'name': p[1],
                  'amount0': res[p[0]][0],
                  'amount1': res[p[0]][1],
