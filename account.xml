@@ -287,7 +287,7 @@
             <field name="type" ref="account_type_asset_current_cash"/>
             <field name="close_method">balance</field>
             <field name="parent" ref="account_template_root"/>
-            <field name="kind"></field>
+            <field name="kind">other</field>
         </record>
 
         <record model="ir.ui.view" id="account_create_chart_account_init_view_form">
@@ -537,7 +537,7 @@
 
         <record model="ir.action.report" id="report_general_ledger">
             <field name="name">General Ledger</field>
-            <field name="model">account.account</field>
+            <field name="model"></field>
             <field name="report_name">account.account.general_ledger</field>
             <field name="report">account/general_ledger.odt</field>
         </record>
