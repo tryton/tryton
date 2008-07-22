@@ -1507,8 +1507,6 @@ class AgedBalance(Report):
     _name = 'account.account.aged_balance'
 
     def _get_objects(self, cursor, user, ids, model, datas, context):
-        import traceback
-        traceback.print_stack()
         party_obj = self.pool.get('relationship.party')
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
