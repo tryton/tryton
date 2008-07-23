@@ -486,6 +486,9 @@ class PurchaseLine(OSV):
     def __init__(self):
         super(PurchaseLine, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
+        self._error_messages.update({
+            'supplier_location_required': 'The supplier location is required!',
+            })
 
     def default_type(self, cursor, user, context=None):
         return 'line'
@@ -673,6 +676,9 @@ class PurchaseLine(OSV):
                     move.quantity, line.unit, context=context)
         if quantity <= 0.0:
             return
+        if not line.purchase.party.supplier_location:
+            self.raise_user_error(cursor, 'supplier_location_required',
+                    context=context)
         vals['quantity'] = quantity
         vals['uom'] = line.unit
         vals['product'] = line.product.id
