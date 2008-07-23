@@ -7,10 +7,6 @@ import datetime
 STATES = {
     'readonly': "not active",
 }
-STATES_WH = {
-    'invisible': "type != 'warehouse'",
-    'readonly': "not active",
-}
 
 
 class Location(OSV):
@@ -21,7 +17,10 @@ class Location(OSV):
     code = fields.Char("Code", size=None, states=STATES, select=1)
     active = fields.Boolean('Active', select=1)
     address = fields.Many2One("relationship.address", "Address",
-            states=STATES_WH)
+            states={
+                'invisible': "type != 'warehouse'",
+                'readonly': "not active",
+            })
     type = fields.Selection([
         ('supplier', 'Supplier'),
         ('customer', 'Customer'),
@@ -36,13 +35,25 @@ class Location(OSV):
     right = fields.Integer('Right', required=True)
     childs = fields.One2Many("stock.location", "parent", "Childs")
     input_location = fields.Many2One(
-        "stock.location", "Input", states=STATES_WH,
+        "stock.location", "Input", states={
+            'invisible': "type != 'warehouse'",
+            'readonly': "not active",
+            'required': "type == 'warehouse'",
+        },
         domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
     output_location = fields.Many2One(
-        "stock.location", "Output", states=STATES_WH,
+        "stock.location", "Output", states={
+            'invisible': "type != 'warehouse'",
+            'readonly': "not active",
+            'required': "type == 'warehouse'",
+        },
         domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
     storage_location = fields.Many2One(
-        "stock.location", "Storage", states=STATES_WH,
+        "stock.location", "Storage", states={
+            'invisible': "type != 'warehouse'",
+            'readonly': "not active",
+            'required': "type == 'warehouse'",
+        },
         domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
     quantity = fields.Function('get_quantity', type='float', string='Quantity')
     forecast_quantity = fields.Function('get_quantity', type='float',
