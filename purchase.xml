@@ -587,7 +587,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_unlink" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_purchase_line_purchase">
             <field name="model" search="[('model', '=', 'purchase.line')]"/>
