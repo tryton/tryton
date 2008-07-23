@@ -501,6 +501,9 @@ class PurchaseLine(OSV):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             val = True
+            if not line.product:
+                res[line.id] = True
+                continue
             if line.product.type == 'service':
                 res[line.id] = True
                 continue
@@ -659,6 +662,8 @@ class PurchaseLine(OSV):
 
         vals = {}
         if line.type != 'line':
+            return
+        if not line.product:
             return
         if line.product.type == 'service':
             return
