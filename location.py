@@ -69,6 +69,9 @@ class Location(OSV):
     def default_type(self, cursor, user, context=None):
         return 'storage'
 
+    def check_xml_record(self, cursor, user, ids, values, context=None):
+        return True
+
     def name_search(self, cursor, user, name,  args=None, operator='ilike',
                     context=None, limit=None):
         if not args:
