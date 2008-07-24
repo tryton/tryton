@@ -141,7 +141,7 @@ class PaymentTermLine(OSV):
     sequence = fields.Integer('Sequence',
             help='Use to order lines in ascending order')
     payment = fields.Many2One('account.invoice.payment_term', 'Payment Term',
-            required=True)
+            required=True, ondelete="CASCADE")
     type = fields.Selection('get_type', 'Type', required=True,
             on_change=['type'])
     percent = fields.Numeric('Percent', digits=(16, 8),
