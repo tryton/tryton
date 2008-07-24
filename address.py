@@ -72,6 +72,8 @@ class Address(OSV):
 
     def write(self, cursor, user, ids, vals, context=None):
         if 'party' in vals:
+            if isinstance(ids, (int, long)):
+                ids = [ids]
             for address in self.browse(cursor, user, ids, context=context):
                 if address.party.id != vals['party']:
                     self.raise_user_error(cursor, 'write_party',
