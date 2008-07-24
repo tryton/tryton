@@ -984,7 +984,8 @@
         <record model="account.account.template" id="170">
             <field name="name">Emprunts subordonnés</field>
             <field name="code">170</field>
-            <field name="close_method">none</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
             <field name="kind">view</field>
             <field name="type" eval="False"/>
             <field name="parent" ref="17"/>
@@ -993,18 +994,20 @@
         <record model="account.account.template" id="1700">
             <field name="name">Convertibles</field>
             <field name="code">1700</field>
-            <field name="close_method">balance</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
             <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="170"/>
         </record>
 
         <record model="account.account.template" id="1701">
             <field name="name">Non convertibles</field>
             <field name="code">1701</field>
-            <field name="close_method">balance</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
             <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="170"/>
         </record>
 
@@ -1020,55 +1023,31 @@
         <record model="account.account.template" id="1710">
             <field name="name">Convertibles</field>
             <field name="code">1710</field>
-            <field name="close_method">balance</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
             <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="171"/>
         </record>
 
         <record model="account.account.template" id="1711">
             <field name="name">Non convertibles</field>
             <field name="code">1711</field>
-            <field name="close_method">balance</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
             <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="171"/>
         </record>
 
         <record model="account.account.template" id="172">
-            <field name="name">Dettes de location-financement et assimilés</field>
+            <field name="name">Dettes de location - financement et assimilés</field>
             <field name="code">172</field>
-            <field name="close_method">none</field>
-            <field name="kind">view</field>
-            <field name="type" eval="False"/>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="17"/>
-        </record>
-
-        <record model="account.account.template" id="1720">
-            <field name="name">Dettes de location-financement de biens immobiliers</field>
-            <field name="code">1720</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="172"/>
-        </record>
-
-        <record model="account.account.template" id="1721">
-            <field name="name">Dettes de location-financement de biens mobiliers</field>
-            <field name="code">1721</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="172"/>
-        </record>
-
-        <record model="account.account.template" id="1722">
-            <field name="name">Dettes sur droits réels sur immeubles</field>
-            <field name="code">1722</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="172"/>
         </record>
 
         <record model="account.account.template" id="173">
@@ -1110,9 +1089,10 @@
         <record model="account.account.template" id="174">
             <field name="name">Autres emprunts</field>
             <field name="code">174</field>
-            <field name="close_method">balance</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
             <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="17"/>
         </record>
 
@@ -1126,227 +1106,53 @@
         </record>
 
         <record model="account.account.template" id="1750">
-            <field name="name">Fournisseurs : dettes en compte</field>
+            <field name="name">Fournisseurs</field>
             <field name="code">1750</field>
-            <field name="close_method">none</field>
-            <field name="kind">view</field>
-            <field name="type" eval="False"/>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="175"/>
-        </record>
-
-        <record model="account.account.template" id="17500">
-            <field name="name">Entreprises apparentées</field>
-            <field name="code">17500</field>
-            <field name="close_method">none</field>
-            <field name="kind">view</field>
-            <field name="type" eval="False"/>
-            <field name="parent" ref="1750"/>
-        </record>
-
-        <record model="account.account.template" id="175000">
-            <field name="name">Entreprises liées</field>
-            <field name="code">175000</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="17500"/>
-        </record>
-
-        <record model="account.account.template" id="175001">
-            <field name="name">Entreprises avec lesquelles il existe un lien de participation</field>
-            <field name="code">175001</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="17500"/>
-        </record>
-
-        <record model="account.account.template" id="17501">
-            <field name="name">Fournisseurs ordinaires</field>
-            <field name="code">17501</field>
-            <field name="close_method">none</field>
-            <field name="kind">view</field>
-            <field name="type" eval="False"/>
-            <field name="parent" ref="1750"/>
-        </record>
-
-        <record model="account.account.template" id="175010">
-            <field name="name">Fournisseurs belges</field>
-            <field name="code">175010</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="17501"/>
-        </record>
-
-        <record model="account.account.template" id="175011">
-            <field name="name">Fournisseurs C.E.E.</field>
-            <field name="code">175011</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="17501"/>
-        </record>
-
-        <record model="account.account.template" id="175012">
-            <field name="name">Fournisseurs importation</field>
-            <field name="code">175012</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="17501"/>
         </record>
 
         <record model="account.account.template" id="1751">
             <field name="name">Effets à payer</field>
             <field name="code">1751</field>
-            <field name="close_method">none</field>
-            <field name="kind">view</field>
-            <field name="type" eval="False"/>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="175"/>
-        </record>
-
-        <record model="account.account.template" id="17510">
-            <field name="name">Entreprises apparentées</field>
-            <field name="code">17510</field>
-            <field name="close_method">none</field>
-            <field name="kind">view</field>
-            <field name="type" eval="False"/>
-            <field name="parent" ref="1751"/>
-        </record>
-
-        <record model="account.account.template" id="175100">
-            <field name="name">Entreprises liées</field>
-            <field name="code">175100</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="17510"/>
-        </record>
-
-        <record model="account.account.template" id="175101">
-            <field name="name">Entreprises avec lesquelles il existe un lien de participation</field>
-            <field name="code">175101</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="17510"/>
-        </record>
-
-        <record model="account.account.template" id="17511">
-            <field name="name">Fournisseurs ordinaires</field>
-            <field name="code">17511</field>
-            <field name="close_method">none</field>
-            <field name="kind">view</field>
-            <field name="type" eval="False"/>
-            <field name="parent" ref="1751"/>
-        </record>
-
-        <record model="account.account.template" id="175110">
-            <field name="name">Fournisseurs belges</field>
-            <field name="code">175110</field>
-            <field name="close_method">balance</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="17511"/>
-        </record>
-
-        <record model="account.account.template" id="175111">
-            <field name="name">Fournisseurs C.E.E.</field>
-            <field name="code">175111</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="17511"/>
-        </record>
-
-        <record model="account.account.template" id="175112">
-            <field name="name">Fournisseurs importation</field>
-            <field name="code">175112</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="17511"/>
         </record>
 
         <record model="account.account.template" id="176">
             <field name="name">Acomptes reçus sur commandes</field>
             <field name="code">176</field>
-            <field name="close_method">balance</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
             <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="17"/>
         </record>
 
         <record model="account.account.template" id="178">
             <field name="name">Cautionnements reçus en numéraires</field>
             <field name="code">178</field>
-            <field name="close_method">balance</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
             <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="17"/>
         </record>
 
         <record model="account.account.template" id="179">
             <field name="name">Dettes diverses</field>
             <field name="code">179</field>
-            <field name="close_method">none</field>
-            <field name="kind">view</field>
-            <field name="type" eval="False"/>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_liability_long_term"/>
             <field name="parent" ref="17"/>
-        </record>
-
-        <record model="account.account.template" id="1790">
-            <field name="name">Entreprises liées</field>
-            <field name="code">1790</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="179"/>
-        </record>
-
-        <record model="account.account.template" id="1791">
-            <field name="name">Autres entreprises avec lesquelles il existe un lien de participation</field>
-            <field name="code">1791</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="179"/>
-        </record>
-
-        <record model="account.account.template" id="1792">
-            <field name="name">Administrateurs, gérants, associés</field>
-            <field name="code">1792</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="179"/>
-        </record>
-
-        <record model="account.account.template" id="1794">
-            <field name="name">Rentes viagères capitalisées</field>
-            <field name="code">1794</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="179"/>
-        </record>
-
-        <record model="account.account.template" id="1798">
-            <field name="name">Dettes envers les coparticipants des associations momentanées et en participation</field>
-            <field name="code">1798</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="179"/>
-        </record>
-
-        <record model="account.account.template" id="1799">
-            <field name="name">Autres dettes diverses</field>
-            <field name="code">1799</field>
-            <field name="close_method">balance</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account.account_type_asset_long_term"/>
-            <field name="parent" ref="179"/>
         </record>
 
         <record model="account.account.template" id="18">
@@ -4039,5 +3845,981 @@
             <field name="type" ref="account.account_type_asset_long_term"/>
             <field name="parent" ref="37"/>
         </record>
+
+        <record model="account.account.template" id="4">
+            <field name="name">Créances et dettes à un an au plus</field>
+            <field name="code">4</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="root"/>
+        </record>
+
+        <record model="account.account.template" id="40">
+            <field name="name">Créances commerciales</field>
+            <field name="code">40</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="4"/>
+        </record>
+
+        <record model="account.account.template" id="400">
+            <field name="name">Clients</field>
+            <field name="code">400</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="40"/>
+        </record>
+
+        <record model="account.account.template" id="401">
+            <field name="name">Effets à recevoir</field>
+            <field name="code">401</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="40"/>
+        </record>
+
+        <record model="account.account.template" id="404">
+            <field name="name">Produits à recevoir</field>
+            <field name="code">404</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="40"/>
+        </record>
+
+        <record model="account.account.template" id="406">
+            <field name="name">Acomptes versés</field>
+            <field name="code">406</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="40"/>
+        </record>
+
+        <record model="account.account.template" id="407">
+            <field name="name">Créances douteuses</field>
+            <field name="code">407</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="40"/>
+        </record>
+
+        <record model="account.account.template" id="409">
+            <field name="name">Réductions de valeur actées (-)</field>
+            <field name="code">409</field>
+            <field name="close_method">none</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="40"/>
+        </record>
+
+        <record model="account.account.template" id="41">
+            <field name="name">Autres créances</field>
+            <field name="code">41</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="4"/>
+        </record>
+
+        <record model="account.account.template" id="410">
+            <field name="name">Capital appelé, non versé</field>
+            <field name="code">410</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="41"/>
+        </record>
+
+        <record model="account.account.template" id="411">
+            <field name="name">T.V.A. a récupérer</field>
+            <field name="code">411</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="41"/>
+        </record>
+
+        <record model="account.account.template" id="412">
+            <field name="name">Impôts et précomptes à récupérer</field>
+            <field name="code">412</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="41"/>
+        </record>
+
+        <record model="account.account.template" id="4120">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">4120</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="412"/>
+        </record>
+
+        <record model="account.account.template" id="4121">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">4121</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="412"/>
+        </record>
+
+        <record model="account.account.template" id="4122">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">4122</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="412"/>
+        </record>
+
+        <record model="account.account.template" id="4123">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">4123</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="412"/>
+        </record>
+
+        <record model="account.account.template" id="4124">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">4124</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="412"/>
+        </record>
+
+        <record model="account.account.template" id="4125">
+            <field name="name">Autres impôts belges</field>
+            <field name="code">4125</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="412"/>
+        </record>
+
+        <record model="account.account.template" id="4126">
+            <field name="name">Autres impôts belges</field>
+            <field name="code">4126</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="412"/>
+        </record>
+
+        <record model="account.account.template" id="4127">
+            <field name="name">Autres impôts belges</field>
+            <field name="code">4127</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="412"/>
+        </record>
+
+        <record model="account.account.template" id="4128">
+            <field name="name">Impôts étrangers</field>
+            <field name="code">4128</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="412"/>
+        </record>
+
+        <record model="account.account.template" id="414">
+            <field name="name">Produits à recevoir</field>
+            <field name="code">414</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="41"/>
+        </record>
+
+        <record model="account.account.template" id="416">
+            <field name="name">Créances diverses</field>
+            <field name="code">416</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="41"/>
+        </record>
+
+        <record model="account.account.template" id="417">
+            <field name="name">Créances douteuses</field>
+            <field name="code">417</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="41"/>
+        </record>
+
+        <record model="account.account.template" id="418">
+            <field name="name">Cautionnements versés en numéraires</field>
+            <field name="code">418</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="41"/>
+        </record>
+
+        <record model="account.account.template" id="419">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">419</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account.account_type_asset_current_receivable"/>
+            <field name="parent" ref="41"/>
+        </record>
+
+        <record model="account.account.template" id="42">
+            <field name="name">Dettes à plus d'un an échéant dans l'année</field>
+            <field name="code">42</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="4"/>
+        </record>
+
+        <record model="account.account.template" id="420">
+            <field name="name">Emprunts subordonnés</field>
+            <field name="code">420</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="42"/>
+        </record>
+
+        <record model="account.account.template" id="4200">
+            <field name="name">Convertibles</field>
+            <field name="code">4200</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="420"/>
+        </record>
+
+        <record model="account.account.template" id="4201">
+            <field name="name">Non convertibles</field>
+            <field name="code">4201</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="420"/>
+        </record>
+
+        <record model="account.account.template" id="421">
+            <field name="name">Emprunts obligataires non subordonnés</field>
+            <field name="code">421</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="42"/>
+        </record>
+
+        <record model="account.account.template" id="4210">
+            <field name="name">Convertibles</field>
+            <field name="code">4210</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="421"/>
+        </record>
+
+        <record model="account.account.template" id="4211">
+            <field name="name">Non convertibles</field>
+            <field name="code">4211</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="421"/>
+        </record>
+
+        <record model="account.account.template" id="422">
+            <field name="name">Dettes de location - financement et assimilés</field>
+            <field name="code">422</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="42"/>
+        </record>
+
+        <record model="account.account.template" id="423">
+            <field name="name">Etablissements de crédit</field>
+            <field name="code">423</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="42"/>
+        </record>
+
+        <record model="account.account.template" id="4230">
+            <field name="name">Dettes en compte</field>
+            <field name="code">4230</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="423"/>
+        </record>
+
+        <record model="account.account.template" id="4231">
+            <field name="name">Promesses</field>
+            <field name="code">4231</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="423"/>
+        </record>
+
+        <record model="account.account.template" id="4232">
+            <field name="name">Crédits d'acceptation</field>
+            <field name="code">4232</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="423"/>
+        </record>
+
+        <record model="account.account.template" id="424">
+            <field name="name">Autres emprunts</field>
+            <field name="code">424</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="42"/>
+        </record>
+
+        <record model="account.account.template" id="425">
+            <field name="name">Dettes commerciales</field>
+            <field name="code">425</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="42"/>
+        </record>
+
+        <record model="account.account.template" id="4250">
+            <field name="name">Fournisseurs</field>
+            <field name="code">4250</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="425"/>
+        </record>
+
+        <record model="account.account.template" id="4251">
+            <field name="name">Effets à payer</field>
+            <field name="code">4251</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="425"/>
+        </record>
+
+        <record model="account.account.template" id="426">
+            <field name="name">Acomptes reçus sur commandes</field>
+            <field name="code">426</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="42"/>
+        </record>
+
+        <record model="account.account.template" id="428">
+            <field name="name">Cautionnements reçus en numéraires</field>
+            <field name="code">428</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="42"/>
+        </record>
+
+        <record model="account.account.template" id="429">
+            <field name="name">Dettes diverses</field>
+            <field name="code">429</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="42"/>
+        </record>
+
+        <record model="account.account.template" id="43">
+            <field name="name">Dettes financières</field>
+            <field name="code">43</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="4"/>
+        </record>
+
+        <record model="account.account.template" id="430">
+            <field name="name">Établissements de crédit. Emprunts en compte à terme fixe</field>
+            <field name="code">430</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="43"/>
+        </record>
+
+        <record model="account.account.template" id="431">
+            <field name="name">Établissements de crédit. Promesses</field>
+            <field name="code">431</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="43"/>
+        </record>
+
+        <record model="account.account.template" id="432">
+            <field name="name">Établissements de crédit. Crédits d'acceptation</field>
+            <field name="code">432</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="43"/>
+        </record>
+
+        <record model="account.account.template" id="433">
+            <field name="name">Établissements de crédit. Dettes en compte courant</field>
+            <field name="code">433</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="43"/>
+        </record>
+
+        <record model="account.account.template" id="439">
+            <field name="name">Autres emprunts</field>
+            <field name="code">439</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="43"/>
+        </record>
+
+        <record model="account.account.template" id="44">
+            <field name="name">Dettes commerciales</field>
+            <field name="code">43</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="4"/>
+        </record>
+
+        <record model="account.account.template" id="440">
+            <field name="name">Fournisseurs</field>
+            <field name="code">440</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="44"/>
+        </record>
+
+        <record model="account.account.template" id="441">
+            <field name="name">Effets à payer</field>
+            <field name="code">441</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="44"/>
+        </record>
+
+        <record model="account.account.template" id="444">
+            <field name="name">Factures à recevoir</field>
+            <field name="code">444</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="44"/>
+        </record>
+
+        <record model="account.account.template" id="446">
+            <field name="name">Acomptes reçus</field>
+            <field name="code">446</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="44"/>
+        </record>
+
+        <record model="account.account.template" id="448">
+            <field name="name">Compensations fournisseurs</field>
+            <field name="code">448</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="44"/>
+        </record>
+
+        <record model="account.account.template" id="45">
+            <field name="name">Dettes fiscales, salariales et sociales</field>
+            <field name="code">45</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="4"/>
+        </record>
+
+        <record model="account.account.template" id="450">
+            <field name="name">Dettes fiscales estimées</field>
+            <field name="code">450</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="45"/>
+        </record>
+
+        <record model="account.account.template" id="4500">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">4500</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="450"/>
+        </record>
+
+        <record model="account.account.template" id="4501">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">4501</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="450"/>
+        </record>
+
+        <record model="account.account.template" id="4502">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">4502</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="450"/>
+        </record>
+
+        <record model="account.account.template" id="4503">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">4503</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="450"/>
+        </record>
+
+        <record model="account.account.template" id="4504">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">4504</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="450"/>
+        </record>
+
+        <record model="account.account.template" id="4505">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4505</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="450"/>
+        </record>
+
+        <record model="account.account.template" id="4506">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4506</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="450"/>
+        </record>
+
+        <record model="account.account.template" id="4507">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4507</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="450"/>
+        </record>
+
+        <record model="account.account.template" id="4508">
+            <field name="name">Impôts et taxes étrangers</field>
+            <field name="code">4508</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="450"/>
+        </record>
+
+        <record model="account.account.template" id="451">
+            <field name="name">T.V.A. à payer</field>
+            <field name="code">451</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="45"/>
+        </record>
+
+        <record model="account.account.template" id="452">
+            <field name="name">Impôts et taxes à payer</field>
+            <field name="code">452</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="45"/>
+        </record>
+
+        <record model="account.account.template" id="4520">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4520</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="452"/>
+        </record>
+
+        <record model="account.account.template" id="4521">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4521</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="452"/>
+        </record>
+
+        <record model="account.account.template" id="4522">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4522</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="452"/>
+        </record>
+
+        <record model="account.account.template" id="4523">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4523</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="452"/>
+        </record>
+
+        <record model="account.account.template" id="4524">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4524</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="452"/>
+        </record>
+
+        <record model="account.account.template" id="4525">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4525</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="452"/>
+        </record>
+
+        <record model="account.account.template" id="4526">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4526</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="452"/>
+        </record>
+
+        <record model="account.account.template" id="4527">
+            <field name="name">Autres impôts et taxes belges</field>
+            <field name="code">4527</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="452"/>
+        </record>
+
+        <record model="account.account.template" id="4528">
+            <field name="name">Impôts et taxes étrangers</field>
+            <field name="code">4528</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="452"/>
+        </record>
+
+        <record model="account.account.template" id="453">
+            <field name="name">Précomptes retenus</field>
+            <field name="code">453</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="45"/>
+        </record>
+
+        <record model="account.account.template" id="454">
+            <field name="name">Office National de la Sécurité Sociale</field>
+            <field name="code">454</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="45"/>
+        </record>
+
+        <record model="account.account.template" id="455">
+            <field name="name">Rémunérations</field>
+            <field name="code">455</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="45"/>
+        </record>
+
+        <record model="account.account.template" id="456">
+            <field name="name">Pécules de vacances</field>
+            <field name="code">456</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="45"/>
+        </record>
+
+        <record model="account.account.template" id="459">
+            <field name="name">Autres dettes sociales</field>
+            <field name="code">459</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_tax"/>
+            <field name="parent" ref="45"/>
+        </record>
+
+        <record model="account.account.template" id="46">
+            <field name="name">Acomptes reçus sur commandes</field>
+            <field name="code">46</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="4"/>
+        </record>
+
+        <record model="account.account.template" id="47">
+            <field name="name">Dettes découlant de l'affectation du résultat</field>
+            <field name="code">45</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="4"/>
+        </record>
+
+        <record model="account.account.template" id="470">
+            <field name="name">Dividendes et tantièmes d'exercices antérieurs</field>
+            <field name="code">470</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="47"/>
+        </record>
+
+        <record model="account.account.template" id="471">
+            <field name="name">Dividendes de l'exercice</field>
+            <field name="code">471</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="47"/>
+        </record>
+
+        <record model="account.account.template" id="472">
+            <field name="name">Tantièmes de l'exercice</field>
+            <field name="code">472</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="47"/>
+        </record>
+
+        <record model="account.account.template" id="473">
+            <field name="name">Autres allocataires</field>
+            <field name="code">473</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="47"/>
+        </record>
+
+        <record model="account.account.template" id="48">
+            <field name="name">Dettes diverses</field>
+            <field name="code">48</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="4"/>
+        </record>
+
+        <record model="account.account.template" id="480">
+            <field name="name">Obligations et coupons échus</field>
+            <field name="code">480</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="48"/>
+        </record>
+
+        <record model="account.account.template" id="488">
+            <field name="name">Cautionnements reçus en numéraires</field>
+            <field name="code">488</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="48"/>
+        </record>
+
+        <record model="account.account.template" id="489">
+            <field name="name">Autres dettes diverses</field>
+            <field name="code">489</field>
+            <field name="reconcile" eval="True"/>
+            <field name="close_method">unreconciled</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account.account_type_liability_current_payable"/>
+            <field name="parent" ref="48"/>
+        </record>
+
+        <record model="account.account.template" id="49">
+            <field name="name">Comptes de régularisation et comptes d'attente</field>
+            <field name="code">49</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="4"/>
+        </record>
+
+        <record model="account.account.template" id="490">
+            <field name="name">Charges à reporter</field>
+            <field name="code">490</field>
+            <field name="close_method">none</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parent" ref="49"/>
+        </record>
+
+        <record model="account.account.template" id="491">
+            <field name="name">Produits acquis</field>
+            <field name="code">491</field>
+            <field name="close_method">none</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parent" ref="49"/>
+        </record>
+
+        <record model="account.account.template" id="492">
+            <field name="name">Charges à imputer</field>
+            <field name="code">492</field>
+            <field name="close_method">none</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parent" ref="49"/>
+        </record>
+
+        <record model="account.account.template" id="493">
+            <field name="name">Produits à reporter</field>
+            <field name="code">493</field>
+            <field name="close_method">none</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parent" ref="49"/>
+        </record>
+
+        <record model="account.account.template" id="499">
+            <field name="name">Comptes d'attente</field>
+            <field name="code">499</field>
+            <field name="close_method">none</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_off_balance"/>
+            <field name="parent" ref="49"/>
+        </record>
+
     </data>
 </tryton>
