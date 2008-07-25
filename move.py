@@ -301,11 +301,11 @@ class Move(OSV):
                                 }, context=context)
         return super(Move, self).write(cursor, user, ids, vals, context=context)
 
-    def unlink(self, cursor, user, ids, context=None):
+    def delete(self, cursor, user, ids, context=None):
         for move in self.browse(cursor, user, ids, context=context):
             if move.state not in  ('draft', 'cancel'):
                 self.raise_user_error(cursor, 'del_draft_cancel',
                         context=context)
-        return super(Move, self).unlink(cursor, user, ids, context=context)
+        return super(Move, self).delete(cursor, user, ids, context=context)
 
 Move()

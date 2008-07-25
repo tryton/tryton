@@ -208,7 +208,7 @@ class PackingIn(OSV):
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.set_state_draft(cursor, user,
                 [m.id for m in packing.incoming_moves], context=context)
-        move_obj.unlink(cursor, user,
+        move_obj.delete(cursor, user,
                 [m.id for m in packing.inventory_moves], context=context)
         self.write(cursor, user, packing_id, {
             'state': 'draft',
