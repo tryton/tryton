@@ -93,7 +93,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_currency_currency_admin">
             <field name="model" search="[('model', '=', 'currency.currency')]"/>
@@ -101,14 +101,14 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="True"/>
+            <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_currency_rate">
             <field name="model" search="[('model', '=', 'currency.currency.rate')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_currency_rate_currency_admin">
             <field name="model" search="[('model', '=', 'currency.currency.rate')]"/>
@@ -116,7 +116,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="True"/>
+            <field name="perm_delete" eval="True"/>
         </record>
         <record model="currency.currency" id="eur">
             <field name="name">Euro</field>
