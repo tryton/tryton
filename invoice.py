@@ -470,7 +470,8 @@ class Invoice(OSV):
             lines = []
             if invoice.move:
                 for line in invoice.move.lines:
-                    if line.account.id == invoice.account.id:
+                    if line.account.id == invoice.account.id \
+                            and line.maturity_date:
                         lines.append(line)
             lines.sort(lambda x, y: cmp(x.maturity_date, y.maturity_date))
             res[invoice.id] = [x.id for x in lines]
