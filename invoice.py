@@ -1553,7 +1553,7 @@ class InvoiceTax(OSV):
         if tax.tax_code:
             res['tax_lines'] = [('create', {
                 'code': tax.tax_code.id,
-                'amount': tax.amount * tax.tax_sign,
+                'amount': amount,
             })]
         return res
 
