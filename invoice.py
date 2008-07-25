@@ -605,7 +605,7 @@ class Invoice(OSV):
                         if exception:
                             self.raise_user_error(cursor, 'missing_tax_line',
                                     context=context)
-                        tax_obj.unlink(cursor, user, tax.id,
+                        tax_obj.delete(cursor, user, tax.id,
                                 context=context)
                         continue
                     if not currency_obj.is_zero(cursor, user,
@@ -629,7 +629,7 @@ class Invoice(OSV):
         tax_obj = self.pool.get('account.invoice.tax')
         for invoice in self.browse(cursor, user, ids, context=context):
             if invoice.taxes:
-                tax_obj.unlink(cursor, user, [x.id for x in invoice.taxes],
+                tax_obj.delete(cursor, user, [x.id for x in invoice.taxes],
                         context=context)
             computed_taxes = self._compute_taxes(cursor, user, invoice,
                     context=context)
@@ -797,11 +797,11 @@ class Invoice(OSV):
         res = self.name_get(cursor, user, ids, context=context)
         return res
 
-    def unlink(self, cursor, user, ids, context=None):
+    def delete(self, cursor, user, ids, context=None):
         if isinstance(ids, (int, long)):
             ids = [ids]
         self.check_modify(cursor, user, ids, context=context)
-        return super(Invoice, self).unlink(cursor, user, ids,
+        return super(Invoice, self).delete(cursor, user, ids,
                 context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
@@ -1279,11 +1279,11 @@ class InvoiceLine(OSV):
                 self.raise_user_error(cursor, 'modify', context=context)
         return
 
-    def unlink(self, cursor, user, ids, context=None):
+    def delete(self, cursor, user, ids, context=None):
         if isinstance(ids, (int, long)):
             ids = [ids]
         self.check_modify(cursor, user, ids, context=context)
-        return super(InvoiceLine, self).unlink(cursor, user, ids,
+        return super(InvoiceLine, self).delete(cursor, user, ids,
                 context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
@@ -1477,11 +1477,11 @@ class InvoiceTax(OSV):
                         context=context)
         return
 
-    def unlink(self, cursor, user, ids, context=None):
+    def delete(self, cursor, user, ids, context=None):
         if isinstance(ids, (int, long)):
             ids = [ids]
         self.check_modify(cursor, user, ids, context=context)
-        return super(InvoiceTax, self).unlink(cursor, user, ids,
+        return super(InvoiceTax, self).delete(cursor, user, ids,
                 context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
