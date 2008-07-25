@@ -8,7 +8,7 @@ class InvoiceLine(OSV):
     _name = 'account.invoice.line'
 
     analytic_accounts = fields.Many2One('analytic_account.account.selection',
-            'Analytic Accounts', required=True,
+            'Analytic Accounts',
             states={
                 'invisible': "type != 'line'",
             })
@@ -66,10 +66,10 @@ class InvoiceLine(OSV):
                     selection_vals.setdefault('accounts', [])
                     selection_vals['accounts'].append(('add', vals[field]))
                 del vals[field]
-        if 'analytic_accounts' in vals:
+        if vals.get('analytic_accounts'):
             selection_obj.write(cursor, user, vals['analytic_accounts'],
                     selection_vals, context=context)
-        else:
+        elif vals.get('type', 'line') == 'line':
             selection_id = selection_obj.create(cursor, user, selection_vals,
                     context=context)
             vals['analytic_accounts'] = selection_id
@@ -79,6 +79,8 @@ class InvoiceLine(OSV):
     def write(self, cursor, user, ids, vals, context=None):
         selection_obj = self.pool.get('analytic_account.account.selection')
         vals = vals.copy()
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         selection_vals = {}
         for field in vals.keys():
             if field.startswith('analytic_account_'):
@@ -109,6 +111,8 @@ class InvoiceLine(OSV):
     def unlink(self, cursor, user, ids, context=None):
         selection_obj = self.pool.get('analytic_account.account.selection')
 
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         selection_ids = []
         lines = self.browse(cursor, user, ids, context=context)
         for line in lines:
