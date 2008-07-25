@@ -214,8 +214,8 @@ class Line(OSV):
         vals = []
         vals.append(
             {'name': statement_line.date,
-             'debit': amount >= zero and amount or zero,
-             'credit': amount < zero and -amount or zero,
+             'debit': amount < zero and -amount or zero,
+             'credit': amount >= zero and amount or zero,
              'account': statement_line.account.id,
              'party': statement_line.party and statement_line.party.id,
              'second_currency': second_currency,
@@ -223,7 +223,7 @@ class Line(OSV):
              })
 
         journal = statement_line.statement.journal.journal
-        if statement_line.amount < zero:
+        if statement_line.amount >= zero:
             account = journal.credit_account
         else:
             account = journal.debit_account
@@ -232,8 +232,8 @@ class Line(OSV):
                     context=context)
         vals.append(
             {'name': statement_line.date,
-             'debit': amount < zero and -amount or zero,
-             'credit': amount >= zero and amount or zero,
+             'debit': amount >= zero and amount or zero,
+             'credit': amount < zero and -amount or zero,
              'account': account.id,
              'party': statement_line.party and statement_line.party.id,
              'second_currency': second_currency,
