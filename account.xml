@@ -701,7 +701,7 @@
         </record>
         <record model="ir.action.report" id="report_third_party_balance">
             <field name="name">Third Party Balance</field>
-            <field name="model">relationship.partner</field>
+            <field name="model"></field>
             <field name="report_name">account.account.third_party_balance</field>
             <field name="report">account/third_party_balance.odt</field>
         </record>
@@ -745,7 +745,7 @@
         </record>
         <record model="ir.action.report" id="report_aged_balance">
             <field name="name">Aged Balance</field>
-            <field name="model">relationship.partner</field>
+            <field name="model"></field>
             <field name="report_name">account.account.aged_balance</field>
             <field name="report">account/aged_balance.odt</field>
         </record>
