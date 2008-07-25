@@ -209,12 +209,6 @@ class Period(OSV):
         return super(Period, self).unlink(cursor, user, ids, vals,
                 context=context)
 
-    def close(self, cursor, user, ids, context=None):
-        self.write(cursor, user, ids, {
-            'state': 'close',
-            }, context=context)
-        return
-
 Period()
 
 
@@ -256,7 +250,9 @@ class ReOpenPeriod(Wizard):
 
     def _reopen(self, cursor, user, data, context=None):
         journal_period_obj = self.pool.get('account.journal.period')
-        journal_period_obj.close(cursor, user, data['ids'], context=context)
+        journal_period_obj.write(cursor, user, data['ids'], {
+            'state': 'open',
+            }, context=context)
         return {}
 
 ReOpenPeriod()
