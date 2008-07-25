@@ -4821,5 +4821,653 @@
             <field name="parent" ref="49"/>
         </record>
 
+        <record model="account.account.template" id="5">
+            <field name="name">Placements de trésorerie et valeurs disponibles</field>
+            <field name="code">5</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="root"/>
+        </record>
+
+        <record model="account.account.template" id="50">
+            <field name="name">Actions propres</field>
+            <field name="code">50</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="5"/>
+        </record>
+
+        <record model="account.account.template" id="51">
+            <field name="name">Actions et parts</field>
+            <field name="code">51</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="5"/>
+        </record>
+
+        <record model="account.account.template" id="510">
+            <field name="name">Valeur d'acquisition</field>
+            <field name="code">510</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="51"/>
+        </record>
+
+        <record model="account.account.template" id="511">
+            <field name="name">Montants non appelés</field>
+            <field name="code">511</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="51"/>
+        </record>
+
+        <record model="account.account.template" id="519">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">519</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="51"/>
+        </record>
+
+        <record model="account.account.template" id="52">
+            <field name="name">Titres à revenus fixe</field>
+            <field name="code">52</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="5"/>
+        </record>
+
+        <record model="account.account.template" id="520">
+            <field name="name">Valeur d'acquisition</field>
+            <field name="code">520</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="52"/>
+        </record>
+
+        <record model="account.account.template" id="529">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">529</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="52"/>
+        </record>
+
+        <record model="account.account.template" id="53">
+            <field name="name">Dépôts à terme</field>
+            <field name="code">53</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="5"/>
+        </record>
+
+        <record model="account.account.template" id="530">
+            <field name="name">De plus d'un an</field>
+            <field name="code">530</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="53"/>
+        </record>
+
+        <record model="account.account.template" id="531">
+            <field name="name">De plus d'un mois et à un an au plus</field>
+            <field name="code">531</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="53"/>
+        </record>
+
+        <record model="account.account.template" id="532">
+            <field name="name">D'un mois au plus</field>
+            <field name="code">532</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="53"/>
+        </record>
+
+        <record model="account.account.template" id="539">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">539</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="53"/>
+        </record>
+
+        <record model="account.account.template" id="54">
+            <field name="name">Valeurs échues à l'encaissement</field>
+            <field name="code">54</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="5"/>
+        </record>
+
+        <record model="account.account.template" id="540">
+            <field name="name">Chèques à encaisser</field>
+            <field name="code">540</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="54"/>
+        </record>
+
+        <record model="account.account.template" id="541">
+            <field name="name">Coupons à encaisser</field>
+            <field name="code">541</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="54"/>
+        </record>
+
+        <record model="account.account.template" id="55">
+            <field name="name">Établissements de credit</field>
+            <field name="code">55</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="5"/>
+        </record>
+
+        <record model="account.account.template" id="550">
+            <field name="name">Comptes ouverts auprès des divers établissements</field>
+            <field name="code">550</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="55"/>
+        </record>
+
+        <record model="account.account.template" id="5500">
+            <field name="name">Comptes courants</field>
+            <field name="code">5500</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="550"/>
+        </record>
+
+        <record model="account.account.template" id="5501">
+            <field name="name">Chèques émis</field>
+            <field name="code">5501</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="550"/>
+        </record>
+
+        <record model="account.account.template" id="5509">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">5509</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="550"/>
+        </record>
+
+        <record model="account.account.template" id="551">
+            <field name="name">Comptes ouverts auprès des divers établissements</field>
+            <field name="code">551</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="55"/>
+        </record>
+
+        <record model="account.account.template" id="5510">
+            <field name="name">Comptes courants</field>
+            <field name="code">5510</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="551"/>
+        </record>
+
+        <record model="account.account.template" id="5511">
+            <field name="name">Chèques émis</field>
+            <field name="code">5511</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="551"/>
+        </record>
+
+        <record model="account.account.template" id="5519">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">5519</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="551"/>
+        </record>
+
+        <record model="account.account.template" id="552">
+            <field name="name">Comptes ouverts auprès des divers établissements</field>
+            <field name="code">552</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="55"/>
+        </record>
+
+        <record model="account.account.template" id="5520">
+            <field name="name">Comptes courants</field>
+            <field name="code">5520</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="552"/>
+        </record>
+
+        <record model="account.account.template" id="5521">
+            <field name="name">Chèques émis</field>
+            <field name="code">5521</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="552"/>
+        </record>
+
+        <record model="account.account.template" id="5529">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">5529</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="552"/>
+        </record>
+
+        <record model="account.account.template" id="553">
+            <field name="name">Comptes ouverts auprès des divers établissements</field>
+            <field name="code">553</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="55"/>
+        </record>
+
+        <record model="account.account.template" id="5530">
+            <field name="name">Comptes courants</field>
+            <field name="code">5530</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="553"/>
+        </record>
+
+        <record model="account.account.template" id="5531">
+            <field name="name">Chèques émis</field>
+            <field name="code">5531</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="553"/>
+        </record>
+
+        <record model="account.account.template" id="5539">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">5539</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="553"/>
+        </record>
+
+        <record model="account.account.template" id="554">
+            <field name="name">Comptes ouverts auprès des divers établissements</field>
+            <field name="code">554</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="55"/>
+        </record>
+
+        <record model="account.account.template" id="5540">
+            <field name="name">Comptes courants</field>
+            <field name="code">5540</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="554"/>
+        </record>
+
+        <record model="account.account.template" id="5541">
+            <field name="name">Chèques émis</field>
+            <field name="code">5541</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="554"/>
+        </record>
+
+        <record model="account.account.template" id="5549">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">5549</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="554"/>
+        </record>
+
+        <record model="account.account.template" id="555">
+            <field name="name">Comptes ouverts auprès des divers établissements</field>
+            <field name="code">555</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="55"/>
+        </record>
+
+        <record model="account.account.template" id="5550">
+            <field name="name">Comptes courants</field>
+            <field name="code">5550</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="555"/>
+        </record>
+
+        <record model="account.account.template" id="5551">
+            <field name="name">Chèques émis</field>
+            <field name="code">5551</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="555"/>
+        </record>
+
+        <record model="account.account.template" id="5559">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">5559</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="555"/>
+        </record>
+
+        <record model="account.account.template" id="556">
+            <field name="name">Comptes ouverts auprès des divers établissements</field>
+            <field name="code">556</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="55"/>
+        </record>
+
+        <record model="account.account.template" id="5560">
+            <field name="name">Comptes courants</field>
+            <field name="code">5560</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="556"/>
+        </record>
+
+        <record model="account.account.template" id="5561">
+            <field name="name">Chèques émis</field>
+            <field name="code">5561</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="556"/>
+        </record>
+
+        <record model="account.account.template" id="5569">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">5569</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="556"/>
+        </record>
+
+        <record model="account.account.template" id="557">
+            <field name="name">Comptes ouverts auprès des divers établissements</field>
+            <field name="code">557</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="55"/>
+        </record>
+
+        <record model="account.account.template" id="5570">
+            <field name="name">Comptes courants</field>
+            <field name="code">5570</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="557"/>
+        </record>
+
+        <record model="account.account.template" id="5571">
+            <field name="name">Chèques émis</field>
+            <field name="code">5571</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="557"/>
+        </record>
+
+        <record model="account.account.template" id="5579">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">5579</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="557"/>
+        </record>
+
+        <record model="account.account.template" id="558">
+            <field name="name">Comptes ouverts auprès des divers établissements</field>
+            <field name="code">558</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="55"/>
+        </record>
+
+        <record model="account.account.template" id="5580">
+            <field name="name">Comptes courants</field>
+            <field name="code">5580</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="558"/>
+        </record>
+
+        <record model="account.account.template" id="5581">
+            <field name="name">Chèques émis</field>
+            <field name="code">5581</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="558"/>
+        </record>
+
+        <record model="account.account.template" id="5589">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">5589</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="558"/>
+        </record>
+
+        <record model="account.account.template" id="559">
+            <field name="name">Comptes ouverts auprès des divers établissements</field>
+            <field name="code">559</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="55"/>
+        </record>
+
+        <record model="account.account.template" id="5590">
+            <field name="name">Comptes courants</field>
+            <field name="code">5590</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="559"/>
+        </record>
+
+        <record model="account.account.template" id="5591">
+            <field name="name">Chèques émis</field>
+            <field name="code">5591</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="559"/>
+        </record>
+
+        <record model="account.account.template" id="5599">
+            <field name="name">Réductions de valeur actées</field>
+            <field name="code">5599</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="559"/>
+        </record>
+
+        <record model="account.account.template" id="56">
+            <field name="name">Office des chèques postaux</field>
+            <field name="code">56</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="5"/>
+        </record>
+
+        <record model="account.account.template" id="560">
+            <field name="name">Compte courant</field>
+            <field name="code">560</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="56"/>
+        </record>
+
+        <record model="account.account.template" id="561">
+            <field name="name">Chèques émis</field>
+            <field name="code">561</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="56"/>
+        </record>
+
+        <record model="account.account.template" id="57">
+            <field name="name">Caisses</field>
+            <field name="code">57</field>
+            <field name="close_method">none</field>
+            <field name="kind">view</field>
+            <field name="type" eval="False"/>
+            <field name="parent" ref="5"/>
+        </record>
+
+        <record model="account.account.template" id="570">
+            <field name="name">Caisses - espèces</field>
+            <field name="code">570</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="57"/>
+        </record>
+
+        <record model="account.account.template" id="571">
+            <field name="name">Caisses - espèces</field>
+            <field name="code">571</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="57"/>
+        </record>
+
+        <record model="account.account.template" id="572">
+            <field name="name">Caisses - espèces</field>
+            <field name="code">572</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="57"/>
+        </record>
+
+        <record model="account.account.template" id="573">
+            <field name="name">Caisses - espèces</field>
+            <field name="code">573</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="57"/>
+        </record>
+
+        <record model="account.account.template" id="574">
+            <field name="name">Caisses - espèces</field>
+            <field name="code">574</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="57"/>
+        </record>
+
+        <record model="account.account.template" id="575">
+            <field name="name">Caisses - espèces</field>
+            <field name="code">575</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="57"/>
+        </record>
+
+        <record model="account.account.template" id="576">
+            <field name="name">Caisses - espèces</field>
+            <field name="code">576</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="57"/>
+        </record>
+
+        <record model="account.account.template" id="577">
+            <field name="name">Caisses - espèces</field>
+            <field name="code">577</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="57"/>
+        </record>
+
+        <record model="account.account.template" id="578">
+            <field name="name">Caisses - timbres</field>
+            <field name="code">578</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="57"/>
+        </record>
+
+        <record model="account.account.template" id="58">
+            <field name="name">Virements internes</field>
+            <field name="code">58</field>
+            <field name="close_method">balance</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account.account_type_asset_current_cash"/>
+            <field name="parent" ref="5"/>
+        </record>
+
     </data>
 </tryton>
