@@ -94,7 +94,7 @@ class Statement(OSV):
     def set_state_cancel(self, cursor, user, statement_id, context=None):
         statement_line_obj = self.pool.get('statement.statement.line')
         statement = self.browse(cursor, user, statement_id, context=context)
-        statement_line_obj.unlink_move(
+        statement_line_obj.delete_move(
             cursor, user, statement.lines, context=context)
         self.write(cursor, user, statement_id,
                    {'state':'cancel',},
@@ -192,10 +192,11 @@ class Line(OSV):
         move_obj = self.pool.get('account.move')
         move_obj.post(cursor, user, [l.move.id for l in lines], context=context)
 
-    def unlink_move(self, cursor, user, lines, context=None):
+    def delete_move(self, cursor, user, lines, context=None):
         move_obj = self.pool.get('account.move')
-        move_obj.unlink(
+        move_obj.delete(
             cursor, user, [l.move.id for l in lines], context=context)
+
     def get_move_lines(self, cursor, user, statement_line, context=None):
         currency_obj = self.pool.get('currency.currency')
         zero = Decimal("0.0")
