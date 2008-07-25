@@ -556,8 +556,10 @@ class Invoice(OSV):
                 val['manual'] = False
                 val['invoice'] = invoice.id
                 val['description'] = tax['tax'].description
-                val['base'] = tax['base']
-                val['amount'] = tax['amount']
+                val['base'] = currency_obj.round(cursor, user,
+                        invoice.currency, tax['base'])
+                val['amount'] = currency_obj.round(cursor, user,
+                        invoice.currency, tax['amount'])
 
                 if invoice.type in ('out_invoice', 'in_invoice'):
                     val['base_code'] = tax['tax'].invoice_base_code.id
