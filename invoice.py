@@ -547,6 +547,7 @@ class Invoice(OSV):
 
         res = {}
         for line in invoice.lines:
+            # Don't round on each line to handle rounding error
             if line.type != 'line':
                 continue
             tax_ids = [x.id for x in line.taxes]
@@ -556,10 +557,8 @@ class Invoice(OSV):
                 val['manual'] = False
                 val['invoice'] = invoice.id
                 val['description'] = tax['tax'].description
-                val['base'] = currency_obj.round(cursor, user,
-                        invoice.currency, tax['base'])
-                val['amount'] = currency_obj.round(cursor, user,
-                        invoice.currency, tax['amount'])
+                val['base'] = tax['base']
+                val['amount'] = tax['amount']
 
                 if invoice.type in ('out_invoice', 'in_invoice'):
                     val['base_code'] = tax['tax'].invoice_base_code.id
