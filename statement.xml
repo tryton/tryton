@@ -10,7 +10,7 @@
         <menuitem name="Statements" parent="account.menu_account_configuration"
             id="menu_statement_configuration" sequence="70"/>
         <record model="ir.ui.view" id="statement_view_form">
-            <field name="model">statement.statement</field>
+            <field name="model">account.statement</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -54,7 +54,7 @@
             </field>
         </record>
         <record model="ir.ui.view" id="statement_view_tree">
-            <field name="model">statement.statement</field>
+            <field name="model">account.statement</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -72,7 +72,7 @@
         </record>
         <record model="ir.action.act_window" id="act_draft_statement_form">
             <field name="name">Draft Statements</field>
-            <field name="res_model">statement.statement</field>
+            <field name="res_model">account.statement</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'draft')]</field>
         </record>
@@ -91,7 +91,7 @@
 
         <record model="ir.action.act_window" id="act_validated_statement_form">
             <field name="name">Validated Statement</field>
-            <field name="res_model">statement.statement</field>
+            <field name="res_model">account.statement</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'validated')]</field>
         </record>
@@ -110,7 +110,7 @@
 
         <record model="ir.action.act_window" id="act_posted_statement_form">
             <field name="name">Posted Statements</field>
-            <field name="res_model">statement.statement</field>
+            <field name="res_model">account.statement</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'posted')]</field>
         </record>
@@ -129,7 +129,7 @@
 
         <record model="ir.action.act_window" id="act_statement_form">
             <field name="name">All Statement</field>
-            <field name="res_model">statement.statement</field>
+            <field name="res_model">account.statement</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_statement_form_view1">
@@ -146,7 +146,7 @@
             action="act_statement_form" id="menu_statement_form"/>
 
         <record model="ir.ui.view" id="statement_line_view_form">
-            <field name="model">statement.statement.line</field>
+            <field name="model">account.statement.line</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -172,7 +172,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Bank Statement Lines">
+                <tree string="Statement Lines">
                     <field name="date"/>
                     <field name="amount"/>
                     <field name="party"/>
@@ -186,7 +186,7 @@
         <!-- Statement workflow -->
         <record model="workflow" id="wkf_statement">
             <field name="name">Statement</field>
-            <field name="osv">statement.statement</field>
+            <field name="osv">account.statement</field>
             <field name="on_create">True</field>
         </record>
         <record model="workflow.activity" id="statement_act_draft">
@@ -234,7 +234,7 @@
         </record>
 
         <record model="ir.model.access" id="access_statement_account_admin">
-            <field name="model" search="[('model', '=', 'statement.statement')]"/>
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -242,7 +242,7 @@
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_statement_account">
-            <field name="model" search="[('model', '=', 'statement.statement')]"/>
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -250,7 +250,7 @@
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_statement_statement">
-            <field name="model" search="[('model', '=', 'statement.statement')]"/>
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
             <field name="group" ref="group_statement"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -259,7 +259,7 @@
         </record>
 
         <record model="ir.model.access" id="access_statement_line_account_admin">
-            <field name="model" search="[('model', '=', 'statement.statement.line')]"/>
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
             <field name="group" ref="account.group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -267,7 +267,7 @@
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_statement_line_account">
-            <field name="model" search="[('model', '=', 'statement.statement.line')]"/>
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
             <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -275,7 +275,7 @@
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_statement_line_statement">
-            <field name="model" search="[('model', '=', 'statement.statement.line')]"/>
+            <field name="model" search="[('model', '=', 'account.statement.line')]"/>
             <field name="group" ref="group_statement"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
