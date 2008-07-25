@@ -108,7 +108,7 @@ class InvoiceLine(OSV):
         return super(InvoiceLine, self).write(cursor, user, ids, vals,
                 context=context)
 
-    def unlink(self, cursor, user, ids, context=None):
+    def delete(self, cursor, user, ids, context=None):
         selection_obj = self.pool.get('analytic_account.account.selection')
 
         if isinstance(ids, (int, long)):
@@ -118,9 +118,9 @@ class InvoiceLine(OSV):
         for line in lines:
             selection_ids.append(line.analytic_accounts.id)
 
-        res = super(InvoiceLine, self).unlink(cursor, user, ids,
+        res = super(InvoiceLine, self).delete(cursor, user, ids,
                 context=context)
-        selection_obj.unlink(cursor, user, selection_ids, context=context)
+        selection_obj.delete(cursor, user, selection_ids, context=context)
         return res
 
     def copy(self, cursor, user, line_id, default=None, context=None):
@@ -160,13 +160,13 @@ InvoiceLine()
 class Account(OSV):
     _name = 'analytic_account.account'
 
-    def unlink(self, cursor, user, ids, context=None):
+    def delete(self, cursor, user, ids, context=None):
         invoice_line_obj = self.pool.get('account.invoice.line')
         try:
             invoice_line_obj.fields_view_get(cursor.dbname)
         except:
             pass
-        return super(Account, self).unlink(cursor, user, ids, context=context)
+        return super(Account, self).delete(cursor, user, ids, context=context)
 
     def create(self, cursor, user, vals, context=None):
         invoice_line_obj = self.pool.get('account.invoice.line')
