@@ -52,7 +52,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_journal_type_account_admin">
             <field name="model" search="[('model', '=', 'account.journal.type')]"/>
@@ -60,7 +60,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="True"/>
+            <field name="perm_delete" eval="True"/>
         </record>
         <record model="account.journal.type" id="journal_type_general">
             <field name="name">General</field>
@@ -150,7 +150,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_journal_view_account_admin">
             <field name="model" search="[('model', '=', 'account.journal.view')]"/>
@@ -158,7 +158,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="True"/>
+            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="journal_view_form">
@@ -234,7 +234,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_journal_account_admin">
             <field name="model" search="[('model', '=', 'account.journal')]"/>
@@ -242,7 +242,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="True"/>
+            <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.sequence.type" id="sequence_type_account_journal">
             <field name="name">Account Journal</field>
@@ -380,7 +380,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_journal_period_account">
             <field name="model" search="[('model', '=', 'account.journal.period')]"/>
@@ -388,7 +388,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_journal_period_account_admin">
             <field name="model" search="[('model', '=', 'account.journal.period')]"/>
@@ -396,7 +396,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="True"/>
+            <field name="perm_delete" eval="True"/>
         </record>
     </data>
 </tryton>

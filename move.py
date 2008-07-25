@@ -164,7 +164,7 @@ class Move(OSV):
             self.validate(cursor, user, [res], context=context)
         return res
 
-    def unlink(self, cursor, user, ids, context=None):
+    def delete(self, cursor, user, ids, context=None):
         if isinstance(ids, (int, long)):
             ids = [ids]
         move_line_obj = self.pool.get('account.move.line')
@@ -174,9 +174,9 @@ class Move(OSV):
                         context=context)
             if move.lines:
                 move_line_ids = [x.id for x in move.lines]
-                move_line_obj.unlink(cursor, user, move_line_ids,
+                move_line_obj.delete(cursor, user, move_line_ids,
                         context=context)
-        return super(Move, self).unlink(cursor, user, ids, context=context)
+        return super(Move, self).delete(cursor, user, ids, context=context)
 
     def validate(self, cursor, user, ids, context=None):
         '''
@@ -973,14 +973,14 @@ class Line(OSV):
                 journal_period_done.append(journal_period)
         return
 
-    def unlink(self, cursor, user, ids, context=None):
+    def delete(self, cursor, user, ids, context=None):
         move_obj = self.pool.get('account.move')
         if isinstance(ids, (int, long)):
             ids = [ids]
         self.check_modify(cursor, user, ids, context=context)
         lines = self.browse(cursor, user, ids, context=context)
         move_ids = [x.move.id for x in lines]
-        res = super(Line, self).unlink(cursor, user, ids, context=context)
+        res = super(Line, self).delete(cursor, user, ids, context=context)
         move_obj.validate(cursor, user, move_ids, context=context)
         return res
 
@@ -1441,7 +1441,7 @@ class UnreconcileLines(Wizard):
         reconciliation_ids = [x.reconciliation.id for x in lines \
                 if x.reconciliation]
         if reconciliation_ids:
-            reconciliation_obj.unlink(cursor, user, reconciliation_ids,
+            reconciliation_obj.delete(cursor, user, reconciliation_ids,
                     context=context)
         return {}
 

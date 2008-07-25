@@ -385,7 +385,7 @@ class ReOpenFiscalYear(Wizard):
                 context=context):
             if fiscalyear.state == 'close':
                 line_ids = [x.id for x in fiscalyear.close_lines]
-                move_line_obj.unlink(cursor, user, line_ids, context=context)
+                move_line_obj.delete(cursor, user, line_ids, context=context)
         fiscalyear_obj.write(cursor, user, data['ids'], {
             'state': 'open',
             }, context=context)

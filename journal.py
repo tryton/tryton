@@ -204,9 +204,9 @@ class Period(OSV):
         return super(Period, self).write(cursor, user, ids, vals,
                 context=context)
 
-    def unlink(self, cursor, user, ids, context=None):
+    def delete(self, cursor, user, ids, context=None):
         self._check(cursor, user, ids, context=context)
-        return super(Period, self).unlink(cursor, user, ids, vals,
+        return super(Period, self).delete(cursor, user, ids, vals,
                 context=context)
 
 Period()

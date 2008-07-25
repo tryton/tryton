@@ -100,7 +100,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_type_account_admin">
             <field name="model" search="[('model', '=', 'account.account.type')]"/>
@@ -108,7 +108,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="True"/>
+            <field name="perm_delete" eval="True"/>
         </record>
         <record model="account.account.type" id="account_type_asset">
             <field name="name">Asset</field>
@@ -247,7 +247,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="account.account.template" id="account_template_root">
             <field name="name">Minimal Account Chart</field>
@@ -480,7 +480,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_account_admin">
             <field name="model" search="[('model', '=', 'account.account')]"/>
@@ -488,7 +488,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="True"/>
+            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="open_chart_account_init_view_form">
