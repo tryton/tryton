@@ -91,7 +91,7 @@ class Product(OSV):
         return res
 
     def name_search(self, cursor, user, name, args=None, operator='ilike',
-                    context=None, limit=80):
+                    context=None, limit=None):
         if not args:
             args=[]
         ids = self.search(cursor, user, [('code','=',name)]+ args, limit=limit,
