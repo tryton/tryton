@@ -459,7 +459,7 @@ class PurchaseLine(OSV):
     amount = fields.Function('get_amount', type='numeric', string='Amount',
             states={
                 'invisible': "type not in ('line', 'subtotal')",
-            })
+            }, on_change_with=['type', 'quantity', 'unit_price'])
     description = fields.Char('Description', size=None, required=True)
     comment = fields.Text('Comment',
             states={
@@ -587,6 +587,13 @@ class PurchaseLine(OSV):
             res['unit'] = uom_obj.name_get(cursor, user, product.default_uom.id,
                     context=context)[0]
         return res
+
+    def on_change_with_amount(self, cursor, user, ids, vals, context=None):
+        if vals.get('type') == 'line':
+            #TODO add rounding
+            return Decimal(str(vals.get('quantity') or '0.0')) * \
+                    (vals.get('unit_price') or Decimal('0.0'))
+        return Decimal('0.0')
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')
