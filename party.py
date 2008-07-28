@@ -119,6 +119,17 @@ class Party(OSV):
         return super(Party, self).create(cursor, user, values,
                 context=context)
 
+    def name_search(self, cursor, user, name, args=None, operator='ilike',
+            context=None, limit=None):
+        if not args:
+            args = []
+        ids = self.search(cursor, user, [('code', '=', name)] + args,
+                limit=limit, context=context)
+        if ids:
+            return self.name_get(cursor, user, ids, context=context)
+        return super(Party, self).name_search(cursor, user, name,
+                args=args, operator=operator, context=context, limit=limit)
+
     def address_get(self, cursor, user, party_id, type=None, context=None):
         """
         Try to find an address for the given type, if no type match
