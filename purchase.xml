@@ -99,6 +99,7 @@
                             <field name="packings" colspan="4" widget="one2many"/>
                         </page>
                     </notebook>
+                    <field name="currency_digits" invisible="1"/>
                 </form>
                 ]]>
             </field>
@@ -120,6 +121,7 @@
                     <field name="invoice_state" select="2"/>
                     <field name="packing_state" select="2"/>
                     <field name="description" select="2"/>
+                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
