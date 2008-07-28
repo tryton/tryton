@@ -27,6 +27,7 @@
                             <field name="days"/>
                             <field name="delay"/>
                             <field name="sequence" tree_invisible="1"/>
+                            <field name="currency_digits" tree_invisible="1"/>
                         </tree>
                         <form string="Payment Term Lines">
                             <label name="type"/>
@@ -45,6 +46,7 @@
                             <field name="days"/>
                             <label name="delay"/>
                             <field name="delay"/>
+                            <field name="currency_digits" invisible="1"/>
                         </form>
                     </field>
                 </form>
@@ -273,6 +275,7 @@
                             </field>
                         </page>
                     </notebook>
+                    <field name="currency_digits" invisible="1"/>
                 </form>
                 ]]>
             </field>
@@ -294,6 +297,7 @@
                     <field name="state" select="1"/>
                     <field name="amount_to_pay_today"/>
                     <field name="description" select="2"/>
+                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -520,10 +524,10 @@
                     <field name="quantity"/>
                     <label name="unit"/>
                     <field name="unit"/>
-                    <label name="amount"/>
-                    <field name="amount"/>
                     <label name="unit_price"/>
                     <field name="unit_price"/>
+                    <label name="amount"/>
+                    <field name="amount"/>
                     <separator name="taxes" colspan="4"/>
                     <field name="taxes" colspan="4"/>
                 </form>

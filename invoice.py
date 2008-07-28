@@ -149,8 +149,7 @@ class PaymentTermLine(OSV):
                 'invisible': "type != 'percent'",
                 'required': "type == 'percent'",
             })
-    #TODO digits depends of currency
-    amount = fields.Numeric('Amount', digits=(16, 2),
+    amount = fields.Numeric('Amount', digits="(16, currency_digits)",
             states={
                 'invisible': "type != 'fixed'",
                 'required': "type == 'fixed'",
@@ -160,6 +159,8 @@ class PaymentTermLine(OSV):
                 'invisible': "type != 'fixed'",
                 'required': "type == 'fixed'",
             })
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['currency'])
     days = fields.Integer('Number of Days')
     delay = fields.Selection('get_delay', 'Condition', required=True)
 
@@ -195,6 +196,24 @@ class PaymentTermLine(OSV):
             res['currency'] =  False
         if vals['type'] != 'percent':
             res['percent'] =  Decimal('0.0')
+        return res
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        currency_obj = self.pool.get('currency.currency')
+        if vals.get('currency'):
+            currency = currency_obj.browse(cursor, user, vals['currency'],
+                    context=context)
+            return currency.digits
+        return 2
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            if line.currency:
+                res[line.id] = line.currency.digits
+            else:
+                res[line.id] = 2
         return res
 
 PaymentTermLine()
@@ -234,6 +253,8 @@ class Invoice(OSV):
         required=True, states=_STATES, domain="[('party', '=', party)]")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states=_STATES)
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['currency'])
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states=_STATES, domain=[('centralisation', '=', False)])
     move = fields.Many2One('account.move', 'Move', readonly=True)
@@ -247,13 +268,12 @@ class Invoice(OSV):
     taxes = fields.One2Many('account.invoice.tax', 'invoice', 'Tax Lines',
         states=_STATES)
     comment = fields.Text('Comment')
-    #TODO digits must depend of currency
     untaxed_amount = fields.Function('get_untaxed_amount', type='numeric',
-            digits=(16, 2), string='Untaxed')
+            digits="(16, currency_digits)", string='Untaxed')
     tax_amount = fields.Function('get_tax_amount', type='numeric',
-            digits=(16, 2), string='Tax')
+            digits="(16, currency_digits)", string='Tax')
     total_amount = fields.Function('get_total_amount', type='numeric',
-            digits=(16, 2), string='Total')
+            digits="(16, currency_digits)", string='Total')
     reconciled = fields.Function('get_reconciled', type='boolean',
             string='Reconciled')
     lines_to_pay = fields.Function('get_lines_to_pay', type='one2many',
@@ -262,9 +282,11 @@ class Invoice(OSV):
             'invoice_payment_lines_rel', 'invoice', 'line', readonly=True,
             string='Payment Lines')
     amount_to_pay_today = fields.Function('get_amount_to_pay',
-            type='numeric', digits=(16, 2), string='Amount to Pay Today')
+            type='numeric', digits="(16, currency_digits)",
+            string='Amount to Pay Today')
     amount_to_pay = fields.Function('get_amount_to_pay',
-            type='numeric', digits=(16, 2), string='Amount to Pay')
+            type='numeric', digits="(16, currency_digits)",
+            string='Amount to Pay')
     invoice_report = fields.Binary('Invoice Report', readonly=True)
     invoice_report_format = fields.Char('Invoice Report Format', readonly=True)
 
@@ -401,6 +423,21 @@ class Invoice(OSV):
         if res.get('payment_term'):
             res['payment_term'] = payment_term_obj.name_get(cursor, user,
                     res['payment_term'], context=context)[0]
+        return res
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        currency_obj = self.pool.get('currency.currency')
+        if vals.get('currency'):
+            currency = currency_obj.browse(cursor, user, vals['currency'],
+                    context=context)
+            return currency.digits
+        return 2
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for invoice in self.browse(cursor, user, ids, context=context):
+            res[invoice.id] = invoice.currency.digits
         return res
 
     def get_type_name(self, cursor, user, ids, name, arg, context=None):
@@ -1124,9 +1161,11 @@ class InvoiceLine(OSV):
                 'required': "type == 'line'",
             })
     amount = fields.Function('get_amount', type='numeric', string='Amount',
+            digits="(16, parent.currency_digits)",
             states={
                 'invisible': "type not in ('line', 'subtotal')",
-            })
+            }, on_change_with=['type', 'quantity', 'unit_price',
+                'parent.currency'])
     description = fields.Char('Description', size=None, required=True)
     taxes = fields.Many2Many('account.tax', 'account_invoice_line_account_tax',
             'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
@@ -1164,6 +1203,19 @@ class InvoiceLine(OSV):
         return 0.0
 
     def default_unit_price(self, cursor, user, context=None):
+        return Decimal('0.0')
+
+    def on_change_with_amount(self, cursor, user, ids, vals, context=None):
+        currency_obj = self.pool.get('currency.currency')
+        if vals.get('type') == 'line':
+            if isinstance(vals.get('parent.currency'), (int, long)):
+                currency = currency_obj.browse(cursor, user,
+                        vals['parent.currency'], context=context)
+            else:
+                currency = vals['parent.currency']
+            return currency_obj.round(cursor, user, currency,
+                    Decimal(str(vals.get('quantity') or '0.0')) * \
+                    (vals.get('unit_price') or Decimal('0.0')))
         return Decimal('0.0')
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
@@ -1418,11 +1470,11 @@ class InvoiceTax(OSV):
     account = fields.Many2One('account.account', 'Account', required=True,
             domain="[('kind', '!=', 'view'), " \
                 "('company', '=', parent.company)]")
-    base = fields.Numeric('Base', digits=(16, 2),
+    base = fields.Numeric('Base', digits="(16, parent.currency_digits)",
             states={
                 'invisible': "manual",
             })
-    amount = fields.Numeric('Amount', digits=(16, 2))
+    amount = fields.Numeric('Amount', digits="(16, parent.currency_digits)")
     manual = fields.Boolean('Manual')
     base_code = fields.Many2One('account.tax.code', 'Base Code',
             domain="[('company', '=', parent.company)]",
