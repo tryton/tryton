@@ -38,7 +38,9 @@ class Party(OSV):
     name = fields.Char('Name', size=None, required=True, select=1,
            states=STATES)
     code = fields.Char('Code', size=None, required=True, select=1,
-            readonly=True)
+            readonly=True, order_field="LPAD(%s.code, " \
+                    "(SELECT MAX(LENGTH(code)) FROM relationship_party)," \
+                    "'0')")
     type = fields.Many2One("relationship.party.type", "Type",
            states=STATES)
     lang = fields.Many2One("ir.lang", 'Language',
