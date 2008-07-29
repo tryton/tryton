@@ -7,6 +7,7 @@ from trytond.report import Report
 from decimal import Decimal
 import datetime
 from trytond.netsvc import LocalService
+import md5
 
 _MOVE_STATES = {
     'readonly': "state == 'posted'",
@@ -1099,7 +1100,10 @@ class Line(OSV):
             result['arch'] = xml
             result['fields'] = self.fields_get(cursor, user, fields_names=fields,
                     context=context)
-            #TODO add hexmd5
+            del result['md5']
+            result['md5'] = md5.new(str(result)).hexdigest()
+            if hexmd5 == result['md5']:
+                return True
         return result
 
     def reconcile(self, cursor, user, ids, journal_id=False, date=False,
