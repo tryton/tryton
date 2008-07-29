@@ -98,7 +98,7 @@ class Product(OSV):
                 limit=limit, context=context)
         if ids:
             return self.name_get(cursor, user, ids, context=context)
-        return super(Party, self).name_search(cursor, user, name,
+        return super(Product, self).name_search(cursor, user, name,
                 args=args, operator=operator, context=context, limit=limit)
 
 Product()
