@@ -353,6 +353,12 @@ class Account(OSV):
         self._order.insert(0, ('code', 'ASC'))
         self._order.insert(1, ('name', 'ASC'))
 
+    def default_left(self, cursor, user, context=None):
+        return 0
+
+    def default_right(self, cursor, user, context=None):
+        return 0
+
     def default_active(self, cursor, user, context=None):
         return True
 
