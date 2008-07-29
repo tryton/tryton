@@ -66,6 +66,12 @@ class Location(OSV):
     def default_active(self, cursor, user, context=None):
         return True
 
+    def default_left(self, cursor, user, context=None):
+        return 0
+
+    def default_right(self, cursor, user, context=None):
+        return 0
+
     def default_type(self, cursor, user, context=None):
         return 'storage'
 
