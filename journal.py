@@ -60,6 +60,12 @@ class Column(OSV):
         super(Column, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
 
+    def default_required(self, cursor, user, context=None):
+        return False
+
+    def default_readonly(self, cursor, user, context=None):
+        return False
+
 Column()
 
 
@@ -97,7 +103,10 @@ class Journal(OSV):
     def default_active(self, cursor, user, context=None):
         return True
 
-    def default_centralisation(self, cursor, user, context=None):
+    def default_centralised(self, cursor, user, context=None):
+        return False
+
+    def default_update_posted(self, cursor, user, context=None):
         return False
 
     def get_types(self, cursor, user, context=None):

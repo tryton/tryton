@@ -181,6 +181,9 @@ class AccountTemplate(OSV):
     def default_kind(self, cursor, user, context=None):
         return 'view'
 
+    def default_reconcile(self, cursor, user, context=None):
+        return False
+
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
         return dict(res)
