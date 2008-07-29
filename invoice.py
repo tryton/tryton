@@ -1282,8 +1282,11 @@ class InvoiceLine(OSV):
                         round=False, context=context)
             else:
                 res['unit_price'] = product.cost_price
-            res['account'] = account_obj.name_get(cursor, user,
-                    product.account_expense_used.id, context=context)[0]
+            try:
+                res['account'] = account_obj.name_get(cursor, user,
+                        product.account_expense_used.id, context=context)[0]
+            except:
+                pass
             res['taxes'] = []
             for tax in product.supplier_taxes:
                 if party:
@@ -1300,8 +1303,11 @@ class InvoiceLine(OSV):
                         round=False, context=context)
             else:
                 res['unit_price'] = product.list_price
-            res['account'] = account_obj.name_get(cursor, user,
-                    product.account_revenue_used.id, context=context)[0]
+            try:
+                res['account'] = account_obj.name_get(cursor, user,
+                        product.account_revenue_used.id, context=context)[0]
+            except:
+                pass
             res['taxes'] = []
             for tax in product.customer_taxes:
                 if party:
