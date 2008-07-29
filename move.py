@@ -1238,6 +1238,8 @@ class OpenJournal(Wizard):
         journal_period_obj = self.pool.get('account.journal.period')
         journal_obj = self.pool.get('account.journal')
         period_obj = self.pool.get('account.period')
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
         if data.get('model', '') == 'account.journal.period' \
                 and data.get('id'):
             journal_period = journal_period_obj.browse(cursor, user,
@@ -1260,20 +1262,23 @@ class OpenJournal(Wizard):
                 'journal': journal.id,
                 'period': period.id,
                 }, context=context)
-        return {
-            'domain': str([
-                ('journal', '=', journal_id),
-                ('period', '=', period_id),
-                ]),
-            'view_type': 'form',
-            'view_mode': 'tree,form',
-            'res_model': 'account.move.line',
-            'type': 'ir.action.act_window',
-            'context': str({
-                'journal': journal_id,
-                'period': period_id,
-            }),
-        }
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_move_line_form'),
+            ('module', '=', 'account'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res['domain'] = str([
+            ('journal', '=', journal_id),
+            ('period', '=', period_id),
+            ])
+        res['context'] = str({
+            'journal': journal_id,
+            'period': period_id,
+            })
+        return res
 
 OpenJournal()
 
