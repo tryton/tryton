@@ -19,6 +19,8 @@ class Account(OSV):
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company')
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['currency'])
     type = fields.Selection([
         ('root', 'Root'),
         ('view', 'View'),
@@ -37,10 +39,12 @@ class Account(OSV):
                 'required': "type != 'root'",
             })
     childs = fields.One2Many('analytic_account.account', 'parent', 'Childs')
-    #TODO fix digits depend of the currency
-    balance = fields.Function('get_balance', digits=(16, 2), string='Balance')
-    credit = fields.Function('get_credit_debit', digits=(16, 2), string='Credit')
-    debit = fields.Function('get_credit_debit', digits=(16, 2), string='Debit')
+    balance = fields.Function('get_balance', digits="(16, currency_digits)",
+            string='Balance')
+    credit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
+            string='Credit')
+    debit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
+            string='Debit')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('opened', 'Opened'),
@@ -98,6 +102,21 @@ class Account(OSV):
 
     def default_mandatory(self, cursor, user, context=None):
         return False
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        currency_obj = self.pool.get('currency.currency')
+        if vals.get('currency'):
+            currency = currency_obj.browse(cursor, user, vals['currency'],
+                    context=context)
+            return currency.digits
+        return 2
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for account in self.browse(cursor, user, ids, context=context):
+            res[account.id] = account.currency.digits
+        return res
 
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
