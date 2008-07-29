@@ -120,7 +120,10 @@ class Code(OSV):
             domain="[('company', '=', company)]")
     childs = fields.One2Many('account.tax.code', 'parent', 'Childs',
             domain="[('company', '=', company)]")
-    sum = fields.Function('get_sum', digits=(16, 2), string='Sum')
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['company'])
+    sum = fields.Function('get_sum', digits="(16, currency_digits)",
+            string='Sum')
 
     def __init__(self):
         super(Code, self).__init__()
@@ -137,6 +140,21 @@ class Code(OSV):
         if context is None:
             context = {}
         return context.get('company', False)
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        company_obj = self.pool.get('company.company')
+        if vals.get('company'):
+            company = company_obj.browse(cursor, user, vals['company'],
+                    context=context)
+            return company.currency.digits
+        return 2
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for code in self.browse(cursor, user, ids, context=context):
+            res[code.id] = code.company.currency.digits
+        return res
 
     def get_sum(self, cursor, user, ids, name, arg, context=None):
         res = {}

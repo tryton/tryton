@@ -454,6 +454,7 @@
                     <field name="credit"/>
                     <field name="balance"/>
                     <field name="currency"/>
+                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -604,6 +605,7 @@
                 <tree string="Balance Sheet">
                     <field name="name"/>
                     <field name="amount"/>
+                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -659,6 +661,7 @@
                 <tree string="Income Statement">
                     <field name="name"/>
                     <field name="amount"/>
+                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>

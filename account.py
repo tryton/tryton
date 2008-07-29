@@ -23,8 +23,10 @@ class Type(OSV):
     childs = fields.One2Many('account.account.type', 'parent', 'Childs')
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
-    #TODO fix digits depend of the currency
-    amount = fields.Function('get_amount', digits=(16, 2), string='Amount')
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits')
+    amount = fields.Function('get_amount', digits="(16, currency_digits)",
+            string='Amount')
     balance_sheet = fields.Boolean('Balance Sheet', states={
         'invisible': "parent",
         })
@@ -48,6 +50,21 @@ class Type(OSV):
 
     def default_display_balance(self, cursor, user, context=None):
         return 'debit-credit'
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        res = {}
+        if not context.get('company'):
+            for type_id in ids:
+                res[type_id] = 2
+            return res
+        company = company_obj.browse(cursor, user, context['company'],
+                context=context)
+        for type_id in ids:
+            res[type_id] = company.currency.digits
+        return res
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
         company_obj = self.pool.get('company.company')
@@ -274,6 +291,8 @@ class Account(OSV):
     company = fields.Many2One('company.company', 'Company', required=True)
     currency = fields.Function('get_currency', type='many2one',
             relation='currency.currency', string='Currency')
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits')
     second_currency = fields.Many2One('currency.currency', 'Secondary currency',
             help='Force all moves for this account \n' \
                     'to have this secondary currency.')
@@ -287,10 +306,12 @@ class Account(OSV):
     left = fields.Integer('Left', required=True)
     right = fields.Integer('Right', required=True)
     childs = fields.One2Many('account.account', 'parent', 'Childs')
-    #TODO fix digits depend of the currency
-    balance = fields.Function('get_balance', digits=(16, 2), string='Balance')
-    credit = fields.Function('get_credit_debit', digits=(16, 2), string='Credit')
-    debit = fields.Function('get_credit_debit', digits=(16, 2), string='Debit')
+    balance = fields.Function('get_balance', digits="(16, currency_digits)",
+            string='Balance')
+    credit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
+            string='Credit')
+    debit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
+            string='Debit')
     reconcile = fields.Boolean('Reconcile',
             help='Check if the account can be used \n' \
                     'for reconciliation.',
@@ -360,7 +381,7 @@ class Account(OSV):
     def get_currency(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
-        for account in self.browse(cursor,user, ids, context=context):
+        for account in self.browse(cursor, user, ids, context=context):
             res[account.id] = account.company.currency.id
         currency_names = {}
         for currency_id, currency_name in currency_obj.name_get(cursor, user,
@@ -372,6 +393,12 @@ class Account(OSV):
                 res[i] = (res[i], currency_names[res[i]])
             else:
                 res[i] = False
+        return res
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for account in self.browse(cursor, user, ids, context=context):
+            res[account.id] = account.company.currency.digits
         return res
 
     def get_balance(self, cursor, user, ids, name, arg, context=None):
