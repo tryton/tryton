@@ -100,7 +100,7 @@ class Party(OSV):
             ('check_vat',
                 'Error! Wrong VAT number.', ['vat_number', 'vat_country']),
         ]
-        self._order.insert(0, ('name', 'ASC'))
+        self._order.insert(0, ('name', 'DESC'))
 
     def default_active(self, cursor, user, context=None):
         return True
