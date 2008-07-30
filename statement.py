@@ -4,6 +4,7 @@
 from trytond.osv import fields, OSV
 from trytond.netsvc import LocalService
 from decimal import Decimal
+import datetime
 
 _STATES = {'readonly': 'state != "draft"'}
 
@@ -42,6 +43,9 @@ class Statement(OSV):
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
+
+    def default_date(self, cursor, user, context=None):
+        return datetime.date.today()
 
     def on_change_journal(self, cursor, user, ids, value, context=None):
         res = {}
