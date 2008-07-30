@@ -897,9 +897,6 @@ PrintTrialBalance()
 class TrialBalance(Report):
     _name = 'account.account.trial_balance'
 
-    def _get_objects(self, cursor, user, ids, model, datas, context):
-        return None
-
     def parse(self, cursor, user, report, objects, datas, context):
         if context is None:
             context = {}
@@ -1391,10 +1388,12 @@ OpenThirdPartyBalance()
 class ThirdPartyBalance(Report):
     _name = 'account.account.third_party_balance'
 
-    def _get_objects(self, cursor, user, ids, model, datas, context):
+    def parse(self, cursor, user, report, objects, datas, context):
         party_obj = self.pool.get('relationship.party')
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
+        context = context.copy()
+
         company = company_obj.browse(cursor, user,
                 datas['form']['company'], context=context)
         context['company'] = company
@@ -1420,7 +1419,7 @@ class ThirdPartyBalance(Report):
                          'AND ' + line_query + ' ' \
                          + posted_clause + \
                        'GROUP BY l.party',
-                       (datas['form']['company'],datetime.date.today()))
+                       (datas['form']['company'], datetime.date.today()))
 
         res = cursor.fetchall()
         party_name = dict(party_obj.name_get(
@@ -1434,7 +1433,9 @@ class ThirdPartyBalance(Report):
         context['total_debit'] = sum((o['debit'] for o in objects))
         context['total_credit'] = sum((o['credit'] for o in objects))
         context['total_solde'] = sum((o['solde'] for o in objects))
-        return objects
+
+        return super(ThirdPartyBalance, self).parse(cursor, user, report,
+                objects, datas, context)
 
 ThirdPartyBalance()
 

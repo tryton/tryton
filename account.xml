@@ -574,7 +574,7 @@
 
         <record model="ir.action.report" id="report_trial_balance">
             <field name="name">Trial Balance</field>
-            <field name="model">account.account</field>
+            <field name="model"></field>
             <field name="report_name">account.account.trial_balance</field>
             <field name="report">account/trial_balance.odt</field>
         </record>
