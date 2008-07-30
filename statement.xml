@@ -27,28 +27,35 @@
                     <field name="company"/>
                     <label name="currency"/>
                     <field name="currency"/>
-                    <field name="lines" colspan="4">
-                        <tree string="Bank Statement Lines" editable="bottom">
-                            <field name="date"/>
-                            <field name="amount"/>
-                            <field name="party"/>
-                            <field name="account"/>
-                            <field name="description"/>
-                        </tree>
-                    </field>
-                    <group col="6" colspan="4">
-                      <label name="state"/>
-                      <field name="state"/>
-                      <button string="Validate" name="validated"
-                              states="{'invisible': '''state != 'draft' '''}"/>
-                      <button string="Cancel" name="cancel"
-                              states="{'invisible': '''state != 'validated' '''}"/>
-                      <button string="Post" name="posted"
-                              states="{'invisible': '''state != 'validated' '''}"/>
-                      <button string="Reset to Draft" name="draft_workflow"
-                              type="object"
-                              states="{'invisible': '''state != 'cancel' '''}"/>
-                    </group>
+                    <notebook colspan="4">
+                        <page string="Statement Lines" col="4">
+                            <field name="lines" colspan="4">
+                                <tree string="Bank Statement Lines" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="amount"/>
+                                    <field name="party"/>
+                                    <field name="account"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                            <group col="6" colspan="4">
+                              <label name="state"/>
+                              <field name="state"/>
+                              <button string="Validate" name="validated"
+                                      states="{'invisible': '''state != 'draft' '''}"/>
+                              <button string="Cancel" name="cancel"
+                                      states="{'invisible': '''state != 'validated' '''}"/>
+                              <button string="Post" name="posted"
+                                      states="{'invisible': '''state != 'validated' '''}"/>
+                              <button string="Reset to Draft" name="draft_workflow"
+                                      type="object"
+                                      states="{'invisible': '''state != 'cancel' '''}"/>
+                            </group>
+                        </page>
+                        <page string="Move Lines" col="1">
+                            <field name="move_lines"/>
+                        </page>
+                    </notebook>
                 </form>
                 ]]>
             </field>
