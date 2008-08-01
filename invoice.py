@@ -252,7 +252,9 @@ class Invoice(OSV):
     invoice_address = fields.Many2One('relationship.address', 'Invoice Address',
         required=True, states=_STATES, domain="[('party', '=', party)]")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
-        states=_STATES)
+        states={
+            'readonly': "state != 'draft' or bool(lines)",
+        })
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['currency'])
     journal = fields.Many2One('account.journal', 'Journal', required=True,
