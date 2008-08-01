@@ -96,6 +96,24 @@ class Purchase(OSV):
             'button_compute',
         ]
 
+    def default_payment_term(self, cursor, user, context=None):
+        payment_term_obj = self.pool.get('account.invoice.payment_term')
+        payment_term_ids = payment_term_obj.search(cursor, user, [],
+                context=context)
+        if len(payment_term_ids) == 1:
+            return payment_term_obj.name_get(cursor, user, payment_term_ids,
+                    context=context)[0]
+        return False
+
+    def default_warehouse(self, cursor, user, context=None):
+        location_obj = self.pool.get('stock.location')
+        location_ids = location_obj.search(cursor, user,
+                self.warehouse._domain, context=context)
+        if len(location_ids) == 1:
+            return location_obj.name_get(cursor, user, location_ids,
+                    context=context)[0]
+        return False
+
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
         if context is None:
