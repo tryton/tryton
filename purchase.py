@@ -55,8 +55,8 @@ class Purchase(OSV):
             digits="(16, currency_digits)", string='Total')
     invoice_method = fields.Selection([
         ('manual', 'Manual'),
-        ('order', 'From Order'),
-        ('packing', 'From Packing'),
+        ('order', 'Based On Order'),
+        ('packing', 'Based On Packing'),
     ], 'Invoice Method', required=True, states=_STATES)
     invoice_state = fields.Selection([
         ('none', 'None'),
