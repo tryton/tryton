@@ -200,6 +200,8 @@ class Purchase(OSV):
     def get_tax_amount(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')
         tax_obj = self.pool.get('account.tax')
+        if context is None:
+            context = {}
         res = {}
         for purchase in self.browse(cursor, user, ids, context=context):
             ctx = context.copy()
@@ -207,6 +209,8 @@ class Purchase(OSV):
                 purchase, context=context))
             res.setdefault(purchase.id, Decimal('0.0'))
             for line in purchase.lines:
+                if line.type != 'line':
+                    continue
                 # Don't round on each line to handle rounding error
                 for tax in tax_obj.compute(
                     cursor, user, [t.id for t in line.taxes], line.unit_price,
