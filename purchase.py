@@ -47,7 +47,7 @@ class Purchase(OSV):
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['currency'])
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
-            states=_STATES)
+            states=_STATES, on_change=['lines', 'currency', 'party'])
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function('get_untaxed_amount', type='numeric',
             digits="(16, currency_digits)", string='Untaxed')
@@ -178,6 +178,58 @@ class Purchase(OSV):
             res[purchase.id] = purchase.currency.digits
         return res
 
+    def get_tax_context(self, cursor, user, purchase, context=None):
+        party_obj = self.pool.get('relationship.party')
+        res = {}
+        if isinstance(purchase, dict):
+            if purchase.get('party'):
+                party = party_obj.browse(cursor, user, purchase['party'],
+                        context=context)
+                if party.lang:
+                    res['language'] = party.lang.code
+        else:
+            if purchase.party.lang:
+                res['language'] = purchase.party.lang.code
+        return res
+
+    def on_change_lines(self, cursor, user, ids, vals, context=None):
+        currency_obj = self.pool.get('currency.currency')
+        tax_obj = self.pool.get('account.tax')
+        if context is None:
+            context = {}
+        res = {
+            'untaxed_amount': Decimal('0.0'),
+            'tax_amount': Decimal('0.0'),
+            'total_amount': Decimal('0.0'),
+        }
+        currency = None
+        if vals.get('currency'):
+            currency = currency_obj.browse(cursor, user, vals['currency'],
+                    context=context)
+        if vals.get('lines'):
+            ctx = context.copy()
+            ctx.update(self.get_tax_context(cursor, user, vals,
+                context=context))
+            for line in vals['lines']:
+                if line.get('type', 'line') != 'line':
+                    continue
+                res['untaxed_amount'] += line.get('amount', Decimal('0.0'))
+
+                for tax in tax_obj.compute(cursor, user, line.get('taxes', []),
+                        line.get('unit_price', Decimal('0.0')),
+                        line.get('quantity', 0.0), context=context):
+                    res['tax_amount'] += tax['amount']
+        if currency:
+            res['untaxed_amount'] = currency_obj.round(cursor, user, currency,
+                    res['untaxed_amount'])
+            res['tax_amount'] = currency_obj.round(cursor, user, currency,
+                    res['tax_amount'])
+        res['total_amount'] = res['untaxed_amount'] + res['tax_amount']
+        if currency:
+            res['total_amount'] = currency_obj.round(cursor, user, currency,
+                    res['total_amount'])
+        return res
+
     def get_untaxed_amount(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
@@ -189,12 +241,6 @@ class Purchase(OSV):
                 res[purchase.id] += line.amount
             res[purchase.id] = currency_obj.round(cursor, user, purchase.currency,
                     res[purchase.id])
-        return res
-
-    def get_tax_context(self, cursor, user, purchase, context=None):
-        res = {}
-        if purchase.party.lang:
-            res['language'] = purchase.party.lang.code
         return res
 
     def get_tax_amount(self, cursor, user, ids, name, arg, context=None):
