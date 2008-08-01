@@ -41,7 +41,9 @@ class Purchase(OSV):
     warehouse = fields.Many2One('stock.location', 'Warehouse',
             domain=[('type', '=', 'warehouse')], required=True, states=_STATES)
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
-        states=_STATES)
+        states={
+            'readonly': "state != 'draft' or bool(lines)",
+        })
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['currency'])
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
