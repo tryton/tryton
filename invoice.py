@@ -364,6 +364,15 @@ class Invoice(OSV):
                     context=context)[0]
         return False
 
+    def default_payment_term(self, cursor, user, context=None):
+        payment_term_obj = self.pool.get('account.invoice.payment_term')
+        payment_term_ids = payment_term_obj.search(cursor, user,
+                self.payment_term._domain, context=context)
+        if len(payment_term_ids) == 1:
+            return payment_term_obj.name_get(cursor, user, payment_term_ids,
+                    context=context)[0]
+        return False
+
     def on_change_type(self, cursor, user, ids, vals, context=None):
         journal_obj = self.pool.get('account.journal')
         res = {}
