@@ -92,9 +92,6 @@ class Purchase(OSV):
 
     def __init__(self):
         super(Purchase, self).__init__()
-        self._rpc_allowed += [
-            'button_compute',
-        ]
 
     def default_payment_term(self, cursor, user, context=None):
         payment_term_obj = self.pool.get('account.invoice.payment_term')
@@ -397,9 +394,6 @@ class Purchase(OSV):
         default['packing_state'] = 'none'
         return super(Purchase, self).copy(cursor, user, purchase_id,
                 default=default, context=context)
-
-    def button_compute(self, cursor, user, ids, context=None):
-        pass
 
     def set_reference(self, cursor, user, purchase_id, context=None):
         sequence_obj = self.pool.get('ir.sequence')

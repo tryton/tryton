@@ -52,22 +52,16 @@
                                 <label name="packing_state"/>
                                 <field name="packing_state"/>
                             </group>
-                            <group col="4" colspan="2">
-                                <label colspan="2"/>
+                            <group col="2" colspan="2">
                                 <label name="untaxed_amount"/>
                                 <field name="untaxed_amount"/>
-                                <label colspan="2"/>
                                 <label name="tax_amount"/>
                                 <field name="tax_amount"/>
-                                <button name="button_compute" string="Compute"
-                                    type="object" colspan="2"
-                                    states="{'readonly': '''state != 'draft' '''}"/>
                                 <label name="total_amount"/>
                                 <field name="total_amount"/>
-                                <label colspan="2"/>
                                 <label name="state"/>
                                 <field name="state"/>
-                                <group col="6" colspan="4">
+                                <group col="6" colspan="2">
                                     <button name="quotation" string="Quotation"
                                         states="{'invisible': '''state != 'draft' '''}"/>
                                     <button name="draft" string="Draft"
