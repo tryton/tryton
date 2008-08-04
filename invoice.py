@@ -266,9 +266,9 @@ class Invoice(OSV):
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES)
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
-        states=_STATES)
+        states=_STATES, on_change=['lines', 'taxes', 'currency', 'party', 'type'])
     taxes = fields.One2Many('account.invoice.tax', 'invoice', 'Tax Lines',
-        states=_STATES)
+        states=_STATES, on_change=['lines', 'taxes', 'currency', 'party', 'type'])
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function('get_untaxed_amount', type='numeric',
             digits="(16, currency_digits)", string='Untaxed')
@@ -296,8 +296,6 @@ class Invoice(OSV):
         super(Invoice, self).__init__()
         self._rpc_allowed += [
             'button_draft',
-            'button_compute',
-            'button_reset_taxes',
         ]
         self._constraints += [
             ('check_account', 'You can not create an invoice \n' \
@@ -461,6 +459,101 @@ class Invoice(OSV):
             res[invoice.id] = type2name[invoice.type]
         return res
 
+    def on_change_lines(self, cursor, user, ids, vals, context=None):
+        return self._on_change_lines_taxes(cursor, user, ids, vals, context=context)
+
+    def on_change_taxes(self, cursor, user, ids, vals, context=None):
+        return self._on_change_lines_taxes(cursor, user, ids, vals, context=context)
+
+    def _on_change_lines_taxes(self, cursor, user, ids, vals, context=None):
+        currency_obj = self.pool.get('currency.currency')
+        tax_obj = self.pool.get('account.tax')
+        if context is None:
+            context = {}
+        res = {
+            'untaxed_amount': Decimal('0.0'),
+            'tax_amount': Decimal('0.0'),
+            'total_amount': Decimal('0.0'),
+            'taxes': {},
+        }
+        currency = None
+        if vals.get('currency'):
+            currency = currency_obj.browse(cursor, user, vals['currency'],
+                    context=context)
+        computed_taxes = {}
+        if vals.get('lines'):
+            ctx = context.copy()
+            ctx.update(self.get_tax_context(cursor, user, vals,
+                context=context))
+            for line in vals['lines']:
+                if line.get('type', 'line') != 'line':
+                    continue
+                res['untaxed_amount'] += line.get('amount', Decimal('0.0'))
+
+                for tax in tax_obj.compute(cursor, user, line.get('taxes', []),
+                        line.get('unit_price', Decimal('0.0')),
+                        line.get('quantity', 0.0), context=context):
+                    key, val = self._compute_tax(cursor, user, tax,
+                            vals.get('type', 'out_invoice'), context=context)
+                    if not key in computed_taxes:
+                        computed_taxes[key] = val
+                    else:
+                        computed_taxes[key]['base'] += val['base']
+                        computed_taxes[key]['amount'] += val['amount']
+        tax_keys = []
+        for tax in vals.get('taxes', []):
+            if tax.get('manual', False):
+                res['tax_amount'] += tax.get('amount', Decimal('0.0'))
+                continue
+            key = (tax.get('base_code'), tax.get('base_sign'),
+                    tax.get('tax_code'), tax.get('tax_sign'),
+                    tax.get('account'), tax.get('description'))
+            tax_keys.append(key)
+            if key not in computed_taxes:
+                res['taxes'].setdefault('remove', [])
+                res['taxes']['remove'].append(tax.get('id'))
+                continue
+            if currency:
+                if not currency_obj.is_zero(cursor, user, currency,
+                        computed_taxes[key]['base'] - \
+                                tax.get('base', Decimal('0.0'))):
+                    res['tax_amount'] += computed_taxes[key]['amount']
+                    res['taxes'].setdefault('update', [])
+                    res['taxes']['update'].append({
+                        'id': tax.get('id'),
+                        'amount': computed_taxes[key]['amount'],
+                        'base': computed_taxes[key]['base'],
+                        })
+                else:
+                    res['tax_amount'] += tax.get('amount', Decimal('0.0'))
+            else:
+                if computed_taxes[key]['base'] - \
+                        tax.get('base', Decimal('0.0')) == Decimal('0.0'):
+                    res['tax_amount'] += computed_taxes[key]['amount']
+                    res['taxes'].setdefault('update', [])
+                    res['taxes']['update'].append({
+                        'id': tax.get('id'),
+                        'amount': computed_taxes[key]['amount'],
+                        'base': computed_taxes[key]['base'],
+                        })
+                else:
+                    res['tax_amount'] += tax.get('amount', Decimal('0.0'))
+        for key in computed_taxes:
+            if key not in tax_keys:
+                res['tax_amount'] += computed_taxes[key]['amount']
+                res['taxes'].setdefault('add', [])
+                res['taxes']['add'].append(computed_taxes[key])
+        if currency:
+            res['untaxed_amount'] = currency_obj.round(cursor, user, currency,
+                    res['untaxed_amount'])
+            res['tax_amount'] = currency_obj.round(cursor, user, currency,
+                    res['tax_amount'])
+        res['total_amount'] = res['untaxed_amount'] + res['tax_amount']
+        if currency:
+            res['total_amount'] = currency_obj.round(cursor, user, currency,
+                    res['total_amount'])
+        return res
+
     def get_untaxed_amount(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
@@ -579,10 +672,42 @@ class Invoice(OSV):
         return True
 
     def get_tax_context(self, cursor, user, invoice, context=None):
+        party_obj = self.pool.get('relationship.party')
         res = {}
-        if invoice.party.lang:
-            res['language'] = invoice.party.lang.code
+        if isinstance(invoice, dict):
+            if invoice.get('party'):
+                party = party_obj.browse(cursor, user, invoice['party'],
+                        context=context)
+                if party.lang:
+                    res['language'] = party.lang.code
+        else:
+            if invoice.party.lang:
+                res['language'] = invoice.party.lang.code
         return res
+
+    def _compute_tax(self, cursor, user, tax, invoice_type, context=None):
+        val = {}
+        val['manual'] = False
+        val['description'] = tax['tax'].description
+        val['base'] = tax['base']
+        val['amount'] = tax['amount']
+
+        if invoice_type in ('out_invoice', 'in_invoice'):
+            val['base_code'] = tax['tax'].invoice_base_code.id
+            val['base_sign'] = tax['tax'].invoice_base_sign
+            val['tax_code'] = tax['tax'].invoice_tax_code.id
+            val['tax_sign'] = tax['tax'].invoice_tax_sign
+            val['account'] = tax['tax'].invoice_account.id
+        else:
+            val['base_code'] = tax['tax'].refund_base_code.id
+            val['base_sign'] = tax['tax'].refund_base_sign
+            val['tax_code'] = tax['tax'].refund_tax_code.id
+            val['tax_sign'] = tax['tax'].refund_tax_sign
+            val['account'] = tax['tax'].refund_account.id
+        key = (val['base_code'], val['base_sign'],
+                val['tax_code'], val['tax_sign'],
+                val['account'], val['description'])
+        return key, val
 
     def _compute_taxes(self, cursor, user, invoice, context=None):
         tax_obj = self.pool.get('account.tax')
@@ -602,28 +727,9 @@ class Invoice(OSV):
             tax_ids = [x.id for x in line.taxes]
             for tax in tax_obj.compute(cursor, user, tax_ids, line.unit_price,
                     line.quantity, context=ctx):
-                val = {}
-                val['manual'] = False
+                key, val = self._compute_tax(cursor, user, tax, invoice.type,
+                        context=context)
                 val['invoice'] = invoice.id
-                val['description'] = tax['tax'].description
-                val['base'] = tax['base']
-                val['amount'] = tax['amount']
-
-                if invoice.type in ('out_invoice', 'in_invoice'):
-                    val['base_code'] = tax['tax'].invoice_base_code.id
-                    val['base_sign'] = tax['tax'].invoice_base_sign
-                    val['tax_code'] = tax['tax'].invoice_tax_code.id
-                    val['tax_sign'] = tax['tax'].invoice_tax_sign
-                    val['account'] = tax['tax'].invoice_account.id
-                else:
-                    val['base_code'] = tax['tax'].refund_base_code.id
-                    val['base_sign'] = tax['tax'].refund_base_sign
-                    val['tax_code'] = tax['tax'].refund_tax_code.id
-                    val['tax_sign'] = tax['tax'].refund_tax_sign
-                    val['account'] = tax['tax'].refund_account.id
-                key = (val['base_code'], val['base_sign'],
-                        val['tax_code'], val['tax_sign'],
-                        val['account'], val['description'])
                 if not key in res:
                     res[key] = val
                 else:
@@ -631,7 +737,7 @@ class Invoice(OSV):
                     res[key]['amount'] += val['amount']
         return res
 
-    def button_compute(self, cursor, user, ids, context=None, exception=False):
+    def update_taxes(self, cursor, user, ids, context=None, exception=False):
         tax_obj = self.pool.get('account.invoice.tax')
         currency_obj = self.pool.get('currency.currency')
         for invoice in self.browse(cursor, user, ids, context=context):
@@ -671,18 +777,6 @@ class Invoice(OSV):
                                     context=context)
                         tax_obj.create(cursor, user, computed_taxes[key],
                                 context=context)
-        return True
-
-    def button_reset_taxes(self, cursor, user, ids, context=None):
-        tax_obj = self.pool.get('account.invoice.tax')
-        for invoice in self.browse(cursor, user, ids, context=context):
-            if invoice.taxes:
-                tax_obj.delete(cursor, user, [x.id for x in invoice.taxes],
-                        context=context)
-            computed_taxes = self._compute_taxes(cursor, user, invoice,
-                    context=context)
-            for tax in computed_taxes.values():
-                tax_obj.create(cursor, user, tax, context=context)
         return True
 
     def _get_move_line_invoice_line(self, cursor, user, invoice, context=None):
@@ -748,7 +842,7 @@ class Invoice(OSV):
         invoice = self.browse(cursor, user, invoice_id, context=context)
         if invoice.move:
             return True
-        self.button_compute(cursor, user, [invoice.id], context=context,
+        self.update_taxes(cursor, user, [invoice.id], context=context,
                 exception=True)
         move_lines = self._get_move_line_invoice_line(cursor, user, invoice,
                 context=context)
@@ -865,6 +959,7 @@ class Invoice(OSV):
             self.check_modify(cursor, user, ids, context=context)
         res = super(Invoice, self).write(cursor, user, ids, vals,
                 context=context)
+        self.update_taxes(cursor, user, ids, context=context)
         if 'state' in vals and vals['state'] in ('paid', 'cancel'):
             for invoice_id in ids:
                 workflow_service.trg_trigger(user, self._name, invoice_id,

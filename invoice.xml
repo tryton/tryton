@@ -208,28 +208,27 @@
                                         <field name="base"/>
                                         <field name="amount"/>
                                         <field name="sequence" tree_invisible="1"/>
+                                        <field name="manual" tree_invisible="1"/>
+                                        <field name="base_code" tree_invisible="1"/>
+                                        <field name="base_sign" tree_invisible="1"/>
+                                        <field name="tax_code" tree_invisible="1"/>
+                                        <field name="tax_sign" tree_invisible="1"/>
+                                        <field name="account" tree_invisible="1"/>
                                     </tree>
                                 </field>
                             </group>
-                            <group col="4" colspan="2">
-                                <label colspan="2"/>
+                            <group col="2" colspan="2">
                                 <label name="untaxed_amount"/>
                                 <field name="untaxed_amount"/>
-                                <button name="button_reset_taxes" string="_Reset Taxes"
-                                    type="object" colspan="2"
-                                    states="{'readonly': '''state in ('open', 'paid')'''}"/>
                                 <label name="tax_amount"/>
                                 <field name="tax_amount"/>
-                                <button name="button_compute" string="_Compute"
-                                    type="object" colspan="2"
-                                    states="{'readonly': '''state in ('open', 'paid')'''}"/>
                                 <label name="total_amount"/>
                                 <field name="total_amount"/>
                                 <label name="reconciled"/>
                                 <field name="reconciled"/>
                                 <label name="state"/>
                                 <field name="state"/>
-                                <group col="5" colspan="4">
+                                <group col="5" colspan="2">
                                     <button name="proforma" string="Pro For_ma"
                                         states="{'invisible': '''state != 'draft' '''}"/>
                                     <button name="draft" string="_Draft"
