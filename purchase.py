@@ -467,7 +467,7 @@ class Purchase(OSV):
                 'invoice_lines': [('add', invoice_line_id)],
                 }, context=context)
 
-        invoice_obj.button_compute(cursor, user, [invoice_id], context=context)
+        invoice_obj.update_taxes(cursor, user, [invoice_id], context=context)
 
         self.write(cursor, user, purchase_id, {
             'invoices': [('add', invoice_id)],
