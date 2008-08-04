@@ -17,7 +17,9 @@ class Inventory(OSV):
 
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
-        domain="[('type', '=', 'storage')]", states=STATES)
+        domain="[('type', '=', 'storage')]", states={
+            'readonly': "state != 'open' or bool(lines)",
+        })
     date = fields.Date('Date')
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
@@ -28,7 +30,9 @@ class Inventory(OSV):
         'stock.move', 'inventory_move_rel', 'inventory', 'move',
         'Generated moves')
     company = fields.Many2One(
-        'company.company', 'Company', required=True, states=STATES)
+        'company.company', 'Company', required=True, states={
+            'readonly': "state != 'open' or bool(lines)",
+        })
 
 
     state = fields.Selection(
