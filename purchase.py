@@ -176,6 +176,9 @@ class Purchase(OSV):
         if res['payment_term']:
             res['payment_term'] = payment_term_obj.name_get(cursor, user,
                     res['payment_term'], context=context)[0]
+        else:
+            res['payment_term'] = self.default_payment_term(cursor, user,
+                    context=context)
         return res
 
     def on_change_with_currency_digits(self, cursor, user, ids, vals,
