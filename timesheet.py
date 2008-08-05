@@ -20,10 +20,12 @@ class Line(OSV):
         self.employee.on_change += ['employee']
         self._reset_columns()
         self._constraints += [
-            ('check_product',
-                'Error! You can not use a product ' \
-                        'that is not an employee services.', ['product']),
+            ('check_product', 'employee_service'),
         ]
+        self._error_messages.update({
+            'employee_service': 'You can not use a product ' \
+                    'that is not an employee services!',
+        })
         self._rpc_allowed += ['on_change_employee']
 
     def default_product(self, cursor, user, context=None):

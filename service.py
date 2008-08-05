@@ -21,10 +21,11 @@ class Service(OSV):
                 'You can have only once the same product by employee!'),
         ]
         self._constraints += [
-            ('check_product_uom',
-                'Error! You must use a product with UOM of time.',
-                ['product']),
+            ('check_product_uom', 'uom_time'),
         ]
+        self._error_messages.update({
+            'uom_time': 'You must use a product with UOM of time!',
+        })
         self._order.insert(0, ('sequence', 'ASC'))
 
     def check_product_uom(self, cursor, user, ids):
