@@ -85,8 +85,7 @@ class Move(OSV):
                 'Move can not be in both Supplier and Customer Packing'),
         ]
         self._constraints += [
-            ('check_product_type',
-             'Error! You can not use service product for a move.', ['product'])
+            ('check_product_type', 'service_product'),
         ]
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
@@ -94,6 +93,7 @@ class Move(OSV):
             'set_state_assigned': 'You can not set state to assigned!',
             'set_state_done': 'You can not set state to done!',
             'del_draft_cancel': 'You can only delete draft or cancelled moves!',
+            'service_product': 'You can not use service product for a move!',
             })
 
     def default_to_location(self, cursor, user, context=None):
