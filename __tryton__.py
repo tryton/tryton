@@ -22,4 +22,7 @@
         'move.xml',
         'tax.xml',
     ],
+    'translation': [
+        'fr_FR.csv',
+    ]
 }
