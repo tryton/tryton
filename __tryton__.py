@@ -13,5 +13,10 @@
         'relationship',
         'currency',
     ],
-    'xml': ['company.xml'],
+    'xml': [
+        'company.xml',
+    ],
+    'translation': [
+        'fr_FR.csv',
+    ]
 }
