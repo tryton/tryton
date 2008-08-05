@@ -38,9 +38,11 @@ class CodeTemplate(OSV):
     def __init__(self):
         super(CodeTemplate, self).__init__()
         self._constraints += [
-            ('check_recursion',
-                'Error! You can not create recursive tax code!', ['parent']),
+            ('check_recursion', 'recursive_tax_code'),
         ]
+        self._error_messages.update({
+            'recursive_tax_code': 'You can not create recursive tax code!',
+        })
         self._order.insert(0, ('code', 'ASC'))
         self._order.insert(0, ('account', 'ASC'))
 
@@ -128,9 +130,11 @@ class Code(OSV):
     def __init__(self):
         super(Code, self).__init__()
         self._constraints += [
-            ('check_recursion',
-                'Error! You can not create recursive tax code!', ['parent']),
+            ('check_recursion', 'recursive_tax_code'),
         ]
+        self._error_messages.update({
+            'recursive_tax_code': 'You can not create recursive tax code!',
+        })
         self._order.insert(0, ('code', 'ASC'))
 
     def default_active(self, cursor, user, context=None):

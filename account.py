@@ -172,9 +172,11 @@ class AccountTemplate(OSV):
     def __init__(self):
         super(AccountTemplate, self).__init__()
         self._constraints += [
-            ('check_recursion',
-                'Error! You can not create recursive accounts.', ['parent']),
+            ('check_recursion', 'recursive_accounts'),
         ]
+        self._error_messages.update({
+            'recursive_accounts': 'You can not create recursive accounts!',
+        })
         self._order.insert(0, ('code', 'ASC'))
         self._order.insert(1, ('name', 'ASC'))
 
@@ -350,9 +352,11 @@ class Account(OSV):
     def __init__(self):
         super(Account, self).__init__()
         self._constraints += [
-            ('check_recursion',
-                'Error! You can not create recursive accounts.', ['parent']),
+            ('check_recursion', 'recursive_accounts'),
         ]
+        self._error_messages.update({
+            'recursive_accounts': 'You can not create recursive accounts!',
+        })
         self._order.insert(0, ('code', 'ASC'))
         self._order.insert(1, ('name', 'ASC'))
 

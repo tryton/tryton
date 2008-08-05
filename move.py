@@ -41,15 +41,9 @@ class Move(OSV):
     def __init__(self):
         super(Move, self).__init__()
         self._constraints += [
-            ('check_centralisation',
-                'Error! You can not create more than one move per period \n' \
-                        'in centralized journal', ['journal']),
-            ('check_company',
-                'Error! You can not create lines on account \n' \
-                        'from different company in the same move!', ['lines']),
-            ('check_date',
-                'Error! You can not create move ' \
-                        'with date outside the period!', ['date']),
+            ('check_centralisation', 'period_centralized_journal'),
+            ('check_company', 'company_in_move'),
+            ('check_date', 'date_outside_period'),
         ]
         self._rpc_allowed += [
             'button_post',
@@ -63,6 +57,13 @@ class Move(OSV):
             'post_unbalanced_move': 'You can not post a unbalanced move!',
             'modify_posted_move': 'You can not modify a posted move ' \
                     'in this journal!',
+            'period_centralized_journal': 'You can not create more than ' \
+                    'one move per period\n' \
+                    'in centralized journal!',
+            'company_in_move': 'You can not create lines on account\n' \
+                    'from different company in the same move!',
+            'date_outside_period': 'You can not create move ' \
+                    'with date outside the period!',
             })
 
     def _auto_init(self, cursor, module_name):
@@ -292,13 +293,13 @@ class Reconciliation(OSV):
     def __init__(self):
         super(Reconciliation, self).__init__()
         self._constraints += [
-            ('check_lines', 'You can not create reconciliation ' \
-                    'where lines are not balanced, nor valid, ' \
-                    'nor in the same account, nor in account to reconcile!',
-                    ['lines']),
+            ('check_lines', 'invalid_reconciliation'),
         ]
         self._error_messages.update({
             'modify': 'You can not modify a reconciliation!',
+            'invalid_reconciliation': 'You can not create reconciliation ' \
+                    'where lines are not balanced, nor valid, ' \
+                    'nor in the same account, nor in account to reconcile!',
             })
 
     def default_name(self, cursor, user, context=None):
@@ -406,8 +407,7 @@ class Line(OSV):
                 'Amount Second Currency must be positive!'),
         ]
         self._constraints += [
-            ('check_account', 'You can not create move line \n' \
-                    'on view/inactive account!', ['account']),
+            ('check_account', 'move_view_inactive_account'),
         ]
         self._rpc_allowed += [
             'on_write',
@@ -419,6 +419,8 @@ class Line(OSV):
             'modify_posted_move': 'You can not modify line from a posted move!',
             'modify_reconciled': 'You can not modify reconciled line!',
             'no_journal': 'No journal defined!',
+            'move_view_inactive_account': 'You can not create move line\n' \
+                    'on view/inactive account!',
             })
 
     def default_date(self, cursor, user, context=None):

@@ -38,18 +38,18 @@ class FiscalYear(OSV):
             'create_period_3',
         ]
         self._constraints += [
-            ('check_dates',
-                'Error! You can not have 2 fiscal years that overlaps!',
-                ['start_date', 'end_date']),
-            ('check_post_move_sequence',
-                'Error! You must have different post move sequence ' \
-                        'per fiscal year!', ['post_move_sequence']),
+            ('check_dates', 'fiscalyear_overlaps'),
+            ('check_post_move_sequence', 'different_post_move_sequence'),
         ]
         self._order.insert(0, ('start_date', 'ASC'))
         self._error_messages.update({
             'change_post_move_sequence': 'You can not change ' \
                     'the post move sequence',
             'no_fiscalyear_date': 'No fiscal year defined for this date!',
+            'fiscalyear_overlaps':
+                'You can not have 2 fiscal years that overlaps!',
+            'different_post_move_sequence':
+                'You must have different post move sequence per fiscal year!',
             })
 
     def default_state(self, cursor, user, context=None):

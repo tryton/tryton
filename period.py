@@ -31,12 +31,8 @@ class Period(OSV):
     def __init__(self):
         super(Period, self).__init__()
         self._constraints += [
-            ('check_dates',
-                'Error! You can not have 2 periods that overlaps!',
-                ['start_date', 'end_date']),
-            ('check_post_move_sequence',
-                'Error! You must have different post move sequence ' \
-                        'per fiscal year!', ['post_move_sequence']),
+            ('check_dates', 'periods_overlaps'),
+            ('check_post_move_sequence', 'different_move_sequence'),
         ]
         self._order.insert(0, ('start_date', 'ASC'))
         self._error_messages.update({
@@ -52,6 +48,9 @@ class Period(OSV):
                     'if there is already posted move in the period',
             'close_period_non_posted_move': 'You can not close ' \
                     'a period with non posted moves!',
+            'periods_overlaps': 'You can not have 2 periods that overlaps!',
+            'different_move_sequence': 'You must have different ' \
+                    'post move sequence per fiscal year!',
             })
 
     def default_state(self, cursor, user, context=None):
