@@ -97,9 +97,11 @@ class Party(OSV):
              'The code of the party must be unique!')
         ]
         self._constraints += [
-            ('check_vat',
-                'Error! Wrong VAT number.', ['vat_number', 'vat_country']),
+            ('check_vat', 'wrong_vat'),
         ]
+        self._error_messages.update({
+            'wrong_vat': 'Wrong VAT number!',
+        })
         self._order.insert(0, ('name', 'DESC'))
 
     def default_active(self, cursor, user, context=None):

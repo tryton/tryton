@@ -22,9 +22,11 @@ class Category(OSV):
     def __init__(self):
         super(Category, self).__init__()
         self._constraints += [
-            ('check_recursion',
-             'Error! You can not create recursive categories.', ['parent'])
+            ('check_recursion', 'recursive_categories'),
         ]
+        self._error_messages.update({
+            'recursive_categories': 'You can not create recursive categories!',
+        })
         self._order.insert(1, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
