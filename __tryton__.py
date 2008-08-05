@@ -7,7 +7,17 @@
     "category" : "Generic",
     "description": "Define products, categories of product, units" \
         "of measure, categories of units of measure.",
-    "depends" : ["ir", "res"],
-    "xml" : ["product.xml", "category.xml", "uom.xml"],
+    "depends" : [
+        "ir",
+        "res",
+    ],
+    "xml" : [
+        "product.xml",
+        "category.xml",
+        "uom.xml",
+    ],
+    'translation': [
+        'fr_FR.csv',
+    ]
 }
 
