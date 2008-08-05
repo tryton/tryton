@@ -1,0 +1,211 @@
+type,name,res_id,src,value,fuzzy
+error,account.fiscalyear,0,You can not change the invoice sequence if there is already an invoice opened in the fiscalyear,Vous ne pouvez pas changer la séquence de facture si il y a déjà une facture ouverte dans l'année fiscale,0
+error,account.invoice,0,"Base taxes different from invoice lines!
+Re-compute the invoice.","Le montant de base des taxes sont différents des lignes de facture !
+Re-calculez la facture.",0
+error,account.invoice,0,Credit account on journal is the same than the invoice account!,Le compte de crédit sur le journal est le même que le compte de la facture !,0
+error,account.invoice,0,Debit account on journal is the same than the invoice account!,Le compte de débit sur le journal est le même que le compte de la facture !,0
+error,account.invoice,0,"Taxes defined but not in invoice lines!
+Re-compute the invoice.","Des taxes sont définies mais pas sur les lignes de facture !
+Re-calculez la facture.",0
+error,account.invoice,0,"Taxes defined on invoice lines but not on invoice!
+Re-compute the invoice.","Des taxes sont définies sur les lignes de facture mais pas sur la facture !
+Re-calculez la facture.",0
+error,account.invoice,0,The credit account on journal is missing!,Le compte de crédit sur le journal est manquant !,0
+error,account.invoice,0,The debit account on journal is missing!,Le compte de débit sur le journal est manquant !,0
+error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,Il n'y a pas de séquence de facture sur la période/année fiscale !,0
+error,account.invoice,0,"You can not create an invoice
+with account from a different invoice company!","Vous ne pouvez pas créer une facture
+avec un compte d'une compagnie de facturation différente !",0
+error,account.invoice,0,"You can not modify invoice that is open, paid or canceled!",Vous ne pouvez pas modifier une facture qui est ouverte ou annullée !,0
+error,account.invoice,0,You can not reset to draft an invoice that have move!,Vous ne pouvez pas remettre en brouillon une facture qui a un mouvement !,0
+error,account.invoice,0,"You can not use the same account
+than on invoice line account!","Vous ne pouvez pas utiliser le même compte
+qu'un d'une ligne de facture !",0
+error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!","Vous ne pouvez pas ajouter une ligne à une facture qui est ouverte, payée our annullée !",0
+error,account.invoice.line,0,"You can not create invoice line
+with account from a different invoice company!","Vous ne pouvez pas créer de ligne de facture
+avec un compte d'une différente compagnie de facturation !",0
+error,account.invoice.line,0,"You can not modify line from an invoice that is open, paid or canceled!","Vous ne pouvez pas modifier de ligne d'une facture qui est ouverte, payée our annullée !",0
+error,account.invoice.line,0,"You can not use the same account
+than the invoice account!","Vous ne pouvez pas utiliser le même compte
+que le compte de la facture !",0
+error,account.invoice.payment_term,0,Invalid payment term line!,Ligne de condition de paiement non-valide !,0
+error,account.invoice.payment_term,0,Payment term missing a remainder line!,La condition de paiement manque un ligne de reste !,0
+error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","Vous ne pouvez pas ajouter une ligne à une facture qui est ouverte, payée ou annullée !",0
+error,account.invoice.tax,0,"You can not modify tax from an invoice that is open, paid or canceled!","Vous ne pouvez pas modifier les taxes d'une facture qui est ouverte, payée ou annullée !",0
+error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,Vous ne pouvez pas changer la séquence de facture s'il y a déjà une facture ouverte dans la période,0
+error,product.template,0,There is no account expense/revenue define on the product %s (%d),Il n'y a pas de compte dépense/revenu définit sur le produit %s (%d),0
+field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Séquence de Facture Fournisseur,0
+field,"account.fiscalyear,in_refund_sequence",0,Supplier Refund Sequence,Séquence de Note de Crédit Fournisseur,0
+field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Séquence de Facture Client,0
+field,"account.fiscalyear,out_refund_sequence",0,Customer Refund Sequence,Séquence de Note de Crédit Client,0
+field,"account.invoice,account",0,Account,Compte,0
+field,"account.invoice,amount_to_pay",0,Amount to Pay,Montant à Payer,0
+field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Montant à Payer Aujourd'hui,0
+field,"account.invoice,comment",0,Comment,Commentaire,0
+field,"account.invoice,company",0,Company,Compagnie,0
+field,"account.invoice,contact_address",0,Contact Address,Adresse de Contact,0
+field,"account.invoice,currency",0,Currency,Devise,0
+field,"account.invoice,currency_digits",0,Currency Digits,Décimal de la Devise,0
+field,"account.invoice,description",0,Description,Description,0
+field,"account.invoice,invoice_address",0,Invoice Address,Adresse de Facturation,0
+field,"account.invoice,invoice_date",0,Invoice Date,Date de Facturation,0
+field,"account.invoice,invoice_report",0,Invoice Report,Rapport de Facturation,0
+field,"account.invoice,invoice_report_format",0,Invoice Report Format,Format du Rapport de Facturation,0
+field,"account.invoice,journal",0,Journal,Journal,0
+field,"account.invoice.line,account",0,Account,Compte,0
+field,"account.invoice.line,amount",0,Amount,Montant,0
+field,"account.invoice.line,description",0,Description,Description,0
+field,"account.invoice.line,invoice",0,Invoice,Facture,0
+field,"account.invoice.line,product",0,Product,Produit,0
+field,"account.invoice.line,quantity",0,Quantity,Quantité,0
+field,"account.invoice,lines",0,Lines,Lignes,0
+field,"account.invoice.line,sequence",0,Sequence,Séquence,0
+field,"account.invoice,lines_to_pay",0,Lines to Pay,Lignes à Payer,0
+field,"account.invoice.line,taxes",0,Taxes,Taxes,0
+field,"account.invoice.line,type",0,Type,Type,0
+field,"account.invoice.line,unit",0,Unit,Unité,0
+field,"account.invoice.line,unit_price",0,Unit Price,Prix Unitaire,0
+field,"account.invoice,move",0,Move,Mouvement,0
+field,"account.invoice,number",0,Number,Numéro,0
+field,"account.invoice,party",0,Party,Tiers,0
+field,"account.invoice,payment_lines",0,Payment Lines,Lignes de Paiement,0
+field,"account.invoice,payment_term",0,Payment Term,Condition de Paiement,0
+field,"account.invoice.payment_term,active",0,Active,Actif,0
+field,"account.invoice.payment_term,description",0,Description,Description,0
+field,"account.invoice.payment_term.line,amount",0,Amount,Montant,0
+field,"account.invoice.payment_term.line,currency",0,Currency,Devise,0
+field,"account.invoice.payment_term.line,currency_digits",0,Currency Digits,Décimal de la Devise,0
+field,"account.invoice.payment_term.line,days",0,Number of Days,Nombre de Jours,0
+field,"account.invoice.payment_term.line,delay",0,Condition,Condition,0
+field,"account.invoice.payment_term.line.delay,code",0,Code,Code,0
+field,"account.invoice.payment_term.line.delay,name",0,Name,Nom,0
+field,"account.invoice.payment_term.line,payment",0,Payment Term,Condition de Paiement,0
+field,"account.invoice.payment_term.line,percent",0,Percent,Pour Cent,0
+field,"account.invoice.payment_term,lines",0,Lines,Lignes,0
+field,"account.invoice.payment_term.line,sequence",0,Sequence,Séquence,0
+field,"account.invoice.payment_term.line,type",0,Type,Type,0
+field,"account.invoice.payment_term.line.type,code",0,Code,Code,0
+field,"account.invoice.payment_term.line.type,name",0,Name,Nom,0
+field,"account.invoice.payment_term,name",0,Payment Term,Condition de Paiement,0
+field,"account.invoice,reconciled",0,Reconciled,Réconcilié,0
+field,"account.invoice,reference",0,Reference,Référence,0
+field,"account.invoice,state",0,State,État,0
+field,"account.invoice.tax,account",0,Account,Compte,0
+field,"account.invoice,tax_amount",0,Tax,Taxe,0
+field,"account.invoice.tax,amount",0,Amount,Montant,0
+field,"account.invoice.tax,base",0,Base,Base,0
+field,"account.invoice.tax,base_code",0,Base Code,Code de Base,0
+field,"account.invoice.tax,base_sign",0,Base Sign,Signe de Base,0
+field,"account.invoice.tax,description",0,Description,Description,0
+field,"account.invoice,taxes",0,Tax Lines,Lignes de Taxe,0
+field,"account.invoice.tax,invoice",0,Invoice,Facture,0
+field,"account.invoice.tax,manual",0,Manual,Manuel,0
+field,"account.invoice.tax,sequence",0,Sequence,Séquence,0
+field,"account.invoice.tax,tax_code",0,Tax Code,Code de Taxe,0
+field,"account.invoice.tax,tax_sign",0,Tax Sign,Signe de Taxe,0
+field,"account.invoice,total_amount",0,Total,Total,0
+field,"account.invoice,type",0,Type,Type,0
+field,"account.invoice,type_name",0,Type,Type,0
+field,"account.invoice,untaxed_amount",0,Untaxed,Hors Taxe,0
+field,"account.period,in_invoice_sequence",0,Supplier Invoice Sequence,Séquence de Facture Fournisseur,0
+field,"account.period,in_refund_sequence",0,Supplier Refund Sequence,Séquence de Note de Crédit Fournisseur,0
+field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Séquence de Facture Client,0
+field,"account.period,out_refund_sequence",0,Customer Refund Sequence,Séquence de Note de Crédit Client,0
+field,"product.category,account_expense",0,Account Expense,Compte de Dépense,0
+field,"product.category,account_revenue",0,Account Revenue,Compte de Revenu,0
+field,"product.template,account_expense",0,Account Expense,Compte de Dépense,0
+field,"product.template,account_expense_used",0,Account Expense Used,Compte de Dépense Utilisé,0
+field,"product.template,account_revenue",0,Account Revenue,Compte de Revenu,0
+field,"product.template,account_revenue_used",0,Account Revenue Used,Compte de Revenu Utilisé,0
+field,"product.template,customer_taxes",0,Customer Taxes,Taxes Client,0
+field,"product.template,supplier_taxes",0,Supplier Taxes,Taxes Fournisseur,0
+field,"relationship.address,invoice",0,Invoice,Facture,0
+field,"relationship.party,payment_term",0,Invoice Payment Term,Condition de Paiement de Client,0
+field,"relationship.party,supplier_payment_term",0,Supplier Payment Term,Condition de Paiement de Fournisseur,0
+help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Utilisé pour trier les lignes en ordre croissant,0
+help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,0
+help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,0
+model,"ir.ui.menu,name",menu_invoice_form,All Invoices,Toutes les Factures,0
+model,"ir.ui.menu,name",menu_invoices_configuration,Invoices,Factures,0
+model,"ir.ui.menu,name",menu_invoices,Invoices,Factures,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Factures,0
+model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Conditions de Paiement,0
+model,"ir.ui.menu,name",menu_invoice_out_refund_form,Refunds,Notes de Crédit,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Factures Fournisseur,0
+model,"ir.ui.menu,name",menu_invoice_in_refund_form,Supplier Refunds,Notes de Crédit Fournisseur,0
+odt,account.invoice,0,Amount,Montant,0
+odt,account.invoice,0,Base,Base,0
+odt,account.invoice,0,Date,Date,0
+odt,account.invoice,0,Date:,Date :,0
+odt,account.invoice,0,Description,Description,0
+odt,account.invoice,0,Description:,Description :,0
+odt,account.invoice,0,Payment Term,Condition de Paiement,0
+odt,account.invoice,0,Quantity,Quantité,0
+odt,account.invoice,0,Tax,Taxe,0
+odt,account.invoice,0,Taxes,Taxes,0
+odt,account.invoice,0,Taxes:,Taxes :,0
+odt,account.invoice,0,Total:,Total :,0
+odt,account.invoice,0,Total (excl. taxes):,Total (hors-taxes) :,0
+odt,account.invoice,0,Unit Price,Prix Unitaire,0
+odt,account.invoice,0,VAT:,TAV :,0
+selection,"account.invoice.line,type",0,Comment,Commentaire,0
+selection,"account.invoice.line,type",0,Line,Ligne,0
+selection,"account.invoice.line,type",0,Subtotal,Sous-total,0
+selection,"account.invoice.line,type",0,Title,Titre,0
+selection,"account.invoice,state",0,Canceled,Annulé,0
+selection,"account.invoice,state",0,Draft,Brouillon,0
+selection,"account.invoice,state",0,Open,Ouverte,0
+selection,"account.invoice,state",0,Paid,Payée,0
+selection,"account.invoice,state",0,Pro forma,Pro forma,0
+selection,"account.invoice,type",0,Invoice,Facture,0
+selection,"account.invoice,type",0,Refund,Note de Crédit,0
+selection,"account.invoice,type",0,Supplier Invoice,Facture Fournisseur,0
+selection,"account.invoice,type",0,Supplier Refund,Note de Crédit Fournisseur,0
+view,account.invoice,0,Amount Second Currency,Montant de Devise Secondaire,0
+view,account.invoice,0,_Cancel,_Annuler,0
+view,account.invoice,0,Credit,Crédit,0
+view,account.invoice,0,Debit,Débit,0
+view,account.invoice,0,_Draft,_Brouillon,0
+view,account.invoice,0,Invoice,Facture,0
+view,account.invoice,0,Invoices,Factures,0
+view,account.invoice,0,Lines,Lignes,0
+view,account.invoice,0,_Open,_Ouvrir,0
+view,account.invoice,0,Other Info,Autre Information,0
+view,account.invoice,0,_Pay,_Payer,0
+view,account.invoice,0,Payment,Paiement,0
+view,account.invoice,0,Payment Lines,Lignes de Paiement,0
+view,account.invoice,0,Pro For_ma,Pro For_ma,0
+view,account.invoice,0,_Reset to Draft,_Remettre en Draft,0
+view,account.invoice,0,Taxes,Taxes,0
+view,account.invoice.line,0,Invoice Line,Ligne de Facture,0
+view,account.invoice.line,0,Invoice Lines,Lignes de Facture,0
+view,account.invoice.pay_invoice.ask,0,Amount Second Currency,Montant en Devise Secondaire,0
+view,account.invoice.pay_invoice.ask,0,Credit,Crédit,0
+view,account.invoice.pay_invoice.ask,0,Debit,Débit,0
+view,account.invoice.pay_invoice.ask,0,Lines to Pay,Lignes à Payer,0
+view,account.invoice.pay_invoice.ask,0,Pay Invoice,Payer la Facture,0
+view,account.invoice.pay_invoice.init,0,Pay Invoice,Payer la Facture,0
+view,account.invoice.payment_term,0,Payment Term,Condition de Paiement,0
+view,account.invoice.payment_term,0,Payment Term Line,Ligne de Condition de Paiement,0
+view,account.invoice.payment_term,0,Payment Term Lines,Lignes de Condition de Paiement,0
+view,account.invoice.payment_term,0,Payment Terms,Conditions de Paiement,0
+view,account.invoice.print_invoice_report.warning,0,<b>Warning!</b>,<b>Attention!</b>,0
+view,account.invoice.print_invoice_report.warning,0,Print Invoice,Imprimer la Facture,0
+view,account.invoice.print_invoice_report.warning,0,The invoices will be sent <i>directly</i> to the printer.,Les factures seront envoyées <i>directement</i> à l'imprimante.,0
+view,account.invoice.print_invoice_report.warning,0,You have selected more than one invoice to print.,Vous avez selectioné plus d'une facture à imprimer.,0
+view,account.invoice.refund_invoice.init,0,Are you sure to refund those/this invoice(s)?,Êtes-vous sûr de rembourser cette/ces facture(s) ?,0
+view,account.invoice.refund_invoice.init,0,Refund Invoice,Rembourser la Facture,0
+view,account.invoice.tax,0,Invoice Tax,Tax de Facture,0
+view,account.invoice.tax,0,Invoice Taxes,Taxes de Facture,0
+view,account.invoice.tax,0,Tax Code,Code de Tax,0
+view,product.product,0,Taxes,Taxes,0
+wizard_button,"account.invoice.pay_invoice,ask,end",0,Cancel,Annuler,0
+wizard_button,"account.invoice.pay_invoice,ask,pay",0,Ok,Ok,0
+wizard_button,"account.invoice.pay_invoice,init,choice",0,Ok,Ok,0
+wizard_button,"account.invoice.pay_invoice,init,end",0,Cancel,Annuler,0
+wizard_button,"account.invoice.print_invoice_report,warning,end",0,Cancel,Annuler,0
+wizard_button,"account.invoice.print_invoice_report,warning,print",0,Print,Imprimer,0
+wizard_button,"account.invoice.refund_invoice,init,end",0,Cancel,Annuler,0
+wizard_button,"account.invoice.refund_invoice,init,refund",0,Refund,Note de Crédit,0
