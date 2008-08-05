@@ -1,4 +1,7 @@
 type,name,res_id,src,value,fuzzy
+error,relationship.address,0,You can not modify the party of an address!,Vous ne pouvez pas modifier le tiers d'une addresse !,0
+error,relationship.category,0,You can not create recursive categories!,Vous ne pouvez pas créer des catégories récursives !,0
+error,relationship.party,0,Wrong VAT number!,Mauvais numéro de TVA !,0
 field,"relationship.address,active",0,Active,Actif,0
 field,"relationship.address,city",0,City,Ville,0
 field,"relationship.address,country",0,Country,Pays,0
@@ -14,16 +17,16 @@ field,"relationship.address,street",0,Street,Rue,0
 field,"relationship.address,streetbis",0,Street (bis),Rue (bis),0
 field,"relationship.address,zip",0,Zip,Code Postal,0
 field,"relationship.category,active",0,Active,Actif,0
-field,"relationship.category,childs",0,Childs Category,Enfants,0
+field,"relationship.category,childs",0,Childs,Enfants,0
 field,"relationship.category,complete_name",0,Name,Nom,0
-field,"relationship.category,name",0,Category Name,Nom,0
-field,"relationship.category,parent",0,Parent Category,Parent,0
-field,"relationship.country,code",0,Country Code,Code,0
-field,"relationship.country,name",0,Country Name,Nom,0
+field,"relationship.category,name",0,Name,Nom,0
+field,"relationship.category,parent",0,Parent,Parent,0
+field,"relationship.country,code",0,Code,Code,0
+field,"relationship.country,name",0,Name,Nom,0
 field,"relationship.country,state",0,State,État,0
-field,"relationship.country.state,code",0,State Code,Code,0
+field,"relationship.country.state,code",0,Code,Code,0
 field,"relationship.country.state,country",0,Country,Pays,0
-field,"relationship.country.state,name",0,State Name,Nom,0
+field,"relationship.country.state,name",0,Name,Nom,0
 field,"relationship.party,active",0,Active,Actif,0
 field,"relationship.party,addresses",0,Addresses,Adresses,0
 field,"relationship.party,categories",0,Categories,Catégories,0
