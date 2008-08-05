@@ -29,9 +29,11 @@ class Work(OSV):
     def __init__(self):
         super(Work, self).__init__()
         self._constraints += [
-            ('check_recursion',
-             'Error! You can not create recursive works.', ['parent'])
+            ('check_recursion', 'recursive_works'),
         ]
+        self._error_messages.update({
+            'recursive_works': 'You can not create recursive works!',
+        })
 
     def default_active(self, cursor, user, context=None):
         return True
