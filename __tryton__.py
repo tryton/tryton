@@ -14,4 +14,7 @@
     'xml': [
         'currency.xml',
     ],
+    'translation': [
+        'fr_FR.csv',
+    ]
 }
