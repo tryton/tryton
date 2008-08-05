@@ -107,6 +107,8 @@ class Period(OSV):
 
     def _check(self, cursor, user, ids, context=None):
         move_obj = self.pool.get('account.move')
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         move_ids = move_obj.search(cursor, user, [
             ('period', 'in', ids),
             ], limit=1, context=context)
