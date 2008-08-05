@@ -24,9 +24,11 @@ class Company(OSV):
     def __init__(self):
         super(Company, self).__init__()
         self._constraints += [
-            ('check_recursion',
-                'Error! You can not create recursive companies.', ['parent']),
+            ('check_recursion', 'recursive_companies'),
         ]
+        self._error_messages.update({
+            'recursive_companies': 'You can not create recursive companies!',
+        })
 
     def write(self, cursor, user, ids, vals, context=None):
         res = super(Company, self).write(cursor, user, ids, vals,
@@ -63,10 +65,12 @@ class User(OSV):
         super(User, self).__init__()
         self._context_fields.insert(0, 'company')
         self._constraints += [
-                ('check_company',
-                    'Error! You can not set a company that is not ' \
-                            'a child of your main company.', ['company']),
+                ('check_company', 'child_company'),
                 ]
+        self._error_messages.update({
+            'child_company': 'You can not set a company that is not ' \
+                    'a child of your main company!',
+        })
 
     def get_status_bar(self, cursor, user_id, ids, name, arg, context=None):
         res = super(User, self).get_status_bar(cursor, user_id, ids, name, arg,
