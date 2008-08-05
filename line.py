@@ -34,9 +34,12 @@ class Line(OSV):
                 'Wrong credit/debit values!'),
         ]
         self._constraints += [
-            ('check_account', 'You can not create move line \n' \
-                    'on view/inactive account!', ['account']),
+            ('check_account', 'line_on_view_inactive_account'),
         ]
+        self._error_messages.update({
+            'line_on_view_inactive_account': 'You can not create move line\n' \
+                    'on view/inactive account!',
+        })
         self._order.insert(0, ('date', 'ASC'))
 
     def default_currency(self, cursor, user, context=None):

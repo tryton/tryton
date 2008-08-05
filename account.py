@@ -62,9 +62,11 @@ class Account(OSV):
     def __init__(self):
         super(Account, self).__init__()
         self._constraints += [
-            ('check_recursion',
-                'Error! You can not create recursive account.', ['parent']),
+            ('check_recursion', 'recursive_accounts'),
         ]
+        self._error_messages.update({
+            'recursive_accounts': 'You can not create recursive accounts!',
+        })
         self._order.insert(0, ('code', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
@@ -367,10 +369,12 @@ class AccountSelection(OSV):
     def __init__(self):
         super(AccountSelection, self).__init__()
         self._constraints += [
-            ('check_root', 'Can not have many accounts with the same root ' \
-                    'or a missing mandatory root account!',
-                ['accounts']),
+            ('check_root', 'root_account'),
         ]
+        self._error_messages.update({
+            'root_account': 'Can not have many accounts with the same root ' \
+                    'or a missing mandatory root account!',
+        })
 
     def check_root(self, cursor, user, ids):
         "Check Root"
