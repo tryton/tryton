@@ -162,7 +162,7 @@ class Party(OSV):
         for party in self.browse(cursor, user, ids):
             vat_number = party.vat_number
 
-            if not vat_number:
+            if not (vat_number and party.vat_country):
                 continue
 
             if not getattr(self, 'check_vat_' + \
