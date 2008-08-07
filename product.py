@@ -101,4 +101,32 @@ class Product(OSV):
         return super(Product, self).name_search(cursor, user, name,
                 args=args, operator=operator, context=context, limit=limit)
 
+    def delete(self, cursor, user, ids, context=None):
+        template_obj = self.pool.get('product.template')
+
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
+        # Delete template that have no more product linked
+        cursor.execute('SELECT t.id ' \
+                'FROM product_product p, product_template t ' \
+                'WHERE p.template = t.id ' \
+                'GROUP BY t.id HAVING COUNT(p.template) = 1')
+        template_ids = [x[0] for x in cursor.fetchall()]
+
+        if template_ids:
+            product_ids = self.search(cursor, user, [
+                ('id', 'in', ids),
+                ('template', 'in', template_ids),
+                ], context=context)
+            template_ids = [x.template.id for x in self.browse(cursor, user,
+                product_ids, context=context)]
+
+        res = super(Product, self).delete(cursor, user, ids, context=context)
+
+        if template_ids:
+            template_obj.delete(cursor, user, template_ids, context=context)
+
+        return res
+
 Product()
