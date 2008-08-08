@@ -19,7 +19,9 @@ class Purchase(OSV):
     _description = __doc__
 
     company = fields.Many2One('company.company', 'Company', required=True,
-            states=_STATES)
+            states={
+                'readonly': "state != 'draft' or bool(lines)",
+            })
     reference = fields.Char('Reference', size=None, readonly=True, select=1)
     description = fields.Char('Description', size=None, states=_STATES)
     state = fields.Selection([
