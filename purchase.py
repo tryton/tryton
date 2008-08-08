@@ -834,16 +834,39 @@ class Product(OSV):
 
     def get_purchase_price(self, cursor, user, ids, quantity=0, context=None):
         '''
-        Return price for product ids.
-        context can have :
-            - uom
-            - supplier
-            - currency
+        Return purchase price for product ids.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param ids: the product ids
+        :param quantity: the quantity of products
+        :param context: the context that can have as keys:
+            uom: the unit of measure
+            supplier: the supplier party id
+            currency: the currency id for the returned price
+        :return: a dictionary with for each product ids keys the computed price
         '''
         uom_obj = self.pool.get('product.uom')
         user_obj = self.pool.get('res.user')
         currency_obj = self.pool.get('currency.currency')
+
+        if context is None:
+            context = {}
+
         res = {}
+
+        uom = None
+        if context.get('uom'):
+            uom = uom_obj.browse(cursor, user, context['uom'],
+                    context=context)
+
+        currency = None
+        if context.get('currency'):
+            currency = currency_obj.browse(cursor, user, context['currency'],
+                    context=context)
+
+        user2 = user_obj.browse(cursor, user, user, context=context)
+
         for product in self.browse(cursor, user, ids, context=context):
             res[product.id] = product.cost_price
             if context.get('supplier') and product.product_suppliers:
@@ -854,16 +877,11 @@ class Product(OSV):
                             if price.quantity <= quantity:
                                 res[product.id] = price.price
                         break
-            if context.get('uom'):
-                uom = uom_obj.browse(cursor, user, context['uom'],
-                        context=context)
+            if uom:
                 res[product.id] = uom_obj.compute_price(cursor,
                         user, product.default_uom, res[product.id],
                         uom, context=context)
-            if context.get('currency'):
-                currency = currency_obj.browse(cursor, user,
-                        context['currency'], context=context)
-                user2 = user_obj.browse(cursor, user, user, context=context)
+            if currency:
                 if user2.company.currency.id != currency.id:
                     res[product.id] = currency_obj.compute(cursor, user,
                             user2.company.currency, res[product.id],
