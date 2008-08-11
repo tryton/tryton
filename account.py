@@ -2,7 +2,7 @@
 "Account"
 
 from trytond.osv import fields, OSV
-from trytond.osv.orm import ID_MAX, exclude
+from trytond.osv.orm import exclude
 from trytond.wizard import Wizard, WizardOSV
 from trytond.report import Report
 from decimal import Decimal
