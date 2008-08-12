@@ -167,6 +167,7 @@
         </record>
         <record model="account.account.type" id="account_type_income">
             <field name="name">Income</field>
+            <field name="parent" ref="account_type_equity"/>
             <field name="sequence" eval="40"/>
             <field name="income_statement" eval="True"/>
             <field name="display_balance">credit-debit</field>
