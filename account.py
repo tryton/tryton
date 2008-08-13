@@ -30,9 +30,7 @@ class Type(OSV):
     balance_sheet = fields.Boolean('Balance Sheet', states={
         'invisible': "parent",
         })
-    income_statement = fields.Boolean('Income Statement', states={
-        'invisible': "parent",
-        })
+    income_statement = fields.Boolean('Income Statement')
     display_balance = fields.Selection([
         ('debit-credit', 'Debit - Credit'),
         ('credit-debit', 'Credit - Debit'),

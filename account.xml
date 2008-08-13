@@ -671,7 +671,7 @@
             <field name="name">Income Statement</field>
             <field name="res_model">account.account.type</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('parent', '=', False), ('income_statement', '=', True)]</field>
+            <field name="domain">[('income_statement', '=', True)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_income_statement_view1">
             <field name="sequence" eval="10"/>
