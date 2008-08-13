@@ -1034,9 +1034,14 @@ class OpenBalanceSheet(Wizard):
             encoding = 'UTF-8'
         if encoding == 'cp1252':
             encoding = '1252'
+        if not encoding:
+            encoding = 'UTF-8'
         try:
             if os.name == 'nt':
+                os.environ['LANG'] = lang
                 lang = _LOCALE2WIN32.get(lang, lang)
+            elif os.name == 'mac':
+                encoding = 'UTF-8'
             locale.setlocale(locale.LC_ALL, str(lang + '.' + encoding))
         except:
             pass
