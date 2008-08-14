@@ -1,0 +1,87 @@
+type,name,res_id,src,value,fuzzy
+error,timesheet.work,0,You can not create recursive works!,,0
+field,"timesheet.hours_employee,create_date",0,Creation date,Erstellungsdatum,0
+field,"timesheet.hours_employee,create_uid",0,Creation user,Ersteller,0
+field,"timesheet.hours_employee,employee",0,Employee,Mitarbeiter,0
+field,"timesheet.hours_employee,hours",0,Hours,Stunden,0
+field,"timesheet.hours_employee,id",0,ID,ID,0
+field,"timesheet.hours_employee_monthly,create_date",0,Creation date,Erstellungsdatum,0
+field,"timesheet.hours_employee_monthly,create_uid",0,Creation user,Ersteller,0
+field,"timesheet.hours_employee_monthly,employee",0,Employee,Mitarbeiter,0
+field,"timesheet.hours_employee_monthly,hours",0,Hours,Stunden,0
+field,"timesheet.hours_employee_monthly,id",0,ID,ID,0
+field,"timesheet.hours_employee_monthly,month",0,Month,Monat,0
+field,"timesheet.hours_employee_monthly,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"timesheet.hours_employee_monthly,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"timesheet.hours_employee_monthly,year",0,Year,Jahr,0
+field,"timesheet.hours_employee_weekly,create_date",0,Creation date,Erstellungsdatum,0
+field,"timesheet.hours_employee_weekly,create_uid",0,Creation user,Ersteller,0
+field,"timesheet.hours_employee_weekly,employee",0,Employee,Mitarbeiter,0
+field,"timesheet.hours_employee_weekly,hours",0,Hours,Stunden,0
+field,"timesheet.hours_employee_weekly,id",0,ID,ID,0
+field,"timesheet.hours_employee_weekly,week",0,Week,Woche,0
+field,"timesheet.hours_employee_weekly,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"timesheet.hours_employee_weekly,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"timesheet.hours_employee_weekly,year",0,Year,Jahr,0
+field,"timesheet.hours_employee,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"timesheet.hours_employee,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"timesheet.line,create_date",0,Creation date,Erstellungsdatum,0
+field,"timesheet.line,create_uid",0,Creation user,Ersteller,0
+field,"timesheet.line,date",0,Date,Datum,0
+field,"timesheet.line,description",0,Description,Beschreibung,0
+field,"timesheet.line,employee",0,Employee,Mitarbeiter,0
+field,"timesheet.line,hours",0,Hours,Stunden,0
+field,"timesheet.line,id",0,ID,ID,0
+field,"timesheet.line,work",0,Work,Leistung,0
+field,"timesheet.line,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"timesheet.line,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"timesheet.work,active",0,Active,Aktiv,0
+field,"timesheet.work,childs",0,Childs,Untergeordnet,0
+field,"timesheet.work,complete_name",0,Name,Name,0
+field,"timesheet.work,create_date",0,Creation date,Erstellungsdatum,0
+field,"timesheet.work,create_uid",0,Creation user,Ersteller,0
+field,"timesheet.work,hours",0,Hours,Stunden,0
+field,"timesheet.work,id",0,ID,ID,0
+field,"timesheet.work,name",0,Name,Name,0
+field,"timesheet.work,parent",0,Parent,Übergeordnet,0
+field,"timesheet.work,state",0,State,Status,0
+field,"timesheet.work,type",0,Type,Typ,0
+field,"timesheet.work,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"timesheet.work,write_uid",0,Last modification by,Zuletzt geändert von,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
+model,"ir.ui.menu,name",menu_enter_lines,Enter Timesheet,Zur Zeiterfassung,0
+model,"ir.ui.menu,name",menu_open_hours_employee,Hours per Employee,Stunden pro Mitarbeiter,0
+model,"ir.ui.menu,name",menu_open_hours_employee_monthly,Hours per Employee per Month,Stunden pro Mitarbeiter pro Monat,0
+model,"ir.ui.menu,name",menu_open_hours_employee_weekly,Hours per Employee per Week,Stunden pro Mitarbeiter pro Woche,0
+model,"ir.ui.menu,name",menu_work_tree2,Hours per Work,Stunden pro Leistung,0
+model,"ir.ui.menu,name",menu_work_form2,Hours per Work,Stunden pro Leistung,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
+model,"ir.ui.menu,name",menu_line_form,Timesheet Lines,Zeitpositionen,0
+model,"ir.ui.menu,name",menu_timesheet,Timesheet Management,Zeiterfassung,0
+model,"ir.ui.menu,name",menu_work_form,Works,Leistungen,0
+model,"ir.ui.menu,name",menu_work_tree,Works,Leistungen,0
+selection,"timesheet.work,state",0,Closed,Schliessen,0
+selection,"timesheet.work,state",0,Opened,Geöffnet,0
+selection,"timesheet.work,type",0,Normal,Standard,0
+selection,"timesheet.work,type",0,View,Ansicht,0
+view,timesheet.enter_lines.init,0,Enter Timesheet,Zur Zeiterfassung,0
+view,timesheet.hours_employee,0,Hours,Stunden,0
+view,timesheet.hours_employee,0,Hours per Employee,Stunden pro Mitarbeiter,0
+view,timesheet.hours_employee_monthly,0,Hours per Employee per Month,Stunden pro Mitarbeiter pro Monat,0
+view,timesheet.hours_employee_weekly,0,Hours per Employee per Week,Stunden pro Mitarbeiter pro Woche,0
+view,timesheet.line,0,Hours,Stunden,0
+view,timesheet.line,0,Timesheet Line,Zeitposition,0
+view,timesheet.line,0,Timesheet Lines,Zeitpositionen,0
+view,timesheet.open_hours_employee.init,0,Hours per Employee,Stunden pro Mitarbeiter,0
+view,timesheet.work,0,Hours per Work,Stunden pro Leistung,0
+view,timesheet.work,0,Work,Leistung,0
+view,timesheet.work,0,Works,Leistungen,0
+view,timesheet.work.open.init,0,Hours per Work,Stunden pro Leistung,0
+wizard_button,"timesheet.enter_lines,init,end",0,Cancel,Abbrechen,0
+wizard_button,"timesheet.enter_lines,init,enter",0,Enter,Eingabe,0
+wizard_button,"timesheet.open_hours_employee,init,end",0,Cancel,Abbrechen,0
+wizard_button,"timesheet.open_hours_employee,init,open",0,Open,Öffnen,0
+wizard_button,"timesheet.work.open2,init,end",0,Cancel,Abbrechen,0
+wizard_button,"timesheet.work.open2,init,open",0,Open,Öffnen,0
+wizard_button,"timesheet.work.open,init,end",0,Cancel,Abbrechen,0
+wizard_button,"timesheet.work.open,init,open",0,Open,Öffnen,0
