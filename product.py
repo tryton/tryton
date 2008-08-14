@@ -273,6 +273,8 @@ class OpenLocation(Wizard):
         context['product'] = data['id']
         if data['form']['forecast_date']:
             context['stock_date'] = data['form']['forecast_date']
+        else:
+            context['stock_date'] = datetime.date.max
         res['context'] = str(context)
 
         return res
