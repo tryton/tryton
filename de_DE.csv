@@ -1,0 +1,131 @@
+type,name,res_id,src,value,fuzzy
+error,relationship.address,0,You can not modify the party of an address!,,0
+error,relationship.category,0,You can not create recursive categories!,,0
+error,relationship.party,0,Wrong VAT number!,,0
+field,"relationship.address,active",0,Active,Aktiv,0
+field,"relationship.address,city",0,City,Stadt,0
+field,"relationship.address,country",0,Country,Staat,0
+field,"relationship.address,create_date",0,Creation date,Erstellungsdatum,0
+field,"relationship.address,create_uid",0,Creation user,Ersteller,0
+field,"relationship.address,email",0,E-Mail,E-Mail,0
+field,"relationship.address,fax",0,Fax,Fax,0
+field,"relationship.address,id",0,ID,ID,0
+field,"relationship.address,mobile",0,Mobile,Mobil-Telefon,0
+field,"relationship.address,name",0,Contact Name,Kontakt Name,0
+field,"relationship.address,party",0,Party,Kontakt,0
+field,"relationship.address,phone",0,Phone,Telefon,0
+field,"relationship.address,sequence",0,Sequence,Ablauf,0
+field,"relationship.address,state",0,State,Bundesland,0
+field,"relationship.address,street",0,Street,Anschrift 1,0
+field,"relationship.address,streetbis",0,Street (bis),Anschrift 2,0
+field,"relationship.address,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"relationship.address,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"relationship.address,zip",0,Zip,Postleitzahl,0
+field,"relationship.category,active",0,Active,Aktiv,0
+field,"relationship.category,childs",0,Childs,Unterkategorie,0
+field,"relationship.category,complete_name",0,Name,Name,0
+field,"relationship.category,create_date",0,Creation date,Erstellungsdatum,0
+field,"relationship.category,create_uid",0,Creation user,Ersteller,0
+field,"relationship.category,id",0,ID,ID,0
+field,"relationship.category,name",0,Name,Kategorie Name,0
+field,"relationship.category,parent",0,Parent,Hauptkategorie,0
+field,"relationship.category,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"relationship.category,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"relationship.country,code",0,Code,Staat - Code,0
+field,"relationship.country,create_date",0,Creation date,Erstellungsdatum,0
+field,"relationship.country,create_uid",0,Creation user,Ersteller,0
+field,"relationship.country,id",0,ID,ID,0
+field,"relationship.country,name",0,Name,Staat Name,0
+field,"relationship.country,state",0,State,Bundesland,0
+field,"relationship.country.state,code",0,Code,Länderkürzel,0
+field,"relationship.country.state,country",0,Country,Staat,0
+field,"relationship.country.state,create_date",0,Creation date,Erstellungsdatum,0
+field,"relationship.country.state,create_uid",0,Creation user,Ersteller,0
+field,"relationship.country.state,id",0,ID,ID,0
+field,"relationship.country.state,name",0,Name,Ländername,0
+field,"relationship.country.state,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"relationship.country.state,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"relationship.country,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"relationship.country,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"relationship.party,active",0,Active,Aktiv,0
+field,"relationship.party,addresses",0,Addresses,Adressen,0
+field,"relationship.party,categories",0,Categories,Kategorie,0
+field,"relationship.party,code",0,Code,lfd. Nr.,0
+field,"relationship.party,create_date",0,Creation date,Erstellungsdatum,0
+field,"relationship.party,create_uid",0,Creation user,Ersteller,0
+field,"relationship.party,id",0,ID,ID,0
+field,"relationship.party,lang",0,Language,Sprache,0
+field,"relationship.party,name",0,Name,Name,0
+field,"relationship.party,type",0,Type,Typ,0
+field,"relationship.party.type,create_date",0,Creation date,Erstellungsdatum,0
+field,"relationship.party.type,create_uid",0,Creation user,Ersteller,0
+field,"relationship.party.type,id",0,ID,ID,0
+field,"relationship.party.type,name",0,Name,Name,0
+field,"relationship.party.type,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"relationship.party.type,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"relationship.party,vat_code",0,VAT Code,,0
+field,"relationship.party,vat_country",0,VAT Country,,0
+field,"relationship.party,vat_number",0,VAT Number,USt-ID Nr.,0
+field,"relationship.party,website",0,Website,Website,0
+field,"relationship.party,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"relationship.party,write_uid",0,Last modification by,Zuletzt geändert von,0
+help,"relationship.country,code",0,"The ISO country code in two chars.
+You can use this field for quick search.",Staatenkürzel (2 Zeichen),0
+help,"relationship.country,name",0,The full name of the country.,Voller Ländername,0
+help,"relationship.party,vat_country",0,Setting VAT country will enable verification of the VAT number.,,0
+help,"relationship.party,vat_number",0,Value Added Tax number,USt-ID Nr.,0
+model,"ir.ui.menu,name",menu_address_form,Addresses,Adressen,0
+model,"ir.ui.menu,name",menu_category_tree,Categories,Kategorien,0
+model,"ir.ui.menu,name",menu_country_form,Countries,Staaten,0
+model,"ir.ui.menu,name",menu_category_form,Edit Categories,Kategorien bearbeiten,0
+model,"ir.ui.menu,name",menu_address_form2,New Address,Neue Adresse,0
+model,"ir.ui.menu,name",menu_category_form2,New category,Neue Kategorie,0
+model,"ir.ui.menu,name",menu_party_form2,New Party,Neuer Kontakt,0
+model,"ir.ui.menu,name",menu_party_form,Parties,Kontakte,0
+model,"ir.ui.menu,name",menu_party_type_form,Party Types,Kontakttypen,0
+model,"ir.ui.menu,name",menu_relationship,Relationship Management,Kontakte,0
+selection,"relationship.party,vat_country",0,,,0
+selection,"relationship.party,vat_country",0,AT,,0
+selection,"relationship.party,vat_country",0,BE,,0
+selection,"relationship.party,vat_country",0,BG,,0
+selection,"relationship.party,vat_country",0,CY,,0
+selection,"relationship.party,vat_country",0,CZ,,0
+selection,"relationship.party,vat_country",0,DE,,0
+selection,"relationship.party,vat_country",0,DK,,0
+selection,"relationship.party,vat_country",0,EE,,0
+selection,"relationship.party,vat_country",0,EL,,0
+selection,"relationship.party,vat_country",0,ES,,0
+selection,"relationship.party,vat_country",0,FI,,0
+selection,"relationship.party,vat_country",0,FR,,0
+selection,"relationship.party,vat_country",0,GB,,0
+selection,"relationship.party,vat_country",0,GR,,0
+selection,"relationship.party,vat_country",0,HU,,0
+selection,"relationship.party,vat_country",0,IE,,0
+selection,"relationship.party,vat_country",0,IT,,0
+selection,"relationship.party,vat_country",0,LT,,0
+selection,"relationship.party,vat_country",0,LU,,0
+selection,"relationship.party,vat_country",0,LV,,0
+selection,"relationship.party,vat_country",0,MT,,0
+selection,"relationship.party,vat_country",0,NL,,0
+selection,"relationship.party,vat_country",0,PL,,0
+selection,"relationship.party,vat_country",0,PT,,0
+selection,"relationship.party,vat_country",0,RO,,0
+selection,"relationship.party,vat_country",0,SE,,0
+selection,"relationship.party,vat_country",0,SI,,0
+selection,"relationship.party,vat_country",0,SK,,0
+view,relationship.address,0,Addresses,Adressen,0
+view,relationship.category,0,Categories,Kategorien,0
+view,relationship.category,0,Category,Kategorie,0
+view,relationship.country,0,Countries,Staaten,0
+view,relationship.country,0,Country,Staat,0
+view,relationship.country,0,State,Bundesland,0
+view,relationship.country,0,States,Länder,0
+view,relationship.party,0,Accounting,Konto,0
+view,relationship.party,0,Addresses,Adressen,0
+view,relationship.party,0,Categories,Kategorien,0
+view,relationship.party,0,General,Allgemein,0
+view,relationship.party,0,Parties,Kontakte,0
+view,relationship.party,0,Party,Kontakt,0
+view,relationship.party,0,Properties,Eigenschaften,0
+view,relationship.party.type,0,Party Type,Kontakttyp,0
+view,relationship.party.type,0,Party Types,Kontakttypen,0
