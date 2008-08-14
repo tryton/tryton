@@ -118,31 +118,718 @@
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
-        <record model="currency.currency" id="eur">
-            <field name="name">Euro</field>
-            <field name="code">EUR</field>
-            <field name="symbol">€</field>
-            <field name="rounding" eval="0.01"/>
-            <field name="digits" eval="2"/>
+        <record model="currency.currency" id="afn"> 
+	        <field name="name">Afghani</field>
+	        <field name="code">AFN</field>
+	        <field name="symbol">؋</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="ars"> 
+	        <field name="name">Argentine Peso</field>
+	        <field name="code">ARS</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="awg"> 
+	        <field name="name">Aruban Guilder</field>
+	        <field name="code">AWG</field>
+	        <field name="symbol">ƒ</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="azn"> 
+	        <field name="name">Azerbaijanian Manat</field>
+	        <field name="code">AZN</field>
+	        <field name="symbol">ман</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="bsd"> 
+	        <field name="name">Bahamian Dollar</field>
+	        <field name="code">BSD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="thb"> 
+	        <field name="name">Baht</field>
+	        <field name="code">THB</field>
+	        <field name="symbol">฿</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="pab"> 
+	        <field name="name">Balboa</field>
+	        <field name="code">PAB</field>
+	        <field name="symbol">B/.</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="bbd"> 
+	        <field name="name">Barbados Dollar</field>
+	        <field name="code">BBD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="byr"> 
+	        <field name="name">Belarussian Ruble</field>
+	        <field name="code">BYR</field>
+	        <field name="symbol">p.</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="bzd"> 
+	        <field name="name">Belize Dollar</field>
+	        <field name="code">BZD</field>
+	        <field name="symbol">BZ$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="bmd"> 
+	        <field name="name">Bermudian Dollar (customarily known as Bermuda Dollar)</field>
+	        <field name="code">BMD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="vef"> 
+	        <field name="name">Bolivar Fuerte</field>
+	        <field name="code">VEF</field>
+	        <field name="symbol">Bs</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="bob"> 
+	        <field name="name">Boliviano</field>
+	        <field name="code">BOB</field>
+	        <field name="symbol">$b</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="brl"> 
+	        <field name="name">Brazilian Real</field>
+	        <field name="code">BRL</field>
+	        <field name="symbol">R$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="bgn"> 
+	        <field name="name">Bulgarian Lev</field>
+	        <field name="code">BGN</field>
+	        <field name="symbol">лв</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="cad"> 
+	        <field name="name">Canadian Dollar</field>
+	        <field name="code">CAD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="kyd"> 
+	        <field name="name">Cayman Islands Dollar</field>
+	        <field name="code">KYD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="clp"> 
+	        <field name="name">Chilean Peso</field>
+	        <field name="code">CLP</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="cop"> 
+	        <field name="name">Colombian Peso</field>
+	        <field name="code">COP</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="bam"> 
+	        <field name="name">Convertible Marks</field>
+	        <field name="code">BAM</field>
+	        <field name="symbol">KM</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="nio"> 
+	        <field name="name">Cordoba Oro</field>
+	        <field name="code">NIO</field>
+	        <field name="symbol">C$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="crc"> 
+	        <field name="name">Costa Rican Colon</field>
+	        <field name="code">CRC</field>
+	        <field name="symbol">₡</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="hrk"> 
+	        <field name="name">Croatian Kuna</field>
+	        <field name="code">HRK</field>
+	        <field name="symbol">kn</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="cup"> 
+	        <field name="name">Cuban Peso</field>
+	        <field name="code">CUP</field>
+	        <field name="symbol">₱</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="czk"> 
+	        <field name="name">Czech Koruna</field>
+	        <field name="code">CZK</field>
+	        <field name="symbol">Kč</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="dkk"> 
+	        <field name="name">Danish Krone</field>
+	        <field name="code">DKK</field>
+	        <field name="symbol">kr</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="mkd"> 
+	        <field name="name">Denar</field>
+	        <field name="code">MKD</field>
+	        <field name="symbol">ден</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="dop"> 
+	        <field name="name">Dominican Peso</field>
+	        <field name="code">DOP</field>
+	        <field name="symbol">RD$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="vnd"> 
+	        <field name="name">Dong</field>
+	        <field name="code">VND</field>
+	        <field name="symbol">₫</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="xcd"> 
+	        <field name="name">East Caribbean Dollar</field>
+	        <field name="code">XCD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="egp"> 
+	        <field name="name">Egyptian Pound</field>
+	        <field name="code">EGP</field>
+	        <field name="symbol">£</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="eur"> 
+	        <field name="name">Euro</field>
+	        <field name="code">EUR</field>
+	        <field name="symbol">€</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="fkp"> 
+	        <field name="name">Falkland Islands Pound</field>
+	        <field name="code">FKP</field>
+	        <field name="symbol">£</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="fjd"> 
+	        <field name="name">Fiji Dollar</field>
+	        <field name="code">FJD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="huf"> 
+	        <field name="name">Forint</field>
+	        <field name="code">HUF</field>
+	        <field name="symbol">Ft</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="gip"> 
+	        <field name="name">Gibraltar Pound</field>
+	        <field name="code">GIP</field>
+	        <field name="symbol">£</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="pyg"> 
+	        <field name="name">Guarani</field>
+	        <field name="code">PYG</field>
+	        <field name="symbol">Gs</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="gyd"> 
+	        <field name="name">Guyana Dollar</field>
+	        <field name="code">GYD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="hkd"> 
+	        <field name="name">Hong Kong Dollar</field>
+	        <field name="code">HKD</field>
+	        <field name="symbol">HK$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="uah"> 
+	        <field name="name">Hryvnia</field>
+	        <field name="code">UAH</field>
+	        <field name="symbol">₴</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="isk"> 
+	        <field name="name">Iceland Krona</field>
+	        <field name="code">ISK</field>
+	        <field name="symbol">kr</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="inr"> 
+	        <field name="name">Indian Rupee</field>
+	        <field name="code">INR</field>
+	        <field name="symbol">₨</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="irr"> 
+	        <field name="name">Iranian Rial</field>
+	        <field name="code">IRR</field>
+	        <field name="symbol">﷼</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="jmd"> 
+	        <field name="name">Jamaican Dollar</field>
+	        <field name="code">JMD</field>
+	        <field name="symbol">J$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="lak"> 
+	        <field name="name">Kip</field>
+	        <field name="code">LAK</field>
+	        <field name="symbol">₭</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="eek"> 
+	        <field name="name">Kroon</field>
+	        <field name="code">EEK</field>
+	        <field name="symbol">kr</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="lbp"> 
+	        <field name="name">Lebanese Pound</field>
+	        <field name="code">LBP</field>
+	        <field name="symbol">£</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="all"> 
+	        <field name="name">Lek</field>
+	        <field name="code">ALL</field>
+	        <field name="symbol">Lek</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="hnl"> 
+	        <field name="name">Lempira</field>
+	        <field name="code">HNL</field>
+	        <field name="symbol">L</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="lrd"> 
+	        <field name="name">Liberian Dollar</field>
+	        <field name="code">LRD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="ltl"> 
+	        <field name="name">Lithuanian Litas</field>
+	        <field name="code">LTL</field>
+	        <field name="symbol">Lt</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="myr"> 
+	        <field name="name">Malaysian Ringgit</field>
+	        <field name="code">MYR</field>
+	        <field name="symbol">RM</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="mur"> 
+	        <field name="name">Mauritius Rupee</field>
+	        <field name="code">MUR</field>
+	        <field name="symbol">₨</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="mzn"> 
+	        <field name="name">Metical</field>
+	        <field name="code">MZN</field>
+	        <field name="symbol">MT</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="mxn"> 
+	        <field name="name">Mexican Peso</field>
+	        <field name="code">MXN</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="ngn"> 
+	        <field name="name">Naira</field>
+	        <field name="code">NGN</field>
+	        <field name="symbol">₦</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="nad"> 
+	        <field name="name">Namibia Dollar</field>
+	        <field name="code">NAD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="npr"> 
+	        <field name="name">Nepalese Rupee</field>
+	        <field name="code">NPR</field>
+	        <field name="symbol">₨</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="ang"> 
+	        <field name="name">Netherlands Antillian Guilder</field>
+	        <field name="code">ANG</field>
+	        <field name="symbol">ƒ</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="ils"> 
+	        <field name="name">New Israeli Sheqel</field>
+	        <field name="code">ILS</field>
+	        <field name="symbol">₪</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="ron"> 
+	        <field name="name">New Leu</field>
+	        <field name="code">RON</field>
+	        <field name="symbol">lei</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="twd"> 
+	        <field name="name">New Taiwan Dollar</field>
+	        <field name="code">TWD</field>
+	        <field name="symbol">NT$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="try"> 
+	        <field name="name">New Turkish Lira</field>
+	        <field name="code">TRY</field>
+	        <field name="symbol">YTL</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="nzd"> 
+	        <field name="name">New Zealand Dollar</field>
+	        <field name="code">NZD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="kpw"> 
+	        <field name="name">North Korean Won</field>
+	        <field name="code">KPW</field>
+	        <field name="symbol">₩</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="nok"> 
+	        <field name="name">Norwegian Krone</field>
+	        <field name="code">NOK</field>
+	        <field name="symbol">kr</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="pen"> 
+	        <field name="name">Nuevo Sol</field>
+	        <field name="code">PEN</field>
+	        <field name="symbol">S/.</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="pkr"> 
+	        <field name="name">Pakistan Rupee</field>
+	        <field name="code">PKR</field>
+	        <field name="symbol">₨</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="uyu"> 
+	        <field name="name">Peso Uruguayo</field>
+	        <field name="code">UYU</field>
+	        <field name="symbol">$U</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="php"> 
+	        <field name="name">Philippine Peso</field>
+	        <field name="code">PHP</field>
+	        <field name="symbol">Php</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="bwp"> 
+	        <field name="name">Pula</field>
+	        <field name="code">BWP</field>
+	        <field name="symbol">P</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="qar"> 
+	        <field name="name">Qatari Rial</field>
+	        <field name="code">QAR</field>
+	        <field name="symbol">﷼</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="gtq"> 
+	        <field name="name">Quetzal</field>
+	        <field name="code">GTQ</field>
+	        <field name="symbol">Q</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="zar"> 
+	        <field name="name">Rand</field>
+	        <field name="code">ZAR</field>
+	        <field name="symbol">R</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="omr"> 
+	        <field name="name">Rial Omani</field>
+	        <field name="code">OMR</field>
+	        <field name="symbol">﷼</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="khr"> 
+	        <field name="name">Riel</field>
+	        <field name="code">KHR</field>
+	        <field name="symbol">៛</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="idr"> 
+	        <field name="name">Rupiah</field>
+	        <field name="code">IDR</field>
+	        <field name="symbol">Rp</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="rub"> 
+	        <field name="name">Russian Ruble</field>
+	        <field name="code">RUB</field>
+	        <field name="symbol">руб</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="shp"> 
+	        <field name="name">Saint Helena Pound</field>
+	        <field name="code">SHP</field>
+	        <field name="symbol">£</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="sar"> 
+	        <field name="name">Saudi Riyal</field>
+	        <field name="code">SAR</field>
+	        <field name="symbol">﷼</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="rsd"> 
+	        <field name="name">Serbian Dinar</field>
+	        <field name="code">RSD</field>
+	        <field name="symbol">Дин.</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="scr"> 
+	        <field name="name">Seychelles Rupee</field>
+	        <field name="code">SCR</field>
+	        <field name="symbol">₨</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="sgd"> 
+	        <field name="name">Singapore Dollar</field>
+	        <field name="code">SGD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="sbd"> 
+	        <field name="name">Solomon Islands Dollar</field>
+	        <field name="code">SBD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="kgs"> 
+	        <field name="name">Som</field>
+	        <field name="code">KGS</field>
+	        <field name="symbol">лв</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="sos"> 
+	        <field name="name">Somali Shilling</field>
+	        <field name="code">SOS</field>
+	        <field name="symbol">S</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="lkr"> 
+	        <field name="name">Sri Lanka Rupee</field>
+	        <field name="code">LKR</field>
+	        <field name="symbol">₨</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="srd"> 
+	        <field name="name">Surinam Dollar</field>
+	        <field name="code">SRD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="sek"> 
+	        <field name="name">Swedish Krona</field>
+	        <field name="code">SEK</field>
+	        <field name="symbol">kr</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="chf"> 
+	        <field name="name">Swiss Franc</field>
+	        <field name="code">CHF</field>
+	        <field name="symbol">CHF</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="syp"> 
+	        <field name="name">Syrian Pound</field>
+	        <field name="code">SYP</field>
+	        <field name="symbol">£</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="kzt"> 
+	        <field name="name">Tenge</field>
+	        <field name="code">KZT</field>
+	        <field name="symbol">лв</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="ttd"> 
+	        <field name="name">Trinidad and Tobago Dollar</field>
+	        <field name="code">TTD</field>
+	        <field name="symbol">TT$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="mnt"> 
+	        <field name="name">Tugrik</field>
+	        <field name="code">MNT</field>
+	        <field name="symbol">₮</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="usd"> 
+	        <field name="name">US Dollar</field>
+	        <field name="code">USD</field>
+	        <field name="symbol">$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="uzs"> 
+	        <field name="name">Uzbekistan Sum</field>
+	        <field name="code">UZS</field>
+	        <field name="symbol">лв</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="yer"> 
+	        <field name="name">Yemeni Rial</field>
+	        <field name="code">YER</field>
+	        <field name="symbol">﷼</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="jpy"> 
+	        <field name="name">Yen</field>
+	        <field name="code">JPY</field>
+	        <field name="symbol">¥</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="cny"> 
+	        <field name="name">Yuan Renminbi</field>
+	        <field name="code">CNY</field>
+	        <field name="symbol">元</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="zwd"> 
+	        <field name="name">Zimbabwe Dollar</field>
+	        <field name="code">ZWD</field>
+	        <field name="symbol">Z$</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
+        </record>
+        <record model="currency.currency" id="pln"> 
+	        <field name="name">Zloty</field>
+	        <field name="code">PLN</field>
+	        <field name="symbol">zł</field>
+	        <field name="rounding" eval="0.01"/>
+	        <field name="digits" eval="2"/>
         </record>
         <record model="currency.currency.rate" id="eur_rate">
             <field name="date" eval="time.strftime('%Y-01-01')"/>
             <field name="rate" eval="1.0"/>
             <field name="currency" ref="eur"/>
         </record>
-        <record model="currency.currency" id="usd">
-            <field name="name">United States dollar</field>
-            <field name="code">USD</field>
-            <field name="symbol">$</field>
-            <field name="rounding" eval="0.01"/>
-            <field name="digits" eval="2"/>
-        </record>
-        <record model="currency.currency" id="chf">
-            <field name="name">Swiss franc</field>
-            <field name="code">CHF</field>
-            <field name="symbol">Fr.</field>
-            <field name="rounding" eval="0.01"/>
-            <field name="digits" eval="2"/>
-        </record>
+
     </data>
 </tryton>
