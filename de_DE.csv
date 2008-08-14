@@ -1,0 +1,29 @@
+type,name,res_id,src,value,fuzzy
+error,currency.currency,0,No rate found for the currency: %s at the date: %s,,0
+field,"currency.currency,active",0,Active,Aktiv,0
+field,"currency.currency,code",0,Code,Kürzel,0
+field,"currency.currency,create_date",0,Creation date,Erstellungsdatum,0
+field,"currency.currency,create_uid",0,Creation user,Ersteller,0
+field,"currency.currency,digits",0,Diplay Digits,Angezeigte Stellen,0
+field,"currency.currency,id",0,ID,ID,0
+field,"currency.currency,name",0,Name,Name,0
+field,"currency.currency,rate",0,Current rate,aktueller Kurs,0
+field,"currency.currency.rate,create_date",0,Creation date,Erstellungsdatum,0
+field,"currency.currency.rate,create_uid",0,Creation user,Ersteller,0
+field,"currency.currency.rate,currency",0,Currency,Währung,0
+field,"currency.currency.rate,date",0,Date,Datum,0
+field,"currency.currency.rate,id",0,ID,ID,0
+field,"currency.currency.rate,rate",0,Rate,Kurs,0
+field,"currency.currency,rates",0,Rates,Kurse,0
+field,"currency.currency.rate,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"currency.currency.rate,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"currency.currency,rounding",0,Rounding factor,Rundung,0
+field,"currency.currency,symbol",0,Symbol,Symbol,0
+field,"currency.currency,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"currency.currency,write_uid",0,Last modification by,Zuletzt geändert von,0
+model,"ir.ui.menu,name",menu_currency_form,Currencies,Währungen,0
+model,"ir.ui.menu,name",menu_currency,Currency Management,Währungen,0
+view,currency.currency,0,Currencies,Währungen,0
+view,currency.currency,0,Currency,Währung,0
+view,currency.currency,0,Rate,Kurs,0
+view,currency.currency,0,Rates,Kurse,0
