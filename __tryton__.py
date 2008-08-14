@@ -16,4 +16,7 @@
         'project.xml',
         'work.xml',
     ],
+    'translation': [
+        'de_DE.csv',
+    ],
 }
