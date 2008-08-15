@@ -585,6 +585,8 @@ class PurchaseLine(OSV):
         self._order.insert(0, ('sequence', 'ASC'))
         self._error_messages.update({
             'supplier_location_required': 'The supplier location is required!',
+            'missing_account_expense': 'It miss ' \
+                    'an "account_expense" default property!',
             })
 
     def default_type(self, cursor, user, context=None):
@@ -727,6 +729,7 @@ class PurchaseLine(OSV):
         Return invoice line values for purchase line
         '''
         uom_obj = self.pool.get('product.uom')
+        property_obj = self.pool.get('ir.property')
 
         res = {}
         res['sequence'] = line.sequence
@@ -753,7 +756,17 @@ class PurchaseLine(OSV):
         res['product'] = line.product.id
         res['unit_price'] = line.unit_price
         res['taxes'] = [('set', [x.id for x in line.taxes])]
-        res['account'] = line.product.account_expense_used.id
+        if line.product:
+            res['account'] = line.product.account_expense_used.id
+        else:
+            for model in ('product.template', 'product.category'):
+                res['account'] = property_obj.get(cursor, user,
+                        'account_expense', model, context=context)
+                if res['account']:
+                    break
+            if not res['account']:
+                self.raise_user_error(cursor, 'missing_account_expense',
+                        context=context)
         return res
 
     def copy(self, cursor, user, line_id, default=None, context=None):
