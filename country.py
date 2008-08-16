@@ -30,11 +30,9 @@ class Country(OSV):
                     context=None, limit=None):
         if not args:
             args=[]
-        if not context:
-            context={}
         ids = False
         if len(name) <= 2:
-            ids = self.search(cr, user, [('code', '=', name)] + args,
+            ids = self.search(cr, user, [('code', '=', name.upper())] + args,
                     limit=limit, context=context)
         if not ids:
             ids = self.search(cr, user, [('name', operator, name)] + args,
@@ -62,11 +60,22 @@ class State(OSV):
     country = fields.Many2One('relationship.country', 'Country',
             required=True)
     name = fields.Char('Name', required=True, select=1)
-    code = fields.Char('Code', size=3, required=True, select=1)
+    code = fields.Char('Code', required=True, select=1)
 
     def __init__(self):
         super(State, self).__init__()
         self._order.insert(0, ('code', 'ASC'))
+
+    def name_search(self, cr, user, name='', args=None, operator='ilike',
+                    context=None, limit=None):
+        if not args:
+            args=[]
+        ids = self.search(cr, user, [('code', '=', name.upper())] + args,
+                limit=limit, context=context)
+        if not ids:
+            ids = self.search(cr, user, [('name', operator, name)] + args,
+                    limit=limit, context=context)
+        return self.name_get(cr, user, ids, context)
 
     def create(self, cursor, user, vals, context=None):
         if 'code' in vals:
