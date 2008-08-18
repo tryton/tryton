@@ -543,6 +543,7 @@ class PurchaseLine(OSV):
                 'invisible': "type != 'line'",
             }, domain="[('category', '=', (product, 'product'))]")
     product = fields.Many2One('product.product', 'Product',
+            domain=[('purchasable', '=', True)],
             states={
                 'invisible': "type != 'line'",
             }, on_change=['product', 'unit', 'quantity', 'description',
