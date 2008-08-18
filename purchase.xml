@@ -6,6 +6,9 @@
         <record model="res.group" id="group_purchase">
             <field name="name">Purchase</field>
         </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_purchase'))]"/>
+        </record>
 
         <record model="ir.ui.view" id="purchase_view_form">
             <field name="model">purchase.purchase</field>
