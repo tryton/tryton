@@ -363,6 +363,7 @@
             <field name="act_from" ref="purchase_activity_quotation"/>
             <field name="act_to" ref="purchase_activity_draft"/>
             <field name="signal">draft</field>
+            <field name="group" ref="group_purchase"/>
         </record>
         <record model="workflow.transition" id="purchase_transition_quotation_confirmed">
             <field name="act_from" ref="purchase_activity_quotation"/>
