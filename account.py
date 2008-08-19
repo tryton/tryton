@@ -464,18 +464,33 @@ class Account(OSV):
                     res[account_id])
         return res
 
-    def get_credit_debit(self, cursor, user, ids, name, arg, context=None):
+    def get_credit_debit(self, cursor, user, ids, names, arg, context=None):
+        '''
+        Function to compute debit, credit for account ids.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param ids: the ids of the account
+        :param names: the list of field name to compute
+        :param arg: optional argument
+        :param context: the context
+        :return: a dictionary with all field names as key and
+            a dictionary as value with id as key
+        '''
         res = {}
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
         currency_obj = self.pool.get('currency.currency')
 
-        if name not in ('credit', 'debit'):
-            raise Exception('Bad argument')
+        for name in names:
+            if name not in ('credit', 'debit'):
+                raise Exception('Bad argument')
+            res[name] = {}
 
         line_query = move_line_obj.query_get(cursor, user, context=context)
-        cursor.execute('SELECT a.id, ' \
-                    'SUM(COALESCE(l.' + name + ', 0)) ' \
+        cursor.execute('SELECT a.id, ' + \
+                    ','.join(['SUM(COALESCE(l.' + name + ', 0))'
+                        for name in names]) + ' ' \
                 'FROM account_account a ' \
                     'LEFT JOIN account_move_line l ' \
                     'ON (a.id = l.account) ' \
@@ -485,8 +500,9 @@ class Account(OSV):
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
                 'GROUP BY a.id', ids)
-        for account_id, sum in cursor.fetchall():
-            res[account_id] = sum
+        for account_id, sums in cursor.fetchall():
+            for i in range(len(names)):
+                res[names[i]][account_id] = sum[i]
 
         account2company = {}
         id2company = {}
@@ -496,11 +512,13 @@ class Account(OSV):
             id2company[account.company.id] = account.company
 
         for account_id in ids:
-            res.setdefault(account_id, Decimal('0.0'))
+            for name in names:
+                res[name].setdefault(account_id, Decimal('0.0'))
             company_id = account2company[account_id]
             currency = id2company[company_id].currency
-            res[account_id] = currency_obj.round(cursor, user, currency,
-                    res[account_id])
+            for name in names:
+                res[name][account_id] = currency_obj.round(cursor, user,
+                        currency, res[name][account_id])
         return res
 
     def name_search(self, cursor, user, name='', args=None, operator='ilike',
