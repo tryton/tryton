@@ -1056,7 +1056,7 @@ class OpenBalanceSheet(Wizard):
             if os.name == 'nt':
                 os.environ['LANG'] = lang
                 lang = _LOCALE2WIN32.get(lang, lang)
-            elif os.name == 'mac':
+            elif os.name == 'mac' or os.uname()[0] == 'Darwin':
                 encoding = 'UTF-8'
             locale.setlocale(locale.LC_ALL, str(lang + '.' + encoding))
         except:
