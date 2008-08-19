@@ -1,0 +1,207 @@
+"type","name","res_id","src","value","fuzzy"
+"error","account.invoice",0,"Taxes defined on invoice lines but not on invoice!
+Re-compute the invoice.","Steuern sind für die Rechnungszeilen definiert, allerdings nicht für die Rechnung selbst!
+",0
+"error","account.invoice",0,"Base taxes different from invoice lines!
+Re-compute the invoice.","Steuern stimmen nicht mit den Rechnungszeilen überein!
+",0
+"error","account.period",0,"You can not change the invoice sequence if there is already an invoice opened in the period","Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung in der laufenden Periode eröffnet wurde.",0
+"error","account.fiscalyear",0,"You can not change the invoice sequence if there is already an invoice opened in the fiscalyear","Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung im laufenden Buchungsjahr eröffnet wurde.",0
+"error","account.invoice",0,"You can not modify invoice that is open, paid or canceled!","Rechnungen die offen, bezahlt oder abgebrochen wurden können nicht verändert werden!",0
+"error","account.invoice.line",0,"You can not create invoice line
+with account from a different invoice company!","Es können keine Rechnungen angelegt werden, mit einem Konto von einer anderen rechnungsstellenden Firma.",0
+"error","account.invoice",0,"You can not create an invoice
+with account from a different invoice company!","Es können keine Rechnungen angelegt werden, mit einem Konto von einer anderen rechnungsstellenden Firma.",0
+"error","account.invoice",0,"Taxes defined but not in invoice lines!
+Re-compute the invoice.","Steuern sind definiert, allerdings nicht in den Rechnungszeilen!
+",0
+"error","account.invoice",0,"The debit account on journal is missing!","Soll-Konto im Journal fehlt!",0
+"error","product.template",0,"There is no account expense/revenue define on the product %s (%d)","Es ist kein Aufwands-/Ertragskonto in Artikel %s (%d) angegeben",0
+"error","account.invoice",0,"There is no invoice sequence on the period/fiscal year!","Rechnungsnummern-Sequenz für diese Periode oder dieses Buchungsjahr fehlt!",0
+"error","account.invoice",0,"Credit account on journal is the same than the invoice account!","Haben-Konto im Journal und Rechnungskonto sind identisch!",0
+"error","account.invoice.tax",0,"You can not add a line to an invoice that is open, paid or canceled!","Es kann keine neue Rechnungszeile angelegt werden, in einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen.",0
+"error","account.invoice.line",0,"You can not add a line to an invoice that is open, paid or canceled!","Es kann keine neue Rechnungszeile angelegt werden, in einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen.",0
+"error","account.invoice.payment_term",0,"Payment term missing a remainder line!","In der Zahlungsvereinbarung fehlt eine Mahnungszeile!",0
+"error","account.invoice",0,"The credit account on journal is missing!","Haben-Konto im Journal fehlt!",0
+"error","account.invoice",0,"Debit account on journal is the same than the invoice account!","Soll-Konto im Journal und Rechnungskonto sind identisch!",0
+"error","account.invoice",0,"You can not reset to draft an invoice that have move!","Rechnungen die bereits gebucht sind, können nicht auf Vorlage zurückgesetzt werden!",0
+"error","account.invoice.line",0,"You can not modify line from an invoice that is open, paid or canceled!","Es kann keine Rechnungszeilen bearbeitet werden, in einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen.",0
+"error","account.invoice.tax",0,"You can not modify tax from an invoice that is open, paid or canceled!","Es kann keine Rechnungszeilen bearbeitet werden, in einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen.",0
+"error","account.invoice",0,"You can not use the same account
+than on invoice line account!","Es darf nicht das selbe Konto benutzt werden wie in den Rechnungszeilen!",0
+"error","account.invoice.line",0,"You can not use the same account
+than the invoice account!","Es darf nicht das selbe Konto benutzt werden wie das Rechnungskonto!",0
+"error","account.invoice.payment_term",0,"Invalid payment term line!","Ungültige Zeile in Zahlungsvereinbarung!",0
+"field","account.invoice,type",0,"Type","Typ",0
+"field","account.invoice.line,invoice",0,"Invoice","Rechnung",0
+"field","account.invoice,invoice_address",0,"Invoice Address","Rechnungs Adresse",0
+"field","account.invoice.payment_term.line,days",0,"Number of Days","Anzahl an Tagen",0
+"field","account.invoice,total_amount",0,"Total","Brutto",0
+"field","account.invoice.line,unit_price",0,"Unit Price","Preis pro Einheit",0
+"field","account.invoice.payment_term.line.type,name",0,"Name","Name",0
+"field","account.invoice.payment_term.line.delay,name",0,"Name","Name",0
+"field","account.invoice,number",0,"Number","Nummer",0
+"field","account.invoice,invoice_report_format",0,"Invoice Report Format","Format Rechnungsbericht",0
+"field","account.invoice.payment_term,lines",0,"Lines","Zeilen",0
+"field","account.invoice,move",0,"Move","Buchung",0
+"field","account.invoice.payment_term.line,type",0,"Type","Typ",0
+"field","account.invoice,type_name",0,"Type","Typ",0
+"field","account.invoice,journal",0,"Journal","Journal",0
+"field","account.invoice,lines",0,"Lines","Zeilen",0
+"field","account.invoice.line,type",0,"Type","Typ",0
+"field","account.invoice.line,unit",0,"Unit","Einheit",0
+"field","account.invoice,invoice_date",0,"Invoice Date","Rechnungsdatum",0
+"field","account.invoice,lines_to_pay",0,"Lines to Pay","Bezahlbare Zeilen",0
+"field","account.invoice,invoice_report",0,"Invoice Report","Rechnungsbericht",0
+"field","account.invoice.tax,manual",0,"Manual","Manuell",0
+"field","relationship.party,payment_term",0,"Invoice Payment Term","Zahlungsvereinbarung für Rechnung",0
+"field","account.invoice,party",0,"Party","Partei",0
+"field","account.period,in_invoice_sequence",0,"Supplier Invoice Sequence","Sequenz Lieferantenrechnung",0
+"field","relationship.party,supplier_payment_term",0,"Supplier Payment Term","Zahlungsvereinbarung für Lieferanten",0
+"field","account.period,in_refund_sequence",0,"Supplier Refund Sequence","Sequenz Lieferanten-Warenrückgabe",0
+"field","account.invoice.line,sequence",0,"Sequence","Sequenz",0
+"field","account.invoice,state",0,"State","Status",0
+"field","account.fiscalyear,in_invoice_sequence",0,"Supplier Invoice Sequence","Sequenz Lieferantenrechnung",0
+"field","account.invoice.tax,tax_code",0,"Tax Code","Steuer-Code",0
+"field","account.invoice.tax,tax_sign",0,"Tax Sign","Vorzeichen (Steuer)",0
+"field","account.invoice,taxes",0,"Tax Lines","Steuerzeilen",0
+"field","account.fiscalyear,in_refund_sequence",0,"Supplier Refund Sequence","Sequenz Lieferanten-Warenrückgabe",0
+"field","product.template,supplier_taxes",0,"Supplier Taxes","Steuern (Lieferanten)",0
+"field","account.invoice,tax_amount",0,"Tax","Steuer",0
+"field","account.invoice,payment_term",0,"Payment Term","Zahlungsvereinbarung",0
+"field","account.invoice.payment_term.line,percent",0,"Percent","Prozent",0
+"field","account.invoice.line,taxes",0,"Taxes","Steuern",0
+"field","account.invoice,payment_lines",0,"Payment Lines","Zahlungen",0
+"field","account.invoice.payment_term,name",0,"Payment Term","Zahlungsvereinbarung",0
+"field","account.invoice.payment_term.line,payment",0,"Payment Term","Zahlungsvereinbarung",0
+"field","account.invoice,reference",0,"Reference","Referenz",0
+"field","account.invoice.tax,sequence",0,"Sequence","Sequenz",0
+"field","account.invoice.payment_term.line,sequence",0,"Sequence","Sequenz",0
+"field","account.invoice.line,product",0,"Product","Artikel",0
+"field","account.invoice.line,quantity",0,"Quantity","Menge",0
+"field","account.invoice,reconciled",0,"Reconciled","Abgeglichen",0
+"field","account.invoice.line,account",0,"Account","Konto",0
+"field","account.invoice.tax,base_sign",0,"Base Sign","Basis Vorzeichen",0
+"field","account.invoice.payment_term.line.delay,code",0,"Code","Kundennummer",0
+"field","account.invoice.payment_term.line.type,code",0,"Code","Kundennummer",0
+"field","account.invoice,amount_to_pay_today",0,"Amount to Pay Today","Zahlbarer Betrag (heute)",0
+"field","account.invoice.tax,base",0,"Base","Basis",0
+"field","account.invoice.tax,base_code",0,"Base Code","Basis Code",0
+"field","account.invoice,comment",0,"Comment","Kommentar",0
+"field","account.invoice.payment_term.line,currency",0,"Currency","Währung",0
+"field","account.invoice,currency",0,"Currency","Währung",0
+"field","account.invoice,currency_digits",0,"Currency Digits","Währung (signifikante Stellen)",0
+"field","account.invoice,company",0,"Company","Firma",0
+"field","account.invoice.payment_term.line,delay",0,"Condition","Bedingung",0
+"field","account.invoice,contact_address",0,"Contact Address","Kontakt Adresse",0
+"field","product.template,account_expense",0,"Account Expense","Konto Aufwand",0
+"field","product.template,account_expense_used",0,"Account Expense Used","Konto Aufwand Benutzt",0
+"field","product.category,account_revenue",0,"Account Revenue","Konto Ertrag",0
+"field","account.invoice.tax,account",0,"Account","Konto",0
+"field","account.invoice,account",0,"Account","Konto",0
+"field","product.category,account_expense",0,"Account Expense","Konto Aufwand",0
+"field","product.template,account_revenue",0,"Account Revenue","Konto Ertrag",0
+"field","account.invoice.payment_term.line,amount",0,"Amount","Betrag",0
+"field","account.invoice.line,amount",0,"Amount","Betrag",0
+"field","account.invoice,amount_to_pay",0,"Amount to Pay","Zahlbarer Betrag",0
+"field","product.template,account_revenue_used",0,"Account Revenue Used","Konto Ertrag Benutzt",0
+"field","account.invoice.payment_term,active",0,"Active","Aktiv",0
+"field","product.template,customer_taxes",0,"Customer Taxes","Steuern (Kunden)",0
+"field","account.invoice,untaxed_amount",0,"Untaxed","Ohne Steuern",0
+"field","account.invoice.payment_term,description",0,"Description","Beschreibung",0
+"field","account.fiscalyear,out_invoice_sequence",0,"Customer Invoice Sequence","Kundenrechnung Sequenz",0
+"field","account.fiscalyear,out_refund_sequence",0,"Customer Refund Sequence","Kunden-Warenrücknahme Sequenz",0
+"field","account.period,out_refund_sequence",0,"Customer Refund Sequence","Kunden-Warenrücknahme Sequenz",0
+"field","account.invoice.tax,invoice",0,"Invoice","Rechnung",0
+"field","relationship.address,invoice",0,"Invoice","Rechnung",0
+"field","account.invoice.line,description",0,"Description","Beschreibung",0
+"field","account.invoice,description",0,"Description","Beschreibung",0
+"field","account.period,out_invoice_sequence",0,"Customer Invoice Sequence","Kundenrechnung Sequenz",0
+"field","account.invoice.payment_term.line,currency_digits",0,"Currency Digits","Währung (signifikante Stellen)",0
+"field","account.invoice.tax,amount",0,"Amount","Betrag",0
+"field","account.invoice.tax,description",0,"Description","Beschreibung",0
+"help","account.invoice.payment_term.line,sequence",0,"Use to order lines in ascending order","Ordnet Zeilen in aufsteigender Reihenfolge",0
+"help","product.template,account_revenue",0,"This account will be used instead of the one defined on the category.","Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.",0
+"help","product.template,account_expense",0,"This account will be used instead of the one defined on the category.","Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.",0
+"model","ir.ui.menu,name","menu_invoice_out_refund_form","Refunds","Warenrücknahmen (vom Kunden)",0
+"model","ir.ui.menu,name","menu_invoice_form","All Invoices","Alle Rechnungen",0
+"model","ir.ui.menu,name","menu_invoice_out_invoice_form","Invoices","Rechnungsausgang",0
+"model","ir.ui.menu,name","menu_invoices","Invoices","Rechnungen",0
+"model","ir.ui.menu,name","menu_invoices_configuration","Invoices","Rechnungen",0
+"model","ir.ui.menu,name","menu_payment_term_form","Payment Terms","Zahlungsvereinbarungen",0
+"model","ir.ui.menu,name","menu_invoice_in_refund_form","Supplier Refunds","Warenrückgaben (zum Lieferanten)",0
+"model","ir.ui.menu,name","menu_invoice_in_invoice_form","Supplier Invoices","Rechnungseingang",0
+"odt","account.invoice",0,"Total (excl. taxes):","Brutto",0
+"odt","account.invoice",0,"Tax","Steuer",0
+"odt","account.invoice",0,"VAT:","UST-ID:",0
+"odt","account.invoice",0,"Description","Beschreibung",0
+"odt","account.invoice",0,"Description:","Beschreibung:",0
+"odt","account.invoice",0,"Unit Price","Preis pro Einheit",0
+"odt","account.invoice",0,"Amount","Betrag",0
+"odt","account.invoice",0,"Date:","Datum:",0
+"odt","account.invoice",0,"Base","Basis",0
+"odt","account.invoice",0,"Total:","Typ",0
+"odt","account.invoice",0,"Taxes","Steuern",0
+"odt","account.invoice",0,"Taxes:","Das Soll-Konto im Journal fehlt!",0
+"odt","account.invoice",0,"Date","Datum",0
+"odt","account.invoice",0,"Payment Term","Zahlungsvereinbarung",0
+"odt","account.invoice",0,"Quantity","Menge",0
+"selection","account.invoice,type",0,"Supplier Refund","Lieferanten-Warenrückgabe",0
+"selection","account.invoice.line,type",0,"Title","Überschrift",0
+"selection","account.invoice.line,type",0,"Comment","Kommentar",0
+"selection","account.invoice,state",0,"Draft","Entwurf",0
+"selection","account.invoice,type",0,"Invoice","Rechnung",0
+"selection","account.invoice,state",0,"Canceled","Abgebrochen",0
+"selection","account.invoice.line,type",0,"Subtotal","Zwischensumme",0
+"selection","account.invoice,state",0,"Pro forma","Pro Forma",0
+"selection","account.invoice,type",0,"Refund","Rückvergütung",0
+"selection","account.invoice,state",0,"Paid","Bezahlt",0
+"selection","account.invoice.line,type",0,"Line","Zeile",0
+"selection","account.invoice,state",0,"Open","Offen",0
+"selection","account.invoice,type",0,"Supplier Invoice","Lieferantenrechnung",0
+"view","account.invoice",0,"Taxes","Steuern",0
+"view","account.invoice.print_invoice_report.warning",0,"You have selected more than one invoice to print.","Sie haben mehr als eine Rechnung zum ausdrucken gewählt.",0
+"view","account.invoice.print_invoice_report.warning",0,"The invoices will be sent <i>directly</i> to the printer.","Die Rechnungen werden <i>direkt</i> an den Drucker gesendet.",0
+"view","product.product",0,"Taxes","Steuern",0
+"view","account.invoice",0,"_Cancel","_Abbrechen",0
+"view","account.invoice",0,"Debit","Soll",0
+"view","account.invoice",0,"Invoice","Rechnung",0
+"view","account.invoice.pay_invoice.ask",0,"Credit","Haben",0
+"view","account.invoice.pay_invoice.ask",0,"Debit","Soll",0
+"view","account.invoice.line",0,"Invoice Line","Rechnungszeile",0
+"view","account.invoice.tax",0,"Invoice Taxes","Rechnungssteuern",0
+"view","account.invoice",0,"Invoices","Rechnungen",0
+"view","account.invoice.line",0,"Invoice Lines","Rechnungszeilen",0
+"view","account.invoice.tax",0,"Invoice Tax","Rechnungssteuer",0
+"view","account.invoice",0,"_Pay","_Bezahlt",0
+"view","account.invoice",0,"_Reset to Draft","Auf Entwurf _Zurücksetzen",0
+"view","account.invoice",0,"_Draft","_Entwurf",0
+"view","account.invoice",0,"_Open","_Offen",0
+"view","account.invoice.print_invoice_report.warning",0,"<b>Warning!</b>","<b>Warnung!</b>",0
+"view","account.invoice.refund_invoice.init",0,"Are you sure to refund those/this invoice(s)?","Wollen Sie wirklich aus der Rechnungsauswahl Warenrücknahmen generieren?",0
+"view","account.invoice",0,"Credit","Haben",0
+"view","account.invoice",0,"Amount Second Currency","Betrag Zweitwährung",0
+"view","account.invoice.pay_invoice.ask",0,"Amount Second Currency","Betrag Zweitwährung",0
+"view","account.invoice",0,"Payment Lines","Zahlungen",0
+"view","account.invoice.payment_term",0,"Payment Term Lines","Zahlungsvereinbarungs-Zeilen",0
+"view","account.invoice.payment_term",0,"Payment Terms","Zahlungsvereinbarungen",0
+"view","account.invoice.payment_term",0,"Payment Term","Zahlungsvereinbarung",0
+"view","account.invoice.payment_term",0,"Payment Term Line","Zahlungsvereinbarungs-Zeile",0
+"view","account.invoice.refund_invoice.init",0,"Refund Invoice","Waren-Rücknahme",0
+"view","account.invoice.tax",0,"Tax Code","Steuer-Code",0
+"view","account.invoice.print_invoice_report.warning",0,"Print Invoice","Rechnung drucken",0
+"view","account.invoice",0,"Other Info","Andere Informationen",0
+"view","account.invoice.pay_invoice.ask",0,"Pay Invoice","Rechnung bezahlen",0
+"view","account.invoice",0,"Lines","Zeilen",0
+"view","account.invoice.pay_invoice.init",0,"Pay Invoice","Rechnung bezahlen",0
+"view","account.invoice.pay_invoice.ask",0,"Lines to Pay","Bezahlbare Zeilen",0
+"view","account.invoice",0,"Pro For_ma","_Pro Forma",0
+"view","account.invoice",0,"Payment","Zahlung",0
+"wizard_button","account.invoice.pay_invoice,ask,pay",0,"Ok","Ok",0
+"wizard_button","account.invoice.refund_invoice,init,refund",0,"Refund","Rückvergütung",0
+"wizard_button","account.invoice.refund_invoice,init,end",0,"Cancel","Abbrechen",0
+"wizard_button","account.invoice.pay_invoice,ask,end",0,"Cancel","Abbrechen",0
+"wizard_button","account.invoice.pay_invoice,init,end",0,"Cancel","Abbrechen",0
+"wizard_button","account.invoice.print_invoice_report,warning,end",0,"Cancel","Abbrechen",0
+"wizard_button","account.invoice.print_invoice_report,warning,print",0,"Print","Drucken",0
+"wizard_button","account.invoice.pay_invoice,init,choice",0,"Ok","Ok",0
