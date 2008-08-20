@@ -35,7 +35,8 @@ class Purchase(OSV):
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES)
     party = fields.Many2One('relationship.party', 'Party', change_default=True,
-            required=True, states=_STATES, on_change=['party', 'payment_term'])
+            required=True, states=_STATES, on_change=['party', 'payment_term'],
+            select=1)
     contact_address = fields.Many2One('relationship.address', 'Contact Address',
             domain="[('party', '=', party)]", states=_STATES)
     invoice_address = fields.Many2One('relationship.address', 'Invoice Address',
@@ -573,7 +574,7 @@ class PurchaseLine(OSV):
             'purchase_line_invoice_lines_rel', 'purchase_line', 'invoice_line',
             'Invoice Lines', readonly=True)
     moves = fields.One2Many('stock.move', 'purchase_line', 'Moves',
-            readonly=True)
+            readonly=True, select=1)
     moves_ignored = fields.Many2Many('stock.move', 'purchase_line_moves_ignored_rel',
             'purchase_line', 'move', 'Moves Ignored', readonly=True)
     move_done = fields.Function('get_move_done', type='boolean',
