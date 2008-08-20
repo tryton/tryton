@@ -366,7 +366,6 @@ class Purchase(OSV):
         res = {}
         for purchase in self.browse(cursor, user, ids, context=context):
             val = False
-            ignored_ids = []
             for line in purchase.lines:
                 if line.move_exception:
                     val = True
