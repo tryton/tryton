@@ -24,11 +24,10 @@ class Product(OSV):
         pbl = self.products_by_location(cursor, user,
                 location_ids=context['locations'], product_ids=ids,
                 with_childs=True, context=context)
-        res = {}
-        for product_id in ids:
-            res[product_id] = 0.0
-        for line in pbl:
-            res[line['product']] += line['quantity']
+
+        res = {}.fromkeys(ids, 0.0)
+        for (location, product) in zip(context['locations'], ids):
+            res[product] += pbl.get((location, product), 0.0)
         return res
 
     def _search_quantity_eval_domain(self, line, domain):
@@ -47,28 +46,22 @@ class Product(OSV):
     def search_quantity(self, cursor, user, name, domain=[], context=None):
         if not (context and context.get('locations')):
             return []
+        if (name != 'forecast_quantity') and context.get('stock_date'):
+            if context['stock_date'] != datetime.date.today():
+                context = context.copy()
+                del context['stock_date']
 
-        pbl = self.products_by_location(cursor, user,
-                location_ids=context['locations'],
-                forecast=(name == 'forecast_quantity'), with_childs=True,
-                context=context)
+        pbl = self.products_by_location(
+            cursor, user, location_ids=context['locations'], with_childs=True,
+            skip_zero=False, context=context).iteritems()
 
-        if name == 'forecast_quantity':
-            pbl = self.products_by_location(cursor, user,
-                    location_ids=context['locations'], with_childs=True,
-                    skip_zero=False, context=context)
-            for line in pbl:
-                line['forecast_quantity'] = line['quantity']
-                del line['quantity']
-        else:
-            if context.get('stock_date'):
-                if context['stock_date'] != datetime.date.today():
-                    context = context.copy()
-                    del context['stock_date']
-            pbl = self.products_by_location(cursor, user,
-                    location_ids=context['locations'], with_childs=True,
-                    skip_zero=False, context=context)
-        res= [line['product'] for line in pbl \
+        processed_lines = []
+        for (location, product), quantity in pbl:
+            processed_lines.append({'location': location, #XXX useful ?
+                                    'product': product,
+                                    name: quantity})
+
+        res= [line['product'] for line in processed_lines \
                     if self._search_quantity_eval_domain(line, domain)]
         return [('id', 'in', res)]
 
@@ -145,13 +138,14 @@ class Product(OSV):
             where_date = [context['stock_date'], context['stock_date']]
         else:
             where_date = [datetime.date.today(), datetime.date.today()]
+
         cursor.execute(select_clause % (
             ",".join(["%s" for i in in_states]), where_clause,
             ",".join(["%s" for i in out_states]), where_clause),
             in_states + where_vals + where_date + \
                     out_states + where_vals + where_date)
-
-        return cursor.fetchall()
+        res = cursor.fetchall()
+        return res
 
     def products_by_location(self, cursor, user, location_ids,
             product_ids=None, with_childs=False, skip_zero=True, context=None):
@@ -163,9 +157,11 @@ class Product(OSV):
         date than today.
         If with_childs, childs locations are also computed.
         If skip_zero, list item with quantity equal to zero are not returned.
+        If no product_ids are given the computation is done on all products.
         """
         uom_obj = self.pool.get("product.uom")
         product_obj = self.pool.get("product.product")
+        location_obj = self.pool.get("stock.location")
 
         if not location_ids:
             return []
@@ -174,12 +170,18 @@ class Product(OSV):
         raw_lines = self.raw_products_by_location(cursor, user, location_ids,
                 product_ids, with_childs=with_childs, context=context)
 
+        res_location_ids = []
         uom_ids = []
-        product_ids = []
+        res_product_ids = []
         for line in raw_lines:
-            uom_ids.append(line[2])
-            product_ids.append(line[1])
+            for id_list, position in ((res_location_ids, 0), (uom_ids, 1),
+                                      (res_product_ids, 1)):
+                if line[position] not in id_list:
+                    id_list.append(line[position])
 
+        if not product_ids:
+            product_ids = self.pool.get("product.product").search(
+                cursor, user, [], context=context)
         uom_by_id = dict([(x.id, x) for x in uom_obj.browse(
                 cursor, user, uom_ids, context=context)])
         default_uom = dict((x.id, x.default_uom) for x in product_obj.browse(
@@ -187,31 +189,50 @@ class Product(OSV):
 
         for line in raw_lines:
             location, product, uom, quantity = line
-            key = (location, product, default_uom[product].id)
+            key = (location, product)
             res.setdefault(key, 0.0)
             res[key] += uom_obj.compute_qty(cursor, user, uom_by_id[uom],
                     quantity, default_uom[product], context=context)
-            # Remove seen products from product_ids
-            if key[1] in product_ids:
-                product_ids.remove(key[1])
 
-        res = [{'location': key[0],
-                 'product': key[1],
-                 'uom': key[2],
-                 'quantity': val} for key, val in res.iteritems()]
+        # Propagate quantities on from child locations to their parents
+        if with_childs:
+            # Fetch all child locations
+            all_location_ids = location_obj.search(
+                cursor, user, [('parent', 'child_of', location_ids)],
+                context=context)
+            locations = location_obj.browse(cursor, user, all_location_ids,
+                                            context=context)
+            # Generate a set of locations without childs and a dict
+            # giving the parent of each location.
+            leafs = set(all_location_ids)
+            parent = {}
+            for location in locations:
+                if not location.parent: continue
+                if location.parent.id in leafs:
+                    leafs.remove(location.parent.id)
+                parent[location.id] = location.parent.id
+
+            while leafs:
+                next_leafs = set()
+                for l in leafs:
+                    if l not in parent:
+                        continue
+                    next_leafs.add(parent[l])
+                    for product in res_product_ids:
+                        res.setdefault((parent[l], product), 0)
+                        res[(parent[l], product)] += res.get((l,product), 0)
+                leafs = next_leafs
 
         # Complete result with missing products if asked
         if not skip_zero:
-            for location_id in location_ids:
-                for product_id in product_ids:
-                    res.append({
-                        'location': location_id,
-                        'product': product_id,
-                        'uom': default_uom[product_id].id,
-                        'quantity': 0.0,
-                        })
+            keys = ((l,p) for l in location_ids for p in product_ids)
+            for location_id, product_id in keys:
+                if (location_id, product_id) not in res:
+                    res[(location_id, product_id)] = 0.0
 
         return res
+
+
 
     def view_header_get(self, cursor, user, value, view_type='form',
             context=None):

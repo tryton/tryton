@@ -216,26 +216,27 @@ class CompleteInventory(Wizard):
             else:
                 pbl = product_obj.products_by_location(
                     cursor, user, [inventory.location.id], context=context)
+
             # Index some data
-            uom_by_id = {}
-            for uom in uom_obj.browse(
-                cursor, user, [line['uom'] for line in pbl], context=context):
-                uom_by_id[uom.id] = uom
+            product2uom = {}
+            for product in product_obj.read(cursor, user,
+                                            [line[1] for line in pbl],
+                                            ['default_uom'], context=context):
+                product2uom[product['id']] = product['default_uom']
             product_qty = {}
-            for line in pbl:
-                product_qty[line['product']] = (line['quantity'],
-                                                uom_by_id[line['uom']])
+            for (location, product), quantity in pbl.iteritems():
+                product_qty[product] = (quantity, product2uom[product])
             # Update existing lines
             for line in inventory.lines:
                 if line.product.id in product_qty:
-                    quantity, uom = product_qty[line.product.id]
+                    quantity, uom_id = product_qty[line.product.id]
                     del product_qty[line.product.id]
                     # if nothing as changed, continue
                     if line.quantity == line.expected_quantity == quantity \
-                            and line.uom.id == uom.id:
+                            and line.uom.id == uom_id:
                         continue
                     values = {'expected_quantity': quantity,
-                              'uom': uom.id}
+                              'uom': uom_id}
                     # update also quantity field if not edited
                     if line.quantity == line.expected_quantity:
                         values['quantity'] = quantity
@@ -250,12 +251,12 @@ class CompleteInventory(Wizard):
 
             # Create lines if needed
             for product in product_qty:
-                quantity, uom = product_qty[product]
+                quantity, uom_id = product_qty[product]
                 values = {
                     'product': product,
                     'expected_quantity': quantity,
                     'quantity': quantity,
-                    'uom': uom.id,
+                    'uom': uom_id,
                     'inventory': inventory.id,
                     }
                 line_obj.create(

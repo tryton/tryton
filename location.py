@@ -103,18 +103,10 @@ class Location(OSV):
                 context = context.copy()
                 del context['stock_date']
         pbl = product_obj.products_by_location(cursor, user, location_ids=ids,
-            product_ids=[context['product']], with_childs=True,
-            context=context)
-        qty_by_ltn = dict([(i['location'], i['quantity']) for i in pbl])
-        res = {}
-        for location_id in ids:
-            child_ids = self.search(cursor, user, [
-                ('parent', 'child_of', [location_id]),
-                ], context=context)
-            res[location_id] = 0.0
-            for child_id in {}.fromkeys(child_ids):
-                res[location_id] += qty_by_ltn.get(child_id, 0.0)
-        return res
+            product_ids=[context['product']], with_childs=True, skip_zero=False,
+            context=context).iteritems()
+
+        return dict( [(loc,qty) for (loc,prod), qty in pbl] )
 
     def view_header_get(self, cursor, user, value, view_type='form',
             context=None):
