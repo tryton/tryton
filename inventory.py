@@ -20,7 +20,7 @@ class Inventory(OSV):
         domain="[('type', '=', 'storage')]", states={
             'readonly': "state != 'open' or bool(lines)",
         })
-    date = fields.Date('Date')
+    date = fields.Date('Date', states=STATES)
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
         domain="[('type', '=', 'lost_found')]", states=STATES)
