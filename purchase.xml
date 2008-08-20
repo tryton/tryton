@@ -481,7 +481,7 @@
             <field name="act_to" ref="purchase_activity_waiting_packing"/>
             <field name="condition">invoice_method != 'packing' and not packing_done</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_invoice_packing_waitin_packing">
+        <record model="workflow.transition" id="purchase_transition_invoice_packing_waiting_packing">
             <field name="act_from" ref="purchase_activity_invoice_packing"/>
             <field name="act_to" ref="purchase_activity_waiting_packing"/>
             <field name="condition">not packing_done</field>
@@ -510,7 +510,7 @@
             <field name="signal">invoice_ok</field>
             <field name="group" ref="group_purchase"/>
         </record>
-        <record model="workflow.transition" id="purchase_transition_waiting_invoice_packing_done">
+        <record model="workflow.transition" id="purchase_transition_waiting_invoice_packing_invoice_packing_done">
             <field name="act_from" ref="purchase_activity_waiting_invoice_packing"/>
             <field name="act_to" ref="purchase_activity_invoice_packing_done"/>
             <field name="trigger_model">account.invoice</field>
