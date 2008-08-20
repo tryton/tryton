@@ -39,8 +39,10 @@ class Party(OSV):
            states=STATES)
     code = fields.Char('Code', size=None, required=True, select=1,
             readonly=True, order_field="LPAD(%s.code, " \
-                    "(SELECT MAX(LENGTH(code)) FROM relationship_party)," \
+                    "(SELECT code_length FROM relationship_party " \
+                        "ORDER BY code_length DESC LIMIT 1)," \
                     "'0')")
+    code_length = fields.Integer('Code Length', select=1, readonly=True)
     type = fields.Many2One("relationship.party.type", "Type",
            states=STATES)
     lang = fields.Many2One("ir.lang", 'Language',
@@ -120,7 +122,21 @@ class Party(OSV):
         if not values.get('code'):
             values['code'] = self.pool.get('ir.sequence').get(
                     cursor, user, 'relationship.party')
-        return super(Party, self).create(cursor, user, values,
+        values['code_length'] = len(values['code'])
+        return super(Party, self).create(cursor, user, values, context=context)
+
+    def write(self, cursor, user, ids, vals, context=None):
+        if vals.get('code'):
+            vals = vals.copy()
+            vals['code_length'] = len(vals['code'])
+        return super(Party, self).create(cursor, user, vals, context=context)
+
+    def copy(self, cursor, user, object_id, default=None, context=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['code'] = False
+        return super(Party, self).copy(cursor, user, object_id, default=default,
                 context=context)
 
     def name_search(self, cursor, user, name, args=None, operator='ilike',
