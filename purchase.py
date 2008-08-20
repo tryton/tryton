@@ -804,7 +804,7 @@ class PurchaseLine(OSV):
             self.raise_user_error(cursor, 'supplier_location_required',
                     context=context)
         vals['quantity'] = quantity
-        vals['uom'] = line.unit
+        vals['uom'] = line.unit.id
         vals['product'] = line.product.id
         vals['from_location'] = line.purchase.party.supplier_location.id
         vals['to_location'] = line.purchase.warehouse.input_location.id
