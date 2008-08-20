@@ -3,26 +3,6 @@
 <tryton>
     <data>
 
-        <record model="ir.ui.view" id="packing_in_select_move_init_view_form">
-            <field name="model">stock.packing.in.select_move.init</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Select Moves" col="1">
-                    <field name="moves" width="600" height="400">
-                        <tree string="Incoming Moves">
-                            <field name="product"/>
-                            <field name="from_location"/>
-                            <field name="to_location"/>
-                            <field name="quantity"/>
-                            <field name="uom"/>
-                        </tree>
-                    </field>
-                </form>
-                ]]>
-            </field>
-        </record>
-
         <!--Packing in view-->
         <record model="ir.ui.view" id="packing_in_view_form">
             <field name="model">stock.packing.in</field>
