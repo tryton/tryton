@@ -389,8 +389,9 @@ class Purchase(OSV):
         if args is None:
             args = []
         if name:
-            ids = self.search(cursor, user, [('reference', operator, name)] + args,
-                    limit=limit, context=context)
+            ids = self.search(cursor, user,
+                    [('reference', operator, name)] + args, limit=limit,
+                    context=context)
         if not ids:
             ids = self.search(cursor, user, [('party', operator, name)] + args,
                     limit=limit, context=context)
