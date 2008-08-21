@@ -129,7 +129,7 @@ class Party(OSV):
         if vals.get('code'):
             vals = vals.copy()
             vals['code_length'] = len(vals['code'])
-        return super(Party, self).create(cursor, user, vals, context=context)
+        return super(Party, self).write(cursor, user, ids, vals, context=context)
 
     def copy(self, cursor, user, object_id, default=None, context=None):
         if default is None:
