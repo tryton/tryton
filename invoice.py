@@ -1231,7 +1231,7 @@ class InvoiceLine(OSV):
     _description = __doc__
 
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
-            select=1)
+            select=1, required=True)
     sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
