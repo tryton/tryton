@@ -219,10 +219,9 @@ class CompleteInventory(Wizard):
 
             # Index some data
             product2uom = {}
-            for product in product_obj.read(cursor, user,
-                                            [line[1] for line in pbl],
-                                            ['default_uom'], context=context):
-                product2uom[product['id']] = product['default_uom']
+            for product in product_obj.browse(
+                cursor, user, [line[1] for line in pbl], context=context):
+                product2uom[product.id] = product.default_uom.id
             product_qty = {}
             for (location, product), quantity in pbl.iteritems():
                 product_qty[product] = (quantity, product2uom[product])
