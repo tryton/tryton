@@ -208,3 +208,21 @@ class CompanyReport(Report):
 
 import trytond.report
 trytond.report.CompanyReport = CompanyReport
+
+
+class LetterReport(CompanyReport):
+    _name = 'party.letter'
+
+    def parse(self, cursor, user_id, report, objects, datas, context):
+        user_obj = self.pool.get('res.user')
+
+        user = user_obj.browse(cursor, user_id, user_id, context)
+        if context is None:
+            context = {}
+        context = context.copy()
+        context['user'] = user
+
+        return super(CompanyReport, self).parse(cursor, user_id, report,
+                objects, datas, context)
+
+LetterReport()
