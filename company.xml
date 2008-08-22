@@ -225,22 +225,6 @@
             </field>
         </record>
 
-        <!-- using company/header_A4.odt requires module company -->
-        <record model="ir.action.report" id="report_letter">
-            <field name="name">_Letter</field>
-            <field name="model">relationship.party</field>
-            <field name="report_name">party.letter</field>
-            <field name="report">company/letter.odt</field>
-            <!-- header requires company to be set
-            <field name="style">company/header_A4.odt</field>
-            -->
-        </record>
-        <record model="ir.action.keyword" id="report_letter_party">
-            <field name="keyword">form_print</field>
-            <field name="model">relationship.party,0</field>
-            <field name="action" ref="report_letter"/>
-        </record>
-
         <record model="ir.action.act_window" id="act_employee_form">
             <field name="name">Employees</field>
             <field name="res_model">company.employee</field>
@@ -258,5 +242,18 @@
         </record>
         <menuitem parent="menu_company_tree" action="act_employee_form"
             id="menu_employee_form"/>
+
+        <record model="ir.action.report" id="report_letter">
+            <field name="name">_Letter</field>
+            <field name="model">relationship.party</field>
+            <field name="report_name">party.letter</field>
+            <field name="report">company/letter.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_letter_party">
+            <field name="keyword">form_print</field>
+            <field name="model">relationship.party,0</field>
+            <field name="action" ref="report_letter"/>
+        </record>
     </data>
 </tryton>
