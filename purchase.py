@@ -90,6 +90,8 @@ class PurchaseLine(OSV):
         if selection_vals:
             lines = self.browse(cursor, user, ids, context=context)
             for line in lines:
+                if line.type != 'line':
+                    continue
                 accounts = []
                 for account in line.analytic_accounts.accounts:
                     if account.root.id in selection_vals:
@@ -116,7 +118,8 @@ class PurchaseLine(OSV):
         selection_ids = []
         lines = self.browse(cursor, user, ids, context=context)
         for line in lines:
-            selection_ids.append(line.analytic_accounts.id)
+            if line.analytic_accounts:
+                selection_ids.append(line.analytic_accounts.id)
 
         res = super(PurchaseLine, self).delete(cursor, user, ids,
                 context=context)
@@ -130,8 +133,11 @@ class PurchaseLine(OSV):
             default = {}
         default = default.copy()
         line = self.browse(cursor, user, line_id, context=context)
-        default['analytic_accounts'] = selection_obj.copy(cursor, user,
-                line.analytic_accounts.id, context=context)
+        selection_id = False
+        if line.analytic_accounts:
+            selection_id = selection_obj.copy(cursor, user,
+                    line.analytic_accounts.id, context=context)
+        default['analytic_accounts'] = selection_id
         return super(PurchaseLine, self).copy(cursor, user, line_id,
                 default=default, context=context)
 
@@ -141,8 +147,10 @@ class PurchaseLine(OSV):
         res = super(PurchaseLine, self).get_invoice_line(cursor, user, line,
                 context=context)
 
-        selection_id = account_selection_obj.copy(cursor, user,
-                line.analytic_accounts.id, context=context)
+        selection_id = False
+        if line.analytic_accounts:
+            selection_id = account_selection_obj.copy(cursor, user,
+                    line.analytic_accounts.id, context=context)
         res['analytic_accounts'] = selection_id
         return res
 
