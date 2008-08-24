@@ -90,6 +90,8 @@ class InvoiceLine(OSV):
         if selection_vals:
             lines = self.browse(cursor, user, ids, context=context)
             for line in lines:
+                if line.type != 'line':
+                    continue
                 accounts = []
                 for account in line.analytic_accounts.accounts:
                     if account.root.id in selection_vals:
@@ -116,7 +118,8 @@ class InvoiceLine(OSV):
         selection_ids = []
         lines = self.browse(cursor, user, ids, context=context)
         for line in lines:
-            selection_ids.append(line.analytic_accounts.id)
+            if line.analytic_accounts:
+                selection_ids.append(line.analytic_accounts.id)
 
         res = super(InvoiceLine, self).delete(cursor, user, ids,
                 context=context)
@@ -130,15 +133,18 @@ class InvoiceLine(OSV):
             default = {}
         default = default.copy()
         line = self.browse(cursor, user, line_id, context=context)
-        default['analytic_accounts'] = selection_obj.copy(cursor, user,
-                line.analytic_accounts.id, context=context)
+        selection_id = False
+        if line.analytic_accounts:
+            selection_id = selection_obj.copy(cursor, user,
+                    line.analytic_accounts.id, context=context)
+        default['analytic_accounts'] = selection_id
         return super(InvoiceLine, self).copy(cursor, user, line_id,
                 default=default, context=context)
 
     def get_move_line(self, cursor, user, line, context=None):
         res = super(InvoiceLine, self).get_move_line(cursor, user, line,
                 context=context)
-        if line.analytic_accounts.accounts:
+        if line.analytic_accounts and line.analytic_accounts.accounts:
             res['analytic_lines'] = []
             for account in line.analytic_accounts.accounts:
                 vals = {}
