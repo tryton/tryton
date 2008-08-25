@@ -143,5 +143,8 @@ class Rate(OSV):
     def default_date(self, cursor, user, context=None):
         return datetime.date.today()
 
+    def check_xml_record(self, cursor, user, ids, values, context=None):
+        return True
+
 Rate()
 
