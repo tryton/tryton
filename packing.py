@@ -490,7 +490,7 @@ class PackingOut(OSV):
         is the index of the browse record of all the locations.
         """
         to_pick = []
-        for location, available_qty in location_quantities:
+        for location, available_qty in location_quantities.iteritems():
             if needed_qty <= available_qty:
                 to_pick.append((location, needed_qty))
                 return to_pick
@@ -549,43 +549,21 @@ class PackingOut(OSV):
             parent_to_locations[move.from_location.id] = child_ids
             location_ids.append(move.from_location.id)
 
-        # Collect all raw quantities
-        context = context.copy()
-        context.update({
-            'in_states': ['done', 'assigned'],
-            'out_states': ['done', 'assigned'],
-            })
-        raw_data = product_obj.raw_products_by_location(cursor, user,
-            location_ids=location_ids, with_childs=True,
+        pbl = product_obj.products_by_location(cursor, user,
+            location_ids=location_ids,
             product_ids=[move.product.id for move in inventory_moves],
             context=context)
-        # convert raw data to something like:
-        # {(location,product):[(uom,qty), ...],}
-        processed_data = {}
-        uom_ids = []
-        for line in raw_data:
-            uom_ids.append(line[2])
-            if line[3] == 0.0: # skip when qty == 0.0
-                continue
-            if line[:2] in processed_data:
-                processed_data[line[:2]].append(line[2:])
-            else:
-                processed_data[line[:2]] = [line[2:]]
-
-        uom_index = dict([(uom.id, uom) for uom in \
-            uom_obj.browse(cursor, user, uom_ids, context=context)])
 
         success = True
         for move in inventory_moves:
-            location_qties = []
-            for location in parent_to_locations[move.from_location.id]:
-                qty = self._location_amount(
-                    cursor, user, move.uom.id,
-                    processed_data.get(
-                        (location, move.product.id), []),
-                    uom_index, context=context)
-                if qty != 0.0:
-                    location_qties.append((location, qty))
+            locations = parent_to_locations[move.from_location.id]
+            location_qties = {}
+            for location in locations:
+                if (location, move.product.id) in pbl:
+                    location_qties[location] = uom_obj.compute_qty(
+                        cursor, user, move.product.default_uom,
+                        pbl[(location, move.product.id)], move.uom,
+                        context=context)
 
             to_pick = self.pick_product(
                 cursor, user, move.quantity, location_qties,
@@ -597,15 +575,15 @@ class PackingOut(OSV):
 
             first = True
             for location, qty in to_pick:
+                to_location = packing.warehouse.output_location.id
                 values = {
                     'from_location': location,
-                    'to_location': packing.warehouse.output_location.id,
+                    'to_location': to_location,
                     'product': move.product.id,
                     'uom': move.uom.id,
                     'quantity': qty,
                     'packing_out': packing.id,
                     'state': 'assigned',
-                    'type': 'internal',
                     'company': move.company.id,
                     }
                 if first:
@@ -614,8 +592,15 @@ class PackingOut(OSV):
                     first = False
                 else:
                     move_obj.create(cursor, user, values, context=context)
-                processed_data.get((location, move.product.id), []).append(
-                    (move.uom.id, -qty))
+
+                qty_defaut_uom = uom_obj.compute_qty(
+                    cursor, user, move.uom, qty, move.product.default_uom,
+                    context=context)
+
+                pbl[(location, move.product.id)] = \
+                    pbl.get((location, move.product.id), 0.0) + qty_defaut_uom
+                pbl[(packing.warehouse.output_location.id, move.product.id)]= \
+                    pbl.get((to_location, move.product.id), 0.0) - qty_defaut_uom
 
         return success
 
