@@ -47,6 +47,9 @@ class Uom(OSV):
         super(Uom, self).__init__()
         self._order.insert(0, ('name', 'ASC'))
 
+    def check_xml_record(self, cursor, user, ids, values, context=None):
+        return True
+
     def default_rate(self, cursor, user, context=None):
         return 1.0
 
