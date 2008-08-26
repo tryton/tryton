@@ -1344,7 +1344,8 @@ class InvoiceLine(OSV):
     def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
-            res[line.id] = line.unit.digits
+            if line.unit:
+                res[line.id] = line.unit.digits
         return res
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
