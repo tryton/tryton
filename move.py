@@ -18,9 +18,12 @@ class Move(OSV):
             select=1, states=STATES,
             on_change=['product', 'type', 'currency', 'uom', 'company'],
             domain=[('type', '!=', 'service')])
-    uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES)
-    quantity = fields.Float("Quantity", digits=(12, 6), required=True,
-            states=STATES)
+    uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,
+            domain="[('category', '=', (product, 'product'))]")
+    unit_digits = fields.Function('get_unit_digits', type='integer',
+            string='Unit Digits', on_change_with=['uom'])
+    quantity = fields.Float("Quantity", required=True,
+            digits="(16, unit_digits)", states=STATES)
     from_location = fields.Many2One("stock.location", "From Location", select=1,
             required=True, states=STATES,
             domain=[('type', '!=', 'warehouse')],
@@ -147,6 +150,21 @@ class Move(OSV):
                 res[move.id] = 'output'
         return res
 
+    def on_change_with_unit_digits(self, cursor, user, ids, vals,
+            context=None):
+        uom_obj = self.pool.get('product.uom')
+        if vals.get('unit'):
+            uom = uom_obj.browse(cursor, user, vals['unit'],
+                    context=context)
+            return uom.digits
+        return 2
+
+    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for move in self.browse(cursor, user, ids, context=context):
+            res[move.id] = move.uom.digits
+        return res
+
     def on_change_product(self, cursor, user, ids, vals, context=None):
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
@@ -160,6 +178,7 @@ class Move(OSV):
                     context=context)
             res['uom'] = uom_obj.name_get(cursor, user,
                     product.default_uom.id, context=context)[0]
+            res['unit_digits'] = product.default_uom.digits
             if vals.get('type', 'internal') == 'input':
                 unit_price = product.cost_price
                 if vals.get('uom') and vals['uom'] != product.default_uom.id:

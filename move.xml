@@ -48,6 +48,7 @@
                             </group>
                         </group>
                         <field name="type" invisible="1"/>
+                        <field name="unit_digits" invisible="1"/>
                     </form>
                 ]]>
             </field>
@@ -64,6 +65,7 @@
                         <field name="quantity" select="2"/>
                         <field name="uom" select="2"/>
                         <field name="state" select="2"/>
+                        <field name="unit_digits" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
