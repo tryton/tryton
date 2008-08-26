@@ -72,7 +72,7 @@
                                     <button name="confirm" string="Confirm"
                                         states="{'invisible': '''state != 'quotation' '''}"/>
                                     <button name="cancel" string="Cancel"
-                                        states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state != 'exception') or (packing_state != 'exception')) '''}"/>
+                                        states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (packing_state == 'exception')) '''}"/>
                                     <button name="invoice_ok" string="Ignore Invoice Exception"
                                         states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' '''}"/>
                                     <button name="packing_ok" string="Ignore Packing Exception"
