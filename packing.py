@@ -422,6 +422,57 @@ class PackingOut(OSV):
         self.write(cursor, user, packing_id, {'state':'assigned'},
                    context=context)
 
+    def set_state_draft(self, cursor, user, packing_id, context=None):
+        move_obj = self.pool.get('stock.move')
+        uom_obj = self.pool.get('product.uom')
+        packing = self.browse(cursor, user, packing_id, context=context)
+        self.write(
+            cursor, user, packing_id, {'state':'draft'}, context=context)
+        move_obj.set_state_draft(
+            cursor, user,
+            [m.id for m in packing.inventory_moves + packing.outgoing_moves],
+            context=context)
+
+        # Sum all inventory quantities
+        inventory_qty = {}
+        for move in packing.inventory_moves:
+            quantity = uom_obj.compute_qty(
+                cursor, user, move.uom, move.quantity, move.product.default_uom,
+                context=context)
+            inventory_qty.setdefault(move.product.id, 0.0)
+            inventory_qty[move.product.id] += quantity
+
+        for move in packing.outgoing_moves:
+            qty_default_uom = uom_obj.compute_qty(
+                cursor, user, move.uom, move.quantity, move.product.default_uom,
+                context=context)
+            # Check if the inventory move doesn't exist already
+            if inventory_qty.get(move.product.id):
+                # If it exist, decrease the sum
+                if qty_default_uom <= inventory_qty[move.product.id]:
+                    inventory_qty[move.product.id] -= qty_default_uom
+                    continue
+                # Else create the complement
+                else:
+                    inv_quantity = qty_default_uom - inventory_qty[move.product.id]
+                    inv_quantity = uom_obj.compute_qty(
+                        cursor, user, move.product.default_uom, inv_quantity,
+                        move.uom, context=context)
+                    inventory_qty[move.product.id] -= 0.0
+            else:
+                inv_quantity = move.quantity
+
+            move_obj.create(cursor, user, {
+                    'from_location': move.packing_out.warehouse.storage_location.id,
+                    'to_location': move.from_location.id,
+                    'product': move.product.id,
+                    'uom': move.uom.id,
+                    'quantity': inv_quantity,
+                    'packing_out': packing.id,
+                    'state': 'draft',
+                    'company': move.company.id,
+                    }, context=context)
+
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
@@ -641,14 +692,8 @@ class PackingOut(OSV):
 
     def button_draft(self, cursor, user, ids, context=None):
         workflow_service = LocalService('workflow')
-        move_obj = self.pool.get('stock.move')
         for packing in self.browse(cursor, user, ids, context=context):
             workflow_service.trg_create(user, self._name, packing.id, cursor)
-            self.write(
-                cursor, user, packing.id, {'state':'draft'}, context=context)
-            move_obj.set_state_draft(
-                cursor, user, [m.id for m in packing.inventory_moves],
-                context=context)
 
 PackingOut()
 

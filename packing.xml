@@ -397,6 +397,8 @@
             <field name="workflow" ref="wkf_packingout"/>
             <field name="flow_start">True</field>
             <field name="name">Draft</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
         </record>
         <record model="workflow.activity" id="packingout_act_cancel">
             <field name="workflow" ref="wkf_packingout"/>
