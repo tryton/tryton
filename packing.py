@@ -479,7 +479,7 @@ class PackingOut(OSV):
                     out_quantity = uom_obj.compute_qty(
                         cursor, user, move.product.default_uom, out_quantity,
                         move.uom, context=context)
-                    outgoing_qty[move.product.id] -= 0.0
+                    outgoing_qty[move.product.id] = 0.0
             else:
                 out_quantity = move.quantity
 
@@ -493,6 +493,22 @@ class PackingOut(OSV):
                     'state': 'draft',
                     'company': move.company.id,
                     }, context=context)
+
+        #Re-read the packing and remove exceeding quantities
+        packing = self.browse(cursor, user, packing_id, context=context)
+        for move in packing.outgoing_moves:
+            if outgoing_qty.get(move.product.id, 0.0) > 0.0:
+                exc_qty = uom_obj.compute_qty(
+                    cursor, user, move.product.default_uom,
+                    outgoing_qty[move.product.id], move.uom, context=context)
+                move_obj.write(cursor, user, move.id,{
+                    'quantity': max(0.0, move.quantity-exc_qty),
+                    }, context=context)
+                removed_qty = uom_obj.compute_qty(
+                    cursor, user, move.uom, min(exc_qty, move.quantity),
+                    move.product.default_uom, context=context)
+                outgoing_qty[move.product.id] -= removed_qty
+
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -538,7 +554,7 @@ class PackingOut(OSV):
                     inv_quantity = uom_obj.compute_qty(
                         cursor, user, move.product.default_uom, inv_quantity,
                         move.uom, context=context)
-                    inventory_qty[move.product.id] -= 0.0
+                    inventory_qty[move.product.id] = 0.0
             else:
                 inv_quantity = move.quantity
 
