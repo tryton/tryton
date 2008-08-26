@@ -122,13 +122,16 @@ class PaymentTermLineDelay(OSV):
         self._order.insert(0, ('name', 'ASC'))
 
     def get_date(self, cursor, user, line, date, context=None):
+        value = None
         if line.delay == 'net_days':
-            return mx.DateTime.strptime(str(date), '%Y-%m-%d') + \
+            value = mx.DateTime.strptime(str(date), '%Y-%m-%d') + \
                     mx.DateTime.RelativeDateTime(days=line.days)
         elif line.delay == 'end_month':
-            return mx.DateTime.strptime(str(date), '%Y-%m-%d') + \
+            value = mx.DateTime.strptime(str(date), '%Y-%m-%d') + \
                     mx.DateTime.RelativeDateTime(days=line.days) + \
                     mx.DateTime.RelativeDateTime(day=-1)
+        if value:
+            return datetime.date(value.year, value.month, value.day)
         return None
 
 PaymentTermLineDelay()
