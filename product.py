@@ -81,12 +81,28 @@ class Product(OSV):
         """
         uom_obj = self.pool.get("product.uom")
         product_obj = self.pool.get("product.product")
+        rule_obj = self.pool.get('ir.rule')
 
         location_obj = self.pool.get('stock.location')
-        if not location_ids: # TODO skip in and out under wh
+        if not location_ids:
             return []
 
-        rule_obj = self.pool.get('ir.rule')
+         # Skip warehouse location in favor of their storage location
+         # to compute quantities. Keep track of which ids to remove
+         # and to add after the query.
+        location_ids = set(location_ids)
+        storage_to_remove = set()
+        wh_to_add= {}
+        for location in location_obj.browse(
+            cursor, user, location_ids, context=context):
+            if location.type == 'warehouse':
+                location_ids.remove(location.id)
+                location_ids.add(location.storage_location.id)
+                if location.storage_location.id not in location_ids:
+                    storage_to_remove.add(location.storage_location.id)
+                wh_to_add[location.id] = location.storage_location.id
+        location_ids = list(location_ids)
+
         move_query, move_val = rule_obj.domain_get(cursor, user, 'stock.move')
 
         state_date_clause = '(state in (%s)) AND ('\
@@ -264,6 +280,15 @@ class Product(OSV):
             for location_id, product_id in keys:
                 if (location_id, product_id) not in res:
                     res[(location_id, product_id)] = 0.0
+
+        if wh_to_add:
+            for wh, storage in wh_to_add.iteritems():
+                for product in product_ids:
+                    if (storage, product) in res:
+                        res[(wh, product)] = res[(storage, product)]
+                        if storage in storage_to_remove:
+                            del res[(storage, product)]
+
         return res
 
     def view_header_get(self, cursor, user, value, view_type='form',
