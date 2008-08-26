@@ -1243,6 +1243,7 @@ class InvoiceLine(OSV):
         ('comment', 'Comment'),
         ], 'Type', select=1, required=True)
     quantity = fields.Float('Quantity',
+            digits="(16, unit_digits)",
             states={
                 'invisible': "type != 'line'",
                 'required': "type == 'line'",
@@ -1252,6 +1253,8 @@ class InvoiceLine(OSV):
                 'required': "product",
                 'invisible': "type != 'line'",
             }, domain="[('category', '=', (product, 'product'))]")
+    unit_digits = fields.Function('get_unit_digits', type='integer',
+            string='Unit Digits', on_change_with=['unit'])
     product = fields.Many2One('product.product', 'Product',
             states={
                 'invisible': "type != 'line'",
@@ -1328,6 +1331,21 @@ class InvoiceLine(OSV):
                     Decimal(str(vals.get('quantity') or '0.0')) * \
                     (vals.get('unit_price') or Decimal('0.0')))
         return Decimal('0.0')
+
+    def on_change_with_unit_digits(self, cursor, user, ids, vals,
+            context=None):
+        uom_obj = self.pool.get('product.uom')
+        if vals.get('unit'):
+            uom = uom_obj.browse(cursor, user, vals['unit'],
+                    context=context)
+            return uom.digits
+        return 2
+
+    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            res[line.id] = line.unit.digits
+        return res
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')
