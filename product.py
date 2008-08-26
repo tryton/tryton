@@ -70,9 +70,9 @@ class Product(OSV):
     def products_by_location(self, cursor, user, location_ids,
             product_ids=None, with_childs=False, skip_zero=True, context=None):
         """
-        Return a list like :
-            [{location: 1, product: 1, uom: 1, qty: 2}]
-            for each location and product given as argument.
+        Return a dict like : {(location, product): qty} for each
+        location and product given as argument, the implicit uom is
+        the default uom on the product.
         The keys stock_date_end stock_date_start in context can be
         used to compute stock for arbitrary interval.
         If with_childs, childs locations are also computed.
