@@ -1455,6 +1455,7 @@ class InvoiceLine(OSV):
                 or vals.get('unit') not in [x.id for x in category.uoms]:
             res['unit'] = uom_obj.name_get(cursor, user, product.default_uom.id,
                 context=context)[0]
+            res['unit_digits'] = product.default_uom.digits
         return res
 
     def check_modify(self, cursor, user, ids, context=None):
