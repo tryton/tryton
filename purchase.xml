@@ -47,6 +47,7 @@
                                     <field name="taxes"/>
                                     <field name="amount"/>
                                     <field name="sequence" tree_invisible="1"/>
+                                    <field name="unit_digits" tree_invisible="1"/>
                                 </tree>
                             </field>
                             <group col="2" colspan="2">
@@ -568,6 +569,7 @@
                     <field name="taxes" colspan="4"/>
                     <separator name="comment" colspan="4"/>
                     <field name="comment" colspan="4"/>
+                    <field name="unit_digits" invisible="1"/>
                 </form>
                 ]]>
             </field>
@@ -588,6 +590,7 @@
                     <field name="unit_price" select="2"/>
                     <field name="taxes"/>
                     <field name="amount"/>
+                    <field name="unit_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
