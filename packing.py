@@ -464,6 +464,7 @@ class PackingOut(OSV):
             outgoing_qty[move.product.id] += quantity
 
         for move in packing.inventory_moves:
+            if move.state == 'cancel': continue
             qty_default_uom = uom_obj.compute_qty(
                 cursor, user, move.uom, move.quantity, move.product.default_uom,
                 context=context)
@@ -497,6 +498,7 @@ class PackingOut(OSV):
         #Re-read the packing and remove exceeding quantities
         packing = self.browse(cursor, user, packing_id, context=context)
         for move in packing.outgoing_moves:
+            if move.state == 'cancel': continue
             if outgoing_qty.get(move.product.id, 0.0) > 0.0:
                 exc_qty = uom_obj.compute_qty(
                     cursor, user, move.product.default_uom,
