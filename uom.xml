@@ -26,7 +26,7 @@
                 <![CDATA[
                 <form string="Unit of Measure" col="4">
                     <label name="name"/>
-                    <field name="name" />
+                    <field name="name"/>
                     <label name="category"/>
                     <field name="category"/>
                     <label name="symbol"/>
@@ -38,7 +38,9 @@
                     <label name="rate"/>
                     <field name="rate"/>
                     <label name="rounding"/>
-                    <field name="rounding" />
+                    <field name="rounding"/>
+                    <label name="digits"/>
+                    <field name="digits"/>
                 </form>
                 ]]>
             </field>
@@ -141,6 +143,7 @@
             <field name="rate" eval="1"/>
             <field name="factor" eval="1"/>
             <field name="rounding" eval="1"/>
+            <field name="digits" eval="0"/>
         </record>
 
         <record model="product.uom.category" id="uom_cat_weight">
@@ -152,7 +155,6 @@
             <field name="category" ref="uom_cat_weight"/>
             <field name="factor" eval="1000"/>
             <field name="rate" eval="0.001"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_gram">
             <field name="name">Gram</field>
@@ -160,7 +162,6 @@
             <field name="category" ref="uom_cat_weight"/>
             <field name="rate" eval="1"/>
             <field name="factor" eval="1"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_carat">
             <field name="name">Carat</field>
@@ -168,7 +169,6 @@
             <field name="category" ref="uom_cat_weight"/>
             <field name="rate" eval="0.2"/>
             <field name="factor" eval="5"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_pound">
             <field name="name">Pound</field>
@@ -176,7 +176,6 @@
             <field name="category" ref="uom_cat_weight"/>
             <field name="factor" eval="453.592"/>
             <field name="rate" eval="0.002205"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_once">
             <field name="name">Ounce</field>
@@ -184,7 +183,6 @@
             <field name="category" ref="uom_cat_weight"/>
             <field name="factor" eval="28.3495"/>
             <field name="rate" eval="0.0352740"/>
-            <field name="rounding" eval="0.001"/>
         </record>
 
         <record model="product.uom.category" id="uom_cat_time">
@@ -196,7 +194,6 @@
             <field name="category" ref="uom_cat_time"/>
             <field name="rate" eval="3600"/>
             <field name="factor" eval="1.0/3600"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_minute">
             <field name="name">Minute</field>
@@ -204,7 +201,6 @@
             <field name="category" ref="uom_cat_time"/>
             <field name="rate" eval="60"/>
             <field name="factor" eval="1.0/60"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_hour">
             <field name="name">Hour</field>
@@ -212,7 +208,6 @@
             <field name="category" ref="uom_cat_time"/>
             <field name="rate" eval="1"/>
             <field name="factor" eval="1"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_work_day">
             <field name="name">Work Day</field>
@@ -220,7 +215,6 @@
             <field name="category" ref="uom_cat_time"/>
             <field name="rate" eval="1.0/8"/>
             <field name="factor" eval="8"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_day">
             <field name="name">Day</field>
@@ -228,7 +222,6 @@
             <field name="category" ref="uom_cat_time"/>
             <field name="rate" eval="1.0/24"/>
             <field name="factor" eval="24"/>
-            <field name="rounding" eval="0.001"/>
         </record>
 
 
@@ -241,7 +234,6 @@
             <field name="category" ref="uom_cat_length"/>
             <field name="rate" eval="1"/>
             <field name="factor" eval="1"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_kilometer">
             <field name="name">Kilometer</field>
@@ -249,7 +241,6 @@
             <field name="category" ref="uom_cat_length"/>
             <field name="factor" eval="1000"/>
             <field name="rate" eval="0.001"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_centimeter">
             <field name="name">centimeter</field>
@@ -257,7 +248,6 @@
             <field name="category" ref="uom_cat_length"/>
             <field name="rate" eval="100"/>
             <field name="factor" eval="0.01"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_millimeter">
             <field name="name">Millimeter</field>
@@ -265,7 +255,6 @@
             <field name="category" ref="uom_cat_length"/>
             <field name="factor" eval="0.001"/>
             <field name="rate" eval="1000"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_foot">
             <field name="name">Foot</field>
@@ -273,7 +262,6 @@
             <field name="category" ref="uom_cat_length"/>
             <field name="rate" eval="3.28084"/>
             <field name="factor" eval="0.304800"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_yard">
             <field name="name">Yard</field>
@@ -281,7 +269,6 @@
             <field name="category" ref="uom_cat_length"/>
             <field name="factor" eval="0.914400"/>
             <field name="rate" eval="1.093613"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_inch">
             <field name="name">Inch</field>
@@ -289,7 +276,6 @@
             <field name="category" ref="uom_cat_length"/>
             <field name="factor" eval="0.02540"/>
             <field name="rate" eval="39.3701"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_mile">
             <field name="name">Mile</field>
@@ -297,7 +283,6 @@
             <field name="category" ref="uom_cat_length"/>
             <field name="factor" eval="1609.344"/>
             <field name="rate" eval="0.000621"/>
-            <field name="rounding" eval="0.001"/>
         </record>
 
         <record model="product.uom.category" id="uom_cat_volume">
@@ -309,7 +294,6 @@
             <field name="category" ref="uom_cat_volume"/>
             <field name="factor" eval="1000"/>
             <field name="rate" eval="0.001"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_liter">
             <field name="name">Liter</field>
@@ -317,7 +301,6 @@
             <field name="category" ref="uom_cat_length"/>
             <field name="factor" eval="1"/>
             <field name="rate" eval="1"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_cubic_centimeter">
             <field name="name">Cubic centimeter</field>
@@ -325,7 +308,6 @@
             <field name="category" ref="uom_cat_volume"/>
             <field name="factor" eval="0.001"/>
             <field name="rate" eval="1000"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_cubic_inch">
             <field name="name">Cubic inch</field>
@@ -333,7 +315,6 @@
             <field name="category" ref="uom_cat_volume"/>
             <field name="factor" eval="0.016387"/>
             <field name="rate" eval="61.023744"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_cubic_foot">
             <field name="name">Cubic foot</field>
@@ -341,7 +322,6 @@
             <field name="category" ref="uom_cat_volume"/>
             <field name="factor" eval="28.316847"/>
             <field name="rate" eval="0.035315"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_gallon">
             <field name="name">Gallon</field>
@@ -349,7 +329,6 @@
             <field name="category" ref="uom_cat_volume"/>
             <field name="factor" eval="3.785412"/>
             <field name="rate" eval="0.264172"/>
-            <field name="rounding" eval="0.001"/>
         </record>
 
         <record model="product.uom.category" id="uom_cat_surface">
@@ -361,7 +340,6 @@
             <field name="category" ref="uom_cat_surface"/>
             <field name="factor" eval="1"/>
             <field name="rate" eval="1"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_square_centimeter">
             <field name="name">Square centimeter</field>
@@ -369,7 +347,6 @@
             <field name="category" ref="uom_cat_surface"/>
             <field name="factor" eval="0.0001"/>
             <field name="rate" eval="10000"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_are">
             <field name="name">Are</field>
@@ -377,7 +354,6 @@
             <field name="category" ref="uom_cat_surface"/>
             <field name="factor" eval="100"/>
             <field name="rate" eval="0.01"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_hectare">
             <field name="name">Hectare</field>
@@ -385,7 +361,6 @@
             <field name="category" ref="uom_cat_surface"/>
             <field name="factor" eval="10000"/>
             <field name="rate" eval="0.0001"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_square_inch">
             <field name="name">Square inch</field>
@@ -393,7 +368,6 @@
             <field name="category" ref="uom_cat_surface"/>
             <field name="factor" eval="0.000645"/>
             <field name="rate" eval="1550.0"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_square_foot">
             <field name="name">Square foot</field>
@@ -401,7 +375,6 @@
             <field name="category" ref="uom_cat_surface"/>
             <field name="factor" eval="0.092903"/>
             <field name="rate" eval="10.7639"/>
-            <field name="rounding" eval="0.001"/>
         </record>
         <record model="product.uom" id="uom_square_yard">
             <field name="name">Square yard</field>
@@ -409,7 +382,6 @@
             <field name="category" ref="uom_cat_surface"/>
             <field name="factor" eval="0.836127"/>
             <field name="rate" eval="1.19599"/>
-            <field name="rounding" eval="0.001"/>
         </record>
 
 

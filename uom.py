@@ -29,18 +29,18 @@ class Uom(OSV):
     symbol = fields.Char('Symbol', size=10, required=True, states=STATES,
             translate=True)
     category = fields.Many2One('product.uom.category', 'UOM Category',
-                               required=True, ondelete='cascade',
-                               states=STATES)
+            required=True, ondelete='cascade', states=STATES)
     rate = fields.Float('Rate', digits=(12, 6), required=True,
-                        on_change = ['rate'],states=STATES,
-                        help='The coefficient for the formula:\n' \
-                            '1 (base unit) = coef (this unit)')
+            on_change=['rate'], states=STATES,
+            help='The coefficient for the formula:\n' \
+                    '1 (base unit) = coef (this unit)')
     factor = fields.Float('Factor', digits=(12, 6), states=STATES,
-                          on_change = ['factor'], required=True,
-                          help='The coefficient for the formula:\n' \
-                              'coef (base unit) = 1 (this unit)')
+            on_change=['factor'], required=True,
+            help='The coefficient for the formula:\n' \
+                    'coef (base unit) = 1 (this unit)')
     rounding = fields.Float('Rounding Precision', digits=(12, 6),
-                              required=True, states=STATES)
+            required=True, states=STATES)
+    digits = fields.Integer('Display Digits')
     active = fields.Boolean('Active')
 
     def __init__(self):
@@ -61,6 +61,9 @@ class Uom(OSV):
 
     def default_rounding(self, cursor, user, context=None):
         return 0.01
+
+    def default_digits(self, cursor, user, context=None):
+        return 2
 
     def on_change_factor(self, cursor, user, ids, value, context=None):
         if value.get('factor', 0.0) == 0.0:
