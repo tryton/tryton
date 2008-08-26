@@ -97,9 +97,9 @@ class Product(OSV):
             cursor, user, location_ids, context=context):
             if location.type == 'warehouse':
                 location_ids.remove(location.id)
-                location_ids.add(location.storage_location.id)
                 if location.storage_location.id not in location_ids:
                     storage_to_remove.add(location.storage_location.id)
+                location_ids.add(location.storage_location.id)
                 wh_to_add[location.id] = location.storage_location.id
         location_ids = list(location_ids)
 
