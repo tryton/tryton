@@ -435,21 +435,50 @@ class PackingOut(OSV):
 
     def set_state_packed(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
+        uom_obj = self.pool.get('product.uom')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.set_state_done(
             cursor, user, [m.id for m in packing.inventory_moves],
             context=context)
         self.write(cursor, user, packing_id, {'state':'packed'},
                    context=context)
+        # Sum all outgoing quantities
+        outgoing_qty = {}
+        for move in packing.outgoing_moves:
+            if move.state == 'cancel': continue
+            quantity = uom_obj.compute_qty(
+                cursor, user, move.uom, move.quantity, move.product.default_uom,
+                context=context)
+            outgoing_qty.setdefault(move.product.id, 0.0)
+            outgoing_qty[move.product.id] += quantity
+
         for move in packing.inventory_moves:
+            qty_default_uom = uom_obj.compute_qty(
+                cursor, user, move.uom, move.quantity, move.product.default_uom,
+                context=context)
+            # Check if the outgoing move doesn't exist already
+            if outgoing_qty.get(move.product.id):
+                # If it exist, decrease the sum
+                if qty_default_uom <= outgoing_qty[move.product.id]:
+                    outgoing_qty[move.product.id] -= qty_default_uom
+                    continue
+                # Else create the complement
+                else:
+                    out_quantity = qty_default_uom - outgoing_qty[move.product.id]
+                    out_quantity = uom_obj.compute_qty(
+                        cursor, user, move.product.default_uom, out_quantity,
+                        move.uom, context=context)
+                    outgoing_qty[move.product.id] -= 0.0
+            else:
+                out_quantity = move.quantity
+
             move_obj.create(cursor, user, {
                     'from_location': move.to_location.id,
                     'to_location': packing.customer_location.id,
                     'product': move.product.id,
                     'uom': move.uom.id,
-                    'quantity': move.quantity,
+                    'quantity': out_quantity,
                     'packing_out': packing.id,
-                    'type': 'output',
                     'state': 'draft',
                     'company': move.company.id,
                     }, context=context)
