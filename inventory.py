@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 'Inventory'
 from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.wizard import Wizard
 import datetime
 
 STATES = {
