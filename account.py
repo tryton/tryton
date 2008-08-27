@@ -8,11 +8,7 @@ from trytond.report import Report
 from decimal import Decimal
 import datetime
 import time
-import locale
 import os
-from trytond.report.report import _LOCALE2WIN32
-from _strptime import LocaleTime
-from trytond.server import LOCALE_SEMAPHORE
 
 
 class Type(OSV):
@@ -1042,49 +1038,34 @@ class OpenBalanceSheet(Wizard):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         company_obj = self.pool.get('company.company')
+        lang_obj = self.pool.get('ir.lang')
 
         company = company_obj.browse(cursor, user, datas['form']['company'],
                 context=context)
-        lang = context.get('language', False) or 'en_US'
-        LOCALE_SEMAPHORE.acquire()
-        try:
-            encoding = locale.getdefaultlocale()[1]
-            if encoding == 'utf':
-                encoding = 'UTF-8'
-            if encoding == 'cp1252':
-                encoding = '1252'
-            if not encoding:
-                encoding = 'UTF-8'
-            try:
-                if os.name == 'nt':
-                    os.environ['LANG'] = lang
-                    lang = _LOCALE2WIN32.get(lang, lang)
-                elif os.name == 'mac' or os.uname()[0] == 'Darwin':
-                    encoding = 'UTF-8'
-                locale.setlocale(locale.LC_ALL, str(lang + '.' + encoding))
-            except:
-                pass
-            date = time.strptime(str(datas['form']['date']), '%Y-%m-%d')
-            date = time.strftime(LocaleTime().LC_date.replace('%y', '%Y'), date)
+        for code in [context.get('language', False) or 'en_US', 'en_US']:
+            lang_ids = lang_obj.search(cursor, user, [
+                ('code', '=', code),
+                ], context=context)
+            if lang_ids:
+                break
+        lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
 
-            model_data_ids = model_data_obj.search(cursor, user, [
-                ('fs_id', '=', 'act_account_balance_sheet_tree'),
-                ('module', '=', 'account'),
-                ], limit=1, context=context)
-            model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                    context=context)
-            res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-            res['context'] = str({
-                'date': datas['form']['date'],
-                'posted': datas['form']['posted'],
-                'company': datas['form']['company'],
-                })
-            res['name'] = res['name'] + ' - '+ date + ' - ' + company.name
-            if os.name == 'nt':
-                os.environ['LANG'] = ''
-            locale.setlocale(locale.LC_ALL, '')
-        finally:
-            LOCALE_SEMAPHORE.release()
+        date = time.strptime(str(datas['form']['date']), '%Y-%m-%d')
+        date = time.strftime(lang.date, date)
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_account_balance_sheet_tree'),
+            ('module', '=', 'account'),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res['context'] = str({
+            'date': datas['form']['date'],
+            'posted': datas['form']['posted'],
+            'company': datas['form']['company'],
+            })
+        res['name'] = res['name'] + ' - '+ date + ' - ' + company.name
         return res
 
 OpenBalanceSheet()
