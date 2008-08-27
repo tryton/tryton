@@ -27,31 +27,64 @@
                     <field name="code"/>
                     <label name="rounding"/>
                     <field name="rounding"/>
-                    <label name="digits"/>
-                    <field name="digits"/>
-                    <newline/>
-                    <label name="rate"/>
-                    <field name="rate"/>
-                    <field name="rates" colspan="6" mode="tree,form,graph">
-                        <tree string="Rates">
-                            <field name="date"/>
-                            <field name="rate"/>
-                        </tree>
-                        <form string="Rate">
-                            <label name="date"/>
-                            <field name="date"/>
+                    <notebook colspan="6">
+                        <page string="Rates">
                             <label name="rate"/>
                             <field name="rate"/>
-                        </form>
-                        <graph string="Rates" type="line">
-                            <x>
-                                <field name="date"/>
-                            </x>
-                            <y>
-                                <field name="rate" fill="1" empty="0"/>
-                            </y>
-                        </graph>
-                    </field>
+                            <field name="rates" colspan="4" mode="tree,form,graph">
+                                <tree string="Rates">
+                                    <field name="date"/>
+                                    <field name="rate"/>
+                                </tree>
+                                <form string="Rate">
+                                    <label name="date"/>
+                                    <field name="date"/>
+                                    <label name="rate"/>
+                                    <field name="rate"/>
+                                </form>
+                                <graph string="Rates" type="line">
+                                    <x>
+                                        <field name="date"/>
+                                    </x>
+                                    <y>
+                                        <field name="rate" fill="1" empty="0"/>
+                                    </y>
+                                </graph>
+                            </field>
+                        </page>
+                        <page string="Formatting" col="6">
+                            <label name="digits"/>
+                            <field name="digits"/>
+                            <newline/>
+                            <label name="mon_grouping"/>
+                            <field name="mon_grouping"/>
+                            <label name="mon_thousands_sep"/>
+                            <field name="mon_thousands_sep"/>
+                            <label name="mon_decimal_point"/>
+                            <field name="mon_decimal_point"/>
+                            <newline/>
+                            <label name="negative_sign"/>
+                            <field name="negative_sign"/>
+                            <label name="positive_sign"/>
+                            <field name="positive_sign"/>
+                            <newline/>
+                            <label name="p_sign_posn"/>
+                            <field name="p_sign_posn"/>
+                            <label name="n_sign_posn"/>
+                            <field name="n_sign_posn"/>
+                            <newline/>
+                            <label name="p_cs_precedes"/>
+                            <field name="p_cs_precedes"/>
+                            <label name="n_cs_precedes"/>
+                            <field name="n_cs_precedes"/>
+                            <newline/>
+                            <label name="p_sep_by_space"/>
+                            <field name="p_sep_by_space"/>
+                            <label name="n_sep_by_space"/>
+                            <field name="n_sep_by_space"/>
+                            <newline/>
+                        </page>
+                    </notebook>
                 </form>
                 ]]>
             </field>
@@ -279,6 +312,17 @@
             <field name="symbol">€</field>
             <field name="rounding" eval="0.01"/>
             <field name="digits" eval="2"/>
+            <field name="p_cs_precedes" eval="False"/>
+            <field name="n_cs_precedes" eval="False"/>
+            <field name="p_sep_by_space" eval="True"/>
+            <field name="n_sep_by_space" eval="True"/>
+            <field name="mon_grouping">[3, 3, 0]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep"> </field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="negative_sign">-</field>
+            <field name="positive_sign"></field>
         </record>
         <record model="currency.currency" id="fjd">
             <field name="name">Fiji Dollar</field>
@@ -583,6 +627,17 @@
             <field name="symbol">$</field>
             <field name="rounding" eval="0.01"/>
             <field name="digits" eval="2"/>
+            <field name="p_cs_precedes" eval="True"/>
+            <field name="n_cs_precedes" eval="True"/>
+            <field name="p_sep_by_space" eval="False"/>
+            <field name="n_sep_by_space" eval="False"/>
+            <field name="mon_grouping">[]</field>
+            <field name="mon_decimal_point">.</field>
+            <field name="mon_thousands_sep">,</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="negative_sign">-</field>
+            <field name="positive_sign"></field>
         </record>
         <record model="currency.currency" id="uzs">
             <field name="name">Uzbekistan Sum</field>

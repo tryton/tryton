@@ -20,11 +20,28 @@ class Currency(OSV):
     digits = fields.Integer('Diplay Digits')
     active = fields.Boolean('Active')
 
+    # monetary formatting
+    mon_grouping = fields.Char('mon_grouping', required=True)
+    mon_decimal_point = fields.Char('mon_decimal_point', required=True)
+    mon_thousands_sep = fields.Char('mon_thousands_sep')
+    p_sign_posn = fields.Integer('p_sign_posn')
+    n_sign_posn = fields.Integer('n_sign_posn')
+    negative_sign = fields.Char('negative_sign')
+    positive_sign = fields.Char('positive_sign')
+    p_cs_precedes = fields.Boolean('p_cs_precedes')
+    n_cs_precedes = fields.Boolean('n_cs_precedes')
+    p_sep_by_space = fields.Boolean('p_sep_by_space')
+    n_sep_by_space = fields.Boolean('n_sep_by_space')
+
     def __init__(self):
         super(Currency, self).__init__()
         self._order.insert(0, ('code', 'ASC'))
+        self._constraints += [
+            ('check_mon_grouping', 'invalid_mon_grouping'),
+        ]
         self._error_messages.update({
             'no_rate': 'No rate found for the currency: %s at the date: %s',
+            'invalid_grouping': 'Invalid Grouping!',
             })
 
     def default_active(self, cursor, user, context=None):
@@ -35,6 +52,53 @@ class Currency(OSV):
 
     def default_digits(self, cursor, user, context=None):
         return 2
+
+    def default_mon_grouping(self, cursor, user, context=None):
+        return '[]'
+
+    def default_mon_thousands_sep(self, cursor, user, context=None):
+        return ','
+
+    def default_mon_decimal_point(self, cursor, user, context=None):
+        return '.'
+
+    def default_p_sign_posn(self, cursor, user, context=None):
+        return 1
+
+    def default_n_sign_posn(self, cursor, user, context=None):
+        return 1
+
+    def default_negative_sign(self, cursor, user, context=None):
+        return '-'
+
+    def default_positive_sign(self, cursor, user, context=None):
+        return ''
+
+    def default_p_cs_precedes(self, cursor, user, context=None):
+        return True
+
+    def default_n_cs_precedes(self, cursor, user, context=None):
+        return True
+
+    def default_p_sep_by_space(self, cursor, user, context=None):
+        return False
+
+    def default_n_sep_by_space(self, cursor, user, context=None):
+        return False
+
+    def check_mon_grouping(self, cursor, user, ids):
+        '''
+        Check if mon_grouping is list of numbers
+        '''
+        for currency in self.browse(cursor, user, ids):
+            try:
+                grouping = eval(currency.mon_grouping)
+                for i in grouping:
+                    if not isinstance(i, int):
+                        return False
+            except:
+                return False
+        return True
 
     def name_search(self, cursor, user, name, args=None, operator='ilike',
             context=None, limit=None):
