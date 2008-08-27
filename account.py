@@ -12,7 +12,7 @@ import locale
 import os
 from trytond.report.report import _LOCALE2WIN32
 from _strptime import LocaleTime
-from trytond import LOCALE_SEMAPHORE
+from trytond.server import LOCALE_SEMAPHORE
 
 
 class Type(OSV):
