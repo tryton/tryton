@@ -11,12 +11,120 @@ import time
 import os
 
 
+class TypeTemplate(OSV):
+    'Account Type Template'
+    _name = 'account.account.type.template'
+    _description = __doc__
+    name = fields.Char('Name', required=True, translate=True)
+    parent = fields.Many2One('account.account.type.template', 'Parent',
+            ondelete="restrict")
+    childs = fields.One2Many('account.account.type.template', 'parent', 'Childs')
+    sequence = fields.Integer('Sequence', required=True)
+    balance_sheet = fields.Boolean('Balance Sheet')
+    income_statement = fields.Boolean('Income Statement')
+    display_balance = fields.Selection([
+        ('debit-credit', 'Debit - Credit'),
+        ('credit-debit', 'Credit - Debit'),
+        ], 'Display Balance', required=True)
+
+    def __init__(self):
+        super(TypeTemplate, self).__init__()
+        self._order.insert(0, ('sequence', 'ASC'))
+
+    def default_balance_sheet(self, cursor, user, context=None):
+        return False
+
+    def default_income_statement(self, cursor, user, context=None):
+        return False
+
+    def default_display_balance(self, cursor, user, context=None):
+        return 'debit-credit'
+
+    def name_get(self, cursor, user, ids, context=None):
+        if not ids:
+            return []
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        res = []
+        def _name(type):
+            if type.parent:
+                return _name(type.parent) + '\\' + type.name
+            else:
+                return type.name
+        for type in self.browse(cursor, user, ids, context=context):
+            res.append((type.id, _name(type)))
+        return res
+
+    def _get_type_value(self, cursor, user, template, context=None):
+        '''
+        Set the values for account creation.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the BrowseRecord of the template
+        :param context: the context
+        :return: a dictionary with account fields as key and values as value
+        '''
+        res = {}
+        res['name'] = template.name
+        res['sequence'] = template.sequence
+        res['balance_sheet'] = template.balance_sheet
+        res['income_statement'] = template.income_statement
+        res['display_balance'] = template.display_balance
+        return res
+
+    def create_type(self, cursor, user, template, company_id, context=None,
+            template2type=None, parent_id=False):
+        '''
+        Create recursively types based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the template id or the BrowseRecord of the template
+                used for type creation
+        :param company_id: the id of the company for which types are created
+        :param context: the context
+        :param template2type: a dictionary with template id as key
+                and type id as value, used to convert template id
+                into type. The dictionary is filled with new types
+        :param parent_id: the type id of the parent of the types that must
+                be created
+        :return: id of the type created
+        '''
+        type_obj = self.pool.get('account.account.type')
+
+        if template2type is None:
+            template2type = {}
+
+        if isinstance(template, (int, long)):
+            template = self.browse(cursor, user, template, context=context)
+
+        if template.id not in template2type:
+            vals = self._get_type_value(cursor, user, template, context=context)
+            vals['company'] = company_id
+            vals['parent'] = parent_id
+
+            new_id = type_obj.create(cursor, user, vals, context=context)
+            template2type[template.id] = new_id
+        else:
+            new_id = template2type[template.id]
+
+        new_childs = []
+        for child in template.childs:
+            new_childs.append(self.create_type(cursor, user, child, company_id,
+                context=context, template2type=template2type, parent_id=new_id))
+        return new_id
+
+TypeTemplate()
+
+
 class Type(OSV):
     'Account Type'
     _name = 'account.account.type'
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, translate=True)
-    parent = fields.Many2One('account.account.type', 'Parent')
+    parent = fields.Many2One('account.account.type', 'Parent',
+            ondelete="restrict")
     childs = fields.One2Many('account.account.type', 'parent', 'Childs')
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
@@ -24,14 +132,14 @@ class Type(OSV):
             string='Currency Digits')
     amount = fields.Function('get_amount', digits="(16, currency_digits)",
             string='Amount')
-    balance_sheet = fields.Boolean('Balance Sheet', states={
-        'invisible': "parent",
-        })
+    balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
     display_balance = fields.Selection([
         ('debit-credit', 'Debit - Credit'),
         ('credit-debit', 'Credit - Debit'),
         ], 'Display Balance', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+            ondelete="restrict")
 
     def __init__(self):
         super(Type, self).__init__()
@@ -47,22 +155,12 @@ class Type(OSV):
         return 'debit-credit'
 
     def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
-        company_obj = self.pool.get('company.company')
-        if context is None:
-            context = {}
         res = {}
-        if not context.get('company'):
-            for type_id in ids:
-                res[type_id] = 2
-            return res
-        company = company_obj.browse(cursor, user, context['company'],
-                context=context)
-        for type_id in ids:
-            res[type_id] = company.currency.digits
+        for type in self.browse(cursor, user, ids, context=context):
+            res[type.id] = type.company.currency.digits
         return res
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
-        company_obj = self.pool.get('company.company')
         account_obj = self.pool.get('account.account')
         currency_obj = self.pool.get('currency.currency')
 
@@ -71,11 +169,6 @@ class Type(OSV):
         res = {}
         for type_id in ids:
             res[type_id] = Decimal('0.0')
-
-        if not context.get('company'):
-            return res
-        company = company_obj.browse(cursor, user, context['company'],
-                context=context)
 
         child_ids = self.search(cursor, user, [
             ('parent', 'child_of', ids),
@@ -86,12 +179,11 @@ class Type(OSV):
 
         account_ids = account_obj.search(cursor, user, [
             ('type', 'in', child_ids),
-            ('company', '=', company.id),
             ], context=context)
         for account in account_obj.browse(cursor, user, account_ids,
                 context=context):
             type_sum[account.type.id] += currency_obj.round(cursor, user,
-                    company.currency, account.debit - account.credit)
+                    account.company.currency, account.debit - account.credit)
 
         types = self.browse(cursor, user, ids, context=context)
         for type in types:
@@ -101,7 +193,7 @@ class Type(OSV):
             for child_id in child_ids:
                 res[type.id] += type_sum[child_id]
             res[type.id] = currency_obj.round(cursor, user,
-                        company.currency, res[type.id])
+                        type.company.currency, res[type.id])
             if type.display_balance == 'credit-debit':
                 res[type.id] = - res[type.id]
         return res
@@ -134,12 +226,14 @@ class AccountTemplate(OSV):
     complete_name = fields.Function('get_complete_name', type='char',
             string='Name', order_field='code')
     code = fields.Char('Code', size=None, select=1)
-    type = fields.Many2One('account.account.type', 'Type',
+    type = fields.Many2One('account.account.type.template', 'Type',
+            ondelete="restrict",
             states={
                 'invisible': "kind == 'view'",
                 'required': "kind != 'view'",
             })
-    parent = fields.Many2One('account.account.template', 'Parent', select=1)
+    parent = fields.Many2One('account.account.template', 'Parent', select=1,
+            ondelete="restrict")
     childs = fields.One2Many('account.account.template', 'parent', 'Childs')
     reconcile = fields.Boolean('Reconcile',
             states={
@@ -224,14 +318,13 @@ class AccountTemplate(OSV):
         res['name'] = template.name
         res['code'] = template.code
         res['kind'] = template.kind
-        res['type'] = template.type.id
         res['reconcile'] = template.reconcile
         res['close_method'] = template.close_method
         res['taxes'] = [('add', x.id) for x in template.taxes]
         return res
 
     def create_account(self, cursor, user, template, company_id, context=None,
-            template2account=None, parent_id=False):
+            template2account=None, template2type=None, parent_id=False):
         '''
         Create recursively accounts based on template.
 
@@ -245,6 +338,9 @@ class AccountTemplate(OSV):
         :param template2account: a dictionary with template id as key
                 and account id as value, used to convert template id
                 into account. The dictionary is filled with new accounts
+        :param template2type: a dictionary with type template id as key
+                and type id as value, used to convert type template id
+                into type.
         :param parent_id: the account id of the parent of the accounts
                 that must be created
         :return: id of the account created
@@ -254,6 +350,9 @@ class AccountTemplate(OSV):
         if template2account is None:
             template2account = {}
 
+        if template2type is None:
+            template2type = {}
+
         if isinstance(template, (int, long)):
             template = self.browse(cursor, user, template, context=context)
 
@@ -261,6 +360,7 @@ class AccountTemplate(OSV):
             vals = self._get_account_value(cursor, user, template, context=context)
             vals['company'] = company_id
             vals['parent'] = parent_id
+            vals['type'] = template2type.get(template.type.id, False)
 
             new_id = account_obj.create(cursor, user, vals, context=context)
             template2account[template.id] = new_id
@@ -271,7 +371,7 @@ class AccountTemplate(OSV):
         for child in template.childs:
             new_childs.append(self.create_account(cursor, user, child,
                 company_id, context=context, template2account=template2account,
-                parent_id=new_id))
+                template2type=template2type, parent_id=new_id))
         return new_id
 
 AccountTemplate()
@@ -288,21 +388,22 @@ class Account(OSV):
             string='Name', order_field='code')
     code = fields.Char('Code', size=None, select=1)
     active = fields.Boolean('Active', select=2)
-    company = fields.Many2One('company.company', 'Company', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+            ondelete="restrict")
     currency = fields.Function('get_currency', type='many2one',
             relation='currency.currency', string='Currency')
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits')
     second_currency = fields.Many2One('currency.currency', 'Secondary currency',
             help='Force all moves for this account \n' \
-                    'to have this secondary currency.')
-    type = fields.Many2One('account.account.type', 'Type',
+                    'to have this secondary currency.', ondelete="restrict")
+    type = fields.Many2One('account.account.type', 'Type', ondelete="restrict",
             states={
                 'invisible': "kind == 'view'",
                 'required': "kind != 'view'",
             })
     parent = fields.Many2One('account.account', 'Parent', select=1,
-            left="left", right="right")
+            left="left", right="right", ondelete="restrict")
     left = fields.Integer('Left', required=True)
     right = fields.Integer('Right', required=True)
     childs = fields.One2Many('account.account', 'parent', 'Childs')
@@ -351,6 +452,10 @@ class Account(OSV):
         ]
         self._error_messages.update({
             'recursive_accounts': 'You can not create recursive accounts!',
+        })
+        self._sql_error_messages.update({
+            'parent_fkey': 'You can not delete account ' \
+                    'that have children!',
         })
         self._order.insert(0, ('code', 'ASC'))
         self._order.insert(1, ('name', 'ASC'))
@@ -1262,14 +1367,25 @@ class CreateChartAccount(Wizard):
     }
 
     def _action_create_account(self, cursor, user, datas, context=None):
+        account_type_template_obj = \
+                self.pool.get('account.account.type.template')
         account_template_obj = self.pool.get('account.account.template')
         tax_code_template_obj = self.pool.get('account.tax.code.template')
         tax_template_obj = self.pool.get('account.tax.template')
 
+        account_template = account_template_obj.browse(cursor, user,
+                datas['form']['account_template'], context=context)
+
+        template2type = {}
+        account_type_template_obj.create_type(cursor, user,
+                account_template.type, datas['form']['company'],
+                context=context, template2type=template2type)
+
         template2account = {}
         account_template_obj.create_account(cursor, user,
-                datas['form']['account_template'], datas['form']['company'],
-                context=context, template2account=template2account)
+                account_template, datas['form']['company'],
+                context=context, template2account=template2account,
+                template2type=template2type)
 
         template2tax_code = {}
         tax_code_template_ids = tax_code_template_obj.search(cursor, user, [
