@@ -21,6 +21,9 @@ class Product(OSV):
             if context['stock_date_end'] != datetime.date.today():
                 context = context.copy()
                 context['stock_date_end'] = datetime.date.today()
+        if name == 'forecast_quantity' and not context.get('stock_date_end'):
+            context = context.copy()
+            context['stock_date_end'] = datetime.date.max
         pbl = self.products_by_location(cursor, user,
                 location_ids=context['locations'], product_ids=ids,
                 with_childs=True, context=context)
@@ -50,6 +53,10 @@ class Product(OSV):
             if context['stock_date_end'] != datetime.date.today():
                 context = context.copy()
                 del context['stock_date_end']
+
+        if name == 'forecast_quantity' and not context.get('stock_date_end'):
+            context = context.copy()
+            context['stock_date_end'] = datetime.date.max
 
         pbl = self.products_by_location(
             cursor, user, location_ids=context['locations'], with_childs=True,
