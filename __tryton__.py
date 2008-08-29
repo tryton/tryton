@@ -5,7 +5,7 @@
     "author" : "B2CK",
     'website': 'http://www.tryton.org/',
     "category" : "Generic",
-    "description": "Define products, categories of product, units" \
+    "description": "Define products, categories of product, units " \
         "of measure, categories of units of measure.",
     "depends" : [
         "ir",
