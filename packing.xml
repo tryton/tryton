@@ -148,7 +148,6 @@
         <record model="ir.sequence" id="sequence_packing_in">
                 <field name="name">Supplier Packing</field>
                 <field name="code">stock.packing.in</field>
-                <field name="prefix">PA-IN:</field>
         </record>
 
         <!--Packing out view-->
@@ -326,7 +325,6 @@
         <record model="ir.sequence" id="sequence_packing_out">
                 <field name="name">Customer Packing</field>
                 <field name="code">stock.packing.out</field>
-                <field name="prefix">PA-OUT:</field>
         </record>
 
         <!-- Workflow packing in -->
