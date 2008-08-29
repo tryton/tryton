@@ -37,6 +37,8 @@ class Purchase(OSV):
     party = fields.Many2One('relationship.party', 'Party', change_default=True,
             required=True, states=_STATES, on_change=['party', 'payment_term'],
             select=1)
+    party_lang = fields.Function('get_party_lang', type='char',
+            string='Party Language', on_change_with=['party'])
     contact_address = fields.Many2One('relationship.address', 'Contact Address',
             domain="[('party', '=', party)]", states=_STATES)
     invoice_address = fields.Many2One('relationship.address', 'Invoice Address',
@@ -208,6 +210,25 @@ class Purchase(OSV):
         res = {}
         for purchase in self.browse(cursor, user, ids, context=context):
             res[purchase.id] = purchase.currency.digits
+        return res
+
+    def on_change_with_party_lang(self, cursor, user, ids, vals,
+            context=None):
+        party_obj = self.pool.get('relationship.party')
+        if vals.get('party'):
+            party = party_obj.browse(cursor, user, vals['party'],
+                    context=context)
+            if party.lang:
+                return party.lang.code
+        return 'en_US'
+
+    def get_party_lang(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for purchase in self.browse(cursor, user, ids, context=context):
+            if purchase.party.lang:
+                res[purchase.id] = purchase.party.lang.code
+            else:
+                res[purchase.id] = 'en_US'
         return res
 
     def get_tax_context(self, cursor, user, purchase, context=None):

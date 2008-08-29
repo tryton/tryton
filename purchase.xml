@@ -87,7 +87,7 @@
                             <label name="invoice_method"/>
                             <field name="invoice_method"/>
                             <separator name="comment" colspan="4"/>
-                            <field name="comment" colspan="4"/>
+                            <field name="comment" colspan="4" spell="party_lang"/>
                         </page>
                         <page string="Invoices">
                             <field name="invoices" colspan="4" widget="one2many"/>
@@ -98,6 +98,7 @@
                         </page>
                     </notebook>
                     <field name="currency_digits" invisible="1"/>
+                    <field name="party_lang" invisible="1"/>
                 </form>
                 ]]>
             </field>
@@ -556,7 +557,7 @@
                     <field name="product"/>
                     <newline/>
                     <label name="description"/>
-                    <field name="description" colspan="3"/>
+                    <field name="description" colspan="3" spell="parent.party_lang"/>
                     <label name="quantity"/>
                     <field name="quantity"/>
                     <label name="unit"/>
