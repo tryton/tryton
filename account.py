@@ -602,9 +602,10 @@ class Account(OSV):
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
                 'GROUP BY a.id', ids)
-        for account_id, sums in cursor.fetchall():
+        for row in cursor.fetchall():
+            account_id = row[0]
             for i in range(len(names)):
-                res[names[i]][account_id] = sum[i]
+                res[names[i]][account_id] = row[i + 1]
 
         account2company = {}
         id2company = {}
