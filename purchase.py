@@ -681,6 +681,8 @@ class PurchaseLine(OSV):
         for line in self.browse(cursor, user, ids, context=context):
             if line.unit:
                 res[line.id] = line.unit.digits
+            else:
+                res[line.id] = 2
         return res
 
     def on_change_product(self, cursor, user, ids, vals, context=None):
