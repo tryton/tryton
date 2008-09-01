@@ -572,7 +572,9 @@ class PurchaseLine(OSV):
             states={
                 'invisible': "type != 'line'",
             }, on_change=['product', 'unit', 'quantity', 'description',
-                'parent.party', 'parent.currency'])
+                'parent.party', 'parent.currency'],
+            context="{'locations': [parent.warehouse], " \
+                    "'stock_date_end': parent.purchase_date}")
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
                 'invisible': "type != 'line'",
@@ -854,6 +856,7 @@ class PurchaseLine(OSV):
         vals['company'] = line.purchase.company.id
         vals['unit_price'] = line.unit_price
         vals['currency'] = line.purchase.currency.id
+        #TODO compute the planned_date
 
         move_id = move_obj.create(cursor, user, vals, context=context)
 
