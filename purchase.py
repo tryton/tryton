@@ -564,7 +564,9 @@ class PurchaseLine(OSV):
             states={
                 'required': "product",
                 'invisible': "type != 'line'",
-            }, domain="[('category', '=', (product, 'product'))]")
+            }, domain="[('category', '=', (product, 'product'))]",
+            on_change=['product', 'quantity', 'unit', 'parent.currency',
+                'parent.party'])
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits', on_change_with=['unit'])
     product = fields.Many2One('product.product', 'Product',
@@ -731,6 +733,30 @@ class PurchaseLine(OSV):
             res['unit'] = uom_obj.name_get(cursor, user, product.default_uom.id,
                     context=context)[0]
             res['unit_digits'] = product.default_uom.digits
+        return res
+
+    def on_change_unit(self, cursor, user, ids, vals, context=None):
+        product_obj = self.pool.get('product.product')
+
+        if context is None:
+            context = {}
+        if not vals.get('product'):
+            return {}
+        res = {}
+
+        product = product_obj.browse(cursor, user, vals['product'],
+                context=context)
+
+        ctx2 = context.copy()
+        if vals.get('parent.currency'):
+            ctx2['currency'] = vals['parent.currency']
+        if vals.get('parent.party'):
+            ctx2['supplier'] = vals['parent.party']
+        if vals.get('unit'):
+            ctx2['uom'] = vals['unit']
+        res['unit_price'] = product_obj.get_purchase_price(cursor, user,
+                [vals['product']], vals.get('quantity', 0),
+                context=ctx2)[vals['product']]
         return res
 
     def on_change_with_amount(self, cursor, user, ids, vals, context=None):
