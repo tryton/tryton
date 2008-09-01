@@ -11,5 +11,9 @@
 
         <menuitem name="Relationship Management" sequence="0" id="menu_relationship"
             icon="tryton-users"/>
+
+        <menuitem name="Configuration" sequence="0" id="menu_configuration"
+            icon="tryton-preferences" groups="res.group_admin"
+            parent="menu_relationship"/>
     </data>
 </tryton>
