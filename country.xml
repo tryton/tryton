@@ -56,7 +56,7 @@
             <field name="view" ref="country_view_form"/>
             <field name="act_window" ref="act_country_form"/>
         </record>
-        <menuitem parent="ir.menu_administration" action="act_country_form"
+        <menuitem parent="menu_configuration" action="act_country_form"
             id="menu_country_form"/>
 
         <!--

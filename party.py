@@ -38,10 +38,8 @@ class Party(OSV):
     name = fields.Char('Name', size=None, required=True, select=1,
            states=STATES)
     code = fields.Char('Code', size=None, required=True, select=1,
-            readonly=True, order_field="LPAD(%s.code, " \
-                    "(SELECT code_length FROM relationship_party " \
-                        "ORDER BY code_length DESC LIMIT 1)," \
-                    "'0')")
+            readonly=True, order_field="%(table)s.code_length %(order)s, " \
+                    "%(table)s.code %(order)s")
     code_length = fields.Integer('Code Length', select=1, readonly=True)
     type = fields.Many2One("relationship.party.type", "Type",
            states=STATES)
