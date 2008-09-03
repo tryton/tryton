@@ -106,12 +106,24 @@ class User(OSV):
             res['employee'] = user.employee.id
         return res
 
-    def get_preferences_fields_view(self, cursor, user, context=None):
-        res = super(User, self).get_preferences_fields_view(cursor, user,
+    def get_preferences_fields_view(self, cursor, user_id, context=None):
+        company_obj = self.pool.get('company.company')
+
+        user = self.browse(cursor, user_id, user_id, context=context)
+
+        res = super(User, self).get_preferences_fields_view(cursor, user_id,
                 context=context)
-        fields = self.fields_get(cursor, user, fields_names=['main_company'],
+        fields = self.fields_get(cursor, user_id, fields_names=['main_company'],
                 context=context)
         res['fields'].update(fields)
+
+        company = res['fields']['company']
+        company['type'] = 'selection'
+        del company['relation']
+        company['selection'] = company_obj.name_search(cursor, user_id, args=[
+            ('parent', 'child_of', [user.main_company.id]),
+            ], context=context)
+
         return res
 
 User()
