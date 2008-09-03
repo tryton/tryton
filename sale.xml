@@ -1,0 +1,761 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Sale Management" id="menu_sale" sequence="5"/>
+        <record model="res.group" id="group_sale">
+            <field name="name">Sale</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_sale'))]"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Sale">
+                    <label name="party"/>
+                    <field name="party"/>
+                    <label name="contact_address"/>
+                    <field name="contact_address"/>
+                    <label name="invoice_address"/>
+                    <field name="invoice_address"/>
+                    <label name="packing_address"/>
+                    <field name="packing_address"/>
+                    <label name="description"/>
+                    <field name="description"/>
+                    <label name="reference"/>
+                    <field name="reference"/>
+                    <notebook colspan="4">
+                        <page string="Sale">
+                            <label name="sale_date"/>
+                            <field name="sale_date"/>
+                            <label name="payment_term"/>
+                            <field name="payment_term"/>
+                            <label name="warehouse"/>
+                            <field name="warehouse"/>
+                            <label name="currency"/>
+                            <field name="currency"/>
+                            <field name="lines" colspan="4">
+                                <tree string="Lines" sequence="sequence" fill="1">
+                                    <field name="type"/>
+                                    <field name="product"/>
+                                    <field name="description"/>
+                                    <field name="quantity"/>
+                                    <field name="unit"/>
+                                    <field name="unit_price"/>
+                                    <field name="taxes"/>
+                                    <field name="amount"/>
+                                    <field name="sequence" tree_invisible="1"/>
+                                    <field name="unit_digits" tree_invisible="1"/>
+                                </tree>
+                            </field>
+                            <group col="2" colspan="2">
+                                <label name="invoice_state"/>
+                                <field name="invoice_state"/>
+                                <label name="packing_state"/>
+                                <field name="packing_state"/>
+                            </group>
+                            <group col="2" colspan="2">
+                                <label name="untaxed_amount"/>
+                                <field name="untaxed_amount"/>
+                                <label name="tax_amount"/>
+                                <field name="tax_amount"/>
+                                <label name="total_amount"/>
+                                <field name="total_amount"/>
+                                <label name="state"/>
+                                <field name="state"/>
+                                <group col="6" colspan="2">
+                                    <button name="quotation" string="Quotation"
+                                        states="{'invisible': '''state != 'draft' '''}"/>
+                                    <button name="draft" string="Draft"
+                                        states="{'invisible': '''state != 'quotation' '''}"/>
+                                    <button name="confirm" string="Confirm"
+                                        states="{'invisible': '''state != 'quotation' '''}"/>
+                                    <button name="cancel" string="Cancel"
+                                        states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (packing_state == 'exception')) '''}"/>
+                                    <button name="invoice_ok" string="Ignore Invoice Exception"
+                                        states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' '''}"/>
+                                    <button name="packing_ok" string="Ignore Packing Exception"
+                                        states="{'invisible': '''packing_state != 'exception' or state == 'cancel' '''}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Other Info">
+                            <label name="company"/>
+                            <field name="company"/>
+                            <newline/>
+                            <label name="invoice_method"/>
+                            <field name="invoice_method"/>
+                            <label name="packing_method"/>
+                            <field name="packing_method"/>
+                            <separator name="comment" colspan="4"/>
+                            <field name="comment" colspan="4" spell="party_lang"/>
+                        </page>
+                        <page string="Invoices">
+                            <field name="invoices" colspan="4" widget="one2many"/>
+                        </page>
+                        <page string="Packings">
+                            <field name="packings" colspan="4" widget="one2many"/>
+                            <field name="moves" colspan="4" widget="one2many"/>
+                        </page>
+                    </notebook>
+                    <field name="currency_digits" invisible="1" colspan="4"/>
+                    <field name="party_lang" invisible="1" colspan="4"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="sale_view_tree">
+            <field name="model">sale.sale</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Sales">
+                    <field name="reference" select="1"/>
+                    <field name="sale_date" select="1"/>
+                    <field name="party" select="1"/>
+                    <field name="warehouse"/>
+                    <field name="currency" select="2"/>
+                    <field name="untaxed_amount" select="2"/>
+                    <field name="total_amount" select="2"/>
+                    <field name="state" select="1"/>
+                    <field name="invoice_state" select="2"/>
+                    <field name="packing_state" select="2"/>
+                    <field name="description" select="2"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_form">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_tree"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_form"/>
+        </record>
+        <menuitem parent="menu_sale" action="act_sale_form"
+            id="menu_sale_form"/>
+
+        <record model="ir.action.act_window" id="act_sale_form_draft">
+            <field name="name">Draft Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_draft_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_tree"/>
+            <field name="act_window" ref="act_sale_form_draft"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_draft_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_form_draft"/>
+        </record>
+        <menuitem parent="menu_sale_form" action="act_sale_form_draft"
+            id="menu_sale_form_draft"/>
+
+        <record model="ir.action.act_window" id="act_sale_form_quotation">
+            <field name="name">Quotation Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'quotation')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_quotation_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_tree"/>
+            <field name="act_window" ref="act_sale_form_quotation"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_quotation_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_form_quotation"/>
+        </record>
+        <menuitem parent="menu_sale_form" action="act_sale_form_quotation"
+            id="menu_sale_form_quotation"/>
+
+        <record model="ir.action.act_window" id="act_sale_form_confirmed">
+            <field name="name">Confirmed Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'confirmed')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_confirmed_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_tree"/>
+            <field name="act_window" ref="act_sale_form_confirmed"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_confirmed_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_form_confirmed"/>
+        </record>
+        <menuitem parent="menu_sale_form" action="act_sale_form_confirmed"
+            id="menu_sale_form_confirmed"/>
+
+        <record model="ir.model.access" id="access_sale">
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_sale_sale">
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_sale">
+            <field name="name">Sale</field>
+            <field name="code">sale.sale</field>
+        </record>
+        <record model="ir.sequence" id="sequence_sale">
+            <field name="name">Sale</field>
+            <field name="code">sale.sale</field>
+        </record>
+
+        <record model="workflow" id="sale_workflow">
+            <field name="name">Sale workflow</field>
+            <field name="osv">sale.sale</field>
+            <field name="on_create" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="sale_activity_draft">
+            <field name="name">Draft</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'draft'})</field>
+            <field name="flow_start" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="sale_activity_quotation">
+            <field name="name">Quotation</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">set_reference()&#10;write({'state': 'quotation'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_confirmed">
+            <field name="name">Confirmed</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="split_mode">AND</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'confirmed'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_invoice_method">
+            <field name="name">Invoice Method</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="split_mode">OR</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_invoice_sale">
+            <field name="name">Invoice</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">create_invoice()&#10;write({'invoice_state': 'waiting'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_waiting_invoice_sale">
+            <field name="name">Waiting Invoice</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'invoice_state': 'waiting'})&#10;ignore_invoice_exception()</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_invoice_sale_exception">
+            <field name="name">Invoice Exception</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'invoice_state': 'exception'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_invoice_sale_done">
+            <field name="name">Invoice Done</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'invoice_state': 'paid'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_packing_invoice_method">
+            <field name="name">Packing Invoice Method</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="split_mode">OR</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_packing_invoice">
+            <field name="name">Packing Invoice</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">create_packing()</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_waiting_packing_invoice">
+            <field name="name">Waiting Packing Invoice</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'packing_state': 'waiting'})&#10;ignore_packing_exception&#10;create_packing()</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_packing_invoice_exception">
+            <field name="name">Packing Invoice Exception</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'packing_state': 'exception'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_packing_invoice_done">
+            <field name="name">Packing Invoice Done</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'packing_state': 'sended'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_packing_invoice_method_done">
+            <field name="name">Packing Invoice Method Done</field>
+            <field name="workflow" ref="sale_workflow"/>
+        </record>
+        <record model="workflow.activity" id="sale_activity_invoice_method_done">
+            <field name="name">Invoice Method Done</field>
+            <field name="workflow" ref="sale_workflow"/>
+        </record>
+        <record model="workflow.activity" id="sale_activity_packing_method">
+            <field name="name">Packing Method</field>
+            <field name="workflow" ref="sale_workflow"/>
+        </record>
+        <record model="workflow.activity" id="sale_activity_packing">
+            <field name="name">Packing</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">create_packing()</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_waiting_packing">
+            <field name="name">Waiting Packing</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'packing_state': 'waiting'})&#10;ignore_packing_exception()&#10;create_packing()</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_packing_exception">
+            <field name="name">Packing Exception</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'packing_state': 'exception'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_invoice_packing_method">
+            <field name="name">Invoice Packing Method</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="split_mode">OR</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_invoice_packing">
+            <field name="name">Invoice Packing</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">create_invoice()&#10;write({'invoice_state': 'waiting'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_waiting_invoice_packing">
+            <field name="name">Waiting Invoice Packing</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'invoice_state': 'waiting', 'packing_state': 'sended'})&#10;ignore_invoice_exception()</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_invoice_packing_exception">
+            <field name="name">Invoice Packing Exception</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'invoice_state': 'exception'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_invoice_packing_done">
+            <field name="name">Invoice Packing Done</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'invoice_state': 'paid'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_invoice_packing_method_done">
+            <field name="name">Invoice Packing Method Done</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'packing_state': 'sended'})</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_packing_method_done">
+            <field name="name">Packing Method Done</field>
+            <field name="workflow" ref="sale_workflow"/>
+        </record>
+        <record model="workflow.activity" id="sale_activity_done">
+            <field name="name">Done</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="join_mode">AND</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'done'})</field>
+            <field name="flow_stop" eval="True"/>
+        </record>
+        <record model="workflow.activity" id="sale_activity_cancel">
+            <field name="name">Cancel</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'cancel'})</field>
+            <field name="flow_stop" eval="True"/>
+        </record>
+
+        <record model="workflow.transition" id="sale_transition_draft_quotation">
+            <field name="act_from" ref="sale_activity_draft"/>
+            <field name="act_to" ref="sale_activity_quotation"/>
+            <field name="signal">quotation</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_draft_cancel">
+            <field name="act_from" ref="sale_activity_draft"/>
+            <field name="act_to" ref="sale_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_quotation_draft">
+            <field name="act_from" ref="sale_activity_quotation"/>
+            <field name="act_to" ref="sale_activity_draft"/>
+            <field name="signal">draft</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_quotation_confirmed">
+            <field name="act_from" ref="sale_activity_quotation"/>
+            <field name="act_to" ref="sale_activity_confirmed"/>
+            <field name="signal">confirm</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_quotation_cancel">
+            <field name="act_from" ref="sale_activity_quotation"/>
+            <field name="act_to" ref="sale_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_confirmed_invoice_method">
+            <field name="act_from" ref="sale_activity_confirmed"/>
+            <field name="act_to" ref="sale_activity_invoice_method"/>
+        </record>
+
+        <record model="workflow.transition" id="sale_transition_invoice_method_invoice_sale">
+            <field name="act_from" ref="sale_activity_invoice_method"/>
+            <field name="act_to" ref="sale_activity_invoice_sale"/>
+            <field name="condition">invoice_method == 'order'</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_method_invoice_method_done">
+            <field name="act_from" ref="sale_activity_invoice_method"/>
+            <field name="act_to" ref="sale_activity_invoice_method_done"/>
+            <field name="condition">invoice_method != 'order'</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_sale_waiting_invoice_sale">
+            <field name="act_from" ref="sale_activity_invoice_sale"/>
+            <field name="act_to" ref="sale_activity_waiting_invoice_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_waiting_invoice_sale_invoice_sale_exception">
+            <field name="act_from" ref="sale_activity_waiting_invoice_sale"/>
+            <field name="act_to" ref="sale_activity_invoice_sale_exception"/>
+            <field name="trigger_model">accont.invoice</field>
+            <field name="trigger_expr_id">[x.id for x in invoices]</field>
+            <field name="condition">invoice_exception</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_sale_exception_invoice_sale">
+            <field name="act_from" ref="sale_activity_invoice_sale_exception"/>
+            <field name="act_to" ref="sale_activity_waiting_invoice_sale"/>
+            <field name="signal">invoice_ok</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_sale_exception_cancel">
+            <field name="act_from" ref="sale_activity_invoice_sale_exception"/>
+            <field name="act_to" ref="sale_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_waiting_invoice_sale_invoic_sale_done">
+            <field name="act_from" ref="sale_activity_waiting_invoice_sale"/>
+            <field name="act_to" ref="sale_activity_invoice_sale_done"/>
+            <field name="trigger_model">account.invoice</field>
+            <field name="trigger_expr_id">[x.id for x in invoices]</field>
+            <field name="condition">invoice_paid</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_sale_done">
+            <field name="act_from" ref="sale_activity_invoice_sale_done"/>
+            <field name="act_to" ref="sale_activity_packing_invoice_method"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_invoice_method_packing_invoice_method_done">
+            <field name="act_from" ref="sale_activity_packing_invoice_method"/>
+            <field name="act_to" ref="sale_activity_packing_invoice_method_done"/>
+            <field name="condition">packing_method != 'invoice'</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_invoice_method_packing_invoice">
+            <field name="act_from" ref="sale_activity_packing_invoice_method"/>
+            <field name="act_to" ref="sale_activity_packing_invoice"/>
+            <field name="condition">packing_method == 'invoice'</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_invoice_waiting_packing_invoice">
+            <field name="act_from" ref="sale_activity_packing_invoice"/>
+            <field name="act_to" ref="sale_activity_waiting_packing_invoice"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_invoice_packing_invoice_exception">
+            <field name="act_from" ref="sale_activity_waiting_packing_invoice"/>
+            <field name="act_to" ref="sale_activity_packing_invoice_exception"/>
+            <field name="trigger_model">stock.packing.out</field>
+            <field name="trigger_expr_id">[x.id for x in packings]</field>
+            <field name="condition">packing_exception</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_invoice_exception_cancel">
+            <field name="act_from" ref="sale_activity_packing_invoice_exception"/>
+            <field name="act_to" ref="sale_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_invoice_exception_waiting_packing_invoice">
+            <field name="act_from" ref="sale_activity_packing_invoice_exception"/>
+            <field name="act_to" ref="sale_activity_waiting_packing_invoice"/>
+            <field name="signal">packing_ok</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_waiting_packing_invoice_packing_invoice_done">
+            <field name="act_from" ref="sale_activity_waiting_packing_invoice"/>
+            <field name="act_to" ref="sale_activity_packing_invoice_done"/>
+            <field name="trigger_model">stock.packing.out</field>
+            <field name="trigger_expr_id">[x.id for x in packings]</field>
+            <field name="condition">packing_done</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_invoice_done_packing_invoice_method_done">
+            <field name="act_from" ref="sale_activity_packing_invoice_done"/>
+            <field name="act_to" ref="sale_activity_packing_invoice_method_done"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_invoice_method_done_invoice_method_done">
+            <field name="act_from" ref="sale_activity_packing_invoice_method_done"/>
+            <field name="act_to" ref="sale_activity_invoice_method_done"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_method_done_done">
+            <field name="act_from" ref="sale_activity_invoice_method_done"/>
+            <field name="act_to" ref="sale_activity_done"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_confirmed_packing_method">
+            <field name="act_from" ref="sale_activity_confirmed"/>
+            <field name="act_to" ref="sale_activity_packing_method"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_method_packing_method_done">
+            <field name="act_from" ref="sale_activity_packing_method"/>
+            <field name="act_to" ref="sale_activity_packing_method_done"/>
+            <field name="condition">packing_method != 'order'</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_method_packing">
+            <field name="act_from" ref="sale_activity_packing_method"/>
+            <field name="act_to" ref="sale_activity_packing"/>
+            <field name="condition">packing_method == 'order'</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_waiting_packing">
+            <field name="act_from" ref="sale_activity_packing"/>
+            <field name="act_to" ref="sale_activity_waiting_packing"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_waiting_packing_packing_exception">
+            <field name="act_from" ref="sale_activity_waiting_packing"/>
+            <field name="act_to" ref="sale_activity_packing_exception"/>
+            <field name="signal">packing_update</field>
+            <field name="condition">packing_exception</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_exception_cancel">
+            <field name="act_from" ref="sale_activity_packing_exception"/>
+            <field name="act_to" ref="sale_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_exception_waiting_packing">
+            <field name="act_from" ref="sale_activity_packing_exception"/>
+            <field name="act_to" ref="sale_activity_waiting_packing"/>
+            <field name="signal">packing_ok</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_waiting_packing_invoice_packing_method">
+            <field name="act_from" ref="sale_activity_waiting_packing"/>
+            <field name="act_to" ref="sale_activity_invoice_packing_method"/>
+            <field name="signal">packing_update</field>
+            <field name="condition">not packing_exception</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_waiting_packing_invoice_packing_method2">
+            <field name="act_from" ref="sale_activity_waiting_packing"/>
+            <field name="act_to" ref="sale_activity_invoice_packing_method"/>
+            <field name="condition">packing_done</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_packing_method_invoice_packing">
+            <field name="act_from" ref="sale_activity_invoice_packing_method"/>
+            <field name="act_to" ref="sale_activity_invoice_packing"/>
+            <field name="condition">invoice_method == 'packing'</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_packing_method_invoice_packing_method_done">
+            <field name="act_from" ref="sale_activity_invoice_packing_method"/>
+            <field name="act_to" ref="sale_activity_invoice_packing_method_done"/>
+            <field name="condition">invoice_method != 'packing' and packing_done</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_packing_method_waiting_packing">
+            <field name="act_from" ref="sale_activity_invoice_packing_method"/>
+            <field name="act_to" ref="sale_activity_waiting_packing"/>
+            <field name="condition">invoice_method != 'packing' and not packing_done</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_packing_waiting_packing">
+            <field name="act_from" ref="sale_activity_invoice_packing"/>
+            <field name="act_to" ref="sale_activity_waiting_packing"/>
+            <field name="condition">not packing_done</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_packing_waiting_invoice_packing">
+            <field name="act_from" ref="sale_activity_invoice_packing"/>
+            <field name="act_to" ref="sale_activity_waiting_invoice_packing"/>
+            <field name="condition">packing_done</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_waiting_invoice_packing_invoice_packing_exception">
+            <field name="act_from" ref="sale_activity_waiting_invoice_packing"/>
+            <field name="act_to" ref="sale_activity_invoice_packing_exception"/>
+            <field name="trigger_model">account.invoice</field>
+            <field name="trigger_expr_id">[x.id for x in invoices]</field>
+            <field name="condition">invoice_exception</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_packing_exception_cancel">
+            <field name="act_from" ref="sale_activity_invoice_packing_exception"/>
+            <field name="act_to" ref="sale_activity_cancel"/>
+            <field name="signal">cancel</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_packing_exception_waiting_invoice_packing">
+            <field name="act_from" ref="sale_activity_invoice_packing_exception"/>
+            <field name="act_to" ref="sale_activity_waiting_invoice_packing"/>
+            <field name="signal">invoice_ok</field>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_waiting_invoice_packing_invoice_packing_done">
+            <field name="act_from" ref="sale_activity_waiting_invoice_packing"/>
+            <field name="act_to" ref="sale_activity_invoice_packing_done"/>
+            <field name="trigger_model">account.invoice</field>
+            <field name="trigger_expr_id">[x.id for x in invoices]</field>
+            <field name="condition">invoice_paid</field>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_packing_done_invoice_packing_method_done">
+            <field name="act_from" ref="sale_activity_invoice_packing_done"/>
+            <field name="act_to" ref="sale_activity_invoice_packing_method_done"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_invoice_packing_method_done_packing_method_done">
+            <field name="act_from" ref="sale_activity_invoice_packing_method_done"/>
+            <field name="act_to" ref="sale_activity_packing_method_done"/>
+        </record>
+        <record model="workflow.transition" id="sale_transition_packing_method_done_done">
+            <field name="act_from" ref="sale_activity_packing_method_done"/>
+            <field name="act_to" ref="sale_activity_done"/>
+        </record>
+
+        <record model="ir.action.report" id="report_sale">
+            <field name="name">Sale</field>
+            <field name="model">sale.sale</field>
+            <field name="report_name">sale.sale</field>
+            <field name="report">sale/sale.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_sale_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">sale.sale,0</field>
+            <field name="action" ref="report_sale"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_form">
+            <field name="model">sale.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Sale Line" cursor="product">
+                    <label name="sale"/>
+                    <field name="sale" colspan="3"/>
+                    <label name="type"/>
+                    <field name="type"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <label name="product"/>
+                    <field name="product"/>
+                    <newline/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
+                    <label name="quantity"/>
+                    <field name="quantity"/>
+                    <label name="unit"/>
+                    <field name="unit"/>
+                    <label name="unit_price"/>
+                    <field name="unit_price"/>
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <separator name="taxes" colspan="4"/>
+                    <field name="taxes" colspan="4"/>
+                    <separator name="comment" colspan="4"/>
+                    <field name="comment" colspan="4" spell="parent.party_lang"/>
+                    <field name="unit_digits" invisible="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="sale_line_view_tree">
+            <field name="model">sale.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Sale Lines">
+                    <field name="sale" select="1"/>
+                    <field name="type" select="1"/>
+                    <field name="product" select="1"/>
+                    <field name="description" select="1"/>
+                    <field name="quantity" select="1"/>
+                    <field name="unit" select="2"/>
+                    <field name="unit_price" select="2"/>
+                    <field name="taxes"/>
+                    <field name="amount"/>
+                    <field name="unit_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.model.access" id="access_sale_line">
+            <field name="model" search="[('model', '=', 'sale.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_sale_line_sale">
+            <field name="model" search="[('model', '=', 'sale.line')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_form">
+            <field name="model">product.product</field>
+            <field name="inherit" ref="product.product_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook/page[@string=&quot;Properties&quot;]"
+                        position="after">
+                        <page string="Customers">
+                            <label name="salable"/>
+                            <field name="salable"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_view_tree">
+            <field name="model">product.product</field>
+            <field name="inherit" ref="product.product_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/tree/field[@name=&quot;default_uom&quot;]"
+                        position="after">
+                        <field name="salable" select="2"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>
