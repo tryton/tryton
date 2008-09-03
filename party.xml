@@ -35,7 +35,7 @@
                     <field name="active" xexpand="0" width="100"/>
                     <notebook colspan="6">
                         <page string="General">
-                            <field name="addresses" mode="form,tree" colspan="4" height="200">
+                            <field name="addresses" mode="form,tree" colspan="4">
                                 <tree string="Addresses" sequence="sequence">
                                     <field name="sequence" tree_invisible="1"/>
                                     <field name="name"/>
