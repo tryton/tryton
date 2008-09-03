@@ -104,7 +104,7 @@
             <field name="name">Parties by Category</field>
             <field name="res_model">relationship.party</field>
             <field name="view_type">form</field>
-            <field name="domain">[('categories', 'in', [active_id])]</field>
+            <field name="domain">[('categories', 'child_of', [active_id], 'parent')]</field>
         </record>
         <record model="ir.action.keyword" id="act_party_by_category_keyword1">
             <field name="keyword">tree_open</field>
