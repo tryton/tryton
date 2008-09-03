@@ -57,9 +57,9 @@ class User(OSV):
     main_company = fields.Many2One('company.company', 'Main Company',
             on_change=['main_company'])
     company = fields.Many2One('company.company', 'Current Company',
-            domain="[('parent', 'child_of', [main_company])]")
+            domain="[('parent', 'child_of', [main_company], 'parent')]")
     employee = fields.Many2One('company.employee', 'Employee',
-            domain="[('company', 'child_of', [main_company])]")
+            domain="[('company', 'child_of', [main_company], 'parent')]")
 
     def __init__(self):
         super(User, self).__init__()
