@@ -112,36 +112,47 @@ class Product(OSV):
 
         move_query, move_val = rule_obj.domain_get(cursor, user, 'stock.move')
 
-        state_date_clause = '(state in (%s)) AND ('\
-            '(effective_date IS NULL '\
-             'AND ( planned_date <= %s or planned_date IS NULL)) '\
-             'OR effective_date <= %s'\
-            ')'
-        state_date_vals = ["done"]
-        if context.get('stock_date_end') and \
-                context['stock_date_end'] < datetime.date.today():
-             state_date_vals.extend(
-                 [context['stock_date_end'], context['stock_date_end']])
+        if not context.get('stock_date_end'):
+            state_date_clause = ""
+            state_date_vals = []
         else:
-             state_date_vals.extend(
-                 [datetime.date.today(), datetime.date.today()])
-
-        if context.get('stock_date_end') and \
-                context['stock_date_end'] > datetime.date.today():
-            state_date_clause = '(' + state_date_clause + \
-                ') OR (' + \
-                 '(state in (%s, %s, %s)) AND ('\
-                 '(effective_date IS NULL '\
-                   'AND (( planned_date <= %s AND  planned_date > %s ) '\
-                        'OR planned_date IS NULL)) '\
-                   'OR (effective_date <= %s AND effective_date > %s)'\
-                  ')'\
-                ')'
-            state_date_vals.extend(
-                ['done', 'assigned', 'draft',
-                 context['stock_date_end'], datetime.date.today(),
-                 context['stock_date_end'], datetime.date.today()
-                 ])
+            # max in the past: take state done for the moves
+            if context['stock_date_end'] <= datetime.date.today():
+                state_date_clause = '(state in (%s)) AND ('\
+                    '(effective_date IS NULL '\
+                     'AND ( planned_date <= %s or planned_date IS NULL)) '\
+                     'OR effective_date <= %s'\
+                    ')'
+                state_date_vals = ["done",
+                                   context['stock_date_end'],
+                                   context['stock_date_end']
+                                   ]
+            # infinite max: take all sate for the moves
+            elif context['stock_date_end'] == datetime.date.max:
+                state_date_clause = 'state in (%s, %s, %s)'
+                state_date_vals = ['done', 'assigned', 'draft']
+            # future max: take state done until today, all state after
+            else:
+                state_date_clause = '(' + \
+                    '(state in (%s)) AND ('\
+                      '(effective_date IS NULL '\
+                      'AND ( planned_date <= %s or planned_date IS NULL)) '\
+                      'OR effective_date <= %s)' \
+                    + \
+                    ') OR (' + \
+                     '(state in (%s, %s, %s)) AND ('\
+                     '(effective_date IS NULL '\
+                       'AND (( planned_date <= %s AND  planned_date > %s ) '\
+                            'OR planned_date IS NULL)) '\
+                       'OR (effective_date <= %s AND effective_date > %s)'\
+                      ')'\
+                    ')'
+                state_date_vals = [
+                    'done', datetime.date.today(), datetime.date.today(),
+                    'done', 'assigned', 'draft',
+                    context['stock_date_end'], datetime.date.today(),
+                    context['stock_date_end'], datetime.date.today()
+                    ]
 
         if context.get('stock_date_start'):
             if  context['stock_date_start'] > datetime.date.today():
