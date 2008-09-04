@@ -35,6 +35,7 @@
                                         <field name="uom" select="1"/>
                                         <field name="planned_date" select="1"/>
                                         <field name="state" select="2"/>
+                                        <field name="unit_digits" tree_invisible="1"/>
                                     </tree>
                                 </field>
                             </page>
