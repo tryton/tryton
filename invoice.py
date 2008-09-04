@@ -261,7 +261,7 @@ class Invoice(OSV):
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['currency'])
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-        states=_STATES, domain=[('centralisation', '=', False)])
+        states=_STATES, domain=[('centralised', '=', False)])
     move = fields.Many2One('account.move', 'Move', readonly=True)
     account = fields.Many2One('account.account', 'Account', required=True,
         states=_STATES,
