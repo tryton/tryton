@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="purchase_request_view_form">
+            <field name="model">supply.purchase_request</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Purchase Request">
+                        <label name="product"/>
+                        <field name="product"/>
+                        <label name="party"/>
+                        <field name="party"/>
+                        <label name="quantity"/>
+                        <field name="quantity"/>
+                        <label name="uom"/>
+                        <field name="uom"/>
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
+                        <label name="purchase_date"/>
+                        <field name="purchase_date"/>
+                        <label name="supply_date"/>
+                        <field name="supply_date"/>
+                        <label name="purchase_line"/>
+                        <field name="purchase_line"/>
+                        <label name="stock_level"/>
+                        <field name="stock_level"/>
+                        <label name="company"/>
+                        <field name="company"/>
+                    </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="purchase_request_view_tree">
+            <field name="model">supply.purchase_request</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Locations">
+                        <field name="product" select="1"/>
+                        <field name="party" select="1"/>
+                        <field name="quantity" select="2"/>
+                        <field name="uom" select="2"/>
+                        <field name="warehouse" select="2"/>
+                        <field name="purchase_date"/>
+                        <field name="supply_date"/>
+                        <field name="purchase_line"/>
+                        <field name="stock_level"/>
+                        <field name="company"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_purchase_request_form">
+            <field name="name">Purchase Requests</field>
+            <field name="res_model">supply.purchase_request</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_request_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_request_view_tree"/>
+            <field name="act_window" ref="act_purchase_request_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_request_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_request_view_form"/>
+            <field name="act_window" ref="act_purchase_request_form"/>
+        </record>
+
+        <menuitem parent="purchase.menu_purchase" sequence="20"
+            action="act_purchase_request_form" id="menu_purchase_request_form"/>
+
+
+        <record model="ir.ui.view" id="create_purchase.ask_form">
+            <field name="model">supply.purchase_request.create_purchase.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Create Purchase Request: Missing Payment Term" col="2" cursor="payment_term">
+                    <label name="party"/>
+                    <field name="party"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="payment_term"/>
+                    <field name="payment_term"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_create_purchase">
+            <field name="name">Create Purchase</field>
+            <field name="wiz_name">supply.purchase_request.create_purchase</field>
+        </record>
+        <record model="ir.action.keyword" id="create_purchase_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">supply.purchase_request,0</field>
+            <field name="action" ref="wizard_create_purchase"/>
+        </record>
+
+    </data>
+</tryton>
