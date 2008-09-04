@@ -325,6 +325,7 @@
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_invoice')]</field>
+            <field name="context">{'type': 'out_invoice'}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form_view1">
             <field name="sequence" eval="10"/>
@@ -344,6 +345,7 @@
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_refund')]</field>
+            <field name="context">{'type': 'out_refund'}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_out_refund_form_view1">
             <field name="sequence" eval="10"/>
@@ -363,6 +365,7 @@
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_invoice')]</field>
+            <field name="context">{'type': 'in_invoice'}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form_view1">
             <field name="sequence" eval="10"/>
@@ -382,6 +385,7 @@
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_refund')]</field>
+            <field name="context">{'type': 'in_refund'}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_in_refund_form_view1">
             <field name="sequence" eval="10"/>

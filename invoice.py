@@ -233,7 +233,9 @@ class Invoice(OSV):
         ('in_invoice', 'Supplier Invoice'),
         ('out_refund', 'Refund'),
         ('in_refund', 'Supplier Refund'),
-        ], 'Type', select=1, on_change=['type'], required=True, states=_STATES)
+        ], 'Type', select=1, on_change=['type'], required=True, states={
+            'readonly': "state != 'draft' or context.get('type', False)",
+        })
     type_name = fields.Function('get_type_name', type='char', string='Type')
     number = fields.Char('Number', size=None, readonly=True, select=1)
     reference = fields.Char('Reference', size=None)
@@ -1259,11 +1261,12 @@ class InvoiceLine(OSV):
             states={
                 'invisible': "type != 'line'",
             }, on_change=['product', 'unit', 'quantity', 'description',
-                'parent.type', 'parent.party', 'parent.currency'])
+                '_parent_invoice.type', '_parent_invoice.party',
+                '_parent_invoice.currency'])
     account = fields.Many2One('account.account', 'Account',
             domain="[('kind', '!=', 'view'), " \
-                    "('company', '=', parent.company), " \
-                    "('id', '!=', parent.account)]",
+                    "('company', '=', _parent_invoice.company), " \
+                    "('id', '!=', _parent_invoice.account)]",
             states={
                 'invisible': "type != 'line'",
                 'required': "type == 'line'",
@@ -1274,11 +1277,11 @@ class InvoiceLine(OSV):
                 'required': "type == 'line'",
             })
     amount = fields.Function('get_amount', type='numeric', string='Amount',
-            digits="(16, parent.currency_digits)",
+            digits="(16, _parent_invoice.currency_digits)",
             states={
                 'invisible': "type not in ('line', 'subtotal')",
             }, on_change_with=['type', 'quantity', 'unit_price',
-                'parent.currency'])
+                '_parent_invoice.currency'])
     description = fields.Char('Description', size=None, required=True)
     taxes = fields.Many2Many('account.tax', 'account_invoice_line_account_tax',
             'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
@@ -1322,11 +1325,11 @@ class InvoiceLine(OSV):
     def on_change_with_amount(self, cursor, user, ids, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('type') == 'line':
-            if isinstance(vals.get('parent.currency'), (int, long)):
+            if isinstance(vals.get('_parent_invoice.currency'), (int, long)):
                 currency = currency_obj.browse(cursor, user,
-                        vals['parent.currency'], context=context)
+                        vals['_parent_invoice.currency'], context=context)
             else:
-                currency = vals['parent.currency']
+                currency = vals['_parent_invoice.currency']
             return currency_obj.round(cursor, user, currency,
                     Decimal(str(vals.get('quantity') or '0.0')) * \
                     (vals.get('unit_price') or Decimal('0.0')))
@@ -1388,8 +1391,8 @@ class InvoiceLine(OSV):
 
         ctx = context.copy()
         party = None
-        if vals.get('parent.party'):
-            party = party_obj.browse(cursor, user, vals['parent.party'],
+        if vals.get('_parent_invoice.party'):
+            party = party_obj.browse(cursor, user, vals['_parent_invoice.party'],
                     context=context)
             if party.lang:
                 ctx['language'] = party.lang.code
@@ -1402,12 +1405,12 @@ class InvoiceLine(OSV):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
         currency = None
-        if vals.get('parent.currency'):
+        if vals.get('_parent_invoice.currency'):
             #TODO check if today date is correct
             currency = currency_obj.browse(cursor, user,
-                    vals['parent.currency'], context=context)
+                    vals['_parent_invoice.currency'], context=context)
 
-        if vals.get('parent.type') in ('in_invoice', 'in_refund'):
+        if vals.get('_parent_invoice.type') in ('in_invoice', 'in_refund'):
             if company and currency:
                 res['unit_price'] = currency_obj.compute(cursor, user,
                         company.currency, product.cost_price, currency,
@@ -1608,15 +1611,15 @@ class InvoiceTax(OSV):
     sequence = fields.Integer('Sequence')
     account = fields.Many2One('account.account', 'Account', required=True,
             domain="[('kind', '!=', 'view'), " \
-                "('company', '=', parent.company)]")
-    base = fields.Numeric('Base', digits="(16, parent.currency_digits)",
+                "('company', '=', _parent_invoice.company)]")
+    base = fields.Numeric('Base', digits="(16, _parent_invoice.currency_digits)",
             states={
                 'invisible': "manual",
             })
-    amount = fields.Numeric('Amount', digits="(16, parent.currency_digits)")
+    amount = fields.Numeric('Amount', digits="(16, _parent_invoice.currency_digits)")
     manual = fields.Boolean('Manual')
     base_code = fields.Many2One('account.tax.code', 'Base Code',
-            domain="[('company', '=', parent.company)]",
+            domain="[('company', '=', _parent_invoice.company)]",
             states={
                 'invisible': "manual",
             })
@@ -1625,7 +1628,7 @@ class InvoiceTax(OSV):
                 'invisible': "manual",
             })
     tax_code = fields.Many2One('account.tax.code', 'Tax Code',
-            domain="[('company', '=', parent.company)]")
+            domain="[('company', '=', _parent_invoice.company)]")
     tax_sign = fields.Numeric('Tax Sign', digits=(2, 0))
 
     def __init__(self):
