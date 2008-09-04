@@ -569,7 +569,7 @@
                     <separator name="taxes" colspan="4"/>
                     <field name="taxes" colspan="4"/>
                     <separator name="comment" colspan="4"/>
-                    <field name="comment" colspan="4" spell="parent.party_lang"/>
+                    <field name="comment" colspan="4" spell="_parent_purchase.party_lang"/>
                     <field name="unit_digits" invisible="1"/>
                 </form>
                 ]]>

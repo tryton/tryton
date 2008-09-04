@@ -565,8 +565,8 @@ class PurchaseLine(OSV):
                 'required': "product",
                 'invisible': "type != 'line'",
             }, domain="[('category', '=', (product, 'product'))]",
-            on_change=['product', 'quantity', 'unit', 'parent.currency',
-                'parent.party'])
+            on_change=['product', 'quantity', 'unit', '_parent_purchase.currency',
+                '_parent_purchase.party'])
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits', on_change_with=['unit'])
     product = fields.Many2One('product.product', 'Product',
@@ -574,20 +574,20 @@ class PurchaseLine(OSV):
             states={
                 'invisible': "type != 'line'",
             }, on_change=['product', 'unit', 'quantity', 'description',
-                'parent.party', 'parent.currency'],
-            context="{'locations': [parent.warehouse], " \
-                    "'stock_date_end': parent.purchase_date}")
+                '_parent_purchase.party', '_parent_purchase.currency'],
+            context="{'locations': [_parent_purchase.warehouse], " \
+                    "'stock_date_end': _parent_purchase.purchase_date}")
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
                 'invisible': "type != 'line'",
                 'required': "type == 'line'",
             })
     amount = fields.Function('get_amount', type='numeric', string='Amount',
-            digits="(16, parent.currency_digits)",
+            digits="(16, _parent_purchase.currency_digits)",
             states={
                 'invisible': "type not in ('line', 'subtotal')",
             }, on_change_with=['type', 'quantity', 'unit_price',
-                'parent.currency'])
+                '_parent_purchase.currency'])
     description = fields.Char('Description', size=None, required=True)
     comment = fields.Text('Comment',
             states={
@@ -697,8 +697,8 @@ class PurchaseLine(OSV):
 
         ctx = context.copy()
         party = None
-        if vals.get('parent.party'):
-            party = party_obj.browse(cursor, user, vals['parent.party'],
+        if vals.get('_parent_purchase.party'):
+            party = party_obj.browse(cursor, user, vals['_parent_purchase.party'],
                     context=context)
             if party.lang:
                 ctx['language'] = party.lang.code
@@ -707,10 +707,10 @@ class PurchaseLine(OSV):
                 context=context)
 
         ctx2 = context.copy()
-        if vals.get('parent.currency'):
-            ctx2['currency'] = vals['parent.currency']
-        if vals.get('parent.party'):
-            ctx2['supplier'] = vals['parent.party']
+        if vals.get('_parent_purchase.currency'):
+            ctx2['currency'] = vals['_parent_purchase.currency']
+        if vals.get('_parent_purchase.party'):
+            ctx2['supplier'] = vals['_parent_purchase.party']
         if vals.get('unit'):
             ctx2['uom'] = vals['unit']
         res['unit_price'] = product_obj.get_purchase_price(cursor, user,
@@ -750,10 +750,10 @@ class PurchaseLine(OSV):
                 context=context)
 
         ctx2 = context.copy()
-        if vals.get('parent.currency'):
-            ctx2['currency'] = vals['parent.currency']
-        if vals.get('parent.party'):
-            ctx2['supplier'] = vals['parent.party']
+        if vals.get('_parent_purchase.currency'):
+            ctx2['currency'] = vals['_parent_purchase.currency']
+        if vals.get('_parent_purchase.party'):
+            ctx2['supplier'] = vals['_parent_purchase.party']
         if vals.get('unit'):
             ctx2['uom'] = vals['unit']
         res['unit_price'] = product_obj.get_purchase_price(cursor, user,
@@ -764,11 +764,11 @@ class PurchaseLine(OSV):
     def on_change_with_amount(self, cursor, user, ids, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('type') == 'line':
-            if isinstance(vals.get('parent.currency'), (int, long)):
+            if isinstance(vals.get('_parent_purchase.currency'), (int, long)):
                 currency = currency_obj.browse(cursor, user,
-                        vals['parent.currency'], context=context)
+                        vals['_parent_purchase.currency'], context=context)
             else:
-                currency = vals['parent.currency']
+                currency = vals['_parent_purchase.currency']
             return currency_obj.round(cursor, user, currency,
                     Decimal(str(vals.get('quantity') or '0.0')) * \
                     (vals.get('unit_price') or Decimal('0.0')))
