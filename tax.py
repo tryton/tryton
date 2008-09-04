@@ -296,9 +296,7 @@ OpenChartCode()
 
 
 class TaxTemplate(OSV):
-    '''
-    Account Tax Template
-    '''
+    'Account Tax Template'
     _name = 'account.tax.template'
     _description = __doc__
 
@@ -459,7 +457,7 @@ class Tax(OSV):
         none: tax = none
     '''
     _name = 'account.tax'
-    _description = __doc__
+    _description = 'Account Tax'
 
     name = fields.Char('Name', required=True, translate=True)
     description = fields.Char('Description', required=True, translate=True,
