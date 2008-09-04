@@ -82,20 +82,25 @@ class Product(OSV):
         employee_obj = self.pool.get('company.employee')
 
         args = args[:]
-        i = 0
-        while i < len(args):
-            if args[i][0] == '_employee':
-                if not args[i][2]:
-                    args[i] = ('id', '=', '0')
-                else:
-                    employee = employee_obj.browse(cursor, user, args[i][2],
-                            context=context)
-                    if not employee.services:
+        def process_args(args):
+            i = 0
+            while i < len(args):
+                if isinstance(args[i], list):
+                    process_args(args[i])
+                if isinstance(args[i], tuple) \
+                        and args[i][0] == '_employee':
+                    if not args[i][2]:
                         args[i] = ('id', '=', '0')
                     else:
-                        args[i] = ('id', 'in',
-                                [x.product.id for x in employee.services])
-            i += 1
+                        employee = employee_obj.browse(cursor, user, args[i][2],
+                                context=context)
+                        if not employee.services:
+                            args[i] = ('id', '=', '0')
+                        else:
+                            args[i] = ('id', 'in',
+                                    [x.product.id for x in employee.services])
+                i += 1
+        process_args(args)
         return super(Product, self).search(cursor, user, args, offset=offset,
                 limit=limit, order=order, context=context, count=count,
                 query_string=query_string)
