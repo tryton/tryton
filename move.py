@@ -251,17 +251,22 @@ class Move(OSV):
         location_obj = self.pool.get('stock.location')
 
         args = args[:]
-        i = 0
-        while i < len(args):
-            if args[i][0] == 'to_location_warehouse':
-                location_id = False
-                if args[i][2]:
-                    location = location_obj.browse(cursor, user,
-                            args[i][2], context=context)
-                    if location.type == 'warehouse':
-                        location_id = location.input_location.id
-                args[i] = ('to_location', args[i][1], location_id)
-            i += 1
+        def process_args(args):
+            i = 0
+            while i < len(args):
+                if isinstance(args[i], list):
+                    process_args(args[i])
+                if isinstance(args[i], tuple) \
+                        and args[i][0] == 'to_location_warehouse':
+                    location_id = False
+                    if args[i][2]:
+                        location = location_obj.browse(cursor, user,
+                                args[i][2], context=context)
+                        if location.type == 'warehouse':
+                            location_id = location.input_location.id
+                    args[i] = ('to_location', args[i][1], location_id)
+                i += 1
+        process_args(args)
         return super(Move, self).search(cursor, user, args, offset=offset,
                 limit=limit, order=order, context=context, count=count,
                 query_string=query_string)
