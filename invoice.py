@@ -1994,20 +1994,25 @@ class Uom(OSV):
             context=None, count=False, query_string=False):
         product_obj = self.pool.get('product.product')
         args = args[:]
-        i = 0
-        while i < len(args):
-            if args[i][0] == 'category':
-                if isinstance(args[i][2], (list, tuple)) \
-                        and len(args[i][2]) == 2:
-                    if args[i][2][1] == 'product':
-                        if not args[i][2][0]:
-                            args[i] = ('id', '!=', '0')
-                        else:
-                            product = product_obj.browse(cursor, user,
-                                    args[i][2][0], context=context)
-                            category_id = product.default_uom.category.id
-                            args[i] = (args[i][0], args[i][1], category_id)
-            i += 1
+        def process_args(args):
+            i = 0
+            while i < len(args):
+                if isinstance(args[i], list):
+                    process_args(args[i])
+                if isinstance(args[i], tuple) \
+                        and args[i][0] == 'category' \
+                        and isinstance(args[i][2], (list, tuple)) \
+                        and len(args[i][2]) == 2 \
+                        and args[i][2][1] == 'product':
+                    if not args[i][2][0]:
+                        args[i] = ('id', '!=', '0')
+                    else:
+                        product = product_obj.browse(cursor, user,
+                                args[i][2][0], context=context)
+                        category_id = product.default_uom.category.id
+                        args[i] = (args[i][0], args[i][1], category_id)
+                i += 1
+        process_args(args)
         return super(Uom, self).search(cursor, user, args, offset=offset,
                 limit=limit, order=order, context=context, count=count,
                 query_string=query_string)
