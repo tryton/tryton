@@ -247,7 +247,7 @@
             <field name="workflow" ref="purchase_workflow"/>
             <field name="split_mode">AND</field>
             <field name="kind">function</field>
-            <field name="action">write({'state': 'confirmed'})</field>
+            <field name="action">set_purchase_date()&#10;write({'state': 'confirmed'})</field>
         </record>
         <record model="workflow.activity" id="purchase_activity_invoice_method">
             <field name="name">Invoice Method</field>
@@ -628,6 +628,8 @@
                     <field name="name"/>
                     <label name="code"/>
                     <field name="code"/>
+                    <label name="delivery_time"/>
+                    <field name="delivery_time"/>
                     <field name="prices" colspan="4"/>
                 </form>
                 ]]>

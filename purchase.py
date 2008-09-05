@@ -447,6 +447,12 @@ class Purchase(OSV):
             }, context=context)
         return True
 
+    def set_purchase_date(self, cursor, user, purchase_id, context=None):
+        self.write(cursor, user, purchase_id, {
+            'purchase_date': datetime.date.today(),
+            }, context=context)
+        return True
+
     def _get_invoice_line_purchase_line(self, cursor, user, purchase,
             context=None):
         '''
@@ -858,6 +864,7 @@ class PurchaseLine(OSV):
         '''
         move_obj = self.pool.get('stock.move')
         uom_obj = self.pool.get('product.uom')
+        product_supplier_obj = self.pool.get('purchase.product_supplier')
 
         vals = {}
         if line.type != 'line':
@@ -884,7 +891,16 @@ class PurchaseLine(OSV):
         vals['company'] = line.purchase.company.id
         vals['unit_price'] = line.unit_price
         vals['currency'] = line.purchase.currency.id
-        #TODO compute the planned_date
+
+        if line.product.product_suppliers:
+            for product_supplier in line.product.product_suppliers:
+                if product_supplier.party.id == line.purchase.party.id:
+                    vals['planned_date'] = \
+                            product_supplier_obj.compute_supply_date(
+                                    cursor, user, product_supplier,
+                                    date=line.purchase.purchase_date,
+                                    context=context)
+                    break
 
         move_id = move_obj.create(cursor, user, vals, context=context)
 
@@ -1005,6 +1021,8 @@ class ProductSupplier(OSV):
             'product_supplier', 'Prices')
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete='CASCADE', select=1)
+    delivery_time = fields.Integer('Delivery Time',
+            help="In number of days")
 
     def __init__(self):
         super(ProductSupplier, self).__init__()
@@ -1018,6 +1036,22 @@ class ProductSupplier(OSV):
             return company_obj.name_get(cursor, user, context['company'],
                     context=context)[0]
         return False
+
+    def compute_supply_date(self, cursor, user, product_supplier, date=None,
+            context=None):
+        '''
+        Compute the supply date for the Product Supplier at the given date
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param product_supplier: a BrowseRecord of the Product Supplier
+        :param date: the date of the purchase if None the current date
+        :param context: the context
+        :return: the supply date as value
+        '''
+        if not date:
+            date = datetime.date.today()
+        return date + datetime.timedelta(product_supplier.delivery_time)
 
 ProductSupplier()
 
