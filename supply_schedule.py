@@ -48,19 +48,16 @@ class GeneratePurchaseRequest(Wizard):
             pbl = product_obj.products_by_location(
                 cursor, user, locations, [product.id], with_childs=True,
                 skip_zero=False, context=local_context)
-            print "DATES",min_date, max_date, pbl
+
             for order_point in product.order_points:
                 # ignore order point on other locations than warehouse
                 if order_point.location.type != 'warehouse':
                     continue
-                print "OP",order_point.id, order_point.location.id, product.id
                 # Search for shortage between min-max
                 shortage_date, stock_quantity = self.get_shortage(
                     cursor, user, order_point, min_date, max_date,
                     min_date_stock=pbl[order_point.location.id, product.id],
                     context=context)
-
-                print "REQUEST",order_point.product.name,order_point.location.name, shortage_date, stock_quantity
 
                 if shortage_date == None or stock_quantity == None:
                     continue
@@ -100,11 +97,6 @@ class GeneratePurchaseRequest(Wizard):
             if not supplier:
                 continue
             sup_lead_time[product, supplier] = None
-
-        print "TUPLE",['OR', ] + [
-                ['AND', ('product', '=', x[0]), ('party', '=', x[1])] \
-                    for x in sup_lead_time.iterkeys()
-                ]
 
         prod_sup_ids = product_supplier_obj.search(
             cursor, user,
@@ -148,15 +140,12 @@ class GeneratePurchaseRequest(Wizard):
 
         for i in existing_req.itervalues():
             i.sort
-        print "OLD_REQ",existing_req
-        print "NEW_REQ", new_requests
+
         # Update new requests to take existing requests into account
         new_requests.sort(lambda r,s: cmp(r['supply_date'],s['supply_date']))
         for new_req in new_requests:
             for old_req in existing_req.get((new_req['product'].id,
                                              new_req['warehouse'].id), []):
-
-                print old_req['supply_date'] <= new_req['supply_date'], old_req['supply_date'], new_req['supply_date']
                 if old_req['supply_date'] <= new_req['supply_date']:
                     quantity = uom_obj.compute_qty(
                         cursor, user, old_req['uom'], old_req['quantity'],
@@ -176,8 +165,6 @@ class GeneratePurchaseRequest(Wizard):
                                 'uom': new_req['uom'].id,
                                 'company': new_req['company'].id
                                 })
-                print "CREATE", new_req
-
                 request_obj.create(cursor, user, new_req, context=context)
 
     def get_supply_dates(self, cursor, user, product, context=None):
@@ -265,7 +252,6 @@ class GeneratePurchaseRequest(Wizard):
         current_date = min_date
         current_stock = min_date_stock
         while current_date <= max_date:
-            print "SHTG", current_stock, order_point.min_quantity
             if current_stock < order_point.min_quantity:
                 return current_date, current_stock
 
