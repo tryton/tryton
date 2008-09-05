@@ -13,7 +13,6 @@
         'purchase',
     ],
     'xml': [
-        'product.xml',
         'order_point.xml',
         'purchase_request.xml',
         'supply_schedule.xml',

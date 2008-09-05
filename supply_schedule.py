@@ -84,8 +84,8 @@ class GeneratePurchaseRequest(Wizard):
 
         req_ids = request_obj.search(cursor, user, [], context=context)
         requests = request_obj.browse(cursor, user, req_ids, context=context)
-        # Fetch lead_times for each (product,supplier)
-        sup_lead_time = {}
+        # Fetch delivery_times for each (product,supplier)
+        sup_delivery_time = {}
         for request in requests:
             product, supplier = None, None
             if request.purchase_line:
@@ -96,19 +96,19 @@ class GeneratePurchaseRequest(Wizard):
                 supplier = request.party and request.party.id
             if not supplier:
                 continue
-            sup_lead_time[product, supplier] = None
+            sup_delivery_time[product, supplier] = None
 
         prod_sup_ids = product_supplier_obj.search(
             cursor, user,
             ['OR', ] + [
                 ['AND', ('product', '=', x[0]), ('party', '=', x[1])] \
-                    for x in sup_lead_time.iterkeys()
+                    for x in sup_delivery_time.iterkeys()
                 ],
             context=context)
         for prod_sup in product_supplier_obj.browse(cursor, user, prod_sup_ids,
                                                     context=context):
-            sup_lead_time[prod_sup.product.id, prod_sup.party.id] = \
-                prod_sup.lead_time
+            sup_delivery_time[prod_sup.product.id, prod_sup.party.id] = \
+                prod_sup.delivery_time
 
         # Fetch data from existing requests
         existing_req = {}
@@ -128,10 +128,10 @@ class GeneratePurchaseRequest(Wizard):
                 uom = request.uom
                 supplier = request.party.id
 
-            lead_time = sup_lead_time.get((product.id, supplier.id))
-            if lead_time:
+            delivery_time = sup_delivery_time.get((product.id, supplier.id))
+            if delivery_time:
                 supply_date = purchase_date + \
-                    datetime.timedelta(lead_time)
+                    datetime.timedelta(delivery_time)
             else:
                 supply_date = datetime.date.max
 
@@ -177,7 +177,7 @@ class GeneratePurchaseRequest(Wizard):
         today = datetime.date.today()
 
         for product_supplier in product.product_suppliers:
-            supply_date = today + datetime.timedelta(product_supplier.lead_time)
+            supply_date = today + datetime.timedelta(product_supplier.delivery_time)
             if (not min_date) or supply_date < min_date:
                 min_date = supply_date
             if (not max_date) or supply_date > max_date:
@@ -199,7 +199,7 @@ class GeneratePurchaseRequest(Wizard):
         today = datetime.date.today()
 
         for product_supplier in product.product_suppliers:
-            supply_date = today + datetime.timedelta(product_supplier.lead_time)
+            supply_date = today + datetime.timedelta(product_supplier.delivery_time)
             sup_on_time = supply_date < shortage_date
             if not supplier:
                 supplier = product_supplier.party
@@ -212,9 +212,9 @@ class GeneratePurchaseRequest(Wizard):
                 on_time = sup_on_time
                 seq = product_supplier.sequence
 
-        if supplier and product_supplier.lead_time:
+        if supplier and product_supplier.delivery_time:
             purchase_date = \
-                shortage_date - datetime.timedelta(product_supplier.lead_time)
+                shortage_date - datetime.timedelta(product_supplier.delivery_time)
         else:
             purchase_date = today
 
