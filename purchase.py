@@ -155,34 +155,3 @@ class PurchaseLine(OSV):
         return res
 
 PurchaseLine()
-
-
-class Account(OSV):
-    _name = 'analytic_account.account'
-
-    def delete(self, cursor, user, ids, context=None):
-        invoice_line_obj = self.pool.get('purchase.line')
-        try:
-            invoice_line_obj.fields_view_get(cursor.dbname)
-        except:
-            pass
-        return super(Account, self).delete(cursor, user, ids, context=context)
-
-    def create(self, cursor, user, vals, context=None):
-        invoice_line_obj = self.pool.get('purchase.line')
-        try:
-            invoice_line_obj.fields_view_get(cursor.dbname)
-        except:
-            pass
-        return super(Account, self).create(cursor, user, vals, context=context)
-
-    def write(self, cursor, user, ids, vals, context=None):
-        invoice_line_obj = self.pool.get('purchase.line')
-        try:
-            invoice_line_obj.fields_view_get(cursor.dbname)
-        except:
-            pass
-        return super(Account, self).write(cursor, user, ids, vals,
-                context=context)
-
-Account()
