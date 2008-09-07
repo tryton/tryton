@@ -55,5 +55,21 @@
         </record>
         <menuitem parent="stock.menu_stock" sequence="60"
             action="act_order_point_form" id="menu_order_point_form"/>
+
+        <record model="ir.model.access" id="access_order_point">
+            <field name="model" search="[('model', '=', 'stock.order_point')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_order_point_admin">
+            <field name="model" search="[('model', '=', 'stock.order_point')]"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>
