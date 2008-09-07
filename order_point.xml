@@ -12,12 +12,12 @@
                         <field name="product"/>
                         <label name="location"/>
                         <field name="location"/>
-                        <label name="company"/>
-                        <field name="company"/>
                         <label name="min_quantity"/>
                         <field name="min_quantity"/>
                         <label name="max_quantity"/>
                         <field name="max_quantity"/>
+                        <label name="company"/>
+                        <field name="company"/>
                     </form>
                 ]]>
             </field>
