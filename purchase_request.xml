@@ -99,5 +99,15 @@
             <field name="action" ref="wizard_create_purchase"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_purchase_request">
+            <field name="model" search="[('model', '=', 'stock.purchase_request')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_purchase_request">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'stock.purchase_request')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_purchase_request"/>
+        </record>
     </data>
 </tryton>
