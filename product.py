@@ -7,6 +7,6 @@ class Product(OSV):
     _name = "product.product"
 
     order_points = fields.One2Many(
-        'supply.order_point', 'product', 'Order Points')
+        'stock.order_point', 'product', 'Order Points')
 
 Product()

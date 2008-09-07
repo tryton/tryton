@@ -3,7 +3,7 @@
 <tryton>
     <data>
         <record model="ir.ui.view" id="purchase_request_view_form">
-            <field name="model">supply.purchase_request</field>
+            <field name="model">stock.purchase_request</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -33,7 +33,7 @@
             </field>
         </record>
         <record model="ir.ui.view" id="purchase_request_view_tree">
-            <field name="model">supply.purchase_request</field>
+            <field name="model">stock.purchase_request</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -55,7 +55,7 @@
 
         <record model="ir.action.act_window" id="act_purchase_request_form">
             <field name="name">Purchase Requests</field>
-            <field name="res_model">supply.purchase_request</field>
+            <field name="res_model">stock.purchase_request</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_purchase_request_form_view1">
@@ -74,7 +74,7 @@
 
 
         <record model="ir.ui.view" id="create_purchase.ask_form">
-            <field name="model">supply.purchase_request.create_purchase.ask</field>
+            <field name="model">stock.purchase_request.create_purchase.ask</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -91,11 +91,11 @@
         </record>
         <record model="ir.action.wizard" id="wizard_create_purchase">
             <field name="name">Create Purchase</field>
-            <field name="wiz_name">supply.purchase_request.create_purchase</field>
+            <field name="wiz_name">stock.purchase_request.create_purchase</field>
         </record>
         <record model="ir.action.keyword" id="create_purchase_keyword">
             <field name="keyword">form_action</field>
-            <field name="model">supply.purchase_request,0</field>
+            <field name="model">stock.purchase_request,0</field>
             <field name="action" ref="wizard_create_purchase"/>
         </record>
 

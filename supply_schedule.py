@@ -6,7 +6,7 @@ import datetime
 
 class GeneratePurchaseRequest(Wizard):
     'Generate Purchase Requests'
-    _name = 'supply.generate_purchase_request'
+    _name = 'stock.generate_purchase_request'
     states = {
         'init': {
             'result': {
@@ -23,8 +23,8 @@ class GeneratePurchaseRequest(Wizard):
         For each order point compute the purchase that must be create
         today to meet product outputs.
         """
-        order_point_obj = self.pool.get('supply.order_point')
-        purchase_request_obj = self.pool.get('supply.purchase_request')
+        order_point_obj = self.pool.get('stock.order_point')
+        purchase_request_obj = self.pool.get('stock.purchase_request')
         product_obj = self.pool.get('product.product')
         order_point_ids = order_point_obj.search(
             cursor, user, [], context=context)
@@ -76,7 +76,7 @@ class GeneratePurchaseRequest(Wizard):
         """
         # delete purchase request without a purchase line
         uom_obj = self.pool.get('product.uom')
-        request_obj = self.pool.get('supply.purchase_request')
+        request_obj = self.pool.get('stock.purchase_request')
         product_supplier_obj = self.pool.get('purchase.product_supplier')
         req_ids = request_obj.search(
             cursor, user, [('purchase_line', '=', False)], context=context)

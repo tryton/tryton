@@ -8,7 +8,7 @@ class OrderPoint(OSV):
     product on each locations. Order points on warehouse are
     conciderer by the supply scheduler to generate purchase requests.
     """
-    _name = 'supply.order_point'
+    _name = 'stock.order_point'
     _description = __doc__
 
     product = fields.Many2One(

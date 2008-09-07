@@ -4,7 +4,7 @@
     <data>
         <record model="ir.action.wizard" id="act_generate_purchase_request">
             <field name="name">Generate Purchase Requests</field>
-            <field name="wiz_name">supply.generate_purchase_request</field>
+            <field name="wiz_name">stock.generate_purchase_request</field>
         </record>
         <menuitem parent="purchase.menu_purchase" action="act_generate_purchase_request"
                   id="menu_generate_purchase_request"/>

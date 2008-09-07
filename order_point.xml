@@ -3,7 +3,7 @@
 <tryton>
     <data>
         <record model="ir.ui.view" id="order_point_view_form">
-            <field name="model">supply.order_point</field>
+            <field name="model">stock.order_point</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -23,7 +23,7 @@
             </field>
         </record>
         <record model="ir.ui.view" id="order_point_view_tree">
-            <field name="model">supply.order_point</field>
+            <field name="model">stock.order_point</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -40,7 +40,7 @@
 
         <record model="ir.action.act_window" id="act_order_point_form">
             <field name="name">Order Points</field>
-            <field name="res_model">supply.order_point</field>
+            <field name="res_model">stock.order_point</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_order_point_form_view1">

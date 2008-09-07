@@ -7,7 +7,7 @@ import datetime
 # (uom, qty, product, ...).
 class PurchaseRequest(OSV):
     'Purchase Request'
-    _name = 'supply.purchase_request'
+    _name = 'stock.purchase_request'
     _description = __doc__
 
     product = fields.Many2One(
@@ -37,7 +37,7 @@ PurchaseRequest()
 
 
 class CreatePurchaseAsk(WizardOSV):
-    _name = 'supply.purchase_request.create_purchase.ask'
+    _name = 'stock.purchase_request.create_purchase.ask'
     party = fields.Many2One('relationship.party', 'Supplier', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
     payment_term = fields.Many2One(
@@ -47,7 +47,7 @@ CreatePurchaseAsk()
 
 class CreatePurchase(Wizard):
     'Create Purchase'
-    _name = 'supply.purchase_request.create_purchase'
+    _name = 'stock.purchase_request.create_purchase'
 
     states = {
 
@@ -70,7 +70,7 @@ class CreatePurchase(Wizard):
             'actions': ['_set_default'],
             'result': {
                 'type': 'form',
-                'object': 'supply.purchase_request.create_purchase.ask',
+                'object': 'stock.purchase_request.create_purchase.ask',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('choice', 'Continue', 'tryton-ok', True),
@@ -116,7 +116,7 @@ class CreatePurchase(Wizard):
         return 'create'
 
     def _compute_purchase(self, cursor, user, data, context=None):
-        request_obj = self.pool.get('supply.purchase_request')
+        request_obj = self.pool.get('stock.purchase_request')
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
         purchases = {}
         for request in requests:
@@ -157,7 +157,7 @@ class CreatePurchase(Wizard):
         return {}
 
     def _create_purchase(self, cursor, user, data, context=None):
-        request_obj = self.pool.get('supply.purchase_request')
+        request_obj = self.pool.get('stock.purchase_request')
         purchase_obj = self.pool.get('purchase.purchase')
         line_obj = self.pool.get('purchase.line')
         product_obj = self.pool.get('product.product')
