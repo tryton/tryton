@@ -116,7 +116,7 @@ class Product(OSV):
             state_date_clause = ""
             state_date_vals = []
         else:
-            # max in the past: take state done for the moves
+            # date end in the past: filter on state done for the moves
             if context['stock_date_end'] <= datetime.date.today():
                 state_date_clause = '(state in (%s)) AND ('\
                     '(effective_date IS NULL '\
@@ -127,11 +127,13 @@ class Product(OSV):
                                    context['stock_date_end'],
                                    context['stock_date_end']
                                    ]
-            # infinite max: take all sate for the moves
+            # infinite date end: take all states for the moves
             elif context['stock_date_end'] == datetime.date.max:
                 state_date_clause = 'state in (%s, %s, %s)'
                 state_date_vals = ['done', 'assigned', 'draft']
-            # future max: take state done until today, all state after
+            # future date end: filter move on state done and date
+            # before today, or on all state and date between today and
+            # date_end.
             else:
                 state_date_clause = '(' + \
                     '(state in (%s)) AND ('\
