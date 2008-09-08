@@ -174,10 +174,11 @@ class GeneratePurchaseRequest(Wizard):
         """
         min_date = None
         max_date = None
-        today = datetime.date.today()
+        product_supplier_obj = self.pool.get('purchase.product_supplier')
 
         for product_supplier in product.product_suppliers:
-            supply_date = today + datetime.timedelta(product_supplier.delivery_time)
+            supply_date = product_supplier_obj.compute_supply_date(
+                cursor, user, product_supplier, context=context)
             if (not min_date) or supply_date < min_date:
                 min_date = supply_date
             if (not max_date) or supply_date > max_date:
