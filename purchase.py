@@ -1088,6 +1088,12 @@ ProductSupplierPrice()
 class PackingIn(OSV):
     _name = 'stock.packing.in'
 
+    def __init__(self):
+        super(PackingIn, self).__init__()
+        self.incoming_moves.add_remove = "[" + \
+                self.incoming_moves.add_remove + ", " \
+                "('supplier', '=', supplier)]"
+
     def write(self, cursor, user, ids, vals, context=None):
         workflow_service = LocalService('workflow')
         purchase_line_obj = self.pool.get('purchase.line')
@@ -1130,6 +1136,9 @@ class Move(OSV):
     purchase = fields.Function('get_purchase', type='many2one',
             relation='purchase.purchase', string='Purchase',
             fnct_search='search_purchase', select=1)
+    supplier = fields.Function('get_supplier', type='many2one',
+            relation='relationship.party', string='Supplier',
+            fnct_search='search_supplier', select=1)
 
     def get_purchase(self, cursor, user, ids, name, arg, context=None):
         purchase_obj = self.pool.get('purchase.purchase')
@@ -1158,6 +1167,36 @@ class Move(OSV):
         while i < len(args):
             field = args[i][0]
             args2.append(('purchase_line.' + field, args[i][1], args[i][2]))
+            i += 1
+        return args2
+
+    def get_supplier(self, cursor, user, ids, name, arg, context=None):
+        party_obj = self.pool.get('relationship.party')
+
+        res = {}
+        for move in self.browse(cursor, user, ids, context=context):
+            res[move.id] = False
+            if move.purchase_line:
+                res[move.id] = move.purchase_line.purchase.party.id
+
+        party_names = {}
+        for party_id, party_name in party_obj.name_get(cursor, user,
+                [x for x in res.values() if x], context=context):
+            party_names[party_id] = party_name
+
+        for i in res.keys():
+            if res[i] and res[i] in party_names:
+                res[i] = (res[i], party_names[res[i]])
+            else:
+                res[i] = False
+        return res
+
+    def search_supplier(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            args2.append(('purchase_line.purchase.party', args[i][1],
+                args[i][2]))
             i += 1
         return args2
 

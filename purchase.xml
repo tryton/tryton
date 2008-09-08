@@ -731,6 +731,22 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="packing_in_view_form">
+            <field name="model">stock.packing.in</field>
+            <field name="inherit" ref="stock.packing_in_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook/page/field[@name=&quot;incoming_moves&quot;]/tree/field[@name=&quot;product&quot;]"
+                        position="after">
+                        <field name="supplier" select="1"/>
+                        <field name="purchase" select="1"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.action.wizard" id="act_open_supplier">
             <field name="name">Suppliers</field>
             <field name="wiz_name">purchase.open_supplier</field>
