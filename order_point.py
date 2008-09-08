@@ -6,10 +6,10 @@ class OrderPoint(OSV):
     """
     Order Point: Provide a way to define a supply policy for each
     product on each locations. Order points on warehouse are
-    conciderer by the supply scheduler to generate purchase requests.
+    considered by the supply scheduler to generate purchase requests.
     """
     _name = 'stock.order_point'
-    _description = __doc__
+    _description = "Order Point"
 
     product = fields.Many2One(
         'product.product', 'Product', required=True, select=True,
