@@ -11,18 +11,20 @@ class PurchaseRequest(OSV):
     _description = __doc__
 
     product = fields.Many2One(
-        'product.product', 'Product', required=True, select=True)
+        'product.product', 'Product', required=True, select=True, readonly=True)
     party = fields.Many2One('relationship.party', 'Party',  select=True)
     quantity = fields.Float('Quantity', required=True)
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=True)
-    purchase_date = fields.Date('Expected Purchase Date')
-    supply_date = fields.Date('Expected Suplly Date')
-    stock_level =  fields.Float('Stock at Supply Date')
+    purchase_date = fields.Date('Expected Purchase Date', readonly=True)
+    supply_date = fields.Date('Expected Suplly Date', readonly=True)
+    stock_level =  fields.Float('Stock at Supply Date', readonly=True)
     warehouse = fields.Many2One(
         'stock.location', "Warehouse", required=True,
-        domain="[('type', '=', 'warehouse')]")
-    purchase_line = fields.Many2One('purchase.line', 'Purchase Line')
-    company = fields.Many2One('company.company', 'Company', required=True)
+        domain="[('type', '=', 'warehouse')]", readonly=True)
+    purchase_line = fields.Many2One(
+        'purchase.line', 'Purchase Line',readonly=True)
+    company = fields.Many2One(
+        'company.company', 'Company', required=True, readonly=True)
 
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')

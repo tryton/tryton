@@ -18,6 +18,8 @@
                         <field name="uom"/>
                         <label name="warehouse"/>
                         <field name="warehouse"/>
+                        <label name="company"/>
+                        <field name="company"/>
                         <label name="purchase_date"/>
                         <field name="purchase_date"/>
                         <label name="supply_date"/>
@@ -26,8 +28,6 @@
                         <field name="purchase_line"/>
                         <label name="stock_level"/>
                         <field name="stock_level"/>
-                        <label name="company"/>
-                        <field name="company"/>
                     </form>
                 ]]>
             </field>
