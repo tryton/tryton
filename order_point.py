@@ -29,12 +29,6 @@ class OrderPoint(OSV):
              'CHECK( max_quantity is null or min_quantity is null or max_quantity >= min_quantity )',
              'Maximal quantity must be bigger than Minimal quantity'),
         ]
-        self._constraints += [
-            ('check_product_type', 'stockable_product'),
-        ]
-        self._error_messages.update({
-            'stockable_product': 'The product must be of type stockable',
-            })
 
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
@@ -44,12 +38,5 @@ class OrderPoint(OSV):
             return company_obj.name_get(cursor, user, context['company'],
                     context=context)[0]
         return False
-
-    def check_product_type(self, cursor, user, ids):
-        for order_point in self.browse(cursor, user, ids):
-            if order_point.product.type != 'stockable':
-                return False
-        return True
-
 
 OrderPoint()
