@@ -24,14 +24,18 @@ class PackingIn(OSV):
         states={'readonly': "state != 'draft'",})
     supplier = fields.Many2One('relationship.party', 'Supplier',
             states={
-                'readonly': "state != 'draft'",
-            }, on_change=['supplier'])
+                'readonly': "state != 'draft' or bool(incoming_moves)",
+            }, on_change=['supplier'], required=True)
     contact_address = fields.Many2One('relationship.address', 'Contact Address',
             states={
                 'readonly': "state != 'draft'",
             }, domain="[('party', '=', supplier)]")
     warehouse = fields.Many2One('stock.location', "Warehouse",
-            required=True, states=STATES, domain="[('type', '=', 'warehouse')]")
+            required=True, domain="[('type', '=', 'warehouse')]",
+            states={
+                'readonly': "state in ('cancel', 'done') or " \
+                        "bool(incoming_moves)",
+            })
     incoming_moves = fields.Function('get_incoming_moves', type='one2many',
             relation='stock.move', string='Incoming Moves',
             fnct_inv='set_incoming_moves', add_remove="[" \
