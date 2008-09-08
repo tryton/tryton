@@ -9,6 +9,7 @@ from decimal import Decimal
 import datetime
 import time
 import os
+import mx.DateTime
 
 
 class TypeTemplate(OSV):
@@ -1156,8 +1157,8 @@ class OpenBalanceSheet(Wizard):
                 break
         lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
 
-        date = time.strptime(str(datas['form']['date']), '%Y-%m-%d')
-        date = time.strftime(lang.date, date)
+        date = mx.DateTime.strptime(str(datas['form']['date']), '%Y-%m-%d')
+        date = date.strftime(lang.date)
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_account_balance_sheet_tree'),
