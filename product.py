@@ -114,7 +114,7 @@ class Product(OSV):
         move_query, move_val = rule_obj.domain_get(cursor, user, 'stock.move')
 
         if not context.get('stock_date_end'):
-            state_date_clause = ""
+            state_date_clause = "True"
             state_date_vals = []
         else:
             # date end in the past: filter on state done for the moves
