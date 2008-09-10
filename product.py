@@ -29,8 +29,9 @@ class Product(OSV):
                 with_childs=True, context=context)
 
         res = {}.fromkeys(ids, 0.0)
-        for (location, product) in zip(context['locations'], ids):
-            res[product] += pbl.get((location, product), 0.0)
+        for location in context['locations']:
+            for product in ids:
+                res[product] += pbl.get((location, product), 0.0)
         return res
 
     def _search_quantity_eval_domain(self, line, domain):
