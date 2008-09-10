@@ -2075,8 +2075,8 @@ class FiscalYear(OSV):
                             fiscalyear[sequence].id != \
                             vals[sequence]:
                         if invoice_obj.search(cursor, user, [
-                            ('date', '>=', fiscalyear.start_date),
-                            ('date', '<=', fiscalyear.end_date),
+                            ('invoice_date', '>=', fiscalyear.start_date),
+                            ('invoice_date', '<=', fiscalyear.end_date),
                             ('number', '!=', False),
                             ('type', '=', sequence[:-9]),
                             ], context=context):
