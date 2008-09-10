@@ -229,7 +229,6 @@ class Product(OSV):
                     "GROUP BY from_location, product, uom "\
                 ") AS T GROUP BY T.location, T.product, T.uom"
 
-
         cursor.execute(select_clause % (state_date_clause, where_clause,
                                         state_date_clause, where_clause),
                        state_date_vals + where_vals + \
