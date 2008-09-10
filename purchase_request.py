@@ -15,7 +15,7 @@ class PurchaseRequest(OSV):
     party = fields.Many2One('relationship.party', 'Party',  select=True)
     quantity = fields.Float('Quantity', required=True)
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=True)
-    purchase_date = fields.Date('Expected Purchase Date', readonly=True)
+    purchase_date = fields.Date('Best Purchase Date', readonly=True)
     supply_date = fields.Date('Expected Suplly Date', readonly=True)
     stock_level =  fields.Float('Stock at Supply Date', readonly=True)
     warehouse = fields.Many2One(
