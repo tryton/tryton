@@ -891,7 +891,7 @@ class Invoice(OSV):
 
     def set_number(self, cursor, user, invoice_id, context=None):
         period_obj = self.pool.get('account.period')
-        sequence_obj = self.pool.get('ir.sequence')
+        sequence_obj = self.pool.get('ir.sequence.strict')
 
         invoice = self.browse(cursor, user, invoice_id, context=context)
 
@@ -2025,16 +2025,16 @@ Uom()
 
 class FiscalYear(OSV):
     _name = 'account.fiscalyear'
-    out_invoice_sequence = fields.Many2One('ir.sequence',
+    out_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Invoice Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
-    in_invoice_sequence = fields.Many2One('ir.sequence',
+    in_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Invoice Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
-    out_refund_sequence = fields.Many2One('ir.sequence',
+    out_refund_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Refund Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
-    in_refund_sequence = fields.Many2One('ir.sequence',
+    in_refund_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Refund Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
 
@@ -2090,16 +2090,16 @@ FiscalYear()
 
 class Period(OSV):
     _name = 'account.period'
-    out_invoice_sequence = fields.Many2One('ir.sequence',
+    out_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Invoice Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
-    in_invoice_sequence = fields.Many2One('ir.sequence',
+    in_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Invoice Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
-    out_refund_sequence = fields.Many2One('ir.sequence',
+    out_refund_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Refund Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
-    in_refund_sequence = fields.Many2One('ir.sequence',
+    in_refund_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Refund Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
 
