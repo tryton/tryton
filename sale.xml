@@ -312,7 +312,7 @@
             <field name="name">Packing Invoice Done</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'packing_state': 'sended'})</field>
+            <field name="action">write({'packing_state': 'sent'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_packing_invoice_method_done">
             <field name="name">Packing Invoice Method Done</field>
@@ -359,7 +359,7 @@
             <field name="name">Waiting Invoice Packing</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'invoice_state': 'waiting', 'packing_state': 'sended'})&#10;ignore_invoice_exception()</field>
+            <field name="action">write({'invoice_state': 'waiting', 'packing_state': 'sent'})&#10;ignore_invoice_exception()</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_packing_exception">
             <field name="name">Invoice Packing Exception</field>
@@ -377,7 +377,7 @@
             <field name="name">Invoice Packing Method Done</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'packing_state': 'sended'})</field>
+            <field name="action">write({'packing_state': 'sent'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_packing_method_done">
             <field name="name">Packing Method Done</field>

@@ -77,7 +77,7 @@ class Sale(OSV):
     invoice_method = fields.Selection([
         ('manual', 'Manual'),
         ('order', 'On Order Confirmed'),
-        ('packing', 'On Packing Sended'),
+        ('packing', 'On Packing Sent'),
     ], 'Invoice Method', required=True, states={
         'readonly': "state != 'draft'",
         })
@@ -106,7 +106,7 @@ class Sale(OSV):
     packing_state = fields.Selection([
         ('none', 'None'),
         ('waiting', 'Waiting'),
-        ('sended', 'Sended'),
+        ('sent', 'Sent'),
         ('exception', 'Exception'),
     ], 'Packing State', readonly=True, required=True)
     packings = fields.Function('get_packings', type='many2many',
