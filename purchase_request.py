@@ -16,7 +16,7 @@ class PurchaseRequest(OSV):
     quantity = fields.Float('Quantity', required=True)
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=True)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
-    supply_date = fields.Date('Expected Suplly Date', readonly=True)
+    supply_date = fields.Date('Expected Supply Date', readonly=True)
     stock_level =  fields.Float('Stock at Supply Date', readonly=True)
     warehouse = fields.Many2One(
         'stock.location', "Warehouse", required=True,

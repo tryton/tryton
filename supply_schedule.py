@@ -45,7 +45,7 @@ class GeneratePurchaseRequest(Wizard):
 
         # fetch stockable products
         product_ids = product_obj.search(
-            cursor, user, [('type','=','stockable')], context= context)
+            cursor, user, [('type', '=', 'stockable')], context=context)
         #aggregate product by minimum supply date
         date2products = {}
         for product in product_obj.browse(cursor, user, product_ids,
@@ -209,7 +209,8 @@ class GeneratePurchaseRequest(Wizard):
         return (min_date, max_date)
 
     def compute_request(self, cursor, user, product, location_id, shortage_date,
-                        product_quantity, company, order_point=None,context=None):
+                        product_quantity, company, order_point=None,
+                        context=None):
         """
         Return the value of the purchase request which will answer to
         the needed quantity at the given date. I.e: the latest
