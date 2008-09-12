@@ -893,6 +893,9 @@ class Invoice(OSV):
         period_obj = self.pool.get('account.period')
         sequence_obj = self.pool.get('ir.sequence.strict')
 
+        if context is None:
+            context = {}
+
         invoice = self.browse(cursor, user, invoice_id, context=context)
 
         if invoice.number:
@@ -905,7 +908,9 @@ class Invoice(OSV):
         if not sequence_id:
             self.raise_user_error(cursor, 'no_invoice_sequence',
                     context=context)
-        number = sequence_obj.get_id(cursor, user, sequence_id)
+        ctx = context.copy()
+        ctx['date'] = invoice.invoice_date
+        number = sequence_obj.get_id(cursor, user, sequence_id, context=ctx)
         self.write(cursor, user, invoice_id, {
             'number': number,
             }, context=context)
