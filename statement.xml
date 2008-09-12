@@ -23,10 +23,6 @@
                     <field name="start_balance"/>
                     <label name="end_balance"/>
                     <field name="end_balance"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                    <label name="currency"/>
-                    <field name="currency"/>
                     <notebook colspan="4">
                         <page string="Statement Lines" col="4">
                             <field name="lines" colspan="4">
