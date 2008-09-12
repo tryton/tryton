@@ -246,7 +246,7 @@ class CloseFiscalYear(Wizard):
         move_line_obj = self.pool.get('account.move.line')
         fiscalyear_obj = self.pool.get('account.fiscalyear')
 
-        if account.type == 'view':
+        if account.kind == 'view':
             return
         if account.close_method == 'none':
             return
