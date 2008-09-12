@@ -1392,6 +1392,8 @@ class ReconcileLines(Wizard):
             amount += line.debit - line.credit
             if not company:
                 company = line.account.company
+        if not company:
+            return 'end'
         if currency_obj.is_zero(cursor, user, company.currency, amount):
             return 'reconcile'
         return 'writeoff'
