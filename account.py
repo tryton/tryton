@@ -225,7 +225,7 @@ class AccountTemplate(OSV):
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
     complete_name = fields.Function('get_complete_name', type='char',
-            string='Name', order_field='code')
+            string='Code - Name', order_field='code')
     code = fields.Char('Code', size=None, select=1)
     type = fields.Many2One('account.account.type.template', 'Type',
             ondelete="restrict",
@@ -386,7 +386,7 @@ class Account(OSV):
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
     complete_name = fields.Function('get_complete_name', type='char',
-            string='Name', order_field='code')
+            string='Code - Name', order_field='code')
     code = fields.Char('Code', size=None, select=1)
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True,
