@@ -37,7 +37,7 @@ class Purchase(OSV):
     party = fields.Many2One('relationship.party', 'Party', change_default=True,
             required=True, states=_STATES, on_change=['party', 'payment_term'],
             select=1)
-    party_lang = fields.Function('get_party_lang', type='char',
+    party_lang = fields.Function('get_function_fields', type='char',
             string='Party Language', on_change_with=['party'])
     contact_address = fields.Many2One('relationship.address', 'Contact Address',
             domain="[('party', '=', party)]", states=_STATES)
@@ -49,16 +49,16 @@ class Purchase(OSV):
         states={
             'readonly': "state != 'draft' or bool(lines)",
         })
-    currency_digits = fields.Function('get_currency_digits', type='integer',
+    currency_digits = fields.Function('get_function_fields', type='integer',
             string='Currency Digits', on_change_with=['currency'])
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
             states=_STATES, on_change=['lines', 'currency', 'party'])
     comment = fields.Text('Comment')
-    untaxed_amount = fields.Function('get_untaxed_amount', type='numeric',
+    untaxed_amount = fields.Function('get_function_fields', type='numeric',
             digits="(16, currency_digits)", string='Untaxed')
-    tax_amount = fields.Function('get_tax_amount', type='numeric',
+    tax_amount = fields.Function('get_function_fields', type='numeric',
             digits="(16, currency_digits)", string='Tax')
-    total_amount = fields.Function('get_total_amount', type='numeric',
+    total_amount = fields.Function('get_function_fields', type='numeric',
             digits="(16, currency_digits)", string='Total')
     invoice_method = fields.Selection([
         ('manual', 'Manual'),
@@ -76,9 +76,9 @@ class Purchase(OSV):
     invoices_ignored = fields.Many2Many('account.invoice',
             'purchase_invoice_ignored_rel', 'purchase', 'invoice',
             'Invoices Ignored', readonly=True)
-    invoice_paid = fields.Function('get_invoice_paid', type='boolean',
+    invoice_paid = fields.Function('get_function_fields', type='boolean',
             string='Invoices Paid')
-    invoice_exception = fields.Function('get_invoice_exception', type='boolean',
+    invoice_exception = fields.Function('get_function_fields', type='boolean',
             string='Invoices Exception')
     packing_state = fields.Selection([
         ('none', 'None'),
@@ -86,13 +86,13 @@ class Purchase(OSV):
         ('received', 'Received'),
         ('exception', 'Exception'),
     ], 'Packing State', readonly=True, required=True)
-    packings = fields.Function('get_packings', type='many2many',
+    packings = fields.Function('get_function_fields', type='many2many',
             relation='stock.packing.in', string='Packings')
-    moves = fields.Function('get_moves', type='many2many',
+    moves = fields.Function('get_function_fields', type='many2many',
             relation='stock.move', string='Moves')
-    packing_done = fields.Function('get_packing_done', type='boolean',
+    packing_done = fields.Function('get_function_fields', type='boolean',
             string='Packing Done')
-    packing_exception = fields.Function('get_packing_exception', type='boolean',
+    packing_exception = fields.Function('get_function_fields', type='boolean',
             string='Packings Exception')
 
     def __init__(self):
@@ -206,9 +206,19 @@ class Purchase(OSV):
             return currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, purchases, context=None):
+        '''
+        Return the number of digits of the currency for each purchases
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            number of digits as value
+        '''
         res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
+        for purchase in purchases:
             res[purchase.id] = purchase.currency.digits
         return res
 
@@ -221,15 +231,6 @@ class Purchase(OSV):
             if party.lang:
                 return party.lang.code
         return 'en_US'
-
-    def get_party_lang(self, cursor, user, ids, name, arg, context=None):
-        res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
-            if purchase.party.lang:
-                res[purchase.id] = purchase.party.lang.code
-            else:
-                res[purchase.id] = 'en_US'
-        return res
 
     def get_tax_context(self, cursor, user, purchase, context=None):
         party_obj = self.pool.get('relationship.party')
@@ -283,10 +284,89 @@ class Purchase(OSV):
                     res['total_amount'])
         return res
 
-    def get_untaxed_amount(self, cursor, user, ids, name, arg, context=None):
+    def get_function_fields(self, cursor, user, ids, names, args, context=None):
+        '''
+        Function to compute function fields for purchase ids.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param ids: the ids of the purchases
+        :param names: the list of field name to compute
+        :param args: optional argument
+        :param context: the context
+        :return: a dictionary with all field names as key and
+            a dictionary as value with id as key
+        '''
+        res = {}
+        purchases = self.browse(cursor, user, ids, context=context)
+        if 'currency_digits' in names:
+            res['currency_digits'] = self.get_currency_digits(cursor, user,
+                    purchases, context=context)
+        if 'party_lang' in names:
+            res['party_lang'] = self.get_party_lang(cursor, user, purchases,
+                    context=context)
+        if 'untaxed_amount' in names:
+            res['untaxed_amount'] = self.get_untaxed_amount(cursor, user,
+                    purchases, context=context)
+        if 'tax_amount' in names:
+            res['tax_amount'] = self.get_tax_amount(cursor, user, purchases,
+                    context=context)
+        if 'total_amount' in names:
+            res['total_amount'] = self.get_total_amount(cursor, user,
+                    purchases, context=context)
+        if 'invoice_paid' in names:
+            res['invoice_paid'] = self.get_invoice_paid(cursor, user,
+                    purchases, context=context)
+        if 'invoice_exception' in names:
+            res['invoice_exception'] = self.get_invoice_exception(cursor, user,
+                    purchases, context=context)
+        if 'packings' in names:
+            res['packings'] = self.get_packings(cursor, user, purchases,
+                    context=context)
+        if 'moves' in names:
+            res['moves'] = self.get_moves(cursor, user, purchases,
+                    context=context)
+        if 'packing_done' in names:
+            res['packing_done'] = self.get_packing_done(cursor, user,
+                    purchases, context=context)
+        if 'packing_exception' in names:
+            res['packing_exception'] = self.get_packing_exception(cursor,
+                    user, purchases, context=context)
+        return res
+
+    def get_party_lang(self, cursor, user, purchases, context=None):
+        '''
+        Return the language code of the party of each purchases
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            a language code as value
+        '''
+        res = {}
+        for purchase in purchases:
+            if purchase.party.lang:
+                res[purchase.id] = purchase.party.lang.code
+            else:
+                res[purchase.id] = 'en_US'
+        return res
+
+    def get_untaxed_amount(self, cursor, user, purchases, context=None):
+        '''
+        Return the untaxed amount for each purchases
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            the untaxed amount as value
+        '''
         currency_obj = self.pool.get('currency.currency')
         res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
+        for purchase in purchases:
             res.setdefault(purchase.id, Decimal('0.0'))
             for line in purchase.lines:
                 if line.type != 'line':
@@ -296,13 +376,23 @@ class Purchase(OSV):
                     res[purchase.id])
         return res
 
-    def get_tax_amount(self, cursor, user, ids, name, arg, context=None):
+    def get_tax_amount(self, cursor, user, purchases, context=None):
+        '''
+        Return the tax amount for each purchases
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            the tax amount as value
+        '''
         currency_obj = self.pool.get('currency.currency')
         tax_obj = self.pool.get('account.tax')
         if context is None:
             context = {}
         res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
+        for purchase in purchases:
             ctx = context.copy()
             ctx.update(self.get_tax_context(cursor, user,
                 purchase, context=context))
@@ -319,17 +409,41 @@ class Purchase(OSV):
                     res[purchase.id])
         return res
 
-    def get_total_amount(self, cursor, user, ids, name, arg, context=None):
+    def get_total_amount(self, cursor, user, purchases, context=None):
+        '''
+        Return the total amount of each purchases
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            total amount as value
+        '''
         currency_obj = self.pool.get('currency.currency')
         res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
+        untaxed_amounts = self.get_untaxed_amount(cursor, user, purchases,
+                context=context)
+        tax_amounts = self.get_tax_amount(cursor, user, purchases,
+                context=context)
+        for purchase in purchases:
             res[purchase.id] = currency_obj.round(cursor, user, purchase.currency,
-                    purchase.untaxed_amount + purchase.tax_amount)
+                    untaxed_amounts[purchase.id] + tax_amounts[purchase.id])
         return res
 
-    def get_invoice_paid(self, cursor, user, ids, name, args, context=None):
+    def get_invoice_paid(self, cursor, user, purchases, context=None):
+        '''
+        Return if all invoices have been paid for each purchases
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            a boolean as value
+        '''
         res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
+        for purchase in purchases:
             val = True
             ignored_ids = [x.id for x in purchase.invoices_ignored]
             for invoice in purchase.invoices:
@@ -340,9 +454,19 @@ class Purchase(OSV):
             res[purchase.id] = val
         return res
 
-    def get_invoice_exception(self, cursor, user, ids, name, args, context=None):
+    def get_invoice_exception(self, cursor, user, purchases, context=None):
+        '''
+        Return if there is an invoice exception for each purchases
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            a boolean as value
+        '''
         res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
+        for purchase in purchases:
             val = False
             ignored_ids = [x.id for x in purchase.invoices_ignored]
             for invoice in purchase.invoices:
@@ -353,9 +477,19 @@ class Purchase(OSV):
             res[purchase.id] = val
         return res
 
-    def get_packings(self, cursor, user, ids, name, args, context=None):
+    def get_packings(self, cursor, user, purchases, context=None):
+        '''
+        Return the packings for the purchases.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            a list of packing_in id as value
+        '''
         res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
+        for purchase in purchases:
             res[purchase.id] = []
             for line in purchase.lines:
                 for move in line.moves:
@@ -364,17 +498,37 @@ class Purchase(OSV):
                             res[purchase.id].append(move.packing_in.id)
         return res
 
-    def get_moves(self, cursor, user, ids, name, args, context=None):
+    def get_moves(self, cursor, user, purchases, context=None):
+        '''
+        Return the moves for the purchases.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            a list of moves id as value
+        '''
         res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
+        for purchase in purchases:
             res[purchase.id] = []
             for line in purchase.lines:
                 res[purchase.id].extend([x.id for x in line.moves])
         return res
 
-    def get_packing_done(self, cursor, user, ids, name, args, context=None):
+    def get_packing_done(self, cursor, user, purchases, context=None):
+        '''
+        Return if all the move have been done for the purchases
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            a boolean as value
+        '''
         res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
+        for purchase in purchases:
             val = True
             for line in purchase.lines:
                 if not line.move_done:
@@ -383,10 +537,19 @@ class Purchase(OSV):
             res[purchase.id] = val
         return res
 
-    def get_packing_exception(self, cursor, user, ids, name, args,
-            context=None):
+    def get_packing_exception(self, cursor, user, purchases, context=None):
+        '''
+        Return if there is a packing in exception for the purchases
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchases: a BrowseRecordList of purchases
+        :param context: the context
+        :return: a dictionary with purchase id as key and
+            a boolean as value
+        '''
         res = {}
-        for purchase in self.browse(cursor, user, ids, context=context):
+        for purchase in purchases:
             val = False
             for line in purchase.lines:
                 if line.move_exception:
