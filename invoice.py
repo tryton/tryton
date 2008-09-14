@@ -2173,7 +2173,7 @@ class PayInvoiceInit(WizardOSV):
     _name = 'account.invoice.pay_invoice.init'
     amount = fields.Numeric('Amount', digits=(16, 2), required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
-    description = fields.char('Description', size=None, required=True)
+    description = fields.Char('Description', size=None, required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             domain=[('type', '=', 'cash')])
     date = fields.Date('Date', required=True)
@@ -2210,7 +2210,7 @@ class PayInvoiceAsk(WizardOSV):
             states={
                 'invisible': "type != 'writeoff'",
             })
-    description = fields.char('Description', size=None, readonly=True)
+    description = fields.Char('Description', size=None, readonly=True)
     journal = fields.Many2One('account.journal', 'Journal', readonly=True,
             domain=[('type', '=', 'cash')])
     date = fields.Date('Date', readonly=True)
