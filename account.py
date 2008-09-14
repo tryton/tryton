@@ -1583,7 +1583,7 @@ class OpenAgedBalanceInit(WizardOSV):
     term1 = fields.Integer("First Term", required=True)
     term2 = fields.Integer("Second Term", required=True)
     term3 = fields.Integer("Third Term", required=True)
-    unit = fields.selection(
+    unit = fields.Selection(
         [('day', 'Day'), ('month', 'Month')], "Unit", required=True)
     posted = fields.Boolean('Posted Move', help='Only posted move')
 
