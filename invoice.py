@@ -2148,6 +2148,10 @@ class Period(OSV):
 
     def write(self, cursor, user, ids, vals, context=None):
         invoice_obj = self.pool.get('account.invoice')
+
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
         for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
                 'out_refund_sequence', 'in_refund_sequence'):
             if vals.get(sequence):
