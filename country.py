@@ -42,7 +42,14 @@ class Country(OSV):
     def create(self, cursor, user, vals, context=None):
         if 'code' in vals:
             vals['code'] = vals['code'].upper()
-        return super(Country, self).create(cursor, user, vals, context=context)
+        new_id = super(Country, self).create(cursor, user, vals, context=context)
+        if 'module' in context:
+            cursor.execute('INSERT INTO ir_translation ' \
+                    '(name, lang, type, src, res_id, value, module, fuzzy) ' \
+                    'VALUES (%s, %s, %s, %s, %s, %s, %s, false)',
+                    ('relationship.country,name', 'en_US', 'model',
+                        vals['name'], new_id, '', context.get('module')))
+        return new_id
 
     def write(self, cursor, user, ids, vals, context=None):
         if 'code' in vals:
