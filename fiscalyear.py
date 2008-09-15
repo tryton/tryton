@@ -193,7 +193,7 @@ class CloseFiscalYearInit(WizardOSV):
             help='The period where the entries will be done.')
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             domain=[('centralised', '=', True)],
-            help='The journal whre the netries will be done.')
+            help='The journal whre the entries will be done.')
     entries_name = fields.Char('New entries name', size=None, required=True,
             help='The name for the new entries')
 
