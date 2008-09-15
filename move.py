@@ -182,8 +182,10 @@ class Move(OSV):
             if vals.get('type', 'internal') == 'input':
                 unit_price = product.cost_price
                 if vals.get('uom') and vals['uom'] != product.default_uom.id:
+                    uom = uom_obj.browse(cursor, user, vals['uom'],
+                            context=context)
                     unit_price = uom_obj.compute_price(cursor, user,
-                            product.default_uom, unit_price, vals['uom'],
+                            product.default_uom, unit_price, uom,
                             context=context)
                 if vals.get('currency') and vals.get('company'):
                     currency = currency_obj.browse(cursor, user,
