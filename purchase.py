@@ -733,7 +733,8 @@ class PurchaseLine(OSV):
             states={
                 'required': "product",
                 'invisible': "type != 'line'",
-            }, domain="[('category', '=', (product, 'product'))]",
+            }, domain="[('category', '=', " \
+                    "(product, 'product.default_uom.category'))]",
             on_change=['product', 'quantity', 'unit', '_parent_purchase.currency',
                 '_parent_purchase.party'])
     unit_digits = fields.Function('get_unit_digits', type='integer',
