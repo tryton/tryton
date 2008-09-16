@@ -19,7 +19,8 @@ class Move(OSV):
             on_change=['product', 'type', 'currency', 'uom', 'company'],
             domain=[('type', '!=', 'service')])
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,
-            domain="[('category', '=', (product, 'product'))]")
+            domain="[('category', '=', " \
+                    "(product, 'product.default_uom.category'))]")
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits', on_change_with=['uom'])
     quantity = fields.Float("Quantity", required=True,
