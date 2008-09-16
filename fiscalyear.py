@@ -127,6 +127,7 @@ class FiscalYear(OSV):
                     'end_date': period_end_date.strftime('%Y-%m-%d'),
                     'fiscalyear': fiscalyear.id,
                     'post_move_sequence': fiscalyear.post_move_sequence.id,
+                    'type': 'standard',
                     }, context=context)
                 period_start_date = period_end_date + \
                         mx.DateTime.RelativeDateTime(days=1)

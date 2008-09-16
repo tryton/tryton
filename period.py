@@ -15,18 +15,24 @@ class Period(OSV):
     _name = 'account.period'
     _description = __doc__
 
-    name = fields.Char('Name', size=None, required=True)
-    code = fields.Char('Code', size=None)
-    start_date = fields.Date('Starting Date', required=True, states=_STATES)
-    end_date = fields.Date('Ending Date', required=True, states=_STATES)
+    name = fields.Char('Name', required=True)
+    code = fields.Char('Code')
+    start_date = fields.Date('Starting Date', required=True, states=_STATES,
+            select=1)
+    end_date = fields.Date('Ending Date', required=True, states=_STATES,
+            select=1)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True, states=_STATES)
+            required=True, states=_STATES, select=1)
     state = fields.Selection([
         ('open', 'Open'),
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
     post_move_sequence =fields.Many2One('ir.sequence', 'Post Move Sequence',
             required=True, domain="[('code', '=', 'account.move')]")
+    type = fields.Selection([
+        ('standard', 'Standard'),
+        ('adjustment', 'Adjustment'),
+        ], 'Type', required=True, select=1, states=_STATES, select=1)
 
     def __init__(self):
         super(Period, self).__init__()
@@ -56,14 +62,20 @@ class Period(OSV):
     def default_state(self, cursor, user, context=None):
         return 'open'
 
+    def default_type(self, cursor, user, context=None):
+        return 'standard'
+
     def check_dates(self, cursor, user, ids):
         for period in self.browse(cursor, user, ids):
+            if period.type != 'standard':
+                continue
             cursor.execute('SELECT id ' \
                     'FROM ' + self._table + ' ' \
                     'WHERE ((start_date <= %s AND end_date >= %s) ' \
                             'OR (start_date <= %s AND end_date >= %s) ' \
                             'OR (start_date >= %s AND end_date <= %s)) ' \
                         'AND fiscalyear = %s ' \
+                        'AND type = \'standard\' ' \
                         'AND id != %s',
                     (period.start_date, period.start_date,
                         period.end_date, period.end_date,
@@ -82,7 +94,7 @@ class Period(OSV):
                 return False
         return True
 
-    def find(self, cursor, user, company_id, date=None, exception=True, 
+    def find(self, cursor, user, company_id, date=None, exception=True,
             context=None):
         '''
         Return the period for the company_id
@@ -96,6 +108,7 @@ class Period(OSV):
             ('start_date', '<=', date),
             ('end_date', '>=', date),
             ('fiscalyear.company', '=', company_id),
+            ('type', '=', 'standard'),
             ], order=[('start_date', 'DESC')], limit=1, context=context)
         if not ids:
             if exception:
