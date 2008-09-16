@@ -32,7 +32,7 @@ class Period(OSV):
     type = fields.Selection([
         ('standard', 'Standard'),
         ('adjustment', 'Adjustment'),
-        ], 'Type', required=True, select=1, states=_STATES, select=1)
+        ], 'Type', required=True, states=_STATES, select=1)
 
     def __init__(self):
         super(Period, self).__init__()
