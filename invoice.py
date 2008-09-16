@@ -2064,17 +2064,33 @@ FiscalYear()
 class Period(OSV):
     _name = 'account.period'
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
-            'Customer Invoice Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            'Customer Invoice Sequence',
+            domain="[('code', '=', 'account.invoice')]",
+            states={
+                'required': "type == 'standard'",
+                'invisible': "type != 'standard'",
+            })
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
-            'Supplier Invoice Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            'Supplier Invoice Sequence',
+            domain="[('code', '=', 'account.invoice')]",
+            states={
+                'required': "type == 'standard'",
+                'invisible': "type != 'standard'",
+            })
     out_refund_sequence = fields.Many2One('ir.sequence.strict',
-            'Customer Refund Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            'Customer Refund Sequence',
+            domain="[('code', '=', 'account.invoice')]",
+            states={
+                'required': "type == 'standard'",
+                'invisible': "type != 'standard'",
+            })
     in_refund_sequence = fields.Many2One('ir.sequence.strict',
-            'Supplier Refund Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            'Supplier Refund Sequence',
+            domain="[('code', '=', 'account.invoice')]",
+            states={
+                'required': "type == 'standard'",
+                'invisible': "type != 'standard'",
+            })
 
     def __init__(self):
         super(Period, self).__init__()
