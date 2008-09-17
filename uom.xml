@@ -87,8 +87,6 @@
               <![CDATA[
               <tree string="Categories of Unit of Measure">
                     <field name="name" select="1"/>
-                    <field name="parent" select="1"/>
-                    <field name="complete_name"/>
               </tree>
               ]]>
             </field>
@@ -102,12 +100,6 @@
                 <form string="Category of Unit of Measure" col="6">
                     <label name="name"/>
                     <field name="name"/>
-                    <label name="parent"/>
-                    <field name="parent"/>
-                    <label name="complete_name"/>
-                    <field name="complete_name" />
-                    <label name="childs"/>
-                    <field name="childs" />
                 </form>
                 ]]>
             </field>
