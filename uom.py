@@ -10,7 +10,7 @@ class UomCategory(OSV):
     'Product uom category'
     _name = 'product.uom.category'
     _description = __doc__
-    name = fields.Char('Name', size=64, required=True)
+    name = fields.Char('Name', required=True, translate=True)
     uoms = fields.One2Many('product.uom', 'category', 'Unit of Measures')
 
     def __init__(self):

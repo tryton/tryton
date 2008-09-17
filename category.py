@@ -7,7 +7,7 @@ class Category(OSV):
     _name = "product.category"
     _description = __doc__
 
-    name = fields.Char('Name', size=None, required=True)
+    name = fields.Char('Name', required=True, translate=True)
     complete_name = fields.Function('get_complete_name', type="char",
             string='Complete Name')
     parent = fields.Many2One('product.category','Parent', select=1)
