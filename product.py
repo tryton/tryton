@@ -94,10 +94,11 @@ class Product(OSV):
         location_obj = self.pool.get('stock.location')
         if not location_ids:
             return []
-
-         # Skip warehouse location in favor of their storage location
-         # to compute quantities. Keep track of which ids to remove
-         # and to add after the query.
+        if not context:
+            context= {}
+        # Skip warehouse location in favor of their storage location
+        # to compute quantities. Keep track of which ids to remove
+        # and to add after the query.
         location_ids = set(location_ids)
         storage_to_remove = set()
         wh_to_add= {}
