@@ -108,7 +108,7 @@ class CreatePurchase(Wizard):
                 if (key[0], key[1]) == (form['party'],
                                         form['company']):
                     val['payment_term'] = form['payment_term']
-            local_context = context.copy()
+            local_context = context and context.copy() or {}
             local_context['company'] = form['company']
             party_obj.write(
                 cursor, user, form['party'],
