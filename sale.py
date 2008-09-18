@@ -60,7 +60,7 @@ class Sale(OSV):
             })
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
-            'readonly': "state != 'draft' or bool(lines)",
+            'readonly': "state != 'draft' or (bool(lines) and bool(currency))",
         })
     currency_digits = fields.Function('get_function_fields', type='integer',
             string='Currency Digits', on_change_with=['currency'])
