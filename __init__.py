@@ -3,4 +3,3 @@
 from order_point import *
 from product import *
 from purchase_request import *
-from supply_schedule import *
