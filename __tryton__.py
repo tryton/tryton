@@ -15,6 +15,7 @@
     ],
     'xml': [
         'company.xml',
+        'cron.xml',
     ],
     'translation': [
         'fr_FR.csv',
