@@ -939,9 +939,11 @@ class PurchaseLine(OSV):
                         vals['_parent_purchase.currency'], context=context)
             else:
                 currency = vals['_parent_purchase.currency']
-            return currency_obj.round(cursor, user, currency,
-                    Decimal(str(vals.get('quantity') or '0.0')) * \
-                    (vals.get('unit_price') or Decimal('0.0')))
+            amount = Decimal(str(vals.get('quantity') or '0.0')) * \
+                    (vals.get('unit_price') or Decimal('0.0'))
+            if currency:
+                return currency_obj.round(cursor, user, currency, amount)
+            return amount
         return Decimal('0.0')
 
     def get_amount(self, cursor, user, ids, name, arg, context=None):
