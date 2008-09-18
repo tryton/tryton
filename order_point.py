@@ -15,7 +15,8 @@ class OrderPoint(OSV):
         'product.product', 'Product', required=True, select=True,
         domain=[('type', '=', 'stockable')])
     location = fields.Many2One(
-        'stock.location', 'Location', required=True, select=True)
+        'stock.location', 'Location', required=True, select=True,
+        domain="[('type', '=', 'warehouse')]")
     min_quantity = fields.Float('Minimal Quantity', required=True)
     max_quantity = fields.Float('Maximal Quantity', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
