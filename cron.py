@@ -13,7 +13,10 @@ class Cron(OSV):
         cursor.execute("SELECT company,cron from cron_company_rel "
                        "WHERE cron = %s", (job_id,))
         for company, cron in cursor.fetchall():
-            cursor.execute("UPDATE res_user SET company = %s "
-                           "WHERE id = %s", (company,user))
+            cursor.execute("UPDATE res_user SET company = %s, main_company = %s "
+                           "WHERE id = %s", (company, company, user))
             super(Cron, self)._callback(cursor, user, job_id, model, func, args)
+        cursor.execute("UPDATE res_user SET company = NULL, main_company = NULL "
+                       "WHERE id = %s", (user,))
+
 Cron()
