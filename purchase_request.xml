@@ -109,5 +109,25 @@
             <field name="operand">User/Current Company</field>
             <field name="rule_group" ref="rule_group_purchase_request"/>
         </record>
+
+        <record model="res.user" id="user_generate_request">
+            <field name="login">user_cron_purchase_request</field>
+            <field name="name">User Purchase Request</field>
+            <field name="signature"></field>
+        </record>
+
+        <record model="ir.cron" id="cron_generate_request">
+            <field name="name">Generate Purchase Requests</field>
+            <field name="user" ref="user_generate_request"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model">stock.purchase_request</field>
+            <field name="function">generate_requests</field>
+            <field name="priority">5</field>
+        </record>
+
     </data>
 </tryton>
