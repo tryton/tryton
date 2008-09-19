@@ -1369,3 +1369,30 @@ class Move(OSV):
         return res
 
 Move()
+
+
+class Invoice(OSV):
+    _name = 'account.invoice'
+
+    def __init__(self):
+        super(Invoice, self).__init__()
+        self._error_messages.update({
+            'delete_sale_invoice': 'You can not delete invoices ' \
+                    'that comes from a sale!',
+            })
+
+    def delete(self, cursor, user, ids, context=None):
+        if not ids:
+            return True
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        cursor.execute('SELECT id FROM sale_invoices_rel ' \
+                'WHERE invoice IN (' + ','.join(['%s' for x in ids]) + ')',
+                ids)
+        if cursor.rowcount:
+            self.raise_user_error(cursor, 'delete_sale_invoice',
+                    context=context)
+        return super(Invoice, self).delete(cursor, user, ids,
+                context=context)
+
+Invoice()
