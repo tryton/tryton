@@ -1433,3 +1433,30 @@ class OpenSupplier(Wizard):
         return res
 
 OpenSupplier()
+
+
+class Invoice(OSV):
+    _name = 'account.invoice'
+
+    def __init__(self):
+        super(Invoice, self).__init__()
+        self._error_messages.update({
+            'delete_purchase_invoice': 'You can not delete invoices ' \
+                    'that comes from a purchase!',
+            })
+
+    def delete(self, cursor, user, ids, context=None):
+        if not ids:
+            return True
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        cursor.execute('SELECT id FROM purchase_invoices_rel ' \
+                'WHERE invoice IN (' + ','.join(['%s' for x in ids]) + ')',
+                ids)
+        if cursor.rowcount:
+            self.raise_user_error(cursor, 'delete_purchase_invoice',
+                    context=context)
+        return super(Invoice, self).delete(cursor, user, ids,
+                context=context)
+
+Invoice()
