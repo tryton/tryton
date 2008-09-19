@@ -38,6 +38,7 @@ class Period(OSV):
         super(Period, self).__init__()
         self._constraints += [
             ('check_dates', 'periods_overlaps'),
+            ('check_fiscalyear_dates', 'fiscalyear_dates'),
             ('check_post_move_sequence', 'different_move_sequence'),
         ]
         self._order.insert(0, ('start_date', 'ASC'))
@@ -57,6 +58,8 @@ class Period(OSV):
             'periods_overlaps': 'You can not have 2 periods that overlaps!',
             'different_move_sequence': 'You must have different ' \
                     'post move sequence per fiscal year!',
+            'fiscalyear_dates': 'The period dates must be in ' \
+                    'the fiscal year dates',
             })
 
     def default_state(self, cursor, user, context=None):
@@ -82,6 +85,13 @@ class Period(OSV):
                         period.start_date, period.end_date,
                         period.fiscalyear.id, period.id))
             if cursor.rowcount:
+                return False
+        return True
+
+    def check_fiscalyear_dates(self, cursor, user, ids):
+        for period in self.browse(cursor, user, ids):
+            if period.start_date < period.fiscalyear.start_date \
+                    or period.end_date > period.fiscalyear.end_date:
                 return False
         return True
 
