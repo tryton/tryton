@@ -962,6 +962,8 @@ class Invoice(OSV):
         return res
 
     def delete(self, cursor, user, ids, context=None):
+        if not ids:
+            return True
         if isinstance(ids, (int, long)):
             ids = [ids]
         self.check_modify(cursor, user, ids, context=context)
