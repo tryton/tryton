@@ -1178,7 +1178,8 @@ Move2()
 class OpenJournalAsk(WizardOSV):
     _name = 'account.move.open_journal.ask'
     journal = fields.Many2One('account.journal', 'Journal', required=True)
-    period = fields.Many2One('account.period', 'Period', required=True)
+    period = fields.Many2One('account.period', 'Period', required=True,
+            domain=[('state', '!=', 'close')])
 
     def default_period(self, cursor, user, context=None):
         period_obj = self.pool.get('account.period')
