@@ -823,8 +823,14 @@ class Line(OSV):
 
     def query_get(self, cursor, user, obj='l', context=None):
         '''
-        Return SQL clause for account move line depending of the context.
-        obj is the SQL alias of the account_move_line in the query.
+        Return SQL clause and fiscal years for account move line
+        depending of the context.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param obj: the SQL alias of account_move_line in the query
+        :param context: the context
+        :return: a tuple with the SQL clause and the fiscalyear ids
         '''
         fiscalyear_obj = self.pool.get('account.fiscalyear')
         if context is None:
@@ -838,7 +844,7 @@ class Line(OSV):
             if not fiscalyear_ids:
                 fiscalyear_ids = [0]
             if context.get('posted'):
-                return obj + '.active ' \
+                return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
                             'SELECT m.id FROM account_move AS m, ' \
@@ -849,9 +855,9 @@ class Line(OSV):
                                     'AND m.date <= \'' + \
                                         str(context['date']) + '\' ' \
                                     'AND m.state = \'posted\' ' \
-                            ')'
+                            ')', fiscalyear_ids)
             else:
-                return obj + '.active ' \
+                return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
                             'SELECT m.id FROM account_move AS m, ' \
@@ -861,7 +867,7 @@ class Line(OSV):
                                         str(fiscalyear_ids[0]) + ' ' \
                                     'AND m.date <= \'' + \
                                         str(context['date']) + '\'' \
-                            ')'
+                            ')', fiscalyear_ids)
 
         if not context.get('fiscalyear', False):
             fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
@@ -869,28 +875,29 @@ class Line(OSV):
                 ], context=context)
             fiscalyear_clause = (','.join([str(x) for x in fiscalyear_ids])) or '0'
         else:
+            fiscalyear_ids = [int(context.get('fiscalyear'))]
             fiscalyear_clause = '%s' % int(context.get('fiscalyear'))
 
         if context.get('periods', False):
             ids = ','.join([str(int(x)) for x in context['periods']])
             if context.get('posted'):
-                return obj + '.active ' \
+                return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
                             'SELECT id FROM account_move ' \
                                 'WHERE period IN (' + ids + ') ' \
                                     'AND state = \'posted\' ' \
-                            ')'
+                            ')', [])
             else:
-                return obj + '.active ' \
+                return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
                             'SELECT id FROM account_move ' \
                                 'WHERE period IN (' + ids + ')' \
-                            ')'
+                            ')', [])
         else:
             if context.get('posted'):
-                return obj + '.active ' \
+                return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
                             'SELECT id FROM account_move ' \
@@ -899,9 +906,9 @@ class Line(OSV):
                                     'WHERE fiscalyear IN (' + fiscalyear_clause + ')' \
                                     ') ' \
                                     'AND state = \'posted\' ' \
-                            ')'
+                            ')', fiscalyear_ids)
             else:
-                return obj + '.active ' \
+                return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
                             'SELECT id FROM account_move ' \
@@ -909,7 +916,7 @@ class Line(OSV):
                                     'SELECT id FROM account_period ' \
                                     'WHERE fiscalyear IN (' + fiscalyear_clause + ')' \
                                 ')' \
-                            ')'
+                            ')', fiscalyear_ids)
 
     def on_write(self, cursor, user, ids, context=None):
         lines = self.browse(cursor, user, ids, context)
@@ -1574,7 +1581,7 @@ class Party(OSV):
                     'OR l.maturity_date IS NULL) '
             today_value = [datetime.date.today()]
 
-        line_query = move_line_obj.query_get(cursor, user_id, context=context)
+        line_query, _ = move_line_obj.query_get(cursor, user_id, context=context)
 
         cursor.execute('SELECT l.party, ' \
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
@@ -1634,7 +1641,7 @@ class Party(OSV):
                     'OR l.maturity_date IS NULL) '
             today_value = [datetime.date.today()]
 
-        line_query = move_line_obj.query_get(cursor, user_id, context=context)
+        line_query, _ = move_line_obj.query_get(cursor, user_id, context=context)
 
         cursor.execute('SELECT l.party ' \
                 'FROM account_move_line AS l, ' \

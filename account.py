@@ -240,16 +240,6 @@ class AccountTemplate(OSV):
             states={
                 'invisible': "kind == 'view'",
             })
-    close_method = fields.Selection([
-        ('none', 'None'),
-        ('balance', 'Balance'),
-        ('detail', 'Detail'),
-        ('unreconciled', 'Unreconciled'),
-        ], 'Deferral method',
-            states={
-                'invisible': "kind == 'view'",
-                'required': "kind != 'view'",
-            })
     kind = fields.Selection([
         ('other', 'Other'),
         ('payable', 'Payable'),
@@ -258,6 +248,9 @@ class AccountTemplate(OSV):
         ('expense', 'Expense'),
         ('view', 'View'),
         ], 'Kind', required=True)
+    deferral = fields.Boolean('Deferral', states={
+        'invisible': "kind == 'view'",
+        })
 
     def __init__(self):
         super(AccountTemplate, self).__init__()
@@ -275,6 +268,9 @@ class AccountTemplate(OSV):
 
     def default_reconcile(self, cursor, user, context=None):
         return False
+
+    def default_deferral(self, cursor, user, context=None):
+        return True
 
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
@@ -320,7 +316,7 @@ class AccountTemplate(OSV):
         res['code'] = template.code
         res['kind'] = template.kind
         res['reconcile'] = template.reconcile
-        res['close_method'] = template.close_method
+        res['deferral'] = template.deferral
         res['taxes'] = [('add', x.id) for x in template.taxes]
         return res
 
@@ -420,22 +416,6 @@ class Account(OSV):
             states={
                 'invisible': "kind == 'view'",
             })
-    close_method = fields.Selection([
-        ('none', 'None'),
-        ('balance', 'Balance'),
-        ('detail', 'Detail'),
-        ('unreconciled', 'Unreconciled'),
-        ], 'Deferral method',
-            help='How to process the lines of this account ' \
-                    'when closing the fiscal year\n' \
-                    '- None: to start with an empty account\n'
-                    '- Balance: to create one entry to keep the balance\n'
-                    '- Detail: to keep all entries\n'
-                    '- Unreconciled: to keep all unreconciled entries',
-            states={
-                'invisible': "kind == 'view'",
-                'required': "kind != 'view'",
-            })
     note = fields.Text('Note')
     kind = fields.Selection([
         ('other', 'Other'),
@@ -445,6 +425,13 @@ class Account(OSV):
         ('expense', 'Expense'),
         ('view', 'View'),
         ], 'Kind', required=True)
+    deferral = fields.Boolean('Deferral', states={
+        'invisible': "kind == 'view'",
+        })
+    deferrals = fields.One2Many('account.account.deferral', 'account',
+            'Deferrals', readonly=True, states={
+                'invisible': "kind == 'view'",
+            })
 
     def __init__(self):
         super(Account, self).__init__()
@@ -482,8 +469,8 @@ class Account(OSV):
     def default_reconcile(self, cursor, user, context=None):
         return False
 
-    def default_close_method(self, cursor, user, context=None):
-        return 'balance'
+    def default_deferral(self, cursor, user, context=None):
+        return True
 
     def default_kind(self, cursor, user, context=None):
         return 'view'
@@ -520,11 +507,17 @@ class Account(OSV):
         company_obj = self.pool.get('company.company')
         currency_obj = self.pool.get('currency.currency')
         move_line_obj = self.pool.get('account.move.line')
+        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        deferral_obj = self.pool.get('account.account.deferral')
+
+        if context is None:
+            context = {}
 
         query_ids, args_ids = self.search(cursor, user, [
             ('parent', 'child_of', ids),
             ], context=context, query_string=True)
-        line_query = move_line_obj.query_get(cursor, user, context=context)
+        line_query, fiscalyear_ids = move_line_obj.query_get(cursor, user,
+                context=context)
         cursor.execute('SELECT a.id, ' \
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
                 'FROM account_account a ' \
@@ -563,6 +556,52 @@ class Account(OSV):
                 res[account_id] += currency_obj.compute(cursor, user,
                         from_currency, account_sum.get(child_id, Decimal('0.0')),
                         to_currency, round=True, context=context)
+
+        youngest_fiscalyear = None
+        for fiscalyear in fiscalyear_obj.browse(cursor, user, fiscalyear_ids,
+                context=context):
+            if not youngest_fiscalyear \
+                    or youngest_fiscalyear.start_date > fiscalyear.start_date:
+                youngest_fiscalyear = fiscalyear
+
+        fiscalyear = None
+        if youngest_fiscalyear:
+            fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
+                ('end_date', '<=', youngest_fiscalyear.start_date),
+                ('company', '=', youngest_fiscalyear.company),
+                ], order=[('end_date', 'DESC')], limit=1, context=context)
+            if fiscalyear_ids:
+                fiscalyear = fiscalyear_obj.browse(cursor, user,
+                        fiscalyear_ids[0], context=context)
+
+        if fiscalyear:
+            if fiscalyear.state == 'close':
+                deferral_ids = deferral_obj.search(cursor, user, [
+                    ('fiscalyear', '=', fiscalyear.id),
+                    ('account', 'in', ids),
+                    ], context=context)
+                id2deferral = {}
+                for deferral in deferral_obj.browse(cursor, user, deferral_ids,
+                        context=context):
+                    id2deferral[deferral.account.id] = deferral
+
+                for account_id in ids:
+                    if account_id in id2deferral:
+                        deferral = id2deferral[account_id]
+                        res[account_id] += deferral.debit - deferral.credit
+            else:
+                ctx = context.copy()
+                ctx['fiscalyear'] = fiscalyear.id
+                if 'date' in context:
+                    del context['date']
+                res2 = self.get_balance(cursor, user, ids, name, arg,
+                        context=ctx)
+                for account_id in ids:
+                    res[account_id] += res2[account_id]
+
+        for account_id in ids:
+            company_id = account2company[account_id]
+            to_currency = id2company[company_id].currency
             res[account_id] = currency_obj.round(cursor, user, to_currency,
                     res[account_id])
         return res
@@ -584,13 +623,19 @@ class Account(OSV):
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
         currency_obj = self.pool.get('currency.currency')
+        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        deferral_obj = self.pool.get('account.account.deferral')
+
+        if context is None:
+            context = {}
 
         for name in names:
             if name not in ('credit', 'debit'):
                 raise Exception('Bad argument')
             res[name] = {}
 
-        line_query = move_line_obj.query_get(cursor, user, context=context)
+        line_query, fiscalyear_ids = move_line_obj.query_get(cursor, user,
+                context=context)
         cursor.execute('SELECT a.id, ' + \
                     ','.join(['SUM(COALESCE(l.' + name + ', 0))'
                         for name in names]) + ' ' \
@@ -618,6 +663,52 @@ class Account(OSV):
         for account_id in ids:
             for name in names:
                 res[name].setdefault(account_id, Decimal('0.0'))
+
+        youngest_fiscalyear = None
+        for fiscalyear in fiscalyear_obj.browse(cursor, user, fiscalyear_ids,
+                context=context):
+            if not youngest_fiscalyear \
+                    or youngest_fiscalyear.start_date > fiscalyear.start_date:
+                youngest_fiscalyear = fiscalyear
+
+        fiscalyear = None
+        if youngest_fiscalyear:
+            fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
+                ('end_date', '<=', youngest_fiscalyear.start_date),
+                ('company', '=', youngest_fiscalyear.company),
+                ], order=[('end_date', 'DESC')], limit=1, context=context)
+            if fiscalyear_ids:
+                fiscalyear = fiscalyear_obj.browse(cursor, user,
+                        fiscalyear_ids[0], context=context)
+
+        if fiscalyear:
+            if fiscalyear.state == 'close':
+                deferral_ids = deferral_obj.search(cursor, user, [
+                    ('fiscalyear', '=', fiscalyear.id),
+                    ('account', 'in', ids),
+                    ], context=context)
+                id2deferral = {}
+                for deferral in deferral_obj.browse(cursor, user, deferral_ids,
+                        context=context):
+                    id2deferral[deferral.account.id] = deferral
+
+                for account_id in ids:
+                    if account_id in id2deferral:
+                        deferral = id2deferral[account_id]
+                        for name in names:
+                            res[name][account_id] += deferral[name]
+            else:
+                ctx = context.copy()
+                ctx['fiscalyear'] = fiscalyear.id
+                if 'date' in context:
+                    del context['date']
+                res2 = self.get_credit_debit(cursor, user, ids, names, arg,
+                        context=ctx)
+                for account_id in ids:
+                    for name in names:
+                        res[name][account_id] += res2[name][account_id]
+
+        for account_id in ids:
             company_id = account2company[account_id]
             currency = id2company[company_id].currency
             for name in names:
@@ -680,6 +771,52 @@ class Account(OSV):
                 context=context)
 
 Account()
+
+
+class AccountDeferral(OSV):
+    '''
+    Account Deferral
+
+    It is used to deferral the debit/credit of account by fiscal year.
+    '''
+    _name = 'account.account.deferral'
+    _description = 'Account Deferral'
+
+    account = fields.Many2One('account.account', 'Account', required=True,
+            select=1)
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+            required=True, select=1)
+    debit = fields.Numeric('Debit', digits=(16, 2))
+    credit = fields.Numeric('Credit', digits=(16, 2))
+
+    def __init__(self):
+        super(AccountDeferral, self).__init__()
+        self._sql_constraints += [
+            ('deferral_uniq', 'UNIQUE(account, fiscalyear)',
+                'Deferral must be unique by account and fiscal year'),
+        ]
+
+    def name_get(self, cursor, user, ids, context=None):
+        if not ids:
+            return []
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        return [(r.id, r.account.name + ' - ' + r.fiscalyear.name) for r in
+                self.browse(cursor, user, ids, context=context)]
+
+    def name_search(self, cursor, user, name='', args=None, operator='ilike',
+            context=None, limit=None):
+        if args is None:
+            args = []
+        args = args[:]
+        if name:
+            args = ['AND', args, ['OR', ('account.name', operator, name),
+                ('fiscalyear.name', operator, name)]]
+        ids = self.search(cursor, user, args, limit=limit, context=context)
+        res = self.name_get(cursor, user, ids, context=context)
+        return res
+
+AccountDeferral()
 
 
 class OpenChartAccountInit(WizardOSV):
@@ -1531,7 +1668,7 @@ class ThirdPartyBalance(Report):
         context['company'] = company
         context['digits'] = company.currency.digits
         context['fiscalyear'] = datas['form']['fiscalyear']
-        line_query = move_line_obj.query_get(cursor, user, context=context)
+        line_query, _ = move_line_obj.query_get(cursor, user, context=context)
         if datas['form']['posted']:
             posted_clause = "and m.state = 'posted' "
         else:
@@ -1681,7 +1818,7 @@ class AgedBalance(Report):
         context['digits'] = company.currency.digits
         context['fiscalyear'] = datas['form']['fiscalyear']
         context['posted'] = datas['form']['posted']
-        line_query = move_line_obj.query_get(cursor, user, context=context)
+        line_query, _ = move_line_obj.query_get(cursor, user, context=context)
 
         terms = (datas['form']['term1'],
                   datas['form']['term2'],

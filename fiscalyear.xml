@@ -39,6 +39,13 @@
                             <field name="post_move_sequence"/>
                         </page>
                     </notebook>
+                    <label string="" colspan="2"/>
+                    <group col="1" colspan="2">
+                        <button name="close" string="Close" type="object"
+                            states="{'invisible': '''state != 'open' '''}"/>
+                        <button name="reopen" string="Re-Open" type="object"
+                            states="{'invisible': '''state != 'close' '''}"/>
+                    </group>
                 </form>
                 ]]>
             </field>
@@ -82,14 +89,6 @@
                 <form string="Close Fiscal Year">
                     <label name="close_fiscalyear"/>
                     <field name="close_fiscalyear"/>
-                    <label name="fiscalyear"/>
-                    <field name="fiscalyear"/>
-                    <label name="period"/>
-                    <field name="period"/>
-                    <label name="journal"/>
-                    <field name="journal"/>
-                    <label name="entries_name"/>
-                    <field name="entries_name" colspan="3"/>
                 </form>
                 ]]>
             </field>
@@ -101,15 +100,5 @@
         </record>
         <menuitem parent="menu_processing" action="act_close_fiscalyear"
             id="menu_close_fiscalyear"/>
-
-        <record model="ir.action.wizard" id="act_reopen_fiscalyear">
-            <field name="name">Re-Open Fiscal Years</field>
-            <field name="wiz_name">account.fiscalyear.reopen_fiscalyear</field>
-        </record>
-        <record model="ir.action.keyword" id="act_reopen_fiscalyear_keyword">
-            <field name="keyword">form_action</field>
-            <field name="model">account.fiscalyear,0</field>
-            <field name="action" ref="act_reopen_fiscalyear"/>
-        </record>
     </data>
 </tryton>

@@ -222,6 +222,19 @@ class Period(OSV):
         return super(Period, self).delete(cursor, user, ids, vals,
                 context=context)
 
+    def close(self, cursor, user, ids, context=None):
+        '''
+        Close journal - period
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param ids: the journal - period ids
+        :param context: the context
+        '''
+        self.write(cursor, user, ids, {
+            'state': 'close',
+            }, context=context)
+
 Period()
 
 
@@ -240,9 +253,8 @@ class ClosePeriod(Wizard):
 
     def _close(self, cursor, user, data, context=None):
         journal_period_obj = self.pool.get('account.journal.period')
-        journal_period_obj.write(cursor, user, data['ids'], {
-            'state': 'close',
-            }, context=context)
+        journal_period_obj.close(cursor, user, data['ids'],
+                context=context)
         return {}
 
 ClosePeriod()

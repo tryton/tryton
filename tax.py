@@ -172,7 +172,7 @@ class Code(OSV):
         child_ids = self.search(cursor, user, [('parent', 'child_of', ids)],
                 context=context)
         all_ids = {}.fromkeys(ids + child_ids).keys()
-        line_query = move_line_obj.query_get(cursor, user, context=context)
+        line_query, _ = move_line_obj.query_get(cursor, user, context=context)
         cursor.execute('SELECT c.id, ' \
                     'SUM(tl.amount) ' \
                 'FROM account_tax_code c, ' \
