@@ -137,7 +137,7 @@ class Period(OSV):
             i = 0
             while i < len(args):
                 if isinstance(args[i], list):
-                    process_args(args)
+                    process_args(args[i])
                 if isinstance(args[i], tuple) \
                         and args[i][0] in ('start_date', 'end_date') \
                         and isinstance(args[i][2], (list, tuple)):
