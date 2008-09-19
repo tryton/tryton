@@ -253,6 +253,22 @@
             <field name="model">account.account,0</field>
             <field name="action" ref="act_open_account"/>
         </record>
+
+        <record model="ir.ui.view" id="open_journal_ask_view_form">
+            <field name="model">account.move.open_journal.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Journal">
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="period"/>
+                    <field name="period"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.action.wizard" id="act_open_journal">
             <field name="name">Open Journal</field>
             <field name="wiz_name">account.move.open_journal</field>
