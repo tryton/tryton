@@ -119,6 +119,7 @@ class Period(OSV):
             ('end_date', '>=', date),
             ('fiscalyear.company', '=', company_id),
             ('type', '=', 'standard'),
+            ('state', '!=', 'close'),
             ], order=[('start_date', 'DESC')], limit=1, context=context)
         if not ids:
             if exception:
