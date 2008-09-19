@@ -1029,6 +1029,7 @@ class Line(OSV):
                 vals['move'] = move_obj.create(cursor, user, {
                     'period': vals.get('period', context.get('period')),
                     'journal': vals.get('journal', context.get('journal')),
+                    'date': vals.get('date', False),
                     }, context=context)
         res = super(Line, self).create(cursor, user, vals, context=context)
         line = self.browse(cursor, user, res, context=context)
