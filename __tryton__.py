@@ -20,4 +20,7 @@
         'account.xml',
         'line.xml',
     ],
+    'translation': [
+        'de_DE.csv',
+    ],
 }
