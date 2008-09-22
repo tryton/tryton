@@ -797,6 +797,9 @@ class AccountDeferral(OSV):
             ('deferral_uniq', 'UNIQUE(account, fiscalyear)',
                 'Deferral must be unique by account and fiscal year'),
         ]
+        self._error_messages.update({
+            'write_deferral': 'You can not modify Account Deferral records',
+            })
 
     def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
         res = {}
@@ -823,6 +826,9 @@ class AccountDeferral(OSV):
         ids = self.search(cursor, user, args, limit=limit, context=context)
         res = self.name_get(cursor, user, ids, context=context)
         return res
+
+    def write(self, cursor, user, ids, vals, context=None):
+        self.raise_user_error(cursor, 'write_deferral', context=context)
 
 AccountDeferral()
 
