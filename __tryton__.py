@@ -23,4 +23,7 @@
         'move.xml',
         'inventory.xml',
     ],
+    'translation': [
+        'de_DE.csv',
+    ],
 }
