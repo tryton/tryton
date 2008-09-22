@@ -15,4 +15,7 @@
     'xml': [
         'purchase.xml',
     ],
+    'translation': [
+        'de_DE.csv',
+    ],
 }
