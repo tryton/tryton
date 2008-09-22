@@ -21,17 +21,17 @@ class Currency(OSV):
     active = fields.Boolean('Active')
 
     # monetary formatting
-    mon_grouping = fields.Char('mon_grouping', required=True)
-    mon_decimal_point = fields.Char('mon_decimal_point', required=True)
-    mon_thousands_sep = fields.Char('mon_thousands_sep')
-    p_sign_posn = fields.Integer('p_sign_posn')
-    n_sign_posn = fields.Integer('n_sign_posn')
-    negative_sign = fields.Char('negative_sign')
-    positive_sign = fields.Char('positive_sign')
-    p_cs_precedes = fields.Boolean('p_cs_precedes')
-    n_cs_precedes = fields.Boolean('n_cs_precedes')
-    p_sep_by_space = fields.Boolean('p_sep_by_space')
-    n_sep_by_space = fields.Boolean('n_sep_by_space')
+    mon_grouping = fields.Char('Grouping', required=True)
+    mon_decimal_point = fields.Char('Decimal Separator', required=True)
+    mon_thousands_sep = fields.Char('Thousands Separator')
+    p_sign_posn = fields.Integer('Positive Sign Position')
+    n_sign_posn = fields.Integer('Negative Sign Position')
+    positive_sign = fields.Char('Positive Sign')
+    negative_sign = fields.Char('Negative Sign')
+    p_cs_precedes = fields.Boolean('Positive Sign Precedes')
+    n_cs_precedes = fields.Boolean('Negative Sign Precedes')
+    p_sep_by_space = fields.Boolean('Positive Sign Separate by Space')
+    n_sep_by_space = fields.Boolean('Negative Sign Separate by Space')
 
     def __init__(self):
         super(Currency, self).__init__()

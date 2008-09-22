@@ -63,10 +63,10 @@
                             <label name="mon_decimal_point"/>
                             <field name="mon_decimal_point"/>
                             <newline/>
-                            <label name="negative_sign"/>
-                            <field name="negative_sign"/>
                             <label name="positive_sign"/>
                             <field name="positive_sign"/>
+                            <label name="negative_sign"/>
+                            <field name="negative_sign"/>
                             <newline/>
                             <label name="p_sign_posn"/>
                             <field name="p_sign_posn"/>
