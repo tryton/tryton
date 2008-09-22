@@ -347,10 +347,10 @@ class Line(OSV):
     _description = __doc__
 
     name = fields.Char('Name', size=None, required=True)
-    debit = fields.Numeric('Debit', digits=(16, 2),
+    debit = fields.Numeric('Debit', digits="(16, currency_digits)",
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'])
-    credit = fields.Numeric('Credit', digits=(16, 2),
+    credit = fields.Numeric('Credit', digits="(16, currency_digits)",
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'])
     account = fields.Many2One('account.account', 'Account', required=True,
@@ -371,7 +371,8 @@ class Line(OSV):
             fnct_search='search_move_field')
     reference = fields.Char('Reference', size=None)
     amount_second_currency = fields.Numeric('Amount Second Currency',
-            digits=(16, 2), help='The amount expressed in a second currency')
+            digits="(16, second_currency_digits)",
+            help='The amount expressed in a second currency')
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
             help='The second currency')
     party = fields.Many2One('relationship.party', 'Party',
@@ -395,6 +396,10 @@ class Line(OSV):
                 ('draft', 'Draft'),
                 ('posted', 'Posted'),
             ], string='Move State', fnct_search='search_move_field')
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits')
+    second_currency_digits = fields.Function('get_currency_digits',
+            type='integer', string='Second Currency Digits')
 
     def __init__(self):
         super(Line, self).__init__()
@@ -594,6 +599,19 @@ class Line(OSV):
                         ]
         return values
 
+    def get_currency_digits(self, cursor, user, ids, names, arg, context=None):
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            for name in names:
+                res.setdefault(name, {})
+                res[name].setdefault(line.id, 2)
+                if name == 'currency_digits':
+                    res[name][line.id] = line.account.currency_digits
+                elif name == 'second_currency_digits':
+                    if line.account.second_currency:
+                        res[name][line.id] = line.account.second_currency.digits
+        return res
+
     def on_change_debit(self, cursor, user, ids, vals, context=None):
         res = {}
         if context is None:
@@ -631,6 +649,8 @@ class Line(OSV):
         return res
 
     def on_change_account(self, cursor, user, ids, vals, context=None):
+        account_obj = self.pool.get('account.account')
+
         res = {}
         if context is None:
             context = {}
@@ -643,6 +663,12 @@ class Line(OSV):
                         ids, vals, journal.type, context=context)
                 if not res['tax_lines']:
                     del res['tax_lines']
+        if vals.get('account'):
+            account = account_obj.browse(cursor, user, vals['account'],
+                    context=context)
+            res['currency_digits'] = account.currency_digits
+            if account.second_currency:
+                res['second_currency_digits'] = account.second_currency.digits
         return res
 
     def _compute_tax_lines(self, cursor, user, ids, vals, journal_type,
@@ -1106,6 +1132,11 @@ class Line(OSV):
                 else:
                     attrs.append('required="0"')
                 xml += '<field name="%s" %s/>\n' % (column.field.name, ' '.join(attrs))
+            if 'currency_digits' not in journal.view.columns:
+                xml += '<field name="currency_digits" tree_invisible="1"/>'
+            if 'second_currency' in journal.view.columns \
+                    and 'second_currency_digits' not in journal.view.columns:
+                xml += '<field name="second_currency_digits" tree_invisible="1"/>'
             xml += '</tree>'
             result['arch'] = xml
             result['fields'] = self.fields_get(cursor, user, fields_names=fields,

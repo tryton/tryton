@@ -202,6 +202,8 @@
                             <field name="state"/>
                         </page>
                     </notebook>
+                    <field name="currency_digits" colspan="4" invisible="1"/>
+                    <field name="second_currency_digits" colspan="4" invisible="1"/>
                 </form>
                 ]]>
             </field>
@@ -225,6 +227,7 @@
                     <field name="reconciliation" select="2"/>
                     <field name="state" select="2"/>
                     <field name="move_state" select="2"/>
+                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
