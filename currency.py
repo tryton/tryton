@@ -16,7 +16,7 @@ class Currency(OSV):
     code = fields.Char('Code', size=3, required=True)
     rate = fields.Function('get_rate', string='Current rate', digits=(12, 6))
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates')
-    rounding = fields.Numeric('Rounding factor', digits=(12, 6))
+    rounding = fields.Numeric('Rounding factor', digits=(12, 6), required=True)
     digits = fields.Integer('Diplay Digits')
     active = fields.Boolean('Active')
 
