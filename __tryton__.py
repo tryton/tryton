@@ -17,4 +17,7 @@
         'statement.xml',
         'journal.xml',
         ],
-    }
+    'translation': [
+        'de_DE.csv',
+    ],
+}
