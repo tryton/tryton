@@ -1,5 +1,8 @@
 type,name,res_id,src,value,fuzzy
-error,timesheet.work,0,You can not create recursive works!,,0
+error,timesheet.line,0,Hours field must be positive,Feld Stunden muss einen positiven Wert haben,0
+error,timesheet.work,0,You can not create recursive works!,Es können keine rekursiven Aufgaben angelegt werden,0
+field,"timesheet.enter_lines.init,date",0,Date,Datum,0
+field,"timesheet.enter_lines.init,employee",0,Employee,Mitarbeiter,0
 field,"timesheet.hours_employee,create_date",0,Creation date,Erstellungsdatum,0
 field,"timesheet.hours_employee,create_uid",0,Creation user,Ersteller,0
 field,"timesheet.hours_employee,employee",0,Employee,Mitarbeiter,0
@@ -32,38 +35,56 @@ field,"timesheet.line,description",0,Description,Beschreibung,0
 field,"timesheet.line,employee",0,Employee,Mitarbeiter,0
 field,"timesheet.line,hours",0,Hours,Stunden,0
 field,"timesheet.line,id",0,ID,ID,0
-field,"timesheet.line,work",0,Work,Leistung,0
+field,"timesheet.line,work",0,Work,Aufgabe,0
 field,"timesheet.line,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"timesheet.line,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"timesheet.open_hours_employee.init,end_date",0,End Date,Enddatum,0
+field,"timesheet.open_hours_employee.init,start_date",0,Start Date,Anfangsdatum,0
 field,"timesheet.work,active",0,Active,Aktiv,0
-field,"timesheet.work,childs",0,Childs,Untergeordnet,0
+field,"timesheet.work,childs",0,Childs,Untergeordnet (Aufgaben),0
 field,"timesheet.work,complete_name",0,Name,Name,0
 field,"timesheet.work,create_date",0,Creation date,Erstellungsdatum,0
 field,"timesheet.work,create_uid",0,Creation user,Ersteller,0
 field,"timesheet.work,hours",0,Hours,Stunden,0
 field,"timesheet.work,id",0,ID,ID,0
 field,"timesheet.work,name",0,Name,Name,0
-field,"timesheet.work,parent",0,Parent,Übergeordnet,0
+field,"timesheet.work.open.init,from_date",0,From Date,Von,0
+field,"timesheet.work.open.init,to_date",0,To Date,Bis,0
+field,"timesheet.work,parent",0,Parent,Übergeordnet (Aufgabe),0
 field,"timesheet.work,state",0,State,Status,0
 field,"timesheet.work,type",0,Type,Typ,0
 field,"timesheet.work,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"timesheet.work,write_uid",0,Last modification by,Zuletzt geändert von,0
+model,"ir.action,name",270,Enter Timesheet,Zur Zeiterfassung,0
+model,"ir.action,name",272,Hours per Employee,Stunden pro Mitarbeiter,0
+model,"ir.action,name",274,Hours per Employee,Stunden pro Mitarbeiter,0
+model,"ir.action,name",278,Hours per Employee per Month,Stunden pro Mitarbeiter pro Monat,0
+model,"ir.action,name",276,Hours per Employee per Week,Stunden pro Mitarbeiter pro Monat,0
+model,"ir.action,name",258,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.action,name",260,Hours per Work,Stunden pro Mitarbeiter pro Woche,0
+model,"ir.action,name",262,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.action,name",264,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.action,name",266,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.action,name",268,Timesheet Lines,Zeitpositionen,0
+model,"ir.action,name",252,Works,Aufgaben,0
+model,"ir.action,name",254,Works,Aufgaben,0
+model,"ir.action,name",256,Works,Aufgaben,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_enter_lines,Enter Timesheet,Zur Zeiterfassung,0
 model,"ir.ui.menu,name",menu_open_hours_employee,Hours per Employee,Stunden pro Mitarbeiter,0
 model,"ir.ui.menu,name",menu_open_hours_employee_monthly,Hours per Employee per Month,Stunden pro Mitarbeiter pro Monat,0
 model,"ir.ui.menu,name",menu_open_hours_employee_weekly,Hours per Employee per Week,Stunden pro Mitarbeiter pro Woche,0
-model,"ir.ui.menu,name",menu_work_tree2,Hours per Work,Stunden pro Leistung,0
-model,"ir.ui.menu,name",menu_work_form2,Hours per Work,Stunden pro Leistung,0
+model,"ir.ui.menu,name",menu_work_tree2,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.ui.menu,name",menu_work_form2,Hours per Work,Stunden pro Aufgabe,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
 model,"ir.ui.menu,name",menu_line_form,Timesheet Lines,Zeitpositionen,0
 model,"ir.ui.menu,name",menu_timesheet,Timesheet Management,Zeiterfassung,0
-model,"ir.ui.menu,name",menu_work_form,Works,Leistungen,0
-model,"ir.ui.menu,name",menu_work_tree,Works,Leistungen,0
-selection,"timesheet.work,state",0,Closed,Schliessen,0
+model,"ir.ui.menu,name",menu_work_form,Works,Aufgaben,0
+model,"ir.ui.menu,name",menu_work_tree,Works,Aufgaben,0
+selection,"timesheet.work,state",0,Closed,Geschlossen,0
 selection,"timesheet.work,state",0,Opened,Geöffnet,0
 selection,"timesheet.work,type",0,Normal,Standard,0
-selection,"timesheet.work,type",0,View,Ansicht,0
+selection,"timesheet.work,type",0,View,Sicht,0
 view,timesheet.enter_lines.init,0,Enter Timesheet,Zur Zeiterfassung,0
 view,timesheet.hours_employee,0,Hours,Stunden,0
 view,timesheet.hours_employee,0,Hours per Employee,Stunden pro Mitarbeiter,0
@@ -73,10 +94,10 @@ view,timesheet.line,0,Hours,Stunden,0
 view,timesheet.line,0,Timesheet Line,Zeitposition,0
 view,timesheet.line,0,Timesheet Lines,Zeitpositionen,0
 view,timesheet.open_hours_employee.init,0,Hours per Employee,Stunden pro Mitarbeiter,0
-view,timesheet.work,0,Hours per Work,Stunden pro Leistung,0
-view,timesheet.work,0,Work,Leistung,0
-view,timesheet.work,0,Works,Leistungen,0
-view,timesheet.work.open.init,0,Hours per Work,Stunden pro Leistung,0
+view,timesheet.work,0,Hours per Work,Stunden pro Aufgabe,0
+view,timesheet.work,0,Work,Aufgabe,0
+view,timesheet.work,0,Works,Aufgaben,0
+view,timesheet.work.open.init,0,Hours per Work,Stunden pro Aufgabe,0
 wizard_button,"timesheet.enter_lines,init,end",0,Cancel,Abbrechen,0
 wizard_button,"timesheet.enter_lines,init,enter",0,Enter,Eingabe,0
 wizard_button,"timesheet.open_hours_employee,init,end",0,Cancel,Abbrechen,0
