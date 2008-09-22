@@ -17,4 +17,7 @@
         'service.xml',
         'timesheet.xml',
     ],
+    'translation': [
+        'de_DE.csv',
+    ],
 }

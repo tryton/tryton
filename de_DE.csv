@@ -1,0 +1,13 @@
+type,name,res_id,src,value,fuzzy
+error,project_revenue.service,0,You can have only once the same product by employee!,Es kann nur ein einziger Artikel pro Mitarbeiter zugeordnet werden,0
+error,project_revenue.service,0,You must use a product with UOM of time!,"Es muss ein Artikel mit einer Maßeinheit aus der Kategorie ""Zeit"" verwendet werden!",0
+error,timesheet.line,0,You can not use a product that is not an employee services!,Der ausgewählte Artikel muss als Leistung eines Mitarbeiters eingetragen sein,0
+field,"company.employee,services",0,Services,Leistungen,0
+field,"project_revenue.service,employee",0,Employee,Mitarbeiter,0
+field,"project_revenue.service,product",0,Product,Artikel,0
+field,"project_revenue.service,sequence",0,Sequence,Reihenfolge,0
+field,"timesheet.line,product",0,Service,Leistung,0
+help,"company.employee,services",0,Services allowed to use in timesheets.,Erlaubte Leistungen für Arbeitsblätter,0
+help,"project_revenue.service,sequence",0,Use to order Services,Wird für die Reihenfolge der Leistungen verwendet,0
+view,company.employee,0,Services,Leistungen,0
+view,project_revenue.service,0,Service,Leistung,0
