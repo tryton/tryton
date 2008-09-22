@@ -14,4 +14,7 @@
     "xml" : [
         "address.xml",
     ],
+    'translation': [
+        'de_DE.csv',
+    ],
 }
