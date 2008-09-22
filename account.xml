@@ -396,6 +396,7 @@
                     <field name="debit"/>
                     <label name="credit"/>
                     <field name="credit"/>
+                    <field name="currency_digits" invisible="1" colspan="4"/>
                 </form>
                 ]]>
             </field>
@@ -410,6 +411,7 @@
                     <field name="fiscalyear" select="1"/>
                     <field name="debit"/>
                     <field name="credit"/>
+                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>

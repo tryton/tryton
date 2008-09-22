@@ -786,8 +786,10 @@ class AccountDeferral(OSV):
             select=1)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, select=1)
-    debit = fields.Numeric('Debit', digits=(16, 2))
-    credit = fields.Numeric('Credit', digits=(16, 2))
+    debit = fields.Numeric('Debit', digits="(16, currency_digits)")
+    credit = fields.Numeric('Credit', digits="(16, currency_digits)")
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits')
 
     def __init__(self):
         super(AccountDeferral, self).__init__()
@@ -795,6 +797,12 @@ class AccountDeferral(OSV):
             ('deferral_uniq', 'UNIQUE(account, fiscalyear)',
                 'Deferral must be unique by account and fiscal year'),
         ]
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for deferral in self.browse(cursor, user, ids, context=context):
+            res[deferral.id] = deferral.account.currency_digits
+        return res
 
     def name_get(self, cursor, user, ids, context=None):
         if not ids:
