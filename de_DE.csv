@@ -1,0 +1,135 @@
+type,name,res_id,src,value,fuzzy
+error,account.invoice,0,You can not delete invoices that comes from a purchase!,Aus einem Einkauf stammende Rechnungen können nicht gelöscht werden!,0
+error,purchase.line,0,"It miss an ""account_expense"" default property!","Es ist keine allgemeine Eigenschaft ""Konto Aufwand"" definiert",0
+error,purchase.line,0,The supplier location is required!,Der Lagerort des Lieferanten muss eingegeben werden!,0
+field,"product.template,product_suppliers",0,Suppliers,Lieferanten,0
+field,"product.template,purchasable",0,Purchasable,Käuflich,0
+field,"purchase.line,amount",0,Amount,Betrag,0
+field,"purchase.line,comment",0,Comment,Kommentar,0
+field,"purchase.line,description",0,Description,Bezeichnung,0
+field,"purchase.line,invoice_lines",0,Invoice Lines,Rechnungspositionen,0
+field,"purchase.line,move_done",0,Moves Done,Bewegungen erledigt,0
+field,"purchase.line,move_exception",0,Moves Exception,Bewegungsvorbehalt,0
+field,"purchase.line,moves",0,Moves,Bewegungen,0
+field,"purchase.line,moves_ignored",0,Moves Ignored,Ignorierte Bewegungen,0
+field,"purchase.line,product",0,Product,Artikel,0
+field,"purchase.line,purchase",0,Purchase,Einkauf,0
+field,"purchase.line,quantity",0,Quantity,Menge,0
+field,"purchase.line,sequence",0,Sequence,Sequenz,0
+field,"purchase.line,taxes",0,Taxes,Steuern,0
+field,"purchase.line,type",0,Type,Typ,0
+field,"purchase.line,unit",0,Unit,Einheit,0
+field,"purchase.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
+field,"purchase.line,unit_price",0,Unit Price,Preis / Einheit,0
+field,"purchase.product_supplier,code",0,Code,Artikelnummer Lieferant,0
+field,"purchase.product_supplier,company",0,Company,Lieferfirma,0
+field,"purchase.product_supplier,delivery_time",0,Delivery Time,Lieferfrist,0
+field,"purchase.product_supplier,name",0,Name,Name,0
+field,"purchase.product_supplier,party",0,Supplier,Lieferant,0
+field,"purchase.product_supplier.price,price",0,Price,Preis,0
+field,"purchase.product_supplier.price,product_supplier",0,Supplier,Lieferant,0
+field,"purchase.product_supplier.price,quantity",0,Quantity,Menge,0
+field,"purchase.product_supplier,prices",0,Prices,Preise,0
+field,"purchase.product_supplier,product",0,Product,Artikel,0
+field,"purchase.product_supplier,sequence",0,Sequence,Sequenz,0
+field,"purchase.purchase,comment",0,Comment,Kommentar,0
+field,"purchase.purchase,company",0,Company,Unternehmen,0
+field,"purchase.purchase,contact_address",0,Contact Address,Kontaktadresse,0
+field,"purchase.purchase,currency",0,Currency,Währung,0
+field,"purchase.purchase,currency_digits",0,Currency Digits,Währung signifikante Stellen ,0
+field,"purchase.purchase,description",0,Description,Beschreibung,0
+field,"purchase.purchase,invoice_address",0,Invoice Address,Rechnungsadresse,0
+field,"purchase.purchase,invoice_exception",0,Invoices Exception,Rechnungsvorbehalt,0
+field,"purchase.purchase,invoice_method",0,Invoice Method,Rechnungsstellung,0
+field,"purchase.purchase,invoice_paid",0,Invoices Paid,Bezahlte Rechnungen,0
+field,"purchase.purchase,invoices",0,Invoices,Rechnungen,0
+field,"purchase.purchase,invoices_ignored",0,Invoices Ignored,Ignorierte Rechnungen,0
+field,"purchase.purchase,invoice_state",0,Invoice State,Rechnungsstatus,0
+field,"purchase.purchase,lines",0,Lines,Positionen,0
+field,"purchase.purchase,moves",0,Moves,Bewegungen,0
+field,"purchase.purchase,packing_done",0,Packing Done,Verpackung erledigt,0
+field,"purchase.purchase,packing_exception",0,Packings Exception,Verpackungsvorbehalt,0
+field,"purchase.purchase,packings",0,Packings,Verpackungen,0
+field,"purchase.purchase,packing_state",0,Packing State,Packstatus,0
+field,"purchase.purchase,party",0,Party,Partei,0
+field,"purchase.purchase,party_lang",0,Party Language,Sprache Partei,0
+field,"purchase.purchase,payment_term",0,Payment Term,Zahlungsbedingung,0
+field,"purchase.purchase,purchase_date",0,Purchase Date,Kaufdatum,0
+field,"purchase.purchase,reference",0,Reference,Referenz,0
+field,"purchase.purchase,state",0,State,Status,0
+field,"purchase.purchase,tax_amount",0,Tax,Steuer,0
+field,"purchase.purchase,total_amount",0,Total,Gesamt,0
+field,"purchase.purchase,untaxed_amount",0,Untaxed,Netto,0
+field,"purchase.purchase,warehouse",0,Warehouse,Lager,0
+field,"stock.move,purchase",0,Purchase,Einkauf,0
+field,"stock.move,purchase_line",0,unknown,unbekannt,0
+field,"stock.move,supplier",0,Supplier,Lieferant,0
+help,"purchase.product_supplier,delivery_time",0,In number of days,In Anzahl von Tagen,0
+help,"purchase.product_supplier.price,quantity",0,Minimal quantity,Mindestmenge,0
+model,"ir.action,name",372,Confirmed Purchases,Bestätigte Einkäufe,0
+model,"ir.action,name",368,Draft Purchases,Entwürfe (Einkäufe),0
+model,"ir.action,name",374,Purchase,Drucken,0
+model,"ir.action,name",366,Purchases,Einkäufe,0
+model,"ir.action,name",370,Purchases in Quotation,Angebote (Einkäufe),0
+model,"ir.action,name",376,Suppliers,Lieferanten,0
+model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Bestätigte Einkäufe,0
+model,"ir.ui.menu,name",menu_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
+model,"ir.ui.menu,name",menu_purchase,Purchase Management,Einkauf,0
+model,"ir.ui.menu,name",menu_purchase_form,Purchases,Einkäufe,0
+model,"ir.ui.menu,name",menu_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
+model,"ir.ui.menu,name",menu_supplier,Suppliers,Lieferanten,0
+odt,purchase.purchase,0,Amount,Betrag,0
+odt,purchase.purchase,0,Date:,Datum:,0
+odt,purchase.purchase,0,Description,Bezeichnung,0
+odt,purchase.purchase,0,Description:,Bezeichnung:,0
+odt,purchase.purchase,0,Draft Purchase Order,Auftragsentwurf,0
+odt,purchase.purchase,0,Email:,E-Mail:,0
+odt,purchase.purchase,0,Phone:,Telefon:,0
+odt,purchase.purchase,0,Purchase Order N°:,Auftrag Nr. ,0
+odt,purchase.purchase,0,Quantity,Menge,0
+odt,purchase.purchase,0,Request for Quotation N°:,Angebotsanfrage Nr. ,0
+odt,purchase.purchase,0,Taxes,Steuern,0
+odt,purchase.purchase,0,Taxes:,Steuern:,0
+odt,purchase.purchase,0,Total:,Gesamt:,0
+odt,purchase.purchase,0,Total (excl. taxes):,Netto:,0
+odt,purchase.purchase,0,Unit Price,Preis / Einheit,0
+odt,purchase.purchase,0,VAT:,USt:,0
+selection,"purchase.line,type",0,Line,Position,0
+selection,"purchase.line,type",0,Subtotal,Zwischensumme,0
+selection,"purchase.line,type",0,Title,Überschrift,0
+selection,"purchase.purchase,invoice_method",0,Based On Order,Nach Auftrag,0
+selection,"purchase.purchase,invoice_method",0,Based On Packing,Nach Verpackung,0
+selection,"purchase.purchase,invoice_method",0,Manual,Manuell,0
+selection,"purchase.purchase,invoice_state",0,Exception,Vorbehalt,0
+selection,"purchase.purchase,invoice_state",0,None,Kein,0
+selection,"purchase.purchase,invoice_state",0,Paid,Bezahlt,0
+selection,"purchase.purchase,invoice_state",0,Waiting,Wartend,0
+selection,"purchase.purchase,packing_state",0,Exception,Vorbehalt,0
+selection,"purchase.purchase,packing_state",0,None,Keine,0
+selection,"purchase.purchase,packing_state",0,Received,Erhalten,0
+selection,"purchase.purchase,packing_state",0,Waiting,Wartend,0
+selection,"purchase.purchase,state",0,Cancel,Abbrechen,0
+selection,"purchase.purchase,state",0,Confirmed,Bestätigt,0
+selection,"purchase.purchase,state",0,Done,Erledigt,0
+selection,"purchase.purchase,state",0,Draft,Entwurf,0
+selection,"purchase.purchase,state",0,Quotation,Angebot,0
+view,product.product,0,Products,Artikel,0
+view,product.product,0,Suppliers,Lieferanten,0
+view,purchase.line,0,Purchase Line,Position Einkauf,0
+view,purchase.line,0,Purchase Lines,Positionen Einkauf,0
+view,purchase.product_supplier,0,Product Supplier,Lieferant,0
+view,purchase.product_supplier,0,Product Suppliers,Lieferanten,0
+view,purchase.product_supplier.price,0,Product Supplier Price,Einkaufspreis,0
+view,purchase.product_supplier.price,0,Product Supplier Prices,Einkaufspreise,0
+view,purchase.purchase,0,Cancel,Abbrechen,0
+view,purchase.purchase,0,Confirm,Bestätigen,0
+view,purchase.purchase,0,Draft,Entwurf,0
+view,purchase.purchase,0,Ignore Invoice Exception,Rechnungsvorbehalt ignorieren,0
+view,purchase.purchase,0,Ignore Packing Exception,Verpackungsvorbehalt ignorieren,0
+view,purchase.purchase,0,Invoices,Rechnungen,0
+view,purchase.purchase,0,Lines,Positionen,0
+view,purchase.purchase,0,Other Info,Sonstiges,0
+view,purchase.purchase,0,Packings,Verpackungen,0
+view,purchase.purchase,0,Purchase,Einkauf,0
+view,purchase.purchase,0,Purchases,Einkäufe,0
+view,purchase.purchase,0,Quotation,Angebot,0
