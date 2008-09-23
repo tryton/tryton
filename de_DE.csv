@@ -148,16 +148,16 @@ model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_net
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_fixed,Fixed,Fix,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_percent,Percent,Prozent,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remainder,Remainder,Rest,0
-model,"ir.action,name",328,All Invoices,Alle Rechnungen,0
-model,"ir.action,name",338,Invoice,Rechnung drucken,0
-model,"ir.action,name",340,Invoice,Rechnung drucken,0
-model,"ir.action,name",330,Invoices,Rechnungsausgang,0
-model,"ir.action,name",326,Pay Invoice,Rechnung bezahlen,0
-model,"ir.action,name",324,Payment Terms,Zahlungsbedingungen,0
-model,"ir.action,name",342,Refund,Gutschrift erstellen,0
-model,"ir.action,name",332,Refunds,Gutschriften an Kunden,0
-model,"ir.action,name",334,Supplier Invoices,Rechnungseingang,0
-model,"ir.action,name",336,Supplier Refunds,Gutschriften an Lieferanten,0
+model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
+model,"ir.action,name",report_invoice,Invoice,Rechnung drucken,0
+model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
+model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
+model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
+model,"ir.action,name",act_payment_term_form,Payment Terms,Zahlungsbedingungen,0
+model,"ir.action,name",refund_invoice,Refund,Gutschrift erstellen,0
+model,"ir.action,name",act_invoice_out_refund_form,Refunds,Gutschriften an Kunden,0
+model,"ir.action,name",act_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
+model,"ir.action,name",act_invoice_in_refund_form,Supplier Refunds,Gutschriften an Lieferanten,0
 model,"ir.ui.menu,name",menu_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.ui.menu,name",menu_invoices_configuration,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoices,Invoices,Rechnungen,0
