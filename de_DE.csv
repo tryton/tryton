@@ -9,8 +9,8 @@ field,"project.work,project_type",0,Type,Typ,0
 field,"project.work,work",0,Work,Aufgabe,0
 field,"project.work,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"project.work,write_uid",0,Last modification by,Zuletzt geändert von,0
-model,"ir.action,name",322,Projects,Projekte,0
-model,"ir.action,name",320,Works,Aufgaben,0
+model,"ir.action,name",act_project_form,Projects,Projekte,0
+model,"ir.action,name",act_work_form,Works,Aufgaben,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_project,Project Management,Projekte,0
 model,"ir.ui.menu,name",menu_project_tree,Projects,Projekte,0
