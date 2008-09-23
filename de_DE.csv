@@ -391,61 +391,60 @@ model,"account.journal.type,name",journal_type_revenue,Revenue,Ertrag,0
 model,"account.journal.type,name",journal_type_situation,Situation,Saldenvortrag,0
 model,"account.tax.group,name",tax_group_none,None,Keine,0
 model,"account.tax.group,name",tax_group_vat,VAT,USt,0
-model,"ir.action,name",216,Account Move Lines,Buchungszeilen,0
-model,"ir.action,name",214,Account Moves,Buchungssätze Konten,0
-model,"ir.action,name",152,Accounts,Konten,0
-model,"ir.action,name",154,Accounts,Konten,0
-model,"ir.action,name",156,Accounts,Konten,0
-model,"ir.action,name",148,Account Templates,Kontenvorlagen,0
-model,"ir.action,name",144,Account Types,Kontentypen,0
-model,"ir.action,name",146,Account Types,Kontentypen,0
-model,"ir.action,name",142,Account Type Templates,Vorlagen für Kontentypen,0
-model,"ir.action,name",180,Aged Balance,Fälligkeitsliste,0
-model,"ir.action,name",168,Balance Sheet,Bilanzbogen,0
-model,"ir.action,name",186,Close Fiscal Year,Geschäftsjahr abschließen,0
-model,"ir.action,name",208,Close Journals - Periods,Journale - Buchungszeiträume schließen,0
-model,"ir.action,name",192,Close Periods,Buchungszeiträume abschließen,0
-model,"ir.action,name",150,Create Chart of Account from Template,Kontenplan von Vorlage erstellen,0
-model,"ir.action,name",184,Fiscal Years,Geschäftsjahre,0
-model,"ir.action,name",230,General Journal,Allgemein,0
-model,"ir.action,name",162,General Ledger,Hauptbuch,0
-model,"ir.action,name",172,Income Statement,Gewinn- und Verlustrechnung,0
-model,"ir.action,name",202,Journals,Journale,0
-model,"ir.action,name",204,Journals - Periods,Journale - Buchungszeiträume,0
-model,"ir.action,name",206,Journals - Periods,Journale - Buchungszeiträume,0
-model,"ir.action,name",212,Journals - Periods,Journale - Buchungszeiträume,0
-model,"ir.action,name",198,Journal Types,Journaltypen,0
-model,"ir.action,name",200,Journal Views,Journal Ansichten,0
-model,"ir.action,name",182,Open Aged Balance,Fälligkeitsliste öffnen,0
-model,"ir.action,name",170,Open Balance Sheet,Bilanzbogen öffnen,0
-model,"ir.action,name",158,Open Chart of Account,Kontenplan öffnen,0
-model,"ir.action,name",240,Open Chart of Tax Code,Tabelle Steuercodes öffnen,0
-model,"ir.action,name",174,Open Income Statement,Gewinn- und Verlustrechnung öffnen,0
-model,"ir.action,name",220,Open Journal,Journal öffnen,0
-model,"ir.action,name",218,Open Move Account,Buchung Konto öffnen,0
-model,"ir.action,name",226,Open Reconcile Lines,Abgestimmte Buchungszeilen öffnen,0
-model,"ir.action,name",250,Open Tax Code,Steuercode öffnen,0
-model,"ir.action,name",178,Open Third Party Balance,Offene Postenliste öffnen,0
-model,"ir.action,name",190,Periods,Buchungszeiträume,0
-model,"ir.action,name",196,Periods,Buchungszeiträume,0
-model,"ir.action,name",228,Print General Journal,Journal Allgemein drucken,0
-model,"ir.action,name",160,Print General Legder,Hauptbuch drucken,0
-model,"ir.action,name",164,Print Trial Balance,Summen- und Saldenliste drucken,0
-model,"ir.action,name",222,Reconcile Lines,Positionen abstimmen,0
-model,"ir.action,name",188,Re-Open Fiscal Years,Geschäftsjahre wiedereröffnen,0
-model,"ir.action,name",210,Re-Open Journals - Periods,Journale - Buchungszeiträume wiedereröffnen,0
-model,"ir.action,name",194,Re-Open Periods,Buchungszeiträume wiedereröffnen,0
-model,"ir.action,name",234,Tax Codes,Steuercodes,0
-model,"ir.action,name",236,Tax Codes,Steuercodes,0
-model,"ir.action,name",238,Tax Codes,Steuercodes,0
-model,"ir.action,name",232,Tax Codes Templates,Vorlagen für Steuercodes,0
-model,"ir.action,name",244,Taxes,Steuern,0
-model,"ir.action,name",246,Taxes,Steuern,0
-model,"ir.action,name",242,Taxes Templates,Steuervorlagen,0
-model,"ir.action,name",248,Tax Lines,Steuerpositionen,0
-model,"ir.action,name",176,Third Party Balance,Offene Posten,0
-model,"ir.action,name",166,Trial Balance,Summen- und Saldenliste,0
-model,"ir.action,name",224,Unreconcile Lines,Abstimmung von Buchungszeilen rückgängig machen,0
+model,"ir.action,name",act_move_line_form,Account Move Lines,Buchungszeilen,0
+model,"ir.action,name",act_move_form,Account Moves,Buchungssätze Konten,0
+model,"ir.action,name",act_account_form,Accounts,Konten,0
+model,"ir.action,name",act_account_tree,Accounts,Konten,0
+model,"ir.action,name",act_account_tree2,Accounts,Konten,0
+model,"ir.action,name",act_account_template_tree,Account Templates,Kontenvorlagen,0
+model,"ir.action,name",act_account_type_form,Account Types,Kontentypen,0
+model,"ir.action,name",act_account_type_tree,Account Types,Kontentypen,0
+model,"ir.action,name",act_account_type_template_tree,Account Type Templates,Vorlagen für Kontentypen,0
+model,"ir.action,name",report_aged_balance,Aged Balance,Fälligkeitsliste,0
+model,"ir.action,name",act_account_balance_sheet_tree,Balance Sheet,Bilanzbogen,0
+model,"ir.action,name",act_close_fiscalyear,Close Fiscal Year,Geschäftsjahr abschließen,0
+model,"ir.action,name",act_close_journal_period,Close Journals - Periods,Journale - Buchungszeiträume schließen,0
+model,"ir.action,name",act_close_period,Close Periods,Buchungszeiträume abschließen,0
+model,"ir.action,name",wizard_create_chart_account,Create Chart of Account from Template,Kontenplan von Vorlage erstellen,0
+model,"ir.action,name",act_fiscalyear_form,Fiscal Years,Geschäftsjahre,0
+model,"ir.action,name",report_general_journal,General Journal,Allgemein,0
+model,"ir.action,name",report_general_ledger,General Ledger,Hauptbuch,0
+model,"ir.action,name",act_account_income_statement_tree,Income Statement,Gewinn- und Verlustrechnung,0
+model,"ir.action,name",act_journal_form,Journals,Journale,0
+model,"ir.action,name",act_journal_period_tree,Journals - Periods,Journale - Buchungszeiträume,0
+model,"ir.action,name",act_journal_period_tree2,Journals - Periods,Journale - Buchungszeiträume,0
+model,"ir.action,name",act_journal_period_form,Journals - Periods,Journale - Buchungszeiträume,0
+model,"ir.action,name",act_journal_type_form,Journal Types,Journaltypen,0
+model,"ir.action,name",act_journal_view_form,Journal Views,Journal Ansichten,0
+model,"ir.action,name",wizard_open_aged_balance,Open Aged Balance,Fälligkeitsliste öffnen,0
+model,"ir.action,name",wizard_open_balance_sheet,Open Balance Sheet,Bilanzbogen öffnen,0
+model,"ir.action,name",act_open_chart_account,Open Chart of Account,Kontenplan öffnen,0
+model,"ir.action,name",act_open_chart_code,Open Chart of Tax Code,Tabelle Steuercodes öffnen,0
+model,"ir.action,name",wizard_open_income_statement,Open Income Statement,Gewinn- und Verlustrechnung öffnen,0
+model,"ir.action,name",act_open_journal,Open Journal,Journal öffnen,0
+model,"ir.action,name",act_open_account,Open Move Account,Buchung Konto öffnen,0
+model,"ir.action,name",act_open_reconcile_lines,Open Reconcile Lines,Abgestimmte Buchungszeilen öffnen,0
+model,"ir.action,name",act_open_tax_code,Open Tax Code,Steuercode öffnen,0
+model,"ir.action,name",wizard_open_third_party_balance,Open Third Party Balance,Offene Postenliste öffnen,0
+model,"ir.action,name",act_period_form,Periods,Buchungszeiträume,0
+model,"ir.action,name",act_period_form2,Periods,Buchungszeiträume,0
+model,"ir.action,name",wizard_print_general_journal,Print General Journal,Journal Allgemein drucken,0
+model,"ir.action,name",wizard_print_general_ledger,Print General Legder,Hauptbuch drucken,0
+model,"ir.action,name",wizard_print_trial_balance,Print Trial Balance,Summen- und Saldenliste drucken,0
+model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Positionen abstimmen,0
+model,"ir.action,name",act_reopen_journal_period,Re-Open Journals - Periods,Journale - Buchungszeiträume wiedereröffnen,0
+model,"ir.action,name",act_reopen_period,Re-Open Periods,Buchungszeiträume wiedereröffnen,0
+model,"ir.action,name",act_tax_code_form,Tax Codes,Steuercodes,0
+model,"ir.action,name",act_tax_code_tree,Tax Codes,Steuercodes,0
+model,"ir.action,name",act_tax_code_tree2,Tax Codes,Steuercodes,0
+model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Vorlagen für Steuercodes,0
+model,"ir.action,name",act_tax_form,Taxes,Steuern,0
+model,"ir.action,name",act_tax_tree,Taxes,Steuern,0
+model,"ir.action,name",act_tax_template_tree,Taxes Templates,Steuervorlagen,0
+model,"ir.action,name",act_tax_line_form,Tax Lines,Steuerpositionen,0
+model,"ir.action,name",report_third_party_balance,Third Party Balance,Offene Posten,0
+model,"ir.action,name",report_trial_balance,Trial Balance,Summen- und Saldenliste,0
+model,"ir.action,name",act_unreconcile_lines,Unreconcile Lines,Abstimmung von Buchungszeilen rückgängig machen,0
 model,"ir.ui.menu,name",menu_move_form,Account Moves,Buchungen,0
 model,"ir.ui.menu,name",menu_account_form,Accounts,Konten,0
 model,"ir.ui.menu,name",menu_account_tree,Accounts,Konten,0
