@@ -55,20 +55,20 @@ field,"timesheet.work,state",0,State,Status,0
 field,"timesheet.work,type",0,Type,Typ,0
 field,"timesheet.work,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"timesheet.work,write_uid",0,Last modification by,Zuletzt geändert von,0
-model,"ir.action,name",270,Enter Timesheet,Zur Zeiterfassung,0
-model,"ir.action,name",272,Hours per Employee,Stunden pro Mitarbeiter,0
-model,"ir.action,name",274,Hours per Employee,Stunden pro Mitarbeiter,0
-model,"ir.action,name",278,Hours per Employee per Month,Stunden pro Mitarbeiter pro Monat,0
-model,"ir.action,name",276,Hours per Employee per Week,Stunden pro Mitarbeiter pro Monat,0
-model,"ir.action,name",258,Hours per Work,Stunden pro Aufgabe,0
-model,"ir.action,name",260,Hours per Work,Stunden pro Mitarbeiter pro Woche,0
-model,"ir.action,name",262,Hours per Work,Stunden pro Aufgabe,0
-model,"ir.action,name",264,Hours per Work,Stunden pro Aufgabe,0
-model,"ir.action,name",266,Hours per Work,Stunden pro Aufgabe,0
-model,"ir.action,name",268,Timesheet Lines,Zeitpositionen,0
-model,"ir.action,name",252,Works,Aufgaben,0
-model,"ir.action,name",254,Works,Aufgaben,0
-model,"ir.action,name",256,Works,Aufgaben,0
+model,"ir.action,name",act_enter_lines,Enter Timesheet,Zur Zeiterfassung,0
+model,"ir.action,name",act_hours_employee_form,Hours per Employee,Stunden pro Mitarbeiter,0
+model,"ir.action,name",act_open_hours_employee,Hours per Employee,Stunden pro Mitarbeiter,0
+model,"ir.action,name",act_hours_employee_monthly_form,Hours per Employee per Month,Stunden pro Mitarbeiter pro Monat,0
+model,"ir.action,name",act_hours_employee_weekly_form,Hours per Employee per Week,Stunden pro Mitarbeiter pro Monat,0
+model,"ir.action,name",act_open_work,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.action,name",act_work_form2,Hours per Work,Stunden pro Mitarbeiter pro Woche,0
+model,"ir.action,name",act_open_work2,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.action,name",act_work_form3,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.action,name",act_open_work_graph,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.action,name",act_line_form,Timesheet Lines,Zeitpositionen,0
+model,"ir.action,name",act_work_form,Works,Aufgaben,0
+model,"ir.action,name",act_work_tree,Works,Aufgaben,0
+model,"ir.action,name",act_work_tree2,Works,Aufgaben,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_enter_lines,Enter Timesheet,Zur Zeiterfassung,0
 model,"ir.ui.menu,name",menu_open_hours_employee,Hours per Employee,Stunden pro Mitarbeiter,0
