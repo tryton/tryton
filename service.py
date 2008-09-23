@@ -36,6 +36,7 @@ class Service(OSV):
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'uom_cat_time'),
             ('module', '=', 'product'),
+            ('inherit', '=', False),
             ], limit=1)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0])
         category_id = model_data.db_id
