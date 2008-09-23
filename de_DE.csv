@@ -26,10 +26,10 @@ field,"res.user,company",0,Current Company,aktuelles Unternehmen,0
 field,"res.user,employee",0,Employee,Mitarbeiter,0
 field,"res.user,main_company",0,Main Company,Mutterbetrieb,0
 help,"ir.cron,companies",0,Companies registered for this cron,"Unternehmen, für welche dieser Job durchgeführt werden soll",0
-model,"ir.action,name",134,Companies,Unternehmen,0
-model,"ir.action,name",136,Companies,Unternehmen,0
-model,"ir.action,name",138,Employees,Mitarbeiter,0
-model,"ir.action,name",140,_Letter,_Brief,0
+model,"ir.action,name",act_company_tree,Companies,Unternehmen,0
+model,"ir.action,name",act_company_form,Companies,Unternehmen,0
+model,"ir.action,name",act_employee_form,Employees,Mitarbeiter,0
+model,"ir.action,name",report_letter,_Letter,_Brief,0
 model,"ir.ui.menu,name",menu_company_tree,Companies,Unternehmen,0
 model,"ir.ui.menu,name",menu_company_form,Edit Companies,Unternehmen bearbeiten,0
 model,"ir.ui.menu,name",menu_employee_form,Employees,Mitarbeiter,0
