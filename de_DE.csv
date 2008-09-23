@@ -98,26 +98,26 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 * ein leerer Wert ist ein unbegrenztes Datum in der Zukunft
 * ein Datum in der Vergangenheit berechnet historische Werte
 ",0
-model,"ir.action,name",302,Assigned Customer Packings,Zugewiesene Kundenverpackungen,0
-model,"ir.action,name",316,Complete Inventory,Gesamter Lagerbestand,0
-model,"ir.action,name",306,Customer Packing,Verpackung Kunde,0
-model,"ir.action,name",298,Customer Packings,Kundenverpackungen,0
-model,"ir.action,name",304,Customer Packings Ready for Shipping,Versandbereite Kundenverpackungen,0
-model,"ir.action,name",300,Customer Packings Waiting Assignation,Zuzuweisende Kundenverpackungen,0
-model,"ir.action,name",286,Edit Locations,Lagerorte bearbeiten,0
-model,"ir.action,name",318,Inventories,Lager,0
-model,"ir.action,name",284,Locations,Lagerorte,0
-model,"ir.action,name",308,Moves,Lagerbewegungen,0
-model,"ir.action,name",310,Moves from Suppliers,Bewegungen von Lieferanten,0
-model,"ir.action,name",312,Moves from Suppliers Waiting Arrival,Erwartete Bewegungen von Lieferanten,0
-model,"ir.action,name",314,Moves to Customers,Bewegungen zu Kunden,0
-model,"ir.action,name",294,New Supplier Packings,Neue Lieferantenverpackung,0
-model,"ir.action,name",282,Product by Location,Artikel nach Lagerort,0
-model,"ir.action,name",290,Product Quantities,Artikel Mengen,0
-model,"ir.action,name",288,Products by Locations,Artikel nach Lagerort,0
-model,"ir.action,name",280,Product Stock,Lagerbestand,0
-model,"ir.action,name",296,Received Supplier packings,Erhaltene Lieferantenverpackungen,0
-model,"ir.action,name",292,Supplier Packings,Lieferantenverpackungen,0
+model,"ir.action,name",act_packing_out_form_assigned,Assigned Customer Packings,Zugewiesene Kundenverpackungen,0
+model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Gesamter Lagerbestand,0
+model,"ir.action,name",act_packing_out_form,Customer Packing,Verpackung Kunde,0
+model,"ir.action,name",report_packing_out,Customer Packings,Kundenverpackungen,0
+model,"ir.action,name",act_packing_out_form_ready,Customer Packings Ready for Shipping,Versandbereite Kundenverpackungen,0
+model,"ir.action,name",act_packing_out_form_waiting,Customer Packings Waiting Assignation,Zuzuweisende Kundenverpackungen,0
+model,"ir.action,name",act_location_form,Edit Locations,Lagerorte bearbeiten,0
+model,"ir.action,name",act_inventory_form,Inventories,Lager,0
+model,"ir.action,name",act_location_tree,Locations,Lagerorte,0
+model,"ir.action,name",act_move_form,Moves,Lagerbewegungen,0
+model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Bewegungen von Lieferanten,0
+model,"ir.action,name",act_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Erwartete Bewegungen von Lieferanten,0
+model,"ir.action,name",act_move_form_cust,Moves to Customers,Bewegungen zu Kunden,0
+model,"ir.action,name",act_packing_in_form2,New Supplier Packings,Neue Lieferantenverpackung,0
+model,"ir.action,name",wizard_open_location,Product by Location,Artikel nach Lagerort,0
+model,"ir.action,name",wizard_open_product,Product Quantities,Artikel Mengen,0
+model,"ir.action,name",act_product_by_location,Products by Locations,Artikel nach Lagerort,0
+model,"ir.action,name",act_location_quantity_tree,Product Stock,Lagerbestand,0
+model,"ir.action,name",act_packing_in_form_received,Received Supplier packings,Erhaltene Lieferantenverpackungen,0
+model,"ir.action,name",act_packing_in_form,Supplier Packings,Lieferantenverpackungen,0
 model,"ir.ui.menu,name",menu_packing_out_assigned,Assigned Customer Packings,Zugewiesene Kundenverpackungen,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_packing_out_form,Customer Packings,Kundenverpackungen,0
