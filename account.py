@@ -875,6 +875,7 @@ class OpenChartAccount(Wizard):
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_account_tree2'),
             ('module', '=', 'account'),
+            ('inherit', '=', False),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
@@ -1314,6 +1315,7 @@ class OpenBalanceSheet(Wizard):
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_account_balance_sheet_tree'),
             ('module', '=', 'account'),
+            ('inherit', '=', False),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
@@ -1433,6 +1435,7 @@ class OpenIncomeStatement(Wizard):
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_account_income_statement_tree'),
             ('module', '=', 'account'),
+            ('inherit', '=', False),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
