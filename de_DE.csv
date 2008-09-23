@@ -78,17 +78,17 @@ You can use this field for quick search.",Staatenkürzel (2 Zeichen),0
 help,"relationship.country,name",0,The full name of the country.,Voller Ländername,0
 help,"relationship.party,vat_country",0,Setting VAT country will enable verification of the VAT number.,Ein Eintrag in USt-ID Präfix aktiviert die Überprüfung der USt-ID Nr.,0
 help,"relationship.party,vat_number",0,Value Added Tax number,Umsatzsteueridentifikationsnummer,0
-model,"ir.action,name",128,Addresses,Adressen,0
-model,"ir.action,name",130,Addresses,Adressen,0
-model,"ir.action,name",110,Categories,Kategorien,0
-model,"ir.action,name",112,Categories,Kategorien,0
-model,"ir.action,name",114,Categories,Kategorien,0
-model,"ir.action,name",126,Countries,Staaten,0
-model,"ir.action,name",122,La_bels,_Etiketten,0
-model,"ir.action,name",116,Parties,Parteien,0
-model,"ir.action,name",118,Parties,Parteien,0
-model,"ir.action,name",120,Parties by Category,Parteien nach Kategorie,0
-model,"ir.action,name",124,Party Types,Parteitypen,0
+model,"ir.action,name",act_address_form,Addresses,Adressen,0
+model,"ir.action,name",act_address_form2,Addresses,Adressen,0
+model,"ir.action,name",act_category_tree,Categories,Kategorien,0
+model,"ir.action,name",act_category_form,Categories,Kategorien,0
+model,"ir.action,name",act_category_form2,Categories,Kategorien,0
+model,"ir.action,name",act_country_form,Countries,Staaten,0
+model,"ir.action,name",report_label,La_bels,_Etiketten,0
+model,"ir.action,name",act_party_form,Parties,Parteien,0
+model,"ir.action,name",act_party_form2,Parties,Parteien,0
+model,"ir.action,name",act_party_by_category,Parties by Category,Parteien nach Kategorie,0
+model,"ir.action,name",act_party_type_form,Party Types,Parteitypen,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adressen,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Kategorien,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
