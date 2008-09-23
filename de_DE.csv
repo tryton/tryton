@@ -66,12 +66,12 @@ field,"stock.move,purchase_line",0,unknown,unbekannt,0
 field,"stock.move,supplier",0,Supplier,Lieferant,0
 help,"purchase.product_supplier,delivery_time",0,In number of days,In Anzahl von Tagen,0
 help,"purchase.product_supplier.price,quantity",0,Minimal quantity,Mindestmenge,0
-model,"ir.action,name",372,Confirmed Purchases,Bestätigte Einkäufe,0
-model,"ir.action,name",368,Draft Purchases,Entwürfe (Einkäufe),0
-model,"ir.action,name",374,Purchase,Drucken,0
-model,"ir.action,name",366,Purchases,Einkäufe,0
-model,"ir.action,name",370,Purchases in Quotation,Angebote (Einkäufe),0
-model,"ir.action,name",376,Suppliers,Lieferanten,0
+model,"ir.action,name",act_purchase_form_confirmed,Confirmed Purchases,Bestätigte Einkäufe,0
+model,"ir.action,name",act_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
+model,"ir.action,name",report_purchase,Purchase,Drucken,0
+model,"ir.action,name",act_purchase_form,Purchases,Einkäufe,0
+model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
+model,"ir.action,name",act_open_supplier,Suppliers,Lieferanten,0
 model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Bestätigte Einkäufe,0
 model,"ir.ui.menu,name",menu_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
 model,"ir.ui.menu,name",menu_purchase,Purchase Management,Einkauf,0
