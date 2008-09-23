@@ -22,11 +22,11 @@ field,"account.statement,move_lines",0,Move Lines,Buchungsposten,0
 field,"account.statement,start_balance",0,Start Balance,Beginn Bilanz,0
 field,"account.statement,state",0,State,Status,0
 model,"account.journal.type,name",journal_type_bank,Bank,Bank,0
-model,"ir.action,name",362,All Statement,Alle Bankauszüge,0
-model,"ir.action,name",356,Draft Statements,Bankanweisungen,0
-model,"ir.action,name",360,Posted Statements,Festgeschriebene Bankauszüge,0
-model,"ir.action,name",364,Statement Journals,Journale Bankauszüge,0
-model,"ir.action,name",358,Validated Statement,Abgezeichnete Bankauszüge,0
+model,"ir.action,name",act_statement_form,All Statement,Alle Bankauszüge,0
+model,"ir.action,name",act_draft_statement_form,Draft Statements,Bankanweisungen,0
+model,"ir.action,name",act_posted_statement_form,Posted Statements,Festgeschriebene Bankauszüge,0
+model,"ir.action,name",act_statement_journal_form,Statement Journals,Journale Bankauszüge,0
+model,"ir.action,name",act_validated_statement_form,Validated Statement,Abgezeichnete Bankauszüge,0
 model,"ir.ui.menu,name",menu_statement_form,All Statement,Alle Bankauszüge,0
 model,"ir.ui.menu,name",menu_draft_statement_form,Draft Statements,Bankanweisungen,0
 model,"ir.ui.menu,name",menu_posted_statement_form,Posted Statements,Festgeschriebene Bankauszüge,0
