@@ -112,12 +112,13 @@
 
         <record model="res.user" id="user_generate_request">
             <field name="login">user_cron_purchase_request</field>
-            <field name="name">User Purchase Request</field>
+            <field name="name">Cron Purchase Request</field>
             <field name="signature"></field>
         </record>
 
         <record model="ir.cron" id="cron_generate_request">
             <field name="name">Generate Purchase Requests</field>
+            <field name="request_user" ref="res.user_admin"/>
             <field name="user" ref="user_generate_request"/>
             <field name="active" eval="True"/>
             <field name="interval_number">1</field>
