@@ -1411,6 +1411,7 @@ class OpenSupplier(Wizard):
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_party_form'),
             ('module', '=', 'relationship'),
+            ('inherit', '=', False),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
