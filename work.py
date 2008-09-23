@@ -159,6 +159,7 @@ class OpenWork(Wizard):
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_work_tree2'),
             ('module', '=', 'timesheet'),
+            ('inherit', '=', False),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
@@ -182,6 +183,7 @@ class OpenWork2(OpenWork):
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_work_form2'),
             ('module', '=', 'timesheet'),
+            ('inherit', '=', False),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
@@ -218,6 +220,7 @@ class OpenWorkGraph(Wizard):
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_work_form3'),
             ('module', '=', 'timesheet'),
+            ('inherit', '=', False),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)

@@ -114,6 +114,7 @@ class EnterLines(Wizard):
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_line_form'),
             ('module', '=', 'timesheet'),
+            ('inherit', '=', False),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
@@ -204,6 +205,7 @@ class OpenHoursEmployee(Wizard):
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_hours_employee_form'),
             ('module', '=', 'timesheet'),
+            ('inherit', '=', False),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
