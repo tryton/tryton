@@ -1049,12 +1049,22 @@ class Line(OSV):
 
     def write(self, cursor, user, ids, vals, context=None):
         move_obj = self.pool.get('account.move')
+
+        if context is None:
+            context = {}
+
         if isinstance(ids, (int, long)):
             ids = [ids]
+
         self.check_modify(cursor, user, ids, context=context)
         lines = self.browse(cursor, user, ids, context=context)
         move_ids = [x.move.id for x in lines]
         res = super(Line, self).write(cursor, user, ids, vals, context=context)
+
+        if context.get('_timestamp'):
+            context = context.copy()
+            del context['_timestamp']
+
         lines = self.browse(cursor, user, ids, context=context)
         for line in lines:
             if line.move.id not in move_ids:
