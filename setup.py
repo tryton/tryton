@@ -1,5 +1,6 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 #!/usr/bin/env python
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 
 from distutils.core import setup
 from distutils.command import sdist
@@ -32,20 +33,23 @@ setup(name='trytond-' + info['name'].lower(),
         'trytond.modules.' + info['name'].lower(),
     ],
     package_data={
-        'trytond.modules.' + info['name'].lower(): info.get('xml', []) + \
-                ['general_journal.odt', 'general_ledger.odt', 'trial_balance.odt'],
+        'trytond.modules.' + info['name'].lower(): info.get('xml', []) \
+                + info.get('translation', []) \
+                + ['general_journal.odt', 'general_ledger.odt',
+                    'trial_balance.odt'],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
         'Intended Audience :: Developers',
         'Intended Audience :: Legal Industry',
+        'License :: OSI Approved :: GNU General Public License (GPL)',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Office/Business',
     ],
-    license=info.get('license', 'GPL-2'),
+    license='GPL-3',
     #requires=requires,
     cmdclass={
         'sdist': mysdist,
