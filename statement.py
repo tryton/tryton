@@ -10,7 +10,7 @@ _STATES = {'readonly': 'state != "draft"'}
 
 
 class Statement(OSV):
-    'Bank Statement'
+    'Account Statement'
     _name = 'account.statement'
     _description = __doc__
 
@@ -140,7 +140,7 @@ Statement()
 
 
 class Line(OSV):
-    'Bank Statement Line'
+    'Account Statement Line'
     _name = 'account.statement.line'
     _description = __doc__
 
