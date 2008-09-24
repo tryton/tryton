@@ -299,7 +299,8 @@ class Reconciliation(OSV):
             'modify': 'You can not modify a reconciliation!',
             'invalid_reconciliation': 'You can not create reconciliation ' \
                     'where lines are not balanced, nor valid, ' \
-                    'nor in the same account, nor in account to reconcile!',
+                    'nor in the same account, nor in account to reconcile, ' \
+                    'nor from the same party!',
             })
 
     def default_name(self, cursor, user, context=None):
@@ -323,6 +324,7 @@ class Reconciliation(OSV):
         for reconciliation in self.browse(cursor, user, ids):
             amount = Decimal('0.0')
             account = None
+            party = None
             for line in reconciliation.lines:
                 if line.state != 'valid':
                     return False
@@ -332,6 +334,10 @@ class Reconciliation(OSV):
                 elif account.id != line.account.id:
                     return False
                 if not account.reconcile:
+                    return False
+                if not party:
+                    party = line.party
+                elif line.party and party.id != line.party.id:
                     return False
             if not currency_obj.is_zero(cursor, user, account.company.currency,
                     amount):
