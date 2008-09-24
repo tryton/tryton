@@ -197,13 +197,22 @@ class Line(OSV):
         return res
 
     def create_move(self, cursor, user, line, context=None):
+        '''
+        Create move for the statement line
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param line: a BrowseRecord of the line
+        :param context: the contest
+        :return: the move id
+        '''
         move_obj = self.pool.get('account.move')
         period_obj = self.pool.get('account.period')
         period_id = period_obj.find(cursor, user,
                 line.statement.journal.company.id, date=line.date,
                 context=context)
 
-        move_lines = self.get_move_lines(cursor, user, line, context=context)
+        move_lines = self._get_move_lines(cursor, user, line, context=context)
         move_id = move_obj.create(cursor, user, {
                 'name': line.date,
                 'period': period_id,
@@ -214,6 +223,7 @@ class Line(OSV):
         self.write(cursor, user, line.id, {
             'move': move_id,
             }, context=context)
+        return move_id
 
     def post_move(self, cursor, user, lines, context=None):
         move_obj = self.pool.get('account.move')
@@ -224,7 +234,16 @@ class Line(OSV):
         move_obj.delete(cursor, user, [l.move.id for l in lines],
                 context=context)
 
-    def get_move_lines(self, cursor, user, statement_line, context=None):
+    def _get_move_lines(self, cursor, user, statement_line, context=None):
+        '''
+        Return the values of the move lines for the statement line
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param statement_line: a BrowseRecord of the statement line
+        :param context: the context
+        :return: a list of dictionary of move line values
+        '''
         currency_obj = self.pool.get('currency.currency')
         zero = Decimal("0.0")
         amount = currency_obj.compute(
