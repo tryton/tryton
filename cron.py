@@ -19,4 +19,8 @@ class Cron(OSV):
         cursor.execute("UPDATE res_user SET company = NULL, main_company = NULL "
                        "WHERE id = %s", (user,))
 
+    def default_companies(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        return company_obj.search(cursor, user, [], context=context)
+
 Cron()
