@@ -114,7 +114,10 @@ class PurchaseRequest(OSV):
         request_obj = self.pool.get('stock.purchase_request')
         product_supplier_obj = self.pool.get('purchase.product_supplier')
         req_ids = request_obj.search(
-            cursor, user, [('purchase_line', '=', False)], context=context)
+            cursor, user, ['OR',[('purchase_line', '=', False)],
+                           [('purchase_line.purchase.state', '=', 'cancel')]],
+            context=context)
+        print req_ids
         request_obj.delete(cursor, user, req_ids, context=context)
 
         req_ids = request_obj.search(cursor, user, [], context=context)
