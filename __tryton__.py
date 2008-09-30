@@ -8,6 +8,8 @@
     'category': 'Inventory',
     'description': 'Supply Management Module',
     'depends': [
+        'ir',
+        'res',
         'product',
         'stock',
         'purchase',
