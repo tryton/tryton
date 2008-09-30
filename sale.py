@@ -173,6 +173,17 @@ class Sale(OSV):
                     context=context)[0]
         return False
 
+    def default_currency_digits(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        company = None
+        if context.get('company'):
+            company = company_obj.browse(cursor, user, context['company'],
+                    context=context)
+            return company.currency.digits
+        return 2
+
     def default_invoice_method(self, cursor, user, context=None):
         return 'order'
 
