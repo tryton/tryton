@@ -240,6 +240,8 @@ class PurchaseRequest(OSV):
         purchase date, the expected supply date and the prefered
         supplier.
         """
+        uom_obj = self.pool.get('product.uom')
+
         supplier = None
         seq = None
         on_time = False
@@ -265,10 +267,14 @@ class PurchaseRequest(OSV):
         else:
             purchase_date = today
 
+        quantity = uom_obj.compute_qty(cursor, user, product.default_uom,
+                max_quantity - product_quantity, product.purchase_uom,
+                context=context)
+
         return {'product': product,
                 'party': supplier and supplier or None,
-                'quantity': max_quantity - product_quantity,
-                'uom': product.default_uom,
+                'quantity': quantity,
+                'uom': product.purchase_uom,
                 'purchase_date': purchase_date,
                 'supply_date': shortage_date,
                 'stock_level': product_quantity,
