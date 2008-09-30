@@ -31,7 +31,7 @@ class PackingIn(OSV):
                 'readonly': "state != 'draft'",
             }, domain="[('party', '=', supplier)]")
     warehouse = fields.Many2One('stock.location', "Warehouse",
-            required=True, domain="[('type', '=', 'warehouse')]",
+            required=True, domain=[('type', '=', 'warehouse')],
             states={
                 'readonly': "state in ('cancel', 'done') or " \
                         "bool(incoming_moves)",
