@@ -883,6 +883,8 @@ class PurchaseLine(OSV):
             ctx2['supplier'] = vals['_parent_purchase.party']
         if vals.get('unit'):
             ctx2['uom'] = vals['unit']
+        else:
+            ctx2['uom'] = product.purchase_uom.id
         res['unit_price'] = product_obj.get_purchase_price(cursor, user,
                 [product.id], vals.get('quantity', 0), context=ctx2)[product.id]
         res['taxes'] = []
@@ -899,12 +901,12 @@ class PurchaseLine(OSV):
             res['description'] = product_obj.name_get(cursor, user, product.id,
                     context=ctx)[0][1]
 
-        category = product.default_uom.category
+        category = product.purchase_uom.category
         if not vals.get('unit') \
                 or vals.get('unit') not in [x.id for x in category.uoms]:
-            res['unit'] = uom_obj.name_get(cursor, user, product.default_uom.id,
+            res['unit'] = uom_obj.name_get(cursor, user, product.purchase_uom.id,
                     context=context)[0]
-            res['unit_digits'] = product.default_uom.digits
+            res['unit_digits'] = product.purchase_uom.digits
         return res
 
     def on_change_unit(self, cursor, user, ids, vals, context=None):
@@ -1097,20 +1099,56 @@ PurchaseReport()
 class Template(OSV):
     _name = "product.template"
 
-    purchasable = fields.Boolean('Purchasable')
+    purchasable = fields.Boolean('Purchasable', states={
+        'readonly': "active == False",
+        })
     product_suppliers = fields.One2Many('purchase.product_supplier',
             'product', 'Suppliers', states={
+                'readonly': "active == False",
                 'invisible': "not purchasable",
             })
+    purchase_uom = fields.Many2One('product.uom', 'Purchase UOM', states={
+        'readonly': "active == False",
+        'invisible': "not purchasable",
+        'required': "purchasable",
+        }, domain="[('category', '=', " \
+                "(default_uom, 'uom.category'))]",
+        on_change_with=['default_uom', 'purchase_uom'])
 
     def default_purchasable(self, cursor, user, context=None):
-        return True
+        return False
+
+    def on_change_with_purchase_uom(self, cursor, user, ids, vals,
+            context=None):
+        uom_obj = self.pool.get('product.uom')
+        res = False
+
+        if vals.get('default_uom'):
+            default_uom = uom_obj.browse(cursor, user, vals['default_uom'],
+                    context=context)
+            if vals.get('purchase_uom'):
+                purchase_uom = uom_obj.browse(cursor, user, vals['purchase_uom'],
+                        context=context)
+                if default_uom.category.id == purchase_uom.category.id:
+                    res = purchase_uom.id
+                else:
+                    res = default_uom.id
+            else:
+                res = default_uom.id
+        if res:
+            res = uom_obj.name_get(cursor, user, res, context=context)[0]
+        return res
 
 Template()
 
 
 class Product(OSV):
     _name = 'product.product'
+
+    def on_change_with_purchase_uom(self, cursor, user, ids, vals, context=None):
+        template_obj = self.pool.get('product.template')
+        return template_obj.on_change_with_purchase_uom(cursor, user, ids, vals,
+                context=context)
 
     def get_purchase_price(self, cursor, user, ids, quantity=0, context=None):
         '''
