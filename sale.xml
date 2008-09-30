@@ -736,6 +736,8 @@
                         <page string="Customers">
                             <label name="salable"/>
                             <field name="salable"/>
+                            <label name="sale_uom"/>
+                            <field name="sale_uom"/>
                         </page>
                     </xpath>
                 </data>

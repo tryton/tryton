@@ -999,6 +999,8 @@ class SaleLine(OSV):
             ctx2['customer'] = vals['_parent_sale.party']
         if vals.get('unit'):
             ctx2['uom'] = vals['unit']
+        else:
+            ctx2['uom'] = product.sale_uom.id
         res['unit_price'] = product_obj.get_sale_price(cursor, user,
                 [product.id], vals.get('quantity', 0), context=ctx2)[product.id]
         res['taxes'] = []
@@ -1015,12 +1017,12 @@ class SaleLine(OSV):
             res['description'] = product_obj.name_get(cursor, user, product.id,
                     context=ctx)[0][1]
 
-        category = product.default_uom.category
+        category = product.sale_uom.category
         if not vals.get('unit') \
                 or vals.get('unit') not in [x.id for x in category.uoms]:
-            res['unit'] = uom_obj.name_get(cursor, user, product.default_uom.id,
+            res['unit'] = uom_obj.name_get(cursor, user, product.sale_uom.id,
                     context=context)[0]
-            res['unit_digits'] = product.default_uom.digits
+            res['unit_digits'] = product.sale_uom.digits
         return res
 
     def on_change_unit(self, cursor, user, ids, vals, context=None):
@@ -1210,16 +1212,50 @@ SaleReport()
 class Template(OSV):
     _name = 'product.template'
 
-    salable = fields.Boolean('Salable')
+    salable = fields.Boolean('Salable', states={
+        'readonly': "active == False",
+        })
+    sale_uom = fields.Many2One('product.uom', 'Sale UOM', states={
+        'readonly': "active == False",
+        'invisible': "not salable",
+        'required': "salable",
+        }, domain="[('category', '=', " \
+                "(default_uom, 'uom.category'))]",
+        on_change_with=['default_uom', 'sale_uom'])
 
     def default_salable(self, cursor, user, context=None):
-        return True
+        return False
+
+    def on_change_with_sale_uom(self, cursor, user, ids, vals, context=None):
+        uom_obj = self.pool.get('product.uom')
+        res = False
+
+        if vals.get('default_uom'):
+            default_uom = uom_obj.browse(cursor, user, vals['default_uom'],
+                    context=context)
+            if vals.get('sale_uom'):
+                sale_uom = uom_obj.browse(cursor, user, vals['sale_uom'],
+                        context=context)
+                if default_uom.category.id == sale_uom.category.id:
+                    res = sale_uom.id
+                else:
+                    res = default_uom.id
+            else:
+                res = default_uom.id
+        if res:
+            res = uom_obj.name_get(cursor, user, res, context=context)[0]
+        return res
 
 Template()
 
 
 class Product(OSV):
     _name = 'product.product'
+
+    def on_change_with_sale_uom(self, cursor, user, ids, vals, context=None):
+        template_obj = self.pool.get('product.template')
+        return template_obj.on_change_with_sale_uom(cursor, user, ids, vals,
+                context=context)
 
     def get_sale_price(self, cursor, user, ids, quantity=0, context=None):
         '''
