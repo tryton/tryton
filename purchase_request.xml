@@ -110,6 +110,23 @@
             <field name="rule_group" ref="rule_group_purchase_request"/>
         </record>
 
+        <record model="ir.model.access" id="access_purchase_request">
+            <field name="model" search="[('model', '=', 'stock.purchase_request')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_purchase_request_admin">
+            <field name="model" search="[('model', '=', 'stock.purchase_request')]"/>
+            <field name="group" ref="purchase.group_purchase"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+
         <record model="res.user" id="user_generate_request">
             <field name="login">user_cron_purchase_request</field>
             <field name="name">Cron Purchase Request</field>
