@@ -446,6 +446,7 @@ class CreatePurchase(Wizard):
         purchase_obj = self.pool.get('purchase.purchase')
         product_obj = self.pool.get('product.product')
         party_obj = self.pool.get('relationship.party')
+        line_obj = self.pool.get('purchase.line')
         created_ids = []
         party_ids = []
         product_ids = []
@@ -454,53 +455,56 @@ class CreatePurchase(Wizard):
             party_ids.append(purchase['party'])
             for line in purchase['lines']:
                 product_ids.append(line['product'])
-        products = dict((p.id, p) for p in product_obj.browse(
+        id2product = dict((p.id, p) for p in product_obj.browse(
                 cursor, user, product_ids, context=context))
-        parties = dict((p.id, p) for p in party_obj.browse(
+        id2party = dict((p.id, p) for p in party_obj.browse(
                 cursor, user, party_ids, context=context))
 
         # create purchases, lines and update requests
         for purchase in data['purchases'].itervalues():
-            party = parties[purchase['party']]
+            party = id2party[purchase['party']]
             purchase_lines = purchase.pop('lines')
             purchase_id = purchase_obj.create(
                 cursor, user, purchase, context=context)
             created_ids.append(purchase_id)
             for line in purchase_lines:
-                product = products[line['product']]
+                product = id2product[line['product']]
                 request_id = line.pop('request')
-                line['purchase'] = purchase_id
-                line['description'] = product.name
-                local_context = context.copy()
-                local_context['uom'] = line['unit']
-                local_context['supplier'] = purchase['party']
-                local_context['currency'] = purchase['currency']
-                product_price = product_obj.get_purchase_price(
-                    cursor, user, [line['product']], line['quantity'],
-                    context=local_context)[line['product']]
-                line['unit_price'] = product_price
 
-                taxes = []
-                for tax in product.supplier_taxes:
-                    if 'supplier_' + tax.group.code in party_obj._columns \
-                            and party['supplier_' + tax.group.code]:
-                        taxes.append(
-                                party['supplier_' + tax.group.code].id)
-                        continue
-                    taxes.append(tax.id)
-                line['taxes'] = [('add', taxes)]
-
-                line_id = self.create_purchase_line(
-                    cursor, user, line, product, party, context=context)
+                line_values = self.compute_purchase_line(
+                    cursor, user, line, purchase_id, purchase, product,
+                    party, context=context)
+                line_id = line_obj.create(cursor, user, line, context=context)
                 request_obj.write(
                     cursor, user, request_id, {'purchase_line': line_id},
                     context=context)
 
         return {}
 
-    def create_purchase_line(self, cursor, user, line, product, party,
-                             context=None):
-        line_obj = self.pool.get('purchase.line')
-        return line_obj.create(cursor, user, line, context=context)
+    def compute_purchase_line(self, cursor, user, line, purchase_id, purchase,
+                             product, party, context=None):
+        party_obj = self.pool.get('relationship.party')
+        product_obj = self.pool.get('product.product')
+        line['purchase'] = purchase_id
+        line['description'] = product.name
+        local_context = context.copy()
+        local_context['uom'] = line['unit']
+        local_context['supplier'] = purchase['party']
+        local_context['currency'] = purchase['currency']
+        product_price = product_obj.get_purchase_price(
+            cursor, user, [line['product']], line['quantity'],
+            context=local_context)[line['product']]
+        line['unit_price'] = product_price
+
+        taxes = []
+        for tax in product.supplier_taxes:
+            if 'supplier_' + tax.group.code in party_obj._columns \
+                    and party['supplier_' + tax.group.code]:
+                taxes.append(
+                        party['supplier_' + tax.group.code].id)
+                continue
+            taxes.append(tax.id)
+        line['taxes'] = [('add', taxes)]
+        return line
 
 CreatePurchase()
