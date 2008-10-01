@@ -1,10 +1,10 @@
 type,name,res_id,src,value,fuzzy
 error,account.statement,0,"Wrong End balance:
  * Expected: %s
- * Computed: %s",Falscher Saldo:,0
+ * Computed: %s",Falscher Endsaldo:,0
 error,account.statement.line,0,Please provide debit and credit account on bank journal.,Bitte Soll- und Habenkonto für das Bankjournal eingeben.,0
 field,"account.statement,date",0,Date,Datum,0
-field,"account.statement,end_balance",0,End Balance,Saldo,0
+field,"account.statement,end_balance",0,End Balance,Endsaldo,0
 field,"account.statement,journal",0,Journal,Journal,0
 field,"account.statement.journal,company",0,Company,Unternehmen,0
 field,"account.statement.journal,currency",0,Currency,Währung,0
@@ -19,21 +19,21 @@ field,"account.statement.line,party",0,Party,Partei,0
 field,"account.statement,lines",0,Transactions,Transaktionen,0
 field,"account.statement.line,statement",0,Statement,Bankauszug,0
 field,"account.statement,move_lines",0,Move Lines,Buchungsposten,0
-field,"account.statement,start_balance",0,Start Balance,Beginn Bilanz,0
+field,"account.statement,start_balance",0,Start Balance,Anfangssaldo,0
 field,"account.statement,state",0,State,Status,0
 model,"account.journal.type,name",journal_type_bank,Bank,Bank,0
 model,"ir.action,name",act_statement_form,All Statement,Alle Bankauszüge,0
-model,"ir.action,name",act_draft_statement_form,Draft Statements,Bankanweisungen,0
+model,"ir.action,name",act_draft_statement_form,Draft Statements,Offene Bankauszüge,0
 model,"ir.action,name",act_posted_statement_form,Posted Statements,Festgeschriebene Bankauszüge,0
 model,"ir.action,name",act_statement_journal_form,Statement Journals,Journale Bankauszüge,0
-model,"ir.action,name",act_validated_statement_form,Validated Statement,Abgezeichnete Bankauszüge,0
+model,"ir.action,name",act_validated_statement_form,Validated Statement,Geprüfte Bankauszüge,0
 model,"ir.ui.menu,name",menu_statement_form,All Statement,Alle Bankauszüge,0
-model,"ir.ui.menu,name",menu_draft_statement_form,Draft Statements,Bankanweisungen,0
+model,"ir.ui.menu,name",menu_draft_statement_form,Draft Statements,Offene Bankauszüge,0
 model,"ir.ui.menu,name",menu_posted_statement_form,Posted Statements,Festgeschriebene Bankauszüge,0
 model,"ir.ui.menu,name",menu_statement_journal_form,Statement Journals,Journale Bankauszüge,0
 model,"ir.ui.menu,name",menu_statements,Statements,Bankauszüge,0
 model,"ir.ui.menu,name",menu_statement_configuration,Statements,Bankauszüge,0
-model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Abgezeichnete Bankauszüge,0
+model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Geprüfte Bankauszüge,0
 selection,"account.statement,state",0,Cancel,Abbrechen,0
 selection,"account.statement,state",0,Draft,Entwurf,0
 selection,"account.statement,state",0,Posted,Festgeschrieben,0
@@ -49,5 +49,5 @@ view,account.statement,0,Statement Lines,Posten Bankauszüge,0
 view,account.statement,0,Validate,Prüfen,0
 view,account.statement.journal,0,Statement Journal,Journal Bankauszüge,0
 view,account.statement.journal,0,Statement Journals,Journale Bankauszüge,0
-view,account.statement.line,0,Bank Statement Line,Posten Bankauszug,0
+view,account.statement.line,0,Bank Statement Line,Posten Bankauszüge,0
 view,statement.statement.line,0,Statement Lines,Posten Bankauszüge,0
