@@ -322,7 +322,7 @@ class PurchaseRequest(OSV):
 
         current_date = min_date
         current_qty = min_date_qty
-        while current_date <= max_date:
+        while current_date < max_date:
             if current_qty < min_quantity:
                 if not res_date:
                     res_date = current_date
