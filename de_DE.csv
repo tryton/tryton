@@ -1,0 +1,104 @@
+type,name,res_id,src,value,fuzzy
+error,account.invoice,0,You can not delete invoices that comes from a sale!,Aus einem Verkauf stammende Rechnungen können nicht gelöscht werden!,0
+error,sale.line,0,"It miss an ""account_revenue"" default property!","Es ist keine allgemeine Eigenschaft ""Konto Ertrag"" definiert",0
+error,sale.line,0,The customer location is required!,Der Lagerort des Kunden muss eingegeben werden!,0
+error,sale.sale,0,Wrong combination of method!,Ungültige Kombination von Methoden!,0
+field,"product.template,salable",0,Salable,Verkäuflich,0
+field,"product.template,sale_uom",0,Sale UOM,Einheit Verkauf,0
+field,"sale.line,amount",0,Amount,Betrag,0
+field,"sale.line,comment",0,Comment,Kommentar,0
+field,"sale.line,description",0,Description,Bezeichnung,0
+field,"sale.line,invoice_lines",0,Invoice Lines,Rechnungspositionen,0
+field,"sale.line,move_done",0,Moves Done,Bewegungen erledigt,0
+field,"sale.line,move_exception",0,Moves Exception,Bewegungsvorbehalt,0
+field,"sale.line,moves",0,Moves,Bewegungen,0
+field,"sale.line,moves_ignored",0,Moves Ignored,Ignorierte Bewegungen,0
+field,"sale.line,product",0,Product,Artikel,0
+field,"sale.line,quantity",0,Quantity,Menge,0
+field,"sale.line,sale",0,Sale,Verkauf,0
+field,"sale.line,sequence",0,Sequence,Sequenz,0
+field,"sale.line,taxes",0,Taxes,Steuern,0
+field,"sale.line,type",0,Type,Typ,0
+field,"sale.line,unit",0,Unit,Einheit,0
+field,"sale.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
+field,"sale.line,unit_price",0,Unit Price,Einzelpreis,0
+field,"sale.sale,comment",0,Comment,Kommentar,0
+field,"sale.sale,company",0,Company,Unternehmen,0
+field,"sale.sale,contact_address",0,Contact Address,Kontaktadresse,0
+field,"sale.sale,currency",0,Currency,Währung,0
+field,"sale.sale,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
+field,"sale.sale,description",0,Description,Beschreibung,0
+field,"sale.sale,invoice_address",0,Invoice Address,Rechnungsadresse,0
+field,"sale.sale,invoice_exception",0,Invoices Exception,Rechnungsvorbehalt,0
+field,"sale.sale,invoice_method",0,Invoice Method,Rechnungsstellung,0
+field,"sale.sale,invoice_paid",0,Invoices Paid,Bezahlte Rechnungen,0
+field,"sale.sale,invoices",0,Invoices,Rechnungen,0
+field,"sale.sale,invoices_ignored",0,Invoices Ignored,Ignorierte Rechnungen,0
+field,"sale.sale,invoice_state",0,Invoice State,Rechnungsstatus,0
+field,"sale.sale,lines",0,Lines,Positionen,0
+field,"sale.sale,moves",0,Moves,Bewegungen,0
+field,"sale.sale,packing_address",0,Packing Address,Versandadresse,0
+field,"sale.sale,packing_done",0,Packing Done,Verpackung erledigt,0
+field,"sale.sale,packing_exception",0,Packings Exception,Verpackungsvorbehalt,0
+field,"sale.sale,packing_method",0,Packing Method,Packmethode,0
+field,"sale.sale,packings",0,Packings,Verpackungen,0
+field,"sale.sale,packing_state",0,Packing State,Packstatus,0
+field,"sale.sale,party",0,Party,Partei,0
+field,"sale.sale,party_lang",0,Party Language,Sprache Partei,0
+field,"sale.sale,payment_term",0,Payment Term,Zahlungsbedingung,0
+field,"sale.sale,reference",0,Reference,Referenz,0
+field,"sale.sale,sale_date",0,Sale Date,Verkaufsdatum,0
+field,"sale.sale,state",0,State,Status,0
+field,"sale.sale,tax_amount",0,Tax,Steuer,0
+field,"sale.sale,total_amount",0,Total,Gesamt,0
+field,"sale.sale,untaxed_amount",0,Untaxed,Netto,0
+field,"sale.sale,warehouse",0,Warehouse,Lager,0
+field,"stock.move,sale",0,Sale,Verkauf,0
+field,"stock.move,sale_line",0,unknown,unbekannt,0
+model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Bestätigte Verkäufe,0
+model,"ir.action,name",act_sale_form_draft,Draft Sales,Entwürfe (Verkäufe),0
+model,"ir.action,name",act_sale_form_quotation,Quotation Sales,Angebote (Verkäufe),0
+model,"ir.action,name",report_sale,Sale,Verkauf,0
+model,"ir.action,name",act_sale_form,Sales,Verkäufe,0
+model,"ir.ui.menu,name",menu_sale_form_confirmed,Confirmed Sales,Bestätigte Verkäufe,0
+model,"ir.ui.menu,name",menu_sale_form_draft,Draft Sales,Entwürfe (Verkäufe),0
+model,"ir.ui.menu,name",menu_sale_form_quotation,Quotation Sales,Angebote (Verkäufe),0
+model,"ir.ui.menu,name",menu_sale,Sale Management,Verkauf,0
+model,"ir.ui.menu,name",menu_sale_form,Sales,Verkauf,0
+selection,"sale.line,type",0,Line,Position,0
+selection,"sale.line,type",0,Subtotal,Zwischensumme,0
+selection,"sale.line,type",0,Title,Überschrift,0
+selection,"sale.sale,invoice_method",0,Manual,Manuell,0
+selection,"sale.sale,invoice_method",0,On Order Confirmed,Bei Auftragsbestätigung,0
+selection,"sale.sale,invoice_method",0,On Packing Sent,Bei Versand,0
+selection,"sale.sale,invoice_state",0,Exception,Vorbehalt,0
+selection,"sale.sale,invoice_state",0,None,Kein,0
+selection,"sale.sale,invoice_state",0,Paid,Bezahlt,0
+selection,"sale.sale,invoice_state",0,Waiting,Wartend,0
+selection,"sale.sale,packing_method",0,Manual,Manuell,0
+selection,"sale.sale,packing_method",0,On Invoice Paid,Bei Bezahlung,0
+selection,"sale.sale,packing_method",0,On Order Confirmed,Bei Auftragsbestätigung,0
+selection,"sale.sale,packing_state",0,Exception,Vorbehalt,0
+selection,"sale.sale,packing_state",0,None,Kein,0
+selection,"sale.sale,packing_state",0,Sent,Gesendet,0
+selection,"sale.sale,packing_state",0,Waiting,Wartend,0
+selection,"sale.sale,state",0,Cancel,Abbrechen,0
+selection,"sale.sale,state",0,Confirmed,Bestätigt,0
+selection,"sale.sale,state",0,Done,Erledigt,0
+selection,"sale.sale,state",0,Draft,Entwurf,0
+selection,"sale.sale,state",0,Quotation,Angebot,0
+view,product.product,0,Customers,Kunden,0
+view,sale.line,0,Sale Line,Position Verkauf,0
+view,sale.line,0,Sale Lines,Positionen Verkauf,0
+view,sale.sale,0,Cancel,Abbrechen,0
+view,sale.sale,0,Confirm,Bestätigen,0
+view,sale.sale,0,Draft,Entwurf,0
+view,sale.sale,0,Ignore Invoice Exception,Rechnungsvorbehalt ignorieren,0
+view,sale.sale,0,Ignore Packing Exception,Verpackungsvorbehalt ignorieren,0
+view,sale.sale,0,Invoices,Rechnungen,0
+view,sale.sale,0,Lines,Positionen,0
+view,sale.sale,0,Other Info,Sonstiges,0
+view,sale.sale,0,Packings,Verpackungen,0
+view,sale.sale,0,Quotation,Angebot,0
+view,sale.sale,0,Sale,Verkauf,0
+view,sale.sale,0,Sales,Verkäufe,0
