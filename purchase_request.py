@@ -117,7 +117,6 @@ class PurchaseRequest(OSV):
             cursor, user, ['OR',[('purchase_line', '=', False)],
                            [('purchase_line.purchase.state', '=', 'cancel')]],
             context=context)
-        print req_ids
         request_obj.delete(cursor, user, req_ids, context=context)
 
         req_ids = request_obj.search(cursor, user, [], context=context)
