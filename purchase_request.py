@@ -253,23 +253,26 @@ class PurchaseRequest(OSV):
         product_supplier_obj = self.pool.get('purchase.product_supplier')
 
         supplier = None
-        on_time = False
+        timedelta = datetime.timedelta.max
         today = datetime.date.today()
         max_quantity = order_point and order_point.max_quantity or 0.0
         for product_supplier in product.product_suppliers:
             supply_date = product_supplier_obj.compute_supply_date(cursor, user,
                     product_supplier, date=today, context=context)[0]
             sup_on_time = supply_date <= shortage_date
+            sup_timedelta = shortage_date - supply_date
             if not supplier:
                 supplier = product_supplier.party
-                on_time = sup_on_time
+                timedelta = sup_timedelta
                 continue
 
-            if not on_time and sup_on_time:
+            if timedelta < datetime.timedelta(0) \
+                    and (sup_timedelta >= datetime.timedelta(0) \
+                    or sup_timedelta > timedelta):
                 supplier = product_supplier.party
-                on_time = sup_on_time
+                timedelta = sup_timedelta
 
-        if supplier and product_supplier.delivery_time:
+        if supplier:
             purchase_date = product_supplier_obj.compute_purchase_date(cursor,
                     user, product_supplier, shortage_date, context=context)
         else:
