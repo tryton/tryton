@@ -208,21 +208,32 @@ class PurchaseRequest(OSV):
 
     def get_supply_dates(self, cursor, user, product, context=None):
         """
-        Return for the given product min and max values for the
-        earliest supply dates across all available suppliers.
+        Return the minimal interval of earliest supply dates for a product.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param product: a BrowseRecord of the Product
+        :param context: the context
+        :return: a tuple with the two dates
         """
+        product_supplier_obj = self.pool.get('purchase.product_supplier')
+
         min_date = None
         max_date = None
         today = datetime.date.today()
-        product_supplier_obj = self.pool.get('purchase.product_supplier')
 
         for product_supplier in product.product_suppliers:
-            supply_date = product_supplier_obj.compute_supply_date(
-                cursor, user, product_supplier, date=today, context=context)
+            supply_date, next_supply_date = product_supplier_obj.\
+                    compute_supply_date(cursor, user, product_supplier,
+                            date=today, context=context)
             if (not min_date) or supply_date < min_date:
                 min_date = supply_date
-            if (not max_date) or supply_date > max_date:
+            if (not max_date):
+                max_date = next_supply_date
+            if supply_date > min_date and supply_date < max_date:
                 max_date = supply_date
+            if next_supply_date < max_date:
+                max_date = next_supply_date
 
         if not min_date:
             min_date = datetime.date.max
@@ -281,31 +292,41 @@ class PurchaseRequest(OSV):
                 }
 
     def get_shortage(self, cursor, user, location_id, product_id, min_date,
-                     max_date, min_date_qty, order_point=None,context=None):
+                     max_date, min_date_qty, order_point=None, context=None):
         """
-        Compute stock quantities between the two given dates. If given
-        the order point, one date will be lacking in products this
-        date is returned alongside the stock level at this date.
+        Return between min_date and max_date  the first date where the
+            stock quantity is less than the minimal quantity and
+            the smallest stock quantity in the interval
+            or None if there is no date where stock quantity is less than
+            the minimal quantity
+        The minimal quantity comes from the order_point or is zero
 
-        If no dates are given, the stock is computed for an infinire
-        date and the shortage date is today.
+        :param cursor: the database cursor
+        :param user: the user id
+        :param location_id: the stock location id
+        :param produc_id: the product id
+        :param min_date: the minimal date
+        :param max_date: the maximal date
+        :param min_date_qty: the stock quantity at the minimal date
+        :param order_point: a BrowseRecord of the Order Point
+        :param context: the context
+        :return: a tuple with the date and the quantity
         """
         product_obj = self.pool.get('product.product')
+
+        res_date = None
+        res_qty = None
+
         min_quantity = order_point and order_point.min_quantity or 0.0
 
-        if not min_date:
-            if min_date_qty < min_quantity:
-                return (
-                    datetime.date.today(), min_date_qty)
-            else:
-                return (None, None)
-        if not max_date: max_date = min_date
-
         current_date = min_date
-        current_stock = min_date_qty
+        current_qty = min_date_qty
         while current_date <= max_date:
-            if current_stock < min_quantity:
-                return current_date, current_stock
+            if current_qty < min_quantity:
+                if not res_date:
+                    res_date = current_date
+                if (not res_qty) or (current_qty < res_qty):
+                    res_qty = current_qty
 
             local_context = context and context.copy() or {}
             local_context['stock_date_start'] = current_date
@@ -315,12 +336,12 @@ class PurchaseRequest(OSV):
                 [product_id], with_childs=True, skip_zero=False,
                 context=context)
             for qty in res.itervalues():
-                current_stock += qty
+                current_qty += qty
             if current_date == datetime.date.max:
                 break
             current_date += datetime.timedelta(1)
 
-        return (None, None)
+        return (res_date, res_qty)
 
 PurchaseRequest()
 
