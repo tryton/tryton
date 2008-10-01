@@ -4,6 +4,7 @@ error,purchase.line,0,"It miss an ""account_expense"" default property!","Es ist
 error,purchase.line,0,The supplier location is required!,Der Lagerort des Lieferanten muss eingegeben werden!,0
 field,"product.template,product_suppliers",0,Suppliers,Lieferanten,0
 field,"product.template,purchasable",0,Purchasable,Käuflich,0
+field,"product.template,purchase_uom",0,Purchase UOM,Einheit Einkauf,0
 field,"purchase.line,amount",0,Amount,Betrag,0
 field,"purchase.line,comment",0,Comment,Kommentar,0
 field,"purchase.line,description",0,Description,Bezeichnung,0
@@ -20,7 +21,7 @@ field,"purchase.line,taxes",0,Taxes,Steuern,0
 field,"purchase.line,type",0,Type,Typ,0
 field,"purchase.line,unit",0,Unit,Einheit,0
 field,"purchase.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
-field,"purchase.line,unit_price",0,Unit Price,Preis / Einheit,0
+field,"purchase.line,unit_price",0,Unit Price,Einzelpreis,0
 field,"purchase.product_supplier,code",0,Code,Artikelnummer Lieferant,0
 field,"purchase.product_supplier,company",0,Company,Lieferfirma,0
 field,"purchase.product_supplier,delivery_time",0,Delivery Time,Lieferfrist,0
@@ -36,7 +37,7 @@ field,"purchase.purchase,comment",0,Comment,Kommentar,0
 field,"purchase.purchase,company",0,Company,Unternehmen,0
 field,"purchase.purchase,contact_address",0,Contact Address,Kontaktadresse,0
 field,"purchase.purchase,currency",0,Currency,Währung,0
-field,"purchase.purchase,currency_digits",0,Currency Digits,Währung signifikante Stellen ,0
+field,"purchase.purchase,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"purchase.purchase,description",0,Description,Beschreibung,0
 field,"purchase.purchase,invoice_address",0,Invoice Address,Rechnungsadresse,0
 field,"purchase.purchase,invoice_exception",0,Invoices Exception,Rechnungsvorbehalt,0
@@ -92,7 +93,7 @@ odt,purchase.purchase,0,Taxes,Steuern,0
 odt,purchase.purchase,0,Taxes:,Steuern:,0
 odt,purchase.purchase,0,Total:,Gesamt:,0
 odt,purchase.purchase,0,Total (excl. taxes):,Netto:,0
-odt,purchase.purchase,0,Unit Price,Preis / Einheit,0
+odt,purchase.purchase,0,Unit Price,Einzelpreis,0
 odt,purchase.purchase,0,VAT:,USt:,0
 selection,"purchase.line,type",0,Line,Position,0
 selection,"purchase.line,type",0,Subtotal,Zwischensumme,0
