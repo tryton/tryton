@@ -1015,7 +1015,7 @@ class SaleLine(OSV):
         res['unit_price'] = product_obj.get_sale_price(cursor, user,
                 [product.id], vals.get('quantity', 0), context=ctx2)[product.id]
         res['taxes'] = []
-        for tax in product.customer_taxes:
+        for tax in product.customer_taxes_used:
             if party:
                 if 'customer_' + tax.group.code in party_obj._columns \
                         and party['customer_' + tax.group.code]:
