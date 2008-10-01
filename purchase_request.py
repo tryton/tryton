@@ -77,7 +77,7 @@ class PurchaseRequest(OSV):
         local_context = context and context.copy() or {}
         new_requests = []
         for min_date in date2products:
-            product_ids = [ x[0].id for x in date2products[min_date] ]
+            product_ids = [x[0].id for x in date2products[min_date]]
             local_context.update(
                 {'stock_date_end': min_date or datetime.date.max})
             pbl = product_obj.products_by_location(
