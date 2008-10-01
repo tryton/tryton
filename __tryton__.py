@@ -15,4 +15,7 @@
     'xml': [
         'sale.xml',
     ],
+    'translation': [
+        'de_DE.csv',
+    ],
 }
