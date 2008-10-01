@@ -1272,6 +1272,8 @@ class ProductSupplier(OSV):
         :param context: the context
         :return: the purchase date
         '''
+        if not product_supplier.delivery_time:
+            return datetime.date.today()
         return date - datetime.timedelta(product_supplier.delivery_time)
 
 ProductSupplier()
