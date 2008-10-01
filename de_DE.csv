@@ -76,7 +76,7 @@ model,"ir.ui.menu,name",menu_uom_form,Units of Measure,Maßeinheiten,0
 model,"product.uom.category,name",uom_cat_length,Length,Länge,0
 model,"product.uom.category,name",uom_cat_surface,Surface,Fläche,0
 model,"product.uom.category,name",uom_cat_time,Time,Zeit,0
-model,"product.uom.category,name",uom_cat_unit,Units,Einheiten,0
+model,"product.uom.category,name",uom_cat_unit,Units,Stückzahl,0
 model,"product.uom.category,name",uom_cat_volume,Volume,Volumen,0
 model,"product.uom.category,name",uom_cat_weight,Weight,Gewicht,0
 model,"product.uom,name",uom_are,Are,Ar,0
@@ -108,7 +108,7 @@ model,"product.uom,name",uom_square_foot,Square foot,Quadratfuß,0
 model,"product.uom,name",uom_square_inch,Square inch,Quadratzoll,0
 model,"product.uom,name",uom_square_meter,Square meter,Quadratmeter,0
 model,"product.uom,name",uom_square_yard,Square yard,Quadratyard(s),0
-model,"product.uom,name",uom_unit,Unit,Einheit(en),0
+model,"product.uom,name",uom_unit,Unit,Stück(e),0
 model,"product.uom,name",uom_work_day,Work Day,Arbeitstag(e),0
 model,"product.uom,name",uom_yard,Yard,Yard(s),0
 model,"product.uom,symbol",uom_are,a,a,0
