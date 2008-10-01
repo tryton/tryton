@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Invoice"
 
 from trytond.osv import fields, OSV
@@ -1444,7 +1445,7 @@ class InvoiceLine(OSV):
             except:
                 pass
             res['taxes'] = []
-            for tax in product.supplier_taxes:
+            for tax in product.supplier_taxes_used:
                 if party:
                     if 'supplier_' + tax.group.code in party_obj._columns \
                             and party['supplier_' + tax.group.code]:
@@ -1465,7 +1466,7 @@ class InvoiceLine(OSV):
             except:
                 pass
             res['taxes'] = []
-            for tax in product.customer_taxes:
+            for tax in product.customer_taxes_used:
                 if party:
                     if tax.group.code in party_obj._columns \
                             and party[tax.group.code]:
@@ -1932,83 +1933,6 @@ class Party(OSV):
             view_load=True)
 
 Party()
-
-
-class Category(OSV):
-    _name = 'product.category'
-    account_expense = fields.Property(type='many2one',
-            relation='account.account', string='Account Expense',
-            group_name='Accounting Properties', view_load=True,
-            domain="[('kind', '=', 'expense'), ('company', '=', company)]",
-            states={
-                'invisible': "not company",
-            })
-    account_revenue = fields.Property(type='many2one',
-            relation='account.account', string='Account Revenue',
-            group_name='Accounting Properties', view_load=True,
-            domain="[('kind', '=', 'revenue'), ('company', '=', company)]",
-            states={
-                'invisible': "not company",
-            })
-
-Category()
-
-
-class Template(OSV):
-    _name = 'product.template'
-    account_expense = fields.Property(type='many2one',
-            string='Account Expense', group_name='Accounting Properties',
-            view_load=True, relation='account.account',
-            domain="[('kind', '=', 'expense'), ('company', '=', company)]",
-            states={
-                'invisible': "not company",
-            }, help='This account will be used instead of the one defined ' \
-                    'on the category.')
-    account_revenue = fields.Property(type='many2one',
-            string='Account Revenue', group_name='Accounting Properties',
-            view_load=True, relation='account.account',
-            domain="[('kind', '=', 'revenue'), ('company', '=', company)]",
-            states={
-                'invisible': "not company",
-            }, help='This account will be used instead of the one defined ' \
-                    'on the category.')
-    account_expense_used = fields.Function('get_account', type='many2one',
-            relation='account.account', string='Account Expense Used')
-    account_revenue_used = fields.Function('get_account', type='many2one',
-            relation='account.account', string='Account Revenue Used')
-    customer_taxes = fields.Many2Many('account.tax',
-            'product_customer_taxes_rel', 'product', 'tax',
-            'Customer Taxes', domain=[('parent', '=', False)])
-    supplier_taxes = fields.Many2Many('account.tax',
-            'product_supplier_taxes_rel', 'product', 'tax',
-            'Supplier Taxes', domain=[('parent', '=', False)])
-
-    def __init__(self):
-        super(Template, self).__init__()
-        self._error_messages.update({
-            'missing_account': 'There is no account ' \
-                    'expense/revenue define on the product ' \
-                    '%s (%d)',
-            })
-
-    def get_account(self, cursor, user, ids, name, arg, context=None):
-        account_obj = self.pool.get('account.account')
-        res = {}
-        name = name[:-5]
-        for product in self.browse(cursor, user, ids, context=context):
-            if product[name]:
-                res[product.id] = account_obj.name_get(cursor, user,
-                        product[name].id, context=context)[0]
-            else:
-                if product.category[name]:
-                    res[product.id] = account_obj.name_get(cursor, user,
-                            product.category[name].id, context=context)[0]
-                else:
-                    self.raise_user_error(cursor, 'missing_account',
-                            (product.name, product.id), context=context)
-        return res
-
-Template()
 
 
 class FiscalYear(OSV):

@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <menuitem name="Invoices" parent="account.menu_account_configuration"
@@ -668,27 +669,6 @@
                         position="after">
                         <label name="invoice"/>
                         <field name="invoice" xexpand="0" width="25"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
-        </record>
-
-        <record model="ir.ui.view" id="product_view_form">
-            <field name="model">product.product</field>
-            <field name="inherit" ref="product.product_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form/notebook/page[@string=&quot;Properties&quot;]"
-                        position="before">
-                        <page string="Taxes" col="1">
-                            <separator name="customer_taxes"/>
-                            <field name="customer_taxes"/>
-                            <separator name="supplier_taxes"/>
-                            <field name="supplier_taxes"/>
-                        </page>
                     </xpath>
                 </data>
                 ]]>
