@@ -270,7 +270,7 @@ class PurchaseRequest(OSV):
                 supplier = product_supplier.party
                 on_time = sup_on_time
 
-        if supplier and product_supplier.delivery_time:
+        if supplier:
             purchase_date = product_supplier_obj.compute_purchase_date(cursor,
                     user, product_supplier, shortage_date, context=context)
         else:
