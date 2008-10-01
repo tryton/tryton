@@ -888,7 +888,7 @@ class PurchaseLine(OSV):
         res['unit_price'] = product_obj.get_purchase_price(cursor, user,
                 [product.id], vals.get('quantity', 0), context=ctx2)[product.id]
         res['taxes'] = []
-        for tax in product.supplier_taxes:
+        for tax in product.supplier_taxes_used:
             if party:
                 if 'supplier_' + tax.group.code in party_obj._columns \
                         and party['supplier_' + tax.group.code]:
