@@ -491,7 +491,7 @@ class CreatePurchase(Wizard):
         line['unit_price'] = product_price
 
         taxes = []
-        for tax in request.product.supplier_taxes:
+        for tax in request.product.supplier_taxes_used:
             if 'supplier_' + tax.group.code in party_obj._columns \
                     and request.party['supplier_' + tax.group.code]:
                 taxes.append(
