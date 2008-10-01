@@ -259,7 +259,6 @@ class PurchaseRequest(OSV):
         for product_supplier in product.product_suppliers:
             supply_date = product_supplier_obj.compute_supply_date(cursor, user,
                     product_supplier, date=today, context=context)[0]
-            sup_on_time = supply_date <= shortage_date
             sup_timedelta = shortage_date - supply_date
             if not supplier:
                 supplier = product_supplier.party
