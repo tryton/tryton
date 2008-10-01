@@ -65,7 +65,7 @@ field,"account.invoice.line,taxes",0,Taxes,Steuern,0
 field,"account.invoice.line,type",0,Type,Typ,0
 field,"account.invoice.line,unit",0,Unit,Einheit,0
 field,"account.invoice.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
-field,"account.invoice.line,unit_price",0,Unit Price,Preis pro Einheit,0
+field,"account.invoice.line,unit_price",0,Unit Price,Einzelpreis,0
 field,"account.invoice,move",0,Move,Buchung,0
 field,"account.invoice,number",0,Number,Nummer,0
 field,"account.invoice,party",0,Party,Partei,0
@@ -181,14 +181,14 @@ odt,account.invoice,0,Taxes,Steuern,0
 odt,account.invoice,0,Taxes:,Steuern:,0
 odt,account.invoice,0,Total:,Gesamt:,0
 odt,account.invoice,0,Total (excl. taxes):,Netto:,0
-odt,account.invoice,0,Unit Price,Preis pro Einheit,0
+odt,account.invoice,0,Unit Price,Einzelpreis,0
 odt,account.invoice,0,VAT:,UST-ID:,0
 selection,"account.invoice.line,type",0,Comment,Kommentar,0
 selection,"account.invoice.line,type",0,Line,Position,0
 selection,"account.invoice.line,type",0,Subtotal,Zwischensumme,0
 selection,"account.invoice.line,type",0,Title,Überschrift,0
 selection,"account.invoice.pay_invoice.ask,type",0,Partial Payment,Teilzahlung,0
-selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Abschreibung,0
+selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Ausbuchung,0
 selection,"account.invoice,state",0,Canceled,Abgebrochen,0
 selection,"account.invoice,state",0,Draft,Entwurf,0
 selection,"account.invoice,state",0,Open,Offen,0
