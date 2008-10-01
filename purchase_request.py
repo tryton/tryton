@@ -17,7 +17,8 @@ class PurchaseRequest(OSV):
     quantity = fields.Float('Quantity', required=True)
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=True)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
-    supply_date = fields.Date('Expected Supply Date', readonly=True)
+    supply_date = fields.Date(
+        'Expected Supply Date', readonly=True, required=True)
     stock_level =  fields.Float('Stock at Supply Date', readonly=True)
     warehouse = fields.Many2One(
         'stock.location', "Warehouse", required=True,
@@ -114,69 +115,44 @@ class PurchaseRequest(OSV):
         request_obj = self.pool.get('stock.purchase_request')
         product_supplier_obj = self.pool.get('purchase.product_supplier')
         req_ids = request_obj.search(
-            cursor, user, ['OR',[('purchase_line', '=', False)],
-                           [('purchase_line.purchase.state', '=', 'cancel')]],
-            context=context)
+            cursor, user, [('purchase_line', '=', False)], context=context)
         request_obj.delete(cursor, user, req_ids, context=context)
 
-        req_ids = request_obj.search(cursor, user, [], context=context)
+        req_ids = request_obj.search(
+                cursor, user,
+                [('purchase_line.moves', '=', False),
+                 ('purchase_line.purchase.state', '!=', 'cancel')],
+                context=context
+                )
         requests = request_obj.browse(cursor, user, req_ids, context=context)
-        # Fetch delivery_times for each (product,supplier)
-        sup_delivery_time = {}
-        for request in requests:
-            product, supplier = None, None
-            if request.purchase_line:
-                product = request.purchase_line.product.id
-                supplier = request.purchase_line.purchase.party.id
-            else:
-                product = request.product.id
-                supplier = request.party and request.party.id
-            if not supplier:
-                continue
-            sup_delivery_time[product, supplier] = None
-
-        prod_sup_ids = product_supplier_obj.search(
-            cursor, user,
-            ['OR', ] + [
-                ['AND', ('product', '=', x[0]), ('party', '=', x[1])] \
-                    for x in sup_delivery_time.iterkeys()
-                ],
-            context=context)
-        for prod_sup in product_supplier_obj.browse(cursor, user, prod_sup_ids,
-                                                    context=context):
-            sup_delivery_time[prod_sup.product.id, prod_sup.party.id] = \
-                prod_sup.delivery_time
-
         # Fetch data from existing requests
         existing_req = {}
         for request in requests:
-            if request.purchase_line:
-                product = request.purchase_line.product
-                warehouse = request.purchase_line.purchase.warehouse
-                purchase_date = request.purchase_line.purchase.purchase_date
-                qty = line.quantity
-                uom = line.unit
-                supplier = line.purchase.party
-            else:
-                product = request.product
-                warehouse = request.warehouse
-                purchase_date = request.purchase_date
-                qty = request.quantity
+            pline = request.purchase_line
+            # Skip incoherent request
+            if request.product.id != pline.product.id or \
+                    request.warehouse.id != pline.purchase.warehouse.id:
+                continue
+            # Take smallest amount between request and purchase line
+            req_qty = uom_obj.compute_qty(
+                    cursor, user, request.uom, request.quantity,
+                    pline.unit, context=context)
+            if req_qty < pline.quantity:
+                quantity = request.quantity
                 uom = request.uom
-                supplier = request.party
-
-            delivery_time = sup_delivery_time.get((product.id, supplier.id))
-            if delivery_time:
-                supply_date = purchase_date + \
-                    datetime.timedelta(delivery_time)
             else:
-                supply_date = datetime.date.max
+                quantity = pline.quantity
+                uom = pline.unit
 
-            existing_req.setdefault((product.id, warehouse.id), []).append(
-                {'supply_date': supply_date, 'quantity': qty, 'uom': uom})
+            existing_req.setdefault(
+                (request.product.id, request.warehouse.id),
+                []).append({'supply_date': request.supply_date,
+                            'quantity': quantity,
+                            'uom': uom}
+                           )
 
         for i in existing_req.itervalues():
-            i.sort
+            i.sort(lambda r,s: cmp(r['supply_date'],s['supply_date']))
 
         # Update new requests to take existing requests into account
         new_requests.sort(lambda r,s: cmp(r['supply_date'],s['supply_date']))
@@ -195,6 +171,7 @@ class PurchaseRequest(OSV):
                 else:
                     break
 
+        # Create new request
         for new_req in new_requests:
             if new_req['supply_date'] == datetime.date.max:
                 new_req['supply_date'] = None
