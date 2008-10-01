@@ -35,7 +35,6 @@ class PurchaseRequest(OSV):
                     context=context)[0]
         return False
 
-
     def generate_requests(self, cursor, user, context=None):
         """
         For each product compute the purchase request that must be
@@ -363,18 +362,11 @@ class CreatePurchase(Wizard):
 
         'init': {
             'result': {
-                'type': 'action',
-                'action': '_compute_purchase',
-                'state': 'choice',
+                'type': 'choice',
+                'next_state': '_create_purchase',
                 },
             },
 
-        'choice': {
-            'result': {
-                'type': 'choice',
-                'next_state': '_check_payment_term',
-                },
-            },
 
         'ask_user': {
             'actions': ['_set_default'],
@@ -383,16 +375,8 @@ class CreatePurchase(Wizard):
                 'object': 'stock.purchase_request.create_purchase.ask',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
-                    ('choice', 'Continue', 'tryton-ok', True),
+                    ('init', 'Continue', 'tryton-ok', True),
                     ],
-                },
-            },
-
-        'create': {
-            'result': {
-                'type': 'action',
-                'action': '_create_purchase',
-                'state': 'end',
                 },
             },
 
@@ -400,40 +384,48 @@ class CreatePurchase(Wizard):
 
     def _set_default(self, cursor, user, data, context=None):
 
-        if not data.get('party_wo_pt'):
-            return {}
-        party, company = data['party_wo_pt'].pop()
-        return {'party': party,'company': company}
+        request_obj = self.pool.get('stock.purchase_request')
+        requests = request_obj.browse(cursor, user, data['ids'], context=context)
+        for request in requests:
+            if (not request.party) or request.purchase_line:
+                continue
+            if not request.party.supplier_payment_term:
+                return {'party': request.party.id,'company': request.company.id}
 
-    def _check_payment_term(self, cursor, user, data, context=None):
+        raise Exception("Unexpected error")
+
+    def _create_purchase(self, cursor, user, data, context=None):
+        request_obj = self.pool.get('stock.purchase_request')
         party_obj = self.pool.get('relationship.party')
-        if 'purchases' not in data:
-            return 'end'
+        purchase_obj = self.pool.get('purchase.purchase')
+        product_obj = self.pool.get('product.product')
+        line_obj = self.pool.get('purchase.line')
+
         form = data['form']
         if form.get('payment_term') and form.get('party') and \
                 form.get('company'):
-            for key, val in data['purchases'].iteritems():
-                if (key[0], key[1]) == (form['party'],
-                                        form['company']):
-                    val['payment_term'] = form['payment_term']
             local_context = context and context.copy() or {}
             local_context['company'] = form['company']
             party_obj.write(
                 cursor, user, form['party'],
                 {'supplier_payment_term': form['payment_term']}, context=local_context)
-        if data.get('party_wo_pt'):
-            return 'ask_user'
-        return 'create'
 
-    def _compute_purchase(self, cursor, user, data, context=None):
-        request_obj = self.pool.get('stock.purchase_request')
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
-        purchases = {}
+        # first loop to check payment terms
         for request in requests:
             if (not request.party) or request.purchase_line:
                 continue
-            key = (request.party.id, request.company.id, request.warehouse.id)
+            if not request.party.supplier_payment_term:
+                return 'ask_user'
 
+        purchases = {}
+        # collect data
+        for request in requests:
+            if (not request.party) or request.purchase_line:
+                continue
+            if not request.party.supplier_payment_term:
+                return 'ask_user'
+            key = (request.party.id, request.company.id, request.warehouse.id)
             if key not in purchases:
                 purchase = {
                     'company': request.company.id,
@@ -445,88 +437,63 @@ class CreatePurchase(Wizard):
                     'currency': request.company.currency.id,
                     'lines': [],
                     }
+
                 purchases[key] = purchase
             else:
                 purchase = purchases[key]
 
-            purchase['lines'].append({
-                'product': request.product.id,
-                'unit': request.uom.id,
-                'quantity': request.quantity,
-                'request': request.id,
-                })
+            line = self.compute_purchase_line(
+                cursor, user, request, context=context)
+            purchase['lines'].append(line)
             if request.purchase_date:
-                if not purchase['purchase_date']:
-                    purchase['purchase_date'] = request.purchase_date
-                else:
+                if purchase.get('purchase_date'):
                     purchase['purchase_date'] = min(purchase['purchase_date'],
                                                     request.purchase_date)
-            data['purchases'] = purchases
-            data['party_wo_pt'] = set(
-                k[:2] for k in purchases if not purchases[k]['payment_term'])
-        return {}
+                else:
+                    purchase['purchase_date'] = request.purchase_date
 
-    def _create_purchase(self, cursor, user, data, context=None):
-        request_obj = self.pool.get('stock.purchase_request')
-        purchase_obj = self.pool.get('purchase.purchase')
-        product_obj = self.pool.get('product.product')
-        party_obj = self.pool.get('relationship.party')
-        line_obj = self.pool.get('purchase.line')
-        created_ids = []
-        party_ids = []
-        product_ids = []
-        # collect  product names
-        for purchase in data['purchases'].itervalues():
-            party_ids.append(purchase['party'])
-            for line in purchase['lines']:
-                product_ids.append(line['product'])
-        id2product = dict((p.id, p) for p in product_obj.browse(
-                cursor, user, product_ids, context=context))
-        id2party = dict((p.id, p) for p in party_obj.browse(
-                cursor, user, party_ids, context=context))
-
-        # create purchases, lines and update requests
-        for purchase in data['purchases'].itervalues():
-            party = id2party[purchase['party']]
-            purchase_lines = purchase.pop('lines')
-            purchase_id = purchase_obj.create(
-                cursor, user, purchase, context=context)
-            created_ids.append(purchase_id)
-            for line in purchase_lines:
-                product = id2product[line['product']]
+        # Create all
+        for purchase in purchases.itervalues():
+            lines = purchase.pop('lines')
+            purchase_id = purchase_obj.create(cursor, user, purchase, context=context)
+            for line in lines:
                 request_id = line.pop('request')
-
-                line_values = self.compute_purchase_line(
-                    cursor, user, line, purchase_id, purchase, product,
-                    party, context=context)
+                line['purchase'] = purchase_id
                 line_id = line_obj.create(cursor, user, line, context=context)
                 request_obj.write(
                     cursor, user, request_id, {'purchase_line': line_id},
                     context=context)
 
-        return {}
+        return 'end'
 
-    def compute_purchase_line(self, cursor, user, line, purchase_id, purchase,
-                             product, party, context=None):
+
+    def compute_purchase_line(self, cursor, user, request, context=None):
         party_obj = self.pool.get('relationship.party')
         product_obj = self.pool.get('product.product')
-        line['purchase'] = purchase_id
-        line['description'] = product.name
+        line = {
+            'product': request.product.id,
+            'unit': request.uom.id,
+            'quantity': request.quantity,
+            'request': request.id,
+            'description': request.product.name,
+            }
         local_context = context.copy()
-        local_context['uom'] = line['unit']
-        local_context['supplier'] = purchase['party']
-        local_context['currency'] = purchase['currency']
+        local_context['uom'] = request.uom.id
+        local_context['supplier'] = request.party.id
+        local_context['currency'] = request.company.currency.id
+
+        # XXX purchase with several lines of the same product
         product_price = product_obj.get_purchase_price(
-            cursor, user, [line['product']], line['quantity'],
-            context=local_context)[line['product']]
+            cursor, user, [request.product.id], request.quantity,
+            context=local_context)[request.product.id]
         line['unit_price'] = product_price
 
         taxes = []
-        for tax in product.supplier_taxes:
+        for tax in request.product.supplier_taxes:
             if 'supplier_' + tax.group.code in party_obj._columns \
-                    and party['supplier_' + tax.group.code]:
+                    and request.party['supplier_' + tax.group.code]:
                 taxes.append(
-                        party['supplier_' + tax.group.code].id)
+                        request.party['supplier_' + tax.group.code].id)
                 continue
             taxes.append(tax.id)
         line['taxes'] = [('add', taxes)]
