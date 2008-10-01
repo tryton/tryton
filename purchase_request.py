@@ -256,13 +256,14 @@ class PurchaseRequest(OSV):
             purchase_date = today
 
         quantity = uom_obj.compute_qty(cursor, user, product.default_uom,
-                max_quantity - product_quantity, product.purchase_uom,
+                max_quantity - product_quantity,
+                product.purchase_uom or product.default_uom,
                 context=context)
 
         return {'product': product,
                 'party': supplier and supplier or None,
                 'quantity': quantity,
-                'uom': product.purchase_uom,
+                'uom': product.purchase_uom or product.default_uom,
                 'purchase_date': purchase_date,
                 'supply_date': shortage_date,
                 'stock_level': product_quantity,
