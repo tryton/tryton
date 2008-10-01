@@ -1067,7 +1067,7 @@ class PurchaseLine(OSV):
                             product_supplier_obj.compute_supply_date(
                                     cursor, user, product_supplier,
                                     date=line.purchase.purchase_date,
-                                    context=context)
+                                    context=context)[0]
                     break
 
         move_id = move_obj.create(cursor, user, vals, context=context)
@@ -1245,17 +1245,34 @@ class ProductSupplier(OSV):
             context=None):
         '''
         Compute the supply date for the Product Supplier at the given date
+            and the next supply date
 
         :param cursor: the database cursor
         :param user: the user id
         :param product_supplier: a BrowseRecord of the Product Supplier
         :param date: the date of the purchase if None the current date
         :param context: the context
-        :return: the supply date as value
+        :return: a tuple with the supply date and the next one
         '''
         if not date:
             date = datetime.date.today()
-        return date + datetime.timedelta(product_supplier.delivery_time)
+        next_date = date + datetime.timedelta(1)
+        return (date + datetime.timedelta(product_supplier.delivery_time),
+                next_date + datetime.timedelta(product_supplier.delivery_time))
+
+    def compute_purchase_date(self, cursor, user, product_supplier, date,
+            context=None):
+        '''
+        Compute the purchase date for the Product Supplier at the given date
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param product_supplier: a BrowseRecord of the Product Supplier
+        :param date: the date of the supply
+        :param context: the context
+        :return: the purchase date
+        '''
+        return date - datetime.timedelta(product_supplier.delivery_time)
 
 ProductSupplier()
 
