@@ -13,7 +13,8 @@ class Company(OSV):
     _description = __doc__
     _inherits = {'relationship.party': 'party'}
 
-    party = fields.Many2One('relationship.party', 'Party', required=True)
+    party = fields.Many2One('relationship.party', 'Party', required=True,
+            ondelete='CASCADE')
     parent = fields.Many2One('company.company', 'Parent')
     childs = fields.One2Many('company.company', 'parent', 'Childs')
     header = fields.Text('Header')
