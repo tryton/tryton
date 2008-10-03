@@ -19,8 +19,8 @@ _STATES = {
 _TYPE2JOURNAL = {
     'out_invoice': 'revenue',
     'in_invoice': 'expense',
-    'out_refund': 'revenue',
-    'in_refund': 'expense',
+    'out_credit_note': 'revenue',
+    'in_credit_note': 'expense',
 }
 
 
@@ -232,8 +232,8 @@ class Invoice(OSV):
     type = fields.Selection([
         ('out_invoice', 'Invoice'),
         ('in_invoice', 'Supplier Invoice'),
-        ('out_refund', 'Refund'),
-        ('in_refund', 'Supplier Refund'),
+        ('out_credit_note', 'Credit Note'),
+        ('in_credit_note', 'Supplier Credit Note'),
         ], 'Type', select=1, on_change=['type'], required=True, states={
             'readonly': "state != 'draft' or context.get('type', False)",
         })
@@ -421,11 +421,11 @@ class Invoice(OSV):
                     party.id, type=None, context=context)
             res['invoice_address'] = party_obj.address_get(cursor, user,
                     party.id, type='invoice', context=context)
-            if vals.get('type') in ('out_invoice', 'out_refund'):
+            if vals.get('type') in ('out_invoice', 'out_credit_note'):
                 res['account'] = party.account_receivable.id
                 if vals['type'] == 'out_invoice' and party.payment_term:
                     res['payment_term'] = party.payment_term.id
-            elif vals.get('type') in ('in_invoice', 'in_refund'):
+            elif vals.get('type') in ('in_invoice', 'in_credit_note'):
                 res['account'] = party.account_payable.id
                 if vals['type'] == 'in_invoice' and party.supplier_payment_term:
                     res['payment_term'] = party.supplier_payment_term.id
@@ -433,9 +433,9 @@ class Invoice(OSV):
         if vals.get('company'):
             company = company_obj.browse(cursor, user, vals['company'],
                     context=context)
-            if vals.get('type') == 'out_refund':
+            if vals.get('type') == 'out_credit_note':
                 res['payment_term'] = company.payment_term.id
-            elif vals.get('type') == 'in_refund':
+            elif vals.get('type') == 'in_credit_note':
                 res['payment_term'] = company.supplier_payment_term.id
 
         if res['contact_address']:
@@ -666,7 +666,7 @@ class Invoice(OSV):
                         amount_currency -= line.amount_second_currency
                 else:
                     amount += line.debit - line.credit
-            if invoice.type in ('in_invoice', 'out_refund'):
+            if invoice.type in ('in_invoice', 'out_credit_note'):
                 amount = - amount
                 amount_currency = - amount_currency
             if amount != Decimal('0.0'):
@@ -717,11 +717,11 @@ class Invoice(OSV):
             val['tax_sign'] = tax['tax'].invoice_tax_sign
             val['account'] = tax['tax'].invoice_account.id
         else:
-            val['base_code'] = tax['tax'].refund_base_code.id
-            val['base_sign'] = tax['tax'].refund_base_sign
-            val['tax_code'] = tax['tax'].refund_tax_code.id
-            val['tax_sign'] = tax['tax'].refund_tax_sign
-            val['account'] = tax['tax'].refund_account.id
+            val['base_code'] = tax['tax'].credit_note_base_code.id
+            val['base_sign'] = tax['tax'].credit_note_base_sign
+            val['tax_code'] = tax['tax'].credit_note_tax_code.id
+            val['tax_sign'] = tax['tax'].credit_note_tax_sign
+            val['account'] = tax['tax'].credit_note_account.id
         key = (val['base_code'], val['base_sign'],
                 val['tax_code'], val['tax_sign'],
                 val['account'], val['description'])
@@ -1057,7 +1057,7 @@ class Invoice(OSV):
             payment_amount += line.debit - line.credit
             payment_lines.append(line.id)
 
-        if invoice.type in ('out_invoice', 'in_refund'):
+        if invoice.type in ('out_invoice', 'in_credit_note'):
             amount = - abs(amount)
         else:
             amount = abs(amount)
@@ -1111,7 +1111,7 @@ class Invoice(OSV):
         invoice = self.browse(cursor, user, invoice_id, context=context)
         journal = journal_obj.browse(cursor, user, journal_id, context=context)
 
-        if invoice.type in ('out_invoice', 'in_refund'):
+        if invoice.type in ('out_invoice', 'in_credit_note'):
             lines.append({
                 'name': description,
                 'account': invoice.account.id,
@@ -1195,21 +1195,21 @@ class Invoice(OSV):
             }, context=context)
         return
 
-    def _refund(self, cursor, user, invoice, context=None):
+    def _credit(self, cursor, user, invoice, context=None):
         '''
-        Return values to refund invoice.
+        Return values to credit invoice.
         '''
         invoice_line_obj = self.pool.get('account.invoice.line')
         invoice_tax_obj = self.pool.get('account.invoice.tax')
 
         res = {}
         if invoice.type == 'out_invoice':
-            res['type'] = 'out_refund'
+            res['type'] = 'out_credit_note'
         elif invoice.type == 'in_invoice':
-            res['type'] = 'in_refund'
-        elif invoice.type == 'out_refund':
+            res['type'] = 'in_credit_note'
+        elif invoice.type == 'out_credit_note':
             res['type'] = 'out_invoice'
-        elif invoice.type == 'in_refund':
+        elif invoice.type == 'in_credit_note':
             res['type'] = 'in_invoice'
 
         for field in ('reference', 'description', 'comment'):
@@ -1222,7 +1222,7 @@ class Invoice(OSV):
 
         res['lines'] = []
         for line in invoice.lines:
-            value = invoice_line_obj._refund(cursor, user, line,
+            value = invoice_line_obj._credit(cursor, user, line,
                     context=context)
             res['lines'].append(('create', value))
 
@@ -1230,18 +1230,18 @@ class Invoice(OSV):
         for tax in invoice.taxes:
             if not tax.manual:
                 continue
-            value = invoice_tax_obj._refund(cursor, user, tax,
+            value = invoice_tax_obj._credit(cursor, user, tax,
                     context=context)
             res[taxes].append(('create', value))
         return res
 
-    def refund(self, cursor, user, ids, context=None):
+    def credit(self, cursor, user, ids, context=None):
         '''
-        Refund invoices and return ids of new invoices.
+        Credit invoices and return ids of new invoices.
         '''
         new_ids = []
         for invoice in self.browse(cursor, user, ids, context=context):
-            vals = self._refund(cursor, user, invoice, context=context)
+            vals = self._credit(cursor, user, invoice, context=context)
             new_ids.append(self.create(cursor, user, vals, context=context))
         return new_ids
 
@@ -1432,7 +1432,7 @@ class InvoiceLine(OSV):
             currency = currency_obj.browse(cursor, user,
                     vals['_parent_invoice.currency'], context=context)
 
-        if vals.get('_parent_invoice.type') in ('in_invoice', 'in_refund'):
+        if vals.get('_parent_invoice.type') in ('in_invoice', 'in_credit_note'):
             if company and currency:
                 res['unit_price'] = currency_obj.compute(cursor, user,
                         company.currency, product.cost_price, currency,
@@ -1553,8 +1553,8 @@ class InvoiceLine(OSV):
                 base_code_id = tax['tax'].invoice_base_code.id
                 amount = tax['base'] * tax['tax'].invoice_base_sign
             else:
-                base_code_id = tax['tax'].refund_base_code.id
-                amount = tax['base'] * tax['tax'].refund_base_sign
+                base_code_id = tax['tax'].credit_note_base_code.id
+                amount = tax['base'] * tax['tax'].credit_note_base_sign
             if base_code_id:
                 amount = currency_obj.compute(cursor, user,
                         line.invoice.currency, amount,
@@ -1584,7 +1584,7 @@ class InvoiceLine(OSV):
             amount = line.amount
             res['amount_second_currency'] = Decimal('0.0')
             res['second_currency'] = False
-        if line.invoice.type in ('in_invoice', 'out_refund'):
+        if line.invoice.type in ('in_invoice', 'out_credit_note'):
             res['debit'] = amount
             res['credit'] = Decimal('0.0')
         else:
@@ -1600,9 +1600,9 @@ class InvoiceLine(OSV):
             res['tax_lines'].append(('create', tax))
         return res
 
-    def _refund(self, cursor, user, line, context=None):
+    def _credit(self, cursor, user, line, context=None):
         '''
-        Return values to refund line.
+        Return values to credit line.
         '''
         res = {}
 
@@ -1748,7 +1748,7 @@ class InvoiceTax(OSV):
             res['amount_second_currency'] = Decimal('0.0')
             res['second_currency'] = False
         amount *= tax.tax_sign
-        if tax.invoice.type in ('in_invoice', 'out_refund'):
+        if tax.invoice.type in ('in_invoice', 'out_credit_note'):
             if amount >= Decimal('0.0'):
                 res['debit'] = amount
                 res['credit'] = Decimal('0.0')
@@ -1773,9 +1773,9 @@ class InvoiceTax(OSV):
             })]
         return res
 
-    def _refund(self, cursor, user, tax, context=None):
+    def _credit(self, cursor, user, tax, context=None):
         '''
-        Return values to refund tax.
+        Return values to credit tax.
         '''
         res = {}
 
@@ -1943,11 +1943,11 @@ class FiscalYear(OSV):
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Invoice Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
-    out_refund_sequence = fields.Many2One('ir.sequence.strict',
-            'Customer Refund Sequence', required=True,
+    out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
+            'Customer Credit Note Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
-    in_refund_sequence = fields.Many2One('ir.sequence.strict',
-            'Supplier Refund Sequence', required=True,
+    in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
+            'Supplier Credit Note Sequence', required=True,
             domain="[('code', '=', 'account.invoice')]")
 
     def __init__(self):
@@ -1956,8 +1956,8 @@ class FiscalYear(OSV):
             ('check_invoice_sequences',
                 'Error! You must have different invoice sequence ' \
                         'per fiscal year!', ['out_invoice_sequence',
-                            'in_invoice_sequence', 'out_refund_sequence',
-                            'in_refund_sequence']),
+                            'in_invoice_sequence', 'out_credit_note_sequence',
+                            'in_credit_note_sequence']),
         ]
         self._error_messages.update({
             'change_invoice_sequence': 'You can not change ' \
@@ -1968,7 +1968,7 @@ class FiscalYear(OSV):
     def check_invoice_sequences(self, cursor, user, ids):
         for fiscalyear in self.browse(cursor, user, ids):
             for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
-                    'out_refund_sequence', 'in_refund_sequence'):
+                    'out_credit_note_sequence', 'in_credit_note_sequence'):
                 if self.search(cursor, user, [
                     (sequence, '=', fiscalyear[sequence].id),
                     ('id', '!=', fiscalyear.id),
@@ -1979,7 +1979,7 @@ class FiscalYear(OSV):
     def write(self, cursor, user, ids, vals, context=None):
         invoice_obj = self.pool.get('account.invoice')
         for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
-                'out_refund_sequence', 'in_refund_sequence'):
+                'out_credit_note_sequence', 'in_credit_note_sequence'):
             if vals.get(sequence):
                 for fiscalyear in self.browse(cursor, user, ids,
                         context=context):
@@ -2016,15 +2016,15 @@ class Period(OSV):
                 'required': "type == 'standard'",
                 'invisible': "type != 'standard'",
             })
-    out_refund_sequence = fields.Many2One('ir.sequence.strict',
-            'Customer Refund Sequence',
+    out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
+            'Customer Credit Note Sequence',
             domain="[('code', '=', 'account.invoice')]",
             states={
                 'required': "type == 'standard'",
                 'invisible': "type != 'standard'",
             })
-    in_refund_sequence = fields.Many2One('ir.sequence.strict',
-            'Supplier Refund Sequence',
+    in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
+            'Supplier Credit Note Sequence',
             domain="[('code', '=', 'account.invoice')]",
             states={
                 'required': "type == 'standard'",
@@ -2037,8 +2037,8 @@ class Period(OSV):
             ('check_invoice_sequences',
                 'Error! You must have different invoice sequences ' \
                         'per fiscal year!', ['out_invoice_sequence',
-                            'in_invoice_sequence', 'out_refund_sequence',
-                            'in_refund_sequence']),
+                            'in_invoice_sequence', 'out_credit_note_sequence',
+                            'in_credit_note_sequence']),
         ]
         self._error_messages.update({
             'change_invoice_sequence': 'You can not change ' \
@@ -2049,7 +2049,7 @@ class Period(OSV):
     def check_invoice_sequences(self, cursor, user, ids):
         for period in self.browse(cursor, user, ids):
             for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
-                    'out_refund_sequence', 'in_refund_sequence'):
+                    'out_credit_note_sequence', 'in_credit_note_sequence'):
                 if self.search(cursor, user, [
                     (sequence, '=', period[sequence].id),
                     ('fiscalyear', '!=', period.fiscalyear.id),
@@ -2064,7 +2064,7 @@ class Period(OSV):
             fiscalyear = fiscalyear_obj.browse(cursor, user, vals['fiscalyear'],
                     context=context)
             for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
-                    'out_refund_sequence', 'in_refund_sequence'):
+                    'out_credit_note_sequence', 'in_credit_note_sequence'):
                 if not vals.get(sequence):
                     vals[sequence] = fiscalyear[sequence].id
         return super(Period, self).create(cursor, user, vals, context=context)
@@ -2076,7 +2076,7 @@ class Period(OSV):
             ids = [ids]
 
         for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
-                'out_refund_sequence', 'in_refund_sequence'):
+                'out_credit_note_sequence', 'in_credit_note_sequence'):
             if vals.get(sequence):
                 for period in self.browse(cursor, user, ids, context=context):
                     if period[sequence] and \
@@ -2283,41 +2283,41 @@ class PayInvoice(Wizard):
 PayInvoice()
 
 
-class RefundInvoiceInit(WizardOSV):
-    _name = 'account.invoice.refund_invoice.init'
+class CreditInvoiceInit(WizardOSV):
+    _name = 'account.invoice.credit_invoice.init'
 
-RefundInvoiceInit()
+CreditInvoiceInit()
 
 
-class RefundInvoice(Wizard):
-    'Refund Invoice'
-    _name = 'account.invoice.refund_invoice'
+class CreditInvoice(Wizard):
+    'Credit Invoice'
+    _name = 'account.invoice.credit_invoice'
     states = {
         'init': {
             'result': {
                 'type': 'form',
-                'object': 'account.invoice.refund_invoice.init',
+                'object': 'account.invoice.credit_invoice.init',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
-                    ('refund', 'Refund', 'tryton-ok', True),
+                    ('credit', 'Credit', 'tryton-ok', True),
                 ],
             }
         },
-        'refund': {
+        'credit': {
             'result': {
                 'type': 'action',
-                'action': '_action_refund',
+                'action': '_action_credit',
                 'state': 'end',
             },
         },
     }
 
-    def _action_refund(self, cursor, user, data, context=None):
+    def _action_credit(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         invoice_obj = self.pool.get('account.invoice')
 
-        invoice_ids = invoice_obj.refund(cursor, user, data['ids'],
+        invoice_ids = invoice_obj.credit(cursor, user, data['ids'],
                 context=context)
 
         model_data_ids = model_data_obj.search(cursor, user, [
@@ -2333,4 +2333,4 @@ class RefundInvoice(Wizard):
             res['views'].reverse()
         return res
 
-RefundInvoice()
+CreditInvoice()

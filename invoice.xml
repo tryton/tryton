@@ -341,25 +341,25 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_invoices" action="act_invoice_out_invoice_form"
             id="menu_invoice_out_invoice_form" sequence="1"/>
 
-        <record model="ir.action.act_window" id="act_invoice_out_refund_form">
-            <field name="name">Refunds</field>
+        <record model="ir.action.act_window" id="act_invoice_out_credit_note_form">
+            <field name="name">Credit Notes</field>
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
-            <field name="domain">[('type', '=', 'out_refund')]</field>
-            <field name="context">{'type': 'out_refund'}</field>
+            <field name="domain">[('type', '=', 'out_credit_note')]</field>
+            <field name="context">{'type': 'out_credit_note'}</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_refund_form_view1">
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_out_refund_form"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_refund_form_view2">
+        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_out_refund_form"/>
+            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
         </record>
-        <menuitem parent="menu_invoices" action="act_invoice_out_refund_form"
-            id="menu_invoice_out_refund_form" sequence="2"/>
+        <menuitem parent="menu_invoices" action="act_invoice_out_credit_note_form"
+            id="menu_invoice_out_credit_note_form" sequence="2"/>
 
         <record model="ir.action.act_window" id="act_invoice_in_invoice_form">
             <field name="name">Supplier Invoices</field>
@@ -381,25 +381,25 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_invoices" action="act_invoice_in_invoice_form"
             id="menu_invoice_in_invoice_form" sequence="3"/>
 
-        <record model="ir.action.act_window" id="act_invoice_in_refund_form">
-            <field name="name">Supplier Refunds</field>
+        <record model="ir.action.act_window" id="act_invoice_in_credit_note_form">
+            <field name="name">Supplier Credit Notes</field>
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
-            <field name="domain">[('type', '=', 'in_refund')]</field>
-            <field name="context">{'type': 'in_refund'}</field>
+            <field name="domain">[('type', '=', 'in_credit_note')]</field>
+            <field name="context">{'type': 'in_credit_note'}</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_refund_form_view1">
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_in_refund_form"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_refund_form_view2">
+        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form_view2">
             <field name="sequence" eval="20"/>
             <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_in_refund_form"/>
+            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
         </record>
-        <menuitem parent="menu_invoices" action="act_invoice_in_refund_form"
-            id="menu_invoice_in_refund_form" sequence="4"/>
+        <menuitem parent="menu_invoices" action="act_invoice_in_credit_note_form"
+            id="menu_invoice_in_credit_note_form" sequence="4"/>
 
         <record model="ir.model.access" id="access_invoice">
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
@@ -689,10 +689,10 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="out_invoice_sequence"/>
                         <label name="in_invoice_sequence"/>
                         <field name="in_invoice_sequence"/>
-                        <label name="out_refund_sequence"/>
-                        <field name="out_refund_sequence"/>
-                        <label name="in_refund_sequence"/>
-                        <field name="in_refund_sequence"/>
+                        <label name="out_credit_note_sequence"/>
+                        <field name="out_credit_note_sequence"/>
+                        <label name="in_credit_note_sequence"/>
+                        <field name="in_credit_note_sequence"/>
                     </xpath>
                 </data>
                 ]]>
@@ -713,10 +713,10 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="out_invoice_sequence"/>
                         <label name="in_invoice_sequence"/>
                         <field name="in_invoice_sequence"/>
-                        <label name="out_refund_sequence"/>
-                        <field name="out_refund_sequence"/>
-                        <label name="in_refund_sequence"/>
-                        <field name="in_refund_sequence"/>
+                        <label name="out_credit_note_sequence"/>
+                        <field name="out_credit_note_sequence"/>
+                        <label name="in_credit_note_sequence"/>
+                        <field name="in_credit_note_sequence"/>
                     </xpath>
                 </data>
                 ]]>
@@ -809,28 +809,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="print_invoice_report"/>
         </record>
 
-        <record model="ir.ui.view" id="refund_invoice_init_view_form">
-            <field name="model">account.invoice.refund_invoice.init</field>
+        <record model="ir.ui.view" id="credit_invoice_init_view_form">
+            <field name="model">account.invoice.credit_invoice.init</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Refund Invoice" col="2">
+                <form string="Credit Invoice" col="2">
                     <image name="tryton-dialog-information"/>
-                    <label string="Are you sure to refund those/this invoice(s)?"
+                    <label string="Are you sure to credit those/this invoice(s)?"
                         align="0.0"/>
                 </form>
                 ]]>
             </field>
         </record>
 
-        <record model="ir.action.wizard" id="refund_invoice">
-            <field name="name">Refund</field>
-            <field name="wiz_name">account.invoice.refund_invoice</field>
+        <record model="ir.action.wizard" id="credit_invoice">
+            <field name="name">Credit</field>
+            <field name="wiz_name">account.invoice.credit_invoice</field>
         </record>
-        <record model="ir.action.keyword" id="refund_invoice_keyword">
+        <record model="ir.action.keyword" id="credit_invoice_keyword">
             <field name="keyword">form_action</field>
             <field name="model">account.invoice,0</field>
-            <field name="action" ref="refund_invoice"/>
+            <field name="action" ref="credit_invoice"/>
         </record>
     </data>
 </tryton>
