@@ -854,7 +854,8 @@ class SaleLine(OSV):
             states={
                 'invisible': "type != 'line'",
                 'required': "type == 'line'",
-            })
+            }, on_change=['product', 'quantity', 'unit',
+                '_parent_sale.currency', '_parent_sale.party'])
     unit = fields.Many2One('product.uom', 'Unit',
             states={
                 'required': "product",
@@ -1036,7 +1037,7 @@ class SaleLine(OSV):
             res['unit_digits'] = product.sale_uom.digits
         return res
 
-    def on_change_unit(self, cursor, user, ids, vals, context=None):
+    def on_change_quantity(self, cursor, user, ids, vals, context=None):
         product_obj = self.pool.get('product.product')
 
         if context is None:
@@ -1059,6 +1060,9 @@ class SaleLine(OSV):
                 [vals['product']], vals.get('quantity', 0),
                 context=ctx2)[vals['product']]
         return res
+
+    def on_change_unit(self, cursor, user, ids, vals, context=None):
+        return self.on_change_quantity(cursor, user, ids, vals, context=context)
 
     def on_change_with_amount(self, cursor, user, ids, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
