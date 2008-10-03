@@ -197,8 +197,8 @@
                             <label name="invoice_account"/>
                             <field name="invoice_account"/>
                             <newline/>
-                            <label name="refund_account"/>
-                            <field name="refund_account"/>
+                            <label name="credit_note_account"/>
+                            <field name="credit_note_account"/>
                             <newline/>
                             <field name="childs" colspan="4">
                                 <tree string="Taxes" sequence="sequence">
@@ -219,15 +219,15 @@
                             <field name="invoice_tax_code"/>
                             <label name="invoice_tax_sign"/>
                             <field name="invoice_tax_sign"/>
-                            <separator string="Refund" colspan="4"/>
-                            <label name="refund_base_code"/>
-                            <field name="refund_base_code"/>
-                            <label name="refund_base_sign"/>
-                            <field name="refund_base_sign"/>
-                            <label name="refund_tax_code"/>
-                            <field name="refund_tax_code"/>
-                            <label name="refund_tax_sign"/>
-                            <field name="refund_tax_sign"/>
+                            <separator string="Credit Note" colspan="4"/>
+                            <label name="credit_note_base_code"/>
+                            <field name="credit_note_base_code"/>
+                            <label name="credit_note_base_sign"/>
+                            <field name="credit_note_base_sign"/>
+                            <label name="credit_note_tax_code"/>
+                            <field name="credit_note_tax_code"/>
+                            <label name="credit_note_tax_sign"/>
+                            <field name="credit_note_tax_sign"/>
                         </page>
                     </notebook>
                 </form>
@@ -299,8 +299,8 @@
                             <label name="invoice_account"/>
                             <field name="invoice_account"/>
                             <newline/>
-                            <label name="refund_account"/>
-                            <field name="refund_account"/>
+                            <label name="credit_note_account"/>
+                            <field name="credit_note_account"/>
                             <newline/>
                             <field name="childs" colspan="4">
                                 <tree string="Taxes" sequence="sequence">
@@ -321,15 +321,15 @@
                             <field name="invoice_tax_code"/>
                             <label name="invoice_tax_sign"/>
                             <field name="invoice_tax_sign"/>
-                            <separator string="Refund" colspan="4"/>
-                            <label name="refund_base_code"/>
-                            <field name="refund_base_code"/>
-                            <label name="refund_base_sign"/>
-                            <field name="refund_base_sign"/>
-                            <label name="refund_tax_code"/>
-                            <field name="refund_tax_code"/>
-                            <label name="refund_tax_sign"/>
-                            <field name="refund_tax_sign"/>
+                            <separator string="Credit Note" colspan="4"/>
+                            <label name="credit_note_base_code"/>
+                            <field name="credit_note_base_code"/>
+                            <label name="credit_note_base_sign"/>
+                            <field name="credit_note_base_sign"/>
+                            <label name="credit_note_tax_code"/>
+                            <field name="credit_note_tax_code"/>
+                            <label name="credit_note_tax_sign"/>
+                            <field name="credit_note_tax_sign"/>
                         </page>
                     </notebook>
                 </form>

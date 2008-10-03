@@ -317,20 +317,20 @@ class TaxTemplate(OSV):
     childs = fields.One2Many('account.tax.template', 'parent', 'Childs')
     invoice_account = fields.Many2One('account.account.template',
             'Invoice Account')
-    refund_account = fields.Many2One('account.account.template',
-            'Refund Account')
+    credit_note_account = fields.Many2One('account.account.template',
+            'Credit Note Account')
     invoice_base_code = fields.Many2One('account.tax.code.template',
             'Invoice Base Code')
     invoice_base_sign = fields.Numeric('Invoice Base Sign', digits=(2, 0))
     invoice_tax_code = fields.Many2One('account.tax.code.template',
             'Invoice Tax Code')
     invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0))
-    refund_base_code = fields.Many2One('account.tax.code.template',
-            'Refund Base Code')
-    refund_base_sign = fields.Numeric('Refund Base Sign', digits=(2, 0))
-    refund_tax_code = fields.Many2One('account.tax.code.template',
-            'Refund Tax Code')
-    refund_tax_sign = fields.Numeric('Refund Tax Sign', digits=(2, 0))
+    credit_note_base_code = fields.Many2One('account.tax.code.template',
+            'Credit Note Base Code')
+    credit_note_base_sign = fields.Numeric('Credit Note Base Sign', digits=(2, 0))
+    credit_note_tax_code = fields.Many2One('account.tax.code.template',
+            'Credit Note Tax Code')
+    credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign', digits=(2, 0))
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', False)], required=True)
 
@@ -359,10 +359,10 @@ class TaxTemplate(OSV):
     def default_invoice_tax_sign(self, cursor, user, context=None):
         return 1
 
-    def default_refund_base_sign(self, cursor, user, context=None):
+    def default_credit_note_base_sign(self, cursor, user, context=None):
         return 1
 
-    def default_refund_tax_sign(self, cursor, user, context=None):
+    def default_credit_note_tax_sign(self, cursor, user, context=None):
         return 1
 
     def _get_tax_code_value(self, cursor, user, template, context=None):
@@ -378,7 +378,7 @@ class TaxTemplate(OSV):
         res = {}
         for field in ('name', 'description', 'sequence', 'amount',
                 'percentage', 'type', 'invoice_base_sign', 'invoice_tax_sign',
-                'refund_base_sign', 'refund_tax_sign'):
+                'credit_note_base_sign', 'credit_note_tax_sign'):
             res[field] = template[field]
         for field in ('group',):
             res[field] = template[field].id
@@ -423,16 +423,16 @@ class TaxTemplate(OSV):
             vals['parent'] = parent_id
             vals['invoice_account'] = \
                     template2account[template.invoice_account.id]
-            vals['refund_account'] = \
-                    template2account[template.refund_account.id]
+            vals['credit_note_account'] = \
+                    template2account[template.credit_note_account.id]
             vals['invoice_base_code'] = \
                     template2tax_code[template.invoice_base_code.id]
             vals['invoice_tax_code'] = \
                     template2tax_code[template.invoice_tax_code.id]
-            vals['refund_base_code'] = \
-                    template2tax_code[template.refund_base_code.id]
-            vals['refund_tax_code'] = \
-                    template2tax_code[template.refund_tax_code.id]
+            vals['credit_note_base_code'] = \
+                    template2tax_code[template.credit_note_base_code.id]
+            vals['credit_note_tax_code'] = \
+                    template2tax_code[template.credit_note_tax_code.id]
 
             new_id = tax_obj.create(cursor, user, vals, context=context)
             template2tax[template.id] = new_id
@@ -496,9 +496,9 @@ class Tax(OSV):
                 'readonly': "type == 'none' or not company",
                 'required': "company",
             })
-    refund_account = fields.Many2One('account.account', 'Refund Account',
+    credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
             domain="[('company', '=', company)]",
-            help='Keep empty to use the default refund account',
+            help='Keep empty to use the default credit_note account',
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "company",
@@ -524,22 +524,22 @@ class Tax(OSV):
             states={
                 'readonly': "type == 'none'",
             })
-    refund_base_code = fields.Many2One('account.tax.code',
-            'Refund Base Code',
+    credit_note_base_code = fields.Many2One('account.tax.code',
+            'Credit Note Base Code',
             states={
                 'readonly': "type == 'none'",
             })
-    refund_base_sign = fields.Numeric('Refund Base Sign', digits=(2, 0),
+    credit_note_base_sign = fields.Numeric('Credit Note Base Sign', digits=(2, 0),
             help='Usualy 1 or -1',
             states={
                 'readonly': "type == 'none'",
             })
-    refund_tax_code = fields.Many2One('account.tax.code',
-            'Refund Tax Code',
+    credit_note_tax_code = fields.Many2One('account.tax.code',
+            'Credit Note Tax Code',
             states={
                 'readonly': "type == 'none'",
             })
-    refund_tax_sign = fields.Numeric('Refund Tax Sign', digits=(2, 0),
+    credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign', digits=(2, 0),
             help='Usualy 1 or -1',
             states={
                 'readonly': "type == 'none'",
@@ -572,10 +572,10 @@ class Tax(OSV):
     def default_invoice_tax_sign(self, cursor, user, context=None):
         return 1
 
-    def default_refund_base_sign(self, cursor, user, context=None):
+    def default_credit_note_base_sign(self, cursor, user, context=None):
         return 1
 
-    def default_refund_tax_sign(self, cursor, user, context=None):
+    def default_credit_note_tax_sign(self, cursor, user, context=None):
         return 1
 
     def default_company(self, cursor, user, context=None):

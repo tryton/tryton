@@ -527,9 +527,9 @@ class Line(OSV):
                 for tax in line.account.taxes:
                     if move.journal.type == 'revenue':
                         if line.debit:
-                            base_id = tax.refund_base_code.id
-                            code_id = tax.refund_tax_code.id
-                            account_id = tax.refund_account.id
+                            base_id = tax.credit_note_base_code.id
+                            code_id = tax.credit_note_tax_code.id
+                            account_id = tax.credit_note_account.id
                         else:
                             base_id = tax.invoice_base_code.id
                             code_id = tax.invoice_tax_code.id
@@ -540,9 +540,9 @@ class Line(OSV):
                             code_id = tax.invoice_tax_code.id
                             account_id = tax.invoice_account.id
                         else:
-                            base_id = tax.refund_base_code.id
-                            code_id = tax.refund_tax_code.id
-                            account_id = tax.refund_account.id
+                            base_id = tax.credit_note_base_code.id
+                            code_id = tax.credit_note_tax_code.id
+                            account_id = tax.credit_note_account.id
                     if base_id in line_code_taxes or not base_id:
                         taxes.setdefault((account_id, code_id), False)
                 for tax_line in line.tax_lines:
@@ -574,14 +574,14 @@ class Line(OSV):
                 for line in move.lines:
                     if move.journal.type == 'revenue':
                         if line.debit:
-                            key = 'refund'
+                            key = 'credit_note'
                         else:
                             key = 'invoice'
                     else:
                         if line.debit:
                             key = 'invoice'
                         else:
-                            key = 'refund'
+                            key = 'credit_note'
                     line_amount = Decimal('0.0')
                     tax_amount = Decimal('0.0')
                     for tax_line in tax_obj.compute(cursor, user,
@@ -720,14 +720,14 @@ class Line(OSV):
             for tax in account.taxes:
                 if journal_type == 'revenue':
                     if debit:
-                        key = 'refund'
+                        key = 'credit_note'
                     else:
                         key = 'invoice'
                 else:
                     if debit:
                         key = 'invoice'
                     else:
-                        key = 'refund'
+                        key = 'credit_note'
                 base_amounts = {}
                 for tax_line in tax_obj.compute(cursor, user,
                         [x.id for x in account.taxes],
