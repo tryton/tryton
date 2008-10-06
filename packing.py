@@ -428,7 +428,6 @@ class PackingOut(OSV):
 
     def set_state_draft(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
-        uom_obj = self.pool.get('product.uom')
         packing = self.browse(cursor, user, packing_id, context=context)
         self.write(
             cursor, user, packing_id, {'state':'draft'}, context=context)
