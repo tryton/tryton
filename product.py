@@ -321,6 +321,97 @@ class Product(OSV):
                                         context=context)
         return value + " (" + ",".join([l.name for l in locations]) + ")"
 
+    def pick_product(self, cursor, user, move, location_quantities, context=None):
+        """
+        Pick the product across the location. Naive (fast)
+        implementation.
+        :param move is a browse record with the product and the quantity to pick.
+        : param location_quantities a list of tupel (location, available_qty)
+                where location is a browse record.
+        """
+        to_pick = []
+        needed_qty = move.quantity
+        for location, available_qty in location_quantities.iteritems():
+            if needed_qty <= available_qty:
+                to_pick.append((location, needed_qty))
+                return to_pick
+            else:
+                to_pick.append((location, available_qty))
+                needed_qty -= available_qty
+        # Force assignation for consumables:
+        if move.product.type == "consumable":
+            to_pick.append((move.from_location.id, needed_qty))
+            return to_pick
+        return None
+
+    def assign_try(self, cursor, user, moves, context=None):
+        move_obj = self.pool.get('stock.move')
+        product_obj = self.pool.get('product.product')
+        uom_obj = self.pool.get('product.uom')
+
+        if context is None:
+            context = {}
+
+        cursor.execute('LOCK TABLE stock_move')
+
+        local_ctx = context and context.copy() or {}
+        local_ctx['stock_date_end'] = datetime.date.today()
+        pbl = product_obj.products_by_location(cursor, user,
+            location_ids=[m.from_location.id for m in moves],
+            product_ids=[m.product.id for m in moves],
+            context=local_ctx)
+
+        success = True
+        for move in moves:
+            location_qties = {}
+            childs = [m for m in move.from_location.childs] + [move.from_location]
+            for location in childs:
+                if (location.id, move.product.id) in pbl:
+                    location_qties[location] = uom_obj.compute_qty(
+                        cursor, user, move.product.default_uom,
+                        pbl[(location.id, move.product.id)], move.uom,
+                        context=context)
+
+            to_pick = self.pick_product(
+                cursor, user, move, location_qties, context=context)
+
+            if to_pick is None:
+                success = False
+                continue
+            first = True
+            for from_location, qty in to_pick:
+                to_location = move.to_location
+                values = {
+                    'from_location': from_location.id,
+                    'to_location': to_location.id,
+                    'product': move.product.id,
+                    'uom': move.uom.id,
+                    'quantity': qty,
+                    'state': 'assigned',
+                    'company': move.company.id,
+                    }
+                for field in ('packing_out', 'packing_in', 'packing_internal'):
+                    if move[field]:
+                        values.update({field: move[field].id})
+                        break
+
+                if first:
+                    move_obj.write(cursor, user, move.id, values,
+                            context=context)
+                    first = False
+                else:
+                    move_obj.create(cursor, user, values, context=context)
+
+                qty_defaut_uom = uom_obj.compute_qty(
+                    cursor, user, move.uom, qty, move.product.default_uom,
+                    context=context)
+
+                pbl[(from_location.id, move.product.id)] = \
+                    pbl.get((location, move.product.id), 0.0) + qty_defaut_uom
+                pbl[(to_location.id, move.product.id)]= \
+                    pbl.get((to_location.id, move.product.id), 0.0) - qty_defaut_uom
+        return success
+
 Product()
 
 
