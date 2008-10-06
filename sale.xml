@@ -731,9 +731,15 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
+                    <xpath expr="/form/notebook/page/separator[@name=&quot;description&quot;]"
+                        position="before">
+                        <label name="salable"/>
+                        <field name="salable"/>
+                    </xpath>
                     <xpath expr="/form/notebook/page[@string=&quot;Properties&quot;]"
                         position="after">
-                        <page string="Customers">
+                        <page string="Customers"
+                            states="{'invisible': '''not salable'''}">
                             <label name="salable"/>
                             <field name="salable"/>
                             <label name="sale_uom"/>
