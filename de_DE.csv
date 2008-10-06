@@ -57,8 +57,8 @@ field,"stock.move,quantity",0,Quantity,Menge,0
 field,"stock.move,state",0,State,Status,0
 field,"stock.move,to_location",0,To Location,Zu Lagerort,0
 field,"stock.move,type",0,Type,Typ,0
-field,"stock.move,unit_digits",0,Unit Digits,Anzahl Einheiten,0
-field,"stock.move,unit_price",0,Unit Price,Preis pro Einheit,0
+field,"stock.move,unit_digits",0,Unit Digits,Anzahl Stellen,0
+field,"stock.move,unit_price",0,Unit Price,Einzelpreis,0
 field,"stock.move,uom",0,Uom,Einheit,0
 field,"stock.packing.in,code",0,Code,Code,0
 field,"stock.packing.in,contact_address",0,Contact Address,Kontaktadresse,0
@@ -100,8 +100,8 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 ",0
 model,"ir.action,name",act_packing_out_form_assigned,Assigned Customer Packings,Zugewiesene Kundenverpackungen,0
 model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Gesamter Lagerbestand,0
-model,"ir.action,name",act_packing_out_form,Customer Packing,Verpackung Kunde,0
-model,"ir.action,name",report_packing_out,Customer Packings,Kundenverpackungen,0
+model,"ir.action,name",report_packing_out,Customer Packing,Kundenverpackungen,0
+model,"ir.action,name",act_packing_out_form,Customer Packings,Verpackung Kunde,0
 model,"ir.action,name",act_packing_out_form_ready,Customer Packings Ready for Shipping,Versandbereite Kundenverpackungen,0
 model,"ir.action,name",act_packing_out_form_waiting,Customer Packings Waiting Assignation,Zuzuweisende Kundenverpackungen,0
 model,"ir.action,name",act_location_form,Edit Locations,Lagerorte bearbeiten,0
