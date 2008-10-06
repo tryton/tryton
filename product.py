@@ -27,11 +27,11 @@ class Template(OSV):
     cost_price = fields.Property(type='numeric', string='Cost Price',
             states=STATES, digits=(16, 4))
     cost_price_uom = fields.Function('get_price_uom', string='Cost Price',
-            type="numeric", digits=(16, 4))
+            type="numeric", digits=(16, 4), states=STATES)
     cost_price_method = fields.Selection([
         ("fixed", "Fixed"),
         ("average", "Average")
-        ], "Cost Method", required=True)
+        ], "Cost Method", required=True, states=STATES)
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
             states=STATES)
     active = fields.Boolean('Active')
