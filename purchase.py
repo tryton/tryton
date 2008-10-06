@@ -716,7 +716,7 @@ class PurchaseLine(OSV):
     _description = __doc__
 
     purchase = fields.Many2One('purchase.purchase', 'Purchase', ondelete='CASCADE',
-            select=1)
+            select=1, required=True)
     sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
