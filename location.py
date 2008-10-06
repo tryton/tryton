@@ -147,11 +147,16 @@ Party()
 
 class ChooseStockDateInit(WizardOSV):
     _name = 'stock.location_stock_date.init'
+    _description = "Compute stock quantities"
     forecast_date = fields.Date(
-        'Forecast Date', help='Allow to compute expected '\
+        'At Date', help='Allow to compute expected '\
             'stock quantities for this date.\n'\
             '* An empty value is an infinite date in the future.\n'\
             '* A date in the past will provide historical values.')
+
+    def default_forecast_date(self, cursor, user, context=None):
+        return datetime.date.today()
+
 ChooseStockDateInit()
 
 
