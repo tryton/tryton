@@ -53,11 +53,23 @@ class PurchaseRequest(OSV):
 
     def get_purchase(self, cursor, user, ids, name, args, context=None):
         res = {}
-        for request in self.browse(cursor, user, ids, context=context):
+        purchase_obj = self.pool.get('purchase.purchase')
+        purchase_ids = set()
+
+        requests = self.browse(cursor, user, ids, context=context)
+        for request in requests:
             if request.purchase_line:
-                res[request.id] = request.purchase_line.purchase.id
+                purchase_ids.add(request.purchase_line.purchase.id)
+        purchase_names = dict(purchase_obj.name_get(
+            cursor, user, purchase_ids, context=context))
+
+        for request in requests:
+            if request.purchase_line:
+                pid = request.purchase_line.purchase.id
+                res[request.id] = (pid, purchase_names[pid])
             else:
                 res[request.id] = False
+
         return res
 
     def get_state(self, cursor, user, ids, name, args, context=None):
