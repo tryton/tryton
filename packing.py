@@ -487,6 +487,9 @@ class PackingOut(OSV):
             else:
                 out_quantity = move.quantity
 
+            unit_price = uom_obj.compute_price(
+                cursor, user, move.product.default_uom, move.product.list_price,
+                move.uom, context=context)
             move_obj.create(cursor, user, {
                     'from_location': move.to_location.id,
                     'to_location': packing.customer_location.id,
@@ -496,6 +499,8 @@ class PackingOut(OSV):
                     'packing_out': packing.id,
                     'state': 'draft',
                     'company': move.company.id,
+                    'currency': move.company.currency.id,
+                    'unit_price': unit_price,
                     }, context=context)
 
         #Re-read the packing and remove exceeding quantities
