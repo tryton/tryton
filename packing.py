@@ -531,6 +531,10 @@ class PackingOut(OSV):
                    context=context)
 
     def set_state_waiting(self, cursor, user, packing_id, context=None):
+        """
+        Complete inventory moves to match the products and quantities
+        that are in the outgoing moves.
+        """
         move_obj = self.pool.get('stock.move')
         uom_obj = self.pool.get('product.uom')
         packing = self.browse(cursor, user, packing_id, context=context)
