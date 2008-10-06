@@ -54,10 +54,10 @@ class PurchaseRequest(OSV):
     def get_purchase(self, cursor, user, ids, name, args, context=None):
         res = {}
         for request in self.browse(cursor, user, ids, context=context):
-            if request.purchase_line and request.purchase_line.purchase:
+            if request.purchase_line:
                 res[request.id] = request.purchase_line.purchase.id
             else:
-                res[request.id] = None
+                res[request.id] = False
         return res
 
     def get_state(self, cursor, user, ids, name, args, context=None):
