@@ -204,11 +204,11 @@ class CompleteInventory(Wizard):
         uom_obj = self.pool.get('product.uom')
         inventories = inventory_obj.browse(cursor, user, data['ids'],
                 context=context)
+        context = context and context.copy() or {}
 
         for inventory in inventories:
             # Compute product quantities
             if inventory.date:
-                context = context.copy()
                 context['stock_date_end'] = inventory.date
                 pbl = product_obj.products_by_location(
                     cursor, user, [inventory.location.id],
@@ -225,6 +225,7 @@ class CompleteInventory(Wizard):
             product_qty = {}
             for (location, product), quantity in pbl.iteritems():
                 product_qty[product] = (quantity, product2uom[product])
+
             # Update existing lines
             for line in inventory.lines:
                 if line.product.id in product_qty:
@@ -238,7 +239,7 @@ class CompleteInventory(Wizard):
                               'uom': uom_id}
                     # update also quantity field if not edited
                     if line.quantity == line.expected_quantity:
-                        values['quantity'] = quantity
+                        values['quantity'] = max(quantity, 0.0)
                 else:
                     values = {'expected_quantity': 0.0,}
                     if line.quantity == line.expected_quantity:
@@ -254,7 +255,7 @@ class CompleteInventory(Wizard):
                 values = {
                     'product': product,
                     'expected_quantity': quantity,
-                    'quantity': quantity,
+                    'quantity': max(quantity, 0.0),
                     'uom': uom_id,
                     'inventory': inventory.id,
                     }
