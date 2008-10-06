@@ -25,6 +25,9 @@ class PurchaseRequest(OSV):
         domain="[('type', '=', 'warehouse')]", readonly=True)
     purchase_line = fields.Many2One(
         'purchase.line', 'Purchase Line',readonly=True)
+    purchase = fields.Function(
+        'get_purchase', type='many2one', relation='purchase.purchase',
+        string='Purchase')
     company = fields.Many2One(
         'company.company', 'Company', required=True, readonly=True)
     state = fields.Function(
@@ -47,6 +50,15 @@ class PurchaseRequest(OSV):
             return company_obj.name_get(cursor, user, context['company'],
                     context=context)[0]
         return False
+
+    def get_purchase(self, cursor, user, ids, name, args, context=None):
+        res = {}
+        for request in self.browse(cursor, user, ids, context=context):
+            if request.purchase_line and request.purchase_line.purchase:
+                res[request.id] = request.purchase_line.purchase.id
+            else:
+                res[request.id] = None
+        return res
 
     def get_state(self, cursor, user, ids, name, args, context=None):
         res = {}.fromkeys(ids, 'draft')
