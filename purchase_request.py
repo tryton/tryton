@@ -29,7 +29,7 @@ class PurchaseRequest(OSV):
         'company.company', 'Company', required=True, readonly=True)
     state = fields.Function(
         'get_state', type='selection',
-        selection=[("running", "Running"),
+        selection=[("purchased", "Purchased"),
                    ("done", "Done"),
                    ("draft", "Draft"),
                    ("cancel", "Cancel")],
@@ -54,10 +54,10 @@ class PurchaseRequest(OSV):
             if request.purchase_line:
                 if request.purchase_line.purchase.state == 'cancel':
                     res[request.id] = 'cancel'
-                if request.purchase_line.purchase.state == 'done':
+                elif request.purchase_line.purchase.state == 'done':
                     res[request.id] = 'done'
-            else:
-                res[request.id] = 'running'
+                else:
+                    res[request.id] = 'purchased'
         return res
 
     def generate_requests(self, cursor, user, context=None):
