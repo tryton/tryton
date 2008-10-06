@@ -37,6 +37,8 @@ class Move(OSV):
             readonly=True, select=1)
     packing_out = fields.Many2One('stock.packing.out', 'Customer Packing',
             readonly=True, select=1)
+    packing_internal = fields.Many2One('stock.packing.internal',
+            'Internal Packing', readonly=True, select=1)
     planned_date = fields.Date("Planned Date", states=STATES)
     effective_date = fields.Date("Effective Date", readonly=True)
     state = fields.Selection([
@@ -98,7 +100,13 @@ class Move(OSV):
             'service_product': 'You can not use service product for a move!',
             })
 
+    def default_planned_date(self, cursor, user, context=None):
+        if context and context.get('planned_date'):
+            return context.get('planned_date')
+
     def default_to_location(self, cursor, user, context=None):
+        if context and context.get('to_location'):
+            return context.get('to_location')
         if context and context.get('warehouse') and context.get('type'):
             wh_location = self.pool.get('stock.location').browse(
                 cursor, user, context['warehouse'], context=context)
@@ -108,6 +116,8 @@ class Move(OSV):
             return field and wh_location[field].id or False
 
     def default_from_location(self, cursor, user, context=None):
+        if context and context.get('from_location'):
+            return context.get('from_location')
         if context and context.get('warehouse') and context.get('type'):
             wh_location = self.pool.get('stock.location').browse(
                 cursor, user, context['warehouse'], context=context)

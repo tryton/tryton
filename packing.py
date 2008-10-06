@@ -603,7 +603,6 @@ class PackingOut(OSV):
                 context=context)
         return res
 
-
     def assign_try(self, cursor, user, packing_id, context=None):
         product_obj = self.pool.get('product.product')
         packing = self.browse(cursor, user, packing_id, context=context)
@@ -625,6 +624,111 @@ class PackingOut(OSV):
 
 PackingOut()
 
+class PackingInternal(OSV):
+    "Internal Packing"
+    _name = 'stock.packing.internal'
+    _description = __doc__
+    _rec_name = 'code'
+
+    effective_date =fields.DateTime('Effective Date', readonly=True)
+    planned_date = fields.DateTime(
+        'Planned Date', states={'readonly': "state != 'draft'",})
+    code = fields.Char("Code", size=None, select=1, readonly=True)
+    reference = fields.Char(
+        "Reference", size=None, select=1,
+        states={'readonly': "state != 'draft'",})
+    from_location = fields.Many2One(
+        'stock.location', "From Location", required=True,
+        states={ 'readonly': "state != 'draft'", },
+        domain="[('type', '=', 'storage')]", )
+    to_location = fields.Many2One('stock.location', "To Location",
+            required=True, states={
+                'readonly': "state != 'draft'",
+            }, domain="[('type', '=', 'storage')]")
+    moves = fields.One2Many(
+        'stock.move', 'packing_internal', 'Moves',
+        states={'readonly': "state != 'draft'"},
+        context="{'from_location': from_location,"
+                "'to_location': to_location,"
+                "'planned_date': planned_date}",
+        )
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('cancel', 'Cancel'),
+        ('assigned', 'Assigned'),
+        ('waiting', 'Waiting'),
+        ('done', 'Done'),
+        ], 'State', readonly=True)
+
+    def default_state(self, cursor, user, context=None):
+        return 'draft'
+
+    def button_draft(self, cursor, user, ids, context=None):
+        workflow_service = LocalService('workflow')
+        for packing in self.browse(cursor, user, ids, context=context):
+            workflow_service.trg_create(user, self._name, packing.id, cursor)
+        return True
+
+    def __init__(self):
+        super(PackingInternal, self).__init__()
+        self._rpc_allowed += [
+            'button_draft',
+        ]
+        self._order[0] = ('id', 'DESC')
+
+    def set_state_draft(self, cursor, user, packing_id, context=None):
+        move_obj = self.pool.get('stock.move')
+        packing = self.browse(cursor, user, packing_id, context=context)
+        self.write(
+            cursor, user, packing_id, {'state':'draft'}, context=context)
+        move_obj.set_state_draft(
+            cursor, user, [m.id for m in packing.moves], context=context)
+
+    def set_state_waiting(self, cursor, user, packing_id, context=None):
+        move_obj = self.pool.get('stock.move')
+        packing = self.browse(cursor, user, packing_id, context=context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.moves],
+            {'planned_date': packing.planned_date}, context=context)
+        self.write(
+            cursor, user, packing_id, {'state':'waiting'}, context=context)
+
+    def set_state_assigned(self, cursor, user, packing_id, context=None):
+        self.write(
+            cursor, user, packing_id, {'state':'assigned'}, context=context)
+
+    def set_state_done(self, cursor, user, packing_id, context=None):
+        move_obj = self.pool.get('stock.move')
+        packing = self.browse(cursor, user, packing_id, context=context)
+        move_obj.set_state_done(
+            cursor, user, [m.id for m in packing.moves], context=context)
+        self.write( cursor, user, packing_id,
+                    {'state':'done',
+                     'effective_date': datetime.datetime.now()},
+                    context=context)
+
+    def set_state_cancel(self, cursor, user, packing_id, context=None):
+        move_obj = self.pool.get('stock.move')
+        packing = self.browse(cursor, user, packing_id, context=context)
+        move_obj.set_state_cancel(
+            cursor, user, [m.id for m in packing.moves], context=context)
+        self.write(
+            cursor, user, packing_id, {'state':'cancel'}, context=context)
+
+    def assign_try(self, cursor, user, packing_id, context=None):
+        product_obj = self.pool.get('product.product')
+        packing = self.browse(cursor, user, packing_id, context=context)
+        return product_obj.assign_try(
+            cursor, user, packing.moves, context=context)
+
+    def assign_force(self, cursor, user, packing_id, context=None):
+        packing = self.browse(cursor, user, packing_id, context=context)
+        move_obj = self.pool.get('stock.move')
+        move_obj.write(
+            cursor, user, [m.id for m in packing.moves], {'state':'assigned'})
+        return True
+
+PackingInternal()
 
 class Address(OSV):
     _name = 'relationship.address'

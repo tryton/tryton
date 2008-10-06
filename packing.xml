@@ -317,7 +317,153 @@
             action="act_packing_out_form_ready" id="menu_packing_out_ready"/>
 
 
-        <!-- Sequence packing in -->
+
+        <!--Internal Packing view-->
+        <record model="ir.ui.view" id="packing_internal_view_form">
+            <field name="model">stock.packing.internal</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Internal Packing" col="4" cursor="from_location">
+                        <label name="reference"/>
+                        <field name="reference"/>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="from_location"/>
+                        <field name="from_location"/>
+                        <label name="to_location"/>
+                        <field name="to_location"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <separator name="moves" colspan="4"/>
+                        <field name="moves"  colspan="4"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <group col="6" colspan="2">
+                            <button string="Cancel" name="cancel"
+                                states="{'invisible': '''state in ('cancel', 'done') '''}"/>
+                            <button string="Set Done" name="done"
+                                states="{'invisible': '''state != 'assigned' '''}"/>
+                            <button string="Set Waiting" name="waiting"
+                                states="{'invisible': '''state != 'draft' '''}"/>
+                            <button string="Assign" name="assign"
+                                states="{'invisible': '''state != 'waiting' '''}"/>
+                            <button string="Force Assign" name="force_assign"
+                                states="{'invisible': '''state != 'waiting' '''}"/>
+                            <button string="Reset to Draft" name="button_draft"
+                                type="object" states="{'invisible': '''state != 'cancel' '''}"/>
+                        </group>
+                    </form>
+                    ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="packing_internal_view_tree">
+            <field name="model">stock.packing.internal</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Internal Packings">
+                        <field name="code" select="1"/>
+                        <field name="state" select="1"/>
+                        <field name="reference" select="2"/>
+                        <field name="planned_date" select="2"/>
+                        <field name="effective_date" select="2"/>
+                        <field name="from_location" select="2"/>
+                        <field name="to_location" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_packing_internal_form">
+            <field name="name">Internal Packings</field>
+            <field name="res_model">stock.packing.internal</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_internal_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_internal_view_tree"/>
+            <field name="act_window" ref="act_packing_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_internal_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_internal_view_form"/>
+            <field name="act_window" ref="act_packing_internal_form"/>
+        </record>
+        <menuitem parent="menu_stock" sequence="35"
+                  action="act_packing_internal_form"
+                  id="menu_packing_internal_form"/>
+
+        <record model="ir.action.act_window" id="act_packing_internal_draft_form">
+            <field name="name">Draft Internal Packings</field>
+            <field name="res_model">stock.packing.internal</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_internal_draft_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_internal_view_tree"/>
+            <field name="act_window" ref="act_packing_internal_draft_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_internal_draft_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_internal_view_form"/>
+            <field name="act_window" ref="act_packing_internal_draft_form"/>
+        </record>
+        <menuitem parent="menu_packing_internal_form" sequence="1"
+                  action="act_packing_internal_draft_form"
+                  id="menu_packing_internal_draft_form"/>
+
+        <record model="ir.action.act_window" id="act_packing_internal_waiting_form">
+            <field name="name">Internal Packings Waiting Assignation</field>
+            <field name="res_model">stock.packing.internal</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_internal_waiting_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_internal_view_tree"/>
+            <field name="act_window" ref="act_packing_internal_waiting_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_internal_waiting_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_internal_view_form"/>
+            <field name="act_window" ref="act_packing_internal_waiting_form"/>
+        </record>
+        <menuitem parent="menu_packing_internal_form" sequence="2"
+                  action="act_packing_internal_waiting_form"
+                  id="menu_packing_internal_waiting_form"/>
+
+        <record model="ir.action.act_window" id="act_packing_internal_assigned_form">
+            <field name="name">Assigned Internal Packings</field>
+            <field name="res_model">stock.packing.internal</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('state', '=', 'assigned')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_internal_assigned_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_internal_view_tree"/>
+            <field name="act_window" ref="act_packing_internal_assigned_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_internal_assigned_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_internal_view_form"/>
+            <field name="act_window" ref="act_packing_internal_assigned_form"/>
+        </record>
+        <menuitem parent="menu_packing_internal_form" sequence="3"
+                  action="act_packing_internal_assigned_form"
+                  id="menu_packing_internal_assigned_form"/>
+
+        <!-- Sequence packing out -->
         <record model="ir.sequence.type" id="sequence_type_packing_out">
                 <field name="name">Customer Packing</field>
                 <field name="code">stock.packing.out</field>
@@ -505,6 +651,91 @@
         </record>
 
 
+        <!-- Workflow internal packing -->
+        <record model="workflow" id="wkf_packinginternal">
+            <field name="name">Internal Packing</field>
+            <field name="osv">stock.packing.internal</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="packinginternal_act_draft">
+            <field name="workflow" ref="wkf_packinginternal"/>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
+            <field name="name">Draft</field>
+        </record>
+        <record model="workflow.activity" id="packinginternal_act_cancel">
+            <field name="workflow" ref="wkf_packinginternal"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Cancel</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+        </record>
+        <record model="workflow.activity" id="packinginternal_act_done">
+            <field name="workflow" ref="wkf_packinginternal"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Done</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+        </record>
+        <record model="workflow.activity" id="packinginternal_act_waiting">
+            <field name="name">Waiting</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_packinginternal"/>
+            <field name="action">set_state_waiting()</field>
+        </record>
+        <record model="workflow.activity" id="packinginternal_act_assigned">
+            <field name="name">Assigned</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_packinginternal"/>
+            <field name="action">set_state_assigned()</field>
+        </record>
+
+        <record model="workflow.transition"
+                id="packinginternal_trans_draft_waiting">
+            <field name="act_from" ref="packinginternal_act_draft"/>
+            <field name="act_to" ref="packinginternal_act_waiting"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="packinginternal_trans_waiting_assigned">
+            <field name="act_from" ref="packinginternal_act_waiting"/>
+            <field name="act_to" ref="packinginternal_act_assigned"/>
+            <field name="signal">assign</field>
+            <field name="condition">assign_try()</field>
+        </record>
+        <record model="workflow.transition"
+                id="packinginternal_trans_waiting_assigned_force">
+            <field name="act_from" ref="packinginternal_act_waiting"/>
+            <field name="act_to" ref="packinginternal_act_assigned"/>
+            <field name="signal">force_assign</field>
+            <field name="condition">assign_force()</field>
+        </record>
+        <record model="workflow.transition" id="packinginternal_trans_assigned_done">
+            <field name="act_from" ref="packinginternal_act_assigned"/>
+            <field name="act_to" ref="packinginternal_act_done"/>
+            <field name="signal">done</field>
+        </record>
+        <record model="workflow.transition" id="packinginternal_trans_draft_cancel">
+            <field name="act_from" ref="packinginternal_act_draft"/>
+            <field name="act_to" ref="packinginternal_act_cancel"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="packinginternal_trans_waiting_cancel">
+            <field name="act_from" ref="packinginternal_act_waiting"/>
+            <field name="act_to" ref="packinginternal_act_cancel"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="packinginternal_trans_assigned_cancel">
+            <field name="act_from" ref="packinginternal_act_assigned"/>
+            <field name="act_to" ref="packinginternal_act_cancel"/>
+            <field name="signal">cancel</field>
+        </record>
+
+
+        <!-- Add delivery field on address -->
         <record model="ir.ui.view" id="address_view_tree">
             <field name="model">relationship.address</field>
             <field name="inherit" ref="relationship.address_view_tree"/>
