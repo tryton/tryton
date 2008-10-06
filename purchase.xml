@@ -697,9 +697,15 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
+                    <xpath expr="/form/notebook/page/separator[@name=&quot;description&quot;]"
+                        position="before">
+                        <label name="purchasable"/>
+                        <field name="purchasable"/>
+                    </xpath>
                     <xpath expr="/form/notebook/page[@string=&quot;Properties&quot;]"
                         position="after">
-                        <page string="Suppliers">
+                        <page string="Suppliers"
+                            states="{'invisible': '''not purchasable'''}">
                             <label name="purchasable"/>
                             <field name="purchasable"/>
                             <label name="purchase_uom"/>
