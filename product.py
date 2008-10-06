@@ -47,8 +47,8 @@ class Product(OSV):
             res = res and (eval(str(value) + operator + str(operand)))
         return res
 
-    def search_quantity(self, cursor, user, name, domain=[], context=None):
-        if not (context and context.get('locations')):
+    def search_quantity(self, cursor, user, name, domain=None, context=None):
+        if not (context and context.get('locations') and domain):
             return []
         if (name != 'forecast_quantity') and context.get('stock_date_end'):
             if context['stock_date_end'] != datetime.date.today():
