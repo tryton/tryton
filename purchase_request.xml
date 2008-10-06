@@ -28,6 +28,8 @@
                         <field name="purchase_line"/>
                         <label name="stock_level"/>
                         <field name="stock_level"/>
+                        <label name="state"/>
+                        <field name="state"/>
                     </form>
                 ]]>
             </field>
@@ -39,15 +41,14 @@
                 <![CDATA[
                     <tree string="Locations">
                         <field name="product" select="1"/>
-                        <field name="party" select="1"/>
                         <field name="quantity" select="2"/>
                         <field name="uom" select="2"/>
                         <field name="warehouse" select="2"/>
-                        <field name="purchase_date"/>
-                        <field name="supply_date"/>
-                        <field name="purchase_line"/>
+                        <field name="party" select="1"/>
+                        <field name="purchase_date" select="2"/>
                         <field name="stock_level"/>
-                        <field name="company"/>
+                        <field name="company" select="2"/>
+                        <field name="state"/>
                     </tree>
                 ]]>
             </field>

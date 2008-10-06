@@ -27,6 +27,17 @@ class PurchaseRequest(OSV):
         'purchase.line', 'Purchase Line',readonly=True)
     company = fields.Many2One(
         'company.company', 'Company', required=True, readonly=True)
+    state = fields.Function(
+        'get_state', type='selection',
+        selection=[("running", "Running"),
+                   ("done", "Done"),
+                   ("draft", "Draft"),
+                   ("cancel", "Cancel")],
+        string="State", readonly=True)
+
+    def __init__(self):
+        super(PurchaseRequest, self).__init__()
+        self._order[0] = ('id', 'DESC')
 
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
@@ -36,6 +47,18 @@ class PurchaseRequest(OSV):
             return company_obj.name_get(cursor, user, context['company'],
                     context=context)[0]
         return False
+
+    def get_state(self, cursor, user, ids, name, args, context=None):
+        res = {}.fromkeys(ids, 'draft')
+        for request in self.browse(cursor, user, ids, context=context):
+            if request.purchase_line:
+                if request.purchase_line.purchase.state == 'cancel':
+                    res[request.id] = 'cancel'
+                if request.purchase_line.purchase.state == 'done':
+                    res[request.id] = 'done'
+            else:
+                res[request.id] = 'running'
+        return res
 
     def generate_requests(self, cursor, user, context=None):
         """
