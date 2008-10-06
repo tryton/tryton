@@ -157,7 +157,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Customer Packing" col="4">
+                    <form string="Customer Packing" col="4" cursor="customer">
                         <label name="reference"/>
                         <field name="reference"/>
                         <label name="code"/>
