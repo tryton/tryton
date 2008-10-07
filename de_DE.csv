@@ -1,5 +1,5 @@
 type,name,res_id,src,value,fuzzy
-error,company.company,0,You can not create recursive companies!,Firmen können nicht rekursiv angelegt werden,0
+error,company.company,0,You can not create recursive companies!,Unternehmen können nicht rekursiv angelegt werden,0
 error,res.user,0,You can not set a company that is not a child of your main company!,Das Unternehmen muss ein Tochterunternehmen (untergeordnet) des Hauptunternehmens sein,0
 field,"company.company,childs",0,Childs,Untergeordnet (Unternehmen),0
 field,"company.company,create_date",0,Creation date,Erstellungsdatum,0
