@@ -35,5 +35,6 @@ view,stock.order_point,0,Locations,Lagerorte,0
 view,stock.order_point,0,Order Point,Bestellpunkt,0
 view,stock.purchase_request,0,Purchase Request,Bestellung,0
 view,stock.purchase_request,0,Purchase Requests,Bestellung,0
+view,stock.purchase_request.create_purchase.ask,0,Create Purchase Request: Missing Payment Term,Auftrag erstellen: Fehlende Zahlungsbedingung,0
 wizard_button,"stock.purchase_request.create_purchase,ask_user,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.purchase_request.create_purchase,ask_user,init",0,Continue,Fortfahren,0
