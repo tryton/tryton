@@ -48,10 +48,10 @@ field,"purchase.purchase,invoices_ignored",0,Invoices Ignored,Ignorierte Rechnun
 field,"purchase.purchase,invoice_state",0,Invoice State,Rechnungsstatus,0
 field,"purchase.purchase,lines",0,Lines,Positionen,0
 field,"purchase.purchase,moves",0,Moves,Bewegungen,0
-field,"purchase.purchase,packing_done",0,Packing Done,Verpackung erledigt,0
-field,"purchase.purchase,packing_exception",0,Packings Exception,Verpackungsvorbehalt,0
-field,"purchase.purchase,packings",0,Packings,Verpackungen,0
-field,"purchase.purchase,packing_state",0,Packing State,Packstatus,0
+field,"purchase.purchase,packing_done",0,Packing Done,Lieferschein erledigt,0
+field,"purchase.purchase,packing_exception",0,Packings Exception,Lieferungsvorbehalt,0
+field,"purchase.purchase,packings",0,Packings,Lieferscheine,0
+field,"purchase.purchase,packing_state",0,Packing State,Lieferstatus,0
 field,"purchase.purchase,party",0,Party,Partei,0
 field,"purchase.purchase,party_lang",0,Party Language,Sprache Partei,0
 field,"purchase.purchase,payment_term",0,Payment Term,Zahlungsbedingung,0
@@ -67,13 +67,13 @@ field,"stock.move,purchase_line",0,unknown,unbekannt,0
 field,"stock.move,supplier",0,Supplier,Lieferant,0
 help,"purchase.product_supplier,delivery_time",0,In number of days,In Anzahl von Tagen,0
 help,"purchase.product_supplier.price,quantity",0,Minimal quantity,Mindestmenge,0
-model,"ir.action,name",act_purchase_form_confirmed,Confirmed Purchases,Bestätigte Einkäufe,0
+model,"ir.action,name",act_purchase_form_confirmed,Confirmed Purchases,Aufträge (Einkäufe),0
 model,"ir.action,name",act_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
 model,"ir.action,name",report_purchase,Purchase,Drucken,0
 model,"ir.action,name",act_purchase_form,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
 model,"ir.action,name",act_open_supplier,Suppliers,Lieferanten,0
-model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Bestätigte Einkäufe,0
+model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Aufträge (Einkäufe),0
 model,"ir.ui.menu,name",menu_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
 model,"ir.ui.menu,name",menu_purchase,Purchase Management,Einkauf,0
 model,"ir.ui.menu,name",menu_purchase_form,Purchases,Einkäufe,0
@@ -88,7 +88,7 @@ odt,purchase.purchase,0,Email:,E-Mail:,0
 odt,purchase.purchase,0,Phone:,Telefon:,0
 odt,purchase.purchase,0,Purchase Order N°:,Auftrag Nr. ,0
 odt,purchase.purchase,0,Quantity,Menge,0
-odt,purchase.purchase,0,Request for Quotation N°:,Angebotsanfrage Nr. ,0
+odt,purchase.purchase,0,Request for Quotation N°:,Angebotsanfrage Nr.:,0
 odt,purchase.purchase,0,Taxes,Steuern,0
 odt,purchase.purchase,0,Taxes:,Steuern:,0
 odt,purchase.purchase,0,Total:,Gesamt:,0
@@ -99,18 +99,18 @@ selection,"purchase.line,type",0,Line,Position,0
 selection,"purchase.line,type",0,Subtotal,Zwischensumme,0
 selection,"purchase.line,type",0,Title,Überschrift,0
 selection,"purchase.purchase,invoice_method",0,Based On Order,Nach Auftrag,0
-selection,"purchase.purchase,invoice_method",0,Based On Packing,Nach Verpackung,0
+selection,"purchase.purchase,invoice_method",0,Based On Packing,Nach Lieferung,0
 selection,"purchase.purchase,invoice_method",0,Manual,Manuell,0
 selection,"purchase.purchase,invoice_state",0,Exception,Vorbehalt,0
 selection,"purchase.purchase,invoice_state",0,None,Kein,0
 selection,"purchase.purchase,invoice_state",0,Paid,Bezahlt,0
 selection,"purchase.purchase,invoice_state",0,Waiting,Wartend,0
 selection,"purchase.purchase,packing_state",0,Exception,Vorbehalt,0
-selection,"purchase.purchase,packing_state",0,None,Keine,0
+selection,"purchase.purchase,packing_state",0,None,Kein,0
 selection,"purchase.purchase,packing_state",0,Received,Erhalten,0
 selection,"purchase.purchase,packing_state",0,Waiting,Wartend,0
 selection,"purchase.purchase,state",0,Cancel,Abbrechen,0
-selection,"purchase.purchase,state",0,Confirmed,Bestätigt,0
+selection,"purchase.purchase,state",0,Confirmed,Beauftragt,0
 selection,"purchase.purchase,state",0,Done,Erledigt,0
 selection,"purchase.purchase,state",0,Draft,Entwurf,0
 selection,"purchase.purchase,state",0,Quotation,Angebot,0
@@ -123,14 +123,14 @@ view,purchase.product_supplier,0,Product Suppliers,Lieferanten,0
 view,purchase.product_supplier.price,0,Product Supplier Price,Einkaufspreis,0
 view,purchase.product_supplier.price,0,Product Supplier Prices,Einkaufspreise,0
 view,purchase.purchase,0,Cancel,Abbrechen,0
-view,purchase.purchase,0,Confirm,Bestätigen,0
+view,purchase.purchase,0,Confirm,Beauftragen,0
 view,purchase.purchase,0,Draft,Entwurf,0
 view,purchase.purchase,0,Ignore Invoice Exception,Rechnungsvorbehalt ignorieren,0
 view,purchase.purchase,0,Ignore Packing Exception,Verpackungsvorbehalt ignorieren,0
 view,purchase.purchase,0,Invoices,Rechnungen,0
 view,purchase.purchase,0,Lines,Positionen,0
 view,purchase.purchase,0,Other Info,Sonstiges,0
-view,purchase.purchase,0,Packings,Verpackungen,0
+view,purchase.purchase,0,Packings,Lieferscheine,0
 view,purchase.purchase,0,Purchase,Einkauf,0
 view,purchase.purchase,0,Purchases,Einkäufe,0
 view,purchase.purchase,0,Quotation,Angebot,0
