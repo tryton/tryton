@@ -58,7 +58,7 @@ field,"stock.move,sale_line",0,unknown,unbekannt,0
 model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Aufträge (Verkäufe),0
 model,"ir.action,name",act_sale_form_draft,Draft Sales,Entwürfe (Verkäufe),0
 model,"ir.action,name",act_sale_form_quotation,Quotation Sales,Angebote (Verkäufe),0
-model,"ir.action,name",report_sale,Sale,Verkauf,0
+model,"ir.action,name",report_sale,Sale,Verkauf drucken,0
 model,"ir.action,name",act_sale_form,Sales,Verkäufe,0
 model,"ir.ui.menu,name",menu_sale_form_confirmed,Confirmed Sales,Aufträge (Verkäufe),0
 model,"ir.ui.menu,name",menu_sale_form_draft,Draft Sales,Entwürfe (Verkäufe),0
