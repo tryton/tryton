@@ -1,5 +1,6 @@
 type,name,res_id,src,value,fuzzy
 error,account.fiscalyear,0,You can not change the invoice sequence if there is already an invoice opened in the fiscalyear,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung im laufenden Buchungsjahr eröffnet wurde.",0
+error,account.fiscalyear,0,You must have different invoice sequence per fiscal year!,Verschiedene Geschäftsjahre erfordern unterschiedliche Rechnungssequenzen!,0
 error,account.invoice,0,"Base taxes different from invoice lines!
 Re-compute the invoice.",Steuern stimmen nicht mit den Rechnungspositionen überein!,0
 error,account.invoice,0,Credit account on journal is the same than the invoice account!,Haben-Konto im Journal und Rechnungskonto sind identisch!,0
@@ -157,7 +158,7 @@ model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remai
 model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.action,name",credit_invoice,Credit,Gutschreiben,0
 model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften,0
-model,"ir.action,name",,Custom Invoice,Angepasste Rechnung,0
+model,"ir.action,name",,Custom Invoice,,0
 model,"ir.action,name",report_invoice,Invoice,Rechnung drucken,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
