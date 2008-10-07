@@ -207,9 +207,12 @@ class Move(OSV):
                                 'state': 'draft',
                                 }, context=context)
                 else:
-                    centralised_amount = move.centralised_line.debit \
-                                - move.centralised_line.credit \
-                                - amount
+                    if not move.centralised_line:
+                        centralised_amount = - amount
+                    else:
+                        centralised_amount = move.centralised_line.debit \
+                                    - move.centralised_line.credit \
+                                    - amount
                     if centralised_amount >= Decimal('0.0'):
                         debit = centralised_amount
                         credit = Decimal('0.0')
@@ -218,12 +221,25 @@ class Move(OSV):
                         debit = Decimal('0.0')
                         credit = - centralised_amount
                         account_id = move.journal.credit_account.id
-                    move_line_obj.write(cursor, user,
-                            move.centralised_line.id, {
-                                'debit': debit,
-                                'credit': credit,
-                                'account': account_id,
+                    if not move.centralised_line:
+                        centralised_line_id = move_line_obj.create(cursor,
+                                user, {
+                                    'debit': debit,
+                                    'credit': credit,
+                                    'account': account_id,
+                                    'move': move.id,
+                                    'name': 'Centralised Counterpart',
+                                    }, context=context)
+                        self.write(cursor, user, move.id, {
+                            'centralised_line': centralised_line_id,
                             }, context=context)
+                    else:
+                        move_line_obj.write(cursor, user,
+                                move.centralised_line.id, {
+                                    'debit': debit,
+                                    'credit': credit,
+                                    'account': account_id,
+                                }, context=context)
                 continue
             if not draft_lines:
                 continue
