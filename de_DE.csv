@@ -171,7 +171,7 @@ field,"account.fiscalyear,post_move_sequence",0,Post Move Sequence,Sequenz Buchu
 field,"account.fiscalyear,start_date",0,Starting Date,Anfangsdatum,0
 field,"account.fiscalyear,state",0,State,Status,0
 field,"account.journal,active",0,Active,Aktiv,0
-field,"account.journal,centralised",0,Centralised counterpart,Abschlussbuchnung auf Gegenkonto,0
+field,"account.journal,centralised",0,Centralised counterpart,Abschlussbuchung auf Gegenkonto,0
 field,"account.journal,code",0,Code,Code,0
 field,"account.journal,credit_account",0,Default Credit Account,Standard Habenkonto,0
 field,"account.journal,debit_account",0,Default Debit Account,Standard Sollkonto,0
@@ -252,7 +252,7 @@ field,"account.tax,amount",0,Amount,Betrag,0
 field,"account.tax,childs",0,Childs,Untergeordnet (Steuern),0
 field,"account.tax.code,active",0,Active,Aktiv,0
 field,"account.tax.code,childs",0,Childs,Untergeordnet (Steuercodes),0
-field,"account.tax.code,code",0,Code,Code,0
+field,"account.tax.code,code",0,Code,Kennziffer,0
 field,"account.tax.code,company",0,Company,Unternehmen,0
 field,"account.tax.code,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"account.tax.code,name",0,Name,Name,0
@@ -260,21 +260,26 @@ field,"account.tax.code,parent",0,Parent,Übergeordnet (Steuercode),0
 field,"account.tax.code,sum",0,Sum,Summe,0
 field,"account.tax.code.template,account",0,Account Template,Kontenvorlage,0
 field,"account.tax.code.template,childs",0,Childs,Untergeordnet (Steuervorlagencodes),0
-field,"account.tax.code.template,code",0,Code,Code,0
+field,"account.tax.code.template,code",0,Code,Kennziffer,0
 field,"account.tax.code.template,name",0,Name,Name,0
 field,"account.tax.code.template,parent",0,Parent,Übergeordnet (Steuercodevorlage),0
 field,"account.tax,company",0,Company,Unternehmen,0
+field,"account.tax,credit_note_account",0,Credit Note Account,Konto für Gutschrift,0
+field,"account.tax,credit_note_base_code",0,Credit Note Base Code,Kennziffer für Nettobeträge in Gutschriften,0
+field,"account.tax,credit_note_base_sign",0,Credit Note Base Sign,Vorzeichen für Nettobeträge in Gutschriften,0
+field,"account.tax,credit_note_tax_code",0,Credit Note Tax Code,Kennziffer für Steuern in Gutschriften,0
+field,"account.tax,credit_note_tax_sign",0,Credit Note Tax Sign,Vorzeichen für Steuern in Gutschriften,0
 field,"account.tax,description",0,Description,Beschreibung,0
 field,"account.tax,group",0,Group,Gruppe,0
-field,"account.tax.group,code",0,Code,Code,0
+field,"account.tax.group,code",0,Code,Kennziffer,0
 field,"account.tax.group,name",0,Name,Name,0
-field,"account.tax,invoice_account",0,Invoice Account,Rechnungskonto,0
-field,"account.tax,invoice_base_code",0,Invoice Base Code,Code für Nettobeträge in Rechnungen,0
+field,"account.tax,invoice_account",0,Invoice Account,Konto für Rechnung,0
+field,"account.tax,invoice_base_code",0,Invoice Base Code,Kennziffer für Nettobeträge in Rechnungen,0
 field,"account.tax,invoice_base_sign",0,Invoice Base Sign,Vorzeichen für Nettobeträge in Rechnungen,0
-field,"account.tax,invoice_tax_code",0,Invoice Tax Code,Code für Steuern in Rechnungen,0
+field,"account.tax,invoice_tax_code",0,Invoice Tax Code,Kennziffer für Steuern in Rechnungen,0
 field,"account.tax,invoice_tax_sign",0,Invoice Tax Sign,Vorzeichen für Steuern in Rechnungen,0
 field,"account.tax.line,amount",0,Amount,Betrag,0
-field,"account.tax.line,code",0,Code,Code,0
+field,"account.tax.line,code",0,Code,Kennziffer,0
 field,"account.tax.line,move_line",0,Move Line,Buchungszeile,0
 field,"account.tax,name",0,Name,Name,0
 field,"account.tax.open_chart_code.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
@@ -282,30 +287,25 @@ field,"account.tax.open_chart_code.init,method",0,Method,Methode,0
 field,"account.tax.open_chart_code.init,periods",0,Periods,Buchungszeiträume,0
 field,"account.tax,parent",0,Parent,Übergeordnet (Steuer),0
 field,"account.tax,percentage",0,Percentage,Prozentsatz,0
-field,"account.tax,refund_account",0,Refund Account,Konto Gutschrift,0
-field,"account.tax,refund_base_code",0,Refund Base Code,Code für Nettobeträge in Gutschriften,0
-field,"account.tax,refund_base_sign",0,Refund Base Sign,Vorzeichen für Nettobeträge in Gutschriften,0
-field,"account.tax,refund_tax_code",0,Refund Tax Code,Code für Steuern in Gutschriften,0
-field,"account.tax,refund_tax_sign",0,Refund Tax Sign,Vorzeichen für Steuern in Gutschriften,0
 field,"account.tax,sequence",0,Sequence,Sequenz,0
 field,"account.tax.template,account",0,Account Template,Kontenvorlage,0
 field,"account.tax.template,amount",0,Amount,Betrag,0
 field,"account.tax.template,childs",0,Childs,Untergeordnet (Steuervorlagen),0
+field,"account.tax.template,credit_note_account",0,Credit Note Account,Konto für Gutschrift,0
+field,"account.tax.template,credit_note_base_code",0,Credit Note Base Code,Kennziffer für Nettobeträge in Gutschriften,0
+field,"account.tax.template,credit_note_base_sign",0,Credit Note Base Sign,Vorzeichen für Nettobeträge in Gutschriften,0
+field,"account.tax.template,credit_note_tax_code",0,Credit Note Tax Code,Kennziffer für Steuern in Gutschriften,0
+field,"account.tax.template,credit_note_tax_sign",0,Credit Note Tax Sign,Vorzeichen für Steuern in Gutschriften,0
 field,"account.tax.template,description",0,Description,Beschreibung,0
 field,"account.tax.template,group",0,Group,Gruppe,0
-field,"account.tax.template,invoice_account",0,Invoice Account,Rechnungskonto,0
-field,"account.tax.template,invoice_base_code",0,Invoice Base Code,Code für Nettobeträge in Rechnungen,0
+field,"account.tax.template,invoice_account",0,Invoice Account,Konto für Rechnung,0
+field,"account.tax.template,invoice_base_code",0,Invoice Base Code,Kennziffer für Nettobeträge in Rechnungen,0
 field,"account.tax.template,invoice_base_sign",0,Invoice Base Sign,Vorzeichen für Nettobeträge in Rechnungen,0
-field,"account.tax.template,invoice_tax_code",0,Invoice Tax Code,Code für Steuern in Rechnungen,0
+field,"account.tax.template,invoice_tax_code",0,Invoice Tax Code,Kennziffer für Steuern in Rechnungen,0
 field,"account.tax.template,invoice_tax_sign",0,Invoice Tax Sign,Vorzeichen für Steuern in Rechnungen,0
 field,"account.tax.template,name",0,Name,Name,0
 field,"account.tax.template,parent",0,Parent,Übergeordnet (Steuervorlage),0
 field,"account.tax.template,percentage",0,Percentage,Prozentsatz,0
-field,"account.tax.template,refund_account",0,Refund Account,Konto für Gutschriften,0
-field,"account.tax.template,refund_base_code",0,Refund Base Code,Code für Nettobeträge in Gutschriften,0
-field,"account.tax.template,refund_base_sign",0,Refund Base Sign,Vorzeichen für Nettobeträge in Gutschriften,0
-field,"account.tax.template,refund_tax_code",0,Refund Tax Code,Code für Steuern in Gutschriften,0
-field,"account.tax.template,refund_tax_sign",0,Refund Tax Sign,Vorzeichen für Steuern in Gutschriften,0
 field,"account.tax.template,sequence",0,Sequence,Sequenz,0
 field,"account.tax.template,type",0,Type,Typ,0
 field,"account.tax,type",0,Type,Typ,0
@@ -355,6 +355,9 @@ help,"account.move.line,second_currency",0,The second currency,Die Zweitwährung
 help,"account.move.print_general_journal.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.move,reference",0,Also known as Folio Number,Auch Folio Referenznummer genannt,0
 help,"account.tax,amount",0,In company's currency,In der Währung des Unternehmens,0
+help,"account.tax,credit_note_account",0,Keep empty to use the default credit_note account,Leer lassen für Standardkonto für Gutschriften,0
+help,"account.tax,credit_note_base_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
+help,"account.tax,credit_note_tax_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax,description",0,The name that will be used in reports,Der Name wird in Berichten verwendet,0
 help,"account.tax,invoice_account",0,Keep empty to use the default invoice account,"Leer lassen, wenn das Standardrechnungskonto zum Zug kommen soll",0
 help,"account.tax,invoice_base_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
@@ -362,7 +365,6 @@ help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax.open_chart_code.init,fiscalyear",0,Keep empty for all open fiscal year,Leer lassen für alle Geschäftsjahre,0
 help,"account.tax.open_chart_code.init,periods",0,Keep empty for all periods of all open fiscal year,Leer lassen für alle Buchungszeiträume aller geöffneten Geschäftsjahre,0
 help,"account.tax,percentage",0,In %,In %,0
-help,"account.tax,refund_account",0,Keep empty to use the default refund account,Leer lassen für Standardkonto für Gutschriften,0
 help,"account.tax,refund_base_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax,refund_tax_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax,sequence",0,Use to order the taxes,Wird für die Reihenfolge der Steuern verwendet,0
@@ -400,7 +402,7 @@ model,"account.journal.type,name",journal_type_expense,Expense,Aufwand,0
 model,"account.journal.type,name",journal_type_general,General,Allgemein,0
 model,"account.journal.type,name",journal_type_revenue,Revenue,Ertrag,0
 model,"account.journal.type,name",journal_type_situation,Situation,Saldenvortrag,0
-model,"account.tax.group,name",tax_group_none,None,Keine,0
+model,"account.tax.group,name",tax_group_none,None,Kein,0
 model,"account.tax.group,name",tax_group_vat,VAT,USt,0
 model,"ir.action,name",act_move_line_form,Account Move Lines,Buchungszeilen,0
 model,"ir.action,name",act_move_form,Account Moves,Buchungssätze Konten,0
@@ -504,15 +506,15 @@ model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Offene Post
 odt,account.account.aged_balance,0,Aged Balance for Customers,Fälligkeitsliste für Kunden,0
 odt,account.account.aged_balance,0,Aged Balance for Suppliers,Fälligkeitsliste für Lieferanten,0
 odt,account.account.aged_balance,0,Aged Balance for Suppliers and Customers,Fälligkeitsliste für Lieferanten und Kunden,0
-odt,account.account.aged_balance,0,at,am,0
+odt,account.account.aged_balance,0,at,um,0
 odt,account.account.aged_balance,0,Company:,Unternehmen:,0
 odt,account.account.aged_balance,0,Currency:,Währung:,0
 odt,account.account.aged_balance,0,Date:,Datum:,0
 odt,account.account.aged_balance,0,Party,Partei,0
 odt,account.account.aged_balance,0,Total,Gesamt,0
-odt,account.account.general_ledger,0,at,Bedingung,0
+odt,account.account.general_ledger,0,at,um,0
 odt,account.account.general_ledger,0,Balance,Bilanz,0
-odt,account.account.general_ledger,0,Code,Code,0
+odt,account.account.general_ledger,0,Code,Kennziffer,0
 odt,account.account.general_ledger,0,Company:,Unternehmen:,0
 odt,account.account.general_ledger,0,Credit,Haben,0
 odt,account.account.general_ledger,0,Currency:,Währung:,0
@@ -525,7 +527,7 @@ odt,account.account.general_ledger,0,Name,Name,0
 odt,account.account.general_ledger,0,State,Status,0
 odt,account.account.general_ledger,0,To Period:,Bis Buchungszeitraum:,0
 odt,account.account.general_ledger,0,Total,Gesamt,0
-odt,account.account.third_party_balance,0,at,Bedingung,0
+odt,account.account.third_party_balance,0,at,um,0
 odt,account.account.third_party_balance,0,Balance,Bilanz,0
 odt,account.account.third_party_balance,0,Company:,Unternehmen:,0
 odt,account.account.third_party_balance,0,Credit,Haben,0
@@ -536,7 +538,7 @@ odt,account.account.third_party_balance,0,Party,Partei,0
 odt,account.account.third_party_balance,0,Third Party Balance,Offene Posten,0
 odt,account.account.third_party_balance,0,Total,Gesamt,0
 odt,account.account.trial_balance,0,Account,Konto,0
-odt,account.account.trial_balance,0,at,am,0
+odt,account.account.trial_balance,0,at,um,0
 odt,account.account.trial_balance,0,Company:,Unternehmen:,0
 odt,account.account.trial_balance,0,Credit,Haben,0
 odt,account.account.trial_balance,0,Currency:,Währung:,0
@@ -547,7 +549,7 @@ odt,account.account.trial_balance,0,To Period:,Bis Buchungszeitraum:,0
 odt,account.account.trial_balance,0,Total,Gesamt,0
 odt,account.account.trial_balance,0,Trial Balance,Summen- und Saldenliste,0
 odt,account.move.general_journal,0,Account,Konto,0
-odt,account.move.general_journal,0,at,am,0
+odt,account.move.general_journal,0,at,um,0
 odt,account.move.general_journal,0,Company:,Unternehmen:,0
 odt,account.move.general_journal,0,Credit,Haben,0
 odt,account.move.general_journal,0,Currency:,Währung:,0
@@ -686,23 +688,23 @@ view,account.move.unreconcile_lines.init,0,"If you unreconcile lines, the workfl
 view,account.move.unreconcile_lines.init,0,Unreconcile,Abstimmung rückgängig machen,0
 view,account.period,0,Period,Buchungszeitraum,0
 view,account.period,0,Periods,Buchungszeiträume,0
-view,account.tax,0,Code,Codes,0
+view,account.tax,0,Code,Kennziffern,0
+view,account.tax,0,Credit Note,Gutschrift,0
 view,account.tax,0,General Information,Allgemein,0
 view,account.tax,0,Invoice,Rechnung,0
-view,account.tax,0,Refund,Gutschrift,0
 view,account.tax,0,Tax,Steuer,0
 view,account.tax,0,Taxes,Steuern,0
-view,account.tax.code,0,Tax Code,Code Steuer,0
+view,account.tax.code,0,Tax Code,Steuerkennziffer,0
 view,account.tax.code,0,Tax Codes,Steuerkennziffern,0
 view,account.tax.code.template,0,Tax Codes Templates,Vorlagen für Steuerkennziffern,0
-view,account.tax.code.template,0,Tax Code Template,Code Steuervorlage,0
+view,account.tax.code.template,0,Tax Code Template,Vorlage für Steuerkennziffern,0
 view,account.tax.line,0,Account Tax Line,Steuerzeile Konto,0
 view,account.tax.line,0,Account Tax Lines,Steuerzeilen Konto,0
 view,account.tax.open_chart_code.init,0,Open Chart Of Tax Code,Tabelle Steuerkennziffern öffnen,0
-view,account.tax.template,0,Code,Code,0
+view,account.tax.template,0,Code,Kennziffer,0
+view,account.tax.template,0,Credit Note,Gutschrift,0
 view,account.tax.template,0,General Information,Allgemein,0
 view,account.tax.template,0,Invoice,Rechnung,0
-view,account.tax.template,0,Refund,Gutschrift,0
 view,account.tax.template,0,Taxes,Steuern,0
 view,account.tax.template,0,Taxes Templates,Steuervorlagen,0
 view,account.tax.template,0,Tax Template,Steuervorlage,0
