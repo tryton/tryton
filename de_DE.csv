@@ -8,18 +8,18 @@ field,"currency.currency,create_date",0,Creation date,Erstellungsdatum,0
 field,"currency.currency,create_uid",0,Creation user,Ersteller,0
 field,"currency.currency,digits",0,Diplay Digits,Angezeigte Stellen,0
 field,"currency.currency,id",0,ID,ID,0
-field,"currency.currency,mon_decimal_point",0,mon_decimal_point,Dezimalpunkt Währung,0
-field,"currency.currency,mon_grouping",0,mon_grouping,Gruppierung Währung,0
-field,"currency.currency,mon_thousands_sep",0,mon_thousands_sep,Tausendertrennzeichen Währung,0
+field,"currency.currency,mon_decimal_point",0,Decimal Separator,Dezimalpunkt Währung,0
+field,"currency.currency,mon_grouping",0,Grouping,Gruppierung Währung,0
+field,"currency.currency,mon_thousands_sep",0,Thousands Separator,Tausendertrennzeichen Währung,0
 field,"currency.currency,name",0,Name,Name,0
-field,"currency.currency,n_cs_precedes",0,n_cs_precedes,Negativer Wert: Name führend,0
-field,"currency.currency,negative_sign",0,negative_sign,Negatives Vorzeichen,0
-field,"currency.currency,n_sep_by_space",0,n_sep_by_space,Negativer Wert: durch Leerzeichen getrennt,0
-field,"currency.currency,n_sign_posn",0,n_sign_posn,Position negatives Vorzeichen,0
-field,"currency.currency,p_cs_precedes",0,p_cs_precedes,Positiver Wert: Name führend,0
-field,"currency.currency,positive_sign",0,positive_sign,Positives Vorzeichen,0
-field,"currency.currency,p_sep_by_space",0,p_sep_by_space,Positiver Wert: durch Leerzeichen getrennt,0
-field,"currency.currency,p_sign_posn",0,p_sign_posn,Position positives Vorzeichen,0
+field,"currency.currency,n_cs_precedes",0,Negative Sign Precedes,Negativer Wert: Name führend,0
+field,"currency.currency,negative_sign",0,Negative Sign,Negatives Vorzeichen,0
+field,"currency.currency,n_sep_by_space",0,Negative Sign Separate by Space,Negativer Wert: durch Leerzeichen getrennt,0
+field,"currency.currency,n_sign_posn",0,Negative Sign Position,Position negatives Vorzeichen,0
+field,"currency.currency,p_cs_precedes",0,Positive Sign Precedes,Positiver Wert: Name führend,0
+field,"currency.currency,positive_sign",0,Positive Sign,Positives Vorzeichen,0
+field,"currency.currency,p_sep_by_space",0,Positive Sign Separate by Space,Positiver Wert: durch Leerzeichen getrennt,0
+field,"currency.currency,p_sign_posn",0,Positive Sign Position,Position positives Vorzeichen,0
 field,"currency.currency,rate",0,Current rate,Aktueller Kurs,0
 field,"currency.currency.rate,create_date",0,Creation date,Erstellungsdatum,0
 field,"currency.currency.rate,create_uid",0,Creation user,Ersteller,0
