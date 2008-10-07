@@ -19,5 +19,6 @@
         'purchase_request.xml',
     ],
     'translation': [
+        'de_DE.csv',
     ]
 }
