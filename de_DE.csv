@@ -108,7 +108,7 @@ model,"product.uom,name",uom_square_foot,Square foot,Quadratfuß,0
 model,"product.uom,name",uom_square_inch,Square inch,Quadratzoll,0
 model,"product.uom,name",uom_square_meter,Square meter,Quadratmeter,0
 model,"product.uom,name",uom_square_yard,Square yard,Quadratyard(s),0
-model,"product.uom,name",uom_unit,Unit,Stück(e),0
+model,"product.uom,name",uom_unit,Unit,Stück,0
 model,"product.uom,name",uom_work_day,Work Day,Arbeitstag(e),0
 model,"product.uom,name",uom_yard,Yard,Yard(s),0
 model,"product.uom,symbol",uom_are,a,a,0
