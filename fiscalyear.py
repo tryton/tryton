@@ -110,6 +110,16 @@ class FiscalYear(OSV):
         return super(FiscalYear, self).write(cursor, user, ids, vals,
                 context=context)
 
+    def delete(self, cursor, user, ids, context=None):
+        period_obj = self.pool.get('account.period')
+
+        period_ids = []
+        for fiscalyear in self.browse(cursor, user, ids, context=context):
+            period_ids.extend([x.id for x in fiscalyear.periods])
+        period_obj.delete(cursor, user, period_ids, context=context)
+        return super(FiscalYear, self).delete(cursor, user, ids,
+                context=context)
+
     def create_period(self, cursor, user, ids, context=None, interval=1):
         '''
         Create periods for the fiscal years with month interval
