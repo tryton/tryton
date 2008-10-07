@@ -17,16 +17,6 @@ STATES = {
     'readonly': "active == False",
 }
 
-def mult_add(a, b):
-    '''
-    Sum each digits of the multiplication of a and b.
-    '''
-    mult = a * b
-    res = 0
-    for i in range(len(str(mult))):
-        res += int(str(mult)[i])
-    return res
-
 
 class PartyType(OSV):
     "Party Type"
