@@ -37,12 +37,12 @@ field,"sale.sale,invoices_ignored",0,Invoices Ignored,Ignorierte Rechnungen,0
 field,"sale.sale,invoice_state",0,Invoice State,Rechnungsstatus,0
 field,"sale.sale,lines",0,Lines,Positionen,0
 field,"sale.sale,moves",0,Moves,Bewegungen,0
-field,"sale.sale,packing_address",0,Packing Address,Versandadresse,0
-field,"sale.sale,packing_done",0,Packing Done,Verpackung erledigt,0
-field,"sale.sale,packing_exception",0,Packings Exception,Verpackungsvorbehalt,0
-field,"sale.sale,packing_method",0,Packing Method,Packmethode,0
-field,"sale.sale,packings",0,Packings,Verpackungen,0
-field,"sale.sale,packing_state",0,Packing State,Packstatus,0
+field,"sale.sale,packing_address",0,Packing Address,Lieferadresse,0
+field,"sale.sale,packing_done",0,Packing Done,Lieferschein erledigt,0
+field,"sale.sale,packing_exception",0,Packings Exception,Lieferungsvorbehalt,0
+field,"sale.sale,packing_method",0,Packing Method,Liefermethode,0
+field,"sale.sale,packings",0,Packings,Lieferscheine,0
+field,"sale.sale,packing_state",0,Packing State,Lieferstatus,0
 field,"sale.sale,party",0,Party,Partei,0
 field,"sale.sale,party_lang",0,Party Language,Sprache Partei,0
 field,"sale.sale,payment_term",0,Payment Term,Zahlungsbedingung,0
@@ -55,21 +55,37 @@ field,"sale.sale,untaxed_amount",0,Untaxed,Netto,0
 field,"sale.sale,warehouse",0,Warehouse,Lager,0
 field,"stock.move,sale",0,Sale,Verkauf,0
 field,"stock.move,sale_line",0,unknown,unbekannt,0
-model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Bestätigte Verkäufe,0
+model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Aufträge (Verkäufe),0
 model,"ir.action,name",act_sale_form_draft,Draft Sales,Entwürfe (Verkäufe),0
 model,"ir.action,name",act_sale_form_quotation,Quotation Sales,Angebote (Verkäufe),0
 model,"ir.action,name",report_sale,Sale,Verkauf,0
 model,"ir.action,name",act_sale_form,Sales,Verkäufe,0
-model,"ir.ui.menu,name",menu_sale_form_confirmed,Confirmed Sales,Bestätigte Verkäufe,0
+model,"ir.ui.menu,name",menu_sale_form_confirmed,Confirmed Sales,Aufträge (Verkäufe),0
 model,"ir.ui.menu,name",menu_sale_form_draft,Draft Sales,Entwürfe (Verkäufe),0
 model,"ir.ui.menu,name",menu_sale_form_quotation,Quotation Sales,Angebote (Verkäufe),0
 model,"ir.ui.menu,name",menu_sale,Sale Management,Verkauf,0
 model,"ir.ui.menu,name",menu_sale_form,Sales,Verkauf,0
+odt,sale.sale,0,Amount,Betrag,0
+odt,sale.sale,0,Date:,Datum:,0
+odt,sale.sale,0,Description,Bezeichnung,0
+odt,sale.sale,0,Description:,Bezeichnung:,0
+odt,sale.sale,0,Draft Sale Order,Auftragsentwurf,0
+odt,sale.sale,0,Email:,E-Mail:,0
+odt,sale.sale,0,Phone:,Telefon:,0
+odt,sale.sale,0,Quantity,Menge,0
+odt,sale.sale,0,Quotation N°:,Angebot Nr.:,0
+odt,sale.sale,0,Sale Order N°:,Verkaufsauftrag Nr.:,0
+odt,sale.sale,0,Taxes,Steuern,0
+odt,sale.sale,0,Taxes:,Steuern:,0
+odt,sale.sale,0,Total:,Gesamt:,0
+odt,sale.sale,0,Total (excl. taxes):,Netto:,0
+odt,sale.sale,0,Unit Price,Einzelpreis,0
+odt,sale.sale,0,VAT:,USt:,0
 selection,"sale.line,type",0,Line,Position,0
 selection,"sale.line,type",0,Subtotal,Zwischensumme,0
 selection,"sale.line,type",0,Title,Überschrift,0
 selection,"sale.sale,invoice_method",0,Manual,Manuell,0
-selection,"sale.sale,invoice_method",0,On Order Confirmed,Bei Auftragsbestätigung,0
+selection,"sale.sale,invoice_method",0,On Order Confirmed,Bei Beauftragung,0
 selection,"sale.sale,invoice_method",0,On Packing Sent,Bei Versand,0
 selection,"sale.sale,invoice_state",0,Exception,Vorbehalt,0
 selection,"sale.sale,invoice_state",0,None,Kein,0
@@ -77,13 +93,13 @@ selection,"sale.sale,invoice_state",0,Paid,Bezahlt,0
 selection,"sale.sale,invoice_state",0,Waiting,Wartend,0
 selection,"sale.sale,packing_method",0,Manual,Manuell,0
 selection,"sale.sale,packing_method",0,On Invoice Paid,Bei Bezahlung,0
-selection,"sale.sale,packing_method",0,On Order Confirmed,Bei Auftragsbestätigung,0
+selection,"sale.sale,packing_method",0,On Order Confirmed,Bei Beauftragung,0
 selection,"sale.sale,packing_state",0,Exception,Vorbehalt,0
 selection,"sale.sale,packing_state",0,None,Kein,0
 selection,"sale.sale,packing_state",0,Sent,Gesendet,0
 selection,"sale.sale,packing_state",0,Waiting,Wartend,0
 selection,"sale.sale,state",0,Cancel,Abbrechen,0
-selection,"sale.sale,state",0,Confirmed,Bestätigt,0
+selection,"sale.sale,state",0,Confirmed,Beauftragt,0
 selection,"sale.sale,state",0,Done,Erledigt,0
 selection,"sale.sale,state",0,Draft,Entwurf,0
 selection,"sale.sale,state",0,Quotation,Angebot,0
@@ -91,14 +107,14 @@ view,product.product,0,Customers,Kunden,0
 view,sale.line,0,Sale Line,Position Verkauf,0
 view,sale.line,0,Sale Lines,Positionen Verkauf,0
 view,sale.sale,0,Cancel,Abbrechen,0
-view,sale.sale,0,Confirm,Bestätigen,0
+view,sale.sale,0,Confirm,Beauftragen,0
 view,sale.sale,0,Draft,Entwurf,0
 view,sale.sale,0,Ignore Invoice Exception,Rechnungsvorbehalt ignorieren,0
 view,sale.sale,0,Ignore Packing Exception,Verpackungsvorbehalt ignorieren,0
 view,sale.sale,0,Invoices,Rechnungen,0
 view,sale.sale,0,Lines,Positionen,0
 view,sale.sale,0,Other Info,Sonstiges,0
-view,sale.sale,0,Packings,Verpackungen,0
+view,sale.sale,0,Packings,Lieferscheine,0
 view,sale.sale,0,Quotation,Angebot,0
 view,sale.sale,0,Sale,Verkauf,0
 view,sale.sale,0,Sales,Verkäufe,0
