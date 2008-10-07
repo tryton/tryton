@@ -346,7 +346,6 @@ model,"relationship.country,name",eh,Western Sahara,Westsahara,0
 model,"relationship.country,name",ye,Yemen,Jemen,0
 model,"relationship.country,name",zm,Zambia,Sambia,0
 model,"relationship.country,name",zw,Zimbabwe,Zimbabwe,0
-selection,"relationship.party,vat_country",0,,,0
 selection,"relationship.party,vat_country",0,AT,AT,0
 selection,"relationship.party,vat_country",0,BE,BE,0
 selection,"relationship.party,vat_country",0,BG,BG,0
