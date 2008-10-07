@@ -1953,16 +1953,14 @@ class FiscalYear(OSV):
     def __init__(self):
         super(FiscalYear, self).__init__()
         self._constraints += [
-            ('check_invoice_sequences',
-                'Error! You must have different invoice sequence ' \
-                        'per fiscal year!', ['out_invoice_sequence',
-                            'in_invoice_sequence', 'out_credit_note_sequence',
-                            'in_credit_note_sequence']),
+            ('check_invoice_sequences', 'different_invoice_sequence'),
         ]
         self._error_messages.update({
             'change_invoice_sequence': 'You can not change ' \
                     'the invoice sequence if there is already ' \
                     'an invoice opened in the fiscalyear',
+            'different_invoice_sequence': 'You must have different ' \
+                    'invoice sequence per fiscal year!',
             })
 
     def check_invoice_sequences(self, cursor, user, ids):
