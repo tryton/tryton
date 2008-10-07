@@ -36,9 +36,9 @@ error,account.invoice.tax,0,"You can not modify tax from an invoice that is open
 error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung in der laufenden Periode eröffnet wurde.",0
 error,product.template,0,There is no account expense/revenue define on the product %s (%d),Es ist kein Aufwands-/Ertragskonto in Artikel %s (%d) angegeben,0
 field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Sequenz Gutschriften Lieferanten,0
-field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Lieferantenrechnungen,0
+field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Rechnungen Lieferanten,0
 field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
-field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Kundenrechnungen,0
+field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Rechnungen Kunden,0
 field,"account.invoice,account",0,Account,Konto,0
 field,"account.invoice,amount_to_pay",0,Amount to Pay,Zahlbarer Betrag,0
 field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Zahlbarer Betrag (heute),0
@@ -127,9 +127,9 @@ field,"account.invoice,type",0,Type,Typ,0
 field,"account.invoice,type_name",0,Type,Typ,0
 field,"account.invoice,untaxed_amount",0,Untaxed,Netto,0
 field,"account.period,in_credit_note_sequence",0,Supplier Credit Note Sequence,Sequenz Gutschriften Lieferanten,0
-field,"account.period,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Lieferantenrechnungen,0
+field,"account.period,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Rechnungen Lieferanten,0
 field,"account.period,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
-field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Kundenrechnungen,0
+field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Rechnungen Kunden,0
 field,"product.category,account_expense",0,Account Expense,Konto Aufwand,0
 field,"product.category,account_revenue",0,Account Revenue,Konto Ertrag,0
 field,"product.category,customer_taxes",0,Customer Taxes,Steuern Kunde,0
