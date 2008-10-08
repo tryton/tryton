@@ -241,10 +241,11 @@ class PurchaseRequest(OSV):
         :return: a tuple with the two dates
         """
         product_supplier_obj = self.pool.get('purchase.product_supplier')
+        date_obj = self.pool.get('ir.date')
 
         min_date = None
         max_date = None
-        today = datetime.date.today()
+        today = date_obj.today(cursor, user, context=context)
 
         for product_supplier in product.product_suppliers:
             supply_date, next_supply_date = product_supplier_obj.\
@@ -276,10 +277,11 @@ class PurchaseRequest(OSV):
         """
         uom_obj = self.pool.get('product.uom')
         product_supplier_obj = self.pool.get('purchase.product_supplier')
+        date_obj = self.pool.get('ir.date')
 
         supplier = None
         timedelta = datetime.timedelta.max
-        today = datetime.date.today()
+        today = date_obj.today(cursor, user, context=context)
         max_quantity = order_point and order_point.max_quantity or 0.0
         for product_supplier in product.product_suppliers:
             supply_date = product_supplier_obj.compute_supply_date(cursor, user,
@@ -428,6 +430,7 @@ class CreatePurchase(Wizard):
         purchase_obj = self.pool.get('purchase.purchase')
         product_obj = self.pool.get('product.product')
         line_obj = self.pool.get('purchase.line')
+        date_obj = self.pool.get('ir.date')
 
         form = data['form']
         if form.get('payment_term') and form.get('party') and \
@@ -458,7 +461,8 @@ class CreatePurchase(Wizard):
                 purchase = {
                     'company': request.company.id,
                     'party': request.party.id,
-                    'purchase_date': request.purchase_date or datetime.date.today(),
+                    'purchase_date': request.purchase_date or date_obj.today(
+                        cursor, user, context=context),
                     'payment_term': request.party.supplier_payment_term and \
                         request.party.supplier_payment_term.id or None,
                     'warehouse': request.warehouse.id,
