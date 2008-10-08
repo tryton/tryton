@@ -128,9 +128,9 @@
         <record model="ir.model.access" id="access_purchase_request">
             <field name="model" search="[('model', '=', 'stock.purchase_request')]"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
+            <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
+            <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_purchase_request_admin">
             <field name="model" search="[('model', '=', 'stock.purchase_request')]"/>
