@@ -448,6 +448,7 @@
         <record model="ir.action.wizard" id="act_open_tax_code">
             <field name="name">Open Tax Code</field>
             <field name="wiz_name">account.tax.open_code</field>
+            <field name="model">account.tax.code</field>
         </record>
         <record model="ir.action.keyword" id="act_open_tax_code_keyword">
             <field name="keyword">tree_open</field>

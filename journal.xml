@@ -340,6 +340,7 @@
         <record model="ir.action.wizard" id="act_close_journal_period">
             <field name="name">Close Journals - Periods</field>
             <field name="wiz_name">account.journal.close_period</field>
+            <field name="model">account.journal.period</field>
         </record>
         <record model="ir.action.keyword" id="act_close_journal_period_keyword">
             <field name="keyword">form_action</field>
@@ -350,6 +351,7 @@
         <record model="ir.action.wizard" id="act_reopen_journal_period">
             <field name="name">Re-Open Journals - Periods</field>
             <field name="wiz_name">account.journal.reopen_period</field>
+            <field name="model">account.journal.period</field>
         </record>
         <record model="ir.action.keyword" id="act_reopen_journal_period_keyword">
             <field name="keyword">form_action</field>

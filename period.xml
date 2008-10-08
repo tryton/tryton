@@ -66,6 +66,7 @@
         <record model="ir.action.wizard" id="act_close_period">
             <field name="name">Close Periods</field>
             <field name="wiz_name">account.period.close_period</field>
+            <field name="model">account.period</field>
         </record>
         <record model="ir.action.keyword" id="act_close_period_keyword">
             <field name="keyword">form_action</field>
@@ -75,6 +76,7 @@
         <record model="ir.action.wizard" id="act_reopen_period">
             <field name="name">Re-Open Periods</field>
             <field name="wiz_name">account.period.reopen_period</field>
+            <field name="model">account.period</field>
         </record>
         <record model="ir.action.keyword" id="act_reopen_period_keyword">
             <field name="keyword">form_action</field>
