@@ -1,9 +1,9 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level
+#of this repository contains the full copyright notices and license terms.
 "Timesheet Line"
 
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
-import datetime
 
 
 class Line(OSV):
@@ -48,11 +48,13 @@ class Line(OSV):
         return False
 
     def default_date(self, cursor, user, context=None):
+        date_obj = self.pool.get('ir.date')
+
         if context is None:
             context = {}
         if context.get('date'):
             return context['date']
-        return datetime.date.today()
+        return date_obj.today(cursor, user, context=context)
 
     def view_header_get(self, cursor, user, value, view_type='form',
             context=None):
