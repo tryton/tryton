@@ -1251,7 +1251,8 @@ class OpenBalanceSheetInit(WizardOSV):
     posted = fields.Boolean('Posted Move', help='Only posted move')
 
     def default_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
     def default_company(self, cursor, user, context=None):
         if context is None:
@@ -1678,6 +1679,7 @@ class ThirdPartyBalance(Report):
         party_obj = self.pool.get('relationship.party')
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
+        date_obj = self.pool.get('ir.date')
         context = context.copy()
 
         company = company_obj.browse(cursor, user,
@@ -1705,7 +1707,8 @@ class ThirdPartyBalance(Report):
                          'AND ' + line_query + ' ' \
                          + posted_clause + \
                        'GROUP BY l.party',
-                       (datas['form']['company'], datetime.date.today()))
+                       (datas['form']['company'], date_obj.today(cursor, user,
+                           context=context)))
 
         res = cursor.fetchall()
         party_name = dict(party_obj.name_get(
@@ -1830,6 +1833,8 @@ class AgedBalance(Report):
         party_obj = self.pool.get('relationship.party')
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
+        date_obj = self.pool.get('ir.date')
+
         company = company_obj.browse(cursor, user,
                 datas['form']['company'], context=context)
         context['digits'] = company.currency.digits
@@ -1855,15 +1860,15 @@ class AgedBalance(Report):
             if position == 0:
                 term_query = '(l.maturity_date <= %s '\
                     'OR l.maturity_date IS NULL) '
-                term_args = (datetime.date.today() + \
+                term_args = (date_obj.today(cursor, user, context=context) + \
                     datetime.timedelta(days=term*coef),)
             else:
                 term_query = '(l.maturity_date <= %s '\
                     'AND l.maturity_date >= %s) '
                 term_args = (
-                    datetime.date.today() + \
+                    date_obj.today(cursor, user, context=context) + \
                         datetime.timedelta(days=term*coef),
-                    datetime.date.today() + \
+                    date_obj.today(cursor, user, context=context) + \
                         datetime.timedelta(days=terms[position-1]*coef),
                     )
 

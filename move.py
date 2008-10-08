@@ -85,7 +85,8 @@ class Move(OSV):
         return 'draft'
 
     def default_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
     def check_centralisation(self, cursor, user, ids):
         for move in self.browse(cursor, user, ids):
@@ -252,6 +253,7 @@ class Move(OSV):
     def post(self, cursor, user, ids, context=None):
         currency_obj = self.pool.get('currency.currency')
         sequence_obj = self.pool.get('ir.sequence')
+        date_obj = self.pool.get('ir.date')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -276,7 +278,7 @@ class Move(OSV):
             self.write(cursor, user, move.id, {
                 'reference': reference,
                 'state': 'posted',
-                'post_date': datetime.date.today(),
+                'post_date': date_obj.today(cursor, user, context=context),
                 }, context=context)
         return
 
@@ -467,10 +469,12 @@ class Line(OSV):
         or the starting date of the period
         or today
         '''
+        period_obj = self.pool.get('account.period')
+        date_obj = self.pool.get('ir.date')
+
         if context is None:
             context = {}
-        period_obj = self.pool.get('account.period')
-        res = datetime.date.today()
+        res = date_obj.today(cursor, user, context=context)
         if context.get('journal') and context.get('period'):
             line_ids = self.search(cursor, user, [
                 ('journal', '=', context['journal']),
@@ -1206,11 +1210,12 @@ class Line(OSV):
         currency_obj = self.pool.get('currency.currency')
         reconciliation_obj = self.pool.get('account.move.reconciliation')
         period_obj = self.pool.get('account.period')
+        date_obj = self.pool.get('ir.date')
 
         ids = ids[:]
         if journal_id and account_id:
             if not date:
-                date = datetime.date.today()
+                date = date_obj.today(cursor, user, context=context)
             account = None
             amount = Decimal('0.0')
             for line in self.browse(cursor, user, ids, context=context):
@@ -1442,7 +1447,8 @@ class ReconcileLinesWriteOff(WizardOSV):
             domain=[('kind', '!=', 'view')])
 
     def default_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
 ReconcileLinesWriteOff()
 
@@ -1633,6 +1639,7 @@ class Party(OSV):
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
         user_obj = self.pool.get('res.user')
+        date_obj = self.pool.get('ir.date')
 
         if context is None:
             context = {}
@@ -1666,7 +1673,7 @@ class Party(OSV):
             code = name[:-6]
             today_query = 'AND (l.maturity_date <= %s ' \
                     'OR l.maturity_date IS NULL) '
-            today_value = [datetime.date.today()]
+            today_value = [date_obj.today(cursor, user, context=context)]
 
         line_query, _ = move_line_obj.query_get(cursor, user_id, context=context)
 
@@ -1696,6 +1703,7 @@ class Party(OSV):
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
         user_obj = self.pool.get('res.user')
+        date_obj = self.pool.get('ir.date')
 
         if context is None:
             context = {}
@@ -1726,7 +1734,7 @@ class Party(OSV):
             code = name[:-6]
             today_query = 'AND (l.maturity_date <= %s ' \
                     'OR l.maturity_date IS NULL) '
-            today_value = [datetime.date.today()]
+            today_value = [date_obj.today(cursor, user, context=context)]
 
         line_query, _ = move_line_obj.query_get(cursor, user_id, context=context)
 
@@ -1761,10 +1769,13 @@ class PrintGeneralJournalInit(WizardOSV):
     posted = fields.Boolean('Posted Move', help='Only posted move')
 
     def default_from_date(self, cursor, user, context=None):
-        return datetime.date(datetime.date.today().year, 1, 1)
+        date_obj = self.pool.get('ir.date')
+        return datetime.date(
+                date_obj.today(cursor, user, context=context).year, 1, 1)
 
     def default_to_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
     def default_company(self, cursor, user, context=None):
         if context is None:

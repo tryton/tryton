@@ -4,8 +4,6 @@
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 import mx.DateTime
-import datetime
-from decimal import Decimal
 
 STATES = {
     'readonly': "state == 'close'",
@@ -166,8 +164,10 @@ class FiscalYear(OSV):
         If exception is set the function will raise an exception
             if any fiscal year is found.
         '''
+        date_obj = self.pool.get('ir.date')
+
         if not date:
-            date = datetime.date.today()
+            date = date_obj.today(cursor, user, context=context)
         ids = self.search(cursor, user, [
             ('start_date', '<=', date),
             ('end_date', '>=', date),
