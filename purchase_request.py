@@ -440,8 +440,8 @@ class CreatePurchase(Wizard):
                 continue
             if not request.party:
                 return {'product': request.product.id,'company': request.company.id}
-        # probably somebody edited records in the meanwhile TODO: better msg
-        raise Exception("Unexpected error")
+
+        return {'product': request.product.id,'company': request.company.id}
 
     def _set_default_term(self, cursor, user, data, context=None):
 
@@ -453,7 +453,7 @@ class CreatePurchase(Wizard):
             if not request.party.supplier_payment_term:
                 return {'party': request.party.id,'company': request.company.id}
 
-        raise Exception("Unexpected error")
+        return {'party': request.party.id,'company': request.company.id}
 
     def _create_purchase(self, cursor, user, data, context=None):
         request_obj = self.pool.get('stock.purchase_request')
