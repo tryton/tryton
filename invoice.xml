@@ -154,6 +154,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="wizard_pay_invoice">
             <field name="name">Pay Invoice</field>
             <field name="wiz_name">account.invoice.pay_invoice</field>
+            <field name="model">account.invoice</field>
         </record>
 
         <record model="ir.ui.view" id="invoice_view_form">
@@ -802,6 +803,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="print_invoice_report">
             <field name="name">Invoice</field>
             <field name="wiz_name">account.invoice.print_invoice_report</field>
+            <field name="model">account.invoice</field>
         </record>
         <record model="ir.action.keyword" id="print_invoice_report_keyword">
             <field name="keyword">form_print</field>
@@ -826,6 +828,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="credit_invoice">
             <field name="name">Credit</field>
             <field name="wiz_name">account.invoice.credit_invoice</field>
+            <field name="model">account.invoice</field>
         </record>
         <record model="ir.action.keyword" id="credit_invoice_keyword">
             <field name="keyword">form_action</field>
