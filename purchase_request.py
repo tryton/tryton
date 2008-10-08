@@ -372,14 +372,22 @@ class PurchaseRequest(OSV):
 PurchaseRequest()
 
 
-class CreatePurchaseAsk(WizardOSV):
-    _name = 'stock.purchase_request.create_purchase.ask'
+class CreatePurchaseAskTerm(WizardOSV):
+    _name = 'stock.purchase_request.create_purchase.ask_term'
     party = fields.Many2One('relationship.party', 'Supplier', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
     payment_term = fields.Many2One(
         'account.invoice.payment_term', 'Payment Term', required=True)
 
-CreatePurchaseAsk()
+CreatePurchaseAskTerm()
+
+class CreatePurchaseAskParty(WizardOSV):
+    _name = 'stock.purchase_request.create_purchase.ask_party'
+    product = fields.Many2One('product.product', 'Product', readonly=True)
+    company = fields.Many2One('company.company', 'Company', readonly=True)
+    party = fields.Many2One('relationship.party', 'Supplier', required=True)
+
+CreatePurchaseAskParty()
 
 class CreatePurchase(Wizard):
     'Create Purchase'
@@ -395,11 +403,23 @@ class CreatePurchase(Wizard):
             },
 
 
-        'ask_user': {
-            'actions': ['_set_default'],
+        'ask_user_party': {
+            'actions': ['_set_default_party'],
             'result': {
                 'type': 'form',
-                'object': 'stock.purchase_request.create_purchase.ask',
+                'object': 'stock.purchase_request.create_purchase.ask_party',
+                'state': [
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('init', 'Continue', 'tryton-ok', True),
+                    ],
+                },
+            },
+
+        'ask_user_term': {
+            'actions': ['_set_default_term'],
+            'result': {
+                'type': 'form',
+                'object': 'stock.purchase_request.create_purchase.ask_term',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('init', 'Continue', 'tryton-ok', True),
@@ -409,7 +429,19 @@ class CreatePurchase(Wizard):
 
         }
 
-    def _set_default(self, cursor, user, data, context=None):
+    def _set_default_party(self, cursor, user, data, context=None):
+
+        request_obj = self.pool.get('stock.purchase_request')
+        requests = request_obj.browse(cursor, user, data['ids'], context=context)
+        for request in requests:
+            if request.purchase_line:
+                continue
+            if not request.party:
+                return {'product': request.product.id,'company': request.company.id}
+        # probably somebody edited records in the meanwhile TODO: better msg
+        raise Exception("Unexpected error")
+
+    def _set_default_term(self, cursor, user, data, context=None):
 
         request_obj = self.pool.get('stock.purchase_request')
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
@@ -429,7 +461,24 @@ class CreatePurchase(Wizard):
         line_obj = self.pool.get('purchase.line')
 
         form = data['form']
-        if form.get('payment_term') and form.get('party') and \
+        if form.get('product') and form.get('party') and \
+                form.get('company'):
+            product_obj.write(
+                cursor, user, form['product'],
+                {'product_suppliers': [('create', {'product': form['product'],
+                                                'party': form['party'],
+                                                'company': form['company'],})
+                                       ],
+                 },
+                context=context)
+            for request in request_obj.browse(cursor, user, data['ids'],
+                                              context=context):
+                if request.product.id == form['product'] and not request.party:
+                    request_obj.write(cursor, user, request.id,
+                                      {'party': form['party']},
+                                      context=context)
+
+        elif form.get('payment_term') and form.get('party') and \
                 form.get('company'):
             local_context = context and context.copy() or {}
             local_context['company'] = form['company']
@@ -438,28 +487,32 @@ class CreatePurchase(Wizard):
                 {'supplier_payment_term': form['payment_term']}, context=local_context)
 
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
-        # first loop to check payment terms
-        for request in requests:
-            if (not request.party) or request.purchase_line:
-                continue
-            if not request.party.supplier_payment_term:
-                return 'ask_user'
-
         purchases = {}
         # collect data
         for request in requests:
-            if (not request.party) or request.purchase_line:
+            if request.purchase_line:
                 continue
-            if not request.party.supplier_payment_term:
-                return 'ask_user'
+
+            if request.party:
+                party = request.party
+            elif request.product.product_suppliers:
+                party = request.product.product_suppliers[0].party
+                request_obj.write(cursor, user, request.id, {'party': party.id},
+                                  context=context)
+            else:
+                return 'ask_user_party'
+
+            if not party.supplier_payment_term:
+                return 'ask_user_term'
+
             key = (request.party.id, request.company.id, request.warehouse.id)
             if key not in purchases:
+
                 purchase = {
                     'company': request.company.id,
-                    'party': request.party.id,
+                    'party': party.id,
                     'purchase_date': request.purchase_date or datetime.date.today(),
-                    'payment_term': request.party.supplier_payment_term and \
-                        request.party.supplier_payment_term.id or None,
+                    'payment_term': party.supplier_payment_term.id,
                     'warehouse': request.warehouse.id,
                     'currency': request.company.currency.id,
                     'lines': [],

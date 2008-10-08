@@ -74,18 +74,34 @@
             action="act_purchase_request_form" id="menu_purchase_request_form"/>
 
 
-        <record model="ir.ui.view" id="create_purchase.ask_form">
-            <field name="model">stock.purchase_request.create_purchase.ask</field>
+        <record model="ir.ui.view" id="create_purchase.ask_form_term">
+            <field name="model">stock.purchase_request.create_purchase.ask_term</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Create Purchase Request: Missing Payment Term" col="2" cursor="payment_term">
+                <form string="Create Purchase: Missing Payment Term" col="2" cursor="payment_term">
                     <label name="party"/>
                     <field name="party"/>
                     <label name="company"/>
                     <field name="company"/>
                     <label name="payment_term"/>
                     <field name="payment_term"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="create_purchase.ask_form_party">
+            <field name="model">stock.purchase_request.create_purchase.ask_party</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Create Purchase: Missing Supplier" col="2" cursor="party">
+                    <label name="product"/>
+                    <field name="product"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="party"/>
+                    <field name="party"/>
                 </form>
                 ]]>
             </field>
