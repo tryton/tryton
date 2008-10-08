@@ -56,9 +56,11 @@ class PaymentTerm(OSV):
         delay_obj = self.pool.get(
                 'account.invoice.payment_term.line.delay')
         currency_obj = self.pool.get('currency.currency')
+        date_obj = self.pool.get('ir.date')
+
         res = []
         if date is None:
-            date = datetime.date.today()
+            date = date_obj.today(cursor, user, context=context)
         remainder = amount
         for line in payment_term.lines:
             value = type_obj.get_value(cursor, user, line, remainder, currency,
@@ -347,7 +349,8 @@ class Invoice(OSV):
         return 'draft'
 
     def default_invoice_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
     def default_currency(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
@@ -639,6 +642,8 @@ class Invoice(OSV):
     def get_amount_to_pay(self, cursor, user, ids, name, arg,
             context=None):
         currency_obj = self.pool.get('currency.currency')
+        date_obj = self.pool.get('ir.date')
+
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
             amount = Decimal('0.0')
@@ -647,7 +652,8 @@ class Invoice(OSV):
                 if line.reconciliation:
                     continue
                 if name == 'amount_to_pay_today' \
-                        and line.maturity_date > datetime.date.today():
+                        and line.maturity_date > date_obj.today(cursor, user,
+                                context=context):
                     continue
                 if line.second_currency.id == invoice.currency.id:
                     if line.debit - line.credit > Decimal('0.0'):
@@ -994,6 +1000,7 @@ class Invoice(OSV):
     def copy(self, cursor, user, invoice_id, default=None, context=None):
         line_obj = self.pool.get('account.invoice.line')
         tax_obj = self.pool.get('account.invoice.tax')
+        date_obj = self.pool.get('ir.date')
 
         if default is None:
             default = {}
@@ -1006,7 +1013,7 @@ class Invoice(OSV):
         default['payment_lines'] = False
         default['lines'] = False
         default['taxes'] = False
-        default['date'] = datetime.date.today()
+        default['date'] = date_obj.today(cursor, user, context=context)
         default['lines_to_pay'] = False
         new_id = super(Invoice, self).copy(cursor, user, invoice_id,
                 default=default, context=context)
@@ -2104,7 +2111,8 @@ class PayInvoiceInit(WizardOSV):
     date = fields.Date('Date', required=True)
 
     def default_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
 PayInvoiceInit()
 
