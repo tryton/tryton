@@ -73,8 +73,7 @@
         <menuitem parent="purchase.menu_purchase" sequence="20"
             action="act_purchase_request_form" id="menu_purchase_request_form"/>
 
-
-        <record model="ir.ui.view" id="create_purchase.ask_form_term">
+        <record model="ir.ui.view" id="purchase_request_create_purchase_ask_view_form">
             <field name="model">stock.purchase_request.create_purchase.ask_term</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
