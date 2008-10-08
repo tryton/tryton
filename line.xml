@@ -76,6 +76,7 @@
         <record model="ir.action.wizard" id="act_open_account">
             <field name="name">Open Account</field>
             <field name="wiz_name">analytic_account.line.open_account</field>
+            <field name="model">analytic_account.account</field>
         </record>
         <record model="ir.action.keyword" id="act_open_account_keyword">
             <field name="keyword">tree_open</field>
