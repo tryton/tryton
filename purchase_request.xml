@@ -93,6 +93,7 @@
         <record model="ir.action.wizard" id="wizard_create_purchase">
             <field name="name">Create Purchase</field>
             <field name="wiz_name">stock.purchase_request.create_purchase</field>
+            <field name="model">stock.purchase_request</field>
         </record>
         <record model="ir.action.keyword" id="create_purchase_keyword">
             <field name="keyword">form_action</field>
