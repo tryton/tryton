@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level
+#of this repository contains the full copyright notices and license terms.
 "Purchase"
 
 from trytond.osv import fields, OSV
@@ -129,7 +130,8 @@ class Purchase(OSV):
         return 'draft'
 
     def default_purchase_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
     def default_currency(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
@@ -611,8 +613,10 @@ class Purchase(OSV):
         return True
 
     def set_purchase_date(self, cursor, user, purchase_id, context=None):
+        date_obj = self.pool.get('ir.date')
+
         self.write(cursor, user, purchase_id, {
-            'purchase_date': datetime.date.today(),
+            'purchase_date': date_obj.today(cursor, user, context=context),
             }, context=context)
         return True
 
@@ -1258,8 +1262,10 @@ class ProductSupplier(OSV):
         :param context: the context
         :return: a tuple with the supply date and the next one
         '''
+        date_obj = self.pool.get('ir.date')
+
         if not date:
-            date = datetime.date.today()
+            date = date_obj.today(cursor, user, context=context)
         next_date = date + datetime.timedelta(1)
         return (date + datetime.timedelta(product_supplier.delivery_time),
                 next_date + datetime.timedelta(product_supplier.delivery_time))
@@ -1276,8 +1282,10 @@ class ProductSupplier(OSV):
         :param context: the context
         :return: the purchase date
         '''
+        date_obj = self.pool.get('ir.date')
+
         if not product_supplier.delivery_time:
-            return datetime.date.today()
+            return date_obj.today(cursor, user, context=context)
         return date - datetime.timedelta(product_supplier.delivery_time)
 
 ProductSupplier()
