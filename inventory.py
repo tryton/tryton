@@ -1,8 +1,8 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level
+#of this repository contains the full copyright notices and license terms.
 'Inventory'
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard
-import datetime
 
 STATES = {
     'readonly': "state != 'open'",
@@ -54,7 +54,8 @@ class Inventory(OSV):
         return 'open'
 
     def default_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
     def default_company(self, cursor, user, context=None):
         if context.get('company'):
@@ -88,6 +89,8 @@ class Inventory(OSV):
     def _done(self, cursor, user, ids, context=None):
         product_obj = self.pool.get('product.product')
         move_obj = self.pool.get('stock.move')
+        date_obj = self.pool.get('ir.date')
+
         inventories = self.browse(cursor, user, ids, context=context)
         location_ids = []
         inv_by_loc = {}
@@ -118,7 +121,7 @@ class Inventory(OSV):
                 moves.append(move_id)
 
             self.write(cursor, user, ids, {
-                    'date': datetime.date.today(),
+                    'date': date_obj.today(cursor, user, context=context),
                     'moves': [('add', x) for x in moves],
                     }, context=context)
 

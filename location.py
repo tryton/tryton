@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level
+#of this repository contains the full copyright notices and license terms.
 "Wharehouse"
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
@@ -94,12 +95,14 @@ class Location(OSV):
 
     def get_quantity(self, cursor, user, ids, name, arg, context=None):
         product_obj = self.pool.get('product.product')
+        date_obj = self.pool.get('ir.date')
 
         if (not context) or (not context.get('product')):
             return dict([(i,0) for i in ids])
 
         if name != 'forecast_quantity' and context.get('stock_date_end'):
-            if context['stock_date_end'] != datetime.date.today():
+            if context['stock_date_end'] != date_obj.today(cursor, user,
+                    context=context):
                 context = context.copy()
                 del context['stock_date_end']
         pbl = product_obj.products_by_location(cursor, user, location_ids=ids,
@@ -155,7 +158,8 @@ class ChooseStockDateInit(WizardOSV):
             '* A date in the past will provide historical values.')
 
     def default_forecast_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
 ChooseStockDateInit()
 
