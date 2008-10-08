@@ -89,7 +89,7 @@
                 ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="create_purchase.ask_form_party">
+        <record model="ir.ui.view" id="purchase_request_create_purchase_ask_party">
             <field name="model">stock.purchase_request.create_purchase.ask_party</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
