@@ -73,19 +73,34 @@
         <menuitem parent="purchase.menu_purchase" sequence="20"
             action="act_purchase_request_form" id="menu_purchase_request_form"/>
 
-
         <record model="ir.ui.view" id="purchase_request_create_purchase_ask_view_form">
-            <field name="model">stock.purchase_request.create_purchase.ask</field>
+            <field name="model">stock.purchase_request.create_purchase.ask_term</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Create Purchase Request: Missing Payment Term" col="2" cursor="payment_term">
+                <form string="Create Purchase: Missing Payment Term" col="2" cursor="payment_term">
                     <label name="party"/>
                     <field name="party"/>
                     <label name="company"/>
                     <field name="company"/>
                     <label name="payment_term"/>
                     <field name="payment_term"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="create_purchase.ask_form_party">
+            <field name="model">stock.purchase_request.create_purchase.ask_party</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Create Purchase: Missing Supplier" col="2" cursor="party">
+                    <label name="product"/>
+                    <field name="product"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="party"/>
+                    <field name="party"/>
                 </form>
                 ]]>
             </field>
@@ -101,6 +116,20 @@
             <field name="action" ref="wizard_create_purchase"/>
         </record>
 
+        <record model="ir.action.act_window" id="act_purchase_form">
+            <field name="name">Purchases</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="view_type">form</field>
+            <field name="domain">[("id", "=", purchase)]</field>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_open_purchase_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.purchase_request,0</field>
+            <field name="action" ref="act_purchase_form"/>
+        </record>
+
+
         <record model="ir.rule.group" id="rule_group_purchase_request">
             <field name="model" search="[('model', '=', 'stock.purchase_request')]"/>
             <field name="global_p" eval="True"/>
@@ -115,9 +144,9 @@
         <record model="ir.model.access" id="access_purchase_request">
             <field name="model" search="[('model', '=', 'stock.purchase_request')]"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
+            <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
+            <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_purchase_request_admin">
             <field name="model" search="[('model', '=', 'stock.purchase_request')]"/>

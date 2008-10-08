@@ -17,8 +17,7 @@ class PurchaseRequest(OSV):
     quantity = fields.Float('Quantity', required=True)
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=True)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
-    supply_date = fields.Date(
-        'Expected Supply Date', readonly=True, required=True)
+    supply_date = fields.Date('Expected Supply Date', readonly=True)
     stock_level =  fields.Float('Stock at Supply Date', readonly=True)
     warehouse = fields.Many2One(
         'stock.location', "Warehouse", required=True,
@@ -193,7 +192,7 @@ class PurchaseRequest(OSV):
 
             existing_req.setdefault(
                 (request.product.id, request.warehouse.id),
-                []).append({'supply_date': request.supply_date,
+                []).append({'supply_date': request.supply_date or datetime.date.max,
                             'quantity': quantity,
                             'uom': uom}
                            )
@@ -350,7 +349,7 @@ class PurchaseRequest(OSV):
 
         current_date = min_date
         current_qty = min_date_qty
-        while current_date < max_date:
+        while (current_date < max_date) or (current_date == min_date):
             if current_qty < min_quantity:
                 if not res_date:
                     res_date = current_date
@@ -375,14 +374,22 @@ class PurchaseRequest(OSV):
 PurchaseRequest()
 
 
-class CreatePurchaseAsk(WizardOSV):
-    _name = 'stock.purchase_request.create_purchase.ask'
+class CreatePurchaseAskTerm(WizardOSV):
+    _name = 'stock.purchase_request.create_purchase.ask_term'
     party = fields.Many2One('relationship.party', 'Supplier', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
     payment_term = fields.Many2One(
         'account.invoice.payment_term', 'Payment Term', required=True)
 
-CreatePurchaseAsk()
+CreatePurchaseAskTerm()
+
+class CreatePurchaseAskParty(WizardOSV):
+    _name = 'stock.purchase_request.create_purchase.ask_party'
+    product = fields.Many2One('product.product', 'Product', readonly=True)
+    company = fields.Many2One('company.company', 'Company', readonly=True)
+    party = fields.Many2One('relationship.party', 'Supplier', required=True)
+
+CreatePurchaseAskParty()
 
 class CreatePurchase(Wizard):
     'Create Purchase'
@@ -398,11 +405,23 @@ class CreatePurchase(Wizard):
             },
 
 
-        'ask_user': {
-            'actions': ['_set_default'],
+        'ask_user_party': {
+            'actions': ['_set_default_party'],
             'result': {
                 'type': 'form',
-                'object': 'stock.purchase_request.create_purchase.ask',
+                'object': 'stock.purchase_request.create_purchase.ask_party',
+                'state': [
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('init', 'Continue', 'tryton-ok', True),
+                    ],
+                },
+            },
+
+        'ask_user_term': {
+            'actions': ['_set_default_term'],
+            'result': {
+                'type': 'form',
+                'object': 'stock.purchase_request.create_purchase.ask_term',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('init', 'Continue', 'tryton-ok', True),
@@ -412,7 +431,19 @@ class CreatePurchase(Wizard):
 
         }
 
-    def _set_default(self, cursor, user, data, context=None):
+    def _set_default_party(self, cursor, user, data, context=None):
+
+        request_obj = self.pool.get('stock.purchase_request')
+        requests = request_obj.browse(cursor, user, data['ids'], context=context)
+        for request in requests:
+            if request.purchase_line:
+                continue
+            if not request.party:
+                return {'product': request.product.id,'company': request.company.id}
+
+        return {'product': request.product.id,'company': request.company.id}
+
+    def _set_default_term(self, cursor, user, data, context=None):
 
         request_obj = self.pool.get('stock.purchase_request')
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
@@ -422,7 +453,7 @@ class CreatePurchase(Wizard):
             if not request.party.supplier_payment_term:
                 return {'party': request.party.id,'company': request.company.id}
 
-        raise Exception("Unexpected error")
+        return {'party': request.party.id,'company': request.company.id}
 
     def _create_purchase(self, cursor, user, data, context=None):
         request_obj = self.pool.get('stock.purchase_request')
@@ -433,7 +464,24 @@ class CreatePurchase(Wizard):
         date_obj = self.pool.get('ir.date')
 
         form = data['form']
-        if form.get('payment_term') and form.get('party') and \
+        if form.get('product') and form.get('party') and \
+                form.get('company'):
+            product_obj.write(
+                cursor, user, form['product'],
+                {'product_suppliers': [('create', {'product': form['product'],
+                                                'party': form['party'],
+                                                'company': form['company'],})
+                                       ],
+                 },
+                context=context)
+            for request in request_obj.browse(cursor, user, data['ids'],
+                                              context=context):
+                if request.product.id == form['product'] and not request.party:
+                    request_obj.write(cursor, user, request.id,
+                                      {'party': form['party']},
+                                      context=context)
+
+        elif form.get('payment_term') and form.get('party') and \
                 form.get('company'):
             local_context = context and context.copy() or {}
             local_context['company'] = form['company']
@@ -442,29 +490,33 @@ class CreatePurchase(Wizard):
                 {'supplier_payment_term': form['payment_term']}, context=local_context)
 
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
-        # first loop to check payment terms
-        for request in requests:
-            if (not request.party) or request.purchase_line:
-                continue
-            if not request.party.supplier_payment_term:
-                return 'ask_user'
-
         purchases = {}
         # collect data
         for request in requests:
-            if (not request.party) or request.purchase_line:
+            if request.purchase_line:
                 continue
-            if not request.party.supplier_payment_term:
-                return 'ask_user'
+
+            if request.party:
+                party = request.party
+            elif request.product.product_suppliers:
+                party = request.product.product_suppliers[0].party
+                request_obj.write(cursor, user, request.id, {'party': party.id},
+                                  context=context)
+            else:
+                return 'ask_user_party'
+
+            if not party.supplier_payment_term:
+                return 'ask_user_term'
+
             key = (request.party.id, request.company.id, request.warehouse.id)
             if key not in purchases:
+
                 purchase = {
                     'company': request.company.id,
-                    'party': request.party.id,
+                    'party': party.id,
                     'purchase_date': request.purchase_date or date_obj.today(
                         cursor, user, context=context),
-                    'payment_term': request.party.supplier_payment_term and \
-                        request.party.supplier_payment_term.id or None,
+                    'payment_term': party.supplier_payment_term.id,
                     'warehouse': request.warehouse.id,
                     'currency': request.company.currency.id,
                     'lines': [],
