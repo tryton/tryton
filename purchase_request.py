@@ -466,12 +466,13 @@ class CreatePurchase(Wizard):
         form = data['form']
         if form.get('product') and form.get('party') and \
                 form.get('company'):
-            for request in request_obj.browse(cursor, user, data['ids'],
-                                              context=context):
-                if request.product.id == form['product'] and not request.party:
-                    request_obj.write(cursor, user, request.id,
-                                      {'party': form['party']},
-                                      context=context)
+            req_ids = request_obj.search(
+                cursor, user, [('id', 'in', data['ids']), ('party', '=', False)],
+                context=context)
+            if req_ids:
+                request_obj.write(
+                    cursor, user, req_ids, {'party': form['party']},
+                    context=context)
 
         elif form.get('payment_term') and form.get('party') and \
                 form.get('company'):
@@ -481,18 +482,30 @@ class CreatePurchase(Wizard):
                 cursor, user, form['party'],
                 {'supplier_payment_term': form['payment_term']}, context=local_context)
 
+
+        req_ids = request_obj.search(
+            cursor, user, [('id', 'in', data['ids']),
+                           ('purchase_line', '=', False),
+                           ('party', '=', False)],
+            context=context)
+        if req_ids:
+            return 'ask_user_party'
+
+        req_ids = request_obj.search(
+            cursor, user, [('id', 'in', data['ids']),
+                           ('purchase_line', '=', False),
+                           ('party.supplier_payment_term', '=', False)],
+            context=context)
+        if req_ids:
+            print req_ids
+            return 'ask_user_term'
+
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
         purchases = {}
         # collect data
         for request in requests:
             if request.purchase_line:
                 continue
-
-            if not request.party:
-                return 'ask_user_party'
-
-            if not request.party.supplier_payment_term:
-                return 'ask_user_term'
 
             key = (request.party.id, request.company.id, request.warehouse.id)
             if key not in purchases:
