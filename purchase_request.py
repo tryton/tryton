@@ -466,14 +466,6 @@ class CreatePurchase(Wizard):
         form = data['form']
         if form.get('product') and form.get('party') and \
                 form.get('company'):
-            product_obj.write(
-                cursor, user, form['product'],
-                {'product_suppliers': [('create', {'product': form['product'],
-                                                'party': form['party'],
-                                                'company': form['company'],})
-                                       ],
-                 },
-                context=context)
             for request in request_obj.browse(cursor, user, data['ids'],
                                               context=context):
                 if request.product.id == form['product'] and not request.party:
@@ -496,16 +488,10 @@ class CreatePurchase(Wizard):
             if request.purchase_line:
                 continue
 
-            if request.party:
-                party = request.party
-            elif request.product.product_suppliers:
-                party = request.product.product_suppliers[0].party
-                request_obj.write(cursor, user, request.id, {'party': party.id},
-                                  context=context)
-            else:
+            if not request.party:
                 return 'ask_user_party'
 
-            if not party.supplier_payment_term:
+            if not request.party.supplier_payment_term:
                 return 'ask_user_term'
 
             key = (request.party.id, request.company.id, request.warehouse.id)
@@ -513,10 +499,10 @@ class CreatePurchase(Wizard):
 
                 purchase = {
                     'company': request.company.id,
-                    'party': party.id,
+                    'party': request.party.id,
                     'purchase_date': request.purchase_date or date_obj.today(
                         cursor, user, context=context),
-                    'payment_term': party.supplier_payment_term.id,
+                    'payment_term': request.party.supplier_payment_term.id,
                     'warehouse': request.warehouse.id,
                     'currency': request.company.currency.id,
                     'lines': [],
