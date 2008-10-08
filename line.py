@@ -1,9 +1,9 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level
+#of this repository contains the full copyright notices and license terms.
 "Line"
 
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard
-import datetime
 
 
 class Line(OSV):
@@ -55,7 +55,8 @@ class Line(OSV):
         return False
 
     def default_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
     def default_active(self, cursor, user, context=None):
         return True
