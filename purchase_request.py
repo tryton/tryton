@@ -8,7 +8,7 @@ import datetime
 # (uom, qty, product, ...).
 class PurchaseRequest(OSV):
     'Purchase Request'
-    _name = 'stock.purchase_request'
+    _name = 'purchase.request'
     _description = __doc__
 
     product = fields.Many2One(
@@ -89,7 +89,7 @@ class PurchaseRequest(OSV):
         create today to meet product outputs.
         """
         order_point_obj = self.pool.get('stock.order_point')
-        purchase_request_obj = self.pool.get('stock.purchase_request')
+        purchase_request_obj = self.pool.get('purchase.request')
         product_obj = self.pool.get('product.product')
         location_obj = self.pool.get('stock.location')
         user_obj = self.pool.get('res.user')
@@ -158,7 +158,7 @@ class PurchaseRequest(OSV):
         """
         # delete purchase request without a purchase line
         uom_obj = self.pool.get('product.uom')
-        request_obj = self.pool.get('stock.purchase_request')
+        request_obj = self.pool.get('purchase.request')
         product_supplier_obj = self.pool.get('purchase.product_supplier')
         req_ids = request_obj.search(
             cursor, user, [('purchase_line', '=', False)], context=context)
@@ -375,7 +375,7 @@ PurchaseRequest()
 
 
 class CreatePurchaseAskTerm(WizardOSV):
-    _name = 'stock.purchase_request.create_purchase.ask_term'
+    _name = 'purchase.request.create_purchase.ask_term'
     party = fields.Many2One('relationship.party', 'Supplier', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
     payment_term = fields.Many2One(
@@ -384,7 +384,7 @@ class CreatePurchaseAskTerm(WizardOSV):
 CreatePurchaseAskTerm()
 
 class CreatePurchaseAskParty(WizardOSV):
-    _name = 'stock.purchase_request.create_purchase.ask_party'
+    _name = 'purchase.request.create_purchase.ask_party'
     product = fields.Many2One('product.product', 'Product', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
     party = fields.Many2One('relationship.party', 'Supplier', required=True)
@@ -393,7 +393,7 @@ CreatePurchaseAskParty()
 
 class CreatePurchase(Wizard):
     'Create Purchase'
-    _name = 'stock.purchase_request.create_purchase'
+    _name = 'purchase.request.create_purchase'
 
     states = {
 
@@ -409,7 +409,7 @@ class CreatePurchase(Wizard):
             'actions': ['_set_default_party'],
             'result': {
                 'type': 'form',
-                'object': 'stock.purchase_request.create_purchase.ask_party',
+                'object': 'purchase.request.create_purchase.ask_party',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('init', 'Continue', 'tryton-ok', True),
@@ -421,7 +421,7 @@ class CreatePurchase(Wizard):
             'actions': ['_set_default_term'],
             'result': {
                 'type': 'form',
-                'object': 'stock.purchase_request.create_purchase.ask_term',
+                'object': 'purchase.request.create_purchase.ask_term',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('init', 'Continue', 'tryton-ok', True),
@@ -433,7 +433,7 @@ class CreatePurchase(Wizard):
 
     def _set_default_party(self, cursor, user, data, context=None):
 
-        request_obj = self.pool.get('stock.purchase_request')
+        request_obj = self.pool.get('purchase.request')
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
         for request in requests:
             if request.purchase_line:
@@ -445,7 +445,7 @@ class CreatePurchase(Wizard):
 
     def _set_default_term(self, cursor, user, data, context=None):
 
-        request_obj = self.pool.get('stock.purchase_request')
+        request_obj = self.pool.get('purchase.request')
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
         for request in requests:
             if (not request.party) or request.purchase_line:
@@ -456,7 +456,7 @@ class CreatePurchase(Wizard):
         return {'party': request.party.id,'company': request.company.id}
 
     def _create_purchase(self, cursor, user, data, context=None):
-        request_obj = self.pool.get('stock.purchase_request')
+        request_obj = self.pool.get('purchase.request')
         party_obj = self.pool.get('relationship.party')
         purchase_obj = self.pool.get('purchase.purchase')
         product_obj = self.pool.get('product.product')
