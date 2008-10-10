@@ -491,21 +491,15 @@ class CreatePurchase(Wizard):
         if req_ids:
             return 'ask_user_party'
 
-        req_ids = request_obj.search(
-            cursor, user, [('id', 'in', data['ids']),
-                           ('purchase_line', '=', False),
-                           ('party.supplier_payment_term', '=', False)],
-            context=context)
-        if req_ids:
-            print req_ids
-            return 'ask_user_term'
-
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
         purchases = {}
         # collect data
         for request in requests:
             if request.purchase_line:
                 continue
+
+            if not request.party.supplier_payment_term:
+                return 'ask_user_term'
 
             key = (request.party.id, request.company.id, request.warehouse.id)
             if key not in purchases:
