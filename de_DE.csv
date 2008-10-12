@@ -52,8 +52,8 @@ field,"purchase.purchase,packing_done",0,Packing Done,Lieferschein erledigt,0
 field,"purchase.purchase,packing_exception",0,Packings Exception,Lieferungsvorbehalt,0
 field,"purchase.purchase,packings",0,Packings,Lieferscheine,0
 field,"purchase.purchase,packing_state",0,Packing State,Lieferstatus,0
-field,"purchase.purchase,party",0,Party,Partei,0
-field,"purchase.purchase,party_lang",0,Party Language,Sprache Partei,0
+field,"purchase.purchase,party",0,Party,Geschäftspartner,0
+field,"purchase.purchase,party_lang",0,Party Language,Sprache Partner,0
 field,"purchase.purchase,payment_term",0,Payment Term,Zahlungsbedingung,0
 field,"purchase.purchase,purchase_date",0,Purchase Date,Kaufdatum,0
 field,"purchase.purchase,reference",0,Reference,Referenz,0
