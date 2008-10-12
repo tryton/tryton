@@ -35,7 +35,7 @@ field,"analytic_account.line,debit",0,Debit,Soll,0
 field,"analytic_account.line,journal",0,Journal,Journal,0
 field,"analytic_account.line,move_line",0,Account Move Line,Buchungszeile,0
 field,"analytic_account.line,name",0,Name,Name,0
-field,"analytic_account.line,party",0,Party,Partei,0
+field,"analytic_account.line,party",0,Party,Partner,0
 field,"analytic_account.line,reference",0,Reference,Referenz,0
 model,"ir.action,name",act_account_form,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_account_tree,Analytic Accounts,Kostenstellen,0
