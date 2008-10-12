@@ -15,7 +15,7 @@ field,"account.statement.line,amount",0,Amount,Betrag,0
 field,"account.statement.line,date",0,Date,Datum,0
 field,"account.statement.line,description",0,Description,Beschreibung,0
 field,"account.statement.line,move",0,Account Move,Kontobuchung,0
-field,"account.statement.line,party",0,Party,Partei,0
+field,"account.statement.line,party",0,Party,Geschäftspartner,0
 field,"account.statement,lines",0,Transactions,Transaktionen,0
 field,"account.statement.line,statement",0,Statement,Bankauszug,0
 field,"account.statement,move_lines",0,Move Lines,Buchungsposten,0
