@@ -1,9 +1,9 @@
 type,name,res_id,src,value,fuzzy
-error,relationship.address,0,You can not modify the party of an address!,Die Partei einer Adresse kann nicht geändert werden,0
+error,relationship.address,0,You can not modify the party of an address!,Der Partner für eine Adresse kann nicht geändert werden!,0
 error,relationship.category,0,You can not create recursive categories!,Kategorien dürfen nicht rekursiv sein,0
 error,relationship.country,0,The code of the country must be unique!,Der Ländercode kann nicht mehrfach vergeben werden!,0
 error,relationship.country,0,The name of the country must be unique!,Der Name des Landes kann nicht mehrfach vergeben werden!,0
-error,relationship.party,0,The code of the party must be unique!,Der Name der Partei kann nicht mehrfach vergeben werden!,0
+error,relationship.party,0,The code of the party must be unique!,Der Name des Partners kann nicht mehrfach vergeben werden!,0
 error,relationship.party,0,Wrong VAT number!,Falsche USt-ID Nr.,0
 field,"relationship.address,active",0,Active,Aktiv,0
 field,"relationship.address,city",0,City,Stadt,0
@@ -15,7 +15,7 @@ field,"relationship.address,fax",0,Fax,Fax,0
 field,"relationship.address,id",0,ID,ID,0
 field,"relationship.address,mobile",0,Mobile,Mobil-Telefon,0
 field,"relationship.address,name",0,Contact Name,Kontakt Name,0
-field,"relationship.address,party",0,Party,Partei,0
+field,"relationship.address,party",0,Party,Partner,0
 field,"relationship.address,phone",0,Phone,Telefon,0
 field,"relationship.address,sequence",0,Sequence,Sequenz,0
 field,"relationship.address,state",0,State,Bundesland,0
@@ -53,7 +53,7 @@ field,"relationship.country,write_uid",0,Last modification by,Zuletzt geändert 
 field,"relationship.party,active",0,Active,Aktiv,0
 field,"relationship.party,addresses",0,Addresses,Adressen,0
 field,"relationship.party,categories",0,Categories,Kategorien,0
-field,"relationship.party,code",0,Code,Code Partei,0
+field,"relationship.party,code",0,Code,Code Partner,0
 field,"relationship.party,code_length",0,Code Length,Code Länge,0
 field,"relationship.party,create_date",0,Creation date,Erstellungsdatum,0
 field,"relationship.party,create_uid",0,Creation user,Ersteller,0
@@ -85,10 +85,10 @@ model,"ir.action,name",act_category_form,Categories,Kategorien,0
 model,"ir.action,name",act_category_form2,Categories,Kategorien,0
 model,"ir.action,name",act_country_form,Countries,Staaten,0
 model,"ir.action,name",report_label,La_bels,_Etiketten,0
-model,"ir.action,name",act_party_form,Parties,Parteien,0
-model,"ir.action,name",act_party_form2,Parties,Parteien,0
-model,"ir.action,name",act_party_by_category,Parties by Category,Parteien nach Kategorie,0
-model,"ir.action,name",act_party_type_form,Party Types,Parteitypen,0
+model,"ir.action,name",act_party_form,Parties,Partner,0
+model,"ir.action,name",act_party_form2,Parties,Partner,0
+model,"ir.action,name",act_party_by_category,Parties by Category,Partner nach Kategorie,0
+model,"ir.action,name",act_party_type_form,Party Types,Partnertypen,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adressen,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Kategorien,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
@@ -96,9 +96,9 @@ model,"ir.ui.menu,name",menu_country_form,Countries,Staaten,0
 model,"ir.ui.menu,name",menu_category_form,Edit Categories,Kategorien bearbeiten,0
 model,"ir.ui.menu,name",menu_address_form2,New Address,Neue Adresse,0
 model,"ir.ui.menu,name",menu_category_form2,New category,Neue Kategorie,0
-model,"ir.ui.menu,name",menu_party_form2,New Party,Neue Partei,0
-model,"ir.ui.menu,name",menu_party_form,Parties,Parteien,0
-model,"ir.ui.menu,name",menu_party_type_form,Party Types,Parteitypen,0
+model,"ir.ui.menu,name",menu_party_form2,New Party,Neuer Partner,0
+model,"ir.ui.menu,name",menu_party_form,Parties,Partner,0
+model,"ir.ui.menu,name",menu_party_type_form,Party Types,Partnertypen,0
 model,"ir.ui.menu,name",menu_relationship,Relationship Management,Kontakte,0
 model,"relationship.country,name",af,Afghanistan,Afghanistan,0
 model,"relationship.country,name",ax,Åland Islands,Åland Inseln,0
@@ -346,6 +346,7 @@ model,"relationship.country,name",eh,Western Sahara,Westsahara,0
 model,"relationship.country,name",ye,Yemen,Jemen,0
 model,"relationship.country,name",zm,Zambia,Sambia,0
 model,"relationship.country,name",zw,Zimbabwe,Zimbabwe,0
+selection,"relationship.party,vat_country",0,,,0
 selection,"relationship.party,vat_country",0,AT,AT,0
 selection,"relationship.party,vat_country",0,BE,BE,0
 selection,"relationship.party,vat_country",0,BG,BG,0
@@ -385,8 +386,8 @@ view,relationship.party,0,Accounting,Konto,0
 view,relationship.party,0,Addresses,Adressen,0
 view,relationship.party,0,Categories,Kategorien,0
 view,relationship.party,0,General,Allgemein,0
-view,relationship.party,0,Parties,Parteien,0
-view,relationship.party,0,Party,Partei,0
+view,relationship.party,0,Parties,Partner,0
+view,relationship.party,0,Party,Partner,0
 view,relationship.party,0,Properties,Eigenschaften,0
-view,relationship.party.type,0,Party Type,Parteityp,0
-view,relationship.party.type,0,Party Types,Parteitypen,0
+view,relationship.party.type,0,Party Type,Partnertyp,0
+view,relationship.party.type,0,Party Types,Partnertypen,0
