@@ -50,7 +50,7 @@ error,account.move.reconciliation,0,"You can not create reconciliation where lin
 - ungültig sind
 - sich auf das selbe Konto beziehen
 - sich nicht auf ein abstimmungsfähiges Konto beziehen
-- nicht zur selben Partei gehören",0
+- nicht zum selben Partner gehören",0
 error,account.move.reconciliation,0,You can not modify a reconciliation!,Eine Abstimmung kann nicht geändert werden!,0
 error,account.period,0,No period defined for this date!,Kein Buchungszeitraum für dieses Datum definiert!,0
 error,account.period,0,The period dates must be in the fiscal year dates,Ein Buchungszeitraum muss innerhalb des Geschäftsjahres sein,0
@@ -213,7 +213,7 @@ field,"account.move.line,maturity_date",0,Maturity Date,Fälligkeitsdatum,0
 field,"account.move.line,move",0,Move,Buchung,0
 field,"account.move.line,move_state",0,Move State,Buchungsstatus,0
 field,"account.move.line,name",0,Name,Name,0
-field,"account.move.line,party",0,Party,Partei,0
+field,"account.move.line,party",0,Party,Geschäftspartner,0
 field,"account.move.line,period",0,Period,Buchungszeitraum,0
 field,"account.move.line,reconciliation",0,Reconciliation,Abstimmung,0
 field,"account.move.line,reference",0,Reference,Referenz,0
@@ -510,7 +510,7 @@ odt,account.account.aged_balance,0,at,um,0
 odt,account.account.aged_balance,0,Company:,Unternehmen:,0
 odt,account.account.aged_balance,0,Currency:,Währung:,0
 odt,account.account.aged_balance,0,Date:,Datum:,0
-odt,account.account.aged_balance,0,Party,Partei,0
+odt,account.account.aged_balance,0,Party,Geschäftspartner,0
 odt,account.account.aged_balance,0,Total,Gesamt,0
 odt,account.account.general_ledger,0,at,um,0
 odt,account.account.general_ledger,0,Balance,Bilanz,0
@@ -534,7 +534,7 @@ odt,account.account.third_party_balance,0,Credit,Haben,0
 odt,account.account.third_party_balance,0,Currency:,Währung:,0
 odt,account.account.third_party_balance,0,Date:,Datum:,0
 odt,account.account.third_party_balance,0,Debit,Soll,0
-odt,account.account.third_party_balance,0,Party,Partei,0
+odt,account.account.third_party_balance,0,Party,Partner,0
 odt,account.account.third_party_balance,0,Third Party Balance,Offene Posten,0
 odt,account.account.third_party_balance,0,Total,Gesamt,0
 odt,account.account.trial_balance,0,Account,Konto,0
