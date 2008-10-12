@@ -69,7 +69,7 @@ field,"account.invoice.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
 field,"account.invoice.line,unit_price",0,Unit Price,Einzelpreis,0
 field,"account.invoice,move",0,Move,Buchung,0
 field,"account.invoice,number",0,Number,Nummer,0
-field,"account.invoice,party",0,Party,Partei,0
+field,"account.invoice,party",0,Party,Geschäftspartner,0
 field,"account.invoice.pay_invoice.ask,account",0,Account,Konto,0
 field,"account.invoice.pay_invoice.ask,account_writeoff",0,Account,Konto,0
 field,"account.invoice.pay_invoice.ask,amount",0,Amount,Betrag,0
@@ -159,7 +159,7 @@ model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.action,name",credit_invoice,Credit,Gutschreiben,0
 model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften,0
 model,"ir.action,name",,Custom Invoice,,0
-model,"ir.action,name",report_invoice,Invoice,Rechnung drucken,0
+model,"ir.action,name",report_invoice,Invoice,Rechnung drucken,1
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
