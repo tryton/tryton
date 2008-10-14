@@ -28,6 +28,8 @@ class PurchaseRequest(OSV):
         string='Purchase')
     company = fields.Many2One(
         'company.company', 'Company', required=True, readonly=True)
+    origin = fields.Reference(
+        'Origin', selection=[('stock.order_point','Order Point')], readonly=True)
     state = fields.Function(
         'get_state', type='selection',
         selection=[("purchased", "Purchased"),
@@ -170,13 +172,19 @@ class PurchaseRequest(OSV):
         request_obj = self.pool.get('purchase.request')
         product_supplier_obj = self.pool.get('purchase.product_supplier')
         req_ids = request_obj.search(
-            cursor, user, [('purchase_line', '=', False)], context=context)
+            cursor, user,
+            [('purchase_line', '=', False),
+             ['OR', ('origin', '=', False),
+              ('origin', 'like', 'stock.order_point,%')
+              ]
+             ], context=context)
         request_obj.delete(cursor, user, req_ids, context=context)
 
         req_ids = request_obj.search(
                 cursor, user,
                 [('purchase_line.moves', '=', False),
-                 ('purchase_line.purchase.state', '!=', 'cancel')],
+                 ('purchase_line.purchase.state', '!=', 'cancel'),
+                 ('origin', 'like', 'stock.order_point,%')],
                 context=context
                 )
         requests = request_obj.browse(cursor, user, req_ids, context=context)
@@ -317,6 +325,10 @@ class PurchaseRequest(OSV):
                 product.purchase_uom or product.default_uom,
                 context=context)
 
+        if order_point:
+            origin = 'stock.order_point,%s'%order_point.id
+        else:
+            origin = ''
         return {'product': product,
                 'party': supplier and supplier or None,
                 'quantity': quantity,
@@ -326,6 +338,7 @@ class PurchaseRequest(OSV):
                 'stock_level': product_quantity,
                 'company': company,
                 'warehouse': location_id,
+                'origin': origin,
                 }
 
     def get_shortage(self, cursor, user, location_id, product_id, min_date,

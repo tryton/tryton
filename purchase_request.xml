@@ -28,6 +28,8 @@
                         <field name="purchase"/>
                         <label name="stock_level"/>
                         <field name="stock_level"/>
+                        <label name="origin"/>
+                        <field name="origin"/>
                         <label name="state"/>
                         <field name="state"/>
                     </form>
