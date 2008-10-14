@@ -31,6 +31,14 @@ class OrderPoint(OSV):
              'Maximal quantity must be bigger than Minimal quantity'),
         ]
 
+    def name_get(self, cursor, user, ids, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        res = []
+        for op in self.browse(cursor, user, ids, context=context):
+            res.append((op.id, "%s@%s" % (op.product.name, op.location.name)))
+        return res
+
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
         if context is None:

@@ -43,6 +43,13 @@ class PurchaseRequest(OSV):
         self._error_messages.update({
             'create_request': 'Purchase request are only created by the system.',
             })
+    def name_get(self, cursor, user, ids, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        res = []
+        for pr in self.browse(cursor, user, ids, context=context):
+            res.append((pr.id, "%s@%s" % (pr.product.name, pr.warehouse.name)))
+        return res
 
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
