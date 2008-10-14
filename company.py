@@ -235,7 +235,7 @@ class LetterReport(CompanyReport):
         context = context.copy()
         context['user'] = user
 
-        return super(CompanyReport, self).parse(cursor, user_id, report,
+        return super(LetterReport, self).parse(cursor, user_id, report,
                 objects, datas, context)
 
 LetterReport()
