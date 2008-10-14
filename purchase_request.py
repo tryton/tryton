@@ -520,6 +520,7 @@ class CreatePurchase(Wizard):
         if req_ids:
             return 'ask_user_party'
 
+        today = date_obj.today(cursor, user, context=context)
         requests = request_obj.browse(cursor, user, data['ids'], context=context)
         purchases = {}
         # collect data
@@ -532,12 +533,14 @@ class CreatePurchase(Wizard):
 
             key = (request.party.id, request.company.id, request.warehouse.id)
             if key not in purchases:
-
+                if request.purchase_date and request.purchase_date >= today:
+                    purchase_date = request.purchase_date
+                else:
+                    purchase_date = today
                 purchase = {
                     'company': request.company.id,
                     'party': request.party.id,
-                    'purchase_date': request.purchase_date or date_obj.today(
-                        cursor, user, context=context),
+                    'purchase_date': purchase_date,
                     'payment_term': request.party.supplier_payment_term.id,
                     'warehouse': request.warehouse.id,
                     'currency': request.company.currency.id,
