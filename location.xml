@@ -88,15 +88,16 @@
             <field name="view_type">form</field>
             <field name="window_name" eval="False"/>
         </record>
-        <record model="ir.action.wizard" id="wizard_open_product">
+        <record model="ir.action.wizard" id="wizard_product_open">
             <field name="name">Product Quantities</field>
             <field name="wiz_name">stock.product.open</field>
+            <field name="model">stock.location</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_product_by_location_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model">stock.location,0</field>
-            <field name="action" ref="wizard_open_product"/>
+            <field name="action" ref="wizard_product_open"/>
         </record>
         <record model="ir.action.act_window.view" id="act_product_form_view">
             <field name="sequence" eval="20"/>

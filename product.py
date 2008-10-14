@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level
+#of this repository contains the full copyright notices and license terms.
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 import datetime
@@ -15,12 +16,16 @@ class Product(OSV):
         fnct_search='search_quantity', readonly=True)
 
     def get_quantity(self, cursor, user, ids, name, args, context=None):
+        date_obj = self.pool.get('ir.date')
+
         if not (context and context.get('locations')):
             return dict([(id, 0.0) for id in ids])
         if name != 'forecast_quantity' and context.get('stock_date_end'):
-            if context['stock_date_end'] != datetime.date.today():
+            if context['stock_date_end'] != date_obj.today(cursor, user,
+                    context=context):
                 context = context.copy()
-                context['stock_date_end'] = datetime.date.today()
+                context['stock_date_end'] = date_obj.today(cursor, user,
+                        context=context)
         if name == 'forecast_quantity' and not context.get('stock_date_end'):
             context = context.copy()
             context['stock_date_end'] = datetime.date.max
@@ -48,10 +53,13 @@ class Product(OSV):
         return res
 
     def search_quantity(self, cursor, user, name, domain=None, context=None):
+        date_obj = self.pool.get('ir.date')
+
         if not (context and context.get('locations') and domain):
             return []
         if (name != 'forecast_quantity') and context.get('stock_date_end'):
-            if context['stock_date_end'] != datetime.date.today():
+            if context['stock_date_end'] != date_obj.today(cursor, user,
+                    context=context):
                 context = context.copy()
                 del context['stock_date_end']
 
@@ -90,8 +98,9 @@ class Product(OSV):
         uom_obj = self.pool.get("product.uom")
         product_obj = self.pool.get("product.product")
         rule_obj = self.pool.get('ir.rule')
-
         location_obj = self.pool.get('stock.location')
+        date_obj = self.pool.get('ir.date')
+
         if not location_ids:
             return []
         if context is None:
@@ -119,7 +128,8 @@ class Product(OSV):
             state_date_vals = []
         else:
             # date end in the past or today: filter on state done for the moves
-            if context['stock_date_end'] <= datetime.date.today():
+            if context['stock_date_end'] <= date_obj.today(cursor, user,
+                    context=context):
                 state_date_clause = '(state in (%s)) AND ('\
                     '(effective_date IS NULL '\
                      'AND ( planned_date <= %s or planned_date IS NULL)) '\
@@ -151,15 +161,17 @@ class Product(OSV):
                        'OR (effective_date <= %s AND effective_date > %s)'\
                       ')'\
                     ')'
+                today = date_obj.today(cursor, user, context=context)
                 state_date_vals = [
-                    'done', datetime.date.today(), datetime.date.today(),
+                    'done', today, today,
                     'done', 'assigned', 'draft',
-                    context['stock_date_end'], datetime.date.today(),
-                    context['stock_date_end'], datetime.date.today()
+                    context['stock_date_end'], today,
+                    context['stock_date_end'], today,
                     ]
 
         if context.get('stock_date_start'):
-            if  context['stock_date_start'] > datetime.date.today():
+            if  context['stock_date_start'] > date_obj.today(cursor, user,
+                    context=context):
                 state_date_vals += '(state in (%s, %s, %s)) AND ('\
                     '(effective_date IS NULL '\
                      'AND ( planned_date >= %s or planned_date IS NULL)) '\
@@ -174,9 +186,9 @@ class Product(OSV):
                      'AND ( planned_date >= %s or planned_date IS NULL)) '\
                      'OR effective_date >= %s'\
                     ')'
+                today = date_obj.today(cursor, user, context=context)
                 state_date_vals.extend(
-                 ['done', 'assigned', 'draft',
-                  datetime.date.today(), datetime.date.today()])
+                 ['done', 'assigned', 'draft', today, today])
 
                 state_date_clause = '(' + state_date_clause + \
                     ') OR (' + \
@@ -189,8 +201,8 @@ class Product(OSV):
                     ')'
                 state_date_vals.extend(
                     ['done', 'assigned', 'draft',
-                     context['stock_date_start'], datetime.date.today(),
-                     context['stock_date_start'], datetime.date.today()
+                     context['stock_date_start'], today,
+                     context['stock_date_start'], today,
                      ])
 
         if with_childs:
@@ -348,6 +360,7 @@ class Product(OSV):
         move_obj = self.pool.get('stock.move')
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
+        date_obj = self.pool.get('ir.date')
 
         if context is None:
             context = {}
@@ -355,7 +368,8 @@ class Product(OSV):
         cursor.execute('LOCK TABLE stock_move')
 
         local_ctx = context and context.copy() or {}
-        local_ctx['stock_date_end'] = datetime.date.today()
+        local_ctx['stock_date_end'] = date_obj.today(cursor, user,
+                context=context)
         pbl = product_obj.products_by_location(cursor, user,
             location_ids=[m.from_location.id for m in moves],
             product_ids=[m.product.id for m in moves],
@@ -425,7 +439,8 @@ class ChooseStockDateInit(WizardOSV):
             '* A date in the past will provide historical values.')
 
     def default_forecast_date(self, cursor, user, context=None):
-        return datetime.date.today()
+        date_obj = self.pool.get('ir.date')
+        return date_obj.today(cursor, user, context=context)
 
 ChooseStockDateInit()
 

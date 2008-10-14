@@ -5,6 +5,7 @@
         <record model="ir.action.wizard" id="wizard_complete_inventory">
             <field name="name">Complete Inventory</field>
             <field name="wiz_name">stock.inventory.complete</field>
+            <field name="model">stock.inventory</field>
         </record>
 
         <record model="ir.ui.view" id="inventory_view_form">
