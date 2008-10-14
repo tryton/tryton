@@ -122,15 +122,15 @@
             <field name="name">Purchases</field>
             <field name="res_model">purchase.purchase</field>
             <field name="view_type">form</field>
-            <field name="domain">[("id", "=", purchase)]</field> <!-- FIXME does not work -->
+            <field name="domain">[("id", "=", purchase)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_purchase_form_view1">
-            <field name="sequence" eval="20"/>
+            <field name="sequence" eval="10"/>
             <field name="view" ref="purchase.purchase_view_tree"/>
             <field name="act_window" ref="act_purchase_form"/>
         </record>
         <record model="ir.action.act_window.view" id="act_purchase_form_view2">
-            <field name="sequence" eval="10"/>
+            <field name="sequence" eval="20"/>
             <field name="view" ref="purchase.purchase_view_form"/>
             <field name="act_window" ref="act_purchase_form"/>
         </record>
