@@ -5,8 +5,11 @@
         <record model="res.group" id="group_stock_admin">
             <field name="name">Stock Administration</field>
         </record>
+        <record model="res.group" id="group_stock">
+            <field name="name">Stock</field>
+        </record>
         <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_stock_admin'))]"/>
+            <field name="groups" eval="[('add', ref('group_stock_admin')), ('add', ref('group_stock'))]"/>
         </record>
 
         <menuitem name="Inventory Management" sequence="3" id="menu_stock"

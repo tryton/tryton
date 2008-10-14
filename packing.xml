@@ -190,24 +190,19 @@
                                         states="{'invisible': '''state in
                                         ('cancel','done') '''}"/>
                                 <button string="Set Done" name="done"
-                                        states="{'invisible': '''state !=
-                                        'packed' '''}"/>
+                                        states="{'invisible': '''state != 'packed' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                                 <button string="Set Waiting" name="waiting"
-                                        states="{'invisible': '''state !=
-                                        'draft' '''}"/>
+                                        states="{'invisible': '''state != 'draft' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                                 <button string="Force Assign"
                                         name="force_assign"
-                                        states="{'invisible': '''state !=
-                                        'waiting' '''}"/>
+                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                                 <button string="Assign" name="assign"
-                                        states="{'invisible': '''state !=
-                                        'waiting' '''}"/>
+                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                                 <button string="Make packing" name="packed"
-                                        states="{'invisible': '''state !=
-                                        'assigned' '''}"/>
+                                        states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                                 <button string="Reset to Draft" name="button_draft"
                                     type="object"
-                                    states="{'invisible': '''state != 'cancel' '''}"/>
+                                    states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                             </group>
                         </group>
                     </form>
@@ -343,17 +338,17 @@
                         <field name="state"/>
                         <group col="6" colspan="2">
                             <button string="Cancel" name="cancel"
-                                states="{'invisible': '''state in ('cancel', 'done') '''}"/>
+                                states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                             <button string="Set Done" name="done"
-                                states="{'invisible': '''state != 'assigned' '''}"/>
+                                states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                             <button string="Set Waiting" name="waiting"
-                                states="{'invisible': '''state != 'draft' '''}"/>
+                                states="{'invisible': '''state != 'draft' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                             <button string="Assign" name="assign"
-                                states="{'invisible': '''state != 'waiting' '''}"/>
+                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                             <button string="Force Assign" name="force_assign"
-                                states="{'invisible': '''state != 'waiting' '''}"/>
+                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                             <button string="Reset to Draft" name="button_draft"
-                                type="object" states="{'invisible': '''state != 'cancel' '''}"/>
+                                type="object" states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
                         </group>
                     </form>
                     ]]>
@@ -512,22 +507,26 @@
                 id="packingin_trans_draft_received">
             <field name="act_from" ref="packingin_act_draft"/>
             <field name="act_to" ref="packingin_act_received"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">received</field>
         </record>
         <record model="workflow.transition" id="packingin_trans_received_done">
             <field name="act_from" ref="packingin_act_received"/>
             <field name="act_to" ref="packingin_act_done"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">done</field>
         </record>
         <record model="workflow.transition" id="packingin_trans_draft_cancel">
             <field name="act_from" ref="packingin_act_draft"/>
             <field name="act_to" ref="packingin_act_cancel"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="packingin_trans_received_cancel">
             <field name="act_from" ref="packingin_act_received"/>
             <field name="act_to" ref="packingin_act_cancel"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
 
@@ -582,6 +581,7 @@
                 id="packingout_trans_waiting_assigned">
             <field name="act_from" ref="packingout_act_waiting"/>
             <field name="act_to" ref="packingout_act_assigned"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">assign</field>
             <field name="condition">assign_try()</field>
         </record>
@@ -589,6 +589,7 @@
                 id="packingout_trans_waiting_assigned_force">
             <field name="act_from" ref="packingout_act_waiting"/>
             <field name="act_to" ref="packingout_act_assigned"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">force_assign</field>
             <field name="condition">assign_force()</field>
         </record>
@@ -596,42 +597,49 @@
                 id="packingout_trans_draft_waiting">
             <field name="act_from" ref="packingout_act_draft"/>
             <field name="act_to" ref="packingout_act_waiting"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_waiting_cancel">
             <field name="act_from" ref="packingout_act_waiting"/>
             <field name="act_to" ref="packingout_act_cancel"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_draft_cancel">
             <field name="act_from" ref="packingout_act_draft"/>
             <field name="act_to" ref="packingout_act_cancel"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_assigned_packed">
             <field name="act_from" ref="packingout_act_assigned"/>
             <field name="act_to" ref="packingout_act_packed"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">packed</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_packed_done">
             <field name="act_from" ref="packingout_act_packed"/>
             <field name="act_to" ref="packingout_act_done"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">done</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_assigned_cancel">
             <field name="act_from" ref="packingout_act_assigned"/>
             <field name="act_to" ref="packingout_act_cancel"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="packingout_trans_packed_cancel">
             <field name="act_from" ref="packingout_act_packed"/>
             <field name="act_to" ref="packingout_act_cancel"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
 
