@@ -98,6 +98,10 @@ class Purchase(OSV):
 
     def __init__(self):
         super(Purchase, self).__init__()
+        self._error_messages.update({
+                'addresses_required': 'Contact and Invoice addresses must be '
+                'defined for the quotation.',
+            })
 
     def default_payment_term(self, cursor, user, context=None):
         payment_term_obj = self.pool.get('account.invoice.payment_term')
@@ -597,6 +601,12 @@ class Purchase(OSV):
         default['packing_state'] = 'none'
         return super(Purchase, self).copy(cursor, user, purchase_id,
                 default=default, context=context)
+
+    def check_adresses(self, cursor, user, purchase_id, context=None):
+        purchase = self.browse(cursor, user, purchase_id, context=context)
+        if not (purchase.invoice_address and purchase.contact_address):
+            self.raise_user_error(cursor, 'addresses_required', context=context)
+        return True
 
     def set_reference(self, cursor, user, purchase_id, context=None):
         sequence_obj = self.pool.get('ir.sequence')

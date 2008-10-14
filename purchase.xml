@@ -240,7 +240,7 @@
             <field name="name">Quotation</field>
             <field name="workflow" ref="purchase_workflow"/>
             <field name="kind">function</field>
-            <field name="action">set_reference()&#10;write({'state': 'quotation'})</field>
+            <field name="action">check_adresses()&#10;set_reference()&#10;write({'state': 'quotation'})</field>
         </record>
         <record model="workflow.activity" id="purchase_activity_confirmed">
             <field name="name">Confirmed</field>
