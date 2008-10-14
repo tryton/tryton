@@ -4,8 +4,7 @@ from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 import datetime
 
-# TODO ensure that the link p_request p_line is never inconsistent
-# (uom, qty, product, ...).
+
 class PurchaseRequest(OSV):
     'Purchase Request'
     _name = 'purchase.request'
