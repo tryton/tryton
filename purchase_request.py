@@ -40,6 +40,9 @@ class PurchaseRequest(OSV):
     def __init__(self):
         super(PurchaseRequest, self).__init__()
         self._order[0] = ('id', 'DESC')
+        self._error_messages.update({
+            'create_request': 'Purchase request are only created by the system.',
+            })
 
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
@@ -370,6 +373,13 @@ class PurchaseRequest(OSV):
             current_date += datetime.timedelta(1)
 
         return (res_date, res_qty)
+
+    def create(self, cursor, user, vals, context=None):
+        for field_name in ('product', 'quantity', 'uom', 'warehouse', 'company'):
+            if not vals.get(field_name):
+                self.raise_user_error(cursor, 'create_request', context=context)
+        return super(PurchaseRequest, self).create(
+            cursor, user, vals, context=context)
 
 PurchaseRequest()
 
