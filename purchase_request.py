@@ -44,6 +44,7 @@ class PurchaseRequest(OSV):
         self._error_messages.update({
             'create_request': 'Purchase request are only created by the system.',
             })
+
     def name_get(self, cursor, user, ids, context=None):
         if isinstance(ids, (int, long)):
             ids = [ids]
