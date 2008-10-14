@@ -156,28 +156,24 @@
         <record model="ir.model.access" id="access_purchase_request">
             <field name="model" search="[('model', '=', 'purchase.request')]"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-        <record model="ir.model.access" id="access_purchase_request_admin">
-            <field name="model" search="[('model', '=', 'purchase.request')]"/>
-            <field name="group" ref="purchase.group_purchase"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
+            <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="res.group" id="group_purchase_request">
-            <field name="name">Purchase Request Cron</field>
+            <field name="name">Purchase Request</field>
         </record>
-        <record model="ir.model.access" id="access_purchase_request_cron">
+        <record model="ir.model.access" id="access_purchase_request_admin">
             <field name="model" search="[('model', '=', 'purchase.request')]"/>
             <field name="group" ref="group_purchase_request"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_purchase_request'))]"/>
         </record>
 
         <record model="res.user" id="user_generate_request">
