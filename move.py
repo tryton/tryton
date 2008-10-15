@@ -441,7 +441,7 @@ class Line(OSV):
         self._sql_constraints += [
             ('credit_debit',
                 'CHECK(credit * debit = 0.0)',
-                'wrong_debit_credit'),
+                'Wrong credit/debit values!'),
         ]
         self._constraints += [
             ('check_account', 'move_view_inactive_account'),
@@ -458,7 +458,6 @@ class Line(OSV):
             'no_journal': 'No journal defined!',
             'move_view_inactive_account': 'You can not create move line\n' \
                     'on view/inactive account!',
-            'wrong_debit_credit': 'Wrong credit/debit values!',
             })
 
     def default_date(self, cursor, user, context=None):
