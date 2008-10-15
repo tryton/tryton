@@ -703,12 +703,14 @@
                 id="packinginternal_trans_draft_waiting">
             <field name="act_from" ref="packinginternal_act_draft"/>
             <field name="act_to" ref="packinginternal_act_waiting"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
                 id="packinginternal_trans_waiting_assigned">
             <field name="act_from" ref="packinginternal_act_waiting"/>
             <field name="act_to" ref="packinginternal_act_assigned"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">assign</field>
             <field name="condition">assign_try()</field>
         </record>
@@ -716,29 +718,34 @@
                 id="packinginternal_trans_waiting_assigned_force">
             <field name="act_from" ref="packinginternal_act_waiting"/>
             <field name="act_to" ref="packinginternal_act_assigned"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">force_assign</field>
             <field name="condition">assign_force()</field>
         </record>
         <record model="workflow.transition" id="packinginternal_trans_assigned_done">
             <field name="act_from" ref="packinginternal_act_assigned"/>
             <field name="act_to" ref="packinginternal_act_done"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">done</field>
         </record>
         <record model="workflow.transition" id="packinginternal_trans_draft_cancel">
             <field name="act_from" ref="packinginternal_act_draft"/>
             <field name="act_to" ref="packinginternal_act_cancel"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="packinginternal_trans_waiting_cancel">
             <field name="act_from" ref="packinginternal_act_waiting"/>
             <field name="act_to" ref="packinginternal_act_cancel"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="packinginternal_trans_assigned_cancel">
             <field name="act_from" ref="packinginternal_act_assigned"/>
             <field name="act_to" ref="packinginternal_act_cancel"/>
+            <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
 
