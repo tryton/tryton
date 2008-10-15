@@ -25,8 +25,8 @@ class Address(OSV):
                 query += ' ' + address.city
             if address.country:
                 query += ' ' + address.country.name
-            if address.state:
-                query += ' ' + address.state.name
+            if address.subdivision:
+                query += ' ' + address.subdivision.name
             if query.strip():
                 res[address.id] = 'http://maps.google.com/maps?hl=%s&q=%s' % \
                         (lang, urllib.quote(query.strip().encode('utf-8')))
