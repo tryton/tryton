@@ -12,17 +12,20 @@ for country in pycountry.countries:
                 country.alpha2)
 
 for subdivision in pycountry.subdivisions:
-    if subdivision.type != 'State':
-        continue
-    #XXX fix for Saint Kitts and Nevis
-    if subdivision.country_code in ('KN K', 'KN N'):
-        subdivision.country_code = 'KN'
+    #XXX fix for second level of regional divisions
+    subdivision.country_code = subdivision.country_code.split(' ', 1)[0]
     print '''
-        <record model="relationship.country.state" id="%s">
+        <record model="relationship.country.subdivision" id="%s">
             <field name="name">%s</field>
             <field name="code">%s</field>
-            <field name="country" ref="%s"/>
-        </record>''' % (subdivision.code.lower(),
+            <field name="type">%s</field>''' % (subdivision.code.lower(),
                 subdivision.name.encode('utf-8'), subdivision.code,
-                subdivision.country.alpha2.lower())
+                subdivision.type.lower())
+    if subdivision.parent_code:
+        print '''\
+                <field name="parent" ref="%s"/>''' % \
+                subdivision.parent.code.lower()
+    print '''\
+            <field name="country" ref="%s"/>
+        </record>''' % subdivision.country.alpha2.lower()
 

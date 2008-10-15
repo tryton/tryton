@@ -21,8 +21,8 @@ class Address(OSV):
     city = fields.Char('City', size=128, states=STATES)
     country = fields.Many2One('relationship.country', 'Country',
            states=STATES)
-    state = fields.Many2One("relationship.country.state", 'State',
-           domain="[('country', '=', country)]", states=STATES)
+    subdivision = fields.Many2One("relationship.country.subdivision",
+            'Subdivision', domain="[('country', '=', country)]", states=STATES)
     email = fields.Char('E-Mail', size=64, states=STATES)
     phone = fields.Char('Phone', size=64, states=STATES)
     fax = fields.Char('Fax', size=64, states=STATES)

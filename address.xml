@@ -46,8 +46,8 @@
                     <newline/>
                     <label name="country"/>
                     <field name="country" completion="1"/>
-                    <label name="state"/>
-                    <field name="state"/>
+                    <label name="subdivision"/>
+                    <field name="subdivision"/>
                     <newline/>
                     <label name="phone"/>
                     <field name="phone"/>
