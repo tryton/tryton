@@ -72,7 +72,7 @@ class Period(OSV):
             if period.type != 'standard':
                 continue
             cursor.execute('SELECT id ' \
-                    'FROM ' + self._table + ' ' \
+                    'FROM "' + self._table + '" ' \
                     'WHERE ((start_date <= %s AND end_date >= %s) ' \
                             'OR (start_date <= %s AND end_date >= %s) ' \
                             'OR (start_date >= %s AND end_date <= %s)) ' \
