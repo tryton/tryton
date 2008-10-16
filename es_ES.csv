@@ -1,0 +1,68 @@
+type,name,res_id,src,value,fuzzy
+error,analytic_account.account,0,You can not create recursive accounts!,No puede crear cuentas recursivas!,0
+error,analytic_account.account.selection,0,Can not have many accounts with the same root or a missing mandatory root account!,No se puede cancelar muchas cuentas con la misma cuenta base o una cuenta base obligatoria!,0
+error,analytic_account.line,0,Wrong credit/debit values!,Valores erróneos de crédito/debito!,0
+error,analytic_account.line,0,"You can not create move line
+on view/inactive account!",No puede crear líneas de movimientos,0
+field,"account.move.line,analytic_lines",0,Analytic Lines,Líneas Analíticas,0
+field,"analytic_account.account,active",0,Active,Activo,0
+field,"analytic_account.account,balance",0,Balance,Balance,0
+field,"analytic_account.account,childs",0,Childs,Hij@s,0
+field,"analytic_account.account,code",0,Code,Código,0
+field,"analytic_account.account,company",0,Company,Compañía,0
+field,"analytic_account.account,complete_name",0,Name,Nombre,0
+field,"analytic_account.account,credit",0,Credit,Crédito,0
+field,"analytic_account.account,currency",0,Currency,Moneda,0
+field,"analytic_account.account,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"analytic_account.account,debit",0,Debit,Débito,0
+field,"analytic_account.account,display_balance",0,Display Balance,Mostrar Balance,0
+field,"analytic_account.account,mandatory",0,Mandatory,Obligatorio,0
+field,"analytic_account.account,name",0,Name,Nombre,0
+field,"analytic_account.account,note",0,Note,Nota,0
+field,"analytic_account.account.open_chart_account.init,end_date",0,End Date,Fecha Final,0
+field,"analytic_account.account.open_chart_account.init,start_date",0,Start Date,Fecha Inicial,0
+field,"analytic_account.account,parent",0,Parent,Padre,0
+field,"analytic_account.account,root",0,Root,Raíz,0
+field,"analytic_account.account.selection,accounts",0,Accounts,Cuentas,0
+field,"analytic_account.account,state",0,State,Estado,0
+field,"analytic_account.account,type",0,Type,Tipo,0
+field,"analytic_account.line,account",0,Account,Cuenta,0
+field,"analytic_account.line,active",0,Active,Activo,0
+field,"analytic_account.line,credit",0,Credit,Crédito,0
+field,"analytic_account.line,currency",0,Currency,Moneda,0
+field,"analytic_account.line,date",0,Date,Fecha,0
+field,"analytic_account.line,debit",0,Debit,Débito,0
+field,"analytic_account.line,journal",0,Journal,Diario,0
+field,"analytic_account.line,move_line",0,Account Move Line,Movimiento de Línea de Cuenta,0
+field,"analytic_account.line,name",0,Name,Nombre,0
+field,"analytic_account.line,party",0,Party,Tercero,0
+field,"analytic_account.line,reference",0,Reference,Referencia,0
+model,"ir.action,name",act_account_form,Analytic Accounts,Cuentas Analíticas,0
+model,"ir.action,name",act_account_tree,Analytic Accounts,Cuentas Analíticas,0
+model,"ir.action,name",act_account_tree2,Analytic Accounts,Cuentas Analíticas,0
+model,"ir.action,name",act_line_form,Analytic Lines,Líneas Analíticas,0
+model,"ir.action,name",act_open_account,Open Account,Abrir Cuenta,0
+model,"ir.action,name",act_open_chart_account,Open Chart of Analytic Account,Abrir Plan de Cuentas Analítico,0
+model,"ir.ui.menu,name",menu_analytic_account_configuration,Analytic Account,Cuenta Analítica,0
+model,"ir.ui.menu,name",menu_account_form,Analytic Accounts,Cuentas Analíticas,0
+model,"ir.ui.menu,name",menu_account_tree,Analytic Accounts,Cuentas Analíticas,0
+model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Analytic Account,Abrir Plan de Cuentas Analítico,0
+selection,"analytic_account.account,display_balance",0,Credit - Debit,Crédito - Débito,0
+selection,"analytic_account.account,display_balance",0,Debit - Credit,Débito - Crédito,0
+selection,"analytic_account.account,state",0,Closed,Cerrado,0
+selection,"analytic_account.account,state",0,Draft,Borrador,0
+selection,"analytic_account.account,state",0,Opened,Abierto,0
+selection,"analytic_account.account,type",0,Normal,Normal,0
+selection,"analytic_account.account,type",0,Root,Raíz,0
+selection,"analytic_account.account,type",0,View,Vista,0
+view,account.move.line,0,Analytic,Analítica,0
+view,analytic_account.account,0,Analytic Account,Cuenta Analítica,0
+view,analytic_account.account,0,Analytic Accounts,Cuentas Analíticas,0
+view,analytic_account.account,0,General Information,Información General,0
+view,analytic_account.account,0,Notes,Notas,0
+view,analytic_account.account.open_chart_account.init,0,Open Chart of Analytic Account,Abrir Plan de Cuentas Analítico,0
+view,analytic_account.line,0,Analytic Line,Línea Analítica,0
+view,analytic_account.line,0,Analytic Lines,Líneas Analíticas,0
+view,analytic_account.line,0,General Information,Información General,0
+wizard_button,"analytic_account.account.open_chart_account,init,end",0,Cancel,Cancelar,0
+wizard_button,"analytic_account.account.open_chart_account,init,open",0,Open,Abrir,0
