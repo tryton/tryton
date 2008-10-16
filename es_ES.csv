@@ -1,0 +1,243 @@
+type,name,res_id,src,value,fuzzy
+error,stock.inventory.line,0,Move quantity must be positive,El valor del movimiento debe ser positivo,0
+error,stock.inventory.line,0,Product must be unique by inventory!,El producto debe ser único por inventario!,0
+error,stock.move,0,Move can not be in both Supplier and Customer Packing,El Movimiento no puede estar en el empaque del Proveedor y del Cliente,0
+error,stock.move,0,Move quantity must be positive,El valor del movimiento debe ser positivo,0
+error,stock.move,0,Source and destination location must be different,Los lugares fuente y destino deben diferir,0
+error,stock.move,0,You can not set state to assigned!,No puede establecer el estado como asignado!,0
+error,stock.move,0,You can not set state to done!,No puede establecer el estado como hecho!,0
+error,stock.move,0,You can not set state to draft!,No puede establecer el estado como borrador!,0
+error,stock.move,0,You can not use service product for a move!,No puede usar un producto de servicio para un movimiento!,0
+error,stock.move,0,You can only delete draft or cancelled moves!,Solamente puede eliminar movimientos en borrador o cancelados!,0
+error,stock.packing.in,0,Incoming Moves must have input location as destination location!,Los movimientos de Entrada deben tener lugar destino y de inicio!,0
+error,stock.packing.in,0,Inventory Moves must have input location as source location!,Los movimientos de Inventario deben tener un lugar de entrada como lugar de origen!,0
+error,stock.packing.in,0,Inventory Moves must have output location as destination location!,Los movimientos de Inventario deben tener un lugar de salida como lugar de destino!,0
+error,stock.packing.in,0,Outgoing Moves must have output location as source location!,Los Movimientos de Salida deben tener tanto lugar de salida como origen!,0
+field,"product.product,forecast_quantity",0,Forecast Quantity,Cantidad Pronosticada,0
+field,"product.product,quantity",0,Quantity,Cantidad,0
+field,"relationship.address,delivery",0,Delivery,Envío,0
+field,"relationship.party,customer_location",0,Customer Location,Lugar del Cliente,0
+field,"relationship.party,supplier_location",0,Supplier Location,Lugar del Proveedor,0
+field,"stock.inventory,company",0,Company,Compañía,0
+field,"stock.inventory,date",0,Date,Fecha,0
+field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Cantidad Esperada,0
+field,"stock.inventory.line,inventory",0,Inventory,Inventario,0
+field,"stock.inventory.line,product",0,Product,Producto,0
+field,"stock.inventory.line,quantity",0,Quantity,Cantidad,0
+field,"stock.inventory,lines",0,Inventory Lines,Líneas de Inventario,0
+field,"stock.inventory.line,uom",0,UOM,UDM,0
+field,"stock.inventory,location",0,Location,Lugar,0
+field,"stock.inventory,lost_found",0,Lost and Found,Perdido y Encontrado,0
+field,"stock.inventory,moves",0,Generated moves,Movimientos Generados,0
+field,"stock.inventory,state",0,State,Estado,0
+field,"stock.location,active",0,Active,Activo,0
+field,"stock.location,address",0,Address,Direcciones,0
+field,"stock.location,childs",0,Childs,Hij@s,0
+field,"stock.location,code",0,Code,Código,0
+field,"stock.location,forecast_quantity",0,Forecast Quantity,Cantidad Pronosticada,0
+field,"stock.location,input_location",0,Input,Entrada,0
+field,"stock.location,left",0,Left,Izquierda,0
+field,"stock.location,name",0,Name,Nombre,0
+field,"stock.location,output_location",0,Output,Salida,0
+field,"stock.location,parent",0,Parent,Padre,0
+field,"stock.location,quantity",0,Quantity,Cantidad,0
+field,"stock.location,right",0,Right,Derecha,0
+field,"stock.location_stock_date.init,forecast_date",0,At Date,En la fecha,0
+field,"stock.location,storage_location",0,Storage,Almacén,0
+field,"stock.location,type",0,Location type,Tipo de Lugar,0
+field,"stock.move,company",0,Company,Compañía,0
+field,"stock.move,currency",0,Currency,Moneda,0
+field,"stock.move,effective_date",0,Effective Date,Fecha Efectiva,0
+field,"stock.move,from_location",0,From Location,Lugar Inicial,0
+field,"stock.move,packing_in",0,Supplier Packing,Empaque del Proveedor,0
+field,"stock.move,packing_internal",0,Internal Packing,Empaque Interno,0
+field,"stock.move,packing_out",0,Customer Packing,Empaque de Cliente,0
+field,"stock.move,planned_date",0,Planned Date,Fecha Planeada,0
+field,"stock.move,product",0,Product,Producto,0
+field,"stock.move,quantity",0,Quantity,Cantidad,0
+field,"stock.move,state",0,State,Estado,0
+field,"stock.move,to_location",0,To Location,Al Lugar:,0
+field,"stock.move,type",0,Type,Tipo,0
+field,"stock.move,unit_digits",0,Unit Digits,Dígitos de Unidad,0
+field,"stock.move,unit_price",0,Unit Price,Precio Unitario,0
+field,"stock.move,uom",0,Uom,Udm,0
+field,"stock.packing.in,code",0,Code,Código,0
+field,"stock.packing.in,contact_address",0,Contact Address,Dirección de Contacto,0
+field,"stock.packing.in,effective_date",0,Effective Date,Fecha Efectiva,0
+field,"stock.packing.in,incoming_moves",0,Incoming Moves,Movimientos de Entrada,0
+field,"stock.packing.in,inventory_moves",0,Inventory Moves,Movimientos de Inventario,0
+field,"stock.packing.in,moves",0,Moves,Movimientos,0
+field,"stock.packing.in,planned_date",0,Planned Date,Fecha Planeada,0
+field,"stock.packing.in,reference",0,Reference,Referencia,0
+field,"stock.packing.in,state",0,State,Estado,0
+field,"stock.packing.in,supplier",0,Supplier,Proveedor,0
+field,"stock.packing.internal,code",0,Code,Código,0
+field,"stock.packing.internal,effective_date",0,Effective Date,Fecha Efectiva,0
+field,"stock.packing.internal,from_location",0,From Location,Lugar Inicial,0
+field,"stock.packing.internal,moves",0,Moves,Movimientos,0
+field,"stock.packing.internal,planned_date",0,Planned Date,Fecha Planeada,0
+field,"stock.packing.internal,reference",0,Reference,Referencia,0
+field,"stock.packing.internal,state",0,State,Estado,0
+field,"stock.packing.internal,to_location",0,To Location,Al Lugar:,0
+field,"stock.packing.in,warehouse",0,Warehouse,Depósito,0
+field,"stock.packing.out,code",0,Code,Código,0
+field,"stock.packing.out,customer",0,Customer,Cliente,0
+field,"stock.packing.out,customer_location",0,Customer Location,Lugar del Cliente,0
+field,"stock.packing.out,delivery_address",0,Delivery Address,Dirección de Envío,0
+field,"stock.packing.out,effective_date",0,Effective Date,Fecha Efectiva,0
+field,"stock.packing.out,inventory_moves",0,Inventory Moves,Movimientos de Inventario,0
+field,"stock.packing.out,moves",0,Moves,Movimientos,0
+field,"stock.packing.out,outgoing_moves",0,Outgoing Moves,Movimientos de Salida,0
+field,"stock.packing.out,planned_date",0,Planned Date,Fecha Planeada,0
+field,"stock.packing.out,reference",0,Reference,Referencia,0
+field,"stock.packing.out,state",0,State,Estado,0
+field,"stock.packing.out,warehouse",0,Warehouse,Depósito,0
+field,"stock.product_stock_date.init,forecast_date",0,At Date,En la fecha,0
+help,"relationship.party,customer_location",0,The default destination location when sending products to the party.,El lugar predeterminado destino cuando se envian productos al tercero.,0
+help,"relationship.party,supplier_location",0,The default source location when receiving products from the party.,El lugar origen predeterminado cuando se reciben productos del tercero.,0
+help,"stock.location_stock_date.init,forecast_date",0,"Allow to compute expected stock quantities for this date.
+* An empty value is an infinite date in the future.
+* A date in the past will provide historical values.","Permitir calcular el inventario esperado para esta fecha.
+* Un valor vacíoes una fecha infinita en el futuro.
+* Una fecha en el pasado indicará usar datos históricos.",0
+help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected stock quantities for this date.
+* An empty value is an infinite date in the future.
+* A date in the past will provide historical values.","Permitir calcular el inventario esperado para esta fecha.
+* Un valor vacíoes una fecha infinita en el futuro.
+* Una fecha en el pasado indicará usar datos históricos.",0
+model,"ir.action,name",act_packing_out_form_assigned,Assigned Customer Packings,Empaques asignados a Clientes,0
+model,"ir.action,name",act_packing_internal_assigned_form,Assigned Internal Packings,Empaques asignados internamente,0
+model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Inventario Completo,0
+model,"ir.action,name",report_packing_out,Customer Packing,Empaque de Cliente,0
+model,"ir.action,name",act_packing_out_form,Customer Packings,Empaques de Cliente,0
+model,"ir.action,name",act_packing_out_form_ready,Customer Packings Ready for Shipping,Empaques de Cliente listos para Envío,0
+model,"ir.action,name",act_packing_out_form_waiting,Customer Packings Waiting Assignation,Empaques de Cliente listos esperando Asignación,0
+model,"ir.action,name",act_packing_internal_draft_form,Draft Internal Packings,Empaques Internos en Borrador,0
+model,"ir.action,name",act_location_form,Edit Locations,Editar Lugares,0
+model,"ir.action,name",act_packing_internal_form,Internal Packings,Empaques Internos,0
+model,"ir.action,name",act_packing_internal_waiting_form,Internal Packings Waiting Assignation,Empaques Internos esperando Asignación,0
+model,"ir.action,name",act_inventory_form,Inventories,Inventarios,0
+model,"ir.action,name",act_location_tree,Locations,Lugares,0
+model,"ir.action,name",act_move_form,Moves,Movimientos,0
+model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Movimientos de Proveedores,0
+model,"ir.action,name",act_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Movimientos de Proveedores en espera de Arrivo,0
+model,"ir.action,name",act_move_form_cust,Moves to Customers,Movimientos hacia Clientes,0
+model,"ir.action,name",act_packing_in_form2,New Supplier Packing,Nuevo Empaque de Proveedor,0
+model,"ir.action,name",wizard_location_open,Product by Location,Producto por Lugar,0
+model,"ir.action,name",wizard_product_open,Product Quantities,Cantidades de Producto,0
+model,"ir.action,name",act_product_by_location,Products by Locations,Productos por Lugares,0
+model,"ir.action,name",act_location_quantity_tree,Product Stock,Inventario de Producto,0
+model,"ir.action,name",act_packing_in_form_received,Received Supplier packings,Empaques de Proveedores recibidos,0
+model,"ir.action,name",act_packing_in_form,Supplier Packings,Empaques del Proveedor,0
+model,"ir.ui.menu,name",menu_packing_out_assigned,Assigned Customer Packings,Empaques asignados a Clientes,0
+model,"ir.ui.menu,name",menu_packing_internal_assigned_form,Assigned Internal Packings,Empaques asignados internamente,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Configuración,0
+model,"ir.ui.menu,name",menu_packing_out_form,Customer Packings,Empaques de Cliente,0
+model,"ir.ui.menu,name",menu_packing_out_ready,Customer Packings Ready for Shipping,Empaques de Cliente listos para Envío,0
+model,"ir.ui.menu,name",menu_packing_out_waiting,Customer Packings Waiting Assignation,Empaques de Cliente listos esperando Asignación,0
+model,"ir.ui.menu,name",menu_packing_internal_draft_form,Draft Internal Packings,Empaques Internos en Borrador,0
+model,"ir.ui.menu,name",menu_location_form,Edit Locations,Editar Lugares,0
+model,"ir.ui.menu,name",menu_packing_internal_form,Internal Packings,Empaques Internos,0
+model,"ir.ui.menu,name",menu_packing_internal_waiting_form,Internal Packings Waiting Assignation,Empaques Internos esperando Asignación,0
+model,"ir.ui.menu,name",menu_inventory_form,Inventories,Inventarios,0
+model,"ir.ui.menu,name",menu_stock,Inventory Management,Manejo de Inventarios,0
+model,"ir.ui.menu,name",menu_location_tree,Locations,Lugares,0
+model,"ir.ui.menu,name",menu_move_form,Moves,Movimientos,0
+model,"ir.ui.menu,name",menu_move_form_supp,Moves from Suppliers,Movimientos de Proveedores,0
+model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Movimientos de Proveedores en espera de Arrivo,0
+model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Movimientos hacia Clientes,0
+model,"ir.ui.menu,name",menu_packing_in_form2,New Supplier Packing,Nuevo Empaque de Proveedor,0
+model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Empaques de Proveedores recibidos,0
+model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Empaques del Proveedor,0
+odt,stock.packing.out,0,Customer Code:,Código de Cliente:,0
+odt,stock.packing.out,0,Date:,Fecha:,0
+odt,stock.packing.out,0,Email:,Correo Electrónico:,0
+odt,stock.packing.out,0,List,Lista,0
+odt,stock.packing.out,0,Packing,En empaque,0
+odt,stock.packing.out,0,Packing Number:,Número de Empaque:,0
+odt,stock.packing.out,0,Phone:,Teléfono:,0
+odt,stock.packing.out,0,Product,Producto,0
+odt,stock.packing.out,0,Quantity,Cantidad,0
+odt,stock.packing.out,0,Reference:,Referencia:,0
+selection,"stock.inventory,state",0,Cancel,Cancelar,0
+selection,"stock.inventory,state",0,Done,Hecho,0
+selection,"stock.inventory,state",0,Open,Abrir,0
+selection,"stock.location,type",0,Customer,Cliente,0
+selection,"stock.location,type",0,Lost and Found,Perdido y Encontrado,0
+selection,"stock.location,type",0,Production,Producción,0
+selection,"stock.location,type",0,Storage,Almacén,0
+selection,"stock.location,type",0,Supplier,Proveedor,0
+selection,"stock.location,type",0,Warehouse,Depósito,0
+selection,"stock.move,state",0,Assigned,Asignado,0
+selection,"stock.move,state",0,Cancel,Cancelar,0
+selection,"stock.move,state",0,Done,Hecho,0
+selection,"stock.move,state",0,Draft,Borrador,0
+selection,"stock.move,type",0,Input,Entrada,0
+selection,"stock.move,type",0,Internal,Interna,0
+selection,"stock.move,type",0,Output,Salida,0
+selection,"stock.packing.in,state",0,Cancel,Cancelar,0
+selection,"stock.packing.in,state",0,Done,Hecho,0
+selection,"stock.packing.in,state",0,Draft,Borrador,0
+selection,"stock.packing.in,state",0,Received,Recibido,0
+selection,"stock.packing.internal,state",0,Assigned,Asignado,0
+selection,"stock.packing.internal,state",0,Cancel,Cancelar,0
+selection,"stock.packing.internal,state",0,Done,Hecho,0
+selection,"stock.packing.internal,state",0,Draft,Borrador,0
+selection,"stock.packing.internal,state",0,Waiting,En Espera,0
+selection,"stock.packing.out,state",0,Assigned,Asignado,0
+selection,"stock.packing.out,state",0,Cancel,Cancelar,0
+selection,"stock.packing.out,state",0,Done,Hecho,0
+selection,"stock.packing.out,state",0,Draft,Borrador,0
+selection,"stock.packing.out,state",0,Packed,Empacado,0
+selection,"stock.packing.out,state",0,Waiting,En Espera,0
+view,product_stock_date.init,0,Product Quantity.,Cantidad de Producto.,0
+view,stock.inventory,0,All generated moves will be cancelled!,Se cancelarán todos los movimientos generados!,0
+view,stock.inventory,0,Cancel,Cancelar,0
+view,stock.inventory,0,Complete Inventory,Inventario Completo,0
+view,stock.inventory,0,Confirm,Confirmar,0
+view,stock.inventory,0,Inventories,Inventarios,0
+view,stock.inventory,0,Inventory,Inventario,0
+view,stock.inventory,0,Re-Open,Re-abrir,0
+view,stock.inventory.line,0,Inventory Line,Línea de Inventario,0
+view,stock.inventory.line,0,Inventory Lines,Líneas de Inventario,0
+view,stock.location,0,Location,Lugar,0
+view,stock.location,0,Locations,Lugares,0
+view,stock.location,0,Product Stock,Inventario de Producto,0
+view,stock.location_stock_date.init,0,Product Quantity.,Cantidad de Producto.,0
+view,stock.move,0,Cancel,Cancelar,0
+view,stock.move,0,Move,Movimiento,0
+view,stock.move,0,Moves,Movimientos,0
+view,stock.move,0,Set Done,Marcar como Hecho,0
+view,stock.move,0,Set Draft,Marcar como Borrador,0
+view,stock.packing.in,0,Cancel,Cancelar,0
+view,stock.packing.in,0,Incoming Moves,Movimientos de Entrada,0
+view,stock.packing.in,0,Inventory Moves,Movimientos de Inventario,0
+view,stock.packing.in,0,Moves,Movimientos,0
+view,stock.packing.in,0,Received,Recibido,0
+view,stock.packing.in,0,Reset to Draft,Revertir a Borrador,0
+view,stock.packing.in,0,Set Done,Marcar como Hecho,0
+view,stock.packing.in,0,Supplier Packing,Empaque del Proveedor,0
+view,stock.packing.in,0,Supplier Packings,Empaques del Proveedor,0
+view,stock.packing.internal,0,Assign,Asignar,0
+view,stock.packing.internal,0,Cancel,Cancelar,0
+view,stock.packing.internal,0,Force Assign,Forzar Asignación,0
+view,stock.packing.internal,0,Internal Packing,Empaque Interno,0
+view,stock.packing.internal,0,Internal Packings,Empaques Internos,0
+view,stock.packing.internal,0,Reset to Draft,Revertir a Borrador,0
+view,stock.packing.internal,0,Set Done,Marcar como Hecho,0
+view,stock.packing.internal,0,Set Waiting,Colocar en Espera,0
+view,stock.packing.out,0,Assign,Asignar,0
+view,stock.packing.out,0,Cancel,Cancelar,0
+view,stock.packing.out,0,Customer Packing,Empaque de Cliente,0
+view,stock.packing.out,0,Customer Packings,Empaques de Cliente,0
+view,stock.packing.out,0,Force Assign,Forzar Asignación,0
+view,stock.packing.out,0,Inventory Moves,Movimientos de Inventario,0
+view,stock.packing.out,0,Make packing,Hacer Empaque,0
+view,stock.packing.out,0,Outgoing Moves,Movimientos de Salida,0
+view,stock.packing.out,0,Reset to Draft,Revertir a Borrador,0
+view,stock.packing.out,0,Set Done,Marcar como Hecho,0
+view,stock.packing.out,0,Set Waiting,Colocar en Espera,0
+wizard_button,"stock.location.open,init,end",0,Cancel,Cancelar,0
+wizard_button,"stock.location.open,init,open",0,Open,Abrir,0
+wizard_button,"stock.product.open,init,end",0,Cancel,Cancelar,0
+wizard_button,"stock.product.open,init,open",0,Open,Abrir,0
