@@ -54,7 +54,7 @@ class Template(OSV):
             relation='account.account', string='Account Expense Used')
     account_revenue_used = fields.Function('get_account', type='many2one',
             relation='account.account', string='Account Revenue Used')
-    taxes_category = fields.Boolean('Taxes Category', help='Use the taxes ' \
+    taxes_category = fields.Boolean('Use Category\'s Taxes', help='Use the taxes ' \
             'defined on the category')
     customer_taxes = fields.Many2Many('account.tax',
             'product_customer_taxes_rel', 'product', 'tax',
