@@ -1,0 +1,120 @@
+type,name,res_id,src,value,fuzzy
+error,account.invoice,0,You can not delete invoices that comes from a sale!,No puede borrar facturas que provenientes de una venta!,0
+error,sale.line,0,"It miss an ""account_revenue"" default property!","Hace falta una propiedad predeterminada de ""cuenta_de_ganancias""!",0
+error,sale.line,0,The customer location is required!,Es indispensable el lugar del cliente!,0
+error,sale.sale,0,Wrong combination of method!,Combinación o método erróneos!,0
+field,"product.template,salable",0,Salable,De fácil venta,0
+field,"product.template,sale_uom",0,Sale UOM,UdM de Venta,0
+field,"sale.line,amount",0,Amount,Cantidad,0
+field,"sale.line,comment",0,Comment,Comentario,0
+field,"sale.line,description",0,Description,Descripción,0
+field,"sale.line,invoice_lines",0,Invoice Lines,Líneas de Factura,0
+field,"sale.line,move_done",0,Moves Done,Movimientos Hechos,0
+field,"sale.line,move_exception",0,Moves Exception,Exepción de Movimientos,0
+field,"sale.line,moves",0,Moves,Movimientos,0
+field,"sale.line,moves_ignored",0,Moves Ignored,Movimientos Ignorados,0
+field,"sale.line,product",0,Product,Producto,0
+field,"sale.line,quantity",0,Quantity,Cantidad,0
+field,"sale.line,sale",0,Sale,Venta,0
+field,"sale.line,sequence",0,Sequence,Secuencia,0
+field,"sale.line,taxes",0,Taxes,Impuestos,0
+field,"sale.line,type",0,Type,Tipo,0
+field,"sale.line,unit",0,Unit,Unidad,0
+field,"sale.line,unit_digits",0,Unit Digits,Dígitos de Unidad,0
+field,"sale.line,unit_price",0,Unit Price,Precio Unitario,0
+field,"sale.sale,comment",0,Comment,Comentario,0
+field,"sale.sale,company",0,Company,Compañía,0
+field,"sale.sale,contact_address",0,Contact Address,Dirección de Contacto,0
+field,"sale.sale,currency",0,Currency,Moneda,0
+field,"sale.sale,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"sale.sale,description",0,Description,Descripción,0
+field,"sale.sale,invoice_address",0,Invoice Address,Dirección de Facturación,0
+field,"sale.sale,invoice_exception",0,Invoices Exception,Excepción de Facturación,0
+field,"sale.sale,invoice_method",0,Invoice Method,Método de Facturación,0
+field,"sale.sale,invoice_paid",0,Invoices Paid,Facturas Pagadas,0
+field,"sale.sale,invoices",0,Invoices,Facturas,0
+field,"sale.sale,invoices_ignored",0,Invoices Ignored,Facturas Ignoradas,0
+field,"sale.sale,invoice_state",0,Invoice State,Estado de Factura,0
+field,"sale.sale,lines",0,Lines,Líneas,0
+field,"sale.sale,moves",0,Moves,Movimientos,0
+field,"sale.sale,packing_address",0,Packing Address,Dirección de empaque,0
+field,"sale.sale,packing_done",0,Packing Done,Empacado Finalizado,0
+field,"sale.sale,packing_exception",0,Packings Exception,Excepción de Empaques,0
+field,"sale.sale,packing_method",0,Packing Method,Método de Empacado,0
+field,"sale.sale,packings",0,Packings,Empaques,0
+field,"sale.sale,packing_state",0,Packing State,Estado de Empaque,0
+field,"sale.sale,party",0,Party,Tercero,0
+field,"sale.sale,party_lang",0,Party Language,Idioma del Tercero,0
+field,"sale.sale,payment_term",0,Payment Term,Término de Pago,0
+field,"sale.sale,reference",0,Reference,Referencia,0
+field,"sale.sale,sale_date",0,Sale Date,Fecha de Venta,0
+field,"sale.sale,state",0,State,Estado,0
+field,"sale.sale,tax_amount",0,Tax,Impuesto,0
+field,"sale.sale,total_amount",0,Total,Total,0
+field,"sale.sale,untaxed_amount",0,Untaxed,Sin Impuesto,0
+field,"sale.sale,warehouse",0,Warehouse,Depósito,0
+field,"stock.move,sale",0,Sale,Venta,0
+field,"stock.move,sale_line",0,unknown,desconocido,0
+model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Ventas Confirmadas,0
+model,"ir.action,name",act_sale_form_draft,Draft Sales,Ventas en Borrador,0
+model,"ir.action,name",act_sale_form_quotation,Quotation Sales,Ventas Cotizadas,0
+model,"ir.action,name",report_sale,Sale,Venta,0
+model,"ir.action,name",act_sale_form,Sales,Ventas,0
+model,"ir.ui.menu,name",menu_sale_form_confirmed,Confirmed Sales,Ventas Confirmadas,0
+model,"ir.ui.menu,name",menu_sale_form_draft,Draft Sales,Ventas en Borrador,0
+model,"ir.ui.menu,name",menu_sale_form_quotation,Quotation Sales,Ventas Cotizadas,0
+model,"ir.ui.menu,name",menu_sale,Sale Management,Gestión de Ventas,0
+model,"ir.ui.menu,name",menu_sale_form,Sales,Ventas,0
+odt,sale.sale,0,Amount,Cantidad,0
+odt,sale.sale,0,Date:,Fecha:,0
+odt,sale.sale,0,Description,Descripción,0
+odt,sale.sale,0,Description:,Descripción:,0
+odt,sale.sale,0,Draft Sale Order,Orden de Venta en Borrador,0
+odt,sale.sale,0,Email:,Correo Electrónico:,0
+odt,sale.sale,0,Phone:,Teléfono:,0
+odt,sale.sale,0,Quantity,Cantidad,0
+odt,sale.sale,0,Quotation N°:,Cotización Nº:,0
+odt,sale.sale,0,Sale Order N°:,Orden de Venta Nº:,0
+odt,sale.sale,0,Taxes,Impuestos,0
+odt,sale.sale,0,Taxes:,Impuestos:,0
+odt,sale.sale,0,Total:,Total:,0
+odt,sale.sale,0,Total (excl. taxes):,Total (sin impuestos):,0
+odt,sale.sale,0,Unit Price,Precio Unitario,0
+odt,sale.sale,0,VAT:,VAT:,0
+selection,"sale.line,type",0,Line,Línea,0
+selection,"sale.line,type",0,Subtotal,Subtotal,0
+selection,"sale.line,type",0,Title,Título,0
+selection,"sale.sale,invoice_method",0,Manual,Manual,0
+selection,"sale.sale,invoice_method",0,On Order Confirmed,Al Confirmar la Orden,0
+selection,"sale.sale,invoice_method",0,On Packing Sent,Al enviar el Empaque,0
+selection,"sale.sale,invoice_state",0,Exception,Excepción,0
+selection,"sale.sale,invoice_state",0,None,Ninguno,0
+selection,"sale.sale,invoice_state",0,Paid,Pagado,0
+selection,"sale.sale,invoice_state",0,Waiting,En Espera,0
+selection,"sale.sale,packing_method",0,Manual,Manual,0
+selection,"sale.sale,packing_method",0,On Invoice Paid,Al Pagar,0
+selection,"sale.sale,packing_method",0,On Order Confirmed,Al Confirmar la Orden,0
+selection,"sale.sale,packing_state",0,Exception,Excepción,0
+selection,"sale.sale,packing_state",0,None,Ninguno,0
+selection,"sale.sale,packing_state",0,Sent,Enviado,0
+selection,"sale.sale,packing_state",0,Waiting,En Espera,0
+selection,"sale.sale,state",0,Cancel,Cancelar,0
+selection,"sale.sale,state",0,Confirmed,Confirmado,0
+selection,"sale.sale,state",0,Done,Hecho,0
+selection,"sale.sale,state",0,Draft,Borrador,0
+selection,"sale.sale,state",0,Quotation,Cotización,0
+view,product.product,0,Customers,Clientes,0
+view,sale.line,0,Sale Line,Línea de Venta,0
+view,sale.line,0,Sale Lines,Líneas de Venta,0
+view,sale.sale,0,Cancel,Cancelar,0
+view,sale.sale,0,Confirm,Confirmar,0
+view,sale.sale,0,Draft,Borrador,0
+view,sale.sale,0,Ignore Invoice Exception,Ignorar excepción en Factura,0
+view,sale.sale,0,Ignore Packing Exception,Ignorar excepción en Empaque,0
+view,sale.sale,0,Invoices,Facturas,0
+view,sale.sale,0,Lines,Líneas,0
+view,sale.sale,0,Other Info,Información Adicional,0
+view,sale.sale,0,Packings,Empaques,0
+view,sale.sale,0,Quotation,Cotización,0
+view,sale.sale,0,Sale,Venta,0
+view,sale.sale,0,Sales,Ventas,0
