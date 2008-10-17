@@ -8,16 +8,28 @@
             <field name="arch" type="xml">
                 <![CDATA[
                     <form string="Order Point">
+                        <separator string="Product Info" colspan="4"/>
                         <label name="product"/>
                         <field name="product"/>
-                        <label name="location"/>
-                        <field name="location"/>
                         <label name="min_quantity"/>
                         <field name="min_quantity"/>
                         <label name="max_quantity"/>
                         <field name="max_quantity"/>
+                        <separator string="Order Point Type" colspan="4"/>
+                        <label name="type"/>
+                        <field name="type"/>
+                        <group col="4" colspan="2">
+                            <label name="warehouse_location"/>
+                            <field name="warehouse_location"/>
+                            <label name="storage_location"/>
+                            <field name="storage_location"/>
+                        </group>
+                        <label name="provisioning_location"/>
+                        <field name="provisioning_location"/>
+                        <newline/>
                         <label name="company"/>
                         <field name="company"/>
+
                     </form>
                 ]]>
             </field>

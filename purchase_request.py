@@ -112,13 +112,13 @@ class PurchaseRequest(OSV):
             cursor, user, [('type','=','warehouse')], context=context)
         # fetch order points
         order_point_ids = order_point_obj.search(
-            cursor, user, [], context=context)
+            cursor, user, [('type', '=', 'purchase')], context=context)
         # index them by product
         product2ops = {}
         for order_point in order_point_obj.browse(
             cursor, user, order_point_ids, context=context):
             product2ops[
-                (order_point.location.id, order_point.product.id)
+                (order_point.warehouse_location.id, order_point.product.id)
                 ] = order_point
 
         # fetch stockable products
