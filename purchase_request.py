@@ -11,10 +11,10 @@ class PurchaseRequest(OSV):
     _description = __doc__
 
     product = fields.Many2One(
-        'product.product', 'Product', required=True, select=True, readonly=True)
-    party = fields.Many2One('relationship.party', 'Party',  select=True)
+        'product.product', 'Product', required=True, select=1, readonly=True)
+    party = fields.Many2One('relationship.party', 'Party',  select=1)
     quantity = fields.Float('Quantity', required=True)
-    uom = fields.Many2One('product.uom', 'UOM', required=True, select=True)
+    uom = fields.Many2One('product.uom', 'UOM', required=True, select=1)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
     supply_date = fields.Date('Expected Supply Date', readonly=True)
     stock_level =  fields.Float('Stock at Supply Date', readonly=True)

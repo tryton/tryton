@@ -14,15 +14,15 @@ class OrderPoint(OSV):
     _description = "Order Point"
 
     product = fields.Many2One(
-        'product.product', 'Product', required=True, select=True,
+        'product.product', 'Product', required=True, select=1,
         domain=[('type', '=', 'stockable')])
     warehouse_location = fields.Many2One(
-        'stock.location', 'Warehouse Location', select=True,
+        'stock.location', 'Warehouse Location', select=1,
         domain="[('type', '=', 'warehouse')]",
         states={'invisible': "type != 'purchase'",
                 'required': "type == 'purchase'"},)
     storage_location = fields.Many2One(
-        'stock.location', 'Storage Location', select=True,
+        'stock.location', 'Storage Location', select=1,
         domain="[('type', '=', 'storage')]",
         states={'invisible': "type != 'internal'",
                 'required': "type == 'internal'"},)
@@ -37,7 +37,7 @@ class OrderPoint(OSV):
     type = fields.Selection(
         [('internal', 'Internal'),
          ('purchase', 'Purchase')],
-        'Type', select=True, required=True)
+        'Type', select=1, required=True)
     min_quantity = fields.Float('Minimal Quantity', required=True)
     max_quantity = fields.Float('Maximal Quantity', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
@@ -82,7 +82,6 @@ class OrderPoint(OSV):
                    ('type', '=', 'internal')]
             query.append(arg)
         ids = self.search(cursor, user, query)
-        print ids
         return not bool(ids)
 
     def check_uniqueness_field(self, type):
