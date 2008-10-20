@@ -84,13 +84,13 @@ class OrderPoint(OSV):
         ids = self.search(cursor, user, query)
         return not bool(ids)
 
-    def type2field(self, type=None):
-        t2f = (('warehouse_location', 'purchase'),
-               ('storage_location', 'internal'))
+    def _type2field(self, type=None):
+        t2f = {'warehouse_location': 'purchase',
+               'storage_location': 'internal'}
         if type == None:
             return t2f
         else:
-            return dict(t2f)[type]
+            return t2f[type]
 
     def check_uniqueness(self, cursor, user, ids):
         """
@@ -100,7 +100,7 @@ class OrderPoint(OSV):
         """
         query = ['OR']
         for op in self.browse(cursor, user, ids):
-            field = self.type2field(op.type)
+            field = self._type2field(op.type)
             arg = ['AND',
                    (field, '=', op[field].id),
                    ('id', '!=', op.id),
@@ -137,7 +137,7 @@ class OrderPoint(OSV):
 
     def search_location(self, cursor, user, name, domain=None, context=None):
         ids = []
-        for field, type in self.type2field():
+        for field, type in self._type2field().iteritems():
             args = [('type', '=', type)]
             for _, operator, operand in domain:
                 args.append((field, operator, operand))
