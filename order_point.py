@@ -119,6 +119,23 @@ class OrderPoint(OSV):
             res.append((op.id, "%s@%s" % (op.product.name, op.location.name)))
         return res
 
+    def name_search(self, cursor, user, name='', args=None, operator='ilike',
+                    context=None, limit=None):
+        if not args:
+            args=[]
+        ids = False
+        names = name.split('@',1)
+        query = [('product.template.name', operator, names[0])] + args
+        if len(names) == 1 or not names[1]:
+            ids = self.search( cursor, user, query, limit=limit, context=context)
+        else:
+            location_args = self.search_location(
+                cursor, user, 'location', [('location', operator, names[1])],
+                context=context)
+            ids = self.search(
+                cursor, user, query + location_args, limit=limit, context=context)
+        return self.name_get(cursor, user, ids, context)
+
     def get_location(self, cursor, user, ids, name, args, context=None):
         location_obj = self.pool.get('stock.location')
         res = {}
