@@ -61,7 +61,7 @@
             <field name="view" ref="location_view_tree"/>
             <field name="act_window" ref="act_location_tree"/>
         </record>
-        <menuitem parent="menu_configuration" sequence="1"
+        <menuitem parent="menu_stock" sequence="10"
             action="act_location_tree" id="menu_location_tree"/>
 
         <record model="ir.action.act_window" id="act_location_form">
@@ -79,7 +79,7 @@
             <field name="view" ref="location_view_form"/>
             <field name="act_window" ref="act_location_form"/>
         </record>
-        <menuitem parent="menu_location_tree" sequence="1"
+        <menuitem parent="menu_configuration" sequence="1"
             action="act_location_form" id="menu_location_form"/>
 
         <record model="ir.action.act_window" id="act_product_by_location">
