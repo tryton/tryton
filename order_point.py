@@ -110,6 +110,8 @@ class OrderPoint(OSV):
         return not bool(ids)
 
     def name_get(self, cursor, user, ids, context=None):
+        if not ids:
+            return []
         if isinstance(ids, (int, long)):
             ids = [ids]
         res = []
