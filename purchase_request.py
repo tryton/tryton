@@ -53,6 +53,21 @@ class PurchaseRequest(OSV):
             res.append((pr.id, "%s@%s" % (pr.product.name, pr.warehouse.name)))
         return res
 
+    def name_search(self, cursor, user, name='', args=None, operator='ilike',
+                    context=None, limit=None):
+        if not args:
+            args=[]
+        ids = False
+        names = name.split('@',1)
+        query = [('product.template.name', operator, names[0])] + args
+        if len(names) == 1 or not names[1]:
+            ids = self.search( cursor, user, query, limit=limit, context=context)
+        else:
+            warehouse_arg = [('warehouse', operator, names[1])]
+            ids = self.search(
+                cursor, user, query + warehouse_arg, limit=limit, context=context)
+        return self.name_get(cursor, user, ids, context)
+
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
         if context is None:
