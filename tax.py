@@ -687,7 +687,8 @@ class Tax(OSV):
                 context=context)
         res.reverse()
         for row in res:
-            row['amount'] *= quantity
+            row['base'] *= Decimal(str(quantity))
+            row['amount'] *= Decimal(str(quantity))
         return res
 
 Tax()
