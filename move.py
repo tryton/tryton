@@ -401,9 +401,7 @@ class Line(OSV):
             help='The second currency')
     party = fields.Many2One('relationship.party', 'Party',
             on_change=['move', 'party', 'account', 'debit', 'credit',
-                'journal'], select=1, states={
-                'required': "account_kind in ('payable', 'receivable')",
-            })
+                'journal'], select=1)
     blocked = fields.Boolean('Litigation',
             help='Mark the line as litigation with the party.')
     maturity_date = fields.Date('Maturity Date',
