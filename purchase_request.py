@@ -57,9 +57,8 @@ class PurchaseRequest(OSV):
                     context=None, limit=None):
         if not args:
             args=[]
-        ids = False
         names = name.split('@',1)
-        query = [('product.template.name', operator, names[0])] + args
+        query = ['AND', ('product.template.name', operator, names[0]), args]
         if len(names) == 1 or not names[1]:
             ids = self.search( cursor, user, query, limit=limit, context=context)
         else:

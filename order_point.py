@@ -123,9 +123,8 @@ class OrderPoint(OSV):
                     context=None, limit=None):
         if not args:
             args=[]
-        ids = False
-        names = name.split('@',1)
-        query = [('product.template.name', operator, names[0])] + args
+        names = name.split('@', 1)
+        query = ['AND', ('product.template.name', operator, names[0]), args]
         if len(names) == 1 or not names[1]:
             ids = self.search( cursor, user, query, limit=limit, context=context)
         else:
@@ -133,7 +132,8 @@ class OrderPoint(OSV):
                 cursor, user, 'location', [('location', operator, names[1])],
                 context=context)
             ids = self.search(
-                cursor, user, query + location_args, limit=limit, context=context)
+                cursor, user, ['AND', query, location_args], limit=limit,
+                context=context)
         return self.name_get(cursor, user, ids, context)
 
     def get_location(self, cursor, user, ids, name, args, context=None):
