@@ -9,15 +9,15 @@ class Cron(OSV):
         'company.company', 'cron_company_rel', 'cron', 'company', 'Companies',
         help='Companies registered for this cron')
 
-    def _callback(self, cursor, user, job_id, model, func, args):
-        cursor.execute("SELECT company,cron from cron_company_rel "
-                       "WHERE cron = %s", (job_id,))
-        for company, cron in cursor.fetchall():
+    def _callback(self, cursor, cron):
+        cursor.execute("SELECT company from cron_company_rel "
+                       "WHERE cron = %s", (cron['id'],))
+        for company in cursor.fetchall():
             cursor.execute("UPDATE res_user SET company = %s, main_company = %s "
-                           "WHERE id = %s", (company, company, user))
-            super(Cron, self)._callback(cursor, user, job_id, model, func, args)
+                           "WHERE id = %s", (company, company, cron['user']))
+            super(Cron, self)._callback(cursor, cron)
         cursor.execute("UPDATE res_user SET company = NULL, main_company = NULL "
-                       "WHERE id = %s", (user,))
+                       "WHERE id = %s", (cron['user'],))
 
     def default_companies(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
