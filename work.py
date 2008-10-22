@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Project"
 
 from trytond.osv import fields, OSV
@@ -33,11 +34,11 @@ class Work(OSV):
     project_type = fields.Selection([
         ('project', 'Project'),
         ], 'Type', required=True, select=1)
-    party = fields.Many2One('relationship.party', 'Party',
+    party = fields.Many2One('party.party', 'Party',
             states={
                 'invisible': "project_type != 'project'",
             })
-    party_address = fields.Many2One('relationship.address', 'Contact Address',
+    party_address = fields.Many2One('party.address', 'Contact Address',
             domain="[('party', '=', party)]",
             states={
                 'invisible': "project_type != 'project'",
