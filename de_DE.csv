@@ -59,7 +59,7 @@ error,account.period,0,You can not close a period with non posted moves!,Die Buc
 error,account.period,0,You can not create a period on a closed fiscal year!,In einem abgeschlossenen Geschäftsjahr kann kein Buchungszeitraum angelegt werden!,0
 error,account.period,0,You can not have 2 periods that overlaps!,Buchungszeiträume dürfen sich nicht überschneiden!,0
 error,account.period,0,You can not modify/delete a period with moves!,"Ein Buchungszeitraum, der Buchungen enthält, kann nicht gelöscht werden!",0
-error,account.period,0,You can not open a period from a closed fiscal year!,Perioden eines geschlossenen Geschäftsjahres können nicht geöffnet werden,0
+error,account.period,0,You can not open a period from a closed fiscal year!,Perioden eines abgeschlossenen Geschäftsjahres können nicht geöffnet werden,0
 error,account.period,0,You must have different post move sequence per fiscal year!,Jedes Geschäftsjahr muss eine eigene Sequenz für Buchungsfestschreibungen haben!,0
 error,account.tax.code,0,You can not create recursive tax code!,Es können keine rekursiven Steuerkennziffern angelegt werden!,0
 error,account.tax.code.template,0,You can not create recursive tax code!,Es können keine rekursiven Steuerkennziffern angelegt werden!,0
@@ -592,10 +592,10 @@ selection,"account.account.type,display_balance",0,Credit - Debit,Haben - Soll,0
 selection,"account.account.type,display_balance",0,Debit - Credit,Soll - Haben,0
 selection,"account.account.type.template,display_balance",0,Credit - Debit,Haben - Soll,0
 selection,"account.account.type.template,display_balance",0,Debit - Credit,Soll - Haben,0
-selection,"account.fiscalyear,state",0,Close,Schließen,0
-selection,"account.fiscalyear,state",0,Open,Offen,0
+selection,"account.fiscalyear,state",0,Close,Abgeschlossen,0
+selection,"account.fiscalyear,state",0,Open,Geöffnet,0
 selection,"account.journal.period,state",0,Close,Geschlossen,0
-selection,"account.journal.period,state",0,Open,Offen,0
+selection,"account.journal.period,state",0,Open,Geöffnet,0
 selection,"account.move.line,account_kind",0,Expense,Aufwand,0
 selection,"account.move.line,account_kind",0,Other,Anderes,0
 selection,"account.move.line,account_kind",0,Payable,Verbindlichkeiten,0
@@ -609,7 +609,7 @@ selection,"account.move.line,state",0,Valid,Gültig,0
 selection,"account.move,state",0,Draft,Entwurf,0
 selection,"account.move,state",0,Posted,Festgeschrieben,0
 selection,"account.period,state",0,Close,Geschlossen,0
-selection,"account.period,state",0,Open,Offen,0
+selection,"account.period,state",0,Open,Geöffnet,0
 selection,"account.period,type",0,Adjustment,Berichtigung,0
 selection,"account.period,type",0,Standard,Standard,0
 selection,"account.tax.open_chart_code.init,method",0,By Fiscal Year,Geschäftsjahr,0
@@ -648,7 +648,7 @@ view,account.account.type,0,Balance Sheet,Bilanzbogen,0
 view,account.account.type,0,Income Statement,Gewinn- und Verlustrechnung,0
 view,account.account.type.template,0,Account Types Templates,Vorlagen für Kontentypen,0
 view,account.account.type.template,0,Account Type Template,Vorlage für Kontentyp,0
-view,account.fiscalyear,0,Close,Schließen,0
+view,account.fiscalyear,0,Close,Geschäftsjahr abschließen,0
 view,account.fiscalyear,0,Create 3 Months Periods,Quartale erstellen,0
 view,account.fiscalyear,0,Create Monthly Periods,Monatliche Buchungszeiträume erstellen,0
 view,account.fiscalyear,0,Fiscal Year,Geschäftsjahr,0
@@ -728,7 +728,7 @@ wizard_button,"account.account.print_general_ledger,init,end",0,Cancel,Abbrechen
 wizard_button,"account.account.print_general_ledger,init,print",0,Print,Drucken,0
 wizard_button,"account.account.print_trial_balance,init,end",0,Cancel,Abbrechen,0
 wizard_button,"account.account.print_trial_balance,init,print",0,Print,Drucken,0
-wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Schließen,0
+wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Geschäftsjahr abschließen,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,end",0,Cancel,Abbrechen,0
 wizard_button,"account.move.open_journal,ask,end",0,Cancel,Abbrechen,0
 wizard_button,"account.move.open_journal,ask,open",0,Open,Öffnen,0
