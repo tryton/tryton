@@ -36,21 +36,21 @@ class Sale(OSV):
             'Payment Term', required=True, states={
                 'readonly': "state != 'draft'",
             })
-    party = fields.Many2One('relationship.party', 'Party', change_default=True,
+    party = fields.Many2One('party.party', 'Party', change_default=True,
             required=True, states={
                 'readonly': "state != 'draft'",
             }, on_change=['party', 'payment_term'])
     party_lang = fields.Function('get_function_fields', type='char',
             string='Party Language', on_change_with=['party'])
-    contact_address = fields.Many2One('relationship.address', 'Contact Address',
+    contact_address = fields.Many2One('party.address', 'Contact Address',
             domain="[('party', '=', party)]", states={
                 'readonly': "state != 'draft'",
             })
-    invoice_address = fields.Many2One('relationship.address', 'Invoice Address',
+    invoice_address = fields.Many2One('party.address', 'Invoice Address',
             domain="[('party', '=', party)]", states={
                 'readonly': "state != 'draft'",
             })
-    packing_address = fields.Many2One('relationship.address', 'Packing Address',
+    packing_address = fields.Many2One('party.address', 'Packing Address',
             domain="[('party', '=', party)]", states={
                 'readonly': "state != 'draft'",
             })
@@ -198,8 +198,8 @@ class Sale(OSV):
         return 'none'
 
     def on_change_party(self, cursor, user, ids, vals, context=None):
-        party_obj = self.pool.get('relationship.party')
-        address_obj = self.pool.get('relationship.address')
+        party_obj = self.pool.get('party.party')
+        address_obj = self.pool.get('party.address')
         payment_term_obj = self.pool.get('account.invoice.payment_term')
         res = {
             'invoice_address': False,
@@ -262,7 +262,7 @@ class Sale(OSV):
         return res
 
     def get_tax_context(self, cursor, user, sale, context=None):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         res = {}
         if isinstance(sale, dict):
             if sale.get('party'):
@@ -277,7 +277,7 @@ class Sale(OSV):
 
     def on_change_with_party_lang(self, cursor, user, ids, vals,
             context=None):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         if vals.get('party'):
             party = party_obj.browse(cursor, user, vals['party'],
                     context=context)
@@ -984,7 +984,7 @@ class SaleLine(OSV):
         return res
 
     def on_change_product(self, cursor, user, ids, vals, context=None):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
 
