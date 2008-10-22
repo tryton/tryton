@@ -636,7 +636,8 @@ class Tax(OSV):
     def _process_tax_inv(self, cursor, user, tax, price_unit, context=None):
         # base will be calculate when all taxes will be compute
         if tax.type == 'percentage':
-            amount = price_unit - (price_unit / (1 + tax.percentage))
+            amount = price_unit - (price_unit / \
+                    (1 + (tax.percentage / Decimal('100'))))
             return {
                 'base': price_unit,
                 'amount': amount,
@@ -666,7 +667,7 @@ class Tax(OSV):
                     total_amount += res_child['amount']
                 res.extend(res_childs)
         for row in res:
-            res['base'] -= total_amount
+            row['base'] -= total_amount
         return res
 
     def compute_inv(self, cursor, user, ids, price_unit, quantity,
