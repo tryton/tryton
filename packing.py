@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Packing"
 from trytond.osv import fields, OSV
 from trytond.netsvc import LocalService
@@ -22,11 +23,11 @@ class PackingIn(OSV):
     reference = fields.Char(
         "Reference", size=None, select=1,
         states={'readonly': "state != 'draft'",})
-    supplier = fields.Many2One('relationship.party', 'Supplier',
+    supplier = fields.Many2One('party.party', 'Supplier',
             states={
                 'readonly': "state != 'draft' or bool(incoming_moves)",
             }, on_change=['supplier'], required=True)
-    contact_address = fields.Many2One('relationship.address', 'Contact Address',
+    contact_address = fields.Many2One('party.address', 'Contact Address',
             states={
                 'readonly': "state != 'draft'",
             }, domain="[('party', '=', supplier)]")
@@ -86,7 +87,7 @@ class PackingIn(OSV):
     def on_change_supplier(self, cursor, user, ids, values, context=None):
         if not values.get('supplier'):
             return {}
-        party_obj = self.pool.get("relationship.party")
+        party_obj = self.pool.get("party.party")
         address_id = party_obj.address_get(cursor, user, values['supplier'],
                                           context=context)
         return {'contact_address': address_id}
@@ -269,11 +270,11 @@ class PackingOut(OSV):
             states={
                 'readonly': "state != 'draft'",
             })
-    customer = fields.Many2One('relationship.party', 'Customer', required=True,
+    customer = fields.Many2One('party.party', 'Customer', required=True,
             states={
                 'readonly': "state != 'draft'",
             }, on_change=['customer'])
-    delivery_address = fields.Many2One('relationship.address',
+    delivery_address = fields.Many2One('party.address',
             'Delivery Address', required=True,
             states={
                 'readonly': "state != 'draft'",
@@ -327,7 +328,7 @@ class PackingOut(OSV):
     def on_change_customer(self, cursor, user, ids, values, context=None):
         if not values.get('customer'):
             return {}
-        party_obj = self.pool.get("relationship.party")
+        party_obj = self.pool.get("party.party")
         address_id = party_obj.address_get(cursor, user, values['customer'],
                 type='delivery', context=context)
         party = party_obj.browse(cursor, user, values['customer'], context=context)
@@ -751,8 +752,9 @@ class PackingInternal(OSV):
 
 PackingInternal()
 
+
 class Address(OSV):
-    _name = 'relationship.address'
+    _name = 'party.address'
     delivery = fields.Boolean('Delivery')
 
 Address()

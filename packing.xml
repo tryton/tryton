@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
 
@@ -801,8 +802,8 @@
 
         <!-- Add delivery field on address -->
         <record model="ir.ui.view" id="address_view_tree">
-            <field name="model">relationship.address</field>
-            <field name="inherit" ref="relationship.address_view_tree"/>
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_tree"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
@@ -815,8 +816,8 @@
             </field>
         </record>
         <record model="ir.ui.view" id="address_view_form">
-            <field name="model">relationship.address</field>
-            <field name="inherit" ref="relationship.address_view_form"/>
+            <field name="model">party.address</field>
+            <field name="inherit" ref="party.address_view_form"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
