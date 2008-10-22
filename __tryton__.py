@@ -12,7 +12,7 @@
         'account',
         'company',
         'currency',
-        'relationship',
+        'party',
         ],
     'xml': [
         'statement.xml',

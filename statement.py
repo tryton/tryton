@@ -149,7 +149,7 @@ class Line(OSV):
     date = fields.Date('Date', required=True)
     amount = fields.Numeric('Amount', digits=(16,2), required=True,
         on_change=['amount', 'party', 'account'])
-    party = fields.Many2One('relationship.party', 'Party',
+    party = fields.Many2One('party.party', 'Party',
             on_change=['amount', 'party'])
     account = fields.Many2One('account.account', 'Account', required=True)
     description = fields.Char('Description')
@@ -166,7 +166,7 @@ class Line(OSV):
         res = {}
         if not (value.get('party') and value.get('amount')):
             return res
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         account_obj = self.pool.get('account.account')
         party = party_obj.browse(cursor, user, value['party'], context=context)
         if value['amount'] > Decimal("0.0"):
@@ -181,7 +181,7 @@ class Line(OSV):
         res = {}
         if not (value.get('party') and value.get('amount')):
             return res
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         account_obj = self.pool.get('account.account')
         party = party_obj.browse(cursor, user, value['party'], context=context)
         if value.get('account') and value['account'] not in (
