@@ -252,12 +252,12 @@ class Invoice(OSV):
         ], 'State', readonly=True)
     invoice_date = fields.Date('Invoice Date', required=True,
         states=_STATES)
-    party = fields.Many2One('relationship.party', 'Party', change_default=True,
+    party = fields.Many2One('party.party', 'Party', change_default=True,
         required=True, states=_STATES, on_change=['party', 'payment_term',
             'type', 'company'])
-    contact_address = fields.Many2One('relationship.address', 'Contact Address',
+    contact_address = fields.Many2One('party.address', 'Contact Address',
         required=True, states=_STATES, domain="[('party', '=', party)]")
-    invoice_address = fields.Many2One('relationship.address', 'Invoice Address',
+    invoice_address = fields.Many2One('party.address', 'Invoice Address',
         required=True, states=_STATES, domain="[('party', '=', party)]")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
@@ -407,8 +407,8 @@ class Invoice(OSV):
         return res
 
     def on_change_party(self, cursor, user, ids, vals, context=None):
-        party_obj = self.pool.get('relationship.party')
-        address_obj = self.pool.get('relationship.address')
+        party_obj = self.pool.get('party.party')
+        address_obj = self.pool.get('party.address')
         account_obj = self.pool.get('account.account')
         payment_term_obj = self.pool.get('account.invoice.payment_term')
         company_obj = self.pool.get('company.company')
@@ -696,7 +696,7 @@ class Invoice(OSV):
         return True
 
     def get_tax_context(self, cursor, user, invoice, context=None):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         res = {}
         if isinstance(invoice, dict):
             if invoice.get('party'):
@@ -1407,7 +1407,7 @@ class InvoiceLine(OSV):
 
     def on_change_product(self, cursor, user, ids, vals, context=None):
         product_obj = self.pool.get('product.product')
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         account_obj = self.pool.get('account.account')
         uom_obj = self.pool.get('product.uom')
         company_obj = self.pool.get('company.company')
@@ -1922,14 +1922,14 @@ InvoiceReport()
 
 
 class Address(OSV):
-    _name = 'relationship.address'
+    _name = 'party.address'
     invoice = fields.Boolean('Invoice')
 
 Address()
 
 
 class Party(OSV):
-    _name = 'relationship.party'
+    _name = 'party.party'
     payment_term = fields.Property(type='many2one',
             relation='account.invoice.payment_term',
             string='Invoice Payment Term', group_name='Accounting Properties',
