@@ -212,26 +212,32 @@ view,stock.move,0,Moves,Bewegungen,0
 view,stock.move,0,Set Done,Auf Erledigt setzen,0
 view,stock.move,0,Set Draft,Auf Entwurf setzen,0
 view,stock.packing.in,0,Cancel,Abbrechen,0
+view,stock.packing.in,0,Done,Erledigt,0
+view,stock.packing.in,0,Draft,Entwurf,0
 view,stock.packing.in,0,Incoming Moves,Eingehende Bewegungen,0
 view,stock.packing.in,0,Inventory Moves,Lagerbewegungen,0
 view,stock.packing.in,0,Moves,Bewegungen,0
 view,stock.packing.in,0,Received,Erhalten,0
 view,stock.packing.in,0,Reset to Draft,Auf Entwurf zurücksetzen,0
-view,stock.packing.in,0,Set Done,Auf Erledigt setzen,0
 view,stock.packing.in,0,Supplier Packing,Lieferschein von Lieferant,0
 view,stock.packing.in,0,Supplier Packings,Lieferscheine von Lieferanten,0
 view,stock.packing.internal,0,Assign,Zuweisen,0
 view,stock.packing.internal,0,Cancel,Abbrechen,0
+view,stock.packing.internal,0,Done,Erledigt,0
+view,stock.packing.internal,0,Draft,Entwurf,0
 view,stock.packing.internal,0,Force Assign,Zuweisung erzwingen,0
 view,stock.packing.internal,0,Internal Packing,Interner Lieferschein,0
 view,stock.packing.internal,0,Internal Packings,Interne Lieferscheine,0
 view,stock.packing.internal,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,stock.packing.internal,0,Set Done,Auf Erledigt setzen,0
 view,stock.packing.internal,0,Set Waiting,Auf Wartend setzen,0
+view,stock.packing.internal,0,Waiting,Wartend,0
 view,stock.packing.out,0,Assign,Zuweisen,0
 view,stock.packing.out,0,Cancel,Abbrechen,0
 view,stock.packing.out,0,Customer Packing,Lieferschein an Kunde,0
 view,stock.packing.out,0,Customer Packings,Lieferscheine an Kunden,0
+view,stock.packing.out,0,Done,Erledigt,0
+view,stock.packing.out,0,Draft,Entwurf,0
 view,stock.packing.out,0,Force Assign,Zuweisung erzwingen,0
 view,stock.packing.out,0,Inventory Moves,Lagerbewegungen,0
 view,stock.packing.out,0,Make packing,Lieferung fertigstellen,0
@@ -239,6 +245,8 @@ view,stock.packing.out,0,Outgoing Moves,Ausgehende Bewegungen,0
 view,stock.packing.out,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,stock.packing.out,0,Set Done,Auf Erledigt setzen,0
 view,stock.packing.out,0,Set Waiting,Auf Wartend setzen,0
+view,stock.packing.out,0,Unpack,Entpackt,0
+view,stock.packing.out,0,Waiting,Wartend,0
 wizard_button,"stock.location.open,init,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.location.open,init,open",0,Open,Öffnen,0
 wizard_button,"stock.product.open,init,end",0,Cancel,Abbrechen,0
