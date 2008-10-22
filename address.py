@@ -1,9 +1,10 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 from trytond.osv import fields, OSV
 import urllib
 
 class Address(OSV):
-    _name = 'relationship.address'
+    _name = 'party.address'
 
     google_maps_url = fields.Function('get_google_maps_url', type="char",
             string="Google Maps")
