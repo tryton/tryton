@@ -23,7 +23,7 @@ class Line(OSV):
             select=1)
     date = fields.Date('Date', required=True)
     reference = fields.Char('Reference')
-    party = fields.Many2One('relationship.party', 'Party')
+    party = fields.Many2One('party.party', 'Party')
     active = fields.Boolean('Active', select=2)
 
     def __init__(self):

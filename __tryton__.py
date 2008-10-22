@@ -12,7 +12,7 @@
         'company',
         'currency',
         'account',
-        'relationship',
+        'party',
         'res',
     ],
     'xml': [
