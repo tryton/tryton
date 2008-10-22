@@ -10,6 +10,7 @@ field,"party.address,create_date",0,Creation date,Erstellungsdatum,0
 field,"party.address,create_uid",0,Creation user,Ersteller,0
 field,"party.address,email",0,E-Mail,E-Mail,0
 field,"party.address,fax",0,Fax,Fax,0
+field,"party.address,full_address",0,unknown,Unbekannt,0
 field,"party.address,id",0,ID,ID,0
 field,"party.address,mobile",0,Mobile,Mobil-Telefon,0
 field,"party.address,name",0,Contact Name,Kontakt Name,0
@@ -40,6 +41,7 @@ field,"party.party,code",0,Code,Code Partner,0
 field,"party.party,code_length",0,Code Length,Code Länge,0
 field,"party.party,create_date",0,Creation date,Erstellungsdatum,0
 field,"party.party,create_uid",0,Creation user,Ersteller,0
+field,"party.party,full_name",0,unknown,Unbekannt,0
 field,"party.party,id",0,ID,ID,0
 field,"party.party,lang",0,Language,Sprache,0
 field,"party.party,name",0,Name,Name,0
@@ -67,17 +69,14 @@ model,"ir.action,name",report_label,La_bels,_Etiketten,0
 model,"ir.action,name",act_party_form,Parties,Partner,0
 model,"ir.action,name",act_party_form2,Parties,Partner,0
 model,"ir.action,name",act_party_by_category,Parties by Category,Partner nach Kategorie,0
-model,"ir.action,name",act_party_type_form,Party Types,Partnertypen,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adressen,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Kategorien,0
-model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_category_form,Edit Categories,Kategorien bearbeiten,0
 model,"ir.ui.menu,name",menu_address_form2,New Address,Neue Adresse,0
 model,"ir.ui.menu,name",menu_category_form2,New category,Neue Kategorie,0
 model,"ir.ui.menu,name",menu_party_form2,New Party,Neuer Partner,0
 model,"ir.ui.menu,name",menu_party_form,Parties,Partner,0
-model,"ir.ui.menu,name",menu_party_type_form,Party Types,Partnertypen,0
-model,"ir.ui.menu,name",menu_party,Relationship Management,Kontakte,0
+model,"ir.ui.menu,name",menu_party,Party Management,Kontakte,0
 selection,"party.party,vat_country",0,,,0
 selection,"party.party,vat_country",0,AT,AT,0
 selection,"party.party,vat_country",0,BE,BE,0
