@@ -15,19 +15,18 @@ field,"country.country.state,id",0,ID,ID,0
 field,"country.country.state,name",0,Name,Ländername,0
 field,"country.country.state,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"country.country.state,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"country.country,subdivisions",0,Subdivisions,Subnationale Einheiten,0
+field,"country.country,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"country.country,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"country.subdivision,code",0,Code,Code,0
 field,"country.subdivision,country",0,Country,Land,0
 field,"country.subdivision,name",0,Name,Name,0
 field,"country.subdivision,parent",0,Parent,Übergeordnet (Subnationale Einheit),0
-field,"country.subdivisions",0,Subdivisions,Subnationale Einheiten,0
+field,country.subdivisions,0,Subdivisions,Subnationale Einheiten,0
 field,"country.subdivision,type",0,Type,Typ,0
-field,"country.country,write_date",0,Last modification date,Zuletzt geändert am,0
-field,"country.country,write_uid",0,Last modification by,Zuletzt geändert von,0
 help,"country.country,code",0,"The ISO country code in two chars.
 You can use this field for quick search.",Staatenkürzel (2 Zeichen),0
 help,"country.country,name",0,The full name of the country.,Voller Ländername,0
-model,"ir.action,name",act_country_form,Countries,Staaten,0
-model,"ir.ui.menu,name",menu_country_form,Countries,Staaten,0
 model,"country.country,name",af,Afghanistan,Afghanistan,0
 model,"country.country,name",ax,Åland Islands,Åland Inseln,0
 model,"country.country,name",al,Albania,Albanien,0
@@ -274,6 +273,8 @@ model,"country.country,name",eh,Western Sahara,Westsahara,0
 model,"country.country,name",ye,Yemen,Jemen,0
 model,"country.country,name",zm,Zambia,Sambia,0
 model,"country.country,name",zw,Zimbabwe,Zimbabwe,0
+model,"ir.action,name",act_country_form,Countries,Staaten,0
+model,"ir.ui.menu,name",menu_country_form,Countries,Staaten,0
 selection,"country.subdivision,type",0,Administration,Verwaltung,0
 selection,"country.subdivision,type",0,Administrative area,Verwaltungsbezirk,0
 selection,"country.subdivision,type",0,Administrative Region,Regierungsbezirk,0
