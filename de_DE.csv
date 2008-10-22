@@ -309,7 +309,15 @@ field,"account.tax.template,percentage",0,Percentage,Prozentsatz,0
 field,"account.tax.template,sequence",0,Sequence,Sequenz,0
 field,"account.tax.template,type",0,Type,Typ,0
 field,"account.tax,type",0,Type,Typ,0
-field,"relationship.party,account_payable",0,Account Payable,Verbindlichkeit,0
+field,"party.party,account_payable",0,Account Payable,Verbindlichkeiten,0
+field,"party.party,account_receivable",0,Account Receivable,Forderungen,0
+field,"party.party,payable",0,Payable,Verbindlichkeiten,0
+field,"party.party,payable_today",0,Payable Today,Verbindlichkeiten heute,0
+field,"party.party,receivable",0,Receivable,Forderungen,0
+field,"party.party,receivable_today",0,Receivable Today,Forderungen heute,0
+field,"party.party,supplier_vat",0,Supplier VAT,USt Lieferant,0
+field,"party.party,vat",0,VAT,USt.,0
+field,"relationship.party,account_payable",0,Account Payable,Verbindlichkeiten,0
 field,"relationship.party,account_receivable",0,Account Receivable,Forderungen,0
 field,"relationship.party,payable",0,Payable,Verbindlichkeiten,0
 field,"relationship.party,payable_today",0,Payable Today,Verbindlichkeiten heute,0
@@ -368,6 +376,8 @@ help,"account.tax,percentage",0,In %,In %,0
 help,"account.tax,refund_base_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax,refund_tax_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax,sequence",0,Use to order the taxes,Wird für die Reihenfolge der Steuern verwendet,0
+help,"party.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Diese Steuer wird anstatt der Standard-Umsatzsteuer für Lieferanten verwendet,0
+help,"party.party,vat",0,"This tax will be used, instead of the default VAT.",Diese Steuer wird anstatt der Standard-Umsatzsteuer verwendet,0
 help,"relationship.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Diese Steuer wird anstatt der Standard-Umsatzsteuer für Lieferanten verwendet,0
 help,"relationship.party,vat",0,"This tax will be used, instead of the default VAT.",Diese Steuer wird anstatt der Standard-Umsatzsteuer verwendet,0
 model,"account.account.template,name",account_template_cash,Main Cash,Allgemein Barvermögen,0
