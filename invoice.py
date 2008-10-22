@@ -102,9 +102,9 @@ class PaymentTermLineType(OSV):
             return currency_obj.compute(cursor, user, line.currency,
                     line.amount, currency, context=context)
         elif line.type == 'percent':
-            return currency.round(cursor, user, currency, amount * line.percent)
+            return currency_obj.round(cursor, user, currency, amount * line.percent)
         elif line.type == 'remainder':
-            return currency.round(cursor, user, currency, amount)
+            return currency_obj.round(cursor, user, currency, amount)
         return None
 
 PaymentTermLineType()
