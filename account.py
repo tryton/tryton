@@ -890,7 +890,7 @@ OpenChartAccount()
 
 
 class Party(OSV):
-    _name = 'relationship.party'
+    _name = 'party.party'
     account_payable = fields.Property(type='many2one',
             relation='account.account', string='Account Payable',
             group_name='Accounting Properties', view_load=True,
@@ -1573,7 +1573,7 @@ class CreateChartAccount(Wizard):
         model_field_obj = self.pool.get('ir.model.field')
 
         account_receivable_field_id = model_field_obj.search(cursor, user, [
-            ('model.model', '=', 'relationship.party'),
+            ('model.model', '=', 'party.party'),
             ('name', '=', 'account_receivable'),
             ], limit=1, context=context)[0]
         property_ids = property_obj.search(cursor, user, [
@@ -1591,7 +1591,7 @@ class CreateChartAccount(Wizard):
             }, context=context)
 
         account_payable_field_id = model_field_obj.search(cursor, user, [
-            ('model.model', '=', 'relationship.party'),
+            ('model.model', '=', 'party.party'),
             ('name', '=', 'account_payable'),
             ], limit=1, context=context)[0]
         property_ids = property_obj.search(cursor, user, [
@@ -1676,7 +1676,7 @@ class ThirdPartyBalance(Report):
     _name = 'account.account.third_party_balance'
 
     def parse(self, cursor, user, report, objects, datas, context):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
         date_obj = self.pool.get('ir.date')
@@ -1830,7 +1830,7 @@ class AgedBalance(Report):
     _name = 'account.account.aged_balance'
 
     def parse(self, cursor, user, report, objects, datas, context):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
         date_obj = self.pool.get('ir.date')

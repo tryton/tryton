@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <menuitem name="Taxes" parent="menu_account_configuration"
@@ -459,7 +460,7 @@
         <record model="ir.property" id="property_vat">
             <field name="name">vat</field>
             <field name="field"
-                search="[('model.model', '=', 'relationship.party'), ('name', '=', 'vat')]"/>
+                search="[('model.model', '=', 'party.party'), ('name', '=', 'vat')]"/>
         </record>
     </data>
 </tryton>

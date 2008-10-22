@@ -11,7 +11,7 @@
         'ir',
         'res',
         'company',
-        'relationship',
+        'party',
         'currency',
     ],
     'xml': [

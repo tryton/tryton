@@ -787,7 +787,7 @@ class Account(OSV):
 Account()
 
 class Party(OSV):
-    _name = 'relationship.party'
+    _name = 'party.party'
     vat = fields.Property(type='many2one',
             relation='account.tax', string='VAT',
             group_name='Accounting Properties', view_load=True,

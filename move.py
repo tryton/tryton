@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 'Move'
 
 from trytond.osv import fields, OSV
@@ -399,7 +400,7 @@ class Line(OSV):
             help='The amount expressed in a second currency')
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
             help='The second currency')
-    party = fields.Many2One('relationship.party', 'Party',
+    party = fields.Many2One('party.party', 'Party',
             on_change=['move', 'party', 'account', 'debit', 'credit',
                 'journal'], select=1)
     blocked = fields.Boolean('Litigation',
@@ -762,7 +763,7 @@ class Line(OSV):
         return res
 
     def on_change_party(self, cursor, user, ids, vals, context=None):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         journal_obj = self.pool.get('account.journal')
         account_obj = self.pool.get('account.account')
         currency_obj = self.pool.get('currency.currency')
@@ -1618,7 +1619,7 @@ FiscalYear()
 
 
 class Party(OSV):
-    _name = 'relationship.party'
+    _name = 'party.party'
     receivable = fields.Function('get_receivable_payable',
             fnct_search='search_receivable_payable', string='Receivable')
     payable = fields.Function('get_receivable_payable',

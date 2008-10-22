@@ -374,8 +374,8 @@
             id="menu_open_reconcile_lines"/>
 
         <record model="ir.ui.view" id="party_view_tree">
-            <field name="model">relationship.party</field>
-            <field name="inherit" ref="relationship.party_view_tree"/>
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_tree"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
@@ -390,8 +390,8 @@
             </field>
         </record>
         <record model="ir.ui.view" id="party_view_form">
-            <field name="model">relationship.party</field>
-            <field name="inherit" ref="relationship.party_view_form"/>
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
