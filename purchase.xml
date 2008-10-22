@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <menuitem name="Purchase Management" id="menu_purchase" sequence="4"/>
@@ -760,7 +761,7 @@
             <field name="wiz_name">purchase.open_supplier</field>
         </record>
         <menuitem name="Suppliers"
-            parent="relationship.menu_party_form"
+            parent="party.menu_party_form"
             action="act_open_supplier"
             icon="tryton-list"
             id="menu_supplier"/>

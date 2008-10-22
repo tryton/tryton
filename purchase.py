@@ -35,14 +35,14 @@ class Purchase(OSV):
     purchase_date = fields.Date('Purchase Date', required=True, states=_STATES)
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES)
-    party = fields.Many2One('relationship.party', 'Party', change_default=True,
+    party = fields.Many2One('party.party', 'Party', change_default=True,
             required=True, states=_STATES, on_change=['party', 'payment_term'],
             select=1)
     party_lang = fields.Function('get_function_fields', type='char',
             string='Party Language', on_change_with=['party'])
-    contact_address = fields.Many2One('relationship.address', 'Contact Address',
+    contact_address = fields.Many2One('party.address', 'Contact Address',
             domain="[('party', '=', party)]", states=_STATES)
-    invoice_address = fields.Many2One('relationship.address', 'Invoice Address',
+    invoice_address = fields.Many2One('party.address', 'Invoice Address',
             domain="[('party', '=', party)]", states=_STATES)
     warehouse = fields.Many2One('stock.location', 'Warehouse',
             domain=[('type', '=', 'warehouse')], required=True, states=_STATES)
@@ -171,8 +171,8 @@ class Purchase(OSV):
         return 'none'
 
     def on_change_party(self, cursor, user, ids, vals, context=None):
-        party_obj = self.pool.get('relationship.party')
-        address_obj = self.pool.get('relationship.address')
+        party_obj = self.pool.get('party.party')
+        address_obj = self.pool.get('party.address')
         payment_term_obj = self.pool.get('account.invoice.payment_term')
         res = {
             'invoice_address': False,
@@ -230,7 +230,7 @@ class Purchase(OSV):
 
     def on_change_with_party_lang(self, cursor, user, ids, vals,
             context=None):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         if vals.get('party'):
             party = party_obj.browse(cursor, user, vals['party'],
                     context=context)
@@ -239,7 +239,7 @@ class Purchase(OSV):
         return 'en_US'
 
     def get_tax_context(self, cursor, user, purchase, context=None):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         res = {}
         if isinstance(purchase, dict):
             if purchase.get('party'):
@@ -871,7 +871,7 @@ class PurchaseLine(OSV):
         return res
 
     def on_change_product(self, cursor, user, ids, vals, context=None):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
         if context is None:
@@ -1234,7 +1234,7 @@ class ProductSupplier(OSV):
 
     product = fields.Many2One('product.template', 'Product', required=True,
             ondelete='CASCADE', select=1)
-    party = fields.Many2One('relationship.party', 'Supplier', required=True,
+    party = fields.Many2One('party.party', 'Supplier', required=True,
             ondelete='CASCADE', select=1)
     name = fields.Char('Name', size=None, translate=True, select=1)
     code = fields.Char('Code', size=None, select=1)
@@ -1382,7 +1382,7 @@ class Move(OSV):
             relation='purchase.purchase', string='Purchase',
             fnct_search='search_purchase', select=1)
     supplier = fields.Function('get_supplier', type='many2one',
-            relation='relationship.party', string='Supplier',
+            relation='party.party', string='Supplier',
             fnct_search='search_supplier', select=1)
 
     def get_purchase(self, cursor, user, ids, name, arg, context=None):
@@ -1416,7 +1416,7 @@ class Move(OSV):
         return args2
 
     def get_supplier(self, cursor, user, ids, name, arg, context=None):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
 
         res = {}
         for move in self.browse(cursor, user, ids, context=context):
@@ -1489,7 +1489,7 @@ class OpenSupplier(Wizard):
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_party_form'),
-            ('module', '=', 'relationship'),
+            ('module', '=', 'party'),
             ('inherit', '=', False),
             ], limit=1, context=context)
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
