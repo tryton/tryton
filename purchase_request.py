@@ -12,7 +12,7 @@ class PurchaseRequest(OSV):
 
     product = fields.Many2One(
         'product.product', 'Product', required=True, select=1, readonly=True)
-    party = fields.Many2One('relationship.party', 'Party',  select=1)
+    party = fields.Many2One('party.party', 'Party',  select=1)
     quantity = fields.Float('Quantity', required=True)
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=1)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
@@ -420,7 +420,7 @@ PurchaseRequest()
 
 class CreatePurchaseAskTerm(WizardOSV):
     _name = 'purchase.request.create_purchase.ask_term'
-    party = fields.Many2One('relationship.party', 'Supplier', readonly=True)
+    party = fields.Many2One('party.party', 'Supplier', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
     payment_term = fields.Many2One(
         'account.invoice.payment_term', 'Payment Term', required=True)
@@ -431,7 +431,7 @@ class CreatePurchaseAskParty(WizardOSV):
     _name = 'purchase.request.create_purchase.ask_party'
     product = fields.Many2One('product.product', 'Product', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
-    party = fields.Many2One('relationship.party', 'Supplier', required=True)
+    party = fields.Many2One('party.party', 'Supplier', required=True)
 
 CreatePurchaseAskParty()
 
@@ -501,7 +501,7 @@ class CreatePurchase(Wizard):
 
     def _create_purchase(self, cursor, user, data, context=None):
         request_obj = self.pool.get('purchase.request')
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         purchase_obj = self.pool.get('purchase.purchase')
         product_obj = self.pool.get('product.product')
         line_obj = self.pool.get('purchase.line')
@@ -592,7 +592,7 @@ class CreatePurchase(Wizard):
 
 
     def compute_purchase_line(self, cursor, user, request, context=None):
-        party_obj = self.pool.get('relationship.party')
+        party_obj = self.pool.get('party.party')
         product_obj = self.pool.get('product.product')
         line = {
             'product': request.product.id,

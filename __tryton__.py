@@ -13,6 +13,7 @@
         'product',
         'stock',
         'purchase',
+        'party',
     ],
     'xml': [
         'order_point.xml',
