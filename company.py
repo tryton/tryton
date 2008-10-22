@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Company"
 
 import copy
@@ -11,9 +12,9 @@ class Company(OSV):
     'Company'
     _name = 'company.company'
     _description = __doc__
-    _inherits = {'relationship.party': 'party'}
+    _inherits = {'party.party': 'party'}
 
-    party = fields.Many2One('relationship.party', 'Party', required=True,
+    party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE')
     parent = fields.Many2One('company.company', 'Parent')
     childs = fields.One2Many('company.company', 'parent', 'Childs')
@@ -45,9 +46,9 @@ class Employee(OSV):
     'Employee'
     _name = 'company.employee'
     _description = __doc__
-    _inherits = {'relationship.party': 'party'}
+    _inherits = {'party.party': 'party'}
 
-    party = fields.Many2One('relationship.party', 'Party', required=True)
+    party = fields.Many2One('party.party', 'Party', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
 
 Employee()

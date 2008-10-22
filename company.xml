@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.ui.view" id="company_view_form">
@@ -72,7 +73,7 @@
             <field name="view" ref="company_view_tree"/>
             <field name="act_window" ref="act_company_tree"/>
         </record>
-        <menuitem parent="relationship.menu_relationship" action="act_company_tree"
+        <menuitem parent="party.menu_party" action="act_company_tree"
             id="menu_company_tree"/>
         <record model="ir.action.act_window" id="act_company_form">
             <field name="name">Companies</field>
@@ -244,14 +245,14 @@
 
         <record model="ir.action.report" id="report_letter">
             <field name="name">_Letter</field>
-            <field name="model">relationship.party</field>
+            <field name="model">party.party</field>
             <field name="report_name">party.letter</field>
             <field name="report">company/letter.odt</field>
             <field name="style">company/header_A4.odt</field>
         </record>
         <record model="ir.action.keyword" id="report_letter_party">
             <field name="keyword">form_print</field>
-            <field name="model">relationship.party,0</field>
+            <field name="model">party.party,0</field>
             <field name="action" ref="report_letter"/>
         </record>
     </data>
