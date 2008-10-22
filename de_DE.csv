@@ -2,6 +2,7 @@ type,name,res_id,src,value,fuzzy
 error,account.invoice,0,You can not delete invoices that comes from a purchase!,Aus einem Einkauf stammende Rechnungen können nicht gelöscht werden!,0
 error,purchase.line,0,"It miss an ""account_expense"" default property!","Es ist keine allgemeine Eigenschaft ""Konto Aufwand"" definiert",0
 error,purchase.line,0,The supplier location is required!,Der Lagerort des Lieferanten muss eingegeben werden!,0
+error,purchase.purchase,0,Contact and Invoice addresses must be defined for the quotation.,Kontakt- und Rechnungsadresse müssen für das Angebot angegeben werden.,0
 field,"product.template,product_suppliers",0,Suppliers,Lieferanten,0
 field,"product.template,purchasable",0,Purchasable,Käuflich,0
 field,"product.template,purchase_uom",0,Purchase UOM,Einheit Einkauf,0
