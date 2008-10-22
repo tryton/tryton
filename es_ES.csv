@@ -299,14 +299,14 @@ field,"account.tax.template,refund_tax_sign",0,Refund Tax Sign,Signo de Impuesto
 field,"account.tax.template,sequence",0,Sequence,Secuencia,0
 field,"account.tax.template,type",0,Type,Tipo,0
 field,"account.tax,type",0,Type,Tipo,0
-field,"relationship.party,account_payable",0,Account Payable,Cuenta por Pagar,0
-field,"relationship.party,account_receivable",0,Account Receivable,Cuenta Por Cobrar,0
-field,"relationship.party,payable",0,Payable,Por Pagar,0
-field,"relationship.party,payable_today",0,Payable Today,Por Pagar Hoy,0
-field,"relationship.party,receivable",0,Receivable,Por Cobrar,0
-field,"relationship.party,receivable_today",0,Receivable Today,Por Cobrar Hoy,0
-field,"relationship.party,supplier_vat",0,Supplier VAT,VAT de Proveedor,0
-field,"relationship.party,vat",0,VAT,VAT,0
+field,"party.party,account_payable",0,Account Payable,Cuenta por Pagar,0
+field,"party.party,account_receivable",0,Account Receivable,Cuenta Por Cobrar,0
+field,"party.party,payable",0,Payable,Por Pagar,0
+field,"party.party,payable_today",0,Payable Today,Por Pagar Hoy,0
+field,"party.party,receivable",0,Receivable,Por Cobrar,0
+field,"party.party,receivable_today",0,Receivable Today,Por Cobrar Hoy,0
+field,"party.party,supplier_vat",0,Supplier VAT,VAT de Proveedor,0
+field,"party.party,vat",0,VAT,VAT,0
 help,"account.account.open_aged_balance.init,posted",0,Only posted move,Solamente sobre movimientos hechos,0
 help,"account.account.open_balance_sheet.init,posted",0,Only posted move,Solamente sobre movimientos hechos,0
 help,"account.account.open_chart_account.init,fiscalyear",0,Keep empty for all open fiscal year,Dejar vacío para todos los años fiscales abiertos,0
@@ -344,8 +344,8 @@ help,"account.tax,refund_account",0,Keep empty to use the default refund account
 help,"account.tax,refund_base_sign",0,Usualy 1 or -1,Usualmente 1 o -1,0
 help,"account.tax,refund_tax_sign",0,Usualy 1 or -1,Usualmente 1 o -1,0
 help,"account.tax,sequence",0,Use to order the taxes,Usar para ordenar los impuestos,0
-help,"relationship.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Este impuesto será usado en lugar del VAT para las facturas de proveedor.,0
-help,"relationship.party,vat",0,"This tax will be used, instead of the default VAT.",Este impuesto será usado en lugar del VAT predeterminado.,0
+help,"party.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Este impuesto será usado en lugar del VAT para las facturas de proveedor.,0
+help,"party.party,vat",0,"This tax will be used, instead of the default VAT.",Este impuesto será usado en lugar del VAT predeterminado.,0
 model,"account.account.template,name",account_template_cash,Main Cash,Efectivo Principal,0
 model,"account.account.template,name",account_template_expense,Main Expense,Gasto Principal,0
 model,"account.account.template,name",account_template_payable,Main Payable,Por Pagar Principal,0
