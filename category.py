@@ -1,5 +1,7 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 from trytond.osv import fields, OSV
+
 STATES = {
     'readonly': "active == False",
 }
@@ -7,15 +9,15 @@ STATES = {
 
 class Category(OSV):
     "Category"
-    _name = "relationship.category"
+    _name = "party.category"
     _description = __doc__
     name = fields.Char('Name', required=True, size=64,
            states=STATES)
-    parent = fields.Many2One('relationship.category', 'Parent',
+    parent = fields.Many2One('party.category', 'Parent',
            select=1, states=STATES)
     complete_name = fields.Function('get_complete_name',
            type="char", string='Name', states=STATES)
-    childs = fields.One2Many('relationship.category', 'parent',
+    childs = fields.One2Many('party.category', 'parent',
        'Childs', states=STATES)
     active = fields.Boolean('Active')
 

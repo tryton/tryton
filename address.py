@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 'Address'
 from trytond.osv import fields, OSV
 
@@ -9,9 +10,9 @@ STATES = {
 
 class Address(OSV):
     "Address"
-    _name = 'relationship.address'
+    _name = 'party.address'
     _description = __doc__
-    party = fields.Many2One('relationship.party', 'Party', required=True,
+    party = fields.Many2One('party.party', 'Party', required=True,
            ondelete='cascade', select=1,  states=STATES)
     name = fields.Char('Contact Name', size=64, states=STATES)
     street = fields.Char('Street', size=128, states=STATES)
@@ -19,16 +20,13 @@ class Address(OSV):
     zip = fields.Char('Zip', change_default=True, size=24,
            states=STATES)
     city = fields.Char('City', size=128, states=STATES)
-    country = fields.Many2One('relationship.country', 'Country',
+    country = fields.Many2One('country.country', 'Country',
            states=STATES)
-    subdivision = fields.Many2One("relationship.country.subdivision",
+    subdivision = fields.Many2One("country.subdivision",
             'Subdivision', domain="[('country', '=', country)]", states=STATES)
-    email = fields.Char('E-Mail', size=64, states=STATES)
-    phone = fields.Char('Phone', size=64, states=STATES)
-    fax = fields.Char('Fax', size=64, states=STATES)
-    mobile = fields.Char('Mobile', size=64, states=STATES)
     active = fields.Boolean('Active')
     sequence = fields.Integer("Sequence")
+    full_address = fields.Function('get_full_address', type='text')
 
     def __init__(self):
         super(Address, self).__init__()
@@ -42,13 +40,42 @@ class Address(OSV):
     def default_active(self, cursor, user, context=None):
         return 1
 
+    def get_full_address(self, cursor, user, ids, name, arg, context=None):
+        if not ids:
+            return []
+        res = {}
+        for address in self.browse(cursor, user, ids, context=context):
+            res[address.id] = ''
+            if address.name:
+                res[address.id] += address.name
+            if address.street:
+                if res[address.id]:
+                    res[address.id] += '\n'
+                res[address.id] += address.street
+            if address.streetbis:
+                if res[address.id]:
+                    res[address.id] += '\n'
+                res[address.id] += address.streetbis
+            if address.zip or address.city:
+                if res[address.id]:
+                    res[address.id] += '\n'
+                res[address.id] += address.zip or '' +  ' ' + address.city or ''
+            if address.country or address.subdivision:
+                if res[address.id]:
+                    res[address.id] += '\n'
+                if address.subdivision:
+                    res[address.id] += ' ' + address.subdivision.name
+                if address.country:
+                    res[address.id] += address.country.name
+        return res
+
     def name_get(self, cursor, user, ids, context=None):
         if not ids:
             return []
         if isinstance(ids, (int, long)):
             ids = [ids]
         res = []
-        for address in self.browse(cursor, user, ids, context):
+        for address in self.browse(cursor, user, ids, context=context):
             res.append((address.id, ", ".join(x for x in [address.name,
                 address.party.name, address.zip, address.city] if x)))
         return res

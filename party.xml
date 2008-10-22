@@ -1,18 +1,27 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="res.group" id="group_party_admin">
+            <field name="name">Party Administration</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups" eval="[('add', ref('group_party_admin'))]"/>
+        </record>
+
+        <menuitem name="Party Management" sequence="0" id="menu_party"
+            icon="tryton-users"/>
+
         <record model="ir.ui.view" id="party_view_tree">
-            <field name="model">relationship.party</field>
+            <field name="model">party.party</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Parties">
                     <field name="code" select="1"/>
                     <field name="name" select="1"/>
-                    <field name="type" select="2"/>
                     <field name="lang" select="2"/>
-                    <field name="website"/>
                     <field name="vat_code" select="1"/>
                     <field name="active" select="2" tree_invisible="1"/>
                     <field name="vat_country" select="2" tree_invisible="1"/>
@@ -22,7 +31,7 @@
             </field>
         </record>
         <record model="ir.ui.view" id="party_view_form">
-            <field name="model">relationship.party</field>
+            <field name="model">party.party</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -39,16 +48,10 @@
                                 <tree string="Addresses" sequence="sequence">
                                     <field name="sequence" tree_invisible="1"/>
                                     <field name="name"/>
-                                    <field name="phone"/>
-                                    <field name="email"/>
                                 </tree>
                             </field>
-                            <label name="type"/>
-                            <field name="type" widget="selection"/>
                             <label name="lang"/>
                             <field name="lang" widget="selection"/>
-                            <label name="website"/>
-                            <field name="website" widget="url"/>
                             <separator string="Categories" colspan="4"/>
                             <field name="categories" colspan="4"/>
                         </page>
@@ -68,7 +71,7 @@
         </record>
         <record model="ir.action.act_window" id="act_party_form">
             <field name="name">Parties</field>
-            <field name="res_model">relationship.party</field>
+            <field name="res_model">party.party</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_party_form_view1">
@@ -81,11 +84,11 @@
             <field name="view" ref="party_view_form"/>
             <field name="act_window" ref="act_party_form"/>
         </record>
-        <menuitem parent="menu_relationship" sequence="1"
+        <menuitem parent="menu_party" sequence="1"
             action="act_party_form" id="menu_party_form"/>
         <record model="ir.action.act_window" id="act_party_form2">
             <field name="name">Parties</field>
-            <field name="res_model">relationship.party</field>
+            <field name="res_model">party.party</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_party_form2_view1">
@@ -102,90 +105,34 @@
             action="act_party_form2" id="menu_party_form2"/>
         <record model="ir.action.act_window" id="act_party_by_category">
             <field name="name">Parties by Category</field>
-            <field name="res_model">relationship.party</field>
+            <field name="res_model">party.party</field>
             <field name="view_type">form</field>
             <field name="domain">[('categories', 'child_of', [active_id], 'parent')]</field>
         </record>
         <record model="ir.action.keyword" id="act_party_by_category_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model">relationship.category,0</field>
+            <field name="model">party.category,0</field>
             <field name="action" ref="act_party_by_category"/>
         </record>
         <record model="ir.action.report" id="report_label">
             <field name="name">La_bels</field>
-            <field name="model">relationship.party</field>
+            <field name="model">party.party</field>
             <field name="report_name">party.label</field>
-            <field name="report">relationship/label.odt</field>
+            <field name="report">party/label.odt</field>
         </record>
         <record model="ir.action.keyword" id="report_label_party">
             <field name="keyword">form_print</field>
-            <field name="model">relationship.party,0</field>
+            <field name="model">party.party,0</field>
             <field name="action" ref="report_label"/>
         </record>
 
-        <record model="ir.ui.view" id="party_type_view_tree">
-            <field name="model">relationship.party.type</field>
-            <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Party Types">
-                    <field name="name" select="1"/>
-                </tree>
-                ]]>
-            </field>
-        </record>
-        <record model="ir.ui.view" id="party_type_view_form">
-            <field name="model">relationship.party.type</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Party Type">
-                    <label name="name"/>
-                    <field name="name"/>
-                </form>
-                ]]>
-            </field>
-        </record>
-        <record model="ir.action.act_window" id="act_party_type_form">
-            <field name="name">Party Types</field>
-            <field name="res_model">relationship.party.type</field>
-            <field name="view_type">form</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_party_type_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="party_type_view_tree"/>
-            <field name="act_window" ref="act_party_type_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_party_type_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="party_type_view_form"/>
-            <field name="act_window" ref="act_party_type_form"/>
-        </record>
-        <menuitem  parent="menu_party_form" sequence="2"
-            action="act_party_type_form" id="menu_party_type_form"/>
-
-        <record model="ir.model.access" id="access_party_type">
-            <field name="model" search="[('model', '=', 'relationship.party.type')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_party_type_admin">
-            <field name="model" search="[('model', '=', 'relationship.party.type')]"/>
-            <field name="group" ref="group_relationship_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
         <record model="ir.sequence.type" id="sequence_type_party">
             <field name="name">Party</field>
-            <field name="code">relationship.party</field>
+            <field name="code">party.party</field>
         </record>
         <record model="ir.sequence" id="sequence_party">
             <field name="name">Party</field>
-            <field name="code">relationship.party</field>
+            <field name="code">party.party</field>
         </record>
     </data>
 </tryton>

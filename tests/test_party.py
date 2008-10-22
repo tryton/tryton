@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 
 import sys, os
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
@@ -12,17 +13,17 @@ import trytond.tests
 from trytond.tests import RPCProxy, CONTEXT, SOCK
 
 
-class RelationshipTestCase(unittest.TestCase):
+class PartyTestCase(unittest.TestCase):
     '''
-    Test Relationship module.
+    Test Party module.
     '''
 
     def setUp(self):
-        trytond.tests.install_module('relationship')
-        self.category = RPCProxy('relationship.category')
-        self.party = RPCProxy('relationship.party')
-        self.address = RPCProxy('relationship.address')
-        self.country = RPCProxy('relationship.country')
+        trytond.tests.install_module('party')
+        self.category = RPCProxy('party.category')
+        self.party = RPCProxy('party.party')
+        self.address = RPCProxy('party.address')
+        self.country = RPCProxy('country.country')
 
     def test0010category(self):
         '''
@@ -95,11 +96,11 @@ class RelationshipTestCase(unittest.TestCase):
         self.assert_(party1_id)
 
 def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(RelationshipTestCase)
+    return unittest.TestLoader().loadTestsFromTestCase(PartyTestCase)
 
 if __name__ == '__main__':
     suiteTrytond = trytond.tests.suite()
-    suiteRelationship = suite()
-    alltests = unittest.TestSuite([suiteTrytond, suiteRelationship])
+    suiteParty = suite()
+    alltests = unittest.TestSuite([suiteTrytond, suiteParty])
     unittest.TextTestRunner(verbosity=2).run(alltests)
     SOCK.disconnect()

@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 from trytond.osv import fields, OSV
 import logging
 
@@ -10,7 +11,7 @@ try:
     for country in vatnumber.countries():
         VAT_COUNTRIES.append((country, country))
 except ImportError:
-    logging.getLogger('relationship').warning(
+    logging.getLogger('party').warning(
             'Unable to import vatnumber. VAT number validation disable.')
 
 STATES = {
@@ -18,25 +19,10 @@ STATES = {
 }
 
 
-class PartyType(OSV):
-    "Party Type"
-
-    _name = 'relationship.party.type'
-    _description = __doc__
-    name = fields.Char('Name', required=True, size=None, translate=True)
-    # TODO add into localisation modules: http://en.wikipedia.org/wiki/Types_of_companies
-
-    def __init__(self):
-        super(PartyType, self).__init__()
-        self._order.insert(0, ('name', 'ASC'))
-
-PartyType()
-
-
 class Party(OSV):
     "Party"
     _description = __doc__
-    _name = "relationship.party"
+    _name = "party.party"
 
     name = fields.Char('Name', size=None, required=True, select=1,
            states=STATES)
@@ -44,24 +30,20 @@ class Party(OSV):
             readonly=True, order_field="%(table)s.code_length %(order)s, " \
                     "%(table)s.code %(order)s")
     code_length = fields.Integer('Code Length', select=1, readonly=True)
-    type = fields.Many2One("relationship.party.type", "Type",
-           states=STATES)
-    lang = fields.Many2One("ir.lang", 'Language',
-           states=STATES)
+    lang = fields.Many2One("ir.lang", 'Language', states=STATES)
     vat_number = fields.Char('VAT Number',size=None,
             help="Value Added Tax number", states=STATES)
     vat_country = fields.Selection(VAT_COUNTRIES, 'VAT Country', states=STATES,
         help="Setting VAT country will enable verification of the VAT number.")
     vat_code = fields.Function('get_vat_code', type='char', string="VAT Code")
-    website = fields.Char('Website',size=None,
-           states=STATES)
-    addresses = fields.One2Many('relationship.address', 'party',
+    addresses = fields.One2Many('party.address', 'party',
            'Addresses',states=STATES)
     categories = fields.Many2Many(
-            'relationship.category', 'relationship_category_rel',
+            'party.category', 'party_category_rel',
             'party', 'category', 'Categories',
             states=STATES)
     active = fields.Boolean('Active', select=1)
+    full_name = fields.Function('get_full_name', type='char')
 
     def __init__(self):
         super(Party, self).__init__()
@@ -88,11 +70,19 @@ class Party(OSV):
             res[party.id] = (party.vat_country or '') + (party.vat_number or '')
         return res
 
+    def get_full_name(self, cursor, user, ids, name, arg, context=None):
+        if not ids:
+            return []
+        res = {}
+        for party in self.browse(cursor, user, ids, context=context):
+            res[party.id] = party.name
+        return res
+
     def create(self, cursor, user, values, context=None):
         values = values.copy()
         if not values.get('code'):
             values['code'] = self.pool.get('ir.sequence').get(
-                    cursor, user, 'relationship.party')
+                    cursor, user, 'party.party')
         values['code_length'] = len(values['code'])
         return super(Party, self).create(cursor, user, values, context=context)
 
@@ -126,7 +116,7 @@ class Party(OSV):
         Try to find an address for the given type, if no type match
         the first address is return.
         """
-        address_obj = self.pool.get("relationship.address")
+        address_obj = self.pool.get("party.address")
         address_ids = address_obj.search(
             cursor, user, [("party","=",party_id),("active","=",True)],
             order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)

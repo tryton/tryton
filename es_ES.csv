@@ -1,60 +1,47 @@
 type,name,res_id,src,value,fuzzy
-error,relationship.address,0,You can not modify the party of an address!,No puede modificar el tercero de una dirección!,0
-error,relationship.category,0,You can not create recursive categories!,No puede crear categorías recursivas!,0
-error,relationship.country,0,The code of the country must be unique!,El código del país debe ser único!,0
-error,relationship.country,0,The name of the country must be unique!,Eln nombre de los países debe ser único!,0
-error,relationship.party,0,The code of the party must be unique!,El código del tercero debe ser único!,0
-error,relationship.party,0,Wrong VAT number!,Número de VAT erróneo!,0
-field,"relationship.address,active",0,Active,Activo,0
-field,"relationship.address,city",0,City,Ciudad,0
-field,"relationship.address,country",0,Country,País,0
-field,"relationship.address,email",0,E-Mail,E-Mail,0
-field,"relationship.address,fax",0,Fax,Fax,0
-field,"relationship.address,mobile",0,Mobile,Móvil,0
-field,"relationship.address,name",0,Contact Name,Nombre de Contacto,0
-field,"relationship.address,party",0,Party,Tercero,0
-field,"relationship.address,phone",0,Phone,Teléfono,0
-field,"relationship.address,sequence",0,Sequence,Secuencia,0
-field,"relationship.address,state",0,State,Estado,0
-field,"relationship.address,street",0,Street,Calle,0
-field,"relationship.address,streetbis",0,Street (bis),Calle (bis),0
-field,"relationship.address,zip",0,Zip,Código postal,0
-field,"relationship.category,active",0,Active,Activo,0
-field,"relationship.category,childs",0,Childs,Hij@s,0
-field,"relationship.category,complete_name",0,Name,Nombre,0
-field,"relationship.category,name",0,Name,Nombre,0
-field,"relationship.category,parent",0,Parent,Padre,0
-field,"relationship.country,code",0,Code,Código,0
-field,"relationship.country,name",0,Name,Nombre,0
-field,"relationship.country,state",0,State,Estado,0
-field,"relationship.country.state,code",0,Code,Código,0
-field,"relationship.country.state,country",0,Country,País,0
-field,"relationship.country.state,name",0,Name,Nombre,0
-field,"relationship.party,active",0,Active,Activo,0
-field,"relationship.party,addresses",0,Addresses,Direcciones,0
-field,"relationship.party,categories",0,Categories,Categorías,0
-field,"relationship.party,code",0,Code,Código,0
-field,"relationship.party,code_length",0,Code Length,Longitud del Código,0
-field,"relationship.party,lang",0,Language,Idioma,0
-field,"relationship.party,name",0,Name,Nombre,0
-field,"relationship.party,type",0,Type,Tipo,0
-field,"relationship.party.type,name",0,Name,Nombre,0
-field,"relationship.party,vat_code",0,VAT Code,Código de VAT,0
-field,"relationship.party,vat_country",0,VAT Country,VAT de país,0
-field,"relationship.party,vat_number",0,VAT Number,Nombre de VAT,0
-field,"relationship.party,website",0,Website,Sitio Web,0
-help,"relationship.country,code",0,"The ISO country code in two chars.
-You can use this field for quick search.","El código ISO del país en dos caracteres,
-Puede usar este campo para búsqueda rápida.",0
-help,"relationship.country,name",0,The full name of the country.,El nombre completo del país.,0
-help,"relationship.party,vat_country",0,Setting VAT country will enable verification of the VAT number.,Al especificar el VAT de país se habilitará la verificación del número de VAT.,0
-help,"relationship.party,vat_number",0,Value Added Tax number,Número de Impuesto de Valor Agregado,0
+error,party.address,0,You can not modify the party of an address!,No puede modificar el tercero de una dirección!,0
+error,party.category,0,You can not create recursive categories!,No puede crear categorías recursivas!,0
+error,party.party,0,The code of the party must be unique!,El código del tercero debe ser único!,0
+error,party.party,0,Wrong VAT number!,Número de VAT erróneo!,0
+field,"party.address,active",0,Active,Activo,0
+field,"party.address,city",0,City,Ciudad,0
+field,"party.address,country",0,Country,País,0
+field,"party.address,email",0,E-Mail,E-Mail,0
+field,"party.address,fax",0,Fax,Fax,0
+field,"party.address,mobile",0,Mobile,Móvil,0
+field,"party.address,name",0,Contact Name,Nombre de Contacto,0
+field,"party.address,party",0,Party,Tercero,0
+field,"party.address,phone",0,Phone,Teléfono,0
+field,"party.address,sequence",0,Sequence,Secuencia,0
+field,"party.address,state",0,State,Estado,0
+field,"party.address,street",0,Street,Calle,0
+field,"party.address,streetbis",0,Street (bis),Calle (bis),0
+field,"party.address,zip",0,Zip,Código postal,0
+field,"party.category,active",0,Active,Activo,0
+field,"party.category,childs",0,Childs,Hij@s,0
+field,"party.category,complete_name",0,Name,Nombre,0
+field,"party.category,name",0,Name,Nombre,0
+field,"party.category,parent",0,Parent,Padre,0
+field,"party.party,active",0,Active,Activo,0
+field,"party.party,addresses",0,Addresses,Direcciones,0
+field,"party.party,categories",0,Categories,Categorías,0
+field,"party.party,code",0,Code,Código,0
+field,"party.party,code_length",0,Code Length,Longitud del Código,0
+field,"party.party,lang",0,Language,Idioma,0
+field,"party.party,name",0,Name,Nombre,0
+field,"party.party,type",0,Type,Tipo,0
+field,"party.party.type,name",0,Name,Nombre,0
+field,"party.party,vat_code",0,VAT Code,Código de VAT,0
+field,"party.party,vat_country",0,VAT Country,VAT de país,0
+field,"party.party,vat_number",0,VAT Number,Nombre de VAT,0
+field,"party.party,website",0,Website,Sitio Web,0
+help,"party.party,vat_country",0,Setting VAT country will enable verification of the VAT number.,Al especificar el VAT de país se habilitará la verificación del número de VAT.,0
+help,"party.party,vat_number",0,Value Added Tax number,Número de Impuesto de Valor Agregado,0
 model,"ir.action,name",act_address_form,Addresses,Direcciones,0
 model,"ir.action,name",act_address_form2,Addresses,Direcciones,0
 model,"ir.action,name",act_category_tree,Categories,Categorías,0
 model,"ir.action,name",act_category_form,Categories,Categorías,0
 model,"ir.action,name",act_category_form2,Categories,Categorías,0
-model,"ir.action,name",act_country_form,Countries,Países,0
 model,"ir.action,name",report_label,La_bels,Etiqueta_s,0
 model,"ir.action,name",act_party_form,Parties,Partidas,0
 model,"ir.action,name",act_party_form2,Parties,Partidas,0
@@ -63,306 +50,55 @@ model,"ir.action,name",act_party_type_form,Party Types,Tipos de Partida,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Direcciones,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Categorías,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Configuración,0
-model,"ir.ui.menu,name",menu_country_form,Countries,Países,0
 model,"ir.ui.menu,name",menu_category_form,Edit Categories,Editar Categorías,0
 model,"ir.ui.menu,name",menu_address_form2,New Address,Nueva Dirección,0
 model,"ir.ui.menu,name",menu_category_form2,New category,Nueva Categoría,0
 model,"ir.ui.menu,name",menu_party_form2,New Party,Nuevo Tercero,0
 model,"ir.ui.menu,name",menu_party_form,Parties,Partidas,0
 model,"ir.ui.menu,name",menu_party_type_form,Party Types,Tipos de Tercero,0
-model,"ir.ui.menu,name",menu_relationship,Relationship Management,Manejo de Relaciones,0
-model,"relationship.country,name",af,Afghanistan,Afganistán,0
-model,"relationship.country,name",ax,Åland Islands,Islas Aland,0
-model,"relationship.country,name",al,Albania,Albania,0
-model,"relationship.country,name",dz,Algeria,Argelia,0
-model,"relationship.country,name",as,American Samoa,Samoa Americana,0
-model,"relationship.country,name",ad,Andorra,Andorra,0
-model,"relationship.country,name",ao,Angola,Angola,0
-model,"relationship.country,name",ai,Anguilla,Anguila,0
-model,"relationship.country,name",aq,Antarctica,Antártica,0
-model,"relationship.country,name",ag,Antigua and Barbuda,Antigua y Barbados,0
-model,"relationship.country,name",ar,Argentina,Argentina,0
-model,"relationship.country,name",am,Armenia,Armenia,0
-model,"relationship.country,name",aw,Aruba,Aruba,0
-model,"relationship.country,name",au,Australia,Australia,0
-model,"relationship.country,name",at,Austria,Austria,0
-model,"relationship.country,name",az,Azerbaijan,Azerbaiján,0
-model,"relationship.country,name",bs,Bahamas,Bahamas,0
-model,"relationship.country,name",bh,Bahrain,Bahrain,0
-model,"relationship.country,name",bd,Bangladesh,Bangladesh,0
-model,"relationship.country,name",bb,Barbados,Barbados,0
-model,"relationship.country,name",by,Belarus,Bielorusia,0
-model,"relationship.country,name",be,Belgium,Bélgica,0
-model,"relationship.country,name",bz,Belize,Bélize,0
-model,"relationship.country,name",bj,Benin,Benín,0
-model,"relationship.country,name",bm,Bermuda,Bermudas,0
-model,"relationship.country,name",bt,Bhutan,Bután,0
-model,"relationship.country,name",bo,Bolivia,Bolivia,0
-model,"relationship.country,name",ba,Bosnia and Herzegovina,Bosnia y Herzegovina,0
-model,"relationship.country,name",bw,Botswana,Botswana,0
-model,"relationship.country,name",bv,Bouvet Island,Isla Bouvet,0
-model,"relationship.country,name",br,Brazil,Brasil,0
-model,"relationship.country,name",io,British Indian Ocean Territory,Territorio Oceánico de las Islas Indobritánicas,0
-model,"relationship.country,name",bn,Brunei Darussalam,Brunei Darussalam,0
-model,"relationship.country,name",bg,Bulgaria,Bulgaria,0
-model,"relationship.country,name",bf,Burkina Faso,Burkina Faso,0
-model,"relationship.country,name",bi,Burundi,Burundi,0
-model,"relationship.country,name",kh,Cambodia,Cambodia,0
-model,"relationship.country,name",cm,Cameroon,Camerún,0
-model,"relationship.country,name",ca,Canada,Canadá,0
-model,"relationship.country,name",cv,Cape Verde,Cabo Verde,0
-model,"relationship.country,name",ky,Cayman Islands,Islas Caimán,0
-model,"relationship.country,name",cf,Central African Republic,República Central Africana,0
-model,"relationship.country,name",td,Chad,Chad,0
-model,"relationship.country,name",cl,Chile,Chile,0
-model,"relationship.country,name",cn,China,China,0
-model,"relationship.country,name",cx,Christmas Island,Islas Christmas,0
-model,"relationship.country,name",cc,Cocos (Keeling) Islands,Islas Cocos(Keeling),0
-model,"relationship.country,name",co,Colombia,Colombia,0
-model,"relationship.country,name",km,Comoros,Comoros,0
-model,"relationship.country,name",cg,Congo,Congo,0
-model,"relationship.country,name",cd,"Congo, The Democratic Republic of the","Congo, República democrática del",0
-model,"relationship.country,name",ck,Cook Islands,Islas Cook,0
-model,"relationship.country,name",cr,Costa Rica,Costa Rica,0
-model,"relationship.country,name",ci,Côte d'Ivoire,Costa de Marfil,0
-model,"relationship.country,name",hr,Croatia,Croacia,0
-model,"relationship.country,name",cu,Cuba,Cuba,0
-model,"relationship.country,name",cy,Cyprus,Chipre,0
-model,"relationship.country,name",cz,Czech Republic,República Checa,0
-model,"relationship.country,name",dk,Denmark,Dinamarca,0
-model,"relationship.country,name",dj,Djibouti,Dijbouti,0
-model,"relationship.country,name",dm,Dominica,Dominica,0
-model,"relationship.country,name",do,Dominican Republic,República Dominicana,0
-model,"relationship.country,name",ec,Ecuador,Ecuador,0
-model,"relationship.country,name",eg,Egypt,Egipto,0
-model,"relationship.country,name",sv,El Salvador,El Salvador,0
-model,"relationship.country,name",gq,Equatorial Guinea,Guinea Ecuatorial,0
-model,"relationship.country,name",er,Eritrea,Eritrea,0
-model,"relationship.country,name",ee,Estonia,Estonia,0
-model,"relationship.country,name",et,Ethiopia,Etiopía,0
-model,"relationship.country,name",fk,Falkland Islands (Malvinas),Islas del Halcón(Malvinas),0
-model,"relationship.country,name",fo,Faroe Islands,Islas Faroe,0
-model,"relationship.country,name",fj,Fiji,Fuji,0
-model,"relationship.country,name",fi,Finland,Finlandia,0
-model,"relationship.country,name",fr,France,Francia,0
-model,"relationship.country,name",gf,French Guiana,Guinea Francesa,0
-model,"relationship.country,name",pf,French Polynesia,Polinesia Francesa,0
-model,"relationship.country,name",tf,French Southern Territories,Territorios del Sur de Francia,0
-model,"relationship.country,name",ga,Gabon,Gabón,0
-model,"relationship.country,name",gm,Gambia,Gambia,0
-model,"relationship.country,name",ge,Georgia,Georgia,0
-model,"relationship.country,name",de,Germany,Alemania,0
-model,"relationship.country,name",gh,Ghana,Ghana,0
-model,"relationship.country,name",gi,Gibraltar,Gibraltar,0
-model,"relationship.country,name",gr,Greece,Grecia,0
-model,"relationship.country,name",gl,Greenland,Groenlandia,0
-model,"relationship.country,name",gd,Grenada,Granada,0
-model,"relationship.country,name",gp,Guadeloupe,Guadalupe,0
-model,"relationship.country,name",gu,Guam,Guam,0
-model,"relationship.country,name",gt,Guatemala,Guatemala,0
-model,"relationship.country,name",gg,Guernsey,Guernsey,0
-model,"relationship.country,name",gn,Guinea,Guinea,0
-model,"relationship.country,name",gw,Guinea-Bissau,Guinea-Bissau,0
-model,"relationship.country,name",gy,Guyana,Guyana,0
-model,"relationship.country,name",ht,Haiti,Haití,0
-model,"relationship.country,name",hm,Heard Island and McDonald Islands,Islas Heard y McDonald,0
-model,"relationship.country,name",va,Holy See (Vatican City State),Vaticano(Ciudad Estado),0
-model,"relationship.country,name",hn,Honduras,Honduras,0
-model,"relationship.country,name",hk,Hong Kong,Hong Kong,0
-model,"relationship.country,name",hu,Hungary,Hungria,0
-model,"relationship.country,name",is,Iceland,Islandia,0
-model,"relationship.country,name",in,India,India,0
-model,"relationship.country,name",id,Indonesia,Indonesia,0
-model,"relationship.country,name",ir,"Iran, Islamic Republic of","Irán, República Islámica de",0
-model,"relationship.country,name",iq,Iraq,Irak,0
-model,"relationship.country,name",ie,Ireland,Irlanda,0
-model,"relationship.country,name",im,Isle of Man,Isla del Hombre,0
-model,"relationship.country,name",il,Israel,Israel,0
-model,"relationship.country,name",it,Italy,Italia,0
-model,"relationship.country,name",jm,Jamaica,Jamaica,0
-model,"relationship.country,name",jp,Japan,Japón,0
-model,"relationship.country,name",je,Jersey,Jersey,0
-model,"relationship.country,name",jo,Jordan,Jordán,0
-model,"relationship.country,name",kz,Kazakhstan,Kazahistán,0
-model,"relationship.country,name",ke,Kenya,Kenia,0
-model,"relationship.country,name",ki,Kiribati,Kiribati,0
-model,"relationship.country,name",kp,"Korea, Democratic People's Republic of","Corea, República Democrática de la Gente de",0
-model,"relationship.country,name",kr,"Korea, Republic of","Corea, República de",0
-model,"relationship.country,name",kw,Kuwait,Kuwait,0
-model,"relationship.country,name",kg,Kyrgyzstan,Kyrgyzstán,0
-model,"relationship.country,name",la,Lao People's Democratic Republic,"Lao, República Democrática de la gente de",0
-model,"relationship.country,name",lv,Latvia,Latvia,0
-model,"relationship.country,name",lb,Lebanon,Líbano,0
-model,"relationship.country,name",ls,Lesotho,Lesotho,0
-model,"relationship.country,name",lr,Liberia,Liberia,0
-model,"relationship.country,name",ly,Libyan Arab Jamahiriya,Libyan Arab Jamahiriya,0
-model,"relationship.country,name",li,Liechtenstein,Liechtenstein,0
-model,"relationship.country,name",lt,Lithuania,Lituania,0
-model,"relationship.country,name",lu,Luxembourg,Luxemburgo,0
-model,"relationship.country,name",mo,Macao,Macao,0
-model,"relationship.country,name",mk,"Macedonia, Republic of","Macedonia, República de",0
-model,"relationship.country,name",mg,Madagascar,Madagascar,0
-model,"relationship.country,name",mw,Malawi,Malawi,0
-model,"relationship.country,name",my,Malaysia,Malasia,0
-model,"relationship.country,name",mv,Maldives,Maldives,0
-model,"relationship.country,name",ml,Mali,Malí,0
-model,"relationship.country,name",mt,Malta,Malta,0
-model,"relationship.country,name",mh,Marshall Islands,Islas Marshall,0
-model,"relationship.country,name",mq,Martinique,Martinica,0
-model,"relationship.country,name",mr,Mauritania,Mauritania,0
-model,"relationship.country,name",mu,Mauritius,Mauricius,0
-model,"relationship.country,name",yt,Mayotte,Mayotte,0
-model,"relationship.country,name",mx,Mexico,México,0
-model,"relationship.country,name",fm,"Micronesia, Federated States of","Micronesia, Estados Federados de",0
-model,"relationship.country,name",md,Moldova,Moldova,0
-model,"relationship.country,name",mc,Monaco,Mónaco,0
-model,"relationship.country,name",mn,Mongolia,Mongolia,0
-model,"relationship.country,name",me,Montenegro,Montenegro,0
-model,"relationship.country,name",ms,Montserrat,Monserrate,0
-model,"relationship.country,name",ma,Morocco,Marruecos,0
-model,"relationship.country,name",mz,Mozambique,Mozambique,0
-model,"relationship.country,name",mm,Myanmar,Myanmar,0
-model,"relationship.country,name",na,Namibia,Namibia,0
-model,"relationship.country,name",nr,Nauru,Nauru,0
-model,"relationship.country,name",np,Nepal,Nepal,0
-model,"relationship.country,name",nl,Netherlands,Holanda,0
-model,"relationship.country,name",an,Netherlands Antilles,Antillas Holandesas,0
-model,"relationship.country,name",nc,New Caledonia,Nueva Caledonia,0
-model,"relationship.country,name",nz,New Zealand,Nueva Zelanda,0
-model,"relationship.country,name",ni,Nicaragua,Nicaragua,0
-model,"relationship.country,name",ne,Niger,Nige,0
-model,"relationship.country,name",ng,Nigeria,Nigeria,0
-model,"relationship.country,name",nu,Niue,Niue,0
-model,"relationship.country,name",nf,Norfolk Island,Isla Norfolk,0
-model,"relationship.country,name",mp,Northern Mariana Islands,Islas Marianas del Norte,0
-model,"relationship.country,name",no,Norway,Noruega,0
-model,"relationship.country,name",om,Oman,Omán,0
-model,"relationship.country,name",pk,Pakistan,Paquistán,0
-model,"relationship.country,name",pw,Palau,Palau,0
-model,"relationship.country,name",ps,"Palestinian Territory, Occupied","Territorio Palestino, Ocupado",0
-model,"relationship.country,name",pa,Panama,Panamá,0
-model,"relationship.country,name",pg,Papua New Guinea,"Papua, Nueva Guinea",0
-model,"relationship.country,name",py,Paraguay,Paraguay,0
-model,"relationship.country,name",pe,Peru,Perú,0
-model,"relationship.country,name",ph,Philippines,Filipinas,0
-model,"relationship.country,name",pn,Pitcairn,Pitcairn,0
-model,"relationship.country,name",pl,Poland,Polonia,0
-model,"relationship.country,name",pt,Portugal,Portugal,0
-model,"relationship.country,name",pr,Puerto Rico,Puerto Rico,0
-model,"relationship.country,name",qa,Qatar,Katar,0
-model,"relationship.country,name",re,Reunion,Reunión,0
-model,"relationship.country,name",ro,Romania,Rumania,0
-model,"relationship.country,name",ru,Russian Federation,Federación Rusa,0
-model,"relationship.country,name",rw,Rwanda,Rwanda,0
-model,"relationship.country,name",bl,Saint Barthélemy,San Bartolomé,0
-model,"relationship.country,name",sh,Saint Helena,Santa Helena,0
-model,"relationship.country,name",kn,Saint Kitts and Nevis,San Kitts y Nevis,0
-model,"relationship.country,name",lc,Saint Lucia,Santa Lucía,0
-model,"relationship.country,name",mf,Saint Martin (French part),San Martín(Porción Francesa),0
-model,"relationship.country,name",pm,Saint Pierre and Miquelon,San Pedro y Miquelón,0
-model,"relationship.country,name",vc,Saint Vincent and the Grenadines,San Vicente y los Grenadinos,0
-model,"relationship.country,name",ws,Samoa,Samoa,0
-model,"relationship.country,name",sm,San Marino,San Marino,0
-model,"relationship.country,name",st,Sao Tome and Principe,Sao Tome y Principe,0
-model,"relationship.country,name",sa,Saudi Arabia,Arabia Saudita,0
-model,"relationship.country,name",sn,Senegal,Senegal,0
-model,"relationship.country,name",rs,Serbia,Serbia,0
-model,"relationship.country,name",sc,Seychelles,Seychelles,0
-model,"relationship.country,name",sl,Sierra Leone,Sierra Leona,0
-model,"relationship.country,name",sg,Singapore,Singapur,0
-model,"relationship.country,name",sk,Slovakia,Slovakia,0
-model,"relationship.country,name",si,Slovenia,Slovenia,0
-model,"relationship.country,name",sb,Solomon Islands,Islas Solomón,0
-model,"relationship.country,name",so,Somalia,Somalia,0
-model,"relationship.country,name",za,South Africa,Sudáfrica,0
-model,"relationship.country,name",gs,South Georgia and the South Sandwich Islands,Georgia del Sur e Islas Sanduche del Sur,0
-model,"relationship.country,name",es,Spain,España,0
-model,"relationship.country,name",lk,Sri Lanka,Sri Lanka,0
-model,"relationship.country,name",sd,Sudan,Sudán,0
-model,"relationship.country,name",sr,Suriname,Surinam,0
-model,"relationship.country,name",sj,Svalbard and Jan Mayen,Svalbard y Jan Mayen,0
-model,"relationship.country,name",sz,Swaziland,Swaziland,0
-model,"relationship.country,name",se,Sweden,Suecia,0
-model,"relationship.country,name",ch,Switzerland,Suiza,0
-model,"relationship.country,name",sy,Syrian Arab Republic,República Árabe Siria,0
-model,"relationship.country,name",tw,"Taiwan, Province of China","Taiwan, Provincia de China",0
-model,"relationship.country,name",tj,Tajikistan,Tajikistan,0
-model,"relationship.country,name",tz,"Tanzania, United Republic of","Tanzania, República Unida de",0
-model,"relationship.country,name",th,Thailand,Tailandia,0
-model,"relationship.country,name",tl,Timor-Leste,Timor del Este,0
-model,"relationship.country,name",tg,Togo,Togo,0
-model,"relationship.country,name",tk,Tokelau,Tokelau,0
-model,"relationship.country,name",to,Tonga,Tonga,0
-model,"relationship.country,name",tt,Trinidad and Tobago,Trinidad y Tobago,0
-model,"relationship.country,name",tn,Tunisia,Tunicia,0
-model,"relationship.country,name",tr,Turkey,Turquía,0
-model,"relationship.country,name",tm,Turkmenistan,Turkmenistán,0
-model,"relationship.country,name",tc,Turks and Caicos Islands,Islas Turcas y Caicos,0
-model,"relationship.country,name",tv,Tuvalu,Tuvalu,0
-model,"relationship.country,name",ug,Uganda,Uganda,0
-model,"relationship.country,name",ua,Ukraine,Ucrania,0
-model,"relationship.country,name",ae,United Arab Emirates,Emiratos Árabes Unidos,0
-model,"relationship.country,name",gb,United Kingdom,Reino Unido,0
-model,"relationship.country,name",us,United States,Estados Unidos,0
-model,"relationship.country,name",um,United States Minor Outlying Islands,Estados Unidos Islas Externas Menores,0
-model,"relationship.country,name",uy,Uruguay,Uruguay,0
-model,"relationship.country,name",uz,Uzbekistan,Uzbequistán,0
-model,"relationship.country,name",vu,Vanuatu,Vanuatu,0
-model,"relationship.country,name",ve,Venezuela,Venezuela,0
-model,"relationship.country,name",vn,Viet Nam,Vietnam,0
-model,"relationship.country,name",vg,"Virgin Islands, British","Islas Vírgenes, Británicas",0
-model,"relationship.country,name",vi,"Virgin Islands, U.S.","Islas Vírgenes, U.S.A.",0
-model,"relationship.country,name",wf,Wallis and Futuna,Wallis y Futuna,0
-model,"relationship.country,name",eh,Western Sahara,Sahara Occidental,0
-model,"relationship.country,name",ye,Yemen,Yemén,0
-model,"relationship.country,name",zm,Zambia,Zambia,0
-model,"relationship.country,name",zw,Zimbabwe,Zimbawe,0
-selection,"relationship.party,vat_country",0,,,0
-selection,"relationship.party,vat_country",0,AL,AL,0
-selection,"relationship.party,vat_country",0,AT,At,0
-selection,"relationship.party,vat_country",0,BE,BE,0
-selection,"relationship.party,vat_country",0,BG,BG,0
-selection,"relationship.party,vat_country",0,CY,CY,0
-selection,"relationship.party,vat_country",0,CZ,CZ,0
-selection,"relationship.party,vat_country",0,DE,DE,0
-selection,"relationship.party,vat_country",0,DK,DK,0
-selection,"relationship.party,vat_country",0,EE,EE,0
-selection,"relationship.party,vat_country",0,EL,EL,0
-selection,"relationship.party,vat_country",0,ES,ES,0
-selection,"relationship.party,vat_country",0,FI,FI,0
-selection,"relationship.party,vat_country",0,FR,FR,0
-selection,"relationship.party,vat_country",0,GB,GB,0
-selection,"relationship.party,vat_country",0,GR,GR,0
-selection,"relationship.party,vat_country",0,HU,HU,0
-selection,"relationship.party,vat_country",0,IE,IE,0
-selection,"relationship.party,vat_country",0,IT,IT,0
-selection,"relationship.party,vat_country",0,LT,LT,0
-selection,"relationship.party,vat_country",0,LU,LU,0
-selection,"relationship.party,vat_country",0,LV,LV,0
-selection,"relationship.party,vat_country",0,MT,MT,0
-selection,"relationship.party,vat_country",0,NL,NL,0
-selection,"relationship.party,vat_country",0,PL,PL,0
-selection,"relationship.party,vat_country",0,PT,PT,0
-selection,"relationship.party,vat_country",0,RO,RO,0
-selection,"relationship.party,vat_country",0,SE,SE,0
-selection,"relationship.party,vat_country",0,SI,SI,0
-selection,"relationship.party,vat_country",0,SK,SK,0
-selection,"relationship.party,vat_country",0,SM,SM,0
-selection,"relationship.party,vat_country",0,UA,UA,0
-selection,"relationship.party,vat_country",0,UK,UK,0
-view,relationship.address,0,Addresses,Direcciones,0
-view,relationship.category,0,Categories,Categorías,0
-view,relationship.category,0,Category,Categoría,0
-view,relationship.country,0,Countries,Países,0
-view,relationship.country,0,Country,País,0
-view,relationship.country,0,State,Estado,0
-view,relationship.country,0,States,Estados,0
-view,relationship.party,0,Accounting,Contabilidad,0
-view,relationship.party,0,Addresses,Direcciones,0
-view,relationship.party,0,Categories,Categorías,0
-view,relationship.party,0,General,General,0
-view,relationship.party,0,Parties,Partidas,0
-view,relationship.party,0,Party,Tercero,0
-view,relationship.party,0,Properties,Propiedades,0
-view,relationship.party.type,0,Party Type,Tipo de Tercero,0
-view,relationship.party.type,0,Party Types,Tipos de Partida,0
+model,"ir.ui.menu,name",menu_party,Relationship Management,Manejo de Relaciones,0
+selection,"party.party,vat_country",0,,,0
+selection,"party.party,vat_country",0,AL,AL,0
+selection,"party.party,vat_country",0,AT,At,0
+selection,"party.party,vat_country",0,BE,BE,0
+selection,"party.party,vat_country",0,BG,BG,0
+selection,"party.party,vat_country",0,CY,CY,0
+selection,"party.party,vat_country",0,CZ,CZ,0
+selection,"party.party,vat_country",0,DE,DE,0
+selection,"party.party,vat_country",0,DK,DK,0
+selection,"party.party,vat_country",0,EE,EE,0
+selection,"party.party,vat_country",0,EL,EL,0
+selection,"party.party,vat_country",0,ES,ES,0
+selection,"party.party,vat_country",0,FI,FI,0
+selection,"party.party,vat_country",0,FR,FR,0
+selection,"party.party,vat_country",0,GB,GB,0
+selection,"party.party,vat_country",0,GR,GR,0
+selection,"party.party,vat_country",0,HU,HU,0
+selection,"party.party,vat_country",0,IE,IE,0
+selection,"party.party,vat_country",0,IT,IT,0
+selection,"party.party,vat_country",0,LT,LT,0
+selection,"party.party,vat_country",0,LU,LU,0
+selection,"party.party,vat_country",0,LV,LV,0
+selection,"party.party,vat_country",0,MT,MT,0
+selection,"party.party,vat_country",0,NL,NL,0
+selection,"party.party,vat_country",0,PL,PL,0
+selection,"party.party,vat_country",0,PT,PT,0
+selection,"party.party,vat_country",0,RO,RO,0
+selection,"party.party,vat_country",0,SE,SE,0
+selection,"party.party,vat_country",0,SI,SI,0
+selection,"party.party,vat_country",0,SK,SK,0
+selection,"party.party,vat_country",0,SM,SM,0
+selection,"party.party,vat_country",0,UA,UA,0
+selection,"party.party,vat_country",0,UK,UK,0
+view,party.address,0,Addresses,Direcciones,0
+view,party.category,0,Categories,Categorías,0
+view,party.category,0,Category,Categoría,0
+view,party.party,0,Accounting,Contabilidad,0
+view,party.party,0,Addresses,Direcciones,0
+view,party.party,0,Categories,Categorías,0
+view,party.party,0,General,General,0
+view,party.party,0,Parties,Partidas,0
+view,party.party,0,Party,Tercero,0
+view,party.party,0,Properties,Propiedades,0
+view,party.party.type,0,Party Type,Tipo de Tercero,0
+view,party.party.type,0,Party Types,Tipos de Partida,0

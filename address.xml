@@ -1,24 +1,23 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.ui.view" id="address_view_tree">
-            <field name="model">relationship.address</field>
+            <field name="model">party.address</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Addresses">
                     <field name="party" select="1"/>
                     <field name="name" select="1"/>
-                    <field name="phone" select="2"/>
-                    <field name="email" select="2"/>
                     <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
         </record>
         <record model="ir.ui.view" id="address_view_form">
-            <field name="model">relationship.address</field>
+            <field name="model">party.address</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -48,23 +47,13 @@
                     <field name="country" completion="1"/>
                     <label name="subdivision"/>
                     <field name="subdivision"/>
-                    <newline/>
-                    <label name="phone"/>
-                    <field name="phone"/>
-                    <label name="mobile"/>
-                    <field name="mobile"/>
-                    <newline/>
-                    <label name="fax"/>
-                    <field name="fax"/>
-                    <label name="email"/>
-                    <field name="email" widget="email"/>
                 </form>
                 ]]>
             </field>
         </record>
         <record model="ir.action.act_window" id="act_address_form">
             <field name="name">Addresses</field>
-            <field name="res_model">relationship.address</field>
+            <field name="res_model">party.address</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_address_form_view1">
@@ -77,12 +66,12 @@
           <field name="view" ref="address_view_form"/>
           <field name="act_window" ref="act_address_form"/>
         </record>
-        <menuitem name="Addresses" parent="menu_relationship"
+        <menuitem name="Addresses" parent="menu_party"
               sequence="2" action="act_address_form"
               id="menu_address_form"/>
         <record model="ir.action.act_window" id="act_address_form2">
             <field name="name">Addresses</field>
-            <field name="res_model">relationship.address</field>
+            <field name="res_model">party.address</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_address_form2_view1">
