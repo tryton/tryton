@@ -72,11 +72,6 @@ class Move(OSV):
 
     def __init__(self):
         super(Move, self).__init__()
-        self._rpc_allowed += [
-            'set_state_done',
-            'set_state_draft',
-            'set_state_cancel',
-            ]
         self._sql_constraints += [
             ('check_move_qty_pos',
                 'CHECK(quantity >= 0.0)', 'Move quantity must be positive'),

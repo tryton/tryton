@@ -29,24 +29,8 @@
                         <label name="effective_date"/>
                         <field name="effective_date"/>
                         <separator colspan="4"/>
-                        <group col="4" colspan="4">
-                            <label name="state"/>
-                            <field name="state"/>
-                            <group col="3" colspan="2">
-                                <button string="Set Done"
-                                        name="set_state_done"
-                                        type="object"
-                                        states="{'invisible': '''state in ('cancel', 'done') '''}"/>
-                                <button string="Set Draft"
-                                        name="set_state_draft"
-                                        type="object"
-                                        states="{'invisible': '''state in ('done', 'draft') '''}"/>
-                                <button string="Cancel"
-                                        name="set_state_cancel"
-                                        type="object"
-                                        states="{'invisible': '''state == 'cancel' '''}"/>
-                            </group>
-                        </group>
+                        <label name="state"/>
+                        <field name="state"/>
                         <field name="type" invisible="1"/>
                         <field name="unit_digits" invisible="1"/>
                     </form>

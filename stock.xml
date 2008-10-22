@@ -16,6 +16,6 @@
             icon="tryton-package"/>
         <menuitem name="Configuration" parent="menu_stock"
             id="menu_configuration" groups="group_stock_admin"
-            sequence="10" icon="tryton-preferences"/>
+            sequence="0" icon="tryton-preferences"/>
     </data>
 </tryton>
