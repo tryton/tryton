@@ -146,9 +146,6 @@ field,"product.template,customer_taxes_used",0,Customer Taxes Used,Benutzte Steu
 field,"product.template,supplier_taxes",0,Supplier Taxes,Steuern (Lieferanten),0
 field,"product.template,supplier_taxes_used",0,Customer Taxes Used,Benutzte Steuern für Lieferanten,0
 field,"product.template,taxes_category",0,Use Category's Taxes,Wende die Steuern der Kategorie an,0
-field,"relationship.address,invoice",0,Invoice,Rechnungsadresse,0
-field,"relationship.party,payment_term",0,Invoice Payment Term,Zahlungsbedingung Verkauf,0
-field,"relationship.party,supplier_payment_term",0,Supplier Payment Term,Zahlungsbedingung Einkauf,0
 help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Ordnet Positionen in aufsteigender Reihenfolge,0
 help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
 help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0

@@ -121,9 +121,9 @@ field,"product.template,account_revenue",0,Account Revenue,Compte de Revenu,0
 field,"product.template,account_revenue_used",0,Account Revenue Used,Compte de Revenu Utilisé,0
 field,"product.template,customer_taxes",0,Customer Taxes,Taxes Client,0
 field,"product.template,supplier_taxes",0,Supplier Taxes,Taxes Fournisseur,0
-field,"relationship.address,invoice",0,Invoice,Facture,0
-field,"relationship.party,payment_term",0,Invoice Payment Term,Condition de Paiement de Client,0
-field,"relationship.party,supplier_payment_term",0,Supplier Payment Term,Condition de Paiement de Fournisseur,0
+field,"party.address,invoice",0,Invoice,Facture,0
+field,"party.party,payment_term",0,Invoice Payment Term,Condition de Paiement de Client,0
+field,"party.party,supplier_payment_term",0,Supplier Payment Term,Condition de Paiement de Fournisseur,0
 help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Utilisé pour trier les lignes en ordre croissant,0
 help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,0
 help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,0

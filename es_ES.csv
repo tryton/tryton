@@ -145,9 +145,9 @@ field,"product.template,customer_taxes_used",0,Customer Taxes Used,Impuestos del
 field,"product.template,supplier_taxes",0,Supplier Taxes,Impuestos a Proveedores,0
 field,"product.template,supplier_taxes_used",0,Customer Taxes Used,Impuestos del Cliente Usados,0
 field,"product.template,taxes_category",0,Taxes Category,Categorías de Impuesto,0
-field,"relationship.address,invoice",0,Invoice,Factura,0
-field,"relationship.party,payment_term",0,Invoice Payment Term,Término de Pago de la Factura,0
-field,"relationship.party,supplier_payment_term",0,Supplier Payment Term,Término de Pago a Proveedor,0
+field,"party.address,invoice",0,Invoice,Factura,0
+field,"party.party,payment_term",0,Invoice Payment Term,Término de Pago de la Factura,0
+field,"party.party,supplier_payment_term",0,Supplier Payment Term,Término de Pago a Proveedor,0
 help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Para ordenar las líneas ascendentemente,0
 help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Esta cuenta se usará en lugar de la definida en la categoría.,0
 help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Esta cuenta se usará en lugar de la definida en la categoría.,0
