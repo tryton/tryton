@@ -130,6 +130,9 @@ field,"account.period,in_credit_note_sequence",0,Supplier Credit Note Sequence,S
 field,"account.period,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Rechnungen Lieferanten,0
 field,"account.period,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
 field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Rechnungen Kunden,0
+field,"party.address,invoice",0,Invoice,Rechnungsadresse,0
+field,"party.party,payment_term",0,Invoice Payment Term,Zahlungsbedingung Verkauf,0
+field,"party.party,supplier_payment_term",0,Supplier Payment Term,Zahlungsbedingung Lieferant,0
 field,"product.category,account_expense",0,Account Expense,Konto Aufwand,0
 field,"product.category,account_revenue",0,Account Revenue,Konto Ertrag,0
 field,"product.category,customer_taxes",0,Customer Taxes,Steuern Kunde,0
@@ -159,7 +162,7 @@ model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.action,name",credit_invoice,Credit,Gutschreiben,0
 model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften,0
 model,"ir.action,name",,Custom Invoice,,0
-model,"ir.action,name",report_invoice,Custom Invoice,Angepasste Rechnung drucken,0
+model,"ir.action,name",report_invoice,Invoice,Angepasste Rechnung drucken,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
