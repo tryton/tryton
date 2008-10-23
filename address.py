@@ -14,12 +14,12 @@ class Address(OSV):
     _description = __doc__
     party = fields.Many2One('party.party', 'Party', required=True,
            ondelete='cascade', select=1,  states=STATES)
-    name = fields.Char('Name', size=64, states=STATES)
-    street = fields.Char('Street', size=128, states=STATES)
-    streetbis = fields.Char('Street (bis)', size=128, states=STATES)
-    zip = fields.Char('Zip', change_default=True, size=24,
+    name = fields.Char('Name', states=STATES)
+    street = fields.Char('Street', states=STATES)
+    streetbis = fields.Char('Street (bis)', states=STATES)
+    zip = fields.Char('Zip', change_default=True,
            states=STATES)
-    city = fields.Char('City', size=128, states=STATES)
+    city = fields.Char('City', states=STATES)
     country = fields.Many2One('country.country', 'Country',
            states=STATES)
     subdivision = fields.Many2One("country.subdivision",

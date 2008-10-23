@@ -11,8 +11,7 @@ class Category(OSV):
     "Category"
     _name = "party.category"
     _description = __doc__
-    name = fields.Char('Name', required=True, size=64,
-           states=STATES)
+    name = fields.Char('Name', required=True, states=STATES)
     parent = fields.Many2One('party.category', 'Parent',
            select=1, states=STATES)
     complete_name = fields.Function('get_complete_name',

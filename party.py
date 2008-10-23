@@ -24,15 +24,15 @@ class Party(OSV):
     _description = __doc__
     _name = "party.party"
 
-    name = fields.Char('Name', size=None, required=True, select=1,
+    name = fields.Char('Name', required=True, select=1,
            states=STATES)
-    code = fields.Char('Code', size=None, required=True, select=1,
+    code = fields.Char('Code', required=True, select=1,
             readonly=True, order_field="%(table)s.code_length %(order)s, " \
                     "%(table)s.code %(order)s")
     code_length = fields.Integer('Code Length', select=1, readonly=True)
     lang = fields.Many2One("ir.lang", 'Language', states=STATES)
-    vat_number = fields.Char('VAT Number',size=None,
-            help="Value Added Tax number", states=STATES)
+    vat_number = fields.Char('VAT Number', help="Value Added Tax number",
+            states=STATES)
     vat_country = fields.Selection(VAT_COUNTRIES, 'VAT Country', states=STATES,
         help="Setting VAT country will enable verification of the VAT number.")
     vat_code = fields.Function('get_vat_code', type='char', string="VAT Code")
