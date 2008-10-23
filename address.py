@@ -14,7 +14,7 @@ class Address(OSV):
     _description = __doc__
     party = fields.Many2One('party.party', 'Party', required=True,
            ondelete='cascade', select=1,  states=STATES)
-    name = fields.Char('Contact Name', size=64, states=STATES)
+    name = fields.Char('Name', size=64, states=STATES)
     street = fields.Char('Street', size=128, states=STATES)
     streetbis = fields.Char('Street (bis)', size=128, states=STATES)
     zip = fields.Char('Zip', change_default=True, size=24,
