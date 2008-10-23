@@ -1211,7 +1211,7 @@ class Product(OSV):
                     if product_supplier.party.id == supplier_id:
                         for price in product_supplier.prices:
                             if price.quantity <= quantity:
-                                res[product.id] = price.price
+                                res[product.id] = price.unit_price
                         break
             if uom:
                 res[product.id] = uom_obj.compute_price(cursor,
