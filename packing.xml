@@ -808,7 +808,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/tree/field[@name=&quot;email&quot;]" position="after">
+                        expr="/tree/field[@name=&quot;active&quot;]" position="after">
                         <field name="delivery" select="2"/>
                     </xpath>
                 </data>
