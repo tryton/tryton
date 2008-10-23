@@ -273,7 +273,7 @@ class Move(OSV):
             return
 
         if isinstance(uom, (int, long)):
-            uom = uom_obj.browse(cursor, user, uom, context=ctx)
+            uom = uom_obj.browse(cursor, user, uom, context=context)
 
         ctx = context and context.copy() or {}
         ctx['locations'] = location_obj.search(
@@ -301,7 +301,7 @@ class Move(OSV):
             if not vals.get('effective_date'):
                 vals['effective_date'] = datetime.datetime.now()
             from_location = location_obj.browse(
-                cursor, user, vals.from_location, context=context)
+                cursor, user, vals['from_location'], context=context)
             if from_location.type == 'supplier':
                 self._update_product_cost_price(
                     cursor, user, vals['product'], vals['quantity'],
@@ -318,7 +318,7 @@ class Move(OSV):
         if 'state' in vals:
             for move in self.browse(cursor, user, ids, context=context):
                 if vals['state'] == 'cancel':
-                    vals['effective_date'] = None
+                    vals['effective_date'] = False
                 elif vals['state'] == 'draft':
                     if move.state in ('assigned', 'done'):
                         self.raise_user_error(cursor, 'set_state_draft',
