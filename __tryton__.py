@@ -17,6 +17,7 @@
         "party.xml",
         "category.xml",
         "address.xml",
+        "contact_mechanism.xml",
     ],
     'translation': [
         'fr_FR.csv',

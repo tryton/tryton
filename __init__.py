@@ -4,3 +4,4 @@
 from category import *
 from party import *
 from address import *
+from contact_mechanism import *

@@ -45,7 +45,8 @@ this repository contains the full copyright notices and license terms. -->
                     <notebook colspan="6">
                         <page string="General">
                             <field name="addresses" mode="form,tree" colspan="4">
-                                <tree string="Addresses" sequence="sequence">
+                                <tree string="Addresses" sequence="sequence"
+                                    fill="1">
                                     <field name="sequence" tree_invisible="1"/>
                                     <field name="name"/>
                                     <field name="street"/>
@@ -56,10 +57,22 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="subdivision"/>
                                 </tree>
                             </field>
-                            <label name="lang"/>
-                            <field name="lang" widget="selection"/>
-                            <separator string="Categories" colspan="4"/>
-                            <field name="categories" colspan="4"/>
+                            <group col="2" colspan="4">
+                                <label name="lang"/>
+                                <field name="lang" widget="selection"/>
+                            </group>
+                            <field name="contact_mechanisms" colspan="2">
+                                <tree string="Contact Mechanisms" sequence="sequence"
+                                    fill="1">
+                                    <field name="sequence" tree_invisible="1"/>
+                                    <field name="type"/>
+                                    <field name="value"/>
+                                </tree>
+                            </field>
+                            <group col="1" colspan="2">
+                                <separator string="Categories"/>
+                                <field name="categories"/>
+                            </group>
                         </page>
                         <page string="Accounting">
                             <label name="vat_country"/>

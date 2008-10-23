@@ -37,13 +37,25 @@ class Party(OSV):
         help="Setting VAT country will enable verification of the VAT number.")
     vat_code = fields.Function('get_vat_code', type='char', string="VAT Code")
     addresses = fields.One2Many('party.address', 'party',
-           'Addresses',states=STATES)
+           'Addresses', states=STATES)
+    contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
+            'Contact Mechanisms', states=STATES)
     categories = fields.Many2Many(
             'party.category', 'party_category_rel',
             'party', 'category', 'Categories',
             states=STATES)
     active = fields.Boolean('Active', select=1)
     full_name = fields.Function('get_full_name', type='char')
+    phone = fields.Function('get_mechanism', arg='phone', type='char',
+            string='Phone')
+    mobile = fields.Function('get_mechanism', arg='mobile', type='char',
+            string='Mobile')
+    fax = fields.Function('get_mechanism', arg='fax', type='char',
+            string='Fax')
+    email = fields.Function('get_mechanism', arg='email', type='char',
+            string='E-Mail')
+    website = fields.Function('get_mechanism', arg='website', type='char',
+            string='Website')
 
     def __init__(self):
         super(Party, self).__init__()
@@ -76,6 +88,17 @@ class Party(OSV):
         res = {}
         for party in self.browse(cursor, user, ids, context=context):
             res[party.id] = party.name
+        return res
+
+    def get_mechanism(self, cursor, user, ids, name, arg, context=None):
+        if not ids:
+            return []
+        res = {}
+        for party in self.browse(cursor, user, ids, context=context):
+            res[party.id] = ''
+            for mechanism in party.contact_mechanisms:
+                if mechanism.type == arg:
+                    res[party.id] = mechanism.value
         return res
 
     def create(self, cursor, user, values, context=None):
