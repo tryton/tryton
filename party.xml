@@ -48,6 +48,12 @@ this repository contains the full copyright notices and license terms. -->
                                 <tree string="Addresses" sequence="sequence">
                                     <field name="sequence" tree_invisible="1"/>
                                     <field name="name"/>
+                                    <field name="street"/>
+                                    <field name="streetbis"/>
+                                    <field name="zip"/>
+                                    <field name="city"/>
+                                    <field name="country"/>
+                                    <field name="subdivision"/>
                                 </tree>
                             </field>
                             <label name="lang"/>

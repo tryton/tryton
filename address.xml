@@ -11,6 +11,12 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Addresses">
                     <field name="party" select="1"/>
                     <field name="name" select="1"/>
+                    <field name="street" select="2"/>
+                    <field name="streetbis" select="2"/>
+                    <field name="zip" select="2"/>
+                    <field name="city" select="2"/>
+                    <field name="country" select="1"/>
+                    <field name="subdivision" select="2"/>
                     <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
