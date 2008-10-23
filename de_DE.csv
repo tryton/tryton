@@ -13,11 +13,11 @@ error,stock.packing.in,0,Incoming Moves must have input location as destination 
 error,stock.packing.in,0,Inventory Moves must have input location as source location!,Lagerbewegungen müssen einen Lagerort vom Typ eingehend als Herkunft haben!,0
 error,stock.packing.in,0,Inventory Moves must have output location as destination location!,Lagerbewegungen müssen einen Lagerort vom Typ ausgehend als Herkunft haben! ,0
 error,stock.packing.in,0,Outgoing Moves must have output location as source location!,Ausgehende Bewegungen müssen einen Lagerort vom Typ ausgehend als Herkunft haben! ,0
+field,"party.address,delivery",0,Delivery,Lieferadresse,0
+field,"party.party,customer_location",0,Customer Location,Lagerort Kunde,0
+field,"party.party,supplier_location",0,Supplier Location,Lagerort Lieferant,0
 field,"product.product,forecast_quantity",0,Forecast Quantity,Voraussichtliche Menge,0
 field,"product.product,quantity",0,Quantity,Menge,0
-field,"relationship.address,delivery",0,Delivery,Lieferadresse,0
-field,"relationship.party,customer_location",0,Customer Location,Lagerort Kunde,0
-field,"relationship.party,supplier_location",0,Supplier Location,Lagerort Lieferant,0
 field,"stock.inventory,company",0,Company,Unternehmen,0
 field,"stock.inventory,date",0,Date,Datum,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Erwartete Menge,0
@@ -93,8 +93,8 @@ field,"stock.packing.out,reference",0,Reference,Referenz,0
 field,"stock.packing.out,state",0,State,Status,0
 field,"stock.packing.out,warehouse",0,Warehouse,Warenlager,0
 field,"stock.product_stock_date.init,forecast_date",0,At Date,Am,0
-help,"relationship.party,customer_location",0,The default destination location when sending products to the party.,Standardbestimmungsort für Sendungen zum Geschäftspartner,0
-help,"relationship.party,supplier_location",0,The default source location when receiving products from the party.,Standardbestimmungsort für Sendungen vom Geschäftspartner,0
+help,"party.party,customer_location",0,The default destination location when sending products to the party.,Standardbestimmungsort für Sendungen zum Geschäftspartner,0
+help,"party.party,supplier_location",0,The default source location when receiving products from the party.,Standardbestimmungsort für Sendungen vom Geschäftspartner,0
 help,"stock.location_stock_date.init,forecast_date",0,"Allow to compute expected stock quantities for this date.
 * An empty value is an infinite date in the future.
 * A date in the past will provide historical values.","Berechnet den erwarteten Lagerbestand für dieses Datum
@@ -153,11 +153,9 @@ model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Erha
 model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Lieferscheine von Lieferanten,0
 odt,stock.packing.out,0,Customer Code:,Kundennummer:,0
 odt,stock.packing.out,0,Date:,Datum:,0
-odt,stock.packing.out,0,Email:,E-Mail:,0
 odt,stock.packing.out,0,List,Liste,0
 odt,stock.packing.out,0,Packing,Lieferschein,0
 odt,stock.packing.out,0,Packing Number:,Lieferscheinnummer:,0
-odt,stock.packing.out,0,Phone:,Telefon:,0
 odt,stock.packing.out,0,Product,Artikel,0
 odt,stock.packing.out,0,Quantity,Menge,0
 odt,stock.packing.out,0,Reference:,Referenz,0
@@ -212,26 +210,32 @@ view,stock.move,0,Moves,Bewegungen,0
 view,stock.move,0,Set Done,Auf Erledigt setzen,0
 view,stock.move,0,Set Draft,Auf Entwurf setzen,0
 view,stock.packing.in,0,Cancel,Abbrechen,0
+view,stock.packing.in,0,Done,Erledigt,0
+view,stock.packing.in,0,Draft,Entwurf,0
 view,stock.packing.in,0,Incoming Moves,Eingehende Bewegungen,0
 view,stock.packing.in,0,Inventory Moves,Lagerbewegungen,0
 view,stock.packing.in,0,Moves,Bewegungen,0
 view,stock.packing.in,0,Received,Erhalten,0
 view,stock.packing.in,0,Reset to Draft,Auf Entwurf zurücksetzen,0
-view,stock.packing.in,0,Set Done,Auf Erledigt setzen,0
 view,stock.packing.in,0,Supplier Packing,Lieferschein von Lieferant,0
 view,stock.packing.in,0,Supplier Packings,Lieferscheine von Lieferanten,0
 view,stock.packing.internal,0,Assign,Zuweisen,0
 view,stock.packing.internal,0,Cancel,Abbrechen,0
+view,stock.packing.internal,0,Done,Erledigt,0
+view,stock.packing.internal,0,Draft,Entwurf,0
 view,stock.packing.internal,0,Force Assign,Zuweisung erzwingen,0
 view,stock.packing.internal,0,Internal Packing,Interner Lieferschein,0
 view,stock.packing.internal,0,Internal Packings,Interne Lieferscheine,0
 view,stock.packing.internal,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,stock.packing.internal,0,Set Done,Auf Erledigt setzen,0
 view,stock.packing.internal,0,Set Waiting,Auf Wartend setzen,0
+view,stock.packing.internal,0,Waiting,Wartend,0
 view,stock.packing.out,0,Assign,Zuweisen,0
 view,stock.packing.out,0,Cancel,Abbrechen,0
 view,stock.packing.out,0,Customer Packing,Lieferschein an Kunde,0
 view,stock.packing.out,0,Customer Packings,Lieferscheine an Kunden,0
+view,stock.packing.out,0,Done,Erledigt,0
+view,stock.packing.out,0,Draft,Entwurf,0
 view,stock.packing.out,0,Force Assign,Zuweisung erzwingen,0
 view,stock.packing.out,0,Inventory Moves,Lagerbewegungen,0
 view,stock.packing.out,0,Make packing,Lieferung fertigstellen,0
@@ -239,6 +243,8 @@ view,stock.packing.out,0,Outgoing Moves,Ausgehende Bewegungen,0
 view,stock.packing.out,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,stock.packing.out,0,Set Done,Auf Erledigt setzen,0
 view,stock.packing.out,0,Set Waiting,Auf Wartend setzen,0
+view,stock.packing.out,0,Unpack,Entpackt,0
+view,stock.packing.out,0,Waiting,Wartend,0
 wizard_button,"stock.location.open,init,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.location.open,init,open",0,Open,Öffnen,0
 wizard_button,"stock.product.open,init,end",0,Cancel,Abbrechen,0
