@@ -1308,7 +1308,7 @@ class ProductSupplierPrice(OSV):
     product_supplier = fields.Many2One('purchase.product_supplier',
             'Supplier', required=True, ondelete='CASCADE')
     quantity = fields.Float('Quantity', required=True, help='Minimal quantity')
-    price = fields.Numeric('Price', required=True, digits=(16, 4))
+    unit_price = fields.Numeric('Unit Price', required=True, digits=(16, 4))
 
     def __init__(self):
         super(ProductSupplierPrice, self).__init__()

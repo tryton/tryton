@@ -672,8 +672,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="product_supplier" colspan="5"/>
                     <label name="quantity"/>
                     <field name="quantity"/>
-                    <label name="price"/>
-                    <field name="price"/>
+                    <label name="unit_price"/>
+                    <field name="unit_price"/>
                 </form>
                 ]]>
             </field>
@@ -686,7 +686,7 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Product Supplier Prices">
                     <field name="product_supplier"/>
                     <field name="quantity"/>
-                    <field name="price"/>
+                    <field name="unit_price"/>
                 </tree>
                 ]]>
             </field>
