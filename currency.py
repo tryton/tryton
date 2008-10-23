@@ -120,11 +120,14 @@ class Currency(OSV):
         '''
         Return the rate at the date from the context or the current date
         '''
-        res = {}
         rate_obj = self.pool.get('currency.currency.rate')
+        date_obj = self.pool.get('ir.date')
+
+        res = {}
         if context is None:
             context = {}
-        date = context.get('date', time.strftime('%Y-%m-%d'))
+        date = context.get('date', date_obj.today(cursor, user,
+            context=context))
         for currency_id in ids:
             rate_ids = rate_obj.search(cursor, user, [
                 ('currency', '=', currency_id),
@@ -159,6 +162,9 @@ class Currency(OSV):
         Return the amount to the new currency
         Use the rate of the date of the context or the current date
         '''
+        date_obj = self.pool.get('ir.date')
+        lang_obj = self.pool.get('ir.lang')
+
         if context is None:
             context = {}
         if isinstance(from_currency, (int, long)):
@@ -171,13 +177,23 @@ class Currency(OSV):
             else:
                 return amount
         if (not from_currency.rate) or (not to_currency.rate):
-            date = context.get('date', time.strftime('%Y-%m-%d'))
+            date = context.get('date', date_obj.today(cursor, user,
+                context=context))
             if not from_currency.rate:
                 name = from_currency.name
             else:
                 name = to_currency.name
-            self.raise_user_error(cursor, 'no_rate', (name, date),
-                    context=context)
+
+            for code in [context.get('language', False) or 'en_US', 'en_US']:
+                lang_ids = lang_obj.search(cursor, user, [
+                    ('code', '=', code),
+                    ], context=context)
+                if lang_ids:
+                    break
+            lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
+
+            self.raise_user_error(cursor, 'no_rate', (name,
+                date.strftime(lang.date)), context=context)
         if round:
             return self.round(cursor, user, to_currency,
                     amount * to_currency.rate / from_currency.rate)
