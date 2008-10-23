@@ -32,13 +32,12 @@ class Address(OSV):
         super(Address, self).__init__()
         self._order.insert(0, ('party', 'ASC'))
         self._order.insert(1, ('sequence', 'ASC'))
-        self._order.insert(2, ('id', 'ASC'))
         self._error_messages.update({
             'write_party': 'You can not modify the party of an address!',
             })
 
     def default_active(self, cursor, user, context=None):
-        return 1
+        return True
 
     def get_full_address(self, cursor, user, ids, name, arg, context=None):
         if not ids:
