@@ -260,13 +260,15 @@ class Move(OSV):
                 query_string=query_string)
 
     def _update_product_cost_price(self, cursor, user, product_id, quantity, uom,
-                                   unit_price, context=None):
+                                   unit_price, currency, company, context=None):
         """
         Update the cost price on the given product
         """
         uom_obj = self.pool.get('product.uom')
         product_obj = self.pool.get('product.product')
         location_obj = self.pool.get('stock.location')
+        currency_obj = self.pool.get('currency.currency')
+        company_obj = self.pool.get('company.company')
 
         product = product_obj.browse(cursor, user, product_id, context=context)
         if quantity <= 0 or not product.cost_price_method == 'average':
@@ -274,6 +276,8 @@ class Move(OSV):
 
         if isinstance(uom, (int, long)):
             uom = uom_obj.browse(cursor, user, uom, context=context)
+        if isinstance(company, (int, long)):
+            company = company_obj.browse(cursor, user, company, context=context)
 
         ctx = context and context.copy() or {}
         ctx['locations'] = location_obj.search(
@@ -285,6 +289,11 @@ class Move(OSV):
 
         qty = Decimal(str(qty))
         product_qty = Decimal(str(product.quantity))
+        # convert wrt currency
+        unit_price = currency_obj.compute(
+            cursor, user, currency, unit_price, company.currency,
+            context=context)
+        # convert wrt to the uom
         unit_price = uom_obj.compute_price(
             cursor, user, uom, unit_price, product.default_uom, context=context)
         new_cost_price = (
@@ -305,7 +314,8 @@ class Move(OSV):
             if from_location.type == 'supplier':
                 self._update_product_cost_price(
                     cursor, user, vals['product'], vals['quantity'],
-                    vals['uom'], vals['unit_price'], context=context)
+                    vals['uom'], vals['unit_price'], vals['currency'],
+                    vals['company'], context=context)
         return super(Move, self).create(cursor, user, vals, context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
@@ -336,7 +346,8 @@ class Move(OSV):
                     if move.type == 'input':
                         self._update_product_cost_price(
                             cursor, user, move.product.id, move.quantity,
-                            move.uom, move.unit_price, context=context)
+                            move.uom, move.unit_price, move.currency,
+                            move.company, context=context)
 
         return super(Move, self).write(cursor, user, ids, vals, context=context)
 
