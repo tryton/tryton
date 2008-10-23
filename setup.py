@@ -12,13 +12,17 @@ for dep in info.get('depends', []):
     match = re.compile(
             '(ir|res|workflow|webdav)((\s|$|<|>|<=|>=|==|!=).*?$)').match(dep)
     if match:
-        dep = 'trytond' + match.group(2)
+        continue
     else:
         dep = 'trytond_' + dep
     requires.append(dep)
 
+major_version, minor_version, _ = info.get('version', '0.0.1').split('.', 2)
+requires.append('trytond >= %s.%s' % (major_version, minor_version))
+requires.append('trytond < %s.%s' % (major_version, str(int(minor_version) + 1)))
+
 setup(name='trytond_' + info['name'].lower(),
-    version=info.get('version', '0'),
+    version=info.get('version', '0.0.1'),
     description=info.get('description', ''),
     author=info.get('author', ''),
     author_email=info.get('email', ''),
