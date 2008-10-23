@@ -234,12 +234,6 @@ class Move(OSV):
         return self._on_change_location(cursor, user, ids, vals,
                 context=context)
 
-    def set_state_done(self, cursor, user, ids, context=None):
-        return self.write(cursor, user, ids, {
-            'state': 'done',
-            }, context=context)
-
-
     def search(self, cursor, user, args, offset=0, limit=None, order=None,
             context=None, count=False, query_string=False):
         location_obj = self.pool.get('stock.location')
@@ -303,7 +297,9 @@ class Move(OSV):
     def create(self, cursor, user, vals, context=None):
         location_obj = self.pool.get('stock.location')
 
-        if vals.get('state') != 'done':
+        if vals.get('state') == 'done':
+            if not vals.get('effective_date'):
+                vals['effective_date'] = datetime.datetime.now()
             from_location = location_obj.browse(
                 cursor, user, vals.from_location, context=context)
             if from_location.type == 'supplier':
