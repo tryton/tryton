@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Move"
 from trytond.osv import fields, OSV
 from decimal import Decimal
@@ -236,23 +237,8 @@ class Move(OSV):
     def set_state_done(self, cursor, user, ids, context=None):
         return self.write(cursor, user, ids, {
             'state': 'done',
-            'effective_date': datetime.datetime.now(),
             }, context=context)
 
-    def set_state_draft(self, cursor, user, ids, context=None):
-        return self.write(cursor, user, ids, {
-            'state': 'draft',
-            }, context=context)
-
-    def set_state_cancel(self, cursor, user, ids, context=None):
-        return self.write(cursor, user, ids, {
-            'state': 'cancel',
-            }, context=context)
-
-    def set_state_assigned(self, cursor, user, ids, context=None):
-        return self.write(cursor, user, ids, {
-            'state': 'assigned',
-            }, context=context)
 
     def search(self, cursor, user, args, offset=0, limit=None, order=None,
             context=None, count=False, query_string=False):
@@ -279,10 +265,54 @@ class Move(OSV):
                 limit=limit, order=order, context=context, count=count,
                 query_string=query_string)
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def _update_product_cost_price(self, cursor, user, product_id, quantity, uom,
+                                   unit_price, context=None):
+        """
+        Update the cost price on the given product
+        """
         uom_obj = self.pool.get('product.uom')
         product_obj = self.pool.get('product.product')
         location_obj = self.pool.get('stock.location')
+
+        product = product_obj.browse(cursor, user, product_id, context=context)
+        if quantity <= 0 or not product.cost_price_method == 'average':
+            return
+
+        if isinstance(uom, (int, long)):
+            uom = uom_obj.browse(cursor, user, uom, context=ctx)
+
+        ctx = context and context.copy() or {}
+        ctx['locations'] = location_obj.search(
+            cursor, user, [('type', '=', 'storage')], context=context)
+        ctx['stock_date_end'] = datetime.datetime.now()
+        product = product_obj.browse(cursor, user, product_id, context=ctx)
+        qty = uom_obj.compute_qty(
+            cursor, user, uom, quantity, product.default_uom, context=context)
+
+        qty = Decimal(str(qty))
+        product_qty = Decimal(str(product.quantity))
+        unit_price = uom_obj.compute_price(
+            cursor, user, uom, unit_price, product.default_uom, context=context)
+        new_cost_price = (
+            (product.cost_price * product_qty) + (unit_price * qty)
+            ) / (product_qty + qty)
+        product_obj.write(
+            cursor, user, product.id, {'cost_price': new_cost_price},
+            context=context)
+
+    def create(self, cursor, user, vals, context=None):
+        location_obj = self.pool.get('stock.location')
+
+        if vals.get('state') != 'done':
+            from_location = location_obj.browse(
+                cursor, user, vals.from_location, context=context)
+            if from_location.type == 'supplier':
+                self._update_product_cost_price(
+                    cursor, user, vals['product'], vals['quantity'],
+                    vals['uom'], vals['unit_price'], context=context)
+        return super(Move, self).create(cursor, user, vals, context=context)
+
+    def write(self, cursor, user, ids, vals, context=None):
         if context is None:
             context = {}
 
@@ -291,7 +321,9 @@ class Move(OSV):
 
         if 'state' in vals:
             for move in self.browse(cursor, user, ids, context=context):
-                if vals['state'] == 'draft':
+                if vals['state'] == 'cancel':
+                    vals['effective_date'] = None
+                elif vals['state'] == 'draft':
                     if move.state in ('assigned', 'done'):
                         self.raise_user_error(cursor, 'set_state_draft',
                                 context=context)
@@ -303,32 +335,13 @@ class Move(OSV):
                     if move.state in ('cancel'):
                         self.raise_user_error(cursor, 'set_state_done',
                                 context=context)
-                    if move.type == 'input' \
-                            and move.product.cost_price_method == 'average':
-                        ctx = context.copy()
-                        ctx['locations'] = location_obj.search(cursor, user, [
-                            ('type', 'in', 'storage'),
-                            ], context=context)
-                        product = product_obj.browse(cursor, user,
-                                move.product.id, context=ctx)
+                    vals['effective_date'] = datetime.datetime.now()
 
-                        qty = uom_obj.compute_qty(cursor, user, move.uom,
-                                move.quantity, product.default_uom,
-                                context=context)
+                    if move.type == 'input':
+                        self._update_product_cost_price(
+                            cursor, user, move.product.id, move.quantity,
+                            move.uom, move.unit_price, context=context)
 
-                        if qty > 0:
-                            qty = Decimal(str(qty))
-                            product_qty = Decimal(str(product.quantity))
-                            unit_price = uom_obj.compute_price(cursor, user,
-                                    move.uom, move.unit_price,
-                                    product.default_uom, context=context)
-                            new_cost_price = (\
-                                    (product.cost_price * product_qty) \
-                                    + (unit_price * qty)) \
-                                    / (product_qty + qty)
-                            product_obj.write(cursor, user, product.id, {
-                                'cost_price': new_cost_price,
-                                }, context=context)
         return super(Move, self).write(cursor, user, ids, vals, context=context)
 
     def delete(self, cursor, user, ids, context=None):

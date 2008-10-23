@@ -180,8 +180,9 @@ class PackingIn(OSV):
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_done(
-            cursor, user, [m.id for m in packing.inventory_moves], context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.inventory_moves],
+            {'state': 'done'}, context)
         self.write(cursor, user, packing_id,{
             'state': 'done',
             'effective_date': datetime.datetime.now(),
@@ -190,17 +191,19 @@ class PackingIn(OSV):
     def set_state_cancel(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_cancel(
+        move_obj.write(
             cursor, user, [m.id for m in packing.incoming_moves] +\
-            [m.id for m in packing.inventory_moves], context)
+            [m.id for m in packing.inventory_moves], {'state': 'cancel'},
+            context)
         self.write(cursor, user, packing_id, {'state':'cancel'},
                    context=context)
 
     def set_state_received(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_done(cursor, user,
-                [m.id for m in packing.incoming_moves], context=context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.incoming_moves],
+            {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {
             'state': 'received'
             }, context=context)
@@ -208,10 +211,12 @@ class PackingIn(OSV):
     def set_state_draft(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_cancel(cursor, user,
-                [m.id for m in packing.incoming_moves], context=context)
-        move_obj.set_state_draft(cursor, user,
-                [m.id for m in packing.incoming_moves], context=context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.incoming_moves],
+            {'state': 'cancel'}, context=context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.incoming_moves],
+            {'state': 'draft'}, context=context)
         move_obj.delete(cursor, user,
                 [m.id for m in packing.inventory_moves], context=context)
         self.write(cursor, user, packing_id, {
@@ -433,21 +438,21 @@ class PackingOut(OSV):
         packing = self.browse(cursor, user, packing_id, context=context)
         self.write(
             cursor, user, packing_id, {'state':'draft'}, context=context)
-        move_obj.set_state_cancel(
+        move_obj.write(
             cursor, user,
             [m.id for m in packing.inventory_moves + packing.outgoing_moves],
-            context=context)
-        move_obj.set_state_draft(
+            {'state': 'cancel'}, context=context)
+        move_obj.write(
             cursor, user,
             [m.id for m in packing.inventory_moves + packing.outgoing_moves],
-            context=context)
+            {'state': 'draft'}, context=context)
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_done(cursor, user,
+        move_obj.write(cursor, user,
             [m.id for m in packing.outgoing_moves if m.state == 'draft'],
-            context=context)
+            {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {
             'state':'done',
             'effective_date': datetime.datetime.now(),
@@ -457,9 +462,9 @@ class PackingOut(OSV):
         move_obj = self.pool.get('stock.move')
         uom_obj = self.pool.get('product.uom')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_done(
+        move_obj.write(
             cursor, user, [m.id for m in packing.inventory_moves],
-            context=context)
+            {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {'state':'packed'},
                    context=context)
         # Sum all outgoing quantities
@@ -529,10 +534,10 @@ class PackingOut(OSV):
     def set_state_cancel(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_cancel(
+        move_obj.write(
             cursor, user,[m.id for m in packing.outgoing_moves] +\
                 [m.id for m in packing.inventory_moves],
-            context=context)
+            {'state': 'cancel'}, context=context)
         self.write(cursor, user, packing_id, {'state':'cancel'},
                    context=context)
 
@@ -545,14 +550,14 @@ class PackingOut(OSV):
         uom_obj = self.pool.get('product.uom')
         packing = self.browse(cursor, user, packing_id, context=context)
         if packing.state == 'assigned':
-            move_obj.set_state_cancel(
+            move_obj.write(
                 cursor, user,
                 [m.id for m in packing.inventory_moves + packing.outgoing_moves],
-                context=context)
-            move_obj.set_state_draft(
+                {'state': 'cancel'}, context=context)
+            move_obj.write(
                 cursor, user,
                 [m.id for m in packing.inventory_moves + packing.outgoing_moves],
-                context=context)
+                {'state': 'draft'}, context=context)
         self.write(
             cursor, user, packing_id, {'state':'waiting'}, context=context)
 
@@ -696,18 +701,22 @@ class PackingInternal(OSV):
         packing = self.browse(cursor, user, packing_id, context=context)
         self.write(
             cursor, user, packing_id, {'state':'draft'}, context=context)
-        move_obj.set_state_cancel(
-            cursor, user, [m.id for m in packing.moves], context=context)
-        move_obj.set_state_draft(
-            cursor, user, [m.id for m in packing.moves], context=context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.moves], {'state': 'cancel'},
+            context=context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.moves], {'state': 'draft'},
+            context=context)
 
     def set_state_waiting(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_cancel(
-            cursor, user, [m.id for m in packing.moves], context=context)
-        move_obj.set_state_draft(
-            cursor, user, [m.id for m in packing.moves], context=context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.moves], {'state': 'cancel'},
+            context=context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.moves], {'state': 'draft'},
+            context=context)
         move_obj.write(
             cursor, user, [m.id for m in packing.moves],
             {'planned_date': packing.planned_date}, context=context)
@@ -721,8 +730,9 @@ class PackingInternal(OSV):
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_done(
-            cursor, user, [m.id for m in packing.moves], context=context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.moves], {'state': 'done'},
+            context=context)
         self.write( cursor, user, packing_id,
                     {'state':'done',
                      'effective_date': datetime.datetime.now()},
@@ -731,8 +741,9 @@ class PackingInternal(OSV):
     def set_state_cancel(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.set_state_cancel(
-            cursor, user, [m.id for m in packing.moves], context=context)
+        move_obj.write(
+            cursor, user, [m.id for m in packing.moves], {'state': 'cancel'},
+            context=context)
         self.write(
             cursor, user, packing_id, {'state':'cancel'}, context=context)
 
