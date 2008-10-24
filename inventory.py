@@ -56,11 +56,13 @@ class Inventory(OSV):
         return date_obj.today(cursor, user, context=context)
 
     def default_company(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
         if context.get('company'):
-            return context.get('company')
-        user_obj = self.pool.get('res.user')
-        user = user_obj.browse(cursor, user, user, context=context)
-        return user.company.id
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
 
     def set_state_cancel(self, cursor, user, ids, context=None):
         self.write(cursor, user, ids, {
