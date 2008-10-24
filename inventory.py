@@ -172,10 +172,14 @@ class InventoryLine(OSV):
                 'Product must be unique by inventory!'),
         ]
 
+    def default_unit_digits(self, cursor, user, context=None):
+        return 2
+
     def on_change_product(self, cursor, user, ids, vals, context=None):
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
         res = {}
+        res['unit_digits'] = 2
         if vals.get('product'):
             product = product_obj.browse(cursor, user, vals['product'],
                     context=context)
