@@ -167,7 +167,7 @@ class InventoryLine(OSV):
         super(InventoryLine, self).__init__()
         self._sql_constraints += [
             ('check_line_qty_pos',
-                'CHECK(quantity >= 0.0)', 'Move quantity must be positive'),
+                'CHECK(quantity >= 0.0)', 'Line quantity must be positive!'),
             ('inventory_product_uniq', 'UNIQUE(inventory, product)',
                 'Product must be unique by inventory!'),
         ]
