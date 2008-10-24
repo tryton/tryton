@@ -84,7 +84,9 @@ class Inventory(OSV):
         inventories = self.browse(cursor, user, ids, context=context)
         move_ids = \
             [move.id for inventory in inventories for move in inventory.moves]
-        return move_obj.set_state_cancel(cursor, user, move_ids, context=context)
+        return move_obj.write(cursor, user, move_ids, {
+            'state': 'cancel',
+            }, context=context)
 
     def _done(self, cursor, user, ids, context=None):
         product_obj = self.pool.get('product.product')
