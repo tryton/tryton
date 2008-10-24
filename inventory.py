@@ -25,21 +25,19 @@ class Inventory(OSV):
         'stock.location', 'Lost and Found', required=True,
         domain="[('type', '=', 'lost_found')]", states=STATES)
     lines = fields.One2Many(
-        'stock.inventory.line', 'inventory', 'Inventory Lines', states=STATES)
+        'stock.inventory.line', 'inventory', 'Lines', states=STATES)
     moves = fields.Many2Many(
         'stock.move', 'inventory_move_rel', 'inventory', 'move',
-        'Generated moves')
+        'Moves')
     company = fields.Many2One(
         'company.company', 'Company', required=True, states={
             'readonly': "state != 'open' or bool(lines)",
         })
-
-
-    state = fields.Selection(
-        [('open','Open'),
-         ('done','Done'),
-         ('cancel','Cancel')],
-        'State', readonly=True, select=1)
+    state = fields.Selection([
+        ('open', 'Open'),
+        ('done', 'Done'),
+        ('cancel', 'Cancel'),
+        ], 'State', readonly=True, select=1)
 
     def __init__(self):
         super(Inventory, self).__init__()
