@@ -89,13 +89,10 @@ class Inventory(OSV):
             }, context=context)
 
     def _done(self, cursor, user, ids, context=None):
-        product_obj = self.pool.get('product.product')
         move_obj = self.pool.get('stock.move')
         date_obj = self.pool.get('ir.date')
 
         inventories = self.browse(cursor, user, ids, context=context)
-        location_ids = []
-        inv_by_loc = {}
 
         for inventory in inventories:
             if inventory.state != 'open':
