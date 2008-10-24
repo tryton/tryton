@@ -144,12 +144,14 @@ class InventoryLine(OSV):
     _rec_name = 'product'
 
     product = fields.Many2One('product.product', 'Product', required=True,
-            domain=[('type', '=', 'stockable')])
+            domain=[('type', '=', 'stockable')], on_change=['product'])
     uom = fields.Function('get_uom', type='many2one', relation='product.uom',
-            string='UOM', on_change_with=['product'])
-    expected_quantity = fields.Float('Expected Quantity', digits=(12, 6),
-            readonly=True)
-    quantity = fields.Float('Quantity', digits=(12, 6))
+            string='UOM')
+    unit_digits = fields.Function('get_unit_digits', type='integer',
+            string='Unit Digits')
+    expected_quantity = fields.Float('Expected Quantity',
+            digits="(16, unit_digits)", readonly=True)
+    quantity = fields.Float('Quantity', digits="(16, unit_digits)")
     inventory = fields.Many2One('stock.inventory', 'Inventory')
 
     def __init__(self):
@@ -161,15 +163,17 @@ class InventoryLine(OSV):
                 'Product must be unique by inventory!'),
         ]
 
-    def on_change_with_uom(self, cursor, user, ids, vals, context=None):
+    def on_change_product(self, cursor, user, ids, vals, context=None):
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
+        res = {}
         if vals.get('product'):
             product = product_obj.browse(cursor, user, vals['product'],
                     context=context)
-            return uom_obj.name_get(cursor, user, product.default_uom.id,
+            res['uom'] = uom_obj.name_get(cursor, user, product.default_uom.id,
                     context=context)[0]
-        return False
+            res['unit_digits'] = product.default_uom.digits
+        return res
 
     def get_uom(self, cursor, user, ids, name, arg, context=None):
         uom_obj = self.pool.get('product.uom')
@@ -182,6 +186,12 @@ class InventoryLine(OSV):
             uom2name[uom_id] = (uom_id, name)
         for line_id in res:
             res[line_id] = uom2name[res[line_id]]
+        return res
+
+    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            res[line.id] = line.product.default_uom.digits
         return res
 
 InventoryLine()

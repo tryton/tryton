@@ -99,6 +99,7 @@
                         <field name="quantity"/>
                         <label name="inventory"/>
                         <field name="inventory"/>
+                        <field name="unit_digits" invisible="1" colspan="4"/>
                     </form>
                 ]]>
             </field>
@@ -113,6 +114,7 @@
                         <field name="expected_quantity"/>
                         <field name="quantity" select="2"/>
                         <field name="uom" select="2"/>
+                        <field name="unit_digits" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
