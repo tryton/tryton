@@ -124,6 +124,16 @@ class Inventory(OSV):
                     'moves': [('add', x) for x in moves],
                     }, context=context)
 
+    def create(self, cursor, user, vals, context=None):
+        new_id = super(Inventory, self).create(cursor, user, vals,
+                context=context)
+        if 'state' in vals:
+            if vals['state'] == 'done':
+                self._done(cursor, user, [new_id], context=context)
+            elif vals['state'] == 'cancel':
+                self._cancel(cursor, user, [new_id], context=context)
+        return new_id
+
     def write(self, cursor, user, ids, vals, context=None):
         if 'state' in vals:
             if vals['state'] == 'done':
