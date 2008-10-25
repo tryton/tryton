@@ -34,7 +34,6 @@ error,account.invoice.payment_term.line.type,0,Code must be unique!,Der Code kan
 error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann keine neue Position hinzugefügt werden",0
 error,account.invoice.tax,0,"You can not modify tax from an invoice that is open, paid or canceled!","In einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann können Steuern nicht bearbeitet werden",0
 error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung in der laufenden Periode eröffnet wurde.",0
-error,product.template,0,There is no account expense/revenue define on the product %s (%d),Es ist kein Aufwands-/Ertragskonto in Artikel %s (%d) angegeben,0
 field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Sequenz Gutschriften Lieferanten,0
 field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Rechnungen Lieferanten,0
 field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
@@ -133,49 +132,30 @@ field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz 
 field,"party.address,invoice",0,Invoice,Rechnungsadresse,0
 field,"party.party,payment_term",0,Invoice Payment Term,Zahlungsbedingung Verkauf,0
 field,"party.party,supplier_payment_term",0,Supplier Payment Term,Zahlungsbedingung Lieferant,0
-field,"product.category,account_expense",0,Account Expense,Konto Aufwand,0
-field,"product.category,account_revenue",0,Account Revenue,Konto Ertrag,0
-field,"product.category,customer_taxes",0,Customer Taxes,Steuern Kunde,0
-field,"product.category,supplier_taxes",0,Supplier Taxes,Steuern Lieferant,0
-field,"product.template,account_expense",0,Account Expense,Konto Aufwand,0
-field,"product.template,account_expense_used",0,Account Expense Used,Konto Aufwand benutzt,0
-field,"product.template,account_revenue",0,Account Revenue,Konto Ertrag,0
-field,"product.template,account_revenue_used",0,Account Revenue Used,Benutztes Ertragskonto,0
-field,"product.template,customer_taxes",0,Customer Taxes,Steuern (Kunden),0
-field,"product.template,customer_taxes_used",0,Customer Taxes Used,Benutzte Steuern für Kunden,0
-field,"product.template,supplier_taxes",0,Supplier Taxes,Steuern (Lieferanten),0
-field,"product.template,supplier_taxes_used",0,Customer Taxes Used,Benutzte Steuern für Lieferanten,0
-field,"product.template,taxes_category",0,Use Category's Taxes,Wende die Steuern der Kategorie an,0
-field,"relationship.address,invoice",0,Invoice,Rechnungsadresse,0
-field,"relationship.party,payment_term",0,Invoice Payment Term,Zahlungsbedingung Verkauf,0
-field,"relationship.party,supplier_payment_term",0,Supplier Payment Term,Zahlungsbedingung Einkauf,0
 help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Ordnet Positionen in aufsteigender Reihenfolge,0
-help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
-help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
-help,"product.template,taxes_category",0,Use the taxes defined on the category,"Wendet die Steuern an, die in dieser Kategorie definiert sind",0
 model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_end_month,End Month,Ende Monat,0
 model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_net_days,Net Days,Netto Tage,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_fixed,Fixed,Fix,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_percent,Percent,Prozent,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remainder,Remainder,Rest,0
 model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
-model,"ir.action,name",credit_invoice,Credit,Gutschreiben,0
-model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften,0
-model,"ir.action,name",,Custom Invoice,,0
-model,"ir.action,name",report_invoice,Invoice,Angepasste Rechnung drucken,0
+model,"ir.action,name",credit_invoice,Credit,Gutschrift erstellen,0
+model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
+model,"ir.action,name",,Custom Invoice,Angepasste Rechnung drucken,0
+model,"ir.action,name",report_invoice,Custom Invoice,Angepasste Rechnung drucken,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
 model,"ir.action,name",act_payment_term_form,Payment Terms,Zahlungsbedingungen,0
-model,"ir.action,name",act_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften an Lieferanten,0
+model,"ir.action,name",act_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften von Lieferanten,0
 model,"ir.action,name",act_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
 model,"ir.ui.menu,name",menu_invoice_form,All Invoices,Alle Rechnungen,0
-model,"ir.ui.menu,name",menu_invoice_out_credit_note_form,Credit Notes,Gutschriften,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
 model,"ir.ui.menu,name",menu_invoices_configuration,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoices,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Zahlungsbedingungen,0
-model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften an Lieferanten,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften von Lieferanten,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
 odt,account.invoice,0,Amount,Betrag,0
 odt,account.invoice,0,Base,Netto,0
@@ -248,9 +228,7 @@ view,account.invoice.print_invoice_report.warning,0,You have selected more than 
 view,account.invoice.tax,0,Invoice Tax,Rechnungssteuer,0
 view,account.invoice.tax,0,Invoice Taxes,Rechnungssteuern,0
 view,account.invoice.tax,0,Tax Code,Steuerkennziffer,0
-view,product.category,0,Taxes,Steuern,0
-view,product.product,0,Taxes,Steuern,0
-wizard_button,"account.invoice.credit_invoice,init,credit",0,Credit,Gutschreiben,0
+wizard_button,"account.invoice.credit_invoice,init,credit",0,Credit,Gutschrift erstellen,0
 wizard_button,"account.invoice.credit_invoice,init,end",0,Cancel,Abbrechen,0
 wizard_button,"account.invoice.pay_invoice,ask,end",0,Cancel,Abbrechen,0
 wizard_button,"account.invoice.pay_invoice,ask,pay",0,Ok,OK,0
