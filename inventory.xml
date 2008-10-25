@@ -127,9 +127,9 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_inventory_admin">
+        <record model="ir.model.access" id="access_inventory_group_stock">
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
-            <field name="group" ref="group_stock_admin"/>
+            <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
@@ -143,9 +143,9 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_inventory_line_admin">
+        <record model="ir.model.access" id="access_inventory_line_group_stock">
             <field name="model" search="[('model', '=', 'stock.inventory.line')]"/>
-            <field name="group" ref="group_stock_admin"/>
+            <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>

@@ -154,9 +154,9 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_move_admin">
+        <record model="ir.model.access" id="access_move_group_stock">
             <field name="model" search="[('model', '=', 'stock.move')]"/>
-            <field name="group" ref="group_stock_admin"/>
+            <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
