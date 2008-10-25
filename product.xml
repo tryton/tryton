@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="category_view_form">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@string=&quot;Properties&quot;]"
+                        position="before">
+                        <page string="Taxes" col="4">
+                            <separator name="customer_taxes" colspan="4"/>
+                            <field name="customer_taxes" colspan="4"/>
+                            <separator name="supplier_taxes" colspan="4"/>
+                            <field name="supplier_taxes" colspan="4"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_form">
+            <field name="model">product.product</field>
+            <field name="inherit" ref="product.product_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@string=&quot;Properties&quot;]"
+                        position="before">
+                        <page string="Taxes" col="4">
+                            <label name="taxes_category"/>
+                            <field name="taxes_category"/>
+                            <separator name="customer_taxes" colspan="4"/>
+                            <field name="customer_taxes" colspan="4"/>
+                            <separator name="supplier_taxes" colspan="4"/>
+                            <field name="supplier_taxes" colspan="4"/>
+                        </page>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>

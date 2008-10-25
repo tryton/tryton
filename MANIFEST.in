@@ -1,0 +1,3 @@
+include *.xml
+include *.odt
+include *.csv
