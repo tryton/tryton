@@ -271,8 +271,11 @@ class Move(OSV):
         company_obj = self.pool.get('company.company')
 
         product = product_obj.browse(cursor, user, product_id, context=context)
-        if quantity <= 0 or not product.cost_price_method == 'average':
+        if not product.cost_price_method == 'average':
             return
+
+        sign = quantity > 0 and 1 or -1
+        quantity = abs(quantity)
 
         if isinstance(uom, (int, long)):
             uom = uom_obj.browse(cursor, user, uom, context=context)
@@ -297,8 +300,8 @@ class Move(OSV):
         unit_price = uom_obj.compute_price(
             cursor, user, uom, unit_price, product.default_uom, context=context)
         new_cost_price = (
-            (product.cost_price * product_qty) + (unit_price * qty)
-            ) / (product_qty + qty)
+            (product.cost_price * product_qty) + (unit_price * qty * sign)
+            ) / (product_qty + qty * sign)
         product_obj.write(
             cursor, user, product.id, {'cost_price': new_cost_price},
             context=context)
@@ -329,6 +332,12 @@ class Move(OSV):
             for move in self.browse(cursor, user, ids, context=context):
                 if vals['state'] == 'cancel':
                     vals['effective_date'] = False
+                    if move.type == 'input' and move.state != 'cancel':
+                        self._update_product_cost_price(
+                            cursor, user, move.product.id, -move.quantity,
+                            move.uom, move.unit_price, move.currency,
+                            move.company, context=context)
+
                 elif vals['state'] == 'draft':
                     if move.state in ('assigned', 'done'):
                         self.raise_user_error(cursor, 'set_state_draft',
@@ -343,7 +352,7 @@ class Move(OSV):
                                 context=context)
                     vals['effective_date'] = datetime.datetime.now()
 
-                    if move.type == 'input':
+                    if move.type == 'input' and move.state != 'done':
                         self._update_product_cost_price(
                             cursor, user, move.product.id, move.quantity,
                             move.uom, move.unit_price, move.currency,
