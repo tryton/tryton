@@ -660,15 +660,16 @@ class PackingInternal(OSV):
         states={'readonly': "state != 'draft'",})
     from_location = fields.Many2One(
         'stock.location', "From Location", required=True,
-        states={ 'readonly': "state != 'draft'", },
+        states={ 'readonly': "state != 'draft' or bool(moves)", },
         domain="[('type', '=', 'storage')]", )
     to_location = fields.Many2One('stock.location', "To Location",
             required=True, states={
-                'readonly': "state != 'draft'",
+                'readonly': "state != 'draft' or bool(moves)",
             }, domain="[('type', '=', 'storage')]")
     moves = fields.One2Many(
         'stock.move', 'packing_internal', 'Moves',
-        states={'readonly': "state != 'draft'"},
+        states={'readonly': "state != 'draft' or "\
+                    "not(bool(from_location) and bool (to_location))"},
         context="{'from_location': from_location,"
                 "'to_location': to_location,"
                 "'planned_date': planned_date}",
