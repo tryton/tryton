@@ -1,4 +1,5 @@
 type,name,res_id,src,value,fuzzy
+error,stock.inventory.line,0,Line quantity must be positive!,Menge der Position muss positiv sein!,0
 error,stock.inventory.line,0,Move quantity must be positive,Zu bewegende Menge muss positiv sein,0
 error,stock.inventory.line,0,Product must be unique by inventory!,Ein Artikel kann in einem Lager nicht mehrfach vergeben werden!,0
 error,stock.move,0,Move can not be in both Supplier and Customer Packing,Eine Bewegung kann nicht in Lieferanten- und Kundenlieferung erfolgen,0
@@ -18,20 +19,18 @@ field,"party.party,customer_location",0,Customer Location,Lagerort Kunde,0
 field,"party.party,supplier_location",0,Supplier Location,Lagerort Lieferant,0
 field,"product.product,forecast_quantity",0,Forecast Quantity,Voraussichtliche Menge,0
 field,"product.product,quantity",0,Quantity,Menge,0
-field,"relationship.address,delivery",0,Delivery,Lieferadresse,0
-field,"relationship.party,customer_location",0,Customer Location,Lagerort Kunde,0
-field,"relationship.party,supplier_location",0,Supplier Location,Lagerort Lieferant,0
 field,"stock.inventory,company",0,Company,Unternehmen,0
 field,"stock.inventory,date",0,Date,Datum,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Erwartete Menge,0
 field,"stock.inventory.line,inventory",0,Inventory,Lagerbestand,0
 field,"stock.inventory.line,product",0,Product,Artikel,0
 field,"stock.inventory.line,quantity",0,Quantity,Menge,0
-field,"stock.inventory,lines",0,Inventory Lines,Lagerpositionen,0
+field,"stock.inventory,lines",0,Lines,Positionen,0
+field,"stock.inventory.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
 field,"stock.inventory.line,uom",0,UOM,Maßeinheit,0
 field,"stock.inventory,location",0,Location,Ort,0
 field,"stock.inventory,lost_found",0,Lost and Found,Nicht zugeordnet,0
-field,"stock.inventory,moves",0,Generated moves,Erzeugte Bewegungen,0
+field,"stock.inventory,moves",0,Moves,Bewegungen,0
 field,"stock.inventory,state",0,State,Status,0
 field,"stock.location,active",0,Active,Aktiv,0
 field,"stock.location,address",0,Address,Adresse,0
@@ -98,8 +97,6 @@ field,"stock.packing.out,warehouse",0,Warehouse,Warenlager,0
 field,"stock.product_stock_date.init,forecast_date",0,At Date,Am,0
 help,"party.party,customer_location",0,The default destination location when sending products to the party.,Standardbestimmungsort für Sendungen zum Geschäftspartner,0
 help,"party.party,supplier_location",0,The default source location when receiving products from the party.,Standardbestimmungsort für Sendungen vom Geschäftspartner,0
-help,"relationship.party,customer_location",0,The default destination location when sending products to the party.,Standardbestimmungsort für Sendungen zum Geschäftspartner,0
-help,"relationship.party,supplier_location",0,The default source location when receiving products from the party.,Standardbestimmungsort für Sendungen vom Geschäftspartner,0
 help,"stock.location_stock_date.init,forecast_date",0,"Allow to compute expected stock quantities for this date.
 * An empty value is an infinite date in the future.
 * A date in the past will provide historical values.","Berechnet den erwarteten Lagerbestand für dieses Datum
@@ -158,9 +155,11 @@ model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Erha
 model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Lieferscheine von Lieferanten,0
 odt,stock.packing.out,0,Customer Code:,Kundennummer:,0
 odt,stock.packing.out,0,Date:,Datum:,0
+odt,stock.packing.out,0,E-Mail:,E-Mail:,0
 odt,stock.packing.out,0,List,Liste,0
 odt,stock.packing.out,0,Packing,Lieferschein,0
 odt,stock.packing.out,0,Packing Number:,Lieferscheinnummer:,0
+odt,stock.packing.out,0,Phone:,Telefon:,0
 odt,stock.packing.out,0,Product,Artikel,0
 odt,stock.packing.out,0,Quantity,Menge,0
 odt,stock.packing.out,0,Reference:,Referenz,0
