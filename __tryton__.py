@@ -17,10 +17,10 @@
         'res',
         'workflow',
         'currency',
+        'account_product',
     ],
     'xml': [
         'invoice.xml',
-        'product.xml',
     ],
     'translation': [
         'fr_FR.csv',
