@@ -36,7 +36,7 @@ model,"ir.ui.menu,name",menu_employee_form,Employees,Mitarbeiter,0
 odt,party.letter,0,"Best Regards,","Mit freundlichen Grüßen,",0
 odt,party.letter,0,Date:,Datum:,0
 odt,party.letter,0,"Dear Madams and Sirs,","Sehr geehrte Damen und Herren,",0
-odt,party.letter,0,Email:,E-Mail:,0
+odt,party.letter,0,E-Mail:,E-Mail:,0
 odt,party.letter,0,Phone:,Telefon:,0
 odt,party.letter,0,Subject:,Betreff:,0
 view,company.company,0,Addresses,Adressen,0
