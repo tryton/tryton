@@ -2,6 +2,7 @@ type,name,res_id,src,value,fuzzy
 error,purchase.request,0,Purchase request are only created by the system.,Las solicitudes de compra las crea únicamente el sistema.,0
 error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,La cantidad máxima debe ser mayor que la Cantidad Mínima,0
 error,stock.order_point,0,Only one order point is allowed for each product-location pair.,Solamente se admite un punto de orden para cada par cliente-producto.,0
+error,stock.order_point,0,You can not define two order point on the same product with opposite locations.,No puede definir dos puntos de orden del mismo producto con lugares opuestos.,0
 field,"product.product,order_points",0,Order Points,Puntos de Orden,0
 field,"purchase.request,company",0,Company,Compañía,0
 field,"purchase.request.create_purchase.ask_party,company",0,Company,Compañía,0
@@ -27,6 +28,10 @@ field,"stock.order_point,location",0,Location,Lugar,0
 field,"stock.order_point,max_quantity",0,Maximal Quantity,Cantidad Máxima,0
 field,"stock.order_point,min_quantity",0,Minimal Quantity,Cantidad Mínima,0
 field,"stock.order_point,product",0,Product,Producto,0
+field,"stock.order_point,provisioning_location",0,Provisioning Location,Lugar de Aprovisionamiento,0
+field,"stock.order_point,storage_location",0,Storage Location,Lugar de almacenamiento,0
+field,"stock.order_point,type",0,Type,Tipo,0
+field,"stock.order_point,warehouse_location",0,Warehouse Location,Lugar de la bodega,0
 model,"ir.action,name",wizard_create_purchase,Create Purchase,Crear Compra,0
 model,"ir.action,name",act_order_point_form,Order Points,Puntos de Orden,0
 model,"ir.action,name",act_purchase_request_form,Purchase Requests,Solicitudes de Compra,0
@@ -38,12 +43,16 @@ selection,"purchase.request,state",0,Cancel,Cancelar,0
 selection,"purchase.request,state",0,Done,Hecho,0
 selection,"purchase.request,state",0,Draft,Borrador,0
 selection,"purchase.request,state",0,Purchased,Comprado,0
+selection,"stock.order_point,type",0,Internal,Intern@,0
+selection,"stock.order_point,type",0,Purchase,Compra,0
 view,purchase.request,0,Purchase Request,Solicitud de Compra,0
 view,purchase.request,0,Purchase Requests,Solicitudes de Compra,0
 view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Supplier,Crear Compra: Sin Proveedor,0
 view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Crear Compra: Sin Término de Pago,0
 view,stock.order_point,0,Locations,Lugares,0
 view,stock.order_point,0,Order Point,Punto de Orden,0
+view,stock.order_point,0,Order Point Type,Tipo de Punto de Orden,0
+view,stock.order_point,0,Product Info,Información de Producto,0
 wizard_button,"purchase.request.create_purchase,ask_user_party,end",0,Cancel,Cancelar,0
 wizard_button,"purchase.request.create_purchase,ask_user_party,init",0,Continue,Continuar,0
 wizard_button,"purchase.request.create_purchase,ask_user_term,end",0,Cancel,Cancelar,0
