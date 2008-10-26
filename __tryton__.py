@@ -19,6 +19,7 @@
         'res',
         'ir',
         'currency',
+        'account_product',
     ],
     'xml': [
         'sale.xml',
