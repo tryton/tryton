@@ -1,4 +1,5 @@
 type,name,res_id,src,value,fuzzy
+error,stock.inventory.line,0,Line quantity must be positive!,La línea de cantidad debe ser positiva!,0
 error,stock.inventory.line,0,Move quantity must be positive,El valor del movimiento debe ser positivo,0
 error,stock.inventory.line,0,Product must be unique by inventory!,El producto debe ser único por inventario!,0
 error,stock.move,0,Move can not be in both Supplier and Customer Packing,El Movimiento no puede estar en el empaque del Proveedor y del Cliente,0
@@ -13,22 +14,23 @@ error,stock.packing.in,0,Incoming Moves must have input location as destination 
 error,stock.packing.in,0,Inventory Moves must have input location as source location!,Los movimientos de Inventario deben tener un lugar de entrada como lugar de origen!,0
 error,stock.packing.in,0,Inventory Moves must have output location as destination location!,Los movimientos de Inventario deben tener un lugar de salida como lugar de destino!,0
 error,stock.packing.in,0,Outgoing Moves must have output location as source location!,Los Movimientos de Salida deben tener tanto lugar de salida como origen!,0
-field,"product.product,forecast_quantity",0,Forecast Quantity,Cantidad Pronosticada,0
-field,"product.product,quantity",0,Quantity,Cantidad,0
 field,"party.address,delivery",0,Delivery,Envío,0
 field,"party.party,customer_location",0,Customer Location,Lugar del Cliente,0
 field,"party.party,supplier_location",0,Supplier Location,Lugar del Proveedor,0
+field,"product.product,forecast_quantity",0,Forecast Quantity,Cantidad Pronosticada,0
+field,"product.product,quantity",0,Quantity,Cantidad,0
 field,"stock.inventory,company",0,Company,Compañía,0
 field,"stock.inventory,date",0,Date,Fecha,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Cantidad Esperada,0
 field,"stock.inventory.line,inventory",0,Inventory,Inventario,0
 field,"stock.inventory.line,product",0,Product,Producto,0
 field,"stock.inventory.line,quantity",0,Quantity,Cantidad,0
-field,"stock.inventory,lines",0,Inventory Lines,Líneas de Inventario,0
+field,"stock.inventory,lines",0,Lines,Líneas de Inventario,0
+field,"stock.inventory.line,unit_digits",0,Unit Digits,Dígitos Unitarios,0
 field,"stock.inventory.line,uom",0,UOM,UDM,0
 field,"stock.inventory,location",0,Location,Lugar,0
 field,"stock.inventory,lost_found",0,Lost and Found,Perdido y Encontrado,0
-field,"stock.inventory,moves",0,Generated moves,Movimientos Generados,0
+field,"stock.inventory,moves",0,Moves,Movimientos Generados,0
 field,"stock.inventory,state",0,State,Estado,0
 field,"stock.location,active",0,Active,Activo,0
 field,"stock.location,address",0,Address,Direcciones,0
@@ -151,7 +153,7 @@ model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Empa
 model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Empaques del Proveedor,0
 odt,stock.packing.out,0,Customer Code:,Código de Cliente:,0
 odt,stock.packing.out,0,Date:,Fecha:,0
-odt,stock.packing.out,0,Email:,Correo Electrónico:,0
+odt,stock.packing.out,0,E-Mail:,Correo electrónico:,0
 odt,stock.packing.out,0,List,Lista,0
 odt,stock.packing.out,0,Packing,En empaque,0
 odt,stock.packing.out,0,Packing Number:,Número de Empaque:,0
@@ -210,26 +212,32 @@ view,stock.move,0,Moves,Movimientos,0
 view,stock.move,0,Set Done,Marcar como Hecho,0
 view,stock.move,0,Set Draft,Marcar como Borrador,0
 view,stock.packing.in,0,Cancel,Cancelar,0
+view,stock.packing.in,0,Done,Hecho,0
+view,stock.packing.in,0,Draft,Borrador,0
 view,stock.packing.in,0,Incoming Moves,Movimientos de Entrada,0
 view,stock.packing.in,0,Inventory Moves,Movimientos de Inventario,0
 view,stock.packing.in,0,Moves,Movimientos,0
 view,stock.packing.in,0,Received,Recibido,0
 view,stock.packing.in,0,Reset to Draft,Revertir a Borrador,0
-view,stock.packing.in,0,Set Done,Marcar como Hecho,0
 view,stock.packing.in,0,Supplier Packing,Empaque del Proveedor,0
 view,stock.packing.in,0,Supplier Packings,Empaques del Proveedor,0
 view,stock.packing.internal,0,Assign,Asignar,0
 view,stock.packing.internal,0,Cancel,Cancelar,0
+view,stock.packing.internal,0,Done,Hecho,0
+view,stock.packing.internal,0,Draft,Borrador,0
 view,stock.packing.internal,0,Force Assign,Forzar Asignación,0
 view,stock.packing.internal,0,Internal Packing,Empaque Interno,0
 view,stock.packing.internal,0,Internal Packings,Empaques Internos,0
 view,stock.packing.internal,0,Reset to Draft,Revertir a Borrador,0
 view,stock.packing.internal,0,Set Done,Marcar como Hecho,0
 view,stock.packing.internal,0,Set Waiting,Colocar en Espera,0
+view,stock.packing.internal,0,Waiting,En espera,0
 view,stock.packing.out,0,Assign,Asignar,0
 view,stock.packing.out,0,Cancel,Cancelar,0
 view,stock.packing.out,0,Customer Packing,Empaque de Cliente,0
 view,stock.packing.out,0,Customer Packings,Empaques de Cliente,0
+view,stock.packing.out,0,Done,Hecho,0
+view,stock.packing.out,0,Draft,Borrador,0
 view,stock.packing.out,0,Force Assign,Forzar Asignación,0
 view,stock.packing.out,0,Inventory Moves,Movimientos de Inventario,0
 view,stock.packing.out,0,Make packing,Hacer Empaque,0
@@ -237,6 +245,8 @@ view,stock.packing.out,0,Outgoing Moves,Movimientos de Salida,0
 view,stock.packing.out,0,Reset to Draft,Revertir a Borrador,0
 view,stock.packing.out,0,Set Done,Marcar como Hecho,0
 view,stock.packing.out,0,Set Waiting,Colocar en Espera,0
+view,stock.packing.out,0,Unpack,Sin empaque,0
+view,stock.packing.out,0,Waiting,En espera,0
 wizard_button,"stock.location.open,init,end",0,Cancel,Cancelar,0
 wizard_button,"stock.location.open,init,open",0,Open,Abrir,0
 wizard_button,"stock.product.open,init,end",0,Cancel,Cancelar,0
