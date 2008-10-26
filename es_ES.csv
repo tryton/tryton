@@ -7,11 +7,16 @@ field,"country.country,state",0,State,Estado,0
 field,"country.country.state,code",0,Code,Código,0
 field,"country.country.state,country",0,Country,País,0
 field,"country.country.state,name",0,Name,Nombre,0
+field,"country.country,subdivisions",0,Subdivisions,Subdivisiones,0
+field,"country.subdivision,code",0,Code,Código,0
+field,"country.subdivision,country",0,Country,País,0
+field,"country.subdivision,name",0,Name,Nombre,0
+field,"country.subdivision,parent",0,Parent,Padre,0
+field,"country.subdivision,type",0,Type,Tipo,0
 help,"country.country,code",0,"The ISO country code in two chars.
 You can use this field for quick search.","El código ISO del país en dos caracteres,
 Puede usar este campo para búsqueda rápida.",0
 help,"country.country,name",0,The full name of the country.,El nombre completo del país.,0
-model,"ir.ui.menu,name",menu_country_form,Countries,Países,0
 model,"country.country,name",af,Afghanistan,Afganistán,0
 model,"country.country,name",ax,Åland Islands,Islas Aland,0
 model,"country.country,name",al,Albania,Albania,0
@@ -258,7 +263,91 @@ model,"country.country,name",eh,Western Sahara,Sahara Occidental,0
 model,"country.country,name",ye,Yemen,Yemén,0
 model,"country.country,name",zm,Zambia,Zambia,0
 model,"country.country,name",zw,Zimbabwe,Zimbawe,0
+model,"ir.action,name",act_country_form,Countries,Paises,0
+model,"ir.ui.menu,name",menu_country_form,Countries,Países,0
+selection,"country.subdivision,type",0,Administration,Administración,0
+selection,"country.subdivision,type",0,Administrative area,Área administrativa,0
+selection,"country.subdivision,type",0,Administrative Region,Región administrativa,0
+selection,"country.subdivision,type",0,Administrative Territory,Territorio administrativo,0
+selection,"country.subdivision,type",0,Area,Área,0
+selection,"country.subdivision,type",0,Atoll,Atolón,0
+selection,"country.subdivision,type",0,Autonomous City,Ciudad autónoma,0
+selection,"country.subdivision,type",0,Autonomous Commune,Comuna autónoma,0
+selection,"country.subdivision,type",0,Autonomous communities,Comunidades autónomas,0
+selection,"country.subdivision,type",0,Autonomous District,Distrito Autónomo,0
+selection,"country.subdivision,type",0,Autonomous island,Isla Autónoma,0
+selection,"country.subdivision,type",0,Autonomous monastic state,Estado monástico autónomo,0
+selection,"country.subdivision,type",0,Autonomous municipality,Municipalidad autónoma,0
+selection,"country.subdivision,type",0,Autonomous Province,Provincia autónoma,0
+selection,"country.subdivision,type",0,Autonomous Region,Región autónoma,0
+selection,"country.subdivision,type",0,Autonomous republic,República autónoma,0
+selection,"country.subdivision,type",0,Autonomous sector,Sector autónomo,0
+selection,"country.subdivision,type",0,Autonomous territory,Territorio autónomo,0
+selection,"country.subdivision,type",0,Borough,Municipio autónomo,0
+selection,"country.subdivision,type",0,Canton,Cantón,0
+selection,"country.subdivision,type",0,Capital city,Ciudad capital,0
+selection,"country.subdivision,type",0,Capital District,Distito capital,0
+selection,"country.subdivision,type",0,Capital Metropolitan City,Ciudad Capital Metropolitana,0
+selection,"country.subdivision,type",0,Capital Territory,Territorio capital,0
+selection,"country.subdivision,type",0,City,Ciudad,0
+selection,"country.subdivision,type",0,City corporation,Corporación ciudad,0
+selection,"country.subdivision,type",0,City with county rights,Ciudad con derechos de condado,0
+selection,"country.subdivision,type",0,Commune,Comuna,0
+selection,"country.subdivision,type",0,Country,País,0
+selection,"country.subdivision,type",0,County,Condado,0
+selection,"country.subdivision,type",0,Department,Departamento,0
+selection,"country.subdivision,type",0,Dependency,Dependencia,0
+selection,"country.subdivision,type",0,District,Distrito,0
+selection,"country.subdivision,type",0,Division,División,0
+selection,"country.subdivision,type",0,Economic Prefecture,Prefectura económica,0
+selection,"country.subdivision,type",0,Economic region,Región económica,0
+selection,"country.subdivision,type",0,Emirate,Emiratos,0
+selection,"country.subdivision,type",0,Entity,Entidad,0
+selection,"country.subdivision,type",0,Federal Dependency,Dependencia Federal,0
+selection,"country.subdivision,type",0,Federal District,Distrito Federal,0
+selection,"country.subdivision,type",0,Federal Territories,Territorios Federales,0
+selection,"country.subdivision,type",0,Geographical region,Región Geográfica,0
+selection,"country.subdivision,type",0,Geographical unit,Unidad Geográfica,0
+selection,"country.subdivision,type",0,Governorate,Comisionado,0
+selection,"country.subdivision,type",0,Included for completeness,Incluir por completitud,0
+selection,"country.subdivision,type",0,Island council,Consejo de Isla,0
+selection,"country.subdivision,type",0,Island group,Consejo de Islas,0
+selection,"country.subdivision,type",0,Local council,Consejo Local,0
+selection,"country.subdivision,type",0,London borough,Municipio de Londres,0
+selection,"country.subdivision,type",0,Metropolitan cities,Ciudades metropolitanas,0
+selection,"country.subdivision,type",0,Metropolitan department,Departamento metropolitano,0
+selection,"country.subdivision,type",0,Metropolitan district,Distrito metropolitano,0
+selection,"country.subdivision,type",0,Metropolitan region,Región metropolitana,0
+selection,"country.subdivision,type",0,Municipalities,Municipalidades,0
+selection,"country.subdivision,type",0,Municipality,Municipalidad,0
+selection,"country.subdivision,type",0,Oblast,Óblast,0
+selection,"country.subdivision,type",0,Outlying area,Área externa,0
+selection,"country.subdivision,type",0,Overseas region/department,región/departamento de ultramar,0
+selection,"country.subdivision,type",0,Overseas territorial collectivity,Territorio colectivo de ultramar,0
+selection,"country.subdivision,type",0,Parish,Parroquia,0
+selection,"country.subdivision,type",0,Prefecture,Prefectura,0
+selection,"country.subdivision,type",0,Principality,Principalidad,0
+selection,"country.subdivision,type",0,Province,Provincia,0
+selection,"country.subdivision,type",0,Rayon,Rayón,0
+selection,"country.subdivision,type",0,Region,Región,0
+selection,"country.subdivision,type",0,Regional council,Consejo Regional,0
+selection,"country.subdivision,type",0,Republic,República,0
+selection,"country.subdivision,type",0,Special administrative region,Región administrativa especial,0
+selection,"country.subdivision,type",0,Special city,Ciudad Especial,0
+selection,"country.subdivision,type",0,Special District,Distrito Especial,0
+selection,"country.subdivision,type",0,Special Municipality,Municipalidad Especial,0
+selection,"country.subdivision,type",0,Special Region,Región Especial,0
+selection,"country.subdivision,type",0,Special zone,Zona Especial,0
+selection,"country.subdivision,type",0,State,Estado,0
+selection,"country.subdivision,type",0,Territorial unit,Unidad territorial,0
+selection,"country.subdivision,type",0,Territory,Territorio,0
+selection,"country.subdivision,type",0,Town council,Consejo del Pueblo,0
+selection,"country.subdivision,type",0,Two-tier county,Condado de dos niveles,0
+selection,"country.subdivision,type",0,Union territory,Unión territorial,0
+selection,"country.subdivision,type",0,Unitary authority,Autoridad Unitaria,0
 view,country.country,0,Countries,Países,0
 view,country.country,0,Country,País,0
 view,country.country,0,State,Estado,0
 view,country.country,0,States,Estados,0
+view,country.country,0,Subdivision,Subdivisión,0
+view,country.country,0,Subdivisions,Subdivisiones,0
