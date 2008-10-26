@@ -32,6 +32,7 @@ field,"purchase.product_supplier.price,price",0,Price,Preis,0
 field,"purchase.product_supplier.price,product_supplier",0,Supplier,Lieferant,0
 field,"purchase.product_supplier.price,quantity",0,Quantity,Menge,0
 field,"purchase.product_supplier,prices",0,Prices,Preise,0
+field,"purchase.product_supplier.price,unit_price",0,Unit Price,Einzelpreis,0
 field,"purchase.product_supplier,product",0,Product,Artikel,0
 field,"purchase.product_supplier,sequence",0,Sequence,Sequenz,0
 field,"purchase.purchase,comment",0,Comment,Kommentar,0
@@ -85,7 +86,7 @@ odt,purchase.purchase,0,Date:,Datum:,0
 odt,purchase.purchase,0,Description,Bezeichnung,0
 odt,purchase.purchase,0,Description:,Bezeichnung:,0
 odt,purchase.purchase,0,Draft Purchase Order,Auftragsentwurf,0
-odt,purchase.purchase,0,Email:,E-Mail:,0
+odt,purchase.purchase,0,E-Mail:,E-Mail:,0
 odt,purchase.purchase,0,Phone:,Telefon:,0
 odt,purchase.purchase,0,Purchase Order N°:,Auftrag Nr. ,0
 odt,purchase.purchase,0,Quantity,Menge,0
