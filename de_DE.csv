@@ -1,6 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,party.address,0,You can not modify the party of an address!,Der Partner für eine Adresse kann nicht geändert werden!,0
 error,party.category,0,You can not create recursive categories!,Kategorien dürfen nicht rekursiv sein,0
+error,party.contact_mechanism,0,You can not modify the party of an contact mechanism!,Der Partner einer Kontaktmöglichkeit kann nicht geändert werden!,0
 error,party.party,0,The code of the party must be unique!,Der Name des Partners kann nicht mehrfach vergeben werden!,0
 error,party.party,0,Wrong VAT number!,Falsche USt-ID Nr.,0
 field,"party.address,active",0,Active,Aktiv,0
@@ -13,7 +14,7 @@ field,"party.address,fax",0,Fax,Fax,0
 field,"party.address,full_address",0,unknown,Unbekannt,0
 field,"party.address,id",0,ID,ID,0
 field,"party.address,mobile",0,Mobile,Mobil-Telefon,0
-field,"party.address,name",0,Contact Name,Kontakt Name,0
+field,"party.address,name",0,Name,Name,0
 field,"party.address,party",0,Party,Partner,0
 field,"party.address,phone",0,Phone,Telefon,0
 field,"party.address,sequence",0,Sequence,Sequenz,0
@@ -34,17 +35,32 @@ field,"party.category,name",0,Name,Kategorie Name,0
 field,"party.category,parent",0,Parent,Übergeordnet (Kategorie),0
 field,"party.category,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"party.category,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"party.contact_mechanism,active",0,Active,Aktiv,0
+field,"party.contact_mechanism,comment",0,Comment,Kommentar,0
+field,"party.contact_mechanism,email",0,E-Mail,E-Mail,0
+field,"party.contact_mechanism,party",0,Party,Partner,0
+field,"party.contact_mechanism,sequence",0,Sequence,Sequenz,0
+field,"party.contact_mechanism,sip",0,SIP,SIP,0
+field,"party.contact_mechanism,skype",0,Skype,Skype,0
+field,"party.contact_mechanism,type",0,Type,Typ,0
+field,"party.contact_mechanism,value",0,Value,Wert,0
+field,"party.contact_mechanism,website",0,Website,Homepage,0
 field,"party.party,active",0,Active,Aktiv,0
 field,"party.party,addresses",0,Addresses,Adressen,0
 field,"party.party,categories",0,Categories,Kategorien,0
 field,"party.party,code",0,Code,Code Partner,0
 field,"party.party,code_length",0,Code Length,Code Länge,0
+field,"party.party,contact_mechanisms",0,Contact Mechanisms,Kontaktmöglichkeiten,0
 field,"party.party,create_date",0,Creation date,Erstellungsdatum,0
 field,"party.party,create_uid",0,Creation user,Ersteller,0
+field,"party.party,email",0,E-Mail,E-Mail,0
+field,"party.party,fax",0,Fax,Fax,0
 field,"party.party,full_name",0,unknown,Unbekannt,0
 field,"party.party,id",0,ID,ID,0
 field,"party.party,lang",0,Language,Sprache,0
+field,"party.party,mobile",0,Mobile,Mobiltelefon,0
 field,"party.party,name",0,Name,Name,0
+field,"party.party,phone",0,Phone,Telefon,0
 field,"party.party,type",0,Type,Typ,0
 field,"party.party.type,create_date",0,Creation date,Erstellungsdatum,0
 field,"party.party.type,create_uid",0,Creation user,Ersteller,0
@@ -77,6 +93,16 @@ model,"ir.ui.menu,name",menu_category_form2,New category,Neue Kategorie,0
 model,"ir.ui.menu,name",menu_party_form2,New Party,Neuer Partner,0
 model,"ir.ui.menu,name",menu_party_form,Parties,Partner,0
 model,"ir.ui.menu,name",menu_party,Party Management,Kontakte,0
+selection,"party.contact_mechanism,type",0,E-Mail,E-Mail,0
+selection,"party.contact_mechanism,type",0,Fax,Fax,0
+selection,"party.contact_mechanism,type",0,IRC,IRC,0
+selection,"party.contact_mechanism,type",0,Jabber,Jabber,0
+selection,"party.contact_mechanism,type",0,Mobile,Mobiltelefon,0
+selection,"party.contact_mechanism,type",0,Other,Anderer,0
+selection,"party.contact_mechanism,type",0,Phone,Telefon,0
+selection,"party.contact_mechanism,type",0,SIP,SIP,0
+selection,"party.contact_mechanism,type",0,Skype,Skype,0
+selection,"party.contact_mechanism,type",0,Website,Homepage,0
 selection,"party.party,vat_country",0,,,0
 selection,"party.party,vat_country",0,AT,AT,0
 selection,"party.party,vat_country",0,BE,BE,0
@@ -109,9 +135,12 @@ selection,"party.party,vat_country",0,SK,SK,0
 view,party.address,0,Addresses,Adressen,0
 view,party.category,0,Categories,Kategorien,0
 view,party.category,0,Category,Kategorie,0
+view,party.contact_mechanism,0,Contact Mechanism,Kontaktmöglichkeit,0
+view,party.contact_mechanism,0,Contact Mechanisms,Kontaktmöglichkeiten,0
 view,party.party,0,Accounting,Konto,0
 view,party.party,0,Addresses,Adressen,0
 view,party.party,0,Categories,Kategorien,0
+view,party.party,0,Contact Mechanisms,Kontaktmöglichkeiten,0
 view,party.party,0,General,Allgemein,0
 view,party.party,0,Parties,Partner,0
 view,party.party,0,Party,Partner,0
