@@ -18,5 +18,6 @@
         'product.xml',
     ],
     'translation': [
+	'es_ES.csv',
     ]
 }
