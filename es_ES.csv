@@ -26,7 +26,7 @@ model,"ir.ui.menu,name",menu_employee_form,Employees,Empleados,0
 odt,party.letter,0,"Best Regards,","Atentamente,",0
 odt,party.letter,0,Date:,Fecha:,0
 odt,party.letter,0,"Dear Madams and Sirs,","Estimados Señoras y Señores,",0
-odt,party.letter,0,Email:,Correo Electrónico:,0
+odt,party.letter,0,E-Mail:,Correo electrónico:,0
 odt,party.letter,0,Phone:,Teléfono:,0
 odt,party.letter,0,Subject:,Título:,0
 view,company.company,0,Addresses,Direcciones,0
