@@ -332,7 +332,7 @@ class Reconciliation(OSV):
         reconciliation = self.browse(cursor, user, res, context=context)
         for line in reconciliation.lines:
             workflow_service.trg_trigger(user, 'account.move.line', line.id,
-                    cursor)
+                    cursor, context=context)
         return res
 
     def write(self, cursor, user, ids, vals, context=None):
