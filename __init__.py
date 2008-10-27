@@ -6,3 +6,4 @@ from period import *
 from journal import *
 from move import *
 from tax import *
+from party import *

@@ -21,6 +21,7 @@
         'journal.xml',
         'move.xml',
         'tax.xml',
+        'party.xml',
     ],
     'translation': [
         'fr_FR.csv',

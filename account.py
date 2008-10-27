@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Account"
 
 from trytond.osv import fields, OSV
@@ -887,28 +888,6 @@ class OpenChartAccount(Wizard):
         return res
 
 OpenChartAccount()
-
-
-class Party(OSV):
-    _name = 'party.party'
-    account_payable = fields.Property(type='many2one',
-            relation='account.account', string='Account Payable',
-            group_name='Accounting Properties', view_load=True,
-            domain="[('kind', '=', 'payable'), ('company', '=', company)]",
-            states={
-                'required': "company",
-                'invisible': "not company",
-            })
-    account_receivable = fields.Property(type='many2one',
-            relation='account.account', string='Account Receivable',
-            group_name='Accounting Properties', view_load=True,
-            domain="[('kind', '=', 'receivable'), ('company', '=', company)]",
-            states={
-                'required': "company",
-                'invisible': "not company",
-            })
-
-Party()
 
 
 class PrintGeneralLegderInit(WizardOSV):

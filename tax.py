@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Tax"
 
 from trytond.osv import fields, OSV
@@ -785,21 +786,3 @@ class Account(OSV):
                     'for journal type: "expense" and "revenue"')
 
 Account()
-
-class Party(OSV):
-    _name = 'party.party'
-    vat = fields.Property(type='many2one',
-            relation='account.tax', string='VAT',
-            group_name='Accounting Properties', view_load=True,
-            domain="[('group.code', '=', 'vat'), ('company', '=', company), " \
-                    "('parent', '=', False)]",
-            help='This tax will be used, instead of the default VAT.')
-    supplier_vat = fields.Property(type='many2one',
-            relation='account.tax', string='Supplier VAT',
-            group_name='Accounting Properties', view_load=True,
-            domain="[('group.code', '=', 'vat'), ('company', '=', company), " \
-                    "('parent', '=', False)]",
-            help='This tax will be used, instead of the default VAT ' \
-                    'for supplier invoices.')
-
-Party()
