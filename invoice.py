@@ -691,7 +691,7 @@ class Invoice(OSV):
                 self.raise_user_error(cursor, 'reset_draft',
                         context=context)
             workflow_service.trg_create(user, 'account.invoice',
-                    invoice.id, cursor)
+                    invoice.id, cursor, context=context)
         self.write(cursor, user, ids, {'state': 'draft'})
         return True
 
@@ -994,7 +994,7 @@ class Invoice(OSV):
         if 'state' in vals and vals['state'] in ('paid', 'cancel'):
             for invoice_id in ids:
                 workflow_service.trg_trigger(user, self._name, invoice_id,
-                        cursor)
+                        cursor, context=context)
         return res
 
     def copy(self, cursor, user, invoice_id, default=None, context=None):
