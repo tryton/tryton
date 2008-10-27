@@ -1932,12 +1932,10 @@ class Party(OSV):
     _name = 'party.party'
     payment_term = fields.Property(type='many2one',
             relation='account.invoice.payment_term',
-            string='Invoice Payment Term', group_name='Accounting Properties',
-            view_load=True)
+            string='Invoice Payment Term')
     supplier_payment_term = fields.Property(type='many2one',
             relation='account.invoice.payment_term',
-            string='Supplier Payment Term', group_name='Accounting Properties',
-            view_load=True)
+            string='Supplier Payment Term')
 
 Party()
 
