@@ -27,12 +27,12 @@ setup(name='trytond_product',
     author=info.get('author', ''),
     author_email=info.get('email', ''),
     url=info.get('website', ''),
-    package_dir={'trytond.modules.' + info['name'].lower(): '.'},
+    package_dir={'trytond.modules.product': '.'},
     packages=[
-        'trytond.modules.' + info['name'].lower(),
+        'trytond.modules.product',
     ],
     package_data={
-        'trytond.modules.' + info['name'].lower(): info.get('xml', []) \
+        'trytond.modules.product': info.get('xml', []) \
                 + info.get('translation', []),
     },
     classifiers=[
