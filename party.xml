@@ -75,13 +75,11 @@ this repository contains the full copyright notices and license terms. -->
                             </group>
                         </page>
                         <page string="Accounting">
+                            <separator string="VAT" colspan="4"/>
                             <label name="vat_country"/>
                             <field name="vat_country"/>
                             <label name="vat_number"/>
                             <field name="vat_number"/>
-                        </page>
-                        <page string="Properties">
-                            <properties/>
                         </page>
                     </notebook>
                 </form>
