@@ -703,7 +703,7 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="purchasable"/>
                         <field name="purchasable"/>
                     </xpath>
-                    <xpath expr="/form/notebook/page[@string=&quot;Properties&quot;]"
+                    <xpath expr="/form/notebook/page[@string=&quot;General&quot;]"
                         position="after">
                         <page string="Suppliers"
                             states="{'invisible': '''not purchasable'''}">
