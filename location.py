@@ -134,13 +134,11 @@ class Party(OSV):
     _name = 'party.party'
     supplier_location = fields.Property(type='many2one',
             relation='stock.location', string='Supplier Location',
-            group_name='Stock Properties', view_load=True,
             domain=[('type', '=', 'supplier')],
             help='The default source location ' \
                     'when receiving products from the party.')
     customer_location = fields.Property(type='many2one',
             relation='stock.location', string='Customer Location',
-            group_name='Stock Properties', view_load=True,
             domain=[('type', '=', 'customer')],
             help='The default destination location ' \
                     'when sending products to the party.')
