@@ -130,7 +130,8 @@ class Statement(OSV):
     def draft_workflow(self, cursor, user, ids, context=None):
         workflow_service = LocalService('workflow')
         for statement in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, statement.id, cursor)
+            workflow_service.trg_create(user, self._name, statement.id, cursor,
+                    context=context)
             self.write(cursor, user, statement.id, {
                 'state': 'draft',
                 }, context=context)
