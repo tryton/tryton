@@ -736,7 +736,7 @@
                         <label name="salable"/>
                         <field name="salable"/>
                     </xpath>
-                    <xpath expr="/form/notebook/page[@string=&quot;Properties&quot;]"
+                    <xpath expr="/form/notebook/page[@string=&quot;General&quot;]"
                         position="after">
                         <page string="Customers"
                             states="{'invisible': '''not salable'''}">
