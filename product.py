@@ -20,10 +20,10 @@ class Category(OSV):
                 'invisible': "not company",
             })
     customer_taxes = fields.Many2Many('account.tax',
-            'product_customer_taxes_rel', 'product', 'tax',
+            'product_category_customer_taxes_rel', 'product', 'tax',
             'Customer Taxes', domain=[('parent', '=', False)])
     supplier_taxes = fields.Many2Many('account.tax',
-            'product_supplier_taxes_rel', 'product', 'tax',
+            'product_category_supplier_taxes_rel', 'product', 'tax',
             'Supplier Taxes', domain=[('parent', '=', False)])
 
 Category()
