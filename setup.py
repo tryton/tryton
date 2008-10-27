@@ -21,7 +21,7 @@ major_version, minor_version, _ = info.get('version', '0.0.1').split('.', 2)
 requires.append('trytond >= %s.%s' % (major_version, minor_version))
 requires.append('trytond < %s.%s' % (major_version, str(int(minor_version) + 1)))
 
-setup(name='trytond_' + info['name'].lower(),
+setup(name='trytond_stock_supply_day',
     version=info.get('version', '0.0.1'),
     description=info.get('description', ''),
     author=info.get('author', ''),
