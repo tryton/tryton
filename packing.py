@@ -258,7 +258,8 @@ class PackingIn(OSV):
     def button_draft(self, cursor, user, ids, context=None):
         workflow_service = LocalService('workflow')
         for packing in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, packing.id, cursor)
+            workflow_service.trg_create(user, self._name, packing.id, cursor,
+                    context=context)
         return True
 
 PackingIn()
@@ -641,7 +642,8 @@ class PackingOut(OSV):
     def button_draft(self, cursor, user, ids, context=None):
         workflow_service = LocalService('workflow')
         for packing in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, packing.id, cursor)
+            workflow_service.trg_create(user, self._name, packing.id, cursor,
+                    context=context)
 
 PackingOut()
 
@@ -688,7 +690,8 @@ class PackingInternal(OSV):
     def button_draft(self, cursor, user, ids, context=None):
         workflow_service = LocalService('workflow')
         for packing in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, packing.id, cursor)
+            workflow_service.trg_create(user, self._name, packing.id, cursor,
+                    context=context)
         return True
 
     def __init__(self):
