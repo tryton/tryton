@@ -824,7 +824,7 @@ class Sale(OSV):
                 'moves': [('add', move_id)],
                 }, context=context)
         workflow_service.trg_validate(user, 'stock.packing.out', packing_id,
-                'waiting', cursor)
+                'waiting', cursor, context=context)
         return packing_id
 
     def ignore_packing_exception(self, cursor, user, sale_id, context=None):
@@ -1352,7 +1352,7 @@ class PackingOut(OSV):
 
             for sale_id in sale_ids:
                 workflow_service.trg_validate(user, 'sale.sale', sale_id,
-                        'packing_update', cursor)
+                        'packing_update', cursor, context=context)
         return res
 
 PackingOut()
@@ -1417,7 +1417,7 @@ class Move(OSV):
                         sale_ids.append(sale_line.sale.id)
             for sale_id in sale_ids:
                 workflow_service.trg_validate(user, 'sale.sale',
-                        sale_id, 'packing_update', cursor)
+                        sale_id, 'packing_update', cursor, context=context)
         return res
 
 Move()
