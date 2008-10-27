@@ -1365,7 +1365,7 @@ class PackingIn(OSV):
 
             for purchase_id in purchase_ids:
                 workflow_service.trg_validate(user, 'purchase.purchase',
-                        purchase_id, 'packing_update', cursor)
+                        purchase_id, 'packing_update', cursor, context=context)
         return res
 
 PackingIn()
@@ -1463,7 +1463,7 @@ class Move(OSV):
                         purchase_ids.append(purchase_line.purchase.id)
             for purchase_id in purchase_ids:
                 workflow_service.trg_validate(user, 'purchase.purchase',
-                        purchase_id, 'packing_update', cursor)
+                        purchase_id, 'packing_update', cursor, context=context)
         return res
 
 Move()
