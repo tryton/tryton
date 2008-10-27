@@ -9,14 +9,12 @@ class Category(OSV):
 
     account_expense = fields.Property(type='many2one',
             relation='account.account', string='Account Expense',
-            group_name='Accounting Properties', view_load=True,
             domain="[('kind', '=', 'expense'), ('company', '=', company)]",
             states={
                 'invisible': "not company",
             })
     account_revenue = fields.Property(type='many2one',
             relation='account.account', string='Account Revenue',
-            group_name='Accounting Properties', view_load=True,
             domain="[('kind', '=', 'revenue'), ('company', '=', company)]",
             states={
                 'invisible': "not company",
@@ -35,16 +33,14 @@ class Template(OSV):
     _name = 'product.template'
 
     account_expense = fields.Property(type='many2one',
-            string='Account Expense', group_name='Accounting Properties',
-            view_load=True, relation='account.account',
+            string='Account Expense', relation='account.account',
             domain="[('kind', '=', 'expense'), ('company', '=', company)]",
             states={
                 'invisible': "not company",
             }, help='This account will be used instead of the one defined ' \
                     'on the category.')
     account_revenue = fields.Property(type='many2one',
-            string='Account Revenue', group_name='Accounting Properties',
-            view_load=True, relation='account.account',
+            string='Account Revenue', relation='account.account',
             domain="[('kind', '=', 'revenue'), ('company', '=', company)]",
             states={
                 'invisible': "not company",

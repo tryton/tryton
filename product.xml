@@ -11,9 +11,13 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;Properties&quot;]"
-                        position="before">
-                        <page string="Taxes" col="4">
+                        expr="/form/notebook/page[@string=&quot;Childs&quot;]"
+                        position="after">
+                        <page string="Accounting" col="4">
+                            <label name="account_revenue"/>
+                            <field name="account_revenue"/>
+                            <label name="account_expense"/>
+                            <field name="account_expense"/>
                             <separator name="customer_taxes" colspan="4"/>
                             <field name="customer_taxes" colspan="4"/>
                             <separator name="supplier_taxes" colspan="4"/>
@@ -32,9 +36,13 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;Properties&quot;]"
-                        position="before">
-                        <page string="Taxes" col="4">
+                        expr="/form/notebook/page[@string=&quot;General&quot;]"
+                        position="after">
+                        <page string="Accounting" col="4">
+                            <label name="account_revenue"/>
+                            <field name="account_revenue"/>
+                            <label name="account_expense"/>
+                            <field name="account_expense"/>
                             <label name="taxes_category"/>
                             <field name="taxes_category"/>
                             <separator name="customer_taxes" colspan="4"/>
