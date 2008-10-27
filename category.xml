@@ -44,9 +44,6 @@
                         <page string="Childs" col="1">
                             <field name="childs"/>
                         </page>
-                        <page string="Properties">
-                            <properties/>
-                        </page>
                     </notebook>
                 </form>
                 ]]>

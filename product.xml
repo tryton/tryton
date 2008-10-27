@@ -62,9 +62,6 @@
                               <separator name="description" colspan="4"/>
                               <field name="description" colspan="4"/>
                           </page>
-                          <page string="Properties">
-                              <properties/>
-                          </page>
                       </notebook>
                     </form>
                     ]]>
