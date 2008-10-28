@@ -200,7 +200,7 @@ class Product(OSV):
                       ')'\
                     ')'
                 state_date_vals.extend(
-                    ['done', 'assigned', 'draft',
+                    ['done',
                      context['stock_date_start'], today,
                      context['stock_date_start'], today,
                      ])
