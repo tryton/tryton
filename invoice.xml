@@ -685,6 +685,7 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath
                         expr="/form/notebook/page[@string=&quot;Accounting&quot;]/field[@name=&quot;vat_number&quot;]"
                         position="after">
+                        <separator string="Payment Terms" colspan="4"/>
                         <label name="payment_term"/>
                         <field name="payment_term"/>
                         <label name="supplier_payment_term"/>
