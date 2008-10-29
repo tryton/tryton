@@ -17,8 +17,9 @@ class Line(OSV):
         self.employee = copy.copy(self.employee)
         if self.employee.on_change is None:
             self.employee.on_change = []
-        self.employee.on_change += ['employee']
-        self._reset_columns()
+        if 'employee' not in self.employee.on_change:
+            self.employee.on_change += ['employee']
+            self._reset_columns()
         self._constraints += [
             ('check_product', 'employee_service'),
         ]
