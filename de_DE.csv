@@ -131,7 +131,7 @@ field,"account.period,out_credit_note_sequence",0,Customer Credit Note Sequence,
 field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Rechnungen Kunden,0
 field,"party.address,invoice",0,Invoice,Rechnungsadresse,0
 field,"party.party,payment_term",0,Invoice Payment Term,Zahlungsbedingung Verkauf,0
-field,"party.party,supplier_payment_term",0,Supplier Payment Term,Zahlungsbedingung Lieferant,0
+field,"party.party,supplier_payment_term",0,Supplier Payment Term,Zahlungsbedingung Einkauf,0
 help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Ordnet Positionen in aufsteigender Reihenfolge,0
 model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_end_month,End Month,Ende Monat,0
 model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_net_days,Net Days,Netto Tage,0
@@ -141,8 +141,8 @@ model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remai
 model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.action,name",credit_invoice,Credit,Gutschrift erstellen,0
 model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
-model,"ir.action,name",,Custom Invoice,Angepasste Rechnung drucken,0
-model,"ir.action,name",report_invoice,Custom Invoice,Angepasste Rechnung drucken,0
+model,"ir.action,name",,Custom Invoice,,0
+model,"ir.action,name",report_invoice,Invoice,Angepasste Rechnung drucken,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
@@ -159,11 +159,12 @@ model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,G
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
 odt,account.invoice,0,Amount,Betrag,0
 odt,account.invoice,0,Base,Netto,0
+odt,account.invoice,0,Customized!,,0
 odt,account.invoice,0,Date,Datum,0
 odt,account.invoice,0,Date:,Datum:,0
 odt,account.invoice,0,Description,Beschreibung,0
 odt,account.invoice,0,Description:,Beschreibung:,0
-odt,account.invoice,0,Email:,E-Mail:,0
+odt,account.invoice,0,E-Mail:,E-Mail:,0
 odt,account.invoice,0,"Hey, we are customized!","Hey, ich bin ein angepasster Bericht!",0
 odt,account.invoice,0,I'am a watermark in the custom header!,Ich bin ein Wasserzeichen im angepassten Header!,0
 odt,account.invoice,0,Payment Term,Zahlungsbedingung,0
@@ -189,7 +190,7 @@ selection,"account.invoice,state",0,Paid,Bezahlt,0
 selection,"account.invoice,state",0,Pro forma,Pro Forma,0
 selection,"account.invoice,type",0,Credit Note,Gutschrift,0
 selection,"account.invoice,type",0,Invoice,Kundenrechnung,0
-selection,"account.invoice,type",0,Supplier Credit Note,Gutschrift an Lieferant,0
+selection,"account.invoice,type",0,Supplier Credit Note,Gutschrift von Lieferant,0
 selection,"account.invoice,type",0,Supplier Invoice,Lieferantenrechnung,0
 view,account.invoice,0,Amount Second Currency,Betrag Zweitwährung,0
 view,account.invoice,0,_Cancel,_Abbrechen,0
@@ -228,6 +229,7 @@ view,account.invoice.print_invoice_report.warning,0,You have selected more than 
 view,account.invoice.tax,0,Invoice Tax,Rechnungssteuer,0
 view,account.invoice.tax,0,Invoice Taxes,Rechnungssteuern,0
 view,account.invoice.tax,0,Tax Code,Steuerkennziffer,0
+view,party.party,0,Payment Terms,Zahlungsbedingungen,0
 wizard_button,"account.invoice.credit_invoice,init,credit",0,Credit,Gutschrift erstellen,0
 wizard_button,"account.invoice.credit_invoice,init,end",0,Cancel,Abbrechen,0
 wizard_button,"account.invoice.pay_invoice,ask,end",0,Cancel,Abbrechen,0
