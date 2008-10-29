@@ -683,7 +683,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;Accounting&quot;]/field[@name=&quot;vat_number&quot;]"
+                        expr="/form/notebook/page[@string=&quot;_Accounting&quot;]/field[@name=&quot;vat_number&quot;]"
                         position="after">
                         <separator string="Payment Terms" colspan="4"/>
                         <label name="payment_term"/>
