@@ -14,7 +14,7 @@ class TimesheetWork(OSV):
         self.parent = copy.copy(self.parent)
         if not self.parent._context:
             self.parent._context = "{'project_type': locals().get('project_type')}"
-        else:
+        elif 'project_type' not in self.parent._context:
             self.parent._context = self.parent._context[:-1] + \
                     ",'project_type': locals().get('project_type')" + \
                     self.parent._context[-1:]
