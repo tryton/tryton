@@ -86,7 +86,7 @@ class Uom(OSV):
 
     @staticmethod
     def round(number, precision=1.0):
-        return round(number/precision)*precision
+        return round(number / precision) * precision
 
     @staticmethod
     def check_factor_and_rate(values):
