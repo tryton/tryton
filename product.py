@@ -20,12 +20,15 @@ class Product(OSV):
 
         if not (context and context.get('locations')):
             return dict([(id, 0.0) for id in ids])
-        if name != 'forecast_quantity' and context.get('stock_date_end'):
-            if context['stock_date_end'] != date_obj.today(cursor, user,
-                    context=context):
-                context = context.copy()
-                context['stock_date_end'] = date_obj.today(cursor, user,
-                        context=context)
+
+        if name == 'quantity' and \
+                context.get('stock_date_end') != \
+                date_obj.today(cursor, user, context=context):
+
+            context = context.copy()
+            context['stock_date_end'] = date_obj.today(
+                cursor, user, context=context)
+
         if name == 'forecast_quantity' and not context.get('stock_date_end'):
             context = context.copy()
             context['stock_date_end'] = datetime.date.max
