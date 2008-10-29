@@ -708,6 +708,8 @@ view,account.tax.template,0,Invoice,Rechnung,0
 view,account.tax.template,0,Taxes,Steuern,0
 view,account.tax.template,0,Taxes Templates,Steuervorlagen,0
 view,account.tax.template,0,Tax Template,Steuervorlage,0
+view,party.party,0,Accounting,Buchhaltung,0
+view,party.party,0,Taxes,Steuern,0
 wizard_button,"account.account.create_chart_account,account,create_account",0,Create,Erstellen,0
 wizard_button,"account.account.create_chart_account,account,end",0,Cancel,Abbrechen,0
 wizard_button,"account.account.create_chart_account,create_account,create_properties",0,Create,Erstellen,0
