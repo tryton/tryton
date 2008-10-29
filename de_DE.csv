@@ -137,14 +137,13 @@ view,party.category,0,Categories,Kategorien,0
 view,party.category,0,Category,Kategorie,0
 view,party.contact_mechanism,0,Contact Mechanism,Kontaktmöglichkeit,0
 view,party.contact_mechanism,0,Contact Mechanisms,Kontaktmöglichkeiten,0
-view,party.party,0,Account,Konto,0
+view,party.party,0,Account,Konten,0
 view,party.party,0,Addresses,Adressen,0
 view,party.party,0,Categories,Kategorien,0
 view,party.party,0,Contact Mechanisms,Kontaktmöglichkeiten,0
-view,party.party,0,General,Allgemein,0
+view,party.party,0,_General,_Allgemein,0
 view,party.party,0,Parties,Partner,0
 view,party.party,0,Party,Partner,0
-view,party.party,0,Properties,Eigenschaften,0
 view,party.party,0,VAT,USt,0
 view,party.party.type,0,Party Type,Partnertyp,0
 view,party.party.type,0,Party Types,Partnertypen,0
