@@ -22,7 +22,7 @@ field,"company.employee,write_date",0,Last modification date,Zuletzt geändert a
 field,"company.employee,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"ir.cron,companies",0,Companies,Unternehmen,0
 field,"ir.property,company",0,Company,Unternehmen,0
-field,"res.user,company",0,Current Company,aktuelles Unternehmen,0
+field,"res.user,company",0,Current Company,Aktuelles Unternehmen,0
 field,"res.user,employee",0,Employee,Mitarbeiter,0
 field,"res.user,main_company",0,Main Company,Mutterbetrieb,0
 help,"ir.cron,companies",0,Companies registered for this cron,"Unternehmen, für welche dieser Job durchgeführt werden soll",0
