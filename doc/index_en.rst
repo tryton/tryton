@@ -86,9 +86,9 @@ Product quantities on each location are the sum of all moves coming
 from or going to this location.  For quantities that are computed for
 a date in the past, only confirmed moves (i.e. in state Done) with an
 effective date inferior to the considered date are taken into account,
-reflecting the real situation. For future quantities, Draft move with
-a planned date greater than today and smaller than the given date are
-also summed.
+reflecting the real situation. For future quantities, Draft and
+Assigned move with a planned date greater than today and smaller than
+the given date are also summed.
 
 
 Packing
@@ -232,4 +232,3 @@ real quantity (the real products on the shelves).
 
 When the inventory is confirmed, moves are created to balance expected
 quantities and real ones.
-
