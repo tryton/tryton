@@ -274,9 +274,6 @@ class Move(OSV):
         if not product.cost_price_method == 'average':
             return
 
-        sign = quantity > 0 and 1 or -1
-        quantity = abs(quantity)
-
         if isinstance(uom, (int, long)):
             uom = uom_obj.browse(cursor, user, uom, context=context)
         if isinstance(company, (int, long)):
@@ -300,8 +297,8 @@ class Move(OSV):
         unit_price = uom_obj.compute_price(
             cursor, user, uom, unit_price, product.default_uom, context=context)
         new_cost_price = (
-            (product.cost_price * product_qty) + (unit_price * qty * sign)
-            ) / (product_qty + qty * sign)
+            (product.cost_price * product_qty) + (unit_price * qty)
+            ) / (product_qty + qty)
         product_obj.write(
             cursor, user, product.id, {'cost_price': new_cost_price},
             context=context)
