@@ -126,7 +126,7 @@ model,"ir.action,name",act_move_form,Moves,Lagerbewegungen,0
 model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Bewegungen von Lieferanten,0
 model,"ir.action,name",act_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Erwartete Bewegungen von Lieferanten,0
 model,"ir.action,name",act_move_form_cust,Moves to Customers,Bewegungen zu Kunden,0
-model,"ir.action,name",act_packing_in_form2,New Supplier Packing,Neuer Lieferschein an Lieferant,0
+model,"ir.action,name",act_packing_in_form2,New Supplier Packing,Neuer Lieferschein von Lieferant,0
 model,"ir.action,name",wizard_location_open,Product by Location,Artikel nach Lagerort,0
 model,"ir.action,name",wizard_product_open,Product Quantities,Artikelbestand,0
 model,"ir.action,name",act_product_by_location,Products by Locations,Artikel nach Lagerort,0
@@ -150,7 +150,7 @@ model,"ir.ui.menu,name",menu_move_form,Moves,Bewegungen,0
 model,"ir.ui.menu,name",menu_move_form_supp,Moves from Suppliers,Bewegungen von Lieferanten,0
 model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Erwartete Bewegungen von Lieferanten,0
 model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Bewegungen zu Kunden,0
-model,"ir.ui.menu,name",menu_packing_in_form2,New Supplier Packing,Neuer Lieferschein an Lieferant,0
+model,"ir.ui.menu,name",menu_packing_in_form2,New Supplier Packing,Neuer Lieferschein von Lieferant,0
 model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Erhaltene Lieferscheine von Lieferanten,0
 model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Lieferscheine von Lieferanten,0
 odt,stock.packing.out,0,Customer Code:,Kundennummer:,0
