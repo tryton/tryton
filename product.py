@@ -92,11 +92,13 @@ class Product(OSV):
         Return a dict like : {(location, product): qty} for each
         location and product given as argument, the implicit uom is
         the default uom on the product.
-        The keys stock_date_end stock_date_start in context can be
-        used to compute stock for arbitrary interval.
-        If with_childs, childs locations are also computed.
-        If skip_zero, list item with quantity equal to zero are not returned.
-        If no product_ids are given the computation is done on all products.
+        - The keys stock_date_end stock_date_start in context can be
+          used to compute stock for arbitrary interval.
+        - The key stock_assign in context can be used to compute assing move
+          (in conjunction with stock_date_end equal to today).
+        - If with_childs, childs locations are also computed.
+        - If skip_zero, list item with quantity equal to zero are not returned.
+        - If no product_ids are given the computation is done on all products.
         """
         uom_obj = self.pool.get("product.uom")
         product_obj = self.pool.get("product.product")
@@ -130,8 +132,8 @@ class Product(OSV):
             state_date_clause = "True"
             state_date_vals = []
         else:
-            # date end in the past or today: filter on state done for the moves
-            if context['stock_date_end'] <= date_obj.today(cursor, user,
+            # date end in the past: filter on state done for the moves
+            if context['stock_date_end'] < date_obj.today(cursor, user,
                     context=context):
                 state_date_clause = '(state in (%s)) AND ('\
                     '(effective_date IS NULL '\
@@ -142,6 +144,23 @@ class Product(OSV):
                                    context['stock_date_end'],
                                    context['stock_date_end']
                                    ]
+            # date end is today: filter on state done (and assign if asked)
+            elif context['stock_date_end'] == date_obj.today(cursor, user,
+                    context=context):
+                if context.get('stock_assign'):
+                    state_date_vals = ["done", "assigned"]
+                else:
+                    state_date_vals = ["done"]
+                state_date_clause = \
+                    '(state in (' + ",".join(("%s" for x in state_date_vals)) + ')) '\
+                    'AND ((effective_date IS NULL '\
+                     'AND ( planned_date <= %s or planned_date IS NULL)) '\
+                     'OR effective_date <= %s'\
+                    ')'
+                state_date_vals.extend([
+                                   context['stock_date_end'],
+                                   context['stock_date_end']
+                                   ])
             # infinite date end: take all states for the moves
             elif context['stock_date_end'] == datetime.date.max:
                 state_date_clause = 'state in (%s, %s, %s)'
@@ -373,6 +392,7 @@ class Product(OSV):
         local_ctx = context and context.copy() or {}
         local_ctx['stock_date_end'] = date_obj.today(cursor, user,
                 context=context)
+        local_ctx['stock_assign'] = True
         pbl = product_obj.products_by_location(cursor, user,
             location_ids=[m.from_location.id for m in moves],
             product_ids=[m.product.id for m in moves],
