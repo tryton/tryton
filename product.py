@@ -175,16 +175,16 @@ class Product(OSV):
         if context.get('stock_date_start'):
             if  context['stock_date_start'] > date_obj.today(cursor, user,
                     context=context):
-                state_date_vals += '(state in (%s, %s, %s)) AND ('\
+                state_date_clause += ' AND (state in (%s, %s, %s)) AND ('\
                     '(effective_date IS NULL '\
                      'AND ( planned_date >= %s or planned_date IS NULL)) '\
                      'OR effective_date >= %s'\
                     ')'
                 state_date_vals.extend(
-                 ['done', 'assigned', 'draft',
-                  context['stock_date_start'], context['stock_date_start']])
+                    ['done', 'assigned', 'draft',
+                     context['stock_date_start'], context['stock_date_start']])
             else:
-                state_date_vals += '(state in (%s, %s, %s)) AND ('\
+                tmp_clause = '(state in (%s, %s, %s)) AND ('\
                     '(effective_date IS NULL '\
                      'AND ( planned_date >= %s or planned_date IS NULL)) '\
                      'OR effective_date >= %s'\
@@ -193,7 +193,7 @@ class Product(OSV):
                 state_date_vals.extend(
                  ['done', 'assigned', 'draft', today, today])
 
-                state_date_clause = '(' + state_date_clause + \
+                state_date_clause += ' AND (' + tmp_clause + \
                     ') OR (' + \
                      '(state in (%s)) AND ('\
                      '(effective_date IS NULL '\
