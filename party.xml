@@ -43,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="active"/>
                     <field name="active" xexpand="0" width="100"/>
                     <notebook colspan="6">
-                        <page string="General">
+                        <page string="_General">
                             <field name="addresses" mode="form,tree" colspan="4">
                                 <tree string="Addresses" sequence="sequence"
                                     fill="1">
@@ -74,7 +74,7 @@ this repository contains the full copyright notices and license terms. -->
                                 <field name="categories"/>
                             </group>
                         </page>
-                        <page string="Accounting">
+                        <page string="_Accounting">
                             <separator string="VAT" colspan="4"/>
                             <label name="vat_country"/>
                             <field name="vat_country"/>
