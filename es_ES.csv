@@ -124,11 +124,9 @@ selection,"product.template,type",0,Stockable,Almacenable,0
 view,product.category,0,Childs,Hij@s,0
 view,product.category,0,Product Categories,Categorías de Producto,0
 view,product.category,0,Product Category,Categoría de Producto,0
-view,product.category,0,Properties,Propiedades,0
 view,product.product,0,General,General,0
 view,product.product,0,Product,Producto,0
 view,product.product,0,Product Suppliers,Proveedores de Producto,0
-view,product.product,0,Properties,Propiedades,0
 view,product.uom,0,Unit of Measure,Unidad de Medida,0
 view,product.uom,0,Units of Measure,Unidades de Medida,0
 view,product.uom.category,0,Categories of Unit of Measure,Categorías de Unidad de Medida,0
