@@ -192,6 +192,7 @@ selection,"stock.packing.out,state",0,Done,Hecho,0
 selection,"stock.packing.out,state",0,Draft,Borrador,0
 selection,"stock.packing.out,state",0,Packed,Empacado,0
 selection,"stock.packing.out,state",0,Waiting,En Espera,0
+view,party.party,0,_Stock,_Existencias,0
 view,product_stock_date.init,0,Product Quantity.,Cantidad de Producto.,0
 view,stock.inventory,0,All generated moves will be cancelled!,Se cancelarán todos los movimientos generados!,0
 view,stock.inventory,0,Cancel,Cancelar,0
