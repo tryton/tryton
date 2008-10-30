@@ -231,6 +231,7 @@ view,account.invoice.refund_invoice.init,0,Refund Invoice,Factura de Devolución
 view,account.invoice.tax,0,Invoice Tax,Impuesto en Factura,0
 view,account.invoice.tax,0,Invoice Taxes,Impuestos de Facturas,0
 view,account.invoice.tax,0,Tax Code,Código de Impuesto,0
+view,party.party,0,Payment Terms,Términos de Pago,0
 wizard_button,"account.invoice.credit_invoice,init,credit",0,Credit,Crédito,0
 wizard_button,"account.invoice.credit_invoice,init,end",0,Cancel,Cancelar,0
 wizard_button,"account.invoice.pay_invoice,ask,end",0,Cancel,Cancelar,0
