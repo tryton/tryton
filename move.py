@@ -263,16 +263,23 @@ class Move(OSV):
                                    unit_price, currency, company, context=None):
         """
         Update the cost price on the given product
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param product_id: the id of the product
+        :param quantity: the quantity of the product, positive if incoming and
+                negative if outgoing
+        :param uom: the uom id or a BrowseRecord of the uom
+        :param unit_price: the unit price of the product
+        :param currency: the currency of the unit price
+        :param company: the company id ot a BrowseRecord of the company
+        :param context: the context
         """
         uom_obj = self.pool.get('product.uom')
         product_obj = self.pool.get('product.product')
         location_obj = self.pool.get('stock.location')
         currency_obj = self.pool.get('currency.currency')
         company_obj = self.pool.get('company.company')
-
-        product = product_obj.browse(cursor, user, product_id, context=context)
-        if not product.cost_price_method == 'average':
-            return
 
         if isinstance(uom, (int, long)):
             uom = uom_obj.browse(cursor, user, uom, context=context)
@@ -305,13 +312,17 @@ class Move(OSV):
 
     def create(self, cursor, user, vals, context=None):
         location_obj = self.pool.get('stock.location')
+        product_obj = self.pool.get('product.product')
 
         if vals.get('state') == 'done':
             if not vals.get('effective_date'):
                 vals['effective_date'] = datetime.datetime.now()
-            from_location = location_obj.browse(
-                cursor, user, vals['from_location'], context=context)
-            if from_location.type == 'supplier':
+            from_location = location_obj.browse(cursor, user,
+                    vals['from_location'], context=context)
+            product = product_obj.browse(cursor, user, vals['product'],
+                    context=context)
+            if from_location.type == 'supplier' \
+                    and product.cost_price_method == 'average':
                 self._update_product_cost_price(
                     cursor, user, vals['product'], vals['quantity'],
                     vals['uom'], vals['unit_price'], vals['currency'],
@@ -329,7 +340,8 @@ class Move(OSV):
             for move in self.browse(cursor, user, ids, context=context):
                 if vals['state'] == 'cancel':
                     vals['effective_date'] = False
-                    if move.type == 'input' and move.state != 'cancel':
+                    if move.type == 'input' and move.state != 'cancel' \
+                            and move.product.cost_price_method == 'average':
                         self._update_product_cost_price(
                             cursor, user, move.product.id, -move.quantity,
                             move.uom, move.unit_price, move.currency,
@@ -349,7 +361,8 @@ class Move(OSV):
                                 context=context)
                     vals['effective_date'] = datetime.datetime.now()
 
-                    if move.type == 'input' and move.state != 'done':
+                    if move.type == 'input' and move.state != 'done' \
+                            and move.product.cost_price_method == 'average':
                         self._update_product_cost_price(
                             cursor, user, move.product.id, move.quantity,
                             move.uom, move.unit_price, move.currency,
