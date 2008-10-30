@@ -121,13 +121,13 @@ view,party.category,0,Categories,Categorías,0
 view,party.category,0,Category,Categoría,0
 view,party.contact_mechanism,0,Contact Mechanism,Mecanismo de contacto,0
 view,party.contact_mechanism,0,Contact Mechanisms,Mecanismos de contacto,0
-view,party.party,0,Accounting,Contabilidad,0
+view,party.party,0,Account,Cuenta,0
 view,party.party,0,Addresses,Direcciones,0
 view,party.party,0,Categories,Categorías,0
 view,party.party,0,Contact Mechanisms,Mecanismos de contacto,0
-view,party.party,0,General,General,0
+view,party.party,0,_General,_General,0
 view,party.party,0,Parties,Partidas,0
 view,party.party,0,Party,Tercero,0
-view,party.party,0,Properties,Propiedades,0
+view,party.party,0,VAT,VAT,0
 view,party.party.type,0,Party Type,Tipo de Tercero,0
 view,party.party.type,0,Party Types,Tipos de Partida,0
