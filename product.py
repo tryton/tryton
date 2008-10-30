@@ -20,12 +20,15 @@ class Product(OSV):
 
         if not (context and context.get('locations')):
             return dict([(id, 0.0) for id in ids])
-        if name != 'forecast_quantity' and context.get('stock_date_end'):
-            if context['stock_date_end'] != date_obj.today(cursor, user,
-                    context=context):
-                context = context.copy()
-                context['stock_date_end'] = date_obj.today(cursor, user,
-                        context=context)
+
+        if name == 'quantity' and \
+                context.get('stock_date_end') != \
+                date_obj.today(cursor, user, context=context):
+
+            context = context.copy()
+            context['stock_date_end'] = date_obj.today(
+                cursor, user, context=context)
+
         if name == 'forecast_quantity' and not context.get('stock_date_end'):
             context = context.copy()
             context['stock_date_end'] = datetime.date.max
@@ -89,11 +92,13 @@ class Product(OSV):
         Return a dict like : {(location, product): qty} for each
         location and product given as argument, the implicit uom is
         the default uom on the product.
-        The keys stock_date_end stock_date_start in context can be
-        used to compute stock for arbitrary interval.
-        If with_childs, childs locations are also computed.
-        If skip_zero, list item with quantity equal to zero are not returned.
-        If no product_ids are given the computation is done on all products.
+        - The keys stock_date_end stock_date_start in context can be
+          used to compute stock for arbitrary interval.
+        - The key stock_assign in context can be used to compute assing move
+          (in conjunction with stock_date_end equal to today).
+        - If with_childs, childs locations are also computed.
+        - If skip_zero, list item with quantity equal to zero are not returned.
+        - If no product_ids are given the computation is done on all products.
         """
         uom_obj = self.pool.get("product.uom")
         product_obj = self.pool.get("product.product")
@@ -123,87 +128,101 @@ class Product(OSV):
 
         move_query, move_val = rule_obj.domain_get(cursor, user, 'stock.move')
 
-        if not context.get('stock_date_end'):
-            state_date_clause = "True"
-            state_date_vals = []
+        # Assignation: filter on done until today and all asigned moves:
+        if context.get('stock_assign'):
+            state_date_clause = \
+                '(state = %s) OR ('\
+                 '(state = %s) '\
+                 'AND ((effective_date IS NULL '\
+                  'AND ( planned_date <= %s or planned_date IS NULL)) '\
+                  'OR effective_date <= %s)'\
+                ')'
+            state_date_vals = ["assigned", "done",
+                               context['stock_date_end'],
+                               context['stock_date_end']
+                               ]
         else:
-            # date end in the past or today: filter on state done for the moves
-            if context['stock_date_end'] <= date_obj.today(cursor, user,
-                    context=context):
-                state_date_clause = '(state in (%s)) AND ('\
-                    '(effective_date IS NULL '\
-                     'AND ( planned_date <= %s or planned_date IS NULL)) '\
-                     'OR effective_date <= %s'\
-                    ')'
-                state_date_vals = ["done",
-                                   context['stock_date_end'],
-                                   context['stock_date_end']
-                                   ]
-            # infinite date end: take all states for the moves
-            elif context['stock_date_end'] == datetime.date.max:
-                state_date_clause = 'state in (%s, %s, %s)'
-                state_date_vals = ['done', 'assigned', 'draft']
-            # future date end: filter move on state done and date
-            # before today, or on all state and date between today and
-            # date_end.
+            if not context.get('stock_date_end'):
+                state_date_clause = "True"
+                state_date_vals = []
             else:
-                state_date_clause = '(' + \
-                    '(state in (%s)) AND ('\
-                      '(effective_date IS NULL '\
-                      'AND ( planned_date <= %s or planned_date IS NULL)) '\
-                      'OR effective_date <= %s)' \
-                    + \
-                    ') OR (' + \
-                     '(state in (%s, %s, %s)) AND ('\
-                     '(effective_date IS NULL '\
-                       'AND (( planned_date <= %s AND  planned_date > %s ) '\
-                            'OR planned_date IS NULL)) '\
-                       'OR (effective_date <= %s AND effective_date > %s)'\
-                      ')'\
-                    ')'
-                today = date_obj.today(cursor, user, context=context)
-                state_date_vals = [
-                    'done', today, today,
-                    'done', 'assigned', 'draft',
-                    context['stock_date_end'], today,
-                    context['stock_date_end'], today,
-                    ]
+                # date end in the past or today: filter on state done
+                if context['stock_date_end'] <= date_obj.today(cursor, user,
+                        context=context):
+                    state_date_clause = '(state = %s) AND ('\
+                        '(effective_date IS NULL '\
+                         'AND ( planned_date <= %s or planned_date IS NULL)) '\
+                         'OR effective_date <= %s'\
+                        ')'
+                    state_date_vals = ["done",
+                                       context['stock_date_end'],
+                                       context['stock_date_end']
+                                       ]
+                # infinite date end: take all states for the moves
+                elif context['stock_date_end'] == datetime.date.max:
+                    state_date_clause = 'state in (%s, %s, %s)'
+                    state_date_vals = ['done', 'assigned', 'draft']
+                # future date end: filter move on state done and date
+                # before today, or on all state and date between today and
+                # date_end.
+                else:
+                    state_date_clause = '(' + \
+                        '(state in (%s)) AND ('\
+                          '(effective_date IS NULL '\
+                          'AND ( planned_date <= %s or planned_date IS NULL)) '\
+                          'OR effective_date <= %s)' \
+                        + \
+                        ') OR (' + \
+                         '(state in (%s, %s, %s)) AND ('\
+                         '(effective_date IS NULL '\
+                           'AND (( planned_date <= %s AND  planned_date > %s ) '\
+                                'OR planned_date IS NULL)) '\
+                           'OR (effective_date <= %s AND effective_date > %s)'\
+                          ')'\
+                        ')'
+                    today = date_obj.today(cursor, user, context=context)
+                    state_date_vals = [
+                        'done', today, today,
+                        'done', 'assigned', 'draft',
+                        context['stock_date_end'], today,
+                        context['stock_date_end'], today,
+                        ]
 
-        if context.get('stock_date_start'):
-            if  context['stock_date_start'] > date_obj.today(cursor, user,
-                    context=context):
-                state_date_vals += '(state in (%s, %s, %s)) AND ('\
-                    '(effective_date IS NULL '\
-                     'AND ( planned_date >= %s or planned_date IS NULL)) '\
-                     'OR effective_date >= %s'\
-                    ')'
-                state_date_vals.extend(
-                 ['done', 'assigned', 'draft',
-                  context['stock_date_start'], context['stock_date_start']])
-            else:
-                state_date_vals += '(state in (%s, %s, %s)) AND ('\
-                    '(effective_date IS NULL '\
-                     'AND ( planned_date >= %s or planned_date IS NULL)) '\
-                     'OR effective_date >= %s'\
-                    ')'
-                today = date_obj.today(cursor, user, context=context)
-                state_date_vals.extend(
-                 ['done', 'assigned', 'draft', today, today])
+            if context.get('stock_date_start'):
+                if  context['stock_date_start'] > date_obj.today(cursor, user,
+                        context=context):
+                    state_date_clause += ' AND (state in (%s, %s, %s)) AND ('\
+                        '(effective_date IS NULL '\
+                         'AND ( planned_date >= %s or planned_date IS NULL)) '\
+                         'OR effective_date >= %s'\
+                        ')'
+                    state_date_vals.extend(
+                        ['done', 'assigned', 'draft',
+                         context['stock_date_start'], context['stock_date_start']])
+                else:
+                    tmp_clause = '(state in (%s, %s, %s)) AND ('\
+                        '(effective_date IS NULL '\
+                         'AND ( planned_date >= %s or planned_date IS NULL)) '\
+                         'OR effective_date >= %s'\
+                        ')'
+                    today = date_obj.today(cursor, user, context=context)
+                    state_date_vals.extend(
+                     ['done', 'assigned', 'draft', today, today])
 
-                state_date_clause = '(' + state_date_clause + \
-                    ') OR (' + \
-                     '(state in (%s)) AND ('\
-                     '(effective_date IS NULL '\
-                       'AND (( planned_date >= %s AND  planned_date < %s ) '\
-                            'OR planned_date IS NULL)) '\
-                       'OR (effective_date >= %s AND effective_date < %s)'\
-                      ')'\
-                    ')'
-                state_date_vals.extend(
-                    ['done', 'assigned', 'draft',
-                     context['stock_date_start'], today,
-                     context['stock_date_start'], today,
-                     ])
+                    state_date_clause += ' AND (' + tmp_clause + \
+                        ') OR (' + \
+                         '(state in (%s)) AND ('\
+                         '(effective_date IS NULL '\
+                           'AND (( planned_date >= %s AND  planned_date < %s ) '\
+                                'OR planned_date IS NULL)) '\
+                           'OR (effective_date >= %s AND effective_date < %s)'\
+                          ')'\
+                        ')'
+                    state_date_vals.extend(
+                        ['done',
+                         context['stock_date_start'], today,
+                         context['stock_date_start'], today,
+                         ])
 
         if with_childs:
             query, args = location_obj.search(cursor, user, [
@@ -370,6 +389,7 @@ class Product(OSV):
         local_ctx = context and context.copy() or {}
         local_ctx['stock_date_end'] = date_obj.today(cursor, user,
                 context=context)
+        local_ctx['stock_assign'] = True
         pbl = product_obj.products_by_location(cursor, user,
             location_ids=[m.from_location.id for m in moves],
             product_ids=[m.product.id for m in moves],

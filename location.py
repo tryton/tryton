@@ -100,11 +100,14 @@ class Location(OSV):
         if (not context) or (not context.get('product')):
             return dict([(i,0) for i in ids])
 
-        if name != 'forecast_quantity' and context.get('stock_date_end'):
-            if context['stock_date_end'] != date_obj.today(cursor, user,
-                    context=context):
-                context = context.copy()
-                del context['stock_date_end']
+        if name == 'quantity' and \
+                context.get('stock_date_end') != \
+                date_obj.today(cursor, user, context=context):
+
+            context = context.copy()
+            context['stock_date_end'] = date_obj.today(
+                cursor, user, context=context)
+
         pbl = product_obj.products_by_location(cursor, user, location_ids=ids,
             product_ids=[context['product']], with_childs=True, skip_zero=False,
             context=context).iteritems()
