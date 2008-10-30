@@ -212,12 +212,14 @@ class PackingIn(OSV):
     def set_state_draft(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in packing.incoming_moves],
-            {'state': 'cancel'}, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in packing.incoming_moves],
-            {'state': 'draft'}, context=context)
+        move_obj.write(cursor, user, [m.id for m in packing.incoming_moves
+            if m.state != 'draft'], {
+                'state': 'cancel',
+                }, context=context)
+        move_obj.write(cursor, user, [m.id for m in packing.incoming_moves
+            if m.state != 'draft'], {
+            'state': 'draft',
+            }, context=context)
         move_obj.delete(cursor, user,
                 [m.id for m in packing.inventory_moves], context=context)
         self.write(cursor, user, packing_id, {
