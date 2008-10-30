@@ -16,5 +16,6 @@ field,"product.template,taxes_category",0,Use Category's Taxes,Categorías de Im
 help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Esta cuenta se usará en lugar de la definida en la categoría.,0
 help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Esta cuenta se usará en lugar de la definida en la categoría.,0
 help,"product.template,taxes_category",0,Use the taxes defined on the category,Usar los impuestos definidos en la categoría,0
+view,product.category,0,Accounting,Contabilidad,0
 view,product.category,0,Taxes,Impuestos,0
-view,product.product,0,Taxes,Impuestos,0
+view,product.product,0,Accounting,Contabilidad,0
