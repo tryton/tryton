@@ -3,10 +3,6 @@ error,country.country,0,The code of the country must be unique!,El código del p
 error,country.country,0,The name of the country must be unique!,Eln nombre de los países debe ser único!,0
 field,"country.country,code",0,Code,Código,0
 field,"country.country,name",0,Name,Nombre,0
-field,"country.country,state",0,State,Estado,0
-field,"country.country.state,code",0,Code,Código,0
-field,"country.country.state,country",0,Country,País,0
-field,"country.country.state,name",0,Name,Nombre,0
 field,"country.country,subdivisions",0,Subdivisions,Subdivisiones,0
 field,"country.subdivision,code",0,Code,Código,0
 field,"country.subdivision,country",0,Country,País,0
