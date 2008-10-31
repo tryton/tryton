@@ -216,10 +216,10 @@ field,"account.tax.template,type",0,Type,Type,0
 field,"account.tax,type",0,Type,Type,0
 field,"party.party,account_payable",0,Account Payable,Compte à Payer,0
 field,"party.party,account_receivable",0,Account Receivable,Compte à Recevoir,0
-field,"party.party,payable",0,Payable,Á Payer,0
-field,"party.party,payable_today",0,Payable Today,Á Payer Aujourd'hui,0
-field,"party.party,receivable",0,Receivable,Á Recevoir,0
-field,"party.party,receivable_today",0,Receivable Today,Á recevoir Aujourd'hui,0
+field,"party.party,payable",0,Payable,À Payer,0
+field,"party.party,payable_today",0,Payable Today,À Payer Aujourd'hui,0
+field,"party.party,receivable",0,Receivable,À Recevoir,0
+field,"party.party,receivable_today",0,Receivable Today,À recevoir Aujourd'hui,0
 field,"party.party,supplier_vat",0,Supplier VAT,TVA Fournisseur,0
 field,"party.party,vat",0,VAT,TVA,0
 help,"account.account,close_method",0,"How to process the lines of this account when closing the fiscal year
@@ -323,7 +323,7 @@ odt,account.account.general_ledger,0,From Period:,De la Période :,0
 odt,account.account.general_ledger,0,General Ledger,Grand Livre,0
 odt,account.account.general_ledger,0,Name,Nom,0
 odt,account.account.general_ledger,0,State,État,0
-odt,account.account.general_ledger,0,To Period:,Á la Période :,0
+odt,account.account.general_ledger,0,To Period:,À la Période :,0
 odt,account.account.general_ledger,0,Total,Total,0
 odt,account.account.third_party_balance,0,at,à,0
 odt,account.account.third_party_balance,0,Balance,Balance,0
@@ -343,7 +343,7 @@ odt,account.account.trial_balance,0,Currency:,Devise :,0
 odt,account.account.trial_balance,0,Date:,Date :,0
 odt,account.account.trial_balance,0,Debit,Débit,0
 odt,account.account.trial_balance,0,From Period:,De la Période :,0
-odt,account.account.trial_balance,0,To Period:,Á la Période :,0
+odt,account.account.trial_balance,0,To Period:,À la Période :,0
 odt,account.account.trial_balance,0,Total,Total,0
 odt,account.account.trial_balance,0,Trial Balance,Balance,0
 odt,account.move.general_journal,0,Account,Compte,0
@@ -360,15 +360,15 @@ odt,account.move.general_journal,0,Journal Entry:,Entrée Journal :,0
 odt,account.move.general_journal,0,Name,Nom,0
 odt,account.move.general_journal,0,Posted,Posté,0
 odt,account.move.general_journal,0,Reference:,Référence :,0
-odt,account.move.general_journal,0,To Date:,Á la Date :,0
+odt,account.move.general_journal,0,To Date:,À la Date :,0
 selection,"account.account,close_method",0,Balance,Balance,0
 selection,"account.account,close_method",0,Detail,Détail,0
 selection,"account.account,close_method",0,None,Rien,0
 selection,"account.account,close_method",0,Unreconciled,Non-Réconcilié,0
 selection,"account.account,kind",0,Expense,Dépense,0
 selection,"account.account,kind",0,Other,Autre,0
-selection,"account.account,kind",0,Payable,Á Payer,0
-selection,"account.account,kind",0,Receivable,Á Recevoir,0
+selection,"account.account,kind",0,Payable,À Payer,0
+selection,"account.account,kind",0,Receivable,À Recevoir,0
 selection,"account.account,kind",0,Revenue,Revenu,0
 selection,"account.account,kind",0,View,Vue,0
 selection,"account.account.template,close_method",0,Balance,Balance,0
@@ -377,8 +377,8 @@ selection,"account.account.template,close_method",0,None,Rien,0
 selection,"account.account.template,close_method",0,Unreconciled,Non-Réconcilié,0
 selection,"account.account.template,kind",0,Expense,Dépense,0
 selection,"account.account.template,kind",0,Other,Autre,0
-selection,"account.account.template,kind",0,Payable,Á Payer,0
-selection,"account.account.template,kind",0,Receivable,Á Recevoir,0
+selection,"account.account.template,kind",0,Payable,À Payer,0
+selection,"account.account.template,kind",0,Receivable,À Recevoir,0
 selection,"account.account.template,kind",0,Revenue,Revenu,0
 selection,"account.account.template,kind",0,View,Vue,0
 selection,"account.account.type,display_balance",0,Credit - Debit,Crédit - Débit,0
