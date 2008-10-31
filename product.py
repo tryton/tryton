@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 from trytond.osv import fields, OSV
 
 STATES = {
@@ -28,10 +29,10 @@ class Template(OSV):
             states=STATES, digits=(16, 4))
     cost_price_uom = fields.Function('get_price_uom', string='Cost Price',
             type="numeric", digits=(16, 4), states=STATES)
-    cost_price_method = fields.Selection([
+    cost_price_method = fields.Property(type='selection', selection=[
         ("fixed", "Fixed"),
         ("average", "Average")
-        ], "Cost Method", required=True, states=STATES)
+        ], string="Cost Method", required=True, states=STATES)
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
             states=STATES)
     active = fields.Boolean('Active')

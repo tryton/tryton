@@ -146,5 +146,12 @@
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.property" id="property_product_cost_price_method">
+            <field name="name">cost_price_method</field>
+            <field name="field"
+                search="[('model.model', '=', 'product.template'), ('name', '=', 'cost_price_method')]"/>
+            <field name="value">,fixed</field>
+        </record>
+
     </data>
 </tryton>
