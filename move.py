@@ -295,7 +295,7 @@ class Move(OSV):
             cursor, user, uom, quantity, product.default_uom, context=context)
 
         qty = Decimal(str(qty))
-        product_qty = Decimal(str(product.quantity))
+        product_qty = Decimal(str(product.template.quantity))
         # convert wrt currency
         unit_price = currency_obj.compute(
             cursor, user, currency, unit_price, company.currency,
