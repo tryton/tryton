@@ -26,15 +26,12 @@ class Template(OSV):
 Template()
 
 class Product(OSV):
-    "Product"
     _name = "product.product"
-    _inherit = "product.product"
 
     quantity = fields.Function('get_quantity', type='float', string='Quantity',
-                               fnct_search='search_quantity', readonly=True)
-    forecast_quantity = fields.Function(
-        'get_quantity', type='float', string='Forecast Quantity',
-        fnct_search='search_quantity', readonly=True)
+            fnct_search='search_quantity')
+    forecast_quantity = fields.Function('get_quantity', type='float',
+            string='Forecast Quantity', fnct_search='search_quantity')
 
     def get_quantity(self, cursor, user, ids, name, args, context=None):
         date_obj = self.pool.get('ir.date')
