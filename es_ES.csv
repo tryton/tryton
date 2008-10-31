@@ -1,6 +1,5 @@
 type,name,res_id,src,value,fuzzy
 error,stock.inventory.line,0,Line quantity must be positive!,La línea de cantidad debe ser positiva!,0
-error,stock.inventory.line,0,Move quantity must be positive,El valor del movimiento debe ser positivo,0
 error,stock.inventory.line,0,Product must be unique by inventory!,El producto debe ser único por inventario!,0
 error,stock.move,0,Move can not be in both Supplier and Customer Packing,El Movimiento no puede estar en el empaque del Proveedor y del Cliente,0
 error,stock.move,0,Move quantity must be positive,El valor del movimiento debe ser positivo,0
