@@ -1,8 +1,29 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level
-#of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 import datetime
+
+
+class Template(OSV):
+    _name = "product.template"
+
+    quantity = fields.Function('get_quantity', type='float', string='Quantity')
+    forecast_quantity = fields.Function('get_quantity', type='float',
+            string='Forecast Quantity')
+
+    def get_quantity(self, cursor, user, ids, name, args, context=None):
+        res = {}
+        if name not in ('quantity', 'forecast_quantity'):
+            raise Exception('Bad argument')
+
+        for template in self.browse(cursor, user, ids, context=context):
+            res[template.id] = 0.0
+            for product in template.products:
+                res[template.id] += product[name]
+        return res
+
+Template()
 
 class Product(OSV):
     "Product"
