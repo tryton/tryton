@@ -16,8 +16,10 @@ error,stock.packing.in,0,Outgoing Moves must have output location as source loca
 field,"party.address,delivery",0,Delivery,Envío,0
 field,"party.party,customer_location",0,Customer Location,Lugar del Cliente,0
 field,"party.party,supplier_location",0,Supplier Location,Lugar del Proveedor,0
-field,"product.product,forecast_quantity",0,Forecast Quantity,Cantidad Pronosticada,0
+field,"product.product,forecast_quantity",0,Forecast Quantity,Cantidad Proyectada,0
 field,"product.product,quantity",0,Quantity,Cantidad,0
+field,"product.template,forecast_quantity",0,Forecast Quantity,Cantidad Proyectada,0
+field,"product.template,quantity",0,Quantity,Cantidad,0
 field,"stock.inventory,company",0,Company,Compañía,0
 field,"stock.inventory,date",0,Date,Fecha,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Cantidad Esperada,0
@@ -35,7 +37,7 @@ field,"stock.location,active",0,Active,Activo,0
 field,"stock.location,address",0,Address,Direcciones,0
 field,"stock.location,childs",0,Childs,Hij@s,0
 field,"stock.location,code",0,Code,Código,0
-field,"stock.location,forecast_quantity",0,Forecast Quantity,Cantidad Pronosticada,0
+field,"stock.location,forecast_quantity",0,Forecast Quantity,Cantidad Proyectada,0
 field,"stock.location,input_location",0,Input,Entrada,0
 field,"stock.location,left",0,Left,Izquierda,0
 field,"stock.location,name",0,Name,Nombre,0
