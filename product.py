@@ -36,6 +36,8 @@ class Template(OSV):
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
             states=STATES)
     active = fields.Boolean('Active')
+    products = fields.One2Many('product.product', 'template', 'Products',
+            states=STATES)
 
     def default_active(self, cursor, user, context=None):
         return True
