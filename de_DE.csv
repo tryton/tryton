@@ -28,7 +28,6 @@ field,"purchase.product_supplier,company",0,Company,Lieferfirma,0
 field,"purchase.product_supplier,delivery_time",0,Delivery Time,Lieferfrist,0
 field,"purchase.product_supplier,name",0,Name,Name,0
 field,"purchase.product_supplier,party",0,Supplier,Lieferant,0
-field,"purchase.product_supplier.price,price",0,Price,Preis,0
 field,"purchase.product_supplier.price,product_supplier",0,Supplier,Lieferant,0
 field,"purchase.product_supplier.price,quantity",0,Quantity,Menge,0
 field,"purchase.product_supplier,prices",0,Prices,Preise,0
