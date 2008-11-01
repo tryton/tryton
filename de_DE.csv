@@ -9,16 +9,11 @@ field,"party.address,city",0,City,Stadt,0
 field,"party.address,country",0,Country,Staat,0
 field,"party.address,create_date",0,Creation date,Erstellungsdatum,0
 field,"party.address,create_uid",0,Creation user,Ersteller,0
-field,"party.address,email",0,E-Mail,E-Mail,0
-field,"party.address,fax",0,Fax,Fax,0
 field,"party.address,full_address",0,unknown,Unbekannt,0
 field,"party.address,id",0,ID,ID,0
-field,"party.address,mobile",0,Mobile,Mobil-Telefon,0
 field,"party.address,name",0,Name,Name,0
 field,"party.address,party",0,Party,Partner,0
-field,"party.address,phone",0,Phone,Telefon,0
 field,"party.address,sequence",0,Sequence,Sequenz,0
-field,"party.address,state",0,State,Bundesland,0
 field,"party.address,street",0,Street,Anschrift 1,0
 field,"party.address,streetbis",0,Street (bis),Anschrift 2,0
 field,"party.address,subdivision",0,Subdivision,Subnationale Einheit,0
@@ -61,13 +56,6 @@ field,"party.party,lang",0,Language,Sprache,0
 field,"party.party,mobile",0,Mobile,Mobiltelefon,0
 field,"party.party,name",0,Name,Name,0
 field,"party.party,phone",0,Phone,Telefon,0
-field,"party.party,type",0,Type,Typ,0
-field,"party.party.type,create_date",0,Creation date,Erstellungsdatum,0
-field,"party.party.type,create_uid",0,Creation user,Ersteller,0
-field,"party.party.type,id",0,ID,ID,0
-field,"party.party.type,name",0,Name,Name,0
-field,"party.party.type,write_date",0,Last modification date,Zuletzt geändert am,0
-field,"party.party.type,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"party.party,vat_code",0,VAT Code,USt-ID Nr.,0
 field,"party.party,vat_country",0,VAT Country,USt-ID Präfix,0
 field,"party.party,vat_number",0,VAT Number,USt-ID Nr.,0
