@@ -4,7 +4,7 @@ error,account.account,0,You can not delete account that have children!,Konten mi
 error,account.account.deferral,0,Deferral must be unique by account and fiscal year,Es kann nur einen Saldenvortrag pro Konto und Geschäftsjahr geben,0
 error,account.account.deferral,0,You can not modify Account Deferral records,Saldenvorträge sind nicht änderbar,0
 error,account.account.open_aged_balance,0,Warning,Warnung,0
-error,account.account.open_aged_balance,0,You cannot define overlapping terms,Die Daten für die Selektion dürfen sich nicht überschneiden,0
+error,account.account.open_aged_balance,0,You cannot define overlapping terms,Bedingungen dürfen sich nicht überschneiden,0
 error,account.account.template,0,You can not create recursive accounts!,Konten können nicht rekursiv angelegt werden!,0
 error,account.fiscalyear,0,No fiscal year defined for this date!,Für dieses Datum ist kein Geschäftsjahr definiert!,0
 error,account.fiscalyear,0,"The balance of the account ""%s"" must be zero!","Der Saldo von Konto ""%s"" muss 0 sein",0
@@ -13,10 +13,6 @@ error,account.fiscalyear,0,You can not close a fiscal year until there is older 
 error,account.fiscalyear,0,You can not have 2 fiscal years that overlaps!,Geschäftsjahre dürfen sich nicht überschneiden!,0
 error,account.fiscalyear,0,You can not re-open a fiscal year until there is youngest fiscal year closed!,"Ein Geschäftsjahr kann nicht wiedereröffnet werden, wenn ein jüngeres Geschäftsjahr abgeschlossen ist!",0
 error,account.fiscalyear,0,You must have different post move sequence per fiscal year!,Jedes Geschäftsjahr muss eine eigene Sequenz für Buchungsfestschreibungen haben!,0
-error,account.fiscalyear.close_fiscalyear,0,The fiscal years must be different!,Es müssen unterschiedliche Geschäftsjahre sein!,0
-error,account.fiscalyear.close_fiscalyear,0,The journal must be centralised!,Das Journal muss ein Abschlussjournal sein!,0
-error,account.fiscalyear.close_fiscalyear,0,The journal must have default debit/credit accounts!,Dem Journal müssen Standard Haben- und Sollkonten zugewiesen werden!,0
-error,account.fiscalyear.close_fiscalyear,0,The period must be in the selected fiscal year!,Der Buchungszeitraum muss zum ausgewählten Geschäftsjahr gehören!,0
 error,account.journal.period,0,You can not create a journal - period on a closed period!,In einem abgeschlossenen Buchungszeitraum kann kein Journal - Buchungszeitraum erstellt werden!,0
 error,account.journal.period,0,You can not modify/delete a journal - period with moves!,"Ein Journal - Buchungszeitraum kann nicht geändert oder gelöscht werden, wenn es Buchungen enthält!",0
 error,account.journal.period,0,You can not open a journal - period from a closed period!,In einem abgeschlossenen Buchungszeitraum kann kein Journal - Buchungszeitraum geöffnet werden!,0
@@ -31,7 +27,6 @@ error,account.move,0,You can not delete posted move!,Eine festgeschriebene Buchu
 error,account.move,0,You can not modify a posted move in this journal!,Eine festgeschriebene Buchung kann in diesem Journal nicht verändert werden!,0
 error,account.move,0,You can not post an empty move!,Ein leerer Buchungssatz kann nicht festgeschrieben werden!,0
 error,account.move,0,You can not post a unbalanced move!,Ein unausgeglichener Buchungssatz kann nicht festgeschrieben werden!,0
-error,account.move.line,0,Amount Second Currency must be positive!,Betrag Zweitwährung muss positiv sein!,0
 error,account.move.line,0,No journal defined!,Kein Journal definiert!,0
 error,account.move.line,0,Wrong credit/debit values!,Falsche Haben/Soll-Werte!,0
 error,account.move.line,0,You can not add/modify lines in a closed journal period!,In einem abgeschlossenen Buchungszeitraum eines Journals können keine Zeilen hinzugefügt werden!,0
@@ -40,11 +35,6 @@ on view/inactive account!","Buchungszeile kann in einer Ansicht oder in
 einem inaktiven Konto nicht erstellt werden",0
 error,account.move.line,0,You can not modify line from a posted move!,Die Zeile einer festgeschriebenen Buchung kann nicht geändert werden!,0
 error,account.move.line,0,You can not modify reconciled line!,Eine abgestimmte Buchungszeile kann nicht geändert werden!,0
-error,account.move.reconciliation,0,"You can not create reconciliation where lines are not balanced, nor valid, nor in the same account, nor in account to reconcile!","Posten können nicht abgestimmt werden, wenn sie
-- nicht ausgeglichen sind
-- ungültig sind
-- sich auf das selbe Konto beziehen
-- sich nicht auf ein abstimmungsfähiges konto beziehen",0
 error,account.move.reconciliation,0,"You can not create reconciliation where lines are not balanced, nor valid, nor in the same account, nor in account to reconcile, nor from the same party!","Posten können nicht abgestimmt werden, wenn sie
 - nicht ausgeglichen sind
 - ungültig sind
@@ -67,7 +57,6 @@ error,account.tax.group,0,Code must be unique!,Der Code kann nicht mehrfach verg
 field,"account.account,active",0,Active,Aktiv,0
 field,"account.account,balance",0,Balance,Bilanz,0
 field,"account.account,childs",0,Childs,Untergeordnet (Konten),0
-field,"account.account,close_method",0,Deferral method,Methode Saldenvortrag,0
 field,"account.account,code",0,Code,Code,0
 field,"account.account,company",0,Company,Unternehmen,0
 field,"account.account,complete_name",0,Code - Name,Code - Name,0
@@ -128,7 +117,6 @@ field,"account.account,right",0,Right,Rechts,0
 field,"account.account,second_currency",0,Secondary currency,Zweitwährung,0
 field,"account.account,taxes",0,Default Taxes,Standardsteuern,0
 field,"account.account.template,childs",0,Childs,Untergeordnet (Kontovorlagen),0
-field,"account.account.template,close_method",0,Deferral method,Methode Saldenvortrag,0
 field,"account.account.template,code",0,Code,Code,0
 field,"account.account.template,complete_name",0,Code - Name,Code - Name,0
 field,"account.account.template,deferral",0,Deferral,Saldenvortrag,0
@@ -157,10 +145,6 @@ field,"account.account.type.template,name",0,Name,Name,0
 field,"account.account.type.template,parent",0,Parent,Übergeordnet (Kontovorlagentyp),0
 field,"account.account.type.template,sequence",0,Sequence,Sequenz,0
 field,"account.fiscalyear.close_fiscalyear.init,close_fiscalyear",0,Fiscal Year to close,Abzuschließendes Geschäftsjahr,0
-field,"account.fiscalyear.close_fiscalyear.init,entries_name",0,New entries name,Name für neue Einträge,0
-field,"account.fiscalyear.close_fiscalyear.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
-field,"account.fiscalyear.close_fiscalyear.init,journal",0,Journal,Journal,0
-field,"account.fiscalyear.close_fiscalyear.init,period",0,Period,Buchungszeitraum,0
 field,"account.fiscalyear,close_lines",0,Close Lines,Abschlussbuchungen,0
 field,"account.fiscalyear,code",0,Code,Code,0
 field,"account.fiscalyear,company",0,Company,Unternehmen,0
@@ -317,16 +301,6 @@ field,"party.party,receivable",0,Receivable,Forderungen,0
 field,"party.party,receivable_today",0,Receivable Today,Forderungen heute,0
 field,"party.party,supplier_vat",0,Supplier VAT,USt Lieferant,0
 field,"party.party,vat",0,VAT,USt.,0
-help,"account.account,close_method",0,"How to process the lines of this account when closing the fiscal year
-- None: to start with an empty account
-- Balance: to create one entry to keep the balance
-- Detail: to keep all entries
-- Unreconciled: to keep all unreconciled entries","Behandlung dieses Kontos bei Jahresabschluss :
-- Keine: mit leerem Konto beginnen
-- Bilanziert: ein Eintrag für den Ausgleich der Bilanz
-- Detail: alle Einträge werden übernommen
-- Nicht abgestimmt: alle nicht abgestimmten Einträge werden übernommen
-",0
 help,"account.account.open_aged_balance.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_balance_sheet.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_chart_account.init,fiscalyear",0,Keep empty for all open fiscal year,Leer lassen für alle Geschäftsjahre,0
@@ -342,10 +316,6 @@ to have this secondary currency.",Für alle Buchungen auf dieses Konto die Zeitw
 help,"account.account,taxes",0,"Default tax for manual encoding move lines 
 for journal type: ""expense"" and ""revenue""","Standardsteuer für manuell Buchungszeilen in Journalen vom Typ ""Aufwendungen"" und ""Erlöse""",0
 help,"account.account.type,sequence",0,Use to order the account type,Wird für die Reihenfolge der Kontotypen verwendet,0
-help,"account.fiscalyear.close_fiscalyear.init,entries_name",0,The name for the new entries,Der Name für neue Einträge,0
-help,"account.fiscalyear.close_fiscalyear.init,fiscalyear",0,The fiscal year where the entries will be done.,"Das Geschäftsjahr, in das die Einträge gemacht werden",0
-help,"account.fiscalyear.close_fiscalyear.init,journal",0,The journal whre the entries will be done.,"Das Journal, in das die Buchungen geschrieben werden",0
-help,"account.fiscalyear.close_fiscalyear.init,period",0,The period where the entries will be done.,"Der Buchungszeitraum, in den die Einträge gemacht werden",0
 help,"account.move.line,amount_second_currency",0,The amount expressed in a second currency,Der Betrag in einer Zweitwährung,0
 help,"account.move.line,blocked",0,Mark the line as litigation with the party.,Posten als gesperrt markieren,0
 help,"account.move.line,maturity_date",0,"This field is used for payable and receivable lines. 
@@ -365,8 +335,6 @@ help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax.open_chart_code.init,fiscalyear",0,Keep empty for all open fiscal year,Leer lassen für alle Geschäftsjahre,0
 help,"account.tax.open_chart_code.init,periods",0,Keep empty for all periods of all open fiscal year,Leer lassen für alle Buchungszeiträume aller geöffneten Geschäftsjahre,0
 help,"account.tax,percentage",0,In %,In %,0
-help,"account.tax,refund_base_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
-help,"account.tax,refund_tax_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax,sequence",0,Use to order the taxes,Wird für die Reihenfolge der Steuern verwendet,0
 help,"party.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Diese Steuer wird anstatt der Standard-Umsatzsteuer für Lieferanten verwendet,0
 help,"party.party,vat",0,"This tax will be used, instead of the default VAT.",Diese Steuer wird anstatt der Standard-Umsatzsteuer verwendet,0
@@ -563,10 +531,6 @@ odt,account.move.general_journal,0,Name,Name,0
 odt,account.move.general_journal,0,Posted,Festgeschrieben,0
 odt,account.move.general_journal,0,Reference:,Referenz,0
 odt,account.move.general_journal,0,To Date:,Bis:,0
-selection,"account.account,close_method",0,Balance,Bilanz,0
-selection,"account.account,close_method",0,Detail,Detail,0
-selection,"account.account,close_method",0,None,Kein,0
-selection,"account.account,close_method",0,Unreconciled,Nicht abgestimmt,0
 selection,"account.account,kind",0,Expense,Aufwand,0
 selection,"account.account,kind",0,Other,Anderer,0
 selection,"account.account,kind",0,Payable,Verbindlichkeiten,0
@@ -578,10 +542,6 @@ selection,"account.account.open_aged_balance.init,balance_type",0,Customer,Kunde
 selection,"account.account.open_aged_balance.init,balance_type",0,Supplier,Lieferant,0
 selection,"account.account.open_aged_balance.init,unit",0,Day,Tag,0
 selection,"account.account.open_aged_balance.init,unit",0,Month,Monat,0
-selection,"account.account.template,close_method",0,Balance,Bilanz,0
-selection,"account.account.template,close_method",0,Detail,Detail,0
-selection,"account.account.template,close_method",0,None,Kein,0
-selection,"account.account.template,close_method",0,Unreconciled,Nicht abgestimmt,0
 selection,"account.account.template,kind",0,Expense,Aufwand,0
 selection,"account.account.template,kind",0,Other,Anderer,0
 selection,"account.account.template,kind",0,Payable,Verbindlichkeiten,0
