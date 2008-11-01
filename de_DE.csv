@@ -1,6 +1,5 @@
 type,name,res_id,src,value,fuzzy
 error,stock.inventory.line,0,Line quantity must be positive!,Menge der Position muss positiv sein!,0
-error,stock.inventory.line,0,Move quantity must be positive,Zu bewegende Menge muss positiv sein,0
 error,stock.inventory.line,0,Product must be unique by inventory!,Ein Artikel kann in einem Lager nicht mehrfach vergeben werden!,0
 error,stock.move,0,Move can not be in both Supplier and Customer Packing,Eine Bewegung kann nicht in Lieferanten- und Kundenlieferung erfolgen,0
 error,stock.move,0,Move quantity must be positive,Zu bewegende Menge muss positiv sein,0
@@ -19,6 +18,8 @@ field,"party.party,customer_location",0,Customer Location,Lagerort Kunde,0
 field,"party.party,supplier_location",0,Supplier Location,Lagerort Lieferant,0
 field,"product.product,forecast_quantity",0,Forecast Quantity,Voraussichtliche Menge,0
 field,"product.product,quantity",0,Quantity,Menge,0
+field,"product.template,forecast_quantity",0,Forecast Quantity,Voraussichtliche Menge,0
+field,"product.template,quantity",0,Quantity,Menge,0
 field,"stock.inventory,company",0,Company,Unternehmen,0
 field,"stock.inventory,date",0,Date,Datum,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Erwartete Menge,0
@@ -194,6 +195,7 @@ selection,"stock.packing.out,state",0,Done,Erledigt,0
 selection,"stock.packing.out,state",0,Draft,Entwurf,0
 selection,"stock.packing.out,state",0,Packed,Gepackt,0
 selection,"stock.packing.out,state",0,Waiting,Wartend,0
+view,party.party,0,_Stock,_Lager,0
 view,product_stock_date.init,0,Product Quantity.,Artikelmenge,0
 view,stock.inventory,0,All generated moves will be cancelled!,Sämtliche erzeugten Bewegungen werden rückgängig gemacht!,0
 view,stock.inventory,0,Cancel,Abbrechen,0
