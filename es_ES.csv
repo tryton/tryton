@@ -3,8 +3,6 @@ error,account.account,0,You can not create recursive accounts!,No puede crear cu
 error,account.account,0,You can not delete account that have children!,No puede borrar una cuenta con hijos!,0
 error,account.account.deferral,0,Deferral must be unique by account and fiscal year,Los diferidos deben ser únicos por cuenta y año fiscal,0
 error,account.account.deferral,0,You can not modify Account Deferral records,No puede modificar los registros de cuentas diferidas,0
-error,account.account.open_aged_balance,0,Warning,Advertencia,0
-error,account.account.open_aged_balance,0,You cannot define overlapping terms,No puede definir términos que se sobrelapen,0
 error,account.account.template,0,You can not create recursive accounts!,No puede crear cuentas recursivas!,0
 error,account.fiscalyear,0,No fiscal year defined for this date!,No se ha definido un año fiscal para esta fecha!,0
 error,account.fiscalyear,0,"The balance of the account ""%s"" must be zero!","El balance de la cuenta ""%s"" debe ser cero!",0
@@ -27,10 +25,8 @@ error,account.move,0,You can not delete posted move!,No puede borrar un movimien
 error,account.move,0,You can not modify a posted move in this journal!,No puede modificar un movimiento autorizado en este diario!,0
 error,account.move,0,You can not post an empty move!,No puede colocar un movimiento vacío!,0
 error,account.move,0,You can not post a unbalanced move!,No puede colocar un movimiento desbalanceado!,0
-error,account.move.line,0,Amount Second Currency must be positive!,El valor en la Moneda Secundaria debe ser positivo!,0
 error,account.move.line,0,No journal defined!,No se ha definido un diario!,0
 error,account.move.line,0,Wrong credit/debit values!,Valores erróneos de crédito/debito!,0
-error,account.move.line,0,wrong_debit_credit,débito_crédito_errado,0
 error,account.move.line,0,You can not add/modify lines in a closed journal period!,No puede adicionar/modificar líneas de un diario de un período cerrado!,0
 error,account.move.line,0,"You can not create move line
 on view/inactive account!",No puede crear líneas de movimientos,0
@@ -267,11 +263,6 @@ field,"account.tax.open_chart_code.init,method",0,Method,Método,0
 field,"account.tax.open_chart_code.init,periods",0,Periods,Períodos,0
 field,"account.tax,parent",0,Parent,Padre,0
 field,"account.tax,percentage",0,Percentage,Porcentaje,0
-field,"account.tax,refund_account",0,Refund Account,Cuenta de Devolución,0
-field,"account.tax,refund_base_code",0,Refund Base Code,Código Base de Devolución,0
-field,"account.tax,refund_base_sign",0,Refund Base Sign,Signo Base de Devolución,0
-field,"account.tax,refund_tax_code",0,Refund Tax Code,Código de Impuesto de Devolución,0
-field,"account.tax,refund_tax_sign",0,Refund Tax Sign,Signo de Impuesto de Devolución,0
 field,"account.tax,sequence",0,Sequence,Secuencia,0
 field,"account.tax.template,account",0,Account Template,Plantilla de Cuenta,0
 field,"account.tax.template,amount",0,Amount,Cantidad,0
@@ -291,11 +282,6 @@ field,"account.tax.template,invoice_tax_sign",0,Invoice Tax Sign,Signo de Impues
 field,"account.tax.template,name",0,Name,Nombre,0
 field,"account.tax.template,parent",0,Parent,Padre,0
 field,"account.tax.template,percentage",0,Percentage,Porcentaje,0
-field,"account.tax.template,refund_account",0,Refund Account,Cuenta de Devolución,0
-field,"account.tax.template,refund_base_code",0,Refund Base Code,Código Base de Devolución,0
-field,"account.tax.template,refund_base_sign",0,Refund Base Sign,Signo Base de Devolución,0
-field,"account.tax.template,refund_tax_code",0,Refund Tax Code,Código de Impuesto de Devolución,0
-field,"account.tax.template,refund_tax_sign",0,Refund Tax Sign,Signo de Impuesto de Devolución,0
 field,"account.tax.template,sequence",0,Sequence,Secuencia,0
 field,"account.tax.template,type",0,Type,Tipo,0
 field,"account.tax,type",0,Type,Tipo,0
@@ -340,9 +326,6 @@ help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Usualmente 1 o -1,0
 help,"account.tax.open_chart_code.init,fiscalyear",0,Keep empty for all open fiscal year,Dejar vacío para todos los años fiscales abiertos,0
 help,"account.tax.open_chart_code.init,periods",0,Keep empty for all periods of all open fiscal year,Dejar vacío para todos los períodos de los años fiscales abiertos,0
 help,"account.tax,percentage",0,In %,en %,0
-help,"account.tax,refund_account",0,Keep empty to use the default refund account,Dejar vacío para usar la cuenta predeterminada de devolución,0
-help,"account.tax,refund_base_sign",0,Usualy 1 or -1,Usualmente 1 o -1,0
-help,"account.tax,refund_tax_sign",0,Usualy 1 or -1,Usualmente 1 o -1,0
 help,"account.tax,sequence",0,Use to order the taxes,Usar para ordenar los impuestos,0
 help,"party.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Este impuesto será usado en lugar del VAT para las facturas de proveedor.,0
 help,"party.party,vat",0,"This tax will be used, instead of the default VAT.",Este impuesto será usado en lugar del VAT predeterminado.,0
