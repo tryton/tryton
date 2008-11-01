@@ -142,7 +142,7 @@ model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.action,name",credit_invoice,Credit,Gutschrift erstellen,0
 model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
 model,"ir.action,name",,Custom Invoice,,0
-model,"ir.action,name",report_invoice,Custom Invoice,Angepasste Rechnung drucken,0
+model,"ir.action,name",report_invoice,Invoice,Angepasste Rechnung drucken,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
@@ -238,4 +238,3 @@ wizard_button,"account.invoice.pay_invoice,init,choice",0,Ok,OK,0
 wizard_button,"account.invoice.pay_invoice,init,end",0,Cancel,Abbrechen,0
 wizard_button,"account.invoice.print_invoice_report,warning,end",0,Cancel,Abbrechen,0
 wizard_button,"account.invoice.print_invoice_report,warning,print",0,Print,Drucken,0
-wizard_button,"account.invoice.refund_invoice,init,end",0,Cancel,Abbrechen,0
