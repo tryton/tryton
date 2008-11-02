@@ -7,15 +7,10 @@ error,party.party,0,Wrong VAT number!,Número de VAT erróneo!,0
 field,"party.address,active",0,Active,Activo,0
 field,"party.address,city",0,City,Ciudad,0
 field,"party.address,country",0,Country,País,0
-field,"party.address,email",0,E-Mail,E-Mail,0
-field,"party.address,fax",0,Fax,Fax,0
 field,"party.address,full_address",0,unknown,desconocid@,0
-field,"party.address,mobile",0,Mobile,Móvil,0
 field,"party.address,name",0,Name,Nombre de Contacto,0
 field,"party.address,party",0,Party,Tercero,0
-field,"party.address,phone",0,Phone,Teléfono,0
 field,"party.address,sequence",0,Sequence,Secuencia,0
-field,"party.address,state",0,State,Estado,0
 field,"party.address,street",0,Street,Calle,0
 field,"party.address,streetbis",0,Street (bis),Calle (bis),0
 field,"party.address,subdivision",0,Subdivision,Subdivisión,0
@@ -48,8 +43,6 @@ field,"party.party,lang",0,Language,Idioma,0
 field,"party.party,mobile",0,Mobile,Celular,0
 field,"party.party,name",0,Name,Nombre,0
 field,"party.party,phone",0,Phone,Teléfono,0
-field,"party.party,type",0,Type,Tipo,0
-field,"party.party.type,name",0,Name,Nombre,0
 field,"party.party,vat_code",0,VAT Code,Código de VAT,0
 field,"party.party,vat_country",0,VAT Country,VAT de país,0
 field,"party.party,vat_number",0,VAT Number,Nombre de VAT,0
@@ -62,16 +55,16 @@ model,"ir.action,name",act_category_tree,Categories,Categorías,0
 model,"ir.action,name",act_category_form,Categories,Categorías,0
 model,"ir.action,name",act_category_form2,Categories,Categorías,0
 model,"ir.action,name",report_label,La_bels,Etiqueta_s,0
-model,"ir.action,name",act_party_form,Parties,Partidas,0
-model,"ir.action,name",act_party_form2,Parties,Partidas,0
-model,"ir.action,name",act_party_by_category,Parties by Category,Partidas Por Categoría,0
+model,"ir.action,name",act_party_form,Parties,Terceros,0
+model,"ir.action,name",act_party_form2,Parties,Terceros,0
+model,"ir.action,name",act_party_by_category,Parties by Category,Terceros Por Categoría,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Direcciones,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Categorías,0
 model,"ir.ui.menu,name",menu_category_form,Edit Categories,Editar Categorías,0
 model,"ir.ui.menu,name",menu_address_form2,New Address,Nueva Dirección,0
 model,"ir.ui.menu,name",menu_category_form2,New category,Nueva Categoría,0
 model,"ir.ui.menu,name",menu_party_form2,New Party,Nuevo Tercero,0
-model,"ir.ui.menu,name",menu_party_form,Parties,Partidas,0
+model,"ir.ui.menu,name",menu_party_form,Parties,Terceros,0
 model,"ir.ui.menu,name",menu_party,Party Management,Manejo de Relaciones,0
 selection,"party.contact_mechanism,type",0,E-Mail,Correo electrónico,0
 selection,"party.contact_mechanism,type",0,Fax,Fax,0
@@ -126,7 +119,7 @@ view,party.party,0,Addresses,Direcciones,0
 view,party.party,0,Categories,Categorías,0
 view,party.party,0,Contact Mechanisms,Mecanismos de contacto,0
 view,party.party,0,_General,_General,0
-view,party.party,0,Parties,Partidas,0
+view,party.party,0,Parties,Terceros,0
 view,party.party,0,Party,Tercero,0
 view,party.party,0,VAT,VAT,0
 view,party.party.type,0,Party Type,Tipo de Tercero,0
