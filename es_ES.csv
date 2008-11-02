@@ -1,0 +1,137 @@
+type,name,res_id,src,value,fuzzy
+error,account.invoice,0,You can not delete invoices that comes from a purchase!,No puede borrar facturas que provienen de una compra!,0
+error,purchase.line,0,"It miss an ""account_expense"" default property!","Hace falta la propiedad predeterminada ""cuenta_de_gastos""!",0
+error,purchase.line,0,The supplier location is required!,El lugar del proveedor es indispensable!,0
+error,purchase.purchase,0,Contact and Invoice addresses must be defined for the quotation.,Las direcciones de contacto y facturación deben estar definidas para la cotización.,0
+field,"product.template,product_suppliers",0,Suppliers,Proveedores,0
+field,"product.template,purchasable",0,Purchasable,Comprable,0
+field,"product.template,purchase_uom",0,Purchase UOM,UdM de Compra,0
+field,"purchase.line,amount",0,Amount,Cantidad,0
+field,"purchase.line,comment",0,Comment,Comentario,0
+field,"purchase.line,description",0,Description,Descripción,0
+field,"purchase.line,invoice_lines",0,Invoice Lines,Líneas de Factura,0
+field,"purchase.line,move_done",0,Moves Done,Movimientos Hechos,0
+field,"purchase.line,move_exception",0,Moves Exception,Excepción de Movimientos,0
+field,"purchase.line,moves",0,Moves,Movimientos,0
+field,"purchase.line,moves_ignored",0,Moves Ignored,Movimientos Ignorados,0
+field,"purchase.line,product",0,Product,Producto,0
+field,"purchase.line,purchase",0,Purchase,Compra,0
+field,"purchase.line,quantity",0,Quantity,Cantidad,0
+field,"purchase.line,sequence",0,Sequence,Secuencia,0
+field,"purchase.line,taxes",0,Taxes,Impuestos,0
+field,"purchase.line,type",0,Type,Tipo,0
+field,"purchase.line,unit",0,Unit,Unidad,0
+field,"purchase.line,unit_digits",0,Unit Digits,Dígitos Unitarios,0
+field,"purchase.line,unit_price",0,Unit Price,Precio Unitario,0
+field,"purchase.product_supplier,code",0,Code,Código,0
+field,"purchase.product_supplier,company",0,Company,Compañía,0
+field,"purchase.product_supplier,delivery_time",0,Delivery Time,Hora de Envío,0
+field,"purchase.product_supplier,name",0,Name,Nombre,0
+field,"purchase.product_supplier,party",0,Supplier,Proveedor,0
+field,"purchase.product_supplier.price,product_supplier",0,Supplier,Proveedor,0
+field,"purchase.product_supplier.price,quantity",0,Quantity,Cantidad,0
+field,"purchase.product_supplier,prices",0,Prices,Precios,0
+field,"purchase.product_supplier.price,unit_price",0,Unit Price,Precio Unitario,0
+field,"purchase.product_supplier,product",0,Product,Producto,0
+field,"purchase.product_supplier,sequence",0,Sequence,Secuencia,0
+field,"purchase.purchase,comment",0,Comment,Comentario,0
+field,"purchase.purchase,company",0,Company,Compañía,0
+field,"purchase.purchase,contact_address",0,Contact Address,Dirección de contacto,0
+field,"purchase.purchase,currency",0,Currency,Moneda,0
+field,"purchase.purchase,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"purchase.purchase,description",0,Description,Descripción,0
+field,"purchase.purchase,invoice_address",0,Invoice Address,Dirección de facturación,0
+field,"purchase.purchase,invoice_exception",0,Invoices Exception,Excepciones de Facturas,0
+field,"purchase.purchase,invoice_method",0,Invoice Method,Método de facturación,0
+field,"purchase.purchase,invoice_paid",0,Invoices Paid,Facturas pagas,0
+field,"purchase.purchase,invoices",0,Invoices,Facturas,0
+field,"purchase.purchase,invoices_ignored",0,Invoices Ignored,Facturas Ignoradas,0
+field,"purchase.purchase,invoice_state",0,Invoice State,Estado de Factura,0
+field,"purchase.purchase,lines",0,Lines,Líneas,0
+field,"purchase.purchase,moves",0,Moves,Movimientos,0
+field,"purchase.purchase,packing_done",0,Packing Done,Empaque hecho,0
+field,"purchase.purchase,packing_exception",0,Packings Exception,Excepción de Empaques,0
+field,"purchase.purchase,packings",0,Packings,Empaques,0
+field,"purchase.purchase,packing_state",0,Packing State,Estado de Empaque,0
+field,"purchase.purchase,party",0,Party,Tercero,0
+field,"purchase.purchase,party_lang",0,Party Language,Lenguaje del Tercero,0
+field,"purchase.purchase,payment_term",0,Payment Term,Término de Pago,0
+field,"purchase.purchase,purchase_date",0,Purchase Date,Fecha de Compra,0
+field,"purchase.purchase,reference",0,Reference,Referencia,0
+field,"purchase.purchase,state",0,State,Estado,0
+field,"purchase.purchase,tax_amount",0,Tax,Impuesto,0
+field,"purchase.purchase,total_amount",0,Total,Total,0
+field,"purchase.purchase,untaxed_amount",0,Untaxed,Sin impuesto,0
+field,"purchase.purchase,warehouse",0,Warehouse,Bodega,0
+field,"stock.move,purchase",0,Purchase,Compra,0
+field,"stock.move,purchase_line",0,unknown,desconocid@,0
+field,"stock.move,supplier",0,Supplier,Proveedor,0
+help,"purchase.product_supplier,delivery_time",0,In number of days,En número de días,0
+help,"purchase.product_supplier.price,quantity",0,Minimal quantity,Cantidad Mínima,0
+model,"ir.action,name",act_purchase_form_confirmed,Confirmed Purchases,Compras confirmadas,0
+model,"ir.action,name",act_purchase_form_draft,Draft Purchases,Compras en Borrador,0
+model,"ir.action,name",report_purchase,Purchase,Compra,0
+model,"ir.action,name",act_purchase_form,Purchases,Compras,0
+model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Cotizaciones de Compras,0
+model,"ir.action,name",act_open_supplier,Suppliers,Proveedores,0
+model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Compras confirmadas,0
+model,"ir.ui.menu,name",menu_purchase_form_draft,Draft Purchases,Compras en Borrador,0
+model,"ir.ui.menu,name",menu_purchase,Purchase Management,Gestión de Compras,0
+model,"ir.ui.menu,name",menu_purchase_form,Purchases,Compras,0
+model,"ir.ui.menu,name",menu_purchase_form_quotation,Purchases in Quotation,Cotizaciones de Compras,0
+model,"ir.ui.menu,name",menu_supplier,Suppliers,Proveedores,0
+odt,purchase.purchase,0,Amount,Cantidad,0
+odt,purchase.purchase,0,Date:,Fecha:,0
+odt,purchase.purchase,0,Description,Descripción,0
+odt,purchase.purchase,0,Description:,Descripción:,0
+odt,purchase.purchase,0,Draft Purchase Order,Borrador de Orden de Compra,0
+odt,purchase.purchase,0,E-Mail:,Correo electrónico:,0
+odt,purchase.purchase,0,Phone:,Teléfono:,0
+odt,purchase.purchase,0,Purchase Order N°:,Nº de Orden de Compra:,0
+odt,purchase.purchase,0,Quantity,Cantidad,0
+odt,purchase.purchase,0,Request for Quotation N°:,Solicitud de Factura Nº:,0
+odt,purchase.purchase,0,Taxes,Impuestos,0
+odt,purchase.purchase,0,Taxes:,Impuestos,0
+odt,purchase.purchase,0,Total:,Total:,0
+odt,purchase.purchase,0,Total (excl. taxes):,Total(excl. impuestos):,0
+odt,purchase.purchase,0,Unit Price,Precio Unitario,0
+odt,purchase.purchase,0,VAT:,VAT:,0
+selection,"purchase.line,type",0,Line,Línea,0
+selection,"purchase.line,type",0,Subtotal,Subtotal,0
+selection,"purchase.line,type",0,Title,Título,0
+selection,"purchase.purchase,invoice_method",0,Based On Order,Basado en la orden,0
+selection,"purchase.purchase,invoice_method",0,Based On Packing,Basado en el empaque,0
+selection,"purchase.purchase,invoice_method",0,Manual,Manual,0
+selection,"purchase.purchase,invoice_state",0,Exception,Excepción,0
+selection,"purchase.purchase,invoice_state",0,None,Nada,0
+selection,"purchase.purchase,invoice_state",0,Paid,Pagad@,0
+selection,"purchase.purchase,invoice_state",0,Waiting,En espera,0
+selection,"purchase.purchase,packing_state",0,Exception,Excepción,0
+selection,"purchase.purchase,packing_state",0,None,Nada,0
+selection,"purchase.purchase,packing_state",0,Received,Recibido,0
+selection,"purchase.purchase,packing_state",0,Waiting,En espera,0
+selection,"purchase.purchase,state",0,Cancel,Cancelar,0
+selection,"purchase.purchase,state",0,Confirmed,Confirmado,0
+selection,"purchase.purchase,state",0,Done,Hecho,0
+selection,"purchase.purchase,state",0,Draft,Borrador,0
+selection,"purchase.purchase,state",0,Quotation,Cotización,0
+view,product.product,0,Products,Productos,0
+view,product.product,0,Suppliers,Proveedores,0
+view,purchase.line,0,Purchase Line,Línea de Compra,0
+view,purchase.line,0,Purchase Lines,Líneas de Compra,0
+view,purchase.product_supplier,0,Product Supplier,Proveedor de Producto,0
+view,purchase.product_supplier,0,Product Suppliers,Proveedores de Producto,0
+view,purchase.product_supplier.price,0,Product Supplier Price,Precio de Proveedor de Producto,0
+view,purchase.product_supplier.price,0,Product Supplier Prices,Precios de Proveedor de Producto,0
+view,purchase.purchase,0,Cancel,Cancelar,0
+view,purchase.purchase,0,Confirm,Confirmar,0
+view,purchase.purchase,0,Draft,Borrador,0
+view,purchase.purchase,0,Ignore Invoice Exception,Ignorar excepción de facturación,0
+view,purchase.purchase,0,Ignore Packing Exception,Ignorar excepción de empaque,0
+view,purchase.purchase,0,Invoices,Facturas,0
+view,purchase.purchase,0,Lines,Líneas,0
+view,purchase.purchase,0,Other Info,Otra información,0
+view,purchase.purchase,0,Packings,Empaques,0
+view,purchase.purchase,0,Purchase,Compra,0
+view,purchase.purchase,0,Purchases,Compras,0
+view,purchase.purchase,0,Quotation,Cotización,0
