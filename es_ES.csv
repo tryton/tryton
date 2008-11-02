@@ -57,7 +57,7 @@ model,"ir.action,name",act_category_form2,Categories,Categorías,0
 model,"ir.action,name",report_label,La_bels,Etiqueta_s,0
 model,"ir.action,name",act_party_form,Parties,Terceros,0
 model,"ir.action,name",act_party_form2,Parties,Terceros,0
-model,"ir.action,name",act_party_by_category,Parties by Category,Terceros Por Categoría,0
+model,"ir.action,name",act_party_by_category,Parties by Category,Terceros por Categoría,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Direcciones,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Categorías,0
 model,"ir.ui.menu,name",menu_category_form,Edit Categories,Editar Categorías,0
@@ -123,4 +123,4 @@ view,party.party,0,Parties,Terceros,0
 view,party.party,0,Party,Tercero,0
 view,party.party,0,VAT,VAT,0
 view,party.party.type,0,Party Type,Tipo de Tercero,0
-view,party.party.type,0,Party Types,Tipos de Partida,0
+view,party.party.type,0,Party Types,Tipos de Terceros,0
