@@ -27,5 +27,6 @@
     'translation': [
         'de_DE.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ],
 }
