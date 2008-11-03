@@ -67,18 +67,24 @@ this repository contains the full copyright notices and license terms. -->
                                 <label name="state"/>
                                 <field name="state"/>
                                 <group col="6" colspan="2">
-                                    <button name="quotation" string="Quotation"
-                                        states="{'invisible': '''state != 'draft' '''}"/>
-                                    <button name="draft" string="Draft"
-                                        states="{'invisible': '''state != 'quotation' '''}"/>
-                                    <button name="confirm" string="Confirm"
-                                        states="{'invisible': '''state != 'quotation' '''}"/>
                                     <button name="cancel" string="Cancel"
-                                        states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (packing_state == 'exception')) '''}"/>
+                                        states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (packing_state == 'exception')) '''}"
+                                        icon="tryton-cancel"/>
+                                    <button name="draft" string="Draft"
+                                        states="{'invisible': '''state != 'quotation' '''}"
+                                        icon="tryton-clear"/>
+                                    <button name="quotation" string="Quotation"
+                                        states="{'invisible': '''state != 'draft' '''}"
+                                        icon="tryton-go-next"/>
                                     <button name="invoice_ok" string="Ignore Invoice Exception"
-                                        states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' '''}"/>
+                                        states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' '''}"
+                                        icon="tryton-go-next"/>
                                     <button name="packing_ok" string="Ignore Packing Exception"
-                                        states="{'invisible': '''packing_state != 'exception' or state == 'cancel' '''}"/>
+                                        states="{'invisible': '''packing_state != 'exception' or state == 'cancel' '''}"
+                                        icon="tryton-go-next"/>
+                                    <button name="confirm" string="Confirm"
+                                        states="{'invisible': '''state != 'quotation' '''}"
+                                        icon="tryton-ok"/>
                                 </group>
                             </group>
                         </page>
