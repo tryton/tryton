@@ -85,8 +85,8 @@ class OrderPoint(OSV):
         return not bool(ids)
 
     def _type2field(self, type=None):
-        t2f = {'warehouse_location': 'purchase',
-               'storage_location': 'internal'}
+        t2f = {'purchase': 'warehouse_location',
+               'internal': 'storage_location',}
         if type == None:
             return t2f
         else:
@@ -156,7 +156,7 @@ class OrderPoint(OSV):
 
     def search_location(self, cursor, user, name, domain=None, context=None):
         ids = []
-        for field, type in self._type2field().iteritems():
+        for type, field in self._type2field().iteritems():
             args = [('type', '=', type)]
             for _, operator, operand in domain:
                 args.append((field, operator, operand))
