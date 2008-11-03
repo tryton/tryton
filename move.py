@@ -40,8 +40,8 @@ class Move(OSV):
             readonly=True, select=1)
     packing_internal = fields.Many2One('stock.packing.internal',
             'Internal Packing', readonly=True, select=1)
-    planned_date = fields.Date("Planned Date", states=STATES)
-    effective_date = fields.Date("Effective Date", readonly=True)
+    planned_date = fields.Date("Planned Date", states=STATES, select=2)
+    effective_date = fields.Date("Effective Date", readonly=True, select=2)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('assigned', 'Assigned'),

@@ -17,8 +17,8 @@ class PackingIn(OSV):
     _description = __doc__
     _rec_name = 'code'
 
-    effective_date = fields.DateTime('Effective Date', readonly=True)
-    planned_date = fields.DateTime(
+    effective_date = fields.Date('Effective Date', readonly=True)
+    planned_date = fields.Date(
         'Planned Date', states={'readonly': "state != 'draft'",})
     reference = fields.Char(
         "Reference", size=None, select=1,
@@ -186,7 +186,7 @@ class PackingIn(OSV):
             {'state': 'done'}, context)
         self.write(cursor, user, packing_id,{
             'state': 'done',
-            'effective_date': datetime.datetime.now(),
+            'effective_date': datetime.date.today(),
             }, context=context)
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
@@ -459,7 +459,7 @@ class PackingOut(OSV):
             {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {
             'state':'done',
-            'effective_date': datetime.datetime.now(),
+            'effective_date': datetime.date.today(),
             }, context=context)
 
     def set_state_packed(self, cursor, user, packing_id, context=None):
@@ -655,8 +655,8 @@ class PackingInternal(OSV):
     _description = __doc__
     _rec_name = 'code'
 
-    effective_date =fields.DateTime('Effective Date', readonly=True)
-    planned_date = fields.DateTime(
+    effective_date =fields.Date('Effective Date', readonly=True)
+    planned_date = fields.Date(
         'Planned Date', states={'readonly': "state != 'draft'",})
     code = fields.Char("Code", size=None, select=1, readonly=True)
     reference = fields.Char(
@@ -742,7 +742,7 @@ class PackingInternal(OSV):
             context=context)
         self.write( cursor, user, packing_id,
                     {'state':'done',
-                     'effective_date': datetime.datetime.now()},
+                     'effective_date': datetime.date.today()},
                     context=context)
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
