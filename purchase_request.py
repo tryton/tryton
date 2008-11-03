@@ -475,6 +475,13 @@ class CreatePurchase(Wizard):
 
         }
 
+    def __init__(self):
+        super(CreatePurchase, self).__init__()
+        self._error_messages.update({
+            'missing_price': 'Cost price is missing for product: %s (id: %s)!',
+            'please_update': 'The cost price is necessary for creating purchase.'
+            })
+
     def _set_default_party(self, cursor, user, data, context=None):
 
         request_obj = self.pool.get('purchase.request')
@@ -610,6 +617,13 @@ class CreatePurchase(Wizard):
         product_price = product_obj.get_purchase_price(
             cursor, user, [request.product.id], request.quantity,
             context=local_context)[request.product.id]
+
+        if not product_price:
+            self.raise_user_error(
+                cursor, 'missing_price',
+                (request.product.name, request.product.id),
+                'please_update',
+                context=context)
         line['unit_price'] = product_price
 
         taxes = []
