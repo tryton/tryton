@@ -101,12 +101,18 @@ class Location(OSV):
             return dict([(i,0) for i in ids])
 
         if name == 'quantity' and \
-                context.get('stock_date_end') != \
+                context.get('stock_date_end') > \
                 date_obj.today(cursor, user, context=context):
 
             context = context.copy()
             context['stock_date_end'] = date_obj.today(
                 cursor, user, context=context)
+
+        if name == 'forecast_quantity':
+            context = context.copy()
+            context['forecast'] = True
+            if not context.get('stock_date_end'):
+                context['stock_date_end'] = datetime.date.max
 
         pbl = product_obj.products_by_location(cursor, user, location_ids=ids,
             product_ids=[context['product']], with_childs=True, skip_zero=False,
