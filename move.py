@@ -289,7 +289,7 @@ class Move(OSV):
         ctx = context and context.copy() or {}
         ctx['locations'] = location_obj.search(
             cursor, user, [('type', '=', 'storage')], context=context)
-        ctx['stock_date_end'] = datetime.datetime.now()
+        ctx['stock_date_end'] = datetime.date.today()
         product = product_obj.browse(cursor, user, product_id, context=ctx)
         qty = uom_obj.compute_qty(
             cursor, user, uom, quantity, product.default_uom, context=context)
@@ -319,7 +319,7 @@ class Move(OSV):
 
         if vals.get('state') == 'done':
             if not vals.get('effective_date'):
-                vals['effective_date'] = datetime.datetime.now()
+                vals['effective_date'] = datetime.date.today()
             from_location = location_obj.browse(cursor, user,
                     vals['from_location'], context=context)
             product = product_obj.browse(cursor, user, vals['product'],
@@ -362,7 +362,7 @@ class Move(OSV):
                     if move.state in ('cancel'):
                         self.raise_user_error(cursor, 'set_state_done',
                                 context=context)
-                    vals['effective_date'] = datetime.datetime.now()
+                    vals['effective_date'] = datetime.date.today()
 
                     if move.type == 'input' and move.state != 'done' \
                             and move.product.cost_price_method == 'average':
