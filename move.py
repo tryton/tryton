@@ -303,9 +303,12 @@ class Move(OSV):
         # convert wrt to the uom
         unit_price = uom_obj.compute_price(
             cursor, user, uom, unit_price, product.default_uom, context=context)
-        new_cost_price = (
-            (product.cost_price * product_qty) + (unit_price * qty)
-            ) / (product_qty + qty)
+        if product_qty + qty != Decimal('0.0'):
+            new_cost_price = (
+                (product.cost_price * product_qty) + (unit_price * qty)
+                ) / (product_qty + qty)
+        else:
+            new_cost_price = product.cost_price
         product_obj.write(
             cursor, user, product.id, {'cost_price': new_cost_price},
             context=context)
