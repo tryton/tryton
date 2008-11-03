@@ -478,8 +478,8 @@ class CreatePurchase(Wizard):
     def __init__(self):
         super(CreatePurchase, self).__init__()
         self._error_messages.update({
-            'missing_price': 'Cost price is missing for product: %s (id: %s)!',
-            'please_update': 'The cost price is necessary for creating purchase.'
+            'missing_price': 'Purchase price is missing for product: %s (id: %s)!',
+            'please_update': 'This price is necessary for creating purchase.'
             })
 
     def _set_default_party(self, cursor, user, data, context=None):
