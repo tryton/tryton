@@ -49,16 +49,21 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group col="4" colspan="2">
                                 <button string="Cancel" name="cancel"
-                                    states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                    states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    icon="tryton-cancel"/>
                                 <button string="Draft" name="draft"
-                                    states="{'invisible': '''state != 'received' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                    states="{'invisible': '''state != 'received' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    icon="tryton-go-previous"/>
                                 <button string="Received" name="received"
-                                    states="{'invisible': '''state  != 'draft' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                    states="{'invisible': '''state  != 'draft' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    icon="tryton-go-next"/>
                                 <button string="Done" name="done"
-                                    states="{'invisible': '''state != 'received' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                    states="{'invisible': '''state != 'received' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    icon="tryton-ok"/>
                                 <button string="Reset to Draft" name="button_draft"
                                     type="object"
-                                    states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                    states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    icon="tryton-clear"/>
                             </group>
                         </group>
                     </form>
@@ -188,27 +193,38 @@ this repository contains the full copyright notices and license terms. -->
                         <group col="4" colspan="4">
                             <label name="state"/>
                             <field name="state"/>
-                            <group col="8" colspan="2">
+                            <group col="9" colspan="2">
                                 <button string="Cancel" name="cancel"
-                                        states="{'invisible': '''state in
-                                        ('cancel','done') '''}"/>
+                                        states="{'invisible': '''state in ('cancel','done') '''}"
+                                        icon="tryton-cancel"/>
                                 <button string="Draft" name="draft"
-                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        icon="tryton-clear"/>
                                 <button string="Waiting" name="waiting"
-                                        states="{'invisible': '''state not in ('draft', 'assigned') ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                        states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        icon="tryton-go-previous"/>
+                                <button string="Waiting" name="waiting"
+                                        states="{'invisible': '''state != 'draft' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        icon="tryton-go-next"/>
                                 <button string="Force Assign" name="force_assign"
-                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        icon="tryton-go-next"/>
                                 <button string="Assign" name="assign"
-                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        icon="tryton-go-next"/>
                                 <button string="Unpack" name="assign"
-                                        states="{'invisible': '''state != 'packed' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                        states="{'invisible': '''state != 'packed' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        icon="tryton-go-previous"/>
                                 <button string="Make packing" name="packed"
-                                        states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                        states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        icon="tryton-go-next"/>
                                 <button string="Done" name="done"
-                                        states="{'invisible': '''state != 'packed' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                        states="{'invisible': '''state != 'packed' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        icon="tryton-ok"/>
                                 <button string="Reset to Draft" name="button_draft"
-                                    type="object"
-                                    states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                        type="object"
+                                        states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        icon="tryton-clear"/>
                             </group>
                         </group>
                     </form>
@@ -342,21 +358,31 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="moves"  colspan="4"/>
                         <label name="state"/>
                         <field name="state"/>
-                        <group col="7" colspan="2">
+                        <group col="8" colspan="2">
                             <button string="Cancel" name="cancel"
-                                states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-cancel"/>
                             <button string="Draft" name="draft"
-                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-clear"/>
                             <button string="Waiting" name="waiting"
-                                states="{'invisible': '''state not in ('draft', 'assigned') ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-go-previous"/>
+                            <button string="Waiting" name="waiting"
+                                states="{'invisible': '''state != 'draft' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-go-next"/>
                             <button string="Force Assign" name="force_assign"
-                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-go-next"/>
                             <button string="Assign" name="assign"
-                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-go-next"/>
                             <button string="Reset to Draft" name="button_draft"
-                                type="object" states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                type="object" states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-clear"/>
                             <button string="Done" name="done"
-                                states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"/>
+                                states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-ok"/>
                         </group>
                     </form>
                     ]]>
