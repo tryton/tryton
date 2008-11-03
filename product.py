@@ -308,7 +308,8 @@ class Product(OSV):
             key = (location, product)
             res.setdefault(key, 0.0)
             res[key] += uom_obj.compute_qty(cursor, user, uom_by_id[uom],
-                    quantity, default_uom[product], context=context)
+                    quantity, default_uom[product], round=False,
+                    context=context)
 
         # Propagate quantities on from child locations to their parents
         if with_childs:
@@ -343,6 +344,13 @@ class Product(OSV):
             for location, product in res.keys():
                 if location not in location_ids:
                     del res[(location, product)]
+
+        # Round quantities
+        for location, product in res:
+            key = (location, product)
+            res[key] = uom_obj.compute_qty(cursor, user, default_uom[product],
+                    res[key], default_uom[product], round=True,
+                    context=context)
 
         # Complete result with missing products if asked
         if not skip_zero:
