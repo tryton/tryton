@@ -760,6 +760,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="journal"/>
                     <label name="date"/>
                     <field name="date"/>
+                    <field name="currency_digits" colspan="4" invisible="1"/>
                 </form>
                 ]]>
             </field>
@@ -789,13 +790,16 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="credit" sum="Credit"/>
                             <field name="amount_second_currency" sum="Amount Second Currency"/>
                             <field name="second_currency"/>
+                            <field name="currency_digits" tree_invisible="1"/>
+                            <field name="second_currency_digits" tree_invisible="1"/>
                         </tree>
                     </field>
-                    <field name="lines_to_pay" invisible="1"/>
-                    <field name="description" invisible="1"/>
-                    <field name="journal" invisible="1"/>
-                    <field name="date" invisible="1"/>
-                    <field name="company" invisible="1"/>
+                    <field name="lines_to_pay" colspan="4" invisible="1"/>
+                    <field name="description" colspan="4" invisible="1"/>
+                    <field name="journal" colspan="4" invisible="1"/>
+                    <field name="date" colspan="4" invisible="1"/>
+                    <field name="company" colspan="4" invisible="1"/>
+                    <field name="currency_digits" colspan="4" invisible="1"/>
                 </form>
                 ]]>
             </field>
