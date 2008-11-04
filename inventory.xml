@@ -25,7 +25,7 @@
                         <label colspan="2"/>
                         <button string="Complete Inventory" type="action"
                             name="%(wizard_complete_inventory)d"
-                            states="{'readonly': '''state != 'open' '''}"
+                            states="{'readonly': '''state != 'draft' '''}"
                             colspan="2"
                             help="Add an inventory line for each missing products"/>
                         <field name="lines" colspan="4"/>
@@ -34,15 +34,13 @@
                             <field name="state"/>
                             <group colspan="2" col="3">
                                 <button string="Cancel"
-                                    name="set_state_cancel" type="object"
-                                    states="{'invisible': '''state == 'cancel' '''}"
-                                    confirm="All generated moves will be cancelled!"/>
-                                <button string="Re-Open"
-                                    name="set_state_open" type="object"
-                                    states="{'invisible': '''state != 'cancel' '''}"/>
+                                    name="cancel"
+                                    states="{'invisible': '''state in ('cancel', 'done') '''}"
+                                    icon="tryton-cancel"/>
                                 <button string="Confirm"
-                                    name="set_state_done" type="object"
-                                    states="{'invisible': '''state in ('done','cancel') '''}"/>
+                                    name="done"
+                                    states="{'invisible': '''state in ('done','cancel') '''}"
+                                    icon="tryton-ok"/>
                             </group>
                         </group>
                     </form>
@@ -97,6 +95,8 @@
                         <field name="expected_quantity"/>
                         <label name="quantity"/>
                         <field name="quantity"/>
+                        <label name="move"/>
+                        <field name="move"/>
                         <label name="inventory"/>
                         <field name="inventory"/>
                         <field name="unit_digits" invisible="1" colspan="4"/>
@@ -118,6 +118,48 @@
                     </tree>
                 ]]>
             </field>
+        </record>
+
+        <!-- Workflow inventory -->
+        <record model="workflow" id="wkf_inventory">
+            <field name="name">Inventory</field>
+            <field name="osv">stock.inventory</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="inventory_act_draft">
+            <field name="workflow" ref="wkf_inventory"/>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
+            <field name="name">Draft</field>
+        </record>
+        <record model="workflow.activity" id="inventory_act_cancel">
+            <field name="workflow" ref="wkf_inventory"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Cancel</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+        </record>
+        <record model="workflow.activity" id="inventory_act_done">
+            <field name="workflow" ref="wkf_inventory"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Done</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+        </record>
+        <record model="workflow.transition"
+                id="inventory_trans_draft_cancel">
+            <field name="act_from" ref="inventory_act_draft"/>
+            <field name="act_to" ref="inventory_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="inventory_trans_draft_done">
+            <field name="act_from" ref="inventory_act_draft"/>
+            <field name="act_to" ref="inventory_act_done"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">done</field>
         </record>
 
         <record model="ir.model.access" id="access_inventory">

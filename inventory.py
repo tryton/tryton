@@ -5,7 +5,7 @@ from trytond.osv import fields, OSV
 from trytond.wizard import Wizard
 
 STATES = {
-    'readonly': "state != 'open'",
+    'readonly': "state != 'draft'",
 }
 
 
@@ -18,7 +18,7 @@ class Inventory(OSV):
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain="[('type', '=', 'storage')]", states={
-            'readonly': "state != 'open' or bool(lines)",
+            'readonly': "state != 'draft' or bool(lines)",
         })
     date = fields.Date('Date', states=STATES)
     lost_found = fields.Many2One(
@@ -26,15 +26,12 @@ class Inventory(OSV):
         domain="[('type', '=', 'lost_found')]", states=STATES)
     lines = fields.One2Many(
         'stock.inventory.line', 'inventory', 'Lines', states=STATES)
-    moves = fields.Many2Many(
-        'stock.move', 'inventory_move_rel', 'inventory', 'move',
-        'Moves')
     company = fields.Many2One(
         'company.company', 'Company', required=True, states={
-            'readonly': "state != 'open' or bool(lines)",
+            'readonly': "state != 'draft' or bool(lines)",
         })
     state = fields.Selection([
-        ('open', 'Open'),
+        ('draft', 'Draft'),
         ('done', 'Done'),
         ('cancel', 'Cancel'),
         ], 'State', readonly=True, select=1)
@@ -42,14 +39,9 @@ class Inventory(OSV):
     def __init__(self):
         super(Inventory, self).__init__()
         self._order.insert(0, ('date', 'DESC'))
-        self._rpc_allowed += [
-                'set_state_cancel',
-                'set_state_open',
-                'set_state_done',
-        ]
 
     def default_state(self, cursor, user, context=None):
-        return 'open'
+        return 'draft'
 
     def default_date(self, cursor, user, context=None):
         date_obj = self.pool.get('ir.date')
@@ -69,166 +61,49 @@ class Inventory(OSV):
             'state': 'cancel',
             }, context=context)
 
-    def set_state_open(self, cursor, user, ids, context=None):
+    def set_state_draft(self, cursor, user, ids, context=None):
         self.write(cursor, user, ids, {
-            'state': 'open',
+            'state': 'draft',
             }, context=context)
 
-    def set_state_done(self, cursor, user, ids, context=None):
-        self.write(cursor, user, ids, {
-            'state': 'done',
-            }, context=context)
-
-    def _cancel(self, cursor, user, ids, context=None):
-        move_obj = self.pool.get("stock.move")
-        inventories = self.browse(cursor, user, ids, context=context)
-        move_ids = \
-            [move.id for inventory in inventories for move in inventory.moves]
-        return move_obj.write(cursor, user, move_ids, {
+    def set_state_cancel(self, cursor, user, inventory_id, context=None):
+        line_obj = self.pool.get("stock.inventory.line")
+        inventory = self.browse(cursor, user, inventory_id, context=context)
+        line_obj.cancel_move(cursor, user, inventory.lines, context=context)
+        self.write(cursor, user, inventory_id, {
             'state': 'cancel',
             }, context=context)
 
-    def _done(self, cursor, user, ids, context=None):
-        move_obj = self.pool.get('stock.move')
+    def set_state_done(self, cursor, user, inventory_id, context=None):
         date_obj = self.pool.get('ir.date')
+        line_obj = self.pool.get('stock.inventory.line')
+        inventory = self.browse(cursor, user, inventory_id, context=context)
 
-        inventories = self.browse(cursor, user, ids, context=context)
+        for line in inventory.lines:
+            line_obj.create_move(cursor, user, line, context=context)
+        self.write(
+            cursor, user, inventory_id,
+            {'date': date_obj.today(cursor, user, context=context)},
+            context=context)
+        self.write(
+            cursor, user, inventory_id, {'state': 'done',}, context=context)
 
-        for inventory in inventories:
-            if inventory.state != 'open':
-                continue
-            moves = []
-            for line in inventory.lines:
-                delta_qty = line.expected_quantity - line.quantity
-                if delta_qty == 0.0:
-                    continue
-                from_location = inventory.location.id
-                to_location = inventory.lost_found.id
-                if delta_qty < 0:
-                    (from_location, to_location, delta_qty) = \
-                        (to_location, from_location, -delta_qty)
-
-                move_id = move_obj.create(cursor, user, {
-                    'from_location': from_location,
-                    'to_location': to_location,
-                    'quantity': delta_qty,
-                    'product': line.product.id,
-                    'uom': line.uom.id,
-                    'company': inventory.company.id,
-                    'state': 'done',
-                    }, context=context)
-                moves.append(move_id)
-
-            self.write(cursor, user, ids, {
-                    'date': date_obj.today(cursor, user, context=context),
-                    'moves': [('add', x) for x in moves],
-                    }, context=context)
-
-    def create(self, cursor, user, vals, context=None):
-        new_id = super(Inventory, self).create(cursor, user, vals,
-                context=context)
-        if 'state' in vals:
-            if vals['state'] == 'done':
-                self._done(cursor, user, [new_id], context=context)
-            elif vals['state'] == 'cancel':
-                self._cancel(cursor, user, [new_id], context=context)
+    def copy(self, cursor, user, inventory_id, default=None, context=None):
+        date_obj = self.pool.get('ir.date')
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['date'] = date_obj.today(cursor, user, context=context)
+        new_id = super(Inventory, self).copy(
+            cursor, user, inventory_id, default=default, context=context)
+        self.complete_lines(cursor, user, [new_id], context=context)
         return new_id
 
-    def write(self, cursor, user, ids, vals, context=None):
-        if 'state' in vals:
-            if vals['state'] == 'done':
-                self._done(cursor, user, ids, context=context)
-            elif vals['state'] == 'cancel':
-                self._cancel(cursor, user, ids, context=context)
-        return super(Inventory, self).write(cursor, user, ids, vals,
-                context=context)
-
-Inventory()
-
-
-class InventoryLine(OSV):
-    'Stock Inventory Line'
-    _name = 'stock.inventory.line'
-    _description = __doc__
-    _rec_name = 'product'
-
-    product = fields.Many2One('product.product', 'Product', required=True,
-            domain=[('type', '=', 'stockable')], on_change=['product'])
-    uom = fields.Function('get_uom', type='many2one', relation='product.uom',
-            string='UOM')
-    unit_digits = fields.Function('get_unit_digits', type='integer',
-            string='Unit Digits')
-    expected_quantity = fields.Float('Expected Quantity',
-            digits="(16, unit_digits)", readonly=True)
-    quantity = fields.Float('Quantity', digits="(16, unit_digits)")
-    inventory = fields.Many2One('stock.inventory', 'Inventory')
-
-    def __init__(self):
-        super(InventoryLine, self).__init__()
-        self._sql_constraints += [
-            ('check_line_qty_pos',
-                'CHECK(quantity >= 0.0)', 'Line quantity must be positive!'),
-            ('inventory_product_uniq', 'UNIQUE(inventory, product)',
-                'Product must be unique by inventory!'),
-        ]
-
-    def default_unit_digits(self, cursor, user, context=None):
-        return 2
-
-    def on_change_product(self, cursor, user, ids, vals, context=None):
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
-        res = {}
-        res['unit_digits'] = 2
-        if vals.get('product'):
-            product = product_obj.browse(cursor, user, vals['product'],
-                    context=context)
-            res['uom'] = uom_obj.name_get(cursor, user, product.default_uom.id,
-                    context=context)[0]
-            res['unit_digits'] = product.default_uom.digits
-        return res
-
-    def get_uom(self, cursor, user, ids, name, arg, context=None):
-        uom_obj = self.pool.get('product.uom')
-        res = {}
-        for line in self.browse(cursor, user, ids, context=context):
-            res[line.id] = line.product.default_uom.id
-        uom2name = {}
-        for uom_id, name in uom_obj.name_get(cursor, user, res.values(),
-                context=context):
-            uom2name[uom_id] = (uom_id, name)
-        for line_id in res:
-            res[line_id] = uom2name[res[line_id]]
-        return res
-
-    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
-        res = {}
-        for line in self.browse(cursor, user, ids, context=context):
-            res[line.id] = line.product.default_uom.digits
-        return res
-
-InventoryLine()
-
-
-class CompleteInventory(Wizard):
-    'Complete Inventory '
-    _name = 'stock.inventory.complete'
-    states = {
-        'init': {
-            'result': {
-                'type': 'action',
-                'action': '_complete',
-                'state': 'end',
-                },
-            },
-        }
-
-    def _complete(self, cursor, user, data, context=None):
+    def complete_lines(self, cursor, user, ids, context=None):
         line_obj = self.pool.get('stock.inventory.line')
-        inventory_obj = self.pool.get('stock.inventory')
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
-        inventories = inventory_obj.browse(cursor, user, data['ids'],
+        inventories = self.browse(cursor, user, ids,
                 context=context)
         context = context and context.copy() or {}
 
@@ -287,6 +162,132 @@ class CompleteInventory(Wizard):
                     }
                 line_obj.create(
                     cursor, user, values, context=context)
+
+Inventory()
+
+
+class InventoryLine(OSV):
+    'Stock Inventory Line'
+    _name = 'stock.inventory.line'
+    _description = __doc__
+    _rec_name = 'product'
+
+    product = fields.Many2One('product.product', 'Product', required=True,
+            domain=[('type', '=', 'stockable')], on_change=['product'])
+    uom = fields.Function('get_uom', type='many2one', relation='product.uom',
+            string='UOM')
+    unit_digits = fields.Function('get_unit_digits', type='integer',
+            string='Unit Digits')
+    expected_quantity = fields.Float('Expected Quantity',
+            digits="(16, unit_digits)", readonly=True)
+    quantity = fields.Float('Quantity', digits="(16, unit_digits)")
+    move = fields.Many2One('stock.move', 'Move', readonly=True)
+    inventory = fields.Many2One('stock.inventory', 'Inventory')
+
+    def __init__(self):
+        super(InventoryLine, self).__init__()
+        self._sql_constraints += [
+            ('check_line_qty_pos',
+                'CHECK(quantity >= 0.0)', 'Line quantity must be positive!'),
+            ('inventory_product_uniq', 'UNIQUE(inventory, product)',
+                'Product must be unique by inventory!'),
+        ]
+
+    def default_unit_digits(self, cursor, user, context=None):
+        return 2
+
+    def on_change_product(self, cursor, user, ids, vals, context=None):
+        product_obj = self.pool.get('product.product')
+        uom_obj = self.pool.get('product.uom')
+        res = {}
+        res['unit_digits'] = 2
+        if vals.get('product'):
+            product = product_obj.browse(cursor, user, vals['product'],
+                    context=context)
+            res['uom'] = uom_obj.name_get(cursor, user, product.default_uom.id,
+                    context=context)[0]
+            res['unit_digits'] = product.default_uom.digits
+        return res
+
+    def get_uom(self, cursor, user, ids, name, arg, context=None):
+        uom_obj = self.pool.get('product.uom')
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            res[line.id] = line.product.default_uom.id
+        uom2name = {}
+        for uom_id, name in uom_obj.name_get(cursor, user, res.values(),
+                context=context):
+            uom2name[uom_id] = (uom_id, name)
+        for line_id in res:
+            res[line_id] = uom2name[res[line_id]]
+        return res
+
+    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            res[line.id] = line.product.default_uom.digits
+        return res
+
+    def cancel_move(self, cursor, user, lines, context=None):
+        move_obj = self.pool.get('stock.move')
+        move_obj.write(
+            cursor, user, [l.move.id for l in lines if l.move], {'state': 'cancel'},
+            context=context)
+        move_obj.delete(
+            cursor, user, [l.move.id for l in lines if l.move], context=context)
+        self.write(
+            cursor, user, [l.id for l in lines if l.move], {'move': False},
+            context=context)
+
+    def copy(self, cursor, user, line_id, default=None, context=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['inventory']= False
+        return super(InventoryLine, self).copy(cursor, user, line_id,
+                default=default, context=context)
+
+    def create_move(self, cursor, user, line, context=None):
+        move_obj = self.pool.get('stock.move')
+        delta_qty = line.expected_quantity - line.quantity
+        if delta_qty == 0.0:
+            return
+        from_location = line.inventory.location.id
+        to_location = line.inventory.lost_found.id
+        if delta_qty < 0:
+            (from_location, to_location, delta_qty) = \
+                (to_location, from_location, -delta_qty)
+
+        move_id = move_obj.create(cursor, user, {
+            'from_location': from_location,
+            'to_location': to_location,
+            'quantity': delta_qty,
+            'product': line.product.id,
+            'uom': line.uom.id,
+            'company': line.inventory.company.id,
+            'state': 'done',
+            }, context=context)
+        self.write(cursor, user, line.id, {'move': move_id}, context=context)
+
+InventoryLine()
+
+
+class CompleteInventory(Wizard):
+    'Complete Inventory '
+    _name = 'stock.inventory.complete'
+    states = {
+        'init': {
+            'result': {
+                'type': 'action',
+                'action': '_complete',
+                'state': 'end',
+                },
+            },
+        }
+
+    def _complete(self, cursor, user, data, context=None):
+        inventory_obj = self.pool.get('stock.inventory')
+        inventory_obj.complete_lines(cursor, user, data['ids'], context=context)
 
         return {}
 
