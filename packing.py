@@ -233,6 +233,15 @@ class PackingIn(OSV):
         return super(PackingIn, self).create(
             cursor, user, values, context=context)
 
+    def copy(self, cursor, user, packing_id, default=None, context=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['inventory_moves']= []
+        default['incoming_moves']= []
+        return super(PackingIn, self).copy(cursor, user, packing_id,
+                default=default, context=context)
+
     def _get_inventory_moves(self, cursor, user, incoming_move, context=None):
         res = {}
         if incoming_move.quantity <= 0.0:
@@ -612,6 +621,15 @@ class PackingOut(OSV):
             cursor, user, 'stock.packing.out')
         return super(PackingOut, self).create(cursor, user, values,
                                               context=context)
+    def copy(self, cursor, user, packing_id, default=None, context=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['inventory_moves']= []
+        default['outgoing_moves']= []
+        return super(PackingOut, self).copy(cursor, user, packing_id,
+                default=default, context=context)
+
 
     def _location_amount(self, cursor, user, target_uom,
             qty_uom, uom_index, context=None):
