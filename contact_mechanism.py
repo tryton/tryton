@@ -71,7 +71,7 @@ class ContactMechanism(OSV):
         self._order.insert(1, ('sequence', 'ASC'))
         self._error_messages.update({
             'write_party': 'You can not modify the party of ' \
-                    'an contact mechanism!',
+                    'a contact mechanism!',
             })
 
     def default_type(self, cursor, user, context=None):
