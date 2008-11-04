@@ -67,6 +67,7 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="sequence" tree_invisible="1"/>
                                     <field name="type"/>
                                     <field name="value"/>
+                                    <field name="comment"/>
                                 </tree>
                             </field>
                             <group col="1" colspan="2">
