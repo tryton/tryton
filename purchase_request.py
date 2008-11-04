@@ -566,6 +566,10 @@ class CreatePurchase(Wizard):
                     'payment_term': request.party.supplier_payment_term.id,
                     'warehouse': request.warehouse.id,
                     'currency': request.company.currency.id,
+                    'contact_address': party_obj.address_get(
+                        cursor, user, request.party.id, type=None, context=context),
+                    'invoice_address': party_obj.address_get(
+                        cursor, user, request.party.id, type='invoice', context=context),
                     'lines': [],
                     }
 
