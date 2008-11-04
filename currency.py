@@ -193,7 +193,7 @@ class Currency(OSV):
             lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
 
             self.raise_user_error(cursor, 'no_rate', (name,
-                date.strftime(lang.date)), context=context)
+                date.strftime(str(lang.date))), context=context)
         if round:
             return self.round(cursor, user, to_currency,
                     amount * to_currency.rate / from_currency.rate)
