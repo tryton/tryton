@@ -1,0 +1,104 @@
+type,name,res_id,src,value,fuzzy
+error,account.invoice,0,You can not delete invoices that comes from a sale!,Vous ne pouvez pas supprimer des factures provenant d'une vente !,0
+error,sale.line,0,"It miss an ""account_revenue"" default property!","Il manque une propriété""account_expense""",0
+error,sale.line,0,The customer location is required!,L'emplacement client est requis !,0
+error,sale.sale,0,Wrong combination of method!,Mauvaise combinaison de méthodes !,0
+field,"product.template,salable",0,Salable,Vendable,0
+field,"product.template,sale_uom",0,Sale UOM,UDM de vente,0
+field,"sale.line,amount",0,Amount,Montatn,0
+field,"sale.line,comment",0,Comment,Commentaire,0
+field,"sale.line,description",0,Description,Description,0
+field,"sale.line,invoice_lines",0,Invoice Lines,Lignes de facture,0
+field,"sale.line,move_done",0,Moves Done,Mouvements effectués,0
+field,"sale.line,move_exception",0,Moves Exception,Mouvements en exception,0
+field,"sale.line,moves",0,Moves,Mouvements,0
+field,"sale.line,moves_ignored",0,Moves Ignored,Mouvements ignorés,0
+field,"sale.line,product",0,Product,Produit,0
+field,"sale.line,quantity",0,Quantity,Quantité,0
+field,"sale.line,sale",0,Sale,Vente,0
+field,"sale.line,sequence",0,Sequence,Séquence,0
+field,"sale.line,taxes",0,Taxes,Taxes,0
+field,"sale.line,type",0,Type,Type,0
+field,"sale.line,unit",0,Unit,Unité,0
+field,"sale.line,unit_digits",0,Unit Digits,Décimales de l'unité,0
+field,"sale.line,unit_price",0,Unit Price,Prix unitaire,0
+field,"sale.sale,comment",0,Comment,Commentaire,0
+field,"sale.sale,company",0,Company,Companie,0
+field,"sale.sale,contact_address",0,Contact Address,Adresse de contact,0
+field,"sale.sale,currency",0,Currency,Devise,0
+field,"sale.sale,currency_digits",0,Currency Digits,Décimales de la devise,0
+field,"sale.sale,description",0,Description,Description,0
+field,"sale.sale,invoice_address",0,Invoice Address,Adresse de facturation,0
+field,"sale.sale,invoice_exception",0,Invoices Exception,Factures en exception,0
+field,"sale.sale,invoice_method",0,Invoice Method,Méthode de facturation,0
+field,"sale.sale,invoice_paid",0,Invoices Paid,Factures payées,0
+field,"sale.sale,invoices",0,Invoices,Factures,0
+field,"sale.sale,invoices_ignored",0,Invoices Ignored,Factures ignorées,0
+field,"sale.sale,invoice_state",0,Invoice State,État de la factutre,0
+field,"sale.sale,lines",0,Lines,Lignes,0
+field,"sale.sale,moves",0,Moves,Mouvements,0
+field,"sale.sale,packing_address",0,Packing Address,Adresse de livraison,0
+field,"sale.sale,packing_done",0,Packing Done,Colisage effectué,0
+field,"sale.sale,packing_exception",0,Packings Exception,Colisages en exception,0
+field,"sale.sale,packing_method",0,Packing Method,Méthode de livraison,0
+field,"sale.sale,packings",0,Packings,Colisages,0
+field,"sale.sale,packing_state",0,Packing State,État du colisage,0
+field,"sale.sale,party",0,Party,Tiers,0
+field,"sale.sale,party_lang",0,Party Language,Langue du tiers,0
+field,"sale.sale,payment_term",0,Payment Term,Condition de paiement,0
+field,"sale.sale,reference",0,Reference,Référence,0
+field,"sale.sale,sale_date",0,Sale Date,Date de la vente,0
+field,"sale.sale,state",0,State,État,0
+field,"sale.sale,tax_amount",0,Tax,Taxe,0
+field,"sale.sale,total_amount",0,Total,Total,0
+field,"sale.sale,untaxed_amount",0,Untaxed,Non-taxé,0
+field,"sale.sale,warehouse",0,Warehouse,Entrepôt,0
+field,"stock.move,sale",0,Sale,Vente,0
+field,"stock.move,sale_line",0,unknown,,0
+model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Ventes confirmées,0
+model,"ir.action,name",act_sale_form_draft,Draft Sales,Ventes brouillon,0
+model,"ir.action,name",act_sale_form_quotation,Quotation Sales,Devis,0
+model,"ir.action,name",report_sale,Sale,Vente,0
+model,"ir.action,name",act_sale_form,Sales,Ventes,0
+model,"ir.ui.menu,name",menu_sale_form_confirmed,Confirmed Sales,Ventes confirmées,0
+model,"ir.ui.menu,name",menu_sale_form_draft,Draft Sales,Ventes brouillons,0
+model,"ir.ui.menu,name",menu_sale_form_quotation,Quotation Sales,Devis,0
+model,"ir.ui.menu,name",menu_sale,Sale Management,Gestion des ventes,0
+model,"ir.ui.menu,name",menu_sale_form,Sales,Ventes,0
+selection,"sale.line,type",0,Line,Ligne,0
+selection,"sale.line,type",0,Subtotal,Sous-total,0
+selection,"sale.line,type",0,Title,Titre,0
+selection,"sale.sale,invoice_method",0,Manual,Manuel,0
+selection,"sale.sale,invoice_method",0,On Order Confirmed,À la confirmation de la commande,0
+selection,"sale.sale,invoice_method",0,On Packing Sent,À la livraison,0
+selection,"sale.sale,invoice_state",0,Exception,Exception,0
+selection,"sale.sale,invoice_state",0,None,Aucun,0
+selection,"sale.sale,invoice_state",0,Paid,Payé,0
+selection,"sale.sale,invoice_state",0,Waiting,En attente,0
+selection,"sale.sale,packing_method",0,Manual,Manuel,0
+selection,"sale.sale,packing_method",0,On Invoice Paid,Au paiement de la facture,0
+selection,"sale.sale,packing_method",0,On Order Confirmed,À la confirmation de la commande,0
+selection,"sale.sale,packing_state",0,Exception,Exception,0
+selection,"sale.sale,packing_state",0,None,Aucun,0
+selection,"sale.sale,packing_state",0,Sent,Envoyé,0
+selection,"sale.sale,packing_state",0,Waiting,En attente,0
+selection,"sale.sale,state",0,Cancel,Annulé,0
+selection,"sale.sale,state",0,Confirmed,Confirmé,0
+selection,"sale.sale,state",0,Done,Fait,0
+selection,"sale.sale,state",0,Draft,Brouillon,0
+selection,"sale.sale,state",0,Quotation,Devis,0
+view,product.product,0,Customers,Clients,0
+view,sale.line,0,Sale Line,Ligne de vente,0
+view,sale.line,0,Sale Lines,Lignes de vente,0
+view,sale.sale,0,Cancel,Annuler,0
+view,sale.sale,0,Confirm,Confirmer,0
+view,sale.sale,0,Draft,Brouillon,0
+view,sale.sale,0,Ignore Invoice Exception,Ignorer l'exception de facturation ,0
+view,sale.sale,0,Ignore Packing Exception,Ignorer l'exception de livraison,0
+view,sale.sale,0,Invoices,Factures,0
+view,sale.sale,0,Lines,Lignes,0
+view,sale.sale,0,Other Info,Autre informations,0
+view,sale.sale,0,Packings,Colisages,0
+view,sale.sale,0,Quotation,Devis,0
+view,sale.sale,0,Sale,Vente,0
+view,sale.sale,0,Sales,Ventes,0
