@@ -141,7 +141,7 @@ class Party(OSV):
         """
         address_obj = self.pool.get("party.address")
         address_ids = address_obj.search(
-            cursor, user, [("party","=",party_id),("active","=",True)],
+            cursor, user, [("party", "=", party_id), ("active", "=", True)],
             order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)
         if not address_ids:
             return False
