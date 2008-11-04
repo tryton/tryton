@@ -177,7 +177,7 @@ view,account.invoice,0,_Pay,_Payer,0
 view,account.invoice,0,Payment,Paiement,0
 view,account.invoice,0,Payment Lines,Lignes de Paiement,0
 view,account.invoice,0,Pro For_ma,Pro For_ma,0
-view,account.invoice,0,_Reset to Draft,_Remettre en Draft,0
+view,account.invoice,0,_Reset to Draft,_Remettre en brouillon,0
 view,account.invoice,0,Taxes,Taxes,0
 view,account.invoice.line,0,Invoice Line,Ligne de Facture,0
 view,account.invoice.line,0,Invoice Lines,Lignes de Facture,0
