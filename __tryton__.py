@@ -7,7 +7,8 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Purchase',
-    'description': 'Analytic Purchase',
+    'description': '''Add analytic account on purchase lines.
+''',
     'depends': [
         'purchase',
         'analytic_account',
