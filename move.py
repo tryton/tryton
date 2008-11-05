@@ -148,12 +148,9 @@ class Move(OSV):
 
     def name_search(self, cursor, user, name='', args=None, operator='ilike',
                     context=None, limit=None):
-        product_obj = self.pool.get('product.product')
-        product_ids = [x[0] for x in product_obj.name_search(
-                cursor, user, name=name, context=context)]
         if not args:
             args = []
-        query = ['AND', ('product', 'in', product_ids), args]
+        query = ['AND', ('product', operator, name), args]
         ids = self.search(cursor, user, query, limit=limit, context=context)
         return self.name_get(cursor, user, ids, context)
 
