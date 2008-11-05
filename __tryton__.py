@@ -7,7 +7,7 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     "category" : "Generic",
-    "description": "Define countries and subdivisions.",
+    "description": "Define all countries and subdivisions.",
     "depends" : ["ir", "res"],
     "xml" : [
         "country.xml",
