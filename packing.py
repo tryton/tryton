@@ -237,8 +237,8 @@ class PackingIn(OSV):
         if default is None:
             default = {}
         default = default.copy()
-        default['inventory_moves']= []
-        default['incoming_moves']= []
+        default['inventory_moves']= False
+        default['incoming_moves']= False
         return super(PackingIn, self).copy(cursor, user, packing_id,
                 default=default, context=context)
 
@@ -625,8 +625,8 @@ class PackingOut(OSV):
         if default is None:
             default = {}
         default = default.copy()
-        default['inventory_moves']= []
-        default['outgoing_moves']= []
+        default['inventory_moves']= False
+        default['outgoing_moves']= False
         return super(PackingOut, self).copy(cursor, user, packing_id,
                 default=default, context=context)
 
