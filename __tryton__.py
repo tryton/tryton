@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Sale',
+    'name_de_DE': 'Verkauf',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -21,6 +22,21 @@ With the possibilities:
         - Manual
         - On Order Confirmed
         - On Invoice Paid
+''',
+    'description_de_DE': ''' - Dient der Erstellung von Verkaufsvorgängen (Entwurf, Angebot, Auftrag).
+ - Fügt den Artikeln Einkaufsinformationen hinzu.
+ - Erlaubt die Definition des Einkaufspreises als Listenpreis.
+
+Ermöglicht:
+    - die Verfolgung des Status von Rechnungsstellung und Versand für Verkäufe
+    - die Festlegung der Methode für die Rechnungsstellung:
+        - Manuell
+        - Nach Auftragsbestätigung
+        - Nach Versand
+    - die Festlegung der Methode für den Versand:
+        - Manuell
+        - Nach Auftragsbestätigung
+        - Nach Bezahlung
 ''',
     'depends': [
         'company',
