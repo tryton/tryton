@@ -7,7 +7,13 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Generic',
-    'description': 'Define company',
+    'description': '''Define company and employee.
+Add main and current company on users preferences.
+Add company on properties.
+Define new report parser for report with company header.
+Add letter template on party.
+Make the cron run on each companies.
+''',
     'depends': [
         'ir',
         'res',
