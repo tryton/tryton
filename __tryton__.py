@@ -7,7 +7,16 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Inventory',
-    'description': 'Stock Management and Inventory Control',
+    'description': '''Stock Management and Inventory Control with:
+    - Location definition
+    - Stock move
+    - Packing Supplier / Customer / Internal
+    - Stock Inventory
+
+And with reports:
+    - Customer Packing
+    - Products by Locations
+''',
     'depends': [
         'ir',
         'workflow',
