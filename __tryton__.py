@@ -7,7 +7,8 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Accounting',
-    'description': 'Analytic Invoice',
+    'description': '''Add analytic account on invoice lines and generate analytic lines on the moves of invoice.
+''',
     'depends': [
         'account_invoice',
         'analytic_account',
