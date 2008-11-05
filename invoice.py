@@ -2101,8 +2101,11 @@ Period()
 
 class PayInvoiceInit(WizardOSV):
     _name = 'account.invoice.pay_invoice.init'
-    amount = fields.Numeric('Amount', digits=(16, 2), required=True)
+    amount = fields.Numeric('Amount', digits="(16, currency_digits)",
+            required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
+    currency_digits = fields.Integer('Currency Digits', readonly=True,
+            on_change_with=['currency'])
     description = fields.Char('Description', size=None, required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             domain=[('type', '=', 'cash')])
@@ -2111,6 +2114,15 @@ class PayInvoiceInit(WizardOSV):
     def default_date(self, cursor, user, context=None):
         date_obj = self.pool.get('ir.date')
         return date_obj.today(cursor, user, context=context)
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        currency_obj = self.pool.get('currency.currency')
+        if vals.get('currency'):
+            currency = currency_obj.browse(cursor, user, vals['currency'],
+                    context=context)
+            return currency.digits
+        return 2
 
 PayInvoiceInit()
 
@@ -2132,8 +2144,10 @@ class PayInvoiceAsk(WizardOSV):
                 'invisible': "type != 'writeoff'",
                 'required': "type == 'writeoff'",
             })
-    amount = fields.Numeric('Amount', digits=(16, 2), readonly=True)
+    amount = fields.Numeric('Amount', digits="(16, currency_digits)", readonly=True)
     currency = fields.Many2One('currency.currency', 'Currency', readonly=True)
+    currency_digits = fields.Integer('Currency Digits', readonly=True,
+            on_change_with=['currency'])
     lines_to_pay = fields.Char(string='Lines to Pay', size=None)
     lines = fields.One2Many('account.move.line', 'ham', 'Lines',
             domain="[('id', 'in', eval(lines_to_pay)), " \
@@ -2150,6 +2164,15 @@ class PayInvoiceAsk(WizardOSV):
 
     def default_type(self, cursor, user, context=None):
         return 'writeoff'
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        currency_obj = self.pool.get('currency.currency')
+        if vals.get('currency'):
+            currency = currency_obj.browse(cursor, user, vals['currency'],
+                    context=context)
+            return currency.digits
+        return 2
 
 PayInvoiceAsk()
 
@@ -2200,6 +2223,7 @@ class PayInvoice(Wizard):
         res = {}
         invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
         res['currency'] = invoice.currency.id
+        res['currency_digits'] = invoice.currency.digits
         res['amount'] = invoice.amount_to_pay_today
         res['description'] = invoice.number
         return res
@@ -2233,6 +2257,7 @@ class PayInvoice(Wizard):
 
         res['amount'] = data['form']['amount']
         res['currency'] = data['form']['currency']
+        res['currency_digits'] = data['form']['currency_digits']
         res['description'] = data['form']['description']
         res['journal'] = data['form']['journal']
         res['date'] = data['form']['date']
