@@ -2,12 +2,15 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Analytic Sale',
+    'name_de_DE': 'Kostenstellen Verkauf',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Sale',
     'description': '''Add analytic account on sale lines.
+''',
+    'description_de_DE': '''Fügt Kostenstellen zu den Verkaufspositionen hinzu
 ''',
     'depends': [
         'sale',
