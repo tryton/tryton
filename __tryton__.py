@@ -7,7 +7,9 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Generic',
-    'description': 'Currency Module',
+    'description': '''Define currencies and exchange rate.
+Allow to customize the formatting of the currency amount.
+''',
     'depends': [
         'ir',
         'res',
