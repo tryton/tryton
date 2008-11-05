@@ -94,7 +94,7 @@ class OrderPoint(OSV):
 
     def check_uniqueness(self, cursor, user, ids):
         """
-        Ensure uniqueness of order points. I.E that the is no several
+        Ensure uniqueness of order points. I.E that there is no several
         order point for the same location, the same product and the
         same company.
         """
