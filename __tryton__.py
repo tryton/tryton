@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Stock Management',
+    'name_de_DE': 'Lagerverwaltung',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -16,6 +17,16 @@
 And with reports:
     - Customer Packing
     - Products by Locations
+''',
+    'description_de_DE': '''Lagerverwaltung und Bestandskontrolle mit:
+    - Definition von Lagerorten
+    - Lagerbewegungen
+    - Packlisten/Lieferscheine Lieferant / Kunde / Intern
+    - Lagerbestand
+
+Zugehörige Berichte:
+    - Lieferschein für Kunden
+    - Artikel nach Lagerorten
 ''',
     'depends': [
         'ir',
