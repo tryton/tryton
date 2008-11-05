@@ -148,19 +148,28 @@ class Move(OSV):
 
     def name_search(self, cursor, user, name='', args=None, operator='ilike',
                     context=None, limit=None):
+        product_obj = self.pool.get('product.product')
+        product_ids = [x[0] for x in product_obj.name_search(
+                cursor, user, name=name, context=context)]
         if not args:
-            args=[]
-        query = ['AND', ('product.name', operator, name), args]
-        ids = self.search( cursor, user, query, limit=limit, context=context)
+            args = []
+        query = ['AND', ('product', 'in', product_ids), args]
+        ids = self.search(cursor, user, query, limit=limit, context=context)
         return self.name_get(cursor, user, ids, context)
 
     def name_get(self, cursor, user, ids, context=None):
         if isinstance(ids, (int, long)):
             ids = [ids]
+        product_obj = self.pool.get('product.product')
+        moves = self.browse(cursor, user, ids, context=context)
+        pid2name = dict(product_obj.name_get(
+                cursor, user, [m.product.id for m in moves], context=context))
         res = []
-        for m in self.browse(cursor, user, ids, context=context):
+        for m in moves:
             res.append(
-                (m.id, "%s%s %s" % (m.quantity, m.uom.symbol, m.product.name)))
+                (m.id,
+                 "%s%s %s" % (m.quantity, m.uom.symbol, pid2name[m.product.id]))
+                )
         return res
 
     def get_type(self, cursor, user, ids, name, args, context=None):
