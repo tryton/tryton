@@ -7,7 +7,18 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Purchase',
-    'description': 'Purchase Management',
+    'description': '''Define purchase order.
+Add to product supplier and purchase informations.
+Define the purchase price as the supplier price or the cost price.
+Add a list of suppliers.
+
+With the possibilities:
+    - to follow invoice and packing states from the purchase order.
+    - to define invoice method:
+        - Manual
+        - Based On Order
+        - Based On Packing
+''',
     'depends': [
         'company',
         'party',
