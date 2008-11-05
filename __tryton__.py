@@ -7,7 +7,21 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Sale',
-    'description': 'Sale Management',
+    'description': '''Define sale order.
+Add to product sale informations.
+Define the sale price as the list price.
+
+With the possibilities:
+    - to follow invoice and packing states from the sale order.
+    - to define invoice method:
+        - Manual
+        - On Order Confirmed
+        - On packing Sent
+    - to define packing method:
+        - Manual
+        - On Order Confirmed
+        - On Invoice Paid
+''',
     'depends': [
         'company',
         'party',
