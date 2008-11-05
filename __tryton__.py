@@ -7,7 +7,9 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Project',
-    'description': 'Project Module',
+    'description': '''Project Module with:
+    - Project management
+''',
     'depends': [
         'ir',
         'timesheet',
