@@ -7,7 +7,10 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Accounting',
-    'description': 'Add accounting on product.',
+    'description': '''Add accounting properties on product and category like:
+    - account for expense / revenue
+    - taxes for customer / supplier
+''',
     'depends': [
         'ir',
         'account',
