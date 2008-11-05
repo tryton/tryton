@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Project',
+    'name_de_DE': 'Projekte',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -9,6 +10,9 @@
     'category': 'Project',
     'description': '''Project Module with:
     - Project management
+''',
+    'description_de_DE': '''Projektmodul für:
+    - Projektverwaltung
 ''',
     'depends': [
         'ir',
