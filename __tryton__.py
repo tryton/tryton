@@ -7,7 +7,14 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Inventory',
-    'description': 'Supply Management Module',
+    'description': '''Supply Management Module with:
+    - Order point
+    - Purchase Request
+
+With scheduler:
+    - to generate purchase request based on order points
+    - to generate internal packing based on order points
+''',
     'depends': [
         'ir',
         'res',
