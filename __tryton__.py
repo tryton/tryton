@@ -7,7 +7,16 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Accounting',
-    'description': 'Invoice',
+    'description': '''Financial and Accounting Module with:
+    - Payment Term
+    - Invoice / Credit Note
+    - Supplier Invoice / Supplier Credit Note
+
+With the possibilities:
+    - to follow the payment of the invoices.
+    - to define invoice sequences on fiscal year or period.
+    - to credit any invoice.
+''',
     'depends': [
         'ir',
         'account',
