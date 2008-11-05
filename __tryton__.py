@@ -7,7 +7,15 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Human Resources',
-    'description': 'Timesheet Module',
+    'description': '''Timesheet Module with:
+    - Work
+    - Timesheet line
+
+And with reports:
+    - Hours per work
+    - hours per employee per week
+    - hours per employee per month
+''',
     'depends': [
         'ir',
         'res',
