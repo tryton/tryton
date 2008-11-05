@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Timesheet',
+    'name_de_DE': 'Zeiterfassung',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -15,6 +16,15 @@ And with reports:
     - Hours per work
     - hours per employee per week
     - hours per employee per month
+''',
+    'description_de_DE': '''Zeiterfassungsmodul mit:
+    - Aufgaben
+    - Zeitpositionen
+
+Zugehörige Berichte:
+    - Stunden pro Aufgabe
+    - Stunden pro Mitarbeiter pro Woche
+    - Stunden pro Mitarbeiter pro Monat
 ''',
     'depends': [
         'ir',
