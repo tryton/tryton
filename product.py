@@ -125,7 +125,7 @@ class Product(OSV):
                         between the two dates
                 stock_assign: if set compute also the assigned moves as done
                 forecast: if set compute the forecast quantity
-        :return: a dictionary with (location, product) as key
+        :return: a dictionary with (location id, product id) as key
                 and quantity as value
         """
         uom_obj = self.pool.get("product.uom")
