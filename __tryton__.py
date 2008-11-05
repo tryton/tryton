@@ -7,7 +7,12 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Accounting',
-    'description': 'Financial and Accounting Module',
+    'description': '''Financial and Accounting Module with:
+    - Analytic accounting with any number of analytic charts
+
+And with reports:
+    - Analytic account balance
+''',
     'depends': [
         'ir',
         'company',
