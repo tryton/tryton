@@ -7,7 +7,8 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Sale',
-    'description': 'Analytic Sale',
+    'description': '''Add analytic account on sale lines.
+''',
     'depends': [
         'sale',
         'analytic_account',
