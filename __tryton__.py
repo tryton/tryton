@@ -7,7 +7,9 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Project',
-    'description': 'Project Revenue Module',
+    'description': '''Add product on timesheet lines.
+Define allowed service for each employees.
+''',
     'depends': [
         'ir',
         'project',
