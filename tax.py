@@ -495,14 +495,14 @@ class Tax(OSV):
             help='Keep empty to use the default invoice account',
             states={
                 'readonly': "type == 'none' or not company",
-                'required': "company",
+                'required': "type != 'none' and company",
             })
     credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
             domain="[('company', '=', company)]",
             help='Keep empty to use the default credit_note account',
             states={
                 'readonly': "type == 'none' or not company",
-                'required': "company",
+                'required': "type != 'none' and company",
             })
 
     invoice_base_code = fields.Many2One('account.tax.code',
