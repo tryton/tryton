@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Purchase',
+    'name_de_DE': 'Einkauf',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -18,6 +19,18 @@ With the possibilities:
         - Manual
         - Based On Order
         - Based On Packing
+''',
+    'description_de_DE': ''' - Dient der Erstellung von Einkaufsvorgängen (Entwurf, Angebot, Auftrag).
+ - Fügt den Artikeln Lieferanten und Einkaufsinformationen hinzu.
+ - Erlaubt die Definition des Einkaufspreises als Lieferpreis oder Einkaufspreis.
+ - Fügt eine Lieferantenliste hinzu.
+
+Ermöglicht:
+    - die Verfolgung des Status von Rechnungsstellung und Versand für Einkäufe
+    - die Festlegung der Methode für die Rechnungsstellung:
+        - Manuell
+        - Nach Auftrag
+        - Nach Lieferung
 ''',
     'depends': [
         'company',
