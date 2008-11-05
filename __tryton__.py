@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Product',
+    'name_de_DE': 'Buchhaltung Artikel',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -10,6 +11,10 @@
     'description': '''Add accounting properties on product and category like:
     - account for expense / revenue
     - taxes for customer / supplier
+''',
+    'description_de_DE': '''Fügt Eigenschaften für die Buchhaltung zu Artikeln und Artikelkategorien hinzu:
+    - Aufwands- und Ertragskonto
+    - Steuern für Kunden und Lieferanten
 ''',
     'depends': [
         'ir',
