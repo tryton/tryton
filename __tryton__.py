@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account',
+    'name_de_DE': 'Buchhaltung',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -22,6 +23,22 @@ And with reports:
     - Third party balance
     - Aged balance
     - General journal
+''',
+    'description_de_DE': '''Buchhaltungsmodul mit:
+    - Allgemeiner Buchhaltung
+    - Verwaltung von Geschäftsjahren
+    - Verwaltung von Steuern
+    - Buchführung
+    - Abstimmung
+
+Zugehörige Berichte:
+    - Hauptbuch
+    - Summen- und Saldenliste
+    - Bilanzbogen
+    - Gewinn- und Verlustrechnung
+    - Offene Posten
+    - Fälligkeitsliste
+    - Allgemeinem Journal
 ''',
     'depends': [
         'ir',
