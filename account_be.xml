@@ -1,12 +1,88 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+
+        <record model="account.account.type.template"
+            id="account_type_template_be">
+            <field name="name">Belgium Account Type Chart</field>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.account.type.template"
+            id="account_type_template_actif">
+            <field name="name">Actif</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_be"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+        <record model="account.account.type.template"
+            id="account_type_template_immobilise">
+            <field name="name">Actif immobilisé</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_actif"/>
+        </record>
+        <record model="account.account.type.template"
+            id="account_type_template_incorporelles">
+            <field name="name">Immobilisations incorporelles</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_immobilise"/>
+        </record>
+        <record model="account.account.type.template"
+            id="account_type_template_corporelles">
+            <field name="name">Immobilisations corporelles</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_immobilise"/>
+        </record>
+        <record model="account.account.type.template"
+            id="account_type_template_financieres">
+            <field name="name">Immobilisations financières</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_immobilise"/>
+        </record>
+        <record model="account.account.type.template"
+            id="account_type_template_circulant">
+            <field name="name">Actif circulant</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_actif"/>
+        </record>
+        <record model="account.account.type.template"
+            id="account_type_template_stocks">
+            <field name="name">Stocks</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_circulant"/>
+        </record>
+        <record model="account.account.type.template"
+            id="account_type_template_creances">
+            <field name="name">Créances clients</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_circulant"/>
+        </record>
+        <record model="account.account.type.template"
+            id="account_type_template_valeur_mobiliere">
+            <field name="name">Valeur mobilière de placement</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_circulant"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="account_type_template_disponibilite">
+            <field name="name">Disponibilité</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_actif"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="account_type_template_passif">
+            <field name="name">Passif</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_template_be"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+
         <record model="account.account.template" id="root">
             <field name="name">Belgium Chart</field>
-            <field name="close_method">none</field>
-            <field name="kind">view</field>
-            <field name="type" eval="False"/>
+            <field name="type" ref=""/>
         </record>
 
         <record model="account.account.template" id="0">
