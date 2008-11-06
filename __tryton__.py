@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Accounting',
     'description': '''Add accounting properties on product and category like:
     - account for expense / revenue
     - taxes for customer / supplier
