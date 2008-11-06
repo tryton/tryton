@@ -19,6 +19,13 @@ And with reports:
 Zugehörige Berichte:
     - Plan für Kostenstellen
 ''',
+    'description_fr_FR': '''Module comptable et financier, avec:
+    - Comptabilité analytique autorisant un nombre arbitraire d'axes.
+
+Et les rapports
+    - Balance comptable analytique
+''',
+
     'depends': [
         'ir',
         'company',
