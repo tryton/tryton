@@ -61,8 +61,8 @@ class Inventory(OSV):
             'state': 'cancel',
             }, context=context)
 
-    def set_state_draft(self, cursor, user, ids, context=None):
-        self.write(cursor, user, ids, {
+    def set_state_draft(self, cursor, user, inventory_id, context=None):
+        self.write(cursor, user, inventory_id, {
             'state': 'draft',
             }, context=context)
 
