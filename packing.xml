@@ -195,7 +195,7 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group col="8" colspan="2">
                                 <button string="Cancel" name="cancel"
-                                        states="{'invisible': '''state in ('cancel', 'done') '''}"
+                                        states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                         icon="tryton-cancel"/>
                                 <button string="Draft" name="draft"
                                         states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
