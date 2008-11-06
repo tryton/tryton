@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Inventory',
     'description': '''Stock Management and Inventory Control with:
     - Location definition
     - Stock move
