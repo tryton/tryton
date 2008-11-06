@@ -713,6 +713,9 @@ class Sale(OSV):
         invoice_line_obj = self.pool.get('account.invoice.line')
         sale_line_obj = self.pool.get('sale.line')
 
+        if context is None:
+            context = {}
+
         sale = self.browse(cursor, user, sale_id, context=context)
 
         invoice_lines = self._get_invoice_line_sale_line(cursor, user, sale,
@@ -726,7 +729,9 @@ class Sale(OSV):
         if journal_id:
             journal_id = journal_id[0]
 
-        invoice_id = invoice_obj.create(cursor, user, {
+        ctx = context.copy()
+        ctx['user'] = user
+        invoice_id = invoice_obj.create(cursor, 0, {
             'company': sale.company.id,
             'type': 'out_invoice',
             'reference': sale.reference,
@@ -737,18 +742,18 @@ class Sale(OSV):
             'currency': sale.currency.id,
             'account': sale.party.account_receivable.id,
             'payment_term': sale.payment_term.id,
-        }, context=context)
+        }, context=ctx)
 
         for line_id in invoice_lines:
             vals = invoice_lines[line_id]
             vals['invoice'] = invoice_id
-            invoice_line_id = invoice_line_obj.create(cursor, user, vals,
-                    context=context)
+            invoice_line_id = invoice_line_obj.create(cursor, 0, vals,
+                    context=ctx)
             sale_line_obj.write(cursor, user, line_id, {
                 'invoice_lines': [('add', invoice_line_id)],
                 }, context=context)
 
-        invoice_obj.update_taxes(cursor, user, [invoice_id], context=context)
+        invoice_obj.update_taxes(cursor, 0, [invoice_id], context=ctx)
 
         self.write(cursor, user, sale_id, {
             'invoices': [('add', invoice_id)],
@@ -801,30 +806,35 @@ class Sale(OSV):
         sale_line_obj = self.pool.get('sale.line')
         workflow_service = LocalService('workflow')
 
+        if context is None:
+            context = {}
+
         sale = self.browse(cursor, user, sale_id, context=context)
 
         moves = self._get_move_sale_line(cursor, user, sale, context=context)
         if not moves:
             return
 
-        packing_id = packing_obj.create(cursor, user, {
+        ctx = context.copy()
+        ctx['user'] = user
+        packing_id = packing_obj.create(cursor, 0, {
             'planned_date': sale.sale_date,
             'customer': sale.party.id,
             'delivery_address': sale.packing_address.id,
             'reference': sale.reference,
             'warehouse': sale.warehouse.id,
             'customer_location': sale.party.customer_location.id,
-        }, context=context)
+        }, context=ctx)
 
         for line_id in moves:
             vals = moves[line_id]
             vals['packing_out'] = packing_id
-            move_id = move_obj.create(cursor, user, vals, context=context)
+            move_id = move_obj.create(cursor, 0, vals, context=ctx)
             sale_line_obj.write(cursor, user, line_id, {
                 'moves': [('add', move_id)],
                 }, context=context)
-        workflow_service.trg_validate(user, 'stock.packing.out', packing_id,
-                'waiting', cursor, context=context)
+        workflow_service.trg_validate(0, 'stock.packing.out', packing_id,
+                'waiting', cursor, context=ctx)
         return packing_id
 
     def ignore_packing_exception(self, cursor, user, sale_id, context=None):
