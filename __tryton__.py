@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Accounting',
     'description': '''Add analytic account on invoice lines and generate analytic lines on the moves of invoice.
 ''',
     'description_de_DE': ''' - Fügt Kostenstellen zu Rechnungszeilen hinzu
