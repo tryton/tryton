@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Human Resources',
     'description': '''Timesheet Module with:
     - Work
     - Timesheet line
