@@ -6,7 +6,6 @@
     "author" : "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    "category" : "Inventory",
     "description": "Define the delivery day of the week by suppliers.",
     "depends" : [
         "ir",
