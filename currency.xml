@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="res.group" id="group_currency_admin">
-            <field name="name">Currency admin</field>
+            <field name="name">Currency Administration</field>
         </record>
         <record model="res.user" id="res.user_admin">
             <field name="groups" eval="[('add', ref('group_currency_admin'))]"/>
