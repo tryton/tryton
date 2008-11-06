@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Purchase',
     'description': '''Add analytic account on purchase lines.
 ''',
     'description_de_DE': '''Fügt kostenstellen zu Einkaufspositionen hinzu
