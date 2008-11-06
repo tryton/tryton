@@ -514,6 +514,9 @@ class CreatePurchase(Wizard):
         line_obj = self.pool.get('purchase.line')
         date_obj = self.pool.get('ir.date')
 
+        if context is None:
+            context = {}
+
         form = data['form']
         if form.get('product') and form.get('party') and \
                 form.get('company'):
@@ -588,13 +591,15 @@ class CreatePurchase(Wizard):
                     purchase['purchase_date'] = request.purchase_date
 
         # Create all
+        ctx = context.copy()
+        ctx['user'] = user
         for purchase in purchases.itervalues():
             lines = purchase.pop('lines')
-            purchase_id = purchase_obj.create(cursor, user, purchase, context=context)
+            purchase_id = purchase_obj.create(cursor, 0, purchase, context=ctx)
             for line in lines:
                 request_id = line.pop('request')
                 line['purchase'] = purchase_id
-                line_id = line_obj.create(cursor, user, line, context=context)
+                line_id = line_obj.create(cursor, 0, line, context=ctx)
                 request_obj.write(
                     cursor, user, request_id, {'purchase_line': line_id},
                     context=context)
