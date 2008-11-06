@@ -73,6 +73,23 @@
             <field name="view" ref="line_view_form"/>
             <field name="act_window" ref="act_line_form"/>
         </record>
+
+        <record model="ir.model.access" id="access_line">
+            <field name="model" search="[('model', '=', 'analytic_account.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_line_account">
+            <field name="model" search="[('model', '=', 'analytic_account.line')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
         <record model="ir.action.wizard" id="act_open_account">
             <field name="name">Open Account</field>
             <field name="wiz_name">analytic_account.line.open_account</field>
@@ -101,5 +118,6 @@
                 ]]>
             </field>
         </record>
+
     </data>
 </tryton>
