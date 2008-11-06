@@ -53,4 +53,7 @@ setup(name='trytond_party',
     ],
     license='GPL-3',
     install_requires=requires,
+    extras_require={
+        'VAT': ['vatnumber'],
+    },
 )
