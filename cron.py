@@ -12,7 +12,7 @@ class Cron(OSV):
     def _callback(self, cursor, cron):
         cursor.execute("SELECT company from cron_company_rel "
                        "WHERE cron = %s", (cron['id'],))
-        for company in cursor.fetchall():
+        for company, in cursor.fetchall():
             cursor.execute("UPDATE res_user SET company = %s, main_company = %s "
                            "WHERE id = %s", (company, company, cron['user']))
             super(Cron, self)._callback(cursor, cron)
