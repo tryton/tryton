@@ -127,7 +127,7 @@
                     <field name="currency" select="2"/>
                     <field name="untaxed_amount" select="2"/>
                     <field name="total_amount" select="2"/>
-                    <field name="state" select="1"/>
+                    <field name="state" select="2"/>
                     <field name="invoice_state" select="2"/>
                     <field name="packing_state" select="2"/>
                     <field name="description" select="2"/>
