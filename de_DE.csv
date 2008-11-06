@@ -24,6 +24,7 @@ field,"stock.inventory,company",0,Company,Unternehmen,0
 field,"stock.inventory,date",0,Date,Datum,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Erwartete Menge,0
 field,"stock.inventory.line,inventory",0,Inventory,Lagerbestand,0
+field,"stock.inventory.line,move",0,Move,Bewegung,0
 field,"stock.inventory.line,product",0,Product,Artikel,0
 field,"stock.inventory.line,quantity",0,Quantity,Menge,0
 field,"stock.inventory,lines",0,Lines,Positionen,0
@@ -166,6 +167,7 @@ odt,stock.packing.out,0,Quantity,Menge,0
 odt,stock.packing.out,0,Reference:,Referenz,0
 selection,"stock.inventory,state",0,Cancel,Abbrechen,0
 selection,"stock.inventory,state",0,Done,Erledigt,0
+selection,"stock.inventory,state",0,Draft,Entwurf,0
 selection,"stock.inventory,state",0,Open,Offen,0
 selection,"stock.location,type",0,Customer,Kunde,0
 selection,"stock.location,type",0,Lost and Found,Nicht zugeordnet,0
