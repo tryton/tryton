@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Purchase',
     'description': '''Define purchase order.
 Add to product supplier and purchase informations.
 Define the purchase price as the supplier price or the cost price.
