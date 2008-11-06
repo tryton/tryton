@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Analytic Account',
+    'name_de_DE': 'Kostenstellen',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -12,6 +13,12 @@
 
 And with reports:
     - Analytic account balance
+''',
+    'description_de_DE': '''Modul für Buchhhaltung mit:
+    - Kostenstellen mit einer beliebigen Anzahl von Tabellen
+
+Zugehörige Berichte:
+    - Plan für Kostenstellen
 ''',
     'depends': [
         'ir',
