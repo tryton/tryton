@@ -1,5 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,purchase.request,0,Purchase request are only created by the system.,Bestellungen werden nur durch das System erstellt,0
+error,purchase.request.create_purchase,0,Purchase price is missing for product: %s (id: %s)!,Verkaufspreis für Produkt %s (id: %s) fehlt!,0
+error,purchase.request.create_purchase,0,This price is necessary for creating purchase.,Dieser Preis wird für die Erstellung von Bestellungen benötigt.,0
 error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,Maximale Anzahl muss größer als die Minimale Anzahl sein,0
 error,stock.order_point,0,Only one order point is allowed for each product-location pair.,Es ist nur ein Bestellpunkt für jede Paarung Artikel-Lagerort erlaubt,0
 error,stock.order_point,0,You can not define two order point on the same product with opposite locations.,Es ist nicht möglich zwei Bestellpunkte für den selben Artikel mit gegensätzlichen Lagerorten zu definieren.,0
