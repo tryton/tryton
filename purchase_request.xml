@@ -111,6 +111,7 @@
             <field name="name">Create Purchase</field>
             <field name="wiz_name">purchase.request.create_purchase</field>
             <field name="model">purchase.request</field>
+            <field name="groups" eval="[('add', ref('group_purchase_request'))]"/>
         </record>
         <record model="ir.action.keyword" id="create_purchase_keyword">
             <field name="keyword">form_action</field>
