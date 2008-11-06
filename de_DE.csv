@@ -74,6 +74,7 @@ field,"account.invoice.pay_invoice.ask,account_writeoff",0,Account,Konto,0
 field,"account.invoice.pay_invoice.ask,amount",0,Amount,Betrag,0
 field,"account.invoice.pay_invoice.ask,company",0,Company,Unternehmen,0
 field,"account.invoice.pay_invoice.ask,currency",0,Currency,Währung,0
+field,"account.invoice.pay_invoice.ask,currency_digits",0,Currency Digits,Stellen Währung,0
 field,"account.invoice.pay_invoice.ask,date",0,Date,Datum,0
 field,"account.invoice.pay_invoice.ask,description",0,Description,Beschreibung,0
 field,"account.invoice.pay_invoice.ask,journal",0,Journal,Journal,0
@@ -83,6 +84,7 @@ field,"account.invoice.pay_invoice.ask,lines_to_pay",0,Lines to Pay,Zahlbare Pos
 field,"account.invoice.pay_invoice.ask,type",0,Type,Typ,0
 field,"account.invoice.pay_invoice.init,amount",0,Amount,Betrag,0
 field,"account.invoice.pay_invoice.init,currency",0,Currency,Währung,0
+field,"account.invoice.pay_invoice.init,currency_digits",0,Currency Digits,Stellen Währung,0
 field,"account.invoice.pay_invoice.init,date",0,Date,Datum,0
 field,"account.invoice.pay_invoice.init,description",0,Description,Beschreibung,0
 field,"account.invoice.pay_invoice.init,journal",0,Journal,Journal,0
@@ -142,7 +144,7 @@ model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.action,name",credit_invoice,Credit,Gutschrift erstellen,0
 model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
 model,"ir.action,name",,Custom Invoice,,0
-model,"ir.action,name",report_invoice,Invoice,Angepasste Rechnung drucken,0
+model,"ir.action,name",report_invoice,Custom Invoice,Angepasste Rechnung drucken,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
