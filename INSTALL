@@ -27,5 +27,5 @@ documentation:
   http://peak.telecommunity.com/DevCenter/EasyInstall
   http://docs.python.org/inst/inst.html
 
-To use without installation, extract the archive ``trytond/modules`` with
-the name party.
+To use without installation, extract the archive into ``trytond/modules`` with
+the directory name party.
