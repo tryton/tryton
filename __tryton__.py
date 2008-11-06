@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Accounting',
     'description': '''Financial and Accounting Module with:
     - Statement
     - Statement journal
