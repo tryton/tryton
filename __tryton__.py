@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Generic',
     'description': '''Define currencies and exchange rate.
 Allow to customize the formatting of the currency amount.
 ''',
