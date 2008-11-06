@@ -6,7 +6,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Generic',
     'description': 'Add FIFO cost method on product.',
     'depends': [
         'ir',
