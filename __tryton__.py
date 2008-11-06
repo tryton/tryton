@@ -7,7 +7,6 @@
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category' : 'Generic',
     'description': 'Define all countries and subdivisions.',
     'description_de_DE': 'Stellt sämtliche Länder und ihre subnationalen Einheiten zur Verfügung.',
     'depends' : ['ir', 'res'],
