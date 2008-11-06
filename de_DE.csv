@@ -1,6 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,party.address,0,You can not modify the party of an address!,Der Partner für eine Adresse kann nicht geändert werden!,0
 error,party.category,0,You can not create recursive categories!,Kategorien dürfen nicht rekursiv sein,0
+error,party.contact_mechanism,0,You can not modify the party of a contact mechanism!,Der Partner einer Kontaktmöglichkeit kann nicht geändert werden!,0
 error,party.contact_mechanism,0,You can not modify the party of an contact mechanism!,Der Partner einer Kontaktmöglichkeit kann nicht geändert werden!,0
 error,party.party,0,The code of the party must be unique!,Der Name des Partners kann nicht mehrfach vergeben werden!,0
 error,party.party,0,Wrong VAT number!,Falsche USt-ID Nr.,0
