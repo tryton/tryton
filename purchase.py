@@ -650,6 +650,9 @@ class Purchase(OSV):
         invoice_line_obj = self.pool.get('account.invoice.line')
         purchase_line_obj = self.pool.get('purchase.line')
 
+        if context is None:
+            context = {}
+
         purchase = self.browse(cursor, user, purchase_id, context=context)
 
         invoice_lines = self._get_invoice_line_purchase_line(cursor, user,
@@ -663,7 +666,9 @@ class Purchase(OSV):
         if journal_id:
             journal_id = journal_id[0]
 
-        invoice_id = invoice_obj.create(cursor, user, {
+        ctx = context.copy()
+        ctx['user'] = user
+        invoice_id = invoice_obj.create(cursor, 0, {
             'company': purchase.company.id,
             'type': 'in_invoice',
             'reference': purchase.reference,
@@ -674,18 +679,18 @@ class Purchase(OSV):
             'currency': purchase.currency.id,
             'account': purchase.party.account_payable.id,
             'payment_term': purchase.payment_term.id,
-        }, context=context)
+        }, context=ctx)
 
         for line_id in invoice_lines:
             vals = invoice_lines[line_id]
             vals['invoice'] = invoice_id
-            invoice_line_id = invoice_line_obj.create(cursor, user, vals,
-                    context=context)
+            invoice_line_id = invoice_line_obj.create(cursor, 0, vals,
+                    context=ctx)
             purchase_line_obj.write(cursor, user, line_id, {
                 'invoice_lines': [('add', invoice_line_id)],
                 }, context=context)
 
-        invoice_obj.update_taxes(cursor, user, [invoice_id], context=context)
+        invoice_obj.update_taxes(cursor, 0, [invoice_id], context=ctx)
 
         self.write(cursor, user, purchase_id, {
             'invoices': [('add', invoice_id)],
@@ -1052,6 +1057,9 @@ class PurchaseLine(OSV):
         uom_obj = self.pool.get('product.uom')
         product_supplier_obj = self.pool.get('purchase.product_supplier')
 
+        if context is None:
+            context = {}
+
         vals = {}
         if line.type != 'line':
             return
@@ -1088,7 +1096,9 @@ class PurchaseLine(OSV):
                                     context=context)[0]
                     break
 
-        move_id = move_obj.create(cursor, user, vals, context=context)
+        ctx = context.copy()
+        ctx['user'] = user
+        move_id = move_obj.create(cursor, 0, vals, context=ctx)
 
         self.write(cursor, user, line.id, {
             'moves': [('add', move_id)],
