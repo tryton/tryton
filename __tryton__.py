@@ -7,7 +7,6 @@
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category' : 'Generic',
     'description': 'Define products, categories of product, units ' \
         'of measure, categories of units of measure.',
     'description_de_DE': 'Dient der Erstellung von Artikeln, Artikelkategorien, Maßeinheiten und Kategorien für Maßeinheiten.',
