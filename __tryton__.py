@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Sale',
     'description': '''Add analytic account on sale lines.
 ''',
     'description_de_DE': '''Fügt Kostenstellen zu den Verkaufspositionen hinzu
