@@ -273,6 +273,8 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="amount_second_currency"
                                         sum="Amount Second Currency"/>
                                     <field name="second_currency"/>
+                                    <field name="currency_digits" tree_invisible="1"/>
+                                    <field name="second_currency_digits" tree_invisible="1"/>
                                 </tree>
                             </field>
                         </page>
