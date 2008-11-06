@@ -1,7 +1,13 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+
+        <record model="res.group" id="group_purchase_request">
+            <field name="name">Purchase Request</field>
+        </record>
+
         <record model="ir.ui.view" id="purchase_request_view_form">
             <field name="model">purchase.request</field>
             <field name="type">form</field>
@@ -160,9 +166,6 @@
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="res.group" id="group_purchase_request">
-            <field name="name">Purchase Request</field>
         </record>
         <record model="ir.model.access" id="access_purchase_request_admin">
             <field name="model" search="[('model', '=', 'purchase.request')]"/>
