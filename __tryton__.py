@@ -7,7 +7,6 @@
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category' : 'Generic',
     'description': 'Add link from addresses to Google Maps',
     'description_de_DE': 'Fügt einen Link für den automatischen Aufruf von Google Maps zu Adressen hinzu.',
     'depends' : [
