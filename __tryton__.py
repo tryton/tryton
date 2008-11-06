@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Generic',
     'description': '''Define company and employee.
 Add main and current company on users preferences.
 Add company on properties.
