@@ -182,6 +182,25 @@ class Move(OSV):
                         context=context)
         return super(Move, self).delete(cursor, user, ids, context=context)
 
+    def copy(self, cursor, user, move_id, default=None, context=None):
+        line_obj = self.pool.get('account.move.line')
+
+        if default is None:
+            default = {}
+        default['reference'] = False
+        default['state'] = self.default_state(cursor, user, context=context)
+        default['post_date'] = False
+        default['line'] = False
+        new_id = super(Move, self).copy(cursor, user, move_id, default=default,
+                context=context)
+
+        move = self.browse(cursor, user, move_id, context=context)
+        for line in move.lines:
+            line_obj.copy(cursor, user, line.id, default={
+                'move': new_id,
+                }, context=context)
+        return new_id
+
     def validate(self, cursor, user, ids, context=None):
         '''
         Validate balanced move and centralise it if in centralised journal
