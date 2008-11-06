@@ -9,7 +9,6 @@
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category' : 'Generic',
     'description': 'Define parties, addresses and co.',
     'description_fr_FR': 'Définit des tiers, des adresses, etc.',
     'description_de_DE': 'Ermöglicht die Erstellung von Kontakten, Adressen, etc.',
