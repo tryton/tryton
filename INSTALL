@@ -12,7 +12,7 @@ Prerequisites
 Installation
 ------------
 
-Once you've downloaded and unpacked a trytond source release, enter the
+Once you've downloaded and unpacked a trytond_party source release, enter the
 directory where the archive was unpacked, and run:
 
     python setup.py install
