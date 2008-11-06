@@ -8,7 +8,10 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'category': 'Accounting',
-    'description': 'Account Statement Module',
+    'description': '''Financial and Accounting Module with:
+    - Statement
+    - Statement journal
+''',
     'description_de_DE': '''Modul für Buchhaltung und Bankauszüge mit
     - Abstimmung von Bankauszügen und Rechnungen
 ''',
