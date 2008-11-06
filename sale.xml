@@ -69,22 +69,22 @@
                                 <field name="state"/>
                                 <group col="6" colspan="2">
                                     <button name="cancel" string="Cancel"
-                                        states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (packing_state == 'exception')) '''}"
+                                        states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (packing_state == 'exception')) ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                         icon="tryton-cancel"/>
                                     <button name="draft" string="Draft"
-                                        states="{'invisible': '''state != 'quotation' '''}"
+                                        states="{'invisible': '''state != 'quotation' ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                         icon="tryton-clear"/>
                                     <button name="quotation" string="Quotation"
-                                        states="{'invisible': '''state != 'draft' '''}"
+                                        states="{'invisible': '''state != 'draft' ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                         icon="tryton-go-next"/>
                                     <button name="invoice_ok" string="Ignore Invoice Exception"
-                                        states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' '''}"
+                                        states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                         icon="tryton-go-next"/>
                                     <button name="packing_ok" string="Ignore Packing Exception"
-                                        states="{'invisible': '''packing_state != 'exception' or state == 'cancel' '''}"
+                                        states="{'invisible': '''packing_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                         icon="tryton-go-next"/>
                                     <button name="confirm" string="Confirm"
-                                        states="{'invisible': '''state != 'quotation' '''}"
+                                        states="{'invisible': '''state != 'quotation' ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                         icon="tryton-go-next"/>
                                 </group>
                             </group>
@@ -215,8 +215,8 @@
         <record model="ir.model.access" id="access_sale">
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_sale_sale">
@@ -718,9 +718,9 @@
         <record model="ir.model.access" id="access_sale_line">
             <field name="model" search="[('model', '=', 'sale.line')]"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_sale_line_sale">
             <field name="model" search="[('model', '=', 'sale.line')]"/>
