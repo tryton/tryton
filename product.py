@@ -154,7 +154,8 @@ class Product(OSV):
                 wh_to_add[location.id] = location.storage_location.id
         location_ids = list(location_ids)
 
-        move_query, move_val = rule_obj.domain_get(cursor, user, 'stock.move')
+        move_query, move_val = rule_obj.domain_get(cursor, user, 'stock.move',
+                context=context)
 
         if not context.get('stock_date_end'):
             context = context.copy()
