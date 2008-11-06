@@ -7,7 +7,7 @@ import re
 
 info = eval(file('__tryton__.py').read())
 
-requires = []
+requires = ['egenix-mx-base']
 for dep in info.get('depends', []):
     match = re.compile(
             '(ir|res|workflow|webdav)((\s|$|<|>|<=|>=|==|!=).*?$)').match(dep)
