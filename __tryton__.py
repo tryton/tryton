@@ -29,13 +29,13 @@ Ermöglicht:
     - die Erstellung von Gutschriften zu jeglicher Rechnung
 ''',
     'description_fr_FR': '''Module financier et comptable avec:
-    - condition de paiement
+    - Condition de paiement
     - Facture / Note de crédit
-    - facture fournisseur / Note de crédit fournisseur
+    - Facture fournisseur / Note de crédit fournisseur
 
 Avec la possibilité:
     - de suivre le paiment des factures
-    - de définir des numérotation de facture par période ou par année fiscale.
+    - de définir les numérotations de facture par période ou par année fiscale
     - de créditer n'importe quelle facture
 ''',
     'depends': [
