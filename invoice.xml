@@ -232,20 +232,26 @@ this repository contains the full copyright notices and license terms. -->
                                 <label name="state"/>
                                 <field name="state"/>
                                 <group col="5" colspan="2">
-                                    <button name="proforma" string="Pro For_ma"
-                                        states="{'invisible': '''state != 'draft' '''}"/>
-                                    <button name="draft" string="_Draft"
-                                        states="{'invisible': '''state != 'proforma' '''}"/>
-                                    <button name="open" string="_Open"
-                                        states="{'invisible': '''state not in ('draft', 'proforma') ''', 'readonly': ''' %(account.group_account)d not in groups '''}"/>
                                     <button name="cancel" string="_Cancel"
-                                        states="{'invisible': '''state not in ('draft', 'proforma') ''', 'readonly': ''' %(account.group_account)d not in groups '''}"/>
+                                        states="{'invisible': '''state not in ('draft', 'proforma') ''', 'readonly': ''' %(account.group_account)d not in groups '''}"
+                                        icon="tryton-cancel"/>
                                     <button name="button_draft" string="_Reset to Draft"
                                         type="object"
-                                        states="{'invisible': '''state != 'cancel' '''}"/>
+                                        states="{'invisible': '''state != 'cancel' '''}"
+                                        icon="tryton-clear"/>
+                                    <button name="draft" string="_Draft"
+                                        states="{'invisible': '''state != 'proforma' '''}"
+                                        icon="tryton-clear"/>
+                                    <button name="proforma" string="Pro For_ma"
+                                        states="{'invisible': '''state != 'draft' '''}"
+                                        icon="tryton-go-next"/>
+                                    <button name="open" string="_Open"
+                                        states="{'invisible': '''state not in ('draft', 'proforma') ''', 'readonly': ''' %(account.group_account)d not in groups '''}"
+                                        icon="tryton-ok"/>
                                     <button name="%(wizard_pay_invoice)d" string="_Pay"
                                         type="action"
-                                        states="{'invisible': '''state != 'open' ''', 'readonly': ''' %(account.group_account)d not in groups '''}"/>
+                                        states="{'invisible': '''state != 'open' ''', 'readonly': ''' %(account.group_account)d not in groups '''}"
+                                        icon="tryton-go-next"/>
                                 </group>
                             </group>
                         </page>
