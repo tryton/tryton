@@ -3,12 +3,14 @@
 {
     'name' : 'Country',
     'name_de_DE': 'Länder',
+    'name_fr_FR': 'Pays',
     'version' : '0.0.1',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Define all countries and subdivisions.',
     'description_de_DE': 'Stellt sämtliche Länder und ihre subnationalen Einheiten zur Verfügung.',
+    'description_fr_FR': 'Défini tous les pays ainsi que leurs subdivisions.',
     'depends' : ['ir', 'res'],
     'xml' : [
         'country.xml',
