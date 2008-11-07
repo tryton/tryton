@@ -3,6 +3,7 @@
 {
     'name': 'Analytic Account',
     'name_de_DE': 'Kostenstellen',
+    'name_fr_FR': 'Comptabilité analytique',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -10,7 +11,7 @@
     'description': '''Financial and Accounting Module with:
     - Analytic accounting with any number of analytic charts
 
-And with reports:
+And with report:
     - Analytic account balance
 ''',
     'description_de_DE': '''Modul für Buchhhaltung mit:
@@ -22,7 +23,7 @@ Zugehörige Berichte:
     'description_fr_FR': '''Module comptable et financier, avec:
     - Comptabilité analytique autorisant un nombre arbitraire d'axes.
 
-Et les rapports
+Et le rapport:
     - Balance comptable analytique
 ''',
 
