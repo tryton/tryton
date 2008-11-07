@@ -3,6 +3,7 @@
 {
     'name': 'Account Invoice',
     'name_de_DE': 'Buchhaltung Rechnungsstellung',
+    'name_fr_FR': 'Facturation'
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -26,6 +27,16 @@ Ermöglicht:
     - die Verfolgung der Bezahlung von Rechnungen
     - die Definition von Rechnungssequenzen für das Geschäftsjahr bzw. die Buchungszeiträume
     - die Erstellung von Gutschriften zu jeglicher Rechnung
+''',
+    'description_fr_FR': '''Module financier et comptable avec:
+    - condition de paiement
+    - Facture / Note de crédit
+    - facture fournisseur / Note de crédit fournisseur
+
+Avec la possibilité:
+    - de suivre le paiment des factures
+    - de définir des numérotation de facture par période ou par année fiscale.
+    - de créditer n'importe quelle facture
 ''',
     'depends': [
         'ir',
