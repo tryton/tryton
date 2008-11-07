@@ -244,6 +244,7 @@ class InventoryLine(OSV):
             default = {}
         default = default.copy()
         default['inventory']= False
+        default['move'] = False
         return super(InventoryLine, self).copy(cursor, user, line_id,
                 default=default, context=context)
 
