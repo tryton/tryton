@@ -3,6 +3,7 @@
 {
     'name': 'Stock Management',
     'name_de_DE': 'Lagerverwaltung',
+    'name_fr_FR': 'Gestion des stocks',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -27,6 +28,17 @@ Zugehörige Berichte:
     - Lieferschein für Kunden
     - Artikel nach Lagerorten
 ''',
+    'description_fr_FR':'''Gestion des stocks et contrôle de l'inventaire avec:
+    - Emplacement
+    - Mouvement de stock
+    - Colisages client / fournisseur / interne
+    - Inventaire
+
+Et les rapports:
+    - Colisage client
+    - Quantités de produit par location
+''',
+
     'depends': [
         'ir',
         'workflow',
