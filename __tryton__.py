@@ -26,7 +26,7 @@ Make the scheduler run on each companies.
 Ajoute les compagnies principale et courante dans les préférences de l'utilisateur.
 Ajoute la compagnie sur les propriétés.
 Défini un nouveau moteur de rapport gérant une entête par compagnie.
-Ajoute un canva de lettre par compagnie.
+Ajoute un canva de lettre par tiers.
 Lance les planificateurs sur chaque compagnie.
 ''',
 
