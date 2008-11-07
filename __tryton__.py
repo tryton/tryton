@@ -3,6 +3,7 @@
 {
     'name': 'Account Product',
     'name_de_DE': 'Buchhaltung Artikel',
+    'name_fr_FR': 'Compte produit',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -14,6 +15,10 @@
     'description_de_DE': '''Fügt Eigenschaften für die Buchhaltung zu Artikeln und Artikelkategorien hinzu:
     - Aufwands- und Ertragskonto
     - Steuern für Kunden und Lieferanten
+''',
+    'description_fr_FR': '''Ajoute des propriétés comptables sur les produits et leurs caétgories:
+    - comptes de dépense et revenu
+    - taxes client et fournisseur
 ''',
     'depends': [
         'ir',
