@@ -3,6 +3,7 @@
 {
     'name': 'Currency',
     'name_de_DE': 'Währung',
+    'name_fr_FR': 'Devise',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -12,6 +13,9 @@ Allow to customize the formatting of the currency amount.
 ''',
     'description_de_DE': ''' - Ermöglicht die Eingabe von Währungen und Wechselkursen.
  - Erlaubt die beliebige Formatierung von Währungsbeträgen.
+''',
+    'description_fr_FR': '''Défini les devises et leurs taux de change.
+Permet de formater les montants en fonction de la devise.
 ''',
     'depends': [
         'ir',
