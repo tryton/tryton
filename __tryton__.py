@@ -3,6 +3,7 @@
 {
     'name': 'Stock Supply Management',
     'name_de_DE': 'Lagerverwaltung Beschaffung',
+    'name_fr_FR': 'Gestion des approvisionnements de stock',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -11,7 +12,7 @@
     - Order point
     - Purchase Request
 
-With scheduler:
+With schedulers:
     - to generate purchase request based on order points
     - to generate internal packing based on order points
 ''',
@@ -23,6 +24,16 @@ Mit automatischer Auftragserstellung per Zeitplaner:
     - um Bestellungen auf der Basis von Bestellpunkten zu erstellen
     - um internen Versand auf der Basis von Bestellpunkten zu erstellen
 ''',
+    'description_fr_FR': '''Module de gestion des approvisionnements avec:
+    - Règles d'approvisionnement
+    - Demandes d'achat
+
+Et les planificateurs pour générer:
+    - des demandes d'achat et
+    - des colisages internes
+sur base des règles d'approvisionnement
+''',
+
     'depends': [
         'ir',
         'res',
