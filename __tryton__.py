@@ -43,7 +43,7 @@ Zugehörige Berichte:
     'description_fr_FR': '''Module financier et comptable avec:
     - Comptabilité générale
     - Gestion des années fiscales
-    - gestion des taxes
+    - Gestion des taxes
     - Journaux d'entrées
     - Réconciliation
 
