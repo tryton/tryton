@@ -12,7 +12,7 @@
 ''',
     'description_de_DE': '''Fügt Kostenstellen zu den Verkaufspositionen hinzu
 ''',
-    'description_fr_FR':'Ajoute la comptabilité analytique sur les lignes de facture',
+    'description_fr_FR': 'Ajoute la comptabilité analytique sur les lignes de facture',
     'depends': [
         'sale',
         'analytic_account',
