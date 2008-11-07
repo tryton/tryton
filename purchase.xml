@@ -752,10 +752,44 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/form/notebook/page/field[@name=&quot;incoming_moves&quot;]/tree/field[@name=&quot;product&quot;]"
+                    <xpath expr="/form/notebook/page/field[@name=&quot;incoming_moves&quot;]/tree/field[@name=&quot;uom&quot;]"
                         position="after">
-                        <field name="supplier" select="1"/>
                         <field name="purchase" select="1"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/field[@name=&quot;uom&quot;]"
+                        position="after">
+                        <label name="purchase_quantity"/>
+                        <field name="purchase_quantity"/>
+                        <label name="purchase_unit"/>
+                        <field name="purchase_unit"/>
+                    </xpath>
+                    <xpath expr="/form/field[@name=&quot;currency&quot;]"
+                        position="after">
+                        <label name="purchase_unit_price"/>
+                        <field name="purchase_unit_price"/>
+                        <label name="purchase_currency"/>
+                        <field name="purchase_currency"/>
+                    </xpath>
+                    <xpath expr="/form/field[@name=&quot;effective_date&quot;]"
+                        position="after">
+                        <label name="purchase"/>
+                        <field name="purchase"/>
+                        <newline/>
+                    </xpath>
+                    <xpath expr="/form/field[@name=&quot;unit_digits&quot;]"
+                        position="after">
+                        <field name="purchase_unit_digits" invisible="1" colspan="4"/>
                     </xpath>
                 </data>
                 ]]>

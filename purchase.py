@@ -1390,7 +1390,37 @@ class Move(OSV):
             })
     purchase = fields.Function('get_purchase', type='many2one',
             relation='purchase.purchase', string='Purchase',
-            fnct_search='search_purchase', select=1)
+            fnct_search='search_purchase', select=1, states={
+                'invisible': "type != 'input'",
+            })
+    purchase_quantity = fields.Function('get_purchase_fields',
+            type='float', digits="(16, unit_digits)",
+            string='Purchase Quantity',
+            states={
+                'invisible': "type != 'input'",
+            })
+    purchase_unit = fields.Function('get_purchase_fields',
+            type='many2one', relation='product.uom',
+            string='Purchase Unit',
+            states={
+                'invisible': "type != 'input'",
+            })
+    purchase_unit_digits = fields.Function('get_purchase_fields',
+            type='integer', string='Purchase Unit Digits',
+            states={
+                'invisible': "type != 'input'",
+            })
+    purchase_unit_price = fields.Function('get_purchase_fields',
+            type='numeric', digits=(16, 4), string='Purchase Unit Price',
+            states={
+                'invisible': "type != 'input'",
+            })
+    purchase_currency = fields.Function('get_purchase_fields',
+            type='many2one', relation='currency.currency',
+            string='Purchase Currency',
+            states={
+                'invisible': "type != 'input'",
+            })
     supplier = fields.Function('get_supplier', type='many2one',
             relation='party.party', string='Supplier',
             fnct_search='search_supplier', select=1)
@@ -1424,6 +1454,62 @@ class Move(OSV):
             args2.append(('purchase_line.' + field, args[i][1], args[i][2]))
             i += 1
         return args2
+
+    def get_purchase_fields(self, cursor, user, ids, names, arg, context=None):
+        uom_obj = self.pool.get('product.uom')
+        currency_obj = self.pool.get('currency.currency')
+
+        res = {}
+        for name in names:
+            res[name] = {}
+
+        for move in self.browse(cursor, user, ids, context=context):
+            for name in res.keys():
+                if name[9:] == 'quantity':
+                    res[name][move.id] = 0.0
+                elif name[9:] == 'unit_digits':
+                    res[name][move.id] = 2
+                else:
+                    res[name][move.id] = False
+            if move.purchase_line:
+                for name in res.keys():
+                    if name[9:] == 'currency':
+                        res[name][move.id] = move.purchase_line.\
+                                purchase.currency.id
+                    elif name[9:] in ('quantity', 'unit_digits', 'unit_price'):
+                        res[name][move.id] = move.purchase_line[name[9:]]
+                    else:
+                        res[name][move.id] = move.purchase_line[name[9:]].id
+
+        if 'purchase_unit' in res.keys():
+            unit_names = {}
+            for unit_id, unit_name in uom_obj.name_get(cursor, user,
+                    list(set([x for x in res['purchase_unit'].values() if x])),
+                    context=context):
+                unit_names[unit_id] = (unit_id, unit_name)
+            for i in res['purchase_unit'].keys():
+                if res['purchase_unit'][i] and \
+                        res['purchase_unit'][i] in unit_names:
+                    res['purchase_unit'][i] = unit_names[
+                            res['purchase_unit'][i]]
+                else:
+                    res['purchase_unit'][i] = False
+
+        if 'purchase_currency' in res.keys():
+            currency_names = {}
+            for currency_id, currency_name in currency_obj.name_get(cursor,
+                    user,
+                    list(set([x for x in res['purchase_currency'].values() if x])),
+                    context=context):
+                currency_names[currency_id] = (currency_id, currency_name)
+            for i in res['purchase_currency'].keys():
+                if res['purchase_currency'][i] and \
+                        res['purchase_currency'][i] in currency_names:
+                    res['purchase_currency'][i] = currency_names[
+                            res['purchase_currency'][i]]
+                else:
+                    res['purchase_currency'][i] = False
+        return res
 
     def get_supplier(self, cursor, user, ids, name, arg, context=None):
         party_obj = self.pool.get('party.party')
