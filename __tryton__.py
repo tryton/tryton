@@ -3,6 +3,7 @@
 {
     'name': 'Account',
     'name_de_DE': 'Buchhaltung',
+    'name_fr_FR': 'Comptabilité',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -38,6 +39,22 @@ Zugehörige Berichte:
     - Offene Posten
     - Fälligkeitsliste
     - Allgemeinem Journal
+''',
+    'description_fr_FR': '''Module financier et comptable avec:
+    - Comptabilité générale
+    - Gestion des années fiscales
+    - gestion des taxes
+    - Journaux d'entrées
+    - Réconciliation
+
+Et les rapports:
+    - Grand livre
+    - Balance
+    - Bilan
+    - Compte des résultats
+    - Balance des tiers
+    - Balance agée
+    - Journal général
 ''',
     'depends': [
         'ir',
