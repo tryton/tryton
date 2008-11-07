@@ -3,7 +3,7 @@
 {
     'name': 'Account Invoice',
     'name_de_DE': 'Buchhaltung Rechnungsstellung',
-    'name_fr_FR': 'Facturation'
+    'name_fr_FR': 'Facturation',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
