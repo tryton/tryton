@@ -1406,10 +1406,7 @@ class Move(OSV):
                 'invisible': "type != 'input'",
             })
     purchase_unit_digits = fields.Function('get_purchase_fields',
-            type='integer', string='Purchase Unit Digits',
-            states={
-                'invisible': "type != 'input'",
-            })
+            type='integer', string='Purchase Unit Digits')
     purchase_unit_price = fields.Function('get_purchase_fields',
             type='numeric', digits=(16, 4), string='Purchase Unit Price',
             states={
