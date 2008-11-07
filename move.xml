@@ -31,8 +31,8 @@
                         <separator colspan="4"/>
                         <label name="state"/>
                         <field name="state"/>
-                        <field name="type" invisible="1"/>
-                        <field name="unit_digits" invisible="1"/>
+                        <field name="type" invisible="1" colspan="4"/>
+                        <field name="unit_digits" invisible="1" colspan="4"/>
                     </form>
                 ]]>
             </field>
