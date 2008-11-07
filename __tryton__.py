@@ -3,6 +3,7 @@
 {
     'name': 'Timesheet',
     'name_de_DE': 'Zeiterfassung',
+    'name_fr_FR': 'Feuille de présence',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -13,8 +14,8 @@
 
 And with reports:
     - Hours per work
-    - hours per employee per week
-    - hours per employee per month
+    - Hours per employee per week
+    - Hours per employee per month
 ''',
     'description_de_DE': '''Zeiterfassungsmodul mit:
     - Aufgaben
@@ -25,6 +26,16 @@ Zugehörige Berichte:
     - Stunden pro Mitarbeiter pro Woche
     - Stunden pro Mitarbeiter pro Monat
 ''',
+    'description': '''Module feuille de présence, avec:
+    - Tâche
+    - Ligne de feuille de présence
+
+Et les rapports:
+    - Heures par tâche
+    - Heures par employé par semaine
+    - Heures par employé par mois
+''',
+
     'depends': [
         'ir',
         'res',
