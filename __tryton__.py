@@ -3,17 +3,20 @@
 {
     'name': 'Project Revenue',
     'name_de_DE': 'Projekte Ertrag',
+    'name_fr_FR': 'Revenu des projets',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add product on timesheet lines.
-Define allowed service for each employees.
+Define allowed services for each employees.
 ''',
     'description_de_DE': ''' - Ermöglicht das Hinzufügen von Artikeln zu Zeitpositionen.
  - Ermöglicht die Definition von Dienstleistungen, die für einen Mitarbeiter verwendet werden können.
 ''',
-    'depends': [
+    'description': '''Ajoute le produit sur la ligne de présence.
+Défini par employé quels services sont autorisés.
+''',    'depends': [
         'ir',
         'project',
         'company',
