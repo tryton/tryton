@@ -4,6 +4,7 @@
     'name': 'Purchase',
     'name_de_DE': 'Einkauf',
     'name_fr_FR': 'Achat',
+    'name_es_ES': 'Compras',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -41,6 +42,17 @@ Avec la possibilité:
         - Manuelle
         - Sur base de la commande
         - Sur base du colis
+''',
+    'description_es_ES': ''' - Definición de orden de compras.
+ - Se añade información de proveedor y de compra de un producto.
+ - Se define el precio de compra con el precio de proveedor o costo.
+
+ - Con la posibilidad de:
+    - seguir el estado de facturación y empaque desde la orden de compra.
+    - elegir el método de facturación:
+        - Manual
+        - Basado en Orden
+        - Basado en Empaque
 ''',
 
     'depends': [
