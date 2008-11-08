@@ -3,6 +3,7 @@
 {
     'name': 'Analytic Invoice',
     'name_de_DE': 'Kostenstellen Rechnungsstellung',
+    'name_es_ES': 'Facturación Analítica',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -11,6 +12,9 @@
 ''',
     'description_de_DE': ''' - Fügt Kostenstellen zu Rechnungszeilen hinzu
  - Erstellt Positionen für Kostenstellen bei Buchung von Rechnungen
+''',
+    'description': ''' - Adición de contabilidad analítica a las líneas de facturación 
+ -  Generación de líneas analíticas en la factura.
 ''',
     'depends': [
         'account_invoice',
