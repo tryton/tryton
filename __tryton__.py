@@ -4,6 +4,7 @@
     'name': 'Analytic Sale',
     'name_de_DE': 'Kostenstellen Verkauf',
     'name_fr_FR': 'Vente analytique',
+    'name_es_ES': 'Ventas Analíticas',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -13,6 +14,8 @@
     'description_de_DE': '''Fügt Kostenstellen zu den Verkaufspositionen hinzu
 ''',
     'description_fr_FR': 'Ajoute la comptabilité analytique sur les lignes de facture',
+    'description_es_ES': '''Añade cuentas analíticas a las líneas de ventas.
+''',
     'depends': [
         'sale',
         'analytic_account',
