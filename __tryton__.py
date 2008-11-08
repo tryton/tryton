@@ -4,6 +4,7 @@
     'name': 'Sale',
     'name_de_DE': 'Verkauf',
     'name_fr_FR': 'Vente',
+    'name_es_ES': 'Ventas',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -53,7 +54,21 @@ Avec la possibilité:
         ' Sur confirmation de la commande
         ' Au paiement de la facture
 ''',
+    'description_es_ES': ''' - Define la orden de Ventas.
+ - Se añade al producto la información de ventas.
+ - Definición del precio de venta y el precio de lista.
 
+ - Con las posibilidades de:
+    - seguir los estados de facturación y empaque desde la orden de venta.
+    - definir el método de facturación:
+        - Manual
+        - Al Confirmar la Orden
+        - Al Envío del Paquete
+    - definir el método de empaque:
+        - Manual
+        - Al Confirmar la Orden
+        - Contra el Pago de la Factura
+''',
     'depends': [
         'company',
         'party',
