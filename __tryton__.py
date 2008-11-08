@@ -4,6 +4,7 @@
     'name': 'Stock Management',
     'name_de_DE': 'Lagerverwaltung',
     'name_fr_FR': 'Gestion des stocks',
+    'name_es_ES': 'Inventarios',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -37,6 +38,16 @@ Zugehörige Berichte:
 Et les rapports:
     - Colisage client
     - Quantités de produit par location
+''',
+    'description_es_ES': '''Administración de Inventarios y bodegas:
+    - Definición de sitios
+    - Movimiento de Bodega
+    - Empaque de Proveedor / Cliente / Interno
+    - Inventario en Bodega
+
+Y con los reportes:
+    - Empaques de Clientes
+    - Productos por Lugar
 ''',
 
     'depends': [
