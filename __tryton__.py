@@ -3,6 +3,7 @@
 {
     'name': 'Account Statement',
     'name_de_DE': 'Buchhaltung Bankauszüge',
+    'name_es_ES': 'Estado de Cuentas',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -13,6 +14,10 @@
 ''',
     'description_de_DE': '''Modul für Buchhaltung und Bankauszüge mit
     - Abstimmung von Bankauszügen und Rechnungen
+''',
+    'description_es_ES': '''Módulo Financiero y Contable con:
+    - Estado de cuentas
+    - Diario de estado de cuentas
 ''',
     'depends': [
         'account',
