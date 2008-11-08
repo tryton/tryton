@@ -4,6 +4,7 @@
     'name': 'Analytic Purchase',
     'name_de_DE': 'Kostenstellen Einkauf',
     'name_fr_FR': 'Achat analytique',
+    'name_es_ES': 'Compra Analítica',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -13,6 +14,8 @@
     'description_de_DE': '''Fügt kostenstellen zu Einkaufspositionen hinzu
 ''',
     'description_fr_FR': 'Ajoute la comptabilité analytique sur les lignes d\'achat.',
+    'description_es_ES': '''Adiciona contabilidad analítica a las líneas de compra.
+''',
     'depends': [
         'purchase',
         'analytic_account',
