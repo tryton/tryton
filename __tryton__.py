@@ -4,6 +4,7 @@
     'name': 'Analytic Account',
     'name_de_DE': 'Kostenstellen',
     'name_fr_FR': 'Comptabilité analytique',
+    'name_es_ES': 'Contabilidad Analítica',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -26,7 +27,12 @@ Zugehörige Berichte:
 Et le rapport:
     - Balance comptable analytique
 ''',
+    'description_es_ES': '''Módulo Financiero y de Contabilidad con:
+    - Contabilidad Analítica con cualquier cantidad de planes analíticos
 
+Y con reportes:
+    - Balance Contable Analítico
+''',
     'depends': [
         'ir',
         'company',
