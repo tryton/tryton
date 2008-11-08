@@ -4,6 +4,7 @@
     'name': 'Company',
     'name_de_DE': 'Unternehmen',
     'name_fr_FR': 'Compagnie',
+    'name_es_ES': 'Compañía',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -29,7 +30,13 @@ Défini un nouveau moteur de rapport gérant une entête par compagnie.
 Ajoute un canva de lettre par tiers.
 Lance les planificateurs sur chaque compagnie.
 ''',
-
+    'description_es_ES': ''' - Define compañía y empleados.
+ - Añade compañía principal y predeterminada de acuerdo a preferencia de usuarios.
+ - Añade compañía a las propiedades.
+ - Define un nuevo reporteador para los encabezados de los reportes por compañía.
+ - Añade plantilla de carta a un tercero.
+ - Se ejecuta el agendador por compañía.
+''',
     'depends': [
         'ir',
         'res',
