@@ -4,6 +4,7 @@
     'name': 'Stock Supply Management',
     'name_de_DE': 'Lagerverwaltung Beschaffung',
     'name_fr_FR': 'Gestion des approvisionnements de stock',
+    'name_es_ES': 'Gestión de pedidos de inventario',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -32,6 +33,14 @@ Et les planificateurs pour générer:
     - des demandes d'achat et
     - des colisages internes
 sur base des règles d'approvisionnement
+''',
+    'description_es_ES': '''Módulo de Administración de pedidos:
+    - Punto de Orden
+    - Solicitud de Compras
+
+Con agendadores para:
+    - generar solicitudes de compra basados en puntos de orden
+    - generar empaques internos basados en puntos de orden
 ''',
 
     'depends': [
