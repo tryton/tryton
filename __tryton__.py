@@ -4,6 +4,7 @@
     'name': 'Currency',
     'name_de_DE': 'Währung',
     'name_fr_FR': 'Devise',
+    'name_es_ES': 'Moneda',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -16,6 +17,9 @@ Allow to customize the formatting of the currency amount.
 ''',
     'description_fr_FR': '''Défini les devises et leurs taux de change.
 Permet de formater les montants en fonction de la devise.
+''',
+    'description_es_ES': '''Define las monedas y la tasa de cambio.
+Permite personalizar el formato de visualización de la moneda.
 ''',
     'depends': [
         'ir',
