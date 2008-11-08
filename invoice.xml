@@ -227,10 +227,12 @@ this repository contains the full copyright notices and license terms. -->
                                 <field name="tax_amount"/>
                                 <label name="total_amount"/>
                                 <field name="total_amount"/>
-                                <label name="reconciled"/>
-                                <field name="reconciled"/>
-                                <label name="state"/>
-                                <field name="state"/>
+                                <group col="4" colspan="2">
+                                    <label name="reconciled"/>
+                                    <field name="reconciled" xexpand="0"/>
+                                    <label name="state"/>
+                                    <field name="state"/>
+                                </group>
                                 <group col="5" colspan="2">
                                     <button name="cancel" string="_Cancel"
                                         states="{'invisible': '''state not in ('draft', 'proforma') ''', 'readonly': ''' %(account.group_account)d not in groups '''}"
