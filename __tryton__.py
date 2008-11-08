@@ -4,6 +4,7 @@
     'name': 'Project',
     'name_de_DE': 'Projekte',
     'name_fr_FR': 'Projet',
+    'name_es_ES': 'Proyectos',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -16,6 +17,9 @@
 ''',
     'description_fr_FR': '''Module projet avec:
     - Gestion de projet
+''',
+    'description_es_ES': '''Módulo de proyectos con:
+    - Gestión de proyectos
 ''',
     'depends': [
         'ir',
