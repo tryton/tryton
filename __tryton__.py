@@ -5,6 +5,7 @@
     'name' : 'Party',
     'name_fr_FR': 'Tiers',
     'name_de_DE': 'Kontakte',
+    'name_es_ES': 'Terceros',
     'version' : '0.0.1',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
@@ -12,6 +13,7 @@
     'description': 'Define parties, addresses and co.',
     'description_fr_FR': 'Définit des tiers, des adresses, etc.',
     'description_de_DE': 'Ermöglicht die Erstellung von Kontakten, Adressen, etc.',
+    'description_es_ES': 'Definición de terceros, direcciones, etc.',
     'depends' : [
         'ir',
         'res',
