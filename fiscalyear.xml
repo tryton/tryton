@@ -42,9 +42,11 @@
                     <label string="" colspan="2"/>
                     <group col="1" colspan="2">
                         <button name="close" string="Close" type="object"
-                            states="{'invisible': '''state != 'open' '''}"/>
+                            states="{'invisible': '''state != 'open' '''}"
+                            icon="tryton-close"/>
                         <button name="reopen" string="Re-Open" type="object"
-                            states="{'invisible': '''state != 'close' '''}"/>
+                            states="{'invisible': '''state != 'close' '''}"
+                            icon="tryton-clear"/>
                     </group>
                 </form>
                 ]]>
