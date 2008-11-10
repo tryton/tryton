@@ -1,19 +1,21 @@
 type,name,res_id,src,value,fuzzy
 error,account.account,0,You can not create recursive accounts!,Vous ne pouvez pas créer des comptes recursifs,0
-error,account.account.open_aged_balance,0,Warning,Avertissement,0
-error,account.account.open_aged_balance,0,You cannot define overlapping terms,Vous ne pouvez pas définir des termes se chevauchant,0
+error,account.account,0,You can not delete account that have children!,Vous ne pouvez pas supprimer des comptes qui ont des enfants !,0
+error,account.account.deferral,0,Deferral must be unique by account and fiscal year,Le report doit être unique par compte et par année fiscale,0
+error,account.account.deferral,0,You can not modify Account Deferral records,Vous ne pouvez pas modifier les enregistrements de report de compte,0
 error,account.account.template,0,You can not create recursive accounts!,Vous ne pouvez pas créer des comptes recursifs,0
 error,account.fiscalyear,0,No fiscal year defined for this date!,Pas d'année fiscale définie pour cette période !,0
+error,account.fiscalyear,0,"The balance of the account ""%s"" must be zero!","La balance du compte ""%s"" doit être nulle !",0
 error,account.fiscalyear,0,You can not change the post move sequence,Vous ne pouvez pas changer la séquence des mouvements postés,0
+error,account.fiscalyear,0,You can not close a fiscal year until there is older fiscal year opened!,Vous ne pouvez pas fermer une année fiscale si uné année antérieure est encore ouverte !,0
 error,account.fiscalyear,0,You can not have 2 fiscal years that overlaps!,Vous ne pouvez pas avoir 2 années fiscales qui se chevauchent !,0
+error,account.fiscalyear,0,You can not re-open a fiscal year until there is youngest fiscal year closed!,Vous ne pouvez pas ré-ouvrir une année fiscale si une année plus récente est fermée !,0
 error,account.fiscalyear,0,You must have different post move sequence per fiscal year!,Vous devez avoir des séquences de mouvement posté différentes par année fiscale !,0
-error,account.fiscalyear.close_fiscalyear,0,The fiscal years must be different!,Les années fiscales doivent être différentes !,0
-error,account.fiscalyear.close_fiscalyear,0,The journal must be centralised!,Le journal doit être centralisé !,0
-error,account.fiscalyear.close_fiscalyear,0,The journal must have default debit/credit accounts!,Le journal doit avoir des comptes de débit/crédit différents !,0
-error,account.fiscalyear.close_fiscalyear,0,The period must be in the selected fiscal year!,La période doit être dans l'année fiscale selectionnée !,0
 error,account.journal.period,0,You can not create a journal - period on a closed period!,Vous ne pouvez pas créer a journal - période sur une période fermée !,0
 error,account.journal.period,0,You can not modify/delete a journal - period with moves!,Vous ne pouvez pas modifier ou supprimer un journal - période avec des mouvements !,0
 error,account.journal.period,0,You can not open a journal - period from a closed period!,Vous ne pouvez pas ouvrir un journal - période sur une période fermée !,0
+error,account.journal.period,0,You can only open one journal per period!,Vous ne pouvez ouvrir qu'un journal par période !,0
+error,account.journal.type,0,Code must be unique!,Le code doit être unique !,0
 error,account.move,0,"You can not create lines on account
 from different company in the same move!","Vous ne pouvez pas créer des lignes sur des comptes
 de compagnies différentes sur le même mouvement!",0
@@ -25,15 +27,17 @@ error,account.move,0,You can not modify a posted move in this journal!,Vous ne p
 error,account.move,0,You can not post an empty move!,Vous ne pouvez pas poster un mouvement vide !,0
 error,account.move,0,You can not post a unbalanced move!,Vous ne pouvez pas poster un mouvement non-balancé !,0
 error,account.move.line,0,No journal defined!,Pas de journal définit !,0
+error,account.move.line,0,Wrong credit/debit values!,Valeur crédit/débit incorrectes,0
 error,account.move.line,0,You can not add/modify lines in a closed journal period!,Vous ne pouvez pas ajouter/modifier des lignes sur un journal - périod fermé !,0
 error,account.move.line,0,"You can not create move line
 on view/inactive account!","Vous ne pouvez pas créer de ligne de mouvement
 sur un compte vue/inactif !",0
 error,account.move.line,0,You can not modify line from a posted move!,Vous ne pouvez pas modifier une ligne d'un mouvement posté !,0
 error,account.move.line,0,You can not modify reconciled line!,Vous ne pouvez pas modifier une ligne reconciliée !,0
-error,account.move.reconciliation,0,"You can not create reconciliation where lines are not balanced, nor valid, nor in the same account, nor in account to reconcile!","Vous ne pouvez pas créer de réconciliation où les lignes ne sont pas balancée, ni valid, ni dans le même compte, ni dans un compte à ne pas réconcilier !",0
+error,account.move.reconciliation,0,"You can not create reconciliation where lines are not balanced, nor valid, nor in the same account, nor in account to reconcile, nor from the same party!","Vous ne pouvez faire de réconciliation que si les lignes sont balancées, valides, du même compte, d'un compte à réconcilier et du même tier !",0
 error,account.move.reconciliation,0,You can not modify a reconciliation!,Vous ne pouvez pas modifer une réconciliation !,0
 error,account.period,0,No period defined for this date!,Pas de périod définie pour cette date !,0
+error,account.period,0,The period dates must be in the fiscal year dates,Les date de période doivent être dans les dates de l'année fiscale,0
 error,account.period,0,You can not change the post move sequence if there is already posted move in the period,Vous ne pouvez pas changer la séquence de mouvement posté s'il y a déjà un mouvement posté dans la période,0
 error,account.period,0,You can not close a period with non posted moves!,Vous ne pouvez pas fermer une période avec des mouvements non-posté !,0
 error,account.period,0,You can not create a period on a closed fiscal year!,Vous ne pouvez pas créer une période sur une année fiscale fermée !,0
@@ -43,30 +47,73 @@ error,account.period,0,You can not open a period from a closed fiscal year!,Vous
 error,account.period,0,You must have different post move sequence per fiscal year!,Vous devez avoir une séquence de mouvement posté différente par année fiscale !,0
 error,account.tax.code,0,You can not create recursive tax code!,Vous ne pouvez pas créer des codes de taxes recursifs !,0
 error,account.tax.code.template,0,You can not create recursive tax code!,Vous ne pouvez pas créer des codes de taxes recursifs !,0
+error,account.tax.group,0,Code must be unique!,Le code doit être unique !,0
 field,"account.account,active",0,Active,Actif,0
 field,"account.account,balance",0,Balance,Balance,0
 field,"account.account,childs",0,Childs,Enfants,0
-field,"account.account,close_method",0,Deferral method,Méthode de report,0
 field,"account.account,code",0,Code,Code,0
 field,"account.account,company",0,Company,Compagnie,0
-field,"account.account,complete_name",0,Name,Nom,0
+field,"account.account,complete_name",0,Code - Name,Nom,0
+field,"account.account.create_chart_account.account,account_template",0,Account Template,Compte modèle,0
+field,"account.account.create_chart_account.account,company",0,Company,Compagnie,0
+field,"account.account.create_chart_account.properties,account_payable",0,Default Payable Account,Compte à payer par défaut,0
+field,"account.account.create_chart_account.properties,account_receivable",0,Default Receivable Account,Compte à recevoir par défaut,0
+field,"account.account.create_chart_account.properties,company",0,Company,Compagnie,0
 field,"account.account,credit",0,Credit,Crédit,0
 field,"account.account,currency",0,Currency,Devise,0
 field,"account.account,currency_digits",0,Currency Digits,Décimal de la devise,0
 field,"account.account,debit",0,Debit,Débit,0
+field,"account.account,deferral",0,Deferral,Report,0
+field,"account.account.deferral,account",0,Account,Compte,0
+field,"account.account.deferral,credit",0,Credit,Crédit,0
+field,"account.account.deferral,currency_digits",0,Currency Digits,Décimales de la devise,0
+field,"account.account.deferral,debit",0,Debit,Débit,0
+field,"account.account.deferral,fiscalyear",0,Fiscal Year,Année fiscale,0
+field,"account.account,deferrals",0,Deferrals,Reports,0
 field,"account.account,kind",0,Kind,Genre,0
 field,"account.account,left",0,Left,Gauche,0
 field,"account.account,name",0,Name,Nom,0
 field,"account.account,note",0,Note,Note,0
+field,"account.account.open_aged_balance.init,balance_type",0,Type,Type,0
+field,"account.account.open_aged_balance.init,company",0,Company,Compagnie,0
+field,"account.account.open_aged_balance.init,fiscalyear",0,Fiscal Year,Année fiscale,0
+field,"account.account.open_aged_balance.init,posted",0,Posted Move,Mouvements postés,0
+field,"account.account.open_aged_balance.init,term1",0,First Term,Premier terme,0
+field,"account.account.open_aged_balance.init,term2",0,Second Term,Deuxième terme,0
+field,"account.account.open_aged_balance.init,term3",0,Third Term,Troisième terme,0
+field,"account.account.open_aged_balance.init,unit",0,Unit,Unité,0
+field,"account.account.open_balance_sheet.init,company",0,Company,Compagnie,0
+field,"account.account.open_balance_sheet.init,date",0,Date,Date,0
+field,"account.account.open_balance_sheet.init,posted",0,Posted Move,Mouvements postés,0
+field,"account.account.open_chart_account.init,fiscalyear",0,Fiscal Year,Année fiscale,0
+field,"account.account.open_chart_account.init,posted",0,Posted Move,Mouvements postés,0
+field,"account.account.open_income_statement.init,company",0,Company,Compagnie,0
+field,"account.account.open_income_statement.init,end_period",0,End Period,Période fin,0
+field,"account.account.open_income_statement.init,fiscalyear",0,Fiscal Year,Année fiscale,0
+field,"account.account.open_income_statement.init,posted",0,Posted Move,Mouvement posté,0
+field,"account.account.open_income_statement.init,start_period",0,Start Period,Période de début,0
+field,"account.account.open_third_party_balance.init,company",0,Company,Compagnie,0
+field,"account.account.open_third_party_balance.init,fiscalyear",0,Fiscal Year,Année fiscale,0
+field,"account.account.open_third_party_balance.init,posted",0,Posted Move,Mouvement posté,0
 field,"account.account,parent",0,Parent,Parent,0
+field,"account.account.print_general_ledger.init,company",0,Company,Compagnie,0
+field,"account.account.print_general_ledger.init,end_period",0,End Period,Période de fin,0
+field,"account.account.print_general_ledger.init,fiscalyear",0,Fiscal Year,Année fiscale,0
+field,"account.account.print_general_ledger.init,posted",0,Posted Move,Mouvement posté,0
+field,"account.account.print_general_ledger.init,start_period",0,Start Period,Période de début,0
+field,"account.account.print_trial_balance.init,company",0,Company,Compagnie,0
+field,"account.account.print_trial_balance.init,end_period",0,End Period,Période de fin,0
+field,"account.account.print_trial_balance.init,fiscalyear",0,Fiscal Year,Année fiscale,0
+field,"account.account.print_trial_balance.init,posted",0,Posted Move,Mouvement posté,0
+field,"account.account.print_trial_balance.init,start_period",0,Start Period,Période de début,0
 field,"account.account,reconcile",0,Reconcile,À réconcilier,0
 field,"account.account,right",0,Right,Droite,0
 field,"account.account,second_currency",0,Secondary currency,Devise secondaire,0
 field,"account.account,taxes",0,Default Taxes,Taxes par défaut,0
 field,"account.account.template,childs",0,Childs,Enfants,0
-field,"account.account.template,close_method",0,Deferral method,Méthode de report,0
 field,"account.account.template,code",0,Code,Code,0
-field,"account.account.template,complete_name",0,Name,Nom,0
+field,"account.account.template,complete_name",0,Code - Name,Nom,0
+field,"account.account.template,deferral",0,Deferral,Report,0
 field,"account.account.template,kind",0,Kind,Genre,0
 field,"account.account.template,name",0,Name,Nom,0
 field,"account.account.template,parent",0,Parent,Parent,0
@@ -77,12 +124,21 @@ field,"account.account,type",0,Type,Type,0
 field,"account.account.type,amount",0,Amount,Montant,0
 field,"account.account.type,balance_sheet",0,Balance Sheet,Bilan,0
 field,"account.account.type,childs",0,Childs,Enfants,0
+field,"account.account.type,company",0,Company,Compagnie,0
 field,"account.account.type,currency_digits",0,Currency Digits,Décimal de la devise,0
 field,"account.account.type,display_balance",0,Display Balance,Afficher la balance,0
 field,"account.account.type,income_statement",0,Income Statement,Compte de résultat,0
 field,"account.account.type,name",0,Name,Nom,0
 field,"account.account.type,parent",0,Parent,Parent,0
 field,"account.account.type,sequence",0,Sequence,Séquence,0
+field,"account.account.type.template,balance_sheet",0,Balance Sheet,Bilan,0
+field,"account.account.type.template,childs",0,Childs,Enfants,0
+field,"account.account.type.template,display_balance",0,Display Balance,Afficher la balance,0
+field,"account.account.type.template,income_statement",0,Income Statement,Compte de résultat,0
+field,"account.account.type.template,name",0,Name,Nom,0
+field,"account.account.type.template,parent",0,Parent,Parent,0
+field,"account.account.type.template,sequence",0,Sequence,Séquence,0
+field,"account.fiscalyear.close_fiscalyear.init,close_fiscalyear",0,Fiscal Year to close,Année fiscale à fermer,0
 field,"account.fiscalyear,close_lines",0,Close Lines,Lignes de clotures,0
 field,"account.fiscalyear,code",0,Code,Code,0
 field,"account.fiscalyear,company",0,Company,Compagnie,0
@@ -122,10 +178,12 @@ field,"account.move,centralised_line",0,Centralised Line,Ligne centralisée,0
 field,"account.move,date",0,Effective Date,Date effective,0
 field,"account.move,journal",0,Journal,Journal,0
 field,"account.move.line,account",0,Account,Compte,0
+field,"account.move.line,account_kind",0,Account Kind,Genre de compte,0
 field,"account.move.line,active",0,Active,Actif,0
 field,"account.move.line,amount_second_currency",0,Amount Second Currency,Montant en devise secondaire,0
 field,"account.move.line,blocked",0,Litigation,Litiges,0
 field,"account.move.line,credit",0,Credit,Crédit,0
+field,"account.move.line,currency_digits",0,Currency Digits,Décimales de la devise,0
 field,"account.move.line,date",0,Effective Date,Date Effective,0
 field,"account.move.line,debit",0,Debit,Débit,0
 field,"account.move.line,journal",0,Journal,Journal,0
@@ -139,11 +197,22 @@ field,"account.move.line,reconciliation",0,Reconciliation,Réconciliation,0
 field,"account.move.line,reference",0,Reference,Référence,0
 field,"account.move,lines",0,Lines,Lignes,0
 field,"account.move.line,second_currency",0,Second Currency,Devise secondaire,0
+field,"account.move.line,second_currency_digits",0,Second Currency Digits,Décimales de la seconde devise,0
 field,"account.move.line,state",0,State,État,0
 field,"account.move.line,tax_lines",0,Tax Lines,Lignes de taxe,0
 field,"account.move,name",0,Name,Nom,0
+field,"account.move.open_journal.ask,journal",0,Journal,Journal,0
+field,"account.move.open_journal.ask,period",0,Period,Période,0
+field,"account.move.open_reconcile_lines.init,account",0,Account,Compte,0
 field,"account.move,period",0,Period,Période,0
 field,"account.move,post_date",0,Post Date,Date de postage,0
+field,"account.move.print_general_journal.init,company",0,Company,Compagnie,0
+field,"account.move.print_general_journal.init,from_date",0,From Date,Date de début,0
+field,"account.move.print_general_journal.init,posted",0,Posted Move,Mouvement posté,0
+field,"account.move.print_general_journal.init,to_date",0,To Date,Date de fin,0
+field,"account.move.reconcile_lines.writeoff,account",0,Account,Compte,0
+field,"account.move.reconcile_lines.writeoff,date",0,Date,Date,0
+field,"account.move.reconcile_lines.writeoff,journal",0,Journal,Journal,0
 field,"account.move.reconciliation,lines",0,Lines,Lignes,0
 field,"account.move.reconciliation,name",0,Name,Nom,0
 field,"account.move,reference",0,Reference,Référence,0
@@ -155,6 +224,7 @@ field,"account.period,name",0,Name,Nom,0
 field,"account.period,post_move_sequence",0,Post Move Sequence,Séquence de mouvement posté,0
 field,"account.period,start_date",0,Starting Date,Date de début,0
 field,"account.period,state",0,State,État,0
+field,"account.period,type",0,Type,Type,0
 field,"account.tax,active",0,Active,Actif,0
 field,"account.tax,amount",0,Amount,Montant,0
 field,"account.tax,childs",0,Childs,Enfants,0
@@ -172,6 +242,11 @@ field,"account.tax.code.template,code",0,Code,Code,0
 field,"account.tax.code.template,name",0,Name,Nom,0
 field,"account.tax.code.template,parent",0,Parent,Parent,0
 field,"account.tax,company",0,Company,Compagnie,0
+field,"account.tax,credit_note_account",0,Credit Note Account,Compte note de crédit,0
+field,"account.tax,credit_note_base_code",0,Credit Note Base Code,Code base note de crédit,0
+field,"account.tax,credit_note_base_sign",0,Credit Note Base Sign,Signe base note de crédit,0
+field,"account.tax,credit_note_tax_code",0,Credit Note Tax Code,Code taxe note de crédit,0
+field,"account.tax,credit_note_tax_sign",0,Credit Note Tax Sign,Signe taxe note de crédit,0
 field,"account.tax,description",0,Description,Description,0
 field,"account.tax,group",0,Group,Groupe,0
 field,"account.tax.group,code",0,Code,Code,0
@@ -185,17 +260,20 @@ field,"account.tax.line,amount",0,Amount,Montant,0
 field,"account.tax.line,code",0,Code,Code,0
 field,"account.tax.line,move_line",0,Move Line,Ligne de mouvement,0
 field,"account.tax,name",0,Name,Nom,0
+field,"account.tax.open_chart_code.init,fiscalyear",0,Fiscal Year,Année fiscale,0
+field,"account.tax.open_chart_code.init,method",0,Method,Méthode,0
+field,"account.tax.open_chart_code.init,periods",0,Periods,Périodes,0
 field,"account.tax,parent",0,Parent,Parent,0
 field,"account.tax,percentage",0,Percentage,Pourcentage,0
-field,"account.tax,refund_account",0,Refund Account,Compte de note de crédit,0
-field,"account.tax,refund_base_code",0,Refund Base Code,Code de base de note de crédit,0
-field,"account.tax,refund_base_sign",0,Refund Base Sign,Signe de base de note de crédit,0
-field,"account.tax,refund_tax_code",0,Refund Tax Code,Code de taxe de note de crédit,0
-field,"account.tax,refund_tax_sign",0,Refund Tax Sign,Signe de taxe de note de crédit,0
 field,"account.tax,sequence",0,Sequence,Séquence,0
 field,"account.tax.template,account",0,Account Template,Compte modèle,0
 field,"account.tax.template,amount",0,Amount,Montant,0
 field,"account.tax.template,childs",0,Childs,Enfants,0
+field,"account.tax.template,credit_note_account",0,Credit Note Account,Compte note de crédit,0
+field,"account.tax.template,credit_note_base_code",0,Credit Note Base Code,Code base note de crédit,0
+field,"account.tax.template,credit_note_base_sign",0,Credit Note Base Sign,Signe base note de crédit,0
+field,"account.tax.template,credit_note_tax_code",0,Credit Note Tax Code,Code taxe note de crédit,0
+field,"account.tax.template,credit_note_tax_sign",0,Credit Note Tax Sign,Signe taxe note de crédit,0
 field,"account.tax.template,description",0,Description,Description,0
 field,"account.tax.template,group",0,Group,Groupe,0
 field,"account.tax.template,invoice_account",0,Invoice Account,Compte de facture,0
@@ -206,11 +284,6 @@ field,"account.tax.template,invoice_tax_sign",0,Invoice Tax Sign,Signe de taxe d
 field,"account.tax.template,name",0,Name,Nom,0
 field,"account.tax.template,parent",0,Parent,Parent,0
 field,"account.tax.template,percentage",0,Percentage,Pourcentage,0
-field,"account.tax.template,refund_account",0,Refund Account,Compte de note de crédit,0
-field,"account.tax.template,refund_base_code",0,Refund Base Code,Code de base de note crédit,0
-field,"account.tax.template,refund_base_sign",0,Refund Base Sign,Signe de base de note de crédit,0
-field,"account.tax.template,refund_tax_code",0,Refund Tax Code,Code de taxe de note de crédit,0
-field,"account.tax.template,refund_tax_sign",0,Refund Tax Sign,Signe de taxe de note de crédit,0
 field,"account.tax.template,sequence",0,Sequence,Séquence,0
 field,"account.tax.template,type",0,Type,Type,0
 field,"account.tax,type",0,Type,Type,0
@@ -222,15 +295,14 @@ field,"party.party,receivable",0,Receivable,À recevoir,0
 field,"party.party,receivable_today",0,Receivable Today,À recevoir aujourd'hui,0
 field,"party.party,supplier_vat",0,Supplier VAT,TVA fournisseur,0
 field,"party.party,vat",0,VAT,TVA,0
-help,"account.account,close_method",0,"How to process the lines of this account when closing the fiscal year
-- None: to start with an empty account
-- Balance: to create one entry to keep the balance
-- Detail: to keep all entries
-- Unreconciled: to keep all unreconciled entries","Comment traiter les lignes de ce compte à la fermeture de l'année fiscale
-- Rien: pour démarrer avec un compte vide
-- Balance: pour créer une entrée pour garder la balance
-- Détail: pour garder toutes les entrées
-- Non-Réconcilié: pour garder toutes les entrées non-réconciliées",0
+help,"account.account.open_aged_balance.init,posted",0,Only posted move,Seuls les mouvements postés,0
+help,"account.account.open_balance_sheet.init,posted",0,Only posted move,Seuls les mouvements postés,0
+help,"account.account.open_chart_account.init,fiscalyear",0,Keep empty for all open fiscal year,Laisser vide pour toutes les années fiscales ouvertes,0
+help,"account.account.open_chart_account.init,posted",0,Only posted move,Seuls les mouvements postés,0
+help,"account.account.open_income_statement.init,posted",0,Only posted move,Seuls les mouvements postés,0
+help,"account.account.open_third_party_balance.init,posted",0,Only posted move,Seuls les mouvements postés,0
+help,"account.account.print_general_ledger.init,posted",0,Only posted move,Seuls les mouvements postés,0
+help,"account.account.print_trial_balance.init,posted",0,Only posted move,Seuls les mouvements postés,0
 help,"account.account,reconcile",0,"Check if the account can be used 
 for reconciliation.","Cocher si le compte peut être utilisé
 pour la réconciliation.",0
@@ -247,48 +319,140 @@ help,"account.move.line,maturity_date",0,"This field is used for payable and rec
 You can put the limit date for the payment.","Ce champ est utilisé pour les lignes à payer and à recevoir.
 Vous pouvez mettre la date limite pour le paiement.",0
 help,"account.move.line,second_currency",0,The second currency,La devise secondaire,0
+help,"account.move.print_general_journal.init,posted",0,Only posted move,Seuls les mouvements postés,0
 help,"account.move,reference",0,Also known as Folio Number, ,0
 help,"account.tax,amount",0,In company's currency,Dans la devise de la compagnie,0
+help,"account.tax,credit_note_account",0,Keep empty to use the default credit_note account,Laisser vide pour utiliser le compte de note de crédit par défaut,0
+help,"account.tax,credit_note_base_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
+help,"account.tax,credit_note_tax_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax,description",0,The name that will be used in reports,Le nom qui sera utilisé dans les rapports,0
 help,"account.tax,invoice_account",0,Keep empty to use the default invoice account,Garder vide pour utiliser le compte par défaut de la facture,0
 help,"account.tax,invoice_base_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
+help,"account.tax.open_chart_code.init,fiscalyear",0,Keep empty for all open fiscal year,Laisser vide pour toutes les années fiscales ouvertes,0
+help,"account.tax.open_chart_code.init,periods",0,Keep empty for all periods of all open fiscal year,Laisser vide pour toutes les périodes de toutes les années fiscales ouvertes,0
 help,"account.tax,percentage",0,In %,En %,0
-help,"account.tax,refund_account",0,Keep empty to use the default refund account,Garder vide pour utiliser le compte par défaut de la note de crédit,0
-help,"account.tax,refund_base_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
-help,"account.tax,refund_tax_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax,sequence",0,Use to order the taxes,Utilisé pour trier les taxes,0
 help,"party.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Cette taxe sera utilisée au lieu de la taxe TVA par défaut pour les factures fournisseur.,0
 help,"party.party,vat",0,"This tax will be used, instead of the default VAT.",Cette taxe sera utilisée au lieu de la tax TVA par défaut.,0
-model,"ir.ui.menu,name",menu_move_form,Account Moves,Mouvements comptable,0
+model,"account.account.template,name",account_template_cash,Main Cash,Compte de liquidités,0
+model,"account.account.template,name",account_template_expense,Main Expense,Compte de dépense,0
+model,"account.account.template,name",account_template_payable,Main Payable,Compte de paiements,0
+model,"account.account.template,name",account_template_receivable,Main Receivable,Compte à recevoir,0
+model,"account.account.template,name",account_template_revenue,Main Revenue,Compte de recettes,0
+model,"account.account.template,name",account_template_tax,Main Tax,Compte de taxes,0
+model,"account.account.template,name",account_template_root,Minimal Account Chart,Plan comptable minimal,0
+model,"account.account.type.template,name",account_type_template_asset,Asset,Actif,0
+model,"account.account.type.template,name",account_type_template_asset_current_cash,Cash,Cash,0
+model,"account.account.type.template,name",account_type_template_asset_current,Current,Courant,0
+model,"account.account.type.template,name",account_type_template_liability_current,Current,Courant,0
+model,"account.account.type.template,name",account_type_template_equity,Equity,Capitaux propres,0
+model,"account.account.type.template,name",account_type_template_expense,Expense,Dépense,0
+model,"account.account.type.template,name",account_type_template_income,Income,Revenu,0
+model,"account.account.type.template,name",account_type_template_liability,Liability,Passif,0
+model,"account.account.type.template,name",account_type_template_asset_long_term,Long-term,Long terme,0
+model,"account.account.type.template,name",account_type_template_liability_long_term,Long-term,Long terme,0
+model,"account.account.type.template,name",account_type_template_minimal,Minimal Account Type Chart,Type de plan comptable minimal,0
+model,"account.account.type.template,name",account_type_template_off_balance,Off-Balance,Hors bilan,0
+model,"account.account.type.template,name",account_type_template_liability_current_payable,Payable,À payer,0
+model,"account.account.type.template,name",account_type_template_asset_current_receivable,Receivable,À recevoir,0
+model,"account.account.type.template,name",account_type_template_revenue,Revenue,Revenu,0
+model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Taxe,0
+model,"account.journal,name",journal_cash,Cash,Cash,0
+model,"account.journal,name",journal_expense,Expense,Dépense,0
+model,"account.journal,name",journal_revenue,Revenue,Revenu,0
+model,"account.journal,name",journal_stock,Stock,Stock,0
+model,"account.journal.type,name",journal_type_cash,Cash,Cash,0
+model,"account.journal.type,name",journal_type_expense,Expense,Dépense,0
+model,"account.journal.type,name",journal_type_general,General,Général,0
+model,"account.journal.type,name",journal_type_revenue,Revenue,Revenu,0
+model,"account.journal.type,name",journal_type_situation,Situation,Situation,0
+model,"account.tax.group,name",tax_group_none,None,Aucun,0
+model,"account.tax.group,name",tax_group_vat,VAT,TVA,0
+model,"ir.action,name",act_move_line_form,Account Move Lines,Lignes de mouvement comptable,0
+model,"ir.action,name",act_move_form,Account Moves,Mouvements comptables,0
+model,"ir.action,name",act_account_form,Accounts,Comptes,0
+model,"ir.action,name",act_account_tree,Accounts,Comptes,0
+model,"ir.action,name",act_account_tree2,Accounts,Comptes,0
+model,"ir.action,name",act_account_template_tree,Account Templates,Modèles de compte,0
+model,"ir.action,name",act_account_type_form,Account Types,Types de compte,0
+model,"ir.action,name",act_account_type_tree,Account Types,Types de compte,0
+model,"ir.action,name",act_account_type_template_tree,Account Type Templates,Modèles de types de comptes,0
+model,"ir.action,name",report_aged_balance,Aged Balance,Balance agée,0
+model,"ir.action,name",act_account_balance_sheet_tree,Balance Sheet,Bilan,0
+model,"ir.action,name",act_close_fiscalyear,Close Fiscal Year,Fermer l'année fiscale,0
+model,"ir.action,name",act_close_journal_period,Close Journals - Periods,Fermer les journaux - périodes,0
+model,"ir.action,name",act_close_period,Close Periods,Fermer les périodes,0
+model,"ir.action,name",wizard_create_chart_account,Create Chart of Account from Template,Créer un plan comptable depuis un modèle,0
+model,"ir.action,name",act_fiscalyear_form,Fiscal Years,Années fiscales,0
+model,"ir.action,name",report_general_journal,General Journal,Journal général,0
+model,"ir.action,name",report_general_ledger,General Ledger,Grand livre,0
+model,"ir.action,name",act_account_income_statement_tree,Income Statement,Compte de résultats,0
+model,"ir.action,name",act_journal_form,Journals,Journaux,0
+model,"ir.action,name",act_journal_period_tree,Journals - Periods,Journaux - périodes,0
+model,"ir.action,name",act_journal_period_tree2,Journals - Periods,Journaux - périodes,0
+model,"ir.action,name",act_journal_period_form,Journals - Periods,Journaux - périodes,0
+model,"ir.action,name",act_journal_type_form,Journal Types,Types de journaux,0
+model,"ir.action,name",act_journal_view_form,Journal Views,Vues des journaux,0
+model,"ir.action,name",wizard_open_aged_balance,Open Aged Balance,Ouvrir la balance agée,0
+model,"ir.action,name",wizard_open_balance_sheet,Open Balance Sheet,Ouvrir le bilan,0
+model,"ir.action,name",act_open_chart_account,Open Chart of Account,Ouvrir le plan comptable,0
+model,"ir.action,name",act_open_chart_code,Open Chart of Tax Code,Ouvrir le plan de code de taxe,0
+model,"ir.action,name",wizard_open_income_statement,Open Income Statement,Ouvrir le compte de résultat,0
+model,"ir.action,name",act_open_journal,Open Journal,Ouvrir journal,0
+model,"ir.action,name",act_open_account,Open Move Account,Ouvrir le compte,0
+model,"ir.action,name",act_open_reconcile_lines,Open Reconcile Lines,Ouvrir les lignes réconciliées,0
+model,"ir.action,name",act_open_tax_code,Open Tax Code,Ouvrir le code de taxe,0
+model,"ir.action,name",wizard_open_third_party_balance,Open Third Party Balance,Ouvrir la balance des tiers,0
+model,"ir.action,name",act_period_form,Periods,Périodes,0
+model,"ir.action,name",act_period_form2,Periods,Périodes,0
+model,"ir.action,name",wizard_print_general_journal,Print General Journal,Imprimer le journal général,0
+model,"ir.action,name",wizard_print_general_ledger,Print General Legder,Imprimer Imprimer le grand livre,0
+model,"ir.action,name",wizard_print_trial_balance,Print Trial Balance,Imprimer la balance,0
+model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Lignes réconciliées,0
+model,"ir.action,name",act_reopen_journal_period,Re-Open Journals - Periods,Ré-ouvrir journaux - périodes,0
+model,"ir.action,name",act_reopen_period,Re-Open Periods,Ré-ouvrir périodes,0
+model,"ir.action,name",act_tax_code_form,Tax Codes,Codes de taxe,0
+model,"ir.action,name",act_tax_code_tree,Tax Codes,Codes de taxe,0
+model,"ir.action,name",act_tax_code_tree2,Tax Codes,Codes de taxe,0
+model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Modèles de codes de taxe,0
+model,"ir.action,name",act_tax_form,Taxes,Taxes,0
+model,"ir.action,name",act_tax_tree,Taxes,Taxes,0
+model,"ir.action,name",act_tax_template_tree,Taxes Templates,Modèle de taxe,0
+model,"ir.action,name",act_tax_line_form,Tax Lines,Lignes de taxe,0
+model,"ir.action,name",report_third_party_balance,Third Party Balance,Balance des tiers,0
+model,"ir.action,name",report_trial_balance,Trial Balance,Balance,0
+model,"ir.action,name",act_unreconcile_lines,Unreconcile Lines,Lignes non réconciliées,0
+model,"ir.ui.menu,name",menu_move_form,Account Moves,Mouvements comptables,0
 model,"ir.ui.menu,name",menu_account_form,Accounts,Comptes,0
 model,"ir.ui.menu,name",menu_account_tree,Accounts,Comptes,0
-model,"ir.ui.menu,name",menu_account_template_tree,Account Templates,Modèle de comptes,0
+model,"ir.ui.menu,name",menu_account_template_tree,Account Templates,Modèles de compte,0
 model,"ir.ui.menu,name",menu_account_type_form,Account Types,Types de compte,0
 model,"ir.ui.menu,name",menu_account_type_tree,Account Types,Types de compte,0
-model,"ir.ui.menu,name",menu_aged_balance,Aged Balance,Balance Agée,0
+model,"ir.ui.menu,name",menu_account_type_template_tree,Account Type Templates,Types de comptes modèles,0
+model,"ir.ui.menu,name",menu_aged_balance,Aged Balance,Balance agée,0
 model,"ir.ui.menu,name",menu_open_balance_sheet,Balance Sheet,Bilan,0
 model,"ir.ui.menu,name",menu_charts,Charts,Plans,0
 model,"ir.ui.menu,name",menu_close_fiscalyear,Close Fiscal Year,Clôturer l'année fiscale,0
-model,"ir.ui.menu,name",menu_journal_period_form,Close Journals - Periods,Clôturer les journaux - périodes,0
-model,"ir.ui.menu,name",menu_period_form2,Close Periods,Clôturer les périodes,0
+model,"ir.ui.menu,name",menu_journal_period_form,Close Journals - Periods,Journaux - périodes clôturés,0
+model,"ir.ui.menu,name",menu_period_form2,Close Periods,Périodes clôturées,0
 model,"ir.ui.menu,name",menu_account_configuration,Configuration,Configuration,0
-model,"ir.ui.menu,name",menu_create_chart_account,Create Chart of Account from Template,Créer un plan comptable à partir de modèle,0
+model,"ir.ui.menu,name",menu_create_chart_account,Create Chart of Account from Template,Créer un plan comptable à partir d'un modèle,0
 model,"ir.ui.menu,name",menu_entries,Entries,Entrées,0
 model,"ir.ui.menu,name",menu_account,Financial Management,Gestion financière,0
 model,"ir.ui.menu,name",menu_fiscalyear_configuration,Fiscal Years,Années fiscales,0
-model,"ir.ui.menu,name",menu_fiscalyear_form,Fiscal Years,Années Fiscales,0
+model,"ir.ui.menu,name",menu_fiscalyear_form,Fiscal Years,Années fiscales,0
 model,"ir.ui.menu,name",menu_general_account_configuration,General Account,Comptes généraux,0
 model,"ir.ui.menu,name",menu_open_income_statement,Income Statement,Compte de résultat,0
 model,"ir.ui.menu,name",menu_journal_configuration,Journals,Journaux,0
 model,"ir.ui.menu,name",menu_journal_form,Journals,Journaux,0
 model,"ir.ui.menu,name",menu_journal_period_tree,Journals - Periods,Journaux - périodes,0
 model,"ir.ui.menu,name",menu_journal_period_tree2,Journals - Periods,Journaux - périodes,0
-model,"ir.ui.menu,name",menu_journal_type_form,Journal Types,Types de journal,0
-model,"ir.ui.menu,name",menu_journal_view_form,Journal Views,Vue de journal,0
+model,"ir.ui.menu,name",menu_journal_type_form,Journal Types,Types de journaux,0
+model,"ir.ui.menu,name",menu_journal_view_form,Journal Views,Vue des journaux,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Account,Ouvrir le plan compatble,0
 model,"ir.ui.menu,name",menu_open_chart_code,Open Chart of Tax Code,Ouvrir le plan de code de taxe,0
-model,"ir.ui.menu,name",menu_open_journal,Open Journal,Ouvrir le journal,0
+model,"ir.ui.menu,name",menu_open_journal,Open Journal,Ouvrir les journaux,0
 model,"ir.ui.menu,name",menu_period_form,Periods,Périodes,0
 model,"ir.ui.menu,name",menu_print_general_journal,Print General Journal,Imprimer le journal général,0
 model,"ir.ui.menu,name",menu_print_general_ledger,Print General Legder,Imprimer le grand livre,0
@@ -361,20 +525,17 @@ odt,account.move.general_journal,0,Name,Nom,0
 odt,account.move.general_journal,0,Posted,Posté,0
 odt,account.move.general_journal,0,Reference:,Référence :,0
 odt,account.move.general_journal,0,To Date:,À la Date :,0
-selection,"account.account,close_method",0,Balance,Balance,0
-selection,"account.account,close_method",0,Detail,Détail,0
-selection,"account.account,close_method",0,None,Rien,0
-selection,"account.account,close_method",0,Unreconciled,Non-Réconcilié,0
 selection,"account.account,kind",0,Expense,Dépense,0
 selection,"account.account,kind",0,Other,Autre,0
 selection,"account.account,kind",0,Payable,À payer,0
 selection,"account.account,kind",0,Receivable,À recevoir,0
 selection,"account.account,kind",0,Revenue,Revenu,0
 selection,"account.account,kind",0,View,Vue,0
-selection,"account.account.template,close_method",0,Balance,Balance,0
-selection,"account.account.template,close_method",0,Detail,Détail,0
-selection,"account.account.template,close_method",0,None,Rien,0
-selection,"account.account.template,close_method",0,Unreconciled,Non-réconcilié,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Both,Client et fournisseur,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Customer,Client,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Supplier,Fournisseur,0
+selection,"account.account.open_aged_balance.init,unit",0,Day,Jour,0
+selection,"account.account.open_aged_balance.init,unit",0,Month,Mois,0
 selection,"account.account.template,kind",0,Expense,Dépense,0
 selection,"account.account.template,kind",0,Other,Autre,0
 selection,"account.account.template,kind",0,Payable,À Payer,0
@@ -383,10 +544,18 @@ selection,"account.account.template,kind",0,Revenue,Revenu,0
 selection,"account.account.template,kind",0,View,Vue,0
 selection,"account.account.type,display_balance",0,Credit - Debit,Crédit - Débit,0
 selection,"account.account.type,display_balance",0,Debit - Credit,Débit - Crédit,0
+selection,"account.account.type.template,display_balance",0,Credit - Debit,Crédit - Débit,0
+selection,"account.account.type.template,display_balance",0,Debit - Credit,Débit - Crédit,0
 selection,"account.fiscalyear,state",0,Close,Cloturé,0
 selection,"account.fiscalyear,state",0,Open,Ouverte,0
 selection,"account.journal.period,state",0,Close,Clôturée,0
 selection,"account.journal.period,state",0,Open,Ouverte,0
+selection,"account.move.line,account_kind",0,Expense,Dépense,0
+selection,"account.move.line,account_kind",0,Other,Autre,0
+selection,"account.move.line,account_kind",0,Payable,À payer,0
+selection,"account.move.line,account_kind",0,Receivable,À recevoir,0
+selection,"account.move.line,account_kind",0,Revenue,Revenu,0
+selection,"account.move.line,account_kind",0,View,Vue,0
 selection,"account.move.line,move_state",0,Draft,Brouillon,0
 selection,"account.move.line,move_state",0,Posted,Posté,0
 selection,"account.move.line,state",0,Draft,Brouillon,0
@@ -395,6 +564,10 @@ selection,"account.move,state",0,Draft,Brouillon,0
 selection,"account.move,state",0,Posted,Posté,0
 selection,"account.period,state",0,Close,Clôturée,0
 selection,"account.period,state",0,Open,Ouverte,0
+selection,"account.period,type",0,Adjustment,Ajustement,0
+selection,"account.period,type",0,Standard,Standard,0
+selection,"account.tax.open_chart_code.init,method",0,By Fiscal Year,Par année fiscale,0
+selection,"account.tax.open_chart_code.init,method",0,By Periods,Par périodes,0
 selection,"account.tax.template,type",0,Fixed,Fixe,0
 selection,"account.tax.template,type",0,None,Aucun,0
 selection,"account.tax.template,type",0,Percentage,Pourcentage,0
@@ -403,6 +576,7 @@ selection,"account.tax,type",0,None,Aucun,0
 selection,"account.tax,type",0,Percentage,Pourcentage,0
 view,account.account,0,Account,Compte,0
 view,account.account,0,Accounts,Comptes,0
+view,account.account,0,Deferrals,Reports,0
 view,account.account,0,General Information,Information générale,0
 view,account.account,0,Notes,Notes,0
 view,account.account.create_chart_account.account,0,Create Chart of Account,Créer un plan comptable,0
@@ -410,6 +584,8 @@ view,account.account.create_chart_account.init,0,by selecting a chart of account
 view,account.account.create_chart_account.init,0,Create Chart of Account,Créer un plan comptable,0
 view,account.account.create_chart_account.init,0,You can now create a chart of account for your company,Vous pouvez maintenant créer un plan comptable pour votre compagnie,0
 view,account.account.create_chart_account.properties,0,Create Default Properties,Créer les propriétés par défaut,0
+view,account.account.deferral,0,Account Deferral,Compte Report,0
+view,account.account.deferral,0,Account Deferrals,Comptes Report,0
 view,account.account.open_aged_balance.init,0,Open Aged Balance,Ouvrir la balance agée,0
 view,account.account.open_aged_balance.init,0,Terms,Conditions,0
 view,account.account.open_balance_sheet.init,0,Open Balance Sheet,Ouvrir le bilan,0
@@ -418,32 +594,36 @@ view,account.account.open_income_statement.init,0,Open Income Statement,Ouvrir l
 view,account.account.open_third_party_balance.init,0,Open Third Party Balance,Ouvrir la balance tiers,0
 view,account.account.print_general_ledger.init,0,Print General Ledger,Imprimer le grand livre,0
 view,account.account.print_trial_balance.init,0,Print Trial Balance,Imprimer la balance,0
-view,account.account.template,0,Account Template,Modèle de compte,0
+view,account.account.template,0,Account Template,Compte modèle,0
 view,account.account.template,0,Account Templates,Modèles de compte,0
 view,account.account.type,0,Account Type,Type de compte,0
 view,account.account.type,0,Account Types,Types de compte,0
 view,account.account.type,0,Balance Sheet,Bilan,0
 view,account.account.type,0,Income Statement,Compte de résultat,0
+view,account.account.type.template,0,Account Types Templates,Modèles de type de compte,0
+view,account.account.type.template,0,Account Type Template,Modèle de type de compte,0
+view,account.fiscalyear,0,Close,Fermer,0
 view,account.fiscalyear,0,Create 3 Months Periods,Créer des périodes de 3 mois,0
 view,account.fiscalyear,0,Create Monthly Periods,Créer des périodes mensuelles,0
 view,account.fiscalyear,0,Fiscal Year,Année fiscale,0
 view,account.fiscalyear,0,Fiscal Years,Années fiscales,0
 view,account.fiscalyear,0,Periods,Périodes,0
+view,account.fiscalyear,0,Re-Open,Réouvrir,0
 view,account.fiscalyear,0,Sequences,Séquences,0
 view,account.fiscalyear.close_fiscalyear.init,0,Close Fiscal Year,Cloture d'année fiscale,0
 view,account.journal,0,General Information,Information générale,0
 view,account.journal,0,Journal,Journal,0
 view,account.journal,0,Journals,Journaux,0
 view,account.journal.period,0,Journal - Period,Journal - Période,0
-view,account.journal.period,0,Journals - Periods,Journaux - Périodes,0
+view,account.journal.period,0,Journals - Periods,Journaux - périodes,0
 view,account.journal.type,0,Journal Type,Type de journal,0
 view,account.journal.type,0,Journal Types,Types de journal,0
 view,account.journal.view,0,Journal View,Vue de journal,0
-view,account.journal.view,0,Journal Views,Vues de journal,0
+view,account.journal.view,0,Journal Views,Vues des journaux,0
 view,account.journal.view,0,View Column,Colonne de la vue,0
 view,account.journal.view,0,View Columns,Colonnes de la vue,0
 view,account.move,0,Account Move,Mouvement comptable,0
-view,account.move,0,Account Moves,Mouvements comptable,0
+view,account.move,0,Account Moves,Mouvements comptables,0
 view,account.move,0,Draft,Brouillon,0
 view,account.move,0,Post,Posté,0
 view,account.move.line,0,Account Move Line,Ligne de mouvement comptable,0
@@ -452,6 +632,8 @@ view,account.move.line,0,Credit,Crédit,0
 view,account.move.line,0,Debit,Débit,0
 view,account.move.line,0,General Information,Information générale,0
 view,account.move.line,0,Optional Information,Information optionnelle,0
+view,account.move.open_journal.ask,0,Open Journal,Ouvrir journal,0
+view,account.move.open_reconcile_lines.init,0,Open Reconcile Lines,Ouvrir les lignes réconciliées,0
 view,account.move.print_general_journal.init,0,Print General Journal,Imprimer le journal général,0
 view,account.move.reconcile_lines.writeoff,0,Write-Off,Passation en pertes et profits,0
 view,account.move.reconciliation,0,Reconciliation,Réconciliation,0
@@ -461,6 +643,7 @@ view,account.move.unreconcile_lines.init,0,Unreconcile,Dé-réconcilier,0
 view,account.period,0,Period,Période,0
 view,account.period,0,Periods,Périodes,0
 view,account.tax,0,Code,Code,0
+view,account.tax,0,Credit Note,Note de crédit,0
 view,account.tax,0,General Information,Information générale,0
 view,account.tax,0,Invoice,Facture,0
 view,account.tax,0,Refund,Note de crédit,0
@@ -474,12 +657,14 @@ view,account.tax.line,0,Account Tax Line,Ligne comptable de taxe,0
 view,account.tax.line,0,Account Tax Lines,Lignes comptable de taxe,0
 view,account.tax.open_chart_code.init,0,Open Chart Of Tax Code,Ouvrir le plan de code de taxe,0
 view,account.tax.template,0,Code,Code,0
+view,account.tax.template,0,Credit Note,Note de Crédit,0
 view,account.tax.template,0,General Information,Information générale,0
 view,account.tax.template,0,Invoice,Facture,0
 view,account.tax.template,0,Refund,Note de crédit,0
 view,account.tax.template,0,Taxes,Taxes,0
 view,account.tax.template,0,Taxes Templates,Modèles de taxes,0
 view,account.tax.template,0,Tax Template,Modèle de taxe,0
+view,party.party,0,Taxes,Taxes,0
 wizard_button,"account.account.create_chart_account,account,create_account",0,Create,Créer,0
 wizard_button,"account.account.create_chart_account,account,end",0,Cancel,Annuler,0
 wizard_button,"account.account.create_chart_account,create_account,create_properties",0,Create,Créer,0
@@ -500,7 +685,7 @@ wizard_button,"account.account.print_general_ledger,init,end",0,Cancel,Annuler,0
 wizard_button,"account.account.print_general_ledger,init,print",0,Print,Imprimer,0
 wizard_button,"account.account.print_trial_balance,init,end",0,Cancel,Annuler,0
 wizard_button,"account.account.print_trial_balance,init,print",0,Print,Imprimer,0
-wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Cloturer,0
+wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Clôturer,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,end",0,Cancel,Annuler,0
 wizard_button,"account.move.open_journal,ask,end",0,Cancel,Annuler,0
 wizard_button,"account.move.open_journal,ask,open",0,Open,Ouvrir,0
