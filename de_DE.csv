@@ -81,6 +81,7 @@ model,"ir.ui.menu,name",menu_line_form,Timesheet Lines,Zeitpositionen,0
 model,"ir.ui.menu,name",menu_timesheet,Timesheet Management,Zeiterfassung,0
 model,"ir.ui.menu,name",menu_work_form,Works,Aufgaben,0
 model,"ir.ui.menu,name",menu_work_tree,Works,Aufgaben,0
+model,"res.group,name",group_timesheet_admin,Timesheet Administration,Administration Zeiterfassung,0
 selection,"timesheet.work,state",0,Closed,Geschlossen,0
 selection,"timesheet.work,state",0,Opened,Geöffnet,0
 selection,"timesheet.work,type",0,Normal,Standard,0
