@@ -47,6 +47,7 @@ model,"ir.ui.menu,name",menu_analytic_account_configuration,Analytic Account,Kos
 model,"ir.ui.menu,name",menu_account_form,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_account_tree,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Analytic Account,Plan für Kostenstellen öffnen,0
+model,"res.group,name",group_analytic_admin,Analytic Administration,Administration Kostenstellen,0
 selection,"analytic_account.account,display_balance",0,Credit - Debit,Haben - Soll,0
 selection,"analytic_account.account,display_balance",0,Debit - Credit,Soll - Haben,0
 selection,"analytic_account.account,state",0,Closed,Geschlossen,0
