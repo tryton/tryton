@@ -82,6 +82,7 @@ model,"ir.ui.menu,name",menu_category_form2,New category,Neue Kategorie,0
 model,"ir.ui.menu,name",menu_party_form2,New Party,Neuer Partner,0
 model,"ir.ui.menu,name",menu_party_form,Parties,Partner,0
 model,"ir.ui.menu,name",menu_party,Party Management,Kontakte,0
+model,"res.group,name",group_party_admin,Party Administration,Administration Kontakte,0
 selection,"party.contact_mechanism,type",0,E-Mail,E-Mail,0
 selection,"party.contact_mechanism,type",0,Fax,Fax,0
 selection,"party.contact_mechanism,type",0,IRC,IRC,0
