@@ -143,7 +143,6 @@ model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remai
 model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.action,name",credit_invoice,Credit,Gutschrift erstellen,0
 model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
-model,"ir.action,name",,Custom Invoice,,0
 model,"ir.action,name",report_invoice,Custom Invoice,Angepasste Rechnung drucken,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
@@ -161,7 +160,7 @@ model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,G
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
 odt,account.invoice,0,Amount,Betrag,0
 odt,account.invoice,0,Base,Netto,0
-odt,account.invoice,0,Customized!,,0
+odt,account.invoice,0,Customized!,Angepasst!,0
 odt,account.invoice,0,Date,Datum,0
 odt,account.invoice,0,Date:,Datum:,0
 odt,account.invoice,0,Description,Beschreibung,0
