@@ -64,7 +64,12 @@ field,"purchase.purchase,total_amount",0,Total,Gesamt,0
 field,"purchase.purchase,untaxed_amount",0,Untaxed,Netto,0
 field,"purchase.purchase,warehouse",0,Warehouse,Lager,0
 field,"stock.move,purchase",0,Purchase,Einkauf,0
+field,"stock.move,purchase_currency",0,Purchase Currency,Einkaufswährung,0
 field,"stock.move,purchase_line",0,unknown,unbekannt,0
+field,"stock.move,purchase_quantity",0,Purchase Quantity,Menge Einkauf,0
+field,"stock.move,purchase_unit",0,Purchase Unit,Einheit Einkauf,0
+field,"stock.move,purchase_unit_digits",0,Purchase Unit Digits,Anzahl Stellen Einkauf,0
+field,"stock.move,purchase_unit_price",0,Purchase Unit Price,Einzelpreis Einkauf,0
 field,"stock.move,supplier",0,Supplier,Lieferant,0
 help,"purchase.product_supplier,delivery_time",0,In number of days,In Anzahl von Tagen,0
 help,"purchase.product_supplier.price,quantity",0,Minimal quantity,Mindestmenge,0
@@ -80,6 +85,7 @@ model,"ir.ui.menu,name",menu_purchase,Purchase Management,Einkauf,0
 model,"ir.ui.menu,name",menu_purchase_form,Purchases,Einkäufe,0
 model,"ir.ui.menu,name",menu_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
 model,"ir.ui.menu,name",menu_supplier,Suppliers,Lieferanten,0
+model,"res.group,name",group_purchase,Purchase,Einkauf,0
 odt,purchase.purchase,0,Amount,Betrag,0
 odt,purchase.purchase,0,Date:,Datum:,0
 odt,purchase.purchase,0,Description,Bezeichnung,0
