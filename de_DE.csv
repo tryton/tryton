@@ -65,6 +65,7 @@ model,"ir.ui.menu,name",menu_sale_form_draft,Draft Sales,Entwürfe (Verkäufe),0
 model,"ir.ui.menu,name",menu_sale_form_quotation,Quotation Sales,Angebote (Verkäufe),0
 model,"ir.ui.menu,name",menu_sale,Sale Management,Verkauf,0
 model,"ir.ui.menu,name",menu_sale_form,Sales,Verkauf,0
+model,"res.group,name",group_sale,Sale,Verkauf,0
 odt,sale.sale,0,Amount,Betrag,0
 odt,sale.sale,0,Date:,Datum:,0
 odt,sale.sale,0,Description,Bezeichnung,0
