@@ -34,6 +34,7 @@ model,"ir.ui.menu,name",menu_statement_journal_form,Statement Journals,Journale 
 model,"ir.ui.menu,name",menu_statements,Statements,Bankauszüge,0
 model,"ir.ui.menu,name",menu_statement_configuration,Statements,Bankauszüge,0
 model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Geprüfte Bankauszüge,0
+model,"res.group,name",group_statement,Statement,Banküberweisung,0
 selection,"account.statement,state",0,Cancel,Abbrechen,0
 selection,"account.statement,state",0,Draft,Entwurf,0
 selection,"account.statement,state",0,Posted,Festgeschrieben,0
