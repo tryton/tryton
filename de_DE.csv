@@ -155,6 +155,8 @@ model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Bewegungen zu Kun
 model,"ir.ui.menu,name",menu_packing_in_form2,New Supplier Packing,Neuer Lieferschein von Lieferant,0
 model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Erhaltene Lieferscheine von Lieferanten,0
 model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Lieferscheine von Lieferanten,0
+model,"res.group,name",group_stock,Stock,Lager,0
+model,"res.group,name",group_stock_admin,Stock Administration,Administration Lagerverwaltung,0
 odt,stock.packing.out,0,Customer Code:,Kundennummer:,0
 odt,stock.packing.out,0,Date:,Datum:,0
 odt,stock.packing.out,0,E-Mail:,E-Mail:,0
