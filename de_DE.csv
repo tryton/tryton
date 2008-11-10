@@ -44,8 +44,13 @@ model,"ir.action,name",wizard_create_purchase,Create Purchase,Auftrag erstellen,
 model,"ir.action,name",act_order_point_form,Order Points,Bestellpunkte,0
 model,"ir.action,name",act_purchase_request_form,Purchase Requests,Bestellungen,0
 model,"ir.action,name",act_purchase_form,Purchases,Bestellungen,0
+model,"ir.cron,name",cron_packing_iternal,Generate Internal Packings,Erstellung Interne Lieferscheine,0
+model,"ir.cron,name",cron_generate_request,Generate Purchase Requests,Auftragserstellung,0
 model,"ir.ui.menu,name",menu_order_point_form,Order Points,Bestellpunkte,0
 model,"ir.ui.menu,name",menu_purchase_request_form,Purchase Requests,Bestellungen,0
+model,"res.group,name",group_purchase_request,Purchase Request,Auftragserstellung,0
+model,"res.user,name",user_generate_packing_internal,Cron Intenal Packing,Cron Interne Lieferscheine,0
+model,"res.user,name",user_generate_request,Cron Purchase Request,Cron Auftragserstellung,0
 selection,"purchase.request,origin",0,Order Point,Bestellpunkt,0
 selection,"purchase.request,state",0,Cancel,Abgebrochen,0
 selection,"purchase.request,state",0,Done,Erledigt,0
