@@ -182,8 +182,8 @@ class Move(OSV):
     def on_change_with_unit_digits(self, cursor, user, ids, vals,
             context=None):
         uom_obj = self.pool.get('product.uom')
-        if vals.get('unit'):
-            uom = uom_obj.browse(cursor, user, vals['unit'],
+        if vals.get('uom'):
+            uom = uom_obj.browse(cursor, user, vals['uom'],
                     context=context)
             return uom.digits
         return 2
