@@ -39,7 +39,7 @@ Zugehörige Berichte:
     - Gewinn- und Verlustrechnung
     - Offene Posten
     - Fälligkeitsliste
-    - Allgemeinem Journal
+    - Allgemeines Journal
 ''',
     'description_fr_FR': '''Module financier et comptable avec:
     - Comptabilité générale

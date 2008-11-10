@@ -471,6 +471,8 @@ model,"ir.ui.menu,name",menu_tax_form,Taxes,Steuern,0
 model,"ir.ui.menu,name",menu_tax_tree,Taxes,Steuern,0
 model,"ir.ui.menu,name",menu_tax_template_tree,Taxes Templates,Steuervorlagen,0
 model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Offene Posten,0
+model,"res.group,name",group_account,Account,Buchhaltung,0
+model,"res.group,name",group_account_admin,Account Administration,Administration Buchhaltung,0
 odt,account.account.aged_balance,0,Aged Balance for Customers,Fälligkeitsliste für Kunden,0
 odt,account.account.aged_balance,0,Aged Balance for Suppliers,Fälligkeitsliste für Lieferanten,0
 odt,account.account.aged_balance,0,Aged Balance for Suppliers and Customers,Fälligkeitsliste für Lieferanten und Kunden,0
