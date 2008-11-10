@@ -135,6 +135,7 @@ model,"currency.currency,name",pln,Zloty,Zloty,0
 model,"ir.action,name",act_currency_form,Currencies,Währungen,0
 model,"ir.ui.menu,name",menu_currency_form,Currencies,Währungen,0
 model,"ir.ui.menu,name",menu_currency,Currency Management,Währungen,0
+model,"res.group,name",group_currency_admin,Currency Administration,Administration Währungen,0
 view,currency.currency,0,Currencies,Währungen,0
 view,currency.currency,0,Currency,Währung,0
 view,currency.currency,0,Formatting,Format,0
