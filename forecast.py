@@ -44,9 +44,20 @@ class Forecast(OSV):
         self._rpc_allowed += [
             'button_draft',
         ]
+        self._sql_constraints += [
+            ('check_from_to_date',
+             'CHECK(to_date >= from_date)',
+             '"To Date" must be greater than "From Date"!')
+            ]
+        self._constraints += [
+            ('check_date_overlap', 'date_overlap'),
+            ]
+        self._error_messages.update({
+                'date_overlap': 'You can not create forecasts for the same '
+                'product with overlaping dates'
+                })
         self._order.insert(0, ('from_date', 'DESC'))
         self._order.insert(1, ('location', 'ASC'))
-
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
@@ -68,6 +79,28 @@ class Forecast(OSV):
             return company_obj.name_get(cursor, user, context['company'],
                     context=context)[0]
         return False
+
+    def check_date_overlap(self, cursor, user, ids):
+        for forecast in self.browse(cursor, user, ids):
+            if forecast.state != 'done':
+                continue
+            cursor.execute('SELECT f.id ' \
+                    'FROM stock_forecast f ' \
+                    'JOIN stock_forecast_line l on (f.id = l.forecast) '
+                    'WHERE ((f.from_date <= %s AND f.to_date >= %s) ' \
+                            'OR (f.from_date <= %s AND f.to_date >= %s) ' \
+                            'OR (f.from_date >= %s AND f.to_date <= %s)) ' \
+                        'AND l.product in (%s) ' \
+                        'AND state = \'done\' ' \
+                        'AND f.id != %s',
+                    (forecast.from_date, forecast.from_date,
+                     forecast.to_date, forecast.to_date,
+                     forecast.from_date, forecast.to_date,
+                     ",".join((str(l.product.id) for l in forecast.lines)),
+                     forecast.id))
+            if cursor.rowcount:
+                return False
+        return True
 
     def button_draft(self, cursor, user, ids, context=None):
         workflow_service = LocalService('workflow')
@@ -124,12 +157,12 @@ class ForecastLine(OSV):
         super(ForecastLine, self).__init__()
         self._sql_constraints += [
             ('check_line_qty_pos',
-                'CHECK(quantity >= 0.0)', 'Line quantity must be positive!'),
+             'CHECK(quantity >= 0.0)', 'Line quantity must be positive!'),
             ('check_line_minimal_qty',
-                'CHECK(quantity >= minimal_quantity)',
+             'CHECK(quantity >= minimal_quantity)',
              'Line quantity must be greater than the minimal quantity!'),
             ('forecast_product_uniq', 'UNIQUE(forecast, product)',
-                'Product must be unique by forcast!'),
+             'Product must be unique by forcast!'),
         ]
 
     def default_unit_digits(self, cursor, user, context=None):
