@@ -48,7 +48,7 @@ class Currency(OSV):
         return True
 
     def default_rounding(self, cursor, user, context=None):
-        return 0.01
+        return Decimal('0.01')
 
     def default_digits(self, cursor, user, context=None):
         return 2
