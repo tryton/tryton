@@ -221,7 +221,7 @@ class ForecastLine(OSV):
         move_obj = self.pool.get('stock.move')
         uom_obj = self.pool.get('product.uom')
         delta = line.forecast.to_date - line.forecast.from_date
-        delta = delta.days
+        delta = delta.days + 1
         nb_packet = int(line.quantity/line.minimal_quantity)
         distribution = self.distribute(delta, nb_packet)
         unit_price = False
