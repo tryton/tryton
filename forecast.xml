@@ -51,6 +51,8 @@
                         <field name="location" select="1"/>
                         <field name="date" select="1"/>
                         <field name="state" select="1"/>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
                         <field name="company" select="2"/>
                     </tree>
                 ]]>
@@ -82,16 +84,20 @@
             <field name="arch" type="xml">
                 <![CDATA[
                     <form string="Forecast Line" col="4">
+                        <label name="forecast"/>
+                        <field name="forecast"/>
+                        <newline/>
                         <label name="product"/>
                         <field name="product"/>
                         <label name="quantity"/>
                         <field name="quantity"/>
+                        <label name="minimal_quantity"/>
+                        <field name="minimal_quantity"/>
+
                         <label name="uom"/>
                         <field name="uom"/>
                         <separator name="moves" colspan="4"/>
-                        <field name="moves" colspan="4" widget="one2many"/>
-                        <label name="forecast"/>
-                        <field name="forecast"/>
+                        <field name="moves" colspan="4"/>
                         <field name="unit_digits" invisible="1" colspan="4"/>
                     </form>
                 ]]>
@@ -104,8 +110,10 @@
                 <![CDATA[
                     <tree string="Forecast Lines" editable="bottom">
                         <field name="product" select="1"/>
-                        <field name="quantity" select="2"/>
-                        <field name="uom" select="2"/>
+                        <field name="quantity" select="1"/>
+                        <field name="minimal_quantity" select="2"/>
+                        <field name="uom" select="1"/>
+                        <field name="forecast" select="2"/>
                         <field name="unit_digits" tree_invisible="1"/>
                     </tree>
                 ]]>
@@ -143,14 +151,14 @@
                 id="forecast_trans_draft_cancel">
             <field name="act_from" ref="forecast_act_draft"/>
             <field name="act_to" ref="forecast_act_cancel"/>
-            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="group" ref="group_stock_forecast"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
                 id="forecast_trans_draft_done">
             <field name="act_from" ref="forecast_act_draft"/>
             <field name="act_to" ref="forecast_act_done"/>
-            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="group" ref="group_stock_forecast"/>
             <field name="signal">done</field>
         </record>
 

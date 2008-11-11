@@ -12,6 +12,7 @@ Allow to generate future moves which will enable other process to anticipate the
 
     'depends': [
         'ir',
+        'res',
         'workflow',
         'stock',
         'product',

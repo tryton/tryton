@@ -8,33 +8,7 @@ from trytond.netsvc import LocalService
 STATES = {
     'readonly': "state != 'draft'",
 }
-
 #TODO : check dates, overlap and max > min
-
-def distribute(delta, qty):
-    range_delta = range(delta)
-    a = {}.fromkeys(range_delta, 0)
-    while qty > 0:
-        if qty > delta:
-            for i in range_delta:
-                a[i] += qty//delta
-            qty = qty%delta
-        elif delta//qty > 1:
-            i = 0
-            while i < qty:
-                a[i*delta//qty + (delta//qty/2)] += 1
-                i += 1
-            qty = 0
-        else:
-            for i in range_delta:
-                a[i] += 1
-            qty = delta-qty
-            i = 0
-            while i < qty:
-                a[delta - ((i*delta//qty) + (delta//qty/2)) - 1] -= 1
-                i += 1
-            qty = 0
-    return a
 
 
 class Forecast(OSV):
@@ -45,12 +19,12 @@ class Forecast(OSV):
 
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
-        domain="[('type', '=', 'storage')]", states={
+        domain=[('type', '=', 'storage')], states={
             'readonly': "state != 'draft' or bool(lines)",
         })
     destination = fields.Many2One(
         'stock.location', 'Destination', required=True,
-        domain="[('type', '=', 'customer')]", states=STATES)
+        domain=[('type', '=', 'customer')], states=STATES)
     from_date = fields.Date('From Date', required=True, states=STATES)
     to_date = fields.Date('To Date', required=True, states=STATES)
     lines = fields.One2Many(
@@ -70,11 +44,21 @@ class Forecast(OSV):
         self._rpc_allowed += [
             'button_draft',
         ]
-        self._order.insert(0, ('location', 'ASC'))
         self._order.insert(0, ('from_date', 'DESC'))
+        self._order.insert(1, ('location', 'ASC'))
+
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
+
+    def default_destination(self, cursor, user, context=None):
+        location_obj = self.pool.get('stock.location')
+        location_ids = location_obj.search(cursor, user,
+                self.destination._domain, context=context)
+        if len(location_ids) == 1:
+            return location_obj.name_get(cursor, user, location_ids,
+                    context=context)[0]
+        return False
 
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
@@ -107,7 +91,6 @@ class Forecast(OSV):
             }, context=context)
 
     def set_state_done(self, cursor, user, forecast_id, context=None):
-        date_obj = self.pool.get('ir.date')
         line_obj = self.pool.get('stock.forecast.line')
         forecast = self.browse(cursor, user, forecast_id, context=context)
 
@@ -126,12 +109,14 @@ class ForecastLine(OSV):
     product = fields.Many2One('product.product', 'Product', required=True,
             domain=[('type', '=', 'stockable')], on_change=['product'])
     uom = fields.Function('get_uom', type='many2one', relation='product.uom',
-            string='UOM')
+            string='UOM', required=True)
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits')
-    quantity = fields.Float('Quantity', digits="(16, unit_digits)")
+    quantity = fields.Float('Quantity', digits="(16, unit_digits)", required=True)
+    minimal_quantity = fields.Float(
+        'Minimal Qty', digits="(16, unit_digits)", required=True)
     moves = fields.Many2Many(
-        'stock.move', 'forecast_line_move_rel', 'foreacast_line', 'move','Move',
+        'stock.move', 'forecast_line_stock_move_rel', 'line', 'move','Moves',
         readonly=True, ondelete_target='CASCADE')
     forecast = fields.Many2One('stock.forecast', 'Forecast')
 
@@ -140,16 +125,18 @@ class ForecastLine(OSV):
         self._sql_constraints += [
             ('check_line_qty_pos',
                 'CHECK(quantity >= 0.0)', 'Line quantity must be positive!'),
+            ('check_line_minimal_qty',
+                'CHECK(quantity >= minimal_quantity)',
+             'Line quantity must be greater than the minimal quantity!'),
             ('forecast_product_uniq', 'UNIQUE(forecast, product)',
                 'Product must be unique by forcast!'),
         ]
-        self._error_messages.update({
-            'line_quantity': 'Line quantity must be greater than the uom '
-            'rounding precision.',
-            })
 
     def default_unit_digits(self, cursor, user, context=None):
         return 2
+
+    def default_minimal_quantity(self, cursor, user, context=None):
+        return 1.0
 
     def on_change_product(self, cursor, user, ids, vals, context=None):
         product_obj = self.pool.get('product.product')
@@ -188,16 +175,13 @@ class ForecastLine(OSV):
         uom_obj = self.pool.get('product.uom')
         delta = line.forecast.to_date - line.forecast.from_date
         delta = delta.days
-        if line.quantity < line.uom.rounding:
-            self.raise_user_error(cursor, 'line_quantity')
-        packet_size = max(line.uom.rounding, 1)
-        nb_packet = int(line.quantity/packet_size)
-        distribution = distribute(delta, nb_packet)
+        nb_packet = int(line.quantity/line.minimal_quantity)
+        distribution = self.distribute(delta, nb_packet)
         unit_price = False
         if line.forecast.destination.type == 'customer':
             unit_price = line.product.list_price
         elif line.forecast.destination.type == 'supplier':
-            unit_price = line.product.cost_price #XXX use price of first supplier ?
+            unit_price = line.product.cost_price
         if unit_price:
             unit_price = uom_obj.compute_price(
                 cursor, user, line.product.default_uom, unit_price, line.uom,
@@ -213,7 +197,7 @@ class ForecastLine(OSV):
                  'to_location': line.forecast.destination.id,
                  'product': line.product.id,
                  'uom': line.uom.id,
-                 'quantity': qty * packet_size,
+                 'quantity': qty * line.minimal_quantity,
                  'planned_date': line.forecast.from_date + datetime.timedelta(day),
                  'company': line.forecast.company.id,
                  'currency':line.forecast.company.currency,
@@ -237,5 +221,31 @@ class ForecastLine(OSV):
         default['move'] = False
         return super(ForecastLine, self).copy(cursor, user, line_id,
                 default=default, context=context)
+
+    @staticmethod
+    def distribute(delta, qty):
+        range_delta = range(delta)
+        a = {}.fromkeys(range_delta, 0)
+        while qty > 0:
+            if qty > delta:
+                for i in range_delta:
+                    a[i] += qty//delta
+                qty = qty%delta
+            elif delta//qty > 1:
+                i = 0
+                while i < qty:
+                    a[i*delta//qty + (delta//qty/2)] += 1
+                    i += 1
+                qty = 0
+            else:
+                for i in range_delta:
+                    a[i] += 1
+                qty = delta-qty
+                i = 0
+                while i < qty:
+                    a[delta - ((i*delta//qty) + (delta//qty/2)) - 1] -= 1
+                    i += 1
+                qty = 0
+        return a
 
 ForecastLine()
