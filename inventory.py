@@ -92,10 +92,9 @@ class Inventory(OSV):
             line_obj.create_move(cursor, user, line, context=context)
         self.write(
             cursor, user, inventory_id,
-            {'date': date_obj.today(cursor, user, context=context)},
+            {'state': 'done',
+             'date': date_obj.today(cursor, user, context=context)},
             context=context)
-        self.write(
-            cursor, user, inventory_id, {'state': 'done',}, context=context)
 
     def copy(self, cursor, user, inventory_id, default=None, context=None):
         date_obj = self.pool.get('ir.date')
