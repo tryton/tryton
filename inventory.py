@@ -17,13 +17,13 @@ class Inventory(OSV):
 
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
-        domain="[('type', '=', 'storage')]", states={
+        domain=[('type', '=', 'storage')], states={
             'readonly': "state != 'draft' or bool(lines)",
         })
     date = fields.Date('Date', states=STATES)
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
-        domain="[('type', '=', 'lost_found')]", states=STATES)
+        domain=[('type', '=', 'lost_found')], states=STATES)
     lines = fields.One2Many(
         'stock.inventory.line', 'inventory', 'Lines', states=STATES)
     company = fields.Many2One(
@@ -53,6 +53,15 @@ class Inventory(OSV):
             context = {}
         if context.get('company'):
             return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
+    def default_lost_found(self, cursor, user, context=None):
+        location_obj = self.pool.get('stock.location')
+        location_ids = location_obj.search(cursor, user,
+                self.lost_found._domain, context=context)
+        if len(location_ids) == 1:
+            return location_obj.name_get(cursor, user, location_ids,
                     context=context)[0]
         return False
 
