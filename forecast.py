@@ -8,7 +8,6 @@ from trytond.netsvc import LocalService
 STATES = {
     'readonly': "state != 'draft'",
 }
-#TODO : check dates, overlap and max > min
 
 
 class Forecast(OSV):
