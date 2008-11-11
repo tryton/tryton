@@ -227,9 +227,6 @@ class ForecastLine(OSV):
         unit_price = False
         if line.forecast.destination.type == 'customer':
             unit_price = line.product.list_price
-        elif line.forecast.destination.type == 'supplier':
-            unit_price = line.product.cost_price
-        if unit_price:
             unit_price = uom_obj.compute_price(
                 cursor, user, line.product.default_uom, unit_price, line.uom,
                 context=context)
