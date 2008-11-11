@@ -131,6 +131,21 @@ class Forecast(OSV):
             line_obj.create_moves(cursor, user, line, context=context)
         self.write(
             cursor, user, forecast_id, {'state': 'done',}, context=context)
+
+    def copy(self, cursor, user, forecast_id, default=None, context=None):
+        line_obj = self.pool.get('stock.forecast.line')
+        default = default and default.copy() or {}
+        default['lines'] = False
+        new_id = super(Forecast, self).copy(
+            cursor, user, forecast_id, default=default, context=context)
+        forecast = self.browse(cursor, user, forecast_id, context=context)
+        for line in forecast.lines:
+            line_obj.copy(
+                cursor, user, line.id, default={
+                    'forecast': new_id,
+                    'moves': False},
+                context=context)
+        return new_id
 Forecast()
 
 class ForecastLine(OSV):
@@ -151,7 +166,7 @@ class ForecastLine(OSV):
     moves = fields.Many2Many(
         'stock.move', 'forecast_line_stock_move_rel', 'line', 'move','Moves',
         readonly=True, ondelete_target='CASCADE')
-    forecast = fields.Many2One('stock.forecast', 'Forecast')
+    forecast = fields.Many2One('stock.forecast', 'Forecast', required=True)
 
     def __init__(self):
         super(ForecastLine, self).__init__()
@@ -247,13 +262,6 @@ class ForecastLine(OSV):
             context=context)
         move_obj.delete(
             cursor, user, [m.id for l in lines for m in l.moves], context=context)
-
-    def copy(self, cursor, user, line_id, default=None, context=None):
-        default = default and default.copy() or {}
-        default['forecast']= False
-        default['move'] = False
-        return super(ForecastLine, self).copy(cursor, user, line_id,
-                default=default, context=context)
 
     @staticmethod
     def distribute(delta, qty):
