@@ -14,7 +14,8 @@ class Location(OSV):
     "Stock Location"
     _name = 'stock.location'
     _description = __doc__
-    name = fields.Char("Name", size=None, required=True, states=STATES)
+    name = fields.Char("Name", size=None, required=True, states=STATES,
+            translate=True)
     code = fields.Char("Code", size=None, states=STATES, select=1)
     active = fields.Boolean('Active', select=1)
     address = fields.Many2One("party.address", "Address",
