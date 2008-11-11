@@ -84,6 +84,15 @@ class PackingIn(OSV):
     def default_state(self, cursor, user, context=None):
         return 'draft'
 
+    def default_warehouse(self, cursor, user, context=None):
+        location_obj = self.pool.get('stock.location')
+        location_ids = location_obj.search(cursor, user,
+                self.warehouse._domain, context=context)
+        if len(location_ids) == 1:
+            return location_obj.name_get(cursor, user, location_ids,
+                    context=context)[0]
+        return False
+
     def on_change_supplier(self, cursor, user, ids, values, context=None):
         if not values.get('supplier'):
             return {}
@@ -341,6 +350,15 @@ class PackingOut(OSV):
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
+
+    def default_warehouse(self, cursor, user, context=None):
+        location_obj = self.pool.get('stock.location')
+        location_ids = location_obj.search(cursor, user,
+                self.warehouse._domain, context=context)
+        if len(location_ids) == 1:
+            return location_obj.name_get(cursor, user, location_ids,
+                    context=context)[0]
+        return False
 
     def on_change_customer(self, cursor, user, ids, values, context=None):
         if not values.get('customer'):
