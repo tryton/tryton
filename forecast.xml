@@ -101,7 +101,6 @@
                         <field name="quantity"/>
                         <label name="minimal_quantity"/>
                         <field name="minimal_quantity"/>
-
                         <label name="uom"/>
                         <field name="uom"/>
                         <separator name="moves" colspan="4"/>
