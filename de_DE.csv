@@ -14,7 +14,7 @@ field,"account.statement.line,account",0,Account,Konto,0
 field,"account.statement.line,amount",0,Amount,Betrag,0
 field,"account.statement.line,date",0,Date,Datum,0
 field,"account.statement.line,description",0,Description,Beschreibung,0
-field,"account.statement.line,move",0,Account Move,Kontobuchung,0
+field,"account.statement.line,move",0,Account Move,Buchung,0
 field,"account.statement.line,party",0,Party,Geschäftspartner,0
 field,"account.statement,lines",0,Transactions,Transaktionen,0
 field,"account.statement.line,statement",0,Statement,Bankauszug,0
@@ -34,7 +34,12 @@ model,"ir.ui.menu,name",menu_statement_journal_form,Statement Journals,Journale 
 model,"ir.ui.menu,name",menu_statements,Statements,Bankauszüge,0
 model,"ir.ui.menu,name",menu_statement_configuration,Statements,Bankauszüge,0
 model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Geprüfte Bankauszüge,0
-model,"res.group,name",group_statement,Statement,Banküberweisung,0
+model,"res.group,name",group_statement,Statement,Bankauszug,0
+model,"workflow.activity,name",statement_act_cancel,Cancel,Abbrechen,0
+model,"workflow.activity,name",statement_act_draft,Draft,Entwurf,0
+model,"workflow.activity,name",statement_act_posted,Posted,Festgeschrieben,0
+model,"workflow.activity,name",statement_act_validated,Validated,Geprüft,0
+model,"workflow,name",wkf_statement,Statement,Bankauszug,0
 selection,"account.statement,state",0,Cancel,Abbrechen,0
 selection,"account.statement,state",0,Draft,Entwurf,0
 selection,"account.statement,state",0,Posted,Festgeschrieben,0
@@ -51,4 +56,3 @@ view,account.statement,0,Validate,Prüfen,0
 view,account.statement.journal,0,Statement Journal,Journal Bankauszüge,0
 view,account.statement.journal,0,Statement Journals,Journale Bankauszüge,0
 view,account.statement.line,0,Bank Statement Line,Posten Bankauszüge,0
-view,statement.statement.line,0,Statement Lines,Posten Bankauszüge,0
