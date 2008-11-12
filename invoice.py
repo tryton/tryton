@@ -549,7 +549,7 @@ class Invoice(OSV):
                     res['tax_amount'] += tax.get('amount', Decimal('0.0'))
             else:
                 if computed_taxes[key]['base'] - \
-                        tax.get('base', Decimal('0.0')) == Decimal('0.0'):
+                        tax.get('base', Decimal('0.0')) != Decimal('0.0'):
                     res['tax_amount'] += computed_taxes[key]['amount']
                     res['taxes'].setdefault('update', [])
                     res['taxes']['update'].append({
