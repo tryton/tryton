@@ -31,7 +31,7 @@ field,"stock.inventory,lines",0,Lines,Positionen,0
 field,"stock.inventory.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
 field,"stock.inventory.line,uom",0,UOM,Maßeinheit,0
 field,"stock.inventory,location",0,Location,Ort,0
-field,"stock.inventory,lost_found",0,Lost and Found,Nicht zugeordnet,0
+field,"stock.inventory,lost_found",0,Lost and Found,Inventurdifferenz,0
 field,"stock.inventory,state",0,State,Status,0
 field,"stock.location,active",0,Active,Aktiv,0
 field,"stock.location,address",0,Address,Adresse,0
@@ -162,7 +162,7 @@ model,"res.group,name",group_stock,Stock,Lager,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administration Lagerverwaltung,0
 model,"stock.location,name",location_customer,Customer,Kunde,0
 model,"stock.location,name",location_input,Input Zone,Wareneingang,0
-model,"stock.location,name",location_lost_found,Lost and Found,Nicht zugeordnet,0
+model,"stock.location,name",location_lost_found,Lost and Found,Inventurdifferenz,0
 model,"stock.location,name",location_output,Output Zone,Warenausgang,0
 model,"stock.location,name",location_storage,Storage Zone,Lager,0
 model,"stock.location,name",location_supplier,Supplier,Lieferant,0
@@ -203,7 +203,7 @@ selection,"stock.inventory,state",0,Cancel,Abbrechen,0
 selection,"stock.inventory,state",0,Done,Erledigt,0
 selection,"stock.inventory,state",0,Draft,Entwurf,0
 selection,"stock.location,type",0,Customer,Kunde,0
-selection,"stock.location,type",0,Lost and Found,Nicht zugeordnet,0
+selection,"stock.location,type",0,Lost and Found,Differenzen allgemein,0
 selection,"stock.location,type",0,Production,Produktion,0
 selection,"stock.location,type",0,Storage,Lagerhalle,0
 selection,"stock.location,type",0,Supplier,Lieferant,0
