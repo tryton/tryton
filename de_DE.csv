@@ -3,6 +3,8 @@ error,account.account,0,You can not create recursive accounts!,Konten können ni
 error,account.account,0,You can not delete account that have children!,Konten mit untergeordneten Konten können nicht gelöscht werden,0
 error,account.account.deferral,0,Deferral must be unique by account and fiscal year,Es kann nur einen Saldenvortrag pro Konto und Geschäftsjahr geben,0
 error,account.account.deferral,0,You can not modify Account Deferral records,Saldenvorträge sind nicht änderbar,0
+error,account.account.open_aged_balance,0,Warning,Warnung,0
+error,account.account.open_aged_balance,0,You cannot define overlapping terms,Die eingegebenen Zeiträume dürfen sich nicht überschneiden.,0
 error,account.account.template,0,You can not create recursive accounts!,Konten können nicht rekursiv angelegt werden!,0
 error,account.fiscalyear,0,No fiscal year defined for this date!,Für dieses Datum ist kein Geschäftsjahr definiert!,0
 error,account.fiscalyear,0,"The balance of the account ""%s"" must be zero!","Der Saldo von Konto ""%s"" muss 0 sein",0
