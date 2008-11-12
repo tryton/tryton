@@ -3,8 +3,6 @@ error,account.account,0,You can not create recursive accounts!,Konten können ni
 error,account.account,0,You can not delete account that have children!,Konten mit untergeordneten Konten können nicht gelöscht werden,0
 error,account.account.deferral,0,Deferral must be unique by account and fiscal year,Es kann nur einen Saldenvortrag pro Konto und Geschäftsjahr geben,0
 error,account.account.deferral,0,You can not modify Account Deferral records,Saldenvorträge sind nicht änderbar,0
-error,account.account.open_aged_balance,0,Warning,Warnung,0
-error,account.account.open_aged_balance,0,You cannot define overlapping terms,Bedingungen dürfen sich nicht überschneiden,0
 error,account.account.template,0,You can not create recursive accounts!,Konten können nicht rekursiv angelegt werden!,0
 error,account.fiscalyear,0,No fiscal year defined for this date!,Für dieses Datum ist kein Geschäftsjahr definiert!,0
 error,account.fiscalyear,0,"The balance of the account ""%s"" must be zero!","Der Saldo von Konto ""%s"" muss 0 sein",0
@@ -300,7 +298,7 @@ field,"party.party,payable_today",0,Payable Today,Verbindlichkeiten heute,0
 field,"party.party,receivable",0,Receivable,Forderungen,0
 field,"party.party,receivable_today",0,Receivable Today,Forderungen heute,0
 field,"party.party,supplier_vat",0,Supplier VAT,USt Lieferant,0
-field,"party.party,vat",0,VAT,USt.,0
+field,"party.party,vat",0,VAT,USt. Kunde,0
 help,"account.account.open_aged_balance.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_balance_sheet.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_chart_account.init,fiscalyear",0,Keep empty for all open fiscal year,Leer lassen für alle Geschäftsjahre,0
@@ -373,7 +371,7 @@ model,"account.journal.type,name",journal_type_situation,Situation,Saldenvortrag
 model,"account.tax.group,name",tax_group_none,None,Kein,0
 model,"account.tax.group,name",tax_group_vat,VAT,USt,0
 model,"ir.action,name",act_move_line_form,Account Move Lines,Buchungszeilen,0
-model,"ir.action,name",act_move_form,Account Moves,Buchungssätze Konten,0
+model,"ir.action,name",act_move_form,Account Moves,Buchungen,0
 model,"ir.action,name",act_account_form,Accounts,Konten,0
 model,"ir.action,name",act_account_tree,Accounts,Konten,0
 model,"ir.action,name",act_account_tree2,Accounts,Konten,0
@@ -426,6 +424,11 @@ model,"ir.action,name",act_tax_line_form,Tax Lines,Steuerpositionen,0
 model,"ir.action,name",report_third_party_balance,Third Party Balance,Offene Posten,0
 model,"ir.action,name",report_trial_balance,Trial Balance,Summen- und Saldenliste,0
 model,"ir.action,name",act_unreconcile_lines,Unreconcile Lines,Abstimmung von Buchungszeilen rückgängig machen,0
+model,"ir.sequence,name",sequence_account_journal,Default Account Journal,Standard Journal,0
+model,"ir.sequence,name",sequence_account_move_reconciliation,Default Account Move Reconciliation,Standard Abstimmung Buchung,0
+model,"ir.sequence.type,name",sequence_type_account_journal,Account Journal,Konto Journal,0
+model,"ir.sequence.type,name",sequence_type_account_move,Account Move,Buchung,0
+model,"ir.sequence.type,name",sequence_type_account_move_reconciliation,Account Move Reconciliation,Abstimmung Buchung,0
 model,"ir.ui.menu,name",menu_move_form,Account Moves,Buchungen,0
 model,"ir.ui.menu,name",menu_account_form,Accounts,Konten,0
 model,"ir.ui.menu,name",menu_account_tree,Accounts,Konten,0
@@ -480,6 +483,10 @@ odt,account.account.aged_balance,0,at,um,0
 odt,account.account.aged_balance,0,Company:,Unternehmen:,0
 odt,account.account.aged_balance,0,Currency:,Währung:,0
 odt,account.account.aged_balance,0,Date:,Datum:,0
+odt,account.account.aged_balance,0,Day,Tag,0
+odt,account.account.aged_balance,0,Days,Tage,0
+odt,account.account.aged_balance,0,Month,Monat,0
+odt,account.account.aged_balance,0,Months,Monate,0
 odt,account.account.aged_balance,0,Party,Geschäftspartner,0
 odt,account.account.aged_balance,0,Total,Gesamt,0
 odt,account.account.general_ledger,0,at,um,0
@@ -630,8 +637,8 @@ view,account.journal.view,0,Journal View,Journal Ansicht,0
 view,account.journal.view,0,Journal Views,Journal Ansichten,0
 view,account.journal.view,0,View Column,Spaltenansicht,0
 view,account.journal.view,0,View Columns,Spaltenansichten,0
-view,account.move,0,Account Move,Buchung Konto,0
-view,account.move,0,Account Moves,Buchungen Konto,0
+view,account.move,0,Account Move,Buchung,0
+view,account.move,0,Account Moves,Buchungen,0
 view,account.move,0,Draft,Entwurf,0
 view,account.move,0,Post,Festschreiben,0
 view,account.move.line,0,Account Move Line,Buchungszeile,0
