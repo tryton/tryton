@@ -490,7 +490,7 @@ odt,account.account.aged_balance,0,Months,Monate,0
 odt,account.account.aged_balance,0,Party,Geschäftspartner,0
 odt,account.account.aged_balance,0,Total,Gesamt,0
 odt,account.account.general_ledger,0,at,um,0
-odt,account.account.general_ledger,0,Balance,Bilanz,0
+odt,account.account.general_ledger,0,Balance,Saldo,0
 odt,account.account.general_ledger,0,Code,Kennziffer,0
 odt,account.account.general_ledger,0,Company:,Unternehmen:,0
 odt,account.account.general_ledger,0,Credit,Haben,0
@@ -505,7 +505,7 @@ odt,account.account.general_ledger,0,State,Status,0
 odt,account.account.general_ledger,0,To Period:,Bis Buchungszeitraum:,0
 odt,account.account.general_ledger,0,Total,Gesamt,0
 odt,account.account.third_party_balance,0,at,um,0
-odt,account.account.third_party_balance,0,Balance,Bilanz,0
+odt,account.account.third_party_balance,0,Balance,Saldo,0
 odt,account.account.third_party_balance,0,Company:,Unternehmen:,0
 odt,account.account.third_party_balance,0,Credit,Haben,0
 odt,account.account.third_party_balance,0,Currency:,Währung:,0
