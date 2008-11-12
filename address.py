@@ -18,7 +18,10 @@ class Address(OSV):
         for i in ['street', 'streetbis', 'zip', 'city',
                 'country', 'subdivision']:
             if vals.get(i):
-                url += ' ' + vals[i]
+                if isinstance(vals[i], str):
+                    url += ' ' + vals[i].decode('utf-8')
+                else:
+                    url += ' ' + vals[i]
         if url.strip():
             url = 'http://maps.google.com/maps?hl=%s&q=%s' % \
                     (lang, urllib.quote(url.strip().encode('utf-8')))
