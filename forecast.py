@@ -158,8 +158,9 @@ class ForecastLine(OSV):
 
     product = fields.Many2One('product.product', 'Product', required=True,
             domain=[('type', '=', 'stockable')], on_change=['product'])
-    uom = fields.Function('get_uom', type='many2one', relation='product.uom',
-            string='UOM', required=True)
+    uom = fields.Many2One(
+        'product.uom', 'UOM', required=True,
+        domain="[('category', '=', (product, 'product.default_uom.category'))]")
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits')
     quantity = fields.Float('Quantity', digits="(16, unit_digits)", required=True)
@@ -199,19 +200,6 @@ class ForecastLine(OSV):
             res['uom'] = uom_obj.name_get(cursor, user, product.default_uom.id,
                     context=context)[0]
             res['unit_digits'] = product.default_uom.digits
-        return res
-
-    def get_uom(self, cursor, user, ids, name, arg, context=None):
-        uom_obj = self.pool.get('product.uom')
-        res = {}
-        for line in self.browse(cursor, user, ids, context=context):
-            res[line.id] = line.product.default_uom.id
-        uom2name = {}
-        for uom_id, name in uom_obj.name_get(cursor, user, res.values(),
-                context=context):
-            uom2name[uom_id] = (uom_id, name)
-        for line_id in res:
-            res[line_id] = uom2name[res[line_id]]
         return res
 
     def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
