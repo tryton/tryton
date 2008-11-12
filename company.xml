@@ -30,8 +30,6 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="active"/>
                                 </tree>
                             </field>
-                            <label name="website"/>
-                            <field name="website" widget="url"/>
                         </page>
                         <page string="Employees" col="1">
                             <separator name="employees"/>
