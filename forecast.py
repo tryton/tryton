@@ -46,7 +46,10 @@ class Forecast(OSV):
         self._sql_constraints += [
             ('check_from_to_date',
              'CHECK(to_date >= from_date)',
-             '"To Date" must be greater than "From Date"!')
+             '"To Date" must be greater than "From Date"!'),
+            ('check_min_from_date',
+             'CHECK(from_date >= now()::date)',
+             '"From Date" must be a date in the future!'),
             ]
         self._constraints += [
             ('check_date_overlap', 'date_overlap'),
