@@ -58,13 +58,20 @@ class Address(OSV):
             if address.zip or address.city:
                 if res[address.id]:
                     res[address.id] += '\n'
-                res[address.id] += address.zip or '' +  ' ' + address.city or ''
+                if address.zip:
+                    res[address.id] += address.zip
+                if address.city:
+                    if res[address.id][-1:] != '\n':
+                        res[address.id] += ' '
+                    res[address.id] += address.city
             if address.country or address.subdivision:
                 if res[address.id]:
                     res[address.id] += '\n'
                 if address.subdivision:
-                    res[address.id] += ' ' + address.subdivision.name
+                    res[address.id] += address.subdivision.name
                 if address.country:
+                    if res[address.id][-1:] != '\n':
+                        res[address.id] += ' '
                     res[address.id] += address.country.name
         return res
 
