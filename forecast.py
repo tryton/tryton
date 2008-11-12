@@ -211,7 +211,8 @@ class ForecastLine(OSV):
         delta = line.forecast.to_date - line.forecast.from_date
         delta = delta.days + 1
         nb_packet = int(line.quantity/line.minimal_quantity)
-        distribution = self.distribute(delta, nb_packet)
+        distribution = self.distribute(
+            cursor, user, delta, nb_packet, context=context)
         unit_price = False
         if line.forecast.destination.type == 'customer':
             unit_price = line.product.list_price
@@ -247,8 +248,7 @@ class ForecastLine(OSV):
         move_obj.delete(
             cursor, user, [m.id for l in lines for m in l.moves], context=context)
 
-    @staticmethod
-    def distribute(delta, qty):
+    def distribute(self, cursor, user, delta, qty, context=None):
         range_delta = range(delta)
         a = {}.fromkeys(range_delta, 0)
         while qty > 0:
