@@ -189,7 +189,7 @@ class PurchaseRequest(OSV):
         req_ids = request_obj.search(
             cursor, user,
             [('purchase_line', '=', False),
-             ['OR', ('origin', '=', False),
+             ['OR', ('origin', '=', False), ('origin', '=', ''),
               ('origin', 'like', 'stock.order_point,%')
               ]
              ], context=context)
