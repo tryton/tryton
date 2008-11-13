@@ -385,12 +385,15 @@ class Product(OSV):
         Pick the product across the location. Naive (fast)
         implementation.
         :param move is a browse record with the product and the quantity to pick.
-        : param location_quantities a list of tupel (location, available_qty)
+        :param location_quantities a list of tuple (location, available_qty)
                 where location is a browse record.
         """
         to_pick = []
         needed_qty = move.quantity
         for location, available_qty in location_quantities.iteritems():
+            # Ignore available_qty when too small
+            if available_qty < move.uom.rounding:
+                continue
             if needed_qty <= available_qty:
                 to_pick.append((location, needed_qty))
                 return to_pick
@@ -425,6 +428,9 @@ class Product(OSV):
 
         success = True
         for move in moves:
+            if move.state != 'draft':
+                continue
+            to_location = move.to_location
             location_qties = {}
             childs = [m for m in move.from_location.childs] + [move.from_location]
             for location in childs:
@@ -432,7 +438,7 @@ class Product(OSV):
                     location_qties[location] = uom_obj.compute_qty(
                         cursor, user, move.product.default_uom,
                         pbl[(location.id, move.product.id)], move.uom,
-                        context=context)
+                        round=False, context=context)
 
             to_pick = self.pick_product(
                 cursor, user, move, location_qties, context=context)
@@ -442,7 +448,6 @@ class Product(OSV):
                 continue
             first = True
             for from_location, qty in to_pick:
-                to_location = move.to_location
                 values = {
                     'from_location': from_location.id,
                     'to_location': to_location.id,
@@ -466,12 +471,12 @@ class Product(OSV):
 
                 qty_defaut_uom = uom_obj.compute_qty(
                     cursor, user, move.uom, qty, move.product.default_uom,
-                    context=context)
+                    round=False, context=context)
 
                 pbl[(from_location.id, move.product.id)] = \
-                    pbl.get((location, move.product.id), 0.0) + qty_defaut_uom
+                    pbl.get((from_location.id, move.product.id), 0.0) - qty_defaut_uom
                 pbl[(to_location.id, move.product.id)]= \
-                    pbl.get((to_location.id, move.product.id), 0.0) - qty_defaut_uom
+                    pbl.get((to_location.id, move.product.id), 0.0) + qty_defaut_uom
         return success
 
 Product()
