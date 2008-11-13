@@ -31,8 +31,7 @@ field,"stock.inventory,lines",0,Lines,Positionen,0
 field,"stock.inventory.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
 field,"stock.inventory.line,uom",0,UOM,Maßeinheit,0
 field,"stock.inventory,location",0,Location,Ort,0
-field,"stock.inventory,lost_found",0,Lost and Found,Nicht zugeordnet,0
-field,"stock.inventory,moves",0,Moves,Bewegungen,0
+field,"stock.inventory,lost_found",0,Lost and Found,Inventurdifferenz,0
 field,"stock.inventory,state",0,State,Status,0
 field,"stock.location,active",0,Active,Aktiv,0
 field,"stock.location,address",0,Address,Adresse,0
@@ -135,6 +134,10 @@ model,"ir.action,name",act_product_by_location,Products by Locations,Artikel nac
 model,"ir.action,name",act_location_quantity_tree,Product Stock,Lagerbestand,0
 model,"ir.action,name",act_packing_in_form_received,Received Supplier packings,Erhaltene Lieferscheine von Lieferanten,0
 model,"ir.action,name",act_packing_in_form,Supplier Packings,Lieferscheine von Lieferanten,0
+model,"ir.sequence,name",sequence_packing_out,Customer Packing,Lieferschein Kunde,0
+model,"ir.sequence,name",sequence_packing_in,Supplier Packing,Lieferschein Lieferant,0
+model,"ir.sequence.type,name",sequence_type_packing_out,Customer Packing,Lieferschein Kunde,0
+model,"ir.sequence.type,name",sequence_type_packing_in,Supplier Packing,Lieferschein Lieferant,0
 model,"ir.ui.menu,name",menu_packing_out_assigned,Assigned Customer Packings,Zugewiesene Kundenlieferscheine,0
 model,"ir.ui.menu,name",menu_packing_internal_assigned_form,Assigned Internal Packings,Zugewiesene Interne Lieferscheine,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
@@ -157,6 +160,35 @@ model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Erha
 model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Lieferscheine von Lieferanten,0
 model,"res.group,name",group_stock,Stock,Lager,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administration Lagerverwaltung,0
+model,"stock.location,name",location_customer,Customer,Kunde,0
+model,"stock.location,name",location_input,Input Zone,Wareneingang,0
+model,"stock.location,name",location_lost_found,Lost and Found,Inventurdifferenz,0
+model,"stock.location,name",location_output,Output Zone,Warenausgang,0
+model,"stock.location,name",location_storage,Storage Zone,Lager,0
+model,"stock.location,name",location_supplier,Supplier,Lieferant,0
+model,"stock.location,name",location_warehouse,Warehouse,Warenlager,0
+model,"workflow.activity,name",packingout_act_assigned,Assigned,Zugewiesen,0
+model,"workflow.activity,name",packinginternal_act_assigned,Assigned,Zugewiesen,0
+model,"workflow.activity,name",packingin_act_cancel,Cancel,Abbrechen,0
+model,"workflow.activity,name",packingout_act_cancel,Cancel,Abbrechen,0
+model,"workflow.activity,name",packinginternal_act_cancel,Cancel,Abbrechen,0
+model,"workflow.activity,name",inventory_act_cancel,Cancel,Abbrechen,0
+model,"workflow.activity,name",packingin_act_done,Done,Erledigt,0
+model,"workflow.activity,name",packingout_act_done,Done,Erledigt,0
+model,"workflow.activity,name",packinginternal_act_done,Done,Erledigt,0
+model,"workflow.activity,name",inventory_act_done,Done,Erledigt,0
+model,"workflow.activity,name",packingin_act_draft,Draft,Entwurf,0
+model,"workflow.activity,name",packingout_act_draft,Draft,Entwurf,0
+model,"workflow.activity,name",packinginternal_act_draft,Draft,Entwurf,0
+model,"workflow.activity,name",inventory_act_draft,Draft,Entwurf,0
+model,"workflow.activity,name",packingout_act_packed,Packed,Gepackt,0
+model,"workflow.activity,name",packingin_act_received,Received,Erhalten,0
+model,"workflow.activity,name",packingout_act_waiting,Waiting,Wartend,0
+model,"workflow.activity,name",packinginternal_act_waiting,Waiting,Wartend,0
+model,"workflow,name",wkf_packingout,Customer Packing,Lieferschein Kunde,0
+model,"workflow,name",wkf_packinginternal,Internal Packing,Interner Lieferschein,0
+model,"workflow,name",wkf_inventory,Inventory,Lagerbestand,0
+model,"workflow,name",wkf_packingin,Supplier Packing,Lieferschein Lieferant,0
 odt,stock.packing.out,0,Customer Code:,Kundennummer:,0
 odt,stock.packing.out,0,Date:,Datum:,0
 odt,stock.packing.out,0,E-Mail:,E-Mail:,0
@@ -170,9 +202,8 @@ odt,stock.packing.out,0,Reference:,Referenz,0
 selection,"stock.inventory,state",0,Cancel,Abbrechen,0
 selection,"stock.inventory,state",0,Done,Erledigt,0
 selection,"stock.inventory,state",0,Draft,Entwurf,0
-selection,"stock.inventory,state",0,Open,Offen,0
 selection,"stock.location,type",0,Customer,Kunde,0
-selection,"stock.location,type",0,Lost and Found,Nicht zugeordnet,0
+selection,"stock.location,type",0,Lost and Found,Differenzen allgemein,0
 selection,"stock.location,type",0,Production,Produktion,0
 selection,"stock.location,type",0,Storage,Lagerhalle,0
 selection,"stock.location,type",0,Supplier,Lieferant,0
@@ -200,7 +231,6 @@ selection,"stock.packing.out,state",0,Draft,Entwurf,0
 selection,"stock.packing.out,state",0,Packed,Gepackt,0
 selection,"stock.packing.out,state",0,Waiting,Wartend,0
 view,party.party,0,_Stock,_Lager,0
-view,product_stock_date.init,0,Product Quantity.,Artikelmenge,0
 view,stock.inventory,0,All generated moves will be cancelled!,Sämtliche erzeugten Bewegungen werden rückgängig gemacht!,0
 view,stock.inventory,0,Cancel,Abbrechen,0
 view,stock.inventory,0,Complete Inventory,Gesamter Lagerbestand,0
