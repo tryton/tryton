@@ -2,9 +2,8 @@ type,name,res_id,src,value,fuzzy
 error,party.address,0,You can not modify the party of an address!,Der Partner für eine Adresse kann nicht geändert werden!,0
 error,party.category,0,You can not create recursive categories!,Kategorien dürfen nicht rekursiv sein,0
 error,party.contact_mechanism,0,You can not modify the party of a contact mechanism!,Der Partner einer Kontaktmöglichkeit kann nicht geändert werden!,0
-error,party.contact_mechanism,0,You can not modify the party of an contact mechanism!,Der Partner einer Kontaktmöglichkeit kann nicht geändert werden!,0
 error,party.party,0,The code of the party must be unique!,Der Name des Partners kann nicht mehrfach vergeben werden!,0
-error,party.party,0,Wrong VAT number!,Falsche USt-ID Nr.,0
+error,party.party,0,Wrong VAT number!,USt-ID Nr. ungültig!,0
 field,"party.address,active",0,Active,Aktiv,0
 field,"party.address,city",0,City,Stadt,0
 field,"party.address,country",0,Country,Staat,0
@@ -74,6 +73,8 @@ model,"ir.action,name",report_label,La_bels,_Etiketten,0
 model,"ir.action,name",act_party_form,Parties,Partner,0
 model,"ir.action,name",act_party_form2,Parties,Partner,0
 model,"ir.action,name",act_party_by_category,Parties by Category,Partner nach Kategorie,0
+model,"ir.sequence,name",sequence_party,Party,Partner,0
+model,"ir.sequence.type,name",sequence_type_party,Party,Partner,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adressen,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Kategorien,0
 model,"ir.ui.menu,name",menu_category_form,Edit Categories,Kategorien bearbeiten,0
@@ -135,5 +136,3 @@ view,party.party,0,_General,_Allgemein,0
 view,party.party,0,Parties,Partner,0
 view,party.party,0,Party,Partner,0
 view,party.party,0,VAT,USt,0
-view,party.party.type,0,Party Type,Partnertyp,0
-view,party.party.type,0,Party Types,Partnertypen,0
