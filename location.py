@@ -64,6 +64,12 @@ class Location(OSV):
     def __init__(self):
         super(Location, self).__init__()
         self._order.insert(0, ('name', 'ASC'))
+        self._constraints += [
+            ('check_recursion', 'recursive_locations'),
+        ]
+        self._error_messages.update({
+            'recursive_locations': 'You can not create recursive locations!',
+        })
 
     def default_active(self, cursor, user, context=None):
         return True
