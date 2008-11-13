@@ -111,7 +111,7 @@
             <field name="view" ref="move_view_form"/>
             <field name="act_window" ref="act_move_form_supp_proceed"/>
         </record>
-        <menuitem parent="menu_packing_in_form" sequence="2"
+        <menuitem parent="menu_move_form_supp" sequence="1"
                   action="act_move_form_supp_proceed"
                   id="menu_move_form_supp_proceed"/>
 
