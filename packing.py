@@ -223,10 +223,6 @@ class PackingIn(OSV):
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(cursor, user, [m.id for m in packing.incoming_moves
             if m.state != 'draft'], {
-                'state': 'cancel',
-                }, context=context)
-        move_obj.write(cursor, user, [m.id for m in packing.incoming_moves
-            if m.state != 'draft'], {
             'state': 'draft',
             }, context=context)
         move_obj.delete(cursor, user,
@@ -468,11 +464,7 @@ class PackingOut(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         self.write(
-            cursor, user, packing_id, {'state':'draft'}, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in packing.inventory_moves + packing.outgoing_moves],
-            {'state': 'cancel'}, context=context)
+            cursor, user, packing_id, {'state': 'draft'}, context=context)
         move_obj.write(
             cursor, user,
             [m.id for m in packing.inventory_moves + packing.outgoing_moves],
@@ -580,15 +572,6 @@ class PackingOut(OSV):
         move_obj = self.pool.get('stock.move')
         uom_obj = self.pool.get('product.uom')
         packing = self.browse(cursor, user, packing_id, context=context)
-        if packing.state == 'assigned':
-            move_obj.write(
-                cursor, user,
-                [m.id for m in packing.inventory_moves + packing.outgoing_moves],
-                {'state': 'cancel'}, context=context)
-            move_obj.write(
-                cursor, user,
-                [m.id for m in packing.inventory_moves + packing.outgoing_moves],
-                {'state': 'draft'}, context=context)
         self.write(
             cursor, user, packing_id, {'state': 'waiting'}, context=context)
 
@@ -743,10 +726,7 @@ class PackingInternal(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         self.write(
-            cursor, user, packing_id, {'state':'draft'}, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in packing.moves], {'state': 'cancel'},
-            context=context)
+            cursor, user, packing_id, {'state': 'draft'}, context=context)
         move_obj.write(
             cursor, user, [m.id for m in packing.moves], {'state': 'draft'},
             context=context)
@@ -754,9 +734,6 @@ class PackingInternal(OSV):
     def set_state_waiting(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in packing.moves], {'state': 'cancel'},
-            context=context)
         move_obj.write(
             cursor, user, [m.id for m in packing.moves], {'state': 'draft'},
             context=context)

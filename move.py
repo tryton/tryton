@@ -373,7 +373,7 @@ class Move(OSV):
                             move.company, context=context)
 
                 elif vals['state'] == 'draft':
-                    if move.state in ('assigned', 'done'):
+                    if move.state == 'done':
                         self.raise_user_error(cursor, 'set_state_draft',
                                 context=context)
                 elif vals['state'] == 'assigned':
