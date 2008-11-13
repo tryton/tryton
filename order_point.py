@@ -102,6 +102,7 @@ class OrderPoint(OSV):
         for op in self.browse(cursor, user, ids):
             field = self._type2field(op.type)
             arg = ['AND',
+                   ('product', '=', op.product.id),
                    (field, '=', op[field].id),
                    ('id', '!=', op.id),
                    ('company', '=', op.company.id),]
