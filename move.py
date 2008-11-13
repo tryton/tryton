@@ -476,6 +476,7 @@ class Line(OSV):
             'no_journal': 'No journal defined!',
             'move_view_inactive_account': 'You can not create move line\n' \
                     'on view/inactive account!',
+            'already_reconciled': 'Line "%s" (%d) already reconciled!',
             })
 
     def default_date(self, cursor, user, context=None):
@@ -1226,6 +1227,11 @@ class Line(OSV):
         reconciliation_obj = self.pool.get('account.move.reconciliation')
         period_obj = self.pool.get('account.period')
         date_obj = self.pool.get('ir.date')
+
+        for line in self.browse(cursor, user, ids, context=context):
+            if line.reconciliation:
+                self.raise_user_error(cursor, 'already_reconciled',
+                        error_args=(line.name, line.id,), context=context)
 
         ids = ids[:]
         if journal_id and account_id:
