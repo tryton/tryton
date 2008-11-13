@@ -755,6 +755,7 @@ class PurchaseLine(OSV):
                 'invisible': "type != 'line'",
             }, domain="[('category', '=', " \
                     "(product, 'product.default_uom.category'))]",
+            context="{'category': (product, 'product.default_uom.category')}",
             on_change=['product', 'quantity', 'unit', '_parent_purchase.currency',
                 '_parent_purchase.party'])
     unit_digits = fields.Function('get_unit_digits', type='integer',
@@ -1141,6 +1142,7 @@ class Template(OSV):
         'required': "purchasable",
         }, domain="[('category', '=', " \
                 "(default_uom, 'uom.category'))]",
+        context="{'category': (default_uom, 'uom.category')}",
         on_change_with=['default_uom', 'purchase_uom'])
 
     def default_purchasable(self, cursor, user, context=None):
