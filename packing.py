@@ -53,7 +53,7 @@ class PackingIn(OSV):
             fnct_inv='set_inventory_moves',
             states={
                 'readonly': "state in ('draft', 'done', 'cancel')",
-            }, context="{'warehouse': warehouse, 'type':'inventory_in'}")
+            }, context="{'warehouse': warehouse, 'type': 'inventory_in'}")
     moves = fields.One2Many('stock.move', 'packing_in', 'Moves',
             readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True)
@@ -205,7 +205,7 @@ class PackingIn(OSV):
             cursor, user, [m.id for m in packing.incoming_moves] +\
             [m.id for m in packing.inventory_moves], {'state': 'cancel'},
             context)
-        self.write(cursor, user, packing_id, {'state':'cancel'},
+        self.write(cursor, user, packing_id, {'state': 'cancel'},
                    context=context)
 
     def set_state_received(self, cursor, user, packing_id, context=None):
@@ -322,13 +322,13 @@ class PackingOut(OSV):
             fnct_inv='set_outgoing_moves',
             states={
                 'readonly':"state != 'packed'",
-            }, context="{'warehouse': warehouse, 'type':'outgoing',}")
+            }, context="{'warehouse': warehouse, 'type': 'outgoing',}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
             relation='stock.move', string='Inventory Moves',
             fnct_inv='set_inventory_moves',
             states={
                 'readonly':"state in ('packed', 'done')",
-            }, context="{'warehouse': warehouse, 'type':'inventory_out',}")
+            }, context="{'warehouse': warehouse, 'type': 'inventory_out',}")
     moves = fields.One2Many('stock.move', 'packing_out', 'Moves',
             readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True)
@@ -461,7 +461,7 @@ class PackingOut(OSV):
             }, context=context)
 
     def set_state_assigned(self, cursor, user, packing_id, context=None):
-        self.write(cursor, user, packing_id, {'state':'assigned'},
+        self.write(cursor, user, packing_id, {'state': 'assigned'},
                    context=context)
 
     def set_state_draft(self, cursor, user, packing_id, context=None):
@@ -485,7 +485,7 @@ class PackingOut(OSV):
             [m.id for m in packing.outgoing_moves if m.state == 'draft'],
             {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {
-            'state':'done',
+            'state': 'done',
             'effective_date': datetime.date.today(),
             }, context=context)
 
@@ -496,7 +496,7 @@ class PackingOut(OSV):
         move_obj.write(
             cursor, user, [m.id for m in packing.inventory_moves],
             {'state': 'done'}, context=context)
-        self.write(cursor, user, packing_id, {'state':'packed'},
+        self.write(cursor, user, packing_id, {'state': 'packed'},
                    context=context)
         # Sum all outgoing quantities
         outgoing_qty = {}
@@ -569,7 +569,7 @@ class PackingOut(OSV):
             cursor, user,[m.id for m in packing.outgoing_moves] +\
                 [m.id for m in packing.inventory_moves],
             {'state': 'cancel'}, context=context)
-        self.write(cursor, user, packing_id, {'state':'cancel'},
+        self.write(cursor, user, packing_id, {'state': 'cancel'},
                    context=context)
 
     def set_state_waiting(self, cursor, user, packing_id, context=None):
@@ -590,7 +590,7 @@ class PackingOut(OSV):
                 [m.id for m in packing.inventory_moves + packing.outgoing_moves],
                 {'state': 'draft'}, context=context)
         self.write(
-            cursor, user, packing_id, {'state':'waiting'}, context=context)
+            cursor, user, packing_id, {'state': 'waiting'}, context=context)
 
         # Sum all inventory quantities
         inventory_qty = {}
@@ -674,7 +674,7 @@ class PackingOut(OSV):
         move_obj = self.pool.get('stock.move')
         move_obj.write(
             cursor, user, [m.id for m in packing.inventory_moves],
-            {'state':'assigned'})
+            {'state': 'assigned'})
         return True
 
     def button_draft(self, cursor, user, ids, context=None):
@@ -764,11 +764,11 @@ class PackingInternal(OSV):
             cursor, user, [m.id for m in packing.moves],
             {'planned_date': packing.planned_date}, context=context)
         self.write(
-            cursor, user, packing_id, {'state':'waiting'}, context=context)
+            cursor, user, packing_id, {'state': 'waiting'}, context=context)
 
     def set_state_assigned(self, cursor, user, packing_id, context=None):
         self.write(
-            cursor, user, packing_id, {'state':'assigned'}, context=context)
+            cursor, user, packing_id, {'state': 'assigned'}, context=context)
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -777,7 +777,7 @@ class PackingInternal(OSV):
             cursor, user, [m.id for m in packing.moves], {'state': 'done'},
             context=context)
         self.write( cursor, user, packing_id,
-                    {'state':'done',
+                    {'state': 'done',
                      'effective_date': datetime.date.today()},
                     context=context)
 
@@ -788,7 +788,7 @@ class PackingInternal(OSV):
             cursor, user, [m.id for m in packing.moves], {'state': 'cancel'},
             context=context)
         self.write(
-            cursor, user, packing_id, {'state':'cancel'}, context=context)
+            cursor, user, packing_id, {'state': 'cancel'}, context=context)
 
     def assign_try(self, cursor, user, packing_id, context=None):
         product_obj = self.pool.get('product.product')
@@ -800,7 +800,7 @@ class PackingInternal(OSV):
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj = self.pool.get('stock.move')
         move_obj.write(
-            cursor, user, [m.id for m in packing.moves], {'state':'assigned'})
+            cursor, user, [m.id for m in packing.moves], {'state': 'assigned'})
         return True
 
 PackingInternal()
