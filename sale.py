@@ -873,6 +873,7 @@ class SaleLine(OSV):
                 'invisible': "type != 'line'",
             }, domain="[('category', '=', " \
                     "(product, 'product.default_uom.category'))]",
+            context="{'category': (product, 'product.default_uom.category')}",
             on_change=['product', 'quantity', 'unit', '_parent_sale.currency',
                 '_parent_sale.party'])
     unit_digits = fields.Function('get_unit_digits', type='integer',
@@ -1247,6 +1248,7 @@ class Template(OSV):
         'required': "salable",
         }, domain="[('category', '=', " \
                 "(default_uom, 'uom.category'))]",
+        context="{'category': (default_uom, 'uom.category')}",
         on_change_with=['default_uom', 'sale_uom'])
 
     def default_salable(self, cursor, user, context=None):
