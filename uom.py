@@ -65,6 +65,32 @@ class Uom(OSV):
     def default_digits(self, cursor, user, context=None):
         return 2
 
+    def default_category(self, cursor, user, context=None):
+        category_obj = self.pool.get('product.uom.category')
+        product_obj = self.pool.get('product.product')
+        if context is None:
+            context = {}
+        if 'category' in context:
+            if isinstance(context['category'], (tuple, list)) \
+                    and len(context['category']) > 1 \
+                    and context['category'][1] in ('uom.category',
+                            'product.default_uom.category'):
+                if context['category'][1] == 'uom.category':
+                    if not context['category'][0]:
+                        return False
+                    uom  = self.browse(cursor, user, context['category'][0],
+                            context=context)
+                    return category_obj.name_get(cursor, user, uom.category.id,
+                            context=context)[0]
+                else:
+                    if not context['category'][0]:
+                        return False
+                    product = product_obj.browse(cursor, user,
+                            context['category'][0], context=context)
+                    return category_obj.name_get(cursor, user,
+                            product.default_uom.category.id, context=context)[0]
+        return False
+
     def on_change_factor(self, cursor, user, ids, value, context=None):
         if value.get('factor', 0.0) == 0.0:
             return {'rate': 0.0}
