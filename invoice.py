@@ -1281,7 +1281,8 @@ class InvoiceLine(OSV):
                 'required': "product",
                 'invisible': "type != 'line'",
             }, domain="[('category', '=', " \
-                    "(product, 'product.default_uom.category'))]")
+                    "(product, 'product.default_uom.category'))]",
+            context="{'category': (product, 'product.default_uom.category')}")
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits', on_change_with=['unit'])
     product = fields.Many2One('product.product', 'Product',
