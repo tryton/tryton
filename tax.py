@@ -366,7 +366,7 @@ class TaxTemplate(OSV):
     def default_credit_note_tax_sign(self, cursor, user, context=None):
         return 1
 
-    def _get_tax_code_value(self, cursor, user, template, context=None):
+    def _get_tax_value(self, cursor, user, template, context=None):
         '''
         Set values for tax creation.
 
