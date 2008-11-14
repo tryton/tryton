@@ -602,7 +602,7 @@ class Purchase(OSV):
         return super(Purchase, self).copy(cursor, user, purchase_id,
                 default=default, context=context)
 
-    def check_adresses(self, cursor, user, purchase_id, context=None):
+    def check_for_quotation(self, cursor, user, purchase_id, context=None):
         purchase = self.browse(cursor, user, purchase_id, context=context)
         if not (purchase.invoice_address and purchase.contact_address):
             self.raise_user_error(cursor, 'addresses_required', context=context)
