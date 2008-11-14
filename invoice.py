@@ -255,8 +255,6 @@ class Invoice(OSV):
     party = fields.Many2One('party.party', 'Party', change_default=True,
         required=True, states=_STATES, on_change=['party', 'payment_term',
             'type', 'company'])
-    contact_address = fields.Many2One('party.address', 'Contact Address',
-        required=True, states=_STATES, domain="[('party', '=', party)]")
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         required=True, states=_STATES, domain="[('party', '=', party)]")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
@@ -414,14 +412,11 @@ class Invoice(OSV):
         company_obj = self.pool.get('company.company')
         res = {
             'invoice_address': False,
-            'contact_address': False,
             'account': False,
         }
         if vals.get('party'):
             party = party_obj.browse(cursor, user, vals['party'],
                     context=context)
-            res['contact_address'] = party_obj.address_get(cursor, user,
-                    party.id, type=None, context=context)
             res['invoice_address'] = party_obj.address_get(cursor, user,
                     party.id, type='invoice', context=context)
             if vals.get('type') in ('out_invoice', 'out_credit_note'):
@@ -441,9 +436,6 @@ class Invoice(OSV):
             elif vals.get('type') == 'in_credit_note':
                 res['payment_term'] = company.supplier_payment_term.id
 
-        if res['contact_address']:
-            res['contact_address'] = address_obj.name_get(cursor, user,
-                    res['contact_address'], context=context)[0]
         if res['invoice_address']:
             res['invoice_address'] = address_obj.name_get(cursor, user,
                     res['invoice_address'], context=context)[0]
@@ -1222,9 +1214,8 @@ class Invoice(OSV):
         for field in ('reference', 'description', 'comment'):
             res[field] = invoice[field]
 
-        for field in ('company', 'party', 'contact_address',
-                'invoice_address', 'currency', 'journal', 'account',
-                'payment_term'):
+        for field in ('company', 'party', 'invoice_address', 'currency',
+                'journal', 'account', 'payment_term'):
             res[field] = invoice[field].id
 
         res['lines'] = []
