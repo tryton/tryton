@@ -393,10 +393,11 @@ class AccountSelection(OSV):
                 if account.root.id in roots:
                     return False
                 roots.append(account.root.id)
-            for account in root_accounts:
-                if account.mandatory:
-                    if not account.id in roots:
-                        return False
+            if user: #Root can by pass
+                for account in root_accounts:
+                    if account.mandatory:
+                        if not account.id in roots:
+                            return False
         return True
 
 AccountSelection()
