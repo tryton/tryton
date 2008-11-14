@@ -215,6 +215,14 @@ class Type(OSV):
             res.append((type.id, _name(type)))
         return res
 
+    def delete(self, cursor, user, ids, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        type_ids = self.search(cursor, user, [
+            ('parent', 'child_of', ids),
+            ], context=context)
+        return super(Type, self).delete(cursor, user, type_ids, context=context)
+
 Type()
 
 

@@ -228,6 +228,15 @@ class Code(OSV):
                 for r in self.read(cursor, user, ids,
                     [self._rec_name, 'code'], context=context, load='_classic_write')]
 
+    def delete(self, cursor, user, ids, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        code_ids = self.search(cursor, user, [
+            ('parent', 'child_of', ids),
+            ], context=context)
+        return super(Code, self).delete(cursor, user, code_ids,
+                context=context)
+
 Code()
 
 
@@ -504,7 +513,7 @@ class Tax(OSV):
         ('fixed', 'Fixed'),
         ('none', 'None'),
         ], 'Type', required=True)
-    parent = fields.Many2One('account.tax', 'Parent')
+    parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE')
     childs = fields.One2Many('account.tax', 'parent', 'Childs')
 
     company = fields.Many2One('company.company', 'Company', required=True)
