@@ -145,6 +145,8 @@ class SaleLine(OSV):
 
         res = super(SaleLine, self).get_invoice_line(cursor, user, line,
                 context=context)
+        if not res:
+            return res
 
         selection_id = False
         if line.analytic_accounts:
