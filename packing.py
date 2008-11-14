@@ -668,6 +668,7 @@ class PackingOut(OSV):
 
 PackingOut()
 
+
 class PackingInternal(OSV):
     "Internal Packing"
     _name = 'stock.packing.internal'
