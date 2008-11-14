@@ -185,7 +185,8 @@ class PurchaseLine(OSV):
         if line.analytic_accounts:
             selection_id = account_selection_obj.copy(cursor, user,
                     line.analytic_accounts.id, context=context)
-        res['analytic_accounts'] = selection_id
+        for vals in res:
+            vals['analytic_accounts'] = selection_id
         return res
 
 PurchaseLine()
