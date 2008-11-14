@@ -28,8 +28,8 @@ class PurchaseRequest(OSV):
         string='Purchase')
     company = fields.Many2One(
         'company.company', 'Company', required=True, readonly=True)
-    origin = fields.Reference(
-        'Origin', selection=[('stock.order_point','Order Point')], readonly=True)
+    origin = fields.Reference('Origin', selection='origin_get', readonly=True,
+            required=True)
     state = fields.Function(
         'get_state', type='selection',
         selection=[("purchased", "Purchased"),
@@ -107,6 +107,17 @@ class PurchaseRequest(OSV):
                     res[request.id] = 'done'
                 else:
                     res[request.id] = 'purchased'
+        return res
+
+    def origin_get(self, cursor, user, context=None):
+        model_obj = self.pool.get('ir.model')
+        res = []
+        model_ids = model_obj.search(cursor, user, [
+            ('model', '=', 'stock.order_point'),
+            ], context=context)
+        for model in model_obj.browse(cursor, user, model_ids,
+                context=context):
+            res.append([model.model, model.name])
         return res
 
     def generate_requests(self, cursor, user, context=None):
@@ -187,13 +198,10 @@ class PurchaseRequest(OSV):
         uom_obj = self.pool.get('product.uom')
         request_obj = self.pool.get('purchase.request')
         product_supplier_obj = self.pool.get('purchase.product_supplier')
-        req_ids = request_obj.search(
-            cursor, user,
-            [('purchase_line', '=', False),
-             ['OR', ('origin', '=', False), ('origin', '=', ''),
-              ('origin', 'like', 'stock.order_point,%')
-              ]
-             ], context=context)
+        req_ids = request_obj.search(cursor, user, [
+            ('purchase_line', '=', False),
+            ('origin', 'like', 'stock.order_point,%'),
+            ], context=context)
         request_obj.delete(cursor, user, req_ids, context=context)
 
         req_ids = request_obj.search(
@@ -344,7 +352,7 @@ class PurchaseRequest(OSV):
         if order_point:
             origin = 'stock.order_point,%s'%order_point.id
         else:
-            origin = ''
+            origin = 'stock.order_point,0'
         return {'product': product,
                 'party': supplier and supplier or None,
                 'quantity': quantity,
