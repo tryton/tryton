@@ -422,18 +422,36 @@ class TaxTemplate(OSV):
             vals = self._get_tax_value(cursor, user, template, context=context)
             vals['company'] = company_id
             vals['parent'] = parent_id
-            vals['invoice_account'] = \
-                    template2account[template.invoice_account.id]
-            vals['credit_note_account'] = \
-                    template2account[template.credit_note_account.id]
-            vals['invoice_base_code'] = \
-                    template2tax_code[template.invoice_base_code.id]
-            vals['invoice_tax_code'] = \
-                    template2tax_code[template.invoice_tax_code.id]
-            vals['credit_note_base_code'] = \
-                    template2tax_code[template.credit_note_base_code.id]
-            vals['credit_note_tax_code'] = \
-                    template2tax_code[template.credit_note_tax_code.id]
+            if template.invoice_account:
+                vals['invoice_account'] = \
+                        template2account[template.invoice_account.id]
+            else:
+                vals['invoice_account'] =  False
+            if template.credit_note_account:
+                vals['credit_note_account'] = \
+                        template2account[template.credit_note_account.id]
+            else:
+                vals['credit_note_account'] = False
+            if template.invoice_base_code:
+                vals['invoice_base_code'] = \
+                        template2tax_code[template.invoice_base_code.id]
+            else:
+                vals['invoice_base_code'] = False
+            if template.invoice_tax_code:
+                vals['invoice_tax_code'] = \
+                        template2tax_code[template.invoice_tax_code.id]
+            else:
+                vals['invoice_tax_code'] = False
+            if template.credit_note_base_code:
+                vals['credit_note_base_code'] = \
+                        template2tax_code[template.credit_note_base_code.id]
+            else:
+                vals['credit_note_base_code'] = False
+            if template.credit_note_tax_code:
+                vals['credit_note_tax_code'] = \
+                        template2tax_code[template.credit_note_tax_code.id]
+            else:
+                vals['credit_note_tax_code'] = False
 
             new_id = tax_obj.create(cursor, user, vals, context=context)
             template2tax[template.id] = new_id
