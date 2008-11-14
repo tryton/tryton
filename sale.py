@@ -678,7 +678,7 @@ class Sale(OSV):
 
     def _get_invoice_line_sale_line(self, cursor, user, sale, context=None):
         '''
-        Return a dictionary of invoice line values for each sale lines
+        Return invoice line values for each sale lines
 
         :param cursor: the database cursor
         :param user: the user id
@@ -686,7 +686,7 @@ class Sale(OSV):
         :param context: the context
 
         :return: a dictionary with invoice line as key
-            and invoice lines values as value
+            and a list of invoice lines values as value
         '''
         line_obj = self.pool.get('sale.line')
         res = {}
@@ -745,13 +745,13 @@ class Sale(OSV):
         }, context=ctx)
 
         for line_id in invoice_lines:
-            vals = invoice_lines[line_id]
-            vals['invoice'] = invoice_id
-            invoice_line_id = invoice_line_obj.create(cursor, 0, vals,
-                    context=ctx)
-            sale_line_obj.write(cursor, user, line_id, {
-                'invoice_lines': [('add', invoice_line_id)],
-                }, context=context)
+            for vals in invoice_lines[line_id]:
+                vals['invoice'] = invoice_id
+                invoice_line_id = invoice_line_obj.create(cursor, 0, vals,
+                        context=ctx)
+                sale_line_obj.write(cursor, user, line_id, {
+                    'invoice_lines': [('add', invoice_line_id)],
+                    }, context=context)
 
         invoice_obj.update_taxes(cursor, 0, [invoice_id], context=ctx)
 
@@ -1123,7 +1123,7 @@ class SaleLine(OSV):
         :param line: the BrowseRecord of the line
         :param context: the context
 
-        :return: a dictionary of values of invoice line
+        :return: a list of invoice line values
         '''
         uom_obj = self.pool.get('product.uom')
         property_obj = self.pool.get('ir.property')
@@ -1164,7 +1164,7 @@ class SaleLine(OSV):
             if not res['account']:
                 self.raise_user_error(cursor, 'missing_account_revenue',
                         context=context)
-        return res
+        return [res]
 
     def copy(self, cursor, user, line_id, default=None, context=None):
         if default is None:
