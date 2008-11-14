@@ -42,10 +42,6 @@ class Sale(OSV):
             }, on_change=['party', 'payment_term'])
     party_lang = fields.Function('get_function_fields', type='char',
             string='Party Language', on_change_with=['party'])
-    contact_address = fields.Many2One('party.address', 'Contact Address',
-            domain="[('party', '=', party)]", states={
-                'readonly': "state != 'draft'",
-            })
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
             domain="[('party', '=', party)]", states={
                 'readonly': "state != 'draft'",
@@ -125,6 +121,8 @@ class Sale(OSV):
         ]
         self._error_messages.update({
             'wrong_method': 'Wrong combination of method!',
+            'invoice_addresse_required': 'Invoice addresses must be '
+            'defined for the quotation.',
         })
 
     def default_payment_term(self, cursor, user, context=None):
@@ -203,15 +201,12 @@ class Sale(OSV):
         payment_term_obj = self.pool.get('account.invoice.payment_term')
         res = {
             'invoice_address': False,
-            'contact_address': False,
             'packing_address': False,
             'payment_term': False,
         }
         if vals.get('party'):
             party = party_obj.browse(cursor, user, vals['party'],
                     context=context)
-            res['contact_address'] = party_obj.address_get(cursor, user,
-                    party.id, type=None, context=context)
             res['invoice_address'] = party_obj.address_get(cursor, user,
                     party.id, type='invoice', context=context)
             res['packing_address'] = party_obj.address_get(cursor, user,
@@ -219,9 +214,6 @@ class Sale(OSV):
             if party.supplier_payment_term:
                 res['payment_term'] = party.supplier_payment_term.id
 
-        if res['contact_address']:
-            res['contact_address'] = address_obj.name_get(cursor, user,
-                    res['contact_address'], context=context)[0]
         if res['invoice_address']:
             res['invoice_address'] = address_obj.name_get(cursor, user,
                     res['invoice_address'], context=context)[0]
@@ -652,6 +644,12 @@ class Sale(OSV):
         return super(Sale, self).copy(cursor, user, sale_id, default=default,
                 context=context)
 
+    def check_for_quotation(self, cursor, user, sale_id, context=None):
+        sale = self.browse(cursor, user, sale_id, context=context)
+        if not sale.invoice_address:
+            self.raise_user_error(cursor, 'invoice_addresse_required', context=context)
+        return True
+
     def set_reference(self, cursor, user, sale_id, context=None):
         '''
         Fill the reference field with the sale sequence
@@ -737,7 +735,6 @@ class Sale(OSV):
             'reference': sale.reference,
             'journal': journal_id,
             'party': sale.party.id,
-            'contact_address': sale.contact_address.id,
             'invoice_address': sale.invoice_address.id,
             'currency': sale.currency.id,
             'account': sale.party.account_receivable.id,

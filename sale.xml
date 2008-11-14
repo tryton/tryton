@@ -15,20 +15,18 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Sale">
+                <form string="Sale" col="6">
                     <label name="party"/>
                     <field name="party"/>
-                    <label name="contact_address"/>
-                    <field name="contact_address"/>
                     <label name="invoice_address"/>
                     <field name="invoice_address"/>
                     <label name="packing_address"/>
                     <field name="packing_address"/>
                     <label name="description"/>
-                    <field name="description"/>
+                    <field name="description" colspan="3"/>
                     <label name="reference"/>
                     <field name="reference"/>
-                    <notebook colspan="4">
+                    <notebook colspan="6">
                         <page string="Sale">
                             <label name="sale_date"/>
                             <field name="sale_date"/>
@@ -108,8 +106,8 @@
                             <field name="moves" colspan="4" widget="one2many"/>
                         </page>
                     </notebook>
-                    <field name="currency_digits" invisible="1" colspan="4"/>
-                    <field name="party_lang" invisible="1" colspan="4"/>
+                    <field name="currency_digits" invisible="1" colspan="6"/>
+                    <field name="party_lang" invisible="1" colspan="6"/>
                 </form>
                 ]]>
             </field>
@@ -253,7 +251,7 @@
             <field name="name">Quotation</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
-            <field name="action">set_reference()&#10;write({'state': 'quotation'})</field>
+            <field name="action">check_for_quotation()&#10;set_reference()&#10;write({'state': 'quotation'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_confirmed">
             <field name="name">Confirmed</field>
