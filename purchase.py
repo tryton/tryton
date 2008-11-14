@@ -157,3 +157,31 @@ class PurchaseLine(OSV):
         return res
 
 PurchaseLine()
+
+
+class Account(OSV):
+    _name = 'analytic_account.account'
+
+    def delete(self, cursor, user, ids, context=None):
+        purchase_line_obj = self.pool.get('purchase.line')
+        res = super(Account, self).delete(cursor, user, ids, context=context)
+        # Restart the cache on the fields_view_get method of purchase.line
+        purchase_line_obj.fields_view_get(cursor.dbname)
+        return res
+
+    def create(self, cursor, user, vals, context=None):
+        purchase_line_obj = self.pool.get('purchase.line')
+        res = super(Account, self).create(cursor, user, vals, context=context)
+        # Restart the cache on the fields_view_get method of purchase.line
+        purchase_line_obj.fields_view_get(cursor.dbname)
+        return res
+
+    def write(self, cursor, user, ids, vals, context=None):
+        purchase_line_obj = self.pool.get('purchase.line')
+        res = super(Account, self).write(cursor, user, ids, vals,
+                context=context)
+        # Restart the cache on the fields_view_get method of purchase.line
+        purchase_line_obj.fields_view_get(cursor.dbname)
+        return res
+
+Account()
