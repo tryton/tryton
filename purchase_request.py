@@ -148,6 +148,7 @@ class PurchaseRequest(OSV):
 
         # compute requests
         local_context = context and context.copy() or {}
+        local_context['forecast'] = True
         new_requests = []
         for min_date in date2products:
             product_ids = [x[0].id for x in date2products[min_date]]
