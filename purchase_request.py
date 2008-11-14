@@ -456,7 +456,7 @@ class CreatePurchase(Wizard):
                 'object': 'purchase.request.create_purchase.ask_party',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
-                    ('init', 'Continue', 'tryton-ok', True),
+                    ('init', 'Continue', 'tryton-go-next', True),
                     ],
                 },
             },
@@ -468,7 +468,7 @@ class CreatePurchase(Wizard):
                 'object': 'purchase.request.create_purchase.ask_term',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
-                    ('init', 'Continue', 'tryton-ok', True),
+                    ('init', 'Continue', 'tryton-go-next', True),
                     ],
                 },
             },
