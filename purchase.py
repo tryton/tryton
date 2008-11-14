@@ -633,7 +633,14 @@ class Purchase(OSV):
     def _get_invoice_line_purchase_line(self, cursor, user, purchase,
             context=None):
         '''
-        Return list of invoice line values for each purchase lines
+        Return invoice line values for each purchase lines
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchase: a BrowseRecord of the purchase
+        :param context: the context
+        :return: a dictionary with line id as key and a list
+            of invoice line values as value
         '''
         line_obj = self.pool.get('purchase.line')
         res = {}
@@ -682,13 +689,13 @@ class Purchase(OSV):
         }, context=ctx)
 
         for line_id in invoice_lines:
-            vals = invoice_lines[line_id]
-            vals['invoice'] = invoice_id
-            invoice_line_id = invoice_line_obj.create(cursor, 0, vals,
-                    context=ctx)
-            purchase_line_obj.write(cursor, user, line_id, {
-                'invoice_lines': [('add', invoice_line_id)],
-                }, context=context)
+            for vals in invoice_lines[line_id]:
+                vals['invoice'] = invoice_id
+                invoice_line_id = invoice_line_obj.create(cursor, 0, vals,
+                        context=ctx)
+                purchase_line_obj.write(cursor, user, line_id, {
+                    'invoice_lines': [('add', invoice_line_id)],
+                    }, context=context)
 
         invoice_obj.update_taxes(cursor, 0, [invoice_id], context=ctx)
 
@@ -998,6 +1005,12 @@ class PurchaseLine(OSV):
     def get_invoice_line(self, cursor, user, line, context=None):
         '''
         Return invoice line values for purchase line
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param line: a BrowseRecord of the purchase line
+        :param context: the context
+        :return: a list of invoice line values
         '''
         uom_obj = self.pool.get('product.uom')
         property_obj = self.pool.get('ir.property')
@@ -1038,7 +1051,7 @@ class PurchaseLine(OSV):
             if not res['account']:
                 self.raise_user_error(cursor, 'missing_account_expense',
                         context=context)
-        return res
+        return [res]
 
     def copy(self, cursor, user, line_id, default=None, context=None):
         if default is None:
