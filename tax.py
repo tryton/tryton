@@ -103,7 +103,7 @@ class CodeTemplate(OSV):
         new_childs = []
         for child in template.childs:
             new_childs.append(self.create_tax_code(cursor, user, child,
-                template, company_id, context=context,
+                company_id, context=context,
                 template2tax_code=template2tax_code, parent_id=new_id))
         return new_id
 
