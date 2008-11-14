@@ -201,7 +201,8 @@ this repository contains the full copyright notices and license terms. -->
                                         states="{'invisible': '''state not in ('assigned', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'draft' and 'tryton-go-next' or False'''}"/>
                                 <button string="Force Assign" name="force_assign"
                                         states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
-                                        icon="tryton-go-next"/>
+                                        icon="tryton-go-next"
+                                        confirm="Are you sure to force assignation?"/>
                                 <button string="Assign" name="assign"
                                         states="{'invisible': '''state not in ('waiting', 'packed')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'waiting' and 'tryton-go-next' or state == 'packed' and 'tryton-go-previous' or False'''}"/>
                                 <button string="Make packing" name="packed"
