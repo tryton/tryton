@@ -40,8 +40,6 @@ class Purchase(OSV):
             select=1)
     party_lang = fields.Function('get_function_fields', type='char',
             string='Party Language', on_change_with=['party'])
-    contact_address = fields.Many2One('party.address', 'Contact Address',
-            domain="[('party', '=', party)]", states=_STATES)
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
             domain="[('party', '=', party)]", states=_STATES)
     warehouse = fields.Many2One('stock.location', 'Warehouse',
@@ -99,7 +97,7 @@ class Purchase(OSV):
     def __init__(self):
         super(Purchase, self).__init__()
         self._error_messages.update({
-                'addresses_required': 'Contact and Invoice addresses must be '
+                'invoice_addresse_required': 'Invoice addresses must be '
                 'defined for the quotation.',
             })
 
@@ -176,22 +174,16 @@ class Purchase(OSV):
         payment_term_obj = self.pool.get('account.invoice.payment_term')
         res = {
             'invoice_address': False,
-            'contact_address': False,
             'payment_term': False,
         }
         if vals.get('party'):
             party = party_obj.browse(cursor, user, vals['party'],
                     context=context)
-            res['contact_address'] = party_obj.address_get(cursor, user,
-                    party.id, type=None, context=context)
             res['invoice_address'] = party_obj.address_get(cursor, user,
                     party.id, type='invoice', context=context)
             if party.supplier_payment_term:
                 res['payment_term'] = party.supplier_payment_term.id
 
-        if res['contact_address']:
-            res['contact_address'] = address_obj.name_get(cursor, user,
-                    res['contact_address'], context=context)[0]
         if res['invoice_address']:
             res['invoice_address'] = address_obj.name_get(cursor, user,
                     res['invoice_address'], context=context)[0]
@@ -604,8 +596,8 @@ class Purchase(OSV):
 
     def check_for_quotation(self, cursor, user, purchase_id, context=None):
         purchase = self.browse(cursor, user, purchase_id, context=context)
-        if not (purchase.invoice_address and purchase.contact_address):
-            self.raise_user_error(cursor, 'addresses_required', context=context)
+        if not purchase.invoice_address:
+            self.raise_user_error(cursor, 'invoice_addresse_required', context=context)
         return True
 
     def set_reference(self, cursor, user, purchase_id, context=None):
@@ -681,7 +673,6 @@ class Purchase(OSV):
             'reference': purchase.reference,
             'journal': journal_id,
             'party': purchase.party.id,
-            'contact_address': purchase.contact_address.id,
             'invoice_address': purchase.invoice_address.id,
             'currency': purchase.currency.id,
             'account': purchase.party.account_payable.id,
