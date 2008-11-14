@@ -441,6 +441,8 @@ class Account(OSV):
         ]
         self._error_messages.update({
             'recursive_accounts': 'You can not create recursive accounts!',
+            'delete_account_with_move_line': 'You can not delete account ' \
+                    'with move line!',
         })
         self._sql_error_messages.update({
             'parent_fkey': 'You can not delete account ' \
@@ -769,6 +771,21 @@ class Account(OSV):
                 vals = vals.copy()
                 del vals['active']
         return super(Account, self).write(cursor, user, ids, vals,
+                context=context)
+
+    def delete(self, cursor, user, ids, context=None):
+        move_line_obj = self.pool.get('account.move.line')
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        account_ids = self.search(cursor, user, [
+            ('parent', 'child_of', ids),
+            ], context=context)
+        if move_line_obj.search(cursor, user, [
+            ('account', 'in', account_ids),
+            ], context=context):
+            self.raise_user_error(cursor, 'delete_account_with_move_line',
+                    context=context)
+        return super(Account, self).delete(cursor, user, account_ids,
                 context=context)
 
 Account()
