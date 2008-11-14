@@ -121,7 +121,7 @@ class Sale(OSV):
         ]
         self._error_messages.update({
             'wrong_method': 'Wrong combination of method!',
-            'invoice_addresse_required': 'Invoice addresses must be '
+            'addresses_required': 'Invoice and Packing addresses must be '
             'defined for the quotation.',
         })
 
@@ -646,8 +646,8 @@ class Sale(OSV):
 
     def check_for_quotation(self, cursor, user, sale_id, context=None):
         sale = self.browse(cursor, user, sale_id, context=context)
-        if not sale.invoice_address:
-            self.raise_user_error(cursor, 'invoice_addresse_required', context=context)
+        if not sale.invoice_address or not sale.packing_address:
+            self.raise_user_error(cursor, 'addresses_required', context=context)
         return True
 
     def set_reference(self, cursor, user, sale_id, context=None):
