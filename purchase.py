@@ -1011,7 +1011,7 @@ class PurchaseLine(OSV):
         res['type'] = line.type
         res['description'] = line.description
         if line.type != 'line':
-            return res
+            return [res]
         if line.purchase.invoice_method == 'order':
             res['quantity'] = line.quantity
         else:
