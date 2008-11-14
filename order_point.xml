@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.ui.view" id="order_point_view_form">
@@ -11,6 +12,8 @@
                         <separator string="Product Info" colspan="4"/>
                         <label name="product"/>
                         <field name="product"/>
+                        <label name="company"/>
+                        <field name="company"/>
                         <label name="min_quantity"/>
                         <field name="min_quantity"/>
                         <label name="max_quantity"/>
@@ -18,18 +21,14 @@
                         <separator string="Order Point Type" colspan="4"/>
                         <label name="type"/>
                         <field name="type"/>
-                        <group col="4" colspan="2">
-                            <label name="warehouse_location"/>
-                            <field name="warehouse_location"/>
-                            <label name="storage_location"/>
-                            <field name="storage_location"/>
-                        </group>
+                        <newline/>
+                        <label name="warehouse_location"/>
+                        <field name="warehouse_location"/>
+                        <newline/>
+                        <label name="storage_location"/>
+                        <field name="storage_location"/>
                         <label name="provisioning_location"/>
                         <field name="provisioning_location"/>
-                        <newline/>
-                        <label name="company"/>
-                        <field name="company"/>
-
                     </form>
                 ]]>
             </field>
