@@ -497,7 +497,6 @@ class Tax(OSV):
     percentage = fields.Numeric('Percentage', digits=(16, 8),
             states={
                 'invisible': "type != 'percentage'",
-                'required': "type == 'percentage'",
             }, help='In %')
     type = fields.Selection([
         ('percentage', 'Percentage'),
