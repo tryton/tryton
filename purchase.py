@@ -1,7 +1,39 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Purchase"
 
 from trytond.osv import fields, OSV
+
+
+class Purchase(OSV):
+    _name = "purchase.purchase"
+
+    def __init__(self):
+        super(Purchase, self).__init__()
+        self._error_messages.update({
+            'analytic_account_required': 'Analytic account is required ' \
+                    'on line "%s" (%d)!',
+            })
+
+    def check_for_quotation(self, cursor, user, purchase_id, context=None):
+        account_selection_obj = self.pool.get(
+                'analytic_account.account.selection')
+        purchase_line_obj = self.pool.get('purchase.line')
+
+        res = super(Purchase, self).check_for_quotation(cursor, user,
+                purchase_id, context=context)
+
+        purchase = self.browse(cursor, user, purchase_id, context=context)
+        for line in purchase.lines:
+            if not account_selection_obj.check_root(cursor, user,
+                    [line.analytic_accounts.id]):
+                line_name = purchase_line_obj.name_get(cursor, user,
+                        line.id, context=context)[0][1]
+                self.raise_user_error(cursor, 'analytic_account_required',
+                        (line_name, line.id), context=context)
+        return res
+
+Purchase()
 
 
 class PurchaseLine(OSV):
