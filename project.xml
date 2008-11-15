@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="res.group" id="group_project_admin">
@@ -14,7 +15,5 @@
         <menuitem name="Configuration" parent="menu_project"
             id="menu_configuration" groups="group_project_admin"
             sequence="10" icon="tryton-preferences"/>
-        <menuitem name="Reporting" parent="menu_project"
-            id="menu_reporting" sequence="100"/>
     </data>
 </tryton>
