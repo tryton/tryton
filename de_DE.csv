@@ -70,11 +70,11 @@ model,"ir.action,name",act_category_tree,Categories,Kategorien,0
 model,"ir.action,name",act_category_form,Categories,Kategorien,0
 model,"ir.action,name",act_category_form2,Categories,Kategorien,0
 model,"ir.action,name",report_label,La_bels,_Etiketten,0
-model,"ir.action,name",act_party_form,Parties,Partei,0
-model,"ir.action,name",act_party_form2,Parties,Partei,0
-model,"ir.action,name",act_party_by_category,Parties by Category,Partei nach Kategorie,0
-model,"ir.sequence,name",sequence_party,Party,Partner,0
-model,"ir.sequence.type,name",sequence_type_party,Party,Partner,0
+model,"ir.action,name",act_party_form,Parties,Parteien,0
+model,"ir.action,name",act_party_form2,Parties,Parteien,0
+model,"ir.action,name",act_party_by_category,Parties by Category,Parteien nach Kategorie,0
+model,"ir.sequence,name",sequence_party,Party,Partei,0
+model,"ir.sequence.type,name",sequence_type_party,Party,Partei,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adressen,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Kategorien,0
 model,"ir.ui.menu,name",menu_category_form,Edit Categories,Kategorien bearbeiten,0
@@ -129,6 +129,7 @@ view,party.category,0,Category,Kategorie,0
 view,party.contact_mechanism,0,Contact Mechanism,Kontaktmöglichkeit,0
 view,party.contact_mechanism,0,Contact Mechanisms,Kontaktmöglichkeiten,0
 view,party.party,0,Account,Konten,0
+view,party.party,0,_Accounting,,0
 view,party.party,0,Addresses,Adressen,0
 view,party.party,0,Categories,Kategorien,0
 view,party.party,0,Contact Mechanisms,Kontaktmöglichkeiten,0
