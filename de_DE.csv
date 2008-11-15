@@ -68,7 +68,7 @@ field,"account.invoice.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
 field,"account.invoice.line,unit_price",0,Unit Price,Einzelpreis,0
 field,"account.invoice,move",0,Move,Buchung,0
 field,"account.invoice,number",0,Number,Nummer,0
-field,"account.invoice,party",0,Party,Geschäftspartner,0
+field,"account.invoice,party",0,Party,Partei,0
 field,"account.invoice.pay_invoice.ask,account",0,Account,Konto,0
 field,"account.invoice.pay_invoice.ask,account_writeoff",0,Account,Konto,0
 field,"account.invoice.pay_invoice.ask,amount",0,Amount,Betrag,0
