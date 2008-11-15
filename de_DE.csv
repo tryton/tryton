@@ -15,7 +15,7 @@ model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_project,Project Management,Projekte,0
 model,"ir.ui.menu,name",menu_project_tree,Projects,Projekte,0
 model,"ir.ui.menu,name",menu_project_form,Projects,Projekte,0
-model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
+model,"ir.ui.menu,name",,Reporting,Berichte,0
 model,"ir.ui.menu,name",menu_work_form,Works,Aufgaben,0
 model,"res.group,name",group_project_admin,Project Administration,Administration Projekte,0
 selection,"project.work,project_type",0,Project,Projekt,0
