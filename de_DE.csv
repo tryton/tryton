@@ -78,7 +78,7 @@ field,"account.account.deferral,currency_digits",0,Currency Digits,Stellen Währ
 field,"account.account.deferral,debit",0,Debit,Soll,0
 field,"account.account.deferral,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
 field,"account.account,deferrals",0,Deferrals,Saldenvorträge,0
-field,"account.account,kind",0,Kind,Typ,0
+field,"account.account,kind",0,Kind,Art,0
 field,"account.account,left",0,Left,Links,0
 field,"account.account,name",0,Name,Name,0
 field,"account.account,note",0,Note,Bemerkung,0
@@ -122,7 +122,7 @@ field,"account.account.template,childs",0,Childs,Untergeordnet (Kontovorlagen),0
 field,"account.account.template,code",0,Code,Code,0
 field,"account.account.template,complete_name",0,Code - Name,Code - Name,0
 field,"account.account.template,deferral",0,Deferral,Saldenvortrag,0
-field,"account.account.template,kind",0,Kind,Typ,0
+field,"account.account.template,kind",0,Kind,Art,0
 field,"account.account.template,name",0,Name,Name,0
 field,"account.account.template,parent",0,Parent,Übergeordnet (Kontovorlage),0
 field,"account.account.template,reconcile",0,Reconcile,Abstimmen,0
@@ -186,7 +186,7 @@ field,"account.move,centralised_line",0,Centralised Line,Abschlussbuchungszeile,
 field,"account.move,date",0,Effective Date,Effektives Datum,0
 field,"account.move,journal",0,Journal,Journal,0
 field,"account.move.line,account",0,Account,Konto,0
-field,"account.move.line,account_kind",0,Account Kind,Typ,0
+field,"account.move.line,account_kind",0,Account Kind,Kontenart,0
 field,"account.move.line,active",0,Active,Aktiv,0
 field,"account.move.line,amount_second_currency",0,Amount Second Currency,Betrag Zweitwährung,0
 field,"account.move.line,blocked",0,Litigation,Postensperre,0
@@ -199,7 +199,7 @@ field,"account.move.line,maturity_date",0,Maturity Date,Fälligkeitsdatum,0
 field,"account.move.line,move",0,Move,Buchung,0
 field,"account.move.line,move_state",0,Move State,Buchungsstatus,0
 field,"account.move.line,name",0,Name,Name,0
-field,"account.move.line,party",0,Party,Geschäftspartner,0
+field,"account.move.line,party",0,Party,Partei,0
 field,"account.move.line,period",0,Period,Buchungszeitraum,0
 field,"account.move.line,reconciliation",0,Reconciliation,Abstimmung,0
 field,"account.move.line,reference",0,Reference,Referenz,0
@@ -237,18 +237,18 @@ field,"account.tax,active",0,Active,Aktiv,0
 field,"account.tax,amount",0,Amount,Betrag,0
 field,"account.tax,childs",0,Childs,Untergeordnet (Steuern),0
 field,"account.tax.code,active",0,Active,Aktiv,0
-field,"account.tax.code,childs",0,Childs,Untergeordnet (Steuercodes),0
+field,"account.tax.code,childs",0,Childs,Untergeordnet (Steuerkennziffern),0
 field,"account.tax.code,code",0,Code,Kennziffer,0
 field,"account.tax.code,company",0,Company,Unternehmen,0
 field,"account.tax.code,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"account.tax.code,name",0,Name,Name,0
-field,"account.tax.code,parent",0,Parent,Übergeordnet (Steuercode),0
+field,"account.tax.code,parent",0,Parent,Übergeordnet (Steuerkennziffern),0
 field,"account.tax.code,sum",0,Sum,Summe,0
 field,"account.tax.code.template,account",0,Account Template,Kontenvorlage,0
-field,"account.tax.code.template,childs",0,Childs,Untergeordnet (Steuervorlagencodes),0
+field,"account.tax.code.template,childs",0,Childs,Untergeordnet (Steuerkennziffernvorlage),0
 field,"account.tax.code.template,code",0,Code,Kennziffer,0
 field,"account.tax.code.template,name",0,Name,Name,0
-field,"account.tax.code.template,parent",0,Parent,Übergeordnet (Steuercodevorlage),0
+field,"account.tax.code.template,parent",0,Parent,Übergeordnet (Steuerkennziffernvorlage),0
 field,"account.tax,company",0,Company,Unternehmen,0
 field,"account.tax,credit_note_account",0,Credit Note Account,Konto für Gutschrift,0
 field,"account.tax,credit_note_base_code",0,Credit Note Base Code,Kennziffer für Nettobeträge in Gutschriften,0
@@ -420,7 +420,7 @@ model,"ir.action,name",act_reopen_period,Re-Open Periods,Buchungszeiträume wied
 model,"ir.action,name",act_tax_code_form,Tax Codes,Steuerkennziffern,0
 model,"ir.action,name",act_tax_code_tree,Tax Codes,Steuerkennziffern,0
 model,"ir.action,name",act_tax_code_tree2,Tax Codes,Steuerkennziffern,0
-model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Vorlagen für Steuercodes,0
+model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Vorlagen für Steuerkennziffern,0
 model,"ir.action,name",act_tax_form,Taxes,Steuern,0
 model,"ir.action,name",act_tax_tree,Taxes,Steuern,0
 model,"ir.action,name",act_tax_template_tree,Taxes Templates,Steuervorlagen,0
@@ -491,7 +491,7 @@ odt,account.account.aged_balance,0,Day,Tag,0
 odt,account.account.aged_balance,0,Days,Tage,0
 odt,account.account.aged_balance,0,Month,Monat,0
 odt,account.account.aged_balance,0,Months,Monate,0
-odt,account.account.aged_balance,0,Party,Geschäftspartner,0
+odt,account.account.aged_balance,0,Party,Partei,0
 odt,account.account.aged_balance,0,Total,Gesamt,0
 odt,account.account.general_ledger,0,at,um,0
 odt,account.account.general_ledger,0,Balance,Saldo,0
@@ -545,7 +545,7 @@ odt,account.move.general_journal,0,Posted,Festgeschrieben,0
 odt,account.move.general_journal,0,Reference:,Referenz,0
 odt,account.move.general_journal,0,To Date:,Bis:,0
 selection,"account.account,kind",0,Expense,Aufwand,0
-selection,"account.account,kind",0,Other,Anderer,0
+selection,"account.account,kind",0,Other,Anderes,0
 selection,"account.account,kind",0,Payable,Verbindlichkeiten,0
 selection,"account.account,kind",0,Receivable,Forderungen,0
 selection,"account.account,kind",0,Revenue,Ertrag,0
@@ -556,7 +556,7 @@ selection,"account.account.open_aged_balance.init,balance_type",0,Supplier,Liefe
 selection,"account.account.open_aged_balance.init,unit",0,Day,Tag,0
 selection,"account.account.open_aged_balance.init,unit",0,Month,Monat,0
 selection,"account.account.template,kind",0,Expense,Aufwand,0
-selection,"account.account.template,kind",0,Other,Anderer,0
+selection,"account.account.template,kind",0,Other,Anderes,0
 selection,"account.account.template,kind",0,Payable,Verbindlichkeiten,0
 selection,"account.account.template,kind",0,Receivable,Forderungen,0
 selection,"account.account.template,kind",0,Revenue,Ertrag,0
