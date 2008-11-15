@@ -14,7 +14,7 @@ field,"purchase.request.create_purchase.ask_term,company",0,Company,Unternehmen,
 field,"purchase.request.create_purchase.ask_term,party",0,Supplier,Lieferant,0
 field,"purchase.request.create_purchase.ask_term,payment_term",0,Payment Term,Zahlungsbedingung,0
 field,"purchase.request,origin",0,Origin,Herkunft,0
-field,"purchase.request,party",0,Party,Geschäftspartner,0
+field,"purchase.request,party",0,Party,Partei,0
 field,"purchase.request,product",0,Product,Artikel,0
 field,"purchase.request,purchase",0,Purchase,Bestellung,0
 field,"purchase.request,purchase_date",0,Best Purchase Date,Bestes Einkaufsdatum,0
