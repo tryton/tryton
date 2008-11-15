@@ -48,7 +48,6 @@ field,"account.invoice,amount_to_pay",0,Amount to Pay,Montant à payer,0
 field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Montant à payer aujourd'hui,0
 field,"account.invoice,comment",0,Comment,Commentaire,0
 field,"account.invoice,company",0,Company,Compagnie,0
-field,"account.invoice,contact_address",0,Contact Address,Adresse de contact,0
 field,"account.invoice,currency",0,Currency,Devise,0
 field,"account.invoice,currency_digits",0,Currency Digits,Décimales de la devise,0
 field,"account.invoice,description",0,Description,Description,0
@@ -155,6 +154,7 @@ model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Payer facture,0
 model,"ir.action,name",act_payment_term_form,Payment Terms,Conditions de paiement,0
 model,"ir.action,name",act_invoice_in_credit_note_form,Supplier Credit Notes,Notes de crédit fournisseur,0
 model,"ir.action,name",act_invoice_in_invoice_form,Supplier Invoices,Facture fournisseurs,0
+model,"ir.sequence.type,name",sequence_type_account_invoice,Invoice,Facture,0
 model,"ir.ui.menu,name",menu_invoice_form,All Invoices,Toutes les factures,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form,Credit Notes,Notes de crédit,0
 model,"ir.ui.menu,name",menu_invoices_configuration,Invoices,Factures,0
@@ -163,6 +163,12 @@ model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Factures,0
 model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Conditions de paiement,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,Notes de crédit fournisseur,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Factures fournisseur,0
+model,"workflow.activity,name",invoice_activity_cancel,Cancel,Annulé,0
+model,"workflow.activity,name",invoice_activity_draft,Draft,Brouilon,0
+model,"workflow.activity,name",invoice_activity_open,Open,Ouvert,0
+model,"workflow.activity,name",invoice_activity_paid,Paid,Payé,0
+model,"workflow.activity,name",invoice_activity_proforma,Pro forma,Pro forma,0
+model,"workflow,name",invoice_workflow,Invoice workflow,Workflow facture,0
 odt,account.invoice,0,Amount,Montant,0
 odt,account.invoice,0,Base,Base,0
 odt,account.invoice,0,Date,Date,0
