@@ -1,6 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,account.account,0,You can not create recursive accounts!,Vous ne pouvez pas créer des comptes recursifs,0
 error,account.account,0,You can not delete account that have children!,Vous ne pouvez pas supprimer des comptes qui ont des enfants !,0
+error,account.account,0,You can not delete account with move line!,Vous ne pouvez pas supprimer de compte avec des lignes de mouvement,0
 error,account.account.deferral,0,Deferral must be unique by account and fiscal year,Le report doit être unique par compte et par année fiscale,0
 error,account.account.deferral,0,You can not modify Account Deferral records,Vous ne pouvez pas modifier les enregistrements de report de compte,0
 error,account.account.template,0,You can not create recursive accounts!,Vous ne pouvez pas créer des comptes recursifs,0
@@ -26,6 +27,7 @@ error,account.move,0,You can not delete posted move!,Vous ne pouvez pas supprime
 error,account.move,0,You can not modify a posted move in this journal!,Vous ne pouvez pas modifier un mouvement posté sur ce journal !,0
 error,account.move,0,You can not post an empty move!,Vous ne pouvez pas poster un mouvement vide !,0
 error,account.move,0,You can not post a unbalanced move!,Vous ne pouvez pas poster un mouvement non-balancé !,0
+error,account.move.line,0,"Line ""%s"" (%d) already reconciled!","La ligne ""%s"" (%d) est déjà réconciliée !",0
 error,account.move.line,0,No journal defined!,Pas de journal définit !,0
 error,account.move.line,0,Wrong credit/debit values!,Valeur crédit/débit incorrectes,0
 error,account.move.line,0,You can not add/modify lines in a closed journal period!,Vous ne pouvez pas ajouter/modifier des lignes sur un journal - périod fermé !,0
@@ -423,6 +425,11 @@ model,"ir.action,name",act_tax_line_form,Tax Lines,Lignes de taxe,0
 model,"ir.action,name",report_third_party_balance,Third Party Balance,Balance des tiers,0
 model,"ir.action,name",report_trial_balance,Trial Balance,Balance,0
 model,"ir.action,name",act_unreconcile_lines,Unreconcile Lines,Lignes non réconciliées,0
+model,"ir.sequence,name",sequence_account_journal,Default Account Journal,Journal de compte par défaut,0
+model,"ir.sequence,name",sequence_account_move_reconciliation,Default Account Move Reconciliation,Réconciliation des mouvements comptables par défaut,0
+model,"ir.sequence.type,name",sequence_type_account_journal,Account Journal,Journal de compte,0
+model,"ir.sequence.type,name",sequence_type_account_move,Account Move,Mouvement comptable,0
+model,"ir.sequence.type,name",sequence_type_account_move_reconciliation,Account Move Reconciliation,Réconciliation de mouvements comptables,0
 model,"ir.ui.menu,name",menu_move_form,Account Moves,Mouvements comptables,0
 model,"ir.ui.menu,name",menu_account_form,Accounts,Comptes,0
 model,"ir.ui.menu,name",menu_account_tree,Accounts,Comptes,0
@@ -468,6 +475,8 @@ model,"ir.ui.menu,name",menu_tax_form,Taxes,Taxes,0
 model,"ir.ui.menu,name",menu_tax_tree,Taxes,Taxes,0
 model,"ir.ui.menu,name",menu_tax_template_tree,Taxes Templates,Modèles de taxes,0
 model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Balance tiers,0
+model,"res.group,name",group_account,Account,Compte,0
+model,"res.group,name",group_account_admin,Account Administration,Administration comptable,0
 odt,account.account.aged_balance,0,at,à,0
 odt,account.account.aged_balance,0,Company:,Compagnie :,0
 odt,account.account.aged_balance,0,Currency:,Devise :,0
@@ -664,6 +673,7 @@ view,account.tax.template,0,Refund,Note de crédit,0
 view,account.tax.template,0,Taxes,Taxes,0
 view,account.tax.template,0,Taxes Templates,Modèles de taxes,0
 view,account.tax.template,0,Tax Template,Modèle de taxe,0
+view,party.party,0,Account,Compte,0
 view,party.party,0,Taxes,Taxes,0
 wizard_button,"account.account.create_chart_account,account,create_account",0,Create,Créer,0
 wizard_button,"account.account.create_chart_account,account,end",0,Cancel,Annuler,0
