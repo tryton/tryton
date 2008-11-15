@@ -1,6 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,account.account,0,You can not create recursive accounts!,Konten können nicht rekursiv angelegt werden!,0
 error,account.account,0,You can not delete account that have children!,Konten mit untergeordneten Konten können nicht gelöscht werden,0
+error,account.account,0,You can not delete account with move line!,"Ein Konto, das Buchungen aufweist, kann nicht gelöscht werden!",0
 error,account.account.deferral,0,Deferral must be unique by account and fiscal year,Es kann nur einen Saldenvortrag pro Konto und Geschäftsjahr geben,0
 error,account.account.deferral,0,You can not modify Account Deferral records,Saldenvorträge sind nicht änderbar,0
 error,account.account.open_aged_balance,0,Warning,Warnung,0
@@ -27,6 +28,7 @@ error,account.move,0,You can not delete posted move!,Eine festgeschriebene Buchu
 error,account.move,0,You can not modify a posted move in this journal!,Eine festgeschriebene Buchung kann in diesem Journal nicht verändert werden!,0
 error,account.move,0,You can not post an empty move!,Ein leerer Buchungssatz kann nicht festgeschrieben werden!,0
 error,account.move,0,You can not post a unbalanced move!,Ein unausgeglichener Buchungssatz kann nicht festgeschrieben werden!,0
+error,account.move.line,0,"Line ""%s"" (%d) already reconciled!","Zeile ""%s"" (%d) ist bereits abgestimmt!",0
 error,account.move.line,0,No journal defined!,Kein Journal definiert!,0
 error,account.move.line,0,Wrong credit/debit values!,Falsche Haben/Soll-Werte!,0
 error,account.move.line,0,You can not add/modify lines in a closed journal period!,In einem abgeschlossenen Buchungszeitraum eines Journals können keine Zeilen hinzugefügt werden!,0
@@ -40,7 +42,7 @@ error,account.move.reconciliation,0,"You can not create reconciliation where lin
 - ungültig sind
 - sich auf das selbe Konto beziehen
 - sich nicht auf ein abstimmungsfähiges Konto beziehen
-- nicht zum selben Partner gehören",0
+- nicht zur selben Partei gehören",0
 error,account.move.reconciliation,0,You can not modify a reconciliation!,Eine Abstimmung kann nicht geändert werden!,0
 error,account.period,0,No period defined for this date!,Kein Buchungszeitraum für dieses Datum definiert!,0
 error,account.period,0,The period dates must be in the fiscal year dates,Ein Buchungszeitraum muss innerhalb des Geschäftsjahres sein,0
@@ -299,8 +301,8 @@ field,"party.party,payable",0,Payable,Verbindlichkeiten,0
 field,"party.party,payable_today",0,Payable Today,Verbindlichkeiten heute,0
 field,"party.party,receivable",0,Receivable,Forderungen,0
 field,"party.party,receivable_today",0,Receivable Today,Forderungen heute,0
-field,"party.party,supplier_vat",0,Supplier VAT,USt Lieferant,0
-field,"party.party,vat",0,VAT,USt. Kunde,0
+field,"party.party,supplier_vat",0,Supplier VAT,USt als Lieferant,0
+field,"party.party,vat",0,VAT,USt. als Kunde,0
 help,"account.account.open_aged_balance.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_balance_sheet.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_chart_account.init,fiscalyear",0,Keep empty for all open fiscal year,Leer lassen für alle Geschäftsjahre,0
@@ -389,7 +391,7 @@ model,"ir.action,name",act_close_period,Close Periods,Buchungszeiträume abschli
 model,"ir.action,name",wizard_create_chart_account,Create Chart of Account from Template,Kontenplan von Vorlage erstellen,0
 model,"ir.action,name",act_fiscalyear_form,Fiscal Years,Geschäftsjahre,0
 model,"ir.action,name",report_general_journal,General Journal,Allgemein,0
-model,"ir.action,name",report_general_ledger,General Ledger,Hauptbuch,0
+model,"ir.action,name",report_general_ledger,General Ledger,Kontenblätter,0
 model,"ir.action,name",act_account_income_statement_tree,Income Statement,Gewinn- und Verlustrechnung,0
 model,"ir.action,name",act_journal_form,Journals,Journale,0
 model,"ir.action,name",act_journal_period_tree,Journals - Periods,Journale - Buchungszeiträume,0
@@ -410,7 +412,7 @@ model,"ir.action,name",wizard_open_third_party_balance,Open Third Party Balance,
 model,"ir.action,name",act_period_form,Periods,Buchungszeiträume,0
 model,"ir.action,name",act_period_form2,Periods,Buchungszeiträume,0
 model,"ir.action,name",wizard_print_general_journal,Print General Journal,Journal Allgemein drucken,0
-model,"ir.action,name",wizard_print_general_ledger,Print General Legder,Hauptbuch drucken,0
+model,"ir.action,name",wizard_print_general_ledger,Print General Legder,Kontenblätter drucken,0
 model,"ir.action,name",wizard_print_trial_balance,Print Trial Balance,Summen- und Saldenliste drucken,0
 model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Positionen abstimmen,0
 model,"ir.action,name",act_reopen_journal_period,Re-Open Journals - Periods,Journale - Buchungszeiträume wiedereröffnen,0
@@ -463,7 +465,7 @@ model,"ir.ui.menu,name",menu_open_chart_code,Open Chart of Tax Code,Tabelle Steu
 model,"ir.ui.menu,name",menu_open_journal,Open Journal,Journal öffnen,0
 model,"ir.ui.menu,name",menu_period_form,Periods,Buchungszeiträume,0
 model,"ir.ui.menu,name",menu_print_general_journal,Print General Journal,Journal Allgemein drucken,0
-model,"ir.ui.menu,name",menu_print_general_ledger,Print General Legder,Hauptbuch drucken,0
+model,"ir.ui.menu,name",menu_print_general_ledger,Print General Legder,Kontenblätter drucken,0
 model,"ir.ui.menu,name",menu_print_trial_balance,Print Trial Balance,Summen- und Saldenliste drucken,0
 model,"ir.ui.menu,name",menu_processing,Processing,Bearbeitung,0
 model,"ir.ui.menu,name",menu_open_reconcile_lines,Reconcile Lines,Buchungszeilen abstimmen,0
@@ -501,7 +503,7 @@ odt,account.account.general_ledger,0,Date,Datum,0
 odt,account.account.general_ledger,0,Date:,Datum:,0
 odt,account.account.general_ledger,0,Debit,Soll,0
 odt,account.account.general_ledger,0,From Period:,Von Buchungszeitraum:,0
-odt,account.account.general_ledger,0,General Ledger,Hauptbuch,0
+odt,account.account.general_ledger,0,General Ledger,Kontenblätter,0
 odt,account.account.general_ledger,0,Name,Name,0
 odt,account.account.general_ledger,0,State,Status,0
 odt,account.account.general_ledger,0,To Period:,Bis Buchungszeitraum:,0
@@ -513,7 +515,7 @@ odt,account.account.third_party_balance,0,Credit,Haben,0
 odt,account.account.third_party_balance,0,Currency:,Währung:,0
 odt,account.account.third_party_balance,0,Date:,Datum:,0
 odt,account.account.third_party_balance,0,Debit,Soll,0
-odt,account.account.third_party_balance,0,Party,Partner,0
+odt,account.account.third_party_balance,0,Party,Partei,0
 odt,account.account.third_party_balance,0,Third Party Balance,Offene Posten,0
 odt,account.account.third_party_balance,0,Total,Gesamt,0
 odt,account.account.trial_balance,0,Account,Konto,0
@@ -609,7 +611,7 @@ view,account.account.open_balance_sheet.init,0,Open Balance Sheet,Bilanzbogen ö
 view,account.account.open_chart_account.init,0,Open Chart of Account,Kontenplan öffnen,0
 view,account.account.open_income_statement.init,0,Open Income Statement,Gewinn- und Verlustrechnung öffnen,0
 view,account.account.open_third_party_balance.init,0,Open Third Party Balance,Offene Postenliste öffnen,0
-view,account.account.print_general_ledger.init,0,Print General Ledger,Hauptbuch drucken,0
+view,account.account.print_general_ledger.init,0,Print General Ledger,Kontenblätter drucken,0
 view,account.account.print_trial_balance.init,0,Print Trial Balance,Summen- und Saldenliste drucken,0
 view,account.account.template,0,Account Template,Kontenvorlage,0
 view,account.account.template,0,Account Templates,Kontenvorlagen,0
@@ -679,6 +681,7 @@ view,account.tax.template,0,Invoice,Rechnung,0
 view,account.tax.template,0,Taxes,Steuern,0
 view,account.tax.template,0,Taxes Templates,Steuervorlagen,0
 view,account.tax.template,0,Tax Template,Steuervorlage,0
+view,party.party,0,Account,Konten,0
 view,party.party,0,_Accounting,_Buchhaltung,0
 view,party.party,0,Taxes,Steuern,0
 wizard_button,"account.account.create_chart_account,account,create_account",0,Create,Erstellen,0
