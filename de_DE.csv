@@ -73,15 +73,15 @@ model,"ir.action,name",report_label,La_bels,_Etiketten,0
 model,"ir.action,name",act_party_form,Parties,Partei,0
 model,"ir.action,name",act_party_form2,Parties,Partei,0
 model,"ir.action,name",act_party_by_category,Parties by Category,Partei nach Kategorie,0
-model,"ir.sequence,name",sequence_party,Party,Partei,0
-model,"ir.sequence.type,name",sequence_type_party,Party,Partei,0
+model,"ir.sequence,name",sequence_party,Party,Partner,0
+model,"ir.sequence.type,name",sequence_type_party,Party,Partner,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adressen,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Kategorien,0
 model,"ir.ui.menu,name",menu_category_form,Edit Categories,Kategorien bearbeiten,0
 model,"ir.ui.menu,name",menu_address_form2,New Address,Neue Adresse,0
 model,"ir.ui.menu,name",menu_category_form2,New category,Neue Kategorie,0
 model,"ir.ui.menu,name",menu_party_form2,New Party,Neue Partei,0
-model,"ir.ui.menu,name",menu_party_form,Parties,Partei,0
+model,"ir.ui.menu,name",menu_party_form,Parties,Parteien,0
 model,"ir.ui.menu,name",menu_party,Party Management,Kontakte,0
 model,"res.group,name",group_party_admin,Party Administration,Administration Kontakte,0
 selection,"party.contact_mechanism,type",0,E-Mail,E-Mail,0
@@ -129,11 +129,10 @@ view,party.category,0,Category,Kategorie,0
 view,party.contact_mechanism,0,Contact Mechanism,Kontaktmöglichkeit,0
 view,party.contact_mechanism,0,Contact Mechanisms,Kontaktmöglichkeiten,0
 view,party.party,0,Account,Konten,0
-view,party.party,0,_Accounting,_Buchhaltung,0
 view,party.party,0,Addresses,Adressen,0
 view,party.party,0,Categories,Kategorien,0
 view,party.party,0,Contact Mechanisms,Kontaktmöglichkeiten,0
 view,party.party,0,_General,_Allgemein,0
-view,party.party,0,Parties,Partei,0
+view,party.party,0,Parties,Parteien,0
 view,party.party,0,Party,Partei,0
 view,party.party,0,VAT,USt,0
