@@ -44,7 +44,7 @@ field,"sale.sale,packing_exception",0,Packings Exception,Lieferungsvorbehalt,0
 field,"sale.sale,packing_method",0,Packing Method,Liefermethode,0
 field,"sale.sale,packings",0,Packings,Lieferscheine,0
 field,"sale.sale,packing_state",0,Packing State,Lieferstatus,0
-field,"sale.sale,party",0,Party,Geschäftspartner,0
+field,"sale.sale,party",0,Party,Partei,0
 field,"sale.sale,party_lang",0,Party Language,Sprache Partei,0
 field,"sale.sale,payment_term",0,Payment Term,Zahlungsbedingung,0
 field,"sale.sale,reference",0,Reference,Referenz,0
