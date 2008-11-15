@@ -1,6 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,stock.inventory.line,0,Line quantity must be positive!,Les quantités sur les lignes doivent être positives!,0
 error,stock.inventory.line,0,Product must be unique by inventory!,Chaque produit ne peut apparaître qu'une seule fois par inventaire,0
+error,stock.location,0,You can not create recursive locations!,Vous ne pouvez pas créer des emplacements récursifs,0
 error,stock.move,0,Move can not be in both Supplier and Customer Packing,Un mouvement ne peut pas être en même temps dans un packing founisseur et un packing client.,0
 error,stock.move,0,Move quantity must be positive,La quantité sur le mouvement doit être positive.,0
 error,stock.move,0,Source and destination location must be different,Les emplacements d'origine et de destination doivent être distinctes,0
@@ -18,10 +19,13 @@ field,"party.party,customer_location",0,Customer Location,Emplacement client,0
 field,"party.party,supplier_location",0,Supplier Location,Emplacement fournisseur,0
 field,"product.product,forecast_quantity",0,Forecast Quantity,Quantités prévisionnelles,0
 field,"product.product,quantity",0,Quantity,Quantité,0
+field,"product.template,forecast_quantity",0,Forecast Quantity,Quantité prévue,0
+field,"product.template,quantity",0,Quantity,Quantité,0
 field,"stock.inventory,company",0,Company,Companie,0
 field,"stock.inventory,date",0,Date,Date,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Quantité attendue,0
 field,"stock.inventory.line,inventory",0,Inventory,Inventaire,0
+field,"stock.inventory.line,move",0,Move,Mouvement,0
 field,"stock.inventory.line,product",0,Product,Produit,0
 field,"stock.inventory.line,quantity",0,Quantity,Quantité,0
 field,"stock.inventory,lines",0,Lines,Lignes,0
@@ -29,7 +33,6 @@ field,"stock.inventory.line,unit_digits",0,Unit Digits,Décimales de l'unité,0
 field,"stock.inventory.line,uom",0,UOM,UDM,0
 field,"stock.inventory,location",0,Location,Emplacement,0
 field,"stock.inventory,lost_found",0,Lost and Found,Pertes et surplus,0
-field,"stock.inventory,moves",0,Moves,Mouvements,0
 field,"stock.inventory,state",0,State,État,0
 field,"stock.location,active",0,Active,Actif,0
 field,"stock.location,address",0,Address,Adresse,0
@@ -130,6 +133,10 @@ model,"ir.action,name",act_product_by_location,Products by Locations,Produits pa
 model,"ir.action,name",act_location_quantity_tree,Product Stock,Quantités en stock,0
 model,"ir.action,name",act_packing_in_form_received,Received Supplier packings,Colisages fournisseurs reçus,0
 model,"ir.action,name",act_packing_in_form,Supplier Packings,Colisages fournisseurs,0
+model,"ir.sequence,name",sequence_packing_out,Customer Packing,Colisage client,0
+model,"ir.sequence,name",sequence_packing_in,Supplier Packing,Colisage fournisseur,0
+model,"ir.sequence.type,name",sequence_type_packing_out,Customer Packing,Colisage client,0
+model,"ir.sequence.type,name",sequence_type_packing_in,Supplier Packing,Colisage fournisseur,0
 model,"ir.ui.menu,name",menu_packing_out_assigned,Assigned Customer Packings,Colisages clients assignés,0
 model,"ir.ui.menu,name",menu_packing_internal_assigned_form,Assigned Internal Packings,Colisages internes assignés,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
@@ -150,9 +157,40 @@ model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Mouvements client
 model,"ir.ui.menu,name",menu_packing_in_form2,New Supplier Packing,Nouveau colisage fournisseur,0
 model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Colisages fournisseur reçus,0
 model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Colisages fournisseurs,0
+model,"res.group,name",group_stock,Stock,Stock,0
+model,"res.group,name",group_stock_admin,Stock Administration,Administration des stocks,0
+model,"stock.location,name",location_customer,Customer,Client,0
+model,"stock.location,name",location_input,Input Zone,Zone d'entrée,0
+model,"stock.location,name",location_lost_found,Lost and Found,Pertes et surplus,0
+model,"stock.location,name",location_output,Output Zone,Zone de sortie,0
+model,"stock.location,name",location_storage,Storage Zone,Zone rangement,0
+model,"stock.location,name",location_supplier,Supplier,Fournisseur,0
+model,"stock.location,name",location_warehouse,Warehouse,Entrepôt,0
+model,"workflow.activity,name",packingout_act_assigned,Assigned,Assigné,0
+model,"workflow.activity,name",packinginternal_act_assigned,Assigned,Assigné,0
+model,"workflow.activity,name",packingin_act_cancel,Cancel,Annulé,0
+model,"workflow.activity,name",packingout_act_cancel,Cancel,Annulé,0
+model,"workflow.activity,name",packinginternal_act_cancel,Cancel,Annulé,0
+model,"workflow.activity,name",inventory_act_cancel,Cancel,Annulé,0
+model,"workflow.activity,name",packingin_act_done,Done,Fait,0
+model,"workflow.activity,name",packingout_act_done,Done,Fait,0
+model,"workflow.activity,name",packinginternal_act_done,Done,Fait,0
+model,"workflow.activity,name",inventory_act_done,Done,Fait,0
+model,"workflow.activity,name",packingin_act_draft,Draft,Brouillon,0
+model,"workflow.activity,name",packingout_act_draft,Draft,Brouillon,0
+model,"workflow.activity,name",packinginternal_act_draft,Draft,Brouillon,0
+model,"workflow.activity,name",inventory_act_draft,Draft,Brouillon,0
+model,"workflow.activity,name",packingout_act_packed,Packed,Emballé,0
+model,"workflow.activity,name",packingin_act_received,Received,Reçu,0
+model,"workflow.activity,name",packingout_act_waiting,Waiting,En attente,0
+model,"workflow.activity,name",packinginternal_act_waiting,Waiting,En attente,0
+model,"workflow,name",wkf_packingout,Customer Packing,Colisage client,0
+model,"workflow,name",wkf_packinginternal,Internal Packing,Colisage interne,0
+model,"workflow,name",wkf_inventory,Inventory,Inventaire,0
+model,"workflow,name",wkf_packingin,Supplier Packing,Colisage fournisseur,0
 selection,"stock.inventory,state",0,Cancel,Annulé,0
 selection,"stock.inventory,state",0,Done,Fait,0
-selection,"stock.inventory,state",0,Open,Ouvert,0
+selection,"stock.inventory,state",0,Draft,Brouillon,0
 selection,"stock.location,type",0,Customer,Client,0
 selection,"stock.location,type",0,Lost and Found,Pertes et surplus,0
 selection,"stock.location,type",0,Production,Production,0
@@ -182,6 +220,7 @@ selection,"stock.packing.out,state",0,Draft,Brouillon,0
 selection,"stock.packing.out,state",0,Packed,Emballé,0
 selection,"stock.packing.out,state",0,Waiting,En attente,0
 view,party.party,0,_Stock,_Stocks,0
+view,product.product,0,Products,Produits,0
 view,stock.inventory,0,All generated moves will be cancelled!,Tous les mouvements généré vont être annulés,0
 view,stock.inventory,0,Cancel,Annuler,0
 view,stock.inventory,0,Complete Inventory,Compléter l'inventaire,0
@@ -216,6 +255,7 @@ view,stock.packing.internal,0,Internal Packing,Colisage interne,0
 view,stock.packing.internal,0,Internal Packings,Colisages internes,0
 view,stock.packing.internal,0,Reset to Draft,Remettre en brouillon,0
 view,stock.packing.internal,0,Waiting,En attente,0
+view,stock.packing.out,0,Are you sure to force assignation?,Êtes-vous sûr de forcer l'assignation ?,0
 view,stock.packing.out,0,Assign,Assigner,0
 view,stock.packing.out,0,Cancel,Annuler,0
 view,stock.packing.out,0,Customer Packing,Colisage client,0
