@@ -3,6 +3,7 @@ error,account.invoice,0,You can not delete invoices that comes from a purchase!,
 error,purchase.line,0,"It miss an ""account_expense"" default property!","Es ist keine allgemeine Eigenschaft ""Konto Aufwand"" definiert",0
 error,purchase.line,0,The supplier location is required!,Der Lagerort des Lieferanten muss eingegeben werden!,0
 error,purchase.purchase,0,Contact and Invoice addresses must be defined for the quotation.,Kontakt- und Rechnungsadresse müssen für das Angebot angegeben werden.,0
+error,purchase.purchase,0,Invoice addresses must be defined for the quotation.,Die Rechnungsadresse muss für ein Angebot angegeben werden.,0
 field,"product.template,product_suppliers",0,Suppliers,Lieferanten,0
 field,"product.template,purchasable",0,Purchasable,Käuflich,0
 field,"product.template,purchase_uom",0,Purchase UOM,Einheit Einkauf,0
@@ -54,7 +55,7 @@ field,"purchase.purchase,packing_exception",0,Packings Exception,Lieferungsvorbe
 field,"purchase.purchase,packings",0,Packings,Lieferscheine,0
 field,"purchase.purchase,packing_state",0,Packing State,Lieferstatus,0
 field,"purchase.purchase,party",0,Party,Geschäftspartner,0
-field,"purchase.purchase,party_lang",0,Party Language,Sprache Partner,0
+field,"purchase.purchase,party_lang",0,Party Language,Sprache Partei,0
 field,"purchase.purchase,payment_term",0,Payment Term,Zahlungsbedingung,0
 field,"purchase.purchase,purchase_date",0,Purchase Date,Kaufdatum,0
 field,"purchase.purchase,reference",0,Reference,Referenz,0
@@ -62,7 +63,7 @@ field,"purchase.purchase,state",0,State,Status,0
 field,"purchase.purchase,tax_amount",0,Tax,Steuer,0
 field,"purchase.purchase,total_amount",0,Total,Gesamt,0
 field,"purchase.purchase,untaxed_amount",0,Untaxed,Netto,0
-field,"purchase.purchase,warehouse",0,Warehouse,Lager,0
+field,"purchase.purchase,warehouse",0,Warehouse,Warenlager,0
 field,"stock.move,purchase",0,Purchase,Einkauf,0
 field,"stock.move,purchase_currency",0,Purchase Currency,Einkaufswährung,0
 field,"stock.move,purchase_line",0,unknown,unbekannt,0
@@ -144,8 +145,9 @@ selection,"purchase.purchase,state",0,Confirmed,Beauftragt,0
 selection,"purchase.purchase,state",0,Done,Erledigt,0
 selection,"purchase.purchase,state",0,Draft,Entwurf,0
 selection,"purchase.purchase,state",0,Quotation,Angebot,0
-view,product.product,0,Products,Artikel,0
+view,product.product,0,Product Suppliers,Lieferanten,0
 view,product.product,0,Suppliers,Lieferanten,0
+view,purchase.line,0,Products,Artikel,0
 view,purchase.line,0,Purchase Line,Position Einkauf,0
 view,purchase.line,0,Purchase Lines,Positionen Einkauf,0
 view,purchase.product_supplier,0,Product Supplier,Lieferant,0
