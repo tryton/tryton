@@ -1,6 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,stock.inventory.line,0,Line quantity must be positive!,Menge der Position muss positiv sein!,0
-error,stock.inventory.line,0,Product must be unique by inventory!,Ein Artikel kann in einem Lager nicht mehrfach vergeben werden!,0
+error,stock.inventory.line,0,Product must be unique by inventory!,Ein Artikel kann in einem Lagerbestand nicht mehrfach vergeben werden!,0
+error,stock.location,0,You can not create recursive locations!,Lagerorte können nicht rekursiv angelegt werden!,0
 error,stock.move,0,Move can not be in both Supplier and Customer Packing,Eine Bewegung kann nicht in Lieferanten- und Kundenlieferung erfolgen,0
 error,stock.move,0,Move quantity must be positive,Zu bewegende Menge muss positiv sein,0
 error,stock.move,0,Source and destination location must be different,Herkunfts- und Bestimmungsort müssen unterschiedlich sein,0
@@ -10,8 +11,8 @@ error,stock.move,0,You can not set state to draft!,"Status ""Entwurf"" kann nich
 error,stock.move,0,You can not use service product for a move!,Der Bestand einer Dienstleistung kann nicht geändert werden!,0
 error,stock.move,0,You can only delete draft or cancelled moves!,"Nur Bewegungen mit Status ""Entwurf"" oder ""Abgebrochen"" können gelöscht werden!",0
 error,stock.packing.in,0,Incoming Moves must have input location as destination location!,Eingehende Bewegungen müssen einen Lagerort vom Typ eingehend als Bestimmung haben!,0
-error,stock.packing.in,0,Inventory Moves must have input location as source location!,Lagerbewegungen müssen einen Lagerort vom Typ eingehend als Herkunft haben!,0
-error,stock.packing.in,0,Inventory Moves must have output location as destination location!,Lagerbewegungen müssen einen Lagerort vom Typ ausgehend als Herkunft haben! ,0
+error,stock.packing.in,0,Inventory Moves must have input location as source location!,Bestandsänderungen müssen einen Lagerort vom Typ eingehend als Herkunft haben!,0
+error,stock.packing.in,0,Inventory Moves must have output location as destination location!,Bestandsänderungen müssen einen Lagerort vom Typ ausgehend als Herkunft haben! ,0
 error,stock.packing.in,0,Outgoing Moves must have output location as source location!,Ausgehende Bewegungen müssen einen Lagerort vom Typ ausgehend als Herkunft haben! ,0
 field,"party.address,delivery",0,Delivery,Lieferadresse,0
 field,"party.party,customer_location",0,Customer Location,Lagerort Kunde,0
@@ -45,9 +46,9 @@ field,"stock.location,output_location",0,Output,Ausgang,0
 field,"stock.location,parent",0,Parent,Übergeordnet (Lagerort),0
 field,"stock.location,quantity",0,Quantity,Menge,0
 field,"stock.location,right",0,Right,Rechts,0
-field,"stock.location_stock_date.init,forecast_date",0,At Date,Am,0
-field,"stock.location,storage_location",0,Storage,Lagerhalle,0
-field,"stock.location,type",0,Location type,Lagerort,0
+field,"stock.location_stock_date.init,forecast_date",0,At Date,Zum,0
+field,"stock.location,storage_location",0,Storage,Lager,0
+field,"stock.location,type",0,Location type,Lagertyp,0
 field,"stock.move,company",0,Company,Unternehmen,0
 field,"stock.move,currency",0,Currency,Währung,0
 field,"stock.move,effective_date",0,Effective Date,Effektives Datum,0
@@ -68,7 +69,7 @@ field,"stock.packing.in,code",0,Code,Code,0
 field,"stock.packing.in,contact_address",0,Contact Address,Kontaktadresse,0
 field,"stock.packing.in,effective_date",0,Effective Date,Effektives Datum,0
 field,"stock.packing.in,incoming_moves",0,Incoming Moves,Eingehende Bewegungen,0
-field,"stock.packing.in,inventory_moves",0,Inventory Moves,Lagerbewegungen,0
+field,"stock.packing.in,inventory_moves",0,Inventory Moves,Bestandsänderungen,0
 field,"stock.packing.in,moves",0,Moves,Bewegungen,0
 field,"stock.packing.in,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.packing.in,reference",0,Reference,Referenz,0
@@ -82,20 +83,20 @@ field,"stock.packing.internal,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.packing.internal,reference",0,Reference,Referenz,0
 field,"stock.packing.internal,state",0,State,Status,0
 field,"stock.packing.internal,to_location",0,To Location,Zu Lagerort,0
-field,"stock.packing.in,warehouse",0,Warehouse,Lager,0
+field,"stock.packing.in,warehouse",0,Warehouse,Warenlager,0
 field,"stock.packing.out,code",0,Code,Code,0
 field,"stock.packing.out,customer",0,Customer,Kunde,0
 field,"stock.packing.out,customer_location",0,Customer Location,Lagerort Kunde,0
 field,"stock.packing.out,delivery_address",0,Delivery Address,Lieferadresse,0
 field,"stock.packing.out,effective_date",0,Effective Date,Effektives Datum,0
-field,"stock.packing.out,inventory_moves",0,Inventory Moves,Lagerbestandsänderungen,0
+field,"stock.packing.out,inventory_moves",0,Inventory Moves,Bestandsänderungen,0
 field,"stock.packing.out,moves",0,Moves,Bewegungen,0
 field,"stock.packing.out,outgoing_moves",0,Outgoing Moves,Ausgehende Bewegungen,0
 field,"stock.packing.out,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.packing.out,reference",0,Reference,Referenz,0
 field,"stock.packing.out,state",0,State,Status,0
 field,"stock.packing.out,warehouse",0,Warehouse,Warenlager,0
-field,"stock.product_stock_date.init,forecast_date",0,At Date,Am,0
+field,"stock.product_stock_date.init,forecast_date",0,At Date,Zum,0
 help,"party.party,customer_location",0,The default destination location when sending products to the party.,Standardbestimmungsort für Sendungen zum Geschäftspartner,0
 help,"party.party,supplier_location",0,The default source location when receiving products from the party.,Standardbestimmungsort für Sendungen vom Geschäftspartner,0
 help,"stock.location_stock_date.init,forecast_date",0,"Allow to compute expected stock quantities for this date.
@@ -112,7 +113,7 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 ",0
 model,"ir.action,name",act_packing_out_form_assigned,Assigned Customer Packings,Zugewiesene Kundenlieferscheine,0
 model,"ir.action,name",act_packing_internal_assigned_form,Assigned Internal Packings,Zugewiesene Interne Lieferscheine,0
-model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Gesamter Lagerbestand,0
+model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Aktueller Lagerbestand,0
 model,"ir.action,name",report_packing_out,Customer Packing,Lieferschein an Kunde,0
 model,"ir.action,name",act_packing_out_form,Customer Packings,Lieferscheine an Kunden,0
 model,"ir.action,name",act_packing_out_form_ready,Customer Packings Ready for Shipping,Versandbereite Lieferscheine an Kunden,0
@@ -121,7 +122,7 @@ model,"ir.action,name",act_packing_internal_draft_form,Draft Internal Packings,E
 model,"ir.action,name",act_location_form,Edit Locations,Lagerorte bearbeiten,0
 model,"ir.action,name",act_packing_internal_form,Internal Packings,Interne Lieferscheine,0
 model,"ir.action,name",act_packing_internal_waiting_form,Internal Packings Waiting Assignation,Zuzuweisende Interne Lieferscheine,0
-model,"ir.action,name",act_inventory_form,Inventories,Lager,0
+model,"ir.action,name",act_inventory_form,Inventories,Lagerbestände,0
 model,"ir.action,name",act_location_tree,Locations,Lagerorte,0
 model,"ir.action,name",act_move_form,Moves,Lagerbewegungen,0
 model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Bewegungen von Lieferanten,0
@@ -148,7 +149,7 @@ model,"ir.ui.menu,name",menu_packing_internal_draft_form,Draft Internal Packings
 model,"ir.ui.menu,name",menu_location_form,Edit Locations,Lagerorte bearbeiten,0
 model,"ir.ui.menu,name",menu_packing_internal_form,Internal Packings,Interne Lieferscheine,0
 model,"ir.ui.menu,name",menu_packing_internal_waiting_form,Internal Packings Waiting Assignation,Zuzuweisende Interne Lieferscheine,0
-model,"ir.ui.menu,name",menu_inventory_form,Inventories,Lagerbestand,0
+model,"ir.ui.menu,name",menu_inventory_form,Inventories,Bestandskontrolle,0
 model,"ir.ui.menu,name",menu_stock,Inventory Management,Lager,0
 model,"ir.ui.menu,name",menu_location_tree,Locations,Lagerorte,0
 model,"ir.ui.menu,name",menu_move_form,Moves,Bewegungen,0
@@ -164,7 +165,7 @@ model,"stock.location,name",location_customer,Customer,Kunde,0
 model,"stock.location,name",location_input,Input Zone,Wareneingang,0
 model,"stock.location,name",location_lost_found,Lost and Found,Inventurdifferenz,0
 model,"stock.location,name",location_output,Output Zone,Warenausgang,0
-model,"stock.location,name",location_storage,Storage Zone,Lager,0
+model,"stock.location,name",location_storage,Storage Zone,Lagerzone,0
 model,"stock.location,name",location_supplier,Supplier,Lieferant,0
 model,"stock.location,name",location_warehouse,Warehouse,Warenlager,0
 model,"workflow.activity,name",packingout_act_assigned,Assigned,Zugewiesen,0
@@ -205,7 +206,7 @@ selection,"stock.inventory,state",0,Draft,Entwurf,0
 selection,"stock.location,type",0,Customer,Kunde,0
 selection,"stock.location,type",0,Lost and Found,Differenzen allgemein,0
 selection,"stock.location,type",0,Production,Produktion,0
-selection,"stock.location,type",0,Storage,Lagerhalle,0
+selection,"stock.location,type",0,Storage,Lager,0
 selection,"stock.location,type",0,Supplier,Lieferant,0
 selection,"stock.location,type",0,Warehouse,Warenlager,0
 selection,"stock.move,state",0,Assigned,Zugewiesen,0
@@ -231,19 +232,21 @@ selection,"stock.packing.out,state",0,Draft,Entwurf,0
 selection,"stock.packing.out,state",0,Packed,Gepackt,0
 selection,"stock.packing.out,state",0,Waiting,Wartend,0
 view,party.party,0,_Stock,_Lager,0
+view,product.product,0,Products,Artikel,0
+view,product_stock_date.init,0,Product Quantity.,Artikel Mengen,0
 view,stock.inventory,0,All generated moves will be cancelled!,Sämtliche erzeugten Bewegungen werden rückgängig gemacht!,0
 view,stock.inventory,0,Cancel,Abbrechen,0
-view,stock.inventory,0,Complete Inventory,Gesamter Lagerbestand,0
+view,stock.inventory,0,Complete Inventory,Aktueller Lagerbestand,0
 view,stock.inventory,0,Confirm,Beauftragen,0
 view,stock.inventory,0,Inventories,Lagerbestände,0
 view,stock.inventory,0,Inventory,Lagerbestand,0
 view,stock.inventory,0,Re-Open,Wiedereröffnen,0
-view,stock.inventory.line,0,Inventory Line,Lagerposition,0
-view,stock.inventory.line,0,Inventory Lines,Lagerpositionen,0
+view,stock.inventory.line,0,Inventory Line,Position Bestand,0
+view,stock.inventory.line,0,Inventory Lines,Positionen Bestand,0
 view,stock.location,0,Location,Lagerort,0
 view,stock.location,0,Locations,Lagerorte,0
 view,stock.location,0,Product Stock,Lagerbestand,0
-view,stock.location_stock_date.init,0,Product Quantity.,Menge,0
+view,stock.location_stock_date.init,0,Product Quantity.,Artikel Mengen,0
 view,stock.move,0,Cancel,Abbrechen,0
 view,stock.move,0,Move,Bewegung,0
 view,stock.move,0,Moves,Bewegungen,0
@@ -253,7 +256,7 @@ view,stock.packing.in,0,Cancel,Abbrechen,0
 view,stock.packing.in,0,Done,Erledigt,0
 view,stock.packing.in,0,Draft,Entwurf,0
 view,stock.packing.in,0,Incoming Moves,Eingehende Bewegungen,0
-view,stock.packing.in,0,Inventory Moves,Lagerbewegungen,0
+view,stock.packing.in,0,Inventory Moves,Bestandsänderungen,0
 view,stock.packing.in,0,Moves,Bewegungen,0
 view,stock.packing.in,0,Received,Erhalten,0
 view,stock.packing.in,0,Reset to Draft,Auf Entwurf zurücksetzen,0
@@ -270,6 +273,7 @@ view,stock.packing.internal,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,stock.packing.internal,0,Set Done,Auf Erledigt setzen,0
 view,stock.packing.internal,0,Set Waiting,Auf Wartend setzen,0
 view,stock.packing.internal,0,Waiting,Wartend,0
+view,stock.packing.out,0,Are you sure to force assignation?,Zuweisung wirklich erzwingen?,0
 view,stock.packing.out,0,Assign,Zuweisen,0
 view,stock.packing.out,0,Cancel,Abbrechen,0
 view,stock.packing.out,0,Customer Packing,Lieferschein an Kunde,0
@@ -277,7 +281,7 @@ view,stock.packing.out,0,Customer Packings,Lieferscheine an Kunden,0
 view,stock.packing.out,0,Done,Erledigt,0
 view,stock.packing.out,0,Draft,Entwurf,0
 view,stock.packing.out,0,Force Assign,Zuweisung erzwingen,0
-view,stock.packing.out,0,Inventory Moves,Lagerbewegungen,0
+view,stock.packing.out,0,Inventory Moves,Bestandsänderungen,0
 view,stock.packing.out,0,Make packing,Lieferung fertigstellen,0
 view,stock.packing.out,0,Outgoing Moves,Ausgehende Bewegungen,0
 view,stock.packing.out,0,Reset to Draft,Auf Entwurf zurücksetzen,0
