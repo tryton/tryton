@@ -367,7 +367,7 @@ model,"account.journal,name",journal_cash,Cash,Barvermögen,0
 model,"account.journal,name",journal_expense,Expense,Aufwand,0
 model,"account.journal,name",journal_revenue,Revenue,Ertrag,0
 model,"account.journal,name",journal_stock,Stock,Lager,0
-model,"account.journal.type,name",journal_type_cash,Cash,Barvermögen,0
+model,"account.journal.type,name",journal_type_cash,Cash,Zahlung,0
 model,"account.journal.type,name",journal_type_expense,Expense,Aufwand,0
 model,"account.journal.type,name",journal_type_general,General,Allgemein,0
 model,"account.journal.type,name",journal_type_revenue,Revenue,Ertrag,0
@@ -379,7 +379,7 @@ model,"ir.action,name",act_move_form,Account Moves,Buchungen,0
 model,"ir.action,name",act_account_form,Accounts,Konten,0
 model,"ir.action,name",act_account_tree,Accounts,Konten,0
 model,"ir.action,name",act_account_tree2,Accounts,Konten,0
-model,"ir.action,name",act_account_template_tree,Account Templates,Kontenvorlagen,0
+model,"ir.action,name",act_account_template_tree,Account Templates,Kontenplanvorlagen,0
 model,"ir.action,name",act_account_type_form,Account Types,Kontentypen,0
 model,"ir.action,name",act_account_type_tree,Account Types,Kontentypen,0
 model,"ir.action,name",act_account_type_template_tree,Account Type Templates,Vorlagen für Kontentypen,0
@@ -436,7 +436,7 @@ model,"ir.sequence.type,name",sequence_type_account_move_reconciliation,Account 
 model,"ir.ui.menu,name",menu_move_form,Account Moves,Buchungen,0
 model,"ir.ui.menu,name",menu_account_form,Accounts,Konten,0
 model,"ir.ui.menu,name",menu_account_tree,Accounts,Konten,0
-model,"ir.ui.menu,name",menu_account_template_tree,Account Templates,Kontenvorlagen,0
+model,"ir.ui.menu,name",menu_account_template_tree,Account Templates,Kontenplanvorlagen,0
 model,"ir.ui.menu,name",menu_account_type_form,Account Types,Kontentypen,0
 model,"ir.ui.menu,name",menu_account_type_tree,Account Types,Kontentypen,0
 model,"ir.ui.menu,name",menu_account_type_template_tree,Account Type Templates,Vorlagen für Kontentypen,0
@@ -614,7 +614,7 @@ view,account.account.open_third_party_balance.init,0,Open Third Party Balance,Of
 view,account.account.print_general_ledger.init,0,Print General Ledger,Kontenblätter drucken,0
 view,account.account.print_trial_balance.init,0,Print Trial Balance,Summen- und Saldenliste drucken,0
 view,account.account.template,0,Account Template,Kontenvorlage,0
-view,account.account.template,0,Account Templates,Kontenvorlagen,0
+view,account.account.template,0,Account Templates,Kontenplanvorlagen,0
 view,account.account.type,0,Account Type,Kontentyp,0
 view,account.account.type,0,Account Types,Kontentypen,0
 view,account.account.type,0,Balance Sheet,Bilanzbogen,0
