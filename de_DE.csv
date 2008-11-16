@@ -233,7 +233,7 @@ selection,"stock.packing.out,state",0,Packed,Gepackt,0
 selection,"stock.packing.out,state",0,Waiting,Wartend,0
 view,party.party,0,_Stock,_Lager,0
 view,product.product,0,Products,Artikel,0
-view,product_stock_date.init,0,Product Quantity.,Artikel Mengen,0
+view,stock.product_stock_date.init,0,Product Quantity.,Artikel Mengen,0
 view,stock.inventory,0,All generated moves will be cancelled!,Sämtliche erzeugten Bewegungen werden rückgängig gemacht!,0
 view,stock.inventory,0,Cancel,Abbrechen,0
 view,stock.inventory,0,Complete Inventory,Aktueller Lagerbestand,0

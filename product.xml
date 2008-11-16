@@ -60,7 +60,7 @@
         </record>
 
         <record model="ir.ui.view" id="product_stock_date_init_view_form">
-            <field name="model">product_stock_date.init</field>
+            <field name="model">stock.product_stock_date.init</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
