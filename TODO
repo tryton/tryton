@@ -1,2 +1,3 @@
 - use a wizard for assignation on customer packing and internal packing,
     to display error message if not all lines were assigned (issue540).
+- handle withdraw packing
