@@ -21,7 +21,7 @@ field,"account.statement.line,statement",0,Statement,Bankauszug,0
 field,"account.statement,move_lines",0,Move Lines,Buchungsposten,0
 field,"account.statement,start_balance",0,Start Balance,Anfangssaldo,0
 field,"account.statement,state",0,State,Status,0
-model,"account.journal.type,name",journal_type_bank,Bank,Bank,0
+model,"account.journal.type,name",journal_type_bank,Bank,Bankauszug,0
 model,"ir.action,name",act_statement_form,All Statement,Alle Bankauszüge,0
 model,"ir.action,name",act_draft_statement_form,Draft Statements,Offene Bankauszüge,0
 model,"ir.action,name",act_posted_statement_form,Posted Statements,Festgeschriebene Bankauszüge,0
