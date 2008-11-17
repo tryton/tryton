@@ -5,7 +5,7 @@
     'name_de_DE': 'Kostenstellen Einkauf',
     'name_fr_FR': 'Achat analytique',
     'name_es_ES': 'Compra Analítica',
-    'version': '0.0.1',
+    'version': '1.0.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
@@ -27,5 +27,6 @@
     'translation': [
         'de_DE.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ],
 }
