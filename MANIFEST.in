@@ -1,6 +1,7 @@
 include INSTALL
 include README
 include TODO
+include CHANGELOG
 include *.xml
 include *.odt
 include *.csv
