@@ -2,6 +2,8 @@ include INSTALL
 include README
 include TODO
 include CHANGELOG
+include COPYRIGHT
+include LICENSE
 include *.xml
 include *.odt
 include *.csv
