@@ -5,7 +5,7 @@
     'name_de_DE': 'Länder',
     'name_fr_FR': 'Pays',
     'name_es_ES': 'País',
-    'version' : '1.0.0',
+    'version' : '1.1.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
