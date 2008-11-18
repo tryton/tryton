@@ -74,6 +74,11 @@ class Party(OSV):
     def default_active(self, cursor, user, context=None):
         return True
 
+    def default_categories(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        return context.get('categories', [])
+
     def get_vat_code(self, cursor, user, ids, name, arg, context=None):
         if not ids:
             return []
