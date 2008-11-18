@@ -27,6 +27,8 @@ setup(name='trytond_analytic_purchase',
     author=info.get('author', ''),
     author_email=info.get('email', ''),
     url=info.get('website', ''),
+    download_url="http://downloads.tryton.org/" + \
+            info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
     package_dir={'trytond.modules.analytic_purchase': '.'},
     packages=[
         'trytond.modules.analytic_purchase',
@@ -53,4 +55,9 @@ setup(name='trytond_analytic_purchase',
     ],
     license='GPL-3',
     install_requires=requires,
+    zip_safe=False,
+    entry_points="""
+    [trytond.modules]
+    analytic_purchase = trytond.modules.analytic_purchase
+    """,
 )
