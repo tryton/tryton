@@ -27,6 +27,8 @@ setup(name='trytond_stock_supply',
     author=info.get('author', ''),
     author_email=info.get('email', ''),
     url=info.get('website', ''),
+    download_url="http://downloads.tryton.org/" + \
+            info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
     package_dir={'trytond.modules.stock_supply': '.'},
     packages=[
         'trytond.modules.stock_supply',
@@ -53,4 +55,9 @@ setup(name='trytond_stock_supply',
     ],
     license='GPL-3',
     install_requires=requires,
+    zip_safe=False,
+    entry_points="""
+    [trytond.modules]
+    stock_supply = trytond.modules.stock_supply
+    """,
 )
