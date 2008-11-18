@@ -27,6 +27,8 @@ setup(name='trytond_google_maps',
     author=info.get('author', ''),
     author_email=info.get('email', ''),
     url=info.get('website', ''),
+    download_url="http://downloads.tryton.org/" + \
+            info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
     package_dir={'trytond.modules.google_maps': '.'},
     packages=[
         'trytond.modules.google_maps',
@@ -53,4 +55,9 @@ setup(name='trytond_google_maps',
     ],
     license='GPL-3',
     install_requires=requires,
+    zip_safe=False,
+    entry_points="""
+    [trytond.modules]
+    google_maps = trytond.modules.google_maps
+    """,
 )
