@@ -27,6 +27,8 @@ setup(name='trytond_product_cost_fifo',
     author=info.get('author', ''),
     author_email=info.get('email', ''),
     url=info.get('website', ''),
+    download_url="http://downloads.tryton.org/" + \
+            info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
     package_dir={'trytond.modules.product_cost_fifo': '.'},
     packages=[
         'trytond.modules.product_cost_fifo',
@@ -50,4 +52,9 @@ setup(name='trytond_product_cost_fifo',
     ],
     license='GPL-3',
     install_requires=requires,
+    zip_safe=False,
+    entry_points="""
+    [trytond.modules]
+    product_cost_fifo = trytond.modules.product_cost_fifo
+    """,
 )
