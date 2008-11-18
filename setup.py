@@ -27,6 +27,8 @@ setup(name='trytond_party',
     author=info.get('author', ''),
     author_email=info.get('email', ''),
     url=info.get('website', ''),
+    download_url="http://downloads.tryton.org/" + \
+            info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
     package_dir={'trytond.modules.party': '.'},
     packages=[
         'trytond.modules.party',
@@ -57,4 +59,9 @@ setup(name='trytond_party',
     extras_require={
         'VAT': ['vatnumber'],
     },
+    zip_safe=False,
+    entry_points="""
+    [trytond.modules]
+    party = trytond.modules.party
+    """,
 )
