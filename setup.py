@@ -53,4 +53,9 @@ setup(name='trytond_country',
     ],
     license='GPL-3',
     install_requires=requires,
+    zip_safe=False,
+    entry_points="""
+    [trytond.modules]
+    country = trytond.modules.country
+    """,
 )
