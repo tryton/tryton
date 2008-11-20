@@ -862,12 +862,14 @@ class SaleLine(OSV):
             states={
                 'invisible': "type != 'line'",
                 'required': "type == 'line'",
+                'readonly': "not globals().get('_parent_sale')",
             }, on_change=['product', 'quantity', 'unit',
                 '_parent_sale.currency', '_parent_sale.party'])
     unit = fields.Many2One('product.uom', 'Unit',
             states={
                 'required': "product",
                 'invisible': "type != 'line'",
+                'readonly': "not globals().get('_parent_sale')",
             }, domain="[('category', '=', " \
                     "(product, 'product.default_uom.category'))]",
             context="{'category': (product, 'product.default_uom.category')}",
@@ -879,6 +881,7 @@ class SaleLine(OSV):
             domain=[('salable', '=', True)],
             states={
                 'invisible': "type != 'line'",
+                'readonly': "not globals().get('_parent_sale')",
             }, on_change=['product', 'unit', 'quantity', 'description',
                 '_parent_sale.party', '_parent_sale.currency'],
             context="{'locations': [_parent_sale.warehouse], " \
@@ -892,6 +895,7 @@ class SaleLine(OSV):
             digits="(16, _parent_sale.currency_digits)",
             states={
                 'invisible': "type not in ('line', 'subtotal')",
+                'readonly': "not globals().get('_parent_sale')",
             }, on_change_with=['type', 'quantity', 'unit_price',
                 '_parent_sale.currency'])
     description = fields.Char('Description', size=None, required=True)
