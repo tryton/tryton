@@ -326,7 +326,6 @@ class AccountTemplate(OSV):
         res['kind'] = template.kind
         res['reconcile'] = template.reconcile
         res['deferral'] = template.deferral
-        res['taxes'] = [('add', x.id) for x in template.taxes]
         return res
 
     def create_account(self, cursor, user, template, company_id, context=None,
@@ -379,6 +378,47 @@ class AccountTemplate(OSV):
                 company_id, context=context, template2account=template2account,
                 template2type=template2type, parent_id=new_id))
         return new_id
+
+    def update_account_taxes(self, cursor, user, template, template2account,
+            template2tax, context=None, template_done=None):
+        '''
+        Update recursively account taxes based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the template id or the BrowseRecord of template
+            used for account creation
+        :param template2account: a dictionary with template id as key
+            and account id as value, used to convert template id into
+            account.
+        :param template2tax: a dictionary with tax template id as key
+            and tax id as value, used to convert tax template id into
+            tax.
+        :param context: the context
+        :param template_done: a list of template id already updated.
+            The list is filled.
+        '''
+        account_obj = self.pool.get('account.account')
+
+        if template2account is None:
+            template2account = {}
+        if template2tax is None:
+            template2tax = {}
+        if template_done is None:
+            template_done = []
+
+        if isinstance(template, (int, long)):
+            template = self.browse(cursor, user, template, context=context)
+
+        if template.id not in template_done:
+            account_obj.write(cursor, user, template2account[template.id], {
+                'taxes': [('add', template2tax[x.id]) for x in template.taxes],
+                }, context=context)
+            template_done.append(template.id)
+
+        for child in template.childs:
+            self.update_account_taxes(cursor, user, child, template2account,
+                    template2tax, context=context, template_done=template_done)
 
 AccountTemplate()
 
@@ -1569,6 +1609,9 @@ class CreateChartAccount(Wizard):
                     template2tax_code=template2tax_code,
                     template2account=template2account,
                     context=context, template2tax=template2tax)
+
+        account_template_obj.update_account_taxes(cursor, user,
+                account_template, template2account, template2tax, context=context)
 
         return {'company': datas['form']['company']}
 
