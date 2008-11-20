@@ -22,6 +22,10 @@ The forecast form contains:
     - A minimal quantity for each move.
     - A unit of measure.
 
+The "Complete Forecast" button allow to auto-complete forecast lines
+based on previous stock output for dates in the past.
+
+
 Forecast States
 ^^^^^^^^^^^^^^^
 
