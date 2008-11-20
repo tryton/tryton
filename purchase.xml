@@ -587,7 +587,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="taxes" colspan="4"/>
                     <separator name="comment" colspan="4"/>
                     <field name="comment" colspan="4" spell="_parent_purchase.party_lang"/>
-                    <field name="unit_digits" invisible="1"/>
+                    <field name="unit_digits" invisible="1" colspan="4"/>
                 </form>
                 ]]>
             </field>
