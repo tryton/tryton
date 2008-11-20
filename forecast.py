@@ -53,7 +53,7 @@ class Forecast(OSV):
             ]
         self._error_messages.update({
                 'date_overlap': 'You can not create forecasts for the same '
-                'product with overlaping dates'
+                'locations with overlapping dates'
                 })
         self._order.insert(0, ('from_date', 'DESC'))
         self._order.insert(1, ('location', 'ASC'))
@@ -83,19 +83,19 @@ class Forecast(OSV):
         for forecast in self.browse(cursor, user, ids):
             if forecast.state != 'done':
                 continue
-            cursor.execute('SELECT f.id ' \
-                    'FROM stock_forecast f ' \
-                    'JOIN stock_forecast_line l on (f.id = l.forecast) '
-                    'WHERE ((f.from_date <= %s AND f.to_date >= %s) ' \
-                            'OR (f.from_date <= %s AND f.to_date >= %s) ' \
-                            'OR (f.from_date >= %s AND f.to_date <= %s)) ' \
-                        'AND l.product in (%s) ' \
+            cursor.execute('SELECT id ' \
+                    'FROM stock_forecast ' \
+                    'WHERE ((from_date <= %s AND to_date >= %s) ' \
+                            'OR (from_date <= %s AND to_date >= %s) ' \
+                            'OR (from_date >= %s AND to_date <= %s)) ' \
+                        'AND location = %s ' \
+                        'AND destination = %s ' \
                         'AND state = \'done\' ' \
-                        'AND f.id != %s',
+                        'AND id != %s',
                     (forecast.from_date, forecast.from_date,
                      forecast.to_date, forecast.to_date,
                      forecast.from_date, forecast.to_date,
-                     ",".join((str(l.product.id) for l in forecast.lines)),
+                     forecast.location.id, forecast.destination.id,
                      forecast.id))
             if cursor.rowcount:
                 return False
