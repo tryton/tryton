@@ -166,7 +166,8 @@ class ForecastLine(OSV):
     moves = fields.Many2Many(
         'stock.move', 'forecast_line_stock_move_rel', 'line', 'move','Moves',
         readonly=True, ondelete_target='CASCADE')
-    forecast = fields.Many2One('stock.forecast', 'Forecast', required=True)
+    forecast = fields.Many2One(
+        'stock.forecast', 'Forecast', required=True, ondelete='CASCADE',)
 
     def __init__(self):
         super(ForecastLine, self).__init__()
