@@ -275,3 +275,169 @@ class ForecastLine(OSV):
         return a
 
 ForecastLine()
+
+
+class ForecastCompleteAsk(WizardOSV):
+    _name = 'stock.forecast.complete.ask'
+
+    from_date = fields.Date('From Date', required=True)
+    to_date = fields.Date('To Date', required=True)
+
+ForecastCompleteAsk()
+
+
+class ForecastCompleteChoose(WizardOSV):
+    _name = 'stock.forecast.complete.choose'
+
+    products = fields.Many2Many(
+        'product.product', 'prod_rel', 'forecast', 'product', 'Products')
+
+ForecastCompleteChoose()
+
+
+class ForecastComplete(Wizard):
+    'Complete Forecast'
+    _name = 'stock.forecast.complete'
+    states = {
+        'init': {
+            'actions': ['_set_default_dates'],
+            'result': {
+                'type': 'form',
+                'object': 'stock.forecast.complete.ask',
+                'state': [
+                    ('end', 'cancel', 'tryton-cancel'),
+                    ('choose', 'Choose products', 'tryton-go-next'),
+                    ('complete', 'Complete', 'tryton-ok', True),
+                ],
+            },
+        },
+
+        'choose': {
+            'actions': ['_set_default_products'],
+            'result': {
+                'type': 'form',
+                'object': 'stock.forecast.complete.choose',
+                'state': [
+                    ('end', 'cancel', 'tryton-cancel'),
+                    ('init', 'Choose Dates', 'tryton-go-previous'),
+                    ('complete', 'Complete', 'tryton-ok', True),
+                ],
+            },
+        },
+
+        'complete': {
+            'result': {
+                'type': 'action',
+                'action': '_complete',
+                'state': 'end',
+                },
+            },
+        }
+
+    def __init__(self):
+        super(ForecastComplete, self).__init__()
+        self._error_messages.update({
+            'from_to_date': '"From Date" should be smaller than "To Date"!',
+            })
+
+
+    def _set_default_dates(self, cursor, user, data, context=None):
+        """
+        Forecast dates shifted by one year.
+        """
+        forecast_obj = self.pool.get('stock.forecast')
+        forecast = forecast_obj.browse(cursor, user, data['id'], context=context)
+
+        res = {}
+        for date in ("to_date", "from_date"):
+            year = forecast[date].year - 1
+            month = forecast[date].month
+            day = forecast[date].day
+            if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0) and \
+                    month == 2 and day == 29:
+                day = 28
+            res[date] = datetime.date(year, month, day)
+
+        return res
+
+    def _get_product_quantity(self, cursor, user, data, context=None):
+        forecast_obj = self.pool.get('stock.forecast')
+        product_obj = self.pool.get('product.product')
+        forecast = forecast_obj.browse(cursor, user, data['id'], context=context)
+        if data['form']['from_date'] > data['form']['to_date']:
+            self.raise_user_error(cursor, 'from_to_date', context=context)
+        local_context = context and context.copy() or {}
+        local_context['stock_destinations'] = [forecast.destination.id]
+        local_context['stock_date_start'] = data['form']['from_date']
+        local_context['stock_date_end'] = data['form']['to_date']
+
+        return product_obj.products_by_location(
+            cursor, user, [forecast.location.id], with_childs=True,
+            skip_zero=False, context=local_context)
+
+    def _set_default_products(self, cursor, user, data, context=None):
+        """
+        Collect products for which there is an outgoing stream between
+        the given location and the destination.
+        """
+        pbl = self._get_product_quantity(cursor, user, data, context=context)
+        products = []
+        for (_, product), qty in pbl.iteritems():
+            if qty < 0:
+                products.append(product)
+        data['form'].update({'products': products})
+        return data['form']
+
+    def _complete(self, cursor, user, data, context=None):
+        forecast_obj = self.pool.get('stock.forecast')
+        forecast_line_obj = self.pool.get('stock.forecast.line')
+        product_obj = self.pool.get('product.product')
+
+
+        prod2line = {}
+        forecast_line_ids = forecast_line_obj.search(
+            cursor, user, [('forecast', '=', data['id'])], context=context)
+        for forecast_line in forecast_line_obj.browse(
+            cursor, user, forecast_line_ids, context=context):
+            prod2line[forecast_line.product.id] = forecast_line.id
+
+        pbl = self._get_product_quantity(cursor, user, data, context=context)
+        product_ids = [x[1] for x in pbl]
+        prod2uom = {}
+        for product in product_obj.browse(cursor, user, product_ids,
+                                          context=context):
+            prod2uom[product.id] = product.default_uom.id
+
+        if data['form'].get('products'):
+            products = data['form']['products'][0][1]#XXX why this [0][1] stuff ?
+        else:
+            products = None
+
+        for (_, product), qty in pbl.iteritems():
+            if products and product not in products:
+                continue
+            if -qty <= 0:
+                continue
+            if product in prod2line:
+                forecast_line_obj.write(
+                    cursor, user, prod2line[product],
+                    {'product': product,
+                     'quantity': -qty,
+                     'uom': prod2uom[product],
+                     'forecast': data['id'],
+                     'minimal_quantity': min(1, -qty),
+                     },
+                    context=context)
+            else:
+                forecast_line_obj.create(
+                    cursor, user,
+                    {'product': product,
+                     'quantity': -qty,
+                     'uom': prod2uom[product],
+                     'forecast': data['id'],
+                     'minimal_quantity': min(1, -qty),
+                     },
+                    context=context)
+        return {}
+
+ForecastComplete()
