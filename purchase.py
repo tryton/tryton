@@ -745,12 +745,14 @@ class PurchaseLine(OSV):
             states={
                 'invisible': "type != 'line'",
                 'required': "type == 'line'",
+                'readonly': "not globals().get('_parent_purchase')",
             }, on_change=['product', 'quantity', 'unit',
                 '_parent_purchase.currency', '_parent_purchase.party'])
     unit = fields.Many2One('product.uom', 'Unit',
             states={
                 'required': "product",
                 'invisible': "type != 'line'",
+                'readonly': "not globals().get('_parent_purchase')",
             }, domain="[('category', '=', " \
                     "(product, 'product.default_uom.category'))]",
             context="{'category': (product, 'product.default_uom.category')}",
@@ -762,6 +764,7 @@ class PurchaseLine(OSV):
             domain=[('purchasable', '=', True)],
             states={
                 'invisible': "type != 'line'",
+                'readonly': "not globals().get('_parent_purchase')",
             }, on_change=['product', 'unit', 'quantity', 'description',
                 '_parent_purchase.party', '_parent_purchase.currency'],
             context="{'locations': [_parent_purchase.warehouse], " \
@@ -775,6 +778,7 @@ class PurchaseLine(OSV):
             digits="(16, _parent_purchase.currency_digits)",
             states={
                 'invisible': "type not in ('line', 'subtotal')",
+                'readonly': "not globals().get('_parent_purchase')",
             }, on_change_with=['type', 'quantity', 'unit_price',
                 '_parent_purchase.currency'])
     description = fields.Char('Description', size=None, required=True)
