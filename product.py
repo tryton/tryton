@@ -263,6 +263,20 @@ class Product(OSV):
                 ",".join(["%s" for i in product_ids]) + ")"
             where_vals += product_ids
 
+        if context.get('stock_destinations'):
+            destinations = context.get('stock_destinations')
+            dest_clause_from = " AND from_location in ("
+            dest_clause_from += ",".join("%s" for i in destinations)
+            dest_clause_from += ") "
+            dest_clause_to = " AND to_location in ("
+            dest_clause_to += ",".join("%s" for i in destinations)
+            dest_clause_to += ") "
+            dest_vals = destinations
+
+        else:
+            dest_clause_from = dest_clause_to =""
+            dest_vals = []
+
         select_clause = \
                 "SELECT location, product, uom, sum(quantity) AS quantity "\
                 "FROM ( "\
@@ -281,10 +295,11 @@ class Product(OSV):
                     "GROUP BY from_location, product, uom "\
                 ") AS T GROUP BY T.location, T.product, T.uom"
 
-        cursor.execute(select_clause % (state_date_clause, where_clause,
-                                        state_date_clause, where_clause),
-                       state_date_vals + where_vals + \
-                       state_date_vals + where_vals)
+        cursor.execute(select_clause % (
+                state_date_clause, where_clause + dest_clause_from,
+                state_date_clause, where_clause + dest_clause_to),
+                    state_date_vals + where_vals + dest_vals + \
+                    state_date_vals + where_vals + dest_vals)
         raw_lines = cursor.fetchall()
 
         res = {}

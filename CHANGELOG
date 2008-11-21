@@ -1,3 +1,5 @@
+* Added stock_destinations keyword on products_by_location context to
+  filter moves to a set of destinations.
 * Allow egg installation
 
 Version 1.0.0 - 2008-11-17
