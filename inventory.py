@@ -282,7 +282,7 @@ InventoryLine()
 
 
 class CompleteInventory(Wizard):
-    'Complete Inventory '
+    'Complete Inventory'
     _name = 'stock.inventory.complete'
     states = {
         'init': {
