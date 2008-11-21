@@ -124,7 +124,7 @@
             <field name="act_window" ref="act_account_tree2"/>
         </record>
         <record model="ir.action.wizard" id="act_open_chart_account">
-            <field name="name">Open Chart of Analytic Account</field>
+            <field name="name">Open Chart of Analytic Accounts</field>
             <field name="wiz_name">analytic_account.account.open_chart_account</field>
         </record>
         <menuitem parent="account.menu_charts" action="act_open_chart_account"
@@ -150,7 +150,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Open Chart of Analytic Account" col="2">
+                <form string="Open Chart of Analytic Accounts" col="2">
                     <label name="start_date"/>
                     <field name="start_date"/>
                     <label name="end_date"/>
