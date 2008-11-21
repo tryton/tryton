@@ -19,7 +19,7 @@ field,"product.template,type",0,Type,Type,0
 field,"product.uom,active",0,Active,Actif,0
 field,"product.uom,category",0,UOM Category,Catégorie d'UDM,0
 field,"product.uom.category,name",0,Name,Nom,0
-field,"product.uom.category,uoms",0,Unit of Measures,Unité de Mesures,0
+field,"product.uom.category,uoms",0,Unit of Measures,Unité de Mesure,0
 field,"product.uom,factor",0,Factor,Facteur,0
 field,"product.uom,name",0,Name,Nom,0
 field,"product.uom,rate",0,Rate,Taux,0
@@ -41,8 +41,8 @@ model,"ir.ui.menu,name",menu_product_product,Products,Produits,0
 model,"ir.ui.menu,name",menu_uom_form,Units of Measure,Unités de Mesure,0
 selection,"product.template,cost_price_method",0,Average,Moyen,0
 selection,"product.template,cost_price_method",0,Fixed,Fixe,0
-selection,"product.template,type",0,Consumable,Consomable,0
-selection,"product.template,type",0,Service,Sevice,0
+selection,"product.template,type",0,Consumable,Consommable,0
+selection,"product.template,type",0,Service,Service,0
 selection,"product.template,type",0,Stockable,Stockable,0
 view,product.category,0,Childs,Enfants,0
 view,product.category,0,Product Categories,Catégories de Produit,0
