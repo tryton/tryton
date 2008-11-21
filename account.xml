@@ -600,7 +600,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_account_tree2"/>
         </record>
         <record model="ir.action.wizard" id="act_open_chart_account">
-            <field name="name">Open Chart of Account</field>
+            <field name="name">Open Chart of Accounts</field>
             <field name="wiz_name">account.account.open_chart_account</field>
         </record>
         <menuitem parent="menu_charts" action="act_open_chart_account"
@@ -626,7 +626,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Open Chart of Account" col="2">
+                <form string="Open Chart of Accounts" col="2">
                     <label name="fiscalyear"/>
                     <field name="fiscalyear"/>
                     <label name="posted"/>
