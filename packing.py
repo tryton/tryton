@@ -114,6 +114,7 @@ class PackingIn(OSV):
             context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
+        move_ids = []
         for act in value:
             if act[0] == 'create':
                 if 'to_location' in act[1]:
@@ -128,18 +129,17 @@ class PackingIn(OSV):
                         self.raise_user_error(cursor,
                                 'incoming_move_input_dest', context=context)
             elif act[0] == 'add':
-                move = move_obj.browse(cursor, user, act[1], context=context)
-                if move.to_location.id != \
-                        packing.warehouse.input_location.id:
-                    self.raise_user_error(cursor,
-                            'incoming_move_input_dest', context=context)
+                move_ids.append(act[1])
             elif act[0] == 'set':
-                moves = move_obj.browse(cursor, user, act[1], context=context)
-                for move in moves:
-                    if move.to_location.id != \
-                            packing.warehouse.input_location.id:
-                        self.raise_user_error(cursor,
-                                'incoming_move_input_dest', context=context)
+                move_ids.extend(act[1])
+
+        moves = move_obj.browse(cursor, user, move_ids, context=context)
+        for move in moves:
+            if move.to_location.id != \
+                    packing.warehouse.input_location.id:
+                self.raise_user_error(cursor,
+                        'incoming_move_input_dest', context=context)
+
         self.write(cursor, user, packing_id, {
             'moves': value,
             }, context=context)
@@ -157,6 +157,7 @@ class PackingIn(OSV):
             context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
+        move_ids = []
         for act in value:
             if act[0] == 'create':
                 if 'from_location' in act[1]:
@@ -171,18 +172,17 @@ class PackingIn(OSV):
                         self.raise_user_error(cursor,
                                 'inventory_move_input_source', context=context)
             elif act[0] == 'add':
-                move = move_obj.browse(cursor, user, act[1], context=context)
-                if move.from_location.id != \
-                        packing.warehouse.input_location.id:
-                    self.raise_user_error(cursor,
-                            'inventory_move_input_source', context=context)
+                move_ids.append(act[1])
             elif act[0] == 'set':
-                moves = move_obj.browse(cursor, user, act[1], context=context)
-                for move in moves:
-                    if move.from_location.id != \
-                            packing.warehouse.input_location.id:
-                        self.raise_user_error(cursor,
-                                'inventory_move_input_source', context=context)
+                move_ids.extend(act[1])
+
+        moves = move_obj.browse(cursor, user, move_ids, context=context)
+        for move in moves:
+            if move.from_location.id != \
+                    packing.warehouse.input_location.id:
+                self.raise_user_error(cursor,
+                        'inventory_move_input_source', context=context)
+
         self.write(cursor, user, packing_id, {
             'moves': value,
             }, context=context)
@@ -382,6 +382,7 @@ class PackingOut(OSV):
             context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
+        move_ids = []
         for act in value:
             if act[0] == 'create':
                 if 'from_location' in act[1]:
@@ -396,18 +397,16 @@ class PackingOut(OSV):
                         self.raise_user_error(cursor,
                                 'outgoing_move_output_source', context=context)
             elif act[0] == 'add':
-                move = move_obj.browse(cursor, user, act[1], context=context)
-                if move.from_location.id != \
-                        packing.warehouse.output_location.id:
-                    self.raise_user_error(cursor,
-                            'outgoing_move_output_source', context=context)
+                move_ids.append(act[1])
             elif act[0] == 'set':
-                moves = move_obj.browse(cursor, user, act[1], context=context)
-                for move in moves:
-                    if move.from_location.id != \
-                            packing.warehouse.output_location.id:
-                        self.raise_user_error(cursor,
-                                'outgoing_move_output_source', context=context)
+                move_ids.extend(act[1])
+
+        moves = move_obj.browse(cursor, user, move_ids, context=context)
+        for move in moves:
+            if move.from_location.id != \
+                    packing.warehouse.output_location.id:
+                self.raise_user_error(cursor,
+                        'outgoing_move_output_source', context=context)
         self.write(cursor, user, packing_id, {
             'moves': value,
             }, context=context)
@@ -426,6 +425,7 @@ class PackingOut(OSV):
             context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
+        move_ids = []
         for act in value:
             if act[0] == 'create':
                 if 'to_location' in act[1]:
@@ -440,18 +440,16 @@ class PackingOut(OSV):
                         self.raise_user_error(cursor,
                                 'inventory_move_output_dest', context=context)
             elif act[0] == 'add':
-                move = move_obj.browse(cursor, user, act[1], context=context)
-                if move.to_location.id != \
-                        packing.warehouse.output_location.id:
-                    self.raise_user_error(cursor,
-                            'inventory_move_output_dest', context=context)
+                move_ids.append(act[1])
             elif act[0] == 'set':
-                moves = move_obj.browse(cursor, user, act[1], context=context)
-                for move in moves:
-                    if move.to_location.id != \
-                            packing.warehouse.output_location.id:
-                        self.raise_user_error(cursor,
-                                'inventory_move_output_dest', context=context)
+                move_ids.extend(act[1])
+
+        moves = move_obj.browse(cursor, user, move_ids, context=context)
+        for move in moves:
+            if move.to_location.id != \
+                    packing.warehouse.output_location.id:
+                self.raise_user_error(cursor,
+                        'inventory_move_output_dest', context=context)
         self.write(cursor, user, packing_id, {
             'moves': value,
             }, context=context)
