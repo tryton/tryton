@@ -136,9 +136,11 @@ class FiscalYear(OSV):
                         mx.DateTime.RelativeDateTime(days=1)
                 if period_end_date > end_date:
                     period_end_date = end_date
+                name = period_start_date.strftime('%Y-%m')
+                if name != period_end_date.strftime('%Y-%m'):
+                    name += ' - ' + period_end_date.strftime('%Y-%m')
                 period_obj.create(cursor, user, {
-                    'name': period_start_date.strftime('%Y-%m') + ' - ' + \
-                            period_end_date.strftime('%Y-%m'),
+                    'name': name,
                     'start_date': period_start_date.strftime('%Y-%m-%d'),
                     'end_date': period_end_date.strftime('%Y-%m-%d'),
                     'fiscalyear': fiscalyear.id,
