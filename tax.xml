@@ -158,7 +158,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Open Chart Of Tax Code" col="1">
+                <form string="Open Chart Of Tax Codes" col="1">
                     <field name="method"/>
                     <field name="fiscalyear"/>
                     <field name="periods"/>
@@ -167,7 +167,7 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
         <record model="ir.action.wizard" id="act_open_chart_code">
-            <field name="name">Open Chart of Tax Code</field>
+            <field name="name">Open Chart of Tax Codes</field>
             <field name="wiz_name">account.tax.open_chart_code</field>
         </record>
         <menuitem parent="menu_charts" action="act_open_chart_code"
