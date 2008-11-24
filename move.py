@@ -151,7 +151,8 @@ class Move(OSV):
             journal = journal_obj.browse(cursor, user,
                     vals.get('journal', context.get('journal')),
                     context=context)
-            vals['name'] = sequence_obj.get_id(cursor, user, journal.sequence.id)
+            vals['name'] = sequence_obj.get_id(cursor, user, journal.sequence.id,
+                    context=context)
 
         res = super(Move, self).create(cursor, user, vals, context=context)
         move = self.browse(cursor, user, res, context=context)
@@ -294,7 +295,7 @@ class Move(OSV):
                         context=context)
         for move in moves:
             reference = sequence_obj.get_id(cursor, user,
-                    move.period.post_move_sequence.id)
+                    move.period.post_move_sequence.id, context=context)
             self.write(cursor, user, move.id, {
                 'reference': reference,
                 'state': 'posted',
@@ -343,7 +344,8 @@ class Reconciliation(OSV):
 
     def default_name(self, cursor, user, context=None):
         sequence_obj = self.pool.get('ir.sequence')
-        return sequence_obj.get(cursor, user, 'account.move.reconciliation')
+        return sequence_obj.get(cursor, user, 'account.move.reconciliation',
+                context=context)
 
     def create(self, cursor, user, vals, context=None):
         workflow_service = LocalService('workflow')
