@@ -668,7 +668,8 @@ class Sale(OSV):
         if sale.reference:
             return True
 
-        reference = sequence_obj.get(cursor, user, 'sale.sale')
+        reference = sequence_obj.get(cursor, user, 'sale.sale',
+                context=context)
         self.write(cursor, user, sale_id, {
             'reference': reference,
             }, context=context)
