@@ -6,6 +6,7 @@
             <field name="name">Complete Inventory</field>
             <field name="wiz_name">stock.inventory.complete</field>
             <field name="model">stock.inventory</field>
+            <field name="groups" eval="[('add', ref('group_stock'))]"/>
         </record>
 
         <record model="ir.ui.view" id="inventory_view_form">

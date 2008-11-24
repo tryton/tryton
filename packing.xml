@@ -196,7 +196,7 @@ this repository contains the full copyright notices and license terms. -->
                                         icon="tryton-cancel"/>
                                 <button string="Draft" name="draft"
                                         states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
-                                        icon="tryton-clear"/>
+                                        icon="tryton-go-previous"/>
                                 <button string="Waiting" name="waiting"
                                         states="{'invisible': '''state not in ('assigned', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'draft' and 'tryton-go-next' or False'''}"/>
                                 <button string="Force Assign" name="force_assign"
@@ -354,7 +354,7 @@ this repository contains the full copyright notices and license terms. -->
                                 icon="tryton-cancel"/>
                             <button string="Draft" name="draft"
                                 states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
-                                icon="tryton-clear"/>
+                                icon="tryton-go-previous"/>
                             <button string="Waiting" name="waiting"
                                 states="{'invisible': '''state not in ('assigned', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'draft' and 'tryton-go-next' or False'''}"/>
                             <button string="Force Assign" name="force_assign"
