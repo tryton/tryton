@@ -542,8 +542,8 @@ class Many2Many(Column):
                     continue
                 cursor.execute('SELECT "' + self.target + '" ' \
                         'FROM "' + self._rel + '" ' \
-                        'WHERE ' + self.origin + ' = %s ' \
-                            'AND ' + self.target + ' IN (' + \
+                        'WHERE "' + self.origin + '" = %s ' \
+                            'AND "' + self.target + '" IN (' + \
                                 ','.join(['%s' for x in ids]) + ')',
                         [obj_id] + ids)
                 existing_ids = []
