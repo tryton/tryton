@@ -1,3 +1,4 @@
+* Use explicit join in search SQL query
 * Fix for host with IPv6 enable but without default IPv6 route
 * Allow egg installation
 

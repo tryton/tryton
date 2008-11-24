@@ -2383,11 +2383,13 @@ class ORM(object):
                 if itable.table_query(context):
                     table_query, table_args = self.table_query(context)
                     table_query = '(' + table_query + ') AS '
-                if (table_query + '"' + itable._table + '"' not in tables):
-                    tables.append(table_query + '"' + itable._table + '"')
+                table_join = 'LEFT JOIN ' + table_query + \
+                        '"' + itable._table + '" ON ' \
+                        '%s.id = %s.%s' % (itable._table, self._table,
+                                self._inherits[itable._name])
+                if table_join not in tables:
+                    tables.append(table_join)
                     tables_args += table_arg
-                    joins.append(('id', 'join', '%s.%s' % \
-                            (self._table, self._inherits[itable._name]), itable))
             field = table._columns.get(fargs[0], False)
             if not field:
                 if not fargs[0] in self._inherit_fields:
@@ -2707,13 +2709,9 @@ class ORM(object):
                             (table._table, arg[0]))
                 else:
                     if arg[0] == 'id':
-                        if arg[1] == 'join':
-                            qu1.append('(%s.%s = %s)' % \
-                                    (table._table, arg[0], arg[2]))
-                        else:
-                            qu1.append('(%s.%s %s %%s)' % \
-                                    (table._table, arg[0], arg[1]))
-                            qu2.append(arg[2])
+                        qu1.append('(%s.%s %s %%s)' % \
+                                (table._table, arg[0], arg[1]))
+                        qu2.append(arg[2])
                     else:
                         add_null = False
                         if arg[1] in ('like', 'ilike', 'not like', 'not ilike'):
@@ -2798,12 +2796,11 @@ class ORM(object):
                 if field_name:
                     order_by, tables, clause = obj._order_calc(cursor, user,
                             field_name, otype, context=context)
-                    if '"' + table_name + '"' not in tables:
-                        tables.append('"' + table_name + '"')
-                        if clause:
-                            clause += ' AND '
-                        clause += ' %s.%s = %s.id' % (self._table, link_field,
-                                table_name)
+                    table_join = 'LEFT JOIN "' + table_name + '" ON ' \
+                            '%s.%s = %s.id' % (self._table, link_field,
+                                    table_name)
+                    if table_join not in tables:
+                        tables.append(table_join)
                     return order_by, tables, clause
 
                 obj2 = None
@@ -2821,19 +2818,17 @@ class ORM(object):
                     order_by, tables, clause = obj2._order_calc(cursor, user,
                             field_name, otype, context=context)
 
-                    if '"' + table_name + '"' not in tables:
-                        tables.append('"' + table_name + '"')
-                        if clause:
-                            clause += ' AND '
-                        clause += ' %s.%s = %s.id' % (self._table, link_field,
-                                table_name)
+                    table_join = 'LEFT JOIN "' + table_name + '" ON ' \
+                            '%s.%s = %s.id' % \
+                            (self._table, link_field, table_name)
+                    if table_join not in tables:
+                        tables.append(table_join)
 
-                    if '"' + table_name2 + '"' not in tables:
-                        tables.append('"' + table_name2 + '"')
-                        if clause:
-                            clause += ' AND '
-                        clause += ' %s.%s = %s.id' % (obj._table, link_field2,
-                                table_name2)
+                    table_join2 = 'LEFT JOIN "' + table_name2 + '" ON ' \
+                            '%s.%s = %s.id' % \
+                            (obj._table, link_field2, table_name2)
+                    if table_join2 not in tables:
+                        tables.append(table_join2)
                     return order_by, tables, clause
 
             if field_name:
@@ -2852,12 +2847,11 @@ class ORM(object):
             link_field = self._inherits[obj._name]
             order_by, tables, clause = obj._order_calc(cursor, user, field,
                     otype, context=context)
-            if '"' + table_name + '"' not in tables:
-                tables.append('"' + table_name + '"')
-                if clause:
-                    clause += ' AND '
-                clause += ' %s.%s = %s.id' % (self._table, link_field,
-                        table_name)
+            table_join = 'LEFT JOIN "' + table_name + '" ON ' \
+                    '%s.%s = %s.id' % \
+                    (self._table, link_field, table_name)
+            if table_join not in tables:
+                tables.append(table_join)
             return order_by, tables, clause
 
         raise Exception('Error', 'Wrong field name (%s) in order!' \
@@ -2929,13 +2923,13 @@ class ORM(object):
 
         if count:
             cursor.execute('SELECT COUNT(%s.id) FROM ' % self._table +
-                    ','.join(tables) + ' WHERE ' + (qu1 or 'True') +
+                    ' '.join(tables) + ' WHERE ' + (qu1 or 'True') +
                     limit_str + offset_str, tables_args + qu2)
             res = cursor.fetchall()
             return res[0][0]
         # execute the "main" query to fetch the ids we were searching for
         query_str = 'SELECT %s.id FROM ' % self._table + \
-                ','.join(tables) + ' WHERE ' + (qu1 or 'True') + \
+                ' '.join(tables) + ' WHERE ' + (qu1 or 'True') + \
                 ' ORDER BY ' + order_by + limit_str + offset_str
         if query_string:
             return (query_str, tables_args + qu2)
