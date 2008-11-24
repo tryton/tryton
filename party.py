@@ -110,7 +110,7 @@ class Party(OSV):
         values = values.copy()
         if not values.get('code'):
             values['code'] = self.pool.get('ir.sequence').get(
-                    cursor, user, 'party.party')
+                    cursor, user, 'party.party', context=context)
         values['code_length'] = len(values['code'])
         return super(Party, self).create(cursor, user, values, context=context)
 
