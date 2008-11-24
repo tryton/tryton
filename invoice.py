@@ -1936,16 +1936,24 @@ class FiscalYear(OSV):
     _name = 'account.fiscalyear'
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Invoice Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            domain="[('code', '=', 'account.invoice')," \
+                    "['OR', ('company', '=', company)," \
+                    "('company', '=', False)]]")
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Invoice Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            domain="[('code', '=', 'account.invoice')," \
+                    "['OR', ('company', '=', company)," \
+                    "('company', '=', False)]]")
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Credit Note Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            domain="[('code', '=', 'account.invoice')," \
+                    "['OR', ('company', '=', company)," \
+                    "('company', '=', False)]]")
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Credit Note Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            domain="[('code', '=', 'account.invoice')," \
+                    "['OR', ('company', '=', company)," \
+                    "('company', '=', False)]]")
 
     def __init__(self):
         super(FiscalYear, self).__init__()
@@ -2029,16 +2037,15 @@ class Period(OSV):
     def __init__(self):
         super(Period, self).__init__()
         self._constraints += [
-            ('check_invoice_sequences',
-                'Error! You must have different invoice sequences ' \
-                        'per fiscal year!', ['out_invoice_sequence',
-                            'in_invoice_sequence', 'out_credit_note_sequence',
-                            'in_credit_note_sequence']),
+            ('check_invoice_sequences', 'check_invoice_sequences'),
         ]
         self._error_messages.update({
             'change_invoice_sequence': 'You can not change ' \
                     'the invoice sequence if there is already ' \
                     'an invoice opened in the period',
+            'check_invoice_sequences': 'You must have different ' \
+                    'invoice sequences per fiscal year and ' \
+                    'in the same company!',
             })
 
     def check_invoice_sequences(self, cursor, user, ids):
@@ -2049,6 +2056,10 @@ class Period(OSV):
                     (sequence, '=', period[sequence].id),
                     ('fiscalyear', '!=', period.fiscalyear.id),
                     ]):
+                    return False
+                if period[sequence].company \
+                        and period[sequence].company.id != \
+                        period.fiscalyear.company.id:
                     return False
         return True
 
