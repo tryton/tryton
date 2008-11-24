@@ -1,3 +1,4 @@
+* Fix for host with IPv6 enable but without default IPv6 route
 * Allow egg installation
 
 Version 1.0.0 - 2008-11-17
