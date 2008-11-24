@@ -3,14 +3,14 @@ error,analytic_account.account,0,You can not create recursive accounts!,Vous ne 
 error,analytic_account.account.selection,0,Can not have many accounts with the same root or a missing mandatory root account!,Vous ne pouvez pas avoir plusieurs comptes avec la même racine ou un compte avec une racine obligatoire!,0
 error,analytic_account.line,0,Wrong credit/debit values!,Valeurs crédit/débit incorrectes,0
 error,analytic_account.line,0,"You can not create move line
-on view/inactive account!","Vous ne pouvez pas créer des mouvements
-sur des compte inactifs ou de type vue!",0
+on view/inactive account!","Vous ne pouvez pas créer de mouvements
+sur des comptes inactifs ou de type vue!",0
 field,"account.move.line,analytic_lines",0,Analytic Lines,Lignes analytiques,0
 field,"analytic_account.account,active",0,Active,Actif,0
 field,"analytic_account.account,balance",0,Balance,Balance,0
 field,"analytic_account.account,childs",0,Childs,Enfants,0
 field,"analytic_account.account,code",0,Code,Code,0
-field,"analytic_account.account,company",0,Company,Companie,0
+field,"analytic_account.account,company",0,Company,Compagnie,0
 field,"analytic_account.account,complete_name",0,Name,Nom,0
 field,"analytic_account.account,credit",0,Credit,Crédit,0
 field,"analytic_account.account,currency",0,Currency,Devise,0
@@ -28,7 +28,7 @@ field,"analytic_account.account.selection,accounts",0,Accounts,Comptes,0
 field,"analytic_account.account,state",0,State,État,0
 field,"analytic_account.account,type",0,Type,Type,0
 field,"analytic_account.line,account",0,Account,Compte,0
-field,"analytic_account.line,active",0,Active,actif,0
+field,"analytic_account.line,active",0,Active,Actif,0
 field,"analytic_account.line,credit",0,Credit,Crédit,0
 field,"analytic_account.line,currency",0,Currency,Devise,0
 field,"analytic_account.line,date",0,Date,Date,0
