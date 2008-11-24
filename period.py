@@ -38,7 +38,7 @@ class Period(OSV):
         self._constraints += [
             ('check_dates', 'periods_overlaps'),
             ('check_fiscalyear_dates', 'fiscalyear_dates'),
-            ('check_post_move_sequence', 'different_move_sequence'),
+            ('check_post_move_sequence', 'check_move_sequence'),
         ]
         self._order.insert(0, ('start_date', 'ASC'))
         self._error_messages.update({
@@ -55,8 +55,9 @@ class Period(OSV):
             'close_period_non_posted_move': 'You can not close ' \
                     'a period with non posted moves!',
             'periods_overlaps': 'You can not have 2 periods that overlaps!',
-            'different_move_sequence': 'You must have different ' \
-                    'post move sequence per fiscal year!',
+            'check_move_sequence': 'You must have different ' \
+                    'post move sequences per fiscal year ' \
+                    'and in the same company!',
             'fiscalyear_dates': 'The period dates must be in ' \
                     'the fiscal year dates',
             })
@@ -100,6 +101,10 @@ class Period(OSV):
                 ('post_move_sequence', '=', period.post_move_sequence.id),
                 ('fiscalyear', '!=', period.fiscalyear.id),
                 ]):
+                return False
+            if period.post_move_sequence.company \
+                    and period.post_move_sequence.company.id != \
+                    period.fiscalyear.company.id:
                 return False
         return True
 

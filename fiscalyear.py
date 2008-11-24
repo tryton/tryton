@@ -26,7 +26,9 @@ class FiscalYear(OSV):
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
-            required=True, domain="[('code', '=', 'account.move')]")
+            required=True, domain="[('code', '=', 'account.move')," \
+                    "['OR', ('company', '=', company)," \
+                    "('company', '=', False)]]")
     company = fields.Many2One('company.company', 'Company', required=True)
 
     def __init__(self):
