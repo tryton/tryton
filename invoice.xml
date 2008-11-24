@@ -242,7 +242,7 @@ this repository contains the full copyright notices and license terms. -->
                                         icon="tryton-clear"/>
                                     <button name="draft" string="_Draft"
                                         states="{'invisible': '''state != 'proforma' '''}"
-                                        icon="tryton-clear"/>
+                                        icon="tryton-go-previous"/>
                                     <button name="proforma" string="Pro For_ma"
                                         states="{'invisible': '''state != 'draft' '''}"
                                         icon="tryton-go-next"/>
