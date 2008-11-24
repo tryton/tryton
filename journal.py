@@ -81,6 +81,7 @@ class Journal(OSV):
     view = fields.Many2One('account.journal.view', 'View')
     centralised = fields.Boolean('Centralised counterpart')
     update_posted = fields.Boolean('Allow cancelling moves')
+    #TODO change sequence into Property
     sequence = fields.Many2One('ir.sequence', 'Sequence', required=True,
             domain="[('code', '=', 'account.journal')]")
     credit_account = fields.Property(type='many2one',
