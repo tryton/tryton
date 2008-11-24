@@ -234,7 +234,7 @@ class PackingIn(OSV):
     def create(self, cursor, user, values, context=None):
         values = values.copy()
         values['code'] = self.pool.get('ir.sequence').get(
-            cursor, user, 'stock.packing.in')
+            cursor, user, 'stock.packing.in', context=context)
         return super(PackingIn, self).create(
             cursor, user, values, context=context)
 
@@ -616,8 +616,9 @@ class PackingOut(OSV):
                     }, context=context)
 
     def create(self, cursor, user, values, context=None):
+        values = values.copy()
         values['code'] = self.pool.get('ir.sequence').get(
-            cursor, user, 'stock.packing.out')
+            cursor, user, 'stock.packing.out', context=context)
         return super(PackingOut, self).create(cursor, user, values,
                                               context=context)
     def copy(self, cursor, user, packing_id, default=None, context=None):
