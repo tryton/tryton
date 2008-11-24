@@ -149,6 +149,23 @@ class Property(OSV):
 Property()
 
 
+class Sequence(OSV):
+    _name = 'ir.sequence'
+    company = fields.Many2One('company.company', 'Company')
+
+    def __init__(self):
+        super(Sequence, self).__init__()
+        self._order.insert(0, ('company', 'ASC'))
+
+Sequence()
+
+
+class SequenceStrict(Sequence):
+    _name = 'ir.sequence.strict'
+
+SequenceStrict()
+
+
 class CompanyConfigInit(WizardOSV):
     _name = 'company.company.config.init'
 
