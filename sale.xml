@@ -71,7 +71,7 @@
                                         icon="tryton-cancel"/>
                                     <button name="draft" string="Draft"
                                         states="{'invisible': '''state != 'quotation' ''', 'readonly': '''%(group_sale)d not in groups'''}"
-                                        icon="tryton-clear"/>
+                                        icon="tryton-go-previous"/>
                                     <button name="quotation" string="Quotation"
                                         states="{'invisible': '''state != 'draft' ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                         icon="tryton-go-next"/>
