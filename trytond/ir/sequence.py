@@ -20,7 +20,10 @@ class Sequence(OSV):
     _name = 'ir.sequence'
     _description = __doc__
     name = fields.Char('Sequence Name', required=True, translate=True)
-    code = fields.Selection('code_get', 'Sequence Code', required=True)
+    code = fields.Selection('code_get', 'Sequence Code', required=True,
+            states={
+                'readonly': "context.get('code')",
+            })
     active = fields.Boolean('Active')
     prefix = fields.Char('Prefix')
     suffix = fields.Char('Suffix')
@@ -49,6 +52,11 @@ class Sequence(OSV):
 
     def default_padding(self, cursor, user, context=None):
         return 0
+
+    def default_code(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        return context.get('code', False)
 
     def code_get(self, cursor, user, context=None):
         sequence_type_obj = self.pool.get('ir.sequence.type')
