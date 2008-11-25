@@ -42,11 +42,11 @@ model,"ir.action,name",act_account_tree,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_account_tree2,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_line_form,Analytic Lines,Buchungszeilen,0
 model,"ir.action,name",act_open_account,Open Account,Kostenstelle öffnen,0
-model,"ir.action,name",act_open_chart_account,Open Chart of Analytic Account,Plan für Kostenstellen öffnen,0
+model,"ir.action,name",act_open_chart_account,Open Chart of Analytic Accounts,Plan für Kostenstellen öffnen,0
 model,"ir.ui.menu,name",menu_analytic_account_configuration,Analytic Account,Kostenstellen,0
 model,"ir.ui.menu,name",menu_account_form,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_account_tree,Analytic Accounts,Kostenstellen,0
-model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Analytic Account,Plan für Kostenstellen öffnen,0
+model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Analytic Accounts,Plan für Kostenstellen öffnen,0
 model,"res.group,name",group_analytic_admin,Analytic Administration,Administration Kostenstellen,0
 selection,"analytic_account.account,display_balance",0,Credit - Debit,Haben - Soll,0
 selection,"analytic_account.account,display_balance",0,Debit - Credit,Soll - Haben,0
@@ -62,6 +62,7 @@ view,analytic_account.account,0,Analytic Accounts,Kostenstellen,0
 view,analytic_account.account,0,General Information,Allgemein,0
 view,analytic_account.account,0,Notes,Bemerkungen,0
 view,analytic_account.account.open_chart_account.init,0,Open Chart of Analytic Account,Plan für Kostenstellen öffnen,0
+view,analytic_account.account.open_chart_account.init,0,Open Chart of Analytic Accounts,Plan für Kostenstellen öffnen,0
 view,analytic_account.line,0,Analytic Line,Buchungszeile,0
 view,analytic_account.line,0,Analytic Lines,Buchungszeilen,0
 view,analytic_account.line,0,General Information,Allgemein,0
