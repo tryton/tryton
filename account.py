@@ -1042,6 +1042,7 @@ class GeneralLegder(Report):
 
         account_ids = account_obj.search(cursor, user, [
             ('company', '=', datas['form']['company']),
+            ('kind', '!=', 'view'),
             ], order=[('code', 'ASC'), ('id', 'ASC')], context=context)
 
         start_period_ids = [0]
