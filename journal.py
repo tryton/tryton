@@ -111,6 +111,8 @@ class Journal(OSV):
     def _auto_init(self, cursor, module_name):
         super(Journal, self)._auto_init(cursor, module_name)
         table = table_handler(cursor, self._table, self._name, module_name)
+
+        # Migration from 1.0 sequence Many2One change into Property
         if 'sequence' in table.table:
             property_obj = self.pool.get('ir.property')
             cursor.execute('SELECT id, sequence FROM "' + self._table +'"')
