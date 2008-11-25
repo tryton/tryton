@@ -2683,14 +2683,16 @@ class ORM(object):
                                                 _symbol_set[0]] * len(arg[2]))))
                         if todel:
                             if arg[1] == 'in':
-                                qu1[-1] = '(' + qu1[-1] + ' or ' \
-                                        + arg[0] + ' is null)'
+                                qu1[-1] = '(' + qu1[-1] + ' OR ' \
+                                        '%s.%s IS NULL)' % \
+                                        (table._table, arg[0])
                             else:
-                                qu1[-1] = '(' + qu1[-1] + ' or ' \
-                                        + arg[0] + ' is not null)'
+                                qu1[-1] = '(' + qu1[-1] + ' OR ' \
+                                        '%s.%s IS NOT NULL)' % \
+                                        (table._table, arg[0])
                         qu2 += arg[2]
                     elif todel:
-                        qu1.append('(' + arg[0] + ' IS NULL)')
+                        qu1.append('(%s.%s IS NULL)' % (table._table, arg[0]))
                 else:
                     if arg[1] == 'in':
                         qu1.append(' false')
