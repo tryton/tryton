@@ -34,6 +34,7 @@ error,account.invoice.payment_term.line.type,0,Code must be unique!,Der Code kan
 error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann keine neue Position hinzugefügt werden",0
 error,account.invoice.tax,0,"You can not modify tax from an invoice that is open, paid or canceled!","In einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann können Steuern nicht bearbeitet werden",0
 error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung in der laufenden Periode eröffnet wurde.",0
+error,account.period,0,You must have different invoice sequences per fiscal year and in the same company!,Verschiedene Geschäftsjahre eines Unternehmens erfordern unterschiedliche Rechnungssequenzen!,0
 field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Sequenz Gutschriften Lieferanten,0
 field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Rechnungen Lieferanten,0
 field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
@@ -43,7 +44,6 @@ field,"account.invoice,amount_to_pay",0,Amount to Pay,Zahlbarer Betrag,0
 field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Zahlbarer Betrag (heute),0
 field,"account.invoice,comment",0,Comment,Kommentar,0
 field,"account.invoice,company",0,Company,Unternehmen,0
-field,"account.invoice,contact_address",0,Contact Address,Kontaktadresse,0
 field,"account.invoice,currency",0,Currency,Währung,0
 field,"account.invoice,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"account.invoice,description",0,Description,Beschreibung,0
