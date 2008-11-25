@@ -142,7 +142,7 @@ model,"product.uom,symbol",uom_minute,min,min,0
 model,"product.uom,symbol",uom_millimeter,mm,mm,0
 model,"product.uom,symbol",uom_once,oz,oz,0
 model,"product.uom,symbol",uom_second,s,s,0
-model,"product.uom,symbol",uom_unit,u,u,0
+model,"product.uom,symbol",uom_unit,u,St.,0
 model,"product.uom,symbol",uom_work_day,wd,wd,0
 model,"product.uom,symbol",uom_yard,yd,yd,0
 model,"product.uom,symbol",uom_square_yard,yd²,yd²,0
