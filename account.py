@@ -1230,6 +1230,7 @@ class TrialBalance(Report):
                 datas['form']['company'], context=context)
 
         account_ids = account_obj.search(cursor, user, [
+            ('company', '=', datas['form']['company']),
             ('kind', '!=', 'view'),
             ], context=context)
 
