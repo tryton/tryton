@@ -1936,16 +1936,20 @@ class FiscalYear(OSV):
     _name = 'account.fiscalyear'
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Invoice Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            domain="[('code', '=', 'account.invoice')]",
+            context="{'code': 'account.invoice', 'company': company}")
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Invoice Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            domain="[('code', '=', 'account.invoice')]",
+            context="{'code': 'account.invoice', 'company': company}")
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Credit Note Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            domain="[('code', '=', 'account.invoice')]",
+            context="{'code': 'account.invoice', 'company': company}")
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Credit Note Sequence', required=True,
-            domain="[('code', '=', 'account.invoice')]")
+            domain="[('code', '=', 'account.invoice')]",
+            context="{'code': 'account.invoice', 'company': company}")
 
     def __init__(self):
         super(FiscalYear, self).__init__()
@@ -2000,6 +2004,7 @@ class Period(OSV):
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Invoice Sequence',
             domain="[('code', '=', 'account.invoice')]",
+            context="{'code': 'account.invoice'}",
             states={
                 'required': "type == 'standard'",
                 'invisible': "type != 'standard'",
@@ -2007,6 +2012,7 @@ class Period(OSV):
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Invoice Sequence',
             domain="[('code', '=', 'account.invoice')]",
+            context="{'code': 'account.invoice'}",
             states={
                 'required': "type == 'standard'",
                 'invisible': "type != 'standard'",
@@ -2014,6 +2020,7 @@ class Period(OSV):
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Credit Note Sequence',
             domain="[('code', '=', 'account.invoice')]",
+            context="{'code': 'account.invoice'}",
             states={
                 'required': "type == 'standard'",
                 'invisible': "type != 'standard'",
@@ -2021,6 +2028,7 @@ class Period(OSV):
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Credit Note Sequence',
             domain="[('code', '=', 'account.invoice')]",
+            context="{'code': 'account.invoice'}",
             states={
                 'required': "type == 'standard'",
                 'invisible': "type != 'standard'",
