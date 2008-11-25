@@ -56,4 +56,3 @@ view,account.statement,0,Validate,Prüfen,0
 view,account.statement.journal,0,Statement Journal,Journal Bankauszüge,0
 view,account.statement.journal,0,Statement Journals,Journale Bankauszüge,0
 view,account.statement.line,0,Bank Statement Line,Posten Bankauszüge,0
-view,statement.statement.line,0,Statement Lines,Posten Bankauszüge,0
