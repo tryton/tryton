@@ -157,6 +157,15 @@ class Sequence(OSV):
         super(Sequence, self).__init__()
         self._order.insert(0, ('company', 'ASC'))
 
+    def default_company(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
 Sequence()
 
 
