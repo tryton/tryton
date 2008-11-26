@@ -307,7 +307,8 @@ class Invoice(OSV):
             ('check_account', 'account_different_company'),
             ('check_account2', 'same_account_on_line'),
         ]
-        self._order.insert(0, ('number', 'ASC'))
+        self._order.insert(0, ('number', 'DESC'))
+        self._order.insert(1, ('id', 'DESC'))
         self._error_messages.update({
             'reset_draft': 'You can not reset to draft ' \
                     'an invoice that have move!',
