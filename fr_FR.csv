@@ -1,16 +1,16 @@
 type,name,res_id,src,value,fuzzy
-error,purchase.request,0,Purchase request are only created by the system.,Les demandes d'achat sont uniquement créées par le sytème,0
-error,purchase.request.create_purchase,0,Purchase price is missing for product: %s (id: %s)!,Le prix d'achat en absent pour le produit : %s (id: %s) !,0
+error,purchase.request,0,Purchase request are only created by the system.,Les demandes d'achat sont uniquement crées par le sytème,0
+error,purchase.request.create_purchase,0,Purchase price is missing for product: %s (id: %s)!,Le prix d'achat est absent pour le produit : %s (id: %s) !,0
 error,purchase.request.create_purchase,0,This price is necessary for creating purchase.,Ce prix est nécessaire pour créer les achats.,0
 error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,La Quantité maximale doit être supérieure à la quantité minimale,0
 error,stock.order_point,0,Only one order point is allowed for each product-location pair.,Une seule règle d'approvisionnement est autorisée par paire produit-emplacement,0
 error,stock.order_point,0,You can not define two order point on the same product with opposite locations.,Vous ne pouvez pas définir deux règles d'approvisionnement sur le même produit avec des emplacement opposés,0
 field,"product.product,order_points",0,Order Points,Règles d'approvisionnements,0
-field,"purchase.request,company",0,Company,Companie,0
-field,"purchase.request.create_purchase.ask_party,company",0,Company,Companie,0
+field,"purchase.request,company",0,Company,Compagnie,0
+field,"purchase.request.create_purchase.ask_party,company",0,Company,Compagnie,0
 field,"purchase.request.create_purchase.ask_party,party",0,Supplier,Fournisseur,0
 field,"purchase.request.create_purchase.ask_party,product",0,Product,Produit,0
-field,"purchase.request.create_purchase.ask_term,company",0,Company,Companie,0
+field,"purchase.request.create_purchase.ask_term,company",0,Company,Compagnie,0
 field,"purchase.request.create_purchase.ask_term,party",0,Supplier,Fournisseur,0
 field,"purchase.request.create_purchase.ask_term,payment_term",0,Payment Term,Condition de paiement,0
 field,"purchase.request,origin",0,Origin,Origine,0
@@ -49,7 +49,7 @@ selection,"stock.order_point,type",0,Internal,Interne,0
 selection,"stock.order_point,type",0,Purchase,Achat,0
 view,purchase.request,0,Purchase Request,Demande d'achat,0
 view,purchase.request,0,Purchase Requests,Demandes d'achat,0
-view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Supplier,Creation de la comande: fournisseur absent,0
+view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Supplier,Création de la commande: fournisseur absent,0
 view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Creation de la comande: règle d'appro. absente,0
 view,stock.order_point,0,Locations,Emplacements,0
 view,stock.order_point,0,Order Point,Règle d'approvisionnement,0
