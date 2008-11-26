@@ -1,0 +1,19 @@
+type,name,res_id,src,value,fuzzy
+field,"project.work,comment",0,Comment,Commentaire,0
+field,"project.work,party",0,Party,Tiers,0
+field,"project.work,party_address",0,Contact Address,Carnet d'adresses,0
+field,"project.work,project_type",0,Type,Type,0
+field,"project.work,work",0,Work,Tâche,0
+model,"ir.action,name",act_project_form,Projects,Projets,0
+model,"ir.action,name",act_work_form,Works,Tâches,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
+model,"ir.ui.menu,name",menu_project,Project Management,Gestion de Projet,0
+model,"ir.ui.menu,name",menu_project_tree,Projects,Projets,0
+model,"ir.ui.menu,name",menu_project_form,Projects,Projets,0
+model,"ir.ui.menu,name",menu_work_form,Works,Tâches,0
+model,"res.group,name",group_project_admin,Project Administration,Administrion de projets,0
+selection,"project.work,project_type",0,Project,Projet,0
+view,project.work,0,General,General,0
+view,project.work,0,Other Info,Autre info,0
+view,project.work,0,Work,Tâche,0
+view,project.work,0,Works,Tâches,0
