@@ -67,7 +67,6 @@
                 <![CDATA[
                     <tree string="Forecasts">
                         <field name="location" select="1"/>
-                        <field name="date" select="1"/>
                         <field name="state" select="1"/>
                         <field name="from_date"/>
                         <field name="to_date"/>
