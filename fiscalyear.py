@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 'Fiscal Year'
 
 from trytond.osv import fields, OSV
@@ -28,7 +29,8 @@ class FiscalYear(OSV):
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
             required=True, domain="[('code', '=', 'account.move')," \
                     "['OR', ('company', '=', company)," \
-                    "('company', '=', False)]]")
+                    "('company', '=', False)]]",
+                    context="{'code': 'account.move', 'company': company}")
     company = fields.Many2One('company.company', 'Company', required=True)
 
     def __init__(self):

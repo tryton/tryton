@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 'Period'
 
 from trytond.osv import fields, OSV
@@ -27,7 +28,8 @@ class Period(OSV):
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
     post_move_sequence =fields.Many2One('ir.sequence', 'Post Move Sequence',
-            required=True, domain="[('code', '=', 'account.move')]")
+            required=True, domain="[('code', '=', 'account.move')]",
+            context="{'code': 'account.move'}")
     type = fields.Selection([
         ('standard', 'Standard'),
         ('adjustment', 'Adjustment'),

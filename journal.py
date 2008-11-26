@@ -1,8 +1,10 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Journal"
 
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
+from trytond.sql_db import table_handler
 
 STATES = {
     'readonly': "state == 'close'",
@@ -81,9 +83,10 @@ class Journal(OSV):
     view = fields.Many2One('account.journal.view', 'View')
     centralised = fields.Boolean('Centralised counterpart')
     update_posted = fields.Boolean('Allow cancelling moves')
-    #TODO change sequence into Property
-    sequence = fields.Many2One('ir.sequence', 'Sequence', required=True,
-            domain="[('code', '=', 'account.journal')]")
+    sequence = fields.Property(type='many2one', relation='ir.sequence',
+            string='Sequence', required=True,
+            domain="[('code', '=', 'account.journal')]",
+            context={'code': 'account.journal'})
     credit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Credit Account',
             domain="[('kind', '!=', 'view'), ('company', '=', company)]",
@@ -104,6 +107,21 @@ class Journal(OSV):
     def __init__(self):
         super(Journal, self).__init__()
         self._order.insert(0, ('name', 'ASC'))
+
+    def _auto_init(self, cursor, module_name):
+        super(Journal, self)._auto_init(cursor, module_name)
+        table = table_handler(cursor, self._table, self._name, module_name)
+
+        # Migration from 1.0 sequence Many2One change into Property
+        if 'sequence' in table.table:
+            property_obj = self.pool.get('ir.property')
+            cursor.execute('SELECT id, sequence FROM "' + self._table +'"')
+            for journal_id, sequence_id in cursor.fetchall():
+                property_obj.set(cursor, 0, 'sequence', self._name,
+                        journal_id, (sequence_id and \
+                                'ir.sequence,' + str(sequence_id) or False))
+            cursor.execute('ALTER TABLE "' + self._table +'" ' \
+                    'DROP COLUMN sequence')
 
     def default_active(self, cursor, user, context=None):
         return True
