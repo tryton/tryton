@@ -68,6 +68,7 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="type"/>
                                     <field name="value"/>
                                     <field name="comment"/>
+                                    <field name="active" tree_invisible="1"/>
                                 </tree>
                             </field>
                             <group col="1" colspan="2">
