@@ -34,7 +34,8 @@ class Party(OSV):
     vat_number = fields.Char('VAT Number', help="Value Added Tax number",
             states=STATES)
     vat_country = fields.Selection(VAT_COUNTRIES, 'VAT Country', states=STATES,
-        help="Setting VAT country will enable verification of the VAT number.")
+        help="Setting VAT country will enable verification of the VAT number.",
+        translate=False)
     vat_code = fields.Function('get_vat_code', type='char', string="VAT Code")
     addresses = fields.One2Many('party.address', 'party',
            'Addresses', states=STATES)
