@@ -96,7 +96,8 @@ class Purchase(OSV):
 
     def __init__(self):
         super(Purchase, self).__init__()
-        self._order[0] = ('id', 'DESC')
+        self._order.insert(0, ('purchase_date', 'DESC'))
+        self._order.insert(1, ('id', 'DESC'))
         self._error_messages.update({
                 'invoice_addresse_required': 'Invoice addresses must be '
                 'defined for the quotation.',
