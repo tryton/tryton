@@ -39,8 +39,12 @@ class TrytonServer(object):
             logf = CONFIG['logfile']
             # test if the directories exist, else create them
             try:
+                diff = 0
+                if os.path.isfile(logf):
+                    diff = int(time.time()) - int(os.stat(logf)[-1])
                 handler = logging.handlers.TimedRotatingFileHandler(
                     logf, 'D', 1, 30)
+                handler.rolloverAt -= diff
             except Exception, exception:
                 sys.stderr.write("ERROR: couldn't create the logfile directory:" \
                         + str(exception))
