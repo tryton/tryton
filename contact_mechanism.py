@@ -31,7 +31,7 @@ class ContactMechanism(OSV):
             sort=False)
     value = fields.Char('Value', select=1,
             states={
-                'invisible': "type in ('email', 'website')",
+                'invisible': "type in ('email', 'website', 'skype', 'sip')",
                 'required': "type not in ('email', 'website')",
                 'readonly': "active == False",
             }, on_change=['value'])
