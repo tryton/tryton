@@ -952,6 +952,7 @@ class Invoice(OSV):
             context=None, limit=None):
         if args is None:
             args = []
+        ids = []
         if name:
             ids = self.search(cursor, user, [('number', operator, name)] + args,
                     limit=limit, context=context)
