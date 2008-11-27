@@ -2148,8 +2148,14 @@ class ORM(object):
                     pos = element2.get('position', 'inside')
                     if pos == 'replace':
                         parent = element.getparent()
+                        next = element.getnext()
+                        if next is not None:
+                            for child in element2:
+                                index = parent.index(next)
+                                parent.insert(index, child)
+                        else:
+                            parent.extend(element2.getchildren())
                         parent.remove(element)
-                        parent.extend(element2.getchildren())
                     elif pos == 'inside':
                         element.extend(element2.getchildren())
                     elif pos == 'after':
