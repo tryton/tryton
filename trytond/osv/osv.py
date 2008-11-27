@@ -46,7 +46,8 @@ class OSVService(Service):
             res = getattr(obj, method)(cursor, user, *args, **kargs)
             return res
         except Exception, exception:
-            if CONFIG['verbose']:
+            if CONFIG['verbose'] or str(exception.args[0]) not in \
+                    ('NotLogged', 'ConcurrencyException', 'UserError'):
                 tb_s = reduce(lambda x, y: x+y,
                         traceback.format_exception(*sys.exc_info()))
                 logger = logging.getLogger("web-service")
