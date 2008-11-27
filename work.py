@@ -15,8 +15,11 @@ class TimesheetWork(OSV):
         if not self.parent._context:
             self.parent._context = "{'project_type': locals().get('project_type')}"
         elif 'project_type' not in self.parent._context:
+            sep = ''
+            if self.parent._context[-2] != ',':
+                sep = ','
             self.parent._context = self.parent._context[:-1] + \
-                    ",'project_type': locals().get('project_type')" + \
+                    sep + "'project_type': locals().get('project_type')" + \
                     self.parent._context[-1:]
         self._reset_columns()
 
