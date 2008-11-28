@@ -143,19 +143,27 @@ model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remai
 model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.action,name",credit_invoice,Credit,Gutschrift erstellen,0
 model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
+model,"ir.action,name",act_invoice_out_credit_note_form2,Credit Notes,Gutschriften,0
 model,"ir.action,name",report_invoice,Invoice,Rechnung drucken,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
+model,"ir.action,name",act_invoice_out_invoice_form2,Invoices,Kundenrechnungen,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
 model,"ir.action,name",act_payment_term_form,Payment Terms,Zahlungsbedingungen,0
 model,"ir.action,name",act_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften von Lieferanten,0
+model,"ir.action,name",act_invoice_in_credit_note_form2,Supplier Credit Notes,Gutschriften von Lieferanten,0
 model,"ir.action,name",act_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
+model,"ir.action,name",act_invoice_in_invoice_form2,Supplier Invoices,Lieferantenrechnungen,0
 model,"ir.sequence.type,name",sequence_type_account_invoice,Invoice,Rechnung,0
 model,"ir.ui.menu,name",menu_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
 model,"ir.ui.menu,name",menu_invoices_configuration,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoices,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Neue Gutschrift an Kunden,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form2,New Invoice,Neue Kundenrechnung,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form2,New Supplier Credit Note,Neue Gutschrift von Lieferant,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form2,New Supplier Invoice,Neue Lieferantenrechnung,0
 model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Zahlungsbedingungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften von Lieferanten,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
