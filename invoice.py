@@ -11,10 +11,18 @@ from trytond.report import Report
 from trytond.wizard import Wizard, WizardOSV
 from trytond.pooler import get_pool_report
 import base64
+from trytond.sql_db import table_handler
 
 _STATES = {
     'readonly': "state != 'draft'",
 }
+
+_TYPE = [
+    ('out_invoice', 'Invoice'),
+    ('in_invoice', 'Supplier Invoice'),
+    ('out_credit_note', 'Credit Note'),
+    ('in_credit_note', 'Supplier Credit Note'),
+]
 
 _TYPE2JOURNAL = {
     'out_invoice': 'revenue',
@@ -231,14 +239,11 @@ class Invoice(OSV):
     _description = __doc__
     company = fields.Many2One('company.company', 'Company', required=True,
             states=_STATES)
-    type = fields.Selection([
-        ('out_invoice', 'Invoice'),
-        ('in_invoice', 'Supplier Invoice'),
-        ('out_credit_note', 'Credit Note'),
-        ('in_credit_note', 'Supplier Credit Note'),
-        ], 'Type', select=1, on_change=['type'], required=True, states={
-            'readonly': "state != 'draft' or context.get('type', False)",
-        })
+    type = fields.Selection(_TYPE, 'Type', select=1, on_change=['type'],
+            required=True, states={
+                'readonly': "state != 'draft' or context.get('type', False)" \
+                        " or (bool(lines) and bool(type))",
+            })
     type_name = fields.Function('get_type_name', type='char', string='Type')
     number = fields.Char('Number', size=None, readonly=True, select=1)
     reference = fields.Char('Reference', size=None)
@@ -1255,14 +1260,40 @@ class InvoiceLine(OSV):
     _description = __doc__
 
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
-            select=1, required=True)
-    sequence = fields.Integer('Sequence')
+            select=1, states={
+            'required': "not bool(globals().get('invoice_type')) " \
+                    "and bool(globals().get('party')) " \
+                    "and bool(globals().get('currency')) " \
+                    "and bool(globals().get('company'))",
+            'invisible': "context.get('standalone', False)",
+        })
+    invoice_type = fields.Selection(_TYPE, 'Invoice Type', select=1, states={
+        'readonly': "context.get('type', False) or bool(type)",
+        'required': "not bool(invoice)",
+        })
+    party = fields.Many2One('party.party', 'Party', select=1, states={
+        'required': "not bool(invoice)",
+        })
+    currency = fields.Many2One('currency.currency', 'Currency', states={
+        'required': "not bool(invoice)",
+        })
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['currency'])
+    company = fields.Many2One('company.company', 'Company', states={
+        'required': "not bool(invoice)",
+        })
+
+    sequence = fields.Integer('Sequence', states={
+            'invisible': "context.get('standalone', False)",
+        })
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
         ('comment', 'Comment'),
-        ], 'Type', select=1, required=True)
+        ], 'Type', select=1, required=True, states={
+            'invisible': "context.get('standalone', False)",
+        })
     quantity = fields.Float('Quantity',
             digits="(16, unit_digits)",
             states={
@@ -1283,11 +1314,15 @@ class InvoiceLine(OSV):
                 'invisible': "type != 'line'",
             }, on_change=['product', 'unit', 'quantity', 'description',
                 '_parent_invoice.type', '_parent_invoice.party',
-                '_parent_invoice.currency'])
+                '_parent_invoice.currency', 'party', 'currency'])
     account = fields.Many2One('account.account', 'Account',
             domain="[('kind', '!=', 'view'), " \
-                    "('company', '=', _parent_invoice.company), " \
-                    "('id', '!=', _parent_invoice.account)]",
+                    "('company', '=', " \
+                        "globals().get('_parent_invoice') and " \
+                        "globals().get('_parent_invoice').company or " \
+                        "globals()['company']), " \
+                    "('id', '!=', globals().get('_parent_invoice') and " \
+                        "globals().get('_parent_invoice').account or 0)]",
             states={
                 'invisible': "type != 'line'",
                 'required': "type == 'line'",
@@ -1298,11 +1333,13 @@ class InvoiceLine(OSV):
                 'required': "type == 'line'",
             })
     amount = fields.Function('get_amount', type='numeric', string='Amount',
-            digits="(16, _parent_invoice.currency_digits)",
+            digits="(16, globals().get('_parent_invoice') and " \
+                        "globals().get('_parent_invoice').currency_digits or " \
+                        "globals()['currency_digits'])",
             states={
                 'invisible': "type not in ('line', 'subtotal')",
             }, on_change_with=['type', 'quantity', 'unit_price',
-                '_parent_invoice.currency'])
+                '_parent_invoice.currency', 'currency'])
     description = fields.Char('Description', size=None, required=True)
     taxes = fields.Many2Many('account.tax', 'account_invoice_line_account_tax',
             'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
@@ -1317,6 +1354,10 @@ class InvoiceLine(OSV):
                 'CHECK((type = \'line\' AND account IS NOT NULL) ' \
                         'OR (type != \'line\'))',
                 'Line type must have an account!'),
+            ('type_invoice',
+                'CHECK((type != \'line\' AND invoice IS NOT NULL) ' \
+                        'OR (type = \'line\'))',
+                'Non line type must have an invoice!'),
         ]
         self._constraints += [
             ('check_account', 'account_different_company'),
@@ -1334,6 +1375,54 @@ class InvoiceLine(OSV):
                     'than the invoice account!',
             })
 
+    def _auto_init(self, cursor, module_name):
+        super(InvoiceLine, self)._auto_init(cursor, module_name)
+        table = table_handler(cursor, self._table, self._name, module_name)
+
+        # Migration from 1.0 invoice is no more required
+        if 'invoice' in table.table:
+            if table.table['invoice']['notnull']:
+                self.cursor.execute('ALTER TABLE "' + self._table + '" ' \
+                        'ALTER COLUMN "invoice" DROP NOT NULL')
+
+    def default_invoice_type(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        return context.get('invoice_type', 'out_invoice')
+
+    def default_currency(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        currency_obj = self.pool.get('currency.currency')
+        if context is None:
+            context = {}
+        company = None
+        if context.get('company'):
+            company = company_obj.browse(cursor, user, context['company'],
+                    context=context)
+            return currency_obj.name_get(cursor, user, company.currency.id,
+                    context=context)[0]
+        return False
+
+    def default_currency_digits(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        company = None
+        if context.get('company'):
+            company = company_obj.browse(cursor, user, context['company'],
+                    context=context)
+            return company.currency.digits
+        return 2
+
+    def default_company(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
     def default_type(self, cursor, user, context=None):
         return 'line'
 
@@ -1346,11 +1435,10 @@ class InvoiceLine(OSV):
     def on_change_with_amount(self, cursor, user, ids, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('type') == 'line':
-            if isinstance(vals.get('_parent_invoice.currency'), (int, long)):
-                currency = currency_obj.browse(cursor, user,
-                        vals['_parent_invoice.currency'], context=context)
-            else:
-                currency = vals['_parent_invoice.currency']
+            currency = vals.get('_parent_invoice.currency', vals.get('currency'))
+            if isinstance(currency, (int, long)):
+                currency = currency_obj.browse(cursor, user, currency,
+                        context=context)
             amount = Decimal(str(vals.get('quantity') or '0.0')) * \
                     (vals.get('unit_price') or Decimal('0.0'))
             if currency:
@@ -1376,13 +1464,29 @@ class InvoiceLine(OSV):
                 res[line.id] = 2
         return res
 
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        currency_obj = self.pool.get('currency.currency')
+        if vals.get('currency'):
+            currency = currency_obj.browse(cursor, user, vals['currency'],
+                    context=context)
+            return currency.digits
+        return 2
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            res[line.id] = line.currency and line.currency.digits or 2
+        return res
+
     def get_amount(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             if line.type == 'line':
-                res[line.id] = currency_obj.round(cursor, user,
-                        line.invoice.currency,
+                currency = line.invoice and line.invoice.currency \
+                        or line.currency
+                res[line.id] = currency_obj.round(cursor, user, currency,
                         Decimal(str(line.quantity)) * line.unit_price)
             elif line.type == 'subtotal':
                 res[line.id] = Decimal('0.0')
@@ -1414,8 +1518,9 @@ class InvoiceLine(OSV):
 
         ctx = context.copy()
         party = None
-        if vals.get('_parent_invoice.party'):
-            party = party_obj.browse(cursor, user, vals['_parent_invoice.party'],
+        if vals.get('_parent_invoice.party', vals.get('party')):
+            party = party_obj.browse(cursor, user, vals.get('_parent_invoice.party',
+                    vals.get('party')),
                     context=context)
             if party.lang:
                 ctx['language'] = party.lang.code
@@ -1428,12 +1533,14 @@ class InvoiceLine(OSV):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
         currency = None
-        if vals.get('_parent_invoice.currency'):
+        if vals.get('_parent_invoice.currency', vals.get('currency')):
             #TODO check if today date is correct
             currency = currency_obj.browse(cursor, user,
-                    vals['_parent_invoice.currency'], context=context)
+                    vals.get('_parent_invoice.currency', vals.get('currency')),
+                    context=context)
 
-        if vals.get('_parent_invoice.type') in ('in_invoice', 'in_credit_note'):
+        if vals.get('_parent_invoice.type', vals.get('invoice_type')) \
+                in ('in_invoice', 'in_credit_note'):
             if company and currency:
                 res['unit_price'] = currency_obj.compute(cursor, user,
                         company.currency, product.cost_price, currency,
@@ -1492,7 +1599,8 @@ class InvoiceLine(OSV):
         Check if the lines can be modified
         '''
         for line in self.browse(cursor, user, ids, context=context):
-            if line.invoice.state in ('open', 'paid', 'cancel'):
+            if line.invoice and \
+                    line.invoice.state in ('open', 'paid', 'cancel'):
                 self.raise_user_error(cursor, 'modify', context=context)
         return
 
@@ -1522,16 +1630,21 @@ class InvoiceLine(OSV):
 
     def check_account(self, cursor, user, ids):
         for line in self.browse(cursor, user, ids):
-            if line.type == 'line' \
-                    and line.account.company.id != line.invoice.company.id:
-                return False
+            if line.type == 'line':
+                if line.invoice:
+                    if line.account.company.id != line.invoice.company.id:
+                        return False
+                elif line.company:
+                    if line.account.company.id != line.company.id:
+                        return False
         return True
 
     def check_account2(self, cursor, user, ids):
         for line in self.browse(cursor, user, ids):
-            if line.type == 'line' \
-                    and line.account.id == line.invoice.account.id:
-                return False
+            if line.type == 'line':
+                if line.invoice \
+                        and line.account.id == line.invoice.account.id:
+                    return False
         return True
 
     def _compute_taxes(self, cursor, user, line, context=None):
