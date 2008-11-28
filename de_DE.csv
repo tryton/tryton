@@ -622,13 +622,16 @@ view,account.account.type,0,Balance Sheet,Bilanzbogen,0
 view,account.account.type,0,Income Statement,Gewinn- und Verlustrechnung,0
 view,account.account.type.template,0,Account Types Templates,Vorlagen für Kontentypen,0
 view,account.account.type.template,0,Account Type Template,Vorlage für Kontentyp,0
+view,account.fiscalyear,0,Are you sure to close fiscal year?,Wollen Sie das Geschäftsjahr wirklich abschließen?,0
 view,account.fiscalyear,0,Close,Geschäftsjahr abschließen,0
+view,account.fiscalyear,0,Close Fiscal Year,Geschäftsjahr abschließen,0
 view,account.fiscalyear,0,Create 3 Months Periods,Quartale erstellen,0
 view,account.fiscalyear,0,Create Monthly Periods,Monatliche Buchungszeiträume erstellen,0
 view,account.fiscalyear,0,Fiscal Year,Geschäftsjahr,0
 view,account.fiscalyear,0,Fiscal Years,Geschäftsjahre,0
 view,account.fiscalyear,0,Periods,Buchungszeiträume,0
 view,account.fiscalyear,0,Re-Open,Wiedereröffnen,0
+view,account.fiscalyear,0,Re-Open Fiscal Year,Geschäftsjahr wiedereröffnen,0
 view,account.fiscalyear,0,Sequences,Sequenzen,0
 view,account.fiscalyear.close_fiscalyear.init,0,Close Fiscal Year,Geschäftsjahr abschließen,0
 view,account.journal,0,General Information,Allgemein,0
@@ -684,7 +687,6 @@ view,account.tax.template,0,Taxes,Steuern,0
 view,account.tax.template,0,Taxes Templates,Steuervorlagen,0
 view,account.tax.template,0,Tax Template,Steuervorlage,0
 view,party.party,0,Account,Konten,0
-view,party.party,0,_Accounting,_Buchhaltung,0
 view,party.party,0,Taxes,Steuern,0
 wizard_button,"account.account.create_chart_account,account,create_account",0,Create,Erstellen,0
 wizard_button,"account.account.create_chart_account,account,end",0,Cancel,Abbrechen,0
