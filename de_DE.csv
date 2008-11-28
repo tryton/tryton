@@ -95,6 +95,7 @@ selection,"party.contact_mechanism,type",0,SIP,SIP,0
 selection,"party.contact_mechanism,type",0,Skype,Skype,0
 selection,"party.contact_mechanism,type",0,Website,Homepage,0
 selection,"party.party,vat_country",0,,,0
+selection,"party.party,vat_country",0,AL,AL,0
 selection,"party.party,vat_country",0,AT,AT,0
 selection,"party.party,vat_country",0,BE,BE,0
 selection,"party.party,vat_country",0,BG,BG,0
@@ -123,13 +124,16 @@ selection,"party.party,vat_country",0,RO,RO,0
 selection,"party.party,vat_country",0,SE,SE,0
 selection,"party.party,vat_country",0,SI,SI,0
 selection,"party.party,vat_country",0,SK,SK,0
+selection,"party.party,vat_country",0,SM,SM,0
+selection,"party.party,vat_country",0,UA,UA,0
+selection,"party.party,vat_country",0,UK,UK,0
 view,party.address,0,Addresses,Adressen,0
 view,party.category,0,Categories,Kategorien,0
 view,party.category,0,Category,Kategorie,0
 view,party.contact_mechanism,0,Contact Mechanism,Kontaktmöglichkeit,0
 view,party.contact_mechanism,0,Contact Mechanisms,Kontaktmöglichkeiten,0
 view,party.party,0,Account,Konten,0
-view,party.party,0,_Accounting,,0
+view,party.party,0,_Accounting,_Buchhaltung,0
 view,party.party,0,Addresses,Adressen,0
 view,party.party,0,Categories,Kategorien,0
 view,party.party,0,Contact Mechanisms,Kontaktmöglichkeiten,0
