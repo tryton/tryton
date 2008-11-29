@@ -1,12 +1,12 @@
 type,name,res_id,src,value,fuzzy
 error,account.invoice,0,You can not delete invoices that comes from a sale!,Vous ne pouvez pas supprimer des factures provenant d'une vente !,0
-error,sale.line,0,"It miss an ""account_revenue"" default property!","Il manque une propriété""account_expense""",0
+error,sale.line,0,"It miss an ""account_revenue"" default property!","Il manque une propriété ""account_expense""",0
 error,sale.line,0,The customer location is required!,L'emplacement client est requis !,0
 error,sale.sale,0,Invoice and Packing addresses must be defined for the quotation.,Les adresses de facturation de de colisage sont requises pour le devis.,0
 error,sale.sale,0,Wrong combination of method!,Mauvaise combinaison de méthodes !,0
 field,"product.template,salable",0,Salable,Vendable,0
 field,"product.template,sale_uom",0,Sale UOM,UDM de vente,0
-field,"sale.line,amount",0,Amount,Montatn,0
+field,"sale.line,amount",0,Amount,Montant,0
 field,"sale.line,comment",0,Comment,Commentaire,0
 field,"sale.line,description",0,Description,Description,0
 field,"sale.line,invoice_lines",0,Invoice Lines,Lignes de facture,0
@@ -46,7 +46,7 @@ field,"sale.sale,packings",0,Packings,Colisages,0
 field,"sale.sale,packing_state",0,Packing State,État du colisage,0
 field,"sale.sale,party",0,Party,Tiers,0
 field,"sale.sale,party_lang",0,Party Language,Langue du tiers,0
-field,"sale.sale,payment_term",0,Payment Term,Condition de paiement,0
+field,"sale.sale,payment_term",0,Payment Term,Conditions de paiement,0
 field,"sale.sale,reference",0,Reference,Référence,0
 field,"sale.sale,sale_date",0,Sale Date,Date de la vente,0
 field,"sale.sale,state",0,State,État,0
@@ -102,8 +102,8 @@ selection,"sale.line,type",0,Line,Ligne,0
 selection,"sale.line,type",0,Subtotal,Sous-total,0
 selection,"sale.line,type",0,Title,Titre,0
 selection,"sale.sale,invoice_method",0,Manual,Manuel,0
-selection,"sale.sale,invoice_method",0,On Order Confirmed,À la confirmation de la commande,0
-selection,"sale.sale,invoice_method",0,On Packing Sent,À la livraison,0
+selection,"sale.sale,invoice_method",0,On Order Confirmed,A la confirmation de la commande,0
+selection,"sale.sale,invoice_method",0,On Packing Sent,A la livraison,0
 selection,"sale.sale,invoice_state",0,Exception,Exception,0
 selection,"sale.sale,invoice_state",0,None,Aucun,0
 selection,"sale.sale,invoice_state",0,Paid,Payé,0
