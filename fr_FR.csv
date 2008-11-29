@@ -1,8 +1,8 @@
 type,name,res_id,src,value,fuzzy
 error,account.invoice,0,You can not delete invoices that comes from a purchase!,Vous ne pouvez pas supprimer des factures provenant d'un achat !,0
-error,purchase.line,0,"It miss an ""account_expense"" default property!","Il manque une propriété""account_expense""",0
+error,purchase.line,0,"It miss an ""account_expense"" default property!","Il manque une propriété ""account_expense""",0
 error,purchase.line,0,The supplier location is required!,L'emplacement fournisseur est requis !,0
-error,purchase.purchase,0,Contact and Invoice addresses must be defined for the quotation.,Les adresses de contact et de facture doivent être définie pour le devis.,0
+error,purchase.purchase,0,Contact and Invoice addresses must be defined for the quotation.,Les adresses de contact et de facture doivent être définies pour le devis.,0
 error,purchase.purchase,0,Invoice addresses must be defined for the quotation.,L'adresse de facturation doit être définie pour le devis.,0
 field,"product.template,product_suppliers",0,Suppliers,Fournisseurs,0
 field,"product.template,purchasable",0,Purchasable,Achetable,0
@@ -25,7 +25,7 @@ field,"purchase.line,unit",0,Unit,Unité,0
 field,"purchase.line,unit_digits",0,Unit Digits,Décimales de l'unité,0
 field,"purchase.line,unit_price",0,Unit Price,Prix unitaire,0
 field,"purchase.product_supplier,code",0,Code,Code,0
-field,"purchase.product_supplier,company",0,Company,Companie,0
+field,"purchase.product_supplier,company",0,Company,Compagnie,0
 field,"purchase.product_supplier,delivery_time",0,Delivery Time,Temps de livraison,0
 field,"purchase.product_supplier,name",0,Name,Nom,0
 field,"purchase.product_supplier,party",0,Supplier,Fournisseur,0
@@ -56,7 +56,7 @@ field,"purchase.purchase,packings",0,Packings,Colisages,0
 field,"purchase.purchase,packing_state",0,Packing State,État du colisage,0
 field,"purchase.purchase,party",0,Party,Tiers,0
 field,"purchase.purchase,party_lang",0,Party Language,Langue du tiers,0
-field,"purchase.purchase,payment_term",0,Payment Term,Condition de paiement,0
+field,"purchase.purchase,payment_term",0,Payment Term,Conditions de paiement,0
 field,"purchase.purchase,purchase_date",0,Purchase Date,Date d'achat,0
 field,"purchase.purchase,reference",0,Reference,Référence,0
 field,"purchase.purchase,state",0,State,État,0
@@ -117,7 +117,7 @@ odt,purchase.purchase,0,Description:,Description:,0
 odt,purchase.purchase,0,Draft Purchase Order,Commande d'achat,0
 odt,purchase.purchase,0,E-Mail:,E-Mail:,0
 odt,purchase.purchase,0,Phone:,Téléphone,0
-odt,purchase.purchase,0,Purchase Order N°:,Commande d'achat n°:,0
+odt,purchase.purchase,0,Purchase Order N°:,Commande d'achat n° :,0
 odt,purchase.purchase,0,Quantity,Quantité,0
 odt,purchase.purchase,0,Request for Quotation N°:,Demande pour le devis n°,0
 odt,purchase.purchase,0,Taxes,Taxes,0
