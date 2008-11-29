@@ -16,23 +16,24 @@ error,account.invoice,0,The debit account on journal is missing!,Soll-Konto im J
 error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,Rechnungsnummern-Sequenz für diese Periode oder dieses Buchungsjahr fehlt!,0
 error,account.invoice,0,"You can not create an invoice
 with account from a different invoice company!",Es können keine Rechnungen mit einem Konto von einer anderen rechnungsstellenden Firma angelegt werden,0
-error,account.invoice,0,"You can not modify invoice that is open, paid or canceled!","Rechnungen die offen, bezahlt oder abgebrochen wurden können nicht verändert werden!",0
+error,account.invoice,0,"You can not modify invoice that is open, paid or canceled!","Fakturierte, bezahlte oder annullierte Rechnungen können nicht verändert werden!",0
 error,account.invoice,0,You can not reset to draft an invoice that have move!,"Rechnungen die bereits gebucht sind, können nicht auf Vorlage zurückgesetzt werden!",0
 error,account.invoice,0,"You can not use the same account
 than on invoice line account!",Es darf nicht das selbe Konto benutzt werden wie in den Rechnungspositionen,0
 error,account.invoice.line,0,Line type must have an account!,Typ der Position muss einem Konto zugeordnet werden!,0
-error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann keine neue Position hinzugefügt werden",0
+error,account.invoice.line,0,Non line type must have an invoice!,Eine Position von einem anderen Typ als Position muss einer Rechnung zugeordnet sein!,0
+error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert kann keine neue Position hinzugefügt werden!",0
 error,account.invoice.line,0,"You can not create invoice line
 with account from a different invoice company!",Rechnungszeile kann nicht erstellt werden: das Konto ist einer anderen rechnungsstellenden Firma zugeordnet,0
-error,account.invoice.line,0,"You can not modify line from an invoice that is open, paid or canceled!","In einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann können Positionen nicht bearbeitet werden",0
+error,account.invoice.line,0,"You can not modify line from an invoice that is open, paid or canceled!","In einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert können Positionen nicht bearbeitet werden!",0
 error,account.invoice.line,0,"You can not use the same account
 than the invoice account!",Es darf nicht das selbe Konto benutzt werden wie das Rechnungskonto!,0
 error,account.invoice.payment_term,0,Invalid payment term line!,Ungültige Position in Zahlungsbedingung!,0
 error,account.invoice.payment_term,0,Payment term missing a remainder line!,In der Zahlungsbedingung fehlt eine Restbetragszeile!,0
 error,account.invoice.payment_term.line.delay,0,Code must be unique!,Der Code kann nicht mehrfach vergeben werden!,0
 error,account.invoice.payment_term.line.type,0,Code must be unique!,Der Code kann nicht mehrfach vergeben werden!,0
-error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann keine neue Position hinzugefügt werden",0
-error,account.invoice.tax,0,"You can not modify tax from an invoice that is open, paid or canceled!","In einer Rechnung mit dem Status: Offen, Bezahlt oder Abgebrochen kann können Steuern nicht bearbeitet werden",0
+error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert kann keine neue Position hinzugefügt werden!",0
+error,account.invoice.tax,0,"You can not modify tax from an invoice that is open, paid or canceled!","In Rechnungen mit dem Status Fakturiert, Bezahlt oder Annulliert können Steuern nicht bearbeitet werden!",0
 error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung in der laufenden Periode eröffnet wurde.",0
 error,account.period,0,You must have different invoice sequences per fiscal year and in the same company!,Verschiedene Geschäftsjahre eines Unternehmens erfordern unterschiedliche Rechnungssequenzen!,0
 field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Sequenz Gutschriften Lieferanten,0
@@ -54,8 +55,13 @@ field,"account.invoice,invoice_report_format",0,Invoice Report Format,Format Rec
 field,"account.invoice,journal",0,Journal,Journal,0
 field,"account.invoice.line,account",0,Account,Konto,0
 field,"account.invoice.line,amount",0,Amount,Betrag,0
+field,"account.invoice.line,company",0,Company,Unternehmen,0
+field,"account.invoice.line,currency",0,Currency,Währung,0
+field,"account.invoice.line,currency_digits",0,Currency Digits,Stellen Währung,0
 field,"account.invoice.line,description",0,Description,Bezeichnung,0
 field,"account.invoice.line,invoice",0,Invoice,Rechnung,0
+field,"account.invoice.line,invoice_type",0,Invoice Type,Rechnungstyp,0
+field,"account.invoice.line,party",0,Party,Partei,0
 field,"account.invoice.line,product",0,Product,Artikel,0
 field,"account.invoice.line,quantity",0,Quantity,Menge,0
 field,"account.invoice,lines",0,Lines,Positionen,0
@@ -144,12 +150,24 @@ model,"ir.action,name",act_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.action,name",credit_invoice,Credit,Gutschrift erstellen,0
 model,"ir.action,name",act_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
 model,"ir.action,name",act_invoice_out_credit_note_form2,Credit Notes,Gutschriften,0
+model,"ir.action,name",act_invoice_out_credit_note_form3,Draft Credit Notes,Entwürfe Kundengutschriften,0
+model,"ir.action,name",act_invoice_out_invoice_form3,Draft Invoices,Entwürfe Kundenrechnungen,0
+model,"ir.action,name",act_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Entwürfe Lieferantengutschriften,0
+model,"ir.action,name",act_invoice_in_invoice_form3,Draft Supplier Invoices,Entwürfe Lieferantenrechnungen,0
 model,"ir.action,name",report_invoice,Invoice,Rechnung drucken,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",act_invoice_out_invoice_form2,Invoices,Kundenrechnungen,0
+model,"ir.action,name",act_invoice_out_credit_note_form5,Opened Credit Notes,Fakturierte Kundengutschriften,0
+model,"ir.action,name",act_invoice_out_invoice_form5,Opened Invoices,Fakturierte Kundenrechnungen,0
+model,"ir.action,name",act_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Fakturierte Lieferantengutschriften,0
+model,"ir.action,name",act_invoice_in_invoice_form5,Opened Supplier Invoices,Fakturierte Lieferantenrechnungen,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
 model,"ir.action,name",act_payment_term_form,Payment Terms,Zahlungsbedingungen,0
+model,"ir.action,name",act_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro Forma Kundengutschriften,0
+model,"ir.action,name",act_invoice_out_invoice_form4,Pro Forma Invoices,Pro Forma Kundenrechnungen,0
+model,"ir.action,name",act_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Pro Forma Lieferantengutschriften,0
+model,"ir.action,name",act_invoice_in_invoice_form4,Pro Forma Supplier Invoices,Pro Forma Lieferantenrechnungen,0
 model,"ir.action,name",act_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften von Lieferanten,0
 model,"ir.action,name",act_invoice_in_credit_note_form2,Supplier Credit Notes,Gutschriften von Lieferanten,0
 model,"ir.action,name",act_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
@@ -157,6 +175,10 @@ model,"ir.action,name",act_invoice_in_invoice_form2,Supplier Invoices,Lieferante
 model,"ir.sequence.type,name",sequence_type_account_invoice,Invoice,Rechnung,0
 model,"ir.ui.menu,name",menu_invoice_form,All Invoices,Alle Rechnungen,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form,Credit Notes,Gutschriften an Kunden,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form3,Draft Credit Notes,Entwürfe Kundengutschriften,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form3,Draft Invoices,Entwürfe Kundenrechnungen,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Entwürfe Lieferantengutschriften,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form3,Draft Supplier Invoices,Entwürfe Lieferantenrechnungen,0
 model,"ir.ui.menu,name",menu_invoices_configuration,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoices,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
@@ -164,12 +186,20 @@ model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Neue 
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form2,New Invoice,Neue Kundenrechnung,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form2,New Supplier Credit Note,Neue Gutschrift von Lieferant,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form2,New Supplier Invoice,Neue Lieferantenrechnung,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form5,Opened Credit Notes,Fakturierte Kundengutschriften,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form5,Opened Invoices,Fakturierte Kundenrechnungen,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Fakturierte Lieferantengutschriften,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form5,Opened Supplier Invoices,Fakturierte Lieferantenrechnungen,0
 model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Zahlungsbedingungen,0
+model,"ir.ui.menu,name",menu_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro Forma Kundengutschriften,0
+model,"ir.ui.menu,name",menu_invoice_out_invoice_form4,Pro Forma Invoices,Pro Forma Kundenrechnungen,0
+model,"ir.ui.menu,name",menu_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Pro Forma Lieferantengutschriften,0
+model,"ir.ui.menu,name",menu_invoice_in_invoice_form4,Pro Forma Supplier Invoices,Pro Forma Lieferantenrechnungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften von Lieferanten,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
-model,"workflow.activity,name",invoice_activity_cancel,Cancel,Abbrechen,0
+model,"workflow.activity,name",invoice_activity_cancel,Cancel,Annullieren,0
 model,"workflow.activity,name",invoice_activity_draft,Draft,Entwurf,0
-model,"workflow.activity,name",invoice_activity_open,Open,Öffnen,0
+model,"workflow.activity,name",invoice_activity_open,Open,Fakturieren,0
 model,"workflow.activity,name",invoice_activity_paid,Paid,Bezahlt,0
 model,"workflow.activity,name",invoice_activity_proforma,Pro forma,Pro Forma,0
 model,"workflow,name",invoice_workflow,Invoice workflow,Workflow Rechnung,0
@@ -190,15 +220,19 @@ odt,account.invoice,0,Total:,Gesamt:,0
 odt,account.invoice,0,Total (excl. taxes):,Netto:,0
 odt,account.invoice,0,Unit Price,Einzelpreis,0
 odt,account.invoice,0,VAT:,UST-ID:,0
+selection,"account.invoice.line,invoice_type",0,Credit Note,Kundengutschrift,0
+selection,"account.invoice.line,invoice_type",0,Invoice,Lieferantenrechnung,0
+selection,"account.invoice.line,invoice_type",0,Supplier Credit Note,Lieferantengutschrift,0
+selection,"account.invoice.line,invoice_type",0,Supplier Invoice,Kundenrechnung,0
 selection,"account.invoice.line,type",0,Comment,Kommentar,0
 selection,"account.invoice.line,type",0,Line,Position,0
 selection,"account.invoice.line,type",0,Subtotal,Zwischensumme,0
 selection,"account.invoice.line,type",0,Title,Überschrift,0
 selection,"account.invoice.pay_invoice.ask,type",0,Partial Payment,Teilzahlung,0
 selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Ausbuchung,0
-selection,"account.invoice,state",0,Canceled,Abgebrochen,0
+selection,"account.invoice,state",0,Canceled,Annulliert,0
 selection,"account.invoice,state",0,Draft,Entwurf,0
-selection,"account.invoice,state",0,Open,Offen,0
+selection,"account.invoice,state",0,Open,Fakturiert,0
 selection,"account.invoice,state",0,Paid,Bezahlt,0
 selection,"account.invoice,state",0,Pro forma,Pro Forma,0
 selection,"account.invoice,type",0,Credit Note,Gutschrift,0
@@ -206,14 +240,14 @@ selection,"account.invoice,type",0,Invoice,Kundenrechnung,0
 selection,"account.invoice,type",0,Supplier Credit Note,Gutschrift von Lieferant,0
 selection,"account.invoice,type",0,Supplier Invoice,Lieferantenrechnung,0
 view,account.invoice,0,Amount Second Currency,Betrag Zweitwährung,0
-view,account.invoice,0,_Cancel,_Abbrechen,0
+view,account.invoice,0,_Cancel,_Annullieren,0
 view,account.invoice,0,Credit,Haben,0
 view,account.invoice,0,Debit,Soll,0
 view,account.invoice,0,_Draft,_Entwurf,0
 view,account.invoice,0,Invoice,Rechnung,0
 view,account.invoice,0,Invoices,Rechnungen,0
 view,account.invoice,0,Lines,Positionen,0
-view,account.invoice,0,_Open,_Öffnen,0
+view,account.invoice,0,_Open,_Fakturieren,0
 view,account.invoice,0,Other Info,Sonstiges,0
 view,account.invoice,0,_Pay,_Bezahlen,0
 view,account.invoice,0,Payment,Zahlung,0
