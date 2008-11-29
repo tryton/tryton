@@ -87,7 +87,7 @@ model,"ir.ui.menu,name",menu_purchase_form,Purchases,Einkäufe,0
 model,"ir.ui.menu,name",menu_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
 model,"ir.ui.menu,name",menu_supplier,Suppliers,Lieferanten,0
 model,"res.group,name",group_purchase,Purchase,Einkauf,0
-model,"workflow.activity,name",purchase_activity_cancel,Cancel,Abbrechen,0
+model,"workflow.activity,name",purchase_activity_cancel,Cancel,Annullieren,0
 model,"workflow.activity,name",purchase_activity_confirmed,Confirmed,Beauftragt,0
 model,"workflow.activity,name",purchase_activity_done,Done,Erledigt,0
 model,"workflow.activity,name",purchase_activity_draft,Draft,Entwurf,0
@@ -138,7 +138,7 @@ selection,"purchase.purchase,packing_state",0,Exception,Vorbehalt,0
 selection,"purchase.purchase,packing_state",0,None,Kein,0
 selection,"purchase.purchase,packing_state",0,Received,Erhalten,0
 selection,"purchase.purchase,packing_state",0,Waiting,Wartend,0
-selection,"purchase.purchase,state",0,Cancel,Abbrechen,0
+selection,"purchase.purchase,state",0,Cancel,Annulliert,0
 selection,"purchase.purchase,state",0,Confirmed,Beauftragt,0
 selection,"purchase.purchase,state",0,Done,Erledigt,0
 selection,"purchase.purchase,state",0,Draft,Entwurf,0
@@ -152,7 +152,7 @@ view,purchase.product_supplier,0,Product Supplier,Lieferant,0
 view,purchase.product_supplier,0,Product Suppliers,Lieferanten,0
 view,purchase.product_supplier.price,0,Product Supplier Price,Einkaufspreis,0
 view,purchase.product_supplier.price,0,Product Supplier Prices,Einkaufspreise,0
-view,purchase.purchase,0,Cancel,Abbrechen,0
+view,purchase.purchase,0,Cancel,Annullieren,0
 view,purchase.purchase,0,Confirm,Beauftragen,0
 view,purchase.purchase,0,Draft,Entwurf,0
 view,purchase.purchase,0,Ignore Invoice Exception,Rechnungsvorbehalt ignorieren,0
