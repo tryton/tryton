@@ -69,7 +69,7 @@ model,"ir.ui.menu,name",menu_sale_form_quotation,Quotation Sales,Angebote (Verk√
 model,"ir.ui.menu,name",menu_sale,Sale Management,Verkauf,0
 model,"ir.ui.menu,name",menu_sale_form,Sales,Verkauf,0
 model,"res.group,name",group_sale,Sale,Verkauf,0
-model,"workflow.activity,name",sale_activity_cancel,Cancel,Abbrechen,0
+model,"workflow.activity,name",sale_activity_cancel,Cancel,Annullieren,0
 model,"workflow.activity,name",sale_activity_confirmed,Confirmed,Beauftragt,0
 model,"workflow.activity,name",sale_activity_done,Done,Erledigt,0
 model,"workflow.activity,name",sale_activity_draft,Draft,Entwurf,0
@@ -131,7 +131,7 @@ selection,"sale.sale,packing_state",0,Exception,Vorbehalt,0
 selection,"sale.sale,packing_state",0,None,Kein,0
 selection,"sale.sale,packing_state",0,Sent,Gesendet,0
 selection,"sale.sale,packing_state",0,Waiting,Wartend,0
-selection,"sale.sale,state",0,Cancel,Abbrechen,0
+selection,"sale.sale,state",0,Cancel,Annulliert,0
 selection,"sale.sale,state",0,Confirmed,Beauftragt,0
 selection,"sale.sale,state",0,Done,Erledigt,0
 selection,"sale.sale,state",0,Draft,Entwurf,0
@@ -140,7 +140,7 @@ view,product.product,0,Customers,Kunden,0
 view,sale.line,0,Products,Artikel,0
 view,sale.line,0,Sale Line,Position Verkauf,0
 view,sale.line,0,Sale Lines,Positionen Verkauf,0
-view,sale.sale,0,Cancel,Abbrechen,0
+view,sale.sale,0,Cancel,Annullieren,0
 view,sale.sale,0,Confirm,Beauftragen,0
 view,sale.sale,0,Draft,Entwurf,0
 view,sale.sale,0,Ignore Invoice Exception,Rechnungsvorbehalt ignorieren,0
