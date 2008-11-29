@@ -22,6 +22,8 @@ field,"company.employee,write_date",0,Last modification date,Zuletzt geändert a
 field,"company.employee,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"ir.cron,companies",0,Companies,Unternehmen,0
 field,"ir.property,company",0,Company,Unternehmen,0
+field,"ir.sequence,company",0,Company,Unternehmen,0
+field,"ir.sequence.strict,company",0,Company,Unternehmen,0
 field,"res.user,company",0,Current Company,Aktuelles Unternehmen,0
 field,"res.user,employee",0,Employee,Mitarbeiter,0
 field,"res.user,main_company",0,Main Company,Mutterbetrieb,0
@@ -43,14 +45,18 @@ view,company.company,0,Addresses,Adressen,0
 view,company.company,0,Companies,Unternehmen,0
 view,company.company,0,Company,Unternehmen,0
 view,company.company,0,Employees,Mitarbeiter,0
+view,company.company,0,_Employees,_Mitarbeiter,0
 view,company.company,0,General,Allgemein,0
+view,company.company,0,_General,_Allgemein,0
 view,company.company,0,Reports,Berichte,0
+view,company.company,0,_Reports,_Berichte,0
 view,company.company.config.init,0,Create Company,Unternehmen anlegen,0
 view,company.company.config.init,0,You can now add your company into the system.,Sie können nun Ihr Unternehmen dem System hinzufügen!,0
 view,company.employee,0,Addresses,Adressen,0
 view,company.employee,0,Employee,Mitarbeiter,0
 view,company.employee,0,Employess,Mitarbeiter,0
 view,company.employee,0,General,Allgemein,0
+view,company.employee,0,_General,_Allgemein,0
 wizard_button,"company.company.config,company,add",0,Add,Hinzufügen,0
 wizard_button,"company.company.config,company,end",0,Cancel,Abbrechen,0
 wizard_button,"company.company.config,init,company",0,Ok,OK,0
