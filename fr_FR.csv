@@ -2,18 +2,18 @@ type,name,res_id,src,value,fuzzy
 error,stock.inventory.line,0,Line quantity must be positive!,Les quantités sur les lignes doivent être positives!,0
 error,stock.inventory.line,0,Product must be unique by inventory!,Chaque produit ne peut apparaître qu'une seule fois par inventaire,0
 error,stock.location,0,You can not create recursive locations!,Vous ne pouvez pas créer des emplacements récursifs,0
-error,stock.move,0,Move can not be in both Supplier and Customer Packing,Un mouvement ne peut pas être en même temps dans un packing founisseur et un packing client.,0
+error,stock.move,0,Move can not be in both Supplier and Customer Packing,Un mouvement ne peut pas être en même temps dans un colisage founisseur et un colisage client.,0
 error,stock.move,0,Move quantity must be positive,La quantité sur le mouvement doit être positive.,0
-error,stock.move,0,Source and destination location must be different,Les emplacements d'origine et de destination doivent être distinctes,0
+error,stock.move,0,Source and destination location must be different,Les emplacements d'origine et de destination doivent être distincts,0
 error,stock.move,0,You can not set state to assigned!,Vous ne pouvez pas mettre l'état à assigné !,0
 error,stock.move,0,You can not set state to done!,Vous ne pouvez pas mettre l'état à fait !,0
-error,stock.move,0,You can not set state to draft!,Vous ne pouvez pas mettre l'état à brouillon!,0
+error,stock.move,0,You can not set state to draft!,Vous ne pouvez pas mettre l'état à brouillon !,0
 error,stock.move,0,You can not use service product for a move!,Vous ne pouvez pas utiliser un produit de type service sur un mouvement !,0
-error,stock.move,0,You can only delete draft or cancelled moves!,Vous pouvez  supprimer que des mouvement qui sont  annulé ou dans l'état brouillon !,0
-error,stock.packing.in,0,Incoming Moves must have input location as destination location!,Les mouvement entrants doivent avoir un emplacement de type réception comme destination,0
-error,stock.packing.in,0,Inventory Moves must have input location as source location!,Les mouvement internes doivent avoir un emplacement de type réception comme origine,0
-error,stock.packing.in,0,Inventory Moves must have output location as destination location!,Les mouvement internes doivent avoir un emplacement de type expédition comme destination,0
-error,stock.packing.in,0,Outgoing Moves must have output location as source location!,Les mouvement sortants doivent avoir un emplacement de type expédition comme origine,0
+error,stock.move,0,You can only delete draft or cancelled moves!,Vous pouvez  supprimer que des mouvements qui sont  annulés ou a l'état de brouillon !,0
+error,stock.packing.in,0,Incoming Moves must have input location as destination location!,Les mouvements entrants doivent avoir un emplacement de type réception comme destination,0
+error,stock.packing.in,0,Inventory Moves must have input location as source location!,Les mouvements internes doivent avoir un emplacement de type réception comme origine,0
+error,stock.packing.in,0,Inventory Moves must have output location as destination location!,Les mouvements internes doivent avoir un emplacement de type expédition comme destination,0
+error,stock.packing.in,0,Outgoing Moves must have output location as source location!,Les mouvements sortants doivent avoir un emplacement de type expédition comme origine,0
 field,"party.address,delivery",0,Delivery,Livraison,0
 field,"party.party,customer_location",0,Customer Location,Emplacement client,0
 field,"party.party,supplier_location",0,Supplier Location,Emplacement fournisseur,0
@@ -21,7 +21,7 @@ field,"product.product,forecast_quantity",0,Forecast Quantity,Quantités prévis
 field,"product.product,quantity",0,Quantity,Quantité,0
 field,"product.template,forecast_quantity",0,Forecast Quantity,Quantité prévue,0
 field,"product.template,quantity",0,Quantity,Quantité,0
-field,"stock.inventory,company",0,Company,Companie,0
+field,"stock.inventory,company",0,Company,Compagnie,0
 field,"stock.inventory,date",0,Date,Date,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Quantité attendue,0
 field,"stock.inventory.line,inventory",0,Inventory,Inventaire,0
@@ -46,10 +46,10 @@ field,"stock.location,output_location",0,Output,Expédition,0
 field,"stock.location,parent",0,Parent,Parent,0
 field,"stock.location,quantity",0,Quantity,Quantité,0
 field,"stock.location,right",0,Right,Droit,0
-field,"stock.location_stock_date.init,forecast_date",0,At Date,À la date,0
+field,"stock.location_stock_date.init,forecast_date",0,At Date,A la date,0
 field,"stock.location,storage_location",0,Storage,Magasin,0
 field,"stock.location,type",0,Location type,Type d'emplacement,0
-field,"stock.move,company",0,Company,Companie,0
+field,"stock.move,company",0,Company,Compagnie,0
 field,"stock.move,currency",0,Currency,Devise,0
 field,"stock.move,effective_date",0,Effective Date,Date effective,0
 field,"stock.move,from_location",0,From Location,Origine,0
@@ -97,8 +97,8 @@ field,"stock.packing.out,reference",0,Reference,Référence,0
 field,"stock.packing.out,state",0,State,État,0
 field,"stock.packing.out,warehouse",0,Warehouse,Entrepôt,0
 field,"stock.product_stock_date.init,forecast_date",0,At Date,À la date,0
-help,"party.party,customer_location",0,The default destination location when sending products to the party.,L'emplacement de destination par défaut quand des produits sont envoyé vers ce tiers.,0
-help,"party.party,supplier_location",0,The default source location when receiving products from the party.,L'emplacement d'origine par défaut quand des produits sont reçu depuis ce tiers.,0
+help,"party.party,customer_location",0,The default destination location when sending products to the party.,L'emplacement de destination par défaut quand des produits sont envoyés vers ce tiers.,0
+help,"party.party,supplier_location",0,The default source location when receiving products from the party.,L'emplacement d'origine par défaut quand des produits sont reçus depuis ce tiers.,0
 help,"stock.location_stock_date.init,forecast_date",0,"Allow to compute expected stock quantities for this date.
 * An empty value is an infinite date in the future.
 * A date in the past will provide historical values.","Permet de calculer les quantités en stock attendues pour cette date.
@@ -220,8 +220,7 @@ selection,"stock.packing.out,state",0,Draft,Brouillon,0
 selection,"stock.packing.out,state",0,Packed,Emballé,0
 selection,"stock.packing.out,state",0,Waiting,En attente,0
 view,party.party,0,_Stock,_Stocks,0
-view,product.product,0,Products,Produits,0
-view,stock.inventory,0,All generated moves will be cancelled!,Tous les mouvements généré vont être annulés,0
+view,stock.inventory,0,All generated moves will be cancelled!,Tous les mouvements générés vont être annulés,0
 view,stock.inventory,0,Cancel,Annuler,0
 view,stock.inventory,0,Complete Inventory,Compléter l'inventaire,0
 view,stock.inventory,0,Confirm,Confirmer,0
