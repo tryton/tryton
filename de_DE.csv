@@ -52,7 +52,7 @@ error,account.period,0,You can not create a period on a closed fiscal year!,In e
 error,account.period,0,You can not have 2 periods that overlaps!,Buchungszeiträume dürfen sich nicht überschneiden!,0
 error,account.period,0,You can not modify/delete a period with moves!,"Ein Buchungszeitraum, der Buchungen enthält, kann nicht gelöscht werden!",0
 error,account.period,0,You can not open a period from a closed fiscal year!,Perioden eines abgeschlossenen Geschäftsjahres können nicht geöffnet werden,0
-error,account.period,0,You must have different post move sequence per fiscal year!,Jedes Geschäftsjahr muss eine eigene Sequenz für Buchungsfestschreibungen haben!,0
+error,account.period,0,You must have different post move sequences per fiscal year and in the same company!,Verschiedene Geschäftsjahre eines Unternehmens erfordern unterschiedliche Sequenzen für Buchungsfestschreibungen!,0
 error,account.tax.code,0,You can not create recursive tax code!,Es können keine rekursiven Steuerkennziffern angelegt werden!,0
 error,account.tax.code.template,0,You can not create recursive tax code!,Es können keine rekursiven Steuerkennziffern angelegt werden!,0
 error,account.tax.group,0,Code must be unique!,Der Code kann nicht mehrfach vergeben werden!,0
@@ -363,7 +363,7 @@ model,"account.account.type.template,name",account_type_template_liability_curre
 model,"account.account.type.template,name",account_type_template_asset_current_receivable,Receivable,Forderungen,0
 model,"account.account.type.template,name",account_type_template_revenue,Revenue,Ertrag,0
 model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Verbindlichkeiten aus Steuern,0
-model,"account.journal,name",journal_cash,Cash,Barvermögen,0
+model,"account.journal,name",journal_cash,Cash,Zahlung,0
 model,"account.journal,name",journal_expense,Expense,Aufwand,0
 model,"account.journal,name",journal_revenue,Revenue,Ertrag,0
 model,"account.journal,name",journal_stock,Stock,Lager,0
@@ -401,8 +401,8 @@ model,"ir.action,name",act_journal_type_form,Journal Types,Journaltypen,0
 model,"ir.action,name",act_journal_view_form,Journal Views,Journal Ansichten,0
 model,"ir.action,name",wizard_open_aged_balance,Open Aged Balance,Fälligkeitsliste öffnen,0
 model,"ir.action,name",wizard_open_balance_sheet,Open Balance Sheet,Bilanzbogen öffnen,0
-model,"ir.action,name",act_open_chart_account,Open Chart of Account,Kontenplan öffnen,0
-model,"ir.action,name",act_open_chart_code,Open Chart of Tax Code,Tabelle Steuerkennziffern öffnen,0
+model,"ir.action,name",act_open_chart_account,Open Chart of Accounts,Kontenplan öffnen,0
+model,"ir.action,name",act_open_chart_code,Open Chart of Tax Codes,Tabelle Steuerkennziffern öffnen,0
 model,"ir.action,name",wizard_open_income_statement,Open Income Statement,Gewinn- und Verlustrechnung öffnen,0
 model,"ir.action,name",act_open_journal,Open Journal,Journal öffnen,0
 model,"ir.action,name",act_open_account,Open Move Account,Buchung Konto öffnen,0
@@ -460,8 +460,8 @@ model,"ir.ui.menu,name",menu_journal_period_tree,Journals - Periods,Journale - B
 model,"ir.ui.menu,name",menu_journal_period_tree2,Journals - Periods,Journale - Buchungszeiträume,0
 model,"ir.ui.menu,name",menu_journal_type_form,Journal Types,Journaltypen,0
 model,"ir.ui.menu,name",menu_journal_view_form,Journal Views,Journal Ansichten,0
-model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Account,Kontenplan öffnen,0
-model,"ir.ui.menu,name",menu_open_chart_code,Open Chart of Tax Code,Tabelle Steuerkennziffern öffnen,0
+model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Accounts,Kontenplan öffnen,0
+model,"ir.ui.menu,name",menu_open_chart_code,Open Chart of Tax Codes,Tabelle Steuerkennziffern öffnen,0
 model,"ir.ui.menu,name",menu_open_journal,Open Journal,Journal öffnen,0
 model,"ir.ui.menu,name",menu_period_form,Periods,Buchungszeiträume,0
 model,"ir.ui.menu,name",menu_print_general_journal,Print General Journal,Journal Allgemein drucken,0
@@ -609,6 +609,7 @@ view,account.account.open_aged_balance.init,0,Open Aged Balance,Fälligkeitslist
 view,account.account.open_aged_balance.init,0,Terms,Zahlungsfristen,0
 view,account.account.open_balance_sheet.init,0,Open Balance Sheet,Bilanzbogen öffnen,0
 view,account.account.open_chart_account.init,0,Open Chart of Account,Kontenplan öffnen,0
+view,account.account.open_chart_account.init,0,Open Chart of Accounts,Kontenplan öffnen,0
 view,account.account.open_income_statement.init,0,Open Income Statement,Gewinn- und Verlustrechnung öffnen,0
 view,account.account.open_third_party_balance.init,0,Open Third Party Balance,Offene Postenliste öffnen,0
 view,account.account.print_general_ledger.init,0,Print General Ledger,Kontenblätter drucken,0
@@ -621,13 +622,16 @@ view,account.account.type,0,Balance Sheet,Bilanzbogen,0
 view,account.account.type,0,Income Statement,Gewinn- und Verlustrechnung,0
 view,account.account.type.template,0,Account Types Templates,Vorlagen für Kontentypen,0
 view,account.account.type.template,0,Account Type Template,Vorlage für Kontentyp,0
+view,account.fiscalyear,0,Are you sure to close fiscal year?,Wollen Sie das Geschäftsjahr wirklich abschließen?,0
 view,account.fiscalyear,0,Close,Geschäftsjahr abschließen,0
+view,account.fiscalyear,0,Close Fiscal Year,Geschäftsjahr abschließen,0
 view,account.fiscalyear,0,Create 3 Months Periods,Quartale erstellen,0
 view,account.fiscalyear,0,Create Monthly Periods,Monatliche Buchungszeiträume erstellen,0
 view,account.fiscalyear,0,Fiscal Year,Geschäftsjahr,0
 view,account.fiscalyear,0,Fiscal Years,Geschäftsjahre,0
 view,account.fiscalyear,0,Periods,Buchungszeiträume,0
 view,account.fiscalyear,0,Re-Open,Wiedereröffnen,0
+view,account.fiscalyear,0,Re-Open Fiscal Year,Geschäftsjahr wiedereröffnen,0
 view,account.fiscalyear,0,Sequences,Sequenzen,0
 view,account.fiscalyear.close_fiscalyear.init,0,Close Fiscal Year,Geschäftsjahr abschließen,0
 view,account.journal,0,General Information,Allgemein,0
@@ -674,6 +678,7 @@ view,account.tax.code.template,0,Tax Code Template,Vorlage für Steuerkennziffer
 view,account.tax.line,0,Account Tax Line,Steuerzeile Konto,0
 view,account.tax.line,0,Account Tax Lines,Steuerzeilen Konto,0
 view,account.tax.open_chart_code.init,0,Open Chart Of Tax Code,Tabelle Steuerkennziffern öffnen,0
+view,account.tax.open_chart_code.init,0,Open Chart Of Tax Codes,Tabelle Steuerkennziffern öffnen,0
 view,account.tax.template,0,Code,Kennziffer,0
 view,account.tax.template,0,Credit Note,Gutschrift,0
 view,account.tax.template,0,General Information,Allgemein,0
@@ -682,7 +687,6 @@ view,account.tax.template,0,Taxes,Steuern,0
 view,account.tax.template,0,Taxes Templates,Steuervorlagen,0
 view,account.tax.template,0,Tax Template,Steuervorlage,0
 view,party.party,0,Account,Konten,0
-view,party.party,0,_Accounting,_Buchhaltung,0
 view,party.party,0,Taxes,Steuern,0
 wizard_button,"account.account.create_chart_account,account,create_account",0,Create,Erstellen,0
 wizard_button,"account.account.create_chart_account,account,end",0,Cancel,Abbrechen,0
