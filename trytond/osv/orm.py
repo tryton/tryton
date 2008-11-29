@@ -2805,8 +2805,8 @@ class ORM(object):
                     order_by, tables, clause = obj._order_calc(cursor, user,
                             field_name, otype, context=context)
                     table_join = 'LEFT JOIN "' + table_name + '" ON ' \
-                            '%s.%s = %s.id' % (self._table, link_field,
-                                    table_name)
+                            '%s.id = %s.%s' % (table_name, self._table,
+                                    link_field)
                     if table_join not in tables:
                         tables.append(table_join)
                     return order_by, tables, clause
@@ -2827,14 +2827,14 @@ class ORM(object):
                             field_name, otype, context=context)
 
                     table_join = 'LEFT JOIN "' + table_name + '" ON ' \
-                            '%s.%s = %s.id' % \
-                            (self._table, link_field, table_name)
+                            '%s.id = %s.%s' % \
+                            (table_name, self._table, link_field)
                     if table_join not in tables:
                         tables.append(table_join)
 
                     table_join2 = 'LEFT JOIN "' + table_name2 + '" ON ' \
-                            '%s.%s = %s.id' % \
-                            (obj._table, link_field2, table_name2)
+                            '%s.id = %s.%s' % \
+                            (table_name2, obj._table, link_field2)
                     if table_join2 not in tables:
                         tables.append(table_join2)
                     return order_by, tables, clause
@@ -2856,8 +2856,8 @@ class ORM(object):
             order_by, tables, clause = obj._order_calc(cursor, user, field,
                     otype, context=context)
             table_join = 'LEFT JOIN "' + table_name + '" ON ' \
-                    '%s.%s = %s.id' % \
-                    (self._table, link_field, table_name)
+                    '%s.id = %s.%s' % \
+                    (table_name, self._table, link_field)
             if table_join not in tables:
                 tables.append(table_join)
             return order_by, tables, clause
