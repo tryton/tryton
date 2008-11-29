@@ -24,7 +24,7 @@ field,"party.category,parent",0,Parent,Parent,0
 field,"party.contact_mechanism,active",0,Active,Actif,0
 field,"party.contact_mechanism,comment",0,Comment,Commentaire,0
 field,"party.contact_mechanism,email",0,E-Mail,E-mail,0
-field,"party.contact_mechanism,party",0,Party,Tier,0
+field,"party.contact_mechanism,party",0,Party,Tiers,0
 field,"party.contact_mechanism,sequence",0,Sequence,Séquence,0
 field,"party.contact_mechanism,sip",0,SIP,SIP,0
 field,"party.contact_mechanism,skype",0,Skype,Skype,0
