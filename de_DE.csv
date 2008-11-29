@@ -305,7 +305,7 @@ field,"party.party,supplier_vat",0,Supplier VAT,USt als Lieferant,0
 field,"party.party,vat",0,VAT,USt. als Kunde,0
 help,"account.account.open_aged_balance.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_balance_sheet.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
-help,"account.account.open_chart_account.init,fiscalyear",0,Keep empty for all open fiscal year,Leer lassen für alle Geschäftsjahre,0
+help,"account.account.open_chart_account.init,fiscalyear",0,Keep empty for all open fiscal year,Leer lassen für alle geöffneten Geschäftsjahre,0
 help,"account.account.open_chart_account.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_income_statement.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_third_party_balance.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
@@ -334,7 +334,7 @@ help,"account.tax,description",0,The name that will be used in reports,Der Name 
 help,"account.tax,invoice_account",0,Keep empty to use the default invoice account,"Leer lassen, wenn das Standardrechnungskonto zum Zug kommen soll",0
 help,"account.tax,invoice_base_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
-help,"account.tax.open_chart_code.init,fiscalyear",0,Keep empty for all open fiscal year,Leer lassen für alle Geschäftsjahre,0
+help,"account.tax.open_chart_code.init,fiscalyear",0,Keep empty for all open fiscal year,Leer lassen für alle geöffneten Geschäftsjahre,0
 help,"account.tax.open_chart_code.init,periods",0,Keep empty for all periods of all open fiscal year,Leer lassen für alle Buchungszeiträume aller geöffneten Geschäftsjahre,0
 help,"account.tax,percentage",0,In %,In %,0
 help,"account.tax,sequence",0,Use to order the taxes,Wird für die Reihenfolge der Steuern verwendet,0
