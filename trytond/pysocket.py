@@ -31,6 +31,7 @@ class PySocket:
         self.ssl = False
         self.ssl_sock = None
         self.connected = False
+        self.buffer = ''
 
     def connect(self, host, port=False):
         if not port:
@@ -79,6 +80,7 @@ class PySocket:
         self.hostname = hostname
         self.port = port
         self.connected = True
+        self.buffer = ''
 
     def disconnect(self):
         try:
@@ -104,6 +106,7 @@ class PySocket:
             pass
         self.sock = None
         self.connected = False
+        self.buffer = ''
 
     def reconnect(self):
         if self.host and self.port:
@@ -113,14 +116,8 @@ class PySocket:
     def send(self, msg, exception=False, traceback=None):
         msg = cPickle.dumps([msg, traceback], protocol=2)
         size = len(msg)
-        if self.ssl:
-            self.ssl_sock.write(str(size) + ' ')
-        else:
-            self.sock.send(str(size) + ' ')
-        if self.ssl:
-            self.ssl_sock.write(exception and "1" or "0")
-        else:
-            self.sock.send(exception and "1" or "0")
+        msg = str(size) + ' ' + (exception and "1" or "0") + msg
+        size = len(msg)
         totalsent = 0
         while totalsent < size:
             if self.ssl:
@@ -132,12 +129,12 @@ class PySocket:
             totalsent = totalsent + sent
 
     def receive(self):
-        buf = ''
+        buf = self.buffer
         while len(buf) < MAX_LENGHT:
             if self.ssl:
-                chunk = self.ssl_sock.read(MAX_LENGHT - len(buf))
+                chunk = self.ssl_sock.read(4096)
             else:
-                chunk = self.sock.recv(MAX_LENGHT - len(buf))
+                chunk = self.sock.recv(4096)
             if chunk == '':
                 raise RuntimeError, "socket connection broken"
             buf += chunk
@@ -147,9 +144,9 @@ class PySocket:
         size = int(size)
         if msg == '':
             if self.ssl:
-                msg = self.ssl_sock.read(1)
+                msg = self.ssl_sock.read(4096)
             else:
-                msg = self.sock.recv(1)
+                msg = self.sock.recv(4096)
             if msg == '':
                 raise RuntimeError, "socket connection broken"
         if msg[0] != "0":
@@ -165,6 +162,8 @@ class PySocket:
             if chunk == '':
                 raise RuntimeError, "socket connection broken"
             msg = msg + chunk
+        self.buffer = msg[size:]
+        msg = msg[:size]
         msgio = StringIO.StringIO(msg)
         unpickler = cPickle.Unpickler(msgio)
         # cPickle mechanism to import instances (pickle differs here)
