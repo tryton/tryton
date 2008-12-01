@@ -420,9 +420,10 @@ class Module(OSV):
                     'shortdesc': tryton.get('name_' + code, ''),
                     }, context=ctx)
             res += 1
-            name2module[mod_name] = self.browse(cursor, user, new_id,
+            name2module.setdefault(mod_name, {})
+            name2module[mod_name]['en_US'] = self.browse(cursor, user, new_id,
                     context=context)
-            self._update_dependencies(cursor, user, name2module[mod_name],
+            self._update_dependencies(cursor, user, name2module[mod_name]['en_US'],
                     tryton.get('depends', []), context=context)
         return res
 
