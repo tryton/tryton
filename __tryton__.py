@@ -5,7 +5,7 @@
     'name_de_DE': 'Buchhaltung Artikel',
     'name_fr_FR': 'Compte produit',
     'name_es_ES': 'Contabilidad de Inventarios',
-    'version': '1.0.1',
+    'version': '1.0.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
