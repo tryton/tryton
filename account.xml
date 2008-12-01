@@ -285,7 +285,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="kind"/>
                     <field name="kind"/>
                     <label name="type"/>
-                    <field name="type" widget="selection"/>
+                    <field name="type"/>
                     <newline/>
                     <label name="deferral"/>
                     <field name="deferral"/>
@@ -499,7 +499,7 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="kind"/>
                             <field name="kind"/>
                             <label name="type"/>
-                            <field name="type" widget="selection"/>
+                            <field name="type"/>
                             <label name="deferral"/>
                             <field name="deferral"/>
                             <label name="reconcile"/>
