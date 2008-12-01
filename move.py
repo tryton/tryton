@@ -1094,7 +1094,8 @@ class Line(OSV):
         if isinstance(ids, (int, long)):
             ids = [ids]
 
-        self.check_modify(cursor, user, ids, context=context)
+        if len(vals) > 1 or 'reconciliation' not in vals:
+            self.check_modify(cursor, user, ids, context=context)
         lines = self.browse(cursor, user, ids, context=context)
         move_ids = [x.move.id for x in lines]
         res = super(Line, self).write(cursor, user, ids, vals, context=context)
