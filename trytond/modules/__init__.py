@@ -279,21 +279,21 @@ def load_module_graph(cursor, graph, pool, pool_wizard, pool_report, lang=None):
     cursor.commit()
 
 def get_module_list():
-    module_list = []
+    module_list = set()
     if os.path.exists(MODULES_PATH) and os.path.isdir(MODULES_PATH):
         for file in os.listdir(MODULES_PATH):
             if os.path.isdir(OPJ(MODULES_PATH, file)):
-                module_list.append(file)
+                module_list.add(file)
             elif file[-4:] == '.zip':
-                module_list.append(file)
+                module_list.add(file)
     for ep in pkg_resources.iter_entry_points('trytond.modules'):
          mod_name = ep.module_name.split('.')[-1]
-         module_list.append(mod_name)
-    module_list.append('ir')
-    module_list.append('workflow')
-    module_list.append('res')
-    module_list.append('webdav')
-    return module_list
+         module_list.add(mod_name)
+    module_list.add('ir')
+    module_list.add('workflow')
+    module_list.add('res')
+    module_list.add('webdav')
+    return list(module_list)
 
 def register_classes():
     import trytond.ir
