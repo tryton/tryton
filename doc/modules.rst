@@ -1,3 +1,6 @@
+
+:tocdepth: 2
+
 Modules
 #######
 
