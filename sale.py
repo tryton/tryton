@@ -1322,7 +1322,7 @@ class Product(OSV):
                 res[product.id] = uom_obj.compute_price(cursor, user,
                         product.default_uom, res[product.id], uom,
                         context=context)
-            if currency:
+            if currency and user2.company:
                 if user2.company.currency.id != currency.id:
                     res[product.id] = currency_obj.compute(cursor, user,
                             user2.company.currency, res[product.id],
