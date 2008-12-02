@@ -132,6 +132,9 @@ class Journal(OSV):
     def default_update_posted(self, cursor, user, context=None):
         return False
 
+    def default_sequence(self, cursor, user, context=None):
+        return False
+
     def get_types(self, cursor, user, context=None):
         type_obj = self.pool.get('account.journal.type')
         type_ids = type_obj.search(cursor, user, [], context=context)
