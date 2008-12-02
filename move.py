@@ -105,7 +105,8 @@ class Move(OSV):
             if isinstance(ids, (int, long)):
                 ids = [ids]
             for move in self.browse(cursor, user, ids, context=context):
-                if move.type == 'input' and move.state != 'done' \
+                if move.from_location.type == 'supplier' \
+                        and move.state != 'done' \
                         and move.product.cost_price_method == 'fifo':
                     self._update_product_cost_price(cursor, user,
                             move.product.id, move.quantity, move.uom,
