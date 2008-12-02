@@ -12,12 +12,12 @@ Location
 Location are generic places where products are physically or virtually
 stored. There are six types of locations:
 
-Storage
+* Storage
 
   Storage locations define real places where products are stored.
 
 
-Warehouse
+* Warehouse
 
   Warehouses are meta-locations which define input, storage and output
   locations. These locations are all of type Storage. Input and Output
@@ -26,17 +26,17 @@ Warehouse
   biggest location where products are stored for middle or long
   periods of time.
 
-Customer
+* Customer
 
   Customer locations are virtual locations accumulating products that
   have been sent to customers.
 
-Supplier
+* Supplier
 
   Supplier locations are virtual locations accumulating products that have
   been received from suppliers.
 
-Lost And Found
+* Lost And Found
 
   Lost And Found locations collects inventory gaps. See
   :ref:inventory for details.
@@ -57,22 +57,22 @@ actually made).
 
 A move can be in one of this states:
 
-Draft
+* Draft
 
   The initial state, used when the move is created and to define
   future stock movement that are planned, but still subject to
   modifications.
 
-Assigned
+* Assigned
 
   An assigned move allow to reserve some products. Thus preventing
   other user to assign them.
 
-Done
+* Done
 
   The move is in state Done when the real movement is made.
 
-Cancel
+* Cancel
 
   A cancelled move will be ignored by the system. Only Draft or
   Assigned move can be cancelled. To revert a move in state Done, an
@@ -105,12 +105,12 @@ A supplier packing is used when products are received from a
 supplier. It is mainly composed of a party (the supplier), a location
 (the warehouse in which the products are coming) and two list of moves:
 
-Incoming moves
+* Incoming moves
 
   The moves between the supplier location and the input location
   (as defined on the warehouse).
 
-Inventory moves
+* Inventory moves
 
   The inventory moves are between the input location and the storage
   location (or one of his child locations).
@@ -118,20 +118,20 @@ Inventory moves
 
 The supplier packing can be in one of this states:
 
-Draft
+* Draft
 
   Incoming moves and inventory moves (if they exist) are in draft.
 
-Received
+* Received
 
   Incoming move are set in state Done, inventory moves are created if
   necessary.
 
-Done
+* Done
 
   Inventory moves are in state Done.
 
-Cancel
+* Cancel
 
   All moves are cancelled.
 
@@ -143,12 +143,12 @@ A customer packing is used for sending products to customer. It is
 mainly composed of a party (the customer), a location (the warehouse
 out of which the product are going) and two list of moves:
 
-Inventory moves:
+* Inventory moves
 
   The moves between a storage location and the output location of the
   warehouse
 
-Outgoing moves
+* Outgoing moves
 
   The moves between the output location of the warehouse and a
   customer location.
@@ -156,33 +156,33 @@ Outgoing moves
 
 The customer packing can be in one of this states:
 
-Draft
+* Draft
 
   Outgoing moves and inventory moves (if they exist) are in draft.
 
-Waiting
+* Waiting
 
   When a customer packing is set to waiting, the inventory moves are
   created (or completed) to balance the outgoing moves. The waiting
   state also means that the packing should be processed.
 
-Assigned
+* Assigned
 
   The assigned state is when products have been assigned (or reserved)
   from the storage locations.
 
-Packed
+* Packed
 
   The packed state is when the inventory moves have been made, i.e
   when the products have been physically moved to the outgoing
   locations.
 
-Done
+* Done
 
   The packing is Done when the outgoing moves have been made,
   e.g. when a truck left the warehouse.
 
-Cancel
+* Cancel
 
   A packing which is not yet completed (not in state Done) can be
   cancelled at any time. This also cancel all the moves.
@@ -196,23 +196,23 @@ inside the company. It is mainly composed of two locations and a list
 of moves. It can be in one of these states:
 
 
-Draft
+* Draft
 
   The moves (if they exist) are in draft.
 
-Waiting
+* Waiting
 
   The waiting state means that the packing should be processed.
 
-Assigned
+* Assigned
 
   The assigned state is when products have been assigned.
 
-Done
+* Done
 
   The packing is Done when the moves have been made.
 
-Cancel
+* Cancel
 
   A packing which is not yet completed (not in state Done) can be
   cancelled at any time. This also cancel all the moves.
