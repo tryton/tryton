@@ -13,22 +13,22 @@ is linked to a warehouse and eventually a supplier, it contains a
 ideal purchase date and an expected supply date. A purchase request
 can be in one of these states:
 
-Draft
+* Draft
 
   A draft purchase request is a request that is not linked to a
   purchase.
 
-Purchased
+* Purchased
 
   A Purchased request is a request that is linked to a purchase which
   is not in state Done or Cancel.
 
-Done
+* Done
 
   A purchase request is in state Done if it is linked to a Purchase
   which is in state Done.
 
-Cancel
+* Cancel
 
   A purchase request is in state Cancel if it is linked to a Purchase
   which is cancelled.
@@ -49,14 +49,14 @@ a location. The minimum quantity is the quantity that should be always
 be reached when re-ordering. An order point also define a type which
 can be:
 
-Internal
+* Internal
 
   An Internal order point is defined on a Storage location, it also
   define a provisioning location. If the minimum quantity is reached
   it will result in the creation of an internal packing between the
   provisioning location and the Storage location.
 
-Purchase
+* Purchase
 
   A Purchase order point is defined on a warehouse location. If the
   minimal quantity is reached on the warehouse it will result in a
