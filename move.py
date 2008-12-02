@@ -16,7 +16,8 @@ class Move(OSV):
     _description = __doc__
     product = fields.Many2One("product.product", "Product", required=True,
             select=1, states=STATES,
-            on_change=['product', 'type', 'currency', 'uom', 'company'],
+            on_change=['product', 'currency', 'uom', 'company',
+                'from_location', 'to_location'],
             domain=[('type', '!=', 'service')])
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,
             domain="[('category', '=', " \
@@ -28,12 +29,10 @@ class Move(OSV):
             digits="(16, unit_digits)", states=STATES)
     from_location = fields.Many2One("stock.location", "From Location", select=1,
             required=True, states=STATES,
-            domain=[('type', '!=', 'warehouse')],
-            on_change=['from_location', 'to_location'])
+            domain=[('type', '!=', 'warehouse')])
     to_location = fields.Many2One("stock.location", "To Location", select=1,
             required=True, states=STATES,
-            domain=[('type', '!=', 'warehouse')],
-            on_change=['from_location', 'to_location'])
+            domain=[('type', '!=', 'warehouse')])
     packing_in = fields.Many2One('stock.packing.in', 'Supplier Packing',
             readonly=True, select=1)
     packing_out = fields.Many2One('stock.packing.out', 'Customer Packing',
@@ -54,22 +53,19 @@ class Move(OSV):
             })
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
-                'invisible': "type not in ('input', 'output')",
-                'required': "type in ('input', 'output')",
-                'readonly': "state not in ('draft',)",
+                'invisible': "not unit_price_required",
+                'required': "unit_price_required",
+                'readonly': "state != 'draft'",
             })
     currency = fields.Many2One('currency.currency', 'Currency',
             states={
-                'invisible': "type not in ('input', 'output')",
-                'required': "type in ('input', 'output')",
-                'readonly': "state not in ('draft',)",
+                'invisible': "not unit_price_required",
+                'required': "unit_price_required",
+                'readonly': "state != 'draft'",
             })
-    type = fields.Function('get_type', type='selection',
-            selection=[
-                ('input', 'Input'),
-                ('output', 'Output'),
-                ('internal', 'Internal'),
-            ], string='Type')
+    unit_price_required = fields.Function('get_unit_price_required',
+            type='boolean', string='Unit Price Required',
+            on_change_with=['from_location', 'to_location'])
 
     def __init__(self):
         super(Move, self).__init__()
@@ -147,6 +143,95 @@ class Move(OSV):
                     context=context)[0]
         return False
 
+    def on_change_with_unit_digits(self, cursor, user, ids, vals,
+            context=None):
+        uom_obj = self.pool.get('product.uom')
+        if vals.get('uom'):
+            uom = uom_obj.browse(cursor, user, vals['uom'],
+                    context=context)
+            return uom.digits
+        return 2
+
+    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for move in self.browse(cursor, user, ids, context=context):
+            res[move.id] = move.uom.digits
+        return res
+
+    def on_change_product(self, cursor, user, ids, vals, context=None):
+        product_obj = self.pool.get('product.product')
+        uom_obj = self.pool.get('product.uom')
+        currency_obj = self.pool.get('currency.currency')
+        company_obj = self.pool.get('company.company')
+        location_obj = self.pool.get('stock.location')
+
+        if context is None:
+            context = {}
+
+        res = {
+            'unit_price': Decimal('0.0'),
+        }
+        if vals.get('product'):
+            product = product_obj.browse(cursor, user, vals['product'],
+                    context=context)
+            res['uom'] = uom_obj.name_get(cursor, user,
+                    product.default_uom.id, context=context)[0]
+            res['unit_digits'] = product.default_uom.digits
+            to_location = None
+            if vals.get('to_location'):
+                to_location = location_obj.browse(cursor, user,
+                        vals['to_location'], context=context)
+            if to_location and to_location.type == 'storage':
+                unit_price = product.cost_price
+                if vals.get('uom') and vals['uom'] != product.default_uom.id:
+                    uom = uom_obj.browse(cursor, user, vals['uom'],
+                            context=context)
+                    unit_price = uom_obj.compute_price(cursor, user,
+                            product.default_uom, unit_price, uom,
+                            context=context)
+                if vals.get('currency') and vals.get('company'):
+                    currency = currency_obj.browse(cursor, user,
+                            vals['currency'], context=context)
+                    company = company_obj.browse(cursor, user,
+                            vals['company'], context=context)
+                    unit_price = currency_obj.compute(cursor, user,
+                            company.currency, unit_price, currency,
+                            context=context)
+                res['unit_price'] = unit_price
+        return res
+
+    def on_change_with_unit_price_required(self, cursor, user, ids, vals,
+            context=None):
+        location_obj = self.pool.get('stock.location')
+        if vals.get('from_location'):
+            from_location = location_obj.browse(cursor, user,
+                    vals['from_location'], context=context)
+            if from_location.type == 'supplier':
+                return True
+        if vals.get('to_location'):
+            to_location = location_obj.browse(cursor, user,
+                    vals['to_location'], context=context)
+            if to_location.type == 'customer':
+                return True
+        return False
+
+    def get_unit_price_required(self, cursor, user, ids, name, arg,
+            context=None):
+        res = {}
+        for move in self.browse(cursor, user, ids, context=context):
+            res[move.id] = False
+            if move.from_location.type == 'supplier':
+                res[move.id] = True
+            if move.to_location.type == 'customer':
+                res[move.id] = True
+        return res
+
+    def check_product_type(self, cursor, user, ids):
+        for move in self.browse(cursor, user, ids):
+            if move.product.type == 'service':
+                return False
+        return True
+
     def name_search(self, cursor, user, name='', args=None, operator='ilike',
                     context=None, limit=None):
         if not args:
@@ -169,93 +254,6 @@ class Move(OSV):
                  "%s%s %s" % (m.quantity, m.uom.symbol, pid2name[m.product.id]))
                 )
         return res
-
-    def get_type(self, cursor, user, ids, name, args, context=None):
-        res = {}
-        for move in self.browse(cursor, user, ids, context=context):
-            res[move.id] = 'internal'
-            if move.from_location.type == 'supplier':
-                res[move.id] = 'input'
-            if move.to_location.type == 'customer':
-                res[move.id] = 'output'
-        return res
-
-    def on_change_with_unit_digits(self, cursor, user, ids, vals,
-            context=None):
-        uom_obj = self.pool.get('product.uom')
-        if vals.get('uom'):
-            uom = uom_obj.browse(cursor, user, vals['uom'],
-                    context=context)
-            return uom.digits
-        return 2
-
-    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
-        res = {}
-        for move in self.browse(cursor, user, ids, context=context):
-            res[move.id] = move.uom.digits
-        return res
-
-    def on_change_product(self, cursor, user, ids, vals, context=None):
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
-        currency_obj = self.pool.get('currency.currency')
-        company_obj = self.pool.get('company.company')
-        if context is None:
-            context = {}
-        res = {'unit_price': Decimal('0.0')}
-        if vals.get('product'):
-            product = product_obj.browse(cursor, user, vals['product'],
-                    context=context)
-            res['uom'] = uom_obj.name_get(cursor, user,
-                    product.default_uom.id, context=context)[0]
-            res['unit_digits'] = product.default_uom.digits
-            if vals.get('type', 'internal') == 'input':
-                unit_price = product.cost_price
-                if vals.get('uom') and vals['uom'] != product.default_uom.id:
-                    uom = uom_obj.browse(cursor, user, vals['uom'],
-                            context=context)
-                    unit_price = uom_obj.compute_price(cursor, user,
-                            product.default_uom, unit_price, uom,
-                            context=context)
-                if vals.get('currency') and vals.get('company'):
-                    currency = currency_obj.browse(cursor, user,
-                            vals['currency'], context=context)
-                    company = company_obj.browse(cursor, user,
-                            vals['company'], context=context)
-                    unit_price = currency_obj.compute(cursor, user,
-                            company.currency, unit_price, currency,
-                            context=context)
-                res['unit_price'] = unit_price
-        return res
-
-    def _on_change_location(self, cursor, user, ids, vals, context=None):
-        location_obj = self.pool.get('stock.location')
-        res = {'type': 'internal'}
-        if vals.get('from_location'):
-            location = location_obj.browse(cursor, user, vals['from_location'],
-                    context=context)
-            if location.type == 'supplier':
-                res['type'] = 'input'
-        if vals.get('to_location'):
-            location = location_obj.browse(cursor, user, vals['to_location'],
-                    context=context)
-            if location.type == 'customer':
-                res['type'] = 'output'
-        return res
-
-    def check_product_type(self, cursor, user, ids):
-        for move in self.browse(cursor, user, ids):
-            if move.product.type == 'service':
-                return False
-        return True
-
-    def on_change_from_location(self, cursor, user, ids, vals, context=None):
-        return self._on_change_location(cursor, user, ids, vals,
-                context=context)
-
-    def on_change_to_location(self, cursor, user, ids, vals, context=None):
-        return self._on_change_location(cursor, user, ids, vals,
-                context=context)
 
     def search(self, cursor, user, args, offset=0, limit=None, order=None,
             context=None, count=False, query_string=False):
@@ -366,7 +364,8 @@ class Move(OSV):
             for move in self.browse(cursor, user, ids, context=context):
                 if vals['state'] == 'cancel':
                     vals['effective_date'] = False
-                    if move.type == 'input' and move.state != 'cancel' \
+                    if move.from_location.type == 'supplier' \
+                            and move.state != 'cancel' \
                             and move.product.cost_price_method == 'average':
                         self._update_product_cost_price(
                             cursor, user, move.product.id, -move.quantity,
@@ -387,7 +386,8 @@ class Move(OSV):
                                 context=context)
                     vals['effective_date'] = datetime.date.today()
 
-                    if move.type == 'input' and move.state != 'done' \
+                    if move.from_location.type == 'supplier' \
+                            and move.state != 'done' \
                             and move.product.cost_price_method == 'average':
                         self._update_product_cost_price(
                             cursor, user, move.product.id, move.quantity,
