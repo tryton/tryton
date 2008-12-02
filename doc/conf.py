@@ -86,7 +86,7 @@ html_style = 'default.css'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = None
+html_title = 'Tryton 1.0: Server Documentation'
 
 # The name of an image file (within the static path) to place at the top of
 # the sidebar.
