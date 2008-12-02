@@ -66,8 +66,6 @@
                     <field name="date"/>
                     <field name="start_balance"/>
                     <field name="end_balance"/>
-                    <field name="company"/>
-                    <field name="currency"/>
                     <field name="state"/>
                 </tree>
                 ]]>
