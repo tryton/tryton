@@ -94,29 +94,62 @@ class Move(OSV):
                         vals['product'], vals['quantity'], vals['uom'],
                         vals['unit_price'], vals['currency'],
                         context=context)
+            if to_location.type == 'supplier' \
+                    and product.cost_price_method == 'fifo':
+                self._update_product_cost_price(cursor, user,
+                        vals['product'], -vals['quantity'], vals['uom'],
+                        vals['unit_price'], vals['currency'],
+                        context=context)
             if to_location.type != 'storage' \
+                    and to_location.type != 'supplier' \
                     and product.cost_price_method == 'fifo':
                 self._update_fifo_out_product_cost_price(cursor, user, product,
                         vals['quantity'], vals['uom'], context=context)
         return super(Move, self).create(cursor, user, vals, context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         if 'state' in vals and vals['state'] == 'done':
-            if isinstance(ids, (int, long)):
-                ids = [ids]
             for move in self.browse(cursor, user, ids, context=context):
-                if move.from_location.type == 'supplier' \
-                        and move.state != 'done' \
-                        and move.product.cost_price_method == 'fifo':
-                    self._update_product_cost_price(cursor, user,
-                            move.product.id, move.quantity, move.uom,
-                            move.unit_price, move.currency, move.company,
-                            context=context)
-                if move.to_location.type != 'storage' \
-                        and move.product.cost_price_method == 'fifo':
-                    self._update_fifo_out_product_cost_price(cursor, user,
-                            move.product, move.quantity, move.uom.id,
-                            context=context)
+                if vals['state'] == 'cancel':
+                    if move.from_location.type == 'supplier' \
+                            and move.state != 'cancel' \
+                            and move.product.cost_price_method == 'fifo':
+                        self._update_product_cost_price(cursor, user,
+                                move.product.id, -move.quantity, move.uom,
+                                move.unit_price, move.currency, move.company,
+                                context=context)
+                    if move.to_location.type == 'supplier' \
+                            and move.state != 'cancel' \
+                            and move.product.cost_price_method == 'fifo':
+                        self._update_product_cost_price(cursor, user,
+                                move.product.id, move.quantity, move.uom,
+                                move.unit_price, move.currency, move.company,
+                                context=context)
+                    #XXX update cost price for out move cancelled
+
+                elif vals['state'] == 'done':
+                    if move.from_location.type == 'supplier' \
+                            and move.state != 'done' \
+                            and move.product.cost_price_method == 'fifo':
+                        self._update_product_cost_price(cursor, user,
+                                move.product.id, move.quantity, move.uom,
+                                move.unit_price, move.currency, move.company,
+                                context=context)
+                    if move.to_location.type == 'supplier' \
+                            and move.state != 'done' \
+                            and move.product.cost_price_method == 'fifo':
+                        self._update_product_cost_price(cursor, user,
+                                move.product.id, -move.quantity, move.uom,
+                                move.unit_price, move.currency, move.company,
+                                context=context)
+                    if move.to_location.type != 'storage' \
+                            and to_location.type != 'supplier' \
+                            and move.product.cost_price_method == 'fifo':
+                        self._update_fifo_out_product_cost_price(cursor, user,
+                                move.product, move.quantity, move.uom.id,
+                                context=context)
         return super(Move, self).write(cursor, user, ids, vals, context=context)
 
     def delete(self, cursor, user, ids, context=None):
