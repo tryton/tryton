@@ -223,7 +223,7 @@ odt,account.invoice,0,VAT:,UST-ID:,0
 selection,"account.invoice.line,invoice_type",0,Credit Note,Kundengutschrift,0
 selection,"account.invoice.line,invoice_type",0,Invoice,Lieferantenrechnung,0
 selection,"account.invoice.line,invoice_type",0,Supplier Credit Note,Lieferantengutschrift,0
-selection,"account.invoice.line,invoice_type",0,Supplier Invoice,Kundenrechnung,0
+selection,"account.invoice.line,invoice_type",0,Supplier Invoice,Lieferantenrechnung,0
 selection,"account.invoice.line,type",0,Comment,Kommentar,0
 selection,"account.invoice.line,type",0,Line,Position,0
 selection,"account.invoice.line,type",0,Subtotal,Zwischensumme,0
