@@ -344,12 +344,20 @@ class Move(OSV):
                 vals['effective_date'] = datetime.date.today()
             from_location = location_obj.browse(cursor, user,
                     vals['from_location'], context=context)
+            to_location = location_obj.browse(cursor, user,
+                    vals['to_location'], context=context)
             product = product_obj.browse(cursor, user, vals['product'],
                     context=context)
             if from_location.type == 'supplier' \
                     and product.cost_price_method == 'average':
                 self._update_product_cost_price(
                     cursor, user, vals['product'], vals['quantity'],
+                    vals['uom'], vals['unit_price'], vals['currency'],
+                    vals['company'], context=context)
+            if to_location.type == 'supplier' \
+                    and product.cost_price_method == 'average':
+                self._update_product_cost_price(
+                    cursor, user, vals['product'], -vals['quantity'],
                     vals['uom'], vals['unit_price'], vals['currency'],
                     vals['company'], context=context)
         return super(Move, self).create(cursor, user, vals, context=context)
@@ -372,6 +380,13 @@ class Move(OSV):
                             cursor, user, move.product.id, -move.quantity,
                             move.uom, move.unit_price, move.currency,
                             move.company, context=context)
+                    if move.to_location.type == 'supplier' \
+                            and move.state != 'cancel' \
+                            and move.product.cost_price_method == 'average':
+                        self._update_product_cost_price(
+                            cursor, user, move.product.id, move.quantity,
+                            move.uom, move.unit_price, move.currency,
+                            move.company, context=context)
 
                 elif vals['state'] == 'draft':
                     if move.state == 'done':
@@ -392,6 +407,13 @@ class Move(OSV):
                             and move.product.cost_price_method == 'average':
                         self._update_product_cost_price(
                             cursor, user, move.product.id, move.quantity,
+                            move.uom, move.unit_price, move.currency,
+                            move.company, context=context)
+                    if move.to_location.type == 'supplier' \
+                            and move.state != 'done' \
+                            and move.product.cost_price_method == 'average':
+                        self._update_product_cost_price(
+                            cursor, user, move.product.id, -move.quantity,
                             move.uom, move.unit_price, move.currency,
                             move.company, context=context)
 
