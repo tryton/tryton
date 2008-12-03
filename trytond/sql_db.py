@@ -269,7 +269,7 @@ class table_handler:
                          "LEFT JOIN pg_class cl on (co.conrelid = cl.oid) "\
                          "LEFT JOIN pg_class cl2 on (co.confrelid = cl2.oid) "\
                          "LEFT JOIN pg_attribute at on (co.conkey[1] = at.attnum) "\
-                       "WHERE cl.relname = %s",
+                       "WHERE cl.relname = %s AND at.attrelid = cl.oid",
                        (self.table_name,))
         self.constraint = []
         self.fk_deltype = {}
