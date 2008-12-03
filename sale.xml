@@ -790,12 +790,6 @@
             <field name="operand">User/Current Company</field>
             <field name="rule_group" ref="rule_group_sale"/>
         </record>
-        <record model="ir.rule" id="rule_sale2">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'sale.sale')]"/>
-            <field name="operator">=</field>
-            <field name="operand">False</field>
-            <field name="rule_group" ref="rule_group_sale"/>
-        </record>
 
     </data>
 </tryton>
