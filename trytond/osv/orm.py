@@ -1528,6 +1528,8 @@ class ORM(object):
         if values == None:
             return False
         for line in cursor.fetchall():
+            if not line[0]:
+                continue
             xml_values = eval(line[0], {
                 'Decimal': Decimal,
                 'datetime': datetime,
