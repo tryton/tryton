@@ -815,5 +815,23 @@ this repository contains the full copyright notices and license terms. -->
             action="act_open_supplier"
             icon="tryton-list"
             id="menu_supplier"/>
+
+        <record model="ir.rule.group" id="rule_group_purchase">
+            <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_purchase1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'purchase.purchase')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_purchase"/>
+        </record>
+        <record model="ir.rule" id="rule_purchase2">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'purchase.purchase')]"/>
+            <field name="operator">=</field>
+            <field name="operand">False</field>
+            <field name="rule_group" ref="rule_group_purchase"/>
+        </record>
+
     </data>
 </tryton>
