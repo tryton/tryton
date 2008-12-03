@@ -826,12 +826,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="operand">User/Current Company</field>
             <field name="rule_group" ref="rule_group_purchase"/>
         </record>
-        <record model="ir.rule" id="rule_purchase2">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'purchase.purchase')]"/>
-            <field name="operator">=</field>
-            <field name="operand">False</field>
-            <field name="rule_group" ref="rule_group_purchase"/>
-        </record>
 
     </data>
 </tryton>
