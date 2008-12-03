@@ -1,3 +1,4 @@
+* Handle average price for products return to supplier
 * Added stock_destinations keyword on products_by_location context to
   filter moves to a set of destinations.
 * Allow egg installation
