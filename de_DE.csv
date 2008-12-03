@@ -39,7 +39,7 @@ field,"sale.sale,invoice_state",0,Invoice State,Rechnungsstatus,0
 field,"sale.sale,lines",0,Lines,Positionen,0
 field,"sale.sale,moves",0,Moves,Bewegungen,0
 field,"sale.sale,packing_address",0,Packing Address,Lieferadresse,0
-field,"sale.sale,packing_done",0,Packing Done,Lieferschein erledigt,0
+field,"sale.sale,packing_done",0,Packing Done,Gepackt,0
 field,"sale.sale,packing_exception",0,Packings Exception,Lieferungsvorbehalt,0
 field,"sale.sale,packing_method",0,Packing Method,Liefermethode,0
 field,"sale.sale,packings",0,Packings,Lieferscheine,0
