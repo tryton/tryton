@@ -293,7 +293,7 @@ class Invoice(OSV):
             relation='account.move.line', string='Lines to Pay')
     payment_lines = fields.Many2Many('account.move.line',
             'invoice_payment_lines_rel', 'invoice', 'line', readonly=True,
-            string='Payment Lines')
+            string='Payment Lines', ondelete_target='CASCADE')
     amount_to_pay_today = fields.Function('get_amount_to_pay',
             type='numeric', digits="(16, currency_digits)",
             string='Amount to Pay Today')
