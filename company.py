@@ -151,7 +151,8 @@ Property()
 
 class Sequence(OSV):
     _name = 'ir.sequence'
-    company = fields.Many2One('company.company', 'Company')
+    company = fields.Many2One('company.company', 'Company',
+            domain="[('id', '=', context.get('company', False))]")
 
     def __init__(self):
         super(Sequence, self).__init__()
