@@ -1585,12 +1585,21 @@ class InvoiceLine(OSV):
             res['amount_second_currency'] = Decimal('0.0')
             res['second_currency'] = False
         if line.invoice.type in ('in_invoice', 'out_credit_note'):
-            res['debit'] = amount
-            res['credit'] = Decimal('0.0')
+            if amount >= Decimal('0.0'):
+                res['debit'] = amount
+                res['credit'] = Decimal('0.0')
+            else:
+                res['debit'] = Decimal('0.0')
+                res['credit'] = - amount
+                res['amount_second_currency'] = - res['amount_second_currency']
         else:
-            res['debit'] = Decimal('0.0')
-            res['credit'] = amount
-            res['amount_second_currency'] = - res['amount_second_currency']
+            if amount >= Decimal('0.0'):
+                res['debit'] = Decimal('0.0')
+                res['credit'] = amount
+                res['amount_second_currency'] = - res['amount_second_currency']
+            else:
+                res['debit'] = - amount
+                res['credit'] = Decimal('0.0')
         res['account'] = line.account.id
         res['party'] = line.invoice.party.id
         computed_taxes = self._compute_taxes(cursor, user, line,
