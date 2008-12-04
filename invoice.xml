@@ -201,6 +201,7 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="amount"/>
                                     <field name="sequence" tree_invisible="1"/>
                                     <field name="unit_digits" tree_invisible="1"/>
+                                    <field name="currency_digits" tree_invisible="1"/>
                                 </tree>
                             </field>
                             <group col="1" colspan="2">
@@ -870,6 +871,7 @@ this repository contains the full copyright notices and license terms. -->
                     <separator name="taxes" colspan="4"/>
                     <field name="taxes" colspan="4"/>
                     <field name="unit_digits" invisible="1" colspan="4"/>
+                    <field name="currency_digits" invisible="1" colspan="4"/>
                 </form>
                 ]]>
             </field>
@@ -891,6 +893,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="taxes"/>
                     <field name="amount"/>
                     <field name="unit_digits" tree_invisible="1"/>
+                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
