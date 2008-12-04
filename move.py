@@ -97,26 +97,74 @@ class Move(OSV):
             return context.get('planned_date')
 
     def default_to_location(self, cursor, user, context=None):
-        if context and context.get('to_location'):
-            return context.get('to_location')
-        if context and context.get('warehouse') and context.get('type'):
-            wh_location = self.pool.get('stock.location').browse(
-                cursor, user, context['warehouse'], context=context)
-            field = {'inventory_in': 'storage_location',
-                     'inventory_out': 'output_location',
-                     'incoming': 'input_location',}.get(context['type'])
-            return field and wh_location[field].id or False
+        location_obj = self.pool.get('stock.location')
+        party_obj = self.pool.get('party.party')
+        res = False
+
+        if context is None:
+            context = {}
+
+        warehouse = None
+        if context.get('warehouse'):
+            warehouse = location_obj.browse(cursor, user, context['warehouse'],
+                    context=context)
+
+        if context.get('type', '') == 'inventory_in':
+            if warehouse:
+                res = warehouse.storage_location.id
+        elif context.get('type', '') == 'inventory_out':
+            if warehouse:
+                res = warehouse.output_location.id
+        elif context.get('type', '') == 'incoming':
+            if warehouse:
+                res = warehouse.input_location.id
+        elif context.get('type', '') == 'outgoing':
+            if context.get('customer'):
+                customer = party_obj.browse(cursor, user, context['customer'],
+                        context=context)
+                res = customer.customer_location.id
+
+        if context.get('to_location'):
+            res = context.get('to_location')
+
+        if res:
+            res = location_obj.name_get(cursor, user, res, context=context)[0]
+        return res
 
     def default_from_location(self, cursor, user, context=None):
-        if context and context.get('from_location'):
-            return context.get('from_location')
-        if context and context.get('warehouse') and context.get('type'):
-            wh_location = self.pool.get('stock.location').browse(
-                cursor, user, context['warehouse'], context=context)
-            field = {'inventory_in': 'input_location',
-                     'inventory_out': 'storage_location',
-                     'outgoing': 'output_location',}.get(context['type'])
-            return field and wh_location[field].id or False
+        location_obj = self.pool.get('stock.location')
+        party_obj = self.pool.get('party.party')
+        res = False
+
+        if context is None:
+            context = {}
+
+        warehouse = None
+        if context.get('warehouse'):
+            warehouse = location_obj.browse(cursor, user, context['warehouse'],
+                    context=context)
+
+        if context.get('type', '') == 'inventory_in':
+            if warehouse:
+                res = warehouse.input_location.id
+        elif context.get('type', '') == 'inventory_out':
+            if warehouse:
+                res = warehouse.storage_location.id
+        elif context.get('type', '') == 'outgoing':
+            if warehouse:
+                res = warehouse.output_location.id
+        elif context.get('type', '') == 'incoming':
+            if context.get('supplier'):
+                supplier = party_obj.browse(cursor, user, context['supplier'],
+                        context=context)
+                res = supplier.supplier_location.id
+
+        if context.get('from_location'):
+            res = context.get('from_location')
+
+        if res:
+            res = location_obj.name_get(cursor, user, res, context=context)[0]
+        return res
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
