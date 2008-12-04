@@ -113,6 +113,10 @@ class PackingIn(OSV):
     def set_incoming_moves(self, cursor, user, packing_id, name, value, arg,
             context=None):
         move_obj = self.pool.get('stock.move')
+
+        if not value:
+            return
+
         packing = self.browse(cursor, user, packing_id, context=context)
         for act in value:
             if act[0] == 'create':
@@ -156,6 +160,10 @@ class PackingIn(OSV):
     def set_inventory_moves(self, cursor, user, packing_id, name, value, arg,
             context=None):
         move_obj = self.pool.get('stock.move')
+
+        if not value:
+            return
+
         packing = self.browse(cursor, user, packing_id, context=context)
         for act in value:
             if act[0] == 'create':
@@ -381,6 +389,10 @@ class PackingOut(OSV):
     def set_outgoing_moves(self, cursor, user, packing_id, name, value, arg,
             context=None):
         move_obj = self.pool.get('stock.move')
+
+        if not value:
+            return
+
         packing = self.browse(cursor, user, packing_id, context=context)
         for act in value:
             if act[0] == 'create':
@@ -425,6 +437,10 @@ class PackingOut(OSV):
     def set_inventory_moves(self, cursor, user, packing_id, name, value, arg,
             context=None):
         move_obj = self.pool.get('stock.move')
+
+        if not value:
+            return
+
         packing = self.browse(cursor, user, packing_id, context=context)
         for act in value:
             if act[0] == 'create':
