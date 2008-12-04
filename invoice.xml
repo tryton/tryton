@@ -22,11 +22,6 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="currency"/>
                         <field name="currency"/>
                     </xpath>
-                    <xpath
-                        expr="/form/field[@name=&quot;unit_digits&quot;]"
-                        position="after">
-                        <field name="currency_digits" invisible="1" colspan="4"/>
-                    </xpath>
                 </data>
                 ]]>
             </field>
@@ -49,7 +44,6 @@ this repository contains the full copyright notices and license terms. -->
                         position="after">
                         <field name="currency" select="2"/>
                         <field name="company" select="2"/>
-                        <field name="currency_digits" tree_invisible="1"/>
                     </xpath>
                 </data>
                 ]]>
