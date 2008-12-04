@@ -17,6 +17,7 @@ class Invoice(OSV):
                     "('party', '=', party)," \
                     "('currency', '=', currency)," \
                     "('company', '=', company)," \
+                    "('invoice', '=', False)," \
                     "]"
         else:
             for clause in (
@@ -24,6 +25,7 @@ class Invoice(OSV):
                     "('party', '=', party)",
                     "('currency', '=', currency)",
                     "('company', '=', company)",
+                    "('invoice', '=', False)",
                     ):
                 if clause not in self.lines.add_remove:
                     sep = ''
