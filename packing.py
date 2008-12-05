@@ -247,13 +247,13 @@ class PackingIn(OSV):
         return super(PackingIn, self).create(
             cursor, user, values, context=context)
 
-    def copy(self, cursor, user, packing_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
             default = {}
         default = default.copy()
         default['inventory_moves']= False
         default['incoming_moves']= False
-        return super(PackingIn, self).copy(cursor, user, packing_id,
+        return super(PackingIn, self).copy(cursor, user, ids,
                 default=default, context=context)
 
     def _get_inventory_moves(self, cursor, user, incoming_move, context=None):
@@ -638,14 +638,15 @@ class PackingOut(OSV):
         values['code'] = self.pool.get('ir.sequence').get(
             cursor, user, 'stock.packing.out', context=context)
         return super(PackingOut, self).create(cursor, user, values,
-                                              context=context)
-    def copy(self, cursor, user, packing_id, default=None, context=None):
+                context=context)
+
+    def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
             default = {}
         default = default.copy()
         default['inventory_moves']= False
         default['outgoing_moves']= False
-        return super(PackingOut, self).copy(cursor, user, packing_id,
+        return super(PackingOut, self).copy(cursor, user, ids,
                 default=default, context=context)
 
 

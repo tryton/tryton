@@ -96,25 +96,36 @@ class Inventory(OSV):
              'date': date_obj.today(cursor, user, context=context)},
             context=context)
 
-    def copy(self, cursor, user, inventory_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         date_obj = self.pool.get('ir.date')
         line_obj = self.pool.get('stock.inventory.line')
+
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
+
         if default is None:
             default = {}
         default = default.copy()
         default['date'] = date_obj.today(cursor, user, context=context)
         default['lines'] = False
-        new_id = super(Inventory, self).copy(
-            cursor, user, inventory_id, default=default, context=context)
-        inventory = self.browse(cursor, user, inventory_id, context=context)
-        for line in inventory.lines:
-            line_obj.copy(
-                cursor, user, line.id, default={
-                    'inventory': new_id,
-                    'move': False},
-                context=context)
-        self.complete_lines(cursor, user, [new_id], context=context)
-        return new_id
+
+        new_ids = []
+        for inventory in self.browse(cursor, user, ids, context=context):
+            new_id = super(Inventory, self).copy(cursor, user, inventory.id,
+                    default=default, context=context)
+            line_obj.copy(cursor, user, [x.id for x in inventory.lines],
+                    default={
+                        'inventory': new_id,
+                        'move': False,
+                        }, context=context)
+            new_ids.append(new_id)
+        self.complete_lines(cursor, user, new_ids, context=context)
+
+        if int_id:
+            return new_ids[0]
+        return new_ids
 
     def complete_lines(self, cursor, user, ids, context=None):
         line_obj = self.pool.get('stock.inventory.line')
