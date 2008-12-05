@@ -5,6 +5,7 @@
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 from decimal import Decimal
+from trytond.tools import Cache
 
 
 class Group(OSV):
@@ -642,6 +643,37 @@ class Tax(OSV):
                     price_unit, context=context))
         return res
 
+    def delete(self, cursor, user, ids, context=None):
+        # Restart the cache
+        self.sort_taxes(cursor.dbname)
+        return super(Tax, self).delete(cursor, user, ids, context=context)
+
+    def create(self, cursor, user, vals, context=None):
+        # Restart the cache
+        self.sort_taxes(cursor.dbname)
+        return super(Tax, self).create(cursor, user, vals, context=context)
+
+    def write(self, cursor, user, ids, vals, context=None):
+        # Restart the cache
+        self.sort_taxes(cursor.dbname)
+        return super(Tax, self).write(cursor, user, ids, vals, context=context)
+
+    def sort_taxes(self, cursor, user, ids, context=None):
+        '''
+        Return a list of taxe ids sorted
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param ids: a list of tax ids
+        :param context: the context
+        :return: a list of tax ids sorted
+        '''
+        return self.search(cursor, user, [
+            ('id', 'in', ids),
+            ], order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)
+
+    sort_taxes = Cache('account_tax.sort_taxes')(sort_taxes)
+
     def compute(self, cursor, user, ids, price_unit, quantity, context=None):
         '''
         Compute taxes for price_unit and quantity.
@@ -650,9 +682,7 @@ class Tax(OSV):
             amount
             tax
         '''
-        ids = self.search(cursor, user, [
-            ('id', 'in', ids),
-            ], order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)
+        ids = self.sort_taxes(cursor, user, ids, context=context)
         taxes = self.browse(cursor, user, ids, context=context)
         res = self._unit_compute(cursor, user, taxes, price_unit,
                 context=context)
@@ -707,9 +737,7 @@ class Tax(OSV):
             amount
             tax
         '''
-        ids = self.search(cursor, user, [
-            ('id', 'in', ids),
-            ], order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)
+        ids = self.sort_taxes(cursor, user, ids, context=context)
         taxes = self.browse(cursor, user, ids, context=context)
         taxes.reverse()
         res = self._unit_compute_inv(cursor, user, taxes, price_unit,
