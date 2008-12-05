@@ -126,20 +126,28 @@ class InvoiceLine(OSV):
         selection_obj.delete(cursor, user, selection_ids, context=context)
         return res
 
-    def copy(self, cursor, user, line_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         selection_obj = self.pool.get('analytic_account.account.selection')
 
-        if default is None:
-            default = {}
-        default = default.copy()
-        line = self.browse(cursor, user, line_id, context=context)
-        selection_id = False
-        if line.analytic_accounts:
-            selection_id = selection_obj.copy(cursor, user,
-                    line.analytic_accounts.id, context=context)
-        default['analytic_accounts'] = selection_id
-        return super(InvoiceLine, self).copy(cursor, user, line_id,
+        new_ids = super(InvoiceLine, self).copy(cursor, user, ids,
                 default=default, context=context)
+
+        int_id = False
+        if isinstance(new_ids, (int, long)):
+            int_id = True
+            new_ids = [new_ids]
+
+        for line in self.browse(cursor, user, new_ids, context=context):
+            if line.analytic_accounts:
+                selection_id = selection_obj.copy(cursor, user,
+                        line.analytic_accounts.id, context=context)
+                self.write(cursor, user, line.id, {
+                    'analytic_accounts': selection_id,
+                    }, context=context)
+
+        if int_id:
+            return new_ids[0]
+        return new_ids
 
     def get_move_line(self, cursor, user, line, context=None):
         res = super(InvoiceLine, self).get_move_line(cursor, user, line,
