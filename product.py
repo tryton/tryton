@@ -132,12 +132,12 @@ class Product(OSV):
 
         return res
 
-    def copy(self, cursor, user, product_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
             default = {}
         default = default.copy()
         default['products'] = False
-        return super(Product, self).copy(cursor, user, product_id,
+        return super(Product, self).copy(cursor, user, ids,
                 default=default, context=context)
 
 Product()
