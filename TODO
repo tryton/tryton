@@ -1,3 +1,5 @@
 - Use a wizard for assignation on customer packing and internal packing,
   to display error message if not all lines were assigned (issue540).
 - Handle withdraw packing.
+- Add an indexed period on move with automatic creation and default duration
+  defined on company
