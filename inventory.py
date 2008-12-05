@@ -137,9 +137,12 @@ class Inventory(OSV):
 
             # Index some data
             product2uom = {}
-            for product in product_obj.browse(
-                cursor, user, [line[1] for line in pbl], context=context):
+            product2type = {}
+            for product in product_obj.browse(cursor, user,
+                    [line[1] for line in pbl], context=context):
                 product2uom[product.id] = product.default_uom.id
+                product2type[product.id] = product.type
+
             product_qty = {}
             for (location, product), quantity in pbl.iteritems():
                 product_qty[product] = (quantity, product2uom[product])
@@ -169,6 +172,8 @@ class Inventory(OSV):
 
             # Create lines if needed
             for product in product_qty:
+                if product2type[product] != 'stockable':
+                    continue
                 quantity, uom_id = product_qty[product]
                 values = {
                     'product': product,
