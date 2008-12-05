@@ -780,5 +780,16 @@
             </field>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_sale">
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_sale1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'sale.sale')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_sale"/>
+        </record>
+
     </data>
 </tryton>
