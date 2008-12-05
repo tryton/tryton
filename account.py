@@ -791,21 +791,11 @@ class Account(OSV):
                 or unicode(r[self._rec_name])) for r in self.read(cursor, user, ids,
                     [self._rec_name, 'code'], context=context, load='_classic_write')]
 
-    def copy(self, cursor, user, object_id, default=None, context=None):
-        account = self.browse(cursor, user, object_id, context=context)
-        default['parent'] = False
-        if account:
-            #Also duplicate all childs
-            new_child_ids = []
-            for child in account.childs:
-                new_child_ids.append(
-                        self.copy(cursor, user, child.id, default,
-                            context=context))
-            default['childs'] = [('set', new_child_ids)]
-        else:
-            default['childs'] = False
-        return super(Account, self).copy(cursor, user, object_id, default,
+    def copy(self, cursor, user, ids, default=None, context=None):
+        res = super(Account, self).copy(cursor, user, ids, default=default,
                 context=context)
+        self._rebuild_tree(cursor, user, 'parent', False, 0)
+        return res
 
     def write(self, cursor, user, ids, vals, context=None):
         if not vals.get('active', True):
