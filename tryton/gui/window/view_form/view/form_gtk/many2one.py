@@ -163,7 +163,7 @@ class Many2One(WidgetInterface):
         self.wid_text = gtk.Entry()
         self.wid_text.set_property('width-chars', 13)
         self.wid_text.set_property('activates_default', True)
-        self.wid_text.connect('key_press_event', self.sig_key_press)
+        self.wid_text.connect_after('key_press_event', self.sig_key_press)
         self.wid_text.connect('populate-popup', self._populate_popup)
         self.wid_text.connect_after('changed', self.sig_changed)
         self.changed = True
@@ -207,14 +207,14 @@ class Many2One(WidgetInterface):
         self.liststore = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING)
         if attrs.get('completion', False):
             try:
-                ids = rpc.execute('object', 'execute',
+                names = rpc.execute('object', 'execute',
                         self.attrs['relation'], 'name_search', '', [],
                         'ilike', rpc.CONTEXT)
             except Exception, exception:
                 common.process_exception(exception, self._window)
-                ids = []
-            if ids:
-                self.load_completion(ids)
+                names = []
+            if names:
+                self.load_completion(names)
 
     def grab_focus(self):
         return self.wid_text.grab_focus()
@@ -225,56 +225,23 @@ class Many2One(WidgetInterface):
     def _focus_in(self):
         return WidgetInterface._focus_in(self)
 
-    def load_completion(self, ids):
+    def load_completion(self, names):
         self.completion.set_match_func(self.match_func, None)
         self.completion.connect("match-selected", self.on_completion_match)
         self.wid_text.set_completion(self.completion)
         self.completion.set_model(self.liststore)
-        self.completion.set_text_column(0)
-        for i, word in enumerate(ids):
-            if word[1][0] == '[':
-                i = word[1].find(']')
-                str1 = word[1][1:i]
-                str2 = word[1][i+2:]
-                self.liststore.append([("%s %s" % (str1, str2)), str2])
-            else:
-                self.liststore.append([word[1], word[1]])
+        self.completion.set_text_column(1)
+        for object_id, name in names:
+            self.liststore.append([object_id, name])
 
     def match_func(self, completion, key_string, iter, data):
         model = self.completion.get_model()
-        modelstr = model[iter][0].lower()
+        modelstr = model[iter][1].lower()
         return modelstr.startswith(key_string)
 
     def on_completion_match(self, completion, model, iter):
-        name = model[iter][1]
-        domain = self._view.modelfield.domain_get(self._view.model)
-        context = rpc.CONTEXT.copy()
-        context.update(self._view.modelfield.context_get(self._view.model))
-        try:
-            ids = rpc.execute('object', 'execute',
-                    self.attrs['relation'], 'name_search', name, domain, 'ilike',
-                    context)
-        except Exception, exception:
-            common.process_exception(exception, self._window)
-            return False
-        if len(ids)==1:
-            self._view.modelfield.set_client(self._view.model, ids[0])
-            self.display(self._view.model, self._view.modelfield)
-        else:
-            win = WinSearch(self.attrs['relation'], sel_multi=False,
-                    ids = [x[0] for x in ids], context=context,
-                    domain=domain, window=self._window,
-                    views_preload=self.attrs.get('views', {}))
-            ids = win.go()
-            if ids:
-                try:
-                    name = rpc.execute('object', 'execute',
-                            self.attrs['relation'], 'name_get', [ids[0]],
-                            rpc.CONTEXT)[0]
-                except Exception, exception:
-                    common.process_exception(exception, self._window)
-                    return False
-                self._view.modelfield.set_client(self._view.model, name)
+        self._view.modelfield.set_client(self._view.model, model[iter][0])
+        self.display(self._view.model, self._view.modelfield)
         return True
 
     def _readonly_set(self, value):
