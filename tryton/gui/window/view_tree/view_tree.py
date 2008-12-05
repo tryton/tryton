@@ -9,7 +9,7 @@ import tryton.rpc as rpc
 from parse import Parse
 import datetime as DT
 import locale
-from tryton.common import DT_FORMAT, DHM_FORMAT
+from tryton.common import DT_FORMAT, DHM_FORMAT, HM_FORMAT
 import tryton.common as common
 from tryton.translate import date_format
 import mx.DateTime
@@ -78,7 +78,7 @@ class ViewTreeModel(gtk.GenericTreeModel, gtk.TreeSortable):
                 display_format = date_format() + ' ' + HM_FORMAT
                 for obj in res_ids:
                     if obj[field]:
-                        date = mx.DateTime.strptime(obj[field], DHM_FORMAT)
+                        date = mx.DateTime.strptime(str(obj[field]), DHM_FORMAT)
                         if 'timezone' in rpc.CONTEXT:
                             try:
                                 import pytz
