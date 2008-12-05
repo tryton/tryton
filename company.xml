@@ -22,7 +22,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="vat_number"/>
                     <field name="vat_number"/>
                     <notebook colspan="4">
-                        <page string="_General">
+                        <page string="General">
                             <field name="addresses" mode="form,tree" colspan="4" width="600">
                                 <tree string="Addresses" sequence="sequence">
                                     <field name="sequence" tree_invisible="1"/>
@@ -33,11 +33,11 @@ this repository contains the full copyright notices and license terms. -->
                                 </tree>
                             </field>
                         </page>
-                        <page string="_Employees" col="1">
+                        <page string="Employees" col="1">
                             <separator name="employees"/>
                             <field name="employees"/>
                         </page>
-                        <page string="_Reports" col="1">
+                        <page string="Reports" col="1">
                             <separator name="header"/>
                             <field name="header"/>
                             <separator name="footer"/>
@@ -294,7 +294,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="active"/>
                     <field name="active" xexpand="0" width="100"/>
                     <notebook colspan="6">
-                        <page string="_General">
+                        <page string="General">
                             <field name="addresses" mode="form,tree" colspan="4" width="600">
                                 <tree string="Addresses" sequence="sequence">
                                     <field name="sequence" tree_invisible="1"/>
