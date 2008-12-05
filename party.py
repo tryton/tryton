@@ -121,12 +121,12 @@ class Party(OSV):
             vals['code_length'] = len(vals['code'])
         return super(Party, self).write(cursor, user, ids, vals, context=context)
 
-    def copy(self, cursor, user, object_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
             default = {}
         default = default.copy()
         default['code'] = False
-        return super(Party, self).copy(cursor, user, object_id, default=default,
+        return super(Party, self).copy(cursor, user, ids, default=default,
                 context=context)
 
     def name_search(self, cursor, user, name, args=None, operator='ilike',
