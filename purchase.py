@@ -24,13 +24,15 @@ class Purchase(OSV):
                 purchase_id, context=context)
 
         purchase = self.browse(cursor, user, purchase_id, context=context)
-        for line in purchase.lines:
-            if not account_selection_obj.check_root(cursor, user,
-                    [line.analytic_accounts.id]):
-                line_name = purchase_line_obj.name_get(cursor, user,
-                        line.id, context=context)[0][1]
-                self.raise_user_error(cursor, 'analytic_account_required',
-                        (line_name, line.id), context=context)
+        if not account_selection_obj.check_root(cursor, user,
+                [x.analytic_accounts.id for x in purchase.lines]):
+            for line in purchase.lines:
+                if not account_selection_obj.check_root(cursor, user,
+                        [line.analytic_accounts.id]):
+                    line_name = purchase_line_obj.name_get(cursor, user,
+                            line.id, context=context)[0][1]
+                    self.raise_user_error(cursor, 'analytic_account_required',
+                            (line_name, line.id), context=context)
         return res
 
 Purchase()
