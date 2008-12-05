@@ -996,10 +996,15 @@ class Invoice(OSV):
                         cursor, context=context)
         return res
 
-    def copy(self, cursor, user, invoice_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         line_obj = self.pool.get('account.invoice.line')
         tax_obj = self.pool.get('account.invoice.tax')
         date_obj = self.pool.get('ir.date')
+
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
 
         if default is None:
             default = {}
@@ -1014,20 +1019,22 @@ class Invoice(OSV):
         default['taxes'] = False
         default['date'] = date_obj.today(cursor, user, context=context)
         default['lines_to_pay'] = False
-        new_id = super(Invoice, self).copy(cursor, user, invoice_id,
-                default=default, context=context)
 
-        invoice = self.browse(cursor, user, invoice_id, context=context)
-        for line in invoice.lines:
-            line_obj.copy(cursor, user, line.id, default={
+        new_ids = []
+        for invoice in self.browse(cursor, user, ids, context=context):
+            new_id = super(Invoice, self).copy(cursor, user, invoice.id,
+                    default=default, context=context)
+            line_obj.copy(cursor, user, [x.id for x in invoice.lines], default={
                 'invoice': new_id,
                 }, context=context)
-
-        for tax in invoice.taxes:
-            tax_obj.copy(cursor, user, tax.id, default={
+            tax_obj.copy(cursor, user, [x.id for x in invoice.taxes], default={
                 'invoice': new_id,
                 }, context=context)
-        return new_id
+            new_ids.append(new_id)
+
+        if int_id:
+            return new_ids[0]
+        return new_ids
 
     def check_account(self, cursor, user, ids):
         for invoice in self.browse(cursor, user, ids):
