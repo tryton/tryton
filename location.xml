@@ -179,9 +179,9 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;_Accounting&quot;]"
+                        expr="/form/notebook/page[@string=&quot;Accounting&quot;]"
                         position="after">
-                        <page string="_Stock">
+                        <page string="Stock">
                             <label name="customer_location"/>
                             <field name="customer_location"/>
                             <label name="supplier_location"/>
