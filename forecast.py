@@ -131,20 +131,32 @@ class Forecast(OSV):
         self.write(
             cursor, user, forecast_id, {'state': 'done',}, context=context)
 
-    def copy(self, cursor, user, forecast_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         line_obj = self.pool.get('stock.forecast.line')
-        default = default and default.copy() or {}
+
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
+
+        if default is None:
+            default = {}
+        default = default.copy()
         default['lines'] = False
-        new_id = super(Forecast, self).copy(
-            cursor, user, forecast_id, default=default, context=context)
-        forecast = self.browse(cursor, user, forecast_id, context=context)
-        for line in forecast.lines:
-            line_obj.copy(
-                cursor, user, line.id, default={
-                    'forecast': new_id,
-                    'moves': False},
-                context=context)
-        return new_id
+
+        new_ids = []
+        for forecast in self.browse(cursor, user, ids, context=context):
+            new_id = super(Forecast, self).copy(cursor, user, forecast.id,
+                    default=default, context=context)
+            line_obj.copy(cursor, user, [x.id for x in forecast.lines],
+                    default={
+                        'forecast': new_id,
+                    }, context=context)
+            new_ids.append(new_id)
+
+        if int_id:
+            return new_ids[0]
+        return new_ids
 Forecast()
 
 class ForecastLine(OSV):
@@ -205,6 +217,14 @@ class ForecastLine(OSV):
         for line in self.browse(cursor, user, ids, context=context):
             res[line.id] = line.product.default_uom.digits
         return res
+
+    def copy(self, cursor, user, ids, default=None, context=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['moves'] = False
+        return super(ForecastLine, self).copy(cursor, user, ids,
+                default=default, context=context)
 
     def create_moves(self, cursor, user, line, context=None):
         move_obj = self.pool.get('stock.move')
