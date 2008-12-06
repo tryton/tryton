@@ -21,7 +21,7 @@ from tryton.gui.window.dbrestore import DBRestore
 import re
 import base64
 import tryton.translate as translate
-import tryton.plugin
+import tryton.plugins
 import pango
 
 _ = gettext.gettext
@@ -1177,7 +1177,7 @@ class Main(object):
                 'ids': self.pages[page].ids_get(),
                 'id': self.pages[page].id_get(),
                 }
-        tryton.plugin.execute(datas, self.window)
+        tryton.plugins.execute(datas, self.window)
 
     @staticmethod
     def sig_quit(widget=None):

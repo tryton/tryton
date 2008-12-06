@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import common
+from tryton import common
 import os
 import sys
 import imp
@@ -8,7 +8,7 @@ import gettext
 
 _ = gettext.gettext
 
-PLUGINS_PATH = os.path.join(os.path.dirname(__file__), 'plugins')
+PLUGINS_PATH = os.path.dirname(__file__)
 if not os.path.isdir(PLUGINS_PATH):
     # try for py2exe
     PLUGINS_PATH = os.path.join(os.path.abspath(os.path.normpath(
