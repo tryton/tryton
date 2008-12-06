@@ -583,7 +583,7 @@ class Purchase(OSV):
         res = self.name_get(cursor, user, ids, context=context)
         return res
 
-    def copy(self, cursor, user, purchase_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
             default = {}
         default = default.copy()
@@ -593,8 +593,8 @@ class Purchase(OSV):
         default['invoices'] = False
         default['invoices_ignored'] = False
         default['packing_state'] = 'none'
-        return super(Purchase, self).copy(cursor, user, purchase_id,
-                default=default, context=context)
+        return super(Purchase, self).copy(cursor, user, ids, default=default,
+                context=context)
 
     def check_for_quotation(self, cursor, user, purchase_id, context=None):
         purchase = self.browse(cursor, user, purchase_id, context=context)
@@ -1051,14 +1051,14 @@ class PurchaseLine(OSV):
                         context=context)
         return [res]
 
-    def copy(self, cursor, user, line_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
             default = {}
         default = default.copy()
         default['moves'] = False
         default['moves_ignored'] = False
         default['invoice_lines'] = False
-        return super(PurchaseLine, self).copy(cursor, user, line_id,
+        return super(PurchaseLine, self).copy(cursor, user, ids,
                 default=default, context=context)
 
     def create_move(self, cursor, user, line, context=None):
