@@ -183,24 +183,34 @@ class Move(OSV):
                         context=context)
         return super(Move, self).delete(cursor, user, ids, context=context)
 
-    def copy(self, cursor, user, move_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         line_obj = self.pool.get('account.move.line')
+
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
 
         if default is None:
             default = {}
+        default = default.copy()
         default['reference'] = False
         default['state'] = self.default_state(cursor, user, context=context)
         default['post_date'] = False
-        default['line'] = False
-        new_id = super(Move, self).copy(cursor, user, move_id, default=default,
-                context=context)
+        default['lines'] = False
 
-        move = self.browse(cursor, user, move_id, context=context)
-        for line in move.lines:
-            line_obj.copy(cursor, user, line.id, default={
+        new_ids = []
+        for move in self.browse(cursor, user, ids, context=context):
+            new_id = super(Move, self).copy(cursor, user, move.id,
+                    default=default, context=context)
+            line_obj.copy(cursor, user, [x.id for x in move.lines], default={
                 'move': new_id,
                 }, context=context)
-        return new_id
+            new_ids.append(new_id)
+
+        if int_id:
+            return new_ids[0]
+        return new_ids
 
     def validate(self, cursor, user, ids, context=None):
         '''
@@ -1147,14 +1157,14 @@ class Line(OSV):
         move_obj.validate(cursor, user, [vals['move']], context=context)
         return res
 
-    def copy(self, cursor, user, object_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
             default = {}
         if 'move' not in default:
             default['move'] = False
         if 'reconciliation' not in default:
             default['reconciliation'] = False
-        return super(Line, self).copy(cursor, user, object_id, default=default,
+        return super(Line, self).copy(cursor, user, ids, default=default,
                 context=context)
 
     def view_header_get(self, cursor, user, value, view_type='form',
