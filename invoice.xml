@@ -201,6 +201,7 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="amount"/>
                                     <field name="sequence" tree_invisible="1"/>
                                     <field name="unit_digits" tree_invisible="1"/>
+                                    <field name="currency_digits" tree_invisible="1"/>
                                 </tree>
                             </field>
                             <group col="1" colspan="2">
@@ -870,6 +871,7 @@ this repository contains the full copyright notices and license terms. -->
                     <separator name="taxes" colspan="4"/>
                     <field name="taxes" colspan="4"/>
                     <field name="unit_digits" invisible="1" colspan="4"/>
+                    <field name="currency_digits" invisible="1" colspan="4"/>
                 </form>
                 ]]>
             </field>
@@ -891,6 +893,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="taxes"/>
                     <field name="amount"/>
                     <field name="unit_digits" tree_invisible="1"/>
+                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -1016,7 +1019,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;_Accounting&quot;]/field[@name=&quot;vat_number&quot;]"
+                        expr="/form/notebook/page[@string=&quot;Accounting&quot;]/field[@name=&quot;vat_number&quot;]"
                         position="after">
                         <separator string="Payment Terms" colspan="4"/>
                         <label name="payment_term"/>
@@ -1192,5 +1195,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.invoice,0</field>
             <field name="action" ref="credit_invoice"/>
         </record>
+
+        <record model="ir.rule.group" id="rule_group_invoice">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_invoice1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.invoice')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_invoice"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_invoice_line">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_invoice_line1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.invoice.line')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_invoice_line"/>
+        </record>
+
     </data>
 </tryton>

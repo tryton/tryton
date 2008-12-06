@@ -293,7 +293,7 @@ class Invoice(OSV):
             relation='account.move.line', string='Lines to Pay')
     payment_lines = fields.Many2Many('account.move.line',
             'invoice_payment_lines_rel', 'invoice', 'line', readonly=True,
-            string='Payment Lines')
+            string='Payment Lines', ondelete_target='CASCADE')
     amount_to_pay_today = fields.Function('get_amount_to_pay',
             type='numeric', digits="(16, currency_digits)",
             string='Amount to Pay Today')
@@ -996,10 +996,15 @@ class Invoice(OSV):
                         cursor, context=context)
         return res
 
-    def copy(self, cursor, user, invoice_id, default=None, context=None):
+    def copy(self, cursor, user, ids, default=None, context=None):
         line_obj = self.pool.get('account.invoice.line')
         tax_obj = self.pool.get('account.invoice.tax')
         date_obj = self.pool.get('ir.date')
+
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
 
         if default is None:
             default = {}
@@ -1014,20 +1019,22 @@ class Invoice(OSV):
         default['taxes'] = False
         default['date'] = date_obj.today(cursor, user, context=context)
         default['lines_to_pay'] = False
-        new_id = super(Invoice, self).copy(cursor, user, invoice_id,
-                default=default, context=context)
 
-        invoice = self.browse(cursor, user, invoice_id, context=context)
-        for line in invoice.lines:
-            line_obj.copy(cursor, user, line.id, default={
+        new_ids = []
+        for invoice in self.browse(cursor, user, ids, context=context):
+            new_id = super(Invoice, self).copy(cursor, user, invoice.id,
+                    default=default, context=context)
+            line_obj.copy(cursor, user, [x.id for x in invoice.lines], default={
                 'invoice': new_id,
                 }, context=context)
-
-        for tax in invoice.taxes:
-            tax_obj.copy(cursor, user, tax.id, default={
+            tax_obj.copy(cursor, user, [x.id for x in invoice.taxes], default={
                 'invoice': new_id,
                 }, context=context)
-        return new_id
+            new_ids.append(new_id)
+
+        if int_id:
+            return new_ids[0]
+        return new_ids
 
     def check_account(self, cursor, user, ids):
         for invoice in self.browse(cursor, user, ids):
@@ -1699,12 +1706,21 @@ class InvoiceLine(OSV):
             res['amount_second_currency'] = Decimal('0.0')
             res['second_currency'] = False
         if line.invoice.type in ('in_invoice', 'out_credit_note'):
-            res['debit'] = amount
-            res['credit'] = Decimal('0.0')
+            if amount >= Decimal('0.0'):
+                res['debit'] = amount
+                res['credit'] = Decimal('0.0')
+            else:
+                res['debit'] = Decimal('0.0')
+                res['credit'] = - amount
+                res['amount_second_currency'] = - res['amount_second_currency']
         else:
-            res['debit'] = Decimal('0.0')
-            res['credit'] = amount
-            res['amount_second_currency'] = - res['amount_second_currency']
+            if amount >= Decimal('0.0'):
+                res['debit'] = Decimal('0.0')
+                res['credit'] = amount
+                res['amount_second_currency'] = - res['amount_second_currency']
+            else:
+                res['debit'] = - amount
+                res['credit'] = Decimal('0.0')
         res['account'] = line.account.id
         res['party'] = line.invoice.party.id
         computed_taxes = self._compute_taxes(cursor, user, line,
@@ -1855,13 +1871,12 @@ class InvoiceTax(OSV):
             amount = currency_obj.compute(cursor, user,
                     tax.invoice.currency, tax.amount,
                     tax.invoice.company.currency, context=context)
-            res['amount_second_currency'] = tax.amount * tax.tax_sign
+            res['amount_second_currency'] = tax.amount
             res['second_currency'] = tax.invoice.currency.id
         else:
             amount = tax.amount
             res['amount_second_currency'] = Decimal('0.0')
             res['second_currency'] = False
-        amount *= tax.tax_sign
         if tax.invoice.type in ('in_invoice', 'out_credit_note'):
             if amount >= Decimal('0.0'):
                 res['debit'] = amount
@@ -1883,7 +1898,7 @@ class InvoiceTax(OSV):
         if tax.tax_code:
             res['tax_lines'] = [('create', {
                 'code': tax.tax_code.id,
-                'amount': amount,
+                'amount': amount * tax.tax_sign,
             })]
         return res
 
