@@ -1871,13 +1871,12 @@ class InvoiceTax(OSV):
             amount = currency_obj.compute(cursor, user,
                     tax.invoice.currency, tax.amount,
                     tax.invoice.company.currency, context=context)
-            res['amount_second_currency'] = tax.amount * tax.tax_sign
+            res['amount_second_currency'] = tax.amount
             res['second_currency'] = tax.invoice.currency.id
         else:
             amount = tax.amount
             res['amount_second_currency'] = Decimal('0.0')
             res['second_currency'] = False
-        amount *= tax.tax_sign
         if tax.invoice.type in ('in_invoice', 'out_credit_note'):
             if amount >= Decimal('0.0'):
                 res['debit'] = amount
@@ -1899,7 +1898,7 @@ class InvoiceTax(OSV):
         if tax.tax_code:
             res['tax_lines'] = [('create', {
                 'code': tax.tax_code.id,
-                'amount': amount,
+                'amount': amount * tax.tax_sign,
             })]
         return res
 
