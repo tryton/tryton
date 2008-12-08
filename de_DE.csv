@@ -23,7 +23,7 @@ field,"account.statement.line,statement",0,Statement,Zahlung,0
 field,"account.statement,move_lines",0,Move Lines,Buchungsposten,0
 field,"account.statement,start_balance",0,Start Balance,Anfangssaldo,0
 field,"account.statement,state",0,State,Status,0
-model,"account.journal.type,name",journal_type_bank,Statement,Zahlung,1
+model,"account.journal.type,name",journal_type_bank,Statement,Zahlung,0
 model,"ir.action,name",act_statement_form,All Statement,Alle Zahlungen,0
 model,"ir.action,name",act_draft_statement_form,Draft Statements,Zahlungsentwürfe,0
 model,"ir.action,name",act_posted_statement_form,Posted Statements,Festgeschriebene Zahlungen,0
