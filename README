@@ -1,0 +1,36 @@
+trytond_purchase_invoice_line_standalone
+=======================================
+
+The account_purchase_line_standalone module of the Tryton application platform.
+See __tryton__.py
+
+Installing
+----------
+
+See INSTALL
+
+Support
+-------
+
+If you encounter any problems with Tryton, please don't hesitate to ask
+questions on the Tryton bug tracker, mailing list, wiki or IRC channel:
+
+  http://bugs.tryton.org/
+  http://groups.tryton.org/
+  http://wiki.tryton.org/
+  irc://irc.freenode.net/tryton
+
+License
+-------
+
+See LICENSE
+
+Copyright
+---------
+
+See COPYRIGHT
+
+
+For more information please visit the Tryton web site:
+
+  http://www.tryton.org/
