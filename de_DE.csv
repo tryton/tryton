@@ -133,10 +133,12 @@ view,party.category,0,Category,Kategorie,0
 view,party.contact_mechanism,0,Contact Mechanism,Kontaktmöglichkeit,0
 view,party.contact_mechanism,0,Contact Mechanisms,Kontaktmöglichkeiten,0
 view,party.party,0,Account,Konten,0
+view,party.party,0,Accounting,Buchhaltung,0
 view,party.party,0,_Accounting,_Buchhaltung,0
 view,party.party,0,Addresses,Adressen,0
 view,party.party,0,Categories,Kategorien,0
 view,party.party,0,Contact Mechanisms,Kontaktmöglichkeiten,0
+view,party.party,0,General,Allgemein,0
 view,party.party,0,_General,_Allgemein,0
 view,party.party,0,Parties,Parteien,0
 view,party.party,0,Party,Partei,0
