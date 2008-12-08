@@ -647,6 +647,15 @@ class Purchase(OSV):
         return res
 
     def create_invoice(self, cursor, user, purchase_id, context=None):
+        '''
+        Create invoice for the purchase id
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param purchase_id: the id of the purchase
+        :param context: the context
+        :return: the id of the invoice or None
+        '''
         invoice_obj = self.pool.get('account.invoice')
         journal_obj = self.pool.get('account.journal')
         invoice_line_obj = self.pool.get('account.invoice.line')
