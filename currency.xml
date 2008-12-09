@@ -335,6 +335,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">HUF</field>
             <field name="symbol">Ft</field>
         </record>
+        <record model="currency.currency" id="gbp">
+            <field name="name">UK Pound</field>
+            <field name="code">GBP</field>
+            <field name="symbol">£</field>
+            <field name="rounding" eval="0.01"/>
+            <field name="digits" eval="2"/>
+            <field name="p_cs_precedes" eval="True"/>
+            <field name="n_cs_precedes" eval="True"/>
+            <field name="p_sep_by_space" eval="False"/>
+            <field name="n_sep_by_space" eval="False"/>
+            <field name="mon_decimal_point">.</field>
+            <field name="mon_thousands_sep">,</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="negative_sign">-</field>
+            <field name="positive_sign"></field>
+        </record>
         <record model="currency.currency" id="gip">
             <field name="name">Gibraltar Pound</field>
             <field name="code">GIP</field>
