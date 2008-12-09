@@ -88,7 +88,7 @@ class Rule(OSV):
         res = {}
         if not obj_name:
             obj_name = 'res.user'
-        res.update({"False": "False", "True": "True", "user.id": "User"})
+        res.update({"False": "False", "True": "True", "User": "user.id"})
         if not recur:
             recur = []
         obj_fields = self.pool.get(obj_name).fields_get(cursor, user)
