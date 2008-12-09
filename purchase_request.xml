@@ -14,14 +14,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <form string="Purchase Request">
+                        <separator string="Product Info" colspan="4"/>
                         <label name="product"/>
                         <field name="product"/>
-                        <label name="party"/>
-                        <field name="party"/>
+                        <newline/>
                         <label name="quantity"/>
                         <field name="quantity"/>
                         <label name="uom"/>
                         <field name="uom"/>
+                        <label name="computed_quantity"/>
+                        <field name="computed_quantity"/>
+                        <label name="computed_uom"/>
+                        <field name="computed_uom"/>
+                        <separator string="supply Info" colspan="4"/>
+                        <label name="party"/>
+                        <field name="party"/>
+                        <newline/>
                         <label name="warehouse"/>
                         <field name="warehouse"/>
                         <label name="company"/>

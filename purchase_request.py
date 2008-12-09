@@ -15,6 +15,8 @@ class PurchaseRequest(OSV):
     party = fields.Many2One('party.party', 'Party',  select=1)
     quantity = fields.Float('Quantity', required=True)
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=1)
+    computed_quantity = fields.Float('Computed Quantity', readonly=True)
+    computed_uom = fields.Many2One('product.uom', 'Computed UOM', readonly=True)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
     supply_date = fields.Date('Expected Supply Date', readonly=True)
     stock_level =  fields.Float('Stock at Supply Date', readonly=True)
@@ -251,6 +253,7 @@ class PurchaseRequest(OSV):
                         cursor, user, old_req['uom'], old_req['quantity'],
                         new_req['uom'], context=context)
                     new_req['quantity'] = max(0.0, new_req['quantity'] - quantity)
+                    new_req['computed_quantity'] = new_req['quantity']
                     old_req['quantity'] = uom_obj.compute_qty(
                         cursor, user, new_req['uom'],
                         max(0.0, quantity - new_req['quantity']),
@@ -357,6 +360,8 @@ class PurchaseRequest(OSV):
                 'party': supplier and supplier or None,
                 'quantity': quantity,
                 'uom': product.purchase_uom or product.default_uom,
+                'computed_quantity': quantity,
+                'computed_uom': product.purchase_uom or product.default_uom,
                 'purchase_date': purchase_date,
                 'supply_date': shortage_date,
                 'stock_level': product_quantity,
