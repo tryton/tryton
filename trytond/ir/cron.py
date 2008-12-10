@@ -126,7 +126,8 @@ class Cron(OSV):
                     cursor, cron['user'],
                     {'name': self.raise_user_error(
                             cursor, 'request_title', raise_exception=False,
-                            context={'language': req_user.language.code}),
+                            context={'language': req_user.language and \
+                                         req_user.language.code or "en_US"}),
                      'priority': '2',
                      'act_from': cron['user'],
                      'act_to': cron['request_user'],
