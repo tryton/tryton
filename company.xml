@@ -6,33 +6,33 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="company_view_form">
             <field name="model">company.company</field>
             <field name="type">form</field>
+            <field name="inherit" ref="party.party_view_form"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Company">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="active"/>
-                    <field name="active"/>
-                    <label name="parent"/>
-                    <field name="parent"/>
-                    <label name="currency"/>
-                    <field name="currency"/>
-                    <label name="vat_country"/>
-                    <field name="vat_country"/>
-                    <label name="vat_number"/>
-                    <field name="vat_number"/>
-                    <notebook colspan="4">
-                        <page string="General">
-                            <field name="addresses" mode="form,tree" colspan="4" width="600">
-                                <tree string="Addresses" sequence="sequence">
-                                    <field name="sequence" tree_invisible="1"/>
-                                    <field name="name"/>
-                                    <field name="phone"/>
-                                    <field name="email"/>
-                                    <field name="active"/>
-                                </tree>
-                            </field>
-                        </page>
+                <data>
+                    <xpath
+                        expr="/form/label[@name=&quot;code&quot;]"
+                        position="replace">
+                        <label name="parent"/>
+                    </xpath>
+                    <xpath
+                        expr="/form/field[@name=&quot;code&quot;]"
+                        position="replace">
+                        <field name="parent"/>
+                    </xpath>
+                    <xpath
+                        expr="/form/field[@name=&quot;active&quot;]"
+                        position="after">
+                        <label name="currency"/>
+                        <field name="currency"/>
+                        <label name="vat_country"/>
+                        <field name="vat_country"/>
+                        <label name="vat_number"/>
+                        <field name="vat_number"/>
+                    </xpath>
+                    <xpath
+                        expr="/form/notebook/page[@string=&quot;General&quot;]"
+                        position="after">
                         <page string="Employees" col="1">
                             <separator name="employees"/>
                             <field name="employees"/>
@@ -43,8 +43,8 @@ this repository contains the full copyright notices and license terms. -->
                             <separator name="footer"/>
                             <field name="footer"/>
                         </page>
-                    </notebook>
-                </form>
+                    </xpath>
+                </data>
                 ]]>
             </field>
         </record>
@@ -284,29 +284,21 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="employee_view_form">
             <field name="model">company.employee</field>
             <field name="type">form</field>
+            <field name="inherit" ref="party.party_view_form"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Employee" col="6">
-                    <label name="name"/>
-                    <field name="name" xexpand="1"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                    <label name="active"/>
-                    <field name="active" xexpand="0" width="100"/>
-                    <notebook colspan="6">
-                        <page string="General">
-                            <field name="addresses" mode="form,tree" colspan="4" width="600">
-                                <tree string="Addresses" sequence="sequence">
-                                    <field name="sequence" tree_invisible="1"/>
-                                    <field name="name"/>
-                                    <field name="phone"/>
-                                    <field name="email"/>
-                                    <field name="active"/>
-                                </tree>
-                            </field>
-                        </page>
-                    </notebook>
-                </form>
+                <data>
+                    <xpath
+                        expr="/form/label[@name=&quot;code&quot;]"
+                        position="replace">
+                        <label name="company"/>
+                    </xpath>
+                    <xpath
+                        expr="/form/field[@name=&quot;code&quot;]"
+                        position="replace">
+                        <field name="company"/>
+                    </xpath>
+                </data>
                 ]]>
             </field>
         </record>
