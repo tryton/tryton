@@ -2,11 +2,13 @@ type,name,res_id,src,value,fuzzy
 error,purchase.request,0,Purchase request are only created by the system.,Bestellungen werden nur durch das System erstellt,0
 error,purchase.request.create_purchase,0,Purchase price is missing for product: %s (id: %s)!,Fehlender Einkaufspreis für Artikel: %s (id: %s)!,0
 error,purchase.request.create_purchase,0,This price is necessary for creating purchase.,Dieser Preis wird für die Auftragserstellung benötigt.,0
-error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,Maximale Anzahl muss größer als die Minimale Anzahl sein,0
+error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,Die maximale Anzahl muss größer als die minimale Anzahl sein,0
 error,stock.order_point,0,Only one order point is allowed for each product-location pair.,Es ist nur ein Bestellpunkt für jede Paarung Artikel-Lagerort erlaubt,0
 error,stock.order_point,0,You can not define two order point on the same product with opposite locations.,Es ist nicht möglich zwei Bestellpunkte für den selben Artikel mit gegensätzlichen Lagerorten zu definieren.,0
 field,"product.product,order_points",0,Order Points,Bestellpunkte,0
 field,"purchase.request,company",0,Company,Unternehmen,0
+field,"purchase.request,computed_quantity",0,Computed Quantity,Berechnete Anzahl,0
+field,"purchase.request,computed_uom",0,Computed UOM,Berechnete Maßeinheit,0
 field,"purchase.request.create_purchase.ask_party,company",0,Company,Unternehmen,0
 field,"purchase.request.create_purchase.ask_party,party",0,Supplier,Lieferant,0
 field,"purchase.request.create_purchase.ask_party,product",0,Product,Artikel,0
@@ -19,7 +21,7 @@ field,"purchase.request,product",0,Product,Artikel,0
 field,"purchase.request,purchase",0,Purchase,Bestellung,0
 field,"purchase.request,purchase_date",0,Best Purchase Date,Bestes Einkaufsdatum,0
 field,"purchase.request,purchase_line",0,Purchase Line,Position Bestellung,0
-field,"purchase.request,quantity",0,Quantity,Menge,0
+field,"purchase.request,quantity",0,Quantity,Anzahl,0
 field,"purchase.request,state",0,State,Status,0
 field,"purchase.request,stock_level",0,Stock at Supply Date,Lagerbestand am Lieferdatum,0
 field,"purchase.request,supply_date",0,Expected Supply Date,Voraussichtliches Lieferdatum,0
@@ -52,8 +54,10 @@ selection,"purchase.request,state",0,Draft,Entwurf,0
 selection,"purchase.request,state",0,Purchased,Bestellt,0
 selection,"stock.order_point,type",0,Internal,Intern,0
 selection,"stock.order_point,type",0,Purchase,Bestellung,0
+view,purchase.request,0,Product Info,Info Artikel,0
 view,purchase.request,0,Purchase Request,Bestellung,0
 view,purchase.request,0,Purchase Requests,Bestellungen,0
+view,purchase.request,0,supply Info,Info Lieferant,0
 view,purchase.request.create_purchase.ask_party,0,,,0
 view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Supplier,Auftrag erstellen: Fehlender Lieferant,0
 view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Auftrag erstellen: Fehlende Zahlungsbedingung,0
