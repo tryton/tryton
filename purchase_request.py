@@ -188,12 +188,30 @@ class PurchaseRequest(OSV):
                         product_quantity, company, order_point, context=context)
                     new_requests.append(request_val)
 
+        new_requests = self.compare_requests(
+            cursor, user, new_requests, context=context)
+
         self.create_requests(cursor, user, new_requests, context=context)
         return {}
 
     def create_requests(self, cursor, user, new_requests, context=None):
+        request_obj = self.pool.get('purchase.request')
+
+        for new_req in new_requests:
+            if new_req['supply_date'] == datetime.date.max:
+                new_req['supply_date'] = None
+            if new_req['quantity'] > 0.0:
+                new_req.update({'product': new_req['product'].id,
+                                'party': new_req['party'] and new_req['party'].id,
+                                'uom': new_req['uom'].id,
+                                'computed_uom': new_req['computed_uom'].id,
+                                'company': new_req['company'].id
+                                })
+                request_obj.create(cursor, user, new_req, context=context)
+
+    def compare_requests(self, cursor, user, new_requests, context=None):
         """
-        Compare new_requests with already existing request and avoid
+        Compare new_requests with already existing request to avoid
         to re-create existing requests.
         """
         # delete purchase request without a purchase line
@@ -261,17 +279,7 @@ class PurchaseRequest(OSV):
                 else:
                     break
 
-        # Create new request
-        for new_req in new_requests:
-            if new_req['supply_date'] == datetime.date.max:
-                new_req['supply_date'] = None
-            if new_req['quantity'] > 0.0:
-                new_req.update({'product': new_req['product'].id,
-                                'party': new_req['party'] and new_req['party'].id,
-                                'uom': new_req['uom'].id,
-                                'company': new_req['company'].id
-                                })
-                request_obj.create(cursor, user, new_req, context=context)
+        return new_requests
 
     def get_supply_dates(self, cursor, user, product, context=None):
         """
