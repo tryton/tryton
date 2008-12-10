@@ -16,7 +16,7 @@ field,"purchase.line,moves",0,Moves,Bewegungen,0
 field,"purchase.line,moves_ignored",0,Moves Ignored,Ignorierte Bewegungen,0
 field,"purchase.line,product",0,Product,Artikel,0
 field,"purchase.line,purchase",0,Purchase,Einkauf,0
-field,"purchase.line,quantity",0,Quantity,Menge,0
+field,"purchase.line,quantity",0,Quantity,Anzahl,0
 field,"purchase.line,sequence",0,Sequence,Sequenz,0
 field,"purchase.line,taxes",0,Taxes,Steuern,0
 field,"purchase.line,type",0,Type,Typ,0
@@ -29,7 +29,7 @@ field,"purchase.product_supplier,delivery_time",0,Delivery Time,Lieferfrist,0
 field,"purchase.product_supplier,name",0,Name,Name,0
 field,"purchase.product_supplier,party",0,Supplier,Lieferant,0
 field,"purchase.product_supplier.price,product_supplier",0,Supplier,Lieferant,0
-field,"purchase.product_supplier.price,quantity",0,Quantity,Menge,0
+field,"purchase.product_supplier.price,quantity",0,Quantity,Anzahl,0
 field,"purchase.product_supplier,prices",0,Prices,Preise,0
 field,"purchase.product_supplier.price,unit_price",0,Unit Price,Einzelpreis,0
 field,"purchase.product_supplier,product",0,Product,Artikel,0
@@ -65,13 +65,13 @@ field,"purchase.purchase,warehouse",0,Warehouse,Warenlager,0
 field,"stock.move,purchase",0,Purchase,Einkauf,0
 field,"stock.move,purchase_currency",0,Purchase Currency,Einkaufswährung,0
 field,"stock.move,purchase_line",0,unknown,unbekannt,0
-field,"stock.move,purchase_quantity",0,Purchase Quantity,Menge Einkauf,0
+field,"stock.move,purchase_quantity",0,Purchase Quantity,Anzahl Einkauf,0
 field,"stock.move,purchase_unit",0,Purchase Unit,Einheit Einkauf,0
 field,"stock.move,purchase_unit_digits",0,Purchase Unit Digits,Anzahl Stellen Einkauf,0
 field,"stock.move,purchase_unit_price",0,Purchase Unit Price,Einzelpreis Einkauf,0
 field,"stock.move,supplier",0,Supplier,Lieferant,0
 help,"purchase.product_supplier,delivery_time",0,In number of days,In Anzahl von Tagen,0
-help,"purchase.product_supplier.price,quantity",0,Minimal quantity,Mindestmenge,0
+help,"purchase.product_supplier.price,quantity",0,Minimal quantity,Minimale Anzahl,0
 model,"ir.action,name",act_purchase_form_confirmed,Confirmed Purchases,Aufträge (Einkäufe),0
 model,"ir.action,name",act_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
 model,"ir.action,name",report_purchase,Purchase,Einkauf drucken,0
@@ -116,7 +116,7 @@ odt,purchase.purchase,0,Draft Purchase Order,Auftragsentwurf,0
 odt,purchase.purchase,0,E-Mail:,E-Mail:,0
 odt,purchase.purchase,0,Phone:,Telefon:,0
 odt,purchase.purchase,0,Purchase Order N°:,Auftrag Nr. ,0
-odt,purchase.purchase,0,Quantity,Menge,0
+odt,purchase.purchase,0,Quantity,Anzahl,0
 odt,purchase.purchase,0,Request for Quotation N°:,Angebotsanfrage Nr.:,0
 odt,purchase.purchase,0,Taxes,Steuern,0
 odt,purchase.purchase,0,Taxes:,Steuern:,0
