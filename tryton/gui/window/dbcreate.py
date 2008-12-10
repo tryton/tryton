@@ -142,7 +142,6 @@ class DBCreate(object):
             | gtk.WIN_POS_CENTER_ON_PARENT,
         )
         self.dialog.set_has_separator(True)
-        self.dialog.set_size_request(700, 301)
         self.dialog.set_icon(TRYTON_ICON)
         # This event is needed for controlling the button_create
         self.dialog.connect("key-press-event", self.event_show_button_create)
