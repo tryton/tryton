@@ -309,7 +309,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Employess">
                     <field name="name" select="1"/>
-                    <field name="company"/>
+                    <field name="company" select="1"/>
                 </tree>
                 ]]>
             </field>
