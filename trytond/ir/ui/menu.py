@@ -154,6 +154,8 @@ class UIMenu(OSV):
             context=None):
         if context is None:
             context = {}
+        if not value:
+            return
         ctx = context.copy()
         if '_timestamp' in ctx:
             del ctx['_timestamp']
@@ -166,6 +168,8 @@ class UIMenu(OSV):
             action_keyword_obj.delete(cursor, user, action_keyword_ids,
                     context=ctx)
         action_type, action_id = value.split(',')
+        if not int(action_id):
+            return
         action_obj = self.pool.get(action_type)
         action = action_obj.browse(cursor, user, int(action_id),
                 context=context)
