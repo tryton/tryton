@@ -63,7 +63,7 @@ field,"account.invoice.line,invoice",0,Invoice,Rechnung,0
 field,"account.invoice.line,invoice_type",0,Invoice Type,Rechnungstyp,0
 field,"account.invoice.line,party",0,Party,Partei,0
 field,"account.invoice.line,product",0,Product,Artikel,0
-field,"account.invoice.line,quantity",0,Quantity,Menge,0
+field,"account.invoice.line,quantity",0,Quantity,Anzahl,0
 field,"account.invoice,lines",0,Lines,Positionen,0
 field,"account.invoice.line,sequence",0,Sequence,Sequenz,0
 field,"account.invoice,lines_to_pay",0,Lines to Pay,Zahlbare Positionen,0
@@ -212,7 +212,7 @@ odt,account.invoice,0,Description:,Beschreibung:,0
 odt,account.invoice,0,E-Mail:,E-Mail:,0
 odt,account.invoice,0,Payment Term,Zahlungsbedingung,0
 odt,account.invoice,0,Phone:,Telefon:,0
-odt,account.invoice,0,Quantity,Menge,0
+odt,account.invoice,0,Quantity,Anzahl,0
 odt,account.invoice,0,Tax,Steuer,0
 odt,account.invoice,0,Taxes,Steuern,0
 odt,account.invoice,0,Taxes:,Steuern:,0
