@@ -202,8 +202,10 @@ class Dialog(object):
                 exclude_field=attrs.get('relation_field', None), readonly=readonly,
                 domain=domain)
         self.screen.models._context.update(model_ctx)
+        modified = False
         if not model:
             model = self.screen.new(context=default_get_ctx)
+            modified = True
         if isinstance(model, ModelRecordGroup):
             self.screen.add_view_id(False, 'tree', display=True,
                     context=default_get_ctx)
@@ -213,7 +215,7 @@ class Dialog(object):
             self.screen.widget.connect('key_press_event', self.on_keypress)
             self.screen.models_set(model)
         else:
-            self.screen.models.model_add(model)
+            self.screen.models.model_add(model, modified=modified)
             self.screen.current_model = model
             if ('views' in attrs) and ('form' in attrs['views']):
                 arch = attrs['views']['form']['arch']
