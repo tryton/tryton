@@ -15,7 +15,7 @@ field,"sale.line,move_exception",0,Moves Exception,Bewegungsvorbehalt,0
 field,"sale.line,moves",0,Moves,Bewegungen,0
 field,"sale.line,moves_ignored",0,Moves Ignored,Ignorierte Bewegungen,0
 field,"sale.line,product",0,Product,Artikel,0
-field,"sale.line,quantity",0,Quantity,Menge,0
+field,"sale.line,quantity",0,Quantity,Anzahl,0
 field,"sale.line,sale",0,Sale,Verkauf,0
 field,"sale.line,sequence",0,Sequence,Sequenz,0
 field,"sale.line,taxes",0,Taxes,Steuern,0
@@ -25,7 +25,6 @@ field,"sale.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
 field,"sale.line,unit_price",0,Unit Price,Einzelpreis,0
 field,"sale.sale,comment",0,Comment,Kommentar,0
 field,"sale.sale,company",0,Company,Unternehmen,0
-field,"sale.sale,contact_address",0,Contact Address,Kontaktadresse,0
 field,"sale.sale,currency",0,Currency,Währung,0
 field,"sale.sale,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"sale.sale,description",0,Description,Beschreibung,0
@@ -105,7 +104,7 @@ odt,sale.sale,0,Description:,Bezeichnung:,0
 odt,sale.sale,0,Draft Sale Order,Auftragsentwurf,0
 odt,sale.sale,0,E-Mail:,E-Mail:,0
 odt,sale.sale,0,Phone:,Telefon:,0
-odt,sale.sale,0,Quantity,Menge,0
+odt,sale.sale,0,Quantity,Anzahl,0
 odt,sale.sale,0,Quotation N°:,Angebot Nr.:,0
 odt,sale.sale,0,Sale Order N°:,Verkaufsauftrag Nr.:,0
 odt,sale.sale,0,Taxes,Steuern,0
