@@ -9,27 +9,29 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/form/notebook/page[@string=&quot;Stock&quot;]/field[@=&quot;supplier_location&quot;]"
+                    <xpath expr="/form/notebook/page[@string=&quot;General&quot;]"
                         position="after">
-                        <field name="locations" colspan="4">
-                            <tree string="Product Locations"
-                                sequence="sequence">
-                                <field name="warehouse"/>
-                                <field name="location"/>
-                                <field name="sequence"
+                      <page string="Default Locations">
+                          <field name="locations" colspan="4">
+                              <tree string="Product Locations"
+                                    sequence="sequence">
+                                  <field name="warehouse"/>
+                                  <field name="location"/>
+                                  <field name="sequence"
                                     tree_invisible="1"/>
-                            </tree>
-                            <form string="Product Location"
-                                cursor="warehouse">
-                                <label name="sequence"/>
-                                <field name="sequence"/>
-                                <newline/>
-                                <label name="warehouse"/>
-                                <field name="warehouse"/>
-                                <label name="location"/>
-                                <field name="location"/>
-                            </form>
-                        </field>
+                              </tree>
+                              <form string="Product Location"
+                                  cursor="warehouse">
+                                  <label name="sequence"/>
+                                  <field name="sequence"/>
+                                  <newline/>
+                                  <label name="warehouse"/>
+                                  <field name="warehouse"/>
+                                  <label name="location"/>
+                                  <field name="location"/>
+                              </form>
+                          </field>
+                      </page>
                     </xpath>
                 </data>
                 ]]>

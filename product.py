@@ -8,6 +8,6 @@ class Product(OSV):
     _name = 'product.product'
 
     locations = fields.One2Many('stock.product.location', 'product',
-            'Locations')
+            'Default Locations')
 
 Product()
