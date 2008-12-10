@@ -148,7 +148,25 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_purchase_form"/>
         </record>
         <menuitem parent="menu_purchase" action="act_purchase_form"
-            id="menu_purchase_form"/>
+            id="menu_purchase_form" sequence="10"/>
+
+        <record model="ir.action.act_window" id="act_purchase_form_new">
+            <field name="name">New Purchase</field>
+            <field name="res_model">purchase.purchase</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_new_view1">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="purchase_view_tree"/>
+            <field name="act_window" ref="act_purchase_form_new"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_purchase_form_new_view2">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="purchase_view_form"/>
+            <field name="act_window" ref="act_purchase_form_new"/>
+        </record>
+        <menuitem parent="menu_purchase_form" action="act_purchase_form_new"
+            id="menu_purchase_form_new" sequence="10"/>
 
         <record model="ir.action.act_window" id="act_purchase_form_draft">
             <field name="name">Draft Purchases</field>
@@ -167,7 +185,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_purchase_form_draft"/>
         </record>
         <menuitem parent="menu_purchase_form" action="act_purchase_form_draft"
-            id="menu_purchase_form_draft"/>
+            id="menu_purchase_form_draft" sequence="20"/>
 
         <record model="ir.action.act_window" id="act_purchase_form_quotation">
             <field name="name">Purchases in Quotation</field>
@@ -186,7 +204,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_purchase_form_quotation"/>
         </record>
         <menuitem parent="menu_purchase_form" action="act_purchase_form_quotation"
-            id="menu_purchase_form_quotation"/>
+            id="menu_purchase_form_quotation" sequence="30"/>
 
         <record model="ir.action.act_window" id="act_purchase_form_confirmed">
             <field name="name">Confirmed Purchases</field>
@@ -205,7 +223,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_purchase_form_confirmed"/>
         </record>
         <menuitem parent="menu_purchase_form" action="act_purchase_form_confirmed"
-            id="menu_purchase_form_confirmed"/>
+            id="menu_purchase_form_confirmed" sequence="40"/>
 
         <record model="ir.model.access" id="access_purchase">
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
