@@ -121,7 +121,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="packing_in_view_tree"/>
             <field name="act_window" ref="act_packing_in_form2"/>
         </record>
-        <menuitem parent="menu_packing_in_form" sequence="1"
+        <menuitem parent="menu_packing_in_form" sequence="10"
             action="act_packing_in_form2" id="menu_packing_in_form2"/>
 
         <record model="ir.action.act_window" id="act_packing_in_form_received">
@@ -142,7 +142,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="packing_in_view_form"/>
             <field name="act_window" ref="act_packing_in_form_received"/>
         </record>
-        <menuitem parent="menu_packing_in_form" sequence="3"
+        <menuitem parent="menu_packing_in_form" sequence="20"
             action="act_packing_in_form_received"
             id="menu_packing_in_received"/>
 
@@ -275,7 +275,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="packing_out_view_form"/>
             <field name="act_window" ref="act_packing_out_form_waiting"/>
         </record>
-        <menuitem parent="menu_packing_out_form" sequence="1"
+        <menuitem parent="menu_packing_out_form" sequence="10"
                   action="act_packing_out_form_waiting"
                   id="menu_packing_out_waiting"/>
 
@@ -298,7 +298,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="packing_out_view_form"/>
             <field name="act_window" ref="act_packing_out_form_assigned"/>
         </record>
-        <menuitem parent="menu_packing_out_form" sequence="2"
+        <menuitem parent="menu_packing_out_form" sequence="20"
             action="act_packing_out_form_assigned"
             id="menu_packing_out_assigned"/>
 
@@ -320,7 +320,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="packing_out_view_form"/>
             <field name="act_window" ref="act_packing_out_form_ready"/>
         </record>
-        <menuitem parent="menu_packing_out_form" sequence="3"
+        <menuitem parent="menu_packing_out_form" sequence="30"
             action="act_packing_out_form_ready" id="menu_packing_out_ready"/>
 
 
@@ -412,6 +412,27 @@ this repository contains the full copyright notices and license terms. -->
                   action="act_packing_internal_form"
                   id="menu_packing_internal_form"/>
 
+        <record model="ir.action.act_window" id="act_packing_internal_new_form">
+            <field name="name">New Internal Packing</field>
+            <field name="res_model">stock.packing.internal</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_internal_new_form_view1">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_internal_view_tree"/>
+            <field name="act_window" ref="act_packing_internal_new_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_internal_new_form_view2">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_internal_view_form"/>
+            <field name="act_window" ref="act_packing_internal_new_form"/>
+        </record>
+        <menuitem parent="menu_packing_internal_form" sequence="10"
+                  action="act_packing_internal_new_form"
+                  id="menu_packing_internal_new_form"/>
+
         <record model="ir.action.act_window" id="act_packing_internal_draft_form">
             <field name="name">Draft Internal Packings</field>
             <field name="res_model">stock.packing.internal</field>
@@ -430,7 +451,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="packing_internal_view_form"/>
             <field name="act_window" ref="act_packing_internal_draft_form"/>
         </record>
-        <menuitem parent="menu_packing_internal_form" sequence="1"
+        <menuitem parent="menu_packing_internal_form" sequence="20"
                   action="act_packing_internal_draft_form"
                   id="menu_packing_internal_draft_form"/>
 
@@ -452,7 +473,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="packing_internal_view_form"/>
             <field name="act_window" ref="act_packing_internal_waiting_form"/>
         </record>
-        <menuitem parent="menu_packing_internal_form" sequence="2"
+        <menuitem parent="menu_packing_internal_form" sequence="30"
                   action="act_packing_internal_waiting_form"
                   id="menu_packing_internal_waiting_form"/>
 
@@ -474,7 +495,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="packing_internal_view_form"/>
             <field name="act_window" ref="act_packing_internal_assigned_form"/>
         </record>
-        <menuitem parent="menu_packing_internal_form" sequence="3"
+        <menuitem parent="menu_packing_internal_form" sequence="20"
                   action="act_packing_internal_assigned_form"
                   id="menu_packing_internal_assigned_form"/>
 
