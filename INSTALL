@@ -5,7 +5,7 @@ Prerequisites
 -------------
 
  * Python 2.4 or later (http://www.python.org/)
- * trytond 0.0.x (http://www.tryton.org/)
+ * trytond 1.1.x (http://www.tryton.org/)
  * trytond_company (http://www.tryton.org/)
  * trytond_account (http://www.tryton.org/)
  * trytond_product (http://www.tryton.org/)
@@ -13,7 +13,7 @@ Prerequisites
 Installation
 ------------
 
-Once you've downloaded and unpacked a trytond_account_product source release, enter the
+Once you've downloaded and unpacked the trytond_account_product source release, enter the
 directory where the archive was unpacked, and run:
 
     python setup.py install
