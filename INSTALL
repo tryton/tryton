@@ -14,7 +14,7 @@ Prerequisites
 Installation
 ------------
 
-Once you've downloaded and unpacked a trytond_stock source release, enter the
+Once you've downloaded and unpacked the trytond_stock source release, enter the
 directory where the archive was unpacked, and run:
 
     python setup.py install
