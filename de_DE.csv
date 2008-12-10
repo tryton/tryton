@@ -125,6 +125,7 @@ model,"currency.currency,name",chf,Swiss Franc,Schweizer Franken,0
 model,"currency.currency,name",kzt,Tenge,Tenge,0
 model,"currency.currency,name",ttd,Trinidad and Tobago Dollar,Trinidad-und-Tobago-Dollar,0
 model,"currency.currency,name",mnt,Tugrik,Tugrik,0
+model,"currency.currency,name",gbp,UK Pound,Britisches Pfund,0
 model,"currency.currency,name",usd,US Dollar,US-Dollar,0
 model,"currency.currency,name",uzs,Uzbekistan Sum,Usbekistan-Sum,0
 model,"currency.currency,name",yer,Yemeni Rial,Jemen-Rial,0
