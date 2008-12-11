@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 import urlparse
 import socket
 import base64
@@ -6,7 +7,7 @@ import time
 from DAV import AuthServer, WebDAVServer, iface
 from DAV.errors import *
 from DAV.constants import COLLECTION, OBJECT
-from DAV.utils import get_uriparentpath, get_urifilename
+from DAV.utils import get_uriparentpath, get_urifilename, quote_uri
 from DAV.davcmd import copyone, copytree, moveone, movetree, delone, deltree
 from netsvc import LocalService, SSLSocket
 import security
@@ -103,16 +104,16 @@ class TrytonDAVInterface(iface.dav_interface):
             res += '<ul>'
             if dbname:
                 res += '<li><a href="%s">..</a></li>' \
-                        % (get_uriparentpath(uri) or '/')
+                        % (quote_uri(get_uriparentpath(uri) or '/'))
             childs = self.get_childs(uri)
             childs.sort()
             for child in childs:
                 res += '<li><a href="%s">%s</a></li>' \
-                        % (child, get_urifilename(child))
+                        % (quote_uri(child), get_urifilename(child))
             res += '</ul>'
             res += '<hr noshade>'
             res += '<em>Powered by <a href="%s">%s</a> version %s</em>' \
-                    % (WEBSITE, PACKAGE, VERSION)
+                    % (quote_uri(WEBSITE), PACKAGE, VERSION)
             res += '</body>'
             res += '</html>'
             return res
