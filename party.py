@@ -11,15 +11,15 @@ class Party(OSV):
             relation='account.account', string='Account Payable',
             domain="[('kind', '=', 'payable'), ('company', '=', company)]",
             states={
-                'required': "bool(company)",
-                'invisible': "not bool(company)",
+                'required': "globals().get('company') and bool(company)",
+                'invisible': "not globals().get('company') or not bool(company)",
             })
     account_receivable = fields.Property(type='many2one',
             relation='account.account', string='Account Receivable',
             domain="[('kind', '=', 'receivable'), ('company', '=', company)]",
             states={
-                'required': "bool(company)",
-                'invisible': "not bool(company)",
+                'required': "globals().get('company') and bool(company)",
+                'invisible': "not globals().get('company') or not bool(company)",
             })
     vat = fields.Property(type='many2one',
             relation='account.tax', string='VAT',
