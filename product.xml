@@ -14,14 +14,13 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem name="Product" id="menu_main_product" sequence="1"
             icon="tryton-package"/>
 
-        <record model="ir.ui.view" id="product_view_tree">
-            <field name="model">product.product</field>
+        <record model="ir.ui.view" id="template_view_tree">
+            <field name="model">product.template</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Products">
                         <field name="name" select="1"/>
-                        <field name="code" select="1"/>
                         <field name="list_price_uom" select="2"/>
                         <field name="cost_price_uom" select="2"/>
                         <field name="type" select="2"/>
@@ -33,8 +32,8 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="product_view_form">
-            <field name="model">product.product</field>
+        <record model="ir.ui.view" id="template_view_form">
+            <field name="model">product.template</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -45,10 +44,9 @@ this repository contains the full copyright notices and license terms. -->
                       <field name="active" xexpand="0" width="100"/>
                       <notebook colspan="4">
                           <page string="General">
-                              <label name="code"/>
-                              <field name="code"/>
                               <label name="type"/>
                               <field name="type"/>
+                              <newline/>
                               <label name="category"/>
                               <field name="category" />
                               <label name="default_uom"/>
@@ -60,12 +58,51 @@ this repository contains the full copyright notices and license terms. -->
                               <field name="cost_price"/>
                               <label name="cost_price_method"/>
                               <field name="cost_price_method"/>
-                              <separator name="description" colspan="4"/>
-                              <field name="description" colspan="4"/>
                           </page>
                       </notebook>
                     </form>
                     ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_tree">
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="inherit" ref="template_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/tree/field[@name=&quot;name&quot;]"
+                        position="after">
+                        <field name="code" select="1"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_view_form">
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="template_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@string=&quot;General&quot;]/label[@name=&quot;type&quot;]"
+                        position="before">
+                        <label name="code"/>
+                        <field name="code"/>
+                    </xpath>
+                    <xpath
+                        expr="/form/notebook/page[@string=&quot;General&quot;]"
+                        position="inside">
+                        <separator name="description" colspan="4"/>
+                        <field name="description" colspan="4"/>
+                    </xpath>
+                </data>
+                ]]>
             </field>
         </record>
 
