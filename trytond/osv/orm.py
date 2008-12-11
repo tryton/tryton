@@ -2589,10 +2589,9 @@ class ORM(object):
                                     'WHERE id IN ' + \
                                         '(' + ','.join(['%s' for x in ids2]) + ')',
                                         ids2)
-                            clause = ''
+                            clause = 'false '
                             for left, right in cursor.fetchall():
-                                if clause:
-                                    clause += 'OR '
+                                clause += 'OR '
                                 clause += '( "' + field.left + '" >= ' + \
                                         str(left) + ' ' + \
                                         'AND "' + field.right + '" <= ' + \
