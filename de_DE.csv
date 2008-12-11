@@ -235,7 +235,7 @@ selection,"account.invoice,state",0,Draft,Entwurf,0
 selection,"account.invoice,state",0,Open,Fakturiert,0
 selection,"account.invoice,state",0,Paid,Bezahlt,0
 selection,"account.invoice,state",0,Pro forma,Pro Forma,0
-selection,"account.invoice,type",0,Credit Note,Gutschrift,0
+selection,"account.invoice,type",0,Credit Note,Gutschrift an Kunde,0
 selection,"account.invoice,type",0,Invoice,Kundenrechnung,0
 selection,"account.invoice,type",0,Supplier Credit Note,Gutschrift von Lieferant,0
 selection,"account.invoice,type",0,Supplier Invoice,Lieferantenrechnung,0
