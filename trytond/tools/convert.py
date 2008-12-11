@@ -646,7 +646,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             # if there is values to update:
             if to_update:
                 # write the values in the db:
-                object_ref.write(cursor, user, db_id, to_update)
+                object_ref.write(cursor, user, db_id, to_update,
+                        context={'module': module})
 
 
             if not inherit_db_ids:
