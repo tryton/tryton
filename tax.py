@@ -357,7 +357,7 @@ class TaxTemplate(OSV):
             ('code', '=', 'none'),
             ], limit=1, context=context)
         return group_obj.name_get(cursor, user, group_ids[0],
-                context=context)
+                context=context)[0]
 
     def default_type(self, cursor, user, context=None):
         return 'percentage'
