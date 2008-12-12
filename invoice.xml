@@ -33,11 +33,11 @@ this repository contains the full copyright notices and license terms. -->
                         <form string="Payment Term Lines">
                             <label name="type"/>
                             <field name="type"/>
-                            <group col="1">
+                            <group col="1" id="label_amount_percent">
                                 <label name="percent" fill="1" xexpand="1" expand="1"/>
                                 <label name="amount" fill="1" xexpand="1" expand="1"/>
                             </group>
-                            <group col="3">
+                            <group col="3" id="amount_percent">
                                 <field name="percent" colspan="3"/>
                                 <field name="amount"/>
                                 <label name="currency"/>
@@ -179,7 +179,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="reference"/>
                     <field name="reference"/>
                     <notebook colspan="6">
-                        <page string="Invoice">
+                        <page string="Invoice" id="invoice">
                             <label name="invoice_date"/>
                             <field name="invoice_date"/>
                             <label name="payment_term"/>
@@ -204,7 +204,7 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="currency_digits" tree_invisible="1"/>
                                 </tree>
                             </field>
-                            <group col="1" colspan="2">
+                            <group col="1" colspan="2" id="taxes">
                                 <field name="taxes">
                                     <tree string="Taxes" sequence="sequence">
                                         <field name="description"/>
@@ -220,20 +220,20 @@ this repository contains the full copyright notices and license terms. -->
                                     </tree>
                                 </field>
                             </group>
-                            <group col="2" colspan="2">
+                            <group col="2" colspan="2" id="amount_state_buttons">
                                 <label name="untaxed_amount"/>
                                 <field name="untaxed_amount"/>
                                 <label name="tax_amount"/>
                                 <field name="tax_amount"/>
                                 <label name="total_amount"/>
                                 <field name="total_amount"/>
-                                <group col="4" colspan="2">
+                                <group col="4" colspan="2" id="reconciled_state">
                                     <label name="reconciled"/>
                                     <field name="reconciled" xexpand="0"/>
                                     <label name="state"/>
                                     <field name="state"/>
                                 </group>
-                                <group col="5" colspan="2">
+                                <group col="5" colspan="2" id="buttons">
                                     <button name="cancel" string="_Cancel"
                                         states="{'invisible': '''state not in ('draft', 'proforma') ''', 'readonly': ''' %(account.group_account)d not in groups '''}"
                                         icon="tryton-cancel"/>
@@ -257,7 +257,7 @@ this repository contains the full copyright notices and license terms. -->
                                 </group>
                             </group>
                         </page>
-                        <page string="Other Info">
+                        <page string="Other Info" id="info">
                             <label name="company"/>
                             <field name="company"/>
                             <label name="move"/>
@@ -267,7 +267,7 @@ this repository contains the full copyright notices and license terms. -->
                             <separator name="comment" colspan="4"/>
                             <field name="comment" colspan="4"/>
                         </page>
-                        <page string="Payment">
+                        <page string="Payment" id="payment">
                             <label name="amount_to_pay_today"/>
                             <field name="amount_to_pay_today"/>
                             <label name="amount_to_pay"/>
@@ -930,7 +930,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="account"/>
                     <label name="manual"/>
                     <field name="manual"/>
-                    <group col="6" colspan="4" string="Tax Code">
+                    <group col="6" colspan="4" string="Tax Code" id="tax_code">
                         <label name="amount"/>
                         <field name="amount"/>
                         <label name="tax_code"/>
@@ -1019,9 +1019,9 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;Accounting&quot;]/field[@name=&quot;vat_number&quot;]"
+                        expr="/form/notebook/page[@id=&quot;accounting&quot;]/field[@name=&quot;vat_number&quot;]"
                         position="after">
-                        <separator string="Payment Terms" colspan="4"/>
+                        <separator string="Payment Terms" colspan="4" id="payment_terms"/>
                         <label name="payment_term"/>
                         <field name="payment_term"/>
                         <label name="supplier_payment_term"/>
@@ -1039,7 +1039,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;Sequences&quot;]/field[@name=&quot;post_move_sequence&quot;]"
+                        expr="/form/notebook/page[@id=&quot;sequences&quot;]/field[@name=&quot;post_move_sequence&quot;]"
                         position="after">
                         <newline/>
                         <label name="out_invoice_sequence"/>
@@ -1147,13 +1147,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Print Invoice" col="2">
-                    <separator string="&lt;b&gt;Warning!&lt;/b&gt;" colspan="2" align="0.5"/>
+                    <separator string="&lt;b&gt;Warning!&lt;/b&gt;" colspan="2"
+                        align="0.5" id="warning"/>
                     <image name="tryton-dialog-information"/>
-                    <group col="1">
+                    <group col="1" id="labels">
                         <label string="You have selected more than one invoice to print."
-                            align="0.0"/>
+                            align="0.0" id="selected"/>
                         <label string="The invoices will be sent &lt;i&gt;directly&lt;/i&gt; to the printer."
-                            align="0.0"/>
+                            align="0.0" id="printer"/>
                     </group>
                 </form>
                 ]]>
@@ -1179,7 +1180,7 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Credit Invoice" col="2">
                     <image name="tryton-dialog-information"/>
                     <label string="Are you sure to credit those/this invoice(s)?"
-                        align="0.0"/>
+                        align="0.0" id="credit"/>
                 </form>
                 ]]>
             </field>
