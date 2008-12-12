@@ -9,7 +9,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <form string="Order Point">
-                        <separator string="Product Info" colspan="4"/>
+                        <separator string="Product Info" colspan="4"
+                            id="info"/>
                         <label name="product"/>
                         <field name="product"/>
                         <label name="company"/>
@@ -18,7 +19,8 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="min_quantity"/>
                         <label name="max_quantity"/>
                         <field name="max_quantity"/>
-                        <separator string="Order Point Type" colspan="4"/>
+                        <separator string="Order Point Type" colspan="4"
+                            id="type"/>
                         <label name="type"/>
                         <field name="type"/>
                         <newline/>
