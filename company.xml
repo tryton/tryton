@@ -31,13 +31,13 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="vat_number"/>
                     </xpath>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;General&quot;]"
+                        expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
-                        <page string="Employees" col="1">
+                        <page string="Employees" col="1" id="employees">
                             <separator name="employees"/>
                             <field name="employees"/>
                         </page>
-                        <page string="Reports" col="1">
+                        <page string="Reports" col="1" id="reports">
                             <separator name="header"/>
                             <field name="header"/>
                             <separator name="footer"/>
@@ -268,9 +268,9 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <form string="Create Company" col="2">
                     <image name="tryton-dialog-information"/>
-                    <group col="1">
+                    <group col="1" id="labels">
                         <label string="You can now add your company into the system."
-                            align="0.0"/>
+                            align="0.0" id="add"/>
                     </group>
                 </form>
                 ]]>
