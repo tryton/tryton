@@ -11,9 +11,9 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;Childs&quot;]"
+                        expr="/form/notebook/page[@id=&quot;childs&quot;]"
                         position="after">
-                        <page string="Accounting" col="4">
+                        <page string="Accounting" col="4" id="accounting">
                             <label name="account_revenue"/>
                             <field name="account_revenue"/>
                             <label name="account_expense"/>
@@ -36,9 +36,9 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;General&quot;]"
+                        expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
-                        <page string="Accounting" col="4">
+                        <page string="Accounting" col="4" id="accounting">
                             <label name="account_revenue"/>
                             <field name="account_revenue"/>
                             <label name="account_expense"/>
