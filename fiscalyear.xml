@@ -24,9 +24,9 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="state"/>
                     <field name="state"/>
                     <notebook colspan="4">
-                        <page string="Periods">
+                        <page string="Periods" id="periods">
                             <field name="periods" colspan="4"/>
-                            <group col="2" colspan="4">
+                            <group col="2" colspan="4" id="buttons">
                                 <button name="create_period" string="Create Monthly Periods"
                                     type="object"
                                     states="{'invisible': '''state != 'open' or periods '''}"/>
@@ -35,13 +35,13 @@ this repository contains the full copyright notices and license terms. -->
                                     states="{'invisible': '''state != 'open' or periods '''}"/>
                             </group>
                         </page>
-                        <page string="Sequences">
+                        <page string="Sequences" id="sequences">
                             <label name="post_move_sequence"/>
                             <field name="post_move_sequence"/>
                         </page>
                     </notebook>
-                    <label string="" colspan="2"/>
-                    <group col="1" colspan="2">
+                    <label string="" colspan="2" id="empty"/>
+                    <group col="1" colspan="2" id="buttons">
                         <button name="close" string="Close Fiscal Year" type="object"
                             states="{'invisible': '''state != 'open' '''}"
                             icon="tryton-readonly"
