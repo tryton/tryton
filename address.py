@@ -41,7 +41,7 @@ class Address(OSV):
 
     def get_full_address(self, cursor, user, ids, name, arg, context=None):
         if not ids:
-            return []
+            return {}
         res = {}
         for address in self.browse(cursor, user, ids, context=context):
             res[address.id] = ''
