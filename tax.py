@@ -344,6 +344,8 @@ class TaxTemplate(OSV):
     credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign', digits=(2, 0))
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', False)], required=True)
+    #XXX add active field for issue667
+    active = fields.Function('get_active', type='boolean')
 
     def __init__(self):
         super(TaxTemplate, self).__init__()
@@ -375,6 +377,9 @@ class TaxTemplate(OSV):
 
     def default_credit_note_tax_sign(self, cursor, user, context=None):
         return 1
+
+    def get_active(self, cursor, user, ids, name, arg, context=None):
+        return dict.fromkeys(ids, True)
 
     def _get_tax_value(self, cursor, user, template, context=None):
         '''
