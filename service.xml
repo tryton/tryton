@@ -26,9 +26,9 @@
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;General&quot;]"
+                        expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
-                        <page string="Services" col="1">
+                        <page string="Services" col="1" id="services">
                             <field name="services">
                                 <tree string="Services" sequence="sequence">
                                     <field name="sequence" tree_invisible="1"/>
