@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.action.wizard" id="wizard_complete_inventory">
@@ -23,17 +24,17 @@
                         <field name="date"/>
                         <label name="company"/>
                         <field name="company"/>
-                        <label colspan="2"/>
+                        <label colspan="2" id="empty"/>
                         <button string="Complete Inventory" type="action"
                             name="%(wizard_complete_inventory)d"
                             states="{'readonly': '''state != 'draft' '''}"
                             colspan="2"
                             help="Add an inventory line for each missing products"/>
                         <field name="lines" colspan="4"/>
-                        <group col="4" colspan="4">
+                        <group col="4" colspan="4" id="group_buttons">
                             <label name="state"/>
                             <field name="state"/>
-                            <group colspan="2" col="3">
+                            <group colspan="2" col="3" id="buttons">
                                 <button string="Cancel"
                                     name="cancel"
                                     states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
