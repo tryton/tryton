@@ -43,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
                       <label name="active"/>
                       <field name="active" xexpand="0" width="100"/>
                       <notebook colspan="4">
-                          <page string="General">
+                          <page string="General" id="general">
                               <label name="type"/>
                               <field name="type"/>
                               <newline/>
@@ -90,13 +90,13 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;General&quot;]/label[@name=&quot;type&quot;]"
+                        expr="/form/notebook/page[@id=&quot;general&quot;]/label[@name=&quot;type&quot;]"
                         position="before">
                         <label name="code"/>
                         <field name="code"/>
                     </xpath>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;General&quot;]"
+                        expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="inside">
                         <separator name="description" colspan="4"/>
                         <field name="description" colspan="4"/>
