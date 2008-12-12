@@ -29,7 +29,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="rounding"/>
                     <field name="rounding"/>
                     <notebook colspan="6">
-                        <page string="Rates">
+                        <page string="Rates" id="rates">
                             <label name="rate"/>
                             <field name="rate"/>
                             <field name="rates" colspan="4" mode="tree,form,graph">
@@ -53,7 +53,7 @@ this repository contains the full copyright notices and license terms. -->
                                 </graph>
                             </field>
                         </page>
-                        <page string="Formatting" col="6">
+                        <page string="Formatting" col="6" id="formatting">
                             <label name="digits"/>
                             <field name="digits"/>
                             <newline/>
