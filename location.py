@@ -42,21 +42,27 @@ class Location(OSV):
             'readonly': "not active",
             'required': "type == 'warehouse'",
         },
-        domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
+        domain="[('type','=','storage'), ['OR', " \
+                "('parent', 'child_of', [active_id]), " \
+                "('parent', '=', False)]]")
     output_location = fields.Many2One(
         "stock.location", "Output", states={
             'invisible': "type != 'warehouse'",
             'readonly': "not active",
             'required': "type == 'warehouse'",
         },
-        domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
+        domain="[('type','=','storage'), ['OR', " \
+                "('parent', 'child_of', [active_id]), " \
+                "('parent', '=', False)]]")
     storage_location = fields.Many2One(
         "stock.location", "Storage", states={
             'invisible': "type != 'warehouse'",
             'readonly': "not active",
             'required': "type == 'warehouse'",
         },
-        domain="[('type','=','storage'), ('parent', 'child_of', [active_id])]")
+        domain="[('type','=','storage'), ['OR', " \
+                "('parent', 'child_of', [active_id]), " \
+                "('parent', '=', False)]]")
     quantity = fields.Function('get_quantity', type='float', string='Quantity')
     forecast_quantity = fields.Function('get_quantity', type='float',
                                         string='Forecast Quantity')
@@ -142,6 +148,46 @@ class Location(OSV):
                     context=context)[0][1]
             return value + ': ' + product_name + ' (' + uom_name + ')'
         return False
+
+    def _set_warehouse_parent(self, cursor, user, locations, context=None):
+        '''
+        Set the parent of child location of warehouse if not set
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param locations: a BrowseRecordList of locations
+        :param context: the context
+        :return: a list with updated location ids
+        '''
+        location_ids = set()
+        for location in locations:
+            if location.type == 'warehouse':
+                if not location.input_location.parent:
+                    location_ids.add(location.input_location.id)
+                if not location.output_location.parent:
+                    location_ids.add(location.output_location.id)
+                if not location.storage_location.parent:
+                    location_ids.add(location.storage_location.id)
+        location_ids = list(location_ids)
+        if location_ids:
+            self.write(cursor, user, location_ids, {
+                'parent': location.id,
+                }, context=context)
+
+    def create(self, cursor, user, vals, context=None):
+        res = super(Location, self).create(cursor, user, vals, context=context)
+        locations = self.browse(cursor, user, [res], context=context)
+        self._set_warehouse_parent(cursor, user, locations, context=context)
+        return res
+
+    def write(self, cursor, user, ids, vals, context=None):
+        res = super(Location, self).write(cursor, user, ids, vals,
+                context=context)
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        locations = self.browse(cursor, user, ids, context=context)
+        self._set_warehouse_parent(cursor, user, locations, context=context)
+        return res
 
 Location()
 
