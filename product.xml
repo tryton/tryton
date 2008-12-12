@@ -9,9 +9,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/form/notebook/page[@string=&quot;General&quot;]"
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
-                      <page string="Default Locations">
+                      <page string="Default Locations" id="default_locations">
                           <field name="locations" colspan="4">
                               <tree string="Product Locations"
                                     sequence="sequence">
