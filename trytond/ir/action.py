@@ -350,6 +350,8 @@ class ActionActWindow(OSV):
             help='Use the action name as window name')
     search_value = fields.Char('Search Criteria',
             help='Default search criteria for the list view')
+    #XXX add field for issue669
+    view = fields.Function('get_view', type='char')
 
     def default_type(self, cursor, user, context=None):
         return 'ir.action.act_window'
@@ -371,6 +373,9 @@ class ActionActWindow(OSV):
 
     def default_search_value(self, cursor, user, context=None):
         return '{}'
+
+    def get_view(self, cursor, user, ids, name, arg, context=None):
+        return dict.fromkeys(ids, '')
 
     def views_get_fnc(self, cursor, user, ids, name, arg, context=None):
         res = {}
@@ -429,9 +434,14 @@ class ActionWizard(OSV):
     action = fields.Many2One('ir.action', 'Action', required=True,
             ondelete='CASCADE')
     model = fields.Char('Model')
+    #XXX add field for issue669
+    multi = fields.Function('get_multi', type='boolean')
 
     def default_type(self, cursor, user, context=None):
         return 'ir.action.wizard'
+
+    def get_multi(self, cursor, user, ids, name, arg, context=None):
+        return dict.fromkeys(ids, False)
 
     def delete(self, cursor, user, ids, context=None):
         action_obj = self.pool.get('ir.action')
