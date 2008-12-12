@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.ui.view" id="line_view_form">
@@ -13,7 +14,7 @@
                     <label name="active"/>
                     <field name="active" xexpand="0" width="100"/>
                     <notebook colspan="4">
-                        <page string="General Information">
+                        <page string="General Information" id="general">
                             <label name="account"/>
                             <field name="account"/>
                             <label name="date"/>
@@ -107,9 +108,9 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/form/notebook/page[@string=&quot;General Information&quot;]"
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
-                        <page string="Analytic" col="1">
+                        <page string="Analytic" col="1" id="analytic">
                             <separator name="analytic_lines"/>
                             <field name="analytic_lines"/>
                         </page>

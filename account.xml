@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <menuitem name="Analytic Account" parent="account.menu_account_configuration"
@@ -18,7 +19,7 @@
                     <label name="active"/>
                     <field name="active" xexpand="0" width="100"/>
                     <notebook colspan="6">
-                        <page string="General Information">
+                        <page string="General Information" id="general">
                             <label name="type"/>
                             <field name="type"/>
                             <label name="display_balance"/>
@@ -34,11 +35,11 @@
                             <label name="mandatory"/>
                             <field name="mandatory"/>
                         </page>
-                        <page string="Notes">
+                        <page string="Notes" id="notes">
                             <field name="note"/>
                         </page>
                     </notebook>
-                    <group colspan="6" col="2">
+                    <group colspan="6" col="2" id="state">
                         <label name="state"/>
                         <field name="state"/>
                     </group>
