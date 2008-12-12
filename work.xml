@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.ui.view" id="work_view_form">
@@ -11,7 +12,7 @@
                     <label name="name"/>
                     <field name="name"/>
                     <label name="state"/>
-                    <group col="3" colspan="1">
+                    <group col="3" colspan="1" id="state_active">
                         <field name="state"/>
                         <label name="active"/>
                         <field name="active"/>
