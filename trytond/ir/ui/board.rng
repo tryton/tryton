@@ -7,7 +7,7 @@
         <choice>
           <ref name="image"/>
           <ref name="separator"/>
-          <ref name="labe"/>
+          <ref name="label"/>
           <ref name="newline"/>
           <ref name="notebook"/>
           <ref name="group"/>
@@ -245,7 +245,7 @@
         <choice>
           <ref name="image"/>
           <ref name="separator"/>
-          <ref name="labe"/>
+          <ref name="label"/>
           <ref name="newline"/>
           <ref name="notebook"/>
           <ref name="group"/>
@@ -278,7 +278,7 @@
         <choice>
           <ref name="image"/>
           <ref name="separator"/>
-          <ref name="labe"/>
+          <ref name="label"/>
           <ref name="newline"/>
           <ref name="notebook"/>
           <ref name="group"/>
@@ -378,7 +378,7 @@
         <choice>
           <ref name="image"/>
           <ref name="separator"/>
-          <ref name="labe"/>
+          <ref name="label"/>
           <ref name="newline"/>
           <ref name="notebook"/>
           <ref name="group"/>
@@ -399,7 +399,7 @@
         <choice>
           <ref name="image"/>
           <ref name="separator"/>
-          <ref name="labe"/>
+          <ref name="label"/>
           <ref name="newline"/>
           <ref name="notebook"/>
           <ref name="group"/>
@@ -448,7 +448,7 @@
   <define name="action" combine="choice">
     <notAllowed/>
   </define>
-  <define name="labe" combine="choice">
+  <define name="label" combine="choice">
     <notAllowed/>
   </define>
   <start>

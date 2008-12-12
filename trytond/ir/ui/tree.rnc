@@ -51,7 +51,7 @@ attlist.field &=
     | "right_to_left"
     | "bottom_to_top"
     | "top_to_bottom"
-  }
+  }?
 button = element button { attlist.button, empty }
 attlist.button &= attribute help { text }?
 attlist.button &=
