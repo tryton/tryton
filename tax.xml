@@ -230,7 +230,6 @@ this repository contains the full copyright notices and license terms. -->
                                 <tree string="Taxes" sequence="sequence">
                                     <field name="name"/>
                                     <field name="type"/>
-                                    <field name="active"/>
                                     <field name="sequence" tree_invisible="1"/>
                                 </tree>
                             </field>
