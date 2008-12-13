@@ -267,6 +267,7 @@ class Translation(OSV, Cacheable):
                 res[(name, ttype, lang, source)] = trans
             else:
                 res[(name, ttype, lang, source)] = False
+                self.add(cursor, (lang, ttype, name, source), False)
                 if clause:
                     clause += ' OR '
                 if source:
