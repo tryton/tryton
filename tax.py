@@ -472,7 +472,7 @@ class TaxTemplate(OSV):
         new_childs = []
         for child in template.childs:
             new_childs.append(self.create_tax(cursor, user, child,
-                template2tax_code, template2account, company_id,
+                company_id, template2tax_code, template2account, 
                 context=context, template2tax=template2tax, parent_id=new_id))
         return new_id
 
