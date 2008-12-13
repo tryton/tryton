@@ -16,4 +16,6 @@ class Report(Service):
         security.check(database, user, passwd)
         Cache.clean(database)
         report = LocalService('report_proxy')
-        return report.execute(database, user, report_name, ids, datas, context)
+        res = report.execute(database, user, report_name, ids, datas, context)
+        Cache.resets(database)
+        return res

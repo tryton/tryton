@@ -39,6 +39,7 @@ class Wizard(Service):
         self.wiz_name[wiz_id] = wiz_name
         self.wiz_uid[wiz_id] = user
         self.lock.release()
+        Cache.resets(database)
         return wiz_id
 
     def execute(self, database, user, passwd, wiz_id, datas, *args):
@@ -46,7 +47,9 @@ class Wizard(Service):
         Cache.clean(database)
         if wiz_id in self.wiz_uid:
             if self.wiz_uid[wiz_id] == user:
-                return self._execute(database, user, wiz_id, datas, *args)
+                res = self._execute(database, user, wiz_id, datas, *args)
+                Cache.resets(database)
+                return res
             else:
                 raise Exception, 'AccessDenied'
         else:
@@ -62,6 +65,7 @@ class Wizard(Service):
                 del self.wiz_name[wiz_id]
                 del self.wiz_uid[wiz_id]
                 self.lock.release()
+                Cache.resets(database)
                 return wiz_id
             else:
                 raise Exception, 'AccessDenied'

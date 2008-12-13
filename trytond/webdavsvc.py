@@ -311,6 +311,7 @@ class WebDAVAuthRequestHandler(AuthServer.BufferedAuthRequestHandler,
             return 1
         USER_ID = security.login(dbname, user, password, cache=False)
         Cache.clean(dbname)
+        Cache.resets(database)
         if int(USER_ID):
             return 1
         return 0

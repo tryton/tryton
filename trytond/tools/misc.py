@@ -236,6 +236,8 @@ class Cache(object):
     Timeout: 0 = no timeout, otherwise in seconds
     """
     _cache_instance = []
+    _resets = {}
+    _resets_lock = Lock()
 
     def __init__(self, name, timeout=3600, max_len=1024):
         self.timeout = timeout
@@ -320,11 +322,14 @@ class Cache(object):
         if not CONFIG['multi_server']:
             return
         cursor = pooler.get_db(dbname).cursor()
-        cursor.execute('SELECT "timestamp", "name" FROM ir_cache')
-        timestamps = {}
-        for timestamp, name in cursor.fetchall():
-            timestamps[name] = timestamp
-        cursor.close()
+        try:
+            cursor.execute('SELECT "timestamp", "name" FROM ir_cache')
+            timestamps = {}
+            for timestamp, name in cursor.fetchall():
+                timestamps[name] = timestamp
+        finally:
+            cursor.commit()
+            cursor.close()
         for obj in Cache._cache_instance:
             if obj.name in timestamps:
                 if not obj.timestamp or timestamps[obj.name] > obj.timestamp:
@@ -339,17 +344,36 @@ class Cache(object):
     def reset(dbname, name):
         if not CONFIG['multi_server']:
             return
+        Cache._resets_lock.acquire()
+        try:
+            Cache._resets.setdefault(dbname, set())
+            Cache._resets[dbname].add(name)
+        finally:
+            Cache._resets_lock.release()
+        return
+
+    @staticmethod
+    def resets(dbname):
+        if not CONFIG['multi_server']:
+            return
         cursor = pooler.get_db(dbname).cursor()
-        cursor.execute('SELECT name FROM ir_cache WHERE name = %s',
-                    (name,))
-        if cursor.rowcount:
-            cursor.execute('UPDATE ir_cache SET "timestamp" = now() '\
-                    'WHERE name = %s', (name,))
-        else:
-            cursor.execute('INSERT INTO ir_cache ("timestamp", "name") ' \
-                    'VALUES (now(), %s)', (name,))
-        cursor.commit()
-        cursor.close()
+        Cache._resets_lock.acquire()
+        Cache._resets.setdefault(dbname, set())
+        try:
+            for name in Cache._resets[dbname]:
+                cursor.execute('SELECT name FROM ir_cache WHERE name = %s',
+                            (name,))
+                if cursor.rowcount:
+                    cursor.execute('UPDATE ir_cache SET "timestamp" = now() '\
+                            'WHERE name = %s', (name,))
+                else:
+                    cursor.execute('INSERT INTO ir_cache ("timestamp", "name") ' \
+                            'VALUES (now(), %s)', (name,))
+            Cache._resets[dbname].clear()
+        finally:
+            cursor.commit()
+            cursor.close()
+            Cache._resets_lock.release()
 
 
 def mod10r(number):

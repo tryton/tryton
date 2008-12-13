@@ -22,6 +22,7 @@ class Common(Service):
         logger = logging.getLogger("web-service")
         msg = res and 'successful login' or 'bad login or password'
         logger.info("%s from '%s' using database '%s'" % (msg, login, database))
+        Cache.resets(database)
         return res or False
 
     def about(self):

@@ -19,6 +19,7 @@ class Object(Service):
         service = LocalService("object_proxy")
         res = service.exec_workflow(database, user, object_name, method,
                 object_id, *args)
+        Cache.resets(database)
         return res
 
     def execute(self, database, user, session, object_name, method, *args):
@@ -29,6 +30,7 @@ class Object(Service):
         Cache.clean(database)
         service = LocalService("object_proxy")
         res = service.execute(database, user, object_name, method, *args)
+        Cache.resets(database)
         return res
 
     def obj_list(self, database, user, session):
@@ -36,4 +38,5 @@ class Object(Service):
         Cache.clean(database)
         service = LocalService("object_proxy")
         res = service.obj_list()
+        Cache.resets(database)
         return res
