@@ -17,6 +17,8 @@ MODULES = []
 
 if os.path.isdir(PLUGINS_PATH):
     for plugin in os.listdir(PLUGINS_PATH):
+        if not os.path.isdir(os.path.join(PLUGINS_PATH, plugin)):
+            continue
         module = os.path.splitext(plugin)[0]
         try:
             module = imp.load_module(module, *imp.find_module(module, [PLUGINS_PATH]))
