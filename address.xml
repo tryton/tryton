@@ -32,7 +32,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="party" colspan="5"/>
                     <label name="name"/>
                     <field name="name"/>
-                    <group colspan="2" col="20">
+                    <group colspan="2" col="20" id="checkboxes">
                         <label name="active"/>
                         <field name="active"
                             xexpand="0" width="25"/>

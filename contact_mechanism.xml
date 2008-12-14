@@ -31,7 +31,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="active"/>
                     <label name="type"/>
                     <field name="type"/>
-                    <group col="2" colspan="2">
+                    <group col="2" colspan="2" id="value">
                         <label name="value"/>
                         <field name="value"/>
                         <label name="website"/>

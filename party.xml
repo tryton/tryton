@@ -43,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="active"/>
                     <field name="active" xexpand="0" width="100"/>
                     <notebook colspan="6">
-                        <page string="General">
+                        <page string="General" id="general">
                             <field name="addresses" mode="form,tree" colspan="4">
                                 <tree string="Addresses" sequence="sequence"
                                     fill="1">
@@ -57,7 +57,7 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="subdivision"/>
                                 </tree>
                             </field>
-                            <group col="2" colspan="4">
+                            <group col="2" colspan="4" id="lang">
                                 <label name="lang"/>
                                 <field name="lang" widget="selection"/>
                             </group>
@@ -71,13 +71,13 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="active" tree_invisible="1"/>
                                 </tree>
                             </field>
-                            <group col="1" colspan="2">
-                                <separator string="Categories"/>
+                            <group col="1" colspan="2" id="categories">
+                                <separator string="Categories" id="categories"/>
                                 <field name="categories"/>
                             </group>
                         </page>
-                        <page string="Accounting">
-                            <separator string="VAT" colspan="4"/>
+                        <page string="Accounting" id="accounting">
+                            <separator string="VAT" colspan="4" id="vat"/>
                             <label name="vat_country"/>
                             <field name="vat_country"/>
                             <label name="vat_number"/>
