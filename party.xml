@@ -27,9 +27,9 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;Accounting&quot;]/field[@name=&quot;vat_number&quot;]"
+                        expr="/form/notebook/page[@id=&quot;accounting&quot;]/field[@name=&quot;vat_number&quot;]"
                         position="after">
-                        <separator string="Account" colspan="4"/>
+                        <separator string="Account" colspan="4" id="account"/>
                         <label name="account_payable"/>
                         <field name="account_payable"/>
                         <label name="account_receivable"/>
@@ -43,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="receivable"/>
                         <label name="payable"/>
                         <field name="payable"/>
-                        <separator string="Taxes" colspan="4"/>
+                        <separator string="Taxes" colspan="4" id="taxes"/>
                         <label name="vat"/>
                         <field name="vat"/>
                         <label name="supplier_vat"/>

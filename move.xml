@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.ui.view" id="move_view_form">
@@ -23,7 +24,7 @@
                     <field name="lines" colspan="4"/>
                     <label name="state"/>
                     <field name="state"/>
-                    <group col="2" colspan="2">
+                    <group col="2" colspan="2" id="buttons">
                         <button string="Post" name="button_post" type="object"
                             states="{'invisible': '''state == 'posted' '''}"/>
                         <button string="Draft" name="button_draft" type="object"
@@ -162,7 +163,7 @@
                     <label name="active"/>
                     <field name="active" xexpand="0" width="100"/>
                     <notebook colspan="4">
-                        <page string="General Information">
+                        <page string="General Information" id="general">
                             <label name="account"/>
                             <field name="account"/>
                             <label name="date"/>
@@ -179,7 +180,8 @@
                             <field name="debit"/>
                             <label name="credit"/>
                             <field name="credit"/>
-                            <separator string="Optional Information" colspan="4"/>
+                            <separator string="Optional Information" colspan="4"
+                                id="optional_information"/>
                             <field name="tax_lines" colspan="4"/>
                             <label name="amount_second_currency"/>
                             <field name="amount_second_currency"/>
@@ -336,7 +338,8 @@
                 <![CDATA[
                 <form string="Unreconcile" col="2">
                     <image name="tryton-dialog-information"/>
-                    <label string="If you unreconcile lines, the workflows, on those lines, will not be canceled."/>
+                    <label string="If you unreconcile lines, the workflows, on those lines, will not be canceled."
+                        id="workflows"/>
                 </form>
                 ]]>
             </field>
