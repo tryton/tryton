@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <menuitem name="Sale Management" id="menu_sale" sequence="5"/>
@@ -27,7 +28,7 @@
                     <label name="reference"/>
                     <field name="reference"/>
                     <notebook colspan="6">
-                        <page string="Sale">
+                        <page string="Sale" id="sale">
                             <label name="sale_date"/>
                             <field name="sale_date"/>
                             <label name="payment_term"/>
@@ -50,13 +51,13 @@
                                     <field name="unit_digits" tree_invisible="1"/>
                                 </tree>
                             </field>
-                            <group col="2" colspan="2">
+                            <group col="2" colspan="2" id="states">
                                 <label name="invoice_state"/>
                                 <field name="invoice_state"/>
                                 <label name="packing_state"/>
                                 <field name="packing_state"/>
                             </group>
-                            <group col="2" colspan="2">
+                            <group col="2" colspan="2" id="amount_state_buttons">
                                 <label name="untaxed_amount"/>
                                 <field name="untaxed_amount"/>
                                 <label name="tax_amount"/>
@@ -65,7 +66,7 @@
                                 <field name="total_amount"/>
                                 <label name="state"/>
                                 <field name="state"/>
-                                <group col="6" colspan="2">
+                                <group col="6" colspan="2" id="buttons">
                                     <button name="cancel" string="Cancel"
                                         states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (packing_state == 'exception')) ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                         icon="tryton-cancel"/>
@@ -87,7 +88,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Other Info">
+                        <page string="Other Info" id="other">
                             <label name="company"/>
                             <field name="company"/>
                             <newline/>
@@ -98,10 +99,10 @@
                             <separator name="comment" colspan="4"/>
                             <field name="comment" colspan="4" spell="party_lang"/>
                         </page>
-                        <page string="Invoices">
+                        <page string="Invoices" id="invoices">
                             <field name="invoices" colspan="4" widget="one2many"/>
                         </page>
-                        <page string="Packings">
+                        <page string="Packings" id="packings">
                             <field name="packings" colspan="4" widget="one2many"/>
                             <field name="moves" colspan="4" widget="one2many"/>
                         </page>
@@ -764,15 +765,16 @@
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/form/notebook/page[@string=&quot;General&quot;]/field[@name=&quot;cost_price_method&quot;]"
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/field[@name=&quot;cost_price_method&quot;]"
                         position="after">
                         <label name="salable"/>
                         <field name="salable"/>
                     </xpath>
-                    <xpath expr="/form/notebook/page[@string=&quot;General&quot;]"
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
                         <page string="Customers"
-                            states="{'invisible': '''not salable'''}">
+                            states="{'invisible': '''not salable'''}"
+                            id="customers">
                             <label name="salable"/>
                             <field name="salable"/>
                             <label name="sale_uom"/>
