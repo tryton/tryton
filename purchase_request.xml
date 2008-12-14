@@ -14,7 +14,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <form string="Purchase Request">
-                        <separator string="Product Info" colspan="4"/>
+                        <separator string="Product Info" colspan="4" id="product"/>
                         <label name="product"/>
                         <field name="product"/>
                         <newline/>
@@ -26,7 +26,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="computed_quantity"/>
                         <label name="computed_uom"/>
                         <field name="computed_uom"/>
-                        <separator string="supply Info" colspan="4"/>
+                        <separator string="Supply Info" colspan="4" id="supply"/>
                         <label name="party"/>
                         <field name="party"/>
                         <newline/>
