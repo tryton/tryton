@@ -27,7 +27,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="reference"/>
                     <field name="reference"/>
                     <notebook colspan="6">
-                        <page string="Purchase">
+                        <page string="Purchase" id="purchase">
                             <label name="purchase_date"/>
                             <field name="purchase_date"/>
                             <label name="payment_term"/>
@@ -50,13 +50,13 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="unit_digits" tree_invisible="1"/>
                                 </tree>
                             </field>
-                            <group col="2" colspan="2">
+                            <group col="2" colspan="2" id="states">
                                 <label name="invoice_state"/>
                                 <field name="invoice_state"/>
                                 <label name="packing_state"/>
                                 <field name="packing_state"/>
                             </group>
-                            <group col="2" colspan="2">
+                            <group col="2" colspan="2" id="amount_state_buttons">
                                 <label name="untaxed_amount"/>
                                 <field name="untaxed_amount"/>
                                 <label name="tax_amount"/>
@@ -65,7 +65,7 @@ this repository contains the full copyright notices and license terms. -->
                                 <field name="total_amount"/>
                                 <label name="state"/>
                                 <field name="state"/>
-                                <group col="6" colspan="2">
+                                <group col="6" colspan="2" id="buttons">
                                     <button name="cancel" string="Cancel"
                                         states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (packing_state == 'exception')) ''', 'readonly': '''%(group_purchase)d not in groups'''}"
                                         icon="tryton-cancel"/>
@@ -87,7 +87,7 @@ this repository contains the full copyright notices and license terms. -->
                                 </group>
                             </group>
                         </page>
-                        <page string="Other Info">
+                        <page string="Other Info" id="info">
                             <label name="company"/>
                             <field name="company"/>
                             <label name="invoice_method"/>
@@ -95,10 +95,10 @@ this repository contains the full copyright notices and license terms. -->
                             <separator name="comment" colspan="4"/>
                             <field name="comment" colspan="4" spell="party_lang"/>
                         </page>
-                        <page string="Invoices">
+                        <page string="Invoices" id="invoices">
                             <field name="invoices" colspan="4" widget="one2many"/>
                         </page>
-                        <page string="Packings">
+                        <page string="Packings" id="packings">
                             <field name="moves" colspan="4" widget="one2many"/>
                             <field name="packings" colspan="4" widget="one2many"/>
                         </page>
@@ -732,15 +732,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/form/notebook/page[@string=&quot;General&quot;]/field[@name=&quot;cost_price_method&quot;]"
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/field[@name=&quot;cost_price_method&quot;]"
                         position="after">
                         <label name="purchasable"/>
                         <field name="purchasable"/>
                     </xpath>
-                    <xpath expr="/form/notebook/page[@string=&quot;General&quot;]"
+                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
                         <page string="Suppliers"
-                            states="{'invisible': '''not purchasable'''}">
+                            states="{'invisible': '''not purchasable'''}"
+                            id="suppliers">
                             <label name="purchasable"/>
                             <field name="purchasable"/>
                             <label name="purchase_uom"/>
