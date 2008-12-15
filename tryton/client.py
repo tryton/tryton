@@ -18,7 +18,8 @@ if os.name == 'nt':
 import pygtk
 pygtk.require('2.0')
 import gtk
-gtk.gdk.threads_init()
+if os.name != 'nt':
+    gtk.gdk.threads_init()
 import logging
 
 import version
