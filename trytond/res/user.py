@@ -24,7 +24,8 @@ class User(OSV):
     rule_groups = fields.Many2Many('ir.rule.group', 'user_rule_group_rel',
        'user_id', 'rule_group_id', 'Rules',
        domain=[('global_p', '!=', True), ('default_p', '!=', True)])
-    language = fields.Many2One('ir.lang', 'Language')
+    language = fields.Many2One('ir.lang', 'Language',
+            domain=['OR', ('translatable', '=', True), ('code', '=', 'en_US')])
     language_direction = fields.Function('get_language_direction', type='char',
             string='Language Direction')
     timezone = fields.Selection('timezones', 'Timezone')
@@ -252,7 +253,10 @@ class User(OSV):
         if 'language' in fields:
             del fields['language']['relation']
             fields['language']['selection'] = []
-            lang_ids = lang_obj.search(cursor, user, [], context=None)
+            lang_ids = lang_obj.search(cursor, user, ['OR',
+                ('translatable', '=', True),
+                ('code', '=', 'en_US'),
+                ], context=None)
             for lang in lang_obj.browse(cursor, user, lang_ids, context=context):
                 fields['language']['selection'].append((lang.code, lang.name))
         res['fields'] = fields
