@@ -125,7 +125,7 @@ odt,purchase.purchase,0,Taxes:,Steuern:,0
 odt,purchase.purchase,0,Total:,Gesamt:,0
 odt,purchase.purchase,0,Total (excl. taxes):,Netto:,0
 odt,purchase.purchase,0,Unit Price,Einzelpreis,0
-odt,purchase.purchase,0,VAT:,USt:,0
+odt,purchase.purchase,0,VAT:,USt.:,0
 selection,"purchase.line,type",0,Line,Position,0
 selection,"purchase.line,type",0,Subtotal,Zwischensumme,0
 selection,"purchase.line,type",0,Title,Überschrift,0
@@ -147,6 +147,8 @@ selection,"purchase.purchase,state",0,Draft,Entwurf,0
 selection,"purchase.purchase,state",0,Quotation,Angebot,0
 view,product.product,0,Product Suppliers,Lieferanten,0
 view,product.product,0,Suppliers,Lieferanten,0
+view,product.template,0,Product Suppliers,Lieferanten,0
+view,product.template,0,Suppliers,Lieferanten,0
 view,purchase.line,0,Products,Artikel,0
 view,purchase.line,0,Purchase Line,Position Einkauf,0
 view,purchase.line,0,Purchase Lines,Positionen Einkauf,0
