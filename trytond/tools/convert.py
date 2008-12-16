@@ -562,13 +562,28 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                                 object_ref._inherit_fields[field_name][0])._name
                         res_id = inherit_db_ids[table_name]
                     if field.translate and values.get(field_name):
-                        cursor.execute('INSERT INTO ir_translation ' \
-                                '(name, lang, type, src, res_id, ' \
-                                    'value, module, fuzzy) ' \
-                                'VALUES (%s, %s, %s, %s, %s, %s, %s, false)',
+                        cursor.execute('SELECT id FROM ir_translation ' \
+                                'WHERE name = %s ' \
+                                    'AND lang = %s ' \
+                                    'AND type = %s ' \
+                                    'AND res_id = %s ' \
+                                    'AND module = %s',
                                 (table_name + ',' + field_name,
-                                    'en_US', 'model', values[field_name],
-                                    res_id, '', module))
+                                    'en_US', 'model', res_id, module))
+                        if cursor.rowcount:
+                            trans_id = cursor.fetchone()[0]
+                            cursor.execute('UPDATE ir_translation ' \
+                                    'SET src = %s, module = %s ' \
+                                    'WHERE id = %s',
+                                    (values[field_name], module, trans_id))
+                        else:
+                            cursor.execute('INSERT INTO ir_translation ' \
+                                    '(name, lang, type, src, res_id, ' \
+                                        'value, module, fuzzy) ' \
+                                    'VALUES (%s, %s, %s, %s, %s, %s, %s, false)',
+                                    (table_name + ',' + field_name,
+                                        'en_US', 'model', values[field_name],
+                                        res_id, '', module))
 
                 for table in inherit_db_ids.keys():
                     data_id = self.modeldata_obj.search(cursor, user, [
@@ -670,12 +685,13 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                     res_id = inherit_db_ids[table_name]
                 if field.translate:
                     cursor.execute('SELECT id FROM ir_translation ' \
-                            'WHERE name = %s' \
+                            'WHERE name = %s ' \
                                 'AND lang = %s ' \
                                 'AND type = %s ' \
-                                'AND res_id = %s',
+                                'AND res_id = %s ' \
+                                'AND module = %s',
                             (table_name + ',' + field_name,
-                                'en_US', 'model', res_id))
+                                'en_US', 'model', res_id, module))
                     if cursor.rowcount:
                         if to_update.get(field_name):
                             trans_id = cursor.fetchone()[0]
