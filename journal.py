@@ -120,7 +120,7 @@ class Journal(OSV):
                 property_obj.set(cursor, 0, 'sequence', self._name,
                         journal_id, (sequence_id and \
                                 'ir.sequence,' + str(sequence_id) or False))
-            cursor.execute('ALTER TABLE "' + self._table +'" ' \
+            cursor.execute('ALTER TABLE "' + self._table + '" ' \
                     'DROP COLUMN sequence')
 
     def default_active(self, cursor, user, context=None):
