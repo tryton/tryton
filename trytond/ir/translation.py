@@ -292,10 +292,9 @@ class Translation(OSV, Cacheable):
             cursor.execute('SELECT lang, type, name, src, value ' \
                     'FROM ir_translation ' \
                     'WHERE ' + clause, value)
-            for lang, ttype, name, src, value in cursor.fetchall():
+            for lang, ttype, name, source, value in cursor.fetchall():
                 res[(name, ttype, lang, source)] = value
-                self.add(cursor, (lang, ttype, name, source),
-                        res[(name, ttype, lang, source)])
+                self.add(cursor, (lang, ttype, name, source), value)
         return res
 
     def delete(self, cursor, user, ids, context=None):
