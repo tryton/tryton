@@ -19,7 +19,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Products">
+                    <tree string="Product Templates">
                         <field name="name" select="1"/>
                         <field name="list_price_uom" select="2"/>
                         <field name="cost_price_uom" select="2"/>
@@ -37,7 +37,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Product">
+                    <form string="Product Template">
                       <label name="name"/>
                       <field name="name" xexpand="1"/>
                       <label name="active"/>
@@ -73,6 +73,11 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
+                        expr="/tree"
+                        position="replace_attributes">
+                        <tree string="Products"/>
+                    </xpath>
+                    <xpath
                         expr="/tree/field[@name=&quot;name&quot;]"
                         position="after">
                         <field name="code" select="1"/>
@@ -89,6 +94,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
+                    <xpath
+                        expr="/form"
+                        position="replace_attributes">
+                        <form string="Products"/>
+                    </xpath>
                     <xpath
                         expr="/form/notebook/page[@id=&quot;general&quot;]/label[@name=&quot;type&quot;]"
                         position="before">
