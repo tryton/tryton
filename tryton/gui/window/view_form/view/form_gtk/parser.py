@@ -672,7 +672,7 @@ class ParserForm(ParserInterface):
 
     def translate(self, widget, model, name, src, widget_entry):
         obj_id = self.screen.current_model.id
-        if not obj_id:
+        if obj_id < 0:
             common.message(
                     _('You need to save the record before adding translations!'),
                     parent=self.window)
