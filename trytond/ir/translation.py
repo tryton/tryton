@@ -271,6 +271,7 @@ class Translation(OSV, Cacheable):
                 if clause:
                     clause += ' OR '
                 if source:
+                    source = source.strip().replace('\n',' ')
                     clause += '(lang = %s ' \
                             'AND type = %s ' \
                             'AND name = %s ' \
