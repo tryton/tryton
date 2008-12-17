@@ -11,6 +11,11 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
+                        expr="/form"
+                        position="replace_attributes">
+                        <form string="Company"/>
+                    </xpath>
+                    <xpath
                         expr="/form/label[@name=&quot;code&quot;]"
                         position="replace">
                         <label name="parent"/>
@@ -288,6 +293,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
+                    <xpath
+                        expr="/form"
+                        position="replace_attributes">
+                        <form string="Employee"/>
+                    </xpath>
                     <xpath
                         expr="/form/label[@name=&quot;code&quot;]"
                         position="replace">
