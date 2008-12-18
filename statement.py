@@ -518,7 +518,8 @@ class Line(OSV):
         else:
             account = journal.debit_account
         if not account:
-            self.raise_user_error(cursor, 'debit_credit_account_bank_journal',
+            self.raise_user_error(cursor,
+                    'debit_credit_account_statement_journal',
                     context=context)
         if statement_line.account.id == account.id:
             self.raise_user_error(cursor, 'same_debit_credit_account',
