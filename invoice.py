@@ -362,7 +362,6 @@ class Invoice(OSV):
         currency_obj = self.pool.get('currency.currency')
         if context is None:
             context = {}
-        company = None
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
@@ -374,7 +373,6 @@ class Invoice(OSV):
         company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
-        company = None
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
@@ -1403,7 +1401,6 @@ class InvoiceLine(OSV):
         currency_obj = self.pool.get('currency.currency')
         if context is None:
             context = {}
-        company = None
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
@@ -1415,7 +1412,6 @@ class InvoiceLine(OSV):
         company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
-        company = None
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
