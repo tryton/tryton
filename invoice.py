@@ -237,6 +237,7 @@ class Invoice(OSV):
     'Invoice'
     _name = 'account.invoice'
     _description = __doc__
+    _order_name = 'number'
     company = fields.Many2One('company.company', 'Company', required=True,
             states=_STATES)
     type = fields.Selection(_TYPE, 'Type', select=1, on_change=['type'],
@@ -361,7 +362,6 @@ class Invoice(OSV):
         currency_obj = self.pool.get('currency.currency')
         if context is None:
             context = {}
-        company = None
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
@@ -373,7 +373,6 @@ class Invoice(OSV):
         company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
-        company = None
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
@@ -1402,7 +1401,6 @@ class InvoiceLine(OSV):
         currency_obj = self.pool.get('currency.currency')
         if context is None:
             context = {}
-        company = None
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
@@ -1414,7 +1412,6 @@ class InvoiceLine(OSV):
         company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
-        company = None
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
