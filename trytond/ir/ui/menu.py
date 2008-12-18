@@ -110,7 +110,7 @@ class UIMenu(OSV):
 
     def get_full_name(self, cursor, user, ids, name, args, context):
         res = {}
-        for menu in self.browse(cursor, user, ids):
+        for menu in self.browse(cursor, user, ids, context=context):
             res[menu.id] = self._get_one_full_name(menu)
         return res
 
