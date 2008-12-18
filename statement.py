@@ -308,6 +308,8 @@ class Line(OSV):
                     'credit account on statement journal.',
             'same_debit_credit_account': 'Credit or debit account on ' \
                     'journal is the same than the statement line account!',
+            'amount_greater_invoice_amount_to_pay': 'Amount (%s) greater than '\
+                    'the amount to pay of invoice!',
             })
 
     def on_change_party(self, cursor, user, ids, value, context=None):
@@ -402,6 +404,10 @@ class Line(OSV):
         invoice_obj = self.pool.get('account.invoice')
         currency_obj = self.pool.get('currency.currency')
         move_line_obj = self.pool.get('account.move.line')
+        lang_obj = self.pool.get('ir.lang')
+
+        if context is None:
+            context = {}
 
         period_id = period_obj.find(cursor, user,
                 line.statement.journal.company.id, date=line.date,
@@ -421,6 +427,25 @@ class Line(OSV):
             }, context=context)
 
         if line.invoice:
+
+            amount_to_pay = currency_obj.compute(cursor, user,
+                    line.invoice.currency, line.invoice.amount_to_pay,
+                    line.statement.journal.currency, context=context)
+            if amount_to_pay < abs(line.amount):
+                for code in [context.get('language', False) or 'en_US', 'en_US']:
+                    lang_ids = lang_obj.search(cursor, user, [
+                        ('code', '=', code),
+                        ], context=context)
+                    if lang_ids:
+                        break
+                lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
+
+                amount = lang_obj.currency(lang, line.amount,
+                        line.statement.journal.currency, symbol=False, grouping=True)
+                self.raise_user_error(cursor,
+                        'amount_greater_invoice_amount_to_pay',
+                        error_args=(amount,), context=context)
+
             amount = currency_obj.compute(cursor, user,
                     line.statement.journal.currency, line.amount,
                     line.statement.journal.company.currency,
