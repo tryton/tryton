@@ -134,6 +134,8 @@ class Product(OSV):
         location_obj = self.pool.get('stock.location')
         date_obj = self.pool.get('ir.date')
 
+        today = date_obj.today(cursor, user, context=context)
+
         if not location_ids:
             return []
         if context is None:
@@ -162,16 +164,19 @@ class Product(OSV):
             context['stock_date_end'] = datetime.date.max
 
         # date end in the past or today: filter on state done
-        if context['stock_date_end'] < date_obj.today(cursor, user,
-                context=context) or \
-                        (context['stock_date_end'] == \
-                        date_obj.today(cursor, user, context=context) \
-                            and not context.get('forecast')):
-            state_date_clause = '((state in (%s, %s)) AND ('\
-                '(effective_date IS NULL '\
-                 'AND ( planned_date <= %s)) '\
-                 'OR effective_date <= %s'\
-                '))'
+        if context['stock_date_end'] < today or \
+                (context['stock_date_end'] == today \
+                and not context.get('forecast')):
+            state_date_clause = \
+                '('\
+                 '(state in (%s, %s)) '\
+                 'AND ('\
+                      '(effective_date IS NULL '\
+                       'AND ( planned_date <= %s) '\
+                      ')'\
+                      'OR effective_date <= %s'\
+                     ')'\
+                ')'
             state_date_vals = ["done",
                     context.get('stock_assign') and 'assigned' or 'done',
                     context['stock_date_end'],
@@ -185,21 +190,27 @@ class Product(OSV):
         # before today, or on all state and date between today and
         # date_end.
         else:
-            state_date_clause = '((' + \
-                '(state in (%s, %s)) AND ('\
-                  '(effective_date IS NULL '\
-                  'AND ( planned_date <= %s )) '\
-                  'OR effective_date <= %s)' \
-                + \
-                ') OR (' + \
-                 '(state in (%s, %s, %s)) AND ('\
-                 '(effective_date IS NULL '\
-                   'AND ( planned_date <= %s AND  planned_date >= %s '\
-                        ')) '\
-                   'OR (effective_date <= %s AND effective_date >= %s)'\
-                  ')'\
-                '))'
-            today = date_obj.today(cursor, user, context=context)
+            state_date_clause = \
+                '((' + \
+                  '(state in (%s, %s)) '\
+                  'AND ('\
+                       '(effective_date IS NULL '\
+                        'AND (planned_date <= %s ) '\
+                       ')'\
+                       'OR effective_date <= %s' \
+                      ')'\
+                 ')'\
+                 'OR (' + \
+                     '(state in (%s, %s, %s)) '\
+                     'AND ('\
+                          '(effective_date IS NULL '\
+                           'AND (planned_date <= %s AND  planned_date >= %s) '\
+                          ') '\
+                          'OR (effective_date <= %s AND effective_date >= %s)'\
+                         ')'\
+                    ')'\
+                ') '
+
             state_date_vals = [
                 'done', 'assigned', today, today,
                 'done', 'assigned', 'draft',
@@ -208,35 +219,43 @@ class Product(OSV):
                 ]
 
         if context.get('stock_date_start'):
-            if  context['stock_date_start'] > date_obj.today(cursor, user,
-                    context=context):
-                state_date_clause += ' AND ((state in (%s, %s, %s)) AND ('\
-                    '(effective_date IS NULL '\
-                     'AND ( planned_date >= %s OR planned_date IS NULL)) '\
-                     'OR effective_date >= %s'\
-                    '))'
+            if  context['stock_date_start'] > today:
+                state_date_clause += \
+                    'AND ((state in (%s, %s, %s)) '\
+                          'AND ('\
+                               '(effective_date IS NULL '\
+                                'AND (planned_date >= %s OR planned_date IS NULL)'\
+                               ') '\
+                               'OR effective_date >= %s'\
+                              ')'\
+                         ') '
                 state_date_vals.extend(
                     ['done', 'assigned', 'draft',
                      context['stock_date_start'], context['stock_date_start']])
             else:
-                tmp_clause = '(state in (%s, %s, %s)) AND ('\
-                    '(effective_date IS NULL '\
-                     'AND ( planned_date >= %s OR planned_date IS NULL)) '\
-                     'OR effective_date >= %s'\
-                    ')'
-                today = date_obj.today(cursor, user, context=context)
-                state_date_vals.extend(
-                 ['done', 'assigned', 'draft', today, today])
+                state_date_clause += \
+                'AND ((' \
+                      '(state in (%s, %s, %s)) '\
+                      'AND ('\
+                           '(effective_date IS NULL '\
+                            'AND (planned_date >= %s OR planned_date IS NULL) '\
+                           ')'\
+                           'OR effective_date >= %s'\
+                          ')'\
+                     ') '\
+                     'OR (' + \
+                         '(state in (%s, %s)) AND '\
+                         '('\
+                          '(effective_date IS NULL '\
+                           'AND (( planned_date >= %s AND  planned_date < %s ) '\
+                                'OR planned_date IS NULL)) '\
+                          'OR (effective_date >= %s AND effective_date < %s)'\
+                         ')'\
+                        ')'\
+                    ') '
 
-                state_date_clause += ' AND ((' + tmp_clause + \
-                    ') OR (' + \
-                     '(state in (%s, %s)) AND ('\
-                     '(effective_date IS NULL '\
-                       'AND (( planned_date >= %s AND  planned_date < %s ) '\
-                            'OR planned_date IS NULL)) '\
-                       'OR (effective_date >= %s AND effective_date < %s)'\
-                      ')'\
-                    '))'
+                state_date_vals.extend(
+                    ['done', 'assigned', 'draft', today, today])
                 state_date_vals.extend([
                     'done',
                     context.get('stock_assign') and 'assigned' or 'done',
