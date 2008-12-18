@@ -765,7 +765,8 @@ class PurchaseLine(OSV):
             }, on_change=['product', 'unit', 'quantity', 'description',
                 '_parent_purchase.party', '_parent_purchase.currency'],
             context="{'locations': [_parent_purchase.warehouse], " \
-                    "'stock_date_end': _parent_purchase.purchase_date}")
+                    "'stock_date_end': _parent_purchase.purchase_date, " \
+                    "'purchasable': True}")
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
                 'invisible': "type != 'line'",
@@ -1150,6 +1151,10 @@ class Template(OSV):
         on_change_with=['default_uom', 'purchase_uom'])
 
     def default_purchasable(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        if context.get('purchasable'):
+            return True
         return False
 
     def on_change_with_purchase_uom(self, cursor, user, ids, vals,
