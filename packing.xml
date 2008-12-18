@@ -26,7 +26,7 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="warehouse"/>
                         <field name="warehouse"/>
                         <notebook colspan="6">
-                            <page string="Incoming Moves">
+                            <page string="Incoming Moves" id="incoming_moves">
                                 <field name="incoming_moves" colspan="4">
                                     <tree string="Moves">
                                         <field name="product" select="1"/>
@@ -40,14 +40,14 @@ this repository contains the full copyright notices and license terms. -->
                                     </tree>
                                 </field>
                             </page>
-                            <page string="Inventory Moves">
+                            <page string="Inventory Moves" id="inventory_moves">
                                 <field name="inventory_moves" colspan="4"/>
                             </page>
                         </notebook>
-                        <group col="4" colspan="6">
+                        <group col="4" colspan="6" id="state_buttons">
                             <label name="state"/>
                             <field name="state"/>
-                            <group col="5" colspan="2">
+                            <group col="5" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
                                     states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                     icon="tryton-cancel"/>
@@ -180,17 +180,17 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="effective_date"/>
                         <field name="effective_date"/>
                         <notebook colspan="4">
-                            <page string="Inventory Moves">
+                            <page string="Inventory Moves" id="inventory_moves">
                                 <field name="inventory_moves" colspan="4"/>
                             </page>
-                            <page string="Outgoing Moves">
+                            <page string="Outgoing Moves" id="outgoing_moves">
                                 <field name="outgoing_moves" colspan="4"/>
                             </page>
                         </notebook>
-                        <group col="4" colspan="4">
+                        <group col="4" colspan="4" id="state_buttons">
                             <label name="state"/>
                             <field name="state"/>
-                            <group col="8" colspan="2">
+                            <group col="8" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
                                         states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                         icon="tryton-cancel"/>
@@ -348,7 +348,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="moves"  colspan="4"/>
                         <label name="state"/>
                         <field name="state"/>
-                        <group col="7" colspan="2">
+                        <group col="7" colspan="2" id="buttons">
                             <button string="Cancel" name="cancel"
                                 states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                 icon="tryton-cancel"/>

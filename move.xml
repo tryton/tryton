@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.ui.view" id="move_view_form">
@@ -28,7 +29,7 @@
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
-                        <separator colspan="4"/>
+                        <separator colspan="4" id="separator"/>
                         <label name="state"/>
                         <field name="state"/>
                         <field name="unit_price_required" invisible="1" colspan="4"/>

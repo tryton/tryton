@@ -127,51 +127,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <!-- Default locations -->
-        <record model="stock.location" id="location_warehouse">
-            <field name="name">Warehouse</field>
-        </record>
-        <record model="stock.location" id="location_input">
-            <field name="name">Input Zone</field>
-            <field name="code">IN</field>
-            <field name="type">storage</field>
-            <field name="parent" ref="location_warehouse"/>
-        </record>
-        <record model="stock.location" id="location_output">
-            <field name="name">Output Zone</field>
-            <field name="code">OUT</field>
-            <field name="type">storage</field>
-            <field name="parent" ref="location_warehouse"/>
-        </record>
-        <record model="stock.location" id="location_storage">
-            <field name="name">Storage Zone</field>
-            <field name="code">STO</field>
-            <field name="type">storage</field>
-            <field name="parent" ref="location_warehouse"/>
-        </record>
-        <record model="stock.location" id="location_warehouse" update="1">
-            <field name="name">Warehouse</field>
-            <field name="code">WH</field>
-            <field name="type">warehouse</field>
-            <field name="input_location" ref="location_input"/>
-            <field name="output_location" ref="location_output"/>
-            <field name="storage_location" ref="location_storage"/>
-        </record>
-        <record model="stock.location" id="location_supplier">
-            <field name="name">Supplier</field>
-            <field name="code">SUP</field>
-            <field name="type">supplier</field>
-        </record>
-        <record model="stock.location" id="location_customer">
-            <field name="name">Customer</field>
-            <field name="code">CUS</field>
-            <field name="type">customer</field>
-        </record>
-        <record model="stock.location" id="location_lost_found">
-            <field name="name">Lost and Found</field>
-            <field name="type">lost_found</field>
-        </record>
-
         <record model="ir.ui.view" id="party_view_form">
             <field name="model">party.party</field>
             <field name="inherit" ref="party.party_view_form"/>
@@ -179,9 +134,9 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page[@string=&quot;Accounting&quot;]"
+                        expr="/form/notebook/page[@id=&quot;accounting&quot;]"
                         position="after">
-                        <page string="Stock">
+                        <page string="Stock" id="stock">
                             <label name="customer_location"/>
                             <field name="customer_location"/>
                             <label name="supplier_location"/>
@@ -204,6 +159,47 @@ this repository contains the full copyright notices and license terms. -->
                 </form>
                 ]]>
             </field>
+        </record>
+
+    </data>
+    <data noupdate="1">
+        <!-- Default locations -->
+        <record model="stock.location" id="location_input">
+            <field name="name">Input Zone</field>
+            <field name="code">IN</field>
+            <field name="type">storage</field>
+        </record>
+        <record model="stock.location" id="location_output">
+            <field name="name">Output Zone</field>
+            <field name="code">OUT</field>
+            <field name="type">storage</field>
+        </record>
+        <record model="stock.location" id="location_storage">
+            <field name="name">Storage Zone</field>
+            <field name="code">STO</field>
+            <field name="type">storage</field>
+        </record>
+        <record model="stock.location" id="location_warehouse">
+            <field name="name">Warehouse</field>
+            <field name="code">WH</field>
+            <field name="type">warehouse</field>
+            <field name="input_location" ref="location_input"/>
+            <field name="output_location" ref="location_output"/>
+            <field name="storage_location" ref="location_storage"/>
+        </record>
+        <record model="stock.location" id="location_supplier">
+            <field name="name">Supplier</field>
+            <field name="code">SUP</field>
+            <field name="type">supplier</field>
+        </record>
+        <record model="stock.location" id="location_customer">
+            <field name="name">Customer</field>
+            <field name="code">CUS</field>
+            <field name="type">customer</field>
+        </record>
+        <record model="stock.location" id="location_lost_found">
+            <field name="name">Lost and Found</field>
+            <field name="type">lost_found</field>
         </record>
 
         <record model="ir.property" id="property_supplier_location">
