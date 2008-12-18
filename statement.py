@@ -261,8 +261,8 @@ class Line(OSV):
     def __init__(self):
         super(Line, self).__init__()
         self._error_messages.update({
-            'debit_credit_account_bank_journal': 'Please provide debit and ' \
-                    'credit account on bank journal.',
+            'debit_credit_account_statement_journal': 'Please provide debit and ' \
+                    'credit account on statement journal.',
             'same_debit_credit_account': 'Credit or debit account on ' \
                     'journal is the same than the statement line account!',
             })
