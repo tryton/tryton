@@ -296,7 +296,7 @@ class Line(OSV):
     invoice = fields.Many2One('account.invoice', 'Invoice',
             domain="[('party', '=', party), ('account', '=', account)] " \
                     "+ (_parent_statement.state == 'draft' and " \
-                        "[('state', '=', 'open')]) or []",
+                        "[('state', '=', 'open')] or [])",
             states={
                 'readonly': "not bool(amount)",
             })
