@@ -1583,6 +1583,7 @@ class CreateChartAccount(Wizard):
         template2tax_code = {}
         tax_code_template_ids = tax_code_template_obj.search(cursor, user, [
             ('account', '=', datas['form']['account_template']),
+            ('parent', '=', False),
             ], context=context)
         for tax_code_template in tax_code_template_obj.browse(cursor, user,
                 tax_code_template_ids, context=context):
@@ -1593,6 +1594,7 @@ class CreateChartAccount(Wizard):
         template2tax = {}
         tax_template_ids = tax_template_obj.search(cursor, user, [
             ('account', '=', datas['form']['account_template']),
+            ('parent', '=', False),
             ], context=context)
         for tax_template in tax_template_obj.browse(cursor, user,
                 tax_template_ids, context=context):
