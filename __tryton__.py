@@ -24,10 +24,12 @@
         'company',
         'currency',
         'party',
+        'account_invoice',
         ],
     'xml': [
         'statement.xml',
         'journal.xml',
+        'invoice.xml',
         ],
     'translation': [
         'de_DE.csv',
