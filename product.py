@@ -169,13 +169,17 @@ class Product(OSV):
                 and not context.get('forecast')):
             state_date_clause = \
                 '('\
-                 '(state in (%s, %s)) '\
-                 'AND ('\
-                      '(effective_date IS NULL '\
-                       'AND ( planned_date <= %s) '\
-                      ')'\
-                      'OR effective_date <= %s'\
-                     ')'\
+                    '(state in (%s, %s)) '\
+                'AND '\
+                    '('\
+                        '('\
+                            '(effective_date IS NULL) '\
+                        'AND ' \
+                            '(planned_date <= %s) '\
+                        ') '\
+                    'OR '\
+                        '(effective_date <= %s)'\
+                    ')'\
                 ')'
             state_date_vals = ["done",
                     context.get('stock_assign') and 'assigned' or 'done',
@@ -191,25 +195,41 @@ class Product(OSV):
         # date_end.
         else:
             state_date_clause = \
-                '((' + \
-                  '(state in (%s, %s)) '\
-                  'AND ('\
-                       '(effective_date IS NULL '\
-                        'AND (planned_date <= %s ) '\
-                       ')'\
-                       'OR effective_date <= %s' \
-                      ')'\
-                 ')'\
-                 'OR (' + \
-                     '(state in (%s, %s, %s)) '\
-                     'AND ('\
-                          '(effective_date IS NULL '\
-                           'AND (planned_date <= %s AND  planned_date >= %s) '\
-                          ') '\
-                          'OR (effective_date <= %s AND effective_date >= %s)'\
-                         ')'\
+                '(' \
+                    '('\
+                        '(state in (%s, %s)) '\
+                    'AND '\
+                        '('\
+                            '('\
+                                '(effective_date IS NULL) '\
+                            'AND ' \
+                                '(planned_date <= %s) '\
+                            ') '\
+                        'OR '\
+                            '(effective_date <= %s)' \
+                        ')'\
                     ')'\
-                ') '
+                'OR '\
+                    '('\
+                        '(state in (%s, %s, %s)) '\
+                    'AND '\
+                        '('\
+                            '(' \
+                                '(effective_date IS NULL) '\
+                            'AND '\
+                                '(planned_date <= %s) '\
+                            'AND '\
+                                '(planned_date >= %s)'\
+                            ')'\
+                        'OR '\
+                            '(' \
+                                '(effective_date <= %s) '\
+                            'AND '\
+                                '(effective_date >= %s)'\
+                            ')'\
+                        ')'\
+                    ')'\
+                ')'
 
             state_date_vals = [
                 'done', 'assigned', today, today,
@@ -220,43 +240,76 @@ class Product(OSV):
 
         if context.get('stock_date_start'):
             if  context['stock_date_start'] > today:
-                state_date_clause += \
-                    'AND ((state in (%s, %s, %s)) '\
-                          'AND ('\
-                               '(effective_date IS NULL '\
-                                'AND (planned_date >= %s OR planned_date IS NULL)'\
-                               ') '\
-                               'OR effective_date >= %s'\
-                              ')'\
-                         ') '
-                state_date_vals.extend(
-                    ['done', 'assigned', 'draft',
+                state_date_clause += 'AND '\
+                        '('\
+                            '(state in (%s, %s, %s)) '\
+                        'AND '\
+                            '('\
+                                '('\
+                                    '(effective_date IS NULL) '\
+                                'AND '\
+                                    '('\
+                                        '(planned_date >= %s) '\
+                                    'OR '\
+                                        '(planned_date IS NULL)'\
+                                    ')'\
+                                ') '\
+                            'OR '\
+                                '(effective_date >= %s)'\
+                            ')'\
+                        ')'
+                state_date_vals.extend(['done', 'assigned', 'draft',
                      context['stock_date_start'], context['stock_date_start']])
             else:
-                state_date_clause += \
-                'AND ((' \
-                      '(state in (%s, %s, %s)) '\
-                      'AND ('\
-                           '(effective_date IS NULL '\
-                            'AND (planned_date >= %s OR planned_date IS NULL) '\
-                           ')'\
-                           'OR effective_date >= %s'\
-                          ')'\
-                     ') '\
-                     'OR (' + \
-                         '(state in (%s, %s)) AND '\
-                         '('\
-                          '(effective_date IS NULL '\
-                           'AND (( planned_date >= %s AND  planned_date < %s ) '\
-                                'OR planned_date IS NULL)) '\
-                          'OR (effective_date >= %s AND effective_date < %s)'\
-                         ')'\
-                        ')'\
-                    ') '
+                state_date_clause += 'AND '\
+                        '('\
+                            '('\
+                                '(state in (%s, %s, %s)) '\
+                            'AND '\
+                                '('\
+                                    '('\
+                                        '(effective_date IS NULL) '\
+                                    'AND '\
+                                        '('\
+                                            '(planned_date >= %s) '\
+                                        'OR '\
+                                            '(planned_date IS NULL)'\
+                                        ') '\
+                                    ')'\
+                                'OR '\
+                                    '(effective_date >= %s)'\
+                                ')'\
+                            ') '\
+                        'OR '\
+                            '('\
+                                '(state in (%s, %s)) '\
+                            'AND '\
+                                '('\
+                                    '('\
+                                        '(effective_date IS NULL) '\
+                                    'AND '\
+                                        '('\
+                                            '('\
+                                                '(planned_date >= %s) '\
+                                            'AND '\
+                                                '(planned_date < %s)'\
+                                            ') '\
+                                        'OR '\
+                                            '(planned_date IS NULL)'\
+                                        ')'\
+                                    ') '\
+                                'OR '\
+                                    '('\
+                                        '(effective_date >= %s) '\
+                                    'AND '\
+                                        '(effective_date < %s)'\
+                                    ')'\
+                                ')'\
+                            ')'\
+                        ')'
 
-                state_date_vals.extend(
-                    ['done', 'assigned', 'draft', today, today])
-                state_date_vals.extend([
+                state_date_vals.extend(['done', 'assigned', 'draft',
+                    today, today,
                     'done',
                     context.get('stock_assign') and 'assigned' or 'done',
                     context['stock_date_start'], today,
