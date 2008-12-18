@@ -169,7 +169,7 @@ class Product(OSV):
                             and not context.get('forecast')):
             state_date_clause = '((state in (%s, %s)) AND ('\
                 '(effective_date IS NULL '\
-                 'AND ( planned_date <= %s or planned_date IS NULL)) '\
+                 'AND ( planned_date <= %s)) '\
                  'OR effective_date <= %s'\
                 '))'
             state_date_vals = ["done",
@@ -188,14 +188,14 @@ class Product(OSV):
             state_date_clause = '((' + \
                 '(state in (%s, %s)) AND ('\
                   '(effective_date IS NULL '\
-                  'AND ( planned_date <= %s or planned_date IS NULL)) '\
+                  'AND ( planned_date <= %s )) '\
                   'OR effective_date <= %s)' \
                 + \
                 ') OR (' + \
                  '(state in (%s, %s, %s)) AND ('\
                  '(effective_date IS NULL '\
-                   'AND (( planned_date <= %s AND  planned_date >= %s ) '\
-                        'OR planned_date IS NULL)) '\
+                   'AND ( planned_date <= %s AND  planned_date >= %s '\
+                        ')) '\
                    'OR (effective_date <= %s AND effective_date >= %s)'\
                   ')'\
                 '))'
@@ -212,7 +212,7 @@ class Product(OSV):
                     context=context):
                 state_date_clause += ' AND ((state in (%s, %s, %s)) AND ('\
                     '(effective_date IS NULL '\
-                     'AND ( planned_date >= %s)) '\
+                     'AND ( planned_date >= %s OR planned_date IS NULL)) '\
                      'OR effective_date >= %s'\
                     '))'
                 state_date_vals.extend(
@@ -221,7 +221,7 @@ class Product(OSV):
             else:
                 tmp_clause = '(state in (%s, %s, %s)) AND ('\
                     '(effective_date IS NULL '\
-                     'AND ( planned_date >= %s)) '\
+                     'AND ( planned_date >= %s OR planned_date IS NULL)) '\
                      'OR effective_date >= %s'\
                     ')'
                 today = date_obj.today(cursor, user, context=context)
@@ -233,7 +233,7 @@ class Product(OSV):
                      '(state in (%s, %s)) AND ('\
                      '(effective_date IS NULL '\
                        'AND (( planned_date >= %s AND  planned_date < %s ) '\
-                            ')) '\
+                            'OR planned_date IS NULL)) '\
                        'OR (effective_date >= %s AND effective_date < %s)'\
                       ')'\
                     '))'
