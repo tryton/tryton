@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="res.group" id="group_statement">
@@ -31,6 +32,7 @@
                                     <field name="amount"/>
                                     <field name="party"/>
                                     <field name="account"/>
+                                    <field name="invoice"/>
                                     <field name="description"/>
                                 </tree>
                             </field>
@@ -52,6 +54,7 @@
                             <field name="move_lines"/>
                         </page>
                     </notebook>
+                    <field name="currency_digits" colspan="4" invisible="1"/>
                 </form>
                 ]]>
             </field>
@@ -160,8 +163,11 @@
                     <field name="party"/>
                     <label name="account"/>
                     <field name="account"/>
+                    <label name="invoice"/>
+                    <field name="invoice"/>
+                    <newline/>
                     <label name="description"/>
-                    <field name="description"/>
+                    <field name="description" colspan="3"/>
                     <label name="move"/>
                     <field name="move"/>
                 </form>
@@ -178,6 +184,7 @@
                     <field name="amount"/>
                     <field name="party"/>
                     <field name="account"/>
+                    <field name="invoice"/>
                     <field name="description"/>
                 </tree>
                 ]]>

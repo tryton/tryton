@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Statement Journal"
 
 from trytond.osv import fields, OSV
@@ -10,7 +11,7 @@ class Journal(OSV):
     _description = __doc__
 
     name = fields.Char('Name', required=True)
-    journal = fields.Many2One('account.journal', 'Statement Journal', required=True,
+    journal = fields.Many2One('account.journal', 'Journal', required=True,
         domain="[('type', '=', 'statement')]")
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
