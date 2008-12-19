@@ -888,7 +888,8 @@ class SaleLine(OSV):
             }, on_change=['product', 'unit', 'quantity', 'description',
                 '_parent_sale.party', '_parent_sale.currency'],
             context="{'locations': [_parent_sale.warehouse], " \
-                    "'stock_date_end': _parent_sale.sale_date}")
+                    "'stock_date_end': _parent_sale.sale_date, " \
+                    "'salable': True}")
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
                 'invisible': "type != 'line'",
@@ -1256,6 +1257,10 @@ class Template(OSV):
         on_change_with=['default_uom', 'sale_uom'])
 
     def default_salable(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        if context.get('salable'):
+            return True
         return False
 
     def on_change_with_sale_uom(self, cursor, user, ids, vals, context=None):
