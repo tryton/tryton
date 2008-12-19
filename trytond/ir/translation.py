@@ -107,6 +107,9 @@ class Translation(OSV, Cacheable):
 
     def _get_ids(self, cursor, name, ttype, lang, ids):
         translations, to_fetch = {}, []
+        name = unicode(name)
+        ttype = unicode(ttype)
+        lang = unicode(lang)
         if name.split(',')[0] == 'ir.model.field':
             model_fields_obj = self.pool.get('ir.model.field')
             field_name = name.split(',')[1]
@@ -213,6 +216,11 @@ class Translation(OSV, Cacheable):
         return len(ids)
 
     def _get_source(self, cursor, name, ttype, lang, source=None):
+        name = unicode(name)
+        ttype = unicode(ttype)
+        lang = unicode(lang)
+        if source is not None:
+            source = unicode(source)
         trans = self.get(cursor, (lang, ttype, name, source))
         if trans is not None:
             return trans
@@ -262,6 +270,10 @@ class Translation(OSV, Cacheable):
                 res.update(self._get_sources(cursor, sub_args))
             return res
         for name, ttype, lang, source in args:
+            name = unicode(name)
+            ttype = unicode(ttype)
+            lang = unicode(lang)
+            source = unicode(source)
             trans = self.get(cursor, (lang, ttype, name, source))
             if trans is not None:
                 res[(name, ttype, lang, source)] = trans
