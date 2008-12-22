@@ -57,6 +57,7 @@ class Move(OSV):
                 'required': "unit_price_required",
                 'readonly': "state != 'draft'",
             })
+    cost_price = fields.Numeric('Cost Price', digits=(16, 4), readonly=True)
     currency = fields.Many2One('currency.currency', 'Currency',
             states={
                 'invisible': "not unit_price_required",
@@ -386,6 +387,8 @@ class Move(OSV):
         location_obj = self.pool.get('stock.location')
         product_obj = self.pool.get('product.product')
 
+        vals = vals.copy()
+
         if vals.get('state') == 'done':
             if not vals.get('effective_date'):
                 vals['effective_date'] = datetime.date.today()
@@ -407,6 +410,10 @@ class Move(OSV):
                     cursor, user, vals['product'], -vals['quantity'],
                     vals['uom'], vals['unit_price'], vals['currency'],
                     vals['company'], context=context)
+            #Re-read the product because cost_price has been updated
+            product = product_obj.browse(cursor, user, vals['product'],
+                    context=context)
+            vals['cost_price'] = product.cost_price
         return super(Move, self).create(cursor, user, vals, context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
@@ -463,8 +470,16 @@ class Move(OSV):
                             cursor, user, move.product.id, -move.quantity,
                             move.uom, move.unit_price, move.currency,
                             move.company, context=context)
+        res = super(Move, self).write(cursor, user, ids, vals, context=context)
 
-        return super(Move, self).write(cursor, user, ids, vals, context=context)
+        if vals.get('state', '') == 'done':
+            #Re-read the move because cost_price has been updated
+            for move in self.browse(cursor, user, ids, context=context):
+                if not move.cost_price:
+                    self.write(cursor, user, move.id, {
+                        'cost_price': move.product.cost_price,
+                        }, context=context)
+        return res
 
     def delete(self, cursor, user, ids, context=None):
         for move in self.browse(cursor, user, ids, context=context):
