@@ -237,13 +237,14 @@ class ModelRecord(SignalEvent):
                       for name, mfield in self.mgroup.mfields.items()])
         return value
 
-    def set_default(self, val):
+    def set_default(self, val, signal=True):
         for fieldname, value in val.items():
             if fieldname not in self.mgroup.mfields:
                 continue
             self.mgroup.mfields[fieldname].set_default(self, value)
         self._loaded = True
-        self.signal('record-changed')
+        if signal:
+            self.signal('record-changed')
 
     def set(self, val, modified=False, signal=True):
         later = {}

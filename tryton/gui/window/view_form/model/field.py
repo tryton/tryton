@@ -507,7 +507,8 @@ class O2MField(CharField):
 
         mod = None
         if value and value.get('add') or value.get('update', []):
-            model.value[self.name].add_fields(fields, model.value[self.name])
+            model.value[self.name].add_fields(fields, model.value[self.name],
+                    signal=False)
             for record in value.get('add', []):
                 mod = model.value[self.name].model_new(default=False)
                 model.value[self.name].model_add(mod)

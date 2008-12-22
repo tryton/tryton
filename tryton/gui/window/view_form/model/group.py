@@ -320,7 +320,7 @@ class ModelRecordGroup(SignalEvent):
                 model.value[fname] = self.mfields[fname].create(model)
         return to_add
 
-    def add_fields(self, fields, models, context=None):
+    def add_fields(self, fields, models, context=None, signal=True):
         if context is None:
             context = {}
         to_add = self.add_fields_custom(fields, models)
@@ -364,7 +364,7 @@ class ModelRecordGroup(SignalEvent):
                 if field_to_add not in values:
                     values[field_to_add] = False
             for mod in new:
-                mod.set_default(values)
+                mod.set_default(values, signal=signal)
 
     def __iter__(self):
         return iter(self.models)
