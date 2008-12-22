@@ -103,8 +103,8 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="packings" colspan="4" widget="one2many"/>
                         </page>
                     </notebook>
-                    <field name="currency_digits" invisible="1"/>
-                    <field name="party_lang" invisible="1"/>
+                    <field name="currency_digits" invisible="1" colspan="6"/>
+                    <field name="party_lang" invisible="1" colspan="6"/>
                 </form>
                 ]]>
             </field>
