@@ -470,11 +470,12 @@ class Line(OSV):
 
     def post_move(self, cursor, user, lines, context=None):
         move_obj = self.pool.get('account.move')
-        move_obj.post(cursor, user, [l.move.id for l in lines], context=context)
+        move_obj.post(cursor, user, [l.move.id for l in lines if l.move],
+                context=context)
 
     def delete_move(self, cursor, user, lines, context=None):
         move_obj = self.pool.get('account.move')
-        move_obj.delete(cursor, user, [l.move.id for l in lines],
+        move_obj.delete(cursor, user, [l.move.id for l in lines if l.move],
                 context=context)
 
     def _get_move_lines(self, cursor, user, statement_line, context=None):
