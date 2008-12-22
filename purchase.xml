@@ -21,7 +21,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="party"/>
                     <label name="invoice_address"/>
                     <field name="invoice_address"/>
-                    <newline/>
+                    <label name="supplier_reference"/>
+                    <field name="supplier_reference"/>
                     <label name="description"/>
                     <field name="description" colspan="3"/>
                     <label name="reference"/>
@@ -116,7 +117,8 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Purchases">
                     <field name="reference" select="1"/>
-                    <field name="purchase_date" select="1"/>
+                    <field name="supplier_reference" select="1"/>
+                    <field name="purchase_date" select="2"/>
                     <field name="party" select="1"/>
                     <field name="warehouse"/>
                     <field name="currency" select="2"/>

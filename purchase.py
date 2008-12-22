@@ -24,6 +24,7 @@ class Purchase(OSV):
                 'readonly': "state != 'draft' or bool(lines)",
             })
     reference = fields.Char('Reference', size=None, readonly=True, select=1)
+    supplier_reference = fields.Char('Supplier Reference', select=1)
     description = fields.Char('Description', size=None, states=_STATES)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -576,6 +577,9 @@ class Purchase(OSV):
         if name:
             ids = self.search(cursor, user,
                     [('reference', operator, name)] + args, limit=limit,
+                    context=context)
+            ids += self.search(cursor, user,
+                    [('supplier_reference', operator, name)] + args, limit=limit,
                     context=context)
         if not ids:
             ids = self.search(cursor, user, [('party', operator, name)] + args,
