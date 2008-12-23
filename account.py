@@ -1947,29 +1947,29 @@ class AgedBalance(Report):
                         datetime.timedelta(days=terms[position-1]*coef),
                     )
 
-            cursor.execute(
-                'SELECT l.party, SUM(l.debit) - SUM(l.credit) ' \
-                  'FROM account_move_line l ' \
-                  'JOIN account_move m on (l.move = m.id) '
-                  'JOIN account_account a on (l.account = a.id) '
-                'WHERE l.party is not null '\
-                  'AND a.active ' \
-                  'AND a.kind in ('+ ','.join('%s' for i in kind) + ") "\
-                  'AND l.reconciliation IS NULL ' \
-                  'AND a.company = %s ' \
-                  'AND '+ term_query+\
-                  'AND ' + line_query + ' ' \
-                  'GROUP BY l.party',
-                kind + (datas['form']['company'],) + term_args)
+            cursor.execute('SELECT l.party, SUM(l.debit) - SUM(l.credit) ' \
+                    'FROM account_move_line l ' \
+                        'JOIN account_move m ON (l.move = m.id) '
+                        'JOIN account_account a ON (l.account = a.id) '
+                    'WHERE l.party IS NOT NULL '\
+                        'AND a.active ' \
+                        'AND a.kind IN ('+ ','.join('%s' for i in kind) + ") "\
+                        'AND l.reconciliation IS NULL ' \
+                        'AND a.company = %s ' \
+                        'AND '+ term_query+\
+                        'AND ' + line_query + ' ' \
+                    'GROUP BY l.party ' \
+                    'HAVING (SUM(l.debit) - SUM(l.credit) != 0)',
+                    kind + (datas['form']['company'],) + term_args)
             for party, solde in cursor.fetchall():
                 if party in res:
                     res[party][position] = solde
                 else:
-                    res[party] = [i[0] == position and solde or Decimal("0.0")\
-                                      for i in enumerate(terms)]
-        parties = party_obj.name_get(
-                cursor, user, [k for k in res.iterkeys()], context=context)
-        parties.sort(lambda x,y: cmp(x[1],y[1]))
+                    res[party] = [(i[0] == position) and solde \
+                            or Decimal("0.0") for i in enumerate(terms)]
+        parties = party_obj.name_get(cursor, user, [k for k in res.iterkeys()],
+                context=context)
+        parties.sort(lambda x, y: cmp(x[1], y[1]))
 
         context['main_title'] = datas['form']['balance_type']
         context['unit'] = datas['form']['unit']
@@ -1978,11 +1978,12 @@ class AgedBalance(Report):
             context['term' + str(i)] = terms[i]
 
         context['company'] = company
-        context['parties']= ({'name': p[1],
-                              'amount0': res[p[0]][0],
-                              'amount1': res[p[0]][1],
-                              'amount2': res[p[0]][2],
-                              } for p in parties)
+        context['parties']= [{
+            'name': p[1],
+            'amount0': res[p[0]][0],
+            'amount1': res[p[0]][1],
+            'amount2': res[p[0]][2],
+            } for p in parties]
 
         return super(AgedBalance, self).parse(cursor, user, report, objects,
                 datas, context)
