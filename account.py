@@ -1164,6 +1164,8 @@ class PrintTrialBalanceInit(WizardOSV):
                     "('start_date', '>=', (start_period, 'start_date'))]")
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Only posted move')
+    empty_account = fields.Boolean('Empty Account',
+            help='With account without move')
 
     def default_fiscalyear(self, cursor, user, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
@@ -1186,6 +1188,9 @@ class PrintTrialBalanceInit(WizardOSV):
         return False
 
     def default_posted(self, cursor, user, context=None):
+        return False
+
+    def default_empty_account(self, cursor, user, context=None):
         return False
 
     def on_change_fiscalyear(self, cursor, user, ids, vals, context=None):
@@ -1274,6 +1279,15 @@ class TrialBalance(Report):
         ctx['posted'] = datas['form']['posted']
         accounts = account_obj.browse(cursor, user, account_ids,
                 context=ctx)
+
+        if not datas['form']['empty_account']:
+            to_remove = []
+            for account in accounts:
+                if account.debit == Decimal('0.0') \
+                        and account.credit == Decimal('0.0'):
+                    to_remove.append(account)
+            for account in to_remove:
+                accounts.remove(account)
 
         periods = period_obj.browse(cursor, user, end_period_ids,
                 context=context)
