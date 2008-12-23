@@ -50,7 +50,7 @@ The following snippet gives a first idea of what can be done:
                                     'party', 'category', 'Categories')
   Party()
 
-Instantiating the class make it alive for the framework. Actually
+Instantiating the class makes it alive for the framework. Actually
 there will be only one instance per class and per database. So model
 instances are essentially accessors to the underlying table. Columns of
 the table correspond to the fields of the class. Rows of the table
