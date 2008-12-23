@@ -644,7 +644,8 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Print General Ledger">
                     <label name="fiscalyear"/>
                     <field name="fiscalyear"/>
-                    <newline/>
+                    <label name="empty_account"/>
+                    <field name="empty_account"/>
                     <label name="start_period"/>
                     <field name="start_period"/>
                     <label name="end_period"/>

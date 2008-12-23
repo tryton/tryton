@@ -957,6 +957,8 @@ class PrintGeneralLegderInit(WizardOSV):
                     "('start_date', '>=', (start_period, 'start_date'))]")
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Only posted move')
+    empty_account = fields.Boolean('Empty Account',
+            help='With account without move')
 
     def default_fiscalyear(self, cursor, user, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
@@ -979,6 +981,9 @@ class PrintGeneralLegderInit(WizardOSV):
         return False
 
     def default_posted(self, cursor, user, context=None):
+        return False
+
+    def default_empty_account(self, cursor, user, context=None):
         return False
 
     def on_change_fiscalyear(self, cursor, user, ids, vals, context=None):
@@ -1088,6 +1093,15 @@ class GeneralLegder(Report):
         periods.sort(lambda x, y: cmp(x.end_date, y.end_date))
         context['end_period'] = periods[-1]
 
+        if not datas['form']['empty_account']:
+            to_remove = []
+            for account_id in account_ids:
+                if not self.get_line_ids(cursor, user, account_id,
+                        end_period_ids, datas['form']['posted'], context):
+                    to_remove.append(account_id)
+            for account_id in to_remove:
+                account_ids.remove(account_id)
+
         context['accounts'] = account_obj.browse(cursor, user, account_ids,
                 context=context)
         context['id2start_account'] = id2start_account
@@ -1100,11 +1114,9 @@ class GeneralLegder(Report):
         return super(GeneralLegder, self).parse(cursor, user, report, objects,
                 datas, context)
 
-    def lines(self, cursor, user, account_id, period_ids, posted, context):
+    def get_line_ids(self, cursor, user, account_id, period_ids, posted,
+            context):
         move_line_obj = self.pool.get('account.move.line')
-        period_obj = self.pool.get('account.period')
-        res = []
-
         clause = [
             ('account', '=', account_id),
             ('period', 'in', period_ids),
@@ -1112,8 +1124,14 @@ class GeneralLegder(Report):
             ]
         if posted:
             clause.append(('move.state', '=', 'posted'))
-        move_line_ids = move_line_obj.search(cursor, user, clause,
+        return move_line_obj.search(cursor, user, clause,
                 context=context)
+
+    def lines(self, cursor, user, account_id, period_ids, posted, context):
+        move_line_obj = self.pool.get('account.move.line')
+        res = []
+        move_line_ids = self.get_line_ids(cursor, user, account_id, period_ids,
+                posted, context)
         move_lines = move_line_obj.browse(cursor, user, move_line_ids,
                 context=context)
         move_lines.sort(lambda x, y: cmp(x.date, y.date))
