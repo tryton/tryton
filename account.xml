@@ -854,26 +854,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Open Aged Balance" col="4">
-                    <label name="company"/>
-                    <field name="company"/>
                     <label name="fiscalyear"/>
                     <field name="fiscalyear"/>
-                        <label name="balance_type"/>
-                        <field name="balance_type"/>
-                        <label name="posted"/>
-                        <field name="posted"/>
-                    <group string="Terms" colspan="2" id="terms">
-                        <label name="term1"/>
-                        <field name="term1"/>
-                        <newline/>
-                        <label name="term2"/>
-                        <field name="term2"/>
-                        <newline/>
-                        <label name="term3"/>
-                        <field name="term3"/>
-                        <label name="unit"/>
-                        <field name="unit"/>
-                    </group>
+                    <newline/>
+                    <label name="balance_type"/>
+                    <field name="balance_type"/>
+                    <newline/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                    <separator string="Terms" colspan="4" id="terms"/>
+                    <label name="term1"/>
+                    <field name="term1"/>
+                    <newline/>
+                    <label name="term2"/>
+                    <field name="term2"/>
+                    <newline/>
+                    <label name="term3"/>
+                    <field name="term3"/>
+                    <label name="unit"/>
+                    <field name="unit"/>
                 </form>
                 ]]>
             </field>
