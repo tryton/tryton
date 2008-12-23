@@ -1762,7 +1762,7 @@ class ThirdPartyBalance(Report):
         context['fiscalyear'] = datas['form']['fiscalyear']
         line_query, _ = move_line_obj.query_get(cursor, user, context=context)
         if datas['form']['posted']:
-            posted_clause = "and m.state = 'posted' "
+            posted_clause = "AND m.state = 'posted' "
         else:
             posted_clause = ""
 
