@@ -228,7 +228,10 @@ class TrytonServer(object):
 
         signal.signal(signal.SIGINT, handler)
         signal.signal(signal.SIGTERM, handler)
-        signal.signal(signal.SIGUSR1, handler)
+        if hasattr(signal, 'SIGQUIT'):
+            signal.signal(signal.SIGQUIT, handler)
+        if hasattr(signal, 'SIGUSR1'):
+            signal.signal(signal.SIGUSR1, handler)
 
         self.logger.info('the server is running, waiting for connections...')
         if CONFIG['netrpc']:
