@@ -1767,34 +1767,36 @@ class ThirdPartyBalance(Report):
             posted_clause = ""
 
         cursor.execute('SELECT l.party, SUM(l.debit), SUM(l.credit) ' \
-                       'FROM account_move_line l ' \
-                         'JOIN account_move m on (l.move = m.id) '
-                         'JOIN account_account a on (l.account = a.id) '
-                       'WHERE l.party is not null '\
-                         'AND a.active ' \
-                         'AND a.kind in (\'payable\',\'receivable\') ' \
-                         'AND l.reconciliation IS NULL ' \
-                         'AND a.company = %s ' \
-                         'AND (l.maturity_date <= %s ' \
-                               'OR l.maturity_date IS NULL) '\
-                         'AND ' + line_query + ' ' \
-                         + posted_clause + \
-                       'GROUP BY l.party',
-                       (datas['form']['company'], date_obj.today(cursor, user,
+                'FROM account_move_line l ' \
+                    'JOIN account_move m ON (l.move = m.id) '
+                    'JOIN account_account a ON (l.account = a.id) '
+                'WHERE l.party IS NOT NULL '\
+                    'AND a.active ' \
+                    'AND a.kind IN (\'payable\',\'receivable\') ' \
+                    'AND l.reconciliation IS NULL ' \
+                    'AND a.company = %s ' \
+                    'AND (l.maturity_date <= %s ' \
+                        'OR l.maturity_date IS NULL) '\
+                    'AND ' + line_query + ' ' \
+                    + posted_clause + \
+                'GROUP BY l.party ' \
+                'HAVING (SUM(l.debit) != 0 OR SUM(l.credit) != 0)',
+                (datas['form']['company'], date_obj.today(cursor, user,
                            context=context)))
 
         res = cursor.fetchall()
-        party_name = dict(party_obj.name_get(
-                cursor, user, [x[0] for x in res],
-                context=context))
-        objects = [{'name': party_name[x[0]],
-                 'debit': x[1],
-                 'credit': x[2],
-                 'solde': x[1]-x[2]} for x in res]
-        objects.sort(lambda x,y: cmp(x['name'],y['name']))
-        context['total_debit'] = sum((o['debit'] for o in objects))
-        context['total_credit'] = sum((o['credit'] for o in objects))
-        context['total_solde'] = sum((o['solde'] for o in objects))
+        party_name = dict(party_obj.name_get(cursor, user, [x[0] for x in res],
+            context=context))
+        objects = [{
+            'name': party_name[x[0]],
+            'debit': x[1],
+            'credit': x[2],
+            'solde': x[1] - x[2],
+            } for x in res]
+        objects.sort(lambda x, y: cmp(x['name'], y['name']))
+        context['total_debit'] = sum((x['debit'] for x in objects))
+        context['total_credit'] = sum((x['credit'] for x in objects))
+        context['total_solde'] = sum((x['solde'] for x in objects))
 
         return super(ThirdPartyBalance, self).parse(cursor, user, report,
                 objects, datas, context)
