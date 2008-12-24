@@ -957,6 +957,8 @@ class PrintGeneralLegderInit(WizardOSV):
                     "('start_date', '>=', (start_period, 'start_date'))]")
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Only posted move')
+    empty_account = fields.Boolean('Empty Account',
+            help='With account without move')
 
     def default_fiscalyear(self, cursor, user, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
@@ -979,6 +981,9 @@ class PrintGeneralLegderInit(WizardOSV):
         return False
 
     def default_posted(self, cursor, user, context=None):
+        return False
+
+    def default_empty_account(self, cursor, user, context=None):
         return False
 
     def on_change_fiscalyear(self, cursor, user, ids, vals, context=None):
@@ -1088,6 +1093,15 @@ class GeneralLegder(Report):
         periods.sort(lambda x, y: cmp(x.end_date, y.end_date))
         context['end_period'] = periods[-1]
 
+        if not datas['form']['empty_account']:
+            to_remove = []
+            for account_id in account_ids:
+                if not self.get_line_ids(cursor, user, account_id,
+                        end_period_ids, datas['form']['posted'], context):
+                    to_remove.append(account_id)
+            for account_id in to_remove:
+                account_ids.remove(account_id)
+
         context['accounts'] = account_obj.browse(cursor, user, account_ids,
                 context=context)
         context['id2start_account'] = id2start_account
@@ -1100,11 +1114,9 @@ class GeneralLegder(Report):
         return super(GeneralLegder, self).parse(cursor, user, report, objects,
                 datas, context)
 
-    def lines(self, cursor, user, account_id, period_ids, posted, context):
+    def get_line_ids(self, cursor, user, account_id, period_ids, posted,
+            context):
         move_line_obj = self.pool.get('account.move.line')
-        period_obj = self.pool.get('account.period')
-        res = []
-
         clause = [
             ('account', '=', account_id),
             ('period', 'in', period_ids),
@@ -1112,8 +1124,14 @@ class GeneralLegder(Report):
             ]
         if posted:
             clause.append(('move.state', '=', 'posted'))
-        move_line_ids = move_line_obj.search(cursor, user, clause,
+        return move_line_obj.search(cursor, user, clause,
                 context=context)
+
+    def lines(self, cursor, user, account_id, period_ids, posted, context):
+        move_line_obj = self.pool.get('account.move.line')
+        res = []
+        move_line_ids = self.get_line_ids(cursor, user, account_id, period_ids,
+                posted, context)
         move_lines = move_line_obj.browse(cursor, user, move_line_ids,
                 context=context)
         move_lines.sort(lambda x, y: cmp(x.date, y.date))
@@ -1146,6 +1164,8 @@ class PrintTrialBalanceInit(WizardOSV):
                     "('start_date', '>=', (start_period, 'start_date'))]")
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Only posted move')
+    empty_account = fields.Boolean('Empty Account',
+            help='With account without move')
 
     def default_fiscalyear(self, cursor, user, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
@@ -1168,6 +1188,9 @@ class PrintTrialBalanceInit(WizardOSV):
         return False
 
     def default_posted(self, cursor, user, context=None):
+        return False
+
+    def default_empty_account(self, cursor, user, context=None):
         return False
 
     def on_change_fiscalyear(self, cursor, user, ids, vals, context=None):
@@ -1256,6 +1279,15 @@ class TrialBalance(Report):
         ctx['posted'] = datas['form']['posted']
         accounts = account_obj.browse(cursor, user, account_ids,
                 context=ctx)
+
+        if not datas['form']['empty_account']:
+            to_remove = []
+            for account in accounts:
+                if account.debit == Decimal('0.0') \
+                        and account.credit == Decimal('0.0'):
+                    to_remove.append(account)
+            for account in to_remove:
+                accounts.remove(account)
 
         periods = period_obj.browse(cursor, user, end_period_ids,
                 context=context)
@@ -1730,39 +1762,41 @@ class ThirdPartyBalance(Report):
         context['fiscalyear'] = datas['form']['fiscalyear']
         line_query, _ = move_line_obj.query_get(cursor, user, context=context)
         if datas['form']['posted']:
-            posted_clause = "and m.state = 'posted' "
+            posted_clause = "AND m.state = 'posted' "
         else:
             posted_clause = ""
 
         cursor.execute('SELECT l.party, SUM(l.debit), SUM(l.credit) ' \
-                       'FROM account_move_line l ' \
-                         'JOIN account_move m on (l.move = m.id) '
-                         'JOIN account_account a on (l.account = a.id) '
-                       'WHERE l.party is not null '\
-                         'AND a.active ' \
-                         'AND a.kind in (\'payable\',\'receivable\') ' \
-                         'AND l.reconciliation IS NULL ' \
-                         'AND a.company = %s ' \
-                         'AND (l.maturity_date <= %s ' \
-                               'OR l.maturity_date IS NULL) '\
-                         'AND ' + line_query + ' ' \
-                         + posted_clause + \
-                       'GROUP BY l.party',
-                       (datas['form']['company'], date_obj.today(cursor, user,
+                'FROM account_move_line l ' \
+                    'JOIN account_move m ON (l.move = m.id) '
+                    'JOIN account_account a ON (l.account = a.id) '
+                'WHERE l.party IS NOT NULL '\
+                    'AND a.active ' \
+                    'AND a.kind IN (\'payable\',\'receivable\') ' \
+                    'AND l.reconciliation IS NULL ' \
+                    'AND a.company = %s ' \
+                    'AND (l.maturity_date <= %s ' \
+                        'OR l.maturity_date IS NULL) '\
+                    'AND ' + line_query + ' ' \
+                    + posted_clause + \
+                'GROUP BY l.party ' \
+                'HAVING (SUM(l.debit) != 0 OR SUM(l.credit) != 0)',
+                (datas['form']['company'], date_obj.today(cursor, user,
                            context=context)))
 
         res = cursor.fetchall()
-        party_name = dict(party_obj.name_get(
-                cursor, user, [x[0] for x in res],
-                context=context))
-        objects = [{'name': party_name[x[0]],
-                 'debit': x[1],
-                 'credit': x[2],
-                 'solde': x[1]-x[2]} for x in res]
-        objects.sort(lambda x,y: cmp(x['name'],y['name']))
-        context['total_debit'] = sum((o['debit'] for o in objects))
-        context['total_credit'] = sum((o['credit'] for o in objects))
-        context['total_solde'] = sum((o['solde'] for o in objects))
+        party_name = dict(party_obj.name_get(cursor, user, [x[0] for x in res],
+            context=context))
+        objects = [{
+            'name': party_name[x[0]],
+            'debit': x[1],
+            'credit': x[2],
+            'solde': x[1] - x[2],
+            } for x in res]
+        objects.sort(lambda x, y: cmp(x['name'], y['name']))
+        context['total_debit'] = sum((x['debit'] for x in objects))
+        context['total_credit'] = sum((x['credit'] for x in objects))
+        context['total_solde'] = sum((x['solde'] for x in objects))
 
         return super(ThirdPartyBalance, self).parse(cursor, user, report,
                 objects, datas, context)
@@ -1913,29 +1947,29 @@ class AgedBalance(Report):
                         datetime.timedelta(days=terms[position-1]*coef),
                     )
 
-            cursor.execute(
-                'SELECT l.party, SUM(l.debit) - SUM(l.credit) ' \
-                  'FROM account_move_line l ' \
-                  'JOIN account_move m on (l.move = m.id) '
-                  'JOIN account_account a on (l.account = a.id) '
-                'WHERE l.party is not null '\
-                  'AND a.active ' \
-                  'AND a.kind in ('+ ','.join('%s' for i in kind) + ") "\
-                  'AND l.reconciliation IS NULL ' \
-                  'AND a.company = %s ' \
-                  'AND '+ term_query+\
-                  'AND ' + line_query + ' ' \
-                  'GROUP BY l.party',
-                kind + (datas['form']['company'],) + term_args)
+            cursor.execute('SELECT l.party, SUM(l.debit) - SUM(l.credit) ' \
+                    'FROM account_move_line l ' \
+                        'JOIN account_move m ON (l.move = m.id) '
+                        'JOIN account_account a ON (l.account = a.id) '
+                    'WHERE l.party IS NOT NULL '\
+                        'AND a.active ' \
+                        'AND a.kind IN ('+ ','.join('%s' for i in kind) + ") "\
+                        'AND l.reconciliation IS NULL ' \
+                        'AND a.company = %s ' \
+                        'AND '+ term_query+\
+                        'AND ' + line_query + ' ' \
+                    'GROUP BY l.party ' \
+                    'HAVING (SUM(l.debit) - SUM(l.credit) != 0)',
+                    kind + (datas['form']['company'],) + term_args)
             for party, solde in cursor.fetchall():
                 if party in res:
                     res[party][position] = solde
                 else:
-                    res[party] = [i[0] == position and solde or Decimal("0.0")\
-                                      for i in enumerate(terms)]
-        parties = party_obj.name_get(
-                cursor, user, [k for k in res.iterkeys()], context=context)
-        parties.sort(lambda x,y: cmp(x[1],y[1]))
+                    res[party] = [(i[0] == position) and solde \
+                            or Decimal("0.0") for i in enumerate(terms)]
+        parties = party_obj.name_get(cursor, user, [k for k in res.iterkeys()],
+                context=context)
+        parties.sort(lambda x, y: cmp(x[1], y[1]))
 
         context['main_title'] = datas['form']['balance_type']
         context['unit'] = datas['form']['unit']
@@ -1944,11 +1978,12 @@ class AgedBalance(Report):
             context['term' + str(i)] = terms[i]
 
         context['company'] = company
-        context['parties']= ({'name': p[1],
-                              'amount0': res[p[0]][0],
-                              'amount1': res[p[0]][1],
-                              'amount2': res[p[0]][2],
-                              } for p in parties)
+        context['parties']= [{
+            'name': p[1],
+            'amount0': res[p[0]][0],
+            'amount1': res[p[0]][1],
+            'amount2': res[p[0]][2],
+            } for p in parties]
 
         return super(AgedBalance, self).parse(cursor, user, report, objects,
                 datas, context)
