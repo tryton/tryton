@@ -2776,10 +2776,13 @@ class ORM(object):
     def _order_calc(self, cursor, user, field, otype, context=None):
         order_by = []
         tables = []
+        tables_args = {}
         field_name = None
         table_name = None
         link_field = None
-        clause = ''
+
+        if context is None:
+            context = {}
 
         if field in self._columns:
             table_name = self._table
@@ -2803,42 +2806,64 @@ class ORM(object):
                     field_name = obj._order_name
 
                 if field_name:
-                    order_by, tables, clause = obj._order_calc(cursor, user,
-                            field_name, otype, context=context)
+                    order_by, tables, tables_args = obj._order_calc(cursor,
+                            user, field_name, otype, context=context)
                     table_join = 'LEFT JOIN "' + table_name + '" ON ' \
                             '%s.id = %s.%s' % (table_name, self._table,
                                     link_field)
                     if table_join not in tables:
-                        tables.append(table_join)
-                    return order_by, tables, clause
+                        tables.insert(0, table_join)
+                    return order_by, tables, tables_args
 
                 obj2 = None
                 if obj._rec_name in obj._inherit_fields.keys():
-                    obj2 = self.pool.get(obj._inherit_fields[obj._rec_name][0])
+                    obj2 = self.pool.get(
+                            obj._inherit_fields[obj._rec_name][0])
                     field_name = obj._rec_name
 
                 if obj._order_name in obj._inherit_fields.keys():
-                    obj2 = self.pool.get(obj._inherit_fields[obj._order_name][0])
+                    obj2 = self.pool.get(
+                            obj._inherit_fields[obj._order_name][0])
                     field_name = obj._order_name
 
                 if obj2 and field_name:
                     table_name2 = obj2._table
                     link_field2 = obj._inherits[obj2._name]
-                    order_by, tables, clause = obj2._order_calc(cursor, user,
-                            field_name, otype, context=context)
+                    order_by, tables, tables_args = obj2._order_calc(cursor,
+                            user, field_name, otype, context=context)
 
                     table_join = 'LEFT JOIN "' + table_name + '" ON ' \
                             '%s.id = %s.%s' % \
                             (table_name, self._table, link_field)
                     if table_join not in tables:
-                        tables.append(table_join)
+                        tables.insert(0, table_join)
 
                     table_join2 = 'LEFT JOIN "' + table_name2 + '" ON ' \
                             '%s.id = %s.%s' % \
                             (table_name2, obj._table, link_field2)
                     if table_join2 not in tables:
-                        tables.append(table_join2)
-                    return order_by, tables, clause
+                        tables.insert(0, table_join2)
+                    return order_by, tables, tables_args
+
+            if field_name in self._columns \
+                    and self._columns[field_name].translate:
+                translation_table = 'ir_translation_%s_%s' % \
+                        (table_name, field_name)
+                table_join = 'LEFT JOIN "ir_translation" ' \
+                        'AS "%s" ON ' \
+                        '(%s.res_id = %s.id ' \
+                            'AND %s.name = \'%s,%s\' ' \
+                            'AND %s.lang = %%s ' \
+                            'AND %s.type = \'model\')' % \
+                        (translation_table, translation_table, table_name,
+                                translation_table, self._name, field_name,
+                                translation_table, translation_table)
+                if table_join not in tables:
+                    tables.append(table_join)
+                    tables_args[table_join] = [context.get('language') or 'en_US']
+                order_by.append('COALESCE(' + translation_table + '.value, ' \
+                        + table_name + '.' + field_name + ') ' + otype)
+                return order_by, tables, tables_args
 
             if field_name:
                 if '%(table)s' in field_name or '%(order)s' in field_name:
@@ -2848,20 +2873,20 @@ class ORM(object):
                         })
                 else:
                     order_by.append(table_name + '.' + field_name + ' ' + otype)
-                return order_by, tables, clause
+                return order_by, tables, tables_args
 
         if field in self._inherit_fields.keys():
             obj = self.pool.get(self._inherit_fields[field][0])
             table_name = obj._table
             link_field = self._inherits[obj._name]
-            order_by, tables, clause = obj._order_calc(cursor, user, field,
+            order_by, tables, tables_args = obj._order_calc(cursor, user, field,
                     otype, context=context)
             table_join = 'LEFT JOIN "' + table_name + '" ON ' \
                     '%s.id = %s.%s' % \
                     (table_name, self._table, link_field)
             if table_join not in tables:
                 tables.append(table_join)
-            return order_by, tables, clause
+            return order_by, tables, tables_args
 
         raise Exception('Error', 'Wrong field name (%s) in order!' \
                 % field)
@@ -2900,17 +2925,14 @@ class ORM(object):
         for field, otype in (order or self._order):
             if otype.upper() not in ('DESC', 'ASC'):
                 raise Exception('Error', 'Wrong order type (%s)!' % otype)
-            order_by2, tables2, clause = self._order_calc(cursor, user,
+            order_by2, tables2, tables2_args = self._order_calc(cursor, user,
                     field, otype, context=context)
             order_by += order_by2
             for table in tables2:
                 if table not in tables:
                     tables.append(table)
-            if clause:
-                if qu1:
-                    qu1 += ' AND ' + clause
-                else:
-                    qu1 = clause
+                    if tables2_args.get(table):
+                        tables_args.extend(tables2_args.get(table))
 
         order_by = ','.join(order_by)
 
