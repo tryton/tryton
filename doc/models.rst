@@ -192,7 +192,7 @@ Or one of these relation types:
      'Addresses')``. This correspond in the database to a foreign key
      (who's name is ``party``) from the ``relationship_address`` table
      to the table of the current model. A ``One2Many`` alone will not
-     work, it rely on the ``Many2One`` to create the foreign key.
+     work, it relies on the ``Many2One`` to create the foreign key.
 
    * ``Many2Many``: A relation from the current model to another one
      where many record of the current model can be linked to many
