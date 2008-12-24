@@ -2842,7 +2842,7 @@ class ORM(object):
                             '%s.id = %s.%s' % \
                             (table_name2, obj._table, link_field2)
                     if table_join2 not in tables:
-                        tables.insert(0, table_join2)
+                        tables.insert(1, table_join2)
                     return order_by, tables, tables_args
 
             if field_name in self._columns \
@@ -2885,7 +2885,7 @@ class ORM(object):
                     '%s.id = %s.%s' % \
                     (table_name, self._table, link_field)
             if table_join not in tables:
-                tables.append(table_join)
+                tables.insert(0, table_join)
             return order_by, tables, tables_args
 
         raise Exception('Error', 'Wrong field name (%s) in order!' \
