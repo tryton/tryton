@@ -206,16 +206,15 @@ Or one of these relation types:
 
 Or one of these composed types:
 
-   * ``Property``: Like a ``Many2One`` but allow complex usage of
+   * ``Property``: Like a ``Many2One`` but allows complex usage of
      default value: when the default value is updated, all the fields
      with this default value are updated.  When the company module is
-     installed it also allow to define different value for the same
-     field depending on the company of the user.
+     installed it also allows the definition of different values for
+     the same field depending on the company of the user.
 
-   * ``Reference``: Also like a ``Many2One``. It allow to create a
-     link to an arbitrary selection of other  model. This selection is
+   * ``Reference``: Also like a ``Many2One``. It allows the creation of
+     a link to an arbitrary selection of other models. This selection is
      defined by the records of ``res.request.link``.
-
 
 
 Function field can be used to mimic any other type:
@@ -256,14 +255,14 @@ Let's take the following model as an example of the first option:
               ], "Color")
   Truck ()
 
-The selection define a list of couple, the first member of each tuple
-will be the value to store in the database if selected. The second
-member is the string (or one of his translations) that the user will
-see .
+The selection is defined as list of tuples. The first member of each tuple
+will be the value to store in the database when the second value is selected
+through the user interface. The second member is the string (or one of it's
+translations) that will be displayed in the UI.
 
 By default the selection is sorted when presented to the user. In some
-case it could be useful to avoid this behaviour. In this case one can
-use the ``sort`` argument, like:
+cases it could be useful to avoid this behaviour. In such a case one can
+use the ``sort`` argument:
 
 .. highlight:: python
 
@@ -290,9 +289,9 @@ following will work as expected (See :ref:`define_inheritance`):
   Truck ()
 
 But this can create problems if a third module wants to add other
-colors or if the base module evolve.
+colors or if the base module evolves.
 
-The solution is to extend the list:
+A better solution for this case would be to extend the list:
 
 .. highlight:: python
 
@@ -353,8 +352,9 @@ each id in ``ids``.
 One method to rule them all
 ````````````````````````````
 
-The first variant we can use is tho define a unique function for
-several fields. Let's consider this new field:
+The first variant of this we'll look at is defining a unique function for
+several fields. Let's consider this new field which returns the total for
+the invoice lines of kind *service*:
 
 .. highlight:: python
 
@@ -364,8 +364,7 @@ several fields. Let's consider this new field:
 
 
 
-Which return the total for the invoice lines of kind *service*. Thus
-the method ``get_total`` can be defined this way:
+For this field the method ``get_total`` can be defined this way:
 
 .. highlight:: python
 
@@ -437,10 +436,11 @@ to the function call:
 Search on function fields
 `````````````````````````
 
-Another improvement is to provide a search function. Indeed without it
-the user will not be able to search across invoice for a certain
-amount.  If we forget about the ``total_service`` field a first
-solution could be something like this:
+Another improvement would be to provide a search function.
+Indeed without it the user will not be able to search across
+invoices for a certain amount.  If we forget about the
+``total_service`` field, solution could be something like the
+following:
 
 .. highlight:: python
 
@@ -480,7 +480,7 @@ solution could be something like this:
       return res
 
 
-One should note that this implementation will be very slow for a big
+One should note that such an implementation would be very slow for a large
 number of invoices.
 
 
@@ -506,44 +506,44 @@ It's also possible to allow the user to write on a function field:
     return res
 
 
-This naive example is another (inefficient) way to handle default value on the
-``name`` field.
+This simplistic (and inefficient) example is another way to handle a default
+value on the ``name`` field.
 
 
 Fields options
 ^^^^^^^^^^^^^^
 
-Options are available on all type of fields, except when stated
+The following options are available on all type of fields, except when stated
 otherwise in the description.
 
-   * ``readonly``: A boolean, when set to ``True`` the field is not
+   * ``readonly``: A boolean. when set to ``True`` the field is not
      editable in the interface.
 
    * ``required``: A boolean. When a field is required a ``NOT NULL``
-     constraint is added in the database. It appear with a blue
+     constraint is added in the database. It will appear with a blue
      background in the interface.
 
-   * ``help``: A text to be show in the interface on mouse-over.
+   * ``help``: A text field shown in the interface on mouse-over.
 
    * ``select``: An integer. When equal to ``1``, an index is
-     created in the database and the field appear in the search box on
+     created in the database and the field will appear in the search box on
      list view. When equal to ``2`` the field appear in the *Advanced
      Search* part of the search box.
 
    * ``on_change``: A list of values. If set, the client will call
-     the method ``on_change_<field_name>`` when a user change the field
-     and pass this list of values as argument. This method must return
-     a dictionary ``{field_name: new_value}`` for all the field that
-     must be updated.
+     the method ``on_change_<field_name>`` when a user changes the field.
+     It then passes this list of values as arguments to the function.
+     This method must return a dictionary ``{field_name: new_value}``
+     for all the field that must be updated.
 
    * ``states``: A dictionary. Keys are name of other options and
-     values are python expression. This allow to update dynamically
-     options for the current field. E.g.: ``states={"readonly":
+     values are python expression. This allows options to update
+     dynamically the current field. E.g.: ``states={"readonly":
      "total > 10"}``.
 
    * ``domain``: A domain on the current field. E.g.: ``[('name',
      '!=', 'Steve')]`` on the ``party`` field of the
-     ``relationship.address`` model will forbid to link the current
+     ``relationship.address`` model will forbid linking the current
      address to a Party for which ``name`` is equal to ``Steve``. See
      :ref:`search_clause` for a more complete explanation.
 
@@ -551,11 +551,11 @@ otherwise in the description.
      interface will allow users to change translate the field for
      the defined language.
 
-   * ``priority``: An integer. Allow to force the order in which
-     fields are written in the database. This is used only for fields
+   * ``priority``: An integer. Force the order in which fields are
+     written in the database. This is used only for fields
      that are not in the table, like One2Many.
 
-   * ``change_default``: When the user choose a default value for a
+   * ``change_default``: When the user chooses a default value for a
      field in the current model, the current field with
      ``change_default`` equal to ``True`` can be used as a a condition
      to the default value.
@@ -566,7 +566,7 @@ otherwise in the description.
 
    * ``size``: A maximum size on ``Char`` fields.
 
-   * ``digits``: A couple of integer which define the total number of
+   * ``digits``: A pair of integers which define the total number of
      digit and the number of decimal to show in the interface. Only
      for ``Float`` and ``Numeric``.
 
@@ -575,7 +575,7 @@ otherwise in the description.
      ``CASCADE``, ``NO ACTION``, ``RESTRICT``, ``SET DEFAULT``, ``SET
      NULL`` (default).
 
-   * ``context``: A string defining a diction nay which will be given
+   * ``context``: A string defining a dictionary which will be given
      to evaluate the relation fields.
 
    * ``ondelete_origin`` and ``ondelete_target``: Like ``on_delete``
