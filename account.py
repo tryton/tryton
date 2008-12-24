@@ -411,9 +411,11 @@ class AccountTemplate(OSV):
             template = self.browse(cursor, user, template, context=context)
 
         if template.id not in template_done:
-            account_obj.write(cursor, user, template2account[template.id], {
-                'taxes': [('add', template2tax[x.id]) for x in template.taxes],
-                }, context=context)
+            if template.taxes:
+                account_obj.write(cursor, user, template2account[template.id], {
+                    'taxes': [
+                        ('add', template2tax[x.id]) for x in template.taxes],
+                    }, context=context)
             template_done.append(template.id)
 
         for child in template.childs:
