@@ -58,6 +58,7 @@ view,purchase.request,0,Product Info,Info Artikel,0
 view,purchase.request,0,Purchase Request,Bestellung,0
 view,purchase.request,0,Purchase Requests,Bestellungen,0
 view,purchase.request,0,supply Info,Info Lieferant,0
+view,purchase.request,0,Supply Info,Info,0
 view,purchase.request.create_purchase.ask_party,0,,,0
 view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Supplier,Auftrag erstellen: Fehlender Lieferant,0
 view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Auftrag erstellen: Fehlende Zahlungsbedingung,0
