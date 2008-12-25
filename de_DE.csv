@@ -162,6 +162,8 @@ view,product.product,0,Product Suppliers,Lieferanten,0
 view,product.template,0,General,Allgemein,0
 view,product.template,0,Product,Artikel,0
 view,product.template,0,Products,Artikel,0
+view,product.template,0,Product Template,Artikelvorlage,0
+view,product.template,0,Product Templates,Artikelvorlagen,0
 view,product.uom,0,Unit of Measure,Maßeinheit,0
 view,product.uom,0,Units of Measure,Maßeinheiten,0
 view,product.uom.category,0,Categories of Unit of Measure,Kategorien Maßeinheiten,0
