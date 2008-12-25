@@ -154,7 +154,7 @@ model,"ir.action,name",act_invoice_out_credit_note_form3,Draft Credit Notes,Entw
 model,"ir.action,name",act_invoice_out_invoice_form3,Draft Invoices,Entwürfe Kundenrechnungen,0
 model,"ir.action,name",act_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Entwürfe Lieferantengutschriften,0
 model,"ir.action,name",act_invoice_in_invoice_form3,Draft Supplier Invoices,Entwürfe Lieferantenrechnungen,0
-model,"ir.action,name",report_invoice,Invoice,Rechnung drucken,0
+model,"ir.action,name",report_invoice,Invoice,Rechnung,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",act_invoice_out_invoice_form2,Invoices,Kundenrechnungen,0
@@ -205,14 +205,26 @@ model,"workflow.activity,name",invoice_activity_proforma,Pro forma,Pro Forma,0
 model,"workflow,name",invoice_workflow,Invoice workflow,Workflow Rechnung,0
 odt,account.invoice,0,Amount,Betrag,0
 odt,account.invoice,0,Base,Netto,0
+odt,account.invoice,0,Credit Note N°:,Gutschrift Nr.:,0
 odt,account.invoice,0,Date,Datum,0
 odt,account.invoice,0,Date:,Datum:,0
 odt,account.invoice,0,Description,Beschreibung,0
 odt,account.invoice,0,Description:,Beschreibung:,0
+odt,account.invoice,0,Draft Credit Note,Gutschrift (Entwurf),0
+odt,account.invoice,0,Draft Invoice,Rechnung (Entwurf),0
+odt,account.invoice,0,Draft Supplier Credit Note,Gutschrift (Entwurf),0
+odt,account.invoice,0,Draft Supplier Invoice,Rechnung (Entwurf),0
 odt,account.invoice,0,E-Mail:,E-Mail:,0
+odt,account.invoice,0,Invoice N°:,Rechnung Nr.:,0
 odt,account.invoice,0,Payment Term,Zahlungsbedingung,0
 odt,account.invoice,0,Phone:,Telefon:,0
+odt,account.invoice,0,Pro forma Credit Note,Gutschrift Pro Forma,0
+odt,account.invoice,0,Pro forma Invoice,Rechnung Pro Forma,0
+odt,account.invoice,0,Pro forma Supplier Credit Note,Gutschrift Pro Forma,0
+odt,account.invoice,0,Pro forma Supplier Invoice,Rechnung Pro Forma,0
 odt,account.invoice,0,Quantity,Anzahl,0
+odt,account.invoice,0,Supplier Credit Note N°:,Gutschrift Nr.:,0
+odt,account.invoice,0,Supplier Invoice N°:,Rechnung Nr.:,0
 odt,account.invoice,0,Tax,Steuer,0
 odt,account.invoice,0,Taxes,Steuern,0
 odt,account.invoice,0,Taxes:,Steuern:,0
