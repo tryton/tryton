@@ -105,11 +105,13 @@ field,"account.account.open_third_party_balance.init,fiscalyear",0,Fiscal Year,G
 field,"account.account.open_third_party_balance.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
 field,"account.account,parent",0,Parent,Übergeordnet (Konto),0
 field,"account.account.print_general_ledger.init,company",0,Company,Unternehmen,0
+field,"account.account.print_general_ledger.init,empty_account",0,Empty Account,Leere Konten,0
 field,"account.account.print_general_ledger.init,end_period",0,End Period,Bis Buchungszeitraum,0
 field,"account.account.print_general_ledger.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
 field,"account.account.print_general_ledger.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
 field,"account.account.print_general_ledger.init,start_period",0,Start Period,Ab Buchungszeitraum,0
 field,"account.account.print_trial_balance.init,company",0,Company,Unternehmen,0
+field,"account.account.print_trial_balance.init,empty_account",0,Empty Account,Leere Konten,0
 field,"account.account.print_trial_balance.init,end_period",0,End Period,Bis Buchungszeitraum,0
 field,"account.account.print_trial_balance.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
 field,"account.account.print_trial_balance.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
@@ -309,7 +311,9 @@ help,"account.account.open_chart_account.init,fiscalyear",0,Keep empty for all o
 help,"account.account.open_chart_account.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_income_statement.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account.open_third_party_balance.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
+help,"account.account.print_general_ledger.init,empty_account",0,With account without move,Auch Konten ohne Buchungen ausdrucken,0
 help,"account.account.print_general_ledger.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
+help,"account.account.print_trial_balance.init,empty_account",0,With account without move,Auch Konten ohne Buchungen ausdrucken,0
 help,"account.account.print_trial_balance.init,posted",0,Only posted move,Nur festgeschriebene Buchungen,0
 help,"account.account,reconcile",0,"Check if the account can be used 
 for reconciliation.","Überprüfung des Kontos, ob es für Abstimmung benutzt werden kann",0
