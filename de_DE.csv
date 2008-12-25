@@ -206,7 +206,7 @@ model,"workflow,name",invoice_workflow,Invoice workflow,Workflow Rechnung,0
 odt,account.invoice,0,Amount,Betrag,0
 odt,account.invoice,0,Base,Netto,0
 odt,account.invoice,0,Credit Note N°:,Gutschrift Nr.:,0
-odt,account.invoice,0,Date,Datum,0
+odt,account.invoice,0,Date,Fällig am,0
 odt,account.invoice,0,Date:,Datum:,0
 odt,account.invoice,0,Description,Beschreibung,0
 odt,account.invoice,0,Description:,Beschreibung:,0
