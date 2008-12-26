@@ -79,6 +79,11 @@ class Product(OSV):
             required=True, ondelete='CASCADE')
     code = fields.Char("Code", size=None)
     description = fields.Text("Description", translate=True)
+    complete_name = fields.Function('get_complete_name', string="Complete Name", type="char")
+
+
+    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
+        return dict(self.name_get(cursor, user, ids, context=context))
 
     def name_get(self, cursor, user, ids, context=None):
         if not ids:
