@@ -273,7 +273,8 @@ class Translation(OSV, Cacheable):
             name = unicode(name)
             ttype = unicode(ttype)
             lang = unicode(lang)
-            source = unicode(source)
+            if source is not None:
+                source = unicode(source)
             trans = self.get(cursor, (lang, ttype, name, source))
             if trans is not None:
                 res[(name, ttype, lang, source)] = trans
