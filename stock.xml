@@ -17,5 +17,9 @@
         <menuitem name="Configuration" parent="menu_stock"
             id="menu_configuration" groups="group_stock_admin"
             sequence="0" icon="tryton-preferences"/>
+
+        <menuitem name="Reporting" parent="menu_stock"
+            id="menu_reporting" sequence="100" active="0"/>
+
     </data>
 </tryton>
