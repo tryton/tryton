@@ -2865,6 +2865,17 @@ class ORM(object):
                         + table_name + '.' + field_name + ') ' + otype)
                 return order_by, tables, tables_args
 
+            if field_name in self._columns \
+                    and self._columns[field_name]._type == 'selection':
+                selections = self.fields_get(cursor, user, [field_name],
+                        context=context)[field_name]['selection']
+                order = 'CASE ' + table_name + '.' + field_name
+                for selection in selections:
+                    order += ' WHEN \'%s\' THEN \'%s\'' % selection
+                order += ' ELSE ' + table_name + '.' + field_name + ' END'
+                order_by.append(order + ' ' + otype)
+                return order_by, tables, tables_args
+
             if field_name:
                 if '%(table)s' in field_name or '%(order)s' in field_name:
                     order_by.append(field_name % {
