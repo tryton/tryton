@@ -2064,18 +2064,13 @@ class ORM(object):
 
         # translate view
         if ('language' in context) and not result:
-            if element.get('string'):
-                trans = translation_obj._get_source(cursor,
-                        self._name, 'view', context['language'],
-                        element.get('string'))
-                if trans:
-                    element.set('string', trans)
-            if element.get('sum'):
-                trans = translation_obj._get_source(cursor,
-                        self._name, 'view', context['language'],
-                        element.get('sum'))
-                if trans:
-                    element.set('sum', trans)
+            for attr in ('string', 'sum', 'confirm'):
+                if element.get(attr):
+                    trans = translation_obj._get_source(cursor,
+                            self._name, 'view', context['language'],
+                            element.get(attr))
+                    if trans:
+                        element.set(attr, trans)
 
         if element.tag in ('form', 'tree', 'graph'):
             value = ''
