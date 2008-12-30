@@ -122,12 +122,31 @@ class Party(OSV):
         return super(Party, self).write(cursor, user, ids, vals, context=context)
 
     def copy(self, cursor, user, ids, default=None, context=None):
+        address_obj = self.pool.get('party.address')
+
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
+
         if default is None:
             default = {}
         default = default.copy()
         default['code'] = False
-        return super(Party, self).copy(cursor, user, ids, default=default,
-                context=context)
+        default['addresses'] = False
+        new_ids = []
+        for party in self.browse(cursor, user, ids, context=context):
+            new_id = super(Party, self).copy(cursor, user, party.id,
+                    default=default, context=context)
+            address_obj.copy(cursor, user, [x.id for x in party.addresses],
+                    default={
+                        'party': new_id,
+                        }, context=context)
+            new_ids.append(new_id)
+
+        if int_id:
+            return new_ids[0]
+        return new_ids
 
     def name_search(self, cursor, user, name, args=None, operator='ilike',
             context=None, limit=None):
