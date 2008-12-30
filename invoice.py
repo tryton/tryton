@@ -1596,6 +1596,12 @@ class InvoiceLine(OSV):
             res['unit'] = uom_obj.name_get(cursor, user, product.default_uom.id,
                 context=context)[0]
             res['unit_digits'] = product.default_uom.digits
+
+        vals = vals.copy()
+        vals['unit_price'] = res['unit_price']
+        vals['type'] = 'line'
+        res['amount'] = self.on_change_with_amount(cursor, user, ids,
+                vals, context=context)
         return res
 
     def check_modify(self, cursor, user, ids, context=None):
