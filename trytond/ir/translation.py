@@ -306,6 +306,8 @@ class Translation(OSV, Cacheable):
                     'FROM ir_translation ' \
                     'WHERE ' + clause, value)
             for lang, ttype, name, source, value in cursor.fetchall():
+                if (name, ttype, lang, source) not in args:
+                    source = None
                 res[(name, ttype, lang, source)] = value
                 self.add(cursor, (lang, ttype, name, source), value)
         return res
