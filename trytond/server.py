@@ -155,6 +155,7 @@ class TrytonServer(object):
 
         if update_module:
             self.logger.info('Update/Init succeed!')
+            logging.shutdown()
             sys.exit(0)
 
         # Launch Server
@@ -164,6 +165,7 @@ class TrytonServer(object):
                 port = int(CONFIG["xmlport"])
             except:
                 self.logger.error("invalid port '%s'!" % (CONFIG["xmlport"],))
+                logging.shutdown()
                 sys.exit(1)
 
             httpd = netsvc.HttpDaemon(interface, port, CONFIG['secure_xmlrpc'])
@@ -181,6 +183,7 @@ class TrytonServer(object):
                 port = int(CONFIG["netport"])
             except:
                 self.logger.error("invalid port '%s'!" % (CONFIG["netport"],))
+                logging.shutdown()
                 sys.exit(1)
 
             tinysocket = netsvc.TinySocketServerThread(interface, port,
@@ -196,6 +199,7 @@ class TrytonServer(object):
                 port = int(CONFIG['webdavport'])
             except:
                 self.logger.error("invalid port '%s'!" % (CONFIG['webdavport'],))
+                logging.shutdown()
                 sys.exit(1)
 
             webdavd = netsvc.WebDAVServerThread(interface, port,
@@ -219,6 +223,7 @@ class TrytonServer(object):
                 webdavd.stop()
             if CONFIG['pidfile']:
                 os.unlink(CONFIG['pidfile'])
+            logging.shutdown()
             sys.exit(0)
 
         if CONFIG['pidfile']:
