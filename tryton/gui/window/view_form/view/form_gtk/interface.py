@@ -3,7 +3,7 @@
 import gtk
 from tryton.rpc import RPCProxy
 import tryton.rpc as rpc
-from tryton.common import COLORS, process_exception
+from tryton.common import COLORS, process_exception, message
 from tryton.config import TRYTON_ICON
 from tryton.gui.window.view_form.view.form_gtk.preference \
         import WidgetFieldPreference
@@ -149,6 +149,9 @@ class WidgetInterface(object):
                     name = wview.modelfield.attrs.get('string', wname)
                     value = wview.modelfield.get_client(self._view.model)
                     deps.append((wname, name, wvalue, value))
+        if not self._view.modelfield.validate(self._view.model):
+            message(_('Invalid field!'), parent=self._window)
+            return
         value = self._view.modelfield.get_default(self._view.model)
         model = self._view.modelfield.parent.resource
         field_pref_set(self._view.widget_name,
