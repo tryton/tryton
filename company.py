@@ -74,6 +74,18 @@ class User(OSV):
                     'a child of your main company!',
         })
 
+    def default_main_company(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        if context.get('company'):
+            return company_obj.name_get(cursor, user, context['company'],
+                    context=context)[0]
+        return False
+
+    def default_company(self, cursor, user, context=None):
+        return self.default_main_company(cursor, user, context=context)
+
     def get_status_bar(self, cursor, user_id, ids, name, arg, context=None):
         res = super(User, self).get_status_bar(cursor, user_id, ids, name, arg,
                 context=context)
