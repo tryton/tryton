@@ -155,7 +155,7 @@ model,"ir.action,name",act_invoice_out_invoice_form3,Draft Invoices,Entwürfe Ku
 model,"ir.action,name",act_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Entwürfe Lieferantengutschriften,0
 model,"ir.action,name",act_invoice_in_invoice_form3,Draft Supplier Invoices,Entwürfe Lieferantenrechnungen,0
 model,"ir.action,name",report_invoice,Invoice,Rechnung,0
-model,"ir.action,name",print_invoice_report,Invoice,Rechnung drucken,0
+model,"ir.action,name",print_invoice_report,Invoice,Rechnung / Gutschrift drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",act_invoice_out_invoice_form2,Invoices,Kundenrechnungen,0
 model,"ir.action,name",act_invoice_out_credit_note_form5,Opened Credit Notes,Fakturierte Kundengutschriften,0
@@ -282,7 +282,7 @@ view,account.invoice.payment_term,0,Payment Term Line,Zahlungsbedingung,0
 view,account.invoice.payment_term,0,Payment Term Lines,Positionen Zahlungsbedingung,0
 view,account.invoice.payment_term,0,Payment Terms,Zahlungsbedingung,0
 view,account.invoice.print_invoice_report.warning,0,<b>Warning!</b>,<b>Warnung!</b>,0
-view,account.invoice.print_invoice_report.warning,0,Print Invoice,Rechnung drucken,0
+view,account.invoice.print_invoice_report.warning,0,Print Invoice,Rechnung / Gutschrift drucken,0
 view,account.invoice.print_invoice_report.warning,0,The invoices will be sent <i>directly</i> to the printer.,Die Rechnungen werden <i>direkt</i> an den Drucker gesendet.,0
 view,account.invoice.print_invoice_report.warning,0,You have selected more than one invoice to print.,Sie haben mehr als eine Rechnung zum ausdrucken gewählt.,0
 view,account.invoice.tax,0,Invoice Tax,Rechnungssteuer,0
