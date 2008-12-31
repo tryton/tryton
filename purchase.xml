@@ -227,6 +227,9 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_purchase_form" action="act_purchase_form_confirmed"
             id="menu_purchase_form_confirmed" sequence="40"/>
 
+        <menuitem name="Reporting" parent="menu_purchase"
+            id="menu_reporting" sequence="100" active="0"/>
+
         <record model="ir.model.access" id="access_purchase">
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
             <field name="perm_read" eval="True"/>
