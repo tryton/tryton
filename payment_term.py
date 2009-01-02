@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 
 from trytond.osv import fields, OSV
+from trytond.sql_db import table_handler
+from decimal import Decimal
 
 
 class PaymentTerm(OSV):
@@ -82,7 +84,8 @@ class PaymentTermLineType(OSV):
             return currency_obj.compute(cursor, user, line.currency,
                     line.amount, currency, context=context)
         elif line.type == 'percent':
-            return currency_obj.round(cursor, user, currency, amount * line.percent)
+            return currency_obj.round(cursor, user, currency,
+                    amount * line.percentage / Decimal('100'))
         elif line.type == 'remainder':
             return currency_obj.round(cursor, user, currency, amount)
         return None
@@ -130,11 +133,11 @@ class PaymentTermLine(OSV):
             required=True, ondelete="CASCADE")
     type = fields.Selection('get_type', 'Type', required=True,
             on_change=['type'])
-    percent = fields.Numeric('Percent', digits=(16, 8),
+    percentage = fields.Numeric('Percentage', digits=(16, 8),
             states={
                 'invisible': "type != 'percent'",
                 'required': "type == 'percent'",
-            })
+            }, help='In %')
     amount = fields.Numeric('Amount', digits="(16, currency_digits)",
             states={
                 'invisible': "type != 'fixed'",
@@ -153,6 +156,17 @@ class PaymentTermLine(OSV):
     def __init__(self):
         super(PaymentTermLine, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
+
+    def _auto_init(self, cursor, module_name):
+        super(PaymentTermLine, self)._auto_init(cursor, module_name)
+        table = table_handler(cursor, self._table, self._name, module_name)
+
+        # Migration from 1.0 percent change into percentage
+        if 'percent' in table.table:
+            cursor.execute('UPDATE "' + self._table + '" ' \
+                    'SET percentage = percent * 100')
+            cursor.execute('ALTER TABLE "' + self._table + '" ' \
+                    'DROP COLUMN percent')
 
     def default_type(self, cursor, user, context=None):
         return 'remainder'
@@ -181,7 +195,7 @@ class PaymentTermLine(OSV):
             res['amount'] = Decimal('0.0')
             res['currency'] =  False
         if vals['type'] != 'percent':
-            res['percent'] =  Decimal('0.0')
+            res['percentage'] =  Decimal('0.0')
         return res
 
     def on_change_with_currency_digits(self, cursor, user, ids, vals,
