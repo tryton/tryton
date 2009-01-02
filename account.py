@@ -892,7 +892,9 @@ AccountDeferral()
 
 
 class OpenChartAccountInit(WizardOSV):
+    'Open Chart Account Init'
     _name = 'account.account.open_chart_account.init'
+    _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             help='Keep empty for all open fiscal year')
     posted = fields.Boolean('Posted Move', help='Only posted move')
@@ -1403,7 +1405,9 @@ OpenBalanceSheet()
 
 
 class OpenIncomeStatementInit(WizardOSV):
+    'Open Income Statement Init'
     _name = 'account.account.open_income_statement.init'
+    _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'])
     start_period = fields.Many2One('account.period', 'Start Period',
@@ -1688,7 +1692,9 @@ CreateChartAccount()
 
 
 class OpenThirdPartyBalanceInit(WizardOSV):
+    'Open Third Party Balance Init'
     _name = 'account.account.open_third_party_balance.init'
+    _description = __doc__
     company = fields.Many2One('company.company', 'Company', required=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True)
