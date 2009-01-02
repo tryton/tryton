@@ -62,6 +62,9 @@ Con las posibilidades de:
     ],
     'xml': [
         'invoice.xml',
+        'payment_term.xml',
+        'party.xml',
+        'account.xml',
     ],
     'translation': [
         'fr_FR.csv',
