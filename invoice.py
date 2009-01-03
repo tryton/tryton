@@ -1720,7 +1720,9 @@ InvoiceTax()
 
 
 class PrintInvoiceReportWarning(WizardOSV):
+    'Print Invoice Report Warning'
     _name = 'account.invoice.print_invoice_report.warning'
+    _description = __doc__
 
 PrintInvoiceReportWarning()
 
@@ -1844,7 +1846,9 @@ InvoiceReport()
 
 
 class PayInvoiceInit(WizardOSV):
+    'Pay Invoice Init'
     _name = 'account.invoice.pay_invoice.init'
+    _description = __doc__
     amount = fields.Numeric('Amount', digits="(16, currency_digits)",
             required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
@@ -1872,7 +1876,9 @@ PayInvoiceInit()
 
 
 class PayInvoiceAsk(WizardOSV):
+    'Pay Invoice Ask'
     _name = 'account.invoice.pay_invoice.ask'
+    _description = __doc__
     type = fields.Selection([
         ('writeoff', 'Write-Off'),
         ('partial', 'Partial Payment'),
@@ -2057,7 +2063,9 @@ PayInvoice()
 
 
 class CreditInvoiceInit(WizardOSV):
+    'Credit Invoice Init'
     _name = 'account.invoice.credit_invoice.init'
+    _description = __doc__
 
 CreditInvoiceInit()
 
