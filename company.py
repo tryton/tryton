@@ -189,7 +189,9 @@ SequenceStrict()
 
 
 class CompanyConfigInit(WizardOSV):
+    'Company Config Init'
     _name = 'company.company.config.init'
+    _description = __doc__
 
 CompanyConfigInit()
 
