@@ -242,7 +242,9 @@ Code()
 
 
 class OpenChartCodeInit(WizardOSV):
+    'Open Chart Code Init'
     _name = 'account.tax.open_chart_code.init'
+    _description = __doc__
     method = fields.Selection([
         ('fiscalyear', 'By Fiscal Year'),
         ('periods', 'By Periods'),

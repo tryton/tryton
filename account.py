@@ -950,7 +950,9 @@ OpenChartAccount()
 
 
 class PrintGeneralLegderInit(WizardOSV):
+    'Print General Ledger'
     _name = 'account.account.print_general_ledger.init'
+    _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'])
     start_period = fields.Many2One('account.period', 'Start Period',
@@ -1157,7 +1159,9 @@ GeneralLegder()
 
 
 class PrintTrialBalanceInit(WizardOSV):
+    'Print Trial Balance Init'
     _name = 'account.account.print_trial_balance.init'
+    _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'])
     start_period = fields.Many2One('account.period', 'Start Period',
@@ -1317,7 +1321,9 @@ TrialBalance()
 
 
 class OpenBalanceSheetInit(WizardOSV):
+    'Open Balance Sheet Init'
     _name = 'account.account.open_balance_sheet.init'
+    _description = __doc__
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Only posted move')
@@ -1526,13 +1532,17 @@ OpenIncomeStatement()
 
 
 class CreateChartAccountInit(WizardOSV):
+    'Create Chart Account Init'
     _name = 'account.account.create_chart_account.init'
+    _description = __doc__
 
 CreateChartAccountInit()
 
 
 class CreateChartAccountAccount(WizardOSV):
+    'Create Chart Account Account'
     _name = 'account.account.create_chart_account.account'
+    _description = __doc__
     company = fields.Many2One('company.company', 'Company', required=True)
     account_template = fields.Many2One('account.account.template',
             'Account Template', required=True, domain=[('parent', '=', False)])
@@ -1541,7 +1551,9 @@ CreateChartAccountAccount()
 
 
 class CreateChartAccountPropertites(WizardOSV):
+    'Create Chart Account Properties'
     _name = 'account.account.create_chart_account.properties'
+    _description = __doc__
     company = fields.Many2One('company.company', 'Company')
     account_receivable = fields.Many2One('account.account',
             'Default Receivable Account',
@@ -1813,7 +1825,9 @@ ThirdPartyBalance()
 
 
 class OpenAgedBalanceInit(WizardOSV):
+    'Open Aged Balance Init'
     _name = 'account.account.open_aged_balance.init'
+    _description = __doc__
     company = fields.Many2One('company.company', 'Company', required=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True)

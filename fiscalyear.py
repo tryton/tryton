@@ -304,7 +304,9 @@ FiscalYear()
 
 
 class CloseFiscalYearInit(WizardOSV):
+    'Close Fiscal Year Init'
     _name = 'account.fiscalyear.close_fiscalyear.init'
+    _description = __doc__
     close_fiscalyear = fields.Many2One('account.fiscalyear',
             'Fiscal Year to close',
             required=True,

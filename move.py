@@ -334,6 +334,7 @@ Move()
 class Reconciliation(OSV):
     'Account Move Reconciliation Lines'
     _name = 'account.move.reconciliation'
+    _description = __doc__
 
     name = fields.Char('Name', size=None, required=True)
     lines = fields.One2Many('account.move.line', 'reconciliation',
@@ -1306,7 +1307,9 @@ Move2()
 
 
 class OpenJournalAsk(WizardOSV):
+    'Open Journal Ask'
     _name = 'account.move.open_journal.ask'
+    _description = __doc__
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     period = fields.Many2One('account.period', 'Period', required=True,
             domain=[('state', '!=', 'close')])
@@ -1475,6 +1478,7 @@ OpenAccount()
 class ReconcileLinesWriteOff(WizardOSV):
     'Reconcile Lines Write-Off'
     _name = 'account.move.reconcile_lines.writeoff'
+    _description = __doc__
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     date = fields.Date('Date', required=True)
     account = fields.Many2One('account.account', 'Account', required=True,
@@ -1554,6 +1558,7 @@ ReconcileLines()
 class UnreconcileLinesInit(WizardOSV):
     'Unreconcile Lines Init'
     _name = 'account.move.unreconcile_lines.init'
+    _description = __doc__
 
 UnreconcileLinesInit()
 
@@ -1597,7 +1602,9 @@ UnreconcileLines()
 
 
 class OpenReconcileLinesInit(WizardOSV):
+    'Open Reconcile Lines Init'
     _name = 'account.move.open_reconcile_lines.init'
+    _description = __doc__
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('kind', '!=', 'view'), ('reconcile', '=', True)])
 
@@ -1657,7 +1664,9 @@ FiscalYear()
 
 
 class PrintGeneralJournalInit(WizardOSV):
+    'Print General Journal Init'
     _name = 'account.move.print_general_journal.init'
+    _description = __doc__
     from_date = fields.Date('From Date', required=True)
     to_date = fields.Date('To Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
