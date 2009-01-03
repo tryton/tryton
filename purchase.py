@@ -1345,6 +1345,7 @@ ProductSupplier()
 class ProductSupplierPrice(OSV):
     'Product Supplier Price'
     _name = 'purchase.product_supplier.price'
+    _description = __doc__
 
     product_supplier = fields.Many2One('purchase.product_supplier',
             'Supplier', required=True, ondelete='CASCADE')
