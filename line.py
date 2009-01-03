@@ -69,7 +69,9 @@ Line()
 
 
 class EnterLinesInit(WizardOSV):
+    'Enter Lines Init'
     _name = 'timesheet.enter_lines.init'
+    _description = __doc__
     employee = fields.Many2One('company.employee', 'Employee', required=True,
             domain="[('company', '=', company)]")
     date = fields.Date('Date', required=True)
@@ -170,7 +172,9 @@ HoursEmployee()
 
 
 class OpenHoursEmployeeInit(WizardOSV):
+    'Open Hours Employee Init'
     _name = 'timesheet.open_hours_employee.init'
+    _description = __doc__
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
 

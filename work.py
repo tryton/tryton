@@ -123,7 +123,9 @@ Work()
 
 
 class OpenWorkInit(WizardOSV):
+    'Open Work Init'
     _name = 'timesheet.work.open.init'
+    _description = __doc__
     from_date = fields.Date('From Date')
     to_date = fields.Date('To Date')
 OpenWorkInit()
