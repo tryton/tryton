@@ -306,7 +306,9 @@ Account()
 
 
 class OpenChartAccountInit(WizardOSV):
+    'Open Chart Account Init'
     _name = 'analytic_account.account.open_chart_account.init'
+    _description = __doc__
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
 
