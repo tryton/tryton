@@ -441,7 +441,9 @@ PurchaseRequest()
 
 
 class CreatePurchaseAskTerm(WizardOSV):
+    'Create Purchase Ask Term'
     _name = 'purchase.request.create_purchase.ask_term'
+    _description = __doc__
     party = fields.Many2One('party.party', 'Supplier', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
     payment_term = fields.Many2One(
@@ -450,7 +452,9 @@ class CreatePurchaseAskTerm(WizardOSV):
 CreatePurchaseAskTerm()
 
 class CreatePurchaseAskParty(WizardOSV):
+    'Create Purchase Ask Party'
     _name = 'purchase.request.create_purchase.ask_party'
+    _description = __doc__
     product = fields.Many2One('product.product', 'Product', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
     party = fields.Many2One('party.party', 'Supplier', required=True)
