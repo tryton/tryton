@@ -4,6 +4,8 @@
 from trytond.osv import fields, OSV
 from trytond.sql_db import table_handler
 from decimal import Decimal
+import datetime
+import mx.DateTime
 
 
 class PaymentTerm(OSV):

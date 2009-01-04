@@ -3,8 +3,6 @@
 "Invoice"
 
 from trytond.osv import fields, OSV
-import datetime
-import mx.DateTime
 from decimal import Decimal
 from trytond.netsvc import LocalService
 from trytond.report import Report
