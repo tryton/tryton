@@ -24,8 +24,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="lang" select="2"/>
                     <field name="vat_code" select="1"/>
                     <field name="active" select="2" tree_invisible="1"/>
-                    <field name="vat_country" select="2" tree_invisible="1"/>
-                    <field name="vat_number" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
