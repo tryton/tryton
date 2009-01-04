@@ -36,7 +36,8 @@ class Party(OSV):
     vat_country = fields.Selection(VAT_COUNTRIES, 'VAT Country', states=STATES,
         help="Setting VAT country will enable verification of the VAT number.",
         translate=False)
-    vat_code = fields.Function('get_vat_code', type='char', string="VAT Code")
+    vat_code = fields.Function('get_vat_code', type='char', string="VAT Code",
+            fnct_search='search_vat_code')
     addresses = fields.One2Many('party.address', 'party',
            'Addresses', states=STATES)
     contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
@@ -87,6 +88,20 @@ class Party(OSV):
         for party in self.browse(cursor, user, ids, context=context):
             res[party.id] = (party.vat_country or '') + (party.vat_number or '')
         return res
+
+    def search_vat_code(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            value = args[i][2]
+            for country, _ in VAT_COUNTRIES:
+                if value.startswith(country) and country:
+                    args2.append(('vat_country', '=', country))
+                    value = value[len(country):]
+                    break
+            args2.append(('vat_number', args[i][1], value))
+            i += 1
+        return args2
 
     def get_full_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
