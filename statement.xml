@@ -25,7 +25,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="end_balance"/>
                     <field name="end_balance"/>
                     <notebook colspan="4">
-                        <page string="Statement Lines" col="4">
+                        <page string="Statement Lines" col="4" id="statement_lines">
                             <field name="lines" colspan="4">
                                 <tree string="Statement Lines" editable="bottom">
                                     <field name="date"/>
@@ -36,7 +36,7 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="description"/>
                                 </tree>
                             </field>
-                            <group col="6" colspan="4">
+                            <group col="6" colspan="4" id="state_buttons">
                               <label name="state"/>
                               <field name="state"/>
                               <button string="Validate" name="validated"
@@ -50,7 +50,7 @@ this repository contains the full copyright notices and license terms. -->
                                       states="{'invisible': '''state != 'cancel' '''}"/>
                             </group>
                         </page>
-                        <page string="Move Lines" col="1">
+                        <page string="Move Lines" col="1" id="move_lines">
                             <field name="move_lines"/>
                         </page>
                     </notebook>
