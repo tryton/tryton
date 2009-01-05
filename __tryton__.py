@@ -4,6 +4,7 @@
     'name': 'Account Statement',
     'name_de_DE': 'Buchhaltung Bankauszüge',
     'name_es_ES': 'Estado de Cuentas',
+    'name_fr_FR': 'Relevé comptable',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -19,6 +20,10 @@
     - Estado de cuentas
     - Diario de estado de cuentas
 ''',
+    'description_fr_FR': '''Module financier et comptable avec:
+    - Relevé
+    - Journal de relevés
+    ''',
     'depends': [
         'account',
         'company',
