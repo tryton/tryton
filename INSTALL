@@ -10,6 +10,7 @@ Prerequisites
  * trytond_company (http://www.tryton.org/)
  * trytond_party (http://www.tryton.org/)
  * trytond_currency (http://www.tryton.org/)
+ * trytond_account_invoice (http://www.tryton.org/)
 
 Installation
 ------------

@@ -4,7 +4,8 @@
     'name': 'Account Statement',
     'name_de_DE': 'Buchhaltung Bankauszüge',
     'name_es_ES': 'Estado de Cuentas',
-    'version': '0.0.1',
+    'name_fr_FR': 'Relevé comptable',
+    'version': '1.1.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
@@ -19,6 +20,10 @@
     - Estado de cuentas
     - Diario de estado de cuentas
 ''',
+    'description_fr_FR': '''Module financier et comptable avec:
+    - Relevé
+    - Journal de relevés
+    ''',
     'depends': [
         'account',
         'company',
@@ -34,5 +39,6 @@
     'translation': [
         'de_DE.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ],
 }
