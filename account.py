@@ -753,8 +753,8 @@ class Account(OSV):
             else:
                 ctx = context.copy()
                 ctx['fiscalyear'] = fiscalyear.id
-                if 'date' in context:
-                    del context['date']
+                if 'date' in ctx:
+                    del ctx['date']
                 res2 = self.get_credit_debit(cursor, user, ids, names, arg,
                         context=ctx)
                 for account_id in ids:
