@@ -219,7 +219,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Types">
-                    <field name="name" select="1"/>
+                    <field name="complete_name" select="1"/>
                 </tree>
                 ]]>
             </field>

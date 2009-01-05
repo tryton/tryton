@@ -127,6 +127,8 @@ class Type(OSV):
     name = fields.Char('Name', size=None, required=True, translate=True)
     parent = fields.Many2One('account.account.type', 'Parent',
             ondelete="restrict")
+    complete_name = fields.Function('get_complete_name', type='char',
+            fnct_search='search_complete_name', string='Name')
     childs = fields.One2Many('account.account.type', 'parent', 'Childs')
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
@@ -155,6 +157,21 @@ class Type(OSV):
 
     def default_display_balance(self, cursor, user, context=None):
         return 'debit-credit'
+
+    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
+        res = self.name_get(cursor, user, ids, context=context)
+        return dict(res)
+
+    def search_complete_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            names = self.name_search(cursor, user, name=args[i][2],
+                    operator=args[i][1], context=context)
+            ids = [x[0] for x in names]
+            args2.append(('id', 'in', ids))
+            i += 1
+        return args2
 
     def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
         res = {}
