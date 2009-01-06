@@ -1,4 +1,23 @@
 type,name,res_id,src,value,fuzzy
+selection,"purchase.line,type",0,Line,Position,0
+selection,"purchase.line,type",0,Subtotal,Zwischensumme,0
+selection,"purchase.line,type",0,Title,Überschrift,0
+selection,"purchase.purchase,invoice_method",0,Based On Order,Nach Auftrag,0
+selection,"purchase.purchase,invoice_method",0,Based On Packing,Nach Lieferung,0
+selection,"purchase.purchase,invoice_method",0,Manual,Manuell,0
+selection,"purchase.purchase,invoice_state",0,Exception,Vorbehalt,0
+selection,"purchase.purchase,invoice_state",0,None,Kein,0
+selection,"purchase.purchase,invoice_state",0,Paid,Bezahlt,0
+selection,"purchase.purchase,invoice_state",0,Waiting,Wartend,0
+selection,"purchase.purchase,packing_state",0,Exception,Vorbehalt,0
+selection,"purchase.purchase,packing_state",0,None,Kein,0
+selection,"purchase.purchase,packing_state",0,Received,Erhalten,0
+selection,"purchase.purchase,packing_state",0,Waiting,Wartend,0
+selection,"purchase.purchase,state",0,Cancel,Annulliert,0
+selection,"purchase.purchase,state",0,Confirmed,Beauftragt,0
+selection,"purchase.purchase,state",0,Done,Erledigt,0
+selection,"purchase.purchase,state",0,Draft,Entwurf,0
+selection,"purchase.purchase,state",0,Quotation,Angebot,0
 error,account.invoice,0,You can not delete invoices that comes from a purchase!,Aus einem Einkauf stammende Rechnungen können nicht gelöscht werden!,0
 error,purchase.line,0,"It miss an ""account_expense"" default property!","Es ist keine allgemeine Eigenschaft ""Konto Aufwand"" definiert",0
 error,purchase.line,0,The supplier location is required!,Der Lagerort des Lieferanten muss eingegeben werden!,0
@@ -88,7 +107,12 @@ model,"ir.ui.menu,name",menu_purchase_form_new,New Purchase,Neuer Einkauf,0
 model,"ir.ui.menu,name",menu_purchase,Purchase Management,Einkauf,0
 model,"ir.ui.menu,name",menu_purchase_form,Purchases,Einkäufe,0
 model,"ir.ui.menu,name",menu_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
 model,"ir.ui.menu,name",menu_supplier,Suppliers,Lieferanten,0
+model,"purchase.line,name",0,Purchase Line,Verkauf Position,0
+model,"purchase.product_supplier,name",0,Product Supplier,Artikel Lieferant,0
+model,"purchase.product_supplier.price,name",0,Product Supplier Price,Artikel Einkaufspreis,0
+model,"purchase.purchase,name",0,Purchase,Verkauf,0
 model,"res.group,name",group_purchase,Purchase,Einkauf,0
 model,"workflow.activity,name",purchase_activity_cancel,Cancel,Annullieren,0
 model,"workflow.activity,name",purchase_activity_confirmed,Confirmed,Beauftragt,0
@@ -127,25 +151,6 @@ odt,purchase.purchase,0,Total:,Gesamt:,0
 odt,purchase.purchase,0,Total (excl. taxes):,Netto:,0
 odt,purchase.purchase,0,Unit Price,Einzelpreis,0
 odt,purchase.purchase,0,VAT:,USt.:,0
-selection,"purchase.line,type",0,Line,Position,0
-selection,"purchase.line,type",0,Subtotal,Zwischensumme,0
-selection,"purchase.line,type",0,Title,Überschrift,0
-selection,"purchase.purchase,invoice_method",0,Based On Order,Nach Auftrag,0
-selection,"purchase.purchase,invoice_method",0,Based On Packing,Nach Lieferung,0
-selection,"purchase.purchase,invoice_method",0,Manual,Manuell,0
-selection,"purchase.purchase,invoice_state",0,Exception,Vorbehalt,0
-selection,"purchase.purchase,invoice_state",0,None,Kein,0
-selection,"purchase.purchase,invoice_state",0,Paid,Bezahlt,0
-selection,"purchase.purchase,invoice_state",0,Waiting,Wartend,0
-selection,"purchase.purchase,packing_state",0,Exception,Vorbehalt,0
-selection,"purchase.purchase,packing_state",0,None,Kein,0
-selection,"purchase.purchase,packing_state",0,Received,Erhalten,0
-selection,"purchase.purchase,packing_state",0,Waiting,Wartend,0
-selection,"purchase.purchase,state",0,Cancel,Annulliert,0
-selection,"purchase.purchase,state",0,Confirmed,Beauftragt,0
-selection,"purchase.purchase,state",0,Done,Erledigt,0
-selection,"purchase.purchase,state",0,Draft,Entwurf,0
-selection,"purchase.purchase,state",0,Quotation,Angebot,0
 view,product.product,0,Product Suppliers,Lieferanten,0
 view,product.product,0,Suppliers,Lieferanten,0
 view,product.template,0,Product Suppliers,Lieferanten,0
