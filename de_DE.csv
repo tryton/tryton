@@ -58,6 +58,7 @@ model,"currency.currency,name",nio,Cordoba Oro,Córdoba,0
 model,"currency.currency,name",crc,Costa Rican Colon,Costa-Rica-Colón,0
 model,"currency.currency,name",hrk,Croatian Kuna,Kuna,0
 model,"currency.currency,name",cup,Cuban Peso,Kubanischer Peso,0
+model,"currency.currency,name",0,Currency,Währung,0
 model,"currency.currency,name",czk,Czech Koruna,Tschechische Krone,0
 model,"currency.currency,name",dkk,Danish Krone,Dänische Krone,0
 model,"currency.currency,name",mkd,Denar,Denar,0
@@ -133,6 +134,7 @@ model,"currency.currency,name",jpy,Yen,Yen,0
 model,"currency.currency,name",cny,Yuan Renminbi,Renminbi Yuan,0
 model,"currency.currency,name",zwd,Zimbabwe Dollar,Simbabwe-Dollar,0
 model,"currency.currency,name",pln,Zloty,Zloty,0
+model,"currency.currency.rate,name",0,Rate,Kurs,0
 model,"ir.action,name",act_currency_form,Currencies,Währungen,0
 model,"ir.ui.menu,name",menu_currency_form,Currencies,Währungen,0
 model,"ir.ui.menu,name",menu_currency,Currency Management,Währungen,0
