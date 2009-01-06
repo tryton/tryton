@@ -1,4 +1,5 @@
 type,name,res_id,src,value,fuzzy
+selection,"project.work,project_type",0,Project,Projekt,0
 field,"project.work,comment",0,Comment,Kommentar,0
 field,"project.work,create_date",0,Creation date,Erstellungsdatum,0
 field,"project.work,create_uid",0,Creation user,Ersteller,0
@@ -15,10 +16,9 @@ model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_project,Project Management,Projekte,0
 model,"ir.ui.menu,name",menu_project_tree,Projects,Projekte,0
 model,"ir.ui.menu,name",menu_project_form,Projects,Projekte,0
-model,"ir.ui.menu,name",,Reporting,Berichte,0
 model,"ir.ui.menu,name",menu_work_form,Works,Aufgaben,0
+model,"project.work,name",0,Work,Aufgabe,0
 model,"res.group,name",group_project_admin,Project Administration,Administration Projekte,0
-selection,"project.work,project_type",0,Project,Projekt,0
 view,project.work,0,General,Allgemein,0
 view,project.work,0,Other Info,Sonstiges,0
 view,project.work,0,Work,Aufgabe,0
