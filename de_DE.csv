@@ -1,4 +1,53 @@
 type,name,res_id,src,value,fuzzy
+selection,"account.account,kind",0,Expense,Aufwand,0
+selection,"account.account,kind",0,Other,Anderes,0
+selection,"account.account,kind",0,Payable,Verbindlichkeiten,0
+selection,"account.account,kind",0,Receivable,Forderungen,0
+selection,"account.account,kind",0,Revenue,Ertrag,0
+selection,"account.account,kind",0,View,Sicht,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Both,Beide,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Customer,Kunde,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Supplier,Lieferant,0
+selection,"account.account.open_aged_balance.init,unit",0,Day,Tag,0
+selection,"account.account.open_aged_balance.init,unit",0,Month,Monat,0
+selection,"account.account.template,kind",0,Expense,Aufwand,0
+selection,"account.account.template,kind",0,Other,Anderes,0
+selection,"account.account.template,kind",0,Payable,Verbindlichkeiten,0
+selection,"account.account.template,kind",0,Receivable,Forderungen,0
+selection,"account.account.template,kind",0,Revenue,Ertrag,0
+selection,"account.account.template,kind",0,View,Sicht,0
+selection,"account.account.type,display_balance",0,Credit - Debit,Haben - Soll,0
+selection,"account.account.type,display_balance",0,Debit - Credit,Soll - Haben,0
+selection,"account.account.type.template,display_balance",0,Credit - Debit,Haben - Soll,0
+selection,"account.account.type.template,display_balance",0,Debit - Credit,Soll - Haben,0
+selection,"account.fiscalyear,state",0,Close,Abgeschlossen,0
+selection,"account.fiscalyear,state",0,Open,Geöffnet,0
+selection,"account.journal.period,state",0,Close,Geschlossen,0
+selection,"account.journal.period,state",0,Open,Geöffnet,0
+selection,"account.move.line,account_kind",0,Expense,Aufwand,0
+selection,"account.move.line,account_kind",0,Other,Anderes,0
+selection,"account.move.line,account_kind",0,Payable,Verbindlichkeiten,0
+selection,"account.move.line,account_kind",0,Receivable,Forderungen,0
+selection,"account.move.line,account_kind",0,Revenue,Erlöse,0
+selection,"account.move.line,account_kind",0,View,Sicht,0
+selection,"account.move.line,move_state",0,Draft,Entwurf,0
+selection,"account.move.line,move_state",0,Posted,Festgeschrieben,0
+selection,"account.move.line,state",0,Draft,Entwurf,0
+selection,"account.move.line,state",0,Valid,Gültig,0
+selection,"account.move,state",0,Draft,Entwurf,0
+selection,"account.move,state",0,Posted,Festgeschrieben,0
+selection,"account.period,state",0,Close,Geschlossen,0
+selection,"account.period,state",0,Open,Geöffnet,0
+selection,"account.period,type",0,Adjustment,Berichtigung,0
+selection,"account.period,type",0,Standard,Standard,0
+selection,"account.tax.open_chart_code.init,method",0,By Fiscal Year,Geschäftsjahr,0
+selection,"account.tax.open_chart_code.init,method",0,By Periods,Nach Buchungszeiträumen,0
+selection,"account.tax.template,type",0,Fixed,Fix,0
+selection,"account.tax.template,type",0,None,Kein,0
+selection,"account.tax.template,type",0,Percentage,Prozentsatz,0
+selection,"account.tax,type",0,Fixed,Fix,0
+selection,"account.tax,type",0,None,Kein,0
+selection,"account.tax,type",0,Percentage,Prozentsatz,0
 error,account.account,0,You can not create recursive accounts!,Konten können nicht rekursiv angelegt werden!,0
 error,account.account,0,You can not delete account that have children!,Konten mit untergeordneten Konten können nicht gelöscht werden,0
 error,account.account,0,You can not delete account with move line!,"Ein Konto, das Buchungen aufweist, kann nicht gelöscht werden!",0
@@ -344,6 +393,19 @@ help,"account.tax,percentage",0,In %,In %,0
 help,"account.tax,sequence",0,Use to order the taxes,Wird für die Reihenfolge der Steuern verwendet,0
 help,"party.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Diese Steuer wird anstatt der Standard-Umsatzsteuer für Lieferanten verwendet,0
 help,"party.party,vat",0,"This tax will be used, instead of the default VAT.",Diese Steuer wird anstatt der Standard-Umsatzsteuer verwendet,0
+model,"account.account.create_chart_account.account,name",0,Create Chart Account Account,Kontenplanerstellung Konten,0
+model,"account.account.create_chart_account.init,name",0,Create Chart Account Init,Kontenplanerstellung Init,0
+model,"account.account.create_chart_account.properties,name",0,Create Chart Account Properties,Kontenplanerstellung Standardeigenschaften,0
+model,"account.account.deferral,name",0,Account Deferral,Konto Saldenvortrag,0
+model,"account.account,name",0,Account,Konto,0
+model,"account.account.open_aged_balance.init,name",0,Open Aged Balance Init,Fälligkeitsliste Öffnen Init,0
+model,"account.account.open_balance_sheet.init,name",0,Open Balance Sheet Init,Bilanzbogen Öffnen Init,0
+model,"account.account.open_chart_account.init,name",0,Open Chart Account Init,Kontenplan Öffnen Init,0
+model,"account.account.open_income_statement.init,name",0,Open Income Statement Init,Gewinn- und Verlustrechnung Öffnen Init,0
+model,"account.account.open_third_party_balance.init,name",0,Open Third Party Balance Init,Offene Postenliste Öffnen Init,0
+model,"account.account.print_general_ledger.init,name",0,Print General Ledger,Druck Kontenblätter Init,0
+model,"account.account.print_trial_balance.init,name",0,Print Trial Balance Init,Druck Summen- und Saldenliste Init,0
+model,"account.account.template,name",0,Account Template,Konto Vorlage,0
 model,"account.account.template,name",account_template_cash,Main Cash,Allgemein Barvermögen,0
 model,"account.account.template,name",account_template_expense,Main Expense,Allgemein Aufwand,0
 model,"account.account.template,name",account_template_payable,Main Payable,Allgemein Verbindlichkeiten,0
@@ -351,6 +413,8 @@ model,"account.account.template,name",account_template_receivable,Main Receivabl
 model,"account.account.template,name",account_template_revenue,Main Revenue,Allgemein Ertrag,0
 model,"account.account.template,name",account_template_tax,Main Tax,Allgemein Verbindlichkeiten aus Steuern,0
 model,"account.account.template,name",account_template_root,Minimal Account Chart,Minimaler Kontenplan,0
+model,"account.account.type,name",0,Account Type,Kontentyp,0
+model,"account.account.type.template,name",0,Account Type Template,Kontentyp Vorlage,0
 model,"account.account.type.template,name",account_type_template_asset,Asset,Aktiva,0
 model,"account.account.type.template,name",account_type_template_asset_current_cash,Cash,Barvermögen,0
 model,"account.account.type.template,name",account_type_template_asset_current,Current,Umlaufvermögen,0
@@ -367,17 +431,40 @@ model,"account.account.type.template,name",account_type_template_liability_curre
 model,"account.account.type.template,name",account_type_template_asset_current_receivable,Receivable,Forderungen,0
 model,"account.account.type.template,name",account_type_template_revenue,Revenue,Ertrag,0
 model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Verbindlichkeiten aus Steuern,0
+model,"account.fiscalyear.close_fiscalyear.init,name",0,Close Fiscal Year Init,Abschluss Geschäftsjahr,0
+model,"account.fiscalyear,name",0,Fiscal Year,Geschäftsjahr,0
 model,"account.journal,name",journal_cash,Cash,Zahlung,0
 model,"account.journal,name",journal_expense,Expense,Aufwand,0
+model,"account.journal,name",0,Journal,Journal,0
 model,"account.journal,name",journal_revenue,Revenue,Ertrag,0
 model,"account.journal,name",journal_stock,Stock,Lager,0
+model,"account.journal.period,name",0,Journal - Period,Journal Buchungszeitraum,0
 model,"account.journal.type,name",journal_type_cash,Cash,Zahlung,0
 model,"account.journal.type,name",journal_type_expense,Expense,Aufwand,0
 model,"account.journal.type,name",journal_type_general,General,Allgemein,0
+model,"account.journal.type,name",0,Journal Type,Journal Typ,0
 model,"account.journal.type,name",journal_type_revenue,Revenue,Ertrag,0
 model,"account.journal.type,name",journal_type_situation,Situation,Saldenvortrag,0
+model,"account.journal.view.column,name",0,Journal View Column,Journal Sicht Spalte,0
+model,"account.journal.view,name",0,Journal View,Journal Sicht,0
+model,"account.move.line,name",0,Account Move Line,Buchungszeile,0
+model,"account.move,name",0,Account Move,Buchung,0
+model,"account.move.open_journal.ask,name",0,Open Journal Ask,Journal Öffnen Nachfrage,0
+model,"account.move.open_reconcile_lines.init,name",0,Open Reconcile Lines Init,Abgestimmte Buchungszeilen Öffnen Init,0
+model,"account.move.print_general_journal.init,name",0,Print General Journal Init,Druck Allgemeines Journal Init,0
+model,"account.move.reconcile_lines.writeoff,name",0,Reconcile Lines Write-Off,Abstimmung Buchungszeilen Ausbuchung,0
+model,"account.move.reconciliation,name",0,Account Move Reconciliation Lines,Buchung Abstimmung Buchungszeilen,0
+model,"account.move.unreconcile_lines.init,name",0,Unreconcile Lines Init,Abstimmung Buchungszeilen Rückgängig Init,0
+model,"account.period,name",0,Period,Buchungszeitraum,0
+model,"account.tax.code,name",0,Tax Code,Steuer Kennziffer,0
+model,"account.tax.code.template,name",0,Tax Code Template,Steuer Kennziffer Vorlage,0
 model,"account.tax.group,name",tax_group_none,None,Kein,0
+model,"account.tax.group,name",0,Tax Group,Steuer Gruppe,0
 model,"account.tax.group,name",tax_group_vat,VAT,USt,0
+model,"account.tax.line,name",0,Tax Line,Steuer Zeile,0
+model,"account.tax,name",0,Account Tax,Konto Steuer,0
+model,"account.tax.open_chart_code.init,name",0,Open Chart Code Init,Steurkennziffern Öffnen Init,0
+model,"account.tax.template,name",0,Account Tax Template,Konto Steuervorlage,0
 model,"ir.action,name",act_move_line_form,Account Move Lines,Buchungszeilen,0
 model,"ir.action,name",act_move_form,Account Moves,Buchungen,0
 model,"ir.action,name",act_account_form,Accounts,Konten,0
@@ -418,7 +505,7 @@ model,"ir.action,name",act_period_form2,Periods,Buchungszeiträume,0
 model,"ir.action,name",wizard_print_general_journal,Print General Journal,Journal Allgemein drucken,0
 model,"ir.action,name",wizard_print_general_ledger,Print General Legder,Kontenblätter drucken,0
 model,"ir.action,name",wizard_print_trial_balance,Print Trial Balance,Summen- und Saldenliste drucken,0
-model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Positionen abstimmen,0
+model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Buchungszeilen abstimmen,0
 model,"ir.action,name",act_reopen_journal_period,Re-Open Journals - Periods,Journale - Buchungszeiträume wiedereröffnen,0
 model,"ir.action,name",act_reopen_period,Re-Open Periods,Buchungszeiträume wiedereröffnen,0
 model,"ir.action,name",act_tax_code_form,Tax Codes,Steuerkennziffern,0
@@ -436,7 +523,7 @@ model,"ir.sequence,name",sequence_account_journal,Default Account Journal,Standa
 model,"ir.sequence,name",sequence_account_move_reconciliation,Default Account Move Reconciliation,Standard Abstimmung Buchung,0
 model,"ir.sequence.type,name",sequence_type_account_journal,Account Journal,Konto Journal,0
 model,"ir.sequence.type,name",sequence_type_account_move,Account Move,Buchung,0
-model,"ir.sequence.type,name",sequence_type_account_move_reconciliation,Account Move Reconciliation,Abstimmung Buchung,0
+model,"ir.sequence.type,name",sequence_type_account_move_reconciliation,Account Move Reconciliation,Buchung Abstimmung,0
 model,"ir.ui.menu,name",menu_move_form,Account Moves,Buchungen,0
 model,"ir.ui.menu,name",menu_account_form,Accounts,Konten,0
 model,"ir.ui.menu,name",menu_account_tree,Accounts,Konten,0
@@ -548,55 +635,6 @@ odt,account.move.general_journal,0,Name,Name,0
 odt,account.move.general_journal,0,Posted,Festgeschrieben,0
 odt,account.move.general_journal,0,Reference:,Referenz,0
 odt,account.move.general_journal,0,To Date:,Bis:,0
-selection,"account.account,kind",0,Expense,Aufwand,0
-selection,"account.account,kind",0,Other,Anderes,0
-selection,"account.account,kind",0,Payable,Verbindlichkeiten,0
-selection,"account.account,kind",0,Receivable,Forderungen,0
-selection,"account.account,kind",0,Revenue,Ertrag,0
-selection,"account.account,kind",0,View,Sicht,0
-selection,"account.account.open_aged_balance.init,balance_type",0,Both,Beide,0
-selection,"account.account.open_aged_balance.init,balance_type",0,Customer,Kunde,0
-selection,"account.account.open_aged_balance.init,balance_type",0,Supplier,Lieferant,0
-selection,"account.account.open_aged_balance.init,unit",0,Day,Tag,0
-selection,"account.account.open_aged_balance.init,unit",0,Month,Monat,0
-selection,"account.account.template,kind",0,Expense,Aufwand,0
-selection,"account.account.template,kind",0,Other,Anderes,0
-selection,"account.account.template,kind",0,Payable,Verbindlichkeiten,0
-selection,"account.account.template,kind",0,Receivable,Forderungen,0
-selection,"account.account.template,kind",0,Revenue,Ertrag,0
-selection,"account.account.template,kind",0,View,Sicht,0
-selection,"account.account.type,display_balance",0,Credit - Debit,Haben - Soll,0
-selection,"account.account.type,display_balance",0,Debit - Credit,Soll - Haben,0
-selection,"account.account.type.template,display_balance",0,Credit - Debit,Haben - Soll,0
-selection,"account.account.type.template,display_balance",0,Debit - Credit,Soll - Haben,0
-selection,"account.fiscalyear,state",0,Close,Abgeschlossen,0
-selection,"account.fiscalyear,state",0,Open,Geöffnet,0
-selection,"account.journal.period,state",0,Close,Geschlossen,0
-selection,"account.journal.period,state",0,Open,Geöffnet,0
-selection,"account.move.line,account_kind",0,Expense,Aufwand,0
-selection,"account.move.line,account_kind",0,Other,Anderes,0
-selection,"account.move.line,account_kind",0,Payable,Verbindlichkeiten,0
-selection,"account.move.line,account_kind",0,Receivable,Forderungen,0
-selection,"account.move.line,account_kind",0,Revenue,Erlöse,0
-selection,"account.move.line,account_kind",0,View,Sicht,0
-selection,"account.move.line,move_state",0,Draft,Entwurf,0
-selection,"account.move.line,move_state",0,Posted,Festgeschrieben,0
-selection,"account.move.line,state",0,Draft,Entwurf,0
-selection,"account.move.line,state",0,Valid,Gültig,0
-selection,"account.move,state",0,Draft,Entwurf,0
-selection,"account.move,state",0,Posted,Festgeschrieben,0
-selection,"account.period,state",0,Close,Geschlossen,0
-selection,"account.period,state",0,Open,Geöffnet,0
-selection,"account.period,type",0,Adjustment,Berichtigung,0
-selection,"account.period,type",0,Standard,Standard,0
-selection,"account.tax.open_chart_code.init,method",0,By Fiscal Year,Geschäftsjahr,0
-selection,"account.tax.open_chart_code.init,method",0,By Periods,Nach Buchungszeiträumen,0
-selection,"account.tax.template,type",0,Fixed,Fix,0
-selection,"account.tax.template,type",0,None,Kein,0
-selection,"account.tax.template,type",0,Percentage,Prozentsatz,0
-selection,"account.tax,type",0,Fixed,Fix,0
-selection,"account.tax,type",0,None,Kein,0
-selection,"account.tax,type",0,Percentage,Prozentsatz,0
 view,account.account,0,Account,Konto,0
 view,account.account,0,Accounts,Konten,0
 view,account.account,0,Deferrals,Saldenvorträge,0
@@ -607,8 +645,8 @@ view,account.account.create_chart_account.init,0,by selecting a chart of account
 view,account.account.create_chart_account.init,0,Create Chart of Account,Kontenplan erstellen,0
 view,account.account.create_chart_account.init,0,You can now create a chart of account for your company,Es kann jetzt ein Kontenplan für das Unternehmen erstellt werden,0
 view,account.account.create_chart_account.properties,0,Create Default Properties,Standardeigenschaften festlegen,0
-view,account.account.deferral,0,Account Deferral,Saldenvortrag Konto,0
-view,account.account.deferral,0,Account Deferrals,Saldenvorträge Konten,0
+view,account.account.deferral,0,Account Deferral,Konto Saldenvortrag,0
+view,account.account.deferral,0,Account Deferrals,Konten Saldenvorträge,0
 view,account.account.open_aged_balance.init,0,Open Aged Balance,Fälligkeitsliste öffnen,0
 view,account.account.open_aged_balance.init,0,Terms,Zahlungsfristen,0
 view,account.account.open_balance_sheet.init,0,Open Balance Sheet,Bilanzbogen öffnen,0
