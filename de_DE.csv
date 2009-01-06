@@ -40,8 +40,8 @@ model,"ir.ui.menu,name",menu_statement_form,All Statement,Alle Zahlungen,0
 model,"ir.ui.menu,name",menu_draft_statement_form,Draft Statements,Zahlungsentwürfe,0
 model,"ir.ui.menu,name",menu_posted_statement_form,Posted Statements,Festgeschriebene Zahlungen,0
 model,"ir.ui.menu,name",menu_statement_journal_form,Statement Journals,Journale Zahlungsverkehr,0
-model,"ir.ui.menu,name",menu_statements,Statements,Zahlungen,0
-model,"ir.ui.menu,name",menu_statement_configuration,Statements,Zahlungen,0
+model,"ir.ui.menu,name",menu_statements,Statements,Zahlungsverkehr,0
+model,"ir.ui.menu,name",menu_statement_configuration,Statements,Zahlungsverkehr,0
 model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Geprüfte Zahlungen,0
 model,"res.group,name",group_statement,Statement,Zahlung,0
 model,"workflow.activity,name",statement_act_cancel,Cancel,Annullieren,0
@@ -58,7 +58,7 @@ view,account.statement,0,Post,Festschreiben,0
 view,account.statement,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,account.statement,0,Statement,Zahlung,0
 view,account.statement,0,Statement Lines,Zahlungsposten,0
-view,account.statement,0,Statements,Zahlungen,0
+view,account.statement,0,Statements,Zahlungsverkehr,0
 view,account.statement,0,Validate,Prüfen,0
 view,account.statement.journal,0,Statement Journal,Journal Zahlungsverkehr,0
 view,account.statement.journal,0,Statement Journals,Journale Zahlungsverkehr,0
