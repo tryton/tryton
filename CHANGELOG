@@ -1,4 +1,6 @@
+Version 1.0.2 - 2009-01-06
 * Handle average price for products return to supplier
+* Some bug fixes (see mercurial logs for details)
 
 Version 1.0.1 - 2008-12-01
 * Allow egg installation
