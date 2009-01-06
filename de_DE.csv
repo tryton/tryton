@@ -1,4 +1,9 @@
 type,name,res_id,src,value,fuzzy
+selection,"product.template,cost_price_method",0,Average,Durchschnitt,0
+selection,"product.template,cost_price_method",0,Fixed,Fix,0
+selection,"product.template,type",0,Consumable,Verbrauchsmaterial,0
+selection,"product.template,type",0,Service,Dienstleistung,0
+selection,"product.template,type",0,Stockable,Lagerware,0
 error,product.uom,0,Rate and factor can not be both equal to zero.,Faktor und Kehrwert Faktor können beide nicht 0 sein,0
 field,"product.category,childs",0,Childs,Untergeordnet (Kategorien),0
 field,"product.category,complete_name",0,Complete Name,Vollständige Bezeichnung,0
@@ -10,6 +15,7 @@ field,"product.category,parent",0,Parent,Übergeordnet (Kategorie),0
 field,"product.category,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"product.category,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"product.product,code",0,Code,Artikelnummer,0
+field,"product.product,complete_name",0,Complete Name,Vollständige Bezeichnung,0
 field,"product.product,create_date",0,Creation date,Erstellungsdatum,0
 field,"product.product,create_uid",0,Creation user,Ersteller,0
 field,"product.product,description",0,Description,Beschreibung,0
@@ -76,7 +82,11 @@ model,"ir.ui.menu,name",menu_uom_form2,New Unit of Measure,Neue Maßeinheit,0
 model,"ir.ui.menu,name",menu_main_product,Product,Artikel,0
 model,"ir.ui.menu,name",menu_product_product,Products,Artikel,0
 model,"ir.ui.menu,name",menu_uom_form,Units of Measure,Maßeinheiten,0
+model,"product.category,name",0,Product Category,Artikel Kategorie,0
+model,"product.product,name",0,Product,Artikel,0
+model,"product.template,name",0,Product Template,Artikel Vorlage,0
 model,"product.uom.category,name",uom_cat_length,Length,Länge,0
+model,"product.uom.category,name",0,Product uom category,Artikel Maßeinheit Kategorie,0
 model,"product.uom.category,name",uom_cat_surface,Surface,Fläche,0
 model,"product.uom.category,name",uom_cat_time,Time,Zeit,0
 model,"product.uom.category,name",uom_cat_unit,Units,Stückzahl,0
@@ -112,6 +122,7 @@ model,"product.uom,name",uom_square_inch,Square inch,Quadratzoll,0
 model,"product.uom,name",uom_square_meter,Square meter,Quadratmeter,0
 model,"product.uom,name",uom_square_yard,Square yard,Quadratyard(s),0
 model,"product.uom,name",uom_unit,Unit,Stück,0
+model,"product.uom,name",0,Unit of measure,Maßeinheit,0
 model,"product.uom,name",uom_work_day,Work Day,Arbeitstag(e),0
 model,"product.uom,name",uom_yard,Yard,Yard(s),0
 model,"product.uom,symbol",uom_are,a,a,0
@@ -147,11 +158,6 @@ model,"product.uom,symbol",uom_work_day,wd,wd,0
 model,"product.uom,symbol",uom_yard,yd,yd,0
 model,"product.uom,symbol",uom_square_yard,yd²,yd²,0
 model,"res.group,name",group_product_admin,Product Administration,Administration Artikel,0
-selection,"product.template,cost_price_method",0,Average,Durchschnitt,0
-selection,"product.template,cost_price_method",0,Fixed,Fix,0
-selection,"product.template,type",0,Consumable,Verbrauchsmaterial,0
-selection,"product.template,type",0,Service,Dienstleistung,0
-selection,"product.template,type",0,Stockable,Lagerware,0
 view,product.category,0,Childs,Untergeordnet (Kategorien),0
 view,product.category,0,Product Categories,Artikelkategorien,0
 view,product.category,0,Product Category,Artikelkategorie,0
