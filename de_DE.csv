@@ -1,4 +1,12 @@
 type,name,res_id,src,value,fuzzy
+selection,"analytic_account.account,display_balance",0,Credit - Debit,Haben - Soll,0
+selection,"analytic_account.account,display_balance",0,Debit - Credit,Soll - Haben,0
+selection,"analytic_account.account,state",0,Closed,Geschlossen,0
+selection,"analytic_account.account,state",0,Draft,Entwurf,0
+selection,"analytic_account.account,state",0,Opened,Geöffnet,0
+selection,"analytic_account.account,type",0,Normal,Normal,0
+selection,"analytic_account.account,type",0,Root,Wurzelkonto,0
+selection,"analytic_account.account,type",0,View,Sicht,0
 error,analytic_account.account,0,You can not create recursive accounts!,Konten können nicht rekursiv angelegt werden!,0
 error,analytic_account.account.selection,0,Can not have many accounts with the same root or a missing mandatory root account!,Es können nicht mehrere Konten mit dem selben Wurzelkonto oder einem fehlenden erforderlichen Wurzelkonto existieren!,0
 error,analytic_account.line,0,Wrong credit/debit values!,Falsche Haben/Soll-Werte!,0
@@ -37,6 +45,10 @@ field,"analytic_account.line,move_line",0,Account Move Line,Buchungszeile,0
 field,"analytic_account.line,name",0,Name,Name,0
 field,"analytic_account.line,party",0,Party,Partei,0
 field,"analytic_account.line,reference",0,Reference,Referenz,0
+model,"analytic_account.account,name",0,Analytic Account,Kostenstelle,0
+model,"analytic_account.account.open_chart_account.init,name",0,Open Chart Account Init,Kontenplan Öffnen Init,0
+model,"analytic_account.account.selection,name",0,Analytic Account Selection,Kostenstelle Auswahl,0
+model,"analytic_account.line,name",0,Analytic Line,Buchungszeile,0
 model,"ir.action,name",act_account_form,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_account_tree,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_account_tree2,Analytic Accounts,Kostenstellen,0
@@ -48,14 +60,6 @@ model,"ir.ui.menu,name",menu_account_form,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_account_tree,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Analytic Accounts,Plan für Kostenstellen öffnen,0
 model,"res.group,name",group_analytic_admin,Analytic Administration,Administration Kostenstellen,0
-selection,"analytic_account.account,display_balance",0,Credit - Debit,Haben - Soll,0
-selection,"analytic_account.account,display_balance",0,Debit - Credit,Soll - Haben,0
-selection,"analytic_account.account,state",0,Closed,Geschlossen,0
-selection,"analytic_account.account,state",0,Draft,Entwurf,0
-selection,"analytic_account.account,state",0,Opened,Geöffnet,0
-selection,"analytic_account.account,type",0,Normal,Normal,0
-selection,"analytic_account.account,type",0,Root,Wurzelkonto,0
-selection,"analytic_account.account,type",0,View,Sicht,0
 view,account.move.line,0,Analytic,Kostenstelle,0
 view,analytic_account.account,0,Analytic Account,Kostenstelle,0
 view,analytic_account.account,0,Analytic Accounts,Kostenstellen,0
