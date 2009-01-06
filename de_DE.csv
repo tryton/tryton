@@ -1,4 +1,8 @@
 type,name,res_id,src,value,fuzzy
+selection,"timesheet.work,state",0,Closed,Geschlossen,0
+selection,"timesheet.work,state",0,Opened,Geöffnet,0
+selection,"timesheet.work,type",0,Normal,Standard,0
+selection,"timesheet.work,type",0,View,Sicht,0
 error,timesheet.line,0,Hours field must be positive,Feld Stunden muss einen positiven Wert haben,0
 error,timesheet.work,0,You can not create recursive works!,Es können keine rekursiven Aufgaben angelegt werden,0
 field,"timesheet.enter_lines.init,date",0,Date,Datum,0
@@ -61,7 +65,7 @@ model,"ir.action,name",act_open_hours_employee,Hours per Employee,Stunden pro Mi
 model,"ir.action,name",act_hours_employee_monthly_form,Hours per Employee per Month,Stunden pro Mitarbeiter pro Monat,0
 model,"ir.action,name",act_hours_employee_weekly_form,Hours per Employee per Week,Stunden pro Mitarbeiter pro Monat,0
 model,"ir.action,name",act_open_work,Hours per Work,Stunden pro Aufgabe,0
-model,"ir.action,name",act_work_form2,Hours per Work,Stunden pro Mitarbeiter pro Woche,0
+model,"ir.action,name",act_work_form2,Hours per Work,Stunden pro Aufgabe,0
 model,"ir.action,name",act_open_work2,Hours per Work,Stunden pro Aufgabe,0
 model,"ir.action,name",act_work_form3,Hours per Work,Stunden pro Aufgabe,0
 model,"ir.action,name",act_open_work_graph,Hours per Work,Stunden pro Aufgabe,0
@@ -82,10 +86,14 @@ model,"ir.ui.menu,name",menu_timesheet,Timesheet Management,Zeiterfassung,0
 model,"ir.ui.menu,name",menu_work_form,Works,Aufgaben,0
 model,"ir.ui.menu,name",menu_work_tree,Works,Aufgaben,0
 model,"res.group,name",group_timesheet_admin,Timesheet Administration,Administration Zeiterfassung,0
-selection,"timesheet.work,state",0,Closed,Geschlossen,0
-selection,"timesheet.work,state",0,Opened,Geöffnet,0
-selection,"timesheet.work,type",0,Normal,Standard,0
-selection,"timesheet.work,type",0,View,Sicht,0
+model,"timesheet.enter_lines.init,name",0,Enter Lines Init,Eingabe Zeitposition Init,0
+model,"timesheet.hours_employee_monthly,name",0,Hours per Employee per Month,Stunden pro Mitarbeiter und Monat,0
+model,"timesheet.hours_employee,name",0,Hours per Employee,Stunden pro Mitarbeiter,0
+model,"timesheet.hours_employee_weekly,name",0,Hours per Employee per Week,Stunden pro Mitarbeiter und Woche,0
+model,"timesheet.line,name",0,Timesheet Line,Zeitposition,0
+model,"timesheet.open_hours_employee.init,name",0,Open Hours Employee Init,Stunden Mitarbeiter Öffnen Init,0
+model,"timesheet.work,name",0,Work,Aufgabe,0
+model,"timesheet.work.open.init,name",0,Open Work Init,Aufgabe Öffnen Init,0
 view,timesheet.enter_lines.init,0,Enter Timesheet,Zur Zeiterfassung,0
 view,timesheet.hours_employee,0,Hours,Stunden,0
 view,timesheet.hours_employee,0,Hours per Employee,Stunden pro Mitarbeiter,0
