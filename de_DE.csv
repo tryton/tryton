@@ -1,4 +1,26 @@
 type,name,res_id,src,value,fuzzy
+selection,"sale.line,type",0,Line,Position,0
+selection,"sale.line,type",0,Subtotal,Zwischensumme,0
+selection,"sale.line,type",0,Title,Überschrift,0
+selection,"sale.sale,invoice_method",0,Manual,Manuell,0
+selection,"sale.sale,invoice_method",0,On Order Confirmed,Bei Beauftragung,0
+selection,"sale.sale,invoice_method",0,On Packing Sent,Bei Versand,0
+selection,"sale.sale,invoice_state",0,Exception,Vorbehalt,0
+selection,"sale.sale,invoice_state",0,None,Kein,0
+selection,"sale.sale,invoice_state",0,Paid,Bezahlt,0
+selection,"sale.sale,invoice_state",0,Waiting,Wartend,0
+selection,"sale.sale,packing_method",0,Manual,Manuell,0
+selection,"sale.sale,packing_method",0,On Invoice Paid,Bei Bezahlung,0
+selection,"sale.sale,packing_method",0,On Order Confirmed,Bei Beauftragung,0
+selection,"sale.sale,packing_state",0,Exception,Vorbehalt,0
+selection,"sale.sale,packing_state",0,None,Kein,0
+selection,"sale.sale,packing_state",0,Sent,Gesendet,0
+selection,"sale.sale,packing_state",0,Waiting,Wartend,0
+selection,"sale.sale,state",0,Cancel,Annulliert,0
+selection,"sale.sale,state",0,Confirmed,Beauftragt,0
+selection,"sale.sale,state",0,Done,Erledigt,0
+selection,"sale.sale,state",0,Draft,Entwurf,0
+selection,"sale.sale,state",0,Quotation,Angebot,0
 error,account.invoice,0,You can not delete invoices that comes from a sale!,Aus einem Verkauf stammende Rechnungen können nicht gelöscht werden!,0
 error,sale.line,0,"It miss an ""account_revenue"" default property!","Es ist keine allgemeine Eigenschaft ""Konto Ertrag"" definiert",0
 error,sale.line,0,The customer location is required!,Der Lagerort des Kunden muss eingegeben werden!,0
@@ -70,6 +92,8 @@ model,"ir.ui.menu,name",menu_sale_form_quotation,Quotation Sales,Angebote (Verk�
 model,"ir.ui.menu,name",menu_sale,Sale Management,Verkauf,0
 model,"ir.ui.menu,name",menu_sale_form,Sales,Verkauf,0
 model,"res.group,name",group_sale,Sale,Verkauf,0
+model,"sale.line,name",0,Sale Line,Verkauf Position,0
+model,"sale.sale,name",0,Sale,Verkauf,0
 model,"workflow.activity,name",sale_activity_cancel,Cancel,Annullieren,0
 model,"workflow.activity,name",sale_activity_confirmed,Confirmed,Beauftragt,0
 model,"workflow.activity,name",sale_activity_done,Done,Erledigt,0
@@ -115,28 +139,6 @@ odt,sale.sale,0,Total:,Gesamt:,0
 odt,sale.sale,0,Total (excl. taxes):,Netto:,0
 odt,sale.sale,0,Unit Price,Einzelpreis,0
 odt,sale.sale,0,VAT:,USt:,0
-selection,"sale.line,type",0,Line,Position,0
-selection,"sale.line,type",0,Subtotal,Zwischensumme,0
-selection,"sale.line,type",0,Title,Überschrift,0
-selection,"sale.sale,invoice_method",0,Manual,Manuell,0
-selection,"sale.sale,invoice_method",0,On Order Confirmed,Bei Beauftragung,0
-selection,"sale.sale,invoice_method",0,On Packing Sent,Bei Versand,0
-selection,"sale.sale,invoice_state",0,Exception,Vorbehalt,0
-selection,"sale.sale,invoice_state",0,None,Kein,0
-selection,"sale.sale,invoice_state",0,Paid,Bezahlt,0
-selection,"sale.sale,invoice_state",0,Waiting,Wartend,0
-selection,"sale.sale,packing_method",0,Manual,Manuell,0
-selection,"sale.sale,packing_method",0,On Invoice Paid,Bei Bezahlung,0
-selection,"sale.sale,packing_method",0,On Order Confirmed,Bei Beauftragung,0
-selection,"sale.sale,packing_state",0,Exception,Vorbehalt,0
-selection,"sale.sale,packing_state",0,None,Kein,0
-selection,"sale.sale,packing_state",0,Sent,Gesendet,0
-selection,"sale.sale,packing_state",0,Waiting,Wartend,0
-selection,"sale.sale,state",0,Cancel,Annulliert,0
-selection,"sale.sale,state",0,Confirmed,Beauftragt,0
-selection,"sale.sale,state",0,Done,Erledigt,0
-selection,"sale.sale,state",0,Draft,Entwurf,0
-selection,"sale.sale,state",0,Quotation,Angebot,0
 view,product.product,0,Customers,Kunden,0
 view,product.template,0,Customers,Kunden,0
 view,sale.line,0,Products,Artikel,0
