@@ -9,5 +9,6 @@ field,"project_revenue.service,sequence",0,Sequence,Reihenfolge,0
 field,"timesheet.line,product",0,Service,Leistung,0
 help,"company.employee,services",0,Services allowed to use in timesheets.,Erlaubte Leistungen für Arbeitsblätter,0
 help,"project_revenue.service,sequence",0,Use to order Services,Wird für die Reihenfolge der Leistungen verwendet,0
+model,"project_revenue.service,name",0,Service,Dienstleistung,0
 view,company.employee,0,Services,Leistungen,0
 view,project_revenue.service,0,Service,Leistung,0
