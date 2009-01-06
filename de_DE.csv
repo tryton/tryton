@@ -28,6 +28,9 @@ field,"res.user,company",0,Current Company,Aktuelles Unternehmen,0
 field,"res.user,employee",0,Employee,Mitarbeiter,0
 field,"res.user,main_company",0,Main Company,Mutterbetrieb,0
 help,"ir.cron,companies",0,Companies registered for this cron,"Unternehmen, für welche dieser Job durchgeführt werden soll",0
+model,"company.company.config.init,name",0,Company Config Init,Unternehmen Konfiguration Init,0
+model,"company.company,name",0,Company,Unternehmen,0
+model,"company.employee,name",0,Employee,Mitarbeiter,0
 model,"ir.action,name",act_company_tree,Companies,Unternehmen,0
 model,"ir.action,name",act_company_form,Companies,Unternehmen,0
 model,"ir.action,name",act_employee_form,Employees,Mitarbeiter,0
