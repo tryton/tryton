@@ -1,3 +1,4 @@
+* Use reference to taxes for invoice line in invoice report
 * Add mechanism for invoice line standalone
 * Allow egg installation
 
