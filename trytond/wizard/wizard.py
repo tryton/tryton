@@ -34,8 +34,9 @@ class WizardService(Service):
             res = wizard.execute(cursor, user, data, state, context)
             return res
         except Exception, exception:
-            if CONFIG['verbose'] or str(exception.args[0]) not in \
-                    ('NotLogged', 'ConcurrencyException', 'UserError'):
+            if CONFIG['verbose'] or (exception.args \
+                    and str(exception.args[0]) not in \
+                    ('NotLogged', 'ConcurrencyException', 'UserError')):
                 tb_s = reduce(lambda x, y: x+y,
                         traceback.format_exception(*sys.exc_info()))
                 logging.getLogger("web-service").error(
