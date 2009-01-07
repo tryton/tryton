@@ -71,7 +71,7 @@ class Party(OSV):
         self._error_messages.update({
             'wrong_vat': 'Wrong VAT number!',
         })
-        self._order.insert(0, ('name', 'DESC'))
+        self._order.insert(0, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return True
