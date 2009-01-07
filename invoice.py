@@ -1149,6 +1149,8 @@ class InvoiceLine(OSV):
             states={
                 'invisible': "type != 'line'",
             })
+    invoice_taxes = fields.Function('get_invoice_taxes', type='many2many',
+            relation='account.invoice.tax', string='Invoice Taxes')
 
     def __init__(self):
         super(InvoiceLine, self).__init__()
@@ -1302,6 +1304,36 @@ class InvoiceLine(OSV):
                         res[line.id] = Decimal('0.0')
             else:
                 res[line.id] = Decimal('0.0')
+        return res
+
+    def get_invoice_taxes(self, cursor, user, ids, name, arg, context=None):
+        tax_obj = self.pool.get('account.tax')
+        invoice_obj = self.pool.get('account.invoice')
+
+        if context is None:
+            context = {}
+
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            ctx = context.copy()
+            ctx.update(invoice_obj.get_tax_context(cursor, user, line.invoice,
+                context=context))
+            tax_ids = [x.id for x in line.taxes]
+            taxes_keys = []
+            for tax in tax_obj.compute(cursor, user, tax_ids, line.unit_price,
+                    line.quantity, context=ctx):
+                key, _ = invoice_obj._compute_tax(cursor, user, tax,
+                        line.invoice.type, context=context)
+                taxes_keys.append(key)
+            res[line.id] = []
+            for tax in line.invoice.taxes:
+                if tax.manual:
+                    continue
+                key = (tax.base_code.id, tax.base_sign,
+                        tax.tax_code.id, tax.tax_sign,
+                        tax.account.id, tax.description)
+                if key in taxes_keys:
+                    res[line.id].append(tax.id)
         return res
 
     def on_change_product(self, cursor, user, ids, vals, context=None):
@@ -1561,6 +1593,8 @@ class InvoiceTax(OSV):
             select=1)
     description = fields.Char('Description', size=None, required=True)
     sequence = fields.Integer('Sequence')
+    sequence_number = fields.Function('get_sequence_number', type='integer',
+            string='Sequence Number')
     account = fields.Many2One('account.account', 'Account', required=True,
             domain="[('kind', '!=', 'view'), " \
                 "('company', '=', _parent_invoice.company)]")
@@ -1622,6 +1656,18 @@ class InvoiceTax(OSV):
                 self.raise_user_error(cursor, 'modify',
                         context=context)
         return
+
+    def get_sequence_number(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for tax in self.browse(cursor, user, ids, context=context):
+            res[tax.id] = 0
+            i = 1
+            for tax2 in tax.invoice.taxes:
+                if tax2.id == tax.id:
+                    res[tax.id] = i
+                    break
+                i += 1
+        return res
 
     def delete(self, cursor, user, ids, context=None):
         if isinstance(ids, (int, long)):
