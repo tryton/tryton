@@ -110,7 +110,11 @@ class Location(OSV):
         product_obj = self.pool.get('product.product')
         date_obj = self.pool.get('ir.date')
 
-        if (not context) or (not context.get('product')):
+        if not context:
+            context = {}
+
+        if (not context.get('product')) \
+                or not (isinstance(context['product'], (int, long))):
             return dict([(i,0) for i in ids])
 
         if name == 'quantity' and \
@@ -131,7 +135,7 @@ class Location(OSV):
             product_ids=[context['product']], with_childs=True, skip_zero=False,
             context=context).iteritems()
 
-        return dict( [(loc,qty) for (loc,prod), qty in pbl] )
+        return dict([(loc,qty) for (loc,prod), qty in pbl])
 
     def view_header_get(self, cursor, user, value, view_type='form',
             context=None):
@@ -139,7 +143,8 @@ class Location(OSV):
         uom_obj = self.pool.get('product.uom')
         if context is None:
             context = {}
-        if context.get('product'):
+        if context.get('product') \
+                and isinstance(context['product'], (int, long)):
             product_name = product_obj.name_get(cursor, user, context['product'],
                     context=context)[0][1]
             product = product_obj.browse(cursor, user, context['product'],
