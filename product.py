@@ -489,7 +489,7 @@ class Product(OSV):
                 needed_qty -= available_qty
         # Force assignation for consumables:
         if move.product.type == "consumable":
-            to_pick.append((move.from_location.id, needed_qty))
+            to_pick.append((move.from_location, needed_qty))
             return to_pick
         return None
 
