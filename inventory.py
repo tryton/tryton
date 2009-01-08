@@ -215,7 +215,8 @@ class InventoryLine(OSV):
             digits="(16, unit_digits)", readonly=True)
     quantity = fields.Float('Quantity', digits="(16, unit_digits)")
     move = fields.Many2One('stock.move', 'Move', readonly=True)
-    inventory = fields.Many2One('stock.inventory', 'Inventory', required=True)
+    inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
+            ondelete='CASCADE')
 
     def __init__(self):
         super(InventoryLine, self).__init__()
