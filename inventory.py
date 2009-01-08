@@ -226,6 +226,7 @@ class InventoryLine(OSV):
             ('inventory_product_uniq', 'UNIQUE(inventory, product)',
                 'Product must be unique by inventory!'),
         ]
+        self._order.insert(0, ('product', 'ASC'))
 
     def default_unit_digits(self, cursor, user, context=None):
         return 2
