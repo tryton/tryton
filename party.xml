@@ -23,7 +23,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name" select="1"/>
                     <field name="lang" select="2"/>
                     <field name="vat_code" select="1"/>
-                    <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -45,7 +44,6 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="addresses" mode="form,tree" colspan="4">
                                 <tree string="Addresses" sequence="sequence"
                                     fill="1">
-                                    <field name="sequence" tree_invisible="1"/>
                                     <field name="name"/>
                                     <field name="street"/>
                                     <field name="streetbis"/>
@@ -62,11 +60,9 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="contact_mechanisms" colspan="2">
                                 <tree string="Contact Mechanisms" sequence="sequence"
                                     fill="1">
-                                    <field name="sequence" tree_invisible="1"/>
                                     <field name="type"/>
                                     <field name="value"/>
                                     <field name="comment"/>
-                                    <field name="active" tree_invisible="1"/>
                                 </tree>
                             </field>
                             <group col="1" colspan="2" id="categories">

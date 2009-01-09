@@ -13,7 +13,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="party" select="1"/>
                     <field name="type" select="1"/>
                     <field name="value" select="1"/>
-                    <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
