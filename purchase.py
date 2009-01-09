@@ -84,6 +84,8 @@ class PurchaseLine(OSV):
                 id2record[record['id']] = record
             lines = self.browse(cursor, user, ids, context=context)
             for line in lines:
+                if line.type != 'line':
+                    continue
                 for account in line.analytic_accounts.accounts:
                     if account.root.id in root_ids:
                         id2record[line.id]['analytic_account_' \
