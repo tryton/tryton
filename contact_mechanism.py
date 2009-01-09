@@ -29,12 +29,7 @@ class ContactMechanism(OSV):
 
     type = fields.Selection(_TYPES, 'Type', required=True, states=STATES,
             sort=False)
-    value = fields.Char('Value', select=1,
-            states={
-                'invisible': "type in ('email', 'website', 'skype', 'sip')",
-                'required': "type not in ('email', 'website')",
-                'readonly': "active == False",
-            }, on_change=['value'])
+    value = fields.Char('Value', select=1, states=STATES, on_change=['value'])
     comment = fields.Text('Comment', states=STATES)
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE', states=STATES, select=1)
@@ -45,25 +40,31 @@ class ContactMechanism(OSV):
                 'invisible': "type != 'email'",
                 'required': "type == 'email'",
                 'readonly': "active == False",
-            }, on_change=['email'])
+            }, on_change=['email'], depends=['value', 'type', 'active'])
     website = fields.Function('get_value', fnct_inv='set_value', type='char',
             string="Website", states={
                 'invisible': "type != 'website'",
                 'required': "type == 'website'",
                 'readonly': "active == False",
-            }, on_change=['website'])
+            }, on_change=['website'], depends=['value', 'type', 'active'])
     skype = fields.Function('get_value', fnct_inv='set_value', type='char',
             string="Skype", states={
                 'invisible': "type != 'skype'",
                 'required': "type == 'skype'",
                 'readonly': "active == False",
-            }, on_change=['skype'])
+            }, on_change=['skype'], depends=['value', 'type', 'active'])
     sip = fields.Function('get_value', fnct_inv='set_value', type='char',
             string="SIP", states={
                 'invisible': "type != 'sip'",
                 'required': "type == 'sip'",
                 'readonly': "active == False",
-            }, on_change=['sip'])
+            }, on_change=['sip'], depends=['value', 'type', 'active'])
+    other_value = fields.Function('get_value', fnct_inv='set_value',
+            type='char', string='Value', states={
+                'invisible': "type in ('email', 'website', 'skype', 'sip')",
+                'required': "type not in ('email', 'website')",
+                'readonly': "active == False",
+            }, on_change=['other_value'], depends=['value', 'type', 'active'])
 
     def __init__(self):
         super(ContactMechanism, self).__init__()
@@ -101,6 +102,7 @@ class ContactMechanism(OSV):
             'email': value,
             'skype': value,
             'sip': value,
+            'other_value': value,
         }
 
     def on_change_value(self, cursor, user, ids, vals, context=None):
@@ -121,6 +123,10 @@ class ContactMechanism(OSV):
 
     def on_change_sip(self, cursor, user, ids, vals, context=None):
         return self._change_value(cursor, user, vals.get('sip'),
+                context=context)
+
+    def on_change_other_value(self, cursor, user, ids, vals, context=None):
+        return self._change_value(cursor, user, vals.get('other_value'),
                 context=context)
 
     def write(self, cursor, user, ids, vals, context=None):

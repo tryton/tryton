@@ -32,8 +32,8 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="type"/>
                     <field name="type"/>
                     <group col="2" colspan="2" id="value">
-                        <label name="value"/>
-                        <field name="value"/>
+                        <label name="other_value"/>
+                        <field name="other_value"/>
                         <label name="website"/>
                         <field name="website" widget="url"/>
                         <label name="email"/>
