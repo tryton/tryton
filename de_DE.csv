@@ -1,23 +1,4 @@
 type,name,res_id,src,value,fuzzy
-selection,"account.invoice.line,invoice_type",0,Credit Note,Kundengutschrift,0
-selection,"account.invoice.line,invoice_type",0,Invoice,Lieferantenrechnung,0
-selection,"account.invoice.line,invoice_type",0,Supplier Credit Note,Lieferantengutschrift,0
-selection,"account.invoice.line,invoice_type",0,Supplier Invoice,Lieferantenrechnung,0
-selection,"account.invoice.line,type",0,Comment,Kommentar,0
-selection,"account.invoice.line,type",0,Line,Position,0
-selection,"account.invoice.line,type",0,Subtotal,Zwischensumme,0
-selection,"account.invoice.line,type",0,Title,Überschrift,0
-selection,"account.invoice.pay_invoice.ask,type",0,Partial Payment,Teilzahlung,0
-selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Ausbuchung,0
-selection,"account.invoice,state",0,Canceled,Annulliert,0
-selection,"account.invoice,state",0,Draft,Entwurf,0
-selection,"account.invoice,state",0,Open,Fakturiert,0
-selection,"account.invoice,state",0,Paid,Bezahlt,0
-selection,"account.invoice,state",0,Pro forma,Pro Forma,0
-selection,"account.invoice,type",0,Credit Note,Gutschrift an Kunde,0
-selection,"account.invoice,type",0,Invoice,Kundenrechnung,0
-selection,"account.invoice,type",0,Supplier Credit Note,Gutschrift von Lieferant,0
-selection,"account.invoice,type",0,Supplier Invoice,Lieferantenrechnung,0
 error,account.fiscalyear,0,You can not change the invoice sequence if there is already an invoice opened in the fiscalyear,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung im laufenden Buchungsjahr eröffnet wurde.",0
 error,account.fiscalyear,0,You must have different invoice sequence per fiscal year!,Verschiedene Geschäftsjahre erfordern unterschiedliche Rechnungssequenzen!,0
 error,account.invoice,0,"Base taxes different from invoice lines!
@@ -79,6 +60,7 @@ field,"account.invoice.line,currency",0,Currency,Währung,0
 field,"account.invoice.line,currency_digits",0,Currency Digits,Stellen Währung,0
 field,"account.invoice.line,description",0,Description,Bezeichnung,0
 field,"account.invoice.line,invoice",0,Invoice,Rechnung,0
+field,"account.invoice.line,invoice_taxes",0,Invoice Taxes,Steuern Rechnung,0
 field,"account.invoice.line,invoice_type",0,Invoice Type,Rechnungstyp,0
 field,"account.invoice.line,party",0,Party,Partei,0
 field,"account.invoice.line,product",0,Product,Artikel,0
@@ -146,6 +128,7 @@ field,"account.invoice,taxes",0,Tax Lines,Steuerpositionen,0
 field,"account.invoice.tax,invoice",0,Invoice,Rechnung,0
 field,"account.invoice.tax,manual",0,Manual,Manuell,0
 field,"account.invoice.tax,sequence",0,Sequence,Sequenz,0
+field,"account.invoice.tax,sequence_number",0,Sequence Number,Nummer Sequenz,0
 field,"account.invoice.tax,tax_code",0,Tax Code,Steuerkennziffer,0
 field,"account.invoice.tax,tax_sign",0,Tax Sign,Vorzeichen (Steuer),0
 field,"account.invoice,total_amount",0,Total,Brutto,0
@@ -234,6 +217,7 @@ model,"workflow.activity,name",invoice_activity_open,Open,Fakturieren,0
 model,"workflow.activity,name",invoice_activity_paid,Paid,Bezahlt,0
 model,"workflow.activity,name",invoice_activity_proforma,Pro forma,Pro Forma,0
 model,"workflow,name",invoice_workflow,Invoice workflow,Workflow Rechnung,0
+odt,account.invoice,0,.,;,0
 odt,account.invoice,0,Amount,Betrag,0
 odt,account.invoice,0,Base,Netto,0
 odt,account.invoice,0,Credit Note N°:,Gutschrift Nr.:,0
@@ -262,7 +246,26 @@ odt,account.invoice,0,Taxes:,Steuern:,0
 odt,account.invoice,0,Total:,Gesamt:,0
 odt,account.invoice,0,Total (excl. taxes):,Netto:,0
 odt,account.invoice,0,Unit Price,Einzelpreis,0
-odt,account.invoice,0,VAT:,UST-ID:,0
+odt,account.invoice,0,VAT:,USt-ID-Nr:,0
+selection,"account.invoice.line,invoice_type",0,Credit Note,Kundengutschrift,0
+selection,"account.invoice.line,invoice_type",0,Invoice,Lieferantenrechnung,0
+selection,"account.invoice.line,invoice_type",0,Supplier Credit Note,Lieferantengutschrift,0
+selection,"account.invoice.line,invoice_type",0,Supplier Invoice,Lieferantenrechnung,0
+selection,"account.invoice.line,type",0,Comment,Kommentar,0
+selection,"account.invoice.line,type",0,Line,Position,0
+selection,"account.invoice.line,type",0,Subtotal,Zwischensumme,0
+selection,"account.invoice.line,type",0,Title,Überschrift,0
+selection,"account.invoice.pay_invoice.ask,type",0,Partial Payment,Teilzahlung,0
+selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Ausbuchung,0
+selection,"account.invoice,state",0,Canceled,Annulliert,0
+selection,"account.invoice,state",0,Draft,Entwurf,0
+selection,"account.invoice,state",0,Open,Fakturiert,0
+selection,"account.invoice,state",0,Paid,Bezahlt,0
+selection,"account.invoice,state",0,Pro forma,Pro Forma,0
+selection,"account.invoice,type",0,Credit Note,Gutschrift an Kunde,0
+selection,"account.invoice,type",0,Invoice,Kundenrechnung,0
+selection,"account.invoice,type",0,Supplier Credit Note,Gutschrift von Lieferant,0
+selection,"account.invoice,type",0,Supplier Invoice,Lieferantenrechnung,0
 view,account.invoice,0,Amount Second Currency,Betrag Zweitwährung,0
 view,account.invoice,0,_Cancel,_Annullieren,0
 view,account.invoice,0,Credit,Haben,0
