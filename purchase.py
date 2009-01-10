@@ -25,6 +25,8 @@ class Purchase(OSV):
 
         purchase = self.browse(cursor, user, purchase_id, context=context)
         for line in purchase.lines:
+            if line.type != 'line':
+                continue
             if not account_selection_obj.check_root(cursor, user,
                     [line.analytic_accounts.id]):
                 line_name = purchase_line_obj.name_get(cursor, user,
