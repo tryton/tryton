@@ -902,7 +902,7 @@ class SaleLine(OSV):
                 'readonly': "not globals().get('_parent_sale')",
             }, on_change_with=['type', 'quantity', 'unit_price',
                 '_parent_sale.currency'])
-    description = fields.Char('Description', size=None, required=True)
+    description = fields.Text('Description', size=None, required=True)
     comment = fields.Text('Comment',
             states={
                 'invisible': "type != 'line'",
