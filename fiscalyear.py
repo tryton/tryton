@@ -9,6 +9,7 @@ import mx.DateTime
 STATES = {
     'readonly': "state == 'close'",
 }
+DEPENDS = ['state']
 
 
 class FiscalYear(OSV):
@@ -16,12 +17,14 @@ class FiscalYear(OSV):
     _name = 'account.fiscalyear'
     _description = __doc__
 
-    name = fields.Char('Name', size=None, required=True)
+    name = fields.Char('Name', size=None, required=True, depends=DEPENDS)
     code = fields.Char('Code', size=None)
-    start_date = fields.Date('Starting Date', required=True, states=STATES)
-    end_date = fields.Date('Ending Date', required=True, states=STATES)
+    start_date = fields.Date('Starting Date', required=True, states=STATES,
+            depends=DEPENDS)
+    end_date = fields.Date('Ending Date', required=True, states=STATES,
+            depends=DEPENDS)
     periods = fields.One2Many('account.period', 'fiscalyear', 'Periods',
-            states=STATES)
+            states=STATES, depends=DEPENDS)
     state = fields.Selection([
         ('open', 'Open'),
         ('close', 'Close'),
@@ -30,7 +33,8 @@ class FiscalYear(OSV):
             required=True, domain="[('code', '=', 'account.move')," \
                     "['OR', ('company', '=', company)," \
                     "('company', '=', False)]]",
-                    context="{'code': 'account.move', 'company': company}")
+                    context="{'code': 'account.move', 'company': company}",
+            depends=['company'])
     company = fields.Many2One('company.company', 'Company', required=True)
 
     def __init__(self):

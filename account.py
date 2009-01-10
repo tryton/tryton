@@ -135,7 +135,7 @@ class Type(OSV):
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits')
     amount = fields.Function('get_amount', digits="(16, currency_digits)",
-            string='Amount')
+            string='Amount', depends=['currency_digits'])
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
     display_balance = fields.Selection([
@@ -250,22 +250,23 @@ class AccountTemplate(OSV):
 
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
-    complete_name = fields.Function('get_complete_name', type='char',
-            string='Code - Name', order_field='code')
+    complete_name = fields.Function('get_complete_name',
+            fnct_search='search_complete_name', type='char',
+            string='Code - Name', order_field='code', depends=['name', 'code'])
     code = fields.Char('Code', size=None, select=1)
     type = fields.Many2One('account.account.type.template', 'Type',
             ondelete="restrict",
             states={
                 'invisible': "kind == 'view'",
                 'required': "kind != 'view'",
-            })
+            }, depends=['kind'])
     parent = fields.Many2One('account.account.template', 'Parent', select=1,
             ondelete="restrict")
     childs = fields.One2Many('account.account.template', 'parent', 'Childs')
     reconcile = fields.Boolean('Reconcile',
             states={
                 'invisible': "kind == 'view'",
-            })
+            }, depends=['kind'])
     kind = fields.Selection([
         ('other', 'Other'),
         ('payable', 'Payable'),
@@ -276,7 +277,7 @@ class AccountTemplate(OSV):
         ], 'Kind', required=True)
     deferral = fields.Boolean('Deferral', states={
         'invisible': "kind == 'view'",
-        })
+        }, depends=['kind'])
 
     def __init__(self):
         super(AccountTemplate, self).__init__()
@@ -301,6 +302,17 @@ class AccountTemplate(OSV):
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
         return dict(res)
+
+    def search_complete_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            names = self.name_search(cursor, user, name=args[i][2],
+                    operator=args[i][1], context=context)
+            ids = [x[0] for x in names]
+            args2.append(('id', 'in', ids))
+            i += 1
+        return args2
 
     def name_search(self, cursor, user, name='', args=None, operator='ilike',
             context=None, limit=None):
@@ -449,7 +461,8 @@ class Account(OSV):
 
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
-    complete_name = fields.Function('get_complete_name', type='char',
+    complete_name = fields.Function('get_complete_name',
+            fnct_search='search_complete_name', type='char',
             string='Code - Name', order_field='code')
     code = fields.Char('Code', size=None, select=1)
     active = fields.Boolean('Active', select=2)
@@ -466,24 +479,24 @@ class Account(OSV):
             states={
                 'invisible': "kind == 'view'",
                 'required': "kind != 'view'",
-            })
+            }, depends=['kind'])
     parent = fields.Many2One('account.account', 'Parent', select=1,
             left="left", right="right", ondelete="restrict")
     left = fields.Integer('Left', required=True)
     right = fields.Integer('Right', required=True)
     childs = fields.One2Many('account.account', 'parent', 'Childs')
     balance = fields.Function('get_balance', digits="(16, currency_digits)",
-            string='Balance')
+            string='Balance', depends=['currency_digits'])
     credit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
-            string='Credit')
+            string='Credit', depends=['currency_digits'])
     debit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
-            string='Debit')
+            string='Debit', depends=['currency_digits'])
     reconcile = fields.Boolean('Reconcile',
             help='Check if the account can be used \n' \
                     'for reconciliation.',
             states={
                 'invisible': "kind == 'view'",
-            })
+            }, depends=['kind'])
     note = fields.Text('Note')
     kind = fields.Selection([
         ('other', 'Other'),
@@ -495,11 +508,11 @@ class Account(OSV):
         ], 'Kind', required=True)
     deferral = fields.Boolean('Deferral', states={
         'invisible': "kind == 'view'",
-        })
+        }, depends=['kind'])
     deferrals = fields.One2Many('account.account.deferral', 'account',
             'Deferrals', readonly=True, states={
                 'invisible': "kind == 'view'",
-            })
+            }, depends=['kind'])
 
     def __init__(self):
         super(Account, self).__init__()
@@ -548,6 +561,17 @@ class Account(OSV):
     def get_complete_name(self, cursor, user, ids, name, arg, context=None):
         res = self.name_get(cursor, user, ids, context=context)
         return dict(res)
+
+    def search_complete_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            names = self.name_search(cursor, user, name=args[i][2],
+                    operator=args[i][1], context=context)
+            ids = [x[0] for x in names]
+            args2.append(('id', 'in', ids))
+            i += 1
+        return args2
 
     def get_currency(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')
@@ -861,8 +885,10 @@ class AccountDeferral(OSV):
             select=1)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, select=1)
-    debit = fields.Numeric('Debit', digits="(16, currency_digits)")
-    credit = fields.Numeric('Credit', digits="(16, currency_digits)")
+    debit = fields.Numeric('Debit', digits="(16, currency_digits)",
+            depends=['currency_digits'])
+    credit = fields.Numeric('Credit', digits="(16, currency_digits)",
+            depends=['currency_digits'])
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits')
 
@@ -1180,13 +1206,16 @@ class PrintTrialBalanceInit(WizardOSV):
     _name = 'account.account.print_trial_balance.init'
     _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True, on_change=['fiscalyear'])
+            required=True, on_change=['fiscalyear'],
+            depends=['start_period', 'end_period'])
     start_period = fields.Many2One('account.period', 'Start Period',
             domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '<=', (end_period, 'start_date'))]")
+                    "('start_date', '<=', (end_period, 'start_date'))]",
+            depends=['end_period'])
     end_period = fields.Many2One('account.period', 'End Period',
             domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '>=', (start_period, 'start_date'))]")
+                    "('start_date', '>=', (start_period, 'start_date'))]",
+            depends=['start_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Only posted move')
     empty_account = fields.Boolean('Empty Account',
@@ -1432,13 +1461,16 @@ class OpenIncomeStatementInit(WizardOSV):
     _name = 'account.account.open_income_statement.init'
     _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True, on_change=['fiscalyear'])
+            required=True, on_change=['fiscalyear'],
+            depends=['start_period', 'end_period'])
     start_period = fields.Many2One('account.period', 'Start Period',
             domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '<=', (end_period, 'start_date'))]")
+                    "('start_date', '<=', (end_period, 'start_date'))]",
+            depends=['end_period'])
     end_period = fields.Many2One('account.period', 'End Period',
             domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '>=', (start_period, 'start_date'))]")
+                    "('start_date', '>=', (start_period, 'start_date'))]",
+            depends=['start_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Only posted move')
 
@@ -1574,10 +1606,12 @@ class CreateChartAccountPropertites(WizardOSV):
     company = fields.Many2One('company.company', 'Company')
     account_receivable = fields.Many2One('account.account',
             'Default Receivable Account',
-            domain="[('kind', '=', 'receivable'), ('company', '=', company)]")
+            domain="[('kind', '=', 'receivable'), ('company', '=', company)]",
+            depends=['company'])
     account_payable = fields.Many2One('account.account',
             'Default Payable Account',
-            domain="[('kind', '=', 'payable'), ('company', '=', company)]")
+            domain="[('kind', '=', 'payable'), ('company', '=', company)]",
+            depends=['company'])
 
 CreateChartAccountPropertites()
 

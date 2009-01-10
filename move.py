@@ -13,9 +13,11 @@ import md5
 _MOVE_STATES = {
     'readonly': "state == 'posted'",
 }
+_MOVE_DEPENDS = ['state']
 _LINE_STATES = {
     'readonly': "state == 'valid'",
 }
+_LINE_DEPENDS = ['state']
 
 
 class Move(OSV):
@@ -27,17 +29,18 @@ class Move(OSV):
     reference = fields.Char('Reference', size=None, readonly=True,
             help='Also known as Folio Number')
     period = fields.Many2One('account.period', 'Period', required=True,
-            states=_MOVE_STATES)
+            states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-            states=_MOVE_STATES)
-    date = fields.Date('Effective Date', required=True, states=_MOVE_STATES)
+            states=_MOVE_STATES, depends=_MOVE_DEPENDS)
+    date = fields.Date('Effective Date', required=True, states=_MOVE_STATES,
+            depends=_MOVE_DEPENDS)
     post_date = fields.Date('Post Date', readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
         ], 'State', required=True, readonly=True)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
-            states=_MOVE_STATES)
+            states=_MOVE_STATES, depends=_MOVE_DEPENDS)
 
     def __init__(self):
         super(Move, self).__init__()
@@ -406,15 +409,17 @@ class Line(OSV):
     name = fields.Char('Name', size=None, required=True)
     debit = fields.Numeric('Debit', digits="(16, currency_digits)",
             on_change=['account', 'debit', 'credit', 'tax_lines',
-                'journal', 'move'])
+                'journal', 'move'], depends=['currency_digits', 'credit',
+                    'tax_lines', 'journal'])
     credit = fields.Numeric('Credit', digits="(16, currency_digits)",
             on_change=['account', 'debit', 'credit', 'tax_lines',
-                'journal', 'move'])
+                'journal', 'move'], depens=['currency_digits', 'debit',
+                    'tax_lines', 'journal'])
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('kind', '!=', 'view')],
             select=1,
             on_change=['account', 'debit', 'credit', 'tax_lines',
-                'journal', 'move'])
+                'journal', 'move', 'account_kind'])
     move = fields.Many2One('account.move', 'Move', states=_LINE_STATES,
             select=1, required=True)
     journal = fields.Function('get_move_field', fnct_inv='set_move_field',
@@ -429,12 +434,14 @@ class Line(OSV):
     reference = fields.Char('Reference', size=None)
     amount_second_currency = fields.Numeric('Amount Second Currency',
             digits="(16, second_currency_digits)",
-            help='The amount expressed in a second currency')
+            help='The amount expressed in a second currency',
+            depends=['second_currency_digits'])
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
             help='The second currency')
     party = fields.Many2One('party.party', 'Party',
             on_change=['move', 'party', 'account', 'debit', 'credit',
-                'journal'], select=1)
+                'journal'], select=1, depends=['debit', 'credit', 'account',
+                    'journal'])
     blocked = fields.Boolean('Litigation',
             help='Mark the line as litigation with the party.')
     maturity_date = fields.Date('Maturity Date',

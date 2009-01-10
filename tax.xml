@@ -137,7 +137,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name"/>
                     <field name="code"/>
                     <field name="sum"/>
-                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -202,7 +201,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="account"/>
                     <label name="description"/>
                     <field name="description" colspan="3"/>
-                    <field name="parent" invisible="1" colspan="4"/>
                     <notebook colspan="4">
                         <page string="General Information" id="general">
                             <label name="group"/>
@@ -230,7 +228,6 @@ this repository contains the full copyright notices and license terms. -->
                                 <tree string="Taxes" sequence="sequence">
                                     <field name="name"/>
                                     <field name="type"/>
-                                    <field name="sequence" tree_invisible="1"/>
                                 </tree>
                             </field>
                         </page>
@@ -270,7 +267,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="group" select="1"/>
                     <field name="type" select="1"/>
                     <field name="account" select="1"/>
-                    <field name="sequence" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -309,7 +305,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="active" xexpand="0" width="100"/>
                     <label name="description"/>
                     <field name="description" colspan="3"/>
-                    <field name="parent" invisible="1" colspan="4"/>
                     <notebook colspan="4">
                         <page string="General Information" id="general">
                             <label name="group"/>
@@ -340,7 +335,6 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="name"/>
                                     <field name="type"/>
                                     <field name="active"/>
-                                    <field name="sequence" tree_invisible="1"/>
                                 </tree>
                             </field>
                         </page>
@@ -380,7 +374,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="group" select="1"/>
                     <field name="type" select="1"/>
                     <field name="active" select="2"/>
-                    <field name="sequence" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>

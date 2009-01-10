@@ -9,6 +9,8 @@ from trytond.sql_db import table_handler
 STATES = {
     'readonly': "state == 'close'",
 }
+DEPENDS = ['state']
+
 _ICONS = {
     'open': 'tryton-open',
     'close': 'tryton-readonly',
@@ -94,7 +96,7 @@ class Journal(OSV):
                 'required': "centralised or " \
                         "(type == 'cash' and context.get('company'))",
                 'invisible': "not context.get('company')",
-            })
+            }, depends=['company', 'type', 'centralised'])
     debit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Debit Account',
             domain="[('kind', '!=', 'view'), ('company', '=', company)]",
@@ -102,7 +104,7 @@ class Journal(OSV):
                 'required': "centralised or " \
                         "(type == 'cash' and context.get('company'))",
                 'invisible': "not context.get('company')",
-            })
+            }, depends=['company', 'type', 'centralised'])
 
     def __init__(self):
         super(Journal, self).__init__()
@@ -166,11 +168,11 @@ class Period(OSV):
 
     name = fields.Char('Name', size=None, required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-            ondelete='CASCADE', states=STATES)
+            ondelete='CASCADE', states=STATES, depends=DEPENDS)
     period = fields.Many2One('account.period', 'Period', required=True,
-            ondelete='CASCADE', states=STATES)
+            ondelete='CASCADE', states=STATES, depends=DEPENDS)
     icon = fields.Function('get_icon', string='Icon', type='char')
-    active = fields.Boolean('Active', select=2, states=STATES)
+    active = fields.Boolean('Active', select=2, states=STATES, depends=DEPENDS)
     state = fields.Selection([
         ('open', 'Open'),
         ('close', 'Close'),

@@ -304,10 +304,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Templates">
-                    <field name="complete_name"/>
-                    <field name="type" select="2"/>
-                    <field name="name" select="1" tree_invisible="1"/>
-                    <field name="code" select="1" tree_invisible="1"/>
+                    <field name="complete_name" select="1"/>
+                    <field name="type" select="1"/>
                 </tree>
                 ]]>
             </field>
@@ -397,7 +395,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="debit"/>
                     <label name="credit"/>
                     <field name="credit"/>
-                    <field name="currency_digits" invisible="1" colspan="4"/>
                 </form>
                 ]]>
             </field>
@@ -412,7 +409,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="fiscalyear" select="1"/>
                     <field name="debit"/>
                     <field name="credit"/>
-                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -461,7 +457,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="account_receivable"/>
                     <label name="account_payable"/>
                     <field name="account_payable"/>
-                    <field name="company" invisible="1"/>
                 </form>
                 ]]>
             </field>
@@ -529,12 +524,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Accounts">
-                    <field name="complete_name"/>
-                    <field name="company" select="2"/>
-                    <field name="type" select="2"/>
-                    <field name="active" select="2" tree_invisible="1"/>
-                    <field name="name" select="1" tree_invisible="1"/>
-                    <field name="code" select="1" tree_invisible="1"/>
+                    <field name="complete_name" select="1"/>
+                    <field name="company" select="1"/>
+                    <field name="type" select="1"/>
                 </tree>
                 ]]>
             </field>
@@ -583,7 +575,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="credit"/>
                     <field name="balance"/>
                     <field name="currency"/>
-                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -736,7 +727,6 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Balance Sheet">
                     <field name="name"/>
                     <field name="amount"/>
-                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -792,7 +782,6 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Income Statement">
                     <field name="name"/>
                     <field name="amount"/>
-                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>

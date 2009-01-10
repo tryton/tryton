@@ -98,7 +98,6 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="field"/>
                             <field name="required"/>
                             <field name="readonly"/>
-                            <field name="sequence" tree_invisible="1"/>
                         </tree>
                         <form string="View Column">
                             <label name="name"/>
@@ -208,7 +207,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name" select="1"/>
                     <field name="code" select="1"/>
                     <field name="type" select="1"/>
-                    <field name="active" tree_invisible="1" select="2"/>
                 </tree>
                 ]]>
             </field>

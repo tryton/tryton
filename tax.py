@@ -121,13 +121,13 @@ class Code(OSV):
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True)
     parent = fields.Many2One('account.tax.code', 'Parent', select=1,
-            domain="[('company', '=', company)]")
+            domain="[('company', '=', company)]", depends=['company'])
     childs = fields.One2Many('account.tax.code', 'parent', 'Childs',
-            domain="[('company', '=', company)]")
+            domain="[('company', '=', company)]", depends=['company'])
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['company'])
     sum = fields.Function('get_sum', digits="(16, currency_digits)",
-            string='Sum')
+            string='Sum', depends=['currency_digits'])
 
     def __init__(self):
         super(Code, self).__init__()
@@ -253,12 +253,12 @@ class OpenChartCodeInit(WizardOSV):
             help='Keep empty for all open fiscal year',
             states={
                 'invisible': "method != 'fiscalyear'",
-            })
+            }, depends=['method'])
     periods = fields.Many2Many('account.period', None, None, None, 'Periods',
             help='Keep empty for all periods of all open fiscal year',
             states={
                 'invisible': "method != 'periods'",
-            })
+            }, depends=['method'])
 
     def default_method(self, cursor, user, context=None):
         return 'periods'
@@ -499,18 +499,18 @@ class Tax(OSV):
     group = fields.Many2One('account.tax.group', 'Group', required=True,
             states={
                 'invisible': "locals().get('parent', True)",
-            })
+            }, depends=['parent'])
     active = fields.Boolean('Active')
     sequence = fields.Integer('Sequence',
             help='Use to order the taxes')
     amount = fields.Numeric('Amount', digits=(16, 2),
             states={
                 'invisible': "type != 'fixed'",
-            }, help='In company\'s currency')
+            }, help='In company\'s currency', depends=['type'])
     percentage = fields.Numeric('Percentage', digits=(16, 8),
             states={
                 'invisible': "type != 'percentage'",
-            }, help='In %')
+            }, help='In %', depends=['type'])
     type = fields.Selection([
         ('percentage', 'Percentage'),
         ('fixed', 'Fixed'),
@@ -518,7 +518,6 @@ class Tax(OSV):
         ], 'Type', required=True)
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE')
     childs = fields.One2Many('account.tax', 'parent', 'Childs')
-
     company = fields.Many2One('company.company', 'Company', required=True)
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
             domain="[('company', '=', company)]",
@@ -526,55 +525,55 @@ class Tax(OSV):
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "type != 'none' and company",
-            })
+            }, depends=['company'])
     credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
             domain="[('company', '=', company)]",
             help='Keep empty to use the default credit_note account',
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "type != 'none' and company",
-            })
+            }, depends=['company', 'type'])
 
     invoice_base_code = fields.Many2One('account.tax.code',
             'Invoice Base Code',
             states={
                 'readonly': "type == 'none'",
-            })
+            }, depends=['type'])
     invoice_base_sign = fields.Numeric('Invoice Base Sign', digits=(2, 0),
             help='Usualy 1 or -1',
             states={
                 'readonly': "type == 'none'",
-            })
+            }, depends=['type'])
     invoice_tax_code = fields.Many2One('account.tax.code',
             'Invoice Tax Code',
             states={
                 'readonly': "type == 'none'",
-            })
+            }, depends=['type'])
     invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0),
             help='Usualy 1 or -1',
             states={
                 'readonly': "type == 'none'",
-            })
+            }, depends=['type'])
     credit_note_base_code = fields.Many2One('account.tax.code',
             'Credit Note Base Code',
             states={
                 'readonly': "type == 'none'",
-            })
+            }, depends=['type'])
     credit_note_base_sign = fields.Numeric('Credit Note Base Sign', digits=(2, 0),
             help='Usualy 1 or -1',
             states={
                 'readonly': "type == 'none'",
-            })
+            }, depends=['type'])
     credit_note_tax_code = fields.Many2One('account.tax.code',
             'Credit Note Tax Code',
             states={
                 'readonly': "type == 'none'",
-            })
+            }, depends=['type'])
     credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign', digits=(2, 0),
             help='Usualy 1 or -1',
             states={
                 'readonly': "type == 'none'",
-            })
+            }, depends=['type'])
 
     def __init__(self):
         super(Tax, self).__init__()
@@ -840,6 +839,7 @@ class Account(OSV):
             'account', 'tax', 'Default Taxes',
             domain="[('company', '=', company), ('parent', '=', False)]",
             help='Default tax for manual encoding move lines \n' \
-                    'for journal type: "expense" and "revenue"')
+                    'for journal type: "expense" and "revenue"',
+            depends=['company'])
 
 Account()
