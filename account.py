@@ -289,11 +289,11 @@ class AccountTemplate(OSV):
             context=None, limit=None):
         if name:
             ids = self.search(cursor, user,
-                    [('code', 'like', name + '%')] + args,
+                    [('code', 'like', name + '%')] + (args or []),
                     limit=limit, context=context)
             if not ids:
                 ids = self.search(cursor, user,
-                        [(self._rec_name, operator, name)] + args,
+                        [(self._rec_name, operator, name)] + (args or []),
                         limit=limit, context=context)
         else:
             ids = self.search(cursor, user, args, limit=limit, context=context)
@@ -771,11 +771,11 @@ class Account(OSV):
             context=None, limit=None):
         if name:
             ids = self.search(cursor, user,
-                    [('code', 'like', name + '%')] + args,
+                    [('code', 'like', name + '%')] + (args or []),
                     limit=limit, context=context)
             if not ids:
                 ids = self.search(cursor, user,
-                        [(self._rec_name, operator, name)] + args,
+                        [(self._rec_name, operator, name)] + (args or []),
                         limit=limit, context=context)
         else:
             ids = self.search(cursor, user, args, limit=limit, context=context)
