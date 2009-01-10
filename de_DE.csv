@@ -1,53 +1,4 @@
 type,name,res_id,src,value,fuzzy
-selection,"account.account,kind",0,Expense,Aufwand,0
-selection,"account.account,kind",0,Other,Anderes,0
-selection,"account.account,kind",0,Payable,Verbindlichkeiten,0
-selection,"account.account,kind",0,Receivable,Forderungen,0
-selection,"account.account,kind",0,Revenue,Ertrag,0
-selection,"account.account,kind",0,View,Sicht,0
-selection,"account.account.open_aged_balance.init,balance_type",0,Both,Beide,0
-selection,"account.account.open_aged_balance.init,balance_type",0,Customer,Kunde,0
-selection,"account.account.open_aged_balance.init,balance_type",0,Supplier,Lieferant,0
-selection,"account.account.open_aged_balance.init,unit",0,Day,Tag,0
-selection,"account.account.open_aged_balance.init,unit",0,Month,Monat,0
-selection,"account.account.template,kind",0,Expense,Aufwand,0
-selection,"account.account.template,kind",0,Other,Anderes,0
-selection,"account.account.template,kind",0,Payable,Verbindlichkeiten,0
-selection,"account.account.template,kind",0,Receivable,Forderungen,0
-selection,"account.account.template,kind",0,Revenue,Ertrag,0
-selection,"account.account.template,kind",0,View,Sicht,0
-selection,"account.account.type,display_balance",0,Credit - Debit,Haben - Soll,0
-selection,"account.account.type,display_balance",0,Debit - Credit,Soll - Haben,0
-selection,"account.account.type.template,display_balance",0,Credit - Debit,Haben - Soll,0
-selection,"account.account.type.template,display_balance",0,Debit - Credit,Soll - Haben,0
-selection,"account.fiscalyear,state",0,Close,Abgeschlossen,0
-selection,"account.fiscalyear,state",0,Open,Geöffnet,0
-selection,"account.journal.period,state",0,Close,Geschlossen,0
-selection,"account.journal.period,state",0,Open,Geöffnet,0
-selection,"account.move.line,account_kind",0,Expense,Aufwand,0
-selection,"account.move.line,account_kind",0,Other,Anderes,0
-selection,"account.move.line,account_kind",0,Payable,Verbindlichkeiten,0
-selection,"account.move.line,account_kind",0,Receivable,Forderungen,0
-selection,"account.move.line,account_kind",0,Revenue,Erlöse,0
-selection,"account.move.line,account_kind",0,View,Sicht,0
-selection,"account.move.line,move_state",0,Draft,Entwurf,0
-selection,"account.move.line,move_state",0,Posted,Festgeschrieben,0
-selection,"account.move.line,state",0,Draft,Entwurf,0
-selection,"account.move.line,state",0,Valid,Gültig,0
-selection,"account.move,state",0,Draft,Entwurf,0
-selection,"account.move,state",0,Posted,Festgeschrieben,0
-selection,"account.period,state",0,Close,Geschlossen,0
-selection,"account.period,state",0,Open,Geöffnet,0
-selection,"account.period,type",0,Adjustment,Berichtigung,0
-selection,"account.period,type",0,Standard,Standard,0
-selection,"account.tax.open_chart_code.init,method",0,By Fiscal Year,Geschäftsjahr,0
-selection,"account.tax.open_chart_code.init,method",0,By Periods,Nach Buchungszeiträumen,0
-selection,"account.tax.template,type",0,Fixed,Fix,0
-selection,"account.tax.template,type",0,None,Kein,0
-selection,"account.tax.template,type",0,Percentage,Prozentsatz,0
-selection,"account.tax,type",0,Fixed,Fix,0
-selection,"account.tax,type",0,None,Kein,0
-selection,"account.tax,type",0,Percentage,Prozentsatz,0
 error,account.account,0,You can not create recursive accounts!,Konten können nicht rekursiv angelegt werden!,0
 error,account.account,0,You can not delete account that have children!,Konten mit untergeordneten Konten können nicht gelöscht werden,0
 error,account.account,0,You can not delete account with move line!,"Ein Konto, das Buchungen aufweist, kann nicht gelöscht werden!",0
@@ -184,6 +135,7 @@ field,"account.account.type,amount",0,Amount,Betrag,0
 field,"account.account.type,balance_sheet",0,Balance Sheet,Bilanzbogen,0
 field,"account.account.type,childs",0,Childs,Untergeordnet (Kontotypen),0
 field,"account.account.type,company",0,Company,Unternehmen,0
+field,"account.account.type,complete_name",0,Name,Name,0
 field,"account.account.type,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"account.account.type,display_balance",0,Display Balance,Ansicht Bilanz,0
 field,"account.account.type,income_statement",0,Income Statement,Gewinn- und Verlustrechnung,0
@@ -635,6 +587,55 @@ odt,account.move.general_journal,0,Name,Name,0
 odt,account.move.general_journal,0,Posted,Festgeschrieben,0
 odt,account.move.general_journal,0,Reference:,Referenz,0
 odt,account.move.general_journal,0,To Date:,Bis:,0
+selection,"account.account,kind",0,Expense,Aufwand,0
+selection,"account.account,kind",0,Other,Anderes,0
+selection,"account.account,kind",0,Payable,Verbindlichkeiten,0
+selection,"account.account,kind",0,Receivable,Forderungen,0
+selection,"account.account,kind",0,Revenue,Ertrag,0
+selection,"account.account,kind",0,View,Sicht,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Both,Beide,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Customer,Kunde,0
+selection,"account.account.open_aged_balance.init,balance_type",0,Supplier,Lieferant,0
+selection,"account.account.open_aged_balance.init,unit",0,Day,Tag,0
+selection,"account.account.open_aged_balance.init,unit",0,Month,Monat,0
+selection,"account.account.template,kind",0,Expense,Aufwand,0
+selection,"account.account.template,kind",0,Other,Anderes,0
+selection,"account.account.template,kind",0,Payable,Verbindlichkeiten,0
+selection,"account.account.template,kind",0,Receivable,Forderungen,0
+selection,"account.account.template,kind",0,Revenue,Ertrag,0
+selection,"account.account.template,kind",0,View,Sicht,0
+selection,"account.account.type,display_balance",0,Credit - Debit,Haben - Soll,0
+selection,"account.account.type,display_balance",0,Debit - Credit,Soll - Haben,0
+selection,"account.account.type.template,display_balance",0,Credit - Debit,Haben - Soll,0
+selection,"account.account.type.template,display_balance",0,Debit - Credit,Soll - Haben,0
+selection,"account.fiscalyear,state",0,Close,Abgeschlossen,0
+selection,"account.fiscalyear,state",0,Open,Geöffnet,0
+selection,"account.journal.period,state",0,Close,Geschlossen,0
+selection,"account.journal.period,state",0,Open,Geöffnet,0
+selection,"account.move.line,account_kind",0,Expense,Aufwand,0
+selection,"account.move.line,account_kind",0,Other,Anderes,0
+selection,"account.move.line,account_kind",0,Payable,Verbindlichkeiten,0
+selection,"account.move.line,account_kind",0,Receivable,Forderungen,0
+selection,"account.move.line,account_kind",0,Revenue,Erlöse,0
+selection,"account.move.line,account_kind",0,View,Sicht,0
+selection,"account.move.line,move_state",0,Draft,Entwurf,0
+selection,"account.move.line,move_state",0,Posted,Festgeschrieben,0
+selection,"account.move.line,state",0,Draft,Entwurf,0
+selection,"account.move.line,state",0,Valid,Gültig,0
+selection,"account.move,state",0,Draft,Entwurf,0
+selection,"account.move,state",0,Posted,Festgeschrieben,0
+selection,"account.period,state",0,Close,Geschlossen,0
+selection,"account.period,state",0,Open,Geöffnet,0
+selection,"account.period,type",0,Adjustment,Berichtigung,0
+selection,"account.period,type",0,Standard,Standard,0
+selection,"account.tax.open_chart_code.init,method",0,By Fiscal Year,Geschäftsjahr,0
+selection,"account.tax.open_chart_code.init,method",0,By Periods,Nach Buchungszeiträumen,0
+selection,"account.tax.template,type",0,Fixed,Fix,0
+selection,"account.tax.template,type",0,None,Kein,0
+selection,"account.tax.template,type",0,Percentage,Prozentsatz,0
+selection,"account.tax,type",0,Fixed,Fix,0
+selection,"account.tax,type",0,None,Kein,0
+selection,"account.tax,type",0,Percentage,Prozentsatz,0
 view,account.account,0,Account,Konto,0
 view,account.account,0,Accounts,Konten,0
 view,account.account,0,Deferrals,Saldenvorträge,0
