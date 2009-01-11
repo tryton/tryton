@@ -120,11 +120,14 @@ class Product(OSV):
         :param with_childs: a boolean to compute also for child locations
         :param skip_zero: a boolean to list also items with zero quantity
         :param context: the context with keys:
-                stock_date_end: if set the date of the stock computation
+                stock_date_end: if set the date of the stock computation.
                 stock_date_start: if set return the delta of the stock
-                        between the two dates
-                stock_assign: if set compute also the assigned moves as done
-                forecast: if set compute the forecast quantity
+                    between the two dates, (ignored if stock_date_end is
+                    missing).
+                stock_assign: if set compute also the assigned moves as done.
+                forecast: if set compute the forecast quantity.
+                stock_destinations: A list of location ids. If set, restrict the
+                    computation to moves from and to those locations.
         :return: a dictionary with (location id, product id) as key
                 and quantity as value
         """
