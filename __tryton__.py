@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Invoice',
-    'name_de_DE': 'Buchhaltung Rechnungsstellung',
+    'name_de_DE': 'Fakturierung',
     'name_fr_FR': 'Facturation',
     'name_es_ES': 'Facturación',
     'version': '1.1.0',
@@ -19,7 +19,7 @@ With the possibilities:
     - to define invoice sequences on fiscal year or period.
     - to credit any invoice.
 ''',
-    'description_de_DE': '''Modul für Buchhaltung und Rechnungsstellung mit:
+    'description_de_DE': '''Modul für Buchhaltung und Fakturierung mit:
     - Definition von Zahlungsbedingungen
     - Erstellung von Rechnungen und Gutschriften für Kunden
     - Erstellung von Rechnungen und Gutschriften für Lieferanten
