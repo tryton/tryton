@@ -1,32 +1,4 @@
 type,name,res_id,src,value,fuzzy
-selection,"stock.inventory,state",0,Cancel,Annulliert,0
-selection,"stock.inventory,state",0,Done,Erledigt,0
-selection,"stock.inventory,state",0,Draft,Entwurf,0
-selection,"stock.location,type",0,Customer,Kunde,0
-selection,"stock.location,type",0,Lost and Found,Differenzen allgemein,0
-selection,"stock.location,type",0,Production,Produktion,0
-selection,"stock.location,type",0,Storage,Lager,0
-selection,"stock.location,type",0,Supplier,Lieferant,0
-selection,"stock.location,type",0,Warehouse,Warenlager,0
-selection,"stock.move,state",0,Assigned,Zugewiesen,0
-selection,"stock.move,state",0,Cancel,Annulliert,0
-selection,"stock.move,state",0,Done,Erledigt,0
-selection,"stock.move,state",0,Draft,Entwurf,0
-selection,"stock.packing.in,state",0,Cancel,Annulliert,0
-selection,"stock.packing.in,state",0,Done,Erledigt,0
-selection,"stock.packing.in,state",0,Draft,Entwurf,0
-selection,"stock.packing.in,state",0,Received,Erhalten,0
-selection,"stock.packing.internal,state",0,Assigned,Zugewiesen,0
-selection,"stock.packing.internal,state",0,Cancel,Annulliert,0
-selection,"stock.packing.internal,state",0,Done,Erledigt,0
-selection,"stock.packing.internal,state",0,Draft,Entwurf,0
-selection,"stock.packing.internal,state",0,Waiting,Wartend,0
-selection,"stock.packing.out,state",0,Assigned,Zugewiesen,0
-selection,"stock.packing.out,state",0,Cancel,Annulliert,0
-selection,"stock.packing.out,state",0,Done,Erledigt,0
-selection,"stock.packing.out,state",0,Draft,Entwurf,0
-selection,"stock.packing.out,state",0,Packed,Gepackt,0
-selection,"stock.packing.out,state",0,Waiting,Wartend,0
 error,stock.inventory.line,0,Line quantity must be positive!,Anzahl der Position muss positiv sein!,0
 error,stock.inventory.line,0,Product must be unique by inventory!,Ein Artikel kann in einem Lagerbestand nicht mehrfach vergeben werden!,0
 error,stock.location,0,You can not create recursive locations!,Lagerorte können nicht rekursiv angelegt werden!,0
@@ -50,6 +22,8 @@ field,"product.product,quantity",0,Quantity,Anzahl,0
 field,"product.template,forecast_quantity",0,Forecast Quantity,Voraussichtliche Anzahl,0
 field,"product.template,quantity",0,Quantity,Anzahl,0
 field,"stock.inventory,company",0,Company,Unternehmen,0
+field,"stock.inventory.complete.init,categories",0,Categories,Kategorien,0
+field,"stock.inventory.complete.init,products",0,Products,Artikel,0
 field,"stock.inventory,date",0,Date,Datum,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Erwartete Anzahl,0
 field,"stock.inventory.line,inventory",0,Inventory,Lagerbestand,0
@@ -142,7 +116,7 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 ",0
 model,"ir.action,name",act_packing_out_form_assigned,Assigned Customer Packings,Zugewiesene Kundenlieferscheine,0
 model,"ir.action,name",act_packing_internal_assigned_form,Assigned Internal Packings,Zugewiesene Interne Lieferscheine,0
-model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Aktueller Lagerbestand,0
+model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Lagerbestandspositionen komplettieren,0
 model,"ir.action,name",report_packing_out,Customer Packing,Lieferschein an Kunde,0
 model,"ir.action,name",act_packing_out_form,Customer Packings,Lieferscheine an Kunden,0
 model,"ir.action,name",act_packing_out_form_ready,Customer Packings Ready for Shipping,Versandbereite Lieferscheine an Kunden,0
@@ -193,6 +167,7 @@ model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
 model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Lieferscheine von Lieferanten,0
 model,"res.group,name",group_stock,Stock,Lager,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administration Lagerverwaltung,0
+model,"stock.inventory.complete.init,name",0,Complete Inventory Init,Lagerbestand Komplettieren Init,0
 model,"stock.inventory.line,name",0,Stock Inventory Line,Lager Lagerbestand Position,0
 model,"stock.inventory,name",0,Stock Inventory,Lager Lagerbestand,0
 model,"stock.location,name",location_customer,Customer,Kunde,0
@@ -240,16 +215,47 @@ odt,stock.packing.out,0,Phone:,Telefon:,0
 odt,stock.packing.out,0,Product,Artikel,0
 odt,stock.packing.out,0,Quantity,Anzahl,0
 odt,stock.packing.out,0,Reference:,Referenz,0
+selection,"stock.inventory,state",0,Cancel,Annulliert,0
+selection,"stock.inventory,state",0,Done,Erledigt,0
+selection,"stock.inventory,state",0,Draft,Entwurf,0
+selection,"stock.location,type",0,Customer,Kunde,0
+selection,"stock.location,type",0,Lost and Found,Differenzen allgemein,0
+selection,"stock.location,type",0,Production,Produktion,0
+selection,"stock.location,type",0,Storage,Lager,0
+selection,"stock.location,type",0,Supplier,Lieferant,0
+selection,"stock.location,type",0,Warehouse,Warenlager,0
+selection,"stock.move,state",0,Assigned,Zugewiesen,0
+selection,"stock.move,state",0,Cancel,Annulliert,0
+selection,"stock.move,state",0,Done,Erledigt,0
+selection,"stock.move,state",0,Draft,Entwurf,0
+selection,"stock.packing.in,state",0,Cancel,Annulliert,0
+selection,"stock.packing.in,state",0,Done,Erledigt,0
+selection,"stock.packing.in,state",0,Draft,Entwurf,0
+selection,"stock.packing.in,state",0,Received,Erhalten,0
+selection,"stock.packing.internal,state",0,Assigned,Zugewiesen,0
+selection,"stock.packing.internal,state",0,Cancel,Annulliert,0
+selection,"stock.packing.internal,state",0,Done,Erledigt,0
+selection,"stock.packing.internal,state",0,Draft,Entwurf,0
+selection,"stock.packing.internal,state",0,Waiting,Wartend,0
+selection,"stock.packing.out,state",0,Assigned,Zugewiesen,0
+selection,"stock.packing.out,state",0,Cancel,Annulliert,0
+selection,"stock.packing.out,state",0,Done,Erledigt,0
+selection,"stock.packing.out,state",0,Draft,Entwurf,0
+selection,"stock.packing.out,state",0,Packed,Gepackt,0
+selection,"stock.packing.out,state",0,Waiting,Wartend,0
 view,party.party,0,Stock,Lager,0
 view,party.party,0,_Stock,_Lager,0
 view,product.product,0,Products,Artikel,0
 view,stock.inventory,0,All generated moves will be cancelled!,Sämtliche erzeugten Bewegungen werden rückgängig gemacht!,0
 view,stock.inventory,0,Cancel,Annullieren,0
-view,stock.inventory,0,Complete Inventory,Aktueller Lagerbestand,0
-view,stock.inventory,0,Confirm,Beauftragen,0
+view,stock.inventory,0,Complete Inventory,Lagerbestandspositionen komplettieren,0
+view,stock.inventory,0,Confirm,Bestätigen,0
 view,stock.inventory,0,Inventories,Lagerbestände,0
 view,stock.inventory,0,Inventory,Lagerbestand,0
 view,stock.inventory,0,Re-Open,Wiedereröffnen,0
+view,stock.inventory.complete.init,0,Categories,Kategorien,0
+view,stock.inventory.complete.init,0,Complete Inventory,Lagerbestandspositionen komplettieren,0
+view,stock.inventory.complete.init,0,Products,Artikel,0
 view,stock.inventory.line,0,Inventory Line,Position Bestand,0
 view,stock.inventory.line,0,Inventory Lines,Positionen Bestand,0
 view,stock.location,0,Location,Lagerort,0
@@ -299,6 +305,8 @@ view,stock.packing.out,0,Set Waiting,Auf Wartend setzen,0
 view,stock.packing.out,0,Unpack,Entpackt,0
 view,stock.packing.out,0,Waiting,Wartend,0
 view,stock.product_stock_date.init,0,Product Quantity.,Artikel Mengen,0
+wizard_button,"stock.inventory.complete,init,complete",0,Complete,Komplettieren,0
+wizard_button,"stock.inventory.complete,init,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.location.open,init,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.location.open,init,open",0,Open,Öffnen,0
 wizard_button,"stock.product.open,init,end",0,Cancel,Abbrechen,0
