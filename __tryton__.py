@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Stock Supply Management',
-    'name_de_DE': 'Lagerverwaltung Beschaffung',
+    'name_de_DE': 'Lagerverwaltung Bestellwesen',
     'name_fr_FR': 'Gestion des approvisionnements de stock',
     'name_es_ES': 'Gestión de pedidos de inventario',
     'version': '1.1.0',
@@ -17,13 +17,13 @@ With schedulers:
     - to generate purchase request based on order points
     - to generate internal packing based on order points
 ''',
-    'description_de_DE': '''Beschaffungsmodul mit:
+    'description_de_DE': '''Modul für das Bestellwesen mit:
     - Bestellpunkten
     - Auftragserstellung
 
 Mit automatischer Auftragserstellung per Zeitplaner:
-    - um Bestellungen auf der Basis von Bestellpunkten zu erstellen
-    - um internen Versand auf der Basis von Bestellpunkten zu erstellen
+    - für Bestellungen auf der Basis von Bestellpunkten
+    - für internen Versand auf der Basis von Bestellpunkten
 ''',
     'description_fr_FR': '''Module de gestion des approvisionnements avec:
     - Règles d'approvisionnement
