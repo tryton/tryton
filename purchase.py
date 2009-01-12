@@ -755,6 +755,7 @@ class PurchaseLine(OSV):
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
+        ('comment', 'Comment'),
         ], 'Type', select=1, required=True)
     quantity = fields.Float('Quantity',
             digits="(16, unit_digits)",
