@@ -10,13 +10,30 @@ field,"company.company,parent",0,Parent,Parent,0
 field,"company.company,party",0,Party,Tiers,0
 field,"company.employee,company",0,Company,Compagnie,0
 field,"company.employee,party",0,Party,Tiers,0
+field,"ir.cron,companies",0,Companies,Sociétés,0
 field,"ir.property,company",0,Company,Compagnie,0
+field,"ir.sequence,company",0,Company,Société,0
+field,"ir.sequence.strict,company",0,Company,Société,0
 field,"res.user,company",0,Current Company,Compagnie Courante,0
 field,"res.user,employee",0,Employee,Employé,0
 field,"res.user,main_company",0,Main Company,Compagnie Principale,0
+help,"ir.cron,companies",0,Companies registered for this cron,,0
+model,"company.company.config.init,name",0,Company Config Init,Société config init,0
+model,"company.company,name",0,Company,Société,0
+model,"company.employee,name",0,Employee,Employé,0
+model,"ir.action,name",act_company_tree,Companies,Sociétés,0
+model,"ir.action,name",act_company_form,Companies,Sociétés,0
+model,"ir.action,name",act_employee_form,Employees,Employés,0
+model,"ir.action,name",report_letter,_Letter,_Lettre,0
 model,"ir.ui.menu,name",menu_company_tree,Companies,Compagnies,0
 model,"ir.ui.menu,name",menu_company_form,Edit Companies,Éditer les Compagnies,0
 model,"ir.ui.menu,name",menu_employee_form,Employees,Employés,0
+odt,party.letter,0,"Best Regards,","Meilleur voeux,",0
+odt,party.letter,0,Date:,Date :,0
+odt,party.letter,0,"Dear Madams and Sirs,",,0
+odt,party.letter,0,E-Mail:,E-Mail :,0
+odt,party.letter,0,Phone:,Téléphone,0
+odt,party.letter,0,Subject:,Sujet :,0
 view,company.company,0,Addresses,Adresses,0
 view,company.company,0,Companies,Compagnies,0
 view,company.company,0,Company,Compagnie,0
