@@ -25,7 +25,6 @@ field,"sale.line,unit_digits",0,Unit Digits,Décimales de l'unité,0
 field,"sale.line,unit_price",0,Unit Price,Prix unitaire,0
 field,"sale.sale,comment",0,Comment,Commentaire,0
 field,"sale.sale,company",0,Company,Companie,0
-field,"sale.sale,contact_address",0,Contact Address,Adresse de contact,0
 field,"sale.sale,currency",0,Currency,Devise,0
 field,"sale.sale,currency_digits",0,Currency Digits,Décimales de la devise,0
 field,"sale.sale,description",0,Description,Description,0
@@ -58,6 +57,7 @@ field,"stock.move,sale",0,Sale,Vente,0
 field,"stock.move,sale_line",0,unknown,inconnu,0
 model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Ventes confirmées,0
 model,"ir.action,name",act_sale_form_draft,Draft Sales,Ventes brouillon,0
+model,"ir.action,name",act_sale_form_new,New Sale,Nouvelle vente,0
 model,"ir.action,name",act_sale_form_quotation,Quotation Sales,Devis,0
 model,"ir.action,name",report_sale,Sale,Vente,0
 model,"ir.action,name",act_sale_form,Sales,Ventes,0
@@ -65,10 +65,13 @@ model,"ir.sequence,name",sequence_sale,Sale,Vente,0
 model,"ir.sequence.type,name",sequence_type_sale,Sale,Vente,0
 model,"ir.ui.menu,name",menu_sale_form_confirmed,Confirmed Sales,Ventes confirmées,0
 model,"ir.ui.menu,name",menu_sale_form_draft,Draft Sales,Ventes brouillons,0
+model,"ir.ui.menu,name",menu_sale_form_new,New Sale,Nouvelle vente,0
 model,"ir.ui.menu,name",menu_sale_form_quotation,Quotation Sales,Devis,0
 model,"ir.ui.menu,name",menu_sale,Sale Management,Gestion des ventes,0
 model,"ir.ui.menu,name",menu_sale_form,Sales,Ventes,0
 model,"res.group,name",group_sale,Sale,Vente,0
+model,"sale.line,name",0,Sale Line,Ligne de vente,0
+model,"sale.sale,name",0,Sale,Vente,0
 model,"workflow.activity,name",sale_activity_cancel,Cancel,Annulé,0
 model,"workflow.activity,name",sale_activity_confirmed,Confirmed,Confirmé,0
 model,"workflow.activity,name",sale_activity_done,Done,Fait,0
@@ -98,6 +101,22 @@ model,"workflow.activity,name",sale_activity_waiting_invoice_packing,Waiting Inv
 model,"workflow.activity,name",sale_activity_waiting_packing,Waiting Packing,Colisage en attente,0
 model,"workflow.activity,name",sale_activity_waiting_packing_invoice,Waiting Packing Invoice,Facture colisage en attente,0
 model,"workflow,name",sale_workflow,Sale workflow,Workflow de vente,0
+odt,sale.sale,0,Amount,Montant,0
+odt,sale.sale,0,Date:,Date :,0
+odt,sale.sale,0,Description,Description,0
+odt,sale.sale,0,Description:,Description :,0
+odt,sale.sale,0,Draft Sale Order,Bon de commande brouillon,0
+odt,sale.sale,0,E-Mail:,E-Mail,0
+odt,sale.sale,0,Phone:,Téléphone :,0
+odt,sale.sale,0,Quantity,Quantité,0
+odt,sale.sale,0,Quotation N°:,Devis N° :,0
+odt,sale.sale,0,Sale Order N°:,Bon de commande N° :,0
+odt,sale.sale,0,Taxes,Taxes,0
+odt,sale.sale,0,Taxes:,Taxes :,0
+odt,sale.sale,0,Total:,Total :,0
+odt,sale.sale,0,Total (excl. taxes):,Total (HT) :,0
+odt,sale.sale,0,Unit Price,Prix unitaire,0
+odt,sale.sale,0,VAT:,TVA :,0
 selection,"sale.line,type",0,Line,Ligne,0
 selection,"sale.line,type",0,Subtotal,Sous-total,0
 selection,"sale.line,type",0,Title,Titre,0
@@ -121,6 +140,7 @@ selection,"sale.sale,state",0,Done,Fait,0
 selection,"sale.sale,state",0,Draft,Brouillon,0
 selection,"sale.sale,state",0,Quotation,Devis,0
 view,product.product,0,Customers,Clients,0
+view,product.template,0,Customers,Clients,0
 view,sale.line,0,Products,produits,0
 view,sale.line,0,Sale Line,Ligne de vente,0
 view,sale.line,0,Sale Lines,Lignes de vente,0
