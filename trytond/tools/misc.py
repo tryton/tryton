@@ -289,8 +289,8 @@ class Cache(object):
             finally:
                 self.lock.release()
 
-            # Work out key as a tuple of ('argname', value) pairs
-            key = (id(self2), str(kwargs))
+            # Work out key as a tuple
+            key = (id(self2), repr(kwargs))
 
             # Check cache and return cached value if possible
             self.lock.acquire()
