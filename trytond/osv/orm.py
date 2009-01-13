@@ -2864,6 +2864,10 @@ class ORM(object):
                     and self._columns[field_name]._type == 'selection':
                 selections = self.fields_get(cursor, user, [field_name],
                         context=context)[field_name]['selection']
+                if not isinstance(selections, (tuple, list)):
+                    selections = getattr(self,
+                            self._columns[field_name].selection)(cursor,
+                                    user, context=context)
                 order = 'CASE ' + table_name + '.' + field_name
                 for selection in selections:
                     order += ' WHEN \'%s\' THEN \'%s\'' % selection
