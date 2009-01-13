@@ -2670,31 +2670,55 @@ class ORM(object):
                         if arg[2][xitem] == False \
                                 and isinstance(arg[2][xitem],bool):
                             todel.append(xitem)
+                    arg2 = arg[2][:]
                     for xitem in todel[::-1]:
-                        del arg[2][xitem]
+                        del arg2[xitem]
                     #TODO fix max_stack_depth
-                    if len(arg[2]):
+                    if len(arg2):
                         if arg[0] == 'id':
                             qu1.append(('(%s.id ' + arg[1] + ' (%s))') % \
                                     (table._table,
-                                        ','.join(['%s'] * len(arg[2])),))
+                                        ','.join(['%s'] * len(arg2)),))
                         else:
                             qu1.append(('(%s.%s ' + arg[1] + ' (%s))') % \
                                     (table._table, arg[0], ','.join(
                                         [table._columns[arg[0]].\
-                                                _symbol_set[0]] * len(arg[2]))))
+                                                _symbol_set[0]] * len(arg2))))
                         if todel:
-                            if arg[1] == 'in':
-                                qu1[-1] = '(' + qu1[-1] + ' OR ' \
-                                        '%s.%s IS NULL)' % \
-                                        (table._table, arg[0])
+                            if table._columns[arg[0]]._type == 'boolean':
+                                if arg[1] == 'in':
+                                    qu1[-1] = '(' + qu1[-1] + ' OR ' \
+                                            '%s.%s = false)' % \
+                                            (table._table, arg[0])
+                                else:
+                                    qu1[-1] = '(' + qu1[-1] + ' OR ' \
+                                            '%s.%s != false)' % \
+                                            (table._table, arg[0])
                             else:
-                                qu1[-1] = '(' + qu1[-1] + ' OR ' \
-                                        '%s.%s IS NOT NULL)' % \
-                                        (table._table, arg[0])
-                        qu2 += arg[2]
+                                if arg[1] == 'in':
+                                    qu1[-1] = '(' + qu1[-1] + ' OR ' \
+                                            '%s.%s IS NULL)' % \
+                                            (table._table, arg[0])
+                                else:
+                                    qu1[-1] = '(' + qu1[-1] + ' OR ' \
+                                            '%s.%s IS NOT NULL)' % \
+                                            (table._table, arg[0])
+                        qu2 += arg2
                     elif todel:
-                        qu1.append('(%s.%s IS NULL)' % (table._table, arg[0]))
+                        if table._columns[arg[0]]._type == 'boolean':
+                            if arg[1] == 'in':
+                                qu1.append('(%s.%s = false)' % \
+                                        (table._table, arg[0]))
+                            else:
+                                qu1.append('(%s.%s != false)' % \
+                                        (table._table, arg[0]))
+                        else:
+                            if arg[1] == 'in':
+                                qu1.append('(%s.%s IS NULL)' % \
+                                        (table._table, arg[0]))
+                            else:
+                                qu1.append('(%s.%s IS NOT NULL)' % \
+                                        (table._table, arg[0]))
                 else:
                     if arg[1] == 'in':
                         qu1.append(' false')
