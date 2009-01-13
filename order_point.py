@@ -15,9 +15,8 @@ class OrderPoint(OSV):
 
     product = fields.Many2One(
         'product.product', 'Product', required=True, select=1,
-        domain="type == 'purchase' "\
-            "and [('type', '=', 'stockable'), ('purchasable', '=', True)] "\
-            "or [('type', '=', 'stockable')]")
+        domain="[('type', '=', 'stockable'), ('purchasable', 'in', " \
+                "type == 'purchase' and [True] or [True, False])]")
     warehouse_location = fields.Many2One(
         'stock.location', 'Warehouse Location', select=1,
         domain="[('type', '=', 'warehouse')]",
