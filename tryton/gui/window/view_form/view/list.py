@@ -297,6 +297,8 @@ class ViewList(ParserView):
         data = []
         treeselection = treeview.get_selection()
         treeselection.selected_foreach(_func_sel_get, data)
+        if not data:
+            return
         data = str(data[0])
         selection.set(selection.target, 8, data)
 
@@ -308,6 +310,8 @@ class ViewList(ParserView):
                 if model[treeview.sequence].get_state_attrs(
                         model).get('readonly', False):
                     return
+        if not selection.data:
+            return
         model = treeview.get_model()
         data = eval(selection.data)
         drop_info = treeview.get_dest_row_at_pos(x, y)
