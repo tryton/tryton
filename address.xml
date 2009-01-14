@@ -17,6 +17,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="city" select="2"/>
                     <field name="country" select="1"/>
                     <field name="subdivision" select="2"/>
+                    <field name="active" select="2"/>
                 </tree>
                 ]]>
             </field>
