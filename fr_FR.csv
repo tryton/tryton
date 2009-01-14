@@ -22,6 +22,8 @@ field,"product.product,quantity",0,Quantity,Quantité,0
 field,"product.template,forecast_quantity",0,Forecast Quantity,Quantité prévue,0
 field,"product.template,quantity",0,Quantity,Quantité,0
 field,"stock.inventory,company",0,Company,Compagnie,0
+field,"stock.inventory.complete.init,categories",0,Categories,Catégories,0
+field,"stock.inventory.complete.init,products",0,Products,Produits,0
 field,"stock.inventory,date",0,Date,Date,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Quantité attendue,0
 field,"stock.inventory.line,inventory",0,Inventory,Inventaire,0
@@ -50,6 +52,7 @@ field,"stock.location_stock_date.init,forecast_date",0,At Date,A la date,0
 field,"stock.location,storage_location",0,Storage,Magasin,0
 field,"stock.location,type",0,Location type,Type d'emplacement,0
 field,"stock.move,company",0,Company,Compagnie,0
+field,"stock.move,cost_price",0,Cost Price,,0
 field,"stock.move,currency",0,Currency,Devise,0
 field,"stock.move,effective_date",0,Effective Date,Date effective,0
 field,"stock.move,from_location",0,From Location,Origine,0
@@ -64,6 +67,7 @@ field,"stock.move,to_location",0,To Location,Destination,0
 field,"stock.move,type",0,Type,Type,0
 field,"stock.move,unit_digits",0,Unit Digits,Décimales de l'unité,0
 field,"stock.move,unit_price",0,Unit Price,Prix unitaire,0
+field,"stock.move,unit_price_required",0,Unit Price Required,Prix Unitaire Requis,0
 field,"stock.move,uom",0,Uom,UDM,0
 field,"stock.packing.in,code",0,Code,Code,0
 field,"stock.packing.in,contact_address",0,Contact Address,Adresse de contact,0
@@ -126,6 +130,7 @@ model,"ir.action,name",act_move_form,Moves,Mouvements,0
 model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Mouvements fournisseurs,0
 model,"ir.action,name",act_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Mouvement fournisseur en attente de réception,0
 model,"ir.action,name",act_move_form_cust,Moves to Customers,Mouvements clients,0
+model,"ir.action,name",act_packing_internal_new_form,New Internal Packing,Nouveau Colisage Interne,0
 model,"ir.action,name",act_packing_in_form2,New Supplier Packing,Nouveau colisage fournisseur,0
 model,"ir.action,name",wizard_location_open,Product by Location,Produits par emplacement,0
 model,"ir.action,name",wizard_product_open,Product Quantities,Quantités de produit,0
@@ -154,18 +159,30 @@ model,"ir.ui.menu,name",menu_move_form,Moves,Mouvements,0
 model,"ir.ui.menu,name",menu_move_form_supp,Moves from Suppliers,Mouvements fournisseurs,0
 model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Mouvements fournisseur en attente de réception,0
 model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Mouvements clients,0
+model,"ir.ui.menu,name",menu_packing_internal_new_form,New Internal Packing,Nouveau Colisage Interne,0
 model,"ir.ui.menu,name",menu_packing_in_form2,New Supplier Packing,Nouveau colisage fournisseur,0
 model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Colisages fournisseur reçus,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Rapports,0
 model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Colisages fournisseurs,0
 model,"res.group,name",group_stock,Stock,Stock,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administration des stocks,0
+model,"stock.inventory.complete.init,name",0,Complete Inventory Init,,0
+model,"stock.inventory.line,name",0,Stock Inventory Line,Ligne d'Inventaire de Stock,0
+model,"stock.inventory,name",0,Stock Inventory,Inventaire du Stock,0
 model,"stock.location,name",location_customer,Customer,Client,0
 model,"stock.location,name",location_input,Input Zone,Zone d'entrée,0
 model,"stock.location,name",location_lost_found,Lost and Found,Pertes et surplus,0
 model,"stock.location,name",location_output,Output Zone,Zone de sortie,0
+model,"stock.location,name",0,Stock Location,Lieu de Stockage,0
 model,"stock.location,name",location_storage,Storage Zone,Zone rangement,0
 model,"stock.location,name",location_supplier,Supplier,Fournisseur,0
 model,"stock.location,name",location_warehouse,Warehouse,Entrepôt,0
+model,"stock.location_stock_date.init,name",0,Compute stock quantities,Quantité de Stock Calculées,0
+model,"stock.move,name",0,Stock Move,Mouvement de Stock,0
+model,"stock.packing.in,name",0,Supplier Packing,Colisage Fournisseur,0
+model,"stock.packing.internal,name",0,Internal Packing,Colisage Interne,0
+model,"stock.packing.out,name",0,Customer Packing,Colisage Client,0
+model,"stock.product_stock_date.init,name",0,Compute stock quantities,Quantités de stock calculées,0
 model,"workflow.activity,name",packingout_act_assigned,Assigned,Assigné,0
 model,"workflow.activity,name",packinginternal_act_assigned,Assigned,Assigné,0
 model,"workflow.activity,name",packingin_act_cancel,Cancel,Annulé,0
@@ -188,6 +205,15 @@ model,"workflow,name",wkf_packingout,Customer Packing,Colisage client,0
 model,"workflow,name",wkf_packinginternal,Internal Packing,Colisage interne,0
 model,"workflow,name",wkf_inventory,Inventory,Inventaire,0
 model,"workflow,name",wkf_packingin,Supplier Packing,Colisage fournisseur,0
+odt,stock.packing.out,0,Customer Code:,Code Client :,0
+odt,stock.packing.out,0,Date:,Date :,0
+odt,stock.packing.out,0,E-Mail:,E-Mail :,0
+odt,stock.packing.out,0,Packing List,Liste de colisage,0
+odt,stock.packing.out,0,Packing Number:,Colisage Numéro :,0
+odt,stock.packing.out,0,Phone:,Téléphone,0
+odt,stock.packing.out,0,Product,Produit,0
+odt,stock.packing.out,0,Quantity,Quantité,0
+odt,stock.packing.out,0,Reference:,Référence :,0
 selection,"stock.inventory,state",0,Cancel,Annulé,0
 selection,"stock.inventory,state",0,Done,Fait,0
 selection,"stock.inventory,state",0,Draft,Brouillon,0
@@ -219,7 +245,10 @@ selection,"stock.packing.out,state",0,Done,Fait,0
 selection,"stock.packing.out,state",0,Draft,Brouillon,0
 selection,"stock.packing.out,state",0,Packed,Emballé,0
 selection,"stock.packing.out,state",0,Waiting,En attente,0
+view,party.party,0,Stock,Stock,0
 view,party.party,0,_Stock,_Stocks,0
+view,product.product,0,Products,Produits,0
+view,stock.inventory,0,Add an inventory line for each missing products,Ajouter une ligne d'inventaire pour chaque produit manquant,0
 view,stock.inventory,0,All generated moves will be cancelled!,Tous les mouvements générés vont être annulés,0
 view,stock.inventory,0,Cancel,Annuler,0
 view,stock.inventory,0,Complete Inventory,Compléter l'inventaire,0
@@ -227,6 +256,9 @@ view,stock.inventory,0,Confirm,Confirmer,0
 view,stock.inventory,0,Inventories,Inventaires,0
 view,stock.inventory,0,Inventory,Inventaire,0
 view,stock.inventory,0,Re-Open,Ré-Ouvrir,0
+view,stock.inventory.complete.init,0,Categories,Catégories,0
+view,stock.inventory.complete.init,0,Complete Inventory,Inventaire Complet,0
+view,stock.inventory.complete.init,0,Products,Produits,0
 view,stock.inventory.line,0,Inventory Line,Ligne d'inventaire,0
 view,stock.inventory.line,0,Inventory Lines,Lignes d'inventaire,0
 view,stock.location,0,Location,Emplacement,0
@@ -268,6 +300,9 @@ view,stock.packing.out,0,Outgoing Moves,Mouvements en sortie,0
 view,stock.packing.out,0,Reset to Draft,Remettre en brouillon,0
 view,stock.packing.out,0,Unpack,Déballer,0
 view,stock.packing.out,0,Waiting,En attente,0
+view,stock.product_stock_date.init,0,Product Quantity.,Quantité Produit :,0
+wizard_button,"stock.inventory.complete,init,complete",0,Complete,Achevé,0
+wizard_button,"stock.inventory.complete,init,end",0,Cancel,Annuler,0
 wizard_button,"stock.location.open,init,end",0,Cancel,Annuler,0
 wizard_button,"stock.location.open,init,open",0,Open,Ouvrir,0
 wizard_button,"stock.product.open,init,end",0,Cancel,Annuler,0
