@@ -128,6 +128,9 @@ class Product(OSV):
                 forecast: if set compute the forecast quantity.
                 stock_destinations: A list of location ids. If set, restrict the
                     computation to moves from and to those locations.
+                stock_skip_warehouse: if set, quantities on a warehouse are no
+                    more quantities of all child locations but quantities of the
+                    storage zone.
         :return: a dictionary with (location id, product id) as key
                 and quantity as value
         """
@@ -148,10 +151,11 @@ class Product(OSV):
         # and to add after the query.
         location_ids = set(location_ids)
         storage_to_remove = set()
-        wh_to_add= {}
+        wh_to_add = {}
         for location in location_obj.browse(
             cursor, user, location_ids, context=context):
-            if location.type == 'warehouse':
+            if location.type == 'warehouse' \
+                    and context.get('stock_skip_warehouse'):
                 location_ids.remove(location.id)
                 if location.storage_location.id not in location_ids:
                     storage_to_remove.add(location.storage_location.id)
