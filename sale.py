@@ -889,7 +889,8 @@ class SaleLine(OSV):
                 '_parent_sale.party', '_parent_sale.currency'],
             context="{'locations': [_parent_sale.warehouse], " \
                     "'stock_date_end': _parent_sale.sale_date, " \
-                    "'salable': True}")
+                    "'salable': True, " \
+                    "'stock_skip_warehouse': True}")
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
                 'invisible': "type != 'line'",
