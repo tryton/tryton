@@ -9,7 +9,7 @@
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/field[@name=&quot;amount&quot;]"
+                        expr="/form/notebook/page/field[@name=&quot;amount&quot;]"
                         position="after">
                         <group col="4" colspan="4" name="analytic_accounts">
                             <field name="analytic_accounts"/>
