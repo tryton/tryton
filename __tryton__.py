@@ -12,6 +12,8 @@
         'ir',
         'stock',
         'stock_report',
+        'company',
+        'product',
     ],
     'xml': [
         'inventory.xml',
