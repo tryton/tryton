@@ -1143,7 +1143,7 @@ class InvoiceLine(OSV):
                 'invisible': "type not in ('line', 'subtotal')",
             }, on_change_with=['type', 'quantity', 'unit_price',
                 '_parent_invoice.currency', 'currency'])
-    description = fields.Char('Description', size=None, required=True)
+    description = fields.Text('Description', size=None, required=True)
     taxes = fields.Many2Many('account.tax', 'account_invoice_line_account_tax',
             'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
             states={
