@@ -785,7 +785,8 @@ class PurchaseLine(OSV):
                 '_parent_purchase.party', '_parent_purchase.currency'],
             context="{'locations': [_parent_purchase.warehouse], " \
                     "'stock_date_end': _parent_purchase.purchase_date, " \
-                    "'purchasable': True}")
+                    "'purchasable': True, " \
+                    "'stock_skip_warehouse': True}")
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
                 'invisible': "type != 'line'",
