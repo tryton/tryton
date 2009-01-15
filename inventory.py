@@ -355,6 +355,7 @@ class CompleteInventory(Wizard):
     def _complete(self, cursor, user, data, context=None):
         category_obj = self.pool.get('product.category')
         product_obj = self.pool.get('product.product')
+        inventory_obj = self.pool.get('stock.inventory')
 
         product_ids = data['form']['products'][0][1] or []
         category_ids = data['form']['categories'][0][1] or []
@@ -369,7 +370,6 @@ class CompleteInventory(Wizard):
             if cat_product_ids:
                 product_ids += cat_product_ids
 
-        inventory_obj = self.pool.get('stock.inventory')
         inventory_obj.complete_lines(cursor, user, data['ids'],
                 product_ids=product_ids, context=context)
 
