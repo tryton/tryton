@@ -719,9 +719,9 @@ this repository contains the full copyright notices and license terms. -->
                             <separator name="taxes" colspan="4"/>
                             <field name="taxes" colspan="4"/>
                         </page>
-                        <page string="Comment" id="comment">
-                            <separator name="comment" colspan="4"/>
-                            <field name="comment" colspan="4"
+                        <page string="Notes" id="notes">
+                            <separator name="note" colspan="4"/>
+                            <field name="note" colspan="4"
                                 spell="_parent_sale.party_lang"/>
                         </page>
                     </notebook>

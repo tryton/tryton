@@ -6,6 +6,7 @@ from trytond.osv import fields, OSV
 from decimal import Decimal
 from trytond.netsvc import LocalService
 from trytond.report import CompanyReport
+from trytond.sql_db import table_handler
 
 
 class Sale(OSV):
@@ -904,10 +905,7 @@ class SaleLine(OSV):
             }, on_change_with=['type', 'quantity', 'unit_price',
                 '_parent_sale.currency'])
     description = fields.Text('Description', size=None, required=True)
-    comment = fields.Text('Comment',
-            states={
-                'invisible': "type != 'line'",
-            })
+    note = fields.Text('Note')
     taxes = fields.Many2Many('account.tax', 'sale_line_account_tax',
             'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
             states={
@@ -933,6 +931,17 @@ class SaleLine(OSV):
                     'an "account_revenue" default property!',
             'customer_location_required': 'The customer location is required!',
             })
+
+    def _auto_init(self, cursor, module_name):
+        super(SaleLine, self)._auto_init(cursor, module_name)
+        table = table_handler(cursor, self._table, self._name, module_name)
+
+        # Migration from 1.0 comment change into note
+        if 'comment' in table.table:
+            cursor.execute('UPDATE "' + self._table + '" ' \
+                    'SET note = comment')
+            cursor.execute('ALTER TABLE "' + self._table + '" ' \
+                    'DROP COLUMN comment')
 
     def default_type(self, cursor, user, context=None):
         return 'line'
