@@ -22,7 +22,9 @@ class Move(OSV):
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,
             domain="[('category', '=', " \
                     "(product, 'product.default_uom.category'))]",
-            context="{'category': (product, 'product.default_uom.category')}")
+            context="{'category': (product, 'product.default_uom.category')}",
+            on_change=['product', 'currency', 'uom', 'company',
+                'from_location', 'to_location'])
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits', on_change_with=['uom'])
     quantity = fields.Float("Quantity", required=True,
@@ -245,7 +247,46 @@ class Move(OSV):
                             vals['company'], context=context)
                     unit_price = currency_obj.compute(cursor, user,
                             company.currency, unit_price, currency,
+                            round=False, context=context)
+                res['unit_price'] = unit_price
+        return res
+
+    def on_change_uom(self, cursor, user, ids, vals, context=None):
+        product_obj = self.pool.get('product.product')
+        uom_obj = self.pool.get('product.uom')
+        currency_obj = self.pool.get('currency.currency')
+        company_obj = self.pool.get('company.company')
+        location_obj = self.pool.get('stock.location')
+
+        if context is None:
+            context = {}
+
+        res = {
+            'unit_price': Decimal('0.0'),
+        }
+        if vals.get('product'):
+            product = product_obj.browse(cursor, user, vals['product'],
+                    context=context)
+            to_location = None
+            if vals.get('to_location'):
+                to_location = location_obj.browse(cursor, user,
+                        vals['to_location'], context=context)
+            if to_location and to_location.type == 'storage':
+                unit_price = product.cost_price
+                if vals.get('uom') and vals['uom'] != product.default_uom.id:
+                    uom = uom_obj.browse(cursor, user, vals['uom'],
                             context=context)
+                    unit_price = uom_obj.compute_price(cursor, user,
+                            product.default_uom, unit_price, uom,
+                            context=context)
+                if vals.get('currency') and vals.get('company'):
+                    currency = currency_obj.browse(cursor, user,
+                            vals['currency'], context=context)
+                    company = company_obj.browse(cursor, user,
+                            vals['company'], context=context)
+                    unit_price = currency_obj.compute(cursor, user,
+                            company.currency, unit_price, currency,
+                            round=False, context=context)
                 res['unit_price'] = unit_price
         return res
 
@@ -369,7 +410,7 @@ class Move(OSV):
         # convert wrt currency
         unit_price = currency_obj.compute(
             cursor, user, currency, unit_price, company.currency,
-            context=context)
+            round=False, context=context)
         # convert wrt to the uom
         unit_price = uom_obj.compute_price(
             cursor, user, uom, unit_price, product.default_uom, context=context)
