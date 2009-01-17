@@ -2827,9 +2827,20 @@ class ORM(object):
                 if field_name:
                     order_by, tables, tables_args = obj._order_calc(cursor,
                             user, field_name, otype, context=context)
-                    table_join = 'LEFT JOIN "' + table_name + '" ON ' \
-                            '%s.id = %s.%s' % (table_name, self._table,
-                                    link_field)
+                    if table_name == self._table:
+                        table_join = 'LEFT JOIN "' + table_name + '" AS ' \
+                                '"' + table_name + '.' + link_field + '" ON ' \
+                                '"%s.%s".id = %s.%s' % (table_name, link_field,
+                                        self._table, link_field)
+                        for i in range(len(order_by)):
+                            if table_name in order_by[i]:
+                                order_by[i] = order_by[i].replace(table_name,
+                                        '"' + table_name + '.' + \
+                                                link_field + '"')
+                    else:
+                        table_join = 'LEFT JOIN "' + table_name + '" ON ' \
+                                '%s.id = %s.%s' % (table_name, self._table,
+                                        link_field)
                     if table_join not in tables:
                         tables.insert(0, table_join)
                     return order_by, tables, tables_args
