@@ -7,13 +7,13 @@ error,sale.sale,0,Wrong combination of method!,Ungültige Kombination von Method
 field,"product.template,salable",0,Salable,Verkäuflich,0
 field,"product.template,sale_uom",0,Sale UOM,Einheit Verkauf,0
 field,"sale.line,amount",0,Amount,Betrag,0
-field,"sale.line,comment",0,Comment,Kommentar,0
 field,"sale.line,description",0,Description,Bezeichnung,0
 field,"sale.line,invoice_lines",0,Invoice Lines,Rechnungspositionen,0
 field,"sale.line,move_done",0,Moves Done,Bewegungen erledigt,0
 field,"sale.line,move_exception",0,Moves Exception,Bewegungsvorbehalt,0
 field,"sale.line,moves",0,Moves,Bewegungen,0
 field,"sale.line,moves_ignored",0,Moves Ignored,Ignorierte Bewegungen,0
+field,"sale.line,note",0,Note,Notiz,0
 field,"sale.line,product",0,Product,Artikel,0
 field,"sale.line,quantity",0,Quantity,Anzahl,0
 field,"sale.line,sale",0,Sale,Verkauf,0
@@ -117,6 +117,7 @@ odt,sale.sale,0,Total:,Gesamt:,0
 odt,sale.sale,0,Total (excl. taxes):,Netto:,0
 odt,sale.sale,0,Unit Price,Einzelpreis,0
 odt,sale.sale,0,VAT:,USt:,0
+selection,"sale.line,type",0,Comment,Kommentar,0
 selection,"sale.line,type",0,Line,Position,0
 selection,"sale.line,type",0,Subtotal,Zwischensumme,0
 selection,"sale.line,type",0,Title,Überschrift,0
@@ -141,6 +142,8 @@ selection,"sale.sale,state",0,Draft,Entwurf,0
 selection,"sale.sale,state",0,Quotation,Angebot,0
 view,product.product,0,Customers,Kunden,0
 view,product.template,0,Customers,Kunden,0
+view,sale.line,0,General,Allgemein,0
+view,sale.line,0,Notes,Notizen,0
 view,sale.line,0,Products,Artikel,0
 view,sale.line,0,Sale Line,Position Verkauf,0
 view,sale.line,0,Sale Lines,Positionen Verkauf,0
