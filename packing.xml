@@ -157,6 +157,12 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <!--Packing out view-->
+        <record model="ir.action.wizard" id="wizard_packing_out_assign">
+            <field name="name">Assign Packing Out</field>
+            <field name="wiz_name">stock.packing.out.assign</field>
+            <field name="model">stock.packing.out</field>
+        </record>
+
         <record model="ir.ui.view" id="packing_out_view_form">
             <field name="model">stock.packing.out</field>
             <field name="type">form</field>
@@ -190,7 +196,7 @@ this repository contains the full copyright notices and license terms. -->
                         <group col="4" colspan="4" id="state_buttons">
                             <label name="state"/>
                             <field name="state"/>
-                            <group col="8" colspan="2" id="buttons">
+                            <group col="7" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
                                         states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                         icon="tryton-cancel"/>
@@ -199,11 +205,8 @@ this repository contains the full copyright notices and license terms. -->
                                         icon="tryton-go-previous"/>
                                 <button string="Waiting" name="waiting"
                                         states="{'invisible': '''state not in ('assigned', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'draft' and 'tryton-go-next' or False'''}"/>
-                                <button string="Force Assign" name="force_assign"
-                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
-                                        icon="tryton-go-next"
-                                        confirm="Are you sure to force assignation?"/>
-                                <button string="Assign" name="assign"
+                                <button string="Assign" name="%(wizard_packing_out_assign)d"
+                                        type="action"
                                         states="{'invisible': '''state not in ('waiting', 'packed')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'waiting' and 'tryton-go-next' or state == 'packed' and 'tryton-go-previous' or False'''}"/>
                                 <button string="Make packing" name="packed"
                                         states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
@@ -323,9 +326,37 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_packing_out_form" sequence="30"
             action="act_packing_out_form_ready" id="menu_packing_out_ready"/>
 
-
+        <record model="ir.ui.view" id="packing_out_assign_ask_force_view_form">
+            <field name="model">stock.packing.out.assign.ask_force</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Unable to Assign" col="2">
+                    <image name="tryton-dialog-information"/>
+                    <group col="1" id="labels">
+                        <separator string="Unable to assign those products:"
+                            id="unable"/>
+                        <field name="inventory_moves">
+                            <tree string="Inventory Moves"  fill="1">
+                                <field name="product"/>
+                                <field name="quantity"/>
+                                <field name="uom"/>
+                                <field name="unit_digits" tree_invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
 
         <!--Internal Packing view-->
+        <record model="ir.action.wizard" id="wizard_packing_internal_assign">
+            <field name="name">Assign Packing Internal</field>
+            <field name="wiz_name">stock.packing.internal.assign</field>
+            <field name="model">stock.packing.internal</field>
+        </record>
+
         <record model="ir.ui.view" id="packing_internal_view_form">
             <field name="model">stock.packing.internal</field>
             <field name="type">form</field>
@@ -348,7 +379,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="moves"  colspan="4"/>
                         <label name="state"/>
                         <field name="state"/>
-                        <group col="7" colspan="2" id="buttons">
+                        <group col="6" colspan="2" id="buttons">
                             <button string="Cancel" name="cancel"
                                 states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                 icon="tryton-cancel"/>
@@ -357,10 +388,8 @@ this repository contains the full copyright notices and license terms. -->
                                 icon="tryton-go-previous"/>
                             <button string="Waiting" name="waiting"
                                 states="{'invisible': '''state not in ('assigned', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'draft' and 'tryton-go-next' or False'''}"/>
-                            <button string="Force Assign" name="force_assign"
-                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
-                                icon="tryton-go-next"/>
-                            <button string="Assign" name="assign"
+                            <button string="Assign" name="%(wizard_packing_internal_assign)d"
+                                type="action"
                                 states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                 icon="tryton-go-next"/>
                             <button string="Reset to Draft" name="button_draft"
@@ -498,6 +527,30 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_packing_internal_form" sequence="20"
                   action="act_packing_internal_assigned_form"
                   id="menu_packing_internal_assigned_form"/>
+
+        <record model="ir.ui.view" id="packing_internal_assign_ask_force_view_form">
+            <field name="model">stock.packing.internal.assign.ask_force</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Unable to Assign" col="2">
+                    <image name="tryton-dialog-information"/>
+                    <group col="1" id="labels">
+                        <separator string="Unable to assign those products:"
+                            id="unable"/>
+                        <field name="moves">
+                            <tree string="Moves"  fill="1">
+                                <field name="product"/>
+                                <field name="quantity"/>
+                                <field name="uom"/>
+                                <field name="unit_digits" tree_invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
 
         <!-- Sequence packing out -->
         <record model="ir.sequence.type" id="sequence_type_packing_out">

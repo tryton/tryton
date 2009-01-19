@@ -5,6 +5,7 @@ from trytond.osv import fields, OSV
 from trytond.netsvc import LocalService
 import datetime
 from trytond.report import CompanyReport
+from trytond.wizard import Wizard, WizardOSV
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -687,6 +688,75 @@ class PackingOut(OSV):
 PackingOut()
 
 
+class AssignPackingOutAskForce(WizardOSV):
+    'Assign Packing Out Ask Force'
+    _name = 'stock.packing.out.assign.ask_force'
+    _description = __doc__
+
+    inventory_moves = fields.Many2Many('stock.move', None, None, None,
+            'Inventory Moves', readonly=True)
+
+AssignPackingOutAskForce()
+
+
+class AssignPackingOut(Wizard):
+    'Assign Packing Out'
+    _name = 'stock.packing.out.assign'
+    states = {
+        'init': {
+            'result': {
+                'type': 'choice',
+                'next_state': '_choice',
+            },
+        },
+        'ask_force': {
+            'actions': ['_moves'],
+            'result': {
+                'type': 'form',
+                'object': 'stock.packing.out.assign.ask_force',
+                'state': [
+                    ('force', 'Force Assign', 'tryton-go-next'),
+                    ('end', 'Ok', 'tryton-ok', True),
+                ],
+            },
+        },
+        'force': {
+            'result': {
+                'type': 'action',
+                'action': '_force',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _choice(self, cursor, user, data, context=None):
+        workflow_service = LocalService('workflow')
+        packing_out_obj = self.pool.get('stock.packing.out')
+
+        workflow_service.trg_validate(user, 'stock.packing.out', data['id'],
+                'assign', cursor, context=context)
+        if packing_out_obj.assign_try(cursor, user, data['id'],
+                context=context):
+            return 'end'
+        else:
+            return 'ask_force'
+
+    def _moves(self, cursor, user, data, context=None):
+        packing_out_obj = self.pool.get('stock.packing.out')
+        packing = packing_out_obj.browse(cursor, user, data['id'],
+                context=context)
+        return {'inventory_moves': [x.id for x in packing.inventory_moves
+            if x.state == 'draft']}
+
+    def _force(self, cursor, user, data, context=None):
+        workflow_service = LocalService('workflow')
+        workflow_service.trg_validate(user, 'stock.packing.out', data['id'],
+                'force_assign', cursor, context=context)
+        return {}
+
+AssignPackingOut()
+
+
 class PackingInternal(OSV):
     "Internal Packing"
     _name = 'stock.packing.internal'
@@ -802,6 +872,74 @@ class PackingInternal(OSV):
         return True
 
 PackingInternal()
+
+
+class AssignPackingInternalAskForce(WizardOSV):
+    'Assign Packing Internal Ask Force'
+    _name = 'stock.packing.internal.assign.ask_force'
+    _description = __doc__
+
+    moves = fields.Many2Many('stock.move', None, None, None, 'Moves',
+            readonly=True)
+
+AssignPackingInternalAskForce()
+
+
+class AssignPackingInternal(Wizard):
+    'Assign Packing Internal'
+    _name = 'stock.packing.internal.assign'
+    states = {
+        'init': {
+            'result': {
+                'type': 'choice',
+                'next_state': '_choice',
+            },
+        },
+        'ask_force': {
+            'actions': ['_moves'],
+            'result': {
+                'type': 'form',
+                'object': 'stock.packing.internal.assign.ask_force',
+                'state': [
+                    ('force', 'Force Assign', 'tryton-go-next'),
+                    ('end', 'Ok', 'tryton-ok', True),
+                ],
+            },
+        },
+        'force': {
+            'result': {
+                'type': 'action',
+                'action': '_force',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _choice(self, cursor, user, data, context=None):
+        workflow_service = LocalService('workflow')
+        packing_internal_obj = self.pool.get('stock.packing.internal')
+
+        workflow_service.trg_validate(user, 'stock.packing.internal',
+                data['id'], 'assign', cursor, context=context)
+        if packing_internal_obj.assign_try(cursor, user, data['id'],
+                context=context):
+            return 'end'
+        else:
+            return 'ask_force'
+
+    def _moves(self, cursor, user, data, context=None):
+        packing_internal_obj = self.pool.get('stock.packing.internal')
+        packing = packing_internal_obj.browse(cursor, user, data['id'],
+                context=context)
+        return {'moves': [x.id for x in packing.moves if x.state == 'draft']}
+
+    def _force(self, cursor, user, data, context=None):
+        workflow_service = LocalService('workflow')
+        workflow_service.trg_validate(user, 'stock.packing.internal',
+                data['id'], 'force_assign', cursor, context=context)
+        return {}
+
+AssignPackingInternal()
 
 
 class Address(OSV):
