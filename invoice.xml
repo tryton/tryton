@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/separator[@name=&quot;taxes&quot;]"
+                        expr="/form/notebook/page/separator[@name=&quot;taxes&quot;]"
                         position="before">
                         <group col="4" colspan="4" name="analytic_accounts">
                             <field name="analytic_accounts"/>
