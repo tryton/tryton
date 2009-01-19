@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="groups" eval="[('add', ref('stock.group_stock'))]"/>
         </record>
         <menuitem parent="stock.menu_inventory_form" action="wizard_create_inventory"
-            id="menu_create_inventory" sequence="10"/>
+            id="menu_create_inventory" sequence="10" groups="stock.group_stock"/>
 
         <record model="ir.ui.view" id="inventory_create_init_view_form">
             <field name="model">stock.inventory.create.init</field>
