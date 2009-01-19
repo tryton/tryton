@@ -58,6 +58,8 @@ class Invoice(OSV):
     party = fields.Many2One('party.party', 'Party', change_default=True,
         required=True, states=_STATES, on_change=['party', 'payment_term',
             'type', 'company'])
+    party_lang = fields.Function('get_party_language', type='char',
+            string='Party Language', on_change_with=['party'])
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         required=True, states=_STATES, domain="[('party', '=', party)]")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
@@ -262,6 +264,34 @@ class Invoice(OSV):
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
             res[invoice.id] = invoice.currency.digits
+        return res
+
+    def on_change_with_party_lang(self, cursor, user, ids, vals, context=None):
+        party_obj = self.pool.get('party.party')
+        if vals.get('party'):
+            party = party_obj.browse(cursor, user, vals['party'],
+                    context=context)
+            if party.lang:
+                return party.lang.code
+        return 'en_US'
+
+    def get_party_language(self, cursor, user, ids, name, arg, context=None):
+        '''
+        Return the language code of the party of each invoice
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param ids: the ids of the invoices
+        :param context: the context
+        :return: a dictionary with invoice id as key and
+            language code as value
+        '''
+        res = {}
+        for invoice in self.browse(cursor, user, ids, context=context):
+            if invoice.party.lang:
+                res[invoice.id] = invoice.party.lang.code
+            else:
+                res[invoice.id] = 'en_US'
         return res
 
     def get_type_name(self, cursor, user, ids, name, arg, context=None):
@@ -1144,6 +1174,7 @@ class InvoiceLine(OSV):
             }, on_change_with=['type', 'quantity', 'unit_price',
                 '_parent_invoice.currency', 'currency'])
     description = fields.Text('Description', size=None, required=True)
+    note = fields.Text('Note')
     taxes = fields.Many2Many('account.tax', 'account_invoice_line_account_tax',
             'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
             states={
