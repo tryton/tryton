@@ -94,7 +94,10 @@ class AdaptModelGroup(gtk.GenericTreeModel):
         return gobject.TYPE_PYOBJECT
 
     def on_get_path(self, iter):
-        return self.models.index(iter)
+        if iter in self.models:
+            return self.models.index(iter)
+        else:
+            return 0
 
     def on_get_iter(self, path):
         if isinstance(path, tuple):
