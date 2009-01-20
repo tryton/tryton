@@ -666,9 +666,9 @@ class PackingOut(OSV):
         return res
 
     def assign_try(self, cursor, user, packing_id, context=None):
-        product_obj = self.pool.get('product.product')
+        move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        return product_obj.assign_try(
+        return move_obj.assign_try(
             cursor, user, packing.inventory_moves, context=context)
 
     def assign_force(self, cursor, user, packing_id, context=None):
@@ -860,9 +860,9 @@ class PackingInternal(OSV):
             cursor, user, packing_id, {'state': 'cancel'}, context=context)
 
     def assign_try(self, cursor, user, packing_id, context=None):
-        product_obj = self.pool.get('product.product')
+        move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        return product_obj.assign_try(
+        return move_obj.assign_try(
             cursor, user, packing.moves, context=context)
 
     def assign_force(self, cursor, user, packing_id, context=None):
