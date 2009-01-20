@@ -136,14 +136,18 @@ class Property(OSV):
     company = fields.Many2One('company.company', 'Company')
 
     def set(self, cursor, user_id, name, model, res_id, val, context=None):
+        if context is None:
+            context = {}
+        ctx = context.copy()
+        ctx['user'] = user_id
         res = super(Property, self).set(cursor, user_id, name, model, res_id, val,
                 context=context)
         if res and user_id:
             user_obj = self.pool.get('res.user')
             user = user_obj.browse(cursor, user_id, user_id, context=context)
-            self.write(cursor, user_id, res, {
+            self.write(cursor, 0, res, {
                 'company': user.company.id,
-                }, context=context)
+                }, context=ctx)
         return res
 
 Property()
