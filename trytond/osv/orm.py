@@ -2891,7 +2891,8 @@ class ORM(object):
                 if table_join not in tables:
                     tables.append(table_join)
                     tables_args[table_join] = [context.get('language') or 'en_US']
-                order_by.append('COALESCE(' + translation_table + '.value, ' \
+                order_by.append('COALESCE(NULLIF(' \
+                        + translation_table + '.value, \'\'), ' \
                         + table_name + '.' + field_name + ') ' + otype)
                 return order_by, tables, tables_args
 
