@@ -411,6 +411,7 @@ class Product(OSV):
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
         date_obj = self.pool.get('ir.date')
+        location_obj = self.pool.get('stock.location')
 
         if context is None:
             context = {}
@@ -421,8 +422,11 @@ class Product(OSV):
         local_ctx['stock_date_end'] = date_obj.today(cursor, user,
                 context=context)
         local_ctx['stock_assign'] = True
+        location_ids = location_obj.search(cursor, user, [
+            ('parent', 'child_of', [x.from_location.id for x in moves]),
+            ], context=context)
         pbl = product_obj.products_by_location(cursor, user,
-            location_ids=[m.from_location.id for m in moves],
+            location_ids=location_ids,
             product_ids=[m.product.id for m in moves],
             context=local_ctx)
 
@@ -432,8 +436,11 @@ class Product(OSV):
                 continue
             to_location = move.to_location
             location_qties = {}
-            childs = [m for m in move.from_location.childs] + [move.from_location]
-            for location in childs:
+            child_ids = location_obj.search(cursor, user, [
+                ('parent', 'child_of', [move.from_location.id]),
+                ], context=context)
+            for location in location_obj.browse(cursor, user, child_ids,
+                    context=context):
                 if (location.id, move.product.id) in pbl:
                     location_qties[location] = uom_obj.compute_qty(
                         cursor, user, move.product.default_uom,
@@ -450,24 +457,16 @@ class Product(OSV):
             for from_location, qty in to_pick:
                 values = {
                     'from_location': from_location.id,
-                    'to_location': to_location.id,
-                    'product': move.product.id,
-                    'uom': move.uom.id,
                     'quantity': qty,
                     'state': 'assigned',
-                    'company': move.company.id,
                     }
-                for field in ('packing_out', 'packing_in', 'packing_internal'):
-                    if move[field]:
-                        values.update({field: move[field].id})
-                        break
-
                 if first:
                     move_obj.write(cursor, user, move.id, values,
                             context=context)
                     first = False
                 else:
-                    move_obj.create(cursor, user, values, context=context)
+                    move_id = move_obj.copy(cursor, user, move.id,
+                            default=values, context=context)
 
                 qty_defaut_uom = uom_obj.compute_qty(
                     cursor, user, move.uom, qty, move.product.default_uom,
