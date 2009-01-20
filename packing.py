@@ -735,8 +735,9 @@ class AssignPackingOut(Wizard):
 
         workflow_service.trg_validate(user, 'stock.packing.out', data['id'],
                 'assign', cursor, context=context)
-        if packing_out_obj.assign_try(cursor, user, data['id'],
-                context=context):
+        packing = packing_out_obj.browse(cursor, user, data['id'],
+                context=context)
+        if not [x.id for x in packing.inventory_moves if x.state == 'draft']:
             return 'end'
         else:
             return 'ask_force'
@@ -921,8 +922,9 @@ class AssignPackingInternal(Wizard):
 
         workflow_service.trg_validate(user, 'stock.packing.internal',
                 data['id'], 'assign', cursor, context=context)
-        if packing_internal_obj.assign_try(cursor, user, data['id'],
-                context=context):
+        packing = packing_internal_obj.browse(cursor, user, data['id'],
+                context=context)
+        if not [x.id for x in packing.moves if x.state == 'draft']:
             return 'end'
         else:
             return 'ask_force'
