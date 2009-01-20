@@ -62,6 +62,7 @@ field,"account.invoice.line,description",0,Description,Bezeichnung,0
 field,"account.invoice.line,invoice",0,Invoice,Rechnung,0
 field,"account.invoice.line,invoice_taxes",0,Invoice Taxes,Steuern Rechnung,0
 field,"account.invoice.line,invoice_type",0,Invoice Type,Rechnungstyp,0
+field,"account.invoice.line,note",0,Note,Notiz,0
 field,"account.invoice.line,party",0,Party,Partei,0
 field,"account.invoice.line,product",0,Product,Artikel,0
 field,"account.invoice.line,quantity",0,Quantity,Anzahl,0
@@ -76,6 +77,7 @@ field,"account.invoice.line,unit_price",0,Unit Price,Einzelpreis,0
 field,"account.invoice,move",0,Move,Buchung,0
 field,"account.invoice,number",0,Number,Nummer,0
 field,"account.invoice,party",0,Party,Partei,0
+field,"account.invoice,party_lang",0,Party Language,Sprache Partei,0
 field,"account.invoice.pay_invoice.ask,account",0,Account,Konto,0
 field,"account.invoice.pay_invoice.ask,account_writeoff",0,Account,Konto,0
 field,"account.invoice.pay_invoice.ask,amount",0,Amount,Betrag,0
@@ -217,7 +219,6 @@ model,"workflow.activity,name",invoice_activity_open,Open,Fakturieren,0
 model,"workflow.activity,name",invoice_activity_paid,Paid,Bezahlt,0
 model,"workflow.activity,name",invoice_activity_proforma,Pro forma,Pro Forma,0
 model,"workflow,name",invoice_workflow,Invoice workflow,Workflow Rechnung,0
-odt,account.invoice,0,.,;,0
 odt,account.invoice,0,Amount,Betrag,0
 odt,account.invoice,0,Base,Netto,0
 odt,account.invoice,0,Credit Note N°:,Gutschrift Nr.:,0
@@ -284,8 +285,11 @@ view,account.invoice,0,_Reset to Draft,Auf Entwurf _Zurücksetzen,0
 view,account.invoice,0,Taxes,Steuern,0
 view,account.invoice.credit_invoice.init,0,Are you sure to credit those/this invoice(s)?,Wollen Sie diese Rechnungen wirklich gutschreiben?,0
 view,account.invoice.credit_invoice.init,0,Credit Invoice,Rechnung gutschreiben,0
+view,account.invoice.line,0,General,Allgemein,0
 view,account.invoice.line,0,Invoice Line,Rechnungsposition,0
 view,account.invoice.line,0,Invoice Lines,Rechnungspositionen,0
+view,account.invoice.line,0,Notes,Notizen,0
+view,account.invoice.line,0,Products,Artikel,0
 view,account.invoice.pay_invoice.ask,0,Amount Second Currency,Betrag Zweitwährung,0
 view,account.invoice.pay_invoice.ask,0,Credit,Haben,0
 view,account.invoice.pay_invoice.ask,0,Debit,Soll,0
