@@ -106,6 +106,12 @@ class Property(OSV):
         Set property value for res_id
         """
         model_field_obj = self.pool.get('ir.model.field')
+
+        if context is None:
+            context = {}
+        ctx = context.copy()
+        ctx['user'] = user
+
         field_id = model_field_obj.search(cursor, user, [
             ('name', '=', name),
             ('model.model', '=', model),
@@ -115,7 +121,7 @@ class Property(OSV):
             ('field', '=', field_id),
             ('res', '=', model + ',' + str(res_id)),
             ], context=context)
-        self.delete(cursor, user, property_ids, context=context)
+        self.delete(cursor, 0, property_ids, context=ctx)
 
         default_id = self.search(cursor, user, [
             ('field', '=', field_id),
@@ -128,12 +134,12 @@ class Property(OSV):
 
         res = False
         if (val != default_val):
-            res = self.create(cursor, user, {
+            res = self.create(cursor, 0, {
                 'name': name,
                 'value': val,
                 'res': model + ',' + str(res_id),
                 'field': field_id,
-            }, context=context)
+            }, context=ctx)
         return res
 
 Property()
