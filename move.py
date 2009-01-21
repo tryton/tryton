@@ -145,7 +145,7 @@ class Move(OSV):
                                 move.unit_price, move.currency, move.company,
                                 context=context)
                     if move.to_location.type != 'storage' \
-                            and to_location.type != 'supplier' \
+                            and move.to_location.type != 'supplier' \
                             and move.product.cost_price_method == 'fifo':
                         self._update_fifo_out_product_cost_price(cursor, user,
                                 move.product, move.quantity, move.uom.id,
