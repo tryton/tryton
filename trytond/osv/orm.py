@@ -2192,7 +2192,7 @@ class ORM(object):
                         'inherit ' \
                         'FROM ir_ui_view ' \
                         'WHERE model = %s AND type = %s AND inherit IS NULL ' \
-                        'ORDER BY priority',
+                        'ORDER BY priority ASC, id ASC',
                         (self._name,view_type))
             sql_res = cursor.fetchone()
             if not sql_res:
@@ -2211,7 +2211,8 @@ class ORM(object):
                 # get all views which inherit from (ie modify) this view
                 cursor.execute('SELECT arch, id FROM ir_ui_view ' \
                         'WHERE inherit = %s AND model = %s ' \
-                        'ORDER BY priority', (inherit_id, self._name))
+                        'ORDER BY priority ASC, id ASC',
+                        (inherit_id, self._name))
                 sql_inherit = cursor.fetchall()
                 for (inherit, view_id) in sql_inherit:
                     result = _inherit_apply(result, inherit)
