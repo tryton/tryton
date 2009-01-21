@@ -78,6 +78,7 @@ field,"stock.packing.in,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.packing.in,reference",0,Reference,Referenz,0
 field,"stock.packing.in,state",0,State,Status,0
 field,"stock.packing.in,supplier",0,Supplier,Lieferant,0
+field,"stock.packing.internal.assign.ask_force,moves",0,Moves,Bewegungen,0
 field,"stock.packing.internal,code",0,Code,Code,0
 field,"stock.packing.internal,effective_date",0,Effective Date,Effektives Datum,0
 field,"stock.packing.internal,from_location",0,From Location,Von Lagerort,0
@@ -87,6 +88,7 @@ field,"stock.packing.internal,reference",0,Reference,Referenz,0
 field,"stock.packing.internal,state",0,State,Status,0
 field,"stock.packing.internal,to_location",0,To Location,Zu Lagerort,0
 field,"stock.packing.in,warehouse",0,Warehouse,Warenlager,0
+field,"stock.packing.out.assign.ask_force,inventory_moves",0,Inventory Moves,Bestandsänderungen,0
 field,"stock.packing.out,code",0,Code,Code,0
 field,"stock.packing.out,customer",0,Customer,Kunde,0
 field,"stock.packing.out,customer_location",0,Customer Location,Lagerort Kunde,0
@@ -116,6 +118,8 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 ",0
 model,"ir.action,name",act_packing_out_form_assigned,Assigned Customer Packings,Zugewiesene Kundenlieferscheine,0
 model,"ir.action,name",act_packing_internal_assigned_form,Assigned Internal Packings,Zugewiesene Interne Lieferscheine,0
+model,"ir.action,name",wizard_packing_internal_assign,Assign Packing Internal,Zuweisung Lieferschein Intern,0
+model,"ir.action,name",wizard_packing_out_assign,Assign Packing Out,Zuweisung Lieferschein Ausgehend,0
 model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Lagerbestandspositionen komplettieren,0
 model,"ir.action,name",report_packing_out,Customer Packing,Lieferschein an Kunde,0
 model,"ir.action,name",act_packing_out_form,Customer Packings,Lieferscheine an Kunden,0
@@ -181,7 +185,9 @@ model,"stock.location,name",location_warehouse,Warehouse,Warenlager,0
 model,"stock.location_stock_date.init,name",0,Compute stock quantities,Berechnung Lagerbestände,0
 model,"stock.move,name",0,Stock Move,Lager Bewegung,0
 model,"stock.packing.in,name",0,Supplier Packing,Lieferant Lieferschein,0
+model,"stock.packing.internal.assign.ask_force,name",0,Assign Packing Internal Ask Force,Zuweisung Lieferschein Intern Erzwungen,0
 model,"stock.packing.internal,name",0,Internal Packing,Interner Lieferschein,0
+model,"stock.packing.out.assign.ask_force,name",0,Assign Packing Out Ask Force,Zuweisung Lieferschein Ausgehend Erzwungen,0
 model,"stock.packing.out,name",0,Customer Packing,Lieferschein Kunde,0
 model,"stock.product_stock_date.init,name",0,Compute stock quantities,Berechnung Lagerbestände,0
 model,"workflow.activity,name",packingout_act_assigned,Assigned,Zugewiesen,0
@@ -288,6 +294,9 @@ view,stock.packing.internal,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,stock.packing.internal,0,Set Done,Auf Erledigt setzen,0
 view,stock.packing.internal,0,Set Waiting,Auf Wartend setzen,0
 view,stock.packing.internal,0,Waiting,Wartend,0
+view,stock.packing.internal.assign.ask_force,0,Moves,Bewegungen,0
+view,stock.packing.internal.assign.ask_force,0,Unable to Assign,Fehlmenge Zuweisung,0
+view,stock.packing.internal.assign.ask_force,0,Unable to assign those products:,Folgende Artikel können nicht zugewiesen werden:,0
 view,stock.packing.out,0,Are you sure to force assignation?,Zuweisung wirklich erzwingen?,0
 view,stock.packing.out,0,Assign,Zuweisen,0
 view,stock.packing.out,0,Cancel,Annullieren,0
@@ -304,10 +313,17 @@ view,stock.packing.out,0,Set Done,Auf Erledigt setzen,0
 view,stock.packing.out,0,Set Waiting,Auf Wartend setzen,0
 view,stock.packing.out,0,Unpack,Entpackt,0
 view,stock.packing.out,0,Waiting,Wartend,0
+view,stock.packing.out.assign.ask_force,0,Inventory Moves,Bestandsänderungen,0
+view,stock.packing.out.assign.ask_force,0,Unable to Assign,Fehlmenge Zuweisung,0
+view,stock.packing.out.assign.ask_force,0,Unable to assign those products:,Folgende Artikel können nicht zugewiesen werden:,0
 view,stock.product_stock_date.init,0,Product Quantity.,Artikel Mengen,0
 wizard_button,"stock.inventory.complete,init,complete",0,Complete,Komplettieren,0
 wizard_button,"stock.inventory.complete,init,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.location.open,init,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.location.open,init,open",0,Open,Öffnen,0
+wizard_button,"stock.packing.internal.assign,ask_force,end",0,Ok,OK,0
+wizard_button,"stock.packing.internal.assign,ask_force,force",0,Force Assign,Zuweisung erzwingen,0
+wizard_button,"stock.packing.out.assign,ask_force,end",0,Ok,OK,0
+wizard_button,"stock.packing.out.assign,ask_force,force",0,Force Assign,Zuweisung erzwingen,0
 wizard_button,"stock.product.open,init,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.product.open,init,open",0,Open,Öffnen,0
