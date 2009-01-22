@@ -142,18 +142,36 @@ class ModelAccess(OSV):
         res = super(ModelAccess, self).write(cursor, user, ids, vals,
                 context=context)
         self.check(cursor.dbname)
+        # Restart the cache
+        for model in self.pool.object_name_list():
+            try:
+                self.pool.get(model).fields_view_get(cursor.dbname)
+            except:
+                pass
         return res
 
     def create(self, cursor, user, vals, context=None):
         res = super(ModelAccess, self).create(cursor, user, vals,
                 context=context)
         self.check(cursor.dbname)
+        # Restart the cache
+        for model in self.pool.object_name_list():
+            try:
+                self.pool.get(model).fields_view_get(cursor.dbname)
+            except:
+                pass
         return res
 
     def delete(self, cursor, user, ids, context=None):
         res = super(ModelAccess, self).delete(cursor, user, ids,
                 context=context)
         self.check(cursor.dbname)
+        # Restart the cache
+        for model in self.pool.object_name_list():
+            try:
+                self.pool.get(model).fields_view_get(cursor.dbname)
+            except:
+                pass
         return res
 
 ModelAccess()
