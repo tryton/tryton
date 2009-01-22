@@ -28,10 +28,10 @@ class Currency(OSV):
     n_sign_posn = fields.Integer('Negative Sign Position')
     positive_sign = fields.Char('Positive Sign')
     negative_sign = fields.Char('Negative Sign')
-    p_cs_precedes = fields.Boolean('Positive Sign Precedes')
-    n_cs_precedes = fields.Boolean('Negative Sign Precedes')
-    p_sep_by_space = fields.Boolean('Positive Sign Separate by Space')
-    n_sep_by_space = fields.Boolean('Negative Sign Separate by Space')
+    p_cs_precedes = fields.Boolean('Positive Currency Symbol Precedes')
+    n_cs_precedes = fields.Boolean('Negative Currency Symbol Precedes')
+    p_sep_by_space = fields.Boolean('Positive Separate by Space')
+    n_sep_by_space = fields.Boolean('Negative Separate by Space')
 
     def __init__(self):
         super(Currency, self).__init__()
