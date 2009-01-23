@@ -2240,7 +2240,7 @@ class PayInvoice(Wizard):
         invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
         res['currency'] = invoice.currency.id
         res['currency_digits'] = invoice.currency.digits
-        res['amount'] = invoice.amount_to_pay_today
+        res['amount'] = invoice.amount_to_pay_today or invoice.amount_to_pay
         res['description'] = invoice.number
         return res
 
