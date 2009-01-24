@@ -2627,6 +2627,7 @@ class ORM(object):
                     query1 = '(SELECT res_id FROM ir_translation ' \
                             'WHERE name = %s AND lang = %s ' \
                                 'AND type = %s ' \
+                                'AND fuzzy = false ' \
                                 'AND (value ' + args[i][1] + ' %s ' \
                                     + oper +' value ' + args[i][1] + ' %s))'
                     query2 = [table._name + ',' + args[i][0],
@@ -2885,10 +2886,12 @@ class ORM(object):
                         '(%s.res_id = %s.id ' \
                             'AND %s.name = \'%s,%s\' ' \
                             'AND %s.lang = %%s ' \
-                            'AND %s.type = \'model\')' % \
+                            'AND %s.type = \'model\' ' \
+                            'AND %s.fuzzy = false)' % \
                         (translation_table, translation_table, table_name,
                                 translation_table, self._name, field_name,
-                                translation_table, translation_table)
+                                translation_table, translation_table,
+                                translation_table)
                 if table_join not in tables:
                     tables.append(table_join)
                     tables_args[table_join] = [context.get('language') or 'en_US']
