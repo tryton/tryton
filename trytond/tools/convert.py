@@ -638,8 +638,14 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
 
                 # we cannot update a field if it was changed by a user...
                 if key not in old_values:
-                    expected_value = object_ref._defaults.get(
-                        key, lambda *a:None)(cursor, user)
+                    if key in object_ref._inherit_fields:
+                        parent_obj = self.pool.get(
+                            object_ref._inherit_fields[key][0])
+                        expected_value = parent_obj._defaults.get(
+                            key, lambda *a: None)(cursor, user)
+                    else:
+                        expected_value = object_ref._defaults.get(
+                            key, lambda *a: None)(cursor, user)
                 else:
                     expected_value = old_values[key]
 
