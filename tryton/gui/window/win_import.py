@@ -224,7 +224,7 @@ class WinImport(object):
                         try:
                             fields2 = rpc.execute('object',
                                     'execute', fields[field]['relation'],
-                                    'fields_get', False, rpc.CONTEXT)
+                                    'fields_get', None, rpc.CONTEXT)
                         except Exception, exception:
                             common.process_exception(exception, self.dialog)
                             continue

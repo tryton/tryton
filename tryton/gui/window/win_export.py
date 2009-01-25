@@ -210,7 +210,7 @@ class WinExport(object):
                 if fields[field].get('relation', False) and level>0:
                     try:
                         fields2 = rpc.execute('object', 'execute',
-                                fields[field]['relation'], 'fields_get', False,
+                                fields[field]['relation'], 'fields_get', None,
                                 rpc.CONTEXT)
                     except Exception, exception:
                         common.process_exception(exception, self.parent)
