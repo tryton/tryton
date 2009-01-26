@@ -795,8 +795,9 @@ class PackingInternal(OSV):
     def assign_force(self, cursor, user, packing_id, context=None):
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj = self.pool.get('stock.move')
-        move_obj.write(
-            cursor, user, [m.id for m in packing.moves], {'state': 'assigned'})
+        move_obj.write(cursor, user, [m.id for m in packing.moves], {
+            'state': 'assigned',
+            }, context=context)
         return True
 
 PackingInternal()
