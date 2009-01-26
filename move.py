@@ -531,8 +531,7 @@ class Move(OSV):
 
     def pick_product(self, cursor, user, move, location_quantities, context=None):
         """
-        Pick the product across the location. Naive (fast)
-            implementation.
+        Pick the product across the location. Naive (fast) implementation.
 
         :param cursor: the database cursor
         :param user: the user id
@@ -540,7 +539,8 @@ class Move(OSV):
         :param location_quantities: a list of tuple (location, available_qty)
             where location is a BrowseRecord of stock.location.
         :param context: the context
-        :return: a list of tuple (location, quantity) or None
+        :return: a list of tuple (location, quantity) for quantities
+            that can be picked
         """
         to_pick = []
         needed_qty = move.quantity
@@ -558,11 +558,12 @@ class Move(OSV):
         if move.product.type == "consumable":
             to_pick.append((move.from_location, needed_qty))
             return to_pick
-        return None
+        return to_pick
 
     def assign_try(self, cursor, user, moves, context=None):
         '''
         Try to assign moves.
+        It will split the moves to assign as much possible.
 
         :param cursor: the database cursor
         :param user: the user id
@@ -612,10 +613,18 @@ class Move(OSV):
             to_pick = self.pick_product(
                 cursor, user, move, location_qties, context=context)
 
-            if to_pick is None:
+            picked_qties = 0.0
+            for _, qty in to_pick:
+                picked_qties += qty
+
+            if picked_qties < move.quantity:
                 success = False
-                continue
-            first = True
+                first = False
+                self.write(cursor, user, move.id, {
+                    'quantity': move.quantity - picked_qties,
+                    }, context=context)
+            else:
+                first = True
             for from_location, qty in to_pick:
                 values = {
                     'from_location': from_location.id,
@@ -638,6 +647,5 @@ class Move(OSV):
                 pbl[(to_location.id, move.product.id)]= \
                     pbl.get((to_location.id, move.product.id), 0.0) + qty_defaut_uom
         return success
-
 
 Move()
