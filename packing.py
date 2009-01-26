@@ -570,6 +570,10 @@ class PackingOut(OSV):
                     move.product.default_uom, context=context)
                 outgoing_qty[move.product.id] -= removed_qty
 
+        move_obj.write(cursor, user, [x.id for x in packing.outgoing_moves
+            if x.state != 'cancel'], {
+                'state': 'assigned',
+                }, context=context)
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
