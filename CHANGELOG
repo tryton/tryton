@@ -1,3 +1,4 @@
+* Make assign_try to assign as much possible
 * Move assign_try and pick_product from product.product to stock.move
 * Added stock_skip_warehouse keyword for products_by_location
   method. The default behaviour is now to compute quantities on all
