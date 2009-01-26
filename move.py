@@ -401,6 +401,9 @@ class Move(OSV):
                     cursor, user, vals['product'], -vals['quantity'],
                     vals['uom'], vals['unit_price'], vals['currency'],
                     vals['company'], context=context)
+        elif vals.get('state') == 'assigned':
+            if not vals.get('effective_date'):
+                vals['effective_date'] = datetime.date.today()
         return super(Move, self).create(cursor, user, vals, context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
@@ -437,6 +440,7 @@ class Move(OSV):
                     if move.state in ('cancel', 'done'):
                         self.raise_user_error(cursor, 'set_state_assigned',
                                 context=context)
+                    vals['effective_date'] = datetime.date.today()
                 elif vals['state'] == 'done':
                     if move.state in ('cancel'):
                         self.raise_user_error(cursor, 'set_state_done',
