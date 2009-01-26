@@ -388,7 +388,7 @@ this repository contains the full copyright notices and license terms. -->
                                 states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                 icon="tryton-go-previous"/>
                             <button string="Waiting" name="waiting"
-                                states="{'invisible': '''state not in ('assigned', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'draft' and 'tryton-go-next' or False'''}"/>
+                                states="{'invisible': '''state not in ('assigned', 'waiting', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'waiting' and 'tryton-clear' or state == 'draft' and 'tryton-go-next' or False'''}"/>
                             <button string="Assign" name="%(wizard_packing_internal_assign)d"
                                 type="action"
                                 states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
@@ -835,6 +835,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_to" ref="packinginternal_act_draft"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">draft</field>
+        </record>
+        <record model="workflow.transition"
+                id="packinginternal_trans_waiting_waiting">
+            <field name="act_from" ref="packinginternal_act_waiting"/>
+            <field name="act_to" ref="packinginternal_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
                 id="packinginternal_trans_waiting_assigned">

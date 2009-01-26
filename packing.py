@@ -816,12 +816,12 @@ class PackingInternal(OSV):
     def set_state_waiting(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in packing.moves], {'state': 'draft'},
-            context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in packing.moves],
-            {'planned_date': packing.planned_date}, context=context)
+        move_obj.write(cursor, user, [m.id for m in packing.moves], {
+            'from_location': packing.from_location.id,
+            'to_location': packing.to_location.id,
+            'state': 'draft',
+            'planned_date': packing.planned_date,
+            }, context=context)
         self.write(
             cursor, user, packing_id, {'state': 'waiting'}, context=context)
 
