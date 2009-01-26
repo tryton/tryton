@@ -75,11 +75,11 @@ this repository contains the full copyright notices and license terms. -->
                     <tree string="Supplier Packings">
                         <field name="code" select="1"/>
                         <field name="reference" select="1"/>
-                        <field name="state" select="1"/>
                         <field name="planned_date" select="2"/>
                         <field name="effective_date" select="2"/>
                         <field name="supplier" select="2"/>
                         <field name="contact_address" select="2"/>
+                        <field name="state" select="1"/>
                     </tree>
                 ]]>
             </field>
@@ -232,11 +232,12 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                     <tree string="Customer Packings">
                         <field name="code" select="1"/>
-                        <field name="state" select="1"/>
+                        <field name="reference" select="1"/>
                         <field name="planned_date" select="2"/>
                         <field name="effective_date" select="2"/>
                         <field name="customer"/>
                         <field name="delivery_address"/>
+                        <field name="state" select="1"/>
                     </tree>
                 ]]>
             </field>
@@ -411,12 +412,12 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                     <tree string="Internal Packings">
                         <field name="code" select="1"/>
-                        <field name="state" select="1"/>
                         <field name="reference" select="2"/>
                         <field name="planned_date" select="2"/>
                         <field name="effective_date" select="2"/>
                         <field name="from_location" select="2"/>
                         <field name="to_location" select="2"/>
+                        <field name="state" select="1"/>
                     </tree>
                 ]]>
             </field>
