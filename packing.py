@@ -327,14 +327,14 @@ class PackingOut(OSV):
             relation='stock.move', string='Outgoing Moves',
             fnct_inv='set_outgoing_moves',
             states={
-                'readonly':"state != 'packed'",
+                'readonly':"state != 'draft'",
             }, context="{'warehouse': warehouse, 'type': 'outgoing'," \
                     "'customer': customer}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
             relation='stock.move', string='Inventory Moves',
             fnct_inv='set_inventory_moves',
             states={
-                'readonly':"state in ('packed', 'done')",
+                'readonly':"state in ('draft', 'packed', 'done')",
             }, context="{'warehouse': warehouse, 'type': 'inventory_out',}")
     moves = fields.One2Many('stock.move', 'packing_out', 'Moves',
             readonly=True)
@@ -592,43 +592,29 @@ class PackingOut(OSV):
         self.write(
             cursor, user, packing_id, {'state': 'waiting'}, context=context)
 
-        # Sum all inventory quantities
-        inventory_qty = {}
-        for move in packing.inventory_moves:
-            if move.state == 'cancel': continue
-            quantity = uom_obj.compute_qty(
-                cursor, user, move.uom, move.quantity, move.product.default_uom,
-                context=context)
-            inventory_qty.setdefault(move.product.id, 0.0)
-            inventory_qty[move.product.id] += quantity
+        if packing.inventory_moves:
+            move_obj.write(cursor, user,
+                    [x.id for x in packing.inventory_moves], {
+                        'state': 'draft',
+                        }, context=context)
+            move_obj.delete(cursor, user,
+                    [x.id for x in packing.inventory_moves], context=context)
+
+            # Re-Browse because moves have been deleted
+            packing = self.browse(cursor, user, packing_id, context=context)
 
         for move in packing.outgoing_moves:
-            if move.state in ('cancel', 'done'): continue
+            if move.state in ('cancel', 'done'):
+                continue
             qty_default_uom = uom_obj.compute_qty(
                 cursor, user, move.uom, move.quantity, move.product.default_uom,
                 context=context)
-            # Check if the inventory move doesn't exist already
-            if inventory_qty.get(move.product.id):
-                # If it exist, decrease the sum
-                if qty_default_uom <= inventory_qty[move.product.id]:
-                    inventory_qty[move.product.id] -= qty_default_uom
-                    continue
-                # Else create the complement
-                else:
-                    inv_quantity = qty_default_uom - inventory_qty[move.product.id]
-                    inv_quantity = uom_obj.compute_qty(
-                        cursor, user, move.product.default_uom, inv_quantity,
-                        move.uom, context=context)
-                    inventory_qty[move.product.id] = 0.0
-            else:
-                inv_quantity = move.quantity
-
             move_obj.create(cursor, user, {
                     'from_location': move.packing_out.warehouse.storage_location.id,
                     'to_location': move.from_location.id,
                     'product': move.product.id,
                     'uom': move.uom.id,
-                    'quantity': inv_quantity,
+                    'quantity': move.quantity,
                     'packing_out': packing.id,
                     'state': 'draft',
                     'company': move.company.id,

@@ -204,11 +204,11 @@ this repository contains the full copyright notices and license terms. -->
                                         states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                         icon="tryton-go-previous"/>
                                 <button string="Waiting" name="waiting"
-                                        states="{'invisible': '''state not in ('assigned', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'draft' and 'tryton-go-next' or False'''}"/>
+                                        states="{'invisible': '''state not in ('assigned', 'waiting', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'waiting' and 'tryton-clear' or state == 'draft' and 'tryton-go-next' or False'''}"/>
                                 <button string="Assign" name="%(wizard_packing_out_assign)d"
                                         type="action"
                                         states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
-                                        icon="tryton-next"/>
+                                        icon="tryton-go-next"/>
                                 <button string="Make packing" name="packed"
                                         states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                         icon="tryton-go-next"/>
@@ -690,6 +690,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.transition"
                 id="packingout_trans_assigned_waiting">
             <field name="act_from" ref="packingout_act_assigned"/>
+            <field name="act_to" ref="packingout_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="packingout_trans_waiting_waiting">
+            <field name="act_from" ref="packingout_act_waiting"/>
             <field name="act_to" ref="packingout_act_waiting"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
