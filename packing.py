@@ -318,7 +318,7 @@ class PackingOut(OSV):
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
             states={
                 'readonly': "state != 'draft'",
-            }, domain="[('type', '=', 'warehouse')]")
+            }, domain=[('type', '=', 'warehouse')])
     customer_location = fields.Many2One('stock.location', "Customer Location",
             required=True, states={
                 'readonly': "state != 'draft'",
