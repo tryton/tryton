@@ -47,7 +47,8 @@ class PackingIn(OSV):
                 "('to_location_warehouse', '=', warehouse),"\
             "]",
             states={
-                'readonly': "state in ('received', 'done', 'cancel')",
+                'readonly': "state in ('received', 'done', 'cancel') "\
+                    "or not warehouse",
             }, context="{'warehouse': warehouse, 'type': 'incoming'," \
                     "'supplier': supplier}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
@@ -452,7 +453,7 @@ class PackingOut(OSV):
             })
     customer = fields.Many2One('party.party', 'Customer', required=True,
             states={
-                'readonly': "state != 'draft'",
+                'readonly': "state != 'draft' or bool(outgoing_moves)",
             }, on_change=['customer'])
     delivery_address = fields.Many2One('party.address',
             'Delivery Address', required=True,
@@ -465,13 +466,13 @@ class PackingOut(OSV):
             })
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
             states={
-                'readonly': "state != 'draft'",
+                'readonly': "state != 'draft' or bool(outgoing_moves)",
             }, domain=[('type', '=', 'warehouse')])
     outgoing_moves = fields.Function('get_outgoing_moves', type='one2many',
             relation='stock.move', string='Outgoing Moves',
             fnct_inv='set_outgoing_moves',
             states={
-                'readonly':"state != 'draft'",
+                'readonly':"state != 'draft' or not warehouse",
             }, context="{'warehouse': warehouse, 'type': 'outgoing'," \
                     "'customer': customer}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
