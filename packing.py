@@ -74,13 +74,9 @@ class PackingIn(OSV):
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
             'incoming_move_input_dest': 'Incoming Moves must ' \
-                    'have input location as destination location!',
+                    'have the warehouse input location as destination location!',
             'inventory_move_input_source': 'Inventory Moves must ' \
-                    'have input location as source location!',
-            'outgoing_move_output_source': 'Outgoing Moves must ' \
-                    'have output location as source location!',
-            'inventory_move_output_dest': 'Inventory Moves must ' \
-                    'have output location as destination location!',
+                    'have the warehouse input location as source location!',
             })
 
     def default_state(self, cursor, user, context=None):
