@@ -467,10 +467,6 @@ class PackingOut(OSV):
             states={
                 'readonly': "state != 'draft'",
             }, domain=[('type', '=', 'warehouse')])
-    customer_location = fields.Many2One('stock.location', "Customer Location",
-            required=True, states={
-                'readonly': "state != 'draft'",
-            }, domain="[('type', '=', 'customer')]")
     outgoing_moves = fields.Function('get_outgoing_moves', type='one2many',
             relation='stock.move', string='Outgoing Moves',
             fnct_inv='set_outgoing_moves',
@@ -517,16 +513,12 @@ class PackingOut(OSV):
 
     def on_change_customer(self, cursor, user, ids, values, context=None):
         if not values.get('customer'):
-            return {'delivery_address': False,
-                    'customer_location': False}
+            return {'delivery_address': False}
         party_obj = self.pool.get("party.party")
         address_id = party_obj.address_get(cursor, user, values['customer'],
                 type='delivery', context=context)
-        party = party_obj.browse(cursor, user, values['customer'], context=context)
         return {
-                'delivery_address': address_id,
-                'customer_location': party.customer_location.id,
-            }
+                'delivery_address': address_id}
 
     def get_outgoing_moves(self, cursor, user, ids, name, arg, context=None):
         res = {}
