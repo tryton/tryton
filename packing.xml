@@ -650,7 +650,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="packing_internal_view_form"/>
             <field name="act_window" ref="act_packing_internal_assigned_form"/>
         </record>
-        <menuitem parent="menu_packing_internal_form" sequence="20"
+        <menuitem parent="menu_packing_internal_form" sequence="40"
                   action="act_packing_internal_assigned_form"
                   id="menu_packing_internal_assigned_form"/>
 
