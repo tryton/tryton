@@ -48,7 +48,7 @@ class PackingIn(OSV):
             "]",
             states={
                 'readonly': "state in ('received', 'done', 'cancel') "\
-                    "or not warehouse",
+                    "or not bool(warehouse)",
             }, context="{'warehouse': warehouse, 'type': 'incoming'," \
                     "'supplier': supplier}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
@@ -472,7 +472,7 @@ class PackingOut(OSV):
             relation='stock.move', string='Outgoing Moves',
             fnct_inv='set_outgoing_moves',
             states={
-                'readonly':"state != 'draft' or not warehouse",
+                'readonly':"state != 'draft' or not bool(warehouse)",
             }, context="{'warehouse': warehouse, 'type': 'outgoing'," \
                     "'customer': customer}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
