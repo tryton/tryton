@@ -6,6 +6,7 @@ from trytond.netsvc import LocalService
 import datetime
 from trytond.report import CompanyReport
 from trytond.wizard import Wizard, WizardOSV
+from trytond.sql_db import table_handler
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -499,6 +500,12 @@ class PackingOut(OSV):
             'button_draft',
         ]
         self._order[0] = ('id', 'DESC')
+
+    def _auto_init(self, cursor, module_name):
+        super(PackingOut, self)._auto_init(cursor, module_name)
+        th = table_handler(cursor, self._table, self._name, module_name)
+        if 'customer_location' in th.table:
+            th.drop_column('customer_location')
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
