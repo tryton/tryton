@@ -95,7 +95,7 @@ class PackingIn(OSV):
 
     def on_change_supplier(self, cursor, user, ids, values, context=None):
         if not values.get('supplier'):
-            return {}
+            return {'contact_address': False}
         party_obj = self.pool.get("party.party")
         address_id = party_obj.address_get(cursor, user, values['supplier'],
                                           context=context)
@@ -366,7 +366,8 @@ class PackingOut(OSV):
 
     def on_change_customer(self, cursor, user, ids, values, context=None):
         if not values.get('customer'):
-            return {}
+            return {'delivery_address': False,
+                    'customer_location': False}
         party_obj = self.pool.get("party.party")
         address_id = party_obj.address_get(cursor, user, values['customer'],
                 type='delivery', context=context)
