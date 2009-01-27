@@ -742,6 +742,13 @@ class PackingInternal(OSV):
         ]
         self._order[0] = ('id', 'DESC')
 
+    def create(self, cursor, user, values, context=None):
+        values = values.copy()
+        values['code'] = self.pool.get('ir.sequence').get(
+            cursor, user, 'stock.packing.internal', context=context)
+        return super(PackingInternal, self).create(
+            cursor, user, values, context=context)
+
     def set_state_draft(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
