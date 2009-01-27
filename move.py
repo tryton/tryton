@@ -39,6 +39,10 @@ class Move(OSV):
             readonly=True, select=1)
     packing_out = fields.Many2One('stock.packing.out', 'Customer Packing',
             readonly=True, select=1)
+    packing_out_return = fields.Many2One('stock.packing.out.return',
+            'Customer Return Packing', readonly=True, select=1)
+    packing_in_return = fields.Many2One('stock.packing.in.return',
+            'Supplier Return Packing', readonly=True, select=1)
     packing_internal = fields.Many2One('stock.packing.internal',
             'Internal Packing', readonly=True, select=1)
     planned_date = fields.Date("Planned Date", states=STATES, select=2)
@@ -161,6 +165,10 @@ class Move(OSV):
                 supplier = party_obj.browse(cursor, user, context['supplier'],
                         context=context)
                 res = supplier.supplier_location.id
+            elif context.get('customer'):
+                customer = party_obj.browse(cursor, user, context['customer'],
+                        context=context)
+                res = customer.customer_location.id
 
         if context.get('from_location'):
             res = context.get('from_location')

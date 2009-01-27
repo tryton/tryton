@@ -146,14 +146,140 @@ this repository contains the full copyright notices and license terms. -->
             action="act_packing_in_form_received"
             id="menu_packing_in_received"/>
 
-        <record model="ir.sequence.type" id="sequence_type_packing_in">
-                <field name="name">Supplier Packing</field>
-                <field name="code">stock.packing.in</field>
+        <!-- Packing In Return view-->
+        <record model="ir.action.wizard" id="wizard_packing_in_return_assign">
+            <field name="name">Assign Purchase Return Packing</field>
+            <field name="wiz_name">stock.packing.in.return.assign</field>
+            <field name="model">stock.packing.in.return</field>
         </record>
 
-        <record model="ir.sequence" id="sequence_packing_in">
-                <field name="name">Supplier Packing</field>
-                <field name="code">stock.packing.in</field>
+        <record model="ir.ui.view" id="packing_in_return_view_form">
+            <field name="model">stock.packing.in.return</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Supplier Return Packing" col="4" cursor="from_location">
+                        <label name="reference"/>
+                        <field name="reference"/>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="from_location"/>
+                        <field name="from_location"/>
+                        <label name="to_location"/>
+                        <field name="to_location"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <separator name="moves" colspan="4"/>
+                        <field name="moves"  colspan="4"/>
+                        <label name="state"/>
+                        <field name="state"/>
+                        <group col="6" colspan="2" id="buttons">
+                            <button string="Cancel" name="cancel"
+                                states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-cancel"/>
+                            <button string="Draft" name="draft"
+                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-go-previous"/>
+                            <button string="Waiting" name="waiting"
+                                states="{'invisible': '''state not in ('assigned', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'draft' and 'tryton-go-next' or False'''}"/>
+                            <button string="Assign" name="%(wizard_packing_in_return_assign)d"
+                                type="action"
+                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-go-next"/>
+                            <button string="Reset to Draft" name="button_draft"
+                                type="object" states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-clear"/>
+                            <button string="Done" name="done"
+                                states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                icon="tryton-ok"/>
+                        </group>
+                    </form>
+                    ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="packing_in_return_view_tree">
+            <field name="model">stock.packing.in.return</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Supplier Return Packings">
+                        <field name="code" select="1"/>
+                        <field name="reference" select="2"/>
+                        <field name="planned_date" select="2"/>
+                        <field name="effective_date" select="2"/>
+                        <field name="from_location" select="2"/>
+                        <field name="to_location" select="2"/>
+                        <field name="state" select="1"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_packing_in_return_form">
+            <field name="name">Supplier Return Packings</field>
+            <field name="res_model">stock.packing.in.return</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_in_return_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_in_return_view_tree"/>
+            <field name="act_window" ref="act_packing_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_in_return_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_in_return_view_form"/>
+            <field name="act_window" ref="act_packing_in_return_form"/>
+        </record>
+        <menuitem parent="menu_packing_in_form" sequence="40"
+                  action="act_packing_in_return_form"
+                  id="menu_packing_in_return_form"/>
+
+        <record model="ir.action.act_window" id="act_packing_in_return_new_form">
+            <field name="name">New Supplier Return Packing</field>
+            <field name="res_model">stock.packing.in.return</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_in_return_new_form_view1">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_in_return_view_tree"/>
+            <field name="act_window" ref="act_packing_in_return_new_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_in_return_new_form_view2">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_in_return_view_form"/>
+            <field name="act_window" ref="act_packing_in_return_new_form"/>
+        </record>
+        <menuitem parent="menu_packing_in_return_form" sequence="10"
+                  action="act_packing_in_return_new_form"
+                  id="menu_packing_in_return_new_form"/>
+
+        <record model="ir.ui.view" id="packing_in_return_assign_ask_force_view_form">
+            <field name="model">stock.packing.in.return.assign.ask_force</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Unable to Assign" col="2">
+                    <image name="tryton-dialog-information"/>
+                    <group col="1" id="labels">
+                        <separator string="Unable to assign those products:"
+                            id="unable"/>
+                        <field name="moves">
+                            <tree string="Moves"  fill="1">
+                                <field name="product"/>
+                                <field name="quantity"/>
+                                <field name="uom"/>
+                                <field name="unit_digits" tree_invisible="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+                ]]>
+            </field>
         </record>
 
         <!--Packing out view-->
@@ -554,16 +680,128 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <!-- Sequence packing out -->
-        <record model="ir.sequence.type" id="sequence_type_packing_out">
-                <field name="name">Customer Packing</field>
-                <field name="code">stock.packing.out</field>
+        <!--Return Packing Out view-->
+        <record model="ir.ui.view" id="packing_out_return_view_form">
+            <field name="model">stock.packing.out.return</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Customer Return Packing" col="4" cursor="customer">
+                        <label name="reference"/>
+                        <field name="reference"/>
+                        <label name="code"/>
+                        <field name="code"/>
+                        <label name="customer"/>
+                        <field name="customer"/>
+                        <label name="delivery_address"/>
+                        <field name="delivery_address"/>
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
+                        <label name="customer_location"/>
+                        <field name="customer_location"/>
+                        <label name="planned_date"/>
+                        <field name="planned_date"/>
+                        <label name="effective_date"/>
+                        <field name="effective_date"/>
+                        <notebook colspan="6">
+                            <page string="Incoming Moves" id="incoming_moves">
+                                <field name="incoming_moves" colspan="4">
+                                    <tree string="Moves">
+                                        <field name="product" select="1"/>
+                                        <field name="from_location" select="2"/>
+                                        <field name="to_location" select="2"/>
+                                        <field name="quantity" select="1"/>
+                                        <field name="uom" select="1"/>
+                                        <field name="planned_date" select="1"/>
+                                        <field name="state" select="2"/>
+                                        <field name="unit_digits" tree_invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Inventory Moves" id="inventory_moves">
+                                <field name="inventory_moves" colspan="4"/>
+                            </page>
+                        </notebook>
+                        <group col="4" colspan="6" id="state_buttons">
+                            <label name="state"/>
+                            <field name="state"/>
+                            <group col="5" colspan="2" id="buttons">
+                                <button string="Cancel" name="cancel"
+                                    states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    icon="tryton-cancel"/>
+                                <button string="Received" name="received"
+                                    states="{'invisible': '''state  != 'draft' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    icon="tryton-go-next"/>
+                                <button string="Done" name="done"
+                                    states="{'invisible': '''state != 'received' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    icon="tryton-ok"/>
+                                <button string="Reset to Draft" name="button_draft"
+                                    type="object"
+                                    states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    icon="tryton-clear"/>
+                            </group>
+                        </group>
+                    </form>
+                    ]]>
+            </field>
         </record>
+        <record model="ir.ui.view" id="packing_out_return_view_tree">
+            <field name="model">stock.packing.out.return</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Customer Return Packings">
+                        <field name="code" select="1"/>
+                        <field name="reference" select="1"/>
+                        <field name="state" select="1"/>
+                        <field name="planned_date" select="2"/>
+                        <field name="effective_date" select="2"/>
+                        <field name="customer" select="2"/>
+                        <field name="delivery_address" select="2"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_packing_out_return_form">
+            <field name="name">Customer Return Packings</field>
+            <field name="res_model">stock.packing.out.return</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_out_return_form_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_out_return_view_tree"/>
+            <field name="act_window" ref="act_packing_out_return_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_out_return_form_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_out_return_view_form"/>
+            <field name="act_window" ref="act_packing_out_return_form"/>
+        </record>
+        <menuitem parent="menu_packing_out_form" sequence="40"
+                  action="act_packing_out_return_form"
+                  id="menu_packing_out_return_form"/>
 
-        <record model="ir.sequence" id="sequence_packing_out">
-                <field name="name">Customer Packing</field>
-                <field name="code">stock.packing.out</field>
+        <record model="ir.action.act_window" id="act_packing_out_return_form2">
+            <field name="name">New Customer Return Packing</field>
+            <field name="res_model">stock.packing.out.return</field>
+            <field name="view_type">form</field>
         </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_out_return_form2_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="packing_out_return_view_form"/>
+            <field name="act_window" ref="act_packing_out_return_form2"/>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_packing_out_return_form2_view2">
+            <field name="sequence" eval="2"/>
+            <field name="view" ref="packing_out_return_view_tree"/>
+            <field name="act_window" ref="act_packing_out_return_form2"/>
+        </record>
+        <menuitem parent="menu_packing_out_return_form" sequence="10"
+            action="act_packing_out_return_form2" id="menu_packing_out_return_form2"/>
 
         <!-- Workflow packing in -->
         <record model="workflow" id="wkf_packingin">
@@ -894,6 +1132,227 @@ this repository contains the full copyright notices and license terms. -->
             <field name="signal">cancel</field>
         </record>
 
+        <!-- Workflow packing out return -->
+        <record model="workflow" id="wkf_packing_out_return">
+            <field name="name">Customer Return Packing</field>
+            <field name="osv">stock.packing.out.return</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="packing_out_return_act_draft">
+            <field name="workflow" ref="wkf_packing_out_return"/>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
+            <field name="name">Draft</field>
+        </record>
+        <record model="workflow.activity" id="packing_out_return_act_cancel">
+            <field name="workflow" ref="wkf_packing_out_return"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Cancel</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+        </record>
+        <record model="workflow.activity" id="packing_out_return_act_done">
+            <field name="workflow" ref="wkf_packing_out_return"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Done</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+        </record>
+        <record model="workflow.activity" id="packing_out_return_act_received">
+            <field name="name">Received</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_packing_out_return"/>
+            <field name="action">set_state_received()&#10;create_inventory_moves()</field>
+        </record>
+
+        <record model="workflow.transition"
+                id="packing_out_return_trans_draft_received">
+            <field name="act_from" ref="packing_out_return_act_draft"/>
+            <field name="act_to" ref="packing_out_return_act_received"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">received</field>
+        </record>
+        <record model="workflow.transition"
+                id="packing_out_return_trans_received_draft">
+            <field name="act_from" ref="packing_out_return_act_received"/>
+            <field name="act_to" ref="packing_out_return_act_draft"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">draft</field>
+        </record>
+        <record model="workflow.transition" id="packing_out_return_trans_received_done">
+            <field name="act_from" ref="packing_out_return_act_received"/>
+            <field name="act_to" ref="packing_out_return_act_done"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">done</field>
+        </record>
+        <record model="workflow.transition" id="packing_out_return_trans_draft_cancel">
+            <field name="act_from" ref="packing_out_return_act_draft"/>
+            <field name="act_to" ref="packing_out_return_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="packing_out_return_trans_received_cancel">
+            <field name="act_from" ref="packing_out_return_act_received"/>
+            <field name="act_to" ref="packing_out_return_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+
+        <!-- Workflow purchase return packing -->
+        <record model="workflow" id="wkf_packing_in_return">
+            <field name="name">Supplier Return Packing</field>
+            <field name="osv">stock.packing.in.return</field>
+            <field name="on_create">True</field>
+        </record>
+        <record model="workflow.activity" id="packing_in_return_act_draft">
+            <field name="workflow" ref="wkf_packing_in_return"/>
+            <field name="flow_start">True</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_draft()</field>
+            <field name="name">Draft</field>
+        </record>
+        <record model="workflow.activity" id="packing_in_return_act_cancel">
+            <field name="workflow" ref="wkf_packing_in_return"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Cancel</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_cancel()</field>
+        </record>
+        <record model="workflow.activity" id="packing_in_return_act_done">
+            <field name="workflow" ref="wkf_packing_in_return"/>
+            <field name="flow_stop">True</field>
+            <field name="name">Done</field>
+            <field name="kind">function</field>
+            <field name="action">set_state_done()</field>
+        </record>
+        <record model="workflow.activity" id="packing_in_return_act_waiting">
+            <field name="name">Waiting</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_packing_in_return"/>
+            <field name="action">set_state_waiting()</field>
+        </record>
+        <record model="workflow.activity" id="packing_in_return_act_assigned">
+            <field name="name">Assigned</field>
+            <field name="kind">function</field>
+            <field name="workflow" ref="wkf_packing_in_return"/>
+            <field name="action">set_state_assigned()</field>
+        </record>
+
+        <record model="workflow.transition"
+                id="packing_in_return_trans_draft_waiting">
+            <field name="act_from" ref="packing_in_return_act_draft"/>
+            <field name="act_to" ref="packing_in_return_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="packing_in_return_trans_waiting_draft">
+            <field name="act_from" ref="packing_in_return_act_waiting"/>
+            <field name="act_to" ref="packing_in_return_act_draft"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">draft</field>
+        </record>
+        <record model="workflow.transition"
+                id="packing_in_return_trans_waiting_assigned">
+            <field name="act_from" ref="packing_in_return_act_waiting"/>
+            <field name="act_to" ref="packing_in_return_act_assigned"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">assign</field>
+            <field name="condition">assign_try()</field>
+        </record>
+        <record model="workflow.transition"
+                id="packing_in_return_trans_assigned_waiting">
+            <field name="act_from" ref="packing_in_return_act_assigned"/>
+            <field name="act_to" ref="packing_in_return_act_waiting"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">waiting</field>
+        </record>
+        <record model="workflow.transition"
+                id="packing_in_return_trans_waiting_assigned_force">
+            <field name="act_from" ref="packing_in_return_act_waiting"/>
+            <field name="act_to" ref="packing_in_return_act_assigned"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">force_assign</field>
+            <field name="condition">assign_force()</field>
+        </record>
+        <record model="workflow.transition" id="packing_in_return_trans_assigned_done">
+            <field name="act_from" ref="packing_in_return_act_assigned"/>
+            <field name="act_to" ref="packing_in_return_act_done"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">done</field>
+        </record>
+        <record model="workflow.transition" id="packing_in_return_trans_draft_cancel">
+            <field name="act_from" ref="packing_in_return_act_draft"/>
+            <field name="act_to" ref="packing_in_return_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="packing_in_return_trans_waiting_cancel">
+            <field name="act_from" ref="packing_in_return_act_waiting"/>
+            <field name="act_to" ref="packing_in_return_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+        <record model="workflow.transition"
+                id="packing_in_return_trans_assigned_cancel">
+            <field name="act_from" ref="packing_in_return_act_assigned"/>
+            <field name="act_to" ref="packing_in_return_act_cancel"/>
+            <field name="group" ref="group_stock"/>
+            <field name="signal">cancel</field>
+        </record>
+
+        <!-- Sequence packing out -->
+        <record model="ir.sequence.type" id="sequence_type_packing_out">
+                <field name="name">Customer Packing</field>
+                <field name="code">stock.packing.out</field>
+        </record>
+        <record model="ir.sequence" id="sequence_packing_out">
+                <field name="name">Customer Packing</field>
+                <field name="code">stock.packing.out</field>
+        </record>
+
+        <!-- Sequence packing in -->
+        <record model="ir.sequence.type" id="sequence_type_packing_in">
+                <field name="name">Supplier Packing</field>
+                <field name="code">stock.packing.in</field>
+        </record>
+        <record model="ir.sequence" id="sequence_packing_in">
+                <field name="name">Supplier Packing</field>
+                <field name="code">stock.packing.in</field>
+        </record>
+
+        <!-- Sequence packing internal -->
+        <record model="ir.sequence.type" id="sequence_type_packing_internal">
+                <field name="name">Internal Packing</field>
+                <field name="code">stock.packing.internal</field>
+        </record>
+        <record model="ir.sequence" id="sequence_packing_internal">
+                <field name="name">InternalPacking</field>
+                <field name="code">stock.packing.internal</field>
+        </record>
+
+        <!-- Sequence packing out return-->
+        <record model="ir.sequence.type" id="sequence_type_packing_out_return">
+                <field name="name">Customer Return Packing</field>
+                <field name="code">stock.packing.out.return</field>
+        </record>
+        <record model="ir.sequence" id="sequence_packing_out_return">
+                <field name="name">Customer Retrun Packing</field>
+                <field name="code">stock.packing.out.return</field>
+        </record>
+
+        <!-- Sequence packing in return -->
+        <record model="ir.sequence.type" id="sequence_type_packing_in_return">
+                <field name="name">Supplier Return Packing</field>
+                <field name="code">stock.packing.in.return</field>
+        </record>
+        <record model="ir.sequence" id="sequence_packing_in_return">
+                <field name="name">Supplier Retrun Packing</field>
+                <field name="code">stock.packing.in.return</field>
+        </record>
 
         <!-- Add delivery field on address -->
         <record model="ir.ui.view" id="address_view_tree">
@@ -999,5 +1458,52 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.access" id="access_packing_out_return">
+            <field name="model" search="[('model', '=', 'stock.packing.out.return')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_packing_out_return_group_stock">
+            <field name="model" search="[('model', '=', 'stock.packing.out.return')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_packing_out_return_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.packing.out.return')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_packing_in_return">
+            <field name="model" search="[('model', '=', 'stock.packing.in.return')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_packing_in_return_group_stock">
+            <field name="model" search="[('model', '=', 'stock.packing.in.return')]"/>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_packing_in_return_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.packing.in.return')]"/>
+            <field name="group" ref="group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>
