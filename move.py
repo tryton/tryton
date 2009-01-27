@@ -642,14 +642,14 @@ class Move(OSV):
                     move_id = self.copy(cursor, user, move.id, default=values,
                             context=context)
 
-                qty_defaut_uom = uom_obj.compute_qty(
+                qty_default_uom = uom_obj.compute_qty(
                     cursor, user, move.uom, qty, move.product.default_uom,
                     round=False, context=context)
 
                 pbl[(from_location.id, move.product.id)] = \
-                    pbl.get((from_location.id, move.product.id), 0.0) - qty_defaut_uom
+                    pbl.get((from_location.id, move.product.id), 0.0) - qty_default_uom
                 pbl[(to_location.id, move.product.id)]= \
-                    pbl.get((to_location.id, move.product.id), 0.0) + qty_defaut_uom
+                    pbl.get((to_location.id, move.product.id), 0.0) + qty_default_uom
         return success
 
 Move()
