@@ -1301,6 +1301,13 @@ class PackingInternal(OSV):
 PackingInternal()
 
 
+class Address(OSV):
+    _name = 'party.address'
+    delivery = fields.Boolean('Delivery')
+
+Address()
+
+
 class AssignPackingInternalAskForce(WizardOSV):
     'Assign Packing Internal Ask Force'
     _name = 'stock.packing.internal.assign.ask_force'
@@ -1439,11 +1446,73 @@ class AssignPackingInReturn(Wizard):
 AssignPackingInReturn()
 
 
-class Address(OSV):
-    _name = 'party.address'
-    delivery = fields.Boolean('Delivery')
+class CreatePackingOutReturn(Wizard):
+    'Create Customer Return Packing'
+    _name = 'stock.packing.out.return.create'
+    states = {
+        'init': {
+            'result': {
+                'type': 'action',
+                'action': '_create',
+                'state': 'end',
+                },
+            },
+        }
+    def __init__(self):
+        super(CreatePackingOutReturn, self).__init__()
+        self._error_messages.update({
+            'packing_done_title': 'You can not create return packing',
+            'packing_done_msg': 'The current packing is not yet sent.',
+            })
 
-Address()
+
+    def _create(self, cursor, user, data, context=None):
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+        packing_out_obj = self.pool.get('stock.packing.out')
+        packing_out_return_obj = self.pool.get('stock.packing.out.return')
+
+        packing_out = packing_out_obj.browse(
+            cursor, user, data['id'], context=context)
+
+        if packing_out.state != 'done':
+            self.raise_user_error(
+                cursor, 'packing_done_title',
+                error_description='packing_done_msg', context=context)
+
+        incoming_moves = []
+        for move in packing_out.outgoing_moves:
+            incoming_moves.append(('create', {
+                        'product': move.product.id,
+                        'quantity': move.quantity,
+                        'uom': move.uom.id,
+                        'from_location': move.to_location.id,
+                        'to_location': packing_out.warehouse.input_location.id,
+                        'company': move.company.id,
+                        }))
+        packing_out_return_id = packing_out_return_obj.create(
+            cursor, user,
+            {'customer': packing_out.customer.id,
+             'delivery_address': packing_out.delivery_address.id,
+             'warehouse': packing_out.warehouse.id,
+             'incoming_moves': incoming_moves,
+             },
+            context=context)
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_packing_out_return_form'),
+            ('module', '=', 'stock'),
+            ('inherit', '=', False),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res['res_id'] = [packing_out_return_id]
+        res['views'].reverse()
+
+        return res
+
+CreatePackingOutReturn()
 
 
 class PackingOutReport(CompanyReport):

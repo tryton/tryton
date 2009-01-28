@@ -366,6 +366,18 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.action.wizard" id="create_packing_out_return">
+            <field name="name">Create Return Packing</field>
+            <field name="wiz_name">stock.packing.out.return.create</field>
+            <field name="model">stock.packing.out</field>
+        </record>
+        <record model="ir.action.keyword" id="create_packing_out_return_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">stock.packing.out,0</field>
+            <field name="action" ref="create_packing_out_return"/>
+        </record>
+
         <record model="ir.action.act_window" id="act_packing_out_form">
             <field name="name">Customer Packings</field>
             <field name="res_model">stock.packing.out</field>
@@ -758,6 +770,7 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
         <record model="ir.action.act_window" id="act_packing_out_return_form">
             <field name="name">Customer Return Packings</field>
             <field name="res_model">stock.packing.out.return</field>
