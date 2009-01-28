@@ -692,7 +692,7 @@ class PackingOut(OSV):
                 move.uom, context=context)
             move_obj.create(cursor, user, {
                     'from_location': move.to_location.id,
-                    'to_location': packing.customer_location.id,
+                    'to_location': packing.party.customer_location.id,
                     'product': move.product.id,
                     'uom': move.uom.id,
                     'quantity': out_quantity,
