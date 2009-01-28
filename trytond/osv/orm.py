@@ -1413,19 +1413,6 @@ class ORM(object):
             return True
         if isinstance(ids, (int, long)):
             ids = [ids]
-        else:
-            # _update_tree works if only one record has changed
-            update_tree = False
-            for k in self._columns:
-                field = self._columns[k]
-                if isinstance(field, fields.Many2One) \
-                        and field._obj == self._name \
-                        and field.left and field.right:
-                    update_tree = True
-            if update_tree:
-                for object_id in ids:
-                    self.delete(cursor, user, object_id, context=context)
-                return True
 
         if self.table_query(context):
             return True
