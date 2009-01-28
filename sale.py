@@ -824,7 +824,6 @@ class Sale(OSV):
             'delivery_address': sale.packing_address.id,
             'reference': sale.reference,
             'warehouse': sale.warehouse.id,
-            'customer_location': sale.party.customer_location.id,
         }, context=ctx)
 
         for line_id in moves:
