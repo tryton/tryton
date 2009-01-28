@@ -127,17 +127,14 @@ class User(OSV):
 
         res = super(User, self).get_preferences_fields_view(cursor, user_id,
                 context=context)
-        fields = self.fields_get(cursor, user_id, fields_names=['main_company'],
-                context=context)
-        res['fields'].update(fields)
+        res = copy.deepcopy(res)
 
-        company = res['fields']['company']
-        company['type'] = 'selection'
-        del company['relation']
-        company['selection'] = company_obj.name_search(cursor, user_id, args=[
-            ('parent', 'child_of', [user.main_company.id]),
-            ], context=context)
-
+        if 'company' in res['fields']:
+            del res['fields']['company']['relation']
+            res['fields']['company']['selection'] = company_obj.name_search(
+                    cursor, user_id, args=[
+                        ('parent', 'child_of', [user.main_company.id]),
+                    ], context=context)
         return res
 
 User()
