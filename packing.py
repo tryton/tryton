@@ -6,6 +6,7 @@ from trytond.netsvc import LocalService
 import datetime
 from trytond.report import CompanyReport
 from trytond.wizard import Wizard, WizardOSV
+from trytond.sql_db import table_handler
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -47,7 +48,8 @@ class PackingIn(OSV):
                 "('to_location_warehouse', '=', warehouse),"\
             "]",
             states={
-                'readonly': "state in ('received', 'done', 'cancel')",
+                'readonly': "state in ('received', 'done', 'cancel') "\
+                    "or not bool(warehouse)",
             }, context="{'warehouse': warehouse, 'type': 'incoming'," \
                     "'supplier': supplier}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
@@ -452,7 +454,7 @@ class PackingOut(OSV):
             })
     customer = fields.Many2One('party.party', 'Customer', required=True,
             states={
-                'readonly': "state != 'draft'",
+                'readonly': "state != 'draft' or bool(outgoing_moves)",
             }, on_change=['customer'])
     delivery_address = fields.Many2One('party.address',
             'Delivery Address', required=True,
@@ -465,17 +467,13 @@ class PackingOut(OSV):
             })
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
             states={
-                'readonly': "state != 'draft'",
+                'readonly': "state != 'draft' or bool(outgoing_moves)",
             }, domain=[('type', '=', 'warehouse')])
-    customer_location = fields.Many2One('stock.location', "Customer Location",
-            required=True, states={
-                'readonly': "state != 'draft'",
-            }, domain="[('type', '=', 'customer')]")
     outgoing_moves = fields.Function('get_outgoing_moves', type='one2many',
             relation='stock.move', string='Outgoing Moves',
             fnct_inv='set_outgoing_moves',
             states={
-                'readonly':"state != 'draft'",
+                'readonly':"state != 'draft' or not bool(warehouse)",
             }, context="{'warehouse': warehouse, 'type': 'outgoing'," \
                     "'customer': customer}")
     inventory_moves = fields.Function('get_inventory_moves', type='one2many',
@@ -503,6 +501,12 @@ class PackingOut(OSV):
         ]
         self._order[0] = ('id', 'DESC')
 
+    def _auto_init(self, cursor, module_name):
+        super(PackingOut, self)._auto_init(cursor, module_name)
+        th = table_handler(cursor, self._table, self._name, module_name)
+        if 'customer_location' in th.table:
+            th.drop_column('customer_location')
+
     def default_state(self, cursor, user, context=None):
         return 'draft'
 
@@ -517,16 +521,12 @@ class PackingOut(OSV):
 
     def on_change_customer(self, cursor, user, ids, values, context=None):
         if not values.get('customer'):
-            return {'delivery_address': False,
-                    'customer_location': False}
+            return {'delivery_address': False}
         party_obj = self.pool.get("party.party")
         address_id = party_obj.address_get(cursor, user, values['customer'],
                 type='delivery', context=context)
-        party = party_obj.browse(cursor, user, values['customer'], context=context)
         return {
-                'delivery_address': address_id,
-                'customer_location': party.customer_location.id,
-            }
+                'delivery_address': address_id}
 
     def get_outgoing_moves(self, cursor, user, ids, name, arg, context=None):
         res = {}
