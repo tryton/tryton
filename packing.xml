@@ -693,14 +693,12 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="customer"/>
                         <label name="delivery_address"/>
                         <field name="delivery_address"/>
-                        <label name="warehouse"/>
-                        <field name="warehouse"/>
-                        <label name="customer_location"/>
-                        <field name="customer_location"/>
                         <label name="planned_date"/>
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
                         <notebook colspan="6">
                             <page string="Incoming Moves" id="incoming_moves">
                                 <field name="incoming_moves" colspan="4">

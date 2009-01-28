@@ -856,10 +856,6 @@ class PackingOutReturn(OSV):
             states={
                 'readonly': "state != 'draft' or bool(incoming_moves)",
             }, domain=[('type', '=', 'warehouse')])
-    customer_location = fields.Many2One('stock.location', "Customer Location",
-            required=True, states={
-                'readonly': "state != 'draft'",
-            }, domain="[('type', '=', 'customer')]")
     incoming_moves = fields.Function('get_incoming_moves', type='one2many',
             relation='stock.move', string='Incoming Moves',
             fnct_inv='set_incoming_moves',
