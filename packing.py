@@ -1462,7 +1462,7 @@ class CreatePackingOutReturn(Wizard):
         super(CreatePackingOutReturn, self).__init__()
         self._error_messages.update({
             'packing_done_title': 'You can not create return packing',
-            'packing_done_msg': 'The current packing is not yet sent.',
+            'packing_done_msg': 'The packing with code %s is not yet sent.',
             })
 
 
@@ -1472,32 +1472,38 @@ class CreatePackingOutReturn(Wizard):
         packing_out_obj = self.pool.get('stock.packing.out')
         packing_out_return_obj = self.pool.get('stock.packing.out.return')
 
-        packing_out = packing_out_obj.browse(
-            cursor, user, data['id'], context=context)
+        packing_outs = packing_out_obj.browse(
+            cursor, user, data['ids'], context=context)
 
-        if packing_out.state != 'done':
-            self.raise_user_error(
-                cursor, 'packing_done_title',
-                error_description='packing_done_msg', context=context)
+        packing_out_return_ids = []
+        for packing_out in packing_outs:
+            if packing_out.state != 'done':
+                self.raise_user_error(
+                    cursor, 'packing_done_title',
+                    error_description='packing_done_msg',
+                    error_description_args=packing_out.code,
+                    context=context)
 
-        incoming_moves = []
-        for move in packing_out.outgoing_moves:
-            incoming_moves.append(('create', {
-                        'product': move.product.id,
-                        'quantity': move.quantity,
-                        'uom': move.uom.id,
-                        'from_location': move.to_location.id,
-                        'to_location': packing_out.warehouse.input_location.id,
-                        'company': move.company.id,
-                        }))
-        packing_out_return_id = packing_out_return_obj.create(
-            cursor, user,
-            {'customer': packing_out.customer.id,
-             'delivery_address': packing_out.delivery_address.id,
-             'warehouse': packing_out.warehouse.id,
-             'incoming_moves': incoming_moves,
-             },
-            context=context)
+            incoming_moves = []
+            for move in packing_out.outgoing_moves:
+                incoming_moves.append(('create', {
+                            'product': move.product.id,
+                            'quantity': move.quantity,
+                            'uom': move.uom.id,
+                            'from_location': move.to_location.id,
+                            'to_location': packing_out.warehouse.input_location.id,
+                            'company': move.company.id,
+                            }))
+            packing_out_return_ids.append(
+                packing_out_return_obj.create(
+                    cursor, user,
+                    {'customer': packing_out.customer.id,
+                     'delivery_address': packing_out.delivery_address.id,
+                     'warehouse': packing_out.warehouse.id,
+                     'incoming_moves': incoming_moves,
+                     },
+                    context=context)
+                )
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_packing_out_return_form'),
@@ -1507,8 +1513,9 @@ class CreatePackingOutReturn(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['res_id'] = [packing_out_return_id]
-        res['views'].reverse()
+        res['res_id'] = packing_out_return_ids
+        if len(packing_out_return_ids) == 1:
+            res['views'].reverse()
 
         return res
 
