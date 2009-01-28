@@ -9,8 +9,8 @@ if os.path.isdir(DIR):
     sys.path.insert(0, os.path.dirname(DIR))
 
 import unittest
-import trytond.tests
-from trytond.tests import RPCProxy, CONTEXT, SOCK
+import trytond.tests.test_tryton
+from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK
 
 
 class PartyTestCase(unittest.TestCase):
@@ -19,7 +19,7 @@ class PartyTestCase(unittest.TestCase):
     '''
 
     def setUp(self):
-        trytond.tests.install_module('party')
+        trytond.tests.test_tryton.install_module('party')
         self.category = RPCProxy('party.category')
         self.party = RPCProxy('party.party')
         self.address = RPCProxy('party.address')
@@ -99,7 +99,7 @@ def suite():
     return unittest.TestLoader().loadTestsFromTestCase(PartyTestCase)
 
 if __name__ == '__main__':
-    suiteTrytond = trytond.tests.suite()
+    suiteTrytond = trytond.tests.test_tryton.suite()
     suiteParty = suite()
     alltests = unittest.TestSuite([suiteTrytond, suiteParty])
     unittest.TextTestRunner(verbosity=2).run(alltests)
