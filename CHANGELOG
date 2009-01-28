@@ -1,3 +1,4 @@
+* Added return packings and a wizard to create customer return packing.
 * Make assign_try to assign as much possible
 * Move assign_try and pick_product from product.product to stock.move
 * Added stock_skip_warehouse keyword for products_by_location
