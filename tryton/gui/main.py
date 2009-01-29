@@ -1430,6 +1430,8 @@ class Main(object):
             Main.get_main().refresh_ssl()
 
     def sig_db_dump(self, widget):
+        if not self.sig_logout(widget):
+            return False
         dialog = DBBackupDrop(self.window, function='backup')
         url, dbname, passwd = dialog.run(self.window)
 
