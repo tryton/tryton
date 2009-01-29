@@ -1376,7 +1376,7 @@ AssignPackingInternal()
 
 
 class AssignPackingInReturnAskForce(WizardOSV):
-    'Assign Supplier return Packing Ask Force'
+    'Assign Supplier Return Packing Ask Force'
     _name = 'stock.packing.in.return.assign.ask_force'
     _description = __doc__
 

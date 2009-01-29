@@ -1349,7 +1349,7 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="code">stock.packing.out.return</field>
         </record>
         <record model="ir.sequence" id="sequence_packing_out_return">
-                <field name="name">Customer Retrun Packing</field>
+                <field name="name">Customer Return Packing</field>
                 <field name="code">stock.packing.out.return</field>
         </record>
 
@@ -1359,7 +1359,7 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="code">stock.packing.in.return</field>
         </record>
         <record model="ir.sequence" id="sequence_packing_in_return">
-                <field name="name">Supplier Retrun Packing</field>
+                <field name="name">Supplier Return Packing</field>
                 <field name="code">stock.packing.in.return</field>
         </record>
 
