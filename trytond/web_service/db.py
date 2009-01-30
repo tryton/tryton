@@ -148,7 +148,8 @@ class DB(Service):
         database = sql_db.db_connect('template1')
         cursor = database.cursor()
         cursor.conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-        cursor.execute('CREATE DATABASE "' + db_name + '" ENCODING \'unicode\'')
+        cursor.execute('CREATE DATABASE "' + db_name + '" ' \
+                'TEMPLATE template0 ENCODING \'unicode\'')
         cursor.commit()
         cursor.close()
 
