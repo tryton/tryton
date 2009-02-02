@@ -255,7 +255,7 @@ class Account(OSV):
             ids = [ids]
         return [(r['id'], r['code'] and r['code'] + ' - ' + unicode(r[self._rec_name]) \
                 or unicode(r[self._rec_name])) for r in self.read(cursor, user, ids,
-                    [self._rec_name, 'code'], context=context, load='_classic_write')]
+                    [self._rec_name, 'code'], context=context)]
 
     def convert_view(self, cursor, user, tree, context=None):
         res = tree.xpath('//field[@name=\'analytic_accounts\']')
