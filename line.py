@@ -59,7 +59,7 @@ class Line(OSV):
     def view_header_get(self, cursor, user, value, view_type='form',
             context=None):
         if not context.get('employee'):
-            return False
+            return value
         employee_obj = self.pool.get('company.employee')
         employee = employee_obj.browse(cursor, user, context['employee'],
                                        context=context)
