@@ -34,11 +34,20 @@ class InvoiceLine(OSV):
             user, analytic_accounts_field, fields_names, context=context))
         return res
 
-    def _read_flat(self, cursor, user, ids, fields_names, context=None,
-            load='_classic_read'):
+    def read(self, cursor, user, ids, fields_names=None, context=None):
         selection_obj = self.pool.get('analytic_account.account.selection')
-        res = super(InvoiceLine, self)._read_flat(cursor, user, ids,
-                fields_names, context=context, load=load)
+
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
+
+        res = super(InvoiceLine, self).read(cursor, user, ids,
+                fields_names=fields_names, context=context)
+
+        if not fields_names:
+            fields_names = list(set(self._columns.keys() \
+                    + self._inherit_fields.keys()))
 
         root_ids = []
         for field in fields_names:
@@ -56,6 +65,8 @@ class InvoiceLine(OSV):
                     if account.root.id in root_ids:
                         id2record[line.id]['analytic_account_' \
                                 + str(account.root.id)] = account.id
+        if int_id:
+            return res[0]
         return res
 
     def create(self, cursor, user, vals, context=None):
