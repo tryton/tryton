@@ -1211,8 +1211,8 @@ class InvoiceLine(OSV):
                     'than the invoice account!',
             })
 
-    def _auto_init(self, cursor, module_name):
-        super(InvoiceLine, self)._auto_init(cursor, module_name)
+    def init(self, cursor, module_name):
+        super(InvoiceLine, self).init(cursor, module_name)
         table = table_handler(cursor, self._table, self._name, module_name)
 
         # Migration from 1.0 invoice is no more required

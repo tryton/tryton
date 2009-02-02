@@ -159,8 +159,8 @@ class PaymentTermLine(OSV):
         super(PaymentTermLine, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
 
-    def _auto_init(self, cursor, module_name):
-        super(PaymentTermLine, self)._auto_init(cursor, module_name)
+    def init(self, cursor, module_name):
+        super(PaymentTermLine, self).init(cursor, module_name)
         table = table_handler(cursor, self._table, self._name, module_name)
 
         # Migration from 1.0 percent change into percentage
