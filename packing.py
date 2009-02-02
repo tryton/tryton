@@ -501,9 +501,10 @@ class PackingOut(OSV):
         ]
         self._order[0] = ('id', 'DESC')
 
-    def _auto_init(self, cursor, module_name):
-        super(PackingOut, self)._auto_init(cursor, module_name)
+    def init(self, cursor, module_name):
+        super(PackingOut, self).init(cursor, module_name)
         th = table_handler(cursor, self._table, self._name, module_name)
+
         if 'customer_location' in th.table:
             th.drop_column('customer_location')
 
