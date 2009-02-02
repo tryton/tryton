@@ -468,7 +468,7 @@ class Product(OSV):
     def view_header_get(self, cursor, user, value, view_type='form',
             context=None):
         if not context.get('locations'):
-            return False
+            return value
         location_obj = self.pool.get('stock.location')
         locations = location_obj.browse(cursor, user, context.get('locations'),
                                         context=context)

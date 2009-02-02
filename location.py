@@ -152,7 +152,7 @@ class Location(OSV):
             uom_name = uom_obj.name_get(cursor, user, product.default_uom.id,
                     context=context)[0][1]
             return value + ': ' + product_name + ' (' + uom_name + ')'
-        return False
+        return value
 
     def _set_warehouse_parent(self, cursor, user, locations, context=None):
         '''
