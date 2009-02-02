@@ -3,7 +3,6 @@
 "Account"
 
 from trytond.osv import fields, OSV
-from trytond.osv.orm import exclude
 from trytond.wizard import Wizard, WizardOSV
 from trytond.report import Report
 from decimal import Decimal
@@ -336,7 +335,7 @@ class AccountTemplate(OSV):
             ids = [ids]
         return [(r['id'], r['code'] and r['code'] + ' - ' + unicode(r[self._rec_name]) \
                 or unicode(r[self._rec_name])) for r in self.read(cursor, user, ids,
-                    [self._rec_name, 'code'], context=context, load='_classic_write')]
+                    [self._rec_name, 'code'], context=context)]
 
 
     def _get_account_value(self, cursor, user, template, context=None):
@@ -832,7 +831,7 @@ class Account(OSV):
             ids = [ids]
         return [(r['id'], r['code'] and r['code'] + ' - ' + unicode(r[self._rec_name]) \
                 or unicode(r[self._rec_name])) for r in self.read(cursor, user, ids,
-                    [self._rec_name, 'code'], context=context, load='_classic_write')]
+                    [self._rec_name, 'code'], context=context)]
 
     def copy(self, cursor, user, ids, default=None, context=None):
         res = super(Account, self).copy(cursor, user, ids, default=default,
@@ -1116,14 +1115,16 @@ class GeneralLegder(Report):
                 ('fiscalyear', '=', datas['form']['fiscalyear']),
                 ('end_date', '<=', end_period.start_date),
                 ], context=context)
-            end_period_ids = exclude(end_period_ids, start_period_ids)
+            end_period_ids = list(set(end_period_ids).difference(
+                set(start_period_ids)))
             if datas['form']['end_period'] not in end_period_ids:
                 end_period_ids.append(datas['form']['end_period'])
         else:
             end_period_ids = period_obj.search(cursor, user, [
                 ('fiscalyear', '=', datas['form']['fiscalyear']),
                 ], context=context)
-            end_period_ids = exclude(end_period_ids, start_period_ids)
+            end_period_ids = list(set(end_period_ids).difference(
+                set(start_period_ids)))
 
         end_context = context.copy()
         end_context['fiscalyear'] = datas['form']['fiscalyear']
@@ -1318,14 +1319,16 @@ class TrialBalance(Report):
                 ('fiscalyear', '=', datas['form']['fiscalyear']),
                 ('end_date', '<=', end_period.start_date),
                 ], context=context)
-            end_period_ids = exclude(end_period_ids, start_period_ids)
+            end_period_ids = list(set(end_period_ids).difference(
+                set(start_period_ids)))
             if datas['form']['end_period'] not in end_period_ids:
                 end_period_ids.append(datas['form']['end_period'])
         else:
             end_period_ids = period_obj.search(cursor, user, [
                 ('fiscalyear', '=', datas['form']['fiscalyear']),
                 ], context=context)
-            end_period_ids = exclude(end_period_ids, start_period_ids)
+            end_period_ids = list(set(end_period_ids).difference(
+                set(start_period_ids)))
 
         ctx = context.copy()
         ctx['fiscalyear'] = datas['form']['fiscalyear']
@@ -1553,14 +1556,16 @@ class OpenIncomeStatement(Wizard):
                 ('fiscalyear', '=', datas['form']['fiscalyear']),
                 ('end_date', '<=', end_period.start_date),
                 ], context=context)
-            end_period_ids = exclude(end_period_ids, start_period_ids)
+            end_period_ids = list(set(end_period_ids).difference(
+                ste(start_period_ids)))
             if datas['form']['end_period'] not in end_period_ids:
                 end_period_ids.append(datas['form']['end_period'])
         else:
             end_period_ids = period_obj.search(cursor, user, [
                 ('fiscalyear', '=', datas['form']['fiscalyear']),
                 ], context=context)
-            end_period_ids = exclude(end_period_ids, start_period_ids)
+            end_period_ids = list(set(end_period_ids).difference(
+                set(start_period_ids)))
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_account_income_statement_tree'),

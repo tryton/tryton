@@ -70,8 +70,9 @@ class Move(OSV):
                     'with date outside the period!',
             })
 
-    def _auto_init(self, cursor, module_name):
-        super(Move, self)._auto_init(cursor, module_name)
+    def init(self, cursor, module_name):
+        super(Move, self).init(cursor, module_name)
+
         cursor.execute('SELECT indexname FROM pg_indexes ' \
                 'WHERE indexname = \'account_move_journal_period_index\'')
         if not cursor.rowcount:
@@ -1182,14 +1183,14 @@ class Line(OSV):
         journal_obj = self.pool.get('account.journal')
         period_obj = self.pool.get('account.period')
         if not context.get('journal') or not context.get('period'):
-            return False
+            return value
         journal = journal_obj.browse(cursor, user, context['journal'],
                 context=context)
         period = period_obj.browse(cursor, user, context['period'],
                 context=context)
         if journal and period:
             return journal.name + ': ' + period.name
-        return False
+        return value
 
     def fields_view_get(self, cursor, user, view_id=None, view_type='form',
             context=None, toolbar=False, hexmd5=None):
@@ -1210,7 +1211,7 @@ class Line(OSV):
 
             xml = '<?xml version="1.0"?>\n' \
                     '<tree string="%s" editable="top" on_write="on_write" ' \
-                    'colors="red:state==\'draft\'">\n'
+                    'colors="red:state==\'draft\'">\n' % title
             fields = []
             for column in journal.view.columns:
                 fields.append(column.field.name)
