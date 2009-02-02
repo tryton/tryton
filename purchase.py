@@ -829,8 +829,8 @@ class PurchaseLine(OSV):
                     'an "account_expense" default property!',
             })
 
-    def _auto_init(self, cursor, module_name):
-        super(PurchaseLine, self)._auto_init(cursor, module_name)
+    def init(self, cursor, module_name):
+        super(PurchaseLine, self).init(cursor, module_name)
         table = table_handler(cursor, self._table, self._name, module_name)
 
         # Migration from 1.0 comment change into note
