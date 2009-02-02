@@ -932,8 +932,8 @@ class SaleLine(OSV):
             'customer_location_required': 'The customer location is required!',
             })
 
-    def _auto_init(self, cursor, module_name):
-        super(SaleLine, self)._auto_init(cursor, module_name)
+    def init(self, cursor, module_name):
+        super(SaleLine, self).init(cursor, module_name)
         table = table_handler(cursor, self._table, self._name, module_name)
 
         # Migration from 1.0 comment change into note
