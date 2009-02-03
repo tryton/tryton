@@ -7,7 +7,7 @@ from decimal import Decimal
 import datetime
 from trytond.netsvc import LocalService
 from trytond.report import CompanyReport
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, WizardOSV
 from trytond.sql_db import table_handler
 
 _STATES = {
@@ -815,6 +815,9 @@ class PurchaseLine(OSV):
             readonly=True, select=1)
     moves_ignored = fields.Many2Many('stock.move', 'purchase_line_moves_ignored_rel',
             'purchase_line', 'move', 'Moves Ignored', readonly=True)
+    moves_duplicated = fields.Many2Many('stock.move',
+            'purchase_line_moves_duplicated_rel', 'purchase_line', 'move',
+            'Moves Duplicated', readonly=True)
     move_done = fields.Function('get_move_done', type='boolean',
             string='Moves Done')
     move_exception = fields.Function('get_move_exception', type='boolean',
@@ -860,11 +863,12 @@ class PurchaseLine(OSV):
             if line.product.type == 'service':
                 res[line.id] = True
                 continue
-            ignored_ids = [x.id for x in line.moves_ignored]
+            skip_ids = set(x.id for x in line.moves_ignored)
+            skip_ids.update(x.id for x in line.moves_duplicated)
             quantity = line.quantity
             for move in line.moves:
                 if move.state != 'done' \
-                        and move.id not in ignored_ids:
+                        and move.id not in skip_ids:
                     val = False
                     break
                 quantity -= uom_obj.compute_qty(cursor, user, move.uom,
@@ -879,10 +883,11 @@ class PurchaseLine(OSV):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             val = False
-            ignored_ids = [x.id for x in line.moves_ignored]
+            skip_ids = set(x.id for x in line.moves_ignored)
+            skip_ids.update(x.id for x in line.moves_duplicated)
             for move in line.moves:
                 if move.state == 'cancel' \
-                        and move.id not in ignored_ids:
+                        and move.id not in skip_ids:
                     val = True
                     break
             res[line.id] = val
@@ -1105,10 +1110,12 @@ class PurchaseLine(OSV):
             return
         if line.product.type == 'service':
             return
+        skip_ids = set(x.id for x in line.moves_duplicated)
         quantity = line.quantity
         for move in line.moves:
-            quantity -= uom_obj.compute_qty(cursor, user, move.uom,
-                    move.quantity, line.unit, context=context)
+            if move.id not in skip_ids:
+                quantity -= uom_obj.compute_qty(cursor, user, move.uom,
+                        move.quantity, line.unit, context=context)
         if quantity <= 0.0:
             return
         if not line.purchase.party.supplier_location:
@@ -1393,6 +1400,11 @@ class PackingIn(OSV):
                 self.incoming_moves.add_remove + ", " \
                 "('supplier', '=', supplier)]"
 
+        self._error_messages.update({
+                'reset_move': 'You cannot reset to draft a move generated '\
+                    'by a purchase.',
+            })
+
     def write(self, cursor, user, ids, vals, context=None):
         workflow_service = LocalService('workflow')
         purchase_line_obj = self.pool.get('purchase.line')
@@ -1421,6 +1433,15 @@ class PackingIn(OSV):
                 workflow_service.trg_validate(user, 'purchase.purchase',
                         purchase_id, 'packing_update', cursor, context=context)
         return res
+
+    def button_draft(self, cursor, user, ids, context=None):
+        for packing in self.browse(cursor, user, ids, context=context):
+            for move in packing.incoming_moves:
+                if move.state == 'cancel' and move.purchase_line:
+                    self.raise_user_error(cursor, 'reset_move')
+
+        return super(PackingIn, self).button_draft(
+            cursor, user, ids, context=context)
 
 PackingIn()
 
@@ -1466,6 +1487,12 @@ class Move(OSV):
             relation='party.party', string='Supplier',
             fnct_search='search_supplier', select=1)
 
+    exception_state = fields.Function('get_exception_state', type='selection',
+            selection=[('', ''),
+                       ('ignored', 'Ignored'),
+                       ('duplicated', 'Duplicated')],
+            string='Exception State')
+
     def get_purchase(self, cursor, user, ids, name, arg, context=None):
         purchase_obj = self.pool.get('purchase.purchase')
 
@@ -1485,6 +1512,17 @@ class Move(OSV):
                 res[i] = (res[i], purchase_names[res[i]])
             else:
                 res[i] = False
+        return res
+
+    def get_exception_state(self, cursor, user, ids, name, arg, context=None):
+        res = {}.fromkeys(ids, '')
+        for move in self.browse(cursor, user, ids, context=context):
+            if not move.purchase_line:
+                continue
+            if move.id in (x.id for x in move.purchase_line.moves_duplicated):
+                res[move.id] = 'duplicated'
+            if move.id in (x.id for x in move.purchase_line.moves_ignored):
+                res[move.id] = 'ignored'
         return res
 
     def search_purchase(self, cursor, user, name, args, context=None):
@@ -1606,6 +1644,33 @@ class Move(OSV):
 Move()
 
 
+class Invoice(OSV):
+    _name = 'account.invoice'
+
+    def __init__(self):
+        super(Invoice, self).__init__()
+        self._error_messages.update({
+            'delete_purchase_invoice': 'You can not delete invoices ' \
+                    'that comes from a purchase!',
+            })
+
+    def delete(self, cursor, user, ids, context=None):
+        if not ids:
+            return True
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        cursor.execute('SELECT id FROM purchase_invoices_rel ' \
+                'WHERE invoice IN (' + ','.join(['%s' for x in ids]) + ')',
+                ids)
+        if cursor.rowcount:
+            self.raise_user_error(cursor, 'delete_purchase_invoice',
+                    context=context)
+        return super(Invoice, self).delete(cursor, user, ids,
+                context=context)
+
+Invoice()
+
+
 class OpenSupplier(Wizard):
     'Open Suppliers'
     _name = 'purchase.open_supplier'
@@ -1653,28 +1718,111 @@ class OpenSupplier(Wizard):
 OpenSupplier()
 
 
-class Invoice(OSV):
-    _name = 'account.invoice'
+class HandlePackingExceptionAsk(WizardOSV):
+    'Packing Exception Ask'
+    _name = 'purchase.handle.packing.exception.ask'
+    _description = __doc__
 
-    def __init__(self):
-        super(Invoice, self).__init__()
-        self._error_messages.update({
-            'delete_purchase_invoice': 'You can not delete invoices ' \
-                    'that comes from a purchase!',
-            })
+    duplicate_moves = fields.Many2Many(
+        'stock.move', None, None, None, 'Duplicate Moves',
+        domain="[('id', 'in', domain_moves)]", depends=['domain_moves'])
+    domain_moves = fields.Many2Many(
+        'stock.move', None, None, None, 'Domain Moves')
 
-    def delete(self, cursor, user, ids, context=None):
-        if not ids:
-            return True
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        cursor.execute('SELECT id FROM purchase_invoices_rel ' \
-                'WHERE invoice IN (' + ','.join(['%s' for x in ids]) + ')',
-                ids)
-        if cursor.rowcount:
-            self.raise_user_error(cursor, 'delete_purchase_invoice',
-                    context=context)
-        return super(Invoice, self).delete(cursor, user, ids,
+    def default_duplicate_moves(self, cursor, user, context=None):
+        return self.default_domain_moves(cursor, user, context=context)
+
+    def default_domain_moves(self, cursor, user, context=None):
+        purchase_line_obj = self.pool.get('purchase.line')
+        active_id = context and context.get('active_id')
+        if not active_id:
+            return []
+
+        line_ids = purchase_line_obj.search(
+            cursor, user, [('purchase', '=', active_id)],
+            context=context)
+        lines = purchase_line_obj.browse(cursor, user, line_ids, context=context)
+
+        domain_moves = []
+        for line in lines:
+            skip_ids = set(x.id for x in line.moves_ignored)
+            skip_ids.update(x.id for x in line.moves_duplicated)
+            for move in line.moves:
+                if move.state == 'cancel' and move.id not in skip_ids:
+                    domain_moves.append(move.id)
+
+        return domain_moves
+
+HandlePackingExceptionAsk()
+
+class HandlePackingException(Wizard):
+    'Handle Packing Exception'
+    _name = 'purchase.handle.packing.exception'
+    states = {
+        'init': {
+            'actions': [],
+            'result': {
+                'type': 'form',
+                'object': 'purchase.handle.packing.exception.ask',
+                'state': [
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('ok', 'Ok', 'tryton-ok', True),
+                ],
+            },
+        },
+        'ok': {
+            'result': {
+                'type': 'action',
+                'action': '_handle_moves',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _handle_moves(self, cursor, user, data, context=None):
+        workflow_service = LocalService('workflow')
+        purchase_line_obj = self.pool.get('purchase.line')
+        move_obj = self.pool.get('stock.move')
+        to_duplicate = data['form']['duplicate_moves'][0][1]
+        domain_moves = data['form']['domain_moves'][0][1]
+
+        line_ids = purchase_line_obj.search(
+            cursor, user, [('purchase', '=', data['id'])],
+            context=context)
+        lines = purchase_line_obj.browse(cursor, user, line_ids, context=context)
+
+        duplicate_all = []
+        for line in lines:
+            moves_ignored = []
+            moves_duplicated = []
+            skip_ids = set(x.id for x in line.moves_ignored)
+            skip_ids.update(x.id for x in line.moves_duplicated)
+            for move in line.moves:
+                if move.id not in domain_moves or move.id in skip_ids:
+                    continue
+                if move.id in to_duplicate:
+                    moves_duplicated.append(move.id)
+                else:
+                    moves_ignored.append(move.id)
+
+            duplicate_all.extend(moves_duplicated)
+            purchase_line_obj.write(
+                cursor, user, line.id,
+                {'moves_ignored': [('add', moves_ignored)],
+                 'moves_duplicated': [('add', moves_duplicated)]},
                 context=context)
 
-Invoice()
+        default = {
+            'state': 'draft',
+            'packing_in': False,
+            'packing_out': False,
+            'packing_in_return': False,
+            'packing_out_return': False,
+            'packing_internal': False,
+            }
+        move_obj.copy(
+            cursor, user, duplicate_all, default=default, context=context)
+        workflow_service.trg_validate(user, 'purchase.purchase', data['id'],
+                                     'packing_ok', cursor, context=context)
+
+HandlePackingException()

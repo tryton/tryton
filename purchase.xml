@@ -11,6 +11,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="groups" eval="[('add', ref('group_purchase'))]"/>
         </record>
 
+        <record model="ir.action.wizard" id="wizard_packing_handle_exception">
+            <field name="name">Handle Packing Exception</field>
+            <field name="wiz_name">purchase.handle.packing.exception</field>
+            <field name="model">purchase.purchase</field>
+        </record>
+
         <record model="ir.ui.view" id="purchase_view_form">
             <field name="model">purchase.purchase</field>
             <field name="type">form</field>
@@ -79,9 +85,11 @@ this repository contains the full copyright notices and license terms. -->
                                     <button name="invoice_ok" string="Ignore Invoice Exception"
                                         states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_purchase)d not in groups'''}"
                                         icon="tryton-go-next"/>
-                                    <button name="packing_ok" string="Ignore Packing Exception"
-                                        states="{'invisible': '''packing_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_purchase)d not in groups'''}"
-                                        icon="tryton-go-next"/>
+                                    <button name="%(wizard_packing_handle_exception)d"
+                                            string="Handle Packing Exception"
+                                            type="action"
+                                            states="{'invisible': '''packing_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_purchase)d not in groups'''}"
+                                            icon="tryton-go-next"/>
                                     <button name="confirm" string="Confirm"
                                         states="{'invisible': '''state != 'quotation' ''', 'readonly': '''%(group_purchase)d not in groups'''}"
                                         icon="tryton-ok"/>
@@ -100,7 +108,18 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="invoices" colspan="4" widget="one2many"/>
                         </page>
                         <page string="Packings" id="packings">
-                            <field name="moves" colspan="4" widget="one2many"/>
+                            <field name="moves" colspan="4" widget="one2many">
+                                <tree string="Moves">
+                                    <field name="product"/>
+                                    <field name="from_location"/>
+                                    <field name="to_location"/>
+                                    <field name="quantity"/>
+                                    <field name="uom"/>
+                                    <field name="state"/>
+                                    <field name="exception_state"/>
+                                    <field name="unit_digits" tree_invisible="1"/>
+                                </tree>
+                            </field>
                             <field name="packings" colspan="4" widget="one2many"/>
                         </page>
                     </notebook>
@@ -130,6 +149,30 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="description" select="2"/>
                     <field name="currency_digits" tree_invisible="1"/>
                 </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="handle_packing_exception_view_form">
+            <field name="model">purchase.handle.packing.exception.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Handle packing Exception" col="2">
+                    <image name="tryton-dialog-information"/>
+                    <group col="1" colspan="1" id="moves">
+                        <separator string="Choose move to duplicate"
+                                   id="choose"/>
+                        <field name="duplicate_moves">
+                          <tree string="Duplicate Moves" fill="1">
+                              <field name="product"/>
+                              <field name="quantity"/>
+                              <field name="uom"/>
+                              <field name="unit_digits" tree_invisible="1"/>
+                          </tree>
+                        </field>
+                    </group>
+                </form>
                 ]]>
             </field>
         </record>
@@ -321,7 +364,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Waiting Packing</field>
             <field name="workflow" ref="purchase_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'packing_state': 'waiting'})&#10;ignore_packing_exception()&#10;create_move()</field>
+            <field name="action">write({'packing_state': 'waiting'})&#10;create_move()</field>
         </record>
         <record model="workflow.activity" id="purchase_activity_packing_exception">
             <field name="name">Packing Exception</field>
