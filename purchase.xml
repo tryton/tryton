@@ -164,7 +164,7 @@ this repository contains the full copyright notices and license terms. -->
                         <separator string="Choose move to duplicate"
                                    id="choose"/>
                         <field name="duplicate_moves">
-                          <tree string="Duplicate Moves"  fill="1">
+                          <tree string="Duplicate Moves" fill="1">
                               <field name="product"/>
                               <field name="quantity"/>
                               <field name="uom"/>

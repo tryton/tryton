@@ -1488,7 +1488,9 @@ class Move(OSV):
             fnct_search='search_supplier', select=1)
 
     exception_state = fields.Function('get_exception_state', type='selection',
-            selection=[('ignored', 'Ignored'), ('duplicated', 'Duplicated')],
+            selection=[('', ''),
+                       ('ignored', 'Ignored'),
+                       ('duplicated', 'Duplicated')],
             string='Exception State')
 
     def get_purchase(self, cursor, user, ids, name, arg, context=None):
