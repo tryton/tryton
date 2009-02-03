@@ -64,7 +64,7 @@ class Forecast(OSV):
     def default_destination(self, cursor, user, context=None):
         location_obj = self.pool.get('stock.location')
         location_ids = location_obj.search(cursor, user,
-                self.destination._domain, context=context)
+                self.destination.domain, context=context)
         if len(location_ids) == 1:
             return location_obj.name_get(cursor, user, location_ids,
                     context=context)[0]
