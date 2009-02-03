@@ -53,6 +53,7 @@ class Translation(OSV, Cacheable):
 
     def __init__(self):
         super(Translation, self).__init__()
+        Cacheable.__init__(self)
         self._sql_constraints += [
             ('translation_uniq',
                 'UNIQUE (name, res_id, lang, type, src, module)',
