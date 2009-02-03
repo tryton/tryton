@@ -414,7 +414,7 @@ class Line(OSV):
                     'tax_lines', 'journal'])
     credit = fields.Numeric('Credit', digits="(16, currency_digits)",
             on_change=['account', 'debit', 'credit', 'tax_lines',
-                'journal', 'move'], depens=['currency_digits', 'debit',
+                'journal', 'move'], depends=['currency_digits', 'debit',
                     'tax_lines', 'journal'])
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('kind', '!=', 'view')],
