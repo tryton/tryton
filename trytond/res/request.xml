@@ -115,7 +115,7 @@
               <![CDATA[
                 <tree string="Request Link">
                     <field name="name" select="1"/>
-                    <field name="object" select="1"/>
+                    <field name="model" select="1"/>
                 </tree>
                 ]]>
             </field>
