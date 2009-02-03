@@ -87,7 +87,7 @@ class PackingIn(OSV):
     def default_warehouse(self, cursor, user, context=None):
         location_obj = self.pool.get('stock.location')
         location_ids = location_obj.search(cursor, user,
-                self.warehouse._domain, context=context)
+                self.warehouse.domain, context=context)
         if len(location_ids) == 1:
             return location_obj.name_get(cursor, user, location_ids,
                     context=context)[0]
@@ -514,7 +514,7 @@ class PackingOut(OSV):
     def default_warehouse(self, cursor, user, context=None):
         location_obj = self.pool.get('stock.location')
         location_ids = location_obj.search(cursor, user,
-                self.warehouse._domain, context=context)
+                self.warehouse.domain, context=context)
         if len(location_ids) == 1:
             return location_obj.name_get(cursor, user, location_ids,
                     context=context)[0]
@@ -900,7 +900,7 @@ class PackingOutReturn(OSV):
     def default_warehouse(self, cursor, user, context=None):
         location_obj = self.pool.get('stock.location')
         location_ids = location_obj.search(cursor, user,
-                self.warehouse._domain, context=context)
+                self.warehouse.domain, context=context)
         if len(location_ids) == 1:
             return location_obj.name_get(cursor, user, location_ids,
                     context=context)[0]

@@ -59,7 +59,7 @@ class Inventory(OSV):
     def default_lost_found(self, cursor, user, context=None):
         location_obj = self.pool.get('stock.location')
         location_ids = location_obj.search(cursor, user,
-                self.lost_found._domain, context=context)
+                self.lost_found.domain, context=context)
         if len(location_ids) == 1:
             return location_obj.name_get(cursor, user, location_ids,
                     context=context)[0]
