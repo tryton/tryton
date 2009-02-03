@@ -125,6 +125,8 @@ class Reference(Column):
 
     def get(self, cursor, obj, ids, name, user=None, offset=0, context=None,
             values=None):
+        if context is None:
+            context = {}
         if values is None:
             values = {}
         res = {}
@@ -150,10 +152,12 @@ class Reference(Column):
                 ref_id = int(ref_id)
             except:
                 continue
+            ctx = context.copy()
+            ctx['active_test'] = False
             if ref_id \
                 and not ref_obj.search(cursor, user, [
                     ('id', '=', ref_id),
-                    ], context=context):
+                    ], context=ctx):
                 ref_id = False
             if ref_id:
                 ref_name = ref_obj.name_get(cursor, user, ref_id,
