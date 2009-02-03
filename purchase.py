@@ -1729,14 +1729,17 @@ class HandlePackingExceptionAsk(WizardOSV):
     domain_moves = fields.Many2Many(
         'stock.move', None, None, None, 'Domain Moves')
 
-    def default_duplicate_moves(self, cursor, user, data, context=None):
-        return self.default_domain_moves(cursor, user, data, context=context)
+    def default_duplicate_moves(self, cursor, user, context=None):
+        return self.default_domain_moves(cursor, user, context=context)
 
-    def default_domain_moves(self, cursor, user, data, context=None):
+    def default_domain_moves(self, cursor, user, context=None):
         purchase_line_obj = self.pool.get('purchase.line')
+        active_id = context and context.get('active_id')
+        if not active_id:
+            return []
 
         line_ids = purchase_line_obj.search(
-            cursor, user, [('purchase', '=', data['active_id'])],
+            cursor, user, [('purchase', '=', active_id)],
             context=context)
         lines = purchase_line_obj.browse(cursor, user, line_ids, context=context)
 
