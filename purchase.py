@@ -1515,7 +1515,7 @@ class Move(OSV):
         return res
 
     def get_exception_state(self, cursor, user, ids, name, arg, context=None):
-        res = {}.fromkeys(ids, False)
+        res = {}.fromkeys(ids, '')
         for move in self.browse(cursor, user, ids, context=context):
             if not move.purchase_line:
                 continue
