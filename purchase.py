@@ -1470,7 +1470,8 @@ class Move(OSV):
             relation='party.party', string='Supplier',
             fnct_search='search_supplier', select=1)
 
-    exception_state = fields.Function('get_exception_state', type='selection',
+    purchase_exception_state = fields.Function('get_purchase_exception_state',
+            type='selection',
             selection=[('', ''),
                        ('ignored', 'Ignored'),
                        ('duplicated', 'Duplicated')],
@@ -1497,7 +1498,8 @@ class Move(OSV):
                 res[i] = False
         return res
 
-    def get_exception_state(self, cursor, user, ids, name, arg, context=None):
+    def get_purchase_exception_state(self, cursor, user, ids, name, arg,
+                                     context=None):
         res = {}.fromkeys(ids, '')
         for move in self.browse(cursor, user, ids, context=context):
             if not move.purchase_line:
