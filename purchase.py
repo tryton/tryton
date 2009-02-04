@@ -733,13 +733,6 @@ class Purchase(OSV):
         for line in purchase.lines:
             line_obj.create_move(cursor, user, line, context=context)
 
-    def ignore_packing_exception(self, cursor, user, purchase_id, context=None):
-        line_obj = self.pool.get('purchase.line')
-
-        purchase = self.browse(cursor, user, purchase_id, context=context)
-        for line in purchase.lines:
-            line_obj.ignore_move_exception(cursor, user, line, context=context)
-
 Purchase()
 
 
@@ -1148,16 +1141,6 @@ class PurchaseLine(OSV):
             'moves': [('add', move_id)],
         }, context=context)
         return move_id
-
-    def ignore_move_exception(self, cursor, user, line, context=None):
-        move_ids = []
-        for move in line.moves:
-            if move.state == 'cancel':
-                move_ids.append(move.id)
-        if move_ids:
-            self.write(cursor, user, line.id, {
-                'moves_ignored': [('add', x) for x in move_ids],
-            }, context=context)
 
 PurchaseLine()
 
