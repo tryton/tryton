@@ -72,10 +72,25 @@ class Location(OSV):
         self._order.insert(0, ('name', 'ASC'))
         self._constraints += [
             ('check_recursion', 'recursive_locations'),
+            ('check_type_for_moves', 'invalid_type_for_moves'),
         ]
         self._error_messages.update({
             'recursive_locations': 'You can not create recursive locations!',
+            'invalid_type_for_moves': 'A location with existing moves ' \
+                'cannot be changed to a type that does not support moves.',
         })
+
+    def check_type_for_moves(self, cursor, user, ids):
+        """ Check locations with moves have types compatible with moves. """
+        invalid_move_types = ['warehouse',]
+        move_obj = self.pool.get('stock.move')
+        for location in self.browse(cursor, user, ids):
+            if location.type in invalid_move_types and \
+                move_obj.search(cursor, user, ['OR',
+                    ('to_location', '=', location.id),
+                    ('from_location', '=', location.id)]):
+                return False
+        return True
 
     def default_active(self, cursor, user, context=None):
         return True
