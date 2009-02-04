@@ -3,10 +3,10 @@
 "Packing"
 from trytond.osv import fields, OSV
 from trytond.netsvc import LocalService
-import datetime
 from trytond.report import CompanyReport
 from trytond.wizard import Wizard, WizardOSV
-from trytond.sql_db import table_handler
+from trytond.backend import TableHandler
+import datetime
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -503,10 +503,10 @@ class PackingOut(OSV):
 
     def init(self, cursor, module_name):
         super(PackingOut, self).init(cursor, module_name)
-        th = table_handler(cursor, self._table, self._name, module_name)
+        table = TableHandler(cursor, self._table, self._name, module_name)
 
-        if 'customer_location' in th.table:
-            th.drop_column('customer_location')
+        # Migration from 1.0 customer_location is no more used
+        table.drop_column('customer_location', exception=True)
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
