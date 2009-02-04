@@ -641,7 +641,7 @@ class PackingOut(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(cursor, user,
-            [m.id for m in packing.outgoing_moves if m.state == 'draft'],
+            [m.id for m in packing.outgoing_moves],
             {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {
             'state': 'done',
