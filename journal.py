@@ -4,7 +4,7 @@
 
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
-from trytond.sql_db import table_handler
+from trytond.backend import TableHandler
 
 STATES = {
     'readonly': "state == 'close'",
@@ -112,18 +112,17 @@ class Journal(OSV):
 
     def init(self, cursor, module_name):
         super(Journal, self).init(cursor, module_name)
-        table = table_handler(cursor, self._table, self._name, module_name)
+        table = TableHandler(cursor, self._table, self._name, module_name)
 
         # Migration from 1.0 sequence Many2One change into Property
-        if 'sequence' in table.table:
+        if table.column_exist('sequence'):
             property_obj = self.pool.get('ir.property')
             cursor.execute('SELECT id, sequence FROM "' + self._table +'"')
             for journal_id, sequence_id in cursor.fetchall():
                 property_obj.set(cursor, 0, 'sequence', self._name,
                         journal_id, (sequence_id and \
                                 'ir.sequence,' + str(sequence_id) or False))
-            cursor.execute('ALTER TABLE "' + self._table + '" ' \
-                    'DROP COLUMN sequence')
+            table.drop_column('sequence', exception=True)
 
     def default_active(self, cursor, user, context=None):
         return True
