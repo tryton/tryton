@@ -3,13 +3,13 @@
 "Invoice"
 
 from trytond.osv import fields, OSV
-from decimal import Decimal
 from trytond.netsvc import LocalService
 from trytond.report import Report
 from trytond.wizard import Wizard, WizardOSV
 from trytond.pooler import get_pool_report
+from trytond.backend import TableHandler
+from decimal import Decimal
 import base64
-from trytond.sql_db import table_handler
 
 _STATES = {
     'readonly': "state != 'draft'",
@@ -1213,13 +1213,10 @@ class InvoiceLine(OSV):
 
     def init(self, cursor, module_name):
         super(InvoiceLine, self).init(cursor, module_name)
-        table = table_handler(cursor, self._table, self._name, module_name)
+        table = TableHandler(cursor, self._table, self._name, module_name)
 
         # Migration from 1.0 invoice is no more required
-        if 'invoice' in table.table:
-            if table.table['invoice']['notnull']:
-                self.cursor.execute('ALTER TABLE "' + self._table + '" ' \
-                        'ALTER COLUMN "invoice" DROP NOT NULL')
+        table.not_null_action('invoice', action='remove')
 
     def default_invoice_type(self, cursor, user, context=None):
         if context is None:

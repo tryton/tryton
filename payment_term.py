@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 
 from trytond.osv import fields, OSV
-from trytond.sql_db import table_handler
+from trytond.backend import TableHandler
 from decimal import Decimal
 import datetime
 import mx.DateTime
@@ -161,14 +161,13 @@ class PaymentTermLine(OSV):
 
     def init(self, cursor, module_name):
         super(PaymentTermLine, self).init(cursor, module_name)
-        table = table_handler(cursor, self._table, self._name, module_name)
+        table = TableHandler(cursor, self._table, self._name, module_name)
 
         # Migration from 1.0 percent change into percentage
-        if 'percent' in table.table:
+        if table.column_exist('percent'):
             cursor.execute('UPDATE "' + self._table + '" ' \
                     'SET percentage = percent * 100')
-            cursor.execute('ALTER TABLE "' + self._table + '" ' \
-                    'DROP COLUMN percent')
+            table.drop_column('percent', exception=True)
 
     def default_type(self, cursor, user, context=None):
         return 'remainder'
