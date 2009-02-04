@@ -1080,6 +1080,7 @@ class PurchaseLine(OSV):
         default = default.copy()
         default['moves'] = False
         default['moves_ignored'] = False
+        default['moves_duplicated'] = False
         default['invoice_lines'] = False
         return super(PurchaseLine, self).copy(cursor, user, ids,
                 default=default, context=context)
