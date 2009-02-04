@@ -1192,12 +1192,12 @@ class PackingInternal(OSV):
         'stock.location', "From Location", required=True,
         states={ 'readonly': "state != 'draft' or bool(moves)", },
         domain="[('type', 'not in', " \
-                    "('supplier', 'customer', 'warehouse'))]")
+                    "('supplier', 'customer', 'warehouse', 'view'))]")
     to_location = fields.Many2One('stock.location', "To Location",
             required=True, states={
                 'readonly': "state != 'draft' or bool(moves)",
             }, domain="[('type', 'not in', " \
-                    "('supplier', 'customer', 'warehouse'))]")
+                    "('supplier', 'customer', 'warehouse', 'view'))]")
     moves = fields.One2Many(
         'stock.move', 'packing_internal', 'Moves',
         states={'readonly': "state != 'draft' or "\

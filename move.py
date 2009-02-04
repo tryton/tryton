@@ -31,10 +31,12 @@ class Move(OSV):
             digits="(16, unit_digits)", states=STATES)
     from_location = fields.Many2One("stock.location", "From Location", select=1,
             required=True, states=STATES,
-            domain=[('type', '!=', 'warehouse')])
+            domain="[('type', 'not in', " \
+                    "('warehouse', 'view'))]")
     to_location = fields.Many2One("stock.location", "To Location", select=1,
             required=True, states=STATES,
-            domain=[('type', '!=', 'warehouse')])
+            domain="[('type', 'not in', " \
+                    "('warehouse', 'view'))]")
     packing_in = fields.Many2One('stock.packing.in', 'Supplier Packing',
             readonly=True, select=1)
     packing_out = fields.Many2One('stock.packing.out', 'Customer Packing',

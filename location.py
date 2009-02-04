@@ -30,6 +30,7 @@ class Location(OSV):
         ('warehouse', 'Warehouse'),
         ('storage', 'Storage'),
         ('production', 'Production'),
+        ('view', 'View'),
         ], 'Location type', states=STATES)
     parent = fields.Many2One("stock.location", "Parent", select=1,
             left="left", right="right")
@@ -82,7 +83,7 @@ class Location(OSV):
 
     def check_type_for_moves(self, cursor, user, ids):
         """ Check locations with moves have types compatible with moves. """
-        invalid_move_types = ['warehouse',]
+        invalid_move_types = ['warehouse', 'view']
         move_obj = self.pool.get('stock.move')
         for location in self.browse(cursor, user, ids):
             if location.type in invalid_move_types and \
