@@ -3,10 +3,10 @@
 "Sale"
 
 from trytond.osv import fields, OSV
-from decimal import Decimal
 from trytond.netsvc import LocalService
 from trytond.report import CompanyReport
-from trytond.sql_db import table_handler
+from trytond.backend import TableHandler
+from decimal import Decimal
 
 
 class Sale(OSV):
@@ -934,14 +934,13 @@ class SaleLine(OSV):
 
     def init(self, cursor, module_name):
         super(SaleLine, self).init(cursor, module_name)
-        table = table_handler(cursor, self._table, self._name, module_name)
+        table = TableHandler(cursor, self._table, self._name, module_name)
 
         # Migration from 1.0 comment change into note
-        if 'comment' in table.table:
+        if table.column_exist('comment'):
             cursor.execute('UPDATE "' + self._table + '" ' \
                     'SET note = comment')
-            cursor.execute('ALTER TABLE "' + self._table + '" ' \
-                    'DROP COLUMN comment')
+            table.drop_column('comment', exception=True)
 
     def default_type(self, cursor, user, context=None):
         return 'line'
