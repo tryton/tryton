@@ -131,7 +131,14 @@ class Location(OSV):
 
         if (not context.get('product')) \
                 or not (isinstance(context['product'], (int, long))):
-            return dict([(i,0) for i in ids])
+            return dict([(i, 0) for i in ids])
+
+        ctx = context.copy()
+        ctx['active_test'] = False
+        if not product_obj.search(cursor, user, [
+            ('id', '=', context['product']),
+            ], context=ctx):
+            return dict([(i, 0) for i in ids])
 
         if name == 'quantity' and \
                 context.get('stock_date_end') > \
