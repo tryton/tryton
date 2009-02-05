@@ -166,8 +166,13 @@ class Location(OSV):
         uom_obj = self.pool.get('product.uom')
         if context is None:
             context = {}
+        ctx = context.copy()
+        ctx['active_test'] = False
         if context.get('product') \
-                and isinstance(context['product'], (int, long)):
+                and isinstance(context['product'], (int, long)) \
+                and product_obj.search(cursor, user, [
+                    ('id', '=', context['product']),
+                    ], context=ctx):
             product_name = product_obj.name_get(cursor, user, context['product'],
                     context=context)[0][1]
             product = product_obj.browse(cursor, user, context['product'],
