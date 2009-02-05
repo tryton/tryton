@@ -1391,7 +1391,7 @@ class PackingOut(OSV):
                 if move.state == 'cancel' and move.sale_line:
                     self.raise_user_error(cursor, 'reset_move')
 
-        return super(PackingIn, self).button_draft(
+        return super(PackingOut, self).button_draft(
             cursor, user, ids, context=context)
 
 PackingOut()
