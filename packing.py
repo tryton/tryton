@@ -199,7 +199,9 @@ class PackingIn(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in packing.inventory_moves],
+            cursor, user,
+            [m.id for m in packing.inventory_moves \
+                 if m.state not in ('done', 'cancel')],
             {'state': 'done'}, context)
         self.write(cursor, user, packing_id,{
             'state': 'done',
@@ -210,9 +212,12 @@ class PackingIn(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in packing.incoming_moves] +\
-            [m.id for m in packing.inventory_moves], {'state': 'cancel'},
-            context)
+            cursor, user,
+            [m.id for m in packing.incoming_moves \
+                 if m.state != 'cancel'] +\
+            [m.id for m in packing.inventory_moves \
+                 if m.state != 'cancel'],
+            {'state': 'cancel'}, context)
         self.write(cursor, user, packing_id, {'state': 'cancel'},
                    context=context)
 
@@ -220,7 +225,9 @@ class PackingIn(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in packing.incoming_moves],
+            cursor, user,
+            [m.id for m in packing.incoming_moves \
+                 if m.state not in ('done', 'cancel')],
             {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {
             'state': 'received'
@@ -356,16 +363,18 @@ class PackingInReturn(OSV):
         self.write(
             cursor, user, packing_id, {'state': 'draft'}, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in packing.moves], {'state': 'draft'},
-            context=context)
+            cursor, user, [m.id for m in packing.moves if m.state != 'draft'],
+            {'state': 'draft'}, context=context)
 
     def set_state_waiting(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.write(cursor, user, [m.id for m in packing.moves], {
-            'state': 'draft',
-            'planned_date': packing.planned_date,
-            }, context=context)
+        move_obj.write(
+            cursor, user,
+            [m.id for m in packing.moves if m.state not in ('cancel', 'draft')],
+            {'state': 'draft', 'planned_date': packing.planned_date,},
+            context=context)
+
         self.write(
             cursor, user, packing_id, {'state': 'waiting'}, context=context)
 
@@ -377,9 +386,10 @@ class PackingInReturn(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in packing.moves], {'state': 'done'},
-            context=context)
-        self.write( cursor, user, packing_id,
+            cursor, user,
+            [m.id for m in packing.moves if m.state not in ('done', 'cancel')],
+            {'state': 'done'}, context=context)
+        self.write(cursor, user, packing_id,
                     {'state': 'done',
                      'effective_date': datetime.date.today()},
                     context=context)
@@ -388,8 +398,8 @@ class PackingInReturn(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in packing.moves], {'state': 'cancel'},
-            context=context)
+            cursor, user, [m.id for m in packing.moves if m.state != 'cancel'],
+            {'state': 'cancel'}, context=context)
         self.write(
             cursor, user, packing_id, {'state': 'cancel'}, context=context)
 
@@ -634,14 +644,16 @@ class PackingOut(OSV):
             cursor, user, packing_id, {'state': 'draft'}, context=context)
         move_obj.write(
             cursor, user,
-            [m.id for m in packing.inventory_moves + packing.outgoing_moves],
+            [m.id for m in packing.inventory_moves + packing.outgoing_moves \
+                 if m.state != 'draft'],
             {'state': 'draft'}, context=context)
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
-        move_obj.write(cursor, user,
-            [m.id for m in packing.outgoing_moves],
+        move_obj.write(
+            cursor, user, [m.id for m in packing.outgoing_moves \
+                               if m.state not in ('done', 'cancel')],
             {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {
             'state': 'done',
@@ -653,7 +665,8 @@ class PackingOut(OSV):
         uom_obj = self.pool.get('product.uom')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in packing.inventory_moves],
+            cursor, user, [m.id for m in packing.inventory_moves \
+                               if m.state not in ('done', 'cancel')],
             {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {'state': 'packed'},
                    context=context)
@@ -729,8 +742,9 @@ class PackingOut(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
-            cursor, user,[m.id for m in packing.outgoing_moves] +\
-                [m.id for m in packing.inventory_moves],
+            cursor, user,
+            [m.id for m in packing.outgoing_moves + packing.inventory_moves \
+                 if m.state != 'cancel'],
             {'state': 'cancel'}, context=context)
         self.write(cursor, user, packing_id, {'state': 'cancel'},
                    context=context)
@@ -1038,7 +1052,9 @@ class PackingOutReturn(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in packing.inventory_moves],
+            cursor, user,
+            [m.id for m in packing.inventory_moves \
+                 if m.state not in ('done', 'cancel')],
             {'state': 'done'}, context)
         self.write(cursor, user, packing_id,{
             'state': 'done',
@@ -1049,9 +1065,10 @@ class PackingOutReturn(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in packing.incoming_moves] +\
-            [m.id for m in packing.inventory_moves], {'state': 'cancel'},
-            context)
+            cursor, user,
+            [m.id for m in packing.incoming_moves + packing.inventory_moves \
+                 if m.state != 'cancel'],
+            {'state': 'cancel'}, context)
         self.write(cursor, user, packing_id, {'state': 'cancel'},
                    context=context)
 
@@ -1059,7 +1076,9 @@ class PackingOutReturn(OSV):
         move_obj = self.pool.get('stock.move')
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
-            cursor, user, [m.id for m in packing.incoming_moves],
+            cursor, user,
+            [m.id for m in packing.incoming_moves \
+                 if m.state not in ('done', 'cancel')],
             {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {
             'state': 'received'
