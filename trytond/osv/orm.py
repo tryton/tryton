@@ -1737,7 +1737,7 @@ class ORM(object):
                             '"%s", "%s"' % (field.left, field.right))
                 if k in vals:
                     if len(ids) == 1:
-                        self._update_tree(cursor, user, object_id, k,
+                        self._update_tree(cursor, user, ids[0], k,
                                 field.left, field.right)
                     else:
                         self._rebuild_tree(cursor, 0, k, False, 0)
