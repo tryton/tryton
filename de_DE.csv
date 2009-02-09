@@ -1,6 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,stock.inventory.line,0,Line quantity must be positive!,Anzahl der Position muss positiv sein!,0
 error,stock.inventory.line,0,Product must be unique by inventory!,Ein Artikel kann in einem Lagerbestand nicht mehrfach vergeben werden!,0
+error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,"Ein Lagerort mit zugordneten Bewegungen kann nicht zu einem Typ geändert werden, der keine Bewegungen unterstützt.",0
 error,stock.location,0,You can not create recursive locations!,Lagerorte können nicht rekursiv angelegt werden!,0
 error,stock.move,0,Move can not be in both Supplier and Customer Packing,Eine Bewegung kann nicht in Lieferanten- und Kundenlieferung erfolgen,0
 error,stock.move,0,Move quantity must be positive,Zu bewegende Anzahl muss positiv sein,0
@@ -282,6 +283,7 @@ selection,"stock.location,type",0,Lost and Found,Differenzen allgemein,0
 selection,"stock.location,type",0,Production,Produktion,0
 selection,"stock.location,type",0,Storage,Lager,0
 selection,"stock.location,type",0,Supplier,Lieferant,0
+selection,"stock.location,type",0,View,Sicht,0
 selection,"stock.location,type",0,Warehouse,Warenlager,0
 selection,"stock.move,state",0,Assigned,Zugewiesen,0
 selection,"stock.move,state",0,Cancel,Annulliert,0
