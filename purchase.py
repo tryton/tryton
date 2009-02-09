@@ -1633,8 +1633,6 @@ Move()
 class Invoice(OSV):
     _name = 'account.invoice'
 
-    purchases = fields.Many2Many('purchase.purchase', 'purchase_invoices_rel',
-            'invoice', 'purchase', 'Purchases', readonly=True)
     purchase_exception_state = fields.Function('get_purchase_exception_state',
             type='selection',
             selection=[('', ''),
@@ -1654,23 +1652,33 @@ class Invoice(OSV):
             })
 
     def button_draft(self, cursor, user, ids, context=None):
-        for invoice in self.browse(cursor, user, ids, context=context):
-            if invoice.state == 'cancel' and invoice.purchases:
-                self.raise_user_error(cursor, 'reset_invoice')
+        purchase_obj = self.pool.get('purchase.purchase')
+        purchase_ids = purchase_obj.search(
+            cursor, user, [('invoices', 'in', ids)], context=context)
+
+        if purchase_ids:
+            self.raise_user_error(cursor, 'reset_invoice')
 
         return super(Invoice, self).button_draft(
             cursor, user, ids, context=context)
 
     def get_purchase_exception_state(self, cursor, user, ids, name, arg,
                                      context=None):
+        purchase_obj = self.pool.get('purchase.purchase')
+        purchase_ids = purchase_obj.search(
+            cursor, user, [('invoices', 'in', ids)], context=context)
+
+        purchases = purchase_obj.browse(
+            cursor, user, purchase_ids, context=context)
+
+        duplicated_ids = tuple(i.id for p in purchases for i in p.invoices_duplicated)
+        ignored_ids = tuple(i.id for p in purchases for i in p.invoices_ignored)
+
         res = {}.fromkeys(ids, '')
         for invoice in self.browse(cursor, user, ids, context=context):
-            if not invoice.purchases:
-                continue
-            purchase = invoice.purchases[0]
-            if invoice.id in (x.id for x in purchase.invoices_duplicated):
+            if invoice.id in duplicated_ids:
                 res[invoice.id] = 'duplicated'
-            if invoice.id in (x.id for x in purchase.invoices_ignored):
+            elif invoice.id in ignored_ids:
                 res[invoice.id] = 'ignored'
 
         return res
@@ -1882,6 +1890,7 @@ class HandleInvoiceExceptionAsk(WizardOSV):
 
 HandleInvoiceExceptionAsk()
 
+
 class HandleInvoiceException(Wizard):
     'Handle Invoice Exception'
     _name = 'purchase.handle.invoice.exception'
@@ -1934,7 +1943,7 @@ class HandleInvoiceException(Wizard):
             cursor, user, purchase.id,
             {'invoices_ignored': [('add', invoices_ignored)],
              'invoices_duplicated': [('add', invoices_duplicated)],
-             # 'invoices': [('add', new_invoices)],
+             'invoices': [('add', new_invoices)],
              },
             context=context)
 
