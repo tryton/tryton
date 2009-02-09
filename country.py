@@ -41,7 +41,7 @@ class Country(OSV):
         return self.name_get(cr, user, ids, context)
 
     def create(self, cursor, user, vals, context=None):
-        if 'code' in vals:
+        if 'code' in vals and vals['code']:
             vals['code'] = vals['code'].upper()
         new_id = super(Country, self).create(cursor, user, vals, context=context)
         if 'module' in context:
@@ -53,7 +53,7 @@ class Country(OSV):
         return new_id
 
     def write(self, cursor, user, ids, vals, context=None):
-        if 'code' in vals:
+        if 'code' in vals and vals['code']:
             vals['code'] = vals['code'].upper()
         return super(Country, self).write(cursor, user, ids, vals,
                 context=context)
@@ -169,13 +169,13 @@ class Subdivision(OSV):
         return self.name_get(cr, user, ids, context)
 
     def create(self, cursor, user, vals, context=None):
-        if 'code' in vals:
+        if 'code' in vals and vals['code']:
             vals['code'] = vals['code'].upper()
         return super(Subdivision, self).create(cursor, user, vals,
                 context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
-        if 'code' in vals:
+        if 'code' in vals and vals['code']:
             vals['code'] = vals['code'].upper()
         return super(Subdivision, self).write(cursor, user, ids, vals,
                 context=context)
