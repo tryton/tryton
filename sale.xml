@@ -80,7 +80,7 @@ this repository contains the full copyright notices and license terms. -->
                                         states="{'invisible': '''state != 'quotation' ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                         icon="tryton-go-previous"/>
                                     <button name="quotation" string="Quotation"
-                                        states="{'invisible': '''state != 'draft' ''', 'readonly': '''%(group_sale)d not in groups'''}"
+                                        states="{'invisible': '''state != 'draft' ''', 'readonly': '''(not bool(lines)) or %(group_sale)d not in groups'''}"
                                         icon="tryton-go-next"/>
                                     <button name="invoice_ok" string="Ignore Invoice Exception"
                                         states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_sale)d not in groups'''}"
@@ -468,6 +468,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.transition" id="sale_transition_draft_quotation">
             <field name="act_from" ref="sale_activity_draft"/>
             <field name="act_to" ref="sale_activity_quotation"/>
+            <field name="condition">bool(lines)</field>
             <field name="signal">quotation</field>
             <field name="group" ref="group_sale"/>
         </record>
