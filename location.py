@@ -34,8 +34,8 @@ class Location(OSV):
         ], 'Location type', states=STATES)
     parent = fields.Many2One("stock.location", "Parent", select=1,
             left="left", right="right")
-    left = fields.Integer('Left', required=True)
-    right = fields.Integer('Right', required=True)
+    left = fields.Integer('Left', required=True, select=1)
+    right = fields.Integer('Right', required=True, select=1)
     childs = fields.One2Many("stock.location", "parent", "Childs")
     input_location = fields.Many2One(
         "stock.location", "Input", states={
@@ -80,6 +80,17 @@ class Location(OSV):
             'invalid_type_for_moves': 'A location with existing moves ' \
                 'cannot be changed to a type that does not support moves.',
         })
+
+    def init(self, cursor, module_name):
+        super(Location, self).init(cursor, module_name)
+
+        cursor.execute('SELECT indexname FROM pg_indexes ' \
+                'WHERE indexname = ' \
+                    '\'stock_location_left_right_index\'')
+        if not cursor.rowcount:
+            cursor.execute('CREATE INDEX ' \
+                    'stock_location_left_right_index ' \
+                    'ON stock_location ("left", "right")')
 
     def check_type_for_moves(self, cursor, user, ids):
         """ Check locations with moves have types compatible with moves. """
