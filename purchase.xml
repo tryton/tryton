@@ -113,7 +113,22 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="comment" colspan="4" spell="party_lang"/>
                         </page>
                         <page string="Invoices" id="invoices">
-                            <field name="invoices" colspan="4" widget="one2many"/>
+                              <field name="invoices" colspan="4" widget="one2many">
+                                <tree>
+                                  <field name="number" select="1"/>
+                                  <field name="invoice_date" select="2"/>
+                                  <field name="party" select="1"/>
+                                  <field name="currency" select="2"/>
+                                  <field name="untaxed_amount" select="2"/>
+                                  <field name="tax_amount" select="2"/>
+                                  <field name="total_amount" select="2"/>
+                                  <field name="state" select="1"/>
+                                  <field name="purchase_exception_state"/>
+                                  <field name="amount_to_pay_today"/>
+                                  <field name="description" select="2"/>
+                                  <field name="currency_digits" tree_invisible="1"/>
+                              </tree>
+                            </field>
                         </page>
                         <page string="Packings" id="packings">
                             <field name="moves" colspan="4" widget="one2many">
@@ -181,20 +196,6 @@ this repository contains the full copyright notices and license terms. -->
                         </field>
                     </group>
                 </form>
-                ]]>
-            </field>
-        </record>
-
-        <record model="ir.ui.view" id="invoice_view_tree">
-            <field name="model">account.invoice</field>
-            <field name="inherit" ref="account_invoice.invoice_view_tree"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/tree/field[@name=&quot;state&quot;]" position="after">
-                        <field name="purchase_exception_state"/>
-                    </xpath>
-                </data>
                 ]]>
             </field>
         </record>
