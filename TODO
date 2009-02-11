@@ -1,5 +1,3 @@
-- Add button to recreate move when in exception
-- Add button to recreate invoice when in exception
 - Add form_relate from party to party's purchase
 - Add historization of quotation
 - Allow to customize purchase.product_supplier to handle delivery_time depending of quantity
