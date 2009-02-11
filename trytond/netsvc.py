@@ -351,6 +351,7 @@ class TinySocketServerThread(threading.Thread):
             try:
                 thread = self.threads[0]
                 thread.stop()
+                time.sleep(0.001) #sleep to let thread running
             except:
                 pass
         try:
