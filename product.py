@@ -110,25 +110,20 @@ class Product(OSV):
         if isinstance(ids, (int, long)):
             ids = [ids]
 
-        # Delete template that have no more product linked
-        cursor.execute('SELECT t.id ' \
-                'FROM product_product p, product_template t ' \
-                'WHERE p.template = t.id ' \
-                'GROUP BY t.id HAVING COUNT(p.template) = 1')
-        template_ids = [x[0] for x in cursor.fetchall()]
-
-        if template_ids:
-            product_ids = self.search(cursor, user, [
-                ('id', 'in', ids),
-                ('template', 'in', template_ids),
-                ], context=context)
-            template_ids = [x.template.id for x in self.browse(cursor, user,
-                product_ids, context=context)]
+        # Get the templates before we delete the products.
+        products = self.browse(cursor, user, ids, context=context)
+        template_ids = [product.template.id for product in products]
 
         res = super(Product, self).delete(cursor, user, ids, context=context)
 
-        if template_ids:
-            template_obj.delete(cursor, user, template_ids, context=context)
+        # Get templates that are still linked after delete.
+        templates = template_obj.browse(cursor, user, template_ids,
+                                        context=context)
+        unlinked_template_ids = [template.id for template in templates \
+                                 if not template.products]
+        if unlinked_template_ids:
+            template_obj.delete(cursor, user, unlinked_template_ids,
+                                context=context)
 
         return res
 
