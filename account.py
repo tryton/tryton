@@ -1557,7 +1557,7 @@ class OpenIncomeStatement(Wizard):
                 ('end_date', '<=', end_period.start_date),
                 ], context=context)
             end_period_ids = list(set(end_period_ids).difference(
-                ste(start_period_ids)))
+                set(start_period_ids)))
             if datas['form']['end_period'] not in end_period_ids:
                 end_period_ids.append(datas['form']['end_period'])
         else:
