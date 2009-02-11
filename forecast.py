@@ -3,7 +3,6 @@
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 import datetime
-from trytond.netsvc import LocalService
 
 STATES = {
     'readonly': "state != 'draft'",
@@ -102,10 +101,7 @@ class Forecast(OSV):
         return True
 
     def button_draft(self, cursor, user, ids, context=None):
-        workflow_service = LocalService('workflow')
-        for forecast in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, forecast.id, cursor,
-                    context=context)
+        self.workflow_trigger_create(cursor, user, ids, context=context)
         return True
 
     def set_state_draft(self, cursor, user, forecast_id, context=None):
