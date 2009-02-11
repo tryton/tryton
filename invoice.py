@@ -1,12 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Invoice"
-
+from trytond.model import ModelWorkflow
 from trytond.osv import fields, OSV
-from trytond.netsvc import LocalService
 from trytond.report import Report
 from trytond.wizard import Wizard, WizardOSV
-from trytond.pooler import get_pool_report
 from trytond.backend import TableHandler
 from decimal import Decimal
 import base64
@@ -30,7 +28,7 @@ _TYPE2JOURNAL = {
 }
 
 
-class Invoice(OSV):
+class Invoice(ModelWorkflow, OSV):
     'Invoice'
     _name = 'account.invoice'
     _description = __doc__
@@ -509,13 +507,13 @@ class Invoice(OSV):
         return res
 
     def button_draft(self, cursor, user, ids, context=None):
-        workflow_service = LocalService('workflow')
-        for invoice in self.browse(cursor, user, ids, context=context):
+        invoices = self.browse(cursor, user, ids, context=context)
+        for invoice in invoices:
             if invoice.move:
                 self.raise_user_error(cursor, 'reset_draft',
                         context=context)
-            workflow_service.trg_create(user, 'account.invoice',
-                    invoice.id, cursor, context=context)
+        self.workflow_trigger_create(cursor, user,
+                [x.id for x in invoices], context=context)
         self.write(cursor, user, ids, {'state': 'draft'})
         return True
 
@@ -803,7 +801,6 @@ class Invoice(OSV):
                 context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
-        workflow_service = LocalService('workflow')
         if isinstance(ids, (int, long)):
             ids = [ids]
         keys = vals.keys()
@@ -817,9 +814,7 @@ class Invoice(OSV):
                 context=context)
         self.update_taxes(cursor, user, ids, context=context)
         if 'state' in vals and vals['state'] in ('paid', 'cancel'):
-            for invoice_id in ids:
-                workflow_service.trg_trigger(user, self._name, invoice_id,
-                        cursor, context=context)
+            self.workflow_trigger_trigger(cursor, user, ids, context=context)
         return res
 
     def copy(self, cursor, user, ids, default=None, context=None):
@@ -1025,7 +1020,7 @@ class Invoice(OSV):
         '''
         Generate invoice report and store it in invoice_report field.
         '''
-        invoice_report = get_pool_report(cursor.dbname).get('account.invoice')
+        invoice_report = self.pool.get('account.invoice', type='report')
         val = invoice_report.execute(cursor, user, [invoice_id],
                 {'id': invoice_id}, context=context)
         self.write(cursor, user, invoice_id, {
