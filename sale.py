@@ -1,16 +1,15 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 "Sale"
-
+from trytond.model import ModelWorkflow
 from trytond.osv import fields, OSV
-from trytond.netsvc import LocalService
 from trytond.report import CompanyReport
 from trytond.wizard import Wizard, WizardOSV
 from trytond.backend import TableHandler
 from decimal import Decimal
 
 
-class Sale(OSV):
+class Sale(ModelWorkflow, OSV):
     'Sale'
     _name = 'sale.sale'
     _rec_name = 'reference'
@@ -806,7 +805,6 @@ class Sale(OSV):
         packing_obj = self.pool.get('stock.packing.out')
         move_obj = self.pool.get('stock.move')
         sale_line_obj = self.pool.get('sale.line')
-        workflow_service = LocalService('workflow')
 
         if context is None:
             context = {}
@@ -834,8 +832,8 @@ class Sale(OSV):
             sale_line_obj.write(cursor, user, line_id, {
                 'moves': [('add', move_id)],
                 }, context=context)
-        workflow_service.trg_validate(0, 'stock.packing.out', packing_id,
-                'waiting', cursor, context=ctx)
+        packing_obj.workflow_trigger_validate(cursor, 0, packing_id,
+                'waiting', context=ctx)
         return packing_id
 
 Sale()
@@ -1357,7 +1355,7 @@ class PackingOut(OSV):
             })
 
     def write(self, cursor, user, ids, vals, context=None):
-        workflow_service = LocalService('workflow')
+        sale_obj = self.pool.get('sale.sale')
         sale_line_obj = self.pool.get('sale.line')
 
         res = super(PackingOut, self).write(cursor, user, ids, vals,
@@ -1380,9 +1378,8 @@ class PackingOut(OSV):
                     if sale_line.sale.id not in sale_ids:
                         sale_ids.append(sale_line.sale.id)
 
-            for sale_id in sale_ids:
-                workflow_service.trg_validate(user, 'sale.sale', sale_id,
-                        'packing_update', cursor, context=context)
+            sale_obj.workflow_trigger_validate(cursor, user, sale_ids,
+                    'packing_update', context=context)
         return res
 
     def button_draft(self, cursor, user, ids, context=None):
@@ -1457,7 +1454,7 @@ class Move(OSV):
         return res
 
     def write(self, cursor, user, ids, vals, context=None):
-        workflow_service = LocalService('workflow')
+        sale_obj = self.pool.get('sale.sale')
         sale_line_obj = self.pool.get('sale.line')
 
         res = super(Move, self).write(cursor, user, ids, vals,
@@ -1472,9 +1469,8 @@ class Move(OSV):
                         sale_line_ids, context=context):
                     if sale_line.sale.id not in sale_ids:
                         sale_ids.append(sale_line.sale.id)
-            for sale_id in sale_ids:
-                workflow_service.trg_validate(user, 'sale.sale',
-                        sale_id, 'packing_update', cursor, context=context)
+            sale_obj.workflow_trigger_validate(cursor, user, sale_ids,
+                    'packing_update', context=context)
         return res
 
 Move()
@@ -1569,7 +1565,6 @@ class HandlePackingException(Wizard):
     }
 
     def _handle_moves(self, cursor, user, data, context=None):
-        workflow_service = LocalService('workflow')
         sale_obj = self.pool.get('sale.sale')
         sale_line_obj = self.pool.get('sale.line')
         move_obj = self.pool.get('stock.move')
@@ -1622,10 +1617,10 @@ class HandlePackingException(Wizard):
             move_obj.copy(
                 cursor, user, duplicate_all, default=default, context=context)
 
-        workflow_service.trg_validate(0, 'stock.packing.out', packing_id,
-                'waiting', cursor, context=ctx)
+        packing_obj.workflow_trigger_validate(cursor, 0, packing_id,
+                'waiting', context=ctx)
 
-        workflow_service.trg_validate(user, 'sale.sale', data['id'],
-                                      'packing_ok', cursor, context=context)
+        sale_obj.workflow_trigger_validate(cursor, user, data['id'],
+                'packing_ok', context=context)
 
 HandlePackingException()
