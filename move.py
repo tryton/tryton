@@ -7,7 +7,6 @@ from trytond.wizard import Wizard, WizardOSV
 from trytond.report import Report
 from decimal import Decimal
 import datetime
-from trytond.netsvc import LocalService
 import md5
 
 _MOVE_STATES = {
@@ -363,12 +362,12 @@ class Reconciliation(OSV):
                 context=context)
 
     def create(self, cursor, user, vals, context=None):
-        workflow_service = LocalService('workflow')
+        move_line_obj = self.pool.get('account.move.line')
         res = super(Reconciliation, self).create(cursor, user, vals, context=context)
         reconciliation = self.browse(cursor, user, res, context=context)
-        for line in reconciliation.lines:
-            workflow_service.trg_trigger(user, 'account.move.line', line.id,
-                    cursor, context=context)
+
+        move_line_obj.workflow_trigger_trigger(cursor, user,
+                [x.id for x in reconciliation.lines], context=context)
         return res
 
     def write(self, cursor, user, ids, vals, context=None):
