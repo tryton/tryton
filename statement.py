@@ -1,15 +1,14 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Statement"
-
+from trytond.model import ModelWorkflow
 from trytond.osv import fields, OSV
-from trytond.netsvc import LocalService
 from decimal import Decimal
 
 _STATES = {'readonly': 'state != "draft"'}
 
 
-class Statement(OSV):
+class Statement(ModelWorkflow, OSV):
     'Account Statement'
     _name = 'account.statement'
     _description = __doc__
@@ -263,13 +262,10 @@ class Statement(OSV):
             }, context=context)
 
     def draft_workflow(self, cursor, user, ids, context=None):
-        workflow_service = LocalService('workflow')
-        for statement in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, statement.id, cursor,
-                    context=context)
-            self.write(cursor, user, statement.id, {
-                'state': 'draft',
-                }, context=context)
+        self.workflow_trigger_create(cursor, user, ids, context=context)
+        self.write(cursor, user, ids, {
+            'state': 'draft',
+            }, context=context)
         return True
 
 Statement()
