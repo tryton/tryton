@@ -2,14 +2,13 @@
 #of this repository contains the full copyright notices and license terms.
 
 from trytond.osv import fields, OSV
-from trytond.netsvc import LocalService
 
 
 class Invoice(OSV):
     _name = 'account.invoice'
 
     def write(self, cursor, user, ids, vals, context=None):
-        workflow_service = LocalService('workflow')
+        invoice_line_obj = self.pool.get('account.invoice.line')
         purchase_obj = self.pool.get('purchase.purchase')
         res = super(Invoice, self).write(cursor, user, ids, vals,
                 context=context)
@@ -21,9 +20,9 @@ class Invoice(OSV):
                 ], context=context)
             for purchase in purchase_obj.browse(cursor, user, purchase_ids,
                     context=context):
-                for invoice_line in purchase.invoice_lines:
-                    workflow_service.trg_trigger(user, 'account.invoice.line',
-                            invoice_line.id, cursor, context=context)
+                invoice_line_obj.workflow_trigger_trigger(cursor, user,
+                        [x.id for x in purchase.invoice_lines],
+                        context=context)
         return res
 
 Invoice()

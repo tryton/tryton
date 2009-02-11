@@ -2,7 +2,6 @@
 #of this repository contains the full copyright notices and license terms.
 
 from trytond.osv import fields, OSV
-from trytond.netsvc import LocalService
 
 
 class Purchase(OSV):
@@ -42,9 +41,8 @@ class Purchase(OSV):
                 'invoices': [('unlink', res)],
                 'invoice_lines': [('add', line_ids)],
                 }, context=context)
-            workflow_service = LocalService('workflow')
-            workflow_service.trg_validate(user, 'account.invoice',
-                    res, 'cancel', cursor, context=context)
+            invoice_obj.workflow_trigger_validate(cursor, 0, res,
+                    'cancel', context=context)
             invoice_obj.delete(cursor, 0, res, context=context)
             res = None
         return res
