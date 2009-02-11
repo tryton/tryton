@@ -1,9 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 "Purchase"
-
+from trytond.model import ModelWorkflow
 from trytond.osv import fields, OSV
-from trytond.netsvc import LocalService
 from trytond.report import CompanyReport
 from trytond.wizard import Wizard, WizardOSV
 from trytond.backend import TableHandler
@@ -15,7 +14,7 @@ _STATES = {
 }
 
 
-class Purchase(OSV):
+class Purchase(ModelWorkflow, OSV):
     'Purchase'
     _name = 'purchase.purchase'
     _description = __doc__
@@ -1389,7 +1388,7 @@ class PackingIn(OSV):
             })
 
     def write(self, cursor, user, ids, vals, context=None):
-        workflow_service = LocalService('workflow')
+        purchase_obj = self.pool.get('purchase.purchase')
         purchase_line_obj = self.pool.get('purchase.line')
 
         res = super(PackingIn, self).write(cursor, user, ids, vals,
@@ -1412,9 +1411,8 @@ class PackingIn(OSV):
                     if purchase_line.purchase.id not in purchase_ids:
                         purchase_ids.append(purchase_line.purchase.id)
 
-            for purchase_id in purchase_ids:
-                workflow_service.trg_validate(user, 'purchase.purchase',
-                        purchase_id, 'packing_update', cursor, context=context)
+            purchase_obj.workflow_trigger_validate(cursor, user, purchase_ids,
+                    'packing_update', context=context)
         return res
 
     def button_draft(self, cursor, user, ids, context=None):
@@ -1606,7 +1604,7 @@ class Move(OSV):
         return args2
 
     def write(self, cursor, user, ids, vals, context=None):
-        workflow_service = LocalService('workflow')
+        purchase_obj = self.pool.get('purchase.purchase')
         purchase_line_obj = self.pool.get('purchase.line')
 
         res = super(Move, self).write(cursor, user, ids, vals,
@@ -1621,9 +1619,8 @@ class Move(OSV):
                         purchase_line_ids, context=context):
                     if purchase_line.purchase.id not in purchase_ids:
                         purchase_ids.append(purchase_line.purchase.id)
-            for purchase_id in purchase_ids:
-                workflow_service.trg_validate(user, 'purchase.purchase',
-                        purchase_id, 'packing_update', cursor, context=context)
+            purchase_obj.workflow_trigger_validate(cursor, user, purchase_ids,
+                    'packing_update', context=context)
         return res
 
 Move()
@@ -1765,7 +1762,7 @@ class HandlePackingException(Wizard):
     }
 
     def _handle_moves(self, cursor, user, data, context=None):
-        workflow_service = LocalService('workflow')
+        purchase_obj = self.pool.get('purchase.purchase')
         purchase_line_obj = self.pool.get('purchase.line')
         move_obj = self.pool.get('stock.move')
         to_duplicate = data['form']['duplicate_moves'][0][1]
@@ -1807,7 +1804,7 @@ class HandlePackingException(Wizard):
             }
         move_obj.copy(
             cursor, user, duplicate_all, default=default, context=context)
-        workflow_service.trg_validate(user, 'purchase.purchase', data['id'],
-                                     'packing_ok', cursor, context=context)
+        purchase_obj.workflow_trigger_validate(cursor, user, data['id'],
+                'packing_ok', context=context)
 
 HandlePackingException()
