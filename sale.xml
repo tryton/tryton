@@ -17,6 +17,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">sale.sale</field>
         </record>
 
+        <record model="ir.action.wizard" id="wizard_invoice_handle_exception">
+            <field name="name">Handle Invoice Exception</field>
+            <field name="wiz_name">sale.handle.invoice.exception</field>
+            <field name="model">sale.sale</field>
+        </record>
+
         <record model="ir.ui.view" id="sale_view_form">
             <field name="model">sale.sale</field>
             <field name="type">form</field>
@@ -80,11 +86,13 @@ this repository contains the full copyright notices and license terms. -->
                                         states="{'invisible': '''state != 'quotation' ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                         icon="tryton-go-previous"/>
                                     <button name="quotation" string="Quotation"
-                                        states="{'invisible': '''state != 'draft' ''', 'readonly': '''%(group_sale)d not in groups'''}"
+                                        states="{'invisible': '''state != 'draft' ''', 'readonly': '''(not bool(lines)) or %(group_sale)d not in groups'''}"
                                         icon="tryton-go-next"/>
-                                    <button name="invoice_ok" string="Ignore Invoice Exception"
-                                        states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_sale)d not in groups'''}"
-                                        icon="tryton-go-next"/>
+                                    <button name="%(wizard_invoice_handle_exception)d"
+                                            string="Handle Invoice Exception"
+                                            type="action"
+                                            states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_sale)d not in groups'''}"
+                                            icon="tryton-go-next"/>
                                     <button name="%(wizard_packing_handle_exception)d"
                                             type="action"
                                             string="Handle Packing Exception"
@@ -108,7 +116,22 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="comment" colspan="4" spell="party_lang"/>
                         </page>
                         <page string="Invoices" id="invoices">
-                            <field name="invoices" colspan="4" widget="one2many"/>
+                            <field name="invoices" colspan="4" widget="one2many">
+                                <tree>
+                                  <field name="number" select="1"/>
+                                  <field name="invoice_date" select="2"/>
+                                  <field name="party" select="1"/>
+                                  <field name="currency" select="2"/>
+                                  <field name="untaxed_amount" select="2"/>
+                                  <field name="tax_amount" select="2"/>
+                                  <field name="total_amount" select="2"/>
+                                  <field name="state" select="1"/>
+                                  <field name="sale_exception_state"/>
+                                  <field name="amount_to_pay_today"/>
+                                  <field name="description" select="2"/>
+                                  <field name="currency_digits" tree_invisible="1"/>
+                              </tree>
+                            </field>
                         </page>
                         <page string="Packings" id="packings">
                             <field name="moves" colspan="4" widget="one2many">
@@ -173,6 +196,23 @@ this repository contains the full copyright notices and license terms. -->
                               <field name="unit_digits" tree_invisible="1"/>
                           </tree>
                         </field>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="handle_invoice_exception_view_form">
+            <field name="model">sale.handle.invoice.exception.ask</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Handle Invoice Exception" col="2">
+                    <image name="tryton-dialog-information"/>
+                    <group col="1" colspan="1" id="invoices">
+                        <separator string="Choose invoices to duplicate"
+                                   id="choose"/>
+                        <field name="duplicate_invoices"/>
                     </group>
                 </form>
                 ]]>
@@ -337,7 +377,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Waiting Invoice</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'invoice_state': 'waiting'})&#10;ignore_invoice_exception()</field>
+            <field name="action">write({'invoice_state': 'waiting'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_sale_exception">
             <field name="name">Invoice Exception</field>
@@ -425,7 +465,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Waiting Invoice Packing</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'invoice_state': 'waiting', 'packing_state': 'sent'})&#10;ignore_invoice_exception()</field>
+            <field name="action">write({'invoice_state': 'waiting', 'packing_state': 'sent'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_packing_exception">
             <field name="name">Invoice Packing Exception</field>
@@ -468,6 +508,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.transition" id="sale_transition_draft_quotation">
             <field name="act_from" ref="sale_activity_draft"/>
             <field name="act_to" ref="sale_activity_quotation"/>
+            <field name="condition">bool(lines)</field>
             <field name="signal">quotation</field>
             <field name="group" ref="group_sale"/>
         </record>
