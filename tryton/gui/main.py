@@ -1383,11 +1383,11 @@ class Main(object):
                 parent=self.window)
 
     def sig_db_restore(self, widget):
+        if not self.sig_logout(widget):
+            return False
         filename = common.file_selection(_('Open Backup File to Restore...'), \
                 parent=self.window, preview=False)
         if not filename:
-            rpc.logout()
-            Main.get_main().refresh_ssl()
             return
         dialog = DBRestore(self.window, filename=filename)
         url, dbname, passwd = dialog.run(self.window)
@@ -1425,9 +1425,6 @@ class Main(object):
             else:
                 common.message(_('Database restore failed!'), \
                         parent=self.window)
-        else:
-            rpc.logout()
-            Main.get_main().refresh_ssl()
 
     def sig_db_dump(self, widget):
         if not self.sig_logout(widget):
