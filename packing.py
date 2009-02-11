@@ -1,8 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Packing"
+from trytond.model import ModelWorkflow
 from trytond.osv import fields, OSV
-from trytond.netsvc import LocalService
 from trytond.report import CompanyReport
 from trytond.wizard import Wizard, WizardOSV
 from trytond.backend import TableHandler
@@ -13,7 +13,7 @@ STATES = {
 }
 
 
-class PackingIn(OSV):
+class PackingIn(ModelWorkflow, OSV):
     "Supplier Packing"
     _name = 'stock.packing.in'
     _description = __doc__
@@ -287,16 +287,13 @@ class PackingIn(OSV):
                     }, context=context)
 
     def button_draft(self, cursor, user, ids, context=None):
-        workflow_service = LocalService('workflow')
-        for packing in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, packing.id, cursor,
-                    context=context)
+        self.workflow_trigger_create(cursor, user, ids, context=context)
         return True
 
 PackingIn()
 
 
-class PackingInReturn(OSV):
+class PackingInReturn(ModelWorkflow, OSV):
     "Supplier Return Packing"
     _name = 'stock.packing.in.return'
     _description = __doc__
@@ -337,10 +334,7 @@ class PackingInReturn(OSV):
         return 'draft'
 
     def button_draft(self, cursor, user, ids, context=None):
-        workflow_service = LocalService('workflow')
-        for packing in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, packing.id, cursor,
-                    context=context)
+        self.workflow_trigger_create(cursor, user, ids, context=context)
         return True
 
     def __init__(self):
@@ -451,7 +445,7 @@ class PackingInReturn(OSV):
 PackingInReturn()
 
 
-class PackingOut(OSV):
+class PackingOut(ModelWorkflow, OSV):
     "Customer Packing"
     _name = 'stock.packing.out'
     _description = __doc__
@@ -834,16 +828,13 @@ class PackingOut(OSV):
         return True
 
     def button_draft(self, cursor, user, ids, context=None):
-        workflow_service = LocalService('workflow')
-        for packing in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, packing.id, cursor,
-                    context=context)
+        self.workflow_trigger_create(cursor, user, ids, context=context)
 
 PackingOut()
 
 
 
-class PackingOutReturn(OSV):
+class PackingOutReturn(ModelWorkflow, OSV):
     "Customer Return Packing"
     _name = 'stock.packing.out.return'
     _description = __doc__
@@ -1043,10 +1034,7 @@ class PackingOutReturn(OSV):
 
 
     def button_draft(self, cursor, user, ids, context=None):
-        workflow_service = LocalService('workflow')
-        for packing in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, packing.id, cursor,
-                    context=context)
+        self.workflow_trigger_create(cursor, user, ids, context=context)
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -1166,11 +1154,10 @@ class AssignPackingOut(Wizard):
     }
 
     def _choice(self, cursor, user, data, context=None):
-        workflow_service = LocalService('workflow')
         packing_out_obj = self.pool.get('stock.packing.out')
 
-        workflow_service.trg_validate(user, 'stock.packing.out', data['id'],
-                'assign', cursor, context=context)
+        packing_out_obj.workflow_trigger_validate(cursor, user, data['id'],
+                'assign', context=context)
         packing = packing_out_obj.browse(cursor, user, data['id'],
                 context=context)
         if not [x.id for x in packing.inventory_moves if x.state == 'draft']:
@@ -1186,15 +1173,16 @@ class AssignPackingOut(Wizard):
             if x.state == 'draft']}
 
     def _force(self, cursor, user, data, context=None):
-        workflow_service = LocalService('workflow')
-        workflow_service.trg_validate(user, 'stock.packing.out', data['id'],
-                'force_assign', cursor, context=context)
+        packing_out_obj = self.pool.get('stock.packing.out')
+
+        packing_out_obj.workflow_trigger_validate(cursor, user, data['id'],
+                'force_assign', context=context)
         return {}
 
 AssignPackingOut()
 
 
-class PackingInternal(OSV):
+class PackingInternal(ModelWorkflow, OSV):
     "Internal Packing"
     _name = 'stock.packing.internal'
     _description = __doc__
@@ -1237,10 +1225,7 @@ class PackingInternal(OSV):
         return 'draft'
 
     def button_draft(self, cursor, user, ids, context=None):
-        workflow_service = LocalService('workflow')
-        for packing in self.browse(cursor, user, ids, context=context):
-            workflow_service.trg_create(user, self._name, packing.id, cursor,
-                    context=context)
+        self.workflow_trigger_create(cursor, user, ids, context=context)
         return True
 
     def __init__(self):
@@ -1368,11 +1353,10 @@ class AssignPackingInternal(Wizard):
     }
 
     def _choice(self, cursor, user, data, context=None):
-        workflow_service = LocalService('workflow')
         packing_internal_obj = self.pool.get('stock.packing.internal')
 
-        workflow_service.trg_validate(user, 'stock.packing.internal',
-                data['id'], 'assign', cursor, context=context)
+        packing_internal_obj.workflow_trigger_validate(cursor, user,
+                data['id'], 'assign', context=context)
         packing = packing_internal_obj.browse(cursor, user, data['id'],
                 context=context)
         if not [x.id for x in packing.moves if x.state == 'draft']:
@@ -1387,9 +1371,10 @@ class AssignPackingInternal(Wizard):
         return {'moves': [x.id for x in packing.moves if x.state == 'draft']}
 
     def _force(self, cursor, user, data, context=None):
-        workflow_service = LocalService('workflow')
-        workflow_service.trg_validate(user, 'stock.packing.internal',
-                data['id'], 'force_assign', cursor, context=context)
+        packing_internal_obj = self.pool.get('stock.packing.internal')
+
+        packing_internal_obj.workflow_trigger_validate(cursor, user,
+                data['id'], 'force_assign', context=context)
         return {}
 
 AssignPackingInternal()
@@ -1437,11 +1422,10 @@ class AssignPackingInReturn(Wizard):
     }
 
     def _choice(self, cursor, user, data, context=None):
-        workflow_service = LocalService('workflow')
         packing_internal_obj = self.pool.get('stock.packing.in.return')
 
-        workflow_service.trg_validate(user, 'stock.packing.in.return',
-                data['id'], 'assign', cursor, context=context)
+        packing_internal_obj.workflow_trigger_validate(cursor, user,
+                data['id'], 'assign', context=context)
         packing = packing_internal_obj.browse(cursor, user, data['id'],
                 context=context)
         if not [x.id for x in packing.moves if x.state == 'draft']:
@@ -1456,9 +1440,10 @@ class AssignPackingInReturn(Wizard):
         return {'moves': [x.id for x in packing.moves if x.state == 'draft']}
 
     def _force(self, cursor, user, data, context=None):
-        workflow_service = LocalService('workflow')
-        workflow_service.trg_validate(user, 'stock.packing.in.return',
-                data['id'], 'force_assign', cursor, context=context)
+        packing_internal_obj = self.pool.get('stock.packing.in.return')
+
+        packing_internal_obj.workflow_trigger_validate(cursor, user,
+                data['id'], 'force_assign', context=context)
         return {}
 
 AssignPackingInReturn()

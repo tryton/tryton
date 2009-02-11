@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 'Inventory'
+from trytond.model import ModelWorkflow
 from trytond.osv import fields, OSV
 from trytond.wizard import Wizard, WizardOSV
 
@@ -9,7 +10,7 @@ STATES = {
 }
 
 
-class Inventory(OSV):
+class Inventory(ModelWorkflow, OSV):
     'Stock Inventory'
     _name = 'stock.inventory'
     _description = __doc__
