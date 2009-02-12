@@ -3270,6 +3270,9 @@ class ORM(object):
                 (old_left, old_right))
         child_ids = [x[0] for x in cursor.fetchall()]
 
+        if len(child_ids) > cursor.IN_MAX:
+            return self._rebuild_tree(cursor, 0, field_name, False, 0)
+
         # ids for left update
         cursor.execute('SELECT id FROM "' + self._table + '" ' \
                 'WHERE "' + left + '" >= %s ' \
@@ -3285,17 +3288,21 @@ class ORM(object):
         right_ids = [x[0] for x in cursor.fetchall()]
 
         if left_ids:
-            cursor.execute('UPDATE "' + self._table + '" ' \
-                    'SET "' + left + '" = "' + left + '" + ' \
-                        + str(old_right - old_left + 1) + ' ' \
-                    'WHERE id IN (' + ','.join(['%s' for x in left_ids]) + ')',
-                    left_ids)
+            for i in range(0, len(left_ids), cursor.IN_MAX):
+                sub_ids = left_ids[i:i + cursor.IN_MAX]
+                str_d = ','.join(('%s',) * len(sub_ids))
+                cursor.execute('UPDATE "' + self._table + '" ' \
+                        'SET "' + left + '" = "' + left + '" + ' \
+                            + str(old_right - old_left + 1) + ' ' \
+                        'WHERE id IN (' + str_d + ')', sub_ids)
         if right_ids:
-            cursor.execute('UPDATE "' + self._table + '" ' \
-                    'SET "' + right + '" = "' + right + '" + ' \
-                        + str(old_right - old_left + 1) + ' ' \
-                    'WHERE id IN (' + ','.join(['%s' for x in right_ids]) + ')',
-                    right_ids)
+            for i in range(0, len(right_ids), cursor.IN_MAX):
+                sub_ids = right_ids[i:i + cursor.IN_MAX]
+                str_d = ','.join(('%s',) * len(sub_ids))
+                cursor.execute('UPDATE "' + self._table + '" ' \
+                        'SET "' + right + '" = "' + right + '" + ' \
+                            + str(old_right - old_left + 1) + ' ' \
+                        'WHERE id IN (' + str_d + ')', sub_ids)
 
         cursor.execute('UPDATE "' + self._table + '" ' \
                 'SET "' + left + '" = "' + left + '" + ' \
