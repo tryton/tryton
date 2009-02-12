@@ -3,6 +3,7 @@
 "Action"
 from trytond.osv import fields, OSV
 from trytond.tools import file_open
+import base64
 
 
 class Action(OSV):
@@ -263,7 +264,8 @@ class ActionReport(OSV):
             data = report[name + '_data']
             if not data and report[name[:-8]]:
                 try:
-                    data = file_open(report[name[:-8]], mode='rb').read()
+                    data = base64.encodestring(file_open(report[name[:-8]],
+                        mode='rb').read())
                 except:
                     data = False
             res[report.id] = data
@@ -277,7 +279,8 @@ class ActionReport(OSV):
         res = {}
         for report in self.browse(cursor, user, ids, context=context):
             try:
-                data = file_open(report.style, mode='rb').read()
+                data = base64.encodestring(file_open(report.style,
+                    mode='rb').read())
             except:
                 data = False
             res[report.id] = data

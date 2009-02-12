@@ -245,7 +245,7 @@ class Report(object):
         outzip = zipfile.ZipFile(path, mode='w')
 
         content_io = StringIO.StringIO()
-        content_io.write(report.report_content)
+        content_io.write(base64.decodestring(report.report_content))
         content_z = zipfile.ZipFile(content_io, mode='r')
 
         style_info = None
@@ -265,7 +265,7 @@ class Report(object):
             #cStringIO difference:
             #calling StringIO() with a string parameter creates a read-only object
             style2_io = StringIO.StringIO()
-            style2_io.write(report.style_content)
+            style2_io.write(base64.decodestring(report.style_content))
             style2_z = zipfile.ZipFile(style2_io, mode='r')
             style2_xml = style2_z.read('styles.xml')
             for file in style2_z.namelist():
