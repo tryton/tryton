@@ -75,33 +75,30 @@ class Address(OSV):
                     res[address.id] += address.country.name
         return res
 
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        res = []
+            return {}
+        res = {}
         for address in self.browse(cursor, user, ids, context=context):
-            res.append((address.id, ", ".join(x for x in [address.name,
-                address.party.name, address.zip, address.city] if x)))
+            res[address.id] = ", ".join(x for x in [address.name,
+                address.party.rec_name, address.zip, address.city] if x)
         return res
 
-    def name_search(self, cursor, user, name, args=None, operator='ilike',
-                    context=None, limit=None):
-        if not args:
-            args=[]
-
-        ids = self.search(cursor, user, [('zip', '=', name)] + args,
-                          limit=limit, context=context)
-        if not ids:
-            ids = self.search(cursor, user, [('city', operator, name)] + args,
-                              limit=limit, context=context)
-        if name:
-            ids += self.search(cursor, user, [('name', operator, name)] + args,
-                               limit=limit, context=context)
-            ids += self.search(cursor, user, [('party', operator, name)] + args,
-                               limit=limit, context=context)
-        return self.name_get(cursor, user, ids, context=context)
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, ['OR',
+                ('zip', '=', args[i][2]),
+                ('city', '=', args[i][2]),
+                ('name', args[i][1], args[i][2]),
+                ], context=context)
+            if ids:
+                args2.append(('id', 'in', ids))
+            else:
+                args2.append(('party', args[i][1], args[i][2]))
+            i += 1
+        return args
 
     def write(self, cursor, user, ids, vals, context=None):
         if 'party' in vals:

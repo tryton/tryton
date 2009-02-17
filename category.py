@@ -14,8 +14,6 @@ class Category(OSV):
     name = fields.Char('Name', required=True, states=STATES)
     parent = fields.Many2One('party.category', 'Parent',
            select=1, states=STATES)
-    complete_name = fields.Function('get_complete_name',
-           type="char", string='Name')
     childs = fields.One2Many('party.category', 'parent',
        'Childs', states=STATES)
     active = fields.Boolean('Active')
@@ -33,21 +31,17 @@ class Category(OSV):
     def default_active(self, cursor, user, context=None):
         return 1
 
-    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
-        res = self.name_get(cursor, user, ids, context=context)
-        return dict(res)
-
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
-            return []
-        categories = self.browse(cursor, user, ids, context=context)
+            return {}
         res = []
+        categories = self.browse(cursor, user, ids, context=context)
         for category in categories:
             if category.parent:
                 name = category.parent.name+' / '+ category.name
             else:
                 name = category.name
-            res.append((category.id, name))
+            res[category.id] = name
         return res
 
 Category()
