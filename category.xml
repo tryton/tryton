@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Product Categories">
                     <field name="name" select="1"/>
-                    <field name="complete_name"/>
+                    <field name="rec_name"/>
                 </tree>
                 ]]>
             </field>
@@ -39,8 +39,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name"/>
                     <label name="parent"/>
                     <field name="parent"/>
-                    <label name="complete_name"/>
-                    <field name="complete_name" colspan="3"/>
+                    <label name="rec_name"/>
+                    <field name="rec_name" colspan="3"/>
                     <notebook colspan="4">
                         <page string="Childs" col="1" id="childs">
                             <field name="childs"/>

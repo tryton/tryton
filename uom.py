@@ -82,15 +82,13 @@ class Uom(OSV):
                         return False
                     uom  = self.browse(cursor, user, context['category'][0],
                             context=context)
-                    return category_obj.name_get(cursor, user, uom.category.id,
-                            context=context)[0]
+                    return uom.category.id
                 else:
                     if not context['category'][0]:
                         return False
                     product = product_obj.browse(cursor, user,
                             context['category'][0], context=context)
-                    return category_obj.name_get(cursor, user,
-                            product.default_uom.category.id, context=context)[0]
+                    return product.default_uom.category.id
         return False
 
     def on_change_factor(self, cursor, user, ids, value, context=None):

@@ -79,35 +79,30 @@ class Product(OSV):
             required=True, ondelete='CASCADE')
     code = fields.Char("Code", size=None)
     description = fields.Text("Description", translate=True)
-    complete_name = fields.Function('get_complete_name', string="Complete Name", type="char")
 
-
-    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
-        return dict(self.name_get(cursor, user, ids, context=context))
-
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        res = []
+            return {}
+        res = {}
         for product in self.browse(cursor, user, ids, context=context):
             name = product.name
             if product.code:
                 name = '[' + product.code + '] ' + product.name
-            res.append((product.id, name))
+            res[product.id] = name
         return res
 
-    def name_search(self, cursor, user, name, args=None, operator='ilike',
-                    context=None, limit=None):
-        if not args:
-            args = []
-        ids = self.search(cursor, user, [('code', '=', name)] + args,
-                limit=limit, context=context)
-        if ids:
-            return self.name_get(cursor, user, ids, context=context)
-        return super(Product, self).name_search(cursor, user, name,
-                args=args, operator=operator, context=context, limit=limit)
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, [('code', args[i][1], args[i][2])],
+                    context=context)
+            if ids:
+                args2.append(('id', 'in', ids))
+            else:
+                args2.append(('name', args[i][1], args[i][2]))
+            i += 1
+        return args2
 
     def delete(self, cursor, user, ids, context=None):
         template_obj = self.pool.get('product.template')
