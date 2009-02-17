@@ -84,12 +84,10 @@ class Template(OSV):
         name = name[:-5]
         for product in self.browse(cursor, user, ids, context=context):
             if product[name]:
-                res[product.id] = account_obj.name_get(cursor, user,
-                        product[name].id, context=context)[0]
+                res[product.id] = product[name].id
             else:
                 if product.category[name]:
-                    res[product.id] = account_obj.name_get(cursor, user,
-                            product.category[name].id, context=context)[0]
+                    res[product.id] = product.category[name].id
                 else:
                     self.raise_user_error(cursor, 'missing_account',
                             (product.name, product.id), context=context)
