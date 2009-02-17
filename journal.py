@@ -142,20 +142,19 @@ class Journal(OSV):
         types = type_obj.browse(cursor, user, type_ids, context=context)
         return [(x.code, x.name) for x in types]
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-            context=None, limit=None):
-        if name:
-            ids = self.search(cursor, user,
-                    [('code', 'like', name + '%')] + args,
-                    limit=limit, context=context)
-            if not ids:
-                ids = self.search(cursor, user,
-                        [(self._rec_name, operator, name)] + args,
-                        limit=limit, context=context)
-        else:
-            ids = self.search(cursor, user, args, limit=limit, context=context)
-        res = self.name_get(cursor, user, ids, context=context)
-        return res
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, [
+                ('code', args[i][1], args[i][2]),
+                ], limit=1, context=context)
+            if ids:
+                args2.append(('code', args[i][1], args[i][2]))
+            else:
+                args2.append((self._rec_name, args[i][1], args[i][2]))
+            i += 1
+        return args2
 
 Journal()
 

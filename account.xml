@@ -219,7 +219,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Types">
-                    <field name="complete_name" select="1"/>
+                    <field name="name" select="1"/>
                 </tree>
                 ]]>
             </field>
@@ -304,7 +304,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Templates">
-                    <field name="complete_name" select="1"/>
+                    <field name="rec_name" select="1"/>
                     <field name="type" select="1"/>
                 </tree>
                 ]]>
@@ -524,7 +524,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Accounts">
-                    <field name="complete_name" select="1"/>
+                    <field name="rec_name" select="1"/>
                     <field name="company" select="1"/>
                     <field name="type" select="1"/>
                 </tree>

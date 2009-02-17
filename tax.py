@@ -147,8 +147,7 @@ class Code(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def on_change_with_currency_digits(self, cursor, user, ids, vals,
@@ -204,30 +203,29 @@ class Code(OSV):
                     code.company.currency, res[code.id])
         return res
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-            context=None, limit=None):
-        if name:
-            ids = self.search(cursor, user,
-                    [('code', 'like', name + '%')] + args,
-                    limit=limit, context=context)
-            if not ids:
-                ids = self.search(cursor, user,
-                        [(self._rec_name, operator, name)] + args,
-                        limit=limit, context=context)
-        else:
-            ids = self.search(cursor, user, args, limit=limit, context=context)
-        res = self.name_get(cursor, user, ids, context=context)
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+        if not ids:
+            return {}
+        res = {}
+        for code in self.browse(cursor, user, ids, context=context):
+            if code.code:
+                res[code.id] = code.code + ' - ' + code.name
+            else:
+                res[code.id] = code.name
         return res
 
-    def name_get(self, cursor, user, ids, context=None):
-        if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        return [(r['id'], r['code'] and r['code'] + ' - ' + \
-                unicode(r[self._rec_name]) or unicode(r[self._rec_name]))
-                for r in self.read(cursor, user, ids,
-                    [self._rec_name, 'code'], context=context)]
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, [('code', args[i][1], args[i][2])],
+                    context=context)
+            if ids:
+                args2.append(('code', args[i][1], args[i][2]))
+            else:
+                args2.append(('name', args[i][1], args[i][2]))
+            i += 1
+        return args2
 
     def delete(self, cursor, user, ids, context=None):
         if isinstance(ids, (int, long)):
@@ -358,8 +356,7 @@ class TaxTemplate(OSV):
         group_ids = group_obj.search(cursor, user, [
             ('code', '=', 'none'),
             ], limit=1, context=context)
-        return group_obj.name_get(cursor, user, group_ids[0],
-                context=context)[0]
+        return group_ids[0]
 
     def default_type(self, cursor, user, context=None):
         return 'percentage'
@@ -587,8 +584,7 @@ class Tax(OSV):
         group_ids = group_obj.search(cursor, user, [
             ('code', '=', 'none'),
             ], limit=1, context=context)
-        return group_obj.name_get(cursor, user, group_ids[0],
-                context=context)[0]
+        return group_ids[0]
 
     def default_type(self, cursor, user, context=None):
         return 'percentage'
@@ -613,8 +609,7 @@ class Tax(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def _process_tax(self, cursor, user, tax, price_unit, context=None):

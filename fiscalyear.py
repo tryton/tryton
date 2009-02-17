@@ -74,8 +74,7 @@ class FiscalYear(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def check_dates(self, cursor, user, ids):
@@ -202,7 +201,6 @@ class FiscalYear(OSV):
         :param context: the context
         '''
         currency_obj = self.pool.get('currency.currency')
-        account_obj = self.pool.get('account.account')
         deferral_obj = self.pool.get('account.account.deferral')
 
         if account.kind == 'view':
@@ -210,10 +208,8 @@ class FiscalYear(OSV):
         if not account.deferral:
             if not currency_obj.is_zero(cursor, user,
                     fiscalyear.company.currency, account.balance):
-                _, account_name = account_obj.name_get(cursor, user, account.id,
-                        context=context)[0]
                 self.raise_user_error(cursor, 'account_balance_not_zero',
-                        error_args=(account_name,), context=context)
+                        error_args=(account.rec_name,), context=context)
         else:
             deferral_obj.create(cursor, user, {
                 'account': account.id,

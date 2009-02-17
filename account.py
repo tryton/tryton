@@ -41,19 +41,17 @@ class TypeTemplate(OSV):
     def default_display_balance(self, cursor, user, context=None):
         return 'debit-credit'
 
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        res = []
+            return {}
+        res = {}
         def _name(type):
             if type.parent:
                 return _name(type.parent) + '\\' + type.name
             else:
                 return type.name
         for type in self.browse(cursor, user, ids, context=context):
-            res.append((type.id, _name(type)))
+            res[type.id] = _name(type)
         return res
 
     def _get_type_value(self, cursor, user, template, context=None):
@@ -126,8 +124,6 @@ class Type(OSV):
     name = fields.Char('Name', size=None, required=True, translate=True)
     parent = fields.Many2One('account.account.type', 'Parent',
             ondelete="restrict")
-    complete_name = fields.Function('get_complete_name', type='char',
-            fnct_search='search_complete_name', string='Name')
     childs = fields.One2Many('account.account.type', 'parent', 'Childs')
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
@@ -156,21 +152,6 @@ class Type(OSV):
 
     def default_display_balance(self, cursor, user, context=None):
         return 'debit-credit'
-
-    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
-        res = self.name_get(cursor, user, ids, context=context)
-        return dict(res)
-
-    def search_complete_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            names = self.name_search(cursor, user, name=args[i][2],
-                    operator=args[i][1], context=context)
-            ids = [x[0] for x in names]
-            args2.append(('id', 'in', ids))
-            i += 1
-        return args2
 
     def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
         res = {}
@@ -216,19 +197,17 @@ class Type(OSV):
                 res[type.id] = - res[type.id]
         return res
 
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        res = []
+            return {}
+        res = {}
         def _name(type):
             if type.parent:
                 return _name(type.parent) + '\\' + type.name
             else:
                 return type.name
         for type in self.browse(cursor, user, ids, context=context):
-            res.append((type.id, _name(type)))
+            res[type.id] = _name(type)
         return res
 
     def delete(self, cursor, user, ids, context=None):
@@ -249,9 +228,6 @@ class AccountTemplate(OSV):
 
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
-    complete_name = fields.Function('get_complete_name',
-            fnct_search='search_complete_name', type='char',
-            string='Code - Name', order_field='code', depends=['name', 'code'])
     code = fields.Char('Code', size=None, select=1)
     type = fields.Many2One('account.account.type.template', 'Type',
             ondelete="restrict",
@@ -298,45 +274,30 @@ class AccountTemplate(OSV):
     def default_deferral(self, cursor, user, context=None):
         return True
 
-    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
-        res = self.name_get(cursor, user, ids, context=context)
-        return dict(res)
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+        if not ids:
+            return {}
+        res = {}
+        for template in self.browse(cursor, user, ids, context=context):
+            if template.code:
+                res[template.id] = template.code + ' - ' + template.name
+            else:
+                res[template.id] = template.name
+        return res
 
-    def search_complete_name(self, cursor, user, name, args, context=None):
+    def search_rec_name(self, cursor, user, name, args, context=None):
         args2 = []
         i = 0
         while i < len(args):
-            names = self.name_search(cursor, user, name=args[i][2],
-                    operator=args[i][1], context=context)
-            ids = [x[0] for x in names]
-            args2.append(('id', 'in', ids))
+            ids = self.search(cursor, user, [
+                ('code', args[i][1], args[i][2]),
+                ], limit=1, context=context)
+            if ids:
+                args2.append(('code', args[i][1], args[i][2]))
+            else:
+                args2.append((self._rec_name, args[i][1], args[i][2]))
             i += 1
-        return args2
-
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-            context=None, limit=None):
-        if name:
-            ids = self.search(cursor, user,
-                    [('code', 'like', name + '%')] + (args or []),
-                    limit=limit, context=context)
-            if not ids:
-                ids = self.search(cursor, user,
-                        [(self._rec_name, operator, name)] + (args or []),
-                        limit=limit, context=context)
-        else:
-            ids = self.search(cursor, user, args, limit=limit, context=context)
-        res = self.name_get(cursor, user, ids, context=context)
-        return res
-
-    def name_get(self, cursor, user, ids, context=None):
-        if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        return [(r['id'], r['code'] and r['code'] + ' - ' + unicode(r[self._rec_name]) \
-                or unicode(r[self._rec_name])) for r in self.read(cursor, user, ids,
-                    [self._rec_name, 'code'], context=context)]
-
+        return args
 
     def _get_account_value(self, cursor, user, template, context=None):
         '''
@@ -460,9 +421,6 @@ class Account(OSV):
 
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=1)
-    complete_name = fields.Function('get_complete_name',
-            fnct_search='search_complete_name', type='char',
-            string='Code - Name', order_field='code')
     code = fields.Char('Code', size=None, select=1)
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -544,8 +502,7 @@ class Account(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_reconcile(self, cursor, user, context=None):
@@ -557,36 +514,11 @@ class Account(OSV):
     def default_kind(self, cursor, user, context=None):
         return 'view'
 
-    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
-        res = self.name_get(cursor, user, ids, context=context)
-        return dict(res)
-
-    def search_complete_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            names = self.name_search(cursor, user, name=args[i][2],
-                    operator=args[i][1], context=context)
-            ids = [x[0] for x in names]
-            args2.append(('id', 'in', ids))
-            i += 1
-        return args2
-
     def get_currency(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         for account in self.browse(cursor, user, ids, context=context):
             res[account.id] = account.company.currency.id
-        currency_names = {}
-        for currency_id, currency_name in currency_obj.name_get(cursor, user,
-                [x for x in res.values() if x], context=context):
-            currency_names[currency_id] = currency_name
-
-        for i in res.keys():
-            if res[i] and res[i] in currency_names:
-                res[i] = (res[i], currency_names[res[i]])
-            else:
-                res[i] = False
         return res
 
     def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
@@ -809,29 +741,30 @@ class Account(OSV):
                         currency, res[name][account_id])
         return res
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-            context=None, limit=None):
-        if name:
-            ids = self.search(cursor, user,
-                    [('code', 'like', name + '%')] + (args or []),
-                    limit=limit, context=context)
-            if not ids:
-                ids = self.search(cursor, user,
-                        [(self._rec_name, operator, name)] + (args or []),
-                        limit=limit, context=context)
-        else:
-            ids = self.search(cursor, user, args, limit=limit, context=context)
-        res = self.name_get(cursor, user, ids, context=context)
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+        if not ids:
+            return {}
+        res = {}
+        for account in self.browse(cursor, user, ids, context=context):
+            if account.code:
+                res[account.id] = account.code + ' - ' + account.name
+            else:
+                res[account.id] = account.name
         return res
 
-    def name_get(self, cursor, user, ids, context=None):
-        if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        return [(r['id'], r['code'] and r['code'] + ' - ' + unicode(r[self._rec_name]) \
-                or unicode(r[self._rec_name])) for r in self.read(cursor, user, ids,
-                    [self._rec_name, 'code'], context=context)]
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, [
+                ('code', args[i][1], args[i][2]),
+                ], limit=1, context=context)
+            if not ids:
+                args2.append(('code', args[i][1], args[i][2]))
+            else:
+                args2.append((self._rec_name, args[i][1], args[i][2]))
+            i += 1
+        return args2
 
     def copy(self, cursor, user, ids, default=None, context=None):
         res = super(Account, self).copy(cursor, user, ids, default=default,
@@ -907,25 +840,26 @@ class AccountDeferral(OSV):
             res[deferral.id] = deferral.account.currency_digits
         return res
 
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        return [(r.id, r.account.name + ' - ' + r.fiscalyear.name) for r in
-                self.browse(cursor, user, ids, context=context)]
-
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-            context=None, limit=None):
-        if args is None:
-            args = []
-        args = args[:]
-        if name:
-            args = ['AND', args, ['OR', ('account.name', operator, name),
-                ('fiscalyear.name', operator, name)]]
-        ids = self.search(cursor, user, args, limit=limit, context=context)
-        res = self.name_get(cursor, user, ids, context=context)
+            return {}
+        res = {}
+        for deferral in self.browse(cursor, user, ids, context=context):
+            res[deferral.id] = deferral.account.rec_name + ' - ' + \
+                    deferral.fiscalyear.rec_name
         return res
+
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, ['OR',
+                ('account.rec_name', args[i][1], args[i][2]),
+                ('fiscalyear.rec_name', args[i][1], args[i][2]),
+                ], context=context)
+            args2.append(('id', 'in', ids))
+            i += 1
+        return args
 
     def write(self, cursor, user, ids, vals, context=None):
         self.raise_user_error(cursor, 'write_deferral', context=context)
@@ -1015,8 +949,7 @@ class PrintGeneralLegderInit(WizardOSV):
         fiscalyear_id = fiscalyear_obj.find(cursor, user,
                 context.get('company', False), exception=False, context=context)
         if fiscalyear_id:
-            return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
-                    context=context)[0]
+            return fiscalyear_id
         return False
 
     def default_company(self, cursor, user, context=None):
@@ -1024,8 +957,7 @@ class PrintGeneralLegderInit(WizardOSV):
             context = {}
         company_obj = self.pool.get('company.company')
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_posted(self, cursor, user, context=None):
@@ -1229,8 +1161,7 @@ class PrintTrialBalanceInit(WizardOSV):
         fiscalyear_id = fiscalyear_obj.find(cursor, user,
                 context.get('company', False), exception=False, context=context)
         if fiscalyear_id:
-            return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
-                    context=context)[0]
+            return fiscalyear_id
         return False
 
     def default_company(self, cursor, user, context=None):
@@ -1238,8 +1169,7 @@ class PrintTrialBalanceInit(WizardOSV):
             context = {}
         company_obj = self.pool.get('company.company')
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_posted(self, cursor, user, context=None):
@@ -1386,8 +1316,7 @@ class OpenBalanceSheetInit(WizardOSV):
             context = {}
         company_obj = self.pool.get('company.company')
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_posted(self, cursor, user, context=None):
@@ -1484,8 +1413,7 @@ class OpenIncomeStatementInit(WizardOSV):
         fiscalyear_id = fiscalyear_obj.find(cursor, user,
                 context.get('company', False), exception=False, context=context)
         if fiscalyear_id:
-            return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
-                    context=context)[0]
+            return fiscalyear_id
         return False
 
     def default_company(self, cursor, user, context=None):
@@ -1493,8 +1421,7 @@ class OpenIncomeStatementInit(WizardOSV):
             context = {}
         company_obj = self.pool.get('company.company')
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_posted(self, cursor, user, context=None):
@@ -1776,8 +1703,7 @@ class OpenThirdPartyBalanceInit(WizardOSV):
         fiscalyear_id = fiscalyear_obj.find(cursor, user,
                 context.get('company', False), exception=False, context=context)
         if fiscalyear_id:
-            return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
-                    context=context)[0]
+            return fiscalyear_id
         return False
 
     def default_posted(self, cursor, user, context=None):
@@ -1788,8 +1714,7 @@ class OpenThirdPartyBalanceInit(WizardOSV):
             context = {}
         company_obj = self.pool.get('company.company')
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
 OpenThirdPartyBalanceInit()
@@ -1861,10 +1786,12 @@ class ThirdPartyBalance(Report):
                            context=context)))
 
         res = cursor.fetchall()
-        party_name = dict(party_obj.name_get(cursor, user, [x[0] for x in res],
-            context=context))
+        id2party = {}
+        for party in party_obj.browse(cursor, user, [x[0] for x in res],
+                context=context):
+            id2party[party.id] = party
         objects = [{
-            'name': party_name[x[0]],
+            'name': id2party[x[0]].rec_name,
             'debit': x[1],
             'credit': x[2],
             'solde': x[1] - x[2],
@@ -1904,8 +1831,7 @@ class OpenAgedBalanceInit(WizardOSV):
         fiscalyear_id = fiscalyear_obj.find(cursor, user,
                 context.get('company', False), exception=False, context=context)
         if fiscalyear_id:
-            return fiscalyear_obj.name_get(cursor, user, fiscalyear_id,
-                    context=context)[0]
+            return fiscalyear_id
         return False
 
     def default_balance_type(self, cursor, user, context=None):
@@ -1931,8 +1857,7 @@ class OpenAgedBalanceInit(WizardOSV):
             context = {}
         company_obj = self.pool.get('company.company')
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
 OpenAgedBalanceInit()
@@ -2045,9 +1970,10 @@ class AgedBalance(Report):
                 else:
                     res[party] = [(i[0] == position) and solde \
                             or Decimal("0.0") for i in enumerate(terms)]
-        parties = party_obj.name_get(cursor, user, [k for k in res.iterkeys()],
-                context=context)
-        parties.sort(lambda x, y: cmp(x[1], y[1]))
+        party_ids = party_obj.search(cursor, user, [
+            ('id', 'in', [k for k in res.iterkeys()]),
+            ], context=context)
+        parties = party_obj.browse(cursor, user, party_ids, context=context)
 
         context['main_title'] = datas['form']['balance_type']
         context['unit'] = datas['form']['unit']
@@ -2057,10 +1983,10 @@ class AgedBalance(Report):
 
         context['company'] = company
         context['parties']= [{
-            'name': p[1],
-            'amount0': res[p[0]][0],
-            'amount1': res[p[0]][1],
-            'amount2': res[p[0]][2],
+            'name': p.rec_name,
+            'amount0': res[p.id][0],
+            'amount1': res[p.id][1],
+            'amount2': res[p.id][2],
             } for p in parties]
 
         return super(AgedBalance, self).parse(cursor, user, report, objects,

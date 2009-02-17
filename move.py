@@ -122,19 +122,17 @@ class Move(OSV):
                 return False
         return True
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-            context=None, limit=None):
-        if args is None:
-            args = []
-        if name:
-            args2 = args[:]
-            args2 += [('reference', operator, name)]
-            ids = self.search(cursor, user, args2, limit=limit,
-                    context=context)
-            res = self.name_get(cursor, user, ids, context=context)
-        res += super(Move, self).name_search(cursor, user, name=name,
-                args=args, operator=operator, context=context, limit=limit)
-        return res
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, ['OR',
+                ('reference', args[i][1], args[i][2]),
+                (self._rec_name, args[i][1], args[i][2]),
+                ], context=context)
+            args2.append(('id', 'in', ids))
+            i += 1
+        return args2
 
     def write(self, cursor, user, ids, vals, context=None):
         res = super(Move, self).write(cursor, user, ids, vals, context=context)
@@ -660,14 +658,16 @@ class Line(OSV):
                         values['credit'] = line_amount < Decimal('0.0') \
                                 and - line_amount or Decimal('0.0')
                     if 'account' in fields:
-                        values['account'] = account_obj.name_get(cursor, user,
-                                account_id, context=context)[0]
+                        values['account'] = account_id
+                        values['account.rec_name'] = account_obj.browse(cursor,
+                                user, account_id, context=context).rec_name
                     if 'tax_lines' in fields and code_id:
                         values['tax_lines'] = [
                             {
                                 'amount': tax_amount,
-                                'code': tax_code_obj.name_get(cursor, user,
-                                    code_id, context=context)[0],
+                                'code': code_id,
+                                'code.rec_name': tax_code_obj.browse(cursor,
+                                    user, code_id, context=context).rec_name,
                             },
                         ]
         return values
@@ -797,8 +797,9 @@ class Line(OSV):
                         continue
                     res.setdefault('add', []).append({
                         'amount': base_amounts[code_id],
-                        'code': tax_code_obj.name_get(cursor, user,
-                            code_id, context=context)[0],
+                        'code': code_id,
+                        'code': tax_code_obj.browse(cursor, user,
+                            code_id, context=context).rec_name,
                     })
         return res
 
@@ -834,8 +835,8 @@ class Line(OSV):
                     res['credit'] = Decimal('0.0')
                     res['debit'] = - currency_obj.round(cursor, user,
                             party.account_receivable.currency, amount)
-                res['account'] = account_obj.name_get(cursor, user,
-                        party.account_receivable.id, context=context)[0]
+                res['account'] = party.account_receivable.id
+                res['account.rec_name'] = party.account_receivable.rec_name
             else:
                 cursor.execute(query, (party.id, party.account_payable.id))
                 amount = cursor.fetchone()[0]
@@ -849,35 +850,41 @@ class Line(OSV):
                         res['credit'] = Decimal('0.0')
                         res['debit'] = - currency_obj.round(cursor, user,
                                 party.account_payable.currency, amount)
-                    res['account'] = account_obj.name_get(cursor, user,
-                            party.account_payable.id, context=context)[0]
+                    res['account'] = party.account_payable.id
+                    res['account.rec_name'] = party.account_payable.rec_name
 
         if party and vals.get('debit'):
             if vals['debit'] > Decimal('0.0'):
-                res.setdefault('account', account_obj.name_get(cursor, user,
-                    party.account_receivable.id, context=context)[0])
+                if 'account' not in res:
+                    res['account'] = party.account_receivable.id
+                    res['account.rec_name'] = party.account_receivable.rec_name
             else:
-                res.setdefault('account', account_obj.name_get(cursor, user,
-                    party.account_payable.id, context=context)[0])
+                if 'account' not in res:
+                    res['account'] = party.account_payable.id
+                    res['account.rec_name'] = party.account_payable.id
 
         if party and vals.get('credit'):
             if vals['credit'] > Decimal('0.0'):
-                res.setdefault('account', account_obj.name_get(cursor, user,
-                    party.account_payable.id, context=context)[0])
+                if 'account' not in res:
+                    res['account'] = party.account_payable.id
+                    res['account.rec_name'] = party.account_payable.rec_name
             else:
-                res.setdefault('account', account_obj.name_get(cursor, user,
-                    party.account_receivable.id, context=context)[0])
+                if 'account' not in res:
+                    res['account'] = party.account_receivable.id
+                    res['account.rec_name'] = party.account_receivable.rec_name
 
         journal_id = vals.get('journal') or context.get('journal')
         if journal_id and party:
             journal = journal_obj.browse(cursor, user, journal_id,
                     context=context)
             if journal.type == 'revenue':
-                res.setdefault('account', account_obj.name_get(cursor, user,
-                        party.account_receivable.id, context=context)[0])
+                if 'account' not in res:
+                    res['account'] = party.account_receivable.id
+                    res['account.rec_name'] = party.account_receivable.rec_name
             elif journal.type == 'expense':
-                res.setdefault('account', account_obj.name_get(cursor, user,
-                        party.account_payable.id, context=context)[0])
+                if 'account' not in res:
+                    res['account'] = party.account_payable.id
+                    res['account.rec_name'] = party.account_payable.rec_name
         return res
 
     def get_move_field(self, cursor, user, ids, name, arg, context=None):
@@ -891,19 +898,6 @@ class Line(OSV):
                 res[line.id] = line.move[name]
             else:
                 res[line.id] = line.move[name].id
-        if name in ('date', 'state'):
-            return res
-        obj = self.pool.get('account.' + name)
-        obj_names = {}
-        for obj_id, obj_name in obj.name_get(cursor, user,
-                [x for x in res.values() if x], context=context):
-            obj_names[obj_id] = obj_name
-
-        for i in res.keys():
-            if res[i] and res[i] in obj_names:
-                res[i] = (res[i], obj_names[res[i]])
-            else:
-                res[i] = False
         return res
 
     def set_move_field(self, cursor, user, id, name, value, arg, context=None):
@@ -1693,8 +1687,7 @@ class PrintGeneralJournalInit(WizardOSV):
             context = {}
         company_obj = self.pool.get('company.company')
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_posted(self, cursor, user, context=None):
