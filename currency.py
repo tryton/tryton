@@ -100,21 +100,18 @@ class Currency(OSV):
                 return False
         return True
 
-    def name_search(self, cursor, user, name, args=None, operator='ilike',
-            context=None, limit=None):
-        if args is None:
-            args = []
-        args_name = args[:]
-        args_code = args[:]
-        if name:
-            args_name += [(self._rec_name, operator, name)]
-            args_code += [('code', operator, name)]
-        ids = self.search(cursor, user, args_code, limit=limit, context=context)
-        if len(ids) != 1:
-            ids += self.search(cursor, user, args_name, limit=limit,
-                    context=context)
-        res = self.name_get(cursor, user, ids, context=context)
-        return res
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, [('code', args[i][1], args[i][2])],
+                    limit=1, context=context)
+            if len(ids):
+                args2.append(('code', args[i][1], args[i][2]))
+            else:
+                args2.append((self._rec_name, args[i][1], args[i][2]))
+            i += 1
+        return args2
 
     def get_rate(self, cursor, user, ids, name, arg, context=None):
         '''
