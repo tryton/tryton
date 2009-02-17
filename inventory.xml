@@ -206,7 +206,7 @@ this repository contains the full copyright notices and license terms. -->
                     <separator name="products" colspan="2"/>
                     <field name="categories" colspan="2">
                         <tree string="Categories" fill="1">
-                            <field name="complete_name"/>
+                            <field name="rec_name"/>
                             <field name="name" select="1" tree_invisible="1"/>
                         </tree>
                     </field>

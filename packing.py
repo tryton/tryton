@@ -89,8 +89,7 @@ class PackingIn(ModelWorkflow, OSV):
         location_ids = location_obj.search(cursor, user,
                 self.warehouse.domain, context=context)
         if len(location_ids) == 1:
-            return location_obj.name_get(cursor, user, location_ids,
-                    context=context)[0]
+            return location_ids[0]
         return False
 
     def on_change_supplier(self, cursor, user, ids, values, context=None):
@@ -520,8 +519,7 @@ class PackingOut(ModelWorkflow, OSV):
         location_ids = location_obj.search(cursor, user,
                 self.warehouse.domain, context=context)
         if len(location_ids) == 1:
-            return location_obj.name_get(cursor, user, location_ids,
-                    context=context)[0]
+            return location_ids[0]
         return False
 
     def on_change_customer(self, cursor, user, ids, values, context=None):
@@ -907,8 +905,7 @@ class PackingOutReturn(ModelWorkflow, OSV):
         location_ids = location_obj.search(cursor, user,
                 self.warehouse.domain, context=context)
         if len(location_ids) == 1:
-            return location_obj.name_get(cursor, user, location_ids,
-                    context=context)[0]
+            return location_ids[0]
         return False
 
     def on_change_customer(self, cursor, user, ids, values, context=None):
@@ -1542,7 +1539,7 @@ class PackingOutReport(CompanyReport):
         product_obj = self.pool.get('product.product')
         ctx = context.copy()
         ctx['language'] = language
-        return product_obj.name_get(cursor, user, [product_id],
-                context=ctx)[0][1]
+        return product_obj.browse(cursor, user, product_id,
+                context=ctx).rec_name
 
 PackingOutReport()

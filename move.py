@@ -135,9 +135,6 @@ class Move(OSV):
 
         if context.get('to_location'):
             res = context.get('to_location')
-
-        if res:
-            res = location_obj.name_get(cursor, user, res, context=context)[0]
         return res
 
     def default_from_location(self, cursor, user, context=None):
@@ -174,9 +171,6 @@ class Move(OSV):
 
         if context.get('from_location'):
             res = context.get('from_location')
-
-        if res:
-            res = location_obj.name_get(cursor, user, res, context=context)[0]
         return res
 
     def default_state(self, cursor, user, context=None):
@@ -187,8 +181,7 @@ class Move(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_currency(self, cursor, user, context=None):
@@ -200,8 +193,7 @@ class Move(OSV):
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
-            return currency_obj.name_get(cursor, user, company.currency.id,
-                    context=context)[0]
+            return company.currency.id
         return False
 
     def on_change_with_unit_digits(self, cursor, user, ids, vals,
@@ -235,8 +227,8 @@ class Move(OSV):
         if vals.get('product'):
             product = product_obj.browse(cursor, user, vals['product'],
                     context=context)
-            res['uom'] = uom_obj.name_get(cursor, user,
-                    product.default_uom.id, context=context)[0]
+            res['uom'] = product.default_uom.id
+            res['uom.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
             to_location = None
             if vals.get('to_location'):
@@ -348,28 +340,22 @@ class Move(OSV):
                 return False
         return True
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-                    context=None, limit=None):
-        if not args:
-            args = []
-        query = ['AND', ('product', operator, name), args]
-        ids = self.search(cursor, user, query, limit=limit, context=context)
-        return self.name_get(cursor, user, ids, context)
-
-    def name_get(self, cursor, user, ids, context=None):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        product_obj = self.pool.get('product.product')
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+        if not ids:
+            return {}
+        res = {}
         moves = self.browse(cursor, user, ids, context=context)
-        pid2name = dict(product_obj.name_get(
-                cursor, user, [m.product.id for m in moves], context=context))
-        res = []
         for m in moves:
-            res.append(
-                (m.id,
-                 "%s%s %s" % (m.quantity, m.uom.symbol, pid2name[m.product.id]))
-                )
+            res[m.id] = "%s%s %s" % (m.quantity, m.uom.symbol, m.product.rec_name)
         return res
+
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            args2.append(('product', args[i][1], args[i][2]))
+            i += 1
+        return args2
 
     def search(self, cursor, user, args, offset=0, limit=None, order=None,
             context=None, count=False, query_string=False):

@@ -119,19 +119,18 @@ class Location(OSV):
     def check_xml_record(self, cursor, user, ids, values, context=None):
         return True
 
-    def name_search(self, cursor, user, name,  args=None, operator='ilike',
-                    context=None, limit=None):
-        if not args:
-            args=[]
-        ids = self.search(
-            cursor, user, [('code', '=', name)] + args, limit=limit,
-            context=context)
-        if not ids:
-            ids = self.search(
-                cursor, user, [('name', operator, name)] + args, limit=limit,
-                context=context)
-        result = self.name_get(cursor, user, ids, context)
-        return result
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, [('code', '=', args[i][2])],
+                    context=context)
+            if ids:
+                args2.append(('id', 'in', ids))
+            else:
+                args2.append((self._rec_name, args[i][1], args[i][2]))
+            i += 1
+        return args2
 
     def get_quantity(self, cursor, user, ids, name, arg, context=None):
         product_obj = self.pool.get('product.product')
@@ -174,7 +173,6 @@ class Location(OSV):
     def view_header_get(self, cursor, user, value, view_type='form',
             context=None):
         product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
         if context is None:
             context = {}
         ctx = context.copy()
@@ -184,13 +182,10 @@ class Location(OSV):
                 and product_obj.search(cursor, user, [
                     ('id', '=', context['product']),
                     ], context=ctx):
-            product_name = product_obj.name_get(cursor, user, context['product'],
-                    context=context)[0][1]
             product = product_obj.browse(cursor, user, context['product'],
                     context=context)
-            uom_name = uom_obj.name_get(cursor, user, product.default_uom.id,
-                    context=context)[0][1]
-            return value + ': ' + product_name + ' (' + uom_name + ')'
+            return value + ': ' + product.rec_name + \
+                    ' (' + product.default_uom.rec_name + ')'
         return value
 
     def _set_warehouse_parent(self, cursor, user, locations, context=None):

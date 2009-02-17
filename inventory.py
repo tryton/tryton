@@ -53,8 +53,7 @@ class Inventory(ModelWorkflow, OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_lost_found(self, cursor, user, context=None):
@@ -62,8 +61,7 @@ class Inventory(ModelWorkflow, OSV):
         location_ids = location_obj.search(cursor, user,
                 self.lost_found.domain, context=context)
         if len(location_ids) == 1:
-            return location_obj.name_get(cursor, user, location_ids,
-                    context=context)[0]
+            return location_ids[0]
         return False
 
     def set_state_cancel(self, cursor, user, ids, context=None):
@@ -257,22 +255,15 @@ class InventoryLine(OSV):
         if vals.get('product'):
             product = product_obj.browse(cursor, user, vals['product'],
                     context=context)
-            res['uom'] = uom_obj.name_get(cursor, user, product.default_uom.id,
-                    context=context)[0]
+            res['uom'] = product.default_uom.id
+            res['uom.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
         return res
 
     def get_uom(self, cursor, user, ids, name, arg, context=None):
-        uom_obj = self.pool.get('product.uom')
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             res[line.id] = line.product.default_uom.id
-        uom2name = {}
-        for uom_id, name in uom_obj.name_get(cursor, user, res.values(),
-                context=context):
-            uom2name[uom_id] = (uom_id, name)
-        for line_id in res:
-            res[line_id] = uom2name[res[line_id]]
         return res
 
     def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
