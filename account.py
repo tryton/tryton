@@ -759,7 +759,7 @@ class Account(OSV):
             ids = self.search(cursor, user, [
                 ('code', args[i][1], args[i][2]),
                 ], limit=1, context=context)
-            if not ids:
+            if ids:
                 args2.append(('code', args[i][1], args[i][2]))
             else:
                 args2.append((self._rec_name, args[i][1], args[i][2]))
