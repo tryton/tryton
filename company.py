@@ -136,7 +136,7 @@ class User(OSV):
                     ], context=context)
             res['fields']['company']['selection'] = [
                     (x.id, x.rec_name) for x in company_obj.browse(cursor,
-                        user, company_ids, context=context)]
+                        user_id, company_ids, context=context)]
         return res
 
 User()
