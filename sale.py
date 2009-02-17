@@ -136,8 +136,7 @@ class Sale(ModelWorkflow, OSV):
         payment_term_ids = payment_term_obj.search(cursor, user,
                 self.payment_term.domain, context=context)
         if len(payment_term_ids) == 1:
-            return payment_term_obj.name_get(cursor, user, payment_term_ids,
-                    context=context)[0]
+            return payment_term_ids[0]
         return False
 
     def default_warehouse(self, cursor, user, context=None):
@@ -145,8 +144,7 @@ class Sale(ModelWorkflow, OSV):
         location_ids = location_obj.search(cursor, user,
                 self.warehouse.domain, context=context)
         if len(location_ids) == 1:
-            return location_obj.name_get(cursor, user, location_ids,
-                    context=context)[0]
+            return location_ids[0]
         return False
 
     def default_company(self, cursor, user, context=None):
@@ -154,8 +152,7 @@ class Sale(ModelWorkflow, OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_state(self, cursor, user, context=None):
@@ -174,8 +171,7 @@ class Sale(ModelWorkflow, OSV):
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
-            return currency_obj.name_get(cursor, user, company.currency.id,
-                    context=context)[0]
+            return company.currency.id
         return False
 
     def default_currency_digits(self, cursor, user, context=None):
@@ -221,17 +217,17 @@ class Sale(ModelWorkflow, OSV):
                 res['payment_term'] = party.payment_term.id
 
         if res['invoice_address']:
-            res['invoice_address'] = address_obj.name_get(cursor, user,
-                    res['invoice_address'], context=context)[0]
+            res['invoice_address.rec_name'] = address_obj.browse(cursor, user,
+                    res['invoice_address'], context=context).rec_name
         if res['packing_address']:
-            res['packing_address'] = address_obj.name_get(cursor, user,
-                    res['packing_address'], context=context)[0]
-        if res['payment_term']:
-            res['payment_term'] = payment_term_obj.name_get(cursor, user,
-                    res['payment_term'], context=context)[0]
-        else:
+            res['packing_address.rec_name'] = address_obj.browse(cursor, user,
+                    res['packing_address'], context=context).rec_name
+        if not res['payment_term']:
             res['payment_term'] = self.default_payment_term(cursor, user,
                     context=context)
+        if res['payment_term']:
+            res['payment_term.rec_name'] = payment_term_obj.browse(cursor, user,
+                    res['payment_term'], context=context).rec_name
         return res
 
     def on_change_with_currency_digits(self, cursor, user, ids, vals,
@@ -614,30 +610,25 @@ class Sale(ModelWorkflow, OSV):
                 return False
         return True
 
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
             return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        res = []
+        res = {}
         for sale in self.browse(cursor, user, ids, context=context):
-            res.append((sale.id, sale.reference or str(sale.id) \
-                    + ' ' + sale.party.name))
+            res[sale.id] = sale.reference or str(sale.id) \
+                    + ' - ' + sale.party.rec_name
         return res
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-            context=None, limit=None):
-        if args is None:
-            args = []
-        if name:
-            ids = self.search(cursor, user,
-                    [('reference', operator, name)] + args, limit=limit,
-                    context=context)
-        if not ids:
-            ids = self.search(cursor, user, [('party', operator, name)] + args,
-                    limit=limit, context=context)
-        res = self.name_get(cursor, user, ids, context=context)
-        return res
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < lend(args):
+            names = args[i][2].split(' - ', 1)
+            args2.append(('reference', args[i][1], names[0]))
+            if len(names) != 1 and names[1]:
+                args2.append(('party', args[i][1], names[1]))
+            i += 1
+        return args2
 
     def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
@@ -1043,14 +1034,14 @@ class SaleLine(OSV):
             res['taxes'].append(tax.id)
 
         if not vals.get('description'):
-            res['description'] = product_obj.name_get(cursor, user, product.id,
-                    context=ctx)[0][1]
+            res['description'] = product_obj.browse(cursor, user, product.id,
+                    context=ctx).rec_name
 
         category = product.sale_uom.category
         if not vals.get('unit') \
                 or vals.get('unit') not in [x.id for x in category.uoms]:
-            res['unit'] = uom_obj.name_get(cursor, user, product.sale_uom.id,
-                    context=context)[0]
+            res['unit'] = product.sale_uom.id
+            res['unit.rec_name'] = product.sale_uom.rec_name
             res['unit_digits'] = product.sale_uom.digits
         return res
 
@@ -1273,8 +1264,6 @@ class Template(OSV):
                     res = default_uom.id
             else:
                 res = default_uom.id
-        if res:
-            res = uom_obj.name_get(cursor, user, res, context=context)[0]
         return res
 
 Template()
@@ -1413,17 +1402,6 @@ class Move(OSV):
             res[move.id] = False
             if move.sale_line:
                 res[move.id] = move.sale_line.sale.id
-
-        sale_names = {}
-        for sale_id , sale_name in sale_obj.name_get(cursor, user,
-                [x for x in res.values() if x], context=context):
-            sale_names[sale_id] = sale_name
-
-        for i in res.keys():
-            if res[i] and res[i] in sale_names:
-                res[i] = (res[i], sale_names[res[i]])
-            else:
-                res[i] = False
         return res
 
     def search_sale(self, cursor, user, name, args, context=None):
