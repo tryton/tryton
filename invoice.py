@@ -162,8 +162,7 @@ class Invoice(ModelWorkflow, OSV):
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
-            return currency_obj.name_get(cursor, user, company.currency.id,
-                    context=context)[0]
+            return company.currency.id
         return False
 
     def default_currency_digits(self, cursor, user, context=None):
@@ -181,8 +180,7 @@ class Invoice(ModelWorkflow, OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_payment_term(self, cursor, user, context=None):
@@ -190,8 +188,7 @@ class Invoice(ModelWorkflow, OSV):
         payment_term_ids = payment_term_obj.search(cursor, user,
                 self.payment_term.domain, context=context)
         if len(payment_term_ids) == 1:
-            return payment_term_obj.name_get(cursor, user, payment_term_ids,
-                    context=context)[0]
+            return payment_term_ids[0]
         return False
 
     def on_change_type(self, cursor, user, ids, vals, context=None):
@@ -202,8 +199,10 @@ class Invoice(ModelWorkflow, OSV):
                 'revenue')),
             ], limit=1, context=context)
         if journal_ids:
-            res['journal'] = journal_obj.name_get(cursor, user, journal_ids[0],
-                    context=context)[0]
+            journal = journal_obj.browse(cursor, user, journal_ids[0],
+                    context=context)
+            res['journal'] = journal.id
+            res['journal.rec_name'] = journal.rec_name
         return res
 
     def on_change_party(self, cursor, user, ids, vals, context=None):
@@ -239,14 +238,14 @@ class Invoice(ModelWorkflow, OSV):
                 res['payment_term'] = company.supplier_payment_term.id
 
         if res['invoice_address']:
-            res['invoice_address'] = address_obj.name_get(cursor, user,
-                    res['invoice_address'], context=context)[0]
+            res['invoice_address.rec_name'] = address_obj.browse(cursor, user,
+                    res['invoice_address'], context=context).rec_name
         if res['account']:
-            res['account'] = account_obj.name_get(cursor, user,
-                    res['account'], context=context)[0]
+            res['account.rec_name'] = account_obj.browse(cursor, user,
+                    res['account'], context=context).rec_name
         if res.get('payment_term'):
-            res['payment_term'] = payment_term_obj.name_get(cursor, user,
-                    res['payment_term'], context=context)[0]
+            res['payment_term.rec_name'] = payment_term_obj.browse(cursor, user,
+                    res['payment_term'], context=context).rec_name
         return res
 
     def on_change_with_currency_digits(self, cursor, user, ids, vals,
@@ -766,30 +765,28 @@ class Invoice(ModelWorkflow, OSV):
                         context=context)
         return
 
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        res = []
+            return {}
+        res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
-            res.append((invoice.id,
-                invoice.number or str(invoice.id) + ' ' + invoice.party.name))
+            res[invoice.id] = invoice.number or unicode(invoice.id) + \
+                    ' ' + invoice.party.rec_name
         return res
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-            context=None, limit=None):
-        if args is None:
-            args = []
-        ids = []
-        if name:
-            ids = self.search(cursor, user, [('number', operator, name)] + args,
-                    limit=limit, context=context)
-        if not ids:
-            ids = self.search(cursor, user, [('party', operator, name)] + args,
-                    limit=limit, context=context)
-        res = self.name_get(cursor, user, ids, context=context)
-        return res
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, [
+                ('number', args[i][1], args[i][2]),
+                ], limit=1, context=context)
+            if ids:
+                args2.append(('number', args[i][1], args2[i][2]))
+            else:
+                args2.append(('party', args[i][1], args2[i][2]))
+            i += 1
+        return args2
 
     def delete(self, cursor, user, ids, context=None):
         if not ids:
@@ -1226,8 +1223,7 @@ class InvoiceLine(OSV):
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
-            return currency_obj.name_get(cursor, user, company.currency.id,
-                    context=context)[0]
+            return company.currency.id
         return False
 
     def default_currency_digits(self, cursor, user, context=None):
@@ -1245,8 +1241,7 @@ class InvoiceLine(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_type(self, cursor, user, context=None):
@@ -1404,8 +1399,8 @@ class InvoiceLine(OSV):
             else:
                 res['unit_price'] = product.cost_price
             try:
-                res['account'] = account_obj.name_get(cursor, user,
-                        product.account_expense_used.id, context=context)[0]
+                res['account'] = product.account_expense_used.id
+                res['account.rec_name'] = product.account_expense_used.rec_name
             except:
                 pass
             res['taxes'] = []
@@ -1425,8 +1420,8 @@ class InvoiceLine(OSV):
             else:
                 res['unit_price'] = product.list_price
             try:
-                res['account'] = account_obj.name_get(cursor, user,
-                        product.account_revenue_used.id, context=context)[0]
+                res['account'] = product.account_revenue_used.id
+                res['account.rec_name'] = product.account_revenue_used.rec_name
             except:
                 pass
             res['taxes'] = []
@@ -1439,14 +1434,14 @@ class InvoiceLine(OSV):
                 res['taxes'].append(tax.id)
 
         if not vals.get('description'):
-            res['description'] = product_obj.name_get(cursor, user, product.id,
-                    context=ctx)[0][1]
+            res['description'] = product_obj.browse(cursor, user, product.id,
+                    context=ctx).rec_name
 
         category = product.default_uom.category
         if not vals.get('unit') \
                 or vals.get('unit') not in [x.id for x in category.uoms]:
-            res['unit'] = uom_obj.name_get(cursor, user, product.default_uom.id,
-                context=context)[0]
+            res['unit'] = product.default_uom.id
+            res['unit.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
 
         vals = vals.copy()
