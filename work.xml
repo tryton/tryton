@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Works">
-                    <field name="complete_name"/>
+                    <field name="rec_name"/>
                     <field name="project_type"/>
                     <field name="state"/>
                     <field name="name" select="1" tree_invisible="1"/>
