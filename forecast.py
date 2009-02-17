@@ -65,8 +65,7 @@ class Forecast(OSV):
         location_ids = location_obj.search(cursor, user,
                 self.destination.domain, context=context)
         if len(location_ids) == 1:
-            return location_obj.name_get(cursor, user, location_ids,
-                    context=context)[0]
+            return location_ids[0]
         return False
 
     def default_company(self, cursor, user, context=None):
@@ -74,8 +73,7 @@ class Forecast(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def check_date_overlap(self, cursor, user, ids):
@@ -203,8 +201,8 @@ class ForecastLine(OSV):
         if vals.get('product'):
             product = product_obj.browse(cursor, user, vals['product'],
                     context=context)
-            res['uom'] = uom_obj.name_get(cursor, user, product.default_uom.id,
-                    context=context)[0]
+            res['uom'] = product.default_uom.id
+            res['uom.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
         return res
 
