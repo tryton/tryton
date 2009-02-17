@@ -27,18 +27,13 @@ class CreateInventoriesInit(WizardOSV):
         location_ids = location_obj.search(cursor, user,
                 self.lost_found.domain, context=context)
         if len(location_ids) == 1:
-            return location_obj.name_get(cursor, user, location_ids,
-                    context=context)[0]
+            return location_ids[0]
         return False
 
     def default_company(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
-        if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
-        return False
+        return context.get('company', False)
 
 CreateInventoriesInit()
 
