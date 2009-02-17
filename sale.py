@@ -1646,7 +1646,7 @@ class HandleInvoiceExceptionAsk(WizardOSV):
 
     duplicate_invoices = fields.Many2Many(
         'account.invoice', None, None, None, 'Duplicate Invoices',
-        domain="[('id', 'in', domain_invoice)]", depends=['domain_invoices'])
+        domain="[('id', 'in', domain_invoices)]", depends=['domain_invoices'])
     domain_invoices = fields.Many2Many(
         'account.invoice', None, None, None, 'Domain Invoices')
 
