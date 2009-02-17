@@ -1242,6 +1242,7 @@ class Line(OSV):
         reconciliation_obj = self.pool.get('account.move.reconciliation')
         period_obj = self.pool.get('account.period')
         date_obj = self.pool.get('ir.date')
+        translation_obj = self.pool.get('ir.translation')
 
         for line in self.browse(cursor, user, ids, context=context):
             if line.reconciliation:
@@ -1261,13 +1262,19 @@ class Line(OSV):
             amount = currency_obj.round(cursor, user, account.currency, amount)
             period_id = period_obj.find(cursor, user, account.company.id,
                     date=date, context=context)
+            lang_code = 'en_US'
+            if account.company.lang:
+                lang_code = account.company.lang.code
+            writeoff = translation_obj._get_source(cursor,
+                    'account.move.reconcile_lines.writeoff', 'view',
+                    lang_code, 'Write-Off') or 'Write-Off'
             move_id = move_obj.create(cursor, user, {
                 'journal': journal_id,
                 'period': period_id,
                 'date': date,
                 'lines': [
                     ('create', {
-                        'name': 'Write-Off',
+                        'name': writeoff,
                         'account': account.id,
                         'debit': amount < Decimal('0.0') and - amount \
                                 or Decimal('0.0'),
@@ -1275,7 +1282,7 @@ class Line(OSV):
                                 or Decimal('0.0'),
                     }),
                     ('create', {
-                        'name': 'Write-Off',
+                        'name': writeoff,
                         'account': account_id,
                         'debit': amount > Decimal('0.0') and amount \
                                 or Decimal('0.0'),
