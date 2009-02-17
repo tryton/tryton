@@ -1698,7 +1698,6 @@ class HandleInvoiceException(Wizard):
     }
 
     def _handle_invoices(self, cursor, user, data, context=None):
-        workflow_service = LocalService('workflow')
         sale_obj = self.pool.get('sale.sale')
         invoice_obj = self.pool.get('account.invoice')
         to_duplicate = data['form']['duplicate_invoices'][0][1]
@@ -1729,7 +1728,7 @@ class HandleInvoiceException(Wizard):
              },
             context=context)
 
-        workflow_service.trg_validate(user, 'sale.sale', data['id'],
-                                     'invoice_ok', cursor, context=context)
+        sale_obj.workflow_trigger_validate(cursor, user, data['id'],
+                'invoice_ok', context=context)
 
 HandleInvoiceException()
