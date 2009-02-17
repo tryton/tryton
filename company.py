@@ -79,8 +79,7 @@ class User(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_company(self, cursor, user, context=None):
@@ -131,10 +130,13 @@ class User(OSV):
 
         if 'company' in res['fields']:
             del res['fields']['company']['relation']
-            res['fields']['company']['selection'] = company_obj.name_search(
-                    cursor, user_id, args=[
+            company_ids = company_obj.search(
+                    cursor, user_id, [
                         ('parent', 'child_of', [user.main_company.id]),
                     ], context=context)
+            res['fields']['company']['selection'] = [
+                    (x.id, x.rec_name) for x in company_obj.browse(cursor,
+                        user, company_ids, context=context)]
         return res
 
 User()
@@ -176,8 +178,7 @@ class Sequence(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
 Sequence()
