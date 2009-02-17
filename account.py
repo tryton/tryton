@@ -13,8 +13,6 @@ class Account(OSV):
     _description = __doc__
 
     name = fields.Char('Name', required=True, translate=True, select=1)
-    complete_name = fields.Function('get_complete_name', type='char',
-            string='Name')
     code = fields.Char('Code', select=1)
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company')
@@ -77,8 +75,7 @@ class Account(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def default_currency(self, cursor, user, context=None):
@@ -89,8 +86,7 @@ class Account(OSV):
         if context.get('company'):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
-            return currency_obj.name_get(cursor, user, company.currency.id,
-                    context=context)[0]
+            return company.currency.id
         return False
 
     def default_type(self, cursor, user, context=None):
@@ -119,10 +115,6 @@ class Account(OSV):
         for account in self.browse(cursor, user, ids, context=context):
             res[account.id] = account.currency.digits
         return res
-
-    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
-        res = self.name_get(cursor, user, ids, context=context)
-        return dict(res)
 
     def get_balance(self, cursor, user, ids, name, arg, context=None):
         res = {}
@@ -233,29 +225,29 @@ class Account(OSV):
                         id2account[account_id].currency, sum)
         return res
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-            context=None, limit=None):
-        if name:
-            ids = self.search(cursor, user,
-                    [('code', 'like', name + '%')] + args,
-                    limit=limit, context=context)
-            if not ids:
-                ids = self.search(cursor, user,
-                        [(self._rec_name, operator, name)] + args,
-                        limit=limit, context=context)
-        else:
-            ids = self.search(cursor, user, args, limit=limit, context=context)
-        res = self.name_get(cursor, user, ids, context=context)
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+        if not ids:
+            return {}
+        res = {}
+        for account in self.browse(cursor, user, ids, context=context):
+            if account.code:
+                res[account.id] = account.code + ' - ' + unicode(account.name)
+            else:
+                res[account.id] = unicode(account.name)
         return res
 
-    def name_get(self, cursor, user, ids, context=None):
-        if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        return [(r['id'], r['code'] and r['code'] + ' - ' + unicode(r[self._rec_name]) \
-                or unicode(r[self._rec_name])) for r in self.read(cursor, user, ids,
-                    [self._rec_name, 'code'], context=context)]
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, [('code', args[i][1], args[i][2])],
+                    limit=1, context=context)
+            if ids:
+                args2.append(('code', args[i][1], args[i][2]))
+            else:
+                args2.append((self._rec_name, args[i][1], args[i][2]))
+            i += 1
+        return args2
 
     def convert_view(self, cursor, user, tree, context=None):
         res = tree.xpath('//field[@name=\'analytic_accounts\']')
