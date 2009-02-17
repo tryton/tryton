@@ -782,9 +782,9 @@ class Invoice(ModelWorkflow, OSV):
                 ('number', args[i][1], args[i][2]),
                 ], limit=1, context=context)
             if ids:
-                args2.append(('number', args[i][1], args2[i][2]))
+                args2.append(('number', args[i][1], args[i][2]))
             else:
-                args2.append(('party', args[i][1], args2[i][2]))
+                args2.append(('party', args[i][1], args[i][2]))
             i += 1
         return args2
 
