@@ -111,32 +111,26 @@ class OrderPoint(OSV):
         ids = self.search(cursor, user, query)
         return not bool(ids)
 
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
             return []
         if isinstance(ids, (int, long)):
             ids = [ids]
         res = []
         for op in self.browse(cursor, user, ids, context=context):
-            res.append((op.id, "%s@%s" % (op.product.name, op.location.name)))
+            res[op.id] = "%s@%s" % (op.product.name, op.location.name)
         return res
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-                    context=None, limit=None):
-        if not args:
-            args=[]
-        names = name.split('@', 1)
-        query = ['AND', ('product.template.name', operator, names[0]), args]
-        if len(names) == 1 or not names[1]:
-            ids = self.search( cursor, user, query, limit=limit, context=context)
-        else:
-            location_args = self.search_location(
-                cursor, user, 'location', [('location', operator, names[1])],
-                context=context)
-            ids = self.search(
-                cursor, user, ['AND', query, location_args], limit=limit,
-                context=context)
-        return self.name_get(cursor, user, ids, context)
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            names = args[i][2].split('@', 1)
+            args2.append(('product.template.name', args[i][1], names[0]))
+            if len(names) != 1 and names[1]:
+                args2.append(('location', args[i][1], names[1]))
+            i += 1
+        return args2
 
     def get_location(self, cursor, user, ids, name, args, context=None):
         location_obj = self.pool.get('stock.location')
@@ -148,12 +142,6 @@ class OrderPoint(OSV):
                 res[op.id] = op.storage_location.id
             else:
                 res[op.id] = False
-        loc_id2name = dict(location_obj.name_get(
-                cursor, user, [i for i in res.itervalues() if i]))
-
-        for op_id, loc_id in res.iteritems():
-            if loc_id in loc_id2name:
-                res[op_id] = (loc_id, loc_id2name[loc_id])
         return res
 
     def search_location(self, cursor, user, name, domain=None, context=None):
@@ -170,8 +158,7 @@ class OrderPoint(OSV):
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
 OrderPoint()

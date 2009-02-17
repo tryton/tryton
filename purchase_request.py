@@ -47,56 +47,42 @@ class PurchaseRequest(OSV):
             'create_request': 'Purchase request are only created by the system.',
             })
 
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if isinstance(ids, (int, long)):
             ids = [ids]
         res = []
         for pr in self.browse(cursor, user, ids, context=context):
-            res.append((pr.id, "%s@%s" % (pr.product.name, pr.warehouse.name)))
+            res[pr.id] = "%s@%s" % (pr.product.name, pr.warehouse.name)
         return res
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-                    context=None, limit=None):
-        if not args:
-            args=[]
-        names = name.split('@',1)
-        query = ['AND', ('product.template.name', operator, names[0]), args]
-        if len(names) == 1 or not names[1]:
-            ids = self.search( cursor, user, query, limit=limit, context=context)
-        else:
-            warehouse_arg = [('warehouse', operator, names[1])]
-            ids = self.search(
-                cursor, user, query + warehouse_arg, limit=limit, context=context)
-        return self.name_get(cursor, user, ids, context)
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            names = args[i][2].split('@', 1)
+            args2.append(('product.template.name', args[i][1], names[0]))
+            if len(names) != 1 and names[1]:
+                args2.append(('warehouse', args[i][1], names[1]))
+            i += 1
+        return args2
 
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
         if context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
     def get_purchase(self, cursor, user, ids, name, args, context=None):
         res = {}
-        purchase_obj = self.pool.get('purchase.purchase')
-        purchase_ids = set()
 
         requests = self.browse(cursor, user, ids, context=context)
         for request in requests:
             if request.purchase_line:
-                purchase_ids.add(request.purchase_line.purchase.id)
-        purchase_names = dict(purchase_obj.name_get(
-            cursor, user, purchase_ids, context=context))
-
-        for request in requests:
-            if request.purchase_line:
-                pid = request.purchase_line.purchase.id
-                res[request.id] = (pid, purchase_names[pid])
+                res[request.id] = request.purchase_line.purchase.id
             else:
                 res[request.id] = False
-
         return res
 
     def get_state(self, cursor, user, ids, name, args, context=None):
