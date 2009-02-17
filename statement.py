@@ -95,14 +95,14 @@ class Statement(ModelWorkflow, OSV):
             res[statement.id] = statement.journal.currency.digits
         return res
 
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         lang_obj = self.pool.get('ir.lang')
 
         if context is None:
             context = {}
 
         if not ids:
-            return []
+            return {}
 
         for code in [context.get('language', False) or 'en_US', 'en_US']:
             lang_ids = lang_obj.search(cursor, user, [
@@ -112,31 +112,31 @@ class Statement(ModelWorkflow, OSV):
                 break
         lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
 
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        res = []
+        res = {}
         for statement in self.browse(cursor, user, ids, context=context):
-            res.append((statement.id, statement.journal.name + ' ' + \
+            res[statement.id] = statement.journal.name + ' ' + \
                     lang.currency(lang, statement.start_balance,
                         statement.journal.currency, symbol=False,
                         grouping=True) + \
                     lang.currency(lang, statement.end_balance,
                         statement.journal.currency, symbol=False,
-                        grouping=True)))
+                        grouping=True)
         return res
 
-    def name_search(self, cursor, user, name='', args=None, operator='ilike',
-            context=None, limit=None):
-        if args is None:
-            args = []
-        ids = []
-        if name:
-            ids = self.search(cursor, user, [['OR',
-                ('journal', operator, name),
-                ('start_balance', operator, name),
-                ('end_balance', operator, name),
-                ], args], limit=limit, context=context)
-        return self.name_get(cursor, user, ids, context=context)
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            ids = self.search(cursor, user, ['OR',
+                ('start_balance', args[i][1], args[i][2]),
+                ('end_balance', args[i][1], args[i][2]),
+                ], context=context)
+            if ids:
+                args2.append(('id', 'in', ids))
+            else:
+                args2.append(('journal', args[i][1], args[i][2]))
+            i += 1
+        return args2
 
     def get_move_lines(self, cursor, user, ids, name, args, context=None):
         '''
@@ -322,8 +322,8 @@ class Line(OSV):
                     account = party.account_receivable
                 else:
                     account = party.account_payable
-                res['account'] = account_obj.name_get(cursor, user, account.id,
-                        context=context)[0]
+                res['account'] = account.id
+                res['account.rec_name'] = account.rec_name
 
         if value.get('invoice'):
             if value.get('party'):
@@ -354,8 +354,8 @@ class Line(OSV):
                     account = party.account_receivable
                 else:
                     account = party.account_payable
-                res['account'] = account_obj.name_get(cursor, user, account.id,
-                        context=context)[0]
+                res['account'] = account.id
+                res['account.rec_name'] = account.rec_name
         if value.get('invoice'):
             if value.get('amount') and value.get('_parent_statement.journal'):
                 invoice = invoice_obj.browse(cursor, user, value['invoice'],

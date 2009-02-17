@@ -22,15 +22,13 @@ class Journal(OSV):
             currency_obj = self.pool.get('currency.currency')
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
-            return currency_obj.name_get(cursor, user, company.currency.id,
-                    context=context)[0]
+            return company.currency.id
         return False
 
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
         if context and context.get('company'):
-            return company_obj.name_get(cursor, user, context['company'],
-                    context=context)[0]
+            return context['company']
         return False
 
 Journal()
