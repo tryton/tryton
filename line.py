@@ -43,8 +43,7 @@ class Line(OSV):
             if user.employee:
                 employee_id = user.employee.id
         if employee_id:
-            return employee_obj.name_get(cursor, user_id, employee_id,
-                    context=context)[0]
+            return employee_id
         return False
 
     def default_date(self, cursor, user, context=None):
@@ -133,9 +132,9 @@ class EnterLines(Wizard):
             })
 
         if data['form']['employee']:
-            employee_name = employee_obj.name_get(
+            employee = employee_obj.browse(
                 cursor, user, data['form']['employee'], context=context)
-            res['name'] += " - " + employee_name[0][1]
+            res['name'] += " - " + employee.rec_name
 
         return res
 

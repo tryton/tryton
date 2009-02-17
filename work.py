@@ -11,8 +11,6 @@ class Work(OSV):
     _description = __doc__
 
     name = fields.Char('Name', required=True)
-    complete_name = fields.Function('get_complete_name', type='char',
-            string='Name')
     active = fields.Boolean('Active')
     parent = fields.Many2One('timesheet.work', 'Parent', select=2)
     childs = fields.One2Many('timesheet.work', 'parent', 'Childs')
@@ -43,10 +41,6 @@ class Work(OSV):
 
     def default_state(self, cursor, user, context=None):
         return 'opened'
-
-    def get_complete_name(self, cursor, user, ids, name, arg, context=None):
-        res = self.name_get(cursor, user, ids, context=context)
-        return dict(res)
 
     def _tree_qty(self, hours_by_wt, childs, ids, to_compute):
         res = 0
@@ -89,20 +83,17 @@ class Work(OSV):
         self._tree_qty(hours_by_wt, childs, ids, to_compute)
         return hours_by_wt
 
-    def name_get(self, cursor, user, ids, context=None):
+    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
-            return []
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        res = []
-
+            return {}
+        res = {}
         def _name(work):
             if work.parent:
                 return _name(work.parent) + '\\' + work.name
             else:
                 return work.name
         for work in self.browse(cursor, user, ids, context=context):
-            res.append((work.id, _name(work)))
+            res[work.id] = _name(work)
         return res
 
     def write(self, cursor, user, ids, vals, context=None):
@@ -228,9 +219,9 @@ class OpenWorkGraph(Wizard):
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
         if 'active_id' in context:
-            name = work_obj.name_get(cursor, user, context['active_id'],
-                    context=context)[0][1]
-            res['name'] = res['name'] + ' - ' + name
+            work = work_obj.browse(cursor, user, context['active_id'],
+                    context=context)
+            res['name'] = res['name'] + ' - ' + work.rec_name
         return res
 
 OpenWorkGraph()
