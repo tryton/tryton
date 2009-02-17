@@ -40,8 +40,7 @@ class Line(OSV):
             employee = employee_obj.browse(cursor, user, employee_id,
                     context=context)
             if employee.services:
-                return product_obj.name_get(cursor, user,
-                        employee.services[0].product.id, context=context)[0]
+                return employee.services[0].product.id
         return False
 
     def on_change_employee(self, cursor, user, ids, vals, context=None):
@@ -58,8 +57,8 @@ class Line(OSV):
             employee = employee_obj.browse(cursor, user, vals['employee'],
                     context=context)
             if employee.services:
-                res['product'] = product_obj.name_get(cursor, user,
-                        employee.services[0].product.id, context=context)[0]
+                res['product'] = employee.services[0].product.id
+                res['product.rec_name'] = employee.services[0].product.rec_name
         return res
 
     def check_product(self, cursor, user, ids):
