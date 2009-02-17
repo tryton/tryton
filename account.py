@@ -297,7 +297,7 @@ class AccountTemplate(OSV):
             else:
                 args2.append((self._rec_name, args[i][1], args[i][2]))
             i += 1
-        return args
+        return args2
 
     def _get_account_value(self, cursor, user, template, context=None):
         '''
@@ -859,7 +859,7 @@ class AccountDeferral(OSV):
                 ], context=context)
             args2.append(('id', 'in', ids))
             i += 1
-        return args
+        return args2
 
     def write(self, cursor, user, ids, vals, context=None):
         self.raise_user_error(cursor, 'write_deferral', context=context)
