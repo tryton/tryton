@@ -1102,6 +1102,7 @@ class GeneralLegder(Report):
 
     def lines(self, cursor, user, account_id, period_ids, posted, context):
         move_line_obj = self.pool.get('account.move.line')
+        move_obj = self.pool.get('account.move')
         period_obj = self.pool.get('account.period')
         res = []
 
@@ -1118,6 +1119,9 @@ class GeneralLegder(Report):
                 context=context)
         move_lines.sort(lambda x, y: cmp(x.date, y.date))
 
+        state_selections = dict(move_obj.fields_get(cursor, user,
+                fields_names=['state'], context=context)['state']['selection'])
+
         balance = Decimal('0.0')
         for line in move_lines:
             balance += line.debit - line.credit
@@ -1127,7 +1131,7 @@ class GeneralLegder(Report):
                 'credit': line.credit,
                 'balance': balance,
                 'name': line.name,
-                'state': line.move.state,
+                'state': state_selections.get(line.move.state, line.move.state),
                 })
         return res
 
