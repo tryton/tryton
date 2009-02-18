@@ -194,7 +194,7 @@ model,"ir.ui.menu,name",menu_packing_internal_draft_form,Draft Internal Packings
 model,"ir.ui.menu,name",menu_location_form,Edit Locations,Lagerorte bearbeiten,0
 model,"ir.ui.menu,name",menu_packing_internal_form,Internal Packings,Interne Lieferscheine,0
 model,"ir.ui.menu,name",menu_packing_internal_waiting_form,Internal Packings Waiting Assignation,Zuzuweisende Interne Lieferscheine,0
-model,"ir.ui.menu,name",menu_inventory_form,Inventories,Bestandskontrolle,0
+model,"ir.ui.menu,name",menu_inventory_form,Inventories,Bestandskorrektur,0
 model,"ir.ui.menu,name",menu_stock,Inventory Management,Lager,0
 model,"ir.ui.menu,name",menu_location_tree,Locations,Lagerorte,0
 model,"ir.ui.menu,name",menu_move_form,Moves,Bewegungen,0
