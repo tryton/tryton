@@ -189,7 +189,7 @@ selection,"account.invoice.line,type",0,Line,Ligne,0
 selection,"account.invoice.line,type",0,Subtotal,Sous-total,0
 selection,"account.invoice.line,type",0,Title,Titre,0
 selection,"account.invoice.pay_invoice.ask,type",0,Partial Payment,Paiement partiel,0
-selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Différence,0
+selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Pertes et profits,0
 selection,"account.invoice,state",0,Canceled,Annulé,0
 selection,"account.invoice,state",0,Draft,Brouillon,0
 selection,"account.invoice,state",0,Open,Ouverte,0
