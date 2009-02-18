@@ -721,8 +721,6 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="code" select="1"/>
                                     <field name="list_price_uom" select="2"/>
                                     <field name="cost_price_uom" select="2"/>
-                                    <field name="quantity" select="2"/>
-                                    <field name="forecast_quantity" select="2"/>
                                     <field name="default_uom" select="2"/>
                                     <field name="active" select="2"/>
                                 </tree>
