@@ -644,7 +644,7 @@ view,account.move.line,0,Optional Information,Information optionnelle,0
 view,account.move.open_journal.ask,0,Open Journal,Ouvrir journal,0
 view,account.move.open_reconcile_lines.init,0,Open Reconcile Lines,Ouvrir les lignes réconciliées,0
 view,account.move.print_general_journal.init,0,Print General Journal,Imprimer le journal général,0
-view,account.move.reconcile_lines.writeoff,0,Write-Off,Passation en pertes et profits,0
+view,account.move.reconcile_lines.writeoff,0,Write-Off,Pertes et profits,0
 view,account.move.reconciliation,0,Reconciliation,Réconciliation,0
 view,account.move.reconciliation,0,Reconciliations,Réconciliations,0
 view,account.move.unreconcile_lines.init,0,"If you unreconcile lines, the workflows, on those lines, will not be canceled.","Si vous dé-réconciliez des lignes, les flux de travail, sur ces lignes, ne seront pas annulés.",0
