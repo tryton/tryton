@@ -2799,7 +2799,8 @@ class ORM(object):
                                         (table._table, arg[0], arg[1], arg[2]))
 
                         if add_null:
-                            qu1[-1] = '('+qu1[-1]+' OR '+arg[0]+' is null)'
+                            qu1[-1] = '(' + qu1[-1] + ' OR ' + \
+                                    table._table + '.' + arg[0] +' IS NULL)'
 
         return qu1, qu2
 
