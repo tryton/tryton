@@ -309,6 +309,7 @@ class Report(object):
             data = rel_report(**localcontext).render()
             if hasattr(data, 'getvalue'):
                 data = data.getvalue()
+        os.close(fd)
         os.remove(path)
         output_format = report.output_format.format
         if output_format == 'pdf':
