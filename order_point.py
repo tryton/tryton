@@ -113,10 +113,10 @@ class OrderPoint(OSV):
 
     def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
-            return []
+            return {}
         if isinstance(ids, (int, long)):
             ids = [ids]
-        res = []
+        res = {}
         for op in self.browse(cursor, user, ids, context=context):
             res[op.id] = "%s@%s" % (op.product.name, op.location.name)
         return res
