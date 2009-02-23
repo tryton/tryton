@@ -136,7 +136,9 @@ class PurchaseRequest(OSV):
 
         # fetch stockable products
         product_ids = product_obj.search(
-            cursor, user, [('type', '=', 'stockable')], context=context)
+            cursor, user,
+            [('type', '=', 'stockable'), ('purchasable', '=', True)],
+            context=context)
         #aggregate product by minimum supply date
         date2products = {}
         for product in product_obj.browse(cursor, user, product_ids,
