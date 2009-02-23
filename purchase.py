@@ -75,10 +75,10 @@ class Purchase(ModelWorkflow, OSV):
             'purchase', 'invoice', 'Invoices', readonly=True)
     invoices_ignored = fields.Many2Many('account.invoice',
             'purchase_invoice_ignored_rel', 'purchase', 'invoice',
-            'Invoices Ignored', readonly=True)
+            'Ignored Invoices', readonly=True)
     invoices_recreated = fields.Many2Many('account.invoice',
             'purchase_invoice_recreated_rel', 'purchase', 'invoice',
-            'Invoices Duplicated', readonly=True)
+            'Recreated Invoices', readonly=True)
     invoice_paid = fields.Function('get_function_fields', type='boolean',
             string='Invoices Paid')
     invoice_exception = fields.Function('get_function_fields', type='boolean',
