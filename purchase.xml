@@ -181,20 +181,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Handle packing Exception" col="2">
-                    <image name="tryton-dialog-information"/>
-                    <group col="1" colspan="1" id="moves">
-                        <separator string="Choose move to duplicate"
-                                   id="choose"/>
-                        <field name="duplicate_moves">
-                          <tree string="Duplicate Moves" fill="1">
-                              <field name="product"/>
-                              <field name="quantity"/>
-                              <field name="uom"/>
-                              <field name="unit_digits" tree_invisible="1"/>
-                          </tree>
-                        </field>
-                    </group>
+                <form string="Handle packing Exception" col="1">
+                    <separator string="Choose move to recreate"
+                               id="choose"/>
+                    <field name="recreate_moves">
+                        <tree string="Recreated Moves" fill="1">
+                            <field name="product"/>
+                            <field name="quantity"/>
+                            <field name="uom"/>
+                            <field name="unit_digits" tree_invisible="1"/>
+                        </tree>
+                    </field>
                 </form>
                 ]]>
             </field>
@@ -386,12 +383,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Invoice Method Done</field>
             <field name="workflow" ref="purchase_workflow"/>
         </record>
-        <record model="workflow.activity" id="purchase_activity_packing">
-            <field name="name">Packing</field>
-            <field name="workflow" ref="purchase_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">create_move()</field>
-        </record>
         <record model="workflow.activity" id="purchase_activity_waiting_packing">
             <field name="name">Waiting Packing</field>
             <field name="workflow" ref="purchase_workflow"/>
@@ -532,12 +523,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_from" ref="purchase_activity_invoice_method_done"/>
             <field name="act_to" ref="purchase_activity_done"/>
         </record>
-        <record model="workflow.transition" id="purchase_transition_confirmed_packing">
+        <record model="workflow.transition" id="purchase_transition_confirmed_waiting_packing">
             <field name="act_from" ref="purchase_activity_confirmed"/>
-            <field name="act_to" ref="purchase_activity_packing"/>
-        </record>
-        <record model="workflow.transition" id="purchase_transition_packing_waiting_packing">
-            <field name="act_from" ref="purchase_activity_packing"/>
             <field name="act_to" ref="purchase_activity_waiting_packing"/>
         </record>
         <record model="workflow.transition" id="purchase_transition_waiting_packing_packing_exception">

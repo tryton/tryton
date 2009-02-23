@@ -792,10 +792,10 @@ class PurchaseLine(OSV):
     moves = fields.One2Many('stock.move', 'purchase_line', 'Moves',
             readonly=True, select=1)
     moves_ignored = fields.Many2Many('stock.move', 'purchase_line_moves_ignored_rel',
-            'purchase_line', 'move', 'Moves Ignored', readonly=True)
-    moves_duplicated = fields.Many2Many('stock.move',
-            'purchase_line_moves_duplicated_rel', 'purchase_line', 'move',
-            'Moves Duplicated', readonly=True)
+            'purchase_line', 'move', 'Ignored Moves', readonly=True)
+    moves_recreated = fields.Many2Many('stock.move',
+            'purchase_line_moves_recreated_rel', 'purchase_line', 'move',
+            'Recreated Moves', readonly=True)
     move_done = fields.Function('get_move_done', type='boolean',
             string='Moves Done')
     move_exception = fields.Function('get_move_exception', type='boolean',
@@ -840,8 +840,8 @@ class PurchaseLine(OSV):
             if line.product.type == 'service':
                 res[line.id] = True
                 continue
-            skip_ids = set(x.id for x in line.moves_ignored)
-            skip_ids.update(x.id for x in line.moves_duplicated)
+            skip_ids = set(x.id for x in line.moves_recreated + \
+                                line.moves_ignored)
             quantity = line.quantity
             for move in line.moves:
                 if move.state != 'done' \
@@ -860,8 +860,8 @@ class PurchaseLine(OSV):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             val = False
-            skip_ids = set(x.id for x in line.moves_ignored)
-            skip_ids.update(x.id for x in line.moves_duplicated)
+            skip_ids = set(x.id for x in line.moves_ignored + \
+                               line.moves_recreated)
             for move in line.moves:
                 if move.state == 'cancel' \
                         and move.id not in skip_ids:
@@ -1075,7 +1075,7 @@ class PurchaseLine(OSV):
         default = default.copy()
         default['moves'] = False
         default['moves_ignored'] = False
-        default['moves_duplicated'] = False
+        default['moves_recreated'] = False
         default['invoice_lines'] = False
         return super(PurchaseLine, self).copy(cursor, user, ids,
                 default=default, context=context)
@@ -1098,7 +1098,7 @@ class PurchaseLine(OSV):
             return
         if line.product.type == 'service':
             return
-        skip_ids = set(x.id for x in line.moves_duplicated)
+        skip_ids = set(x.id for x in line.moves_recreated)
         quantity = line.quantity
         for move in line.moves:
             if move.id not in skip_ids:
@@ -1464,7 +1464,7 @@ class Move(OSV):
             type='selection',
             selection=[('', ''),
                        ('ignored', 'Ignored'),
-                       ('duplicated', 'Duplicated')],
+                       ('recreated', 'Recreated')],
             string='Exception State')
 
     def get_purchase(self, cursor, user, ids, name, arg, context=None):
@@ -1481,8 +1481,8 @@ class Move(OSV):
         for move in self.browse(cursor, user, ids, context=context):
             if not move.purchase_line:
                 continue
-            if move.id in (x.id for x in move.purchase_line.moves_duplicated):
-                res[move.id] = 'duplicated'
+            if move.id in (x.id for x in move.purchase_line.moves_recreated):
+                res[move.id] = 'recreated'
             if move.id in (x.id for x in move.purchase_line.moves_ignored):
                 res[move.id] = 'ignored'
         return res
@@ -1683,13 +1683,15 @@ class HandlePackingExceptionAsk(WizardOSV):
     _name = 'purchase.handle.packing.exception.ask'
     _description = __doc__
 
-    duplicate_moves = fields.Many2Many(
-        'stock.move', None, None, None, 'Duplicate Moves',
-        domain="[('id', 'in', domain_moves)]", depends=['domain_moves'])
+    recreate_moves = fields.Many2Many(
+        'stock.move', None, None, None, 'Recreate Moves',
+        domain="[('id', 'in', domain_moves)]", depends=['domain_moves'],
+        help='The selected moves will be recreated. '\
+            'The other ones will be ignored.')
     domain_moves = fields.Many2Many(
         'stock.move', None, None, None, 'Domain Moves')
 
-    def default_duplicate_moves(self, cursor, user, context=None):
+    def default_recreate_moves(self, cursor, user, context=None):
         return self.default_domain_moves(cursor, user, context=context)
 
     def default_domain_moves(self, cursor, user, context=None):
@@ -1705,8 +1707,8 @@ class HandlePackingExceptionAsk(WizardOSV):
 
         domain_moves = []
         for line in lines:
-            skip_ids = set(x.id for x in line.moves_ignored)
-            skip_ids.update(x.id for x in line.moves_duplicated)
+            skip_ids = set(x.id for x in line.moves_ignored + \
+                               line.moves_recreated)
             for move in line.moves:
                 if move.state == 'cancel' and move.id not in skip_ids:
                     domain_moves.append(move.id)
@@ -1743,7 +1745,7 @@ class HandlePackingException(Wizard):
         purchase_obj = self.pool.get('purchase.purchase')
         purchase_line_obj = self.pool.get('purchase.line')
         move_obj = self.pool.get('stock.move')
-        to_duplicate = data['form']['duplicate_moves'][0][1]
+        to_recreate = data['form']['recreate_moves'][0][1]
         domain_moves = data['form']['domain_moves'][0][1]
 
         line_ids = purchase_line_obj.search(
@@ -1751,37 +1753,25 @@ class HandlePackingException(Wizard):
             context=context)
         lines = purchase_line_obj.browse(cursor, user, line_ids, context=context)
 
-        duplicate_all = []
         for line in lines:
             moves_ignored = []
-            moves_duplicated = []
+            moves_recreated = []
             skip_ids = set(x.id for x in line.moves_ignored)
-            skip_ids.update(x.id for x in line.moves_duplicated)
+            skip_ids.update(x.id for x in line.moves_recreated)
             for move in line.moves:
                 if move.id not in domain_moves or move.id in skip_ids:
                     continue
-                if move.id in to_duplicate:
-                    moves_duplicated.append(move.id)
+                if move.id in to_recreate:
+                    moves_recreated.append(move.id)
                 else:
                     moves_ignored.append(move.id)
 
-            duplicate_all.extend(moves_duplicated)
             purchase_line_obj.write(
                 cursor, user, line.id,
                 {'moves_ignored': [('add', moves_ignored)],
-                 'moves_duplicated': [('add', moves_duplicated)]},
+                 'moves_recreated': [('add', moves_recreated)]},
                 context=context)
 
-        default = {
-            'state': 'draft',
-            'packing_in': False,
-            'packing_out': False,
-            'packing_in_return': False,
-            'packing_out_return': False,
-            'packing_internal': False,
-            }
-        move_obj.copy(
-            cursor, user, duplicate_all, default=default, context=context)
         purchase_obj.workflow_trigger_validate(cursor, user, data['id'],
                 'packing_ok', context=context)
 
