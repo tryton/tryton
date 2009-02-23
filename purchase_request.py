@@ -11,7 +11,8 @@ class PurchaseRequest(OSV):
     _description = __doc__
 
     product = fields.Many2One(
-        'product.product', 'Product', required=True, select=1, readonly=True)
+        'product.product', 'Product', required=True, select=1, readonly=True,
+        domain="[('purchasable', '=', True)]")
     party = fields.Many2One('party.party', 'Party',  select=1)
     quantity = fields.Float('Quantity', required=True)
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=1)
