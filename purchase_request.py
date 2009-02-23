@@ -12,7 +12,7 @@ class PurchaseRequest(OSV):
 
     product = fields.Many2One(
         'product.product', 'Product', required=True, select=1, readonly=True,
-        domain="[('purchasable', '=', True)]")
+        domain=[('purchasable', '=', True)])
     party = fields.Many2One('party.party', 'Party',  select=1)
     quantity = fields.Float('Quantity', required=True)
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=1)
@@ -23,7 +23,7 @@ class PurchaseRequest(OSV):
     stock_level =  fields.Float('Stock at Supply Date', readonly=True)
     warehouse = fields.Many2One(
         'stock.location', "Warehouse", required=True,
-        domain="[('type', '=', 'warehouse')]", readonly=True)
+        domain=[('type', '=', 'warehouse')], readonly=True)
     purchase_line = fields.Many2One(
         'purchase.line', 'Purchase Line',readonly=True)
     purchase = fields.Function(
