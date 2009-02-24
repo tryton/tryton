@@ -183,20 +183,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Handle packing Exception" col="2">
-                    <image name="tryton-dialog-information"/>
-                    <group col="1" colspan="1" id="moves">
-                        <separator string="Choose move to duplicate"
+                <form string="Handle packing Exception" col="1">
+                        <separator string="Choose move to recreate"
                                    id="choose"/>
-                        <field name="duplicate_moves">
-                          <tree string="Duplicate Moves" fill="1">
+                        <field name="recreate_moves">
+                          <tree string="Recreate Moves" fill="1">
                               <field name="product"/>
                               <field name="quantity"/>
                               <field name="uom"/>
                               <field name="unit_digits" tree_invisible="1"/>
                           </tree>
                         </field>
-                    </group>
                 </form>
                 ]]>
             </field>
