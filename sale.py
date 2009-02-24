@@ -88,7 +88,7 @@ class Sale(ModelWorkflow, OSV):
             'sale', 'invoice', 'Invoices', readonly=True)
     invoices_ignored = fields.Many2Many('account.invoice',
             'sale_invoice_ignored_rel', 'sale', 'invoice',
-            'Invoices Ignored', readonly=True)
+            'Ignored Invoices', readonly=True)
     invoices_recreated = fields.Many2Many('account.invoice',
             'sale_invoice_recreated_rel', 'sale', 'invoice',
             'Recreated Invoices', readonly=True)
