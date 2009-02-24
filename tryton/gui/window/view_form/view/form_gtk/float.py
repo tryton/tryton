@@ -37,7 +37,17 @@ class Float(Integer):
         try:
             if new_value == '-':
                 return
-            if len(str(int(locale.atof(new_value)))) > self.digits[0]:
+
+            if isinstance(self.digits, str):
+                digits = self._view.model.expr_eval(self.digits)
+            else:
+                digits = self.digits
+
+            if len(str(int(locale.atof(new_value)))) > digits[0]:
+                entry.stop_emission('insert-text')
+
+            exp_value = locale.atof(new_value) * (10 ** digits[1])
+            if exp_value - int(exp_value) != 0.0:
                 entry.stop_emission('insert-text')
         except:
             entry.stop_emission('insert-text')
