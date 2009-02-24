@@ -89,9 +89,9 @@ class Sale(ModelWorkflow, OSV):
     invoices_ignored = fields.Many2Many('account.invoice',
             'sale_invoice_ignored_rel', 'sale', 'invoice',
             'Invoices Ignored', readonly=True)
-    invoices_duplicated = fields.Many2Many('account.invoice',
-            'sale_invoice_duplicated_rel', 'sale', 'invoice',
-            'Invoices Duplicated', readonly=True)
+    invoices_recreated = fields.Many2Many('account.invoice',
+            'sale_invoice_recreated_rel', 'sale', 'invoice',
+            'Recreated Invoices', readonly=True)
     invoice_paid = fields.Function('get_function_fields', type='boolean',
             string='Invoices Paid')
     invoice_exception = fields.Function('get_function_fields', type='boolean',
@@ -483,7 +483,7 @@ class Sale(ModelWorkflow, OSV):
         for sale in sales:
             val = True
             skip_ids = set(x.id for x in sale.invoices_ignored)
-            skip_ids.update(x.id for x in sale.invoices_duplicated)
+            skip_ids.update(x.id for x in sale.invoices_recreated)
             for invoice in sale.invoices:
                 if invoice.state != 'paid' \
                         and invoice.id not in skip_ids:
@@ -507,7 +507,7 @@ class Sale(ModelWorkflow, OSV):
         for sale in sales:
             val = False
             skip_ids = set(x.id for x in sale.invoices_ignored)
-            skip_ids.update(x.id for x in sale.invoices_duplicated)
+            skip_ids.update(x.id for x in sale.invoices_recreated)
             for invoice in sale.invoices:
                 if invoice.state == 'cancel' \
                         and invoice.id not in skip_ids:
@@ -1131,19 +1131,26 @@ class SaleLine(OSV):
         res['note'] = line.note
         if line.type != 'line':
             return [res]
+
         if line.sale.invoice_method == 'order':
-            res['quantity'] = line.quantity
+            quantity = line.quantity
         else:
             quantity = 0.0
             for move in line.moves:
                 if move.state == 'done':
                     quantity += uom_obj.compute_qty(cursor, user, move.uom,
                             move.quantity, line.unit, context=context)
-            for invoice_line in line.invoice_lines:
-                quantity -= uom_obj.compute_qty(cursor, user,
-                        invoice_line.unit, invoice_line.quantity, line.unit,
-                        context=context)
-            res['quantity'] = quantity
+
+        ignored_ids = set(
+            l.id for i in line.sale.invoices_ignored for l in i.lines)
+        for invoice_line in line.invoice_lines:
+            if invoice_line.invoice.state != 'cancel' or \
+                    invoice_line.id in ignored_ids:
+                quantity -= uom_obj.compute_qty(
+                    cursor, user, invoice_line.unit, invoice_line.quantity,
+                    line.unit, context=context)
+        res['quantity'] = quantity
+
         if res['quantity'] <= 0.0:
             return None
         res['unit'] = line.unit.id
@@ -1455,7 +1462,7 @@ class Invoice(OSV):
             type='selection',
             selection=[('', ''),
                        ('ignored', 'Ignored'),
-                       ('duplicated', 'Duplicated')],
+                       ('recreated', 'Recreated')],
             string='Exception State')
 
     def __init__(self):
@@ -1487,13 +1494,13 @@ class Invoice(OSV):
         sales = sale_obj.browse(
             cursor, user, sale_ids, context=context)
 
-        duplicated_ids = tuple(i.id for p in sales for i in p.invoices_duplicated)
+        recreated_ids = tuple(i.id for p in sales for i in p.invoices_recreated)
         ignored_ids = tuple(i.id for p in sales for i in p.invoices_ignored)
 
         res = {}.fromkeys(ids, '')
         for invoice in self.browse(cursor, user, ids, context=context):
-            if invoice.id in duplicated_ids:
-                res[invoice.id] = 'duplicated'
+            if invoice.id in recreated_ids:
+                res[invoice.id] = 'recreated'
             elif invoice.id in ignored_ids:
                 res[invoice.id] = 'ignored'
 
@@ -1644,13 +1651,15 @@ class HandleInvoiceExceptionAsk(WizardOSV):
     _name = 'sale.handle.invoice.exception.ask'
     _description = __doc__
 
-    duplicate_invoices = fields.Many2Many(
-        'account.invoice', None, None, None, 'Duplicate Invoices',
-        domain="[('id', 'in', domain_invoices)]", depends=['domain_invoices'])
+    recreate_invoices = fields.Many2Many(
+        'account.invoice', None, None, None, 'Recreate Invoices',
+        domain="[('id', 'in', domain_invoices)]", depends=['domain_invoices'],
+        help='The selected invoices will be recreated. '\
+            'The other ones will be ignored.')
     domain_invoices = fields.Many2Many(
         'account.invoice', None, None, None, 'Domain Invoices')
 
-    def default_duplicate_invoices(self, cursor, user, context=None):
+    def default_recreate_invoices(self, cursor, user, context=None):
         return self.default_domain_invoices(cursor, user, context=context)
 
     def default_domain_invoices(self, cursor, user, context=None):
@@ -1662,7 +1671,7 @@ class HandleInvoiceExceptionAsk(WizardOSV):
         sale = sale_obj.browse(
             cursor, user, active_id, context=context)
         skip_ids = set(x.id for x in sale.invoices_ignored)
-        skip_ids.update(x.id for x in sale.invoices_duplicated)
+        skip_ids.update(x.id for x in sale.invoices_recreated)
         domain_invoices = []
         for invoice in sale.invoices:
             if invoice.state == 'cancel' and invoice.id not in skip_ids:
@@ -1700,31 +1709,27 @@ class HandleInvoiceException(Wizard):
     def _handle_invoices(self, cursor, user, data, context=None):
         sale_obj = self.pool.get('sale.sale')
         invoice_obj = self.pool.get('account.invoice')
-        to_duplicate = data['form']['duplicate_invoices'][0][1]
+        to_recreate = data['form']['recreate_invoices'][0][1]
         domain_invoices = data['form']['domain_invoices'][0][1]
 
         sale = sale_obj.browse(cursor, user, data['id'], context=context)
 
         skip_ids = set(x.id for x in sale.invoices_ignored)
-        skip_ids.update(x.id for x in sale.invoices_duplicated)
+        skip_ids.update(x.id for x in sale.invoices_recreated)
         invoices_ignored = []
-        invoices_duplicated = []
+        invoices_recreated = []
         for invoice in sale.invoices:
             if invoice.id not in domain_invoices or invoice.id in skip_ids:
                 continue
-            if invoice.id in to_duplicate:
-                invoices_duplicated.append(invoice.id)
+            if invoice.id in to_recreate:
+                invoices_recreated.append(invoice.id)
             else:
                 invoices_ignored.append(invoice.id)
-
-        new_invoices = invoice_obj.copy(
-            cursor, user, invoices_duplicated, context=context)
 
         sale_obj.write(
             cursor, user, sale.id,
             {'invoices_ignored': [('add', invoices_ignored)],
-             'invoices_duplicated': [('add', invoices_duplicated)],
-             'invoices': [('add', new_invoices)],
+             'invoices_recreated': [('add', invoices_recreated)],
              },
             context=context)
 

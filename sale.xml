@@ -207,13 +207,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Handle Invoice Exception" col="2">
-                    <image name="tryton-dialog-information"/>
-                    <group col="1" colspan="1" id="invoices">
-                        <separator string="Choose invoices to duplicate"
-                                   id="choose"/>
-                        <field name="duplicate_invoices"/>
-                    </group>
+                <form string="Handle Invoice Exception" col="1">
+                    <separator string="Choose invoices to recreate"
+                               id="choose"/>
+                    <field name="recreate_invoices"/>
                 </form>
                 ]]>
             </field>
@@ -367,17 +364,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="workflow" ref="sale_workflow"/>
             <field name="split_mode">OR</field>
         </record>
-        <record model="workflow.activity" id="sale_activity_invoice_sale">
-            <field name="name">Invoice</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">create_invoice()&#10;write({'invoice_state': 'waiting'})</field>
-        </record>
         <record model="workflow.activity" id="sale_activity_waiting_invoice_sale">
             <field name="name">Waiting Invoice</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'invoice_state': 'waiting'})</field>
+            <field name="action">create_invoice()&#10;write({'invoice_state': 'waiting'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_sale_exception">
             <field name="name">Invoice Exception</field>
@@ -541,19 +532,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_to" ref="sale_activity_invoice_method"/>
         </record>
 
-        <record model="workflow.transition" id="sale_transition_invoice_method_invoice_sale">
+        <record model="workflow.transition" id="sale_transition_invoice_method_waiting_invoice_sale">
             <field name="act_from" ref="sale_activity_invoice_method"/>
-            <field name="act_to" ref="sale_activity_invoice_sale"/>
+            <field name="act_to" ref="sale_activity_waiting_invoice_sale"/>
             <field name="condition">invoice_method == 'order'</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_method_invoice_method_done">
             <field name="act_from" ref="sale_activity_invoice_method"/>
             <field name="act_to" ref="sale_activity_invoice_method_done"/>
             <field name="condition">invoice_method != 'order'</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_sale_waiting_invoice_sale">
-            <field name="act_from" ref="sale_activity_invoice_sale"/>
-            <field name="act_to" ref="sale_activity_waiting_invoice_sale"/>
         </record>
         <record model="workflow.transition" id="sale_transition_waiting_invoice_sale_invoice_sale_exception">
             <field name="act_from" ref="sale_activity_waiting_invoice_sale"/>
