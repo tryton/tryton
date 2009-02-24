@@ -74,7 +74,7 @@ class WinSearch(object):
 
         self.title = _('Search: %s') % self.form.name
         self.title_results = _('Search: %s (%%d result(s))') % \
-                self.form.name
+                self.form.name.replace('%', '%%')
         self.win.set_title(self.title)
 
         hbox.pack_start(self.form.widget)
