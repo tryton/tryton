@@ -103,9 +103,9 @@ class Invoice(ModelWorkflow, OSV):
 
     def __init__(self):
         super(Invoice, self).__init__()
-        self._rpc_allowed += [
-            'button_draft',
-        ]
+        self._rpc.update({
+            'button_draft': True,
+        })
         self._constraints += [
             ('check_account', 'account_different_company'),
             ('check_account2', 'same_account_on_line'),
