@@ -61,7 +61,6 @@ field,"account.account,balance",0,Balance,Bilanz,0
 field,"account.account,childs",0,Childs,Untergeordnet (Konten),0
 field,"account.account,code",0,Code,Code,0
 field,"account.account,company",0,Company,Unternehmen,0
-field,"account.account,complete_name",0,Code - Name,Code - Name,0
 field,"account.account.create_chart_account.account,account_template",0,Account Template,Kontenvorlage,0
 field,"account.account.create_chart_account.account,company",0,Company,Unternehmen,0
 field,"account.account.create_chart_account.properties,account_payable",0,Default Payable Account,Standardkonto Verbindlichkeiten,0
@@ -77,6 +76,7 @@ field,"account.account.deferral,credit",0,Credit,Haben,0
 field,"account.account.deferral,currency_digits",0,Currency Digits,Stellen Währung,0
 field,"account.account.deferral,debit",0,Debit,Soll,0
 field,"account.account.deferral,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
+field,"account.account.deferral,rec_name",0,Name,Name,0
 field,"account.account,deferrals",0,Deferrals,Saldenvorträge,0
 field,"account.account,kind",0,Kind,Art,0
 field,"account.account,left",0,Left,Links,0
@@ -116,17 +116,18 @@ field,"account.account.print_trial_balance.init,end_period",0,End Period,Bis Buc
 field,"account.account.print_trial_balance.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
 field,"account.account.print_trial_balance.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
 field,"account.account.print_trial_balance.init,start_period",0,Start Period,Ab Buchungszeitraum,0
+field,"account.account,rec_name",0,Name,Name,0
 field,"account.account,reconcile",0,Reconcile,Abstimmen,0
 field,"account.account,right",0,Right,Rechts,0
 field,"account.account,second_currency",0,Secondary currency,Zweitwährung,0
 field,"account.account,taxes",0,Default Taxes,Standardsteuern,0
 field,"account.account.template,childs",0,Childs,Untergeordnet (Kontovorlagen),0
 field,"account.account.template,code",0,Code,Code,0
-field,"account.account.template,complete_name",0,Code - Name,Code - Name,0
 field,"account.account.template,deferral",0,Deferral,Saldenvortrag,0
 field,"account.account.template,kind",0,Kind,Art,0
 field,"account.account.template,name",0,Name,Name,0
 field,"account.account.template,parent",0,Parent,Übergeordnet (Kontovorlage),0
+field,"account.account.template,rec_name",0,Name,Name,0
 field,"account.account.template,reconcile",0,Reconcile,Abstimmen,0
 field,"account.account.template,taxes",0,Default Taxes,Standardsteuern,0
 field,"account.account.template,type",0,Type,Typ,0
@@ -135,12 +136,12 @@ field,"account.account.type,amount",0,Amount,Betrag,0
 field,"account.account.type,balance_sheet",0,Balance Sheet,Bilanzbogen,0
 field,"account.account.type,childs",0,Childs,Untergeordnet (Kontotypen),0
 field,"account.account.type,company",0,Company,Unternehmen,0
-field,"account.account.type,complete_name",0,Name,Name,0
 field,"account.account.type,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"account.account.type,display_balance",0,Display Balance,Ansicht Bilanz,0
 field,"account.account.type,income_statement",0,Income Statement,Gewinn- und Verlustrechnung,0
 field,"account.account.type,name",0,Name,Name,0
 field,"account.account.type,parent",0,Parent,Übergeordnet (Kontotyp),0
+field,"account.account.type,rec_name",0,Name,Name,0
 field,"account.account.type,sequence",0,Sequence,Sequenz,0
 field,"account.account.type.template,balance_sheet",0,Balance Sheet,Bilanzbogen,0
 field,"account.account.type.template,childs",0,Childs,Untergeordnet (Kontovorlagentypen),0
@@ -148,6 +149,7 @@ field,"account.account.type.template,display_balance",0,Display Balance,Ansicht 
 field,"account.account.type.template,income_statement",0,Income Statement,Gewinn- und Verlustrechnung,0
 field,"account.account.type.template,name",0,Name,Name,0
 field,"account.account.type.template,parent",0,Parent,Übergeordnet (Kontovorlagentyp),0
+field,"account.account.type.template,rec_name",0,Name,Name,0
 field,"account.account.type.template,sequence",0,Sequence,Sequenz,0
 field,"account.fiscalyear.close_fiscalyear.init,close_fiscalyear",0,Fiscal Year to close,Abzuschließendes Geschäftsjahr,0
 field,"account.fiscalyear,close_lines",0,Close Lines,Abschlussbuchungen,0
@@ -157,6 +159,7 @@ field,"account.fiscalyear,end_date",0,Ending Date,Enddatum,0
 field,"account.fiscalyear,name",0,Name,Name,0
 field,"account.fiscalyear,periods",0,Periods,Buchungszeiträume,0
 field,"account.fiscalyear,post_move_sequence",0,Post Move Sequence,Sequenz Buchungsfestschreibungen,0
+field,"account.fiscalyear,rec_name",0,Name,Name,0
 field,"account.fiscalyear,start_date",0,Starting Date,Anfangsdatum,0
 field,"account.fiscalyear,state",0,State,Status,0
 field,"account.journal,active",0,Active,Aktiv,0
@@ -170,21 +173,26 @@ field,"account.journal.period,icon",0,Icon,Icon,0
 field,"account.journal.period,journal",0,Journal,Journal,0
 field,"account.journal.period,name",0,Name,Name,0
 field,"account.journal.period,period",0,Period,Buchungszeitraum,0
+field,"account.journal.period,rec_name",0,Name,Name,0
 field,"account.journal.period,state",0,State,Status,0
+field,"account.journal,rec_name",0,Name,Name,0
 field,"account.journal,sequence",0,Sequence,Sequenz,0
 field,"account.journal,type",0,Type,Typ,0
 field,"account.journal.type,code",0,Code,Code,0
 field,"account.journal.type,name",0,Name,Name,0
+field,"account.journal.type,rec_name",0,Name,Name,0
 field,"account.journal,update_posted",0,Allow cancelling moves,Löschen von Buchungen erlauben,0
 field,"account.journal,view",0,View,Sicht,0
 field,"account.journal.view.column,field",0,Field,Feld,0
 field,"account.journal.view.column,name",0,Name,Name,0
 field,"account.journal.view.column,readonly",0,Readonly,Nur Lesen,0
+field,"account.journal.view.column,rec_name",0,Name,Name,0
 field,"account.journal.view.column,required",0,Required,Erforderlich,0
 field,"account.journal.view,columns",0,Columns,Spalten,0
 field,"account.journal.view.column,sequence",0,Sequence,Sequenz,0
 field,"account.journal.view.column,view",0,View,Sicht,0
 field,"account.journal.view,name",0,Name,Name,0
+field,"account.journal.view,rec_name",0,Name,Name,0
 field,"account.move,centralised_line",0,Centralised Line,Abschlussbuchungszeile,0
 field,"account.move,date",0,Effective Date,Effektives Datum,0
 field,"account.move,journal",0,Journal,Journal,0
@@ -204,6 +212,7 @@ field,"account.move.line,move_state",0,Move State,Buchungsstatus,0
 field,"account.move.line,name",0,Name,Name,0
 field,"account.move.line,party",0,Party,Partei,0
 field,"account.move.line,period",0,Period,Buchungszeitraum,0
+field,"account.move.line,rec_name",0,Name,Name,0
 field,"account.move.line,reconciliation",0,Reconciliation,Abstimmung,0
 field,"account.move.line,reference",0,Reference,Referenz,0
 field,"account.move,lines",0,Lines,Zeilen,0
@@ -221,11 +230,13 @@ field,"account.move.print_general_journal.init,company",0,Company,Unternehmen,0
 field,"account.move.print_general_journal.init,from_date",0,From Date,Ab Datum,0
 field,"account.move.print_general_journal.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
 field,"account.move.print_general_journal.init,to_date",0,To Date,Bis Datum,0
+field,"account.move,rec_name",0,Name,Name,0
 field,"account.move.reconcile_lines.writeoff,account",0,Account,Konto,0
 field,"account.move.reconcile_lines.writeoff,date",0,Date,Datum,0
 field,"account.move.reconcile_lines.writeoff,journal",0,Journal,Journal,0
 field,"account.move.reconciliation,lines",0,Lines,Zeilen,0
 field,"account.move.reconciliation,name",0,Name,Name,0
+field,"account.move.reconciliation,rec_name",0,Name,Name,0
 field,"account.move,reference",0,Reference,Referenz,0
 field,"account.move,state",0,State,Status,0
 field,"account.period,code",0,Code,Code,0
@@ -233,6 +244,7 @@ field,"account.period,end_date",0,Ending Date,Enddatum,0
 field,"account.period,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
 field,"account.period,name",0,Name,Name,0
 field,"account.period,post_move_sequence",0,Post Move Sequence,Sequenz Buchungsfestschreibungen,0
+field,"account.period,rec_name",0,Name,Name,0
 field,"account.period,start_date",0,Starting Date,Anfangsdatum,0
 field,"account.period,state",0,State,Status,0
 field,"account.period,type",0,Type,Typ,0
@@ -246,12 +258,14 @@ field,"account.tax.code,company",0,Company,Unternehmen,0
 field,"account.tax.code,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"account.tax.code,name",0,Name,Name,0
 field,"account.tax.code,parent",0,Parent,Übergeordnet (Steuerkennziffern),0
+field,"account.tax.code,rec_name",0,Name,Name,0
 field,"account.tax.code,sum",0,Sum,Summe,0
 field,"account.tax.code.template,account",0,Account Template,Kontenvorlage,0
 field,"account.tax.code.template,childs",0,Childs,Untergeordnet (Steuerkennziffernvorlage),0
 field,"account.tax.code.template,code",0,Code,Kennziffer,0
 field,"account.tax.code.template,name",0,Name,Name,0
 field,"account.tax.code.template,parent",0,Parent,Übergeordnet (Steuerkennziffernvorlage),0
+field,"account.tax.code.template,rec_name",0,Name,Name,0
 field,"account.tax,company",0,Company,Unternehmen,0
 field,"account.tax,credit_note_account",0,Credit Note Account,Konto für Gutschrift,0
 field,"account.tax,credit_note_base_code",0,Credit Note Base Code,Kennziffer für Nettobeträge in Gutschriften,0
@@ -262,6 +276,7 @@ field,"account.tax,description",0,Description,Beschreibung,0
 field,"account.tax,group",0,Group,Gruppe,0
 field,"account.tax.group,code",0,Code,Kennziffer,0
 field,"account.tax.group,name",0,Name,Name,0
+field,"account.tax.group,rec_name",0,Name,Name,0
 field,"account.tax,invoice_account",0,Invoice Account,Konto für Rechnung,0
 field,"account.tax,invoice_base_code",0,Invoice Base Code,Kennziffer für Nettobeträge in Rechnungen,0
 field,"account.tax,invoice_base_sign",0,Invoice Base Sign,Vorzeichen für Nettobeträge in Rechnungen,0
@@ -270,12 +285,14 @@ field,"account.tax,invoice_tax_sign",0,Invoice Tax Sign,Vorzeichen für Steuern 
 field,"account.tax.line,amount",0,Amount,Betrag,0
 field,"account.tax.line,code",0,Code,Kennziffer,0
 field,"account.tax.line,move_line",0,Move Line,Buchungszeile,0
+field,"account.tax.line,rec_name",0,Name,Name,0
 field,"account.tax,name",0,Name,Name,0
 field,"account.tax.open_chart_code.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
 field,"account.tax.open_chart_code.init,method",0,Method,Methode,0
 field,"account.tax.open_chart_code.init,periods",0,Periods,Buchungszeiträume,0
 field,"account.tax,parent",0,Parent,Übergeordnet (Steuer),0
 field,"account.tax,percentage",0,Percentage,Prozentsatz,0
+field,"account.tax,rec_name",0,Name,Name,0
 field,"account.tax,sequence",0,Sequence,Sequenz,0
 field,"account.tax.template,account",0,Account Template,Kontenvorlage,0
 field,"account.tax.template,amount",0,Amount,Betrag,0
@@ -295,6 +312,7 @@ field,"account.tax.template,invoice_tax_sign",0,Invoice Tax Sign,Vorzeichen für
 field,"account.tax.template,name",0,Name,Name,0
 field,"account.tax.template,parent",0,Parent,Übergeordnet (Steuervorlage),0
 field,"account.tax.template,percentage",0,Percentage,Prozentsatz,0
+field,"account.tax.template,rec_name",0,Name,Name,0
 field,"account.tax.template,sequence",0,Sequence,Sequenz,0
 field,"account.tax.template,type",0,Type,Typ,0
 field,"account.tax,type",0,Type,Typ,0
