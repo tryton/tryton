@@ -11,6 +11,7 @@ field,"company.company,header",0,Header,Dokumentenkopf,0
 field,"company.company,id",0,ID,ID,0
 field,"company.company,parent",0,Parent,Übergeordnet (Unternehmen),0
 field,"company.company,party",0,Party,Partei,0
+field,"company.company,rec_name",0,Name,Name,0
 field,"company.company,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"company.company,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"company.employee,company",0,Company,Unternehmen,0
@@ -18,6 +19,7 @@ field,"company.employee,create_date",0,Creation date,Erstellungsdatum,0
 field,"company.employee,create_uid",0,Creation user,Ersteller,0
 field,"company.employee,id",0,ID,ID,0
 field,"company.employee,party",0,Party,Partei,0
+field,"company.employee,rec_name",0,Name,Name,0
 field,"company.employee,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"company.employee,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"ir.cron,companies",0,Companies,Unternehmen,0
