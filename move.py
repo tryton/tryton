@@ -295,12 +295,8 @@ class Move(OSV):
     def default_unit_price_required(self, cursor, user, context=None):
         from_location = self.default_from_location(cursor, user,
                 context=context)
-        if from_location:
-            from_location = from_location[0]
         to_location = self.default_to_location(cursor,user,
                 context=context)
-        if to_location:
-            to_location = to_location[0]
         vals = {
             'from_location': from_location,
             'to_location': to_location,
