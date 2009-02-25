@@ -27,7 +27,9 @@ class Line(OSV):
             'employee_service': 'You can not use a product ' \
                     'that is not an employee services!',
         })
-        self._rpc_allowed += ['on_change_employee']
+        self._rpc.update({
+            'on_change_employee': False,
+        })
 
     def default_product(self, cursor, user, context=None):
         employee_obj = self.pool.get('company.employee')
