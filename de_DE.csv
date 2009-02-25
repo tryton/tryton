@@ -1,25 +1,20 @@
 type,name,res_id,src,value,fuzzy
-selection,"product.template,cost_price_method",0,Average,Durchschnitt,0
-selection,"product.template,cost_price_method",0,Fixed,Fix,0
-selection,"product.template,type",0,Consumable,Verbrauchsmaterial,0
-selection,"product.template,type",0,Service,Dienstleistung,0
-selection,"product.template,type",0,Stockable,Lagerware,0
 error,product.uom,0,Rate and factor can not be both equal to zero.,Faktor und Kehrwert Faktor können beide nicht 0 sein,0
 field,"product.category,childs",0,Childs,Untergeordnet (Kategorien),0
-field,"product.category,complete_name",0,Complete Name,Vollständige Bezeichnung,0
 field,"product.category,create_date",0,Creation date,Erstellungsdatum,0
 field,"product.category,create_uid",0,Creation user,Ersteller,0
 field,"product.category,id",0,ID,ID,0
 field,"product.category,name",0,Name,Name,0
 field,"product.category,parent",0,Parent,Übergeordnet (Kategorie),0
+field,"product.category,rec_name",0,Name,Name,0
 field,"product.category,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"product.category,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"product.product,code",0,Code,Artikelnummer,0
-field,"product.product,complete_name",0,Complete Name,Vollständige Bezeichnung,0
 field,"product.product,create_date",0,Creation date,Erstellungsdatum,0
 field,"product.product,create_uid",0,Creation user,Ersteller,0
 field,"product.product,description",0,Description,Beschreibung,0
 field,"product.product,id",0,ID,ID,0
+field,"product.product,rec_name",0,Name,Name,0
 field,"product.product,template",0,Product Template,Artikelvorlage,0
 field,"product.product,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"product.product,write_uid",0,Last modification by,Zuletzt geändert von,0
@@ -36,6 +31,7 @@ field,"product.template,list_price",0,List Price,Listenpreis,0
 field,"product.template,list_price_uom",0,List Price,Listenpreis,0
 field,"product.template,name",0,Name,Name,0
 field,"product.template,products",0,Products,Artikel,0
+field,"product.template,rec_name",0,Name,Name,0
 field,"product.template,type",0,Type,Typ,0
 field,"product.template,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"product.template,write_uid",0,Last modification by,Zuletzt geändert von,0
@@ -45,6 +41,7 @@ field,"product.uom.category,create_date",0,Creation date,Erstellungsdatum,0
 field,"product.uom.category,create_uid",0,Creation user,Ersteller,0
 field,"product.uom.category,id",0,ID,ID,0
 field,"product.uom.category,name",0,Name,Name,0
+field,"product.uom.category,rec_name",0,Name,Name,0
 field,"product.uom.category,uoms",0,Unit of Measures,Maßeinheiten,0
 field,"product.uom.category,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"product.uom.category,write_uid",0,Last modification by,Zuletzt geändert von,0
@@ -55,6 +52,7 @@ field,"product.uom,factor",0,Factor,Faktor,0
 field,"product.uom,id",0,ID,ID,0
 field,"product.uom,name",0,Name,Name,0
 field,"product.uom,rate",0,Rate,Kehrwert Faktor,0
+field,"product.uom,rec_name",0,Name,Name,0
 field,"product.uom,rounding",0,Rounding Precision,Rundungsgenauigkeit,0
 field,"product.uom,symbol",0,Symbol,Symbol,0
 field,"product.uom,write_date",0,Last modification date,Zuletzt geändert am,0
@@ -158,6 +156,11 @@ model,"product.uom,symbol",uom_work_day,wd,wd,0
 model,"product.uom,symbol",uom_yard,yd,yd,0
 model,"product.uom,symbol",uom_square_yard,yd²,yd²,0
 model,"res.group,name",group_product_admin,Product Administration,Administration Artikel,0
+selection,"product.template,cost_price_method",0,Average,Durchschnitt,0
+selection,"product.template,cost_price_method",0,Fixed,Fix,0
+selection,"product.template,type",0,Consumable,Verbrauchsmaterial,0
+selection,"product.template,type",0,Service,Dienstleistung,0
+selection,"product.template,type",0,Stockable,Lagerware,0
 view,product.category,0,Childs,Untergeordnet (Kategorien),0
 view,product.category,0,Product Categories,Artikelkategorien,0
 view,product.category,0,Product Category,Artikelkategorie,0
