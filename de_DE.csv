@@ -10,20 +10,21 @@ field,"account.invoice,sale_exception_state",0,Exception State,Vorbehalt Status,
 field,"product.template,salable",0,Salable,Verkäuflich,0
 field,"product.template,sale_uom",0,Sale UOM,Einheit Verkauf,0
 field,"sale.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,Domain Rechnungen,0
-field,"sale.handle.invoice.exception.ask,duplicate_invoices",0,Duplicate Invoices,Rechnungen duplizieren,0
+field,"sale.handle.invoice.exception.ask,recreate_invoices",0,Recreate Invoices,Rechnungen nachbilden,0
 field,"sale.handle.packing.exception.ask,domain_moves",0,Domain Moves,Domain Bewegungen,0
-field,"sale.handle.packing.exception.ask,duplicate_moves",0,Duplicate Moves,Bewegungen duplizieren,0
+field,"sale.handle.packing.exception.ask,recreate_moves",0,Recreate Moves,Bewegungen nachbilden,0
 field,"sale.line,amount",0,Amount,Betrag,0
 field,"sale.line,description",0,Description,Bezeichnung,0
 field,"sale.line,invoice_lines",0,Invoice Lines,Rechnungspositionen,0
 field,"sale.line,move_done",0,Moves Done,Bewegungen erledigt,0
 field,"sale.line,move_exception",0,Moves Exception,Bewegungsvorbehalt,0
 field,"sale.line,moves",0,Moves,Bewegungen,0
-field,"sale.line,moves_duplicated",0,Moves Duplicated,Duplizierte Bewegungen,0
-field,"sale.line,moves_ignored",0,Moves Ignored,Ignorierte Bewegungen,0
+field,"sale.line,moves_ignored",0,Ignored Moves,Ignorierte Bewegungen,0
+field,"sale.line,moves_recreated",0,Recreated Moves,Nachgebildete Bewegungen,0
 field,"sale.line,note",0,Note,Notiz,0
 field,"sale.line,product",0,Product,Artikel,0
 field,"sale.line,quantity",0,Quantity,Anzahl,0
+field,"sale.line,rec_name",0,Name,Name,0
 field,"sale.line,sale",0,Sale,Verkauf,0
 field,"sale.line,sequence",0,Sequence,Sequenz,0
 field,"sale.line,taxes",0,Taxes,Steuern,0
@@ -41,8 +42,8 @@ field,"sale.sale,invoice_exception",0,Invoices Exception,Rechnungsvorbehalt,0
 field,"sale.sale,invoice_method",0,Invoice Method,Rechnungsstellung,0
 field,"sale.sale,invoice_paid",0,Invoices Paid,Bezahlte Rechnungen,0
 field,"sale.sale,invoices",0,Invoices,Rechnungen,0
-field,"sale.sale,invoices_duplicated",0,Invoices Duplicated,Duplizierte Rechnungen,0
-field,"sale.sale,invoices_ignored",0,Invoices Ignored,Ignorierte Rechnungen,0
+field,"sale.sale,invoices_ignored",0,Ignored Invoices,Ignorierte Rechnungen,0
+field,"sale.sale,invoices_recreated",0,Recreated Invoices,Nachgebildete Rechnungen,0
 field,"sale.sale,invoice_state",0,Invoice State,Rechnungsstatus,0
 field,"sale.sale,lines",0,Lines,Positionen,0
 field,"sale.sale,moves",0,Moves,Bewegungen,0
@@ -55,6 +56,7 @@ field,"sale.sale,packing_state",0,Packing State,Lieferstatus,0
 field,"sale.sale,party",0,Party,Partei,0
 field,"sale.sale,party_lang",0,Party Language,Sprache Partei,0
 field,"sale.sale,payment_term",0,Payment Term,Zahlungsbedingung,0
+field,"sale.sale,rec_name",0,Name,Name,0
 field,"sale.sale,reference",0,Reference,Referenz,0
 field,"sale.sale,sale_date",0,Sale Date,Verkaufsdatum,0
 field,"sale.sale,state",0,State,Status,0
@@ -65,6 +67,7 @@ field,"sale.sale,warehouse",0,Warehouse,Warenlager,0
 field,"stock.move,sale",0,Sale,Verkauf,0
 field,"stock.move,sale_exception_state",0,Exception State,Status Vorbehalt,0
 field,"stock.move,sale_line",0,,,0
+help,"sale.handle.invoice.exception.ask,recreate_invoices",0,The selected invoices will be recreated. The other ones will be ignored.,Die ausgewählten Rechnungen werden nachgebildet. Alle anderen werden ignoriert.,0
 model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Aufträge (Verkäufe),0
 model,"ir.action,name",act_sale_form_draft,Draft Sales,Entwürfe (Verkäufe),0
 model,"ir.action,name",wizard_invoice_handle_exception,Handle Invoice Exception,Rechnungsvorbehalt bearbeiten,0
@@ -90,7 +93,7 @@ model,"workflow.activity,name",sale_activity_cancel,Cancel,Annullieren,0
 model,"workflow.activity,name",sale_activity_confirmed,Confirmed,Beauftragt,0
 model,"workflow.activity,name",sale_activity_done,Done,Erledigt,0
 model,"workflow.activity,name",sale_activity_draft,Draft,Entwurf,0
-model,"workflow.activity,name",sale_activity_invoice_sale,Invoice,Rechnung,0
+model,"workflow.activity,name",,Invoice,Rechnung,0
 model,"workflow.activity,name",sale_activity_invoice_sale_done,Invoice Done,Rechnung erledigt,0
 model,"workflow.activity,name",sale_activity_invoice_sale_exception,Invoice Exception,Rechnungsvorbehalt,0
 model,"workflow.activity,name",sale_activity_invoice_method,Invoice Method,Rechnungsstellung,0
@@ -132,8 +135,8 @@ odt,sale.sale,0,Total (excl. taxes):,Netto:,0
 odt,sale.sale,0,Unit Price,Einzelpreis,0
 odt,sale.sale,0,VAT:,USt:,0
 selection,"account.invoice,sale_exception_state",0,,,0
-selection,"account.invoice,sale_exception_state",0,Duplicated,Dupliziert,0
 selection,"account.invoice,sale_exception_state",0,Ignored,Ignoriert,0
+selection,"account.invoice,sale_exception_state",0,Recreated,Nachgebildet,0
 selection,"sale.line,type",0,Comment,Kommentar,0
 selection,"sale.line,type",0,Line,Position,0
 selection,"sale.line,type",0,Subtotal,Zwischensumme,0
@@ -158,15 +161,18 @@ selection,"sale.sale,state",0,Done,Erledigt,0
 selection,"sale.sale,state",0,Draft,Entwurf,0
 selection,"sale.sale,state",0,Quotation,Angebot,0
 selection,"stock.move,sale_exception_state",0,,,0
-selection,"stock.move,sale_exception_state",0,Duplicated,Dupliziert,0
 selection,"stock.move,sale_exception_state",0,Ignored,Ignoriert,0
+selection,"stock.move,sale_exception_state",0,Recreated,Nachgebildet,0
 view,product.product,0,Customers,Kunden,0
 view,product.template,0,Customers,Kunden,0
 view,sale.handle.invoice.exception.ask,0,Choose invoices to duplicate,Auswahl Rechnungen für Duplizierung,0
+view,sale.handle.invoice.exception.ask,0,Choose invoices to recreate,Rechnungen zum Nachbilden auswählen,0
 view,sale.handle.invoice.exception.ask,0,Handle Invoice Exception,Rechnungsvorbehalt bearbeiten,0
 view,sale.handle.packing.exception.ask,0,Choose move to duplicate,Auswahl Bewegungen für Duplizierung,0
+view,sale.handle.packing.exception.ask,0,Choose move to recreate,Bewegungen zum Nachbilden auswählen,0
 view,sale.handle.packing.exception.ask,0,Duplicate Moves,Bewegungen duplizieren,0
 view,sale.handle.packing.exception.ask,0,Handle packing Exception,Liefervorbehalt bearbeiten,0
+view,sale.handle.packing.exception.ask,0,Recreate Moves,Bewegungen nachbilden,0
 view,sale.line,0,General,Allgemein,0
 view,sale.line,0,Notes,Notizen,0
 view,sale.line,0,Products,Artikel,0
