@@ -33,11 +33,13 @@ field,"stock.inventory.line,inventory",0,Inventory,Lagerbestand,0
 field,"stock.inventory.line,move",0,Move,Bewegung,0
 field,"stock.inventory.line,product",0,Product,Artikel,0
 field,"stock.inventory.line,quantity",0,Quantity,Anzahl,0
+field,"stock.inventory.line,rec_name",0,Name,Name,0
 field,"stock.inventory,lines",0,Lines,Positionen,0
 field,"stock.inventory.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
 field,"stock.inventory.line,uom",0,UOM,Maßeinheit,0
 field,"stock.inventory,location",0,Location,Ort,0
 field,"stock.inventory,lost_found",0,Lost and Found,Inventurdifferenz,0
+field,"stock.inventory,rec_name",0,Name,Name,0
 field,"stock.inventory,state",0,State,Status,0
 field,"stock.location,active",0,Active,Aktiv,0
 field,"stock.location,address",0,Address,Adresse,0
@@ -50,6 +52,7 @@ field,"stock.location,name",0,Name,Name,0
 field,"stock.location,output_location",0,Output,Ausgang,0
 field,"stock.location,parent",0,Parent,Übergeordnet (Lagerort),0
 field,"stock.location,quantity",0,Quantity,Anzahl,0
+field,"stock.location,rec_name",0,Name,Name,0
 field,"stock.location,right",0,Right,Rechts,0
 field,"stock.location_stock_date.init,forecast_date",0,At Date,Zum,0
 field,"stock.location,storage_location",0,Storage,Lager,0
@@ -67,6 +70,7 @@ field,"stock.move,packing_out_return",0,Customer Return Packing,Warenrücknahme,
 field,"stock.move,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.move,product",0,Product,Artikel,0
 field,"stock.move,quantity",0,Quantity,Anzahl,0
+field,"stock.move,rec_name",0,Name,Name,0
 field,"stock.move,state",0,State,Status,0
 field,"stock.move,to_location",0,To Location,Zu Lagerort,0
 field,"stock.move,unit_digits",0,Unit Digits,Anzahl Stellen,0
@@ -80,6 +84,7 @@ field,"stock.packing.in,incoming_moves",0,Incoming Moves,Eingehende Bewegungen,0
 field,"stock.packing.in,inventory_moves",0,Inventory Moves,Bestandsänderungen,0
 field,"stock.packing.in,moves",0,Moves,Bewegungen,0
 field,"stock.packing.in,planned_date",0,Planned Date,Geplantes Datum,0
+field,"stock.packing.in,rec_name",0,Name,Name,0
 field,"stock.packing.in,reference",0,Reference,Referenz,0
 field,"stock.packing.in.return.assign.ask_force,moves",0,Moves,Bewegungen,0
 field,"stock.packing.in.return,code",0,Code,Code,0
@@ -87,6 +92,7 @@ field,"stock.packing.in.return,effective_date",0,Effective Date,Effektives Datum
 field,"stock.packing.in.return,from_location",0,From Location,Von Lagerort,0
 field,"stock.packing.in.return,moves",0,Moves,Bewegungen,0
 field,"stock.packing.in.return,planned_date",0,Planned Date,Geplantes Datum,0
+field,"stock.packing.in.return,rec_name",0,Name,Name,0
 field,"stock.packing.in.return,reference",0,Reference,Referenz,0
 field,"stock.packing.in.return,state",0,State,Status,0
 field,"stock.packing.in.return,to_location",0,To Location,Zu Lagerort,0
@@ -98,6 +104,7 @@ field,"stock.packing.internal,effective_date",0,Effective Date,Effektives Datum,
 field,"stock.packing.internal,from_location",0,From Location,Von Lagerort,0
 field,"stock.packing.internal,moves",0,Moves,Bewegungen,0
 field,"stock.packing.internal,planned_date",0,Planned Date,Geplantes Datum,0
+field,"stock.packing.internal,rec_name",0,Name,Name,0
 field,"stock.packing.internal,reference",0,Reference,Referenz,0
 field,"stock.packing.internal,state",0,State,Status,0
 field,"stock.packing.internal,to_location",0,To Location,Zu Lagerort,0
@@ -111,6 +118,7 @@ field,"stock.packing.out,inventory_moves",0,Inventory Moves,Bestandsänderungen,
 field,"stock.packing.out,moves",0,Moves,Bewegungen,0
 field,"stock.packing.out,outgoing_moves",0,Outgoing Moves,Ausgehende Bewegungen,0
 field,"stock.packing.out,planned_date",0,Planned Date,Geplantes Datum,0
+field,"stock.packing.out,rec_name",0,Name,Name,0
 field,"stock.packing.out,reference",0,Reference,Referenz,0
 field,"stock.packing.out.return,code",0,Code,Code,0
 field,"stock.packing.out.return,customer",0,Customer,Kunde,0
@@ -120,6 +128,7 @@ field,"stock.packing.out.return,incoming_moves",0,Incoming Moves,Eingehende Bewe
 field,"stock.packing.out.return,inventory_moves",0,Inventory Moves,Bestandsänderungen,0
 field,"stock.packing.out.return,moves",0,Moves,Bewegungen,0
 field,"stock.packing.out.return,planned_date",0,Planned Date,Geplantes Datum,0
+field,"stock.packing.out.return,rec_name",0,Name,Name,0
 field,"stock.packing.out.return,reference",0,Reference,Referenz,0
 field,"stock.packing.out.return,state",0,State,Status,0
 field,"stock.packing.out.return,warehouse",0,Warehouse,Warenlager,0
