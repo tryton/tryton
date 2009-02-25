@@ -1,8 +1,4 @@
 type,name,res_id,src,value,fuzzy
-selection,"account.statement,state",0,Cancel,Annulliert,0
-selection,"account.statement,state",0,Draft,Entwurf,0
-selection,"account.statement,state",0,Posted,Festgeschrieben,0
-selection,"account.statement,state",0,Validated,Geprüft,0
 error,account.statement,0,End Balance must be %s!,Endsaldo muss %s sein!,0
 error,account.statement.line,0,Amount (%s) greater than the amount to pay of invoice!,Der eingegebene Betrag (%s) ist größer als der Rechnungsbetrag!,0
 error,account.statement.line,0,Credit or debit account on journal is the same than the statement line account!,Haben- oder Sollkonto im Journal ist das selbe Konto wie das des Zahlungspostens!,0
@@ -15,6 +11,7 @@ field,"account.statement.journal,company",0,Company,Unternehmen,0
 field,"account.statement.journal,currency",0,Currency,Währung,0
 field,"account.statement.journal,journal",0,Journal,Journal,0
 field,"account.statement.journal,name",0,Name,Name,0
+field,"account.statement.journal,rec_name",0,Name,Name,0
 field,"account.statement.line,account",0,Account,Konto,0
 field,"account.statement.line,amount",0,Amount,Betrag,0
 field,"account.statement.line,date",0,Date,Datum,0
@@ -22,9 +19,11 @@ field,"account.statement.line,description",0,Description,Beschreibung,0
 field,"account.statement.line,invoice",0,Invoice,Rechnung,0
 field,"account.statement.line,move",0,Account Move,Buchung,0
 field,"account.statement.line,party",0,Party,Partei,0
+field,"account.statement.line,rec_name",0,Name,Name,0
 field,"account.statement,lines",0,Transactions,Transaktionen,0
 field,"account.statement.line,statement",0,Statement,Zahlung,0
 field,"account.statement,move_lines",0,Move Lines,Buchungsposten,0
+field,"account.statement,rec_name",0,Name,Name,0
 field,"account.statement,start_balance",0,Start Balance,Anfangssaldo,0
 field,"account.statement,state",0,State,Status,0
 model,"account.journal.type,name",journal_type_statement,Statement,Zahlung,0
@@ -49,6 +48,10 @@ model,"workflow.activity,name",statement_act_draft,Draft,Entwurf,0
 model,"workflow.activity,name",statement_act_posted,Posted,Festgeschrieben,0
 model,"workflow.activity,name",statement_act_validated,Validated,Geprüft,0
 model,"workflow,name",wkf_statement,Statement,Zahlung,0
+selection,"account.statement,state",0,Cancel,Annulliert,0
+selection,"account.statement,state",0,Draft,Entwurf,0
+selection,"account.statement,state",0,Posted,Festgeschrieben,0
+selection,"account.statement,state",0,Validated,Geprüft,0
 view,account.statement,0,Bank Statement,Bankauszug,0
 view,account.statement,0,Bank Statement Lines,Posten Bankauszüge,0
 view,account.statement,0,Bank Statements,Bankauszüge,0
