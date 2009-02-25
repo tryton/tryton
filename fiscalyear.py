@@ -39,12 +39,12 @@ class FiscalYear(OSV):
 
     def __init__(self):
         super(FiscalYear, self).__init__()
-        self._rpc_allowed += [
-            'create_period',
-            'create_period_3',
-            'close',
-            'reopen',
-        ]
+        self._rpc.update({
+            'create_period': True,
+            'create_period_3': True,
+            'close': True,
+            'reopen': True,
+        })
         self._constraints += [
             ('check_dates', 'fiscalyear_overlaps'),
             ('check_post_move_sequence', 'different_post_move_sequence'),

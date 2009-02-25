@@ -48,10 +48,10 @@ class Move(OSV):
             ('check_company', 'company_in_move'),
             ('check_date', 'date_outside_period'),
         ]
-        self._rpc_allowed += [
-            'button_post',
-            'button_draft',
-        ]
+        self._rpc.update({
+            'button_post': True,
+            'button_draft': True,
+        })
         self._order.insert(0, ('date', 'DESC'))
         self._order.insert(1, ('reference', 'DESC'))
         self._error_messages.update({
@@ -482,9 +482,9 @@ class Line(OSV):
         self._constraints += [
             ('check_account', 'move_view_inactive_account'),
         ]
-        self._rpc_allowed += [
-            'on_write',
-        ]
+        self._rpc.update({
+            'on_write': False,
+        })
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
             'add_modify_closed_journal_period': 'You can not ' \
