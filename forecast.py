@@ -39,9 +39,9 @@ class Forecast(OSV):
 
     def __init__(self):
         super(Forecast, self).__init__()
-        self._rpc_allowed += [
-            'button_draft',
-        ]
+        self._rpc.update({
+            'button_draft': True,
+        })
         self._sql_constraints += [
             ('check_from_to_date',
              'CHECK(to_date >= from_date)',
