@@ -38,9 +38,9 @@ class Statement(ModelWorkflow, OSV):
 
     def __init__(self):
         super(Statement, self).__init__()
-        self._rpc_allowed += [
-            'draft_workflow',
-        ]
+        self._rpc.update({
+            'draft_workflow': True,
+        })
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
             'wrong_end_balance': 'End Balance must be %s!',
