@@ -1,84 +1,4 @@
 type,name,res_id,src,value,fuzzy
-selection,"country.subdivision,type",0,Administration,Verwaltung,0
-selection,"country.subdivision,type",0,Administrative area,Verwaltungsbezirk,0
-selection,"country.subdivision,type",0,Administrative Region,Regierungsbezirk,0
-selection,"country.subdivision,type",0,Administrative Territory,Verwaltungsbezirk,0
-selection,"country.subdivision,type",0,Area,Bezirk,0
-selection,"country.subdivision,type",0,Atoll,Atoll,0
-selection,"country.subdivision,type",0,Autonomous City,Autonome Stadt,0
-selection,"country.subdivision,type",0,Autonomous Commune,Autonome Gemeinde,0
-selection,"country.subdivision,type",0,Autonomous communities,Autonome Gemeinden,0
-selection,"country.subdivision,type",0,Autonomous District,Autonomer Distrikt,0
-selection,"country.subdivision,type",0,Autonomous island,Autonome Insel,0
-selection,"country.subdivision,type",0,Autonomous monastic state,Autonomer Kirchenstaat,0
-selection,"country.subdivision,type",0,Autonomous municipality,Autonomer Verwaltungsbezirk,0
-selection,"country.subdivision,type",0,Autonomous Province,Autonome Provinz,0
-selection,"country.subdivision,type",0,Autonomous Region,Autonome Region,0
-selection,"country.subdivision,type",0,Autonomous republic,Autonome Republik,0
-selection,"country.subdivision,type",0,Autonomous sector,Autonomer Bereich,0
-selection,"country.subdivision,type",0,Autonomous territory,Autonomes Gebiet,0
-selection,"country.subdivision,type",0,Borough,Stadtbezirk,0
-selection,"country.subdivision,type",0,Canton,Kanton,0
-selection,"country.subdivision,type",0,Capital city,Capital city,0
-selection,"country.subdivision,type",0,Capital District,Bezirksstadt,0
-selection,"country.subdivision,type",0,Capital Metropolitan City,Capital Metropolitan City,0
-selection,"country.subdivision,type",0,Capital Territory,Hauptstadtterritorium,0
-selection,"country.subdivision,type",0,City,Stadt,0
-selection,"country.subdivision,type",0,City corporation,Stadtverwaltung,0
-selection,"country.subdivision,type",0,City with county rights,Stadt mit Kreisverwaltungsrechten,0
-selection,"country.subdivision,type",0,Commune,Gemeinde,0
-selection,"country.subdivision,type",0,Country,Land,0
-selection,"country.subdivision,type",0,County,Landkreis,0
-selection,"country.subdivision,type",0,Department,Gebiet,0
-selection,"country.subdivision,type",0,Dependency,Schutzgebiet,0
-selection,"country.subdivision,type",0,District,Distrikt,0
-selection,"country.subdivision,type",0,Division,Untereinheit,0
-selection,"country.subdivision,type",0,Economic Prefecture,Wirtschaftspräfektur,0
-selection,"country.subdivision,type",0,Economic region,Wirtschaftsgebiet,0
-selection,"country.subdivision,type",0,Emirate,Emirat,0
-selection,"country.subdivision,type",0,Entity,Einheit,0
-selection,"country.subdivision,type",0,Federal Dependency,Bundesstaatliche Kolonie,0
-selection,"country.subdivision,type",0,Federal District,Bundesgebiet,0
-selection,"country.subdivision,type",0,Federal Territories,Bundesländer,0
-selection,"country.subdivision,type",0,Geographical region,Geographische Region,0
-selection,"country.subdivision,type",0,Geographical unit,Geographische Einheit,0
-selection,"country.subdivision,type",0,Governorate,Regierungsbezirk,0
-selection,"country.subdivision,type",0,Included for completeness,Der Vollständigkeit halber hinzugefügt,0
-selection,"country.subdivision,type",0,Island council,Inselrat,0
-selection,"country.subdivision,type",0,Island group,Inselgruppe,0
-selection,"country.subdivision,type",0,Local council,Gemeinderat,0
-selection,"country.subdivision,type",0,London borough,Stadtbezirk London,0
-selection,"country.subdivision,type",0,Metropolitan cities,Metropolstädte,0
-selection,"country.subdivision,type",0,Metropolitan department,Metropoldepartement,0
-selection,"country.subdivision,type",0,Metropolitan district,Metropolbezirk,0
-selection,"country.subdivision,type",0,Metropolitan region,Metropolregion,0
-selection,"country.subdivision,type",0,Municipalities,Stadtverwaltungen,0
-selection,"country.subdivision,type",0,Municipality,Stadtverwaltung,0
-selection,"country.subdivision,type",0,Oblast,Gebiet,0
-selection,"country.subdivision,type",0,Outlying area,Randbezirk,0
-selection,"country.subdivision,type",0,Overseas region/department,Region Übersee/Departement,0
-selection,"country.subdivision,type",0,Overseas territorial collectivity,Territoriale Gemeinschaft Übersee,0
-selection,"country.subdivision,type",0,Parish,Gemeinde,0
-selection,"country.subdivision,type",0,Prefecture,Präfektur,0
-selection,"country.subdivision,type",0,Principality,Fürstentum,0
-selection,"country.subdivision,type",0,Province,Provinz,0
-selection,"country.subdivision,type",0,Rayon,Bezirk,0
-selection,"country.subdivision,type",0,Region,Region,0
-selection,"country.subdivision,type",0,Regional council,Regionalrat,0
-selection,"country.subdivision,type",0,Republic,Republik,0
-selection,"country.subdivision,type",0,Special administrative region,Sonderverwaltungszone,0
-selection,"country.subdivision,type",0,Special city,Special city,0
-selection,"country.subdivision,type",0,Special District,Special District,0
-selection,"country.subdivision,type",0,Special Municipality,Sonderstadtverwaltung,0
-selection,"country.subdivision,type",0,Special Region,Sonderverwaltungsgebiet,0
-selection,"country.subdivision,type",0,Special zone,Sonderwirtschaftszone,0
-selection,"country.subdivision,type",0,State,Staat,0
-selection,"country.subdivision,type",0,Territorial unit,Territoriale Einheit,0
-selection,"country.subdivision,type",0,Territory,Gebiet,0
-selection,"country.subdivision,type",0,Town council,Stadtrat,0
-selection,"country.subdivision,type",0,Two-tier county,Zweistufenbezirk,0
-selection,"country.subdivision,type",0,Union territory,Gemeinschaftsgebiet,0
-selection,"country.subdivision,type",0,Unitary authority,Einheitliche Behörde,0
 error,country.country,0,The code of the country must be unique!,Der Ländercode kann nicht mehrfach vergeben werden!,0
 error,country.country,0,The name of the country must be unique!,Der Name des Landes kann nicht mehrfach vergeben werden!,0
 field,"country.country,code",0,Code,Länderkürzel,0
@@ -86,6 +6,7 @@ field,"country.country,create_date",0,Creation date,Erstellungsdatum,0
 field,"country.country,create_uid",0,Creation user,Ersteller,0
 field,"country.country,id",0,ID,ID,0
 field,"country.country,name",0,Name,Name Staat,0
+field,"country.country,rec_name",0,Name,Name,0
 field,"country.country,subdivisions",0,Subdivisions,Subnationale Einheiten,0
 field,"country.country,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"country.country,write_uid",0,Last modification by,Zuletzt geändert von,0
@@ -93,6 +14,7 @@ field,"country.subdivision,code",0,Code,Code,0
 field,"country.subdivision,country",0,Country,Land,0
 field,"country.subdivision,name",0,Name,Name,0
 field,"country.subdivision,parent",0,Parent,Übergeordnet (Subnationale Einheit),0
+field,"country.subdivision,rec_name",0,Name,Name,0
 field,"country.subdivision,type",0,Type,Typ,0
 help,"country.country,code",0,"The ISO country code in two chars.
 You can use this field for quick search.",Staatenkürzel (2 Zeichen),0
@@ -347,6 +269,86 @@ model,"country.country,name",zw,Zimbabwe,Zimbabwe,0
 model,"country.subdivision,name",0,Subdivision,Subnationale Einheit,0
 model,"ir.action,name",act_country_form,Countries,Staaten,0
 model,"ir.ui.menu,name",menu_country_form,Countries,Staaten,0
+selection,"country.subdivision,type",0,Administration,Verwaltung,0
+selection,"country.subdivision,type",0,Administrative area,Verwaltungsbezirk,0
+selection,"country.subdivision,type",0,Administrative Region,Regierungsbezirk,0
+selection,"country.subdivision,type",0,Administrative Territory,Verwaltungsbezirk,0
+selection,"country.subdivision,type",0,Area,Bezirk,0
+selection,"country.subdivision,type",0,Atoll,Atoll,0
+selection,"country.subdivision,type",0,Autonomous City,Autonome Stadt,0
+selection,"country.subdivision,type",0,Autonomous Commune,Autonome Gemeinde,0
+selection,"country.subdivision,type",0,Autonomous communities,Autonome Gemeinden,0
+selection,"country.subdivision,type",0,Autonomous District,Autonomer Distrikt,0
+selection,"country.subdivision,type",0,Autonomous island,Autonome Insel,0
+selection,"country.subdivision,type",0,Autonomous monastic state,Autonomer Kirchenstaat,0
+selection,"country.subdivision,type",0,Autonomous municipality,Autonomer Verwaltungsbezirk,0
+selection,"country.subdivision,type",0,Autonomous Province,Autonome Provinz,0
+selection,"country.subdivision,type",0,Autonomous Region,Autonome Region,0
+selection,"country.subdivision,type",0,Autonomous republic,Autonome Republik,0
+selection,"country.subdivision,type",0,Autonomous sector,Autonomer Bereich,0
+selection,"country.subdivision,type",0,Autonomous territory,Autonomes Gebiet,0
+selection,"country.subdivision,type",0,Borough,Stadtbezirk,0
+selection,"country.subdivision,type",0,Canton,Kanton,0
+selection,"country.subdivision,type",0,Capital city,Capital city,0
+selection,"country.subdivision,type",0,Capital District,Bezirksstadt,0
+selection,"country.subdivision,type",0,Capital Metropolitan City,Capital Metropolitan City,0
+selection,"country.subdivision,type",0,Capital Territory,Hauptstadtterritorium,0
+selection,"country.subdivision,type",0,City,Stadt,0
+selection,"country.subdivision,type",0,City corporation,Stadtverwaltung,0
+selection,"country.subdivision,type",0,City with county rights,Stadt mit Kreisverwaltungsrechten,0
+selection,"country.subdivision,type",0,Commune,Gemeinde,0
+selection,"country.subdivision,type",0,Country,Land,0
+selection,"country.subdivision,type",0,County,Landkreis,0
+selection,"country.subdivision,type",0,Department,Gebiet,0
+selection,"country.subdivision,type",0,Dependency,Schutzgebiet,0
+selection,"country.subdivision,type",0,District,Distrikt,0
+selection,"country.subdivision,type",0,Division,Untereinheit,0
+selection,"country.subdivision,type",0,Economic Prefecture,Wirtschaftspräfektur,0
+selection,"country.subdivision,type",0,Economic region,Wirtschaftsgebiet,0
+selection,"country.subdivision,type",0,Emirate,Emirat,0
+selection,"country.subdivision,type",0,Entity,Einheit,0
+selection,"country.subdivision,type",0,Federal Dependency,Bundesstaatliche Kolonie,0
+selection,"country.subdivision,type",0,Federal District,Bundesgebiet,0
+selection,"country.subdivision,type",0,Federal Territories,Bundesländer,0
+selection,"country.subdivision,type",0,Geographical region,Geographische Region,0
+selection,"country.subdivision,type",0,Geographical unit,Geographische Einheit,0
+selection,"country.subdivision,type",0,Governorate,Regierungsbezirk,0
+selection,"country.subdivision,type",0,Included for completeness,Der Vollständigkeit halber hinzugefügt,0
+selection,"country.subdivision,type",0,Island council,Inselrat,0
+selection,"country.subdivision,type",0,Island group,Inselgruppe,0
+selection,"country.subdivision,type",0,Local council,Gemeinderat,0
+selection,"country.subdivision,type",0,London borough,Stadtbezirk London,0
+selection,"country.subdivision,type",0,Metropolitan cities,Metropolstädte,0
+selection,"country.subdivision,type",0,Metropolitan department,Metropoldepartement,0
+selection,"country.subdivision,type",0,Metropolitan district,Metropolbezirk,0
+selection,"country.subdivision,type",0,Metropolitan region,Metropolregion,0
+selection,"country.subdivision,type",0,Municipalities,Stadtverwaltungen,0
+selection,"country.subdivision,type",0,Municipality,Stadtverwaltung,0
+selection,"country.subdivision,type",0,Oblast,Gebiet,0
+selection,"country.subdivision,type",0,Outlying area,Randbezirk,0
+selection,"country.subdivision,type",0,Overseas region/department,Region Übersee/Departement,0
+selection,"country.subdivision,type",0,Overseas territorial collectivity,Territoriale Gemeinschaft Übersee,0
+selection,"country.subdivision,type",0,Parish,Gemeinde,0
+selection,"country.subdivision,type",0,Prefecture,Präfektur,0
+selection,"country.subdivision,type",0,Principality,Fürstentum,0
+selection,"country.subdivision,type",0,Province,Provinz,0
+selection,"country.subdivision,type",0,Rayon,Bezirk,0
+selection,"country.subdivision,type",0,Region,Region,0
+selection,"country.subdivision,type",0,Regional council,Regionalrat,0
+selection,"country.subdivision,type",0,Republic,Republik,0
+selection,"country.subdivision,type",0,Special administrative region,Sonderverwaltungszone,0
+selection,"country.subdivision,type",0,Special city,Special city,0
+selection,"country.subdivision,type",0,Special District,Special District,0
+selection,"country.subdivision,type",0,Special Municipality,Sonderstadtverwaltung,0
+selection,"country.subdivision,type",0,Special Region,Sonderverwaltungsgebiet,0
+selection,"country.subdivision,type",0,Special zone,Sonderwirtschaftszone,0
+selection,"country.subdivision,type",0,State,Staat,0
+selection,"country.subdivision,type",0,Territorial unit,Territoriale Einheit,0
+selection,"country.subdivision,type",0,Territory,Gebiet,0
+selection,"country.subdivision,type",0,Town council,Stadtrat,0
+selection,"country.subdivision,type",0,Two-tier county,Zweistufenbezirk,0
+selection,"country.subdivision,type",0,Union territory,Gemeinschaftsgebiet,0
+selection,"country.subdivision,type",0,Unitary authority,Einheitliche Behörde,0
 view,country.country,0,Countries,Staaten,0
 view,country.country,0,Country,Staat,0
 view,country.country,0,Subdivision,Subnationale Einheit,0
