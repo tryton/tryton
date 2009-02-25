@@ -70,9 +70,9 @@ class PackingIn(ModelWorkflow, OSV):
 
     def __init__(self):
         super(PackingIn, self).__init__()
-        self._rpc_allowed += [
-            'button_draft',
-        ]
+        self._rpc.update({
+            'button_draft': True,
+        })
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
             'incoming_move_input_dest': 'Incoming Moves must ' \
@@ -338,9 +338,9 @@ class PackingInReturn(ModelWorkflow, OSV):
 
     def __init__(self):
         super(PackingInReturn, self).__init__()
-        self._rpc_allowed += [
-            'button_draft',
-        ]
+        self._rpc.update({
+            'button_draft': True,
+        })
         self._order[0] = ('id', 'DESC')
 
     def create(self, cursor, user, values, context=None):
@@ -499,9 +499,9 @@ class PackingOut(ModelWorkflow, OSV):
 
     def __init__(self):
         super(PackingOut, self).__init__()
-        self._rpc_allowed += [
-            'button_draft',
-        ]
+        self._rpc.update({
+            'button_draft': True,
+        })
         self._order[0] = ('id', 'DESC')
 
     def init(self, cursor, module_name):
@@ -885,9 +885,9 @@ class PackingOutReturn(ModelWorkflow, OSV):
 
     def __init__(self):
         super(PackingOutReturn, self).__init__()
-        self._rpc_allowed += [
-            'button_draft',
-        ]
+        self._rpc.update({
+            'button_draft': True,
+        })
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
             'incoming_move_input_dest': 'Incoming Moves must ' \
@@ -1227,9 +1227,9 @@ class PackingInternal(ModelWorkflow, OSV):
 
     def __init__(self):
         super(PackingInternal, self).__init__()
-        self._rpc_allowed += [
-            'button_draft',
-        ]
+        self._rpc.update({
+            'button_draft': True,
+        })
         self._order[0] = ('id', 'DESC')
 
     def create(self, cursor, user, values, context=None):
