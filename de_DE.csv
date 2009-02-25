@@ -66,6 +66,7 @@ field,"account.invoice.line,note",0,Note,Notiz,0
 field,"account.invoice.line,party",0,Party,Partei,0
 field,"account.invoice.line,product",0,Product,Artikel,0
 field,"account.invoice.line,quantity",0,Quantity,Anzahl,0
+field,"account.invoice.line,rec_name",0,Name,Name,0
 field,"account.invoice,lines",0,Lines,Positionen,0
 field,"account.invoice.line,sequence",0,Sequence,Sequenz,0
 field,"account.invoice,lines_to_pay",0,Lines to Pay,Zahlbare Positionen,0
@@ -108,14 +109,19 @@ field,"account.invoice.payment_term.line,days",0,Number of Days,Anzahl an Tagen,
 field,"account.invoice.payment_term.line,delay",0,Condition,Bedingung,0
 field,"account.invoice.payment_term.line.delay,code",0,Code,Kundennummer,0
 field,"account.invoice.payment_term.line.delay,name",0,Name,Name,0
+field,"account.invoice.payment_term.line.delay,rec_name",0,Name,Name,0
 field,"account.invoice.payment_term.line,payment",0,Payment Term,Zahlungsbedingung,0
 field,"account.invoice.payment_term.line,percentage",0,Percentage,Prozentsatz,0
+field,"account.invoice.payment_term.line,rec_name",0,Name,Name,0
 field,"account.invoice.payment_term,lines",0,Lines,Positionen,0
 field,"account.invoice.payment_term.line,sequence",0,Sequence,Sequenz,0
 field,"account.invoice.payment_term.line,type",0,Type,Typ,0
 field,"account.invoice.payment_term.line.type,code",0,Code,Kundennummer,0
 field,"account.invoice.payment_term.line.type,name",0,Name,Name,0
+field,"account.invoice.payment_term.line.type,rec_name",0,Name,Name,0
 field,"account.invoice.payment_term,name",0,Payment Term,Zahlungsbedingung,0
+field,"account.invoice.payment_term,rec_name",0,Name,Name,0
+field,"account.invoice,rec_name",0,Name,Name,0
 field,"account.invoice,reconciled",0,Reconciled,Abgestimmt,0
 field,"account.invoice,reference",0,Reference,Referenz,0
 field,"account.invoice,state",0,State,Status,0
@@ -129,6 +135,7 @@ field,"account.invoice.tax,description",0,Description,Beschreibung,0
 field,"account.invoice,taxes",0,Tax Lines,Steuerpositionen,0
 field,"account.invoice.tax,invoice",0,Invoice,Rechnung,0
 field,"account.invoice.tax,manual",0,Manual,Manuell,0
+field,"account.invoice.tax,rec_name",0,Name,Name,0
 field,"account.invoice.tax,sequence",0,Sequence,Sequenz,0
 field,"account.invoice.tax,sequence_number",0,Sequence Number,Nummer Sequenz,0
 field,"account.invoice.tax,tax_code",0,Tax Code,Steuerkennziffer,0
