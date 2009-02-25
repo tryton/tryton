@@ -27,9 +27,11 @@ field,"currency.currency.rate,currency",0,Currency,Währung,0
 field,"currency.currency.rate,date",0,Date,Datum,0
 field,"currency.currency.rate,id",0,ID,ID,0
 field,"currency.currency.rate,rate",0,Rate,Kurs,0
+field,"currency.currency.rate,rec_name",0,Name,Name,0
 field,"currency.currency,rates",0,Rates,Kurse,0
 field,"currency.currency.rate,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"currency.currency.rate,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"currency.currency,rec_name",0,Name,Name,0
 field,"currency.currency,rounding",0,Rounding factor,Rundung,0
 field,"currency.currency,symbol",0,Symbol,Symbol,0
 field,"currency.currency,write_date",0,Last modification date,Zuletzt geändert am,0
