@@ -237,7 +237,7 @@ class InstanceGraph(Report):
                     context=context)
         instance_id = instance_id[0]
 
-        title = "Workflow: %s" % (workflow.name,)
+        title = "Workflow: %s" % (workflow.name.encode('ascii', 'replace'),)
         if pydot.__version__ == '1.0.2':
             # version 1.0.2 doesn't quote correctly label on Dot object
             title = '"' + title + '"'
@@ -313,7 +313,8 @@ class InstanceGraph(Report):
                 workflow = workflow_obj.browse(cursor, user,
                         activity.subflow.id, context=context)
                 subgraph = pydot.Cluster('subflow' + str(workflow.id),
-                        fontsize='12', label="Subflow: " + activity.name)
+                        fontsize='12',
+                        label="Subflow: " + activity.name.encode('ascii', 'replace'))
                 (substart, substop) = self.graph_get(cursor, user,
                         subgraph, workflow.id, nested, workitem,
                         context=context)
@@ -322,7 +323,7 @@ class InstanceGraph(Report):
                 actto[activity.id] = substop
             else:
                 args = {}
-                args['label'] = activity.name
+                args['label'] = activity.name.encode('ascii', 'replace')
                 args['fontsize'] = '10'
                 if activity.flow_start or activity.flow_stop:
                     args['style'] = 'filled'
