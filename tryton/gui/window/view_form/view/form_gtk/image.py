@@ -18,7 +18,6 @@ class Image(WidgetInterface):
     def __init__(self, window, parent, model, attrs=None):
         super(Image, self).__init__(window, parent, model, attrs=attrs)
 
-        self._value = ''
         self.height = int(attrs.get('img_height', 100))
         self.width = int(attrs.get('img_width', 300))
 
@@ -91,17 +90,19 @@ class Image(WidgetInterface):
         filename = file_selection(_('Open...'), parent=self._window,
                 preview=True, filters=[filter_image, filter_all])
         if filename:
-            self._value = encodestring(file(filename, 'rb').read())
+            self._view.modelfield.set_client(self._view.model,
+                    encodestring(file(filename, 'rb').read()))
             self.update_img()
 
     def sig_save_as(self, widget):
         filename = file_selection(_('Save As...'), parent=self._window,
                 action=gtk.FILE_CHOOSER_ACTION_SAVE)
         if filename:
-            file(filename, 'wb').write(decodestring(self._value))
+            file(filename, 'wb').write(decodestring(
+                self._view.modelfield.get_client(self._view.model)))
 
     def sig_remove(self, widget):
-        self._value = ''
+        self._view.modelfield.set_client(self._view.model, False)
         self.update_img()
 
     def drag_motion(self, widget, context, x, y, timestamp):
@@ -113,24 +114,30 @@ class Image(WidgetInterface):
         if info == 0:
             uri = selection.get_text().split('\n')[0]
             if uri:
-                self._value = encodestring(urllib.urlopen(uri).read())
+                self._view.modelfield.set_client(self._view.model,
+                        encodestring(urllib.urlopen(uri).read()))
             self.update_img()
         elif info == 1:
             uri = selection.data.split('\r\n')[0]
             if uri:
-                self._value = encodestring(urllib.urlopen(uri).read())
+                self._view.modelfield.set_client(self._view.model,
+                        encodestring(urllib.urlopen(uri).read()))
             self.update_img()
         elif info == 2:
             data = selection.get_pixbuf()
             if data:
-                self._value = encodestring(data)
+                self._view.modelfield.set_client(self._view.model,
+                        encodestring(data))
                 self.update_img()
 
     def update_img(self):
-        if not self._value:
+        value = None
+        if self._view:
+            value = self._view.modelfield.get_client(self._view.model)
+        if not value:
             data = NOIMAGE
         else:
-            data = decodestring(self._value)
+            data = decodestring(value)
 
         pixbuf = None
         for ftype in ('jpeg', 'gif', 'png', 'bmp'):
@@ -173,9 +180,5 @@ class Image(WidgetInterface):
     def display(self, model, model_field):
         if not model_field:
             return False
-        self._value = model_field.get(model)
         super(Image, self).display(model, model_field)
         self.update_img()
-
-    def set_value(self, model, model_field):
-        return model_field.set_client(model, self._value or False)
