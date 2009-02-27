@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
                 <data>
                     <xpath
                         expr="/form/notebook/page[@id=&quot;childs&quot;]"
-                        position="after">
+                        position="before">
                         <page string="Accounting" col="4" id="accounting">
                             <label name="account_revenue"/>
                             <field name="account_revenue"/>
