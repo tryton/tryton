@@ -897,7 +897,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="currency"/>
                     <field name="currency"/>
                     <separator name="lines" colspan="4"/>
-                    <field name="lines" colspan="4" widget="many2many">
+                    <field name="lines" colspan="4">
                         <tree string="Lines to Pay">
                             <field name="maturity_date"/>
                             <field name="debit" sum="Debit"/>

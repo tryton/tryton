@@ -1963,7 +1963,7 @@ class PayInvoiceAsk(WizardOSV):
     currency_digits = fields.Integer('Currency Digits', readonly=True,
             on_change_with=['currency'])
     lines_to_pay = fields.Char(string='Lines to Pay', size=None)
-    lines = fields.One2Many('account.move.line', 'ham', 'Lines',
+    lines = fields.Many2Many('account.move.line', None, None, None, 'Lines',
             domain="[('id', 'in', eval(lines_to_pay)), " \
                     "('reconciliation', '=', False)]",
             states={
