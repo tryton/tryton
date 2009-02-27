@@ -116,7 +116,7 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="comment" colspan="4" spell="party_lang"/>
                         </page>
                         <page string="Invoices" id="invoices">
-                            <field name="invoices" colspan="4" widget="one2many">
+                            <field name="invoices" colspan="4">
                                 <tree>
                                   <field name="number" select="1"/>
                                   <field name="invoice_date" select="2"/>
@@ -134,7 +134,7 @@ this repository contains the full copyright notices and license terms. -->
                             </field>
                         </page>
                         <page string="Packings" id="packings">
-                            <field name="moves" colspan="4" widget="one2many">
+                            <field name="moves" colspan="4">
                                 <tree string="Moves">
                                     <field name="product"/>
                                     <field name="from_location"/>
@@ -146,7 +146,7 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="unit_digits" tree_invisible="1"/>
                                 </tree>
                             </field>
-                            <field name="packings" colspan="4" widget="one2many"/>
+                            <field name="packings" colspan="4"/>
                         </page>
                     </notebook>
                     <field name="currency_digits" invisible="1" colspan="6"/>
