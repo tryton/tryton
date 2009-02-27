@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath
                         expr="/form/notebook/page/field[@name=&quot;invoices&quot;]"
                         position="after">
-                        <field name="invoice_lines" colspan="4" widget="one2many"/>
+                        <field name="invoice_lines" colspan="4"/>
                     </xpath>
                 </data>
                 ]]>
