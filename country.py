@@ -1,11 +1,12 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
-from trytond.osv import fields, OSV
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
+from trytond.model import ModelView, ModelSQL, fields
 STATES = {
     'readonly': "active == False",
 }
 
 
-class Country(OSV):
+class Country(ModelSQL, ModelView):
     'Country'
     _name = 'country.country'
     _description = __doc__
@@ -61,7 +62,7 @@ class Country(OSV):
 Country()
 
 
-class Subdivision(OSV):
+class Subdivision(ModelSQL, ModelView):
     "Subdivision"
     _name = 'country.subdivision'
     _description = __doc__
