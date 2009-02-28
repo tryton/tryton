@@ -1,16 +1,15 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 'Inventory'
-from trytond.model import ModelWorkflow
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 
 STATES = {
     'readonly': "state != 'draft'",
 }
 
 
-class Inventory(ModelWorkflow, OSV):
+class Inventory(ModelWorkflow, ModelSQL, ModelView):
     'Stock Inventory'
     _name = 'stock.inventory'
     _description = __doc__
@@ -215,7 +214,7 @@ class Inventory(ModelWorkflow, OSV):
 Inventory()
 
 
-class InventoryLine(OSV):
+class InventoryLine(ModelSQL, ModelView):
     'Stock Inventory Line'
     _name = 'stock.inventory.line'
     _description = __doc__
@@ -308,7 +307,7 @@ class InventoryLine(OSV):
 InventoryLine()
 
 
-class CompleteInventoryInit(WizardOSV):
+class CompleteInventoryInit(ModelView):
     'Complete Inventory Init'
     _name = 'stock.inventory.complete.init'
     _description = __doc__

@@ -1,8 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 "Wharehouse"
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 import datetime
 
 STATES = {
@@ -10,7 +10,7 @@ STATES = {
 }
 
 
-class Location(OSV):
+class Location(ModelSQL, ModelView):
     "Stock Location"
     _name = 'stock.location'
     _description = __doc__
@@ -231,7 +231,7 @@ class Location(OSV):
 Location()
 
 
-class Party(OSV):
+class Party(ModelSQL, ModelView):
     _name = 'party.party'
     supplier_location = fields.Property(type='many2one',
             relation='stock.location', string='Supplier Location',
@@ -247,7 +247,7 @@ class Party(OSV):
 Party()
 
 
-class ChooseStockDateInit(WizardOSV):
+class ChooseStockDateInit(ModelView):
     _name = 'stock.location_stock_date.init'
     _description = "Compute stock quantities"
     forecast_date = fields.Date(

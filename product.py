@@ -1,11 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 import datetime
 
 
-class Template(OSV):
+class Template(ModelSQL, ModelView):
     _name = "product.template"
 
     quantity = fields.Function('get_quantity', type='float', string='Quantity')
@@ -25,7 +25,7 @@ class Template(OSV):
 
 Template()
 
-class Product(OSV):
+class Product(ModelSQL, ModelView):
     _name = "product.product"
 
     quantity = fields.Function('get_quantity', type='float', string='Quantity',
@@ -477,7 +477,7 @@ class Product(OSV):
 Product()
 
 
-class ChooseStockDateInit(WizardOSV):
+class ChooseStockDateInit(ModelView):
     _name = 'stock.product_stock_date.init'
     _description = "Compute stock quantities"
     forecast_date = fields.Date(

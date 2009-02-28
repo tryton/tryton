@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Move"
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL, fields
 from decimal import Decimal
 import datetime
 
@@ -10,7 +10,7 @@ STATES = {
 }
 
 
-class Move(OSV):
+class Move(ModelSQL, ModelView):
     "Stock Move"
     _name = 'stock.move'
     _description = __doc__

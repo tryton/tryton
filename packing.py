@@ -1,10 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Packing"
-from trytond.model import ModelWorkflow
-from trytond.osv import fields, OSV
+from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.report import CompanyReport
-from trytond.wizard import Wizard, WizardOSV
+from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 import datetime
 
@@ -13,7 +12,7 @@ STATES = {
 }
 
 
-class PackingIn(ModelWorkflow, OSV):
+class PackingIn(ModelWorkflow, ModelSQL, ModelView):
     "Supplier Packing"
     _name = 'stock.packing.in'
     _description = __doc__
@@ -292,7 +291,7 @@ class PackingIn(ModelWorkflow, OSV):
 PackingIn()
 
 
-class PackingInReturn(ModelWorkflow, OSV):
+class PackingInReturn(ModelWorkflow, ModelSQL, ModelView):
     "Supplier Return Packing"
     _name = 'stock.packing.in.return'
     _description = __doc__
@@ -444,7 +443,7 @@ class PackingInReturn(ModelWorkflow, OSV):
 PackingInReturn()
 
 
-class PackingOut(ModelWorkflow, OSV):
+class PackingOut(ModelWorkflow, ModelSQL, ModelView):
     "Customer Packing"
     _name = 'stock.packing.out'
     _description = __doc__
@@ -832,7 +831,7 @@ PackingOut()
 
 
 
-class PackingOutReturn(ModelWorkflow, OSV):
+class PackingOutReturn(ModelWorkflow, ModelSQL, ModelView):
     "Customer Return Packing"
     _name = 'stock.packing.out.return'
     _description = __doc__
@@ -1109,7 +1108,7 @@ class PackingOutReturn(ModelWorkflow, OSV):
 PackingOutReturn()
 
 
-class AssignPackingOutAskForce(WizardOSV):
+class AssignPackingOutAskForce(ModelView):
     'Assign Packing Out Ask Force'
     _name = 'stock.packing.out.assign.ask_force'
     _description = __doc__
@@ -1179,7 +1178,7 @@ class AssignPackingOut(Wizard):
 AssignPackingOut()
 
 
-class PackingInternal(ModelWorkflow, OSV):
+class PackingInternal(ModelWorkflow, ModelSQL, ModelView):
     "Internal Packing"
     _name = 'stock.packing.internal'
     _description = __doc__
@@ -1301,14 +1300,14 @@ class PackingInternal(ModelWorkflow, OSV):
 PackingInternal()
 
 
-class Address(OSV):
+class Address(ModelSQL, ModelView):
     _name = 'party.address'
     delivery = fields.Boolean('Delivery')
 
 Address()
 
 
-class AssignPackingInternalAskForce(WizardOSV):
+class AssignPackingInternalAskForce(ModelView):
     'Assign Packing Internal Ask Force'
     _name = 'stock.packing.internal.assign.ask_force'
     _description = __doc__
@@ -1377,7 +1376,7 @@ class AssignPackingInternal(Wizard):
 AssignPackingInternal()
 
 
-class AssignPackingInReturnAskForce(WizardOSV):
+class AssignPackingInReturnAskForce(ModelView):
     'Assign Supplier Return Packing Ask Force'
     _name = 'stock.packing.in.return.assign.ask_force'
     _description = __doc__
