@@ -1,11 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 import datetime
 
 
-class PurchaseRequest(OSV):
+class PurchaseRequest(ModelSQL, ModelView):
     'Purchase Request'
     _name = 'purchase.request'
     _description = __doc__
@@ -430,7 +430,7 @@ class PurchaseRequest(OSV):
 PurchaseRequest()
 
 
-class CreatePurchaseAskTerm(WizardOSV):
+class CreatePurchaseAskTerm(ModelView):
     'Create Purchase Ask Term'
     _name = 'purchase.request.create_purchase.ask_term'
     _description = __doc__
@@ -441,7 +441,7 @@ class CreatePurchaseAskTerm(WizardOSV):
 
 CreatePurchaseAskTerm()
 
-class CreatePurchaseAskParty(WizardOSV):
+class CreatePurchaseAskParty(ModelView):
     'Create Purchase Ask Party'
     _name = 'purchase.request.create_purchase.ask_party'
     _description = __doc__

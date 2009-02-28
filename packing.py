@@ -1,9 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL
 
 
-class PackingInternal(OSV):
+class PackingInternal(ModelSQL, ModelView):
     _name = 'stock.packing.internal'
 
     def generate_internal_packing(self, cursor, user, context=None):

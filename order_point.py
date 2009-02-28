@@ -1,10 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 
 
-class OrderPoint(OSV):
+class OrderPoint(ModelSQL, ModelView):
     """
     Order Point: Provide a way to define a supply policy for each
     product on each locations. Order points on warehouse are
