@@ -1,10 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Invoice"
-from trytond.model import ModelWorkflow
-from trytond.osv import fields, OSV
+from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.report import Report
-from trytond.wizard import Wizard, WizardOSV
+from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from decimal import Decimal
 import base64
@@ -28,7 +27,7 @@ _TYPE2JOURNAL = {
 }
 
 
-class Invoice(ModelWorkflow, OSV):
+class Invoice(ModelWorkflow, ModelSQL, ModelView):
     'Invoice'
     _name = 'account.invoice'
     _description = __doc__
@@ -1078,7 +1077,7 @@ class Invoice(ModelWorkflow, OSV):
 Invoice()
 
 
-class InvoiceLine(OSV):
+class InvoiceLine(ModelSQL, ModelView):
     'Invoice Line'
     _name = 'account.invoice.line'
     _rec_name = 'description'
@@ -1601,7 +1600,7 @@ class InvoiceLine(OSV):
 InvoiceLine()
 
 
-class InvoiceTax(OSV):
+class InvoiceTax(ModelSQL, ModelView):
     'Invoice Tax'
     _name = 'account.invoice.tax'
     _rec_name = 'description'
@@ -1783,7 +1782,7 @@ class InvoiceTax(OSV):
 InvoiceTax()
 
 
-class PrintInvoiceReportWarning(WizardOSV):
+class PrintInvoiceReportWarning(ModelView):
     'Print Invoice Report Warning'
     _name = 'account.invoice.print_invoice_report.warning'
     _description = __doc__
@@ -1909,7 +1908,7 @@ class InvoiceReport(Report):
 InvoiceReport()
 
 
-class PayInvoiceInit(WizardOSV):
+class PayInvoiceInit(ModelView):
     'Pay Invoice Init'
     _name = 'account.invoice.pay_invoice.init'
     _description = __doc__
@@ -1939,7 +1938,7 @@ class PayInvoiceInit(WizardOSV):
 PayInvoiceInit()
 
 
-class PayInvoiceAsk(WizardOSV):
+class PayInvoiceAsk(ModelView):
     'Pay Invoice Ask'
     _name = 'account.invoice.pay_invoice.ask'
     _description = __doc__
@@ -2126,7 +2125,7 @@ class PayInvoice(Wizard):
 PayInvoice()
 
 
-class CreditInvoiceInit(WizardOSV):
+class CreditInvoiceInit(ModelView):
     'Credit Invoice Init'
     _name = 'account.invoice.credit_invoice.init'
     _description = __doc__

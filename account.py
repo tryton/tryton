@@ -1,10 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from trytond.model import ModelView, ModelSQL, fields
 
-from trytond.osv import fields, OSV
 
-
-class FiscalYear(OSV):
+class FiscalYear(ModelSQL, ModelView):
     _name = 'account.fiscalyear'
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Invoice Sequence', required=True,
@@ -79,7 +78,7 @@ class FiscalYear(OSV):
 FiscalYear()
 
 
-class Period(OSV):
+class Period(ModelSQL, ModelView):
     _name = 'account.period'
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Invoice Sequence',

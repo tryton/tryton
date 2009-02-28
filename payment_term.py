@@ -1,14 +1,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
 from decimal import Decimal
 import datetime
 import mx.DateTime
 
 
-class PaymentTerm(OSV):
+class PaymentTerm(ModelSQL, ModelView):
     'Payment Term'
     _name = 'account.invoice.payment_term'
     _description = __doc__
@@ -66,7 +65,7 @@ class PaymentTerm(OSV):
 PaymentTerm()
 
 
-class PaymentTermLineType(OSV):
+class PaymentTermLineType(ModelSQL, ModelView):
     'Payment Term Line Type'
     _name = 'account.invoice.payment_term.line.type'
     _description = __doc__
@@ -95,7 +94,7 @@ class PaymentTermLineType(OSV):
 PaymentTermLineType()
 
 
-class PaymentTermLineDelay(OSV):
+class PaymentTermLineDelay(ModelSQL, ModelView):
     'Payment Term Line Delay'
     _name = 'account.invoice.payment_term.line.delay'
     _description = __doc__
@@ -125,7 +124,7 @@ class PaymentTermLineDelay(OSV):
 PaymentTermLineDelay()
 
 
-class PaymentTermLine(OSV):
+class PaymentTermLine(ModelSQL, ModelView):
     'Payment Term Line'
     _name = 'account.invoice.payment_term.line'
     _description = __doc__
