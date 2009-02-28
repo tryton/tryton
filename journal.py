@@ -1,11 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Statement Journal"
+from trytond.model import ModelView, ModelSQL, fields
 
-from trytond.osv import fields, OSV
 
-
-class Journal(OSV):
+class Journal(ModelSQL, ModelView):
     'Statement Journal'
     _name = 'account.statement.journal'
     _description = __doc__

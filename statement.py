@@ -1,14 +1,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Statement"
-from trytond.model import ModelWorkflow
-from trytond.osv import fields, OSV
+from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from decimal import Decimal
 
 _STATES = {'readonly': 'state != "draft"'}
 
 
-class Statement(ModelWorkflow, OSV):
+class Statement(ModelWorkflow, ModelSQL, ModelView):
     'Account Statement'
     _name = 'account.statement'
     _description = __doc__
@@ -271,7 +270,7 @@ class Statement(ModelWorkflow, OSV):
 Statement()
 
 
-class Line(OSV):
+class Line(ModelSQL, ModelView):
     'Account Statement Line'
     _name = 'account.statement.line'
     _description = __doc__
