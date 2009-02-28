@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.modelstorage import OPERATORS
 from decimal import Decimal
 
@@ -8,7 +8,7 @@ STATES = {
     'readonly': "active == False",
 }
 
-class UomCategory(OSV):
+class UomCategory(ModelSQL, ModelView):
     'Product uom category'
     _name = 'product.uom.category'
     _description = __doc__
@@ -22,7 +22,7 @@ class UomCategory(OSV):
 UomCategory()
 
 
-class Uom(OSV):
+class Uom(ModelSQL, ModelView):
     'Unit of measure'
     _name = 'product.uom'
     _description = __doc__
