@@ -1,13 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 "Account"
-
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 from decimal import Decimal
 import copy
 
 
-class Account(OSV):
+class Account(ModelSQL, ModelView):
     'Analytic Account'
     _name = 'analytic_account.account'
     _description = __doc__
@@ -297,7 +296,7 @@ class Account(OSV):
 Account()
 
 
-class OpenChartAccountInit(WizardOSV):
+class OpenChartAccountInit(ModelView):
     'Open Chart Account Init'
     _name = 'analytic_account.account.open_chart_account.init'
     _description = __doc__
@@ -351,7 +350,7 @@ class OpenChartAccount(Wizard):
 OpenChartAccount()
 
 
-class AccountSelection(OSV):
+class AccountSelection(ModelSQL, ModelView):
     'Analytic Account Selection'
     _name = 'analytic_account.account.selection'
     _description = __doc__

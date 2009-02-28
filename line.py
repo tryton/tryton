@@ -1,12 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 "Line"
-
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 
 
-class Line(OSV):
+class Line(ModelSQL, ModelView):
     'Analytic Line'
     _name = 'analytic_account.line'
     _description = __doc__
@@ -86,7 +85,7 @@ class Line(OSV):
 Line()
 
 
-class MoveLine(OSV):
+class MoveLine(ModelSQL, ModelView):
     _name = 'account.move.line'
     analytic_lines = fields.One2Many('analytic_account.line', 'move_line',
             'Analytic Lines')
