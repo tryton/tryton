@@ -1,11 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-from trytond.osv import OSV
+from trytond.model import ModelView, ModelSQL, fields
 import copy
 
 
-class Invoice(OSV):
+class Invoice(ModelSQL, ModelView):
     _name = 'account.invoice'
 
     def __init__(self):
@@ -37,7 +36,8 @@ class Invoice(OSV):
 
 Invoice()
 
-class InvoiceLine(OSV):
+
+class InvoiceLine(ModelSQL, ModelView):
     _name = 'account.invoice.line'
 
     def _view_look_dom_arch(self, cursor, user, tree, type, context=None):
