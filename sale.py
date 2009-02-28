@@ -1,15 +1,14 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 "Sale"
-from trytond.model import ModelWorkflow
-from trytond.osv import fields, OSV
+from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.report import CompanyReport
-from trytond.wizard import Wizard, WizardOSV
+from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from decimal import Decimal
 
 
-class Sale(ModelWorkflow, OSV):
+class Sale(ModelWorkflow, ModelSQL, ModelView):
     'Sale'
     _name = 'sale.sale'
     _rec_name = 'reference'
@@ -824,7 +823,7 @@ class Sale(ModelWorkflow, OSV):
 Sale()
 
 
-class SaleLine(OSV):
+class SaleLine(ModelSQL, ModelView):
     'Sale Line'
     _name = 'sale.line'
     _rec_name = 'description'
@@ -1233,7 +1232,7 @@ class SaleReport(CompanyReport):
 SaleReport()
 
 
-class Template(OSV):
+class Template(ModelSQL, ModelView):
     _name = 'product.template'
 
     salable = fields.Boolean('Salable', states={
@@ -1276,7 +1275,7 @@ class Template(OSV):
 Template()
 
 
-class Product(OSV):
+class Product(ModelSQL, ModelView):
     _name = 'product.product'
 
     def on_change_with_sale_uom(self, cursor, user, ids, vals, context=None):
@@ -1334,7 +1333,7 @@ class Product(OSV):
 Product()
 
 
-class PackingOut(OSV):
+class PackingOut(ModelSQL, ModelView):
     _name = 'stock.packing.out'
 
     def __init__(self):
@@ -1384,7 +1383,7 @@ class PackingOut(OSV):
 PackingOut()
 
 
-class Move(OSV):
+class Move(ModelSQL, ModelView):
     _name = 'stock.move'
 
     sale_line = fields.Many2One('sale.line', select=1,
@@ -1455,7 +1454,7 @@ class Move(OSV):
 Move()
 
 
-class Invoice(OSV):
+class Invoice(ModelSQL, ModelView):
     _name = 'account.invoice'
 
     sale_exception_state = fields.Function('get_sale_exception_state',
@@ -1523,7 +1522,7 @@ class Invoice(OSV):
 Invoice()
 
 
-class HandlePackingExceptionAsk(WizardOSV):
+class HandlePackingExceptionAsk(ModelView):
     'Packing Exception Ask'
     _name = 'sale.handle.packing.exception.ask'
     _description = __doc__
@@ -1619,7 +1618,7 @@ class HandlePackingException(Wizard):
 HandlePackingException()
 
 
-class HandleInvoiceExceptionAsk(WizardOSV):
+class HandleInvoiceExceptionAsk(ModelView):
     'Invoice Exception Ask'
     _name = 'sale.handle.invoice.exception.ask'
     _description = __doc__
