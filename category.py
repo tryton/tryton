@@ -34,7 +34,7 @@ class Category(OSV):
     def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
             return {}
-        res = []
+        res = {}
         categories = self.browse(cursor, user, ids, context=context)
         for category in categories:
             if category.parent:
