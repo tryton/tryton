@@ -714,7 +714,7 @@ class ParserForm(ParserInterface):
                 return None
 
         def value_set(widget, value):
-            if value == False:
+            if not value:
                 value = ''
             if type(widget) == type(gtk.Entry()):
                 widget.set_text(value)
