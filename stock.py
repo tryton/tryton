@@ -1,12 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
-
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
-import datetime
+from trytond.model import ModelView, ModelSQL, fields
 
 
-class Location(OSV):
+class Location(ModelSQL, ModelView):
     "Stock Location"
     _name = 'stock.location'
     sequence = fields.Integer('Sequence', states= {'readonly': "not active"})
