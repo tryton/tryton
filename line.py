@@ -1,12 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 "Timesheet Line"
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
 
-
-class Line(OSV):
+class Line(ModelSQL, ModelView):
     'Timesheet Line'
     _name = 'timesheet.line'
     _description = __doc__
@@ -67,7 +66,7 @@ class Line(OSV):
 Line()
 
 
-class EnterLinesInit(WizardOSV):
+class EnterLinesInit(ModelView):
     'Enter Lines Init'
     _name = 'timesheet.enter_lines.init'
     _description = __doc__
@@ -141,7 +140,7 @@ class EnterLines(Wizard):
 EnterLines()
 
 
-class HoursEmployee(OSV):
+class HoursEmployee(ModelSQL, ModelView):
     'Hours per Employee'
     _name = 'timesheet.hours_employee'
     _description = __doc__
@@ -170,7 +169,7 @@ class HoursEmployee(OSV):
 HoursEmployee()
 
 
-class OpenHoursEmployeeInit(WizardOSV):
+class OpenHoursEmployeeInit(ModelView):
     'Open Hours Employee Init'
     _name = 'timesheet.open_hours_employee.init'
     _description = __doc__
@@ -224,7 +223,7 @@ class OpenHoursEmployee(Wizard):
 OpenHoursEmployee()
 
 
-class HoursEmployeeWeekly(OSV):
+class HoursEmployeeWeekly(ModelSQL, ModelView):
     'Hours per Employee per Week'
     _name = 'timesheet.hours_employee_weekly'
     _description = __doc__
@@ -253,7 +252,7 @@ class HoursEmployeeWeekly(OSV):
 HoursEmployeeWeekly()
 
 
-class HoursEmployeeMonthly(OSV):
+class HoursEmployeeMonthly(ModelSQL, ModelView):
     'Hours per Employee per Month'
     _name = 'timesheet.hours_employee_monthly'
     _description = __doc__

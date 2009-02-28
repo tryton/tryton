@@ -1,11 +1,11 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Work"
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
 
-
-class Work(OSV):
+class Work(ModelSQL, ModelView):
     'Work'
     _name = 'timesheet.work'
     _description = __doc__
@@ -113,7 +113,7 @@ class Work(OSV):
 Work()
 
 
-class OpenWorkInit(WizardOSV):
+class OpenWorkInit(ModelView):
     'Open Work Init'
     _name = 'timesheet.work.open.init'
     _description = __doc__
