@@ -1,9 +1,9 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Sale"
+from trytond.model import ModelView, ModelSQL, fields
 
-from trytond.osv import fields, OSV
-
-class SaleLine(OSV):
+class SaleLine(ModelSQL, ModelView):
     _name = 'sale.line'
 
     analytic_accounts = fields.Many2One('analytic_account.account.selection',
@@ -180,7 +180,7 @@ class SaleLine(OSV):
 SaleLine()
 
 
-class Account(OSV):
+class Account(ModelSQL, ModelView):
     _name = 'analytic_account.account'
 
     def delete(self, cursor, user, ids, context=None):
