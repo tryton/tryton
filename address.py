@@ -1,14 +1,14 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 'Address'
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL, fields
 
 STATES = {
     'readonly': "active == False",
 }
 
 
-class Address(OSV):
+class Address(ModelSQL, ModelView):
     "Address"
     _name = 'party.address'
     _description = __doc__

@@ -1,7 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-from trytond.osv import OSV, fields
+from trytond.model import ModelView, ModelSQL, fields
 
 STATES = {
     'readonly': "active == False",
@@ -21,7 +20,7 @@ _TYPES = [
 ]
 
 
-class ContactMechanism(OSV):
+class ContactMechanism(ModelSQL, ModelView):
     "Contact Mechanism"
     _name = "party.contact_mechanism"
     _description = __doc__
