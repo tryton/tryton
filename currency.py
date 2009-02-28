@@ -1,13 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 "Currency"
-
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL, fields
 import time
 from decimal import Decimal
 
 
-class Currency(OSV):
+class Currency(ModelSQL, ModelView):
     'Currency'
     _name = 'currency.currency'
     _description = __doc__
@@ -200,7 +199,7 @@ class Currency(OSV):
 Currency()
 
 
-class Rate(OSV):
+class Rate(ModelSQL, ModelView):
     'Rate'
     _name = 'currency.currency.rate'
     _description = __doc__
