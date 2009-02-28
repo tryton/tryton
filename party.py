@@ -1,11 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL, fields
 from decimal import Decimal
 
 
-class Party(OSV):
+class Party(ModelSQL, ModelView):
     _name = 'party.party'
     account_payable = fields.Property(type='many2one',
             relation='account.account', string='Account Payable',

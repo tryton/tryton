@@ -1,8 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 'Period'
-
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 
 _STATES = {
@@ -10,7 +9,7 @@ _STATES = {
 }
 
 
-class Period(OSV):
+class Period(ModelSQL, ModelView):
     'Period'
     _name = 'account.period'
     _description = __doc__

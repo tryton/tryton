@@ -1,9 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 'Move'
-
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 from trytond.report import Report
 from decimal import Decimal
 import datetime
@@ -19,7 +18,7 @@ _LINE_STATES = {
 _LINE_DEPENDS = ['state']
 
 
-class Move(OSV):
+class Move(ModelSQL, ModelView):
     'Account Move'
     _name = 'account.move'
     _description = __doc__
@@ -332,7 +331,7 @@ class Move(OSV):
 Move()
 
 
-class Reconciliation(OSV):
+class Reconciliation(ModelSQL, ModelView):
     'Account Move Reconciliation Lines'
     _name = 'account.move.reconciliation'
     _description = __doc__
@@ -399,7 +398,7 @@ class Reconciliation(OSV):
 Reconciliation()
 
 
-class Line(OSV):
+class Line(ModelSQL, ModelView):
     'Account Move Line'
     _name = 'account.move.line'
     _description = __doc__
@@ -1306,7 +1305,7 @@ class Line(OSV):
 Line()
 
 
-class Move2(OSV):
+class Move2(ModelSQL, ModelView):
     _name = 'account.move'
     centralised_line = fields.Many2One('account.move.line', 'Centralised Line',
             readonly=True)
@@ -1314,7 +1313,7 @@ class Move2(OSV):
 Move2()
 
 
-class OpenJournalAsk(WizardOSV):
+class OpenJournalAsk(ModelView):
     'Open Journal Ask'
     _name = 'account.move.open_journal.ask'
     _description = __doc__
@@ -1483,7 +1482,7 @@ class OpenAccount(Wizard):
 OpenAccount()
 
 
-class ReconcileLinesWriteOff(WizardOSV):
+class ReconcileLinesWriteOff(ModelView):
     'Reconcile Lines Write-Off'
     _name = 'account.move.reconcile_lines.writeoff'
     _description = __doc__
@@ -1563,7 +1562,7 @@ class ReconcileLines(Wizard):
 ReconcileLines()
 
 
-class UnreconcileLinesInit(WizardOSV):
+class UnreconcileLinesInit(ModelView):
     'Unreconcile Lines Init'
     _name = 'account.move.unreconcile_lines.init'
     _description = __doc__
@@ -1609,7 +1608,7 @@ class UnreconcileLines(Wizard):
 UnreconcileLines()
 
 
-class OpenReconcileLinesInit(WizardOSV):
+class OpenReconcileLinesInit(ModelView):
     'Open Reconcile Lines Init'
     _name = 'account.move.open_reconcile_lines.init'
     _description = __doc__
@@ -1663,7 +1662,7 @@ class OpenReconcileLines(Wizard):
 OpenReconcileLines()
 
 
-class FiscalYear(OSV):
+class FiscalYear(ModelSQL, ModelView):
     _name = 'account.fiscalyear'
     close_lines = fields.Many2Many('account.move.line',
             'account_fiscalyear_line_rel', 'fiscalyear', 'line', 'Close Lines')
@@ -1671,7 +1670,7 @@ class FiscalYear(OSV):
 FiscalYear()
 
 
-class PrintGeneralJournalInit(WizardOSV):
+class PrintGeneralJournalInit(ModelView):
     'Print General Journal Init'
     _name = 'account.move.print_general_journal.init'
     _description = __doc__

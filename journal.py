@@ -1,9 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Journal"
-
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 
 STATES = {
@@ -17,7 +16,7 @@ _ICONS = {
 }
 
 
-class Type(OSV):
+class Type(ModelSQL, ModelView):
     'Journal Type'
     _name = 'account.journal.type'
     _description = __doc__
@@ -34,7 +33,7 @@ class Type(OSV):
 Type()
 
 
-class View(OSV):
+class View(ModelSQL, ModelView):
     'Journal View'
     _name = 'account.journal.view'
     _description = __doc__
@@ -48,7 +47,7 @@ class View(OSV):
 View()
 
 
-class Column(OSV):
+class Column(ModelSQL, ModelView):
     'Journal View Column'
     _name = 'account.journal.view.column'
     _description = __doc__
@@ -73,7 +72,7 @@ class Column(OSV):
 Column()
 
 
-class Journal(OSV):
+class Journal(ModelSQL, ModelView):
     'Journal'
     _name = 'account.journal'
     _description = __doc__
@@ -159,7 +158,7 @@ class Journal(OSV):
 Journal()
 
 
-class Period(OSV):
+class Period(ModelSQL, ModelView):
     'Journal - Period'
     _name = 'account.journal.period'
     _description = __doc__

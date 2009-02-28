@@ -1,14 +1,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Tax"
-
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 from decimal import Decimal
 from trytond.tools import Cache
 
 
-class Group(OSV):
+class Group(ModelSQL, ModelView):
     'Tax Group'
     _name = 'account.tax.group'
     _description = __doc__
@@ -25,7 +24,7 @@ class Group(OSV):
 Group()
 
 
-class CodeTemplate(OSV):
+class CodeTemplate(ModelSQL, ModelView):
     'Tax Code Template'
     _name = 'account.tax.code.template'
     _description = __doc__
@@ -111,7 +110,7 @@ class CodeTemplate(OSV):
 CodeTemplate()
 
 
-class Code(OSV):
+class Code(ModelSQL, ModelView):
     'Tax Code'
     _name = 'account.tax.code'
     _description = __doc__
@@ -239,7 +238,7 @@ class Code(OSV):
 Code()
 
 
-class OpenChartCodeInit(WizardOSV):
+class OpenChartCodeInit(ModelView):
     'Open Chart Code Init'
     _name = 'account.tax.open_chart_code.init'
     _description = __doc__
@@ -309,7 +308,7 @@ class OpenChartCode(Wizard):
 OpenChartCode()
 
 
-class TaxTemplate(OSV):
+class TaxTemplate(ModelSQL, ModelView):
     'Account Tax Template'
     _name = 'account.tax.template'
     _description = __doc__
@@ -478,7 +477,7 @@ class TaxTemplate(OSV):
 TaxTemplate()
 
 
-class Tax(OSV):
+class Tax(ModelSQL, ModelView):
     '''
     Account Tax
 
@@ -747,7 +746,7 @@ class Tax(OSV):
 Tax()
 
 
-class Line(OSV):
+class Line(ModelSQL, ModelView):
     'Tax Line'
     _name = 'account.tax.line'
     _description = __doc__
@@ -819,7 +818,7 @@ class OpenCode(Wizard):
 OpenCode()
 
 
-class AccountTemplate(OSV):
+class AccountTemplate(ModelSQL, ModelView):
     _name = 'account.account.template'
     taxes = fields.Many2Many('account.tax.template', 'account_account_template_tax_rel',
             'account', 'tax', 'Default Taxes',
@@ -828,7 +827,7 @@ class AccountTemplate(OSV):
 AccountTemplate()
 
 
-class Account(OSV):
+class Account(ModelSQL, ModelView):
     _name = 'account.account'
     taxes = fields.Many2Many('account.tax', 'account_account_tax_rel',
             'account', 'tax', 'Default Taxes',

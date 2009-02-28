@@ -1,9 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Account"
-
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 from trytond.report import Report
 from decimal import Decimal
 import datetime
@@ -12,7 +11,7 @@ import os
 import mx.DateTime
 
 
-class TypeTemplate(OSV):
+class TypeTemplate(ModelSQL, ModelView):
     'Account Type Template'
     _name = 'account.account.type.template'
     _description = __doc__
@@ -117,7 +116,7 @@ class TypeTemplate(OSV):
 TypeTemplate()
 
 
-class Type(OSV):
+class Type(ModelSQL, ModelView):
     'Account Type'
     _name = 'account.account.type'
     _description = __doc__
@@ -221,7 +220,7 @@ class Type(OSV):
 Type()
 
 
-class AccountTemplate(OSV):
+class AccountTemplate(ModelSQL, ModelView):
     'Account Template'
     _name = 'account.account.template'
     _description = __doc__
@@ -414,7 +413,7 @@ class AccountTemplate(OSV):
 AccountTemplate()
 
 
-class Account(OSV):
+class Account(ModelSQL, ModelView):
     'Account'
     _name = 'account.account'
     _description = __doc__
@@ -804,7 +803,7 @@ class Account(OSV):
 Account()
 
 
-class AccountDeferral(OSV):
+class AccountDeferral(ModelSQL, ModelView):
     '''
     Account Deferral
 
@@ -867,7 +866,7 @@ class AccountDeferral(OSV):
 AccountDeferral()
 
 
-class OpenChartAccountInit(WizardOSV):
+class OpenChartAccountInit(ModelView):
     'Open Chart Account Init'
     _name = 'account.account.open_chart_account.init'
     _description = __doc__
@@ -925,7 +924,7 @@ class OpenChartAccount(Wizard):
 OpenChartAccount()
 
 
-class PrintGeneralLegderInit(WizardOSV):
+class PrintGeneralLegderInit(ModelView):
     'Print General Ledger'
     _name = 'account.account.print_general_ledger.init'
     _description = __doc__
@@ -1138,7 +1137,7 @@ class GeneralLegder(Report):
 GeneralLegder()
 
 
-class PrintTrialBalanceInit(WizardOSV):
+class PrintTrialBalanceInit(ModelView):
     'Print Trial Balance Init'
     _name = 'account.account.print_trial_balance.init'
     _description = __doc__
@@ -1303,7 +1302,7 @@ class TrialBalance(Report):
 TrialBalance()
 
 
-class OpenBalanceSheetInit(WizardOSV):
+class OpenBalanceSheetInit(ModelView):
     'Open Balance Sheet Init'
     _name = 'account.account.open_balance_sheet.init'
     _description = __doc__
@@ -1392,7 +1391,7 @@ class OpenBalanceSheet(Wizard):
 OpenBalanceSheet()
 
 
-class OpenIncomeStatementInit(WizardOSV):
+class OpenIncomeStatementInit(ModelView):
     'Open Income Statement Init'
     _name = 'account.account.open_income_statement.init'
     _description = __doc__
@@ -1516,7 +1515,7 @@ class OpenIncomeStatement(Wizard):
 OpenIncomeStatement()
 
 
-class CreateChartAccountInit(WizardOSV):
+class CreateChartAccountInit(ModelView):
     'Create Chart Account Init'
     _name = 'account.account.create_chart_account.init'
     _description = __doc__
@@ -1524,7 +1523,7 @@ class CreateChartAccountInit(WizardOSV):
 CreateChartAccountInit()
 
 
-class CreateChartAccountAccount(WizardOSV):
+class CreateChartAccountAccount(ModelView):
     'Create Chart Account Account'
     _name = 'account.account.create_chart_account.account'
     _description = __doc__
@@ -1535,7 +1534,7 @@ class CreateChartAccountAccount(WizardOSV):
 CreateChartAccountAccount()
 
 
-class CreateChartAccountPropertites(WizardOSV):
+class CreateChartAccountPropertites(ModelView):
     'Create Chart Account Properties'
     _name = 'account.account.create_chart_account.properties'
     _description = __doc__
@@ -1690,7 +1689,7 @@ class CreateChartAccount(Wizard):
 CreateChartAccount()
 
 
-class OpenThirdPartyBalanceInit(WizardOSV):
+class OpenThirdPartyBalanceInit(ModelView):
     'Open Third Party Balance Init'
     _name = 'account.account.open_third_party_balance.init'
     _description = __doc__
@@ -1811,7 +1810,7 @@ class ThirdPartyBalance(Report):
 ThirdPartyBalance()
 
 
-class OpenAgedBalanceInit(WizardOSV):
+class OpenAgedBalanceInit(ModelView):
     'Open Aged Balance Init'
     _name = 'account.account.open_aged_balance.init'
     _description = __doc__

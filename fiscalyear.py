@@ -1,9 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 'Fiscal Year'
-
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 import mx.DateTime
 
 STATES = {
@@ -12,7 +11,7 @@ STATES = {
 DEPENDS = ['state']
 
 
-class FiscalYear(OSV):
+class FiscalYear(ModelSQL, ModelView):
     'Fiscal Year'
     _name = 'account.fiscalyear'
     _description = __doc__
@@ -303,7 +302,7 @@ class FiscalYear(OSV):
 FiscalYear()
 
 
-class CloseFiscalYearInit(WizardOSV):
+class CloseFiscalYearInit(ModelView):
     'Close Fiscal Year Init'
     _name = 'account.fiscalyear.close_fiscalyear.init'
     _description = __doc__
