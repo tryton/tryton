@@ -1,12 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Project"
-
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL, fields
 import copy
 
 
-class TimesheetWork(OSV):
+class TimesheetWork(ModelSQL, ModelView):
     _name = 'timesheet.work'
 
     def __init__(self):
@@ -26,7 +25,7 @@ class TimesheetWork(OSV):
 TimesheetWork()
 
 
-class Work(OSV):
+class Work(ModelSQL, ModelView):
     'Work'
     _name = 'project.work'
     _description = __doc__
