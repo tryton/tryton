@@ -1,10 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 "Invoice"
+from trytond.model import ModelView, ModelSQL, fields
 
-from trytond.osv import fields, OSV
 
-
-class InvoiceLine(OSV):
+class InvoiceLine(ModelSQL, ModelView):
     _name = 'account.invoice.line'
 
     analytic_accounts = fields.Many2One('analytic_account.account.selection',
@@ -184,7 +183,7 @@ class InvoiceLine(OSV):
 InvoiceLine()
 
 
-class Account(OSV):
+class Account(ModelSQL, ModelView):
     _name = 'analytic_account.account'
 
     def delete(self, cursor, user, ids, context=None):
