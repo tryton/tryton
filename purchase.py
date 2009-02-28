@@ -1,11 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-from trytond.osv import OSV, fields
+from trytond.model import ModelView, ModelSQL, fields
 import datetime
 
 
-class ProductSupplier(OSV):
+class ProductSupplier(ModelSQL, ModelView):
     _name = 'purchase.product_supplier'
 
     weekday = fields.Selection([
