@@ -1,10 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from trytond.model import ModelView, ModelSQL, fields
 
-from trytond.osv import fields, OSV
 
-
-class ProductLocation(OSV):
+class ProductLocation(ModelSQL, ModelView):
     '''
     Product Location defines the default storage location
         by warehouse for a product
@@ -28,7 +27,7 @@ class ProductLocation(OSV):
 ProductLocation()
 
 
-class PackingIn(OSV):
+class PackingIn(ModelSQL, ModelView):
     _name = 'stock.packing.in'
 
     def _get_inventory_moves(self, cursor, user, incoming_move, context=None):
