@@ -1,11 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Purchase"
+from trytond.model import ModelView, ModelSQL, fields
 
-from trytond.osv import fields, OSV
 
-
-class Purchase(OSV):
+class Purchase(ModelSQL, ModelView):
     _name = "purchase.purchase"
 
     def __init__(self):
@@ -39,7 +38,7 @@ class Purchase(OSV):
 Purchase()
 
 
-class PurchaseLine(OSV):
+class PurchaseLine(ModelSQL, ModelView):
     _name = 'purchase.line'
 
     analytic_accounts = fields.Many2One('analytic_account.account.selection',
@@ -216,7 +215,7 @@ class PurchaseLine(OSV):
 PurchaseLine()
 
 
-class Account(OSV):
+class Account(ModelSQL, ModelView):
     _name = 'analytic_account.account'
 
     def delete(self, cursor, user, ids, context=None):
