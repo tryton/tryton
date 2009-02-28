@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 import datetime
 
 STATES = {
@@ -9,7 +9,7 @@ STATES = {
 }
 
 
-class Forecast(OSV):
+class Forecast(ModelSQL, ModelView):
     "Stock Forecast"
     _name = "stock.forecast"
     _description = __doc__
@@ -153,7 +153,7 @@ class Forecast(OSV):
         return new_ids
 Forecast()
 
-class ForecastLine(OSV):
+class ForecastLine(ModelSQL, ModelView):
     'Stock Forecast Line'
     _name = 'stock.forecast.line'
     _description = __doc__
@@ -291,7 +291,7 @@ class ForecastLine(OSV):
 ForecastLine()
 
 
-class ForecastCompleteAsk(WizardOSV):
+class ForecastCompleteAsk(ModelView):
     _name = 'stock.forecast.complete.ask'
 
     from_date = fields.Date('From Date', required=True)
@@ -300,7 +300,7 @@ class ForecastCompleteAsk(WizardOSV):
 ForecastCompleteAsk()
 
 
-class ForecastCompleteChoose(WizardOSV):
+class ForecastCompleteChoose(ModelView):
     _name = 'stock.forecast.complete.choose'
 
     products = fields.Many2Many(
