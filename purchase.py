@@ -1,10 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 "Purchase"
-from trytond.model import ModelWorkflow
-from trytond.osv import fields, OSV
+from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.report import CompanyReport
-from trytond.wizard import Wizard, WizardOSV
+from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from decimal import Decimal
 import datetime
@@ -14,7 +13,7 @@ _STATES = {
 }
 
 
-class Purchase(ModelWorkflow, OSV):
+class Purchase(ModelWorkflow, ModelSQL, ModelView):
     'Purchase'
     _name = 'purchase.purchase'
     _description = __doc__
@@ -721,7 +720,7 @@ class Purchase(ModelWorkflow, OSV):
 Purchase()
 
 
-class PurchaseLine(OSV):
+class PurchaseLine(ModelSQL, ModelView):
     'Purchase Line'
     _name = 'purchase.line'
     _rec_name = 'description'
@@ -1147,7 +1146,7 @@ class PurchaseReport(CompanyReport):
 PurchaseReport()
 
 
-class Template(OSV):
+class Template(ModelSQL, ModelView):
     _name = "product.template"
 
     purchasable = fields.Boolean('Purchasable', states={
@@ -1196,7 +1195,7 @@ class Template(OSV):
 Template()
 
 
-class Product(OSV):
+class Product(ModelSQL, ModelView):
     _name = 'product.product'
 
     def on_change_with_purchase_uom(self, cursor, user, ids, vals, context=None):
@@ -1263,7 +1262,7 @@ class Product(OSV):
 Product()
 
 
-class ProductSupplier(OSV):
+class ProductSupplier(ModelSQL, ModelView):
     'Product Supplier'
     _name = 'purchase.product_supplier'
     _description = __doc__
@@ -1336,7 +1335,7 @@ class ProductSupplier(OSV):
 ProductSupplier()
 
 
-class ProductSupplierPrice(OSV):
+class ProductSupplierPrice(ModelSQL, ModelView):
     'Product Supplier Price'
     _name = 'purchase.product_supplier.price'
     _description = __doc__
@@ -1365,7 +1364,7 @@ class ProductSupplierPrice(OSV):
 ProductSupplierPrice()
 
 
-class PackingIn(OSV):
+class PackingIn(ModelSQL, ModelView):
     _name = 'stock.packing.in'
 
     def __init__(self):
@@ -1419,7 +1418,7 @@ class PackingIn(OSV):
 PackingIn()
 
 
-class Move(OSV):
+class Move(ModelSQL, ModelView):
     _name = 'stock.move'
 
     purchase_line = fields.Many2One('purchase.line', select=1,
@@ -1563,7 +1562,7 @@ class Move(OSV):
 Move()
 
 
-class Invoice(OSV):
+class Invoice(ModelSQL, ModelView):
     _name = 'account.invoice'
 
     purchase_exception_state = fields.Function('get_purchase_exception_state',
@@ -1678,7 +1677,7 @@ class OpenSupplier(Wizard):
 OpenSupplier()
 
 
-class HandlePackingExceptionAsk(WizardOSV):
+class HandlePackingExceptionAsk(ModelView):
     'Packing Exception Ask'
     _name = 'purchase.handle.packing.exception.ask'
     _description = __doc__
@@ -1778,7 +1777,7 @@ class HandlePackingException(Wizard):
 HandlePackingException()
 
 
-class HandleInvoiceExceptionAsk(WizardOSV):
+class HandleInvoiceExceptionAsk(ModelView):
     'Invoice Exception Ask'
     _name = 'purchase.handle.invoice.exception.ask'
     _description = __doc__
