@@ -1,10 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
 "Service"
+from trytond.model import ModelView, ModelSQL, fields
 
-from trytond.osv import fields, OSV
 
-
-class Service(OSV):
+class Service(ModelSQL, ModelView):
     'Service'
     _name = 'project_revenue.service'
     _description = __doc__
@@ -48,7 +47,7 @@ class Service(OSV):
 Service()
 
 
-class Employee(OSV):
+class Employee(ModelSQL, ModelView):
     _name = 'company.employee'
 
     services = fields.One2Many('project_revenue.service',

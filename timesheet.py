@@ -1,11 +1,11 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Timesheet"
-
-from trytond.osv import fields, OSV
+from trytond.model import ModelView, ModelSQL, fields
 import copy
 
 
-class Line(OSV):
+class Line(ModelSQL, ModelView):
     _name = 'timesheet.line'
 
     product = fields.Many2One('product.product', 'Service', required=True,
@@ -76,7 +76,7 @@ class Line(OSV):
 Line()
 
 
-class Product(OSV):
+class Product(ModelSQL, ModelView):
     _name = 'product.product'
 
     def search(self, cursor, user, args, offset=0, limit=None, order=None,
