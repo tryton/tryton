@@ -1,14 +1,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Company"
-
 import copy
-from trytond.osv import fields, OSV
-from trytond.wizard import Wizard, WizardOSV
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 from trytond.report import Report
 
 
-class Company(OSV):
+class Company(ModelSQL, ModelView):
     'Company'
     _name = 'company.company'
     _description = __doc__
@@ -42,7 +41,7 @@ class Company(OSV):
 Company()
 
 
-class Employee(OSV):
+class Employee(ModelSQL, ModelView):
     'Employee'
     _name = 'company.employee'
     _description = __doc__
@@ -54,7 +53,7 @@ class Employee(OSV):
 Employee()
 
 
-class User(OSV):
+class User(ModelSQL, ModelView):
     _name = 'res.user'
     main_company = fields.Many2One('company.company', 'Main Company',
             on_change=['main_company'])
@@ -132,7 +131,7 @@ class User(OSV):
 User()
 
 
-class Property(OSV):
+class Property(ModelSQL, ModelView):
     _name = 'ir.property'
     company = fields.Many2One('company.company', 'Company')
 
@@ -154,7 +153,7 @@ class Property(OSV):
 Property()
 
 
-class Sequence(OSV):
+class Sequence(ModelSQL, ModelView):
     _name = 'ir.sequence'
     company = fields.Many2One('company.company', 'Company',
             domain="[('id', '=', context.get('company', False))]")
@@ -180,7 +179,7 @@ class SequenceStrict(Sequence):
 SequenceStrict()
 
 
-class CompanyConfigInit(WizardOSV):
+class CompanyConfigInit(ModelView):
     'Company Config Init'
     _name = 'company.company.config.init'
     _description = __doc__
