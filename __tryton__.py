@@ -5,7 +5,7 @@
     'name_de_DE': 'Währung',
     'name_fr_FR': 'Devise',
     'name_es_ES': 'Moneda',
-    'version': '1.0.2',
+    'version': '1.0.3',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
