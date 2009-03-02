@@ -1,3 +1,5 @@
+Version 1.0.3 - 2009-03-02
+* Some bug fixes (see mercurial logs for details)
 * Use amount_to_pay if amount_to_pay_today is zero in pay invoice wizard
 
 Version 1.0.2 - 2009-01-06
