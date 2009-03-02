@@ -5,7 +5,7 @@
     'name_de_DE': 'Lagerverwaltung',
     'name_fr_FR': 'Gestion des stocks',
     'name_es_ES': 'Inventarios',
-    'version': '1.0.3',
+    'version': '1.0.4',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
