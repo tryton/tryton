@@ -5,9 +5,8 @@ from trytond.model import ModelView, ModelSQL, fields
 class Cron(ModelSQL, ModelView):
     "Cron"
     _name = "ir.cron"
-    companies = fields.Many2Many(
-        'company.company', 'cron_company_rel', 'cron', 'company', 'Companies',
-        help='Companies registered for this cron')
+    companies = fields.Many2Many('ir.cron-company.company', 'cron', 'company',
+            'Companies', help='Companies registered for this cron')
 
     def _callback(self, cursor, cron):
         cursor.execute("SELECT company from cron_company_rel "
@@ -24,3 +23,15 @@ class Cron(ModelSQL, ModelView):
         return company_obj.search(cursor, user, [], context=context)
 
 Cron()
+
+
+class CronCompany(ModelSQL):
+    'Cron - Company'
+    _name = 'ir.cron-company.company'
+    _table = 'cron_company_rel'
+    cron = fields.Many2One('ir.cron', 'Cron', ondelete='CASCADE',
+            required=True, select=1)
+    company = fields.Many2One('company.company', 'Company', ondelete='CASCADE',
+            required=True, select=1)
+
+CronCompany()
