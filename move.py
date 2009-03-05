@@ -4,6 +4,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
+from trytond.backend import TableHandler
 from decimal import Decimal
 import datetime
 import md5
@@ -71,11 +72,8 @@ class Move(ModelSQL, ModelView):
     def init(self, cursor, module_name):
         super(Move, self).init(cursor, module_name)
 
-        cursor.execute('SELECT indexname FROM pg_indexes ' \
-                'WHERE indexname = \'account_move_journal_period_index\'')
-        if not cursor.rowcount:
-            cursor.execute('CREATE INDEX account_move_journal_period_index ' \
-                    'ON account_move (period, journal)')
+        table = TableHandler(cursor, self._table, self._name, module_name)
+        table.index_action(['journal', 'period'], 'add')
 
     def default_period(self, cursor, user, context=None):
         period_obj = self.pool.get('account.period')
