@@ -251,7 +251,7 @@ class OpenChartCodeInit(ModelView):
             states={
                 'invisible': "method != 'fiscalyear'",
             }, depends=['method'])
-    periods = fields.Many2Many('account.period', None, None, None, 'Periods',
+    periods = fields.Many2Many('account.period', None, None, 'Periods',
             help='Keep empty for all periods of all open fiscal year',
             states={
                 'invisible': "method != 'periods'",
@@ -818,18 +818,40 @@ class OpenCode(Wizard):
 OpenCode()
 
 
+class AccountTemplateTaxTemplate(ModelSQL):
+    _name = 'account.account.template-account.tax.template'
+    _table = 'account_account_template_tax_rel'
+    account = fields.Many2One('account.account.template', 'Account Template',
+            ondelete='CASCADE', select=1, required=True)
+    tax = fields.Many2One('account.tax.template', 'Tax Template',
+            ondelete='RESTRICT', select=1, required=True)
+
+AccountTemplateTaxTemplate()
+
+
 class AccountTemplate(ModelSQL, ModelView):
     _name = 'account.account.template'
-    taxes = fields.Many2Many('account.tax.template', 'account_account_template_tax_rel',
+    taxes = fields.Many2Many('account.account.template-account.tax.template',
             'account', 'tax', 'Default Taxes',
             domain="[('parent', '=', False)]")
 
 AccountTemplate()
 
 
+class AccountTax(ModelSQL):
+    _name = 'account.account-account.tax'
+    _table = 'account_account_tax_rel'
+    account = fields.Many2One('account.account', 'Account', ondelete='CASCADE',
+            select=1, required=True)
+    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
+            select=1, required=True)
+
+AccountTax()
+
+
 class Account(ModelSQL, ModelView):
     _name = 'account.account'
-    taxes = fields.Many2Many('account.tax', 'account_account_tax_rel',
+    taxes = fields.Many2Many('account.account-account.tax',
             'account', 'tax', 'Default Taxes',
             domain="[('company', '=', company), ('parent', '=', False)]",
             help='Default tax for manual encoding move lines \n' \

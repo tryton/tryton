@@ -1662,10 +1662,21 @@ class OpenReconcileLines(Wizard):
 OpenReconcileLines()
 
 
+class FiscalYearLine(ModelSQL):
+    _name = 'account.fiscalyear-account.move.line'
+    _table = 'account_fiscalyear_line_rel'
+    fiscalyear = fields.Many2One('account.fiscalyear', 'FiscalYear',
+            ondelete='CASCADE', select=1)
+    line = fields.Many2One('account.move.line', 'Line', ondelete='RESTRICT',
+            select=1, required=True)
+
+FiscalYearLine()
+
+
 class FiscalYear(ModelSQL, ModelView):
     _name = 'account.fiscalyear'
-    close_lines = fields.Many2Many('account.move.line',
-            'account_fiscalyear_line_rel', 'fiscalyear', 'line', 'Close Lines')
+    close_lines = fields.Many2Many('account.fiscalyear-account.move.line',
+            'fiscalyear', 'line', 'Close Lines')
 
 FiscalYear()
 
