@@ -1113,7 +1113,7 @@ class AssignPackingOutAskForce(ModelView):
     _name = 'stock.packing.out.assign.ask_force'
     _description = __doc__
 
-    inventory_moves = fields.Many2Many('stock.move', None, None, None,
+    inventory_moves = fields.Many2Many('stock.move', None, None,
             'Inventory Moves', readonly=True)
 
 AssignPackingOutAskForce()
@@ -1312,7 +1312,7 @@ class AssignPackingInternalAskForce(ModelView):
     _name = 'stock.packing.internal.assign.ask_force'
     _description = __doc__
 
-    moves = fields.Many2Many('stock.move', None, None, None, 'Moves',
+    moves = fields.Many2Many('stock.move', None, None, 'Moves',
             readonly=True)
 
 AssignPackingInternalAskForce()
@@ -1381,7 +1381,7 @@ class AssignPackingInReturnAskForce(ModelView):
     _name = 'stock.packing.in.return.assign.ask_force'
     _description = __doc__
 
-    moves = fields.Many2Many('stock.move', None, None, None, 'Moves',
+    moves = fields.Many2Many('stock.move', None, None, 'Moves',
             readonly=True)
 
 AssignPackingInReturnAskForce()

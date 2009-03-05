@@ -312,9 +312,9 @@ class CompleteInventoryInit(ModelView):
     _name = 'stock.inventory.complete.init'
     _description = __doc__
 
-    products = fields.Many2Many('product.product', None, None, None,
+    products = fields.Many2Many('product.product', None, None,
             'Products', domain=[('type', '=', 'stockable')])
-    categories = fields.Many2Many('product.category', None, None, None,
+    categories = fields.Many2Many('product.category', None, None,
             'Categories')
 
 CompleteInventoryInit()
