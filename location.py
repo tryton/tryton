@@ -3,6 +3,7 @@
 "Wharehouse"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.backend import TableHandler
 import datetime
 
 STATES = {
@@ -84,13 +85,8 @@ class Location(ModelSQL, ModelView):
     def init(self, cursor, module_name):
         super(Location, self).init(cursor, module_name)
 
-        cursor.execute('SELECT indexname FROM pg_indexes ' \
-                'WHERE indexname = ' \
-                    '\'stock_location_left_right_index\'')
-        if not cursor.rowcount:
-            cursor.execute('CREATE INDEX ' \
-                    'stock_location_left_right_index ' \
-                    'ON stock_location ("left", "right")')
+        table = TableHandler(cursor, self._table, self._name, module_name)
+        table.index_action(['left', 'right'], 'add')
 
     def check_type_for_moves(self, cursor, user, ids):
         """ Check locations with moves have types compatible with moves. """
