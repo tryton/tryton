@@ -83,14 +83,12 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         ('paid', 'Paid'),
         ('exception', 'Exception'),
     ], 'Invoice State', readonly=True, required=True)
-    invoices = fields.Many2Many('account.invoice', 'sale_invoices_rel',
+    invoices = fields.Many2Many('sale.sale-account.invoice',
             'sale', 'invoice', 'Invoices', readonly=True)
-    invoices_ignored = fields.Many2Many('account.invoice',
-            'sale_invoice_ignored_rel', 'sale', 'invoice',
-            'Ignored Invoices', readonly=True)
-    invoices_recreated = fields.Many2Many('account.invoice',
-            'sale_invoice_recreated_rel', 'sale', 'invoice',
-            'Recreated Invoices', readonly=True)
+    invoices_ignored = fields.Many2Many('sale.sale-ignored-account.invoice',
+            'sale', 'invoice', 'Ignored Invoices', readonly=True)
+    invoices_recreated = fields.Many2Many('sale.sale-recreated-account.invoice',
+            'sale', 'invoice', 'Recreated Invoices', readonly=True)
     invoice_paid = fields.Function('get_function_fields', type='boolean',
             string='Invoices Paid')
     invoice_exception = fields.Function('get_function_fields', type='boolean',
@@ -823,6 +821,42 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 Sale()
 
 
+class SaleInvoice(ModelSQL):
+    'Sale - Invoice'
+    _name = 'sale.sale-account.invoice'
+    _table = 'sale_invoices_rel'
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=1,
+            required=True)
+    invoice = fields.Many2One('account.invoice', 'Invoice',
+            ondelete='RESTRICT', select=1, required=True)
+
+SaleInvoice()
+
+
+class SaleIgnoredInvoice(ModelSQL):
+    'Sale - Ignored Invoice'
+    _name = 'sale.sale-ignored-account.invoice'
+    _table = 'sale_invoice_ignored_rel'
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=1,
+            required=True)
+    invoice = fields.Many2One('account.invoice', 'Invoice',
+            ondelete='RESTRICT', select=1, required=True)
+
+SaleIgnoredInvoice()
+
+
+class SaleRecreatedInvoice(ModelSQL):
+    'Sale - Recreated Invoice'
+    _name = 'sale.sale-recreated-account.invoice'
+    _table = 'sale_invoice_recreated_rel'
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=1,
+            required=True)
+    invoice = fields.Many2One('account.invoice', 'Invoice',
+            ondelete='RESTRICT', select=1, required=True)
+
+SaleRecreatedInvoice()
+
+
 class SaleLine(ModelSQL, ModelView):
     'Sale Line'
     _name = 'sale.line'
@@ -882,21 +916,18 @@ class SaleLine(ModelSQL, ModelView):
                 '_parent_sale.currency'])
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
-    taxes = fields.Many2Many('account.tax', 'sale_line_account_tax',
-            'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
-            states={
+    taxes = fields.Many2Many('sale.line-account.tax', 'line', 'tax', 'Taxes',
+            domain=[('parent', '=', False)], states={
                 'invisible': "type != 'line'",
             })
-    invoice_lines = fields.Many2Many('account.invoice.line',
-            'sale_line_invoice_lines_rel', 'sale_line', 'invoice_line',
-            'Invoice Lines', readonly=True)
+    invoice_lines = fields.Many2Many('sale.line-account.invoice.line',
+            'sale_line', 'invoice_line', 'Invoice Lines', readonly=True)
     moves = fields.One2Many('stock.move', 'sale_line', 'Moves',
             readonly=True, select=1)
-    moves_ignored = fields.Many2Many('stock.move', 'sale_line_moves_ignored_rel',
+    moves_ignored = fields.Many2Many('sale.line-ignored-stock.move',
             'sale_line', 'move', 'Ignored Moves', readonly=True)
-    moves_recreated = fields.Many2Many('stock.move',
-            'sale_line_moves_recreated_rel', 'sale_line', 'move',
-            'Recreated Moves', readonly=True)
+    moves_recreated = fields.Many2Many('sale.line-recreated-stock.move',
+            'sale_line', 'move', 'Recreated Moves', readonly=True)
     move_done = fields.Function('get_move_done', type='boolean',
             string='Moves Done')
     move_exception = fields.Function('get_move_exception', type='boolean',
@@ -1226,6 +1257,54 @@ class SaleLine(ModelSQL, ModelView):
 SaleLine()
 
 
+class SaleLineTax(ModelSQL):
+    'Sale Line - Tax'
+    _name = 'sale.line-account.tax'
+    _table = 'sale_line_account_tax'
+    line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
+            select=1, required=True)
+    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
+            select=1, required=True)
+
+SaleLineTax()
+
+
+class SaleLineInvoiceLine(ModelSQL):
+    'Sale Line - Invoice Line'
+    _name = 'sale.line-account.invoice.line'
+    _table = 'sale_line_invoice_lines_rel'
+    sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
+            select=1, required=True)
+    invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
+            ondelete='RESTRICT', select=1, required=True)
+
+SaleLineInvoiceLine()
+
+
+class SaleLineIgnoredMove(ModelSQL):
+    'Sale Line - Ignored Move'
+    _name = 'sale.line-ignored-stock.move'
+    _table = 'sale_line_moves_ignored_rel'
+    sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
+            select=1, required=True)
+    move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
+            select=1, required=True)
+
+SaleLineIgnoredMove()
+
+
+class SaleLineRecreatedMove(ModelSQL):
+    'Sale Line - Recreated Move'
+    _name = 'sale.line-recreated-stock.move'
+    _table = 'sale_line_moves_recreated_rel'
+    sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
+            select=1, required=True)
+    move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
+            select=1, required=True)
+
+SaleLineRecreatedMove()
+
+
 class SaleReport(CompanyReport):
     _name = 'sale.sale'
 
@@ -1528,10 +1607,10 @@ class HandlePackingExceptionAsk(ModelView):
     _description = __doc__
 
     recreate_moves = fields.Many2Many(
-        'stock.move', None, None, None, 'Recreate Moves',
+        'stock.move', None, None, 'Recreate Moves',
         domain="[('id', 'in', domain_moves)]", depends=['domain_moves'])
     domain_moves = fields.Many2Many(
-        'stock.move', None, None, None, 'Domain Moves')
+        'stock.move', None, None, 'Domain Moves')
 
     def default_recreate_moves(self, cursor, user, context=None):
         return self.default_domain_moves(cursor, user, context=context)
@@ -1624,12 +1703,12 @@ class HandleInvoiceExceptionAsk(ModelView):
     _description = __doc__
 
     recreate_invoices = fields.Many2Many(
-        'account.invoice', None, None, None, 'Recreate Invoices',
+        'account.invoice', None, None, 'Recreate Invoices',
         domain="[('id', 'in', domain_invoices)]", depends=['domain_invoices'],
         help='The selected invoices will be recreated. '\
             'The other ones will be ignored.')
     domain_invoices = fields.Many2Many(
-        'account.invoice', None, None, None, 'Domain Invoices')
+        'account.invoice', None, None, 'Domain Invoices')
 
     def default_recreate_invoices(self, cursor, user, context=None):
         return self.default_domain_invoices(cursor, user, context=context)
