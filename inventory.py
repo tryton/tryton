@@ -14,11 +14,11 @@ class CreateInventoriesInit(ModelView):
         'stock.location', 'Lost and Found', required=True,
         domain=[('type', '=', 'lost_found')])
     company = fields.Many2One('company.company', 'Company', required=True)
-    locations = fields.Many2Many('stock.location', None, None, None,
+    locations = fields.Many2Many('stock.location', None, None,
             'Locations', required=True, domain=[('type', '=', 'storage')])
-    products = fields.Many2Many('product.product', None, None, None,
+    products = fields.Many2Many('product.product', None, None,
             'Products', domain=[('type', '=', 'stockable')])
-    categories = fields.Many2Many('product.category', None, None, None,
+    categories = fields.Many2Many('product.category', None, None,
             'Categories')
 
     def default_lost_found(self, cursor, user, context=None):
