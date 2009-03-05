@@ -18,14 +18,36 @@ class Category(ModelSQL, ModelView):
             states={
                 'invisible': "not company",
             })
-    customer_taxes = fields.Many2Many('account.tax',
-            'product_category_customer_taxes_rel', 'product', 'tax',
-            'Customer Taxes', domain=[('parent', '=', False)])
-    supplier_taxes = fields.Many2Many('account.tax',
-            'product_category_supplier_taxes_rel', 'product', 'tax',
-            'Supplier Taxes', domain=[('parent', '=', False)])
+    customer_taxes = fields.Many2Many('product.category-customer-account.tax',
+            'product', 'tax', 'Customer Taxes', domain=[('parent', '=', False)])
+    supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
+            'product', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)])
 
 Category()
+
+
+class CategoryCustomerTax(ModelSQL):
+    'Category - Customer Tax'
+    _name = 'product.category-customer-account.tax'
+    _table = 'product_category_customer_taxes_rel'
+    product = fields.Many2One('product.category', 'Category',
+            ondelete='CASCADE', select=1, required=True)
+    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
+            required=True)
+
+CategoryCustomerTax()
+
+
+class CategorySupplierTax(ModelSQL):
+    'Category - Supplier Tax'
+    _name = 'product.category-supplier-account.tax'
+    _table = 'product_category_supplier_taxes_rel'
+    product = fields.Many2One('product.category', 'Category',
+            ondelete='CASCADE', select=1, required=True)
+    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
+            required=True)
+
+CategorySupplierTax()
 
 
 class Template(ModelSQL, ModelView):
@@ -51,14 +73,14 @@ class Template(ModelSQL, ModelView):
             relation='account.account', string='Account Revenue Used')
     taxes_category = fields.Boolean('Use Category\'s Taxes', help='Use the taxes ' \
             'defined on the category')
-    customer_taxes = fields.Many2Many('account.tax',
-            'product_customer_taxes_rel', 'product', 'tax',
-            'Customer Taxes', domain=[('parent', '=', False)], states={
+    customer_taxes = fields.Many2Many('product.template-customer-account.tax',
+            'product', 'tax', 'Customer Taxes', domain=[('parent', '=', False)],
+            states={
                 'invisible': "bool(taxes_category)",
             })
-    supplier_taxes = fields.Many2Many('account.tax',
-            'product_supplier_taxes_rel', 'product', 'tax',
-            'Supplier Taxes', domain=[('parent', '=', False)], states={
+    supplier_taxes = fields.Many2Many('product.template-supplier-account.tax',
+            'product', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)],
+            states={
                 'invisible': "bool(taxes_category)",
             })
     customer_taxes_used = fields.Function('get_taxes', type='many2many',
@@ -103,3 +125,27 @@ class Template(ModelSQL, ModelView):
         return res
 
 Template()
+
+
+class TemplateCustomerTax(ModelSQL):
+    'Product Template - Customer Tax'
+    _name = 'product.template-customer-account.tax'
+    _table = 'product_customer_taxes_rel'
+    product = fields.Many2One('product.template', 'Product Template',
+            ondelete='CASCADE', select=1, required=True)
+    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
+            required=True)
+
+TemplateCustomerTax()
+
+
+class TemplateSupplierTax(ModelSQL):
+    'Product Template - Supplier Tax'
+    _name = 'product.template-supplier-account.tax'
+    _table = 'product_supplier_taxes_rel'
+    product = fields.Many2One('product.template', 'Product Template',
+            ondelete='CASCADE', select=1, required=True)
+    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
+            required=True)
+
+TemplateSupplierTax()
