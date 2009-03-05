@@ -169,9 +169,8 @@ class ForecastLine(ModelSQL, ModelView):
     quantity = fields.Float('Quantity', digits="(16, unit_digits)", required=True)
     minimal_quantity = fields.Float(
         'Minimal Qty', digits="(16, unit_digits)", required=True)
-    moves = fields.Many2Many(
-        'stock.move', 'forecast_line_stock_move_rel', 'line', 'move','Moves',
-        readonly=True, ondelete_target='CASCADE')
+    moves = fields.Many2Many('stock.forecast.line-stock.move',
+            'line', 'move','Moves', readonly=True)
     forecast = fields.Many2One(
         'stock.forecast', 'Forecast', required=True, ondelete='CASCADE',)
 
@@ -291,6 +290,18 @@ class ForecastLine(ModelSQL, ModelView):
 ForecastLine()
 
 
+class ForecastLineMove(ModelSQL):
+    'ForecastLine - Move'
+    _name = 'stock.forecast.line-stock.move'
+    _table = 'forecast_line_stock_move_rel'
+    line = fields.Many2One('stock.forecast.line', 'Forecast Line',
+            ondelete='CASCADE', select=1, required=True)
+    move = fields.Many2One('stock.move', 'Move', ondelete='CASCADE',
+            select=1, required=True)
+
+ForecastLineMove()
+
+
 class ForecastCompleteAsk(ModelView):
     _name = 'stock.forecast.complete.ask'
 
@@ -303,8 +314,7 @@ ForecastCompleteAsk()
 class ForecastCompleteChoose(ModelView):
     _name = 'stock.forecast.complete.choose'
 
-    products = fields.Many2Many(
-        'product.product', 'prod_rel', 'forecast', 'product', 'Products')
+    products = fields.Many2Many('product.product', None, None, 'Products')
 
 ForecastCompleteChoose()
 
