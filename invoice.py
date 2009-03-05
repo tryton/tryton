@@ -88,9 +88,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             string='Reconciled')
     lines_to_pay = fields.Function('get_lines_to_pay', type='one2many',
             relation='account.move.line', string='Lines to Pay')
-    payment_lines = fields.Many2Many('account.move.line',
-            'invoice_payment_lines_rel', 'invoice', 'line', readonly=True,
-            string='Payment Lines', ondelete_target='CASCADE')
+    payment_lines = fields.Many2Many('account.invoice-account.move.line',
+            'invoice', 'line', readonly=True, string='Payment Lines')
     amount_to_pay_today = fields.Function('get_amount_to_pay',
             type='numeric', digits="(16, currency_digits)",
             string='Amount to Pay Today')
@@ -1077,6 +1076,17 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
 Invoice()
 
 
+class InvoicePaymentLine(ModelSQL):
+    'Invoice - Payment Line'
+    _name = 'account.invoice-account.move.line'
+    invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
+            select=1, required=True)
+    line = fields.Many2One('account.move.line', 'Payment Line',
+            ondelete='CASCADE', select=1, required=True)
+
+InvoicePaymentLine()
+
+
 class InvoiceLine(ModelSQL, ModelView):
     'Invoice Line'
     _name = 'account.invoice.line'
@@ -1166,7 +1176,7 @@ class InvoiceLine(ModelSQL, ModelView):
                 '_parent_invoice.currency', 'currency'])
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
-    taxes = fields.Many2Many('account.tax', 'account_invoice_line_account_tax',
+    taxes = fields.Many2Many('account.invoice.line-account.tax',
             'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
             states={
                 'invisible': "type != 'line'",
@@ -1600,6 +1610,18 @@ class InvoiceLine(ModelSQL, ModelView):
 InvoiceLine()
 
 
+class InvoiceLineTax(ModelSQL):
+    'Invoice Line - Tax'
+    _name = 'account.invoice.line-account.tax'
+    _table = 'account_invoice_line_account_tax'
+    line = fields.Many2One('account.invoice.line', 'Invoice Line',
+            ondelete='CASCADE', select=1, required=True)
+    tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
+            required=True)
+
+InvoiceLineTax()
+
+
 class InvoiceTax(ModelSQL, ModelView):
     'Invoice Tax'
     _name = 'account.invoice.tax'
@@ -1962,7 +1984,7 @@ class PayInvoiceAsk(ModelView):
     currency_digits = fields.Integer('Currency Digits', readonly=True,
             on_change_with=['currency'])
     lines_to_pay = fields.Char(string='Lines to Pay', size=None)
-    lines = fields.Many2Many('account.move.line', None, None, None, 'Lines',
+    lines = fields.Many2Many('account.move.line', None, None, 'Lines',
             domain="[('id', 'in', eval(lines_to_pay)), " \
                     "('reconciliation', '=', False)]",
             states={
