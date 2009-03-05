@@ -95,7 +95,7 @@ class BrowseRecord(object):
         self._id = object_id
         self._table = table
         self._table_name = self._table._name
-        self._context = context
+        self._context = context or {}
         self._language_cache = {}
 
         cache.setdefault(table._name, {})
