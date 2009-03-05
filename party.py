@@ -42,10 +42,8 @@ class Party(ModelSQL, ModelView):
            'Addresses', states=STATES)
     contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
             'Contact Mechanisms', states=STATES)
-    categories = fields.Many2Many(
-            'party.category', 'party_category_rel',
-            'party', 'category', 'Categories',
-            states=STATES)
+    categories = fields.Many2Many('party.party-party.category',
+            'party', 'category', 'Categories', states=STATES)
     active = fields.Boolean('Active', select=1)
     full_name = fields.Function('get_full_name', type='char')
     phone = fields.Function('get_mechanism', arg='phone', type='char',
@@ -223,3 +221,15 @@ class Party(ModelSQL, ModelView):
         return True
 
 Party()
+
+
+class PartyCategory(ModelSQL):
+    'Party - Category'
+    _name = 'party.party-party.category'
+    _table = 'party_category_rel'
+    party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
+            required=True, select=1)
+    category = fields.Many2One('party.category', 'Category', ondelete='CASCADE',
+            required=True, select=1)
+
+PartyCategory()
