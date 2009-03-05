@@ -6,12 +6,11 @@ from trytond.model import ModelView, ModelSQL, fields
 class Purchase(ModelSQL, ModelView):
     _name = 'purchase.purchase'
 
-    invoice_lines = fields.Many2Many('account.invoice.line',
-            'purchase_invoice_line_rel', 'purchase', 'line', 'Invoice Lines',
-            readonly=True)
-    invoice_lines_ignored = fields.Many2Many('account.invoice.line',
-            'purchase_invoice_line_ignored_rel', 'purchase', 'invoice',
-            'Invoice Lines Ignored', readonly=True)
+    invoice_lines = fields.Many2Many('purchase.purchase-account.invoice.line',
+            'purchase', 'line', 'Invoice Lines', readonly=True)
+    invoice_lines_ignored = fields.Many2Many(
+            'purchase.purchase-ignored-account.invoice.line',
+            'purchase', 'invoice', 'Invoice Lines Ignored', readonly=True)
 
     def create_invoice(self, cursor, user, purchase_id, context=None):
         invoice_obj = self.pool.get('account.invoice')
@@ -103,3 +102,27 @@ class Purchase(ModelSQL, ModelView):
                 }, context=context)
 
 Purchase()
+
+
+class PurchaseInvoiceLine(ModelSQL):
+    'Purchase - Invoice Line'
+    _name = 'purchase.purchase-account.invoice.line'
+    _table = 'purchase_invoice_line_rel'
+    purchase = fields.Many2One('purchase.purchase', 'Purchase',
+            ondelete='CASCADE', select=1, required=True)
+    line = fields.Many2One('account.invoice.line', 'Invoice Line',
+            ondelete='RESTRICT', select=1, required=True)
+
+PurchaseInvoiceLine()
+
+
+class PurchaseIgnoredInvoiceLine(ModelSQL):
+    'Purchase - Ignored Invoice Line'
+    _name = 'purchase.purchase-ignored-account.invoice.line'
+    _table = 'purchase_invoice_line_ignored_rel'
+    purchase = fields.Many2One('purchase.purchase', 'Purchase',
+            ondelete='CASCADE', select=1, required=True)
+    invoice = fields.Many2One('account.invoice.line', 'Invoice Line',
+            ondelete='RESTRICT', select=1, required=True)
+
+PurchaseIgnoredInvoiceLine()
