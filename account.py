@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Account"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
@@ -356,9 +357,9 @@ class AccountSelection(ModelSQL, ModelView):
     _description = __doc__
     _rec_name = 'id'
 
-    accounts = fields.Many2Many('analytic_account.account',
-            'analytic_account_account_selection_rel', 'selection', 'account',
-            'Accounts')
+    accounts = fields.Many2Many(
+            'analytic_account.account-analytic_account.account.selection',
+            'selection', 'account', 'Accounts')
 
     def __init__(self):
         super(AccountSelection, self).__init__()
@@ -394,3 +395,15 @@ class AccountSelection(ModelSQL, ModelView):
         return True
 
 AccountSelection()
+
+
+class AccountAccountSelection(ModelSQL):
+    'Analytic Account - Analytic Account Selection'
+    _name = 'analytic_account.account-analytic_account.account.selection'
+    _table = 'analytic_account_account_selection_rel'
+    selection = fields.Many2One('analytic_account.account.selection',
+            'Selection', ondelete='CASCADE', required=True, select=1)
+    account = fields.Many2One('analytic_account.account', 'Account',
+            ondelete='RESTRICT', required=True, select=1)
+
+AccountAccountSelection()
