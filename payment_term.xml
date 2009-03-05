@@ -108,8 +108,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <menuitem parent="menu_invoices_configuration" action="act_payment_term_form"
-            id="menu_payment_term_form"/>
+        <menuitem parent="menu_payment_terms_configuration"
+            action="act_payment_term_form" id="menu_payment_term_form"/>
 
         <record model="account.invoice.payment_term.line.type"
             id="payment_term_line_type_fixed">
