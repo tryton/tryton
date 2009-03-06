@@ -24,12 +24,16 @@ class Party(ModelSQL, ModelView):
             relation='account.tax', string='VAT',
             domain="[('group.code', '=', 'vat'), ('company', '=', company), " \
                     "('parent', '=', False)]",
-            help='This tax will be used, instead of the default VAT.')
+            states={
+                'invisible': "not globals().get('company') or not bool(company)",
+            }, help='This tax will be used, instead of the default VAT.')
     supplier_vat = fields.Property(type='many2one',
             relation='account.tax', string='Supplier VAT',
             domain="[('group.code', '=', 'vat'), ('company', '=', company), " \
                     "('parent', '=', False)]",
-            help='This tax will be used, instead of the default VAT ' \
+            states={
+                'invisible': "not globals().get('company') or not bool(company)",
+            }, help='This tax will be used, instead of the default VAT ' \
                     'for supplier invoices.')
     receivable = fields.Function('get_receivable_payable',
             fnct_search='search_receivable_payable', string='Receivable')
