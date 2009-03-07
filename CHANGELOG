@@ -1,3 +1,4 @@
+* Use the purchase uom to compute purchase price from product supplier
 * Add buttons to handle invoice and packing exceptions
 * Allow egg installation
 

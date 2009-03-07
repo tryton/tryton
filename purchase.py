@@ -1323,18 +1323,22 @@ class Product(ModelSQL, ModelView):
 
         for product in self.browse(cursor, user, ids, context=context):
             res[product.id] = product.cost_price
+            default_uom = product.default_uom
+            if not uom:
+                uom = default_uom
             if context.get('supplier') and product.product_suppliers:
                 supplier_id = context['supplier']
                 for product_supplier in product.product_suppliers:
                     if product_supplier.party.id == supplier_id:
                         for price in product_supplier.prices:
-                            if price.quantity <= quantity:
+                            if uom_obj.compute_qty(cursor, user,
+                                    product.purchase_uom, price.quantity, uom,
+                                    context=context) <= quantity:
                                 res[product.id] = price.unit_price
+                                default_uom = product.purchase_uom
                         break
-            if uom:
-                res[product.id] = uom_obj.compute_price(cursor,
-                        user, product.default_uom, res[product.id],
-                        uom, context=context)
+            res[product.id] = uom_obj.compute_price(cursor, user,
+                    default_uom, res[product.id], uom, context=context)
             if currency and user2.company:
                 if user2.company.currency.id != currency.id:
                     res[product.id] = currency_obj.compute(cursor, user,
