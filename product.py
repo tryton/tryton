@@ -80,13 +80,13 @@ class Template(ModelSQL, ModelView):
     customer_taxes = fields.Many2Many('product.template-customer-account.tax',
             'product', 'tax', 'Customer Taxes', domain=[('parent', '=', False)],
             states={
-                'invisible': "bool(taxes_category)",
-            })
+                'invisible': "not bool(company) or bool(taxes_category)",
+            }, depends=['taxes_category'])
     supplier_taxes = fields.Many2Many('product.template-supplier-account.tax',
             'product', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)],
             states={
-                'invisible': "bool(taxes_category)",
-            })
+                'invisible': "not bool(company) or bool(taxes_category)",
+            }, depends=['taxes_category'])
     customer_taxes_used = fields.Function('get_taxes', type='many2many',
             relation='account.tax', string='Customer Taxes Used')
     supplier_taxes_used = fields.Function('get_taxes', type='many2many',
