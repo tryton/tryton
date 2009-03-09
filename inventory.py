@@ -20,7 +20,9 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
         domain=[('type', '=', 'storage')], states={
             'readonly': "state != 'draft' or bool(lines)",
         })
-    date = fields.Date('Date', states=STATES)
+    date = fields.Date('Date', required=True, states={
+            'readonly': "state != 'draft' or bool(lines)",
+        })
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
         domain=[('type', '=', 'lost_found')], states=STATES)
@@ -151,15 +153,10 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
 
         for inventory in inventories:
             # Compute product quantities
-            if inventory.date:
-                context['stock_date_end'] = inventory.date
-                pbl = product_obj.products_by_location(
-                    cursor, user, [inventory.location.id],
-                    product_ids=product_ids, context=context)
-            else:
-                pbl = product_obj.products_by_location(
-                    cursor, user, [inventory.location.id],
-                    product_ids=product_ids, context=context)
+            context['stock_date_end'] = inventory.date
+            pbl = product_obj.products_by_location(
+                cursor, user, [inventory.location.id],
+                product_ids=product_ids, context=context)
 
             # Index some data
             product2uom = {}
