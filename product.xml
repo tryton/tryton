@@ -39,6 +39,9 @@ this repository contains the full copyright notices and license terms. -->
                         expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
                         <page string="Accounting" col="4" id="accounting">
+                            <label name="account_category"/>
+                            <field name="account_category"/>
+                            <newline/>
                             <label name="account_revenue"/>
                             <field name="account_revenue"/>
                             <label name="account_expense"/>

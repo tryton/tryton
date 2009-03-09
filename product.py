@@ -53,20 +53,24 @@ CategorySupplierTax()
 class Template(ModelSQL, ModelView):
     _name = 'product.template'
 
+    account_category = fields.Boolean('Use Category\'s accounts',
+            help='Use the accounts defined on the category')
     account_expense = fields.Property(type='many2one',
             string='Account Expense', relation='account.account',
             domain="[('kind', '=', 'expense'), ('company', '=', company)]",
             states={
-                'invisible': "not company",
+                'invisible': "not bool(company) or bool(account_category)",
+                'required': "not bool(account_category)",
             }, help='This account will be used instead of the one defined ' \
-                    'on the category.')
+                    'on the category.', depends=['account_category'])
     account_revenue = fields.Property(type='many2one',
             string='Account Revenue', relation='account.account',
             domain="[('kind', '=', 'revenue'), ('company', '=', company)]",
             states={
-                'invisible': "not company",
+                'invisible': "not bool(company) or bool(account_category)",
+                'required': "not bool(account_category)",
             }, help='This account will be used instead of the one defined ' \
-                    'on the category.')
+                    'on the category.', depends=['account_category'])
     account_expense_used = fields.Function('get_account', type='many2one',
             relation='account.account', string='Account Expense Used')
     account_revenue_used = fields.Function('get_account', type='many2one',
