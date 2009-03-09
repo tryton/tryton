@@ -584,6 +584,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         tax_obj = self.pool.get('account.invoice.tax')
         currency_obj = self.pool.get('currency.currency')
         for invoice in self.browse(cursor, user, ids, context=context):
+            if invoice.state in ('open', 'paid', 'cancel'):
+                continue
             computed_taxes = self._compute_taxes(cursor, user, invoice,
                     context=context)
             if not invoice.taxes:
