@@ -1583,9 +1583,6 @@ class Move(ModelSQL, ModelView):
         return args2
 
     def get_purchase_fields(self, cursor, user, ids, names, arg, context=None):
-        uom_obj = self.pool.get('product.uom')
-        currency_obj = self.pool.get('currency.currency')
-
         res = {}
         for name in names:
             res[name] = {}
