@@ -73,7 +73,7 @@ class FakeCursor(object):
                 res = self.cursor.execute(sql)
         except:
             logger = logging.getLogger('sql')
-            logger.error('Wrong SQL: ' + self.cursor.query)
+            logger.error('Wrong SQL: ' + (self.cursor.query or ''))
             raise
         if self.sql_log:
             self.count += 1
