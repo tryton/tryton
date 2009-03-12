@@ -8,13 +8,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Order Point">
+                    <form string="Order Point" cursor="product">
                         <separator string="Product Info" colspan="4"
                             id="info"/>
-                        <label name="product"/>
-                        <field name="product"/>
                         <label name="company"/>
                         <field name="company"/>
+                        <newline/>
+                        <label name="product"/>
+                        <field name="product"/>
+                        <label name="unit"/>
+                        <field name="unit"/>
                         <label name="min_quantity"/>
                         <field name="min_quantity"/>
                         <label name="max_quantity"/>
@@ -46,6 +49,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="company"/>
                         <field name="min_quantity" select="2"/>
                         <field name="max_quantity" select="2"/>
+                        <field name="unit"/>
                     </tree>
                 ]]>
             </field>

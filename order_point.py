@@ -16,7 +16,8 @@ class OrderPoint(ModelSQL, ModelView):
     product = fields.Many2One(
         'product.product', 'Product', required=True, select=1,
         domain="[('type', '=', 'stockable'), ('purchasable', 'in', " \
-                "type == 'purchase' and [True] or [True, False])]")
+                "type == 'purchase' and [True] or [True, False])]",
+        on_change=['product'])
     warehouse_location = fields.Many2One(
         'stock.location', 'Warehouse Location', select=1,
         domain="[('type', '=', 'warehouse')]",
@@ -39,9 +40,15 @@ class OrderPoint(ModelSQL, ModelView):
         [('internal', 'Internal'),
          ('purchase', 'Purchase')],
         'Type', select=1, required=True)
-    min_quantity = fields.Float('Minimal Quantity', required=True)
-    max_quantity = fields.Float('Maximal Quantity', required=True)
+    min_quantity = fields.Float('Minimal Quantity', required=True,
+            digits="(16, unit_digits)", depends=['unit_digits'])
+    max_quantity = fields.Float('Maximal Quantity', required=True,
+            digits="(16, unit_digits)", depends=['unit_digits'])
     company = fields.Many2One('company.company', 'Company', required=True)
+    unit = fields.Function('get_unit', type='many2one', relation='product.uom',
+            string='Unit')
+    unit_digits = fields.Function('get_unit_digits', type='integer',
+            string='Unit Digits')
 
     def __init__(self):
         super(OrderPoint, self).__init__()
@@ -62,6 +69,33 @@ class OrderPoint(ModelSQL, ModelView):
 
     def default_type(self, cursor, user, context=None):
         return "purchase"
+
+    def on_change_product(self, cursor, user, ids, vals, context=None):
+        product_obj = self.pool.get('product.product')
+        res = {
+            'unit': False,
+            'unit.rec_name': '',
+            'unit_digits': 2,
+        }
+        if vals.get('product'):
+            product = product_obj.browse(cursor, user, vals['product'],
+                    context=context)
+            res['unit'] = product.default_uom.id
+            res['unit.rec_name'] = product.default_uom.rec_name
+            res['unit_digits'] = product.default_uom.digits
+        return res
+
+    def get_unit(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for order in self.browse(cursor, user, ids, context=context):
+            res[order.id] = order.product.default_uom.id
+        return res
+
+    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for order in self.browse(cursor, user, ids, context=context):
+            res[order.id] = order.product.default_uom.digits
+        return res
 
     def check_concurrent_internal(self, cursor, user, ids):
         """
