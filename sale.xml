@@ -116,6 +116,7 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="comment" colspan="4" spell="party_lang"/>
                         </page>
                         <page string="Invoices" id="invoices">
+                            <separator name="invoices" colspan="4"/>
                             <field name="invoices" colspan="4">
                                 <tree>
                                   <field name="number" select="1"/>
@@ -134,6 +135,7 @@ this repository contains the full copyright notices and license terms. -->
                             </field>
                         </page>
                         <page string="Packings" id="packings">
+                            <separator name="moves" colspan="4"/>
                             <field name="moves" colspan="4">
                                 <tree string="Moves">
                                     <field name="product"/>
@@ -146,6 +148,7 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="unit_digits" tree_invisible="1"/>
                                 </tree>
                             </field>
+                            <separator name="packings" colspan="4"/>
                             <field name="packings" colspan="4"/>
                         </page>
                     </notebook>
