@@ -18,7 +18,7 @@ PaymentTermLineType()
 
 
 class PaymentTermLineDelay(ModelSQL, ModelView):
-    _name = 'PaymentTermLineDelay'
+    _name = 'account.invoice.payment_term.line.delay'
     _history = True
 
 PaymentTermLineDelay()
