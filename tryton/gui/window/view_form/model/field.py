@@ -331,6 +331,8 @@ class M2OField(CharField):
                 self.sig_changed(model)
             except:
                 model.value[self.name] = internal
+                return
+            model.signal('record-changed', model)
 
 
 class M2MField(CharField):
