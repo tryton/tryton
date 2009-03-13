@@ -1238,7 +1238,7 @@ class Template(ModelSQL, ModelView):
     product_suppliers = fields.One2Many('purchase.product_supplier',
             'product', 'Suppliers', states={
                 'readonly': "active == False",
-                'invisible': "not purchasable",
+                'invisible': "(not purchasable) or (not company)",
             })
     purchase_uom = fields.Many2One('product.uom', 'Purchase UOM', states={
         'readonly': "active == False",
