@@ -4,12 +4,21 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <menuitem name="Purchase Management" id="menu_purchase" sequence="4"/>
+
+        <record model="res.group" id="group_purchase_admin">
+            <field name="name">Purchase Administrator</field>
+        </record>
         <record model="res.group" id="group_purchase">
             <field name="name">Purchase</field>
         </record>
         <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_purchase'))]"/>
+            <field name="groups"
+                eval="[('add', ref('group_purchase')), ('add', ref('group_purchase_admin'))]"/>
         </record>
+
+        <menuitem name="Configuration" parent="menu_purchase"
+            id="menu_configuration" groups="group_purchase_admin"
+            sequence="0" icon="tryton-preferences" active="0"/>
 
         <record model="ir.action.wizard" id="wizard_packing_handle_exception">
             <field name="name">Handle Packing Exception</field>
