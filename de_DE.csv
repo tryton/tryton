@@ -13,8 +13,17 @@ field,"sale.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,Doma
 field,"sale.handle.invoice.exception.ask,recreate_invoices",0,Recreate Invoices,Rechnungen nachbilden,0
 field,"sale.handle.packing.exception.ask,domain_moves",0,Domain Moves,Domain Bewegungen,0
 field,"sale.handle.packing.exception.ask,recreate_moves",0,Recreate Moves,Bewegungen nachbilden,0
+field,"sale.line-account.invoice.line,invoice_line",0,Invoice Line,Rechnungsposition,0
+field,"sale.line-account.invoice.line,rec_name",0,Name,Name,0
+field,"sale.line-account.invoice.line,sale_line",0,Sale Line,Position Verkauf,0
+field,"sale.line-account.tax,line",0,Sale Line,Position Verkauf,0
+field,"sale.line-account.tax,rec_name",0,Name,Name,0
+field,"sale.line-account.tax,tax",0,Tax,Steuer,0
 field,"sale.line,amount",0,Amount,Betrag,0
 field,"sale.line,description",0,Description,Bezeichnung,0
+field,"sale.line-ignored-stock.move,move",0,Move,Bewegung,0
+field,"sale.line-ignored-stock.move,rec_name",0,Name,Name,0
+field,"sale.line-ignored-stock.move,sale_line",0,Sale Line,Position Verkauf,0
 field,"sale.line,invoice_lines",0,Invoice Lines,Rechnungspositionen,0
 field,"sale.line,move_done",0,Moves Done,Bewegungen erledigt,0
 field,"sale.line,move_exception",0,Moves Exception,Bewegungsvorbehalt,0
@@ -25,6 +34,9 @@ field,"sale.line,note",0,Note,Notiz,0
 field,"sale.line,product",0,Product,Artikel,0
 field,"sale.line,quantity",0,Quantity,Anzahl,0
 field,"sale.line,rec_name",0,Name,Name,0
+field,"sale.line-recreated-stock.move,move",0,Move,Bewegung,0
+field,"sale.line-recreated-stock.move,rec_name",0,Name,Name,0
+field,"sale.line-recreated-stock.move,sale_line",0,Sale Line,Position Verkauf,0
 field,"sale.line,sale",0,Sale,Verkauf,0
 field,"sale.line,sequence",0,Sequence,Sequenz,0
 field,"sale.line,taxes",0,Taxes,Steuern,0
@@ -32,11 +44,17 @@ field,"sale.line,type",0,Type,Typ,0
 field,"sale.line,unit",0,Unit,Einheit,0
 field,"sale.line,unit_digits",0,Unit Digits,Anzahl Stellen,0
 field,"sale.line,unit_price",0,Unit Price,Einzelpreis,0
+field,"sale.sale-account.invoice,invoice",0,Invoice,Rechnung,0
+field,"sale.sale-account.invoice,rec_name",0,Name,Name,0
+field,"sale.sale-account.invoice,sale",0,Sale,Verkauf,0
 field,"sale.sale,comment",0,Comment,Kommentar,0
 field,"sale.sale,company",0,Company,Unternehmen,0
 field,"sale.sale,currency",0,Currency,Währung,0
 field,"sale.sale,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"sale.sale,description",0,Description,Beschreibung,0
+field,"sale.sale-ignored-account.invoice,invoice",0,Invoice,Rechnung,0
+field,"sale.sale-ignored-account.invoice,rec_name",0,Name,Name,0
+field,"sale.sale-ignored-account.invoice,sale",0,Sale,Verkauf,0
 field,"sale.sale,invoice_address",0,Invoice Address,Rechnungsadresse,0
 field,"sale.sale,invoice_exception",0,Invoices Exception,Rechnungsvorbehalt,0
 field,"sale.sale,invoice_method",0,Invoice Method,Rechnungsstellung,0
@@ -57,6 +75,9 @@ field,"sale.sale,party",0,Party,Partei,0
 field,"sale.sale,party_lang",0,Party Language,Sprache Partei,0
 field,"sale.sale,payment_term",0,Payment Term,Zahlungsbedingung,0
 field,"sale.sale,rec_name",0,Name,Name,0
+field,"sale.sale-recreated-account.invoice,invoice",0,Invoice,Rechnung,0
+field,"sale.sale-recreated-account.invoice,rec_name",0,Name,Name,0
+field,"sale.sale-recreated-account.invoice,sale",0,Sale,Verkauf,0
 field,"sale.sale,reference",0,Reference,Referenz,0
 field,"sale.sale,sale_date",0,Sale Date,Verkaufsdatum,0
 field,"sale.sale,state",0,State,Status,0
@@ -83,12 +104,19 @@ model,"ir.ui.menu,name",menu_sale_form_draft,Draft Sales,Entwürfe (Verkäufe),0
 model,"ir.ui.menu,name",menu_sale_form_new,New Sale,Neuer Verkauf,0
 model,"ir.ui.menu,name",menu_sale_form_quotation,Quotation Sales,Angebote (Verkäufe),0
 model,"ir.ui.menu,name",menu_sale,Sale Management,Verkauf,0
-model,"ir.ui.menu,name",menu_sale_form,Sales,Verkauf,0
+model,"ir.ui.menu,name",menu_sale_form,Sales,Verkäufe,0
 model,"res.group,name",group_sale,Sale,Verkauf,0
 model,"sale.handle.invoice.exception.ask,name",0,Invoice Exception Ask,Rechnungsvorbehalt Nachfrage,0
 model,"sale.handle.packing.exception.ask,name",0,Packing Exception Ask,Nachfrage Liefervorbehalt,0
+model,"sale.line-account.invoice.line,name",0,sale.line-account.invoice.line,sale.line-account.invoice.line,0
+model,"sale.line-account.tax,name",0,sale.line-account.tax,sale.line-account.tax,0
+model,"sale.line-ignored-stock.move,name",0,sale.line-ignored-stock.move,sale.line-ignored-stock.move,0
 model,"sale.line,name",0,Sale Line,Verkauf Position,0
+model,"sale.line-recreated-stock.move,name",0,sale.line-recreated-stock.move,sale.line-recreated-stock.move,0
+model,"sale.sale-account.invoice,name",0,sale.sale-account.invoice,sale.sale-account.invoice,0
+model,"sale.sale-ignored-account.invoice,name",0,sale.sale-ignored-account.invoice,sale.sale-ignored-account.invoice,0
 model,"sale.sale,name",0,Sale,Verkauf,0
+model,"sale.sale-recreated-account.invoice,name",0,sale.sale-recreated-account.invoice,sale.sale-recreated-account.invoice,0
 model,"workflow.activity,name",sale_activity_cancel,Cancel,Annullieren,0
 model,"workflow.activity,name",sale_activity_confirmed,Confirmed,Beauftragt,0
 model,"workflow.activity,name",sale_activity_done,Done,Erledigt,0
