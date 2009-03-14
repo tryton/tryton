@@ -37,6 +37,8 @@ field,"stock.order_point,provisioning_location",0,Provisioning Location,Bereitst
 field,"stock.order_point,rec_name",0,Name,Name,0
 field,"stock.order_point,storage_location",0,Storage Location,Lagerort,0
 field,"stock.order_point,type",0,Type,Typ,0
+field,"stock.order_point,unit",0,Unit,Einheit,0
+field,"stock.order_point,unit_digits",0,Unit Digits,Anzahl Stellen,0
 field,"stock.order_point,warehouse_location",0,Warehouse Location,Warenlager,0
 model,"ir.action,name",wizard_create_purchase,Create Purchase,Auftrag erstellen,0
 model,"ir.action,name",act_order_point_form,Order Points,Bestellpunkte,0
