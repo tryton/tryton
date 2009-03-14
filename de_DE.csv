@@ -56,6 +56,9 @@ error,account.period,0,You must have different post move sequences per fiscal ye
 error,account.tax.code,0,You can not create recursive tax code!,Es können keine rekursiven Steuerkennziffern angelegt werden!,0
 error,account.tax.code.template,0,You can not create recursive tax code!,Es können keine rekursiven Steuerkennziffern angelegt werden!,0
 error,account.tax.group,0,Code must be unique!,Der Code kann nicht mehrfach vergeben werden!,0
+field,"account.account-account.tax,account",0,Account,Konto,0
+field,"account.account-account.tax,rec_name",0,Name,Name,0
+field,"account.account-account.tax,tax",0,Tax,Steuer,0
 field,"account.account,active",0,Active,Aktiv,0
 field,"account.account,balance",0,Balance,Bilanz,0
 field,"account.account,childs",0,Childs,Untergeordnet (Konten),0
@@ -121,6 +124,9 @@ field,"account.account,reconcile",0,Reconcile,Abstimmen,0
 field,"account.account,right",0,Right,Rechts,0
 field,"account.account,second_currency",0,Secondary currency,Zweitwährung,0
 field,"account.account,taxes",0,Default Taxes,Standardsteuern,0
+field,"account.account.template-account.tax.template,account",0,Account Template,Kontenvorlage,0
+field,"account.account.template-account.tax.template,rec_name",0,Name,Name,0
+field,"account.account.template-account.tax.template,tax",0,Tax Template,Steuervorlage,0
 field,"account.account.template,childs",0,Childs,Untergeordnet (Kontovorlagen),0
 field,"account.account.template,code",0,Code,Code,0
 field,"account.account.template,deferral",0,Deferral,Saldenvortrag,0
@@ -151,6 +157,9 @@ field,"account.account.type.template,name",0,Name,Name,0
 field,"account.account.type.template,parent",0,Parent,Übergeordnet (Kontovorlagentyp),0
 field,"account.account.type.template,rec_name",0,Name,Name,0
 field,"account.account.type.template,sequence",0,Sequence,Sequenz,0
+field,"account.fiscalyear-account.move.line,fiscalyear",0,FiscalYear,Geschäftsjahr,0
+field,"account.fiscalyear-account.move.line,line",0,Line,Position,0
+field,"account.fiscalyear-account.move.line,rec_name",0,Name,Name,0
 field,"account.fiscalyear.close_fiscalyear.init,close_fiscalyear",0,Fiscal Year to close,Abzuschließendes Geschäftsjahr,0
 field,"account.fiscalyear,close_lines",0,Close Lines,Abschlussbuchungen,0
 field,"account.fiscalyear,code",0,Code,Code,0
@@ -363,6 +372,7 @@ help,"account.tax,percentage",0,In %,In %,0
 help,"account.tax,sequence",0,Use to order the taxes,Wird für die Reihenfolge der Steuern verwendet,0
 help,"party.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Diese Steuer wird anstatt der Standard-Umsatzsteuer für Lieferanten verwendet,0
 help,"party.party,vat",0,"This tax will be used, instead of the default VAT.",Diese Steuer wird anstatt der Standard-Umsatzsteuer verwendet,0
+model,"account.account-account.tax,name",0,account.account-account.tax,account.account-account.tax,0
 model,"account.account.create_chart_account.account,name",0,Create Chart Account Account,Kontenplanerstellung Konten,0
 model,"account.account.create_chart_account.init,name",0,Create Chart Account Init,Kontenplanerstellung Init,0
 model,"account.account.create_chart_account.properties,name",0,Create Chart Account Properties,Kontenplanerstellung Standardeigenschaften,0
@@ -375,6 +385,7 @@ model,"account.account.open_income_statement.init,name",0,Open Income Statement 
 model,"account.account.open_third_party_balance.init,name",0,Open Third Party Balance Init,Offene Postenliste Öffnen Init,0
 model,"account.account.print_general_ledger.init,name",0,Print General Ledger,Druck Kontenblätter Init,0
 model,"account.account.print_trial_balance.init,name",0,Print Trial Balance Init,Druck Summen- und Saldenliste Init,0
+model,"account.account.template-account.tax.template,name",0,account.account.template-account.tax.template,account.account.template-account.tax.template,0
 model,"account.account.template,name",0,Account Template,Konto Vorlage,0
 model,"account.account.template,name",account_template_cash,Main Cash,Allgemein Barvermögen,0
 model,"account.account.template,name",account_template_expense,Main Expense,Allgemein Aufwand,0
@@ -401,6 +412,7 @@ model,"account.account.type.template,name",account_type_template_liability_curre
 model,"account.account.type.template,name",account_type_template_asset_current_receivable,Receivable,Forderungen,0
 model,"account.account.type.template,name",account_type_template_revenue,Revenue,Ertrag,0
 model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Verbindlichkeiten aus Steuern,0
+model,"account.fiscalyear-account.move.line,name",0,account.fiscalyear-account.move.line,account.fiscalyear-account.move.line,0
 model,"account.fiscalyear.close_fiscalyear.init,name",0,Close Fiscal Year Init,Abschluss Geschäftsjahr,0
 model,"account.fiscalyear,name",0,Fiscal Year,Geschäftsjahr,0
 model,"account.journal,name",journal_cash,Cash,Zahlung,0
