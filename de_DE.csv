@@ -2,22 +2,42 @@ type,name,res_id,src,value,fuzzy
 error,product.template,0,There is no account expense/revenue define on the product %s (%d),Es ist kein Aufwands-/Ertragskonto in Artikel %s (%d) angegeben,0
 field,"product.category,account_expense",0,Account Expense,Konto Aufwand,0
 field,"product.category,account_revenue",0,Account Revenue,Konto Ertrag,0
+field,"product.category-customer-account.tax,product",0,Category,Kategorie,0
+field,"product.category-customer-account.tax,rec_name",0,Name,Name,0
+field,"product.category-customer-account.tax,tax",0,Tax,Steuer,0
 field,"product.category,customer_taxes",0,Customer Taxes,Steuern Kunde,0
+field,"product.category-supplier-account.tax,product",0,Category,Kategorie,0
+field,"product.category-supplier-account.tax,rec_name",0,Name,Name,0
+field,"product.category-supplier-account.tax,tax",0,Tax,Steuer,0
 field,"product.category,supplier_taxes",0,Supplier Taxes,Steuern Lieferant,0
+field,"product.template,account_category",0,Use Category's accounts,Konten der Kategorie anwenden,0
 field,"product.template,account_expense",0,Account Expense,Konto Aufwand,0
 field,"product.template,account_expense_used",0,Account Expense Used,Konto Aufwand benutzt,0
 field,"product.template,account_revenue",0,Account Revenue,Konto Ertrag,0
 field,"product.template,account_revenue_used",0,Account Revenue Used,Benutztes Ertragskonto,0
+field,"product.template-customer-account.tax,product",0,Product Template,Artikelvorlage,0
+field,"product.template-customer-account.tax,rec_name",0,Name,Name,0
+field,"product.template-customer-account.tax,tax",0,Tax,Steuer,0
 field,"product.template,customer_taxes",0,Customer Taxes,Steuern (Kunden),0
 field,"product.template,customer_taxes_used",0,Customer Taxes Used,Benutzte Steuern für Kunden,0
+field,"product.template-supplier-account.tax,product",0,Product Template,Artikelvorlage,0
+field,"product.template-supplier-account.tax,rec_name",0,Name,Name,0
+field,"product.template-supplier-account.tax,tax",0,Tax,Steuer,0
 field,"product.template,supplier_taxes",0,Supplier Taxes,Steuern (Lieferanten),0
 field,"product.template,supplier_taxes_used",0,Customer Taxes Used,Benutzte Steuern für Lieferanten,0
-field,"product.template,taxes_category",0,Use Category's Taxes,Wende die Steuern der Kategorie an,0
+field,"product.template,taxes_category",0,Use Category's Taxes,Steuern der Kategorie anwenden,0
+help,"product.template,account_category",0,Use the accounts defined on the category,"Wendet die Konten an, die in der Artikelkategorie definiert sind",0
 help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
 help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
-help,"product.template,taxes_category",0,Use the taxes defined on the category,"Wendet die Steuern an, die in dieser Kategorie definiert sind",0
+help,"product.template,taxes_category",0,Use the taxes defined on the category,"Wendet die Steuern an, die in der Artikelkategorie definiert sind",0
+model,"product.category-customer-account.tax,name",0,product.category-customer-account.tax,product.category-customer-account.tax,0
+model,"product.category-supplier-account.tax,name",0,product.category-supplier-account.tax,product.category-supplier-account.tax,0
+model,"product.template-customer-account.tax,name",0,product.template-customer-account.tax,product.template-customer-account.tax,0
+model,"product.template-supplier-account.tax,name",0,product.template-supplier-account.tax,product.template-supplier-account.tax,0
 view,product.category,0,Accounting,Buchhaltung,0
 view,product.category,0,Taxes,Steuern,0
 view,product.product,0,Accounting,Buchhaltung,0
 view,product.product,0,Taxes,Steuern,0
 view,product.template,0,Accounting,Buchhaltung,0
+view,product.template,0,Accounts,Konten,0
+view,product.template,0,Taxes,Steuern,0
