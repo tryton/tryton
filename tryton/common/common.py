@@ -185,7 +185,7 @@ def selection(title, values, parent, alwaysask=False):
             (model, i) = sel
             if i:
                 index = model.get_value(i, 1)
-                value = values.keys()[index]
+                value = keys[index]
                 res = (value, values[value])
     parent.present()
     dialog.destroy()
