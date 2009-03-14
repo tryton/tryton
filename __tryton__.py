@@ -2,11 +2,14 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Invoice History',
+    'name_de_DE': 'Fakturierung Historisierung',
     'version': '1.1.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add historization for Invoice fields.
+''',
+    'description_de_DE': '''Fügt Historisierung zu den Rechnungsfeldern hinzu
 ''',
     'depends': [
         'account_invoice',
