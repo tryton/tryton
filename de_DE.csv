@@ -23,6 +23,9 @@ field,"company.employee,rec_name",0,Name,Name,0
 field,"company.employee,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"company.employee,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"ir.cron,companies",0,Companies,Unternehmen,0
+field,"ir.cron-company.company,company",0,Company,Unternehmen,0
+field,"ir.cron-company.company,cron",0,Cron,Cron,0
+field,"ir.cron-company.company,rec_name",0,Name,Name,0
 field,"ir.property,company",0,Company,Unternehmen,0
 field,"ir.sequence,company",0,Company,Unternehmen,0
 field,"ir.sequence.strict,company",0,Company,Unternehmen,0
@@ -37,6 +40,7 @@ model,"ir.action,name",act_company_tree,Companies,Unternehmen,0
 model,"ir.action,name",act_company_form,Companies,Unternehmen,0
 model,"ir.action,name",act_employee_form,Employees,Mitarbeiter,0
 model,"ir.action,name",report_letter,_Letter,_Brief,0
+model,"ir.cron-company.company,name",0,ir.cron-company.company,ir.cron-company.company,0
 model,"ir.ui.menu,name",menu_company_tree,Companies,Unternehmen,0
 model,"ir.ui.menu,name",menu_company_form,Edit Companies,Unternehmen bearbeiten,0
 model,"ir.ui.menu,name",menu_employee_form,Employees,Mitarbeiter,0
