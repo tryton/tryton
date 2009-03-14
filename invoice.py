@@ -1192,11 +1192,11 @@ class InvoiceLine(ModelSQL, ModelView):
             ('type_account',
                 'CHECK((type = \'line\' AND account IS NOT NULL) ' \
                         'OR (type != \'line\'))',
-                'Line type must have an account!'),
+                'Line with "line" type must have an account!'),
             ('type_invoice',
                 'CHECK((type != \'line\' AND invoice IS NOT NULL) ' \
                         'OR (type = \'line\'))',
-                'Non line type must have an invoice!'),
+                'Line without "line" type must have an invoice!'),
         ]
         self._constraints += [
             ('check_account', 'account_different_company'),
