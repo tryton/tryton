@@ -12,8 +12,17 @@ field,"purchase.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,
 field,"purchase.handle.invoice.exception.ask,recreate_invoices",0,Recreate Invoices,Rechnungen nachbilden,0
 field,"purchase.handle.packing.exception.ask,domain_moves",0,Domain Moves,Domain Bewegungen,0
 field,"purchase.handle.packing.exception.ask,recreate_moves",0,Recreate Moves,Bewegungen nachbilden,0
+field,"purchase.line-account.invoice.line,invoice_line",0,Invoice Line,Rechnungsposition,0
+field,"purchase.line-account.invoice.line,purchase_line",0,Purchase Line,Position Einkauf,0
+field,"purchase.line-account.invoice.line,rec_name",0,Name,Name,0
+field,"purchase.line-account.tax,line",0,Purchase Line,Position Einkauf,0
+field,"purchase.line-account.tax,rec_name",0,Name,Name,0
+field,"purchase.line-account.tax,tax",0,Tax,Steuer,0
 field,"purchase.line,amount",0,Amount,Betrag,0
 field,"purchase.line,description",0,Description,Bezeichnung,0
+field,"purchase.line-ignored-stock.move,move",0,Move,Bewegung,0
+field,"purchase.line-ignored-stock.move,purchase_line",0,Purchase Line,Position Einkauf,0
+field,"purchase.line-ignored-stock.move,rec_name",0,Name,Name,0
 field,"purchase.line,invoice_lines",0,Invoice Lines,Rechnungspositionen,0
 field,"purchase.line,move_done",0,Moves Done,Bewegungen erledigt,0
 field,"purchase.line,move_exception",0,Moves Exception,Bewegungsvorbehalt,0
@@ -25,6 +34,9 @@ field,"purchase.line,product",0,Product,Artikel,0
 field,"purchase.line,purchase",0,Purchase,Einkauf,0
 field,"purchase.line,quantity",0,Quantity,Anzahl,0
 field,"purchase.line,rec_name",0,Name,Name,0
+field,"purchase.line-recreated-stock.move,move",0,Move,Bewegung,0
+field,"purchase.line-recreated-stock.move,purchase_line",0,Purchase Line,Position Einkauf,0
+field,"purchase.line-recreated-stock.move,rec_name",0,Name,Name,0
 field,"purchase.line,sequence",0,Sequence,Sequenz,0
 field,"purchase.line,taxes",0,Taxes,Steuern,0
 field,"purchase.line,type",0,Type,Typ,0
@@ -44,11 +56,17 @@ field,"purchase.product_supplier.price,unit_price",0,Unit Price,Einzelpreis,0
 field,"purchase.product_supplier,product",0,Product,Artikel,0
 field,"purchase.product_supplier,rec_name",0,Name,Name,0
 field,"purchase.product_supplier,sequence",0,Sequence,Sequenz,0
+field,"purchase.purchase-account.invoice,invoice",0,Invoice,Rechnung,0
+field,"purchase.purchase-account.invoice,purchase",0,Purchase,Einkauf,0
+field,"purchase.purchase-account.invoice,rec_name",0,Name,Name,0
 field,"purchase.purchase,comment",0,Comment,Kommentar,0
 field,"purchase.purchase,company",0,Company,Unternehmen,0
 field,"purchase.purchase,currency",0,Currency,Währung,0
 field,"purchase.purchase,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"purchase.purchase,description",0,Description,Beschreibung,0
+field,"purchase.purchase-ignored-account.invoice,invoice",0,Invoice,Rechnung,0
+field,"purchase.purchase-ignored-account.invoice,purchase",0,Purchase,Einkauf,0
+field,"purchase.purchase-ignored-account.invoice,rec_name",0,Name,Name,0
 field,"purchase.purchase,invoice_address",0,Invoice Address,Rechnungsadresse,0
 field,"purchase.purchase,invoice_exception",0,Invoices Exception,Rechnungsvorbehalt,0
 field,"purchase.purchase,invoice_method",0,Invoice Method,Rechnungsstellung,0
@@ -68,6 +86,9 @@ field,"purchase.purchase,party_lang",0,Party Language,Sprache Partei,0
 field,"purchase.purchase,payment_term",0,Payment Term,Zahlungsbedingung,0
 field,"purchase.purchase,purchase_date",0,Purchase Date,Kaufdatum,0
 field,"purchase.purchase,rec_name",0,Name,Name,0
+field,"purchase.purchase-recreated-account.invoice,invoice",0,Invoice,Rechnung,0
+field,"purchase.purchase-recreated-account.invoice,purchase",0,Purchase,Einkauf,0
+field,"purchase.purchase-recreated-account.invoice,rec_name",0,Name,Name,0
 field,"purchase.purchase,reference",0,Reference,Referenz,0
 field,"purchase.purchase,state",0,State,Status,0
 field,"purchase.purchase,supplier_reference",0,Supplier Reference,Rechnungsnr. Lieferant,0
@@ -99,6 +120,7 @@ model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Angebo
 model,"ir.action,name",act_open_supplier,Suppliers,Lieferanten,0
 model,"ir.sequence,name",sequence_purchase,Purchase,Einkauf,0
 model,"ir.sequence.type,name",sequence_type_purchase,Purchase,Einkauf,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Aufträge (Einkäufe),0
 model,"ir.ui.menu,name",menu_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
 model,"ir.ui.menu,name",menu_purchase_form_new,New Purchase,Neuer Einkauf,0
@@ -109,11 +131,19 @@ model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
 model,"ir.ui.menu,name",menu_supplier,Suppliers,Lieferanten,0
 model,"purchase.handle.invoice.exception.ask,name",0,Invoice Exception Ask,Nachfrage Rechnungsvorbehalt,0
 model,"purchase.handle.packing.exception.ask,name",0,Packing Exception Ask,Nachfrage Liefervorbehalt,0
+model,"purchase.line-account.invoice.line,name",0,purchase.line-account.invoice.line,purchase.line-account.invoice.line,0
+model,"purchase.line-account.tax,name",0,purchase.line-account.tax,purchase.line-account.tax,0
+model,"purchase.line-ignored-stock.move,name",0,purchase.line-ignored-stock.move,purchase.line-ignored-stock.move,0
 model,"purchase.line,name",0,Purchase Line,Verkauf Position,0
+model,"purchase.line-recreated-stock.move,name",0,purchase.line-recreated-stock.move,purchase.line-recreated-stock.move,0
 model,"purchase.product_supplier,name",0,Product Supplier,Artikel Lieferant,0
 model,"purchase.product_supplier.price,name",0,Product Supplier Price,Artikel Einkaufspreis,0
+model,"purchase.purchase-account.invoice,name",0,purchase.purchase-account.invoice,purchase.purchase-account.invoice,0
+model,"purchase.purchase-ignored-account.invoice,name",0,purchase.purchase-ignored-account.invoice,purchase.purchase-ignored-account.invoice,0
 model,"purchase.purchase,name",0,Purchase,Verkauf,0
+model,"purchase.purchase-recreated-account.invoice,name",0,purchase.purchase-recreated-account.invoice,purchase.purchase-recreated-account.invoice,0
 model,"res.group,name",group_purchase,Purchase,Einkauf,0
+model,"res.group,name",group_purchase_admin,Purchase Administrator,Administration Einkauf,0
 model,"workflow.activity,name",purchase_activity_cancel,Cancel,Annullieren,0
 model,"workflow.activity,name",purchase_activity_confirmed,Confirmed,Beauftragt,0
 model,"workflow.activity,name",purchase_activity_done,Done,Erledigt,0
