@@ -41,6 +41,9 @@ field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Seque
 field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
 field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Rechnungen Kunden,0
 field,"account.invoice,account",0,Account,Konto,0
+field,"account.invoice-account.move.line,invoice",0,Invoice,Rechnung,0
+field,"account.invoice-account.move.line,line",0,Payment Line,Zahlungsposition,0
+field,"account.invoice-account.move.line,rec_name",0,Name,Name,0
 field,"account.invoice,amount_to_pay",0,Amount to Pay,Zahlbarer Betrag,0
 field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Zahlbarer Betrag (heute),0
 field,"account.invoice,comment",0,Comment,Kommentar,0
@@ -54,6 +57,9 @@ field,"account.invoice,invoice_report",0,Invoice Report,Rechnungsbericht,0
 field,"account.invoice,invoice_report_format",0,Invoice Report Format,Format Rechnungsbericht,0
 field,"account.invoice,journal",0,Journal,Journal,0
 field,"account.invoice.line,account",0,Account,Konto,0
+field,"account.invoice.line-account.tax,line",0,Invoice Line,Rechnungsposition,0
+field,"account.invoice.line-account.tax,rec_name",0,Name,Name,0
+field,"account.invoice.line-account.tax,tax",0,Tax,Steuer,0
 field,"account.invoice.line,amount",0,Amount,Betrag,0
 field,"account.invoice.line,company",0,Company,Unternehmen,0
 field,"account.invoice.line,currency",0,Currency,Währung,0
@@ -153,7 +159,9 @@ field,"party.party,payment_term",0,Invoice Payment Term,Zahlungsbedingung Verkau
 field,"party.party,supplier_payment_term",0,Supplier Payment Term,Zahlungsbedingung Einkauf,0
 help,"account.invoice.payment_term.line,percentage",0,In %,Eingabe in %,0
 help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Ordnet Positionen in aufsteigender Reihenfolge,0
+model,"account.invoice-account.move.line,name",0,account.invoice-account.move.line,account.invoice-account.move.line,0
 model,"account.invoice.credit_invoice.init,name",0,Credit Invoice Init,Gutschrift Init,0
+model,"account.invoice.line-account.tax,name",0,account.invoice.line-account.tax,account.invoice.line-account.tax,0
 model,"account.invoice.line,name",0,Invoice Line,Rechnungsposition,0
 model,"account.invoice,name",0,Invoice,Rechnung,0
 model,"account.invoice.pay_invoice.ask,name",0,Pay Invoice Ask,Zahlung Rechnung Nachfrage,0
@@ -202,7 +210,7 @@ model,"ir.ui.menu,name",menu_invoice_out_credit_note_form3,Draft Credit Notes,En
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form3,Draft Invoices,Entwürfe Kundenrechnungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Entwürfe Lieferantengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form3,Draft Supplier Invoices,Entwürfe Lieferantenrechnungen,0
-model,"ir.ui.menu,name",menu_invoices_configuration,Invoices,Rechnungen,0
+model,"ir.ui.menu,name",,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoices,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Neue Gutschrift an Kunden,0
@@ -214,6 +222,7 @@ model,"ir.ui.menu,name",menu_invoice_out_invoice_form5,Opened Invoices,Fakturier
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Fakturierte Lieferantengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form5,Opened Supplier Invoices,Fakturierte Lieferantenrechnungen,0
 model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Zahlungsbedingungen,0
+model,"ir.ui.menu,name",menu_payment_terms_configuration,Payment Terms,Zahlungsbedingungen,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro Forma Kundengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form4,Pro Forma Invoices,Pro Forma Kundenrechnungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Pro Forma Lieferantengutschriften,0
