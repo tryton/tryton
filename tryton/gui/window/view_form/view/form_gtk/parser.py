@@ -468,7 +468,7 @@ class ParserForm(ParserInterface):
                 notebook.set_border_width(3)
                 container.wid_add(notebook, colspan=attrs.get('colspan', 4),
                         expand=True, fill=True)
-                widget, widgets, buttons, on_write, notebook_list2, cursor_widget2 = \
+                widget, widgets, buttons, spam, notebook_list2, cursor_widget2 = \
                         self.parse(model, node, fields, notebook,
                                 tooltips=tooltips)
                 max_width, max_height = -1, -1
@@ -508,7 +508,7 @@ class ParserForm(ParserInterface):
                 label = gtk.Label(text)
                 label.set_angle(angle)
                 label.set_use_underline(True)
-                widget, widgets, buttons, on_write, notebook_list2, cursor_widget2 = \
+                widget, widgets, buttons, spam, notebook_list2, cursor_widget2 = \
                         self.parse(model, node, fields, notebook,
                                 tooltips=tooltips)
                 if not cursor_widget:
@@ -581,7 +581,7 @@ class ParserForm(ParserInterface):
                         xexpand=xexpand, xfill=xfill)
 
             elif node.localName == 'group':
-                widget, widgets, buttons, on_write, notebook_list2, cursor_widget2 = \
+                widget, widgets, buttons, spam, notebook_list2, cursor_widget2 = \
                         self.parse(model, node, fields, tooltips=tooltips)
                 if not cursor_widget:
                     cursor_widget = cursor_widget2
@@ -612,7 +612,7 @@ class ParserForm(ParserInterface):
                 hpaned = gtk.HPaned()
                 container.wid_add(hpaned, colspan=int(attrs.get('colspan', 4)),
                         expand=True, fill=True)
-                widget, widgets, buttons, on_write, notebook_list2, cursor_widget2 = \
+                widget, widgets, buttons, spam, notebook_list2, cursor_widget2 = \
                         self.parse(model, node, fields, paned=hpaned,
                                 tooltips=tooltips)
                 if not cursor_widget:
@@ -628,7 +628,7 @@ class ParserForm(ParserInterface):
                 vpaned = gtk.VPaned()
                 container.wid_add(vpaned, colspan=int(attrs.get('colspan', 4)),
                         expand=True, fill=True)
-                widget, widgets, buttons, on_write, notebook_list, cursor_widget2 = \
+                widget, widgets, buttons, spam, notebook_list, cursor_widget2 = \
                         self.parse(model, node, fields, paned=vpaned,
                                 tooltips=tooltips)
                 if not cursor_widget:
@@ -641,7 +641,7 @@ class ParserForm(ParserInterface):
                 if 'position' in attrs:
                     vpaned.set_position(int(attrs['position']))
             elif node.localName == 'child1':
-                widget, widgets, buttons, on_write, notebook_list2, cursor_widget2 = \
+                widget, widgets, buttons, spam, notebook_list2, cursor_widget2 = \
                         self.parse(model, node, fields, paned=paned,
                                 tooltips=tooltips)
                 if not cursor_widget:
@@ -653,7 +653,7 @@ class ParserForm(ParserInterface):
                     dict_widget[widget_name].extend(widgets)
                 paned.pack1(widget, resize=True, shrink=True)
             elif node.localName == 'child2':
-                widget, widgets, buttons, on_write, notebook_list, cursor_widget2 = \
+                widget, widgets, buttons, spam, notebook_list, cursor_widget2 = \
                         self.parse(model, node, fields, paned=paned,
                                 tooltips=tooltips)
                 if not cursor_widget:
