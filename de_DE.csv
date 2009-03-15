@@ -20,8 +20,8 @@ error,account.invoice,0,"You can not modify invoice that is open, paid or cancel
 error,account.invoice,0,You can not reset to draft an invoice that have move!,"Rechnungen die bereits gebucht sind, können nicht auf Vorlage zurückgesetzt werden!",0
 error,account.invoice,0,"You can not use the same account
 than on invoice line account!",Es darf nicht das selbe Konto benutzt werden wie in den Rechnungspositionen,0
-error,account.invoice.line,0,Line type must have an account!,Typ der Position muss einem Konto zugeordnet werden!,0
-error,account.invoice.line,0,Non line type must have an invoice!,Eine Position von einem anderen Typ als Position muss einer Rechnung zugeordnet sein!,0
+error,account.invoice.line,0,"Line with ""line"" type must have an account!","Eine Zeile vom Typ ""Position"" muss einem Konto zugeordnet sein!",0
+error,account.invoice.line,0,"Line without ""line"" type must have an invoice!","Eine Zeile, die nicht vom Typ ""Position"" ist, muss einer Rechnung zugeordnet sein!",0
 error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert kann keine neue Position hinzugefügt werden!",0
 error,account.invoice.line,0,"You can not create invoice line
 with account from a different invoice company!",Rechnungszeile kann nicht erstellt werden: das Konto ist einer anderen rechnungsstellenden Firma zugeordnet,0
