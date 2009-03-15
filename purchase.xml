@@ -194,7 +194,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Handle packing Exception" col="1">
-                    <separator string="Choose move to recreate"
+                    <separator string="Choose moves to recreate"
                                id="choose"/>
                     <field name="recreate_moves">
                         <tree string="Recreated Moves" fill="1">
