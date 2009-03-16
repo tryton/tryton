@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelWorkflow, ModelSQL, fields
 from trytond.wizard import Wizard
 import datetime
 
@@ -9,7 +9,7 @@ STATES = {
 }
 
 
-class Forecast(ModelSQL, ModelView):
+class Forecast(ModelWorkflow, ModelSQL, ModelView):
     "Stock Forecast"
     _name = "stock.forecast"
     _description = __doc__
