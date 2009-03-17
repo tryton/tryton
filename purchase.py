@@ -724,6 +724,7 @@ class PurchaseInvoice(ModelSQL):
     'Purchase - Invoice'
     _name = 'purchase.purchase-account.invoice'
     _table = 'purchase_invoices_rel'
+    _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=1, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
@@ -736,6 +737,7 @@ class PuchaseIgnoredInvoice(ModelSQL):
     'Purchase - Ignored Invoice'
     _name = 'purchase.purchase-ignored-account.invoice'
     _table = 'purchase_invoice_ignored_rel'
+    _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=1, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
@@ -748,6 +750,7 @@ class PurchaseRecreadtedInvoice(ModelSQL):
     'Purchase - Recreated Invoice'
     _name = 'purchase.purchase-recreated-account.invoice'
     _table = 'purchase_invoice_recreated_rel'
+    _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=1, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
@@ -1178,6 +1181,7 @@ class PurchaseLineTax(ModelSQL):
     'Purchase Line - Tax'
     _name = 'purchase.line-account.tax'
     _table = 'purchase_line_account_tax'
+    _description = __doc__
     line = fields.Many2One('purchase.line', 'Purchase Line',
             ondelete='CASCADE', select=1, required=True,
             domain=[('type', '=', 'line')])
@@ -1191,6 +1195,7 @@ class PurchaseLineInvoiceLine(ModelSQL):
     'Purchase Line - Invoice Line'
     _name = 'purchase.line-account.invoice.line'
     _table = 'purchase_line_invoice_lines_rel'
+    _description = __doc__
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
             ondelete='CASCADE', select=1, required=True)
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
@@ -1203,6 +1208,7 @@ class PurchaseLineIgnoredMove(ModelSQL):
     'Purchase Line - Ignored Move'
     _name = 'purchase.line-ignored-stock.move'
     _table = 'purchase_line_moves_ignored_rel'
+    _description = __doc__
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
             ondelete='CASCADE', select=1, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
@@ -1215,6 +1221,7 @@ class PurchaseLineRecreatedMove(ModelSQL):
     'Purchase Line - Ignored Move'
     _name = 'purchase.line-recreated-stock.move'
     _table = 'purchase_line_moves_recreated_rel'
+    _description = __doc__
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
             ondelete='CASCADE', select=1, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
