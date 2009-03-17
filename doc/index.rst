@@ -223,7 +223,7 @@ Inventory
 *********
 
 Inventories allow to control and update stock levels. They are mainly
-composed of two locations ( a Storage location and a Lost And Found
+composed of two locations (a Storage location and a Lost And Found
 location), and a list of inventory lines. A button allow to
 auto-complete inventory lines with respect to the expected quantities
 for each product in the location. Inventory lines consist of: a
