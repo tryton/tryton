@@ -16,5 +16,6 @@
         "purchase.xml",
     ],
     'translation': [
+        'fr_FR.csv',
     ],
 }
