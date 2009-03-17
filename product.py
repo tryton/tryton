@@ -30,6 +30,7 @@ class CategoryCustomerTax(ModelSQL):
     'Category - Customer Tax'
     _name = 'product.category-customer-account.tax'
     _table = 'product_category_customer_taxes_rel'
+    _description = __doc__
     product = fields.Many2One('product.category', 'Category',
             ondelete='CASCADE', select=1, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
@@ -42,6 +43,7 @@ class CategorySupplierTax(ModelSQL):
     'Category - Supplier Tax'
     _name = 'product.category-supplier-account.tax'
     _table = 'product_category_supplier_taxes_rel'
+    _description = __doc__
     product = fields.Many2One('product.category', 'Category',
             ondelete='CASCADE', select=1, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
@@ -135,6 +137,7 @@ class TemplateCustomerTax(ModelSQL):
     'Product Template - Customer Tax'
     _name = 'product.template-customer-account.tax'
     _table = 'product_customer_taxes_rel'
+    _description = __doc__
     product = fields.Many2One('product.template', 'Product Template',
             ondelete='CASCADE', select=1, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
@@ -147,6 +150,7 @@ class TemplateSupplierTax(ModelSQL):
     'Product Template - Supplier Tax'
     _name = 'product.template-supplier-account.tax'
     _table = 'product_supplier_taxes_rel'
+    _description = __doc__
     product = fields.Many2One('product.template', 'Product Template',
             ondelete='CASCADE', select=1, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
