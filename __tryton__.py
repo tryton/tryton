@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     "name" : "Account Invoice Line Standalone",
-    "version" : "0.0.1",
+    "version" : "1.1.0",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
