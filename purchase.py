@@ -6,7 +6,6 @@ import datetime
 
 class ProductSupplier(ModelSQL, ModelView):
     _name = 'purchase.product_supplier'
-
     weekdays = fields.One2Many('purchase.product_supplier.day', 'product_supplier',
             'Week Days')
 
@@ -56,8 +55,10 @@ ProductSupplier()
 
 
 class ProductSupplierDay(ModelSQL, ModelView):
+    'Product Supplier Day'
     _name = 'purchase.product_supplier.day'
     _rec_name = 'weekday'
+    _description = __doc__
 
     product_supplier = fields.Many2One('purchase.product_supplier', 'Supplier',
             required=True)
