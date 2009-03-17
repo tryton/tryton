@@ -1217,7 +1217,7 @@ class InvoiceLine(ModelSQL, ModelView):
 
     def init(self, cursor, module_name):
         super(InvoiceLine, self).init(cursor, module_name)
-        table = TableHandler(cursor, self._table, self._name, module_name)
+        table = TableHandler(cursor, self, module_name)
 
         # Migration from 1.0 invoice is no more required
         table.not_null_action('invoice', action='remove')
