@@ -294,6 +294,7 @@ class ForecastLineMove(ModelSQL):
     'ForecastLine - Move'
     _name = 'stock.forecast.line-stock.move'
     _table = 'forecast_line_stock_move_rel'
+    _description = __doc__
     line = fields.Many2One('stock.forecast.line', 'Forecast Line',
             ondelete='CASCADE', select=1, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='CASCADE',
@@ -303,8 +304,9 @@ ForecastLineMove()
 
 
 class ForecastCompleteAsk(ModelView):
+    'Forecast Complete Ask'
     _name = 'stock.forecast.complete.ask'
-
+    _description = __doc__
     from_date = fields.Date('From Date', required=True)
     to_date = fields.Date('To Date', required=True)
 
@@ -312,8 +314,9 @@ ForecastCompleteAsk()
 
 
 class ForecastCompleteChoose(ModelView):
+    'Forecast Complete Choose'
     _name = 'stock.forecast.complete.choose'
-
+    _description = __doc__
     products = fields.Many2Many('product.product', None, None, 'Products')
 
 ForecastCompleteChoose()
