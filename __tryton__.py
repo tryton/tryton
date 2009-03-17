@@ -15,5 +15,6 @@
         "invoice.xml",
     ],
     'translation': [
+        'fr_FR.csv',
     ],
 }
