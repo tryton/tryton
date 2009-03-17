@@ -3,11 +3,13 @@ error,country.country,0,The code of the country must be unique!,Le code du pays 
 error,country.country,0,The name of the country must be unique!,Le nom du pays doit être unique!,0
 field,"country.country,code",0,Code,Code,0
 field,"country.country,name",0,Name,Nom,0
-field,"country.country,subdivisions",0,Subdivisions,,0
+field,"country.country,rec_name",0,Name,Nom,0
+field,"country.country,subdivisions",0,Subdivisions,Subdivisions,0
 field,"country.subdivision,code",0,Code,Code,0
 field,"country.subdivision,country",0,Country,Pays,0
 field,"country.subdivision,name",0,Name,Nom,0
 field,"country.subdivision,parent",0,Parent,Parent,0
+field,"country.subdivision,rec_name",0,Name,Nom,0
 field,"country.subdivision,type",0,Type,Type,0
 help,"country.country,code",0,"The ISO country code in two chars.
 You can use this field for quick search.","Le code ISO du pays sur 2 caractères.
@@ -260,7 +262,7 @@ model,"country.country,name",eh,Western Sahara,Sahara occidental,0
 model,"country.country,name",ye,Yemen,Yémen,0
 model,"country.country,name",zm,Zambia,Zambie,0
 model,"country.country,name",zw,Zimbabwe,Zimbabwe,0
-model,"country.subdivision,name",0,Subdivision,,0
+model,"country.subdivision,name",0,Subdivision,Subdivision,0
 model,"ir.action,name",act_country_form,Countries,Pays,0
 model,"ir.ui.menu,name",menu_country_form,Countries,Pays,0
 selection,"country.subdivision,type",0,Administration,Administration,0
@@ -347,5 +349,5 @@ view,country.country,0,Countries,Pays,0
 view,country.country,0,Country,Pays,0
 view,country.country,0,State,État,0
 view,country.country,0,States,États,0
-view,country.country,0,Subdivision,,0
-view,country.country,0,Subdivisions,,0
+view,country.country,0,Subdivision,Subdivision,0
+view,country.country,0,Subdivisions,Subdivisions,0
