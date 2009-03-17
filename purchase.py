@@ -76,8 +76,14 @@ class PurchaseLine(ModelSQL, ModelView):
             int_id = True
             ids = [ids]
 
+        if fields_names:
+            fields_names2 = [x for x in fields_names
+                    if not x.startswith('analytic_account_')]
+        else:
+            fields_names2 = fields_names
+
         res = super(PurchaseLine, self).read(cursor, user, ids,
-                fields_names=fields_names, context=context)
+                fields_names=fields_names2, context=context)
 
         if not fields_names:
             fields_names = list(set(self._columns.keys() \
@@ -85,7 +91,7 @@ class PurchaseLine(ModelSQL, ModelView):
 
         root_ids = []
         for field in fields_names:
-            if field.startswith('analytic_account_'):
+            if field.startswith('analytic_account_') and '.' not in field:
                 root_ids.append(int(field[len('analytic_account_'):]))
         if root_ids:
             id2record = {}
@@ -99,6 +105,11 @@ class PurchaseLine(ModelSQL, ModelView):
                     if account.root.id in root_ids:
                         id2record[line.id]['analytic_account_' \
                                 + str(account.root.id)] = account.id
+                        for field in fields_names:
+                            if field.startswith('analytic_account_' + \
+                                    str(account.root.id) + '.'):
+                                ham, field2 = field.split('.', 1)
+                                id2record[line.id][field] = account[field2]
         if int_id:
             return res[0]
         return res
