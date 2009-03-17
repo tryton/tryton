@@ -8,9 +8,9 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add FIFO cost method on the product form.
-Once installed, the price of the stock moves from/to a
-supplier/customer will update automatically the cost price of the
-related product (if the cost price method is FIFO)
+Once installed, the price of the stock moves from a supplier or to a
+customer will update automatically the cost price of the related
+product (if the cost price method is FIFO)
 ''',
     'description_fr_FR':'''Ajoute 'FIFO' parmi les méthodes de coût du produit.
 Une fois le module installé, le prix de chaque mouvement de stock
