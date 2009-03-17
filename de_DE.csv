@@ -131,17 +131,17 @@ model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
 model,"ir.ui.menu,name",menu_supplier,Suppliers,Lieferanten,0
 model,"purchase.handle.invoice.exception.ask,name",0,Invoice Exception Ask,Nachfrage Rechnungsvorbehalt,0
 model,"purchase.handle.packing.exception.ask,name",0,Packing Exception Ask,Nachfrage Liefervorbehalt,0
-model,"purchase.line-account.invoice.line,name",0,purchase.line-account.invoice.line,purchase.line-account.invoice.line,0
-model,"purchase.line-account.tax,name",0,purchase.line-account.tax,purchase.line-account.tax,0
-model,"purchase.line-ignored-stock.move,name",0,purchase.line-ignored-stock.move,purchase.line-ignored-stock.move,0
+model,"purchase.line-account.invoice.line,name",0,Purchase Line - Invoice Line,Position Einkauf - Rechnungszeile,0
+model,"purchase.line-account.tax,name",0,Purchase Line - Tax,Position Einkauf - Steuer,0
+model,"purchase.line-ignored-stock.move,name",0,Purchase Line - Ignored Move,Position Einkauf - Bewegung Ignoriert,0
 model,"purchase.line,name",0,Purchase Line,Verkauf Position,0
-model,"purchase.line-recreated-stock.move,name",0,purchase.line-recreated-stock.move,purchase.line-recreated-stock.move,0
+model,"purchase.line-recreated-stock.move,name",0,Purchase Line - Ignored Move,Position Einkauf - Bewegung Nachgebildet,0
 model,"purchase.product_supplier,name",0,Product Supplier,Artikel Lieferant,0
 model,"purchase.product_supplier.price,name",0,Product Supplier Price,Artikel Einkaufspreis,0
-model,"purchase.purchase-account.invoice,name",0,purchase.purchase-account.invoice,purchase.purchase-account.invoice,0
-model,"purchase.purchase-ignored-account.invoice,name",0,purchase.purchase-ignored-account.invoice,purchase.purchase-ignored-account.invoice,0
+model,"purchase.purchase-account.invoice,name",0,Purchase - Invoice,Einkauf - Rechnung,0
+model,"purchase.purchase-ignored-account.invoice,name",0,Purchase - Ignored Invoice,Einkauf - Rechnung Ignoriert,0
 model,"purchase.purchase,name",0,Purchase,Verkauf,0
-model,"purchase.purchase-recreated-account.invoice,name",0,purchase.purchase-recreated-account.invoice,purchase.purchase-recreated-account.invoice,0
+model,"purchase.purchase-recreated-account.invoice,name",0,Purchase - Recreated Invoice,Einkauf - Rechnung Nachgebildet,0
 model,"res.group,name",group_purchase,Purchase,Einkauf,0
 model,"res.group,name",group_purchase_admin,Purchase Administrator,Administration Einkauf,0
 model,"workflow.activity,name",purchase_activity_cancel,Cancel,Annullieren,0
@@ -214,6 +214,7 @@ view,product.template,0,Suppliers,Lieferanten,0
 view,purchase.handle.invoice.exception.ask,0,Choose invoices to duplicate,Auswahl Rechnungen für Duplizierung,0
 view,purchase.handle.invoice.exception.ask,0,Choose invoices to recreate,Rechnungen zum Nachbilden auswählen,0
 view,purchase.handle.invoice.exception.ask,0,Handle Invoice Exception,Rechnungsvorbehalt bearbeiten,0
+view,purchase.handle.packing.exception.ask,0,Choose moves to recreate,Auswahl Bewegungen zur Nachbildung,0
 view,purchase.handle.packing.exception.ask,0,Choose move to duplicate,Auswahl Bewegungen für Duplizierung,0
 view,purchase.handle.packing.exception.ask,0,Choose move to recreate,Bewegungen zum Nachbilden auswählen,0
 view,purchase.handle.packing.exception.ask,0,Duplicate Moves,Bewegungen duplizieren,0
