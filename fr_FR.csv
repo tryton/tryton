@@ -4,24 +4,26 @@ error,currency.currency,0,No rate found for the currency: %s at the date: %s,Pas
 error,currency.currency.rate,0,A currency can only have one rate by date!,Une devise ne peut avoir qu'un seul taux par date,0
 field,"currency.currency,active",0,Active,Actif,0
 field,"currency.currency,code",0,Code,Code,0
-field,"currency.currency,digits",0,Diplay Digits,Décimale Affichée,0
+field,"currency.currency,digits",0,Diplay Digits,Décimale affichée,0
 field,"currency.currency,mon_decimal_point",0,Decimal Separator,Séparateur décimal,0
 field,"currency.currency,mon_grouping",0,Grouping,Groupement,0
 field,"currency.currency,mon_thousands_sep",0,Thousands Separator,Séparateur des centaines,0
 field,"currency.currency,name",0,Name,Nom,0
-field,"currency.currency,n_cs_precedes",0,Negative Sign Precedes,,0
+field,"currency.currency,n_cs_precedes",0,Negative Currency Symbol Precedes,,0
 field,"currency.currency,negative_sign",0,Negative Sign,,0
-field,"currency.currency,n_sep_by_space",0,Negative Sign Separate by Space,,0
+field,"currency.currency,n_sep_by_space",0,Negative Separate by Space,,0
 field,"currency.currency,n_sign_posn",0,Negative Sign Position,,0
-field,"currency.currency,p_cs_precedes",0,Positive Sign Precedes,,0
+field,"currency.currency,p_cs_precedes",0,Positive Currency Symbol Precedes,,0
 field,"currency.currency,positive_sign",0,Positive Sign,,0
-field,"currency.currency,p_sep_by_space",0,Positive Sign Separate by Space,,0
+field,"currency.currency,p_sep_by_space",0,Positive Separate by Space,,0
 field,"currency.currency,p_sign_posn",0,Positive Sign Position,,0
 field,"currency.currency,rate",0,Current rate,Taux Actuel,0
 field,"currency.currency.rate,currency",0,Currency,Devise,0
 field,"currency.currency.rate,date",0,Date,Date,0
 field,"currency.currency.rate,rate",0,Rate,Taux,0
+field,"currency.currency.rate,rec_name",0,Name,Nom,0
 field,"currency.currency,rates",0,Rates,Taux,0
+field,"currency.currency,rec_name",0,Name,Nom,0
 field,"currency.currency,rounding",0,Rounding factor,Facteur d'Arrondi,0
 field,"currency.currency,symbol",0,Symbol,Symbole,0
 model,"currency.currency,name",afn,Afghani,,0
