@@ -819,8 +819,10 @@ OpenCode()
 
 
 class AccountTemplateTaxTemplate(ModelSQL):
+    'Account Template - Tax Template'
     _name = 'account.account.template-account.tax.template'
     _table = 'account_account_template_tax_rel'
+    _description = __doc__
     account = fields.Many2One('account.account.template', 'Account Template',
             ondelete='CASCADE', select=1, required=True)
     tax = fields.Many2One('account.tax.template', 'Tax Template',

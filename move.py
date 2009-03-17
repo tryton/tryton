@@ -1661,9 +1661,11 @@ OpenReconcileLines()
 
 
 class FiscalYearLine(ModelSQL):
+    'Fiscal Year - Move Line'
     _name = 'account.fiscalyear-account.move.line'
     _table = 'account_fiscalyear_line_rel'
-    fiscalyear = fields.Many2One('account.fiscalyear', 'FiscalYear',
+    _description = __doc__
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             ondelete='CASCADE', select=1)
     line = fields.Many2One('account.move.line', 'Line', ondelete='RESTRICT',
             select=1, required=True)
