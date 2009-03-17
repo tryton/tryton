@@ -25,5 +25,6 @@ prix de revient du produit concerné (si la méthode de coût est FIFO).
     'xml': [
     ],
     'translation': [
+        'fr_FR.csv',
     ],
 }
