@@ -30,10 +30,10 @@ help,"product.template,account_category",0,Use the accounts defined on the categ
 help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
 help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
 help,"product.template,taxes_category",0,Use the taxes defined on the category,"Wendet die Steuern an, die in der Artikelkategorie definiert sind",0
-model,"product.category-customer-account.tax,name",0,product.category-customer-account.tax,product.category-customer-account.tax,0
-model,"product.category-supplier-account.tax,name",0,product.category-supplier-account.tax,product.category-supplier-account.tax,0
-model,"product.template-customer-account.tax,name",0,product.template-customer-account.tax,product.template-customer-account.tax,0
-model,"product.template-supplier-account.tax,name",0,product.template-supplier-account.tax,product.template-supplier-account.tax,0
+model,"product.category-customer-account.tax,name",0,Category - Customer Tax,Artikelkategorie - Steuer Kunde,0
+model,"product.category-supplier-account.tax,name",0,Category - Supplier Tax,Artikelkategorie - Steuer Lieferant,0
+model,"product.template-customer-account.tax,name",0,Product Template - Customer Tax,Artikelvorlage - Steuer Kunde,0
+model,"product.template-supplier-account.tax,name",0,Product Template - Supplier Tax,Artikelvorlage - Steuer Lieferant,0
 view,product.category,0,Accounting,Buchhaltung,0
 view,product.category,0,Taxes,Steuern,0
 view,product.product,0,Accounting,Buchhaltung,0
