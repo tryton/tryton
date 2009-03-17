@@ -22,5 +22,6 @@ Allow to generate future moves which will enable other process to anticipate the
         'forecast.xml',
     ],
     'translation': [
+        'fr_FR.csv',
     ],
 }
