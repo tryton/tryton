@@ -94,7 +94,7 @@ model,"party.address,name",0,Address,Adresse,0
 model,"party.category,name",0,Category,Kategorie,0
 model,"party.contact_mechanism,name",0,Contact Mechanism,Kontaktmöglichkeit,0
 model,"party.party,name",0,Party,Partei,0
-model,"party.party-party.category,name",0,party.party-party.category,party.party-party.category,0
+model,"party.party-party.category,name",0,Party - Category,Partei - Parteikategorie,0
 model,"res.group,name",group_party_admin,Party Administration,Administration Kontakte,0
 selection,"party.contact_mechanism,type",0,E-Mail,E-Mail,0
 selection,"party.contact_mechanism,type",0,Fax,Fax,0
