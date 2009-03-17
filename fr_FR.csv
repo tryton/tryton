@@ -7,24 +7,25 @@ error,party.party,0,Wrong VAT number!,Mauvais numéro de TVA !,0
 field,"party.address,active",0,Active,Actif,0
 field,"party.address,city",0,City,Ville,0
 field,"party.address,country",0,Country,Pays,0
-field,"party.address,full_address",0,unknown,,0
 field,"party.address,name",0,Name,Nom,0
 field,"party.address,party",0,Party,Tiers,0
+field,"party.address,rec_name",0,Name,Nom,0
 field,"party.address,sequence",0,Sequence,Séquence,0
-field,"party.address,state",0,State,État,0
 field,"party.address,street",0,Street,Rue,0
 field,"party.address,streetbis",0,Street (bis),Rue (bis),0
 field,"party.address,subdivision",0,Subdivision,Subdivision,0
 field,"party.address,zip",0,Zip,Code Postal,0
 field,"party.category,active",0,Active,Actif,0
 field,"party.category,childs",0,Childs,Enfants,0
-field,"party.category,complete_name",0,Name,Nom,0
 field,"party.category,name",0,Name,Nom,0
 field,"party.category,parent",0,Parent,Parent,0
+field,"party.category,rec_name",0,Name,Nom,0
 field,"party.contact_mechanism,active",0,Active,Actif,0
 field,"party.contact_mechanism,comment",0,Comment,Commentaire,0
 field,"party.contact_mechanism,email",0,E-Mail,E-mail,0
+field,"party.contact_mechanism,other_value",0,Value,Valeur,0
 field,"party.contact_mechanism,party",0,Party,Tiers,0
+field,"party.contact_mechanism,rec_name",0,Name,Nom,0
 field,"party.contact_mechanism,sequence",0,Sequence,Séquence,0
 field,"party.contact_mechanism,sip",0,SIP,SIP,0
 field,"party.contact_mechanism,skype",0,Skype,Skype,0
@@ -37,11 +38,17 @@ field,"party.party,categories",0,Categories,Catégories,0
 field,"party.party,code",0,Code,Code,0
 field,"party.party,code_length",0,Code Length,Longueur du code,0
 field,"party.party,contact_mechanisms",0,Contact Mechanisms,Moyens de contact,0
-field,"party.party,full_name",0,unknown,,0
+field,"party.party,email",0,E-Mail,E-Mail,0
+field,"party.party,fax",0,Fax,Fax,0
+field,"party.party,full_name",0,,,0
 field,"party.party,lang",0,Language,Langue,0
+field,"party.party,mobile",0,Mobile,Mobile,0
 field,"party.party,name",0,Name,Nom,0
-field,"party.party,type",0,Type,Type,0
-field,"party.party.type,name",0,Name,Nom,0
+field,"party.party-party.category,category",0,Category,Catégorie,0
+field,"party.party-party.category,party",0,Party,Tiers,0
+field,"party.party-party.category,rec_name",0,Name,Nom,0
+field,"party.party,phone",0,Phone,Téléphone,0
+field,"party.party,rec_name",0,Name,Nom,0
 field,"party.party,vat_code",0,VAT Code,Code TVA,0
 field,"party.party,vat_country",0,VAT Country,Code Pays TVA,0
 field,"party.party,vat_number",0,VAT Number,Numéro de TVA,0
@@ -57,6 +64,8 @@ model,"ir.action,name",report_label,La_bels,É_tiquettes,0
 model,"ir.action,name",act_party_form,Parties,Tiers,0
 model,"ir.action,name",act_party_form2,Parties,Tiers,0
 model,"ir.action,name",act_party_by_category,Parties by Category,Tiers par catégorie,0
+model,"ir.sequence,name",sequence_party,Party,Tiers,0
+model,"ir.sequence.type,name",sequence_type_party,Party,Tiers,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adresses,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Catégories,0
 model,"ir.ui.menu,name",menu_category_form,Edit Categories,Editer les Catégories,0
@@ -65,6 +74,12 @@ model,"ir.ui.menu,name",menu_category_form2,New category,Nouvelle catégorie,0
 model,"ir.ui.menu,name",menu_party_form2,New Party,Nouveau tiers,0
 model,"ir.ui.menu,name",menu_party_form,Parties,Tiers,0
 model,"ir.ui.menu,name",menu_party,Party Management,Gestion des relations,0
+model,"party.address,name",0,Address,Adresse,0
+model,"party.category,name",0,Category,Catégorie,0
+model,"party.contact_mechanism,name",0,Contact Mechanism,Moyen de contact,0
+model,"party.party,name",0,Party,Tiers,0
+model,"party.party-party.category,name",0,Party - Category,Party - Catégorie,0
+model,"res.group,name",group_party_admin,Party Administration,Administration de tiers,0
 selection,"party.contact_mechanism,type",0,E-Mail,E-Mail,0
 selection,"party.contact_mechanism,type",0,Fax,Fax,0
 selection,"party.contact_mechanism,type",0,IRC,IRC,0
@@ -91,6 +106,4 @@ view,party.party,0,_General,_Général,0
 view,party.party,0,Parties,Tiers,0
 view,party.party,0,Party,Tiers,0
 view,party.party,0,Properties,Propriétés,0
-view,party.party,0,VAT,,0
-view,party.party.type,0,Party Type,Type de Tiers,0
-view,party.party.type,0,Party Types,Types de Tiers,0
+view,party.party,0,VAT,TVA,0
