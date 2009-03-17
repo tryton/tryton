@@ -157,7 +157,7 @@ field,"account.account.type.template,name",0,Name,Name,0
 field,"account.account.type.template,parent",0,Parent,Übergeordnet (Kontovorlagentyp),0
 field,"account.account.type.template,rec_name",0,Name,Name,0
 field,"account.account.type.template,sequence",0,Sequence,Sequenz,0
-field,"account.fiscalyear-account.move.line,fiscalyear",0,FiscalYear,Geschäftsjahr,0
+field,"account.fiscalyear-account.move.line,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
 field,"account.fiscalyear-account.move.line,line",0,Line,Position,0
 field,"account.fiscalyear-account.move.line,rec_name",0,Name,Name,0
 field,"account.fiscalyear.close_fiscalyear.init,close_fiscalyear",0,Fiscal Year to close,Abzuschließendes Geschäftsjahr,0
@@ -385,7 +385,7 @@ model,"account.account.open_income_statement.init,name",0,Open Income Statement 
 model,"account.account.open_third_party_balance.init,name",0,Open Third Party Balance Init,Offene Postenliste Öffnen Init,0
 model,"account.account.print_general_ledger.init,name",0,Print General Ledger,Druck Kontenblätter Init,0
 model,"account.account.print_trial_balance.init,name",0,Print Trial Balance Init,Druck Summen- und Saldenliste Init,0
-model,"account.account.template-account.tax.template,name",0,account.account.template-account.tax.template,account.account.template-account.tax.template,0
+model,"account.account.template-account.tax.template,name",0,Account Template - Tax Template,Kontenvorlage - Steuervorlage,0
 model,"account.account.template,name",0,Account Template,Konto Vorlage,0
 model,"account.account.template,name",account_template_cash,Main Cash,Allgemein Barvermögen,0
 model,"account.account.template,name",account_template_expense,Main Expense,Allgemein Aufwand,0
@@ -412,7 +412,7 @@ model,"account.account.type.template,name",account_type_template_liability_curre
 model,"account.account.type.template,name",account_type_template_asset_current_receivable,Receivable,Forderungen,0
 model,"account.account.type.template,name",account_type_template_revenue,Revenue,Ertrag,0
 model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Verbindlichkeiten aus Steuern,0
-model,"account.fiscalyear-account.move.line,name",0,account.fiscalyear-account.move.line,account.fiscalyear-account.move.line,0
+model,"account.fiscalyear-account.move.line,name",0,Fiscal Year - Move Line,Geschäftsjahr - Buchungszeile,0
 model,"account.fiscalyear.close_fiscalyear.init,name",0,Close Fiscal Year Init,Abschluss Geschäftsjahr,0
 model,"account.fiscalyear,name",0,Fiscal Year,Geschäftsjahr,0
 model,"account.journal,name",journal_cash,Cash,Zahlung,0
