@@ -108,6 +108,7 @@ class PurchaseInvoiceLine(ModelSQL):
     'Purchase - Invoice Line'
     _name = 'purchase.purchase-account.invoice.line'
     _table = 'purchase_invoice_line_rel'
+    _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=1, required=True)
     line = fields.Many2One('account.invoice.line', 'Invoice Line',
@@ -120,6 +121,7 @@ class PurchaseIgnoredInvoiceLine(ModelSQL):
     'Purchase - Ignored Invoice Line'
     _name = 'purchase.purchase-ignored-account.invoice.line'
     _table = 'purchase_invoice_line_ignored_rel'
+    _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=1, required=True)
     invoice = fields.Many2One('account.invoice.line', 'Invoice Line',
