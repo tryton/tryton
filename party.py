@@ -227,6 +227,7 @@ class PartyCategory(ModelSQL):
     'Party - Category'
     _name = 'party.party-party.category'
     _table = 'party_category_rel'
+    _description = __doc__
     party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
             required=True, select=1)
     category = fields.Many2One('party.category', 'Category', ondelete='CASCADE',
