@@ -1339,7 +1339,7 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="code">stock.packing.internal</field>
         </record>
         <record model="ir.sequence" id="sequence_packing_internal">
-                <field name="name">InternalPacking</field>
+                <field name="name">Internal Packing</field>
                 <field name="code">stock.packing.internal</field>
         </record>
 
