@@ -85,7 +85,7 @@ class Location(ModelSQL, ModelView):
     def init(self, cursor, module_name):
         super(Location, self).init(cursor, module_name)
 
-        table = TableHandler(cursor, self._table, self._name, module_name)
+        table = TableHandler(cursor, self, module_name)
         table.index_action(['left', 'right'], 'add')
 
     def check_type_for_moves(self, cursor, user, ids):
