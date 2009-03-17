@@ -184,7 +184,7 @@ model,"ir.action,name",act_packing_in_form,Supplier Packings,Lieferscheine von L
 model,"ir.action,name",act_packing_in_return_form,Supplier Return Packings,Warenrückgaben,0
 model,"ir.sequence,name",sequence_packing_out,Customer Packing,Lieferschein Kunde,0
 model,"ir.sequence,name",sequence_packing_out_return,Customer Return Packing,Warenrücknahme Kunde,0
-model,"ir.sequence,name",sequence_packing_internal,InternalPacking,Interner Lieferschein,0
+model,"ir.sequence,name",sequence_packing_internal,Internal Packing,Interner Lieferschein,0
 model,"ir.sequence,name",sequence_packing_in,Supplier Packing,Lieferschein Lieferant,0
 model,"ir.sequence,name",sequence_packing_in_return,Supplier Return Packing,Warenrückgabe Lieferant,0
 model,"ir.sequence.type,name",sequence_type_packing_out,Customer Packing,Lieferschein Kunde,0
