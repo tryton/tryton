@@ -127,7 +127,7 @@ class ViewTreeModel(gtk.GenericTreeModel, gtk.TreeSortable):
                         digits = eval(digits, obj)
                     obj[field] = locale.format('%.' + str(digits[1]) + 'f',
                             obj[field] or 0.0, True)
-            elif field_type in ('interger',):
+            elif field_type in ('integer',):
                 for obj in res_ids:
                     obj[field] = locale.format('%d', obj[field] or 0, True)
             elif field_type in ('float_time',):
