@@ -1081,6 +1081,7 @@ Invoice()
 class InvoicePaymentLine(ModelSQL):
     'Invoice - Payment Line'
     _name = 'account.invoice-account.move.line'
+    _description = __doc__
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
             select=1, required=True)
     line = fields.Many2One('account.move.line', 'Payment Line',
@@ -1616,6 +1617,7 @@ class InvoiceLineTax(ModelSQL):
     'Invoice Line - Tax'
     _name = 'account.invoice.line-account.tax'
     _table = 'account_invoice_line_account_tax'
+    _description = __doc__
     line = fields.Many2One('account.invoice.line', 'Invoice Line',
             ondelete='CASCADE', select=1, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
