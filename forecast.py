@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 import datetime
+import mx.DateTime
 
 STATES = {
     'readonly': "state != 'draft'",
@@ -376,15 +377,11 @@ class ForecastComplete(Wizard):
         forecast = forecast_obj.browse(cursor, user, data['id'], context=context)
 
         res = {}
-        for date in ("to_date", "from_date"):
-            year = forecast[date].year - 1
-            month = forecast[date].month
-            day = forecast[date].day
-            if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0) and \
-                    month == 2 and day == 29:
-                day = 28
-            res[date] = datetime.date(year, month, day)
-
+        for field in ("to_date", "from_date"):
+            date = mx.DateTime.strptime(str(forecast[field]), '%Y-%m-%d')
+            new_date = date - mx.DateTime.RelativeDateTime(years=1)
+            res[field] = datetime.date(new_date.year, new_date.month,
+                    new_date.day)
         return res
 
     def _get_product_quantity(self, cursor, user, data, context=None):
