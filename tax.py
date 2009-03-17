@@ -681,9 +681,10 @@ class Tax(ModelSQL, ModelView):
         taxes = self.browse(cursor, user, ids, context=context)
         res = self._unit_compute(cursor, user, taxes, price_unit,
                 context=context)
+        quantity = Decimal(str(quantity or 0.0))
         for row in res:
-            row['base'] *= Decimal(str(quantity))
-            row['amount'] *= Decimal(str(quantity))
+            row['base'] *= quantity
+            row['amount'] *= quantity
         return res
 
     def _process_tax_inv(self, cursor, user, tax, price_unit, context=None):
@@ -738,9 +739,10 @@ class Tax(ModelSQL, ModelView):
         res = self._unit_compute_inv(cursor, user, taxes, price_unit,
                 context=context)
         res.reverse()
+        quantity = Decimal(str(quantity or 0.0))
         for row in res:
-            row['base'] *= Decimal(str(quantity))
-            row['amount'] *= Decimal(str(quantity))
+            row['base'] *= quantity
+            row['amount'] *= quantity
         return res
 
 Tax()
