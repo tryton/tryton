@@ -111,7 +111,7 @@ class Journal(ModelSQL, ModelView):
 
     def init(self, cursor, module_name):
         super(Journal, self).init(cursor, module_name)
-        table = TableHandler(cursor, self._table, self._name, module_name)
+        table = TableHandler(cursor, self, module_name)
 
         # Migration from 1.0 sequence Many2One change into Property
         if table.column_exist('sequence'):

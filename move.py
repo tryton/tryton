@@ -72,7 +72,7 @@ class Move(ModelSQL, ModelView):
     def init(self, cursor, module_name):
         super(Move, self).init(cursor, module_name)
 
-        table = TableHandler(cursor, self._table, self._name, module_name)
+        table = TableHandler(cursor, self, module_name)
         table.index_action(['journal', 'period'], 'add')
 
     def default_period(self, cursor, user, context=None):
