@@ -2,11 +2,20 @@
 #this repository contains the full copyright notices and license terms.
 {
     "name" : "Purchase Invoice Line Standalone",
+    "name_fr_FR" : "Ligne de facture autonome - Achat",
     "version" : "0.0.1",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    "description": "Change the purchase to create standalone invoice line.",
+    "description": '''
+Change the purchase order behaviour to create standalone invoice lines instead of a
+complete invoice. This allow to compose invoices with lines originating
+from differents purchases.
+''',
+    "description_fr_FR": '''Modifie le comportement de l'ordre d'achat pour créer des lignes de
+facture autonomes au lieu de factures complètes. Cela permet de
+composer des factures avec des lignes provenant de différents achats.
+''',
     "depends" : [
         "ir",
         "purchase",
