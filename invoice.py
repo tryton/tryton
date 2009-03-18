@@ -934,6 +934,20 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     def pay_invoice(self, cursor, user, invoice_id, amount, journal_id, date,
             description, amount_second_currency=False, second_currency=False,
             context=None):
+        '''
+        Add a payment to an invoice
+
+        :param cursor: the database cursor
+        :param invoice_id: the invoice id
+        :param amount: the amount to pay
+        :param journal_id: the journal id for the move
+        :param date: the date of the move
+        :param description: the description of the move
+        :param amount_second_currency: the amount in the second currenry if one
+        :param second_currency: the id of the second currency
+        :param context: the context
+        :return: the id of the payment line
+        '''
         journal_obj = self.pool.get('account.journal')
         move_obj = self.pool.get('account.move')
         period_obj = self.pool.get('account.period')
