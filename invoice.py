@@ -1952,8 +1952,7 @@ class PayInvoiceInit(ModelView):
     'Pay Invoice Init'
     _name = 'account.invoice.pay_invoice.init'
     _description = __doc__
-    amount = fields.Numeric('Amount', digits="(16, currency_digits)",
-            required=True)
+    amount = fields.Numeric('Amount', digits="(16, currency_digits)")
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     currency_digits = fields.Integer('Currency Digits', readonly=True,
             on_change_with=['currency'])
@@ -1997,35 +1996,62 @@ class PayInvoiceAsk(ModelView):
                 'invisible': "type != 'writeoff'",
                 'required': "type == 'writeoff'",
             })
-    amount = fields.Numeric('Amount', digits="(16, currency_digits)", readonly=True)
-    currency = fields.Many2One('currency.currency', 'Currency', readonly=True)
-    currency_digits = fields.Integer('Currency Digits', readonly=True,
-            on_change_with=['currency'])
+    amount = fields.Numeric('Payment Amount', digits="(16, currency_digits)",
+            readonly=True, depends=['currency_digits'])
+    currency = fields.Many2One('currency.currency', 'Payment Currency',
+            readonly=True)
+    currency_digits = fields.Integer('Payment Currency Digits', readonly=True)
+    amount_writeoff = fields.Numeric('Write-Off Amount',
+            digits="(16, currency_digits_writeoff)", readonly=True,
+            depends=['currency_digits_writeoff'], states={
+                'invisible': "type != 'writeoff'",
+            })
+    currency_writeoff = fields.Many2One('currency.currency',
+            'Write-Off Currency', readonly=True, states={
+                'invisible': "type != 'writeoff'",
+            })
+    currency_digits_writeoff = fields.Integer('Write-Off Currency Digits',
+            readonly=True)
     lines_to_pay = fields.Char(string='Lines to Pay', size=None)
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
             domain="[('id', 'in', eval(lines_to_pay)), " \
                     "('reconciliation', '=', False)]",
             states={
                 'invisible': "type != 'writeoff'",
-            })
+            }, on_change=['lines', 'amount', 'currency', 'currency_writeoff',
+                'invoice'],
+            depends=['lines_to_pay'])
     description = fields.Char('Description', size=None, readonly=True)
     journal = fields.Many2One('account.journal', 'Journal', readonly=True,
             domain=[('type', '=', 'cash')])
     date = fields.Date('Date', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
     account = fields.Many2One('account.account', 'Account', readonly=True)
+    invoice = fields.Many2One('account.invoice', 'Invoice', readonly=True)
 
     def default_type(self, cursor, user, context=None):
-        return 'writeoff'
+        return 'partial'
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_lines(self, cursor, user, ids, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
-        if vals.get('currency'):
-            currency = currency_obj.browse(cursor, user, vals['currency'],
-                    context=context)
-            return currency.digits
-        return 2
+        line_obj = self.pool.get('account.move.line')
+        invoice_obj = self.pool.get('account.invoice')
+
+        res = {}
+        invoice = invoice_obj.browse(cursor, user, vals['invoice'],
+                context=context)
+        amount = currency_obj.compute(cursor, user, vals['currency'],
+                vals['amount'], vals['currency_writeoff'], context=context)
+
+        res['amount_writeoff'] = Decimal('0.0')
+        for line in line_obj.browse(cursor, user, vals['lines'],
+                context=context):
+            res['amount_writeoff'] += line.debit - line.credit
+        if invoice.type in ('in_invoice', 'out_credit_note'):
+            res['amount_writeoff'] = - res['amount_writeoff'] - amount
+        else:
+            res['amount_writeoff'] = res['amount_writeoff'] - amount
+        return res
 
 PayInvoiceAsk()
 
@@ -2101,6 +2127,7 @@ class PayInvoice(Wizard):
     def _ask(self, cursor, user, data, context=None):
         invoice_obj = self.pool.get('account.invoice')
         currency_obj = self.pool.get('currency.currency')
+        line_obj = self.pool.get('account.move.line')
 
         res = {}
         invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
@@ -2120,6 +2147,16 @@ class PayInvoice(Wizard):
                 context=context)
         res['lines'] = invoice_obj.get_reconcile_lines_for_amount(cursor, user, invoice,
                 amount)[0]
+        res['amount_writeoff'] = Decimal('0.0')
+        for line in line_obj.browse(cursor, user, res['lines'], context=context):
+            res['amount_writeoff'] += line.debit - line.credit
+        if invoice.type in ('in_invoice', 'out_credit_note'):
+            res['amount_writeoff'] = - res['amount_writeoff'] - amount
+        else:
+            res['amount_writeoff'] = res['amount_writeoff'] - amount
+        res['currency_writeoff'] = invoice.company.currency.id
+        res['currency_digits_writeoff'] = invoice.company.currency.digits
+        res['invoice'] = invoice.id
         return res
 
     def _action_pay(self, cursor, user, data, context=None):
@@ -2144,21 +2181,28 @@ class PayInvoice(Wizard):
             amount_second_currency = data['form']['amount']
             second_currency = data['form']['currency']
 
-        line_id = invoice_obj.pay_invoice(cursor, user, data['id'], amount,
-                data['form']['journal'], data['form']['date'],
-                data['form']['description'], amount_second_currency,
-                second_currency, context=context)
+        line_id = False
+        if not currency_obj.is_zero(cursor, user, invoice.company.currency,
+                amount):
+            line_id = invoice_obj.pay_invoice(cursor, user, data['id'], amount,
+                    data['form']['journal'], data['form']['date'],
+                    data['form']['description'], amount_second_currency,
+                    second_currency, context=context)
 
         if reconcile_lines[1] != Decimal('0.0'):
             if data['form'].get('type') == 'writeoff':
-                line_ids = [line_id] + data['form']['lines'][0][1]
+                line_ids = data['form']['lines'][0][1]
+                if line_id:
+                    line_ids += [line_id]
                 move_line_obj.reconcile(cursor, user, line_ids,
                         journal_id=data['form']['journal_writeoff'],
                         date=data['form']['date'],
                         account_id=data['form']['account_writeoff'],
                         context=context)
         else:
-            line_ids = reconcile_lines[0] + [line_id]
+            line_ids = reconcile_lines[0]
+            if line_id:
+                line_ids += [line_id]
             move_line_obj.reconcile(cursor, user, line_ids, context=context)
         return {}
 

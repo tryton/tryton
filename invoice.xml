@@ -888,14 +888,18 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Pay Invoice">
                     <label name="type"/>
                     <field name="type" colspan="3"/>
-                    <label name="journal_writeoff"/>
-                    <field name="journal_writeoff"/>
-                    <label name="account_writeoff"/>
-                    <field name="account_writeoff"/>
                     <label name="amount"/>
                     <field name="amount"/>
                     <label name="currency"/>
                     <field name="currency"/>
+                    <label name="amount_writeoff"/>
+                    <field name="amount_writeoff"/>
+                    <label name="currency_writeoff"/>
+                    <field name="currency_writeoff"/>
+                    <label name="account_writeoff"/>
+                    <field name="account_writeoff"/>
+                    <label name="journal_writeoff"/>
+                    <field name="journal_writeoff"/>
                     <separator name="lines" colspan="4"/>
                     <field name="lines" colspan="4">
                         <tree string="Lines to Pay">
@@ -908,12 +912,11 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="second_currency_digits" tree_invisible="1"/>
                         </tree>
                     </field>
-                    <field name="lines_to_pay" colspan="4" invisible="1"/>
                     <field name="description" colspan="4" invisible="1"/>
                     <field name="journal" colspan="4" invisible="1"/>
                     <field name="date" colspan="4" invisible="1"/>
                     <field name="company" colspan="4" invisible="1"/>
-                    <field name="currency_digits" colspan="4" invisible="1"/>
+                    <field name="invoice" colspan="4" invisible="1"/>
                 </form>
                 ]]>
             </field>
