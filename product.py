@@ -20,10 +20,7 @@ class ProductCostHistory(ModelSQL, ModelView):
     def table_query(self, context=None):
         property_obj = self.pool.get('ir.property')
         return ('SELECT ' \
-                    '(EXTRACT(EPOCH FROM COALESCE(write_date, create_date)) ' \
-                        '* (10 ^ (SELECT FLOOR(LOG(MAX(id))) + 1 ' \
-                            'FROM "' + property_obj._table + '"))) ' \
-                        '+ id AS id, ' \
+                    'MAX(__id) AS id, ' \
                     'COALESCE(write_date, create_date) AS date, ' \
                     'TRIM(\',\' FROM SUBSTRING(res FROM \',.*\'))::INTEGER ' \
                         'AS template, ' \
