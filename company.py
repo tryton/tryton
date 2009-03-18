@@ -135,19 +135,14 @@ class Property(ModelSQL, ModelView):
     _name = 'ir.property'
     company = fields.Many2One('company.company', 'Company')
 
-    def set(self, cursor, user_id, name, model, res_id, val, context=None):
-        if context is None:
-            context = {}
-        ctx = context.copy()
-        ctx['user'] = user_id
-        res = super(Property, self).set(cursor, user_id, name, model, res_id, val,
-                context=context)
-        if res and user_id:
-            user_obj = self.pool.get('res.user')
-            user = user_obj.browse(cursor, user_id, user_id, context=context)
-            self.write(cursor, 0, res, {
-                'company': user.company.id,
-                }, context=ctx)
+    def _set_values(self, cursor, user_id, name, model, res_id, val, field_id,
+            context=None):
+        user_obj = self.pool.get('res.user')
+        user = user_obj.browse(cursor, user_id, user_id, context=context)
+        res = super(Property, self)._set_values(cursor, user_id, name, model,
+                res_id, val, field_id, context=context)
+        if user_id:
+            res['company'] = user.company.id
         return res
 
 Property()
