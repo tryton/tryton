@@ -7,7 +7,7 @@ import re
 
 info = eval(file('__tryton__.py').read())
 
-requires = []
+requires = ['egenix-mx-base']
 for dep in info.get('depends', []):
     match = re.compile(
             '(ir|res|workflow|webdav)((\s|$|<|>|<=|>=|==|!=).*?$)').match(dep)
@@ -45,7 +45,6 @@ setup(name='trytond_stock_forecast',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Natural Language :: English',
         'Natural Language :: French',
-        'Natural Language :: German',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Office/Business',

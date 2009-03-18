@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelWorkflow, ModelSQL, fields
 from trytond.wizard import Wizard
 import datetime
+import mx.DateTime
 
 STATES = {
     'readonly': "state != 'draft'",
@@ -294,6 +295,7 @@ class ForecastLineMove(ModelSQL):
     'ForecastLine - Move'
     _name = 'stock.forecast.line-stock.move'
     _table = 'forecast_line_stock_move_rel'
+    _description = __doc__
     line = fields.Many2One('stock.forecast.line', 'Forecast Line',
             ondelete='CASCADE', select=1, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='CASCADE',
@@ -303,8 +305,9 @@ ForecastLineMove()
 
 
 class ForecastCompleteAsk(ModelView):
+    'Forecast Complete Ask'
     _name = 'stock.forecast.complete.ask'
-
+    _description = __doc__
     from_date = fields.Date('From Date', required=True)
     to_date = fields.Date('To Date', required=True)
 
@@ -312,8 +315,9 @@ ForecastCompleteAsk()
 
 
 class ForecastCompleteChoose(ModelView):
+    'Forecast Complete Choose'
     _name = 'stock.forecast.complete.choose'
-
+    _description = __doc__
     products = fields.Many2Many('product.product', None, None, 'Products')
 
 ForecastCompleteChoose()
@@ -373,15 +377,11 @@ class ForecastComplete(Wizard):
         forecast = forecast_obj.browse(cursor, user, data['id'], context=context)
 
         res = {}
-        for date in ("to_date", "from_date"):
-            year = forecast[date].year - 1
-            month = forecast[date].month
-            day = forecast[date].day
-            if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0) and \
-                    month == 2 and day == 29:
-                day = 28
-            res[date] = datetime.date(year, month, day)
-
+        for field in ("to_date", "from_date"):
+            date = mx.DateTime.strptime(str(forecast[field]), '%Y-%m-%d')
+            new_date = date - mx.DateTime.RelativeDateTime(years=1)
+            res[field] = datetime.date(new_date.year, new_date.month,
+                    new_date.day)
         return res
 
     def _get_product_quantity(self, cursor, user, data, context=None):

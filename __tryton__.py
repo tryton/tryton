@@ -39,5 +39,6 @@ prévisions.
         'forecast.xml',
     ],
     'translation': [
+        'fr_FR.csv',
     ],
 }
