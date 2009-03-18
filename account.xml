@@ -473,6 +473,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">account.account.create_chart_account</field>
         </record>
 
+        <record model="ir.ui.view" id="account_update_chart_account_init_view_form">
+            <field name="model">account.account.update_chart_account.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Update Chart of Account" col="2">
+                    <label name="account"/>
+                    <field name="account"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_update_chart_account">
+            <field name="name">Update Chart of Account from Template</field>
+            <field name="wiz_name">account.account.update_chart_account</field>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="wizard_update_chart_account" id="menu_update_chart_account"/>
+
         <record model="ir.ui.view" id="account_view_form">
             <field name="model">account.account</field>
             <field name="type">form</field>

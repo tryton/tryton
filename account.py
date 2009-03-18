@@ -69,6 +69,7 @@ class TypeTemplate(ModelSQL, ModelView):
         res['balance_sheet'] = template.balance_sheet
         res['income_statement'] = template.income_statement
         res['display_balance'] = template.display_balance
+        res['template'] = template.id
         return res
 
     def create_type(self, cursor, user, template, company_id, context=None,
@@ -138,6 +139,7 @@ class Type(ModelSQL, ModelView):
         ], 'Display Balance', required=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="restrict")
+    template = fields.Many2One('account.account.type.template', 'Template')
 
     def __init__(self):
         super(Type, self).__init__()
@@ -216,6 +218,36 @@ class Type(ModelSQL, ModelView):
             ('parent', 'child_of', ids),
             ], context=context)
         return super(Type, self).delete(cursor, user, type_ids, context=context)
+
+    def update_type(self, cursor, user, type, context=None, template2type=None):
+        '''
+        Update recursively types based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param type: a type id or the BrowseRecord of the type
+        :param context: the context
+        :param template2type: a dictionary with template id as key
+                and type id as value, used to convert template id
+                into type. The dictionary is filled with new types
+        '''
+        template_obj = self.pool.get('account.account.type.template')
+
+        if template2type is None:
+            template2type = {}
+
+        if isinstance(type, (int, long)):
+            type = self.browse(cursor, user, type, context=context)
+
+        if type.template:
+            vals = template_obj._get_type_value(cursor, user, type.template,
+                    context=context)
+            self.write(cursor, user, type.id, vals, context=context)
+            template2type[type.template.id] = type.id
+
+        for child in type.childs:
+            self.update_type(cursor, user, child, context=context,
+                    template2type=template2type)
 
 Type()
 
@@ -314,6 +346,7 @@ class AccountTemplate(ModelSQL, ModelView):
         res['kind'] = template.kind
         res['reconcile'] = template.reconcile
         res['deferral'] = template.deferral
+        res['template'] = template.id
         return res
 
     def create_account(self, cursor, user, template, company_id, context=None,
@@ -469,6 +502,7 @@ class Account(ModelSQL, ModelView):
             'Deferrals', readonly=True, states={
                 'invisible': "kind == 'view'",
             }, depends=['kind'])
+    template = fields.Many2One('account.account.template', 'Template')
 
     def __init__(self):
         super(Account, self).__init__()
@@ -799,6 +833,83 @@ class Account(ModelSQL, ModelView):
                     context=context)
         return super(Account, self).delete(cursor, user, account_ids,
                 context=context)
+
+    def update_account(self, cursor, user, account, context=None,
+            template2account=None, template2type=None):
+        '''
+        Update recursively accounts based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param account: an account id or the BrowseRecord of the account
+        :param context: the context
+        :param template2account: a dictionary with template id as key
+                and account id as value, used to convert template id
+                into account. The dictionary is filled with new accounts
+        :param template2type: a dictionary with type template id as key
+                and type id as value, used to convert type template id
+                into type.
+        '''
+        template_obj = self.pool.get('account.account.template')
+
+        if template2account is None:
+            template2account = {}
+
+        if template2type is None:
+            template2type = {}
+
+        if isinstance(account, (int, long)):
+            account = self.browse(cursor, user, account, context=context)
+
+        if account.template:
+            vals = template_obj._get_account_value(cursor, user,
+                    account.template, context=context)
+            vals['type'] = template2type.get(account.template.type.id, False)
+            self.write(cursor, user, account.id, vals, context=context)
+            template2account[account.template.id] = account.id
+
+        for child in account.childs:
+            self.update_account(cursor, user, child, context=context,
+                    template2account=template2account,
+                    template2type=template2type)
+
+    def update_account_taxes(self, cursor, user, account, template2account,
+            template2tax, context=None):
+        '''
+        Update recursively account taxes base on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param account: the account id or the BrowseRecord of account
+        :param template2account: a dictionary with template id as key
+            and account id as value, used to convert template id into
+            account.
+        :param template2tax: a dictionary with tax template id as key
+            and tax id as value, used to convert tax template id into
+            tax.
+        :param context: the context
+        '''
+        if template2account is None:
+            template2account = {}
+
+        if template2tax is None:
+            template2tax = {}
+
+        if isinstance(account, (int, long)):
+            account = self.browse(cursor, user, account, context=context)
+
+        if account.template:
+            if account.template.taxes:
+                self.write(cursor, user, account.id, {
+                    'taxes': [
+                        ('add', template2tax[x.id]) \
+                                for x in account.template.taxes \
+                                if x.id in template2tax],
+                    }, context=context)
+
+        for child in account.childs:
+            self.update_account_taxes(cursor, user, child, template2account,
+                    template2tax, context=context)
 
 Account()
 
@@ -1687,6 +1798,107 @@ class CreateChartAccount(Wizard):
         return {}
 
 CreateChartAccount()
+
+
+class UpdateChartAccountInit(ModelView):
+    'Update Chart Account from Template Init'
+    _name = 'account.account.update_chart_account.init'
+    _description = __doc__
+    account = fields.Many2One('account.account', 'Account',
+            required=True, domain=[('parent', '=', False)])
+
+UpdateChartAccountInit()
+
+
+class UpdateChartAccount(Wizard):
+    'Update Chart Account from Template'
+    _name = 'account.account.update_chart_account'
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'account.account.update_chart_account.init',
+                'state': [
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('update_account', 'Ok', 'tryton-ok', True),
+                ],
+            },
+        },
+        'update_account': {
+            'result': {
+                'type': 'action',
+                'action': '_action_update_account',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_update_account(self, cursor, user, datas, context=None):
+        account_type_obj = self.pool.get('account.account.type')
+        account_type_template_obj = self.pool.get('account.account.type.template')
+        account_obj = self.pool.get('account.account')
+        account_template_obj = self.pool.get('account.account.template')
+        tax_code_obj = self.pool.get('account.tax.code')
+        tax_code_template_obj = self.pool.get('account.tax.code.template')
+        tax_obj = self.pool.get('account.tax')
+        tax_template_obj = self.pool.get('account.tax.template')
+
+        account = account_obj.browse(cursor, user, datas['form']['account'],
+                context=context)
+
+        template2type = {}
+        account_type_obj.update_type(cursor, user, account.type,
+                context=context, template2type=template2type)
+        if account.type.template:
+            account_type_template_obj.create_type(cursor, user,
+                    account.type.template, account.company.id, context=context,
+                    template2type=template2type)
+
+        template2account = {}
+        account_obj.update_account(cursor, user, account, context=context,
+                template2account=template2account, template2type=template2type)
+        if account.template:
+            account_template_obj.create_account(cursor, user, account.template,
+                    account.company.id, context=context,
+                    template2account=template2account,
+                    template2type=template2type)
+
+        template2tax_code = {}
+        tax_code_ids = tax_code_obj.search(cursor, user, [
+            ('company', '=', account.company.id),
+            ('parent', '=', False),
+            ], context=context)
+        for tax_code in tax_code_obj.browse(cursor, user, tax_code_ids,
+                context=context):
+            tax_code_obj.update_tax(cursor, user, tax_code, context=context,
+                    template2tax_code=template2tax_code)
+            if tax_code.template:
+                tax_code_template_obj.create_tax(cursor, user,
+                        tax_code.template, account.company.id, context=context,
+                        template2tax_code=template2tax_code)
+
+        template2tax = {}
+        tax_ids = tax_obj.search(cursor, user, [
+            ('company', '=', account.company.id),
+            ('parent', '=', False),
+            ], context=context)
+        for tax in tax_obj.browse(cursor, user, tax_ids, context=context):
+            tax_obj.update_tax(cursor, user, tax,
+                    template2tax_code=template2tax_code,
+                    template2account=template2account,
+                    context=context,
+                    template2tax=template2tax)
+            if tax.template:
+                tax_template_obj.create_tax(cursor, user, tax.template,
+                        account.company.id, template2tax_code=template2tax_code,
+                        template2account=template2account, context=context,
+                        template2tax=template2tax)
+
+        account_obj.update_account_taxes(cursor, user, account,
+                template2account, template2tax, context=context)
+        return {}
+
+UpdateChartAccount()
 
 
 class OpenThirdPartyBalanceInit(ModelView):

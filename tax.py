@@ -60,6 +60,7 @@ class CodeTemplate(ModelSQL, ModelView):
         res = {}
         res['name'] = template.name
         res['code'] = template.code
+        res['template'] = template.id
         return res
 
     def create_tax_code(self, cursor, user, template, company_id, context=None,
@@ -127,6 +128,7 @@ class Code(ModelSQL, ModelView):
             string='Currency Digits', on_change_with=['company'])
     sum = fields.Function('get_sum', digits="(16, currency_digits)",
             string='Sum', depends=['currency_digits'])
+    template = fields.Many2One('account.tax.code.template', 'Template')
 
     def __init__(self):
         super(Code, self).__init__()
@@ -234,6 +236,37 @@ class Code(ModelSQL, ModelView):
             ], context=context)
         return super(Code, self).delete(cursor, user, code_ids,
                 context=context)
+
+    def update_tax_code(self, cursor, user, code, context=None,
+            template2tax_code=None):
+        '''
+        Update recursively tax code based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param code: a code id or the BrowseRecord of the code
+        :param context: the context
+        :param template2tax_code: a dictionary with tax code template id as key
+                and tax code id as value, used to convert template id into
+                tax code. The dictionary is filled with new tax codes
+        '''
+        template_obj = self.pool.get('account.tax.code.template')
+
+        if template2tax_code is None:
+            template2tax_code = {}
+
+        if isinstance(code, (int, long)):
+            code = self.browse(cursor, user, code, context=context)
+
+        if code.template:
+            vals = template_obj._get_tax_code_value(cursor, user,
+                    code.template, context=context)
+            self.write(cursor, user, code.id, vals, context=context)
+            template2tax_code[code.template.id] = code.id
+
+        for child in code.childs:
+            self.update_tax_code(cursor, user, child, context=context,
+                    template2tax_code=template2tax_code)
 
 Code()
 
@@ -392,6 +425,7 @@ class TaxTemplate(ModelSQL, ModelView):
             res[field] = template[field]
         for field in ('group',):
             res[field] = template[field].id
+        res['template'] = template.id
         return res
 
     def create_tax(self, cursor, user, template, company_id,
@@ -570,6 +604,7 @@ class Tax(ModelSQL, ModelView):
             states={
                 'readonly': "type == 'none'",
             }, depends=['type'])
+    template = fields.Many2One('account.tax.template', 'Template')
 
     def __init__(self):
         super(Tax, self).__init__()
@@ -744,6 +779,79 @@ class Tax(ModelSQL, ModelView):
             row['base'] *= quantity
             row['amount'] *= quantity
         return res
+
+    def update_tax(self, cursor, user, tax, template2tax_code,
+            template2account, context=None, template2tax=None):
+        '''
+        Update recursively taxes based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param tax: a tax id or the BrowseRecord of the tax
+        :param template2tax_code: a dictionary with tax code template id as key
+                and tax code id as value, used to convert tax code template into
+                tax code
+        :param template2account: a dictionary with account template id as key
+                and account id as value, used to convert account template into
+                account code
+        :param context: the context
+        :param template2tax: a dictionary with tax template id as key and
+                tax id as value, used to convert template id into tax.
+                The dictionary is filled with new taxes
+        '''
+        template_obj = self.pool.get('account.tax.template')
+
+        if template2tax is None:
+            template2tax = {}
+
+        if isinstance(tax, (int, long)):
+            tax = self.browse(cursor, user, tax, context=context)
+
+        if tax.template:
+            vals = template_obj._get_tax_value(cursor, user, tax.template,
+                    context=context)
+            if tax.template.invoice_account:
+                vals['invoice_account'] = \
+                        template2account.get(tax.template.invoice_account.id,
+                                False)
+            else:
+                vals['invoice_account'] =  False
+            if tax.template.credit_note_account:
+                vals['credit_note_account'] = \
+                        template2account.get(tax.template.credit_note_account.id,
+                                False)
+            else:
+                vals['credit_note_account'] = False
+            if tax.template.invoice_base_code:
+                vals['invoice_base_code'] = \
+                        template2tax_code.get(tax.template.invoice_base_code.id,
+                                False)
+            else:
+                vals['invoice_base_code'] = False
+            if tax.template.invoice_tax_code:
+                vals['invoice_tax_code'] = \
+                        template2tax_code.get(tax.template.invoice_tax_code.id,
+                                False)
+            else:
+                vals['invoice_tax_code'] = False
+            if tax.template.credit_note_base_code:
+                vals['credit_note_base_code'] = \
+                        template2tax_code.get(tax.template.credit_note_base_code.id,
+                                False)
+            else:
+                vals['credit_note_base_code'] = False
+            if tax.template.credit_note_tax_code:
+                vals['credit_note_tax_code'] = \
+                        template2tax_code.get(tax.template.credit_note_tax_code.id,
+                                False)
+            else:
+                vals['credit_note_tax_code'] = False
+
+            self.write(cursor, user, tax.id, vals, context=context)
+            template2tax[tax.template.id] = tax.id
+
+        for child in tax.childs:
+            self.update_tax(cursor, user, tax, context=context)
 
 Tax()
 
