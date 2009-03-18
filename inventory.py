@@ -9,7 +9,7 @@ class CreateInventoriesInit(ModelView):
     _name = 'stock.inventory.create.init'
     _description = __doc__
 
-    date = fields.Date('Date')
+    date = fields.Date('Date', required=True)
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
         domain=[('type', '=', 'lost_found')])
