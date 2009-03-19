@@ -32,7 +32,7 @@ class CodeTemplate(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     code = fields.Char('Code')
     parent = fields.Many2One('account.tax.code.template', 'Parent')
-    childs = fields.One2Many('account.tax.code.template', 'parent', 'Childs')
+    childs = fields.One2Many('account.tax.code.template', 'parent', 'Children')
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', False)], required=True)
 
@@ -122,7 +122,7 @@ class Code(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True)
     parent = fields.Many2One('account.tax.code', 'Parent', select=1,
             domain="[('company', '=', company)]", depends=['company'])
-    childs = fields.One2Many('account.tax.code', 'parent', 'Childs',
+    childs = fields.One2Many('account.tax.code', 'parent', 'Children',
             domain="[('company', '=', company)]", depends=['company'])
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['company'])
@@ -358,7 +358,7 @@ class TaxTemplate(ModelSQL, ModelView):
         ('none', 'None'),
         ], 'Type', required=True)
     parent = fields.Many2One('account.tax.template', 'Parent')
-    childs = fields.One2Many('account.tax.template', 'parent', 'Childs')
+    childs = fields.One2Many('account.tax.template', 'parent', 'Children')
     invoice_account = fields.Many2One('account.account.template',
             'Invoice Account')
     credit_note_account = fields.Many2One('account.account.template',
@@ -547,7 +547,7 @@ class Tax(ModelSQL, ModelView):
         ('none', 'None'),
         ], 'Type', required=True)
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE')
-    childs = fields.One2Many('account.tax', 'parent', 'Childs')
+    childs = fields.One2Many('account.tax', 'parent', 'Children')
     company = fields.Many2One('company.company', 'Company', required=True)
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
             domain="[('company', '=', company)]",
