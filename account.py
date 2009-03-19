@@ -36,7 +36,7 @@ class Account(ModelSQL, ModelView):
                 'invisible': "type == 'root'",
                 'required': "type != 'root'",
             })
-    childs = fields.One2Many('analytic_account.account', 'parent', 'Childs')
+    childs = fields.One2Many('analytic_account.account', 'parent', 'Children')
     balance = fields.Function('get_balance', digits="(16, currency_digits)",
             string='Balance')
     credit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
