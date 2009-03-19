@@ -51,7 +51,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if isinstance(ids, (int, long)):
             ids = [ids]
-        res = []
+        res = {}
         for pr in self.browse(cursor, user, ids, context=context):
             res[pr.id] = "%s@%s" % (pr.product.name, pr.warehouse.name)
         return res
