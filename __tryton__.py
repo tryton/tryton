@@ -70,6 +70,7 @@ Avec la possibilité:
     ],
     'xml': [
         'purchase.xml',
+        'party.xml',
     ],
     'translation': [
         'de_DE.csv',
