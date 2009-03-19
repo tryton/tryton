@@ -15,7 +15,7 @@ class Category(ModelSQL, ModelView):
     parent = fields.Many2One('party.category', 'Parent',
            select=1, states=STATES)
     childs = fields.One2Many('party.category', 'parent',
-       'Childs', states=STATES)
+       'Children', states=STATES)
     active = fields.Boolean('Active')
 
     def __init__(self):
