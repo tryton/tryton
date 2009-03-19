@@ -18,7 +18,7 @@ class TypeTemplate(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
     parent = fields.Many2One('account.account.type.template', 'Parent',
             ondelete="restrict")
-    childs = fields.One2Many('account.account.type.template', 'parent', 'Childs')
+    childs = fields.One2Many('account.account.type.template', 'parent', 'Children')
     sequence = fields.Integer('Sequence', required=True)
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
@@ -124,7 +124,7 @@ class Type(ModelSQL, ModelView):
     name = fields.Char('Name', size=None, required=True, translate=True)
     parent = fields.Many2One('account.account.type', 'Parent',
             ondelete="restrict")
-    childs = fields.One2Many('account.account.type', 'parent', 'Childs')
+    childs = fields.One2Many('account.account.type', 'parent', 'Children')
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
     currency_digits = fields.Function('get_currency_digits', type='integer',
@@ -268,7 +268,7 @@ class AccountTemplate(ModelSQL, ModelView):
             }, depends=['kind'])
     parent = fields.Many2One('account.account.template', 'Parent', select=1,
             ondelete="restrict")
-    childs = fields.One2Many('account.account.template', 'parent', 'Childs')
+    childs = fields.One2Many('account.account.template', 'parent', 'Children')
     reconcile = fields.Boolean('Reconcile',
             states={
                 'invisible': "kind == 'view'",
@@ -473,7 +473,7 @@ class Account(ModelSQL, ModelView):
             left="left", right="right", ondelete="restrict")
     left = fields.Integer('Left', required=True)
     right = fields.Integer('Right', required=True)
-    childs = fields.One2Many('account.account', 'parent', 'Childs')
+    childs = fields.One2Many('account.account', 'parent', 'Children')
     balance = fields.Function('get_balance', digits="(16, currency_digits)",
             string='Balance', depends=['currency_digits'])
     credit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
