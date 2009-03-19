@@ -65,6 +65,7 @@ Y con los reportes:
         'packing.xml',
         'move.xml',
         'inventory.xml',
+        'party.xml',
     ],
     'translation': [
         'de_DE.csv',
