@@ -108,10 +108,10 @@ class User(ModelSQL, ModelView):
                 return False
         return True
 
-    def get_preferences(self, cursor, user_id, context_only=False, context=None):
-        res = super(User, self).get_preferences(cursor, user_id,
+    def _get_preferences(self, cursor, user_id, user, context_only=False,
+            context=None):
+        res = super(User, self)._get_preferences(cursor, user_id, user,
                 context_only=context_only, context=context)
-        user = self.browse(cursor, 0, user_id, context=context)
         if not context_only:
             res['main_company'] = user.main_company.id
         if user.employee:
