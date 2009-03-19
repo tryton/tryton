@@ -11,7 +11,7 @@ class Category(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
     parent = fields.Many2One('product.category','Parent', select=1)
     childs = fields.One2Many('product.category', 'parent',
-            string='Childs')
+            string='Children')
 
     def __init__(self):
         super(Category, self).__init__()
