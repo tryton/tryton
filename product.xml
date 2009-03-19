@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.ui.view" id="product_view_tree_qty">
@@ -37,7 +38,6 @@
         </record>
         <record model="ir.action.act_window" id="act_location_quantity_tree">
             <field name="name">Product Stock</field>
-            <field name="src_model">product.product</field>
             <field name="res_model">stock.location</field>
             <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>

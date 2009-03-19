@@ -505,7 +505,7 @@ class PackingOut(ModelWorkflow, ModelSQL, ModelView):
 
     def init(self, cursor, module_name):
         super(PackingOut, self).init(cursor, module_name)
-        table = TableHandler(cursor, self._table, self._name, module_name)
+        table = TableHandler(cursor, self, module_name)
 
         # Migration from 1.0 customer_location is no more used
         table.drop_column('customer_location', exception=True)
