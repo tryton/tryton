@@ -84,6 +84,7 @@ Avec la possibilité:
     ],
     'xml': [
         'sale.xml',
+        'party.xml',
     ],
     'translation': [
         'de_DE.csv',
