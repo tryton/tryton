@@ -16,7 +16,7 @@ class Company(ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE')
     parent = fields.Many2One('company.company', 'Parent')
-    childs = fields.One2Many('company.company', 'parent', 'Childs')
+    childs = fields.One2Many('company.company', 'parent', 'Children')
     header = fields.Text('Header')
     footer = fields.Text('Footer')
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
