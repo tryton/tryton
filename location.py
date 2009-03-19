@@ -37,7 +37,7 @@ class Location(ModelSQL, ModelView):
             left="left", right="right")
     left = fields.Integer('Left', required=True, select=1)
     right = fields.Integer('Right', required=True, select=1)
-    childs = fields.One2Many("stock.location", "parent", "Childs")
+    childs = fields.One2Many("stock.location", "parent", "Children")
     input_location = fields.Many2One(
         "stock.location", "Input", states={
             'invisible': "type != 'warehouse'",
