@@ -13,7 +13,7 @@ class Work(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     active = fields.Boolean('Active')
     parent = fields.Many2One('timesheet.work', 'Parent', select=2)
-    childs = fields.One2Many('timesheet.work', 'parent', 'Childs')
+    childs = fields.One2Many('timesheet.work', 'parent', 'Children')
     hours = fields.Function('get_hours', digits=(16, 2), string='Hours')
     type = fields.Selection([
         ('view', 'View'),
