@@ -529,7 +529,8 @@ class Line(ModelSQL, ModelView):
     def default_active(self, cursor, user, context=None):
         return True
 
-    def default_get(self, cursor, user, fields, context=None):
+    def default_get(self, cursor, user, fields, context=None,
+            with_rec_name=True):
         if context is None:
             context = {}
         move_obj = self.pool.get('account.move')
@@ -537,7 +538,7 @@ class Line(ModelSQL, ModelView):
         account_obj = self.pool.get('account.account')
         tax_code_obj = self.pool.get('account.tax.code')
         values = super(Line, self).default_get(cursor, user, fields,
-                context=context)
+                context=context, with_rec_name=with_rec_name)
 
         if 'move' not in fields:
             #Not manual entry
