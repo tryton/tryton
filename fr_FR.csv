@@ -2,7 +2,7 @@ type,name,res_id,src,value,fuzzy
 error,account.invoice,0,You can not delete invoices that comes from a sale!,Vous ne pouvez pas supprimer des factures provenant d'une vente !,0
 error,sale.line,0,"It miss an ""account_revenue"" default property!","Il manque une propriété ""account_expense""",0
 error,sale.line,0,The customer location is required!,L'emplacement client est requis !,0
-error,sale.sale,0,Invoice and Packing addresses must be defined for the quotation.,Les adresses de facturation de de colisage sont requises pour le devis.,0
+error,sale.sale,0,Invoice and Shipment addresses must be defined for the quotation.,Les adresses de facturation et d'expédition sont requises pour le devis.,0
 error,sale.sale,0,Wrong combination of method!,Mauvaise combinaison de méthodes !,0
 field,"product.template,salable",0,Salable,Vendable,0
 field,"product.template,sale_uom",0,Sale UOM,UDM de vente,0
@@ -37,12 +37,12 @@ field,"sale.sale,invoices_ignored",0,Invoices Ignored,Factures ignorées,0
 field,"sale.sale,invoice_state",0,Invoice State,État de la factutre,0
 field,"sale.sale,lines",0,Lines,Lignes,0
 field,"sale.sale,moves",0,Moves,Mouvements,0
-field,"sale.sale,packing_address",0,Packing Address,Adresse de livraison,0
-field,"sale.sale,packing_done",0,Packing Done,Colisage effectué,0
-field,"sale.sale,packing_exception",0,Packings Exception,Colisages en exception,0
-field,"sale.sale,packing_method",0,Packing Method,Méthode de livraison,0
-field,"sale.sale,packings",0,Packings,Colisages,0
-field,"sale.sale,packing_state",0,Packing State,État du colisage,0
+field,"sale.sale,packing_address",0,Shipment Address,Adresse de livraison,0
+field,"sale.sale,packing_done",0,Shipment Done,Expédition effectuée,0
+field,"sale.sale,packing_exception",0,Shipments Exception,Expéditions en exception,0
+field,"sale.sale,packing_method",0,Shipment Method,Méthode de livraison,0
+field,"sale.sale,packings",0,Shipments,Expédition,0
+field,"sale.sale,packing_state",0,Shipment State,État de l'expédition,0
 field,"sale.sale,party",0,Party,Tiers,0
 field,"sale.sale,party_lang",0,Party Language,Langue du tiers,0
 field,"sale.sale,payment_term",0,Payment Term,Conditions de paiement,0
@@ -81,25 +81,25 @@ model,"workflow.activity,name",sale_activity_invoice_sale_done,Invoice Done,Fact
 model,"workflow.activity,name",sale_activity_invoice_sale_exception,Invoice Exception,Facture en exception,0
 model,"workflow.activity,name",sale_activity_invoice_method,Invoice Method,Méthode de facturation,0
 model,"workflow.activity,name",sale_activity_invoice_method_done,Invoice Method Done,Méthode de facture faite,0
-model,"workflow.activity,name",sale_activity_invoice_packing,Invoice Packing,Facture colisage,0
-model,"workflow.activity,name",sale_activity_invoice_packing_done,Invoice Packing Done,Facture colisage faite,0
-model,"workflow.activity,name",sale_activity_invoice_packing_exception,Invoice Packing Exception,Facture colisage en exception,0
-model,"workflow.activity,name",sale_activity_invoice_packing_method,Invoice Packing Method,Méthode facture colisage,0
-model,"workflow.activity,name",sale_activity_invoice_packing_method_done,Invoice Packing Method Done,Méthode facture colisage faite,0
-model,"workflow.activity,name",sale_activity_packing,Packing,Colisage,0
-model,"workflow.activity,name",sale_activity_packing_exception,Packing Exception,Colisage en exception,0
-model,"workflow.activity,name",sale_activity_packing_invoice,Packing Invoice,Facture colisage,0
-model,"workflow.activity,name",sale_activity_packing_invoice_done,Packing Invoice Done,Facture colisage faite,0
-model,"workflow.activity,name",sale_activity_packing_invoice_exception,Packing Invoice Exception,Facture colisage en exception,0
-model,"workflow.activity,name",sale_activity_packing_invoice_method,Packing Invoice Method,Méthode facture colisage,0
-model,"workflow.activity,name",sale_activity_packing_invoice_method_done,Packing Invoice Method Done,Méthode facture colisage faite,0
-model,"workflow.activity,name",sale_activity_packing_method,Packing Method,Méthode de colisage,0
-model,"workflow.activity,name",sale_activity_packing_method_done,Packing Method Done,Méthode de colisage faite,0
+model,"workflow.activity,name",sale_activity_invoice_packing,Invoice Shipment,Facture expédition,0
+model,"workflow.activity,name",sale_activity_invoice_packing_done,Invoice Shipment Done,Facture expédition faite,0
+model,"workflow.activity,name",sale_activity_invoice_packing_exception,Invoice Shipment Exception,Facture expédition en exception,0
+model,"workflow.activity,name",sale_activity_invoice_packing_method,Invoice Shipment Method,Méthode facture expédition,0
+model,"workflow.activity,name",sale_activity_invoice_packing_method_done,Invoice Shipment Method Done,Méthode facture expédition faite,0
+model,"workflow.activity,name",sale_activity_packing,Shipment,Expédition,0
+model,"workflow.activity,name",sale_activity_packing_exception,Shipment Exception,Expédition en exception,0
+model,"workflow.activity,name",sale_activity_packing_invoice,Shipment Invoice,Facture expédition,0
+model,"workflow.activity,name",sale_activity_packing_invoice_done,Shipment Invoice Done,Facture expédition faite,0
+model,"workflow.activity,name",sale_activity_packing_invoice_exception,Shipment Invoice Exception,Facture expédition en exception,0
+model,"workflow.activity,name",sale_activity_packing_invoice_method,Shipment Invoice Method,Méthode facture expédition,0
+model,"workflow.activity,name",sale_activity_packing_invoice_method_done,Shipment Invoice Method Done,Méthode facture expédition faite,0
+model,"workflow.activity,name",sale_activity_packing_method,Shipment Method,Méthode d'expédition,0
+model,"workflow.activity,name",sale_activity_packing_method_done,Shipment Method Done,Méthode d'expédition faite,0
 model,"workflow.activity,name",sale_activity_quotation,Quotation,Devis,0
 model,"workflow.activity,name",sale_activity_waiting_invoice_sale,Waiting Invoice,Facture en attente,0
-model,"workflow.activity,name",sale_activity_waiting_invoice_packing,Waiting Invoice Packing,Facture colisage en attente,0
-model,"workflow.activity,name",sale_activity_waiting_packing,Waiting Packing,Colisage en attente,0
-model,"workflow.activity,name",sale_activity_waiting_packing_invoice,Waiting Packing Invoice,Facture colisage en attente,0
+model,"workflow.activity,name",sale_activity_waiting_invoice_packing,Waiting Invoice Shipment,Facture expédition en attente,0
+model,"workflow.activity,name",sale_activity_waiting_packing,Waiting Shipment,Expédition en attente,0
+model,"workflow.activity,name",sale_activity_waiting_packing_invoice,Waiting Shipment Invoice,Facture expédition en attente,0
 model,"workflow,name",sale_workflow,Sale workflow,Workflow de vente,0
 odt,sale.sale,0,Amount,Montant,0
 odt,sale.sale,0,Date:,Date :,0
@@ -122,7 +122,7 @@ selection,"sale.line,type",0,Subtotal,Sous-total,0
 selection,"sale.line,type",0,Title,Titre,0
 selection,"sale.sale,invoice_method",0,Manual,Manuel,0
 selection,"sale.sale,invoice_method",0,On Order Confirmed,A la confirmation de la commande,0
-selection,"sale.sale,invoice_method",0,On Packing Sent,A la livraison,0
+selection,"sale.sale,invoice_method",0,On Shipment Sent,A la livraison,0
 selection,"sale.sale,invoice_state",0,Exception,Exception,0
 selection,"sale.sale,invoice_state",0,None,Aucun,0
 selection,"sale.sale,invoice_state",0,Paid,Payé,0
@@ -148,11 +148,11 @@ view,sale.sale,0,Cancel,Annuler,0
 view,sale.sale,0,Confirm,Confirmer,0
 view,sale.sale,0,Draft,Brouillon,0
 view,sale.sale,0,Ignore Invoice Exception,Ignorer l'exception de facturation ,0
-view,sale.sale,0,Ignore Packing Exception,Ignorer l'exception de livraison,0
+view,sale.sale,0,Ignore Shipment Exception,Ignorer l'exception de livraison,0
 view,sale.sale,0,Invoices,Factures,0
 view,sale.sale,0,Lines,Lignes,0
 view,sale.sale,0,Other Info,Autre informations,0
-view,sale.sale,0,Packings,Colisages,0
+view,sale.sale,0,Shipments,Expéditions,0
 view,sale.sale,0,Quotation,Devis,0
 view,sale.sale,0,Sale,Vente,0
 view,sale.sale,0,Sales,Ventes,0
