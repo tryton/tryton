@@ -243,12 +243,12 @@ model,"stock.product_stock_date.init,name",0,Compute stock quantities,Quantités
 model,"workflow.activity,name",packingout_act_assigned,Assigned,Assigné,0
 model,"workflow.activity,name",packinginternal_act_assigned,Assigned,Assigné,0
 model,"workflow.activity,name",packing_in_return_act_assigned,Assigned,Assigné,0
-model,"workflow.activity,name",packingin_act_cancel,Cancel,Annulé,0
-model,"workflow.activity,name",packingout_act_cancel,Cancel,Annulé,0
-model,"workflow.activity,name",packinginternal_act_cancel,Cancel,Annulé,0
-model,"workflow.activity,name",packing_out_return_act_cancel,Cancel,Annuler,0
-model,"workflow.activity,name",packing_in_return_act_cancel,Cancel,Annuler,0
-model,"workflow.activity,name",inventory_act_cancel,Cancel,Annulé,0
+model,"workflow.activity,name",packingin_act_cancel,Canceled,Annulé,0
+model,"workflow.activity,name",packingout_act_cancel,Canceled,Annulé,0
+model,"workflow.activity,name",packinginternal_act_cancel,Canceled,Annulé,0
+model,"workflow.activity,name",packing_out_return_act_cancel,Canceled,Annuler,0
+model,"workflow.activity,name",packing_in_return_act_cancel,Canceled,Annuler,0
+model,"workflow.activity,name",inventory_act_cancel,Canceled,Annulé,0
 model,"workflow.activity,name",packingin_act_done,Done,Fait,0
 model,"workflow.activity,name",packingout_act_done,Done,Fait,0
 model,"workflow.activity,name",packinginternal_act_done,Done,Fait,0
@@ -282,7 +282,7 @@ odt,stock.packing.out,0,Phone:,Téléphone,0
 odt,stock.packing.out,0,Product,Produit,0
 odt,stock.packing.out,0,Quantity,Quantité,0
 odt,stock.packing.out,0,Reference:,Référence :,0
-selection,"stock.inventory,state",0,Cancel,Annulé,0
+selection,"stock.inventory,state",0,Canceled,Annulé,0
 selection,"stock.inventory,state",0,Done,Fait,0
 selection,"stock.inventory,state",0,Draft,Brouillon,0
 selection,"stock.location,type",0,Customer,Client,0
@@ -293,29 +293,29 @@ selection,"stock.location,type",0,Supplier,Fournisseur,0
 selection,"stock.location,type",0,View,Vue,0
 selection,"stock.location,type",0,Warehouse,Entrepôt,0
 selection,"stock.move,state",0,Assigned,Assigné,0
-selection,"stock.move,state",0,Cancel,Annulé,0
+selection,"stock.move,state",0,Canceled,Annulé,0
 selection,"stock.move,state",0,Done,Fait,0
 selection,"stock.move,state",0,Draft,Brouillon,0
 selection,"stock.packing.in.return,state",0,Assigned,Assigné,0
-selection,"stock.packing.in.return,state",0,Cancel,Annuler,0
+selection,"stock.packing.in.return,state",0,Canceled,Annuler,0
 selection,"stock.packing.in.return,state",0,Done,Fait,0
 selection,"stock.packing.in.return,state",0,Draft,Brouillon,0
 selection,"stock.packing.in.return,state",0,Waiting,En attente,0
-selection,"stock.packing.in,state",0,Cancel,Annulé,0
+selection,"stock.packing.in,state",0,Canceled,Annulé,0
 selection,"stock.packing.in,state",0,Done,Fait,0
 selection,"stock.packing.in,state",0,Draft,Brouillon,0
 selection,"stock.packing.in,state",0,Received,Reçu,0
 selection,"stock.packing.internal,state",0,Assigned,Assigné,0
-selection,"stock.packing.internal,state",0,Cancel,Annulé,0
+selection,"stock.packing.internal,state",0,Canceled,Annulé,0
 selection,"stock.packing.internal,state",0,Done,Fait,0
 selection,"stock.packing.internal,state",0,Draft,Brouillon,0
 selection,"stock.packing.internal,state",0,Waiting,En attente,0
-selection,"stock.packing.out.return,state",0,Cancel,Annuler,0
+selection,"stock.packing.out.return,state",0,Canceled,Annulé,0
 selection,"stock.packing.out.return,state",0,Done,Fait,0
 selection,"stock.packing.out.return,state",0,Draft,Brouillon,0
 selection,"stock.packing.out.return,state",0,Received,Reçu,0
 selection,"stock.packing.out,state",0,Assigned,Assigné,0
-selection,"stock.packing.out,state",0,Cancel,Annulé,0
+selection,"stock.packing.out,state",0,Canceled,Annulé,0
 selection,"stock.packing.out,state",0,Done,Fait,0
 selection,"stock.packing.out,state",0,Draft,Brouillon,0
 selection,"stock.packing.out,state",0,Packed,Emballé,0
