@@ -145,7 +145,7 @@ model,"purchase.purchase,name",0,Purchase,Achat,0
 model,"purchase.purchase-recreated-account.invoice,name",0,Purchase - Recreated Invoice,Achat - Facture recréée,0
 model,"res.group,name",group_purchase,Purchase,Achat,0
 model,"res.group,name",group_purchase_admin,Purchase Administrator,Administrateur d'achat,0
-model,"workflow.activity,name",purchase_activity_cancel,Cancel,Annulé,0
+model,"workflow.activity,name",purchase_activity_cancel,Canceled,Annulé,0
 model,"workflow.activity,name",purchase_activity_confirmed,Confirmed,Confirmé,0
 model,"workflow.activity,name",purchase_activity_done,Done,Fait,0
 model,"workflow.activity,name",purchase_activity_draft,Draft,Brouillon,0
@@ -198,7 +198,7 @@ selection,"purchase.purchase,packing_state",0,Exception,Exception,0
 selection,"purchase.purchase,packing_state",0,None,Aucun,0
 selection,"purchase.purchase,packing_state",0,Received,Reçu,0
 selection,"purchase.purchase,packing_state",0,Waiting,En attente,0
-selection,"purchase.purchase,state",0,Cancel,Annulé,0
+selection,"purchase.purchase,state",0,Canceled,Annulé,0
 selection,"purchase.purchase,state",0,Confirmed,Confirmé,0
 selection,"purchase.purchase,state",0,Done,Fait,0
 selection,"purchase.purchase,state",0,Draft,Brouillon,0
