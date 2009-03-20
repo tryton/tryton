@@ -1,6 +1,6 @@
 type,name,res_id,src,value,fuzzy
 error,product.uom,0,Rate and factor can not be both equal to zero.,Le taux et le facteur ne peuventt pas être égal à zéro.,0
-field,"product.category,childs",0,Childs,Enfants,0
+field,"product.category,childs",0,Children,Enfants,0
 field,"product.category,name",0,Name,Nom,0
 field,"product.category,parent",0,Parent,Parent,0
 field,"product.category,rec_name",0,Name,Nom,0
@@ -134,7 +134,7 @@ selection,"product.template,cost_price_method",0,Fixed,Fixe,0
 selection,"product.template,type",0,Consumable,Consommable,0
 selection,"product.template,type",0,Service,Service,0
 selection,"product.template,type",0,Stockable,Stockable,0
-view,product.category,0,Childs,Enfants,0
+view,product.category,0,Children,Enfants,0
 view,product.category,0,Product Categories,Catégories de Produit,0
 view,product.category,0,Product Category,Catégorie de Produit,0
 view,product.category,0,Properties,Propriétés,0
