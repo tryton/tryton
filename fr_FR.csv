@@ -43,7 +43,7 @@ field,"stock.inventory,rec_name",0,Name,Nom,0
 field,"stock.inventory,state",0,State,État,0
 field,"stock.location,active",0,Active,Actif,0
 field,"stock.location,address",0,Address,Adresse,0
-field,"stock.location,childs",0,Childs,Enfants,0
+field,"stock.location,childs",0,Children,Enfants,0
 field,"stock.location,code",0,Code,Code,0
 field,"stock.location,forecast_quantity",0,Forecast Quantity,Quantité prévisionnelle,0
 field,"stock.location,input_location",0,Input,Réception,0
