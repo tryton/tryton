@@ -8,7 +8,7 @@ sur des comptes inactifs ou de type vue!",0
 field,"account.move.line,analytic_lines",0,Analytic Lines,Lignes analytiques,0
 field,"analytic_account.account,active",0,Active,Actif,0
 field,"analytic_account.account,balance",0,Balance,Balance,0
-field,"analytic_account.account,childs",0,Childs,Enfants,0
+field,"analytic_account.account,childs",0,Children,Enfants,0
 field,"analytic_account.account,code",0,Code,Code,0
 field,"analytic_account.account,company",0,Company,Compagnie,0
 field,"analytic_account.account,complete_name",0,Name,Nom,0
