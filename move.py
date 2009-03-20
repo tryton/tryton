@@ -489,8 +489,8 @@ class Line(ModelSQL, ModelView):
             'modify_posted_move': 'You can not modify line from a posted move!',
             'modify_reconciled': 'You can not modify reconciled line!',
             'no_journal': 'No journal defined!',
-            'move_view_inactive_account': 'You can not create move line\n' \
-                    'on view/inactive account!',
+            'move_view_inactive_account': 'You can not create move lines\n' \
+                    'on view/inactive accounts!',
             'already_reconciled': 'Line "%s" (%d) already reconciled!',
             })
 
