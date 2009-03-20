@@ -652,7 +652,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="flow_stop" eval="True"/>
         </record>
         <record model="workflow.activity" id="invoice_activity_cancel">
-            <field name="name">Cancel</field>
+            <field name="name">Canceled</field>
             <field name="workflow" ref="invoice_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'state': 'cancel'})</field>

@@ -75,7 +75,7 @@ class PaymentTermLineType(ModelSQL, ModelView):
     def __init__(self):
         super(PaymentTermLineType, self).__init__()
         self._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'Code must be unique!'),
+            ('code_uniq', 'UNIQUE(code)', 'The code must be unique!'),
         ]
         self._order.insert(0, ('name', 'ASC'))
 
@@ -104,7 +104,7 @@ class PaymentTermLineDelay(ModelSQL, ModelView):
     def __init__(self):
         super(PaymentTermLineDelay, self).__init__()
         self._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'Code must be unique!'),
+            ('code_uniq', 'UNIQUE(code)', 'The code must be unique!'),
         ]
         self._order.insert(0, ('name', 'ASC'))
 

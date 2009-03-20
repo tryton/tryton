@@ -46,7 +46,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('proforma', 'Pro forma'),
-        ('open', 'Open'),
+        ('open', 'Opened'),
         ('paid', 'Paid'),
         ('cancel', 'Canceled'),
         ], 'State', readonly=True)
