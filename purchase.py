@@ -62,7 +62,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
     invoice_method = fields.Selection([
         ('manual', 'Manual'),
         ('order', 'Based On Order'),
-        ('packing', 'Based On Packing'),
+        ('packing', 'Based On Shipment'),
     ], 'Invoice Method', required=True, states=_STATES)
     invoice_state = fields.Selection([
         ('none', 'None'),
@@ -87,15 +87,15 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         ('waiting', 'Waiting'),
         ('received', 'Received'),
         ('exception', 'Exception'),
-    ], 'Packing State', readonly=True, required=True)
+    ], 'Shipment State', readonly=True, required=True)
     packings = fields.Function('get_function_fields', type='many2many',
-            relation='stock.packing.in', string='Packings')
+            relation='stock.packing.in', string='Shipments')
     moves = fields.Function('get_function_fields', type='many2many',
             relation='stock.move', string='Moves')
     packing_done = fields.Function('get_function_fields', type='boolean',
-            string='Packing Done')
+            string='Shipment Done')
     packing_exception = fields.Function('get_function_fields', type='boolean',
-            string='Packings Exception')
+            string='Shipments Exception')
 
     def __init__(self):
         super(Purchase, self).__init__()
@@ -1769,7 +1769,7 @@ OpenSupplier()
 
 
 class HandlePackingExceptionAsk(ModelView):
-    'Packing Exception Ask'
+    'Shipment Exception Ask'
     _name = 'purchase.handle.packing.exception.ask'
     _description = __doc__
 
@@ -1808,7 +1808,7 @@ class HandlePackingExceptionAsk(ModelView):
 HandlePackingExceptionAsk()
 
 class HandlePackingException(Wizard):
-    'Handle Packing Exception'
+    'Handle Shipment Exception'
     _name = 'purchase.handle.packing.exception'
     states = {
         'init': {

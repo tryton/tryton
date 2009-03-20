@@ -18,7 +18,7 @@ With the possibilities:
     - to define invoice method:
         - Manual
         - Based On Order
-        - Based On Packing
+        - Based On Shipment
 ''',
     'description_de_DE': ''' - Dient der Erstellung von Einkaufsvorgängen (Entwurf, Angebot, Auftrag).
  - Fügt den Artikeln Lieferanten und Einkaufsinformationen hinzu.
