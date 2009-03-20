@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="wizard_packing_handle_exception">
-            <field name="name">Handle Packing Exception</field>
+            <field name="name">Handle Shipment Exception</field>
             <field name="wiz_name">sale.handle.packing.exception</field>
             <field name="model">sale.sale</field>
         </record>
@@ -95,7 +95,7 @@ this repository contains the full copyright notices and license terms. -->
                                             icon="tryton-go-next"/>
                                     <button name="%(wizard_packing_handle_exception)d"
                                             type="action"
-                                            string="Handle Packing Exception"
+                                            string="Handle Shipment Exception"
                                             states="{'invisible': '''packing_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_sale)d not in groups'''}"
                                             icon="tryton-go-next"/>
                                     <button name="confirm" string="Confirm"
@@ -134,7 +134,7 @@ this repository contains the full copyright notices and license terms. -->
                               </tree>
                             </field>
                         </page>
-                        <page string="Packings" id="packings">
+                        <page string="Shipments" id="packings">
                             <separator name="moves" colspan="4"/>
                             <field name="moves" colspan="4">
                                 <tree string="Moves">
@@ -217,7 +217,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_packing_form">
-            <field name="name">Packings</field>
+            <field name="name">Shipments</field>
             <field name="res_model">stock.packing.out</field>
             <field name="view_type">form</field>
             <field name="domain">[("id", "in", packings)]</field>
@@ -408,36 +408,36 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action">write({'invoice_state': 'paid'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_packing_invoice_method">
-            <field name="name">Packing Invoice Method</field>
+            <field name="name">Shipment Invoice Method</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="split_mode">OR</field>
         </record>
         <record model="workflow.activity" id="sale_activity_packing_invoice">
-            <field name="name">Packing Invoice</field>
+            <field name="name">Shipment Invoice</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">create_packing()</field>
         </record>
         <record model="workflow.activity" id="sale_activity_waiting_packing_invoice">
-            <field name="name">Waiting Packing Invoice</field>
+            <field name="name">Waiting Shipment Invoice</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'packing_state': 'waiting'})&#10;create_packing()</field>
         </record>
         <record model="workflow.activity" id="sale_activity_packing_invoice_exception">
-            <field name="name">Packing Invoice Exception</field>
+            <field name="name">Shipment Invoice Exception</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'packing_state': 'exception'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_packing_invoice_done">
-            <field name="name">Packing Invoice Done</field>
+            <field name="name">Shipment Invoice Done</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'packing_state': 'sent'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_packing_invoice_method_done">
-            <field name="name">Packing Invoice Method Done</field>
+            <field name="name">Shipment Invoice Method Done</field>
             <field name="workflow" ref="sale_workflow"/>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_method_done">
@@ -445,64 +445,64 @@ this repository contains the full copyright notices and license terms. -->
             <field name="workflow" ref="sale_workflow"/>
         </record>
         <record model="workflow.activity" id="sale_activity_packing_method">
-            <field name="name">Packing Method</field>
+            <field name="name">Shipment Method</field>
             <field name="workflow" ref="sale_workflow"/>
         </record>
         <record model="workflow.activity" id="sale_activity_packing">
-            <field name="name">Packing</field>
+            <field name="name">Shipment</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">create_packing()</field>
         </record>
         <record model="workflow.activity" id="sale_activity_waiting_packing">
-            <field name="name">Waiting Packing</field>
+            <field name="name">Waiting Shipment</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'packing_state': 'waiting'})&#10;create_packing()</field>
         </record>
         <record model="workflow.activity" id="sale_activity_packing_exception">
-            <field name="name">Packing Exception</field>
+            <field name="name">Shipment Exception</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'packing_state': 'exception'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_packing_method">
-            <field name="name">Invoice Packing Method</field>
+            <field name="name">Invoice Shipment Method</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="split_mode">OR</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_packing">
-            <field name="name">Invoice Packing</field>
+            <field name="name">Invoice Shipment</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">create_invoice()&#10;write({'invoice_state': 'waiting'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_waiting_invoice_packing">
-            <field name="name">Waiting Invoice Packing</field>
+            <field name="name">Waiting Invoice Shipment</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'invoice_state': 'waiting', 'packing_state': 'sent'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_packing_exception">
-            <field name="name">Invoice Packing Exception</field>
+            <field name="name">Invoice Shipment Exception</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'invoice_state': 'exception'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_packing_done">
-            <field name="name">Invoice Packing Done</field>
+            <field name="name">Invoice Shipment Done</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'invoice_state': 'paid'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_packing_method_done">
-            <field name="name">Invoice Packing Method Done</field>
+            <field name="name">Invoice Shipment Method Done</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'packing_state': 'sent'})</field>
         </record>
         <record model="workflow.activity" id="sale_activity_packing_method_done">
-            <field name="name">Packing Method Done</field>
+            <field name="name">Shipment Method Done</field>
             <field name="workflow" ref="sale_workflow"/>
         </record>
         <record model="workflow.activity" id="sale_activity_done">
