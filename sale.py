@@ -46,7 +46,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             domain="[('party', '=', party)]", states={
                 'readonly': "state != 'draft'",
             })
-    packing_address = fields.Many2One('party.address', 'Packing Address',
+    packing_address = fields.Many2One('party.address', 'Shipment Address',
             domain="[('party', '=', party)]", states={
                 'readonly': "state != 'draft'",
             })
@@ -73,7 +73,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     invoice_method = fields.Selection([
         ('manual', 'Manual'),
         ('order', 'On Order Confirmed'),
-        ('packing', 'On Packing Sent'),
+        ('packing', 'On Shipment Sent'),
     ], 'Invoice Method', required=True, states={
         'readonly': "state != 'draft'",
         })
@@ -97,7 +97,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         ('manual', 'Manual'),
         ('order', 'On Order Confirmed'),
         ('invoice', 'On Invoice Paid'),
-    ], 'Packing Method', required=True, states={
+    ], 'Shipment Method', required=True, states={
         'readonly': "state != 'draft'",
         })
     packing_state = fields.Selection([
@@ -105,15 +105,15 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         ('waiting', 'Waiting'),
         ('sent', 'Sent'),
         ('exception', 'Exception'),
-    ], 'Packing State', readonly=True, required=True)
+    ], 'Shipment State', readonly=True, required=True)
     packings = fields.Function('get_function_fields', type='many2many',
-            relation='stock.packing.out', string='Packings')
+            relation='stock.packing.out', string='Shipments')
     moves = fields.Function('get_function_fields', type='many2many',
             relation='stock.move', string='Moves')
     packing_done = fields.Function('get_function_fields', type='boolean',
-            string='Packing Done')
+            string='Shipment Done')
     packing_exception = fields.Function('get_function_fields', type='boolean',
-            string='Packings Exception')
+            string='Shipments Exception')
 
     def __init__(self):
         super(Sale, self).__init__()
@@ -124,7 +124,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         ]
         self._error_messages.update({
             'wrong_method': 'Wrong combination of method!',
-            'addresses_required': 'Invoice and Packing addresses must be '
+            'addresses_required': 'Invoice and Shipment addresses must be '
             'defined for the quotation.',
         })
 
@@ -1602,7 +1602,7 @@ Invoice()
 
 
 class HandlePackingExceptionAsk(ModelView):
-    'Packing Exception Ask'
+    'Shipment Exception Ask'
     _name = 'sale.handle.packing.exception.ask'
     _description = __doc__
 
@@ -1639,7 +1639,7 @@ class HandlePackingExceptionAsk(ModelView):
 HandlePackingExceptionAsk()
 
 class HandlePackingException(Wizard):
-    'Handle Packing Exception'
+    'Handle Shipment Exception'
     _name = 'sale.handle.packing.exception'
     states = {
         'init': {
