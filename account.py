@@ -511,11 +511,11 @@ class Account(ModelSQL, ModelView):
         ]
         self._error_messages.update({
             'recursive_accounts': 'You can not create recursive accounts!',
-            'delete_account_with_move_line': 'You can not delete account ' \
-                    'with move line!',
+            'delete_account_containing_move_lines': 'You can not delete ' \
+                    'accounts containing move lines!',
         })
         self._sql_error_messages.update({
-            'parent_fkey': 'You can not delete account ' \
+            'parent_fkey': 'You can not delete accounts ' \
                     'that have children!',
         })
         self._order.insert(0, ('code', 'ASC'))
@@ -829,8 +829,8 @@ class Account(ModelSQL, ModelView):
         if move_line_obj.search(cursor, user, [
             ('account', 'in', account_ids),
             ], context=context):
-            self.raise_user_error(cursor, 'delete_account_with_move_line',
-                    context=context)
+            self.raise_user_error(cursor,
+                    'delete_account_containing_move_lines', context=context)
         return super(Account, self).delete(cursor, user, account_ids,
                 context=context)
 
@@ -983,7 +983,7 @@ class OpenChartAccountInit(ModelView):
     _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             help='Leave empty for all open fiscal year')
-    posted = fields.Boolean('Posted Move', help='Only posted move')
+    posted = fields.Boolean('Posted Move', help='Show only posted move')
 
     def default_posted(self, cursor, user, context=None):
         return False
@@ -1048,7 +1048,7 @@ class PrintGeneralLegderInit(ModelView):
             domain="[('fiscalyear', '=', fiscalyear), " \
                     "('start_date', '>=', (start_period, 'start_date'))]")
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Only posted move')
+    posted = fields.Boolean('Posted Move', help='Show only posted move')
     empty_account = fields.Boolean('Empty Account',
             help='With account without move')
 
@@ -1264,7 +1264,7 @@ class PrintTrialBalanceInit(ModelView):
                     "('start_date', '>=', (start_period, 'start_date'))]",
             depends=['start_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Only posted move')
+    posted = fields.Boolean('Posted Move', help='Show only posted move')
     empty_account = fields.Boolean('Empty Account',
             help='With account without move')
 
@@ -1419,7 +1419,7 @@ class OpenBalanceSheetInit(ModelView):
     _description = __doc__
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Only posted move')
+    posted = fields.Boolean('Posted Move', help='Show only posted move')
 
     def default_date(self, cursor, user, context=None):
         date_obj = self.pool.get('ir.date')
@@ -1518,7 +1518,7 @@ class OpenIncomeStatementInit(ModelView):
                     "('start_date', '>=', (start_period, 'start_date'))]",
             depends=['start_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Only posted move')
+    posted = fields.Boolean('Posted Move', help='Show only posted move')
 
     def default_fiscalyear(self, cursor, user, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
@@ -1908,7 +1908,7 @@ class OpenThirdPartyBalanceInit(ModelView):
     company = fields.Many2One('company.company', 'Company', required=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True)
-    posted = fields.Boolean('Posted Move', help='Only posted move')
+    posted = fields.Boolean('Posted Move', help='Show only posted move')
 
 
     def default_fiscalyear(self, cursor, user, context=None):
@@ -2037,7 +2037,7 @@ class OpenAgedBalanceInit(ModelView):
     term3 = fields.Integer("Third Term", required=True)
     unit = fields.Selection(
         [('day', 'Day'), ('month', 'Month')], "Unit", required=True)
-    posted = fields.Boolean('Posted Move', help='Only posted move')
+    posted = fields.Boolean('Posted Move', help='Show only posted move')
 
     def default_fiscalyear(self, cursor, user, context=None):
         fiscalyear_obj = self.pool.get('account.fiscalyear')

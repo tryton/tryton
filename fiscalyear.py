@@ -61,8 +61,8 @@ class FiscalYear(ModelSQL, ModelView):
                 'The balance of the account "%s" must be zero!',
             'close_error': 'You can not close a fiscal year until ' \
                     'there is older fiscal year opened!',
-            'reopen_error': 'You can not re-open a fiscal year until ' \
-                    'there is youngest fiscal year closed!',
+            'reopen_error': 'You can not reopen a fiscal year until ' \
+                    'there is more recent fiscal year closed!',
             })
 
     def default_state(self, cursor, user, context=None):

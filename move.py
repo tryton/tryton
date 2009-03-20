@@ -55,18 +55,18 @@ class Move(ModelSQL, ModelView):
         self._order.insert(0, ('date', 'DESC'))
         self._order.insert(1, ('reference', 'DESC'))
         self._error_messages.update({
-            'del_posted_move': 'You can not delete posted move!',
+            'del_posted_move': 'You can not delete posted moves!',
             'post_empty_move': 'You can not post an empty move!',
-            'post_unbalanced_move': 'You can not post a unbalanced move!',
+            'post_unbalanced_move': 'You can not post an unbalanced move!',
             'modify_posted_move': 'You can not modify a posted move ' \
                     'in this journal!',
             'period_centralized_journal': 'You can not create more than ' \
                     'one move per period\n' \
-                    'in centralized journal!',
-            'company_in_move': 'You can not create lines on account\n' \
-                    'from different company in the same move!',
+                    'in a centralized journal!',
+            'company_in_move': 'You can not create lines on accounts\n' \
+                    'of different companies in the same move!',
             'date_outside_period': 'You can not create move ' \
-                    'with date outside the period!',
+                    'with a date outside the period!',
             })
 
     def init(self, cursor, module_name):
@@ -486,8 +486,8 @@ class Line(ModelSQL, ModelView):
         self._error_messages.update({
             'add_modify_closed_journal_period': 'You can not ' \
                     'add/modify lines in a closed journal period!',
-            'modify_posted_move': 'You can not modify line from a posted move!',
-            'modify_reconciled': 'You can not modify reconciled line!',
+            'modify_posted_move': 'You can not modify lines of a posted move!',
+            'modify_reconciled': 'You can not modify reconciled lines!',
             'no_journal': 'No journal defined!',
             'move_view_inactive_account': 'You can not create move lines\n' \
                     'on view/inactive accounts!',
@@ -1689,7 +1689,7 @@ class PrintGeneralJournalInit(ModelView):
     from_date = fields.Date('From Date', required=True)
     to_date = fields.Date('To Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Only posted move')
+    posted = fields.Boolean('Posted Move', help='Show only posted move')
 
     def default_from_date(self, cursor, user, context=None):
         date_obj = self.pool.get('ir.date')

@@ -966,8 +966,8 @@ class Account(ModelSQL, ModelView):
     taxes = fields.Many2Many('account.account-account.tax',
             'account', 'tax', 'Default Taxes',
             domain="[('company', '=', company), ('parent', '=', False)]",
-            help='Default tax for manual encoding move lines \n' \
-                    'for journal type: "expense" and "revenue"',
+            help='Default tax for manual encoding of move lines \n' \
+                    'for journal types: "expense" and "revenue"',
             depends=['company'])
 
 Account()

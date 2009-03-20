@@ -52,10 +52,10 @@ class Period(ModelSQL, ModelView):
                     'a period from a closed fiscal year!',
             'change_post_move_sequence': 'You can not change ' \
                     'the post move sequence ' \
-                    'if there is already posted move in the period',
+                    'if there is already posted moves in the period',
             'close_period_non_posted_move': 'You can not close ' \
                     'a period with non posted moves!',
-            'periods_overlaps': 'You can not have 2 periods that overlaps!',
+            'periods_overlaps': 'You can not have two overlapping periods!',
             'check_move_sequence': 'You must have different ' \
                     'post move sequences per fiscal year ' \
                     'and in the same company!',
