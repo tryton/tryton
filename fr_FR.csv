@@ -4,7 +4,7 @@ error,purchase.request.create_purchase,0,Purchase price is missing for product: 
 error,purchase.request.create_purchase,0,This price is necessary for creating purchase.,Ce prix est nécessaire pour créer les achats.,0
 error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,La Quantité maximale doit être supérieure à la quantité minimale,0
 error,stock.order_point,0,Only one order point is allowed for each product-location pair.,Une seule règle d'approvisionnement est autorisée par paire produit-emplacement,0
-error,stock.order_point,0,You can not define two order point on the same product with opposite locations.,Vous ne pouvez pas définir deux règles d'approvisionnement sur le même produit avec des emplacement opposés,0
+error,stock.order_point,0,You can not define two order points on the same product with opposite locations.,Vous ne pouvez pas définir deux règles d'approvisionnement sur le même produit avec des emplacement opposés,0
 field,"product.product,order_points",0,Order Points,Règles d'approvisionnements,0
 field,"purchase.request,company",0,Company,Société,0
 field,"purchase.request,computed_quantity",0,Computed Quantity,Quantité calculée,0
