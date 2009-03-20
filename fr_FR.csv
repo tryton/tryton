@@ -37,12 +37,12 @@ model,"ir.ui.menu,name",menu_statements,Statements,Relevés,0
 model,"ir.ui.menu,name",menu_statement_configuration,Statements,Relevés,0
 model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Relevés validés,0
 model,"res.group,name",group_statement,Statement,Relevé,0
-model,"workflow.activity,name",statement_act_cancel,Cancel,Annulé,0
+model,"workflow.activity,name",statement_act_cancel,Canceled,Annulé,0
 model,"workflow.activity,name",statement_act_draft,Draft,Brouillon,0
 model,"workflow.activity,name",statement_act_posted,Posted,Posté,0
 model,"workflow.activity,name",statement_act_validated,Validated,Validé,0
 model,"workflow,name",wkf_statement,Statement,Relevé,0
-selection,"account.statement,state",0,Cancel,Annuler,0
+selection,"account.statement,state",0,Canceled,Annulé,0
 selection,"account.statement,state",0,Draft,Brouillon,0
 selection,"account.statement,state",0,Posted,Posté,0
 selection,"account.statement,state",0,Validated,Validé,0
