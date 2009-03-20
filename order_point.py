@@ -64,7 +64,7 @@ class OrderPoint(ModelSQL, ModelView):
         self._error_messages.update(
             {'unique_op': 'Only one order point is allowed '\
                  'for each product-location pair.',
-             'concurrent_internal_op': 'You can not define two order point '\
+             'concurrent_internal_op': 'You can not define two order points '\
                  'on the same product with opposite locations.',})
 
     def default_type(self, cursor, user, context=None):
