@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Packing"
+"Shipment"
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.report import CompanyReport
 from trytond.wizard import Wizard
@@ -13,7 +13,7 @@ STATES = {
 
 
 class PackingIn(ModelWorkflow, ModelSQL, ModelView):
-    "Supplier Packing"
+    "Supplier Shipment"
     _name = 'stock.packing.in'
     _description = __doc__
     _rec_name = 'code'
@@ -292,7 +292,7 @@ PackingIn()
 
 
 class PackingInReturn(ModelWorkflow, ModelSQL, ModelView):
-    "Supplier Return Packing"
+    "Supplier Return Shipment"
     _name = 'stock.packing.in.return'
     _description = __doc__
     _rec_name = 'code'
@@ -444,7 +444,7 @@ PackingInReturn()
 
 
 class PackingOut(ModelWorkflow, ModelSQL, ModelView):
-    "Customer Packing"
+    "Customer Shipment"
     _name = 'stock.packing.out'
     _description = __doc__
     _rec_name = 'code'
@@ -832,7 +832,7 @@ PackingOut()
 
 
 class PackingOutReturn(ModelWorkflow, ModelSQL, ModelView):
-    "Customer Return Packing"
+    "Customer Return Shipment"
     _name = 'stock.packing.out.return'
     _description = __doc__
     _rec_name = 'code'
@@ -1109,7 +1109,7 @@ PackingOutReturn()
 
 
 class AssignPackingOutAskForce(ModelView):
-    'Assign Packing Out Ask Force'
+    'Assign Shipment Out Ask Force'
     _name = 'stock.packing.out.assign.ask_force'
     _description = __doc__
 
@@ -1120,7 +1120,7 @@ AssignPackingOutAskForce()
 
 
 class AssignPackingOut(Wizard):
-    'Assign Packing Out'
+    'Assign Shipment Out'
     _name = 'stock.packing.out.assign'
     states = {
         'init': {
@@ -1179,7 +1179,7 @@ AssignPackingOut()
 
 
 class PackingInternal(ModelWorkflow, ModelSQL, ModelView):
-    "Internal Packing"
+    "Internal Shipment"
     _name = 'stock.packing.internal'
     _description = __doc__
     _rec_name = 'code'
@@ -1308,7 +1308,7 @@ Address()
 
 
 class AssignPackingInternalAskForce(ModelView):
-    'Assign Packing Internal Ask Force'
+    'Assign Shipment Internal Ask Force'
     _name = 'stock.packing.internal.assign.ask_force'
     _description = __doc__
 
@@ -1319,7 +1319,7 @@ AssignPackingInternalAskForce()
 
 
 class AssignPackingInternal(Wizard):
-    'Assign Packing Internal'
+    'Assign Shipment Internal'
     _name = 'stock.packing.internal.assign'
     states = {
         'init': {
@@ -1377,7 +1377,7 @@ AssignPackingInternal()
 
 
 class AssignPackingInReturnAskForce(ModelView):
-    'Assign Supplier Return Packing Ask Force'
+    'Assign Supplier Return Shipment Ask Force'
     _name = 'stock.packing.in.return.assign.ask_force'
     _description = __doc__
 
@@ -1388,7 +1388,7 @@ AssignPackingInReturnAskForce()
 
 
 class AssignPackingInReturn(Wizard):
-    'Assign Supplier Return Packing'
+    'Assign Supplier Return Shipment'
     _name = 'stock.packing.in.return.assign'
     states = {
         'init': {
@@ -1446,7 +1446,7 @@ AssignPackingInReturn()
 
 
 class CreatePackingOutReturn(Wizard):
-    'Create Customer Return Packing'
+    'Create Customer Return Shipment'
     _name = 'stock.packing.out.return.create'
     states = {
         'init': {

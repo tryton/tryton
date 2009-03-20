@@ -12,11 +12,11 @@
     'description': '''Stock Management and Inventory Control with:
     - Location definition
     - Stock move
-    - Packing Supplier / Customer / Internal
+    - Shipment: Supplier, Customer or Internal
     - Stock Inventory
 
 And with reports:
-    - Customer Packing
+    - Customer Shipment
     - Products by Locations
 ''',
     'description_de_DE': '''Lagerverwaltung und Bestandskontrolle mit:

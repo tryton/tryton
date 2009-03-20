@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.action.act_window" id="act_packing_out_form2">
-            <field name="name">Customer Packings</field>
+            <field name="name">Customer Shipments</field>
             <field name="res_model">stock.packing.out</field>
             <field name="view_type">form</field>
             <field name="domain">[("customer", "=", active_id)]</field>
@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_packing_out_form3">
-            <field name="name">Supplier Packings</field>
+            <field name="name">Supplier Shipments</field>
             <field name="res_model">stock.packing.in</field>
             <field name="view_type">form</field>
             <field name="domain">[("supplier", "=", active_id)]</field>
