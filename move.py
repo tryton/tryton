@@ -37,16 +37,16 @@ class Move(ModelSQL, ModelView):
             required=True, states=STATES,
             domain="[('type', 'not in', " \
                     "('warehouse', 'view'))]")
-    packing_in = fields.Many2One('stock.packing.in', 'Supplier Packing',
+    packing_in = fields.Many2One('stock.packing.in', 'Supplier Shipment',
             readonly=True, select=1)
-    packing_out = fields.Many2One('stock.packing.out', 'Customer Packing',
+    packing_out = fields.Many2One('stock.packing.out', 'Customer Shipment',
             readonly=True, select=1)
     packing_out_return = fields.Many2One('stock.packing.out.return',
-            'Customer Return Packing', readonly=True, select=1)
+            'Customer Return Shipment', readonly=True, select=1)
     packing_in_return = fields.Many2One('stock.packing.in.return',
-            'Supplier Return Packing', readonly=True, select=1)
+            'Supplier Return Shipment', readonly=True, select=1)
     packing_internal = fields.Many2One('stock.packing.internal',
-            'Internal Packing', readonly=True, select=1)
+            'Internal Shipment', readonly=True, select=1)
     planned_date = fields.Date("Planned Date", states=STATES, select=2)
     effective_date = fields.Date("Effective Date", readonly=True, select=2)
     state = fields.Selection([
@@ -87,7 +87,7 @@ class Move(ModelSQL, ModelView):
             ('check_packing_in_out',
                 'CHECK(NOT(packing_in IS NOT NULL ' \
                         'AND packing_out IS NOT NULL))',
-                'Move can not be in both Supplier and Customer Packing'),
+                'Move can not be in both Supplier and Customer Shipment'),
         ]
         self._constraints += [
             ('check_product_type', 'service_product'),

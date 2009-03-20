@@ -4,13 +4,13 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
 
-        <!--Packing in view-->
+        <!--Shipment in view-->
         <record model="ir.ui.view" id="packing_in_view_form">
             <field name="model">stock.packing.in</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Supplier Packing" col="4" cursor="supplier">
+                    <form string="Supplier Shipment" col="4" cursor="supplier">
                         <label name="reference"/>
                         <field name="reference"/>
                         <label name="code"/>
@@ -72,7 +72,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Supplier Packings">
+                    <tree string="Supplier Shipments">
                         <field name="code" select="1"/>
                         <field name="reference" select="1"/>
                         <field name="planned_date" select="2"/>
@@ -85,7 +85,7 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
         <record model="ir.action.act_window" id="act_packing_in_form">
-            <field name="name">Supplier Packings</field>
+            <field name="name">Supplier Shipments</field>
             <field name="res_model">stock.packing.in</field>
             <field name="view_type">form</field>
         </record>
@@ -105,7 +105,7 @@ this repository contains the full copyright notices and license terms. -->
             action="act_packing_in_form" id="menu_packing_in_form"/>
 
         <record model="ir.action.act_window" id="act_packing_in_form2">
-            <field name="name">New Supplier Packing</field>
+            <field name="name">New Supplier Shipment</field>
             <field name="res_model">stock.packing.in</field>
             <field name="view_type">form</field>
         </record>
@@ -146,9 +146,9 @@ this repository contains the full copyright notices and license terms. -->
             action="act_packing_in_form_received"
             id="menu_packing_in_received"/>
 
-        <!-- Packing In Return view-->
+        <!-- Shipment In Return view-->
         <record model="ir.action.wizard" id="wizard_packing_in_return_assign">
-            <field name="name">Assign Purchase Return Packing</field>
+            <field name="name">Assign Purchase Return Shipment</field>
             <field name="wiz_name">stock.packing.in.return.assign</field>
             <field name="model">stock.packing.in.return</field>
         </record>
@@ -158,7 +158,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Supplier Return Packing" col="4" cursor="from_location">
+                    <form string="Supplier Return Shipment" col="4" cursor="from_location">
                         <label name="reference"/>
                         <field name="reference"/>
                         <label name="code"/>
@@ -204,7 +204,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Supplier Return Packings">
+                    <tree string="Supplier Return Shipments">
                         <field name="code" select="1"/>
                         <field name="reference" select="2"/>
                         <field name="planned_date" select="2"/>
@@ -217,7 +217,7 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
         <record model="ir.action.act_window" id="act_packing_in_return_form">
-            <field name="name">Supplier Return Packings</field>
+            <field name="name">Supplier Return Shipments</field>
             <field name="res_model">stock.packing.in.return</field>
             <field name="view_type">form</field>
         </record>
@@ -238,7 +238,7 @@ this repository contains the full copyright notices and license terms. -->
                   id="menu_packing_in_return_form"/>
 
         <record model="ir.action.act_window" id="act_packing_in_return_new_form">
-            <field name="name">New Supplier Return Packing</field>
+            <field name="name">New Supplier Return Shipment</field>
             <field name="res_model">stock.packing.in.return</field>
             <field name="view_type">form</field>
         </record>
@@ -282,9 +282,9 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <!--Packing out view-->
+        <!--Shipment out view-->
         <record model="ir.action.wizard" id="wizard_packing_out_assign">
-            <field name="name">Assign Packing Out</field>
+            <field name="name">Assign Shipment Out</field>
             <field name="wiz_name">stock.packing.out.assign</field>
             <field name="model">stock.packing.out</field>
         </record>
@@ -294,7 +294,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Customer Packing" col="4" cursor="customer">
+                    <form string="Customer Shipment" col="4" cursor="customer">
                         <label name="reference"/>
                         <field name="reference"/>
                         <label name="code"/>
@@ -354,7 +354,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Customer Packings">
+                    <tree string="Customer Shipments">
                         <field name="code" select="1"/>
                         <field name="reference" select="1"/>
                         <field name="planned_date" select="2"/>
@@ -368,7 +368,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="create_packing_out_return">
-            <field name="name">Create Return Packing</field>
+            <field name="name">Create Return Shipment</field>
             <field name="wiz_name">stock.packing.out.return.create</field>
             <field name="model">stock.packing.out</field>
         </record>
@@ -379,7 +379,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_packing_out_form">
-            <field name="name">Customer Packings</field>
+            <field name="name">Customer Shipments</field>
             <field name="res_model">stock.packing.out</field>
             <field name="view_type">form</field>
         </record>
@@ -399,7 +399,7 @@ this repository contains the full copyright notices and license terms. -->
             action="act_packing_out_form" id="menu_packing_out_form"/>
 
         <record model="ir.action.act_window" id="act_packing_out_form_waiting">
-            <field name="name">Customer Packings Waiting Assignation</field>
+            <field name="name">Customer Shipments Waiting Assignation</field>
             <field name="res_model">stock.packing.out</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'waiting')]</field>
@@ -422,7 +422,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.act_window"
                   id="act_packing_out_form_assigned">
-            <field name="name">Assigned Customer Packings</field>
+            <field name="name">Assigned Customer Shipments</field>
             <field name="res_model">stock.packing.out</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'assigned')]</field>
@@ -444,7 +444,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_packing_out_assigned"/>
 
         <record model="ir.action.act_window" id="act_packing_out_form_ready">
-            <field name="name">Customer Packings Ready for Shipping</field>
+            <field name="name">Customer Shipments Ready for Shipping</field>
             <field name="res_model">stock.packing.out</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'packed')]</field>
@@ -488,9 +488,9 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <!--Internal Packing view-->
+        <!--Internal Shipment view-->
         <record model="ir.action.wizard" id="wizard_packing_internal_assign">
-            <field name="name">Assign Packing Internal</field>
+            <field name="name">Assign Shipment Internal</field>
             <field name="wiz_name">stock.packing.internal.assign</field>
             <field name="model">stock.packing.internal</field>
         </record>
@@ -500,7 +500,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Internal Packing" col="4" cursor="from_location">
+                    <form string="Internal Shipment" col="4" cursor="from_location">
                         <label name="reference"/>
                         <field name="reference"/>
                         <label name="code"/>
@@ -546,7 +546,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Internal Packings">
+                    <tree string="Internal Shipments">
                         <field name="code" select="1"/>
                         <field name="reference" select="2"/>
                         <field name="planned_date" select="2"/>
@@ -559,7 +559,7 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
         <record model="ir.action.act_window" id="act_packing_internal_form">
-            <field name="name">Internal Packings</field>
+            <field name="name">Internal Shipments</field>
             <field name="res_model">stock.packing.internal</field>
             <field name="view_type">form</field>
         </record>
@@ -580,7 +580,7 @@ this repository contains the full copyright notices and license terms. -->
                   id="menu_packing_internal_form"/>
 
         <record model="ir.action.act_window" id="act_packing_internal_new_form">
-            <field name="name">New Internal Packing</field>
+            <field name="name">New Internal Shipment</field>
             <field name="res_model">stock.packing.internal</field>
             <field name="view_type">form</field>
         </record>
@@ -601,7 +601,7 @@ this repository contains the full copyright notices and license terms. -->
                   id="menu_packing_internal_new_form"/>
 
         <record model="ir.action.act_window" id="act_packing_internal_draft_form">
-            <field name="name">Draft Internal Packings</field>
+            <field name="name">Draft Internal Shipments</field>
             <field name="res_model">stock.packing.internal</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'draft')]</field>
@@ -623,7 +623,7 @@ this repository contains the full copyright notices and license terms. -->
                   id="menu_packing_internal_draft_form"/>
 
         <record model="ir.action.act_window" id="act_packing_internal_waiting_form">
-            <field name="name">Internal Packings Waiting Assignation</field>
+            <field name="name">Internal Shipments Waiting Assignation</field>
             <field name="res_model">stock.packing.internal</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'waiting')]</field>
@@ -645,7 +645,7 @@ this repository contains the full copyright notices and license terms. -->
                   id="menu_packing_internal_waiting_form"/>
 
         <record model="ir.action.act_window" id="act_packing_internal_assigned_form">
-            <field name="name">Assigned Internal Packings</field>
+            <field name="name">Assigned Internal Shipments</field>
             <field name="res_model">stock.packing.internal</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'assigned')]</field>
@@ -690,13 +690,13 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <!--Return Packing Out view-->
+        <!--Return Shipment Out view-->
         <record model="ir.ui.view" id="packing_out_return_view_form">
             <field name="model">stock.packing.out.return</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Customer Return Packing" col="4" cursor="customer">
+                    <form string="Customer Return Shipment" col="4" cursor="customer">
                         <label name="reference"/>
                         <field name="reference"/>
                         <label name="code"/>
@@ -758,7 +758,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Customer Return Packings">
+                    <tree string="Customer Return Shipments">
                         <field name="code" select="1"/>
                         <field name="reference" select="1"/>
                         <field name="state" select="1"/>
@@ -772,7 +772,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_packing_out_return_form">
-            <field name="name">Customer Return Packings</field>
+            <field name="name">Customer Return Shipments</field>
             <field name="res_model">stock.packing.out.return</field>
             <field name="view_type">form</field>
         </record>
@@ -793,7 +793,7 @@ this repository contains the full copyright notices and license terms. -->
                   id="menu_packing_out_return_form"/>
 
         <record model="ir.action.act_window" id="act_packing_out_return_form2">
-            <field name="name">New Customer Return Packing</field>
+            <field name="name">New Customer Return Shipment</field>
             <field name="res_model">stock.packing.out.return</field>
             <field name="view_type">form</field>
         </record>
@@ -814,7 +814,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- Workflow packing in -->
         <record model="workflow" id="wkf_packingin">
-            <field name="name">Supplier Packing</field>
+            <field name="name">Supplier Shipment</field>
             <field name="osv">stock.packing.in</field>
             <field name="on_create">True</field>
         </record>
@@ -883,7 +883,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- Workflow packing out -->
         <record model="workflow" id="wkf_packingout">
-            <field name="name">Customer Packing</field>
+            <field name="name">Customer Shipment</field>
             <field name="osv">stock.packing.out</field>
             <field name="on_create">True</field>
         </record>
@@ -1016,7 +1016,7 @@ this repository contains the full copyright notices and license terms. -->
 
 
         <record model="ir.action.report" id="report_packing_out">
-            <field name="name">Customer Packing</field>
+            <field name="name">Customer Shipment</field>
             <field name="model">stock.packing.out</field>
             <field name="report_name">stock.packing.out</field>
             <field name="report">stock/packing_out.odt</field>
@@ -1032,7 +1032,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- Workflow internal packing -->
         <record model="workflow" id="wkf_packinginternal">
-            <field name="name">Internal Packing</field>
+            <field name="name">Internal Shipment</field>
             <field name="osv">stock.packing.internal</field>
             <field name="on_create">True</field>
         </record>
@@ -1143,7 +1143,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- Workflow packing out return -->
         <record model="workflow" id="wkf_packing_out_return">
-            <field name="name">Customer Return Packing</field>
+            <field name="name">Customer Return Shipment</field>
             <field name="osv">stock.packing.out.return</field>
             <field name="on_create">True</field>
         </record>
@@ -1211,7 +1211,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- Workflow purchase return packing -->
         <record model="workflow" id="wkf_packing_in_return">
-            <field name="name">Supplier Return Packing</field>
+            <field name="name">Supplier Return Shipment</field>
             <field name="osv">stock.packing.in.return</field>
             <field name="on_create">True</field>
         </record>
@@ -1315,51 +1315,51 @@ this repository contains the full copyright notices and license terms. -->
 
         <!-- Sequence packing out -->
         <record model="ir.sequence.type" id="sequence_type_packing_out">
-                <field name="name">Customer Packing</field>
+                <field name="name">Customer Shipment</field>
                 <field name="code">stock.packing.out</field>
         </record>
         <record model="ir.sequence" id="sequence_packing_out">
-                <field name="name">Customer Packing</field>
+                <field name="name">Customer Shipment</field>
                 <field name="code">stock.packing.out</field>
         </record>
 
         <!-- Sequence packing in -->
         <record model="ir.sequence.type" id="sequence_type_packing_in">
-                <field name="name">Supplier Packing</field>
+                <field name="name">Supplier Shipment</field>
                 <field name="code">stock.packing.in</field>
         </record>
         <record model="ir.sequence" id="sequence_packing_in">
-                <field name="name">Supplier Packing</field>
+                <field name="name">Supplier Shipment</field>
                 <field name="code">stock.packing.in</field>
         </record>
 
         <!-- Sequence packing internal -->
         <record model="ir.sequence.type" id="sequence_type_packing_internal">
-                <field name="name">Internal Packing</field>
+                <field name="name">Internal Shipment</field>
                 <field name="code">stock.packing.internal</field>
         </record>
         <record model="ir.sequence" id="sequence_packing_internal">
-                <field name="name">Internal Packing</field>
+                <field name="name">Internal Shipment</field>
                 <field name="code">stock.packing.internal</field>
         </record>
 
         <!-- Sequence packing out return-->
         <record model="ir.sequence.type" id="sequence_type_packing_out_return">
-                <field name="name">Customer Return Packing</field>
+                <field name="name">Customer Return Shipment</field>
                 <field name="code">stock.packing.out.return</field>
         </record>
         <record model="ir.sequence" id="sequence_packing_out_return">
-                <field name="name">Customer Return Packing</field>
+                <field name="name">Customer Return Shipment</field>
                 <field name="code">stock.packing.out.return</field>
         </record>
 
         <!-- Sequence packing in return -->
         <record model="ir.sequence.type" id="sequence_type_packing_in_return">
-                <field name="name">Supplier Return Packing</field>
+                <field name="name">Supplier Return Shipment</field>
                 <field name="code">stock.packing.in.return</field>
         </record>
         <record model="ir.sequence" id="sequence_packing_in_return">
-                <field name="name">Supplier Return Packing</field>
+                <field name="name">Supplier Return Shipment</field>
                 <field name="code">stock.packing.in.return</field>
         </record>
 
