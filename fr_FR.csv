@@ -57,7 +57,7 @@ field,"account.account-account.tax,rec_name",0,Name,Nom,0
 field,"account.account-account.tax,tax",0,Tax,Taxe,0
 field,"account.account,active",0,Active,Actif,0
 field,"account.account,balance",0,Balance,Balance,0
-field,"account.account,childs",0,Childs,Enfants,0
+field,"account.account,childs",0,Children,Enfants,0
 field,"account.account,code",0,Code,Code,0
 field,"account.account,company",0,Company,Société,0
 field,"account.account.create_chart_account.account,account_template",0,Account Template,Compte modèle,0
@@ -123,7 +123,7 @@ field,"account.account,taxes",0,Default Taxes,Taxes par défaut,0
 field,"account.account.template-account.tax.template,account",0,Account Template,Compte modèle,0
 field,"account.account.template-account.tax.template,rec_name",0,Name,Nom,0
 field,"account.account.template-account.tax.template,tax",0,Tax Template,Modèle de taxe,0
-field,"account.account.template,childs",0,Childs,Enfants,0
+field,"account.account.template,childs",0,Children,Enfants,0
 field,"account.account.template,code",0,Code,Code,0
 field,"account.account.template,deferral",0,Deferral,Report,0
 field,"account.account.template,kind",0,Kind,Genre,0
@@ -136,7 +136,7 @@ field,"account.account.template,type",0,Type,Type,0
 field,"account.account,type",0,Type,Type,0
 field,"account.account.type,amount",0,Amount,Montant,0
 field,"account.account.type,balance_sheet",0,Balance Sheet,Bilan,0
-field,"account.account.type,childs",0,Childs,Enfants,0
+field,"account.account.type,childs",0,Children,Enfants,0
 field,"account.account.type,company",0,Company,Société,0
 field,"account.account.type,currency_digits",0,Currency Digits,Décimal de la devise,0
 field,"account.account.type,display_balance",0,Display Balance,Afficher la balance,0
@@ -146,7 +146,7 @@ field,"account.account.type,parent",0,Parent,Parent,0
 field,"account.account.type,rec_name",0,Name,Nom,0
 field,"account.account.type,sequence",0,Sequence,Séquence,0
 field,"account.account.type.template,balance_sheet",0,Balance Sheet,Bilan,0
-field,"account.account.type.template,childs",0,Childs,Enfants,0
+field,"account.account.type.template,childs",0,Children,Enfants,0
 field,"account.account.type.template,display_balance",0,Display Balance,Afficher la balance,0
 field,"account.account.type.template,income_statement",0,Income Statement,Compte de résultat,0
 field,"account.account.type.template,name",0,Name,Nom,0
@@ -255,9 +255,9 @@ field,"account.period,state",0,State,État,0
 field,"account.period,type",0,Type,Type,0
 field,"account.tax,active",0,Active,Actif,0
 field,"account.tax,amount",0,Amount,Montant,0
-field,"account.tax,childs",0,Childs,Enfants,0
+field,"account.tax,childs",0,Children,Enfants,0
 field,"account.tax.code,active",0,Active,Actif,0
-field,"account.tax.code,childs",0,Childs,Enfants,0
+field,"account.tax.code,childs",0,Children,Enfants,0
 field,"account.tax.code,code",0,Code,Code,0
 field,"account.tax.code,company",0,Company,Société,0
 field,"account.tax.code,currency_digits",0,Currency Digits,Décimal de la devise,0
@@ -266,7 +266,7 @@ field,"account.tax.code,parent",0,Parent,Parent,0
 field,"account.tax.code,rec_name",0,Name,Nom,0
 field,"account.tax.code,sum",0,Sum,Somme,0
 field,"account.tax.code.template,account",0,Account Template,Compte modèle,0
-field,"account.tax.code.template,childs",0,Childs,Enfants,0
+field,"account.tax.code.template,childs",0,Children,Enfants,0
 field,"account.tax.code.template,code",0,Code,Code,0
 field,"account.tax.code.template,name",0,Name,Nom,0
 field,"account.tax.code.template,parent",0,Parent,Parent,0
@@ -301,7 +301,7 @@ field,"account.tax,rec_name",0,Name,Nom,0
 field,"account.tax,sequence",0,Sequence,Séquence,0
 field,"account.tax.template,account",0,Account Template,Compte modèle,0
 field,"account.tax.template,amount",0,Amount,Montant,0
-field,"account.tax.template,childs",0,Childs,Enfants,0
+field,"account.tax.template,childs",0,Children,Enfants,0
 field,"account.tax.template,credit_note_account",0,Credit Note Account,Compte note de crédit,0
 field,"account.tax.template,credit_note_base_code",0,Credit Note Base Code,Code base note de crédit,0
 field,"account.tax.template,credit_note_base_sign",0,Credit Note Base Sign,Signe base note de crédit,0
