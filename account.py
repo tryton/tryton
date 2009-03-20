@@ -40,7 +40,7 @@ class FiscalYear(ModelSQL, ModelView):
                     'the invoice sequence if there is already ' \
                     'an invoice opened in the fiscalyear',
             'different_invoice_sequence': 'You must have different ' \
-                    'invoice sequence per fiscal year!',
+                    'invoice sequences per fiscal year!',
             })
 
     def check_invoice_sequences(self, cursor, user, ids):

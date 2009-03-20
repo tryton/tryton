@@ -112,9 +112,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         self._order.insert(1, ('id', 'DESC'))
         self._error_messages.update({
             'reset_draft': 'You can not reset to draft ' \
-                    'an invoice that have move!',
+                    'an invoice that has move!',
             'missing_tax_line': 'Taxes defined ' \
-                    'but not in invoice lines!\n' \
+                    'but not on invoice lines!\n' \
                     'Re-compute the invoice.',
             'diff_tax_line': 'Base taxes ' \
                     'different from invoice lines!\n' \
@@ -124,20 +124,20 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     'Re-compute the invoice.',
             'no_invoice_sequence': 'There is no invoice sequence ' \
                     'on the period/fiscal year!',
-            'modify_invoice': 'You can not modify invoice that is ' \
+            'modify_invoice': 'You can not modify an invoice that is ' \
                     'open, paid or canceled!',
-            'same_debit_account': 'Debit account on journal is ' \
+            'same_debit_account': 'The debit account on journal is ' \
                     'the same than the invoice account!',
             'missing_debit_account': 'The debit account on journal is ' \
                     'missing!',
-            'same_credit_account': 'Credit account on journal is ' \
+            'same_credit_account': 'The credit account on journal is ' \
                     'the same than the invoice account!',
             'missing_credit_account': 'The credit account on journal is ' \
                     'missing!',
             'account_different_company': 'You can not create an invoice\n' \
                     'with account from a different invoice company!',
             'same_account_on_line': 'You can not use the same account\n' \
-                    'than on invoice line account!',
+                    'as on invoice line!',
             })
 
     def default_type(self, cursor, user, context=None):
@@ -1224,9 +1224,9 @@ class InvoiceLine(ModelSQL, ModelView):
             'create': 'You can not add a line to an invoice ' \
                     'that is open, paid or canceled!',
             'account_different_company': 'You can not create invoice line\n' \
-                    'with account from a different invoice company!',
+                    'with account with a different invoice company!',
             'same_account_on_invoice': 'You can not use the same account\n' \
-                    'than the invoice account!',
+                    'as on the invoice!',
             })
 
     def init(self, cursor, module_name):
