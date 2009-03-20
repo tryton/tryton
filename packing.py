@@ -63,7 +63,7 @@ class PackingIn(ModelWorkflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
         ('received', 'Received'),
         ], 'State', readonly=True)
 
@@ -322,7 +322,7 @@ class PackingInReturn(ModelWorkflow, ModelSQL, ModelView):
         )
     state = fields.Selection([
         ('draft', 'Draft'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
         ('assigned', 'Assigned'),
         ('waiting', 'Waiting'),
         ('done', 'Done'),
@@ -490,7 +490,7 @@ class PackingOut(ModelWorkflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
         ('assigned', 'Assigned'),
         ('packed', 'Packed'),
         ('waiting', 'Waiting'),
@@ -878,7 +878,7 @@ class PackingOutReturn(ModelWorkflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
         ('received', 'Received'),
         ], 'State', readonly=True)
 
@@ -1211,7 +1211,7 @@ class PackingInternal(ModelWorkflow, ModelSQL, ModelView):
         )
     state = fields.Selection([
         ('draft', 'Draft'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
         ('assigned', 'Assigned'),
         ('waiting', 'Waiting'),
         ('done', 'Done'),

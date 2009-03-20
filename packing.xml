@@ -828,7 +828,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="packingin_act_cancel">
             <field name="workflow" ref="wkf_packingin"/>
             <field name="flow_stop">True</field>
-            <field name="name">Cancel</field>
+            <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>
@@ -897,7 +897,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="packingout_act_cancel">
             <field name="workflow" ref="wkf_packingout"/>
             <field name="flow_stop">True</field>
-            <field name="name">Cancel</field>
+            <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>
@@ -1046,7 +1046,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="packinginternal_act_cancel">
             <field name="workflow" ref="wkf_packinginternal"/>
             <field name="flow_stop">True</field>
-            <field name="name">Cancel</field>
+            <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>
@@ -1157,7 +1157,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="packing_out_return_act_cancel">
             <field name="workflow" ref="wkf_packing_out_return"/>
             <field name="flow_stop">True</field>
-            <field name="name">Cancel</field>
+            <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>
@@ -1225,7 +1225,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="packing_in_return_act_cancel">
             <field name="workflow" ref="wkf_packing_in_return"/>
             <field name="flow_stop">True</field>
-            <field name="name">Cancel</field>
+            <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>

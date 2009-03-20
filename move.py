@@ -53,7 +53,7 @@ class Move(ModelSQL, ModelView):
         ('draft', 'Draft'),
         ('assigned', 'Assigned'),
         ('done', 'Done'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
         ], 'State', select=1, readonly=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             states={
