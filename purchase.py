@@ -30,7 +30,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         ('quotation', 'Quotation'),
         ('confirmed', 'Confirmed'),
         ('done', 'Done'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
     ], 'State', readonly=True, required=True)
     purchase_date = fields.Date('Purchase Date', required=True, states=_STATES)
     payment_term = fields.Many2One('account.invoice.payment_term',
