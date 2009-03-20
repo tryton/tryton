@@ -72,7 +72,7 @@ model,"ir.ui.menu,name",menu_sale_form,Sales,Ventes,0
 model,"res.group,name",group_sale,Sale,Vente,0
 model,"sale.line,name",0,Sale Line,Ligne de vente,0
 model,"sale.sale,name",0,Sale,Vente,0
-model,"workflow.activity,name",sale_activity_cancel,Cancel,Annulé,0
+model,"workflow.activity,name",sale_activity_cancel,Canceled,Annulé,0
 model,"workflow.activity,name",sale_activity_confirmed,Confirmed,Confirmé,0
 model,"workflow.activity,name",sale_activity_done,Done,Fait,0
 model,"workflow.activity,name",sale_activity_draft,Draft,Brouillon,0
@@ -134,7 +134,7 @@ selection,"sale.sale,packing_state",0,Exception,Exception,0
 selection,"sale.sale,packing_state",0,None,Aucun,0
 selection,"sale.sale,packing_state",0,Sent,Envoyé,0
 selection,"sale.sale,packing_state",0,Waiting,En attente,0
-selection,"sale.sale,state",0,Cancel,Annulé,0
+selection,"sale.sale,state",0,Canceled,Annulé,0
 selection,"sale.sale,state",0,Confirmed,Confirmé,0
 selection,"sale.sale,state",0,Done,Fait,0
 selection,"sale.sale,state",0,Draft,Brouillon,0
