@@ -98,7 +98,7 @@ class Template(ModelSQL, ModelView):
         super(Template, self).__init__()
         self._error_messages.update({
             'missing_account': 'There is no account ' \
-                    'expense/revenue define on the product ' \
+                    'expense/revenue defined on the product ' \
                     '%s (%d)',
             })
 
