@@ -26,7 +26,7 @@ class Type(ModelSQL, ModelView):
     def __init__(self):
         super(Type, self).__init__()
         self._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'Code must be unique!'),
+            ('code_uniq', 'UNIQUE(code)', 'The code must be unique!'),
         ]
         self._order.insert(0, ('code', 'ASC'))
 

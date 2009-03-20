@@ -982,7 +982,7 @@ class OpenChartAccountInit(ModelView):
     _name = 'account.account.open_chart_account.init'
     _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            help='Keep empty for all open fiscal year')
+            help='Leave empty for all open fiscal year')
     posted = fields.Boolean('Posted Move', help='Only posted move')
 
     def default_posted(self, cursor, user, context=None):

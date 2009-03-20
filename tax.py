@@ -18,7 +18,7 @@ class Group(ModelSQL, ModelView):
     def __init__(self):
         super(Group, self).__init__()
         self._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'Code must be unique!'),
+            ('code_uniq', 'UNIQUE(code)', 'The code must be unique!'),
         ]
 
 Group()
@@ -42,7 +42,7 @@ class CodeTemplate(ModelSQL, ModelView):
             ('check_recursion', 'recursive_tax_code'),
         ]
         self._error_messages.update({
-            'recursive_tax_code': 'You can not create recursive tax code!',
+            'recursive_tax_code': 'You can not create recursive tax codes!',
         })
         self._order.insert(0, ('code', 'ASC'))
         self._order.insert(0, ('account', 'ASC'))
@@ -136,7 +136,7 @@ class Code(ModelSQL, ModelView):
             ('check_recursion', 'recursive_tax_code'),
         ]
         self._error_messages.update({
-            'recursive_tax_code': 'You can not create recursive tax code!',
+            'recursive_tax_code': 'You can not create recursive tax codes!',
         })
         self._order.insert(0, ('code', 'ASC'))
 
@@ -280,12 +280,12 @@ class OpenChartCodeInit(ModelView):
         ('periods', 'By Periods'),
         ], 'Method', required=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            help='Keep empty for all open fiscal year',
+            help='Leave empty for all open fiscal year',
             states={
                 'invisible': "method != 'fiscalyear'",
             }, depends=['method'])
     periods = fields.Many2Many('account.period', None, None, 'Periods',
-            help='Keep empty for all periods of all open fiscal year',
+            help='Leave empty for all periods of all open fiscal year',
             states={
                 'invisible': "method != 'periods'",
             }, depends=['method'])
@@ -551,14 +551,14 @@ class Tax(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True)
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
             domain="[('company', '=', company)]",
-            help='Keep empty to use the default invoice account',
+            help='Leave empty to use the default invoice account',
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "type != 'none' and company",
             }, depends=['company'])
     credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
             domain="[('company', '=', company)]",
-            help='Keep empty to use the default credit_note account',
+            help='Leave empty to use the default credit_note account',
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "type != 'none' and company",
