@@ -126,6 +126,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'wrong_method': 'Wrong combination of method!',
             'addresses_required': 'Invoice and Shipment addresses must be '
             'defined for the quotation.',
+            'missing_account_receivable': 'It misses ' \
+                    'an "Account Receivable" on the party "%s"!',
         })
 
     def default_payment_term(self, cursor, user, context=None):
@@ -713,6 +715,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
         sale = self.browse(cursor, user, sale_id, context=context)
 
+        if not sale.party.account_receivable:
+            self.raise_user_error(cursor, 'missing_account_receivable',
+                    error_args=(sale.party.rec_name,), context=context)
+
         invoice_lines = self._get_invoice_line_sale_line(cursor, user, sale,
                 context=context)
         if not invoice_lines:
@@ -937,9 +943,11 @@ class SaleLine(ModelSQL, ModelView):
         super(SaleLine, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
         self._error_messages.update({
-            'missing_account_revenue': 'It misses ' \
-                    'an "account_revenue" default property!',
             'customer_location_required': 'The customer location is required!',
+            'missing_account_revenue': 'It misses ' \
+                    'an "Account Revenue" on product "%s"!',
+            'missing_account_revenue_property': 'It misses ' \
+                    'an "account_revenue" default property!',
             })
 
     def init(self, cursor, module_name):
@@ -1189,6 +1197,9 @@ class SaleLine(ModelSQL, ModelView):
         res['taxes'] = [('set', [x.id for x in line.taxes])]
         if line.product:
             res['account'] = line.product.account_revenue_used.id
+            if not res['account']:
+                self.raise_user_error(cursor, 'missing_account_revenue',
+                        error_args=(line.product.rec_name,), context=context)
         else:
             for model in ('product.template', 'product.category'):
                 res['account'] = property_obj.get(cursor, user,
@@ -1196,8 +1207,8 @@ class SaleLine(ModelSQL, ModelView):
                 if res['account']:
                     break
             if not res['account']:
-                self.raise_user_error(cursor, 'missing_account_revenue',
-                        context=context)
+                self.raise_user_error(cursor,
+                        'missing_account_revenue_property', context=context)
         return [res]
 
     def copy(self, cursor, user, ids, default=None, context=None):
