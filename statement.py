@@ -29,7 +29,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('validated', 'Validated'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
         ('posted', 'Posted'),
         ], 'State', readonly=True, select=1)
     move_lines = fields.Function('get_move_lines', type='one2many',

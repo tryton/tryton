@@ -219,7 +219,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="workflow" ref="wkf_statement"/>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
-            <field name="name">Cancel</field>
+            <field name="name">Canceled</field>
             <field name="flow_stop" eval="True"/>
         </record>
         <record model="workflow.transition" id="statement_trans_draft_validated">
