@@ -104,6 +104,8 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         self._error_messages.update({
                 'invoice_addresse_required': 'Invoice addresses must be '
                 'defined for the quotation.',
+                'missing_account_payable': 'It misses ' \
+                        'an "Account Payable" on the party "%s"!',
             })
 
     def default_payment_term(self, cursor, user, context=None):
@@ -666,6 +668,10 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
 
         purchase = self.browse(cursor, user, purchase_id, context=context)
 
+        if not purchase.party.account_payable:
+            self.raise_user_error(cursor, 'missing_account_payable',
+                    error_args=(purchase.party.rec_name,), context=context)
+
         invoice_lines = self._get_invoice_line_purchase_line(cursor, user,
                 purchase, context=context)
         if not invoice_lines:
@@ -843,6 +849,8 @@ class PurchaseLine(ModelSQL, ModelView):
         self._error_messages.update({
             'supplier_location_required': 'The supplier location is required!',
             'missing_account_expense': 'It misses ' \
+                    'an "Account Expense" on product "%s"!',
+            'missing_account_expense_property': 'It misses ' \
                     'an "account_expense" default property!',
             })
 
@@ -1094,6 +1102,9 @@ class PurchaseLine(ModelSQL, ModelView):
         res['taxes'] = [('set', [x.id for x in line.taxes])]
         if line.product:
             res['account'] = line.product.account_expense_used.id
+            if not res['account']:
+                self.raise_user_error(cursor, 'missing_account_expense',
+                        error_args=(line.product.rec_name,), context=context)
         else:
             for model in ('product.template', 'product.category'):
                 res['account'] = property_obj.get(cursor, user,
@@ -1101,8 +1112,8 @@ class PurchaseLine(ModelSQL, ModelView):
                 if res['account']:
                     break
             if not res['account']:
-                self.raise_user_error(cursor, 'missing_account_expense',
-                        context=context)
+                self.raise_user_error(cursor,
+                        'missing_account_expense_property', context=context)
         return [res]
 
     def copy(self, cursor, user, ids, default=None, context=None):
