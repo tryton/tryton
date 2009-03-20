@@ -45,7 +45,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         super(PurchaseRequest, self).__init__()
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
-            'create_request': 'Purchase request are only created by the system.',
+            'create_request': 'Purchase requests are only created by the system.',
             })
 
     def get_rec_name(self, cursor, user, ids, name, arg, context=None):
