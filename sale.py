@@ -27,7 +27,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         ('quotation', 'Quotation'),
         ('confirmed', 'Confirmed'),
         ('done', 'Done'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
     ], 'State', readonly=True, required=True)
     sale_date = fields.Date('Sale Date', required=True, states={
         'readonly': "state != 'draft'",
