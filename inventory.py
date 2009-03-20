@@ -35,7 +35,7 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
         ], 'State', readonly=True, select=1)
 
     def __init__(self):

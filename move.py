@@ -53,7 +53,7 @@ class Move(ModelSQL, ModelView):
         ('draft', 'Draft'),
         ('assigned', 'Assigned'),
         ('done', 'Done'),
-        ('cancel', 'Cancel'),
+        ('cancel', 'Canceled'),
         ], 'State', select=1, readonly=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             states={
@@ -98,7 +98,7 @@ class Move(ModelSQL, ModelView):
             'set_state_assigned': 'You can not set state to assigned!',
             'set_state_done': 'You can not set state to done!',
             'del_draft_cancel': 'You can only delete draft or cancelled moves!',
-            'service_product': 'You can not use service product for a move!',
+            'service_product': 'You can not use service products for a move!',
             })
 
     def default_planned_date(self, cursor, user, context=None):

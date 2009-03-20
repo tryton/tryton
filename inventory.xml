@@ -138,7 +138,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="inventory_act_cancel">
             <field name="workflow" ref="wkf_inventory"/>
             <field name="flow_stop">True</field>
-            <field name="name">Cancel</field>
+            <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>
