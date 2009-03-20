@@ -16,7 +16,7 @@ field,"party.address,streetbis",0,Street (bis),Rue (bis),0
 field,"party.address,subdivision",0,Subdivision,Subdivision,0
 field,"party.address,zip",0,Zip,Code Postal,0
 field,"party.category,active",0,Active,Actif,0
-field,"party.category,childs",0,Childs,Enfants,0
+field,"party.category,childs",0,Children,Enfants,0
 field,"party.category,name",0,Name,Nom,0
 field,"party.category,parent",0,Parent,Parent,0
 field,"party.category,rec_name",0,Name,Nom,0
