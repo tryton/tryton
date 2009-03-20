@@ -48,7 +48,7 @@ class InvoiceLine(ModelSQL, ModelView):
             fields_names2 = fields_names
 
         res = super(InvoiceLine, self).read(cursor, user, ids,
-                fields_names=fields_names, context=context)
+                fields_names=fields_names2, context=context)
 
         if not fields_names:
             fields_names = list(set(self._columns.keys() \
