@@ -1,37 +1,38 @@
 type,name,res_id,src,value,fuzzy
 error,account.fiscalyear,0,You can not change the invoice sequence if there is already an invoice opened in the fiscalyear,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung im laufenden Buchungsjahr eröffnet wurde.",0
-error,account.fiscalyear,0,You must have different invoice sequence per fiscal year!,Verschiedene Geschäftsjahre erfordern unterschiedliche Rechnungssequenzen!,0
+error,account.fiscalyear,0,You must have different invoice sequences per fiscal year!,Für unterschiedliche Geschäftsjahre müssen jeweils eigene Rechnungssequenzen erstellt werden!,0
 error,account.invoice,0,"Base taxes different from invoice lines!
 Re-compute the invoice.",Steuern stimmen nicht mit den Rechnungspositionen überein!,0
-error,account.invoice,0,Credit account on journal is the same than the invoice account!,Haben-Konto im Journal und Rechnungskonto sind identisch!,0
-error,account.invoice,0,Debit account on journal is the same than the invoice account!,Soll-Konto im Journal und Rechnungskonto sind identisch!,0
-error,account.invoice,0,"Taxes defined but not in invoice lines!
-Re-compute the invoice.","Steuern sind definiert, allerdings nicht in den Rechnungspositionen!
-",0
+error,account.invoice,0,"Taxes defined but not on invoice lines!
+Re-compute the invoice.","Es sind Steuern definiert, allerdings nicht in den Rechnungspositionen!
+Bitte lassen Sie die Rechnung erneut berechnen.",0
 error,account.invoice,0,"Taxes defined on invoice lines but not on invoice!
 Re-compute the invoice.","Steuern sind für die Rechnungspositionen definiert, allerdings nicht für die Rechnung selbst!
 ",0
 error,account.invoice,0,The credit account on journal is missing!,Haben-Konto im Journal fehlt!,0
+error,account.invoice,0,The credit account on journal is the same than the invoice account!,Das Habenkonto des Journals ist das selbe wie das Rechnungskonto!,0
 error,account.invoice,0,The debit account on journal is missing!,Soll-Konto im Journal fehlt,0
+error,account.invoice,0,The debit account on journal is the same than the invoice account!,Das Sollkonto des Journals ist das selbe wie das Rechnungskonto!,0
 error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,Rechnungsnummern-Sequenz für diese Periode oder dieses Buchungsjahr fehlt!,0
 error,account.invoice,0,"You can not create an invoice
 with account from a different invoice company!",Es können keine Rechnungen mit einem Konto von einer anderen rechnungsstellenden Firma angelegt werden,0
-error,account.invoice,0,"You can not modify invoice that is open, paid or canceled!","Fakturierte, bezahlte oder annullierte Rechnungen können nicht verändert werden!",0
-error,account.invoice,0,You can not reset to draft an invoice that have move!,"Rechnungen die bereits gebucht sind, können nicht auf Vorlage zurückgesetzt werden!",0
+error,account.invoice,0,"You can not modify an invoice that is open, paid or canceled!","Fakturierte, Bezahlte oder Annulierte Rechnungen können nicht geändert werden!",0
+error,account.invoice,0,You can not reset to draft an invoice that has move!,"Eine Rechnung, die Buchungen enthält, kann nicht auf Entwurf zurückgesetzt werden!",0
 error,account.invoice,0,"You can not use the same account
-than on invoice line account!",Es darf nicht das selbe Konto benutzt werden wie in den Rechnungspositionen,0
+as on invoice line!",Es kann nicht das selbe Konto verwendet werden!,0
 error,account.invoice.line,0,"Line with ""line"" type must have an account!","Eine Zeile vom Typ ""Position"" muss einem Konto zugeordnet sein!",0
 error,account.invoice.line,0,"Line without ""line"" type must have an invoice!","Eine Zeile, die nicht vom Typ ""Position"" ist, muss einer Rechnung zugeordnet sein!",0
 error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert kann keine neue Position hinzugefügt werden!",0
 error,account.invoice.line,0,"You can not create invoice line
-with account from a different invoice company!",Rechnungszeile kann nicht erstellt werden: das Konto ist einer anderen rechnungsstellenden Firma zugeordnet,0
+with account with a different invoice company!","Eine Rechnungszeile kann sich nicht
+auf ein Konto eines anderen Unternehmens beziehen!",0
 error,account.invoice.line,0,"You can not modify line from an invoice that is open, paid or canceled!","In einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert können Positionen nicht bearbeitet werden!",0
 error,account.invoice.line,0,"You can not use the same account
-than the invoice account!",Es darf nicht das selbe Konto benutzt werden wie das Rechnungskonto!,0
+as on the invoice!",Es kann nicht das selbe Konto verwendet werden!,0
 error,account.invoice.payment_term,0,Invalid payment term line!,Ungültige Position in Zahlungsbedingung!,0
 error,account.invoice.payment_term,0,Payment term missing a remainder line!,In der Zahlungsbedingung fehlt eine Restbetragszeile!,0
-error,account.invoice.payment_term.line.delay,0,Code must be unique!,Der Code kann nicht mehrfach vergeben werden!,0
-error,account.invoice.payment_term.line.type,0,Code must be unique!,Der Code kann nicht mehrfach vergeben werden!,0
+error,account.invoice.payment_term.line.delay,0,The code must be unique!,Code kann nicht mehrfach vergeben werden!,0
+error,account.invoice.payment_term.line.type,0,The code must be unique!,Code kann nicht mehrfach vergeben werden!,0
 error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert kann keine neue Position hinzugefügt werden!",0
 error,account.invoice.tax,0,"You can not modify tax from an invoice that is open, paid or canceled!","In Rechnungen mit dem Status Fakturiert, Bezahlt oder Annulliert können Steuern nicht bearbeitet werden!",0
 error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung in der laufenden Periode eröffnet wurde.",0
@@ -87,12 +88,16 @@ field,"account.invoice,party",0,Party,Partei,0
 field,"account.invoice,party_lang",0,Party Language,Sprache Partei,0
 field,"account.invoice.pay_invoice.ask,account",0,Account,Konto,0
 field,"account.invoice.pay_invoice.ask,account_writeoff",0,Account,Konto,0
-field,"account.invoice.pay_invoice.ask,amount",0,Amount,Betrag,0
+field,"account.invoice.pay_invoice.ask,amount",0,Payment Amount,Betrag,0
+field,"account.invoice.pay_invoice.ask,amount_writeoff",0,Write-Off Amount,Betrag Ausbuchung,0
 field,"account.invoice.pay_invoice.ask,company",0,Company,Unternehmen,0
-field,"account.invoice.pay_invoice.ask,currency",0,Currency,Währung,0
-field,"account.invoice.pay_invoice.ask,currency_digits",0,Currency Digits,Stellen Währung,0
+field,"account.invoice.pay_invoice.ask,currency",0,Payment Currency,Währung,0
+field,"account.invoice.pay_invoice.ask,currency_digits",0,Payment Currency Digits,Stellen Währung,0
+field,"account.invoice.pay_invoice.ask,currency_digits_writeoff",0,Write-Off Currency Digits,Stellen Währung Ausbuchung,0
+field,"account.invoice.pay_invoice.ask,currency_writeoff",0,Write-Off Currency,Währung Ausbuchung,0
 field,"account.invoice.pay_invoice.ask,date",0,Date,Datum,0
 field,"account.invoice.pay_invoice.ask,description",0,Description,Beschreibung,0
+field,"account.invoice.pay_invoice.ask,invoice",0,Invoice,Rechnung,0
 field,"account.invoice.pay_invoice.ask,journal",0,Journal,Journal,0
 field,"account.invoice.pay_invoice.ask,journal_writeoff",0,Journal,Journal,0
 field,"account.invoice.pay_invoice.ask,lines",0,Lines,Positionen,0
@@ -189,6 +194,7 @@ model,"ir.action,name",report_invoice,Invoice,Rechnung,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung / Gutschrift drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",act_invoice_out_invoice_form2,Invoices,Kundenrechnungen,0
+model,"ir.action,name",act_invoice_form2,Invoices,Rechnungsausgang,0
 model,"ir.action,name",act_invoice_out_credit_note_form5,Opened Credit Notes,Fakturierte Kundengutschriften,0
 model,"ir.action,name",act_invoice_out_invoice_form5,Opened Invoices,Fakturierte Kundenrechnungen,0
 model,"ir.action,name",act_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Fakturierte Lieferantengutschriften,0
@@ -210,7 +216,7 @@ model,"ir.ui.menu,name",menu_invoice_out_credit_note_form3,Draft Credit Notes,En
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form3,Draft Invoices,Entwürfe Kundenrechnungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Entwürfe Lieferantengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form3,Draft Supplier Invoices,Entwürfe Lieferantenrechnungen,0
-model,"ir.ui.menu,name",,Invoices,Rechnungen,0
+model,"ir.ui.menu,name",,Invoices,Rechnungsausgang,0
 model,"ir.ui.menu,name",menu_invoices,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Neue Gutschrift an Kunden,0
@@ -229,7 +235,7 @@ model,"ir.ui.menu,name",menu_invoice_in_credit_note_form4,Pro Forma Supplier Cre
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form4,Pro Forma Supplier Invoices,Pro Forma Lieferantenrechnungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form,Supplier Credit Notes,Gutschriften von Lieferanten,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form,Supplier Invoices,Rechnungseingang,0
-model,"workflow.activity,name",invoice_activity_cancel,Cancel,Annullieren,0
+model,"workflow.activity,name",invoice_activity_cancel,Canceled,Annulliert,0
 model,"workflow.activity,name",invoice_activity_draft,Draft,Entwurf,0
 model,"workflow.activity,name",invoice_activity_open,Open,Fakturieren,0
 model,"workflow.activity,name",invoice_activity_paid,Paid,Bezahlt,0
@@ -276,7 +282,7 @@ selection,"account.invoice.pay_invoice.ask,type",0,Partial Payment,Teilzahlung,0
 selection,"account.invoice.pay_invoice.ask,type",0,Write-Off,Ausbuchung,0
 selection,"account.invoice,state",0,Canceled,Annulliert,0
 selection,"account.invoice,state",0,Draft,Entwurf,0
-selection,"account.invoice,state",0,Open,Fakturiert,0
+selection,"account.invoice,state",0,Opened,Fakturiert,0
 selection,"account.invoice,state",0,Paid,Bezahlt,0
 selection,"account.invoice,state",0,Pro forma,Pro Forma,0
 selection,"account.invoice,type",0,Credit Note,Gutschrift an Kunde,0
