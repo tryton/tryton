@@ -10,7 +10,7 @@ field,"analytic_account.account-analytic_account.account.selection,account",0,Ac
 field,"analytic_account.account-analytic_account.account.selection,rec_name",0,Name,Name,0
 field,"analytic_account.account-analytic_account.account.selection,selection",0,Selection,Auswahl,0
 field,"analytic_account.account,balance",0,Balance,Bilanz,0
-field,"analytic_account.account,childs",0,Childs,Untergeordnet (Analytische Konten),0
+field,"analytic_account.account,childs",0,Children,Untergeordnet (Analytische Konten),0
 field,"analytic_account.account,code",0,Code,Code,0
 field,"analytic_account.account,company",0,Company,Unternehmen,0
 field,"analytic_account.account,credit",0,Credit,Haben,0
