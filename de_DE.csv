@@ -3,19 +3,19 @@ error,stock.inventory.line,0,Line quantity must be positive!,Anzahl der Position
 error,stock.inventory.line,0,Product must be unique by inventory!,Ein Artikel kann in einem Lagerbestand nicht mehrfach vergeben werden!,0
 error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,"Ein Lagerort mit zugordneten Bewegungen kann nicht zu einem Typ geändert werden, der keine Bewegungen unterstützt.",0
 error,stock.location,0,You can not create recursive locations!,Lagerorte können nicht rekursiv angelegt werden!,0
-error,stock.move,0,Move can not be in both Supplier and Customer Packing,Eine Bewegung kann nicht in Lieferanten- und Kundenlieferung erfolgen,0
+error,stock.move,0,Move can not be in both Supplier and Customer Shipment,Diese Bewegung kann nicht gleichzeitig in Lieferanten- und Kundenlieferschein sein!,0
 error,stock.move,0,Move quantity must be positive,Zu bewegende Anzahl muss positiv sein,0
 error,stock.move,0,Source and destination location must be different,Herkunfts- und Bestimmungsort müssen unterschiedlich sein,0
 error,stock.move,0,You can not set state to assigned!,Status kann nicht auf Zugewiesen gesetzt werden!,0
 error,stock.move,0,You can not set state to done!,Status kann nicht auf Erledigt gesetzt werden!,0
 error,stock.move,0,You can not set state to draft!,"Status ""Entwurf"" kann nicht gesetzt werden!",0
-error,stock.move,0,You can not use service product for a move!,Der Bestand einer Dienstleistung kann nicht geändert werden!,0
+error,stock.move,0,You can not use service products for a move!,Dienstleistungen können nicht in Warenbewegungen verwendet werden!,0
 error,stock.move,0,You can only delete draft or cancelled moves!,"Nur Bewegungen mit Status ""Entwurf"" oder ""Abgebrochen"" können gelöscht werden!",0
 error,stock.packing.in,0,Incoming Moves must have the warehouse input location as destination location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Zielort haben!,0
 error,stock.packing.in,0,Inventory Moves must have the warehouse input location as source location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Herkunftsort haben!,0
 error,stock.packing.out.return,0,Incoming Moves must have the warehouse input location as destination location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Zielort haben!,0
 error,stock.packing.out.return,0,Inventory Moves must have the warehouse input location as source location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Herkunftsort haben!,0
-error,stock.packing.out.return.create,0,The packing with code %s is not yet sent.,Der Lieferschein mit Code %s ist noch nicht erledigt.,0
+error,stock.packing.out.return.create,0,The packing with code %s is not yet sent.,Der Lieferposten mit Code %s ist noch nicht erledigt.,0
 error,stock.packing.out.return.create,0,You can not create return packing,Warenrücknahme nicht möglich,0
 field,"party.address,delivery",0,Delivery,Lieferadresse,0
 field,"party.party,customer_location",0,Customer Location,Lagerort Kunde,0
@@ -43,7 +43,7 @@ field,"stock.inventory,rec_name",0,Name,Name,0
 field,"stock.inventory,state",0,State,Status,0
 field,"stock.location,active",0,Active,Aktiv,0
 field,"stock.location,address",0,Address,Adresse,0
-field,"stock.location,childs",0,Childs,Untergeordnet (Lagerorte),0
+field,"stock.location,childs",0,Children,Untergeordnet (Lagerorte),0
 field,"stock.location,code",0,Code,Code,0
 field,"stock.location,forecast_quantity",0,Forecast Quantity,Voraussichtliche Anzahl,0
 field,"stock.location,input_location",0,Input,Eingang,0
@@ -62,11 +62,11 @@ field,"stock.move,cost_price",0,Cost Price,Einkaufspreis,0
 field,"stock.move,currency",0,Currency,Währung,0
 field,"stock.move,effective_date",0,Effective Date,Effektives Datum,0
 field,"stock.move,from_location",0,From Location,Von Lagerort,0
-field,"stock.move,packing_in",0,Supplier Packing,Lieferschein von Lieferant,0
-field,"stock.move,packing_in_return",0,Supplier Return Packing,Warenrückgabe,0
-field,"stock.move,packing_internal",0,Internal Packing,Interner Lieferschein,0
-field,"stock.move,packing_out",0,Customer Packing,Lieferschein an Kunde,0
-field,"stock.move,packing_out_return",0,Customer Return Packing,Warenrücknahme,0
+field,"stock.move,packing_in",0,Supplier Shipment,Lieferposten von Lieferant,0
+field,"stock.move,packing_in_return",0,Supplier Return Shipment,Warenrückgabe,0
+field,"stock.move,packing_internal",0,Internal Shipment,Interner Lieferposten,0
+field,"stock.move,packing_out",0,Customer Shipment,Lieferposten an Kunde,0
+field,"stock.move,packing_out_return",0,Customer Return Shipment,Warenrücknahme,0
 field,"stock.move,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.move,product",0,Product,Artikel,0
 field,"stock.move,quantity",0,Quantity,Anzahl,0
@@ -149,60 +149,62 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 * ein leerer Wert ist ein unbegrenztes Datum in der Zukunft
 * ein Datum in der Vergangenheit berechnet historische Werte
 ",0
-model,"ir.action,name",act_packing_out_form_assigned,Assigned Customer Packings,Zugewiesene Kundenlieferscheine,0
-model,"ir.action,name",act_packing_internal_assigned_form,Assigned Internal Packings,Zugewiesene Interne Lieferscheine,0
-model,"ir.action,name",wizard_packing_internal_assign,Assign Packing Internal,Zuweisung Lieferschein Intern,0
-model,"ir.action,name",wizard_packing_out_assign,Assign Packing Out,Zuweisung Lieferschein Ausgehend,0
-model,"ir.action,name",wizard_packing_in_return_assign,Assign Purchase Return Packing,Zuweisung Lieferschein Warenrückgabe,0
+model,"ir.action,name",act_packing_out_form_assigned,Assigned Customer Shipments,Zugewiesene Lieferposten an Kunden,0
+model,"ir.action,name",act_packing_internal_assigned_form,Assigned Internal Shipments,Zugewiesene Interne Lieferposten,0
+model,"ir.action,name",wizard_packing_in_return_assign,Assign Purchase Return Shipment,Zuweisung Lieferposten Warenrückgabe,0
+model,"ir.action,name",wizard_packing_internal_assign,Assign Shipment Internal,Zuweisung Lieferposten Intern,0
+model,"ir.action,name",wizard_packing_out_assign,Assign Shipment Out,Zuweisung Lieferposten Ausgehend,0
 model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Lagerbestandspositionen komplettieren,0
-model,"ir.action,name",create_packing_out_return,Create Return Packing,Erstellung Warenrückgabe,0
-model,"ir.action,name",report_packing_out,Customer Packing,Lieferschein an Kunde,0
-model,"ir.action,name",act_packing_out_form,Customer Packings,Lieferscheine an Kunden,0
-model,"ir.action,name",act_packing_out_form_ready,Customer Packings Ready for Shipping,Versandbereite Lieferscheine an Kunden,0
-model,"ir.action,name",act_packing_out_form_waiting,Customer Packings Waiting Assignation,Zuzuweisende Lieferscheine an Kunden,0
-model,"ir.action,name",act_packing_out_return_form,Customer Return Packings,Warenrücknahmen,0
-model,"ir.action,name",act_packing_internal_draft_form,Draft Internal Packings,Entwürfe (Interne Lieferscheine),0
+model,"ir.action,name",create_packing_out_return,Create Return Shipment,Erstellung Warenrückgabe,0
+model,"ir.action,name",act_packing_out_return_form,Customer Return Shipments,Warenrücknahmen (von Kunden),0
+model,"ir.action,name",report_packing_out,Customer Shipment,Lieferposten an Kunde,0
+model,"ir.action,name",act_packing_out_form,Customer Shipments,Lieferposten an Kunden,0
+model,"ir.action,name",act_packing_out_form2,Customer Shipments,Lieferposten an Kunden,0
+model,"ir.action,name",act_packing_out_form_ready,Customer Shipments Ready for Shipping,Versandbereite Lieferposten an Kunden,0
+model,"ir.action,name",act_packing_out_form_waiting,Customer Shipments Waiting Assignation,Zuzuweisende Lieferposten an Kunden,0
+model,"ir.action,name",act_packing_internal_draft_form,Draft Internal Shipments,Entwürfe (Interne Lieferposten),0
 model,"ir.action,name",act_location_form,Edit Locations,Lagerorte bearbeiten,0
-model,"ir.action,name",act_packing_internal_form,Internal Packings,Interne Lieferscheine,0
-model,"ir.action,name",act_packing_internal_waiting_form,Internal Packings Waiting Assignation,Zuzuweisende Interne Lieferscheine,0
+model,"ir.action,name",act_packing_internal_form,Internal Shipments,Interne Lieferposten,0
+model,"ir.action,name",act_packing_internal_waiting_form,Internal Shipments Waiting Assignation,Zuzuweisende Interne Lieferposten,0
 model,"ir.action,name",act_inventory_form,Inventories,Lagerbestände,0
 model,"ir.action,name",act_location_tree,Locations,Lagerorte,0
 model,"ir.action,name",act_move_form,Moves,Lagerbewegungen,0
 model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Bewegungen von Lieferanten,0
 model,"ir.action,name",act_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Erwartete Bewegungen von Lieferanten,0
 model,"ir.action,name",act_move_form_cust,Moves to Customers,Bewegungen zu Kunden,0
-model,"ir.action,name",act_packing_out_return_form2,New Customer Return Packing,Neue Warenrücknahme (von Kunde),0
-model,"ir.action,name",act_packing_internal_new_form,New Internal Packing,Neuer Interner Lieferschein,0
-model,"ir.action,name",act_packing_in_form2,New Supplier Packing,Neuer Lieferschein von Lieferant,0
-model,"ir.action,name",act_packing_in_return_new_form,New Supplier Return Packing,Neue Warenrückgabe (an Lieferant),0
+model,"ir.action,name",act_packing_out_return_form2,New Customer Return Shipment,Neue Warenrücknahme (von Kunde),0
+model,"ir.action,name",act_packing_internal_new_form,New Internal Shipment,Neuer Interner Lieferposten,0
+model,"ir.action,name",act_packing_in_return_new_form,New Supplier Return Shipment,Neue Warenrückgabe (an Lieferant),0
+model,"ir.action,name",act_packing_in_form2,New Supplier Shipment,Neuer Lieferposten von Lieferant,0
 model,"ir.action,name",wizard_location_open,Product by Location,Artikel nach Lagerort,0
 model,"ir.action,name",wizard_product_open,Product Quantities,Artikelbestand,0
 model,"ir.action,name",act_product_by_location,Products by Locations,Artikel nach Lagerort,0
 model,"ir.action,name",act_location_quantity_tree,Product Stock,Lagerbestand,0
-model,"ir.action,name",act_packing_in_form_received,Received Supplier packings,Erhaltene Lieferscheine von Lieferanten,0
-model,"ir.action,name",act_packing_in_form,Supplier Packings,Lieferscheine von Lieferanten,0
-model,"ir.action,name",act_packing_in_return_form,Supplier Return Packings,Warenrückgaben,0
-model,"ir.sequence,name",sequence_packing_out,Customer Packing,Lieferschein Kunde,0
-model,"ir.sequence,name",sequence_packing_out_return,Customer Return Packing,Warenrücknahme Kunde,0
-model,"ir.sequence,name",sequence_packing_internal,Internal Packing,Interner Lieferschein,0
-model,"ir.sequence,name",sequence_packing_in,Supplier Packing,Lieferschein Lieferant,0
-model,"ir.sequence,name",sequence_packing_in_return,Supplier Return Packing,Warenrückgabe Lieferant,0
-model,"ir.sequence.type,name",sequence_type_packing_out,Customer Packing,Lieferschein Kunde,0
-model,"ir.sequence.type,name",sequence_type_packing_out_return,Customer Return Packing,Warenrücknahme Kunde,0
-model,"ir.sequence.type,name",sequence_type_packing_internal,Internal Packing,Interner Lieferschein,0
-model,"ir.sequence.type,name",sequence_type_packing_in,Supplier Packing,Lieferschein Lieferant,0
-model,"ir.sequence.type,name",sequence_type_packing_in_return,Supplier Return Packing,Warenrückgabe Lieferant,0
-model,"ir.ui.menu,name",menu_packing_out_assigned,Assigned Customer Packings,Zugewiesene Kundenlieferscheine,0
-model,"ir.ui.menu,name",menu_packing_internal_assigned_form,Assigned Internal Packings,Zugewiesene Interne Lieferscheine,0
+model,"ir.action,name",act_packing_in_form_received,Received Supplier packings,Erhaltene Lieferposten von Lieferanten,0
+model,"ir.action,name",act_packing_in_return_form,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
+model,"ir.action,name",act_packing_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
+model,"ir.action,name",act_packing_out_form3,Supplier Shipments,Lieferposten von Lieferanten,0
+model,"ir.sequence,name",sequence_packing_out_return,Customer Return Shipment,Warenrücknahme Kunde,0
+model,"ir.sequence,name",sequence_packing_out,Customer Shipment,Lieferposten Kunde,0
+model,"ir.sequence,name",sequence_packing_internal,Internal Shipment,Interner Lieferposten,0
+model,"ir.sequence,name",sequence_packing_in_return,Supplier Return Shipment,Warenrückgabe Lieferant,0
+model,"ir.sequence,name",sequence_packing_in,Supplier Shipment,Lieferposten Lieferant,0
+model,"ir.sequence.type,name",sequence_type_packing_out_return,Customer Return Shipment,Warenrücknahme Kunde,0
+model,"ir.sequence.type,name",sequence_type_packing_out,Customer Shipment,Lieferposten Kunde,0
+model,"ir.sequence.type,name",sequence_type_packing_internal,Internal Shipment,Interner Lieferposten,0
+model,"ir.sequence.type,name",sequence_type_packing_in_return,Supplier Return Shipment,Warenrückgabe Lieferant,0
+model,"ir.sequence.type,name",sequence_type_packing_in,Supplier Shipment,Lieferposten Lieferant,0
+model,"ir.ui.menu,name",menu_packing_out_assigned,Assigned Customer Shipments,Zugewiesene Lieferposten an Kunden,0
+model,"ir.ui.menu,name",menu_packing_internal_assigned_form,Assigned Internal Shipments,Zugewiesene Interne Lieferposten,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
-model,"ir.ui.menu,name",menu_packing_out_form,Customer Packings,Lieferscheine an Kunden,0
-model,"ir.ui.menu,name",menu_packing_out_ready,Customer Packings Ready for Shipping,Versandbereite Lieferscheine an Kunden,0
-model,"ir.ui.menu,name",menu_packing_out_waiting,Customer Packings Waiting Assignation,Zuzuweisende Lieferscheine an Kunden,0
-model,"ir.ui.menu,name",menu_packing_out_return_form,Customer Return Packings,Warenrücknahmen,0
-model,"ir.ui.menu,name",menu_packing_internal_draft_form,Draft Internal Packings,Entwürfe (Interne Lieferscheine),0
+model,"ir.ui.menu,name",menu_packing_out_return_form,Customer Return Shipments,Warenrücknahmen (von Kunden),0
+model,"ir.ui.menu,name",menu_packing_out_form,Customer Shipments,Lieferposten an Kunden,0
+model,"ir.ui.menu,name",menu_packing_out_ready,Customer Shipments Ready for Shipping,Versandbereite Lieferposten an Kunden,0
+model,"ir.ui.menu,name",menu_packing_out_waiting,Customer Shipments Waiting Assignation,Zuzuweisende Lieferposten an Kunden,0
+model,"ir.ui.menu,name",menu_packing_internal_draft_form,Draft Internal Shipments,Entwürfe (Interne Lieferposten),0
 model,"ir.ui.menu,name",menu_location_form,Edit Locations,Lagerorte bearbeiten,0
-model,"ir.ui.menu,name",menu_packing_internal_form,Internal Packings,Interne Lieferscheine,0
-model,"ir.ui.menu,name",menu_packing_internal_waiting_form,Internal Packings Waiting Assignation,Zuzuweisende Interne Lieferscheine,0
+model,"ir.ui.menu,name",menu_packing_internal_form,Internal Shipments,Interne Lieferposten,0
+model,"ir.ui.menu,name",menu_packing_internal_waiting_form,Internal Shipments Waiting Assignation,Zuzuweisende Interne Lieferposten,0
 model,"ir.ui.menu,name",menu_inventory_form,Inventories,Bestandskorrektur,0
 model,"ir.ui.menu,name",menu_stock,Inventory Management,Lager,0
 model,"ir.ui.menu,name",menu_location_tree,Locations,Lagerorte,0
@@ -210,14 +212,14 @@ model,"ir.ui.menu,name",menu_move_form,Moves,Bewegungen,0
 model,"ir.ui.menu,name",menu_move_form_supp,Moves from Suppliers,Bewegungen von Lieferanten,0
 model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Erwartete Bewegungen von Lieferanten,0
 model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Bewegungen zu Kunden,0
-model,"ir.ui.menu,name",menu_packing_out_return_form2,New Customer Return Packing,Neue Warenrücknahme (von Kunde),0
-model,"ir.ui.menu,name",menu_packing_internal_new_form,New Internal Packing,Neuer Interner Lieferschein,0
-model,"ir.ui.menu,name",menu_packing_in_form2,New Supplier Packing,Neuer Lieferschein von Lieferant,0
-model,"ir.ui.menu,name",menu_packing_in_return_new_form,New Supplier Return Packing,Neue Warenrückgabe (an Lieferant),0
-model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Erhaltene Lieferscheine von Lieferanten,0
+model,"ir.ui.menu,name",menu_packing_out_return_form2,New Customer Return Shipment,Neue Warenrücknahme (von Kunde),0
+model,"ir.ui.menu,name",menu_packing_internal_new_form,New Internal Shipment,Neuer Interner Lieferposten,0
+model,"ir.ui.menu,name",menu_packing_in_return_new_form,New Supplier Return Shipment,Neue Warenrückgabe (an Lieferant),0
+model,"ir.ui.menu,name",menu_packing_in_form2,New Supplier Shipment,Neuer Lieferposten von Lieferant,0
+model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Erhaltene Lieferposten von Lieferanten,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
-model,"ir.ui.menu,name",menu_packing_in_form,Supplier Packings,Lieferscheine von Lieferanten,0
-model,"ir.ui.menu,name",menu_packing_in_return_form,Supplier Return Packings,Warenrückgaben,0
+model,"ir.ui.menu,name",menu_packing_in_return_form,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
+model,"ir.ui.menu,name",menu_packing_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"res.group,name",group_stock,Stock,Lager,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administration Lagerverwaltung,0
 model,"stock.inventory.complete.init,name",0,Complete Inventory Init,Lagerbestand Komplettieren Init,0
@@ -233,24 +235,24 @@ model,"stock.location,name",location_supplier,Supplier,Lieferant,0
 model,"stock.location,name",location_warehouse,Warehouse,Warenlager,0
 model,"stock.location_stock_date.init,name",0,Compute stock quantities,Berechnung Lagerbestände,0
 model,"stock.move,name",0,Stock Move,Lager Bewegung,0
-model,"stock.packing.in,name",0,Supplier Packing,Lieferant Lieferschein,0
-model,"stock.packing.in.return.assign.ask_force,name",0,Assign Supplier Return Packing Ask Force,Zuweisung Lieferschein Warenrückgabe Erzwungen,0
-model,"stock.packing.in.return,name",0,Supplier Return Packing,Warenrückgabe Lieferant,0
-model,"stock.packing.internal.assign.ask_force,name",0,Assign Packing Internal Ask Force,Zuweisung Lieferschein Intern Erzwungen,0
-model,"stock.packing.internal,name",0,Internal Packing,Interner Lieferschein,0
-model,"stock.packing.out.assign.ask_force,name",0,Assign Packing Out Ask Force,Zuweisung Lieferschein Ausgehend Erzwungen,0
-model,"stock.packing.out,name",0,Customer Packing,Lieferschein Kunde,0
-model,"stock.packing.out.return,name",0,Customer Return Packing,Warenrücknahme Kunde,0
+model,"stock.packing.in,name",0,Supplier Shipment,Lieferant Lieferposten,0
+model,"stock.packing.in.return.assign.ask_force,name",0,Assign Supplier Return Shipment Ask Force,Zuweisung Lieferpsoten Warenrückgabe Erzwungen,0
+model,"stock.packing.in.return,name",0,Supplier Return Shipment,Warenrückgabe Lieferant,0
+model,"stock.packing.internal.assign.ask_force,name",0,Assign Shipment Internal Ask Force,Zuweisung Lieferposten Intern Erzwungen,0
+model,"stock.packing.internal,name",0,Internal Shipment,Interner Lieferposten,0
+model,"stock.packing.out.assign.ask_force,name",0,Assign Shipment Out Ask Force,Zuweisung Lieferposten Ausgehend Erzwungen,0
+model,"stock.packing.out,name",0,Customer Shipment,Lieferposten Kunde,0
+model,"stock.packing.out.return,name",0,Customer Return Shipment,Warenrücknahme Kunde,0
 model,"stock.product_stock_date.init,name",0,Compute stock quantities,Berechnung Lagerbestände,0
 model,"workflow.activity,name",packingout_act_assigned,Assigned,Zugewiesen,0
 model,"workflow.activity,name",packinginternal_act_assigned,Assigned,Zugewiesen,0
 model,"workflow.activity,name",packing_in_return_act_assigned,Assigned,Zugewiesen,0
-model,"workflow.activity,name",packingin_act_cancel,Cancel,Annullieren,0
-model,"workflow.activity,name",packingout_act_cancel,Cancel,Annullieren,0
-model,"workflow.activity,name",packinginternal_act_cancel,Cancel,Annullieren,0
-model,"workflow.activity,name",inventory_act_cancel,Cancel,Annullieren,0
-model,"workflow.activity,name",packing_out_return_act_cancel,Cancel,Annullieren,0
-model,"workflow.activity,name",packing_in_return_act_cancel,Cancel,Annullieren,0
+model,"workflow.activity,name",packingin_act_cancel,Canceled,Annulliert,0
+model,"workflow.activity,name",packingout_act_cancel,Canceled,Annulliert,0
+model,"workflow.activity,name",packinginternal_act_cancel,Canceled,Annulliert,0
+model,"workflow.activity,name",inventory_act_cancel,Canceled,Annulliert,0
+model,"workflow.activity,name",packing_out_return_act_cancel,Canceled,Annulliert,0
+model,"workflow.activity,name",packing_in_return_act_cancel,Canceled,Annulliert,0
 model,"workflow.activity,name",packingin_act_done,Done,Erledigt,0
 model,"workflow.activity,name",packingout_act_done,Done,Erledigt,0
 model,"workflow.activity,name",packinginternal_act_done,Done,Erledigt,0
@@ -269,22 +271,22 @@ model,"workflow.activity,name",packing_out_return_act_received,Received,Erhalten
 model,"workflow.activity,name",packingout_act_waiting,Waiting,Wartend,0
 model,"workflow.activity,name",packinginternal_act_waiting,Waiting,Wartend,0
 model,"workflow.activity,name",packing_in_return_act_waiting,Waiting,Wartend,0
-model,"workflow,name",wkf_packingout,Customer Packing,Lieferschein Kunde,0
-model,"workflow,name",wkf_packing_out_return,Customer Return Packing,Warenrücknahme Kunde,0
-model,"workflow,name",wkf_packinginternal,Internal Packing,Interner Lieferschein,0
+model,"workflow,name",wkf_packing_out_return,Customer Return Shipment,Warenrücknahme Kunde,0
+model,"workflow,name",wkf_packingout,Customer Shipment,Lieferposten Kunde,0
+model,"workflow,name",wkf_packinginternal,Internal Shipment,Interner Lieferposten,0
 model,"workflow,name",wkf_inventory,Inventory,Lagerbestand,0
-model,"workflow,name",wkf_packingin,Supplier Packing,Lieferschein Lieferant,0
-model,"workflow,name",wkf_packing_in_return,Supplier Return Packing,Warenrückgabe Lieferant,0
+model,"workflow,name",wkf_packing_in_return,Supplier Return Shipment,Warenrückgabe Lieferant,0
+model,"workflow,name",wkf_packingin,Supplier Shipment,Lieferposten Lieferant,0
 odt,stock.packing.out,0,Customer Code:,Kundennr:,0
 odt,stock.packing.out,0,Date:,Datum:,0
 odt,stock.packing.out,0,E-Mail:,E-Mail:,0
 odt,stock.packing.out,0,Packing List,Packliste,0
-odt,stock.packing.out,0,Packing Number:,Lieferscheinnummer:,0
+odt,stock.packing.out,0,Packing Number:,Packlistennummer:,0
 odt,stock.packing.out,0,Phone:,Telefon:,0
 odt,stock.packing.out,0,Product,Artikel,0
 odt,stock.packing.out,0,Quantity,Anzahl,0
 odt,stock.packing.out,0,Reference:,Referenz,0
-selection,"stock.inventory,state",0,Cancel,Annulliert,0
+selection,"stock.inventory,state",0,Canceled,Annulliert,0
 selection,"stock.inventory,state",0,Done,Erledigt,0
 selection,"stock.inventory,state",0,Draft,Entwurf,0
 selection,"stock.location,type",0,Customer,Kunde,0
@@ -295,29 +297,29 @@ selection,"stock.location,type",0,Supplier,Lieferant,0
 selection,"stock.location,type",0,View,Sicht,0
 selection,"stock.location,type",0,Warehouse,Warenlager,0
 selection,"stock.move,state",0,Assigned,Zugewiesen,0
-selection,"stock.move,state",0,Cancel,Annulliert,0
+selection,"stock.move,state",0,Canceled,Annulliert,0
 selection,"stock.move,state",0,Done,Erledigt,0
 selection,"stock.move,state",0,Draft,Entwurf,0
 selection,"stock.packing.in.return,state",0,Assigned,Zugewiesen,0
-selection,"stock.packing.in.return,state",0,Cancel,Annulliert,0
+selection,"stock.packing.in.return,state",0,Canceled,Annulliert,0
 selection,"stock.packing.in.return,state",0,Done,Erledigt,0
 selection,"stock.packing.in.return,state",0,Draft,Entwurf,0
 selection,"stock.packing.in.return,state",0,Waiting,Wartend,0
-selection,"stock.packing.in,state",0,Cancel,Annulliert,0
+selection,"stock.packing.in,state",0,Canceled,Annulliert,0
 selection,"stock.packing.in,state",0,Done,Erledigt,0
 selection,"stock.packing.in,state",0,Draft,Entwurf,0
 selection,"stock.packing.in,state",0,Received,Erhalten,0
 selection,"stock.packing.internal,state",0,Assigned,Zugewiesen,0
-selection,"stock.packing.internal,state",0,Cancel,Annulliert,0
+selection,"stock.packing.internal,state",0,Canceled,Annulliert,0
 selection,"stock.packing.internal,state",0,Done,Erledigt,0
 selection,"stock.packing.internal,state",0,Draft,Entwurf,0
 selection,"stock.packing.internal,state",0,Waiting,Wartend,0
-selection,"stock.packing.out.return,state",0,Cancel,Annulliert,0
+selection,"stock.packing.out.return,state",0,Canceled,Annulliert,0
 selection,"stock.packing.out.return,state",0,Done,Erledigt,0
 selection,"stock.packing.out.return,state",0,Draft,Entwurf,0
 selection,"stock.packing.out.return,state",0,Received,Erhalten,0
 selection,"stock.packing.out,state",0,Assigned,Zugewiesen,0
-selection,"stock.packing.out,state",0,Cancel,Annulliert,0
+selection,"stock.packing.out,state",0,Canceled,Annulliert,0
 selection,"stock.packing.out,state",0,Done,Erledigt,0
 selection,"stock.packing.out,state",0,Draft,Entwurf,0
 selection,"stock.packing.out,state",0,Packed,Gepackt,0
@@ -354,8 +356,10 @@ view,stock.packing.in,0,Inventory Moves,Bestandsänderungen,0
 view,stock.packing.in,0,Moves,Bewegungen,0
 view,stock.packing.in,0,Received,Erhalten,0
 view,stock.packing.in,0,Reset to Draft,Auf Entwurf zurücksetzen,0
-view,stock.packing.in,0,Supplier Packing,Lieferschein von Lieferant,0
-view,stock.packing.in,0,Supplier Packings,Lieferscheine von Lieferanten,0
+view,stock.packing.in,0,Supplier Packing,Lieferposten von Lieferant,0
+view,stock.packing.in,0,Supplier Packings,Lieferposten von Lieferanten,0
+view,stock.packing.in,0,Supplier Shipment,Lieferposten von Lieferant,0
+view,stock.packing.in,0,Supplier Shipments,Lieferposten von Lieferanten,0
 view,stock.packing.in.return,0,Assign,Zuweisen,0
 view,stock.packing.in.return,0,Cancel,Annullieren,0
 view,stock.packing.in.return,0,Done,Erledigt,0
@@ -363,6 +367,8 @@ view,stock.packing.in.return,0,Draft,Entwurf,0
 view,stock.packing.in.return,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,stock.packing.in.return,0,Supplier Return Packing,Warenrückgabe,0
 view,stock.packing.in.return,0,Supplier Return Packings,Warenrückgaben,0
+view,stock.packing.in.return,0,Supplier Return Shipment,Warenrückgabe Lieferant,0
+view,stock.packing.in.return,0,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
 view,stock.packing.in.return,0,Waiting,Wartend,0
 view,stock.packing.in.return.assign.ask_force,0,Moves,Bewegungen,0
 view,stock.packing.in.return.assign.ask_force,0,Unable to Assign,Fehlmenge Zuweisung,0
@@ -372,8 +378,10 @@ view,stock.packing.internal,0,Cancel,Annullieren,0
 view,stock.packing.internal,0,Done,Erledigt,0
 view,stock.packing.internal,0,Draft,Entwurf,0
 view,stock.packing.internal,0,Force Assign,Zuweisung erzwingen,0
-view,stock.packing.internal,0,Internal Packing,Interner Lieferschein,0
-view,stock.packing.internal,0,Internal Packings,Interne Lieferscheine,0
+view,stock.packing.internal,0,Internal Packing,Interner Lieferposten,0
+view,stock.packing.internal,0,Internal Packings,Interne Lieferposten,0
+view,stock.packing.internal,0,Internal Shipment,Interner Lieferposten,0
+view,stock.packing.internal,0,Internal Shipments,Interne Lieferposten,0
 view,stock.packing.internal,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,stock.packing.internal,0,Set Done,Auf Erledigt setzen,0
 view,stock.packing.internal,0,Set Waiting,Auf Wartend setzen,0
@@ -384,8 +392,10 @@ view,stock.packing.internal.assign.ask_force,0,Unable to assign those products:,
 view,stock.packing.out,0,Are you sure to force assignation?,Zuweisung wirklich erzwingen?,0
 view,stock.packing.out,0,Assign,Zuweisen,0
 view,stock.packing.out,0,Cancel,Annullieren,0
-view,stock.packing.out,0,Customer Packing,Lieferschein an Kunde,0
-view,stock.packing.out,0,Customer Packings,Lieferscheine an Kunden,0
+view,stock.packing.out,0,Customer Packing,Lieferposten an Kunde,0
+view,stock.packing.out,0,Customer Packings,Lieferposten an Kunden,0
+view,stock.packing.out,0,Customer Shipment,Lieferposten Kunde,0
+view,stock.packing.out,0,Customer Shipments,Lieferposten an Kunden,0
 view,stock.packing.out,0,Done,Erledigt,0
 view,stock.packing.out,0,Draft,Entwurf,0
 view,stock.packing.out,0,Force Assign,Zuweisung erzwingen,0
@@ -403,6 +413,8 @@ view,stock.packing.out.assign.ask_force,0,Unable to assign those products:,Folge
 view,stock.packing.out.return,0,Cancel,Annullieren,0
 view,stock.packing.out.return,0,Customer Return Packing,Warenrücknahme,0
 view,stock.packing.out.return,0,Customer Return Packings,Warenrücknahmen,0
+view,stock.packing.out.return,0,Customer Return Shipment,Warenrücknahme Kunde,0
+view,stock.packing.out.return,0,Customer Return Shipments,Warenrücknahmen (von Kunden),0
 view,stock.packing.out.return,0,Done,Erledigt,0
 view,stock.packing.out.return,0,Incoming Moves,Eingehende Bewegungen,0
 view,stock.packing.out.return,0,Inventory Moves,Bestandsänderungen,0
