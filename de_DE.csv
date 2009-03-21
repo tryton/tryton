@@ -43,12 +43,12 @@ model,"ir.ui.menu,name",menu_statements,Statements,Zahlungsverkehr,0
 model,"ir.ui.menu,name",menu_statement_configuration,Statements,Zahlungsverkehr,0
 model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Geprüfte Zahlungen,0
 model,"res.group,name",group_statement,Statement,Zahlung,0
-model,"workflow.activity,name",statement_act_cancel,Cancel,Annullieren,0
+model,"workflow.activity,name",statement_act_cancel,Canceled,Annulliert,0
 model,"workflow.activity,name",statement_act_draft,Draft,Entwurf,0
 model,"workflow.activity,name",statement_act_posted,Posted,Festgeschrieben,0
 model,"workflow.activity,name",statement_act_validated,Validated,Geprüft,0
 model,"workflow,name",wkf_statement,Statement,Zahlung,0
-selection,"account.statement,state",0,Cancel,Annulliert,0
+selection,"account.statement,state",0,Canceled,Annulliert,0
 selection,"account.statement,state",0,Draft,Entwurf,0
 selection,"account.statement,state",0,Posted,Festgeschrieben,0
 selection,"account.statement,state",0,Validated,Geprüft,0
