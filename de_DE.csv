@@ -45,7 +45,7 @@ field,"timesheet.line,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"timesheet.open_hours_employee.init,end_date",0,End Date,Enddatum,0
 field,"timesheet.open_hours_employee.init,start_date",0,Start Date,Anfangsdatum,0
 field,"timesheet.work,active",0,Active,Aktiv,0
-field,"timesheet.work,childs",0,Childs,Untergeordnet (Aufgaben),0
+field,"timesheet.work,childs",0,Children,Untergeordnet (Aufgaben),0
 field,"timesheet.work,create_date",0,Creation date,Erstellungsdatum,0
 field,"timesheet.work,create_uid",0,Creation user,Ersteller,0
 field,"timesheet.work,hours",0,Hours,Stunden,0
