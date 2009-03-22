@@ -19,24 +19,16 @@ error,account.journal.period,0,You can not modify/delete a journal - period with
 error,account.journal.period,0,You can not open a journal - period from a closed period!,In einem abgeschlossenen Buchungszeitraum kann kein Journal - Buchungszeitraum geöffnet werden!,0
 error,account.journal.period,0,You can only open one journal per period!,Es kann nur ein Journal pro Buchungszeitraum geöffnet werden!,0
 error,account.journal.type,0,The code must be unique!,Code kann nicht mehrfach vergeben werden!,0
-error,account.move,0,Buchungen mit einem Datum außerhalb des Buchungszeitraumes nicht möglich!,Buchungen mit einem Datum außerhalb des Buchungszeitraumes nicht möglich!,0
-error,account.move,0,"You can not create lines on account
-from different company in the same move!","Buchungszeilen eines Buchungssatzes können sich 
-nicht auf Konten verschiedener Unternehmen beziehen!",0
 error,account.move,0,"You can not create lines on accounts
 of different companies in the same move!","Buchungszeilen eines Buchungssatzes können sich 
 nicht auf Konten verschiedener Unternehmen beziehen!",0
 error,account.move,0,"You can not create more than one move per period
 in a centralized journal!",Nicht mehr als eine Buchung pro Buchungszeitraum erstellbar!,0
-error,account.move,0,"You can not create more than one move per period
-in centralized journal!",Nicht mehr als eine Buchung pro Buchungszeitraum erstellbar!,0
-error,account.move,0,You can not create move with date outside the period!,Buchungen mit einem Datum außerhalb des Buchungszeitraumes nicht möglich!,0
-error,account.move,0,You can not delete posted move!,Festgeschriebene Buchungen sind nicht löschbar!,0
+error,account.move,0,You can not create move with a date outside the period!,Das Datum für Buchungen muss in dem Buchungszeitraum liegen!,0
 error,account.move,0,You can not delete posted moves!,Festgeschriebene Buchungen sind nicht löschbar!,0
 error,account.move,0,You can not modify a posted move in this journal!,Eine festgeschriebene Buchung kann in diesem Journal nicht verändert werden!,0
 error,account.move,0,You can not post an empty move!,Ein leerer Buchungssatz kann nicht festgeschrieben werden!,0
 error,account.move,0,You can not post an unbalanced move!,Unausgeglichene Buchungssätze können nicht festgeschrieben werden!,0
-error,account.move,0,You can not post a unbalanced move!,Unausgeglichene Buchungssätze können nicht festgeschrieben werden!,0
 error,account.move.line,0,"Line ""%s"" (%d) already reconciled!","Zeile ""%s"" (%d) ist bereits abgestimmt!",0
 error,account.move.line,0,No journal defined!,Kein Journal definiert!,0
 error,account.move.line,0,Wrong credit/debit values!,Falsche Haben/Soll-Werte!,0
