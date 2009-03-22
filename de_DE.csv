@@ -216,7 +216,7 @@ model,"ir.ui.menu,name",menu_invoice_out_credit_note_form3,Draft Credit Notes,En
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form3,Draft Invoices,Entwürfe Kundenrechnungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Entwürfe Lieferantengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form3,Draft Supplier Invoices,Entwürfe Lieferantenrechnungen,0
-model,"ir.ui.menu,name",,Invoices,Rechnungsausgang,0
+model,"ir.ui.menu,name",,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoices,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Neue Gutschrift an Kunden,0
