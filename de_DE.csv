@@ -1,7 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,purchase.request,0,Purchase requests are only created by the system.,Bestellvorschläge werden nur durch das System generiert!,0
 error,purchase.request.create_purchase,0,Purchase price is missing for product: %s (id: %s)!,Fehlender Einkaufspreis für Artikel: %s (id: %s)!,0
-error,purchase.request.create_purchase,0,This price is necessary for creating purchase.,Dieser Preis wird für die Auftragserstellung benötigt.,0
+error,purchase.request.create_purchase,0,This price is necessary for creating purchase.,Dieser Preis wird für die Auftragserstellung benötigt!,0
 error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,Die maximale Anzahl muss größer als die minimale Anzahl sein,0
 error,stock.order_point,0,Only one order point is allowed for each product-location pair.,Es ist nur ein Bestellpunkt für jede Paarung Artikel-Lagerort erlaubt,0
 error,stock.order_point,0,You can not define two order points on the same product with opposite locations.,Für einen Artikel können keine verschiedenen Bestellpunkte mit unterschiedlichen Lagerstandorten erstellt werden!,0
@@ -44,16 +44,16 @@ model,"ir.action,name",wizard_create_purchase,Create Purchase,Auftrag erstellen,
 model,"ir.action,name",act_order_point_form,Order Points,Bestellpunkte,0
 model,"ir.action,name",act_purchase_request_form,Purchase Requests,Bestellungen,0
 model,"ir.action,name",act_purchase_form,Purchases,Einkäufe,0
-model,"ir.cron,name",cron_packing_iternal,Generate Internal Shipments,Erstellung Interne Lieferposten,0
-model,"ir.cron,name",cron_generate_request,Generate Purchase Requests,Auftragserstellung,0
+model,"ir.cron,name",cron_packing_iternal,Generate Internal Shipments,Erstellung von Internen Lieferposten,0
+model,"ir.cron,name",cron_generate_request,Generate Purchase Requests,Erstellung von Bestellvorschlägen,0
 model,"ir.ui.menu,name",menu_order_point_form,Order Points,Bestellpunkte,0
 model,"ir.ui.menu,name",menu_purchase_request_form,Purchase Requests,Bestellungen,0
 model,"purchase.request.create_purchase.ask_party,name",0,Create Purchase Ask Party,Verkauf Nachfrage Partei,0
 model,"purchase.request.create_purchase.ask_term,name",0,Create Purchase Ask Term,Verkauf Nachfrage Zahlungsbedingung,0
 model,"purchase.request,name",0,Purchase Request,Verkauf Angebotsnachfrage,0
-model,"res.group,name",group_purchase_request,Purchase Request,Auftragserstellung,0
+model,"res.group,name",group_purchase_request,Purchase Request,Bestellvorschlag,0
 model,"res.user,name",user_generate_packing_internal,Cron Intenal Shipment,Cron Interne Lieferposten,0
-model,"res.user,name",user_generate_request,Cron Purchase Request,Cron Auftragserstellung,0
+model,"res.user,name",user_generate_request,Cron Purchase Request,Cron Bestellvorschlag,0
 model,"stock.order_point,name",0,Order Point,Bestellpunkt,0
 selection,"purchase.request,origin",0,Order Point,Bestellpunkt,0
 selection,"purchase.request,state",0,Cancel,Abgebrochen,0
