@@ -793,6 +793,10 @@ class Line(OSV):
         party = party_obj.browse(cursor, user, vals.get('party'),
                 context=context)
 
+        if not party.account_receivable \
+                or not party.account_payable:
+            return res
+
         if party and (not vals.get('debit')) and (not vals.get('credit')):
             query = 'SELECT ' \
                         'COALESCE(SUM(' \
