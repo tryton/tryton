@@ -250,21 +250,21 @@ model,"workflow.activity,name",packing_in_return_act_assigned,Assigned,Zugewiese
 model,"workflow.activity,name",packingin_act_cancel,Canceled,Annulliert,0
 model,"workflow.activity,name",packingout_act_cancel,Canceled,Annulliert,0
 model,"workflow.activity,name",packinginternal_act_cancel,Canceled,Annulliert,0
-model,"workflow.activity,name",inventory_act_cancel,Canceled,Annulliert,0
 model,"workflow.activity,name",packing_out_return_act_cancel,Canceled,Annulliert,0
 model,"workflow.activity,name",packing_in_return_act_cancel,Canceled,Annulliert,0
+model,"workflow.activity,name",inventory_act_cancel,Canceled,Annulliert,0
 model,"workflow.activity,name",packingin_act_done,Done,Erledigt,0
 model,"workflow.activity,name",packingout_act_done,Done,Erledigt,0
 model,"workflow.activity,name",packinginternal_act_done,Done,Erledigt,0
-model,"workflow.activity,name",inventory_act_done,Done,Erledigt,0
 model,"workflow.activity,name",packing_out_return_act_done,Done,Erledigt,0
 model,"workflow.activity,name",packing_in_return_act_done,Done,Erledigt,0
+model,"workflow.activity,name",inventory_act_done,Done,Erledigt,0
 model,"workflow.activity,name",packingin_act_draft,Draft,Entwurf,0
 model,"workflow.activity,name",packingout_act_draft,Draft,Entwurf,0
 model,"workflow.activity,name",packinginternal_act_draft,Draft,Entwurf,0
-model,"workflow.activity,name",inventory_act_draft,Draft,Entwurf,0
 model,"workflow.activity,name",packing_out_return_act_draft,Draft,Entwurf,0
 model,"workflow.activity,name",packing_in_return_act_draft,Draft,Entwurf,0
+model,"workflow.activity,name",inventory_act_draft,Draft,Entwurf,0
 model,"workflow.activity,name",packingout_act_packed,Packed,Gepackt,0
 model,"workflow.activity,name",packingin_act_received,Received,Erhalten,0
 model,"workflow.activity,name",packing_out_return_act_received,Received,Erhalten,0
@@ -327,6 +327,7 @@ selection,"stock.packing.out,state",0,Waiting,Wartend,0
 view,party.party,0,Stock,Lager,0
 view,party.party,0,_Stock,_Lager,0
 view,product.product,0,Products,Artikel,0
+view,stock.inventory,0,Add an inventory line for each missing products,Positionen für Bestandskorrektur um fehlende Artikel ergänzen,0
 view,stock.inventory,0,All generated moves will be cancelled!,Sämtliche erzeugten Bewegungen werden rückgängig gemacht!,0
 view,stock.inventory,0,Cancel,Annullieren,0
 view,stock.inventory,0,Complete Inventory,Lagerbestandspositionen komplettieren,0
