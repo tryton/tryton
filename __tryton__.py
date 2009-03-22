@@ -4,7 +4,7 @@
 {
     'name' : 'Party',
     'name_fr_FR': 'Tiers',
-    'name_de_DE': 'Kontakte',
+    'name_de_DE': 'Parteien',
     'name_es_ES': 'Terceros',
     'version' : '1.1.0',
     'author' : 'B2CK',
@@ -12,7 +12,7 @@
     'website': 'http://www.tryton.org/',
     'description': 'Define parties, addresses and co.',
     'description_fr_FR': 'Définit des tiers, des adresses, etc.',
-    'description_de_DE': 'Ermöglicht die Erstellung von Kontakten, Adressen, etc.',
+    'description_de_DE': 'Ermöglicht die Erstellung von Parteien, Adressen, etc.',
     'description_es_ES': 'Definición de terceros, direcciones, etc.',
     'depends' : [
         'ir',
