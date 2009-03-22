@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/notebook/page/group/group/button[@name=&quot;%(account_invoice.wizard_pay_invoice)d&quot;]"
+                        expr="/form/notebook/page/group/group/group/button[@name=&quot;%(account_invoice.wizard_pay_invoice)d&quot;]"
                         position="replace">
                     </xpath>
                 </data>
