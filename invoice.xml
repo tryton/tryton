@@ -904,8 +904,20 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="journal_writeoff"/>
                     <separator name="lines" colspan="4"/>
                     <field name="lines" colspan="4">
-                        <tree string="Lines to Pay">
+                        <tree string="Lines to Pay" fill="1">
                             <field name="maturity_date"/>
+                            <field name="debit" sum="Debit"/>
+                            <field name="credit" sum="Credit"/>
+                            <field name="amount_second_currency" sum="Amount Second Currency"/>
+                            <field name="second_currency"/>
+                            <field name="currency_digits" tree_invisible="1"/>
+                            <field name="second_currency_digits" tree_invisible="1"/>
+                        </tree>
+                    </field>
+                    <separator name="payment_lines" colspan="4"/>
+                    <field name="payment_lines" colspan="4">
+                        <tree string="Payment Lines" fill="1">
+                            <field name="date"/>
                             <field name="debit" sum="Debit"/>
                             <field name="credit" sum="Credit"/>
                             <field name="amount_second_currency" sum="Amount Second Currency"/>

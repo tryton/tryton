@@ -2012,15 +2012,21 @@ class PayInvoiceAsk(ModelView):
             })
     currency_digits_writeoff = fields.Integer('Write-Off Currency Digits',
             readonly=True)
-    lines_to_pay = fields.Char(string='Lines to Pay', size=None)
+    lines_to_pay = fields.Many2Many('account.move.line', None, None,
+            'Lines to Pay', readonly=True)
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
-            domain="[('id', 'in', eval(lines_to_pay)), " \
+            domain="[('id', 'in', lines_to_pay), " \
                     "('reconciliation', '=', False)]",
             states={
                 'invisible': "type != 'writeoff'",
             }, on_change=['lines', 'amount', 'currency', 'currency_writeoff',
                 'invoice'],
             depends=['lines_to_pay'])
+    payment_lines = fields.Many2Many('account.move.line', None, None,
+            'Payment Lines', readonly=True,
+            states={
+                'invisible': "type != 'writeoff'",
+            })
     description = fields.Char('Description', size=None, readonly=True)
     journal = fields.Many2One('account.journal', 'Journal', readonly=True,
             domain=[('type', '=', 'cash')])
@@ -2105,6 +2111,10 @@ class PayInvoice(Wizard):
         res['currency_digits'] = invoice.currency.digits
         res['amount'] = invoice.amount_to_pay_today or invoice.amount_to_pay
         res['description'] = invoice.number
+        self._error_messages.update({
+            'amount_greater_amount_to_pay': 'You can not create a partial ' \
+                    'payment with an amount greater then the amount to pay!',
+            })
         return res
 
     def _choice(self, cursor, user, data, context=None):
@@ -2120,7 +2130,7 @@ class PayInvoice(Wizard):
                 context=context)
         res = invoice_obj.get_reconcile_lines_for_amount(cursor, user, invoice,
                 amount)
-        if res[1] == Decimal('0.0'):
+        if res[1] == Decimal('0.0') and amount <= invoice.amount_to_pay:
             return 'pay'
         return 'ask'
 
@@ -2131,9 +2141,8 @@ class PayInvoice(Wizard):
 
         res = {}
         invoice = invoice_obj.browse(cursor, user, data['id'], context=context)
-        res['lines_to_pay'] = str(
-                [x.id for x in invoice.lines_to_pay if not x.reconciliation] + \
-                [x.id for x in invoice.payment_lines if not x.reconciliation])
+        res['lines_to_pay'] = [x.id for x in invoice.lines_to_pay
+                if not x.reconciliation]
 
         res['amount'] = data['form']['amount']
         res['currency'] = data['form']['currency']
@@ -2147,8 +2156,13 @@ class PayInvoice(Wizard):
                 context=context)
         res['lines'] = invoice_obj.get_reconcile_lines_for_amount(cursor, user, invoice,
                 amount)[0]
+        for line_id in res['lines'][:]:
+            if line_id not in res['lines_to_pay']:
+                res['lines'].remove(line_id)
         res['amount_writeoff'] = Decimal('0.0')
         for line in line_obj.browse(cursor, user, res['lines'], context=context):
+            res['amount_writeoff'] += line.debit - line.credit
+        for line in invoice.payment_lines:
             res['amount_writeoff'] += line.debit - line.credit
         if invoice.type in ('in_invoice', 'out_credit_note'):
             res['amount_writeoff'] = - res['amount_writeoff'] - amount
@@ -2157,6 +2171,10 @@ class PayInvoice(Wizard):
         res['currency_writeoff'] = invoice.company.currency.id
         res['currency_digits_writeoff'] = invoice.company.currency.digits
         res['invoice'] = invoice.id
+        res['payment_lines'] = [x.id for x in invoice.payment_lines
+                if not x.reconciliation]
+        if amount > invoice.amount_to_pay:
+            res['type'] = 'writeoff'
         return res
 
     def _action_pay(self, cursor, user, data, context=None):
@@ -2181,6 +2199,11 @@ class PayInvoice(Wizard):
             amount_second_currency = data['form']['amount']
             second_currency = data['form']['currency']
 
+        if amount > invoice.amount_to_pay and \
+                data['form'].get('type') != 'writeoff':
+            self.raise_user_error(cursor, 'amount_greater_amount_to_pay',
+                    context=context)
+
         line_id = False
         if not currency_obj.is_zero(cursor, user, invoice.company.currency,
                 amount):
@@ -2191,7 +2214,9 @@ class PayInvoice(Wizard):
 
         if reconcile_lines[1] != Decimal('0.0'):
             if data['form'].get('type') == 'writeoff':
-                line_ids = data['form']['lines'][0][1]
+                line_ids = data['form']['lines'][0][1] + \
+                        [x.id for x in invoice.payment_lines
+                                if not x.reconciliation]
                 if line_id:
                     line_ids += [line_id]
                 move_line_obj.reconcile(cursor, user, line_ids,
