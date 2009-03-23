@@ -974,8 +974,12 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <form string="Credit Invoice" col="2">
                     <image name="tryton-dialog-information"/>
-                    <label string="Are you sure to credit those/this invoice(s)?"
-                        align="0.0" id="credit"/>
+                    <group col="2" id="credit_cancel">
+                        <label string="Are you sure to credit those/this invoice(s)?"
+                            align="0.0" id="credit" colspan="2"/>
+                        <label name="with_cancellation"/>
+                        <field name="with_cancellation"/>
+                    </group>
                 </form>
                 ]]>
             </field>

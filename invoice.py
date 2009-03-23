@@ -1079,14 +1079,35 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             res[taxes].append(('create', value))
         return res
 
-    def credit(self, cursor, user, ids, context=None):
+    def credit(self, cursor, user, ids, cancel=False, context=None):
         '''
         Credit invoices and return ids of new invoices.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param ids: a list of invoice id
+        :param cancel: a boolean to specify the cancellation
+        :param context: the context
+        :return: the list of new invoice id
         '''
+        move_line_obj = self.pool.get('account.move.line')
+
         new_ids = []
         for invoice in self.browse(cursor, user, ids, context=context):
             vals = self._credit(cursor, user, invoice, context=context)
-            new_ids.append(self.create(cursor, user, vals, context=context))
+            new_id = self.create(cursor, user, vals, context=context)
+            new_ids.append(new_id)
+            if cancel:
+                self.workflow_trigger_validate(cursor, user, new_id, 'open',
+                        context=context)
+                new_invoice = self.browse(cursor, user, new_id, context=context)
+                if new_invoice.state == 'open':
+                    line_ids = [x.id for x in invoice.lines_to_pay
+                            if not x.reconciliation] + \
+                                    [x.id for x in new_invoice.lines_to_pay
+                                            if not x.reconciliation]
+                    move_line_obj.reconcile(cursor, user, line_ids,
+                            context=context)
         return new_ids
 
 Invoice()
@@ -2241,6 +2262,8 @@ class CreditInvoiceInit(ModelView):
     'Credit Invoice Init'
     _name = 'account.invoice.credit_invoice.init'
     _description = __doc__
+    with_cancellation = fields.Boolean('With Cancellation', help='If true, ' \
+            'the current invoice(s) will be paid.')
 
 CreditInvoiceInit()
 
@@ -2250,6 +2273,7 @@ class CreditInvoice(Wizard):
     _name = 'account.invoice.credit_invoice'
     states = {
         'init': {
+            'actions': ['_init'],
             'result': {
                 'type': 'form',
                 'object': 'account.invoice.credit_invoice.init',
@@ -2268,13 +2292,46 @@ class CreditInvoice(Wizard):
         },
     }
 
+    def __init__(self):
+        super(CreditInvoice, self).__init__()
+        self._error_messages.update({
+            'cancel_non_open': 'You can not credit with cancellation ' \
+                    'an invoice that is not openned!',
+            'cancel_with_payement': 'You can not credit with cancellation ' \
+                    'an invoice with payments!',
+            })
+
+    def _init(self, cursor, user, data, context=None):
+        invoice_obj = self.pool.get('account.invoice')
+        res = {
+            'with_cancellation': True,
+        }
+        for invoice in invoice_obj.browse(cursor, user, data['ids'],
+                context=context):
+            if invoice.state != 'open' or invoice.payment_lines:
+                res['with_cancellation'] = False
+                break
+        return res
+
     def _action_credit(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         invoice_obj = self.pool.get('account.invoice')
 
+        cancel = data['form']['with_cancellation']
+
+        if cancel:
+            for invoice in invoice_obj.browse(cursor, user, data['ids'],
+                    context=context):
+                if invoice.state != 'open':
+                    self.raise_user_error(cursor, 'cancel_non_open',
+                            context=context)
+                if invoice.payment_lines:
+                    self.raise_user_error(cursor, 'cancel_with_payement',
+                            context=context)
+
         invoice_ids = invoice_obj.credit(cursor, user, data['ids'],
-                context=context)
+                cancel=cancel, context=context)
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_invoice_form'),
