@@ -78,8 +78,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="company_view_tree"/>
             <field name="act_window" ref="act_company_tree"/>
         </record>
-        <menuitem parent="party.menu_party" action="act_company_tree"
+        <menuitem parent="party.menu_configuration" action="act_company_tree"
             id="menu_company_tree"/>
+
         <record model="ir.action.act_window" id="act_company_form">
             <field name="name">Companies</field>
             <field name="res_model">company.company</field>
@@ -87,18 +88,55 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.act_window.view"
             id="act_company_form_view1">
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="10"/>
             <field name="view" ref="company_view_tree"/>
             <field name="act_window" ref="act_company_form"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_company_form_view2">
-            <field name="sequence" eval="2"/>
+            <field name="sequence" eval="20"/>
             <field name="view" ref="company_view_form"/>
             <field name="act_window" ref="act_company_form"/>
         </record>
         <menuitem parent="menu_company_tree" action="act_company_form"
             id="menu_company_form" name="Edit Companies"/>
+
+        <record model="ir.action.act_window" id="act_company_form2">
+            <field name="name">Companies</field>
+            <field name="res_model">company.company</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="company_view_form"/>
+            <field name="act_window" ref="act_company_form2"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="company_view_tree"/>
+            <field name="act_window" ref="act_company_form2"/>
+        </record>
+        <menuitem parent="menu_company_tree" action="act_company_form2"
+            id="menu_company_form2" name="New Company"/>
+
+        <record model="ir.model.access" id="access_company">
+            <field name="model" search="[('model', '=', 'company.company')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" evel="False"/>
+        </record>
+        <record model="ir.model.access" id="access_company_admin">
+            <field name="model" search="[('model', '=', 'company.company')]"/>
+            <field name="group" ref="party.group_party_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" evel="True"/>
+        </record>
+
         <record model="ir.ui.view" id="user_view_form">
             <field name="model">res.user</field>
             <field name="inherit" ref="res.user_view_form"/>
@@ -324,8 +362,24 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="employee_view_form"/>
             <field name="act_window" ref="act_employee_form"/>
         </record>
-        <menuitem parent="menu_company_tree" action="act_employee_form"
+        <menuitem parent="party.menu_configuration" action="act_employee_form"
             id="menu_employee_form"/>
+
+        <record model="ir.model.access" id="access_employee">
+            <field name="model" search="[('model', '=', 'company.employee')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" evel="False"/>
+        </record>
+        <record model="ir.model.access" id="access_employee_admin">
+            <field name="model" search="[('model', '=', 'company.employee')]"/>
+            <field name="group" ref="party.group_party_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" evel="True"/>
+        </record>
 
         <record model="ir.action.report" id="report_letter">
             <field name="name">_Letter</field>
