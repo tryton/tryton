@@ -19,11 +19,11 @@ class Float(Integer):
         try:
             value1 = locale.atof(self.entry1.get_text())
         except:
-            value1 = 0.0
+            value1 = False
         try:
             value2 = locale.atof(self.entry2.get_text())
         except:
-            value2 = 0.0
+            value2 = False
         return self._get_clause(value1, value2)
 
     def _value_set(self, value):

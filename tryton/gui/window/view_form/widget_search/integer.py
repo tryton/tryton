@@ -62,33 +62,36 @@ class Integer(Interface):
         try:
             value1 = locale.atoi(self.entry1.get_text())
         except:
-            value1 = 0
+            value1 = False
         try:
             value2 = locale.atoi(self.entry2.get_text())
         except:
-            value2 = 0
+            value2 = False
         return self._get_clause(value1, value2)
 
     def _get_clause(self, value1, value2):
         oper = self.liststore.get_value(self.combo.get_active_iter(), 0)
         if oper in ('=', '!='):
             if self.entry1.get_text():
-                return [(self.name, oper, value1)]
+                return [(self.name, oper, value1 or 0)]
             else:
                 return []
         else:
             res = []
             if oper == 'between':
+                clause = 'AND'
                 oper1 = '>='
                 oper2 = '<='
             else:
+                clause = 'OR'
                 oper1 = '<='
                 oper2 = '>='
-            if value1:
+            res.append(clause)
+            if value1 is not False:
                 res.append((self.name, oper1, value1))
-            if value2:
+            if value2 is not False:
                 res.append((self.name, oper2, value2))
-            return res
+            return [res]
 
     def _value_set(self, value):
         def conv(value):

@@ -113,18 +113,21 @@ class Calendar(Interface):
         else:
             res = []
             if oper == 'between':
+                clause = 'AND'
                 oper1 = '>='
                 oper2 = '<='
             else:
+                clause = 'OR'
                 oper1 = '<='
                 oper2 = '>='
+            res.append(clause)
             val = self._date_get(self.entry1.get_text())
             if val:
                 res.append((self.name, oper1, val))
             val = self._date_get(self.entry2.get_text())
             if val:
                 res.append((self.name, oper2, val))
-            return res
+            return [res]
 
     def _value_set(self, value):
         def conv(value):
