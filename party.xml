@@ -13,6 +13,10 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem name="Party Management" sequence="0" id="menu_party"
             icon="tryton-users"/>
 
+        <menuitem name="Configuration" parent="menu_party"
+            id="menu_configuration" groups="group_party_admin"
+            sequence="0" icon="tryton-preferences"/>
+
         <record model="ir.ui.view" id="party_view_tree">
             <field name="model">party.party</field>
             <field name="type">tree</field>
