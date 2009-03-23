@@ -2433,12 +2433,6 @@ class ORM(object):
                             'doesn\'t work on "%s"' % (args[i][0], self._name))
             if field._properties:
                 arg = [args.pop(i)]
-                j = i
-                while j < len(args):
-                    if args[j][0] == arg[0][0]:
-                        arg.append(args.pop(j))
-                    else:
-                        j += 1
                 if field._fnct_search:
                     args.extend(field.search(cursor, user, table,
                         arg[0][0], arg, context=context))
