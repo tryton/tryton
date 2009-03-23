@@ -53,7 +53,8 @@ class TypeTemplate(ModelSQL, ModelView):
             res[type.id] = _name(type)
         return res
 
-    def _get_type_value(self, cursor, user, template, context=None):
+    def _get_type_value(self, cursor, user, template, context=None,
+            type=None):
         '''
         Set the values for account creation.
 
@@ -61,15 +62,22 @@ class TypeTemplate(ModelSQL, ModelView):
         :param user: the user id
         :param template: the BrowseRecord of the template
         :param context: the context
+        :param type: the BrowseRecord of the type to update
         :return: a dictionary with account fields as key and values as value
         '''
         res = {}
-        res['name'] = template.name
-        res['sequence'] = template.sequence
-        res['balance_sheet'] = template.balance_sheet
-        res['income_statement'] = template.income_statement
-        res['display_balance'] = template.display_balance
-        res['template'] = template.id
+        if not type or type.name != template.name:
+            res['name'] = template.name
+        if not type or type.sequence != template.sequence:
+            res['sequence'] = template.sequence
+        if not type or type.balance_sheet != template.balance_sheet:
+            res['balance_sheet'] = template.balance_sheet
+        if not type or type.income_statement != template.income_statement:
+            res['income_statement'] = template.income_statement
+        if not type or type.display_balance != template.display_balance:
+            res['display_balance'] = template.display_balance
+        if not type or type.template.id != template.id:
+            res['template'] = template.id
         return res
 
     def create_type(self, cursor, user, template, company_id, context=None,
@@ -241,8 +249,9 @@ class Type(ModelSQL, ModelView):
 
         if type.template:
             vals = template_obj._get_type_value(cursor, user, type.template,
-                    context=context)
-            self.write(cursor, user, type.id, vals, context=context)
+                    context=context, type=type)
+            if vals:
+                self.write(cursor, user, type.id, vals, context=context)
             template2type[type.template.id] = type.id
 
         for child in type.childs:
@@ -330,7 +339,8 @@ class AccountTemplate(ModelSQL, ModelView):
             i += 1
         return args2
 
-    def _get_account_value(self, cursor, user, template, context=None):
+    def _get_account_value(self, cursor, user, template, context=None,
+            account=None):
         '''
         Set the values for account creation.
 
@@ -338,15 +348,22 @@ class AccountTemplate(ModelSQL, ModelView):
         :param user: the user id
         :param template: the BrowseRecord of the template
         :param context: the context
+        :param account: the BrowseRecord of the account to update
         :return: a dictionary with account fields as key and values as value
         '''
         res = {}
-        res['name'] = template.name
-        res['code'] = template.code
-        res['kind'] = template.kind
-        res['reconcile'] = template.reconcile
-        res['deferral'] = template.deferral
-        res['template'] = template.id
+        if not account or account.name != template.name:
+            res['name'] = template.name
+        if not account or account.code != template.code:
+            res['code'] = template.code
+        if not account or account.kind != template.kind:
+            res['kind'] = template.kind
+        if not account or account.reconcile != template.reconcile:
+            res['reconcile'] = template.reconcile
+        if not account or account.deferral != template.deferral:
+            res['deferral'] = template.deferral
+        if not account or account.template.id != template.id:
+            res['template'] = template.id
         return res
 
     def create_account(self, cursor, user, template, company_id, context=None,
@@ -863,9 +880,13 @@ class Account(ModelSQL, ModelView):
 
         if account.template:
             vals = template_obj._get_account_value(cursor, user,
-                    account.template, context=context)
-            vals['type'] = template2type.get(account.template.type.id, False)
-            self.write(cursor, user, account.id, vals, context=context)
+                    account.template, context=context, account=account)
+            if account.type.id != template2type.get(account.template.type.id,
+                    False):
+                vals['type'] = template2type.get(account.template.type.id,
+                        False)
+            if vals:
+                self.write(cursor, user, account.id, vals, context=context)
             template2account[account.template.id] = account.id
 
         for child in account.childs:
@@ -900,12 +921,18 @@ class Account(ModelSQL, ModelView):
 
         if account.template:
             if account.template.taxes:
-                self.write(cursor, user, account.id, {
-                    'taxes': [
-                        ('add', template2tax[x.id]) \
-                                for x in account.template.taxes \
-                                if x.id in template2tax],
-                    }, context=context)
+                tax_ids = [template2tax[x.id] for x in account.template.taxes
+                        if x.id in template2tax]
+                old_tax_ids = [x.id for x in account.taxes]
+                for tax_id in tax_ids:
+                    if tax_id not in old_tax_ids:
+                        self.write(cursor, user, account.id, {
+                            'taxes': [
+                                ('add', template2tax[x.id]) \
+                                        for x in account.template.taxes \
+                                        if x.id in template2tax],
+                            }, context=context)
+                        break
 
         for child in account.childs:
             self.update_account_taxes(cursor, user, child, template2account,
@@ -1870,10 +1897,10 @@ class UpdateChartAccount(Wizard):
             ], context=context)
         for tax_code in tax_code_obj.browse(cursor, user, tax_code_ids,
                 context=context):
-            tax_code_obj.update_tax(cursor, user, tax_code, context=context,
+            tax_code_obj.update_tax_code(cursor, user, tax_code, context=context,
                     template2tax_code=template2tax_code)
             if tax_code.template:
-                tax_code_template_obj.create_tax(cursor, user,
+                tax_code_template_obj.create_tax_code(cursor, user,
                         tax_code.template, account.company.id, context=context,
                         template2tax_code=template2tax_code)
 
