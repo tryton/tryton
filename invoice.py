@@ -2103,6 +2103,13 @@ class PayInvoice(Wizard):
         },
     }
 
+    def __init__(self):
+        super(PayInvoice, self).__init__()
+        self._error_messages.update({
+            'amount_greater_amount_to_pay': 'You can not create a partial ' \
+                    'payment with an amount greater then the amount to pay!',
+            })
+
     def _init(self, cursor, user, data, context=None):
         invoice_obj = self.pool.get('account.invoice')
         res = {}
@@ -2111,10 +2118,6 @@ class PayInvoice(Wizard):
         res['currency_digits'] = invoice.currency.digits
         res['amount'] = invoice.amount_to_pay_today or invoice.amount_to_pay
         res['description'] = invoice.number
-        self._error_messages.update({
-            'amount_greater_amount_to_pay': 'You can not create a partial ' \
-                    'payment with an amount greater then the amount to pay!',
-            })
         return res
 
     def _choice(self, cursor, user, data, context=None):
