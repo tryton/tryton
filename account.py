@@ -471,8 +471,8 @@ class Account(ModelSQL, ModelView):
             }, depends=['kind'])
     parent = fields.Many2One('account.account', 'Parent', select=1,
             left="left", right="right", ondelete="restrict")
-    left = fields.Integer('Left', required=True)
-    right = fields.Integer('Right', required=True)
+    left = fields.Integer('Left', required=True, select=1)
+    right = fields.Integer('Right', required=True, select=1)
     childs = fields.One2Many('account.account', 'parent', 'Children')
     balance = fields.Function('get_balance', digits="(16, currency_digits)",
             string='Balance', depends=['currency_digits'])
