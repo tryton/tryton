@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 from char import Char
 from integer import Integer
 import locale
@@ -9,7 +10,7 @@ class Float(Integer):
 
     def __init__(self, window, parent, model, attrs=None):
         super(Float, self).__init__(window, parent, model=model, attrs=attrs)
-        self.digits = attrs.get('digits', (14, 2))
+        self.digits = attrs.get('digits', (16, 2))
 
     def set_value(self, model, model_field):
         try:
