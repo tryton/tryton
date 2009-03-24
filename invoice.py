@@ -2006,12 +2006,12 @@ class PayInvoiceAsk(ModelView):
         ('writeoff', 'Write-Off'),
         ('partial', 'Partial Payment'),
         ], 'Type', required=True)
-    journal_writeoff = fields.Many2One('account.journal', 'Journal',
+    journal_writeoff = fields.Many2One('account.journal', 'Write-Off Journal',
             states={
                 'invisible': "type != 'writeoff'",
                 'required': "type == 'writeoff'",
             })
-    account_writeoff = fields.Many2One('account.account', 'Account',
+    account_writeoff = fields.Many2One('account.account', 'Write-Off Account',
             domain="[('kind', '!=', 'view'), ('company', '=', company)]",
             states={
                 'invisible': "type != 'writeoff'",
