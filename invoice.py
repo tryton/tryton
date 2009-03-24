@@ -83,7 +83,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     tax_amount = fields.Function('get_tax_amount', type='numeric',
             digits="(16, currency_digits)", string='Tax')
     total_amount = fields.Function('get_total_amount', type='numeric',
-            digits="(16, currency_digits)", string='Total')
+            digits="(16, currency_digits)", string='Total',
+            fnct_search='search_total_amount')
     reconciled = fields.Function('get_reconciled', type='boolean',
             string='Reconciled')
     lines_to_pay = fields.Function('get_lines_to_pay', type='one2many',
@@ -502,6 +503,56 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 amount_currency = Decimal('0.0')
             res[invoice.id] = amount_currency
         return res
+
+    def search_total_amount(self, cursor, user_id, name, args, context=None):
+        company_obj = self.pool.get('company.company')
+        user_obj = self.pool.get('res.user')
+
+        if not len(args):
+            return []
+
+        if context is None:
+            context = {}
+
+        company_id = None
+        user = user_obj.browse(cursor, user_id, user_id, context=context)
+        if context.get('company'):
+            child_company_ids = company_obj.search(cursor, user_id, [
+                ('parent', 'child_of', [user.main_company.id]),
+                ], context=context)
+            if context['company'] in child_company_ids:
+                company_id = context['company']
+
+        if not company_id:
+            company_id = user.company.id or user.main_company.id
+
+        if not company_id:
+            return []
+
+        cursor.execute(
+            'SELECT invoice '\
+            'FROM ( '\
+               'SELECT invoice, COALESCE(SUM(quantity * unit_price), 0) as total_amount '\
+               'FROM account_invoice_line '\
+                 'JOIN account_invoice on (account_invoice_line.invoice = account_invoice.id) '\
+               'WHERE account_invoice.company = %s'
+               'GROUP BY invoice  '\
+             'UNION '\
+               'SELECT invoice, COALESCE(SUM(amount), 0) as total_amount '\
+               'FROM account_invoice_tax '\
+                 'JOIN account_invoice on (account_invoice_tax.invoice = account_invoice.id) '\
+               'WHERE account_invoice.company = %s'
+               'GROUP BY invoice  '\
+              ') as u '\
+             'GROUP BY u.invoice '\
+             'HAVING ' + \
+                'AND'.join(('(SUM(u.total_amount) ' + arg[1] + str(arg[2]) + ')' \
+                                for arg in args))
+            , (company_id, company_id))
+
+        if not cursor.rowcount:
+            return [('id', '=', 0)]
+        return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def button_draft(self, cursor, user, ids, context=None):
         invoices = self.browse(cursor, user, ids, context=context)
