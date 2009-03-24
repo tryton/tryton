@@ -1130,14 +1130,14 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             res[taxes].append(('create', value))
         return res
 
-    def credit(self, cursor, user, ids, cancel=False, context=None):
+    def credit(self, cursor, user, ids, refund=False, context=None):
         '''
         Credit invoices and return ids of new invoices.
 
         :param cursor: the database cursor
         :param user: the user id
         :param ids: a list of invoice id
-        :param cancel: a boolean to specify the cancellation
+        :param refund: a boolean to specify the refund
         :param context: the context
         :return: the list of new invoice id
         '''
@@ -1148,7 +1148,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             vals = self._credit(cursor, user, invoice, context=context)
             new_id = self.create(cursor, user, vals, context=context)
             new_ids.append(new_id)
-            if cancel:
+            if refund:
                 self.workflow_trigger_validate(cursor, user, new_id, 'open',
                         context=context)
                 new_invoice = self.browse(cursor, user, new_id, context=context)
@@ -2313,7 +2313,7 @@ class CreditInvoiceInit(ModelView):
     'Credit Invoice Init'
     _name = 'account.invoice.credit_invoice.init'
     _description = __doc__
-    with_cancellation = fields.Boolean('With Cancellation', help='If true, ' \
+    with_refund = fields.Boolean('With Refund', help='If true, ' \
             'the current invoice(s) will be paid.')
 
 CreditInvoiceInit()
@@ -2346,21 +2346,21 @@ class CreditInvoice(Wizard):
     def __init__(self):
         super(CreditInvoice, self).__init__()
         self._error_messages.update({
-            'cancel_non_open': 'You can not credit with cancellation ' \
+            'refund_non_open': 'You can not credit with refund ' \
                     'an invoice that is not openned!',
-            'cancel_with_payement': 'You can not credit with cancellation ' \
+            'refund_with_payement': 'You can not credit with refund ' \
                     'an invoice with payments!',
             })
 
     def _init(self, cursor, user, data, context=None):
         invoice_obj = self.pool.get('account.invoice')
         res = {
-            'with_cancellation': True,
+            'with_refund': True,
         }
         for invoice in invoice_obj.browse(cursor, user, data['ids'],
                 context=context):
             if invoice.state != 'open' or invoice.payment_lines:
-                res['with_cancellation'] = False
+                res['with_refund'] = False
                 break
         return res
 
@@ -2369,20 +2369,20 @@ class CreditInvoice(Wizard):
         act_window_obj = self.pool.get('ir.action.act_window')
         invoice_obj = self.pool.get('account.invoice')
 
-        cancel = data['form']['with_cancellation']
+        refund = data['form']['with_refund']
 
-        if cancel:
+        if refund:
             for invoice in invoice_obj.browse(cursor, user, data['ids'],
                     context=context):
                 if invoice.state != 'open':
-                    self.raise_user_error(cursor, 'cancel_non_open',
+                    self.raise_user_error(cursor, 'refund_non_open',
                             context=context)
                 if invoice.payment_lines:
-                    self.raise_user_error(cursor, 'cancel_with_payement',
+                    self.raise_user_error(cursor, 'refund_with_payement',
                             context=context)
 
         invoice_ids = invoice_obj.credit(cursor, user, data['ids'],
-                cancel=cancel, context=context)
+                refund=refund, context=context)
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_invoice_form'),
