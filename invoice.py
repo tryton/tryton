@@ -546,9 +546,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
               ') as u '\
              'GROUP BY u.invoice '\
              'HAVING ' + \
-                'AND'.join(('(SUM(u.total_amount) ' + arg[1] + str(arg[2]) + ')' \
+                'AND'.join(('(SUM(u.total_amount) ' + arg[1] + ' %s)' \
                                 for arg in args))
-            , (company_id, company_id))
+            , [company_id, company_id] + [arg[2] for arg in args])
 
         if not cursor.rowcount:
             return [('id', '=', 0)]
