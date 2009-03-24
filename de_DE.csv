@@ -84,6 +84,7 @@ model,"ir.sequence,name",sequence_party,Party,Partei,0
 model,"ir.sequence.type,name",sequence_type_party,Party,Partei,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adressen,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Parteikategorien,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_category_form,Edit Categories,Parteikategorien bearbeiten,0
 model,"ir.ui.menu,name",menu_address_form2,New Address,Neue Adresse,0
 model,"ir.ui.menu,name",menu_category_form2,New category,Neue Parteikategorie,0
