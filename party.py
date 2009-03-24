@@ -163,8 +163,8 @@ class Party(ModelSQL, ModelView):
                 'GROUP BY l.party ' \
                 'HAVING ' + \
                     'AND'.join(['(SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
-                        + ' ' + x[1] + ' ' + str(x[2]) + ') ' for x in args]),
-                    [code] + today_value + [company_id])
+                        + ' ' + x[1] + ' %s) ' for x in args]),
+                    [code] + today_value + [company_id] + [x[2] for x in args])
         if not cursor.rowcount:
             return [('id', '=', 0)]
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
