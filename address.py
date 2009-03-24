@@ -98,7 +98,7 @@ class Address(ModelSQL, ModelView):
             else:
                 args2.append(('party', args[i][1], args[i][2]))
             i += 1
-        return args
+        return args2
 
     def write(self, cursor, user, ids, vals, context=None):
         if 'party' in vals:
