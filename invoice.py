@@ -2296,16 +2296,18 @@ class PayInvoice(Wizard):
                                 if not x.reconciliation]
                 if line_id:
                     line_ids += [line_id]
-                move_line_obj.reconcile(cursor, user, line_ids,
-                        journal_id=data['form']['journal_writeoff'],
-                        date=data['form']['date'],
-                        account_id=data['form']['account_writeoff'],
-                        context=context)
+                if line_ids:
+                    move_line_obj.reconcile(cursor, user, line_ids,
+                            journal_id=data['form']['journal_writeoff'],
+                            date=data['form']['date'],
+                            account_id=data['form']['account_writeoff'],
+                            context=context)
         else:
             line_ids = reconcile_lines[0]
             if line_id:
                 line_ids += [line_id]
-            move_line_obj.reconcile(cursor, user, line_ids, context=context)
+            if line_ids:
+                move_line_obj.reconcile(cursor, user, line_ids, context=context)
         return {}
 
 PayInvoice()
