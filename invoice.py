@@ -546,9 +546,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
               ') as u '\
              'GROUP BY u.invoice '\
              'HAVING ' + \
-                'AND'.join(('(SUM(u.total_amount) ' + arg[1] + str(arg[2]) + ')' \
+                'AND'.join(('(SUM(u.total_amount) ' + arg[1] + ' %s)' \
                                 for arg in args))
-            , (company_id, company_id))
+            , [company_id, company_id] + [arg[2] for arg in args])
 
         if not cursor.rowcount:
             return [('id', '=', 0)]
@@ -2226,14 +2226,21 @@ class PayInvoice(Wizard):
         res['journal'] = data['form']['journal']
         res['date'] = data['form']['date']
         res['company'] = invoice.company.id
+
         amount = currency_obj.compute(cursor, user, data['form']['currency'],
                 data['form']['amount'], invoice.company.currency,
                 context=context)
-        res['lines'] = invoice_obj.get_reconcile_lines_for_amount(cursor, user, invoice,
-                amount)[0]
+
+        if currency_obj.is_zero(cursor, user, invoice.company.currency,
+                amount):
+            res['lines'] = [x.id for x in invoice.lines_to_pay]
+        else:
+            res['lines'] = invoice_obj.get_reconcile_lines_for_amount(cursor,
+                    user, invoice, amount)[0]
         for line_id in res['lines'][:]:
             if line_id not in res['lines_to_pay']:
                 res['lines'].remove(line_id)
+
         res['amount_writeoff'] = Decimal('0.0')
         for line in line_obj.browse(cursor, user, res['lines'], context=context):
             res['amount_writeoff'] += line.debit - line.credit
@@ -2243,11 +2250,13 @@ class PayInvoice(Wizard):
             res['amount_writeoff'] = - res['amount_writeoff'] - amount
         else:
             res['amount_writeoff'] = res['amount_writeoff'] - amount
+
         res['currency_writeoff'] = invoice.company.currency.id
         res['currency_digits_writeoff'] = invoice.company.currency.digits
         res['invoice'] = invoice.id
         res['payment_lines'] = [x.id for x in invoice.payment_lines
                 if not x.reconciliation]
+
         if amount > invoice.amount_to_pay \
                 or currency_obj.is_zero(cursor, user, invoice.company.currency,
                         amount):
