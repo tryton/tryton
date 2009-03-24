@@ -20,6 +20,8 @@ error,account.invoice,0,"You can not modify an invoice that is open, paid or can
 error,account.invoice,0,You can not reset to draft an invoice that has move!,"Eine Rechnung, die Buchungen enthält, kann nicht auf Entwurf zurückgesetzt werden!",0
 error,account.invoice,0,"You can not use the same account
 as on invoice line!",Es kann nicht das selbe Konto verwendet werden!,0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not openned!,Die Stornierung von nicht fakturierten Rechnungen ist nicht möglich!,0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice with payments!,"Die Stornierung einer Rechnung ist nicht möglich, wenn bereits Zahlungen für diese gebucht sind!",0
 error,account.invoice.line,0,"Line with ""line"" type must have an account!","Eine Zeile vom Typ ""Position"" muss einem Konto zugeordnet sein!",0
 error,account.invoice.line,0,"Line without ""line"" type must have an invoice!","Eine Zeile, die nicht vom Typ ""Position"" ist, muss einer Rechnung zugeordnet sein!",0
 error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert kann keine neue Position hinzugefügt werden!",0
@@ -29,6 +31,7 @@ auf ein Konto eines anderen Unternehmens beziehen!",0
 error,account.invoice.line,0,"You can not modify line from an invoice that is open, paid or canceled!","In einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert können Positionen nicht bearbeitet werden!",0
 error,account.invoice.line,0,"You can not use the same account
 as on the invoice!",Es kann nicht das selbe Konto verwendet werden!,0
+error,account.invoice.pay_invoice,0,You can not create a partial payment with an amount greater then the amount to pay!,Ein Teilbetrag kann nicht größer als der Gesamtbetrag der Rechnung sein!,0
 error,account.invoice.payment_term,0,Invalid payment term line!,Ungültige Position in Zahlungsbedingung!,0
 error,account.invoice.payment_term,0,Payment term missing a remainder line!,In der Zahlungsbedingung fehlt eine Restbetragszeile!,0
 error,account.invoice.payment_term.line.delay,0,The code must be unique!,Code kann nicht mehrfach vergeben werden!,0
@@ -49,6 +52,7 @@ field,"account.invoice,amount_to_pay",0,Amount to Pay,Zahlbarer Betrag,0
 field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Zahlbarer Betrag (heute),0
 field,"account.invoice,comment",0,Comment,Kommentar,0
 field,"account.invoice,company",0,Company,Unternehmen,0
+field,"account.invoice.credit_invoice.init,with_refund",0,With Refund,Stornierung,0
 field,"account.invoice,currency",0,Currency,Währung,0
 field,"account.invoice,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"account.invoice,description",0,Description,Beschreibung,0
@@ -87,7 +91,7 @@ field,"account.invoice,number",0,Number,Nummer,0
 field,"account.invoice,party",0,Party,Partei,0
 field,"account.invoice,party_lang",0,Party Language,Sprache Partei,0
 field,"account.invoice.pay_invoice.ask,account",0,Account,Konto,0
-field,"account.invoice.pay_invoice.ask,account_writeoff",0,Account,Konto,0
+field,"account.invoice.pay_invoice.ask,account_writeoff",0,Write-Off Account,Konto Ausbuchung,0
 field,"account.invoice.pay_invoice.ask,amount",0,Payment Amount,Betrag,0
 field,"account.invoice.pay_invoice.ask,amount_writeoff",0,Write-Off Amount,Betrag Ausbuchung,0
 field,"account.invoice.pay_invoice.ask,company",0,Company,Unternehmen,0
@@ -99,9 +103,10 @@ field,"account.invoice.pay_invoice.ask,date",0,Date,Datum,0
 field,"account.invoice.pay_invoice.ask,description",0,Description,Beschreibung,0
 field,"account.invoice.pay_invoice.ask,invoice",0,Invoice,Rechnung,0
 field,"account.invoice.pay_invoice.ask,journal",0,Journal,Journal,0
-field,"account.invoice.pay_invoice.ask,journal_writeoff",0,Journal,Journal,0
+field,"account.invoice.pay_invoice.ask,journal_writeoff",0,Write-Off Journal,Journal Ausbuchung,0
 field,"account.invoice.pay_invoice.ask,lines",0,Lines,Positionen,0
 field,"account.invoice.pay_invoice.ask,lines_to_pay",0,Lines to Pay,Zahlbare Positionen,0
+field,"account.invoice.pay_invoice.ask,payment_lines",0,Payment Lines,Zahlungspositionen,0
 field,"account.invoice.pay_invoice.ask,type",0,Type,Typ,0
 field,"account.invoice.pay_invoice.init,amount",0,Amount,Betrag,0
 field,"account.invoice.pay_invoice.init,currency",0,Currency,Währung,0
@@ -162,6 +167,7 @@ field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz 
 field,"party.address,invoice",0,Invoice,Rechnungsadresse,0
 field,"party.party,payment_term",0,Invoice Payment Term,Zahlungsbedingung Verkauf,0
 field,"party.party,supplier_payment_term",0,Supplier Payment Term,Zahlungsbedingung Einkauf,0
+help,"account.invoice.credit_invoice.init,with_refund",0,"If true, the current invoice(s) will be paid.",Bei Aktivierung werden die aktuelle(n ) Rechnung(en) und Gutschrift(en) bezahlt und abgestimmt.,0
 help,"account.invoice.payment_term.line,percentage",0,In %,Eingabe in %,0
 help,"account.invoice.payment_term.line,sequence",0,Use to order lines in ascending order,Ordnet Positionen in aufsteigender Reihenfolge,0
 model,"account.invoice-account.move.line,name",0,Invoice - Payment Line,Rechnung - Zahlungsposition,0
@@ -216,7 +222,6 @@ model,"ir.ui.menu,name",menu_invoice_out_credit_note_form3,Draft Credit Notes,En
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form3,Draft Invoices,Entwürfe Kundenrechnungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form3,Draft Supplier Credit Notes,Entwürfe Lieferantengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form3,Draft Supplier Invoices,Entwürfe Lieferantenrechnungen,0
-model,"ir.ui.menu,name",,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoices,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Neue Gutschrift an Kunden,0
@@ -227,8 +232,8 @@ model,"ir.ui.menu,name",menu_invoice_out_credit_note_form5,Opened Credit Notes,F
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form5,Opened Invoices,Fakturierte Kundenrechnungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Fakturierte Lieferantengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form5,Opened Supplier Invoices,Fakturierte Lieferantenrechnungen,0
-model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Zahlungsbedingungen,0
 model,"ir.ui.menu,name",menu_payment_terms_configuration,Payment Terms,Zahlungsbedingungen,0
+model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Zahlungsbedingungen,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro Forma Kundengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form4,Pro Forma Invoices,Pro Forma Kundenrechnungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Pro Forma Lieferantengutschriften,0
@@ -317,6 +322,7 @@ view,account.invoice.pay_invoice.ask,0,Credit,Haben,0
 view,account.invoice.pay_invoice.ask,0,Debit,Soll,0
 view,account.invoice.pay_invoice.ask,0,Lines to Pay,Zahlbare Positionen,0
 view,account.invoice.pay_invoice.ask,0,Pay Invoice,Rechnung bezahlen,0
+view,account.invoice.pay_invoice.ask,0,Payment Lines,Zahlungspositionen,0
 view,account.invoice.pay_invoice.init,0,Pay Invoice,Rechnung bezahlen,0
 view,account.invoice.payment_term,0,Payment Term,Zahlungsbedingung,0
 view,account.invoice.payment_term,0,Payment Term Line,Zahlungsbedingung,0
