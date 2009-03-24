@@ -2248,7 +2248,9 @@ class PayInvoice(Wizard):
         res['invoice'] = invoice.id
         res['payment_lines'] = [x.id for x in invoice.payment_lines
                 if not x.reconciliation]
-        if amount > invoice.amount_to_pay:
+        if amount > invoice.amount_to_pay \
+                or currency_obj.is_zero(cursor, user, invoice.company.currency,
+                        amount):
             res['type'] = 'writeoff'
         return res
 
