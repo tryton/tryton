@@ -128,8 +128,8 @@ class ModelRecord(SignalEvent):
                 and (not get_modifiedonly \
                     or (mfield.name in self.modified_fields \
                         or isinstance(mfield, field.O2MField))):
-                value.append((name, mfield.get(self, readonly=get_readonly,
-                    modified=get_modifiedonly)))
+                value.append((name, mfield.get(self, check_load=check_load,
+                    readonly=get_readonly, modified=get_modifiedonly)))
         value = dict(value)
         if includeid:
             value['id'] = self.id
