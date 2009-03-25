@@ -2,3 +2,4 @@
   defined on company
 - Add check on product when changing UOM and there is stock move
 - Add type "view" on location
+- Migrate packing* objects and tables to shipment*
