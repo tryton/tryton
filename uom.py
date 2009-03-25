@@ -31,7 +31,7 @@ class Uom(ModelSQL, ModelView):
     symbol = fields.Char('Symbol', size=10, required=True, states=STATES,
             translate=True)
     category = fields.Many2One('product.uom.category', 'UOM Category',
-            required=True, ondelete='cascade', states=STATES)
+            required=True, ondelete='RESTRICT', states=STATES)
     rate = fields.Float('Rate', digits=(12, 6), required=True,
             on_change=['rate'], states=STATES,
             help='The coefficient for the formula:\n' \
