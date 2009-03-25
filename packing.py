@@ -25,7 +25,8 @@ class PackingIn(OSV):
         states={'readonly': "state != 'draft'",})
     supplier = fields.Many2One('party.party', 'Supplier',
             states={
-                'readonly': "state != 'draft' or bool(incoming_moves)",
+                'readonly': "(state != 'draft' or bool(incoming_moves)) " \
+                        "and bool(supplier)",
             }, on_change=['supplier'], required=True)
     contact_address = fields.Many2One('party.address', 'Contact Address',
             states={
