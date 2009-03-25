@@ -667,7 +667,7 @@ class PackingOut(ModelWorkflow, ModelSQL, ModelView):
             if move.state == 'cancel': continue
             quantity = uom_obj.compute_qty(
                 cursor, user, move.uom, move.quantity, move.product.default_uom,
-                context=context)
+                round=False, context=context)
             outgoing_qty.setdefault(move.product.id, 0.0)
             outgoing_qty[move.product.id] += quantity
 
@@ -675,7 +675,7 @@ class PackingOut(ModelWorkflow, ModelSQL, ModelView):
             if move.state == 'cancel': continue
             qty_default_uom = uom_obj.compute_qty(
                 cursor, user, move.uom, move.quantity, move.product.default_uom,
-                context=context)
+                round=False, context=context)
             # Check if the outgoing move doesn't exist already
             if outgoing_qty.get(move.product.id):
                 # If it exist, decrease the sum
@@ -721,7 +721,7 @@ class PackingOut(ModelWorkflow, ModelSQL, ModelView):
                     }, context=context)
                 removed_qty = uom_obj.compute_qty(
                     cursor, user, move.uom, min(exc_qty, move.quantity),
-                    move.product.default_uom, context=context)
+                    move.product.default_uom, round=False, context=context)
                 outgoing_qty[move.product.id] -= removed_qty
 
         move_obj.write(cursor, user, [x.id for x in packing.outgoing_moves
