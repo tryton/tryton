@@ -1029,6 +1029,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="report_packing_out_delivery_note"/>
         </record>
 
+        <record model="ir.action.report" id="report_packing_out_picking_list">
+            <field name="name">Picking List</field>
+            <field name="model">stock.packing.out</field>
+            <field name="report_name">stock.packing.out.picking_list</field>
+            <field name="report">stock/picking_list.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_packing_out_picking_list_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.packing.out,0</field>
+            <field name="action" ref="report_packing_out_picking_list"/>
+        </record>
+
 
         <!-- Workflow internal packing -->
         <record model="workflow" id="wkf_packinginternal">

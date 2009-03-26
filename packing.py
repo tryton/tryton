@@ -1542,4 +1542,25 @@ class DeliveryNote(CompanyReport):
         return product_obj.browse(cursor, user, product_id,
                 context=ctx).rec_name
 
-PackingOutReport()
+DeliveryNote()
+
+
+
+class PickingList(CompanyReport):
+    _name = 'stock.packing.out.picking_list'
+
+    def parse(self, cursor, user, report, objects, datas, context):
+        if context is None:
+            context = {}
+        context = context.copy()
+
+        context['sort'] = lambda moves : sorted(
+            moves,
+            lambda x,y: cmp((x.from_location.rec_name, x.to_location.rec_name),
+                            (y.from_location.rec_name, y.to_location.rec_name))
+            )
+
+        return super(PickingList, self).parse(cursor, user, report,
+                objects, datas, context)
+
+PickingList()
