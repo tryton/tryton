@@ -152,5 +152,56 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Party</field>
             <field name="code">party.party</field>
         </record>
+
+        <record model="ir.action.wizard" id="wizard_check_vies">
+            <field name="name">Check VIES</field>
+            <field name="wiz_name">party.check_vies</field>
+            <field name="model">party.party</field>
+        </record>
+        <record model="ir.action.keyword" id="check_vies_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">party.party,0</field>
+            <field name="action" ref="wizard_check_vies"/>
+        </record>
+
+        <record model="ir.ui.view" id="check_vies_no_check">
+            <field name="model">party.check_vies.no_check</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="VAT Information Exchange System">
+                    <label string="You must have a recent version of &quot;vatnumber&quot; installed!" id="vatnumber"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="check_vies_check">
+            <field name="model">party.check_vies.check</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="VAT Information Exchange System Results" col="1">
+                    <separator name="parties_succeed"/>
+                    <field name="parties_succeed">
+                        <tree string="Parties Succeed" fill="1">
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="vat_code"/>
+                        </tree>
+                    </field>
+                    <separator name="parties_failed"/>
+                    <field name="parties_failed">
+                        <tree string="Parties Failed" fill="1">
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="vat_code"/>
+                        </tree>
+                    </field>
+                </form>
+                ]]>
+            </field>
+        </record>
+
     </data>
 </tryton>

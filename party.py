@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
 import logging
 
 HAS_VATNUMBER = False
@@ -234,3 +235,103 @@ class PartyCategory(ModelSQL):
             required=True, select=1)
 
 PartyCategory()
+
+
+class CheckVIESNoCheck(ModelView):
+    'Check VIES - No Check'
+    _name = 'party.check_vies.no_check'
+    _description = __doc__
+
+CheckVIESNoCheck()
+
+
+class CheckVIESCheck(ModelView):
+    'Check VIES - Check'
+    _name = 'party.check_vies.check'
+    _description = __doc__
+    parties_succeed = fields.Many2Many('party.party', None, None,
+            'Parties Succeed', readonly=True, states={
+                'invisible': "not bool(parties_succeed)",
+                })
+    parties_failed = fields.Many2Many('party.party', None, None,
+            'Parties Failed', readonly=True, states={
+                'invisible': "not bool(parties_failed)",
+                })
+
+CheckVIESCheck()
+
+
+class CheckVIES(Wizard):
+    'Check VIES'
+    _name = 'party.check_vies'
+    states = {
+        'init': {
+            'result': {
+                'type': 'choice',
+                'next_state': '_choice',
+            },
+        },
+        'no_check': {
+            'result': {
+                'type': 'form',
+                'object': 'party.check_vies.no_check',
+                'state': [
+                    ('end', 'Ok', 'tryton-ok', True),
+                ],
+            },
+        },
+        'check': {
+            'actions': ['_check'],
+            'result': {
+                'type': 'form',
+                'object': 'party.check_vies.check',
+                'state': [
+                    ('end', 'Ok', 'tryton-ok', True),
+                ],
+            },
+        },
+    }
+
+    def __init__(self):
+        super(CheckVIES, self).__init__()
+        self._error_messages.update({
+            'vies_unavailable': 'The VIES service is unavailable, ' \
+                    'try again later.',
+            })
+
+    def _choice(self, cursor, user, data, context=None):
+        if not HAS_VATNUMBER or not hasattr(vatnumber, 'check_vies'):
+            return 'no_check'
+        return 'check'
+
+    def _check(self, cursor, user, data, context=None):
+        party_obj = self.pool.get('party.party')
+        res = {
+            'parties_succeed': [],
+            'parties_failed': [],
+        }
+        parties = party_obj.browse(cursor, user, data['ids'], context=context)
+        for party in parties:
+            if not party.vat_code:
+                continue
+            try:
+                if not vatnumber.check_vies(party.vat_code):
+                    res['parties_failed'].append(party.id)
+                else:
+                    res['parties_succeed'].append(party.id)
+            except Exception, e:
+                if hasattr(e, 'faultstring') \
+                        and hasattr(e.faultstring, 'find'):
+                    if e.faultstring.find('INVALID_INPUT'):
+                        res['parties_failed'].append(party.id)
+                        continue
+                    if e.faultstring.find('SERVICE_UNAVAILABLE') \
+                            or e.faultstring.find('MS_UNAVAILABLE') \
+                            or e.faultstring.find('TIMEOUT') \
+                            or e.faultstring.find('SERVER_BUSY'):
+                        self.raise_user_error(cursor, 'vies_unavailable',
+                                context=context)
+                raise e
+        return res
+
+CheckVIES()
