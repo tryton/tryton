@@ -507,78 +507,101 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def search_total_amount(self, cursor, user, name, args, context=None):
+        rule_obj = self.pool.get('ir.rule')
+        line_obj = self.pool.get('account.invoice.line')
+        tax_obj = self.pool.get('account.invoice.tax')
+
         if not len(args):
             return []
 
         if context is None:
             context = {}
 
-        invoice_ids = self.search(cursor, user, [], context=context)
+        invoice_query, invoice_val = rule_obj.domain_get(
+            cursor, user, 'account.invoice', context=context)
 
         cursor.execute(
             'SELECT invoice '\
             'FROM ( '\
                'SELECT invoice, COALESCE(SUM(quantity * unit_price), 0) as total_amount '\
-               'FROM account_invoice_line '\
-               'WHERE invoice in (' + ','.join(str(i) for i in invoice_ids) + ') '\
+               'FROM "' + line_obj._table + '" '\
+                 'JOIN "' + self._table + '" on '\
+                     '("' + self._table + '".id = "' + line_obj._table + '".invoice) '\
+               'WHERE ' + invoice_query + ' '\
                'GROUP BY invoice  '\
              'UNION '\
                'SELECT invoice, COALESCE(SUM(amount), 0) as total_amount '\
-               'FROM account_invoice_tax '\
-               'WHERE invoice in (' + ','.join(str(i) for i in invoice_ids) + ') '\
+               'FROM "' + tax_obj._table + '" '\
+                 'JOIN "' + self._table + '" on '\
+                     '("' + self._table + '".id = "' + tax_obj._table + '".invoice) '\
+               'WHERE ' + invoice_query + ' '\
                'GROUP BY invoice  '\
               ') as u '\
              'GROUP BY u.invoice '\
              'HAVING ' + \
                 'AND '.join(('(SUM(u.total_amount) ' + arg[1] + ' %s) ' \
                                 for arg in args)),
-            [arg[2] for arg in args])
+            invoice_val + invoice_val + [arg[2] for arg in args])
 
         if not cursor.rowcount:
             return [('id', '=', 0)]
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def search_untaxed_amount(self, cursor, user, name, args, context=None):
+        rule_obj = self.pool.get('ir.rule')
+        line_obj = self.pool.get('account.invoice.line')
+        tax_obj = self.pool.get('account.invoice.tax')
+
         if not len(args):
             return []
 
         if context is None:
             context = {}
 
-        invoice_ids = self.search(cursor, user, [], context=context)
+        invoice_query, invoice_val = rule_obj.domain_get(
+            cursor, user, 'account.invoice', context=context)
 
         cursor.execute(
             'SELECT invoice '\
-            'FROM account_invoice_line '\
-            'WHERE invoice in (' + ','.join(str(i) for i in invoice_ids) + ') '\
+            'FROM "' + line_obj._table + '" '\
+               'JOIN "' + self._table + '" on '\
+                   '("' + self._table + '".id = "' + line_obj._table + '".invoice) '\
+            'WHERE ' + invoice_query + ' '\
             'GROUP BY invoice  '\
             'HAVING ' + \
               'AND '.join(('(COALESCE(SUM(quantity * unit_price), 0) ' + \
                                 arg[1] + ' %s) ' for arg in args)),
-            [arg[2] for arg in args])
+            invoice_val + [arg[2] for arg in args])
 
         if not cursor.rowcount:
             return [('id', '=', 0)]
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def search_tax_amount(self, cursor, user, name, args, context=None):
+        rule_obj = self.pool.get('ir.rule')
+        line_obj = self.pool.get('account.invoice.line')
+        tax_obj = self.pool.get('account.invoice.tax')
+
         if not len(args):
             return []
 
         if context is None:
             context = {}
 
-        invoice_ids = self.search(cursor, user, [], context=context)
+        invoice_query, invoice_val = rule_obj.domain_get(
+            cursor, user, 'account.invoice', context=context)
 
         cursor.execute(
             'SELECT invoice '\
-            'FROM account_invoice_tax '\
-            'WHERE invoice in (' + ','.join(str(i) for i in invoice_ids) + ') '\
+            'FROM "' + tax_obj._table + '" '\
+             'JOIN "' + self._table + '" on '\
+                   '("' + self._table + '".id = "' + tax_obj._table + '".invoice) '\
+            'WHERE ' + invoice_query + ' '\
             'GROUP BY invoice  '\
             'HAVING ' + \
               'AND '.join(('(COALESCE(SUM(amount), 0) ' + arg[1] + ' %s) ' \
                                 for arg in args)),
-            [arg[2] for arg in args])
+            invoice_val + [arg[2] for arg in args])
 
         if not cursor.rowcount:
             return [('id', '=', 0)]
