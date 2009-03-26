@@ -1522,8 +1522,8 @@ class CreatePackingOutReturn(Wizard):
 CreatePackingOutReturn()
 
 
-class PackingOutReport(CompanyReport):
-    _name = 'stock.packing.out'
+class DeliveryNote(CompanyReport):
+    _name = 'stock.packing.out.delivery_note'
 
     def parse(self, cursor, user, report, objects, datas, context):
         if context is None:
@@ -1532,7 +1532,7 @@ class PackingOutReport(CompanyReport):
         context['product_name'] = lambda product_id, language: \
                 self.product_name(cursor, user, product_id, language,
                         context)
-        return super(PackingOutReport, self).parse(cursor, user, report,
+        return super(DeliveryNote, self).parse(cursor, user, report,
                 objects, datas, context)
 
     def product_name(self, cursor, user, product_id, language, context):

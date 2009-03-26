@@ -1015,18 +1015,18 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
 
-        <record model="ir.action.report" id="report_packing_out">
-            <field name="name">Customer Shipment</field>
+        <record model="ir.action.report" id="report_packing_out_delivery_note">
+            <field name="name">Delivery Note</field>
             <field name="model">stock.packing.out</field>
-            <field name="report_name">stock.packing.out</field>
-            <field name="report">stock/packing_out.odt</field>
+            <field name="report_name">stock.packing.out.delivery_note</field>
+            <field name="report">stock/delivery_note.odt</field>
             <field name="style">company/header_A4.odt</field>
         </record>
         <record model="ir.action.keyword"
-         id="report_packing_out_keyword">
+         id="report_packing_out_delivery_note_keyword">
             <field name="keyword">form_print</field>
             <field name="model">stock.packing.out,0</field>
-            <field name="action" ref="report_packing_out"/>
+            <field name="action" ref="report_packing_out_delivery_note"/>
         </record>
 
 
