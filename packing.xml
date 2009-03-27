@@ -1071,6 +1071,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="report_packing_out_return_restocking_list"/>
         </record>
 
+        <record model="ir.action.report" id="report_packing_internal">
+            <field name="name">Internal Packing</field>
+            <field name="model">stock.packing.internal</field>
+            <field name="report_name">stock.packing.internal.report</field>
+            <field name="report">stock/internal_packing.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_packing_internal_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.packing.internal,0</field>
+            <field name="action" ref="report_packing_internal"/>
+        </record>
 
         <!-- Workflow internal packing -->
         <record model="workflow" id="wkf_packinginternal">
