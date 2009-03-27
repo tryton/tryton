@@ -1043,6 +1043,34 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="report_packing_out_picking_list"/>
         </record>
 
+        <record model="ir.action.report" id="report_packing_in_restocking_list">
+            <field name="name">Restocking List</field>
+            <field name="model">stock.packing.in</field>
+            <field name="report_name">stock.packing.in.restocking_list</field>
+            <field name="report">stock/supplier_restocking_list.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_packing_in_restocking_list_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.packing.in,0</field>
+            <field name="action" ref="report_packing_in_restocking_list"/>
+        </record>
+
+        <record model="ir.action.report" id="report_packing_out_return_restocking_list">
+            <field name="name">Restocking List</field>
+            <field name="model">stock.packing.out.return</field>
+            <field name="report_name">stock.packing.out.return.restocking_list</field>
+            <field name="report">stock/customer_return_restocking_list.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword"
+         id="report_packing_out_return_restocking_list_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.packing.out.return,0</field>
+            <field name="action" ref="report_packing_out_return_restocking_list"/>
+        </record>
+
 
         <!-- Workflow internal packing -->
         <record model="workflow" id="wkf_packinginternal">

@@ -1593,3 +1593,103 @@ class PickingList(CompanyReport):
                 to_location_ids.index(move.to_location.id)]
 
 PickingList()
+
+
+class SupplierRestockingList(CompanyReport):
+    _name = 'stock.packing.in.restocking_list'
+
+    def parse(self, cursor, user, report, objects, datas, context):
+        move_obj = self.pool.get('stock.move')
+        packing_in_obj = self.pool.get('stock.packing.in')
+
+        compare_context = self.get_compare_context(
+            cursor, user, report, objects, datas, context)
+
+        sorted_moves = {}
+        for packing in objects:
+            sorted_moves[packing.id] = sorted(
+                packing.inventory_moves,
+                lambda x,y: cmp(self.get_compare_key(x, compare_context),
+                                self.get_compare_key(y, compare_context))
+                )
+
+        context['moves'] = sorted_moves
+
+        return super(SupplierRestockingList, self).parse(cursor, user, report,
+                objects, datas, context)
+
+    def get_compare_context(self, cursor, user, report, objects, datas, context):
+        location_obj = self.pool.get('stock.location')
+        from_location_ids = set()
+        to_location_ids = set()
+        for obj in objects:
+            for move in obj.inventory_moves:
+                from_location_ids.add(move.from_location.id)
+                to_location_ids.add(move.to_location.id)
+
+        from_location_ids = location_obj.search(
+            cursor, user, list(from_location_ids), context=context)
+        to_location_ids = location_obj.search(
+            cursor, user, list(to_location_ids), context=context)
+
+        return {'from_location_ids' : from_location_ids,
+                'to_location_ids' : to_location_ids}
+
+
+    def get_compare_key(self, move, compare_context):
+        from_location_ids = compare_context['from_location_ids']
+        to_location_ids = compare_context['to_location_ids']
+        return [from_location_ids.index(move.from_location.id),
+                to_location_ids.index(move.to_location.id)]
+
+SupplierRestockingList()
+
+
+class CustomerReturnRestockingList(CompanyReport):
+    _name = 'stock.packing.out.return.restocking_list'
+
+    def parse(self, cursor, user, report, objects, datas, context):
+        move_obj = self.pool.get('stock.move')
+        packing_in_obj = self.pool.get('stock.packing.out.return')
+
+        compare_context = self.get_compare_context(
+            cursor, user, report, objects, datas, context)
+
+        sorted_moves = {}
+        for packing in objects:
+            sorted_moves[packing.id] = sorted(
+                packing.inventory_moves,
+                lambda x,y: cmp(self.get_compare_key(x, compare_context),
+                                self.get_compare_key(y, compare_context))
+                )
+
+        context['moves'] = sorted_moves
+
+        return super(CustomerReturnRestockingList, self).parse(
+            cursor, user, report, objects, datas, context)
+
+    def get_compare_context(self, cursor, user, report, objects, datas, context):
+        location_obj = self.pool.get('stock.location')
+        from_location_ids = set()
+        to_location_ids = set()
+        for obj in objects:
+            for move in obj.inventory_moves:
+                from_location_ids.add(move.from_location.id)
+                to_location_ids.add(move.to_location.id)
+
+        from_location_ids = location_obj.search(
+            cursor, user, list(from_location_ids), context=context)
+        to_location_ids = location_obj.search(
+            cursor, user, list(to_location_ids), context=context)
+
+        return {'from_location_ids' : from_location_ids,
+                'to_location_ids' : to_location_ids}
+
+
+    def get_compare_key(self, move, compare_context):
+        from_location_ids = compare_context['from_location_ids']
+        to_location_ids = compare_context['to_location_ids']
+        return [from_location_ids.index(move.from_location.id),
+                to_location_ids.index(move.to_location.id)]
+
+CustomerReturnRestockingList()
