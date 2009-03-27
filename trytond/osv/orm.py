@@ -2843,20 +2843,21 @@ class ORM(object):
                 if field_name:
                     order_by, tables, tables_args = obj._order_calc(cursor,
                             user, field_name, otype, context=context)
-                    if table_name == self._table:
-                        table_join = 'LEFT JOIN "' + table_name + '" AS ' \
-                                '"' + table_name + '.' + link_field + '" ON ' \
-                                '"%s.%s".id = %s.%s' % (table_name, link_field,
-                                        self._table, link_field)
-                        for i in range(len(order_by)):
-                            if table_name in order_by[i]:
-                                order_by[i] = order_by[i].replace(table_name,
-                                        '"' + table_name + '.' + \
-                                                link_field + '"')
-                    else:
-                        table_join = 'LEFT JOIN "' + table_name + '" ON ' \
-                                '%s.id = %s.%s' % (table_name, self._table,
-                                        link_field)
+                    table_join = 'LEFT JOIN "' + table_name + '" AS ' \
+                            '"' + table_name + '.' + link_field + '" ON ' \
+                            '"%s.%s".id = "%s".%s' % (table_name, link_field,
+                                    self._table, link_field)
+                    for i in range(len(order_by)):
+                        if table_name in order_by[i]:
+                            order_by[i] = order_by[i].replace(table_name,
+                                    table_name + '.' + link_field)
+                    for i in range(len(tables)):
+                        if table_name in tables[i]:
+                            args = tables_args[tables[i]]
+                            del tables_args[tables[i]]
+                            tables[i] = tables[i].replace(table_name,
+                                    table_name + '.' + link_field)
+                            tables_args[tables[i]] = args
                     if table_join not in tables:
                         tables.insert(0, table_join)
                     return order_by, tables, tables_args
@@ -2878,15 +2879,41 @@ class ORM(object):
                     order_by, tables, tables_args = obj2._order_calc(cursor,
                             user, field_name, otype, context=context)
 
-                    table_join = 'LEFT JOIN "' + table_name + '" ON ' \
-                            '%s.id = %s.%s' % \
-                            (table_name, self._table, link_field)
+                    table_join = 'LEFT JOIN "' + table_name + '" AS ' \
+                            '"' + table_name + '.' + link_field + '" ON ' \
+                            '"%s.%s".id = "%s".%s' % \
+                            (table_name, link_field, self._table, link_field)
+                    for i in range(len(order_by)):
+                        if table_name in order_by[i]:
+                            order_by[i] = order_by[i].replace(table_name,
+                                    table_name + '.' + link_field)
+                    for i in range(len(tables)):
+                        if table_name in tables[i]:
+                            args = tables_args[tables[i]]
+                            del tables_args[tables[i]]
+                            tables[i] = tables[i].replace(table_name,
+                                    table_name + '.' + link_field)
+                            tables_args[tables[i]] = args
                     if table_join not in tables:
                         tables.insert(0, table_join)
 
-                    table_join2 = 'LEFT JOIN "' + table_name2 + '" ON ' \
-                            '%s.id = %s.%s' % \
-                            (table_name2, obj._table, link_field2)
+                    table_join2 = 'LEFT JOIN "' + table_name2 + '" AS ' \
+                            '"' + table_name2 + '.' + link_field2 + '" ON ' \
+                            '"%s.%s".id = "%s.%s".%s' % \
+                            (table_name2, link_field2, table_name, link_field,
+                                    link_field2)
+                    for i in range(len(order_by)):
+                        if table_name2 in order_by[i]:
+                            order_by[i] = order_by[i].replace(table_name2,
+                                    table_name2 + '.' + link_field2)
+                    for i in range(len(tables)):
+                        if table_name2 in tables[i]:
+                            args = tables_args[tables[i]]
+                            del tables_args[tables[i]]
+                            tables[i] = tables[i].replace(table_name2,
+                                    table_name2 + '.' + link_field2)
+                            tables_args[tables[i]] = args
+
                     if table_join2 not in tables:
                         tables.insert(1, table_join2)
                     return order_by, tables, tables_args
@@ -2897,11 +2924,11 @@ class ORM(object):
                         (table_name, field_name)
                 table_join = 'LEFT JOIN "ir_translation" ' \
                         'AS "%s" ON ' \
-                        '(%s.res_id = %s.id ' \
-                            'AND %s.name = \'%s,%s\' ' \
-                            'AND %s.lang = %%s ' \
-                            'AND %s.type = \'model\' ' \
-                            'AND %s.fuzzy = false)' % \
+                        '("%s".res_id = "%s".id ' \
+                            'AND "%s".name = \'%s,%s\' ' \
+                            'AND "%s".lang = %%s ' \
+                            'AND "%s".type = \'model\' ' \
+                            'AND "%s".fuzzy = false)' % \
                         (translation_table, translation_table, table_name,
                                 translation_table, self._name, field_name,
                                 translation_table, translation_table,
@@ -2910,8 +2937,8 @@ class ORM(object):
                     tables.append(table_join)
                     tables_args[table_join] = [context.get('language') or 'en_US']
                 order_by.append('COALESCE(NULLIF(' \
-                        + translation_table + '.value, \'\'), ' \
-                        + table_name + '.' + field_name + ') ' + otype)
+                        + '"' + translation_table + '".value, \'\'), ' \
+                        + '"' + table_name + '".' + field_name + ') ' + otype)
                 return order_by, tables, tables_args
 
             if field_name in self._columns \
@@ -2936,7 +2963,7 @@ class ORM(object):
                         'order': otype,
                         })
                 else:
-                    order_by.append(table_name + '.' + field_name + ' ' + otype)
+                    order_by.append('"' + table_name + '".' + field_name + ' ' + otype)
                 return order_by, tables, tables_args
 
         if field in self._inherit_fields.keys():
@@ -2946,7 +2973,7 @@ class ORM(object):
             order_by, tables, tables_args = obj._order_calc(cursor, user, field,
                     otype, context=context)
             table_join = 'LEFT JOIN "' + table_name + '" ON ' \
-                    '%s.id = %s.%s' % \
+                    '"%s".id = "%s".%s' % \
                     (table_name, self._table, link_field)
             if table_join not in tables:
                 tables.insert(0, table_join)
