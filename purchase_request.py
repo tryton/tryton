@@ -620,10 +620,24 @@ class CreatePurchase(Wizard):
 
         return 'end'
 
+    def _get_tax_rule_pattern(self, cursor, user, request, context=None):
+        '''
+        Get tax rule pattern
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param request: the BrowseRecord of the purchase request
+        :param context: the context
+        :return: a dictionary to use as pattern for tax rule
+        '''
+        res = {}
+        return res
 
     def compute_purchase_line(self, cursor, user, request, context=None):
         party_obj = self.pool.get('party.party')
         product_obj = self.pool.get('product.product')
+        tax_rule_obj = self.pool.get('account.tax.rule')
+
         line = {
             'product': request.product.id,
             'unit': request.uom.id,
@@ -651,10 +665,14 @@ class CreatePurchase(Wizard):
 
         taxes = []
         for tax in request.product.supplier_taxes_used:
-            if 'supplier_' + tax.group.code in party_obj._columns \
-                    and request.party['supplier_' + tax.group.code]:
-                taxes.append(
-                        request.party['supplier_' + tax.group.code].id)
+            if request.party and request.party.supplier_tax_rule:
+                pattern = self._get_tax_rule_pattern(cursor, user, request,
+                        context=context)
+                tax_id = tax_rule_obj.apply(cursor, user,
+                        request.party.supplier_tax_rule, tax, pattern,
+                        context=context)
+                if tax_id:
+                    taxes.append(tax_id)
                 continue
             taxes.append(tax.id)
         line['taxes'] = [('add', taxes)]

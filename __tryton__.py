@@ -50,6 +50,7 @@ Con agendadores para:
         'stock',
         'purchase',
         'party',
+        'account',
     ],
     'xml': [
         'order_point.xml',
