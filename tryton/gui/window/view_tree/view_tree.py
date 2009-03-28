@@ -72,7 +72,7 @@ class ViewTreeModel(gtk.GenericTreeModel, gtk.TreeSortable):
                 display_format = date_format()
                 for obj in res_ids:
                     if obj[field]:
-                        date = mx.DateTime.strptime(obj[field], DT_FORMAT)
+                        date = mx.DateTime.strptime(str(obj[field]), DT_FORMAT)
                         obj[field] = date.strftime(display_format)
             elif field_type in ('datetime',):
                 display_format = date_format() + ' ' + HM_FORMAT
