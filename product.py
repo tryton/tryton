@@ -35,7 +35,7 @@ class Template(ModelSQL, ModelView):
         ], string="Cost Method", required=True, states=STATES)
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
             states=STATES)
-    active = fields.Boolean('Active')
+    active = fields.Boolean('Active', select=1)
     products = fields.One2Many('product.product', 'template', 'Products',
             states=STATES)
 
@@ -76,8 +76,8 @@ class Product(ModelSQL, ModelView):
     _inherits = {'product.template': 'template'}
 
     template = fields.Many2One('product.template', 'Product Template',
-            required=True, ondelete='CASCADE')
-    code = fields.Char("Code", size=None)
+            required=True, ondelete='CASCADE', select=1)
+    code = fields.Char("Code", size=None, select=1)
     description = fields.Text("Description", translate=True)
 
     def get_rec_name(self, cursor, user, ids, name, arg, context=None):
