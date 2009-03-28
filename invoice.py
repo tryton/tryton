@@ -1482,6 +1482,20 @@ class InvoiceLine(ModelSQL, ModelView):
                     res[line.id].append(tax.id)
         return res
 
+    def _get_tax_rule_pattern(self, cursor, user, party, vals, context=None):
+        '''
+        Get tax rule pattern
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param party: the BrowseRecord of the party
+        :param vals: a dictionary with value from on_change
+        :param context: the context
+        :return: a dictionary to use as pattern for tax rule
+        '''
+        res = {}
+        return res
+
     def on_change_product(self, cursor, user, ids, vals, context=None):
         product_obj = self.pool.get('product.product')
         party_obj = self.pool.get('party.party')
@@ -1489,6 +1503,8 @@ class InvoiceLine(ModelSQL, ModelView):
         uom_obj = self.pool.get('product.uom')
         company_obj = self.pool.get('company.company')
         currency_obj = self.pool.get('currency.currency')
+        tax_rule_obj = self.pool.get('account.tax.rule')
+
         if context is None:
             context = {}
         if not vals.get('product'):
@@ -1533,12 +1549,15 @@ class InvoiceLine(ModelSQL, ModelView):
                 pass
             res['taxes'] = []
             for tax in product.supplier_taxes_used:
-                if party:
-                    if 'supplier_' + tax.group.code in party_obj._columns \
-                            and party['supplier_' + tax.group.code]:
-                        res['taxes'].append(
-                                party['supplier_' + tax.group.code].id)
-                        continue
+                if party and party.supplier_tax_rule:
+                    pattern = self._get_tax_rule_pattern(cursor, user, party,
+                            vals, context=context)
+                    tax_id = tax_rule_obj.apply(cursor, user,
+                            party.supplier_tax_rule, tax, pattern,
+                            context=context)
+                    if tax_id:
+                        res['taxes'].append(tax_id)
+                    continue
                 res['taxes'].append(tax.id)
         else:
             if company and currency:
@@ -1554,11 +1573,15 @@ class InvoiceLine(ModelSQL, ModelView):
                 pass
             res['taxes'] = []
             for tax in product.customer_taxes_used:
-                if party:
-                    if tax.group.code in party_obj._columns \
-                            and party[tax.group.code]:
-                        res['taxes'].append(party[tax.group.code].id)
-                        continue
+                if party and party.customer_tax_rule:
+                    pattern = self._get_tax_rule_pattern(cursor, user, party,
+                            vals, context=context)
+                    tax_id = tax_rule_obj.apply(cursor, user,
+                            party.customer_tax_rule, tax, pattern,
+                            context=context)
+                    if tax_id:
+                        res['taxes'].append(tax_id)
+                    continue
                 res['taxes'].append(tax.id)
 
         if not vals.get('description'):
