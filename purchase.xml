@@ -205,6 +205,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
             <field name="domain">[("id", "in", invoices)]</field>
+            <field name="context">{'type': 'in_invoice'}</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_invoice_keyword1">
