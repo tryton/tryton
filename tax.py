@@ -57,7 +57,7 @@ class CodeTemplate(ModelSQL, ModelView):
         :param template: the BrowseRecord of the template
         :param context: the context
         :param code: the BrowseRecord of the code to update
-        :return: a dictionary with account fields as key and values as value
+        :return: a dictionary with tax code fields as key and values as value
         '''
         res = {}
         if not code or code.name != template.name:
@@ -905,6 +905,322 @@ class Line(ModelSQL, ModelView):
             required=True, select=1, ondelete='CASCADE')
 
 Line()
+
+
+class RuleTemplate(ModelSQL, ModelView):
+    'Tax Rule Template'
+    _name = 'account.tax.rule.template'
+    _description = __doc__
+    name = fields.Char('Name', required=True)
+    lines = fields.One2Many('account.tax.rule.line.template', 'rule', 'Lines')
+    account = fields.Many2One('account.account.template', 'Account Template',
+            domain=[('parent', '=', False)], required=True)
+
+    def _get_tax_rule_value(self, cursor, user, template, context=None,
+            rule=None):
+        '''
+        Set values for tax rule creation.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the BrowseRecord of the template
+        :param context: the context
+        :param rule: the BrowseRecord of the rule to update
+        :return: a dictionary with rule fields as key and values as value
+        '''
+        res = {}
+        if not rule or rule.name != template.name:
+            res['name'] = template.name
+        if not rule or rule.template.id != template.id:
+            res['template'] = template.id
+        return res
+
+    def create_rule(self, cursor, user, template, company_id, context=None,
+            template2rule=None):
+        '''
+        Create tax rule based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the template id or the BrowseRecord of template
+                used for tax rule creation
+        :param company_id: the id of the company for which tax rules are
+                created
+        :param context: the context
+        :param template2rule: a dictionary with tax rule template id as key
+                and tax rule id as value, used to convert template id into
+                tax rule. The dictionary is filled with new tax rules
+        :return: id of the tax rule created
+        '''
+        rule_obj = self.pool.get('account.tax.rule')
+
+        if template2rule is None:
+            template2rule = {}
+
+        if isinstance(template, (int, long)):
+            template = self.browse(cursor, user, template, context=context)
+
+        if template.id not in template2rule:
+            vals = self._get_tax_rule_value(cursor, user, template,
+                    context=context)
+            vals['company'] = company_id
+            new_id = rule_obj.create(cursor, user, vals, context=context)
+            template2rule[template.id] = new_id
+        else:
+            new_id = template2rule[template.id]
+        return new_id
+
+RuleTemplate()
+
+
+class Rule(ModelSQL, ModelView):
+    'Tax Rule'
+    _name = 'account.tax.rule'
+    _description = __doc__
+    name = fields.Char('Name', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+            select=1)
+    lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
+    template = fields.Many2One('account.tax.rule.template', 'Template')
+
+    def apply(self, cursor, user, rule, tax, pattern, context=None):
+        '''
+        Apply rule on tax
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param rule: a rule id or the BrowseRecord of the rule
+        :param tax: a tax id or the BrowseRecord of the tax
+        :param pattern: a dictonary with rule line field as key
+                and match value as value
+        :param context: the context
+        :return: the tax id to use
+        '''
+        tax_obj = self.pool.get('account.tax')
+        rule_line_obj = self.pool.get('account.tax.rule.line')
+
+        if isinstance(rule, (int, long)):
+            rule = self.browse(cursor, user, rule, context=context)
+
+        if isinstance(tax, (int, long)):
+            tax = tax_obj.browse(cursor, user, tax, context=context)
+
+        pattern = pattern.copy()
+        pattern['group'] = tax.group.id
+
+        for line in rule.lines:
+            if rule_line_obj.match(cursor, user, line, pattern,
+                    context=context):
+                if line.tax:
+                    return line.tax.id
+                return False
+        return tax.id
+
+    def update_rule(self, cursor, user, rule, context=None, template2rule=None):
+        '''
+        Update tax rule based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param rule: a rule id or the BrowseRecord of the rule
+        :param context: the context
+        :param template2rule: a dictionary with tax rule template id as key
+                and tax rule id as value, used to convert template id into
+                tax rule. The dictionary is filled with new tax rules
+        '''
+        template_obj = self.pool.get('account.tax.rule.template')
+
+        if template2rule is None:
+            template2rule = {}
+
+        if isinstance(rule, (int, long)):
+            rule = self.browse(cursor, user, rule, context=context)
+
+        if rule.template:
+            vals = template_obj._get_tax_rule_value(cursor, user,
+                    rule.template, context=context, rule=rule)
+            if vals:
+                self.write(cursor, user, rule.id, vals, context=context)
+            template2rule[rule.template.id] = rule.id
+
+Rule()
+
+
+class RuleLineTemplate(ModelSQL, ModelView):
+    'Tax Rule Line Template'
+    _name = 'account.tax.rule.line.template'
+    _description = __doc__
+    rule = fields.Many2One('account.tax.rule.template', 'Rule', required=True,
+            ondelete='CASCADE')
+    group = fields.Many2One('account.tax.group', 'Tax Group', required=True)
+    tax = fields.Many2One('account.tax.template', 'Substitution Tax',
+            domain="[('account', '=', _parent_rule.account), " \
+                    "('group', '=', group)]")
+    sequence = fields.Integer('Sequence')
+
+    def __init__(self):
+        super(RuleLineTemplate, self).__init__()
+        self._order.insert(0, ('rule', 'ASC'))
+        self._order.insert(0, ('sequence', 'ASC'))
+
+    def _get_tax_rule_line_value(self, cursor, user, template, context=None,
+            rule_line=None):
+        '''
+        Set values for tax rule line creation.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the BrowseRecord of the template
+        :param context: the context
+        :param rule_line: the BrowseRecord of the rule line to update
+        :return: a dictionary with rule line fields as key and values as value
+        '''
+        res = {}
+        if not rule_line or rule_line.group.id != template.group.id:
+            res['group'] = template.group.id
+        if not rule_line or rule_line.sequence != template.sequence:
+            res['sequence'] = template.sequence
+        if not rule_line or rule_line.template.id != template.id:
+            res['template'] = template.id
+        return res
+
+    def create_rule_line(self, cursor, user, template, template2tax,
+            template2rule, context=None, template2rule_line=None):
+        '''
+        Create tax rule line based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param template: the template id or the BrowseRecord of template
+                used for tax rule line creation
+        :param template2tax: a dictionary with tax template id as key
+                and tax id as value, used to convert template id into
+                tax.
+        :param template2rule: a dictionary with tax rule template id as key
+                and tax rule id as value, used to convert template id into
+                tax rule.
+        :param context: the context
+        :param template2rule_line: a dictionary with tax rule line template id
+                as key and tax rule line id as value, used to convert template
+                id into tax rule line. The dictionary is filled with new
+                tax rule lines
+        :return: id of the tax rule line created
+        '''
+        rule_line_obj = self.pool.get('account.tax.rule.line')
+
+        if template2rule_line is None:
+            template2rule_line = {}
+
+        if isinstance(template, (int, long)):
+            template = self.browse(cursor, user, template, context=context)
+
+        if template.id not in template2rule_line:
+            vals = self._get_tax_rule_line_value(cursor, user, template,
+                    context=context)
+            vals['rule'] = template2rule[template.rule.id]
+            if template.tax:
+                vals['tax'] = template2tax[template.tax.id]
+            else:
+                vals['tax'] = False
+            new_id = rule_line_obj.create(cursor, user, vals, context=context)
+            template2rule_line[template.id] = new_id
+        else:
+            new_id = template2rule_line[template.id]
+        return new_id
+
+RuleLineTemplate()
+
+
+class RuleLine(ModelSQL, ModelView):
+    'Tax Rule Line'
+    _name = 'account.tax.rule.line'
+    _description = __doc__
+    _rec_name = 'tax'
+    rule = fields.Many2One('account.tax.rule', 'Rule', required=True,
+            select=1, ondelete='CASCADE')
+    group = fields.Many2One('account.tax.group', 'Tax Group', required=True)
+    tax = fields.Many2One('account.tax', 'Substitution Tax',
+            domain="[('company', '=', _parent_rule.company), " \
+                    "('group', '=', group)]")
+    sequence = fields.Integer('Sequence')
+    template = fields.Many2One('account.tax.rule.line.template', 'Template')
+
+    def __init__(self):
+        super(RuleLine, self).__init__()
+        self._order.insert(0, ('rule', 'ASC'))
+        self._order.insert(0, ('sequence', 'ASC'))
+
+    def match(self, cursor, user, line, pattern, context=None):
+        '''
+        Match line on pattern
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param line: a BrowseRecord of rule line
+        :param pattern: a dictonary with rule line field as key
+                and match value as value
+        :param context: the context
+        :return: a boolean
+        '''
+        res = True
+        for field in pattern.keys():
+            if field not in self._columns:
+                continue
+            if not line[field]:
+                continue
+            if self._columns[field]._type == 'many2one':
+                if line[field].id != pattern[field]:
+                    res = False
+                    break
+            else:
+                if line[field] != pattern[field]:
+                    res = False
+                    break
+        return res
+
+    def update_rule_line(self, cursor, user, rule_line, template2tax,
+            template2rule, context=None, template2rule_line=None):
+        '''
+        Update tax rule line based on template.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param rule_line: a rule line id or the BrowseRecord of the rule line
+        :param template2tax: a dictionary with tax template id as key
+                and tax id as value, used to convert template id into
+                tax.
+        :param template2rule: a dictionary with tax rule template id as key
+                and tax rule id as value, used to convert template id into
+                tax rule.
+        :param context: the context
+        :param template2rule_line: a dictionary with tax rule line template id
+                as key and tax rule line id as value, used to convert template
+                id into tax rule line. The dictionary is filled with new
+                tax rule lines
+        '''
+        template_obj = self.pool.get('account.tax.rule.line.template')
+
+        if template2rule_line is None:
+            template2rule_line = {}
+
+        if isinstance(rule_line, (int, long)):
+            rule_line = self.browse(cursor, user, rule_line, context=context)
+
+        if rule_line.template:
+            vals = template_obj._get_tax_rule_line_value(cursor, user,
+                    rule_line.template, context=context, rule_line=rule_line)
+            if rule_line.rule.id != template2rule[rule_line.template.rule.id]:
+                vals['rule'] = template2rule[rule_line.template.rule.id]
+            if rule_line.tax:
+                if rule_line.template.tax:
+                    if rule_line.tax.id != \
+                            template2tax[rule_line.template.tax.id]:
+                        vals['tax'] = template2tax[rule_line.template.tax.id]
+            if vals:
+                self.write(cursor, user, rule_line.id, vals, context=context)
+            template2rule_line[rule_line.template.id] = rule_line.id
+
+RuleLine()
 
 
 class OpenCode(Wizard):

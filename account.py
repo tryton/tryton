@@ -1739,21 +1739,27 @@ class CreateChartAccount(Wizard):
         account_template_obj = self.pool.get('account.account.template')
         tax_code_template_obj = self.pool.get('account.tax.code.template')
         tax_template_obj = self.pool.get('account.tax.template')
+        tax_rule_template_obj = self.pool.get('account.tax.rule.template')
+        tax_rule_line_template_obj = \
+                self.pool.get('account.tax.rule.line.template')
 
         account_template = account_template_obj.browse(cursor, user,
                 datas['form']['account_template'], context=context)
 
+        # Create account types
         template2type = {}
         account_type_template_obj.create_type(cursor, user,
                 account_template.type, datas['form']['company'],
                 context=context, template2type=template2type)
 
+        # Create accounts
         template2account = {}
         account_template_obj.create_account(cursor, user,
                 account_template, datas['form']['company'],
                 context=context, template2account=template2account,
                 template2type=template2type)
 
+        # Create tax codes
         template2tax_code = {}
         tax_code_template_ids = tax_code_template_obj.search(cursor, user, [
             ('account', '=', datas['form']['account_template']),
@@ -1765,6 +1771,7 @@ class CreateChartAccount(Wizard):
                     tax_code_template, datas['form']['company'],
                     context=context, template2tax_code=template2tax_code)
 
+        # Create taxes
         template2tax = {}
         tax_template_ids = tax_template_obj.search(cursor, user, [
             ('account', '=', datas['form']['account_template']),
@@ -1778,8 +1785,32 @@ class CreateChartAccount(Wizard):
                     template2account=template2account,
                     context=context, template2tax=template2tax)
 
+        # Update taxes on accounts
         account_template_obj.update_account_taxes(cursor, user,
                 account_template, template2account, template2tax, context=context)
+
+        # Create tax rules
+        template2rule = {}
+        tax_rule_template_ids = tax_rule_template_obj.search(cursor, user, [
+            ('account', '=', datas['form']['account_template']),
+            ], context=context)
+        for tax_rule_template in tax_rule_template_obj.browse(cursor, user,
+                tax_rule_template_ids, context=context):
+            tax_rule_template_obj.create_rule(cursor, user, tax_rule_template,
+                    datas['form']['company'], context=context,
+                    template2rule=template2rule)
+
+        # Create tax rule lines
+        template2rule_line = {}
+        tax_rule_line_template_ids = tax_rule_line_template_obj.search(cursor,
+                user, [
+                    ('rule.account', '=', datas['form']['account_template']),
+                    ], context=context)
+        for tax_rule_line_template in tax_rule_line_template_obj.browse(cursor,
+                user, tax_rule_line_template_ids, context=context):
+            tax_rule_line_template_obj.create_rule_line(cursor, user,
+                    tax_rule_line_template, template2tax, template2rule,
+                    context=context, template2rule_line=template2rule_line)
 
         return {'company': datas['form']['company']}
 
@@ -1862,34 +1893,45 @@ class UpdateChartAccount(Wizard):
 
     def _action_update_account(self, cursor, user, datas, context=None):
         account_type_obj = self.pool.get('account.account.type')
-        account_type_template_obj = self.pool.get('account.account.type.template')
+        account_type_template_obj = \
+                self.pool.get('account.account.type.template')
         account_obj = self.pool.get('account.account')
         account_template_obj = self.pool.get('account.account.template')
         tax_code_obj = self.pool.get('account.tax.code')
         tax_code_template_obj = self.pool.get('account.tax.code.template')
         tax_obj = self.pool.get('account.tax')
         tax_template_obj = self.pool.get('account.tax.template')
+        tax_rule_obj = self.pool.get('account.tax.rule')
+        tax_rule_template_obj = self.pool.get('account.tax.rule.template')
+        tax_rule_line_obj = self.pool.get('account.tax.rule.line')
+        tax_rule_line_template_obj = \
+                self.pool.get('account.tax.rule.line.template')
 
         account = account_obj.browse(cursor, user, datas['form']['account'],
                 context=context)
 
+        # Update account types
         template2type = {}
         account_type_obj.update_type(cursor, user, account.type,
                 context=context, template2type=template2type)
+        # Create missing account types
         if account.type.template:
             account_type_template_obj.create_type(cursor, user,
                     account.type.template, account.company.id, context=context,
                     template2type=template2type)
 
+        # Update accounts
         template2account = {}
         account_obj.update_account(cursor, user, account, context=context,
                 template2account=template2account, template2type=template2type)
+        # Create missing accounts
         if account.template:
             account_template_obj.create_account(cursor, user, account.template,
                     account.company.id, context=context,
                     template2account=template2account,
                     template2type=template2type)
 
+        # Update tax codes
         template2tax_code = {}
         tax_code_ids = tax_code_obj.search(cursor, user, [
             ('company', '=', account.company.id),
@@ -1899,11 +1941,19 @@ class UpdateChartAccount(Wizard):
                 context=context):
             tax_code_obj.update_tax_code(cursor, user, tax_code, context=context,
                     template2tax_code=template2tax_code)
-            if tax_code.template:
+        # Create missing tax codes
+        if account.template:
+            tax_code_template_ids = tax_code_template_obj.search(cursor, user, [
+                ('account', '=', account.template.id),
+                ('parent', '=', False),
+                ], context=context)
+            for tax_code_template in tax_code_template_obj.browse(cursor, user,
+                    tax_code_template_ids, context=context):
                 tax_code_template_obj.create_tax_code(cursor, user,
-                        tax_code.template, account.company.id, context=context,
+                        tax_code_template, account.company.id, context=context,
                         template2tax_code=template2tax_code)
 
+        # Update taxes
         template2tax = {}
         tax_ids = tax_obj.search(cursor, user, [
             ('company', '=', account.company.id),
@@ -1915,14 +1965,64 @@ class UpdateChartAccount(Wizard):
                     template2account=template2account,
                     context=context,
                     template2tax=template2tax)
-            if tax.template:
-                tax_template_obj.create_tax(cursor, user, tax.template,
+        # Create missing taxes
+        if account.template:
+            tax_template_ids = tax_template_obj.search(cursor, user, [
+                ('account', '=', account.template.id),
+                ('parent', '=', False),
+                ], context=context)
+            for tax_template in tax_template_obj.browse(cursor, user,
+                    tax_template_ids, context=context):
+                tax_template_obj.create_tax(cursor, user, tax_template,
                         account.company.id, template2tax_code=template2tax_code,
                         template2account=template2account, context=context,
                         template2tax=template2tax)
 
+        # Update taxes on accounts
         account_obj.update_account_taxes(cursor, user, account,
                 template2account, template2tax, context=context)
+
+        # Update tax rules
+        template2rule = {}
+        tax_rule_ids = tax_rule_obj.search(cursor, user, [
+            ('company', '=', account.company.id),
+            ], context=context)
+        for tax_rule in tax_rule_obj.browse(cursor, user, tax_rule_ids,
+                context=context):
+            tax_rule_obj.update_rule(cursor, user, tax_rule, context=context,
+                    template2rule=template2rule)
+        # Create missing tax rules
+        if account.template:
+            tax_rule_template_ids = tax_rule_template_obj.search(cursor, user, [
+                ('account', '=', account.template.id),
+                ], context=context)
+            for tax_rule_template in tax_rule_template_obj.browse(cursor, user,
+                    tax_rule_template_ids, context=context):
+                tax_rule_template_obj.create_rule(cursor, user,
+                        tax_rule_template, account.company.id, context=context,
+                        template2rule=template2rule)
+
+        # Update tax rule lines
+        template2rule_line = {}
+        tax_rule_line_ids = tax_rule_line_obj.search(cursor, user, [
+            ('rule.company', '=', account.company.id),
+            ], context=context)
+        for tax_rule_line in tax_rule_line_obj.browse(cursor, user,
+                tax_rule_line_ids, context=context):
+            tax_rule_line_obj.update_rule_line(cursor, user, tax_rule_line,
+                    template2tax, template2rule, context=context,
+                    template2rule_line=template2rule_line)
+        # Create missing tax rule lines
+        if account.template:
+            tax_rule_line_template_ids = tax_rule_line_template_obj.search(
+                    cursor, user, [
+                        ('rule.account', '=', account.template.id),
+                        ], context=context)
+            for tax_rule_line_template in tax_rule_line_template_obj.browse(
+                    cursor, user, tax_rule_line_template_ids, context=context):
+                tax_rule_line_template_obj.create_rule_line(cursor, user,
+                        tax_rule_line_template, template2tax, template2rule,
+                        context=context, template2rule_line=template2rule_line)
         return {}
 
 UpdateChartAccount()

@@ -20,21 +20,18 @@ class Party(ModelSQL, ModelView):
                 'required': "globals().get('company') and bool(company)",
                 'invisible': "not globals().get('company') or not bool(company)",
             })
-    vat = fields.Property(type='many2one',
-            relation='account.tax', string='VAT',
-            domain="[('group.code', '=', 'vat'), ('company', '=', company), " \
-                    "('parent', '=', False)]",
+    customer_tax_rule = fields.Property(type='many2one',
+            relation='account.tax.rule', string='Customer Tax Rule',
+            domain="[('company', '=', company)]",
             states={
                 'invisible': "not globals().get('company') or not bool(company)",
-            }, help='This tax will be used, instead of the default VAT.')
-    supplier_vat = fields.Property(type='many2one',
-            relation='account.tax', string='Supplier VAT',
-            domain="[('group.code', '=', 'vat'), ('company', '=', company), " \
-                    "('parent', '=', False)]",
+            }, help='Apply this rule on taxes when party is customer.')
+    supplier_tax_rule = fields.Property(type='many2one',
+            relation='account.tax.rule', string='Supplier Tax Rule',
+            domain="[('company', '=', company)]",
             states={
                 'invisible': "not globals().get('company') or not bool(company)",
-            }, help='This tax will be used, instead of the default VAT ' \
-                    'for supplier invoices.')
+            }, help='Apply this rule on taxes when party is supplier.')
     receivable = fields.Function('get_receivable_payable',
             fnct_search='search_receivable_payable', string='Receivable')
     payable = fields.Function('get_receivable_payable',

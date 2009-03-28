@@ -44,10 +44,10 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="payable"/>
                         <field name="payable"/>
                         <separator string="Taxes" colspan="4" id="taxes"/>
-                        <label name="vat"/>
-                        <field name="vat"/>
-                        <label name="supplier_vat"/>
-                        <field name="supplier_vat"/>
+                        <label name="customer_tax_rule"/>
+                        <field name="customer_tax_rule"/>
+                        <label name="supplier_tax_rule"/>
+                        <field name="supplier_tax_rule"/>
                     </xpath>
                 </data>
                 ]]>
