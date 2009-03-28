@@ -60,6 +60,9 @@ class Party(OSV):
                 'receivable_today', 'payable_today'):
             raise Exception('Bad argument')
 
+        if not ids:
+            return {}
+
         for i in ids:
             res[i] = Decimal('0.0')
 
