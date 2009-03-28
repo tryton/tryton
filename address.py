@@ -20,10 +20,10 @@ class Address(ModelSQL, ModelView):
     street = fields.Char('Street', states=STATES)
     streetbis = fields.Char('Street (bis)', states=STATES)
     zip = fields.Char('Zip', change_default=True,
-           states=STATES)
+            states=STATES)
     city = fields.Char('City', states=STATES)
     country = fields.Many2One('country.country', 'Country',
-           states=STATES)
+            states=STATES)
     subdivision = fields.Many2One("country.subdivision",
             'Subdivision', domain="[('country', '=', country)]", states=STATES)
     active = fields.Boolean('Active')
