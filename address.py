@@ -13,7 +13,9 @@ class Address(ModelSQL, ModelView):
     _name = 'party.address'
     _description = __doc__
     party = fields.Many2One('party.party', 'Party', required=True,
-           ondelete='cascade', select=1,  states=STATES)
+            ondelete='cascade', select=1,  states={
+                'readonly': "(active == False) or (active_id > 0)",
+            })
     name = fields.Char('Name', states=STATES)
     street = fields.Char('Street', states=STATES)
     streetbis = fields.Char('Street (bis)', states=STATES)
