@@ -38,4 +38,14 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             }, context=context)
         return res
 
+    def copy(self, cursor, user, ids, default=None, context=None):
+        if default is None:
+            default = {}
+
+        default = default.copy()
+        default['open_date'] = False
+
+        return super(Invoice, self).copy(cursor, user, ids, default=default,
+                context=context)
+
 Invoice()
