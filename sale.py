@@ -1028,10 +1028,25 @@ class SaleLine(ModelSQL, ModelView):
             res[line.id] = val
         return res
 
+    def _get_tax_rule_pattern(self, cursor, user, party, vals, context=None):
+        '''
+        Get tax rule pattern
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param party: the BrowseRecord of the party
+        :param vals: a dictionary with value from on_change
+        :param context: the context
+        :return: a dictionary to use as pattern for tax rule
+        '''
+        res = {}
+        return res
+
     def on_change_product(self, cursor, user, ids, vals, context=None):
         party_obj = self.pool.get('party.party')
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
+        tax_rule_obj = self.pool.get('account.tax.rule')
 
         if context is None:
             context = {}
@@ -1063,12 +1078,15 @@ class SaleLine(ModelSQL, ModelView):
                 [product.id], vals.get('quantity', 0), context=ctx2)[product.id]
         res['taxes'] = []
         for tax in product.customer_taxes_used:
-            if party:
-                if 'customer_' + tax.group.code in party_obj._columns \
-                        and party['customer_' + tax.group.code]:
-                    res['taxes'].append(
-                            party['customer_' + tax.group.code].id)
-                    continue
+            if party and party.customer_tax_rule:
+                pattern = self._get_tax_rule_pattern(cursor, user, party,
+                        vals, context=context)
+                tax_id = tax_rule_obj.apply(cursor, user,
+                        party.customer_tax_rule, tax, pattern,
+                        context=context)
+                if tax_id:
+                    res['taxes'].append(tax_id)
+                continue
             res['taxes'].append(tax.id)
 
         if not vals.get('description'):
