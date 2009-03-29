@@ -165,14 +165,16 @@ class EditableTreeView(gtk.TreeView):
             new_col = self.__prev_column(column)
             self.set_cursor(path, new_col, True)
         elif event.keyval == gtk.keysyms.Up:
+            entry.disconnect(entry.editing_done_id)
             self._key_up(path, store, column)
+            entry.editing_done_id = entry.connect('editing_done',
+                    self.on_editing_done)
         elif event.keyval == gtk.keysyms.Down:
+            entry.disconnect(entry.editing_done_id)
             self._key_down(path, store, column)
+            entry.editing_done_id = entry.connect('editing_done',
+                    self.on_editing_done)
         elif event.keyval in (gtk.keysyms.Return,):
-            if self.editable == 'top':
-                new_path = self._key_up(path, store, column)
-            else:
-                new_path = self._key_down(path, store, column)
             col = None
             for column in self.get_columns():
                 renderer = column.get_cell_renderers()[0]
@@ -186,7 +188,13 @@ class EditableTreeView(gtk.TreeView):
                 if column.get_visible() and editable:
                     col = column
                     break
-            self.set_cursor(new_path, col, True)
+            entry.disconnect(entry.editing_done_id)
+            if self.editable == 'top':
+                new_path = self._key_up(path, store, col)
+            else:
+                new_path = self._key_down(path, store, column)
+            entry.editing_done_id = entry.connect('editing_done',
+                    self.on_editing_done)
         elif event.keyval == gtk.keysyms.Escape:
             if model.id < 0:
                 store.remove(store.get_iter(path))
