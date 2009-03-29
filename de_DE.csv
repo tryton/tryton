@@ -67,3 +67,4 @@ view,account.statement.journal,0,Statement Journal,Journal Zahlungsverkehr,0
 view,account.statement.journal,0,Statement Journals,Journale Zahlungsverkehr,0
 view,account.statement.line,0,Bank Statement Line,Posten Bankauszüge,0
 view,account.statement.line,0,Statement Line,Zahlungsposten,0
+view,statement.statement.line,0,Statement Lines,Zahlungsposten,0
