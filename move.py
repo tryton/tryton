@@ -145,12 +145,13 @@ class Move(ModelSQL, ModelView):
             context = {}
 
         if not vals.get('name'):
-            vals = vals.copy()
-            journal = journal_obj.browse(cursor, user,
-                    vals.get('journal', context.get('journal')),
-                    context=context)
-            vals['name'] = sequence_obj.get_id(cursor, user, journal.sequence.id,
-                    context=context)
+            journal_id = vals.get('journal') or context.get('journal')
+            if journal_id:
+                vals = vals.copy()
+                journal = journal_obj.browse(cursor, user, journal_id,
+                        context=context)
+                vals['name'] = sequence_obj.get_id(cursor, user,
+                        journal.sequence.id, context=context)
 
         res = super(Move, self).create(cursor, user, vals, context=context)
         move = self.browse(cursor, user, res, context=context)
@@ -694,9 +695,9 @@ class Line(ModelSQL, ModelView):
         if context is None:
             context = {}
         journal_obj = self.pool.get('account.journal')
-        if vals.get('journal', context.get('journal')):
+        if vals.get('journal') or context.get('journal'):
             journal = journal_obj.browse(cursor, user,
-                    vals.get('journal', context.get('journal')),
+                    vals.get('journal') or context.get('journal'),
                     context=context)
             if journal.type in ('expense', 'revenue'):
                 res['tax_lines'] = self._compute_tax_lines(cursor, user,
@@ -712,9 +713,9 @@ class Line(ModelSQL, ModelView):
         if context is None:
             context = {}
         journal_obj = self.pool.get('account.journal')
-        if vals.get('journal', context.get('journal')):
+        if vals.get('journal') or context.get('journal'):
             journal = journal_obj.browse(cursor, user,
-                    vals.get('journal', context.get('journal')),
+                    vals.get('journal') or context.get('journal'),
                     context=context)
             if journal.type in ('expense', 'revenue'):
                 res['tax_lines'] = self._compute_tax_lines(cursor, user,
@@ -1132,7 +1133,7 @@ class Line(ModelSQL, ModelView):
         move_obj = self.pool.get('account.move')
         vals = vals.copy()
         if not vals.get('move'):
-            journal_id = vals.get('journal', context.get('journal'))
+            journal_id = vals.get('journal') or context.get('journal')
             if not journal_id:
                 self.raise_user_error(cursor, 'no_journal',
                         context=context)
@@ -1141,17 +1142,16 @@ class Line(ModelSQL, ModelView):
             if journal.centralised:
                 move_ids = move_obj.search(cursor, user, [
                     ('period', '=',
-                        vals.get('period', context.get('period'))),
-                    ('journal', '=',
-                        vals.get('journal', context.get('journal'))),
+                        vals.get('period') or context.get('period')),
+                    ('journal', '=', journal_id),
                     ('state', '!=', 'posted'),
                     ], limit=1, context=context)
                 if move_ids:
                     vals['move'] = move_ids[0]
             if not vals.get('move'):
                 vals['move'] = move_obj.create(cursor, user, {
-                    'period': vals.get('period', context.get('period')),
-                    'journal': vals.get('journal', context.get('journal')),
+                    'period': vals.get('period') or context.get('period'),
+                    'journal': journal_id,
                     'date': vals.get('date', False),
                     }, context=context)
         res = super(Line, self).create(cursor, user, vals, context=context)
