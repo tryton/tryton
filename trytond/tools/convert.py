@@ -17,6 +17,8 @@ from decimal import Decimal
 import datetime
 import time
 import logging
+import traceback
+import sys
 
 CDATA_START = re.compile('^\s*\<\!\[cdata\[', re.IGNORECASE)
 CDATA_END = re.compile('\]\]\>\s*$', re.IGNORECASE)
@@ -889,6 +891,8 @@ def post_import(cursor, pool, module, to_delete):
             cursor.commit()
         except Exception, exception:
             cursor.rollback()
+            tb_s = reduce(lambda x, y: x + y,
+                    traceback.format_exception(*sys.exc_info()))
             logging.getLogger("init").error(
                 'Could not delete id: %d of model %s\n' \
                     'There should be some relation ' \
@@ -896,7 +900,7 @@ def post_import(cursor, pool, module, to_delete):
                     'You should manually fix this ' \
                     'and restart --update=module\n' \
                     'Exception: %s' % \
-                    (db_id, model, str(exception)))
+                    (db_id, model, tb_s.decode('utf-8', 'ignore')))
 
     transition_obj = pool.get('workflow.transition')
     for mdata_id, db_id in transition_delete:
