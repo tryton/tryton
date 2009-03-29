@@ -121,6 +121,7 @@ class Move(OSV):
 
     def name_search(self, cursor, user, name='', args=None, operator='ilike',
             context=None, limit=None):
+        res = []
         if args is None:
             args = []
         if name:
