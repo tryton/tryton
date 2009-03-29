@@ -58,7 +58,7 @@ class EditableTreeView(gtk.TreeView):
         else:
             method = model.append
         ctx = self.screen.context.copy()
-        if self.screen.current_model.parent:
+        if self.screen.current_model and self.screen.current_model.parent:
             ctx.update(self.screen.current_model.parent.expr_eval(
                 self.screen.default_get))
         new_model = model.model_group.model_new(domain=self.screen.domain,
