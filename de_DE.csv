@@ -306,6 +306,26 @@ field,"account.tax.open_chart_code.init,periods",0,Periods,Buchungszeiträume,0
 field,"account.tax,parent",0,Parent,Übergeordnet (Steuer),0
 field,"account.tax,percentage",0,Percentage,Prozentsatz,0
 field,"account.tax,rec_name",0,Name,Name,0
+field,"account.tax.rule,company",0,Company,Unternehmen,0
+field,"account.tax.rule.line,group",0,Tax Group,Steuergruppe,0
+field,"account.tax.rule.line,rec_name",0,Name,Name,0
+field,"account.tax.rule.line,rule",0,Rule,Regel,0
+field,"account.tax.rule,lines",0,Lines,Zeilen,0
+field,"account.tax.rule.line,sequence",0,Sequence,Sequenz,0
+field,"account.tax.rule.line,tax",0,Substitution Tax,Anzuwendende Steuer,0
+field,"account.tax.rule.line,template",0,Template,Vorlage,0
+field,"account.tax.rule.line.template,group",0,Tax Group,Steuergruppe,0
+field,"account.tax.rule.line.template,rec_name",0,Name,Name,0
+field,"account.tax.rule.line.template,rule",0,Rule,Regel,0
+field,"account.tax.rule.line.template,sequence",0,Sequence,Sequenz,0
+field,"account.tax.rule.line.template,tax",0,Substitution Tax,Anzuwendende Steuer,0
+field,"account.tax.rule,name",0,Name,Name,0
+field,"account.tax.rule,rec_name",0,Name,Name,0
+field,"account.tax.rule,template",0,Template,Vorlage,0
+field,"account.tax.rule.template,account",0,Account Template,Konto Vorlage,0
+field,"account.tax.rule.template,lines",0,Lines,Zeilen,0
+field,"account.tax.rule.template,name",0,Name,Name,0
+field,"account.tax.rule.template,rec_name",0,Name,Name,0
 field,"account.tax,sequence",0,Sequence,Sequenz,0
 field,"account.tax,template",0,Template,Vorlage für Steuerkonto,0
 field,"account.tax.template,account",0,Account Template,Kontenvorlage,0
@@ -332,10 +352,12 @@ field,"account.tax.template,type",0,Type,Typ,0
 field,"account.tax,type",0,Type,Typ,0
 field,"party.party,account_payable",0,Account Payable,Verbindlichkeiten,0
 field,"party.party,account_receivable",0,Account Receivable,Forderungen,0
+field,"party.party,customer_tax_rule",0,Customer Tax Rule,Steuerregel Kunde,0
 field,"party.party,payable",0,Payable,Verbindlichkeiten,0
 field,"party.party,payable_today",0,Payable Today,Verbindlichkeiten heute,0
 field,"party.party,receivable",0,Receivable,Forderungen,0
 field,"party.party,receivable_today",0,Receivable Today,Forderungen heute,0
+field,"party.party,supplier_tax_rule",0,Supplier Tax Rule,Steuerregel Lieferant:,0
 field,"party.party,supplier_vat",0,Supplier VAT,USt als Lieferant,0
 field,"party.party,vat",0,VAT,USt. als Kunde,0
 help,"account.account.open_aged_balance.init,posted",0,Show only posted move,Nur festgeschriebene Buchungen anzeigen,0
@@ -376,6 +398,8 @@ help,"account.tax.open_chart_code.init,fiscalyear",0,Leave empty for all open fi
 help,"account.tax.open_chart_code.init,periods",0,Leave empty for all periods of all open fiscal year,Leer lassen für alle Buchungszeiträume aller geöffneten Geschäftsjahre,0
 help,"account.tax,percentage",0,In %,In %,0
 help,"account.tax,sequence",0,Use to order the taxes,Wird für die Reihenfolge der Steuern verwendet,0
+help,"party.party,customer_tax_rule",0,Apply this rule on taxes when party is customer.,"Wendet diese Regel auf Steuern an, wenn die Partei ein Kunde ist",0
+help,"party.party,supplier_tax_rule",0,Apply this rule on taxes when party is supplier.,"Wendet diese Regel auf Steuern an, wenn die Partei ein Lieferant ist",0
 help,"party.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Diese Steuer wird anstatt der Standard-Umsatzsteuer für Lieferanten verwendet,0
 help,"party.party,vat",0,"This tax will be used, instead of the default VAT.",Diese Steuer wird anstatt der Standard-Umsatzsteuer verwendet,0
 model,"account.account-account.tax,name",0,account.account-account.tax,account.account-account.tax,0
@@ -449,10 +473,13 @@ model,"account.tax.code,name",0,Tax Code,Steuer Kennziffer,0
 model,"account.tax.code.template,name",0,Tax Code Template,Steuer Kennziffer Vorlage,0
 model,"account.tax.group,name",tax_group_none,None,Kein,0
 model,"account.tax.group,name",0,Tax Group,Steuer Gruppe,0
-model,"account.tax.group,name",tax_group_vat,VAT,USt,0
 model,"account.tax.line,name",0,Tax Line,Steuer Zeile,0
 model,"account.tax,name",0,Account Tax,Konto Steuer,0
 model,"account.tax.open_chart_code.init,name",0,Open Chart Code Init,Steurkennziffern Öffnen Init,0
+model,"account.tax.rule.line,name",0,Tax Rule Line,Zeile Steuerregel,0
+model,"account.tax.rule.line.template,name",0,Tax Rule Line Template,Vorlage Zeile Steuerregel,0
+model,"account.tax.rule,name",0,Tax Rule,Steuerregel,0
+model,"account.tax.rule.template,name",0,Tax Rule Template,Vorlage Steuerregel,0
 model,"account.tax.template,name",0,Account Tax Template,Konto Steuervorlage,0
 model,"ir.action,name",act_move_line_form,Account Move Lines,Buchungszeilen,0
 model,"ir.action,name",act_move_form,Account Moves,Buchungen,0
@@ -504,7 +531,10 @@ model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Vorlagen f
 model,"ir.action,name",act_tax_form,Taxes,Steuern,0
 model,"ir.action,name",act_tax_tree,Taxes,Steuern,0
 model,"ir.action,name",act_tax_template_tree,Taxes Templates,Steuervorlagen,0
+model,"ir.action,name",act_tax_group_form,Tax Groups,Steuergruppen,0
 model,"ir.action,name",act_tax_line_form,Tax Lines,Steuerpositionen,0
+model,"ir.action,name",act_tax_rule_form,Tax Rules,Steuerregeln,0
+model,"ir.action,name",act_tax_rule_template_form,Tax Rule Templates,Vorlagen Steuerregeln,0
 model,"ir.action,name",report_third_party_balance,Third Party Balance,Offene Posten,0
 model,"ir.action,name",report_trial_balance,Trial Balance,Summen- und Saldenliste,0
 model,"ir.action,name",act_unreconcile_lines,Unreconcile Lines,Abstimmung von Buchungszeilen rückgängig machen,0
@@ -558,6 +588,9 @@ model,"ir.ui.menu,name",menu_taxes,Taxes,Steuern,0
 model,"ir.ui.menu,name",menu_tax_form,Taxes,Steuern,0
 model,"ir.ui.menu,name",menu_tax_tree,Taxes,Steuern,0
 model,"ir.ui.menu,name",menu_tax_template_tree,Taxes Templates,Steuervorlagen,0
+model,"ir.ui.menu,name",menu_tax_group_form,Tax Groups,Steuergruppen,0
+model,"ir.ui.menu,name",menu_tax_rule_form,Tax Rules,Steuerregeln,0
+model,"ir.ui.menu,name",menu_tax_rule_template_form,Tax Rule Templates,Vorlagen Steuerregeln,0
 model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Offene Posten,0
 model,"ir.ui.menu,name",menu_update_chart_account,Update Chart of Account from Template,Kontenplan von Vorlage aktualisieren,0
 model,"res.group,name",group_account,Account,Buchhaltung,0
@@ -758,10 +791,21 @@ view,account.tax.code,0,Tax Code,Steuerkennziffer,0
 view,account.tax.code,0,Tax Codes,Steuerkennziffern,0
 view,account.tax.code.template,0,Tax Codes Templates,Vorlagen für Steuerkennziffern,0
 view,account.tax.code.template,0,Tax Code Template,Vorlage für Steuerkennziffern,0
+view,account.tax.group,0,Tax Group,Steuergruppe,0
+view,account.tax.group,0,Tax Groups,Steuergruppen,0
 view,account.tax.line,0,Account Tax Line,Steuerzeile Konto,0
 view,account.tax.line,0,Account Tax Lines,Steuerzeilen Konto,0
 view,account.tax.open_chart_code.init,0,Open Chart Of Tax Code,Tabelle Steuerkennziffern öffnen,0
 view,account.tax.open_chart_code.init,0,Open Chart Of Tax Codes,Tabelle Steuerkennziffern öffnen,0
+view,account.tax.rule,0,Tax Rule,Steuerregel,0
+view,account.tax.rule,0,Tax Rule Line Templates,Vorlagen Zeilen Steuerregel,0
+view,account.tax.rule,0,Tax Rules,Steuerregeln,0
+view,account.tax.rule.line,0,Tax Rule Line,Zeile Steuerregel,0
+view,account.tax.rule.line,0,Tax Rule Lines,Zeilen Steuerregeln,0
+view,account.tax.rule.line.template,0,Tax Rule Line Template,Vorlage Zeile Steuerregel,0
+view,account.tax.rule.line.template,0,Tax Rule Line Templates,Vorlagen Zeilen Steuerregel,0
+view,account.tax.rule.template,0,Tax Rules,Steuerregeln,0
+view,account.tax.rule.template,0,Tax Rule Template,Vorlage Steuerregel,0
 view,account.tax.template,0,Code,Kennziffer,0
 view,account.tax.template,0,Credit Note,Gutschrift,0
 view,account.tax.template,0,General Information,Allgemein,0
