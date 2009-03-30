@@ -2757,45 +2757,40 @@ class ORM(object):
                         qu2.append(arg[2])
                     else:
                         add_null = False
-                        if arg[1] in ('like', 'ilike', 'not like', 'not ilike'):
-                            qu2.append('%% %s%%' % arg[2])
-                            qu2.append('%s%%' % arg[2])
+                        if arg[1] in ('like', 'ilike'):
                             if not arg[2]:
-                                add_null = True
+                                qu2.append('%')
+                                qu2.append('%')
+                                add_null = ' AND '
+                            else:
+                                qu2.append('%% %s%%' % arg[2])
+                                qu2.append('%s%%' % arg[2])
+                        elif arg[1] in ('not like', 'not ilike'):
+                            if not arg[2]:
+                                qu2.append('')
+                                qu2.append('')
+                            else:
+                                qu2.append('%% %s%%' % arg[2])
+                                qu2.append('%s%%' % arg[2])
+                                add_null = ' OR '
                         else:
                             if arg[0] in table._columns:
                                 qu2.append(table._columns[arg[0]].\
                                         _symbol_set[1](arg[2]))
-                        if arg[0] in table._columns:
-                            if arg[1] in ('like', 'ilike'):
-                                qu1.append('(%s.%s %s %s OR %s.%s %s %s)' % \
-                                        (table._table, arg[0], arg[1], '%s',
-                                            table._table, arg[0], arg[1], '%s'))
-                            elif arg[1] in ('not like', 'not ilike'):
-                                qu1.append('(%s.%s %s %s AND %s.%s %s %s)' % \
-                                        (table._table, arg[0], arg[1], '%s',
-                                            table._table, arg[0], arg[1], '%s'))
-                            else:
-                                qu1.append('(%s.%s %s %s)' % (table._table,
-                                    arg[0], arg[1],
-                                    table._columns[arg[0]]._symbol_set[0]))
+                        if arg[1] in ('like', 'ilike'):
+                            qu1.append('("%s".%s %s %s OR "%s".%s %s %s)' % \
+                                    (table._table, arg[0], arg[1], '%s',
+                                        table._table, arg[0], arg[1], '%s'))
+                        elif arg[1] in ('not like', 'not ilike'):
+                            qu1.append('("%s".%s %s %s AND "%s".%s %s %s)' % \
+                                    (table._table, arg[0], arg[1], '%s',
+                                        table._table, arg[0], arg[1], '%s'))
                         else:
-                            if arg[1] in ('like', 'ilike'):
-                                qu1.append('(%s.%s %s \'%s\' or %s.%s %s \'%s\')' % \
-                                        (table._table, arg[0], arg[1], arg[2],
-                                            table._table, arg[0], arg[1], arg[2]))
-                            elif arg[1] in ('not like', 'not ilike'):
-                                qu1.append('(%s.%s %s \'%s\' and %s.%s %s \'%s\')' % \
-                                        (table._table, arg[0], arg[1], arg[2],
-                                            table._table, arg[0], arg[1], arg[2]))
-                            else:
-                                qu1.append('(%s.%s %s \'%s\')' % \
-                                        (table._table, arg[0], arg[1], arg[2]))
-
+                            qu1.append('("%s".%s %s %%s)' % (table._table,
+                                arg[0], arg[1]))
                         if add_null:
-                            qu1[-1] = '(' + qu1[-1] + ' OR ' + \
-                                    table._table + '.' + arg[0] +' IS NULL)'
-
+                            qu1[-1] = '(' + qu1[-1] + add_null + \
+                                    '"' + table._table + '".' + arg[0] +' IS NULL)'
         return qu1, qu2
 
     def search_count(self, cursor, user, args, context=None):
