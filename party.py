@@ -94,7 +94,9 @@ class Party(OSV):
         while i < len(args):
             value = args[i][2]
             for country, _ in VAT_COUNTRIES:
-                if value.startswith(country) and country:
+                if isinstance(value, basestring) \
+                        and country \
+                        and value.upper().startswith(country):
                     args2.append(('vat_country', '=', country))
                     value = value[len(country):]
                     break
