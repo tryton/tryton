@@ -2761,7 +2761,7 @@ class ORM(object):
                             if not arg[2]:
                                 qu2.append('%')
                                 qu2.append('%')
-                                add_null = ' AND '
+                                add_null = True
                             else:
                                 qu2.append('%% %s%%' % arg[2])
                                 qu2.append('%s%%' % arg[2])
@@ -2772,7 +2772,7 @@ class ORM(object):
                             else:
                                 qu2.append('%% %s%%' % arg[2])
                                 qu2.append('%s%%' % arg[2])
-                                add_null = ' OR '
+                                add_null = True
                         else:
                             if arg[0] in table._columns:
                                 qu2.append(table._columns[arg[0]].\
@@ -2789,7 +2789,7 @@ class ORM(object):
                             qu1.append('("%s".%s %s %%s)' % (table._table,
                                 arg[0], arg[1]))
                         if add_null:
-                            qu1[-1] = '(' + qu1[-1] + add_null + \
+                            qu1[-1] = '(' + qu1[-1] + ' OR ' + \
                                     '"' + table._table + '".' + arg[0] +' IS NULL)'
         return qu1, qu2
 
