@@ -62,6 +62,7 @@ class CellRendererDate(gtk.GenericCellRenderer):
     def on_start_editing(self, event, widget, path, background_area,
             cell_area, flags):
         editable = DateEntry(self.format, self._date_cb, self._process_cb)
+        editable.set_property('shadow-type', gtk.SHADOW_NONE)
 
         colormap = editable.get_colormap()
         if hasattr(self, 'background'):
