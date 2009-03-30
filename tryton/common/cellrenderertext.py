@@ -61,8 +61,8 @@ class CellRendererText(gtk.GenericCellRenderer):
             cell_area, flags):
         if not event:
             event = gtk.gdk.Event(gtk.keysyms.Tab)
-        editable = self._renderer.start_editing(event, widget, path,
-                background_area, cell_area, flags)
+        editable = gtk.Entry()
+        editable.set_property('shadow-type', gtk.SHADOW_NONE)
 
         colormap = editable.get_colormap()
         if hasattr(self, 'background'):
@@ -75,6 +75,9 @@ class CellRendererText(gtk.GenericCellRenderer):
         editable.modify_text(gtk.STATE_NORMAL, gtk.gdk.color_parse("black"))
         editable.modify_text(gtk.STATE_INSENSITIVE, gtk.gdk.color_parse("black"))
 
+        editable.set_text(self.text)
+        editable.grab_focus()
+        editable.show()
         return editable
 
 gobject.type_register(CellRendererText)
