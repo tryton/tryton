@@ -126,7 +126,6 @@ model,"workflow.activity,name",sale_activity_cancel,Canceled,Annulliert,0
 model,"workflow.activity,name",sale_activity_confirmed,Confirmed,Beauftragt,0
 model,"workflow.activity,name",sale_activity_done,Done,Erledigt,0
 model,"workflow.activity,name",sale_activity_draft,Draft,Entwurf,0
-model,"workflow.activity,name",,Invoice,Rechnung,0
 model,"workflow.activity,name",sale_activity_invoice_sale_done,Invoice Done,Rechnung erledigt,0
 model,"workflow.activity,name",sale_activity_invoice_sale_exception,Invoice Exception,Rechnungsvorbehalt,0
 model,"workflow.activity,name",sale_activity_invoice_method,Invoice Method,Rechnungsstellung,0
