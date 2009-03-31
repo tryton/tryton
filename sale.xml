@@ -120,13 +120,14 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="invoices" colspan="4">
                                 <tree>
                                   <field name="number" select="1"/>
+                                  <field name="reference" select="1"/>
                                   <field name="invoice_date" select="2"/>
                                   <field name="party" select="1"/>
                                   <field name="currency" select="2"/>
                                   <field name="untaxed_amount" select="2"/>
                                   <field name="tax_amount" select="2"/>
                                   <field name="total_amount" select="2"/>
-                                  <field name="state" select="1"/>
+                                  <field name="state" select="2"/>
                                   <field name="sale_exception_state"/>
                                   <field name="amount_to_pay_today"/>
                                   <field name="description" select="2"/>
