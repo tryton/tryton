@@ -63,4 +63,7 @@ can be:
   purchase request.
 
 The internal packings and purchase requests are created by schedulers
-with respect to stock levels and existing packings and requests.
+with respect to stock levels and existing packings and requests. The
+stock levels are computed between the next two supply dates. If the
+stock level of a product without order point on the given warehouse is
+below zero, a purchase request is also created.
