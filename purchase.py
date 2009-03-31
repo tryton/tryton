@@ -1556,15 +1556,39 @@ class Move(OSV):
         res = super(Move, self).write(cursor, user, ids, vals,
                 context=context)
         if 'state' in vals and vals['state'] in ('cancel',):
-            purchase_ids = []
+            if isinstance(ids, (int, long)):
+                ids = [ids]
+            purchase_ids = set()
             purchase_line_ids = purchase_line_obj.search(cursor, user, [
                 ('moves', 'in', ids),
                 ], context=context)
             if purchase_line_ids:
                 for purchase_line in purchase_line_obj.browse(cursor, user,
                         purchase_line_ids, context=context):
-                    if purchase_line.purchase.id not in purchase_ids:
-                        purchase_ids.append(purchase_line.purchase.id)
+                    purchase_ids.add(purchase_line.purchase.id)
+            for purchase_id in purchase_ids:
+                workflow_service.trg_validate(user, 'purchase.purchase',
+                        purchase_id, 'packing_update', cursor, context=context)
+        return res
+
+    def delete(self, cursor, user, ids, context=None):
+        purchase_obj = self.pool.get('purchase.purchase')
+        purchase_line_obj = self.pool.get('purchase.line')
+
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
+        purchase_ids = set()
+        purchase_line_ids = purchase_line_obj.search(cursor, user, [
+            ('moves', 'in', ids),
+            ], context=context)
+
+        res = super(Move, self).delete(cursor, user, ids, context=context)
+
+        if purchase_line_ids:
+            for purchase_line in purchase_line_obj.browse(cursor, user,
+                    purchase_line_ids, context=context):
+                purchase_ids.add(purchase_line.purchase.id)
             for purchase_id in purchase_ids:
                 workflow_service.trg_validate(user, 'purchase.purchase',
                         purchase_id, 'packing_update', cursor, context=context)
