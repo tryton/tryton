@@ -1546,17 +1546,42 @@ class Move(ModelSQL, ModelView):
         res = super(Move, self).write(cursor, user, ids, vals,
                 context=context)
         if 'state' in vals and vals['state'] in ('cancel',):
-            sale_ids = []
+            if isinstance(ids, (int, long)):
+                ids = [ids]
+            sale_ids = set()
             sale_line_ids = sale_line_obj.search(cursor, user, [
                 ('moves', 'in', ids),
                 ], context=context)
             if sale_line_ids:
                 for sale_line in sale_line_obj.browse(cursor, user,
                         sale_line_ids, context=context):
-                    if sale_line.sale.id not in sale_ids:
-                        sale_ids.append(sale_line.sale.id)
-            sale_obj.workflow_trigger_validate(cursor, user, sale_ids,
-                    'packing_update', context=context)
+                    sale_ids.add(sale_line.sale.id)
+            if sale_ids:
+                sale_obj.workflow_trigger_validate(cursor, user, list(sale_ids),
+                        'packing_update', context=context)
+        return res
+
+    def delete(self, cursor, user, ids, context=None):
+        sale_obj = self.pool.get('sale.sale')
+        sale_line_obj = self.pool.get('sale.line')
+
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
+        sale_ids = set()
+        sale_line_ids = sale_line_obj.search(cursor, user, [
+            ('moves', 'in', ids),
+            ], context=context)
+
+        res = super(Move, self).delete(cursor, user, ids, context=context)
+
+        if sale_line_ids:
+            for sale_line in sale_line_obj.browse(cursor, user,
+                    sale_line_ids, context=context):
+                sale_ids.add(sale_line.sale.id)
+            if sale_ids:
+                sale_obj.workflow_trigger_validate(cursor, user, list(sale_ids),
+                        'packing_update', context=context)
         return res
 
 Move()
