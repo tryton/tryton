@@ -358,8 +358,6 @@ field,"party.party,payable_today",0,Payable Today,Verbindlichkeiten heute,0
 field,"party.party,receivable",0,Receivable,Forderungen,0
 field,"party.party,receivable_today",0,Receivable Today,Forderungen heute,0
 field,"party.party,supplier_tax_rule",0,Supplier Tax Rule,Steuerregel Lieferant:,0
-field,"party.party,supplier_vat",0,Supplier VAT,USt als Lieferant,0
-field,"party.party,vat",0,VAT,USt. als Kunde,0
 help,"account.account.open_aged_balance.init,posted",0,Show only posted move,Nur festgeschriebene Buchungen anzeigen,0
 help,"account.account.open_balance_sheet.init,posted",0,Show only posted move,Nur festgeschriebene Buchungen anzeigen,0
 help,"account.account.open_chart_account.init,fiscalyear",0,Leave empty for all open fiscal year,Leer lassen für alle geöffneten Geschäftsjahre,0
@@ -400,8 +398,6 @@ help,"account.tax,percentage",0,In %,In %,0
 help,"account.tax,sequence",0,Use to order the taxes,Wird für die Reihenfolge der Steuern verwendet,0
 help,"party.party,customer_tax_rule",0,Apply this rule on taxes when party is customer.,"Wendet diese Regel auf Steuern an, wenn die Partei ein Kunde ist",0
 help,"party.party,supplier_tax_rule",0,Apply this rule on taxes when party is supplier.,"Wendet diese Regel auf Steuern an, wenn die Partei ein Lieferant ist",0
-help,"party.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Diese Steuer wird anstatt der Standard-Umsatzsteuer für Lieferanten verwendet,0
-help,"party.party,vat",0,"This tax will be used, instead of the default VAT.",Diese Steuer wird anstatt der Standard-Umsatzsteuer verwendet,0
 model,"account.account-account.tax,name",0,account.account-account.tax,account.account-account.tax,0
 model,"account.account.create_chart_account.account,name",0,Create Chart Account Account,Kontenplanerstellung Konten,0
 model,"account.account.create_chart_account.init,name",0,Create Chart Account Init,Kontenplanerstellung Init,0
@@ -471,7 +467,7 @@ model,"account.move.unreconcile_lines.init,name",0,Unreconcile Lines Init,Abstim
 model,"account.period,name",0,Period,Buchungszeitraum,0
 model,"account.tax.code,name",0,Tax Code,Steuer Kennziffer,0
 model,"account.tax.code.template,name",0,Tax Code Template,Steuer Kennziffer Vorlage,0
-model,"account.tax.group,name",tax_group_none,None,Kein,0
+model,"account.tax.group,name",tax_group_none,None,Keine,0
 model,"account.tax.group,name",0,Tax Group,Steuer Gruppe,0
 model,"account.tax.line,name",0,Tax Line,Steuer Zeile,0
 model,"account.tax,name",0,Account Tax,Konto Steuer,0
@@ -703,10 +699,10 @@ selection,"account.period,type",0,Standard,Standard,0
 selection,"account.tax.open_chart_code.init,method",0,By Fiscal Year,Geschäftsjahr,0
 selection,"account.tax.open_chart_code.init,method",0,By Periods,Nach Buchungszeiträumen,0
 selection,"account.tax.template,type",0,Fixed,Fix,0
-selection,"account.tax.template,type",0,None,Kein,0
+selection,"account.tax.template,type",0,None,Keine,0
 selection,"account.tax.template,type",0,Percentage,Prozentsatz,0
 selection,"account.tax,type",0,Fixed,Fix,0
-selection,"account.tax,type",0,None,Kein,0
+selection,"account.tax,type",0,None,Keine,0
 selection,"account.tax,type",0,Percentage,Prozentsatz,0
 view,account.account,0,Account,Konto,0
 view,account.account,0,Accounts,Konten,0
