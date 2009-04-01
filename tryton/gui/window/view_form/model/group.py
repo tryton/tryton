@@ -241,8 +241,6 @@ class ModelRecordGroup(SignalEvent):
                     model[field].set(model, index, modified=True)
                 else:
                     index = model[field].get(model)
-                if model.id > 0:
-                    model.save()
 
     def model_new(self, default=True, domain=None, context=None):
         newmod = ModelRecord(self.resource, None, self.window, group=self,
