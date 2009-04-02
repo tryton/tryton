@@ -459,7 +459,7 @@ class Move(ModelSQL, ModelView):
                     cursor, user, vals['product'], -vals['quantity'],
                     vals['uom'], vals['unit_price'], vals['currency'],
                     vals['company'], context=context)
-            if  not vals.get('cost_price'):
+            if not vals.get('cost_price'):
                 product = product_obj.browse(cursor, user, vals['product'],
                                              context=context)
                 vals['cost_price'] = product.cost_price
