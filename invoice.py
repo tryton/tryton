@@ -875,6 +875,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
             res[invoice.id] = invoice.number or unicode(invoice.id) + \
+                    (invoice.reference and (' ' + invoice.reference) or '') + \
                     ' ' + invoice.party.rec_name
         return res
 
@@ -882,8 +883,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         args2 = []
         i = 0
         while i < len(args):
-            ids = self.search(cursor, user, [
+            ids = self.search(cursor, user, ['OR',
                 ('number', args[i][1], args[i][2]),
+                ('reference', args[i][1], args[i][2]),
                 ], limit=1, context=context)
             if ids:
                 args2.append(('number', args[i][1], args[i][2]))
