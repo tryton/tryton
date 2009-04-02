@@ -515,6 +515,9 @@ class Line(OSV):
     def default_active(self, cursor, user, context=None):
         return True
 
+    def default_currency_digits(self, cursor, user, context=None):
+        return 2
+
     def default_get(self, cursor, user, fields, context=None):
         if context is None:
             context = {}
