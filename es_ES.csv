@@ -3,11 +3,13 @@ error,country.country,0,The code of the country must be unique!,El código del p
 error,country.country,0,The name of the country must be unique!,Eln nombre de los países debe ser único!,0
 field,"country.country,code",0,Code,Código,0
 field,"country.country,name",0,Name,Nombre,0
+field,"country.country,rec_name",0,Name,Nombre,0
 field,"country.country,subdivisions",0,Subdivisions,Subdivisiones,0
 field,"country.subdivision,code",0,Code,Código,0
 field,"country.subdivision,country",0,Country,País,0
 field,"country.subdivision,name",0,Name,Nombre,0
 field,"country.subdivision,parent",0,Parent,Padre,0
+field,"country.subdivision,rec_name",0,Name,Nombre,0
 field,"country.subdivision,type",0,Type,Tipo,0
 help,"country.country,code",0,"The ISO country code in two chars.
 You can use this field for quick search.","El código ISO del país en dos caracteres,
@@ -67,6 +69,7 @@ model,"country.country,name",cd,"Congo, The Democratic Republic of the","Congo, 
 model,"country.country,name",ck,Cook Islands,Islas Cook,0
 model,"country.country,name",cr,Costa Rica,Costa Rica,0
 model,"country.country,name",ci,Côte d'Ivoire,Costa de Marfil,0
+model,"country.country,name",0,Country,País,0
 model,"country.country,name",hr,Croatia,Croacia,0
 model,"country.country,name",cu,Cuba,Cuba,0
 model,"country.country,name",cy,Cyprus,Chipre,0
@@ -259,6 +262,7 @@ model,"country.country,name",eh,Western Sahara,Sahara Occidental,0
 model,"country.country,name",ye,Yemen,Yemén,0
 model,"country.country,name",zm,Zambia,Zambia,0
 model,"country.country,name",zw,Zimbabwe,Zimbawe,0
+model,"country.subdivision,name",0,Subdivision,Subdivisión,0
 model,"ir.action,name",act_country_form,Countries,Paises,0
 model,"ir.ui.menu,name",menu_country_form,Countries,Países,0
 selection,"country.subdivision,type",0,Administration,Administración,0
