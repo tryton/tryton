@@ -100,6 +100,9 @@ class Currency(OSV):
                 return False
         return True
 
+    def check_xml_record(self, cursor, user, ids, values, context=None):
+        return True
+
     def name_search(self, cursor, user, name, args=None, operator='ilike',
             context=None, limit=None):
         if args is None:
