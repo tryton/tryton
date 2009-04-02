@@ -7,7 +7,7 @@ field,"currency.currency,code",0,Code,Code,0
 field,"currency.currency,digits",0,Diplay Digits,Décimale affichée,0
 field,"currency.currency,mon_decimal_point",0,Decimal Separator,Séparateur décimal,0
 field,"currency.currency,mon_grouping",0,Grouping,Groupement,0
-field,"currency.currency,mon_thousands_sep",0,Thousands Separator,Séparateur des centaines,0
+field,"currency.currency,mon_thousands_sep",0,Thousands Separator,Séparateur des milliers,0
 field,"currency.currency,name",0,Name,Nom,0
 field,"currency.currency,n_cs_precedes",0,Negative Currency Symbol Precedes,,0
 field,"currency.currency,negative_sign",0,Negative Sign,,0
