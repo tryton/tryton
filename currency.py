@@ -99,6 +99,9 @@ class Currency(ModelSQL, ModelView):
                 return False
         return True
 
+    def check_xml_record(self, cursor, user, ids, values, context=None):
+        return True
+
     def search_rec_name(self, cursor, user, name, args, context=None):
         args2 = []
         i = 0
