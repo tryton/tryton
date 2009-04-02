@@ -150,10 +150,12 @@ model,"workflow.activity,name",sale_activity_waiting_invoice_packing,Waiting Inv
 model,"workflow.activity,name",sale_activity_waiting_packing,Waiting Shipment,Lieferposten wartend,0
 model,"workflow.activity,name",sale_activity_waiting_packing_invoice,Waiting Shipment Invoice,Lieferposten Rechnung wartend,0
 model,"workflow,name",sale_workflow,Sale workflow,Workflow Verkauf,0
+odt,sale.sale,0,%,%,0
 odt,sale.sale,0,Amount,Betrag,0
 odt,sale.sale,0,Date:,Datum:,0
 odt,sale.sale,0,Description,Bezeichnung,0
 odt,sale.sale,0,Description:,Bezeichnung:,0
+odt,sale.sale,0,Discount,Rabatt,0
 odt,sale.sale,0,Draft Sale Order,Auftrag (Entwurf),0
 odt,sale.sale,0,E-Mail:,E-Mail:,0
 odt,sale.sale,0,Phone:,Telefon:,0
