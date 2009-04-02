@@ -459,10 +459,11 @@ class Move(ModelSQL, ModelView):
                     cursor, user, vals['product'], -vals['quantity'],
                     vals['uom'], vals['unit_price'], vals['currency'],
                     vals['company'], context=context)
-            #Re-read the product because cost_price has been updated
-            product = product_obj.browse(cursor, user, vals['product'],
-                    context=context)
-            vals['cost_price'] = product.cost_price
+            if  not vals.get('cost_price'):
+                product = product_obj.browse(cursor, user, vals['product'],
+                                             context=context)
+                vals['cost_price'] = product.cost_price
+
         elif vals.get('state') == 'assigned':
             if not vals.get('effective_date'):
                 vals['effective_date'] = datetime.date.today()
