@@ -116,7 +116,7 @@ class Move(ModelSQL, ModelView):
                 cost_price = self._update_fifo_out_product_cost_price(
                     cursor, user, product, vals['quantity'], vals['uom'],
                     context=context)
-                if vals.get('cost_price'):
+                if not vals.get('cost_price'):
                     vals['cost_price'] = cost_price
 
         return super(Move, self).create(cursor, user, vals, context=context)
@@ -164,7 +164,7 @@ class Move(ModelSQL, ModelView):
                         cost_price = self._update_fifo_out_product_cost_price(
                             cursor, user, move.product, move.quantity,
                             move.uom, context=context)
-                        if vals.get('cost_price'):
+                        if not vals.get('cost_price'):
                             vals['cost_price'] = cost_price
         return super(Move, self).write(cursor, user, ids, vals, context=context)
 
