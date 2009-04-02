@@ -19,14 +19,18 @@ class Template(ModelSQL, ModelView):
     def get_fifo_move(self, cursor, user, template_id, quantity=0.0,
             context=None):
         '''
-        Return the first move for the product template id by searching
-        for the later move quantity is still in storage location
+        Return a list of (move, qty) where move is the move to be
+        consumed and qty is the quantity (in the product default uom)
+        to be consumed on this move. The list contains the "first in"
+        moves for the given quantity.
 
         :param cursor: the database cursor
         :param user: the user id
         :param template_id: the product template id
-        :param quantity: the quantity to remove to the stock quantity
+        :param quantity: the quantity to be removed from the stock
         :param context: the context
+        :return: list of (move, qty) where move is a browse record,
+        qty is a float
         '''
         move_obj = self.pool.get('stock.move')
         uom_obj = self.pool.get('product.uom')
@@ -41,9 +45,10 @@ class Template(ModelSQL, ModelView):
         template = self.browse(cursor, user, template_id, context=ctx)
         offset = 0
         limit = cursor.IN_MAX
-        template_qty = template.quantity - quantity
-        fifo_move = None
-        while template_qty > 0.0:
+        avail_qty = template.quantity
+        fifo_moves = []
+
+        while avail_qty > 0.0:
             move_ids = move_obj.search(cursor, user, [
                 ('product.template.id', '=', template.id),
                 ('state', '=', 'done'),
@@ -54,17 +59,22 @@ class Template(ModelSQL, ModelView):
             if not move_ids:
                 break
             offset += limit
+
             for move in move_obj.browse(cursor, user, move_ids,
                     context=context):
                 qty = uom_obj.compute_qty(cursor, user, move.uom,
                         move.quantity - move.fifo_quantity,
                         template.default_uom, round=False, context=context)
-                template_qty -= qty
-                if template_qty <= 0.0:
-                    fifo_move = move.id
-                    break
-            if fifo_move:
-                break
-        return fifo_move
+                avail_qty -= qty
+
+                if avail_qty <= quantity:
+                    if avail_qty > 0.0:
+                        fifo_moves.append((move, min(qty, quantity - avail_qty)))
+                    else:
+                        fifo_moves.append((move, min(quantity, qty + avail_qty)))
+                        break
+
+        fifo_moves.reverse()
+        return fifo_moves
 
 Template()
