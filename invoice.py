@@ -984,9 +984,12 @@ class Invoice(OSV):
                 keys.remove(key)
         if len(keys):
             self.check_modify(cursor, user, ids, context=context)
+        update_tax_ids = [x.id for x in self.browse(cursor, user, ids,
+            context=context) if x.state == 'draft']
         res = super(Invoice, self).write(cursor, user, ids, vals,
                 context=context)
-        self.update_taxes(cursor, user, ids, context=context)
+        if update_tax_ids:
+            self.update_taxes(cursor, user, update_tax_ids, context=context)
         if 'state' in vals and vals['state'] in ('paid', 'cancel'):
             for invoice_id in ids:
                 workflow_service.trg_trigger(user, self._name, invoice_id,
