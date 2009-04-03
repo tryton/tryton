@@ -941,7 +941,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         default['payment_lines'] = False
         default['lines'] = False
         default['taxes'] = False
-        default['date'] = date_obj.today(cursor, user, context=context)
+        default['invoice_date'] = date_obj.today(cursor, user, context=context)
         default['lines_to_pay'] = False
 
         new_ids = []
