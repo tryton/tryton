@@ -800,7 +800,7 @@ class Line(ModelSQL, ModelView):
                     res.setdefault('add', []).append({
                         'amount': base_amounts[code_id],
                         'code': code_id,
-                        'code': tax_code_obj.browse(cursor, user,
+                        'code.rec_name': tax_code_obj.browse(cursor, user,
                             code_id, context=context).rec_name,
                     })
         return res
