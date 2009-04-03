@@ -52,6 +52,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         ], 'State', readonly=True)
     invoice_date = fields.Date('Invoice Date', required=True,
         states=_STATES)
+    accounting_date = fields.Date('Accounting Date', states=_STATES)
     party = fields.Many2One('party.party', 'Party', change_default=True,
         required=True, states=_STATES, on_change=['party', 'payment_term',
             'type', 'company'])
@@ -817,13 +818,14 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 remainder_total_currency):
             move_lines[-1]['amount_second_currency'] += remainder_total_currency
 
+        accounting_date = invoice.accounting_date or invoice.invoice_date
         period_id = period_obj.find(cursor, user, invoice.company.id,
-                date=invoice.invoice_date, context=context)
+                date=accounting_date, context=context)
 
         move_id = move_obj.create(cursor, user, {
             'journal': invoice.journal.id,
             'period': period_id,
-            'date': invoice.invoice_date,
+            'date': accounting_date,
             'lines': [('create', x) for x in move_lines],
             }, context=context)
         self.write(cursor, user, invoice.id, {
@@ -844,8 +846,13 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         if invoice.number:
             return True
 
+        test_state = True
+        if invoice.type in ('in_invoice', 'in_credit_note'):
+            test_state = False
+
         period_id = period_obj.find(cursor, user, invoice.company.id,
-                date=invoice.invoice_date, context=context)
+                date=invoice.invoice_date, test_state=test_state,
+                context=context)
         period = period_obj.browse(cursor, user, period_id, context=context)
         sequence_id = period[invoice.type + '_sequence'].id
         if not sequence_id:
@@ -942,6 +949,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         default['lines'] = False
         default['taxes'] = False
         default['invoice_date'] = date_obj.today(cursor, user, context=context)
+        default['accounting_date'] = False
         default['lines_to_pay'] = False
 
         new_ids = []

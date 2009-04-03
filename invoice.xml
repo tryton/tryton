@@ -117,10 +117,12 @@ this repository contains the full copyright notices and license terms. -->
                         <page string="Other Info" id="info">
                             <label name="company"/>
                             <field name="company"/>
-                            <label name="move"/>
-                            <field name="move"/>
                             <label name="account"/>
                             <field name="account"/>
+                            <label name="accounting_date"/>
+                            <field name="accounting_date"/>
+                            <label name="move"/>
+                            <field name="move"/>
                             <label name="invoice_report"/>
                             <field name="invoice_report"/>
                             <separator name="comment" colspan="4"/>
