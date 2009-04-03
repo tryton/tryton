@@ -827,6 +827,7 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="base_sign"/>
                         <field name="base_sign"/>
                     </group>
+                    <field name="tax" colspan="4" invisible="1"/>
                 </form>
                 ]]>
             </field>
@@ -843,6 +844,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="manual" select="2"/>
                     <field name="base"/>
                     <field name="amount"/>
+                    <field name="tax" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>

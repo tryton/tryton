@@ -351,12 +351,12 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 continue
             key = (tax.get('base_code'), tax.get('base_sign'),
                     tax.get('tax_code'), tax.get('tax_sign'),
-                    tax.get('account'), tax.get('description'))
-            tax_keys.append(key)
-            if key not in computed_taxes:
+                    tax.get('account'), tax.get('tax'))
+            if (key not in computed_taxes) or (key in tax_keys):
                 res['taxes'].setdefault('remove', [])
                 res['taxes']['remove'].append(tax.get('id'))
                 continue
+            tax_keys.append(key)
             if currency:
                 if not currency_obj.is_zero(cursor, user, currency,
                         computed_taxes[key]['base'] - \
@@ -639,6 +639,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         val['description'] = tax['tax'].description
         val['base'] = tax['base']
         val['amount'] = tax['amount']
+        val['tax'] = tax['tax'].id
 
         if invoice_type in ('out_invoice', 'in_invoice'):
             val['base_code'] = tax['tax'].invoice_base_code.id
@@ -654,7 +655,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             val['account'] = tax['tax'].credit_note_account.id
         key = (val['base_code'], val['base_sign'],
                 val['tax_code'], val['tax_sign'],
-                val['account'], val['description'])
+                val['account'], val['tax'])
         return key, val
 
     def _compute_taxes(self, cursor, user, invoice, context=None):
@@ -703,15 +704,15 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                         continue
                     key = (tax.base_code.id, tax.base_sign,
                             tax.tax_code.id, tax.tax_sign,
-                            tax.account.id, tax.description)
-                    tax_keys.append(key)
-                    if not key in computed_taxes:
+                            tax.account.id, tax.tax.id)
+                    if (not key in computed_taxes) or (key in tax_keys):
                         if exception:
                             self.raise_user_error(cursor, 'missing_tax_line',
                                     context=context)
                         tax_obj.delete(cursor, user, tax.id,
                                 context=context)
                         continue
+                    tax_keys.append(key)
                     if not currency_obj.is_zero(cursor, user,
                             invoice.currency,
                             computed_taxes[key]['base'] - tax.base):
@@ -1513,7 +1514,7 @@ class InvoiceLine(ModelSQL, ModelView):
                     continue
                 key = (tax.base_code.id, tax.base_sign,
                         tax.tax_code.id, tax.tax_sign,
-                        tax.account.id, tax.description)
+                        tax.account.id, tax.id)
                 if key in taxes_keys:
                     res[line.id].append(tax.id)
         return res
@@ -1834,6 +1835,7 @@ class InvoiceTax(ModelSQL, ModelView):
     tax_code = fields.Many2One('account.tax.code', 'Tax Code',
             domain="[('company', '=', _parent_invoice.company)]")
     tax_sign = fields.Numeric('Tax Sign', digits=(2, 0))
+    tax = fields.Many2One('account.tax', 'Tax')
 
     def __init__(self):
         super(InvoiceTax, self).__init__()
@@ -1976,7 +1978,7 @@ class InvoiceTax(ModelSQL, ModelView):
                 'manual', 'base_sign', 'tax_sign'):
             res[field] = tax[field]
 
-        for field in ('account', 'base_code', 'tax_code'):
+        for field in ('account', 'base_code', 'tax_code', 'tax'):
             res[field] = tax[field].id
         return res
 
