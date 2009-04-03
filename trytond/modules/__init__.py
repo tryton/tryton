@@ -286,9 +286,7 @@ def get_module_list():
                 module_list.add(file)
             elif file[-4:] == '.zip':
                 module_list.add(file)
-    for ep in pkg_resources.iter_entry_points('trytond.modules'):
-         mod_name = ep.module_name.split('.')[-1]
-         module_list.add(mod_name)
+    module_list.update(EGG_MODULES.keys())
     module_list.add('ir')
     module_list.add('workflow')
     module_list.add('res')
