@@ -110,24 +110,36 @@ class Period(ModelSQL, ModelView):
         return True
 
     def find(self, cursor, user, company_id, date=None, exception=True,
-            context=None):
+            test_state=True, context=None):
         '''
         Return the period for the company_id
             at the date or the current date.
         If exception is set the function will raise an exception
             if any period is found.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param company_id: the company id
+        :param date: the date searched
+        :param exception: a boolean to raise or not an exception
+        :param test_state: a boolean if true will search on non-closed periods
+        :param context: the context
+        :return: the period id found or False
         '''
         date_obj = self.pool.get('ir.date')
 
         if not date:
             date = date_obj.today(cursor, user, context=context)
-        ids = self.search(cursor, user, [
+        clause = [
             ('start_date', '<=', date),
             ('end_date', '>=', date),
             ('fiscalyear.company', '=', company_id),
             ('type', '=', 'standard'),
-            ('state', '!=', 'close'),
-            ], order=[('start_date', 'DESC')], limit=1, context=context)
+            ]
+        if test_state:
+            clause.append(('state', '!=', 'close'))
+        ids = self.search(cursor, user, clause, order=[('start_date', 'DESC')],
+                limit=1, context=context)
         if not ids:
             if exception:
                 self.raise_user_error(cursor, 'no_period_date',
