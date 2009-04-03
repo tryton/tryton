@@ -505,7 +505,7 @@ class O2MField(CharField):
                 if mod:
                     to_remove.append(mod)
         for mod in to_remove:
-            model.value[self.name].remove(mod)
+            model.value[self.name].remove(mod, signal=False)
 
         mod = None
         if value and value.get('add') or value.get('update', []):
