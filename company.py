@@ -31,6 +31,28 @@ class Company(ModelSQL, ModelView):
             'recursive_companies': 'You can not create recursive companies!',
         })
 
+    def copy(self, cursor, user, ids, default=None, context=None):
+        party_obj = self.pool.get('party.party')
+
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
+        if default is None:
+            default = {}
+        default = default.copy()
+        new_ids = []
+        for company in self.browse(cursor, user, ids, context=context):
+            default['party'] = party_obj.copy(cursor, user, company.party.id,
+                    context=context)
+            new_id = super(Company, self).copy(cursor, user, company.id,
+                    default=default, context=context)
+            new_ids.append(new_id)
+
+        if int_id:
+            return new_ids[0]
+        return new_ids
+
     def write(self, cursor, user, ids, vals, context=None):
         res = super(Company, self).write(cursor, user, ids, vals,
                 context=context)
