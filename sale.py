@@ -904,7 +904,9 @@ class SaleLine(ModelSQL, ModelView):
                 'readonly': "not globals().get('_parent_sale')",
             }, on_change=['product', 'unit', 'quantity', 'description',
                 '_parent_sale.party', '_parent_sale.currency'],
-            context="{'locations': [_parent_sale.warehouse], " \
+            context="{'locations': " \
+                        "_parent_sale.warehouse and [_parent_sale.warehouse] " \
+                        "or False, " \
                     "'stock_date_end': _parent_sale.sale_date, " \
                     "'salable': True, " \
                     "'stock_skip_warehouse': True}")
