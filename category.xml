@@ -42,7 +42,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="category_view_tree"/>
             <field name="act_window" ref="act_category_tree"/>
         </record>
-        <menuitem parent="menu_configuration"
+        <menuitem parent="menu_party"
             action="act_category_tree" id="menu_category_tree"/>
 
         <record model="ir.action.act_window" id="act_category_form">
@@ -60,7 +60,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="category_view_form"/>
             <field name="act_window" ref="act_category_form"/>
         </record>
-        <menuitem name="Edit Categories" parent="menu_category_tree"
+        <menuitem parent="menu_configuration"
             action="act_category_form" id="menu_category_form"/>
         <record model="ir.action.act_window" id="act_category_form2">
             <field name="name">Categories</field>
@@ -77,7 +77,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="category_view_tree"/>
             <field name="act_window" ref="act_category_form2"/>
         </record>
-        <menuitem name="New category" parent="menu_category_tree"
+        <menuitem name="New category" parent="menu_category_form"
               action="act_category_form2" id="menu_category_form2"/>
 
         <record model="ir.model.access" id="access_party_category">
