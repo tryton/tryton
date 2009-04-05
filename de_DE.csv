@@ -45,6 +45,7 @@ field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Seque
 field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
 field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Rechnungen Kunden,0
 field,"account.invoice,account",0,Account,Konto,0
+field,"account.invoice,accounting_date",0,Accounting Date,Buchungsdatum,0
 field,"account.invoice-account.move.line,invoice",0,Invoice,Rechnung,0
 field,"account.invoice-account.move.line,line",0,Payment Line,Zahlungsposition,0
 field,"account.invoice-account.move.line,rec_name",0,Name,Name,0
@@ -154,6 +155,7 @@ field,"account.invoice.tax,manual",0,Manual,Manuell,0
 field,"account.invoice.tax,rec_name",0,Name,Name,0
 field,"account.invoice.tax,sequence",0,Sequence,Sequenz,0
 field,"account.invoice.tax,sequence_number",0,Sequence Number,Nummer Sequenz,0
+field,"account.invoice.tax,tax",0,Tax,Steuer,0
 field,"account.invoice.tax,tax_code",0,Tax Code,Steuerkennziffer,0
 field,"account.invoice.tax,tax_sign",0,Tax Sign,Vorzeichen (Steuer),0
 field,"account.invoice,total_amount",0,Total,Brutto,0
