@@ -65,10 +65,10 @@ class Party(ModelSQL, ModelView):
              'The code of the party must be unique!')
         ]
         self._constraints += [
-            ('check_vat', 'unvalid_vat'),
+            ('check_vat', 'invalid_vat'),
         ]
         self._error_messages.update({
-            'unvalid_vat': 'Unvalid VAT number!',
+            'invalid_vat': 'Invalid VAT number!',
         })
         self._order.insert(0, ('name', 'ASC'))
 
