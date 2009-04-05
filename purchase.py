@@ -807,7 +807,9 @@ class PurchaseLine(ModelSQL, ModelView):
                 'readonly': "not globals().get('_parent_purchase')",
             }, on_change=['product', 'unit', 'quantity', 'description',
                 '_parent_purchase.party', '_parent_purchase.currency'],
-            context="{'locations': [_parent_purchase.warehouse], " \
+            context="{'locations': " \
+                        "_parent_purchase.warehouse and " \
+                        "[_parent_purchase.warehouse] or False, " \
                     "'stock_date_end': _parent_purchase.purchase_date, " \
                     "'purchasable': True, " \
                     "'stock_skip_warehouse': True}")
