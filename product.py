@@ -66,6 +66,14 @@ class Template(ModelSQL, ModelView):
                 res[product.id] = product[field]
         return res
 
+    def copy(self, cursor, user, ids, default=None, context=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['products'] = False
+        return super(Template, self).copy(cursor, user, ids, default=default,
+                context=context)
+
 Template()
 
 
@@ -128,11 +136,26 @@ class Product(ModelSQL, ModelView):
         return res
 
     def copy(self, cursor, user, ids, default=None, context=None):
+        template_obj = self.pool.get('product.template')
+
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
         if default is None:
             default = {}
         default = default.copy()
         default['products'] = False
-        return super(Product, self).copy(cursor, user, ids,
+        new_ids = []
+        for product in self.browse(cursor, user, ids, context=context):
+            default['template'] = template_obj.copy(cursor, user,
+                    product.template.id, context=context)
+            new_id = super(Product, self).copy(cursor, user, product.id,
                 default=default, context=context)
+            new_ids.append(new_id)
+
+        if int_id:
+            return new_ids[0]
+        return new_ids
 
 Product()
