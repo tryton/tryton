@@ -166,8 +166,8 @@ class Uom(ModelSQL, ModelView):
         if 'rate' in values or 'factor' in values or 'category' in values:
             uoms = self.browse(cursor, user, ids, context=context)
             for uom in uoms:
-                if ('rate' in values and values['rate'] != uom.factor) \
-                        or ('factor' in values and values['factor'] != uom.rate) \
+                if (round(values.get('rate', uom.rate), 6) != round(uom.rate, 6)) \
+                        or (round(values.get('factor', uom.factor), 6) != round(uom.factor, 6)) \
                         or ('category' in values and values['category'] != uom.category.id):
                     self.raise_user_error(cursor, 'change_uom_rate_title',
                                           error_description='change_uom_rate')
