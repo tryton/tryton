@@ -1079,17 +1079,23 @@ class SaleLine(ModelSQL, ModelView):
         res['unit_price'] = product_obj.get_sale_price(cursor, user,
                 [product.id], vals.get('quantity', 0), context=ctx2)[product.id]
         res['taxes'] = []
+        pattern = self._get_tax_rule_pattern(cursor, user, party,
+                vals, context=context)
         for tax in product.customer_taxes_used:
             if party and party.customer_tax_rule:
-                pattern = self._get_tax_rule_pattern(cursor, user, party,
-                        vals, context=context)
-                tax_id = tax_rule_obj.apply(cursor, user,
+                tax_ids = tax_rule_obj.apply(cursor, user,
                         party.customer_tax_rule, tax, pattern,
                         context=context)
-                if tax_id:
-                    res['taxes'].append(tax_id)
+                if tax_ids:
+                    res['taxes'].extend(tax_ids)
                 continue
             res['taxes'].append(tax.id)
+        if party and party.customer_tax_rule:
+            tax_ids = tax_rule_obj.apply(cursor, user,
+                    party.customer_tax_rule, False, pattern,
+                    context=context)
+            if tax_ids:
+                res['taxes'].extend(tax_ids)
 
         if not vals.get('description'):
             res['description'] = product_obj.browse(cursor, user, product.id,
