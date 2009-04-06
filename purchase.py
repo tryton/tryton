@@ -1286,6 +1286,14 @@ class Template(ModelSQL, ModelView):
         context="{'category': (default_uom, 'uom.category')}",
         on_change_with=['default_uom', 'purchase_uom'])
 
+    def __init__(self):
+        super(Template, self).__init__()
+        self._error_messages.update({
+                'change_purchase_uom': 'Purchase prices are based on the purchase uom, '\
+                    'are you sure to change it?',
+            })
+
+
     def default_purchasable(self, cursor, user, context=None):
         if context is None:
             context = {}
@@ -1311,6 +1319,23 @@ class Template(ModelSQL, ModelView):
             else:
                 res = default_uom.id
         return res
+
+    def write(self, cursor, user, ids, vals, context=None):
+        if vals.get("purchase_uom"):
+            templates = self.browse(cursor, user, ids, context=context)
+            for template in templates:
+                if not template.purchase_uom:
+                    continue
+                if template.purchase_uom.id == vals["purchase_uom"]:
+                    continue
+                for product in template.products:
+                    if not product.product_suppliers:
+                        continue
+                    self.raise_user_warning(
+                        cursor, user, '%s@product_template' % template.id,
+                        'change_purchase_uom')
+
+        super(Template, self).write(cursor, user, ids, vals, context=context)
 
 Template()
 
