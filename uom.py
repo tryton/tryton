@@ -161,6 +161,8 @@ class Uom(ModelSQL, ModelView):
         return super(Uom, self).create(cursor, user, values, context)
 
     def write(self, cursor, user, ids, values, context=None):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         if 'rate' in values or 'factor' in values or 'category' in values:
             uoms = self.browse(cursor, user, ids, context=context)
             for uom in uoms:
