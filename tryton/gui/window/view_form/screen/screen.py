@@ -544,7 +544,7 @@ class Screen(SignalEvent):
             self.current_view.set_cursor()
         self.request_set()
 
-    def display(self, res_id=None):
+    def display(self, res_id=None, set_cursor=False):
         if res_id:
             self.current_model = self.models[res_id]
         if self.views:
@@ -559,6 +559,8 @@ class Screen(SignalEvent):
                             or self.current_model))
             self.search_active(self.current_view.view_type \
                     in ('tree', 'graph', 'calendar'))
+            if set_cursor:
+                self.current_view.set_cursor(reset_view=False)
 
     def display_next(self):
         self.current_view.set_value()
