@@ -734,64 +734,6 @@ class Tax(ModelSQL, ModelView):
             row['amount'] *= quantity
         return res
 
-    def _process_tax_inv(self, cursor, user, tax, price_unit, context=None):
-        # base will be calculate when all taxes will be compute
-        if tax.type == 'percentage':
-            amount = price_unit - (price_unit / \
-                    (1 + (tax.percentage / Decimal('100'))))
-            return {
-                'base': price_unit,
-                'amount': amount,
-                'tax': tax,
-            }
-        if tax.type == 'fixed':
-            amount = tax.amount
-            return {
-                'base': price_unit,
-                'amount': amount,
-                'tax': tax,
-            }
-
-    def _unit_compute_inv(self, cursor, user, taxes, price_unit, context=None):
-        res = []
-        total_amount = Decimal('0.0')
-        for tax in taxes:
-            if tax.type != 'none':
-                res.append(self._process_tax_inv(cursor, user, tax, price_unit,
-                    context=context))
-                total_amount += res[-1]['amount']
-            if len(tax.childs):
-                tax.childs.reverse()
-                res_childs = self._unit_compute_inv(cursor, user, tax.childs,
-                    price_unit, context=context)
-                for res_child in res_childs:
-                    total_amount += res_child['amount']
-                res.extend(res_childs)
-        for row in res:
-            row['base'] -= total_amount
-        return res
-
-    def compute_inv(self, cursor, user, ids, price_unit, quantity,
-            context=None):
-        '''
-        Compute the inverse taxes for price_unit and quantity.
-        Return list of dict for each taxes and their childs with:
-            base
-            amount
-            tax
-        '''
-        ids = self.sort_taxes(cursor, user, ids, context=context)
-        taxes = self.browse(cursor, user, ids, context=context)
-        taxes.reverse()
-        res = self._unit_compute_inv(cursor, user, taxes, price_unit,
-                context=context)
-        res.reverse()
-        quantity = Decimal(str(quantity or 0.0))
-        for row in res:
-            row['base'] *= quantity
-            row['amount'] *= quantity
-        return res
-
     def update_tax(self, cursor, user, tax, template2tax_code,
             template2account, context=None, template2tax=None):
         '''
