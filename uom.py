@@ -45,6 +45,20 @@ class Uom(ModelSQL, ModelView):
     digits = fields.Integer('Display Digits')
     active = fields.Boolean('Active')
 
+    def __init__(self):
+        super(Uom, self).__init__()
+        self._sql_constraints += [
+            ('non_zero_rate_factor', 'CHECK((rate != 0.0) or (factor != 0.0))',
+                'Rate and factor can not be both equal to zero.')
+        ]
+        self._order.insert(0, ('name', 'ASC'))
+        self._error_messages.update({
+                'change_uom_rate_title':'You cannot change Rate, Factor or '\
+                    'Category on a Unit of Measure. ',
+                'change_uom_rate': 'If the UOM is still not used, you can '\
+                    'delete it ortherwise you can deactivate it and create a new one.'
+            })
+
     def check_xml_record(self, cursor, user, ids, values, context=None):
         return True
 
@@ -96,22 +110,6 @@ class Uom(ModelSQL, ModelView):
         if value.get('rate', 0.0) == 0.0:
             return {'factor': 0.0}
         return {'factor': round(1.0/value['rate'], 6)}
-
-
-    def __init__(self):
-        super(Uom, self).__init__()
-        self._sql_constraints += [
-            ('non_zero_rate_factor', 'CHECK((rate != 0.0) or (factor != 0.0))',
-                'Rate and factor can not be both equal to zero.')
-        ]
-        self._order.insert(0, ('name', 'ASC'))
-        self._error_messages.update({
-                'change_uom_rate_title':'You cannot change Rate, Factor or '\
-                    'Category on a Unit of Measure. ',
-                'change_uom_rate': 'If the UOM is still not used, you can '\
-                    'delete it ortherwise you can deactivate it and create a new one.'
-            })
-
 
     @staticmethod
     def round(number, precision=1.0):
