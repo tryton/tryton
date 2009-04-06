@@ -460,6 +460,7 @@ class Move(ModelSQL, ModelView):
                     vals['uom'], vals['unit_price'], vals['currency'],
                     vals['company'], context=context)
             if not vals.get('cost_price'):
+                # Re-read product to get the updated cost_price
                 product = product_obj.browse(cursor, user, vals['product'],
                                              context=context)
                 vals['cost_price'] = product.cost_price
