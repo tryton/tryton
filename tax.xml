@@ -263,7 +263,7 @@ this repository contains the full copyright notices and license terms. -->
                     <notebook colspan="4">
                         <page string="General Information" id="general">
                             <label name="group"/>
-                            <field name="group" widget="selection"/>
+                            <field name="group"/>
                             <label name="sequence"/>
                             <field name="sequence"/>
                             <label name="type"/>
@@ -367,7 +367,7 @@ this repository contains the full copyright notices and license terms. -->
                     <notebook colspan="4">
                         <page string="General Information" id="general">
                             <label name="group"/>
-                            <field name="group" widget="selection"/>
+                            <field name="group"/>
                             <label name="sequence"/>
                             <field name="sequence"/>
                             <label name="type"/>
@@ -494,11 +494,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="operator">=</field>
             <field name="operand">User/Current Company</field>
             <field name="rule_group" ref="rule_group_tax"/>
-        </record>
-
-        <record model="account.tax.group" id="tax_group_none">
-            <field name="name">None</field>
-            <field name="code">none</field>
         </record>
 
         <record model="ir.ui.view" id="tax_line_view_form">

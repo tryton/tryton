@@ -5,6 +5,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from decimal import Decimal
 from trytond.tools import Cache
+from trytond.backend import TableHandler
 
 
 class Group(ModelSQL, ModelView):
@@ -354,7 +355,7 @@ class TaxTemplate(ModelSQL, ModelView):
 
     name = fields.Char('Name', required=True, translate=True)
     description = fields.Char('Description', required=True, translate=True)
-    group = fields.Many2One('account.tax.group', 'Group', required=True)
+    group = fields.Many2One('account.tax.group', 'Group')
     sequence = fields.Integer('Sequence')
     amount = fields.Numeric('Amount', digits=(16, 2))
     percentage = fields.Numeric('Percentage', digits=(16, 8))
@@ -389,12 +390,12 @@ class TaxTemplate(ModelSQL, ModelView):
         self._order.insert(0, ('sequence', 'ASC'))
         self._order.insert(0, ('account', 'ASC'))
 
-    def default_group(self, cursor, user, context=None):
-        group_obj = self.pool.get('account.tax.group')
-        group_ids = group_obj.search(cursor, user, [
-            ('code', '=', 'none'),
-            ], limit=1, context=context)
-        return group_ids[0]
+    def init(self, cursor, module_name):
+        super(TaxTemplate, self).init(cursor, module_name)
+        table = TableHandler(cursor, self, module_name)
+
+        # Migration from 1.0 group is no more required
+        table.not_null_action('group', action='remove')
 
     def default_type(self, cursor, user, context=None):
         return 'percentage'
@@ -537,7 +538,7 @@ class Tax(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
     description = fields.Char('Description', required=True, translate=True,
             help="The name that will be used in reports")
-    group = fields.Many2One('account.tax.group', 'Group', required=True,
+    group = fields.Many2One('account.tax.group', 'Group',
             states={
                 'invisible': "locals().get('parent', True)",
             }, depends=['parent'])
@@ -621,15 +622,15 @@ class Tax(ModelSQL, ModelView):
         super(Tax, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
 
+    def init(self, cursor, module_name):
+        super(Tax, self).init(cursor, module_name)
+        table = TableHandler(cursor, self, module_name)
+
+        # Migration from 1.0 group is no more required
+        table.not_null_action('group', action='remove')
+
     def default_active(self, cursor, user, context=None):
         return True
-
-    def default_group(self, cursor, user, context=None):
-        group_obj = self.pool.get('account.tax.group')
-        group_ids = group_obj.search(cursor, user, [
-            ('code', '=', 'none'),
-            ], limit=1, context=context)
-        return group_ids[0]
 
     def default_type(self, cursor, user, context=None):
         return 'percentage'
@@ -994,7 +995,7 @@ class Rule(ModelSQL, ModelView):
         :param pattern: a dictonary with rule line field as key
                 and match value as value
         :param context: the context
-        :return: the tax id to use
+        :return: a list of the tax id to use or False
         '''
         tax_obj = self.pool.get('account.tax')
         rule_line_obj = self.pool.get('account.tax.rule.line')
@@ -1006,15 +1007,14 @@ class Rule(ModelSQL, ModelView):
             tax = tax_obj.browse(cursor, user, tax, context=context)
 
         pattern = pattern.copy()
-        pattern['group'] = tax.group.id
+        pattern['group'] = tax and tax.group.id or False
 
         for line in rule.lines:
             if rule_line_obj.match(cursor, user, line, pattern,
                     context=context):
-                if line.tax:
-                    return line.tax.id
-                return False
-        return tax.id
+                return rule_line_obj.get_taxes(cursor, user, line,
+                        context=context)
+        return [tax.id]
 
     def update_rule(self, cursor, user, rule, context=None, template2rule=None):
         '''
@@ -1052,7 +1052,7 @@ class RuleLineTemplate(ModelSQL, ModelView):
     _description = __doc__
     rule = fields.Many2One('account.tax.rule.template', 'Rule', required=True,
             ondelete='CASCADE')
-    group = fields.Many2One('account.tax.group', 'Tax Group', required=True)
+    group = fields.Many2One('account.tax.group', 'Tax Group')
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
             domain="[('account', '=', _parent_rule.account), " \
                     "('group', '=', group)]")
@@ -1138,7 +1138,7 @@ class RuleLine(ModelSQL, ModelView):
     _rec_name = 'tax'
     rule = fields.Many2One('account.tax.rule', 'Rule', required=True,
             select=1, ondelete='CASCADE')
-    group = fields.Many2One('account.tax.group', 'Tax Group', required=True)
+    group = fields.Many2One('account.tax.group', 'Tax Group')
     tax = fields.Many2One('account.tax', 'Substitution Tax',
             domain="[('company', '=', _parent_rule.company), " \
                     "('group', '=', group)]")
@@ -1166,7 +1166,7 @@ class RuleLine(ModelSQL, ModelView):
         for field in pattern.keys():
             if field not in self._columns:
                 continue
-            if not line[field]:
+            if not line[field] and field != 'group':
                 continue
             if self._columns[field]._type == 'many2one':
                 if line[field].id != pattern[field]:
@@ -1177,6 +1177,20 @@ class RuleLine(ModelSQL, ModelView):
                     res = False
                     break
         return res
+
+    def get_taxes(self, cursor, user, line, context=None):
+        '''
+        Return list of taxes for a line
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param line: a BrowseRecord of rule line
+        :param context: the context
+        :return: a list of tax id
+        '''
+        if line.tax:
+            return [line.tax.id]
+        return False
 
     def update_rule_line(self, cursor, user, rule_line, template2tax,
             template2rule, context=None, template2rule_line=None):
