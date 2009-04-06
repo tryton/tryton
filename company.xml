@@ -134,7 +134,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_delete" evel="True"/>
+            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="user_view_form">
