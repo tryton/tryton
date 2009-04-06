@@ -39,6 +39,13 @@ class Template(ModelSQL, ModelView):
     products = fields.One2Many('product.product', 'template', 'Products',
             states=STATES)
 
+    def __init__(self):
+        super(Template, self).__init__()
+        self._error_messages.update({
+                'change_default_uom': 'You cannot change the default uom for a '\
+                    'product which is associated to stock moves.',
+            })
+
     def default_active(self, cursor, user, context=None):
         return True
 
@@ -65,6 +72,15 @@ class Template(ModelSQL, ModelView):
             for product in self.browse(cursor, user, ids, context=context):
                 res[product.id] = product[field]
         return res
+
+    def write(self, cursor, user, ids, vals, context=None):
+        if vals.get("default_uom"):
+            templates = self.browse(cursor, user, ids, context=context)
+            for template in templates:
+                if template.default_uom.id != vals.get("default_uom"):
+                    self.raise_user_error(cursor, 'change_default_uom')
+
+        super(Template, self).write(cursor, user, ids, vals, context=context)
 
     def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
