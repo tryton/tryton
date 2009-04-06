@@ -388,7 +388,7 @@ help,"account.tax,amount",0,In company's currency,In der Währung des Unternehme
 help,"account.tax,credit_note_account",0,Leave empty to use the default credit_note account,Leer lassen für Standardkonto für Gutschriften,0
 help,"account.tax,credit_note_base_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax,credit_note_tax_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
-help,"account.tax,description",0,The name that will be used in reports,Der Name wird in Berichten verwendet,0
+help,"account.tax,description",0,The name that will be used in reports,Dieser Name wird in Berichten verwendet,0
 help,"account.tax,invoice_account",0,Leave empty to use the default invoice account,"Leer lassen, wenn das Standardrechnungskonto zum Zug kommen soll",0
 help,"account.tax,invoice_base_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
@@ -448,7 +448,7 @@ model,"account.journal,name",0,Journal,Journal,0
 model,"account.journal,name",journal_revenue,Revenue,Ertrag,0
 model,"account.journal,name",journal_stock,Stock,Lager,0
 model,"account.journal.period,name",0,Journal - Period,Journal Buchungszeitraum,0
-model,"account.journal.type,name",journal_type_cash,Cash,Zahlung,0
+model,"account.journal.type,name",journal_type_cash,Cash,Kasse,0
 model,"account.journal.type,name",journal_type_expense,Expense,Aufwand,0
 model,"account.journal.type,name",journal_type_general,General,Allgemein,0
 model,"account.journal.type,name",0,Journal Type,Journal Typ,0
@@ -458,7 +458,7 @@ model,"account.journal.view.column,name",0,Journal View Column,Journal Sicht Spa
 model,"account.journal.view,name",0,Journal View,Journal Sicht,0
 model,"account.move.line,name",0,Account Move Line,Buchungszeile,0
 model,"account.move,name",0,Account Move,Buchung,0
-model,"account.move.open_journal.ask,name",0,Open Journal Ask,Journal Öffnen Nachfrage,0
+model,"account.move.open_journal.ask,name",0,Open Journal Ask,Dialogbuchen Nachfrage,0
 model,"account.move.open_reconcile_lines.init,name",0,Open Reconcile Lines Init,Abgestimmte Buchungszeilen Öffnen Init,0
 model,"account.move.print_general_journal.init,name",0,Print General Journal Init,Druck Allgemeines Journal Init,0
 model,"account.move.reconcile_lines.writeoff,name",0,Reconcile Lines Write-Off,Abstimmung Buchungszeilen Ausbuchung,0
@@ -507,7 +507,7 @@ model,"ir.action,name",wizard_open_balance_sheet,Open Balance Sheet,Bilanzbogen 
 model,"ir.action,name",act_open_chart_account,Open Chart of Accounts,Kontenplan öffnen,0
 model,"ir.action,name",act_open_chart_code,Open Chart of Tax Codes,Tabelle Steuerkennziffern öffnen,0
 model,"ir.action,name",wizard_open_income_statement,Open Income Statement,Gewinn- und Verlustrechnung öffnen,0
-model,"ir.action,name",act_open_journal,Open Journal,Journal öffnen,0
+model,"ir.action,name",act_open_journal,Open Journal,Dialogbuchen,0
 model,"ir.action,name",act_open_account,Open Move Account,Buchung Konto öffnen,0
 model,"ir.action,name",act_open_reconcile_lines,Open Reconcile Lines,Abgestimmte Buchungszeilen öffnen,0
 model,"ir.action,name",act_open_tax_code,Open Tax Code,Steuerkennziffer öffnen,0
@@ -555,7 +555,7 @@ model,"ir.ui.menu,name",menu_journal_period_form,Close Journals - Periods,Journa
 model,"ir.ui.menu,name",menu_period_form2,Close Periods,Buchungszeiträume abschließen,0
 model,"ir.ui.menu,name",menu_account_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_create_chart_account,Create Chart of Account from Template,Kontenplan von Vorlage erstellen,0
-model,"ir.ui.menu,name",menu_entries,Entries,Einträge,0
+model,"ir.ui.menu,name",menu_entries,Entries,Erfassung,0
 model,"ir.ui.menu,name",menu_account,Financial Management,Buchhaltung,0
 model,"ir.ui.menu,name",menu_fiscalyear_configuration,Fiscal Years,Geschäftsjahre,0
 model,"ir.ui.menu,name",menu_fiscalyear_form,Fiscal Years,Geschäftsjahre,0
@@ -569,14 +569,14 @@ model,"ir.ui.menu,name",menu_journal_type_form,Journal Types,Journaltypen,0
 model,"ir.ui.menu,name",menu_journal_view_form,Journal Views,Journal Ansichten,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Accounts,Kontenplan öffnen,0
 model,"ir.ui.menu,name",menu_open_chart_code,Open Chart of Tax Codes,Tabelle Steuerkennziffern öffnen,0
-model,"ir.ui.menu,name",menu_open_journal,Open Journal,Journal öffnen,0
+model,"ir.ui.menu,name",menu_open_journal,Open Journal,Dialogbuchen,0
 model,"ir.ui.menu,name",menu_period_form,Periods,Buchungszeiträume,0
 model,"ir.ui.menu,name",menu_print_general_journal,Print General Journal,Journal Allgemein drucken,0
 model,"ir.ui.menu,name",menu_print_general_ledger,Print General Legder,Kontenblätter drucken,0
 model,"ir.ui.menu,name",menu_print_trial_balance,Print Trial Balance,Summen- und Saldenliste drucken,0
-model,"ir.ui.menu,name",menu_processing,Processing,Bearbeitung,0
+model,"ir.ui.menu,name",menu_processing,Processing,Abschlüsse,0
 model,"ir.ui.menu,name",menu_open_reconcile_lines,Reconcile Lines,Buchungszeilen abstimmen,0
-model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Auswertungen,0
 model,"ir.ui.menu,name",menu_tax_code_form,Tax Codes,Steuerkennziffern,0
 model,"ir.ui.menu,name",menu_tax_code_tree,Tax Codes,Steuerkennziffern,0
 model,"ir.ui.menu,name",menu_tax_code_template_tree,Tax Codes Templates,Vorlagen für Steuerkennziffern,0
@@ -767,7 +767,7 @@ view,account.move.line,0,Credit,Haben,0
 view,account.move.line,0,Debit,Soll,0
 view,account.move.line,0,General Information,Allgemein,0
 view,account.move.line,0,Optional Information,Zusatzinfo,0
-view,account.move.open_journal.ask,0,Open Journal,Journal öffnen,0
+view,account.move.open_journal.ask,0,Open Journal,Dialogbuchen,0
 view,account.move.open_reconcile_lines.init,0,Open Reconcile Lines,Abgestimmte Buchungszeilen öffnen,0
 view,account.move.print_general_journal.init,0,Print General Journal,Journal Allgemein drucken,0
 view,account.move.reconcile_lines.writeoff,0,Write-Off,Ausbuchung,0
