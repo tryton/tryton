@@ -5,7 +5,7 @@ from trytond.model.modelstorage import OPERATORS
 from decimal import Decimal
 
 STATES = {
-    'readonly': "active == False",
+    'readonly': "(active == False)",
 }
 
 class UomCategory(ModelSQL, ModelView):
@@ -44,10 +44,6 @@ class Uom(ModelSQL, ModelView):
             required=True, states=STATES)
     digits = fields.Integer('Display Digits')
     active = fields.Boolean('Active')
-
-    def __init__(self):
-        super(Uom, self).__init__()
-        self._order.insert(0, ('name', 'ASC'))
 
     def check_xml_record(self, cursor, user, ids, values, context=None):
         return True
@@ -108,6 +104,13 @@ class Uom(ModelSQL, ModelView):
             ('non_zero_rate_factor', 'CHECK((rate != 0.0) or (factor != 0.0))',
                 'Rate and factor can not be both equal to zero.')
         ]
+        self._order.insert(0, ('name', 'ASC'))
+        self._error_messages.update({
+                'change_uom_rate_title':'You cannot change Rate, Factor or '\
+                    'Category on a Unit of Measure. ',
+                'change_uom_rate': 'If the UOM is still not used, you can '\
+                    'delete it ortherwise you can deactivate it and create a new one.'
+            })
 
 
     @staticmethod
@@ -160,7 +163,15 @@ class Uom(ModelSQL, ModelView):
         return super(Uom, self).create(cursor, user, values, context)
 
     def write(self, cursor, user, ids, values, context=None):
-        values = self.check_factor_and_rate(values)
+        if 'rate' in values or 'factor' in values or 'category' in values:
+            uoms = self.browse(cursor, user, ids, context=context)
+            for uom in uoms:
+                if ('rate' in values and values['rate'] != uom.factor) \
+                        or ('factor' in values and values['factor'] != uom.rate) \
+                        or ('category' in values and values['category'] != uom.category.id):
+                    self.raise_user_error(cursor, 'change_uom_rate_title',
+                                          error_description='change_uom_rate')
+
         return super(Uom, self).write(cursor, user, ids, values, context)
 
     def compute_qty(self, cursor, user, from_uom, qty, to_uom=False,
