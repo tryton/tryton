@@ -1663,6 +1663,53 @@ class Invoice(ModelSQL, ModelView):
 Invoice()
 
 
+class OpenCustomer(Wizard):
+    'Open Customers'
+    _name = 'sale.open_customer'
+    states = {
+        'init': {
+            'result': {
+                'type': 'action',
+                'action': '_action_open',
+                'state': 'end',
+            },
+        },
+    }
+
+    def _action_open(self, cursor, user, datas, context=None):
+        model_data_obj = self.pool.get('ir.model.data')
+        act_window_obj = self.pool.get('ir.action.act_window')
+        wizard_obj = self.pool.get('ir.action.wizard')
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_party_form'),
+            ('module', '=', 'party'),
+            ('inherit', '=', False),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        res = act_window_obj.read(cursor, user, model_data.db_id,
+                context=context)
+        cursor.execute("SELECT DISTINCT(party) FROM sale_sale")
+        customer_ids = [line[0] for line in cursor.fetchall()]
+        res['domain'] = str([('id', 'in', customer_ids)])
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', '=', 'act_open_customer'),
+            ('module', '=', 'sale'),
+            ('inherit', '=', False),
+            ], limit=1, context=context)
+        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+                context=context)
+        wizard = wizard_obj.browse(cursor, user, model_data.db_id,
+                context=context)
+
+        res['name'] = wizard.name
+        return res
+
+OpenCustomer()
+
+
 class HandlePackingExceptionAsk(ModelView):
     'Shipment Exception Ask'
     _name = 'sale.handle.packing.exception.ask'
