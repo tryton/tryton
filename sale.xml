@@ -905,6 +905,16 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
+        <record model="ir.action.wizard" id="act_open_customer">
+            <field name="name">Customers</field>
+            <field name="wiz_name">sale.open_customer</field>
+        </record>
+        <menuitem name="Customers"
+            parent="party.menu_party_form"
+            action="act_open_customer"
+            icon="tryton-list"
+            id="menu_customer"/>
+
         <record model="ir.rule.group" id="rule_group_sale">
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
             <field name="global_p" eval="True"/>
