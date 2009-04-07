@@ -696,7 +696,7 @@ class Reference(Char):
                 except Exception, exception:
                     common.process_exception(exception, self.window)
                     name = '???'
-            return self._selection[model] + ',' + name
+            return self._selection.get(model, model) + ',' + name
         else:
             return ''
 
