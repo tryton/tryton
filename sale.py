@@ -621,7 +621,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     def search_rec_name(self, cursor, user, name, args, context=None):
         args2 = []
         i = 0
-        while i < lend(args):
+        while i < len(args):
             names = args[i][2].split(' - ', 1)
             args2.append(('reference', args[i][1], names[0]))
             if len(names) != 1 and names[1]:
