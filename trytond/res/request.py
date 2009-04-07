@@ -174,8 +174,11 @@ class RequestLink(OSV):
         return 5
 
     def models_get(self, cursor, user, context=None):
-        cursor.execute('SELECT model, name FROM ir_model ORDER BY name ASC')
-        res = cursor.fetchall()
+        model_obj = self.pool.get('ir.model')
+        model_ids = model_obj.search(cursor, user, [], context=context)
+        res = []
+        for model in model_obj.browse(cursor, user, model_ids, context=context):
+            res.append((model.model, model.name))
         return res
 
 RequestLink()
