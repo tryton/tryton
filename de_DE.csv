@@ -467,7 +467,7 @@ model,"account.move.unreconcile_lines.init,name",0,Unreconcile Lines Init,Abstim
 model,"account.period,name",0,Period,Buchungszeitraum,0
 model,"account.tax.code,name",0,Tax Code,Steuer Kennziffer,0
 model,"account.tax.code.template,name",0,Tax Code Template,Steuer Kennziffer Vorlage,0
-model,"account.tax.group,name",tax_group_none,None,Keine,0
+model,"account.tax.group,name",None,Keine,0
 model,"account.tax.group,name",0,Tax Group,Steuer Gruppe,0
 model,"account.tax.line,name",0,Tax Line,Steuer Zeile,0
 model,"account.tax,name",0,Account Tax,Konto Steuer,0
@@ -574,7 +574,7 @@ model,"ir.ui.menu,name",menu_period_form,Periods,Buchungszeiträume,0
 model,"ir.ui.menu,name",menu_print_general_journal,Print General Journal,Journal Allgemein drucken,0
 model,"ir.ui.menu,name",menu_print_general_ledger,Print General Legder,Kontenblätter drucken,0
 model,"ir.ui.menu,name",menu_print_trial_balance,Print Trial Balance,Summen- und Saldenliste drucken,0
-model,"ir.ui.menu,name",menu_processing,Processing,Abschlüsse,0
+model,"ir.ui.menu,name",menu_processing,Processing,Abschlussarbeiten,0
 model,"ir.ui.menu,name",menu_open_reconcile_lines,Reconcile Lines,Buchungszeilen abstimmen,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Auswertungen,0
 model,"ir.ui.menu,name",menu_tax_code_form,Tax Codes,Steuerkennziffern,0
