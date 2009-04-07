@@ -15,7 +15,7 @@ class Default(OSV):
     model = fields.Many2One('ir.model', 'Model', required=True,
        ondelete='cascade')
     field = fields.Many2One('ir.model.field', 'Field', required=True,
-       ondelete='cascade')
+       ondelete='cascade', domain="[('model', '=', model)]")
     value = fields.Text('Value')
     clause = fields.Text('Clause')
     user = fields.Many2One('res.user', 'User', ondelete='cascade')
@@ -78,6 +78,7 @@ class Default(OSV):
             ], context=context)[0]
         field_id = field_obj.search(cursor, user, [
             ('name', '=', field),
+            ('model', '=', model_id),
             ], context=context)[0]
         default_ids = self.search(cursor, user, [
             ('model', '=', model_id),
