@@ -117,43 +117,15 @@ class Uom(ModelSQL, ModelView):
 
     @staticmethod
     def check_factor_and_rate(values):
-        factor = None
-        rate = None
-        if ('factor' not in values) and ('rate' not in values):
-            return values
-        elif 'factor' in values and 'rate' in values:
-            if values['rate'] == 0.0 and values['factor'] == 0.0:
-                return values
-            elif values['factor'] != 0.0 and \
-                    values['rate'] != 0.0:
-                if values['rate'] == round(1.0/values['factor'], 6) or \
-                        values['factor'] == round(1.0/values['rate'], 6):
-                    return values
-                else:
-                    factor = round(1.0/values['rate'], 6)
-            elif values['rate'] != 0.0 and \
-                    values['factor'] != round(1.0/values['rate'], 6):
-                factor = round(1.0/values['rate'], 6)
-            elif values['factor'] != 0.0 and \
-                    values['rate'] != round(1.0/values['factor'], 6):
-                rate = round(1.0/values['factor'], 6)
-            else:
-                return values
-        elif 'rate' in values:
-            if values['rate'] != 0.0:
-                factor = round(1.0/values['rate'], 6)
-            else:
-                factor = 0.0
-        elif 'factor' in values:
-            if values['factor'] != 0.0:
-                rate = round(1.0/values['factor'], 6)
-            else:
-                rate = 0.0
 
-        if rate != None or factor != None:
-            values = values.copy()
-            if rate != None: values['rate'] = rate
-            if factor != None: values['factor'] = factor
+        if values.get('factor', 0.0) == values.get('rate', 0.0) == 0.0:
+            return values
+
+        if abs(values.get('factor', 0.0)) > abs(values.get('rate', 0.0)):
+            values['rate'] = 1.0 / values['factor']
+        else:
+            values['factor'] = 1.0 / values['rate']
+
         return values
 
     def create(self, cursor, user, values, context=None):
@@ -161,18 +133,32 @@ class Uom(ModelSQL, ModelView):
         return super(Uom, self).create(cursor, user, values, context)
 
     def write(self, cursor, user, ids, values, context=None):
+        if user == 0:
+            values = self.check_factor_and_rate(values)
+            return super(Uom, self).write(cursor, user, ids, values, context)
+        if 'rate' not in values and 'factor' not in values \
+                and 'category' not in values:
+            return super(Uom, self).write(cursor, user, ids, values, context)
+
         if isinstance(ids, (int, long)):
             ids = [ids]
-        if 'rate' in values or 'factor' in values or 'category' in values:
-            uoms = self.browse(cursor, user, ids, context=context)
-            for uom in uoms:
-                if (round(values.get('rate', uom.rate), 6) != round(uom.rate, 6)) \
-                        or (round(values.get('factor', uom.factor), 6) != round(uom.factor, 6)) \
-                        or ('category' in values and values['category'] != uom.category.id):
-                    self.raise_user_error(cursor, 'change_uom_rate_title',
-                                          error_description='change_uom_rate')
 
-        return super(Uom, self).write(cursor, user, ids, values, context)
+        uoms = self.browse(cursor, user, ids, context=context)
+        old_uom = dict((uom.id, (uom.factor, uom.rate, uom.category.id)) \
+                           for uom in uoms)
+
+        values = self.check_factor_and_rate(values)
+        res = super(Uom, self).write(cursor, user, ids, values, context)
+        uoms = self.browse(cursor, user, ids, context=context)
+
+        for uom in uoms:
+            if uom.factor != old_uom[uom.id][0] \
+                    or uom.rate != old_uom[uom.id][1] \
+                    or uom.category.id != old_uom[uom.id][2]:
+
+                self.raise_user_error(cursor, 'change_uom_rate_title',
+                                      error_description='change_uom_rate')
+        return res
 
     def compute_qty(self, cursor, user, from_uom, qty, to_uom=False,
                     round=True, context=None):
