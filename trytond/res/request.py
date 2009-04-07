@@ -35,10 +35,11 @@ class Request(OSV):
     act_from = fields.Many2One('res.user', 'From', required=True,
        readonly=True)
     act_to = fields.Many2One('res.user', 'To', required=True,
-       states={
-           'readonly': "(state in ('waiting', 'closed')) or " \
-                   "(state == 'chatting' and act_from != _user)",
-           })
+            domain=[('active', '=', True)],
+            states={
+                'readonly': "(state in ('waiting', 'closed')) or " \
+                        "(state == 'chatting' and act_from != _user)",
+                })
     body = fields.Text('Body', states={
        'readonly': "(state in ('waiting', 'closed')) or " \
                "(state == 'chatting' and act_from != _user)",
