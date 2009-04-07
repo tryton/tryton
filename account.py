@@ -17,7 +17,7 @@ class TypeTemplate(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', required=True, translate=True)
     parent = fields.Many2One('account.account.type.template', 'Parent',
-            ondelete="restrict")
+            ondelete="RESTRICT")
     childs = fields.One2Many('account.account.type.template', 'parent', 'Children')
     sequence = fields.Integer('Sequence', required=True)
     balance_sheet = fields.Boolean('Balance Sheet')
@@ -131,7 +131,7 @@ class Type(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, translate=True)
     parent = fields.Many2One('account.account.type', 'Parent',
-            ondelete="restrict")
+            ondelete="RESTRICT")
     childs = fields.One2Many('account.account.type', 'parent', 'Children')
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
@@ -146,7 +146,7 @@ class Type(ModelSQL, ModelView):
         ('credit-debit', 'Credit - Debit'),
         ], 'Display Balance', required=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-            ondelete="restrict")
+            ondelete="RESTRICT")
     template = fields.Many2One('account.account.type.template', 'Template')
 
     def __init__(self):
@@ -270,13 +270,13 @@ class AccountTemplate(ModelSQL, ModelView):
             select=1)
     code = fields.Char('Code', size=None, select=1)
     type = fields.Many2One('account.account.type.template', 'Type',
-            ondelete="restrict",
+            ondelete="RESTRICT",
             states={
                 'invisible': "kind == 'view'",
                 'required': "kind != 'view'",
             }, depends=['kind'])
     parent = fields.Many2One('account.account.template', 'Parent', select=1,
-            ondelete="restrict")
+            ondelete="RESTRICT")
     childs = fields.One2Many('account.account.template', 'parent', 'Children')
     reconcile = fields.Boolean('Reconcile',
             states={
@@ -473,21 +473,21 @@ class Account(ModelSQL, ModelView):
     code = fields.Char('Code', size=None, select=1)
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True,
-            ondelete="restrict")
+            ondelete="RESTRICT")
     currency = fields.Function('get_currency', type='many2one',
             relation='currency.currency', string='Currency')
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits')
     second_currency = fields.Many2One('currency.currency', 'Secondary currency',
             help='Force all moves for this account \n' \
-                    'to have this secondary currency.', ondelete="restrict")
-    type = fields.Many2One('account.account.type', 'Type', ondelete="restrict",
+                    'to have this secondary currency.', ondelete="RESTRICT")
+    type = fields.Many2One('account.account.type', 'Type', ondelete="RESTRICT",
             states={
                 'invisible': "kind == 'view'",
                 'required': "kind != 'view'",
             }, depends=['kind'])
     parent = fields.Many2One('account.account', 'Parent', select=1,
-            left="left", right="right", ondelete="restrict")
+            left="left", right="right", ondelete="RESTRICT")
     left = fields.Integer('Left', required=True, select=1)
     right = fields.Integer('Right', required=True, select=1)
     childs = fields.One2Many('account.account', 'parent', 'Children')
