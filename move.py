@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 "Move"
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.backend import TableHandler
 from decimal import Decimal
 import datetime
 
@@ -38,15 +39,17 @@ class Move(ModelSQL, ModelView):
             domain="[('type', 'not in', " \
                     "('warehouse', 'view'))]")
     packing_in = fields.Many2One('stock.packing.in', 'Supplier Shipment',
-            readonly=True, select=1)
+            readonly=True, select=1, ondelete='CASCADE')
     packing_out = fields.Many2One('stock.packing.out', 'Customer Shipment',
-            readonly=True, select=1)
+            readonly=True, select=1, ondelete='CASCADE')
     packing_out_return = fields.Many2One('stock.packing.out.return',
-            'Customer Return Shipment', readonly=True, select=1)
+            'Customer Return Shipment', readonly=True, select=1,
+            ondelete='CASCADE')
     packing_in_return = fields.Many2One('stock.packing.in.return',
-            'Supplier Return Shipment', readonly=True, select=1)
+            'Supplier Return Shipment', readonly=True, select=1,
+            ondelete='CASCADE')
     packing_internal = fields.Many2One('stock.packing.internal',
-            'Internal Shipment', readonly=True, select=1)
+            'Internal Shipment', readonly=True, select=1, ondelete='CASCADE')
     planned_date = fields.Date("Planned Date", states=STATES, select=2)
     effective_date = fields.Date("Effective Date", readonly=True, select=2)
     state = fields.Selection([
@@ -84,10 +87,18 @@ class Move(ModelSQL, ModelView):
             ('check_from_to_locations',
                 'CHECK(from_location != to_location)',
                 'Source and destination location must be different'),
-            ('check_packing_in_out',
-                'CHECK(NOT(packing_in IS NOT NULL ' \
-                        'AND packing_out IS NOT NULL))',
-                'Move can not be in both Supplier and Customer Shipment'),
+            ('check_packing',
+                'CHECK((COALESCE(packing_in, 0) / COALESCE(packing_in, 1) ' \
+                        '+ COALESCE(packing_out, 0) / ' \
+                            'COALESCE(packing_out, 1) ' \
+                        '+ COALESCE(packing_internal, 0) / ' \
+                            'COALESCE(packing_internal, 1) ' \
+                        '+ COALESCE(packing_in_return, 0) / ' \
+                            'COALESCE(packing_in_return, 1) ' \
+                        '+ COALESCE(packing_out_return, 0) / ' \
+                            'COALESCE(packing_out_return, 1)) ' \
+                        '<= 1)',
+                'Move can be on only one Shipment'),
         ]
         self._constraints += [
             ('check_product_type', 'service_product'),
@@ -100,6 +111,14 @@ class Move(ModelSQL, ModelView):
             'del_draft_cancel': 'You can only delete draft or cancelled moves!',
             'service_product': 'You can not use service products for a move!',
             })
+
+    def init(self, cursor, module_name):
+        super(Move, self).init(cursor, module_name)
+
+        table  = TableHandler(cursor, self, module_name)
+
+        # Migration from 1.0 check_packing_in_out has been removed
+        table.drop_constraint('check_packing_in_out')
 
     def default_planned_date(self, cursor, user, context=None):
         if context and context.get('planned_date'):
