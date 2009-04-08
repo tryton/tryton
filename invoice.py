@@ -1175,8 +1175,10 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         elif invoice.type == 'in_credit_note':
             res['type'] = 'in_invoice'
 
-        for field in ('reference', 'description', 'comment'):
+        for field in ('description', 'comment'):
             res[field] = invoice[field]
+
+        res['reference'] = invoice.number or invoice.reference
 
         for field in ('company', 'party', 'invoice_address', 'currency',
                 'journal', 'account', 'payment_term'):
