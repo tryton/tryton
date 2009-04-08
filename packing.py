@@ -428,6 +428,8 @@ class PackingInReturn(ModelWorkflow, ModelSQL, ModelView):
                     return False
                 pbl[(move.from_location.id, move.product.id)] = \
                     pbl[(move.from_location.id, move.product.id)] - qty_default_uom
+            else:
+                return False
 
         move_obj.write(cursor, user, [m.id for m in packing.moves],
                        {'state': 'assigned'}, context=context)
