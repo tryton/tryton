@@ -285,7 +285,6 @@ class OpenProduct(Wizard):
     def _action_open_product(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        product_obj = self.pool.get('product.product')
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_product_by_location'),
