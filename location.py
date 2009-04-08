@@ -304,11 +304,6 @@ class OpenProduct(Wizard):
             context['stock_date_end'] = datetime.date.max
         res['context'] = str(context)
 
-        domain = eval(res['domain'])
-        product_ids = product_obj.search(
-            cursor, user, domain + [('quantity', '!=', 0.0)], context=context)
-        res['domain'] = str(domain  + [('id', 'in', product_ids)])
-
         return res
 
 OpenProduct()
