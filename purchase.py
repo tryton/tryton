@@ -7,6 +7,7 @@ from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from decimal import Decimal
 import datetime
+import copy
 
 _STATES = {
     'readonly': "state != 'draft'",
@@ -1526,9 +1527,12 @@ class PackingIn(ModelSQL, ModelView):
 
     def __init__(self):
         super(PackingIn, self).__init__()
-        self.incoming_moves.add_remove = "[" + \
-                self.incoming_moves.add_remove + ", " \
-                "('supplier', '=', supplier)]"
+        self.incoming_moves = copy.copy(self.incoming_moves)
+        if "('supplier', '=', supplier)" not in self.incoming_moves.add_remove:
+            self.incoming_moves.add_remove = "[" + \
+                    self.incoming_moves.add_remove + ", " \
+                    "('supplier', '=', supplier)]"
+        self._reset_columns()
 
         self._error_messages.update({
                 'reset_move': 'You cannot reset to draft a move generated '\
