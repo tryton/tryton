@@ -400,6 +400,7 @@ class PackingInReturn(ModelWorkflow, ModelSQL, ModelView):
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
         date_obj = self.pool.get('ir.date')
+        move_obj = self.pool.get('stock.move')
 
         packing = self.browse(cursor, user, packing_id, context=context)
 
