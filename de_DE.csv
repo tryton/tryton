@@ -467,6 +467,7 @@ model,"account.move.unreconcile_lines.init,name",0,Unreconcile Lines Init,Abstim
 model,"account.period,name",0,Period,Buchungszeitraum,0
 model,"account.tax.code,name",0,Tax Code,Steuer Kennziffer,0
 model,"account.tax.code.template,name",0,Tax Code Template,Steuer Kennziffer Vorlage,0
+model,"account.tax.group,name",None,Keine,0
 model,"account.tax.group,name",0,Tax Group,Steuer Gruppe,0
 model,"account.tax.line,name",0,Tax Line,Steuer Zeile,0
 model,"account.tax,name",0,Account Tax,Konto Steuer,0
