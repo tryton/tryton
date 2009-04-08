@@ -8,6 +8,7 @@ import datetime
 from trytond.netsvc import LocalService
 from trytond.report import CompanyReport
 from trytond.wizard import Wizard
+import copy
 
 _STATES = {
     'readonly': "state != 'draft'",
@@ -1358,9 +1359,12 @@ class PackingIn(OSV):
 
     def __init__(self):
         super(PackingIn, self).__init__()
-        self.incoming_moves.add_remove = "[" + \
-                self.incoming_moves.add_remove + ", " \
-                "('supplier', '=', supplier)]"
+        self.incoming_moves = copy.copy(self.incoming_moves)
+        if "('supplier', '=', supplier)" not in self.incoming_moves.add_remove:
+            self.incoming_moves.add_remove = "[" + \
+                    self.incoming_moves.add_remove + ", " \
+                    "('supplier', '=', supplier)]"
+        self._reset_columns()
 
     def write(self, cursor, user, ids, vals, context=None):
         workflow_service = LocalService('workflow')
