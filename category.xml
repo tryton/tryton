@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">product.category</field>
             <field name="type">tree</field>
             <field name="priority">20</field>
-            <field name="field_childs">children</field>
+            <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Product Categories">
