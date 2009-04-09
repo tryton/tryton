@@ -14,6 +14,8 @@
 ''',
     'description_es_ES': '''Histórico de Facturación a nivel de campos
 ''',
+    'description_fr_FR': '''Ajoute l'historisation au champs de la facture.
+''',
     'depends': [
         'account_invoice',
         'party',
@@ -23,5 +25,6 @@
     'translation': [
         'de_DE.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ]
 }
