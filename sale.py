@@ -1458,7 +1458,7 @@ class Move(OSV):
             for sale_id in sale_ids:
                 workflow_service.trg_validate(user, 'sale.sale',
                         sale_id, 'packing_update', cursor, context=context)
-         return res
+        return res
 
 Move()
 
