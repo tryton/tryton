@@ -166,7 +166,7 @@ selection,"product.template,cost_price_method",0,Fixed,Fix,0
 selection,"product.template,type",0,Consumable,Verbrauchsmaterial,0
 selection,"product.template,type",0,Service,Dienstleistung,0
 selection,"product.template,type",0,Stockable,Lagerware,0
-view,product.category,0,Childs,Untergeordnet (Kategorien),0
+view,product.category,0,Children,Untergeordnet (Kategorien),0
 view,product.category,0,Product Categories,Artikelkategorien,0
 view,product.category,0,Product Category,Artikelkategorie,0
 view,product.product,0,General,Allgemein,0

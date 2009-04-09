@@ -133,7 +133,7 @@ selection,"product.template,cost_price_method",0,Fixed,Fijo,0
 selection,"product.template,type",0,Consumable,Consumible,0
 selection,"product.template,type",0,Service,Servicios,0
 selection,"product.template,type",0,Stockable,Almacenable,0
-view,product.category,0,Childs,Hij@s,0
+view,product.category,0,Children,Hij@s,0
 view,product.category,0,Product Categories,Categorías de Producto,0
 view,product.category,0,Product Category,Categoría de Producto,0
 view,product.product,0,General,General,0

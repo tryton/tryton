@@ -1,5 +1,8 @@
 type,name,res_id,src,value,fuzzy
-error,product.uom,0,Rate and factor can not be both equal to zero.,Le taux et le facteur ne peuventt pas être égal à zéro.,0
+error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,Vous ne pouvez pas changer l'UDM par défaut pour un produit qui a déjà fait l'objet de mouvements de stock,0
+error,product.uom,0,"If the UOM is still not used, you can delete it ortherwise you can deactivate it and create a new one.","Si l'UDM n'est pas utilisée, vous pouvez la supprimer, sinon vous pouvez la désactiver et en créer une noouvelle.",0
+error,product.uom,0,Rate and factor can not be both equal to zero.,Le taux et le facteur ne peuventt pas être égaux à zéro.,0
+error,product.uom,0,"You cannot change Rate, Factor or Category on a Unit of Measure. ","Vous ne pouvez pas changer le taux, le facteur ou la catégorie d'une unité de mesure.",0
 field,"product.category,childs",0,Children,Enfants,0
 field,"product.category,name",0,Name,Nom,0
 field,"product.category,parent",0,Parent,Parent,0
@@ -7,7 +10,7 @@ field,"product.category,rec_name",0,Name,Nom,0
 field,"product.product,code",0,Code,Code,0
 field,"product.product,description",0,Description,Description,0
 field,"product.product,rec_name",0,Name,Nom,0
-field,"product.product,template",0,Product Template,Modèle Produit,0
+field,"product.product,template",0,Product Template,Modèle produit,0
 field,"product.template,active",0,Active,Actif,0
 field,"product.template,category",0,Category,Catégorie,0
 field,"product.template,cost_price",0,Cost Price,Prix de Revient,0
@@ -39,17 +42,18 @@ help,"product.uom,rate",0,"The coefficient for the formula:
 1 (base unit) = coef (this unit)","Le coefficient pour la formule:
 1 (unité de base) = coef (cette unité)",0
 model,"ir.action,name",act_category_tree,Categories,Catégories,0
-model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Catégories d'Unité de Mesure,0
-model,"ir.action,name",act_category_form,Product Categories,Catégories de Produit,0
+model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Catégories d'unité de mesure,0
+model,"ir.action,name",act_product_by_category,Product by Category,Produits par catégories,0
+model,"ir.action,name",act_category_form,Product Categories,Catégories de produit,0
 model,"ir.action,name",act_product_form,Products,Produits,0
 model,"ir.action,name",act_product_form2,Products,Produits,0
-model,"ir.action,name",act_uom_form,Units of Measure,Unités de Mesure,0
-model,"ir.action,name",act_uom_form2,Units of Measure,Unités de Mesure,0
+model,"ir.action,name",act_uom_form,Units of Measure,Unités de mesure,0
+model,"ir.action,name",act_uom_form2,Units of Measure,Unités de mesure,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Catégories,0
 model,"ir.ui.menu,name",menu_uom_category_form,Categories,Catégories,0
-model,"ir.ui.menu,name",menu_category_form,Edit Categories,Éditer les Catégories,0
+model,"ir.ui.menu,name",menu_category_form,Edit Categories,Éditer les catégories,0
 model,"ir.ui.menu,name",menu_product_product_new,New Product,Nouveau Produit,0
-model,"ir.ui.menu,name",menu_uom_form2,New Unit of Measure,Nouvelle Unité de Mesure,0
+model,"ir.ui.menu,name",menu_uom_form2,New Unit of Measure,Nouvelle Unité de mesure,0
 model,"ir.ui.menu,name",menu_main_product,Product,Produit,0
 model,"ir.ui.menu,name",menu_product_product,Products,Produits,0
 model,"ir.ui.menu,name",menu_uom_form,Units of Measure,Unités de Mesure,0
@@ -135,17 +139,17 @@ selection,"product.template,type",0,Consumable,Consommable,0
 selection,"product.template,type",0,Service,Service,0
 selection,"product.template,type",0,Stockable,Stockable,0
 view,product.category,0,Children,Enfants,0
-view,product.category,0,Product Categories,Catégories de Produit,0
-view,product.category,0,Product Category,Catégorie de Produit,0
+view,product.category,0,Product Categories,Catégories de produit,0
+view,product.category,0,Product Category,Catégorie de produit,0
 view,product.category,0,Properties,Propriétés,0
 view,product.product,0,General,Général,0
 view,product.product,0,Product,Produit,0
 view,product.product,0,Products,Produits,0
 view,product.product,0,Properties,Propriétés,0
 view,product.template,0,General,Général,0
-view,product.template,0,Product Template,Modèle Produit,0
+view,product.template,0,Product Template,Modèle produit,0
 view,product.template,0,Product Templates,Modèles de produit,0
-view,product.uom,0,Unit of Measure,Unité de Mesure,0
-view,product.uom,0,Units of Measure,Unités de Mesure,0
-view,product.uom.category,0,Categories of Unit of Measure,Catégories d'Unité de Mesure,0
-view,product.uom.category,0,Category of Unit of Measure,Catégorie d'Unité de Mesure,0
+view,product.uom,0,Unit of Measure,Unité de mesure,0
+view,product.uom,0,Units of Measure,Unités de mesure,0
+view,product.uom.category,0,Categories of Unit of Measure,Catégories d'Unité de mesure,0
+view,product.uom.category,0,Category of Unit of Measure,Catégorie d'unité de mesure,0
