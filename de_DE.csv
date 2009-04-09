@@ -119,23 +119,24 @@ model,"ir.action,name",wizard_invoice_handle_exception,Handle Invoice Exception,
 model,"ir.action,name",wizard_packing_handle_exception,Handle Shipment Exception,Liefervorbehalt bearbeiten,0
 model,"ir.action,name",act_invoice_form,Invoices,Rechnungseingang,0
 model,"ir.action,name",act_purchase_form_new,New Purchase,Neuer Einkauf,0
+model,"ir.action,name",act_open_supplier,Parties associated to Purchases,Parteien: Einkäufen zugeordnet,0
 model,"ir.action,name",report_purchase,Purchase,Einkauf drucken,0
 model,"ir.action,name",act_purchase_form,Purchases,Einkäufe,0
+model,"ir.action,name",,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_form2,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
 model,"ir.action,name",act_packing_form,Shipments,Lieferposten,0
-model,"ir.action,name",act_open_supplier,Suppliers,Lieferanten,0
 model,"ir.sequence,name",sequence_purchase,Purchase,Einkauf,0
 model,"ir.sequence.type,name",sequence_type_purchase,Purchase,Einkauf,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Aufträge (Einkäufe),0
 model,"ir.ui.menu,name",menu_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
 model,"ir.ui.menu,name",menu_purchase_form_new,New Purchase,Neuer Einkauf,0
+model,"ir.ui.menu,name",menu_supplier,Parties associated to Purchases,Parteien: Einkäufen zugeordnet,0
 model,"ir.ui.menu,name",menu_purchase,Purchase Management,Einkauf,0
 model,"ir.ui.menu,name",menu_purchase_form,Purchases,Einkäufe,0
 model,"ir.ui.menu,name",menu_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
-model,"ir.ui.menu,name",menu_supplier,Suppliers,Lieferanten,0
 model,"purchase.handle.invoice.exception.ask,name",0,Invoice Exception Ask,Nachfrage Rechnungsvorbehalt,0
 model,"purchase.handle.packing.exception.ask,name",0,Shipment Exception Ask,Nachfrage Liefervorbehalt,0
 model,"purchase.line-account.invoice.line,name",0,Purchase Line - Invoice Line,Position Einkauf - Rechnungszeile,0
