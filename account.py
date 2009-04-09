@@ -400,6 +400,7 @@ AccountSelection()
 class AccountAccountSelection(ModelSQL):
     'Analytic Account - Analytic Account Selection'
     _name = 'analytic_account.account-analytic_account.account.selection'
+    _description = __doc__
     _table = 'analytic_account_account_selection_rel'
     selection = fields.Many2One('analytic_account.account.selection',
             'Selection', ondelete='CASCADE', required=True, select=1)
