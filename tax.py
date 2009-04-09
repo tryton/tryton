@@ -1260,8 +1260,10 @@ AccountTemplate()
 
 
 class AccountTax(ModelSQL):
+    'Account - Tax'
     _name = 'account.account-account.tax'
     _table = 'account_account_tax_rel'
+    _description = __doc__
     account = fields.Many2One('account.account', 'Account', ondelete='CASCADE',
             select=1, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
