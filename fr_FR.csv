@@ -1,7 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,account.account,0,You can not create recursive accounts!,Vous ne pouvez pas créer des comptes récursifs,0
-error,account.account,0,You can not delete account that have children!,Vous ne pouvez pas supprimer des comptes qui ont des enfants !,0
-error,account.account,0,You can not delete account with move line!,Vous ne pouvez pas supprimer de compte avec des lignes de mouvement,0
+error,account.account,0,You can not delete accounts containing move lines!,Vous ne pouvez pas supprimer des comptes contenant des lignes de mouvement !,0
+error,account.account,0,You can not delete accounts that have children!,Vous ne pouvez pas supprimer des comptes qui ont des enfants !,0
 error,account.account.deferral,0,Deferral must be unique by account and fiscal year,Le report doit être unique par compte et par année fiscale,0
 error,account.account.deferral,0,You can not modify Account Deferral records,Vous ne pouvez pas modifier les enregistrements de report de compte,0
 error,account.account.open_aged_balance,0,Warning,Avertissement,0
@@ -12,46 +12,47 @@ error,account.fiscalyear,0,"The balance of the account ""%s"" must be zero!","La
 error,account.fiscalyear,0,You can not change the post move sequence,Vous ne pouvez pas changer la séquence des mouvements postés,0
 error,account.fiscalyear,0,You can not close a fiscal year until there is older fiscal year opened!,Vous ne pouvez pas fermer une année fiscale si uné année antérieure est encore ouverte !,0
 error,account.fiscalyear,0,You can not have 2 fiscal years that overlaps!,Vous ne pouvez pas avoir 2 années fiscales qui se chevauchent !,0
-error,account.fiscalyear,0,You can not re-open a fiscal year until there is youngest fiscal year closed!,Vous ne pouvez pas ré-ouvrir une année fiscale si une année plus récente est fermée !,0
+error,account.fiscalyear,0,You can not reopen a fiscal year until there is more recent fiscal year closed!,Vous ne pouvez pas ré-ouvrir une année fiscale si une année plus récente est fermée !,0
 error,account.fiscalyear,0,You must have different post move sequence per fiscal year!,Vous devez avoir des séquences de mouvement posté différentes par année fiscale !,0
 error,account.journal.period,0,You can not create a journal - period on a closed period!,Vous ne pouvez pas créer un journal - période sur une période fermée !,0
 error,account.journal.period,0,You can not modify/delete a journal - period with moves!,Vous ne pouvez pas modifier ou supprimer un journal - période avec des mouvements !,0
 error,account.journal.period,0,You can not open a journal - period from a closed period!,Vous ne pouvez pas ouvrir un journal - période sur une période fermée !,0
 error,account.journal.period,0,You can only open one journal per period!,Vous ne pouvez ouvrir qu'un journal par période !,0
-error,account.journal.type,0,Code must be unique!,Le code doit être unique !,0
-error,account.move,0,"You can not create lines on account
-from different company in the same move!","Vous ne pouvez pas créer des lignes sur des comptes
-de sociétés différentes sur le même mouvement!",0
+error,account.journal.type,0,The code must be unique!,Le code doit être unique !,0
+error,account.move,0,"You can not create lines on accounts
+of different companies in the same move!","Vous ne pouvez pas créer de lignes sur des comptes
+de différentes société dans le même mouvement !",0
 error,account.move,0,"You can not create more than one move per period
-in centralized journal!",Vous ne pouvez pas créer plus d'un mouvement par période,0
-error,account.move,0,You can not create move with date outside the period!,Vous ne pouvez pas créer de mouvement en dehors de la période !,0
-error,account.move,0,You can not delete posted move!,Vous ne pouvez pas supprimer un mouvement posté !,0
+in a centralized journal!","Vous ne pouvez pas créer plus d'un mouvement par période
+dans un journal de centralisation !",0
+error,account.move,0,You can not create move with a date outside the period!,Vous ne pouvez pas créer un mouvement avec une date en dehors de la période !,0
+error,account.move,0,You can not delete posted moves!,Vous ne pouvez pas supprimer des mouvements postés !,0
 error,account.move,0,You can not modify a posted move in this journal!,Vous ne pouvez pas modifier un mouvement posté sur ce journal !,0
 error,account.move,0,You can not post an empty move!,Vous ne pouvez pas poster un mouvement vide !,0
-error,account.move,0,You can not post a unbalanced move!,Vous ne pouvez pas poster un mouvement non-balancé !,0
+error,account.move,0,You can not post an unbalanced move!,Vous ne pouvez pas poster un mouvement non balancé !,0
 error,account.move.line,0,"Line ""%s"" (%d) already reconciled!","La ligne ""%s"" (%d) est déjà réconciliée !",0
 error,account.move.line,0,No journal defined!,Pas de journal défini !,0
 error,account.move.line,0,Wrong credit/debit values!,Valeur crédit/débit incorrectes,0
 error,account.move.line,0,You can not add/modify lines in a closed journal period!,Vous ne pouvez pas ajouter/modifier des lignes sur un journal - période fermé !,0
-error,account.move.line,0,"You can not create move line
-on view/inactive account!","Vous ne pouvez pas créer de ligne de mouvement
-sur un compte vue/inactif !",0
-error,account.move.line,0,You can not modify line from a posted move!,Vous ne pouvez pas modifier une ligne d'un mouvement posté !,0
-error,account.move.line,0,You can not modify reconciled line!,Vous ne pouvez pas modifier une ligne reconciliée !,0
+error,account.move.line,0,"You can not create move lines
+on view/inactive accounts!","Vous ne pouvez pas créer des lignes de mouvement
+sur des comptes inactifs ou de type vue !",0
+error,account.move.line,0,You can not modify lines of a posted move!,Vous ne pouvez pas modifier les lignes d'un mouvement posté !,0
+error,account.move.line,0,You can not modify reconciled lines!,Vous ne pouvez pas modifier des lignes réconciliées,0
 error,account.move.reconciliation,0,"You can not create reconciliation where lines are not balanced, nor valid, nor in the same account, nor in account to reconcile, nor from the same party!","Vous ne pouvez faire de réconciliation que si les lignes sont balancées, valides, du même compte, d'un compte à réconcilier et du même tiers !",0
 error,account.move.reconciliation,0,You can not modify a reconciliation!,Vous ne pouvez pas modifer une réconciliation !,0
 error,account.period,0,No period defined for this date!,Pas de période définie pour cette date !,0
 error,account.period,0,The period dates must be in the fiscal year dates,Les dates de période doivent être dans les dates de l'année fiscale,0
-error,account.period,0,You can not change the post move sequence if there is already posted move in the period,Vous ne pouvez pas changer la séquence de mouvement posté s'il y a déjà un mouvement posté dans la période,0
+error,account.period,0,You can not change the post move sequence if there is already posted moves in the period,Vous ne pouvez pas modifer une séquence de mouvement postés s'il y a déjà des mouvements postés dans la période,0
 error,account.period,0,You can not close a period with non posted moves!,Vous ne pouvez pas fermer une période avec des mouvements non-postés !,0
 error,account.period,0,You can not create a period on a closed fiscal year!,Vous ne pouvez pas créer une période sur une année fiscale fermée !,0
-error,account.period,0,You can not have 2 periods that overlaps!,Vous ne pouvez pas avoir 2 périodes qui se chevauchent !,0
+error,account.period,0,You can not have two overlapping periods!,Vous ne pouvez pas créer des périodes qui se chevauchent,0
 error,account.period,0,You can not modify/delete a period with moves!,Vous ne pouvez pas modifer/supprimer une période avec des mouvements !,0
 error,account.period,0,You can not open a period from a closed fiscal year!,Vous ne pouvez pas ouvrir une période sur une année fiscale fermée !,0
 error,account.period,0,You must have different post move sequences per fiscal year and in the same company!,Vous devez avoir des séquences de mouvement différentes par exercice et dans la même société !,0
-error,account.tax.code,0,You can not create recursive tax code!,Vous ne pouvez pas créer des codes de taxes récursifs !,0
-error,account.tax.code.template,0,You can not create recursive tax code!,Vous ne pouvez pas créer des codes de taxes récursifs !,0
-error,account.tax.group,0,Code must be unique!,Le code doit être unique !,0
+error,account.tax.code,0,You can not create recursive tax codes!,Vous ne pouvez pas créer des codes de taxe récursifs !,0
+error,account.tax.code.template,0,You can not create recursive tax codes!,Vous ne pouvez pas créer des codes de taxe récursifs !,0
+error,account.tax.group,0,The code must be unique!,Le code doit être unique !,0
 field,"account.account-account.tax,account",0,Account,Compte,0
 field,"account.account-account.tax,rec_name",0,Name,Nom,0
 field,"account.account-account.tax,tax",0,Tax,Taxe,0
@@ -120,6 +121,7 @@ field,"account.account,reconcile",0,Reconcile,A réconcilier,0
 field,"account.account,right",0,Right,Droite,0
 field,"account.account,second_currency",0,Secondary currency,Devise secondaire,0
 field,"account.account,taxes",0,Default Taxes,Taxes par défaut,0
+field,"account.account,template",0,Template,Modèle,0
 field,"account.account.template-account.tax.template,account",0,Account Template,Compte modèle,0
 field,"account.account.template-account.tax.template,rec_name",0,Name,Nom,0
 field,"account.account.template-account.tax.template,tax",0,Tax Template,Modèle de taxe,0
@@ -145,6 +147,7 @@ field,"account.account.type,name",0,Name,Nom,0
 field,"account.account.type,parent",0,Parent,Parent,0
 field,"account.account.type,rec_name",0,Name,Nom,0
 field,"account.account.type,sequence",0,Sequence,Séquence,0
+field,"account.account.type,template",0,Template,Modèle,0
 field,"account.account.type.template,balance_sheet",0,Balance Sheet,Bilan,0
 field,"account.account.type.template,childs",0,Children,Enfants,0
 field,"account.account.type.template,display_balance",0,Display Balance,Afficher la balance,0
@@ -153,6 +156,7 @@ field,"account.account.type.template,name",0,Name,Nom,0
 field,"account.account.type.template,parent",0,Parent,Parent,0
 field,"account.account.type.template,rec_name",0,Name,Nom,0
 field,"account.account.type.template,sequence",0,Sequence,Séquence,0
+field,"account.account.update_chart_account.init,account",0,Account,Compte,0
 field,"account.fiscalyear-account.move.line,fiscalyear",0,Fiscal Year,Année fiscale,0
 field,"account.fiscalyear-account.move.line,line",0,Line,Ligne,0
 field,"account.fiscalyear-account.move.line,rec_name",0,Name,Nom,0
@@ -265,6 +269,7 @@ field,"account.tax.code,name",0,Name,Nom,0
 field,"account.tax.code,parent",0,Parent,Parent,0
 field,"account.tax.code,rec_name",0,Name,Nom,0
 field,"account.tax.code,sum",0,Sum,Somme,0
+field,"account.tax.code,template",0,Template,Modèle,0
 field,"account.tax.code.template,account",0,Account Template,Compte modèle,0
 field,"account.tax.code.template,childs",0,Children,Enfants,0
 field,"account.tax.code.template,code",0,Code,Code,0
@@ -298,7 +303,28 @@ field,"account.tax.open_chart_code.init,periods",0,Periods,Périodes,0
 field,"account.tax,parent",0,Parent,Parent,0
 field,"account.tax,percentage",0,Percentage,Pourcentage,0
 field,"account.tax,rec_name",0,Name,Nom,0
+field,"account.tax.rule,company",0,Company,Société,0
+field,"account.tax.rule.line,group",0,Tax Group,Groupe de taxe,0
+field,"account.tax.rule.line,rec_name",0,Name,Nom,0
+field,"account.tax.rule.line,rule",0,Rule,Règle,0
+field,"account.tax.rule,lines",0,Lines,Lignes,0
+field,"account.tax.rule.line,sequence",0,Sequence,Séquence,0
+field,"account.tax.rule.line,tax",0,Substitution Tax,Taxe de substitution,0
+field,"account.tax.rule.line,template",0,Template,Modèle,0
+field,"account.tax.rule.line.template,group",0,Tax Group,Groupe de taxe,0
+field,"account.tax.rule.line.template,rec_name",0,Name,Nom,0
+field,"account.tax.rule.line.template,rule",0,Rule,Règle,0
+field,"account.tax.rule.line.template,sequence",0,Sequence,Séquence,0
+field,"account.tax.rule.line.template,tax",0,Substitution Tax,Taxe de substitution,0
+field,"account.tax.rule,name",0,Name,Nom,0
+field,"account.tax.rule,rec_name",0,Name,Nom,0
+field,"account.tax.rule,template",0,Template,Modèle,0
+field,"account.tax.rule.template,account",0,Account Template,Compte modèle,0
+field,"account.tax.rule.template,lines",0,Lines,Lignes,0
+field,"account.tax.rule.template,name",0,Name,Nom,0
+field,"account.tax.rule.template,rec_name",0,Name,Nom,0
 field,"account.tax,sequence",0,Sequence,Séquence,0
+field,"account.tax,template",0,Template,Modèle,0
 field,"account.tax.template,account",0,Account Template,Compte modèle,0
 field,"account.tax.template,amount",0,Amount,Montant,0
 field,"account.tax.template,childs",0,Children,Enfants,0
@@ -323,30 +349,30 @@ field,"account.tax.template,type",0,Type,Type,0
 field,"account.tax,type",0,Type,Type,0
 field,"party.party,account_payable",0,Account Payable,Compte à payer,0
 field,"party.party,account_receivable",0,Account Receivable,Compte à recevoir,0
+field,"party.party,customer_tax_rule",0,Customer Tax Rule,Règle de taxe client,0
 field,"party.party,payable",0,Payable,A Payer,0
 field,"party.party,payable_today",0,Payable Today,A Payer aujourd'hui,0
 field,"party.party,receivable",0,Receivable,A recevoir,0
 field,"party.party,receivable_today",0,Receivable Today,A recevoir aujourd'hui,0
-field,"party.party,supplier_vat",0,Supplier VAT,TVA fournisseur,0
-field,"party.party,vat",0,VAT,TVA,0
-help,"account.account.open_aged_balance.init,posted",0,Only posted move,Seuls les mouvements postés,0
-help,"account.account.open_balance_sheet.init,posted",0,Only posted move,Seuls les mouvements postés,0
-help,"account.account.open_chart_account.init,fiscalyear",0,Keep empty for all open fiscal year,Laisser vide pour toutes les années fiscales ouvertes,0
-help,"account.account.open_chart_account.init,posted",0,Only posted move,Seuls les mouvements postés,0
-help,"account.account.open_income_statement.init,posted",0,Only posted move,Seuls les mouvements postés,0
-help,"account.account.open_third_party_balance.init,posted",0,Only posted move,Seuls les mouvements postés,0
+field,"party.party,supplier_tax_rule",0,Supplier Tax Rule,Règle de taxe fournisseur,0
+help,"account.account.open_aged_balance.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
+help,"account.account.open_balance_sheet.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
+help,"account.account.open_chart_account.init,fiscalyear",0,Leave empty for all open fiscal year,Laisser vide pour toutes les années fiscales ouvertes,0
+help,"account.account.open_chart_account.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
+help,"account.account.open_income_statement.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
+help,"account.account.open_third_party_balance.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
 help,"account.account.print_general_ledger.init,empty_account",0,With account without move,Avec compte sans mouvement,0
-help,"account.account.print_general_ledger.init,posted",0,Only posted move,Seuls les mouvements postés,0
+help,"account.account.print_general_ledger.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
 help,"account.account.print_trial_balance.init,empty_account",0,With account without move,Avec compte sans mouvement,0
-help,"account.account.print_trial_balance.init,posted",0,Only posted move,Seuls les mouvements postés,0
+help,"account.account.print_trial_balance.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
 help,"account.account,reconcile",0,"Check if the account can be used 
 for reconciliation.","Cocher si le compte peut être utilisé
 pour la réconciliation.",0
 help,"account.account,second_currency",0,"Force all moves for this account 
 to have this secondary currency.","Force tout les mouvements pour ce compte
 à avoir cette devise secondaire.",0
-help,"account.account,taxes",0,"Default tax for manual encoding move lines 
-for journal type: ""expense"" and ""revenue""","Taxe par défaut pour les lignes de mouvement manuelles
+help,"account.account,taxes",0,"Default tax for manual encoding of move lines 
+for journal types: ""expense"" and ""revenue""","Taxe par défaut pour les lignes de mouvement manuelles
 pour le type de journal: ""dépense"" et ""revenu""",0
 help,"account.account.type,sequence",0,Use to order the account type,Utilisé pour trier les types de compte,0
 help,"account.move.line,amount_second_currency",0,The amount expressed in a second currency,Le montant exprimé dans la devise secondaire,0
@@ -355,23 +381,23 @@ help,"account.move.line,maturity_date",0,"This field is used for payable and rec
 You can put the limit date for the payment.","Ce champ est utilisé pour les lignes à payer et à recevoir.
 Vous pouvez mettre la date limite pour le paiement.",0
 help,"account.move.line,second_currency",0,The second currency,La devise secondaire,0
-help,"account.move.print_general_journal.init,posted",0,Only posted move,Seuls les mouvements postés,0
+help,"account.move.print_general_journal.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
 help,"account.move,reference",0,Also known as Folio Number, ,0
 help,"account.tax,amount",0,In company's currency,Dans la devise de la société,0
-help,"account.tax,credit_note_account",0,Keep empty to use the default credit_note account,Laisser vide pour utiliser le compte de note de crédit par défaut,0
+help,"account.tax,credit_note_account",0,Leave empty to use the default credit note account,Laisser vide pour utiliser le compte de note de crédit par défaut,1
 help,"account.tax,credit_note_base_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax,credit_note_tax_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax,description",0,The name that will be used in reports,Le nom qui sera utilisé dans les rapports,0
-help,"account.tax,invoice_account",0,Keep empty to use the default invoice account,Garder vide pour utiliser le compte par défaut de la facture,0
+help,"account.tax,invoice_account",0,Leave empty to use the default invoice account,Garder vide pour utiliser le compte par défaut de la facture,0
 help,"account.tax,invoice_base_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
-help,"account.tax.open_chart_code.init,fiscalyear",0,Keep empty for all open fiscal year,Laisser vide pour toutes les années fiscales ouvertes,0
-help,"account.tax.open_chart_code.init,periods",0,Keep empty for all periods of all open fiscal year,Laisser vide pour toutes les périodes de toutes les années fiscales ouvertes,0
+help,"account.tax.open_chart_code.init,fiscalyear",0,Leave empty for all open fiscal year,Laisser vide pour toutes les années fiscales ouvertes,0
+help,"account.tax.open_chart_code.init,periods",0,Leave empty for all periods of all open fiscal year,Laisser vide pour toutes les périodes de toutes les années fiscales ouvertes,0
 help,"account.tax,percentage",0,In %,En %,0
 help,"account.tax,sequence",0,Use to order the taxes,Utilisé pour trier les taxes,0
-help,"party.party,supplier_vat",0,"This tax will be used, instead of the default VAT for supplier invoices.",Cette taxe sera utilisée au lieu de la taxe TVA par défaut pour les factures fournisseur.,0
-help,"party.party,vat",0,"This tax will be used, instead of the default VAT.",Cette taxe sera utilisée au lieu de la taxe TVA par défaut.,0
-model,"account.account-account.tax,name",0,account.account-account.tax,,0
+help,"party.party,customer_tax_rule",0,Apply this rule on taxes when party is customer.,Appliquer cette règle sur les taxes si le tiers est un client.,0
+help,"party.party,supplier_tax_rule",0,Apply this rule on taxes when party is supplier.,Appliquer cette règle sur les taxes si le tiers est un fournisseur.,0
+model,"account.account-account.tax,name",0,Account - Tax,Compte - taxe,0
 model,"account.account.create_chart_account.account,name",0,Create Chart Account Account,Créer un plan comptable,0
 model,"account.account.create_chart_account.init,name",0,Create Chart Account Init,Créer un plan comptable - Init,0
 model,"account.account.create_chart_account.properties,name",0,Create Chart Account Properties,Créer un plan comptable - Propriétés,0
@@ -411,7 +437,8 @@ model,"account.account.type.template,name",account_type_template_liability_curre
 model,"account.account.type.template,name",account_type_template_asset_current_receivable,Receivable,A recevoir,0
 model,"account.account.type.template,name",account_type_template_revenue,Revenue,Revenu,0
 model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Taxe,0
-model,"account.fiscalyear-account.move.line,name",0,Fiscal Year - Move Line,Année fiscale - Move Line,0
+model,"account.account.update_chart_account.init,name",0,Update Chart Account from Template Init,Mise à jour du plan comptable depuis le modèle - Initialisation,0
+model,"account.fiscalyear-account.move.line,name",0,Fiscal Year - Move Line,Année fiscale - Ligne de mouvement,0
 model,"account.fiscalyear.close_fiscalyear.init,name",0,Close Fiscal Year Init,Fermer l'année fiscale - Init,0
 model,"account.fiscalyear,name",0,Fiscal Year,Année fiscale,0
 model,"account.journal,name",journal_cash,Cash,Cash,0
@@ -439,12 +466,14 @@ model,"account.move.unreconcile_lines.init,name",0,Unreconcile Lines Init,Dé-r�
 model,"account.period,name",0,Period,Période,0
 model,"account.tax.code,name",0,Tax Code,Code de taxe,0
 model,"account.tax.code.template,name",0,Tax Code Template,Modèle de code de taxe,0
-model,"account.tax.group,name",tax_group_none,None,Aucun,0
 model,"account.tax.group,name",0,Tax Group,Groupe de taxe,0
-model,"account.tax.group,name",tax_group_vat,VAT,TVA,0
 model,"account.tax.line,name",0,Tax Line,Ligne de taxe,0
 model,"account.tax,name",0,Account Tax,Compte de taxe,0
 model,"account.tax.open_chart_code.init,name",0,Open Chart Code Init,Ouvrir le plan de code - Init,0
+model,"account.tax.rule.line,name",0,Tax Rule Line,Ligne de règle de taxe,0
+model,"account.tax.rule.line.template,name",0,Tax Rule Line Template,Modèle de ligne de règle de taxe,0
+model,"account.tax.rule,name",0,Tax Rule,Règle de taxe,0
+model,"account.tax.rule.template,name",0,Tax Rule Template,Modèle de règle de taxe,0
 model,"account.tax.template,name",0,Account Tax Template,Modèle de compte de taxe,0
 model,"ir.action,name",act_move_line_form,Account Move Lines,Lignes de mouvement comptable,0
 model,"ir.action,name",act_move_form,Account Moves,Mouvements comptables,0
@@ -496,10 +525,14 @@ model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Modèles d
 model,"ir.action,name",act_tax_form,Taxes,Taxes,0
 model,"ir.action,name",act_tax_tree,Taxes,Taxes,0
 model,"ir.action,name",act_tax_template_tree,Taxes Templates,Modèle de taxe,0
+model,"ir.action,name",act_tax_group_form,Tax Groups,Groupes de taxes,0
 model,"ir.action,name",act_tax_line_form,Tax Lines,Lignes de taxe,0
+model,"ir.action,name",act_tax_rule_form,Tax Rules,Règles de taxe,0
+model,"ir.action,name",act_tax_rule_template_form,Tax Rule Templates,Modèles de règle de taxe,0
 model,"ir.action,name",report_third_party_balance,Third Party Balance,Balance des tiers,0
 model,"ir.action,name",report_trial_balance,Trial Balance,Balance,0
 model,"ir.action,name",act_unreconcile_lines,Unreconcile Lines,Lignes non réconciliées,0
+model,"ir.action,name",wizard_update_chart_account,Update Chart of Account from Template,Mise à jour du plan comptable depuis le modèle,0
 model,"ir.sequence,name",sequence_account_journal,Default Account Journal,Journal de compte par défaut,0
 model,"ir.sequence,name",sequence_account_move_reconciliation,Default Account Move Reconciliation,Réconciliation des mouvements comptables par défaut,0
 model,"ir.sequence.type,name",sequence_type_account_journal,Account Journal,Journal de compte,0
@@ -549,7 +582,11 @@ model,"ir.ui.menu,name",menu_taxes,Taxes,Taxes,0
 model,"ir.ui.menu,name",menu_tax_form,Taxes,Taxes,0
 model,"ir.ui.menu,name",menu_tax_tree,Taxes,Taxes,0
 model,"ir.ui.menu,name",menu_tax_template_tree,Taxes Templates,Modèles de taxes,0
+model,"ir.ui.menu,name",menu_tax_group_form,Tax Groups,Groupes de taxes,0
+model,"ir.ui.menu,name",menu_tax_rule_form,Tax Rules,Règles de taxe,0
+model,"ir.ui.menu,name",menu_tax_rule_template_form,Tax Rule Templates,Modèles de règle de taxe,0
 model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Balance tiers,0
+model,"ir.ui.menu,name",menu_update_chart_account,Update Chart of Account from Template,Mise à jour du plan comptable depuis le modèle,0
 model,"res.group,name",group_account,Account,Compte,0
 model,"res.group,name",group_account_admin,Account Administration,Administration comptable,0
 odt,account.account.aged_balance,0,Aged Balance for Customers,Balance agée pour les clients,0
@@ -694,6 +731,7 @@ view,account.account.type,0,Balance Sheet,Bilan,0
 view,account.account.type,0,Income Statement,Compte de résultat,0
 view,account.account.type.template,0,Account Types Templates,Modèles de type de compte,0
 view,account.account.type.template,0,Account Type Template,Modèle de type de compte,0
+view,account.account.update_chart_account.init,0,Update Chart of Account,Mise à jour du plan comptable,0
 view,account.fiscalyear,0,Are you sure to close fiscal year?,Etes-vous sûr de clore l'année fiscale?,0
 view,account.fiscalyear,0,Close,Fermer,0
 view,account.fiscalyear,0,Close Fiscal Year,Fermer l'année fiscale,0
@@ -748,10 +786,21 @@ view,account.tax.code,0,Tax Code,Code de taxe,0
 view,account.tax.code,0,Tax Codes,Codes de taxe,0
 view,account.tax.code.template,0,Tax Codes Templates,Modèles de codes de taxe,0
 view,account.tax.code.template,0,Tax Code Template,Modèle de code de taxe,0
+view,account.tax.group,0,Tax Group,Groupe de taxe,0
+view,account.tax.group,0,Tax Groups,Groupes de taxes,0
 view,account.tax.line,0,Account Tax Line,Ligne comptable de taxe,0
 view,account.tax.line,0,Account Tax Lines,Lignes comptable de taxe,0
 view,account.tax.open_chart_code.init,0,Open Chart Of Tax Code,Ouvrir le plan de code de taxe,0
 view,account.tax.open_chart_code.init,0,Open Chart Of Tax Codes,Ouvrir le plan des codes de taxe,0
+view,account.tax.rule,0,Tax Rule,Règle de taxe,0
+view,account.tax.rule,0,Tax Rule Line Templates,Modèles de ligne de règle de taxe,0
+view,account.tax.rule,0,Tax Rules,Règles de taxe,0
+view,account.tax.rule.line,0,Tax Rule Line,Ligne de règle de taxe,0
+view,account.tax.rule.line,0,Tax Rule Lines,Lignes de règle de taxe,0
+view,account.tax.rule.line.template,0,Tax Rule Line Template,Modèle de ligne de règle de taxe,0
+view,account.tax.rule.line.template,0,Tax Rule Line Templates,Modèles de ligne de règle de taxe,0
+view,account.tax.rule.template,0,Tax Rules,Règles de taxe,0
+view,account.tax.rule.template,0,Tax Rule Template,Modèle de règle de taxe,0
 view,account.tax.template,0,Code,Code,0
 view,account.tax.template,0,Credit Note,Note de Crédit,0
 view,account.tax.template,0,General Information,Information générale,0
@@ -782,6 +831,8 @@ wizard_button,"account.account.print_general_ledger,init,end",0,Cancel,Annuler,0
 wizard_button,"account.account.print_general_ledger,init,print",0,Print,Imprimer,0
 wizard_button,"account.account.print_trial_balance,init,end",0,Cancel,Annuler,0
 wizard_button,"account.account.print_trial_balance,init,print",0,Print,Imprimer,0
+wizard_button,"account.account.update_chart_account,init,end",0,Cancel,Annuler,0
+wizard_button,"account.account.update_chart_account,init,update_account",0,Ok,Ok,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Clôturer,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,end",0,Cancel,Annuler,0
 wizard_button,"account.move.open_journal,ask,end",0,Cancel,Annuler,0

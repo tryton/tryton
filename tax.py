@@ -570,7 +570,7 @@ class Tax(ModelSQL, ModelView):
             }, depends=['company'])
     credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
             domain="[('company', '=', company)]",
-            help='Leave empty to use the default credit_note account',
+            help='Leave empty to use the default credit note account',
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "type != 'none' and company",
