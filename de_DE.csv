@@ -3,7 +3,7 @@ error,stock.inventory.line,0,Line quantity must be positive!,Anzahl der Position
 error,stock.inventory.line,0,Product must be unique by inventory!,Ein Artikel kann in einem Lagerbestand nicht mehrfach vergeben werden!,0
 error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,"Ein Lagerort mit zugordneten Bewegungen kann nicht zu einem Typ geändert werden, der keine Bewegungen unterstützt.",0
 error,stock.location,0,You can not create recursive locations!,Lagerorte können nicht rekursiv angelegt werden!,0
-error,stock.move,0,Move can not be in both Supplier and Customer Shipment,Diese Bewegung kann nicht gleichzeitig in Lieferanten- und Kundenlieferschein sein!,0
+error,stock.move,0,Move can be on only one Shipment,Eine Bewegung kann nur auf einem Lieferposten erfolgen!,0
 error,stock.move,0,Move quantity must be positive,Zu bewegende Anzahl muss positiv sein,0
 error,stock.move,0,Source and destination location must be different,Herkunfts- und Bestimmungsort müssen unterschiedlich sein,0
 error,stock.move,0,You can not set state to assigned!,Status kann nicht auf Zugewiesen gesetzt werden!,0
@@ -157,7 +157,9 @@ model,"ir.action,name",wizard_packing_out_assign,Assign Shipment Out,Zuweisung L
 model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Lagerbestandspositionen komplettieren,0
 model,"ir.action,name",create_packing_out_return,Create Return Shipment,Erstellung Warenrückgabe,0
 model,"ir.action,name",act_packing_out_return_form,Customer Return Shipments,Warenrücknahmen (von Kunden),0
+model,"ir.action,name",,Customer Shipment,Lieferposten Kunde,0
 model,"ir.action,name",act_packing_out_form,Customer Shipments,Lieferposten an Kunden,0
+model,"ir.action,name",,Customer Shipments,Lieferposten an Kunden,0
 model,"ir.action,name",act_packing_out_form2,Customer Shipments,Lieferposten an Kunden,0
 model,"ir.action,name",act_packing_out_form_ready,Customer Shipments Ready for Shipping,Versandbereite Lieferposten an Kunden,0
 model,"ir.action,name",act_packing_out_form_waiting,Customer Shipments Waiting Assignation,Zuzuweisende Lieferposten an Kunden,0
@@ -187,6 +189,7 @@ model,"ir.action,name",report_packing_in_restocking_list,Restocking List,Einlage
 model,"ir.action,name",report_packing_out_return_restocking_list,Restocking List,Einlagerungsliste,0
 model,"ir.action,name",act_packing_in_return_form,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
 model,"ir.action,name",act_packing_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
+model,"ir.action,name",,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"ir.action,name",act_packing_out_form3,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"ir.sequence,name",sequence_packing_out_return,Customer Return Shipment,Warenrücknahme Kunde,0
 model,"ir.sequence,name",sequence_packing_out,Customer Shipment,Lieferposten Kunde,0
@@ -305,15 +308,6 @@ odt,stock.packing.internal.report,0,Quantity,Anzahl,0
 odt,stock.packing.internal.report,0,Reference:,Referenz:,0
 odt,stock.packing.internal.report,0,To Location,Zu Lagerort,0
 odt,stock.packing.internal.report,0,To Location:,Zu Lagerort:,0
-odt,stock.packing.out,0,Customer Code:,Kundennr:,0
-odt,stock.packing.out,0,Date:,Datum:,0
-odt,stock.packing.out,0,E-Mail:,E-Mail:,0
-odt,stock.packing.out,0,Packing List,Packliste,0
-odt,stock.packing.out,0,Packing Number:,Packlistennummer:,0
-odt,stock.packing.out,0,Phone:,Telefon:,0
-odt,stock.packing.out,0,Product,Artikel,0
-odt,stock.packing.out,0,Quantity,Anzahl,0
-odt,stock.packing.out,0,Reference:,Referenz,0
 odt,stock.packing.out.delivery_note,0,Customer Code:,Kundennr:,0
 odt,stock.packing.out.delivery_note,0,Date:,Datum:,0
 odt,stock.packing.out.delivery_note,0,Delivery Note,Lieferschein,0
