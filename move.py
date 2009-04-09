@@ -419,6 +419,9 @@ class Move(ModelSQL, ModelView):
         currency_obj = self.pool.get('currency.currency')
         company_obj = self.pool.get('company.company')
 
+        if context is None:
+            context = {}
+
         if isinstance(uom, (int, long)):
             uom = uom_obj.browse(cursor, user, uom, context=context)
         if isinstance(company, (int, long)):
@@ -447,9 +450,12 @@ class Move(ModelSQL, ModelView):
                 ) / (product_qty + qty)
         else:
             new_cost_price = product.cost_price
+
+        ctx = context.copy()
+        ctx['user'] = user
         product_obj.write(
-            cursor, user, product.id, {'cost_price': new_cost_price},
-            context=context)
+            cursor, 0, product.id, {'cost_price': new_cost_price},
+            context=ctx)
 
     def create(self, cursor, user, vals, context=None):
         location_obj = self.pool.get('stock.location')
