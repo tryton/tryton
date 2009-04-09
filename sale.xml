@@ -906,10 +906,10 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="act_open_customer">
-            <field name="name">Customers</field>
+            <field name="name">Parties associated to Sales</field>
             <field name="wiz_name">sale.open_customer</field>
         </record>
-        <menuitem name="Customers"
+        <menuitem name="Parties associated to Sales"
             parent="party.menu_party_form"
             action="act_open_customer"
             icon="tryton-list"
