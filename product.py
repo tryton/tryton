@@ -334,8 +334,9 @@ class Product(ModelSQL, ModelView):
                 ",".join(["%s" for i in location_ids]) + ") "
             where_vals = location_ids[:]
 
-        where_clause += " AND " + move_query + " "
-        where_vals += move_val
+        if move_query:
+            where_clause += " AND " + move_query + " "
+            where_vals += move_val
 
         if product_ids:
             where_clause += "AND product in (" + \
