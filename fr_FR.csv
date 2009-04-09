@@ -62,7 +62,7 @@ field,"account.invoice,invoice_report",0,Invoice Report,Rapport de facturation,0
 field,"account.invoice,invoice_report_format",0,Invoice Report Format,Format du rapport de facturation,0
 field,"account.invoice,journal",0,Journal,Journal,0
 field,"account.invoice.line,account",0,Account,Compte,0
-field,"account.invoice.line-account.tax,line",0,Invoice Line,Ligne de Facture,0
+field,"account.invoice.line-account.tax,line",0,Invoice Line,Ligne de facture,0
 field,"account.invoice.line-account.tax,rec_name",0,Name,Nom,0
 field,"account.invoice.line-account.tax,tax",0,Tax,Taxe,0
 field,"account.invoice.line,amount",0,Amount,Montant,0
@@ -268,7 +268,7 @@ odt,account.invoice,0,Total:,Total :,0
 odt,account.invoice,0,Total (excl. taxes):,Total (hors-taxes) :,0
 odt,account.invoice,0,Unit Price,Prix unitaire,0
 odt,account.invoice,0,VAT:,TVA :,0
-selection,"account.invoice.line,invoice_type",0,Credit Note,Note de Crédit,0
+selection,"account.invoice.line,invoice_type",0,Credit Note,Note de crédit,0
 selection,"account.invoice.line,invoice_type",0,Invoice,Facture,0
 selection,"account.invoice.line,invoice_type",0,Supplier Credit Note,Note de crédit fournisseur,0
 selection,"account.invoice.line,invoice_type",0,Supplier Invoice,Facture fournisseur,0
@@ -306,8 +306,8 @@ view,account.invoice,0,Taxes,Taxes,0
 view,account.invoice.credit_invoice.init,0,Are you sure to credit those/this invoice(s)?,Etes-vous sûr de vouloir créditer cette/ces factures ?,0
 view,account.invoice.credit_invoice.init,0,Credit Invoice,Facture de crédit,0
 view,account.invoice.line,0,General,Général,0
-view,account.invoice.line,0,Invoice Line,Ligne de Facture,0
-view,account.invoice.line,0,Invoice Lines,Lignes de Facture,0
+view,account.invoice.line,0,Invoice Line,Ligne de facture,0
+view,account.invoice.line,0,Invoice Lines,Lignes de facture,0
 view,account.invoice.line,0,Notes,Notes,0
 view,account.invoice.line,0,Products,Produits,0
 view,account.invoice.pay_invoice.ask,0,Amount Second Currency,Montant en devise secondaire,0
