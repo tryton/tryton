@@ -11,6 +11,7 @@ field,"account.statement.journal,company",0,Company,Compagnie,0
 field,"account.statement.journal,currency",0,Currency,Devise,0
 field,"account.statement.journal,journal",0,Journal,Journal,0
 field,"account.statement.journal,name",0,Name,Nom,0
+field,"account.statement.journal,rec_name",0,Name,Nom,0
 field,"account.statement.line,account",0,Account,Compte,0
 field,"account.statement.line,amount",0,Amount,Montant,0
 field,"account.statement.line,date",0,Date,Date,0
@@ -18,12 +19,17 @@ field,"account.statement.line,description",0,Description,Description,0
 field,"account.statement.line,invoice",0,Invoice,Facture,0
 field,"account.statement.line,move",0,Account Move,Mouvement comptable,0
 field,"account.statement.line,party",0,Party,Tiers,0
+field,"account.statement.line,rec_name",0,Name,Nom,0
 field,"account.statement,lines",0,Transactions,Transactions,0
 field,"account.statement.line,statement",0,Statement,Relevé,0
 field,"account.statement,move_lines",0,Move Lines,Lignes de mouvement comptable,0
+field,"account.statement,rec_name",0,Name,Nom,0
 field,"account.statement,start_balance",0,Start Balance,Solde de départ,0
 field,"account.statement,state",0,State,État,0
 model,"account.journal.type,name",journal_type_statement,Statement,Relevé,0
+model,"account.statement.journal,name",0,Statement Journal,Journal de relevés,0
+model,"account.statement.line,name",0,Account Statement Line,Ligne de relevé comptable,0
+model,"account.statement,name",0,Account Statement,Relevé comptable,0
 model,"ir.action,name",act_statement_form,All Statement,Tous les relevés,0
 model,"ir.action,name",act_draft_statement_form,Draft Statements,Relevés brouillons,0
 model,"ir.action,name",act_posted_statement_form,Posted Statements,Relevés postés,0
