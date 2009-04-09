@@ -179,13 +179,18 @@ model,"account.invoice.line,name",0,Invoice Line,Rechnungsposition,0
 model,"account.invoice,name",0,Invoice,Rechnung,0
 model,"account.invoice.pay_invoice.ask,name",0,Pay Invoice Ask,Zahlung Rechnung Nachfrage,0
 model,"account.invoice.pay_invoice.init,name",0,Pay Invoice Init,Zahlung Rechnung Init,0
+model,"account.invoice.payment_term.line.delay,name",,End Month,Ende Monat,0
 model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_end_month,End Month,Ende Monat,0
+model,"account.invoice.payment_term.line.delay,name",,Net Days,Tage netto,0
 model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_net_days,Net Days,Tage netto,0
 model,"account.invoice.payment_term.line.delay,name",0,Payment Term Line Delay,Zahlungsbedingung Position Frist,0
 model,"account.invoice.payment_term.line,name",0,Payment Term Line,Zahlungsbedingung,0
+model,"account.invoice.payment_term.line.type,name",,Fixed,Fix,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_fixed,Fixed,Fix,0
 model,"account.invoice.payment_term.line.type,name",0,Payment Term Line Type,Zahlungsbedingung Position Typ,0
+model,"account.invoice.payment_term.line.type,name",,Percentage,Prozentsatz,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_percent,Percentage,Prozentsatz,0
+model,"account.invoice.payment_term.line.type,name",,Remainder,Rest,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remainder,Remainder,Rest,0
 model,"account.invoice.payment_term,name",0,Payment Term,Zahlungsbedingung,0
 model,"account.invoice.print_invoice_report.warning,name",0,Print Invoice Report Warning,Druck Rechnung Warnung,0
@@ -202,12 +207,14 @@ model,"ir.action,name",report_invoice,Invoice,Rechnung,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung / Gutschrift drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",act_invoice_out_invoice_form2,Invoices,Kundenrechnungen,0
+model,"ir.action,name",,Invoices,Rechnungseingang,0
 model,"ir.action,name",act_invoice_form2,Invoices,Rechnungseingang,0
 model,"ir.action,name",act_invoice_out_credit_note_form5,Opened Credit Notes,Fakturierte Kundengutschriften,0
 model,"ir.action,name",act_invoice_out_invoice_form5,Opened Invoices,Fakturierte Kundenrechnungen,0
 model,"ir.action,name",act_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Fakturierte Lieferantengutschriften,0
 model,"ir.action,name",act_invoice_in_invoice_form5,Opened Supplier Invoices,Fakturierte Lieferantenrechnungen,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
+model,"ir.action,name",,Payment Terms,Zahlungsbedingungen,0
 model,"ir.action,name",act_payment_term_form,Payment Terms,Zahlungsbedingungen,0
 model,"ir.action,name",act_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro Forma Kundengutschriften,0
 model,"ir.action,name",act_invoice_out_invoice_form4,Pro Forma Invoices,Pro Forma Kundenrechnungen,0
@@ -235,6 +242,7 @@ model,"ir.ui.menu,name",menu_invoice_out_invoice_form5,Opened Invoices,Fakturier
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Fakturierte Lieferantengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form5,Opened Supplier Invoices,Fakturierte Lieferantenrechnungen,0
 model,"ir.ui.menu,name",menu_payment_terms_configuration,Payment Terms,Zahlungsbedingungen,0
+model,"ir.ui.menu,name",,Payment Terms,Zahlungsbedingungen,0
 model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Zahlungsbedingungen,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro Forma Kundengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form4,Pro Forma Invoices,Pro Forma Kundenrechnungen,0
