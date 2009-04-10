@@ -2,14 +2,14 @@ type,name,res_id,src,value,fuzzy
 error,stock.inventory.line,0,Line quantity must be positive!,Les quantités sur les lignes doivent être positives!,0
 error,stock.inventory.line,0,Product must be unique by inventory!,Chaque produit ne peut apparaître qu'une seule fois par inventaire,0
 error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,Un emplacement avec des mouvements ne peut pas être changé en un type qui ne supporte pas les mouvements.,0
-error,stock.location,0,You can not create recursive locations!,Vous ne pouvez pas créer des emplacements récursifs,0
-error,stock.move,0,Move can not be in both Supplier and Customer Shipment,Un mouvement ne peut pas être en même temps dans une expédition founisseur et une expédition client.,0
+error,stock.location,0,You can not create recursive locations!,Vous ne pouvez pas créer des emplacements récursifs !,0
+error,stock.move,0,Move can be on only one Shipment,Un mouvement ne peut être que sur une seule expédition,0
 error,stock.move,0,Move quantity must be positive,La quantité sur le mouvement doit être positive.,0
 error,stock.move,0,Source and destination location must be different,Les emplacements d'origine et de destination doivent être distincts,0
 error,stock.move,0,You can not set state to assigned!,Vous ne pouvez pas mettre l'état à assigné !,0
 error,stock.move,0,You can not set state to done!,Vous ne pouvez pas mettre l'état à fait !,0
 error,stock.move,0,You can not set state to draft!,Vous ne pouvez pas mettre l'état à brouillon !,0
-error,stock.move,0,You can not use service product for a move!,Vous ne pouvez pas utiliser un produit de type service sur un mouvement !,0
+error,stock.move,0,You can not use service products for a move!,Vous ne pouvez pas utiliser un produit de type service sur un mouvement !,0
 error,stock.move,0,You can only delete draft or cancelled moves!,Vous pouvez  supprimer que des mouvements qui sont  annulés ou a l'état de brouillon !,0
 error,stock.packing.in,0,Incoming Moves must have the warehouse input location as destination location!,Les mouvements d'entrée doivent avoir l'emplacement d'entrée de l'entrepôt comme destination !,0
 error,stock.packing.in,0,Inventory Moves must have the warehouse input location as source location!,Les mouvements d'inventaire doivent avoir l'emplacement d'entrée de l'entrepôt comme source !,0
@@ -149,18 +149,20 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 * Une date dans le passé retournera des données historiques.",0
 model,"ir.action,name",act_packing_out_form_assigned,Assigned Customer Shipments,Expéditions client assignées,0
 model,"ir.action,name",act_packing_internal_assigned_form,Assigned Internal Shipments,Expédition internes assignées,0
+model,"ir.action,name",wizard_packing_in_return_assign,Assign Purchase Return Shipment,Assigner le retour d'expédition fournisseur,0
 model,"ir.action,name",wizard_packing_internal_assign,Assign Shipment Internal,Assigner l'expédition interne,0
 model,"ir.action,name",wizard_packing_out_assign,Assign Shipment Out,Assigner l'expédition de sortie,0
-model,"ir.action,name",wizard_packing_in_return_assign,Assign Purchase Return Shipment,Assigner le retour d'expédition fournisseur,0
 model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Compléter l'inventaire,0
 model,"ir.action,name",create_packing_out_return,Create Return Shipment,Créer l'expédition de retour,0
-model,"ir.action,name",report_packing_out,Customer Shipment,Expédition client,0
+model,"ir.action,name",act_packing_out_return_form,Customer Return Shipments,Retour d'expéditions client,0
 model,"ir.action,name",act_packing_out_form,Customer Shipments,Expéditions client,0
+model,"ir.action,name",act_packing_out_form2,Customer Shipments,Expéditions client,0
 model,"ir.action,name",act_packing_out_form_ready,Customer Shipments Ready for Shipping,Expéditions client prêtes à livrer,0
 model,"ir.action,name",act_packing_out_form_waiting,Customer Shipments Waiting Assignation,Expéditions client en attente d'assignation,0
-model,"ir.action,name",act_packing_out_return_form,Customer Return Shipments,Retour d'expéditions client,0
+model,"ir.action,name",report_packing_out_delivery_note,Delivery Note,Bon de livraison,0
 model,"ir.action,name",act_packing_internal_draft_form,Draft Internal Shipments,Expéditions internes brouillon,0
 model,"ir.action,name",act_location_form,Edit Locations,Éditer les emplacements,0
+model,"ir.action,name",report_packing_internal,Internal Shipment,Expédition interne,0
 model,"ir.action,name",act_packing_internal_form,Internal Shipments,Expédition interne,0
 model,"ir.action,name",act_packing_internal_waiting_form,Internal Shipments Waiting Assignation,Expéditions internes en attente d'assignation,0
 model,"ir.action,name",act_inventory_form,Inventories,Inventaires,0
@@ -171,32 +173,36 @@ model,"ir.action,name",act_move_form_supp_proceed,Moves from Suppliers Waiting A
 model,"ir.action,name",act_move_form_cust,Moves to Customers,Mouvements clients,0
 model,"ir.action,name",act_packing_out_return_form2,New Customer Return Shipment,Nouveau retour d'expédition client,0
 model,"ir.action,name",act_packing_internal_new_form,New Internal Shipment,Nouvelle expédition Interne,0
-model,"ir.action,name",act_packing_in_form2,New Supplier Shipment,Nouvelle expédition fournisseur,0
 model,"ir.action,name",act_packing_in_return_new_form,New Supplier Return Shipment,Nouveau retour d'expédition fournisseur,0
+model,"ir.action,name",act_packing_in_form2,New Supplier Shipment,Nouvelle expédition fournisseur,0
+model,"ir.action,name",report_packing_out_picking_list,Picking List,Liste de prélèvement,0
 model,"ir.action,name",wizard_location_open,Product by Location,Produits par emplacement,0
 model,"ir.action,name",wizard_product_open,Product Quantities,Quantités de produit,0
 model,"ir.action,name",act_product_by_location,Products by Locations,Produits par emplacements,0
 model,"ir.action,name",act_location_quantity_tree,Product Stock,Quantités en stock,0
 model,"ir.action,name",act_packing_in_form_received,Received Supplier packings,Expéditions fournisseur reçues,0
-model,"ir.action,name",act_packing_in_form,Supplier Shipments,Expéditions fournisseur,0
+model,"ir.action,name",report_packing_in_restocking_list,Restocking List,Liste de restockage,0
+model,"ir.action,name",report_packing_out_return_restocking_list,Restocking List,Liste de restockage,0
 model,"ir.action,name",act_packing_in_return_form,Supplier Return Shipments,Retour d'expéditions fournisseur,0
-model,"ir.sequence,name",sequence_packing_out,Customer Shipment,Expédition client,0
+model,"ir.action,name",act_packing_in_form,Supplier Shipments,Expéditions fournisseur,0
+model,"ir.action,name",act_packing_out_form3,Supplier Shipments,Expéditions fournisseur,0
 model,"ir.sequence,name",sequence_packing_out_return,Customer Return Shipment,Retour d'expédition client,0
+model,"ir.sequence,name",sequence_packing_out,Customer Shipment,Expédition client,0
 model,"ir.sequence,name",sequence_packing_internal,Internal Shipment,Expédition Interne,0
-model,"ir.sequence,name",sequence_packing_in,Supplier Shipment,Expédition fournisseur,0
 model,"ir.sequence,name",sequence_packing_in_return,Supplier Return Shipment,Retour d'expédition fournisseur,0
-model,"ir.sequence.type,name",sequence_type_packing_out,Customer Shipment,Expédition client,0
+model,"ir.sequence,name",sequence_packing_in,Supplier Shipment,Expédition fournisseur,0
 model,"ir.sequence.type,name",sequence_type_packing_out_return,Customer Return Shipment,Retour d'expédition client,0
+model,"ir.sequence.type,name",sequence_type_packing_out,Customer Shipment,Expédition client,0
 model,"ir.sequence.type,name",sequence_type_packing_internal,Internal Shipment,Expédition interne,0
-model,"ir.sequence.type,name",sequence_type_packing_in,Supplier Shipment,Expédition fournisseur,0
 model,"ir.sequence.type,name",sequence_type_packing_in_return,Supplier Return Shipment,Retour d'expédition fournisseur,0
+model,"ir.sequence.type,name",sequence_type_packing_in,Supplier Shipment,Expédition fournisseur,0
 model,"ir.ui.menu,name",menu_packing_out_assigned,Assigned Customer Shipments,Expéditions client assignées,0
 model,"ir.ui.menu,name",menu_packing_internal_assigned_form,Assigned Internal Shipments,Expéditions internes assignées,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
+model,"ir.ui.menu,name",menu_packing_out_return_form,Customer Return Shipments,Retour d'expédition client,0
 model,"ir.ui.menu,name",menu_packing_out_form,Customer Shipments,Expéditions client,0
 model,"ir.ui.menu,name",menu_packing_out_ready,Customer Shipments Ready for Shipping,Expéditions client prêtes pour la livraison,0
 model,"ir.ui.menu,name",menu_packing_out_waiting,Customer Shipments Waiting Assignation,Expéditions client en attente d'assignation,0
-model,"ir.ui.menu,name",menu_packing_out_return_form,Customer Return Shipments,Retour d'expédition client,0
 model,"ir.ui.menu,name",menu_packing_internal_draft_form,Draft Internal Shipments,Expéditions internes brouillons,0
 model,"ir.ui.menu,name",menu_location_form,Edit Locations,Éditer les emplacements,0
 model,"ir.ui.menu,name",menu_packing_internal_form,Internal Shipments,Expéditions internes,0
@@ -210,15 +216,15 @@ model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting
 model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Mouvements clients,0
 model,"ir.ui.menu,name",menu_packing_out_return_form2,New Customer Return Shipment,Nouveau retour d'expédition client,0
 model,"ir.ui.menu,name",menu_packing_internal_new_form,New Internal Shipment,Nouvelle expédition Interne,0
-model,"ir.ui.menu,name",menu_packing_in_form2,New Supplier Shipment,Nouvelle expédition fournisseur,0
 model,"ir.ui.menu,name",menu_packing_in_return_new_form,New Supplier Return Shipment,Nouveau retour d'expédition fournisseur,0
+model,"ir.ui.menu,name",menu_packing_in_form2,New Supplier Shipment,Nouvelle expédition fournisseur,0
 model,"ir.ui.menu,name",menu_packing_in_received,Received Supplier packings,Expéditions fournisseur reçues,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Rapports,0
-model,"ir.ui.menu,name",menu_packing_in_form,Supplier Shipments,Expéditions fournisseur,0
 model,"ir.ui.menu,name",menu_packing_in_return_form,Supplier Return Shipments,Retour d'expédition fournisseur,0
+model,"ir.ui.menu,name",menu_packing_in_form,Supplier Shipments,Expéditions fournisseur,0
 model,"res.group,name",group_stock,Stock,Stock,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administration des stocks,0
-model,"stock.inventory.complete.init,name",0,Complete Inventory Init,,0
+model,"stock.inventory.complete.init,name",0,Complete Inventory Init,Compléter l'inventaire - Init,0
 model,"stock.inventory.line,name",0,Stock Inventory Line,Ligne d'inventaire de stock,0
 model,"stock.inventory,name",0,Stock Inventory,Inventaire du stock,0
 model,"stock.location,name",location_customer,Customer,Client,0
@@ -267,21 +273,69 @@ model,"workflow.activity,name",packing_out_return_act_received,Received,Reçu,0
 model,"workflow.activity,name",packingout_act_waiting,Waiting,En attente,0
 model,"workflow.activity,name",packinginternal_act_waiting,Waiting,En attente,0
 model,"workflow.activity,name",packing_in_return_act_waiting,Waiting,En attente,0
-model,"workflow,name",wkf_packingout,Customer Shipment,Expédition client,0
 model,"workflow,name",wkf_packing_out_return,Customer Return Shipment,Retour d'expédition client,0
+model,"workflow,name",wkf_packingout,Customer Shipment,Expédition client,0
 model,"workflow,name",wkf_packinginternal,Internal Shipment,Expédition interne,0
 model,"workflow,name",wkf_inventory,Inventory,Inventaire,0
-model,"workflow,name",wkf_packingin,Supplier Shipment,Expédition fournisseur,0
 model,"workflow,name",wkf_packing_in_return,Supplier Return Shipment,Retour d'expédition fournisseur,0
-odt,stock.packing.out,0,Customer Code:,Code Client :,0
-odt,stock.packing.out,0,Date:,Date :,0
-odt,stock.packing.out,0,E-Mail:,E-Mail :,0
-odt,stock.packing.out,0,Shipment List,Liste d'expédition,0
-odt,stock.packing.out,0,Shipment Number:,Expédition Numéro :,0
-odt,stock.packing.out,0,Phone:,Téléphone,0
-odt,stock.packing.out,0,Product,Produit,0
-odt,stock.packing.out,0,Quantity,Quantité,0
-odt,stock.packing.out,0,Reference:,Référence :,0
+model,"workflow,name",wkf_packingin,Supplier Shipment,Expédition fournisseur,0
+odt,stock.packing.in.restocking_list,0,Code:,Code :,0
+odt,stock.packing.in.restocking_list,0,E-Mail:,E-Mail :,0
+odt,stock.packing.in.restocking_list,0,From Location,Emplacement d'origine,0
+odt,stock.packing.in.restocking_list,0,Phone:,Téléphone :,0
+odt,stock.packing.in.restocking_list,0,Planned Date:,Date planifiée :,0
+odt,stock.packing.in.restocking_list,0,Product,Produit,0
+odt,stock.packing.in.restocking_list,0,Quantity,Quantité,0
+odt,stock.packing.in.restocking_list,0,Reference:,Référence :,0
+odt,stock.packing.in.restocking_list,0,Restocking List,Liste de restockage,0
+odt,stock.packing.in.restocking_list,0,Supplier:,Fournisseur :,0
+odt,stock.packing.in.restocking_list,0,To Location,Emplacement de destination,0
+odt,stock.packing.in.restocking_list,0,Warehouse:,Entrepôt :,0
+odt,stock.packing.internal.report,0,Code:,Code :,0
+odt,stock.packing.internal.report,0,E-Mail:,E-Mail :,0
+odt,stock.packing.internal.report,0,From Location,Emplacement d'origine,0
+odt,stock.packing.internal.report,0,From Location:,Emplacement d'origine :,0
+odt,stock.packing.internal.report,0,Internal Shipment,Expédition interne,0
+odt,stock.packing.internal.report,0,Phone:,Téléphone :,0
+odt,stock.packing.internal.report,0,Planned Date:,Date planifiée :,0
+odt,stock.packing.internal.report,0,Product,Produit,0
+odt,stock.packing.internal.report,0,Quantity,Quantité,0
+odt,stock.packing.internal.report,0,Reference:,Référence :,0
+odt,stock.packing.internal.report,0,To Location,Emplacement de destination,0
+odt,stock.packing.internal.report,0,To Location:,Emplacement de destination :,0
+odt,stock.packing.out.delivery_note,0,Customer Code:,Code client :,0
+odt,stock.packing.out.delivery_note,0,Date:,Date :,0
+odt,stock.packing.out.delivery_note,0,Delivery Note,Bon de livraison,0
+odt,stock.packing.out.delivery_note,0,E-Mail:,E-Mail :,0
+odt,stock.packing.out.delivery_note,0,Phone:,Téléphone :,0
+odt,stock.packing.out.delivery_note,0,Product,Produit,0
+odt,stock.packing.out.delivery_note,0,Quantity,Quantité,0
+odt,stock.packing.out.delivery_note,0,Reference:,Référence :,0
+odt,stock.packing.out.delivery_note,0,Shipment Number:,Numéro d'expédition :,0
+odt,stock.packing.out.picking_list,0,Code:,Code :,0
+odt,stock.packing.out.picking_list,0,Customer:,Client :,0
+odt,stock.packing.out.picking_list,0,E-Mail:,E-Mail:,0
+odt,stock.packing.out.picking_list,0,From Location,Emplacement d'origine,0
+odt,stock.packing.out.picking_list,0,Phone:,Téléphone :,0
+odt,stock.packing.out.picking_list,0,Picking List,Liste de prélèvement,0
+odt,stock.packing.out.picking_list,0,Planned Date:,Date planifiée :,0
+odt,stock.packing.out.picking_list,0,Product,Produit,0
+odt,stock.packing.out.picking_list,0,Quantity,Quantité,0
+odt,stock.packing.out.picking_list,0,Reference:,Référence :,0
+odt,stock.packing.out.picking_list,0,To Location,Emplacement de destination,0
+odt,stock.packing.out.picking_list,0,Warehouse:,Entrepôt :,0
+odt,stock.packing.out.return.restocking_list,0,Code:,Code :,0
+odt,stock.packing.out.return.restocking_list,0,E-Mail:,E-Mail :,0
+odt,stock.packing.out.return.restocking_list,0,From Location,Emplacement d'origine,0
+odt,stock.packing.out.return.restocking_list,0,Phone:,Téléphone :,0
+odt,stock.packing.out.return.restocking_list,0,Planned Date:,Date planifiée :,0
+odt,stock.packing.out.return.restocking_list,0,Product,Produit,0
+odt,stock.packing.out.return.restocking_list,0,Quantity,Quantité,0
+odt,stock.packing.out.return.restocking_list,0,Reference:,Référence :,0
+odt,stock.packing.out.return.restocking_list,0,Restocking List,Liste de restockage,0
+odt,stock.packing.out.return.restocking_list,0,Supplier:,Fournisseur :,0
+odt,stock.packing.out.return.restocking_list,0,To Location,Emplacement de destination,0
+odt,stock.packing.out.return.restocking_list,0,Warehouse:,Entrepôt :,0
 selection,"stock.inventory,state",0,Canceled,Annulé,0
 selection,"stock.inventory,state",0,Done,Fait,0
 selection,"stock.inventory,state",0,Draft,Brouillon,0
