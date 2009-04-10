@@ -1,5 +1,5 @@
 type,name,res_id,src,value,fuzzy
-error,purchase.request,0,Purchase request are only created by the system.,Les demandes d'achat sont uniquement crées par le sytème,0
+error,purchase.request,0,Purchase requests are only created by the system.,Les demandes d'achat sont uniquement crées par le sytème,0
 error,purchase.request.create_purchase,0,Purchase price is missing for product: %s (id: %s)!,Le prix d'achat est absent pour le produit : %s (id: %s) !,0
 error,purchase.request.create_purchase,0,This price is necessary for creating purchase.,Ce prix est nécessaire pour créer les achats.,0
 error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,La Quantité maximale doit être supérieure à la quantité minimale,0
@@ -67,7 +67,7 @@ view,purchase.request,0,Purchase Request,Demande d'achat,0
 view,purchase.request,0,Purchase Requests,Demandes d'achat,0
 view,purchase.request,0,Supply Info,Information d'approvisionnement,0
 view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Supplier,Création de la commande: fournisseur absent,0
-view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Creation de la comande: règle d'appro. absente,0
+view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Création de la commande: règle d'appro. absente,0
 view,stock.order_point,0,Locations,Emplacements,0
 view,stock.order_point,0,Order Point,Règle d'approvisionnement,0
 view,stock.order_point,0,Order Point Type,Type de Règle d'approvisionnement,0
