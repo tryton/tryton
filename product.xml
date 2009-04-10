@@ -159,7 +159,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem name="New Product" parent="menu_product_product"
                   sequence="1" id="menu_product_product_new"
-                  action="act_product_form2"/>
+                  action="act_product_form2" groups="group_product_admin"/>
 
         <record model="ir.action.act_window" id="act_product_by_category">
             <field name="name">Product by Category</field>
