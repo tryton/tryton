@@ -33,7 +33,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     _description = __doc__
     _order_name = 'number'
     company = fields.Many2One('company.company', 'Company', required=True,
-            states=_STATES)
+            states=_STATES, domain="[('id', '=', context.get('company', 0))]")
     type = fields.Selection(_TYPE, 'Type', select=1, on_change=['type'],
             required=True, states={
                 'readonly': "state != 'draft' or context.get('type', False)" \
@@ -1273,7 +1273,7 @@ class InvoiceLine(ModelSQL, ModelView):
             string='Currency Digits', on_change_with=['currency'])
     company = fields.Many2One('company.company', 'Company', states={
         'required': "not bool(invoice)",
-        })
+        }, domain="[('id', '=', context.get('company', 0))]")
 
     sequence = fields.Integer('Sequence', states={
             'invisible': "context.get('standalone', False)",
