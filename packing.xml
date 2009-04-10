@@ -1072,7 +1072,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.report" id="report_packing_internal">
-            <field name="name">Internal Packing</field>
+            <field name="name">Internal Shipment</field>
             <field name="model">stock.packing.internal</field>
             <field name="report_name">stock.packing.internal.report</field>
             <field name="report">stock/internal_packing.odt</field>
