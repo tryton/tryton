@@ -546,7 +546,7 @@ model,"ir.ui.menu,name",menu_account_template_tree,Account Templates,Kontenplanv
 model,"ir.ui.menu,name",menu_account_type_form,Account Types,Kontentypen,0
 model,"ir.ui.menu,name",menu_account_type_tree,Account Types,Kontentypen,0
 model,"ir.ui.menu,name",menu_account_type_template_tree,Account Type Templates,Vorlagen für Kontentypen,0
-model,"ir.ui.menu,name",menu_aged_balance,Aged Balance,Fälligkeitsliste,0
+model,"ir.ui.menu,name",menu_aged_balance,Aged Balance,Fälligkeitsliste drucken,0
 model,"ir.ui.menu,name",menu_open_balance_sheet,Balance Sheet,Bilanzbogen,0
 model,"ir.ui.menu,name",menu_charts,Charts,Kontenpläne,0
 model,"ir.ui.menu,name",menu_close_fiscalyear,Close Fiscal Year,Geschäftsjahr abschließen,0
@@ -586,7 +586,7 @@ model,"ir.ui.menu,name",menu_tax_template_tree,Taxes Templates,Steuervorlagen,0
 model,"ir.ui.menu,name",menu_tax_group_form,Tax Groups,Steuergruppen,0
 model,"ir.ui.menu,name",menu_tax_rule_form,Tax Rules,Steuerregeln,0
 model,"ir.ui.menu,name",menu_tax_rule_template_form,Tax Rule Templates,Vorlagen Steuerregeln,0
-model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Offene Posten,0
+model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Offene Posten drucken,0
 model,"ir.ui.menu,name",menu_update_chart_account,Update Chart of Account from Template,Kontenplan von Vorlage aktualisieren,0
 model,"res.group,name",group_account,Account,Buchhaltung,0
 model,"res.group,name",group_account_admin,Account Administration,Administration Buchhaltung,0
