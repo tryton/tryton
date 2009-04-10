@@ -1,12 +1,12 @@
 type,name,res_id,src,value,fuzzy
 error,product.uom,0,Rate and factor can not be both equal to zero.,Tasa de cambio y factor no pueden ser cero simultáneamente.,0
-field,"product.category,childs",0,Children,Hij@s,0
+field,"product.category,childs",0,Children,Hij@s,1
 field,"product.category,name",0,Name,Nombre,0
 field,"product.category,parent",0,Parent,Padre,0
-field,"product.category,rec_name",0,Name,Nombre,0
+field,"product.category,rec_name",0,Name,Nombre del campo,1
 field,"product.product,code",0,Code,Código,0
 field,"product.product,description",0,Description,Descripción,0
-field,"product.product,rec_name",0,Name,Nombre,0
+field,"product.product,rec_name",0,Name,Nombre del campo,1
 field,"product.product,template",0,Product Template,Plantilla de Producto,0
 field,"product.template,active",0,Active,Activo,0
 field,"product.template,category",0,Category,Categoría,0
@@ -18,18 +18,18 @@ field,"product.template,list_price",0,List Price,Precio de Lista,0
 field,"product.template,list_price_uom",0,List Price,Precio de Lista,0
 field,"product.template,name",0,Name,Nombre,0
 field,"product.template,products",0,Products,Productos,0
-field,"product.template,rec_name",0,Name,Nombre,0
+field,"product.template,rec_name",0,Name,Nombre del campo,1
 field,"product.template,type",0,Type,Tipo,0
 field,"product.uom,active",0,Active,Activo,0
 field,"product.uom,category",0,UOM Category,Categoría UDM,0
 field,"product.uom.category,name",0,Name,Nombre,0
-field,"product.uom.category,rec_name",0,Name,Nombre,0
+field,"product.uom.category,rec_name",0,Name,Nombre del campo,1
 field,"product.uom.category,uoms",0,Unit of Measures,Unidad de Medidas,0
 field,"product.uom,digits",0,Display Digits,Mostrar Dígitos,0
 field,"product.uom,factor",0,Factor,Factor,0
 field,"product.uom,name",0,Name,Nombre,0
 field,"product.uom,rate",0,Rate,Tasa de Cambio,0
-field,"product.uom,rec_name",0,Name,Nombre,0
+field,"product.uom,rec_name",0,Name,Nombre del campo,1
 field,"product.uom,rounding",0,Rounding Precision,Precisión de Redondeo,0
 field,"product.uom,symbol",0,Symbol,Símbolo,0
 help,"product.uom,factor",0,"The coefficient for the formula:
@@ -38,7 +38,7 @@ help,"product.uom,rate",0,"The coefficient for the formula:
 1 (base unit) = coef (this unit)",El coeficiente para la fórmula:,0
 model,"ir.action,name",act_category_tree,Categories,Categorías,0
 model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Categorías de Unidad de Medida,0
-model,"ir.action,name",act_product_by_category,Product by Category,Producto por Categoría,0
+model,"ir.action,name",act_product_by_category,Product by Category,Productos por Categoría,0
 model,"ir.action,name",act_category_form,Product Categories,Categorías de Producto,0
 model,"ir.action,name",act_product_form,Products,Productos,0
 model,"ir.action,name",act_product_form2,Products,Productos,0
@@ -52,11 +52,11 @@ model,"ir.ui.menu,name",menu_uom_form2,New Unit of Measure,Nueva Unidad de Mesur
 model,"ir.ui.menu,name",menu_main_product,Product,Producto,0
 model,"ir.ui.menu,name",menu_product_product,Products,Productos,0
 model,"ir.ui.menu,name",menu_uom_form,Units of Measure,Unidades de Medida,0
-model,"product.category,name",0,Product Category,Categoría de Producto,0
-model,"product.product,name",0,Product,Producto,0
-model,"product.template,name",0,Product Template,Plantilla de Producto,0
+model,"product.category,name",0,Product Category,Categoría de Producto,1
+model,"product.product,name",0,Product,Productos,1
+model,"product.template,name",0,Product Template,Plantilla de Producto,1
 model,"product.uom.category,name",uom_cat_length,Length,Longitud,0
-model,"product.uom.category,name",0,Product uom category,Categoría de udm de Producto,0
+model,"product.uom.category,name",0,Product uom category,Categoría uom de producto,0
 model,"product.uom.category,name",uom_cat_surface,Surface,Superficie,0
 model,"product.uom.category,name",uom_cat_time,Time,Tiempo,0
 model,"product.uom.category,name",uom_cat_unit,Units,Unidades,0
@@ -127,7 +127,7 @@ model,"product.uom,symbol",uom_unit,u,u,0
 model,"product.uom,symbol",uom_work_day,wd,wd,0
 model,"product.uom,symbol",uom_yard,yd,yd,0
 model,"product.uom,symbol",uom_square_yard,yd²,yd²,0
-model,"res.group,name",group_product_admin,Product Administration,Productos,0
+model,"res.group,name",group_product_admin,Product Administration,Administración de Producto,0
 selection,"product.template,cost_price_method",0,Average,Promedio,0
 selection,"product.template,cost_price_method",0,Fixed,Fijo,0
 selection,"product.template,type",0,Consumable,Consumible,0
@@ -138,10 +138,10 @@ view,product.category,0,Product Categories,Categorías de Producto,0
 view,product.category,0,Product Category,Categoría de Producto,0
 view,product.product,0,General,General,0
 view,product.product,0,Product,Producto,0
-view,product.product,0,Products,Productos,0
+view,product.product,0,Products,Productos,1
 view,product.product,0,Product Suppliers,Proveedores de Productos,0
-view,product.template,0,General,General,0
-view,product.template,0,Product Template,Plantilla de Producto,0
+view,product.template,0,General,General,1
+view,product.template,0,Product Template,Plantilla de Producto,1
 view,product.template,0,Product Templates,Plantillas de Producto,0
 view,product.uom,0,Unit of Measure,Unidad de Medida,0
 view,product.uom,0,Units of Measure,Unidades de Medida,0
