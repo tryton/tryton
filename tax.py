@@ -957,7 +957,7 @@ class Rule(ModelSQL, ModelView):
                     context=context):
                 return rule_line_obj.get_taxes(cursor, user, line,
                         context=context)
-        return [tax.id]
+        return tax and [tax.id] or False
 
     def update_rule(self, cursor, user, rule, context=None, template2rule=None):
         '''
