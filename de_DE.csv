@@ -2,7 +2,7 @@ type,name,res_id,src,value,fuzzy
 error,account.invoice,0,You can not delete invoices that come from a purchase!,Durch einen Einkauf generierte Rechnungen können nicht gelöscht werden!,0
 error,product.template,0,"Purchase prices are based on the purchase uom, are you sure to change it?","Einkaufspreise basieren auf der Maßeinheit für den Einkauf.
 Soll sie wirklich geändert werden?",0
-error,purchase.line,0,"It misses an ""account_expense"" default property!",Es ist keine Standardeigenschaft für das Aufwandskonto definiert!,0
+error,purchase.line,0,"It misses an ""account expense"" default property!",Es ist keine Standardeigenschaft für das Aufwandskonto definiert!,0
 error,purchase.line,0,"It misses an ""Account Expense"" on product ""%s""!","Es ist ken Aufwandskonto für Artikel ""%s"" definiert!",0
 error,purchase.line,0,The supplier location is required!,Der Lagerort des Lieferanten muss eingegeben werden!,0
 error,purchase.purchase,0,Invoice addresses must be defined for the quotation.,Die Rechnungsadresse muss für ein Angebot angegeben werden.,0
@@ -122,7 +122,6 @@ model,"ir.action,name",act_purchase_form_new,New Purchase,Neuer Einkauf,0
 model,"ir.action,name",act_open_supplier,Parties associated to Purchases,Parteien: Einkäufen zugeordnet,0
 model,"ir.action,name",report_purchase,Purchase,Einkauf drucken,0
 model,"ir.action,name",act_purchase_form,Purchases,Einkäufe,0
-model,"ir.action,name",,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_form2,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
 model,"ir.action,name",act_packing_form,Shipments,Lieferposten,0
