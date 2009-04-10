@@ -42,7 +42,7 @@ field,"analytic_account.line,name",0,Name,Name,0
 field,"analytic_account.line,party",0,Party,Partei,0
 field,"analytic_account.line,rec_name",0,Name,Name,0
 field,"analytic_account.line,reference",0,Reference,Referenz,0
-model,"analytic_account.account-analytic_account.account.selection,name",0,analytic_account.account-analytic_account.account.selection,analytic_account.account-analytic_account.account.selection,0
+model,"analytic_account.account-analytic_account.account.selection,name",0,Analytic Account - Analytic Account Selection,Kostenstelle - Kostenstelle Auswahl,0
 model,"analytic_account.account,name",0,Analytic Account,Kostenstelle,0
 model,"analytic_account.account.open_chart_account.init,name",0,Open Chart Account Init,Kontenplan Öffnen Init,0
 model,"analytic_account.account.selection,name",0,Analytic Account Selection,Kostenstelle Auswahl,0
