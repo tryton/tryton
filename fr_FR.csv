@@ -1,14 +1,15 @@
 type,name,res_id,src,value,fuzzy
-error,project_revenue.service,0,You can have only once the same product by employee!,Vous pouvez avoir seulement une fois le même produit par employé!,0
-error,project_revenue.service,0,You must use a product with UOM of time!,Vous devez utiliser un produit avec un UOM,0
-error,timesheet.line,0,You can not use a product that is not an employee services!,Vous ne pouvez utiliser un produit qui n'est pas un service d'employé,0
+error,project_revenue.service,0,You can have only once the same product by employee!,Vous ne pouvez utiliser qu'une seule fois le même produit par employé !,0
+error,project_revenue.service,0,You must use a product with UOM of time!,Vous devez utiliser un produit dont l'UDM est de type horaire !,0
+error,timesheet.line,0,You can not use a product that is not an employee services!,Vous ne pouvez pas utiliser un produit qui n'est pas un service de l'employé !,0
 field,"company.employee,services",0,Services,Services,0
 field,"project_revenue.service,employee",0,Employee,Employé,0
 field,"project_revenue.service,product",0,Product,Produit,0
+field,"project_revenue.service,rec_name",0,Name,Nom,0
 field,"project_revenue.service,sequence",0,Sequence,Séquence,0
 field,"timesheet.line,product",0,Service,Service,0
-help,"company.employee,services",0,Services allowed to use in timesheets.,Services autorisé a être utilisé dans les feuilles de temps,0
-help,"project_revenue.service,sequence",0,Use to order Services,,0
+help,"company.employee,services",0,Services allowed to use in timesheets.,Services autorisés sur les feuilles de présence.,0
+help,"project_revenue.service,sequence",0,Use to order Services,Sert à ordonner les services,0
 model,"project_revenue.service,name",0,Service,Service,0
 view,company.employee,0,Services,Services,0
 view,project_revenue.service,0,Service,Service,0
