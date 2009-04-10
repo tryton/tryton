@@ -949,7 +949,7 @@ class SaleLine(ModelSQL, ModelView):
             'missing_account_revenue': 'It misses ' \
                     'an "Account Revenue" on product "%s"!',
             'missing_account_revenue_property': 'It misses ' \
-                    'an "account_revenue" default property!',
+                    'an "account Revenue" default property!',
             })
 
     def init(self, cursor, module_name):
