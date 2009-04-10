@@ -11,6 +11,8 @@
 ''',
     'description_de_DE': '''Fügt dem Objekt Lagerort eine Sequenz hinzu
 ''',
+    'description_fr_FR': '''Ajoute une séquence sur le modèle emplacement
+''',
     'depends': [
         'ir',
         'stock',
@@ -20,5 +22,6 @@
     ],
     'translation': [
         'de_DE.csv',
+        'fr_FR.csv',
     ],
 }
