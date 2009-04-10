@@ -157,16 +157,14 @@ model,"ir.action,name",wizard_packing_out_assign,Assign Shipment Out,Zuweisung L
 model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Lagerbestandspositionen komplettieren,0
 model,"ir.action,name",create_packing_out_return,Create Return Shipment,Erstellung Warenrückgabe,0
 model,"ir.action,name",act_packing_out_return_form,Customer Return Shipments,Warenrücknahmen (von Kunden),0
-model,"ir.action,name",,Customer Shipment,Lieferposten Kunde,0
 model,"ir.action,name",act_packing_out_form,Customer Shipments,Lieferposten an Kunden,0
-model,"ir.action,name",,Customer Shipments,Lieferposten an Kunden,0
 model,"ir.action,name",act_packing_out_form2,Customer Shipments,Lieferposten an Kunden,0
 model,"ir.action,name",act_packing_out_form_ready,Customer Shipments Ready for Shipping,Versandbereite Lieferposten an Kunden,0
 model,"ir.action,name",act_packing_out_form_waiting,Customer Shipments Waiting Assignation,Zuzuweisende Lieferposten an Kunden,0
 model,"ir.action,name",report_packing_out_delivery_note,Delivery Note,Lieferschein,0
 model,"ir.action,name",act_packing_internal_draft_form,Draft Internal Shipments,Entwürfe (Interne Lieferposten),0
 model,"ir.action,name",act_location_form,Edit Locations,Lagerorte bearbeiten,0
-model,"ir.action,name",report_packing_internal,Internal Packing,Interner Lieferposten,0
+model,"ir.action,name",report_packing_internal,Internal Shipment,Interner Lieferposten,0
 model,"ir.action,name",act_packing_internal_form,Internal Shipments,Interne Lieferposten,0
 model,"ir.action,name",act_packing_internal_waiting_form,Internal Shipments Waiting Assignation,Zuzuweisende Interne Lieferposten,0
 model,"ir.action,name",act_inventory_form,Inventories,Lagerbestände,0
@@ -189,7 +187,6 @@ model,"ir.action,name",report_packing_in_restocking_list,Restocking List,Einlage
 model,"ir.action,name",report_packing_out_return_restocking_list,Restocking List,Einlagerungsliste,0
 model,"ir.action,name",act_packing_in_return_form,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
 model,"ir.action,name",act_packing_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
-model,"ir.action,name",,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"ir.action,name",act_packing_out_form3,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"ir.sequence,name",sequence_packing_out_return,Customer Return Shipment,Warenrücknahme Kunde,0
 model,"ir.sequence,name",sequence_packing_out,Customer Shipment,Lieferposten Kunde,0
@@ -300,7 +297,7 @@ odt,stock.packing.internal.report,0,Code:,Code:,0
 odt,stock.packing.internal.report,0,E-Mail:,E-Mail:,0
 odt,stock.packing.internal.report,0,From Location,Von Lagerort,0
 odt,stock.packing.internal.report,0,From Location:,Von Lagerort:,0
-odt,stock.packing.internal.report,0,Internal Packing,Interner Lieferposten,0
+odt,stock.packing.internal.report,0,Internal Shipment,Interner Lieferposten,0
 odt,stock.packing.internal.report,0,Phone:,Telefon:,0
 odt,stock.packing.internal.report,0,Planned Date:,Geplantes Datum:,0
 odt,stock.packing.internal.report,0,Product,Artikel,0
