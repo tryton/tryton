@@ -17,7 +17,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
             states={
                 'readonly': "state != 'draft' or bool(lines)",
-            })
+            }, domain="[('id', '=', context.get('company', 0))]")
     reference = fields.Char('Reference', readonly=True, select=1)
     description = fields.Char('Description', states={
         'readonly': "state != 'draft'",
