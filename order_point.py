@@ -44,7 +44,8 @@ class OrderPoint(ModelSQL, ModelView):
             digits="(16, unit_digits)", depends=['unit_digits'])
     max_quantity = fields.Float('Maximal Quantity', required=True,
             digits="(16, unit_digits)", depends=['unit_digits'])
-    company = fields.Many2One('company.company', 'Company', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+            domain="[('id', '=', context.get('company', 0))]")
     unit = fields.Function('get_unit', type='many2one', relation='product.uom',
             string='Unit')
     unit_digits = fields.Function('get_unit_digits', type='integer',
