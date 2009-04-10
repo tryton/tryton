@@ -854,7 +854,7 @@ class PurchaseLine(ModelSQL, ModelView):
             'missing_account_expense': 'It misses ' \
                     'an "Account Expense" on product "%s"!',
             'missing_account_expense_property': 'It misses ' \
-                    'an "account_expense" default property!',
+                    'an "account expense" default property!',
             })
 
     def init(self, cursor, module_name):
