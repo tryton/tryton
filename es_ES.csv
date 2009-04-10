@@ -9,21 +9,21 @@ field,"currency.currency,mon_decimal_point",0,Decimal Separator,Separador Decima
 field,"currency.currency,mon_grouping",0,Grouping,Agrupación,0
 field,"currency.currency,mon_thousands_sep",0,Thousands Separator,Separador de Miles,0
 field,"currency.currency,name",0,Name,Nombre,0
-field,"currency.currency,n_cs_precedes",0,Negative Currency Symbol Precedes,El Signo Negativo Precede,1
+field,"currency.currency,n_cs_precedes",0,Negative Currency Symbol Precedes,El Signo Negativo Precede,0
 field,"currency.currency,negative_sign",0,Negative Sign,Signo Negativo,0
-field,"currency.currency,n_sep_by_space",0,Negative Separate by Space,Signo Negativo Separado por Espacio,1
+field,"currency.currency,n_sep_by_space",0,Negative Separate by Space,Signo Negativo Separado por Espacio,0
 field,"currency.currency,n_sign_posn",0,Negative Sign Position,Posición de Signo Negativo,0
-field,"currency.currency,p_cs_precedes",0,Positive Currency Symbol Precedes,El signo Positivo Precede,1
+field,"currency.currency,p_cs_precedes",0,Positive Currency Symbol Precedes,El signo Positivo Precede,0
 field,"currency.currency,positive_sign",0,Positive Sign,Signo Positivo,0
-field,"currency.currency,p_sep_by_space",0,Positive Separate by Space,Signo Positivo Separado por Espacio,1
+field,"currency.currency,p_sep_by_space",0,Positive Separate by Space,Signo Positivo Separado por Espacio,0
 field,"currency.currency,p_sign_posn",0,Positive Sign Position,Posición del Signo Positivo,0
 field,"currency.currency,rate",0,Current rate,Moneda Actual,0
 field,"currency.currency.rate,currency",0,Currency,Moneda,0
 field,"currency.currency.rate,date",0,Date,Fecha,0
 field,"currency.currency.rate,rate",0,Rate,Tasa de Cambio,0
-field,"currency.currency.rate,rec_name",0,Name,Nombre del campo,1
+field,"currency.currency.rate,rec_name",0,Name,Nombre,0
 field,"currency.currency,rates",0,Rates,Tasas de Cambio,0
-field,"currency.currency,rec_name",0,Name,Nombre del campo,1
+field,"currency.currency,rec_name",0,Name,Nombre,0
 field,"currency.currency,rounding",0,Rounding factor,Factor de Redondeo,0
 field,"currency.currency,symbol",0,Symbol,Símbolo,0
 model,"currency.currency,name",afn,Afghani,Afghani,0
@@ -50,7 +50,7 @@ model,"currency.currency,name",nio,Cordoba Oro,Córdoba Oro,0
 model,"currency.currency,name",crc,Costa Rican Colon,Colón Costaricense,0
 model,"currency.currency,name",hrk,Croatian Kuna,Kuna Croata,0
 model,"currency.currency,name",cup,Cuban Peso,Peso Cubano,0
-model,"currency.currency,name",0,Currency,Moneda,1
+model,"currency.currency,name",0,Currency,Moneda,0
 model,"currency.currency,name",czk,Czech Koruna,Corona Checa,0
 model,"currency.currency,name",dkk,Danish Krone,Corona Danesa,0
 model,"currency.currency,name",mkd,Denar,Denario,0
@@ -118,7 +118,7 @@ model,"currency.currency,name",chf,Swiss Franc,Franco Suizo,0
 model,"currency.currency,name",kzt,Tenge,Tenge,0
 model,"currency.currency,name",ttd,Trinidad and Tobago Dollar,Dólar de Trinidad y Tobago,0
 model,"currency.currency,name",mnt,Tugrik,Tugrik,0
-model,"currency.currency,name",gbp,UK Pound,Libra Reino Unido,0
+model,"currency.currency,name",gbp,UK Pound,Libra Esterlina,0
 model,"currency.currency,name",usd,US Dollar,Dólar Americano,0
 model,"currency.currency,name",uzs,Uzbekistan Sum,Suma Uzbequistán,0
 model,"currency.currency,name",yer,Yemeni Rial,Real de Yemén,0
@@ -126,11 +126,11 @@ model,"currency.currency,name",jpy,Yen,Yen,0
 model,"currency.currency,name",cny,Yuan Renminbi,Yuan Renminbi,0
 model,"currency.currency,name",zwd,Zimbabwe Dollar,Dólar de Zimbawe,0
 model,"currency.currency,name",pln,Zloty,Zloty,0
-model,"currency.currency.rate,name",0,Rate,Tasa de Cambio,1
+model,"currency.currency.rate,name",0,Rate,Tasa de Cambio,0
 model,"ir.action,name",act_currency_form,Currencies,Monedas,0
 model,"ir.ui.menu,name",menu_currency_form,Currencies,Monedas,0
-model,"ir.ui.menu,name",menu_currency,Currency Management,Manejo de Moneda,0
-model,"res.group,name",group_currency_admin,Currency Administration,Administración de Moneda,0
+model,"ir.ui.menu,name",menu_currency,Currency Management,Gestión de Monedas,0
+model,"res.group,name",group_currency_admin,Currency Administration,Administrar Monedas,0
 view,currency.currency,0,Currencies,Monedas,0
 view,currency.currency,0,Currency,Moneda,0
 view,currency.currency,0,Formatting,Formato,0
