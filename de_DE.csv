@@ -141,13 +141,13 @@ model,"purchase.handle.packing.exception.ask,name",0,Shipment Exception Ask,Nach
 model,"purchase.line-account.invoice.line,name",0,Purchase Line - Invoice Line,Position Einkauf - Rechnungszeile,0
 model,"purchase.line-account.tax,name",0,Purchase Line - Tax,Position Einkauf - Steuer,0
 model,"purchase.line-ignored-stock.move,name",0,Purchase Line - Ignored Move,Position Einkauf - Bewegung Ignoriert,0
-model,"purchase.line,name",0,Purchase Line,Verkauf Position,0
+model,"purchase.line,name",0,Purchase Line,Einkauf Position,0
 model,"purchase.line-recreated-stock.move,name",0,Purchase Line - Ignored Move,Position Einkauf - Bewegung Nachgebildet,0
 model,"purchase.product_supplier,name",0,Product Supplier,Artikel Lieferant,0
 model,"purchase.product_supplier.price,name",0,Product Supplier Price,Artikel Einkaufspreis,0
 model,"purchase.purchase-account.invoice,name",0,Purchase - Invoice,Einkauf - Rechnung,0
 model,"purchase.purchase-ignored-account.invoice,name",0,Purchase - Ignored Invoice,Einkauf - Rechnung Ignoriert,0
-model,"purchase.purchase,name",0,Purchase,Verkauf,0
+model,"purchase.purchase,name",0,Purchase,Einkauf,0
 model,"purchase.purchase-recreated-account.invoice,name",0,Purchase - Recreated Invoice,Einkauf - Rechnung Nachgebildet,0
 model,"res.group,name",group_purchase,Purchase,Einkauf,0
 model,"res.group,name",group_purchase_admin,Purchase Administrator,Administration Einkauf,0
