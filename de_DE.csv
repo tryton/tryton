@@ -398,7 +398,7 @@ help,"account.tax,percentage",0,In %,In %,0
 help,"account.tax,sequence",0,Use to order the taxes,Wird für die Reihenfolge der Steuern verwendet,0
 help,"party.party,customer_tax_rule",0,Apply this rule on taxes when party is customer.,"Wendet diese Regel auf Steuern an, wenn die Partei ein Kunde ist",0
 help,"party.party,supplier_tax_rule",0,Apply this rule on taxes when party is supplier.,"Wendet diese Regel auf Steuern an, wenn die Partei ein Lieferant ist",0
-model,"account.account-account.tax,name",0,account.account-account.tax,account.account-account.tax,0
+model,"account.account-account.tax,name",0,Account - Tax,Konto - Steuer,0
 model,"account.account.create_chart_account.account,name",0,Create Chart Account Account,Kontenplanerstellung Konten,0
 model,"account.account.create_chart_account.init,name",0,Create Chart Account Init,Kontenplanerstellung Init,0
 model,"account.account.create_chart_account.properties,name",0,Create Chart Account Properties,Kontenplanerstellung Standardeigenschaften,0
@@ -830,7 +830,7 @@ wizard_button,"account.account.print_general_ledger,init,end",0,Cancel,Abbrechen
 wizard_button,"account.account.print_general_ledger,init,print",0,Print,Drucken,0
 wizard_button,"account.account.print_trial_balance,init,end",0,Cancel,Abbrechen,0
 wizard_button,"account.account.print_trial_balance,init,print",0,Print,Drucken,0
-wizard_button,"account.account.update_chart_account,init,end",0,Cancel,Annullieren,0
+wizard_button,"account.account.update_chart_account,init,end",0,Cancel,Abbrechen,0
 wizard_button,"account.account.update_chart_account,init,update_account",0,Ok,OK,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Geschäftsjahr abschließen,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,end",0,Cancel,Abbrechen,0
