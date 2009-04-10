@@ -1,7 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,product.template,0,There is no account expense/revenue defined on the product %s (%d),Il n'y a pas de compte dépense/revenu définit sur le produit %s (%d),0
-field,"product.category,account_expense",0,Account Expense,Compte de Dépense,0
-field,"product.category,account_revenue",0,Account Revenue,Compte de Revenu,0
+field,"product.category,account_expense",0,Account Expense,Compte de dépense,0
+field,"product.category,account_revenue",0,Account Revenue,Compte de revenu,0
 field,"product.category-customer-account.tax,product",0,Category,Catégorie,0
 field,"product.category-customer-account.tax,rec_name",0,Name,Nom,0
 field,"product.category-customer-account.tax,tax",0,Tax,Taxe,0
