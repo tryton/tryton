@@ -22,7 +22,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
             states={
                 'readonly': "state != 'draft' or bool(lines)",
-            })
+            }, domain="[('id', '=', context.get('company', 0))]")
     reference = fields.Char('Reference', size=None, readonly=True, select=1)
     supplier_reference = fields.Char('Supplier Reference', select=1)
     description = fields.Char('Description', size=None, states=_STATES)
@@ -1435,7 +1435,8 @@ class ProductSupplier(ModelSQL, ModelView):
     prices = fields.One2Many('purchase.product_supplier.price',
             'product_supplier', 'Prices')
     company = fields.Many2One('company.company', 'Company', required=True,
-            ondelete='CASCADE', select=1)
+            ondelete='CASCADE', select=1,
+            domain="[('id', '=', context.get('company', 0))]")
     delivery_time = fields.Integer('Delivery Time',
             help="In number of days")
 
