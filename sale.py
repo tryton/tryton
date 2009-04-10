@@ -831,6 +831,7 @@ class SaleInvoice(ModelSQL):
     'Sale - Invoice'
     _name = 'sale.sale-account.invoice'
     _table = 'sale_invoices_rel'
+    _description = __doc__
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=1,
             required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
@@ -843,6 +844,7 @@ class SaleIgnoredInvoice(ModelSQL):
     'Sale - Ignored Invoice'
     _name = 'sale.sale-ignored-account.invoice'
     _table = 'sale_invoice_ignored_rel'
+    _description = __doc__
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=1,
             required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
@@ -855,6 +857,7 @@ class SaleRecreatedInvoice(ModelSQL):
     'Sale - Recreated Invoice'
     _name = 'sale.sale-recreated-account.invoice'
     _table = 'sale_invoice_recreated_rel'
+    _description = __doc__
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=1,
             required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
@@ -949,7 +952,7 @@ class SaleLine(ModelSQL, ModelView):
             'missing_account_revenue': 'It misses ' \
                     'an "Account Revenue" on product "%s"!',
             'missing_account_revenue_property': 'It misses ' \
-                    'an "account_revenue" default property!',
+                    'an "account Revenue" default property!',
             })
 
     def init(self, cursor, module_name):
@@ -1298,6 +1301,7 @@ class SaleLineTax(ModelSQL):
     'Sale Line - Tax'
     _name = 'sale.line-account.tax'
     _table = 'sale_line_account_tax'
+    _description = __doc__
     line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
             select=1, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
@@ -1310,6 +1314,7 @@ class SaleLineInvoiceLine(ModelSQL):
     'Sale Line - Invoice Line'
     _name = 'sale.line-account.invoice.line'
     _table = 'sale_line_invoice_lines_rel'
+    _description = __doc__
     sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
             select=1, required=True)
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
@@ -1322,6 +1327,7 @@ class SaleLineIgnoredMove(ModelSQL):
     'Sale Line - Ignored Move'
     _name = 'sale.line-ignored-stock.move'
     _table = 'sale_line_moves_ignored_rel'
+    _description = __doc__
     sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
             select=1, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
@@ -1334,6 +1340,7 @@ class SaleLineRecreatedMove(ModelSQL):
     'Sale Line - Recreated Move'
     _name = 'sale.line-recreated-stock.move'
     _table = 'sale_line_moves_recreated_rel'
+    _description = __doc__
     sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
             select=1, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
