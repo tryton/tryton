@@ -16,7 +16,7 @@ error,stock.packing.in,0,Inventory Moves must have the warehouse input location 
 error,stock.packing.out.return,0,Incoming Moves must have the warehouse input location as destination location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Zielort haben!,0
 error,stock.packing.out.return,0,Inventory Moves must have the warehouse input location as source location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Herkunftsort haben!,0
 error,stock.packing.out.return.create,0,The packing with code %s is not yet sent.,Der Lieferposten mit Code %s ist noch nicht erledigt.,0
-error,stock.packing.out.return.create,0,You can not create return packing,Warenrücknahme nicht möglich,0
+error,stock.packing.out.return.create,0,You can not create return packing,Warenrücknahme nicht möglich!,0
 field,"party.address,delivery",0,Delivery,Lieferadresse,0
 field,"party.party,customer_location",0,Customer Location,Lagerort Kunde,0
 field,"party.party,supplier_location",0,Supplier Location,Lagerort Lieferant,0
@@ -155,7 +155,7 @@ model,"ir.action,name",wizard_packing_in_return_assign,Assign Purchase Return Sh
 model,"ir.action,name",wizard_packing_internal_assign,Assign Shipment Internal,Zuweisung Lieferposten Intern,0
 model,"ir.action,name",wizard_packing_out_assign,Assign Shipment Out,Zuweisung Lieferposten Ausgehend,0
 model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Lagerbestandspositionen komplettieren,0
-model,"ir.action,name",create_packing_out_return,Create Return Shipment,Erstellung Warenrückgabe,0
+model,"ir.action,name",create_packing_out_return,Create Return Shipment,Warenrücknahme erstellen,0
 model,"ir.action,name",act_packing_out_return_form,Customer Return Shipments,Warenrücknahmen (von Kunden),0
 model,"ir.action,name",act_packing_out_form,Customer Shipments,Lieferposten an Kunden,0
 model,"ir.action,name",act_packing_out_form2,Customer Shipments,Lieferposten an Kunden,0
