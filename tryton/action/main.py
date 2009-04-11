@@ -122,6 +122,7 @@ class Action(object):
             ctx.update(context)
 
             domain_context = ctx.copy()
+            domain_context['context'] = ctx
             domain_context['time'] = time
             domain_context['datetime'] = datetime
             domain = eval(action['domain'], domain_context)
@@ -130,6 +131,7 @@ class Action(object):
                 domain.append(datas['domain'])
 
             search_context = ctx.copy()
+            search_context['context'] = ctx
             search_context['time'] = time
             search_context['datetime'] = datetime
             search_value = eval(action['search_value'] or '{}', search_context)
