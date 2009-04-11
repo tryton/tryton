@@ -80,7 +80,10 @@ class User(ModelSQL, ModelView):
     main_company = fields.Many2One('company.company', 'Main Company',
             on_change=['main_company'])
     company = fields.Many2One('company.company', 'Current Company',
-            domain="[('parent', 'child_of', [main_company], 'parent')]")
+            domain="[('parent', 'child_of', [main_company], 'parent')]",
+            depends=['main_company'])
+    companies = fields.Function('get_companies', type='many2many',
+            relation='company.company', string='Current Companies')
     employee = fields.Many2One('company.employee', 'Employee',
             domain="[('company', 'child_of', [main_company], 'parent')]")
 
@@ -105,6 +108,29 @@ class User(ModelSQL, ModelView):
 
     def default_company(self, cursor, user, context=None):
         return self.default_main_company(cursor, user, context=context)
+
+    def get_companies(self, cursor, user_id, ids, name, arg, context=None):
+        company_obj = self.pool.get('company.company')
+        res = {}
+        company_childs = {}
+        for user in self.browse(cursor, user_id, ids, context=context):
+            res[user.id] = []
+            company_id = False
+            if user.company:
+                company_id = user.company.id
+            elif user.main_company:
+                company_id = user.main_company.id
+            if company_id:
+                if company_id in company_childs:
+                    company_ids = company_childs[company_id]
+                else:
+                    company_ids = company_obj.search(cursor, user_id, [
+                        ('parent', 'child_of', [company_id]),
+                        ], context=context)
+                    company_childs[company_id] = company_ids
+                if company_ids:
+                    res[user.id].extend(company_ids)
+        return res
 
     def get_status_bar(self, cursor, user_id, ids, name, arg, context=None):
         res = super(User, self).get_status_bar(cursor, user_id, ids, name, arg,
