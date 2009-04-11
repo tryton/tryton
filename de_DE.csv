@@ -590,60 +590,70 @@ model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Offene Post
 model,"ir.ui.menu,name",menu_update_chart_account,Update Chart of Account from Template,Kontenplan von Vorlage aktualisieren,0
 model,"res.group,name",group_account,Account,Buchhaltung,0
 model,"res.group,name",group_account_admin,Account Administration,Administration Buchhaltung,0
+odt,account.account.aged_balance,0,/,/,0
+odt,account.account.aged_balance,0,2,2,0
+odt,account.account.aged_balance,0,3,3,0
 odt,account.account.aged_balance,0,Aged Balance for Customers,Fälligkeitsliste für Kunden,0
 odt,account.account.aged_balance,0,Aged Balance for Suppliers,Fälligkeitsliste für Lieferanten,0
 odt,account.account.aged_balance,0,Aged Balance for Suppliers and Customers,Fälligkeitsliste für Lieferanten und Kunden,0
 odt,account.account.aged_balance,0,at,um,0
 odt,account.account.aged_balance,0,Company:,Unternehmen:,0
-odt,account.account.aged_balance,0,Currency:,Währung:,0
-odt,account.account.aged_balance,0,Date:,Datum:,0
 odt,account.account.aged_balance,0,Day,Tag,0
 odt,account.account.aged_balance,0,Days,Tage,0
 odt,account.account.aged_balance,0,Month,Monat,0
 odt,account.account.aged_balance,0,Months,Monate,0
 odt,account.account.aged_balance,0,Party,Partei,0
+odt,account.account.aged_balance,0,Print Date:,Druckdatum:,0
 odt,account.account.aged_balance,0,Total,Gesamt,0
+odt,account.account.aged_balance,0,User:,Benutzer:,0
+odt,account.account.general_ledger,0,/,/,0
+odt,account.account.general_ledger,0,1,1,0
 odt,account.account.general_ledger,0,at,um,0
 odt,account.account.general_ledger,0,Balance,Saldo,0
 odt,account.account.general_ledger,0,Code,Kennziffer,0
 odt,account.account.general_ledger,0,Company:,Unternehmen:,0
 odt,account.account.general_ledger,0,Credit,Haben,0
-odt,account.account.general_ledger,0,Currency:,Währung:,0
 odt,account.account.general_ledger,0,Date,Datum,0
-odt,account.account.general_ledger,0,Date:,Datum:,0
 odt,account.account.general_ledger,0,Debit,Soll,0
 odt,account.account.general_ledger,0,From Period:,Von Buchungszeitraum:,0
 odt,account.account.general_ledger,0,General Ledger,Kontenblätter,0
 odt,account.account.general_ledger,0,Name,Name,0
+odt,account.account.general_ledger,0,Print Date:,Druckdatum:,0
 odt,account.account.general_ledger,0,State,Status,0
 odt,account.account.general_ledger,0,To Period:,Bis Buchungszeitraum:,0
 odt,account.account.general_ledger,0,Total,Gesamt,0
+odt,account.account.general_ledger,0,User:,Benutzer:,0
+odt,account.account.third_party_balance,0,/,/,0
+odt,account.account.third_party_balance,0,1,1,0
 odt,account.account.third_party_balance,0,at,um,0
 odt,account.account.third_party_balance,0,Balance,Saldo,0
 odt,account.account.third_party_balance,0,Company:,Unternehmen:,0
 odt,account.account.third_party_balance,0,Credit,Haben,0
-odt,account.account.third_party_balance,0,Currency:,Währung:,0
-odt,account.account.third_party_balance,0,Date:,Datum:,0
 odt,account.account.third_party_balance,0,Debit,Soll,0
 odt,account.account.third_party_balance,0,Party,Partei,0
+odt,account.account.third_party_balance,0,Print Date:,Druckdatum:,0
 odt,account.account.third_party_balance,0,Third Party Balance,Offene Posten,0
 odt,account.account.third_party_balance,0,Total,Gesamt,0
+odt,account.account.third_party_balance,0,User:,Benutzer:,0
+odt,account.account.trial_balance,0,/,/,0
+odt,account.account.trial_balance,0,1,1,0
 odt,account.account.trial_balance,0,Account,Konto,0
 odt,account.account.trial_balance,0,at,um,0
 odt,account.account.trial_balance,0,Company:,Unternehmen:,0
 odt,account.account.trial_balance,0,Credit,Haben,0
-odt,account.account.trial_balance,0,Currency:,Währung:,0
-odt,account.account.trial_balance,0,Date:,Datum:,0
 odt,account.account.trial_balance,0,Debit,Soll,0
 odt,account.account.trial_balance,0,From Period:,Von Buchungszeitraum:,0
+odt,account.account.trial_balance,0,Print Date:,Druckdatum:,0
 odt,account.account.trial_balance,0,To Period:,Bis Buchungszeitraum:,0
 odt,account.account.trial_balance,0,Total,Gesamt,0
 odt,account.account.trial_balance,0,Trial Balance,Summen- und Saldenliste,0
+odt,account.account.trial_balance,0,User:,Benutzer:,0
+odt,account.move.general_journal,0,/,/,0
+odt,account.move.general_journal,0,1,1,0
 odt,account.move.general_journal,0,Account,Konto,0
 odt,account.move.general_journal,0,at,um,0
 odt,account.move.general_journal,0,Company:,Unternehmen:,0
 odt,account.move.general_journal,0,Credit,Haben,0
-odt,account.move.general_journal,0,Currency:,Währung:,0
 odt,account.move.general_journal,0,Date:,Datum:,0
 odt,account.move.general_journal,0,Debit,Soll,0
 odt,account.move.general_journal,0,Draft,Entwurf,0
@@ -652,8 +662,10 @@ odt,account.move.general_journal,0,General Journal,Allgemein,0
 odt,account.move.general_journal,0,Journal Entry:,Journal Eintrag:,0
 odt,account.move.general_journal,0,Name,Name,0
 odt,account.move.general_journal,0,Posted,Festgeschrieben,0
+odt,account.move.general_journal,0,Print Date:,Druckdatum:,0
 odt,account.move.general_journal,0,Reference:,Referenz,0
 odt,account.move.general_journal,0,To Date:,Bis:,0
+odt,account.move.general_journal,0,User:,Benutzer:,0
 selection,"account.account,kind",0,Expense,Aufwand,0
 selection,"account.account,kind",0,Other,Anderes,0
 selection,"account.account,kind",0,Payable,Verbindlichkeiten,0
