@@ -55,6 +55,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Account Moves</field>
             <field name="res_model">account.move</field>
             <field name="view_type">form</field>
+            <field name="domain">[('period.fiscalyear.company.id', '=', context.get('company', False))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_view1">
             <field name="sequence" eval="10"/>

@@ -1325,7 +1325,9 @@ class OpenJournalAsk(ModelView):
     _description = __doc__
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     period = fields.Many2One('account.period', 'Period', required=True,
-            domain=[('state', '!=', 'close')])
+            domain="[('state', '!=', 'close'), " \
+                    "('fiscalyear.company.id', '=', " \
+                        "context.get('company', False))]")
 
     def default_period(self, cursor, user, context=None):
         period_obj = self.pool.get('account.period')
