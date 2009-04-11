@@ -2465,7 +2465,7 @@ class CreditInvoice(Wizard):
         super(CreditInvoice, self).__init__()
         self._error_messages.update({
             'refund_non_open': 'You can not credit with refund ' \
-                    'an invoice that is not openned!',
+                    'an invoice that is not opened!',
             'refund_with_payement': 'You can not credit with refund ' \
                     'an invoice with payments!',
             })
