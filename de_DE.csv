@@ -658,7 +658,7 @@ odt,account.move.general_journal,0,Date:,Datum:,0
 odt,account.move.general_journal,0,Debit,Soll,0
 odt,account.move.general_journal,0,Draft,Entwurf,0
 odt,account.move.general_journal,0,From Date:,Von:,0
-odt,account.move.general_journal,0,General Journal,Allgemein,0
+odt,account.move.general_journal,0,General Journal,Journal Allgemein,0
 odt,account.move.general_journal,0,Journal Entry:,Journal Eintrag:,0
 odt,account.move.general_journal,0,Name,Name,0
 odt,account.move.general_journal,0,Posted,Festgeschrieben,0
