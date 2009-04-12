@@ -1421,6 +1421,8 @@ class OpenJournal(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        # Remove name to use the one from view_header_get
+        del res['name']
         res['domain'] = str([
             ('journal', '=', journal_id),
             ('period', '=', period_id),
