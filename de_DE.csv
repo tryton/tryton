@@ -20,8 +20,8 @@ error,account.invoice,0,"You can not modify an invoice that is open, paid or can
 error,account.invoice,0,You can not reset to draft an invoice that has move!,"Eine Rechnung, die Buchungen enthält, kann nicht auf Entwurf zurückgesetzt werden!",0
 error,account.invoice,0,"You can not use the same account
 as on invoice line!",Es kann nicht das selbe Konto verwendet werden!,0
-error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not openned!,Die Stornierung von nicht fakturierten Rechnungen ist nicht möglich!,0
-error,account.invoice.credit_invoice,0,You can not credit with refund an invoice with payments!,"Die Stornierung einer Rechnung ist nicht möglich, wenn bereits Zahlungen für diese gebucht sind!",0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not openned!,Die Verrechnung von nicht fakturierten Rechnungen ist nicht möglich!,0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice with payments!,"Die Verrechnung einer Rechnung ist nicht möglich, wenn bereits Zahlungen für diese gebucht sind!",0
 error,account.invoice.line,0,"Line with ""line"" type must have an account!","Eine Zeile vom Typ ""Position"" muss einem Konto zugeordnet sein!",0
 error,account.invoice.line,0,"Line without ""line"" type must have an invoice!","Eine Zeile, die nicht vom Typ ""Position"" ist, muss einer Rechnung zugeordnet sein!",0
 error,account.invoice.line,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert kann keine neue Position hinzugefügt werden!",0
@@ -53,7 +53,7 @@ field,"account.invoice,amount_to_pay",0,Amount to Pay,Zahlbarer Betrag,0
 field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Zahlbarer Betrag (heute),0
 field,"account.invoice,comment",0,Comment,Kommentar,0
 field,"account.invoice,company",0,Company,Unternehmen,0
-field,"account.invoice.credit_invoice.init,with_refund",0,With Refund,Stornierung,0
+field,"account.invoice.credit_invoice.init,with_refund",0,With Refund,Verrechnung,0
 field,"account.invoice,currency",0,Currency,Währung,0
 field,"account.invoice,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"account.invoice,description",0,Description,Beschreibung,0
