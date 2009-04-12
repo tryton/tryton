@@ -88,36 +88,36 @@ field,"account.account,note",0,Note,Bemerkung,0
 field,"account.account.open_aged_balance.init,balance_type",0,Type,Typ,0
 field,"account.account.open_aged_balance.init,company",0,Company,Unternehmen,0
 field,"account.account.open_aged_balance.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
-field,"account.account.open_aged_balance.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
+field,"account.account.open_aged_balance.init,posted",0,Posted Move,Nur festgeschriebene Buchungen,0
 field,"account.account.open_aged_balance.init,term1",0,First Term,1. Frist,0
 field,"account.account.open_aged_balance.init,term2",0,Second Term,2. Frist,0
 field,"account.account.open_aged_balance.init,term3",0,Third Term,3. Frist,0
 field,"account.account.open_aged_balance.init,unit",0,Unit,Einheit,0
 field,"account.account.open_balance_sheet.init,company",0,Company,Unternehmen,0
 field,"account.account.open_balance_sheet.init,date",0,Date,Datum,0
-field,"account.account.open_balance_sheet.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
+field,"account.account.open_balance_sheet.init,posted",0,Posted Move,Nur festgeschriebene Buchungen,0
 field,"account.account.open_chart_account.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
-field,"account.account.open_chart_account.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
+field,"account.account.open_chart_account.init,posted",0,Posted Move,Nur festgeschriebene Buchungen,0
 field,"account.account.open_income_statement.init,company",0,Company,Unternehmen,0
 field,"account.account.open_income_statement.init,end_period",0,End Period,Bis Buchungszeitraum,0
 field,"account.account.open_income_statement.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
-field,"account.account.open_income_statement.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
+field,"account.account.open_income_statement.init,posted",0,Posted Move,Nur festgeschriebene Buchungen,0
 field,"account.account.open_income_statement.init,start_period",0,Start Period,Von Buchungszeitraum,0
 field,"account.account.open_third_party_balance.init,company",0,Company,Unternehmen,0
 field,"account.account.open_third_party_balance.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
-field,"account.account.open_third_party_balance.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
+field,"account.account.open_third_party_balance.init,posted",0,Posted Move,Nur festgeschriebene Buchungen,0
 field,"account.account,parent",0,Parent,Übergeordnet (Konto),0
 field,"account.account.print_general_ledger.init,company",0,Company,Unternehmen,0
-field,"account.account.print_general_ledger.init,empty_account",0,Empty Account,Leere Konten,0
+field,"account.account.print_general_ledger.init,empty_account",0,Empty Account,Leere Konten mitdrucken,0
 field,"account.account.print_general_ledger.init,end_period",0,End Period,Bis Buchungszeitraum,0
 field,"account.account.print_general_ledger.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
-field,"account.account.print_general_ledger.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
+field,"account.account.print_general_ledger.init,posted",0,Posted Move,Nur festgeschriebene Buchungen,0
 field,"account.account.print_general_ledger.init,start_period",0,Start Period,Ab Buchungszeitraum,0
 field,"account.account.print_trial_balance.init,company",0,Company,Unternehmen,0
-field,"account.account.print_trial_balance.init,empty_account",0,Empty Account,Leere Konten,0
+field,"account.account.print_trial_balance.init,empty_account",0,Empty Account,Leere Konten mitdrucken,0
 field,"account.account.print_trial_balance.init,end_period",0,End Period,Bis Buchungszeitraum,0
 field,"account.account.print_trial_balance.init,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
-field,"account.account.print_trial_balance.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
+field,"account.account.print_trial_balance.init,posted",0,Posted Move,Nur festgeschriebene Buchungen,0
 field,"account.account.print_trial_balance.init,start_period",0,Start Period,Ab Buchungszeitraum,0
 field,"account.account,rec_name",0,Name,Name,0
 field,"account.account,reconcile",0,Reconcile,Abstimmen,0
@@ -240,7 +240,7 @@ field,"account.move,period",0,Period,Buchungszeitraum,0
 field,"account.move,post_date",0,Post Date,Festschreibungsdatum,0
 field,"account.move.print_general_journal.init,company",0,Company,Unternehmen,0
 field,"account.move.print_general_journal.init,from_date",0,From Date,Ab Datum,0
-field,"account.move.print_general_journal.init,posted",0,Posted Move,Festgeschriebene Buchungen,0
+field,"account.move.print_general_journal.init,posted",0,Posted Move,Nur festgeschriebene Buchungen,0
 field,"account.move.print_general_journal.init,to_date",0,To Date,Bis Datum,0
 field,"account.move,rec_name",0,Name,Name,0
 field,"account.move.reconcile_lines.writeoff,account",0,Account,Konto,0
