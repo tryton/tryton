@@ -766,10 +766,8 @@ class Line(ModelSQL, ModelView):
         if vals.get('move'):
             #Only for first line
             return res
-        if ids:
-            line = self.browse(cursor, user, ids[0], context=context)
-            if line.tax_lines:
-                res['remove'] = [x.id for x in line.tax_lines]
+        if vals.get('tax_lines'):
+            res['remove'] = [x['id'] for x in vals['tax_lines']]
         if vals.get('account'):
             account = account_obj.browse(cursor, user, vals['account'],
                     context=context)
