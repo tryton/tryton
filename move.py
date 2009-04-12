@@ -1174,19 +1174,20 @@ class Line(ModelSQL, ModelView):
 
     def view_header_get(self, cursor, user, value, view_type='form',
             context=None):
+        journal_period_obj = self.pool.get('account.journal.period')
         if context is None:
             context = {}
-        journal_obj = self.pool.get('account.journal')
-        period_obj = self.pool.get('account.period')
         if not context.get('journal') or not context.get('period'):
             return value
-        journal = journal_obj.browse(cursor, user, context['journal'],
-                context=context)
-        period = period_obj.browse(cursor, user, context['period'],
-                context=context)
-        if journal and period:
-            return journal.name + ': ' + period.name
-        return value
+        journal_period_ids = journal_period_obj.search(cursor, user, [
+            ('journal', '=', context['journal']),
+            ('period', '=', context['period']),
+            ], context=context, limit=1)
+        if not journal_period_ids:
+            return value
+        journal_period = journal_period_obj.browse(cursor, user,
+                journal_period_ids[0], context=context)
+        return value + ': ' + journal_period.rec_name
 
     def fields_view_get(self, cursor, user, view_id=None, view_type='form',
             context=None, toolbar=False, hexmd5=None):
