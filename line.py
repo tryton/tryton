@@ -3,6 +3,7 @@
 "Line"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+import mx.DateTime
 
 
 class Line(ModelSQL, ModelView):
@@ -67,11 +68,17 @@ class Line(ModelSQL, ModelView):
         if context is None:
             context = {}
 
-        res = obj + '.active '
+        res = obj + '.active'
         if context.get('start_date'):
-            res += 'AND ' + obj + '.date >= ' + str(context['start_date'])
+            # Check start_date
+            mx.DateTime.strptime(str(context['start_date']), '%Y-%m-%d')
+            res += ' AND ' + obj + '.date >= date(\'' + \
+                    str(context['start_date']) + '\')'
         if context.get('end_date'):
-            res += 'AND ' + obj + '.date <= ' + str(context['end_date'])
+            # Check end_date
+            mx.DateTime.strptime(str(context['end_date']), '%Y-%m-%d')
+            res += ' AND ' + obj + '.date <= date(\'' + \
+                    str(context['end_date']) + '\')'
         return res
 
     def check_account(self, cursor, user, ids):
