@@ -230,8 +230,9 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
                     break
             lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
 
-            amount = lang_obj.currency(lang, computed_end_balance,
-                    statement.journal.currency, symbol=False, grouping=True)
+            amount = lang_obj.format(lang,
+                    '%.' + str(statement.journal.currency.digits) + 'f',
+                    computed_end_balance, True)
             self.raise_user_error(cursor, 'wrong_end_balance',
                     error_args=(amount,), context=context)
         for line in statement.lines:
@@ -435,8 +436,9 @@ class Line(ModelSQL, ModelView):
                         break
                 lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
 
-                amount = lang_obj.currency(lang, line.amount,
-                        line.statement.journal.currency, symbol=False, grouping=True)
+                amount = lang_obj.format(lang,
+                        '%.' + str(line.statement.journal.currency.digits) + 'f',
+                        line.amount, True)
                 self.raise_user_error(cursor,
                         'amount_greater_invoice_amount_to_pay',
                         error_args=(amount,), context=context)
