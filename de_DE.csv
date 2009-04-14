@@ -548,7 +548,7 @@ model,"ir.ui.menu,name",menu_account_type_tree,Account Types,Kontentypen,0
 model,"ir.ui.menu,name",menu_account_type_template_tree,Account Type Templates,Vorlagen für Kontentypen,0
 model,"ir.ui.menu,name",menu_aged_balance,Aged Balance,Fälligkeitsliste drucken,0
 model,"ir.ui.menu,name",menu_open_balance_sheet,Balance Sheet,Bilanzbogen,0
-model,"ir.ui.menu,name",menu_charts,Charts,Kontenpläne,0
+model,"ir.ui.menu,name",menu_charts,Charts,Konten und Tabellen,0
 model,"ir.ui.menu,name",menu_close_fiscalyear,Close Fiscal Year,Geschäftsjahr abschließen,0
 model,"ir.ui.menu,name",menu_journal_period_form,Close Journals - Periods,Journale - Buchungszeiträume schließen,0
 model,"ir.ui.menu,name",menu_period_form2,Close Periods,Buchungszeiträume abschließen,0
