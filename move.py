@@ -9,6 +9,7 @@ from decimal import Decimal
 import datetime
 from trytond.netsvc import LocalService
 import md5
+import mx.DateTime
 
 _MOVE_STATES = {
     'readonly': "state == 'posted'",
@@ -932,6 +933,7 @@ class Line(OSV):
             context = {}
 
         if context.get('date'):
+            mx.DateTime.strptime(str(context['date']), '%Y-%m-%d')
             fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
                 ('start_date', '<=', context['date']),
                 ('end_date', '>=', context['date']),
@@ -947,8 +949,8 @@ class Line(OSV):
                                 'WHERE m.period = p.id ' \
                                     'AND p.fiscalyear = ' + \
                                         str(fiscalyear_ids[0]) + ' ' \
-                                    'AND m.date <= \'' + \
-                                        str(context['date']) + '\' ' \
+                                    'AND m.date <= date(\'' + \
+                                        str(context['date']) + '\') ' \
                                     'AND m.state = \'posted\' ' \
                             ')', fiscalyear_ids)
             else:
@@ -960,8 +962,8 @@ class Line(OSV):
                                 'WHERE m.period = p.id ' \
                                     'AND p.fiscalyear = ' + \
                                         str(fiscalyear_ids[0]) + ' ' \
-                                    'AND m.date <= \'' + \
-                                        str(context['date']) + '\'' \
+                                    'AND m.date <= date(\'' + \
+                                        str(context['date']) + '\')' \
                             ')', fiscalyear_ids)
 
         if not context.get('fiscalyear', False):
