@@ -112,6 +112,12 @@ class FiscalYear(ModelSQL, ModelView):
                         vals['post_move_sequence']:
                     self.raise_user_error(cursor, 'change_post_move_sequence',
                             context=context)
+        vals = vals.copy()
+        if 'periods' in vals:
+            operator = ['delete', 'unlink_all', 'unlink', 'create', 'write',
+                    'add', 'set']
+            vals['periods'].sort(
+                    lambda x, y: cmp(operator.index(x[0]), operator.index(y[0])))
         return super(FiscalYear, self).write(cursor, user, ids, vals,
                 context=context)
 
