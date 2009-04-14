@@ -1110,6 +1110,12 @@ class SaleLine(ModelSQL, ModelView):
             res['unit'] = product.sale_uom.id
             res['unit.rec_name'] = product.sale_uom.rec_name
             res['unit_digits'] = product.sale_uom.digits
+
+        vals = vals.copy()
+        vals['unit_price'] = res['unit_price']
+        vals['type'] = 'line'
+        res['amount'] = self.on_change_with_amount(cursor, user, ids,
+                vals, context=context)
         return res
 
     def on_change_quantity(self, cursor, user, ids, vals, context=None):
