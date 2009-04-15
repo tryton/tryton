@@ -3,8 +3,9 @@
 {
     'name': 'Stock Supply Management',
     'name_de_DE': 'Lagerverwaltung Bestellwesen',
-    'name_fr_FR': 'Gestion des approvisionnements de stock',
+    'name_es_CO': 'Gestión de pedidos de inventario',
     'name_es_ES': 'Gestión de pedidos de inventario',
+    'name_fr_FR': 'Gestion des approvisionnements de stock',
     'version': '1.1.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -25,14 +26,13 @@ Mit automatischer Auftragserstellung per Zeitplaner:
     - für Bestellungen auf der Basis von Bestellpunkten
     - für internen Versand auf der Basis von Bestellpunkten
 ''',
-    'description_fr_FR': '''Module de gestion des approvisionnements avec:
-    - Règles d'approvisionnement
-    - Demandes d'achat
+    'description_es_CO': '''Módulo de Administración de pedidos:
+    - Punto de Orden
+    - Solicitud de Compras
 
-Et les planificateurs pour générer:
-    - des demandes d'achat et
-    - des colisages internes
-sur base des règles d'approvisionnement
+Con agendadores para:
+    - generar solicitudes de compra basados en puntos de orden
+    - generar empaques internos basados en puntos de orden
 ''',
     'description_es_ES': '''Módulo de Administración de pedidos:
     - Punto de Orden
@@ -42,7 +42,15 @@ Con agendadores para:
     - generar solicitudes de compra basados en puntos de orden
     - generar empaques internos basados en puntos de orden
 ''',
+    'description_fr_FR': '''Module de gestion des approvisionnements avec:
+    - Règles d'approvisionnement
+    - Demandes d'achat
 
+Et les planificateurs pour générer:
+    - des demandes d'achat et
+    - des colisages internes
+sur base des règles d'approvisionnement
+''',
     'depends': [
         'ir',
         'res',
@@ -59,6 +67,7 @@ Con agendadores para:
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ]
