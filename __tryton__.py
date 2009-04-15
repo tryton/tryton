@@ -3,8 +3,9 @@
 {
     'name': 'Company',
     'name_de_DE': 'Unternehmen',
-    'name_fr_FR': 'Compagnie',
+    'name_es_CO': 'Compañía',
     'name_es_ES': 'Compañía',
+    'name_fr_FR': 'Compagnie',
     'version': '1.1.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -23,12 +24,12 @@ Make the scheduler run on each companies.
  - Fügt den Kontakten die Berichtsvorlage für Briefe hinzu.
  - Initialisiert die Aufgaben des Zeitplaners für jedes Unternehmen.
 ''',
-    'description_fr_FR': '''Defini compagnie et employé.
-Ajoute les compagnies principale et courante dans les préférences de l'utilisateur.
-Ajoute la compagnie sur les propriétés.
-Défini un nouveau moteur de rapport gérant une entête par compagnie.
-Ajoute un canva de lettre par tiers.
-Lance les planificateurs sur chaque compagnie.
+    'description_es_CO': ''' - Define compañía y empleados.
+ - Añade compañía principal y predeterminada de acuerdo a preferencia de usuarios.
+ - Añade compañía a las propiedades.
+ - Define un nuevo reporteador para los encabezados de los reportes por compañía.
+ - Añade plantilla de carta a un tercero.
+ - Se ejecuta el agendador por compañía.
 ''',
     'description_es_ES': ''' - Define compañía y empleados.
  - Añade compañía principal y predeterminada de acuerdo a preferencia de usuarios.
@@ -36,6 +37,13 @@ Lance les planificateurs sur chaque compagnie.
  - Define un nuevo reporteador para los encabezados de los reportes por compañía.
  - Añade plantilla de carta a un tercero.
  - Se ejecuta el agendador por compañía.
+''',
+    'description_fr_FR': '''Defini compagnie et employé.
+Ajoute les compagnies principale et courante dans les préférences de l'utilisateur.
+Ajoute la compagnie sur les propriétés.
+Défini un nouveau moteur de rapport gérant une entête par compagnie.
+Ajoute un canva de lettre par tiers.
+Lance les planificateurs sur chaque compagnie.
 ''',
     'depends': [
         'ir',
@@ -49,7 +57,8 @@ Lance les planificateurs sur chaque compagnie.
     ],
     'translation': [
         'fr_FR.csv',
-        'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
+        'de_DE.csv',
     ]
 }
