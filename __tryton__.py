@@ -3,8 +3,9 @@
 {
     'name': 'Analytic Account',
     'name_de_DE': 'Kostenstellen',
-    'name_fr_FR': 'Comptabilité analytique',
+    'name_es_CO': 'Contabilidad Analítica',
     'name_es_ES': 'Contabilidad Analítica',
+    'name_fr_FR': 'Comptabilité analytique',
     'version': '1.1.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -21,17 +22,23 @@ And with report:
 Zugehörige Berichte:
     - Plan für Kostenstellen
 ''',
-    'description_fr_FR': '''Module comptable et financier, avec:
-    - Comptabilité analytique autorisant un nombre arbitraire d'axes.
+    'description_es_CO': '''Módulo Financiero y de Contabilidad con:
+    - Contabilidad Analítica con cualquier cantidad de planes analíticos
 
-Et le rapport:
-    - Balance comptable analytique
+Y con reportes:
+    - Balance Contable Analítico
 ''',
     'description_es_ES': '''Módulo Financiero y de Contabilidad con:
     - Contabilidad Analítica con cualquier cantidad de planes analíticos
 
 Y con reportes:
     - Balance Contable Analítico
+''',
+    'description_fr_FR': '''Module comptable et financier, avec:
+    - Comptabilité analytique autorisant un nombre arbitraire d'axes.
+
+Et le rapport:
+    - Balance comptable analytique
 ''',
     'depends': [
         'ir',
@@ -48,6 +55,7 @@ Y con reportes:
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ],
