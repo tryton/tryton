@@ -4,6 +4,7 @@
     'name': 'Account Product',
     'name_de_DE': 'Buchhaltung Artikel',
     'name_fr_FR': 'Compte produit',
+    'name_es_CO': 'Contabilidad de Inventarios',
     'name_es_ES': 'Contabilidad de Inventarios',
     'version': '1.1.0',
     'author': 'B2CK',
@@ -21,6 +22,10 @@
     - comptes de dépense et revenu
     - taxes client et fournisseur
 ''',
+    'description_es_CO': '''Adiciona propiedades contables en productos y categorías:
+    - contabilidad para gastos / ganancias
+    - impuestos para cliente / proveedor
+''',
     'description_es_ES': '''Adiciona propiedades contables en productos y categorías:
     - contabilidad para gastos / ganancias
     - impuestos para cliente / proveedor
@@ -36,6 +41,7 @@
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ]
