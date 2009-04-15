@@ -3,8 +3,9 @@
 {
     'name': 'Timesheet',
     'name_de_DE': 'Zeiterfassung',
-    'name_fr_FR': 'Feuille de présence',
+    'name_es_DE': 'Hoja de Asistencia',
     'name_es_ES': 'Hoja de Asistencia',
+    'name_fr_FR': 'Feuille de présence',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -27,14 +28,14 @@ Zugehörige Berichte:
     - Stunden pro Mitarbeiter pro Woche
     - Stunden pro Mitarbeiter pro Monat
 ''',
-    'description_fr_FR': '''Module feuille de présence, avec:
-    - Tâche
-    - Ligne de feuille de présence
+    'description_es_CO': '''Módulo de Hoja de Asistencia con:
+    - Trabajo
+    - Líneas de tiempo laborado
 
-Et les rapports:
-    - Heures par tâche
-    - Heures par employé par semaine
-    - Heures par employé par mois
+Y con reportes:
+    - Horas por semana
+    - Horas por empleado por semana
+    - Horas por empleado por mes
 ''',
     'description_es_ES': '''Módulo de Hoja de Asistencia con:
     - Trabajo
@@ -45,7 +46,15 @@ Y con reportes:
     - Horas por empleado por semana
     - Horas por empleado por mes
 ''',
+    'description_fr_FR': '''Module feuille de présence, avec:
+    - Tâche
+    - Ligne de feuille de présence
 
+Et les rapports:
+    - Heures par tâche
+    - Heures par employé par semaine
+    - Heures par employé par mois
+''',
     'depends': [
         'ir',
         'res',
@@ -58,6 +67,7 @@ Y con reportes:
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ],
