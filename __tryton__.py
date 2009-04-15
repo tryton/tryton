@@ -3,8 +3,9 @@
 {
     'name': 'Purchase',
     'name_de_DE': 'Einkauf',
-    'name_fr_FR': 'Achat',
+    'name_es_CO': 'Compras',
     'name_es_ES': 'Compras',
+    'name_fr_FR': 'Achat',
     'version': '1.1.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -32,16 +33,16 @@ Ermöglicht:
         - Nach Auftrag
         - Nach Lieferung
 ''',
-    'description_fr_FR': '''Defini l'ordre d'achat.
-Ajoute les fournisseurs et les informations d'achat sur le produit.
-Défini un prix d'achat par fournisseur et un prix de revient.
+    'description_es_CO': ''' - Definición de orden de compras.
+ - Se añade información de proveedor y de compra de un producto.
+ - Se define el precio de compra con el precio de proveedor o costo.
 
-Avec la possibilité:
-    - de suivre les états de la facture et du colis depuis la commande d'achat.
-    - de choisir la méthode de facturation:
-        - Manuelle
-        - Sur base de la commande
-        - Sur base du colis
+ - Con la posibilidad de:
+    - seguir el estado de facturación y empaque desde la orden de compra.
+    - elegir el método de facturación:
+        - Manual
+        - Basado en Orden
+        - Basado en Empaque
 ''',
     'description_es_ES': ''' - Definición de orden de compras.
  - Se añade información de proveedor y de compra de un producto.
@@ -54,7 +55,17 @@ Avec la possibilité:
         - Basado en Orden
         - Basado en Empaque
 ''',
+    'description_fr_FR': '''Defini l'ordre d'achat.
+Ajoute les fournisseurs et les informations d'achat sur le produit.
+Défini un prix d'achat par fournisseur et un prix de revient.
 
+Avec la possibilité:
+    - de suivre les états de la facture et du colis depuis la commande d'achat.
+    - de choisir la méthode de facturation:
+        - Manuelle
+        - Sur base de la commande
+        - Sur base du colis
+''',
     'depends': [
         'company',
         'party',
@@ -74,6 +85,7 @@ Avec la possibilité:
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ],
