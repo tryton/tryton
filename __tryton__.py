@@ -3,8 +3,9 @@
 {
     'name': 'Sale',
     'name_de_DE': 'Verkauf',
-    'name_fr_FR': 'Vente',
+    'name_es_CO': 'Ventas',
     'name_es_ES': 'Ventas',
+    'name_fr_FR': 'Vente',
     'version': '1.1.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -40,19 +41,20 @@ Ermöglicht:
         - Nach Auftragsbestätigung
         - Nach Bezahlung
 ''',
-    'description_fr_FR': '''Défini l'ordre de vente.
-Ajoute au produit les information de vente.
+    'description_es_CO': ''' - Define la orden de Ventas.
+ - Se añade al producto la información de ventas.
+ - Definición del precio de venta y el precio de lista.
 
-Avec la possibilité:
-    ' de suivre l'état de la facture et du colisage depuis l'ordre de vente
-    ' de choisir entre plusieurs méthodes de facturation:
-        ' Manuelle
-        ' Sur confirmation de la commande
-        ' À la livraison
-    ' de choisir entre plusieurs méthodes de colisage:
-        ' Manuel
-        ' Sur confirmation de la commande
-        ' Au paiement de la facture
+ - Con las posibilidades de:
+    - seguir los estados de facturación y empaque desde la orden de venta.
+    - definir el método de facturación:
+        - Manual
+        - Al Confirmar la Orden
+        - Al Envío del Paquete
+    - definir el método de empaque:
+        - Manual
+        - Al Confirmar la Orden
+        - Contra el Pago de la Factura
 ''',
     'description_es_ES': ''' - Define la orden de Ventas.
  - Se añade al producto la información de ventas.
@@ -68,6 +70,20 @@ Avec la possibilité:
         - Manual
         - Al Confirmar la Orden
         - Contra el Pago de la Factura
+''',
+    'description_fr_FR': '''Défini l'ordre de vente.
+Ajoute au produit les information de vente.
+
+Avec la possibilité:
+    ' de suivre l'état de la facture et du colisage depuis l'ordre de vente
+    ' de choisir entre plusieurs méthodes de facturation:
+        ' Manuelle
+        ' Sur confirmation de la commande
+        ' À la livraison
+    ' de choisir entre plusieurs méthodes de colisage:
+        ' Manuel
+        ' Sur confirmation de la commande
+        ' Au paiement de la facture
 ''',
     'depends': [
         'company',
@@ -88,6 +104,7 @@ Avec la possibilité:
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ],
