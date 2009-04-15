@@ -3,6 +3,7 @@
 {
     'name': 'Account Invoice History',
     'name_de_DE': 'Fakturierung Historisierung',
+    'name_es_CO': 'Histórico de Facturación',
     'name_es_ES': 'Histórico de Facturación',
     'version': '1.1.0',
     'author': 'B2CK',
@@ -11,6 +12,8 @@
     'description': '''Add historization for Invoice fields.
 ''',
     'description_de_DE': '''Fügt Historisierung zu den Rechnungsfeldern hinzu
+''',
+    'description_es_CO': '''Histórico de Facturación a nivel de campos
 ''',
     'description_es_ES': '''Histórico de Facturación a nivel de campos
 ''',
@@ -24,6 +27,7 @@
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ]
