@@ -4,6 +4,7 @@
     'name': 'Account',
     'name_de_DE': 'Buchhaltung',
     'name_fr_FR': 'Comptabilité',
+    'name_es_CO': 'Contabilidad',
     'name_es_ES': 'Contabilidad',
     'version': '1.1.0',
     'author': 'B2CK',
@@ -57,6 +58,22 @@ Et les rapports:
     - Balance agée
     - Journal général
 ''',
+    'description_es_CO': '''El módulo Financiero y de Contabilidad cuenta con:
+    - Contabilidad General
+    - Manejo de Años Fiscales
+    - Administración de impuestos
+    - Libros diarios
+    - Conciliación
+
+Y con los reportes:
+    - Libro general
+    - Balance de prueba
+    - Hoja de Balance
+    - Estado de Ingresos
+    - Balance de Terceros
+    - Saldos Vencidos
+    - Diario general
+''',
     'description_es_ES': '''El módulo Financiero y de Contabilidad cuenta con:
     - Contabilidad General
     - Manejo de Años Fiscales
@@ -92,6 +109,7 @@ Y con los reportes:
     'translation': [
         'fr_FR.csv',
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
     ],
 }
