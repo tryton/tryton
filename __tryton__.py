@@ -4,6 +4,7 @@
     'name': 'Account Invoice',
     'name_de_DE': 'Fakturierung',
     'name_fr_FR': 'Facturation',
+    'name_es_CO': 'Facturación',
     'name_es_ES': 'Facturación',
     'version': '1.1.0',
     'author': 'B2CK',
@@ -39,6 +40,16 @@ Avec la possibilité:
     - de définir les numérotations de facture par période ou par année fiscale
     - de créditer n'importe quelle facture
 ''',
+    'description_es_CO': '''Módulo Financiero y de Contabilidad con:
+    - Términos de Pago
+    - Notas de Facturación / Crédito
+    - Factura de Proveedores / Nota de Crédito de Proveedores
+
+Con las posibilidades de:
+    - hacer seguimiento al pago de facturas.
+    - definir secuencias de facturas en año o período fiscal.
+    - acreditar una factura.
+''',
     'description_es_ES': '''Módulo Financiero y de Contabilidad con:
     - Términos de Pago
     - Notas de Facturación / Crédito
@@ -69,6 +80,7 @@ Con las posibilidades de:
     'translation': [
         'fr_FR.csv',
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
     ]
 }
