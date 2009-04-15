@@ -3,8 +3,9 @@
 {
     'name': 'Project',
     'name_de_DE': 'Projekte',
-    'name_fr_FR': 'Projet',
+    'name_es_CO': 'Proyectos',
     'name_es_ES': 'Proyectos',
+    'name_fr_FR': 'Projet',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -15,11 +16,14 @@
     'description_de_DE': '''Projektmodul für:
     - Projektverwaltung
 ''',
-    'description_fr_FR': '''Module projet avec:
-    - Gestion de projet
+    'description_es_CO': '''Módulo de proyectos con:
+    - Gestión de proyectos
 ''',
     'description_es_ES': '''Módulo de proyectos con:
     - Gestión de proyectos
+''',
+    'description_fr_FR': '''Module projet avec:
+    - Gestion de projet
 ''',
     'depends': [
         'ir',
@@ -32,6 +36,7 @@
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ],
