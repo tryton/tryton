@@ -29,6 +29,7 @@ field,"ir.cron-company.company,rec_name",0,Name,Name,0
 field,"ir.property,company",0,Company,Unternehmen,0
 field,"ir.sequence,company",0,Company,Unternehmen,0
 field,"ir.sequence.strict,company",0,Company,Unternehmen,0
+field,"res.user,companies",0,Current Companies,Aktuelle Unternehmen,0
 field,"res.user,company",0,Current Company,Aktuelles Unternehmen,0
 field,"res.user,employee",0,Employee,Mitarbeiter,0
 field,"res.user,main_company",0,Main Company,Mutterbetrieb,0
