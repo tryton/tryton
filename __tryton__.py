@@ -3,7 +3,6 @@
 {
     'name' : 'Google Maps',
     'name_de_DE': 'Google Maps',
-    'name_es_ES': 'Google Maps',
     'name': 'Cartes Google',
     'version' : '1.1.0',
     'author' : 'B2CK',
@@ -11,8 +10,9 @@
     'website': 'http://www.tryton.org/',
     'description': 'Add link from addresses to Google Maps',
     'description_de_DE': 'Fügt einen Link für den automatischen Aufruf von Google Maps zu Adressen hinzu.',
-    'description_fr_FR': 'Ajoute un lien sur les adresses vers les cartes de Google',
+    'description_es_CO': 'Añade un enlace a la dirección en Google Maps',
     'description_es_ES': 'Añade un enlace a la dirección en Google Maps',
+    'description_fr_FR': 'Ajoute un lien sur les adresses vers les cartes de Google',
     'depends' : [
         'ir',
         'party'
@@ -22,6 +22,7 @@
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ],
