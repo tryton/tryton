@@ -20,7 +20,7 @@ error,account.invoice,0,"You can not modify an invoice that is open, paid or can
 error,account.invoice,0,You can not reset to draft an invoice that has move!,"Eine Rechnung, die Buchungen enthält, kann nicht auf Entwurf zurückgesetzt werden!",0
 error,account.invoice,0,"You can not use the same account
 as on invoice line!",Es kann nicht das selbe Konto verwendet werden!,0
-error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not openned!,Die Verrechnung von nicht fakturierten Rechnungen ist nicht möglich!,0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not opened!,Die Verrechnung von nicht fakturierten Rechnungen ist nicht möglich!,0
 error,account.invoice.credit_invoice,0,You can not credit with refund an invoice with payments!,"Die Verrechnung einer Rechnung ist nicht möglich, wenn bereits Zahlungen für diese gebucht sind!",0
 error,account.invoice.line,0,"Line with ""line"" type must have an account!","Eine Zeile vom Typ ""Position"" muss einem Konto zugeordnet sein!",0
 error,account.invoice.line,0,"Line without ""line"" type must have an invoice!","Eine Zeile, die nicht vom Typ ""Position"" ist, muss einer Rechnung zugeordnet sein!",0
