@@ -1,0 +1,13 @@
+type,name,res_id,src,value,fuzzy
+error,project_revenue.service,0,You can have only once the same product by employee!,Solamente puede tener un mismo producto por empleado!,0
+error,project_revenue.service,0,You must use a product with UOM of time!,Debe usar un producto con UdM de tiempo!,0
+error,timesheet.line,0,You can not use a product that is not an employee services!,No puede usar un producto que no sea un servicio de empleado!,0
+field,"company.employee,services",0,Services,Servicios,0
+field,"project_revenue.service,employee",0,Employee,Empleado,0
+field,"project_revenue.service,product",0,Product,Producto,0
+field,"project_revenue.service,sequence",0,Sequence,Secuencia,0
+field,"timesheet.line,product",0,Service,Servicio,0
+help,"company.employee,services",0,Services allowed to use in timesheets.,Servicios permitidos a usarse en las hojas de tiempo. ,0
+help,"project_revenue.service,sequence",0,Use to order Services,Usar para ordenar Servicios,0
+view,company.employee,0,Services,Servicios,0
+view,project_revenue.service,0,Service,Servicio,0
