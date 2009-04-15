@@ -66,6 +66,8 @@ class InvoiceLine(ModelSQL, ModelView):
             for line in lines:
                 if line.type != 'line':
                     continue
+                if not line.analytic_accounts:
+                    continue
                 for account in line.analytic_accounts.accounts:
                     if account.root.id in root_ids:
                         id2record[line.id]['analytic_account_' \
@@ -116,6 +118,14 @@ class InvoiceLine(ModelSQL, ModelView):
                 if line.type != 'line':
                     continue
                 accounts = []
+                if not line.analytic_accounts:
+                    # Create missing selection
+                    selection_id = selection_obj.create(cursor, 0, {},
+                            context=context)
+                    self.write(cursor, user, line.id, {
+                        'analytic_accounts': selection_id,
+                        }, context=context)
+                    line = self.browse(cursor, user, line.id, context=context)
                 for account in line.analytic_accounts.accounts:
                     if account.root.id in selection_vals:
                         value = selection_vals[account.root.id]
