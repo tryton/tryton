@@ -3,8 +3,9 @@
 {
     'name': 'Stock Management',
     'name_de_DE': 'Lagerverwaltung',
-    'name_fr_FR': 'Gestion des stocks',
+    'name_es_CO': 'Inventarios',
     'name_es_ES': 'Inventarios',
+    'name_fr_FR': 'Gestion des stocks',
     'version': '1.1.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -29,15 +30,15 @@ Zugehörige Berichte:
     - Lieferschein für Kunden
     - Artikel nach Lagerorten
 ''',
-    'description_fr_FR':'''Gestion des stocks et contrôle de l'inventaire avec:
-    - Emplacement
-    - Mouvement de stock
-    - Colisages client / fournisseur / interne
-    - Inventaire
+    'description_es_CO': '''Administración de Inventarios y bodegas:
+    - Definición de sitios
+    - Movimiento de Bodega
+    - Empaque de Proveedor / Cliente / Interno
+    - Inventario en Bodega
 
-Et les rapports:
-    - Colisage client
-    - Quantités de produit par location
+Y con los reportes:
+    - Empaques de Clientes
+    - Productos por Lugar
 ''',
     'description_es_ES': '''Administración de Inventarios y bodegas:
     - Definición de sitios
@@ -49,7 +50,16 @@ Y con los reportes:
     - Empaques de Clientes
     - Productos por Lugar
 ''',
+    'description_fr_FR':'''Gestion des stocks et contrôle de l'inventaire avec:
+    - Emplacement
+    - Mouvement de stock
+    - Colisages client / fournisseur / interne
+    - Inventaire
 
+Et les rapports:
+    - Colisage client
+    - Quantités de produit par location
+''',
     'depends': [
         'ir',
         'workflow',
@@ -69,6 +79,7 @@ Y con los reportes:
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ],
