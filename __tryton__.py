@@ -3,8 +3,9 @@
 {
     'name' : 'Product',
     'name_de_DE': 'Artikel',
-    'name_fr_FR': 'Produit',
+    'name_es_CO': 'Productos',
     'name_es_ES': 'Productos',
+    'name_fr_FR': 'Produit',
     'version' : '1.1.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
@@ -12,8 +13,8 @@
     'description': 'Define products, categories of product, units ' \
         'of measure, categories of units of measure.',
     'description_de_DE': 'Dient der Erstellung von Artikeln, Artikelkategorien, Maßeinheiten und Kategorien für Maßeinheiten.',
-    'description_es_ES': 'Definición de productos, categorías de producto '
-    'unidades de medida y categorías de unidades de medida',
+    'description_es_CO': 'Definición de productos, categorías de producto unidades de medida y categorías de unidades de medida',
+    'description_es_ES': 'Definición de productos, categorías de producto unidades de medida y categorías de unidades de medida',
     'depends' : [
         'ir',
         'res',
@@ -24,9 +25,10 @@
         'uom.xml',
     ],
     'translation': [
-        'fr_FR.csv',
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ]
 }
 
