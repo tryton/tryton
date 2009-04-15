@@ -121,6 +121,7 @@ class Party(OSV):
             for mechanism in party.contact_mechanisms:
                 if mechanism.type == arg:
                     res[party.id] = mechanism.value
+                    break
         return res
 
     def create(self, cursor, user, values, context=None):
