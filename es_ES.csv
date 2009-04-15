@@ -1,6 +1,5 @@
 type,name,res_id,src,value,fuzzy
 error,analytic_account.account,0,You can not create recursive accounts!,No puede crear cuentas recursivas!,1
-error,purchase.line,0,"It misses an ""account_expense"" default property!","Falta una propiedad por defecto ""account_expense""!",0
 error,purchase.line,0,"It misses an ""Account Expense"" on product ""%s""!","Falta una propiedad por defecto ""Account Expense""!",0
 error,purchase.line,0,The supplier location is required!,Se requiere la localización del proveedor!,0
 error,purchase.purchase,0,"Analytic account is required on line ""%s"" (%d)!","Se requiere una cuenta analítica en la línea ""%s"" (%d)!",0
@@ -25,7 +24,7 @@ field,"analytic_account.account,root",0,Root,Raíz,0
 field,"analytic_account.account,state",0,State,Estado,1
 field,"analytic_account.account,type",0,Type,Tipo,1
 field,"purchase.line,amount",0,Amount,Cantidad,1
-field,"purchase.line,analytic_accounts",0,Analytic Accounts,Cuentas Analíticas,0
+field,"purchase.line,analytic_accounts",0,Analytic Accounts,Cuentas analíticas,0
 field,"purchase.line,description",0,Description,Descripción,1
 field,"purchase.line,invoice_lines",0,Invoice Lines,Líneas de Factura,1
 field,"purchase.line,move_done",0,Moves Done,Movimientos Hechos,1
