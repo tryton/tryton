@@ -14,23 +14,7 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="code"/>
                     <field name="code"/>
                     <separator name="subdivisions" colspan="4"/>
-                    <field name="subdivisions" colspan="4">
-                        <form string="Subdivision">
-                            <label name="name"/>
-                            <field name="name"/>
-                            <label name="code"/>
-                            <field name="code"/>
-                            <label name="type"/>
-                            <field name="type"/>
-                            <label name="parent"/>
-                            <field name="parent"/>
-                        </form>
-                        <tree string="Subdivisions">
-                            <field name="name"/>
-                            <field name="code"/>
-                            <field name="type"/>
-                        </tree>
-                    </field>
+                    <field name="subdivisions" colspan="4"/>
                 </form>
                 ]]>
             </field>
@@ -64,6 +48,38 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="ir.menu_administration" action="act_country_form"
             id="menu_country_form"/>
+
+        <record model="ir.ui.view" id="subdivision_view_form">
+            <field name="model">country.subdivision</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Subdivision">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="type"/>
+                    <field name="type"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="subdivision_view_tree">
+            <field name="model">country.subdivision</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Subdivisions">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="type" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
 
         <!--
         Output of scripts/countries.py
