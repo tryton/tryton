@@ -358,9 +358,9 @@ help,"account.account.open_chart_account.init,fiscalyear",0,Leave empty for all 
 help,"account.account.open_chart_account.init,posted",0,Show only posted move,Mostrar solo asientos confirmados,0
 help,"account.account.open_income_statement.init,posted",0,Show only posted move,Mostrar solo asientos confirmados,0
 help,"account.account.open_third_party_balance.init,posted",0,Show only posted move,Mostrar solo asientos confirmados,0
-help,"account.account.print_general_ledger.init,empty_account",0,With account without move,,0
+help,"account.account.print_general_ledger.init,empty_account",0,With account without move,Con cuenta sin asientos,0
 help,"account.account.print_general_ledger.init,posted",0,Show only posted move,Mostrar solo asientos confirmados,0
-help,"account.account.print_trial_balance.init,empty_account",0,With account without move,,0
+help,"account.account.print_trial_balance.init,empty_account",0,With account without move,Con cuenta sin asientos,0
 help,"account.account.print_trial_balance.init,posted",0,Show only posted move,Mostrar solo asientos confirmados,0
 help,"account.account,reconcile",0,"Check if the account can be used 
 for reconciliation.","Activar si la cuenta puede 
@@ -406,7 +406,7 @@ model,"account.account.open_balance_sheet.init,name",0,Open Balance Sheet Init,,
 model,"account.account.open_chart_account.init,name",0,Open Chart Account Init,Abrir Inicio de Plan de Cuentas,1
 model,"account.account.open_income_statement.init,name",0,Open Income Statement Init,,0
 model,"account.account.open_third_party_balance.init,name",0,Open Third Party Balance Init,,0
-model,"account.account.print_general_ledger.init,name",0,Print General Ledger,Imprimir Libro General,1
+model,"account.account.print_general_ledger.init,name",0,Print General Ledger,Imprimir libro mayor,1
 model,"account.account.print_trial_balance.init,name",0,Print Trial Balance Init,,0
 model,"account.account.template-account.tax.template,name",0,Account Template - Tax Template,,0
 model,"account.account.template,name",0,Account Template,Plantilla de Cuenta,1
@@ -457,7 +457,7 @@ model,"account.move.line,name",0,Account Move Line,Linea de Movimiento de Cuenta
 model,"account.move,name",0,Account Move,Movimiento de Cuenta,1
 model,"account.move.open_journal.ask,name",0,Open Journal Ask,,0
 model,"account.move.open_reconcile_lines.init,name",0,Open Reconcile Lines Init,,0
-model,"account.move.print_general_journal.init,name",0,Print General Journal Init,,0
+model,"account.move.print_general_journal.init,name",0,Print General Journal Init,Inicializar impresión del diario general,0
 model,"account.move.reconcile_lines.writeoff,name",0,Reconcile Lines Write-Off,,0
 model,"account.move.reconciliation,name",0,Account Move Reconciliation Lines,,0
 model,"account.move.unreconcile_lines.init,name",0,Unreconcile Lines Init,,0
@@ -649,7 +649,7 @@ odt,account.move.general_journal,0,Date:,Fecha:,0
 odt,account.move.general_journal,0,Debit,Debe,0
 odt,account.move.general_journal,0,Draft,Borrador,0
 odt,account.move.general_journal,0,From Date:,Fecha inicial:,0
-odt,account.move.general_journal,0,General Journal,Diario general,0
+odt,account.move.general_journal,0,General Journal,Libro diario,0
 odt,account.move.general_journal,0,Journal Entry:,Asiento de diario:,0
 odt,account.move.general_journal,0,Name,Nombre,0
 odt,account.move.general_journal,0,Posted,Confirmado,0
