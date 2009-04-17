@@ -10220,11 +10220,11 @@
       <field ref='code86' name='invoice_base_code'/>
       <field ref='code86' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>1</field>
-      <field name='credit_note_base_sign'>1</field>
+      <field name='credit_note_base_sign'>-1</field>
       <field ref='code861' name='invoice_tax_code'/>
       <field ref='code861' name='credit_note_tax_code'/>
       <field name='invoice_tax_sign'>1</field>
-      <field name='credit_note_tax_sign'>1</field>
+      <field name='credit_note_tax_sign'>-1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>7</field>
       <field ref='a1771' name='invoice_account'/>
@@ -10239,11 +10239,11 @@
       <field ref='code81' name='invoice_base_code'/>
       <field ref='code81' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>1</field>
-      <field name='credit_note_base_sign'>1</field>
+      <field name='credit_note_base_sign'>-1</field>
       <field ref='code811' name='invoice_tax_code'/>
       <field ref='code811' name='credit_note_tax_code'/>
       <field name='invoice_tax_sign'>1</field>
-      <field name='credit_note_tax_sign'>1</field>
+      <field name='credit_note_tax_sign'>-1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>19</field>
       <field ref='a1776' name='invoice_account'/>
@@ -10258,11 +10258,11 @@
       <field ref='codeBRV7' name='invoice_base_code'/>
       <field ref='codeBRV7' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>-1</field>
-      <field name='credit_note_base_sign'>-1</field>
+      <field name='credit_note_base_sign'>1</field>
       <field ref='code66' name='invoice_tax_code'/>
       <field ref='code66' name='credit_note_tax_code'/>
       <field name='invoice_tax_sign'>-1</field>
-      <field name='credit_note_tax_sign'>-1</field>
+      <field name='credit_note_tax_sign'>1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>7</field>
       <field ref='a1571' name='invoice_account'/>
@@ -10277,11 +10277,11 @@
       <field ref='codeBRV19' name='invoice_base_code'/>
       <field ref='codeBRV19' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>-1</field>
-      <field name='credit_note_base_sign'>-1</field>
+      <field name='credit_note_base_sign'>1</field>
       <field ref='code66' name='invoice_tax_code'/>
       <field ref='code66' name='credit_note_tax_code'/>
       <field name='invoice_tax_sign'>-1</field>
-      <field name='credit_note_tax_sign'>-1</field>
+      <field name='credit_note_tax_sign'>1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>19</field>
       <field ref='a1576' name='invoice_account'/>
@@ -10296,11 +10296,11 @@
       <field ref='codeBAUS19' name='invoice_base_code'/>
       <field ref='codeBAUS19' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>-1</field>
-      <field name='credit_note_base_sign'>-1</field>
+      <field name='credit_note_base_sign'>1</field>
       <field ref='code62' name='invoice_tax_code'/>
       <field ref='code62' name='credit_note_tax_code'/>
       <field name='invoice_tax_sign'>-1</field>
-      <field name='credit_note_tax_sign'>-1</field>
+      <field name='credit_note_tax_sign'>1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>19</field>
       <field ref='a1588' name='invoice_account'/>
@@ -10322,9 +10322,9 @@
       <field ref='code41' name='invoice_base_code'/>
       <field ref='code41' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>1</field>
-      <field name='credit_note_base_sign'>1</field>
+      <field name='credit_note_base_sign'>-1</field>
       <field name='invoice_tax_sign'>1</field>
-      <field name='credit_note_tax_sign'>1</field>
+      <field name='credit_note_tax_sign'>-1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>0</field>
       <field ref='a1770' name='invoice_account'/>
@@ -10339,11 +10339,11 @@
       <field ref='codeBAUS7' name='invoice_base_code'/>
       <field ref='codeBAUS7' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>-1</field>
-      <field name='credit_note_base_sign'>-1</field>
+      <field name='credit_note_base_sign'>1</field>
       <field ref='code62' name='invoice_tax_code'/>
       <field ref='code62' name='credit_note_tax_code'/>
       <field name='invoice_tax_sign'>-1</field>
-      <field name='credit_note_tax_sign'>-1</field>
+      <field name='credit_note_tax_sign'>1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>7</field>
       <field ref='a1588' name='invoice_account'/>
@@ -10358,9 +10358,9 @@
       <field ref='code43' name='invoice_base_code'/>
       <field ref='code43' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>1</field>
-      <field name='credit_note_base_sign'>1</field>
+      <field name='credit_note_base_sign'>-1</field>
       <field name='invoice_tax_sign'>1</field>
-      <field name='credit_note_tax_sign'>1</field>
+      <field name='credit_note_tax_sign'>-1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>0</field>
       <field ref='a1770' name='invoice_account'/>
@@ -10375,9 +10375,9 @@
       <field ref='code43' name='invoice_base_code'/>
       <field ref='code43' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>1</field>
-      <field name='credit_note_base_sign'>1</field>
+      <field name='credit_note_base_sign'>-1</field>
       <field name='invoice_tax_sign'>1</field>
-      <field name='credit_note_tax_sign'>1</field>
+      <field name='credit_note_tax_sign'>-1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>0</field>
       <field ref='a1770' name='invoice_account'/>
@@ -10392,11 +10392,11 @@
       <field ref='code89' name='invoice_base_code'/>
       <field ref='code89' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>-1</field>
-      <field name='credit_note_base_sign'>-1</field>
+      <field name='credit_note_base_sign'>1</field>
       <field ref='code891' name='invoice_tax_code'/>
       <field ref='code891' name='credit_note_tax_code'/>
       <field name='invoice_tax_sign'>-1</field>
-      <field name='credit_note_tax_sign'>-1</field>
+      <field name='credit_note_tax_sign'>1</field>
       <field ref='tax14' name='parent'/>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>-19</field>
@@ -10412,9 +10412,9 @@
       <field ref='code48' name='invoice_base_code'/>
       <field ref='code48' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>1</field>
-      <field name='credit_note_base_sign'>1</field>
+      <field name='credit_note_base_sign'>-1</field>
       <field name='invoice_tax_sign'>1</field>
-      <field name='credit_note_tax_sign'>1</field>
+      <field name='credit_note_tax_sign'>-1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>0</field>
       <field ref='a1770' name='invoice_account'/>
@@ -10427,11 +10427,11 @@
     </record>
     <record model='account.tax.template' id='tax23'>
       <field name='invoice_base_sign'>-1</field>
-      <field name='credit_note_base_sign'>-1</field>
+      <field name='credit_note_base_sign'>1</field>
       <field ref='code61' name='invoice_tax_code'/>
       <field ref='code61' name='credit_note_tax_code'/>
       <field name='invoice_tax_sign'>-1</field>
-      <field name='credit_note_tax_sign'>-1</field>
+      <field name='credit_note_tax_sign'>1</field>
       <field ref='tax14' name='parent'/>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>19</field>
@@ -10447,9 +10447,9 @@
       <field ref='code45' name='invoice_base_code'/>
       <field ref='code45' name='credit_note_base_code'/>
       <field name='invoice_base_sign'>1</field>
-      <field name='credit_note_base_sign'>1</field>
+      <field name='credit_note_base_sign'>-1</field>
       <field name='invoice_tax_sign'>1</field>
-      <field name='credit_note_tax_sign'>1</field>
+      <field name='credit_note_tax_sign'>-1</field>
       <field ref='tax_group_ust' name='group'/>
       <field name='percentage'>0</field>
       <field ref='a1770' name='invoice_account'/>
