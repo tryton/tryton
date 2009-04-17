@@ -1516,7 +1516,7 @@ class InvoiceLine(ModelSQL, ModelView):
                     continue
                 key = (tax.base_code.id, tax.base_sign,
                         tax.tax_code.id, tax.tax_sign,
-                        tax.account.id, tax.id)
+                        tax.account.id, tax.tax.id)
                 if key in taxes_keys:
                     res[line.id].append(tax.id)
         return res
