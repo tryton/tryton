@@ -40,8 +40,8 @@ class Purchase(ModelSQL, ModelView):
                 'invoice_lines': [('add', line_ids)],
                 }, context=context)
             invoice_obj.workflow_trigger_validate(cursor, 0, res,
-                    'cancel', context=context)
-            invoice_obj.delete(cursor, 0, res, context=context)
+                    'cancel', context=ctx)
+            invoice_obj.delete(cursor, 0, res, context=ctx)
             res = None
         return res
 
