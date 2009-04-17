@@ -592,11 +592,309 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.account.type.template"
+            id="resultats">
+            <field name="name">Compte de résultats</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="passif_V"/>
+            <field name="income_statement" eval="True"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_XIII">
+            <field name="name">XIII. Bénéfice de l'exercice à affecter - Perte de l'exercice à affecter</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="resultats"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_XI">
+            <field name="name">XI. Bénéfice de l'exercice - Perte de l'exercice</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="resultats_XIII"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_XII">
+            <field name="name">XII. Prélèvements sur les réserves immunisées - Transfert aux réserves immunisées</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="resultats_XIII"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="charges">
+            <field name="name">Charges</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="resultats_XI"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_II">
+            <field name="name">II. Coût des ventes et des prestations</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="charges"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_II_A">
+            <field name="name">A. Approvisionnements et marchandises</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="resultats_II"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_II_A_1">
+            <field name="name">1. Achats</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="resultats_II_A"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_II_A_2">
+            <field name="name">2. Variation des stocks</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="resultats_II_A"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_II_B">
+            <field name="name">B. Services et biens divers</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="resultats_II"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_II_C">
+            <field name="name">C. Rémunérations, charges sociales et pensions</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="resultats_II"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_II_D">
+            <field name="name">D. Amortissements et réductions de valeur sur frais d'établissement, sur immobilisations incorporelles et corporelles</field>
+            <field name="sequence" eval="40"/>
+            <field name="parent" ref="resultats_II"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_II_E">
+            <field name="name">E. Réductions de valeur sur stocks, sur commandes en cours d'exécution et sur créances commerciales</field>
+            <field name="sequence" eval="50"/>
+            <field name="parent" ref="resultats_II"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_II_F">
+            <field name="name">F. Provisions pour risques et charges</field>
+            <field name="sequence" eval="60"/>
+            <field name="parent" ref="resultats_II"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_II_G">
+            <field name="name">G. Autres charges d'exploitation</field>
+            <field name="sequence" eval="70"/>
+            <field name="parent" ref="resultats_II"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_II_H">
+            <field name="name">H. Charges d'exploitation portées à l'actif au titre de frais de restructuration</field>
+            <field name="sequence" eval="70"/>
+            <field name="parent" ref="resultats_II"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_V">
+            <field name="name">V. Charges financières</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="charges"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_V_A">
+            <field name="name">A. Charges des dettes</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="resultats_V"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_V_B">
+            <field name="name">B. Réductions de valeur sur actifs circulants autres que ceux visés sub. II. E.</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="resultats_V"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_V_C">
+            <field name="name">C. Autres charges financières</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="resultats_V"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_VIII">
+            <field name="name">VIII. Charges exceptionnelles</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="charges"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VIII_A">
+            <field name="name">A. Amortissements et réductions de valeur exceptionnels sur frais d'établissement, sur immobilisations incorporelles et corporelles</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="resultats_VIII"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VIII_B">
+            <field name="name">B. Réductions de valeur sur immobilisations financières</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="resultats_VIII"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VIII_C">
+            <field name="name">C. Provisions pour risques et charges exceptionnels</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="resultats_VIII"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VIII_D">
+            <field name="name">D. Moins-values sur réalisation d'actifs immobilisés</field>
+            <field name="sequence" eval="40"/>
+            <field name="parent" ref="resultats_VIII"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VIII_E">
+            <field name="name">E. Autres charges exceptionnelles</field>
+            <field name="sequence" eval="50"/>
+            <field name="parent" ref="resultats_VIII"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VIII_F">
+            <field name="name">F. Charges exceptionnelles portées à l'actif au titre de frais de restructuration</field>
+            <field name="sequence" eval="50"/>
+            <field name="parent" ref="resultats_VIII"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_IXbis_B">
+            <field name="name">IXbis. B. Transfert aux impôts différés</field>
+            <field name="sequence" eval="40"/>
+            <field name="parent" ref="charges"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_X_A">
+            <field name="name">X. A. Impôts</field>
+            <field name="sequence" eval="50"/>
+            <field name="parent" ref="charges"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="produits">
+            <field name="name">Produits</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="resultats_XI"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_I">
+            <field name="name">I. Ventes et prestations</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="produits"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_I_A">
+            <field name="name">A. Chiffre d'affaires</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="resultats_I"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_I_B">
+            <field name="name">B. Variation des en-cours de fabrication, des produits finis et des commandes en cours d'exécution</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="resultats_I"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_I_C">
+            <field name="name">C. Production immobilisée</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="resultats_I"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_I_D">
+            <field name="name">D. Autres produits d'exploitation</field>
+            <field name="sequence" eval="40"/>
+            <field name="parent" ref="resultats_I"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_IV">
+            <field name="name">IV. Produits financiers</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="produits"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_IV_A">
+            <field name="name">A. Produits des immobilisations financières</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="resultats_IV"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_IV_B">
+            <field name="name">B. Produits des actifs circulants</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="resultats_IV"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_IV_C">
+            <field name="name">C. Autres produits financiers</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="resultats_IV"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_VII">
+            <field name="name">VII. Produits exceptionnels</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="produits"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VII_A">
+            <field name="name">A. Reprises d'amortissements et de réductions de valeur sur immobilisations incorporelles et corporelles</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="resultats_VII"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VII_B">
+            <field name="name">B. Reprises de réductions de valeur sur immobilisations financières</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="resultats_VII"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VII_C">
+            <field name="name">C. Reprises de provisions pour risques et charges exceptionnels</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="resultats_VII"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VII_D">
+            <field name="name">D. Plus-values sur réalisation d'actifs immobilisés</field>
+            <field name="sequence" eval="40"/>
+            <field name="parent" ref="resultats_VII"/>
+        </record>
+        <record model="account.account.type.template"
+            id="resultats_VII_E">
+            <field name="name">E. Autres produits exceptionnels</field>
+            <field name="sequence" eval="50"/>
+            <field name="parent" ref="resultats_VII"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_IXbis_A">
+            <field name="name">IXbis. A. Prélèvements sur les impôts différés</field>
+            <field name="sequence" eval="40"/>
+            <field name="parent" ref="produits"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="resultats_X_B">
+            <field name="name">X. B. Régulatisations d'impôts et reprise de provisions fiscales</field>
+            <field name="sequence" eval="50"/>
+            <field name="parent" ref="produits"/>
+        </record>
+
+        <record model="account.account.type.template"
             id="hors_bilan">
             <field name="name">Hors bilan</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="be"/>
-            <field name="balance_sheet" eval="False"/>
         </record>
 
         <record model="account.account.template" id="root">
