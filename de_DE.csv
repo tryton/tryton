@@ -353,3 +353,5 @@ view,country.country,0,Countries,Staaten,0
 view,country.country,0,Country,Staat,0
 view,country.country,0,Subdivision,Subnationale Einheit,0
 view,country.country,0,Subdivisions,Subnationale Einheiten,0
+view,country.subdivision,0,Subdivision,Subnationale Einheit,0
+view,country.subdivision,0,Subdivisions,Subnationale Einheiten,0
