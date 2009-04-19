@@ -701,6 +701,8 @@ def process_exception(exception, parent, obj='', method='', *args):
             if password is None:
                 raise Exception('NotLogged')
             res = rpc.login(rpc._USERNAME, password, host, port, rpc._DATABASE)
+            from tryton.gui.main import Main
+            Main.get_main().refresh_ssl()
             if res == -1:
                 message(_('Connection error!\n' \
                         'Unable to connect to the server!'), parent)
