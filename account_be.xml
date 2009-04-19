@@ -5511,5 +5511,612 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="69"/>
         </record>
 
+        <record model="account.account.template" id="7">
+            <field name="name">Produits</field>
+            <field name="code">7</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="root"/>
+        </record>
+
+        <record model="account.account.template" id="70">
+            <field name="name">Chiffre d'affaires</field>
+            <field name="code">70</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_I_A"/>
+            <field name="parent" ref="7"/>
+        </record>
+
+        <record model="account.account.template" id="700">
+            <field name="name">Ventes et prestations de services</field>
+            <field name="code">700</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">revenue</field>
+            <field name="type" ref="resultats_I_A"/>
+            <field name="parent" ref="70"/>
+        </record>
+
+        <record model="account.account.template" id="701">
+            <field name="name">Ventes et prestations de services</field>
+            <field name="code">701</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">revenue</field>
+            <field name="type" ref="resultats_I_A"/>
+            <field name="parent" ref="70"/>
+        </record>
+
+        <record model="account.account.template" id="702">
+            <field name="name">Ventes et prestations de services</field>
+            <field name="code">702</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">revenue</field>
+            <field name="type" ref="resultats_I_A"/>
+            <field name="parent" ref="70"/>
+        </record>
+
+        <record model="account.account.template" id="703">
+            <field name="name">Ventes et prestations de services</field>
+            <field name="code">703</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">revenue</field>
+            <field name="type" ref="resultats_I_A"/>
+            <field name="parent" ref="70"/>
+        </record>
+
+        <record model="account.account.template" id="704">
+            <field name="name">Ventes et prestations de services</field>
+            <field name="code">704</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">revenue</field>
+            <field name="type" ref="resultats_I_A"/>
+            <field name="parent" ref="70"/>
+        </record>
+
+        <record model="account.account.template" id="705">
+            <field name="name">Ventes et prestations de services</field>
+            <field name="code">705</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">revenue</field>
+            <field name="type" ref="resultats_I_A"/>
+            <field name="parent" ref="70"/>
+        </record>
+
+        <record model="account.account.template" id="706">
+            <field name="name">Ventes et prestations de services</field>
+            <field name="code">706</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">revenue</field>
+            <field name="type" ref="resultats_I_A"/>
+            <field name="parent" ref="70"/>
+        </record>
+
+        <record model="account.account.template" id="707">
+            <field name="name">Ventes et prestations de services</field>
+            <field name="code">707</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">revenue</field>
+            <field name="type" ref="resultats_I_A"/>
+            <field name="parent" ref="70"/>
+        </record>
+
+        <record model="account.account.template" id="708">
+            <field name="name">Remises, ristournes et rabais accordés</field>
+            <field name="code">708</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_A"/>
+            <field name="parent" ref="70"/>
+        </record>
+
+        <record model="account.account.template" id="71">
+            <field name="name">Variation des stocks et des commandes en cours d'exécution</field>
+            <field name="code">70</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_I_B"/>
+            <field name="parent" ref="7"/>
+        </record>
+
+        <record model="account.account.template" id="712">
+            <field name="name">Des en-cours de fabrication</field>
+            <field name="code">712</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_B"/>
+            <field name="parent" ref="71"/>
+        </record>
+
+        <record model="account.account.template" id="713">
+            <field name="name">Des produits finis</field>
+            <field name="code">713</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_B"/>
+            <field name="parent" ref="71"/>
+        </record>
+
+        <record model="account.account.template" id="715">
+            <field name="name">Des immeubles construits destinés à la vente</field>
+            <field name="code">715</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_B"/>
+            <field name="parent" ref="71"/>
+        </record>
+
+        <record model="account.account.template" id="717">
+            <field name="name">Des commandes en cours d'exécution</field>
+            <field name="code">717</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_I_B"/>
+            <field name="parent" ref="71"/>
+        </record>
+
+        <record model="account.account.template" id="7170">
+            <field name="name">Valeur d'acquisition</field>
+            <field name="code">7170</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_B"/>
+            <field name="parent" ref="717"/>
+        </record>
+
+        <record model="account.account.template" id="7171">
+            <field name="name">Bénéfice pris en compte</field>
+            <field name="code">7171</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_B"/>
+            <field name="parent" ref="717"/>
+        </record>
+
+        <record model="account.account.template" id="72">
+            <field name="name">Production immobilisée</field>
+            <field name="code">72</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_C"/>
+            <field name="parent" ref="7"/>
+        </record>
+
+        <record model="account.account.template" id="74">
+            <field name="name">Autres produits d'exploitation</field>
+            <field name="code">74</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="7"/>
+        </record>
+
+        <record model="account.account.template" id="740">
+            <field name="name">Subsides d'exploitation et montants compensatoires</field>
+            <field name="code">740</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="74"/>
+        </record>
+
+        <record model="account.account.template" id="741">
+            <field name="name">Plus-values sur réalisations courantes d'immobilisations corporelles</field>
+            <field name="code">741</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="74"/>
+        </record>
+
+
+        <record model="account.account.template" id="742">
+            <field name="name">Plus-values sur réalisation de créances commerciales</field>
+            <field name="code">742</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="74"/>
+        </record>
+
+        <record model="account.account.template" id="743">
+            <field name="name">Produits d'exploitation divers</field>
+            <field name="code">743</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="74"/>
+        </record>
+
+        <record model="account.account.template" id="744">
+            <field name="name">Produits d'exploitation divers</field>
+            <field name="code">744</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="74"/>
+        </record>
+
+        <record model="account.account.template" id="745">
+            <field name="name">Produits d'exploitation divers</field>
+            <field name="code">745</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="74"/>
+        </record>
+
+        <record model="account.account.template" id="746">
+            <field name="name">Produits d'exploitation divers</field>
+            <field name="code">746</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="74"/>
+        </record>
+
+        <record model="account.account.template" id="747">
+            <field name="name">Produits d'exploitation divers</field>
+            <field name="code">747</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="74"/>
+        </record>
+
+        <record model="account.account.template" id="748">
+            <field name="name">Produits d'exploitation divers</field>
+            <field name="code">748</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="74"/>
+        </record>
+
+        <record model="account.account.template" id="749">
+            <field name="name">Produits d'exploitation divers</field>
+            <field name="code">749</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_I_D"/>
+            <field name="parent" ref="74"/>
+        </record>
+
+        <record model="account.account.template" id="75">
+            <field name="name">Produits financiers</field>
+            <field name="code">75</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_IV"/>
+            <field name="parent" ref="7"/>
+        </record>
+
+        <record model="account.account.template" id="750">
+            <field name="name">Produits des immobilisations financières</field>
+            <field name="code">750</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IV_A"/>
+            <field name="parent" ref="75"/>
+        </record>
+
+        <record model="account.account.template" id="751">
+            <field name="name">Produits des actifs circulants</field>
+            <field name="code">751</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IV_B"/>
+            <field name="parent" ref="75"/>
+        </record>
+
+        <record model="account.account.template" id="752">
+            <field name="name">Plus-values sur réalisation d'actifs circulants</field>
+            <field name="code">752</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IV_B"/>
+            <field name="parent" ref="75"/>
+        </record>
+
+        <record model="account.account.template" id="753">
+            <field name="name">Subsides en capital et en intérêts</field>
+            <field name="code">753</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IV_C"/>
+            <field name="parent" ref="75"/>
+        </record>
+
+        <record model="account.account.template" id="754">
+            <field name="name">Différences de change</field>
+            <field name="code">754</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IV_C"/>
+            <field name="parent" ref="75"/>
+        </record>
+
+        <record model="account.account.template" id="755">
+            <field name="name">Ecarts de conversion des devises</field>
+            <field name="code">755</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IV_C"/>
+            <field name="parent" ref="75"/>
+        </record>
+
+        <record model="account.account.template" id="756">
+            <field name="name">Produits financiers divers</field>
+            <field name="code">756</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IV_C"/>
+            <field name="parent" ref="75"/>
+        </record>
+
+        <record model="account.account.template" id="757">
+            <field name="name">Produits financiers divers</field>
+            <field name="code">757</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IV_C"/>
+            <field name="parent" ref="75"/>
+        </record>
+
+        <record model="account.account.template" id="758">
+            <field name="name">Produits financiers divers</field>
+            <field name="code">758</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IV_C"/>
+            <field name="parent" ref="75"/>
+        </record>
+
+        <record model="account.account.template" id="759">
+            <field name="name">Produits financiers divers</field>
+            <field name="code">759</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IV_C"/>
+            <field name="parent" ref="75"/>
+        </record>
+
+        <record model="account.account.template" id="76">
+            <field name="name">Produits exceptionnels</field>
+            <field name="code">76</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_VII"/>
+            <field name="parent" ref="7"/>
+        </record>
+
+        <record model="account.account.template" id="760">
+            <field name="name">Reprises d'amortissements et de réductions de valeur</field>
+            <field name="code">760</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_VII_A"/>
+            <field name="parent" ref="76"/>
+        </record>
+
+        <record model="account.account.template" id="7600">
+            <field name="name">sur immobilisation incorporelles</field>
+            <field name="code">7600</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_A"/>
+            <field name="parent" ref="760"/>
+        </record>
+
+        <record model="account.account.template" id="7601">
+            <field name="name">sur immobilisation corporelles</field>
+            <field name="code">7601</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_A"/>
+            <field name="parent" ref="760"/>
+        </record>
+
+        <record model="account.account.template" id="761">
+            <field name="name">Reprises de réductions de valeur sur immobilisations financières</field>
+            <field name="code">761</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_B"/>
+            <field name="parent" ref="76"/>
+        </record>
+
+        <record model="account.account.template" id="762">
+            <field name="name">Reprises de provisions pour risques et charges exceptionnels</field>
+            <field name="code">762</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_C"/>
+            <field name="parent" ref="76"/>
+        </record>
+
+        <record model="account.account.template" id="763">
+            <field name="name">Plus-values sur réalisation d'actifs immobilisés</field>
+            <field name="code">763</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_D"/>
+            <field name="parent" ref="76"/>
+        </record>
+
+        <record model="account.account.template" id="764">
+            <field name="name">Autres produits exceptionnels</field>
+            <field name="code">764</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_E"/>
+            <field name="parent" ref="76"/>
+        </record>
+
+        <record model="account.account.template" id="765">
+            <field name="name">Autres produits exceptionnels</field>
+            <field name="code">765</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_E"/>
+            <field name="parent" ref="76"/>
+        </record>
+
+        <record model="account.account.template" id="766">
+            <field name="name">Autres produits exceptionnels</field>
+            <field name="code">766</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_E"/>
+            <field name="parent" ref="76"/>
+        </record>
+
+        <record model="account.account.template" id="767">
+            <field name="name">Autres produits exceptionnels</field>
+            <field name="code">767</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_E"/>
+            <field name="parent" ref="76"/>
+        </record>
+
+        <record model="account.account.template" id="768">
+            <field name="name">Autres produits exceptionnels</field>
+            <field name="code">768</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_E"/>
+            <field name="parent" ref="76"/>
+        </record>
+
+        <record model="account.account.template" id="769">
+            <field name="name">Autres produits exceptionnels</field>
+            <field name="code">769</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VII_E"/>
+            <field name="parent" ref="76"/>
+        </record>
+
+        <record model="account.account.template" id="77">
+            <field name="name">Régularisations d'impôts et reprises de provisions fiscales</field>
+            <field name="code">77</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_X_B"/>
+            <field name="parent" ref="7"/>
+        </record>
+
+        <record model="account.account.template" id="771">
+            <field name="name">Impôts belges sur le résultat</field>
+            <field name="code">771</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_X_B"/>
+            <field name="parent" ref="77"/>
+        </record>
+
+        <record model="account.account.template" id="7710">
+            <field name="name">Régulatisation d'impôts dus ou versés</field>
+            <field name="code">7710</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_B"/>
+            <field name="parent" ref="771"/>
+        </record>
+
+        <record model="account.account.template" id="7711">
+            <field name="name">Régulatisation d'impôts estimés</field>
+            <field name="code">7711</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_B"/>
+            <field name="parent" ref="771"/>
+        </record>
+
+        <record model="account.account.template" id="7712">
+            <field name="name">Reprises de provisions fiscales</field>
+            <field name="code">7712</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_B"/>
+            <field name="parent" ref="771"/>
+        </record>
+
+        <record model="account.account.template" id="773">
+            <field name="name">Impôts étrangers sur le resultat</field>
+            <field name="code">773</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_B"/>
+            <field name="parent" ref="77"/>
+        </record>
+
+        <record model="account.account.template" id="78">
+            <field name="name">Prélèvements sur les réserves immunisées</field>
+            <field name="code">78</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="7"/>
+        </record>
+
+        <record model="account.account.template" id="780">
+            <field name="name">Prélèvements sur les impôts différés</field>
+            <field name="code">780</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IXbis_A"/>
+            <field name="parent" ref="78"/>
+        </record>
+
+        <record model="account.account.template" id="789">
+            <field name="name">Prélèvements sur les réserves immunisées</field>
+            <field name="code">789</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_XII"/>
+            <field name="parent" ref="78"/>
+        </record>
+
+        <record model="account.account.template" id="79">
+            <field name="name">Affectations et prélèvements</field>
+            <field name="code">79</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="7"/>
+        </record>
+
+        <record model="account.account.template" id="790">
+            <field name="name">Bénéfice reporté de l'exercice précédent</field>
+            <field name="code">790</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_A_2"/>
+            <field name="parent" ref="79"/>
+        </record>
+
+        <record model="account.account.template" id="791">
+            <field name="name">Prélèvement sur le capital et les primes d'émission</field>
+            <field name="code">791</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_B_1"/>
+            <field name="parent" ref="79"/>
+        </record>
+
+        <record model="account.account.template" id="792">
+            <field name="name">Prélèvement sur les réserves</field>
+            <field name="code">792</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_B_2"/>
+            <field name="parent" ref="79"/>
+        </record>
+
+        <record model="account.account.template" id="793">
+            <field name="name">Perte à reporter</field>
+            <field name="code">793</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_D_2"/>
+            <field name="parent" ref="79"/>
+        </record>
+
+        <record model="account.account.template" id="794">
+            <field name="name">Intervention d'associés (ou du propriétaire) dans la perte</field>
+            <field name="code">794</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_E"/>
+            <field name="parent" ref="79"/>
+        </record>
+
     </data>
 </tryton>
