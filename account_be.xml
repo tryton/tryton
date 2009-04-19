@@ -592,10 +592,144 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.account.type.template"
+            id="affectations_prelevements">
+            <field name="name">Affectations et prélèvements</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="passif_V"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_A">
+            <field name="name">A. Bénéfice à affecter - Perte à affecter</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="affectations_prelevements"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_A_1">
+            <field name="name">1. Bénéfice de l'exercice à affecter - Perte de l'exercice à affecter</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="affectations_prelevements_A"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_A_2">
+            <field name="name">2. Bénéfice reporté de l'exercice précédent - Perte reportée de l'exercice précédent</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="affectations_prelevements_A"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_B">
+            <field name="name">B. Prélèvements sur les capitaux propres</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="affectations_prelevements"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_B_1">
+            <field name="name">1. sur le capital et les primes d'émission</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="affectations_prelevements_B"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_B_2">
+            <field name="name">2. sur les réserves</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="affectations_prelevements_B"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_C">
+            <field name="name">C. Affectations aux capitaux propres</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="affectations_prelevements"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_C_1">
+            <field name="name">1. au capital et aux primes d'émission</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="affectations_prelevements_C"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_C_2">
+            <field name="name">2. à la réserve légale</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="affectations_prelevements_C"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_C_3">
+            <field name="name">3. aux autres réserves</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="affectations_prelevements_C"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_D">
+            <field name="name">D. Résultat à reporter</field>
+            <field name="sequence" eval="40"/>
+            <field name="parent" ref="affectations_prelevements"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_D_1">
+            <field name="name">1. Bénéfice à reporter</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="affectations_prelevements_D"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_D_2">
+            <field name="name">2. Perte à reporter</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="affectations_prelevements_D"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_E">
+            <field name="name">E. Intervention d'associés dans la perte</field>
+            <field name="sequence" eval="50"/>
+            <field name="parent" ref="affectations_prelevements"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_F">
+            <field name="name">F. Bénéfice à distribuer</field>
+            <field name="sequence" eval="60"/>
+            <field name="parent" ref="affectations_prelevements"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_F_1">
+            <field name="name">1. Rémunération du capital</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="affectations_prelevements_F"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_F_2">
+            <field name="name">2. Administrateurs ou gérants</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="affectations_prelevements_F"/>
+        </record>
+
+        <record model="account.account.type.template"
+            id="affectations_prelevements_F_3">
+            <field name="name">3. Autres allocataires</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="affectations_prelevements_F"/>
+        </record>
+
+
+        <record model="account.account.type.template"
             id="resultats">
             <field name="name">Compte de résultats</field>
             <field name="sequence" eval="10"/>
-            <field name="parent" ref="passif_V"/>
+            <field name="parent" ref="affectations_prelevements_A_1"/>
             <field name="income_statement" eval="True"/>
         </record>
 
@@ -4215,6 +4349,1166 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind">other</field>
             <field name="type" ref="actif_IX"/>
             <field name="parent" ref="5"/>
+        </record>
+
+        <record model="account.account.template" id="6">
+            <field name="name">Charges</field>
+            <field name="code">6</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="root"/>
+        </record>
+
+        <record model="account.account.template" id="60">
+            <field name="name">Approvisionnements et marchandises</field>
+            <field name="code">60</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_A"/>
+            <field name="parent" ref="6"/>
+        </record>
+
+        <record model="account.account.template" id="600">
+            <field name="name">Achats de matières premières</field>
+            <field name="code">600</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">expense</field>
+            <field name="type" ref="resultats_II_A_1"/>
+            <field name="parent" ref="60"/>
+        </record>
+
+        <record model="account.account.template" id="601">
+            <field name="name">Achats de fournitures</field>
+            <field name="code">601</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">expense</field>
+            <field name="type" ref="resultats_II_A_1"/>
+            <field name="parent" ref="60"/>
+        </record>
+
+        <record model="account.account.template" id="602">
+            <field name="name">Achats de services, travaux et études</field>
+            <field name="code">602</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">expense</field>
+            <field name="type" ref="resultats_II_A_1"/>
+            <field name="parent" ref="60"/>
+        </record>
+
+        <record model="account.account.template" id="603">
+            <field name="name">Sous-traitances générales</field>
+            <field name="code">603</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">expense</field>
+            <field name="type" ref="resultats_II_A_1"/>
+            <field name="parent" ref="60"/>
+        </record>
+
+        <record model="account.account.template" id="604">
+            <field name="name">Achats de marchandises</field>
+            <field name="code">604</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">expense</field>
+            <field name="type" ref="resultats_II_A_1"/>
+            <field name="parent" ref="60"/>
+        </record>
+
+        <record model="account.account.template" id="605">
+            <field name="name">Achats d'immeubles destinés à la vente</field>
+            <field name="code">605</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">expense</field>
+            <field name="type" ref="resultats_II_A_1"/>
+            <field name="parent" ref="60"/>
+        </record>
+
+        <record model="account.account.template" id="608">
+            <field name="name">Remises, ristournes et rabais obtenus</field>
+            <field name="code">605</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_A_1"/>
+            <field name="parent" ref="60"/>
+        </record>
+
+        <record model="account.account.template" id="609">
+            <field name="name">Variation des stocks</field>
+            <field name="code">609</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_A_2"/>
+            <field name="parent" ref="60"/>
+        </record>
+
+        <record model="account.account.template" id="6090">
+            <field name="name">de matières premières</field>
+            <field name="code">6090</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_A_2"/>
+            <field name="parent" ref="609"/>
+        </record>
+
+        <record model="account.account.template" id="6091">
+            <field name="name">de fournitures</field>
+            <field name="code">6091</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_A_2"/>
+            <field name="parent" ref="609"/>
+        </record>
+
+        <record model="account.account.template" id="6094">
+            <field name="name">de marchandises</field>
+            <field name="code">6094</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_A_2"/>
+            <field name="parent" ref="609"/>
+        </record>
+
+        <record model="account.account.template" id="6095">
+            <field name="name">d'immeubles achetés destinés à la vente</field>
+            <field name="code">6095</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_A_2"/>
+            <field name="parent" ref="609"/>
+        </record>
+
+        <record model="account.account.template" id="61">
+            <field name="name">Services et bien divers</field>
+            <field name="code">61</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_B"/>
+            <field name="parent" ref="6"/>
+        </record>
+
+        <record model="account.account.template" id="617">
+            <field name="name">Personnel intérimaire et personnes mises à la disposition de l'entreprise</field>
+            <field name="code">617</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_B"/>
+            <field name="parent" ref="61"/>
+        </record>
+
+        <record model="account.account.template" id="618">
+            <field name="name">Rémunérations, primes pour assurances extra - légales, pensions de retraite et de survie des administrateurs, gérants et associés actifs qui ne sont pas attribués en vertu d'un contrat de travail</field>
+            <field name="code">618</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_B"/>
+            <field name="parent" ref="61"/>
+        </record>
+
+        <record model="account.account.template" id="62">
+            <field name="name">Rémunérations, charges sociales et pensions</field>
+            <field name="code">62</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="6"/>
+        </record>
+
+        <record model="account.account.template" id="620">
+            <field name="name">Rémunérations et avantages sociaux directs</field>
+            <field name="code">620</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="62"/>
+        </record>
+
+        <record model="account.account.template" id="6200">
+            <field name="name">Administrateurs ou gérants</field>
+            <field name="code">6200</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="620"/>
+        </record>
+
+        <record model="account.account.template" id="6201">
+            <field name="name">Personnel de direction</field>
+            <field name="code">6201</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="620"/>
+        </record>
+
+        <record model="account.account.template" id="6202">
+            <field name="name">Employés</field>
+            <field name="code">6202</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="620"/>
+        </record>
+
+        <record model="account.account.template" id="6203">
+            <field name="name">Ouvriers</field>
+            <field name="code">6203</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="620"/>
+        </record>
+
+        <record model="account.account.template" id="6204">
+            <field name="name">Autres membres du personnel</field>
+            <field name="code">6204</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="620"/>
+        </record>
+
+        <record model="account.account.template" id="621">
+            <field name="name">Cotisations patronales d'assurances sociales</field>
+            <field name="code">621</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="62"/>
+        </record>
+
+        <record model="account.account.template" id="622">
+            <field name="name">Primes patronales pour assurances extra-légales</field>
+            <field name="code">622</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="62"/>
+        </record>
+
+        <record model="account.account.template" id="623">
+            <field name="name">Autres frais de personnel</field>
+            <field name="code">623</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="62"/>
+        </record>
+
+        <record model="account.account.template" id="624">
+            <field name="name">Pensions de retraite et de survie</field>
+            <field name="code">624</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="62"/>
+        </record>
+
+        <record model="account.account.template" id="6240">
+            <field name="name">Administrateurs ou gérants</field>
+            <field name="code">6240</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="624"/>
+        </record>
+
+        <record model="account.account.template" id="6241">
+            <field name="name">Personnel</field>
+            <field name="code">6241</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_C"/>
+            <field name="parent" ref="624"/>
+        </record>
+
+        <record model="account.account.template" id="63">
+            <field name="name">Amortissements, réductions de valeur et provisions pour risques et charges</field>
+            <field name="code">63</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="6"/>
+        </record>
+
+        <record model="account.account.template" id="630">
+            <field name="name">Dotations aux amortissements et aux réductions de valeur sur immobilisations</field>
+            <field name="code">630</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_D"/>
+            <field name="parent" ref="63"/>
+        </record>
+
+        <record model="account.account.template" id="6300">
+            <field name="name">Dotations aux amortissements sur frais d'établissement</field>
+            <field name="code">6300</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_D"/>
+            <field name="parent" ref="630"/>
+        </record>
+
+        <record model="account.account.template" id="6301">
+            <field name="name">Dotations aux amortissements sur immobilisations incorporelles</field>
+            <field name="code">6301</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_D"/>
+            <field name="parent" ref="630"/>
+        </record>
+
+        <record model="account.account.template" id="6302">
+            <field name="name">Dotations aux amortissements sur immobilisations corporelles</field>
+            <field name="code">6302</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_D"/>
+            <field name="parent" ref="630"/>
+        </record>
+
+        <record model="account.account.template" id="6308">
+            <field name="name">Dotations aux réductions de valeur sur immobilisations incorporelles</field>
+            <field name="code">6308</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_D"/>
+            <field name="parent" ref="630"/>
+        </record>
+
+        <record model="account.account.template" id="6309">
+            <field name="name">Dotations aux réductions de valeur sur immobilisations corporelles</field>
+            <field name="code">6309</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_D"/>
+            <field name="parent" ref="630"/>
+        </record>
+
+        <record model="account.account.template" id="631">
+            <field name="name">Réductions de valeur sur stocks</field>
+            <field name="code">631</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="63"/>
+        </record>
+
+        <record model="account.account.template" id="6310">
+            <field name="name">Dotations</field>
+            <field name="code">6310</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="631"/>
+        </record>
+
+        <record model="account.account.template" id="6311">
+            <field name="name">Reprises</field>
+            <field name="code">6311</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="631"/>
+        </record>
+
+        <record model="account.account.template" id="632">
+            <field name="name">Réductions de valeur sur commandes en cours d'exécution</field>
+            <field name="code">632</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="63"/>
+        </record>
+
+        <record model="account.account.template" id="6320">
+            <field name="name">Dotations</field>
+            <field name="code">6320</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="632"/>
+        </record>
+
+        <record model="account.account.template" id="6321">
+            <field name="name">Reprises</field>
+            <field name="code">6321</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="632"/>
+        </record>
+
+        <record model="account.account.template" id="633">
+            <field name="name">Réductions de valeur sur créances commerciales à un plus d'un an</field>
+            <field name="code">633</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="63"/>
+        </record>
+
+        <record model="account.account.template" id="6330">
+            <field name="name">Dotations</field>
+            <field name="code">6330</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="633"/>
+        </record>
+
+        <record model="account.account.template" id="6331">
+            <field name="name">Reprises</field>
+            <field name="code">6331</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="633"/>
+        </record>
+
+        <record model="account.account.template" id="634">
+            <field name="name">Réductions de valeur sur créances commerciales à un an au plus</field>
+            <field name="code">634</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="63"/>
+        </record>
+
+        <record model="account.account.template" id="6340">
+            <field name="name">Dotations</field>
+            <field name="code">6340</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="634"/>
+        </record>
+
+        <record model="account.account.template" id="6341">
+            <field name="name">Reprises</field>
+            <field name="code">6341</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_E"/>
+            <field name="parent" ref="634"/>
+        </record>
+
+        <record model="account.account.template" id="635">
+            <field name="name">Provisions pour pensions et obligations similaires</field>
+            <field name="code">635</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="63"/>
+        </record>
+
+        <record model="account.account.template" id="6350">
+            <field name="name">Dotations</field>
+            <field name="code">6350</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="635"/>
+        </record>
+
+        <record model="account.account.template" id="6351">
+            <field name="name">Utilisations et reprises</field>
+            <field name="code">6351</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="635"/>
+        </record>
+
+        <record model="account.account.template" id="636">
+            <field name="name">Provisions pour grosses réparations et gros entretiens</field>
+            <field name="code">636</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="63"/>
+        </record>
+
+        <record model="account.account.template" id="6360">
+            <field name="name">Dotations</field>
+            <field name="code">6360</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="636"/>
+        </record>
+
+        <record model="account.account.template" id="6361">
+            <field name="name">Utilisations et reprises</field>
+            <field name="code">6361</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="636"/>
+        </record>
+
+        <record model="account.account.template" id="637">
+            <field name="name">Provisions pour autres risques et charges</field>
+            <field name="code">637</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="63"/>
+        </record>
+
+        <record model="account.account.template" id="6370">
+            <field name="name">Dotations</field>
+            <field name="code">6370</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="637"/>
+        </record>
+
+        <record model="account.account.template" id="6371">
+            <field name="name">Utilisations et reprises</field>
+            <field name="code">6371</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="637"/>
+        </record>
+
+        <record model="account.account.template" id="638">
+            <field name="name">Provisions pour dons et legs avec droit de reprise</field>
+            <field name="code">638</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="63"/>
+        </record>
+
+        <record model="account.account.template" id="6380">
+            <field name="name">Dotations</field>
+            <field name="code">6380</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="638"/>
+        </record>
+
+        <record model="account.account.template" id="6381">
+            <field name="name">Utilisations et reprises</field>
+            <field name="code">6381</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_F"/>
+            <field name="parent" ref="638"/>
+        </record>
+
+        <record model="account.account.template" id="64">
+            <field name="name">Autres charges d'exploitation</field>
+            <field name="code">64</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="6"/>
+        </record>
+
+        <record model="account.account.template" id="640">
+            <field name="name">Charges fiscales d'exploitation</field>
+            <field name="code">640</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="64"/>
+        </record>
+
+        <record model="account.account.template" id="641">
+            <field name="name">Moins-values sur réalisations courantes d'immobilisations corporelles</field>
+            <field name="code">641</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="64"/>
+        </record>
+
+        <record model="account.account.template" id="642">
+            <field name="name">Moins-values sur réalisation de créances commerciales</field>
+            <field name="code">642</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="64"/>
+        </record>
+
+        <record model="account.account.template" id="643">
+            <field name="name">Dons</field>
+            <field name="code">643</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="64"/>
+        </record>
+
+        <record model="account.account.template" id="6431">
+            <field name="name">Dons avec droit de reprise</field>
+            <field name="code">6431</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="643"/>
+        </record>
+
+        <record model="account.account.template" id="6432">
+            <field name="name">Dons sans droit de reprise</field>
+            <field name="code">6432</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="643"/>
+        </record>
+
+        <record model="account.account.template" id="644">
+            <field name="name">Charges d'exploitation diverses</field>
+            <field name="code">644</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="64"/>
+        </record>
+
+        <record model="account.account.template" id="645">
+            <field name="name">Charges d'exploitation diverses</field>
+            <field name="code">645</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="64"/>
+        </record>
+
+        <record model="account.account.template" id="646">
+            <field name="name">Charges d'exploitation diverses</field>
+            <field name="code">646</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="64"/>
+        </record>
+
+        <record model="account.account.template" id="647">
+            <field name="name">Charges d'exploitation diverses</field>
+            <field name="code">647</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="64"/>
+        </record>
+
+        <record model="account.account.template" id="648">
+            <field name="name">Charges d'exploitation diverses</field>
+            <field name="code">648</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="64"/>
+        </record>
+
+        <record model="account.account.template" id="649">
+            <field name="name">Charges d'exploitation portées à l'actif au titre de frais de restructuration</field>
+            <field name="code">649</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_II_G"/>
+            <field name="parent" ref="64"/>
+        </record>
+
+        <record model="account.account.template" id="65">
+            <field name="name">Charges financières</field>
+            <field name="code">65</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_V"/>
+            <field name="parent" ref="6"/>
+        </record>
+
+        <record model="account.account.template" id="650">
+            <field name="name">Charges des dettes</field>
+            <field name="code">650</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_V_A"/>
+            <field name="parent" ref="65"/>
+        </record>
+
+        <record model="account.account.template" id="6500">
+            <field name="name">Intérêts, commissions et frais afférents aux dettes</field>
+            <field name="code">6500</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_A"/>
+            <field name="parent" ref="650"/>
+        </record>
+
+        <record model="account.account.template" id="6501">
+            <field name="name">Amortissement des frais d'émission d'emprunts et des primes de remboursement</field>
+            <field name="code">6501</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_A"/>
+            <field name="parent" ref="650"/>
+        </record>
+
+        <record model="account.account.template" id="6502">
+            <field name="name">Autres charges des dettes</field>
+            <field name="code">6502</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_A"/>
+            <field name="parent" ref="650"/>
+        </record>
+
+        <record model="account.account.template" id="6503">
+            <field name="name">Intérêts intercalaires portés à l'actif</field>
+            <field name="code">6503</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_A"/>
+            <field name="parent" ref="650"/>
+        </record>
+
+        <record model="account.account.template" id="651">
+            <field name="name">Réductions de valeur sur actifs circulants</field>
+            <field name="code">651</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_V_B"/>
+            <field name="parent" ref="65"/>
+        </record>
+
+        <record model="account.account.template" id="6510">
+            <field name="name">Dotations</field>
+            <field name="code">6510</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_B"/>
+            <field name="parent" ref="650"/>
+        </record>
+
+        <record model="account.account.template" id="6511">
+            <field name="name">Reprises</field>
+            <field name="code">6511</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_B"/>
+            <field name="parent" ref="650"/>
+        </record>
+
+        <record model="account.account.template" id="652">
+            <field name="name">Moins-values sur réalisation d'actifs circulants</field>
+            <field name="code">652</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_C"/>
+            <field name="parent" ref="65"/>
+        </record>
+
+        <record model="account.account.template" id="653">
+            <field name="name">Charges d'escompte de créances</field>
+            <field name="code">653</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_C"/>
+            <field name="parent" ref="65"/>
+        </record>
+
+        <record model="account.account.template" id="654">
+            <field name="name">Différences de change</field>
+            <field name="code">654</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_C"/>
+            <field name="parent" ref="65"/>
+        </record>
+
+        <record model="account.account.template" id="655">
+            <field name="name">Ecarts de conversion des devises</field>
+            <field name="code">655</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_C"/>
+            <field name="parent" ref="65"/>
+        </record>
+
+        <record model="account.account.template" id="656">
+            <field name="name">Provisions à caractère financier</field>
+            <field name="code">656</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_V_C"/>
+            <field name="parent" ref="65"/>
+        </record>
+
+        <record model="account.account.template" id="6560">
+            <field name="name">Dotations</field>
+            <field name="code">6560</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_C"/>
+            <field name="parent" ref="656"/>
+        </record>
+
+        <record model="account.account.template" id="6561">
+            <field name="name">Utilisations et reprises</field>
+            <field name="code">6561</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_C"/>
+            <field name="parent" ref="656"/>
+        </record>
+
+        <record model="account.account.template" id="657">
+            <field name="name">Charges financières diverses</field>
+            <field name="code">657</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_C"/>
+            <field name="parent" ref="65"/>
+        </record>
+
+        <record model="account.account.template" id="658">
+            <field name="name">Charges financières diverses</field>
+            <field name="code">658</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_C"/>
+            <field name="parent" ref="65"/>
+        </record>
+
+        <record model="account.account.template" id="659">
+            <field name="name">Charges financières diverses</field>
+            <field name="code">659</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_V_C"/>
+            <field name="parent" ref="65"/>
+        </record>
+
+        <record model="account.account.template" id="66">
+            <field name="name">Charges exceptionnelles</field>
+            <field name="code">66</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_VIII"/>
+            <field name="parent" ref="6"/>
+        </record>
+
+        <record model="account.account.template" id="660">
+            <field name="name">Amortissements et réductions de valeur exceptionnels (dotations)</field>
+            <field name="code">660</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_VIII_A"/>
+            <field name="parent" ref="66"/>
+        </record>
+
+        <record model="account.account.template" id="6600">
+            <field name="name">sur frais d'établissement</field>
+            <field name="code">6600</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_A"/>
+            <field name="parent" ref="660"/>
+        </record>
+
+        <record model="account.account.template" id="6601">
+            <field name="name">sur immobilisations incorporelles</field>
+            <field name="code">6601</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_A"/>
+            <field name="parent" ref="660"/>
+        </record>
+
+        <record model="account.account.template" id="6602">
+            <field name="name">sur immobilisations corporelles</field>
+            <field name="code">6602</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_A"/>
+            <field name="parent" ref="660"/>
+        </record>
+
+        <record model="account.account.template" id="661">
+            <field name="name">Réductions de valeur sur immobilisations financières (dotations)</field>
+            <field name="code">661</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_B"/>
+            <field name="parent" ref="66"/>
+        </record>
+
+        <record model="account.account.template" id="662">
+            <field name="name">Provisions pour risques et charges exceptionnels</field>
+            <field name="code">662</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_VIII_C"/>
+            <field name="parent" ref="66"/>
+        </record>
+
+        <record model="account.account.template" id="6620">
+            <field name="name">Dotations</field>
+            <field name="code">6620</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_C"/>
+            <field name="parent" ref="662"/>
+        </record>
+
+        <record model="account.account.template" id="6621">
+            <field name="name">Utilisations</field>
+            <field name="code">6621</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_C"/>
+            <field name="parent" ref="662"/>
+        </record>
+
+        <record model="account.account.template" id="663">
+            <field name="name">Moins-values sur réalisation d'actifs immobilisés</field>
+            <field name="code">663</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_D"/>
+            <field name="parent" ref="66"/>
+        </record>
+
+        <record model="account.account.template" id="664">
+            <field name="name">Autres charges exceptionnelles</field>
+            <field name="code">664</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_E"/>
+            <field name="parent" ref="66"/>
+        </record>
+
+        <record model="account.account.template" id="665">
+            <field name="name">Autres charges exceptionnelles</field>
+            <field name="code">665</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_E"/>
+            <field name="parent" ref="66"/>
+        </record>
+
+        <record model="account.account.template" id="666">
+            <field name="name">Autres charges exceptionnelles</field>
+            <field name="code">666</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_E"/>
+            <field name="parent" ref="66"/>
+        </record>
+
+        <record model="account.account.template" id="667">
+            <field name="name">Autres charges exceptionnelles</field>
+            <field name="code">667</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_E"/>
+            <field name="parent" ref="66"/>
+        </record>
+
+        <record model="account.account.template" id="668">
+            <field name="name">Autres charges exceptionnelles</field>
+            <field name="code">668</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_E"/>
+            <field name="parent" ref="66"/>
+        </record>
+
+        <record model="account.account.template" id="669">
+            <field name="name">Charges exceptionnelles portées à l'actif au titre de frais de restructuration</field>
+            <field name="code">669</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_VIII_E"/>
+            <field name="parent" ref="66"/>
+        </record>
+
+        <record model="account.account.template" id="67">
+            <field name="name">Impôts sur le résultat</field>
+            <field name="code">67</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="6"/>
+        </record>
+
+        <record model="account.account.template" id="670">
+            <field name="name">Impôts belges sur le résultat de l'exercice</field>
+            <field name="code">670</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="67"/>
+        </record>
+
+        <record model="account.account.template" id="6700">
+            <field name="name">Impôts et précomptes dus ou versés</field>
+            <field name="code">6700</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="670"/>
+        </record>
+
+        <record model="account.account.template" id="6701">
+            <field name="name">Excédents de versements d'impôts et de précomptes portés à l'actif</field>
+            <field name="code">6701</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="670"/>
+        </record>
+
+        <record model="account.account.template" id="6702">
+            <field name="name">Charges fiscales estimées</field>
+            <field name="code">6702</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="670"/>
+        </record>
+
+        <record model="account.account.template" id="671">
+            <field name="name">Impôts belges sur le résultat d'exercices antérieurs</field>
+            <field name="code">671</field>
+            <field name="kind">view</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="67"/>
+        </record>
+
+        <record model="account.account.template" id="6710">
+            <field name="name">Suppléments d'impôts dus ou versés</field>
+            <field name="code">6710</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="671"/>
+        </record>
+
+        <record model="account.account.template" id="6711">
+            <field name="name">Suppléments d'impôts estimés</field>
+            <field name="code">6711</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="671"/>
+        </record>
+
+        <record model="account.account.template" id="6712">
+            <field name="name">Provisions fiscales constituées</field>
+            <field name="code">6712</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="671"/>
+        </record>
+
+        <record model="account.account.template" id="672">
+            <field name="name">Impôts étrangers sur le résultat de l'exercice</field>
+            <field name="code">672</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="67"/>
+        </record>
+
+        <record model="account.account.template" id="673">
+            <field name="name">Impôts étrangers sur le résultat d'exercices antérieurs</field>
+            <field name="code">673</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_X_A"/>
+            <field name="parent" ref="67"/>
+        </record>
+
+        <record model="account.account.template" id="68">
+            <field name="name">Transferts aux impôts différés et aux réserves immunisées</field>
+            <field name="code">68</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="6"/>
+        </record>
+
+        <record model="account.account.template" id="680">
+            <field name="name">Transferts aux impôts différés</field>
+            <field name="code">680</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_IXbis_B"/>
+            <field name="parent" ref="68"/>
+        </record>
+
+        <record model="account.account.template" id="689">
+            <field name="name">Transferts aux réserves immunisées</field>
+            <field name="code">689</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="resultats_XII"/>
+            <field name="parent" ref="68"/>
+        </record>
+
+        <record model="account.account.template" id="69">
+            <field name="name">Affectations et prélèvements</field>
+            <field name="code">69</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="6"/>
+        </record>
+
+        <record model="account.account.template" id="690">
+            <field name="name">Perte reportée de l'exercice précédent</field>
+            <field name="code">690</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_A_2"/>
+            <field name="parent" ref="69"/>
+        </record>
+
+        <record model="account.account.template" id="691">
+            <field name="name">Affectations au capital et à la prime d'émission</field>
+            <field name="code">691</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_C_1"/>
+            <field name="parent" ref="69"/>
+        </record>
+
+        <record model="account.account.template" id="692">
+            <field name="name">Dotations aux réserves</field>
+            <field name="code">692</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="69"/>
+        </record>
+
+        <record model="account.account.template" id="6920">
+            <field name="name">Dotation à la réserve légale</field>
+            <field name="code">6920</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_C_2"/>
+            <field name="parent" ref="692"/>
+        </record>
+
+        <record model="account.account.template" id="6921">
+            <field name="name">Dotation aux autres réserves</field>
+            <field name="code">6921</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_C_3"/>
+            <field name="parent" ref="692"/>
+        </record>
+
+        <record model="account.account.template" id="693">
+            <field name="name">Bénéfice à reporter</field>
+            <field name="code">693</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_D_1"/>
+            <field name="parent" ref="69"/>
+        </record>
+
+        <record model="account.account.template" id="694">
+            <field name="name">Rémunération du capital</field>
+            <field name="code">694</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_F_1"/>
+            <field name="parent" ref="69"/>
+        </record>
+
+        <record model="account.account.template" id="695">
+            <field name="name">Administrateurs ou gérants</field>
+            <field name="code">695</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_F_2"/>
+            <field name="parent" ref="69"/>
+        </record>
+
+        <record model="account.account.template" id="696">
+            <field name="name">Autres allocataires</field>
+            <field name="code">696</field>
+            <field name="deferral" eval="False"/>
+            <field name="kind">other</field>
+            <field name="type" ref="affectations_prelevements_F_3"/>
+            <field name="parent" ref="69"/>
         </record>
 
     </data>
