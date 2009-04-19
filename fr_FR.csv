@@ -103,7 +103,7 @@ field,"purchase.purchase,warehouse",0,Warehouse,Entrepôt,0
 field,"stock.move,purchase",0,Purchase,Achat,0
 field,"stock.move,purchase_currency",0,Purchase Currency,Devise de l'achat,0
 field,"stock.move,purchase_exception_state",0,Exception State,État d'exception,0
-field,"stock.move,purchase_line",0,,inconnu,0
+field,"stock.move,purchase_line",0,,,0
 field,"stock.move,purchase_quantity",0,Purchase Quantity,Quantité d'achat,0
 field,"stock.move,purchase_unit",0,Purchase Unit,Unité d'achat,0
 field,"stock.move,purchase_unit_digits",0,Purchase Unit Digits,Décimales de l'unité d'achat,0
