@@ -89,7 +89,7 @@ field,"sale.sale,untaxed_amount",0,Untaxed,Non-taxé,0
 field,"sale.sale,warehouse",0,Warehouse,Entrepôt,0
 field,"stock.move,sale",0,Sale,Vente,0
 field,"stock.move,sale_exception_state",0,Exception State,État d'exception,0
-field,"stock.move,sale_line",0,,inconnu,0
+field,"stock.move,sale_line",0,,,0
 help,"sale.handle.invoice.exception.ask,recreate_invoices",0,The selected invoices will be recreated. The other ones will be ignored.,Les factures sélectionnées seront recréés. Les autres seront ignorées.,0
 model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Ventes confirmées,0
 model,"ir.action,name",act_sale_form_draft,Draft Sales,Ventes brouillon,0
@@ -168,7 +168,7 @@ odt,sale.sale,0,Total:,Total :,0
 odt,sale.sale,0,Total (excl. taxes):,Total (HT) :,0
 odt,sale.sale,0,Unit Price,Prix unitaire,0
 odt,sale.sale,0,VAT:,TVA :,0
-selection,"account.invoice,sale_exception_state",0,,inconnu,0
+selection,"account.invoice,sale_exception_state",0,,,0
 selection,"account.invoice,sale_exception_state",0,Ignored,Ignoré,0
 selection,"account.invoice,sale_exception_state",0,Recreated,Recréé,0
 selection,"sale.line,type",0,Comment,Commentaire,0
@@ -194,7 +194,7 @@ selection,"sale.sale,state",0,Confirmed,Confirmé,0
 selection,"sale.sale,state",0,Done,Fait,0
 selection,"sale.sale,state",0,Draft,Brouillon,0
 selection,"sale.sale,state",0,Quotation,Devis,0
-selection,"stock.move,sale_exception_state",0,,inconnu,0
+selection,"stock.move,sale_exception_state",0,,,0
 selection,"stock.move,sale_exception_state",0,Ignored,Ignoré,0
 selection,"stock.move,sale_exception_state",0,Recreated,Recréé,0
 view,product.product,0,Customers,Clients,0
