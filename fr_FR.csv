@@ -8,7 +8,7 @@ error,party.party,0,The code of the party must be unique!,Le code tu tiers doit 
 field,"party.address,active",0,Active,Actif,0
 field,"party.address,city",0,City,Ville,0
 field,"party.address,country",0,Country,Pays,0
-field,"party.address,full_address",0,,inconnu,0
+field,"party.address,full_address",0,,,0
 field,"party.address,name",0,Name,Nom,0
 field,"party.address,party",0,Party,Tiers,0
 field,"party.address,rec_name",0,Name,Nom,0
@@ -44,7 +44,7 @@ field,"party.party,code_length",0,Code Length,Longueur du code,0
 field,"party.party,contact_mechanisms",0,Contact Mechanisms,Moyens de contact,0
 field,"party.party,email",0,E-Mail,E-Mail,0
 field,"party.party,fax",0,Fax,Fax,0
-field,"party.party,full_name",0,,inconnu,0
+field,"party.party,full_name",0,,,0
 field,"party.party,lang",0,Language,Langue,0
 field,"party.party,mobile",0,Mobile,Mobile,0
 field,"party.party,name",0,Name,Nom,0
@@ -98,7 +98,7 @@ selection,"party.contact_mechanism,type",0,Phone,Téléphone,0
 selection,"party.contact_mechanism,type",0,SIP,SIP,0
 selection,"party.contact_mechanism,type",0,Skype,Skype,0
 selection,"party.contact_mechanism,type",0,Website,Site web,0
-selection,"party.party,vat_country",0,,inconnu,0
+selection,"party.party,vat_country",0,,,0
 view,party.address,0,Addresses,Adresses,0
 view,party.category,0,Categories,Catégories,0
 view,party.category,0,Category,Catégorie,0
