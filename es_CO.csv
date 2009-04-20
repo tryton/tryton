@@ -19,6 +19,7 @@ field,"ir.cron-company.company,rec_name",0,Name,Nombre,0
 field,"ir.property,company",0,Company,Compañía,0
 field,"ir.sequence,company",0,Company,Compañía,0
 field,"ir.sequence.strict,company",0,Company,Compañía,0
+field,"res.user,companies",0,Current Companies,Compañías en Curso,0
 field,"res.user,company",0,Current Company,Compañía Actual,0
 field,"res.user,employee",0,Employee,Empleado,0
 field,"res.user,main_company",0,Main Company,Compañía Principal,0
