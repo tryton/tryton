@@ -3,8 +3,8 @@
 {
     'name' : 'Google Maps',
     'name_de_DE': 'Google Maps',
-    'name': 'Cartes Google',
-    'version' : '1.1.0',
+    'name_fr_FR': 'Cartes Google',
+    'version' : '1.2.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
