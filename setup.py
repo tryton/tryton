@@ -36,7 +36,11 @@ setup(name='trytond_stock',
     package_data={
         'trytond.modules.stock': info.get('xml', []) \
                 + info.get('translation', []) \
-                + ['packing_out.odt'],
+                + ['customer_return_restocking_list.odt',
+                    'delivery_note.odt',
+                    'internal_packing.odt',
+                    'picking_list.odt',
+                    'supplier_restocking_list.odt'],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
