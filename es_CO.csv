@@ -20,7 +20,7 @@ error,account.invoice,0,You can not reset to draft an invoice that has move!,¡N
 error,account.invoice,0,"You can not use the same account
 as on invoice line!","¡No puede usar la misma cuenta
 como línea en la factura!",0
-error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not openned!,¡No puede acreditar una devolución de una factura que no está abierta!,0
+error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not opened!,No puede acreditar con reembolsos una factura que no está abierta!,0
 error,account.invoice.credit_invoice,0,You can not credit with refund an invoice with payments!,¡No puede acreditar una devolución de una factura con pagos!,0
 error,account.invoice.line,0,"Line with ""line"" type must have an account!","¡Una línea con tipo de ""línea"" debe tener una cuenta!",0
 error,account.invoice.line,0,"Line without ""line"" type must have an invoice!","¡Una línea sin tipo de ""línea"" debe tener una factura!",0
