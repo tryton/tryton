@@ -5,7 +5,7 @@
     'name_de_DE': 'Fakturierung Historisierung',
     'name_es_CO': 'Histórico de Facturación',
     'name_es_ES': 'Histórico de Facturación',
-    'version': '1.1.0',
+    'version': '1.2.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
