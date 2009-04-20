@@ -1,3 +1,5 @@
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
 * Add tax rule to replace vat and supplier_vat on party
   Previous vat configuration will be lost
 * Allow to update chart of account from template
