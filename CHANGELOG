@@ -1,3 +1,5 @@
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
 * Add CheckVIES wizard (VAT Information Exchange System)
 * Add default categories on party with context
 * Allow egg installation
