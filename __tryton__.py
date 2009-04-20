@@ -3,6 +3,7 @@
 {
     'name': 'Stock Location Sequence',
     'name_de_DE': 'Lagerverwaltung Lagerortsequenz',
+    'name_fr_FR': 'Séquence emplacement',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
