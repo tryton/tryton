@@ -1,3 +1,5 @@
+Version 1.2.0 - 2009-04-20
+* Bug fixes (see mercurial logs for details)
 * Add accounting date on invoice
 * Use amount_to_pay if amount_to_pay_today is zero in pay invoice wizard
 * Use reference to taxes for invoice line in invoice report
