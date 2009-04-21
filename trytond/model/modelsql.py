@@ -603,13 +603,18 @@ class ModelSQL(ModelStorage):
                                 fields_related[field], context=ctx)
                         record_id = record2['id']
                         del record2['id']
-                        fields_related2values[field][record_id] = record2
+                        fields_related2values[field].setdefault(record_id, {})
+                        fields_related2values[field][record_id][record['id']] = \
+                                record2
                 else:
                     for record in obj.read(cursor, user, [x[field] for x in res
                         if x[field]], fields_related[field], context=context):
                         record_id = record['id']
                         del record['id']
-                        fields_related2values[field][record_id] = record
+                        fields_related2values[field].setdefault(record_id, {})
+                        for record2 in res:
+                            fields_related2values[field][record_id]\
+                                    [record2['id']] = record
             elif self._columns[field]._type == 'reference':
                 for record in res:
                     if not record[field]:
@@ -635,8 +640,8 @@ class ModelSQL(ModelStorage):
                         if self._columns[field]._type == 'many2one':
                             if record[field]:
                                 record[field + '.' + related] = \
-                                        fields_related2values[field][
-                                                record[field]][related]
+                                        fields_related2values[field]\
+                                        [record[field]][record['id']][related]
                             else:
                                 record[field + '.' + related] = False
                         elif self._columns[field]._type == 'reference':
