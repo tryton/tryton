@@ -13,11 +13,13 @@
     'description': '''Stock Management and Inventory Control with:
     - Location definition
     - Stock move
-    - Shipment: Supplier, Customer or Internal
+    - Supplier, Customer and Internal Shipments. Customer and Supplier Return Shipments.
     - Stock Inventory
 
 And with reports:
-    - Customer Shipment
+    - Delivery Note
+    - Picking List
+    - Restocking List (on Supplier Shipment and Customer Return Shipment)
     - Products by Locations
 ''',
     'description_de_DE': '''Lagerverwaltung und Bestandskontrolle mit:
@@ -53,11 +55,13 @@ Y con los reportes:
     'description_fr_FR':'''Gestion des stocks et contrôle de l'inventaire avec:
     - Emplacement
     - Mouvement de stock
-    - Colisages client / fournisseur / interne
+    - Expédition client, fournisseur et interne. Retour d'expédition client et founisseur.
     - Inventaire
 
 Et les rapports:
-    - Colisage client
+    - Bon de livraison client
+    - Liste de prélèvement
+    - Liste de restockage (sur l'expédition fournisseur et le retour d'expédition client)
     - Quantités de produit par location
 ''',
     'depends': [
