@@ -1831,21 +1831,12 @@ class InvoiceTax(ModelSQL, ModelView):
     account = fields.Many2One('account.account', 'Account', required=True,
             domain="[('kind', '!=', 'view'), " \
                 "('company', '=', _parent_invoice.company)]")
-    base = fields.Numeric('Base', digits="(16, _parent_invoice.currency_digits)",
-            states={
-                'invisible': "manual",
-            })
+    base = fields.Numeric('Base', digits="(16, _parent_invoice.currency_digits)")
     amount = fields.Numeric('Amount', digits="(16, _parent_invoice.currency_digits)")
     manual = fields.Boolean('Manual')
     base_code = fields.Many2One('account.tax.code', 'Base Code',
-            domain="[('company', '=', _parent_invoice.company)]",
-            states={
-                'invisible': "manual",
-            })
-    base_sign = fields.Numeric('Base Sign', digits=(2, 0),
-            states={
-                'invisible': "manual",
-            })
+            domain="[('company', '=', _parent_invoice.company)]")
+    base_sign = fields.Numeric('Base Sign', digits=(2, 0))
     tax_code = fields.Many2One('account.tax.code', 'Tax Code',
             domain="[('company', '=', _parent_invoice.company)]")
     tax_sign = fields.Numeric('Tax Sign', digits=(2, 0))
