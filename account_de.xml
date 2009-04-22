@@ -1,6 +1,4 @@
 <?xml version="1.0" ?>
-<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
-this repository contains the full copyright notices and license terms. -->
 <tryton>
 	<data>
 		<record model="account.account.type.template" id="type_balance">
@@ -10214,27 +10212,17 @@ this repository contains the full copyright notices and license terms. -->
 			<field name="parent" ref="tax_code_BZ30"/>
 			<field name="account" ref="root_de"/>
 		</record>
+		<record model="account.tax.group" id="tax_group_vst_reduced">
+			<field name="name">Vorsteuer ermäßigt</field>
+			<field name="code">vst_reduced</field>
+		</record>
 		<record model="account.tax.group" id="tax_group_ust">
 			<field name="name">Umsatzsteuer</field>
 			<field name="code">ust</field>
 		</record>
-		<record model="account.tax.template" id="tax_11">
-			<field name="name">7% Umsatzsteuer</field>
-			<field name="account" ref="root_de"/>
-			<field name="description">7% USt</field>
-			<field name="type">percentage</field>
-			<field name="group" ref="tax_group_ust"/>
-			<field name="percentage">7</field>
-			<field name="invoice_account" ref="account_1771"/>
-			<field name="invoice_base_code" ref="tax_code_86"/>
-			<field name="invoice_base_sign">1</field>
-			<field name="invoice_tax_code" ref="tax_code_861"/>
-			<field name="invoice_tax_sign">1</field>
-			<field name="credit_note_account" ref="account_1771"/>
-			<field name="credit_note_base_code" ref="tax_code_86"/>
-			<field name="credit_note_base_sign">-1</field>
-			<field name="credit_note_tax_code" ref="tax_code_861"/>
-			<field name="credit_note_tax_sign">-1</field>
+		<record model="account.tax.group" id="tax_group_vst">
+			<field name="name">Vorsteuer</field>
+			<field name="code">vst</field>
 		</record>
 		<record model="account.tax.template" id="tax_10">
 			<field name="name">19% Umsatzsteuer</field>
@@ -10254,30 +10242,30 @@ this repository contains the full copyright notices and license terms. -->
 			<field name="credit_note_tax_code" ref="tax_code_811"/>
 			<field name="credit_note_tax_sign">-1</field>
 		</record>
-		<record model="account.tax.template" id="tax_13">
-			<field name="name">7% Vorsteuer</field>
+		<record model="account.tax.template" id="tax_11">
+			<field name="name">7% Umsatzsteuer</field>
 			<field name="account" ref="root_de"/>
-			<field name="description">7% VSt</field>
+			<field name="description">7% USt</field>
 			<field name="type">percentage</field>
 			<field name="group" ref="tax_group_ust"/>
 			<field name="percentage">7</field>
-			<field name="invoice_account" ref="account_1571"/>
-			<field name="invoice_base_code" ref="tax_code_BRV7"/>
-			<field name="invoice_base_sign">-1</field>
-			<field name="invoice_tax_code" ref="tax_code_66"/>
-			<field name="invoice_tax_sign">-1</field>
-			<field name="credit_note_account" ref="account_1571"/>
-			<field name="credit_note_base_code" ref="tax_code_BRV7"/>
-			<field name="credit_note_base_sign">1</field>
-			<field name="credit_note_tax_code" ref="tax_code_66"/>
-			<field name="credit_note_tax_sign">1</field>
+			<field name="invoice_account" ref="account_1771"/>
+			<field name="invoice_base_code" ref="tax_code_86"/>
+			<field name="invoice_base_sign">1</field>
+			<field name="invoice_tax_code" ref="tax_code_861"/>
+			<field name="invoice_tax_sign">1</field>
+			<field name="credit_note_account" ref="account_1771"/>
+			<field name="credit_note_base_code" ref="tax_code_86"/>
+			<field name="credit_note_base_sign">-1</field>
+			<field name="credit_note_tax_code" ref="tax_code_861"/>
+			<field name="credit_note_tax_sign">-1</field>
 		</record>
 		<record model="account.tax.template" id="tax_12">
 			<field name="name">19% Vorsteuer</field>
 			<field name="account" ref="root_de"/>
 			<field name="description">19% VSt</field>
 			<field name="type">percentage</field>
-			<field name="group" ref="tax_group_ust"/>
+			<field name="group" ref="tax_group_vst"/>
 			<field name="percentage">19</field>
 			<field name="invoice_account" ref="account_1576"/>
 			<field name="invoice_base_code" ref="tax_code_BRV19"/>
@@ -10290,12 +10278,37 @@ this repository contains the full copyright notices and license terms. -->
 			<field name="credit_note_tax_code" ref="tax_code_66"/>
 			<field name="credit_note_tax_sign">1</field>
 		</record>
+		<record model="account.tax.template" id="tax_13">
+			<field name="name">7% Vorsteuer</field>
+			<field name="account" ref="root_de"/>
+			<field name="description">7% VSt</field>
+			<field name="type">percentage</field>
+			<field name="group" ref="tax_group_vst_reduced"/>
+			<field name="percentage">7</field>
+			<field name="invoice_account" ref="account_1571"/>
+			<field name="invoice_base_code" ref="tax_code_BRV7"/>
+			<field name="invoice_base_sign">-1</field>
+			<field name="invoice_tax_code" ref="tax_code_66"/>
+			<field name="invoice_tax_sign">-1</field>
+			<field name="credit_note_account" ref="account_1571"/>
+			<field name="credit_note_base_code" ref="tax_code_BRV7"/>
+			<field name="credit_note_base_sign">1</field>
+			<field name="credit_note_tax_code" ref="tax_code_66"/>
+			<field name="credit_note_tax_sign">1</field>
+		</record>
+		<record model="account.tax.template" id="tax_14">
+			<field name="name">Innergem. Erwerb 19%USt/19%VSt</field>
+			<field name="account" ref="root_de"/>
+			<field name="description">innergem. Erwerb 19%</field>
+			<field name="type">none</field>
+			<field name="group" ref="tax_group_vst"/>
+		</record>
 		<record model="account.tax.template" id="tax_15">
 			<field name="name">19% Einfuhrumsatzsteuer</field>
 			<field name="account" ref="root_de"/>
 			<field name="description">19% EUSt</field>
 			<field name="type">percentage</field>
-			<field name="group" ref="tax_group_ust"/>
+			<field name="group" ref="tax_group_vst"/>
 			<field name="percentage">19</field>
 			<field name="invoice_account" ref="account_1588"/>
 			<field name="invoice_base_code" ref="tax_code_BAUS19"/>
@@ -10308,11 +10321,23 @@ this repository contains the full copyright notices and license terms. -->
 			<field name="credit_note_tax_code" ref="tax_code_62"/>
 			<field name="credit_note_tax_sign">1</field>
 		</record>
-		<record model="account.tax.template" id="tax_14">
-			<field name="name">Innergem. Erwerb 19%USt/19%VSt</field>
+		<record model="account.tax.template" id="tax_16">
+			<field name="name">7% Einfuhrumsatzsteuer</field>
 			<field name="account" ref="root_de"/>
-			<field name="description">Innergem. Erwerb 19% USt/19% VSt</field>
-			<field name="type">none</field>
+			<field name="description">7% EUSt</field>
+			<field name="type">percentage</field>
+			<field name="group" ref="tax_group_vst_reduced"/>
+			<field name="percentage">7</field>
+			<field name="invoice_account" ref="account_1588"/>
+			<field name="invoice_base_code" ref="tax_code_BAUS7"/>
+			<field name="invoice_base_sign">-1</field>
+			<field name="invoice_tax_code" ref="tax_code_62"/>
+			<field name="invoice_tax_sign">-1</field>
+			<field name="credit_note_account" ref="account_1588"/>
+			<field name="credit_note_base_code" ref="tax_code_BAUS7"/>
+			<field name="credit_note_base_sign">1</field>
+			<field name="credit_note_tax_code" ref="tax_code_62"/>
+			<field name="credit_note_tax_sign">1</field>
 		</record>
 		<record model="account.tax.template" id="tax_17">
 			<field name="name">Steuerfreie innergem. Lieferung (§4 Abs. 1b UStG) </field>
@@ -10330,28 +10355,10 @@ this repository contains the full copyright notices and license terms. -->
 			<field name="credit_note_base_sign">-1</field>
 			<field name="credit_note_tax_sign">-1</field>
 		</record>
-		<record model="account.tax.template" id="tax_16">
-			<field name="name">7% Einfuhrumsatzsteuer</field>
-			<field name="account" ref="root_de"/>
-			<field name="description">7% EUSt</field>
-			<field name="type">percentage</field>
-			<field name="group" ref="tax_group_ust"/>
-			<field name="percentage">7</field>
-			<field name="invoice_account" ref="account_1588"/>
-			<field name="invoice_base_code" ref="tax_code_BAUS7"/>
-			<field name="invoice_base_sign">-1</field>
-			<field name="invoice_tax_code" ref="tax_code_62"/>
-			<field name="invoice_tax_sign">-1</field>
-			<field name="credit_note_account" ref="account_1588"/>
-			<field name="credit_note_base_code" ref="tax_code_BAUS7"/>
-			<field name="credit_note_base_sign">1</field>
-			<field name="credit_note_tax_code" ref="tax_code_62"/>
-			<field name="credit_note_tax_sign">1</field>
-		</record>
 		<record model="account.tax.template" id="tax_19">
 			<field name="name">Steuerfreie Ausfuhr (§4 Nr. 1a UStG)</field>
 			<field name="account" ref="root_de"/>
-			<field name="description">steuerfrei (§4 Nr. 1a UStG)</field>
+			<field name="description">steuerfreie Ausfuhr</field>
 			<field name="type">percentage</field>
 			<field name="group" ref="tax_group_ust"/>
 			<field name="percentage">0</field>
@@ -10364,28 +10371,26 @@ this repository contains the full copyright notices and license terms. -->
 			<field name="credit_note_base_sign">-1</field>
 			<field name="credit_note_tax_sign">-1</field>
 		</record>
-		<record model="account.tax.template" id="tax_18">
-			<field name="name">Steuerfrei (§4 Nr. 2 bis 7 UStG)</field>
+		<record model="account.tax.template" id="tax_21">
+			<field name="name">nicht steuerbar</field>
 			<field name="account" ref="root_de"/>
-			<field name="description">steuerfrei (§4 Nr. 2 bis 7 UStG)</field>
+			<field name="description">nicht steuerbar</field>
 			<field name="type">percentage</field>
-			<field name="group" ref="tax_group_ust"/>
 			<field name="percentage">0</field>
 			<field name="invoice_account" ref="account_1770"/>
-			<field name="invoice_base_code" ref="tax_code_43"/>
+			<field name="invoice_base_code" ref="tax_code_45"/>
 			<field name="invoice_base_sign">1</field>
 			<field name="invoice_tax_sign">1</field>
 			<field name="credit_note_account" ref="account_1770"/>
-			<field name="credit_note_base_code" ref="tax_code_43"/>
+			<field name="credit_note_base_code" ref="tax_code_45"/>
 			<field name="credit_note_base_sign">-1</field>
 			<field name="credit_note_tax_sign">-1</field>
 		</record>
 		<record model="account.tax.template" id="tax_22">
 			<field name="name">19% Umsatzsteuer aus innergem. Erwerb</field>
 			<field name="account" ref="root_de"/>
-			<field name="description">19% USt i. g. Erwerb</field>
+			<field name="description">19% USt</field>
 			<field name="type">percentage</field>
-			<field name="group" ref="tax_group_ust"/>
 			<field name="percentage">-19</field>
 			<field name="invoice_account" ref="account_1774"/>
 			<field name="invoice_base_code" ref="tax_code_89"/>
@@ -10399,28 +10404,11 @@ this repository contains the full copyright notices and license terms. -->
 			<field name="credit_note_tax_sign">1</field>
 			<field name="parent" ref="tax_14"/>
 		</record>
-		<record model="account.tax.template" id="tax_20">
-			<field name="name">Steuerfrei (§4 Nr. 8 bis 28 UStG)</field>
-			<field name="account" ref="root_de"/>
-			<field name="description">steuerfrei (§4 Nr. 8 bis 28 UStG)</field>
-			<field name="type">percentage</field>
-			<field name="group" ref="tax_group_ust"/>
-			<field name="percentage">0</field>
-			<field name="invoice_account" ref="account_1770"/>
-			<field name="invoice_base_code" ref="tax_code_48"/>
-			<field name="invoice_base_sign">1</field>
-			<field name="invoice_tax_sign">1</field>
-			<field name="credit_note_account" ref="account_1770"/>
-			<field name="credit_note_base_code" ref="tax_code_48"/>
-			<field name="credit_note_base_sign">-1</field>
-			<field name="credit_note_tax_sign">-1</field>
-		</record>
 		<record model="account.tax.template" id="tax_23">
 			<field name="name">19% Vorsteuer aus innergem. Erwerb</field>
 			<field name="account" ref="root_de"/>
-			<field name="description">19% VSt i. g. Erwerb</field>
+			<field name="description">19% VSt</field>
 			<field name="type">percentage</field>
-			<field name="group" ref="tax_group_ust"/>
 			<field name="percentage">19</field>
 			<field name="invoice_account" ref="account_1574"/>
 			<field name="invoice_base_sign">-1</field>
@@ -10432,21 +10420,96 @@ this repository contains the full copyright notices and license terms. -->
 			<field name="credit_note_tax_sign">1</field>
 			<field name="parent" ref="tax_14"/>
 		</record>
-		<record model="account.tax.template" id="tax_21">
-			<field name="name">nicht steuerbar</field>
+		<record model="account.tax.template" id="tax_24">
+			<field name="name">Innergem. Erwerb 7%USt/7%VSt</field>
 			<field name="account" ref="root_de"/>
-			<field name="description">Nicht steuerbar</field>
+			<field name="description">innergem. Erwerb 7%</field>
+			<field name="type">none</field>
+			<field name="group" ref="tax_group_vst_reduced"/>
+		</record>
+		<record model="account.tax.template" id="tax_25">
+			<field name="name">7% Umsatzsteuer aus innergem. Erwerb</field>
+			<field name="account" ref="root_de"/>
+			<field name="description">7% USt</field>
 			<field name="type">percentage</field>
+			<field name="percentage">-7</field>
+			<field name="invoice_account" ref="account_1772"/>
+			<field name="invoice_base_code" ref="tax_code_89"/>
+			<field name="invoice_base_sign">-1</field>
+			<field name="invoice_tax_code" ref="tax_code_931"/>
+			<field name="invoice_tax_sign">-1</field>
+			<field name="credit_note_account" ref="account_1772"/>
+			<field name="credit_note_base_code" ref="tax_code_89"/>
+			<field name="credit_note_base_sign">1</field>
+			<field name="credit_note_tax_code" ref="tax_code_931"/>
+			<field name="credit_note_tax_sign">1</field>
+			<field name="parent" ref="tax_24"/>
+		</record>
+		<record model="account.tax.template" id="tax_26">
+			<field name="name">7% Vorsteuer aus innergem. Erwerb</field>
+			<field name="account" ref="root_de"/>
+			<field name="description">7% VSt</field>
+			<field name="type">percentage</field>
+			<field name="percentage">7</field>
+			<field name="invoice_account" ref="account_1572"/>
+			<field name="invoice_base_sign">-1</field>
+			<field name="invoice_tax_code" ref="tax_code_61"/>
+			<field name="invoice_tax_sign">-1</field>
+			<field name="credit_note_account" ref="account_1572"/>
+			<field name="credit_note_base_sign">1</field>
+			<field name="credit_note_tax_code" ref="tax_code_61"/>
+			<field name="credit_note_tax_sign">1</field>
+			<field name="parent" ref="tax_24"/>
+		</record>
+		<record model="account.tax.rule.template" id="tax_rule_non_eu">
+			<field name="name">Ausland</field>
+			<field name="account" ref="root_de"/>
+		</record>
+		<record model="account.tax.rule.template" id="tax_rule_eu_no_id">
+			<field name="name">EU (ohne USt-ID)</field>
+			<field name="account" ref="root_de"/>
+		</record>
+		<record model="account.tax.rule.template" id="tax_rule_eu_vat_id">
+			<field name="name">EU Unternehmen (USt-ID)</field>
+			<field name="account" ref="root_de"/>
+		</record>
+		<record model="account.tax.rule.line.template" id="tax_rule_line_11">
+			<field name="rule" ref="tax_rule_non_eu"/>
+			<field name="group" ref="tax_group_vst"/>
+			<field name="tax" ref="tax_15"/>
+		</record>
+		<record model="account.tax.rule.line.template" id="tax_rule_line_10">
+			<field name="rule" ref="tax_rule_non_eu"/>
 			<field name="group" ref="tax_group_ust"/>
-			<field name="percentage">0</field>
-			<field name="invoice_account" ref="account_1770"/>
-			<field name="invoice_base_code" ref="tax_code_45"/>
-			<field name="invoice_base_sign">1</field>
-			<field name="invoice_tax_sign">1</field>
-			<field name="credit_note_account" ref="account_1770"/>
-			<field name="credit_note_base_code" ref="tax_code_45"/>
-			<field name="credit_note_base_sign">-1</field>
-			<field name="credit_note_tax_sign">-1</field>
+			<field name="tax" ref="tax_19"/>
+		</record>
+		<record model="account.tax.rule.line.template" id="tax_rule_line_13">
+			<field name="rule" ref="tax_rule_eu_vat_id"/>
+			<field name="group" ref="tax_group_ust"/>
+			<field name="tax" ref="tax_17"/>
+		</record>
+		<record model="account.tax.rule.line.template" id="tax_rule_line_12">
+			<field name="rule" ref="tax_rule_non_eu"/>
+			<field name="group" ref="tax_group_vst_reduced"/>
+			<field name="tax" ref="tax_16"/>
+		</record>
+		<record model="account.tax.rule.line.template" id="tax_rule_line_15">
+			<field name="rule" ref="tax_rule_eu_vat_id"/>
+			<field name="group" ref="tax_group_vst_reduced"/>
+			<field name="tax" ref="tax_24"/>
+		</record>
+		<record model="account.tax.rule.line.template" id="tax_rule_line_14">
+			<field name="rule" ref="tax_rule_eu_vat_id"/>
+			<field name="group" ref="tax_group_vst"/>
+			<field name="tax" ref="tax_14"/>
+		</record>
+		<record model="account.tax.rule.line.template" id="tax_rule_line_17">
+			<field name="rule" ref="tax_rule_eu_no_id"/>
+			<field name="group" ref="tax_group_vst_reduced"/>
+		</record>
+		<record model="account.tax.rule.line.template" id="tax_rule_line_16">
+			<field name="rule" ref="tax_rule_eu_no_id"/>
+			<field name="group" ref="tax_group_vst"/>
 		</record>
 	</data>
 </tryton>
