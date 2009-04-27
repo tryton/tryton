@@ -2,7 +2,7 @@
 <tryton>
 	<data>
 		<record model="account.account.type.template" id="type_balance">
-			<field name="name">Bilanz</field>
+			<field name="name">German SKR03 account type chart</field>
 			<field name="balance_sheet" eval="True"/>
 			<field name="sequence">10</field>
 		</record>
@@ -621,7 +621,7 @@
 			<field name="sequence">10</field>
 		</record>
 		<record model="account.account.template" id="root_de">
-			<field name="name">SKR03</field>
+			<field name="name">German SKR03 account chart</field>
 			<field name="deferral" eval="False"/>
 			<field name="kind">view</field>
 			<field name="type" ref="type_balance"/>
@@ -9782,14 +9782,21 @@
 			<field name="type" ref="type_4240"/>
 			<field name="parent" ref="view_income_1240"/>
 		</record>
+		<record model="account.tax.code.template" id="tax_code_USTVA">
+			<field name="name">German SKR03 Tax Code Chart</field>
+			<field name="code">USTVA</field>
+			<field name="account" ref="root_de"/>
+		</record>
 		<record model="account.tax.code.template" id="tax_code_B">
 			<field name="name">Bemessungsgrundlage</field>
 			<field name="code">B</field>
+			<field name="parent" ref="tax_code_USTVA"/>
 			<field name="account" ref="root_de"/>
 		</record>
 		<record model="account.tax.code.template" id="tax_code_83">
 			<field name="name">Verbleibende Umsatzsteuer-Vorauszahlung / Verbleibender Überschuss - bitte dem Betrag ein Minuszeichen voranstellen</field>
 			<field name="code">83</field>
+			<field name="parent" ref="tax_code_USTVA"/>
 			<field name="account" ref="root_de"/>
 		</record>
 		<record model="account.tax.code.template" id="tax_code_39">
