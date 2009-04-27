@@ -17,20 +17,18 @@ for dep in info.get('depends', []):
         dep = 'trytond_' + dep
     requires.append(dep)
 
-major_version, minor_version, _ = info.get('version', '1.1.0').split('.', 2)
+major_version, minor_version, _ = info.get('version', '0.0.1').split('.', 2)
 requires.append('trytond >= %s.%s' % (major_version, minor_version))
 requires.append('trytond < %s.%s' % (major_version, str(int(minor_version) + 1)))
 
 setup(name='trytond_account_de_skr03',
-    version=info.get('version', '1.1.0'),
+    version=info.get('version', '0.0.1'),
     description=info.get('description', ''),
     author=info.get('author', ''),
     author_email=info.get('email', ''),
     url=info.get('website', ''),
-    long_description = "http://mercurial.intuxication.org/tryton/" + \
-            "account_de_skr03/rev/2a04de0e5b75/",
     download_url="http://downloads.tryton.org/" + \
-           info.get('version', '1.1.0').rsplit('.', 1)[0] + '/',
+           info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
     package_dir={'trytond.modules.account_de_skr03': '.'},
     packages=[
         'trytond.modules.account_de_skr03',
