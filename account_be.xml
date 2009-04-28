@@ -281,6 +281,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="20"/>
             <field name="parent" ref="be"/>
             <field name="balance_sheet" eval="True"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -288,6 +289,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Capitaux propres</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -295,18 +297,21 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">I. Capital</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="capitaux_propres"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_I_A">
             <field name="name">A. Capital souscrit</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_I"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_I_B">
             <field name="name">B. Capital non appelé</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_I"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -314,6 +319,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">II. Primes d'émission</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="capitaux_propres"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -321,6 +327,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">III. Plus-values de réévaluation</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="capitaux_propres"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -328,42 +335,49 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">IV. Réserves</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="capitaux_propres"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IV_A">
             <field name="name">A. Réserve légale</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_IV"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IV_B">
             <field name="name">B. Réserves indisponibles</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_IV"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IV_B_1">
             <field name="name">1. Pour actions propres</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_IV_B"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IV_B_2">
             <field name="name">2. Autres</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_IV_B"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IV_C">
             <field name="name">C. Réserves immunisées</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="passif_IV"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IV_D">
             <field name="name">D. Réserves disponibles</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="passif_IV"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -371,6 +385,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">V. Bénéfice reporté - Perte reportée</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="capitaux_propres"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -378,6 +393,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">VI. Subsides en capital</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="capitaux_propres"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -385,6 +401,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Provisions et impôts différés</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -392,30 +409,35 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">VII. A. Provisions pour risques et charges</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="provisions_impots_differes"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VII_A_1">
             <field name="name">1.Pensions et obligations similaires</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_VII_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VII_A_2">
             <field name="name">2. Charges fiscales</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_VII_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VII_A_3">
             <field name="name">3. Grosses réparations et gros entretien</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="passif_VII_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VII_A_4">
             <field name="name">4. Autres risques et charges</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="passif_VII_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -423,6 +445,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">B. Impôts différés</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="provisions_impots_differes"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -430,6 +453,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Dettes</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="passif"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -437,72 +461,84 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">VIII. Dettes à plus d'un an</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="dettes"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_A">
             <field name="name">A. Dettes financières</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_VIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_A_1">
             <field name="name">1. Emprunts subordonnés</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_VIII_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_A_2">
             <field name="name">2. Emprunts obligatoires non subordonnés</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_VIII_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_A_3">
             <field name="name">3. Dettes de location-financement et assimilées</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="passif_VIII_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_A_4">
             <field name="name">4. Etablissements de crédit</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="passif_VIII_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_A_5">
             <field name="name">5. Autres emprunts</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="passif_VIII_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_B">
             <field name="name">B. Dettes commerciales</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_VIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_B_1">
             <field name="name">1. Fournisseurs</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_VIII_B"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_B_2">
             <field name="name">2. Effets à payer</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_VIII_B"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_C">
             <field name="name">C. Acomptes reçus sur commandes</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="passif_VIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_VIII_D">
             <field name="name">D. Autres dettes</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="passif_VIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -510,78 +546,91 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">IX. Dettes à un an au plus</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="dettes"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_A">
             <field name="name">A. Dettes à plus d'un an échéant dans l'année</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_IX"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_B">
             <field name="name">B. Dettes financières</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_IX"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_B_1">
             <field name="name">1. Etablissements de crédit</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_IX_B"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_B_2">
             <field name="name">2. Autres emprunts</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_IX_B"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_C">
             <field name="name">C. Dettes commerciales</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="passif_IX"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_C_1">
             <field name="name">1. Fournisseurs</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_IX_C"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_C_2">
             <field name="name">2. Effets à payer</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_IX_C"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_D">
             <field name="name">D. Acomptes reçus sur commandes</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="passif_IX"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_E">
             <field name="name">E. Dettes fiscales, salariales et sociales</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="passif_IX"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_E_1">
             <field name="name">1. Impôts</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_IX_E"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_E_2">
             <field name="name">2. Rémunérations et charges sociales</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif_IX_E"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="passif_IX_F">
             <field name="name">F. Autres dettes</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="passif_IX"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -589,6 +638,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">X. Comptes de régularisation</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="passif"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -596,6 +646,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Affectations et prélèvements</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif_V"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -603,6 +654,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">A. Bénéfice à affecter - Perte à affecter</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="affectations_prelevements"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -610,6 +662,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">1. Bénéfice de l'exercice à affecter - Perte de l'exercice à affecter</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="affectations_prelevements_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -617,6 +670,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">2. Bénéfice reporté de l'exercice précédent - Perte reportée de l'exercice précédent</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="affectations_prelevements_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -624,6 +678,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">B. Prélèvements sur les capitaux propres</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="affectations_prelevements"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -631,6 +686,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">1. sur le capital et les primes d'émission</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="affectations_prelevements_B"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -638,6 +694,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">2. sur les réserves</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="affectations_prelevements_B"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -645,6 +702,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">C. Affectations aux capitaux propres</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="affectations_prelevements"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -652,6 +710,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">1. au capital et aux primes d'émission</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="affectations_prelevements_C"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -659,6 +718,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">2. à la réserve légale</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="affectations_prelevements_C"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -666,6 +726,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">3. aux autres réserves</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="affectations_prelevements_C"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -673,6 +734,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">D. Résultat à reporter</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="affectations_prelevements"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -680,6 +742,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">1. Bénéfice à reporter</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="affectations_prelevements_D"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -694,6 +757,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">E. Intervention d'associés dans la perte</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="affectations_prelevements"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -701,6 +765,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">F. Bénéfice à distribuer</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="affectations_prelevements"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -708,6 +773,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">1. Rémunération du capital</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="affectations_prelevements_F"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -715,6 +781,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">2. Administrateurs ou gérants</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="affectations_prelevements_F"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -722,6 +789,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">3. Autres allocataires</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="affectations_prelevements_F"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
 
@@ -731,6 +799,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="10"/>
             <field name="parent" ref="affectations_prelevements_A_1"/>
             <field name="income_statement" eval="True"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -738,6 +807,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">XIII. Bénéfice de l'exercice à affecter - Perte de l'exercice à affecter</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultats"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -745,6 +815,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">XI. Bénéfice de l'exercice - Perte de l'exercice</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultats_XIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -752,6 +823,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">XII. Prélèvements sur les réserves immunisées - Transfert aux réserves immunisées</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="resultats_XIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -759,6 +831,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Charges</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultats_XI"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -766,66 +839,77 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">II. Coût des ventes et des prestations</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="charges"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_II_A">
             <field name="name">A. Approvisionnements et marchandises</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultats_II"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_II_A_1">
             <field name="name">1. Achats</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultats_II_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_II_A_2">
             <field name="name">2. Variation des stocks</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="resultats_II_A"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_II_B">
             <field name="name">B. Services et biens divers</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="resultats_II"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_II_C">
             <field name="name">C. Rémunérations, charges sociales et pensions</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="resultats_II"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_II_D">
             <field name="name">D. Amortissements et réductions de valeur sur frais d'établissement, sur immobilisations incorporelles et corporelles</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="resultats_II"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_II_E">
             <field name="name">E. Réductions de valeur sur stocks, sur commandes en cours d'exécution et sur créances commerciales</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="resultats_II"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_II_F">
             <field name="name">F. Provisions pour risques et charges</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="resultats_II"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_II_G">
             <field name="name">G. Autres charges d'exploitation</field>
             <field name="sequence" eval="70"/>
             <field name="parent" ref="resultats_II"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_II_H">
             <field name="name">H. Charges d'exploitation portées à l'actif au titre de frais de restructuration</field>
             <field name="sequence" eval="70"/>
             <field name="parent" ref="resultats_II"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -833,24 +917,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">V. Charges financières</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="charges"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_V_A">
             <field name="name">A. Charges des dettes</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultats_V"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_V_B">
             <field name="name">B. Réductions de valeur sur actifs circulants autres que ceux visés sub. II. E.</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="resultats_V"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_V_C">
             <field name="name">C. Autres charges financières</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="resultats_V"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -858,42 +946,49 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">VIII. Charges exceptionnelles</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="charges"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VIII_A">
             <field name="name">A. Amortissements et réductions de valeur exceptionnels sur frais d'établissement, sur immobilisations incorporelles et corporelles</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultats_VIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VIII_B">
             <field name="name">B. Réductions de valeur sur immobilisations financières</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="resultats_VIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VIII_C">
             <field name="name">C. Provisions pour risques et charges exceptionnels</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="resultats_VIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VIII_D">
             <field name="name">D. Moins-values sur réalisation d'actifs immobilisés</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="resultats_VIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VIII_E">
             <field name="name">E. Autres charges exceptionnelles</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="resultats_VIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VIII_F">
             <field name="name">F. Charges exceptionnelles portées à l'actif au titre de frais de restructuration</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="resultats_VIII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -901,6 +996,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">IXbis. B. Transfert aux impôts différés</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="charges"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -908,6 +1004,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">X. A. Impôts</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="charges"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -915,6 +1012,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Produits</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="resultats_XI"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -922,30 +1020,35 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">I. Ventes et prestations</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="produits"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_I_A">
             <field name="name">A. Chiffre d'affaires</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultats_I"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_I_B">
             <field name="name">B. Variation des en-cours de fabrication, des produits finis et des commandes en cours d'exécution</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="resultats_I"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_I_C">
             <field name="name">C. Production immobilisée</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="resultats_I"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_I_D">
             <field name="name">D. Autres produits d'exploitation</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="resultats_I"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -953,24 +1056,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">IV. Produits financiers</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="produits"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_IV_A">
             <field name="name">A. Produits des immobilisations financières</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultats_IV"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_IV_B">
             <field name="name">B. Produits des actifs circulants</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="resultats_IV"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_IV_C">
             <field name="name">C. Autres produits financiers</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="resultats_IV"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -978,36 +1085,42 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">VII. Produits exceptionnels</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="produits"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VII_A">
             <field name="name">A. Reprises d'amortissements et de réductions de valeur sur immobilisations incorporelles et corporelles</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultats_VII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VII_B">
             <field name="name">B. Reprises de réductions de valeur sur immobilisations financières</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="resultats_VII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VII_C">
             <field name="name">C. Reprises de provisions pour risques et charges exceptionnels</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="resultats_VII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VII_D">
             <field name="name">D. Plus-values sur réalisation d'actifs immobilisés</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="resultats_VII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
             id="resultats_VII_E">
             <field name="name">E. Autres produits exceptionnels</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="resultats_VII"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -1015,6 +1128,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">IXbis. A. Prélèvements sur les impôts différés</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="produits"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -1022,6 +1136,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">X. B. Régulatisations d'impôts et reprise de provisions fiscales</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="produits"/>
+            <field name="display_balance">credit-debit</field>
         </record>
 
         <record model="account.account.type.template"
@@ -1034,6 +1149,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="root">
             <field name="name">Belgium Chart</field>
             <field name="kind">view</field>
+            <field name="type" ref="be"/>
         </record>
 
         <record model="account.account.template" id="0">
@@ -2912,7 +3028,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Capital appelé, non versé</field>
             <field name="code">410</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="41"/>
         </record>
@@ -2921,7 +3037,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. a récupérer</field>
             <field name="code">411</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="41"/>
         </record>
@@ -2938,7 +3054,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4120</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="412"/>
         </record>
@@ -2947,7 +3063,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4121</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="412"/>
         </record>
@@ -2956,7 +3072,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4122</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="412"/>
         </record>
@@ -2965,7 +3081,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4123</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="412"/>
         </record>
@@ -2974,7 +3090,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4124</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="412"/>
         </record>
@@ -2983,7 +3099,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres impôts et taxes belges</field>
             <field name="code">4125</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="412"/>
         </record>
@@ -2992,7 +3108,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres impôts et taxes belges</field>
             <field name="code">4126</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="412"/>
         </record>
@@ -3001,7 +3117,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres impôts et taxes belges</field>
             <field name="code">4127</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="412"/>
         </record>
@@ -3010,7 +3126,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts et taxes étrangers</field>
             <field name="code">4128</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="412"/>
         </record>
@@ -3019,7 +3135,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Produits à recevoir</field>
             <field name="code">414</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="41"/>
         </record>
@@ -3028,7 +3144,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Créances non productives d'intérêts ou assorties d'un intérêt anormalement faible</field>
             <field name="code">415</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="41"/>
         </record>
@@ -3037,7 +3153,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Créances diverses</field>
             <field name="code">416</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="41"/>
         </record>
@@ -3046,7 +3162,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Créances douteuses</field>
             <field name="code">417</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="41"/>
         </record>
@@ -3055,7 +3171,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cautionnements versés en numéraires</field>
             <field name="code">418</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="41"/>
         </record>
@@ -3064,7 +3180,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Réductions de valeur actées</field>
             <field name="code">419</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="actif_VII_B"/>
             <field name="parent" ref="41"/>
         </record>
@@ -3089,7 +3205,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Convertibles</field>
             <field name="code">4200</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="420"/>
         </record>
@@ -3098,7 +3214,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Non convertibles</field>
             <field name="code">4201</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="420"/>
         </record>
@@ -3115,7 +3231,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Convertibles</field>
             <field name="code">4210</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="421"/>
         </record>
@@ -3124,7 +3240,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Non convertibles</field>
             <field name="code">4211</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="421"/>
         </record>
@@ -3133,7 +3249,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Dettes de location - financement et assimilés</field>
             <field name="code">422</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="42"/>
         </record>
@@ -3174,7 +3290,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres emprunts</field>
             <field name="code">424</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="42"/>
         </record>
@@ -3209,7 +3325,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Acomptes reçus sur commandes</field>
             <field name="code">426</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="42"/>
         </record>
@@ -3218,7 +3334,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cautionnements reçus en numéraires</field>
             <field name="code">428</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="42"/>
         </record>
@@ -3234,7 +3350,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Productives d'intérêts</field>
             <field name="code">4290</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="429"/>
         </record>
@@ -3242,7 +3358,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Non-productives d'intérêts ou assorties d'un intérêt anormalement faible</field>
             <field name="code">4291</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="429"/>
         </record>
@@ -3250,7 +3366,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cautionnements reçus en numéraire</field>
             <field name="code">4292</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="429"/>
         </record>
@@ -3267,7 +3383,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Établissements de crédit - Emprunts en compte à terme fixe</field>
             <field name="code">430</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_B_1"/>
             <field name="parent" ref="43"/>
         </record>
@@ -3276,7 +3392,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Établissements de crédit - Promesses</field>
             <field name="code">431</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_B_1"/>
             <field name="parent" ref="43"/>
         </record>
@@ -3285,7 +3401,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Établissements de crédit - Crédits d'acceptation</field>
             <field name="code">432</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_B_1"/>
             <field name="parent" ref="43"/>
         </record>
@@ -3294,7 +3410,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Établissements de crédit - Dettes en compte courant</field>
             <field name="code">433</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_B_1"/>
             <field name="parent" ref="43"/>
         </record>
@@ -3303,14 +3419,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres emprunts</field>
             <field name="code">439</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_B_2"/>
             <field name="parent" ref="43"/>
         </record>
 
         <record model="account.account.template" id="44">
             <field name="name">Dettes commerciales</field>
-            <field name="code">43</field>
+            <field name="code">44</field>
             <field name="kind">view</field>
             <field name="parent" ref="4"/>
         </record>
@@ -3362,7 +3478,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4500</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="450"/>
         </record>
@@ -3371,7 +3487,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4501</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="450"/>
         </record>
@@ -3380,7 +3496,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4502</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="450"/>
         </record>
@@ -3389,7 +3505,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4503</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="450"/>
         </record>
@@ -3398,7 +3514,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4504</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="450"/>
         </record>
@@ -3407,7 +3523,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres impôts et taxes belges</field>
             <field name="code">4505</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="450"/>
         </record>
@@ -3416,7 +3532,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres impôts et taxes belges</field>
             <field name="code">4506</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="450"/>
         </record>
@@ -3425,7 +3541,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres impôts et taxes belges</field>
             <field name="code">4507</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="450"/>
         </record>
@@ -3434,7 +3550,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts et taxes étrangers</field>
             <field name="code">4508</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="450"/>
         </record>
@@ -3443,7 +3559,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. à payer</field>
             <field name="code">451</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="45"/>
         </record>
@@ -3460,7 +3576,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4520</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="452"/>
         </record>
@@ -3469,7 +3585,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4521</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="452"/>
         </record>
@@ -3478,7 +3594,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4522</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="452"/>
         </record>
@@ -3487,7 +3603,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4523</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="452"/>
         </record>
@@ -3496,7 +3612,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts belges sur le résultat</field>
             <field name="code">4524</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="452"/>
         </record>
@@ -3505,7 +3621,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres impôts et taxes belges</field>
             <field name="code">4525</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="452"/>
         </record>
@@ -3514,7 +3630,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres impôts et taxes belges</field>
             <field name="code">4526</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="452"/>
         </record>
@@ -3523,7 +3639,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres impôts et taxes belges</field>
             <field name="code">4527</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="452"/>
         </record>
@@ -3532,7 +3648,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Impôts et taxes étrangers</field>
             <field name="code">4528</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="452"/>
         </record>
@@ -3541,7 +3657,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Précomptes retenus</field>
             <field name="code">453</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_1"/>
             <field name="parent" ref="45"/>
         </record>
@@ -3550,7 +3666,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Office National de la Sécurité Sociale</field>
             <field name="code">454</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_2"/>
             <field name="parent" ref="45"/>
         </record>
@@ -3559,7 +3675,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Rémunérations</field>
             <field name="code">455</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_2"/>
             <field name="parent" ref="45"/>
         </record>
@@ -3568,7 +3684,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Pécules de vacances</field>
             <field name="code">456</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_2"/>
             <field name="parent" ref="45"/>
         </record>
@@ -3577,7 +3693,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres dettes sociales</field>
             <field name="code">459</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_E_2"/>
             <field name="parent" ref="45"/>
         </record>
@@ -3586,7 +3702,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Acomptes reçus sur commandes</field>
             <field name="code">46</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_D"/>
             <field name="parent" ref="4"/>
         </record>
@@ -3603,7 +3719,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Dividendes et tantièmes d'exercices antérieurs</field>
             <field name="code">470</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_F"/>
             <field name="parent" ref="47"/>
         </record>
@@ -3612,7 +3728,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Dividendes de l'exercice</field>
             <field name="code">471</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_F"/>
             <field name="parent" ref="47"/>
         </record>
@@ -3621,7 +3737,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Tantièmes de l'exercice</field>
             <field name="code">472</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_F"/>
             <field name="parent" ref="47"/>
         </record>
@@ -3630,7 +3746,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Autres allocataires</field>
             <field name="code">473</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_F"/>
             <field name="parent" ref="47"/>
         </record>
@@ -3647,7 +3763,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Obligations et coupons échus</field>
             <field name="code">480</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_F"/>
             <field name="parent" ref="48"/>
         </record>
@@ -3656,7 +3772,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cautionnements reçus en numéraires</field>
             <field name="code">488</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_F"/>
             <field name="parent" ref="48"/>
         </record>
@@ -3673,7 +3789,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Productives d'intérêts</field>
             <field name="code">4890</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_F"/>
             <field name="parent" ref="489"/>
         </record>
@@ -3682,7 +3798,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Non-productives d'intérêts ou assorties d'un intérêt anormalement faible</field>
             <field name="code">4891</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="passif_IX_F"/>
             <field name="parent" ref="489"/>
         </record>
