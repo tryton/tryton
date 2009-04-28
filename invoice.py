@@ -1659,7 +1659,7 @@ class InvoiceLine(ModelSQL, ModelView):
         '''
         for line in self.browse(cursor, user, ids, context=context):
             if line.invoice and \
-                    line.invoice.state in ('open', 'paid', 'cancel'):
+                    line.invoice.state in ('open', 'paid'):
                 self.raise_user_error(cursor, 'modify', context=context)
         return
 
