@@ -2,7 +2,7 @@
 <tryton>
 	<data>
 		<record model="account.account.type.template" id="type_balance">
-			<field name="name">German SKR03 account type chart</field>
+			<field name="name">Chart of Account Types SKR03 (Germany)</field>
 			<field name="balance_sheet" eval="True"/>
 			<field name="sequence">10</field>
 		</record>
@@ -251,10 +251,6 @@
 			<field name="parent" ref="type_960"/>
 			<field name="sequence">10</field>
 		</record>
-		<record model="account.account.type.template" id="type_1890">
-			<field name="name">Saldo Klasse 9</field>
-			<field name="sequence">10</field>
-		</record>
 		<record model="account.account.type.template" id="type_1960">
 			<field name="name">Passiva</field>
 			<field name="parent" ref="type_balance"/>
@@ -432,7 +428,8 @@
 			<field name="sequence">10</field>
 		</record>
 		<record model="account.account.type.template" id="type_2890">
-			<field name="name">Saldo Klasse 9</field>
+			<field name="name">Bilanzneutrale Konten</field>
+			<field name="parent" ref="type_balance"/>
 			<field name="sequence">10</field>
 		</record>
 		<record model="account.account.type.template" id="type_2980">
@@ -621,7 +618,7 @@
 			<field name="sequence">10</field>
 		</record>
 		<record model="account.account.template" id="root_de">
-			<field name="name">German SKR03 account chart</field>
+			<field name="name">Chart of Accounts SKR03 (Germany)</field>
 			<field name="deferral" eval="False"/>
 			<field name="kind">view</field>
 			<field name="type" ref="type_balance"/>
@@ -1441,6 +1438,13 @@
 		<record model="account.account.template" id="view_balance_2560">
 			<field name="name">Rechnungsabgrenzungsposten</field>
 			<field name="parent" ref="view_balance_1960"/>
+			<field name="deferral" eval="False"/>
+			<field name="kind">view</field>
+			<field name="type" eval="False"/>
+		</record>
+		<record model="account.account.template" id="view_balance_2890">
+			<field name="name">Bilanzneutrale Konten</field>
+			<field name="parent" ref="balance_root_de"/>
 			<field name="deferral" eval="False"/>
 			<field name="kind">view</field>
 			<field name="type" eval="False"/>
@@ -9783,7 +9787,7 @@
 			<field name="parent" ref="view_income_1240"/>
 		</record>
 		<record model="account.tax.code.template" id="tax_code_USTVA">
-			<field name="name">German SKR03 Tax Code Chart</field>
+			<field name="name">Chart of Tax Codes SKR03 (Germany)</field>
 			<field name="code">USTVA</field>
 			<field name="account" ref="root_de"/>
 		</record>
