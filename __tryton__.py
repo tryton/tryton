@@ -16,5 +16,6 @@ Usefull to create a Belgium account chart with the wizard in
     ],
     'xml': [
         'account_be.xml',
+        'tax_be.xml',
     ],
 }
