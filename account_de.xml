@@ -10468,54 +10468,66 @@
 			<field name="credit_note_tax_code" ref="tax_code_66"/>
 			<field name="credit_note_tax_sign">1</field>
 		</record>
-		<record model="account.tax.rule.template" id="tax_rule_non_eu">
-			<field name="name">Ausland</field>
+		<record model="account.tax.rule.template" id="tax_rule_eu_no_id_purchase">
+			<field name="name">Lieferant EU (ohne Ust-ID)</field>
 			<field name="account" ref="root_de"/>
 		</record>
-		<record model="account.tax.rule.template" id="tax_rule_eu_no_id">
-			<field name="name">EU (ohne USt-ID)</field>
+		<record model="account.tax.rule.template" id="tax_rule_non_eu_purchase">
+			<field name="name">Lieferant Ausland</field>
 			<field name="account" ref="root_de"/>
 		</record>
-		<record model="account.tax.rule.template" id="tax_rule_eu_vat_id">
-			<field name="name">EU Unternehmen (USt-ID)</field>
+		<record model="account.tax.rule.template" id="tax_rule_eu_vat_id_sale">
+			<field name="name">Kunde EU Unternehmen (mit USt-ID)</field>
+			<field name="account" ref="root_de"/>
+		</record>
+		<record model="account.tax.rule.template" id="tax_rule_non_eu_sale">
+			<field name="name">Kunde Ausland</field>
+			<field name="account" ref="root_de"/>
+		</record>
+		<record model="account.tax.rule.template" id="tax_rule_eu_vat_id_purchase">
+			<field name="name">Lieferant EU Unternehmen (mit USt-ID)</field>
+			<field name="account" ref="root_de"/>
+		</record>
+		<record model="account.tax.rule.template" id="tax_rule_eu_no_id_sale">
+			<field name="name">Kunde EU (ohne USt-ID)</field>
 			<field name="account" ref="root_de"/>
 		</record>
 		<record model="account.tax.rule.line.template" id="tax_rule_line_11">
-			<field name="rule" ref="tax_rule_non_eu"/>
+			<field name="rule" ref="tax_rule_non_eu_purchase"/>
 			<field name="group" ref="tax_group_vst"/>
 			<field name="tax" ref="tax_import_19"/>
 		</record>
 		<record model="account.tax.rule.line.template" id="tax_rule_line_10">
-			<field name="rule" ref="tax_rule_non_eu"/>
+			<field name="rule" ref="tax_rule_non_eu_sale"/>
 			<field name="group" ref="tax_group_ust"/>
 			<field name="tax" ref="tax_export"/>
 		</record>
 		<record model="account.tax.rule.line.template" id="tax_rule_line_13">
-			<field name="rule" ref="tax_rule_eu_vat_id"/>
+			<field name="rule" ref="tax_rule_eu_vat_id_sale"/>
 			<field name="group" ref="tax_group_ust"/>
 			<field name="tax" ref="tax_eu_sale"/>
 		</record>
 		<record model="account.tax.rule.line.template" id="tax_rule_line_12">
-			<field name="rule" ref="tax_rule_non_eu"/>
+			<field name="rule" ref="tax_rule_non_eu_purchase"/>
 			<field name="group" ref="tax_group_vst_reduced"/>
 			<field name="tax" ref="tax_import_7"/>
 		</record>
 		<record model="account.tax.rule.line.template" id="tax_rule_line_15">
-			<field name="rule" ref="tax_rule_eu_vat_id"/>
+			<field name="rule" ref="tax_rule_eu_vat_id_purchase"/>
 			<field name="group" ref="tax_group_vst_reduced"/>
 			<field name="tax" ref="tax_eu_7_purchase"/>
 		</record>
 		<record model="account.tax.rule.line.template" id="tax_rule_line_14">
-			<field name="rule" ref="tax_rule_eu_vat_id"/>
+			<field name="rule" ref="tax_rule_eu_vat_id_purchase"/>
 			<field name="group" ref="tax_group_vst"/>
 			<field name="tax" ref="tax_eu_19_purchase"/>
 		</record>
 		<record model="account.tax.rule.line.template" id="tax_rule_line_17">
-			<field name="rule" ref="tax_rule_eu_no_id"/>
+			<field name="rule" ref="tax_rule_eu_no_id_purchase"/>
 			<field name="group" ref="tax_group_vst_reduced"/>
 		</record>
 		<record model="account.tax.rule.line.template" id="tax_rule_line_16">
-			<field name="rule" ref="tax_rule_eu_no_id"/>
+			<field name="rule" ref="tax_rule_eu_no_id_purchase"/>
 			<field name="group" ref="tax_group_vst"/>
 		</record>
 	</data>
