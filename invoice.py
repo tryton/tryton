@@ -1503,7 +1503,7 @@ class InvoiceLine(OSV):
         Check if the lines can be modified
         '''
         for line in self.browse(cursor, user, ids, context=context):
-            if line.invoice.state in ('open', 'paid', 'cancel'):
+            if line.invoice.state in ('open', 'paid'):
                 self.raise_user_error(cursor, 'modify', context=context)
         return
 
