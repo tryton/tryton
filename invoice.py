@@ -129,7 +129,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             'no_invoice_sequence': 'There is no invoice sequence ' \
                     'on the period/fiscal year!',
             'modify_invoice': 'You can not modify an invoice that is ' \
-                    'open, paid or canceled!',
+                    'opened, paid!',
             'same_debit_account': 'The debit account on journal is ' \
                     'the same than the invoice account!',
             'missing_debit_account': 'The debit account on journal is ' \
@@ -1361,7 +1361,7 @@ class InvoiceLine(ModelSQL, ModelView):
         self._order.insert(0, ('sequence', 'ASC'))
         self._error_messages.update({
             'modify': 'You can not modify line from an invoice ' \
-                    'that is open, paid or canceled!',
+                    'that is opened, paid!',
             'create': 'You can not add a line to an invoice ' \
                     'that is open, paid or canceled!',
             'account_different_company': 'You can not create invoice line\n' \
