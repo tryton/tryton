@@ -27,7 +27,7 @@
                     <xpath
                         expr="/tree/field[@name=&quot;work&quot;]"
                         position="after">
-                        <field name="product" select="1"/>
+                        <field name="product" select="2"/>
                     </xpath>
                 </data>
                 ]]>
