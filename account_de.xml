@@ -1197,13 +1197,6 @@
 			<field name="kind">view</field>
 			<field name="type" eval="False"/>
 		</record>
-		<record model="account.account.template" id="view_balance_1890">
-			<field name="name">Bilanzneutrale Konten</field>
-			<field name="parent" ref="balance_root_de"/>
-			<field name="deferral" eval="False"/>
-			<field name="kind">view</field>
-			<field name="type" eval="False"/>
-		</record>
 		<record model="account.account.template" id="view_balance_1960">
 			<field name="name">Passiva</field>
 			<field name="parent" ref="balance_root_de"/>
