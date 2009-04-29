@@ -11,18 +11,21 @@
     - Provides chart of accounts SKR03
     - Provides account structure like balance and income statement
     - Provides taxes, tax groups, tax rules
-    - Provides tax codes for german tax report (USTVA)
+    - Provides tax codes for german tax report (UStVA)
     ''',
-    'description_de_DE': '''Buchhaltungsmodul (nur für Deutschland):
-    - Stellt den Kontenrahmen SKR03 zur Verfügung
-    - Konten sind bilanzgegliedert
-    - Bietet Steuern, Steuergruppen und Steuerregeln
-    - Bietet Steuer Kenziffern  für die USTVA
+    'description_de_DE': '''Buchhaltungsmodul (für Deutschland):
+    Stellt den Kontenrahmen SKR03 zur Verfügung mit
+    - Bilanzgegliederten Konten
+    - Steuern, Steuergruppen und Steuerregeln
+    - Steuerkennziffern für die UStVA
 ''',
     'depends': [
         'account',
     ],
     'xml': [
         'account_de.xml',
+    ],
+    'translation': [
+        'de_DE.csv',
     ],
 }
