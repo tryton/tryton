@@ -461,15 +461,14 @@ class Translation(ModelSQL, ModelView, Cacheable):
                 translation_ids += ids
 
         if translation_ids:
-            for i in range(0, len(translation_ids), cursor.IN_MAX):
-                sub_translation_ids = translation_ids[i:i + cursor.IN_MAX]
-                cursor.execute('DELETE FROM ir_translation ' \
-                        'WHERE module = %s ' \
-                            'AND lang = %s ' \
-                            'AND id NOT IN (' + \
-                            ','.join(['%s' for x in sub_translation_ids]) + \
-                            ')',
-                        (module, lang) + tuple(sub_translation_ids))
+            all_translation_ids = self.search(cursor, user, [
+                ('module', '=', module),
+                ('lang', '=', lang),
+                ], context=context)
+            translation_ids_to_delete = [x for x in all_translation_ids
+                    if x not in translation_ids]
+            self.delete(cursor, user, translation_ids_to_delete,
+                    context=context)
         return len(translation_ids)
 
     def translation_export(self, cursor, user, lang, module, context=None):
