@@ -240,7 +240,8 @@ class Collection(OSV):
         if object_name:
             model_obj = self.pool.get(object_name)
             if object_id:
-                cursor.execute('SELECT EXTRACT(epoch FROM write_date) ' \
+                cursor.execute('SELECT ' \
+                            'EXTRACT(epoch FROM COALESCE(write_date, create_date)) ' \
                         'FROM "' + model_obj._table +'" ' \
                         'WHERE id = %s', (object_id,))
                 if cursor.rowcount:
