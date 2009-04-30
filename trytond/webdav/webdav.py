@@ -400,7 +400,8 @@ class Collection(ModelSQL, ModelView):
                         return cache[model_obj._name][object_id]['lastmodified']
                 else:
                     ids = [object_id]
-                cursor.execute('SELECT id, EXTRACT(epoch FROM write_date) ' \
+                cursor.execute('SELECT id, ' \
+                            'EXTRACT(epoch FROM COALESCE(write_date, create_date)) ' \
                         'FROM "' + model_obj._table +'" ' \
                         'WHERE id IN (' + \
                             ','.join(['%s' for x in ids]) + ')', ids)
