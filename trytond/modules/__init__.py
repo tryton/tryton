@@ -285,7 +285,7 @@ def get_module_list():
             if os.path.isdir(OPJ(MODULES_PATH, file)):
                 module_list.add(file)
             elif file[-4:] == '.zip':
-                module_list.add(file)
+                module_list.add(file[:-4])
     module_list.update(EGG_MODULES.keys())
     module_list.add('ir')
     module_list.add('workflow')
