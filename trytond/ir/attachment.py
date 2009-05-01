@@ -61,7 +61,7 @@ class Attachment(OSV):
         return res
 
     def set_datas(self, cursor, user, obj_id, name, value, args, context=None):
-        if not value:
+        if value is False or value is None:
             return
         db_name = cursor.dbname
         directory = os.path.join(CONFIG['data_path'], db_name)
