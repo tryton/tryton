@@ -129,6 +129,7 @@ class Collection(ModelSQL, ModelView):
                             cache['_model&id2attachment_ids']:
                         attachment_ids = cache['_model&id2attachment_ids']\
                                 [(object_name, object_id)].get(name, [])
+                attachment_id = False
                 if attachment_ids is None:
                     attachment_ids = attachment_obj.search(cursor, user, [
                         ('res_model', '=', object_name),
@@ -142,15 +143,23 @@ class Collection(ModelSQL, ModelView):
                         cache['_model&id2attachment_ids'].setdefault(key, {})
                     for attachment in attachments:
                         if cache is not None:
+                            cache.setdefault('_model&id&name2attachment_ids',
+                                    {})
+                            cache['_model&id&name2attachment_ids'].setdefault(
+                                    key, {})
                             cache['_model&id&name2attachment_ids'][key]\
                                     .setdefault(attachment.name, [])
                             cache['_model&id&name2attachment_ids'][key]\
                                     [attachment.name].append(attachment.id)
                         if attachment.name == name:
-                            attachment_ids.append(attachment.id)
-                if attachment_ids:
+                            attachment_id = attachment.id
+                else:
+                    key = (object_name, object_id)
+                    attachment_id = cache['_model&id&name2attachment_ids']\
+                                    [key].get(name, [False])[0]
+                if attachment_id:
                     object_name = 'ir.attachment'
-                    object_id = attachment_ids[0]
+                    object_id = attachment_id
                 else:
                     object_name = None
                     object_id = False
@@ -330,11 +339,12 @@ class Collection(ModelSQL, ModelView):
 
             res = '0'
             for attachment in attachments:
+                size = '0'
                 try:
                     if attachment.datas_size:
                         size = str(attachment.datas_size)
                 except:
-                    size = '0'
+                    pass
                 if attachment.id == object_id:
                     res = size
                 if cache is not None:
@@ -444,11 +454,12 @@ class Collection(ModelSQL, ModelView):
 
                 res = DAV_NotFound
                 for attachment in attachments:
+                    data = DAV_NotFound
                     try:
-                        if attachment.datas:
+                        if attachment.datas is not False:
                             data = base64.decodestring(attachment.datas)
                     except:
-                        data = DAV_NotFound
+                        pass
                     if attachment.id == object_id:
                         res = data
                     if cache is not None:
