@@ -375,7 +375,7 @@ class Collection(ModelSQL, ModelView):
     def get_creationdate(self, cursor, user, uri, context=None, cache=None):
         object_name, object_id = self._uri2object(cursor, user, uri,
                 context=context, cache=cache)
-        if object_name:
+        if object_name == 'ir.attachment':
             model_obj = self.pool.get(object_name)
             if object_id:
                 if cache is not None:
@@ -409,7 +409,7 @@ class Collection(ModelSQL, ModelView):
     def get_lastmodified(self, cursor, user, uri, context=None, cache=None):
         object_name, object_id = self._uri2object(cursor, user, uri,
                 context=context, cache=cache)
-        if object_name:
+        if object_name == 'ir.attachment':
             model_obj = self.pool.get(object_name)
             if object_id:
                 if cache is not None:
