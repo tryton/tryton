@@ -16,7 +16,7 @@ error,account.invoice,0,The debit account on journal is the same than the invoic
 error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,Rechnungsnummern-Sequenz für diese Periode oder dieses Buchungsjahr fehlt!,0
 error,account.invoice,0,"You can not create an invoice
 with account from a different invoice company!",Es können keine Rechnungen mit einem Konto von einer anderen rechnungsstellenden Firma angelegt werden,0
-error,account.invoice,0,"You can not modify an invoice that is open, paid or canceled!","Fakturierte, Bezahlte oder Annulierte Rechnungen können nicht geändert werden!",0
+error,account.invoice,0,"You can not modify an invoice that is opened, paid!",Fakturierte oder bezahlte Rechnungen können nicht geändert werden!,0
 error,account.invoice,0,You can not reset to draft an invoice that has move!,"Eine Rechnung, die Buchungen enthält, kann nicht auf Entwurf zurückgesetzt werden!",0
 error,account.invoice,0,"You can not use the same account
 as on invoice line!",Es kann nicht das selbe Konto verwendet werden!,0
@@ -28,7 +28,7 @@ error,account.invoice.line,0,"You can not add a line to an invoice that is open,
 error,account.invoice.line,0,"You can not create invoice line
 with account with a different invoice company!","Eine Rechnungszeile kann sich nicht
 auf ein Konto eines anderen Unternehmens beziehen!",0
-error,account.invoice.line,0,"You can not modify line from an invoice that is open, paid or canceled!","In einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert können Positionen nicht bearbeitet werden!",0
+error,account.invoice.line,0,"You can not modify line from an invoice that is opened, paid!",Positionen von fakturierten oder bezahlten Rechnungen können nicht geändert werden!,0
 error,account.invoice.line,0,"You can not use the same account
 as on the invoice!",Es kann nicht das selbe Konto verwendet werden!,0
 error,account.invoice.pay_invoice,0,You can not create a partial payment with an amount greater then the amount to pay!,Ein Teilbetrag kann nicht größer als der Gesamtbetrag der Rechnung sein!,0
@@ -179,14 +179,9 @@ model,"account.invoice.line,name",0,Invoice Line,Rechnungsposition,0
 model,"account.invoice,name",0,Invoice,Rechnung,0
 model,"account.invoice.pay_invoice.ask,name",0,Pay Invoice Ask,Zahlung Rechnung Nachfrage,0
 model,"account.invoice.pay_invoice.init,name",0,Pay Invoice Init,Zahlung Rechnung Init,0
-model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_end_month,End Month,Ende Monat,0
-model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_net_days,Net Days,Tage netto,0
 model,"account.invoice.payment_term.line.delay,name",0,Payment Term Line Delay,Zahlungsbedingung Position Frist,0
 model,"account.invoice.payment_term.line,name",0,Payment Term Line,Zahlungsbedingung,0
-model,"account.invoice.payment_term.line.type,name",payment_term_line_type_fixed,Fixed,Fix,0
 model,"account.invoice.payment_term.line.type,name",0,Payment Term Line Type,Zahlungsbedingung Position Typ,0
-model,"account.invoice.payment_term.line.type,name",payment_term_line_type_percent,Percentage,Prozentsatz,0
-model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remainder,Remainder,Rest,0
 model,"account.invoice.payment_term,name",0,Payment Term,Zahlungsbedingung,0
 model,"account.invoice.print_invoice_report.warning,name",0,Print Invoice Report Warning,Druck Rechnung Warnung,0
 model,"account.invoice.tax,name",0,Invoice Tax,Rechnung Steuer,0
@@ -202,13 +197,13 @@ model,"ir.action,name",report_invoice,Invoice,Rechnung,0
 model,"ir.action,name",print_invoice_report,Invoice,Rechnung / Gutschrift drucken,0
 model,"ir.action,name",act_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.action,name",act_invoice_out_invoice_form2,Invoices,Kundenrechnungen,0
-model,"ir.action,name",act_invoice_form2,Invoices,Rechnungen,0
+model,"ir.action,name",,Invoices,Rechnungen,0
 model,"ir.action,name",act_invoice_out_credit_note_form5,Opened Credit Notes,Fakturierte Kundengutschriften,0
 model,"ir.action,name",act_invoice_out_invoice_form5,Opened Invoices,Fakturierte Kundenrechnungen,0
 model,"ir.action,name",act_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Fakturierte Lieferantengutschriften,0
 model,"ir.action,name",act_invoice_in_invoice_form5,Opened Supplier Invoices,Fakturierte Lieferantenrechnungen,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
-model,"ir.action,name",act_payment_term_form,Payment Terms,Zahlungsbedingungen,0
+model,"ir.action,name",,Payment Terms,Zahlungsbedingungen,0
 model,"ir.action,name",act_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro Forma Kundengutschriften,0
 model,"ir.action,name",act_invoice_out_invoice_form4,Pro Forma Invoices,Pro Forma Kundenrechnungen,0
 model,"ir.action,name",act_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Pro Forma Lieferantengutschriften,0
@@ -235,7 +230,7 @@ model,"ir.ui.menu,name",menu_invoice_out_invoice_form5,Opened Invoices,Fakturier
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Fakturierte Lieferantengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form5,Opened Supplier Invoices,Fakturierte Lieferantenrechnungen,0
 model,"ir.ui.menu,name",menu_payment_terms_configuration,Payment Terms,Zahlungsbedingungen,0
-model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Zahlungsbedingungen,0
+model,"ir.ui.menu,name",,Payment Terms,Zahlungsbedingungen,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro Forma Kundengutschriften,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form4,Pro Forma Invoices,Pro Forma Kundenrechnungen,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Pro Forma Lieferantengutschriften,0
