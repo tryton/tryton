@@ -98,6 +98,12 @@ class Collection(ModelSQL, ModelView):
                                 .setdefault(collection.name, [])
                         cache['_parent2collection_ids'][object_id]\
                                 [collection.name].append(collection.id)
+                        cache.setdefault('_collection_name', {})
+                        if collection.model and uri:
+                            cache['_collection_name'][collection.id] = \
+                                collection.model.model
+                        else:
+                            cache['_collection_name'][collection.id] = self._name
                     if collection.name == name:
                         collection_ids.append(collection.id)
             if collection_ids:
