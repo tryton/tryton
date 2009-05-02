@@ -15,8 +15,8 @@
     - Purchase Request
 
 With schedulers:
-    - to generate purchase request based on order points
-    - to generate internal packing based on order points
+    - to generate purchase requests based on order points
+    - to generate internal shipments based on order points
 ''',
     'description_de_DE': '''Modul für das Bestellwesen mit:
     - Bestellpunkten
@@ -24,7 +24,7 @@ With schedulers:
 
 Mit automatischer Auftragserstellung per Zeitplaner:
     - für Bestellungen auf der Basis von Bestellpunkten
-    - für internen Versand auf der Basis von Bestellpunkten
+    - für interne Lieferposten auf der Basis von Bestellpunkten
 ''',
     'description_es_CO': '''Módulo de Administración de pedidos:
     - Punto de Orden
