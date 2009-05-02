@@ -50,7 +50,7 @@ class Database(DatabaseInterface):
                 and "password=%s" % CONFIG['db_password'] or ''
         maxconn = int(CONFIG['db_maxconn']) or 64
         dsn = '%s %s %s %s %s' % (host, port, name, user, password)
-        self._connpool = ThreadedConnectionPool(0, maxconn, dsn)
+        self._connpool = ThreadedConnectionPool(1, maxconn, dsn)
         return self
 
     def cursor(self, autocommit=False):

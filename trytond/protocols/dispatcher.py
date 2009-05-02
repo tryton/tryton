@@ -213,6 +213,8 @@ def create(database_name, password, lang, admin_password):
 def drop(database_name, password):
     security.check_super(password)
     Database(database_name).close()
+    # Sleep to let connections close
+    time.sleep(1)
     logger = logging.getLogger('database')
 
     database = Database().connect()
