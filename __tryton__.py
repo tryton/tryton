@@ -25,11 +25,13 @@ And with reports:
     'description_de_DE': '''Lagerverwaltung und Bestandskontrolle mit:
     - Definition von Lagerorten
     - Lagerbewegungen
-    - Packlisten/Lieferscheine Lieferant / Kunde / Intern
-    - Lagerbestand
+    - Lieferposten Lieferant/Kunde/Intern, Warenrückgaben und Warenrücknahmen
+    - Lagerbestandsaktualisierung
 
-Zugehörige Berichte:
-    - Lieferschein für Kunden
+Mit den Berichten:
+    - Lieferschein
+    - Pick Liste
+    - Einlagerungsliste (für Lieferposten von Lieferanten und Warenrücknahmen)
     - Artikel nach Lagerorten
 ''',
     'description_es_CO': '''Administración de Inventarios y bodegas:
