@@ -158,7 +158,7 @@ model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Lagerbestand
 model,"ir.action,name",create_packing_out_return,Create Return Shipment,Warenrücknahme erstellen,0
 model,"ir.action,name",act_packing_out_return_form,Customer Return Shipments,Warenrücknahmen (von Kunden),0
 model,"ir.action,name",act_packing_out_form,Customer Shipments,Lieferposten an Kunden,0
-model,"ir.action,name",,Customer Shipments,Lieferposten als Kunde,0
+model,"ir.action,name",act_packing_out_form2,Customer Shipments,Lieferposten als Kunde,0
 model,"ir.action,name",act_packing_out_form_ready,Customer Shipments Ready for Shipping,Versandbereite Lieferposten an Kunden,0
 model,"ir.action,name",act_packing_out_form_waiting,Customer Shipments Waiting Assignation,Zuzuweisende Lieferposten an Kunden,0
 model,"ir.action,name",report_packing_out_delivery_note,Delivery Note,Lieferschein,0
@@ -187,7 +187,7 @@ model,"ir.action,name",report_packing_in_restocking_list,Restocking List,Einlage
 model,"ir.action,name",report_packing_out_return_restocking_list,Restocking List,Einlagerungsliste,0
 model,"ir.action,name",act_packing_in_return_form,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
 model,"ir.action,name",act_packing_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
-model,"ir.action,name",,Supplier Shipments,Lieferposten als Lieferant,0
+model,"ir.action,name",act_packing_out_form3,Supplier Shipments,Lieferposten als Lieferant,0
 model,"ir.sequence,name",sequence_packing_out_return,Customer Return Shipment,Warenrücknahme Kunde,0
 model,"ir.sequence,name",sequence_packing_out,Customer Shipment,Lieferposten Kunde,0
 model,"ir.sequence,name",sequence_packing_internal,Internal Shipment,Interner Lieferposten,0
