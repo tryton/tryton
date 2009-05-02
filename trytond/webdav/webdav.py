@@ -381,18 +381,21 @@ class Collection(ModelSQL, ModelView):
                         return cache[model_obj._name][object_id]['creationdate']
                 else:
                     ids = [object_id]
-                cursor.execute('SELECT id, EXTRACT(epoch FROM create_date) ' \
-                        'FROM "' + model_obj._table +'" ' \
-                        'WHERE id IN (' + \
-                            ','.join(['%s' for x in ids]) + ')', ids)
                 res = None
-                for object_id2, date in cursor.fetchall():
-                    if object_id2 == object_id:
-                        res = date
-                    if cache is not None:
-                        cache[model_obj._name].setdefault(object_id2, {})
-                        cache[model_obj._name][object_id2]['creationdate'] = \
-                                date
+                for i in range(0, len(ids), cursor.IN_MAX):
+                    sub_ids = ids[i:i + cursor.IN_MAX]
+                    cursor.execute('SELECT id, ' \
+                                'EXTRACT(epoch FROM create_date) ' \
+                            'FROM "' + model_obj._table +'" ' \
+                            'WHERE id IN (' + \
+                                ','.join(['%s' for x in sub_ids]) + ')', sub_ids)
+                    for object_id2, date in cursor.fetchall():
+                        if object_id2 == object_id:
+                            res = date
+                        if cache is not None:
+                            cache[model_obj._name].setdefault(object_id2, {})
+                            cache[model_obj._name][object_id2]['creationdate'] = \
+                                    date
                 if res is not None:
                     return res
         return time.time()
@@ -412,19 +415,22 @@ class Collection(ModelSQL, ModelView):
                         return cache[model_obj._name][object_id]['lastmodified']
                 else:
                     ids = [object_id]
-                cursor.execute('SELECT id, ' \
-                            'EXTRACT(epoch FROM COALESCE(write_date, create_date)) ' \
-                        'FROM "' + model_obj._table +'" ' \
-                        'WHERE id IN (' + \
-                            ','.join(['%s' for x in ids]) + ')', ids)
                 res = None
-                for object_id2, date in cursor.fetchall():
-                    if object_id2 == object_id:
-                        res = date
-                    if cache is not None:
-                        cache[model_obj._name].setdefault(object_id2, {})
-                        cache[model_obj._name][object_id2]['lastmodified'] = \
-                                date
+                for i in range(0, len(ids), cursor.IN_MAX):
+                    sub_ids = ids[i:i + cursor.IN_MAX]
+                    cursor.execute('SELECT id, ' \
+                                'EXTRACT(epoch FROM ' \
+                                    'COALESCE(write_date, create_date)) ' \
+                            'FROM "' + model_obj._table +'" ' \
+                            'WHERE id IN (' + \
+                                ','.join(['%s' for x in sub_ids]) + ')', sub_ids)
+                    for object_id2, date in cursor.fetchall():
+                        if object_id2 == object_id:
+                            res = date
+                        if cache is not None:
+                            cache[model_obj._name].setdefault(object_id2, {})
+                            cache[model_obj._name][object_id2]['lastmodified'] = \
+                                    date
                 if res is not None:
                     return res
         return time.time()
