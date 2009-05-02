@@ -101,7 +101,7 @@ model,"ir.action,name",act_open_customer,Parties associated to Sales,Parteien: V
 model,"ir.action,name",act_sale_form_quotation,Quotation Sales,Angebote (Verkäufe),0
 model,"ir.action,name",report_sale,Sale,Verkauf drucken,0
 model,"ir.action,name",act_sale_form,Sales,Verkäufe,0
-model,"ir.action,name",,Sales,Verkäufe,0
+model,"ir.action,name",act_sale_form2,Sales,Verkäufe,0
 model,"ir.action,name",act_packing_form,Shipments,Lieferposten,0
 model,"ir.sequence,name",sequence_sale,Sale,Verkauf,0
 model,"ir.sequence.type,name",sequence_type_sale,Sale,Verkauf,0
