@@ -155,6 +155,8 @@ class Collection(ModelSQL, ModelView):
                             attachment_id = attachment.id
                 else:
                     key = (object_name, object_id)
+                    cache.setdefault('_model&id&name2attachment_ids', {})
+                    cache['_model&id&name2attachment_ids'].setdefault(key, {})
                     attachment_id = cache['_model&id&name2attachment_ids']\
                                     [key].get(name, [False])[0]
                 if attachment_id:
