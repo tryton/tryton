@@ -237,8 +237,12 @@ def drop(database_name, password):
     return True
 
 def dump(database_name, password):
-    logger = logging.getLogger('database')
     security.check_super(password)
+    Database(database_name).close()
+    # Sleep to let connections close
+    time.sleep(1)
+    logger = logging.getLogger('database')
+
     data = Database.dump(database_name)
     logger.info('DUMP DB: %s' % (database_name))
     return base64.encodestring(data)

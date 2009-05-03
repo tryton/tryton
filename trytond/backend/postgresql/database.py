@@ -139,8 +139,10 @@ class Database(DatabaseInterface):
         cursor = database.cursor()
         if not cursor.test():
             cursor.close()
+            database.close()
             raise Exception('Couldn\'t restore database!')
         cursor.close()
+        database.close()
         return True
 
     @staticmethod
