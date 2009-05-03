@@ -170,12 +170,17 @@ class TrytonDAVInterface(iface.dav_interface):
         if not dbname in database_list:
             pool.init()
         try:
-            collection_obj = pool.get('webdav.collection')
-            if uri[-1:] != '/':
-                uri += '/'
-            for child in collection_obj.get_childs(cursor, int(USER_ID), dburi,
-                    cache=CACHE):
-                res.append(urlparse.urljoin(self.baseuri, uri + child))
+            try:
+                collection_obj = pool.get('webdav.collection')
+                if uri[-1:] != '/':
+                    uri += '/'
+                for child in collection_obj.get_childs(cursor, int(USER_ID), dburi,
+                        cache=CACHE):
+                    res.append(urlparse.urljoin(self.baseuri, uri + child))
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
+                raise
+            except:
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -216,8 +221,13 @@ class TrytonDAVInterface(iface.dav_interface):
             pool.init()
         collection_obj = pool.get('webdav.collection')
         try:
-            res = collection_obj.get_data(cursor, int(USER_ID), dburi,
-                    cache=CACHE)
+            try:
+                res = collection_obj.get_data(cursor, int(USER_ID), dburi,
+                        cache=CACHE)
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
+                raise
+            except:
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -238,9 +248,12 @@ class TrytonDAVInterface(iface.dav_interface):
                 res = collection_obj.put(cursor, int(USER_ID), dburi, data,
                         content_type, cache=CACHE)
                 cursor.commit()
-            except:
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
                 cursor.rollback()
                 raise
+            except:
+                cursor.rollback()
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -261,9 +274,12 @@ class TrytonDAVInterface(iface.dav_interface):
                 res = collection_obj.mkcol(cursor, int(USER_ID), dburi,
                         cache=CACHE)
                 cursor.commit()
-            except:
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
                 cursor.rollback()
                 raise
+            except:
+                cursor.rollback()
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -280,8 +296,13 @@ class TrytonDAVInterface(iface.dav_interface):
             pool.init()
         collection_obj = pool.get('webdav.collection')
         try:
-            res = collection_obj.get_resourcetype(cursor, int(USER_ID), dburi,
+            try:
+                res = collection_obj.get_resourcetype(cursor, int(USER_ID), dburi,
                     cache=CACHE)
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
+                raise
+            except:
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -301,8 +322,13 @@ class TrytonDAVInterface(iface.dav_interface):
             pool.init()
         collection_obj = pool.get('webdav.collection')
         try:
-            res = collection_obj.get_contentlength(cursor, int(USER_ID), dburi,
-                    cache=CACHE)
+            try:
+                res = collection_obj.get_contentlength(cursor, int(USER_ID), dburi,
+                        cache=CACHE)
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
+                raise
+            except:
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -319,8 +345,13 @@ class TrytonDAVInterface(iface.dav_interface):
             pool.init()
         collection_obj = pool.get('webdav.collection')
         try:
-            res = collection_obj.get_contenttype(cursor, int(USER_ID), dburi,
-                    cache=CACHE)
+            try:
+                res = collection_obj.get_contenttype(cursor, int(USER_ID), dburi,
+                        cache=CACHE)
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
+                raise
+            except:
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -337,8 +368,13 @@ class TrytonDAVInterface(iface.dav_interface):
             pool.init()
         collection_obj = pool.get('webdav.collection')
         try:
-            res = collection_obj.get_creationdate(cursor, int(USER_ID), dburi,
-                    cache=CACHE)
+            try:
+                res = collection_obj.get_creationdate(cursor, int(USER_ID), dburi,
+                        cache=CACHE)
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
+                raise
+            except:
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -355,8 +391,13 @@ class TrytonDAVInterface(iface.dav_interface):
             pool.init()
         collection_obj = pool.get('webdav.collection')
         try:
-            res = collection_obj.get_lastmodified(cursor, int(USER_ID), dburi,
-                    cache=CACHE)
+            try:
+                res = collection_obj.get_lastmodified(cursor, int(USER_ID), dburi,
+                        cache=CACHE)
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
+                raise
+            except:
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -377,9 +418,12 @@ class TrytonDAVInterface(iface.dav_interface):
                 res = collection_obj.rmcol(cursor, int(USER_ID), dburi,
                         cache=CACHE)
                 cursor.commit()
-            except:
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
                 cursor.rollback()
                 raise
+            except:
+                cursor.rollback()
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -400,9 +444,12 @@ class TrytonDAVInterface(iface.dav_interface):
                 res = collection_obj.rm(cursor, int(USER_ID), dburi,
                         cache=CACHE)
                 cursor.commit()
-            except:
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
                 cursor.rollback()
                 raise
+            except:
+                cursor.rollback()
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
@@ -419,7 +466,12 @@ class TrytonDAVInterface(iface.dav_interface):
             pool.init()
         collection_obj = pool.get('webdav.collection')
         try:
-            res = collection_obj.exists(cursor, int(USER_ID), dburi, cache=CACHE)
+            try:
+                res = collection_obj.exists(cursor, int(USER_ID), dburi, cache=CACHE)
+            except (DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden):
+                raise
+            except:
+                raise DAV_Error(500)
         finally:
             cursor.close()
         return res
