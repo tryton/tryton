@@ -126,7 +126,7 @@ model,"product.uom,name",uom_square_meter,Square meter,Quadratmeter,0
 model,"product.uom,name",uom_square_yard,Square yard,Quadratyard(s),0
 model,"product.uom,name",uom_unit,Unit,Stück,0
 model,"product.uom,name",0,Unit of measure,Maßeinheit,0
-model,"product.uom,name",uom_work_day,Work Day,Arbeitstag(e),0
+model,"product.uom,name",uom_work_day,Work Day,Personentag(e),0
 model,"product.uom,name",uom_yard,Yard,Yard(s),0
 model,"product.uom,symbol",uom_are,a,a,0
 model,"product.uom,symbol",uom_carat,c,c,0
@@ -157,7 +157,7 @@ model,"product.uom,symbol",uom_millimeter,mm,mm,0
 model,"product.uom,symbol",uom_once,oz,oz,0
 model,"product.uom,symbol",uom_second,s,s,0
 model,"product.uom,symbol",uom_unit,u,St.,0
-model,"product.uom,symbol",uom_work_day,wd,wd,0
+model,"product.uom,symbol",uom_work_day,wd,PT,0
 model,"product.uom,symbol",uom_yard,yd,yd,0
 model,"product.uom,symbol",uom_square_yard,yd²,yd²,0
 model,"res.group,name",group_product_admin,Product Administration,Administration Artikel,0
