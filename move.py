@@ -1226,10 +1226,11 @@ class Line(ModelSQL, ModelView):
                 else:
                     attrs.append('required="0"')
                 xml += '<field name="%s" %s/>\n' % (column.field.name, ' '.join(attrs))
-            if 'currency_digits' not in journal.view.columns:
+            column_names = [x.field.name for x in journal.view.columns]
+            if 'currency_digits' not in column_names:
                 xml += '<field name="currency_digits" tree_invisible="1"/>'
-            if 'second_currency' in journal.view.columns \
-                    and 'second_currency_digits' not in journal.view.columns:
+            if 'second_currency' in column_names \
+                    and 'second_currency_digits' not in column_names:
                 xml += '<field name="second_currency_digits" tree_invisible="1"/>'
             xml += '</tree>'
             result['arch'] = xml
