@@ -260,6 +260,7 @@ class Cursor(CursorInterface):
         self.database_name = database_name
         self.dbname = self.database_name #XX to remove
         self.cursor = conn.cursor(cursor_factory=_Cursor)
+        self.commit()
         self.sql_from_log = {}
         self.sql_into_log = {}
         self.count = {
@@ -328,6 +329,7 @@ class Cursor(CursorInterface):
         # part because browse records keep a reference to the cursor.
         del self.cursor
         #if id(self._conn) in self._connpool._rused:
+        self.rollback()
         self._connpool.putconn(self._conn)
 
     def commit(self):
