@@ -55,6 +55,7 @@ class FakeCursor(object):
         self.conn = conn
         self.cursor_factory = cursor_factory
         self.cursor = conn.cursor(cursor_factory=self.cursor_factory)
+        self.commit()
         self.dbname = dbname
         self.sql_from_log = {}
         self.sql_into_log = {}
@@ -114,6 +115,7 @@ class FakeCursor(object):
         # collected as fast as they should). The problem is probably due in
         # part because browse records keep a reference to the cursor.
         del self.cursor
+        self.rollback()
         self._connpool.putconn(self.conn)
 
     def commit(self):
