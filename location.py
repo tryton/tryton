@@ -224,6 +224,14 @@ class Location(ModelSQL, ModelView):
         self._set_warehouse_parent(cursor, user, locations, context=context)
         return res
 
+    def copy(self, cursor, user, ids, default=None, context=None):
+        if default is None:
+            default = {}
+        default['left'] = 0
+        default['right'] = 0
+        return super(Location, self).copy(cursor, user, ids, default=default,
+                context=context)
+
 Location()
 
 
