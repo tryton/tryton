@@ -792,6 +792,10 @@ class Account(OSV):
                     [self._rec_name, 'code'], context=context, load='_classic_write')]
 
     def copy(self, cursor, user, ids, default=None, context=None):
+        if default is None:
+            default = {}
+        default['left'] = 0
+        default['right'] = 0
         res = super(Account, self).copy(cursor, user, ids, default=default,
                 context=context)
         self._rebuild_tree(cursor, user, 'parent', False, 0)
