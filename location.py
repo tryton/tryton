@@ -227,10 +227,56 @@ class Location(ModelSQL, ModelView):
     def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
             default = {}
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
+
         default['left'] = 0
         default['right'] = 0
-        return super(Location, self).copy(cursor, user, ids, default=default,
-                context=context)
+
+        res = []
+        locations = self.browse(cursor, user, ids, context=context)
+        for location in locations:
+            if location.type == 'warehouse':
+
+                wh_default = default.copy()
+                wh_default['type'] = 'view'
+                wh_default['input_location'] = False
+                wh_default['output_location'] = False
+                wh_default['storage_location'] = False
+                wh_default['childs'] = False
+
+                new_id = super(Location, self).copy(
+                    cursor, user, location.id, default=wh_default,
+                    context=context)
+
+                child_context = context and context.copy() or {}
+                child_context['cp_warehouse_locations'] = {
+                    'input_location': location.input_location.id,
+                    'output_location': location.output_location.id,
+                    'storage_location': location.storage_location.id}
+                child_context['cp_warehouse_id'] = new_id
+
+                self.copy(
+                    cursor, user, [c.id for c in location.childs],
+                    default={'parent':new_id}, context=child_context)
+                self.write(
+                    cursor, user, new_id, {'type': 'warehouse'}, context=context)
+            else:
+                new_id = super(Location, self).copy(
+                    cursor, user, location.id, default=default, context=context)
+                warehouse_locations = context.get('cp_warehouse_locations', {})
+                if location.id in warehouse_locations.values():
+                    for field, loc_id in warehouse_locations.iteritems():
+                        if loc_id == location.id:
+                            self.write(
+                                cursor, user, context['cp_warehouse_id'],
+                                {field: new_id}, context=context)
+
+            res.append(new_id)
+
+        return int_id and res[0] or res
 
 Location()
 
