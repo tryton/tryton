@@ -5,7 +5,7 @@
     'name_de_DE': 'Buchhaltung Rechnungsstellung',
     'name_fr_FR': 'Facturation',
     'name_es_ES': 'Facturación',
-    'version': '1.0.4',
+    'version': '1.0.5',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
