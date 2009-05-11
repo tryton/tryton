@@ -80,6 +80,7 @@ class Location(ModelSQL, ModelView):
             'recursive_locations': 'You can not create recursive locations!',
             'invalid_type_for_moves': 'A location with existing moves ' \
                 'cannot be changed to a type that does not support moves.',
+            'child_of_warehouse': 'Location "%s" must be a child of warehouse "%s"!',
         })
 
     def init(self, cursor, module_name):
@@ -222,6 +223,35 @@ class Location(ModelSQL, ModelView):
             ids = [ids]
         locations = self.browse(cursor, user, ids, context=context)
         self._set_warehouse_parent(cursor, user, locations, context=context)
+
+        check_wh = self.search(
+            cursor, user,
+            [('type', '=', 'warehouse'),
+             ['OR',
+              ('storage_location', 'in', ids),
+              ('input_location', 'in', ids),
+              ('output_location', 'in', ids)
+              ]],
+            context=context)
+
+        warehouses = self.browse(cursor, user, check_wh, context=context)
+        fields = ('storage_location', 'input_location', 'output_location')
+        wh2childs = {}
+        for warehouse in warehouses:
+            in_out_sto = (warehouse[f].id for f in fields)
+            for location in locations:
+                if location.id not in in_out_sto:
+                    continue
+                childs = wh2childs.setdefault(
+                    warehouse.id,
+                    self.search(
+                        cursor, user, [('parent', 'child_of', warehouse.id)],
+                        context=context))
+                if location.id not in childs:
+                    self.raise_user_error(
+                        cursor, 'child_of_warehouse',
+                        (location.name, warehouse.name), context=context)
+
         return res
 
     def copy(self, cursor, user, ids, default=None, context=None):
