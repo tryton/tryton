@@ -179,6 +179,7 @@ class Database(DatabaseInterface):
                     "ORDER BY datname")
         res = []
         for db_name, in cursor.fetchall():
+            db_name = db_name.encode('utf-8')
             try:
                 database = Database(db_name).connect()
             except:
