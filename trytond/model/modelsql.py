@@ -1583,10 +1583,11 @@ class ModelSQL(ModelStorage):
             elif arg[1] in ('in', 'not in'):
                 if len(arg[2]) > 0:
                     todel = []
-                    for xitem in range(len(arg[2])):
-                        if arg[2][xitem] == False \
-                                and isinstance(arg[2][xitem],bool):
-                            todel.append(xitem)
+                    if table._columns[arg[0]]._type != 'boolean':
+                        for xitem in range(len(arg[2])):
+                            if arg[2][xitem] == False \
+                                    and isinstance(arg[2][xitem],bool):
+                                todel.append(xitem)
                     arg2 = arg[2][:]
                     for xitem in todel[::-1]:
                         del arg2[xitem]
