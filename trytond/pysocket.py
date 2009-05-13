@@ -10,7 +10,7 @@ except ImportError:
 DNS_CACHE = {}
 MAX_SIZE = 999999999
 MAX_LENGHT = len(str(MAX_SIZE))
-TIMEOUT = 120
+TIMEOUT = 1200
 
 _ALLOWED_MODULES = {'datetime': ['datetime', 'date'], 'decimal': ['Decimal']}
 
