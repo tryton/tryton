@@ -30,7 +30,7 @@ class CodeTemplate(ModelSQL, ModelView):
     _name = 'account.tax.code.template'
     _description = __doc__
 
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     code = fields.Char('Code')
     parent = fields.Many2One('account.tax.code.template', 'Parent')
     childs = fields.One2Many('account.tax.code.template', 'parent', 'Children')
@@ -89,6 +89,7 @@ class CodeTemplate(ModelSQL, ModelView):
         :return: id of the tax code created
         '''
         tax_code_obj = self.pool.get('account.tax.code')
+        lang_obj = self.pool.get('ir.lang')
 
         if template2tax_code is None:
             template2tax_code = {}
@@ -103,6 +104,17 @@ class CodeTemplate(ModelSQL, ModelView):
             vals['parent'] = parent_id
 
             new_id = tax_code_obj.create(cursor, user, vals, context=context)
+            ctx = context.copy()
+            for lang in lang_obj.get_translatable_languages(cursor, user,
+                                                        context=context):
+                ctx['language'] = lang
+                template.setLang(lang)
+                data = {}
+                for field in template._columns.keys():
+                    if template._columns[field].translate:
+                        data.update({field: template[field]})
+                if data:
+                    tax_code_obj.write(cursor, user, new_id, data, context=ctx)
             template2tax_code[template.id] = new_id
         else:
             new_id = template2tax_code[template.id]
@@ -122,7 +134,8 @@ class Code(ModelSQL, ModelView):
     _name = 'account.tax.code'
     _description = __doc__
 
-    name = fields.Char('Name', size=None, required=True, select=1)
+    name = fields.Char('Name', size=None, required=True, select=1,
+                       translate=True)
     code = fields.Char('Code', size=None, select=1)
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True)
@@ -257,6 +270,7 @@ class Code(ModelSQL, ModelView):
                 tax code. The dictionary is filled with new tax codes
         '''
         template_obj = self.pool.get('account.tax.code.template')
+        lang_obj = self.pool.get('ir.lang')
 
         if template2tax_code is None:
             template2tax_code = {}
@@ -269,6 +283,15 @@ class Code(ModelSQL, ModelView):
                     code.template, context=context, code=code)
             if vals:
                 self.write(cursor, user, code.id, vals, context=context)
+                ctx = context.copy()
+                for lang in lang_obj.get_translatable_languages(cursor, user,
+                                                            context=context):
+                    ctx['language'] = lang
+                    code.setLang(lang)
+                    data = template_obj._get_tax_code_value(cursor, user,
+                                    code.template, context=ctx, code=code)
+                    if data:
+                        self.write(cursor, user, code.id, data, context=ctx)
             template2tax_code[code.template.id] = code.id
 
         for child in code.childs:
@@ -466,6 +489,7 @@ class TaxTemplate(ModelSQL, ModelView):
         :return: id of the tax created
         '''
         tax_obj = self.pool.get('account.tax')
+        lang_obj = self.pool.get('ir.lang')
 
         if template2tax is None:
             template2tax = {}
@@ -509,6 +533,17 @@ class TaxTemplate(ModelSQL, ModelView):
                 vals['credit_note_tax_code'] = False
 
             new_id = tax_obj.create(cursor, user, vals, context=context)
+            ctx = context.copy()
+            for lang in lang_obj.get_translatable_languages(cursor, user,
+                                                        context=context):
+                ctx['language'] = lang
+                template.setLang(lang)
+                data = {}
+                for field in template._columns.keys():
+                    if template._columns[field].translate:
+                        data.update({field: template[field]})
+                if data:
+                    tax_obj.write(cursor, user, new_id, data, context=ctx)
             template2tax[template.id] = new_id
         else:
             new_id = template2tax[template.id]
@@ -755,6 +790,7 @@ class Tax(ModelSQL, ModelView):
                 The dictionary is filled with new taxes
         '''
         template_obj = self.pool.get('account.tax.template')
+        lang_obj = self.pool.get('ir.lang')
 
         if template2tax is None:
             template2tax = {}
@@ -828,6 +864,15 @@ class Tax(ModelSQL, ModelView):
 
             if vals:
                 self.write(cursor, user, tax.id, vals, context=context)
+                ctx = context.copy()
+                for lang in lang_obj.get_translatable_languages(cursor, user,
+                                                            context=context):
+                    ctx['language'] = lang
+                    tax.setLang(lang)
+                    data = template_obj._get_tax_value(cursor, user, tax.template,
+                                                       context=ctx, tax=tax)
+                    if data:
+                        self.write(cursor, user, tax.id, data, context=ctx)
             template2tax[tax.template.id] = tax.id
 
         for child in tax.childs:
@@ -855,7 +900,7 @@ class RuleTemplate(ModelSQL, ModelView):
     'Tax Rule Template'
     _name = 'account.tax.rule.template'
     _description = __doc__
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     lines = fields.One2Many('account.tax.rule.line.template', 'rule', 'Lines')
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', False)], required=True)
@@ -897,6 +942,7 @@ class RuleTemplate(ModelSQL, ModelView):
         :return: id of the tax rule created
         '''
         rule_obj = self.pool.get('account.tax.rule')
+        lang_obj = self.pool.get('ir.lang')
 
         if template2rule is None:
             template2rule = {}
@@ -909,6 +955,17 @@ class RuleTemplate(ModelSQL, ModelView):
                     context=context)
             vals['company'] = company_id
             new_id = rule_obj.create(cursor, user, vals, context=context)
+            ctx = context.copy()
+            for lang in lang_obj.get_translatable_languages(cursor, user,
+                                                        context=context):
+                ctx['language'] = lang
+                template.setLang(lang)
+                data = {}
+                for field in template._columns.keys():
+                    if template._columns[field].translate:
+                        data.update({field: template[field]})
+                if data:
+                    rule_obj.write(cursor, user, new_id, data, context=ctx)
             template2rule[template.id] = new_id
         else:
             new_id = template2rule[template.id]
@@ -921,7 +978,7 @@ class Rule(ModelSQL, ModelView):
     'Tax Rule'
     _name = 'account.tax.rule'
     _description = __doc__
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Name', required=True, translate=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             select=1, domain="[('id', '=', context.get('company', 0))]")
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
@@ -972,6 +1029,7 @@ class Rule(ModelSQL, ModelView):
                 tax rule. The dictionary is filled with new tax rules
         '''
         template_obj = self.pool.get('account.tax.rule.template')
+        lang_obj = self.pool.get('ir.lang')
 
         if template2rule is None:
             template2rule = {}
@@ -984,6 +1042,15 @@ class Rule(ModelSQL, ModelView):
                     rule.template, context=context, rule=rule)
             if vals:
                 self.write(cursor, user, rule.id, vals, context=context)
+                ctx = context.copy()
+                for lang in lang_obj.get_translatable_languages(cursor, user,
+                                                            context=context):
+                    ctx['language'] = lang
+                    rule.setLang(lang)
+                    data = template_obj._get_tax_rule_value(cursor, user,
+                                    rule.template, context=ctx, rule=rule)
+                    if data:
+                        self.write(cursor, user, rule.id, data, context=ctx)
             template2rule[rule.template.id] = rule.id
 
 Rule()
