@@ -75,12 +75,17 @@ class Default(ModelSQL, ModelView):
 
     def set_default(self, cursor, user, model, field, clause, value,
             user_default, context=None):
-        model_obj = self.pool.get('ir.model')
-        field_obj = self.pool.get('ir.model.field')
-        model_id = model_obj.search(cursor, user, [
+        ir_model_obj = self.pool.get('ir.model')
+        ir_field_obj = self.pool.get('ir.model.field')
+
+        model_obj = self.pool.get(model)
+        if field not in model_obj._columns:
+            model = self.pool.get(model_obj._inherit_fields[field][0])._name
+
+        model_id = ir_model_obj.search(cursor, user, [
             ('model', '=', model),
             ], context=context)[0]
-        field_id = field_obj.search(cursor, user, [
+        field_id = ir_field_obj.search(cursor, user, [
             ('name', '=', field),
             ('model', '=', model_id),
             ], context=context)[0]
