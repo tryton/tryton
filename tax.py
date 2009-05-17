@@ -104,17 +104,22 @@ class CodeTemplate(ModelSQL, ModelView):
             vals['parent'] = parent_id
 
             new_id = tax_code_obj.create(cursor, user, vals, context=context)
+
+            prev_lang = template._context.get('language') or 'en_US'
             ctx = context.copy()
             for lang in lang_obj.get_translatable_languages(cursor, user,
-                                                        context=context):
+                    context=context):
+                if lang == prev_lang:
+                    continue
                 ctx['language'] = lang
                 template.setLang(lang)
                 data = {}
                 for field in template._columns.keys():
                     if template._columns[field].translate:
-                        data.update({field: template[field]})
+                        data[field] = template[field]
                 if data:
                     tax_code_obj.write(cursor, user, new_id, data, context=ctx)
+            template.setLang(prev_lang)
             template2tax_code[template.id] = new_id
         else:
             new_id = template2tax_code[template.id]
@@ -283,15 +288,20 @@ class Code(ModelSQL, ModelView):
                     code.template, context=context, code=code)
             if vals:
                 self.write(cursor, user, code.id, vals, context=context)
-                ctx = context.copy()
-                for lang in lang_obj.get_translatable_languages(cursor, user,
-                                                            context=context):
-                    ctx['language'] = lang
-                    code.setLang(lang)
-                    data = template_obj._get_tax_code_value(cursor, user,
-                                    code.template, context=ctx, code=code)
-                    if data:
-                        self.write(cursor, user, code.id, data, context=ctx)
+
+            prev_lang = code._context.get('language') or 'en_US'
+            ctx = context.copy()
+            for lang in lang_obj.get_translatable_languages(cursor, user,
+                    context=context):
+                if lang == prev_lang:
+                    continue
+                ctx['language'] = lang
+                code.setLang(lang)
+                data = template_obj._get_tax_code_value(cursor, user,
+                                code.template, context=ctx, code=code)
+                if data:
+                    self.write(cursor, user, code.id, data, context=ctx)
+            code.setLang(prev_lang)
             template2tax_code[code.template.id] = code.id
 
         for child in code.childs:
@@ -533,17 +543,22 @@ class TaxTemplate(ModelSQL, ModelView):
                 vals['credit_note_tax_code'] = False
 
             new_id = tax_obj.create(cursor, user, vals, context=context)
+
+            prev_lang = template._context.get('language') or 'en_US'
             ctx = context.copy()
             for lang in lang_obj.get_translatable_languages(cursor, user,
-                                                        context=context):
+                    context=context):
+                if lang == prev_lang:
+                    continue
                 ctx['language'] = lang
                 template.setLang(lang)
                 data = {}
                 for field in template._columns.keys():
                     if template._columns[field].translate:
-                        data.update({field: template[field]})
+                        data[field] = template[field]
                 if data:
                     tax_obj.write(cursor, user, new_id, data, context=ctx)
+            template.setLang(prev_lang)
             template2tax[template.id] = new_id
         else:
             new_id = template2tax[template.id]
@@ -864,15 +879,20 @@ class Tax(ModelSQL, ModelView):
 
             if vals:
                 self.write(cursor, user, tax.id, vals, context=context)
-                ctx = context.copy()
-                for lang in lang_obj.get_translatable_languages(cursor, user,
-                                                            context=context):
-                    ctx['language'] = lang
-                    tax.setLang(lang)
-                    data = template_obj._get_tax_value(cursor, user, tax.template,
-                                                       context=ctx, tax=tax)
-                    if data:
-                        self.write(cursor, user, tax.id, data, context=ctx)
+
+            prev_lang = tax._context.get('language') or 'en_US'
+            ctx = context.copy()
+            for lang in lang_obj.get_translatable_languages(cursor, user,
+                    context=context):
+                if lang == prev_lang:
+                    continue
+                ctx['language'] = lang
+                tax.setLang(lang)
+                data = template_obj._get_tax_value(cursor, user, tax.template,
+                        context=ctx, tax=tax)
+                if data:
+                    self.write(cursor, user, tax.id, data, context=ctx)
+            tax.setLang(prev_lang)
             template2tax[tax.template.id] = tax.id
 
         for child in tax.childs:
@@ -955,17 +975,22 @@ class RuleTemplate(ModelSQL, ModelView):
                     context=context)
             vals['company'] = company_id
             new_id = rule_obj.create(cursor, user, vals, context=context)
+
+            prev_lang = template._context.get('language') or 'en_US'
             ctx = context.copy()
             for lang in lang_obj.get_translatable_languages(cursor, user,
-                                                        context=context):
+                    context=context):
+                if lang == prev_lang:
+                    continue
                 ctx['language'] = lang
                 template.setLang(lang)
                 data = {}
                 for field in template._columns.keys():
                     if template._columns[field].translate:
-                        data.update({field: template[field]})
+                        data[field] = template[field]
                 if data:
                     rule_obj.write(cursor, user, new_id, data, context=ctx)
+            template.setLang(prev_lang)
             template2rule[template.id] = new_id
         else:
             new_id = template2rule[template.id]
@@ -1042,15 +1067,20 @@ class Rule(ModelSQL, ModelView):
                     rule.template, context=context, rule=rule)
             if vals:
                 self.write(cursor, user, rule.id, vals, context=context)
-                ctx = context.copy()
-                for lang in lang_obj.get_translatable_languages(cursor, user,
-                                                            context=context):
-                    ctx['language'] = lang
-                    rule.setLang(lang)
-                    data = template_obj._get_tax_rule_value(cursor, user,
-                                    rule.template, context=ctx, rule=rule)
-                    if data:
-                        self.write(cursor, user, rule.id, data, context=ctx)
+
+            prev_lang = rule._context.get('language') or 'en_US'
+            ctx = context.copy()
+            for lang in lang_obj.get_translatable_languages(cursor, user,
+                    context=context):
+                if lang == prev_lang:
+                    continue
+                ctx['language'] = lang
+                rule.setLang(lang)
+                data = template_obj._get_tax_rule_value(cursor, user,
+                        rule.template, context=ctx, rule=rule)
+                if data:
+                    self.write(cursor, user, rule.id, data, context=ctx)
+            rule.setLang(prev_lang)
             template2rule[rule.template.id] = rule.id
 
 Rule()
