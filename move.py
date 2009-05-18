@@ -1211,9 +1211,9 @@ class Line(ModelSQL, ModelView):
             xml = '<?xml version="1.0"?>\n' \
                     '<tree string="%s" editable="top" on_write="on_write" ' \
                     'colors="red:state==\'draft\'">\n' % title
-            fields = []
+            fields = set()
             for column in journal.view.columns:
-                fields.append(column.field.name)
+                fields.add(column.field.name)
                 attrs = []
                 if column.field.name == 'debit':
                     attrs.append('sum="Debit"')
@@ -1226,16 +1226,13 @@ class Line(ModelSQL, ModelView):
                 else:
                     attrs.append('required="0"')
                 xml += '<field name="%s" %s/>\n' % (column.field.name, ' '.join(attrs))
-            column_names = [x.field.name for x in journal.view.columns]
-            if 'currency_digits' not in column_names:
-                xml += '<field name="currency_digits" tree_invisible="1"/>'
-            if 'second_currency' in column_names \
-                    and 'second_currency_digits' not in column_names:
-                xml += '<field name="second_currency_digits" tree_invisible="1"/>'
+                for depend in getattr(self, column.field.name).depends:
+                    fields.add(depend)
+            fields.add('state')
             xml += '</tree>'
             result['arch'] = xml
-            result['fields'] = self.fields_get(cursor, user, fields_names=fields,
-                    context=context)
+            result['fields'] = self.fields_get(cursor, user,
+                    fields_names=list(fields), context=context)
             del result['md5']
             result['md5'] = md5.new(str(result)).hexdigest()
             if hexmd5 == result['md5']:
