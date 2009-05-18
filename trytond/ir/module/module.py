@@ -211,6 +211,8 @@ class Module(ModelSQL, ModelView):
         return super(Module, self).delete(cursor, user, ids, context=context)
 
     def on_write(self, cursor, user, ids, context=None):
+        if not ids:
+            return
         res = []
         graph, packages, later = create_graph(get_module_list())
         for module in self.browse(cursor, user, ids, context=context):
