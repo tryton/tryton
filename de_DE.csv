@@ -209,7 +209,6 @@ model,"account.account.template,name",account_0280,Betriebsvorrichtungen,Betrieb
 model,"account.account.template,name",account_4650,Bewirtungskosten,Bewirtungskosten,0
 model,"account.account.template,name",account_3800,Bezugsnebenkosten,Bezugsnebenkosten,0
 model,"account.account.template,name",balance_root_de,Bilanzkonten,Bilanzkonten,0
-model,"account.account.template,name",view_balance_1890,Bilanzneutrale Konten,Bilanzneutrale Konten,0
 model,"account.account.template,name",view_balance_2890,Bilanzneutrale Konten,Bilanzneutrale Konten,0
 model,"account.account.template,name",account_4955,Buchführungskosten,Buchführungskosten,0
 model,"account.account.template,name",account_1195,Bundesbankguthaben,Bundesbankguthaben,0
@@ -1284,9 +1283,89 @@ model,"account.account.type.template,name",type_1430,Vorräte,Vorräte,0
 model,"account.account.type.template,name",type_1600,Wertpapiere,Wertpapiere,0
 model,"account.account.type.template,name",type_1320,Wertpapiere des Anlagevermögens,Wertpapiere des Anlagevermögens,0
 model,"account.account.type.template,name",type_4440,Zinsen und ähnliche Aufwendungen,Zinsen und ähnliche Aufwendungen,0
+model,"account.tax.code.template,name",tax_code_USTVA,,,0
+model,"account.tax.code.template,name",tax_code_VST,Abziehbare Vorsteuerbeträge,Abziehbare Vorsteuerbeträge,0
+model,"account.tax.code.template,name",tax_code_AST,Andere Steuerbeträge,Andere Steuerbeträge,0
+model,"account.tax.code.template,name",tax_code_39,"Anrechnung (Abzug) der festgesetzten Sondervorauszahlung für Dauerfristverlängerung (nur auszufüllen in der letzten Voranmeldung des Besteuerungszeitraums, in der Regel Dezember)","Anrechnung (Abzug) der festgesetzten Sondervorauszahlung für Dauerfristverlängerung (nur auszufüllen in der letzten Voranmeldung des Besteuerungszeitraums, in der Regel Dezember)",0
+model,"account.tax.code.template,name",tax_code_84,Bauleistungen eines im Inland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 4 UStG),Bauleistungen eines im Inland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 4 UStG),0
+model,"account.tax.code.template,name",tax_code_85,Bauleistungen eines im Inland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 4 UStG),Bauleistungen eines im Inland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 4 UStG),0
+model,"account.tax.code.template,name",tax_code_B,Bemessungsgrundlage,Bemessungsgrundlage,0
+model,"account.tax.code.template,name",tax_code_64,Berichtigung des Vorsteuerabzugs (§ 15a UStG),Berichtigung des Vorsteuerabzugs (§ 15a UStG),0
+model,"account.tax.code.template,name",tax_code_USTVA,Chart of Tax Codes SKR03 (Germany),Steuerkennziffern SKR03,0
+model,"account.tax.code.template,name",tax_code_BAUS,Einfuhren,Einfuhren,0
+model,"account.tax.code.template,name",tax_code_62,Entrichtete Einfuhrumsatzsteuer (§ 15 Abs. 1 Satz 1 Nr. 2 UStG),Entrichtete Einfuhrumsatzsteuer (§ 15 Abs. 1 Satz 1 Nr. 2 UStG),0
+model,"account.tax.code.template,name",tax_code_BZ39,Ergänzende Angaben zu Umsätzen,Ergänzende Angaben zu Umsätzen,0
+model,"account.tax.code.template,name",tax_code_UZ39,Ergänzende Angaben zu Umsätzen ,Ergänzende Angaben zu Umsätzen ,0
+model,"account.tax.code.template,name",tax_code_91,Erwerbe nach § 4b UStG,Erwerbe nach § 4b UStG,0
+model,"account.tax.code.template,name",tax_code_UZ33,Innergemeinschaftliche Erwerbe,Innergemeinschaftliche Erwerbe,0
+model,"account.tax.code.template,name",tax_code_BZ33,Innergemeinschaftliche Erwerbe,Innergemeinschaftliche Erwerbe,0
+model,"account.tax.code.template,name",tax_code_41,Innergemeinschaftliche Lieferungen (§ 4 Nr. 1 Buchst. b UStG) an Abnehmer mit USt-IdNr,Innergemeinschaftliche Lieferungen (§ 4 Nr. 1 Buchst. b UStG) an Abnehmer mit USt-IdNr,0
+model,"account.tax.code.template,name",tax_code_69,"In Rechnungen unrichtig oder unberechtigt ausgewiesene Steuerbeträge (§ 14c UStG) sowie Steuerbeträge, die nach § 4 Nr. 4a Satz 1 Buchst. a Satz 2, § 6a Abs. 4 Satz 2, § 17 Abs. 1 Satz 6 oder § 25b Abs. 2 UStG geschuldet werden","In Rechnungen unrichtig oder unberechtigt ausgewiesene Steuerbeträge (§ 14c UStG) sowie Steuerbeträge, die nach § 4 Nr. 4a Satz 1 Buchst. a Satz 2, § 6a Abs. 4 Satz 2, § 17 Abs. 1 Satz 6 oder § 25b Abs. 2 UStG geschuldet werden",0
+model,"account.tax.code.template,name",tax_code_52,Leistungen eines im Ausland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 1 und 5 UStG),Leistungen eines im Ausland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 1 und 5 UStG),0
+model,"account.tax.code.template,name",tax_code_53,Leistungen eines im Ausland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 1 und 5 UStG),Leistungen eines im Ausland ansässigen Unternehmers (§ 13b Abs. 1 Satz 1 Nr. 1 und 5 UStG),0
+model,"account.tax.code.template,name",tax_code_42,Lieferungen des ersten Abnehmers bei innergemeinschaftlichen Dreiecksgeschäften (§ 25b Abs. 2 UStG),Lieferungen des ersten Abnehmers bei innergemeinschaftlichen Dreiecksgeschäften (§ 25b Abs. 2 UStG),0
+model,"account.tax.code.template,name",tax_code_77,Lieferungen in das übrige Gemeinschaftsgebiet an Abnehmer mit Ust-IdNr.,Lieferungen in das übrige Gemeinschaftsgebiet an Abnehmer mit Ust-IdNr.,0
+model,"account.tax.code.template,name",tax_code_73,"Lieferungen sicherungsübereigneter Gegenstände und Umsätze, die unter das GrEStG fallen (§ 13b Abs. 1 Satz 1 Nr. 2 und 3 UStG)","Lieferungen sicherungsübereigneter Gegenstände und Umsätze, die unter das GrEStG fallen (§ 13b Abs. 1 Satz 1 Nr. 2 und 3 UStG)",0
+model,"account.tax.code.template,name",tax_code_74,"Lieferungen sicherungsübereigneter Gegenstände und Umsätze, die unter das GrEStG fallen (§ 13b Abs. 1 Satz 1 Nr. 2 und 3 UStG)","Lieferungen sicherungsübereigneter Gegenstände und Umsätze, die unter das GrEStG fallen (§ 13b Abs. 1 Satz 1 Nr. 2 und 3 UStG)",0
+model,"account.tax.code.template,name",tax_code_UZ19,Lieferungen und sonstige Leistungen (einschließlich unentgeltlicher Wertabgaben),Lieferungen und sonstige Leistungen (einschließlich unentgeltlicher Wertabgaben),0
+model,"account.tax.code.template,name",tax_code_BZ19,Lieferungen und sonstige Leistungen (einschließlich unentgeltlicher Wertabgaben),Lieferungen und sonstige Leistungen (einschließlich unentgeltlicher Wertabgaben),0
+model,"account.tax.code.template,name",tax_code_44,neuer Fahrzeuge an Abnehmer ohne USt-IdNr,neuer Fahrzeuge an Abnehmer ohne USt-IdNr,0
+model,"account.tax.code.template,name",tax_code_49,neuer Fahrzeuge außerhalb eines Unternehmens (§ 2a UStG),neuer Fahrzeuge außerhalb eines Unternehmens (§ 2a UStG),0
+model,"account.tax.code.template,name",tax_code_96,neuer Fahrzeuge von Lieferern ohne USt-IdNr. zum allgemeinen Steuersatz,neuer Fahrzeuge von Lieferern ohne USt-IdNr. zum allgemeinen Steuersatz,0
+model,"account.tax.code.template,name",tax_code_94,neuer Fahrzeuge von Lieferern ohne USt-IdNr. zum allgemeinen Steuersatz,neuer Fahrzeuge von Lieferern ohne USt-IdNr. zum allgemeinen Steuersatz,0
+model,"account.tax.code.template,name",tax_code_45,Nicht steuerbare Umsätze (Leistungsort nicht im Inland),Nicht steuerbare Umsätze (Leistungsort nicht im Inland),0
+model,"account.tax.code.template,name",tax_code_BRV,"Rechnungen von anderen Unternehmern (§ 15 Abs. 1 Satz 1 Nr. 1 UStG), Leistungen im Sinne des § 13a Abs. 1 Nr. 6 UStG (§ 15 Abs. 1 Satz 1 Nr. 5 UStG) und innergemeinschaftliche Dreiecksgeschäfte (§ 25b Abs. 5 UStG)","Rechnungen von anderen Unternehmern (§ 15 Abs. 1 Satz 1 Nr. 1 UStG), Leistungen im Sinne des § 13a Abs. 1 Nr. 6 UStG (§ 15 Abs. 1 Satz 1 Nr. 5 UStG) und innergemeinschaftliche Dreiecksgeschäfte (§ 25b Abs. 5 UStG)",0
+model,"account.tax.code.template,name",tax_code_BZ34,Steuerfreie innergemeinschaftliche Erwerbe,Steuerfreie innergemeinschaftliche Erwerbe,0
+model,"account.tax.code.template,name",tax_code_BZ20,Steuerfreie Umsätze mit Vorsteuerabzug,Steuerfreie Umsätze mit Vorsteuerabzug,0
+model,"account.tax.code.template,name",tax_code_BZ24,Steuerfreie Umsätze ohne Vorsteuerabzug,Steuerfreie Umsätze ohne Vorsteuerabzug,0
+model,"account.tax.code.template,name",tax_code_65,Steuer infolge Wechsels der Besteuerungsform sowie Nachsteuer auf versteuerte Anzahlungen u. ä. wegen Steuersatzänderung,Steuer infolge Wechsels der Besteuerungsform sowie Nachsteuer auf versteuerte Anzahlungen u. ä. wegen Steuersatzänderung,0
+model,"account.tax.code.template,name",tax_code_UZ35,Steuerpflichtige innergemeinschaftliche Erwerbe,Steuerpflichtige innergemeinschaftliche Erwerbe,0
+model,"account.tax.code.template,name",tax_code_BZ35,Steuerpflichtige innergemeinschaftliche Erwerbe,Steuerpflichtige innergemeinschaftliche Erwerbe,0
+model,"account.tax.code.template,name",tax_code_60,"Steuerpflichtige Umsätze im Sinne des § 13b Abs. 1 Satz 1 Nr. 1 bis 5 UStG, für die der Leistungsempfänger die Steuer schuldet","Steuerpflichtige Umsätze im Sinne des § 13b Abs. 1 Satz 1 Nr. 1 bis 5 UStG, für die der Leistungsempfänger die Steuer schuldet",0
+model,"account.tax.code.template,name",tax_code_UZ26,Steuerpflichtige Umsätze (Lieferungen und sonstige Leistungen einschl. unentgeltlicher Wertabgaben),Steuerpflichtige Umsätze (Lieferungen und sonstige Leistungen einschl. unentgeltlicher Wertabgaben),0
+model,"account.tax.code.template,name",tax_code_BZ26,Steuerpflichtige Umsätze (Lieferungen und sonstige Leistungen einschl. unentgeltlicher Wertabgaben),Steuerpflichtige Umsätze (Lieferungen und sonstige Leistungen einschl. unentgeltlicher Wertabgaben),0
+model,"account.tax.code.template,name",tax_code_BZ46,"Umsätze, für die als Leistungsempfänger die Steuer nach § 13b Abs. 2 UStG geschuldet wird","Umsätze, für die als Leistungsempfänger die Steuer nach § 13b Abs. 2 UStG geschuldet wird",0
+model,"account.tax.code.template,name",tax_code_UZ46,"Umsätze, für die als Leistungsempfänger die Steuer nach § 13b Abs. 2 UStG geschuldet wird","Umsätze, für die als Leistungsempfänger die Steuer nach § 13b Abs. 2 UStG geschuldet wird",0
+model,"account.tax.code.template,name",tax_code_80,"Umsätze, für die eine Steuer nach § 24 UStG zu entrichten ist (Sägewerkserzeugnisse, Getränke und alkohol. Flüssigkeiten, z.B. Wein)","Umsätze, für die eine Steuer nach § 24 UStG zu entrichten ist (Sägewerkserzeugnisse, Getränke und alkohol. Flüssigkeiten, z.B. Wein)",0
+model,"account.tax.code.template,name",tax_code_76,"Umsätze, für die eine Steuer nach § 24 UStG zu entrichten ist (Sägewerkserzeugnisse, Getränke und alkohol. Flüssigkeiten, z.B. Wein)","Umsätze, für die eine Steuer nach § 24 UStG zu entrichten ist (Sägewerkserzeugnisse, Getränke und alkohol. Flüssigkeiten, z.B. Wein)",0
+model,"account.tax.code.template,name",tax_code_UZ30,Umsätze land- und forstwirtschaftlicher Betrieb nach § 24 UStG,Umsätze land- und forstwirtschaftlicher Betrieb nach § 24 UStG,0
+model,"account.tax.code.template,name",tax_code_BZ30,Umsätze land- und forstwirtschaftlicher Betrieb nach § 24 UStG,Umsätze land- und forstwirtschaftlicher Betrieb nach § 24 UStG,0
+model,"account.tax.code.template,name",tax_code_48,Umsätze nach § 4 Nr. 8 bis 28 UStG,Umsätze nach § 4 Nr. 8 bis 28 UStG,0
+model,"account.tax.code.template,name",tax_code_U,Umsatzsteuer,Umsatzsteuer,0
+model,"account.tax.code.template,name",tax_code_BU,Umsatzsteuer,Umsatzsteuer,0
+model,"account.tax.code.template,name",tax_code_83,Verbleibende Umsatzsteuer-Vorauszahlung / Verbleibender Überschuss - bitte dem Betrag ein Minuszeichen voranstellen,Verbleibende Umsatzsteuer-Vorauszahlung / Verbleibender Überschuss - bitte dem Betrag ein Minuszeichen voranstellen,0
+model,"account.tax.code.template,name",tax_code_59,Vorsteuerabzug für innergemeinschaftliche Lieferungen neuer Fahrzeuge außerhalb eines Unternehmens (§ 2a UStG) sowie von Kleinunternehmern im Sinne des § 19 Abs. 1 UStG (§ 15 Abs. 4a UStG),Vorsteuerabzug für innergemeinschaftliche Lieferungen neuer Fahrzeuge außerhalb eines Unternehmens (§ 2a UStG) sowie von Kleinunternehmern im Sinne des § 19 Abs. 1 UStG (§ 15 Abs. 4a UStG),0
+model,"account.tax.code.template,name",tax_code_61,Vorsteuerbeträge aus dem innergemeinschaftlichen Erwerb von Gegenständen (§ 15 Abs. 1 Satz 1 Nr. 3 UStG),Vorsteuerbeträge aus dem innergemeinschaftlichen Erwerb von Gegenständen (§ 15 Abs. 1 Satz 1 Nr. 3 UStG),0
+model,"account.tax.code.template,name",tax_code_67,Vorsteuerbeträge aus Leistungen im Sinne des § 13b Abs. 1 UStG (§ 15 Abs. 1 Satz 1 Nr. 4 UStG),Vorsteuerbeträge aus Leistungen im Sinne des § 13b Abs. 1 UStG (§ 15 Abs. 1 Satz 1 Nr. 4 UStG),0
+model,"account.tax.code.template,name",tax_code_66,"Vorsteuerbeträge aus Rechnungen von anderen Unternehmern (§ 15 Abs. 1 Satz 1 Nr. 1 UStG), aus Leistungen im Sinne des § 13a Abs. 1 Nr. 6 UStG (§ 15 Abs. 1 Satz 1 Nr. 5 UStG) und aus innergemeinschaftlichen Dreiecksgeschäften (§ 25b Abs. 5 UStG)","Vorsteuerbeträge aus Rechnungen von anderen Unternehmern (§ 15 Abs. 1 Satz 1 Nr. 1 UStG), aus Leistungen im Sinne des § 13a Abs. 1 Nr. 6 UStG (§ 15 Abs. 1 Satz 1 Nr. 5 UStG) und aus innergemeinschaftlichen Dreiecksgeschäften (§ 25b Abs. 5 UStG)",0
+model,"account.tax.code.template,name",tax_code_63,"Vorsteuerbeträge, die nach allgemeinen Durchschnittssätzen berechnet sind (§§ 23 und 23a UStG)","Vorsteuerbeträge, die nach allgemeinen Durchschnittssätzen berechnet sind (§§ 23 und 23a UStG)",0
+model,"account.tax.code.template,name",tax_code_BV,Vorsteuer (dient lediglich der Verprobung),Vorsteuer (dient lediglich der Verprobung),0
+model,"account.tax.code.template,name",tax_code_43,"Weitere steuerfreie Umsätze mit Vorsteuerabzug (z.B. Ausfuhrlieferungen, Umsätze nach § 4 Nr. 2 bis 7 UStG)","Weitere steuerfreie Umsätze mit Vorsteuerabzug (z.B. Ausfuhrlieferungen, Umsätze nach § 4 Nr. 2 bis 7 UStG)",0
+model,"account.tax.code.template,name",tax_code_98,zu anderen Steuersätzen,zu anderen Steuersätzen,0
+model,"account.tax.code.template,name",tax_code_95,zu anderen Steuersätzen,zu anderen Steuersätzen,0
+model,"account.tax.code.template,name",tax_code_36,zu anderen Steuersätzen,zu anderen Steuersätzen,0
+model,"account.tax.code.template,name",tax_code_35,zu anderen Steuersätzen,zu anderen Steuersätzen,0
+model,"account.tax.code.template,name",tax_code_BRV19,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_BAUS19,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_891,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_89,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_811,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_81,zum Steuersatz von 19 %,zum Steuersatz von 19 %,0
+model,"account.tax.code.template,name",tax_code_BRV7,zum Steuersatz von 7 %,zum Steuersatz von 7 %,0
+model,"account.tax.code.template,name",tax_code_BAUS7,zum Steuersatz von 7 %,zum Steuersatz von 7 %,0
+model,"account.tax.code.template,name",tax_code_931,zum Steuersatz von 7%,zum Steuersatz von 7%,0
+model,"account.tax.code.template,name",tax_code_93,zum Steuersatz von 7%,zum Steuersatz von 7%,0
+model,"account.tax.code.template,name",tax_code_861,zum Steuersatz von 7%,zum Steuersatz von 7%,0
+model,"account.tax.code.template,name",tax_code_86,zum Steuersatz von 7%,zum Steuersatz von 7%,0
 model,"account.tax.group,name",tax_group_ust,Umsatzsteuer,Umsatzsteuer,0
 model,"account.tax.group,name",tax_group_vst,Vorsteuer,Vorsteuer,0
 model,"account.tax.group,name",tax_group_vst_reduced,Vorsteuer ermäßigt,Vorsteuer ermäßigt,0
+model,"account.tax.rule.template,name",tax_rule_non_eu_sale,Kunde Ausland,Kunde Ausland,0
+model,"account.tax.rule.template,name",tax_rule_eu_no_id_sale,Kunde EU (ohne USt-ID),Kunde EU (ohne USt-ID),0
+model,"account.tax.rule.template,name",tax_rule_eu_vat_id_sale,Kunde EU Unternehmen (mit USt-ID),Kunde EU Unternehmen (mit USt-ID),0
+model,"account.tax.rule.template,name",tax_rule_non_eu_purchase,Lieferant Ausland,Lieferant Ausland,0
+model,"account.tax.rule.template,name",tax_rule_eu_no_id_purchase,Lieferant EU (ohne Ust-ID),Lieferant EU (ohne Ust-ID),0
+model,"account.tax.rule.template,name",tax_rule_eu_vat_id_purchase,Lieferant EU Unternehmen (mit USt-ID),Lieferant EU Unternehmen (mit USt-ID),0
 model,"account.tax.template,description",tax_import_19,19% EUSt,19% EUSt,0
 model,"account.tax.template,description",tax_eu_19_purchase_ust,19% USt,19% USt,0
 model,"account.tax.template,description",tax_ust_19,19% USt,19% USt,0
