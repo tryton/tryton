@@ -167,7 +167,7 @@ odt,sale.sale,0,Taxes:,Impuestos:,0
 odt,sale.sale,0,Total:,Total:,0
 odt,sale.sale,0,Total (excl. taxes):,Total (sin impuestos):,0
 odt,sale.sale,0,Unit Price,Precio Unitario,0
-odt,sale.sale,0,VAT:,VAT:,0
+odt,sale.sale,0,VAT:,IVA:,0
 selection,"account.invoice,sale_exception_state",0,,,0
 selection,"account.invoice,sale_exception_state",0,Ignored,Ignorado,0
 selection,"account.invoice,sale_exception_state",0,Recreated,Rehecho,0
