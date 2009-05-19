@@ -34,9 +34,13 @@ class Action(ModelSQL, ModelView):
         return True
 
     def get_action_id(self, cursor, user, action_id, context=None):
+        if context is None:
+            context = {}
+        ctx = context.copy()
+        ctx['active_test'] = False
         if self.search(cursor, user, [
             ('id', '=', action_id),
-            ], context=context):
+            ], context=ctx):
             return action_id
         for action_type in (
                 'ir.action.report',
@@ -47,7 +51,7 @@ class Action(ModelSQL, ModelView):
             action_obj = self.pool.get(action_type)
             action_id2 = action_obj.search(cursor, user, [
                 ('id', '=', action_id),
-                ], context=context)
+                ], context=ctx)
             if action_id2:
                 action = action_obj.browse(cursor, user, action_id2[0],
                         context=context)
