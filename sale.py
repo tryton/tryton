@@ -1374,7 +1374,7 @@ class Template(ModelSQL, ModelView):
         }, domain="[('category', '=', " \
                 "(default_uom, 'uom.category'))]",
         context="{'category': (default_uom, 'uom.category')}",
-        on_change_with=['default_uom', 'sale_uom'])
+        on_change_with=['default_uom', 'sale_uom', 'salable'])
 
     def default_salable(self, cursor, user, context=None):
         if context is None:
