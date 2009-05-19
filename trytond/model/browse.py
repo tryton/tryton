@@ -194,8 +194,8 @@ class BrowseRecord(object):
         for model in self._cache:
             for record_id in self._cache[model]:
                 self._language_cache.setdefault(prev_lang,
-                        {}).setdefault(model, {}).update(
-                                self._cache[model][record_id])
+                        {}).setdefault(model, {})[record_id] = \
+                                self._cache[model][record_id]
                 if lang in self._language_cache \
                         and model in self._language_cache[lang] \
                         and record_id in self._language_cache[lang][model]:
