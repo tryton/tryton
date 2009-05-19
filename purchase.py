@@ -1299,7 +1299,7 @@ class Template(ModelSQL, ModelView):
         }, domain="[('category', '=', " \
                 "(default_uom, 'uom.category'))]",
         context="{'category': (default_uom, 'uom.category')}",
-        on_change_with=['default_uom', 'purchase_uom'])
+        on_change_with=['default_uom', 'purchase_uom', 'purchasable'])
 
     def __init__(self):
         super(Template, self).__init__()
