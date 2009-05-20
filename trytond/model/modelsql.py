@@ -270,7 +270,7 @@ class ModelSQL(ModelStorage):
         for i in values.keys():
             if i in self._inherit_fields:
                 (inherits, col, col_detail) = self._inherit_fields[i]
-                if i in self._columns and isinstance(col_detail, fields.Function):
+                if i in self._columns:
                     continue
                 if inherits in tocreate:
                     tocreate[inherits][i] = values[i]
