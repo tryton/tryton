@@ -80,7 +80,8 @@ class Template(ModelSQL, ModelView):
                 if template.default_uom.id != vals.get("default_uom"):
                     self.raise_user_error(cursor, 'change_default_uom')
 
-        super(Template, self).write(cursor, user, ids, vals, context=context)
+        return super(Template, self).write(cursor, user, ids, vals,
+                context=context)
 
     def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
