@@ -108,7 +108,7 @@ class ModelRecordGroup(SignalEvent):
             self.writen(saved)
 
     def writen(self, edited_id):
-        ids = [x for x in self.on_write_ids([edited_id]) if x != edited_id]
+        ids = [x for x in self.on_write_ids([edited_id]) or [] if x != edited_id]
         if not ids:
             return
         self.reload(ids)
