@@ -368,7 +368,6 @@ class ActionActWindow(ModelSQL, ModelView):
         ('form','Form'),
         ('board', 'Board'),
         ], string='Type of view')
-    usage = fields.Char('Action Usage')
     act_window_views = fields.One2Many('ir.action.act_window.view',
             'act_window', 'Views')
     views = fields.Function('views_get_fnc', type='binary',
