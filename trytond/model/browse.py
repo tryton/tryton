@@ -55,9 +55,9 @@ class BrowseRecord(object):
         self._model = model
         self._model_name = self._model._name
         self._context = context or {}
-        self._language_cache = {}
 
         cache.setdefault(model._name, {})
+        cache.setdefault('_language_cache', {})
         self._data = cache[model._name]
         if not record_id in self._data:
             self._data[record_id] = {'id': record_id}
@@ -191,16 +191,19 @@ class BrowseRecord(object):
         self._context = self._context.copy()
         prev_lang = self._context.get('language') or 'en_US'
         self._context['language'] = lang
+        language_cache = self._cache['_language_cache']
         for model in self._cache:
+            if model == '_language_cache':
+                continue
             for record_id in self._cache[model]:
-                self._language_cache.setdefault(prev_lang,
+                language_cache.setdefault(prev_lang,
                         {}).setdefault(model, {})[record_id] = \
                                 self._cache[model][record_id]
-                if lang in self._language_cache \
-                        and model in self._language_cache[lang] \
-                        and record_id in self._language_cache[lang][model]:
+                if lang in language_cache \
+                        and model in language_cache[lang] \
+                        and record_id in language_cache[lang][model]:
                     self._cache[model][record_id] = \
-                            self._language_cache[lang][model][record_id]
+                            language_cache[lang][model][record_id]
                 else:
                     self._cache[model][record_id] = {'id': record_id}
 
