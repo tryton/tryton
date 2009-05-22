@@ -2,3 +2,4 @@
 #this repository contains the full copyright notices and license terms.
 
 from company import *
+from res import *
