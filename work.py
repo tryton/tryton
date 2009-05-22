@@ -13,43 +13,52 @@ class Work(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     active = fields.Boolean('Active')
     parent = fields.Many2One('timesheet.work', 'Parent', select=2)
-    childs = fields.One2Many('timesheet.work', 'parent', 'Children')
-    hours = fields.Function('get_hours', digits=(16, 2), string='Hours')
-    type = fields.Selection([
-        ('view', 'View'),
-        ('normal', 'Normal'),
-        ], 'Type', required=True, select=1)
-    state = fields.Selection([
-        ('opened', 'Opened'),
-        ('closed', 'Closed'),
-        ], 'State', required=True, select=1)
+    children = fields.One2Many('timesheet.work', 'parent', 'Children')
+    hours = fields.Function('get_hours', digits=(16, 2), string='Timesheet Hours')
+    timesheet_available = fields.Boolean('Available on timesheets')
+    company = fields.Many2One('company.company', 'Company', required=True)
 
     def __init__(self):
         super(Work, self).__init__()
         self._constraints += [
             ('check_recursion', 'recursive_works'),
+            ('check_parent_company', 'parent_company'),
         ]
         self._error_messages.update({
             'recursive_works': 'You can not create recursive works!',
+            'parent_company': 'Every work must be in the same company '\
+                'as it\'s parent work!',
         })
 
     def default_active(self, cursor, user, context=None):
         return True
 
-    def default_type(self, cursor, user, context=None):
-        return 'normal'
+    def default_timesheet_available(self, cursor, user, context=None):
+        return True
 
-    def default_state(self, cursor, user, context=None):
-        return 'opened'
+    def default_company(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        if context.get('company'):
+            return context['company']
+        return False
 
-    def _tree_qty(self, hours_by_wt, childs, ids, to_compute):
+    def check_parent_company(self, cursor, user, ids):
+        for work in self.browse(cursor, user, ids):
+            if not work.parent:
+                continue
+            if work.parent.company.id != work.company.id:
+                return False
+        return True
+
+    def _tree_qty(self, hours_by_wt, children, ids, to_compute):
         res = 0
         for h in ids:
-            if (not childs.get(h)) or (not to_compute[h]):
+            if (not children.get(h)) or (not to_compute[h]):
                 res += hours_by_wt.setdefault(h, 0)
             else:
                 sub_qty = self._tree_qty(
-                    hours_by_wt, childs, childs[h], to_compute)
+                    hours_by_wt, children, children[h], to_compute)
                 hours_by_wt.setdefault(h, 0)
                 hours_by_wt[h] += sub_qty
                 res += hours_by_wt[h]
@@ -76,11 +85,11 @@ class Work(ModelSQL, ModelView):
         hours_by_wt = dict([(i[0], i[1]) for i in cursor.fetchall()])
         to_compute = dict.fromkeys(all_ids, True)
         works = self.browse(cursor, user, all_ids, context=context)
-        childs = {}
+        children = {}
         for work in works:
             if work.parent:
-                childs.setdefault(work.parent.id, []).append(work.id)
-        self._tree_qty(hours_by_wt, childs, ids, to_compute)
+                children.setdefault(work.parent.id, []).append(work.id)
+        self._tree_qty(hours_by_wt, children, ids, to_compute)
         return hours_by_wt
 
     def get_rec_name(self, cursor, user, ids, name, arg, context=None):

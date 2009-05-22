@@ -11,16 +11,14 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Work">
                     <label name="name"/>
                     <field name="name"/>
-                    <label name="state"/>
-                    <group col="3" colspan="1" id="state_active">
-                        <field name="state"/>
-                        <label name="active"/>
-                        <field name="active"/>
-                    </group>
+                    <label name="active"/>
+                    <field name="active"/>
                     <label name="parent"/>
                     <field name="parent"/>
-                    <label name="type"/>
-                    <field name="type"/>
+                    <label name="timesheet_available"/>
+                    <field name="timesheet_available"/>
+                    <label name="company"/>
+                    <field name="company"/>
                 </form>
                 ]]>
             </field>
@@ -33,7 +31,6 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Works">
                     <field name="rec_name"/>
-                    <field name="state" select="1"/>
                     <field name="name" select="1" tree_invisible="1"/>
                     <field name="active" select="1" tree_invisible="1"/>
                 </tree>
@@ -63,13 +60,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">timesheet.work</field>
             <field name="type">tree</field>
             <field name="priority" eval="16"/>
-            <field name="field_childs">childs</field>
+            <field name="field_childs">children</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Works">
                     <field name="name" select="1"/>
-                    <field name="type" select="1"/>
-                    <field name="state" select="1"/>
+                    <field name="timesheet_available" select="1"/>
                 </tree>
                 ]]>
             </field>
@@ -93,7 +89,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">timesheet.work</field>
             <field name="type">tree</field>
             <field name="priority" eval="16"/>
-            <field name="field_childs">childs</field>
+            <field name="field_childs">children</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Works">
@@ -208,5 +204,25 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+
+        <record model="ir.rule.group" id="rule_group_work">
+            <field name="model" search="[('model', '=', 'timesheet.work')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_work1">
+            <field name="field" search="[('name', '=', 'company'),
+                                        ('model.model', '=', 'timesheet.work')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Main Company</field>
+            <field name="rule_group" ref="rule_group_work"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_work_admin">
+            <field name="model" search="[('model', '=', 'timesheet.work')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+            <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
+        </record>
+
     </data>
 </tryton>
