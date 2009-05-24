@@ -32,11 +32,13 @@ model,"account.statement.line,name",0,Account Statement Line,Zahlungsverkehr Pos
 model,"account.statement,name",0,Account Statement,Zahlungsverkehr,0
 model,"ir.action,name",act_statement_form,All Statement,Alle Zahlungen,0
 model,"ir.action,name",act_draft_statement_form,Draft Statements,Zahlungsentwürfe,0
+model,"ir.action,name",act_new_statement_form,New Statement,Neue Zahlung,0
 model,"ir.action,name",act_posted_statement_form,Posted Statements,Festgeschriebene Zahlungen,0
 model,"ir.action,name",act_statement_journal_form,Statement Journals,Journale Zahlungsverkehr,0
 model,"ir.action,name",act_validated_statement_form,Validated Statement,Geprüfte Zahlungen,0
 model,"ir.ui.menu,name",menu_statement_form,All Statement,Alle Zahlungen,0
 model,"ir.ui.menu,name",menu_draft_statement_form,Draft Statements,Zahlungsentwürfe,0
+model,"ir.ui.menu,name",menu_new_statement_form,New Statement,Neue Zahlung,0
 model,"ir.ui.menu,name",menu_posted_statement_form,Posted Statements,Festgeschriebene Zahlungen,0
 model,"ir.ui.menu,name",menu_statement_journal_form,Statement Journals,Journale Zahlungsverkehr,0
 model,"ir.ui.menu,name",menu_statements,Statements,Zahlungsverkehr,0
@@ -67,4 +69,3 @@ view,account.statement.journal,0,Statement Journal,Journal Zahlungsverkehr,0
 view,account.statement.journal,0,Statement Journals,Journale Zahlungsverkehr,0
 view,account.statement.line,0,Bank Statement Line,Posten Bankauszüge,0
 view,account.statement.line,0,Statement Line,Zahlungsposten,0
-view,statement.statement.line,0,Statement Lines,Zahlungsposten,0
