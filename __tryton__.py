@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Company Work Time',
+    'name_de_DE': 'Unternehmen Arbeitszeit',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -16,5 +17,6 @@
         'company.xml',
     ],
     'translation': [
+        'de_DE.csv',
     ],
 }
