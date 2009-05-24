@@ -13,7 +13,8 @@
                     <label name="date"/>
                     <field name="date"/>
                     <label name="hours"/>
-                    <field name="hours" widget="float_time"/>
+                    <field name="hours" widget="float_time"
+                        float_time="company_work_time"/>
                     <label name="work"/>
                     <field name="work"/>
                     <label name="description"/>
@@ -30,7 +31,8 @@
                 <tree string="Timesheet Lines" editable="bottom">
                     <field name="employee" select="1"/>
                     <field name="date" select="1"/>
-                    <field name="hours" widget="float_time" sum="Hours"/>
+                    <field name="hours" widget="float_time"
+                        float_time="company_work_time" sum="Hours"/>
                     <field name="work" select="1" width="300"/>
                     <field name="description"/>
                 </tree>
@@ -104,7 +106,8 @@
                 <![CDATA[
                 <tree string="Hours per Employee">
                     <field name="employee"/>
-                    <field name="hours" widget="float_time" sum="Hours"/>
+                    <field name="hours" widget="float_time"
+                        float_time="company_work_time" sum="Hours"/>
                 </tree>
                 ]]>
             </field>
@@ -119,7 +122,8 @@
                         <field name="employee"/>
                     </x>
                     <y>
-                        <field name="hours" widget="float_time"/>
+                        <field name="hours" widget="float_time"
+                            float_time="company_work_time"/>
                     </y>
                 </graph>
                 ]]>
@@ -191,7 +195,8 @@
                     <field name="year" select="1"/>
                     <field name="week" select="1"/>
                     <field name="employee" select="1"/>
-                    <field name="hours" select="1" widget="float_time"/>
+                    <field name="hours" select="1" widget="float_time"
+                        float_time="company_work_time"/>
                 </tree>
                 ]]>
             </field>
@@ -219,7 +224,8 @@
                     <field name="year" select="1"/>
                     <field name="month" select="1"/>
                     <field name="employee" select="1"/>
-                    <field name="hours" select="1" widget="float_time"/>
+                    <field name="hours" select="1" widget="float_time"
+                        float_time="company_work_time"/>
                 </tree>
                 ]]>
             </field>

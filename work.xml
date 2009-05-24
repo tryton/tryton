@@ -94,7 +94,8 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Works">
                     <field name="name" select="1"/>
-                    <field name="hours" widget="float_time"/>
+                    <field name="hours" widget="float_time"
+                        float_time="company_work_time"/>
                 </tree>
                 ]]>
             </field>
@@ -128,7 +129,8 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="name"/>
                     </x>
                     <y>
-                        <field name="hours" widget="float_time"/>
+                        <field name="hours" widget="float_time"
+                            float_time="company_work_time"/>
                     </y>
                 </graph>
                 ]]>

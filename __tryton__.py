@@ -59,6 +59,7 @@ Et les rapports:
         'ir',
         'res',
         'company',
+        'company_work_time',
     ],
     'xml': [
         'timesheet.xml',
