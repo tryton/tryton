@@ -71,7 +71,11 @@ this repository contains the full copyright notices and license terms. -->
                             </field>
                             <group col="1" colspan="2" id="categories">
                                 <separator string="Categories" id="categories"/>
-                                <field name="categories"/>
+                                <field name="categories">
+                                    <tree string="Categories" fill="1">
+                                        <field name="rec_name" select="1"/>
+                                    </tree>
+                                </field>
                             </group>
                         </page>
                         <page string="Accounting" id="accounting">
