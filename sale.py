@@ -694,6 +694,39 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 res[line.id] = val
         return res
 
+    def _get_invoice_sale(self, cursor, user, sale, context=None):
+        '''
+        Return invoice values for sale
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param sale: the BrowseRecord of the sale
+        :param context: the context
+
+        :return: a dictionary with invoice fields as key and
+            invoice values as value
+        '''
+        journal_obj = self.pool.get('account.journal')
+
+        journal_id = journal_obj.search(cursor, user, [
+            ('type', '=', 'revenue'),
+            ], limit=1, context=context)
+        if journal_id:
+            journal_id = journal_id[0]
+
+        res = {
+            'company': sale.company.id,
+            'type': 'out_invoice',
+            'reference': sale.reference,
+            'journal': journal_id,
+            'party': sale.party.id,
+            'invoice_address': sale.invoice_address.id,
+            'currency': sale.currency.id,
+            'account': sale.party.account_receivable.id,
+            'payment_term': sale.payment_term.id,
+            }
+        return res
+
     def create_invoice(self, cursor, user, sale_id, context=None):
         '''
         Create an invoice for the sale
@@ -706,7 +739,6 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         :return: the created invoice id or None
         '''
         invoice_obj = self.pool.get('account.invoice')
-        journal_obj = self.pool.get('account.journal')
         invoice_line_obj = self.pool.get('account.invoice.line')
         sale_line_obj = self.pool.get('sale.line')
 
@@ -724,25 +756,11 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         if not invoice_lines:
             return
 
-        journal_id = journal_obj.search(cursor, user, [
-            ('type', '=', 'revenue'),
-            ], limit=1, context=context)
-        if journal_id:
-            journal_id = journal_id[0]
 
         ctx = context.copy()
         ctx['user'] = user
-        invoice_id = invoice_obj.create(cursor, 0, {
-            'company': sale.company.id,
-            'type': 'out_invoice',
-            'reference': sale.reference,
-            'journal': journal_id,
-            'party': sale.party.id,
-            'invoice_address': sale.invoice_address.id,
-            'currency': sale.currency.id,
-            'account': sale.party.account_receivable.id,
-            'payment_term': sale.payment_term.id,
-        }, context=ctx)
+        vals = self._get_invoice_sale(cursor, user, sale, context=context)
+        invoice_id = invoice_obj.create(cursor, 0, vals, context=ctx)
 
         for line_id in invoice_lines:
             for vals in invoice_lines[line_id]:
