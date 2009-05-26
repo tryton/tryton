@@ -12,8 +12,8 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Works Efforts">
                     <field name="name" select="1"/>
-                    <field name="hours" widget="float_time"/>
-                    <field name="total_effort" widget="float_time"/>
+                    <field name="hours" widget="float_time" float_time="company_work_time"/>
+                    <field name="total_effort" widget="float_time" float_time="company_work_time"/>
                     <field name="type" select="1"/>
                     <field name="state" select="1"/>
                     <field name="active" select="2" tree_invisible="1"/>
@@ -29,8 +29,8 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Tasks">
                     <field name="name" select="1"/>
-                    <field name="hours" widget="float_time"/>
-                    <field name="total_effort" widget="float_time"/>
+                    <field name="hours" widget="float_time" float_time="company_work_time"/>
+                    <field name="total_effort" widget="float_time" float_time="company_work_time"/>
                     <field name="state" select="1"/>
                     <field name="active" select="2" tree_invisible="1"/>
                 </tree>
@@ -45,8 +45,8 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Projects">
                     <field name="name" select="1"/>
-                    <field name="hours" widget="float_time"/>
-                    <field name="total_effort" widget="float_time"/>
+                    <field name="hours" widget="float_time" float_time="company_work_time"/>
+                    <field name="total_effort" widget="float_time" float_time="company_work_time"/>
                     <field name="active" select="2" tree_invisible="1"/>
                 </tree>
                 ]]>
@@ -79,12 +79,12 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="party_address"/>
                             <field name="party_address"/>
                             <label name="hours"/>
-                            <field name="hours" widget="float_time"/>
+                            <field name="hours" widget="float_time" float_time="company_work_time"/>
                             <group colspan="2" col="4" id="effort">
                                 <label name="effort"/>
-                                <field name="effort" widget="float_time"/>
+                                <field name="effort" widget="float_time" float_time="company_work_time"/>
                                 <label name="total_effort"/>
-                                <field name="total_effort" widget="float_time"/>
+                                <field name="total_effort" widget="float_time" float_time="company_work_time"/>
                             </group>
                         </page>
                         <page string="Children" id="children"
@@ -92,8 +92,8 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="children" colspan="4">
                                 <tree string="Children">
                                   <field name="name"/>
-                                  <field name="hours" widget="float_time"/>
-                                  <field name="total_effort" widget="float_time"/>
+                                  <field name="hours" widget="float_time" float_time="company_work_time"/>
+                                  <field name="total_effort" widget="float_time" float_time="company_work_time"/>
                                   <field name="type"/>
                                   <field name="state"/>
                                 </tree>

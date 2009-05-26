@@ -29,6 +29,7 @@
         'ir',
         'timesheet',
         'party',
+        'company_work_time',
     ],
     'xml': [
         'project.xml',
