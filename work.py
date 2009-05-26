@@ -106,15 +106,22 @@ class Work(ModelSQL, ModelView):
 
     def get_parent(self, cursor, user, ids, name, arg, context=None):
         res = dict.fromkeys(ids, None)
-        cursor.execute(
-            'SELECT child.id, parent.id '\
-            'FROM project_work child '\
-                'JOIN timesheet_work twc on (twc.id = child.work) '\
-                'JOIN timesheet_work twp on (twc.parent = twp.id) '\
-                'JOIN project_work parent on (twp.id = parent.work) '\
-            'WHERE child.id in (' + ','.join('%s' for i in ids) + ') ',
-            ids)
-        res.update(dict(cursor.fetchall()))
+        project_works = self.browse(cursor, user, ids, context=context)
+
+        # ptw2pw is "parent timesheet work to project work":
+        ptw2pw = {}
+        for project_work in project_works:
+            ptw2pw[project_work.work.parent.id] = project_work.id
+
+        parent_project_ids = self.search(cursor, user, [
+                ('work', 'in', ptw2pw.keys()),
+                ], context=context)
+        parent_projects = self.browse(cursor, user, parent_project_ids,
+                context=context)
+        for parent_project in parent_projects:
+            if parent_project.work.id in ptw2pw:
+                res[ptw2pw[parent_project.work.id]] = parent_project.id
+
         return res
 
     def set_parent(self, cursor, user, id, name, value, arg, context=None):
