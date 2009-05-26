@@ -232,19 +232,6 @@ class Work(ModelSQL, ModelView):
 
         res = super(Work, self).delete(cursor, user, ids, context=context)
 
-        # check if timesheet works are linked to project works
-        project_work_ids = self.search(cursor, user, [
-                ('work', 'in', timesheet_work_ids)
-                ],
-                context=context)
-        if project_work_ids:
-            project_works = self.browse(
-                cursor, user, project_work_ids, context=context)
-
-            keep_ids = set(pw.work.id for pw in project_works)
-            timesheet_work_ids = [
-                i for i in timesheet_work_ids if i not in keep_ids]
-
         timesheet_work_obj.delete(
             cursor, user, timesheet_work_ids, context=context)
         return res
