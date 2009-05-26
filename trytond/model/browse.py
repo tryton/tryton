@@ -97,6 +97,7 @@ class BrowseRecord(object):
                 # complete the field list with the inherited fields
                 ffields += [x for x in inherits if not hasattr(x[1], 'get') \
                         and x[0] not in self._data[self._id] \
+                        and x[0] not in self._model._columns \
                         and ((not x[1].translate \
                                 and x[1]._type not in ('text', 'binary')) \
                             or x[0] == name)]
