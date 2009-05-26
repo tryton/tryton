@@ -23,6 +23,38 @@ class Template(ModelSQL, ModelView):
                 res[template.id] += product[name]
         return res
 
+    def __init__(self):
+        super(Template, self).__init__()
+        self._error_messages.update({
+                'change_default_uom': 'You cannot change the default uom for '\
+                    'a product which is associated to stock moves.',
+            })
+
+    def write(self, cursor, user, ids, vals, context=None):
+        move_obj = self.pool.get('stock.move')
+        if not  vals.get("default_uom"):
+            return super(Template, self).write(cursor, user, ids, vals,
+                    context=context)
+
+        for i in range(0, len(ids), cursor.IN_MAX):
+            sub_ids = ids[i:i + cursor.IN_MAX]
+            res = self.search(cursor, user, [
+                    ('id', 'in', sub_ids),
+                    ('default_uom', '!=', vals['default_uom']),
+                    ], context=context)
+
+            if res:
+                res = move_obj.search(cursor, user, [
+                        ('product.template', 'in', res),
+                        ], limit=1, context=context)
+                if res:
+                    self.raise_user_error(cursor, 'change_default_uom',
+                            context=context)
+
+        return super(Template, self).write(cursor, user, ids, vals,
+                context=context)
+
+
 Template()
 
 class Product(ModelSQL, ModelView):
