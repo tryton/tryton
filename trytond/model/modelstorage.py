@@ -85,8 +85,15 @@ class ModelStorage(Model):
         '''
         Return the default value for sequence field.
         '''
+        table = self._table
+        if 'sequence' not in self._columns:
+            for model in self._inherits:
+                model_obj = self.pool.get(model)
+                if 'sequence' in model_obj._columns:
+                    table = model_obj._table
+                    break
         cursor.execute('SELECT MAX(sequence) ' \
-                'FROM "' + self._table + '"')
+                'FROM "' + table + '"')
         res = cursor.fetchone()
         if res:
             return res[0]
