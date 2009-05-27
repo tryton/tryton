@@ -113,9 +113,11 @@ class Work(ModelSQL, ModelView):
         for project_work in project_works:
             ptw2pw[project_work.work.parent.id] = project_work.id
 
+        ctx = context and context.copy() or {}
+        ctx['active_test'] = False
         parent_project_ids = self.search(cursor, user, [
                 ('work', 'in', ptw2pw.keys()),
-                ], context=context)
+                ], context=ctx)
         parent_projects = self.browse(cursor, user, parent_project_ids,
                 context=context)
         for parent_project in parent_projects:
