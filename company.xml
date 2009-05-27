@@ -382,7 +382,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.report" id="report_letter">
-            <field name="name">_Letter</field>
+            <field name="name">Letter</field>
             <field name="model">party.party</field>
             <field name="report_name">party.letter</field>
             <field name="report">company/letter.odt</field>
