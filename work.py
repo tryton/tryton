@@ -186,9 +186,11 @@ class Work(ModelSQL, ModelView):
         projects = self.browse(cursor, user, ids, context=context)
         w2p = dict((p.work.id, p.id) for p in projects)
 
+        ctx = context and context.copy() or {}
+        ctx['active_test'] = False
         query_ids, args_ids = timesheet_work_obj.search(cursor, user, [
             ('parent', 'child_of', w2p.keys()),
-            ], context=context, query_string=True)
+            ], context=ctx, query_string=True)
 
         cursor.execute(
                 'SELECT task.work, ' \
@@ -213,6 +215,8 @@ class Work(ModelSQL, ModelView):
         while leafs:
             parents = set()
             for work_id in leafs:
+                if not work.active:
+                    continue
                 work = id2work[work_id]
                 if work.parent and work.parent.id in work_effort:
                     work_effort[work.parent.id] += work_effort[work_id]
