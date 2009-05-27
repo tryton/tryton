@@ -66,7 +66,11 @@ class Work(ModelSQL, ModelView):
         return res
 
     def get_hours(self, cursor, user, ids, name, arg, context=None):
-        all_ids = self.search(cursor, user, [('parent', 'child_of', ids)])
+        all_ids = self.search(cursor, user, [
+                ('parent', 'child_of', ids)
+                ], context=context)
+        # force inactive ids to be in all_ids
+        all_ids = all_ids + ids
         clause = "SELECT work, sum(hours) FROM timesheet_line "\
                      "WHERE work IN (%s) "\
                      % ",".join(["%s" for id in all_ids])
