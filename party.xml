@@ -137,7 +137,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_party_by_category"/>
         </record>
         <record model="ir.action.report" id="report_label">
-            <field name="name">La_bels</field>
+            <field name="name">Labels</field>
             <field name="model">party.party</field>
             <field name="report_name">party.label</field>
             <field name="report">party/label.odt</field>
