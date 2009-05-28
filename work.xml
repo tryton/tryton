@@ -60,16 +60,16 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Work Efforts" col="8">
                         <label name="name"/>
                         <field name="name" colspan="3"/>
-                        <label name="type"/>
-                        <field name="type"/>
-                        <label name="active"/>
-                        <field name="active" xexpand="0"/>
                         <label name="parent"/>
                         <field name="parent"/>
+                        <label name="active"/>
+                        <field name="active" xexpand="0"/>
                         <label name="sequence"/>
                         <field name="sequence"/>
-                        <label string="" id="placeholder1"/>
-                        <label string="" id="placeholder2"/>
+                        <label name="type"/>
+                        <field name="type"/>
+                        <label name="state"/>
+                        <field name="state"/>
                         <label name="timesheet_available"/>
                         <field name="timesheet_available" xexpand="0"/>
                     <notebook colspan="8">
@@ -86,6 +86,8 @@ this repository contains the full copyright notices and license terms. -->
                                 <label name="total_effort"/>
                                 <field name="total_effort" widget="float_time" float_time="company_work_time"/>
                             </group>
+                            <separator name="comment" colspan="4"/>
+                            <field name="comment" colspan="4"/>
                         </page>
                         <page string="Children" id="children"
                               states="{'invisible': '''type != 'project' '''}">
@@ -103,13 +105,7 @@ this repository contains the full copyright notices and license terms. -->
                               states="{'invisible': '''not bool(timesheet_available) '''}">
                             <field name="timesheet_lines" colspan="4"/>
                         </page>
-                        <page string="Other Info" id="other_info">
-                            <separator name="comment" colspan="4"/>
-                            <field name="comment" colspan="4"/>
-                        </page>
                     </notebook>
-                    <label name="state"/>
-                    <field name="state"/>
                 </form>
                 ]]>
             </field>
