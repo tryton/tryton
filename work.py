@@ -145,41 +145,63 @@ class Work(ModelSQL, ModelView):
                 context=context)
 
     def search_parent(self, cursor, user, name, domain=None, context=None):
-        ids = domain[0][2]
-        clauses = []
-        args = []
-        for d in domain:
-            if d[1] in ('in', 'not in'):
-                clause = 'parent.id ' + d[1] + \
-                    '(' + ','.join('%s' for i in d[2]) + ')'
-                clauses.append(clause)
-                args.extend(d[2])
+        timesheet_work_obj = self.pool.get('timesheet.work')
 
-            elif d[1] in ('child_of', 'not child_of'):
+        project_work_domain = []
+        timesheet_work_domain = []
+        for field, operator, operand in domain:
+
+            if operator in ('child_of', 'not child_of'):
                 raise Exception('Domain not implemented')
+            if field.startswith('parent.'):
+                project_work_domain.append(
+                    (field.replace('parent.', ''), operator, operand))
+            elif field == 'parent':
+                timesheet_work_domain.append(
+                    (field, operator, operand))
 
-            elif d[1] in ('=', '!=') and not d[2]:
-                op = d[1] == '=' and 'is' or 'is not'
-                clauses.append('twc.parent %s null' % op)
+        # ids timesheet_work_domain in operand are project_work ids,
+        # we need to convert them to timesheet_work ids
+        operands = set()
+        for _, _, operand in timesheet_work_domain:
+            if isinstance(operand, (int, long)) and not isinstance(operand, bool):
+                operands.add(operand)
+            elif isinstance(operand, list):
+                for o in operand:
+                    if isinstance(o, (int, long)) and not isinstance(o, bool):
+                        operands.add(o)
+        pw2tw = {}
+        if operands:
+            operands = list(operands)
+            # filter out non-existing ids:
+            operands = self.search(cursor, user, [
+                    ('id', 'in', operands)
+                    ], context=context)
+            # create project_work > timesheet_work mapping
+            for pw in self.browse(cursor, user, operands, context=context):
+                pw2tw[pw.id] = pw.work.id
 
-            elif d[1] in OPERATORS:
-                clauses.append('parent.id %s %%s' % d[1])
-                args.append(d[2])
+            for i, d in enumerate(timesheet_work_domain):
+                if isinstance(d[2], (int, long)):
+                    new_d2 = pw2tw.get(d[2], 0)
+                elif isinstance(d[2], list):
+                    new_d2 = []
+                    for item in d[2]:
+                        item = pw2tw.get(item, 0)
+                        new_d2.append(item)
+                timesheet_work_domain[i] = (d[0], d[1], new_d2)
 
-        query = \
-            'SELECT child.id '\
-            'FROM project_work child '\
-                'JOIN timesheet_work twc on (twc.id = child.work) '\
-                'LEFT JOIN timesheet_work twp on (twc.parent = twp.id) '\
-                'LEFT JOIN project_work parent on (twp.id = parent.work) '
+        if project_work_domain:
+            pw_ids = self.search(
+                cursor, user, project_work_domain, context=context)
+            project_works = self.browse(cursor, user, pw_ids, context=context)
+            timesheet_work_domain.append(
+                ('id', 'in', [pw.work.id for pw in project_works]))
 
-        if clauses:
-            query = query + 'WHERE ' + ' AND '.join(clauses)
+        tw_ids = timesheet_work_obj.search(
+            cursor, user, timesheet_work_domain, context=context)
 
-        cursor.execute(query, args)
-
-        res = [('id', 'in', [x[0] for x in cursor.fetchall()])]
-        return res
+        return [('work', 'in', tw_ids)]
 
     def get_total_effort(self, cursor, user, ids, name, arg, context=None):
         timesheet_work_obj = self.pool.get('timesheet.work')
@@ -245,4 +267,3 @@ class Work(ModelSQL, ModelView):
 
 
 Work()
-
