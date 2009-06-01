@@ -99,6 +99,7 @@ class TypeTemplate(ModelSQL, ModelView):
         :return: id of the type created
         '''
         type_obj = self.pool.get('account.account.type')
+        lang_obj = self.pool.get('ir.lang')
 
         if template2type is None:
             template2type = {}
@@ -112,6 +113,22 @@ class TypeTemplate(ModelSQL, ModelView):
             vals['parent'] = parent_id
 
             new_id = type_obj.create(cursor, user, vals, context=context)
+
+            prev_lang = template._context.get('language') or 'en_US'
+            ctx = context.copy()
+            for lang in lang_obj.get_translatable_languages(cursor, user,
+                    context=context):
+                if lang == prev_lang:
+                    continue
+                ctx['language'] = lang
+                template.setLang(lang)
+                data = {}
+                for field in template._columns.keys():
+                    if template._columns[field].translate:
+                        data[field] = template[field]
+                if data:
+                    type_obj.write(cursor, user, new_id, data, context=ctx)
+            template.setLang(prev_lang)
             template2type[template.id] = new_id
         else:
             new_id = template2type[template.id]
@@ -240,6 +257,7 @@ class Type(ModelSQL, ModelView):
                 into type. The dictionary is filled with new types
         '''
         template_obj = self.pool.get('account.account.type.template')
+        lang_obj = self.pool.get('ir.lang')
 
         if template2type is None:
             template2type = {}
@@ -252,6 +270,20 @@ class Type(ModelSQL, ModelView):
                     context=context, type=type)
             if vals:
                 self.write(cursor, user, type.id, vals, context=context)
+
+            prev_lang = type._context.get('language') or 'en_US'
+            ctx = context.copy()
+            for lang in lang_obj.get_translatable_languages(cursor, user,
+                    context=context):
+                if lang == prev_lang:
+                    continue
+                ctx['language'] = lang
+                type.setLang(lang)
+                data = template_obj._get_type_value(cursor, user,
+                        type.template, context=ctx, type=type)
+                if data:
+                    self.write(cursor, user, type.id, data, context=ctx)
+            type.setLang(prev_lang)
             template2type[type.template.id] = type.id
 
         for child in type.childs:
@@ -389,6 +421,7 @@ class AccountTemplate(ModelSQL, ModelView):
         :return: id of the account created
         '''
         account_obj = self.pool.get('account.account')
+        lang_obj = self.pool.get('ir.lang')
 
         if template2account is None:
             template2account = {}
@@ -406,6 +439,22 @@ class AccountTemplate(ModelSQL, ModelView):
             vals['type'] = template2type.get(template.type.id, False)
 
             new_id = account_obj.create(cursor, user, vals, context=context)
+
+            prev_lang = template._context.get('language') or 'en_US'
+            ctx = context.copy()
+            for lang in lang_obj.get_translatable_languages(cursor, user,
+                    context=context):
+                if lang == prev_lang:
+                    continue
+                ctx['language'] = lang
+                template.setLang(lang)
+                data = {}
+                for field in template._columns.keys():
+                    if template._columns[field].translate:
+                        data[field] = template[field]
+                if data:
+                    account_obj.write(cursor, user, new_id, data, context=ctx)
+            template.setLang(prev_lang)
             template2account[template.id] = new_id
         else:
             new_id = template2account[template.id]
@@ -872,6 +921,7 @@ class Account(ModelSQL, ModelView):
                 into type.
         '''
         template_obj = self.pool.get('account.account.template')
+        lang_obj = self.pool.get('ir.lang')
 
         if template2account is None:
             template2account = {}
@@ -891,6 +941,20 @@ class Account(ModelSQL, ModelView):
                         False)
             if vals:
                 self.write(cursor, user, account.id, vals, context=context)
+
+            prev_lang = account._context.get('language') or 'en_US'
+            ctx = context.copy()
+            for lang in lang_obj.get_translatable_languages(cursor, user,
+                    context=context):
+                if lang == prev_lang:
+                    continue
+                ctx['language'] = lang
+                account.setLang(lang)
+                data = template_obj._get_account_value(cursor, user,
+                           account.template, context=ctx, account=account)
+                if data:
+                    self.write(cursor, user, account.id, data, context=ctx)
+            account.setLang(prev_lang)
             template2account[account.template.id] = account.id
 
         for child in account.childs:
@@ -1746,6 +1810,9 @@ class CreateChartAccount(Wizard):
         tax_rule_template_obj = self.pool.get('account.tax.rule.template')
         tax_rule_line_template_obj = \
                 self.pool.get('account.tax.rule.line.template')
+
+        context=context.copy()
+        context['language'] = 'en_US'
 
         account_template = account_template_obj.browse(cursor, user,
                 datas['form']['account_template'], context=context)
