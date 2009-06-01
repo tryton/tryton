@@ -218,7 +218,7 @@ class BrowseRecord(object):
         self._context['language'] = lang
         language_cache = self._cache['_language_cache']
         for table in self._cache:
-            if model == '_language_cache':
+            if table == '_language_cache':
                 continue
             for obj_id in self._cache[table]:
                 language_cache.setdefault(prev_lang,
