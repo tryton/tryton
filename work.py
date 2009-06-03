@@ -155,9 +155,6 @@ class Work(ModelSQL, ModelView):
         project_work_domain = []
         timesheet_work_domain = []
         for field, operator, operand in domain:
-
-            if operator in ('child_of', 'not child_of'):
-                raise Exception('Domain not implemented')
             if field.startswith('parent.'):
                 project_work_domain.append(
                     (field.replace('parent.', ''), operator, operand))
