@@ -240,9 +240,9 @@ class Work(ModelSQL, ModelView):
         while leafs:
             parents = set()
             for work_id in leafs:
+                work = id2work[work_id]
                 if not work.active:
                     continue
-                work = id2work[work_id]
                 if work.parent and work.parent.id in work_effort:
                     work_effort[work.parent.id] += work_effort[work_id]
                     parents.add(work.parent.id)
