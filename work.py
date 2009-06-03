@@ -12,7 +12,10 @@ class Work(ModelSQL, ModelView):
 
     name = fields.Char('Name', required=True)
     active = fields.Boolean('Active')
-    parent = fields.Many2One('timesheet.work', 'Parent', select=2)
+    parent = fields.Many2One('timesheet.work', 'Parent', left="left",
+            right="right", select=2, ondelete="RESTRICT")
+    left = fields.Integer('Left', required=True, select=1)
+    right = fields.Integer('Right', required=True, select=1)
     children = fields.One2Many('timesheet.work', 'parent', 'Children')
     hours = fields.Function('get_hours', digits=(16, 2), string='Timesheet Hours')
     timesheet_available = fields.Boolean('Available on timesheets')
