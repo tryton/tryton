@@ -2009,10 +2009,14 @@ class ModelSQL(ModelStorage):
                 'WHERE id IN (' + ','.join(['%s' for x in child_ids]) + ')',
                 child_ids)
 
-        # Use root user to by-pass rules
-        brother_ids = self.search(cursor, 0, [
-            (field_name, '=', parent_id),
-            ])
+        if parent_id is False:
+            cursor.execute('SELECT id FROM "' + self._table + '" WHERE "' +\
+                               field_name + '" IS NULL')
+        else:
+            cursor.execute('SELECT id FROM "' + self._table + '" WHERE "' +\
+                               field_name + '" = %s', (parent_id,))
+        brother_ids = [x[0] for x in cursor.fetchall()]
+
         if brother_ids[-1] != object_id:
             next_id = brother_ids[brother_ids.index(object_id) + 1]
             cursor.execute('SELECT "' + left + '",  "' + right + '" ' \
