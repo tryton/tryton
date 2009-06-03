@@ -17,8 +17,10 @@ class Work(ModelSQL, ModelView):
     left = fields.Integer('Left', required=True, select=1)
     right = fields.Integer('Right', required=True, select=1)
     children = fields.One2Many('timesheet.work', 'parent', 'Children')
-    hours = fields.Function('get_hours', digits=(16, 2), string='Timesheet Hours')
-    timesheet_available = fields.Boolean('Available on timesheets')
+    hours = fields.Function('get_hours', digits=(16, 2),
+            string='Timesheet Hours', help="Total time spent on this work")
+    timesheet_available = fields.Boolean('Available on timesheets',
+            help="Allow to fill in timesheets with this work")
     company = fields.Many2One('company.company', 'Company', required=True)
 
     def __init__(self):
