@@ -7,6 +7,7 @@ from trytond.model.browse import EvalEnvironment
 import datetime
 import time
 from decimal import Decimal
+import logging
 
 OPERATORS = (
     'child_of',
