@@ -109,10 +109,13 @@ class Work(ModelSQL, ModelView):
         res = dict.fromkeys(ids, None)
         project_works = self.browse(cursor, user, ids, context=context)
 
-        # ptw2pw is "parent timesheet work to project work":
+        # ptw2pw is "parent timesheet work to project works":
         ptw2pw = {}
         for project_work in project_works:
-            ptw2pw[project_work.work.parent.id] = project_work.id
+            if project_work.work.parent.id in ptw2pw:
+                ptw2pw[project_work.work.parent.id].append(project_work.id)
+            else:
+                ptw2pw[project_work.work.parent.id] = [project_work.id]
 
         ctx = context and context.copy() or {}
         ctx['active_test'] = False
@@ -123,7 +126,9 @@ class Work(ModelSQL, ModelView):
                 context=context)
         for parent_project in parent_projects:
             if parent_project.work.id in ptw2pw:
-                res[ptw2pw[parent_project.work.id]] = parent_project.id
+                child_projects = ptw2pw[parent_project.work.id]
+                for child_project in child_projects:
+                    res[child_project] = parent_project.id
 
         return res
 
