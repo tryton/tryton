@@ -72,6 +72,8 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="state"/>
                         <label name="timesheet_available"/>
                         <field name="timesheet_available" xexpand="0"/>
+                            <label name="company"/>
+                            <field name="company" />
                     <notebook colspan="8">
                         <page string="General" id="general">
                             <label name="party"/>

@@ -104,6 +104,16 @@ class Work(ModelSQL, ModelView):
                  'timesheet work by task/project!'),
         ]
         self._order.insert(0, ('sequence', 'ASC'))
+        if 'company' in self._inherit_fields:
+            company_field = copy.copy(
+                self._inherit_fields['company'])
+
+            company_field[2].states={
+                'invisible': 'context.get("type", False)',
+                'readonly': '''not active'''
+            }
+
+            self._inherit_fields['company'] = company_field
 
     def get_parent(self, cursor, user, ids, name, arg, context=None):
         res = dict.fromkeys(ids, None)
