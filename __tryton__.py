@@ -28,12 +28,13 @@ Défini par employé quels services sont autorisés.
     'depends': [
         'ir',
         'project',
+        'timesheet',
         'company',
         'product',
     ],
     'xml': [
         'service.xml',
-        'timesheet.xml',
+        'work.xml',
     ],
     'translation': [
         'de_DE.csv',

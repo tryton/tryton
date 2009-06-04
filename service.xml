@@ -2,22 +2,36 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.ui.view" id="service_view_form">
-            <field name="model">project_revenue.service</field>
+        <record model="ir.ui.view" id="cost_price_view_form">
+            <field name="model">company.employee_cost_price</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Service" col="2">
+                <form string="Cost Prices" col="2">
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="cost_price"/>
+                    <field name="cost_price"/>
                     <label name="employee"/>
                     <field name="employee"/>
-                    <label name="product"/>
-                    <field name="product"/>
-                    <label name="sequence"/>
-                    <field name="sequence"/>
                 </form>
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="cost_price_view_tree">
+            <field name="model">company.employee_cost_price</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Cost Prices">
+                    <field name="date"/>
+                    <field name="cost_price"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
 
         <record model="ir.ui.view" id="employee_view_form">
             <field name="model">company.employee</field>
@@ -28,13 +42,10 @@
                     <xpath
                         expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
-                        <page string="Services" col="1" id="services">
-                            <field name="services">
-                                <tree string="Services" sequence="sequence">
-                                    <field name="sequence" tree_invisible="1"/>
-                                    <field name="product"/>
-                                </tree>
-                            </field>
+                        <page string="Cost" id="cost_prices">
+                            <label name="cost_price"/>
+                            <field name="cost_price"/>
+                            <field name="cost_prices" colspan="4"/>
                         </page>
                     </xpath>
                 </data>
