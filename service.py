@@ -1,4 +1,5 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Service"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.cacheable import Cacheable
@@ -8,7 +9,8 @@ class Employee(ModelSQL, ModelView, Cacheable):
     _name = 'company.employee'
 
     cost_price = fields.Function('get_cost_price', string='Cost Price',
-            digits="(16, currency_digits)", depends=['currency_digits'],
+            type='numeric', digits="(16, currency_digits)",
+            depends=['currency_digits'],
             help="Hourly cost price for this Employee")
     cost_prices = fields.One2Many('company.employee_cost_price', 'employee',
             'Cost Prices', help="List of hourly cost price over time")
@@ -20,54 +22,47 @@ class Employee(ModelSQL, ModelView, Cacheable):
         Return the cost price at the date given in the context or the
         current date
         '''
-        cost_price_obj = self.pool.get('company.employee_cost_price')
-        date_obj = self.pool.get('ir.date')
 
         res = {}
         if context is None:
             context = {}
-        ctx_date = context.get('date', date_obj.today(cursor, user,
-            context=context))
+        ctx_date = context.get('date', None)
 
-        # construct employee_costs which map an employee_id to an
-        # ordered list of (date, cost) and  cache results.
-        to_fetch = []
-        employee_costs = {}
         for employee_id in ids:
-            if self.get(cursor, employee_id) is None:
-                to_fetch.append(employee_id)
-                employee_costs[employee_id] = []
-            else:
-               employee_costs[employee_id] = self.get(cursor, employee_id)
-
-        cost_price_ids = cost_price_obj.search(cursor, user, [
-                ('employee', 'in', to_fetch),
-                ], order=[('date', 'ASC')])
-        cost_prices = cost_price_obj.browse(
-            cursor, user, cost_price_ids, context=context)
-
-        for cost_price in cost_prices:
-            employee_costs[cost_price.employee.id].append(
-                (cost_price.date, cost_price.cost_price))
-
-        for employee_id in to_fetch:
-            if employee_id in employee_costs:
-                self.add(cursor, employee_id, employee_costs[employee_id])
-
-        # compute the cost price for each employee at the given date
-        res = {}
-        for employee_id in ids:
-            if not employee_costs.get(employee_id):
-                res[employee_id] = 0
-                continue
-            if ctx_date < employee_costs[employee_id][0][0]:
-                res[employee_id] = 0
-                continue
-            for date, cost in employee_costs[employee_id]:
-                if date <= ctx_date:
-                    res[employee_id] = cost
-
+            res[employee_id] = self.compute_cost_price(cursor, user,
+                    employee_id, ctx_date, context=context)
         return res
+
+    def compute_cost_price(self, cursor, user, employee_id, date=None,
+            context=None):
+        date_obj = self.pool.get('ir.date')
+        cost_price_obj = self.pool.get('company.employee_cost_price')
+
+        # Get from cache employee costs or fetch them from the db
+        employee_costs = self.get(cursor, employee_id)
+        if employee_costs is None:
+            cost_price_ids = cost_price_obj.search(cursor, user, [
+                    ('employee', '=', employee_id),
+                    ], order=[('date', 'ASC')])
+            cost_prices = cost_price_obj.browse(
+                cursor, user, cost_price_ids, context=context)
+
+            employee_costs = []
+            for cost_price in cost_prices:
+                employee_costs.append(
+                    (cost_price.date, cost_price.cost_price))
+            self.add(cursor, employee_id, employee_costs)
+
+        if date is None:
+            date = date_obj.today(cursor, user, context=context)
+        # compute the cost price for the given date
+        cost = 0
+        if employee_costs and date >= employee_costs[0][0]:
+            for edate, ecost in employee_costs:
+                if date >= edate:
+                    cost = ecost
+                    break
+        return cost
 
     def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
         res = {}

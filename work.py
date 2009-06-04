@@ -2,7 +2,30 @@
 #this repository contains the full copyright notices and license terms.
 
 from trytond.model import ModelView, ModelSQL, fields
+from decimal import Decimal
 
+class TimesheetLine(ModelSQL, ModelView):
+    _name = 'timesheet.line'
+
+    def compute_cost(self, cursor, user, line, context=None):
+        employee_obj = self.pool.get('company.employee')
+        currency_obj = self.pool.get('currency.currency')
+
+        cost_price = employee_obj.compute_cost_price(cursor, user,
+                line.employee.id, date=line.date, context=context)
+
+        line_company = line.employee.company
+        work_company = line.work.company
+        if line_company.id != work_company.id and\
+                line_company.currency.id != work_company.currency.id:
+
+            cost_price = currency_obj.compute(cursor, user,
+                    line_company.currency, cost_price,
+                    work_company.currency, context=context)
+
+        return Decimal(str(line.hours)) * cost_price
+
+TimesheetLine()
 
 class Work(ModelSQL, ModelView):
     'Work Effort'
@@ -17,18 +40,18 @@ class Work(ModelSQL, ModelView):
             states={
                 'invisible': "type!= 'task'"
             }, depends=['type', 'currency_digits'])
-    revenue = fields.Function('get_revenue',
+    revenue = fields.Function('get_revenue', type='numeric',
             string='Revenue', digits="(16, currency_digits)",
             states={
                 'invisible': "type!= 'project'"
             }, depends=['type', 'currency_digits'])
-    cost_price = fields.Function('get_cost_price', string='Cost Price',
+    cost = fields.Function('get_cost', string='Cost', type='numeric',
             digits="(16, currency_digits)", depends=['currency_digits'])
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['company'])
 
-    def get_cost_price(self, cursor, user, ids, name, arg, context=None):
-        employee_obj = self.pool.get('company.employee')
+    def get_cost(self, cursor, user, ids, name, arg, context=None):
+        timesheet_line_obj = self.pool.get('timesheet.line')
         ctx = context and context.copy() or {}
 
         all_ids = self.search(cursor, user, [
@@ -43,12 +66,10 @@ class Work(ModelSQL, ModelView):
             if not work.children:
                 leafs.add(work.id)
 
-            res[work.id] = 0
+            res[work.id] = Decimal('0')
             for ts_line in work.timesheet_lines:
-                ctx['date'] = ts_line.date
-                employee = employee_obj.browse(cursor, user,
-                        ts_line.employee.id, context=ctx)
-                res[work.id] += ts_line.hours * float(employee.cost_price)
+                res[work.id] += timesheet_line_obj.compute_cost(cursor, user,
+                        ts_line, context=context)
 
         while leafs:
             parents = set()
@@ -81,9 +102,9 @@ class Work(ModelSQL, ModelView):
                 leafs.add(work.id)
 
             if work.type == 'task':
-                res[work.id] = float(work.list_price) * work.total_effort
+                res[work.id] = work.list_price * Decimal(str(work.total_effort))
             else:
-                res[work.id] = 0
+                res[work.id] = Decimal('0')
 
         while leafs:
             parents = set()

@@ -15,8 +15,8 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/field[@name=&quot;hours&quot;]" position="replace">
                         <group colspan="2" col="2" id="cost">
                             <separator string="Cost" id="cost" colspan="2"/>
-                            <label name="cost_price"/>
-                            <field name="cost_price"/>
+                            <label name="cost"/>
+                            <field name="cost"/>
                             <label name="hours"/>
                             <field name="hours" widget="float_time" float_time="company_work_time"/>
                         </group>
@@ -42,7 +42,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="product"/>
                         <field name="list_price"/>
                         <field name="revenue"/>
-                        <field name="cost_price"/>
+                        <field name="cost"/>
                     </xpath>
                 </data>
                 ]]>
@@ -59,7 +59,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="product"/>
                         <field name="list_price"/>
                         <field name="revenue"/>
-                        <field name="cost_price"/>
+                        <field name="cost"/>
                     </xpath>
                 </data>
                 ]]>
@@ -75,7 +75,7 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath expr="/tree/field[@name=&quot;total_effort&quot;]" position="after">
                         <field name="product"/>
                         <field name="list_price"/>
-                        <field name="cost_price"/>
+                        <field name="cost"/>
                     </xpath>
                 </data>
                 ]]>
@@ -90,7 +90,7 @@ this repository contains the full copyright notices and license terms. -->
                 <data>
                     <xpath expr="/tree/field[@name=&quot;total_effort&quot;]" position="after">
                         <field name="revenue"/>
-                        <field name="cost_price"/>
+                        <field name="cost"/>
                     </xpath>
                 </data>
                 ]]>
