@@ -54,7 +54,7 @@ class Employee(ModelSQL, ModelView, Cacheable):
         # compute the cost price for each employee at the given date
         res = {}
         for employee_id in ids:
-            if employee_id not in employee_costs:
+            if not employee_costs.get(employee_id):
                 res[employee_id] = 0
                 continue
             if ctx_date < employee_costs[employee_id][0][0]:
