@@ -2012,7 +2012,7 @@ class ModelSQL(ModelStorage):
         # Use root user to by-pass rules
         brother_ids = self.search(cursor, 0, [
             (field_name, '=', parent_id),
-            ])
+            ], context={'active_test': False})
         if brother_ids[-1] != object_id:
             next_id = brother_ids[brother_ids.index(object_id) + 1]
             cursor.execute('SELECT "' + left + '",  "' + right + '" ' \
