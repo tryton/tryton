@@ -13,17 +13,19 @@ class Work(ModelSQL, ModelView):
                 'invisible': "type!= 'task'"
             }, on_change=['product', 'party', 'hours', 'company'],
             depends=['type', 'party', 'hours', 'company'])
-    list_price = fields.Numeric('List Price', digits=(12, 6),
+    list_price = fields.Numeric('List Price', digits="(16, currency_digits)",
             states={
                 'invisible': "type!= 'task'"
-            }, depends=['type'])
+            }, depends=['type', 'currency_digits'])
     revenue = fields.Function('get_revenue',
-            string='Revenue', digits=(12, 6),
+            string='Revenue', digits="(16, currency_digits)",
             states={
                 'invisible': "type!= 'project'"
-            }, depends=['type'])
+            }, depends=['type', 'currency_digits'])
     cost_price = fields.Function('get_cost_price', string='Cost Price',
-            digits=(12, 6))
+            digits="(16, currency_digits)", depends=['currency_digits'])
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['company'])
 
     def get_cost_price(self, cursor, user, ids, name, arg, context=None):
         employee_obj = self.pool.get('company.employee')
@@ -99,6 +101,32 @@ class Work(ModelSQL, ModelView):
                 del res[id]
 
         return res
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for work in self.browse(cursor, user, ids, context=context):
+            res[work.id] = work.company.currency.digits
+        return res
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        company_obj = self.pool.get('company.company')
+        if vals.get('company'):
+            company = company_obj.browse(cursor, user, vals['company'],
+                    context=context)
+            return company.currency.digits
+        return 2
+
+    def default_currency_digits(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        company = None
+        if context.get('company'):
+            company = company_obj.browse(cursor, user, context['company'],
+                    context=context)
+            return company.currency.digits
+        return 2
 
     def on_change_product(self, cursor, user, ids, vals, context=None):
         product_obj = self.pool.get('product.product')

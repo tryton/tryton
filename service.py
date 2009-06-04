@@ -8,9 +8,12 @@ class Employee(ModelSQL, ModelView, Cacheable):
     _name = 'company.employee'
 
     cost_price = fields.Function('get_cost_price', string='Cost Price',
-            digits=(12, 6), help="Hourly cost price for this Employee")
+            digits="(16, currency_digits)", depends=['currency_digits'],
+            help="Hourly cost price for this Employee")
     cost_prices = fields.One2Many('company.employee_cost_price', 'employee',
             'Cost Prices', help="List of hourly cost price over time")
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['company'])
 
     def get_cost_price(self, cursor, user, ids, name, arg, context=None):
         '''
@@ -66,6 +69,32 @@ class Employee(ModelSQL, ModelView, Cacheable):
 
         return res
 
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for employee in self.browse(cursor, user, ids, context=context):
+            res[employee.id] = employee.company.currency.digits
+        return res
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        company_obj = self.pool.get('company.company')
+        if vals.get('company'):
+            company = company_obj.browse(cursor, user, vals['company'],
+                    context=context)
+            return company.currency.digits
+        return 2
+
+    def default_currency_digits(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        company = None
+        if context.get('company'):
+            company = company_obj.browse(cursor, user, context['company'],
+                    context=context)
+            return company.currency.digits
+        return 2
+
 Employee()
 
 
@@ -75,9 +104,12 @@ class EmployeeCostPrice(ModelSQL, ModelView):
     _description = __doc__
     _rec_name = 'date'
     date = fields.Date('Date', required=True, select=1)
-    cost_price = fields.Numeric('Cost Price', digits=(12, 6), required=True,
+    cost_price = fields.Numeric('Cost Price', digits="(16, currency_digits)",
+            required=True, depends=['currency_digits'],
             help="Hourly cost price")
     employee = fields.Many2One('company.employee', 'Employee')
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['employee'])
 
     def __init__(self):
         super(EmployeeCostPrice, self).__init__()
@@ -105,5 +137,31 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         self.pool.get('company.employee').clear(cursor)
         return super(EmployeeCostPrice , self).write(cursor, user, ids, vals,
                 context=context)
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for costprice in self.browse(cursor, user, ids, context=context):
+            res[costprice.id] = costprice.employee.company.currency.digits
+        return res
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        company_obj = self.pool.get('company.employee')
+        if vals.get('employee'):
+            employee = employee_obj.browse(cursor, user, vals['employee'],
+                    context=context)
+            return employee.company.currency.digits
+        return 2
+
+    def default_currency_digits(self, cursor, user, context=None):
+        company_obj = self.pool.get('company.company')
+        if context is None:
+            context = {}
+        company = None
+        if context.get('company'):
+            company = company_obj.browse(cursor, user, context['company'],
+                    context=context)
+            return company.currency.digits
+        return 2
 
 EmployeeCostPrice()
