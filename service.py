@@ -91,10 +91,6 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         date_obj = self.pool.get('ir.date')
         return date_obj.today(cursor, user, context=context)
 
-    def check_xml_record(self, cursor, user, ids, values, context=None):
-        return True
-
-
     def delete(self, cursor, user, ids, context=None):
         self.pool.get('company.employee').clear(cursor)
         return super(EmployeeCostPrice , self).delete(cursor, user, ids,
