@@ -390,7 +390,7 @@ class TaxTemplate(ModelSQL, ModelView):
     description = fields.Char('Description', required=True, translate=True)
     group = fields.Many2One('account.tax.group', 'Group')
     sequence = fields.Integer('Sequence')
-    amount = fields.Numeric('Amount', digits=(16, 2))
+    amount = fields.Numeric('Amount', digits=(16, 8))
     percentage = fields.Numeric('Percentage', digits=(16, 8))
     type = fields.Selection([
         ('percentage', 'Percentage'),
@@ -595,10 +595,12 @@ class Tax(ModelSQL, ModelView):
     active = fields.Boolean('Active')
     sequence = fields.Integer('Sequence',
             help='Use to order the taxes')
-    amount = fields.Numeric('Amount', digits=(16, 2),
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['company'])
+    amount = fields.Numeric('Amount', digits="(16, currency_digits)",
             states={
                 'invisible': "type != 'fixed'",
-            }, help='In company\'s currency', depends=['type'])
+            }, help='In company\'s currency', depends=['type', 'currency_digits'])
     percentage = fields.Numeric('Percentage', digits=(16, 8),
             states={
                 'invisible': "type != 'percentage'",
@@ -706,6 +708,21 @@ class Tax(ModelSQL, ModelView):
         if context.get('company'):
             return context['company']
         return False
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        company_obj = self.pool.get('company.company')
+        if vals.get('company'):
+            company = company_obj.browse(cursor, user, vals['company'],
+                    context=context)
+            return company.currency.digits
+        return 2
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for tax in self.browse(cursor, user, ids, context=context):
+            res[tax.id] = tax.company.currency.digits
+        return res
 
     def _process_tax(self, cursor, user, tax, price_unit, context=None):
         if tax.type == 'percentage':
@@ -906,10 +923,28 @@ class Line(ModelSQL, ModelView):
     _description = __doc__
     _rec_name = 'amount'
 
-    amount = fields.Numeric('Amount', digits=(16, 2))
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['move_line'])
+    amount = fields.Numeric('Amount', digits="(16, currency_digits)",
+            depends=['currency_digits'])
     code = fields.Many2One('account.tax.code', 'Code', select=1, required=True)
     move_line = fields.Many2One('account.move.line', 'Move Line',
             required=True, select=1, ondelete='CASCADE')
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        move_line_obj = self.pool.get('account.move.line')
+        if vals.get('move_line'):
+            move_line = move_line_obj.browse(cursor, user, vals['move_line'],
+                    context=context)
+            return move_line.currency_digits
+        return 2
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            res[line.id] = line.move_line.currency_digits
+        return res
 
 Line()
 
