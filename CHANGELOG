@@ -1,3 +1,5 @@
+* Fix digits of start and end balance
+
 Version 1.2.0 - 2009-04-20
 * Bug fixes (see mercurial logs for details)
 

@@ -19,9 +19,10 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['journal'])
     date = fields.Date('Date', required=True, states=_STATES, select=1)
-    start_balance = fields.Numeric('Start Balance', digits=(16, 2),
-            states=_STATES)
-    end_balance = fields.Numeric('End Balance', digits=(16, 2), states=_STATES)
+    start_balance = fields.Numeric('Start Balance', digits="(16, currency_digits)",
+            states=_STATES, depends=['currency_digits'])
+    end_balance = fields.Numeric('End Balance', digits="(16, currency_digits)",
+            states=_STATES, depends=['currency_digits'])
     lines = fields.One2Many('account.statement.line', 'statement',
             'Transactions', states={
                 'readonly': "(state != 'draft') or (not bool(journal))",
