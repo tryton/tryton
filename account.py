@@ -141,16 +141,22 @@ class Account(OSV):
         line_query = line_obj.query_get(cursor, user, context=context)
         cursor.execute('SELECT a.id, ' \
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))), ' \
-                    'l.currency ' \
+                    'c.currency ' \
                 'FROM analytic_account_account a ' \
                     'LEFT JOIN analytic_account_line l ' \
                     'ON (a.id = l.account) ' \
+                    'LEFT JOIN account_move_line ml ' \
+                    'ON (ml.id = l.move_line) ' \
+                    'LEFT JOIN account_account aa ' \
+                    'ON (aa.id = ml.account) ' \
+                    'LEFT JOIN company_company c ' \
+                    'ON (c.id = aa.company) ' \
                 'WHERE a.type != \'view\' ' \
                     'AND a.id IN (' + \
                         ','.join(['%s' for x in all_ids]) + ') ' \
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
-                'GROUP BY a.id, l.currency', all_ids)
+                'GROUP BY a.id, c.currency', all_ids)
         account_sum = {}
         id2currency = {}
         for account_id, sum, currency_id in cursor.fetchall():
@@ -204,16 +210,22 @@ class Account(OSV):
         line_query = line_obj.query_get(cursor, user, context=context)
         cursor.execute('SELECT a.id, ' \
                     'SUM(COALESCE(l.' + name + ', 0)), ' \
-                    'l.currency ' \
+                    'c.currency ' \
                 'FROM analytic_account_account a ' \
                     'LEFT JOIN analytic_account_line l ' \
                     'ON (a.id = l.account) ' \
+                    'LEFT JOIN account_move_line ml ' \
+                    'ON (ml.id = l.move_line) ' \
+                    'LEFT JOIN account_account aa ' \
+                    'ON (aa.id = ml.account) ' \
+                    'LEFT JOIN company_company c ' \
+                    'ON (c.id = aa.company) ' \
                 'WHERE a.type != \'view\' ' \
                     'AND a.id IN (' + \
                         ','.join(['%s' for x in ids]) + ') ' \
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
-                'GROUP BY a.id, l.currency', ids)
+                'GROUP BY a.id, c.currency', ids)
 
         id2currency = {}
         for account_id, sum, currency_id in cursor.fetchall():
