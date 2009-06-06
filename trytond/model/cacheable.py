@@ -13,6 +13,7 @@ class Cacheable(object):
         self._max_len = 1024
         self._timeout = 3600
         self._lock = Lock()
+        self._timestamp = None
         Cache._cache_instance.append(self)
 
     def add(self, cursor, key, value):
