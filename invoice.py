@@ -192,7 +192,6 @@ class InvoiceLine(ModelSQL, ModelView):
                 vals['name'] = line.description
                 vals['debit'] = res['debit']
                 vals['credit'] = res['credit']
-                vals['currency'] = line.invoice.currency.id
                 vals['account'] = account.id
                 vals['journal'] = line.invoice.journal.id
                 vals['date'] = line.invoice.invoice_date
