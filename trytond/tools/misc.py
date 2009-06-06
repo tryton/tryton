@@ -248,7 +248,7 @@ class Cache(object):
         self.max_len = max_len
         self._cache = {}
         self._cache_instance.append(self)
-        self.name = name
+        self._name = name
         self.timestamp = None
         self.lock = Lock()
 
@@ -259,7 +259,7 @@ class Cache(object):
             result = None
             find = False
             if isinstance(cursor, basestring):
-                Cache.reset(cursor, self.name)
+                Cache.reset(cursor, self._name)
                 self.lock.acquire()
                 try:
                     self._cache[cursor] = {}
@@ -340,9 +340,9 @@ class Cache(object):
             cursor.commit()
             cursor.close()
         for obj in Cache._cache_instance:
-            if obj.name in timestamps:
-                if not obj.timestamp or timestamps[obj.name] > obj.timestamp:
-                    obj.timestamp = timestamps[obj.name]
+            if obj._name in timestamps:
+                if not obj.timestamp or timestamps[obj._name] > obj.timestamp:
+                    obj.timestamp = timestamps[obj._name]
                     obj.lock.acquire()
                     try:
                         obj._cache[dbname] = {}
