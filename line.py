@@ -4,6 +4,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 import mx.DateTime
+from trytond.backend import TableHandler
 
 
 class Line(ModelSQL, ModelView):
@@ -12,10 +13,15 @@ class Line(ModelSQL, ModelView):
     _description = __doc__
 
     name = fields.Char('Name', required=True)
-    debit = fields.Numeric('Debit', digits=(16, 2))
-    credit = fields.Numeric('Credit', digits=(16, 2))
-    #TODO wrong field as currency comes from move_line
-    currency = fields.Many2One('currency.currency', 'Currency', required=True)
+    debit = fields.Numeric('Debit', digits="(16, currency_digits)",
+            depends=['currency_digits'])
+    credit = fields.Numeric('Credit', digits="(16, currency_digits)",
+            depends=['currency_digits'])
+    currency = fields.Function('get_currency', type='many2one',
+            relation='currency.currency', string='Currency',
+            on_change_with=['move_line'])
+    currency_digits = fields.Function('get_currency_digits', type='integer',
+            string='Currency Digits', on_change_with=['move_line'])
     account = fields.Many2One('analytic_account.account', 'Account',
             required=True, select=1, domain=[('type', '!=', 'view')])
     move_line = fields.Many2One('account.move.line', 'Account Move Line',
@@ -43,16 +49,12 @@ class Line(ModelSQL, ModelView):
         })
         self._order.insert(0, ('date', 'ASC'))
 
-    def default_currency(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('currency.currency')
-        if context is None:
-            context = {}
-        if context.get('company'):
-            company = company_obj.browse(cursor, user, context['company'],
-                    context=context)
-            return company.currency.id
-        return False
+    def init(self, cursor, module_name):
+        super(Line, self).init(cursor, module_name)
+        table = TableHandler(cursor, self, module_name)
+
+        # Migration from 1.2 currency has been changed in function field
+        table.not_null_action('currency', action='remove')
 
     def default_date(self, cursor, user, context=None):
         date_obj = self.pool.get('ir.date')
@@ -60,6 +62,36 @@ class Line(ModelSQL, ModelView):
 
     def default_active(self, cursor, user, context=None):
         return True
+
+    def on_change_with_currency(self, cursor, user, ids, vals,
+            context=None):
+        move_line_obj = self.pool.get('account.move.line')
+        if vals.get('move_line'):
+            move_line = move_line_obj.browse(cursor, user, vals['move_line'],
+                    context=context)
+            return move_line.account.company.currency.id
+        return False
+
+    def get_currency(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            res[line.id] = line.move_line.account.company.currency.id
+        return res
+
+    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+            context=None):
+        move_line_obj = self.pool.get('account.move.line')
+        if vals.get('move_line'):
+            move_line = move_line_obj.browse(cursor, user, vals['move_line'],
+                    context=context)
+            return move_line.account.company.currency.digits
+        return 2
+
+    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            res[line.id] = line.move_line.account.company.currency.digits
+        return res
 
     def query_get(self, cursor, user, obj='l', context=None):
         '''

@@ -1,3 +1,5 @@
+* Convert currency on line into Function field
+* Use digits of currency for debit and credit
 * Use the right currency to compute  balance, debit/credit of accounts
 
 Version 1.2.0 - 2009-04-20
