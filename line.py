@@ -14,6 +14,7 @@ class Line(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     debit = fields.Numeric('Debit', digits=(16, 2))
     credit = fields.Numeric('Credit', digits=(16, 2))
+    #TODO wrong field as currency comes from move_line
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     account = fields.Many2One('analytic_account.account', 'Account',
             required=True, select=1, domain=[('type', '!=', 'view')])
