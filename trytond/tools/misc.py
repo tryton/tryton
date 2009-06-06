@@ -245,8 +245,8 @@ class Cache(object):
         self._cache = {}
         self._cache_instance.append(self)
         self._name = name
-        self.timestamp = None
-        self.lock = Lock()
+        self._timestamp = None
+        self._lock = Lock()
 
     def __call__(self, function):
         arg_names = inspect.getargspec(function)[0][2:]
@@ -255,25 +255,25 @@ class Cache(object):
             result = None
             if isinstance(cursor, basestring):
                 Cache.reset(cursor, self._name)
-                self.lock.acquire()
+                self._lock.acquire()
                 try:
                     self._cache[cursor] = {}
                 finally:
-                    self.lock.release()
+                    self._lock.release()
                 return True
             # Update named arguments with positional argument values
             kwargs.update(dict(zip(arg_names, args)))
             kwargs = kwargs.items()
             kwargs.sort()
 
-            self.lock.acquire()
+            self._lock.acquire()
             try:
                 self._cache.setdefault(cursor.dbname, {})
             finally:
-                self.lock.release()
+                self._lock.release()
 
             lower = None
-            self.lock.acquire()
+            self._lock.acquire()
             try:
                 if len(self._cache[cursor.dbname]) > self.max_len:
                     mintime = time.time() - self.timeout
@@ -287,13 +287,13 @@ class Cache(object):
                 if len(self._cache[cursor.dbname]) > self.max_len and lower:
                     del self._cache[cursor.dbname][lower[0]]
             finally:
-                self.lock.release()
+                self._lock.release()
 
             # Work out key as a tuple
             key = (id(self2), repr(kwargs))
 
             # Check cache and return cached value if possible
-            self.lock.acquire()
+            self._lock.acquire()
             try:
                 if key in self._cache[cursor.dbname]:
                     (value, last_time) = self._cache[cursor.dbname][key]
@@ -301,18 +301,18 @@ class Cache(object):
                     if self.timeout <= 0 or mintime <= last_time:
                         result = value
             finally:
-                self.lock.release()
+                self._lock.release()
 
             if not result:
                 # Work out new value, cache it and return it
                 # Should copy() this value to avoid futur modf of the cacle ?
                 result = function(self2, cursor, **dict(kwargs))
 
-                self.lock.acquire()
+                self._lock.acquire()
                 try:
                     self._cache[cursor.dbname][key] = (result, time.time())
                 finally:
-                    self.lock.release()
+                    self._lock.release()
             return result
 
         return cached_result
@@ -332,13 +332,13 @@ class Cache(object):
             cursor.close()
         for obj in Cache._cache_instance:
             if obj._name in timestamps:
-                if not obj.timestamp or timestamps[obj._name] > obj.timestamp:
-                    obj.timestamp = timestamps[obj._name]
-                    obj.lock.acquire()
+                if not obj._timestamp or timestamps[obj._name] > obj._timestamp:
+                    obj._timestamp = timestamps[obj._name]
+                    obj._lock.acquire()
                     try:
                         obj._cache[dbname] = {}
                     finally:
-                        obj.lock.release()
+                        obj._lock.release()
 
     @staticmethod
     def reset(dbname, name):
