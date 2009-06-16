@@ -43,6 +43,7 @@ class Country(ModelSQL, ModelView):
 
     def create(self, cursor, user, vals, context=None):
         if 'code' in vals and vals['code']:
+            vals = vals.copy()
             vals['code'] = vals['code'].upper()
         new_id = super(Country, self).create(cursor, user, vals, context=context)
         if 'module' in context:
@@ -55,6 +56,7 @@ class Country(ModelSQL, ModelView):
 
     def write(self, cursor, user, ids, vals, context=None):
         if 'code' in vals and vals['code']:
+            vals = vals.copy()
             vals['code'] = vals['code'].upper()
         return super(Country, self).write(cursor, user, ids, vals,
                 context=context)
