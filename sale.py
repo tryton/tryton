@@ -301,6 +301,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     def on_change_lines(self, cursor, user, ids, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         tax_obj = self.pool.get('account.tax')
+        invoice_obj = self.pool.get('account.invoice')
 
         if context is None:
             context = {}
@@ -320,6 +321,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             ctx = context.copy()
             ctx.update(self.get_tax_context(cursor, user, vals,
                 context=context))
+            taxes = {}
             for line in vals['lines']:
                 if line.get('type', 'line') != 'line':
                     continue
@@ -328,7 +330,16 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 for tax in tax_obj.compute(cursor, user, line.get('taxes', []),
                         line.get('unit_price', Decimal('0.0')),
                         line.get('quantity', 0.0), context=context):
-                    res['tax_amount'] += tax['amount']
+                    key, val = invoice_obj._compute_tax(cursor, user, tax,
+                            'out_invoice', context=context)
+                    if not key in taxes:
+                        taxes[key] = val['amount']
+                    else:
+                        taxes[key] += val['amount']
+            if currency:
+                for key in taxes:
+                    res['tax_amount'] += currency_obj.round(cursor, user,
+                            currency, taxes[key])
         if currency:
             res['untaxed_amount'] = currency_obj.round(cursor, user, currency,
                     res['untaxed_amount'])
@@ -425,6 +436,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         '''
         currency_obj = self.pool.get('currency.currency')
         tax_obj = self.pool.get('account.tax')
+        invoice_obj = self.pool.get('account.invoice')
+
         if context is None:
             context = {}
         res = {}
@@ -433,6 +446,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             ctx.update(self.get_tax_context(cursor, user, sale,
                 context=context))
             res.setdefault(sale.id, Decimal('0.0'))
+            taxes = {}
             for line in sale.lines:
                 if line.type != 'line':
                     continue
@@ -440,7 +454,15 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 for tax in tax_obj.compute(cursor, user,
                         [t.id for t in line.taxes], line.unit_price,
                         line.quantity, context=ctx):
-                    res[sale.id] += tax['amount']
+                    key, val = invoice_obj._compute_tax(cursor, user, tax,
+                            'out_invoice', context=context)
+                    if not key in taxes:
+                        taxes[key] = val['amount']
+                    else:
+                        taxes[key] += val['amount']
+            for key in taxes:
+                res[sale.id] += currency_obj.round(cursor, user,
+                        sale.currency, taxes[key])
             res[sale.id] = currency_obj.round(cursor, user, sale.currency,
                     res[sale.id])
         return res
