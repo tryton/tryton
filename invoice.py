@@ -344,6 +344,11 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     else:
                         computed_taxes[key]['base'] += val['base']
                         computed_taxes[key]['amount'] += val['amount']
+        if currency:
+            for key in computed_taxes:
+                for field in ('base', 'amount'):
+                    computed_taxes[key][field] = currency_obj.round(cursor,
+                            user, currency, computed_taxes[key][field])
         tax_keys = []
         for tax in vals.get('taxes', []):
             if tax.get('manual', False):
@@ -684,6 +689,10 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 else:
                     res[key]['base'] += val['base']
                     res[key]['amount'] += val['amount']
+        for key in res:
+            for field in ('base', 'amount'):
+                res[key][field] = currency_obj.round(cursor,
+                        user, invoice.currency, res[key][field])
         return res
 
     def update_taxes(self, cursor, user, ids, context=None, exception=False):
