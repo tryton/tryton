@@ -296,6 +296,7 @@ class InventoryLine(ModelSQL, ModelView):
             'uom': line.uom.id,
             'company': line.inventory.company.id,
             'state': 'done',
+            'effective_date': line.inventory.date,
             }, context=context)
         self.write(cursor, user, line.id, {'move': move_id}, context=context)
 
