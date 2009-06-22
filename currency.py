@@ -4,6 +4,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 import time
 from decimal import Decimal
+import datetime
 
 
 class Currency(ModelSQL, ModelView):
@@ -13,7 +14,8 @@ class Currency(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
     symbol = fields.Char('Symbol', size=10, required=True)
     code = fields.Char('Code', size=3, required=True)
-    rate = fields.Function('get_rate', string='Current rate', digits=(12, 6))
+    rate = fields.Function('get_rate', type='numeric', string='Current rate',
+            digits=(12, 6), on_change_with=['rates'])
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates')
     rounding = fields.Numeric('Rounding factor', digits=(12, 6), required=True)
     digits = fields.Integer('Diplay Digits')
@@ -114,6 +116,18 @@ class Currency(ModelSQL, ModelView):
                 args2.append((self._rec_name, args[i][1], args[i][2]))
             i += 1
         return args2
+
+    def on_change_with_rate(self, cursor, user, ids, vals, context=None):
+        now = datetime.date.today()
+        closer = datetime.date.min
+        res = Decimal('0.0')
+        for rate in vals.get('rates', []):
+            if 'date' not in rate or 'rate' not in rate:
+                continue
+            if rate['date'] <= now and rate['date'] > closer:
+                res = rate['rate']
+                closer = rate['date']
+        return res
 
     def get_rate(self, cursor, user, ids, name, arg, context=None):
         '''
