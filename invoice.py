@@ -2077,12 +2077,18 @@ class InvoiceReport(Report):
     _name = 'account.invoice'
 
     def execute(self, cursor, user, ids, datas, context=None):
+        invoice_obj = self.pool.get('account.invoice')
+
         if context is None:
             context = {}
         res = super(InvoiceReport, self).execute(cursor, user, ids, datas,
                 context=context)
         if len(ids) > 1 or datas['id'] != ids[0]:
             res = (res[0], res[1], True, res[3])
+        else:
+            invoice = invoice_obj.browse(cursor, user, ids[0], context=context)
+            if invoice.number:
+                res = (res[0], res[1], res[2], res[3] + ' - ' + invoice.number)
         return res
 
     def _get_objects(self, cursor, user_id, ids, model, datas, context):
