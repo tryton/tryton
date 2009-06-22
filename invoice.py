@@ -2082,7 +2082,7 @@ class InvoiceReport(Report):
         res = super(InvoiceReport, self).execute(cursor, user, ids, datas,
                 context=context)
         if len(ids) > 1 or datas['id'] != ids[0]:
-            res = (res[0], res[1], True)
+            res = (res[0], res[1], True, res[3])
         return res
 
     def _get_objects(self, cursor, user_id, ids, model, datas, context):
