@@ -11,7 +11,7 @@ class Line(ModelSQL, ModelView):
     _description = __doc__
 
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-            select=1, domain="[('company', '=', company)]")
+            select=1, domain=["('company', '=', company)"])
     date = fields.Date('Date', required=True, select=1)
     hours = fields.Float('Hours', digits=(16, 2), required=True)
     work = fields.Many2One('timesheet.work', 'Work',
@@ -70,7 +70,7 @@ class EnterLinesInit(ModelView):
     _name = 'timesheet.enter_lines.init'
     _description = __doc__
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-            domain="[('company', '=', company)]")
+            domain=["('company', '=', company)"])
     date = fields.Date('Date', required=True)
 
     def default_employee(self, cursor, user, context=None):
