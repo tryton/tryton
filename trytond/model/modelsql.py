@@ -1612,7 +1612,7 @@ class ModelSQL(ModelStorage):
                                             '"%s".%s = false)' % \
                                             (table._table, arg[0])
                                 else:
-                                    qu1[-1] = '(' + qu1[-1] + ' OR ' \
+                                    qu1[-1] = '(' + qu1[-1] + ' AND ' \
                                             '"%s".%s != false)' % \
                                             (table._table, arg[0])
                             else:
@@ -1621,7 +1621,7 @@ class ModelSQL(ModelStorage):
                                             '"%s".%s IS NULL)' % \
                                             (table._table, arg[0])
                                 else:
-                                    qu1[-1] = '(' + qu1[-1] + ' OR ' \
+                                    qu1[-1] = '(' + qu1[-1] + ' AND ' \
                                             '"%s".%s IS NOT NULL)' % \
                                             (table._table, arg[0])
                         qu2 += arg2
