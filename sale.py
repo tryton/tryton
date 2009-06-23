@@ -17,7 +17,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
             states={
                 'readonly': "state != 'draft' or bool(lines)",
-            }, domain="[('id', '=', context.get('company', 0))]")
+            }, domain=["('id', '=', context.get('company', 0))"])
     reference = fields.Char('Reference', readonly=True, select=1)
     description = fields.Char('Description', states={
         'readonly': "state != 'draft'",
@@ -43,11 +43,11 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     party_lang = fields.Function('get_function_fields', type='char',
             string='Party Language', on_change_with=['party'])
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
-            domain="[('party', '=', party)]", states={
+            domain=["('party', '=', party)"], states={
                 'readonly': "state != 'draft'",
             })
     packing_address = fields.Many2One('party.address', 'Shipment Address',
-            domain="[('party', '=', party)]", states={
+            domain=["('party', '=', party)"], states={
                 'readonly': "state != 'draft'",
             })
     warehouse = fields.Many2One('stock.location', 'Warehouse',
@@ -933,8 +933,8 @@ class SaleLine(ModelSQL, ModelView):
                 'required': "product",
                 'invisible': "type != 'line'",
                 'readonly': "not globals().get('_parent_sale')",
-            }, domain="[('category', '=', " \
-                    "(product, 'product.default_uom.category'))]",
+            }, domain=["('category', '=', " \
+                    "(product, 'product.default_uom.category'))"],
             context="{'category': (product, 'product.default_uom.category')}",
             on_change=['product', 'quantity', 'unit', '_parent_sale.currency',
                 '_parent_sale.party'])
@@ -1411,8 +1411,7 @@ class Template(ModelSQL, ModelView):
         'readonly': "active == False",
         'invisible': "not salable",
         'required': "salable",
-        }, domain="[('category', '=', " \
-                "(default_uom, 'uom.category'))]",
+        }, domain=["('category', '=', (default_uom, 'uom.category'))"],
         context="{'category': (default_uom, 'uom.category')}",
         on_change_with=['default_uom', 'sale_uom', 'salable'])
 
@@ -1770,7 +1769,7 @@ class HandlePackingExceptionAsk(ModelView):
 
     recreate_moves = fields.Many2Many(
         'stock.move', None, None, 'Recreate Moves',
-        domain="[('id', 'in', domain_moves)]", depends=['domain_moves'])
+        domain=["('id', 'in', domain_moves)"], depends=['domain_moves'])
     domain_moves = fields.Many2Many(
         'stock.move', None, None, 'Domain Moves')
 
@@ -1866,7 +1865,7 @@ class HandleInvoiceExceptionAsk(ModelView):
 
     recreate_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Recreate Invoices',
-        domain="[('id', 'in', domain_invoices)]", depends=['domain_invoices'],
+        domain=["('id', 'in', domain_invoices)"], depends=['domain_invoices'],
         help='The selected invoices will be recreated. '\
             'The other ones will be ignored.')
     domain_invoices = fields.Many2Many(
