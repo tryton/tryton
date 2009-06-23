@@ -8,13 +8,13 @@ class Category(ModelSQL, ModelView):
 
     account_expense = fields.Property(type='many2one',
             relation='account.account', string='Account Expense',
-            domain="[('kind', '=', 'expense'), ('company', '=', company)]",
+            domain=[('kind', '=', 'expense'), "('company', '=', company)"],
             states={
                 'invisible': "not company",
             })
     account_revenue = fields.Property(type='many2one',
             relation='account.account', string='Account Revenue',
-            domain="[('kind', '=', 'revenue'), ('company', '=', company)]",
+            domain=[('kind', '=', 'revenue'), "('company', '=', company)"],
             states={
                 'invisible': "not company",
             })
@@ -59,7 +59,7 @@ class Template(ModelSQL, ModelView):
             help='Use the accounts defined on the category')
     account_expense = fields.Property(type='many2one',
             string='Account Expense', relation='account.account',
-            domain="[('kind', '=', 'expense'), ('company', '=', company)]",
+            domain=[('kind', '=', 'expense'), "('company', '=', company)"],
             states={
                 'invisible': "not bool(company) or bool(account_category)",
                 'required': "not bool(account_category)",
@@ -67,7 +67,7 @@ class Template(ModelSQL, ModelView):
                     'on the category.', depends=['account_category'])
     account_revenue = fields.Property(type='many2one',
             string='Account Revenue', relation='account.account',
-            domain="[('kind', '=', 'revenue'), ('company', '=', company)]",
+            domain=[('kind', '=', 'revenue'), "('company', '=', company)"],
             states={
                 'invisible': "not bool(company) or bool(account_category)",
                 'required': "not bool(account_category)",
