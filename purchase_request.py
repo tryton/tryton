@@ -30,7 +30,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         'get_purchase', type='many2one', relation='purchase.purchase',
         string='Purchase')
     company = fields.Many2One('company.company', 'Company', required=True,
-            readonly=True, domain="[('id', '=', context.get('company', 0))]")
+            readonly=True, domain=["('id', '=', context.get('company', 0))"])
     origin = fields.Reference('Origin', selection='origin_get', readonly=True,
             required=True)
     state = fields.Function(

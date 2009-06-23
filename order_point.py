@@ -15,17 +15,17 @@ class OrderPoint(ModelSQL, ModelView):
 
     product = fields.Many2One(
         'product.product', 'Product', required=True, select=1,
-        domain="[('type', '=', 'stockable'), ('purchasable', 'in', " \
-                "type == 'purchase' and [True] or [True, False])]",
+        domain=[('type', '=', 'stockable'), "('purchasable', 'in', " \
+                "type == 'purchase' and [True] or [True, False])"],
         on_change=['product'])
     warehouse_location = fields.Many2One(
         'stock.location', 'Warehouse Location', select=1,
-        domain="[('type', '=', 'warehouse')]",
+        domain=[('type', '=', 'warehouse')],
         states={'invisible': "type != 'purchase'",
                 'required': "type == 'purchase'"},)
     storage_location = fields.Many2One(
         'stock.location', 'Storage Location', select=1,
-        domain="[('type', '=', 'storage')]",
+        domain=[('type', '=', 'storage')],
         states={'invisible': "type != 'internal'",
                 'required': "type == 'internal'"},)
     location = fields.Function(
@@ -33,7 +33,7 @@ class OrderPoint(ModelSQL, ModelView):
         fnct_search='search_location', string='Location')
     provisioning_location = fields.Many2One(
         'stock.location', 'Provisioning Location',
-        domain="[('type', '=', 'storage')]",
+        domain=[('type', '=', 'storage')],
         states={'invisible': "type != 'internal'",
                 'required': "type == 'internal'"},)
     type = fields.Selection(
@@ -45,7 +45,7 @@ class OrderPoint(ModelSQL, ModelView):
     max_quantity = fields.Float('Maximal Quantity', required=True,
             digits="(16, unit_digits)", depends=['unit_digits'])
     company = fields.Many2One('company.company', 'Company', required=True,
-            domain="[('id', '=', context.get('company', 0))]")
+            domain=["('id', '=', context.get('company', 0))"])
     unit = fields.Function('get_unit', type='many2one', relation='product.uom',
             string='Unit')
     unit_digits = fields.Function('get_unit_digits', type='integer',
