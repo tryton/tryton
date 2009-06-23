@@ -91,8 +91,8 @@ class Address(ModelSQL, ModelView):
         i = 0
         while i < len(args):
             ids = self.search(cursor, user, ['OR',
-                ('zip', '=', args[i][2]),
-                ('city', '=', args[i][2]),
+                ('zip', args[i][1], args[i][2]),
+                ('city', args[i][1], args[i][2]),
                 ('name', args[i][1], args[i][2]),
                 ], context=context)
             if ids:
