@@ -71,9 +71,6 @@ class Work(ModelSQL, ModelView):
             }, depends=['type'], help="Estimated Effort for this work")
     total_effort = fields.Function('get_total_effort', type='float',
             string='Total Effort',
-            states={
-                'invisible': "type != 'project'"
-            }, depends=['type'],
             help="Estimated total effort for this work and the sub-works")
     comment = fields.Text('Comment')
     parent = fields.Function('get_parent', fnct_inv='set_parent',
