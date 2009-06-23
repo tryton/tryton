@@ -59,9 +59,7 @@ class Work(ModelSQL, ModelView):
                 'invisible': "type!= 'project'"
             }, depends=['type'])
     party_address = fields.Many2One('party.address', 'Contact Address',
-            domain="["\
-                "('party', '=', party)"\
-            "]",
+            domain=["('party', '=', party)"],
             states={
                 'invisible': "type != 'project'"
             }, depends=['party', 'type'])
