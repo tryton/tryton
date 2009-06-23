@@ -25,7 +25,7 @@ class Address(ModelSQL, ModelView):
     country = fields.Many2One('country.country', 'Country',
             states=STATES)
     subdivision = fields.Many2One("country.subdivision",
-            'Subdivision', domain="[('country', '=', country)]", states=STATES)
+            'Subdivision', domain=["('country', '=', country)"], states=STATES)
     active = fields.Boolean('Active')
     sequence = fields.Integer("Sequence")
     full_address = fields.Function('get_full_address', type='text')
