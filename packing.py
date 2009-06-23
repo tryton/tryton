@@ -31,7 +31,7 @@ class PackingIn(ModelWorkflow, ModelSQL, ModelView):
     contact_address = fields.Many2One('party.address', 'Contact Address',
             states={
                 'readonly': "state != 'draft'",
-            }, domain="[('party', '=', supplier)]")
+            }, domain=["('party', '=', supplier)"])
     warehouse = fields.Many2One('stock.location', "Warehouse",
             required=True, domain=[('type', '=', 'warehouse')],
             states={
@@ -469,7 +469,7 @@ class PackingOut(ModelWorkflow, ModelSQL, ModelView):
             'Delivery Address', required=True,
             states={
                 'readonly': "state != 'draft'",
-            }, domain="[('party', '=', customer)]")
+            }, domain=["('party', '=', customer)"])
     reference = fields.Char("Reference", size=None, select=1,
             states={
                 'readonly': "state != 'draft'",
@@ -859,7 +859,7 @@ class PackingOutReturn(ModelWorkflow, ModelSQL, ModelView):
             'Delivery Address', required=True,
             states={
                 'readonly': "state != 'draft'",
-            }, domain="[('party', '=', customer)]")
+            }, domain=["('party', '=', customer)"])
     reference = fields.Char("Reference", size=None, select=1,
             states={
                 'readonly': "state != 'draft'",
@@ -1205,13 +1205,13 @@ class PackingInternal(ModelWorkflow, ModelSQL, ModelView):
     from_location = fields.Many2One(
         'stock.location', "From Location", required=True,
         states={ 'readonly': "state != 'draft' or bool(moves)", },
-        domain="[('type', 'not in', " \
-                    "('supplier', 'customer', 'warehouse', 'view'))]")
+        domain=["('type', 'not in', " \
+                    "('supplier', 'customer', 'warehouse', 'view'))"])
     to_location = fields.Many2One('stock.location', "To Location",
             required=True, states={
                 'readonly': "state != 'draft' or bool(moves)",
-            }, domain="[('type', 'not in', " \
-                    "('supplier', 'customer', 'warehouse', 'view'))]")
+            }, domain=["('type', 'not in', " \
+                    "('supplier', 'customer', 'warehouse', 'view'))"])
     moves = fields.One2Many(
         'stock.move', 'packing_internal', 'Moves',
         states={'readonly': "state != 'draft' or "\

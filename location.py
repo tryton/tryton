@@ -44,27 +44,30 @@ class Location(ModelSQL, ModelView):
             'readonly': "not active",
             'required': "type == 'warehouse'",
         },
-        domain="[('type','=','storage'), ['OR', " \
-                "('parent', 'child_of', [active_id]), " \
-                "('parent', '=', False)]]")
+        domain=["('type','=','storage')",
+            ['OR',
+                "('parent', 'child_of', [active_id])",
+                "('parent', '=', False)"]])
     output_location = fields.Many2One(
         "stock.location", "Output", states={
             'invisible': "type != 'warehouse'",
             'readonly': "not active",
             'required': "type == 'warehouse'",
         },
-        domain="[('type','=','storage'), ['OR', " \
-                "('parent', 'child_of', [active_id]), " \
-                "('parent', '=', False)]]")
+        domain=["('type','=','storage')",
+            ['OR',
+                "('parent', 'child_of', [active_id])",
+                "('parent', '=', False)"]])
     storage_location = fields.Many2One(
         "stock.location", "Storage", states={
             'invisible': "type != 'warehouse'",
             'readonly': "not active",
             'required': "type == 'warehouse'",
         },
-        domain="[('type','=','storage'), ['OR', " \
-                "('parent', 'child_of', [active_id]), " \
-                "('parent', '=', False)]]")
+        domain=["('type','=','storage')",
+            ['OR',
+                "('parent', 'child_of', [active_id])",
+                "('parent', '=', False)"]])
     quantity = fields.Function('get_quantity', type='float', string='Quantity')
     forecast_quantity = fields.Function('get_quantity', type='float',
                                         string='Forecast Quantity')

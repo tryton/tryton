@@ -20,8 +20,8 @@ class Move(ModelSQL, ModelView):
                 'from_location', 'to_location'],
             domain=[('type', '!=', 'service')])
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,
-            domain="[('category', '=', " \
-                    "(product, 'product.default_uom.category'))]",
+            domain=["('category', '=', " \
+                    "(product, 'product.default_uom.category'))"],
             context="{'category': (product, 'product.default_uom.category')}",
             on_change=['product', 'currency', 'uom', 'company',
                 'from_location', 'to_location'])
@@ -31,12 +31,12 @@ class Move(ModelSQL, ModelView):
             digits="(16, unit_digits)", states=STATES)
     from_location = fields.Many2One("stock.location", "From Location", select=1,
             required=True, states=STATES,
-            domain="[('type', 'not in', " \
-                    "('warehouse', 'view'))]")
+            domain=["('type', 'not in', " \
+                    "('warehouse', 'view'))"])
     to_location = fields.Many2One("stock.location", "To Location", select=1,
             required=True, states=STATES,
-            domain="[('type', 'not in', " \
-                    "('warehouse', 'view'))]")
+            domain=["('type', 'not in', " \
+                    "('warehouse', 'view'))"])
     packing_in = fields.Many2One('stock.packing.in', 'Supplier Shipment',
             readonly=True, select=1, ondelete='CASCADE')
     packing_out = fields.Many2One('stock.packing.out', 'Customer Shipment',
@@ -60,7 +60,7 @@ class Move(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
             states={
                 'readonly': "state != 'draft'",
-            }, domain="[('id', '=', context.get('company', 0))]")
+            }, domain=["('id', '=', context.get('company', 0))"])
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
                 'invisible': "not unit_price_required",
