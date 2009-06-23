@@ -33,7 +33,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     _description = __doc__
     _order_name = 'number'
     company = fields.Many2One('company.company', 'Company', required=True,
-            states=_STATES, domain="[('id', '=', context.get('company', 0))]")
+            states=_STATES, domain=["('id', '=', context.get('company', 0))"])
     type = fields.Selection(_TYPE, 'Type', select=1, on_change=['type'],
             required=True, states={
                 'readonly': "state != 'draft' or context.get('type', False)" \
@@ -59,7 +59,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     party_lang = fields.Function('get_party_language', type='char',
             string='Party Language', on_change_with=['party'])
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
-        required=True, states=_STATES, domain="[('party', '=', party)]")
+        required=True, states=_STATES, domain=["('party', '=', party)"])
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
             'readonly': "state != 'draft' or (bool(lines) and bool(currency))",
@@ -71,7 +71,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     move = fields.Many2One('account.move', 'Move', readonly=True)
     account = fields.Many2One('account.account', 'Account', required=True,
         states=_STATES,
-        domain="[('company', '=', company), ('kind', '!=', 'view')]")
+        domain=["('company', '=', company)", ('kind', '!=', 'view')])
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES)
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
@@ -1282,7 +1282,7 @@ class InvoiceLine(ModelSQL, ModelView):
             string='Currency Digits', on_change_with=['currency'])
     company = fields.Many2One('company.company', 'Company', states={
         'required': "not bool(invoice)",
-        }, domain="[('id', '=', context.get('company', 0))]")
+        }, domain=["('id', '=', context.get('company', 0))"])
 
     sequence = fields.Integer('Sequence', states={
             'invisible': "context.get('standalone', False)",
@@ -1305,8 +1305,8 @@ class InvoiceLine(ModelSQL, ModelView):
             states={
                 'required': "product",
                 'invisible': "type != 'line'",
-            }, domain="[('category', '=', " \
-                    "(product, 'product.default_uom.category'))]",
+            }, domain=["('category', '=', " \
+                    "(product, 'product.default_uom.category'))"],
             context="{'category': (product, 'product.default_uom.category')}")
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits', on_change_with=['unit'])
@@ -1317,13 +1317,13 @@ class InvoiceLine(ModelSQL, ModelView):
                 '_parent_invoice.type', '_parent_invoice.party',
                 '_parent_invoice.currency', 'party', 'currency'])
     account = fields.Many2One('account.account', 'Account',
-            domain="[('kind', '!=', 'view'), " \
-                    "('company', '=', " \
+            domain=[('kind', '!=', 'view'),
+                "('company', '=', " \
                         "globals().get('_parent_invoice') and " \
                         "globals().get('_parent_invoice').company or " \
-                        "globals()['company']), " \
-                    "('id', '!=', globals().get('_parent_invoice') and " \
-                        "globals().get('_parent_invoice').account or 0)]",
+                        "globals()['company'])",
+                "('id', '!=', globals().get('_parent_invoice') and " \
+                        "globals().get('_parent_invoice').account or 0)"],
             states={
                 'invisible': "type != 'line'",
                 'required': "type == 'line'",
@@ -1838,16 +1838,16 @@ class InvoiceTax(ModelSQL, ModelView):
     sequence_number = fields.Function('get_sequence_number', type='integer',
             string='Sequence Number')
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain="[('kind', '!=', 'view'), " \
-                "('company', '=', _parent_invoice.company)]")
+            domain=[('kind', '!=', 'view'),
+                "('company', '=', _parent_invoice.company)"])
     base = fields.Numeric('Base', digits="(16, _parent_invoice.currency_digits)")
     amount = fields.Numeric('Amount', digits="(16, _parent_invoice.currency_digits)")
     manual = fields.Boolean('Manual')
     base_code = fields.Many2One('account.tax.code', 'Base Code',
-            domain="[('company', '=', _parent_invoice.company)]")
+            domain=["('company', '=', _parent_invoice.company)"])
     base_sign = fields.Numeric('Base Sign', digits=(2, 0))
     tax_code = fields.Many2One('account.tax.code', 'Tax Code',
-            domain="[('company', '=', _parent_invoice.company)]")
+            domain=["('company', '=', _parent_invoice.company)"])
     tax_sign = fields.Numeric('Tax Sign', digits=(2, 0))
     tax = fields.Many2One('account.tax', 'Tax')
 
@@ -2174,7 +2174,7 @@ class PayInvoiceAsk(ModelView):
                 'required': "type == 'writeoff'",
             })
     account_writeoff = fields.Many2One('account.account', 'Write-Off Account',
-            domain="[('kind', '!=', 'view'), ('company', '=', company)]",
+            domain=[('kind', '!=', 'view'), "('company', '=', company)"],
             states={
                 'invisible': "type != 'writeoff'",
                 'required': "type == 'writeoff'",
@@ -2198,8 +2198,8 @@ class PayInvoiceAsk(ModelView):
     lines_to_pay = fields.Many2Many('account.move.line', None, None,
             'Lines to Pay', readonly=True)
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
-            domain="[('id', 'in', lines_to_pay), " \
-                    "('reconciliation', '=', False)]",
+            domain=["('id', 'in', lines_to_pay)",
+                ('reconciliation', '=', False)],
             states={
                 'invisible': "type != 'writeoff'",
             }, on_change=['lines', 'amount', 'currency', 'currency_writeoff',
