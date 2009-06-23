@@ -291,9 +291,9 @@ class Line(ModelSQL, ModelView):
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
-            domain="[('party', '=', party), ('account', '=', account)] " \
-                    "+ (_parent_statement.state == 'draft' and " \
-                        "[('state', '=', 'open')] or [])",
+            domain=["('party', '=', party)", "('account', '=', account)",
+                "('state', '=', _parent_statement.state == 'draft' and " \
+                        "'open' or False)"],
             states={
                 'readonly': "not bool(amount)",
             })

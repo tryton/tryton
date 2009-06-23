@@ -11,7 +11,7 @@ class Journal(ModelSQL, ModelView):
 
     name = fields.Char('Name', required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-        domain="[('type', '=', 'statement')]")
+        domain=[('type', '=', 'statement')])
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
 
