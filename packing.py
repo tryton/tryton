@@ -5,7 +5,6 @@ from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.report import CompanyReport
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
-import datetime
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -196,6 +195,8 @@ class PackingIn(ModelWorkflow, ModelSQL, ModelView):
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
+        date_obj = self.pool.get('ir.date')
+
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
             cursor, user,
@@ -204,7 +205,7 @@ class PackingIn(ModelWorkflow, ModelSQL, ModelView):
             {'state': 'done'}, context)
         self.write(cursor, user, packing_id,{
             'state': 'done',
-            'effective_date': datetime.date.today(),
+            'effective_date': date_obj.today(cursor, user, context=context),
             }, context=context)
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
@@ -377,15 +378,17 @@ class PackingInReturn(ModelWorkflow, ModelSQL, ModelView):
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
+        date_obj = self.pool.get('ir.date')
+
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
             cursor, user,
             [m.id for m in packing.moves if m.state not in ('done', 'cancel')],
             {'state': 'done'}, context=context)
-        self.write(cursor, user, packing_id,
-                    {'state': 'done',
-                     'effective_date': datetime.date.today()},
-                    context=context)
+        self.write(cursor, user, packing_id, {
+            'state': 'done',
+            'effective_date': date_obj.today(cursor, user, context=context),
+            }, context=context)
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
@@ -645,6 +648,8 @@ class PackingOut(ModelWorkflow, ModelSQL, ModelView):
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
+        date_obj = self.pool.get('ir.date')
+
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
             cursor, user, [m.id for m in packing.outgoing_moves \
@@ -652,7 +657,7 @@ class PackingOut(ModelWorkflow, ModelSQL, ModelView):
             {'state': 'done'}, context=context)
         self.write(cursor, user, packing_id, {
             'state': 'done',
-            'effective_date': datetime.date.today(),
+            'effective_date': date_obj.today(cursor, user, context=context),
             }, context=context)
 
     def set_state_packed(self, cursor, user, packing_id, context=None):
@@ -1038,6 +1043,8 @@ class PackingOutReturn(ModelWorkflow, ModelSQL, ModelView):
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
+        date_obj = self.pool.get('ir.date')
+
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
             cursor, user,
@@ -1046,7 +1053,7 @@ class PackingOutReturn(ModelWorkflow, ModelSQL, ModelView):
             {'state': 'done'}, context)
         self.write(cursor, user, packing_id,{
             'state': 'done',
-            'effective_date': datetime.date.today(),
+            'effective_date': date_obj.today(cursor, user, context=context),
             }, context=context)
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
@@ -1269,14 +1276,16 @@ class PackingInternal(ModelWorkflow, ModelSQL, ModelView):
 
     def set_state_done(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')
+        date_obj = self.pool.get('ir.date')
+
         packing = self.browse(cursor, user, packing_id, context=context)
         move_obj.write(
             cursor, user, [m.id for m in packing.moves], {'state': 'done'},
             context=context)
-        self.write( cursor, user, packing_id,
-                    {'state': 'done',
-                     'effective_date': datetime.date.today()},
-                    context=context)
+        self.write(cursor, user, packing_id, {
+            'state': 'done',
+            'effective_date': date_obj.today(cursor, user, context=context),
+            }, context=context)
 
     def set_state_cancel(self, cursor, user, packing_id, context=None):
         move_obj = self.pool.get('stock.move')

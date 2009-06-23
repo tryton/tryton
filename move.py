@@ -4,7 +4,6 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
 from decimal import Decimal
-import datetime
 
 STATES = {
     'readonly': "(state in ('cancel', 'done'))",
@@ -418,6 +417,7 @@ class Move(ModelSQL, ModelView):
         location_obj = self.pool.get('stock.location')
         currency_obj = self.pool.get('currency.currency')
         company_obj = self.pool.get('company.company')
+        date_obj = self.pool.get('ir.date')
 
         if context is None:
             context = {}
@@ -430,7 +430,7 @@ class Move(ModelSQL, ModelView):
         ctx = context and context.copy() or {}
         ctx['locations'] = location_obj.search(
             cursor, user, [('type', '=', 'storage')], context=context)
-        ctx['stock_date_end'] = datetime.date.today()
+        ctx['stock_date_end'] = date_obj.today(cursor, user, context=context)
         product = product_obj.browse(cursor, user, product_id, context=ctx)
         qty = uom_obj.compute_qty(
             cursor, user, uom, quantity, product.default_uom, context=context)
@@ -460,12 +460,14 @@ class Move(ModelSQL, ModelView):
     def create(self, cursor, user, vals, context=None):
         location_obj = self.pool.get('stock.location')
         product_obj = self.pool.get('product.product')
+        date_obj = self.pool.get('ir.date')
 
         vals = vals.copy()
 
         if vals.get('state') == 'done':
             if not vals.get('effective_date'):
-                vals['effective_date'] = datetime.date.today()
+                vals['effective_date'] = date_obj.today(cursor, user,
+                        context=context)
             from_location = location_obj.browse(cursor, user,
                     vals['from_location'], context=context)
             to_location = location_obj.browse(cursor, user,
@@ -492,10 +494,13 @@ class Move(ModelSQL, ModelView):
 
         elif vals.get('state') == 'assigned':
             if not vals.get('effective_date'):
-                vals['effective_date'] = datetime.date.today()
+                vals['effective_date'] = date_obj.today(cursor, user,
+                        context=context)
         return super(Move, self).create(cursor, user, vals, context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
+        date_obj = self.pool.get('ir.date')
+
         if context is None:
             context = {}
 
@@ -529,12 +534,14 @@ class Move(ModelSQL, ModelView):
                     if move.state in ('cancel', 'done'):
                         self.raise_user_error(cursor, 'set_state_assigned',
                                 context=context)
-                    vals['effective_date'] = datetime.date.today()
+                    vals['effective_date'] = date_obj.today(cursor, user,
+                            context=context)
                 elif vals['state'] == 'done':
                     if move.state in ('cancel'):
                         self.raise_user_error(cursor, 'set_state_done',
                                 context=context)
-                    vals['effective_date'] = datetime.date.today()
+                    vals['effective_date'] = date_obj.today(cursor, user,
+                            context=context)
 
                     if move.from_location.type == 'supplier' \
                             and move.state != 'done' \
