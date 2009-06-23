@@ -1137,11 +1137,11 @@ class PrintGeneralLegderInit(ModelView):
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'])
     start_period = fields.Many2One('account.period', 'Start Period',
-            domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '<=', (end_period, 'start_date'))]")
+            domain=["('fiscalyear', '=', fiscalyear)",
+                "('start_date', '<=', (end_period, 'start_date'))"])
     end_period = fields.Many2One('account.period', 'End Period',
-            domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '>=', (start_period, 'start_date'))]")
+            domain=["('fiscalyear', '=', fiscalyear)",
+                    "('start_date', '>=', (start_period, 'start_date'))"])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
     empty_account = fields.Boolean('Empty Account',
@@ -1351,12 +1351,12 @@ class PrintTrialBalanceInit(ModelView):
             required=True, on_change=['fiscalyear'],
             depends=['start_period', 'end_period'])
     start_period = fields.Many2One('account.period', 'Start Period',
-            domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '<=', (end_period, 'start_date'))]",
+            domain=["('fiscalyear', '=', fiscalyear)",
+                "('start_date', '<=', (end_period, 'start_date'))"],
             depends=['end_period'])
     end_period = fields.Many2One('account.period', 'End Period',
-            domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '>=', (start_period, 'start_date'))]",
+            domain=["('fiscalyear', '=', fiscalyear)",
+                "('start_date', '>=', (start_period, 'start_date'))"],
             depends=['start_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
@@ -1605,12 +1605,12 @@ class OpenIncomeStatementInit(ModelView):
             required=True, on_change=['fiscalyear'],
             depends=['start_period', 'end_period'])
     start_period = fields.Many2One('account.period', 'Start Period',
-            domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '<=', (end_period, 'start_date'))]",
+            domain=["('fiscalyear', '=', fiscalyear)",
+                "('start_date', '<=', (end_period, 'start_date'))"],
             depends=['end_period'])
     end_period = fields.Many2One('account.period', 'End Period',
-            domain="[('fiscalyear', '=', fiscalyear), " \
-                    "('start_date', '>=', (start_period, 'start_date'))]",
+            domain=["('fiscalyear', '=', fiscalyear)",
+                "('start_date', '>=', (start_period, 'start_date'))"],
             depends=['start_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
@@ -1747,11 +1747,11 @@ class CreateChartAccountPropertites(ModelView):
     company = fields.Many2One('company.company', 'Company')
     account_receivable = fields.Many2One('account.account',
             'Default Receivable Account',
-            domain="[('kind', '=', 'receivable'), ('company', '=', company)]",
+            domain=[('kind', '=', 'receivable'), "('company', '=', company)"],
             depends=['company'])
     account_payable = fields.Many2One('account.account',
             'Default Payable Account',
-            domain="[('kind', '=', 'payable'), ('company', '=', company)]",
+            domain=[('kind', '=', 'payable'), "('company', '=', company)"],
             depends=['company'])
 
 CreateChartAccountPropertites()

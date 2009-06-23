@@ -145,9 +145,9 @@ class Code(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True)
     parent = fields.Many2One('account.tax.code', 'Parent', select=1,
-            domain="[('company', '=', company)]", depends=['company'])
+            domain=["('company', '=', company)"], depends=['company'])
     childs = fields.One2Many('account.tax.code', 'parent', 'Children',
-            domain="[('company', '=', company)]", depends=['company'])
+            domain=["('company', '=', company)"], depends=['company'])
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['company'])
     sum = fields.Function('get_sum', digits="(16, currency_digits)",
@@ -613,15 +613,15 @@ class Tax(ModelSQL, ModelView):
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE')
     childs = fields.One2Many('account.tax', 'parent', 'Children')
     company = fields.Many2One('company.company', 'Company', required=True,
-            domain="[('id', '=', context.get('company', 0))]")
+            domain=["('id', '=', context.get('company', 0))"])
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
-            domain="[('company', '=', company)]",
+            domain=["('company', '=', company)"],
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "type != 'none' and company",
             }, depends=['company'])
     credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
-            domain="[('company', '=', company)]",
+            domain=["('company', '=', company)"],
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "type != 'none' and company",
@@ -1038,7 +1038,7 @@ class Rule(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', required=True, translate=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-            select=1, domain="[('id', '=', context.get('company', 0))]")
+            select=1, domain=["('id', '=', context.get('company', 0))"])
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
     template = fields.Many2One('account.tax.rule.template', 'Template')
 
@@ -1127,8 +1127,8 @@ class RuleLineTemplate(ModelSQL, ModelView):
             ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
-            domain="[('account', '=', _parent_rule.account), " \
-                    "('group', '=', group)]")
+            domain=["('account', '=', _parent_rule.account)",
+                "('group', '=', group)"])
     sequence = fields.Integer('Sequence')
 
     def __init__(self):
@@ -1213,8 +1213,8 @@ class RuleLine(ModelSQL, ModelView):
             select=1, ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
     tax = fields.Many2One('account.tax', 'Substitution Tax',
-            domain="[('company', '=', _parent_rule.company), " \
-                    "('group', '=', group)]")
+            domain=["('company', '=', _parent_rule.company)",
+                "('group', '=', group)"])
     sequence = fields.Integer('Sequence')
     template = fields.Many2One('account.tax.rule.line.template', 'Template')
 
@@ -1385,7 +1385,7 @@ class AccountTemplate(ModelSQL, ModelView):
     _name = 'account.account.template'
     taxes = fields.Many2Many('account.account.template-account.tax.template',
             'account', 'tax', 'Default Taxes',
-            domain="[('parent', '=', False)]")
+            domain=["('parent', '=', False)"])
 
 AccountTemplate()
 
@@ -1407,7 +1407,7 @@ class Account(ModelSQL, ModelView):
     _name = 'account.account'
     taxes = fields.Many2Many('account.account-account.tax',
             'account', 'tax', 'Default Taxes',
-            domain="[('company', '=', company), ('parent', '=', False)]",
+            domain=["('company', '=', company)", ('parent', '=', False)],
             help='Default tax for manual encoding of move lines \n' \
                     'for journal types: "expense" and "revenue"',
             depends=['company'])

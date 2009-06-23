@@ -29,13 +29,14 @@ class FiscalYear(ModelSQL, ModelView):
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
-            required=True, domain="[('code', '=', 'account.move')," \
-                    "['OR', ('company', '=', company)," \
-                    "('company', '=', False)]]",
+            required=True, domain=["('code', '=', 'account.move')",
+                ['OR',
+                    "('company', '=', company)",
+                    "('company', '=', False)"]],
                     context="{'code': 'account.move', 'company': company}",
             depends=['company'])
     company = fields.Many2One('company.company', 'Company', required=True,
-            domain="[('id', '=', context.get('company', False))]")
+            domain=["('id', '=', context.get('company', False))"])
 
     def __init__(self):
         super(FiscalYear, self).__init__()
@@ -316,7 +317,7 @@ class CloseFiscalYearInit(ModelView):
     close_fiscalyear = fields.Many2One('account.fiscalyear',
             'Fiscal Year to close',
             required=True,
-            domain="[('state', '!=', 'close')]")
+            domain=["('state', '!=', 'close')"])
 
 CloseFiscalYearInit()
 

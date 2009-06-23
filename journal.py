@@ -53,7 +53,7 @@ class Column(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', size=None, required=True)
     field = fields.Many2One('ir.model.field', 'Field', required=True,
-            domain="[('model.model', '=', 'account.move.line')]")
+            domain=[('model.model', '=', 'account.move.line')])
     view = fields.Many2One('account.journal.view', 'View', select=1)
     sequence = fields.Integer('Sequence', select=2)
     required = fields.Boolean('Required')
@@ -86,11 +86,11 @@ class Journal(ModelSQL, ModelView):
     update_posted = fields.Boolean('Allow cancelling moves')
     sequence = fields.Property(type='many2one', relation='ir.sequence',
             string='Sequence', required=True,
-            domain="[('code', '=', 'account.journal')]",
+            domain=[('code', '=', 'account.journal')],
             context={'code': 'account.journal'})
     credit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Credit Account',
-            domain="[('kind', '!=', 'view'), ('company', '=', company)]",
+            domain=[('kind', '!=', 'view'), "('company', '=', company)"],
             states={
                 'required': "centralised or " \
                         "(type == 'cash' and context.get('company'))",
@@ -98,7 +98,7 @@ class Journal(ModelSQL, ModelView):
             }, depends=['company', 'type', 'centralised'])
     debit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Debit Account',
-            domain="[('kind', '!=', 'view'), ('company', '=', company)]",
+            domain=[('kind', '!=', 'view'), "('company', '=', company)"],
             states={
                 'required': "centralised or " \
                         "(type == 'cash' and context.get('company'))",

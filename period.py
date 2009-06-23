@@ -27,8 +27,8 @@ class Period(ModelSQL, ModelView):
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
     post_move_sequence =fields.Many2One('ir.sequence', 'Post Move Sequence',
-            required=True, domain="[('code', '=', 'account.move')]",
-            context="{'code': 'account.move'}")
+            required=True, domain=[('code', '=', 'account.move')],
+            context={'code': 'account.move'})
     type = fields.Selection([
         ('standard', 'Standard'),
         ('adjustment', 'Adjustment'),
