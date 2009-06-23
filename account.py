@@ -31,7 +31,7 @@ class Account(ModelSQL, ModelView):
                 'required': "type != 'root'",
             })
     parent = fields.Many2One('analytic_account.account', 'Parent', select=2,
-            domain="[('parent', 'child_of', root)]",
+            domain=["('parent', 'child_of', root)"],
             states={
                 'invisible': "type == 'root'",
                 'required': "type != 'root'",
