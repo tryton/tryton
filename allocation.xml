@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="allocation_view_form">
+            <field name="model">project.allocation</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Allocation">
+                    <label name="employee"/>
+                    <field name="employee"/>
+                    <label name="percentage"/>
+                    <field name="percentage"/>
+                    <label name="work"/>
+                    <field name="work"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="allocation_view_tree">
+            <field name="model">project.allocation</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Allocations">
+                    <field name="employee"/>
+                    <field name="percentage"/>
+                    <field name="work"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
