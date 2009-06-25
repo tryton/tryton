@@ -2,8 +2,8 @@ Stock Module
 ############
 
 The stock module define fundamentals for all stock management
-situations: Locations where product are stored, move between these
-locations, packings for product arrivals and departures and inventory
+situations: Locations where product are stored, moves between these
+locations, shipments for product arrivals and departures and inventory
 to control and update stock levels.
 
 Location
@@ -91,17 +91,17 @@ Assigned move with a planned date greater than today and smaller than
 the given date are also summed.
 
 
-Packing
-*******
+Shipment
+********
 
-A Packing define a group of moves happening at the same date and
+A Shipment define a group of moves happening at the same date and
 around the same location.
 
 
-Supplier Packing
-++++++++++++++++
+Supplier Shipment
++++++++++++++++++
 
-A supplier packing is used when products are received from a
+A supplier shipment is used when products are received from a
 supplier. It is mainly composed of a party (the supplier), a location
 (the warehouse in which the products are coming) and two list of moves:
 
@@ -116,7 +116,7 @@ supplier. It is mainly composed of a party (the supplier), a location
   location (or one of his child locations).
 
 
-The supplier packing can be in one of this states:
+The supplier shipment can be in one of this states:
 
 * Draft
 
@@ -129,17 +129,17 @@ The supplier packing can be in one of this states:
 
 * Done
 
-  Inventory moves are in state Done.
+  Inventory and incoming moves are in state Done.
 
 * Cancel
 
   All moves are cancelled.
 
 
-Customer Packing
-++++++++++++++++
+Customer Shipment
++++++++++++++++++
 
-A customer packing is used for sending products to customer. It is
+A customer shipment is used for sending products to customer. It is
 mainly composed of a party (the customer), a location (the warehouse
 out of which the product are going) and two list of moves:
 
@@ -154,7 +154,7 @@ out of which the product are going) and two list of moves:
   customer location.
 
 
-The customer packing can be in one of this states:
+The customer shipment can be in one of this states:
 
 * Draft
 
@@ -162,9 +162,9 @@ The customer packing can be in one of this states:
 
 * Waiting
 
-  When a customer packing is set to waiting, the inventory moves are
+  When a customer shipment is set to waiting, the inventory moves are
   created (or completed) to balance the outgoing moves. The waiting
-  state also means that the packing should be processed.
+  state also means that the shipment should be processed.
 
 * Assigned
 
@@ -179,19 +179,19 @@ The customer packing can be in one of this states:
 
 * Done
 
-  The packing is Done when the outgoing moves have been made,
+  The shipment is Done when the outgoing moves have been made,
   e.g. when a truck left the warehouse.
 
 * Cancel
 
-  A packing which is not yet completed (not in state Done) can be
+  A shipment which is not yet completed (not in state Done) can be
   cancelled at any time. This also cancel all the moves.
 
 
-Internal Packing
-++++++++++++++++
+Internal Shipment
++++++++++++++++++
 
-A customer packing is used for sending products across locations
+An internal shipment is used for sending products across locations
 inside the company. It is mainly composed of two locations and a list
 of moves. It can be in one of these states:
 
@@ -202,7 +202,7 @@ of moves. It can be in one of these states:
 
 * Waiting
 
-  The waiting state means that the packing should be processed.
+  The waiting state means that the shipment should be processed.
 
 * Assigned
 
@@ -210,11 +210,11 @@ of moves. It can be in one of these states:
 
 * Done
 
-  The packing is Done when the moves have been made.
+  The shipment is Done when the moves have been made.
 
 * Cancel
 
-  A packing which is not yet completed (not in state Done) can be
+  A shipment which is not yet completed (not in state Done) can be
   cancelled at any time. This also cancel all the moves.
 
 
