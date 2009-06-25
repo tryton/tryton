@@ -53,7 +53,7 @@ can be:
 
   An Internal order point is defined on a Storage location, it also
   define a provisioning location. If the minimum quantity is reached
-  it will result in the creation of an internal packing between the
+  it will result in the creation of an internal shipment between the
   provisioning location and the Storage location.
 
 * Purchase
@@ -62,8 +62,8 @@ can be:
   minimal quantity is reached on the warehouse it will result in a
   purchase request.
 
-The internal packings and purchase requests are created by schedulers
-with respect to stock levels and existing packings and requests. The
+The internal shipments and purchase requests are created by schedulers
+with respect to stock levels and existing shipments and requests. The
 stock levels are computed between the next two supply dates. If the
 stock level of a product without order point on the given warehouse is
 below zero, a purchase request is also created.
