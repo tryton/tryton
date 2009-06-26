@@ -10,7 +10,7 @@ if os.path.isdir(DIR):
 
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK
+from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK, test_view
 
 class StockTestCase(unittest.TestCase):
     '''
@@ -21,28 +21,11 @@ class StockTestCase(unittest.TestCase):
         trytond.tests.test_tryton.install_module('stock')
         self.location = RPCProxy('stock.location')
 
-    def test0990location(self):
+    def test0005views(self):
         '''
-        Create locations.
+        Test views.
         '''
-        storage_id = self.location.search([
-            ('code', '=', 'STO'),
-            ], CONTEXT)[0]
-
-        new_locations = [storage_id]
-
-        for j in range(5):
-            parent_locations = new_locations
-            new_locations = []
-            for parent_location in parent_locations:
-                for i in range(4):
-                    location_id = self.location.create({
-                        'name': 'Test ' + str(j) + ' ' + str(i),
-                        'parent': parent_location,
-                        'type': 'storage',
-                        }, CONTEXT)
-                    new_locations.append(location_id)
-
+        self.assertRaises(Exception, test_view('stock'))
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(StockTestCase)
