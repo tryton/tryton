@@ -18,7 +18,7 @@ class Currency(ModelSQL, ModelView):
             digits=(12, 6), on_change_with=['rates'])
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates')
     rounding = fields.Numeric('Rounding factor', digits=(12, 6), required=True)
-    digits = fields.Integer('Diplay Digits')
+    digits = fields.Integer('Display Digits')
     active = fields.Boolean('Active')
 
     # monetary formatting

@@ -6,7 +6,7 @@ field,"currency.currency,active",0,Active,Aktiv,0
 field,"currency.currency,code",0,Code,Code,0
 field,"currency.currency,create_date",0,Creation date,Erstellungsdatum,0
 field,"currency.currency,create_uid",0,Creation user,Ersteller,0
-field,"currency.currency,digits",0,Diplay Digits,Angezeigte Stellen,0
+field,"currency.currency,digits",0,Display Digits,Angezeigte Stellen,0
 field,"currency.currency,id",0,ID,ID,0
 field,"currency.currency,mon_decimal_point",0,Decimal Separator,Dezimalpunkt Währung,0
 field,"currency.currency,mon_grouping",0,Grouping,Gruppierung Währung,0

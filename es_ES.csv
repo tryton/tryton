@@ -4,7 +4,7 @@ error,currency.currency,0,No rate found for the currency: %s at the date: %s,No 
 error,currency.currency.rate,0,A currency can only have one rate by date!,Una divisa solo puede tener un valor por fecha,0
 field,"currency.currency,active",0,Active,Activo,0
 field,"currency.currency,code",0,Code,Código,0
-field,"currency.currency,digits",0,Diplay Digits,Mostrar dígitos,0
+field,"currency.currency,digits",0,Display Digits,Mostrar dígitos,0
 field,"currency.currency,mon_decimal_point",0,Decimal Separator,Separador decimal,0
 field,"currency.currency,mon_grouping",0,Grouping,Agrupación,0
 field,"currency.currency,mon_thousands_sep",0,Thousands Separator,Separador de miles,0
