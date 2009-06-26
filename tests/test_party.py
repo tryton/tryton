@@ -10,7 +10,7 @@ if os.path.isdir(DIR):
 
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK
+from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK, test_view
 
 
 class PartyTestCase(unittest.TestCase):
@@ -24,6 +24,12 @@ class PartyTestCase(unittest.TestCase):
         self.party = RPCProxy('party.party')
         self.address = RPCProxy('party.address')
         self.country = RPCProxy('country.country')
+
+    def test0005views(self):
+        '''
+        Test views.
+        '''
+        self.assertRaises(Exception, test_view('party'))
 
     def test0010category(self):
         '''
