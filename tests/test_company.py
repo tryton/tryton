@@ -10,7 +10,7 @@ if os.path.isdir(DIR):
 
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK
+from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK, test_view
 
 
 class CompanyTestCase(unittest.TestCase):
@@ -23,6 +23,12 @@ class CompanyTestCase(unittest.TestCase):
         self.company = RPCProxy('company.company')
         self.employee = RPCProxy('company.employee')
         self.currency = RPCProxy('currency.currency')
+
+    def test0005views(self):
+        '''
+        Test views.
+        '''
+        self.assertRaises(Exception, test_view('company'))
 
     def test0010company(self):
         '''
