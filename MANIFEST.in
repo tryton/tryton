@@ -9,3 +9,4 @@ include *.odt
 include *.csv
 include scripts/*
 include tests/*
+include doc/*
