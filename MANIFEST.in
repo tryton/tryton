@@ -8,3 +8,4 @@ include *.xml
 include *.odt
 include *.csv
 include scripts/*
++include doc/*
