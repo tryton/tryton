@@ -11,7 +11,7 @@ if os.path.isdir(DIR):
 import unittest
 import trytond.tests.test_tryton
 import trytond.modules.company.tests
-from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK
+from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK, test_view
 
 
 class AccountTestCase(unittest.TestCase):
@@ -21,6 +21,12 @@ class AccountTestCase(unittest.TestCase):
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('account')
+
+    def test0005views(self):
+        '''
+        Test views.
+        '''
+        self.assertRaises(Exception, test_view('account'))
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(AccountTestCase)
