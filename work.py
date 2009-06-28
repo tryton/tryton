@@ -52,8 +52,6 @@ class Work(ModelSQL, ModelView):
 
     def get_cost(self, cursor, user, ids, name, arg, context=None):
         timesheet_line_obj = self.pool.get('timesheet.line')
-        ctx = context and context.copy() or {}
-
         all_ids = self.search(cursor, user, [
                 ('parent', 'child_of', ids),
                 ('active', '=', True)], context=context) + ids
