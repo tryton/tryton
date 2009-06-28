@@ -211,33 +211,19 @@ class Work(ModelSQL, ModelView):
         return [('work', 'in', tw_ids)]
 
     def get_total_effort(self, cursor, user, ids, name, arg, context=None):
-        timesheet_work_obj = self.pool.get('timesheet.work')
 
-        projects = self.browse(cursor, user, ids, context=context)
-        w2p = dict((p.work.id, p.id) for p in projects)
+        all_ids = self.search(cursor, user, [
+                ('parent', 'child_of', ids),
+                ('active', '=', True)], context=context) + ids
+        all_ids = list(set(all_ids))
 
-        ctx = context and context.copy() or {}
-        ctx['active_test'] = False
-        query_ids, args_ids = timesheet_work_obj.search(cursor, user, [
-            ('parent', 'child_of', w2p.keys()),
-            ], context=ctx, query_string=True)
+        works = self.browse(cursor, user, all_ids, context=context)
 
-        cursor.execute(
-                'SELECT task.work, ' \
-                    'SUM(CASE WHEN task.type = \'task\' '\
-                            'AND task.effort is not null '\
-                        'THEN task.effort '\
-                        'ELSE 0 END) '\
-                'FROM project_work task ' \
-                'WHERE task.work IN (' + query_ids + ') ' \
-                'GROUP BY task.work', args_ids)
-        work_effort = dict(cursor.fetchall())
-
-        works = timesheet_work_obj.browse(
-            cursor, user, work_effort.keys(), context=context)
+        res = {}
         id2work = {}
         leafs = set()
         for work in works:
+            res[work.id] = work.effort
             id2work[work.id] = work
             if not work.children:
                 leafs.add(work.id)
@@ -248,12 +234,12 @@ class Work(ModelSQL, ModelView):
                 work = id2work[work_id]
                 if not work.active:
                     continue
-                if work.parent and work.parent.id in work_effort:
-                    work_effort[work.parent.id] += work_effort[work_id]
+                if work.parent and work.parent.id in res:
+                    res[work.parent.id] += res[work_id]
                     parents.add(work.parent.id)
             leafs = parents
 
-        return dict((w2p[w], e) for w,e in work_effort.iteritems() if w in w2p)
+        return res
 
 
     def delete(self, cursor, user, ids, context=None):
