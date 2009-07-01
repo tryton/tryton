@@ -34,6 +34,7 @@ model,"res.group,name",group_stock_forecast,Stock Forecast,Stock prévisionnel,0
 model,"stock.forecast.complete.ask,name",0,Forecast Complete Ask,Completer la prévision - Demander,0
 model,"stock.forecast.complete.choose,name",0,Forecast Complete Choose,Completer la prévision - Choisir,0
 model,"stock.forecast.line,name",0,Stock Forecast Line,Ligne de prévision de stock,0
+model,"stock.forecast.line-stock.move,name",0,ForecastLine - Move,Ligne de prévision - Mouvement,0
 model,"stock.forecast,name",0,Stock Forecast,Stock prévisionnel,0
 model,"workflow.activity,name",forecast_act_cancel,Cancel,Annuler,0
 model,"workflow.activity,name",forecast_act_done,Done,Fait,0
