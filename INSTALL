@@ -7,7 +7,6 @@ Prerequisites
  * Python 2.4 or later (http://www.python.org/)
  * trytond 0.0.x (http://www.tryton.org/)
  * trytond_stock (http://www.tryton.org/)
- * trytond_stock_report (http://www.tryton.org/)
 
 Installation
 ------------

@@ -18,7 +18,6 @@ produit et par catégorie de produit.
     'depends': [
         'ir',
         'stock',
-        'stock_report',
         'company',
         'product',
     ],
