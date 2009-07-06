@@ -5,7 +5,7 @@
     'name_de_DE': 'Kostenstellen',
     'name_fr_FR': 'Comptabilité analytique',
     'name_es_ES': 'Contabilidad Analítica',
-    'version': '1.0.3',
+    'version': '1.0.4',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
