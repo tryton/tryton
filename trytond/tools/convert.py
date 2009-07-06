@@ -368,12 +368,15 @@ class Fs2bdAccessor:
         for model_name in record_ids.keys():
             model_obj = self.pool.get(model_name)
             self.browserecord[module][model_name] = {}
-            ids = model_obj.search(self.cursor, self.user, [
-                ('id', 'in', record_ids[model_name]),
-                ], context={'active_test': False})
-            models = model_obj.browse(self.cursor, self.user, ids)
-            for model in models:
-                self.browserecord[module][model_name][model.id] = model
+            for i in range(0, len(record_ids[model_name]), self.cursor.IN_MAX):
+                sub_record_ids = record_ids[model_name]\
+                        [i:i + self.cursor.IN_MAX]
+                ids = model_obj.search(self.cursor, self.user, [
+                    ('id', 'in', sub_record_ids),
+                    ], context={'active_test': False})
+                models = model_obj.browse(self.cursor, self.user, ids)
+                for model in models:
+                    self.browserecord[module][model_name][model.id] = model
         self.fetched_modules.append(module)
 
 
