@@ -1849,7 +1849,7 @@ class Invoice(ModelSQL, ModelView):
         cursor.execute('SELECT id FROM purchase_invoices_rel ' \
                 'WHERE invoice IN (' + ','.join(['%s' for x in ids]) + ')',
                 ids)
-        if cursor.rowcount:
+        if cursor.fetchone():
             self.raise_user_error(cursor, 'delete_purchase_invoice',
                     context=context)
         return super(Invoice, self).delete(cursor, user, ids,
