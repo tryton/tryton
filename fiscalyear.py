@@ -91,7 +91,7 @@ class FiscalYear(ModelSQL, ModelView):
                         fiscalyear.end_date, fiscalyear.end_date,
                         fiscalyear.start_date, fiscalyear.end_date,
                         fiscalyear.company.id, fiscalyear.id))
-            if cursor.rowcount:
+            if cursor.fetchone():
                 return False
         return True
 

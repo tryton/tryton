@@ -85,7 +85,7 @@ class Period(ModelSQL, ModelView):
                         period.end_date, period.end_date,
                         period.start_date, period.end_date,
                         period.fiscalyear.id, period.id))
-            if cursor.rowcount:
+            if cursor.fetchone():
                 return False
         return True
 
