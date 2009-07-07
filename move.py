@@ -4,7 +4,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
-from trytond.backend import TableHandler
+from trytond.backend import TableHandler, FIELDS
 from decimal import Decimal
 import datetime
 import md5
@@ -820,10 +820,11 @@ class Line(ModelSQL, ModelView):
             return res
 
         if party and (not vals.get('debit')) and (not vals.get('credit')):
+            type_name = FIELDS[self.debit._type].sql_type(self.debit)[0]
             query = 'SELECT ' \
-                        'COALESCE(SUM(' \
+                        'CAST(COALESCE(SUM(' \
                             '(COALESCE(debit, 0) - COALESCE(credit, 0))' \
-                        '), 0)::NUMERIC ' \
+                        '), 0) AS ' + type_name + ') ' \
                     'FROM account_move_line ' \
                     'WHERE reconciliation IS NULL ' \
                         'AND party = %s ' \
