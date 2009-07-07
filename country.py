@@ -49,9 +49,10 @@ class Country(ModelSQL, ModelView):
         if 'module' in context:
             cursor.execute('INSERT INTO ir_translation ' \
                     '(name, lang, type, src, res_id, value, module, fuzzy) ' \
-                    'VALUES (%s, %s, %s, %s, %s, %s, %s, false)',
+                    'VALUES (%s, %s, %s, %s, %s, %s, %s, %s)',
                     ('country.country,name', 'en_US', 'model',
-                        vals['name'], new_id, '', context.get('module')))
+                        vals['name'], new_id, '', context.get('module'),
+                        False))
         return new_id
 
     def write(self, cursor, user, ids, vals, context=None):
