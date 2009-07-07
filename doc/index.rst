@@ -33,7 +33,7 @@ of them are optional or completed with sensible default values:
     *Title*) are used to add extra lines that will appear on the
     report, thus allowing to easily customise it.
   - Sequence: Allow to order lines. The value of this field is also
-    updated with a drag and drop between the lines
+    updated with a drag and drop between the lines.
   - Product: An optional reference to the product to purchase.
   - Description: The description of the product to purchase.
   - Quantity: The quantity to purchase.
@@ -59,7 +59,7 @@ of them are optional or completed with sensible default values:
     received and will contains the shipped quantities. If there are
     several shipments for the same purchase, several invoices will be
     created.
-  - Manual: Tryton does create any invoice automatically.
+  - Manual: Tryton doesn't create any invoice automatically.
 
 - Comments: A text fields to add custom comments.
 - Invoices: The list of related invoices.
