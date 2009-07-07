@@ -548,9 +548,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 'AND '.join(('(SUM(u.total_amount) ' + arg[1] + ' %s) ' \
                                 for arg in args)),
             invoice_val + invoice_val + [arg[2] for arg in args])
-
-        if not cursor.rowcount:
-            return [('id', '=', 0)]
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def search_untaxed_amount(self, cursor, user, name, args, context=None):
@@ -578,9 +575,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
               'AND '.join(('(COALESCE(SUM(quantity * unit_price), 0) ' + \
                                 arg[1] + ' %s) ' for arg in args)),
             invoice_val + [arg[2] for arg in args])
-
-        if not cursor.rowcount:
-            return [('id', '=', 0)]
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def search_tax_amount(self, cursor, user, name, args, context=None):
@@ -608,9 +602,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
               'AND '.join(('(COALESCE(SUM(amount), 0) ' + arg[1] + ' %s) ' \
                                 for arg in args)),
             invoice_val + [arg[2] for arg in args])
-
-        if not cursor.rowcount:
-            return [('id', '=', 0)]
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def button_draft(self, cursor, user, ids, context=None):
