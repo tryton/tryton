@@ -6,7 +6,7 @@
     'name_fr_FR': 'Compte produit',
     'name_es_CO': 'Contabilidad de Inventarios',
     'name_es_ES': 'Contabilidad de Inventarios',
-    'version': '1.2.0',
+    'version': '1.2.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
