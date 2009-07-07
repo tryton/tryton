@@ -8,8 +8,8 @@ Purchase
 ********
 
 The purchase is mainly defined by a party from which the products will
-be purchased and a list of purchase lines each one containing a
-product and a quantity. Here is a extensive list of the fields, most
+be purchased and a list of purchase lines, each one containing a
+product and a quantity. Here is the extensive list of the fields, most
 of them are optional or completed with sensible default values:
 
 - Party: The supplier.
@@ -28,7 +28,7 @@ of them are optional or completed with sensible default values:
 - Purchase Lines:
 
   - Type: The type of the line. The default value is *Line* which
-    means that the current purchase contains the fields defined
+    means that the current purchase line contains the fields defined
     hereunder. The other values of Type (*Comment*, *Subtotal*,
     *Title*) are used to add extra lines that will appear on the
     report, thus allowing to easily customise it.
@@ -56,7 +56,7 @@ of them are optional or completed with sensible default values:
 
   - Base on order: The invoice is created when the purchase order is confirmed.
   - Base on shipment: The invoice is created when the shipment is
-    received and will contains the received quantities. If there are
+    received and will contains the shipped quantities. If there are
     several shipments for the same purchase, several invoices will be
     created.
   - Manual: Tryton does create any invoice automatically.
