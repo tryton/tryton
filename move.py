@@ -625,7 +625,8 @@ class Move(ModelSQL, ModelView):
         if context is None:
             context = {}
 
-        cursor.execute('LOCK TABLE stock_move')
+        if cursor.has_lock():
+            cursor.execute('LOCK TABLE stock_move')
 
         local_ctx = context and context.copy() or {}
         local_ctx['stock_date_end'] = date_obj.today(cursor, user,
