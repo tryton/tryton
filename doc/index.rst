@@ -1,5 +1,5 @@
 Sale Module
-###############
+###########
 
 The sale module define the Sale model.
 
