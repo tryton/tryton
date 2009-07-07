@@ -61,8 +61,9 @@ class Work(ModelSQL, ModelView):
     constraint_finish_date = fields.Function('get_function_fields',
             type='date', string='Constraint Finish', depends=[ 'type'],
             fnct_inv='set_function_fields')
-    requests = fields.Function('get_function_fields', string='Requests',
-            type='one2many', relation='res.request')
+    requests = fields.Function('get_function_fields', type='many2many',
+            string='Requests', fnct_inv='set_function_fields',
+            relation='res.request')
 
     def __init__(self):
         super(Work, self).__init__()
@@ -91,21 +92,27 @@ class Work(ModelSQL, ModelView):
         :return: a dictionary with all field names as key and
             a dictionary as value with id as key
         '''
+        req_ref_obj = self.pool.get('res.request.reference')
+
         res = {}
 
-
         if 'requests' in names:
-            req_ref_obj = self.pool.get('res.request.reference')
-            req_ref_ids = req_ref_obj.search(cursor, user, [
-                    ('reference', 'in', ['project.work,' + str(i) for i in ids]),
-                    ], context=context)
-            req_refs = req_ref_obj.browse(cursor, user, req_ref_ids,
-                    context=context)
-            requests = defaultdict(list)
+            requests = dict((i, []) for i in ids)
 
-            for req_ref in req_refs:
-                work_id = int(req_ref.reference.split(',')[1])
-                requests[work_id].append(req_ref.request.id)
+            for i in range(0, len(ids), cursor.IN_MAX):
+                sub_ids = ids[i:i + cursor.IN_MAX]
+
+                req_ref_ids = req_ref_obj.search(cursor, user, [
+                        ('reference', 'in', [
+                                'project.work,%s' % i for i in sub_ids
+                                ]
+                         ),
+                        ], context=context)
+                req_refs = req_ref_obj.browse(cursor, user, req_ref_ids,
+                        context=context)
+                for req_ref in req_refs:
+                    _, work_id = req_ref.reference.split(',')
+                    requests[int(work_id)].append(req_ref.request.id)
 
             res['requests'] = requests
 
@@ -170,6 +177,47 @@ class Work(ModelSQL, ModelView):
 
     def set_function_fields(self, cursor, user, id, name, value, arg,
             context=None):
+        request_obj = self.pool.get('res.request')
+        req_ref_obj = self.pool.get('res.request.reference')
+
+        if name == 'requests':
+            work = self.browse(cursor, user, id, context=context)
+            currents = dict((req.id, req) for req in work.requests)
+            for v in value:
+                to_unlink = []
+                to_link = []
+                operator = v[0]
+
+                ids = len(v) > 1 and v[1] or []
+                if operator == 'set':
+                    to_link.extend((i for i in ids if i not in currents))
+                    to_unlink.extend((i for i in currents if i not in ids))
+                elif operator == 'add':
+                    to_link.extend((i for i in ids if i not in currents))
+                elif operator == 'unlink':
+                    to_unlink.extend((i for i in ids if i in currents))
+                elif operator == 'unlink_all':
+                    to_unlink.extend(currents)
+                elif operator == 'delete':
+                    request_obj.delete(cursor, user, to_delete, context=context)
+                else:
+                    raise Exception('Operation not supported')
+
+                req_ref_ids = []
+                for i in to_unlink:
+                    request = currents[i]
+                    for ref in request.references:
+                        if int(ref.reference.split(',')[1]) == id:
+                            req_ref_ids.append(ref.id)
+                req_ref_obj.delete(cursor, user, req_ref_ids,
+                        context=context)
+
+                for i in to_link:
+                    req_ref_obj.create(cursor, user, {
+                            'request': i,
+                            'reference': 'project.work,%s' % id,
+                            }, context=context)
+            return
 
         fun_fields = ('actual_start_date', 'actual_finish_date',
                       'constraint_start_date', 'constraint_finish_date')
