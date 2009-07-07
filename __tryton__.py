@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Belgium',
-    'version': '1.2.0',
+    'version': '1.2.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
