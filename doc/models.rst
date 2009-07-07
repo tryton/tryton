@@ -146,17 +146,22 @@ user.):
 Models Inheritance
 ^^^^^^^^^^^^^^^^^^
 
-Model Inheritance allow add or override fields, methods and
-constraints on existing models. To inherit an existing model (like
-``Party`` on the first example), one just need to instantiate a class
-with the same ``_name``:
+Model Inheritance provides the ability to add or override fields, methods and
+constraints on existing models. 
+
+Adding fields to an existing model
+++++++++++++++++++++++++++++++++++
+
+To inherit an existing model (like
+``Party`` on the first example), one just needs to instantiate a class
+with the same ``_name`` attribute:
 
 .. highlight:: python
 
 ::
 
 
-  class Car(OSV):
+  class Car(ModelSQL, ModelView):
       _name = "vehicle.car"
       _rec_name = model
       model = fields.Char("Model", required=True)
@@ -164,7 +169,7 @@ with the same ``_name``:
       first_owner = fields.Many2One('relationship.party', 'First Owner')
   Car()
 
-  class Party(OSV):
+  class Party(ModelSQL, ModelView):
       _name = "relationship.party"
       current_car = fields.Many2One('vehicle.car', 'Current car')
 
@@ -172,17 +177,51 @@ with the same ``_name``:
           super(Party, self).__init__()
           self._sql_constraints += [
               ('party_car_uniq', 'UNIQUE(model)',
-                  'Two party cannot use the same car!'),
+                  'Two parties cannot use the same car!'),
           ]
 
   Party()
 
 
-This show how to define a new model and link an existing one to it.
-This is also a way to define reflecting ``Many2One``: It's not
+This example shows how to define and relate a new model to an existing model.
+The example also demonstrates how to define a reflecting ``Many2One``: It's not
 possible to create the two models without using inheritance because
 each of the foreign key (``first_owner`` and ``current_car``) need the
 other model table.
+
+
+Extending existing fields from an existing model
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+An existing field can be extended by calling `copy.copy` on it, modifying its attributes
+and then calling `self._reset_columns`.
+
+.. highlight:: python
+
+::
+
+  import copy
+
+  class Line(ModelSQL, ModelView):
+      _name = 'timesheet.line'
+
+      #...
+
+      def __init__(self):
+          super(Line, self).__init__()
+          self.employee = copy.copy(self.employee)
+          if self.employee.on_change is None:
+              self.employee.on_change = []
+          if 'employee' not in self.employee.on_change:
+              self.employee.on_change += ['employee']
+              self._reset_columns()
+
+
+In this example the extended model wants on_change_employee(...) to be called so it adds 'employee'
+to the on_change attribute of the employee field.  Notice that only if the the field is
+modified then `self._reset_columns` is called.  Also notice that a developer should try
+to make no assumptions about the field so that additional modules could also
+extend the same field.
 
 Fields
 ******
