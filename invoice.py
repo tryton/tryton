@@ -4,7 +4,7 @@
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.report import Report
 from trytond.wizard import Wizard
-from trytond.backend import TableHandler
+from trytond.backend import TableHandler, FIELDS
 from decimal import Decimal
 import base64
 
@@ -419,8 +419,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     def get_tax_amount(self, cursor, user, ids, name, arg, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
+        type_name = FIELDS[self.tax_amount._type].sql_type(self.tax_amount)[0]
         cursor.execute('SELECT invoice, ' \
-                    'COALESCE(SUM(amount), 0)::DECIMAL ' \
+                    'CAST(COALESCE(SUM(amount), 0) AS ' + type_name + ') ' \
                 'FROM account_invoice_tax ' \
                 'WHERE invoice IN (' + ','.join(['%s' for x in ids]) + ') ' \
                 'GROUP BY invoice', ids)
