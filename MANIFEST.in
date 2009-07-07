@@ -8,3 +8,5 @@ include *.xml
 include *.odt
 include *.csv
 include doc/*
+include tests/*
+
