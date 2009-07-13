@@ -13,8 +13,9 @@
     'description': '''Add product on timesheet lines.
 Define allowed services for each employees.
 ''',
-    'description_de_DE': ''' - Ermöglicht das Hinzufügen von Artikeln zu Zeitpositionen.
- - Ermöglicht die Definition von Dienstleistungen, die für einen Mitarbeiter verwendet werden können.
+    'description_de_DE': '''Projektmodul Ertrag:
+    - Ermöglicht das Hinzufügen von Artikeln zu Zeitpositionen.
+    - Ermöglicht die Definition von Dienstleistungen, die für einen Mitarbeiter verwendet werden können.
 ''',
     'description_es_CO':''' - Se añade el producto a las tarjetas de registro de tiempos.
  - Se define por empleado los servicios que tiene autorizados.
