@@ -13,7 +13,7 @@ field,"project.work,rec_name",0,Name,Name,0
 field,"project.work,state",0,State,Status,0
 field,"project.work,total_effort",0,Total Effort,Gesamtaufwand,0
 field,"project.work,type",0,Type,Typ,0
-field,"project.work,work",0,Work,Aufgabe,0
+field,"project.work,work",0,Work,Arbeit,0
 field,"project.work,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"project.work,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"timesheet.work,sequence",0,Sequence,Sequenz,0
@@ -43,7 +43,7 @@ view,project.work,0,Other Info,Sonstiges,0
 view,project.work,0,Projects,Projekte,0
 view,project.work,0,Tasks,Aufgaben,0
 view,project.work,0,Timesheet,Zeiterfassungsblatt,0
-view,project.work,0,Work,Aufgabe,0
+view,project.work,0,Work,Arbeit,0
 view,project.work,0,Work Efforts,Arbeit Aufwände,0
 view,project.work,0,Works,Arbeiten,0
 view,project.work,0,Works Efforts,Arbeiten Aufwände,0
