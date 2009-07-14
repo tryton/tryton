@@ -1066,14 +1066,12 @@ class GeneralLegder(Report):
                 ('fiscalyear', '=', datas['form']['fiscalyear']),
                 ('end_date', '<=', end_period.start_date),
                 ], context=context)
-            end_period_ids = exclude(end_period_ids, start_period_ids)
             if datas['form']['end_period'] not in end_period_ids:
                 end_period_ids.append(datas['form']['end_period'])
         else:
             end_period_ids = period_obj.search(cursor, user, [
                 ('fiscalyear', '=', datas['form']['fiscalyear']),
                 ], context=context)
-            end_period_ids = exclude(end_period_ids, start_period_ids)
 
         end_context = context.copy()
         end_context['fiscalyear'] = datas['form']['fiscalyear']
@@ -1098,7 +1096,8 @@ class GeneralLegder(Report):
         context['id2end_account'] = id2end_account
         context['digits'] = company.currency.digits
         context['lines'] = lambda account_id: self.lines(cursor, user,
-                account_id, end_period_ids, datas['form']['posted'], context)
+                account_id, list(set(end_period_ids).difference(
+                    set(start_period_ids))), datas['form']['posted'], context)
         context['company'] = company
 
         return super(GeneralLegder, self).parse(cursor, user, report, objects,
