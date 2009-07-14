@@ -655,9 +655,9 @@ class Invoice(OSV):
                     continue
                 if line.second_currency.id == invoice.currency.id:
                     if line.debit - line.credit > Decimal('0.0'):
-                        amount_currency += line.amount_second_currency
+                        amount_currency += abs(line.amount_second_currency)
                     else:
-                        amount_currency -= line.amount_second_currency
+                        amount_currency -= abs(line.amount_second_currency)
                 else:
                     amount += line.debit - line.credit
             for line in invoice.payment_lines:
@@ -665,9 +665,9 @@ class Invoice(OSV):
                     continue
                 if line.second_currency.id == invoice.currency.id:
                     if line.debit - line.credit > Decimal('0.0'):
-                        amount_currency += line.amount_second_currency
+                        amount_currency += abs(line.amount_second_currency)
                     else:
-                        amount_currency -= line.amount_second_currency
+                        amount_currency -= abs(line.amount_second_currency)
                 else:
                     amount += line.debit - line.credit
             if invoice.type in ('in_invoice', 'out_credit_note'):
