@@ -152,7 +152,9 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
         if int_id:
             return new_ids[0]
         return new_ids
+
 Forecast()
+
 
 class ForecastLine(ModelSQL, ModelView):
     'Stock Forecast Line'
@@ -417,7 +419,6 @@ class ForecastComplete(Wizard):
         forecast_line_obj = self.pool.get('stock.forecast.line')
         product_obj = self.pool.get('product.product')
 
-
         prod2line = {}
         forecast_line_ids = forecast_line_obj.search(
             cursor, user, [('forecast', '=', data['id'])], context=context)
@@ -433,7 +434,7 @@ class ForecastComplete(Wizard):
             prod2uom[product.id] = product.default_uom.id
 
         if data['form'].get('products'):
-            products = data['form']['products'][0][1]#XXX why this [0][1] stuff ?
+            products = data['form']['products'][0][1]
         else:
             products = None
 
