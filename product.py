@@ -22,9 +22,9 @@ class ProductCostHistory(ModelSQL, ModelView):
         return ('SELECT ' \
                     'MAX(__id) AS id, ' \
                     'COALESCE(write_date, create_date) AS date, ' \
-                    'TRIM(\',\' FROM SUBSTRING(res FROM \',.*\'))::INTEGER ' \
+                    'CAST(TRIM(\',\' FROM SUBSTRING(res FROM \',.*\')) AS INTEGER) ' \
                         'AS template, ' \
-                    'TRIM(\',\' FROM value)::NUMERIC AS cost_price ' \
+                    'CAST(TRIM(\',\' FROM value) AS NUMERIC) AS cost_price ' \
                 'FROM "' + property_obj._table + '__history" ' \
                 'WHERE name = \'cost_price\' ' \
                     'AND res LIKE \'product.template,%%\' ' \
