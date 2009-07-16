@@ -1058,10 +1058,10 @@ class Rule(ModelSQL, ModelView):
         tax_obj = self.pool.get('account.tax')
         rule_line_obj = self.pool.get('account.tax.rule.line')
 
-        if isinstance(rule, (int, long)):
+        if isinstance(rule, (int, long)) and rule:
             rule = self.browse(cursor, user, rule, context=context)
 
-        if isinstance(tax, (int, long)):
+        if isinstance(tax, (int, long)) and tax:
             tax = tax_obj.browse(cursor, user, tax, context=context)
 
         pattern = pattern.copy()
