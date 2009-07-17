@@ -3,6 +3,7 @@
 {
     'name': 'Product Cost FIFO',
     'name_fr_FR': 'Prix de revient produit FIFO',
+    'name_de_DE': 'Artikel Kostenpreisermittlung FIFO',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -17,6 +18,13 @@ Une fois le module installé, le prix de chaque mouvement de stock
 depuis un fournisseur ou vers un client modifiera automatiquement le
 prix de revient du produit concerné (si la méthode de coût est FIFO).
 ''',
+    'description_de_DE':'''Kostenpreisermittlung für Artikel nach Methode 'FIFO'
+    - Fügt 'FIFO' (First In - First Out) zu den Methoden für die
+      Kostenpreisermittlung für Artikel hinzu.
+    - Nach Installation dieses Moduls wird der Kostenpreis eines Artikels (für
+      den die Methode FIFO gewählt wurde) automatisch bei jeder Lagerbewegung
+      von einem Lieferanten oder zu einem Kunden angepasst.
+''',
     'depends': [
         'ir',
         'product',
@@ -26,5 +34,6 @@ prix de revient du produit concerné (si la méthode de coût est FIFO).
     ],
     'translation': [
         'fr_FR.csv',
+        'de_DE.csv',
     ],
 }
