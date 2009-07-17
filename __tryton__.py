@@ -3,6 +3,7 @@
 {
     'name': 'Product Cost History',
     'name_fr_FR': 'Historique prix de revient produit',
+    'name_de_DE': 'Artikel Kostenpreis Historisierung',
     'version': '1.1.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -14,7 +15,10 @@ all the past value of the cost price of the current product.
     'description_fr_FR': '''Historique du prix de revient du produit.
 Ce module ajoute un bouton sur la fiche produit qui ouvre la liste de
 toutes les valeurs passées du prix de revient du produit.
-
+''',
+    'description_de_DE': '''Historisierung für Kostenpreise von Artikeln
+    - Fügt einen Knopf auf dem Artikelformular hinzu, der eine Liste mit sämtlichen
+      Werten aus der Vergangenheit für den Kostenpreis des Artikels öffnet.
 ''',
     'depends': [
         'ir',
@@ -25,5 +29,6 @@ toutes les valeurs passées du prix de revient du produit.
     ],
     'translation': [
         'fr_FR.csv',
+        'de_DE.csv',
     ],
 }
