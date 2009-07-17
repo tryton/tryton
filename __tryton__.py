@@ -9,7 +9,7 @@
     'website': 'http://www.tryton.org/',
 
     "description": '''Define default storage location by warehouse on product.
-Theses locations will be used by the supplier packing for generating
+Theses locations will be used by the supplier shipment for generating
 inventory moves.
 ''',
 
