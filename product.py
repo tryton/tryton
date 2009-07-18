@@ -61,8 +61,11 @@ class OpenProductCostHistory(Wizard):
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
 
-        product = product_obj.browse(cursor, user, data['id'], context=context)
-        res['domain'] = str([('template', '=', product.template.id)])
+        if not data['id'] or data['id'] < 0:
+            res['domain'] = str([('template', '=', False)])
+        else:
+            product = product_obj.browse(cursor, user, data['id'], context=context)
+            res['domain'] = str([('template', '=', product.template.id)])
         return res
 
 OpenProductCostHistory()
