@@ -3,6 +3,7 @@
 {
     'name': 'Stock Forecast',
     'name_fr_FR': 'Prévision de stock',
+    'name_de_DE': 'Lagerverwaltung Bedarfsermittlung',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -24,6 +25,17 @@ correspondants sont créés et répartis sur la période donnée. Ces
 mouvement permettent aux autres processus de prendre en compte les
 prévisions.
 ''',
+    'description_de_DE':'''Bedarfsermittlung für die Lagerverwaltung
+    - Fügt das Modell "Vorhersage" zur Lagerverwaltung hinzu.
+    - Das Formular "Bedarfsermittlung" ermöglicht die Erstellung von zu
+      erwartenden Lagerbewegungen zu Kunden in einem beliebigen Zeitraum in der
+      Zukunft. Ein Wizard ermöglicht die Berechnung der zu erwartenden
+      Bewegungen auf der Grundlage eines Zeitraumes in der Vergangenheit. Bei
+      Bestätigung des Formulars werden die entsprechenden Lagerbewegungen
+      erzeugt und über den entsprechenden Zeitraum gleichmässig verteilt. Diese
+      Lagerbewegungen ermöglichen die Berücksichtigung von Vorhersagen in
+      den anderen Prozessen der Lagerverwaltung.
+''',
     'depends': [
         'ir',
         'res',
@@ -37,5 +49,6 @@ prévisions.
     ],
     'translation': [
         'fr_FR.csv',
+        'de_DE.csv',
     ],
 }
