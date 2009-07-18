@@ -7,17 +7,14 @@
     "author" : "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-
     "description": '''Define default storage location by warehouse on product.
 Theses locations will be used by the supplier shipment for generating
 inventory moves.
 ''',
-
     "description_fr_FR": '''Defini un emplacement Magasin par défaut par produit.
 Ces emplacements seront utilisés par les colisages fournisseurs pour
 générer les mouvements internes.
 ''',
-
     "depends" : [
         "ir",
         "product",
