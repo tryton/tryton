@@ -3,6 +3,7 @@
 {
     "name" : "Stock Product Location",
     "name_fr_FR" : "Emplacement de produit",
+    "name_de_DE" : "Lagerverwaltung Artikel Lagerort",
     "version" : "0.0.1",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
@@ -15,6 +16,11 @@ inventory moves.
 Ces emplacements seront utilisés par les colisages fournisseurs pour
 générer les mouvements internes.
 ''',
+    "description_de_DE": '''Standardlagerorte für Artikel
+    - Ermöglicht die Definition von Standardlagerorten für Artikel in einem Warenlager
+    - Diese Lagerorte werden von Lieferposten von Lieferanten für die
+      Lagerbewegungen benutzt
+''',
     "depends" : [
         "ir",
         "product",
@@ -26,5 +32,6 @@ générer les mouvements internes.
     ],
     'translation': [
         'fr_FR.csv',
+        'de_DE.csv',
     ],
 }
