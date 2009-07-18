@@ -50,8 +50,11 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         ('paid', 'Paid'),
         ('cancel', 'Canceled'),
         ], 'State', readonly=True)
-    invoice_date = fields.Date('Invoice Date', required=True,
-        states=_STATES)
+    invoice_date = fields.Date('Invoice Date',
+        states={
+                'readonly': "state in ('open', 'paid', 'cancel')",
+                'required': "state in ('open', 'paid')",
+        })
     accounting_date = fields.Date('Accounting Date', states=_STATES)
     party = fields.Many2One('party.party', 'Party', change_default=True,
         required=True, states=_STATES, on_change=['party', 'payment_term',
@@ -144,6 +147,13 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     'as on invoice line!',
             })
 
+    def init(self, cursor, module_name):
+        super(Invoice, self).init(cursor, module_name)
+        table = TableHandler(cursor, self, module_name)
+
+        # Migration from 1.2 invoice_date is no more required
+        table.not_null_action('invoice_date', action='remove')
+
     def default_type(self, cursor, user, context=None):
         if context is None:
             context = {}
@@ -151,10 +161,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
-
-    def default_invoice_date(self, cursor, user, context=None):
-        date_obj = self.pool.get('ir.date')
-        return date_obj.today(cursor, user, context=context)
 
     def default_currency(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
@@ -839,6 +845,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     def set_number(self, cursor, user, invoice_id, context=None):
         period_obj = self.pool.get('account.period')
         sequence_obj = self.pool.get('ir.sequence.strict')
+        date_obj = self.pool.get('ir.date')
 
         if context is None:
             context = {}
@@ -861,11 +868,13 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             self.raise_user_error(cursor, 'no_invoice_sequence',
                     context=context)
         ctx = context.copy()
-        ctx['date'] = invoice.invoice_date
+        ctx['date'] = invoice.invoice_date or date_obj.today(cursor, user,
+                context=context)
         number = sequence_obj.get_id(cursor, user, sequence_id, context=ctx)
-        self.write(cursor, user, invoice_id, {
-            'number': number,
-            }, context=context)
+        vals = {'number': number}
+        if not invoice.invoice_date:
+            vals['invoice_date'] = ctx['date']
+        self.write(cursor, user, invoice.id, vals, context=context)
         return True
 
     def check_modify(self, cursor, user, ids, context=None):
@@ -953,7 +962,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         default['payment_lines'] = False
         default['lines'] = False
         default['taxes'] = False
-        default['invoice_date'] = date_obj.today(cursor, user, context=context)
+        default['invoice_date'] = False
         default['accounting_date'] = False
         default['lines_to_pay'] = False
 
