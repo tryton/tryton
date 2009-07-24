@@ -1,7 +1,9 @@
 type,name,res_id,src,value,fuzzy
+error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,No puede cambiar la UdM predeterminada para un producto asociado con movimientos de inventario.,1
 error,stock.inventory.line,0,Line quantity must be positive!,La línea de cantidad debe ser positiva!,0
 error,stock.inventory.line,0,Product must be unique by inventory!,El producto debe ser único por inventario!,0
 error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,Un lugar con movimientos existentes no puede ser cambiado a un tipo que no soporte movimientos.,0
+error,stock.location,0,"Location ""%s"" must be a child of warehouse ""%s""!","¡Localización de ""%s"" debe ser un hijo de la bodega ""%s""!",0
 error,stock.location,0,You can not create recursive locations!,No puede crear lugares recursivamente!,0
 error,stock.move,0,Move can be on only one Shipment,Solamente se puede hacer movimiento sobre un Envío.,0
 error,stock.move,0,Move quantity must be positive,El valor del movimiento debe ser positivo,0
@@ -280,7 +282,6 @@ model,"workflow,name",wkf_inventory,Inventory,Inventario,0
 model,"workflow,name",wkf_packing_in_return,Supplier Return Shipment,Devolución a Proveedor,0
 model,"workflow,name",wkf_packingin,Supplier Shipment,Envío del Proveedor,0
 odt,stock.packing.in.restocking_list,0,/,/,0
-odt,stock.packing.in.restocking_list,0,2,2,0
 odt,stock.packing.in.restocking_list,0,Code:,Código:,0
 odt,stock.packing.in.restocking_list,0,E-Mail:,Correo electrónico:,0
 odt,stock.packing.in.restocking_list,0,From Location,Lugar Inicial,0
@@ -294,7 +295,6 @@ odt,stock.packing.in.restocking_list,0,Supplier:,Proveedor:,0
 odt,stock.packing.in.restocking_list,0,To Location,Al Lugar:,0
 odt,stock.packing.in.restocking_list,0,Warehouse:,Bodega:,0
 odt,stock.packing.internal.report,0,/,/,0
-odt,stock.packing.internal.report,0,2,2,0
 odt,stock.packing.internal.report,0,Code:,Código:,0
 odt,stock.packing.internal.report,0,E-Mail:,Correo electrónico:,0
 odt,stock.packing.internal.report,0,From Location,Lugar Inicial,0
@@ -308,8 +308,6 @@ odt,stock.packing.internal.report,0,Reference:,Referencia:,0
 odt,stock.packing.internal.report,0,To Location,Al Lugar:,0
 odt,stock.packing.internal.report,0,To Location:,Destino:,0
 odt,stock.packing.out.delivery_note,0,/,/,0
-odt,stock.packing.out.delivery_note,0,1,1,0
-odt,stock.packing.out.delivery_note,0,2,2,0
 odt,stock.packing.out.delivery_note,0,Customer Code:,Código de Cliente:,0
 odt,stock.packing.out.delivery_note,0,Date:,Fecha:,0
 odt,stock.packing.out.delivery_note,0,Delivery Note,Nota de Envío,0
@@ -320,7 +318,6 @@ odt,stock.packing.out.delivery_note,0,Quantity,Cantidad,0
 odt,stock.packing.out.delivery_note,0,Reference:,Referencia:,0
 odt,stock.packing.out.delivery_note,0,Shipment Number:,Número de Envío,0
 odt,stock.packing.out.picking_list,0,/,/,0
-odt,stock.packing.out.picking_list,0,2,2,0
 odt,stock.packing.out.picking_list,0,Code:,Código:,0
 odt,stock.packing.out.picking_list,0,Customer:,Cliente:,0
 odt,stock.packing.out.picking_list,0,E-Mail:,Correo electrónico:,0
@@ -334,7 +331,6 @@ odt,stock.packing.out.picking_list,0,Reference:,Referencia:,0
 odt,stock.packing.out.picking_list,0,To Location,Al Lugar:,0
 odt,stock.packing.out.picking_list,0,Warehouse:,Bodega:,0
 odt,stock.packing.out.return.restocking_list,0,/,/,0
-odt,stock.packing.out.return.restocking_list,0,2,2,0
 odt,stock.packing.out.return.restocking_list,0,Code:,Código:,0
 odt,stock.packing.out.return.restocking_list,0,E-Mail:,Correo electrónico:,0
 odt,stock.packing.out.return.restocking_list,0,From Location,Lugar Inicial,0
