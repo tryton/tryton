@@ -1595,6 +1595,8 @@ class ModelSQL(ModelStorage):
                     arg2 = arg[2][:]
                     for xitem in todel[::-1]:
                         del arg2[xitem]
+                    arg2 = [FIELDS[table._columns[arg[0]]._type].sql_format(x)
+                            for x in arg2]
                     #TODO fix max_stack_depth
                     if len(arg2):
                         if arg[0] == 'id':
@@ -1660,7 +1662,8 @@ class ModelSQL(ModelStorage):
                     if arg[0] == 'id':
                         qu1.append('("%s".%s %s %%s)' % \
                                 (table._table, arg[0], arg[1]))
-                        qu2.append(arg[2])
+                        qu2.append(FIELDS[table._columns[arg[0]]._type].\
+                                sql_format(arg[2]))
                     else:
                         add_null = False
                         if arg[1] in ('like', 'ilike'):
