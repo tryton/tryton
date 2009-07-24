@@ -170,41 +170,24 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
 
             # Update existing lines
             for line in inventory.lines:
+                quantity, uom_id = 0.0, product2uom[line.product.id]
                 if line.product.id in product_qty:
-                    quantity, uom_id = product_qty[line.product.id]
-                    del product_qty[line.product.id]
-                    # if nothing as changed, continue
-                    if line.quantity == line.expected_quantity == quantity \
-                            and line.uom.id == uom_id:
-                        continue
-                    values = {'expected_quantity': quantity,
-                              'uom': uom_id}
-                    # update also quantity field if not edited
-                    if line.quantity == line.expected_quantity:
-                        values['quantity'] = max(quantity, 0.0)
-                else:
-                    values = {'expected_quantity': 0.0,}
-                    if line.quantity == line.expected_quantity:
-                        values['quantity'] = 0
-
-
-                line_obj.write(
-                    cursor, user, line.id, values, context=context)
+                    quantity, uom_id = product_qty.pop(line.product.id)
+                values = line_obj.update_values4complete(cursor, user,
+                        line, quantity, uom_id, context=context)
+                if values:
+                    line_obj.write(cursor, user, line.id, values,
+                            context=context)
 
             # Create lines if needed
-            for product in product_qty:
-                if product2type[product] != 'stockable':
+            for product_id in product_qty:
+                if product2type[product_id] != 'stockable':
                     continue
-                quantity, uom_id = product_qty[product]
-                values = {
-                    'product': product,
-                    'expected_quantity': quantity,
-                    'quantity': max(quantity, 0.0),
-                    'uom': uom_id,
-                    'inventory': inventory.id,
-                    }
-                line_obj.create(
-                    cursor, user, values, context=context)
+                quantity, uom_id = product_qty[product_id]
+                values = line_obj.create_values4complete(cursor, user,
+                        product_id, inventory, quantity, uom_id,
+                        context=context)
+                line_obj.create(cursor, user, values, context=context)
 
 Inventory()
 
@@ -299,6 +282,53 @@ class InventoryLine(ModelSQL, ModelView):
             'effective_date': line.inventory.date,
             }, context=context)
         self.write(cursor, user, line.id, {'move': move_id}, context=context)
+
+    def update_values4complete(self, cursor, user, line, quantity, uom_id,
+            context=None):
+        '''
+        Return update values to complete inventory
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param line: a BrowseRecord of inventory.line
+        :param quantity: the actual product quantity for the inventory location
+        :param uom_id: the UoM id of the product line
+        :param context: the context
+        :return: a dictionary
+        '''
+        res = {}
+        # if nothing changed, no update
+        if line.quantity == line.expected_quantity == quantity \
+                and line.uom.id == uom_id:
+            return {}
+        res['expected_quantity'] = quantity
+        res['uom'] = uom_id
+        # update also quantity field if not edited
+        if line.quantity == line.expected_quantity:
+            res['quantity'] = max(quantity, 0.0)
+        return res
+
+    def create_values4complete(self, cursor, user, product_id, inventory,
+            quantity, uom_id, context=None):
+        '''
+        Return create values to complete inventory
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param product_id: the product.product id
+        :param inventory: a BrowseRecord of inventory.inventory
+        :param quantity: the actual product quantity for the inventory location
+        :param uom_id: the UoM id of the product_id
+        :param context: the context
+        :return: a dictionary
+        '''
+        return {
+            'inventory': inventory.id,
+            'product': product_id,
+            'expected_quantity': quantity,
+            'quantity': max(quantity, 0.0),
+            'uom': uom_id,
+        }
 
 InventoryLine()
 
