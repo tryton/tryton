@@ -68,10 +68,12 @@ class Sha(Field):
 
     @staticmethod
     def sql_format(value):
-        if hashlib:
-            return value and hashlib.sha1(value).hexdigest() or ''
-        else:
-            return value and sha.new(value).hexdigest() or ''
+        if isinstance(value, basestring):
+            if hashlib:
+                value = hashlib.sha1(value).hexdigest()
+            else:
+                value = sha.new(value).hexdigest()
+        return Field.sql_format(value)
 
     @staticmethod
     def sql_type(field):
