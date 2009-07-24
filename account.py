@@ -547,8 +547,8 @@ class Account(ModelSQL, ModelView):
     debit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
             string='Debit', depends=['currency_digits'])
     reconcile = fields.Boolean('Reconcile',
-            help='Check if the account can be used \n' \
-                    'for reconciliation.',
+            help='Allow move lines of this account \n' \
+                    'to be reconciled.',
             states={
                 'invisible': "kind == 'view'",
             }, depends=['kind'])
