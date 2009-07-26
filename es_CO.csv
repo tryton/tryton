@@ -31,7 +31,7 @@ model,"ir.action,name",act_company_tree,Companies,Compañías,0
 model,"ir.action,name",act_company_form,Companies,Compañías,0
 model,"ir.action,name",act_company_form2,Companies,Compañías,0
 model,"ir.action,name",act_employee_form,Employees,Empleados,0
-model,"ir.action,name",report_letter,_Letter,_Carta,0
+model,"ir.action,name",report_letter,Letter,Carta,0
 model,"ir.cron-company.company,name",0,ir.cron-company.company,ir.cron-company.company,0
 model,"ir.ui.menu,name",menu_company_tree,Companies,Compañías,0
 model,"ir.ui.menu,name",menu_company_form,Edit Companies,Editar Compañías,0
