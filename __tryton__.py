@@ -4,6 +4,7 @@
     'name': 'Stock Inventory for many locations',
     'name_fr_FR': 'Inventaire de stock par liste de locations',
     'name_de_DE': 'Lagerverwaltung Bestandskorrektur für mehrere Lagerorte',
+    'name_es_ES': 'Inventario de existencias para muchas ubicaciones',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -21,6 +22,10 @@ produit et par catégorie de produit.
       von Lagerorten erzeugt.
     - Ermöglicht die Filterung der Auswahl nach Artikel oder Artikelkategorie.
 ''',
+    'description_es_ES': '''Añade un asistente que permite crear inventarios
+automáticos para una lista de ubicaciones dada. También permite filtrar por
+producto y categorías de producto.
+    ''',
     'depends': [
         'ir',
         'stock',
@@ -33,5 +38,6 @@ produit et par catégorie de produit.
     'translation': [
         'fr_FR.csv',
         'de_DE.csv',
+        'es_ES.csv',
     ],
 }
