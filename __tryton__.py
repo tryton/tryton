@@ -4,6 +4,7 @@
     "name" : "Stock Product Location",
     "name_fr_FR" : "Emplacement de produit",
     "name_de_DE" : "Lagerverwaltung Artikel Lagerort",
+    "name_es_ES" : "Ubicación de existencias de producto",
     "version" : "0.0.1",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
@@ -21,6 +22,9 @@ générer les mouvements internes.
     - Diese Lagerorte werden von Lieferposten von Lieferanten für die
       Lagerbewegungen benutzt
 ''',
+    "description_es_ES": '''Define la ubicación del almacén predeterminado por depósito y producto.
+Estas ubicaciones se utilizarán en el envio de proveedor para generar movimientos de inventario.
+''',
     "depends" : [
         "ir",
         "product",
@@ -33,5 +37,6 @@ générer les mouvements internes.
     'translation': [
         'fr_FR.csv',
         'de_DE.csv',
+        'es_ES.csv',
     ],
 }
