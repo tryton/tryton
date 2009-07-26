@@ -34,6 +34,7 @@ field,"analytic_account.line,account",0,Account,Cuenta,0
 field,"analytic_account.line,active",0,Active,Activo,0
 field,"analytic_account.line,credit",0,Credit,Crédito,0
 field,"analytic_account.line,currency",0,Currency,Moneda,0
+field,"analytic_account.line,currency_digits",0,Currency Digits,Dígitos de Moneda,0
 field,"analytic_account.line,date",0,Date,Fecha,0
 field,"analytic_account.line,debit",0,Debit,Débito,0
 field,"analytic_account.line,journal",0,Journal,Diario,0
