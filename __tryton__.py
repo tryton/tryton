@@ -3,7 +3,7 @@
 {
     'name': 'Timesheet',
     'name_de_DE': 'Zeiterfassung',
-    'name_es_DE': 'Hoja de Asistencia',
+    'name_es_CO': 'Hoja de Asistencia',
     'name_es_ES': 'Hoja de Asistencia',
     'name_fr_FR': 'Feuille de présence',
     'version': '0.0.1',
@@ -32,7 +32,7 @@ Zugehörige Berichte:
     - Trabajo
     - Líneas de tiempo laborado
 
-Y con reportes:
+Y con reportes de:
     - Horas por semana
     - Horas por empleado por semana
     - Horas por empleado por mes
