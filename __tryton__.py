@@ -4,6 +4,7 @@
     "name" : "Stock Supply with Week Days",
     "name_fr_FR" : "Approvisionnement par jours de semaine",
     "name_de_DE" : "Lagerverwaltung Bestellwesen nach Wochentagen",
+    "name_es_ES" : "Existencias por días de la semana",
     "version" : "0.0.1",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
@@ -18,6 +19,9 @@ Impacte les calculs de dates de livraisons.
     - Ermöglicht die Definition von Liefertagen pro Lieferant.
     - Wirkt sich auf die Berechnung von Lieferzeitpunkten aus.
  ''',
+    "description_es_ES": '''Define los días de la semana de entrega para suministros.
+Afecta la computación de las fechas de suministros.
+''',
     "depends" : [
         "ir",
         "purchase",
@@ -28,5 +32,6 @@ Impacte les calculs de dates de livraisons.
     'translation': [
         'fr_FR.csv',
         'de_DE.csv',
+        'es_ES.csv',
     ],
 }
