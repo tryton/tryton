@@ -69,4 +69,4 @@ view,account.statement.journal,0,Statement Journal,Libro de Estados de Cuenta,0
 view,account.statement.journal,0,Statement Journals,Libros de Estados de Cuenta,0
 view,account.statement.line,0,Bank Statement Line,Línea de extracto bancario,0
 view,account.statement.line,0,Statement Line,Libros de Estados de Cuenta,0
-view,account.statement.line,0,Statement Lines,Líneas de Estado de Cuenta,1
+view,account.statement.line,0,Statement Lines,Líneas de Estado de Cuenta,0
