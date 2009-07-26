@@ -3,6 +3,7 @@
 {
     'name': 'Project Plan',
     'name_de_DE': 'Projekte Planung',
+    'name_es_CO': 'Planeación de Proyectos',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -11,6 +12,8 @@
 ''',
     'description_de_DE': '''Projektmodul Planung:
     - Fügt Planungsmöglichkeiten für Projekte hinzu
+''',
+    'description_es_CO': '''Añadir posibilidad de planeación de proyectos.
 ''',
     'depends': [
         'ir',
@@ -24,5 +27,6 @@
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
     ],
 }
