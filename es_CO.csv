@@ -15,7 +15,7 @@ error,account.invoice,0,The debit account on journal is the same than the invoic
 error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,No hay una secuencia de facturaas para el período/año fiscal!,0
 error,account.invoice,0,"You can not create an invoice
 with account from a different invoice company!",No puede crear una factura,0
-error,account.invoice,0,"You can not modify an invoice that is open, paid or canceled!","¡No puede modificar una factura abierta, pagada o cancelada!",0
+error,account.invoice,0,"You can not modify an invoice that is opened, paid!","¡No puede modificar una factura que está abierta, pagada!",0
 error,account.invoice,0,You can not reset to draft an invoice that has move!,¡No puede poner en borrador una factura que ha sido movida!,0
 error,account.invoice,0,"You can not use the same account
 as on invoice line!","¡No puede usar la misma cuenta
@@ -28,7 +28,7 @@ error,account.invoice.line,0,"You can not add a line to an invoice that is open,
 error,account.invoice.line,0,"You can not create invoice line
 with account with a different invoice company!","¡No puede crear una línea de factura
 con cuenta a partir de una factura de una compañía distinta!",0
-error,account.invoice.line,0,"You can not modify line from an invoice that is open, paid or canceled!","No puede modificar la línea de una factura que esté abierta, pagada o cancelada!",0
+error,account.invoice.line,0,"You can not modify line from an invoice that is opened, paid!","¡No puede modificar la línea de una factura que está abierta, pagada!",0
 error,account.invoice.line,0,"You can not use the same account
 as on the invoice!","No puede usar la misma cuenta
 que en la factura!",0
