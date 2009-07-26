@@ -1,5 +1,5 @@
 type,name,res_id,src,value,fuzzy
-error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,No puede cambiar la UdM predeterminada para un producto asociado con movimientos de inventario.,1
+error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,No puede cambiar la UdM predeterminada para un producto asociado a movimientos de inventario.,0
 error,stock.inventory.line,0,Line quantity must be positive!,La línea de cantidad debe ser positiva!,0
 error,stock.inventory.line,0,Product must be unique by inventory!,El producto debe ser único por inventario!,0
 error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,Un lugar con movimientos existentes no puede ser cambiado a un tipo que no soporte movimientos.,0
@@ -210,7 +210,7 @@ model,"ir.ui.menu,name",menu_location_form,Edit Locations,Editar Lugares,0
 model,"ir.ui.menu,name",menu_packing_internal_form,Internal Shipments,Envío Internos,0
 model,"ir.ui.menu,name",menu_packing_internal_waiting_form,Internal Shipments Waiting Assignation,Envío Internos esperando Asignación,0
 model,"ir.ui.menu,name",menu_inventory_form,Inventories,Inventarios,0
-model,"ir.ui.menu,name",menu_stock,Inventory Management,Manejo de Inventarios,0
+model,"ir.ui.menu,name",menu_stock,Inventory Management,Gestión de Inventarios,0
 model,"ir.ui.menu,name",menu_location_tree,Locations,Lugares,0
 model,"ir.ui.menu,name",menu_move_form,Moves,Movimientos,0
 model,"ir.ui.menu,name",menu_move_form_supp,Moves from Suppliers,Movimientos de Proveedores,0
