@@ -3,6 +3,7 @@
 {
     'name': 'Company Work Time',
     'name_de_DE': 'Unternehmen Arbeitszeit',
+    'name_es_CO': 'Tiempo de Trabajo en la Compañía',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -18,5 +19,6 @@
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
     ],
 }
