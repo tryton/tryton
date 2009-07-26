@@ -93,8 +93,8 @@ field,"stock.move,sale_line",0,,,0
 help,"sale.handle.invoice.exception.ask,recreate_invoices",0,The selected invoices will be recreated. The other ones will be ignored.,La factura seleccionada será recreada. Las otras serán ignoradas.,0
 model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Ventas Confirmadas,0
 model,"ir.action,name",act_sale_form_draft,Draft Sales,Ventas en Borrador,0
-model,"ir.action,name",wizard_invoice_handle_exception,Handle Invoice Exception,Excepción de manejo de factura,0
-model,"ir.action,name",wizard_packing_handle_exception,Handle Shipment Exception,Excepción de manejo de envío,0
+model,"ir.action,name",wizard_invoice_handle_exception,Handle Invoice Exception,Tratar Excepción de factura,0
+model,"ir.action,name",wizard_packing_handle_exception,Handle Shipment Exception,Tratar Excepción de Envío,0
 model,"ir.action,name",act_invoice_form,Invoices,Facturas,0
 model,"ir.action,name",act_sale_form_new,New Sale,Nueva venta,0
 model,"ir.action,name",act_open_customer,Parties associated to Sales,Terceros asociados a Ventas,0
@@ -200,7 +200,7 @@ selection,"stock.move,sale_exception_state",0,Recreated,Rehacer,0
 view,product.product,0,Customers,Clientes,0
 view,product.template,0,Customers,Clientes,0
 view,sale.handle.invoice.exception.ask,0,Choose invoices to recreate,Escoja una factura a rehacer,0
-view,sale.handle.invoice.exception.ask,0,Handle Invoice Exception,Excepción de Manejo de Factura,0
+view,sale.handle.invoice.exception.ask,0,Handle Invoice Exception,Tratar Excepción de factura,0
 view,sale.handle.packing.exception.ask,0,Choose move to recreate,Escoja un movimiento a rehacer,0
 view,sale.handle.packing.exception.ask,0,Handle packing Exception,Maneje Excepciones de empaquetado,0
 view,sale.handle.packing.exception.ask,0,Recreate Moves,Recrear movimientos,0
