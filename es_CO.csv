@@ -351,3 +351,5 @@ view,country.country,0,State,Estado,0
 view,country.country,0,States,Estados,0
 view,country.country,0,Subdivision,Subdivisión,0
 view,country.country,0,Subdivisions,Subdivisiones,0
+view,country.subdivision,0,Subdivision,Subdivisión,0
+view,country.subdivision,0,Subdivisions,Subdivisiones,0
