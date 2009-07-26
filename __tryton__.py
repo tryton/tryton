@@ -4,6 +4,7 @@
     'name': 'Product Cost FIFO',
     'name_fr_FR': 'Prix de revient produit FIFO',
     'name_de_DE': 'Artikel Kostenpreisermittlung FIFO',
+    'name_es_ES': 'Coste FIFO de producto',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -25,6 +26,11 @@ prix de revient du produit concerné (si la méthode de coût est FIFO).
       den die Methode FIFO gewählt wurde) automatisch bei jeder Lagerbewegung
       von einem Lieferanten oder zu einem Kunden angepasst.
 ''',
+    'description_es_ES': '''Añade el método de coste FIFO en el formulario de producto.
+Una vez instalado, el precio de los movimientos de stock desde un proveedor o
+a un cliente actualizará automáticamente el precio de coste del producto
+relacionado (si el método de cálculo del precio de coste es FIFO)
+''',
     'depends': [
         'ir',
         'product',
@@ -35,5 +41,6 @@ prix de revient du produit concerné (si la méthode de coût est FIFO).
     'translation': [
         'fr_FR.csv',
         'de_DE.csv',
+        'es_ES.csv',
     ],
 }
