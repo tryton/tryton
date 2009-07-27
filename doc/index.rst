@@ -1,18 +1,18 @@
 Account Module
 ##############
 
-The account module define fundamentals for most of accounting needs.
+The account module defines fundamentals for most of accounting needs.
 
 
 Fiscal Year
 ***********
 
-A fiscal year aggregate a set of periods that are included between two
-dates. A Fiscal year can be *Open* or *Closed*. Closing a fiscal year
-will close all the corresponding periods.
+A fiscal year aggregates a set of periods that are included between
+two dates. A Fiscal year can be *Open* or *Closed*. Closing a fiscal
+year will close all the corresponding periods.
 
 - Name: The name of the fiscal year.
-- Code: The code.
+- Code: The code, useful for fast data entry and searching.
 - Starting and Ending Date: The dates in which the periods should be
   included.
 - Company: The company for which the fiscal year is defined.
@@ -32,6 +32,8 @@ The type can be *Standard* or *Adjustement*: Periods of type
 *Standard* on the same fiscal year can not overlap. Period of type
 *Adjustement* can overlap other periods and are typically used for all
 the accounting moves that must be created when closing a fiscal year.
+By default, the system uses only *Standard* period when creating
+moves.
 
 Each account move must be linked to a period and a move must be
 created on an open period.
@@ -40,7 +42,8 @@ created on an open period.
 Account Type
 ************
 
-The Account Type Model define the structure of the accounting reports:
+The Account Type Model defines the structure of the accounting
+reports:
 
 - Income Statement: A checkbox that tells if accounts of this type
   must appear at the top level of the Income Statement report.
@@ -76,9 +79,10 @@ An Account is defined by these fields:
 - Second currency: Force all moves for the account to have this
   secondary currency.
 - Reconcile: Allow move lines of this account to be reconciled.
-- A list of tax: This auto-complete move with new moves lines
+- Taxes: This list of tax auto-complete move with new moves lines
   corresponding to thoses taxes if the user create a line linked to
-  the current account.
+  the current account and if the journal type is *Expense* or
+  *Revenue*.
 - Note
 
 
@@ -90,11 +94,12 @@ A Journal contains the following fields:
 - Name
 - Code
 - Active: A checkbox that allow to disable the tax.
-- View: Defines how the moves lines of this journal should be
+- View: Defines how the moves lines on this journal should be
   displayed.
-- Centralised counterpart: If true all created lines are linked to the
-  last open movement for the current journal and the current period.
-- Update Posted: if true it allow to upated posted moves of this
+- Centralised counterpart: If checked all created lines are linked to
+  the last open movement for the current journal and the current
+  period.
+- Update Posted: if true it allow to upate posted moves of this
   journal.
 - Default Credit Account, Default Debit Account: Used as default
   accounts on move lines for centralised journals and for journal of
@@ -128,8 +133,8 @@ an account. The fields are:
 
 - Name
 - Reference
-- Debit and Credit: Define the debited or credited amount. These two
-  values can not be non-zero at the same time.
+- Debit and Credit: Define the debited or credited amount. Only one
+  field can be filled.
 - Account: The account.
 - Move: The move that links all the corresponding lines.
 - State: Can take one of the following value: 
@@ -146,14 +151,17 @@ an account. The fields are:
 - Reconciliation: Hold a reconciliation number if applicable.
 - Journal, Period, Date: The values on these fields comes from the
   corresponding move.
-- Tax Lines
+- Tax Lines. Gives the distribution of the amount line on the account
+  chart
 
 The *Reconcile Lines* wizard allow to link move lines of the same
 acount for whose the credit sum is equal to the debit sum. If the
 selected lines are not balanced, the wizard offer to create a
-write-off.
+write-off line with the difference to make the reconciliation.
 
-The *Unreconcile Lines* wizard allow to do the inverse operation.
+The *Unreconcile Lines* wizard allow to do the inverse operation (but
+doesn't reverse other operations that could have triggered by the
+reconciliation).
 
 
 Tax Code
@@ -183,16 +191,18 @@ the following fields:
 - Group
 - Active: A checkbox that allow to disable the tax code.
 - Sequence
-- Type: May be *Percentage* or *Fixed*.
+- Type: May be *Percentage*, *Fixed*, or *None* for empty tax.
 - Amount: If Type is *Fixed*, defines a fix amount for the tax.
 - Percentage: If Type is *Percentage*, defines the percentage of the
   tax.
 - Parent, Children: Parent and children taxes
-- Company: The company for which the tax code is defined.
+- Company: The company for which the tax is defined.
 - Invoice Account: The account to use when creating move lines for
-  invoicing with this tax.
+  invoicing with this tax, for credit on revenue or for debit on
+  expense.
 - Credit Note Account: The account to use when creating move lines for
-  credit notes with this tax.
+  credit notes with this tax, for debit on revenue or for credit on
+  expense
 - Invoice Base Code: The code to use for the base amount when this tax
   is used on invoices.
 - Invoice Base Sign: The sign of the base amount when summed for the
@@ -210,12 +220,17 @@ the following fields:
 - Credit Note Tax Sign: The sign of the tax amount when summed for the
   above tax code.
 
+If a code field is left empty, the corresponding amounts will be
+ignored by the tax reports.
+
 
 Templates
 *********
 
 The Template models (Account Template, Account Type Template, Tax
 Template, Tax Code Template, etc) are the equivalent of their
-counterparts except that they are not linked to a company. A wizard
-allow to create and update from templates the corresponding objects.
-
+counterparts except that they are not linked to a company. Two wizard
+(*Create Chart of Account from Template* and *Update Chart of Account
+from Template*) allow to create and update the accounts from the
+account templates (and consequently all other models associated to
+templates).
