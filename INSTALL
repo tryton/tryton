@@ -6,7 +6,7 @@ Prerequisites
 
  * Python 2.4 or later (http://www.python.org/)
  * egenix-mx-base (http://www.egenix.com/products/python/)
- * trytond 1.1.x (http://www.tryton.org/)
+ * trytond (http://www.tryton.org/)
  * trytond_company (http://www.tryton.org/)
  * trytond_party (http://www.tryton.org/)
  * trytond_currency (http://www.tryton.org/)
