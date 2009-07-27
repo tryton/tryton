@@ -5,7 +5,7 @@ Prerequisites
 -------------
 
  * Python 2.4 or later (http://www.python.org/)
- * trytond 0.0.x (http://www.tryton.org/)
+ * trytond (http://www.tryton.org/)
  * trytond_party (http://www.tryton.org/)
  * trytond_product (http://www.tryton.org/)
  * trytond_company (http://www.tryton.org/)
