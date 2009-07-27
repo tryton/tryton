@@ -105,7 +105,7 @@ class WidgetInterface(object):
         except Exception, exception:
             process_exception(exception, self._window)
         self._view.modelfield.set(self._view.model,
-                res.get(self.attrs['name'], False))
+                res.get(self.attrs['name'], False), modified=True)
         self.display(self._view.model, self._view.modelfield)
 
     def sig_activate(self, widget=None):
