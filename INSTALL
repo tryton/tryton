@@ -5,7 +5,7 @@ Prerequisites
 -------------
 
  * Python 2.4 or later (http://www.python.org/)
- * trytond 1.1.x (http://www.tryton.org/)
+ * trytond (http://www.tryton.org/)
 
 Installation
 ------------
