@@ -5,6 +5,7 @@
     "name_fr_FR" : "Emplacement de produit",
     "name_de_DE" : "Lagerverwaltung Artikel Lagerort",
     "name_es_ES" : "Ubicación de existencias de producto",
+    "name_es_CO" : "Ubicación de existencias de producto",
     "version" : "0.0.1",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
@@ -24,6 +25,11 @@ générer les mouvements internes.
 ''',
     "description_es_ES": '''Define la ubicación del almacén predeterminado por depósito y producto.
 Estas ubicaciones se utilizarán en el envio de proveedor para generar movimientos de inventario.
+''',
+    "description_es_CO": '''Define la ubicación de almacenamiento predeterminada
+por depósito y producto.
+Esta ubicación la utilizará el envío del proveedor para generar movimientos
+de inventaio.
 ''',
     "depends" : [
         "ir",
