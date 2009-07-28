@@ -5,6 +5,7 @@
     "name_fr_FR" : "Approvisionnement par jours de semaine",
     "name_de_DE" : "Lagerverwaltung Bestellwesen nach Wochentagen",
     "name_es_ES" : "Existencias por días de la semana",
+    "name_es_CO" : "Existencias por días de la semana",
     "version" : "0.0.1",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
@@ -21,6 +22,9 @@ Impacte les calculs de dates de livraisons.
  ''',
     "description_es_ES": '''Define los días de la semana de entrega para suministros.
 Afecta la computación de las fechas de suministros.
+''',
+    "description_es_CO": '''Define los días de la semana para proveedores.
+Afecta los cálculos de fecha de los suministros.
 ''',
     "depends" : [
         "ir",
