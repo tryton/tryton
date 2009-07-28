@@ -5,6 +5,7 @@
     'name_fr_FR': 'Prévision de stock',
     'name_de_DE': 'Lagerverwaltung Bedarfsermittlung',
     'name_es_ES': 'Previsión de existencias',
+    'name_es_CO': 'Previsión de existencias',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -45,6 +46,15 @@ en el pasado. Una vez el formulario se confirma, los movimientos
 correspondientes se crean y se distribuyen homogeneamente a lo largo del
 periodo. Dichos movimientos permitirá a otros procesos tener en cuenta
 previsiones.
+''',
+    'description_es_CO': '''Provee el modelo de «Previsión» en la gestión de
+inventarios.
+El formulario de previsión permite definir los movimientos de existencias
+planificados hacia los clientes en cualquier período de tiempo en el futuro.
+Un asistente permite calcular las cantidades esperadas respecto a un período
+anterior.  Cuando se confirma, los movimientos correspondientes se crean
+y se distribuyen homogeneamente en el período. Tales movimientos permitirá
+a otros procesos hacer previsiones.
 ''',
     'depends': [
         'ir',
