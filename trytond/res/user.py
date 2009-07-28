@@ -71,7 +71,7 @@ class User(ModelSQL, ModelView):
             })
 
     def default_password(self, cursor, user, context=None):
-        return ''
+        return False
 
     def default_active(self, cursor, user, context=None):
         return 1
