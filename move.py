@@ -141,7 +141,6 @@ class Move(ModelSQL, ModelView):
                                 move.product.id, move.quantity, move.uom,
                                 move.unit_price, move.currency, move.company,
                                 context=context)
-                    #XXX update cost price for out move cancelled
 
                 elif vals['state'] == 'done':
                     if move.from_location.type == 'supplier' \
