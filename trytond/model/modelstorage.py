@@ -617,6 +617,9 @@ class ModelStorage(Model):
                                 logger.warning(
                                     'Relation not found: ' + line[i] + \
                                         ' on ' + relation + ' !\n')
+                                res = False
+                            else:
+                                res = res[0]
                     elif fields_def[field[len(prefix)]]['type'] == 'many2many':
                         res = []
                         if line[i]:
