@@ -41,14 +41,16 @@ class Category(OSV):
     def name_get(self, cursor, user, ids, context=None):
         if not ids:
             return []
-        categories = self.browse(cursor, user, ids, context=context)
-        res = []
-        for category in categories:
-            if category.parent:
-                name = category.parent.name+' / '+ category.name
+        res = {}
+        def _name(category):
+            if category.id in res:
+                return res[category.id]
+            elif category.parent:
+                return _name(category.parent) + ' / ' + category.name
             else:
-                name = category.name
-            res.append((category.id, name))
-        return res
+                return category.name
+        for category in self.browse(cursor, user, ids, context=context):
+            res[category.id] = _name(category)
+        return res.items()
 
 Category()
