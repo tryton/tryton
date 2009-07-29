@@ -1,7 +1,7 @@
 Stock Module
 ############
 
-The stock module define fundamentals for all stock management
+The stock module defines fundamentals for all stock management
 situations: Locations where product are stored, moves between these
 locations, shipments for product arrivals and departures and inventory
 to control and update stock levels.
@@ -9,8 +9,8 @@ to control and update stock levels.
 Location
 ********
 
-Location are generic places where products are physically or virtually
-stored. There are six types of locations:
+Locations are generic places where products are physically or
+virtually stored. There are six types of locations:
 
 * Storage
 
