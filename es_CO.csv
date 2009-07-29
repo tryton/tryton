@@ -115,8 +115,8 @@ help,"purchase.product_supplier,delivery_time",0,In number of days,En número de
 help,"purchase.product_supplier.price,quantity",0,Minimal quantity,Cantidad Mínima,0
 model,"ir.action,name",act_purchase_form_confirmed,Confirmed Purchases,Compras confirmadas,0
 model,"ir.action,name",act_purchase_form_draft,Draft Purchases,Compras en Borrador,0
-model,"ir.action,name",wizard_invoice_handle_exception,Handle Invoice Exception,Excepción de Manejo de Factura,0
-model,"ir.action,name",wizard_packing_handle_exception,Handle Shipment Exception,Excepción de Manejo de Envío,0
+model,"ir.action,name",wizard_invoice_handle_exception,Handle Invoice Exception,Tratar Excepción de Factura,0
+model,"ir.action,name",wizard_packing_handle_exception,Handle Shipment Exception,Tratar Excepción de Envío,0
 model,"ir.action,name",act_invoice_form,Invoices,Facturas,0
 model,"ir.action,name",act_purchase_form_new,New Purchase,Nueva Compra,0
 model,"ir.action,name",act_open_supplier,Parties associated to Purchases,Terceros Asociados a Compras,0
@@ -234,7 +234,7 @@ view,purchase.purchase,0,Cancel,Cancelar,0
 view,purchase.purchase,0,Confirm,Confirmar,0
 view,purchase.purchase,0,Draft,Borrador,0
 view,purchase.purchase,0,Handle Invoice Exception,Manejar excepción de factura,0
-view,purchase.purchase,0,Handle Shipment Exception,Excepción de manejo de envíos,0
+view,purchase.purchase,0,Handle Shipment Exception,Tratar Excepción de Envío,0
 view,purchase.purchase,0,Invoices,Facturas,0
 view,purchase.purchase,0,Lines,Líneas,0
 view,purchase.purchase,0,Moves,Movimientos,0
