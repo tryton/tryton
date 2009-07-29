@@ -35,13 +35,15 @@ class Category(ModelSQL, ModelView):
         if not ids:
             return {}
         res = {}
-        categories = self.browse(cursor, user, ids, context=context)
-        for category in categories:
-            if category.parent:
-                name = category.parent.name+' / '+ category.name
+        def _name(category):
+            if category.id in res:
+                return res[category.id]
+            elif category.parent:
+                return _name(category.parent) + ' / ' + category.name
             else:
-                name = category.name
-            res[category.id] = name
+                return category.name
+        for category in self.browse(cursor, user, ids, context=context):
+            res[category.id] = _name(category)
         return res
 
 Category()
