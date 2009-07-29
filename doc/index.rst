@@ -1,7 +1,7 @@
 Purchase Module
 ###############
 
-The purchase module define the Purchase model.
+The purchase module defines the Purchase model.
 
 
 Purchase
