@@ -6,7 +6,7 @@ from trytond.model import ModelView, ModelSQL, fields
 class ProductLocation(ModelSQL, ModelView):
     '''
     Product Location defines the default storage location
-        by warehouse for a product
+    by warehouse for a product
     '''
     _name = 'stock.product.location'
     _description = 'Product Location'
