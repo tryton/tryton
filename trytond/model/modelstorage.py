@@ -40,7 +40,7 @@ class ModelStorage(Model):
     :write_uid: A Many2One that points to the user who writed the record.
     :write_date: A Date field for date of last write of the record.
     :rec_name: A Function field that return the rec_name of the record.
-    :__constraints: A list of constraints that each record must respect.
+    :_constraints: A list of constraints that each record must respect.
         Each item of this list is a couple ``('function_name', 'error_keyword')``,
         where ``'function_name'`` is the name of a method of the same class,
         which should return a boolean value (``False`` when the constraint is
