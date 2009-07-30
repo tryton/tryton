@@ -6,7 +6,7 @@
     'name_de_DE': 'Artikel Kostenpreis Historisierung',
     'name_es_ES': 'Histórico del precio de coste',
     'name_es_CO': 'Histórico del costo para productos',
-    'version': '1.2.0',
+    'version': '1.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
