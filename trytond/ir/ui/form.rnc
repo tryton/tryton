@@ -124,6 +124,8 @@ attlist.field &=
     | "top_to_bottom"
   }?
 attlist.field &= attribute spell { text }?
+attlist.field &= attribute img_width { text }?
+attlist.field &= attribute img_height { text }?
 image = element image { attlist.image, empty }
 attlist.image &= attribute name { text }
 attlist.image &= [ a:defaultValue = "1" ] attribute colspan { text }?

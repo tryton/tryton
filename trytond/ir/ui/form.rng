@@ -452,6 +452,16 @@
       <empty/>
     </element>
   </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="img_width"/>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute name="img_height"/>
+    </optional>
+  </define>
   <define name="attlist.image" combine="interleave">
     <attribute name="name"/>
   </define>
