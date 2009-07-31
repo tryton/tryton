@@ -16,8 +16,8 @@ class ProductLocation(ModelSQL, ModelView):
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
             domain=[('type', '=', 'warehouse')])
     location = fields.Many2One('stock.location', 'Storage Location',
-            required=True, domain="[('type', '=', 'storage'), " \
-                "('parent', 'child_of', warehouse and [warehouse] or [])]")
+            required=True, domain=[('type', '=', 'storage'),
+                "('parent', 'child_of', warehouse and [warehouse] or [])"])
     sequence = fields.Integer('Sequence')
 
     def __init__(self):
