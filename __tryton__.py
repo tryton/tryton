@@ -6,7 +6,7 @@
     "name_de_DE" : "Lagerverwaltung Artikel Lagerort",
     "name_es_ES" : "Ubicación de existencias de producto",
     "name_es_CO" : "Ubicación de existencias de producto",
-    "version" : "0.0.1",
+    "version" : "1.2.0",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
