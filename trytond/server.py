@@ -171,7 +171,7 @@ class TrytonServer(object):
         def handler(signum, frame):
             if hasattr(signal, 'SIGUSR1'):
                 if signum == signal.SIGUSR1:
-                    for db_name in Database.connected_list():
+                    for db_name in Pool.database_list():
                         Pool(db_name).init()
                     return
             if CONFIG['netrpc']:
