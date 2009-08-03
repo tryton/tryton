@@ -1,3 +1,5 @@
+* Return move id in create_move of inventory line
+
 Version 1.2.0 - 2009-04-20
 * Bug fixes (see mercurial logs for details)
 * Added return packings and a wizard to create customer return packing.

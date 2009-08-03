@@ -261,6 +261,15 @@ class InventoryLine(ModelSQL, ModelView):
             context=context)
 
     def create_move(self, cursor, user, line, context=None):
+        '''
+        Create move for an inventory line
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param line: a BrowseRecord of inventory.line
+        :param context: the context
+        :return: the stock.move id or None
+        '''
         move_obj = self.pool.get('stock.move')
         delta_qty = line.expected_quantity - line.quantity
         if delta_qty == 0.0:
@@ -282,6 +291,7 @@ class InventoryLine(ModelSQL, ModelView):
             'effective_date': line.inventory.date,
             }, context=context)
         self.write(cursor, user, line.id, {'move': move_id}, context=context)
+        return move_id
 
     def update_values4complete(self, cursor, user, line, quantity, uom_id,
             context=None):
