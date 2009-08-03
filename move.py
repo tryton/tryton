@@ -439,8 +439,6 @@ class Line(ModelSQL, ModelView):
             on_change=['move', 'party', 'account', 'debit', 'credit',
                 'journal'], select=1, depends=['debit', 'credit', 'account',
                     'journal'])
-    blocked = fields.Boolean('Litigation',
-            help='Mark the line as litigation with the party.')
     maturity_date = fields.Date('Maturity Date',
             help='This field is used for payable and receivable lines. \n' \
                     'You can put the limit date for the payment.')
@@ -524,9 +522,6 @@ class Line(ModelSQL, ModelView):
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
-
-    def default_blocked(self, cursor, user, context=None):
-        return False
 
     def default_active(self, cursor, user, context=None):
         return True

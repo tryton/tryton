@@ -199,8 +199,6 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="maturity_date"/>
                             <label name="create_date"/>
                             <field name="create_date"/>
-                            <label name="blocked"/>
-                            <field name="blocked"/>
                             <label name="state"/>
                             <field name="state"/>
                         </page>

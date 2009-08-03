@@ -1,3 +1,4 @@
+* Remove blocked field on account.move.line
 * Fix digits of amount on tax and tax line
 
 Version 1.2.0 - 2009-04-20
