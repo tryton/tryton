@@ -494,6 +494,14 @@ class Line(ModelSQL, ModelView):
             'already_reconciled': 'Line "%s" (%d) already reconciled!',
             })
 
+    def init(self, cursor, module_name):
+        super(Line, self).init(cursor, module_name)
+
+        table = TableHandler(cursor, self, module_name)
+
+        # Migration from 1.2
+        table.not_null_action('blocked', action='remove')
+
     def default_date(self, cursor, user, context=None):
         '''
         Return the date of the last line for journal, period
