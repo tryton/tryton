@@ -1936,6 +1936,14 @@ class UpdateChartAccountInit(ModelView):
 UpdateChartAccountInit()
 
 
+class UpdateChartAccountStart(ModelView):
+    'Update Chart Account from Template Start'
+    _name = 'account.account.update_chart_account.start'
+    _description = __doc__
+
+UpdateChartAccountStart()
+
+
 class UpdateChartAccount(Wizard):
     'Update Chart Account from Template'
     _name = 'account.account.update_chart_account'
@@ -1946,15 +1954,18 @@ class UpdateChartAccount(Wizard):
                 'object': 'account.account.update_chart_account.init',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
-                    ('update_account', 'Ok', 'tryton-ok', True),
+                    ('start', 'Ok', 'tryton-ok', True),
                 ],
             },
         },
-        'update_account': {
+        'start': {
+            'actions': ['_action_update_account'],
             'result': {
-                'type': 'action',
-                'action': '_action_update_account',
-                'state': 'end',
+                'type': 'form',
+                'object': 'account.account.update_chart_account.start',
+                'state': [
+                    ('end', 'Ok', 'tryton-ok', True),
+                ],
             },
         },
     }
