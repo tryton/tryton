@@ -363,6 +363,10 @@ class ModelSQL(ModelStorage):
                 cursor2.close()
             raise
 
+        context.setdefault('_create_records', {})
+        context['_create_records'].setdefault(self._name, set())
+        context['_create_records'][self._name].add(id_new)
+
         upd_todo.sort(lambda x, y: self._columns[x].priority - \
                 self._columns[y].priority)
         for field in upd_todo:
@@ -386,9 +390,6 @@ class ModelSQL(ModelStorage):
                     and field.left and field.right:
                 self._update_tree(cursor, user, id_new, k, field.left, field.right)
 
-        context.setdefault('_create_records', {})
-        context['_create_records'].setdefault(self._name, set())
-        context['_create_records'][self._name].add(id_new)
         return id_new
 
     def read(self, cursor, user, ids, fields_names=None, context=None):
