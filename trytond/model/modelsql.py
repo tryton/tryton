@@ -329,6 +329,7 @@ class ModelSQL(ModelStorage):
                     field = self._columns[field_name]
                     # Check required fields
                     if field.required \
+                            and not hasattr(field, 'set') \
                             and field_name not in ('create_uid', 'create_date'):
                         if not values.get(field_name):
                             self.raise_user_error(cursor2, 'required_field',
@@ -810,6 +811,7 @@ class ModelSQL(ModelStorage):
                         field = self._columns[field_name]
                         # Check required fields
                         if field.required \
+                                and not hasattr(field, 'set') \
                                 and field_name not in \
                                 ('create_uid', 'create_date'):
                             if not values[field_name]:
