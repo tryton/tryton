@@ -41,8 +41,20 @@ class Party(ModelSQL, ModelView):
     payable_today = fields.Function('get_receivable_payable',
             fnct_search='search_receivable_payable', string='Payable Today')
 
-    def get_receivable_payable(self, cursor, user_id, ids, name, arg,
+    def get_receivable_payable(self, cursor, user_id, ids, names, arg,
             context=None):
+        '''
+        Function to compute receivable, payable (today or not) for party ids.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param ids: the ids of the party
+        :param names: the list of field name to compute
+        :param arg: optional argument
+        :param context: the context
+        :return: a dictionary with all field names as key and
+            a dictionary as value with id as key
+        '''
         res = {}
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
@@ -52,22 +64,21 @@ class Party(ModelSQL, ModelView):
         if context is None:
             context = {}
 
-        if name not in ('receivable', 'payable',
-                'receivable_today', 'payable_today'):
-            raise Exception('Bad argument')
+        for name in names:
+            if name not in ('receivable', 'payable',
+                    'receivable_today', 'payable_today'):
+                raise Exception('Bad argument')
+            res[name] = dict((x, Decimal('0.0')) for x in ids)
 
         if not ids:
             return {}
-
-        for i in ids:
-            res[i] = Decimal('0.0')
 
         company_id = None
         user = user_obj.browse(cursor, user_id, user_id, context=context)
         if context.get('company'):
             child_company_ids = company_obj.search(cursor, user_id, [
                 ('parent', 'child_of', [user.main_company.id]),
-                ], context=context)
+                ], order=[], context=context)
             if context['company'] in child_company_ids:
                 company_id = context['company']
 
@@ -77,34 +88,35 @@ class Party(ModelSQL, ModelView):
         if not company_id:
             return res
 
-        code = name
-        today_query = ''
-        today_value = []
-        if name in ('receivable_today', 'payable_today'):
-            code = name[:-6]
-            today_query = 'AND (l.maturity_date <= %s ' \
-                    'OR l.maturity_date IS NULL) '
-            today_value = [date_obj.today(cursor, user, context=context)]
-
         line_query, _ = move_line_obj.query_get(cursor, user_id, context=context)
 
-        cursor.execute('SELECT l.party, ' \
-                    'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
-                'FROM account_move_line AS l, ' \
-                    'account_account AS a ' \
-                'WHERE a.id = l.account ' \
-                    'AND a.active ' \
-                    'AND a.kind = %s ' \
-                    'AND l.party IN ' \
-                        '(' + ','.join(['%s' for x in ids]) + ') ' \
-                    'AND l.reconciliation IS NULL ' \
-                    'AND ' + line_query + ' ' \
-                    + today_query + \
-                    'AND a.company = %s ' \
-                'GROUP BY l.party',
-                [code,] + ids + today_value + [company_id])
-        for party_id, sum in cursor.fetchall():
-            res[party_id] = sum
+        for name in names:
+            code = name
+            today_query = ''
+            today_value = []
+            if name in ('receivable_today', 'payable_today'):
+                code = name[:-6]
+                today_query = 'AND (l.maturity_date <= %s ' \
+                        'OR l.maturity_date IS NULL) '
+                today_value = [date_obj.today(cursor, user, context=context)]
+
+            cursor.execute('SELECT l.party, ' \
+                        'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
+                    'FROM account_move_line AS l, ' \
+                        'account_account AS a ' \
+                    'WHERE a.id = l.account ' \
+                        'AND a.active ' \
+                        'AND a.kind = %s ' \
+                        'AND l.party IN ' \
+                            '(' + ','.join(['%s' for x in ids]) + ') ' \
+                        'AND l.reconciliation IS NULL ' \
+                        'AND ' + line_query + ' ' \
+                        + today_query + \
+                        'AND a.company = %s ' \
+                    'GROUP BY l.party',
+                    [code,] + ids + today_value + [company_id])
+            for party_id, sum in cursor.fetchall():
+                res[name][party_id] = sum
         return res
 
     def search_receivable_payable(self, cursor, user_id, name, args,

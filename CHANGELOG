@@ -1,3 +1,4 @@
+* Change get_receivable_payable on party.party to work with a list of name
 * Remove blocked field on account.move.line
 * Fix digits of amount on tax and tax line
 
