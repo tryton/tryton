@@ -268,6 +268,12 @@ class Cache(object):
                 return True
             # Update named arguments with positional argument values
             kwargs.update(dict(zip(arg_names, args)))
+            if 'context' in kwargs:
+                if isinstance(kwargs['context'], dict):
+                    for i in ('_timestamp', '_delete', '_create_records',
+                            '_delete_records'):
+                        if i in kwargs['context']:
+                            del kwargs['context'][i]
             kwargs = kwargs.items()
             kwargs.sort()
 
