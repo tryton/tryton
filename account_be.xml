@@ -3709,7 +3709,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.template" id="47">
             <field name="name">Dettes découlant de l'affectation du résultat</field>
-            <field name="code">45</field>
+            <field name="code">47</field>
             <field name="kind">view</field>
             <field name="type" ref="passif_IX_F"/>
             <field name="parent" ref="4"/>
@@ -4538,7 +4538,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.template" id="608">
             <field name="name">Remises, ristournes et rabais obtenus</field>
-            <field name="code">605</field>
+            <field name="code">608</field>
             <field name="deferral" eval="False"/>
             <field name="kind">other</field>
             <field name="type" ref="resultats_II_A_1"/>
@@ -5725,7 +5725,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.template" id="71">
             <field name="name">Variation des stocks et des commandes en cours d'exécution</field>
-            <field name="code">70</field>
+            <field name="code">71</field>
             <field name="kind">view</field>
             <field name="type" ref="resultats_I_B"/>
             <field name="parent" ref="7"/>
