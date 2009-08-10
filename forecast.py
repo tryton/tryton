@@ -166,7 +166,7 @@ class ForecastLine(ModelSQL, ModelView):
             domain=[('type', '=', 'stockable')], on_change=['product'])
     uom = fields.Many2One(
         'product.uom', 'UOM', required=True,
-        domain="[('category', '=', (product, 'product.default_uom.category'))]")
+        domain=["('category', '=', (product, 'product.default_uom.category'))"])
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits')
     quantity = fields.Float('Quantity', digits="(16, unit_digits)", required=True)
