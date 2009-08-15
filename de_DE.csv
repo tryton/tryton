@@ -212,7 +212,6 @@ field,"account.move.line,account",0,Account,Konto,0
 field,"account.move.line,account_kind",0,Account Kind,Kontenart,0
 field,"account.move.line,active",0,Active,Aktiv,0
 field,"account.move.line,amount_second_currency",0,Amount Second Currency,Betrag Zweitwährung,0
-field,"account.move.line,blocked",0,Litigation,Postensperre,0
 field,"account.move.line,credit",0,Credit,Haben,0
 field,"account.move.line,currency_digits",0,Currency Digits,Stellen Währung,0
 field,"account.move.line,date",0,Effective Date,Effektives Datum,0
@@ -285,7 +284,7 @@ field,"account.tax,credit_note_base_code",0,Credit Note Base Code,Kennziffer fü
 field,"account.tax,credit_note_base_sign",0,Credit Note Base Sign,Vorzeichen für Nettobeträge in Gutschriften,0
 field,"account.tax,credit_note_tax_code",0,Credit Note Tax Code,Kennziffer für Steuern in Gutschriften,0
 field,"account.tax,credit_note_tax_sign",0,Credit Note Tax Sign,Vorzeichen für Steuern in Gutschriften,0
-field,"account.tax,currency_digits",0,Currency Digits,Währung (signifikante Stellen),1
+field,"account.tax,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"account.tax,description",0,Description,Beschreibung,0
 field,"account.tax,group",0,Group,Gruppe,0
 field,"account.tax.group,code",0,Code,Kennziffer,0
@@ -298,7 +297,7 @@ field,"account.tax,invoice_tax_code",0,Invoice Tax Code,Kennziffer für Steuern 
 field,"account.tax,invoice_tax_sign",0,Invoice Tax Sign,Vorzeichen für Steuern in Rechnungen,0
 field,"account.tax.line,amount",0,Amount,Betrag,0
 field,"account.tax.line,code",0,Code,Kennziffer,0
-field,"account.tax.line,currency_digits",0,Currency Digits,Währung (signifikante Stellen),1
+field,"account.tax.line,currency_digits",0,Currency Digits,Währung (signifikante Stellen),0
 field,"account.tax.line,move_line",0,Move Line,Buchungszeile,0
 field,"account.tax.line,rec_name",0,Name,Name,0
 field,"account.tax,name",0,Name,Name,0
@@ -370,8 +369,8 @@ help,"account.account.print_general_ledger.init,empty_account",0,With account wi
 help,"account.account.print_general_ledger.init,posted",0,Show only posted move,Nur festgeschriebene Buchungen anzeigen,0
 help,"account.account.print_trial_balance.init,empty_account",0,With account without move,Auch Konten ohne Buchungen ausdrucken,0
 help,"account.account.print_trial_balance.init,posted",0,Show only posted move,Nur festgeschriebene Buchungen anzeigen,0
-help,"account.account,reconcile",0,"Check if the account can be used 
-for reconciliation.","Überprüfung des Kontos, ob es für Abstimmung benutzt werden kann",0
+help,"account.account,reconcile",0,"Allow move lines of this account 
+to be reconciled.",Buchungszeilen dieses Kontos dürfen abgestimmt werden.,0
 help,"account.account,second_currency",0,"Force all moves for this account 
 to have this secondary currency.",Für alle Buchungen auf dieses Konto die Zeitwährung verwenden,0
 help,"account.account,taxes",0,"Default tax for manual encoding of move lines 
@@ -379,7 +378,6 @@ for journal types: ""expense"" and ""revenue""","Standardsteuer für manuell ers
 in Journalen vom Typ ""Aufwand"" und ""Erlöse""",0
 help,"account.account.type,sequence",0,Use to order the account type,Wird für die Reihenfolge der Kontotypen verwendet,0
 help,"account.move.line,amount_second_currency",0,The amount expressed in a second currency,Der Betrag in einer Zweitwährung,0
-help,"account.move.line,blocked",0,Mark the line as litigation with the party.,Posten als gesperrt markieren,0
 help,"account.move.line,maturity_date",0,"This field is used for payable and receivable lines. 
 You can put the limit date for the payment.","Dieses Feld wird sowohl für Verbindlichkeiten als auch für Forderungen verwendet.
 Es kann das Datum der Fälligkeit für die Zahlung eingetragen werden.",0
@@ -439,6 +437,7 @@ model,"account.account.type.template,name",account_type_template_asset_current_r
 model,"account.account.type.template,name",account_type_template_revenue,Revenue,Ertrag,0
 model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Verbindlichkeiten aus Steuern,0
 model,"account.account.update_chart_account.init,name",0,Update Chart Account from Template Init,Kontenplan Aktualisieren von Vorlage Init,0
+model,"account.account.update_chart_account.start,name",0,Update Chart Account from Template Start,Kontenplan Aktualisieren von Vorlage Start,0
 model,"account.fiscalyear-account.move.line,name",0,Fiscal Year - Move Line,Geschäftsjahr - Buchungszeile,0
 model,"account.fiscalyear.close_fiscalyear.init,name",0,Close Fiscal Year Init,Abschluss Geschäftsjahr,0
 model,"account.fiscalyear,name",0,Fiscal Year,Geschäftsjahr,0
@@ -739,6 +738,8 @@ view,account.account.type,0,Income Statement,Gewinn- und Verlustrechnung,0
 view,account.account.type.template,0,Account Types Templates,Vorlagen für Kontentypen,0
 view,account.account.type.template,0,Account Type Template,Vorlage für Kontentyp,0
 view,account.account.update_chart_account.init,0,Update Chart of Account,Kontenplan aktualisieren,0
+view,account.account.update_chart_account.start,0,Update Chart of Account,Kontenplan aktualisieren,0
+view,account.account.update_chart_account.start,0,Update Chart of Account Succeed!,Aktualisierung des Kontenrahmens erfolgreich durchgeführt!,0
 view,account.fiscalyear,0,Are you sure to close fiscal year?,Wollen Sie das Geschäftsjahr wirklich abschließen?,0
 view,account.fiscalyear,0,Close,Geschäftsjahr abschließen,0
 view,account.fiscalyear,0,Close Fiscal Year,Geschäftsjahr abschließen,0
@@ -837,7 +838,8 @@ wizard_button,"account.account.print_general_ledger,init,print",0,Print,Drucken,
 wizard_button,"account.account.print_trial_balance,init,end",0,Cancel,Abbrechen,0
 wizard_button,"account.account.print_trial_balance,init,print",0,Print,Drucken,0
 wizard_button,"account.account.update_chart_account,init,end",0,Cancel,Abbrechen,0
-wizard_button,"account.account.update_chart_account,init,update_account",0,Ok,OK,0
+wizard_button,"account.account.update_chart_account,init,start",0,Ok,OK,0
+wizard_button,"account.account.update_chart_account,start,end",0,Ok,OK,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Geschäftsjahr abschließen,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,end",0,Cancel,Abbrechen,0
 wizard_button,"account.move.open_journal,ask,end",0,Cancel,Abbrechen,0
