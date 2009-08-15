@@ -1,4 +1,5 @@
 type,name,res_id,src,value,fuzzy
+error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,"Die Standardmaßeinheit kann nicht für einen Artikel geändert werden, der Lagerbewegungen zugeordnet ist.",0
 error,stock.inventory.line,0,Line quantity must be positive!,Anzahl der Position muss positiv sein!,0
 error,stock.inventory.line,0,Product must be unique by inventory!,Ein Artikel kann in einem Lagerbestand nicht mehrfach vergeben werden!,0
 error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,"Ein Lagerort mit zugordneten Bewegungen kann nicht zu einem Typ geändert werden, der keine Bewegungen unterstützt.",0
