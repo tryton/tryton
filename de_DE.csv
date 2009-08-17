@@ -181,10 +181,10 @@ model,"account.invoice.pay_invoice.ask,name",0,Pay Invoice Ask,Zahlung Rechnung 
 model,"account.invoice.pay_invoice.init,name",0,Pay Invoice Init,Zahlung Rechnung Init,0
 model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_end_month,End Month,Ende Monat,0
 model,"account.invoice.payment_term.line.delay,name",payment_term_line_delay_net_days,Net Days,Tage netto,0
-model,"account.invoice.payment_term.line.delay,name",0,Payment Term Line Delay,Zahlungsbedingung Position Frist,0
-model,"account.invoice.payment_term.line,name",0,Payment Term Line,Zahlungsbedingung,0
+model,"account.invoice.payment_term.line.delay,name",0,Payment Term Line Delay,Zahlungsbedingung Zeile Frist,0
+model,"account.invoice.payment_term.line,name",0,Payment Term Line,Zahlungsbedingung Zeile,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_fixed,Fixed,Fix,0
-model,"account.invoice.payment_term.line.type,name",0,Payment Term Line Type,Zahlungsbedingung Position Typ,0
+model,"account.invoice.payment_term.line.type,name",0,Payment Term Line Type,Zahlungsbedingung Zeile Typ,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_percent,Percentage,Prozentsatz,0
 model,"account.invoice.payment_term.line.type,name",payment_term_line_type_remainder,Remainder,Rest,0
 model,"account.invoice.payment_term,name",0,Payment Term,Zahlungsbedingung,0
@@ -327,8 +327,8 @@ view,account.invoice.pay_invoice.ask,0,Pay Invoice,Rechnung bezahlen,0
 view,account.invoice.pay_invoice.ask,0,Payment Lines,Zahlungspositionen,0
 view,account.invoice.pay_invoice.init,0,Pay Invoice,Rechnung bezahlen,0
 view,account.invoice.payment_term,0,Payment Term,Zahlungsbedingung,0
-view,account.invoice.payment_term,0,Payment Term Line,Zahlungsbedingung,0
-view,account.invoice.payment_term,0,Payment Term Lines,Positionen Zahlungsbedingung,0
+view,account.invoice.payment_term,0,Payment Term Line,Zahlungsbedingung Zeile,0
+view,account.invoice.payment_term,0,Payment Term Lines,Zeilen Zahlungsbedingung,0
 view,account.invoice.payment_term,0,Payment Terms,Zahlungsbedingung,0
 view,account.invoice.print_invoice_report.warning,0,<b>Warning!</b>,<b>Warnung!</b>,0
 view,account.invoice.print_invoice_report.warning,0,Print Invoice,Rechnung / Gutschrift drucken,0
