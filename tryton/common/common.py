@@ -503,7 +503,8 @@ def send_bugtracker(msg, parent):
                         'issue%s' % issue_id, parent)
             webbrowser.open(CONFIG['roundup.url'] + 'issue%s' % issue_id, new=2)
         except Exception, exception:
-            if 'roundup.cgi.exceptions.Unauthorised' in exception.faultString:
+            if hasattr(exception, 'faultString') \
+                    and 'roundup.cgi.exceptions.Unauthorised' in exception.faultString:
                 message(_('Connection error!\n' \
                         'Bad username or password!'), parent)
                 return send_bugtracker(msg, parent)
