@@ -165,6 +165,7 @@ class SecureXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
 
 class SimpleThreadedXMLRPCServer(SocketServer.ThreadingMixIn,
         SimpleXMLRPCServer.SimpleXMLRPCServer):
+    timeout = 1
 
     def server_bind(self):
         self.socket.setsockopt(socket.SOL_SOCKET,
