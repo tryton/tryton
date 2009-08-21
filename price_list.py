@@ -2,6 +2,9 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from decimal import Decimal
+import re
+
+_RE_DECIMAL = re.compile('([\.0-9]+(\.[0-9]+)?)')
 
 
 class PriceList(ModelSQL, ModelView):
@@ -207,6 +210,11 @@ class PriceListLine(ModelSQL, ModelView):
         :param context: the context
         :return: a Decimal
         '''
-        return eval(line.formula, context)
+        if context is None:
+            context = {}
+        ctx = context.copy()
+        ctx['Decimal'] = Decimal
+        return eval(_RE_DECIMAL.sub(lambda m: "Decimal('%s')" % m.group(1),
+            line.formula), ctx)
 
 PriceListLine()
