@@ -61,7 +61,7 @@ if not hasattr(WebDAVServer.DAVRequestHandler, '_config'):
 
 class BaseThreadedHTTPServer(SocketServer.ThreadingMixIn,
         BaseHTTPServer.HTTPServer):
-
+    timeout = 1
     max_children = CONFIG['max_thread']
 
     def server_bind(self):
