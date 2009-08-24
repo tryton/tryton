@@ -18,5 +18,6 @@
         'party.xml',
     ],
     'translation': [
+        'fr_FR.csv',
     ],
 }
