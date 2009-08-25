@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     "name" : "Account Invoice Line Standalone",
-    "name_de_DE" : "Rechnungsstellung ungebundene Rechnungsposition",
+    "name_de_DE" : "Fakturierung ungebundene Rechnungsposition",
     "name_fr_FR" : "Ligne de facture autonome",
     "version" : "1.1.0",
     "author" : "B2CK",
@@ -12,7 +12,7 @@
 invoice. The invoice will only accept invoice lines with the same
 type, company, currency and party.
 ''',
-    "description_de_DE": '''Rechnungsstellung aus ungebundenen Rechnungspositionen
+    "description_de_DE": '''Fakturierung mit ungebundenen Rechnungspositionen
     - Ermöglicht die Erstellung ungebundener Rechnungspositionen, die später zu
       Rechnungen mit Status Entwurf hinzugefügt werden können.
     - Innerhalb einer Rechnung können nur Rechnungspositionen mit
