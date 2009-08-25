@@ -627,7 +627,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="workflow" id="invoice_workflow">
             <field name="name">Invoice workflow</field>
-            <field name="osv">account.invoice</field>
+            <field name="model">account.invoice</field>
             <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="invoice_activity_draft">
