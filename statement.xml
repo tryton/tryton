@@ -213,7 +213,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- Statement workflow -->
         <record model="workflow" id="wkf_statement">
             <field name="name">Statement</field>
-            <field name="osv">account.statement</field>
+            <field name="model">account.statement</field>
             <field name="on_create">True</field>
         </record>
         <record model="workflow.activity" id="statement_act_draft">
