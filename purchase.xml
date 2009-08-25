@@ -372,7 +372,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="workflow" id="purchase_workflow">
             <field name="name">Purchase workflow</field>
-            <field name="osv">purchase.purchase</field>
+            <field name="model">purchase.purchase</field>
             <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="purchase_activity_draft">
