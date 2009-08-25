@@ -815,7 +815,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- Workflow packing in -->
         <record model="workflow" id="wkf_packingin">
             <field name="name">Supplier Shipment</field>
-            <field name="osv">stock.packing.in</field>
+            <field name="model">stock.packing.in</field>
             <field name="on_create">True</field>
         </record>
         <record model="workflow.activity" id="packingin_act_draft">
@@ -884,7 +884,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- Workflow packing out -->
         <record model="workflow" id="wkf_packingout">
             <field name="name">Customer Shipment</field>
-            <field name="osv">stock.packing.out</field>
+            <field name="model">stock.packing.out</field>
             <field name="on_create">True</field>
         </record>
         <record model="workflow.activity" id="packingout_act_draft">
@@ -1088,7 +1088,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- Workflow internal packing -->
         <record model="workflow" id="wkf_packinginternal">
             <field name="name">Internal Shipment</field>
-            <field name="osv">stock.packing.internal</field>
+            <field name="model">stock.packing.internal</field>
             <field name="on_create">True</field>
         </record>
         <record model="workflow.activity" id="packinginternal_act_draft">
@@ -1199,7 +1199,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- Workflow packing out return -->
         <record model="workflow" id="wkf_packing_out_return">
             <field name="name">Customer Return Shipment</field>
-            <field name="osv">stock.packing.out.return</field>
+            <field name="model">stock.packing.out.return</field>
             <field name="on_create">True</field>
         </record>
         <record model="workflow.activity" id="packing_out_return_act_draft">
@@ -1267,7 +1267,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- Workflow purchase return packing -->
         <record model="workflow" id="wkf_packing_in_return">
             <field name="name">Supplier Return Shipment</field>
-            <field name="osv">stock.packing.in.return</field>
+            <field name="model">stock.packing.in.return</field>
             <field name="on_create">True</field>
         </record>
         <record model="workflow.activity" id="packing_in_return_act_draft">

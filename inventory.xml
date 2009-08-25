@@ -125,7 +125,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- Workflow inventory -->
         <record model="workflow" id="wkf_inventory">
             <field name="name">Inventory</field>
-            <field name="osv">stock.inventory</field>
+            <field name="model">stock.inventory</field>
             <field name="on_create">True</field>
         </record>
         <record model="workflow.activity" id="inventory_act_draft">
