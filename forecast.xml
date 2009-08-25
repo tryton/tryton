@@ -140,7 +140,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- Workflow forecast -->
         <record model="workflow" id="wkf_forecast">
             <field name="name">Forecast</field>
-            <field name="osv">stock.forecast</field>
+            <field name="model">stock.forecast</field>
             <field name="on_create">True</field>
         </record>
         <record model="workflow.activity" id="forecast_act_draft">
