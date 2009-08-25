@@ -362,7 +362,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="workflow" id="sale_workflow">
             <field name="name">Sale workflow</field>
-            <field name="osv">sale.sale</field>
+            <field name="model">sale.sale</field>
             <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="sale_activity_draft">
