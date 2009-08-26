@@ -363,7 +363,7 @@ class Product(ModelSQL, ModelView):
             where_vals = args
         else:
             where_clause = " IN (" + \
-                ",".join(["%s" for i in location_ids]) + ") "
+                ",".join(('%s',) * len(location_ids)) + ") "
             where_vals = location_ids[:]
 
         if move_query:
@@ -372,16 +372,16 @@ class Product(ModelSQL, ModelView):
 
         if product_ids:
             where_clause += "AND product in (" + \
-                ",".join(["%s" for i in product_ids]) + ")"
+                ",".join(('%s',) * len(product_ids)) + ")"
             where_vals += product_ids
 
         if context.get('stock_destinations'):
             destinations = context.get('stock_destinations')
             dest_clause_from = " AND from_location in ("
-            dest_clause_from += ",".join("%s" for i in destinations)
+            dest_clause_from += ",".join(('%s',) * len(destinations))
             dest_clause_from += ") "
             dest_clause_to = " AND to_location in ("
-            dest_clause_to += ",".join("%s" for i in destinations)
+            dest_clause_to += ",".join(('%s',) * len(destinations))
             dest_clause_to += ") "
             dest_vals = destinations
 
@@ -505,7 +505,7 @@ class Product(ModelSQL, ModelView):
         location_obj = self.pool.get('stock.location')
         locations = location_obj.browse(cursor, user, context.get('locations'),
                                         context=context)
-        return value + " (" + ",".join([l.name for l in locations]) + ")"
+        return value + " (" + ",".join(l.name for l in locations) + ")"
 
 Product()
 
