@@ -429,7 +429,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         cursor.execute('SELECT invoice, ' \
                     'CAST(COALESCE(SUM(amount), 0) AS ' + type_name + ') ' \
                 'FROM account_invoice_tax ' \
-                'WHERE invoice IN (' + ','.join(['%s' for x in ids]) + ') ' \
+                'WHERE invoice IN (' + ','.join(('%s',) * len(ids)) + ') ' \
                 'GROUP BY invoice', ids)
         for invoice_id, sum in cursor.fetchall():
             res[invoice_id] = sum
