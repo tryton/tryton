@@ -1704,7 +1704,7 @@ class Invoice(ModelSQL, ModelView):
         if isinstance(ids, (int, long)):
             ids = [ids]
         cursor.execute('SELECT id FROM sale_invoices_rel ' \
-                'WHERE invoice IN (' + ','.join(['%s' for x in ids]) + ')',
+                'WHERE invoice IN (' + ','.join(('%s',) * len(ids)) + ')',
                 ids)
         if cursor.fetchone():
             self.raise_user_error(cursor, 'delete_sale_invoice',
