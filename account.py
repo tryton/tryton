@@ -761,14 +761,14 @@ class Account(ModelSQL, ModelView):
         line_query, fiscalyear_ids = move_line_obj.query_get(cursor, user,
                 context=context)
         cursor.execute('SELECT a.id, ' + \
-                    ','.join(['SUM(COALESCE(l.' + name + ', 0))'
-                        for name in names]) + ' ' \
+                    ','.join('SUM(COALESCE(l.' + name + ', 0))'
+                        for name in names) + ' ' \
                 'FROM account_account a ' \
                     'LEFT JOIN account_move_line l ' \
                     'ON (a.id = l.account) ' \
                 'WHERE a.kind != \'view\' ' \
                     'AND a.id IN (' + \
-                        ','.join(['%s' for x in ids]) + ') ' \
+                        ','.join(('%s',) * len(ids)) + ') ' \
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
                 'GROUP BY a.id', ids)
@@ -2377,7 +2377,7 @@ class AgedBalance(Report):
                         'JOIN account_account a ON (l.account = a.id) '
                     'WHERE l.party IS NOT NULL '\
                         'AND a.active ' \
-                        'AND a.kind IN ('+ ','.join('%s' for i in kind) + ") "\
+                        'AND a.kind IN ('+ ','.join(('%s',) * len(kind)) + ") "\
                         'AND l.reconciliation IS NULL ' \
                         'AND a.company = %s ' \
                         'AND '+ term_query+\

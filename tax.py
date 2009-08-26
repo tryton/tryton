@@ -207,7 +207,7 @@ class Code(ModelSQL, ModelView):
                 'WHERE c.id = tl.code ' \
                     'AND tl.move_line = l.id ' \
                     'AND c.id IN (' + \
-                        ','.join(['%s' for x in all_ids])+ ') ' \
+                        ','.join(('%s',) * len(all_ids))+ ') ' \
                     'AND ' + line_query + ' ' \
                     'AND c.active ' \
                 'GROUP BY c.id', all_ids)

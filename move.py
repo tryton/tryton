@@ -986,13 +986,13 @@ class Line(ModelSQL, ModelView):
             fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
                 ('state', '=', 'open'),
                 ], context=context)
-            fiscalyear_clause = (','.join([str(x) for x in fiscalyear_ids])) or '0'
+            fiscalyear_clause = (','.join(map(str, fiscalyear_ids))) or '0'
         else:
             fiscalyear_ids = [int(context.get('fiscalyear'))]
             fiscalyear_clause = '%s' % int(context.get('fiscalyear'))
 
         if context.get('periods', False):
-            ids = ','.join([str(int(x)) for x in context['periods']])
+            ids = ','.join(str(int(x)) for x in context['periods'])
             if context.get('posted'):
                 return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \

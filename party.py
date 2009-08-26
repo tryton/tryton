@@ -108,7 +108,7 @@ class Party(ModelSQL, ModelView):
                         'AND a.active ' \
                         'AND a.kind = %s ' \
                         'AND l.party IN ' \
-                            '(' + ','.join(['%s' for x in ids]) + ') ' \
+                            '(' + ','.join(('%s',) * len(ids)) + ') ' \
                         'AND l.reconciliation IS NULL ' \
                         'AND ' + line_query + ' ' \
                         + today_query + \
@@ -174,8 +174,8 @@ class Party(ModelSQL, ModelView):
                     'AND a.company = %s ' \
                 'GROUP BY l.party ' \
                 'HAVING ' + \
-                    'AND'.join(['(SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
-                        + ' ' + x[1] + ' %s) ' for x in args]),
+                    'AND'.join('(SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
+                        + ' ' + x[1] + ' %s) ' for x in args),
                     [code] + today_value + [company_id] + [x[2] for x in args])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
