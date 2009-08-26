@@ -78,7 +78,7 @@ class Work(ModelSQL, ModelView):
         all_ids = all_ids + ids
         clause = "SELECT work, sum(hours) FROM timesheet_line "\
                      "WHERE work IN (%s) "\
-                     % ",".join(["%s" for id in all_ids])
+                     % ",".join(('%s',) * len(all_ids))
         date_cond = ""
         args = []
         if context.get('from_date'):
