@@ -145,7 +145,7 @@ class Account(ModelSQL, ModelView):
                     'ON (c.id = aa.company) ' \
                 'WHERE a.type != \'view\' ' \
                     'AND a.id IN (' + \
-                        ','.join(['%s' for x in all_ids]) + ') ' \
+                        ','.join(('%s',) * len(all_ids)) + ') ' \
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
                 'GROUP BY a.id, c.currency', all_ids)
@@ -214,7 +214,7 @@ class Account(ModelSQL, ModelView):
                     'ON (c.id = aa.company) ' \
                 'WHERE a.type != \'view\' ' \
                     'AND a.id IN (' + \
-                        ','.join(['%s' for x in ids]) + ') ' \
+                        ','.join(('%s',) * len(ids)) + ') ' \
                     'AND ' + line_query + ' ' \
                     'AND a.active ' \
                 'GROUP BY a.id, c.currency', ids)
