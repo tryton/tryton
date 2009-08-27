@@ -633,6 +633,7 @@ this repository contains the full copyright notices and license terms. -->
                         <tree string="Tax Rule Line Templates"
                             sequence="sequence">
                             <field name="group" select="1"/>
+                            <field name="origin_tax" select="1"/>
                             <field name="tax" select="1"/>
                         </tree>
                     </field>
@@ -710,6 +711,8 @@ this repository contains the full copyright notices and license terms. -->
                     <newline/>
                     <label name="group"/>
                     <field name="group"/>
+                    <label name="origin_tax"/>
+                    <field name="origin_tax"/>
                     <label name="tax"/>
                     <field name="tax"/>
                     <label name="sequence"/>
@@ -727,6 +730,7 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Tax Rule Line Templates">
                     <field name="rule" select="1"/>
                     <field name="group" select="1"/>
+                    <field name="origin_tax" select="1"/>
                     <field name="tax" select="1"/>
                 </tree>
                 ]]>
@@ -753,6 +757,8 @@ this repository contains the full copyright notices and license terms. -->
                     <newline/>
                     <label name="group"/>
                     <field name="group"/>
+                    <label name="origin_tax"/>
+                    <field name="origin_tax"/>
                     <label name="tax"/>
                     <field name="tax"/>
                     <label name="sequence"/>
@@ -770,6 +776,7 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Tax Rule Lines">
                     <field name="rule" select="1"/>
                     <field name="group" select="1"/>
+                    <field name="origin_tax" select="1"/>
                     <field name="tax" select="1"/>
                 </tree>
                 ]]>

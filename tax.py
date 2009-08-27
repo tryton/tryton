@@ -1066,6 +1066,7 @@ class Rule(ModelSQL, ModelView):
 
         pattern = pattern.copy()
         pattern['group'] = tax and tax.group.id or False
+        pattern['origin_tax'] = tax and tax.id or False
 
         for line in rule.lines:
             if rule_line_obj.match(cursor, user, line, pattern,
@@ -1126,6 +1127,11 @@ class RuleLineTemplate(ModelSQL, ModelView):
     rule = fields.Many2One('account.tax.rule.template', 'Rule', required=True,
             ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
+    origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
+            domain="[('account', '=', _parent_rule.account), " \
+                    "('group', '=', group)]",
+            help='If the original tax template is filled, the rule will be ' \
+                    'applied only for this tax template.')
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
             domain=["('account', '=', _parent_rule.account)",
                 "('group', '=', group)"])
@@ -1151,6 +1157,8 @@ class RuleLineTemplate(ModelSQL, ModelView):
         res = {}
         if not rule_line or rule_line.group.id != template.group.id:
             res['group'] = template.group.id
+        if not rule_line or rule_line.origin_tax.id != template.origin_tax.id:
+            res['origin_tax'] = template.origin_tax.id
         if not rule_line or rule_line.sequence != template.sequence:
             res['sequence'] = template.sequence
         if not rule_line or rule_line.template.id != template.id:
@@ -1191,6 +1199,10 @@ class RuleLineTemplate(ModelSQL, ModelView):
             vals = self._get_tax_rule_line_value(cursor, user, template,
                     context=context)
             vals['rule'] = template2rule[template.rule.id]
+            if template.origin_tax:
+                vals['origin_tax'] = template2tax[template.origin_tax.id]
+            else:
+                vals['origin_tax'] = False
             if template.tax:
                 vals['tax'] = template2tax[template.tax.id]
             else:
@@ -1212,6 +1224,11 @@ class RuleLine(ModelSQL, ModelView):
     rule = fields.Many2One('account.tax.rule', 'Rule', required=True,
             select=1, ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
+    origin_tax = fields.Many2One('account.tax', 'Original Tax',
+            domain="[('company', '=', _parent_rule.company), " \
+                    "('group', '=', group)]",
+            help='If the original tax is filled, the rule will be applied ' \
+                    'only for this tax.')
     tax = fields.Many2One('account.tax', 'Substitution Tax',
             domain=["('company', '=', _parent_rule.company)",
                 "('group', '=', group)"])
@@ -1298,6 +1315,12 @@ class RuleLine(ModelSQL, ModelView):
                     rule_line.template, context=context, rule_line=rule_line)
             if rule_line.rule.id != template2rule[rule_line.template.rule.id]:
                 vals['rule'] = template2rule[rule_line.template.rule.id]
+            if rule_line.origin_tax:
+                if rule_line.template.origin_tax:
+                    if rule_line.origin_tax.id != \
+                            template2tax[rule_line.template.origin_tax.id]:
+                        vals['origin_tax'] = template2tax[
+                            rule_line.template.origin_tax.id]
             if rule_line.tax:
                 if rule_line.template.tax:
                     if rule_line.tax.id != \
