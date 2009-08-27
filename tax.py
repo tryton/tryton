@@ -1128,8 +1128,8 @@ class RuleLineTemplate(ModelSQL, ModelView):
             ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
     origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
-            domain="[('account', '=', _parent_rule.account), " \
-                    "('group', '=', group)]",
+            domain=["('account', '=', _parent_rule.account)",
+                "('group', '=', group)"],
             help='If the original tax template is filled, the rule will be ' \
                     'applied only for this tax template.')
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
@@ -1225,8 +1225,8 @@ class RuleLine(ModelSQL, ModelView):
             select=1, ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
     origin_tax = fields.Many2One('account.tax', 'Original Tax',
-            domain="[('company', '=', _parent_rule.company), " \
-                    "('group', '=', group)]",
+            domain=["('company', '=', _parent_rule.company)",
+                "('group', '=', group)"],
             help='If the original tax is filled, the rule will be applied ' \
                     'only for this tax.')
     tax = fields.Many2One('account.tax', 'Substitution Tax',
