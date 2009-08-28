@@ -17,7 +17,7 @@ from differents purchases.
     - Ändert das Verhalten im Einkaufsvorgang, indem unabhängige Rechnungspositionen
       an Stelle einer kompletten Rechnung erstellt werden.
     - Ermöglicht die Zusammenstellung von Rechnungen aus Einkaufspositionen
-      verschiedener Rechnungen.
+      verschiedener Einkäufe.
 ''',
     "description_fr_FR": '''Modifie le comportement de l'ordre d'achat pour créer des lignes de
 facture autonomes au lieu de factures complètes. Cela permet de
