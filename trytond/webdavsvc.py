@@ -66,7 +66,7 @@ class TrytonDAVInterface(iface.dav_interface):
 
     def _get_dburi(self, uri):
         uri = urlparse.urlsplit(uri)[2]
-        if uri[0] == '/':
+        if uri and uri[0] == '/':
             uri = uri[1:]
         dbname, uri = (uri.split('/', 1) + [None])[0:2]
         return dbname, uri
