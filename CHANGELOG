@@ -1,3 +1,6 @@
+Version 1.2.1 - 2009-08-31
+* Some bug fixes (see mercurial logs for details)
+
 Version 1.2.0 - 2009-04-20
 * Bug fixes (see mercurial logs for details)
 * Add CheckVIES wizard (VAT Information Exchange System)
