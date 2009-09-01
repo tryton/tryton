@@ -150,6 +150,13 @@ class Property(OSV):
                 }, context=ctx)
         return res
 
+    def search(self, cursor, user, domain, offset=0, limit=None, order=None,
+            context=None, count=False):
+        if user == 0:
+            domain = ['AND', domain[:], ('company', '=', False)]
+        return super(Property, self).search(cursor, user, domain, offset=offset,
+                limit=limit, order=order, context=context, count=count)
+
 Property()
 
 
