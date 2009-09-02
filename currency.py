@@ -44,6 +44,9 @@ class Currency(ModelSQL, ModelView):
             'no_rate': 'No rate found for the currency: %s at the date: %s',
             'invalid_grouping': 'Invalid Grouping!',
             })
+        self._rpc.update({
+            'compute': True,
+            })
 
     def default_active(self, cursor, user, context=None):
         return True
