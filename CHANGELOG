@@ -1,3 +1,5 @@
+* Allow rpc of compute of currency.currency
+
 Version 1.2.0 - 2009-04-20
 * Bug fixes (see mercurial logs for details)
 * Allow egg installation
