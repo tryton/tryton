@@ -226,7 +226,8 @@ class Rate(ModelSQL, ModelView):
     _rec_name = 'date'
     date = fields.Date('Date', required=True, select=1)
     rate = fields.Numeric('Rate', digits=(12, 6), required=1)
-    currency = fields.Many2One('currency.currency', 'Currency')
+    currency = fields.Many2One('currency.currency', 'Currency',
+            ondelete='CASCADE',)
 
     def __init__(self):
         super(Rate, self).__init__()
