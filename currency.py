@@ -45,7 +45,7 @@ class Currency(ModelSQL, ModelView):
             'invalid_grouping': 'Invalid Grouping!',
             })
         self._rpc.update({
-            'compute': True,
+            'compute': False,
             })
 
     def default_active(self, cursor, user, context=None):
