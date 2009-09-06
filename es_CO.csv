@@ -1,0 +1,12 @@
+type,name,res_id,src,value,fuzzy
+error,account.invoice.line,0,You can not delete invoice lines that comes from a purchase!,¡No puede eliminar líneas que vienen de una compra!,0
+field,"purchase.purchase-account.invoice.line,line",0,Invoice Line,Línea de Factura,0
+field,"purchase.purchase-account.invoice.line,purchase",0,Purchase,Compras,0
+field,"purchase.purchase-account.invoice.line,rec_name",0,Name,Nombre,0
+field,"purchase.purchase-ignored-account.invoice.line,invoice",0,Invoice Line,Línea de Factura,0
+field,"purchase.purchase-ignored-account.invoice.line,purchase",0,Purchase,Compras,0
+field,"purchase.purchase-ignored-account.invoice.line,rec_name",0,Name,Nombre,0
+field,"purchase.purchase,invoice_lines",0,Invoice Lines,Líneas de Factura,0
+field,"purchase.purchase,invoice_lines_ignored",0,Invoice Lines Ignored,Líneas de Factura ignoradas,0
+model,"purchase.purchase-account.invoice.line,name",0,Purchase - Invoice Line,Compras - Línea de Factura,0
+model,"purchase.purchase-ignored-account.invoice.line,name",0,Purchase - Ignored Invoice Line,Compras - Línea de Factura ignorada,0
