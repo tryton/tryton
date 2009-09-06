@@ -3,6 +3,7 @@
 {
     "name" : "Account Invoice Line Standalone",
     "name_fr_FR" : "Ligne de facture autonome",
+    "name_es_CO" : "Línea de factura autónoma",
     "version" : "1.1.0",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
@@ -15,6 +16,10 @@ type, company, currency and party.
 ensuite à des factures dans l'état brouillon. La facture n'acceptera
 que des lignes qui ont les même type, compagnie, devis et tiers.
 ''',
+    "description_es_CO": '''Permite crear líneas individuales para facturación y añadirlas
+posteriormente a una factura en borrador. La factuara aceptará únicamente líneas de factura del
+mismo tipo, compañía, moneda y tercero.
+''',
     "depends" : [
         "ir",
         "account_invoice",
@@ -24,5 +29,6 @@ que des lignes qui ont les même type, compagnie, devis et tiers.
     ],
     'translation': [
         'fr_FR.csv',
+        'es_CO.csv',
     ],
 }
