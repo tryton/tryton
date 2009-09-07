@@ -4,7 +4,7 @@
     "name" : "Purchase Invoice Line Standalone",
     "name_de_DE" : "Einkauf ungebundene Rechnungsposition",
     "name_fr_FR" : "Ligne de facture autonome - Achat",
-    "name_fr_FR" : "Línea de Factura autónoma en Compras",
+    "name_es_CO" : "Línea de Factura autónoma en Compras",
     "version" : "0.0.1",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
