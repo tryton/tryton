@@ -158,7 +158,12 @@ class HoursEmployee(ModelSQL, ModelView):
         if context.get('end_date'):
             clause += 'AND date <= %s '
             args.append(context['end_date'])
-        return ('SELECT DISTINCT(employee) AS id, employee, ' \
+        return ('SELECT DISTINCT(employee) AS id, ' \
+                    'MAX(create_uid) AS create_uid, ' \
+                    'MAX(create_date) AS create_date, ' \
+                    'MAX(write_uid) AS write_uid, ' \
+                    'MAX(write_date) AS write_date, ' \
+                    'employee, ' \
                     'SUM(COALESCE(hours, 0)) AS hours ' \
                 'FROM timesheet_line ' \
                 'WHERE True ' \
@@ -242,6 +247,10 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
         return ('SELECT EXTRACT(WEEK FROM date) + ' \
                         'EXTRACT(YEAR FROM date) * 100 + ' \
                         'employee * 1000000 AS id, ' \
+                    'MAX(create_uid) AS create_uid, ' \
+                    'MAX(create_date) AS create_date, ' \
+                    'MAX(write_uid) AS write_uid, ' \
+                    'MAX(write_date) AS write_date, ' \
                     'EXTRACT(YEAR FROM date) AS year, ' \
                     'EXTRACT(WEEK FROM date) AS week, employee, ' \
                     'SUM(COALESCE(hours, 0)) AS hours ' \
@@ -271,6 +280,10 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
         return ('SELECT EXTRACT(MONTH FROM date) + ' \
                         'EXTRACT(YEAR FROM date) * 100 + ' \
                         'employee * 1000000 AS id, ' \
+                    'MAX(create_uid) AS create_uid, ' \
+                    'MAX(create_date) AS create_date, ' \
+                    'MAX(write_uid) AS write_uid, ' \
+                    'MAX(write_date) AS write_date, ' \
                     'EXTRACT(YEAR FROM date) AS year, ' \
                     'EXTRACT(MONTH FROM date) AS month, employee, ' \
                     'SUM(COALESCE(hours, 0)) AS hours ' \
