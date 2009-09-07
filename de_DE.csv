@@ -309,6 +309,7 @@ field,"account.tax,percentage",0,Percentage,Prozentsatz,0
 field,"account.tax,rec_name",0,Name,Name,0
 field,"account.tax.rule,company",0,Company,Unternehmen,0
 field,"account.tax.rule.line,group",0,Tax Group,Steuergruppe,0
+field,"account.tax.rule.line,origin_tax",0,Original Tax,Ursprungssteuer,0
 field,"account.tax.rule.line,rec_name",0,Name,Name,0
 field,"account.tax.rule.line,rule",0,Rule,Regel,0
 field,"account.tax.rule,lines",0,Lines,Zeilen,0
@@ -316,6 +317,7 @@ field,"account.tax.rule.line,sequence",0,Sequence,Sequenz,0
 field,"account.tax.rule.line,tax",0,Substitution Tax,Anzuwendende Steuer,0
 field,"account.tax.rule.line,template",0,Template,Vorlage,0
 field,"account.tax.rule.line.template,group",0,Tax Group,Steuergruppe,0
+field,"account.tax.rule.line.template,origin_tax",0,Original Tax,Ursprungssteuer,0
 field,"account.tax.rule.line.template,rec_name",0,Name,Name,0
 field,"account.tax.rule.line.template,rule",0,Rule,Regel,0
 field,"account.tax.rule.line.template,sequence",0,Sequence,Sequenz,0
@@ -375,7 +377,7 @@ help,"account.account,second_currency",0,"Force all moves for this account
 to have this secondary currency.",Für alle Buchungen auf dieses Konto die Zeitwährung verwenden,0
 help,"account.account,taxes",0,"Default tax for manual encoding of move lines 
 for journal types: ""expense"" and ""revenue""","Standardsteuer für manuell erstellte Buchungszeilen 
-in Journalen vom Typ ""Aufwand"" und ""Erlöse""",0
+in Journalen vom Typ ""Aufwand"" und ""Ertrag""",0
 help,"account.account.type,sequence",0,Use to order the account type,Wird für die Reihenfolge der Kontotypen verwendet,0
 help,"account.move.line,amount_second_currency",0,The amount expressed in a second currency,Der Betrag in einer Zweitwährung,0
 help,"account.move.line,maturity_date",0,"This field is used for payable and receivable lines. 
@@ -393,6 +395,8 @@ help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Üblicherweise 1 oder -1,0
 help,"account.tax.open_chart_code.init,fiscalyear",0,Leave empty for all open fiscal year,Leer lassen für alle geöffneten Geschäftsjahre,0
 help,"account.tax.open_chart_code.init,periods",0,Leave empty for all periods of all open fiscal year,Leer lassen für alle Buchungszeiträume aller geöffneten Geschäftsjahre,0
 help,"account.tax,percentage",0,In %,In %,0
+help,"account.tax.rule.line,origin_tax",0,"If the original tax is filled, the rule will be applied only for this tax.","Wenn das Feld Ursprungssteuer ausgefüllt ist, wird die Steuerregel ausschließlich auf diese Steuer angewendet.",0
+help,"account.tax.rule.line.template,origin_tax",0,"If the original tax template is filled, the rule will be applied only for this tax template.","Wenn das Feld Ursprungssteuer ausgefüllt ist, wird die Steuerregel ausschließlich auf diese Steuervorlage angewendet.",0
 help,"account.tax,sequence",0,Use to order the taxes,Wird für die Reihenfolge der Steuern verwendet,0
 help,"party.party,customer_tax_rule",0,Apply this rule on taxes when party is customer.,"Wendet diese Regel auf Steuern an, wenn die Partei ein Kunde ist",0
 help,"party.party,supplier_tax_rule",0,Apply this rule on taxes when party is supplier.,"Wendet diese Regel auf Steuern an, wenn die Partei ein Lieferant ist",0
@@ -688,7 +692,7 @@ selection,"account.move.line,account_kind",0,Expense,Aufwand,0
 selection,"account.move.line,account_kind",0,Other,Anderes,0
 selection,"account.move.line,account_kind",0,Payable,Verbindlichkeiten,0
 selection,"account.move.line,account_kind",0,Receivable,Forderungen,0
-selection,"account.move.line,account_kind",0,Revenue,Erlöse,0
+selection,"account.move.line,account_kind",0,Revenue,Ertrag,0
 selection,"account.move.line,account_kind",0,View,Sicht,0
 selection,"account.move.line,move_state",0,Draft,Entwurf,0
 selection,"account.move.line,move_state",0,Posted,Festgeschrieben,0
