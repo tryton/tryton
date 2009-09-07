@@ -21,6 +21,10 @@ class ProductCostHistory(ModelSQL, ModelView):
         property_obj = self.pool.get('ir.property')
         return ('SELECT ' \
                     'MAX(__id) AS id, ' \
+                    'MAX(create_uid) AS create_uid, ' \
+                    'MAX(create_date) AS create_date, ' \
+                    'MAX(write_uid) AS write_uid, ' \
+                    'MAX(write_date) AS write_date, ' \
                     'COALESCE(write_date, create_date) AS date, ' \
                     'CAST(TRIM(\',\' FROM SUBSTRING(res FROM \',.*\')) AS INTEGER) ' \
                         'AS template, ' \
