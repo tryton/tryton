@@ -5,6 +5,7 @@
     "name_de_DE" : "Einkauf ungebundene Rechnungsposition",
     "name_fr_FR" : "Ligne de facture autonome - Achat",
     "name_es_CO" : "Línea de Factura autónoma en Compras",
+    "name_es_ES" : "Línea de factura independiente de compra",
     "version" : "0.0.1",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
@@ -28,6 +29,11 @@ composer des factures avec des lignes provenant de différents achats.
 líneas autónomas en lugar de una factura completa. Permite componer facturas con
 líneas originadas en diferentes compras.
 ''',
+    "description_es_ES": '''
+Modifica el comportamiento de orden de compra permitiendo crear líneas
+independientes en lugar de una factura completa. Esto permite componer
+facturas con líneas originadas en diferentes compras.
+''',
     "depends" : [
         "ir",
         "purchase",
@@ -40,5 +46,6 @@ líneas originadas en diferentes compras.
         'de_DE.csv',
         'fr_FR.csv',
         'es_CO.csv',
+        'es_ES.csv',
     ],
 }
