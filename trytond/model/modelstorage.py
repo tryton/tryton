@@ -50,9 +50,8 @@ class ModelStorage(Model):
     _rec_name = 'name'
 
     id = fields.Integer('ID', readonly=True)
-    create_uid = fields.Many2One('res.user', 'Create User', required=True,
-            readonly=True)
-    create_date = fields.DateTime('Create Date', required=True, readonly=True)
+    create_uid = fields.Many2One('res.user', 'Create User', readonly=True)
+    create_date = fields.DateTime('Create Date', readonly=True)
     write_uid = fields.Many2One('res.user', 'Write User', readonly=True)
     write_date = fields.DateTime('Write Date', readonly=True)
     rec_name = fields.Function('get_rec_name', type='char', string='Name',
