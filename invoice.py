@@ -2307,7 +2307,7 @@ class PayInvoice(Wizard):
         ctx['date'] = data['form']['date']
         amount = currency_obj.compute(cursor, user, data['form']['currency'],
                 data['form']['amount'], invoice.company.currency,
-                context=context)
+                context=ctx)
         res = invoice_obj.get_reconcile_lines_for_amount(cursor, user, invoice,
                 amount)
         if res[1] == Decimal('0.0') and amount <= invoice.amount_to_pay:
@@ -2379,7 +2379,7 @@ class PayInvoice(Wizard):
         ctx['date'] = data['form']['date']
         amount = currency_obj.compute(cursor, user, data['form']['currency'],
                 data['form']['amount'], invoice.company.currency,
-                context=context)
+                context=ctx)
 
         reconcile_lines = invoice_obj.get_reconcile_lines_for_amount(cursor,
                 user, invoice, amount)
