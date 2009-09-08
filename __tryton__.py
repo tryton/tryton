@@ -5,6 +5,7 @@
     "name_de_DE" : "Fakturierung ungebundene Rechnungsposition",
     "name_fr_FR" : "Ligne de facture autonome",
     "name_es_CO" : "Línea de factura autónoma",
+    "name_es_ES" : "Línea de factura independiente",
     "version" : "1.1.0",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
@@ -27,6 +28,10 @@ que des lignes qui ont les même type, compagnie, devis et tiers.
 posteriormente a una factura en borrador. La factuara aceptará únicamente líneas de factura del
 mismo tipo, compañía, moneda y tercero.
 ''',
+    "description_es_ES": '''Permite crear líneas de factura independientes y
+añadirlas a una factura borrador. La factura solo aceptará líneas de factura
+con el mismo tipo, empresa, divisa y tercero.
+''',
     "depends" : [
         "ir",
         "account_invoice",
@@ -38,5 +43,6 @@ mismo tipo, compañía, moneda y tercero.
         'de_DE.csv',
         'fr_FR.csv',
         'es_CO.csv',
+        'es_ES.csv',
     ],
 }
