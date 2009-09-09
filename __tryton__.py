@@ -19,7 +19,7 @@
     - Steuern für Kunden und Lieferanten
 ''',
     'description_fr_FR': '''Ajoute des propriétés comptables sur les produits et leurs caétgories:
-    - comptes de dépense et revenu
+    - comptes de charge et revenu
     - taxes client et fournisseur
 ''',
     'description_es_CO': '''Adiciona propiedades contables en productos y categorías:
