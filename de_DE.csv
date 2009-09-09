@@ -1,5 +1,5 @@
 type,name,res_id,src,value,fuzzy
-error,product.template,0,There is no account expense/revenue defined on the product %s (%d),Es ist kein Aufwands-/Erlöskonto definiert für Artikel %s (%d)!,0
+error,product.template,0,There is no account expense/revenue defined on the product %s (%d),Es ist kein Aufwands-/Ertragskonto definiert für Artikel %s (%d)!,0
 field,"product.category,account_expense",0,Account Expense,Konto Aufwand,0
 field,"product.category,account_revenue",0,Account Revenue,Konto Ertrag,0
 field,"product.category-customer-account.tax,product",0,Category,Kategorie,0
@@ -14,7 +14,7 @@ field,"product.template,account_category",0,Use Category's accounts,Konten der K
 field,"product.template,account_expense",0,Account Expense,Konto Aufwand,0
 field,"product.template,account_expense_used",0,Account Expense Used,Konto Aufwand benutzt,0
 field,"product.template,account_revenue",0,Account Revenue,Konto Ertrag,0
-field,"product.template,account_revenue_used",0,Account Revenue Used,Benutztes Ertragskonto,0
+field,"product.template,account_revenue_used",0,Account Revenue Used,Verwendetes Ertragskonto,0
 field,"product.template-customer-account.tax,product",0,Product Template,Artikelvorlage,0
 field,"product.template-customer-account.tax,rec_name",0,Name,Name,0
 field,"product.template-customer-account.tax,tax",0,Tax,Steuer,0
