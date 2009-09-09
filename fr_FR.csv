@@ -373,7 +373,7 @@ to have this secondary currency.","Force tout les mouvements pour ce compte
 à avoir cette devise secondaire.",0
 help,"account.account,taxes",0,"Default tax for manual encoding of move lines 
 for journal types: ""expense"" and ""revenue""","Taxe par défaut pour les lignes de mouvement manuelles
-pour le type de journal: ""dépense"" et ""revenu""",0
+pour le type de journal: ""charge"" et ""produit""",0
 help,"account.account.type,sequence",0,Use to order the account type,Utilisé pour trier les types de compte,0
 help,"account.move.line,amount_second_currency",0,The amount expressed in a second currency,Le montant exprimé dans la devise secondaire,0
 help,"account.move.line,blocked",0,Mark the line as litigation with the party.,Marque la ligne en litige avec le tiers.,0
@@ -413,10 +413,10 @@ model,"account.account.print_trial_balance.init,name",0,Print Trial Balance Init
 model,"account.account.template-account.tax.template,name",0,Account Template - Tax Template,Modèle de compte - Modèle de la taxe,0
 model,"account.account.template,name",0,Account Template,Compte modèle,0
 model,"account.account.template,name",account_template_cash,Main Cash,Compte de liquidité,0
-model,"account.account.template,name",account_template_expense,Main Expense,Compte de dépense,0
+model,"account.account.template,name",account_template_expense,Main Expense,Compte de charges,0
 model,"account.account.template,name",account_template_payable,Main Payable,Compte de paiements,0
 model,"account.account.template,name",account_template_receivable,Main Receivable,Compte à recevoir,0
-model,"account.account.template,name",account_template_revenue,Main Revenue,Compte de recettes,0
+model,"account.account.template,name",account_template_revenue,Main Revenue,Compte de produits,0
 model,"account.account.template,name",account_template_tax,Main Tax,Compte de taxes,0
 model,"account.account.template,name",account_template_root,Minimal Account Chart,Plan comptable minimal,0
 model,"account.account.type,name",0,Account Type,Type de compte,0
@@ -426,7 +426,7 @@ model,"account.account.type.template,name",account_type_template_asset_current_c
 model,"account.account.type.template,name",account_type_template_asset_current,Current,Courant,0
 model,"account.account.type.template,name",account_type_template_liability_current,Current,Courant,0
 model,"account.account.type.template,name",account_type_template_equity,Equity,Capitaux propres,0
-model,"account.account.type.template,name",account_type_template_expense,Expense,Dépense,0
+model,"account.account.type.template,name",account_type_template_expense,Expense,Charge,0
 model,"account.account.type.template,name",account_type_template_income,Income,Revenu,0
 model,"account.account.type.template,name",account_type_template_liability,Liability,Passif,0
 model,"account.account.type.template,name",account_type_template_asset_long_term,Long-term,Long terme,0
@@ -435,23 +435,23 @@ model,"account.account.type.template,name",account_type_template_minimal,Minimal
 model,"account.account.type.template,name",account_type_template_off_balance,Off-Balance,Hors bilan,0
 model,"account.account.type.template,name",account_type_template_liability_current_payable,Payable,A payer,0
 model,"account.account.type.template,name",account_type_template_asset_current_receivable,Receivable,A recevoir,0
-model,"account.account.type.template,name",account_type_template_revenue,Revenue,Revenu,0
+model,"account.account.type.template,name",account_type_template_revenue,Revenue,Produit,0
 model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Taxe,0
 model,"account.account.update_chart_account.init,name",0,Update Chart Account from Template Init,Mise à jour du plan comptable depuis le modèle - Initialisation,0
 model,"account.fiscalyear-account.move.line,name",0,Fiscal Year - Move Line,Année fiscale - Ligne de mouvement,0
 model,"account.fiscalyear.close_fiscalyear.init,name",0,Close Fiscal Year Init,Fermer l'année fiscale - Init,0
 model,"account.fiscalyear,name",0,Fiscal Year,Année fiscale,0
 model,"account.journal,name",journal_cash,Cash,Cash,0
-model,"account.journal,name",journal_expense,Expense,Dépense,0
+model,"account.journal,name",journal_expense,Expense,Charge,0
 model,"account.journal,name",0,Journal,Journal,0
-model,"account.journal,name",journal_revenue,Revenue,Revenu,0
+model,"account.journal,name",journal_revenue,Revenue,Produit,0
 model,"account.journal,name",journal_stock,Stock,Stock,0
 model,"account.journal.period,name",0,Journal - Period,Journal - Période,0
 model,"account.journal.type,name",journal_type_cash,Cash,Cash,0
-model,"account.journal.type,name",journal_type_expense,Expense,Dépense,0
+model,"account.journal.type,name",journal_type_expense,Expense,Charge,0
 model,"account.journal.type,name",journal_type_general,General,Général,0
 model,"account.journal.type,name",0,Journal Type,Type de journal,0
-model,"account.journal.type,name",journal_type_revenue,Revenue,Revenu,0
+model,"account.journal.type,name",journal_type_revenue,Revenue,Produit,0
 model,"account.journal.type,name",journal_type_situation,Situation,Situation,0
 model,"account.journal.view.column,name",0,Journal View Column,Colonne de la vue journal,0
 model,"account.journal.view,name",0,Journal View,Vue de journal,0
@@ -659,7 +659,7 @@ odt,account.move.general_journal,0,Print Date:,Date d'impression :,0
 odt,account.move.general_journal,0,Reference:,Référence :,0
 odt,account.move.general_journal,0,To Date:,À la Date :,0
 odt,account.move.general_journal,0,User:,Utilisateur :,0
-selection,"account.account,kind",0,Expense,Dépense,0
+selection,"account.account,kind",0,Expense,Charge,0
 selection,"account.account,kind",0,Other,Autre,0
 selection,"account.account,kind",0,Payable,A payer,0
 selection,"account.account,kind",0,Receivable,A recevoir,0
@@ -670,7 +670,7 @@ selection,"account.account.open_aged_balance.init,balance_type",0,Customer,Clien
 selection,"account.account.open_aged_balance.init,balance_type",0,Supplier,Fournisseur,0
 selection,"account.account.open_aged_balance.init,unit",0,Day,Jour,0
 selection,"account.account.open_aged_balance.init,unit",0,Month,Mois,0
-selection,"account.account.template,kind",0,Expense,Dépense,0
+selection,"account.account.template,kind",0,Expense,Charge,0
 selection,"account.account.template,kind",0,Other,Autre,0
 selection,"account.account.template,kind",0,Payable,A Payer,0
 selection,"account.account.template,kind",0,Receivable,A recevoir,0
@@ -684,7 +684,7 @@ selection,"account.fiscalyear,state",0,Close,Clôturé,0
 selection,"account.fiscalyear,state",0,Open,Ouverte,0
 selection,"account.journal.period,state",0,Close,Clôturée,0
 selection,"account.journal.period,state",0,Open,Ouverte,0
-selection,"account.move.line,account_kind",0,Expense,Dépense,0
+selection,"account.move.line,account_kind",0,Expense,Charge,0
 selection,"account.move.line,account_kind",0,Other,Autre,0
 selection,"account.move.line,account_kind",0,Payable,A payer,0
 selection,"account.move.line,account_kind",0,Receivable,A recevoir,0
