@@ -571,7 +571,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.transition" id="sale_transition_waiting_invoice_sale_invoice_sale_exception">
             <field name="act_from" ref="sale_activity_waiting_invoice_sale"/>
             <field name="act_to" ref="sale_activity_invoice_sale_exception"/>
-            <field name="trigger_model">accont.invoice</field>
+            <field name="trigger_model">account.invoice</field>
             <field name="trigger_expr_id">[x.id for x in invoices]</field>
             <field name="condition">invoice_exception</field>
         </record>
