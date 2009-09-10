@@ -168,8 +168,8 @@ class Period(ModelSQL, ModelView):
                             period[sequence].id != \
                             vals[sequence]:
                         if invoice_obj.search(cursor, user, [
-                            ('date', '>=', period.start_date),
-                            ('date', '<=', period.end_date),
+                            ('invoice_date', '>=', period.start_date),
+                            ('invoice_date', '<=', period.end_date),
                             ('number', '!=', False),
                             ('type', '=', sequence[:-9]),
                             ], context=context):
