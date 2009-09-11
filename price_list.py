@@ -13,7 +13,7 @@ class PriceList(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', required=True, translate=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-            select=1, domain="[('id', '=', context.get('company', 0))]")
+            select=1, domain=["('id', '=', context.get('company', 0))"])
     lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines')
 
     def default_company(self, cursor, user, context=None):
