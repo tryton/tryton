@@ -760,22 +760,24 @@ class Account(ModelSQL, ModelView):
 
         line_query, fiscalyear_ids = move_line_obj.query_get(cursor, user,
                 context=context)
-        cursor.execute('SELECT a.id, ' + \
-                    ','.join(['SUM(COALESCE(l.' + name + ', 0))'
-                        for name in names]) + ' ' \
-                'FROM account_account a ' \
-                    'LEFT JOIN account_move_line l ' \
-                    'ON (a.id = l.account) ' \
-                'WHERE a.kind != \'view\' ' \
-                    'AND a.id IN (' + \
-                        ','.join(['%s' for x in ids]) + ') ' \
-                    'AND ' + line_query + ' ' \
-                    'AND a.active ' \
-                'GROUP BY a.id', ids)
-        for row in cursor.fetchall():
-            account_id = row[0]
-            for i in range(len(names)):
-                res[names[i]][account_id] = row[i + 1]
+        for i in range(0, len(ids), cursor.IN_MAX):
+            sub_ids = ids[i:i + cursor.IN_MAX]
+            cursor.execute('SELECT a.id, ' + \
+                        ','.join(['SUM(COALESCE(l.' + name + ', 0))'
+                            for name in names]) + ' ' \
+                    'FROM account_account a ' \
+                        'LEFT JOIN account_move_line l ' \
+                        'ON (a.id = l.account) ' \
+                    'WHERE a.kind != \'view\' ' \
+                        'AND a.id IN (' + \
+                            ','.join(['%s' for x in sub_ids]) + ') ' \
+                        'AND ' + line_query + ' ' \
+                        'AND a.active ' \
+                    'GROUP BY a.id', sub_ids)
+            for row in cursor.fetchall():
+                account_id = row[0]
+                for i in range(len(names)):
+                    res[names[i]][account_id] = row[i + 1]
 
         account2company = {}
         id2company = {}
