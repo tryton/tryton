@@ -4,6 +4,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
+from trytond.tools import reduce_ids
 from decimal import Decimal
 import datetime
 import time
@@ -762,6 +763,7 @@ class Account(ModelSQL, ModelView):
                 context=context)
         for i in range(0, len(ids), cursor.IN_MAX):
             sub_ids = ids[i:i + cursor.IN_MAX]
+            red_sql, red_ids = reduce_ids('a.id', sub_ids)
             cursor.execute('SELECT a.id, ' + \
                         ','.join('SUM(COALESCE(l.' + name + ', 0))'
                             for name in names) + ' ' \
@@ -769,11 +771,10 @@ class Account(ModelSQL, ModelView):
                         'LEFT JOIN account_move_line l ' \
                         'ON (a.id = l.account) ' \
                     'WHERE a.kind != \'view\' ' \
-                        'AND a.id IN (' + \
-                            ','.join(('%s',) * len(sub_ids)) + ') ' \
+                        'AND ' + red_sql + ' ' \
                         'AND ' + line_query + ' ' \
                         'AND a.active ' \
-                    'GROUP BY a.id', sub_ids)
+                    'GROUP BY a.id', red_ids)
             for row in cursor.fetchall():
                 account_id = row[0]
                 for i in range(len(names)):
