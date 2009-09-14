@@ -27,6 +27,7 @@ class PySocket:
     def __init__(self, sock=None):
         self.sock = sock
         self.host = None
+        self.hostname = None
         self.port = None
         self.ssl = False
         self.ssl_sock = None
