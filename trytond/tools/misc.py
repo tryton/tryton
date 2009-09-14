@@ -267,9 +267,11 @@ class Cache(object):
                     self._lock.release()
                 return True
             # Update named arguments with positional argument values
+            kwargs_origin = kwargs.copy()
             kwargs.update(dict(zip(arg_names, args)))
             if 'context' in kwargs:
                 if isinstance(kwargs['context'], dict):
+                    kwargs['context'] = kwargs['context'].copy()
                     for i in ('_timestamp', '_delete', '_create_records',
                             '_delete_records'):
                         if i in kwargs['context']:
@@ -319,7 +321,7 @@ class Cache(object):
             if not find:
                 # Work out new value, cache it and return it
                 # Should copy() this value to avoid futur modf of the cacle ?
-                result = function(self2, cursor, **dict(kwargs))
+                result = function(self2, cursor, *args, **kwargs_origin)
 
                 self._lock.acquire()
                 try:
