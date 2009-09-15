@@ -225,7 +225,7 @@ class Report(object):
         localcontext = {}
         localcontext['datas'] = datas
         localcontext['user'] = self.pool.get('res.user').\
-                browse(cursor, user, user)
+                browse(cursor, user, user, context=context)
         localcontext['formatLang'] = self.format_lang
         localcontext['decodestring'] = decodestring
         localcontext['StringIO'] = StringIO.StringIO
