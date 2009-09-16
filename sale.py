@@ -46,7 +46,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             domain=["('party', '=', party)"], states={
                 'readonly': "state != 'draft'",
             })
-    packing_address = fields.Many2One('party.address', 'Shipment Address',
+    shipment_address = fields.Many2One('party.address', 'Shipment Address',
             domain=["('party', '=', party)"], states={
                 'readonly': "state != 'draft'",
             })
@@ -73,7 +73,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     invoice_method = fields.Selection([
         ('manual', 'Manual'),
         ('order', 'On Order Confirmed'),
-        ('packing', 'On Shipment Sent'),
+        ('shipment', 'On Shipment Sent'),
     ], 'Invoice Method', required=True, states={
         'readonly': "state != 'draft'",
         })
@@ -93,26 +93,26 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             string='Invoices Paid')
     invoice_exception = fields.Function('get_function_fields', type='boolean',
             string='Invoices Exception')
-    packing_method = fields.Selection([
+    shipment_method = fields.Selection([
         ('manual', 'Manual'),
         ('order', 'On Order Confirmed'),
         ('invoice', 'On Invoice Paid'),
     ], 'Shipment Method', required=True, states={
         'readonly': "state != 'draft'",
         })
-    packing_state = fields.Selection([
+    shipment_state = fields.Selection([
         ('none', 'None'),
         ('waiting', 'Waiting'),
         ('sent', 'Sent'),
         ('exception', 'Exception'),
     ], 'Shipment State', readonly=True, required=True)
-    packings = fields.Function('get_function_fields', type='many2many',
-            relation='stock.packing.out', string='Shipments')
+    shipments = fields.Function('get_function_fields', type='many2many',
+            relation='stock.shipment.out', string='Shipments')
     moves = fields.Function('get_function_fields', type='many2many',
             relation='stock.move', string='Moves')
-    packing_done = fields.Function('get_function_fields', type='boolean',
+    shipment_done = fields.Function('get_function_fields', type='boolean',
             string='Shipment Done')
-    packing_exception = fields.Function('get_function_fields', type='boolean',
+    shipment_exception = fields.Function('get_function_fields', type='boolean',
             string='Shipments Exception')
 
     def __init__(self):
@@ -129,6 +129,28 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'missing_account_receivable': 'It misses ' \
                     'an "Account Receivable" on the party "%s"!',
         })
+
+    def init(self, cursor, module_name):
+        # Migration from 1.2: packing renamed into shipment
+        cursor.execute("UPDATE ir_model_data "\
+                "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "\
+                "WHERE fs_id like '%packing%' AND module = 'sale'")
+        cursor.execute("UPDATE ir_model_field "\
+                "SET relation = REPLACE(relation, 'packing', 'shipment'), "\
+                    "name = REPLACE(name, 'packing', 'shipment') "
+                "WHERE (relation like '%packing%' OR name like '%packing%') "\
+                    "AND module = 'sale'")
+        table = TableHandler(cursor, self, module_name)
+        table.column_rename('packing_state', 'shipment_state')
+        table.column_rename('packing_method', 'shipment_method')
+        table.column_rename('packing_address', 'shipment_address')
+
+        super(Sale, self).init(cursor, module_name)
+
+        # Migration from 1.2
+        cursor.execute("UPDATE " + self._table + " "\
+                "SET invoice_method = 'shipment' "\
+                "WHERE invoice_method = 'packing'")
 
     def default_payment_term(self, cursor, user, context=None):
         payment_term_obj = self.pool.get('account.invoice.payment_term')
@@ -190,10 +212,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     def default_invoice_state(self, cursor, user, context=None):
         return 'none'
 
-    def default_packing_method(self, cursor, user, context=None):
+    def default_shipment_method(self, cursor, user, context=None):
         return 'order'
 
-    def default_packing_state(self, cursor, user, context=None):
+    def default_shipment_state(self, cursor, user, context=None):
         return 'none'
 
     def on_change_party(self, cursor, user, ids, vals, context=None):
@@ -202,7 +224,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         payment_term_obj = self.pool.get('account.invoice.payment_term')
         res = {
             'invoice_address': False,
-            'packing_address': False,
+            'shipment_address': False,
             'payment_term': False,
         }
         if vals.get('party'):
@@ -210,7 +232,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                     context=context)
             res['invoice_address'] = party_obj.address_get(cursor, user,
                     party.id, type='invoice', context=context)
-            res['packing_address'] = party_obj.address_get(cursor, user,
+            res['shipment_address'] = party_obj.address_get(cursor, user,
                     party.id, type='delivery', context=context)
             if party.payment_term:
                 res['payment_term'] = party.payment_term.id
@@ -218,9 +240,9 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         if res['invoice_address']:
             res['invoice_address.rec_name'] = address_obj.browse(cursor, user,
                     res['invoice_address'], context=context).rec_name
-        if res['packing_address']:
-            res['packing_address.rec_name'] = address_obj.browse(cursor, user,
-                    res['packing_address'], context=context).rec_name
+        if res['shipment_address']:
+            res['shipment_address.rec_name'] = address_obj.browse(cursor, user,
+                    res['shipment_address'], context=context).rec_name
         if not res['payment_term']:
             res['payment_term'] = self.default_payment_term(cursor, user,
                     context=context)
@@ -387,16 +409,16 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         if 'invoice_exception' in names:
             res['invoice_exception'] = self.get_invoice_exception(cursor, user,
                     sales, context=context)
-        if 'packings' in names:
-            res['packings'] = self.get_packings(cursor, user, sales,
+        if 'shipments' in names:
+            res['shipments'] = self.get_shipments(cursor, user, sales,
                     context=context)
         if 'moves' in names:
             res['moves'] = self.get_moves(cursor, user, sales, context=context)
-        if 'packing_done' in names:
-            res['packing_done'] = self.get_packing_done(cursor, user, sales,
+        if 'shipment_done' in names:
+            res['shipment_done'] = self.get_shipment_done(cursor, user, sales,
                     context=context)
-        if 'packing_exception' in names:
-            res['packing_exception'] = self.get_packing_exception(cursor, user,
+        if 'shipment_exception' in names:
+            res['shipment_exception'] = self.get_shipment_exception(cursor, user,
                     sales, context=context)
         return res
 
@@ -537,25 +559,25 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             res[sale.id] = val
         return res
 
-    def get_packings(self, cursor, user, sales, context=None):
+    def get_shipments(self, cursor, user, sales, context=None):
         '''
-        Return packing_out ids for each sales
+        Return shipment_out ids for each sales
 
         :param cursor: the database cursor
         :param user: the user id
         :param sales: a BrowseRecordList of sales
         :param context: the context
         :return: a dictionary with sale id as key and
-            a list of packing_out id as value
+            a list of shipment_out id as value
         '''
         res = {}
         for sale in sales:
             res[sale.id] = []
             for line in sale.lines:
                 for move in line.moves:
-                    if move.packing_out:
-                        if move.packing_out.id not in res[sale.id]:
-                            res[sale.id].append(move.packing_out.id)
+                    if move.shipment_out:
+                        if move.shipment_out.id not in res[sale.id]:
+                            res[sale.id].append(move.shipment_out.id)
         return res
 
     def get_moves(self, cursor, user, sales, context=None):
@@ -576,9 +598,9 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 res[sale.id].extend([x.id for x in line.moves])
         return res
 
-    def get_packing_done(self, cursor, user, sales, context=None):
+    def get_shipment_done(self, cursor, user, sales, context=None):
         '''
-        Return if all the packings have been done for each sales
+        Return if all the shipments have been done for each sales
 
         :param cursor: the database cursor
         :param user: the user id
@@ -597,9 +619,9 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             res[sale.id] = val
         return res
 
-    def get_packing_exception(self, cursor, user, sales, context=None):
+    def get_shipment_exception(self, cursor, user, sales, context=None):
         '''
-        Return if there is a packing exception for each sales
+        Return if there is a shipment exception for each sales
 
         :param cursor: the database cursor
         :param user: the user id
@@ -623,11 +645,11 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         Check the methods.
         '''
         for sale in self.browse(cursor, user, ids):
-            if sale.invoice_method == 'packing' \
-                    and sale.packing_method in ('invoice', 'manual'):
+            if sale.invoice_method == 'shipment' \
+                    and sale.shipment_method in ('invoice', 'manual'):
                 return False
-            if sale.packing_method == 'invoice' \
-                    and sale.invoice_method in ('packing', 'manual'):
+            if sale.shipment_method == 'invoice' \
+                    and sale.invoice_method in ('shipment', 'manual'):
                 return False
         return True
 
@@ -660,13 +682,13 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         default['invoice_state'] = 'none'
         default['invoices'] = False
         default['invoices_ignored'] = False
-        default['packing_state'] = 'none'
+        default['shipment_state'] = 'none'
         return super(Sale, self).copy(cursor, user, ids, default=default,
                 context=context)
 
     def check_for_quotation(self, cursor, user, sale_id, context=None):
         sale = self.browse(cursor, user, sale_id, context=context)
-        if not sale.invoice_address or not sale.packing_address:
+        if not sale.invoice_address or not sale.shipment_address:
             self.raise_user_error(cursor, 'addresses_required', context=context)
         return True
 
@@ -819,18 +841,18 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 res[line.id] = val
         return res
 
-    def create_packing(self, cursor, user, sale_id, context=None):
+    def create_shipment(self, cursor, user, sale_id, context=None):
         '''
-        Create a packing for the sale
+        Create a shipment for the sale
 
         :param cursor: the database cursor
         :param user: the user id
         :param sale_id: the sale id
         :param context: the context
 
-        :return: the created packing id or None
+        :return: the created shipment id or None
         '''
-        packing_obj = self.pool.get('stock.packing.out')
+        shipment_obj = self.pool.get('stock.shipment.out')
         move_obj = self.pool.get('stock.move')
         sale_line_obj = self.pool.get('sale.line')
 
@@ -845,24 +867,24 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
         ctx = context.copy()
         ctx['user'] = user
-        packing_id = packing_obj.create(cursor, 0, {
+        shipment_id = shipment_obj.create(cursor, 0, {
             'planned_date': sale.sale_date,
             'customer': sale.party.id,
-            'delivery_address': sale.packing_address.id,
+            'delivery_address': sale.shipment_address.id,
             'reference': sale.reference,
             'warehouse': sale.warehouse.id,
         }, context=ctx)
 
         for line_id in moves:
             vals = moves[line_id]
-            vals['packing_out'] = packing_id
+            vals['shipment_out'] = shipment_id
             move_id = move_obj.create(cursor, 0, vals, context=ctx)
             sale_line_obj.write(cursor, user, line_id, {
                 'moves': [('add', move_id)],
                 }, context=context)
-        packing_obj.workflow_trigger_validate(cursor, 0, packing_id,
+        shipment_obj.workflow_trigger_validate(cursor, 0, shipment_id,
                 'waiting', context=ctx)
-        return packing_id
+        return shipment_id
 
 Sale()
 
@@ -1501,11 +1523,11 @@ class Product(ModelSQL, ModelView):
 Product()
 
 
-class PackingOut(ModelSQL, ModelView):
-    _name = 'stock.packing.out'
+class ShipmentOut(ModelSQL, ModelView):
+    _name = 'stock.shipment.out'
 
     def __init__(self):
-        super(PackingOut, self).__init__()
+        super(ShipmentOut, self).__init__()
         self._error_messages.update({
                 'reset_move': 'You cannot reset to draft a move generated '\
                     'by a sale.',
@@ -1515,7 +1537,7 @@ class PackingOut(ModelSQL, ModelView):
         sale_obj = self.pool.get('sale.sale')
         sale_line_obj = self.pool.get('sale.line')
 
-        res = super(PackingOut, self).write(cursor, user, ids, vals,
+        res = super(ShipmentOut, self).write(cursor, user, ids, vals,
                 context=context)
 
         if 'state' in vals and vals['state'] in ('done', 'cancel'):
@@ -1523,8 +1545,8 @@ class PackingOut(ModelSQL, ModelView):
             move_ids = []
             if isinstance(ids, (int, long)):
                 ids = [ids]
-            for packing in self.browse(cursor, user, ids, context=context):
-                move_ids.extend([x.id for x in packing.outgoing_moves])
+            for shipment in self.browse(cursor, user, ids, context=context):
+                move_ids.extend([x.id for x in shipment.outgoing_moves])
 
             sale_line_ids = sale_line_obj.search(cursor, user, [
                 ('moves', 'in', move_ids),
@@ -1536,19 +1558,19 @@ class PackingOut(ModelSQL, ModelView):
                         sale_ids.append(sale_line.sale.id)
 
             sale_obj.workflow_trigger_validate(cursor, user, sale_ids,
-                    'packing_update', context=context)
+                    'shipment_update', context=context)
         return res
 
     def button_draft(self, cursor, user, ids, context=None):
-        for packing in self.browse(cursor, user, ids, context=context):
-            for move in packing.outgoing_moves:
+        for shipment in self.browse(cursor, user, ids, context=context):
+            for move in shipment.outgoing_moves:
                 if move.state == 'cancel' and move.sale_line:
                     self.raise_user_error(cursor, 'reset_move')
 
-        return super(PackingOut, self).button_draft(
+        return super(ShipmentOut, self).button_draft(
             cursor, user, ids, context=context)
 
-PackingOut()
+ShipmentOut()
 
 
 class Move(ModelSQL, ModelView):
@@ -1618,7 +1640,7 @@ class Move(ModelSQL, ModelView):
                     sale_ids.add(sale_line.sale.id)
             if sale_ids:
                 sale_obj.workflow_trigger_validate(cursor, user, list(sale_ids),
-                        'packing_update', context=context)
+                        'shipment_update', context=context)
         return res
 
     def delete(self, cursor, user, ids, context=None):
@@ -1641,7 +1663,7 @@ class Move(ModelSQL, ModelView):
                 sale_ids.add(sale_line.sale.id)
             if sale_ids:
                 sale_obj.workflow_trigger_validate(cursor, user, list(sale_ids),
-                        'packing_update', context=context)
+                        'shipment_update', context=context)
         return res
 
 Move()
@@ -1762,9 +1784,9 @@ class OpenCustomer(Wizard):
 OpenCustomer()
 
 
-class HandlePackingExceptionAsk(ModelView):
+class HandleShipmentExceptionAsk(ModelView):
     'Shipment Exception Ask'
-    _name = 'sale.handle.packing.exception.ask'
+    _name = 'sale.handle.shipment.exception.ask'
     _description = __doc__
 
     recreate_moves = fields.Many2Many(
@@ -1772,6 +1794,13 @@ class HandlePackingExceptionAsk(ModelView):
         domain=["('id', 'in', domain_moves)"], depends=['domain_moves'])
     domain_moves = fields.Many2Many(
         'stock.move', None, None, 'Domain Moves')
+
+    def init(self, cursor, module_name):
+        # Migration from 1.2: packing renamed into shipment
+        cursor.execute("UPDATE ir_model "\
+                "SET model = REPLACE(model, 'packing', 'shipment') "\
+                "WHERE model like '%packing%' AND module = 'sale'")
+        super(HandleShipmentExceptionAsk, self).init(cursor, module_name)
 
     def default_recreate_moves(self, cursor, user, context=None):
         return self.default_domain_moves(cursor, user, context=context)
@@ -1797,17 +1826,17 @@ class HandlePackingExceptionAsk(ModelView):
 
         return domain_moves
 
-HandlePackingExceptionAsk()
+HandleShipmentExceptionAsk()
 
-class HandlePackingException(Wizard):
+class HandleShipmentException(Wizard):
     'Handle Shipment Exception'
-    _name = 'sale.handle.packing.exception'
+    _name = 'sale.handle.shipment.exception'
     states = {
         'init': {
             'actions': [],
             'result': {
                 'type': 'form',
-                'object': 'sale.handle.packing.exception.ask',
+                'object': 'sale.handle.shipment.exception.ask',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('ok', 'Ok', 'tryton-ok', True),
@@ -1827,7 +1856,7 @@ class HandlePackingException(Wizard):
         sale_obj = self.pool.get('sale.sale')
         sale_line_obj = self.pool.get('sale.line')
         move_obj = self.pool.get('stock.move')
-        packing_obj = self.pool.get('stock.packing.out')
+        shipment_obj = self.pool.get('stock.shipment.out')
         to_recreate = data['form']['recreate_moves'][0][1]
         domain_moves = data['form']['domain_moves'][0][1]
 
@@ -1853,9 +1882,9 @@ class HandlePackingException(Wizard):
                 context=context)
 
         sale_obj.workflow_trigger_validate(cursor, user, data['id'],
-                'packing_ok', context=context)
+                'shipment_ok', context=context)
 
-HandlePackingException()
+HandleShipmentException()
 
 
 class HandleInvoiceExceptionAsk(ModelView):

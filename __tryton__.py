@@ -16,12 +16,12 @@ Add to product sale informations.
 Define the sale price as the list price.
 
 With the possibilities:
-    - to follow invoice and packing states from the sale order.
+    - to follow invoice and shipment states from the sale order.
     - to define invoice method:
         - Manual
         - On Order Confirmed
-        - On packing Sent
-    - to define packing method:
+        - On shipment Sent
+    - to define shipment method:
         - Manual
         - On Order Confirmed
         - On Invoice Paid
