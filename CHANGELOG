@@ -1,3 +1,4 @@
+* Migrate packing* objects and tables to shipment*
 * Return move id in create_move of inventory line
 
 Version 1.2.0 - 2009-04-20

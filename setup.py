@@ -33,7 +33,7 @@ setup(name='trytond_stock',
                 + info.get('translation', []) \
                 + ['customer_return_restocking_list.odt',
                     'delivery_note.odt',
-                    'internal_packing.odt',
+                    'internal_shipment.odt',
                     'picking_list.odt',
                     'supplier_restocking_list.odt'],
     },

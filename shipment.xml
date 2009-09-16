@@ -5,8 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <data>
 
         <!--Shipment in view-->
-        <record model="ir.ui.view" id="packing_in_view_form">
-            <field name="model">stock.packing.in</field>
+        <record model="ir.ui.view" id="shipment_in_view_form">
+            <field name="model">stock.shipment.in</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -67,8 +67,8 @@ this repository contains the full copyright notices and license terms. -->
                     ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="packing_in_view_tree">
-            <field name="model">stock.packing.in</field>
+        <record model="ir.ui.view" id="shipment_in_view_tree">
+            <field name="model">stock.shipment.in</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -84,77 +84,77 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_packing_in_form">
+        <record model="ir.action.act_window" id="act_shipment_in_form">
             <field name="name">Supplier Shipments</field>
-            <field name="res_model">stock.packing.in</field>
+            <field name="res_model">stock.shipment.in</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_in_form_view1">
+                id="act_shipment_in_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_in_view_tree"/>
-            <field name="act_window" ref="act_packing_in_form"/>
+            <field name="view" ref="shipment_in_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_form"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_in_form_view2">
+                id="act_shipment_in_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_in_view_form"/>
-            <field name="act_window" ref="act_packing_in_form"/>
+            <field name="view" ref="shipment_in_view_form"/>
+            <field name="act_window" ref="act_shipment_in_form"/>
         </record>
         <menuitem parent="menu_stock" sequence="20"
-            action="act_packing_in_form" id="menu_packing_in_form"/>
+            action="act_shipment_in_form" id="menu_shipment_in_form"/>
 
-        <record model="ir.action.act_window" id="act_packing_in_form2">
+        <record model="ir.action.act_window" id="act_shipment_in_form2">
             <field name="name">New Supplier Shipment</field>
-            <field name="res_model">stock.packing.in</field>
+            <field name="res_model">stock.shipment.in</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_in_form2_view1">
+                id="act_shipment_in_form2_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_in_view_form"/>
-            <field name="act_window" ref="act_packing_in_form2"/>
+            <field name="view" ref="shipment_in_view_form"/>
+            <field name="act_window" ref="act_shipment_in_form2"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_in_form2_view2">
+                id="act_shipment_in_form2_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_in_view_tree"/>
-            <field name="act_window" ref="act_packing_in_form2"/>
+            <field name="view" ref="shipment_in_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_form2"/>
         </record>
-        <menuitem parent="menu_packing_in_form" sequence="10"
-            action="act_packing_in_form2" id="menu_packing_in_form2"/>
+        <menuitem parent="menu_shipment_in_form" sequence="10"
+            action="act_shipment_in_form2" id="menu_shipment_in_form2"/>
 
-        <record model="ir.action.act_window" id="act_packing_in_form_received">
-            <field name="name">Received Supplier packings</field>
-            <field name="res_model">stock.packing.in</field>
+        <record model="ir.action.act_window" id="act_shipment_in_form_received">
+            <field name="name">Received Supplier shipments</field>
+            <field name="res_model">stock.shipment.in</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'received')]</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_in_received_form_view1">
+                id="act_shipment_in_received_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_in_view_tree"/>
-            <field name="act_window" ref="act_packing_in_form_received"/>
+            <field name="view" ref="shipment_in_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_form_received"/>
         </record>
         <record model="ir.action.act_window.view"
-            id="act_packing_in_received_form_view2">
+            id="act_shipment_in_received_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_in_view_form"/>
-            <field name="act_window" ref="act_packing_in_form_received"/>
+            <field name="view" ref="shipment_in_view_form"/>
+            <field name="act_window" ref="act_shipment_in_form_received"/>
         </record>
-        <menuitem parent="menu_packing_in_form" sequence="20"
-            action="act_packing_in_form_received"
-            id="menu_packing_in_received"/>
+        <menuitem parent="menu_shipment_in_form" sequence="20"
+            action="act_shipment_in_form_received"
+            id="menu_shipment_in_received"/>
 
         <!-- Shipment In Return view-->
-        <record model="ir.action.wizard" id="wizard_packing_in_return_assign">
+        <record model="ir.action.wizard" id="wizard_shipment_in_return_assign">
             <field name="name">Assign Purchase Return Shipment</field>
-            <field name="wiz_name">stock.packing.in.return.assign</field>
-            <field name="model">stock.packing.in.return</field>
+            <field name="wiz_name">stock.shipment.in.return.assign</field>
+            <field name="model">stock.shipment.in.return</field>
         </record>
 
-        <record model="ir.ui.view" id="packing_in_return_view_form">
-            <field name="model">stock.packing.in.return</field>
+        <record model="ir.ui.view" id="shipment_in_return_view_form">
+            <field name="model">stock.shipment.in.return</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -184,7 +184,7 @@ this repository contains the full copyright notices and license terms. -->
                                 icon="tryton-go-previous"/>
                             <button string="Waiting" name="waiting"
                                 states="{'invisible': '''state not in ('assigned', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'draft' and 'tryton-go-next' or False'''}"/>
-                            <button string="Assign" name="%(wizard_packing_in_return_assign)d"
+                            <button string="Assign" name="%(wizard_shipment_in_return_assign)d"
                                 type="action"
                                 states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                 icon="tryton-go-next"/>
@@ -199,8 +199,8 @@ this repository contains the full copyright notices and license terms. -->
                     ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="packing_in_return_view_tree">
-            <field name="model">stock.packing.in.return</field>
+        <record model="ir.ui.view" id="shipment_in_return_view_tree">
+            <field name="model">stock.shipment.in.return</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -216,50 +216,50 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_packing_in_return_form">
+        <record model="ir.action.act_window" id="act_shipment_in_return_form">
             <field name="name">Supplier Return Shipments</field>
-            <field name="res_model">stock.packing.in.return</field>
+            <field name="res_model">stock.shipment.in.return</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_in_return_form_view1">
+                id="act_shipment_in_return_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_in_return_view_tree"/>
-            <field name="act_window" ref="act_packing_in_return_form"/>
+            <field name="view" ref="shipment_in_return_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_in_return_form_view2">
+                id="act_shipment_in_return_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_in_return_view_form"/>
-            <field name="act_window" ref="act_packing_in_return_form"/>
+            <field name="view" ref="shipment_in_return_view_form"/>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
         </record>
-        <menuitem parent="menu_packing_in_form" sequence="40"
-                  action="act_packing_in_return_form"
-                  id="menu_packing_in_return_form"/>
+        <menuitem parent="menu_shipment_in_form" sequence="40"
+                  action="act_shipment_in_return_form"
+                  id="menu_shipment_in_return_form"/>
 
-        <record model="ir.action.act_window" id="act_packing_in_return_new_form">
+        <record model="ir.action.act_window" id="act_shipment_in_return_new_form">
             <field name="name">New Supplier Return Shipment</field>
-            <field name="res_model">stock.packing.in.return</field>
+            <field name="res_model">stock.shipment.in.return</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_in_return_new_form_view1">
+                id="act_shipment_in_return_new_form_view1">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_in_return_view_tree"/>
-            <field name="act_window" ref="act_packing_in_return_new_form"/>
+            <field name="view" ref="shipment_in_return_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_return_new_form"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_in_return_new_form_view2">
+                id="act_shipment_in_return_new_form_view2">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_in_return_view_form"/>
-            <field name="act_window" ref="act_packing_in_return_new_form"/>
+            <field name="view" ref="shipment_in_return_view_form"/>
+            <field name="act_window" ref="act_shipment_in_return_new_form"/>
         </record>
-        <menuitem parent="menu_packing_in_return_form" sequence="10"
-                  action="act_packing_in_return_new_form"
-                  id="menu_packing_in_return_new_form"/>
+        <menuitem parent="menu_shipment_in_return_form" sequence="10"
+                  action="act_shipment_in_return_new_form"
+                  id="menu_shipment_in_return_new_form"/>
 
-        <record model="ir.ui.view" id="packing_in_return_assign_ask_force_view_form">
-            <field name="model">stock.packing.in.return.assign.ask_force</field>
+        <record model="ir.ui.view" id="shipment_in_return_assign_ask_force_view_form">
+            <field name="model">stock.shipment.in.return.assign.ask_force</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -283,14 +283,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <!--Shipment out view-->
-        <record model="ir.action.wizard" id="wizard_packing_out_assign">
+        <record model="ir.action.wizard" id="wizard_shipment_out_assign">
             <field name="name">Assign Shipment Out</field>
-            <field name="wiz_name">stock.packing.out.assign</field>
-            <field name="model">stock.packing.out</field>
+            <field name="wiz_name">stock.shipment.out.assign</field>
+            <field name="model">stock.shipment.out</field>
         </record>
 
-        <record model="ir.ui.view" id="packing_out_view_form">
-            <field name="model">stock.packing.out</field>
+        <record model="ir.ui.view" id="shipment_out_view_form">
+            <field name="model">stock.shipment.out</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -329,11 +329,11 @@ this repository contains the full copyright notices and license terms. -->
                                         icon="tryton-go-previous"/>
                                 <button string="Waiting" name="waiting"
                                         states="{'invisible': '''state not in ('assigned', 'waiting', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'waiting' and 'tryton-clear' or state == 'draft' and 'tryton-go-next' or False'''}"/>
-                                <button string="Assign" name="%(wizard_packing_out_assign)d"
+                                <button string="Assign" name="%(wizard_shipment_out_assign)d"
                                         type="action"
                                         states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                         icon="tryton-go-next"/>
-                                <button string="Make packing" name="packed"
+                                <button string="Make shipment" name="packed"
                                         states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                         icon="tryton-go-next"/>
                                 <button string="Done" name="done"
@@ -349,8 +349,8 @@ this repository contains the full copyright notices and license terms. -->
                     ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="packing_out_view_tree">
-            <field name="model">stock.packing.out</field>
+        <record model="ir.ui.view" id="shipment_out_view_tree">
+            <field name="model">stock.shipment.out</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -367,105 +367,105 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.action.wizard" id="create_packing_out_return">
+        <record model="ir.action.wizard" id="create_shipment_out_return">
             <field name="name">Create Return Shipment</field>
-            <field name="wiz_name">stock.packing.out.return.create</field>
-            <field name="model">stock.packing.out</field>
+            <field name="wiz_name">stock.shipment.out.return.create</field>
+            <field name="model">stock.shipment.out</field>
         </record>
-        <record model="ir.action.keyword" id="create_packing_out_return_keyword">
+        <record model="ir.action.keyword" id="create_shipment_out_return_keyword">
             <field name="keyword">form_action</field>
-            <field name="model">stock.packing.out,0</field>
-            <field name="action" ref="create_packing_out_return"/>
+            <field name="model">stock.shipment.out,0</field>
+            <field name="action" ref="create_shipment_out_return"/>
         </record>
 
-        <record model="ir.action.act_window" id="act_packing_out_form">
+        <record model="ir.action.act_window" id="act_shipment_out_form">
             <field name="name">Customer Shipments</field>
-            <field name="res_model">stock.packing.out</field>
+            <field name="res_model">stock.shipment.out</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_out_form_view1">
+                id="act_shipment_out_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_out_view_tree"/>
-            <field name="act_window" ref="act_packing_out_form"/>
+            <field name="view" ref="shipment_out_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
         </record>
         <record model="ir.action.act_window.view"
-            id="act_packing_out_form_view2">
+            id="act_shipment_out_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_out_view_form"/>
-            <field name="act_window" ref="act_packing_out_form"/>
+            <field name="view" ref="shipment_out_view_form"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
         </record>
         <menuitem parent="menu_stock" sequence="30"
-            action="act_packing_out_form" id="menu_packing_out_form"/>
+            action="act_shipment_out_form" id="menu_shipment_out_form"/>
 
-        <record model="ir.action.act_window" id="act_packing_out_form_waiting">
+        <record model="ir.action.act_window" id="act_shipment_out_form_waiting">
             <field name="name">Customer Shipments Waiting Assignation</field>
-            <field name="res_model">stock.packing.out</field>
+            <field name="res_model">stock.shipment.out</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'waiting')]</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_out_waiting_form_view1">
+                id="act_shipment_out_waiting_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_out_view_tree"/>
-            <field name="act_window" ref="act_packing_out_form_waiting"/>
+            <field name="view" ref="shipment_out_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_form_waiting"/>
         </record>
         <record model="ir.action.act_window.view"
-            id="act_packing_out_waiting_form_view2">
+            id="act_shipment_out_waiting_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_out_view_form"/>
-            <field name="act_window" ref="act_packing_out_form_waiting"/>
+            <field name="view" ref="shipment_out_view_form"/>
+            <field name="act_window" ref="act_shipment_out_form_waiting"/>
         </record>
-        <menuitem parent="menu_packing_out_form" sequence="10"
-                  action="act_packing_out_form_waiting"
-                  id="menu_packing_out_waiting"/>
+        <menuitem parent="menu_shipment_out_form" sequence="10"
+                  action="act_shipment_out_form_waiting"
+                  id="menu_shipment_out_waiting"/>
 
         <record model="ir.action.act_window"
-                  id="act_packing_out_form_assigned">
+                  id="act_shipment_out_form_assigned">
             <field name="name">Assigned Customer Shipments</field>
-            <field name="res_model">stock.packing.out</field>
+            <field name="res_model">stock.shipment.out</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'assigned')]</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_out_assigned_form_view1">
+                id="act_shipment_out_assigned_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_out_view_tree"/>
-            <field name="act_window" ref="act_packing_out_form_assigned"/>
+            <field name="view" ref="shipment_out_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_form_assigned"/>
         </record>
         <record model="ir.action.act_window.view"
-            id="act_packing_out_assigned_form_view2">
+            id="act_shipment_out_assigned_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_out_view_form"/>
-            <field name="act_window" ref="act_packing_out_form_assigned"/>
+            <field name="view" ref="shipment_out_view_form"/>
+            <field name="act_window" ref="act_shipment_out_form_assigned"/>
         </record>
-        <menuitem parent="menu_packing_out_form" sequence="20"
-            action="act_packing_out_form_assigned"
-            id="menu_packing_out_assigned"/>
+        <menuitem parent="menu_shipment_out_form" sequence="20"
+            action="act_shipment_out_form_assigned"
+            id="menu_shipment_out_assigned"/>
 
-        <record model="ir.action.act_window" id="act_packing_out_form_ready">
+        <record model="ir.action.act_window" id="act_shipment_out_form_ready">
             <field name="name">Customer Shipments Ready for Shipping</field>
-            <field name="res_model">stock.packing.out</field>
+            <field name="res_model">stock.shipment.out</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'packed')]</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_out_ready_form_view1">
+                id="act_shipment_out_ready_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_out_view_tree"/>
-            <field name="act_window" ref="act_packing_out_form_ready"/>
+            <field name="view" ref="shipment_out_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_form_ready"/>
         </record>
         <record model="ir.action.act_window.view"
-            id="act_packing_out_ready_form_view2">
+            id="act_shipment_out_ready_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_out_view_form"/>
-            <field name="act_window" ref="act_packing_out_form_ready"/>
+            <field name="view" ref="shipment_out_view_form"/>
+            <field name="act_window" ref="act_shipment_out_form_ready"/>
         </record>
-        <menuitem parent="menu_packing_out_form" sequence="30"
-            action="act_packing_out_form_ready" id="menu_packing_out_ready"/>
+        <menuitem parent="menu_shipment_out_form" sequence="30"
+            action="act_shipment_out_form_ready" id="menu_shipment_out_ready"/>
 
-        <record model="ir.ui.view" id="packing_out_assign_ask_force_view_form">
-            <field name="model">stock.packing.out.assign.ask_force</field>
+        <record model="ir.ui.view" id="shipment_out_assign_ask_force_view_form">
+            <field name="model">stock.shipment.out.assign.ask_force</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -489,14 +489,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <!--Internal Shipment view-->
-        <record model="ir.action.wizard" id="wizard_packing_internal_assign">
+        <record model="ir.action.wizard" id="wizard_shipment_internal_assign">
             <field name="name">Assign Shipment Internal</field>
-            <field name="wiz_name">stock.packing.internal.assign</field>
-            <field name="model">stock.packing.internal</field>
+            <field name="wiz_name">stock.shipment.internal.assign</field>
+            <field name="model">stock.shipment.internal</field>
         </record>
 
-        <record model="ir.ui.view" id="packing_internal_view_form">
-            <field name="model">stock.packing.internal</field>
+        <record model="ir.ui.view" id="shipment_internal_view_form">
+            <field name="model">stock.shipment.internal</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -526,7 +526,7 @@ this repository contains the full copyright notices and license terms. -->
                                 icon="tryton-go-previous"/>
                             <button string="Waiting" name="waiting"
                                 states="{'invisible': '''state not in ('assigned', 'waiting', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'waiting' and 'tryton-clear' or state == 'draft' and 'tryton-go-next' or False'''}"/>
-                            <button string="Assign" name="%(wizard_packing_internal_assign)d"
+                            <button string="Assign" name="%(wizard_shipment_internal_assign)d"
                                 type="action"
                                 states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
                                 icon="tryton-go-next"/>
@@ -541,8 +541,8 @@ this repository contains the full copyright notices and license terms. -->
                     ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="packing_internal_view_tree">
-            <field name="model">stock.packing.internal</field>
+        <record model="ir.ui.view" id="shipment_internal_view_tree">
+            <field name="model">stock.shipment.internal</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -558,116 +558,116 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_packing_internal_form">
+        <record model="ir.action.act_window" id="act_shipment_internal_form">
             <field name="name">Internal Shipments</field>
-            <field name="res_model">stock.packing.internal</field>
+            <field name="res_model">stock.shipment.internal</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_internal_form_view1">
+                id="act_shipment_internal_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_internal_view_tree"/>
-            <field name="act_window" ref="act_packing_internal_form"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_internal_form_view2">
+                id="act_shipment_internal_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_internal_view_form"/>
-            <field name="act_window" ref="act_packing_internal_form"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_form"/>
         </record>
         <menuitem parent="menu_stock" sequence="35"
-                  action="act_packing_internal_form"
-                  id="menu_packing_internal_form"/>
+                  action="act_shipment_internal_form"
+                  id="menu_shipment_internal_form"/>
 
-        <record model="ir.action.act_window" id="act_packing_internal_new_form">
+        <record model="ir.action.act_window" id="act_shipment_internal_new_form">
             <field name="name">New Internal Shipment</field>
-            <field name="res_model">stock.packing.internal</field>
+            <field name="res_model">stock.shipment.internal</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_internal_new_form_view1">
+                id="act_shipment_internal_new_form_view1">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_internal_view_tree"/>
-            <field name="act_window" ref="act_packing_internal_new_form"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_new_form"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_internal_new_form_view2">
+                id="act_shipment_internal_new_form_view2">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_internal_view_form"/>
-            <field name="act_window" ref="act_packing_internal_new_form"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_new_form"/>
         </record>
-        <menuitem parent="menu_packing_internal_form" sequence="10"
-                  action="act_packing_internal_new_form"
-                  id="menu_packing_internal_new_form"/>
+        <menuitem parent="menu_shipment_internal_form" sequence="10"
+                  action="act_shipment_internal_new_form"
+                  id="menu_shipment_internal_new_form"/>
 
-        <record model="ir.action.act_window" id="act_packing_internal_draft_form">
+        <record model="ir.action.act_window" id="act_shipment_internal_draft_form">
             <field name="name">Draft Internal Shipments</field>
-            <field name="res_model">stock.packing.internal</field>
+            <field name="res_model">stock.shipment.internal</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'draft')]</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_internal_draft_form_view1">
+                id="act_shipment_internal_draft_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_internal_view_tree"/>
-            <field name="act_window" ref="act_packing_internal_draft_form"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_draft_form"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_internal_draft_form_view2">
+                id="act_shipment_internal_draft_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_internal_view_form"/>
-            <field name="act_window" ref="act_packing_internal_draft_form"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_draft_form"/>
         </record>
-        <menuitem parent="menu_packing_internal_form" sequence="20"
-                  action="act_packing_internal_draft_form"
-                  id="menu_packing_internal_draft_form"/>
+        <menuitem parent="menu_shipment_internal_form" sequence="20"
+                  action="act_shipment_internal_draft_form"
+                  id="menu_shipment_internal_draft_form"/>
 
-        <record model="ir.action.act_window" id="act_packing_internal_waiting_form">
+        <record model="ir.action.act_window" id="act_shipment_internal_waiting_form">
             <field name="name">Internal Shipments Waiting Assignation</field>
-            <field name="res_model">stock.packing.internal</field>
+            <field name="res_model">stock.shipment.internal</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'waiting')]</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_internal_waiting_form_view1">
+                id="act_shipment_internal_waiting_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_internal_view_tree"/>
-            <field name="act_window" ref="act_packing_internal_waiting_form"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_waiting_form"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_internal_waiting_form_view2">
+                id="act_shipment_internal_waiting_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_internal_view_form"/>
-            <field name="act_window" ref="act_packing_internal_waiting_form"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_waiting_form"/>
         </record>
-        <menuitem parent="menu_packing_internal_form" sequence="30"
-                  action="act_packing_internal_waiting_form"
-                  id="menu_packing_internal_waiting_form"/>
+        <menuitem parent="menu_shipment_internal_form" sequence="30"
+                  action="act_shipment_internal_waiting_form"
+                  id="menu_shipment_internal_waiting_form"/>
 
-        <record model="ir.action.act_window" id="act_packing_internal_assigned_form">
+        <record model="ir.action.act_window" id="act_shipment_internal_assigned_form">
             <field name="name">Assigned Internal Shipments</field>
-            <field name="res_model">stock.packing.internal</field>
+            <field name="res_model">stock.shipment.internal</field>
             <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'assigned')]</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_internal_assigned_form_view1">
+                id="act_shipment_internal_assigned_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_internal_view_tree"/>
-            <field name="act_window" ref="act_packing_internal_assigned_form"/>
+            <field name="view" ref="shipment_internal_view_tree"/>
+            <field name="act_window" ref="act_shipment_internal_assigned_form"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_internal_assigned_form_view2">
+                id="act_shipment_internal_assigned_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_internal_view_form"/>
-            <field name="act_window" ref="act_packing_internal_assigned_form"/>
+            <field name="view" ref="shipment_internal_view_form"/>
+            <field name="act_window" ref="act_shipment_internal_assigned_form"/>
         </record>
-        <menuitem parent="menu_packing_internal_form" sequence="40"
-                  action="act_packing_internal_assigned_form"
-                  id="menu_packing_internal_assigned_form"/>
+        <menuitem parent="menu_shipment_internal_form" sequence="40"
+                  action="act_shipment_internal_assigned_form"
+                  id="menu_shipment_internal_assigned_form"/>
 
-        <record model="ir.ui.view" id="packing_internal_assign_ask_force_view_form">
-            <field name="model">stock.packing.internal.assign.ask_force</field>
+        <record model="ir.ui.view" id="shipment_internal_assign_ask_force_view_form">
+            <field name="model">stock.shipment.internal.assign.ask_force</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -691,8 +691,8 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <!--Return Shipment Out view-->
-        <record model="ir.ui.view" id="packing_out_return_view_form">
-            <field name="model">stock.packing.out.return</field>
+        <record model="ir.ui.view" id="shipment_out_return_view_form">
+            <field name="model">stock.shipment.out.return</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -753,8 +753,8 @@ this repository contains the full copyright notices and license terms. -->
                     ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="packing_out_return_view_tree">
-            <field name="model">stock.packing.out.return</field>
+        <record model="ir.ui.view" id="shipment_out_return_view_tree">
+            <field name="model">stock.shipment.out.return</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -771,651 +771,651 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.action.act_window" id="act_packing_out_return_form">
+        <record model="ir.action.act_window" id="act_shipment_out_return_form">
             <field name="name">Customer Return Shipments</field>
-            <field name="res_model">stock.packing.out.return</field>
+            <field name="res_model">stock.shipment.out.return</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_out_return_form_view1">
+                id="act_shipment_out_return_form_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_out_return_view_tree"/>
-            <field name="act_window" ref="act_packing_out_return_form"/>
+            <field name="view" ref="shipment_out_return_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_out_return_form_view2">
+                id="act_shipment_out_return_form_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_out_return_view_form"/>
-            <field name="act_window" ref="act_packing_out_return_form"/>
+            <field name="view" ref="shipment_out_return_view_form"/>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
         </record>
-        <menuitem parent="menu_packing_out_form" sequence="40"
-                  action="act_packing_out_return_form"
-                  id="menu_packing_out_return_form"/>
+        <menuitem parent="menu_shipment_out_form" sequence="40"
+                  action="act_shipment_out_return_form"
+                  id="menu_shipment_out_return_form"/>
 
-        <record model="ir.action.act_window" id="act_packing_out_return_form2">
+        <record model="ir.action.act_window" id="act_shipment_out_return_form2">
             <field name="name">New Customer Return Shipment</field>
-            <field name="res_model">stock.packing.out.return</field>
+            <field name="res_model">stock.shipment.out.return</field>
             <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_out_return_form2_view1">
+                id="act_shipment_out_return_form2_view1">
             <field name="sequence" eval="1"/>
-            <field name="view" ref="packing_out_return_view_form"/>
-            <field name="act_window" ref="act_packing_out_return_form2"/>
+            <field name="view" ref="shipment_out_return_view_form"/>
+            <field name="act_window" ref="act_shipment_out_return_form2"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_packing_out_return_form2_view2">
+                id="act_shipment_out_return_form2_view2">
             <field name="sequence" eval="2"/>
-            <field name="view" ref="packing_out_return_view_tree"/>
-            <field name="act_window" ref="act_packing_out_return_form2"/>
+            <field name="view" ref="shipment_out_return_view_tree"/>
+            <field name="act_window" ref="act_shipment_out_return_form2"/>
         </record>
-        <menuitem parent="menu_packing_out_return_form" sequence="10"
-            action="act_packing_out_return_form2" id="menu_packing_out_return_form2"/>
+        <menuitem parent="menu_shipment_out_return_form" sequence="10"
+            action="act_shipment_out_return_form2" id="menu_shipment_out_return_form2"/>
 
-        <!-- Workflow packing in -->
-        <record model="workflow" id="wkf_packingin">
+        <!-- Workflow shipment in -->
+        <record model="workflow" id="wkf_shipmentin">
             <field name="name">Supplier Shipment</field>
-            <field name="model">stock.packing.in</field>
+            <field name="model">stock.shipment.in</field>
             <field name="on_create">True</field>
         </record>
-        <record model="workflow.activity" id="packingin_act_draft">
-            <field name="workflow" ref="wkf_packingin"/>
+        <record model="workflow.activity" id="shipmentin_act_draft">
+            <field name="workflow" ref="wkf_shipmentin"/>
             <field name="flow_start">True</field>
             <field name="kind">function</field>
             <field name="action">set_state_draft()</field>
             <field name="name">Draft</field>
         </record>
-        <record model="workflow.activity" id="packingin_act_cancel">
-            <field name="workflow" ref="wkf_packingin"/>
+        <record model="workflow.activity" id="shipmentin_act_cancel">
+            <field name="workflow" ref="wkf_shipmentin"/>
             <field name="flow_stop">True</field>
             <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>
-        <record model="workflow.activity" id="packingin_act_done">
-            <field name="workflow" ref="wkf_packingin"/>
+        <record model="workflow.activity" id="shipmentin_act_done">
+            <field name="workflow" ref="wkf_shipmentin"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
             <field name="kind">function</field>
             <field name="action">set_state_done()</field>
         </record>
-        <record model="workflow.activity" id="packingin_act_received">
+        <record model="workflow.activity" id="shipmentin_act_received">
             <field name="name">Received</field>
             <field name="kind">function</field>
-            <field name="workflow" ref="wkf_packingin"/>
+            <field name="workflow" ref="wkf_shipmentin"/>
             <field name="action">set_state_received()&#10;create_inventory_moves()</field>
         </record>
 
         <record model="workflow.transition"
-                id="packingin_trans_draft_received">
-            <field name="act_from" ref="packingin_act_draft"/>
-            <field name="act_to" ref="packingin_act_received"/>
+                id="shipmentin_trans_draft_received">
+            <field name="act_from" ref="shipmentin_act_draft"/>
+            <field name="act_to" ref="shipmentin_act_received"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">received</field>
         </record>
         <record model="workflow.transition"
-                id="packingin_trans_received_draft">
-            <field name="act_from" ref="packingin_act_received"/>
-            <field name="act_to" ref="packingin_act_draft"/>
+                id="shipmentin_trans_received_draft">
+            <field name="act_from" ref="shipmentin_act_received"/>
+            <field name="act_to" ref="shipmentin_act_draft"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">draft</field>
         </record>
-        <record model="workflow.transition" id="packingin_trans_received_done">
-            <field name="act_from" ref="packingin_act_received"/>
-            <field name="act_to" ref="packingin_act_done"/>
+        <record model="workflow.transition" id="shipmentin_trans_received_done">
+            <field name="act_from" ref="shipmentin_act_received"/>
+            <field name="act_to" ref="shipmentin_act_done"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">done</field>
         </record>
-        <record model="workflow.transition" id="packingin_trans_draft_cancel">
-            <field name="act_from" ref="packingin_act_draft"/>
-            <field name="act_to" ref="packingin_act_cancel"/>
+        <record model="workflow.transition" id="shipmentin_trans_draft_cancel">
+            <field name="act_from" ref="shipmentin_act_draft"/>
+            <field name="act_to" ref="shipmentin_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packingin_trans_received_cancel">
-            <field name="act_from" ref="packingin_act_received"/>
-            <field name="act_to" ref="packingin_act_cancel"/>
+                id="shipmentin_trans_received_cancel">
+            <field name="act_from" ref="shipmentin_act_received"/>
+            <field name="act_to" ref="shipmentin_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
 
 
-        <!-- Workflow packing out -->
-        <record model="workflow" id="wkf_packingout">
+        <!-- Workflow shipment out -->
+        <record model="workflow" id="wkf_shipmentout">
             <field name="name">Customer Shipment</field>
-            <field name="model">stock.packing.out</field>
+            <field name="model">stock.shipment.out</field>
             <field name="on_create">True</field>
         </record>
-        <record model="workflow.activity" id="packingout_act_draft">
-            <field name="workflow" ref="wkf_packingout"/>
+        <record model="workflow.activity" id="shipmentout_act_draft">
+            <field name="workflow" ref="wkf_shipmentout"/>
             <field name="flow_start">True</field>
             <field name="name">Draft</field>
             <field name="kind">function</field>
             <field name="action">set_state_draft()</field>
         </record>
-        <record model="workflow.activity" id="packingout_act_cancel">
-            <field name="workflow" ref="wkf_packingout"/>
+        <record model="workflow.activity" id="shipmentout_act_cancel">
+            <field name="workflow" ref="wkf_shipmentout"/>
             <field name="flow_stop">True</field>
             <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>
-        <record model="workflow.activity" id="packingout_act_done">
-            <field name="workflow" ref="wkf_packingout"/>
+        <record model="workflow.activity" id="shipmentout_act_done">
+            <field name="workflow" ref="wkf_shipmentout"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
             <field name="kind">function</field>
             <field name="action">set_state_done()</field>
         </record>
-        <record model="workflow.activity" id="packingout_act_waiting">
+        <record model="workflow.activity" id="shipmentout_act_waiting">
             <field name="name">Waiting</field>
             <field name="kind">function</field>
-            <field name="workflow" ref="wkf_packingout"/>
+            <field name="workflow" ref="wkf_shipmentout"/>
             <field name="action">set_state_waiting()</field>
         </record>
-        <record model="workflow.activity" id="packingout_act_assigned">
+        <record model="workflow.activity" id="shipmentout_act_assigned">
             <field name="name">Assigned</field>
             <field name="kind">function</field>
-            <field name="workflow" ref="wkf_packingout"/>
+            <field name="workflow" ref="wkf_shipmentout"/>
             <field name="action">set_state_assigned()</field>
         </record>
-        <record model="workflow.activity" id="packingout_act_packed">
+        <record model="workflow.activity" id="shipmentout_act_packed">
             <field name="name">Packed</field>
             <field name="kind">function</field>
-            <field name="workflow" ref="wkf_packingout"/>
+            <field name="workflow" ref="wkf_shipmentout"/>
             <field name="action">set_state_packed()</field>
         </record>
 
         <record model="workflow.transition"
-                id="packingout_trans_waiting_assigned">
-            <field name="act_from" ref="packingout_act_waiting"/>
-            <field name="act_to" ref="packingout_act_assigned"/>
+                id="shipmentout_trans_waiting_assigned">
+            <field name="act_from" ref="shipmentout_act_waiting"/>
+            <field name="act_to" ref="shipmentout_act_assigned"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">assign</field>
             <field name="condition">assign_try()</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_assigned_waiting">
-            <field name="act_from" ref="packingout_act_assigned"/>
-            <field name="act_to" ref="packingout_act_waiting"/>
+                id="shipmentout_trans_assigned_waiting">
+            <field name="act_from" ref="shipmentout_act_assigned"/>
+            <field name="act_to" ref="shipmentout_act_waiting"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_waiting_waiting">
-            <field name="act_from" ref="packingout_act_waiting"/>
-            <field name="act_to" ref="packingout_act_waiting"/>
+                id="shipmentout_trans_waiting_waiting">
+            <field name="act_from" ref="shipmentout_act_waiting"/>
+            <field name="act_to" ref="shipmentout_act_waiting"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_waiting_assigned_force">
-            <field name="act_from" ref="packingout_act_waiting"/>
-            <field name="act_to" ref="packingout_act_assigned"/>
+                id="shipmentout_trans_waiting_assigned_force">
+            <field name="act_from" ref="shipmentout_act_waiting"/>
+            <field name="act_to" ref="shipmentout_act_assigned"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">force_assign</field>
             <field name="condition">assign_force()</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_draft_waiting">
-            <field name="act_from" ref="packingout_act_draft"/>
-            <field name="act_to" ref="packingout_act_waiting"/>
+                id="shipmentout_trans_draft_waiting">
+            <field name="act_from" ref="shipmentout_act_draft"/>
+            <field name="act_to" ref="shipmentout_act_waiting"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_waiting_draft">
-            <field name="act_from" ref="packingout_act_waiting"/>
-            <field name="act_to" ref="packingout_act_draft"/>
+                id="shipmentout_trans_waiting_draft">
+            <field name="act_from" ref="shipmentout_act_waiting"/>
+            <field name="act_to" ref="shipmentout_act_draft"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">draft</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_waiting_cancel">
-            <field name="act_from" ref="packingout_act_waiting"/>
-            <field name="act_to" ref="packingout_act_cancel"/>
+                id="shipmentout_trans_waiting_cancel">
+            <field name="act_from" ref="shipmentout_act_waiting"/>
+            <field name="act_to" ref="shipmentout_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_draft_cancel">
-            <field name="act_from" ref="packingout_act_draft"/>
-            <field name="act_to" ref="packingout_act_cancel"/>
+                id="shipmentout_trans_draft_cancel">
+            <field name="act_from" ref="shipmentout_act_draft"/>
+            <field name="act_to" ref="shipmentout_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_assigned_packed">
-            <field name="act_from" ref="packingout_act_assigned"/>
-            <field name="act_to" ref="packingout_act_packed"/>
+                id="shipmentout_trans_assigned_packed">
+            <field name="act_from" ref="shipmentout_act_assigned"/>
+            <field name="act_to" ref="shipmentout_act_packed"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">packed</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_packed_done">
-            <field name="act_from" ref="packingout_act_packed"/>
-            <field name="act_to" ref="packingout_act_done"/>
+                id="shipmentout_trans_packed_done">
+            <field name="act_from" ref="shipmentout_act_packed"/>
+            <field name="act_to" ref="shipmentout_act_done"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">done</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_assigned_cancel">
-            <field name="act_from" ref="packingout_act_assigned"/>
-            <field name="act_to" ref="packingout_act_cancel"/>
+                id="shipmentout_trans_assigned_cancel">
+            <field name="act_from" ref="shipmentout_act_assigned"/>
+            <field name="act_to" ref="shipmentout_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packingout_trans_packed_cancel">
-            <field name="act_from" ref="packingout_act_packed"/>
-            <field name="act_to" ref="packingout_act_cancel"/>
+                id="shipmentout_trans_packed_cancel">
+            <field name="act_from" ref="shipmentout_act_packed"/>
+            <field name="act_to" ref="shipmentout_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
 
 
-        <record model="ir.action.report" id="report_packing_out_delivery_note">
+        <record model="ir.action.report" id="report_shipment_out_delivery_note">
             <field name="name">Delivery Note</field>
-            <field name="model">stock.packing.out</field>
-            <field name="report_name">stock.packing.out.delivery_note</field>
+            <field name="model">stock.shipment.out</field>
+            <field name="report_name">stock.shipment.out.delivery_note</field>
             <field name="report">stock/delivery_note.odt</field>
             <field name="style">company/header_A4.odt</field>
         </record>
         <record model="ir.action.keyword"
-         id="report_packing_out_delivery_note_keyword">
+         id="report_shipment_out_delivery_note_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">stock.packing.out,0</field>
-            <field name="action" ref="report_packing_out_delivery_note"/>
+            <field name="model">stock.shipment.out,0</field>
+            <field name="action" ref="report_shipment_out_delivery_note"/>
         </record>
 
-        <record model="ir.action.report" id="report_packing_out_picking_list">
+        <record model="ir.action.report" id="report_shipment_out_picking_list">
             <field name="name">Picking List</field>
-            <field name="model">stock.packing.out</field>
-            <field name="report_name">stock.packing.out.picking_list</field>
+            <field name="model">stock.shipment.out</field>
+            <field name="report_name">stock.shipment.out.picking_list</field>
             <field name="report">stock/picking_list.odt</field>
             <field name="style">company/header_A4.odt</field>
         </record>
         <record model="ir.action.keyword"
-         id="report_packing_out_picking_list_keyword">
+         id="report_shipment_out_picking_list_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">stock.packing.out,0</field>
-            <field name="action" ref="report_packing_out_picking_list"/>
+            <field name="model">stock.shipment.out,0</field>
+            <field name="action" ref="report_shipment_out_picking_list"/>
         </record>
 
-        <record model="ir.action.report" id="report_packing_in_restocking_list">
+        <record model="ir.action.report" id="report_shipment_in_restocking_list">
             <field name="name">Restocking List</field>
-            <field name="model">stock.packing.in</field>
-            <field name="report_name">stock.packing.in.restocking_list</field>
+            <field name="model">stock.shipment.in</field>
+            <field name="report_name">stock.shipment.in.restocking_list</field>
             <field name="report">stock/supplier_restocking_list.odt</field>
             <field name="style">company/header_A4.odt</field>
         </record>
         <record model="ir.action.keyword"
-         id="report_packing_in_restocking_list_keyword">
+         id="report_shipment_in_restocking_list_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">stock.packing.in,0</field>
-            <field name="action" ref="report_packing_in_restocking_list"/>
+            <field name="model">stock.shipment.in,0</field>
+            <field name="action" ref="report_shipment_in_restocking_list"/>
         </record>
 
-        <record model="ir.action.report" id="report_packing_out_return_restocking_list">
+        <record model="ir.action.report" id="report_shipment_out_return_restocking_list">
             <field name="name">Restocking List</field>
-            <field name="model">stock.packing.out.return</field>
-            <field name="report_name">stock.packing.out.return.restocking_list</field>
+            <field name="model">stock.shipment.out.return</field>
+            <field name="report_name">stock.shipment.out.return.restocking_list</field>
             <field name="report">stock/customer_return_restocking_list.odt</field>
             <field name="style">company/header_A4.odt</field>
         </record>
         <record model="ir.action.keyword"
-         id="report_packing_out_return_restocking_list_keyword">
+         id="report_shipment_out_return_restocking_list_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">stock.packing.out.return,0</field>
-            <field name="action" ref="report_packing_out_return_restocking_list"/>
+            <field name="model">stock.shipment.out.return,0</field>
+            <field name="action" ref="report_shipment_out_return_restocking_list"/>
         </record>
 
-        <record model="ir.action.report" id="report_packing_internal">
+        <record model="ir.action.report" id="report_shipment_internal">
             <field name="name">Internal Shipment</field>
-            <field name="model">stock.packing.internal</field>
-            <field name="report_name">stock.packing.internal.report</field>
-            <field name="report">stock/internal_packing.odt</field>
+            <field name="model">stock.shipment.internal</field>
+            <field name="report_name">stock.shipment.internal.report</field>
+            <field name="report">stock/internal_shipment.odt</field>
             <field name="style">company/header_A4.odt</field>
         </record>
         <record model="ir.action.keyword"
-         id="report_packing_internal_keyword">
+         id="report_shipment_internal_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">stock.packing.internal,0</field>
-            <field name="action" ref="report_packing_internal"/>
+            <field name="model">stock.shipment.internal,0</field>
+            <field name="action" ref="report_shipment_internal"/>
         </record>
 
-        <!-- Workflow internal packing -->
-        <record model="workflow" id="wkf_packinginternal">
+        <!-- Workflow internal shipment -->
+        <record model="workflow" id="wkf_shipmentinternal">
             <field name="name">Internal Shipment</field>
-            <field name="model">stock.packing.internal</field>
+            <field name="model">stock.shipment.internal</field>
             <field name="on_create">True</field>
         </record>
-        <record model="workflow.activity" id="packinginternal_act_draft">
-            <field name="workflow" ref="wkf_packinginternal"/>
+        <record model="workflow.activity" id="shipmentinternal_act_draft">
+            <field name="workflow" ref="wkf_shipmentinternal"/>
             <field name="flow_start">True</field>
             <field name="kind">function</field>
             <field name="action">set_state_draft()</field>
             <field name="name">Draft</field>
         </record>
-        <record model="workflow.activity" id="packinginternal_act_cancel">
-            <field name="workflow" ref="wkf_packinginternal"/>
+        <record model="workflow.activity" id="shipmentinternal_act_cancel">
+            <field name="workflow" ref="wkf_shipmentinternal"/>
             <field name="flow_stop">True</field>
             <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>
-        <record model="workflow.activity" id="packinginternal_act_done">
-            <field name="workflow" ref="wkf_packinginternal"/>
+        <record model="workflow.activity" id="shipmentinternal_act_done">
+            <field name="workflow" ref="wkf_shipmentinternal"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
             <field name="kind">function</field>
             <field name="action">set_state_done()</field>
         </record>
-        <record model="workflow.activity" id="packinginternal_act_waiting">
+        <record model="workflow.activity" id="shipmentinternal_act_waiting">
             <field name="name">Waiting</field>
             <field name="kind">function</field>
-            <field name="workflow" ref="wkf_packinginternal"/>
+            <field name="workflow" ref="wkf_shipmentinternal"/>
             <field name="action">set_state_waiting()</field>
         </record>
-        <record model="workflow.activity" id="packinginternal_act_assigned">
+        <record model="workflow.activity" id="shipmentinternal_act_assigned">
             <field name="name">Assigned</field>
             <field name="kind">function</field>
-            <field name="workflow" ref="wkf_packinginternal"/>
+            <field name="workflow" ref="wkf_shipmentinternal"/>
             <field name="action">set_state_assigned()</field>
         </record>
 
         <record model="workflow.transition"
-                id="packinginternal_trans_draft_waiting">
-            <field name="act_from" ref="packinginternal_act_draft"/>
-            <field name="act_to" ref="packinginternal_act_waiting"/>
+                id="shipmentinternal_trans_draft_waiting">
+            <field name="act_from" ref="shipmentinternal_act_draft"/>
+            <field name="act_to" ref="shipmentinternal_act_waiting"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
-                id="packinginternal_trans_waiting_draft">
-            <field name="act_from" ref="packinginternal_act_waiting"/>
-            <field name="act_to" ref="packinginternal_act_draft"/>
+                id="shipmentinternal_trans_waiting_draft">
+            <field name="act_from" ref="shipmentinternal_act_waiting"/>
+            <field name="act_to" ref="shipmentinternal_act_draft"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">draft</field>
         </record>
         <record model="workflow.transition"
-                id="packinginternal_trans_waiting_waiting">
-            <field name="act_from" ref="packinginternal_act_waiting"/>
-            <field name="act_to" ref="packinginternal_act_waiting"/>
+                id="shipmentinternal_trans_waiting_waiting">
+            <field name="act_from" ref="shipmentinternal_act_waiting"/>
+            <field name="act_to" ref="shipmentinternal_act_waiting"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
-                id="packinginternal_trans_waiting_assigned">
-            <field name="act_from" ref="packinginternal_act_waiting"/>
-            <field name="act_to" ref="packinginternal_act_assigned"/>
+                id="shipmentinternal_trans_waiting_assigned">
+            <field name="act_from" ref="shipmentinternal_act_waiting"/>
+            <field name="act_to" ref="shipmentinternal_act_assigned"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">assign</field>
             <field name="condition">assign_try()</field>
         </record>
         <record model="workflow.transition"
-                id="packinginternal_trans_assigned_waiting">
-            <field name="act_from" ref="packinginternal_act_assigned"/>
-            <field name="act_to" ref="packinginternal_act_waiting"/>
+                id="shipmentinternal_trans_assigned_waiting">
+            <field name="act_from" ref="shipmentinternal_act_assigned"/>
+            <field name="act_to" ref="shipmentinternal_act_waiting"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
-                id="packinginternal_trans_waiting_assigned_force">
-            <field name="act_from" ref="packinginternal_act_waiting"/>
-            <field name="act_to" ref="packinginternal_act_assigned"/>
+                id="shipmentinternal_trans_waiting_assigned_force">
+            <field name="act_from" ref="shipmentinternal_act_waiting"/>
+            <field name="act_to" ref="shipmentinternal_act_assigned"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">force_assign</field>
             <field name="condition">assign_force()</field>
         </record>
-        <record model="workflow.transition" id="packinginternal_trans_assigned_done">
-            <field name="act_from" ref="packinginternal_act_assigned"/>
-            <field name="act_to" ref="packinginternal_act_done"/>
+        <record model="workflow.transition" id="shipmentinternal_trans_assigned_done">
+            <field name="act_from" ref="shipmentinternal_act_assigned"/>
+            <field name="act_to" ref="shipmentinternal_act_done"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">done</field>
         </record>
-        <record model="workflow.transition" id="packinginternal_trans_draft_cancel">
-            <field name="act_from" ref="packinginternal_act_draft"/>
-            <field name="act_to" ref="packinginternal_act_cancel"/>
+        <record model="workflow.transition" id="shipmentinternal_trans_draft_cancel">
+            <field name="act_from" ref="shipmentinternal_act_draft"/>
+            <field name="act_to" ref="shipmentinternal_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packinginternal_trans_waiting_cancel">
-            <field name="act_from" ref="packinginternal_act_waiting"/>
-            <field name="act_to" ref="packinginternal_act_cancel"/>
+                id="shipmentinternal_trans_waiting_cancel">
+            <field name="act_from" ref="shipmentinternal_act_waiting"/>
+            <field name="act_to" ref="shipmentinternal_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packinginternal_trans_assigned_cancel">
-            <field name="act_from" ref="packinginternal_act_assigned"/>
-            <field name="act_to" ref="packinginternal_act_cancel"/>
+                id="shipmentinternal_trans_assigned_cancel">
+            <field name="act_from" ref="shipmentinternal_act_assigned"/>
+            <field name="act_to" ref="shipmentinternal_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
 
-        <!-- Workflow packing out return -->
-        <record model="workflow" id="wkf_packing_out_return">
+        <!-- Workflow shipment out return -->
+        <record model="workflow" id="wkf_shipment_out_return">
             <field name="name">Customer Return Shipment</field>
-            <field name="model">stock.packing.out.return</field>
+            <field name="model">stock.shipment.out.return</field>
             <field name="on_create">True</field>
         </record>
-        <record model="workflow.activity" id="packing_out_return_act_draft">
-            <field name="workflow" ref="wkf_packing_out_return"/>
+        <record model="workflow.activity" id="shipment_out_return_act_draft">
+            <field name="workflow" ref="wkf_shipment_out_return"/>
             <field name="flow_start">True</field>
             <field name="kind">function</field>
             <field name="action">set_state_draft()</field>
             <field name="name">Draft</field>
         </record>
-        <record model="workflow.activity" id="packing_out_return_act_cancel">
-            <field name="workflow" ref="wkf_packing_out_return"/>
+        <record model="workflow.activity" id="shipment_out_return_act_cancel">
+            <field name="workflow" ref="wkf_shipment_out_return"/>
             <field name="flow_stop">True</field>
             <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>
-        <record model="workflow.activity" id="packing_out_return_act_done">
-            <field name="workflow" ref="wkf_packing_out_return"/>
+        <record model="workflow.activity" id="shipment_out_return_act_done">
+            <field name="workflow" ref="wkf_shipment_out_return"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
             <field name="kind">function</field>
             <field name="action">set_state_done()</field>
         </record>
-        <record model="workflow.activity" id="packing_out_return_act_received">
+        <record model="workflow.activity" id="shipment_out_return_act_received">
             <field name="name">Received</field>
             <field name="kind">function</field>
-            <field name="workflow" ref="wkf_packing_out_return"/>
+            <field name="workflow" ref="wkf_shipment_out_return"/>
             <field name="action">set_state_received()&#10;create_inventory_moves()</field>
         </record>
 
         <record model="workflow.transition"
-                id="packing_out_return_trans_draft_received">
-            <field name="act_from" ref="packing_out_return_act_draft"/>
-            <field name="act_to" ref="packing_out_return_act_received"/>
+                id="shipment_out_return_trans_draft_received">
+            <field name="act_from" ref="shipment_out_return_act_draft"/>
+            <field name="act_to" ref="shipment_out_return_act_received"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">received</field>
         </record>
         <record model="workflow.transition"
-                id="packing_out_return_trans_received_draft">
-            <field name="act_from" ref="packing_out_return_act_received"/>
-            <field name="act_to" ref="packing_out_return_act_draft"/>
+                id="shipment_out_return_trans_received_draft">
+            <field name="act_from" ref="shipment_out_return_act_received"/>
+            <field name="act_to" ref="shipment_out_return_act_draft"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">draft</field>
         </record>
-        <record model="workflow.transition" id="packing_out_return_trans_received_done">
-            <field name="act_from" ref="packing_out_return_act_received"/>
-            <field name="act_to" ref="packing_out_return_act_done"/>
+        <record model="workflow.transition" id="shipment_out_return_trans_received_done">
+            <field name="act_from" ref="shipment_out_return_act_received"/>
+            <field name="act_to" ref="shipment_out_return_act_done"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">done</field>
         </record>
-        <record model="workflow.transition" id="packing_out_return_trans_draft_cancel">
-            <field name="act_from" ref="packing_out_return_act_draft"/>
-            <field name="act_to" ref="packing_out_return_act_cancel"/>
+        <record model="workflow.transition" id="shipment_out_return_trans_draft_cancel">
+            <field name="act_from" ref="shipment_out_return_act_draft"/>
+            <field name="act_to" ref="shipment_out_return_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packing_out_return_trans_received_cancel">
-            <field name="act_from" ref="packing_out_return_act_received"/>
-            <field name="act_to" ref="packing_out_return_act_cancel"/>
+                id="shipment_out_return_trans_received_cancel">
+            <field name="act_from" ref="shipment_out_return_act_received"/>
+            <field name="act_to" ref="shipment_out_return_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
 
-        <!-- Workflow purchase return packing -->
-        <record model="workflow" id="wkf_packing_in_return">
+        <!-- Workflow purchase return shipment -->
+        <record model="workflow" id="wkf_shipment_in_return">
             <field name="name">Supplier Return Shipment</field>
-            <field name="model">stock.packing.in.return</field>
+            <field name="model">stock.shipment.in.return</field>
             <field name="on_create">True</field>
         </record>
-        <record model="workflow.activity" id="packing_in_return_act_draft">
-            <field name="workflow" ref="wkf_packing_in_return"/>
+        <record model="workflow.activity" id="shipment_in_return_act_draft">
+            <field name="workflow" ref="wkf_shipment_in_return"/>
             <field name="flow_start">True</field>
             <field name="kind">function</field>
             <field name="action">set_state_draft()</field>
             <field name="name">Draft</field>
         </record>
-        <record model="workflow.activity" id="packing_in_return_act_cancel">
-            <field name="workflow" ref="wkf_packing_in_return"/>
+        <record model="workflow.activity" id="shipment_in_return_act_cancel">
+            <field name="workflow" ref="wkf_shipment_in_return"/>
             <field name="flow_stop">True</field>
             <field name="name">Canceled</field>
             <field name="kind">function</field>
             <field name="action">set_state_cancel()</field>
         </record>
-        <record model="workflow.activity" id="packing_in_return_act_done">
-            <field name="workflow" ref="wkf_packing_in_return"/>
+        <record model="workflow.activity" id="shipment_in_return_act_done">
+            <field name="workflow" ref="wkf_shipment_in_return"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
             <field name="kind">function</field>
             <field name="action">set_state_done()</field>
         </record>
-        <record model="workflow.activity" id="packing_in_return_act_waiting">
+        <record model="workflow.activity" id="shipment_in_return_act_waiting">
             <field name="name">Waiting</field>
             <field name="kind">function</field>
-            <field name="workflow" ref="wkf_packing_in_return"/>
+            <field name="workflow" ref="wkf_shipment_in_return"/>
             <field name="action">set_state_waiting()</field>
         </record>
-        <record model="workflow.activity" id="packing_in_return_act_assigned">
+        <record model="workflow.activity" id="shipment_in_return_act_assigned">
             <field name="name">Assigned</field>
             <field name="kind">function</field>
-            <field name="workflow" ref="wkf_packing_in_return"/>
+            <field name="workflow" ref="wkf_shipment_in_return"/>
             <field name="action">set_state_assigned()</field>
         </record>
 
         <record model="workflow.transition"
-                id="packing_in_return_trans_draft_waiting">
-            <field name="act_from" ref="packing_in_return_act_draft"/>
-            <field name="act_to" ref="packing_in_return_act_waiting"/>
+                id="shipment_in_return_trans_draft_waiting">
+            <field name="act_from" ref="shipment_in_return_act_draft"/>
+            <field name="act_to" ref="shipment_in_return_act_waiting"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
-                id="packing_in_return_trans_waiting_draft">
-            <field name="act_from" ref="packing_in_return_act_waiting"/>
-            <field name="act_to" ref="packing_in_return_act_draft"/>
+                id="shipment_in_return_trans_waiting_draft">
+            <field name="act_from" ref="shipment_in_return_act_waiting"/>
+            <field name="act_to" ref="shipment_in_return_act_draft"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">draft</field>
         </record>
         <record model="workflow.transition"
-                id="packing_in_return_trans_waiting_assigned">
-            <field name="act_from" ref="packing_in_return_act_waiting"/>
-            <field name="act_to" ref="packing_in_return_act_assigned"/>
+                id="shipment_in_return_trans_waiting_assigned">
+            <field name="act_from" ref="shipment_in_return_act_waiting"/>
+            <field name="act_to" ref="shipment_in_return_act_assigned"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">assign</field>
             <field name="condition">assign_try()</field>
         </record>
         <record model="workflow.transition"
-                id="packing_in_return_trans_assigned_waiting">
-            <field name="act_from" ref="packing_in_return_act_assigned"/>
-            <field name="act_to" ref="packing_in_return_act_waiting"/>
+                id="shipment_in_return_trans_assigned_waiting">
+            <field name="act_from" ref="shipment_in_return_act_assigned"/>
+            <field name="act_to" ref="shipment_in_return_act_waiting"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">waiting</field>
         </record>
         <record model="workflow.transition"
-                id="packing_in_return_trans_waiting_assigned_force">
-            <field name="act_from" ref="packing_in_return_act_waiting"/>
-            <field name="act_to" ref="packing_in_return_act_assigned"/>
+                id="shipment_in_return_trans_waiting_assigned_force">
+            <field name="act_from" ref="shipment_in_return_act_waiting"/>
+            <field name="act_to" ref="shipment_in_return_act_assigned"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">force_assign</field>
             <field name="condition">assign_force()</field>
         </record>
-        <record model="workflow.transition" id="packing_in_return_trans_assigned_done">
-            <field name="act_from" ref="packing_in_return_act_assigned"/>
-            <field name="act_to" ref="packing_in_return_act_done"/>
+        <record model="workflow.transition" id="shipment_in_return_trans_assigned_done">
+            <field name="act_from" ref="shipment_in_return_act_assigned"/>
+            <field name="act_to" ref="shipment_in_return_act_done"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">done</field>
         </record>
-        <record model="workflow.transition" id="packing_in_return_trans_draft_cancel">
-            <field name="act_from" ref="packing_in_return_act_draft"/>
-            <field name="act_to" ref="packing_in_return_act_cancel"/>
+        <record model="workflow.transition" id="shipment_in_return_trans_draft_cancel">
+            <field name="act_from" ref="shipment_in_return_act_draft"/>
+            <field name="act_to" ref="shipment_in_return_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packing_in_return_trans_waiting_cancel">
-            <field name="act_from" ref="packing_in_return_act_waiting"/>
-            <field name="act_to" ref="packing_in_return_act_cancel"/>
+                id="shipment_in_return_trans_waiting_cancel">
+            <field name="act_from" ref="shipment_in_return_act_waiting"/>
+            <field name="act_to" ref="shipment_in_return_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
         <record model="workflow.transition"
-                id="packing_in_return_trans_assigned_cancel">
-            <field name="act_from" ref="packing_in_return_act_assigned"/>
-            <field name="act_to" ref="packing_in_return_act_cancel"/>
+                id="shipment_in_return_trans_assigned_cancel">
+            <field name="act_from" ref="shipment_in_return_act_assigned"/>
+            <field name="act_to" ref="shipment_in_return_act_cancel"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">cancel</field>
         </record>
 
-        <!-- Sequence packing out -->
-        <record model="ir.sequence.type" id="sequence_type_packing_out">
+        <!-- Sequence shipment out -->
+        <record model="ir.sequence.type" id="sequence_type_shipment_out">
                 <field name="name">Customer Shipment</field>
-                <field name="code">stock.packing.out</field>
+                <field name="code">stock.shipment.out</field>
         </record>
-        <record model="ir.sequence" id="sequence_packing_out">
+        <record model="ir.sequence" id="sequence_shipment_out">
                 <field name="name">Customer Shipment</field>
-                <field name="code">stock.packing.out</field>
+                <field name="code">stock.shipment.out</field>
         </record>
 
-        <!-- Sequence packing in -->
-        <record model="ir.sequence.type" id="sequence_type_packing_in">
+        <!-- Sequence shipment in -->
+        <record model="ir.sequence.type" id="sequence_type_shipment_in">
                 <field name="name">Supplier Shipment</field>
-                <field name="code">stock.packing.in</field>
+                <field name="code">stock.shipment.in</field>
         </record>
-        <record model="ir.sequence" id="sequence_packing_in">
+        <record model="ir.sequence" id="sequence_shipment_in">
                 <field name="name">Supplier Shipment</field>
-                <field name="code">stock.packing.in</field>
+                <field name="code">stock.shipment.in</field>
         </record>
 
-        <!-- Sequence packing internal -->
-        <record model="ir.sequence.type" id="sequence_type_packing_internal">
+        <!-- Sequence shipment internal -->
+        <record model="ir.sequence.type" id="sequence_type_shipment_internal">
                 <field name="name">Internal Shipment</field>
-                <field name="code">stock.packing.internal</field>
+                <field name="code">stock.shipment.internal</field>
         </record>
-        <record model="ir.sequence" id="sequence_packing_internal">
+        <record model="ir.sequence" id="sequence_shipment_internal">
                 <field name="name">Internal Shipment</field>
-                <field name="code">stock.packing.internal</field>
+                <field name="code">stock.shipment.internal</field>
         </record>
 
-        <!-- Sequence packing out return-->
-        <record model="ir.sequence.type" id="sequence_type_packing_out_return">
+        <!-- Sequence shipment out return-->
+        <record model="ir.sequence.type" id="sequence_type_shipment_out_return">
                 <field name="name">Customer Return Shipment</field>
-                <field name="code">stock.packing.out.return</field>
+                <field name="code">stock.shipment.out.return</field>
         </record>
-        <record model="ir.sequence" id="sequence_packing_out_return">
+        <record model="ir.sequence" id="sequence_shipment_out_return">
                 <field name="name">Customer Return Shipment</field>
-                <field name="code">stock.packing.out.return</field>
+                <field name="code">stock.shipment.out.return</field>
         </record>
 
-        <!-- Sequence packing in return -->
-        <record model="ir.sequence.type" id="sequence_type_packing_in_return">
+        <!-- Sequence shipment in return -->
+        <record model="ir.sequence.type" id="sequence_type_shipment_in_return">
                 <field name="name">Supplier Return Shipment</field>
-                <field name="code">stock.packing.in.return</field>
+                <field name="code">stock.shipment.in.return</field>
         </record>
-        <record model="ir.sequence" id="sequence_packing_in_return">
+        <record model="ir.sequence" id="sequence_shipment_in_return">
                 <field name="name">Supplier Return Shipment</field>
-                <field name="code">stock.packing.in.return</field>
+                <field name="code">stock.shipment.in.return</field>
         </record>
 
         <!-- Add delivery field on address -->
@@ -1450,23 +1450,23 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
         <!-- Model Access -->
-        <record model="ir.model.access" id="access_packing_in">
-            <field name="model" search="[('model', '=', 'stock.packing.in')]"/>
+        <record model="ir.model.access" id="access_shipment_in">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_packing_in_group_stock">
-            <field name="model" search="[('model', '=', 'stock.packing.in')]"/>
+        <record model="ir.model.access" id="access_shipment_in_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_packing_in_group_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.packing.in')]"/>
+        <record model="ir.model.access" id="access_shipment_in_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -1474,23 +1474,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.model.access" id="access_packing_out">
-            <field name="model" search="[('model', '=', 'stock.packing.out')]"/>
+        <record model="ir.model.access" id="access_shipment_out">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_packing_out_group_stock">
-            <field name="model" search="[('model', '=', 'stock.packing.out')]"/>
+        <record model="ir.model.access" id="access_shipment_out_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_packing_out_group_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.packing.out')]"/>
+        <record model="ir.model.access" id="access_shipment_out_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -1498,23 +1498,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.model.access" id="access_packing_internal">
-            <field name="model" search="[('model', '=', 'stock.packing.internal')]"/>
+        <record model="ir.model.access" id="access_shipment_internal">
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_packing_internal_group_stock">
-            <field name="model" search="[('model', '=', 'stock.packing.internal')]"/>
+        <record model="ir.model.access" id="access_shipment_internal_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_packing_internal_group_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.packing.internal')]"/>
+        <record model="ir.model.access" id="access_shipment_internal_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -1522,23 +1522,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.model.access" id="access_packing_out_return">
-            <field name="model" search="[('model', '=', 'stock.packing.out.return')]"/>
+        <record model="ir.model.access" id="access_shipment_out_return">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_packing_out_return_group_stock">
-            <field name="model" search="[('model', '=', 'stock.packing.out.return')]"/>
+        <record model="ir.model.access" id="access_shipment_out_return_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_packing_out_return_group_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.packing.out.return')]"/>
+        <record model="ir.model.access" id="access_shipment_out_return_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -1546,23 +1546,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.model.access" id="access_packing_in_return">
-            <field name="model" search="[('model', '=', 'stock.packing.in.return')]"/>
+        <record model="ir.model.access" id="access_shipment_in_return">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_packing_in_return_group_stock">
-            <field name="model" search="[('model', '=', 'stock.packing.in.return')]"/>
+        <record model="ir.model.access" id="access_shipment_in_return_group_stock">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
             <field name="group" ref="group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_packing_in_return_group_stock_admin">
-            <field name="model" search="[('model', '=', 'stock.packing.in.return')]"/>
+        <record model="ir.model.access" id="access_shipment_in_return_group_stock_admin">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
             <field name="group" ref="group_stock_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

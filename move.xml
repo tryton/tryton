@@ -98,7 +98,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Moves from Suppliers Waiting Arrival</field>
             <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
-            <field name="domain">[('from_location.type', '=', 'supplier'), ('state', '=', 'draft'), ('packing_in', '=', False)]</field>
+            <field name="domain">[('from_location.type', '=', 'supplier'), ('state', '=', 'draft'), ('shipment_in', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_move_form_supp_proceed_view1">

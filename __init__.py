@@ -2,7 +2,7 @@
 #repository contains the full copyright notices and license terms.
 
 from location import *
-from packing import *
+from shipment import *
 from move import *
 from product import *
 from inventory import *

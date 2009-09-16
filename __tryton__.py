@@ -78,7 +78,7 @@ Et les rapports:
         'stock.xml',
         'product.xml',
         'location.xml',
-        'packing.xml',
+        'shipment.xml',
         'move.xml',
         'inventory.xml',
         'party.xml',

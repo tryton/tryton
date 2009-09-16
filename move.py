@@ -37,17 +37,17 @@ class Move(ModelSQL, ModelView):
             required=True, states=STATES,
             domain=["('type', 'not in', " \
                     "('warehouse', 'view'))"])
-    packing_in = fields.Many2One('stock.packing.in', 'Supplier Shipment',
+    shipment_in = fields.Many2One('stock.shipment.in', 'Supplier Shipment',
             readonly=True, select=1, ondelete='CASCADE')
-    packing_out = fields.Many2One('stock.packing.out', 'Customer Shipment',
+    shipment_out = fields.Many2One('stock.shipment.out', 'Customer Shipment',
             readonly=True, select=1, ondelete='CASCADE')
-    packing_out_return = fields.Many2One('stock.packing.out.return',
+    shipment_out_return = fields.Many2One('stock.shipment.out.return',
             'Customer Return Shipment', readonly=True, select=1,
             ondelete='CASCADE')
-    packing_in_return = fields.Many2One('stock.packing.in.return',
+    shipment_in_return = fields.Many2One('stock.shipment.in.return',
             'Supplier Return Shipment', readonly=True, select=1,
             ondelete='CASCADE')
-    packing_internal = fields.Many2One('stock.packing.internal',
+    shipment_internal = fields.Many2One('stock.shipment.internal',
             'Internal Shipment', readonly=True, select=1, ondelete='CASCADE')
     planned_date = fields.Date("Planned Date", states=STATES, select=2)
     effective_date = fields.Date("Effective Date", readonly=True, select=2)
@@ -86,16 +86,16 @@ class Move(ModelSQL, ModelView):
             ('check_from_to_locations',
                 'CHECK(from_location != to_location)',
                 'Source and destination location must be different'),
-            ('check_packing',
-                'CHECK((COALESCE(packing_in, 0) / COALESCE(packing_in, 1) ' \
-                        '+ COALESCE(packing_out, 0) / ' \
-                            'COALESCE(packing_out, 1) ' \
-                        '+ COALESCE(packing_internal, 0) / ' \
-                            'COALESCE(packing_internal, 1) ' \
-                        '+ COALESCE(packing_in_return, 0) / ' \
-                            'COALESCE(packing_in_return, 1) ' \
-                        '+ COALESCE(packing_out_return, 0) / ' \
-                            'COALESCE(packing_out_return, 1)) ' \
+            ('check_shipment',
+                'CHECK((COALESCE(shipment_in, 0) / COALESCE(shipment_in, 1) ' \
+                        '+ COALESCE(shipment_out, 0) / ' \
+                            'COALESCE(shipment_out, 1) ' \
+                        '+ COALESCE(shipment_internal, 0) / ' \
+                            'COALESCE(shipment_internal, 1) ' \
+                        '+ COALESCE(shipment_in_return, 0) / ' \
+                            'COALESCE(shipment_in_return, 1) ' \
+                        '+ COALESCE(shipment_out_return, 0) / ' \
+                            'COALESCE(shipment_out_return, 1)) ' \
                         '<= 1)',
                 'Move can be on only one Shipment'),
         ]
@@ -112,11 +112,20 @@ class Move(ModelSQL, ModelView):
             })
 
     def init(self, cursor, module_name):
+        # Migration from 1.2: packing renamed into shipment
+        table  = TableHandler(cursor, self, module_name)
+        table.drop_constraint('check_packing')
+        for suffix in ('in', 'out', 'in_return', 'out_return', 'internal'):
+            old_column = 'packing_%s' % suffix
+            new_column = 'shipment_%s' % suffix
+            if table.column_exist(old_column):
+                table.index_action(old_column, action='remove')
+            table.drop_fk(old_column)
+            table.column_rename(old_column, new_column)
         super(Move, self).init(cursor, module_name)
 
-        table  = TableHandler(cursor, self, module_name)
-
         # Migration from 1.0 check_packing_in_out has been removed
+        table  = TableHandler(cursor, self, module_name)
         table.drop_constraint('check_packing_in_out')
 
     def default_planned_date(self, cursor, user, context=None):
