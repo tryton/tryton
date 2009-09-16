@@ -63,7 +63,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
     invoice_method = fields.Selection([
         ('manual', 'Manual'),
         ('order', 'Based On Order'),
-        ('packing', 'Based On Shipment'),
+        ('shipment', 'Based On Shipment'),
     ], 'Invoice Method', required=True, states=_STATES)
     invoice_state = fields.Selection([
         ('none', 'None'),
@@ -83,19 +83,19 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             string='Invoices Paid')
     invoice_exception = fields.Function('get_function_fields', type='boolean',
             string='Invoices Exception')
-    packing_state = fields.Selection([
+    shipment_state = fields.Selection([
         ('none', 'None'),
         ('waiting', 'Waiting'),
         ('received', 'Received'),
         ('exception', 'Exception'),
     ], 'Shipment State', readonly=True, required=True)
-    packings = fields.Function('get_function_fields', type='many2many',
-            relation='stock.packing.in', string='Shipments')
+    shipments = fields.Function('get_function_fields', type='many2many',
+            relation='stock.shipment.in', string='Shipments')
     moves = fields.Function('get_function_fields', type='many2many',
             relation='stock.move', string='Moves')
-    packing_done = fields.Function('get_function_fields', type='boolean',
+    shipment_done = fields.Function('get_function_fields', type='boolean',
             string='Shipment Done')
-    packing_exception = fields.Function('get_function_fields', type='boolean',
+    shipment_exception = fields.Function('get_function_fields', type='boolean',
             string='Shipments Exception')
 
     def __init__(self):
@@ -108,6 +108,27 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
                 'missing_account_payable': 'It misses ' \
                         'an "Account Payable" on the party "%s"!',
             })
+
+    def init(self, cursor, module_name):
+        # Migration from 1.2: packing renamed into shipment
+        cursor.execute("UPDATE ir_model_data "\
+                "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "\
+                "WHERE fs_id like '%packing%' AND module = 'purchase'")
+        cursor.execute("UPDATE ir_model_field "\
+                "SET relation = REPLACE(relation, 'packing', 'shipment'), "\
+                    "name = REPLACE(name, 'packing', 'shipment') "
+                "WHERE (relation like '%packing%' OR name like '%packing%') "\
+                    "AND module = 'purchase'")
+        table = TableHandler(cursor, self, module_name)
+        table.column_rename('packing_state', 'shipment_state')
+
+        super(Purchase, self).init(cursor, module_name)
+
+        # Migration from 1.2: rename packing to shipment in
+        # invoice_method values
+        cursor.execute("UPDATE " + self._table + " "\
+                "SET invoice_method = 'shipment' "\
+                "WHERE invoice_method = 'packing'")
 
     def default_payment_term(self, cursor, user, context=None):
         payment_term_obj = self.pool.get('account.invoice.payment_term')
@@ -169,7 +190,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
     def default_invoice_state(self, cursor, user, context=None):
         return 'none'
 
-    def default_packing_state(self, cursor, user, context=None):
+    def default_shipment_state(self, cursor, user, context=None):
         return 'none'
 
     def on_change_party(self, cursor, user, ids, vals, context=None):
@@ -334,17 +355,17 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         if 'invoice_exception' in names:
             res['invoice_exception'] = self.get_invoice_exception(cursor, user,
                     purchases, context=context)
-        if 'packings' in names:
-            res['packings'] = self.get_packings(cursor, user, purchases,
+        if 'shipments' in names:
+            res['shipments'] = self.get_shipments(cursor, user, purchases,
                     context=context)
         if 'moves' in names:
             res['moves'] = self.get_moves(cursor, user, purchases,
                     context=context)
-        if 'packing_done' in names:
-            res['packing_done'] = self.get_packing_done(cursor, user,
+        if 'shipment_done' in names:
+            res['shipment_done'] = self.get_shipment_done(cursor, user,
                     purchases, context=context)
-        if 'packing_exception' in names:
-            res['packing_exception'] = self.get_packing_exception(cursor,
+        if 'shipment_exception' in names:
+            res['shipment_exception'] = self.get_shipment_exception(cursor,
                     user, purchases, context=context)
         return res
 
@@ -504,25 +525,25 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             res[purchase.id] = val
         return res
 
-    def get_packings(self, cursor, user, purchases, context=None):
+    def get_shipments(self, cursor, user, purchases, context=None):
         '''
-        Return the packings for the purchases.
+        Return the shipments for the purchases.
 
         :param cursor: the database cursor
         :param user: the user id
         :param purchases: a BrowseRecordList of purchases
         :param context: the context
         :return: a dictionary with purchase id as key and
-            a list of packing_in id as value
+            a list of shipment_in id as value
         '''
         res = {}
         for purchase in purchases:
             res[purchase.id] = []
             for line in purchase.lines:
                 for move in line.moves:
-                    if move.packing_in:
-                        if move.packing_in.id not in res[purchase.id]:
-                            res[purchase.id].append(move.packing_in.id)
+                    if move.shipment_in:
+                        if move.shipment_in.id not in res[purchase.id]:
+                            res[purchase.id].append(move.shipment_in.id)
         return res
 
     def get_moves(self, cursor, user, purchases, context=None):
@@ -543,7 +564,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
                 res[purchase.id].extend([x.id for x in line.moves])
         return res
 
-    def get_packing_done(self, cursor, user, purchases, context=None):
+    def get_shipment_done(self, cursor, user, purchases, context=None):
         '''
         Return if all the move have been done for the purchases
 
@@ -564,9 +585,9 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             res[purchase.id] = val
         return res
 
-    def get_packing_exception(self, cursor, user, purchases, context=None):
+    def get_shipment_exception(self, cursor, user, purchases, context=None):
         '''
-        Return if there is a packing in exception for the purchases
+        Return if there is a shipment in exception for the purchases
 
         :param cursor: the database cursor
         :param user: the user id
@@ -618,7 +639,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         default['invoice_state'] = 'none'
         default['invoices'] = False
         default['invoices_ignored'] = False
-        default['packing_state'] = 'none'
+        default['shipment_state'] = 'none'
         return super(Purchase, self).copy(cursor, user, ids, default=default,
                 context=context)
 
@@ -1568,11 +1589,11 @@ class ProductSupplierPrice(ModelSQL, ModelView):
 ProductSupplierPrice()
 
 
-class PackingIn(ModelSQL, ModelView):
-    _name = 'stock.packing.in'
+class ShipmentIn(ModelSQL, ModelView):
+    _name = 'stock.shipment.in'
 
     def __init__(self):
-        super(PackingIn, self).__init__()
+        super(ShipmentIn, self).__init__()
         self.incoming_moves = copy.copy(self.incoming_moves)
         if "('supplier', '=', supplier)" not in self.incoming_moves.add_remove:
             self.incoming_moves.add_remove = "[" + \
@@ -1589,7 +1610,7 @@ class PackingIn(ModelSQL, ModelView):
         purchase_obj = self.pool.get('purchase.purchase')
         purchase_line_obj = self.pool.get('purchase.line')
 
-        res = super(PackingIn, self).write(cursor, user, ids, vals,
+        res = super(ShipmentIn, self).write(cursor, user, ids, vals,
                 context=context)
 
         if 'state' in vals and vals['state'] in ('received', 'cancel'):
@@ -1597,8 +1618,8 @@ class PackingIn(ModelSQL, ModelView):
             move_ids = []
             if isinstance(ids, (int, long)):
                 ids = [ids]
-            for packing in self.browse(cursor, user, ids, context=context):
-                move_ids.extend([x.id for x in packing.incoming_moves])
+            for shipment in self.browse(cursor, user, ids, context=context):
+                move_ids.extend([x.id for x in shipment.incoming_moves])
 
             purchase_line_ids = purchase_line_obj.search(cursor, user, [
                 ('moves', 'in', move_ids),
@@ -1610,19 +1631,19 @@ class PackingIn(ModelSQL, ModelView):
                         purchase_ids.append(purchase_line.purchase.id)
 
             purchase_obj.workflow_trigger_validate(cursor, user, purchase_ids,
-                    'packing_update', context=context)
+                    'shipment_update', context=context)
         return res
 
     def button_draft(self, cursor, user, ids, context=None):
-        for packing in self.browse(cursor, user, ids, context=context):
-            for move in packing.incoming_moves:
+        for shipment in self.browse(cursor, user, ids, context=context):
+            for move in shipment.incoming_moves:
                 if move.state == 'cancel' and move.purchase_line:
                     self.raise_user_error(cursor, 'reset_move')
 
-        return super(PackingIn, self).button_draft(
+        return super(ShipmentIn, self).button_draft(
             cursor, user, ids, context=context)
 
-PackingIn()
+ShipmentIn()
 
 
 class Move(ModelSQL, ModelView):
@@ -1762,7 +1783,7 @@ class Move(ModelSQL, ModelView):
                     purchase_ids.add(purchase_line.purchase.id)
             if purchase_ids:
                 purchase_obj.workflow_trigger_validate(cursor, user,
-                        list(purchase_ids), 'packing_update', context=context)
+                        list(purchase_ids), 'shipment_update', context=context)
         return res
 
     def delete(self, cursor, user, ids, context=None):
@@ -1785,7 +1806,7 @@ class Move(ModelSQL, ModelView):
                 purchase_ids.add(purchase_line.purchase.id)
             if purchase_ids:
                 purchase_obj.workflow_trigger_validate(cursor, user,
-                        list(purchase_ids), 'packing_update', context=context)
+                        list(purchase_ids), 'shipment_update', context=context)
         return res
 Move()
 
@@ -1905,9 +1926,9 @@ class OpenSupplier(Wizard):
 OpenSupplier()
 
 
-class HandlePackingExceptionAsk(ModelView):
+class HandleShipmentExceptionAsk(ModelView):
     'Shipment Exception Ask'
-    _name = 'purchase.handle.packing.exception.ask'
+    _name = 'purchase.handle.shipment.exception.ask'
     _description = __doc__
 
     recreate_moves = fields.Many2Many(
@@ -1917,6 +1938,13 @@ class HandlePackingExceptionAsk(ModelView):
             'The other ones will be ignored.')
     domain_moves = fields.Many2Many(
         'stock.move', None, None, 'Domain Moves')
+
+    def init(self, cursor, module_name):
+        # Migration from 1.2: packing renamed into shipment
+        cursor.execute("UPDATE ir_model "\
+                "SET model = REPLACE(model, 'packing', 'shipment') "\
+                "WHERE model like '%packing%' AND module = 'purchase'")
+        super(HandleShipmentExceptionAsk, self).init(cursor, module_name)
 
     def default_recreate_moves(self, cursor, user, context=None):
         return self.default_domain_moves(cursor, user, context=context)
@@ -1942,17 +1970,17 @@ class HandlePackingExceptionAsk(ModelView):
 
         return domain_moves
 
-HandlePackingExceptionAsk()
+HandleShipmentExceptionAsk()
 
-class HandlePackingException(Wizard):
+class HandleShipmentException(Wizard):
     'Handle Shipment Exception'
-    _name = 'purchase.handle.packing.exception'
+    _name = 'purchase.handle.shipment.exception'
     states = {
         'init': {
             'actions': [],
             'result': {
                 'type': 'form',
-                'object': 'purchase.handle.packing.exception.ask',
+                'object': 'purchase.handle.shipment.exception.ask',
                 'state': [
                     ('end', 'Cancel', 'tryton-cancel'),
                     ('ok', 'Ok', 'tryton-ok', True),
@@ -2000,9 +2028,9 @@ class HandlePackingException(Wizard):
                 context=context)
 
         purchase_obj.workflow_trigger_validate(cursor, user, data['id'],
-                'packing_ok', context=context)
+                'shipment_ok', context=context)
 
-HandlePackingException()
+HandleShipmentException()
 
 
 class HandleInvoiceExceptionAsk(ModelView):

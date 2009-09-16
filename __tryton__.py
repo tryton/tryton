@@ -15,7 +15,7 @@ Add product supplier and purchase informations.
 Define the purchase price as the supplier price or the cost price.
 
 With the possibilities:
-    - to follow invoice and packing states from the purchase order.
+    - to follow invoice and shipment states from the purchase order.
     - to define invoice method:
         - Manual
         - Based On Order

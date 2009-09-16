@@ -20,9 +20,9 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_configuration" groups="group_purchase_admin"
             sequence="0" icon="tryton-preferences" active="0"/>
 
-        <record model="ir.action.wizard" id="wizard_packing_handle_exception">
+        <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
             <field name="name">Handle Shipment Exception</field>
-            <field name="wiz_name">purchase.handle.packing.exception</field>
+            <field name="wiz_name">purchase.handle.shipment.exception</field>
             <field name="model">purchase.purchase</field>
         </record>
 
@@ -75,8 +75,8 @@ this repository contains the full copyright notices and license terms. -->
                             <group col="2" colspan="2" id="states">
                                 <label name="invoice_state"/>
                                 <field name="invoice_state"/>
-                                <label name="packing_state"/>
-                                <field name="packing_state"/>
+                                <label name="shipment_state"/>
+                                <field name="shipment_state"/>
                             </group>
                             <group col="2" colspan="2" id="amount_state_buttons">
                                 <label name="untaxed_amount"/>
@@ -89,7 +89,7 @@ this repository contains the full copyright notices and license terms. -->
                                 <field name="state"/>
                                 <group col="6" colspan="2" id="buttons">
                                     <button name="cancel" string="Cancel"
-                                        states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (packing_state == 'exception')) ''', 'readonly': '''%(group_purchase)d not in groups'''}"
+                                        states="{'invisible': '''not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (shipment_state == 'exception')) ''', 'readonly': '''%(group_purchase)d not in groups'''}"
                                         icon="tryton-cancel"/>
                                     <button name="draft" string="Draft"
                                         states="{'invisible': '''state != 'quotation' ''', 'readonly': '''%(group_purchase)d not in groups'''}"
@@ -102,10 +102,10 @@ this repository contains the full copyright notices and license terms. -->
                                             type="action"
                                             states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_purchase)d not in groups'''}"
                                             icon="tryton-go-next"/>
-                                    <button name="%(wizard_packing_handle_exception)d"
+                                    <button name="%(wizard_shipment_handle_exception)d"
                                             string="Handle Shipment Exception"
                                             type="action"
-                                            states="{'invisible': '''packing_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_purchase)d not in groups'''}"
+                                            states="{'invisible': '''shipment_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_purchase)d not in groups'''}"
                                             icon="tryton-go-next"/>
                                     <button name="confirm" string="Confirm"
                                         states="{'invisible': '''state != 'quotation' ''', 'readonly': '''%(group_purchase)d not in groups'''}"
@@ -141,7 +141,7 @@ this repository contains the full copyright notices and license terms. -->
                                 </tree>
                             </field>
                         </page>
-                        <page string="Shipments" id="packings">
+                        <page string="Shipments" id="shipments">
                             <separator name="moves" colspan="4"/>
                             <field name="moves" colspan="4">
                                 <tree string="Moves">
@@ -155,8 +155,8 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="unit_digits" tree_invisible="1"/>
                                 </tree>
                             </field>
-                            <separator name="packings" colspan="4"/>
-                            <field name="packings" colspan="4"/>
+                            <separator name="shipments" colspan="4"/>
+                            <field name="shipments" colspan="4"/>
                         </page>
                     </notebook>
                     <field name="currency_digits" invisible="1" colspan="6"/>
@@ -181,7 +181,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="total_amount" select="2"/>
                     <field name="state" select="2"/>
                     <field name="invoice_state" select="2"/>
-                    <field name="packing_state" select="2"/>
+                    <field name="shipment_state" select="2"/>
                     <field name="description" select="2"/>
                     <field name="currency_digits" tree_invisible="1"/>
                 </tree>
@@ -189,17 +189,17 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.action.act_window" id="act_packing_form">
+        <record model="ir.action.act_window" id="act_shipment_form">
             <field name="name">Shipments</field>
-            <field name="res_model">stock.packing.in</field>
+            <field name="res_model">stock.shipment.in</field>
             <field name="view_type">form</field>
-            <field name="domain">[("id", "in", packings)]</field>
+            <field name="domain">[("id", "in", shipments)]</field>
         </record>
         <record model="ir.action.keyword"
-                id="act_open_packing_keyword1">
+                id="act_open_shipment_keyword1">
             <field name="keyword">form_relate</field>
             <field name="model">purchase.purchase,0</field>
-            <field name="action" ref="act_packing_form"/>
+            <field name="action" ref="act_shipment_form"/>
         </record>
         <record model="ir.action.act_window" id="act_invoice_form">
             <field name="name">Invoices</field>
@@ -215,12 +215,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_invoice_form"/>
         </record>
 
-        <record model="ir.ui.view" id="handle_packing_exception_view_form">
-            <field name="model">purchase.handle.packing.exception.ask</field>
+        <record model="ir.ui.view" id="handle_shipment_exception_view_form">
+            <field name="model">purchase.handle.shipment.exception.ask</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Handle packing Exception" col="1">
+                <form string="Handle shipment Exception" col="1">
                     <separator string="Choose moves to recreate"
                                id="choose"/>
                     <field name="recreate_moves">
@@ -422,51 +422,51 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Invoice Method Done</field>
             <field name="workflow" ref="purchase_workflow"/>
         </record>
-        <record model="workflow.activity" id="purchase_activity_waiting_packing">
+        <record model="workflow.activity" id="purchase_activity_waiting_shipment">
             <field name="name">Waiting Shipment</field>
             <field name="workflow" ref="purchase_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'packing_state': 'waiting'})&#10;create_move()</field>
+            <field name="action">write({'shipment_state': 'waiting'})&#10;create_move()</field>
         </record>
-        <record model="workflow.activity" id="purchase_activity_packing_exception">
+        <record model="workflow.activity" id="purchase_activity_shipment_exception">
             <field name="name">Shipment Exception</field>
             <field name="workflow" ref="purchase_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'packing_state': 'exception'})</field>
+            <field name="action">write({'shipment_state': 'exception'})</field>
         </record>
-        <record model="workflow.activity" id="purchase_activity_invoice_packing_method">
+        <record model="workflow.activity" id="purchase_activity_invoice_shipment_method">
             <field name="name">Invoice Shipment Method</field>
             <field name="workflow" ref="purchase_workflow"/>
             <field name="split_mode">OR</field>
         </record>
-        <record model="workflow.activity" id="purchase_activity_invoice_packing">
+        <record model="workflow.activity" id="purchase_activity_invoice_shipment">
             <field name="name">Invoice Shipment</field>
             <field name="workflow" ref="purchase_workflow"/>
             <field name="kind">function</field>
             <field name="action">create_invoice()&#10;write({'invoice_state': 'waiting'})</field>
         </record>
-        <record model="workflow.activity" id="purchase_activity_waiting_invoice_packing">
+        <record model="workflow.activity" id="purchase_activity_waiting_invoice_shipment">
             <field name="name">Waiting Invoice Shipment</field>
             <field name="workflow" ref="purchase_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'invoice_state': 'waiting', 'packing_state': 'received'})</field>
+            <field name="action">write({'invoice_state': 'waiting', 'shipment_state': 'received'})</field>
         </record>
-        <record model="workflow.activity" id="purchase_activity_invoice_packing_exception">
+        <record model="workflow.activity" id="purchase_activity_invoice_shipment_exception">
             <field name="name">Invoice Shipment Exception</field>
             <field name="workflow" ref="purchase_workflow"/>
             <field name="action">write({'invoice_state': 'exception'})</field>
         </record>
-        <record model="workflow.activity" id="purchase_activity_invoice_packing_done">
+        <record model="workflow.activity" id="purchase_activity_invoice_shipment_done">
             <field name="name">Invoice Shipment Done</field>
             <field name="workflow" ref="purchase_workflow"/>
             <field name="kind">function</field>
             <field name="action">write({'invoice_state': 'paid'})</field>
         </record>
-        <record model="workflow.activity" id="purchase_activity_invoice_packing_method_done">
+        <record model="workflow.activity" id="purchase_activity_invoice_shipment_method_done">
             <field name="name">Invoice Shipment Method Done</field>
             <field name="workflow" ref="purchase_workflow"/>
             <field name="kind">function</field>
-            <field name="action">write({'packing_state': 'received'})</field>
+            <field name="action">write({'shipment_state': 'received'})</field>
         </record>
         <record model="workflow.activity" id="purchase_activity_done">
             <field name="name">Done</field>
@@ -562,96 +562,96 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_from" ref="purchase_activity_invoice_method_done"/>
             <field name="act_to" ref="purchase_activity_done"/>
         </record>
-        <record model="workflow.transition" id="purchase_transition_confirmed_waiting_packing">
+        <record model="workflow.transition" id="purchase_transition_confirmed_waiting_shipment">
             <field name="act_from" ref="purchase_activity_confirmed"/>
-            <field name="act_to" ref="purchase_activity_waiting_packing"/>
+            <field name="act_to" ref="purchase_activity_waiting_shipment"/>
         </record>
-        <record model="workflow.transition" id="purchase_transition_waiting_packing_packing_exception">
-            <field name="act_from" ref="purchase_activity_waiting_packing"/>
-            <field name="act_to" ref="purchase_activity_packing_exception"/>
-            <field name="signal">packing_update</field>
-            <field name="condition">packing_exception</field>
+        <record model="workflow.transition" id="purchase_transition_waiting_shipment_shipment_exception">
+            <field name="act_from" ref="purchase_activity_waiting_shipment"/>
+            <field name="act_to" ref="purchase_activity_shipment_exception"/>
+            <field name="signal">shipment_update</field>
+            <field name="condition">shipment_exception</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_packing_exception_cancel">
-            <field name="act_from" ref="purchase_activity_packing_exception"/>
+        <record model="workflow.transition" id="purchase_transition_shipment_exception_cancel">
+            <field name="act_from" ref="purchase_activity_shipment_exception"/>
             <field name="act_to" ref="purchase_activity_cancel"/>
             <field name="signal">cancel</field>
             <field name="group" ref="group_purchase"/>
         </record>
-        <record model="workflow.transition" id="purchase_transition_packing_exception_waiting_packing">
-            <field name="act_from" ref="purchase_activity_packing_exception"/>
-            <field name="act_to" ref="purchase_activity_waiting_packing"/>
-            <field name="signal">packing_ok</field>
+        <record model="workflow.transition" id="purchase_transition_shipment_exception_waiting_shipment">
+            <field name="act_from" ref="purchase_activity_shipment_exception"/>
+            <field name="act_to" ref="purchase_activity_waiting_shipment"/>
+            <field name="signal">shipment_ok</field>
             <field name="group" ref="group_purchase"/>
         </record>
-        <record model="workflow.transition" id="purchase_transition_waiting_packing_invoice_packing_method">
-            <field name="act_from" ref="purchase_activity_waiting_packing"/>
-            <field name="act_to" ref="purchase_activity_invoice_packing_method"/>
-            <field name="signal">packing_update</field>
-            <field name="condition">not packing_exception</field>
+        <record model="workflow.transition" id="purchase_transition_waiting_shipment_invoice_shipment_method">
+            <field name="act_from" ref="purchase_activity_waiting_shipment"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_method"/>
+            <field name="signal">shipment_update</field>
+            <field name="condition">not shipment_exception</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_waiting_packing_invoice_packing_method2">
-            <field name="act_from" ref="purchase_activity_waiting_packing"/>
-            <field name="act_to" ref="purchase_activity_invoice_packing_method"/>
-            <field name="condition">packing_done</field>
+        <record model="workflow.transition" id="purchase_transition_waiting_shipment_invoice_shipment_method2">
+            <field name="act_from" ref="purchase_activity_waiting_shipment"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_method"/>
+            <field name="condition">shipment_done</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_invoice_packing_method_invoice_packing">
-            <field name="act_from" ref="purchase_activity_invoice_packing_method"/>
-            <field name="act_to" ref="purchase_activity_invoice_packing"/>
-            <field name="condition">invoice_method == 'packing'</field>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_method_invoice_shipment">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_method"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment"/>
+            <field name="condition">invoice_method == 'shipment'</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_invoice_packing_method_invoice_packing_method_done">
-            <field name="act_from" ref="purchase_activity_invoice_packing_method"/>
-            <field name="act_to" ref="purchase_activity_invoice_packing_method_done"/>
-            <field name="condition">invoice_method != 'packing' and packing_done</field>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_method_invoice_shipment_method_done">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_method"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_method_done"/>
+            <field name="condition">invoice_method != 'shipment' and shipment_done</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_invoice_packing_method_waiting_packing">
-            <field name="act_from" ref="purchase_activity_invoice_packing_method"/>
-            <field name="act_to" ref="purchase_activity_waiting_packing"/>
-            <field name="condition">invoice_method != 'packing' and not packing_done</field>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_method_waiting_shipment">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_method"/>
+            <field name="act_to" ref="purchase_activity_waiting_shipment"/>
+            <field name="condition">invoice_method != 'shipment' and not shipment_done</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_invoice_packing_waiting_packing">
-            <field name="act_from" ref="purchase_activity_invoice_packing"/>
-            <field name="act_to" ref="purchase_activity_waiting_packing"/>
-            <field name="condition">not packing_done</field>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_waiting_shipment">
+            <field name="act_from" ref="purchase_activity_invoice_shipment"/>
+            <field name="act_to" ref="purchase_activity_waiting_shipment"/>
+            <field name="condition">not shipment_done</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_invoice_packing_waiting_invoice_packing">
-            <field name="act_from" ref="purchase_activity_invoice_packing"/>
-            <field name="act_to" ref="purchase_activity_waiting_invoice_packing"/>
-            <field name="condition">packing_done</field>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_waiting_invoice_shipment">
+            <field name="act_from" ref="purchase_activity_invoice_shipment"/>
+            <field name="act_to" ref="purchase_activity_waiting_invoice_shipment"/>
+            <field name="condition">shipment_done</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_waiting_invoice_packing_invoice_packing_exception">
-            <field name="act_from" ref="purchase_activity_waiting_invoice_packing"/>
-            <field name="act_to" ref="purchase_activity_invoice_packing_exception"/>
+        <record model="workflow.transition" id="purchase_transition_waiting_invoice_shipment_invoice_shipment_exception">
+            <field name="act_from" ref="purchase_activity_waiting_invoice_shipment"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_exception"/>
             <field name="trigger_model">account.invoice</field>
             <field name="trigger_expr_id">[x.id for x in invoices]</field>
             <field name="condition">invoice_exception</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_invoice_packing_exception_cancel">
-            <field name="act_from" ref="purchase_activity_invoice_packing_exception"/>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_exception_cancel">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_exception"/>
             <field name="act_to" ref="purchase_activity_cancel"/>
             <field name="signal">cancel</field>
             <field name="group" ref="group_purchase"/>
         </record>
-        <record model="workflow.transition" id="purchase_transition_invoice_packing_exception_waiting_invoice_packing">
-            <field name="act_from" ref="purchase_activity_invoice_packing_exception"/>
-            <field name="act_to" ref="purchase_activity_waiting_invoice_packing"/>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_exception_waiting_invoice_shipment">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_exception"/>
+            <field name="act_to" ref="purchase_activity_waiting_invoice_shipment"/>
             <field name="signal">invoice_ok</field>
             <field name="group" ref="group_purchase"/>
         </record>
-        <record model="workflow.transition" id="purchase_transition_waiting_invoice_packing_invoice_packing_done">
-            <field name="act_from" ref="purchase_activity_waiting_invoice_packing"/>
-            <field name="act_to" ref="purchase_activity_invoice_packing_done"/>
+        <record model="workflow.transition" id="purchase_transition_waiting_invoice_shipment_invoice_shipment_done">
+            <field name="act_from" ref="purchase_activity_waiting_invoice_shipment"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_done"/>
             <field name="trigger_model">account.invoice</field>
             <field name="trigger_expr_id">[x.id for x in invoices]</field>
             <field name="condition">invoice_paid</field>
         </record>
-        <record model="workflow.transition" id="purchase_transition_invoice_packing_done_invoice_packing_method_done">
-            <field name="act_from" ref="purchase_activity_invoice_packing_done"/>
-            <field name="act_to" ref="purchase_activity_invoice_packing_method_done"/>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_done_invoice_shipment_method_done">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_done"/>
+            <field name="act_to" ref="purchase_activity_invoice_shipment_method_done"/>
         </record>
-        <record model="workflow.transition" id="purchase_transition_invoice_packing_done_done">
-            <field name="act_from" ref="purchase_activity_invoice_packing_method_done"/>
+        <record model="workflow.transition" id="purchase_transition_invoice_shipment_done_done">
+            <field name="act_from" ref="purchase_activity_invoice_shipment_method_done"/>
             <field name="act_to" ref="purchase_activity_done"/>
         </record>
 
@@ -886,9 +886,9 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="packing_in_view_form">
-            <field name="model">stock.packing.in</field>
-            <field name="inherit" ref="stock.packing_in_view_form"/>
+        <record model="ir.ui.view" id="shipment_in_view_form">
+            <field name="model">stock.shipment.in</field>
+            <field name="inherit" ref="stock.shipment_in_view_form"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
