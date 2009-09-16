@@ -3,12 +3,22 @@
 from trytond.model import ModelView, ModelSQL
 
 
-class PackingInternal(ModelSQL, ModelView):
-    _name = 'stock.packing.internal'
+class ShipmentInternal(ModelSQL, ModelView):
+    _name = 'stock.shipment.internal'
 
-    def generate_internal_packing(self, cursor, user, context=None):
+    def init(self, cursor, module_name):
+        # Migration from 1.2: packing renamed into shipment
+        cursor.execute("UPDATE ir_model_data "\
+                "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "\
+                "WHERE fs_id like '%packing%' AND module = 'stock_supply'")
+        cursor.execute("UPDATE ir_model "\
+                "SET model = REPLACE(model, 'packing', 'shipment') "\
+                "WHERE model like '%packing%' AND module = 'stock_supply'")
+        super(ShipmentInternal, self).init(cursor, module_name)
+
+    def generate_internal_shipment(self, cursor, user, context=None):
         """
-        Generate internal packings to meet order points defined on
+        Generate internal shipments to meet order points defined on
         non-warehouse location.
         """
         order_point_obj = self.pool.get('stock.order_point')
@@ -45,17 +55,17 @@ class PackingInternal(ModelSQL, ModelView):
                        op.product.id)
                 moves[key] = op.max_quantity - qty
 
-        # Compare with existing draft packings
-        packing_ids = self.search(
+        # Compare with existing draft shipments
+        shipment_ids = self.search(
             cursor, user,
             [('state', '=', 'draft'),
              ['OR', ('planned_date', '<=', today),
               ('planned_date', '=', False)]],
             context=context)
-        for packing in self.browse(cursor, user, packing_ids, context=context):
-            for move in packing.moves:
-                key = (packing.to_location.id,
-                       packing.from_location.id,
+        for shipment in self.browse(cursor, user, shipment_ids, context=context):
+            for move in shipment.moves:
+                key = (shipment.to_location.id,
+                       shipment.from_location.id,
                        move.product.id)
                 if key not in moves:
                     continue
@@ -65,14 +75,14 @@ class PackingInternal(ModelSQL, ModelView):
                 moves[key] = max(0, moves[key] - quantity)
 
         # Group moves by {from,to}_location
-        packings = {}
+        shipments = {}
         for key,qty in moves.iteritems():
             from_location, to_location, product = key
-            packings.setdefault(
+            shipments.setdefault(
                 (from_location, to_location),[]).append((product, qty))
-        # Create packings and moves
-        for packing, moves in packings.iteritems():
-            from_location, to_location = packing
+        # Create shipments and moves
+        for shipment, moves in shipments.iteritems():
+            from_location, to_location = shipment
             values = {
                 'from_location': from_location,
                 'to_location': to_location,
@@ -92,4 +102,4 @@ class PackingInternal(ModelSQL, ModelView):
                      ))
             self.create(cursor, user, values, context=context)
 
-PackingInternal()
+ShipmentInternal()

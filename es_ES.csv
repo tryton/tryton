@@ -44,7 +44,7 @@ model,"ir.action,name",wizard_create_purchase,Create Purchase,Crear compra,0
 model,"ir.action,name",act_order_point_form,Order Points,Puntos de orden,0
 model,"ir.action,name",act_purchase_request_form,Purchase Requests,Solicitudes de compra,0
 model,"ir.action,name",act_purchase_form,Purchases,Compras,0
-model,"ir.cron,name",cron_packing_iternal,Generate Internal Shipments,Genere Envío Interno,0
+model,"ir.cron,name",cron_shipment_iternal,Generate Internal Shipments,Genere Envío Interno,0
 model,"ir.cron,name",cron_generate_request,Generate Purchase Requests,Genere Requisito de Compra,0
 model,"ir.ui.menu,name",menu_order_point_form,Order Points,Puntos de orden,0
 model,"ir.ui.menu,name",menu_purchase_request_form,Purchase Requests,Solicitudes de compra,0
@@ -52,7 +52,7 @@ model,"purchase.request.create_purchase.ask_party,name",0,Create Purchase Ask Pa
 model,"purchase.request.create_purchase.ask_term,name",0,Create Purchase Ask Term,Crea Pregunta a Tercero de Término,0
 model,"purchase.request,name",0,Purchase Request,Solicitud de Compra,0
 model,"res.group,name",group_purchase_request,Purchase Request,Solicitud de Compra,0
-model,"res.user,name",user_generate_packing_internal,Cron Intenal Shipment,Cron Envío Interno,0
+model,"res.user,name",user_generate_shipment_internal,Cron Intenal Shipment,Cron Envío Interno,0
 model,"res.user,name",user_generate_request,Cron Purchase Request,Cron Requisito de Compra,0
 model,"stock.order_point,name",0,Order Point,Punto de Orden,0
 selection,"purchase.request,origin",0,Order Point,Punto de orden,0

@@ -3,4 +3,4 @@
 from order_point import *
 from product import *
 from purchase_request import *
-from packing import *
+from shipment import *

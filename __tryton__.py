@@ -63,7 +63,7 @@ sur base des règles d'approvisionnement
     'xml': [
         'order_point.xml',
         'purchase_request.xml',
-        'packing.xml',
+        'shipment.xml',
     ],
     'translation': [
         'de_DE.csv',
