@@ -134,12 +134,14 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE ir_model_data "\
                 "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "\
-                "WHERE fs_id like '%packing%' AND module = 'sale'")
+                "WHERE fs_id like '%%packing%%' AND module = %s",
+                (module_name,))
         cursor.execute("UPDATE ir_model_field "\
                 "SET relation = REPLACE(relation, 'packing', 'shipment'), "\
                     "name = REPLACE(name, 'packing', 'shipment') "
-                "WHERE (relation like '%packing%' OR name like '%packing%') "\
-                    "AND module = 'sale'")
+                "WHERE (relation like '%%packing%%' "\
+                    "OR name like '%%packing%%') AND module = %s",
+                (module_name,))
         table = TableHandler(cursor, self, module_name)
         table.column_rename('packing_state', 'shipment_state')
         table.column_rename('packing_method', 'shipment_method')
@@ -1799,7 +1801,8 @@ class HandleShipmentExceptionAsk(ModelView):
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE ir_model "\
                 "SET model = REPLACE(model, 'packing', 'shipment') "\
-                "WHERE model like '%packing%' AND module = 'sale'")
+                "WHERE model like '%%packing%%' AND module = %s",
+                (module_name,))
         super(HandleShipmentExceptionAsk, self).init(cursor, module_name)
 
     def default_recreate_moves(self, cursor, user, context=None):
