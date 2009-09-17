@@ -10,10 +10,12 @@ class ShipmentInternal(ModelSQL, ModelView):
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE ir_model_data "\
                 "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "\
-                "WHERE fs_id like '%packing%' AND module = 'stock_supply'")
+                "WHERE fs_id like '%%packing%%' AND module = %s",
+                (module_name,))
         cursor.execute("UPDATE ir_model "\
                 "SET model = REPLACE(model, 'packing', 'shipment') "\
-                "WHERE model like '%packing%' AND module = 'stock_supply'")
+                "WHERE model like '%%packing%%' AND module = %s",
+                (module_name,))
         super(ShipmentInternal, self).init(cursor, module_name)
 
     def generate_internal_shipment(self, cursor, user, context=None):
