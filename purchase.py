@@ -12,6 +12,15 @@ class Purchase(ModelSQL, ModelView):
             'purchase.purchase-ignored-account.invoice.line',
             'purchase', 'invoice', 'Invoice Lines Ignored', readonly=True)
 
+    def init(self, cursor, module_name):
+        # Migration from 1.2: packing renamed into shipment
+        cursor.execute("UPDATE ir_model_data "\
+                "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "\
+                "WHERE fs_id like '%%packing%%' "\
+                    "AND module = %s", (module_name,))
+
+        super(Purchase, self).init(cursor, module_name)
+
     def create_invoice(self, cursor, user, purchase_id, context=None):
         invoice_obj = self.pool.get('account.invoice')
         invoice_line_obj = self.pool.get('account.invoice.line')
