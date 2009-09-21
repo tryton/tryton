@@ -2,11 +2,15 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'LDAP Authentification',
+    'name_de_DE' : 'LDAP Authentifizierung',
     'version': '1.3.0',
     'author': 'B2CK, Josh Dukes & Udo Spallek',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Authenticate users with LDAP server.''',
+    'description_de_DE' : '''Authentifizierung über LDAP
+    - Fügt Unterstützung für Authentifizierung über einen LDAP-Server hinzu.
+''',
     'depends': [
         'ir',
         'res',
@@ -16,5 +20,6 @@
         'connection.xml',
     ],
     'translation': [
+        'de_DE.csv',
     ],
 }
