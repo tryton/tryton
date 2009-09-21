@@ -2,11 +2,15 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Product Price List',
+    'name_de_DE' : 'Artikel Preisliste',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Define price list rules by parties.''',
+    'description_de_DE' : '''Preislisten für Artikel
+    - Ermöglicht die Definition von Preislisten für Parteien.
+''',
     'depends': [
         'ir',
         'product',
@@ -19,5 +23,6 @@
     ],
     'translation': [
         'fr_FR.csv',
+        'de_DE.csv',
     ],
 }
