@@ -432,6 +432,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 'WHERE invoice IN (' + ','.join(('%s',) * len(ids)) + ') ' \
                 'GROUP BY invoice', ids)
         for invoice_id, sum in cursor.fetchall():
+            # SQLite uses float for SUM
+            if not isinstance(sum, Decimal):
+                sum = Decimal(str(sum))
             res[invoice_id] = sum
 
         for invoice in self.browse(cursor, user, ids, context=context):
