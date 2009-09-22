@@ -834,6 +834,9 @@ class Line(ModelSQL, ModelView):
                         'AND account = %s'
             cursor.execute(query, (party.id, party.account_receivable.id))
             amount = cursor.fetchone()[0]
+            # SQLite uses float for SUM
+            if not isinstance(amount, Decimal):
+                amout = Decimal(str(amount))
             if not currency_obj.is_zero(cursor, user,
                     party.account_receivable.currency, amount):
                 if amount > Decimal('0.0'):

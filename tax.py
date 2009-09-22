@@ -213,6 +213,9 @@ class Code(ModelSQL, ModelView):
                 'GROUP BY c.id', all_ids)
         code_sum = {}
         for code_id, sum in cursor.fetchall():
+            # SQLite uses float for SUM
+            if not isinstance(sum, Decimal):
+                sum = Decimal(str(sum))
             code_sum[code_id] = sum
 
         for code in self.browse(cursor, user, ids, context=context):

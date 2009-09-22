@@ -116,6 +116,9 @@ class Party(ModelSQL, ModelView):
                     'GROUP BY l.party',
                     [code,] + ids + today_value + [company_id])
             for party_id, sum in cursor.fetchall():
+                # SQLite uses float for SUM
+                if not isinstance(sum, Decimal):
+                    sum = Decimal(str(sum))
                 res[name][party_id] = sum
         return res
 

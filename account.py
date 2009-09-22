@@ -655,6 +655,9 @@ class Account(ModelSQL, ModelView):
                 'GROUP BY a.id', args_ids)
         account_sum = {}
         for account_id, sum in cursor.fetchall():
+            # SQLite uses float for SUM
+            if not isinstance(sum, Decimal):
+                sum = Decimal(str(sum))
             account_sum[account_id] = sum
 
         account2company = {}
@@ -778,6 +781,9 @@ class Account(ModelSQL, ModelView):
             for row in cursor.fetchall():
                 account_id = row[0]
                 for i in range(len(names)):
+                    # SQLite uses float for SUM
+                    if not isinstance(row[i + 1], Decimal):
+                        row[i + 1] = Decimal(str(row[i + 1]))
                     res[names[i]][account_id] = row[i + 1]
 
         account2company = {}
