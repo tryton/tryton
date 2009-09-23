@@ -164,7 +164,7 @@ class ModelRecord(SignalEvent):
         else:
             if not self.is_modified():
                 return self.id
-            value = self.get(get_readonly=False, get_modifiedonly=True)
+            value = self.get(get_readonly=True, get_modifiedonly=True)
             context = self.context_get()
             context = context.copy()
             context['_timestamp'] = {}
