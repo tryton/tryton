@@ -370,10 +370,21 @@ class Product(ModelSQL, ModelView):
             where_clause += " AND " + move_query + " "
             where_vals += move_val
 
+        product_template_join = ""
         if product_ids:
             where_clause += "AND product in (" + \
                 ",".join(('%s',) * len(product_ids)) + ")"
             where_vals += product_ids
+        else:
+            where_clause += "AND product_template.active = %s"
+            where_vals.append(True)
+            product_template_join = \
+                    "JOIN product_product "\
+                        "ON (stock_move.product = product_product.id) "\
+                    "JOIN product_template "\
+                        "ON (product_product.template = "\
+                            "product_template.id) "\
+
 
         if context.get('stock_destinations'):
             destinations = context.get('stock_destinations')
@@ -394,14 +405,14 @@ class Product(ModelSQL, ModelView):
                 "FROM ( "\
                     "SELECT to_location AS location, product, uom, "\
                         "sum(quantity) AS quantity "\
-                    "FROM stock_move "\
+                    "FROM stock_move " + product_template_join + \
                     "WHERE (%s) " \
                         "AND to_location %s "\
                     "GROUP BY to_location, product ,uom "\
                     "UNION  "\
                     "SELECT from_location AS location, product, uom, "\
                         "-sum(quantity) AS quantity "\
-                    "FROM stock_move "\
+                    "FROM stock_move " + product_template_join + \
                     "WHERE (%s) " \
                         "AND from_location %s "\
                     "GROUP BY from_location, product, uom "\
@@ -425,8 +436,7 @@ class Product(ModelSQL, ModelView):
                     id_list.append(line[position])
 
         if not product_ids:
-            product_ids = self.pool.get("product.product").search(
-                cursor, user, [], context=context)
+            product_ids = res_product_ids
         uom_by_id = dict([(x.id, x) for x in uom_obj.browse(
                 cursor, user, uom_ids, context=context)])
         default_uom = dict((x.id, x.default_uom) for x in product_obj.browse(
@@ -483,7 +493,10 @@ class Product(ModelSQL, ModelView):
 
         # Complete result with missing products if asked
         if not skip_zero:
-            keys = ((l,p) for l in location_ids for p in product_ids)
+            # Search for all products, even if not linked with moves
+            all_product_ids = self.pool.get("product.product").search(
+                cursor, user, [], context=context)
+            keys = ((l,p) for l in location_ids for p in all_product_ids)
             for location_id, product_id in keys:
                 if (location_id, product_id) not in res:
                     res[(location_id, product_id)] = 0.0
@@ -561,13 +574,13 @@ class OpenLocation(Wizard):
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
 
-        ctx = {}
-        ctx['product'] = data['id']
+        if context == None: context = {}
+        context['product'] = data['id']
         if data['form']['forecast_date']:
-            ctx['stock_date_end'] = data['form']['forecast_date']
+            context['stock_date_end'] = data['form']['forecast_date']
         else:
-            ctx['stock_date_end'] = datetime.date.max
-        res['context'] = str(ctx)
+            context['stock_date_end'] = datetime.date.max
+        res['context'] = str(context)
 
         return res
 
