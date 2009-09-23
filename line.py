@@ -3,6 +3,7 @@
 "Timesheet Line"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.backend import FIELDS
 
 
 class Line(ModelSQL, ModelView):
@@ -232,7 +233,7 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
     _name = 'timesheet.hours_employee_weekly'
     _description = __doc__
 
-    year = fields.Integer('Year', select=1)
+    year = fields.Char('Year', select=1)
     week = fields.Integer('Week', select=1)
     employee = fields.Many2One('company.employee', 'Employee', select=1)
     hours = fields.Float('Hours', digits=(16, 2), select=1)
@@ -244,18 +245,22 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
         self._order.insert(2, ('employee', 'ASC'))
 
     def table_query(self, context=None):
-        return ('SELECT EXTRACT(WEEK FROM date) + ' \
-                        'EXTRACT(YEAR FROM date) * 100 + ' \
-                        'employee * 1000000 AS id, ' \
-                    'MAX(create_uid) AS create_uid, ' \
-                    'MAX(create_date) AS create_date, ' \
-                    'MAX(write_uid) AS write_uid, ' \
-                    'MAX(write_date) AS write_date, ' \
-                    'EXTRACT(YEAR FROM date) AS year, ' \
-                    'EXTRACT(WEEK FROM date) AS week, employee, ' \
-                    'SUM(COALESCE(hours, 0)) AS hours ' \
-                'FROM timesheet_line ' \
-                'GROUP BY year, week, employee', [])
+        type_name = FIELDS[self.year._type].sql_type(self.year)[0]
+        return ('SELECT id, create_uid, create_date, write_uid, write_date, ' \
+                    'CAST(year AS ' + type_name + '), week, employee, hours ' \
+                    'FROM ('
+                        'SELECT EXTRACT(WEEK FROM date) + ' \
+                            'EXTRACT(YEAR FROM date) * 100 + ' \
+                            'employee * 1000000 AS id, ' \
+                        'MAX(create_uid) AS create_uid, ' \
+                        'MAX(create_date) AS create_date, ' \
+                        'MAX(write_uid) AS write_uid, ' \
+                        'MAX(write_date) AS write_date, ' \
+                        'EXTRACT(YEAR FROM date) AS year, ' \
+                        'EXTRACT(WEEK FROM date) AS week, employee, ' \
+                        'SUM(COALESCE(hours, 0)) AS hours ' \
+                    'FROM timesheet_line ' \
+                    'GROUP BY year, week, employee) AS ' + self._table, [])
 
 HoursEmployeeWeekly()
 
@@ -265,7 +270,7 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
     _name = 'timesheet.hours_employee_monthly'
     _description = __doc__
 
-    year = fields.Integer('Year', select=1)
+    year = fields.Char('Year', select=1)
     month = fields.Integer('Month', select=1)
     employee = fields.Many2One('company.employee', 'Employee', select=1)
     hours = fields.Float('Hours', digits=(16, 2), select=1)
@@ -277,17 +282,21 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
         self._order.insert(2, ('employee', 'ASC'))
 
     def table_query(self, context=None):
-        return ('SELECT EXTRACT(MONTH FROM date) + ' \
-                        'EXTRACT(YEAR FROM date) * 100 + ' \
-                        'employee * 1000000 AS id, ' \
-                    'MAX(create_uid) AS create_uid, ' \
-                    'MAX(create_date) AS create_date, ' \
-                    'MAX(write_uid) AS write_uid, ' \
-                    'MAX(write_date) AS write_date, ' \
-                    'EXTRACT(YEAR FROM date) AS year, ' \
-                    'EXTRACT(MONTH FROM date) AS month, employee, ' \
-                    'SUM(COALESCE(hours, 0)) AS hours ' \
-                'FROM timesheet_line ' \
-                'GROUP BY year, month, employee', [])
+        type_name = FIELDS[self.year._type].sql_type(self.year)[0]
+        return ('SELECT id, create_uid, create_date, write_uid, write_date, ' \
+                    'CAST(year AS ' + type_name + '), month, employee, hours ' \
+                    'FROM ('
+                        'SELECT EXTRACT(MONTH FROM date) + ' \
+                            'EXTRACT(YEAR FROM date) * 100 + ' \
+                            'employee * 1000000 AS id, ' \
+                        'MAX(create_uid) AS create_uid, ' \
+                        'MAX(create_date) AS create_date, ' \
+                        'MAX(write_uid) AS write_uid, ' \
+                        'MAX(write_date) AS write_date, ' \
+                        'EXTRACT(YEAR FROM date) AS year, ' \
+                        'EXTRACT(MONTH FROM date) AS month, employee, ' \
+                        'SUM(COALESCE(hours, 0)) AS hours ' \
+                    'FROM timesheet_line ' \
+                    'GROUP BY year, month, employee) AS ' + self._table, [])
 
 HoursEmployeeMonthly()
