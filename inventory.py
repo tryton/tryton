@@ -170,6 +170,10 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
 
             # Update existing lines
             for line in inventory.lines:
+                if not (line.product.active and
+                        line.product.type == 'stockable'):
+                    line_obj.delete(cursor, user, line.id, context=context)
+                    continue
                 quantity, uom_id = 0.0, product2uom[line.product.id]
                 if line.product.id in product_qty:
                     quantity, uom_id = product_qty.pop(line.product.id)
