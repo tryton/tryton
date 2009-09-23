@@ -91,7 +91,7 @@ this repository contains the full copyright notices and license terms. -->
                                     </group>
                                     <group col="5" colspan="2" id="buttons">
                                         <button name="cancel" string="_Cancel"
-                                            states="{'invisible': '''state not in ('draft', 'proforma') ''', 'readonly': ''' %(account.group_account)d not in groups '''}"
+                                            states="{'invisible': '''state not in ('draft', 'proforma')''', 'readonly': '''%(account.group_account)d not in groups'''}"
                                             icon="tryton-cancel"/>
                                         <button name="button_draft" string="_Reset to Draft"
                                             type="object"
@@ -104,11 +104,11 @@ this repository contains the full copyright notices and license terms. -->
                                             states="{'invisible': '''state != 'draft' '''}"
                                             icon="tryton-go-next"/>
                                         <button name="open" string="_Open"
-                                            states="{'invisible': '''state not in ('draft', 'proforma') ''', 'readonly': ''' %(account.group_account)d not in groups '''}"
+                                            states="{'invisible': '''state not in ('draft', 'proforma')''', 'readonly': '''%(account.group_account)d not in groups'''}"
                                             icon="tryton-ok"/>
                                         <button name="%(wizard_pay_invoice)d" string="_Pay"
                                             type="action"
-                                            states="{'invisible': '''state != 'open' ''', 'readonly': ''' %(account.group_account)d not in groups '''}"
+                                            states="{'invisible': '''state != 'open' ''', 'readonly': '''%(account.group_account)d not in groups'''}"
                                             icon="tryton-go-next"/>
                                     </group>
                                 </group>
