@@ -783,8 +783,9 @@ class Account(ModelSQL, ModelView):
                 for i in range(len(names)):
                     # SQLite uses float for SUM
                     if not isinstance(row[i + 1], Decimal):
-                        row[i + 1] = Decimal(str(row[i + 1]))
-                    res[names[i]][account_id] = row[i + 1]
+                        res[names[i]][account_id] = Decimal(str(row[i + 1]))
+                    else:
+                        res[names[i]][account_id] = row[i + 1]
 
         account2company = {}
         id2company = {}
