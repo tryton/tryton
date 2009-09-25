@@ -175,7 +175,7 @@ class Product(ModelSQL, ModelView):
         today = date_obj.today(cursor, user, context=context)
 
         if not location_ids:
-            return []
+            return {}
         if context is None:
             context= {}
         # Skip warehouse location in favor of their storage location
