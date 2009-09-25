@@ -574,13 +574,13 @@ class OpenLocation(Wizard):
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
 
-        if context == None: context = {}
-        context['product'] = data['id']
+        ctx = {}
+        ctx['product'] = data['id']
         if data['form']['forecast_date']:
-            context['stock_date_end'] = data['form']['forecast_date']
+            ctx['stock_date_end'] = data['form']['forecast_date']
         else:
-            context['stock_date_end'] = datetime.date.max
-        res['context'] = str(context)
+            ctx['stock_date_end'] = datetime.date.max
+        res['context'] = str(ctx)
 
         return res
 
