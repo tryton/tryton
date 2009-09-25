@@ -135,7 +135,7 @@ class Product(OSV):
         date_obj = self.pool.get('ir.date')
 
         if not location_ids:
-            return []
+            return {}
         if context is None:
             context= {}
         # Skip warehouse location in favor of their storage location
