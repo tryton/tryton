@@ -1369,7 +1369,28 @@ class Template(ModelSQL, ModelView):
                 'change_purchase_uom': 'Purchase prices are based on the purchase uom, '\
                     'are you sure to change it?',
             })
-
+        if 'not bool(account_category) and bool(purchasable)' not in \
+                self.account_expense.states.get('required', ''):
+            self.account_expense = copy.copy(self.account_expense)
+            self.account_expense.states = copy.copy(self.account_expense.states)
+            if not self.account_expense.states.get('required'):
+                self.account_expense.states['required'] = \
+                        "not bool(account_category) and bool(purchasable)"
+            else:
+                self.account_expense.states['required'] = '(' + \
+                        self.account_expense.states['required'] + ') ' \
+                        'or (not bool(account_category) and bool(purchasable))'
+        if 'account_category' not in self.account_expense.depends:
+            self.account_expense = copy.copy(self.account_expense)
+            self.account_expense.depends = \
+                    copy.copy(self.account_expense.depends)
+            self.account_expense.depends.append('account_category')
+        if 'purchasable' not in self.account_expense.depends:
+            self.account_expense = copy.copy(self.account_expense)
+            self.account_expense.depends = \
+                    copy.copy(self.account_expense.depends)
+            self.account_expense.depends.append('purchasable')
+        self._reset_columns()
 
     def default_purchasable(self, cursor, user, context=None):
         if context is None:
