@@ -1111,6 +1111,21 @@ class SaleLine(ModelSQL, ModelView):
         res = {}
         return res
 
+    def _get_context_sale_price(self, cursor, user, product, vals,
+            context=None):
+        if context is None:
+            context = {}
+        ctx2 = context.copy()
+        if vals.get('_parent_sale.currency'):
+            ctx2['currency'] = vals['_parent_sale.currency']
+        if vals.get('_parent_sale.party'):
+            ctx2['customer'] = vals['_parent_sale.party']
+        if vals.get('unit'):
+            ctx2['uom'] = vals['unit']
+        else:
+            ctx2['uom'] = product.sale_uom.id
+        return ctx2
+
     def on_change_product(self, cursor, user, ids, vals, context=None):
         party_obj = self.pool.get('party.party')
         product_obj = self.pool.get('product.product')
@@ -1134,15 +1149,8 @@ class SaleLine(ModelSQL, ModelView):
         product = product_obj.browse(cursor, user, vals['product'],
                 context=context)
 
-        ctx2 = context.copy()
-        if vals.get('_parent_sale.currency'):
-            ctx2['currency'] = vals['_parent_sale.currency']
-        if vals.get('_parent_sale.party'):
-            ctx2['customer'] = vals['_parent_sale.party']
-        if vals.get('unit'):
-            ctx2['uom'] = vals['unit']
-        else:
-            ctx2['uom'] = product.sale_uom.id
+        ctx2 = self._get_context_sale_price(cursor, user, product, vals,
+                context=context)
         res['unit_price'] = product_obj.get_sale_price(cursor, user,
                 [product.id], vals.get('quantity', 0), context=ctx2)[product.id]
         res['taxes'] = []
@@ -1194,13 +1202,8 @@ class SaleLine(ModelSQL, ModelView):
         product = product_obj.browse(cursor, user, vals['product'],
                 context=context)
 
-        ctx2 = context.copy()
-        if vals.get('_parent_sale.currency'):
-            ctx2['currency'] = vals['_parent_sale.currency']
-        if vals.get('_parent_sale.party'):
-            ctx2['customer'] = vals['_parent_sale.party']
-        if vals.get('unit'):
-            ctx2['uom'] = vals['unit']
+        ctx2 = self._get_context_sale_price(cursor, user, product, vals,
+                context=context)
         res['unit_price'] = product_obj.get_sale_price(cursor, user,
                 [vals['product']], vals.get('quantity', 0),
                 context=ctx2)[vals['product']]
