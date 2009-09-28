@@ -62,7 +62,6 @@ class Template(ModelSQL, ModelView):
             domain=[('kind', '=', 'expense'), "('company', '=', company)"],
             states={
                 'invisible': "not bool(company) or bool(account_category)",
-                'required': "not bool(account_category)",
             }, help='This account will be used instead of the one defined ' \
                     'on the category.', depends=['account_category'])
     account_revenue = fields.Property(type='many2one',
@@ -70,7 +69,6 @@ class Template(ModelSQL, ModelView):
             domain=[('kind', '=', 'revenue'), "('company', '=', company)"],
             states={
                 'invisible': "not bool(company) or bool(account_category)",
-                'required': "not bool(account_category)",
             }, help='This account will be used instead of the one defined ' \
                     'on the category.', depends=['account_category'])
     account_expense_used = fields.Function('get_account', type='many2one',
