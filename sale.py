@@ -6,6 +6,7 @@ from trytond.report import CompanyReport
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from decimal import Decimal
+import copy
 
 
 class Sale(ModelWorkflow, ModelSQL, ModelView):
@@ -1441,6 +1442,31 @@ class Template(ModelSQL, ModelView):
         }, domain=["('category', '=', (default_uom, 'uom.category'))"],
         context="{'category': (default_uom, 'uom.category')}",
         on_change_with=['default_uom', 'sale_uom', 'salable'])
+
+    def __init__(self):
+        super(Template, self).__init__()
+        if 'not bool(account_category) and bool(salable)' not in \
+                self.account_revenue.states.get('required', ''):
+            self.account_revenue = copy.copy(self.account_revenue)
+            self.account_revenue.states = copy.copy(self.account_revenue.states)
+            if not self.account_revenue.states.get('required'):
+                self.account_revenue.states['required'] = \
+                        "not bool(account_category) and bool(salable)"
+            else:
+                self.account_revenue.states['required'] = '(' + \
+                        self.account_revenue.states['required'] + ') ' \
+                        'or (not bool(account_category) and bool(salable))'
+        if 'account_category' not in self.account_revenue.depends:
+            self.account_revenue = copy.copy(self.account_revenue)
+            self.account_revenue.depends = \
+                    copy.copy(self.account_revenue.depends)
+            self.account_revenue.depends.append('account_category')
+        if 'salable' not in self.account_revenue.depends:
+            self.account_revenue = copy.copy(self.account_revenue)
+            self.account_revenue.depends = \
+                    copy.copy(self.account_revenue.depends)
+            self.account_revenue.depends.append('salable')
+        self._reset_columns()
 
     def default_salable(self, cursor, user, context=None):
         if context is None:
