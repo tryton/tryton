@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.tools import safe_eval
 from decimal import Decimal
 import re
 
@@ -214,7 +215,7 @@ class PriceListLine(ModelSQL, ModelView):
             context = {}
         ctx = context.copy()
         ctx['Decimal'] = Decimal
-        return eval(_RE_DECIMAL.sub(lambda m: "Decimal('%s')" % m.group(1),
+        return safe_eval(_RE_DECIMAL.sub(lambda m: "Decimal('%s')" % m.group(1),
             line.formula), ctx)
 
 PriceListLine()
