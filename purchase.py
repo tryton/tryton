@@ -1658,33 +1658,36 @@ class Move(ModelSQL, ModelView):
     purchase = fields.Function('get_purchase', type='many2one',
             relation='purchase.purchase', string='Purchase',
             fnct_search='search_purchase', select=1, states={
-                'invisible': "type != 'input'",
-            })
+                'invisible': "not purchase_visible",
+            }, depends=['purchase_visible'])
     purchase_quantity = fields.Function('get_purchase_fields',
             type='float', digits="(16, unit_digits)",
             string='Purchase Quantity',
             states={
-                'invisible': "type != 'input'",
-            })
+                'invisible': "not purchase_visible",
+            }, depends=['purchase_visible'])
     purchase_unit = fields.Function('get_purchase_fields',
             type='many2one', relation='product.uom',
             string='Purchase Unit',
             states={
-                'invisible': "type != 'input'",
-            })
+                'invisible': "not purchase_visible",
+            }, depends=['purchase_visible'])
     purchase_unit_digits = fields.Function('get_purchase_fields',
             type='integer', string='Purchase Unit Digits')
     purchase_unit_price = fields.Function('get_purchase_fields',
             type='numeric', digits=(16, 4), string='Purchase Unit Price',
             states={
-                'invisible': "type != 'input'",
-            })
+                'invisible': "not purchase_visible",
+            }, depends=['purchase_visible'])
     purchase_currency = fields.Function('get_purchase_fields',
             type='many2one', relation='currency.currency',
             string='Purchase Currency',
             states={
-                'invisible': "type != 'input'",
-            })
+                'invisible': "not purchase_visible",
+            }, depends=['purchase_visible'])
+    purchase_visible = fields.Function('get_purchase_visible',
+            type="boolean", string='Purchase Visible',
+            on_change_with=['from_location'])
     supplier = fields.Function('get_supplier', type='many2one',
             relation='party.party', string='Supplier',
             fnct_search='search_supplier', select=1)
@@ -1747,6 +1750,33 @@ class Move(ModelSQL, ModelView):
                         res[name][move.id] = move.purchase_line[name[9:]]
                     else:
                         res[name][move.id] = move.purchase_line[name[9:]].id
+        return res
+
+    def default_purchase_visible(self, cursor, user, context=None):
+        from_location = self.default_from_location(cursor, user,
+                context=context)
+        vals = {
+            'from_location': from_location,
+        }
+        return self.on_change_with_purchase_visible(cursor, user, [], vals,
+                context=context)
+
+    def on_change_with_purchase_visible(self, cursor, user, ids, vals,
+            context=None):
+        location_obj = self.pool.get('stock.location')
+        if vals.get('from_location'):
+            from_location = location_obj.browse(cursor, user,
+                    vals['from_location'], context=context)
+            if from_location.type == 'supplier':
+                return True
+        return False
+
+    def get_purchase_visible(self, cursor, user, ids, name, arg, context=None):
+        res = {}
+        for move in self.browse(cursor, user, ids, context=context):
+            res[move.id] = False
+            if move.from_location.type == 'supplier':
+                res[move.id] = True
         return res
 
     def get_supplier(self, cursor, user, ids, name, arg, context=None):
