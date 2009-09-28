@@ -2,6 +2,7 @@
 #of this repository contains the full copyright notices and license terms.
 "Currency"
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.tools import safe_eval
 import time
 from decimal import Decimal
 import datetime
@@ -96,7 +97,7 @@ class Currency(ModelSQL, ModelView):
         '''
         for currency in self.browse(cursor, user, ids):
             try:
-                grouping = eval(currency.mon_grouping)
+                grouping = safe_eval(currency.mon_grouping)
                 for i in grouping:
                     if not isinstance(i, int):
                         return False
