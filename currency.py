@@ -4,7 +4,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.tools import safe_eval
 import time
-from decimal import Decimal
+from decimal import Decimal, ROUND_HALF_EVEN
 import datetime
 
 
@@ -164,9 +164,19 @@ class Currency(ModelSQL, ModelView):
                 res[currency_id] = id2rate[res[currency_id]].rate
         return res
 
-    def round(self, cursor, user, currency, amount):
-        'Round the amount depending of the currency'
-        return (amount / currency.rounding).quantize(Decimal('1.')) * currency.rounding
+    def round(self, cursor, user, currency, amount, rounding=ROUND_HALF_EVEN):
+        '''
+        Round the amount depending of the currency
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param currency: a BrowseRecord of currency.currency
+        :param amout: a Decimal
+        :param rounding: the rounding option
+        :return: a Decimal
+        '''
+        return (amount / currency.rounding).quantize(Decimal('1.'),
+                rounding=rounding) * currency.rounding
 
     def is_zero(self, cursor, user, currency, amount):
         'Return True if the amount can be considered as zero for the currency'
