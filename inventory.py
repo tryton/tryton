@@ -125,10 +125,11 @@ class Inventory(OSV):
         for inventory in inventories:
             # Compute product quantities
             if inventory.date:
-                context['stock_date_end'] = inventory.date
+                ctx = context and context.copy() or {}
+                ctx['stock_date_end'] = inventory.date
                 pbl = product_obj.products_by_location(
                     cursor, user, [inventory.location.id],
-                    context=context)
+                    context=ctx)
             else:
                 pbl = product_obj.products_by_location(
                     cursor, user, [inventory.location.id], context=context)
