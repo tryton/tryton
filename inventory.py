@@ -151,10 +151,11 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
 
         for inventory in inventories:
             # Compute product quantities
-            context['stock_date_end'] = inventory.date
+            ctx = context and context.copy() or {}
+            ctx['stock_date_end'] = inventory.date
             pbl = product_obj.products_by_location(
                 cursor, user, [inventory.location.id],
-                product_ids=product_ids, context=context)
+                product_ids=product_ids, context=ctx)
 
             # Index some data
             product2uom = {}
