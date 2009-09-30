@@ -17,7 +17,6 @@
         'party',
         'product_price_list',
         'sale',
-        'product',
     ],
     'xml': [
         'party.xml',
