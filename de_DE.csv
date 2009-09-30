@@ -1,0 +1,3 @@
+type,name,res_id,src,value,fuzzy
+field,"party.party,sale_price_list",0,Sale Price List,Preisliste Verkauf,0
+field,"sale.sale,price_list",0,Price List,Preisliste,0
