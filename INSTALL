@@ -9,7 +9,6 @@ Prerequisites
  * trytond_party (http://www.tryton.org/)
  * trytond_sale (http://www.tryton.org/)
  * trytond_product_price_list (http://www.tryton.org/)
- * trytond_product (http://www.tryton.org/)
 
 Installation
 ------------
