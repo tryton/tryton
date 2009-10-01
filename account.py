@@ -1940,7 +1940,7 @@ class UpdateChartAccountInit(ModelView):
     'Update Chart Account from Template Init'
     _name = 'account.account.update_chart_account.init'
     _description = __doc__
-    account = fields.Many2One('account.account', 'Account',
+    account = fields.Many2One('account.account', 'Root Account',
             required=True, domain=[('parent', '=', False)])
 
 UpdateChartAccountInit()
