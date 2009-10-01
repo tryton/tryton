@@ -415,12 +415,12 @@ model,"account.account.print_general_ledger.init,name",0,Print General Ledger,Dr
 model,"account.account.print_trial_balance.init,name",0,Print Trial Balance Init,Druck Summen- und Saldenliste Init,0
 model,"account.account.template-account.tax.template,name",0,Account Template - Tax Template,Kontenvorlage - Steuervorlage,0
 model,"account.account.template,name",0,Account Template,Konto Vorlage,0
-model,"account.account.template,name",account_template_cash,Main Cash,Allgemein Barvermögen,0
-model,"account.account.template,name",account_template_expense,Main Expense,Allgemein Aufwand,0
-model,"account.account.template,name",account_template_payable,Main Payable,Allgemein Verbindlichkeiten,0
-model,"account.account.template,name",account_template_receivable,Main Receivable,Allgemein Forderungen,0
-model,"account.account.template,name",account_template_revenue,Main Revenue,Allgemein Ertrag,0
-model,"account.account.template,name",account_template_tax,Main Tax,Allgemein Verbindlichkeiten aus Steuern,0
+model,"account.account.template,name",account_template_cash,Main Cash,Barvermögen,0
+model,"account.account.template,name",account_template_expense,Main Expense,Aufwand,0
+model,"account.account.template,name",account_template_payable,Main Payable,Verbindlichkeiten,0
+model,"account.account.template,name",account_template_receivable,Main Receivable,Forderungen,0
+model,"account.account.template,name",account_template_revenue,Main Revenue,Ertrag,0
+model,"account.account.template,name",account_template_tax,Main Tax,Steuern,0
 model,"account.account.template,name",account_template_root,Minimal Account Chart,Minimaler Kontenplan,0
 model,"account.account.type,name",0,Account Type,Kontentyp,0
 model,"account.account.type.template,name",0,Account Type Template,Kontentyp Vorlage,0
