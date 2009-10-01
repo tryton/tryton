@@ -159,7 +159,7 @@ field,"account.account.type.template,name",0,Name,Name,0
 field,"account.account.type.template,parent",0,Parent,Übergeordnet (Kontovorlagentyp),0
 field,"account.account.type.template,rec_name",0,Name,Name,0
 field,"account.account.type.template,sequence",0,Sequence,Sequenz,0
-field,"account.account.update_chart_account.init,account",0,Account,Konto,0
+field,"account.account.update_chart_account.init,account",0,Root Account,Wurzelkonto,0
 field,"account.fiscalyear-account.move.line,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
 field,"account.fiscalyear-account.move.line,line",0,Line,Position,0
 field,"account.fiscalyear-account.move.line,rec_name",0,Name,Name,0
