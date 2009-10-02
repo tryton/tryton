@@ -191,6 +191,14 @@ class DateField(CharField):
 
 class FloatField(CharField):
 
+    def set(self, model, value, modified=False):
+        if isinstance(self.attrs.get('digits'), str):
+            digits = model.expr_eval(self.attrs['digits'])
+        else:
+            digits = self.attrs.get('digits', (12, 2))
+        value = round(value, digits[1])
+        return super(FloatField, self).set(model, value, modified=modified)
+
     def set_client(self, model, value, force_change=False):
         internal = model.value[self.name]
         prev_modified = model.modified

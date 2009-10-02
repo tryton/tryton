@@ -126,7 +126,7 @@ class ViewTreeModel(gtk.GenericTreeModel, gtk.TreeSortable):
                     if isinstance(digits, str):
                         digits = eval(digits, obj)
                     obj[field] = locale.format('%.' + str(digits[1]) + 'f',
-                            obj[field] or 0.0, True)
+                            round(obj[field] or 0.0, digits[1]), True)
             elif field_type in ('integer',):
                 for obj in res_ids:
                     obj[field] = locale.format('%d', obj[field] or 0, True)
