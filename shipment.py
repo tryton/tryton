@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 "Shipment"
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
-from trytond.report import CompanyReport
+from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 
