@@ -303,9 +303,6 @@ class CompanyReport(Report):
         return super(CompanyReport, self).parse(cursor, user_id, report,
                 objects, datas, context)
 
-import trytond.report
-trytond.report.CompanyReport = CompanyReport
-
 
 class LetterReport(CompanyReport):
     _name = 'party.letter'

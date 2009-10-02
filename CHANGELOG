@@ -1,3 +1,5 @@
+* Remove monkey patch for CompanyReport
+
 Version 1.2.0 - 2009-04-20
 * Bug fixes (see mercurial logs for details)
 * Allow egg installation
