@@ -196,30 +196,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.ui.view" id="inventory_complete_init_view_form">
-            <field name="model">stock.inventory.complete.init</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Complete Inventory">
-                    <separator name="categories" colspan="2"/>
-                    <separator name="products" colspan="2"/>
-                    <field name="categories" colspan="2">
-                        <tree string="Categories" fill="1">
-                            <field name="rec_name"/>
-                            <field name="name" select="1" tree_invisible="1"/>
-                        </tree>
-                    </field>
-                    <field name="products" colspan="2">
-                        <tree string="Products" fill="1">
-                            <field name="name" select="1"/>
-                            <field name="code" select="1"/>
-                        </tree>
-                    </field>
-                </form>
-                ]]>
-            </field>
-        </record>
-
     </data>
 </tryton>

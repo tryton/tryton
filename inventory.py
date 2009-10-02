@@ -127,15 +127,13 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             return new_ids[0]
         return new_ids
 
-    def complete_lines(self, cursor, user, ids, product_ids=None, context=None):
+    def complete_lines(self, cursor, user, ids, context=None):
         '''
         Complete or update the inventories
 
         :param cursor: the database cursor
         :param user: the user id
         :param ids: the ids of stock.inventory
-        :param product_ids: the ids of product.product
-                if None all products are used
         :param context: the context
         '''
         line_obj = self.pool.get('stock.inventory.line')
@@ -154,8 +152,7 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             ctx = context and context.copy() or {}
             ctx['stock_date_end'] = inventory.date
             pbl = product_obj.products_by_location(
-                cursor, user, [inventory.location.id],
-                product_ids=product_ids, context=ctx)
+                cursor, user, [inventory.location.id], context=ctx)
 
             # Index some data
             product2uom = {}
@@ -348,34 +345,11 @@ class InventoryLine(ModelSQL, ModelView):
 InventoryLine()
 
 
-class CompleteInventoryInit(ModelView):
-    'Complete Inventory Init'
-    _name = 'stock.inventory.complete.init'
-    _description = __doc__
-
-    products = fields.Many2Many('product.product', None, None,
-            'Products', domain=[('type', '=', 'stockable')])
-    categories = fields.Many2Many('product.category', None, None,
-            'Categories')
-
-CompleteInventoryInit()
-
-
 class CompleteInventory(Wizard):
     'Complete Inventory'
     _name = 'stock.inventory.complete'
     states = {
         'init': {
-            'result': {
-                'type': 'form',
-                'object': 'stock.inventory.complete.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('complete', 'Complete', 'tryton-ok', True),
-                ],
-            },
-        },
-        'complete': {
             'result': {
                 'type': 'action',
                 'action': '_complete',
@@ -385,25 +359,8 @@ class CompleteInventory(Wizard):
         }
 
     def _complete(self, cursor, user, data, context=None):
-        category_obj = self.pool.get('product.category')
-        product_obj = self.pool.get('product.product')
         inventory_obj = self.pool.get('stock.inventory')
-
-        product_ids = data['form']['products'][0][1] or []
-        category_ids = data['form']['categories'][0][1] or []
-
-        if category_ids:
-            child_category_ids = category_obj.search(cursor, user,
-                    [('parent', 'child_of', category_ids)], context=context)
-            cat_product_ids = product_obj.search(cursor, user, [
-                ('category', 'in', child_category_ids),
-                ('type', '=', 'stockable'),
-                ], context=context)
-            if cat_product_ids:
-                product_ids += cat_product_ids
-
-        inventory_obj.complete_lines(cursor, user, data['ids'],
-                product_ids=product_ids, context=context)
+        inventory_obj.complete_lines(cursor, user, data['ids'], context=context)
 
         return {}
 
