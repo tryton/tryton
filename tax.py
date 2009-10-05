@@ -440,16 +440,16 @@ class TaxTemplate(ModelSQL, ModelView):
         return False
 
     def default_invoice_base_sign(self, cursor, user, context=None):
-        return 1
+        return Decimal('1')
 
     def default_invoice_tax_sign(self, cursor, user, context=None):
-        return 1
+        return Decimal('1')
 
     def default_credit_note_base_sign(self, cursor, user, context=None):
-        return 1
+        return Decimal('1')
 
     def default_credit_note_tax_sign(self, cursor, user, context=None):
-        return 1
+        return Decimal('1')
 
     def _get_tax_value(self, cursor, user, template, context=None,
             tax=None):
@@ -693,16 +693,16 @@ class Tax(ModelSQL, ModelView):
         return False
 
     def default_invoice_base_sign(self, cursor, user, context=None):
-        return 1
+        return Decimal('1')
 
     def default_invoice_tax_sign(self, cursor, user, context=None):
-        return 1
+        return Decimal('1')
 
     def default_credit_note_base_sign(self, cursor, user, context=None):
-        return 1
+        return Decimal('1')
 
     def default_credit_note_tax_sign(self, cursor, user, context=None):
-        return 1
+        return Decimal('1')
 
     def default_company(self, cursor, user, context=None):
         company_obj = self.pool.get('company.company')
