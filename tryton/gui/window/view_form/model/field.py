@@ -227,6 +227,8 @@ class NumericField(CharField):
             digits = model.expr_eval(self.attrs['digits'])
         else:
             digits = self.attrs.get('digits', (12, 2))
+        if not value:
+            value = Decimal('0.0')
         value = value.quantize(Decimal(str(10**-digits[1])))
         return super(NumericField, self).set(model, value, modified=modified)
 
