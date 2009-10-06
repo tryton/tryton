@@ -1865,7 +1865,7 @@ class InvoiceTax(ModelSQL, ModelView):
         self._order.insert(0, ('sequence', 'ASC'))
         self._error_messages.update({
             'modify': 'You can not modify tax from an invoice ' \
-                    'that is open, paid or canceled!',
+                    'that is opened, paid!',
             'create': 'You can not add a line to an invoice ' \
                     'that is open, paid or canceled!',
             })
