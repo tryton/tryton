@@ -188,17 +188,15 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="amount_second_currency"/>
                             <label name="second_currency"/>
                             <field name="second_currency"/>
+                            <label name="reconciliation"/>
+                            <field name="reconciliation"/>
+                            <label name="maturity_date"/>
+                            <field name="maturity_date"/>
                             <label name="move"/>
                             <field name="move" required="0"/>
                             <label name="move_state"/>
                             <field name="move_state"/>
-                            <label name="reconciliation"/>
-                            <field name="reconciliation"/>
-                            <newline/>
-                            <label name="maturity_date"/>
-                            <field name="maturity_date"/>
-                            <label name="create_date"/>
-                            <field name="create_date"/>
+                            <label id="empty" colspan="2"/>
                             <label name="state"/>
                             <field name="state"/>
                         </page>
