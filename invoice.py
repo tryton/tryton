@@ -1709,7 +1709,7 @@ class InvoiceTax(OSV):
         Check if the taxes can be modified
         '''
         for tax in self.browse(cursor, user, ids, context=context):
-            if tax.invoice.state in ('open', 'paid', 'cancel'):
+            if tax.invoice.state in ('open', 'paid'):
                 self.raise_user_error(cursor, 'modify',
                         context=context)
         return
