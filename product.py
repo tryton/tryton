@@ -435,12 +435,10 @@ class Product(ModelSQL, ModelView):
                 if line[position] not in id_list:
                     id_list.append(line[position])
 
-        if not product_ids:
-            product_ids = res_product_ids
         uom_by_id = dict([(x.id, x) for x in uom_obj.browse(
                 cursor, user, uom_ids, context=context)])
         default_uom = dict((x.id, x.default_uom) for x in product_obj.browse(
-                cursor, user, product_ids, context=context))
+                cursor, user, product_ids or res_product_ids, context=context))
 
         for line in raw_lines:
             location, product, uom, quantity = line
@@ -494,8 +492,11 @@ class Product(ModelSQL, ModelView):
         # Complete result with missing products if asked
         if not skip_zero:
             # Search for all products, even if not linked with moves
-            all_product_ids = self.pool.get("product.product").search(
-                cursor, user, [], context=context)
+            if product_ids:
+                all_product_ids = product_ids
+            else:
+                all_product_ids = self.pool.get("product.product").search(
+                    cursor, user, [], context=context)
             keys = ((l,p) for l in location_ids for p in all_product_ids)
             for location_id, product_id in keys:
                 if (location_id, product_id) not in res:
