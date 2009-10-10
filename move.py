@@ -33,14 +33,16 @@ class Move(ModelSQL, ModelView):
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     date = fields.Date('Effective Date', required=True, states=_MOVE_STATES,
-            depends=_MOVE_DEPENDS)
+            depends=_MOVE_DEPENDS, on_change_with=['period', 'journal', 'date'])
     post_date = fields.Date('Post Date', readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
         ], 'State', required=True, readonly=True)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
-            states=_MOVE_STATES, depends=_MOVE_DEPENDS)
+            states=_MOVE_STATES, depends=_MOVE_DEPENDS,
+            context="{'journal': journal, 'period': period, " \
+                    "'date': date}")
 
     def __init__(self):
         super(Move, self).__init__()
@@ -87,8 +89,32 @@ class Move(ModelSQL, ModelView):
         return 'draft'
 
     def default_date(self, cursor, user, context=None):
+        period_obj = self.pool.get('account.period')
         date_obj = self.pool.get('ir.date')
+        period_id = self.default_period(cursor, user, context=context)
+        if period_id:
+            period = period_obj.browse(cursor, user, period_id,
+                    context=context)
+            return period.start_date
         return date_obj.today(cursor, user, context=context)
+
+    def on_change_with_date(self, cursor, user, ids, vals,
+            context=None):
+        line_obj = self.pool.get('account.move.line')
+        period_obj = self.pool.get('account.period')
+        res = vals['date']
+        line_ids = line_obj.search(cursor, user, [
+            ('journal', '=', vals.get('journal', False)),
+            ('period', '=', vals.get('period', False)),
+            ], order=[('id', 'DESC')], limit=1, context=context)
+        if line_ids:
+            line = line_obj.browse(cursor, user, line_ids[0], context=context)
+            res = line.date
+        elif vals.get('period'):
+            period = period_obj.browse(cursor, user, vals['period'],
+                    context=context)
+            res = period.start_date
+        return res
 
     def check_centralisation(self, cursor, user, ids):
         for move in self.browse(cursor, user, ids):
@@ -514,18 +540,19 @@ class Line(ModelSQL, ModelView):
         if context is None:
             context = {}
         res = date_obj.today(cursor, user, context=context)
-        if context.get('journal') and context.get('period'):
-            line_ids = self.search(cursor, user, [
-                ('journal', '=', context['journal']),
-                ('period', '=', context['period']),
-                ], order=[('id', 'DESC')], limit=1, context=context)
-            if line_ids:
-                line = self.browse(cursor, user, line_ids[0], context=context)
-                res = line.date
-            else:
-                period = period_obj.browse(cursor, user, context['period'],
-                        context=context)
-                res = period.start_date
+        line_ids = self.search(cursor, user, [
+            ('journal', '=', context.get('journal', False)),
+            ('period', '=', context.get('period', False)),
+            ], order=[('id', 'DESC')], limit=1, context=context)
+        if line_ids:
+            line = self.browse(cursor, user, line_ids[0], context=context)
+            res = line.date
+        elif context.get('period'):
+            period = period_obj.browse(cursor, user, context['period'],
+                    context=context)
+            res = period.start_date
+        if context.get('date'):
+            res = context['date']
         return res
 
     def default_state(self, cursor, user, context=None):
