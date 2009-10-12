@@ -1509,6 +1509,9 @@ class InvoiceLine(ModelSQL, ModelView):
 
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
+            if not line.invoice:
+                res[line.id] = False
+                continue
             ctx = context.copy()
             ctx.update(invoice_obj.get_tax_context(cursor, user, line.invoice,
                 context=context))
