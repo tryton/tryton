@@ -618,13 +618,15 @@ class Tax(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
             domain=["('id', '=', context.get('company', 0))"])
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
-            domain=["('company', '=', company)"],
+            domain=["('company', '=', company)",
+                    ('kind', '!=', 'view')],
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "type != 'none' and company",
             }, depends=['company'])
     credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
-            domain=["('company', '=', company)"],
+            domain=["('company', '=', company)",
+                    ('kind', '!=', 'view')],
             states={
                 'readonly': "type == 'none' or not company",
                 'required': "type != 'none' and company",
