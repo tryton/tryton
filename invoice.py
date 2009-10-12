@@ -1432,7 +1432,7 @@ class InvoiceLine(ModelSQL, ModelView):
     def on_change_with_amount(self, cursor, user, ids, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('type') == 'line':
-            currency = vals.get('_parent_invoice.currency', vals.get('currency'))
+            currency = vals.get('_parent_invoice.currency') or vals.get('currency')
             if isinstance(currency, (int, long)):
                 currency = currency_obj.browse(cursor, user, currency,
                         context=context)
@@ -1561,9 +1561,9 @@ class InvoiceLine(ModelSQL, ModelView):
 
         ctx = context.copy()
         party = None
-        if vals.get('_parent_invoice.party', vals.get('party')):
-            party = party_obj.browse(cursor, user, vals.get('_parent_invoice.party',
-                    vals.get('party')),
+        if vals.get('_parent_invoice.party') or vals.get('party'):
+            party = party_obj.browse(cursor, user, vals.get('_parent_invoice.party')
+                    or vals.get('party'),
                     context=context)
             if party.lang:
                 ctx['language'] = party.lang.code
@@ -1576,13 +1576,13 @@ class InvoiceLine(ModelSQL, ModelView):
             company = company_obj.browse(cursor, user, context['company'],
                     context=context)
         currency = None
-        if vals.get('_parent_invoice.currency', vals.get('currency')):
+        if vals.get('_parent_invoice.currency') or vals.get('currency'):
             #TODO check if today date is correct
             currency = currency_obj.browse(cursor, user,
-                    vals.get('_parent_invoice.currency', vals.get('currency')),
+                    vals.get('_parent_invoice.currency') or vals.get('currency'),
                     context=context)
 
-        if vals.get('_parent_invoice.type', vals.get('invoice_type')) \
+        if (vals.get('_parent_invoice.type') or vals.get('invoice_type')) \
                 in ('in_invoice', 'in_credit_note'):
             if company and currency:
                 res['unit_price'] = currency_obj.compute(cursor, user,
