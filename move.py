@@ -442,7 +442,7 @@ class Line(ModelSQL, ModelView):
             domain=[('kind', '!=', 'view')],
             select=1,
             on_change=['account', 'debit', 'credit', 'tax_lines',
-                'journal', 'move', 'account_kind'])
+                'journal', 'move'])
     move = fields.Many2One('account.move', 'Move', states=_LINE_STATES,
             select=1, required=True)
     journal = fields.Function('get_move_field', fnct_inv='set_move_field',
@@ -485,15 +485,6 @@ class Line(ModelSQL, ModelView):
             string='Currency Digits')
     second_currency_digits = fields.Function('get_currency_digits',
             type='integer', string='Second Currency Digits')
-    account_kind = fields.Function('get_account_kind', type='selection',
-            string='Account Kind', selection=[
-                ('other', 'Other'),
-                ('payable', 'Payable'),
-                ('revenue', 'Revenue'),
-                ('receivable', 'Receivable'),
-                ('expense', 'Expense'),
-                ('view', 'View'),
-                ])
 
     def __init__(self):
         super(Line, self).__init__()
@@ -718,12 +709,6 @@ class Line(ModelSQL, ModelView):
                         res[name][line.id] = line.account.second_currency.digits
         return res
 
-    def get_account_kind(self, cursor, user, ids, name, arg, context=None):
-        res = {}
-        for line in self.browse(cursor, user, ids, context=context):
-            res[line.id] = line.account.kind
-        return res
-
     def on_change_debit(self, cursor, user, ids, vals, context=None):
         res = {}
         if context is None:
@@ -777,14 +762,12 @@ class Line(ModelSQL, ModelView):
                 if not res['tax_lines']:
                     del res['tax_lines']
 
-        res['account_kind'] = 'other'
         if vals.get('account'):
             account = account_obj.browse(cursor, user, vals['account'],
                     context=context)
             res['currency_digits'] = account.currency_digits
             if account.second_currency:
                 res['second_currency_digits'] = account.second_currency.digits
-            res['account_kind'] = account.kind
         return res
 
     def _compute_tax_lines(self, cursor, user, ids, vals, journal_type,
