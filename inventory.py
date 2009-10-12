@@ -118,9 +118,7 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
                         'inventory': new_id,
                         'move': False,
                         }, context=context)
-            self.complete_lines(cursor, user, new_id,
-                    product_ids=[x.product.id for x in inventory.lines],
-                    context=context)
+            self.complete_lines(cursor, user, new_id, context=context)
             new_ids.append(new_id)
 
         if int_id:
