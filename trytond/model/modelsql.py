@@ -1020,9 +1020,9 @@ class ModelSQL(ModelStorage):
                 if not hasattr(model, 'search') \
                         or not hasattr(model, 'write'):
                     continue
-                model_ids = model.search(cursor, 0, [
-                    (field_name, 'in', sub_ids),
-                    ], context=context)
+                cursor.execute('SELECT id FROM "' + model._table + '" ' \
+                        'WHERE "' + field_name '" IN (' + str_d + ')', sub_ids)
+                model_ids = [x[0] for x in cursor.fetchall()]
                 if model_ids:
                     model.write(cursor, user, model_ids, {
                         field_name: False,
@@ -1032,9 +1032,9 @@ class ModelSQL(ModelStorage):
                 if not hasattr(model, 'search') \
                         or not hasattr(model, 'delete'):
                     continue
-                model_ids = model.search(cursor, 0, [
-                    (field_name, 'in', sub_ids),
-                    ], context=context)
+                cursor.execute('SELECT id FROM "' + model._table + '" ' \
+                        'WHERE "' + field_name '" IN (' + str_d + ')', sub_ids)
+                model_ids = [x[0] for x in cursor.fetchall()]
                 if model_ids:
                     model.delete(cursor, user, model_ids, context=delete_ctx)
 
