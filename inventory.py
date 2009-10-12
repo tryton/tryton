@@ -16,10 +16,6 @@ class CreateInventoriesInit(ModelView):
     company = fields.Many2One('company.company', 'Company', required=True)
     locations = fields.Many2Many('stock.location', None, None,
             'Locations', required=True, domain=[('type', '=', 'storage')])
-    products = fields.Many2Many('product.product', None, None,
-            'Products', domain=[('type', '=', 'stockable')])
-    categories = fields.Many2Many('product.category', None, None,
-            'Categories')
 
     def default_lost_found(self, cursor, user, context=None):
         location_obj = self.pool.get('stock.location')
@@ -62,25 +58,11 @@ class CreateInventories(Wizard):
 
     def _action_create_inventory(self, cursor, user, data, context=None):
         inventory_obj = self.pool.get('stock.inventory')
-        category_obj = self.pool.get('product.category')
-        product_obj = self.pool.get('product.product')
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
 
         inventory_ids = []
         location_ids = data['form']['locations'][0][1] or []
-        product_ids = data['form']['products'][0][1] or []
-        category_ids = data['form']['categories'][0][1] or []
-
-        if category_ids:
-            child_category_ids = category_obj.search(cursor, user,
-                    [('parent', 'child_of', category_ids)], context=context)
-            cat_product_ids = product_obj.search(cursor, user, [
-                ('category', 'in', child_category_ids),
-                ('type', '=', 'stockable'),
-                ], context=context)
-            if cat_product_ids:
-                product_ids += cat_product_ids
 
         for location_id in location_ids:
             inventory_ids.append(inventory_obj.create(cursor, user, {
@@ -91,7 +73,7 @@ class CreateInventories(Wizard):
                 }, context=context))
 
         inventory_obj.complete_lines(cursor, user, inventory_ids,
-            product_ids=product_ids, context=context)
+                context=context)
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_inventory_form'),
