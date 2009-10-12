@@ -1433,7 +1433,7 @@ class InvoiceLine(ModelSQL, ModelView):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('type') == 'line':
             currency = vals.get('_parent_invoice.currency') or vals.get('currency')
-            if isinstance(currency, (int, long)):
+            if isinstance(currency, (int, long)) and currency:
                 currency = currency_obj.browse(cursor, user, currency,
                         context=context)
             amount = Decimal(str(vals.get('quantity') or '0.0')) * \
