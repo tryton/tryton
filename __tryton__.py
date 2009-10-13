@@ -11,25 +11,20 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add a wizard that allows to create automatically inventories for a
-given list of locations. It also allows to filter by product and
-categories of product.
-    ''',
+given list of locations.
+''',
     'description_fr_FR': '''Ajoute un wizard qui permet de créer automatiquement des inventaires
-pour une liste donnée d'emplacements. Il permet aussi de filtrer par
-produit et par catégorie de produit.
+pour une liste donnée d'emplacements.
 ''',
     'description_de_DE': '''Bestandskorrektur für mehrere Lagerorte
     - Fügt einen Wizard hinzu, der automatisch die Lagerbestände für eine Liste
       von Lagerorten erzeugt.
-    - Ermöglicht die Filterung der Auswahl nach Artikel oder Artikelkategorie.
 ''',
     'description_es_ES': '''Añade un asistente que permite crear inventarios
-automáticos para una lista de ubicaciones dada. También permite filtrar por
-producto y categorías de producto.
-    ''',
+automáticos para una lista de ubicaciones dada.
+''',
     'description_es_CO': '''Añade un asistente que permite crear inventarios
-automáticos para una lista dada de ubicaciones.  También permite filtrar
-por producto y categorías de producto.
+automáticos para una lista dada de ubicaciones.
 ''',
     'depends': [
         'ir',
