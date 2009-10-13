@@ -689,6 +689,7 @@ class Line(ModelSQL, ModelView):
                         values['tax_lines'] = [
                             {
                                 'amount': tax_amount,
+                                'currency_digits': line.currency_digits,
                                 'code': code_id,
                                 'code.rec_name': tax_code_obj.browse(cursor,
                                     user, code_id, context=context).rec_name,
@@ -811,6 +812,7 @@ class Line(ModelSQL, ModelView):
                         continue
                     res.setdefault('add', []).append({
                         'amount': base_amounts[code_id],
+                        'currency_digits': account.currency_digits,
                         'code': code_id,
                         'code.rec_name': tax_code_obj.browse(cursor, user,
                             code_id, context=context).rec_name,
