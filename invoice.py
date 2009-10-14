@@ -1279,6 +1279,8 @@ class InvoiceLine(ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', select=1, states={
         'required': "not bool(invoice)",
         })
+    party_lang = fields.Function('get_party_language', type='char',
+            string='Party Language', on_change_with=['party'])
     currency = fields.Many2One('currency.currency', 'Currency', states={
         'required': "not bool(invoice)",
         })
@@ -1432,6 +1434,34 @@ class InvoiceLine(ModelSQL, ModelView):
 
     def default_unit_price(self, cursor, user, context=None):
         return Decimal('0.0')
+
+    def on_change_with_party_lang(self, cursor, user, ids, vals, context=None):
+        party_obj = self.pool.get('party.party')
+        if vals.get('party'):
+            party = party_obj.browse(cursor, user, vals['party'],
+                    context=context)
+            if party.lang:
+                return party.lang.code
+        return 'en_US'
+
+    def get_party_language(self, cursor, user, ids, name, arg, context=None):
+        '''
+        Return the language code of the party of each line
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param ids: the ids of the account.invoice.line
+        :param context: the context
+        :return: a dictionary with account.invoice.line id as key and
+            language code as value
+        '''
+        res = {}
+        for line in self.browse(cursor, user, ids, context=context):
+            if line.party and line.party.lang:
+                res[line.id] = line.party.lang.code
+            else:
+                res[line.id] = 'en_US'
+        return res
 
     def on_change_with_amount(self, cursor, user, ids, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
