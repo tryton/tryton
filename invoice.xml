@@ -735,7 +735,7 @@ this repository contains the full copyright notices and license terms. -->
                             <newline/>
                             <label name="description"/>
                             <field name="description" colspan="3"
-                                spell="_parent_invoice.party_lang"/>
+                                spell="globals().get('_parent_invoice') and _parent_invoice.party_lang or party_lang"/>
                             <label name="quantity"/>
                             <field name="quantity"/>
                             <label name="unit"/>
@@ -750,11 +750,12 @@ this repository contains the full copyright notices and license terms. -->
                         <page string="Notes" id="notes">
                             <separator name="note" colspan="4"/>
                             <field name="note" colspan="4"
-                                spell="_parent_invoice.party_lang"/>
+                                spell="globals().get('_parent_invoice') and _parent_invoice.party_lang or party_lang"/>
                         </page>
                     </notebook>
                     <field name="unit_digits" invisible="1" colspan="4"/>
                     <field name="currency_digits" invisible="1" colspan="4"/>
+                    <field name="party_lang" invisible="1" colspan="4"/>
                 </form>
                 ]]>
             </field>
