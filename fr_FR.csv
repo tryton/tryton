@@ -18,7 +18,7 @@ error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,
 error,account.invoice,0,"You can not create an invoice
 with account from a different invoice company!","Vous ne pouvez pas créer une facture
 avec un compte d'une société de facturation différente !",0
-error,account.invoice,0,"You can not modify an invoice that is open, paid or canceled!","Vous ne pouvez pas modifier une facture qui est ouverte, payée ou annulée !",0
+error,account.invoice,0,"You can not modify an invoice that is opened, paid!",Vous ne pouvez pas modifier une facture qui est ouverte ou payée !,0
 error,account.invoice,0,You can not reset to draft an invoice that has move!,Vous ne pouvez pas remettre en brouillon une facture qui a un mouvement !,0
 error,account.invoice,0,"You can not use the same account
 as on invoice line!","Vous ne pouvez pas utiliser le même compte
@@ -31,7 +31,7 @@ error,account.invoice.line,0,"You can not add a line to an invoice that is open,
 error,account.invoice.line,0,"You can not create invoice line
 with account with a different invoice company!","Vous ne pouvez pas créer de ligne de facture
 avec un compte d'une différente société que celle de la  facture !",0
-error,account.invoice.line,0,"You can not modify line from an invoice that is open, paid or canceled!","Vous ne pouvez pas modifier de ligne d'une facture qui est ouverte, payée our annulée !",0
+error,account.invoice.line,0,"You can not modify line from an invoice that is opened, paid!",Vous ne pouvez pas modifier de ligne d'une facture qui est ouverte ou payée !,0
 error,account.invoice.line,0,"You can not use the same account
 as on the invoice!","Vous ne pouvez pas utilier le même compte
 que celui de la factiure !",0
@@ -41,7 +41,7 @@ error,account.invoice.payment_term,0,Payment term missing a remainder line!,La c
 error,account.invoice.payment_term.line.delay,0,The code must be unique!,Le code doit être unique !,0
 error,account.invoice.payment_term.line.type,0,The code must be unique!,Le code doit être unique !,0
 error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","Vous ne pouvez pas ajouter une ligne à une facture qui est ouverte, payée ou annulée !",0
-error,account.invoice.tax,0,"You can not modify tax from an invoice that is open, paid or canceled!","Vous ne pouvez pas modifier les taxes d'une facture qui est ouverte, payée ou annulée !",0
+error,account.invoice.tax,0,"You can not modify tax from an invoice that is opened, paid!",Vous ne pouvez pas modifier les taxes d'une facture qui est ouverte ou payée !,0
 error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,Vous ne pouvez pas changer la séquence de facture s'il y a déjà une facture ouverte dans la période,0
 error,account.period,0,You must have different invoice sequences per fiscal year and in the same company!,Vous devez avoir des séquences de facture différentes par année fiscale et dans la même société !,0
 field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Séquence des notes de crédit fournisseur,0
@@ -80,6 +80,7 @@ field,"account.invoice.line,invoice_taxes",0,Invoice Taxes,Taxes de le facture,0
 field,"account.invoice.line,invoice_type",0,Invoice Type,Type de facture,0
 field,"account.invoice.line,note",0,Note,Note,0
 field,"account.invoice.line,party",0,Party,Tiers,0
+field,"account.invoice.line,party_lang",0,Party Language,Langue du tiers,0
 field,"account.invoice.line,product",0,Product,Produit,0
 field,"account.invoice.line,quantity",0,Quantity,Quantité,0
 field,"account.invoice.line,rec_name",0,Name,Nom,0
