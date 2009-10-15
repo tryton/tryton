@@ -15,6 +15,12 @@
     'description_de_DE': 'Dient der Erstellung von Artikeln, Artikelkategorien, Maßeinheiten und Kategorien für Maßeinheiten.',
     'description_es_CO': 'Definición de productos, categorías de producto unidades de medida y categorías de unidades de medida',
     'description_es_ES': 'Definición de productos, categorías de producto unidades de medida y categorías de unidades de medida',
+    'description_fr_FR': '''Défini:
+ - Produit
+ - Catégorie de produit
+ - Unité de mesure
+ - Catégorie d'unité de mesure
+''',
     'depends' : [
         'ir',
         'res',
