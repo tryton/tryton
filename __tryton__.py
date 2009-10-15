@@ -3,6 +3,7 @@
 {
     'name': 'Sale Pricelist',
     'name_de_DE': 'Verkauf Preislisten',
+    'name_fr_FR' : 'Listes de prix de vente',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -11,6 +12,8 @@
 ''',
     'description_de_DE': '''Preislisten für Verkauf
     - Ermöglicht die Definition von Preislisten per Partei und Verkauf.
+''',
+    'description_fr_FR': '''Ajoute des listes de prix sur les tiers et sur les ventes.
 ''',
     'depends': [
         'ir',
