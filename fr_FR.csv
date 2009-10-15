@@ -67,12 +67,6 @@ field,"sale.sale,invoices_recreated",0,Recreated Invoices,Factures recréées,0
 field,"sale.sale,invoice_state",0,Invoice State,État de la factutre,0
 field,"sale.sale,lines",0,Lines,Lignes,0
 field,"sale.sale,moves",0,Moves,Mouvements,0
-field,"sale.sale,shipment_address",0,Shipment Address,Adresse de livraison,0
-field,"sale.sale,shipment_done",0,Shipment Done,Expédition effectuée,0
-field,"sale.sale,shipment_exception",0,Shipments Exception,Expéditions en exception,0
-field,"sale.sale,shipment_method",0,Shipment Method,Méthode de livraison,0
-field,"sale.sale,shipments",0,Shipments,Expédition,0
-field,"sale.sale,shipment_state",0,Shipment State,État de l'expédition,0
 field,"sale.sale,party",0,Party,Tiers,0
 field,"sale.sale,party_lang",0,Party Language,Langue du tiers,0
 field,"sale.sale,payment_term",0,Payment Term,Conditions de paiement,0
@@ -82,6 +76,12 @@ field,"sale.sale-recreated-account.invoice,rec_name",0,Name,Nom,0
 field,"sale.sale-recreated-account.invoice,sale",0,Sale,Vente,0
 field,"sale.sale,reference",0,Reference,Référence,0
 field,"sale.sale,sale_date",0,Sale Date,Date de la vente,0
+field,"sale.sale,shipment_address",0,Shipment Address,Adresse de livraison,0
+field,"sale.sale,shipment_done",0,Shipment Done,Expédition effectuée,0
+field,"sale.sale,shipment_exception",0,Shipments Exception,Expéditions en exception,0
+field,"sale.sale,shipment_method",0,Shipment Method,Méthode de livraison,0
+field,"sale.sale,shipments",0,Shipments,Expédition,0
+field,"sale.sale,shipment_state",0,Shipment State,État de l'expédition,0
 field,"sale.sale,state",0,State,État,0
 field,"sale.sale,tax_amount",0,Tax,Taxe,0
 field,"sale.sale,total_amount",0,Total,Total,0
@@ -177,7 +177,7 @@ selection,"sale.line,type",0,Subtotal,Sous-total,0
 selection,"sale.line,type",0,Title,Titre,0
 selection,"sale.sale,invoice_method",0,Manual,Manuel,0
 selection,"sale.sale,invoice_method",0,On Order Confirmed,A la confirmation de la commande,0
-selection,"sale.sale,invoice_method",0,On Shipment Sent,A la livraison,0
+selection,"sale.sale,invoice_method",0,On Shipment Sent,À la livraison,0
 selection,"sale.sale,invoice_state",0,Exception,Exception,0
 selection,"sale.sale,invoice_state",0,None,Aucun,0
 selection,"sale.sale,invoice_state",0,Paid,Payé,0

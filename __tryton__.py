@@ -72,18 +72,18 @@ Ermöglicht:
         - Contra el Pago de la Factura
 ''',
     'description_fr_FR': '''Défini l'ordre de vente.
-Ajoute au produit les information de vente.
+Ajoute au produit les informations de vente.
 
 Avec la possibilité:
-    ' de suivre l'état de la facture et du colisage depuis l'ordre de vente
-    ' de choisir entre plusieurs méthodes de facturation:
-        ' Manuelle
-        ' Sur confirmation de la commande
-        ' À la livraison
-    ' de choisir entre plusieurs méthodes de colisage:
-        ' Manuel
-        ' Sur confirmation de la commande
-        ' Au paiement de la facture
+    - de suivre l'état de la facture et du colisage depuis l'ordre de vente
+    - de choisir entre plusieurs méthodes de facturation:
+        - Manuelle
+        - Sur confirmation de la commande
+        - À la livraison
+    - de choisir entre plusieurs méthodes de colisage:
+        - Manuelle
+        - Sur confirmation de la commande
+        - Au paiement de la facture
 ''',
     'depends': [
         'company',
