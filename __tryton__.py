@@ -22,7 +22,7 @@ type, company, currency and party.
 ''',
     "description_fr_FR": '''Permet de créer des lignes de facture autonomes et de les ajouter
 ensuite à des factures dans l'état brouillon. La facture n'acceptera
-que des lignes qui ont les même type, compagnie, devis et tiers.
+que des lignes qui ont les même type, société, devis et tiers.
 ''',
     "description_es_CO": '''Permite crear líneas individuales para facturación y añadirlas
 posteriormente a una factura en borrador. La factuara aceptará únicamente líneas de factura del
