@@ -259,6 +259,7 @@ class Screen(SignalEvent):
             if self.current_view.view_type == 'form':
                 self.new()
         self.current_view.set_cursor()
+        self.current_view.cancel()
         self.display()
         # TODO: set True or False accoring to the type
 

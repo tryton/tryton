@@ -222,3 +222,6 @@ class WidgetInterface(object):
 
     def set_value(self, model, model_field):
         pass
+
+    def cancel(self):
+        pass

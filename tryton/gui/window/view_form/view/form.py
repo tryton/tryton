@@ -169,7 +169,9 @@ class ViewForm(ParserView):
         del self.buttons
 
     def cancel(self):
-        pass
+        for widgets in self.widgets.values():
+            for widget in widgets:
+                widget.widget.cancel()
 
     def set_value(self):
         model = self.screen.current_model
