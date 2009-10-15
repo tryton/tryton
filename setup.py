@@ -16,7 +16,7 @@ major_version, minor_version, _ = info.get('version', '0.0.1').split('.', 2)
 requires.append('trytond >= %s.%s' % (major_version, minor_version))
 requires.append('trytond < %s.%s' % (major_version, int(minor_version) + 1))
 
-setup(name='trytond_ldap_authentification',
+setup(name='trytond_ldap_authentication',
     version=info.get('version', '0.0.1'),
     description=info.get('description', ''),
     author=info.get('author', ''),
@@ -24,12 +24,12 @@ setup(name='trytond_ldap_authentification',
     url=info.get('website', ''),
     download_url="http://downloads.tryton.org/" + \
             info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
-    package_dir={'trytond.modules.ldap_authentification': '.'},
+    package_dir={'trytond.modules.ldap_authentication': '.'},
     packages=[
-        'trytond.modules.ldap_authentification',
+        'trytond.modules.ldap_authentication',
     ],
     package_data={
-        'trytond.modules.ldap_authentification': info.get('xml', []) \
+        'trytond.modules.ldap_authentication': info.get('xml', []) \
                 + info.get('translation', []),
     },
     classifiers=[
@@ -53,6 +53,6 @@ setup(name='trytond_ldap_authentification',
     zip_safe=False,
     entry_points="""
     [trytond.modules]
-    ldap_authentification = trytond.modules.ldap_authentification
+    ldap_authentication = trytond.modules.ldap_authentication
     """,
 )

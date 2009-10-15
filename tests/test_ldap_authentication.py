@@ -13,26 +13,26 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK, test_view
 
 
-class LDAPAuthentificationTestCase(unittest.TestCase):
+class LDAPAuthenticationTestCase(unittest.TestCase):
     '''
-    Test LDAPAuthentification module.
+    Test LDAPAuthentication module.
     '''
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('ldap_authentification')
+        trytond.tests.test_tryton.install_module('ldap_authentication')
 
     def test0005views(self):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('ldap_authentification'))
+        self.assertRaises(Exception, test_view('ldap_authentication'))
 
 def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(LDAPAuthentificationTestCase)
+    return unittest.TestLoader().loadTestsFromTestCase(LDAPAuthenticationTestCase)
 
 if __name__ == '__main__':
     suiteTrytond = trytond.tests.test_tryton.suite()
-    suiteLDAPAuthentification = suite()
-    alltests = unittest.TestSuite([suiteTrytond, suiteLDAPAuthentification])
+    suiteLDAPAuthentication = suite()
+    alltests = unittest.TestSuite([suiteTrytond, suiteLDAPAuthentication])
     unittest.TextTestRunner(verbosity=2).run(alltests)
     SOCK.disconnect()

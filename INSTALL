@@ -1,5 +1,5 @@
-Installing trytond_ldap_authentification
-==================================
+Installing trytond_ldap_authentication
+======================================
 
 Prerequisites
 -------------
@@ -11,7 +11,7 @@ Prerequisites
 Installation
 ------------
 
-Once you've downloaded and unpacked the trytond_ldap_authentification source release, enter the
+Once you've downloaded and unpacked the trytond_ldap_authentication source release, enter the
 directory where the archive was unpacked, and run:
 
     python setup.py install
@@ -27,4 +27,4 @@ documentation:
   http://docs.python.org/inst/inst.html
 
 To use without installation, extract the archive into ``trytond/modules`` with
-the directory name ldap_authentification.
+the directory name ldap_authentication.

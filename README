@@ -1,7 +1,7 @@
-trytond_ldap_authentification
-=======================
+trytond_ldap_authentication
+===========================
 
-The ldap_authentification module of the Tryton application platform.
+The ldap_authentication module of the Tryton application platform.
 See __tryton__.py
 
 Installing
