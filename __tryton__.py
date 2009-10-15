@@ -5,7 +5,7 @@
     'name_de_DE': 'Unternehmen',
     'name_es_CO': 'Compañía',
     'name_es_ES': 'Compañía',
-    'name_fr_FR': 'Compagnie',
+    'name_fr_FR': 'Société',
     'version': '1.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -38,12 +38,12 @@ Make the scheduler run on each companies.
  - Añade plantilla de carta a un tercero.
  - Se ejecuta el agendador por compañía.
 ''',
-    'description_fr_FR': '''Defini compagnie et employé.
-Ajoute les compagnies principale et courante dans les préférences de l'utilisateur.
-Ajoute la compagnie sur les propriétés.
-Défini un nouveau moteur de rapport gérant une entête par compagnie.
+    'description_fr_FR': '''Défini société et employé.
+Ajoute les sociétés principale et courante dans les préférences de l'utilisateur.
+Ajoute la société sur les propriétés.
+Défini un nouveau moteur de rapport gérant une entête par société.
 Ajoute un canva de lettre par tiers.
-Lance les planificateurs sur chaque compagnie.
+Lance les planificateurs sur chaque société.
 ''',
     'depends': [
         'ir',
