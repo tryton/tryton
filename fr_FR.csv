@@ -156,7 +156,7 @@ field,"account.account.type.template,name",0,Name,Nom,0
 field,"account.account.type.template,parent",0,Parent,Parent,0
 field,"account.account.type.template,rec_name",0,Name,Nom,0
 field,"account.account.type.template,sequence",0,Sequence,Séquence,0
-field,"account.account.update_chart_account.init,account",0,Account,Compte,0
+field,"account.account.update_chart_account.init,account",0,Root Account,Compte racine,0
 field,"account.fiscalyear-account.move.line,fiscalyear",0,Fiscal Year,Année fiscale,0
 field,"account.fiscalyear-account.move.line,line",0,Line,Ligne,0
 field,"account.fiscalyear-account.move.line,rec_name",0,Name,Nom,0
@@ -282,6 +282,7 @@ field,"account.tax,credit_note_base_code",0,Credit Note Base Code,Code base note
 field,"account.tax,credit_note_base_sign",0,Credit Note Base Sign,Signe base note de crédit,0
 field,"account.tax,credit_note_tax_code",0,Credit Note Tax Code,Code taxe note de crédit,0
 field,"account.tax,credit_note_tax_sign",0,Credit Note Tax Sign,Signe taxe note de crédit,0
+field,"account.tax,currency_digits",0,Currency Digits,Décimales de la devise,0
 field,"account.tax,description",0,Description,Description,0
 field,"account.tax,group",0,Group,Groupe,0
 field,"account.tax.group,code",0,Code,Code,0
@@ -294,6 +295,7 @@ field,"account.tax,invoice_tax_code",0,Invoice Tax Code,Code de taxe de facture,
 field,"account.tax,invoice_tax_sign",0,Invoice Tax Sign,Signe de taxe de facture,0
 field,"account.tax.line,amount",0,Amount,Montant,0
 field,"account.tax.line,code",0,Code,Code,0
+field,"account.tax.line,currency_digits",0,Currency Digits,Décimales de la devise,0
 field,"account.tax.line,move_line",0,Move Line,Ligne de mouvement,0
 field,"account.tax.line,rec_name",0,Name,Nom,0
 field,"account.tax,name",0,Name,Nom,0
@@ -305,6 +307,7 @@ field,"account.tax,percentage",0,Percentage,Pourcentage,0
 field,"account.tax,rec_name",0,Name,Nom,0
 field,"account.tax.rule,company",0,Company,Société,0
 field,"account.tax.rule.line,group",0,Tax Group,Groupe de taxe,0
+field,"account.tax.rule.line,origin_tax",0,Original Tax,Taxe d'origine,0
 field,"account.tax.rule.line,rec_name",0,Name,Nom,0
 field,"account.tax.rule.line,rule",0,Rule,Règle,0
 field,"account.tax.rule,lines",0,Lines,Lignes,0
@@ -312,6 +315,7 @@ field,"account.tax.rule.line,sequence",0,Sequence,Séquence,0
 field,"account.tax.rule.line,tax",0,Substitution Tax,Taxe de substitution,0
 field,"account.tax.rule.line,template",0,Template,Modèle,0
 field,"account.tax.rule.line.template,group",0,Tax Group,Groupe de taxe,0
+field,"account.tax.rule.line.template,origin_tax",0,Original Tax,Taxe d'origine,0
 field,"account.tax.rule.line.template,rec_name",0,Name,Nom,0
 field,"account.tax.rule.line.template,rule",0,Rule,Règle,0
 field,"account.tax.rule.line.template,sequence",0,Sequence,Séquence,0
@@ -365,9 +369,8 @@ help,"account.account.print_general_ledger.init,empty_account",0,With account wi
 help,"account.account.print_general_ledger.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
 help,"account.account.print_trial_balance.init,empty_account",0,With account without move,Avec compte sans mouvement,0
 help,"account.account.print_trial_balance.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
-help,"account.account,reconcile",0,"Check if the account can be used 
-for reconciliation.","Cocher si le compte peut être utilisé
-pour la réconciliation.",0
+help,"account.account,reconcile",0,"Allow move lines of this account 
+to be reconciled.",Autoriser la réconciliation des ligne de mouvement de ce compte.,0
 help,"account.account,second_currency",0,"Force all moves for this account 
 to have this secondary currency.","Force tout les mouvements pour ce compte
 à avoir cette devise secondaire.",0
@@ -394,6 +397,8 @@ help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax.open_chart_code.init,fiscalyear",0,Leave empty for all open fiscal year,Laisser vide pour toutes les années fiscales ouvertes,0
 help,"account.tax.open_chart_code.init,periods",0,Leave empty for all periods of all open fiscal year,Laisser vide pour toutes les périodes de toutes les années fiscales ouvertes,0
 help,"account.tax,percentage",0,In %,En %,0
+help,"account.tax.rule.line,origin_tax",0,"If the original tax is filled, the rule will be applied only for this tax.","Si la taxe d'origine est spécifiée, la règle ne sera appliquée que sur celle-ci.",0
+help,"account.tax.rule.line.template,origin_tax",0,"If the original tax template is filled, the rule will be applied only for this tax template.","Si le modèle de  taxe d'origine est spécifié, la règle ne sera appliquée que sur celui-ci.",0
 help,"account.tax,sequence",0,Use to order the taxes,Utilisé pour trier les taxes,0
 help,"party.party,customer_tax_rule",0,Apply this rule on taxes when party is customer.,Appliquer cette règle sur les taxes si le tiers est un client.,0
 help,"party.party,supplier_tax_rule",0,Apply this rule on taxes when party is supplier.,Appliquer cette règle sur les taxes si le tiers est un fournisseur.,0
@@ -438,6 +443,7 @@ model,"account.account.type.template,name",account_type_template_asset_current_r
 model,"account.account.type.template,name",account_type_template_revenue,Revenue,Produit,0
 model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Taxe,0
 model,"account.account.update_chart_account.init,name",0,Update Chart Account from Template Init,Mise à jour du plan comptable depuis le modèle - Initialisation,0
+model,"account.account.update_chart_account.start,name",0,Update Chart Account from Template Start,Mise à jour du plan comptable depuis le modèle - Début,0
 model,"account.fiscalyear-account.move.line,name",0,Fiscal Year - Move Line,Année fiscale - Ligne de mouvement,0
 model,"account.fiscalyear.close_fiscalyear.init,name",0,Close Fiscal Year Init,Fermer l'année fiscale - Init,0
 model,"account.fiscalyear,name",0,Fiscal Year,Année fiscale,0
@@ -544,13 +550,13 @@ model,"ir.ui.menu,name",menu_account_tree,Accounts,Comptes,0
 model,"ir.ui.menu,name",menu_account_template_tree,Account Templates,Modèles de compte,0
 model,"ir.ui.menu,name",menu_account_type_form,Account Types,Types de compte,0
 model,"ir.ui.menu,name",menu_account_type_tree,Account Types,Types de compte,0
-model,"ir.ui.menu,name",menu_account_type_template_tree,Account Type Templates,Types de comptes modèles,0
+model,"ir.ui.menu,name",menu_account_type_template_tree,Account Type Templates,Modèles de types de comptes,0
 model,"ir.ui.menu,name",menu_aged_balance,Aged Balance,Balance âgée,0
 model,"ir.ui.menu,name",menu_open_balance_sheet,Balance Sheet,Bilan,0
 model,"ir.ui.menu,name",menu_charts,Charts,Plans,0
 model,"ir.ui.menu,name",menu_close_fiscalyear,Close Fiscal Year,Clôturer l'année fiscale,0
-model,"ir.ui.menu,name",menu_journal_period_form,Close Journals - Periods,Journaux - périodes clôturés,0
-model,"ir.ui.menu,name",menu_period_form2,Close Periods,Périodes clôturées,0
+model,"ir.ui.menu,name",menu_journal_period_form,Close Journals - Periods,Fermer Journaux - périodes,0
+model,"ir.ui.menu,name",menu_period_form2,Close Periods,Clôturer Périodes,0
 model,"ir.ui.menu,name",menu_account_configuration,Configuration,Configuration,0
 model,"ir.ui.menu,name",menu_create_chart_account,Create Chart of Account from Template,Créer un plan comptable à partir d'un modèle,0
 model,"ir.ui.menu,name",menu_entries,Entries,Entrées,0
@@ -738,7 +744,9 @@ view,account.account.type,0,Income Statement,Compte de résultat,0
 view,account.account.type.template,0,Account Types Templates,Modèles de type de compte,0
 view,account.account.type.template,0,Account Type Template,Modèle de type de compte,0
 view,account.account.update_chart_account.init,0,Update Chart of Account,Mise à jour du plan comptable,0
-view,account.fiscalyear,0,Are you sure to close fiscal year?,Etes-vous sûr de clore l'année fiscale?,0
+view,account.account.update_chart_account.start,0,Update Chart of Account,Mise à jour du plan comptable,0
+view,account.account.update_chart_account.start,0,Update Chart of Account Succeed!,La mise à jour du plan comptable a réussi !,0
+view,account.fiscalyear,0,Are you sure to close fiscal year?,Etes-vous sûr de clôturer l'année fiscale?,0
 view,account.fiscalyear,0,Close,Fermer,0
 view,account.fiscalyear,0,Close Fiscal Year,Fermer l'année fiscale,0
 view,account.fiscalyear,0,Create 3 Months Periods,Créer des périodes de 3 mois,0
@@ -838,7 +846,9 @@ wizard_button,"account.account.print_general_ledger,init,print",0,Print,Imprimer
 wizard_button,"account.account.print_trial_balance,init,end",0,Cancel,Annuler,0
 wizard_button,"account.account.print_trial_balance,init,print",0,Print,Imprimer,0
 wizard_button,"account.account.update_chart_account,init,end",0,Cancel,Annuler,0
+wizard_button,"account.account.update_chart_account,init,start",0,Ok,Ok,0
 wizard_button,"account.account.update_chart_account,init,update_account",0,Ok,Ok,0
+wizard_button,"account.account.update_chart_account,start,end",0,Ok,Ok,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Clôturer,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,end",0,Cancel,Annuler,0
 wizard_button,"account.move.open_journal,ask,end",0,Cancel,Annuler,0
