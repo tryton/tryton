@@ -3,6 +3,7 @@
 {
     'name': 'Product Price List',
     'name_de_DE' : 'Artikel Preisliste',
+    'name_fr_FR' : 'Liste de prix produit',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -11,6 +12,7 @@
     'description_de_DE' : '''Preislisten für Artikel
     - Ermöglicht die Definition von Preislisten für Parteien.
 ''',
+    'description_fr_FR' : '''Défini des listes de prix par tiers''',
     'depends': [
         'ir',
         'product',
