@@ -65,7 +65,7 @@ model,"ir.action,name",act_category_tree,Categories,Catégories,0
 model,"ir.action,name",act_category_form,Categories,Catégories,0
 model,"ir.action,name",act_category_form2,Categories,Catégories,0
 model,"ir.action,name",wizard_check_vies,Check VIES,Validation VIES,0
-model,"ir.action,name",report_label,La_bels,É_tiquettes,0
+model,"ir.action,name",report_label,Labels,Étiquettes,0
 model,"ir.action,name",act_party_form,Parties,Tiers,0
 model,"ir.action,name",act_party_form2,Parties,Tiers,0
 model,"ir.action,name",act_party_by_category,Parties by Category,Tiers par catégorie,0
