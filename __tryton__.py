@@ -4,6 +4,7 @@
     'name': 'Project Plan',
     'name_de_DE': 'Projekte Planung',
     'name_es_CO': 'Planeación de Proyectos',
+    'name_fr_FR': 'Planification de projet',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -14,6 +15,8 @@
     - Fügt Planungsmöglichkeiten für Projekte hinzu
 ''',
     'description_es_CO': '''Añadir posibilidad de planeación de proyectos.
+''',
+    'description_fr_FR': '''Ajoute des fonctionnalités de planification à la gestion de projet.
 ''',
     'depends': [
         'ir',
