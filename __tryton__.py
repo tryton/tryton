@@ -14,7 +14,7 @@
 Theses locations will be used by the supplier shipment for generating
 inventory moves.
 ''',
-    "description_fr_FR": '''Defini un emplacement Magasin par défaut par produit.
+    "description_fr_FR": '''Defini un emplacement de rangement par défaut par produit.
 Ces emplacements seront utilisés par les colisages fournisseurs pour
 générer les mouvements internes.
 ''',
