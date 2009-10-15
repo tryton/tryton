@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Belgium',
+    'name_fr_FR': 'Comptabilité belge',
     'version': '1.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -10,6 +11,8 @@
     'description': '''Define an account chart template for Belgium.
 Usefull to create a Belgium account chart with the wizard in
 "Financial Management>Configuration>General Account>Create Chart of Account from Template".
+''',
+    'description_fr_FR': '''Défini le plan comptable pour la Belgique.
 ''',
     'depends': [
         'account',
