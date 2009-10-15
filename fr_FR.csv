@@ -1,5 +1,5 @@
 type,name,res_id,src,value,fuzzy
-error,product.template,0,There is no account expense/revenue defined on the product %s (%d),Il n'y a pas de compte charge/produit définit sur le produit %s (%d),0
+error,product.template,0,There is no account expense/revenue defined on the product %s (%d),Il n'y a pas de compte charges/produits définit sur le produit %s (%d),0
 field,"product.category,account_expense",0,Account Expense,Compte de charges,0
 field,"product.category,account_revenue",0,Account Revenue,Compte de produits,0
 field,"product.category-customer-account.tax,product",0,Category,Catégorie,0
@@ -30,10 +30,10 @@ help,"product.template,account_category",0,Use the accounts defined on the categ
 help,"product.template,account_expense",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,0
 help,"product.template,account_revenue",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,0
 help,"product.template,taxes_category",0,Use the taxes defined on the category,Utiliser les taxes de la catégorie,0
-model,"product.category-customer-account.tax,name",0,Category - Customer Tax,Catégorie - Tax client,0
-model,"product.category-supplier-account.tax,name",0,Category - Supplier Tax,Catégorie - Tax fournisseur,0
-model,"product.template-customer-account.tax,name",0,Product Template - Customer Tax,Modèle du produit - Tax client,0
-model,"product.template-supplier-account.tax,name",0,Product Template - Supplier Tax,Modèle du produit - Tax fournisseur,0
+model,"product.category-customer-account.tax,name",0,Category - Customer Tax,Catégorie - Taxe client,0
+model,"product.category-supplier-account.tax,name",0,Category - Supplier Tax,Catégorie - Taxe fournisseur,0
+model,"product.template-customer-account.tax,name",0,Product Template - Customer Tax,Modèle du produit - Taxe client,0
+model,"product.template-supplier-account.tax,name",0,Product Template - Supplier Tax,Modèle du produit - Taxe fournisseur,0
 view,product.category,0,Accounting,Comptabilité,0
 view,product.product,0,Accounting,Comptabilité,0
 view,product.template,0,Accounting,Comptabilité,0
