@@ -155,3 +155,6 @@ class Many2Many(WidgetInterface):
 
     def set_value(self, model, model_field):
         model_field.set_client(model, [x.id for x in self.screen.models.models])
+
+    def cancel(self):
+        self.old = None
