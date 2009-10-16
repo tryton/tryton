@@ -39,8 +39,11 @@ class User(ModelSQL, ModelView):
         else:
             filter = '(%s=%s)' % (connection.auth_uid, login)
 
-        return con.search_s(connection.auth_base_dn or '', scope,
+        result = con.search_s(connection.auth_base_dn or '', scope,
                     filter, attrs)
+        if connection.active_directory:
+            result = [x for x in result if x[0]]
+        return result
 
     def _check_passwd_ldap_user(self, cursor, user, logins, context=None):
         connection_obj = self.pool.get('ldap.connection')
@@ -51,6 +54,8 @@ class User(ModelSQL, ModelView):
         find = False
         try:
             con = ldap.initialize(connection.uri)
+            if connection.active_directory:
+                con.set_option(ldap.OPT_REFERRALS, 0)
             if connection.secure == 'tls':
                 con.start_tls_s()
             if connection.bind_dn:
@@ -93,6 +98,8 @@ class User(ModelSQL, ModelView):
                     context=context)
             try:
                 con = ldap.initialize(connection.uri)
+                if connection.active_directory:
+                    con.set_option(ldap.OPT_REFERRALS, 0)
                 if connection.secure == 'tls':
                     con.start_tls_s()
                 if connection.bind_dn:
@@ -121,6 +128,8 @@ class User(ModelSQL, ModelView):
                 context=context)
         try:
             con = ldap.initialize(connection.uri)
+            if connection.active_directory:
+                con.set_option(ldap.OPT_REFERRALS, 0)
             if connection.secure == 'tls':
                 con.start_tls_s()
             if connection.bind_dn:
