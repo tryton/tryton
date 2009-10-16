@@ -99,8 +99,8 @@ class User(ModelSQL, ModelView):
                     con.simple_bind_s(connection.bind_dn, connection.bind_pass)
                 user = self.browse(cursor, user_id, user_id, context=context)
                 [(dn, attrs)] = self.ldap_search_user(cursor, user_id,
-                        user.login, con, connection, attrs=['cn'],
-                        context=context)
+                        user.login, con, connection,
+                        attrs=[str(connection.auth_uid)], context=context)
                 if con.simple_bind_s(dn, old_password):
                     con.passwd_s(dn, old_password, values['password'])
                     values = values.copy()
@@ -126,7 +126,8 @@ class User(ModelSQL, ModelView):
             if connection.bind_dn:
                 con.simple_bind_s(connection.bind_dn, connection.bind_pass)
             [(dn, attrs)] = self.ldap_search_user(cursor, user, login,
-                    con, connection, attrs=['cn'], context=context)
+                    con, connection, attrs=[str(connection.auth_uid)],
+                    context=context)
             if con.simple_bind_s(dn, password):
                 user_id, _, _ = self._get_login(cursor, user, login,
                         context=context)
@@ -134,7 +135,7 @@ class User(ModelSQL, ModelView):
                     return user_id
                 elif connection.auth_create_user:
                     user_id = self.create(cursor, 0, {
-                        'name': attrs.get('cn', [login])[0],
+                        'name': attrs.get(str(connection.auth_uid), [login])[0],
                         'login': login,
                         }, context=context)
                     return user_id
