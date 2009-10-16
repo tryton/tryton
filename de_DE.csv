@@ -27,8 +27,6 @@ field,"product.product,quantity",0,Quantity,Anzahl,0
 field,"product.template,forecast_quantity",0,Forecast Quantity,Voraussichtliche Anzahl,0
 field,"product.template,quantity",0,Quantity,Anzahl,0
 field,"stock.inventory,company",0,Company,Unternehmen,0
-field,"stock.inventory.complete.init,categories",0,Categories,Kategorien,0
-field,"stock.inventory.complete.init,products",0,Products,Artikel,0
 field,"stock.inventory,date",0,Date,Datum,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Erwartete Anzahl,0
 field,"stock.inventory.line,inventory",0,Inventory,Lagerbestand,0
@@ -228,7 +226,6 @@ model,"ir.ui.menu,name",menu_shipment_in_return_form,Supplier Return Shipments,W
 model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"res.group,name",group_stock,Stock,Lager,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administration Lagerverwaltung,0
-model,"stock.inventory.complete.init,name",0,Complete Inventory Init,Lagerbestand Komplettieren Init,0
 model,"stock.inventory.line,name",0,Stock Inventory Line,Lager Lagerbestand Position,0
 model,"stock.inventory,name",0,Stock Inventory,Lager Lagerbestand,0
 model,"stock.location,name",location_customer,Customer,Kunde,0
@@ -243,7 +240,7 @@ model,"stock.location_stock_date.init,name",0,Compute stock quantities,Berechnun
 model,"stock.move,name",0,Stock Move,Lager Bewegung,0
 model,"stock.product_stock_date.init,name",0,Compute stock quantities,Berechnung Lagerbestände,0
 model,"stock.shipment.in,name",0,Supplier Shipment,Lieferant Lieferposten,0
-model,"stock.shipment.in.return.assign.ask_force,name",0,Assign Supplier Return Shipment Ask Force,Zuweisung Lieferpsoten Warenrückgabe Erzwungen,0
+model,"stock.shipment.in.return.assign.ask_force,name",0,Assign Supplier Return Shipment Ask Force,Zuweisung Lieferposten Warenrückgabe Erzwungen,0
 model,"stock.shipment.in.return,name",0,Supplier Return Shipment,Warenrückgabe Lieferant,0
 model,"stock.shipment.internal.assign.ask_force,name",0,Assign Shipment Internal Ask Force,Zuweisung Lieferposten Intern Erzwungen,0
 model,"stock.shipment.internal,name",0,Internal Shipment,Interner Lieferposten,0
@@ -394,9 +391,6 @@ view,stock.inventory,0,Confirm,Bestätigen,0
 view,stock.inventory,0,Inventories,Bestandskorrekturen,0
 view,stock.inventory,0,Inventory,Lagerbestand,0
 view,stock.inventory,0,Re-Open,Wiedereröffnen,0
-view,stock.inventory.complete.init,0,Categories,Kategorien,0
-view,stock.inventory.complete.init,0,Complete Inventory,Lagerbestandspositionen komplettieren,0
-view,stock.inventory.complete.init,0,Products,Artikel,0
 view,stock.inventory.line,0,Inventory Line,Position Bestand,0
 view,stock.inventory.line,0,Inventory Lines,Positionen Bestand,0
 view,stock.location,0,Location,Lagerort,0
@@ -472,8 +466,6 @@ view,stock.shipment.out.return,0,Inventory Moves,Bestandsänderungen,0
 view,stock.shipment.out.return,0,Moves,Bewegungen,0
 view,stock.shipment.out.return,0,Received,Erhalten,0
 view,stock.shipment.out.return,0,Reset to Draft,Auf Entwurf zurücksetzen,0
-wizard_button,"stock.inventory.complete,init,complete",0,Complete,Komplettieren,0
-wizard_button,"stock.inventory.complete,init,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.location.open,init,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.location.open,init,open",0,Open,Öffnen,0
 wizard_button,"stock.product.open,init,end",0,Cancel,Abbrechen,0
