@@ -953,7 +953,7 @@ this repository contains the full copyright notices and license terms. -->
                 id="shipmentout_trans_waiting_assigned_force">
             <field name="act_from" ref="shipmentout_act_waiting"/>
             <field name="act_to" ref="shipmentout_act_assigned"/>
-            <field name="group" ref="group_stock"/>
+            <field name="group" ref="group_stock_force_assignment"/>
             <field name="signal">force_assign</field>
             <field name="condition">assign_force()</field>
         </record>
@@ -1165,7 +1165,7 @@ this repository contains the full copyright notices and license terms. -->
                 id="shipmentinternal_trans_waiting_assigned_force">
             <field name="act_from" ref="shipmentinternal_act_waiting"/>
             <field name="act_to" ref="shipmentinternal_act_assigned"/>
-            <field name="group" ref="group_stock"/>
+            <field name="group" ref="group_stock_force_assignment"/>
             <field name="signal">force_assign</field>
             <field name="condition">assign_force()</field>
         </record>
@@ -1337,7 +1337,7 @@ this repository contains the full copyright notices and license terms. -->
                 id="shipment_in_return_trans_waiting_assigned_force">
             <field name="act_from" ref="shipment_in_return_act_waiting"/>
             <field name="act_to" ref="shipment_in_return_act_assigned"/>
-            <field name="group" ref="group_stock"/>
+            <field name="group" ref="group_stock_force_assignment"/>
             <field name="signal">force_assign</field>
             <field name="condition">assign_force()</field>
         </record>

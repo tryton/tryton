@@ -1,3 +1,4 @@
+* Add new group "Stock Force Assignment"
 * Migrate packing* objects and tables to shipment*
 * Return move id in create_move of inventory line
 

@@ -9,8 +9,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_stock">
             <field name="name">Stock</field>
         </record>
+        <record model="res.group" id="group_stock_force_assignment">
+            <field name="name">Stock Force Assignment</field>
+        </record>
         <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_stock_admin')), ('add', ref('group_stock'))]"/>
+            <field name="groups" eval="[('add', ref('group_stock_admin')), ('add', ref('group_stock')), ('add', ref('group_stock_force_assignment'))]"/>
         </record>
 
         <menuitem name="Inventory Management" sequence="3" id="menu_stock"
