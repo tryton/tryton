@@ -30,7 +30,7 @@ field,"stock.forecast,to_date",0,To Date,Bis Datum,0
 model,"ir.action,name",wizard_forecast_complete,Complete Forecast,Bedarfsermittlung durchführen,0
 model,"ir.action,name",act_forecast_form,Forecasts,Bedarfsermittlung,0
 model,"ir.ui.menu,name",menu_forecast_form,Forecasts,Bedarfsermittlung,0
-model,"res.group,name",group_stock_forecast,Stock Forecast,Bedarfsermittlung Lagerhaltung,0
+model,"res.group,name",group_stock_forecast,Stock Forecast,Lager Bedarfsermittlung,0
 model,"stock.forecast.complete.ask,name",0,Forecast Complete Ask,Bedarfsermittlung Durchführen Nachfrage,0
 model,"stock.forecast.complete.choose,name",0,Forecast Complete Choose,Bedarfsermittlung Durchführen Auswahl,0
 model,"stock.forecast.line,name",0,Stock Forecast Line,Position Bedarfsermittlung Lagerhaltung,0
