@@ -3,6 +3,7 @@
 {
     'name': 'LDAP Authentication',
     'name_de_DE' : 'LDAP Authentifizierung',
+    'name_fr_FR': 'Authentification LDAP',
     'version': '1.3.0',
     'author': 'B2CK, Josh Dukes & Udo Spallek',
     'email': 'info@b2ck.com',
@@ -11,6 +12,7 @@
     'description_de_DE' : '''Authentifizierung über LDAP
     - Fügt Unterstützung für Authentifizierung über einen LDAP-Server hinzu.
 ''',
+    'description': '''Authentification des utilisateurs via un serveur LDAP.''',
     'depends': [
         'ir',
         'res',
