@@ -88,7 +88,7 @@ model,"ir.ui.menu,name",menu_analytic_account_configuration,Analytic Account,Kos
 model,"ir.ui.menu,name",menu_account_form,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_account_tree,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Analytic Accounts,Kostenstellenplan öffnen,0
-model,"res.group,name",group_analytic_admin,Analytic Administration,Administration Kostenstellen,0
+model,"res.group,name",group_analytic_admin,Analytic Administration,Kostenstellen Administration,0
 selection,"account.statement,state",0,Canceled,Annulliert,0
 selection,"account.statement,state",0,Draft,Entwurf,0
 selection,"account.statement,state",0,Posted,Festgeschrieben,0
