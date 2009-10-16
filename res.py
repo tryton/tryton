@@ -14,7 +14,7 @@ class User(ModelSQL, ModelView):
                     'You can not set a password to a ldap user!',
             })
 
-    def ldap_search_user(self, cursor, user, login, con, connection=None,
+    def ldap_search_user(self, cursor, user, login, con, connection,
             attrs=None, context=None):
         '''
         Return the resule of a ldap search for the login
@@ -57,8 +57,7 @@ class User(ModelSQL, ModelView):
                 con.simple_bind_s(connection.bind_dn, connection.bind_pass)
             for login in logins:
                 if self.ldap_search_user(cursor, user, login,
-                        con, connection=connection, attrs=[],
-                        context=context):
+                        con, connection, attrs=[], context=context):
                     find = True
         except:
             pass
@@ -100,7 +99,7 @@ class User(ModelSQL, ModelView):
                     con.simple_bind_s(connection.bind_dn, connection.bind_pass)
                 user = self.browse(cursor, user_id, user_id, context=context)
                 [(dn, attrs)] = self.ldap_search_user(cursor, user_id,
-                        user.login, con, connection=connection, attrs=['cn'],
+                        user.login, con, connection, attrs=['cn'],
                         context=context)
                 if con.simple_bind_s(dn, old_password):
                     con.passwd_s(dn, old_password, values['password'])
@@ -127,7 +126,7 @@ class User(ModelSQL, ModelView):
             if connection.bind_dn:
                 con.simple_bind_s(connection.bind_dn, connection.bind_pass)
             [(dn, attrs)] = self.ldap_search_user(cursor, user, login,
-                    con, connection=connection, attrs=['cn'], context=context)
+                    con, connection, attrs=['cn'], context=context)
             if con.simple_bind_s(dn, password):
                 user_id, _, _ = self._get_login(cursor, user, login,
                         context=context)
