@@ -4,7 +4,7 @@
     'name': 'Timesheet',
     'name_de_DE': 'Zeiterfassung',
     'name_es_CO': 'Hoja de Asistencia',
-    'name_es_ES': 'Hoja de Asistencia',
+    'name_es_ES': 'Partes de trabajo',
     'name_fr_FR': 'Feuille de présence',
     'version': '0.0.1',
     'author': 'B2CK',
@@ -37,14 +37,14 @@ Y con reportes de:
     - Horas por empleado por semana
     - Horas por empleado por mes
 ''',
-    'description_es_ES': '''Módulo de Hoja de Asistencia con:
+    'description_es_ES': '''Módulo de partes de trabajo con:
     - Trabajo
-    - Líneas de tiempo laborado
+    - Línea de parte parte de trabajo
 
-Y con reportes:
-    - Horas por semana
-    - Horas por empleado por semana
-    - Horas por empleado por mes
+Y con informes:
+    - Horas por trabajo
+    - Horas por empleado y semana
+    - Horas por empleado y mes
 ''',
     'description_fr_FR': '''Module feuille de présence, avec:
     - Tâche
