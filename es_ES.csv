@@ -290,7 +290,7 @@ selection,"country.subdivision,type",0,Capital District,Distrito capital,0
 selection,"country.subdivision,type",0,Capital Metropolitan City,Ciudad capital metropolitana,0
 selection,"country.subdivision,type",0,Capital Territory,Territorio capital,0
 selection,"country.subdivision,type",0,City,Ciudad,0
-selection,"country.subdivision,type",0,City corporation,Corporación ciudad,0
+selection,"country.subdivision,type",0,City corporation,Ciudad corporativa,0
 selection,"country.subdivision,type",0,City with county rights,Ciudad con derechos de condado,0
 selection,"country.subdivision,type",0,Commune,Comuna,0
 selection,"country.subdivision,type",0,Country,País,0
@@ -309,7 +309,7 @@ selection,"country.subdivision,type",0,Federal Territories,Territorios federales
 selection,"country.subdivision,type",0,Geographical region,Región geográfica,0
 selection,"country.subdivision,type",0,Geographical unit,Unidad geográfica,0
 selection,"country.subdivision,type",0,Governorate,Gobernación,0
-selection,"country.subdivision,type",0,Included for completeness,Incluido por completitud,0
+selection,"country.subdivision,type",0,Included for completeness,Incluido para completar,0
 selection,"country.subdivision,type",0,Island council,Consejo de la isla,0
 selection,"country.subdivision,type",0,Island group,Grupo de islas,0
 selection,"country.subdivision,type",0,Local council,Consejo local,0
@@ -320,7 +320,7 @@ selection,"country.subdivision,type",0,Metropolitan district,Distrito metropolit
 selection,"country.subdivision,type",0,Metropolitan region,Región metropolitana,0
 selection,"country.subdivision,type",0,Municipalities,Municipalidades,0
 selection,"country.subdivision,type",0,Municipality,Municipalidad,0
-selection,"country.subdivision,type",0,Oblast,Óblast,0
+selection,"country.subdivision,type",0,Oblast,Oblast,0
 selection,"country.subdivision,type",0,Outlying area,Área externa,0
 selection,"country.subdivision,type",0,Overseas region/department,región/departamento de ultramar,0
 selection,"country.subdivision,type",0,Overseas territorial collectivity,Territorio colectivo de ultramar,0
@@ -330,7 +330,7 @@ selection,"country.subdivision,type",0,Principality,Principalidad,0
 selection,"country.subdivision,type",0,Province,Provincia,0
 selection,"country.subdivision,type",0,Rayon,Rayón,0
 selection,"country.subdivision,type",0,Region,Región,0
-selection,"country.subdivision,type",0,Regional council,Consejo Regional,0
+selection,"country.subdivision,type",0,Regional council,Consejo regional,0
 selection,"country.subdivision,type",0,Republic,República,0
 selection,"country.subdivision,type",0,Special administrative region,Región administrativa especial,0
 selection,"country.subdivision,type",0,Special city,Ciudad especial,0
@@ -351,3 +351,5 @@ view,country.country,0,State,Estado,0
 view,country.country,0,States,Estados,0
 view,country.country,0,Subdivision,Subdivisión,0
 view,country.country,0,Subdivisions,Subdivisiones,0
+view,country.subdivision,0,Subdivision,Subdivisión,0
+view,country.subdivision,0,Subdivisions,Subdivisiones,0
