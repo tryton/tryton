@@ -74,21 +74,21 @@ Y con los reportes:
     - Saldos Vencidos
     - Diario general
 ''',
-    'description_es_ES': '''El módulo Financiero y de Contabilidad cuenta con:
+    'description_es_ES': '''Módulo financiero y de contabilidad con:
     - Contabilidad General
-    - Manejo de Años Fiscales
-    - Administración de impuestos
+    - Gestión de ejercicios fiscales
+    - Gestión de impuestos
     - Libros diarios
     - Conciliación
 
-Y con los reportes:
-    - Libro general
-    - Balance de prueba
-    - Hoja de Balance
-    - Estado de Ingresos
-    - Balance de Terceros
-    - Saldos Vencidos
-    - Diario general
+Y con los informes:
+    - Libro mayor
+    - Balance de sumas y saldos
+    - Balance general
+    - Estado de pérdidas y ganancias
+    - Balance de un Tercero
+    - Saldo Vencido
+    - Libro diario
 ''',
     'depends': [
         'ir',
