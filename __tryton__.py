@@ -5,6 +5,7 @@
     'name_de_DE': 'Lagerverwaltung Lagerortsequenz',
     'name_fr_FR': 'Séquence emplacement',
     'name_es_CO': 'Secuencia de Sitio del Stock',
+    'name_es_ES': 'Secuencia de ubicación de existencias',
     'version': '1.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -17,6 +18,7 @@
 ''',
     'description_es_CO': '''Añade una secuencia e sitio a un objeto
 ''',
+    'description_es_ES': 'Añade una secuencia al objeto ubicación',
     'depends': [
         'ir',
         'stock',
@@ -28,5 +30,6 @@
         'de_DE.csv',
         'fr_FR.csv',
         'es_CO.csv',
+        'es_ES.csv',
     ],
 }
