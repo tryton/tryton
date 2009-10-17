@@ -86,9 +86,9 @@ field,"account.account.open_aged_balance.init,balance_type",0,Type,Tipo,0
 field,"account.account.open_aged_balance.init,company",0,Company,Empresa,0
 field,"account.account.open_aged_balance.init,fiscalyear",0,Fiscal Year,Ejercicio fiscal,0
 field,"account.account.open_aged_balance.init,posted",0,Posted Move,Asiento confirmado,0
-field,"account.account.open_aged_balance.init,term1",0,First Term,Primer término,0
-field,"account.account.open_aged_balance.init,term2",0,Second Term,Segundo término,0
-field,"account.account.open_aged_balance.init,term3",0,Third Term,Tercer término,0
+field,"account.account.open_aged_balance.init,term1",0,First Term,Primer plazo,0
+field,"account.account.open_aged_balance.init,term2",0,Second Term,Segundo plazo,0
+field,"account.account.open_aged_balance.init,term3",0,Third Term,Tercer plazo,0
 field,"account.account.open_aged_balance.init,unit",0,Unit,Unidad,0
 field,"account.account.open_balance_sheet.init,company",0,Company,Empresa,0
 field,"account.account.open_balance_sheet.init,date",0,Date,Fecha,0
@@ -718,7 +718,7 @@ view,account.account.create_chart_account.properties,0,Create Default Properties
 view,account.account.deferral,0,Account Deferral,Aplazar cuenta,0
 view,account.account.deferral,0,Account Deferrals,Aplazamientos de la cuenta,0
 view,account.account.open_aged_balance.init,0,Open Aged Balance,Abrir saldo vencido,0
-view,account.account.open_aged_balance.init,0,Terms,Términos,0
+view,account.account.open_aged_balance.init,0,Terms,Plazos,0
 view,account.account.open_balance_sheet.init,0,Open Balance Sheet,Abrir balance general,0
 view,account.account.open_chart_account.init,0,Open Chart of Account,Abrir plan contable,0
 view,account.account.open_chart_account.init,0,Open Chart of Accounts,Abrir plan contable,0
