@@ -14,7 +14,7 @@
     - Fügt Unterstützung für Authentifizierung über einen LDAP-Server hinzu.
 ''',
     'description_es_ES': 'Autentifica usuarios contra un servidor LDAP.',
-    'description': '''Authentification des utilisateurs via un serveur LDAP.''',
+    'description_fr_FR': '''Authentification des utilisateurs via un serveur LDAP.''',
     'depends': [
         'ir',
         'res',
@@ -26,5 +26,6 @@
     'translation': [
         'de_DE.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ],
 }
