@@ -32,7 +32,7 @@ model,"ir.ui.menu,name",menu_project_form,Projects,Projekte,0
 model,"ir.ui.menu,name",menu_task_form,Tasks,Aufgaben,0
 model,"ir.ui.menu,name",menu_work_form,Works Efforts,Arbeiten Aufwände,0
 model,"project.work,name",0,Work Effort,Arbeit Aufwand,0
-model,"res.group,name",group_project_admin,Project Administration,Administration Projekte,0
+model,"res.group,name",group_project_admin,Project Administration,Projekte Administration,0
 selection,"project.work,state",0,Done,Erledigt,0
 selection,"project.work,state",0,Opened,Geöffnet,0
 selection,"project.work,type",0,Project,Projekt,0
