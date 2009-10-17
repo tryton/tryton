@@ -4,7 +4,7 @@
     'name': 'Analytic Invoice',
     'name_de_DE': 'Kostenstellen Rechnungsstellung',
     'name_es_CO': 'Facturación Analítica',
-    'name_es_ES': 'Facturación Analítica',
+    'name_es_ES': 'Facturación analítica',
     'name_fr_FR': 'Facturation analytique',
     'version': '1.3.0',
     'author': 'B2CK',
@@ -18,9 +18,8 @@
     'description_es_CO': ''' - Adición de contabilidad analítica a las líneas de facturación 
  -  Generación de líneas analíticas en la factura.
 ''',
-    'description_es_ES': ''' - Adición de contabilidad analítica a las líneas de facturación 
- -  Generación de líneas analíticas en la factura.
-''',
+    'description_es_ES': '''Añade una cuenta analítica en las líneas de '''
+    '''factura y genera líneas analíticas en los asientos de la factura.''',
     'description_fr_FR': '''Ajoute la comptabilité analytique sur les lignes '''
     '''de facture et génère les lignes analytiques sur les mouvements de la '''
     '''facture.''',
