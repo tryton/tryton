@@ -1,10 +1,10 @@
 type,name,res_id,src,value,fuzzy
 error,currency.currency,0,Invalid Grouping!,Agrupamiento no válido,0
-error,currency.currency,0,No rate found for the currency: %s at the date: %s,No se ha encontrado una conversión para la divisa: %s con fecha: %s,0
+error,currency.currency,0,No rate found for the currency: %s at the date: %s,No se ha encontrado una conversión para la divisa «%s» con fecha: %s,0
 error,currency.currency.rate,0,A currency can only have one rate by date!,Una divisa solo puede tener un valor por fecha,0
-field,"currency.currency,active",0,Active,Activo,0
+field,"currency.currency,active",0,Active,Activa,0
 field,"currency.currency,code",0,Code,Código,0
-field,"currency.currency,digits",0,Display Digits,Mostrar dígitos,0
+field,"currency.currency,digits",0,Display Digits,Dígitos a mostrar,0
 field,"currency.currency,mon_decimal_point",0,Decimal Separator,Separador decimal,0
 field,"currency.currency,mon_grouping",0,Grouping,Agrupación,0
 field,"currency.currency,mon_thousands_sep",0,Thousands Separator,Separador de miles,0
@@ -17,7 +17,7 @@ field,"currency.currency,p_cs_precedes",0,Positive Currency Symbol Precedes,El s
 field,"currency.currency,positive_sign",0,Positive Sign,Signo positivo,0
 field,"currency.currency,p_sep_by_space",0,Positive Separate by Space,Signo positivo separado por espacio,0
 field,"currency.currency,p_sign_posn",0,Positive Sign Position,Posición del signo positivo,0
-field,"currency.currency,rate",0,Current rate,Tasa de cambio de la divisa,0
+field,"currency.currency,rate",0,Current rate,Tasa de cambio actual,0
 field,"currency.currency.rate,currency",0,Currency,Divisa,0
 field,"currency.currency.rate,date",0,Date,Fecha,0
 field,"currency.currency.rate,rate",0,Rate,Tasa de cambio,0
@@ -28,8 +28,8 @@ field,"currency.currency,rounding",0,Rounding factor,Factor de redondeo,0
 field,"currency.currency,symbol",0,Symbol,Símbolo,0
 model,"currency.currency,name",afn,Afghani,Afghani,0
 model,"currency.currency,name",ars,Argentine Peso,Peso argentino,0
-model,"currency.currency,name",awg,Aruban Guilder,Aruban Guilder,0
-model,"currency.currency,name",azn,Azerbaijanian Manat,Manat Azerbaijano,0
+model,"currency.currency,name",awg,Aruban Guilder,Florín de Aruba,0
+model,"currency.currency,name",azn,Azerbaijanian Manat,Azerbaijanian Manat,0
 model,"currency.currency,name",bsd,Bahamian Dollar,Dólar de Bahamas,0
 model,"currency.currency,name",thb,Baht,Baht,0
 model,"currency.currency,name",pab,Balboa,Balboa,0
@@ -126,7 +126,7 @@ model,"currency.currency,name",jpy,Yen,Yen,0
 model,"currency.currency,name",cny,Yuan Renminbi,Yuan Renminbi,0
 model,"currency.currency,name",zwd,Zimbabwe Dollar,Dólar de Zimbawe,0
 model,"currency.currency,name",pln,Zloty,Zloty,0
-model,"currency.currency.rate,name",0,Rate,Tasa de Cambio,0
+model,"currency.currency.rate,name",0,Rate,Tasa de cambio,0
 model,"ir.action,name",act_currency_form,Currencies,Divisas,0
 model,"ir.ui.menu,name",menu_currency_form,Currencies,Divisas,0
 model,"ir.ui.menu,name",menu_currency,Currency Management,Gestión de divisas,0

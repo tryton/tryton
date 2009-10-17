@@ -4,7 +4,7 @@
     'name': 'Currency',
     'name_de_DE': 'Währung',
     'name_es_CO': 'Moneda',
-    'name_es_ES': 'Moneda',
+    'name_es_ES': 'Divisa',
     'name_fr_FR': 'Devise',
     'version': '1.3.0',
     'author': 'B2CK',
@@ -19,8 +19,8 @@ Allow to customize the formatting of the currency amount.
     'description_es_CO': '''Define las monedas y la tasa de cambio.
 Permite personalizar el formato de visualización de la moneda.
 ''',
-    'description_es_ES': '''Define las monedas y la tasa de cambio.
-Permite personalizar el formato de visualización de la moneda.
+    'description_es_ES': '''Define las divisas y la tasa de cambio.
+ - Permite personalizar el formato de visualización de la divisa.
 ''',
     'description_fr_FR': '''Défini les devises et leurs taux de change.
 Permet de formater les montants en fonction de la devise.
