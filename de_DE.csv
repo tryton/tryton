@@ -226,7 +226,7 @@ model,"ir.ui.menu,name",menu_shipment_in_return_form,Supplier Return Shipments,W
 model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"res.group,name",group_stock,Stock,Lager,0
 model,"res.group,name",group_stock_admin,Stock Administration,Lager Administration,0
-model,"res.group,name",group_stock_force_assignment,Stock Force Assignment,Lager Zuweisung erzwingen,0
+model,"res.group,name",group_stock_force_assignment,Stock Force Assignment,Lager Zuweisungserzwingung,0
 model,"stock.inventory.line,name",0,Stock Inventory Line,Lager Lagerbestand Position,0
 model,"stock.inventory,name",0,Stock Inventory,Lager Lagerbestand,0
 model,"stock.location,name",location_customer,Customer,Kunde,0
