@@ -16,8 +16,7 @@
 ''',
     'description_es_CO': '''Histórico de Facturación a nivel de campos
 ''',
-    'description_es_ES': '''Histórico de Facturación a nivel de campos
-''',
+    'description_es_ES': 'Añade un histórico para los campos de factura',
     'description_fr_FR': '''Ajoute l'historisation au champs de la facture.
 ''',
     'depends': [
