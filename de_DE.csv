@@ -160,7 +160,7 @@ model,"product.uom,symbol",uom_unit,u,St.,0
 model,"product.uom,symbol",uom_work_day,wd,PT,0
 model,"product.uom,symbol",uom_yard,yd,yd,0
 model,"product.uom,symbol",uom_square_yard,yd²,yd²,0
-model,"res.group,name",group_product_admin,Product Administration,Administration Artikel,0
+model,"res.group,name",group_product_admin,Product Administration,Artikel Administration,0
 selection,"product.template,cost_price_method",0,Average,Durchschnitt,0
 selection,"product.template,cost_price_method",0,Fixed,Fix,0
 selection,"product.template,type",0,Consumable,Verbrauchsmaterial,0
