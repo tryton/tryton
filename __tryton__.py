@@ -44,16 +44,16 @@ Ermöglicht:
         - Basado en Orden
         - Basado en Empaque
 ''',
-    'description_es_ES': ''' - Definición de orden de compras.
- - Se añade información de proveedor y de compra de un producto.
- - Se define el precio de compra con el precio de proveedor o costo.
+    'description_es_ES': '''Define ordenes de compra.
+ - Añade información de proveedor y de compra de un producto.
+ - Define el precio de compra como el precio del proveedor o el precio de coste.
 
  - Con la posibilidad de:
-    - seguir el estado de facturación y empaque desde la orden de compra.
-    - elegir el método de facturación:
+    - seguir el estado de facturación y envio desde la orden de compra.
+    - definir el método de facturación:
         - Manual
-        - Basado en Orden
-        - Basado en Empaque
+        - Basado en orden
+        - Basado en envio
 ''',
     'description_fr_FR': '''Defini l'ordre d'achat.
 Ajoute les fournisseurs et les informations d'achat sur le produit.
