@@ -5,7 +5,7 @@
     'name_de_DE': 'Buchhaltung Artikel',
     'name_fr_FR': 'Compte produit',
     'name_es_CO': 'Contabilidad de Inventarios',
-    'name_es_ES': 'Contabilidad de Productos',
+    'name_es_ES': 'Contabilidad de productos',
     'version': '1.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
