@@ -4,7 +4,7 @@
     'name': 'Project',
     'name_de_DE': 'Projekte',
     'name_es_CO': 'Proyectos',
-    'name_es_ES': 'Proyectos',
+    'name_es_ES': 'Proyecto',
     'name_fr_FR': 'Projet',
     'version': '0.0.1',
     'author': 'B2CK',
@@ -19,8 +19,8 @@
     'description_es_CO': '''Módulo de proyectos con:
     - Gestión de proyectos
 ''',
-    'description_es_ES': '''Módulo de proyectos con:
-    - Gestión de proyectos
+    'description_es_ES': '''Módulo de proyecto con:
+    - Gestión de proyecto
 ''',
     'description_fr_FR': '''Module projet avec:
     - Gestion de projet
