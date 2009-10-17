@@ -5,6 +5,7 @@
     'name_de_DE': 'Google Maps',
     'name_fr_FR': 'Cartes Google',
     'name_es_CO': 'Mapas de Google',
+    'name_es_ES': 'Mapas de Google',
     'version' : '1.3.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
@@ -12,7 +13,7 @@
     'description': 'Add link from addresses to Google Maps',
     'description_de_DE': 'Fügt einen Link für den automatischen Aufruf von Google Maps zu Adressen hinzu.',
     'description_es_CO': 'Añade un enlace a la dirección en Google Maps',
-    'description_es_ES': 'Añade un enlace a la dirección en Google Maps',
+    'description_es_ES': 'Añade un enlace de la dirección a Google Maps',
     'description_fr_FR': 'Ajoute un lien sur les adresses vers les cartes de Google',
     'depends' : [
         'ir',
