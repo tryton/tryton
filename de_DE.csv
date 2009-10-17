@@ -152,7 +152,7 @@ model,"purchase.purchase-ignored-account.invoice,name",0,Purchase - Ignored Invo
 model,"purchase.purchase,name",0,Purchase,Einkauf,0
 model,"purchase.purchase-recreated-account.invoice,name",0,Purchase - Recreated Invoice,Einkauf - Rechnung Nachgebildet,0
 model,"res.group,name",group_purchase,Purchase,Einkauf,0
-model,"res.group,name",group_purchase_admin,Purchase Administrator,Administration Einkauf,0
+model,"res.group,name",group_purchase_admin,Purchase Administrator,Einkauf Administration,0
 model,"workflow.activity,name",purchase_activity_cancel,Canceled,Annulliert,0
 model,"workflow.activity,name",purchase_activity_confirmed,Confirmed,Beauftragt,0
 model,"workflow.activity,name",purchase_activity_done,Done,Erledigt,0
