@@ -3,6 +3,7 @@
 {
     'name': 'Product Price List',
     'name_de_DE' : 'Artikel Preisliste',
+    'name_es_ES': 'Lista de precios de producto',
     'name_fr_FR' : 'Liste de prix produit',
     'version': '0.0.1',
     'author': 'B2CK',
@@ -12,6 +13,7 @@
     'description_de_DE' : '''Preislisten für Artikel
     - Ermöglicht die Definition von Preislisten für Parteien.
 ''',
+    'description_es_ES': 'Define reglas de lista de precios por tercero.',
     'description_fr_FR' : '''Défini des listes de prix par tiers''',
     'depends': [
         'ir',
@@ -26,5 +28,6 @@
     'translation': [
         'fr_FR.csv',
         'de_DE.csv',
+        'es_ES.csv',
     ],
 }
