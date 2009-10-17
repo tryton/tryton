@@ -4,7 +4,7 @@
     'name': 'Account Invoice History',
     'name_de_DE': 'Fakturierung Historisierung',
     'name_es_CO': 'Histórico de Facturación',
-    'name_es_ES': 'Histórico de Facturación',
+    'name_es_ES': 'Histórico de facturación',
     'name_fr_FR': 'Historisation facture',
     'version': '1.3.0',
     'author': 'B2CK',
