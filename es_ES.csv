@@ -21,7 +21,7 @@ model,"ir.action,name",act_open_child_work,Tasks,Tareas,0
 model,"ir.action,name",act_work_tree,Works,Actividades,0
 model,"ir.action,name",act_work_form,Works Efforts,Actividades,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Configuración,0
-model,"ir.ui.menu,name",menu_project,Project Management,Gestión de Proyecto,0
+model,"ir.ui.menu,name",menu_project,Project Management,Gestión de proyecto,0
 model,"ir.ui.menu,name",menu_project_tree,Projects,Proyectos,0
 model,"ir.ui.menu,name",menu_project_form,Projects,Proyectos,0
 model,"ir.ui.menu,name",menu_task_form,Tasks,Tareas,0
