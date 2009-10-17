@@ -4,7 +4,7 @@
     'name': 'Account Statement',
     'name_de_DE': 'Buchhaltung Bankauszüge',
     'name_es_CO': 'Estado de Cuentas',
-    'name_es_ES': 'Estado de Cuentas',
+    'name_es_ES': 'Estado de cuentas',
     'name_fr_FR': 'Relevé comptable',
     'version': '1.3.0',
     'author': 'B2CK',
