@@ -21,7 +21,7 @@ pour une liste donnée d'emplacements.
       von Lagerorten erzeugt.
 ''',
     'description_es_ES': '''Añade un asistente que permite crear inventarios
-automáticos para una lista de ubicaciones dada.
+automáticos para una lista dada de ubicaciones.
 ''',
     'description_es_CO': '''Añade un asistente que permite crear inventarios
 automáticos para una lista dada de ubicaciones.
