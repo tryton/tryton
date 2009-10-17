@@ -4,7 +4,7 @@
     'name': 'Analytic Account',
     'name_de_DE': 'Kostenstellen',
     'name_es_CO': 'Contabilidad Analítica',
-    'name_es_ES': 'Contabilidad Analítica',
+    'name_es_ES': 'Contabilidad analítica',
     'name_fr_FR': 'Comptabilité analytique',
     'version': '1.3.0',
     'author': 'B2CK',
@@ -28,11 +28,11 @@ Zugehörige Berichte:
 Y con reportes:
     - Balance Contable Analítico
 ''',
-    'description_es_ES': '''Módulo Financiero y de Contabilidad con:
-    - Contabilidad Analítica con cualquier cantidad de planes analíticos
+    'description_es_ES': '''Módulo financiero y de contabilidad con:
+    - Contabilidad analítica con cualquier cantidad de planes analíticos
 
-Y con reportes:
-    - Balance Contable Analítico
+Y con informes:
+    - Balance contable analítico
 ''',
     'description_fr_FR': '''Module comptable et financier, avec:
     - Comptabilité analytique autorisant un nombre arbitraire d'axes.
