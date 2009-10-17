@@ -224,7 +224,7 @@ model,"ir.ui.menu,name",menu_shipment_in_return_form,Supplier Return Shipments,E
 model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Envíos del proveedor,0
 model,"res.group,name",group_stock,Stock,Existencias,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administración de existencias,0
-model,"res.group,name",group_stock_force_assignment,Stock Force Assignment,Asignación de existencias,0
+model,"res.group,name",group_stock_force_assignment,Stock Force Assignment,Asignación forzada de existencias,0
 model,"stock.inventory.line,name",0,Stock Inventory Line,Línea de existencia en Inventario ,0
 model,"stock.inventory,name",0,Stock Inventory,Inventario de existencia,0
 model,"stock.location,name",location_customer,Customer,Cliente,0
