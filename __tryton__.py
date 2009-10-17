@@ -21,7 +21,7 @@
     - Estado de cuentas
     - Diario de estado de cuentas
 ''',
-    'description_es_ES': '''Módulo Financiero y Contable con:
+    'description_es_ES': '''Módulo financiero y contable con:
     - Estado de cuentas
     - Diario de estado de cuentas
 ''',
