@@ -4,6 +4,7 @@
     'name': 'Company Work Time',
     'name_de_DE': 'Unternehmen Arbeitszeit',
     'name_es_CO': 'Tiempo de Trabajo en la Compañía',
+    'name_es_ES': 'Tiempo de trabajo en la empresa',
     'name_fr_FR': 'Temps de travail dans la société',
     'version': '0.0.1',
     'author': 'B2CK',
@@ -21,5 +22,6 @@
     'translation': [
         'de_DE.csv',
         'es_CO.csv',
+        'es_ES.csv',
     ],
 }

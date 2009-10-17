@@ -1,0 +1,6 @@
+type,name,res_id,src,value,fuzzy
+field,"company.company,hours_per_work_day",0,Hours per Work Day,Horas por día de trabajo,0
+field,"company.company,hours_per_work_month",0,Hours per Work Month,Horas por mes de trabajo,0
+field,"company.company,hours_per_work_week",0,Hours per Work Week,Horas por semana de trabajo,0
+field,"company.company,hours_per_work_year",0,Hours per Work Year,Horas por año de trabajo,0
+view,company.company,0,Work Time,Tiempo de trabajo,0
