@@ -1,10 +1,12 @@
 type,name,res_id,src,value,fuzzy
+error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,No puede cambiar la UdM predeterminada de un producto que está asociado con movimientos de existencias.,0
 error,stock.inventory.line,0,Line quantity must be positive!,La cantidad de la línea debe ser positiva,0
 error,stock.inventory.line,0,Product must be unique by inventory!,El producto debe ser único por inventario,0
 error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,Una ubicación con movimientos no puede ser cambiado a un tipo que no soporte movimientos.,0
+error,stock.location,0,"Location ""%s"" must be a child of warehouse ""%s""!",La ubicación «%s» debe ser hijo del almacén «%s»,0
 error,stock.location,0,You can not create recursive locations!,No puede crear ubicaciones recursivas,0
 error,stock.move,0,Move can be on only one Shipment,Un movimiento solo puede hacerse con un envio.,0
-error,stock.move,0,Move quantity must be positive,La cantidad a mover tiene que ser positivo,0
+error,stock.move,0,Move quantity must be positive,La cantidad a mover tiene que ser positiva,0
 error,stock.move,0,Source and destination location must be different,Los lugares origen y destino deben ser distintos,0
 error,stock.move,0,You can not set state to assigned!,No puede establecer el estado como asignado,0
 error,stock.move,0,You can not set state to done!,No puede establecer el estado como hecho,0
@@ -25,8 +27,6 @@ field,"product.product,quantity",0,Quantity,Cantidad,0
 field,"product.template,forecast_quantity",0,Forecast Quantity,Cantidad prevista,0
 field,"product.template,quantity",0,Quantity,Cantidad,0
 field,"stock.inventory,company",0,Company,Empresa,0
-field,"stock.inventory.complete.init,categories",0,Categories,Categorías,0
-field,"stock.inventory.complete.init,products",0,Products,Productos,0
 field,"stock.inventory,date",0,Date,Fecha,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Cantidad esperada,0
 field,"stock.inventory.line,inventory",0,Inventory,Inventario,0
@@ -62,21 +62,22 @@ field,"stock.move,cost_price",0,Cost Price,Precio de coste,0
 field,"stock.move,currency",0,Currency,Divisa,0
 field,"stock.move,effective_date",0,Effective Date,Fecha efectiva,0
 field,"stock.move,from_location",0,From Location,Desde ubicación,0
+field,"stock.move,planned_date",0,Planned Date,Fecha estimada,0
+field,"stock.move,product",0,Product,Producto,0
+field,"stock.move,quantity",0,Quantity,Cantidad,0
+field,"stock.move,rec_name",0,Name,Nombre,0
 field,"stock.move,shipment_in",0,Supplier Shipment,Envío del proveedor,0
 field,"stock.move,shipment_in_return",0,Supplier Return Shipment,Envio de devolución a proveedor,0
 field,"stock.move,shipment_internal",0,Internal Shipment,Envío interno,0
 field,"stock.move,shipment_out",0,Customer Shipment,Envío a cliente,0
 field,"stock.move,shipment_out_return",0,Customer Return Shipment,Envio de devolución de cliente,0
-field,"stock.move,planned_date",0,Planned Date,Fecha estimada,0
-field,"stock.move,product",0,Product,Producto,0
-field,"stock.move,quantity",0,Quantity,Cantidad,0
-field,"stock.move,rec_name",0,Name,Nombre,0
 field,"stock.move,state",0,State,Estado,0
 field,"stock.move,to_location",0,To Location,A ubicación,0
 field,"stock.move,unit_digits",0,Unit Digits,Dígitos de unidad,0
 field,"stock.move,unit_price",0,Unit Price,Precio unitario,0
 field,"stock.move,unit_price_required",0,Unit Price Required,Requiere precio unitario,0
 field,"stock.move,uom",0,Uom,UdM,0
+field,"stock.product_stock_date.init,forecast_date",0,At Date,En la fecha,0
 field,"stock.shipment.in,code",0,Code,Código,0
 field,"stock.shipment.in,contact_address",0,Contact Address,Dirección de contacto,0
 field,"stock.shipment.in,effective_date",0,Effective Date,Fecha efectiva,0
@@ -134,7 +135,6 @@ field,"stock.shipment.out.return,state",0,State,Estado,0
 field,"stock.shipment.out.return,warehouse",0,Warehouse,Almacén,0
 field,"stock.shipment.out,state",0,State,Estado,0
 field,"stock.shipment.out,warehouse",0,Warehouse,Almacén,0
-field,"stock.product_stock_date.init,forecast_date",0,At Date,En la fecha,0
 help,"party.party,customer_location",0,The default destination location when sending products to the party.,El lugar de destino predeterminado cuando se envian productos al tercero.,0
 help,"party.party,supplier_location",0,The default source location when receiving products from the party.,La ubicación de origen predeterminado cuando se reciben productos del tercero.,0
 help,"stock.location_stock_date.init,forecast_date",0,"Allow to compute expected stock quantities for this date.
@@ -155,7 +155,6 @@ model,"ir.action,name",wizard_shipment_out_assign,Assign Shipment Out,Asignació
 model,"ir.action,name",wizard_complete_inventory,Complete Inventory,Inventario completo,0
 model,"ir.action,name",create_shipment_out_return,Create Return Shipment,Crear envio de devolución,0
 model,"ir.action,name",act_shipment_out_return_form,Customer Return Shipments,Envios de devoluciones de cliente,0
-model,"ir.action,name",,Customer Shipment,Envío de Cliente,1
 model,"ir.action,name",act_shipment_out_form,Customer Shipments,Envíos a cliente,0
 model,"ir.action,name",act_shipment_out_form2,Customer Shipments,Envíos de cliente,0
 model,"ir.action,name",act_shipment_out_form_ready,Customer Shipments Ready for Shipping,Envíos a cliente listos para ser enviados,0
@@ -176,7 +175,7 @@ model,"ir.action,name",act_shipment_out_return_form2,New Customer Return Shipmen
 model,"ir.action,name",act_shipment_internal_new_form,New Internal Shipment,Nuevo envío interno,0
 model,"ir.action,name",act_shipment_in_return_new_form,New Supplier Return Shipment,Nuevo envio de devolución a proveedor,0
 model,"ir.action,name",act_shipment_in_form2,New Supplier Shipment,Nuevo envío de proveedor,0
-model,"ir.action,name",report_shipment_out_picking_list,Picking List,Lista de recogida,0
+model,"ir.action,name",report_shipment_out_picking_list,Picking List,Lista de selección,0
 model,"ir.action,name",wizard_location_open,Product by Location,Producto por ubicación,0
 model,"ir.action,name",wizard_product_open,Product Quantities,Cantidades de producto,0
 model,"ir.action,name",act_product_by_location,Products by Locations,Productos por Ubicaciones,0
@@ -225,7 +224,7 @@ model,"ir.ui.menu,name",menu_shipment_in_return_form,Supplier Return Shipments,E
 model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Envíos del proveedor,0
 model,"res.group,name",group_stock,Stock,Existencias,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administración de existencias,0
-model,"stock.inventory.complete.init,name",0,Complete Inventory Init,Iniciar inventario completo,0
+model,"res.group,name",group_stock_force_assignment,Stock Force Assignment,Asignación de existencias,0
 model,"stock.inventory.line,name",0,Stock Inventory Line,Línea de existencia en Inventario ,0
 model,"stock.inventory,name",0,Stock Inventory,Inventario de existencia,0
 model,"stock.location,name",location_customer,Customer,Cliente,0
@@ -238,15 +237,15 @@ model,"stock.location,name",location_supplier,Supplier,Proveedor,0
 model,"stock.location,name",location_warehouse,Warehouse,Almacén,0
 model,"stock.location_stock_date.init,name",0,Compute stock quantities,Calcular cantidades de existencias,0
 model,"stock.move,name",0,Stock Move,Movimiento de existencias,0
+model,"stock.product_stock_date.init,name",0,Compute stock quantities,Calcular cantidades de existencias,0
 model,"stock.shipment.in,name",0,Supplier Shipment,Envío de proveedor,0
-model,"stock.shipment.in.return.assign.ask_force,name",0,Assign Supplier Return Shipment Ask Force,,0
+model,"stock.shipment.in.return.assign.ask_force,name",0,Assign Supplier Return Shipment Ask Force,Asignar envio interno de proveedor - Solicitud forzosa,0
 model,"stock.shipment.in.return,name",0,Supplier Return Shipment,Envio de devolución a proveedor,0
-model,"stock.shipment.internal.assign.ask_force,name",0,Assign Shipment Internal Ask Force,,0
+model,"stock.shipment.internal.assign.ask_force,name",0,Assign Shipment Internal Ask Force,Asignar envio interno - Solicitud forzosa,0
 model,"stock.shipment.internal,name",0,Internal Shipment,Envío interno,0
-model,"stock.shipment.out.assign.ask_force,name",0,Assign Shipment Out Ask Force,,0
+model,"stock.shipment.out.assign.ask_force,name",0,Assign Shipment Out Ask Force,Asignar envio de salida - Solicitud forzosa,0
 model,"stock.shipment.out,name",0,Customer Shipment,Envío a cliente,0
 model,"stock.shipment.out.return,name",0,Customer Return Shipment,Envio de devolución de cliente,0
-model,"stock.product_stock_date.init,name",0,Compute stock quantities,Calcular cantidades de existencias,0
 model,"workflow.activity,name",shipmentout_act_assigned,Assigned,Asignado,0
 model,"workflow.activity,name",shipmentinternal_act_assigned,Assigned,Asignado,0
 model,"workflow.activity,name",shipment_in_return_act_assigned,Assigned,Asignado,0
@@ -322,7 +321,7 @@ odt,stock.shipment.out.picking_list,0,Customer:,Cliente:,0
 odt,stock.shipment.out.picking_list,0,E-Mail:,Correo electrónico:,0
 odt,stock.shipment.out.picking_list,0,From Location,Desde ubicación,0
 odt,stock.shipment.out.picking_list,0,Phone:,Teléfono:,0
-odt,stock.shipment.out.picking_list,0,Picking List,Lista de recogida,1
+odt,stock.shipment.out.picking_list,0,Picking List,Lista de selección,0
 odt,stock.shipment.out.picking_list,0,Planned Date:,Fecha estimada:,0
 odt,stock.shipment.out.picking_list,0,Product,Producto,0
 odt,stock.shipment.out.picking_list,0,Quantity,Cantidad,0
@@ -391,9 +390,6 @@ view,stock.inventory,0,Confirm,Confirmar,0
 view,stock.inventory,0,Inventories,Inventarios,0
 view,stock.inventory,0,Inventory,Inventario,0
 view,stock.inventory,0,Re-Open,Reabrir,0
-view,stock.inventory.complete.init,0,Categories,Categorías,0
-view,stock.inventory.complete.init,0,Complete Inventory,Inventario completo,0
-view,stock.inventory.complete.init,0,Products,Productos,0
 view,stock.inventory.line,0,Inventory Line,Línea de inventario,0
 view,stock.inventory.line,0,Inventory Lines,Líneas de inventario,0
 view,stock.location,0,Location,Ubicación,0
@@ -405,6 +401,7 @@ view,stock.move,0,Move,Movimiento,0
 view,stock.move,0,Moves,Movimientos,0
 view,stock.move,0,Set Done,Marcar como hecho,0
 view,stock.move,0,Set Draft,Marcar como borrador,0
+view,stock.product_stock_date.init,0,Product Quantity.,Cantidad de producto.,0
 view,stock.shipment.in,0,Cancel,Cancelar,0
 view,stock.shipment.in,0,Done,Hecho,0
 view,stock.shipment.in,0,Draft,Borrador,0
@@ -467,16 +464,13 @@ view,stock.shipment.out.return,0,Inventory Moves,Movimientos de inventario,0
 view,stock.shipment.out.return,0,Moves,Movimientos,0
 view,stock.shipment.out.return,0,Received,Recibido,0
 view,stock.shipment.out.return,0,Reset to Draft,Restablecer a borrador,0
-view,stock.product_stock_date.init,0,Product Quantity.,Cantidad de producto.,0
-wizard_button,"stock.inventory.complete,init,complete",0,Complete,Completo,0
-wizard_button,"stock.inventory.complete,init,end",0,Cancel,Cancelar,0
 wizard_button,"stock.location.open,init,end",0,Cancel,Cancelar,0
 wizard_button,"stock.location.open,init,open",0,Open,Abrir,0
+wizard_button,"stock.product.open,init,end",0,Cancel,Cancelar,0
+wizard_button,"stock.product.open,init,open",0,Open,Abrir,0
 wizard_button,"stock.shipment.in.return.assign,ask_force,end",0,Ok,Aceptar,0
 wizard_button,"stock.shipment.in.return.assign,ask_force,force",0,Force Assign,Forzar asignación,0
 wizard_button,"stock.shipment.internal.assign,ask_force,end",0,Ok,Aceptar,0
 wizard_button,"stock.shipment.internal.assign,ask_force,force",0,Force Assign,Forzar asignación,0
 wizard_button,"stock.shipment.out.assign,ask_force,end",0,Ok,Aceptar,0
 wizard_button,"stock.shipment.out.assign,ask_force,force",0,Force Assign,Forzar asignación,0
-wizard_button,"stock.product.open,init,end",0,Cancel,Cancelar,0
-wizard_button,"stock.product.open,init,open",0,Open,Abrir,0

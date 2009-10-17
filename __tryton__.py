@@ -4,7 +4,7 @@
     'name': 'Stock Management',
     'name_de_DE': 'Lagerverwaltung',
     'name_es_CO': 'Inventarios',
-    'name_es_ES': 'Inventarios',
+    'name_es_ES': 'Gestión de existencias',
     'name_fr_FR': 'Gestion des stocks',
     'version': '1.3.0',
     'author': 'B2CK',
@@ -44,15 +44,17 @@ Y con los reportes:
     - Empaques de Clientes
     - Productos por Lugar
 ''',
-    'description_es_ES': '''Administración de Inventarios y bodegas:
-    - Definición de sitios
-    - Movimiento de Bodega
-    - Empaque de Proveedor / Cliente / Interno
-    - Inventario en Bodega
+    'description_es_ES': '''Gestión de Existencias y control de inventarios con:
+    - Definición de ubicaciones
+    - Movimiento de existencias
+    - Envios de proveedores, clientes e internos. Envio de devoluciones de clientes y proveedores.
+    - Inventario de existencias
 
-Y con los reportes:
-    - Empaques de Clientes
-    - Productos por Lugar
+Y con los informes:
+    - Notas de envio
+    - Lista de selección
+    - Lista de recálculo de existencias (con envios de proveedores y envios de devoluciones de clientes)
+    - Productos por ubicación
 ''',
     'description_fr_FR':'''Gestion des stocks et contrôle de l'inventaire avec:
     - Emplacement
