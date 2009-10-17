@@ -12,7 +12,7 @@ field,"stock.forecast.complete.choose,products",0,Products,Productos,0
 field,"stock.forecast,destination",0,Destination,Destino,0
 field,"stock.forecast,from_date",0,From Date,Desde la fecha,0
 field,"stock.forecast.line,forecast",0,Forecast,Previsión,0
-field,"stock.forecast.line,minimal_quantity",0,Minimal Qty,Cantidad Mínima,0
+field,"stock.forecast.line,minimal_quantity",0,Minimal Qty,Cantidad mínima,0
 field,"stock.forecast.line,moves",0,Moves,Movimientos,0
 field,"stock.forecast.line,product",0,Product,Producto,0
 field,"stock.forecast.line,quantity",0,Quantity,Cantidad,0
@@ -21,7 +21,7 @@ field,"stock.forecast,lines",0,Lines,Líneas,0
 field,"stock.forecast.line-stock.move,line",0,Forecast Line,Línea de previsión,0
 field,"stock.forecast.line-stock.move,move",0,Move,Movimiento,0
 field,"stock.forecast.line-stock.move,rec_name",0,Name,Nombre,0
-field,"stock.forecast.line,unit_digits",0,Unit Digits,Dígitos Unitarios,0
+field,"stock.forecast.line,unit_digits",0,Unit Digits,Decimales de la unidad,0
 field,"stock.forecast.line,uom",0,UOM,UdM,0
 field,"stock.forecast,location",0,Location,Ubicación,0
 field,"stock.forecast,rec_name",0,Name,Nombre,0

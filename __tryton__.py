@@ -44,8 +44,7 @@ planificados hacia los clientes  en cualquier periodo de tiempo en el futuro.
 Un asistente permite calcular las cantidades esperadas respecto a un periodo
 en el pasado. Una vez el formulario se confirma, los movimientos
 correspondientes se crean y se distribuyen homogeneamente a lo largo del
-periodo. Dichos movimientos permitirá a otros procesos tener en cuenta
-previsiones.
+periodo. Dichos movimientos permitirá a otros procesos tener en cuenta las previsiones.
 ''',
     'description_es_CO': '''Provee el modelo de «Previsión» en la gestión de
 inventarios.
