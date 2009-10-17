@@ -50,15 +50,15 @@ Con las posibilidades de:
     - definir secuencias de facturas en año o período fiscal.
     - acreditar una factura.
 ''',
-    'description_es_ES': '''Módulo Financiero y de Contabilidad con:
-    - Términos de Pago
-    - Notas de Facturación / Crédito
-    - Factura de Proveedores / Nota de Crédito de Proveedores
+    'description_es_ES': '''Módulo financiero y de contabilidad con:
+    - Plazos de Pago
+    - Factura / Abono
+    - Factura de proveedor / Abono de proveedor
 
 Con las posibilidades de:
-    - hacer seguimiento al pago de facturas.
-    - definir secuencias de facturas en año o período fiscal.
-    - acreditar una factura.
+    - hacer seguimientos del pago de facturas.
+    - definir secuencias de facturas por ejercicio fiscal o período.
+    - pagar cualquier factura.
 ''',
     'depends': [
         'ir',
