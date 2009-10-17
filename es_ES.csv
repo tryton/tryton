@@ -1,8 +1,7 @@
 type,name,res_id,src,value,fuzzy
-error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,No puede cambiar la UdM predeterminada para un producto asociado con movimientos de inventario.,0
-error,product.uom,0,"If the UOM is still not used, you can delete it ortherwise you can deactivate it and create a new one.","Si no se ha usado la UdM, puede eliminar, de otra forma puede desactivarla y crear una nueva.",0
-error,product.uom,0,Rate and factor can not be both equal to zero.,Tasa de cambio y factor no pueden ser cero simultáneamente.,0
-error,product.uom,0,"You cannot change Rate, Factor or Category on a Unit of Measure. ","No puede cambiar la tasa de cambio, el factor o la categoría de una Unidad de Medida.",0
+error,product.uom,0,"If the UOM is still not used, you can delete it ortherwise you can deactivate it and create a new one.","Si no se ha usado la UdM, puede eliminarla, en caso contrario, puede desactivarla y crear una nueva.",0
+error,product.uom,0,Rate and factor can not be both equal to zero.,Conversión y factor no pueden ser cero simultáneamente.,0
+error,product.uom,0,"You cannot change Rate, Factor or Category on a Unit of Measure. ","No puede cambiar la conversión, el factor o la categoría de una unidad de medida.",0
 field,"product.category,childs",0,Children,Hijos,0
 field,"product.category,name",0,Name,Nombre,0
 field,"product.category,parent",0,Parent,Padre,0
@@ -16,7 +15,7 @@ field,"product.template,category",0,Category,Categoría,0
 field,"product.template,cost_price",0,Cost Price,Precio de coste,0
 field,"product.template,cost_price_method",0,Cost Method,Método de coste,0
 field,"product.template,cost_price_uom",0,Cost Price,Precio de coste,0
-field,"product.template,default_uom",0,Default UOM,UdM predeterminado,0
+field,"product.template,default_uom",0,Default UOM,UdM predeterminada,0
 field,"product.template,list_price",0,List Price,Precio de lista,0
 field,"product.template,list_price_uom",0,List Price,Precio de lista,0
 field,"product.template,name",0,Name,Nombre,0
@@ -24,14 +23,14 @@ field,"product.template,products",0,Products,Productos,0
 field,"product.template,rec_name",0,Name,Nombre,0
 field,"product.template,type",0,Type,Tipo,0
 field,"product.uom,active",0,Active,Activo,0
-field,"product.uom,category",0,UOM Category,Categoría UdM,0
+field,"product.uom,category",0,UOM Category,Categoría de UdM,0
 field,"product.uom.category,name",0,Name,Nombre,0
 field,"product.uom.category,rec_name",0,Name,Nombre,0
-field,"product.uom.category,uoms",0,Unit of Measures,Unidad de medidas,0
-field,"product.uom,digits",0,Display Digits,Dígitos a mostrar,0
+field,"product.uom.category,uoms",0,Unit of Measures,Unidades de medidas,0
+field,"product.uom,digits",0,Display Digits,Decimales a mostrar,0
 field,"product.uom,factor",0,Factor,Factor,0
 field,"product.uom,name",0,Name,Nombre,0
-field,"product.uom,rate",0,Rate,Tasa de cambio,0
+field,"product.uom,rate",0,Rate,Conversión,0
 field,"product.uom,rec_name",0,Name,Nombre,0
 field,"product.uom,rounding",0,Rounding Precision,Precisión de redondeo,0
 field,"product.uom,symbol",0,Symbol,Símbolo,0
@@ -136,7 +135,7 @@ model,"res.group,name",group_product_admin,Product Administration,Administració
 selection,"product.template,cost_price_method",0,Average,Promedio,0
 selection,"product.template,cost_price_method",0,Fixed,Fijo,0
 selection,"product.template,type",0,Consumable,Consumible,0
-selection,"product.template,type",0,Service,Servicios,0
+selection,"product.template,type",0,Service,Servicio,0
 selection,"product.template,type",0,Stockable,Almacenable,0
 view,product.category,0,Children,Hijos,0
 view,product.category,0,Product Categories,Categorías de producto,0
@@ -150,5 +149,5 @@ view,product.template,0,Product Template,Plantilla de producto,0
 view,product.template,0,Product Templates,Plantillas de producto,0
 view,product.uom,0,Unit of Measure,Unidad de medida,0
 view,product.uom,0,Units of Measure,Unidades de medida,0
-view,product.uom.category,0,Categories of Unit of Measure,Categorías de la unidad de medida,0
-view,product.uom.category,0,Category of Unit of Measure,Categoría de la unidad de medida,0
+view,product.uom.category,0,Categories of Unit of Measure,Categorías de unidades de medida,0
+view,product.uom.category,0,Category of Unit of Measure,Categoría de unidad de medida,0

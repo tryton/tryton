@@ -4,7 +4,7 @@
     'name' : 'Product',
     'name_de_DE': 'Artikel',
     'name_es_CO': 'Productos',
-    'name_es_ES': 'Productos',
+    'name_es_ES': 'Producto',
     'name_fr_FR': 'Produit',
     'version' : '1.3.0',
     'author' : 'B2CK',
@@ -14,7 +14,7 @@
         'of measure, categories of units of measure.',
     'description_de_DE': 'Dient der Erstellung von Artikeln, Artikelkategorien, Maßeinheiten und Kategorien für Maßeinheiten.',
     'description_es_CO': 'Definición de productos, categorías de producto unidades de medida y categorías de unidades de medida',
-    'description_es_ES': 'Definición de productos, categorías de producto unidades de medida y categorías de unidades de medida',
+    'description_es_ES': 'Define productos, categorías de producto, unidades de medida y categorías de unidades de medida',
     'description_fr_FR': '''Défini:
  - Produit
  - Catégorie de produit
