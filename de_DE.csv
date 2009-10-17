@@ -209,6 +209,7 @@ field,"account.move,centralised_line",0,Centralised Line,Abschlussbuchungszeile,
 field,"account.move,date",0,Effective Date,Effektives Datum,0
 field,"account.move,journal",0,Journal,Journal,0
 field,"account.move.line,account",0,Account,Konto,0
+field,"account.move.line,account_kind",0,Account Kind,Kontenart,0
 field,"account.move.line,active",0,Active,Aktiv,0
 field,"account.move.line,amount_second_currency",0,Amount Second Currency,Betrag Zweitwährung,0
 field,"account.move.line,credit",0,Credit,Haben,0
@@ -687,6 +688,12 @@ selection,"account.fiscalyear,state",0,Close,Abgeschlossen,0
 selection,"account.fiscalyear,state",0,Open,Geöffnet,0
 selection,"account.journal.period,state",0,Close,Geschlossen,0
 selection,"account.journal.period,state",0,Open,Geöffnet,0
+selection,"account.move.line,account_kind",0,Expense,Aufwand,0
+selection,"account.move.line,account_kind",0,Other,Anderes,0
+selection,"account.move.line,account_kind",0,Payable,Verbindlichkeiten,0
+selection,"account.move.line,account_kind",0,Receivable,Forderungen,0
+selection,"account.move.line,account_kind",0,Revenue,Ertrag,0
+selection,"account.move.line,account_kind",0,View,Sicht,0
 selection,"account.move.line,move_state",0,Draft,Entwurf,0
 selection,"account.move.line,move_state",0,Posted,Festgeschrieben,0
 selection,"account.move.line,state",0,Draft,Entwurf,0
