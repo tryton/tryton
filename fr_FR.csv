@@ -224,6 +224,7 @@ model,"ir.ui.menu,name",menu_shipment_in_return_form,Supplier Return Shipments,R
 model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Expéditions fournisseur,0
 model,"res.group,name",group_stock,Stock,Stock,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administration des stocks,0
+model,"res.group,name",group_stock_force_assignment,Stock Force Assignment,Stock forcer assignation,0
 model,"stock.inventory.line,name",0,Stock Inventory Line,Ligne d'inventaire de stock,0
 model,"stock.inventory,name",0,Stock Inventory,Inventaire du stock,0
 model,"stock.location,name",location_customer,Customer,Client,0
