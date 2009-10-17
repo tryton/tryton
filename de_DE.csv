@@ -90,7 +90,7 @@ model,"ir.ui.menu,name",menu_line_form,Timesheet Lines,Zeitpositionen,0
 model,"ir.ui.menu,name",menu_timesheet,Timesheet Management,Zeiterfassung,0
 model,"ir.ui.menu,name",menu_work_form,Works,Aufgaben,0
 model,"ir.ui.menu,name",menu_work_tree,Works,Aufgaben,0
-model,"res.group,name",group_timesheet_admin,Timesheet Administration,Administration Zeiterfassung,0
+model,"res.group,name",group_timesheet_admin,Timesheet Administration,Zeiterfassung Administration,0
 model,"timesheet.enter_lines.init,name",0,Enter Lines Init,Eingabe Zeitposition Init,0
 model,"timesheet.hours_employee_monthly,name",0,Hours per Employee per Month,Stunden pro Mitarbeiter und Monat,0
 model,"timesheet.hours_employee,name",0,Hours per Employee,Stunden pro Mitarbeiter,0
