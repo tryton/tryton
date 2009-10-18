@@ -4,6 +4,7 @@
     'name': 'Sale Pricelist',
     'name_de_DE': 'Verkauf Preislisten',
     'name_es_CO': 'Lista de Precios de Venta',
+    'name_es_ES': 'Lista de precios de venta',
     'name_fr_FR' : 'Listes de prix de vente',
     'version': '0.0.1',
     'author': 'B2CK',
@@ -16,6 +17,9 @@
 ''',
     'description_es_CO': '''Precios de Venta
     - Define lista de precio de venta para un tercero y una orden de venta.
+''',
+    'description_es_ES': '''Lista de precios para ventas
+    - Permite la definición de la lista de precios por tercero y orden de venta.
 ''',
     'description_fr_FR': '''Ajoute des listes de prix sur les tiers et sur les ventes.
 ''',
@@ -32,5 +36,6 @@
     'translation': [
         'de_DE.csv',
         'es_CO.csv',
+        'es_ES.csv',
     ],
 }
