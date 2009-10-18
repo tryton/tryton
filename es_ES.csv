@@ -28,7 +28,7 @@ model,"ir.ui.menu,name",menu_task_form,Tasks,Tareas,0
 model,"ir.ui.menu,name",menu_work_form,Works Efforts,Actividades,0
 model,"project.work,name",0,Work Effort,Actividades,0
 model,"res.group,name",group_project_admin,Project Administration,Administración de proyecto,0
-selection,"project.work,state",0,Done,Hecho,0
+selection,"project.work,state",0,Done,Terminada,0
 selection,"project.work,state",0,Opened,Abierto,0
 selection,"project.work,type",0,Project,Proyecto,0
 selection,"project.work,type",0,Task,Tarea,0
