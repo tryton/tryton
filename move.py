@@ -542,6 +542,7 @@ class Line(ModelSQL, ModelView):
         tax_obj = self.pool.get('account.tax')
         account_obj = self.pool.get('account.account')
         tax_code_obj = self.pool.get('account.tax.code')
+        currency_obj = self.pool.get('currency.currency')
         values = super(Line, self).default_get(cursor, user, fields,
                 context=context, with_rec_name=with_rec_name)
 
@@ -654,6 +655,10 @@ class Line(ModelSQL, ModelView):
                                 line_amount -= tax_line['amount']
                             tax_amount += tax_line['amount'] * \
                                     tax_line['tax'][key + '_tax_sign']
+                    line_amount = currency_obj.round(cursor, user,
+                            line.account.company.currency, line_amount)
+                    tax_amount = currency_obj.round(cursor, user,
+                            line.account.company.currency, tax_amount)
                     if ('debit' in fields):
                         values['debit'] = line_amount > Decimal('0.0') \
                                 and line_amount or Decimal('0.0')
