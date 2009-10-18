@@ -36,7 +36,7 @@ Con agendadores para:
 ''',
     'description_es_ES': '''Módulo de gestión de suministros con:
     - Punto de orden
-    - Solicitud de Compra
+    - Solicitud de compra
 
 Con tareas programadas para:
     - generar solicitudes de compra basados en puntos de orden
