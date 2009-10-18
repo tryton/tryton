@@ -132,6 +132,7 @@ model,"product.uom,symbol",uom_yard,yd,yd,0
 model,"product.uom,symbol",uom_square_yard,yd²,yd²,0
 model,"res.group,name",group_product_admin,Product Administration,Productos,0
 selection,"product.template,cost_price_method",0,Average,Promedio,0
+selection,"product.template,cost_price_method",0,FIFO,FIFO,0
 selection,"product.template,cost_price_method",0,Fixed,Fijo,0
 selection,"product.template,type",0,Consumable,Consumible,0
 selection,"product.template,type",0,Service,Servicios,0
