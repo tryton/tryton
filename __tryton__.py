@@ -4,7 +4,7 @@
     'name': 'Sale',
     'name_de_DE': 'Verkauf',
     'name_es_CO': 'Ventas',
-    'name_es_ES': 'Ventas',
+    'name_es_ES': 'Venta',
     'name_fr_FR': 'Vente',
     'version': '1.3.0',
     'author': 'B2CK',
@@ -56,20 +56,20 @@ Ermöglicht:
         - Al Confirmar la Orden
         - Contra el Pago de la Factura
 ''',
-    'description_es_ES': ''' - Define la orden de Ventas.
- - Se añade al producto la información de ventas.
- - Definición del precio de venta y el precio de lista.
+    'description_es_ES': '''Define orden de venta.
+ - Añade a los productos información de ventas.
+ - Define el precio de venta como el precio de lista.
 
- - Con las posibilidades de:
-    - seguir los estados de facturación y empaque desde la orden de venta.
+ - Con la posibilidad de:
+    - seguir los estados de facturación y envio desde la orden de venta.
     - definir el método de facturación:
         - Manual
-        - Al Confirmar la Orden
-        - Al Envío del Paquete
-    - definir el método de empaque:
+        - A la confirmación de la orden
+        - Al enviarlo
+    - definir el método de envio:
         - Manual
-        - Al Confirmar la Orden
-        - Contra el Pago de la Factura
+        - Al confirmar la orden
+        - Al pagar la factura
 ''',
     'description_fr_FR': '''Défini l'ordre de vente.
 Ajoute au produit les informations de vente.
