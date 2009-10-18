@@ -81,10 +81,6 @@ field,"purchase.purchase,invoices_recreated",0,Recreated Invoices,Facturas recre
 field,"purchase.purchase,invoice_state",0,Invoice State,Estado de Factura,0
 field,"purchase.purchase,lines",0,Lines,Líneas,0
 field,"purchase.purchase,moves",0,Moves,Movimientos,0
-field,"purchase.purchase,shipment_done",0,Shipment Done,Envío Finalizado,0
-field,"purchase.purchase,shipment_exception",0,Shipments Exception,Excepción de Envío,0
-field,"purchase.purchase,shipments",0,Shipments,Envíos,0
-field,"purchase.purchase,shipment_state",0,Shipment State,Estado de Envío,0
 field,"purchase.purchase,party",0,Party,Terceros,0
 field,"purchase.purchase,party_lang",0,Party Language,Idioma del Tercero,0
 field,"purchase.purchase,payment_term",0,Payment Term,Término de Pago,0
@@ -94,6 +90,10 @@ field,"purchase.purchase-recreated-account.invoice,invoice",0,Invoice,Factura,0
 field,"purchase.purchase-recreated-account.invoice,purchase",0,Purchase,Compra,0
 field,"purchase.purchase-recreated-account.invoice,rec_name",0,Name,Nombre,0
 field,"purchase.purchase,reference",0,Reference,Referencia,0
+field,"purchase.purchase,shipment_done",0,Shipment Done,Envío Finalizado,0
+field,"purchase.purchase,shipment_exception",0,Shipments Exception,Excepción de Envío,0
+field,"purchase.purchase,shipments",0,Shipments,Envíos,0
+field,"purchase.purchase,shipment_state",0,Shipment State,Estado de Envío,0
 field,"purchase.purchase,state",0,State,Estado,0
 field,"purchase.purchase,supplier_reference",0,Supplier Reference,Referencia de Proveedor,0
 field,"purchase.purchase,tax_amount",0,Tax,Impuesto,0
@@ -108,6 +108,7 @@ field,"stock.move,purchase_quantity",0,Purchase Quantity,Cantidad de Compra,0
 field,"stock.move,purchase_unit",0,Purchase Unit,Unidad de Compra,0
 field,"stock.move,purchase_unit_digits",0,Purchase Unit Digits,Dígitos de Unidad de Compra,0
 field,"stock.move,purchase_unit_price",0,Purchase Unit Price,Precio Unitario de Compra,0
+field,"stock.move,purchase_visible",0,Purchase Visible,,0
 field,"stock.move,supplier",0,Supplier,Proveedor,0
 help,"purchase.handle.invoice.exception.ask,recreate_invoices",0,The selected invoices will be recreated. The other ones will be ignored.,La factura seleccionada será recreada. Las otras serán ignoradas.,0
 help,"purchase.handle.shipment.exception.ask,recreate_moves",0,The selected moves will be recreated. The other ones will be ignored.,Se recrearán los movimientos seleccionados. Los demás se ignorarán.,0
