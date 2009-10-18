@@ -38,7 +38,7 @@ error,account.invoice.payment_term,0,Payment term missing a remainder line!,Hace
 error,account.invoice.payment_term.line.delay,0,The code must be unique!,¡El código debe ser único!,0
 error,account.invoice.payment_term.line.type,0,The code must be unique!,¡El código debe ser único!,0
 error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","No puede adicionar una línea a una factura que está abierta, pagada o cancelada!",0
-error,account.invoice.tax,0,"You can not modify tax from an invoice that is open, paid or canceled!","No puede modificar impuestos de una factura abierta, pagada o cancelada!",0
+error,account.invoice.tax,0,"You can not modify tax from an invoice that is opened, paid!",,0
 error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,No puede cambiar la secuencia de una factura si hay una factura abierta en el período,0
 error,account.period,0,You must have different invoice sequences per fiscal year and in the same company!,¡Debe tener secuencias diferentes de facturas por año fiscal en la misma compañía!,0
 field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Secuencia de la Nota Crédito del Proveedor,0
@@ -77,6 +77,7 @@ field,"account.invoice.line,invoice_taxes",0,Invoice Taxes,Impuestos de Facturas
 field,"account.invoice.line,invoice_type",0,Invoice Type,Tipo de Factura,0
 field,"account.invoice.line,note",0,Note,Nota,0
 field,"account.invoice.line,party",0,Party,Terceros,0
+field,"account.invoice.line,party_lang",0,Party Language,Idioma del Tercero,0
 field,"account.invoice.line,product",0,Product,Producto,0
 field,"account.invoice.line,quantity",0,Quantity,Cantidad,0
 field,"account.invoice.line,rec_name",0,Name,Nombre,0
