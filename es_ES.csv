@@ -37,11 +37,11 @@ model,"stock.forecast.line,name",0,Stock Forecast Line,Línea de previsión de e
 model,"stock.forecast.line-stock.move,name",0,ForecastLine - Move,LineaPrevisión - Movimiento,0
 model,"stock.forecast,name",0,Stock Forecast,Previsión de existencias,0
 model,"workflow.activity,name",forecast_act_cancel,Cancel,Cancelar,0
-model,"workflow.activity,name",forecast_act_done,Done,Hecho,0
+model,"workflow.activity,name",forecast_act_done,Done,Terminada,0
 model,"workflow.activity,name",forecast_act_draft,Draft,Borrador,0
 model,"workflow,name",wkf_forecast,Forecast,Previsión,0
 selection,"stock.forecast,state",0,Cancel,Cancelar,0
-selection,"stock.forecast,state",0,Done,Hecho,0
+selection,"stock.forecast,state",0,Done,Terminada,0
 selection,"stock.forecast,state",0,Draft,Borrador,0
 view,stock.forecast,0,Add forecast line based on past data.,Añadir línea de previsión en base a datos anteriores.,0
 view,stock.forecast,0,Cancel,Cancelar,0
