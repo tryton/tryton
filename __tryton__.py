@@ -4,7 +4,7 @@
     'name': 'Analytic Purchase',
     'name_de_DE': 'Kostenstellen Einkauf',
     'name_es_CO': 'Compra Analítica',
-    'name_es_ES': 'Compra Analítica',
+    'name_es_ES': 'Compra analítica',
     'name_fr_FR': 'Achat analytique',
     'version': '1.3.0',
     'author': 'B2CK',
@@ -16,8 +16,7 @@
 ''',
     'description_es_CO': '''Adiciona contabilidad analítica a las líneas de compra.
 ''',
-    'description_es_ES': '''Adiciona contabilidad analítica a las líneas de compra.
-''',
+    'description_es_ES': 'Añade contabilidad analítica a las líneas de compra.',
     'description_fr_FR': 'Ajoute la comptabilité analytique sur les lignes d\'achat.',
     'depends': [
         'purchase',
