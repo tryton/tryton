@@ -4,7 +4,7 @@
     'name': 'Stock Supply Management',
     'name_de_DE': 'Lagerverwaltung Bestellwesen',
     'name_es_CO': 'Gestión de pedidos de inventario',
-    'name_es_ES': 'Gestión de pedidos de inventario',
+    'name_es_ES': 'Gestión de suministro de existencias',
     'name_fr_FR': 'Gestion des approvisionnements de stock',
     'version': '1.3.0',
     'author': 'B2CK',
@@ -34,13 +34,13 @@ Con agendadores para:
     - generar solicitudes de compra basados en puntos de orden
     - generar empaques internos basados en puntos de orden
 ''',
-    'description_es_ES': '''Módulo de Administración de pedidos:
-    - Punto de Orden
-    - Solicitud de Compras
+    'description_es_ES': '''Módulo de gestión de suministros con:
+    - Punto de orden
+    - Solicitud de Compra
 
-Con agendadores para:
+Con tareas programadas para:
     - generar solicitudes de compra basados en puntos de orden
-    - generar empaques internos basados en puntos de orden
+    - generar envios internos basados en puntos de orden
 ''',
     'description_fr_FR': '''Module de gestion des approvisionnements avec:
     - Règles d'approvisionnement
