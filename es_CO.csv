@@ -156,7 +156,7 @@ field,"account.account.type.template,name",0,Name,Nombre,0
 field,"account.account.type.template,parent",0,Parent,Padre,0
 field,"account.account.type.template,rec_name",0,Name,Nombre,0
 field,"account.account.type.template,sequence",0,Sequence,Secuencia,0
-field,"account.account.update_chart_account.init,account",0,Account,Cuenta,0
+field,"account.account.update_chart_account.init,account",0,Root Account,Cuenta Raíz,0
 field,"account.fiscalyear-account.move.line,fiscalyear",0,Fiscal Year,Año Fiscal,0
 field,"account.fiscalyear-account.move.line,line",0,Line,Línea,0
 field,"account.fiscalyear-account.move.line,rec_name",0,Name,Nombre,0
@@ -206,10 +206,8 @@ field,"account.move,centralised_line",0,Centralised Line,Línea Centralizada,0
 field,"account.move,date",0,Effective Date,Fecha Efectiva,0
 field,"account.move,journal",0,Journal,Diario,0
 field,"account.move.line,account",0,Account,Cuenta,0
-field,"account.move.line,account_kind",0,Account Kind,Tipo de Cuenta,0
 field,"account.move.line,active",0,Active,Activo,0
 field,"account.move.line,amount_second_currency",0,Amount Second Currency,Cantidad en la Moneda Secundaria,0
-field,"account.move.line,blocked",0,Litigation,Litigio,0
 field,"account.move.line,credit",0,Credit,Crédito,0
 field,"account.move.line,currency_digits",0,Currency Digits,Dígitos de Moneda,0
 field,"account.move.line,date",0,Effective Date,Fecha Efectiva,0
@@ -307,6 +305,7 @@ field,"account.tax,percentage",0,Percentage,Porcentaje,0
 field,"account.tax,rec_name",0,Name,Nombre,0
 field,"account.tax.rule,company",0,Company,Compañía,0
 field,"account.tax.rule.line,group",0,Tax Group,Grupo de Impuestos,0
+field,"account.tax.rule.line,origin_tax",0,Original Tax,,0
 field,"account.tax.rule.line,rec_name",0,Name,Nombre,0
 field,"account.tax.rule.line,rule",0,Rule,Regla,0
 field,"account.tax.rule,lines",0,Lines,Líneas,0
@@ -314,6 +313,7 @@ field,"account.tax.rule.line,sequence",0,Sequence,Secuencia,0
 field,"account.tax.rule.line,tax",0,Substitution Tax,Impuesto de Sustitución,0
 field,"account.tax.rule.line,template",0,Template,Plantilla,0
 field,"account.tax.rule.line.template,group",0,Tax Group,Grupo de Impuestos,0
+field,"account.tax.rule.line.template,origin_tax",0,Original Tax,,0
 field,"account.tax.rule.line.template,rec_name",0,Name,Nombre,0
 field,"account.tax.rule.line.template,rule",0,Rule,Regla,0
 field,"account.tax.rule.line.template,sequence",0,Sequence,Secuencia,0
@@ -377,7 +377,6 @@ for journal types: ""expense"" and ""revenue""","Impuestos Predeterminados para 
 tipos de movimiento de diario: ""gastos"" e ""ingresos""",0
 help,"account.account.type,sequence",0,Use to order the account type,Usar para ordenar el tipo de cuenta,0
 help,"account.move.line,amount_second_currency",0,The amount expressed in a second currency,El valor expresado en la moneda secundaria,0
-help,"account.move.line,blocked",0,Mark the line as litigation with the party.,Marcar la línea como litigio con el tercero.,0
 help,"account.move.line,maturity_date",0,"This field is used for payable and receivable lines. 
 You can put the limit date for the payment.",Este campo se usa en las líneas de cuentas por pagar y cuentas por cobrar.,0
 help,"account.move.line,second_currency",0,The second currency,La segunda moneda,0
@@ -392,6 +391,8 @@ help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Usualmente 1 o -1,0
 help,"account.tax.open_chart_code.init,fiscalyear",0,Leave empty for all open fiscal year,Dejar vacío para todos los años fiscales abiertos,0
 help,"account.tax.open_chart_code.init,periods",0,Leave empty for all periods of all open fiscal year,Dejar vacío para todos los períodos de los años fiscales abiertos,0
 help,"account.tax,percentage",0,In %,en %,0
+help,"account.tax.rule.line,origin_tax",0,"If the original tax is filled, the rule will be applied only for this tax.",,0
+help,"account.tax.rule.line.template,origin_tax",0,"If the original tax template is filled, the rule will be applied only for this tax template.",,0
 help,"account.tax,sequence",0,Use to order the taxes,Usar para ordenar los impuestos,0
 help,"party.party,customer_tax_rule",0,Apply this rule on taxes when party is customer.,Aplicar esta regla a impuestos cuando el tercero es un cliente.,0
 help,"party.party,supplier_tax_rule",0,Apply this rule on taxes when party is supplier.,Aplicar esta regla a impuestos cuando el tercero es un proveedor.,0
@@ -436,6 +437,7 @@ model,"account.account.type.template,name",account_type_template_asset_current_r
 model,"account.account.type.template,name",account_type_template_revenue,Revenue,Utilidad,0
 model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Impuesto,0
 model,"account.account.update_chart_account.init,name",0,Update Chart Account from Template Init,Actualizar Plan de Cuentas a partir de Inicio de Plantilla,0
+model,"account.account.update_chart_account.start,name",0,Update Chart Account from Template Start,,0
 model,"account.fiscalyear-account.move.line,name",0,Fiscal Year - Move Line,Año Fiscal - Movimiento,0
 model,"account.fiscalyear.close_fiscalyear.init,name",0,Close Fiscal Year Init,Cerrar inicio de Año Fiscal,0
 model,"account.fiscalyear,name",0,Fiscal Year,Año Fiscal,0
@@ -682,12 +684,6 @@ selection,"account.fiscalyear,state",0,Close,Cerrar,0
 selection,"account.fiscalyear,state",0,Open,Abrir,0
 selection,"account.journal.period,state",0,Close,Cerrar,0
 selection,"account.journal.period,state",0,Open,Abrir,0
-selection,"account.move.line,account_kind",0,Expense,Gasto,0
-selection,"account.move.line,account_kind",0,Other,Otro,0
-selection,"account.move.line,account_kind",0,Payable,Por Pagar,0
-selection,"account.move.line,account_kind",0,Receivable,Por Cobrar,0
-selection,"account.move.line,account_kind",0,Revenue,Ganancia,0
-selection,"account.move.line,account_kind",0,View,Vista,0
 selection,"account.move.line,move_state",0,Draft,Borrador,0
 selection,"account.move.line,move_state",0,Posted,Confirmado,0
 selection,"account.move.line,state",0,Draft,Borrador,0
@@ -736,6 +732,8 @@ view,account.account.type,0,Income Statement,Estado de cuenta de Ingreso,0
 view,account.account.type.template,0,Account Types Templates,Plantillas de Tipo de Cuenta,0
 view,account.account.type.template,0,Account Type Template,Plantilla de Tipo de Cuenta,0
 view,account.account.update_chart_account.init,0,Update Chart of Account,Actualice Plan de Cuentas,0
+view,account.account.update_chart_account.start,0,Update Chart of Account,Actualizar Plan de Cuentas,0
+view,account.account.update_chart_account.start,0,Update Chart of Account Succeed!,,0
 view,account.fiscalyear,0,Are you sure to close fiscal year?,Está seguro de cerrar el año fiscal?,0
 view,account.fiscalyear,0,Close,Cerrar,0
 view,account.fiscalyear,0,Close Fiscal Year,Cerrar Año Fiscal,0
@@ -837,7 +835,8 @@ wizard_button,"account.account.print_general_ledger,init,print",0,Print,Imprimir
 wizard_button,"account.account.print_trial_balance,init,end",0,Cancel,Cancelar,0
 wizard_button,"account.account.print_trial_balance,init,print",0,Print,Imprimir,0
 wizard_button,"account.account.update_chart_account,init,end",0,Cancel,Cancelar,0
-wizard_button,"account.account.update_chart_account,init,update_account",0,Ok,Aceptar,0
+wizard_button,"account.account.update_chart_account,init,start",0,Ok,Aceptar,0
+wizard_button,"account.account.update_chart_account,start,end",0,Ok,Aceptar,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Cerrar,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,end",0,Cancel,Cancelar,0
 wizard_button,"account.move.open_journal,ask,end",0,Cancel,Cancelar,0
