@@ -12,7 +12,7 @@ error,stock.move,0,You can not set state to assigned!,No puede establecer el est
 error,stock.move,0,You can not set state to done!,No puede establecer el estado como terminado,0
 error,stock.move,0,You can not set state to draft!,No puede establecer el estado como borrador,0
 error,stock.move,0,You can not use service products for a move!,No puede usar productos de servicio para un movimiento,0
-error,stock.move,0,You can only delete draft or cancelled moves!,Solamente puede eliminar movimientos en borrador o cancelados,0
+error,stock.move,0,You can only delete draft or cancelled moves!,Solamente puede borrar movimientos en borrador o cancelados,0
 error,stock.shipment.in,0,Incoming Moves must have the warehouse input location as destination location!,Los movimientos de entrada deben tener la ubicación del almacén de entrada como la ubicación de destino,0
 error,stock.shipment.in,0,Inventory Moves must have the warehouse input location as source location!,Los movimientos de inventario deben tener la ubicación del almacén de entrada como la ubicación de origen,0
 error,stock.shipment.out.return,0,Incoming Moves must have the warehouse input location as destination location!,Los movimientos de entrada deben tener la ubicación del almacén de entrada como la ubicación de destino,0
