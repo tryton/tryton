@@ -34,5 +34,6 @@
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ],
 }
