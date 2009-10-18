@@ -9,7 +9,7 @@ error,stock.move,0,Move can be on only one Shipment,Un movimiento solo puede hac
 error,stock.move,0,Move quantity must be positive,La cantidad a mover tiene que ser positiva,0
 error,stock.move,0,Source and destination location must be different,Los lugares origen y destino deben ser distintos,0
 error,stock.move,0,You can not set state to assigned!,No puede establecer el estado como asignado,0
-error,stock.move,0,You can not set state to done!,No puede establecer el estado como hecho,0
+error,stock.move,0,You can not set state to done!,No puede establecer el estado como terminado,0
 error,stock.move,0,You can not set state to draft!,No puede establecer el estado como borrador,0
 error,stock.move,0,You can not use service products for a move!,No puede usar productos de servicio para un movimiento,0
 error,stock.move,0,You can only delete draft or cancelled moves!,Solamente puede eliminar movimientos en borrador o cancelados,0
@@ -255,12 +255,12 @@ model,"workflow.activity,name",shipmentinternal_act_cancel,Canceled,Cancelado,0
 model,"workflow.activity,name",shipment_out_return_act_cancel,Canceled,Cancelado,0
 model,"workflow.activity,name",shipment_in_return_act_cancel,Canceled,Cancelado,0
 model,"workflow.activity,name",inventory_act_cancel,Canceled,Cancelado,0
-model,"workflow.activity,name",shipmentin_act_done,Done,Hecho,0
-model,"workflow.activity,name",shipmentout_act_done,Done,Hecho,0
-model,"workflow.activity,name",shipmentinternal_act_done,Done,Hecho,0
-model,"workflow.activity,name",shipment_out_return_act_done,Done,Hecho,0
-model,"workflow.activity,name",shipment_in_return_act_done,Done,Hecho,0
-model,"workflow.activity,name",inventory_act_done,Done,Hecho,0
+model,"workflow.activity,name",shipmentin_act_done,Done,Terminado,0
+model,"workflow.activity,name",shipmentout_act_done,Done,Terminado,0
+model,"workflow.activity,name",shipmentinternal_act_done,Done,Terminado,0
+model,"workflow.activity,name",shipment_out_return_act_done,Done,Terminado,0
+model,"workflow.activity,name",shipment_in_return_act_done,Done,Terminado,0
+model,"workflow.activity,name",inventory_act_done,Done,Terminado,0
 model,"workflow.activity,name",shipmentin_act_draft,Draft,Borrador,0
 model,"workflow.activity,name",shipmentout_act_draft,Draft,Borrador,0
 model,"workflow.activity,name",shipmentinternal_act_draft,Draft,Borrador,0
@@ -342,7 +342,7 @@ odt,stock.shipment.out.return.restocking_list,0,Supplier:,Proveedor:,0
 odt,stock.shipment.out.return.restocking_list,0,To Location,A ubicación,0
 odt,stock.shipment.out.return.restocking_list,0,Warehouse:,Almacén:,0
 selection,"stock.inventory,state",0,Canceled,Cancelado,0
-selection,"stock.inventory,state",0,Done,Hecho,0
+selection,"stock.inventory,state",0,Done,Terminado,0
 selection,"stock.inventory,state",0,Draft,Borrador,0
 selection,"stock.location,type",0,Customer,Cliente,0
 selection,"stock.location,type",0,Lost and Found,Perdido y encontrado,0
@@ -353,29 +353,29 @@ selection,"stock.location,type",0,View,Vista,0
 selection,"stock.location,type",0,Warehouse,Almacén,0
 selection,"stock.move,state",0,Assigned,Asignado,0
 selection,"stock.move,state",0,Canceled,Cancelado,0
-selection,"stock.move,state",0,Done,Hecho,0
+selection,"stock.move,state",0,Done,Terminado,0
 selection,"stock.move,state",0,Draft,Borrador,0
 selection,"stock.shipment.in.return,state",0,Assigned,Asignado,0
 selection,"stock.shipment.in.return,state",0,Canceled,Cancelado,0
-selection,"stock.shipment.in.return,state",0,Done,Hecho,0
+selection,"stock.shipment.in.return,state",0,Done,Terminado,0
 selection,"stock.shipment.in.return,state",0,Draft,Borrador,0
 selection,"stock.shipment.in.return,state",0,Waiting,En espera,0
 selection,"stock.shipment.in,state",0,Canceled,Cancelado,0
-selection,"stock.shipment.in,state",0,Done,Hecho,0
+selection,"stock.shipment.in,state",0,Done,Terminado,0
 selection,"stock.shipment.in,state",0,Draft,Borrador,0
 selection,"stock.shipment.in,state",0,Received,Recibido,0
 selection,"stock.shipment.internal,state",0,Assigned,Asignado,0
 selection,"stock.shipment.internal,state",0,Canceled,Cancelado,0
-selection,"stock.shipment.internal,state",0,Done,Hecho,0
+selection,"stock.shipment.internal,state",0,Done,Terminado,0
 selection,"stock.shipment.internal,state",0,Draft,Borrador,0
 selection,"stock.shipment.internal,state",0,Waiting,En espera,0
 selection,"stock.shipment.out.return,state",0,Canceled,Cancelado,0
-selection,"stock.shipment.out.return,state",0,Done,Hecho,0
+selection,"stock.shipment.out.return,state",0,Done,Terminado,0
 selection,"stock.shipment.out.return,state",0,Draft,Borrador,0
 selection,"stock.shipment.out.return,state",0,Received,Recibido,0
 selection,"stock.shipment.out,state",0,Assigned,Asignado,0
 selection,"stock.shipment.out,state",0,Canceled,Cancelado,0
-selection,"stock.shipment.out,state",0,Done,Hecho,0
+selection,"stock.shipment.out,state",0,Done,Terminado,0
 selection,"stock.shipment.out,state",0,Draft,Borrador,0
 selection,"stock.shipment.out,state",0,Packed,Empaquetado,0
 selection,"stock.shipment.out,state",0,Waiting,En espera,0
@@ -399,11 +399,11 @@ view,stock.location_stock_date.init,0,Product Quantity.,Cantidad de producto.,0
 view,stock.move,0,Cancel,Cancelar,0
 view,stock.move,0,Move,Movimiento,0
 view,stock.move,0,Moves,Movimientos,0
-view,stock.move,0,Set Done,Marcar como hecho,0
+view,stock.move,0,Set Done,Marcar como terminado,0
 view,stock.move,0,Set Draft,Marcar como borrador,0
 view,stock.product_stock_date.init,0,Product Quantity.,Cantidad de producto.,0
 view,stock.shipment.in,0,Cancel,Cancelar,0
-view,stock.shipment.in,0,Done,Hecho,0
+view,stock.shipment.in,0,Done,Terminado,0
 view,stock.shipment.in,0,Draft,Borrador,0
 view,stock.shipment.in,0,Incoming Moves,Movimientos de entrada,0
 view,stock.shipment.in,0,Inventory Moves,Movimientos de inventario,0
@@ -414,7 +414,7 @@ view,stock.shipment.in,0,Supplier Shipment,Envío de proveedor,0
 view,stock.shipment.in,0,Supplier Shipments,Envíos de proveedor,0
 view,stock.shipment.in.return,0,Assign,Asignar,0
 view,stock.shipment.in.return,0,Cancel,Cancelar,0
-view,stock.shipment.in.return,0,Done,Hecho,0
+view,stock.shipment.in.return,0,Done,Terminado,0
 view,stock.shipment.in.return,0,Draft,Borrador,0
 view,stock.shipment.in.return,0,Reset to Draft,Restablecer a borrador,0
 view,stock.shipment.in.return,0,Supplier Return Shipment,Envio de devolución a proveedor,0
@@ -425,13 +425,13 @@ view,stock.shipment.in.return.assign.ask_force,0,Unable to Assign,No es posible 
 view,stock.shipment.in.return.assign.ask_force,0,Unable to assign those products:,No es posible asignar esos productos:,0
 view,stock.shipment.internal,0,Assign,Asignar,0
 view,stock.shipment.internal,0,Cancel,Cancelar,0
-view,stock.shipment.internal,0,Done,Hecho,0
+view,stock.shipment.internal,0,Done,Terminado,0
 view,stock.shipment.internal,0,Draft,Borrador,0
 view,stock.shipment.internal,0,Force Assign,Forzar asignación,0
 view,stock.shipment.internal,0,Internal Shipment,Envío interno,0
 view,stock.shipment.internal,0,Internal Shipments,Envíos internos,0
 view,stock.shipment.internal,0,Reset to Draft,Restablecer a borrador,0
-view,stock.shipment.internal,0,Set Done,Marcar como hecho,0
+view,stock.shipment.internal,0,Set Done,Marcar como terminado,0
 view,stock.shipment.internal,0,Set Waiting,Colocar en espera,0
 view,stock.shipment.internal,0,Waiting,En espera,0
 view,stock.shipment.internal.assign.ask_force,0,Moves,Movimientos,0
@@ -441,14 +441,14 @@ view,stock.shipment.out,0,Assign,Asignar,0
 view,stock.shipment.out,0,Cancel,Cancelar,0
 view,stock.shipment.out,0,Customer Shipment,Envío a cliente,0
 view,stock.shipment.out,0,Customer Shipments,Envíos a clientes,0
-view,stock.shipment.out,0,Done,Hecho,0
+view,stock.shipment.out,0,Done,Terminado,0
 view,stock.shipment.out,0,Draft,Borrador,0
 view,stock.shipment.out,0,Force Assign,Forzar asignación,0
 view,stock.shipment.out,0,Inventory Moves,Movimientos de inventario,0
 view,stock.shipment.out,0,Make shipment,Hacer empaquetado,0
 view,stock.shipment.out,0,Outgoing Moves,Movimientos de salida,0
 view,stock.shipment.out,0,Reset to Draft,Restablecer a borrador,0
-view,stock.shipment.out,0,Set Done,Marcar como hecho,0
+view,stock.shipment.out,0,Set Done,Marcar como terminado,0
 view,stock.shipment.out,0,Set Waiting,Colocar en espera,0
 view,stock.shipment.out,0,Unpack,Desempaquetar,0
 view,stock.shipment.out,0,Waiting,En espera,0
@@ -458,7 +458,7 @@ view,stock.shipment.out.assign.ask_force,0,Unable to assign those products:,No e
 view,stock.shipment.out.return,0,Cancel,Cancelar,0
 view,stock.shipment.out.return,0,Customer Return Shipment,Envio de devolución de cliente,0
 view,stock.shipment.out.return,0,Customer Return Shipments,Envios de devolución de cliente,0
-view,stock.shipment.out.return,0,Done,Hecho,0
+view,stock.shipment.out.return,0,Done,Terminado,0
 view,stock.shipment.out.return,0,Incoming Moves,Movimientos de entrada,0
 view,stock.shipment.out.return,0,Inventory Moves,Movimientos de inventario,0
 view,stock.shipment.out.return,0,Moves,Movimientos,0
