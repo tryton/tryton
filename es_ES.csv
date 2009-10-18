@@ -57,7 +57,7 @@ model,"res.user,name",user_generate_request,Cron Purchase Request,Programador de
 model,"stock.order_point,name",0,Order Point,Punto de orden,0
 selection,"purchase.request,origin",0,Order Point,Punto de orden,0
 selection,"purchase.request,state",0,Cancel,Cancelar,0
-selection,"purchase.request,state",0,Done,Hecho,0
+selection,"purchase.request,state",0,Done,Terminada,0
 selection,"purchase.request,state",0,Draft,Borrador,0
 selection,"purchase.request,state",0,Purchased,Comprado,0
 selection,"stock.order_point,type",0,Internal,Interno,0
