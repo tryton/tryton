@@ -3,9 +3,9 @@
 {
     'name': 'Account',
     'name_de_DE': 'Buchhaltung',
-    'name_fr_FR': 'Comptabilité',
     'name_es_CO': 'Contabilidad',
     'name_es_ES': 'Contabilidad',
+    'name_fr_FR': 'Comptabilité',
     'version': '1.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -42,22 +42,6 @@ Zugehörige Berichte:
     - Fälligkeitsliste
     - Allgemeines Journal
 ''',
-    'description_fr_FR': '''Module financier et comptable avec:
-    - Comptabilité générale
-    - Gestion des années fiscales
-    - Gestion des taxes
-    - Journaux d'entrées
-    - Réconciliation
-
-Et les rapports:
-    - Grand livre
-    - Balance
-    - Bilan
-    - Compte des résultats
-    - Balance des tiers
-    - Balance agée
-    - Journal général
-''',
     'description_es_CO': '''El módulo Financiero y de Contabilidad cuenta con:
     - Contabilidad General
     - Manejo de Años Fiscales
@@ -90,6 +74,22 @@ Y con los informes:
     - Saldo Vencido
     - Libro diario
 ''',
+    'description_fr_FR': '''Module financier et comptable avec:
+    - Comptabilité générale
+    - Gestion des années fiscales
+    - Gestion des taxes
+    - Journaux d'entrées
+    - Réconciliation
+
+Et les rapports:
+    - Grand livre
+    - Balance
+    - Bilan
+    - Compte des résultats
+    - Balance des tiers
+    - Balance agée
+    - Journal général
+''',
     'depends': [
         'ir',
         'res',
@@ -107,9 +107,9 @@ Y con los informes:
         'party.xml',
     ],
     'translation': [
-        'fr_FR.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ],
 }
