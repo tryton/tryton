@@ -3,9 +3,9 @@
 {
     "name" : "Account Invoice Line Standalone",
     "name_de_DE" : "Fakturierung ungebundene Rechnungsposition",
-    "name_fr_FR" : "Ligne de facture autonome",
     "name_es_CO" : "Línea de factura autónoma",
     "name_es_ES" : "Línea de factura independiente",
+    "name_fr_FR" : "Ligne de facture autonome",
     "version" : "1.3.0",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
@@ -20,10 +20,6 @@ type, company, currency and party.
     - Innerhalb einer Rechnung können nur Rechnungspositionen mit
       übereinstimmendem Typ, Unternehmen, Währung und Partei verwendet werden.
 ''',
-    "description_fr_FR": '''Permet de créer des lignes de facture autonomes et de les ajouter
-ensuite à des factures dans l'état brouillon. La facture n'acceptera
-que des lignes qui ont les même type, société, devis et tiers.
-''',
     "description_es_CO": '''Permite crear líneas individuales para facturación y añadirlas
 posteriormente a una factura en borrador. La factuara aceptará únicamente líneas de factura del
 mismo tipo, compañía, moneda y tercero.
@@ -31,6 +27,10 @@ mismo tipo, compañía, moneda y tercero.
     "description_es_ES": '''Permite crear líneas de factura independientes y
 añadirlas a una factura borrador. La factura solo aceptará líneas de factura
 con el mismo tipo, empresa, divisa y tercero.
+''',
+    "description_fr_FR": '''Permet de créer des lignes de facture autonomes et de les ajouter
+ensuite à des factures dans l'état brouillon. La facture n'acceptera
+que des lignes qui ont les même type, société, devis et tiers.
 ''',
     "depends" : [
         "ir",
@@ -41,8 +41,8 @@ con el mismo tipo, empresa, divisa y tercero.
     ],
     'translation': [
         'de_DE.csv',
-        'fr_FR.csv',
         'es_CO.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ],
 }
