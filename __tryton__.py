@@ -3,9 +3,9 @@
 {
     'name' : 'Google Maps',
     'name_de_DE': 'Google Maps',
-    'name_fr_FR': 'Cartes Google',
     'name_es_CO': 'Mapas de Google',
     'name_es_ES': 'Mapas de Google',
+    'name_fr_FR': 'Cartes Google',
     'version' : '1.3.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
