@@ -2,10 +2,10 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Stock Inventory for many locations',
-    'name_fr_FR': 'Inventaire de stock par liste de locations',
     'name_de_DE': 'Lagerverwaltung Bestandskorrektur für mehrere Lagerorte',
-    'name_es_ES': 'Inventario de existencias para muchas ubicaciones',
     'name_es_CO': 'Inventario de existencias para muchas ubicaciones',
+    'name_es_ES': 'Inventario de existencias para muchas ubicaciones',
+    'name_fr_FR': 'Inventaire de stock par liste de locations',
     'version': '1.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -13,18 +13,18 @@
     'description': '''Add a wizard that allows to create automatically inventories for a
 given list of locations.
 ''',
-    'description_fr_FR': '''Ajoute un wizard qui permet de créer automatiquement des inventaires
-pour une liste donnée d'emplacements.
-''',
     'description_de_DE': '''Bestandskorrektur für mehrere Lagerorte
     - Fügt einen Wizard hinzu, der automatisch die Lagerbestände für eine Liste
       von Lagerorten erzeugt.
 ''',
+    'description_es_CO': '''Añade un asistente que permite crear inventarios
+automáticos para una lista dada de ubicaciones.
+''',
     'description_es_ES': '''Añade un asistente que permite crear inventarios
 automáticos para una lista dada de ubicaciones.
 ''',
-    'description_es_CO': '''Añade un asistente que permite crear inventarios
-automáticos para una lista dada de ubicaciones.
+    'description_fr_FR': '''Ajoute un wizard qui permet de créer automatiquement des inventaires
+pour une liste donnée d'emplacements.
 ''',
     'depends': [
         'ir',
@@ -36,9 +36,9 @@ automáticos para una lista dada de ubicaciones.
         'inventory.xml',
     ],
     'translation': [
-        'fr_FR.csv',
         'de_DE.csv',
-        'es_ES.csv',
         'es_CO.csv',
+        'es_ES.csv',
+        'fr_FR.csv',
     ],
 }
