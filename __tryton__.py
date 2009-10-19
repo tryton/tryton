@@ -3,9 +3,9 @@
 {
     "name" : "Purchase Invoice Line Standalone",
     "name_de_DE" : "Einkauf ungebundene Rechnungsposition",
-    "name_fr_FR" : "Ligne de facture autonome - Achat",
     "name_es_CO" : "Línea de Factura autónoma en Compras",
     "name_es_ES" : "Línea de factura de compra independiente",
+    "name_fr_FR" : "Ligne de facture autonome - Achat",
     "version" : "1.3.0",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
@@ -21,10 +21,6 @@ from differents purchases.
     - Ermöglicht die Zusammenstellung von Rechnungen aus Einkaufspositionen
       verschiedener Einkäufe.
 ''',
-    "description_fr_FR": '''Modifie le comportement de l'ordre d'achat pour créer des lignes de
-facture autonomes au lieu de factures complètes. Cela permet de
-composer des factures avec des lignes provenant de différents achats.
-''',
     "description_es_CO": '''Modifica el comportamiento de orden de compra permitiendo crear
 líneas autónomas en lugar de una factura completa. Permite componer facturas con
 líneas originadas en diferentes compras.
@@ -33,6 +29,10 @@ líneas originadas en diferentes compras.
 Modifica el comportamiento de orden de compra permitiendo crear líneas
 independientes en lugar de una factura completa. Esto permite componer
 facturas con líneas originadas en diferentes compras.
+''',
+    "description_fr_FR": '''Modifie le comportement de l'ordre d'achat pour créer des lignes de
+facture autonomes au lieu de factures complètes. Cela permet de
+composer des factures avec des lignes provenant de différents achats.
 ''',
     "depends" : [
         "ir",
@@ -44,8 +44,8 @@ facturas con líneas originadas en diferentes compras.
     ],
     'translation': [
         'de_DE.csv',
-        'fr_FR.csv',
         'es_CO.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ],
 }
