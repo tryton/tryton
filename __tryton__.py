@@ -56,9 +56,9 @@ Lance les planificateurs sur chaque société.
         'cron.xml',
     ],
     'translation': [
-        'fr_FR.csv',
+        'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
-        'de_DE.csv',
+        'fr_FR.csv',
     ]
 }
