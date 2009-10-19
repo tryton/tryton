@@ -3,9 +3,9 @@
 {
     'name': 'Account Invoice',
     'name_de_DE': 'Fakturierung',
-    'name_fr_FR': 'Facturation',
     'name_es_CO': 'Facturación',
     'name_es_ES': 'Facturación',
+    'name_fr_FR': 'Facturation',
     'version': '1.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -30,16 +30,6 @@ Ermöglicht:
     - die Definition von Rechnungssequenzen für das Geschäftsjahr bzw. die Buchungszeiträume
     - die Erstellung von Gutschriften zu jeglicher Rechnung
 ''',
-    'description_fr_FR': '''Module financier et comptable avec:
-    - Condition de paiement
-    - Facture / Note de crédit
-    - Facture fournisseur / Note de crédit fournisseur
-
-Avec la possibilité:
-    - de suivre le paiment des factures
-    - de définir les numérotations de facture par période ou par année fiscale
-    - de créditer n'importe quelle facture
-''',
     'description_es_CO': '''Módulo Financiero y de Contabilidad con:
     - Términos de Pago
     - Notas de Facturación / Crédito
@@ -60,6 +50,16 @@ Con las posibilidades de:
     - definir secuencias de facturas por ejercicio fiscal o período.
     - pagar cualquier factura.
 ''',
+    'description_fr_FR': '''Module financier et comptable avec:
+    - Condition de paiement
+    - Facture / Note de crédit
+    - Facture fournisseur / Note de crédit fournisseur
+
+Avec la possibilité:
+    - de suivre le paiment des factures
+    - de définir les numérotations de facture par période ou par année fiscale
+    - de créditer n'importe quelle facture
+''',
     'depends': [
         'ir',
         'account',
@@ -78,9 +78,9 @@ Con las posibilidades de:
         'account.xml',
     ],
     'translation': [
-        'fr_FR.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
+        'fr_FR.csv',
     ]
 }
