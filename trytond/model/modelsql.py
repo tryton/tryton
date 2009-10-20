@@ -1021,7 +1021,7 @@ class ModelSQL(ModelStorage):
                         or not hasattr(model, 'write'):
                     continue
                 cursor.execute('SELECT id FROM "' + model._table + '" ' \
-                        'WHERE "' + field_name '" IN (' + str_d + ')', sub_ids)
+                        'WHERE "' + field_name + '" IN (' + str_d + ')', sub_ids)
                 model_ids = [x[0] for x in cursor.fetchall()]
                 if model_ids:
                     model.write(cursor, user, model_ids, {
@@ -1033,7 +1033,7 @@ class ModelSQL(ModelStorage):
                         or not hasattr(model, 'delete'):
                     continue
                 cursor.execute('SELECT id FROM "' + model._table + '" ' \
-                        'WHERE "' + field_name '" IN (' + str_d + ')', sub_ids)
+                        'WHERE "' + field_name + '" IN (' + str_d + ')', sub_ids)
                 model_ids = [x[0] for x in cursor.fetchall()]
                 if model_ids:
                     model.delete(cursor, user, model_ids, context=delete_ctx)
