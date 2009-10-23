@@ -68,6 +68,27 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="value"/>
                                     <field name="comment"/>
                                 </tree>
+                                <form string="Contact Mechanism" cursor="type">
+                                    <label id="empty" colspan="2"/>
+                                    <label name="active"/>
+                                    <field name="active"/>
+                                    <label name="type"/>
+                                    <field name="type"/>
+                                    <group col="2" colspan="2" id="value">
+                                        <label name="other_value"/>
+                                        <field name="other_value"/>
+                                        <label name="website"/>
+                                        <field name="website" widget="url"/>
+                                        <label name="email"/>
+                                        <field name="email" widget="email"/>
+                                        <label name="skype"/>
+                                        <field name="skype" widget="callto"/>
+                                        <label name="sip"/>
+                                        <field name="sip" widget="sip"/>
+                                    </group>
+                                    <separator name="comment" colspan="4"/>
+                                    <field name="comment" colspan="4"/>
+                                </form>
                             </field>
                             <group col="1" colspan="2" id="categories">
                                 <separator string="Categories" id="categories"/>
