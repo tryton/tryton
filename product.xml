@@ -168,6 +168,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="context">{'categories': [active_id]}</field>
             <field name="domain">[('category','child_of', [active_id], 'parent')]</field>
         </record>
+        <record model="ir.action.act_window.view" id="act_product_by_category_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_view_tree"/>
+            <field name="act_window" ref="act_product_by_category"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_by_category_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_view_form"/>
+            <field name="act_window" ref="act_product_by_category"/>
+        </record>
         <record model="ir.action.keyword" id="act_product_by_category_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model">product.category,0</field>
