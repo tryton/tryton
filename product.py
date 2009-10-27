@@ -81,15 +81,21 @@ class Product(OSV):
 
         if not (context and context.get('locations') and domain):
             return []
-        if (name != 'forecast_quantity') and context.get('stock_date_end'):
-            if context['stock_date_end'] != date_obj.today(cursor, user,
-                    context=context):
-                context = context.copy()
-                del context['stock_date_end']
 
-        if name == 'forecast_quantity' and not context.get('stock_date_end'):
+        if name == 'quantity' and \
+                context.get('stock_date_end') and \
+                context.get('stock_date_end') > \
+                date_obj.today(cursor, user, context=context):
+
             context = context.copy()
-            context['stock_date_end'] = datetime.date.max
+            context['stock_date_end'] = date_obj.today(
+                cursor, user, context=context)
+
+        if name == 'forecast_quantity':
+            context = context.copy()
+            context['forecast'] = True
+            if not context.get('stock_date_end'):
+                context['stock_date_end'] = datetime.date.max
 
         pbl = self.products_by_location(
             cursor, user, location_ids=context['locations'], with_childs=True,
