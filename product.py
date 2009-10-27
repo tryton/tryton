@@ -72,6 +72,7 @@ class Product(ModelSQL, ModelView):
             return dict([(id, 0.0) for id in ids])
 
         if name == 'quantity' and \
+                context.get('stock_date_end') and \
                 context.get('stock_date_end') > \
                 date_obj.today(cursor, user, context=context):
 
