@@ -88,7 +88,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">product.product</field>
             <field name="view_type">form</field>
             <field name="window_name" eval="False"/>
-            <field name="domain">[('quantity', '!=', 0.0)]</field>
+            <field name="domain">['OR', ('quantity', '!=', 0.0), ('forecast_quantity', '!=', 0.0)]</field>
         </record>
         <record model="ir.action.wizard" id="wizard_product_open">
             <field name="name">Product Quantities</field>
