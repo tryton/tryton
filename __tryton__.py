@@ -7,7 +7,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Accounting',
     'description': '''Define an account chart template for Belgium.
 Usefull to create a Belgium account chart with the wizard in
 "Financial Management>Configuration>General Account>Create Chart of Account from Template".
