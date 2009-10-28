@@ -232,10 +232,6 @@ class Product(ModelSQL, ModelView):
                     context['stock_date_end'],
                     context['stock_date_end'],
                     ]
-        # infinite date end: take all states for the moves
-        elif context['stock_date_end'] == datetime.date.max:
-            state_date_clause = 'state in (%s, %s, %s)'
-            state_date_vals = ['done', 'assigned', 'draft']
         # future date end: filter move on state done and date
         # before today, or on all state and date between today and
         # date_end.
