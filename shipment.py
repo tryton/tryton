@@ -312,6 +312,9 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
         res['to_location'] = incoming_move.shipment_in.warehouse.\
                 storage_location.id
         res['state'] = 'draft'
+        # Product will be considered in stock only when the inventory
+        # move will be made:
+        res['planned_date'] = False
         res['company'] = incoming_move.company.id
         return res
 
@@ -797,6 +800,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     'quantity': out_quantity,
                     'shipment_out': shipment.id,
                     'state': 'draft',
+                    'planned_date': shipment.planned_date,
                     'company': move.company.id,
                     'currency': move.company.currency.id,
                     'unit_price': unit_price,
@@ -869,6 +873,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     'uom': move.uom.id,
                     'quantity': move.quantity,
                     'shipment_out': shipment.id,
+                    'planned_date': move.planned_date,
                     'state': 'draft',
                     'company': move.company.id,
                     }, context=context)
@@ -1212,6 +1217,9 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
         res['to_location'] = incoming_move.shipment_out_return.warehouse.\
                 storage_location.id
         res['state'] = 'draft'
+        # Product will be considered in stock only when the inventory
+        # move will be made:
+        res['planned_date'] = False
         res['company'] = incoming_move.company.id
         return res
 
