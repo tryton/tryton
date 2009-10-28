@@ -278,7 +278,8 @@ class Product(ModelSQL, ModelView):
                 ')'
 
             state_date_vals = [
-                'done', 'assigned', today, today,
+                'done', context.get('stock_assign') and 'assigned' or 'done',
+                today, today,
                 'done', 'assigned', 'draft',
                 context['stock_date_end'], today,
                 context['stock_date_end'], today,
