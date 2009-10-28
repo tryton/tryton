@@ -10,7 +10,6 @@
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'category': 'Sale',
     'description': '''Define sale order.
 Add to product sale informations.
 Define the sale price as the list price.
