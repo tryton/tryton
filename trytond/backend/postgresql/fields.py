@@ -69,6 +69,8 @@ class Sha(Field):
     @staticmethod
     def sql_format(value):
         if isinstance(value, basestring):
+            if isinstance(value, unicode):
+                value = value.encode('utf-8')
             if hashlib:
                 value = hashlib.sha1(value).hexdigest()
             else:
