@@ -7,7 +7,11 @@ from trytond.report import Report
 from trytond.backend import TableHandler, FIELDS
 from decimal import Decimal
 import datetime
-import md5
+try:
+    import hashlib
+except ImportError:
+    hashlib = None
+    import md5
 import mx.DateTime
 
 _MOVE_STATES = {
@@ -1258,7 +1262,10 @@ class Line(ModelSQL, ModelView):
             result['fields'] = self.fields_get(cursor, user,
                     fields_names=list(fields), context=context)
             del result['md5']
-            result['md5'] = md5.new(str(result)).hexdigest()
+            if hashlib:
+                result['md5'] = hashlib.md5(str(result)).hexdigest()
+            else:
+                result['md5'] = md5.new(str(result)).hexdigest()
             if hexmd5 == result['md5']:
                 return True
         return result
