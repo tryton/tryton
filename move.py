@@ -60,7 +60,8 @@ class Move(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
             states={
                 'readonly': "state != 'draft'",
-            }, domain=["('id', '=', context.get('company', 0))"])
+            }, domain=["('id', 'company' in context and '=' or '!=', " \
+                    "context.get('company', 0))"])
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
                 'invisible': "not unit_price_required",
