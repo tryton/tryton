@@ -35,7 +35,8 @@ class FiscalYear(ModelSQL, ModelView):
                     context="{'code': 'account.move', 'company': company}",
             depends=['company'])
     company = fields.Many2One('company.company', 'Company', required=True,
-            domain="[('id', '=', context.get('company', False))]")
+            domain="[('id', 'company' in context and '=' or '!=', " \
+                    "context.get('company', 0))]")
 
     def __init__(self):
         super(FiscalYear, self).__init__()

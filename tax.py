@@ -611,7 +611,8 @@ class Tax(ModelSQL, ModelView):
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE')
     childs = fields.One2Many('account.tax', 'parent', 'Children')
     company = fields.Many2One('company.company', 'Company', required=True,
-            domain="[('id', '=', context.get('company', 0))]")
+            domain="[('id', 'company' in context and '=' or '!=', " \
+                    "context.get('company', 0))]")
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
             domain="[('company', '=', company)]",
             states={
@@ -1003,7 +1004,8 @@ class Rule(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', required=True, translate=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-            select=1, domain="[('id', '=', context.get('company', 0))]")
+            select=1, domain="[('id', 'company' in context '=' or '!=', " \
+                    "context.get('company', 0))]")
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
     template = fields.Many2One('account.tax.rule.template', 'Template')
 
