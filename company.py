@@ -182,7 +182,8 @@ User()
 class Property(ModelSQL, ModelView):
     _name = 'ir.property'
     company = fields.Many2One('company.company', 'Company',
-            domain=["('id', '=', context.get('company', 0))"])
+            domain=["('id', 'company' in context and '=' or '!=', " \
+                    "context.get('company', 0))"])
 
     def _set_values(self, cursor, user_id, name, model, res_id, val, field_id,
             context=None):
@@ -207,7 +208,8 @@ Property()
 class Sequence(ModelSQL, ModelView):
     _name = 'ir.sequence'
     company = fields.Many2One('company.company', 'Company',
-            domain=["('id', '=', context.get('company', False))"])
+            domain=["('id', 'company' in context and '=' or '!=', " \
+                    "context.get('company', 0))"])
 
     def __init__(self):
         super(Sequence, self).__init__()
