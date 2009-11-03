@@ -298,7 +298,7 @@ class Collection(OSV):
             try:
                 attachment_obj.create(cursor, user, {
                     'name': name,
-                    'datas': base64.encodestring(data),
+                    'datas': base64.encodestring(data or ''),
                     'name': name,
                     'res_model': object_name,
                     'res_id': object_id,
@@ -308,7 +308,7 @@ class Collection(OSV):
         else:
             try:
                 attachment_obj.write(cursor, user, object_id2, {
-                    'datas': base64.encodestring(data),
+                    'datas': base64.encodestring(data or ''),
                     }, context=context)
             except:
                 raise DAV_Forbidden
