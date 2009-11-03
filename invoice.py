@@ -1290,7 +1290,7 @@ class InvoiceLine(ModelSQL, ModelView):
             string='Currency Digits', on_change_with=['currency'])
     company = fields.Many2One('company.company', 'Company', states={
         'required': "not bool(invoice)",
-        }, domain=["('id', 'compamy' in context and '=' or '!=', " \
+        }, domain=["('id', 'company' in context and '=' or '!=', " \
                 "context.get('company', 0))"])
 
     sequence = fields.Integer('Sequence', states={
