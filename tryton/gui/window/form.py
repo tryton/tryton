@@ -262,7 +262,10 @@ class Form(SignalEvent):
                 if line.get(key, False) \
                         and key in ('create_date', 'write_date'):
                     display_format = date_format() + ' ' + HM_FORMAT
-                    date = mx.DateTime.strptime(str(line[key]), DHM_FORMAT)
+                    if hasattr(line[key], 'timetuple'):
+                        date = mx.DateTime.DateTime(*(line[key].timetuple()[:6]))
+                    else:
+                        date = mx.DateTime.strptime(str(line[key]), DHM_FORMAT)
                     if 'timezone' in rpc.CONTEXT:
                         try:
                             import pytz
