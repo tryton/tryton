@@ -812,7 +812,8 @@ class ModelStorage(Model):
             if not getattr(self, field[0])(cursor, user, ids):
                 self.raise_user_error(cursor, field[1], context=context)
 
-        if not 'res.user' in self.pool.object_name_list():
+        if not 'res.user' in self.pool.object_name_list() \
+                or user == 0:
             ctx_pref = {
             }
         else:
