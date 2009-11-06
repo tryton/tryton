@@ -90,20 +90,22 @@ class Journal(ModelSQL, ModelView):
             context={'code': 'account.journal'})
     credit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Credit Account',
-            domain="[('kind', '!=', 'view'), ('company', '=', company)]",
+            domain="[('kind', '!=', 'view'), " \
+                    "('company', '=', context.get('company'))]",
             states={
                 'required': "centralised or " \
                         "(type == 'cash' and context.get('company'))",
                 'invisible': "not context.get('company')",
-            }, depends=['company', 'type', 'centralised'])
+            }, depends=['type', 'centralised'])
     debit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Debit Account',
-            domain="[('kind', '!=', 'view'), ('company', '=', company)]",
+            domain="[('kind', '!=', 'view'), " \
+                    "('company', '=', context.get('company'))]",
             states={
                 'required': "centralised or " \
                         "(type == 'cash' and context.get('company'))",
                 'invisible': "not context.get('company')",
-            }, depends=['company', 'type', 'centralised'])
+            }, depends=['type', 'centralised'])
 
     def __init__(self):
         super(Journal, self).__init__()
