@@ -186,10 +186,10 @@ class ParserTree(ParserInterface):
                         label.set_markup(label_str)
                     label_sum = gtk.Label()
                     label_sum.set_use_markup(True)
-                    if isinstance(fields.get('digits'), str):
+                    if isinstance(fields[fname].get('digits'), str):
                         digits = 2
                     else:
-                        digits = fields.get('digits', (16, 2))[1]
+                        digits = fields[fname].get('digits', (16, 2))[1]
                     dict_widget[i] = (fname, label, label_sum, digits,
                             label_bold)
             elif node.localName == 'button':
