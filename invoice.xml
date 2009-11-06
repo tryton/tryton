@@ -341,7 +341,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Draft Credit Notes</field>
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
-            <field name="domain">[('type', '=', 'out_credit_note'), ('domain', '=', 'draft')]</field>
+            <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'draft')]</field>
             <field name="context">{'type': 'out_credit_note'}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form3_view1">
@@ -361,7 +361,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Pro Forma Credit Notes</field>
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
-            <field name="domain">[('type', '=', 'out_credit_note'), ('domain', '=', 'proforma')]</field>
+            <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'proforma')]</field>
             <field name="context">{'type': 'out_credit_note'}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form4_view1">
@@ -381,7 +381,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Opened Credit Notes</field>
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
-            <field name="domain">[('type', '=', 'out_credit_note'), ('domain', '=', 'open')]</field>
+            <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'open')]</field>
             <field name="context">{'type': 'out_credit_note'}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form5_view1">
