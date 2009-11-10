@@ -169,7 +169,7 @@ class Party(ModelSQL, ModelView):
         args2 = []
         i = 0
         while i < len(args):
-            ids = self.search(cursor, user, [('code', '=', args[i][2])],
+            ids = self.search(cursor, user, [('code', args[i][1], args[i][2])],
                     context=context)
             if ids:
                 args2.append(('id', 'in', ids))
