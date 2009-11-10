@@ -1,5 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+_TRYTON_RELOAD = False
 from trytond.protocols.sslsocket import SSLSocket
 from trytond.config import CONFIG
 from trytond.security import login
@@ -17,7 +18,7 @@ import base64
 import time
 from DAV import AuthServer, WebDAVServer, iface
 from DAV.errors import *
-from DAV.constants import COLLECTION, OBJECT
+from DAV.constants import COLLECTION, OBJECT, DAV_VERSION_1, DAV_VERSION_2
 from DAV.utils import get_uriparentpath, get_urifilename, quote_uri
 from DAV.davcmd import copyone, copytree, moveone, movetree, delone, deltree
 import urllib
@@ -26,6 +27,8 @@ import traceback
 import logging
 from threading import local
 
+DAV_VERSION_1['version'] += ',access-control'
+DAV_VERSION_2['version'] += ',access-control'
 
 # Local int for multi-thread
 class LocalInt(local):
