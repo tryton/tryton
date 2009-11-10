@@ -8,6 +8,11 @@ try:
 except:
     pass
 
+# True only if running as a py2exe app
+if os.name == 'nt' and hasattr(sys, "frozen"):
+    sys.stdout = open(os.devnull, 'w')
+    sys.stderr = open(os.devnull, 'w')
+
 if os.name == 'mac' or \
         (hasattr(os, 'uname') and os.uname()[0] == 'Darwin'):
     resources = os.path.join(os.path.dirname(sys.argv[0]), '..', 'Resources')
