@@ -26,6 +26,8 @@ import sys
 import traceback
 import logging
 from threading import local
+import xml.dom.minidom
+domimpl = xml.dom.minidom.getDOMImplementation()
 
 DAV_VERSION_1['version'] += ',access-control'
 DAV_VERSION_2['version'] += ',access-control'
@@ -473,6 +475,29 @@ class TrytonDAVInterface(iface.dav_interface):
 
     def copycol(self, src, dst):
         return self.mkcol(dst)
+
+    def _get_dav_current_user_privilege_set(self, uri):
+        doc = domimpl.createDocument(None, 'privilege', None)
+        privilege = doc.documentElement
+        privilege.tagName = 'D:privilege'
+        read = doc.createElement('D:read')
+        privilege.appendChild(read)
+        write = doc.createElement('D:write')
+        privilege.appendChild(write)
+        bind = doc.createElement('D:bind')
+        privilege.appendChild(bind)
+        unbind = doc.createElement('D:unbind')
+        privilege.appendChild(unbind)
+        write_content = doc.createElement('D:write-content')
+        privilege.appendChild(write_content)
+        write_properties = doc.createElement('D:write-properties')
+        privilege.appendChild(write_properties)
+        read_acl = doc.createElement('D:read-acl')
+        privilege.appendChild(read_acl)
+        return privilege
+
+TrytonDAVInterface.PROPS['DAV:'] = tuple(list(TrytonDAVInterface.PROPS['DAV:']) \
+        + ['current-user-privilege-set'])
 
 
 class WebDAVAuthRequestHandler(AuthServer.BufferedAuthRequestHandler,
