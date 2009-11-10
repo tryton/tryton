@@ -106,6 +106,8 @@ class Product(ModelSQL, ModelView):
             ids = self.search(cursor, user, [('code', args[i][1], args[i][2])],
                     context=context)
             if ids:
+                ids += self.search(cursor, user,
+                        [('name', args[i][1], args[i][2])], context=context)
                 args2.append(('id', 'in', ids))
             else:
                 args2.append(('name', args[i][1], args[i][2]))
