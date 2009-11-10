@@ -2552,3 +2552,62 @@ class CreditInvoice(Wizard):
         return res
 
 CreditInvoice()
+
+
+#Fix typo in domain for issue1280
+class ActionActWindow(ModelSQL, ModelView):
+    _name = 'ir.action.act_window'
+
+    def read(self, cursor, user, ids, fields_names=None, context=None):
+        model_data_obj = self.pool.get('ir.model.data')
+
+        model_data_ids = model_data_obj.search(cursor, user, [
+            ('fs_id', 'in', ['act_invoice_out_credit_note_form3',
+                'act_invoice_out_credit_note_form4',
+                'act_invoice_out_credit_note_form5']),
+            ('module', '=', 'account_invoice'),
+            ('inherit', '=', False),
+            ], context=context)
+        action_ids = [x.db_id for x in model_data_obj.browse(cursor, user,
+            model_data_ids, context=context)]
+
+        res = super(ActionActWindow, self).read(cursor, user, ids,
+                fields_names=fields_names, context=context)
+
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
+            res = [res]
+
+        if not fields_names or 'domain' in fields_names:
+            for model_data_id in action_ids:
+                if model_data_id in ids:
+                    for record in res:
+                        if 'domain' not in record:
+                            continue
+                        if record['id'] in action_ids:
+                            if record['domain'] == \
+                                    "[('type', '=', 'out_credit_note'), " \
+                                    "('domain', '=', 'draft')]":
+                                record['domain'] = \
+                                        "[('type', '=', 'out_credit_note'), " \
+                                        "('state', '=', 'draft')]"
+                            elif record['domain'] == \
+                                    "[('type', '=', 'out_credit_note'), " \
+                                    "('domain', '=', 'proforma')]":
+                                record['domain'] = \
+                                        "[('type', '=', 'out_credit_note'), " \
+                                        "('state', '=', 'proforma')]"
+                            elif record['domain'] == \
+                                    "[('type', '=', 'out_credit_note'), " \
+                                    "('domain', '=', 'open')]":
+                                record['domain'] = \
+                                        "[('type', '=', 'out_credit_note'), " \
+                                        "('state', '=', 'open')]"
+                    break
+        if int_id:
+            return res[0]
+        return res
+
+ActionActWindow()
