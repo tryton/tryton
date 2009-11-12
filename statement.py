@@ -287,7 +287,7 @@ class Line(ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party',
             on_change=['amount', 'party', 'invoice'])
     account = fields.Many2One('account.account', 'Account', required=True,
-            on_change=['account', 'invoice'])
+            on_change=['account', 'invoice'], domain=[('kind', '!=', 'view')])
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
