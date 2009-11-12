@@ -9,11 +9,11 @@ error,account.account.open_aged_balance,0,You cannot define overlapping terms,Di
 error,account.account.template,0,You can not create recursive accounts!,Konten können nicht rekursiv angelegt werden!,0
 error,account.fiscalyear,0,No fiscal year defined for this date!,Für dieses Datum ist kein Geschäftsjahr definiert!,0
 error,account.fiscalyear,0,"The balance of the account ""%s"" must be zero!","Der Saldo von Konto ""%s"" muss 0 sein",0
-error,account.fiscalyear,0,You can not change the post move sequence,Die Sequenz für Buchungsfestschreibungen kann nicht geändert werden!,0
+error,account.fiscalyear,0,You can not change the post move sequence,Der Nummernkreis für Buchungsfestschreibungen kann nicht geändert werden!,0
 error,account.fiscalyear,0,You can not close a fiscal year until there is older fiscal year opened!,"Das Geschäftsjahr kann nicht abgeschlossen werden, wenn ein älteres Geschäftsjahr geöffnet ist!",0
 error,account.fiscalyear,0,You can not have 2 fiscal years that overlaps!,Geschäftsjahre dürfen sich nicht überschneiden!,0
 error,account.fiscalyear,0,You can not reopen a fiscal year until there is more recent fiscal year closed!,"Ein Geschäftsjahr kann nicht wiedereröffnet werden, wenn ein jüngeres Geschäftsjahr noch geöffnet ist!",0
-error,account.fiscalyear,0,You must have different post move sequence per fiscal year!,Jedes Geschäftsjahr muss eine eigene Sequenz für Buchungsfestschreibungen haben!,0
+error,account.fiscalyear,0,You must have different post move sequence per fiscal year!,Für unterschiedliche Geschäftsjahre muss jeweils ein eigener Nummernkreis für Buchungsfestschreibungen erstellt werden!,0
 error,account.journal.period,0,You can not create a journal - period on a closed period!,In einem abgeschlossenen Buchungszeitraum kann kein Journal - Buchungszeitraum erstellt werden!,0
 error,account.journal.period,0,You can not modify/delete a journal - period with moves!,"Ein Journal - Buchungszeitraum kann nicht geändert oder gelöscht werden, wenn es Buchungen enthält!",0
 error,account.journal.period,0,You can not open a journal - period from a closed period!,In einem abgeschlossenen Buchungszeitraum kann kein Journal - Buchungszeitraum geöffnet werden!,0
@@ -46,13 +46,13 @@ error,account.move.reconciliation,0,"You can not create reconciliation where lin
 error,account.move.reconciliation,0,You can not modify a reconciliation!,Eine Abstimmung kann nicht geändert werden!,0
 error,account.period,0,No period defined for this date!,Kein Buchungszeitraum für dieses Datum definiert!,0
 error,account.period,0,The period dates must be in the fiscal year dates,Ein Buchungszeitraum muss innerhalb des Geschäftsjahres sein,0
-error,account.period,0,You can not change the post move sequence if there is already posted moves in the period,"Die Sequenz für Buchungsfestschreibungen ist nicht änderbar, wenn festgeschriebene Buchungen für diesen Buchungszeitraum existieren!",0
+error,account.period,0,You can not change the post move sequence if there is already posted moves in the period,"Der Nummernkreis für Buchungsfestschreibungen ist nicht änderbar, wenn festgeschriebene Buchungen für diesen Buchungszeitraum existieren!",0
 error,account.period,0,You can not close a period with non posted moves!,Die Buchungen eines Buchungszeitraums müssen sämtlich festgeschrieben sein um ihn schließen zu können!,0
 error,account.period,0,You can not create a period on a closed fiscal year!,In einem abgeschlossenen Geschäftsjahr kann kein Buchungszeitraum angelegt werden!,0
 error,account.period,0,You can not have two overlapping periods!,Buchungszeiträume dürfen sich nicht überschneiden!,0
 error,account.period,0,You can not modify/delete a period with moves!,"Ein Buchungszeitraum, der Buchungen enthält, kann nicht gelöscht werden!",0
 error,account.period,0,You can not open a period from a closed fiscal year!,Perioden eines abgeschlossenen Geschäftsjahres können nicht geöffnet werden,0
-error,account.period,0,You must have different post move sequences per fiscal year and in the same company!,Verschiedene Geschäftsjahre eines Unternehmens erfordern unterschiedliche Sequenzen für Buchungsfestschreibungen!,0
+error,account.period,0,You must have different post move sequences per fiscal year and in the same company!,Für unterschiedliche Geschäftsjahre eines Unternehmens muss jeweils ein eigener Nummernkreis für Buchungsfestschreibungen erstellt werden!,0
 error,account.tax.code,0,You can not create recursive tax codes!,Es können keine rekursiven Steuerkennziffern erstellt werden!,0
 error,account.tax.code.template,0,You can not create recursive tax codes!,Es können keine rekursiven Steuerkennziffern erstellt werden!,0
 error,account.tax.group,0,The code must be unique!,Code kann nicht mehrfach vergeben werden!,0
@@ -149,7 +149,7 @@ field,"account.account.type,income_statement",0,Income Statement,Gewinn- und Ver
 field,"account.account.type,name",0,Name,Name,0
 field,"account.account.type,parent",0,Parent,Übergeordnet (Kontotyp),0
 field,"account.account.type,rec_name",0,Name,Name,0
-field,"account.account.type,sequence",0,Sequence,Sequenz,0
+field,"account.account.type,sequence",0,Sequence,Reihenfolge,0
 field,"account.account.type,template",0,Template,Vorlage für Kontentyp,0
 field,"account.account.type.template,balance_sheet",0,Balance Sheet,Bilanzbogen,0
 field,"account.account.type.template,childs",0,Children,Untergeordnet (Kontovorlagentypen),0
@@ -158,7 +158,7 @@ field,"account.account.type.template,income_statement",0,Income Statement,Gewinn
 field,"account.account.type.template,name",0,Name,Name,0
 field,"account.account.type.template,parent",0,Parent,Übergeordnet (Kontovorlagentyp),0
 field,"account.account.type.template,rec_name",0,Name,Name,0
-field,"account.account.type.template,sequence",0,Sequence,Sequenz,0
+field,"account.account.type.template,sequence",0,Sequence,Reihenfolge,0
 field,"account.account.update_chart_account.init,account",0,Root Account,Wurzelkonto,0
 field,"account.fiscalyear-account.move.line,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
 field,"account.fiscalyear-account.move.line,line",0,Line,Position,0
@@ -170,7 +170,7 @@ field,"account.fiscalyear,company",0,Company,Unternehmen,0
 field,"account.fiscalyear,end_date",0,Ending Date,Enddatum,0
 field,"account.fiscalyear,name",0,Name,Name,0
 field,"account.fiscalyear,periods",0,Periods,Buchungszeiträume,0
-field,"account.fiscalyear,post_move_sequence",0,Post Move Sequence,Sequenz Buchungsfestschreibungen,0
+field,"account.fiscalyear,post_move_sequence",0,Post Move Sequence,Nummernkreis Buchungsfestschreibungen,0
 field,"account.fiscalyear,rec_name",0,Name,Name,0
 field,"account.fiscalyear,start_date",0,Starting Date,Anfangsdatum,0
 field,"account.fiscalyear,state",0,State,Status,0
@@ -188,7 +188,7 @@ field,"account.journal.period,period",0,Period,Buchungszeitraum,0
 field,"account.journal.period,rec_name",0,Name,Name,0
 field,"account.journal.period,state",0,State,Status,0
 field,"account.journal,rec_name",0,Name,Name,0
-field,"account.journal,sequence",0,Sequence,Sequenz,0
+field,"account.journal,sequence",0,Sequence,Reihenfolge,0
 field,"account.journal,type",0,Type,Typ,0
 field,"account.journal.type,code",0,Code,Code,0
 field,"account.journal.type,name",0,Name,Name,0
@@ -201,7 +201,7 @@ field,"account.journal.view.column,readonly",0,Readonly,Nur Lesen,0
 field,"account.journal.view.column,rec_name",0,Name,Name,0
 field,"account.journal.view.column,required",0,Required,Erforderlich,0
 field,"account.journal.view,columns",0,Columns,Spalten,0
-field,"account.journal.view.column,sequence",0,Sequence,Sequenz,0
+field,"account.journal.view.column,sequence",0,Sequence,Reihenfolge,0
 field,"account.journal.view.column,view",0,View,Sicht,0
 field,"account.journal.view,name",0,Name,Name,0
 field,"account.journal.view,rec_name",0,Name,Name,0
@@ -253,7 +253,7 @@ field,"account.period,code",0,Code,Code,0
 field,"account.period,end_date",0,Ending Date,Enddatum,0
 field,"account.period,fiscalyear",0,Fiscal Year,Geschäftsjahr,0
 field,"account.period,name",0,Name,Name,0
-field,"account.period,post_move_sequence",0,Post Move Sequence,Sequenz Buchungsfestschreibungen,0
+field,"account.period,post_move_sequence",0,Post Move Sequence,Nummernkreis Buchungsfestschreibungen,0
 field,"account.period,rec_name",0,Name,Name,0
 field,"account.period,start_date",0,Starting Date,Anfangsdatum,0
 field,"account.period,state",0,State,Status,0
@@ -312,14 +312,14 @@ field,"account.tax.rule.line,origin_tax",0,Original Tax,Ursprungssteuer,0
 field,"account.tax.rule.line,rec_name",0,Name,Name,0
 field,"account.tax.rule.line,rule",0,Rule,Regel,0
 field,"account.tax.rule,lines",0,Lines,Zeilen,0
-field,"account.tax.rule.line,sequence",0,Sequence,Sequenz,0
+field,"account.tax.rule.line,sequence",0,Sequence,Reihenfolge,0
 field,"account.tax.rule.line,tax",0,Substitution Tax,Anzuwendende Steuer,0
 field,"account.tax.rule.line,template",0,Template,Vorlage,0
 field,"account.tax.rule.line.template,group",0,Tax Group,Steuergruppe,0
 field,"account.tax.rule.line.template,origin_tax",0,Original Tax,Ursprungssteuer,0
 field,"account.tax.rule.line.template,rec_name",0,Name,Name,0
 field,"account.tax.rule.line.template,rule",0,Rule,Regel,0
-field,"account.tax.rule.line.template,sequence",0,Sequence,Sequenz,0
+field,"account.tax.rule.line.template,sequence",0,Sequence,Reihenfolge,0
 field,"account.tax.rule.line.template,tax",0,Substitution Tax,Anzuwendende Steuer,0
 field,"account.tax.rule,name",0,Name,Name,0
 field,"account.tax.rule,rec_name",0,Name,Name,0
@@ -328,7 +328,7 @@ field,"account.tax.rule.template,account",0,Account Template,Konto Vorlage,0
 field,"account.tax.rule.template,lines",0,Lines,Zeilen,0
 field,"account.tax.rule.template,name",0,Name,Name,0
 field,"account.tax.rule.template,rec_name",0,Name,Name,0
-field,"account.tax,sequence",0,Sequence,Sequenz,0
+field,"account.tax,sequence",0,Sequence,Reihenfolge,0
 field,"account.tax,template",0,Template,Vorlage für Steuerkonto,0
 field,"account.tax.template,account",0,Account Template,Kontenvorlage,0
 field,"account.tax.template,amount",0,Amount,Betrag,0
@@ -349,7 +349,7 @@ field,"account.tax.template,name",0,Name,Name,0
 field,"account.tax.template,parent",0,Parent,Übergeordnet (Steuervorlage),0
 field,"account.tax.template,percentage",0,Percentage,Prozentsatz,0
 field,"account.tax.template,rec_name",0,Name,Name,0
-field,"account.tax.template,sequence",0,Sequence,Sequenz,0
+field,"account.tax.template,sequence",0,Sequence,Reihenfolge,0
 field,"account.tax.template,type",0,Type,Typ,0
 field,"account.tax,type",0,Type,Typ,0
 field,"party.party,account_payable",0,Account Payable,Verbindlichkeiten,0
@@ -747,7 +747,7 @@ view,account.fiscalyear,0,Fiscal Years,Geschäftsjahre,0
 view,account.fiscalyear,0,Periods,Buchungszeiträume,0
 view,account.fiscalyear,0,Re-Open,Wiedereröffnen,0
 view,account.fiscalyear,0,Re-Open Fiscal Year,Geschäftsjahr wiedereröffnen,0
-view,account.fiscalyear,0,Sequences,Sequenzen,0
+view,account.fiscalyear,0,Sequences,Nummernkreise,0
 view,account.fiscalyear.close_fiscalyear.init,0,Close Fiscal Year,Geschäftsjahr abschließen,0
 view,account.journal,0,General Information,Allgemein,0
 view,account.journal,0,Journal,Journal,0
