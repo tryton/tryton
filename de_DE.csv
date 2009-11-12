@@ -42,7 +42,7 @@ field,"purchase.line,rec_name",0,Name,Name,0
 field,"purchase.line-recreated-stock.move,move",0,Move,Bewegung,0
 field,"purchase.line-recreated-stock.move,purchase_line",0,Purchase Line,Position Einkauf,0
 field,"purchase.line-recreated-stock.move,rec_name",0,Name,Name,0
-field,"purchase.line,sequence",0,Sequence,Sequenz,0
+field,"purchase.line,sequence",0,Sequence,Reihenfolge,0
 field,"purchase.line,taxes",0,Taxes,Steuern,0
 field,"purchase.line,type",0,Type,Typ,0
 field,"purchase.line,unit",0,Unit,Einheit,0
@@ -60,7 +60,7 @@ field,"purchase.product_supplier,prices",0,Prices,Preise,0
 field,"purchase.product_supplier.price,unit_price",0,Unit Price,Einzelpreis,0
 field,"purchase.product_supplier,product",0,Product,Artikel,0
 field,"purchase.product_supplier,rec_name",0,Name,Name,0
-field,"purchase.product_supplier,sequence",0,Sequence,Sequenz,0
+field,"purchase.product_supplier,sequence",0,Sequence,Reihenfolge,0
 field,"purchase.purchase-account.invoice,invoice",0,Invoice,Rechnung,0
 field,"purchase.purchase-account.invoice,purchase",0,Purchase,Einkauf,0
 field,"purchase.purchase-account.invoice,rec_name",0,Name,Name,0
@@ -96,7 +96,7 @@ field,"purchase.purchase,shipment_exception",0,Shipments Exception,Lieferungsvor
 field,"purchase.purchase,shipments",0,Shipments,Lieferposten,0
 field,"purchase.purchase,shipment_state",0,Shipment State,Lieferstatus,0
 field,"purchase.purchase,state",0,State,Status,0
-field,"purchase.purchase,supplier_reference",0,Supplier Reference,Rechnungsnr. Lieferant,0
+field,"purchase.purchase,supplier_reference",0,Supplier Reference,Beleg-Nr. Lieferant,0
 field,"purchase.purchase,tax_amount",0,Tax,Steuer,0
 field,"purchase.purchase,total_amount",0,Total,Gesamt,0
 field,"purchase.purchase,untaxed_amount",0,Untaxed,Netto,0
