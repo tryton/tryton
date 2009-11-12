@@ -16,7 +16,7 @@ field,"project.work,type",0,Type,Typ,0
 field,"project.work,work",0,Work,Arbeit,0
 field,"project.work,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"project.work,write_uid",0,Last modification by,Zuletzt geändert von,0
-field,"timesheet.work,sequence",0,Sequence,Sequenz,0
+field,"timesheet.work,sequence",0,Sequence,Reihenfolge,0
 field,"timesheet.work,timesheet_lines",0,Timesheet Lines,Zeitpositionen,0
 help,"project.work,effort",0,Estimated Effort for this work,Geschätzter Aufwand für diese Arbeit,0
 help,"project.work,total_effort",0,Estimated total effort for this work and the sub-works,Geschätzter Gesamtaufwand für diese Arbeit inkl. untergeordnete Arbeiten,0
