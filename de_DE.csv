@@ -1,6 +1,6 @@
 type,name,res_id,src,value,fuzzy
-error,account.fiscalyear,0,You can not change the invoice sequence if there is already an invoice opened in the fiscalyear,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung im laufenden Buchungsjahr eröffnet wurde.",0
-error,account.fiscalyear,0,You must have different invoice sequences per fiscal year!,Für unterschiedliche Geschäftsjahre müssen jeweils eigene Rechnungssequenzen erstellt werden!,0
+error,account.fiscalyear,0,You can not change the invoice sequence if there is already an invoice opened in the fiscalyear,"Sie können den Rechnungsnummernkreis nicht ändern, wenn bereits eine Rechnung im laufenden Buchungsjahr fakturiert wurde.",0
+error,account.fiscalyear,0,You must have different invoice sequences per fiscal year!,Für unterschiedliche Geschäftsjahre müssen jeweils eigene Rechnungsnummernkreise erstellt werden!,0
 error,account.invoice,0,"Base taxes different from invoice lines!
 Re-compute the invoice.",Steuern stimmen nicht mit den Rechnungspositionen überein!,0
 error,account.invoice,0,"Taxes defined but not on invoice lines!
@@ -13,7 +13,7 @@ error,account.invoice,0,The credit account on journal is missing!,Haben-Konto im
 error,account.invoice,0,The credit account on journal is the same than the invoice account!,Das Habenkonto des Journals ist das selbe wie das Rechnungskonto!,0
 error,account.invoice,0,The debit account on journal is missing!,Soll-Konto im Journal fehlt,0
 error,account.invoice,0,The debit account on journal is the same than the invoice account!,Das Sollkonto des Journals ist das selbe wie das Rechnungskonto!,0
-error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,Rechnungsnummern-Sequenz für diese Periode oder dieses Buchungsjahr fehlt!,0
+error,account.invoice,0,There is no invoice sequence on the period/fiscal year!,Rechnungsnummernkreis für diese Periode oder dieses Buchungsjahr fehlt!,0
 error,account.invoice,0,"You can not create an invoice
 with account from a different invoice company!",Es können keine Rechnungen mit einem Konto von einer anderen rechnungsstellenden Firma angelegt werden,0
 error,account.invoice,0,"You can not modify an invoice that is opened, paid!",Fakturierte oder bezahlte Rechnungen können nicht geändert werden!,0
@@ -38,12 +38,12 @@ error,account.invoice.payment_term.line.delay,0,The code must be unique!,Code ka
 error,account.invoice.payment_term.line.type,0,The code must be unique!,Code kann nicht mehrfach vergeben werden!,0
 error,account.invoice.tax,0,"You can not add a line to an invoice that is open, paid or canceled!","Einer Rechnung mit dem Status Fakturiert, Bezahlt oder Annulliert kann keine neue Position hinzugefügt werden!",0
 error,account.invoice.tax,0,"You can not modify tax from an invoice that is opened, paid!",Steuern von fakturierten oder bezahlten Rechnungen können nicht geändert werden!,0
-error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,"Sie können die Rechnungsnummern-Sequenz nicht ändern, wenn bereits eine Rechnung in der laufenden Periode eröffnet wurde.",0
-error,account.period,0,You must have different invoice sequences per fiscal year and in the same company!,Verschiedene Geschäftsjahre eines Unternehmens erfordern unterschiedliche Rechnungssequenzen!,0
-field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Sequenz Gutschriften Lieferanten,0
-field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Rechnungen Lieferanten,0
-field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
-field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Rechnungen Kunden,0
+error,account.period,0,You can not change the invoice sequence if there is already an invoice opened in the period,"Sie können den Rechnungsnummernkreis nicht ändern, wenn bereits eine Rechnung in der laufenden Periode fakturiert wurde.",0
+error,account.period,0,You must have different invoice sequences per fiscal year and in the same company!,Für unterschiedliche Geschäftsjahre eines Unternehmens müssen jeweils eigene Rechnungsnummernkreise erstellt werden!,0
+field,"account.fiscalyear,in_credit_note_sequence",0,Supplier Credit Note Sequence,Nummernkreis Gutschriften Lieferanten,0
+field,"account.fiscalyear,in_invoice_sequence",0,Supplier Invoice Sequence,Nummernkreis Rechnungen Lieferanten,0
+field,"account.fiscalyear,out_credit_note_sequence",0,Customer Credit Note Sequence,Nummernkreis Gutschriften Kunden,0
+field,"account.fiscalyear,out_invoice_sequence",0,Customer Invoice Sequence,Nummernkreis Rechnungen Kunden,0
 field,"account.invoice,account",0,Account,Konto,0
 field,"account.invoice,accounting_date",0,Accounting Date,Buchungsdatum,0
 field,"account.invoice-account.move.line,invoice",0,Invoice,Rechnung,0
@@ -81,7 +81,7 @@ field,"account.invoice.line,product",0,Product,Artikel,0
 field,"account.invoice.line,quantity",0,Quantity,Anzahl,0
 field,"account.invoice.line,rec_name",0,Name,Name,0
 field,"account.invoice,lines",0,Lines,Positionen,0
-field,"account.invoice.line,sequence",0,Sequence,Sequenz,0
+field,"account.invoice.line,sequence",0,Sequence,Reihenfolge,0
 field,"account.invoice,lines_to_pay",0,Lines to Pay,Zahlbare Positionen,0
 field,"account.invoice.line,taxes",0,Taxes,Steuern,0
 field,"account.invoice.line,type",0,Type,Typ,0
@@ -132,7 +132,7 @@ field,"account.invoice.payment_term.line,payment",0,Payment Term,Zahlungsbedingu
 field,"account.invoice.payment_term.line,percentage",0,Percentage,Prozentsatz,0
 field,"account.invoice.payment_term.line,rec_name",0,Name,Name,0
 field,"account.invoice.payment_term,lines",0,Lines,Positionen,0
-field,"account.invoice.payment_term.line,sequence",0,Sequence,Sequenz,0
+field,"account.invoice.payment_term.line,sequence",0,Sequence,Reihenfolge,0
 field,"account.invoice.payment_term.line,type",0,Type,Typ,0
 field,"account.invoice.payment_term.line.type,code",0,Code,Kundennummer,0
 field,"account.invoice.payment_term.line.type,name",0,Name,Name,0
@@ -154,8 +154,8 @@ field,"account.invoice,taxes",0,Tax Lines,Steuerpositionen,0
 field,"account.invoice.tax,invoice",0,Invoice,Rechnung,0
 field,"account.invoice.tax,manual",0,Manual,Manuell,0
 field,"account.invoice.tax,rec_name",0,Name,Name,0
-field,"account.invoice.tax,sequence",0,Sequence,Sequenz,0
-field,"account.invoice.tax,sequence_number",0,Sequence Number,Nummer Sequenz,0
+field,"account.invoice.tax,sequence",0,Sequence,Reihenfolge,0
+field,"account.invoice.tax,sequence_number",0,Sequence Number,Name Nummernkreis,0
 field,"account.invoice.tax,tax",0,Tax,Steuer,0
 field,"account.invoice.tax,tax_code",0,Tax Code,Steuerkennziffer,0
 field,"account.invoice.tax,tax_sign",0,Tax Sign,Vorzeichen (Steuer),0
@@ -163,10 +163,10 @@ field,"account.invoice,total_amount",0,Total,Brutto,0
 field,"account.invoice,type",0,Type,Typ,0
 field,"account.invoice,type_name",0,Type,Typ,0
 field,"account.invoice,untaxed_amount",0,Untaxed,Netto,0
-field,"account.period,in_credit_note_sequence",0,Supplier Credit Note Sequence,Sequenz Gutschriften Lieferanten,0
-field,"account.period,in_invoice_sequence",0,Supplier Invoice Sequence,Sequenz Rechnungen Lieferanten,0
-field,"account.period,out_credit_note_sequence",0,Customer Credit Note Sequence,Sequenz Gutschriften Kunden,0
-field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Sequenz Rechnungen Kunden,0
+field,"account.period,in_credit_note_sequence",0,Supplier Credit Note Sequence,Nummernkreis Gutschriften Lieferanten,0
+field,"account.period,in_invoice_sequence",0,Supplier Invoice Sequence,Nummernkreis Rechnungen Lieferanten,0
+field,"account.period,out_credit_note_sequence",0,Customer Credit Note Sequence,Nummernkreis Gutschriften Kunden,0
+field,"account.period,out_invoice_sequence",0,Customer Invoice Sequence,Nummernkreis Rechnungen Kunden,0
 field,"party.address,invoice",0,Invoice,Rechnungsadresse,0
 field,"party.party,payment_term",0,Invoice Payment Term,Zahlungsbedingung Verkauf,0
 field,"party.party,supplier_payment_term",0,Supplier Payment Term,Zahlungsbedingung Einkauf,0
