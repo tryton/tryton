@@ -40,7 +40,7 @@ field,"sale.line-recreated-stock.move,move",0,Move,Bewegung,0
 field,"sale.line-recreated-stock.move,rec_name",0,Name,Name,0
 field,"sale.line-recreated-stock.move,sale_line",0,Sale Line,Position Verkauf,0
 field,"sale.line,sale",0,Sale,Verkauf,0
-field,"sale.line,sequence",0,Sequence,Sequenz,0
+field,"sale.line,sequence",0,Sequence,Reihenfolge,0
 field,"sale.line,taxes",0,Taxes,Steuern,0
 field,"sale.line,type",0,Type,Typ,0
 field,"sale.line,unit",0,Unit,Einheit,0
@@ -67,12 +67,6 @@ field,"sale.sale,invoices_recreated",0,Recreated Invoices,Nachgebildete Rechnung
 field,"sale.sale,invoice_state",0,Invoice State,Rechnungsstatus,0
 field,"sale.sale,lines",0,Lines,Positionen,0
 field,"sale.sale,moves",0,Moves,Bewegungen,0
-field,"sale.sale,shipment_address",0,Shipment Address,Lieferadresse,0
-field,"sale.sale,shipment_done",0,Shipment Done,Gepackt,0
-field,"sale.sale,shipment_exception",0,Shipments Exception,Lieferungsvorbehalt,0
-field,"sale.sale,shipment_method",0,Shipment Method,Liefermethode,0
-field,"sale.sale,shipments",0,Shipments,Lieferposten,0
-field,"sale.sale,shipment_state",0,Shipment State,Lieferstatus,0
 field,"sale.sale,party",0,Party,Partei,0
 field,"sale.sale,party_lang",0,Party Language,Sprache Partei,0
 field,"sale.sale,payment_term",0,Payment Term,Zahlungsbedingung,0
@@ -82,6 +76,12 @@ field,"sale.sale-recreated-account.invoice,rec_name",0,Name,Name,0
 field,"sale.sale-recreated-account.invoice,sale",0,Sale,Verkauf,0
 field,"sale.sale,reference",0,Reference,Referenz,0
 field,"sale.sale,sale_date",0,Sale Date,Verkaufsdatum,0
+field,"sale.sale,shipment_address",0,Shipment Address,Lieferadresse,0
+field,"sale.sale,shipment_done",0,Shipment Done,Gepackt,0
+field,"sale.sale,shipment_exception",0,Shipments Exception,Lieferungsvorbehalt,0
+field,"sale.sale,shipment_method",0,Shipment Method,Liefermethode,0
+field,"sale.sale,shipments",0,Shipments,Lieferposten,0
+field,"sale.sale,shipment_state",0,Shipment State,Lieferstatus,0
 field,"sale.sale,state",0,State,Status,0
 field,"sale.sale,tax_amount",0,Tax,Steuer,0
 field,"sale.sale,total_amount",0,Total,Gesamt,0
