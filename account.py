@@ -1288,9 +1288,10 @@ class GeneralLegder(Report):
 
         if not datas['form']['empty_account']:
             to_remove = []
+            account_id2lines = self.get_lines(cursor, user, account_ids,
+                    end_period_ids, datas['form']['posted'], context)
             for account_id in account_ids:
-                if not self.get_line_ids(cursor, user, account_id,
-                        end_period_ids, datas['form']['posted'], context):
+                if account_id not in account_id2lines:
                     to_remove.append(account_id)
             for account_id in to_remove:
                 account_ids.remove(account_id)
@@ -1300,51 +1301,56 @@ class GeneralLegder(Report):
         context['id2start_account'] = id2start_account
         context['id2end_account'] = id2end_account
         context['digits'] = company.currency.digits
-        context['lines'] = lambda account_id: self.lines(cursor, user,
-                account_id, list(set(end_period_ids).difference(
-                    set(start_period_ids))), datas['form']['posted'], context)
+        account_id2lines = self.lines(cursor, user, account_ids,
+                list(set(end_period_ids).difference(
+                set(start_period_ids))), datas['form']['posted'], context)
+        context['lines'] = lambda account_id: account_id2lines[account_id]
         context['company'] = company
 
         return super(GeneralLegder, self).parse(cursor, user, report, objects,
                 datas, context)
 
-    def get_line_ids(self, cursor, user, account_id, period_ids, posted,
+    def get_lines(self, cursor, user, account_ids, period_ids, posted,
             context):
         move_line_obj = self.pool.get('account.move.line')
         clause = [
-            ('account', '=', account_id),
+            ('account', 'in', account_ids),
             ('period', 'in', period_ids),
             ('state', '!=', 'draft'),
             ]
         if posted:
             clause.append(('move.state', '=', 'posted'))
-        return move_line_obj.search(cursor, user, clause,
+        move_ids = move_line_obj.search(cursor, user, clause,
                 context=context)
+        res = {}
+        for move in move_line_obj.browse(cursor, user, move_ids,
+                context=context):
+            res.setdefault(move.account.id, []).append(move)
+        return res
 
-    def lines(self, cursor, user, account_id, period_ids, posted, context):
+    def lines(self, cursor, user, account_ids, period_ids, posted, context):
         move_line_obj = self.pool.get('account.move.line')
         move_obj = self.pool.get('account.move')
-        res = []
-        move_line_ids = self.get_line_ids(cursor, user, account_id, period_ids,
-                posted, context)
-        move_lines = move_line_obj.browse(cursor, user, move_line_ids,
-                context=context)
-        move_lines.sort(lambda x, y: cmp(x.date, y.date))
+        res = dict(((account_id, []) for account_id in account_ids))
+        account_id2lines = self.get_lines(cursor, user, account_ids,
+                period_ids, posted, context)
 
         state_selections = dict(move_obj.fields_get(cursor, user,
                 fields_names=['state'], context=context)['state']['selection'])
 
-        balance = Decimal('0.0')
-        for line in move_lines:
-            balance += line.debit - line.credit
-            res.append({
-                'date': line.date,
-                'debit': line.debit,
-                'credit': line.credit,
-                'balance': balance,
-                'name': line.name,
-                'state': state_selections.get(line.move.state, line.move.state),
-                })
+        for account_id, lines in account_id2lines.iteritems():
+            lines.sort(lambda x, y: cmp(x.date, y.date))
+            balance = Decimal('0.0')
+            for line in lines:
+                balance += line.debit - line.credit
+                res[account_id].append({
+                    'date': line.date,
+                    'debit': line.debit,
+                    'credit': line.credit,
+                    'balance': balance,
+                    'name': line.name,
+                    'state': state_selections.get(line.move.state, line.move.state),
+                    })
         return res
 
 GeneralLegder()

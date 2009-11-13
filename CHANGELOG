@@ -1,3 +1,5 @@
+* Improve General Ledger to compute lines for each accounts at once
+
 Version 1.4.0 - 2009-10-19
 * Bug fixes (see mercurial logs for details)
 * Add origin_tax field on account.tax.rule
