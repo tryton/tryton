@@ -47,6 +47,15 @@ if DAV_VERSION == '0.8':
         lockemulation = False
         verbose = False
 
+        def getboolean(self, name):
+            return bool(self.get(name))
+
+        def get(self, name, default=None):
+            try:
+                return self[name]
+            except:
+                return default
+
 
     class _Config:
         DAV = DAV()
