@@ -680,7 +680,8 @@ class Selection(Char):
         super(Selection, self).__init__(*args)
         self.renderer = CellRendererCombo()
         selection_data = gtk.ListStore(str, str)
-        selection = self.attrs.get('selection', [])
+        selection = self.attrs.get('selection', [])[:]
+        self.selection = selection[:]
         if 'relation' in self.attrs:
             try:
                 result = rpc.execute('model',
@@ -691,6 +692,7 @@ class Selection(Char):
             except Exception, exception:
                 common.process_exception(exception, self.window)
                 selection = []
+            self.selection = selection[:]
         else:
             if not isinstance(selection, (list, tuple)):
                 try:
@@ -699,6 +701,7 @@ class Selection(Char):
                 except Exception, exception:
                     common.process_exception(exception, self.window)
                     selection = []
+                self.selection = selection[:]
 
             for dom in common.filter_domain(self.attrs.get('domain', [])):
                 if dom[1] in ('=', '!='):
@@ -714,9 +717,8 @@ class Selection(Char):
 
         if self.attrs.get('sort', True):
             selection.sort(lambda x, y: cmp(x[1], y[1]))
-        self.attrs['selection'] = selection
-        self.selection = selection
-        for i in self.selection:
+        self._selection = selection
+        for i in selection:
             selection_data.append(i)
         self.renderer.set_property('model', selection_data)
         self.renderer.set_property('text-column', 1)
@@ -729,7 +731,7 @@ class Selection(Char):
 
     def value_from_text(self, model, text):
         res = False
-        for val, txt in self.selection:
+        for val, txt in self._selection:
             if txt[:len(text)].lower() == text.lower():
                 if len(txt) == len(text):
                     return val

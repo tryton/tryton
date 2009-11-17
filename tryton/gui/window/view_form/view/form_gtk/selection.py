@@ -30,7 +30,8 @@ class Selection(WidgetInterface):
         self.widget.set_focus_chain([child])
 
         self._selection = {}
-        selection = attrs.get('selection', [])
+        selection = attrs.get('selection', [])[:]
+        self.selection = selection[:]
         if 'relation' in attrs:
             try:
                 result = rpc.execute('model',
@@ -41,6 +42,7 @@ class Selection(WidgetInterface):
             except Exception, exception:
                 common.process_exception(exception, self._window)
                 selection = []
+            self.selection = selection[:]
         else:
             if not isinstance(selection, (list, tuple)):
                 try:
@@ -49,6 +51,7 @@ class Selection(WidgetInterface):
                 except Exception, exception:
                     common.process_exception(exception, self._window)
                     selection = []
+                self.selection = selection[:]
 
             for dom in common.filter_domain(attrs.get('domain', [])):
                 if dom[1] in ('=', '!='):
@@ -64,7 +67,6 @@ class Selection(WidgetInterface):
 
         if attrs.get('sort', True):
             selection.sort(lambda x, y: cmp(x[1], y[1]))
-        attrs['selection'] = selection
         self.set_popdown(selection)
         self.last_key = (None, 0)
 
@@ -150,6 +152,16 @@ class Selection(WidgetInterface):
                     child.set_text(long_text)
                     found = True
                     break
+            if not found:
+                for sel_value, long_text in self.selection:
+                    if str(sel_value) == str(value):
+                        self._selection[long_text] = sel_value
+                        model = self.entry.get_model()
+                        i = model.append()
+                        model.set(i, 0, long_text)
+                        child.set_text(long_text)
+                        found = True
+                        break
         self.changed = True
 
     def display_value(self):
