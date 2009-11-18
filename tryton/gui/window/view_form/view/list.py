@@ -446,10 +446,13 @@ class ViewList(ParserView):
         screen = Screen(self.screen.fields[path[1].name]['relation'],
                 self.window)
         screen.load([value])
-        act['domain'] = screen.current_model.expr_eval(act['domain'],
-                check_load=False)
-        act['context'] = str(screen.current_model.expr_eval(act['context'],
+        act['domain'] = str(screen.current_model.expr_eval(act.get('domain', []),
+                check_load=False))
+        act['context'] = str(screen.current_model.expr_eval(act.get('context', {}),
             check_load=False))
+        data['model'] = self.screen.name
+        data['id'] = value
+        data['ids'] = [value]
         return Action._exec_action(act, self.window, data, context)
 
     def click_and_action(self, atype, value, path):
