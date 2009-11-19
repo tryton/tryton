@@ -22,6 +22,6 @@ class Company(ModelSQL, ModelView):
         return 160
 
     def default_hours_per_work_year(self, cursor, user, context=None):
-        return 4800
+        return 1920
 
 Company()
