@@ -386,16 +386,26 @@ def mailto(to=None, cc=None, subject=None, body=None, attachment=None):
     #http://www.faqs.org/rfcs/rfc2368.html
     url = "mailto:"
     if to:
+        if isinstance(to, unicode):
+            to = to.encode('utf-8')
         url += urllib.quote(to.strip(), "@,")
     url += '?'
     if cc:
+        if isinstance(cc, unicode):
+            cc = cc.encode('utf-8')
         url += "&cc=" + urllib.quote(cc, "@,")
     if subject:
+        if isinstance(subject, unicode):
+            subject = subject.encode('utf-8')
         url += "&subject=" + urllib.quote(subject, "")
     if body:
+        if isinstance(body, unicode):
+            body = body.encode('utf-8')
         body = "\r\n".join(body.splitlines())
         url += "&body=" + urllib.quote(body, "")
     if attachment:
+        if isinstance(attachment, unicode):
+            attachment = attachment.encode('utf-8')
         url += "&attachment=" + urllib.quote(attachment, "")
     webbrowser.open(url, new=1)
 
