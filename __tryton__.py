@@ -5,7 +5,7 @@
     'name_de_DE': 'Buchhaltung Bankauszüge',
     'name_es_ES': 'Estado de Cuentas',
     'name_fr_FR': 'Relevé comptable',
-    'version': '1.0.1',
+    'version': '1.0.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
