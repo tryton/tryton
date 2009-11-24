@@ -1,3 +1,6 @@
+Version 1.4.1 - 2009-11-24
+* Some bug fixes (see mercurial logs for details)
+
 Version 1.4.0 - 2009-10-19
 * Bug fixes (see mercurial logs for details)
 * Add new group "Stock Force Assignment"
