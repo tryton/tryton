@@ -1253,7 +1253,10 @@ class Main(object):
             if self.buttons[i]:
                 self.buttons[i].set_sensitive(
                         bool(view and (i in view.handlers)))
-        self.buttons['but_attach'].set_stock_id('tryton-attachment')
+        if hasattr(view, 'update_attachment_count'):
+            view.update_attachment_count()
+        else:
+            self._attachment_count(view, 0)
 
     def _attachment_count(self, widget, signal_data):
         label = _('Attachment(%d)') % signal_data
