@@ -209,7 +209,7 @@ class Form(SignalEvent):
 
     def sig_attach(self, widget=None):
         obj_id = self.screen.id_get()
-        if obj_id >= 0:
+        if obj_id >= 0 and obj_id is not False:
             win = Attachment(self.model, obj_id, self.window)
             win.run()
         else:
@@ -235,7 +235,7 @@ class Form(SignalEvent):
 
     def sig_logs(self, widget=None):
         obj_id = self._id_get()
-        if obj_id < 0:
+        if obj_id < 0 or obj_id is False:
             self.message_info(_('You have to select one record!'))
             return False
 
