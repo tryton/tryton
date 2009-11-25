@@ -137,7 +137,7 @@ class User(ModelSQL, ModelView):
                 del vals['password']
             elif vals['password']:
                 vals['salt'] = ''.join(random.sample(
-                    string.letters + string.digits, 8))
+                    string.ascii_letters + string.digits, 8))
                 vals['password'] += vals['salt']
         return vals
 
