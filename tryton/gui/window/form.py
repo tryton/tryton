@@ -220,12 +220,18 @@ class Form(SignalEvent):
         if obj_id >= 0:
             win = Attachment(self.model, obj_id, self.window)
             win.run()
-            value = self.screen.current_model
-            attachment_count = value.get_attachment_count(reload=True)
-            self.signal('attachment-count', attachment_count)
         else:
             self.message_info(_('No record selected!'))
+        self.update_attachment_count(reload=True)
         return True
+
+    def update_attachment_count(self, reload=False):
+        value = self.screen.current_model
+        if value:
+            attachment_count = value.get_attachment_count(reload=reload)
+        else:
+            attachment_count = 0
+        self.signal('attachment-count', attachment_count)
 
     def sig_switch(self, widget=None):
         if not self.modified_save():
