@@ -115,7 +115,7 @@ model,"product.uom,name",uom_liter,Liter,Liter,0
 model,"product.uom,name",uom_meter,Meter,Meter,0
 model,"product.uom,name",uom_mile,Mile,Meile(n),0
 model,"product.uom,name",uom_millimeter,Millimeter,Millimeter,0
-model,"product.uom,name",uom_minute,Minute,Minuten(n),0
+model,"product.uom,name",uom_minute,Minute,Minute(n),0
 model,"product.uom,name",uom_once,Ounce,Unze(n),0
 model,"product.uom,name",uom_pound,Pound,Pfund,0
 model,"product.uom,name",uom_second,Second,Sekunde(n),0
