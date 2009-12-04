@@ -182,7 +182,7 @@ User()
 class Property(ModelSQL, ModelView):
     _name = 'ir.property'
     company = fields.Many2One('company.company', 'Company',
-            domain="[('id', 'company', in context and '=' or '!=', " \
+            domain="[('id', 'company' in context and '=' or '!=', " \
                     "context.get('company', 0))]")
 
     def _set_values(self, cursor, user_id, name, model, res_id, val, field_id,
