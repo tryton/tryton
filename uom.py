@@ -169,7 +169,7 @@ class Uom(ModelSQL, ModelView):
                     or uom.category.id != old_uom[uom.id][2]:
 
                 self.raise_user_error(cursor, 'change_uom_rate_title',
-                                      error_description='change_uom_rate')
+                        error_description='change_uom_rate', context=context)
         return res
 
     def compute_qty(self, cursor, user, from_uom, qty, to_uom=False,
