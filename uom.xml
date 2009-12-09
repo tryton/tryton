@@ -292,7 +292,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="product.uom" id="uom_liter">
             <field name="name">Liter</field>
             <field name="symbol">l</field>
-            <field name="category" ref="uom_cat_length"/>
+            <field name="category" ref="uom_cat_volume"/>
             <field name="factor" eval="1"/>
             <field name="rate" eval="1"/>
         </record>
