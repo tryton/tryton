@@ -806,14 +806,6 @@ Tabs Position
   * Right
   * Bottom
 
-.. _Menu-Options-Form-Tabs_Orientation:
-
-Tabs Orientation
-  Sets up the orientation of :term:`tabs` labels inside :term:`views`.
-
-  * Horizontal: Shows tab labels oriented from left to right
-  * Vertical: Shows tab labels oriented from bottom to top
-
 .. _Menu-Options-File_Actions:
 
 File Actions...:
