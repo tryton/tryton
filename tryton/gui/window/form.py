@@ -21,6 +21,7 @@ import pango
 from tryton.translate import date_format
 from tryton.common import DT_FORMAT, DHM_FORMAT, HM_FORMAT
 import mx.DateTime
+import datetime as DT
 
 _ = gettext.gettext
 
