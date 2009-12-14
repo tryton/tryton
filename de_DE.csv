@@ -66,7 +66,7 @@ view,company.company.config.init,0,Create Company,Unternehmen anlegen,0
 view,company.company.config.init,0,You can now add your company into the system.,Sie können nun Ihr Unternehmen dem System hinzufügen!,0
 view,company.employee,0,Addresses,Adressen,0
 view,company.employee,0,Employee,Mitarbeiter,0
-view,company.employee,0,Employess,Mitarbeiter,0
+view,company.employee,0,Employees,Mitarbeiter,0
 view,company.employee,0,General,Allgemein,0
 view,company.employee,0,_General,_Allgemein,0
 wizard_button,"company.company.config,company,add",0,Add,Hinzufügen,0

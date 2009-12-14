@@ -339,7 +339,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Employess">
+                <tree string="Employees">
                     <field name="name" select="1"/>
                     <field name="company" select="1"/>
                 </tree>
