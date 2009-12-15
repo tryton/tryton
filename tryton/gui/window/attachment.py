@@ -137,7 +137,7 @@ class Attachment(object):
         selection.connect('changed', self._sig_changed)
 
         args = ('object', 'execute', 'ir.attachment', 'fields_view_get',
-                False, 'tree')
+                False, 'tree', rpc.CONTEXT)
         try:
             view = rpc.execute(*args)
         except Exception, exception:
