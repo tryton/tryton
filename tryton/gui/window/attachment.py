@@ -136,7 +136,8 @@ class Attachment(object):
         selection.set_mode(gtk.SELECTION_SINGLE)
         selection.connect('changed', self._sig_changed)
 
-        args = ('model', 'ir.attachment', 'fields_view_get', False, 'tree')
+        args = ('model', 'ir.attachment', 'fields_view_get', False, 'tree',
+                rpc.CONTEXT)
         try:
             view = rpc.execute(*args)
         except Exception, exception:
