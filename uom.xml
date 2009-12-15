@@ -147,36 +147,36 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Kilogram</field>
             <field name="symbol">kg</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="factor" eval="1000"/>
-            <field name="rate" eval="0.001"/>
+            <field name="factor" eval="1"/>
+            <field name="rate" eval="1"/>
         </record>
         <record model="product.uom" id="uom_gram">
             <field name="name">Gram</field>
             <field name="symbol">g</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="rate" eval="1"/>
-            <field name="factor" eval="1"/>
+            <field name="rate" eval="0.001"/>
+            <field name="factor" eval="1000"/>
         </record>
         <record model="product.uom" id="uom_carat">
             <field name="name">Carat</field>
             <field name="symbol">c</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="rate" eval="0.2"/>
-            <field name="factor" eval="5"/>
+            <field name="rate" eval="0.0002"/>
+            <field name="factor" eval="5000"/>
         </record>
         <record model="product.uom" id="uom_pound">
             <field name="name">Pound</field>
             <field name="symbol">lbs</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="factor" eval="453.592"/>
-            <field name="rate" eval="0.002205"/>
+            <field name="factor" eval="0.453592"/>
+            <field name="rate" eval="2.20462262"/>
         </record>
         <record model="product.uom" id="uom_once">
             <field name="name">Ounce</field>
             <field name="symbol">oz</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="factor" eval="28.3495"/>
-            <field name="rate" eval="0.0352740"/>
+            <field name="factor" eval="0.0283495"/>
+            <field name="rate" eval="35.2739619"/>
         </record>
 
         <record model="product.uom.category" id="uom_cat_time">
