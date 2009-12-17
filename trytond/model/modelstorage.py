@@ -690,6 +690,7 @@ class ModelStorage(Model):
 
         while len(datas):
             res = {}
+            warning = ''
             try:
                 (res, other, warning, translate) = \
                         process_liness(self, datas, [], fields_def)
