@@ -3,7 +3,8 @@
 from trytond.model import ModelView, ModelWorkflow, ModelSQL, fields
 from trytond.wizard import Wizard
 import datetime
-import mx.DateTime
+import time
+from dateutil.relativedelta import relativedelta
 
 STATES = {
     'readonly': "state != 'draft'",
@@ -380,10 +381,7 @@ class ForecastComplete(Wizard):
 
         res = {}
         for field in ("to_date", "from_date"):
-            date = mx.DateTime.strptime(str(forecast[field]), '%Y-%m-%d')
-            new_date = date - mx.DateTime.RelativeDateTime(years=1)
-            res[field] = datetime.date(new_date.year, new_date.month,
-                    new_date.day)
+            res[field] = forecast[field] - relativedelta(years=1)
         return res
 
     def _get_product_quantity(self, cursor, user, data, context=None):
