@@ -2,7 +2,7 @@
 #of this repository contains the full copyright notices and license terms.
 "Currency"
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.tools import safe_eval
+from trytond.tools import safe_eval, datetime_strftime
 import time
 from decimal import Decimal, ROUND_HALF_EVEN
 import datetime
@@ -220,7 +220,7 @@ class Currency(ModelSQL, ModelView):
             lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
 
             self.raise_user_error(cursor, 'no_rate', (name,
-                date.strftime(str(lang.date))), context=context)
+                datetime_strftime(date, str(lang.date))), context=context)
         if round:
             return self.round(cursor, user, to_currency,
                     amount * to_currency.rate / from_currency.rate)
