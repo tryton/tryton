@@ -4,7 +4,8 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
 from decimal import Decimal
 import datetime
-import mx.DateTime
+import time
+from dateutil.relativedelta import relativedelta
 
 
 class PaymentTerm(ModelSQL, ModelView):
@@ -110,16 +111,11 @@ class PaymentTermLineDelay(ModelSQL, ModelView):
 
     def get_date(self, cursor, user, line, date, context=None):
         value = None
-        if line.delay == 'net_days':
-            value = mx.DateTime.strptime(str(date), '%Y-%m-%d') + \
-                    mx.DateTime.RelativeDateTime(days=line.days)
-        elif line.delay == 'end_month':
-            value = mx.DateTime.strptime(str(date), '%Y-%m-%d') + \
-                    mx.DateTime.RelativeDateTime(days=line.days) + \
-                    mx.DateTime.RelativeDateTime(day=-1)
-        if value:
-            return datetime.date(value.year, value.month, value.day)
-        return None
+        if line.delay in ('net_days', 'end_month'):
+            value = date + relativedelta(days=line.days)
+            if line.delay == 'end_month':
+                value += relativedelta(day=31)
+        return value
 
 PaymentTermLineDelay()
 
