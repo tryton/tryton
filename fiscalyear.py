@@ -3,7 +3,10 @@
 'Fiscal Year'
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
-import mx.DateTime
+from trytond.tools import datetime_strftime
+import datetime
+import time
+from dateutil.relativedelta import relativedelta
 
 STATES = {
     'readonly': "state == 'close'",
@@ -139,31 +142,25 @@ class FiscalYear(ModelSQL, ModelView):
         '''
         period_obj = self.pool.get('account.period')
         for fiscalyear in self.browse(cursor, user, ids, context=context):
-            end_date = mx.DateTime.strptime(str(fiscalyear.end_date),
-                    '%Y-%m-%d')
-            period_start_date = mx.DateTime.strptime(str(fiscalyear.start_date),
-                    '%Y-%m-%d')
-            while period_start_date < end_date:
+            period_start_date = fiscalyear.start_date
+            while period_start_date < fiscalyear.end_date:
                 period_end_date = period_start_date + \
-                        mx.DateTime.RelativeDateTime(months=interval)
-                period_end_date = mx.DateTime.DateTime(period_end_date.year,
-                        period_end_date.month, 1) - \
-                        mx.DateTime.RelativeDateTime(days=1)
-                if period_end_date > end_date:
-                    period_end_date = end_date
-                name = period_start_date.strftime('%Y-%m')
-                if name != period_end_date.strftime('%Y-%m'):
-                    name += ' - ' + period_end_date.strftime('%Y-%m')
+                        relativedelta(months=interval - 1) + \
+                        relativedelta(day=31)
+                if period_end_date > fiscalyear.end_date:
+                    period_end_date = fiscalyear.end_date
+                name = datetime_strftime(period_start_date, '%Y-%m')
+                if name != datetime_strftime(period_end_date, '%Y-%m'):
+                    name += ' - ' + datetime_strftime(period_end_date, '%Y-%m')
                 period_obj.create(cursor, user, {
                     'name': name,
-                    'start_date': period_start_date.strftime('%Y-%m-%d'),
-                    'end_date': period_end_date.strftime('%Y-%m-%d'),
+                    'start_date': period_start_date,
+                    'end_date': period_end_date,
                     'fiscalyear': fiscalyear.id,
                     'post_move_sequence': fiscalyear.post_move_sequence.id,
                     'type': 'standard',
                     }, context=context)
-                period_start_date = period_end_date + \
-                        mx.DateTime.RelativeDateTime(days=1)
+                period_start_date = period_end_date + relativedelta(days=1)
         return True
 
     def create_period_3(self, cursor, user, ids, context=None):

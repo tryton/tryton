@@ -7,12 +7,12 @@ from trytond.report import Report
 from trytond.backend import TableHandler, FIELDS
 from decimal import Decimal
 import datetime
+import time
 try:
     import hashlib
 except ImportError:
     hashlib = None
     import md5
-import mx.DateTime
 
 _MOVE_STATES = {
     'readonly': "state == 'posted'",
@@ -973,7 +973,7 @@ class Line(ModelSQL, ModelView):
             context = {}
 
         if context.get('date'):
-            mx.DateTime.strptime(str(context['date']), '%Y-%m-%d')
+            time.strptime(str(context['date']), '%Y-%m-%d')
             fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
                 ('start_date', '<=', context['date']),
                 ('end_date', '>=', context['date']),
