@@ -4,7 +4,7 @@
 Client Usage
 ############
 This document is the reference about the concepts of the graphical user
-interface (also known as *Tryton client* ) in the Tryton application framework.
+interface (also known as *Tryton client* ) of the Tryton application framework.
 
 
 Name
@@ -19,7 +19,7 @@ Synopsis
 
   tryton [options]
 
-After start up, there raises the `login dialog`__ and optionally a
+After startup, there raises the `login dialog`__ and optionally a
 `tips dialog`__.
 
 __ Menu-File-Connect_
@@ -83,11 +83,8 @@ Figure: Tryton client application::
                      | |                                                   | |
                      | |___________________________________________________| |
                      |_______________________________________________________|
-  Status bar         | company name   Waiting requests...     user@localh... |
+  Status bar         |username company      Waiting requests...     login@...|
                      |_______________________________________________________|
-
-:TODO: Find a way for translatable illustrations, since SVG is not supported
-       by many browsers...
 
 
 Menu Bar
@@ -97,16 +94,16 @@ of the client application. The menu bar is grouped into categories. It is
 controlled with mouse or keyboard. The `menu bar items`_ are explained later.
 
 
-Mouse and Keyboard use
+Mouse and Keyboard Use
 ++++++++++++++++++++++
-Most functions of the Tryton client can be used with mouse or keyboard.
+Most functions of the Tryton client can be accessed with mouse or keyboard.
 `Key bindings`__ for all menu items are preset. Furthermore all key bindings
 are manually configurable. To change the binding of a menu item the user needs
 to put the cursor onto it and simply press the user defined key combination.
 For this purpose it is needed to activate the configuration of the key bindings
-with Options > Menubar > Change Accelerators. After configuration, don't forget
-to disable Change Accelerators, to avoid accidentally changes of key bindings
-while navigating the Menu bar with the keyboard.
+with Options > Menubar > Change Accelerators. After the configuration it is
+preferable to disable Change Accelerators, to avoid accidental changes of key
+bindings while navigating the Menu bar with the keyboard.
 
 .. Note:: Usually key bindings are composed with modifier keys.
 
@@ -116,14 +113,14 @@ Additionally the menu bar items are accessible with the *Alt* or *Option* key.
 The user needs to hold the *Alt* or *Option* key followed by the underlined
 character of the menu bar item to choose. To dive into deeper menu levels,
 he needs to release the *Alt* or *Option* key and to simply press the
-underlined letter of the sub menu item.
+underlined letter of the sub menu item. If there exist several menu items with
+the same shortcut, repeated activation of the shortcut key will jump to the
+next one.
 
 The second mouse button (usually right mouse button) provides an additional
 contextual menu for some views and fields. In this context menu the user finds
 :term:`actions` to copy and paste contents or setting up default values or
 selections for several fields.
-
-Drag and drop is provided for arranging :term:`tabs`.
 
 
 Tool Bar
@@ -131,10 +128,9 @@ Tool Bar
 The tool bar contains some often used menu functions mapped to icons.
 In addition to the menu bar the tool bar contains a button called
 *Attachment*. The attachment item handles the document management system of
-Tryton which is able to attach files to an arbitrary :term:`model`. The button
-has two functions. It is showing how many attachments are linked to the
-current view. On click it opens the attachment :term:`dialog`. This dialog
-has the following layout:
+Tryton which is able to attach files to any arbitrary :term:`model`. The button
+is showing how many attachments are linked to the current view. On click it
+opens the attachment :term:`dialog`. This dialog has the following layout:
 
 * Preview: Show a preview picture of the selected attachment
 * Description: Show and edit free text description for the selected attachment
@@ -147,9 +143,6 @@ has the following layout:
   - Save as...: Save the selected attachment to the local file system.
   - Delete...: Delete the selected attachment.
   - Close
-
-:TODO: Create a menu item for attachments and move the following paragraph
-   to the menu item
 
 
 Tabbed Main Frame
@@ -164,11 +157,13 @@ views side by side. New :term:`tabs` are opened by special :term:`actions`,
 like choosing a menu item or clicking some action buttons. All tabs include
 titles which show the name of the provided view.
 
+:term:`Tabs` can be arranged by Drag and Drop.
+
 __ TDI_
 
 .. _TDI: http://en.wikipedia.org/wiki/Tabbed_document_interface
 
-.. Note:: Inside :term:`views` there could be tabs, too.
+.. Note:: Inside :term:`views` there can be tabs, too.
 
 Main Menu
 +++++++++
@@ -190,7 +185,7 @@ The top level entry 'Tryton' connects to the website of the Tryton project.
 The right frame is showing a :term:`tree view` substructure of menu *items*
 and *headings*. With the arrow keys it is possible to navigate inside the menu.
 By pressing *Enter* or double-clicking onto the menu item the appropriate
-:term:`views` opens. Using left and right arrow to expand or contract sub
+:term:`views` open. Use left and right arrow to expand or contract sub
 items of a heading.
 
 Figure: Main Menu Tab::
@@ -220,7 +215,7 @@ Figure: Main Menu Tab::
       |  |                    |                     |        | |
       |  |____________________|_____________________|________| |
       |________________________________________________________|
-      | company name    Waiting requests...     user@localh... |
+      |username company      Waiting requests...     login@... |
       |________________________________________________________|
 
 
@@ -228,13 +223,13 @@ The lower left menu frame shows a user adjustable *shortcuts* menu. This menu
 is for collecting often used menu items. Using a *shortcut* item will open
 the appropriate view in a new tab, just with a double mouse click.
 A menu item is added to the *shortcut* menu by pushing the plus button [+]
-in the *shortcut* menu. The minus button [-] in conjunction with a selected
-*shortcut* item removes it from the *shortcut* list.
+in the *shortcut* menu. The minus button [-] removes a selected *shortcut*
+item from the list.
 
 Home Action
 +++++++++++
 Another tab opens during the startup of the Tryton client: the home action.
-It is usually an item of the `Main Menu`_ which opens, when the user call his
+It is usually an item of the `Main Menu`_ opening when the user calls his
 `Home`__ action defined in the `preferences`__.
 
 __ Menu-Form-Home_
@@ -247,16 +242,20 @@ Status bar
 The status bar provides general informations of the state of the
 Tryton client. It is divided in three parts.
 
-* On its left side the company name of the users actual company is shown.
-* In the center of the status bar are informations about open
-  requests for the actual user provided. There is also a button to create and
-  to find allocated requests.
+* On its left side the real name and company name of the users actual company
+  is shown.
+* In the center of the status bar the number of waiting requests for the
+  actual user are displayed.
 * On its right side are details of the server connection shown including
   database and user informations if connected. It is also noted there, if
   there is no connection to a Tryton server at all. The right side information
   of the status bar is build with the following pattern::
 
     <user-name>@<tryton-server-address>:<port>/<database-name>
+
+  If the client is connected to the server with an SSL-secured connection, an
+  additional lock icon appears rightmost some certificate details in a mouse
+  hover popup.
 
 The Status bar can be enabled and disabled in the menu at
 Options > Form > Status bar
@@ -267,7 +266,7 @@ Menu Bar Items
 The following section describes the function of each menu bar entry in detail.
 A rule of thumb: All items of the menu bar that are suffixed by three dots
 (...) will open an intermediate :term:`dialog` for setting up the provided
-menu action. Most dialogs provides a *Cancel* button, used to stop the
+menu action. Most dialogs provide a *Cancel* button, used to stop the
 complete dialog process.
 
 
@@ -293,7 +292,7 @@ Connect...
 
 .. note:: Depending on server configuration for session timeout, the actual
    user may be logged out of the current session, and need to login again.
-   Default timout for logging out is six minutes.
+   Default timeout for inactivity logout is six minutes.
 
 __ File-Server-Connection_
 
@@ -310,12 +309,12 @@ Database
 This menu level provides tools to maintain Tryton databases.
 For all database operations the user needs to know the Tryton server password.
 
-.. warning:: Concider not to use this server-site maintaining functions
+.. warning:: Consider not to use this server-site maintaining functions,
              if there are security concerns. Since there are always security
              concerns in a multiuser environment, better disclaim to provide
-             this functions on database level.
+             these functions on database level.
 
-.. note:: Postgres database names are restricted by some rules:
+.. note:: Database names are restricted by some rules:
 
           * Allowed characters are alpha-nummeric [A-Za-z0-9] and
             underscore (_).
@@ -439,7 +438,7 @@ Server (connection) dialog:
   * Port: Port where the Tryton server listens.
 
 .. note:: If there is no connection to a Tryton server, many items in menu bar
-   and tool bar are de-activated.
+   and tool bar are deactivated.
 
 
 User
@@ -462,28 +461,28 @@ Preferences...
   * Menu Action: Defines the action which is called as the
     `main menu`_.
   * Home Action: Defines the action which is called as `home action`__.
-  * Language: Language of the client appearance.
+  * Language: Language of the client interface.
   * Timezone: The local timezone where the user/client resides.
-  * Groups: Defines the users membership for accessing.
+  * Groups: Displays the users membership to access groups.
 
 __ Menu-Form-Home_
 
 .. _Menu-user-send-a-request:
 
 Send a Request
-  Opens a tab in :term:`form view` which eneable the user to send
+  Opens a tab in :term:`form view` which enables the user to send
   requests to other users of the same database.
 
 .. _Menu-user-read-my-request:
 
 Read my Requests
-  Opens a tab in :term:`tree view` showing all requests depending to the
+  Opens a tab in :term:`tree view` showing all requests related to the
   actual user. Fields and actions of requests:
 
   * On top
 
     - From: User name of the sender
-    - To: User name of the request receiver
+    - To: User name of the request recipient
     - References: Count of the attached references
     - Subject: The subject of the request.
     - Priority: An importance priority of the request.
@@ -495,7 +494,7 @@ Read my Requests
   * *Request* tab
 
     - Body: The textual part of the request.
-    - History: The history of past reply to this request.
+    - History: The history of past replies to this request.
 
       + From: Sender of the past request
       + To: Receiver of the past request
@@ -512,8 +511,8 @@ Read my Requests
 
   * Actions:
 
-    - Send: Sends the actual message to receiver
-    - Reply: Reply or answer the actual message
+    - Send: Sends the actual message
+    - Reply: Replies or answers the actual message
     - close: Closes the actual message
 
   * *References* tab
@@ -523,7 +522,7 @@ Read my Requests
       + Reference: The reference type
       + (Target): Defines an reference attached to the request.
 
-.. note:: When the talk is about requests, think of an internal system of
+.. note:: When talking about requests, think of an internal system of
    Tryton, which is very similar to email.
 
 
@@ -565,20 +564,24 @@ Find...:
   * Search criteria: Defines the aspects to seek for.
   * General search operators:
 
-    - Equals: Search for results which exactly contain the following term.
-    - Is Different: Search for results which are different to the following
+    - Equals: Search for results which are exactly the same as the following
+      term.
+    - Does Not Equal: Search for results which are different from the following
       term.
 
   * Additional search operators on numbers, amounts and strings:
 
     - Contains: Search for results which contain the following term.
-    - Not Contains:  Search for results which do not include the
+    - Does Not Contain:  Search for results which do not include the
       following term.
+    - Starts With: Search for results beginning with the following term.
+    - Ends With: Search for results ending with the following term.
 
   * Additional search operators for numbers and amounts:
 
     - Is Between: Search for results inside a range (from - to).
     - Is Not Between: Search for results outside a range (from - to).
+    - Is Different: Same as 'Does Not Equal', see above.
 
   * Advanced Search expander opens additional search criteria.
 
@@ -593,8 +596,8 @@ Find...:
     - Ok: Open the selected results.
     - Cancel
 
-.. note:: De-activated records are only shown in the results, when the
-         *Active* search criteria is set to *No*.
+.. note:: To search for deactivated records the *Active* search criteria must be
+        set to *No*.
 
 .. _Menu-Form-Next:
 
@@ -620,7 +623,7 @@ Switch View:
 .. _Menu-Form-Menu:
 
 Menu:
-  Activate or re-open the menu tab.
+  Activates or reopens the menu tab.
 
 .. _Menu-Form-Home:
 
@@ -632,7 +635,8 @@ __ Menu-User-Preferences_
 .. _Menu-Form-Close:
 
 Close Tab:
-  Closes the current tab. Request :term:`Dialog` in case of unsaved changes.
+  Closes the current tab. A Request :term:`Dialog` opens in case of unsaved
+  changes.
 
 .. _Menu-Form-Previous_Tab:
 
@@ -657,7 +661,8 @@ Go to Record ID...:
 .. _Menu-Form-Reload_Undo:
 
 Reload/Undo:
-  Reloads the content of the actual tab.
+  Reloads the content of the actual tab. Undoes changes, if save request for
+  the current record is denied.
 
 .. _Menu-Form-Actions:
 
@@ -723,7 +728,7 @@ Import Data...:
 
 Options
 ^^^^^^^
-The Options menu sets up many visual and context depending preferences.
+The Options menu sets up several visual and context depending preferences.
 
 
 Toolbar
@@ -809,8 +814,8 @@ Tabs Position
 .. _Menu-Options-File_Actions:
 
 File Actions...:
-  Opens a dialog to setting up file types for print and open actions.
-  Use ``%s`` as a placeholder for the document name.
+  Opens a dialog to set up file types for print and open actions.
+  Use ``"%s"`` as a placeholder for the document name.
 
   * Provided file types:
 
@@ -827,24 +832,26 @@ File Actions...:
 .. _Menu-Options-Email:
 
 Email...:
-  Open a dialog to setting up email program.
+  Open a dialog to set up an email reader.
 
-  * Command Line: The calling command line for the email client.
-  * Usage:
+  * Command Line: The command line calling the email reader.
+  * Placeholders:
 
-    - ``${to}``: the destination emails
-    - ``${cc}``: the copy emails
+    - ``${to}``: the destination email address
+    - ``${cc}``: the carbon copy email address
     - ``${subject}``: the subject of the email
     - ``${body}``: the body of the email
     - ``${attachment}``: the attachment of the email
 
-  * Example:
+  * Examples:
 
-    - Thunderbird:
-      ``thunderbird -compose to="${to}",cc="${cc}",subject="${subject}",body="${body}",attachment="${attachment}``
+    - Thunderbird 2 on Linux:
+      ``thunderbird -compose "to='${to}',cc='${cc}',subject='${subject}',body='${body}',attachment='file://${attachment}'"``
 
-    - Thunderbird on Windows:
-      ``"C:\\Program Files\\Mozilla Thunderbird\\thunderbird.exe" -compose to="${to}",cc="${cc}",subject="${subject}",body="${body}",attachment="${attachment}``
+    - Thunderbird 2 on Windows XP SP3:
+      ``"C:\\Program Files\\Mozilla Thunderbird\\thunderbird.exe" -compose to="${to}",cc="${cc}",subject="${subject}",body="${body}",attachment="${attachment}"``
+
+.. note:: The path of *Program Files* may vary dependent on the localization of your Windows version.
 
 .. _Menu-Options-Save_Options:
 
@@ -852,13 +859,13 @@ Save Options:
   Saves all the options.
 
 
-Plugins
-^^^^^^^
+Plug-ins
+^^^^^^^^
 Plug-ins are client side add-ons for Tryton. There are some included plug-ins
 with the standard client.
 
-Execute a Plugin
-++++++++++++++++
+Execute a Plug-in
++++++++++++++++++
 Translate View:
   Creates a translation table of the current view.
 
@@ -917,9 +924,3 @@ Configuration File
 :Authors:
   Udo Spallek, Bertrand Chenal, Mattias Behrle, Anne Krings
 
-:TODO:
-  * Search for TODO in this document.
-  * More and less linking to glossary.
-  * Check for mistakes.
-  * Better/Corrected explanations
-  * Check redundancies
