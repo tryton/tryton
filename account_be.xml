@@ -2965,7 +2965,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="400">
             <field name="name">Clients</field>
             <field name="code">400</field>
-            <field name="kind">view</field>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="kind">receivable</field>
             <field name="type" ref="actif_VII_A"/>
             <field name="parent" ref="40"/>
         </record>
