@@ -27,6 +27,7 @@ class Board(SignalEvent):
             self.name = self.board.name
         else:
             self.name = name
+        self.model = ''
 
         self.widget = gtk.VBox()
 
