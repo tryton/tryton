@@ -461,6 +461,8 @@ def reduce_ids(field, ids):
     :param ids: the list of ids
     :return: sql string and sql param
     '''
+    if not ids:
+        return '(%s)', [False]
     ids = ids[:]
     ids.sort()
     prev = ids.pop(0)

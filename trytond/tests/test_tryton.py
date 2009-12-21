@@ -62,6 +62,12 @@ class ToolsTestCase(unittest.TestCase):
     Test tools.
     '''
 
+    def test0000reduce_ids_empty(self):
+        '''
+        Test reduce_ids empty list.
+        '''
+        self.assert_(('(%s)', [False]) == reduce_ids('id', []))
+
     def test0010reduce_ids_continue(self):
         '''
         Test reduce_ids continue list.
