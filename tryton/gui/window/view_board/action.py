@@ -10,6 +10,9 @@ from tryton.gui.window.win_search import WinSearch
 from tryton.action import Action as Action2
 from tryton.gui.window.view_tree.view_tree import ViewTree
 import tryton.common as common
+import gettext
+_LIMIT = 2000
+_ = gettext.gettext
 
 
 class Action(object):
@@ -213,7 +216,8 @@ class Action(object):
     def display(self):
         try:
             res_ids = rpc.execute('model', self.action['res_model'], 'search',
-                    self.domain, 0, self.action.get('limit', 80))
+                    self.domain, 0, self.action['limit'] or _LIMIT, None,
+                    rpc.CONTEXT)
         except Exception, exception:
             common.process_exception(exception, self._window)
             return False
