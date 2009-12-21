@@ -174,7 +174,7 @@ class Translation(OSV, Cacheable):
                     ('name', '=', name),
                     ])
                 if not ids2:
-                    self.create(cursor, user, {
+                    self.create(cursor, 0, {
                         'name': name,
                         'lang': lang,
                         'type': ttype,
@@ -183,7 +183,7 @@ class Translation(OSV, Cacheable):
                         'fuzzy': False,
                         })
                 else:
-                    self.write(cursor, user, ids, {
+                    self.write(cursor, 0, ids, {
                         'src': field[field_name],
                         'value': value,
                         'fuzzy': False,
@@ -198,7 +198,7 @@ class Translation(OSV, Cacheable):
                 ('res_id', '=', record.id),
                 ])
             if not ids2:
-                self.create(cursor, user, {
+                self.create(cursor, 0, {
                     'name': name,
                     'lang': lang,
                     'type': ttype,
@@ -208,7 +208,7 @@ class Translation(OSV, Cacheable):
                     'fuzzy': False,
                     })
             else:
-                self.write(cursor, user, ids2, {
+                self.write(cursor, 0, ids2, {
                     'value': value,
                     'src': record[field_name],
                     'fuzzy': False,
@@ -428,7 +428,7 @@ class Translation(OSV, Cacheable):
                         ids)
                 ids2 = [x[0] for x in cursor.fetchall()]
                 if ids2:
-                    self.write(cursor, user, ids2, {
+                    self.write(cursor, 0, ids2, {
                         'value': value,
                         'fuzzy': fuzzy,
                         }, context=ctx)
