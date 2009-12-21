@@ -30,6 +30,8 @@ class Action(object):
             common.process_exception(exception, self._window)
             raise
 
+        view_ids = False
+        self.action['view_mode'] = None
         if self.action.get('views', []):
             view_ids = [x[0] for x in self.action['views']]
             self.action['view_mode'] = [x[1] for x in self.action['views']]
