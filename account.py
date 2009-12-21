@@ -1897,8 +1897,8 @@ class CreateChartAccount(Wizard):
             ('res', '=', False),
             ('company', '=', datas['form']['company']),
             ], context=context)
-        property_obj.delete(cursor, user, property_ids, context=context)
-        property_obj.create(cursor, user, {
+        property_obj.delete(cursor, 0, property_ids, context=context)
+        property_obj.create(cursor, 0, {
             'name': 'account_receivable',
             'field': account_receivable_field_id,
             'value': 'account.account,' + \
@@ -1915,8 +1915,8 @@ class CreateChartAccount(Wizard):
             ('res', '=', False),
             ('company', '=', datas['form']['company']),
             ], context=context)
-        property_obj.delete(cursor, user, property_ids, context=context)
-        property_obj.create(cursor, user, {
+        property_obj.delete(cursor, 0, property_ids, context=context)
+        property_obj.create(cursor, 0, {
             'name': 'account_payable',
             'field': account_payable_field_id,
             'value': 'account.account,' + \
