@@ -192,7 +192,7 @@ class Action(object):
             except Exception, exception:
                 common.process_exception(exception, self._window)
             if action_id:
-                Action2.execute(action_id, {})
+                Action2.execute(action_id, {}, self._window)
 
     def _sig_previous(self, widget, event):
         if event.type == gtk.gdk.BUTTON_PRESS:
