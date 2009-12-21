@@ -188,7 +188,7 @@ class Translation(ModelSQL, ModelView, Cacheable):
                     ('name', '=', name),
                     ])
                 if not ids2:
-                    self.create(cursor, user, {
+                    self.create(cursor, 0, {
                         'name': name,
                         'lang': lang,
                         'type': ttype,
@@ -197,7 +197,7 @@ class Translation(ModelSQL, ModelView, Cacheable):
                         'fuzzy': False,
                         })
                 else:
-                    self.write(cursor, user, ids, {
+                    self.write(cursor, 0, ids, {
                         'src': record[field_name],
                         'value': value,
                         'fuzzy': False,
@@ -212,7 +212,7 @@ class Translation(ModelSQL, ModelView, Cacheable):
                 ('res_id', '=', record.id),
                 ])
             if not ids2:
-                self.create(cursor, user, {
+                self.create(cursor, 0, {
                     'name': name,
                     'lang': lang,
                     'type': ttype,
@@ -222,7 +222,7 @@ class Translation(ModelSQL, ModelView, Cacheable):
                     'fuzzy': False,
                     })
             else:
-                self.write(cursor, user, ids2, {
+                self.write(cursor, 0, ids2, {
                     'value': value,
                     'src': record[field_name],
                     'fuzzy': False,
