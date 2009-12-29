@@ -597,7 +597,6 @@ class Account(ModelSQL, ModelView):
         return True
 
     def default_company(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
         if context.get('company'):
@@ -1169,7 +1168,6 @@ class PrintGeneralLegderInit(ModelView):
     def default_company(self, cursor, user, context=None):
         if context is None:
             context = {}
-        company_obj = self.pool.get('company.company')
         if context.get('company'):
             return context['company']
         return False
@@ -1388,7 +1386,6 @@ class PrintTrialBalanceInit(ModelView):
     def default_company(self, cursor, user, context=None):
         if context is None:
             context = {}
-        company_obj = self.pool.get('company.company')
         if context.get('company'):
             return context['company']
         return False
@@ -1535,7 +1532,6 @@ class OpenBalanceSheetInit(ModelView):
     def default_company(self, cursor, user, context=None):
         if context is None:
             context = {}
-        company_obj = self.pool.get('company.company')
         if context.get('company'):
             return context['company']
         return False
@@ -1640,7 +1636,6 @@ class OpenIncomeStatementInit(ModelView):
     def default_company(self, cursor, user, context=None):
         if context is None:
             context = {}
-        company_obj = self.pool.get('company.company')
         if context.get('company'):
             return context['company']
         return False
@@ -2148,7 +2143,6 @@ class OpenThirdPartyBalanceInit(ModelView):
     def default_company(self, cursor, user, context=None):
         if context is None:
             context = {}
-        company_obj = self.pool.get('company.company')
         if context.get('company'):
             return context['company']
         return False
@@ -2291,7 +2285,6 @@ class OpenAgedBalanceInit(ModelView):
     def default_company(self, cursor, user, context=None):
         if context is None:
             context = {}
-        company_obj = self.pool.get('company.company')
         if context.get('company'):
             return context['company']
         return False

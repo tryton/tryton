@@ -75,7 +75,6 @@ class FiscalYear(ModelSQL, ModelView):
         return 'open'
 
     def default_company(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
         if context.get('company'):

@@ -1743,7 +1743,6 @@ class PrintGeneralJournalInit(ModelView):
     def default_company(self, cursor, user, context=None):
         if context is None:
             context = {}
-        company_obj = self.pool.get('company.company')
         if context.get('company'):
             return context['company']
         return False
