@@ -150,7 +150,6 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         return False
 
     def default_company(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
         if context.get('company'):
@@ -1536,7 +1535,6 @@ class ProductSupplier(ModelSQL, ModelView):
         self._order.insert(0, ('sequence', 'ASC'))
 
     def default_company(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
         if context.get('company'):
