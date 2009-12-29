@@ -50,7 +50,6 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
         return date_obj.today(cursor, user, context=context)
 
     def default_company(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
         if context.get('company'):
