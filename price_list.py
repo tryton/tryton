@@ -19,7 +19,6 @@ class PriceList(ModelSQL, ModelView):
     lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines')
 
     def default_company(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
         if context.get('company'):
