@@ -99,7 +99,6 @@ class User(ModelSQL, ModelView):
         })
 
     def default_main_company(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
         if context.get('company'):
@@ -216,7 +215,6 @@ class Sequence(ModelSQL, ModelView):
         self._order.insert(0, ('company', 'ASC'))
 
     def default_company(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
         if context is None:
             context = {}
         if context.get('company'):
