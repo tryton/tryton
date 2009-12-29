@@ -25,7 +25,6 @@ class Journal(ModelSQL, ModelView):
         return False
 
     def default_company(self, cursor, user, context=None):
-        company_obj = self.pool.get('company.company')
         if context and context.get('company'):
             return context['company']
         return False
