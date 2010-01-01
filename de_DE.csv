@@ -8,7 +8,7 @@ Re-compute the invoice.","Es sind Steuern definiert, allerdings nicht in den Rec
 Bitte lassen Sie die Rechnung erneut berechnen.",0
 error,account.invoice,0,"Taxes defined on invoice lines but not on invoice!
 Re-compute the invoice.","Steuern sind für die Rechnungspositionen definiert, allerdings nicht für die Rechnung selbst!
-",0
+Bitte lassen Sie die Rechnung erneut berechnen.",0
 error,account.invoice,0,The credit account on journal is missing!,Haben-Konto im Journal fehlt!,0
 error,account.invoice,0,The credit account on journal is the same than the invoice account!,Das Habenkonto des Journals ist das selbe wie das Rechnungskonto!,0
 error,account.invoice,0,The debit account on journal is missing!,Soll-Konto im Journal fehlt,0
@@ -30,7 +30,7 @@ with account with a different invoice company!","Eine Rechnungszeile kann sich n
 auf ein Konto eines anderen Unternehmens beziehen!",0
 error,account.invoice.line,0,"You can not modify line from an invoice that is opened, paid!",Positionen von fakturierten oder bezahlten Rechnungen können nicht geändert werden!,0
 error,account.invoice.line,0,"You can not use the same account
-as on the invoice!",Es kann nicht das selbe Konto verwendet werden!,0
+as on the invoice!",Es kann nicht das selbe Konto wie das der Rechnung verwendet werden!,0
 error,account.invoice.pay_invoice,0,You can not create a partial payment with an amount greater then the amount to pay!,Ein Teilbetrag kann nicht größer als der Gesamtbetrag der Rechnung sein!,0
 error,account.invoice.payment_term,0,Invalid payment term line!,Ungültige Position in Zahlungsbedingung!,0
 error,account.invoice.payment_term,0,Payment term missing a remainder line!,In der Zahlungsbedingung fehlt eine Restbetragszeile!,0
@@ -334,7 +334,7 @@ view,account.invoice.payment_term,0,Payment Terms,Zahlungsbedingung,0
 view,account.invoice.print_invoice_report.warning,0,<b>Warning!</b>,<b>Warnung!</b>,0
 view,account.invoice.print_invoice_report.warning,0,Print Invoice,Rechnung / Gutschrift drucken,0
 view,account.invoice.print_invoice_report.warning,0,The invoices will be sent <i>directly</i> to the printer.,Die Rechnungen werden <i>direkt</i> an den Drucker gesendet.,0
-view,account.invoice.print_invoice_report.warning,0,You have selected more than one invoice to print.,Sie haben mehr als eine Rechnung zum ausdrucken gewählt.,0
+view,account.invoice.print_invoice_report.warning,0,You have selected more than one invoice to print.,Sie haben mehr als eine Rechnung zum Ausdrucken gewählt.,0
 view,account.invoice.tax,0,Invoice Tax,Rechnungssteuer,0
 view,account.invoice.tax,0,Invoice Taxes,Rechnungssteuern,0
 view,account.invoice.tax,0,Tax Code,Steuerkennziffer,0
