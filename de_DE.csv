@@ -188,7 +188,7 @@ field,"account.journal.period,period",0,Period,Buchungszeitraum,0
 field,"account.journal.period,rec_name",0,Name,Name,0
 field,"account.journal.period,state",0,State,Status,0
 field,"account.journal,rec_name",0,Name,Name,0
-field,"account.journal,sequence",0,Sequence,Reihenfolge,0
+field,"account.journal,sequence",0,Sequence,Nummernkreis,0
 field,"account.journal,type",0,Type,Typ,0
 field,"account.journal.type,code",0,Code,Code,0
 field,"account.journal.type,name",0,Name,Name,0
@@ -494,7 +494,7 @@ model,"ir.action,name",act_close_journal_period,Close Journals - Periods,Journal
 model,"ir.action,name",act_close_period,Close Periods,Buchungszeiträume abschließen,0
 model,"ir.action,name",wizard_create_chart_account,Create Chart of Account from Template,Kontenplan von Vorlage erstellen,0
 model,"ir.action,name",act_fiscalyear_form,Fiscal Years,Geschäftsjahre,0
-model,"ir.action,name",report_general_journal,General Journal,Allgemein,0
+model,"ir.action,name",report_general_journal,General Journal,Journal Allgemein,0
 model,"ir.action,name",report_general_ledger,General Ledger,Kontenblätter,0
 model,"ir.action,name",act_account_income_statement_tree,Income Statement,Gewinn- und Verlustrechnung,0
 model,"ir.action,name",act_journal_form,Journals,Journale,0
