@@ -122,7 +122,7 @@ model,"ir.action,name",wizard_shipment_handle_exception,Handle Shipment Exceptio
 model,"ir.action,name",act_invoice_form,Invoices,Rechnungseingang,0
 model,"ir.action,name",act_purchase_form_new,New Purchase,Neuer Einkauf,0
 model,"ir.action,name",act_open_supplier,Parties associated to Purchases,Parteien: Einkäufen zugeordnet,0
-model,"ir.action,name",report_purchase,Purchase,Einkauf drucken,0
+model,"ir.action,name",report_purchase,Purchase,Einkauf,0
 model,"ir.action,name",act_purchase_form,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_form2,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
