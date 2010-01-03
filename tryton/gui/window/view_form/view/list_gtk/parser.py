@@ -14,6 +14,7 @@ from tryton.gui.window.view_form.view.form_gtk.many2one import Dialog \
 from tryton.gui.window.view_form.view.form_gtk.one2many import Dialog \
         as O2MDialog
 from tryton.gui.window.win_search import WinSearch
+from tryton.gui.window.view_form.widget_search.form import _LIMIT
 
 import tryton.rpc as rpc
 import datetime as DT
@@ -643,8 +644,8 @@ class M2M(Char):
             common.process_exception(exception, self.window)
             return []
         win = WinSearch(relation, sel_multi=True, ids=ids, context=context,
-                domain=domain)
-        found = win.go()
+                domain=domain, parent=self.window)
+        found = win.run()
         return found or []
 
     def open_remote(self, model, create=True, changed=False, text=None):
@@ -667,8 +668,8 @@ class M2M(Char):
         else:
             ids = model[self.field_name].get_client(model)
         win = WinSearch(relation, sel_multi=True, ids=ids, context=context,
-                domain=domain)
-        found = win.go()
+                domain=domain, parent=self.window)
+        found = win.run()
         if found:
             return True, found
         else:
