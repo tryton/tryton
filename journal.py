@@ -221,8 +221,7 @@ class Period(OSV):
 
     def delete(self, cursor, user, ids, context=None):
         self._check(cursor, user, ids, context=context)
-        return super(Period, self).delete(cursor, user, ids, vals,
-                context=context)
+        return super(Period, self).delete(cursor, user, ids, context=context)
 
     def close(self, cursor, user, ids, context=None):
         '''
