@@ -107,7 +107,8 @@ class Many2Many(Field):
             if act[0] == 'create':
                 relation_obj.create(cursor, user, {
                     self.origin: record_id,
-                    self.target: [('create', act[1])],
+                    self.target: target_obj.create(cursor, user, act[1],
+                        context=context),
                     }, context=context)
             elif act[0] == 'write':
                 target_obj.write(cursor, user, act[1] , act[2], context=context)
