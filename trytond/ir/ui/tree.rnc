@@ -28,7 +28,7 @@ attlist.field &=
     | "float"
     | "numeric"
     | "float_time"
-    | "interger"
+    | "integer"
     | "datetime"
     | "boolean"
     | "text"
