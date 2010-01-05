@@ -499,8 +499,9 @@ class Model(object):
                     field_value2 = []
                     for i in range(len(field_value or [])):
                         field_value2.append({})
-                        for field2 in field_value[i]:
-                            if obj._columns[field2]._type \
+                        for field2 in field_value[i].keys():
+                            if field2 in obj._columns \
+                                    and obj._columns[field2]._type \
                                     in ('many2one',):
                                 obj2 = self.pool.get(
                                         obj._columns[field2].model_name)
