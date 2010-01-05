@@ -92,7 +92,7 @@
           <value>float</value>
           <value>numeric</value>
           <value>float_time</value>
-          <value>interger</value>
+          <value>integer</value>
           <value>datetime</value>
           <value>boolean</value>
           <value>text</value>
