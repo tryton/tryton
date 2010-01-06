@@ -1,8 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-_LUHN_ODD_LOOKUP = [sum(divmod(x * 2, 10)) for x in xrange(10)]
-
 def validate(value):
     """
     Validate value with Luhn algorithm
