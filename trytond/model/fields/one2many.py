@@ -62,8 +62,10 @@ class One2Many(Field):
         for i in model.pool.get(self.model_name).read(cursor, user, ids2,
                 [self.field], context=context):
             res[i[self.field]].append(i['id'])
+
+        index_of_ids2 = dict((i, index) for index, i in enumerate(ids2))
         for val in res.values():
-            val.sort(lambda x, y: cmp(ids2.index(x), ids2.index(y)))
+            val.sort(lambda x, y: cmp(index_of_ids2[x], index_of_ids2[y]))
         return res
 
     def set(self, cursor, user, record_id, model, name, values, context=None):
