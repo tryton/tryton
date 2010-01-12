@@ -704,7 +704,7 @@ class ModelStorage(Model):
                                         'Relation not found: ' + line[i] + \
                                                     ' on '+relation + ' !\n')
                                 else:
-                                    res.append(res2)
+                                    res.extend(res2)
                             if len(res):
                                 res = [('set', res)]
                     else:
