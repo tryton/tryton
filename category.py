@@ -6,6 +6,8 @@ STATES = {
     'readonly': "active == False",
 }
 
+SEPARATOR = ' / '
+
 
 class Category(ModelSQL, ModelView):
     "Category"
@@ -22,14 +24,22 @@ class Category(ModelSQL, ModelView):
         super(Category, self).__init__()
         self._constraints += [
             ('check_recursion', 'recursive_categories'),
+            ('check_name', 'wrong_name'),
         ]
         self._error_messages.update({
             'recursive_categories': 'You can not create recursive categories!',
+            'wrong_name': 'You can not use "%s" in name field!' % SEPARATOR,
         })
         self._order.insert(1, ('name', 'ASC'))
 
     def default_active(self, cursor, user, context=None):
         return 1
+
+    def check_name(self, cursor, user, ids):
+        for category in self.browse(cursor, user, ids):
+            if SEPARATOR in category.name:
+                return False
+        return True
 
     def get_rec_name(self, cursor, user, ids, name, arg, context=None):
         if not ids:
@@ -39,11 +49,31 @@ class Category(ModelSQL, ModelView):
             if category.id in res:
                 return res[category.id]
             elif category.parent:
-                return _name(category.parent) + ' / ' + category.name
+                return _name(category.parent) + SEPARATOR + category.name
             else:
                 return category.name
         for category in self.browse(cursor, user, ids, context=context):
             res[category.id] = _name(category)
         return res
+
+    def search_rec_name(self, cursor, user, name, args, context=None):
+        args2 = []
+        i = 0
+        while i < len(args):
+            if isinstance(args[i][2], basestring):
+                values = args[i][2].split(SEPARATOR)
+                values.reverse()
+                domain = []
+                field = 'name'
+                for name in values:
+                    domain.append((field, args[i][1], name))
+                    field = 'parent.' + field
+                args2.append(('id', 'inselect', self.search(cursor, user,
+                    domain, order=[], context=context, query_string=True)))
+            #TODO Handle list
+            else:
+                args2.append(('name', args[i][1], args[i][2]))
+            i += 1
+        return args2
 
 Category()
