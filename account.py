@@ -1318,7 +1318,7 @@ class GeneralLegder(Report):
         if posted:
             clause.append(('move.state', '=', 'posted'))
         move_ids = move_line_obj.search(cursor, user, clause,
-                context=context)
+                order=[], context=context)
         res = {}
         for move in move_line_obj.browse(cursor, user, move_ids,
                 context=context):
