@@ -1583,8 +1583,7 @@ class OpenBalanceSheet(Wizard):
                 break
         lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
 
-        date = lang_obj.strftime(datas['form']['date'].timetuple(), lang.code,
-                lang.date)
+        date = lang_obj.strftime(datas['form']['date'], lang.code, lang.date)
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_account_balance_sheet_tree'),
