@@ -71,29 +71,29 @@ class MPTTTestCase(unittest.TestCase):
         childs.sort(lambda x, y: cmp(child_ids.index(x['id']),
             child_ids.index(y['id'])))
         for child in childs:
-            if child['left'] <= left:
-                raise Exception('Record (%d): left %d <= parent left %d' % \
-                        (child['id'], child['left'], left))
-            if child['left'] >= child['right']:
-                raise Exception('Record (%d): left %d >= right %d' % \
-                        (child['id'], child['left'], child['right']))
-            if right != 0 and child['right'] >= right:
-                raise Exception('Record (%d): right %d >= parent right %d' % \
-                        (child['id'], child['right'], right))
+            assert child['left'] > left, \
+                    'Record (%d): left %d <= parent left %d' % \
+                    (child['id'], child['left'], left)
+            assert child['left'] < child['right'], \
+                    'Record (%d): left %d >= right %d' % \
+                    (child['id'], child['left'], child['right'])
+            assert right == 0 or child['right'] < right, \
+                    'Record (%d): right %d >= parent right %d' % \
+                    (child['id'], child['right'], right)
             self.CheckTree(child['id'], left=child['left'],
                     right=child['right'])
         next_left = 0
         for child in childs:
-            if child['left'] <= next_left:
-                raise Exception('Record (%d): left %d <= next left %d' % \
-                        (child['id'], child['left'], next_left))
+            assert child['left'] > next_left, \
+                    'Record (%d): left %d <= next left %d' % \
+                    (child['id'], child['left'], next_left)
             next_left = child['right']
         childs.reverse()
         previous_right = 0
         for child in childs:
-            if previous_right != 0 and child['right'] >= previous_right:
-                raise Exception('Record (%d): right %d >= previous right %d' % \
-                        (child['id'] , child['right'], previous_right))
+            assert previous_right == 0 or child['right'] < previous_right, \
+                    'Record (%d): right %d >= previous right %d' % \
+                    (child['id'] , child['right'], previous_right)
             previous_right = child['left']
 
     def test0010create(self):
@@ -113,7 +113,7 @@ class MPTTTestCase(unittest.TestCase):
                         }, CONTEXT)
                     new_records.append(record_id)
                 k += 1
-        self.assertRaises(Exception, self.CheckTree())
+        self.CheckTree()
 
     def test0020reorder(self):
         '''
@@ -131,14 +131,14 @@ class MPTTTestCase(unittest.TestCase):
                     'sequence': i,
                     }, CONTEXT)
                 i -= 1
-                self.assertRaises(Exception, self.CheckTree())
+                self.CheckTree()
             i = 0
             for record_id in record_ids:
                 self.mptt.write(record_id, {
                     'sequence': i,
                     }, CONTEXT)
                 i += 1
-                self.assertRaises(Exception, self.CheckTree())
+                self.CheckTree()
             for record_id in record_ids:
                 reorder(record_id)
         reorder()
@@ -146,7 +146,7 @@ class MPTTTestCase(unittest.TestCase):
         self.mptt.write(record_ids, {
             'sequence': 0,
             }, CONTEXT)
-        self.assertRaises(Exception, self.CheckTree())
+        self.CheckTree()
 
     def test0030reparent(self):
         '''
@@ -164,11 +164,11 @@ class MPTTTestCase(unittest.TestCase):
                         self.mptt.write(record_id, {
                             'parent': record2_id,
                             }, CONTEXT)
-                        self.assertRaises(Exception, self.CheckTree())
+                        self.CheckTree()
                         self.mptt.write(record_id, {
                             'parent': parent_id,
                             }, CONTEXT)
-                        self.assertRaises(Exception, self.CheckTree())
+                        self.CheckTree()
             for record_id in record_ids:
                 reparent(record_id)
         reparent()
@@ -181,13 +181,13 @@ class MPTTTestCase(unittest.TestCase):
         for record_id in record_ids:
             if record_id % 2:
                 self.mptt.delete(record_id, CONTEXT)
-                self.assertRaises(Exception, self.CheckTree())
+                self.CheckTree()
         record_ids = self.mptt.search([], CONTEXT)
         self.mptt.delete(record_ids[:len(record_ids)/2], CONTEXT)
-        self.assertRaises(Exception, self.CheckTree())
+        self.CheckTree()
         record_ids = self.mptt.search([], CONTEXT)
         self.mptt.delete(record_ids, CONTEXT)
-        self.assertRaises(Exception, self.CheckTree())
+        self.CheckTree()
 
 
 class RPCProxy(object):
