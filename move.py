@@ -33,7 +33,7 @@ class Move(ModelSQL, ModelView):
     reference = fields.Char('Reference', size=None, readonly=True,
             help='Also known as Folio Number')
     period = fields.Many2One('account.period', 'Period', required=True,
-            states=_MOVE_STATES, depends=_MOVE_DEPENDS)
+            states=_MOVE_STATES, depends=_MOVE_DEPENDS, select=1)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     date = fields.Date('Effective Date', required=True, states=_MOVE_STATES,
@@ -42,7 +42,7 @@ class Move(ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
-        ], 'State', required=True, readonly=True)
+        ], 'State', required=True, readonly=True, select=1)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
             states=_MOVE_STATES, depends=_MOVE_DEPENDS,
             context="{'journal': journal, 'period': period, " \
@@ -475,7 +475,7 @@ class Line(ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('valid', 'Valid'),
-        ], 'State', readonly=True, required=True)
+        ], 'State', readonly=True, required=True, select=1)
     active = fields.Boolean('Active', select=2)
     reconciliation = fields.Many2One('account.move.reconciliation',
             'Reconciliation', readonly=True, ondelete='SET NULL', select=2)
