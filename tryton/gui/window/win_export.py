@@ -270,8 +270,9 @@ class WinExport(object):
 
     def sig_unsel(self, widget=None):
         store, paths = self.view2.get_selection().get_selected_rows()
-        for i in paths:
-            store.remove(store.get_iter(i))
+        while paths:
+            store.remove(store.get_iter(paths[0]))
+            store, paths = self.view2.get_selection().get_selected_rows()
 
     def sig_unsel_all(self, widget=None):
         self.model2.clear()
