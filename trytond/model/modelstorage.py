@@ -774,7 +774,7 @@ class ModelStorage(Model):
             except Exception, exp:
                 logger.error(exp)
                 cursor.rollback()
-                return (-1, res, exp[0], warning)
+                return (-1, res, exp[1], warning)
             done += 1
         return (done, 0, 0, 0)
 
