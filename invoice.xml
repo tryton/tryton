@@ -123,8 +123,6 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="accounting_date"/>
                             <label name="move"/>
                             <field name="move"/>
-                            <label name="invoice_report"/>
-                            <field name="invoice_report"/>
                             <separator name="comment" colspan="4"/>
                             <field name="comment" colspan="4" spell="party_lang"/>
                         </page>
