@@ -132,7 +132,10 @@ class PackingIn(ModelWorkflow, ModelSQL, ModelView):
                         self.raise_user_error(cursor,
                                 'incoming_move_input_dest', context=context)
             elif act[0] == 'add':
-                move_ids.append(act[1])
+                if isinstance(act[1], (int, long)):
+                    move_ids.append(act[1])
+                else:
+                    move_ids.extend(act[1])
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
@@ -179,7 +182,10 @@ class PackingIn(ModelWorkflow, ModelSQL, ModelView):
                         self.raise_user_error(cursor,
                                 'inventory_move_input_source', context=context)
             elif act[0] == 'add':
-                move_ids.append(act[1])
+                if isinstance(act[1], (int, long)):
+                    move_ids.append(act[1])
+                else:
+                    move_ids.extend(act[1])
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
@@ -570,7 +576,10 @@ class PackingOut(ModelWorkflow, ModelSQL, ModelView):
                         self.raise_user_error(cursor,
                                 'outgoing_move_output_source', context=context)
             elif act[0] == 'add':
-                move_ids.append(act[1])
+                if isinstance(act[1], (int, long)):
+                    move_ids.append(act[1])
+                else:
+                    move_ids.extend(act[1])
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
@@ -617,7 +626,10 @@ class PackingOut(ModelWorkflow, ModelSQL, ModelView):
                         self.raise_user_error(cursor,
                                 'inventory_move_output_dest', context=context)
             elif act[0] == 'add':
-                move_ids.append(act[1])
+                if isinstance(act[1], (int, long)):
+                    move_ids.append(act[1])
+                else:
+                    move_ids.extend(act[1])
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
@@ -960,7 +972,10 @@ class PackingOutReturn(ModelWorkflow, ModelSQL, ModelView):
                         self.raise_user_error(cursor,
                                 'incoming_move_input_dest', context=context)
             elif act[0] == 'add':
-                move_ids.append(act[1])
+                if isinstance(act[1], (int, long)):
+                    move_ids.append(act[1])
+                else:
+                    move_ids.extend(act[1])
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
@@ -1007,7 +1022,10 @@ class PackingOutReturn(ModelWorkflow, ModelSQL, ModelView):
                         self.raise_user_error(cursor,
                                 'inventory_move_input_source', context=context)
             elif act[0] == 'add':
-                move_ids.append(act[1])
+                if isinstance(act[1], (int, long)):
+                    move_ids.append(act[1])
+                else:
+                    move_ids.extend(act[1])
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
