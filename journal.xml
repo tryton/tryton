@@ -246,6 +246,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_account_journal">
             <field name="name">Account Journal</field>
             <field name="code">account.journal</field>
+            <field name="groups"
+                eval="[('add', ref('res.group_admin')), ('add', ref('group_account_admin'))]"/>
         </record>
         <record model="ir.sequence" id="sequence_account_journal">
             <field name="name">Default Account Journal</field>
