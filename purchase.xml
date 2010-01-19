@@ -365,6 +365,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_purchase">
             <field name="name">Purchase</field>
             <field name="code">purchase.purchase</field>
+            <field name="groups"
+                eval="[('add', ref('res.group_admin')), ('add', ref('group_purchase_admin'))]"/>
         </record>
         <record model="ir.sequence" id="sequence_purchase">
             <field name="name">Purchase</field>
