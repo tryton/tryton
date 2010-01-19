@@ -172,6 +172,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_party">
             <field name="name">Party</field>
             <field name="code">party.party</field>
+            <field name="groups"
+                eval="[('add', ref('res.group_admin')), ('add', ref('group_party_admin'))]"/>
         </record>
         <record model="ir.sequence" id="sequence_party">
             <field name="name">Party</field>
