@@ -448,11 +448,15 @@ class ModelStorage(Model):
             i = 0
             active_found = False
             while i < len(domain):
-                if isinstance(domain[i], list):
-                    domain[i] = process(domain[i])
-                if isinstance(domain[i], tuple):
-                    if domain[i][0] == 'active':
+                arg = domain[i]
+                #add test for xmlrpc that doesn't handle tuple
+                if isinstance(arg, tuple) or \
+                        (isinstance(arg, list) and len(arg) > 2 and \
+                        arg[1] in OPERATORS):
+                    if arg[0] == 'active':
                         active_found = True
+                elif isinstance(arg, list):
+                    domain[i] = process(domain[i])
                 i += 1
             if not active_found:
                 if domain and ((isinstance(domain[0], basestring) \
