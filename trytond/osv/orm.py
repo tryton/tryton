@@ -2325,11 +2325,15 @@ class ORM(object):
                 i = 0
                 active_found = False
                 while i < len(args):
-                    if isinstance(args[i], list):
-                        args[i] = process_args(args[i])
-                    if isinstance(args[i], tuple):
-                        if args[i][0] == 'active':
+                    arg = args[i]
+                    #add test for xmlrpc that doesn't handle tuple
+                    if isinstance(arg, tuple) or \
+                            (isinstance(arg, list) and len(arg) > 2 and \
+                            arg[1] in OPERATORS):
+                        if arg[0] == 'active':
                             active_found = True
+                    elif isinstance(arg, list):
+                        args[i] = process_args(args[i])
                     i += 1
                 if not active_found:
                     if args and ((isinstance(args[0], basestring) \
