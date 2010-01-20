@@ -5,6 +5,7 @@ import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
+from trytond.pyson import Eval, If, In, Get
 
 
 class Company(ModelSQL, ModelView):
@@ -80,12 +81,12 @@ class User(ModelSQL, ModelView):
     main_company = fields.Many2One('company.company', 'Main Company',
             on_change=['main_company'])
     company = fields.Many2One('company.company', 'Current Company',
-            domain=["('parent', 'child_of', [main_company], 'parent')"],
+            domain=[('parent', 'child_of', [Eval('main_company')], 'parent')],
             depends=['main_company'])
     companies = fields.Function('get_companies', type='many2many',
             relation='company.company', string='Current Companies')
     employee = fields.Many2One('company.employee', 'Employee',
-            domain=["('company', 'child_of', [main_company], 'parent')"])
+            domain=[('company', 'child_of', [Eval('main_company')], 'parent')])
 
     def __init__(self):
         super(User, self).__init__()
@@ -181,8 +182,10 @@ User()
 class Property(ModelSQL, ModelView):
     _name = 'ir.property'
     company = fields.Many2One('company.company', 'Company',
-            domain=["('id', 'company' in context and '=' or '!=', " \
-                    "context.get('company', 0))"])
+            domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
 
     def _set_values(self, cursor, user_id, name, model, res_id, val, field_id,
             context=None):
@@ -207,8 +210,10 @@ Property()
 class Sequence(ModelSQL, ModelView):
     _name = 'ir.sequence'
     company = fields.Many2One('company.company', 'Company',
-            domain=["('id', 'company' in context and '=' or '!=', " \
-                    "context.get('company', 0))"])
+            domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
 
     def __init__(self):
         super(Sequence, self).__init__()
