@@ -1,16 +1,18 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level
-#of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Purchase"
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
+from trytond.pyson import Not, Equal, Eval, Or, Bool, If, In, Get, And, \
+        PYSONEncoder
 from decimal import Decimal
 import datetime
 import copy
 
 _STATES = {
-    'readonly': "state != 'draft'",
+    'readonly': Not(Equal(Eval('state'), 'draft')),
 }
 
 
@@ -21,9 +23,12 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
 
     company = fields.Many2One('company.company', 'Company', required=True,
             states={
-                'readonly': "state != 'draft' or bool(lines)",
-            }, domain=["('id', 'company' in context and '=' or '!=', " \
-                    "context.get('company', 0))"])
+                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                    Bool(Eval('lines'))),
+            }, domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
     reference = fields.Char('Reference', size=None, readonly=True, select=1)
     supplier_reference = fields.Char('Supplier Reference', select=1)
     description = fields.Char('Description', size=None, states=_STATES)
@@ -43,12 +48,13 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
     party_lang = fields.Function('get_function_fields', type='char',
             string='Party Language', on_change_with=['party'])
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
-            domain=["('party', '=', party)"], states=_STATES)
+            domain=[('party', '=', Eval('party'))], states=_STATES)
     warehouse = fields.Many2One('stock.location', 'Warehouse',
             domain=[('type', '=', 'warehouse')], required=True, states=_STATES)
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
-            'readonly': "state != 'draft' or (bool(lines) and bool(currency))",
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                And(Bool(Eval('lines')), Bool(Eval('currency')))),
         })
     currency_digits = fields.Function('get_function_fields', type='integer',
             string='Currency Digits', on_change_with=['currency'])
@@ -56,11 +62,11 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             states=_STATES, on_change=['lines', 'currency', 'party'])
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function('get_function_fields', type='numeric',
-            digits="(16, currency_digits)", string='Untaxed')
+            digits=(16, Eval('currency_digits', 2)), string='Untaxed')
     tax_amount = fields.Function('get_function_fields', type='numeric',
-            digits="(16, currency_digits)", string='Tax')
+            digits=(16, Eval('currency_digits', 2)), string='Tax')
     total_amount = fields.Function('get_function_fields', type='numeric',
-            digits="(16, currency_digits)", string='Total')
+            digits=(16, Eval('currency_digits', 2)), string='Total')
     invoice_method = fields.Selection([
         ('manual', 'Manual'),
         ('order', 'Based On Order'),
@@ -845,21 +851,25 @@ class PurchaseLine(ModelSQL, ModelView):
         ('comment', 'Comment'),
         ], 'Type', select=1, required=True)
     quantity = fields.Float('Quantity',
-            digits="(16, unit_digits)",
+            digits=(16, Eval('unit_digits', 2)),
             states={
-                'invisible': "type != 'line'",
-                'required': "type == 'line'",
-                'readonly': "not globals().get('_parent_purchase')",
+                'invisible': Not(Equal(Eval('type'), 'line')),
+                'required': Equal(Eval('type'), 'line'),
+                'readonly': Not(Bool(Eval('_parent_purchase'))),
             }, on_change=['product', 'quantity', 'unit',
                 '_parent_purchase.currency', '_parent_purchase.party'])
     unit = fields.Many2One('product.uom', 'Unit',
             states={
-                'required': "product",
-                'invisible': "type != 'line'",
-                'readonly': "not globals().get('_parent_purchase')",
-            }, domain=["('category', '=', " \
-                    "(product, 'product.default_uom.category'))"],
-            context="{'category': (product, 'product.default_uom.category')}",
+                'required': Bool(Eval('product')),
+                'invisible': Not(Equal(Eval('type'), 'line')),
+                'readonly': Not(Bool(Eval('_parent_purchase'))),
+            }, domain=[
+                ('category', '=',
+                    (Eval('product'), 'product.default_uom.category')),
+            ],
+            context={
+                'category': (Eval('product'), 'product.default_uom.category'),
+            },
             on_change=['product', 'quantity', 'unit', '_parent_purchase.currency',
                 '_parent_purchase.party'])
     unit_digits = fields.Function('get_unit_digits', type='integer',
@@ -867,26 +877,31 @@ class PurchaseLine(ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product',
             domain=[('purchasable', '=', True)],
             states={
-                'invisible': "type != 'line'",
-                'readonly': "not globals().get('_parent_purchase')",
+                'invisible': Not(Equal(Eval('type'), 'line')),
+                'readonly': Not(Bool(Eval('_parent_purchase'))),
             }, on_change=['product', 'unit', 'quantity', 'description',
                 '_parent_purchase.party', '_parent_purchase.currency'],
-            context="{'locations': " \
-                        "_parent_purchase.warehouse and " \
-                        "[_parent_purchase.warehouse] or False, " \
-                    "'stock_date_end': _parent_purchase.purchase_date, " \
-                    "'purchasable': True, " \
-                    "'stock_skip_warehouse': True}")
+            context={
+                'locations': If(Bool(Get(Eval('_parent_purchase', {}),
+                    'warehouse')),
+                    [Get(Eval('_parent_purchase', {}), 'warehouse')],
+                    []),
+                'stock_date_end': Get(Eval('_parent_purchase', {}),
+                    'purchase_date'),
+                'purchasable': True,
+                'stock_skip_warehouse': True,
+            })
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
-                'invisible': "type != 'line'",
-                'required': "type == 'line'",
+                'invisible': Not(Equal(Eval('type'), 'line')),
+                'required': Equal(Eval('type'), 'line'),
             })
     amount = fields.Function('get_amount', type='numeric', string='Amount',
-            digits="(16, _parent_purchase.currency_digits)",
+            digits=(16, Get(Eval('_parent_purchase', {}),
+                'currency_digits', 2)),
             states={
-                'invisible': "type not in ('line', 'subtotal')",
-                'readonly': "not globals().get('_parent_purchase')",
+                'invisible': Not(In(Eval('type'), ['line', 'subtotal'])),
+                'readonly': Not(Bool(Eval('_parent_purchase'))),
             }, on_change_with=['type', 'quantity', 'unit_price',
                 '_parent_purchase.currency'])
     description = fields.Text('Description', size=None, required=True)
@@ -894,7 +909,7 @@ class PurchaseLine(ModelSQL, ModelView):
     taxes = fields.Many2Many('purchase.line-account.tax',
             'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
             states={
-                'invisible': "type != 'line'",
+                'invisible': Not(Equal(Eval('type'), 'line')),
             })
     invoice_lines = fields.Many2Many('purchase.line-account.invoice.line',
             'purchase_line', 'invoice_line', 'Invoice Lines', readonly=True)
@@ -1348,19 +1363,20 @@ class Template(ModelSQL, ModelView):
     _name = "product.template"
 
     purchasable = fields.Boolean('Purchasable', states={
-        'readonly': "active == False",
+        'readonly': Not(Bool(Eval('active'))),
         })
     product_suppliers = fields.One2Many('purchase.product_supplier',
             'product', 'Suppliers', states={
-                'readonly': "active == False",
-                'invisible': "(not purchasable) or (not company)",
+                'readonly': Not(Bool(Eval('active'))),
+                'invisible': Or(Not(Bool(Eval('purchasable'))),
+                    Not(Bool(Eval('company')))),
             })
     purchase_uom = fields.Many2One('product.uom', 'Purchase UOM', states={
-        'readonly': "active == False",
-        'invisible': "not purchasable",
-        'required': "purchasable",
-        }, domain=["('category', '=', (default_uom, 'uom.category'))"],
-        context="{'category': (default_uom, 'uom.category')}",
+        'readonly': Not(Bool(Eval('active'))),
+        'invisible': Not(Bool(Eval('purchasable'))),
+        'required': Bool(Eval('purchasable')),
+        }, domain=[('category', '=', (Eval('default_uom'), 'uom.category'))],
+        context={'category': (Eval('default_uom'), 'uom.category')},
         on_change_with=['default_uom', 'purchase_uom', 'purchasable'])
 
     def __init__(self):
@@ -1369,17 +1385,16 @@ class Template(ModelSQL, ModelView):
                 'change_purchase_uom': 'Purchase prices are based on the purchase uom, '\
                     'are you sure to change it?',
             })
-        if 'not bool(account_category) and bool(purchasable)' not in \
-                self.account_expense.states.get('required', ''):
-            self.account_expense = copy.copy(self.account_expense)
-            self.account_expense.states = copy.copy(self.account_expense.states)
-            if not self.account_expense.states.get('required'):
-                self.account_expense.states['required'] = \
-                        "not bool(account_category) and bool(purchasable)"
-            else:
-                self.account_expense.states['required'] = '(' + \
-                        self.account_expense.states['required'] + ') ' \
-                        'or (not bool(account_category) and bool(purchasable))'
+        self.account_expense = copy.copy(self.account_expense)
+        self.account_expense.states = copy.copy(self.account_expense.states)
+        required = And(Not(Bool(Eval('account_category'))),
+                Bool(Eval('purchasable')))
+        if not self.account_expense.states.get('required'):
+            self.account_expense.states['required'] = required
+        else:
+            self.account_expense.states['required'] = \
+                    Or(self.account_expense.states['required'],
+                            required)
         if 'account_category' not in self.account_expense.depends:
             self.account_expense = copy.copy(self.account_expense)
             self.account_expense.depends = \
@@ -1525,8 +1540,10 @@ class ProductSupplier(ModelSQL, ModelView):
             'product_supplier', 'Prices')
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete='CASCADE', select=1,
-            domain=["('id', 'company' in context and '=' or '!=', " \
-                    "context.get('company', 0))"])
+            domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
     delivery_time = fields.Integer('Delivery Time',
             help="In number of days")
 
@@ -1618,10 +1635,18 @@ class ShipmentIn(ModelSQL, ModelView):
     def __init__(self):
         super(ShipmentIn, self).__init__()
         self.incoming_moves = copy.copy(self.incoming_moves)
-        if "('supplier', '=', supplier)" not in self.incoming_moves.add_remove:
-            self.incoming_moves.add_remove = "[" + \
-                    self.incoming_moves.add_remove + ", " \
-                    "('supplier', '=', supplier)]"
+        add_remove = [
+            ('supplier', '=', Eval('supplier')),
+        ]
+        if not self.incoming_moves.add_remove:
+            self.incoming_moves.add_remove = add_remove
+        else:
+            self.incoming_moves.add_remove = \
+                    copy.copy(self.incoming_moves.add_remove)
+            self.incoming_moves.add_remove = [
+                add_remove,
+                self.incoming_moves.add_remove,
+            ]
         self._reset_columns()
 
         self._error_messages.update({
@@ -1674,37 +1699,37 @@ class Move(ModelSQL, ModelView):
 
     purchase_line = fields.Many2One('purchase.line', select=1,
             states={
-                'readonly': "state != 'draft'",
+                'readonly': Not(Equal(Eval('state'), 'draft')),
             })
     purchase = fields.Function('get_purchase', type='many2one',
             relation='purchase.purchase', string='Purchase',
             fnct_search='search_purchase', select=1, states={
-                'invisible': "not purchase_visible",
+                'invisible': Not(Bool(Eval('purchase_visible'))),
             }, depends=['purchase_visible'])
     purchase_quantity = fields.Function('get_purchase_fields',
-            type='float', digits="(16, unit_digits)",
+            type='float', digits=(16, Eval('unit_digits', 2)),
             string='Purchase Quantity',
             states={
-                'invisible': "not purchase_visible",
+                'invisible': Not(Bool(Eval('purchase_visible'))),
             }, depends=['purchase_visible'])
     purchase_unit = fields.Function('get_purchase_fields',
             type='many2one', relation='product.uom',
             string='Purchase Unit',
             states={
-                'invisible': "not purchase_visible",
+                'invisible': Not(Bool(Eval('purchase_visible'))),
             }, depends=['purchase_visible'])
     purchase_unit_digits = fields.Function('get_purchase_fields',
             type='integer', string='Purchase Unit Digits')
     purchase_unit_price = fields.Function('get_purchase_fields',
             type='numeric', digits=(16, 4), string='Purchase Unit Price',
             states={
-                'invisible': "not purchase_visible",
+                'invisible': Not(Bool(Eval('purchase_visible'))),
             }, depends=['purchase_visible'])
     purchase_currency = fields.Function('get_purchase_fields',
             type='many2one', relation='currency.currency',
             string='Purchase Currency',
             states={
-                'invisible': "not purchase_visible",
+                'invisible': Not(Bool(Eval('purchase_visible'))),
             }, depends=['purchase_visible'])
     purchase_visible = fields.Function('get_purchase_visible',
             type="boolean", string='Purchase Visible',
@@ -1961,7 +1986,8 @@ class OpenSupplier(Wizard):
                 context=context)
         cursor.execute("SELECT DISTINCT(party) FROM purchase_purchase")
         supplier_ids = [line[0] for line in cursor.fetchall()]
-        res['domain'] = str([('id', 'in', supplier_ids)])
+        res['pyson_domain'] = PYSONEncoder().encode(
+                [('id', 'in', supplier_ids)])
 
         model_data_ids = model_data_obj.search(cursor, user, [
             ('fs_id', '=', 'act_open_supplier'),
@@ -1986,7 +2012,7 @@ class HandleShipmentExceptionAsk(ModelView):
 
     recreate_moves = fields.Many2Many(
         'stock.move', None, None, 'Recreate Moves',
-        domain=["('id', 'in', domain_moves)"], depends=['domain_moves'],
+        domain=[('id', 'in', Eval('domain_moves'))], depends=['domain_moves'],
         help='The selected moves will be recreated. '\
             'The other ones will be ignored.')
     domain_moves = fields.Many2Many(
@@ -2094,7 +2120,8 @@ class HandleInvoiceExceptionAsk(ModelView):
 
     recreate_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Recreate Invoices',
-        domain=["('id', 'in', domain_invoices)"], depends=['domain_invoices'],
+        domain=[('id', 'in', Eval('domain_invoices'))],
+        depends=['domain_invoices'],
         help='The selected invoices will be recreated. '\
             'The other ones will be ignored.')
     domain_invoices = fields.Many2Many(
