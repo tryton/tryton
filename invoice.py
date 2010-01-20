@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import Eval
 import copy
 
 
@@ -10,28 +11,22 @@ class Invoice(ModelSQL, ModelView):
     def __init__(self):
         super(Invoice, self).__init__()
         self.lines = copy.copy(self.lines)
-        if not hasattr(self.lines, 'add_remove') or not self.lines.add_remove:
-            self.lines.add_remove="[" \
-                    "('invoice_type', '=', type)," \
-                    "('party', '=', party)," \
-                    "('currency', '=', currency)," \
-                    "('company', '=', company)," \
-                    "('invoice', '=', False)," \
-                    "]"
+        add_remove = [
+            ('invoice_type', '=', Eval('type')),
+            ('party', '=', Eval('party')),
+            ('currency', '=', Eval('currency')),
+            ('company', '=', Eval('company')),
+            ('invoice', '=', False),
+        ]
+
+        if not self.lines.add_remove:
+            self.lines.add_remove = add_remove
         else:
-            for clause in (
-                    "('invoice_type', '=', type)",
-                    "('party', '=', party)",
-                    "('currency', '=', currency)",
-                    "('company', '=', company)",
-                    "('invoice', '=', False)",
-                    ):
-                if clause not in self.lines.add_remove:
-                    sep = ''
-                    if self.lines.add_remove[-2] != ',':
-                        sep = ','
-                    self.lines.add_remove = self.lines.add_remove[:-1] + \
-                            sep + clause + self.lines.add_remove[-1:]
+            self.lines.add_remove = copy.copy(self.lines.add_remove)
+            self.lines.add_remove = [
+                add_remove,
+                self.lines.add_remove,
+            ]
         self._reset_columns()
 
 Invoice()
