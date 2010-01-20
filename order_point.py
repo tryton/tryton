@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import If, Equal, Eval, Not, In, Get
 
 
 class OrderPoint(ModelSQL, ModelView):
@@ -15,38 +16,49 @@ class OrderPoint(ModelSQL, ModelView):
 
     product = fields.Many2One(
         'product.product', 'Product', required=True, select=1,
-        domain=[('type', '=', 'stockable'), "('purchasable', 'in', " \
-                "type == 'purchase' and [True] or [True, False])"],
+        domain=[
+            ('type', '=', 'stockable'),
+            ('purchasable', 'in', If(Equal(Eval('type'), 'purchase'),
+                [True], [True, False])),
+        ],
         on_change=['product'])
     warehouse_location = fields.Many2One(
         'stock.location', 'Warehouse Location', select=1,
         domain=[('type', '=', 'warehouse')],
-        states={'invisible': "type != 'purchase'",
-                'required': "type == 'purchase'"},)
+        states={
+            'invisible': Not(Equal(Eval('type'), 'purchase')),
+            'required': Equal(Eval('type'), 'purchase'),
+        })
     storage_location = fields.Many2One(
         'stock.location', 'Storage Location', select=1,
         domain=[('type', '=', 'storage')],
-        states={'invisible': "type != 'internal'",
-                'required': "type == 'internal'"},)
+        states={
+            'invisible': Not(Equal(Eval('type'), 'internal')),
+            'required': Equal(Eval('type'), 'internal'),
+        })
     location = fields.Function(
         'get_location', type='many2one', relation='stock.location',
         fnct_search='search_location', string='Location')
     provisioning_location = fields.Many2One(
         'stock.location', 'Provisioning Location',
         domain=[('type', '=', 'storage')],
-        states={'invisible': "type != 'internal'",
-                'required': "type == 'internal'"},)
+        states={
+            'invisible': Not(Equal(Eval('type'), 'internal')),
+            'required': Equal(Eval('type'), 'internal'),
+        })
     type = fields.Selection(
         [('internal', 'Internal'),
          ('purchase', 'Purchase')],
         'Type', select=1, required=True)
     min_quantity = fields.Float('Minimal Quantity', required=True,
-            digits="(16, unit_digits)", depends=['unit_digits'])
+            digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
     max_quantity = fields.Float('Maximal Quantity', required=True,
-            digits="(16, unit_digits)", depends=['unit_digits'])
+            digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
     company = fields.Many2One('company.company', 'Company', required=True,
-            domain=["('id', 'company' in context and '=' or '!=', " \
-                    "context.get('company', 0))"])
+            domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
     unit = fields.Function('get_unit', type='many2one', relation='product.uom',
             string='Unit')
     unit_digits = fields.Function('get_unit_digits', type='integer',

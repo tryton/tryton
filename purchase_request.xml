@@ -137,7 +137,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Purchases</field>
             <field name="res_model">purchase.purchase</field>
             <field name="view_type">form</field>
-            <field name="domain">[("id", "=", purchase)]</field>
+            <field name="domain">[("id", "=", Eval('purchase'))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_purchase_form_view1">
             <field name="sequence" eval="10"/>

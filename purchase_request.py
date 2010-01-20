@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import If, In, Eval, Get
 import datetime
 
 
@@ -31,8 +32,9 @@ class PurchaseRequest(ModelSQL, ModelView):
         string='Purchase')
     company = fields.Many2One('company.company', 'Company', required=True,
             readonly=True, domain=[
-                "('id', 'company' in context and '=' or '!=', " \
-                        "context.get('company', 0))"])
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
     origin = fields.Reference('Origin', selection='origin_get', readonly=True,
             required=True)
     state = fields.Function(
