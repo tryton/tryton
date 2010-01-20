@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import PYSONEncoder
 
 
 class ProductCostHistory(ModelSQL, ModelView):
@@ -66,10 +67,14 @@ class OpenProductCostHistory(Wizard):
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
 
         if not data['id'] or data['id'] < 0:
-            res['domain'] = str([('template', '=', False)])
+            res['pyson_domain'] = PYSONEncoder().encode([
+                ('template', '=', False),
+            ])
         else:
             product = product_obj.browse(cursor, user, data['id'], context=context)
-            res['domain'] = str([('template', '=', product.template.id)])
+            res['pyson_domain'] = PYSONEncoder().encode([
+                ('template', '=', product.template.id),
+            ])
         return res
 
 OpenProductCostHistory()
