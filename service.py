@@ -3,13 +3,14 @@
 "Service"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.cacheable import Cacheable
+from trytond.pyson import Eval
 
 
 class Employee(ModelSQL, ModelView, Cacheable):
     _name = 'company.employee'
 
     cost_price = fields.Function('get_cost_price', string='Cost Price',
-            type='numeric', digits="(16, currency_digits)",
+            type='numeric', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'],
             help="Hourly cost price for this Employee")
     cost_prices = fields.One2Many('company.employee_cost_price', 'employee',
@@ -99,7 +100,8 @@ class EmployeeCostPrice(ModelSQL, ModelView):
     _description = __doc__
     _rec_name = 'date'
     date = fields.Date('Date', required=True, select=1)
-    cost_price = fields.Numeric('Cost Price', digits="(16, currency_digits)",
+    cost_price = fields.Numeric('Cost Price',
+            digits=(16, Eval('currency_digits', 2)),
             required=True, depends=['currency_digits'],
             help="Hourly cost price")
     employee = fields.Many2One('company.employee', 'Employee')

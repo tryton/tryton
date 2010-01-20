@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import Not, Equal, Eval
 from decimal import Decimal
 
 class TimesheetLine(ModelSQL, ModelView):
@@ -33,20 +34,23 @@ class Work(ModelSQL, ModelView):
 
     product = fields.Many2One('product.product', 'Product',
             states={
-                'invisible': "type!= 'task'"
+                'invisible': Not(Equal(Eval('type'), 'task')),
             }, on_change=['product', 'party', 'hours', 'company'],
             depends=['type', 'party', 'hours', 'company'])
-    list_price = fields.Numeric('List Price', digits="(16, currency_digits)",
+    list_price = fields.Numeric('List Price',
+            digits=(16, Eval('currency_digits', 2)),
             states={
-                'invisible': "type!= 'task'"
+                'invisible': Not(Equal(Eval('type'), 'task')),
             }, depends=['type', 'currency_digits'])
     revenue = fields.Function('get_revenue', type='numeric',
-            string='Revenue', digits="(16, currency_digits)",
+            string='Revenue',
+            digits=(16, Eval('currency_digits', 2)),
             states={
-                'invisible': "type!= 'project'"
+                'invisible': Not(Equal(Eval('type'), 'project')),
             }, depends=['type', 'currency_digits'])
     cost = fields.Function('get_cost', string='Cost', type='numeric',
-            digits="(16, currency_digits)", depends=['currency_digits'])
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits'])
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['company'])
 
