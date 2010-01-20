@@ -3,6 +3,7 @@
 "Project"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.modelstorage import OPERATORS
+from trytond.pyson import Not, Bool, Eval, Get, Equal
 import copy
 
 
@@ -13,8 +14,8 @@ class TimesheetWork(ModelSQL, ModelView):
             'Timesheet Lines',
             depends=['timesheet_available', 'active'],
             states={
-                'invisible': 'not bool(timesheet_available)',
-                'readonly': '''not active'''
+                'invisible': Not(Bool(Eval('timesheet_available'))),
+                'readonly': Not(Bool(Eval('not active'))),
             })
     sequence = fields.Integer('Sequence')
 
@@ -23,16 +24,8 @@ class TimesheetWork(ModelSQL, ModelView):
         self._order.insert(0, ('sequence', 'ASC'))
 
         self.parent = copy.copy(self.parent)
-        if not self.parent.context:
-            self.parent.context = "{'type': locals().get('type')}"
-        elif 'type' not in self.parent.context:
-            sep = ''
-            if self.parent.context[-2] != ',':
-                sep = ','
-            self.parent.context = self.parent.context[:-1] + \
-                    sep + "'type': locals().get('type')" + \
-                    self.parent.context[-1:]
-
+        self.parent.context = copy.copy(self.parent.context)
+        self.parent.context['type'] = Eval('type')
         self._reset_columns()
 
 TimesheetWork()
@@ -52,20 +45,20 @@ class Work(ModelSQL, ModelView):
             ],
             'Type', required=True, select=1,
             states={
-                'invisible': 'context.get("type", False)',
+                'invisible': Get(Eval('context', {}), 'type', False),
             })
     party = fields.Many2One('party.party', 'Party',
             states={
-                'invisible': "type!= 'project'"
+                'invisible': Not(Equal(Eval('type'), 'project')),
             }, depends=['type'])
     party_address = fields.Many2One('party.address', 'Contact Address',
-            domain=["('party', '=', party)"],
+            domain=[('party', '=', Eval('party'))],
             states={
-                'invisible': "type != 'project'"
+                'invisible': Not(Equal(Eval('type'), 'project')),
             }, depends=['party', 'type'])
     effort = fields.Float("Effort",
             states={
-                'invisible': "type != 'task'"
+                'invisible': Not(Equal(Eval('type'), 'task')),
             }, depends=['type'], help="Estimated Effort for this work")
     total_effort = fields.Function('get_total_effort', type='float',
             string='Total Effort',
@@ -80,8 +73,8 @@ class Work(ModelSQL, ModelView):
             ('done', 'Done'),
             ], 'State',
             states={
-                'invisible': "type != 'task'",
-                'required': "type == 'task'",
+                'invisible': Not(Equal(Eval('type'), 'task')),
+                'required': Equal(Eval('type'), 'task'),
             }, select=1, depends=['type'])
 
     def default_type(self, cursor, user, context=None):
@@ -102,11 +95,11 @@ class Work(ModelSQL, ModelView):
         if 'company' in self._inherit_fields:
             company_field = copy.copy(
                 self._inherit_fields['company'])
-
-            company_field[2].states={
-                'invisible': 'context.get("type", False)',
-                'readonly': '''not active'''
-            }
+            company_field[2].states = copy.copy(company_field[2].states)
+            company_field[2].states.update({
+                'invisible': Bool(Get(Eval('context', {}), 'type')),
+                'readonly': Not(Bool(Eval('active'))),
+            })
 
             self._inherit_fields['company'] = company_field
 
