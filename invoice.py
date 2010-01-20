@@ -5,11 +5,12 @@ from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.report import Report
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler, FIELDS
+from trytond.pyson import In, If, Get, Eval, Not, Equal, Bool, Or, And
 from decimal import Decimal
 import base64
 
 _STATES = {
-    'readonly': "state != 'draft'",
+    'readonly': Not(Equal(Eval('state'), 'draft')),
 }
 
 _TYPE = [
@@ -34,12 +35,14 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     _order_name = 'number'
     company = fields.Many2One('company.company', 'Company', required=True,
             states=_STATES, select=1, domain=[
-                "('id', 'company' in context and '=' or '!=', " \
-                        "context.get('company', 0))"])
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                        Get(Eval('context', {}), 'company', 0)),
+            ])
     type = fields.Selection(_TYPE, 'Type', select=1, on_change=['type'],
             required=True, states={
-                'readonly': "state != 'draft' or context.get('type', False)" \
-                        " or (bool(lines) and bool(type))",
+                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                    Bool(Get(Eval('context', {}), 'type')),
+                    And(Bool(Eval('lines')), Bool(Eval('type')))),
             })
     type_name = fields.Function('get_type_name', type='char', string='Type')
     number = fields.Char('Number', size=None, readonly=True, select=1)
@@ -54,8 +57,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         ], 'State', readonly=True)
     invoice_date = fields.Date('Invoice Date',
         states={
-                'readonly': "state in ('open', 'paid', 'cancel')",
-                'required': "state in ('open', 'paid')",
+                'readonly': In(Eval('state'), ['open', 'paid', 'cancel']),
+                'required': In(Eval('state'), ['open', 'paid']),
         })
     accounting_date = fields.Date('Accounting Date', states=_STATES)
     party = fields.Many2One('party.party', 'Party', change_default=True,
@@ -64,10 +67,11 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     party_lang = fields.Function('get_party_language', type='char',
             string='Party Language', on_change_with=['party'])
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
-        required=True, states=_STATES, domain=["('party', '=', party)"])
+        required=True, states=_STATES, domain=[('party', '=', Eval('party'))])
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
-            'readonly': "state != 'draft' or (bool(lines) and bool(currency))",
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                And(Bool(Eval('lines')), Bool(Eval('currency')))),
         })
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['currency'])
@@ -76,7 +80,10 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     move = fields.Many2One('account.move', 'Move', readonly=True)
     account = fields.Many2One('account.account', 'Account', required=True,
         states=_STATES,
-        domain=["('company', '=', company)", ('kind', '!=', 'view')])
+        domain=[
+            ('company', '=', Eval('company')),
+            ('kind', '!=', 'view'),
+        ])
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES)
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
@@ -85,13 +92,13 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         states=_STATES, on_change=['lines', 'taxes', 'currency', 'party', 'type'])
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function('get_untaxed_amount', type='numeric',
-            digits="(16, currency_digits)", string='Untaxed',
+            digits=(16, Eval('currency_digits', 2)), string='Untaxed',
             fnct_search='search_untaxed_amount')
     tax_amount = fields.Function('get_tax_amount', type='numeric',
-            digits="(16, currency_digits)", string='Tax',
+            digits=(16, Eval('currency_digits', 2)), string='Tax',
             fnct_search='search_tax_amount')
     total_amount = fields.Function('get_total_amount', type='numeric',
-            digits="(16, currency_digits)", string='Total',
+            digits=(16, Eval('currency_digits', 2)), string='Total',
             fnct_search='search_total_amount')
     reconciled = fields.Function('get_reconciled', type='boolean',
             string='Reconciled')
@@ -100,10 +107,10 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     payment_lines = fields.Many2Many('account.invoice-account.move.line',
             'invoice', 'line', readonly=True, string='Payment Lines')
     amount_to_pay_today = fields.Function('get_amount_to_pay',
-            type='numeric', digits="(16, currency_digits)",
+            type='numeric', digits=(16, Eval('currency_digits', 2)),
             string='Amount to Pay Today')
     amount_to_pay = fields.Function('get_amount_to_pay',
-            type='numeric', digits="(16, currency_digits)",
+            type='numeric', digits=(16, Eval('currency_digits', 2)),
             string='Amount to Pay')
     invoice_report = fields.Binary('Invoice Report', readonly=True)
     invoice_report_format = fields.Char('Invoice Report Format', readonly=True)
@@ -1267,86 +1274,96 @@ class InvoiceLine(ModelSQL, ModelView):
 
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
             select=1, states={
-            'required': "not bool(globals().get('invoice_type')) " \
-                    "and bool(globals().get('party')) " \
-                    "and bool(globals().get('currency')) " \
-                    "and bool(globals().get('company'))",
-            'invisible': "context.get('standalone', False)",
-        })
-    invoice_type = fields.Selection(_TYPE, 'Invoice Type', select=1, states={
-        'readonly': "context.get('type', False) or bool(type)",
-        'required': "not bool(invoice)",
-        })
-    party = fields.Many2One('party.party', 'Party', select=1, states={
-        'required': "not bool(invoice)",
-        })
+                'required': And(Not(Bool(Eval('invoice_type'))),
+                    Bool(Eval('party')),
+                    Bool(Eval('currency')),
+                    Bool(Eval('company'))),
+                'invisible': Bool(Get(Eval('context', {}), 'standalone')),
+            })
+    invoice_type = fields.Selection(_TYPE, 'Invoice Type', select=1,
+            states={
+                'readonly': Or(Bool(Get(Eval('context', {}), 'type')),
+                    Bool(Eval('type'))),
+                'required': Not(Bool(Eval('invoice'))),
+            })
+    party = fields.Many2One('party.party', 'Party', select=1,
+            states={
+                'required': Not(Bool(Eval('invoice'))),
+            })
     party_lang = fields.Function('get_party_language', type='char',
             string='Party Language', on_change_with=['party'])
-    currency = fields.Many2One('currency.currency', 'Currency', states={
-        'required': "not bool(invoice)",
-        })
+    currency = fields.Many2One('currency.currency', 'Currency',
+            states={
+                'required': Not(Bool(Eval('invoice'))),
+            })
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['currency'])
-    company = fields.Many2One('company.company', 'Company', states={
-        'required': "not bool(invoice)",
-        }, domain=["('id', 'company' in context and '=' or '!=', " \
-                "context.get('company', 0))"])
+    company = fields.Many2One('company.company', 'Company',
+            states={
+                'required': Not(Bool(Eval('invoice'))),
+            }, domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
 
-    sequence = fields.Integer('Sequence', states={
-            'invisible': "context.get('standalone', False)",
-        })
+    sequence = fields.Integer('Sequence',
+            states={
+                'invisible': Bool(Get(Eval('context', {}), 'standalone')),
+            })
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
         ('comment', 'Comment'),
         ], 'Type', select=1, required=True, states={
-            'invisible': "context.get('standalone', False)",
+            'invisible': Bool(Get(Eval('context', {}), 'standalone')),
         })
     quantity = fields.Float('Quantity',
-            digits="(16, unit_digits)",
+            digits=(16, Eval('unit_digits', 2)),
             states={
-                'invisible': "type != 'line'",
-                'required': "type == 'line'",
+                'invisible': Not(Equal(Eval('type'), 'line')),
+                'required': Equal(Eval('type'), 'line'),
             })
     unit = fields.Many2One('product.uom', 'Unit',
             states={
-                'required': "product",
-                'invisible': "type != 'line'",
-            }, domain=["('category', '=', " \
-                    "(product, 'product.default_uom.category'))"],
-            context="{'category': (product, 'product.default_uom.category')}")
+                'required': Bool(Eval('product')),
+                'invisible': Not(Equal(Eval('type'), 'line')),
+            }, domain=[
+                ('category', '=',
+                    (Eval('product'), 'product.default_uom.category')),
+            ],
+            context={
+                'category': (Eval('product'), 'product.default_uom.category'),
+            })
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits', on_change_with=['unit'])
     product = fields.Many2One('product.product', 'Product',
             states={
-                'invisible': "type != 'line'",
+                'invisible': Not(Equal(Eval('type'), 'line')),
             }, on_change=['product', 'unit', 'quantity', 'description',
                 '_parent_invoice.type', '_parent_invoice.party',
                 '_parent_invoice.currency', 'party', 'currency'])
     account = fields.Many2One('account.account', 'Account',
-            domain=[('kind', '!=', 'view'),
-                "('company', '=', " \
-                        "globals().get('_parent_invoice') and " \
-                        "globals().get('_parent_invoice').company or " \
-                        "globals()['company'])",
-                "('id', '!=', globals().get('_parent_invoice') and " \
-                        "globals().get('_parent_invoice').account or 0)"],
+            domain=[
+                ('kind', '!=', 'view'),
+                ('company', '=', Get(Eval('_parent_invoice', {}), 'company',
+                    Eval('company'))),
+                ('id', '!=', Get(Eval('_parent_invoice', {}), 'account', 0)),
+            ],
             states={
-                'invisible': "type != 'line'",
-                'required': "type == 'line'",
+                'invisible': Not(Equal(Eval('type'), 'line')),
+                'required': Equal(Eval('type'), 'line'),
             })
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
-                'invisible': "type != 'line'",
-                'required': "type == 'line'",
+                'invisible': Not(Equal(Eval('type'), 'line')),
+                'required': Equal(Eval('type'), 'line'),
             })
     amount = fields.Function('get_amount', type='numeric', string='Amount',
-            digits="(16, globals().get('_parent_invoice') and " \
-                        "globals().get('_parent_invoice').currency_digits or " \
-                        "globals()['currency_digits'])",
+            digits=(16, Get(Eval('_parent_invoice', {}), 'currency_digits',
+                Eval('currency_digits', 2))),
             states={
-                'invisible': "type not in ('line', 'subtotal')",
+                'invisible': Not(In(Eval('type'), ['line', 'subtotal'])),
             }, on_change_with=['type', 'quantity', 'unit_price',
                 '_parent_invoice.currency', 'currency'])
     description = fields.Text('Description', size=None, required=True)
@@ -1354,7 +1371,7 @@ class InvoiceLine(ModelSQL, ModelView):
     taxes = fields.Many2Many('account.invoice.line-account.tax',
             'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
             states={
-                'invisible': "type != 'line'",
+                'invisible': Not(Equal(Eval('type'), 'line')),
             })
     invoice_taxes = fields.Function('get_invoice_taxes', type='many2many',
             relation='account.invoice.tax', string='Invoice Taxes')
@@ -1876,16 +1893,24 @@ class InvoiceTax(ModelSQL, ModelView):
     sequence_number = fields.Function('get_sequence_number', type='integer',
             string='Sequence Number')
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('kind', '!=', 'view'),
-                "('company', '=', _parent_invoice.company)"])
-    base = fields.Numeric('Base', digits="(16, _parent_invoice.currency_digits)")
-    amount = fields.Numeric('Amount', digits="(16, _parent_invoice.currency_digits)")
+            domain=[
+                ('kind', '!=', 'view'),
+                ('company', '=', Get(Eval('_parent_invoice', {}), 'company')),
+            ])
+    base = fields.Numeric('Base',
+            digits=(16, Get(Eval('_parent_invoice', {}), 'currency_digits', 2)))
+    amount = fields.Numeric('Amount',
+            digits=(16, Get(Eval('_parent_invoice', {}), 'currency_digits', 2)))
     manual = fields.Boolean('Manual')
     base_code = fields.Many2One('account.tax.code', 'Base Code',
-            domain=["('company', '=', _parent_invoice.company)"])
+            domain=[
+                ('company', '=', Get(Eval('_parent_invoice', {}), 'company')),
+            ])
     base_sign = fields.Numeric('Base Sign', digits=(2, 0))
     tax_code = fields.Many2One('account.tax.code', 'Tax Code',
-            domain=["('company', '=', _parent_invoice.company)"])
+            domain=[
+                ('company', '=', Get(Eval('_parent_invoice', {}), 'company')),
+            ])
     tax_sign = fields.Numeric('Tax Sign', digits=(2, 0))
     tax = fields.Many2One('account.tax', 'Tax')
 
@@ -2173,7 +2198,7 @@ class PayInvoiceInit(ModelView):
     'Pay Invoice Init'
     _name = 'account.invoice.pay_invoice.init'
     _description = __doc__
-    amount = fields.Numeric('Amount', digits="(16, currency_digits)")
+    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)))
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     currency_digits = fields.Integer('Currency Digits', readonly=True,
             on_change_with=['currency'])
@@ -2208,45 +2233,51 @@ class PayInvoiceAsk(ModelView):
         ], 'Type', required=True)
     journal_writeoff = fields.Many2One('account.journal', 'Write-Off Journal',
             states={
-                'invisible': "type != 'writeoff'",
-                'required': "type == 'writeoff'",
+                'invisible': Not(Equal(Eval('type'), 'writeoff')),
+                'required': Equal(Eval('type'), 'writeoff'),
             })
     account_writeoff = fields.Many2One('account.account', 'Write-Off Account',
-            domain=[('kind', '!=', 'view'), "('company', '=', company)"],
+            domain=[
+                ('kind', '!=', 'view'),
+                ('company', '=', Eval('company')),
+            ],
             states={
-                'invisible': "type != 'writeoff'",
-                'required': "type == 'writeoff'",
+                'invisible': Not(Equal(Eval('type'), 'writeoff')),
+                'required': Equal(Eval('type'), 'writeoff'),
             })
-    amount = fields.Numeric('Payment Amount', digits="(16, currency_digits)",
+    amount = fields.Numeric('Payment Amount',
+            digits=(16, Eval('currency_digits', 2)),
             readonly=True, depends=['currency_digits'])
     currency = fields.Many2One('currency.currency', 'Payment Currency',
             readonly=True)
     currency_digits = fields.Integer('Payment Currency Digits', readonly=True)
     amount_writeoff = fields.Numeric('Write-Off Amount',
-            digits="(16, currency_digits_writeoff)", readonly=True,
+            digits=(16, Eval('currency_digits_writeoff', 2)), readonly=True,
             depends=['currency_digits_writeoff'], states={
-                'invisible': "type != 'writeoff'",
+                'invisible': Not(Equal(Eval('type'), 'writeoff')),
             })
     currency_writeoff = fields.Many2One('currency.currency',
             'Write-Off Currency', readonly=True, states={
-                'invisible': "type != 'writeoff'",
+                'invisible': Not(Equal(Eval('type'), 'writeoff')),
             })
     currency_digits_writeoff = fields.Integer('Write-Off Currency Digits',
             readonly=True)
     lines_to_pay = fields.Many2Many('account.move.line', None, None,
             'Lines to Pay', readonly=True)
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
-            domain=["('id', 'in', lines_to_pay)",
-                ('reconciliation', '=', False)],
+            domain=[
+                ('id', 'in', Eval('lines_to_pay')),
+                ('reconciliation', '=', False),
+            ],
             states={
-                'invisible': "type != 'writeoff'",
+                'invisible': Not(Equal(Eval('type'), 'writeoff')),
             }, on_change=['lines', 'amount', 'currency', 'currency_writeoff',
                 'invoice'],
             depends=['lines_to_pay'])
     payment_lines = fields.Many2Many('account.move.line', None, None,
             'Payment Lines', readonly=True,
             states={
-                'invisible': "type != 'writeoff'",
+                'invisible': Not(Equal(Eval('type'), 'writeoff')),
             })
     description = fields.Char('Description', size=None, readonly=True)
     journal = fields.Many2One('account.journal', 'Journal', readonly=True,

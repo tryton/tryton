@@ -91,24 +91,24 @@ this repository contains the full copyright notices and license terms. -->
                                     </group>
                                     <group col="5" colspan="2" id="buttons">
                                         <button name="cancel" string="_Cancel"
-                                            states="{'invisible': '''state not in ('draft', 'proforma')''', 'readonly': '''%(account.group_account)d not in groups'''}"
+                                            states="{'invisible': Not(In(Eval('state'), ['draft', 'proforma'])), 'readonly': Not(In(%(account.group_account)d, Eval('groups', [])))}"
                                             icon="tryton-cancel"/>
                                         <button name="button_draft" string="_Reset to Draft"
                                             type="object"
-                                            states="{'invisible': '''state != 'cancel' '''}"
+                                            states="{'invisible': Not(Equal(Eval('state'), 'cancel'))}"
                                             icon="tryton-clear"/>
                                         <button name="draft" string="_Draft"
-                                            states="{'invisible': '''state != 'proforma' '''}"
+                                            states="{'invisible': Not(Equal(Eval('state'), 'proforma'))}"
                                             icon="tryton-go-previous"/>
                                         <button name="proforma" string="Pro For_ma"
-                                            states="{'invisible': '''state != 'draft' '''}"
+                                            states="{'invisible': Not(Equal(Eval('state'), 'draft'))}"
                                             icon="tryton-go-next"/>
                                         <button name="open" string="_Open"
-                                            states="{'invisible': '''state not in ('draft', 'proforma')''', 'readonly': '''%(account.group_account)d not in groups'''}"
+                                            states="{'invisible': Not(In(Eval('state'), ['draft', 'proforma'])), 'readonly': Not(In(%(account.group_account)d, Eval('groups', [])))}"
                                             icon="tryton-ok"/>
                                         <button name="%(wizard_pay_invoice)d" string="_Pay"
                                             type="action"
-                                            states="{'invisible': '''state != 'open' ''', 'readonly': '''%(account.group_account)d not in groups'''}"
+                                            states="{'invisible': Not(Equal(Eval('state'), 'open')), 'readonly': Not(In(%(account.group_account)d, Eval('groups', [])))}"
                                             icon="tryton-go-next"/>
                                     </group>
                                 </group>
@@ -124,7 +124,8 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="move"/>
                             <field name="move"/>
                             <separator name="comment" colspan="4"/>
-                            <field name="comment" colspan="4" spell="party_lang"/>
+                            <field name="comment" colspan="4"
+                                spell="Eval('party_lang')"/>
                         </page>
                         <page string="Payment" id="payment">
                             <label name="amount_to_pay_today"/>
@@ -735,7 +736,7 @@ this repository contains the full copyright notices and license terms. -->
                             <newline/>
                             <label name="description"/>
                             <field name="description" colspan="3"
-                                spell="globals().get('_parent_invoice') and _parent_invoice.party_lang or party_lang"/>
+                                spell="If(Bool(Eval('_parent_invoice')), Get(Eval('_parent_invoice', {}), 'party_lang'), Eval('party_lang'))"/>
                             <label name="quantity"/>
                             <field name="quantity"/>
                             <label name="unit"/>
@@ -750,7 +751,7 @@ this repository contains the full copyright notices and license terms. -->
                         <page string="Notes" id="notes">
                             <separator name="note" colspan="4"/>
                             <field name="note" colspan="4"
-                                spell="globals().get('_parent_invoice') and _parent_invoice.party_lang or party_lang"/>
+                                spell="If(Bool(Eval('_parent_invoice')), Get(Eval('_parent_invoice', {}), 'party_lang'), Eval('party_lang'))"/>
                         </page>
                     </notebook>
                     <field name="unit_digits" invisible="1" colspan="4"/>

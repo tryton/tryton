@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
+from trytond.pyson import Not, Equal, Eval
 from decimal import Decimal
 import datetime
 import time
@@ -132,18 +133,18 @@ class PaymentTermLine(ModelSQL, ModelView):
             on_change=['type'])
     percentage = fields.Numeric('Percentage', digits=(16, 8),
             states={
-                'invisible': "type != 'percent'",
-                'required': "type == 'percent'",
+                'invisible': Not(Equal(Eval('type'), 'percent')),
+                'required': Equal(Eval('type'), 'percent'),
             }, help='In %')
-    amount = fields.Numeric('Amount', digits="(16, currency_digits)",
+    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
             states={
-                'invisible': "type != 'fixed'",
-                'required': "type == 'fixed'",
+                'invisible': Not(Equal(Eval('type'), 'fixed')),
+                'required': Equal(Eval('type'), 'fixed'),
             })
     currency = fields.Many2One('currency.currency', 'Currency',
             states={
-                'invisible': "type != 'fixed'",
-                'required': "type == 'fixed'",
+                'invisible': Not(Equal(Eval('type'), 'fixed')),
+                'required': Equal(Eval('type'), 'fixed'),
             })
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['currency'])

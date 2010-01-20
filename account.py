@@ -1,30 +1,63 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import Eval, Not, Equal
 
 
 class FiscalYear(ModelSQL, ModelView):
     _name = 'account.fiscalyear'
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Invoice Sequence', required=True,
-            domain=[('code', '=', 'account.invoice'),
-                ['OR', "('company', '=', company)", ('company', '=', False)]],
-                    context="{'code': 'account.invoice', 'company': company}")
+            domain=[
+                ('code', '=', 'account.invoice'),
+                ['OR',
+                    ('company', '=', Eval('company')),
+                    ('company', '=', False),
+                ],
+            ],
+            context={
+                'code': 'account.invoice',
+                'company': Eval('company'),
+            })
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Invoice Sequence', required=True,
-            domain=[('code', '=', 'account.invoice'),
-                ['OR', "('company', '=', company)", ('company', '=', False)]],
-                    context="{'code': 'account.invoice', 'company': company}")
+            domain=[
+                ('code', '=', 'account.invoice'),
+                ['OR',
+                    ('company', '=', Eval('company')),
+                    ('company', '=', False),
+                ],
+            ],
+            context={
+                'code': 'account.invoice',
+                'company': Eval('company'),
+            })
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Credit Note Sequence', required=True,
-            domain=[('code', '=', 'account.invoice'),
-                ['OR', "('company', '=', company)", ('company', '=', False)]],
-                    context="{'code': 'account.invoice', 'company': company}")
+            domain=[
+                ('code', '=', 'account.invoice'),
+                ['OR',
+                    ('company', '=', Eval('company')),
+                    ('company', '=', False),
+                ],
+            ],
+            context={
+                'code': 'account.invoice',
+                'company': Eval('company'),
+            })
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Credit Note Sequence', required=True,
-            domain=[('code', '=', 'account.invoice'),
-                ['OR', "('company', '=', company)", ('company', '=', False)]],
-                    context="{'code': 'account.invoice', 'company': company}")
+            domain=[
+                ('code', '=', 'account.invoice'),
+                ['OR',
+                    ('company', '=', Eval('company')),
+                    ('company', '=', False),
+                ],
+            ],
+            context={
+                'code': 'account.invoice',
+                'company': Eval('company'),
+            })
 
     def __init__(self):
         super(FiscalYear, self).__init__()
@@ -81,32 +114,32 @@ class Period(ModelSQL, ModelView):
             domain=[('code', '=', 'account.invoice')],
             context={'code': 'account.invoice'},
             states={
-                'required': "type == 'standard'",
-                'invisible': "type != 'standard'",
+                'required': Equal(Eval('type'), 'standard'),
+                'invisible': Not(Equal(Eval('type'), 'standard')),
             })
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Invoice Sequence',
             domain=[('code', '=', 'account.invoice')],
             context={'code': 'account.invoice'},
             states={
-                'required': "type == 'standard'",
-                'invisible': "type != 'standard'",
+                'required': Equal(Eval('type'), 'standard'),
+                'invisible': Not(Equal(Eval('type'), 'standard')),
             })
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
             'Customer Credit Note Sequence',
             domain=[('code', '=', 'account.invoice')],
             context={'code': 'account.invoice'},
             states={
-                'required': "type == 'standard'",
-                'invisible': "type != 'standard'",
+                'required': Equal(Eval('type'), 'standard'),
+                'invisible': Not(Equal(Eval('type'), 'standard')),
             })
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
             'Supplier Credit Note Sequence',
             domain=[('code', '=', 'account.invoice')],
             context={'code': 'account.invoice'},
             states={
-                'required': "type == 'standard'",
-                'invisible': "type != 'standard'",
+                'required': Equal(Eval('type'), 'standard'),
+                'invisible': Not(Equal(Eval('type'), 'standard')),
             })
 
     def __init__(self):
