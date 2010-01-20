@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Move"
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, OPERATORS
 from trytond.backend import TableHandler
 from trytond.pyson import In, Eval, Not, In, Equal, If, Get, Bool
 from decimal import Decimal
@@ -393,10 +393,11 @@ class Move(ModelSQL, ModelView):
         def process_args(args):
             i = 0
             while i < len(args):
-                if isinstance(args[i], list):
-                    process_args(args[i])
-                if isinstance(args[i], tuple) \
-                        and args[i][0] == 'to_location_warehouse':
+                #add test for xmlrpc that doesn't handle tuple
+                if (isinstance(args[i], tuple) or \
+                        (isinstance(args[i], list) and len(args[i]) > 2 and \
+                        args[i][1] in OPERATORS)) and \
+                        args[i][0] == 'to_location_warehouse':
                     location_id = False
                     if args[i][2]:
                         location = location_obj.browse(cursor, user,
@@ -404,6 +405,8 @@ class Move(ModelSQL, ModelView):
                         if location.type == 'warehouse':
                             location_id = location.input_location.id
                     args[i] = ('to_location', args[i][1], location_id)
+                elif isinstance(args[i], list):
+                    process_args(args[i])
                 i += 1
         process_args(args)
         return super(Move, self).search(cursor, user, args, offset=offset,
