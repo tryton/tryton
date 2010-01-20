@@ -219,7 +219,7 @@ class ModelData(OSV):
         """
         ids = self.search(cursor, user, [
             ('module', '=', module),
-            ('fs_is', '=', fs_id),
+            ('fs_id', '=', fs_id),
             ('inherit', '=', False),
             ])
         if not ids:
