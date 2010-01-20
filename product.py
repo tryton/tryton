@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import Not, Eval, Bool, Or
 
 
 class Category(ModelSQL, ModelView):
@@ -8,15 +9,21 @@ class Category(ModelSQL, ModelView):
 
     account_expense = fields.Property(type='many2one',
             relation='account.account', string='Account Expense',
-            domain=[('kind', '=', 'expense'), "('company', '=', company)"],
+            domain=[
+                ('kind', '=', 'expense'),
+                ('company', '=', Eval('company')),
+            ],
             states={
-                'invisible': "not company",
+                'invisible': Not(Bool(Eval('company'))),
             })
     account_revenue = fields.Property(type='many2one',
             relation='account.account', string='Account Revenue',
-            domain=[('kind', '=', 'revenue'), "('company', '=', company)"],
+            domain=[
+                ('kind', '=', 'revenue'),
+                ('company', '=', Eval('company')),
+            ],
             states={
-                'invisible': "not company",
+                'invisible': Not(Bool(Eval('company'))),
             })
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
             'product', 'tax', 'Customer Taxes', domain=[('parent', '=', False)])
@@ -59,16 +66,24 @@ class Template(ModelSQL, ModelView):
             help='Use the accounts defined on the category')
     account_expense = fields.Property(type='many2one',
             string='Account Expense', relation='account.account',
-            domain=[('kind', '=', 'expense'), "('company', '=', company)"],
+            domain=[
+                ('kind', '=', 'expense'),
+                ('company', '=', Eval('company')),
+            ],
             states={
-                'invisible': "not bool(company) or bool(account_category)",
+                'invisible': Or(Not(Bool(Eval('company'))),
+                    Bool(Eval('account_category'))),
             }, help='This account will be used instead of the one defined ' \
                     'on the category.', depends=['account_category'])
     account_revenue = fields.Property(type='many2one',
             string='Account Revenue', relation='account.account',
-            domain=[('kind', '=', 'revenue'), "('company', '=', company)"],
+            domain=[
+                ('kind', '=', 'revenue'),
+                ('company', '=', Eval('company')),
+            ],
             states={
-                'invisible': "not bool(company) or bool(account_category)",
+                'invisible': Or(Not(Bool(Eval('company'))),
+                    Bool(Eval('account_category'))),
             }, help='This account will be used instead of the one defined ' \
                     'on the category.', depends=['account_category'])
     account_expense_used = fields.Function('get_account', type='many2one',
@@ -80,12 +95,14 @@ class Template(ModelSQL, ModelView):
     customer_taxes = fields.Many2Many('product.template-customer-account.tax',
             'product', 'tax', 'Customer Taxes', domain=[('parent', '=', False)],
             states={
-                'invisible': "not bool(company) or bool(taxes_category)",
+                'invisible': Or(Not(Bool(Eval('company'))),
+                    Bool(Eval('taxes_category'))),
             }, depends=['taxes_category'])
     supplier_taxes = fields.Many2Many('product.template-supplier-account.tax',
             'product', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)],
             states={
-                'invisible': "not bool(company) or bool(taxes_category)",
+                'invisible': Or(Not(Bool(Eval('company'))),
+                    Bool(Eval('taxes_category'))),
             }, depends=['taxes_category'])
     customer_taxes_used = fields.Function('get_taxes', type='many2many',
             relation='account.tax', string='Customer Taxes Used')
