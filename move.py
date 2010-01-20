@@ -1,13 +1,14 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import Eval
 from decimal import Decimal
 
 
 class Move(ModelSQL, ModelView):
     _name = 'stock.move'
     fifo_quantity = fields.Float('FIFO Quantity',
-            digits="(16, unit_digits)")
+            digits=(16, Eval('unit_digits', 2)))
 
     def __init__(self):
         super(Move, self).__init__()
