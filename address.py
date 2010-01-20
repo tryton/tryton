@@ -2,9 +2,10 @@
 #this repository contains the full copyright notices and license terms.
 'Address'
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import Not, Bool, Eval, If, Greater
 
 STATES = {
-    'readonly': "active == False",
+    'readonly': Not(Bool(Eval('active'))),
 }
 
 
@@ -14,7 +15,8 @@ class Address(ModelSQL, ModelView):
     _description = __doc__
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE', select=1,  states={
-                'readonly': "(active == False) or (active_id > 0)",
+                'readonly': If(Not(Bool(Eval('active'))),
+                    True, Greater(Eval('active_id', 0), 0)),
             })
     name = fields.Char('Name', states=STATES)
     street = fields.Char('Street', states=STATES)
@@ -25,7 +27,8 @@ class Address(ModelSQL, ModelView):
     country = fields.Many2One('country.country', 'Country',
             states=STATES)
     subdivision = fields.Many2One("country.subdivision",
-            'Subdivision', domain=["('country', '=', country)"], states=STATES)
+            'Subdivision', domain=[('country', '=', Eval('country'))],
+            states=STATES)
     active = fields.Boolean('Active')
     sequence = fields.Integer("Sequence")
     full_address = fields.Function('get_full_address', type='text')

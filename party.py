@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import Not, Bool, Eval
 import logging
 
 HAS_VATNUMBER = False
@@ -16,7 +17,7 @@ except ImportError:
             'Unable to import vatnumber. VAT number validation disabled.')
 
 STATES = {
-    'readonly': "active == False",
+    'readonly': Not(Bool(Eval('active'))),
 }
 
 
@@ -256,11 +257,11 @@ class CheckVIESCheck(ModelView):
     _description = __doc__
     parties_succeed = fields.Many2Many('party.party', None, None,
             'Parties Succeed', readonly=True, states={
-                'invisible': "not bool(parties_succeed)",
+                'invisible': Not(Bool(Eval('parties_succeed'))),
                 })
     parties_failed = fields.Many2Many('party.party', None, None,
             'Parties Failed', readonly=True, states={
-                'invisible': "not bool(parties_failed)",
+                'invisible': Not(Bool(Eval('parties_failed'))),
                 })
 
 CheckVIESCheck()
