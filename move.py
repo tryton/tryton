@@ -3,10 +3,11 @@
 "Move"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
+from trytond.pyson import In, Eval, Not, In, Equal, If, Get, Bool
 from decimal import Decimal
 
 STATES = {
-    'readonly': "(state in ('cancel', 'done'))",
+    'readonly': In(Eval('state'), ['cancel', 'done']),
 }
 
 
@@ -20,23 +21,25 @@ class Move(ModelSQL, ModelView):
                 'from_location', 'to_location'],
             domain=[('type', '!=', 'service')])
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,
-            domain=["('category', '=', " \
-                    "(product, 'product.default_uom.category'))"],
-            context="{'category': (product, 'product.default_uom.category')}",
+            domain=[
+                ('category', '=',
+                    (Eval('product'), 'product.default_uom.category')),
+            ],
+            context={
+                'category': (Eval('product'), 'product.default_uom.category'),
+            },
             on_change=['product', 'currency', 'uom', 'company',
                 'from_location', 'to_location'])
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits', on_change_with=['uom'])
     quantity = fields.Float("Quantity", required=True,
-            digits="(16, unit_digits)", states=STATES)
+            digits=(16, Eval('unit_digits', 2)), states=STATES)
     from_location = fields.Many2One("stock.location", "From Location", select=1,
             required=True, states=STATES,
-            domain=["('type', 'not in', " \
-                    "('warehouse', 'view'))"])
+            domain=[('type', 'not in', ('warehouse', 'view'))])
     to_location = fields.Many2One("stock.location", "To Location", select=1,
             required=True, states=STATES,
-            domain=["('type', 'not in', " \
-                    "('warehouse', 'view'))"])
+            domain=[('type', 'not in', ('warehouse', 'view'))])
     shipment_in = fields.Many2One('stock.shipment.in', 'Supplier Shipment',
             readonly=True, select=1, ondelete='CASCADE')
     shipment_out = fields.Many2One('stock.shipment.out', 'Customer Shipment',
@@ -59,21 +62,23 @@ class Move(ModelSQL, ModelView):
         ], 'State', select=1, readonly=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             states={
-                'readonly': "state != 'draft'",
-            }, domain=["('id', 'company' in context and '=' or '!=', " \
-                    "context.get('company', 0))"])
+                'readonly': Not(Equal(Eval('state'), 'draft')),
+            }, domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
             states={
-                'invisible': "not unit_price_required",
-                'required': "unit_price_required",
-                'readonly': "state != 'draft'",
+                'invisible': Not(Bool(Eval('unit_price_required'))),
+                'required': Bool(Eval('unit_price_required')),
+                'readonly': Not(Equal(Eval('state'), 'draft')),
             })
     cost_price = fields.Numeric('Cost Price', digits=(16, 4), readonly=True)
     currency = fields.Many2One('currency.currency', 'Currency',
             states={
-                'invisible': "not unit_price_required",
-                'required': "unit_price_required",
-                'readonly': "state != 'draft'",
+                'invisible': Not(Bool(Eval('unit_price_required'))),
+                'required': Not(Bool(Eval('unit_price_required'))),
+                'readonly': Not(Equal(Eval('state'), 'draft')),
             })
     unit_price_required = fields.Function('get_unit_price_required',
             type='boolean', string='Unit Price Required',

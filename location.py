@@ -1,13 +1,14 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level
-#of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Wharehouse"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
+from trytond.pyson import Not, Bool, Eval, Equal, PYSONEncoder, Date
 import datetime
 
 STATES = {
-    'readonly': "not active",
+    'readonly': Not(Bool(Eval('active'))),
 }
 
 
@@ -21,8 +22,8 @@ class Location(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=1)
     address = fields.Many2One("party.address", "Address",
             states={
-                'invisible': "type != 'warehouse'",
-                'readonly': "not active",
+                'invisible': Not(Equal(Eval('type'), 'warehouse')),
+                'readonly': Not(Bool(Eval('active'))),
             })
     type = fields.Selection([
         ('supplier', 'Supplier'),
@@ -40,34 +41,37 @@ class Location(ModelSQL, ModelView):
     childs = fields.One2Many("stock.location", "parent", "Children")
     input_location = fields.Many2One(
         "stock.location", "Input", states={
-            'invisible': "type != 'warehouse'",
-            'readonly': "not active",
-            'required': "type == 'warehouse'",
+            'invisible': Not(Equal(Eval('type'), 'warehouse')),
+            'readonly': Not(Bool(Eval('active'))),
+            'required': Equal(Eval('type'), 'warehouse'),
         },
-        domain=["('type','=','storage')",
+        domain=[
+            ('type','=','storage'),
             ['OR',
-                "('parent', 'child_of', [active_id])",
-                "('parent', '=', False)"]])
+                ('parent', 'child_of', [Eval('active_id')]),
+                ('parent', '=', False),
+            ],
+        ])
     output_location = fields.Many2One(
         "stock.location", "Output", states={
-            'invisible': "type != 'warehouse'",
-            'readonly': "not active",
-            'required': "type == 'warehouse'",
+            'invisible': Not(Equal(Eval('type'), 'warehouse')),
+            'readonly': Not(Bool(Eval('active'))),
+            'required': Equal(Eval('type'), 'warehouse'),
         },
-        domain=["('type','=','storage')",
+        domain=[('type','=','storage'),
             ['OR',
-                "('parent', 'child_of', [active_id])",
-                "('parent', '=', False)"]])
+                ('parent', 'child_of', [Eval('active_id')]),
+                ('parent', '=', False)]])
     storage_location = fields.Many2One(
         "stock.location", "Storage", states={
-            'invisible': "type != 'warehouse'",
-            'readonly': "not active",
-            'required': "type == 'warehouse'",
+            'invisible': Not(Equal(Eval('type'), 'warehouse')),
+            'readonly': Not(Bool(Eval('active'))),
+            'required': Equal(Eval('type'), 'warehouse'),
         },
-        domain=["('type','=','storage')",
+        domain=[('type','=','storage'),
             ['OR',
-                "('parent', 'child_of', [active_id])",
-                "('parent', '=', False)"]])
+                ('parent', 'child_of', [Eval('active_id')]),
+                ('parent', '=', False)]])
     quantity = fields.Function('get_quantity', type='float', string='Quantity')
     forecast_quantity = fields.Function('get_quantity', type='float',
                                         string='Forecast Quantity')
@@ -385,10 +389,11 @@ class OpenProduct(Wizard):
         ctx = {}
         ctx['locations'] = data['ids']
         if data['form']['forecast_date']:
-            ctx['stock_date_end'] = data['form']['forecast_date']
+            date = data['form']['forecast_date']
         else:
-            ctx['stock_date_end'] = datetime.date.max
-        res['context'] = str(ctx)
+            date = datetime.date.max
+        ctx['stock_date_end'] = Date(date.year, date.month, date.day)
+        res['pyson_context'] = PYSONEncoder().encode(ctx)
 
         return res
 

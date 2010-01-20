@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Customer Shipments</field>
             <field name="res_model">stock.shipment.out</field>
             <field name="view_type">form</field>
-            <field name="domain">[("customer", "=", active_id)]</field>
+            <field name="domain">[("customer", "=", Eval('active_id'))]</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_purchase_keyword1">
@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Supplier Shipments</field>
             <field name="res_model">stock.shipment.in</field>
             <field name="view_type">form</field>
-            <field name="domain">[("supplier", "=", active_id)]</field>
+            <field name="domain">[("supplier", "=", Eval('active_id'))]</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_purchase_keyword2">

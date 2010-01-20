@@ -3,9 +3,10 @@
 'Inventory'
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import Not, Equal, Eval, Or, Bool
 
 STATES = {
-    'readonly': "state != 'draft'",
+    'readonly': Not(Equal(Eval('state'), 'draft')),
 }
 
 
@@ -18,19 +19,22 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'storage')], states={
-            'readonly': "state != 'draft' or bool(lines)",
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Bool(Eval('lines'))),
         })
     date = fields.Date('Date', required=True, states={
-            'readonly': "state != 'draft' or bool(lines)",
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Bool(Eval('lines'))),
         })
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
         domain=[('type', '=', 'lost_found')], states=STATES)
     lines = fields.One2Many(
         'stock.inventory.line', 'inventory', 'Lines', states=STATES)
-    company = fields.Many2One(
-        'company.company', 'Company', required=True, states={
-            'readonly': "state != 'draft' or bool(lines)",
+    company = fields.Many2One('company.company', 'Company', required=True,
+        states={
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Bool(Eval('lines'))),
         })
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -199,8 +203,8 @@ class InventoryLine(ModelSQL, ModelView):
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits')
     expected_quantity = fields.Float('Expected Quantity',
-            digits="(16, unit_digits)", readonly=True)
-    quantity = fields.Float('Quantity', digits="(16, unit_digits)")
+            digits=(16, Eval('unit_digits', 2)), readonly=True)
+    quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)))
     move = fields.Many2One('stock.move', 'Move', readonly=True)
     inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
             ondelete='CASCADE')

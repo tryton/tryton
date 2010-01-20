@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import PYSONEncoder
 import datetime
 
 
@@ -585,7 +586,7 @@ class OpenLocation(Wizard):
             ctx['stock_date_end'] = data['form']['forecast_date']
         else:
             ctx['stock_date_end'] = datetime.date.max
-        res['context'] = str(ctx)
+        res['pyson_context'] = PYSONEncoder().encode(ctx)
 
         return res
 

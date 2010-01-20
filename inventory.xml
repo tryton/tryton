@@ -27,7 +27,7 @@ this repository contains the full copyright notices and license terms. -->
                         <label colspan="2" id="empty"/>
                         <button string="Complete Inventory" type="action"
                             name="%(wizard_complete_inventory)d"
-                            states="{'readonly': '''state != 'draft' '''}"
+                            states="{'readonly': Not(Equal(Eval('state'), 'draft'))}"
                             colspan="2"
                             help="Add an inventory line for each missing products"/>
                         <field name="lines" colspan="4"/>
@@ -37,12 +37,12 @@ this repository contains the full copyright notices and license terms. -->
                             <group colspan="2" col="3" id="buttons">
                                 <button string="Cancel"
                                     name="cancel"
-                                    states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
-                                    icon="tryton-cancel" />
+                                    states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    icon="'tryton-cancel'" />
                                 <button string="Confirm"
                                     name="done"
-                                    states="{'invisible': '''state in ('done','cancel') ''', 'readonly': '''%(group_stock)d not in groups'''}"
-                                    icon="tryton-ok"/>
+                                    states="{'invisible': In(Eval('state'), ['done','cancel']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    icon="'tryton-ok'"/>
                             </group>
                         </group>
                     </form>

@@ -49,17 +49,17 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group col="5" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
-                                    states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                     icon="tryton-cancel"/>
                                 <button string="Received" name="received"
-                                    states="{'invisible': '''state  != 'draft' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                     icon="tryton-go-next"/>
                                 <button string="Done" name="done"
-                                    states="{'invisible': '''state != 'received' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'received')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                     icon="tryton-ok"/>
                                 <button string="Reset to Draft" name="button_draft"
                                     type="object"
-                                    states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                     icon="tryton-clear"/>
                             </group>
                         </group>
@@ -177,22 +177,23 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="state"/>
                         <group col="6" colspan="2" id="buttons">
                             <button string="Cancel" name="cancel"
-                                states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-cancel"/>
                             <button string="Draft" name="draft"
-                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-go-previous"/>
                             <button string="Waiting" name="waiting"
-                                states="{'invisible': '''state not in ('assigned', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'draft' and 'tryton-go-next' or False'''}"/>
+                                states="{'invisible': Not(In(Eval('state'), ['assigned', 'draft'])), 'readonly': Not(In(%(group_stock)d, Eval('groups', []))), 'icon': If(Equal(Eval('state'), 'assigned'), 'tryton-go-previous', If(Equal(Eval('state'), 'draft'), 'tryton-go-next', ''))}"/>
                             <button string="Assign" name="%(wizard_shipment_in_return_assign)d"
                                 type="action"
-                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-go-next"/>
                             <button string="Reset to Draft" name="button_draft"
-                                type="object" states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                type="object"
+                                states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-clear"/>
                             <button string="Done" name="done"
-                                states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                states="{'invisible': Not(Equal(Eval('state'), 'assigned')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-ok"/>
                         </group>
                     </form>
@@ -322,26 +323,26 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group col="7" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
-                                        states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                         icon="tryton-cancel"/>
                                 <button string="Draft" name="draft"
-                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                         icon="tryton-go-previous"/>
                                 <button string="Waiting" name="waiting"
-                                        states="{'invisible': '''state not in ('assigned', 'waiting', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'waiting' and 'tryton-clear' or state == 'draft' and 'tryton-go-next' or False'''}"/>
+                                        states="{'invisible': Not(In(Eval('state'), ['assigned', 'waiting', 'draft'])), 'readonly': Not(In(%(group_stock)d, Eval('groups', []))), 'icon': If(Equal(Eval('state'), 'assigned'), 'tryton-go-previous', If(Equal(Eval('state'), 'waiting'), 'tryton-clear', If(Equal(Eval('state'), 'draft'), 'tryton-go-next', '')))}"/>
                                 <button string="Assign" name="%(wizard_shipment_out_assign)d"
                                         type="action"
-                                        states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                         icon="tryton-go-next"/>
                                 <button string="Make shipment" name="packed"
-                                        states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'assigned')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                         icon="tryton-go-next"/>
                                 <button string="Done" name="done"
-                                        states="{'invisible': '''state != 'packed' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'packed')), 'readonly': Not(In(%(group_stock)d , Eval('groups', [])))}"
                                         icon="tryton-ok"/>
                                 <button string="Reset to Draft" name="button_draft"
                                         type="object"
-                                        states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                         icon="tryton-clear"/>
                             </group>
                         </group>
@@ -519,22 +520,23 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="state"/>
                         <group col="6" colspan="2" id="buttons">
                             <button string="Cancel" name="cancel"
-                                states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-cancel"/>
                             <button string="Draft" name="draft"
-                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-go-previous"/>
                             <button string="Waiting" name="waiting"
-                                states="{'invisible': '''state not in ('assigned', 'waiting', 'draft')''', 'readonly': '''%(group_stock)d not in groups''', 'icon': '''state == 'assigned' and 'tryton-go-previous' or state == 'waiting' and 'tryton-clear' or state == 'draft' and 'tryton-go-next' or False'''}"/>
+                                states="{'invisible': Not(In(Eval('state'), ['assigned', 'waiting', 'draft'])), 'readonly': Not(In(%(group_stock)d, Eval('groups', []))), 'icon': If(Equal(Eval('state'), 'assigned'), 'tryton-go-previous', If(Equal(Eval('state'), 'waiting'), 'tryton-clear', If(Equal(Eval('state'), 'draft'), 'tryton-go-next', '')))}"/>
                             <button string="Assign" name="%(wizard_shipment_internal_assign)d"
                                 type="action"
-                                states="{'invisible': '''state != 'waiting' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-go-next"/>
                             <button string="Reset to Draft" name="button_draft"
-                                type="object" states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                type="object"
+                                states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-clear"/>
                             <button string="Done" name="done"
-                                states="{'invisible': '''state != 'assigned' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                states="{'invisible': Not(Equal(Eval('state'), 'assigned')), 'readonly': Not(In(%(group_stock)d , Eval('groups', [])))}"
                                 icon="tryton-ok"/>
                         </group>
                     </form>
@@ -735,17 +737,17 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group col="5" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
-                                    states="{'invisible': '''state in ('cancel', 'done') ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                     icon="tryton-cancel"/>
                                 <button string="Received" name="received"
-                                    states="{'invisible': '''state  != 'draft' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                     icon="tryton-go-next"/>
                                 <button string="Done" name="done"
-                                    states="{'invisible': '''state != 'received' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'received')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                     icon="tryton-ok"/>
                                 <button string="Reset to Draft" name="button_draft"
                                     type="object"
-                                    states="{'invisible': '''state != 'cancel' ''', 'readonly': '''%(group_stock)d not in groups'''}"
+                                    states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                     icon="tryton-clear"/>
                             </group>
                         </group>
