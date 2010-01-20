@@ -316,7 +316,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('period.fiscalyear.company.id', '=', context.get('company', False))]</field>
+            <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_period_tree_view1">
             <field name="sequence" eval="10"/>
@@ -329,7 +329,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('state', '!=', 'close'), ('period.fiscalyear.company.id', '=', context.get('company', False))]</field>
+            <field name="domain">[('state', '!=', 'close'), ('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_period_tree2_view1">
             <field name="sequence" eval="10"/>
@@ -365,7 +365,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
             <field name="view_type">form</field>
-            <field name="domain">[('period.fiscalyear.company.id', '=', context.get('company', False))]</field>
+            <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_period_form_view1">
             <field name="sequence" eval="10"/>

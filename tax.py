@@ -6,6 +6,8 @@ from trytond.wizard import Wizard
 from decimal import Decimal
 from trytond.tools import Cache
 from trytond.backend import TableHandler
+from trytond.pyson import Eval, Not, Equal, If, In, Bool, Get, Or, And, \
+        PYSONEncoder
 
 
 class Group(ModelSQL, ModelView):
@@ -145,12 +147,12 @@ class Code(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True)
     parent = fields.Many2One('account.tax.code', 'Parent', select=1,
-            domain=["('company', '=', company)"], depends=['company'])
+            domain=[('company', '=', Eval('company', 0))], depends=['company'])
     childs = fields.One2Many('account.tax.code', 'parent', 'Children',
-            domain=["('company', '=', company)"], depends=['company'])
+            domain=[('company', '=', Eval('company', 0))], depends=['company'])
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['company'])
-    sum = fields.Function('get_sum', digits="(16, currency_digits)",
+    sum = fields.Function('get_sum', digits=(16, Eval('currency_digits', 2)),
             string='Sum', depends=['currency_digits'])
     template = fields.Many2One('account.tax.code.template', 'Template')
 
@@ -324,12 +326,12 @@ class OpenChartCodeInit(ModelView):
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             help='Leave empty for all open fiscal year',
             states={
-                'invisible': "method != 'fiscalyear'",
+                'invisible': Not(Equal(Eval('method'), 'fiscalyear')),
             }, depends=['method'])
     periods = fields.Many2Many('account.period', None, None, 'Periods',
             help='Leave empty for all periods of all open fiscal year',
             states={
-                'invisible': "method != 'periods'",
+                'invisible': Not(Equal(Eval('method'), 'periods')),
             }, depends=['method'])
 
     def default_method(self, cursor, user, context=None):
@@ -375,9 +377,13 @@ class OpenChartCode(Wizard):
         res = act_window_obj.read(cursor, user, model_data.db_id,
                 context=context)
         if data['form']['method'] == 'fiscalyear':
-            res['context'] = str({'fiscalyear': data['form']['fiscalyear']})
+            res['pyson_context'] = PYSONEncoder().encode({
+                'fiscalyear': data['form']['fiscalyear'],
+            })
         else:
-            res['context'] = str({'periods': data['form']['periods'][0][1]})
+            res['pyson_context'] = PYSONEncoder().encode({
+                'periods': data['form']['periods'][0][1],
+            })
         return res
 
 OpenChartCode()
@@ -592,20 +598,20 @@ class Tax(ModelSQL, ModelView):
             help="The name that will be used in reports")
     group = fields.Many2One('account.tax.group', 'Group',
             states={
-                'invisible': "locals().get('parent', True)",
+                'invisible': Bool(Eval('parent')),
             }, depends=['parent'])
     active = fields.Boolean('Active')
     sequence = fields.Integer('Sequence',
             help='Use to order the taxes')
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['company'])
-    amount = fields.Numeric('Amount', digits="(16, currency_digits)",
+    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
             states={
-                'invisible': "type != 'fixed'",
+                'invisible': Not(Equal(Eval('type'), 'fixed')),
             }, help='In company\'s currency', depends=['type', 'currency_digits'])
     percentage = fields.Numeric('Percentage', digits=(16, 8),
             states={
-                'invisible': "type != 'percentage'",
+                'invisible': Not(Equal(Eval('type'), 'percentage')),
             }, help='In %', depends=['type'])
     type = fields.Selection([
         ('percentage', 'Percentage'),
@@ -615,62 +621,72 @@ class Tax(ModelSQL, ModelView):
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE')
     childs = fields.One2Many('account.tax', 'parent', 'Children')
     company = fields.Many2One('company.company', 'Company', required=True,
-            domain=["('id', 'company' in context and '=' or '!=', " \
-                    "context.get('company', 0))"])
+            domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
-            domain=["('company', '=', company)",
-                    ('kind', '!=', 'view')],
+            domain=[
+                ('company', '=', Eval('company')),
+                ('kind', '!=', 'view'),
+            ],
             states={
-                'readonly': "type == 'none' or not company",
-                'required': "type != 'none' and company",
+                'readonly': Or(Equal(Eval('type'), 'none'),
+                    Not(Bool(Eval('company')))),
+                'required': And(Not(Equal(Eval('type'), 'none')),
+                    Bool(Eval('company'))),
             }, depends=['company'])
     credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
-            domain=["('company', '=', company)",
-                    ('kind', '!=', 'view')],
+            domain=[
+                ('company', '=', Eval('company')),
+                ('kind', '!=', 'view'),
+            ],
             states={
-                'readonly': "type == 'none' or not company",
-                'required': "type != 'none' and company",
+                'readonly': Or(Equal(Eval('type'), 'none'),
+                    Not(Bool(Eval('company')))),
+                'required': And(Not(Equal(Eval('type'), 'none')),
+                    Bool(Eval('company'))),
             }, depends=['company', 'type'])
 
     invoice_base_code = fields.Many2One('account.tax.code',
             'Invoice Base Code',
             states={
-                'readonly': "type == 'none'",
+                'readonly': Equal(Eval('type'), 'none'),
             }, depends=['type'])
     invoice_base_sign = fields.Numeric('Invoice Base Sign', digits=(2, 0),
             help='Usualy 1 or -1',
             states={
-                'readonly': "type == 'none'",
+                'readonly': Equal(Eval('type'), 'none'),
             }, depends=['type'])
     invoice_tax_code = fields.Many2One('account.tax.code',
             'Invoice Tax Code',
             states={
-                'readonly': "type == 'none'",
+                'readonly': Equal(Eval('type'), 'none'),
             }, depends=['type'])
     invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0),
             help='Usualy 1 or -1',
             states={
-                'readonly': "type == 'none'",
+                'readonly': Equal(Eval('type'), 'none'),
             }, depends=['type'])
     credit_note_base_code = fields.Many2One('account.tax.code',
             'Credit Note Base Code',
             states={
-                'readonly': "type == 'none'",
+                'readonly': Equal(Eval('type'), 'none'),
             }, depends=['type'])
     credit_note_base_sign = fields.Numeric('Credit Note Base Sign', digits=(2, 0),
             help='Usualy 1 or -1',
             states={
-                'readonly': "type == 'none'",
+                'readonly': Equal(Eval('type'), 'none'),
             }, depends=['type'])
     credit_note_tax_code = fields.Many2One('account.tax.code',
             'Credit Note Tax Code',
             states={
-                'readonly': "type == 'none'",
+                'readonly': Equal(Eval('type'), 'none'),
             }, depends=['type'])
     credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign', digits=(2, 0),
             help='Usualy 1 or -1',
             states={
-                'readonly': "type == 'none'",
+                'readonly': Equal(Eval('type'), 'none'),
             }, depends=['type'])
     template = fields.Many2One('account.tax.template', 'Template')
 
@@ -929,7 +945,7 @@ class Line(ModelSQL, ModelView):
 
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['move_line'])
-    amount = fields.Numeric('Amount', digits="(16, currency_digits)",
+    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
     code = fields.Many2One('account.tax.code', 'Code', select=1, required=True)
     move_line = fields.Many2One('account.move.line', 'Move Line',
@@ -1042,8 +1058,10 @@ class Rule(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', required=True, translate=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-            select=1, domain=["('id', 'company' in context and '=' or '!=', " \
-                    "context.get('company', 0))"])
+            select=1, domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
     template = fields.Many2One('account.tax.rule.template', 'Template')
 
@@ -1133,13 +1151,17 @@ class RuleLineTemplate(ModelSQL, ModelView):
             ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
     origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
-            domain=["('account', '=', _parent_rule.account)",
-                "('group', '=', group)"],
+            domain=[
+                ('account', '=', Get(Eval('_parent_rule', {}), 'account')),
+                ('group', '=', Eval('group'))
+            ],
             help='If the original tax template is filled, the rule will be ' \
                     'applied only for this tax template.')
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
-            domain=["('account', '=', _parent_rule.account)",
-                "('group', '=', group)"])
+            domain=[
+                ('account', '=', Get(Eval('_parent_rule', {}), 'account')),
+                ('group', '=', Eval('group')),
+            ])
     sequence = fields.Integer('Sequence')
 
     def __init__(self):
@@ -1230,13 +1252,17 @@ class RuleLine(ModelSQL, ModelView):
             select=1, ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
     origin_tax = fields.Many2One('account.tax', 'Original Tax',
-            domain=["('company', '=', _parent_rule.company)",
-                "('group', '=', group)"],
+            domain=[
+                ('company', '=', Get(Eval('_parent_rule', {}), 'company')),
+                ('group', '=', Eval('group')),
+            ],
             help='If the original tax is filled, the rule will be applied ' \
                     'only for this tax.')
     tax = fields.Many2One('account.tax', 'Substitution Tax',
-            domain=["('company', '=', _parent_rule.company)",
-                "('group', '=', group)"])
+            domain=[
+                ('company', '=', Get(Eval('_parent_rule', {}), 'company')),
+                ('group', '=', Eval('group')),
+            ])
     sequence = fields.Integer('Sequence')
     template = fields.Many2One('account.tax.rule.line.template', 'Template')
 
@@ -1383,14 +1409,18 @@ class OpenCode(Wizard):
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id,
                 context=context)
-        res['domain'] = str([
+        res['pyson_domain'] = PYSONEncoder().encode([
             ('move_line.period', 'in', period_ids),
             ('code', '=', data['id']),
             ])
         if context.get('fiscalyear'):
-            res['context'] = str({'fiscalyear': context['fiscalyear']})
+            res['pyson_context'] = PYSONEncoder().encode({
+                'fiscalyear': context['fiscalyear'],
+            })
         else:
-            res['context'] = str({'periods': period_ids})
+            res['pyson_context'] = PYSONEncoder().encode({
+                'periods': period_ids,
+            })
         return res
 
 OpenCode()
@@ -1413,7 +1443,7 @@ class AccountTemplate(ModelSQL, ModelView):
     _name = 'account.account.template'
     taxes = fields.Many2Many('account.account.template-account.tax.template',
             'account', 'tax', 'Default Taxes',
-            domain=["('parent', '=', False)"])
+            domain=[('parent', '=', False)])
 
 AccountTemplate()
 
@@ -1435,7 +1465,10 @@ class Account(ModelSQL, ModelView):
     _name = 'account.account'
     taxes = fields.Many2Many('account.account-account.tax',
             'account', 'tax', 'Default Taxes',
-            domain=["('company', '=', company)", ('parent', '=', False)],
+            domain=[
+                ('company', '=', Eval('company')),
+                ('parent', '=', False),
+            ],
             help='Default tax for manual encoding of move lines \n' \
                     'for journal types: "expense" and "revenue"',
             depends=['company'])

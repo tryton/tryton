@@ -4,12 +4,13 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.tools import datetime_strftime
+from trytond.pyson import Equal, Eval, If, In, Get
 import datetime
 import time
 from dateutil.relativedelta import relativedelta
 
 STATES = {
-    'readonly': "state == 'close'",
+    'readonly': Equal(Eval('state'), 'close'),
 }
 DEPENDS = ['state']
 
@@ -32,15 +33,21 @@ class FiscalYear(ModelSQL, ModelView):
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
-            required=True, domain=["('code', '=', 'account.move')",
+            required=True, domain=[('code', '=', 'account.move'),
                 ['OR',
-                    "('company', '=', company)",
-                    "('company', '=', False)"]],
-                    context="{'code': 'account.move', 'company': company}",
+                    ('company', '=', Eval('company')),
+                    ('company', '=', False)
+                ]],
+            context={
+                'code': 'account.move',
+                'company': Eval('company'),
+            },
             depends=['company'])
     company = fields.Many2One('company.company', 'Company', required=True,
-            domain=["('id', 'company' in context and '=' or '!=', " \
-                    "context.get('company', 0))"])
+            domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
 
     def __init__(self):
         super(FiscalYear, self).__init__()
@@ -312,9 +319,8 @@ class CloseFiscalYearInit(ModelView):
     _name = 'account.fiscalyear.close_fiscalyear.init'
     _description = __doc__
     close_fiscalyear = fields.Many2One('account.fiscalyear',
-            'Fiscal Year to close',
-            required=True,
-            domain=["('state', '!=', 'close')"])
+            'Fiscal Year to close', required=True,
+            domain=[('state', '!=', 'close')])
 
 CloseFiscalYearInit()
 

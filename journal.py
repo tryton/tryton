@@ -4,9 +4,10 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
+from trytond.pyson import Equal, Eval, Not, Get, Or, And, Bool
 
 STATES = {
-    'readonly': "state == 'close'",
+    'readonly': Equal(Eval('state'), 'close'),
 }
 DEPENDS = ['state']
 
@@ -90,21 +91,27 @@ class Journal(ModelSQL, ModelView):
             context={'code': 'account.journal'})
     credit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Credit Account',
-            domain=[('kind', '!=', 'view'),
-                "('company', '=', context.get('company'))"],
+            domain=[
+                ('kind', '!=', 'view'),
+                ('company', '=', Get(Eval('context', {}), 'company', 0)),
+            ],
             states={
-                'required': "centralised or " \
-                        "(type == 'cash' and context.get('company'))",
-                'invisible': "not context.get('company')",
+                'required': Or(Bool(Eval('centralised')),
+                    And(Equal(Eval('type'), 'cash'),
+                        Bool(Get(Eval('context', {}), 'company', 0)))),
+                'invisible': Not(Bool(Get(Eval('context', {}), 'company', 0))),
             }, depends=['type', 'centralised'])
     debit_account = fields.Property(type='many2one',
             relation='account.account', string='Default Debit Account',
-            domain=[('kind', '!=', 'view'),
-                "('company', '=', context.get('company'))"],
+            domain=[
+                ('kind', '!=', 'view'),
+                ('company', '=', Get(Eval('context', {}), 'company', 0)),
+            ],
             states={
-                'required': "centralised or " \
-                        "(type == 'cash' and context.get('company'))",
-                'invisible': "not context.get('company')",
+                'required': Or(Bool(Eval('centralised')),
+                    And(Equal(Eval('type'), 'cash'),
+                        Bool(Get(Eval('context', {}), 'company', 0)))),
+                'invisible': Not(Bool(Get(Eval('context', {}), 'company', 0))),
             }, depends=['type', 'centralised'])
 
     def __init__(self):

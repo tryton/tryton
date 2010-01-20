@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import Get, Eval, And, Bool, Not, Or
 from decimal import Decimal
 
 
@@ -8,29 +9,35 @@ class Party(ModelSQL, ModelView):
     _name = 'party.party'
     account_payable = fields.Property(type='many2one',
             relation='account.account', string='Account Payable',
-            domain=[('kind', '=', 'payable'), "('company', '=', company)"],
+            domain=[
+                ('kind', '=', 'payable'),
+                ('company', '=', Eval('company')),
+            ],
             states={
-                'required': "globals().get('company') and bool(company)",
-                'invisible': "not globals().get('company') or not bool(company)",
+                'required': Bool(Eval('company')),
+                'invisible': Not(Bool(Eval('company'))),
             })
     account_receivable = fields.Property(type='many2one',
             relation='account.account', string='Account Receivable',
-            domain=[('kind', '=', 'receivable'), "('company', '=', company)"],
+            domain=[
+                ('kind', '=', 'receivable'),
+                ('company', '=', Eval('company')),
+            ],
             states={
-                'required': "globals().get('company') and bool(company)",
-                'invisible': "not globals().get('company') or not bool(company)",
+                'required': Bool(Eval('company')),
+                'invisible': Not(Bool(Eval('company'))),
             })
     customer_tax_rule = fields.Property(type='many2one',
             relation='account.tax.rule', string='Customer Tax Rule',
-            domain=["('company', '=', company)"],
+            domain=[('company', '=', Eval('company'))],
             states={
-                'invisible': "not globals().get('company') or not bool(company)",
+                'invisible': Not(Bool(Eval('company'))),
             }, help='Apply this rule on taxes when party is customer.')
     supplier_tax_rule = fields.Property(type='many2one',
             relation='account.tax.rule', string='Supplier Tax Rule',
-            domain=["('company', '=', company)"],
+            domain=[('company', '=', Eval('company'))],
             states={
-                'invisible': "not globals().get('company') or not bool(company)",
+                'invisible': Not(Bool(Eval('company'))),
             }, help='Apply this rule on taxes when party is supplier.')
     receivable = fields.Function('get_receivable_payable',
             fnct_search='search_receivable_payable', string='Receivable')

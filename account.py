@@ -5,6 +5,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
 from trytond.tools import reduce_ids
+from trytond.pyson import Equal, Eval, Not, PYSONEncoder, Date
 from decimal import Decimal
 import datetime
 import time
@@ -154,7 +155,8 @@ class Type(ModelSQL, ModelView):
             help='Use to order the account type')
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits')
-    amount = fields.Function('get_amount', digits="(16, currency_digits)",
+    amount = fields.Function('get_amount',
+            digits=(16, Eval('currency_digits', 2)),
             string='Amount', depends=['currency_digits'])
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
@@ -304,15 +306,15 @@ class AccountTemplate(ModelSQL, ModelView):
     type = fields.Many2One('account.account.type.template', 'Type',
             ondelete="RESTRICT",
             states={
-                'invisible': "kind == 'view'",
-                'required': "kind != 'view'",
+                'invisible': Equal(Eval('kind'), 'view'),
+                'required': Not(Equal(Eval('kind'), 'view')),
             }, depends=['kind'])
     parent = fields.Many2One('account.account.template', 'Parent', select=1,
             ondelete="RESTRICT")
     childs = fields.One2Many('account.account.template', 'parent', 'Children')
     reconcile = fields.Boolean('Reconcile',
             states={
-                'invisible': "kind == 'view'",
+                'invisible': Equal(Eval('kind'), 'view'),
             }, depends=['kind'])
     kind = fields.Selection([
         ('other', 'Other'),
@@ -323,7 +325,7 @@ class AccountTemplate(ModelSQL, ModelView):
         ('view', 'View'),
         ], 'Kind', required=True)
     deferral = fields.Boolean('Deferral', states={
-        'invisible': "kind == 'view'",
+        'invisible': Equal(Eval('kind'), 'view'),
         }, depends=['kind'])
 
     def __init__(self):
@@ -532,25 +534,28 @@ class Account(ModelSQL, ModelView):
                     'to have this secondary currency.', ondelete="RESTRICT")
     type = fields.Many2One('account.account.type', 'Type', ondelete="RESTRICT",
             states={
-                'invisible': "kind == 'view'",
-                'required': "kind != 'view'",
+                'invisible': Equal(Eval('kind'), 'view'),
+                'required': Not(Equal(Eval('kind'), 'view')),
             }, depends=['kind'])
     parent = fields.Many2One('account.account', 'Parent', select=1,
             left="left", right="right", ondelete="RESTRICT")
     left = fields.Integer('Left', required=True, select=1)
     right = fields.Integer('Right', required=True, select=1)
     childs = fields.One2Many('account.account', 'parent', 'Children')
-    balance = fields.Function('get_balance', digits="(16, currency_digits)",
+    balance = fields.Function('get_balance',
+            digits=(16, Eval('currency_digits', 2)),
             string='Balance', depends=['currency_digits'])
-    credit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
+    credit = fields.Function('get_credit_debit',
+            digits=(16, Eval('currency_digits', 2)),
             string='Credit', depends=['currency_digits'])
-    debit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
+    debit = fields.Function('get_credit_debit',
+            digits=(16, Eval('currency_digits', 2)),
             string='Debit', depends=['currency_digits'])
     reconcile = fields.Boolean('Reconcile',
             help='Allow move lines of this account \n' \
                     'to be reconciled.',
             states={
-                'invisible': "kind == 'view'",
+                'invisible': Equal(Eval('kind'), 'view'),
             }, depends=['kind'])
     note = fields.Text('Note')
     kind = fields.Selection([
@@ -562,11 +567,11 @@ class Account(ModelSQL, ModelView):
         ('view', 'View'),
         ], 'Kind', required=True)
     deferral = fields.Boolean('Deferral', states={
-        'invisible': "kind == 'view'",
+        'invisible': Equal(Eval('kind'), 'view'),
         }, depends=['kind'])
     deferrals = fields.One2Many('account.account.deferral', 'account',
             'Deferrals', readonly=True, states={
-                'invisible': "kind == 'view'",
+                'invisible': Equal(Eval('kind'), 'view'),
             }, depends=['kind'])
     template = fields.Many2One('account.account.template', 'Template')
 
@@ -1030,9 +1035,9 @@ class AccountDeferral(ModelSQL, ModelView):
             select=1)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, select=1)
-    debit = fields.Numeric('Debit', digits="(16, currency_digits)",
+    debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
-    credit = fields.Numeric('Credit', digits="(16, currency_digits)",
+    credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits')
@@ -1129,7 +1134,7 @@ class OpenChartAccount(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['context'] = str({
+        res['pyson_context'] = PYSONEncoder().encode({
             'fiscalyear': data['form']['fiscalyear'],
             'posted': data['form']['posted'],
             })
@@ -1145,11 +1150,15 @@ class PrintGeneralLegderInit(ModelView):
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'])
     start_period = fields.Many2One('account.period', 'Start Period',
-            domain=["('fiscalyear', '=', fiscalyear)",
-                "('start_date', '<=', (end_period, 'start_date'))"])
+            domain=[
+                ('fiscalyear', '=', Eval('fiscalyear')),
+                ('start_date', '<=', (Eval('end_period'), 'start_date')),
+            ])
     end_period = fields.Many2One('account.period', 'End Period',
-            domain=["('fiscalyear', '=', fiscalyear)",
-                    "('start_date', '>=', (start_period, 'start_date'))"])
+            domain=[
+                ('fiscalyear', '=', Eval('fiscalyear')),
+                ('start_date', '>=', (Eval('start_period'), 'start_date'))
+            ])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
     empty_account = fields.Boolean('Empty Account',
@@ -1361,12 +1370,16 @@ class PrintTrialBalanceInit(ModelView):
             required=True, on_change=['fiscalyear'],
             depends=['start_period', 'end_period'])
     start_period = fields.Many2One('account.period', 'Start Period',
-            domain=["('fiscalyear', '=', fiscalyear)",
-                "('start_date', '<=', (end_period, 'start_date'))"],
+            domain=[
+                ('fiscalyear', '=', Eval('fiscalyear')),
+                ('start_date', '<=', (Eval('end_period'), 'start_date'))
+            ],
             depends=['end_period'])
     end_period = fields.Many2One('account.period', 'End Period',
-            domain=["('fiscalyear', '=', fiscalyear)",
-                "('start_date', '>=', (start_period, 'start_date'))"],
+            domain=[
+                ('fiscalyear', '=', Eval('fiscalyear')),
+                ('start_date', '>=', (Eval('start_period'), 'start_date'))
+            ],
             depends=['start_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
@@ -1593,8 +1606,10 @@ class OpenBalanceSheet(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['context'] = str({
-            'date': datas['form']['date'],
+        res['pyson_context'] = PYSONEncoder().encode({
+            'date': Date(datas['form']['date'].year,
+                datas['form']['date'].month,
+                datas['form']['date'].day),
             'posted': datas['form']['posted'],
             'company': datas['form']['company'],
             })
@@ -1612,12 +1627,16 @@ class OpenIncomeStatementInit(ModelView):
             required=True, on_change=['fiscalyear'],
             depends=['start_period', 'end_period'])
     start_period = fields.Many2One('account.period', 'Start Period',
-            domain=["('fiscalyear', '=', fiscalyear)",
-                "('start_date', '<=', (end_period, 'start_date'))"],
+            domain=[
+                ('fiscalyear', '=', Eval('fiscalyear')),
+                ('start_date', '<=', (Eval('end_period'), 'start_date'))
+            ],
             depends=['end_period'])
     end_period = fields.Many2One('account.period', 'End Period',
-            domain=["('fiscalyear', '=', fiscalyear)",
-                "('start_date', '>=', (start_period, 'start_date'))"],
+            domain=[
+                ('fiscalyear', '=', Eval('fiscalyear')),
+                ('start_date', '>=', (Eval('start_period'), 'start_date')),
+            ],
             depends=['start_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
@@ -1717,7 +1736,7 @@ class OpenIncomeStatement(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['context'] = str({
+        res['pyson_context'] = PYSONEncoder().encode({
             'periods': end_period_ids,
             'posted': datas['form']['posted'],
             'company': datas['form']['company'],
@@ -1753,11 +1772,17 @@ class CreateChartAccountPropertites(ModelView):
     company = fields.Many2One('company.company', 'Company')
     account_receivable = fields.Many2One('account.account',
             'Default Receivable Account',
-            domain=[('kind', '=', 'receivable'), "('company', '=', company)"],
+            domain=[
+                ('kind', '=', 'receivable'),
+                ('company', '=', Eval('company')),
+            ],
             depends=['company'])
     account_payable = fields.Many2One('account.account',
             'Default Payable Account',
-            domain=[('kind', '=', 'payable'), "('company', '=', company)"],
+            domain=[
+                ('kind', '=', 'payable'),
+                ('company', '=', Eval('company')),
+            ],
             depends=['company'])
 
 CreateChartAccountPropertites()

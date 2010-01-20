@@ -5,6 +5,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
 from trytond.backend import TableHandler, FIELDS
+from trytond.pyson import Equal, Eval, Get, PYSONEncoder
 from decimal import Decimal
 import datetime
 import time
@@ -15,11 +16,11 @@ except ImportError:
     import md5
 
 _MOVE_STATES = {
-    'readonly': "state == 'posted'",
+    'readonly': Equal(Eval('state'), 'posted'),
 }
 _MOVE_DEPENDS = ['state']
 _LINE_STATES = {
-    'readonly': "state == 'valid'",
+    'readonly': Equal(Eval('state'), 'valid'),
 }
 _LINE_DEPENDS = ['state']
 
@@ -45,8 +46,11 @@ class Move(ModelSQL, ModelView):
         ], 'State', required=True, readonly=True, select=1)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
             states=_MOVE_STATES, depends=_MOVE_DEPENDS,
-            context="{'journal': journal, 'period': period, " \
-                    "'date': date}")
+            context={
+                'journal': Eval('journal'),
+                'period': Eval('period'),
+                'date': Eval('date'),
+            })
 
     def __init__(self):
         super(Move, self).__init__()
@@ -434,11 +438,11 @@ class Line(ModelSQL, ModelView):
     _description = __doc__
 
     name = fields.Char('Name', size=None, required=True)
-    debit = fields.Numeric('Debit', digits="(16, currency_digits)",
+    debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'], depends=['currency_digits', 'credit',
                     'tax_lines', 'journal'])
-    credit = fields.Numeric('Credit', digits="(16, currency_digits)",
+    credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'], depends=['currency_digits', 'debit',
                     'tax_lines', 'journal'])
@@ -460,7 +464,7 @@ class Line(ModelSQL, ModelView):
             fnct_search='search_move_field')
     reference = fields.Char('Reference', size=None)
     amount_second_currency = fields.Numeric('Amount Second Currency',
-            digits="(16, second_currency_digits)",
+            digits=(16, Eval('second_currency_digits', 2)),
             help='The amount expressed in a second currency',
             depends=['second_currency_digits'])
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
@@ -1355,8 +1359,11 @@ class OpenJournalAsk(ModelView):
     _description = __doc__
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     period = fields.Many2One('account.period', 'Period', required=True,
-            domain=[('state', '!=', 'close'),
-                "('fiscalyear.company.id', '=', context.get('company', False))"])
+            domain=[
+                ('state', '!=', 'close'),
+                ('fiscalyear.company.id', '=',
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
 
     def default_period(self, cursor, user, context=None):
         period_obj = self.pool.get('account.period')
@@ -1454,11 +1461,11 @@ class OpenJournal(Wizard):
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
         # Remove name to use the one from view_header_get
         del res['name']
-        res['domain'] = str([
+        res['pyson_domain'] = PYSONEncoder().encode([
             ('journal', '=', journal_id),
             ('period', '=', period_id),
             ])
-        res['context'] = str({
+        res['pyson_context'] = PYSONEncoder().encode({
             'journal': journal_id,
             'period': period_id,
             })
@@ -1508,14 +1515,16 @@ class OpenAccount(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['domain'] = [
+        res['pyson_domain'] = [
             ('period', 'in', period_ids),
             ('account', '=', data['id']),
             ]
         if context.get('posted'):
-            res['domain'].append(('move.state', '=', 'posted'))
-        res['domain'] = str(res['domain'])
-        res['context'] = str({'fiscalyear': context.get('fiscalyear')})
+            res['pyson_domain'].append(('move.state', '=', 'posted'))
+        res['pyson_domain'] = PYSONEncoder().encode(res['pyson_domain'])
+        res['pyson_context'] = PYSONEncoder().encode({
+            'fiscalyear': context.get('fiscalyear'),
+        })
         return res
 
 OpenAccount()
@@ -1692,7 +1701,7 @@ class OpenReconcileLines(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['domain'] = str([
+        res['pyson_domain'] = PYSONEncoder().encode([
             ('account', '=', data['form']['account']),
             ('reconciliation', '=', False),
             ])

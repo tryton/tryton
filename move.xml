@@ -26,9 +26,9 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="state"/>
                     <group col="2" colspan="2" id="buttons">
                         <button string="Post" name="button_post" type="object"
-                            states="{'invisible': '''state == 'posted' '''}"/>
+                            states="{'invisible': Equal(Eval('state'), 'posted')}"/>
                         <button string="Draft" name="button_draft" type="object"
-                            states="{'invisible': '''state == 'draft' '''}"/>
+                            states="{'invisible': Equal(Eval('state'), 'draft')}"/>
                     </group>
                 </form>
                 ]]>
@@ -55,7 +55,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Account Moves</field>
             <field name="res_model">account.move</field>
             <field name="view_type">form</field>
-            <field name="domain">[('period.fiscalyear.company.id', '=', context.get('company', False))]</field>
+            <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_view1">
             <field name="sequence" eval="10"/>
@@ -215,7 +215,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Move Lines" editable="top"
-                    on_write="on_write" colors="red:state=='draft'">
+                    on_write="on_write"
+                    colors="If(Equal(Eval('state'), 'draft'), 'red', 'black')">
                     <field name="move" select="1" required="0"/>
                     <field name="name" select="1"/>
                     <field name="reference" select="2"/>

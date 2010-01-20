@@ -3,9 +3,10 @@
 'Period'
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import Equal, Eval
 
 _STATES = {
-    'readonly': "state == 'close'",
+    'readonly': Equal(Eval('state'), 'close'),
 }
 
 
