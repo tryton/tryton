@@ -786,6 +786,7 @@ class Tax(ModelSQL, ModelView):
         self.sort_taxes(cursor.dbname)
         return super(Tax, self).write(cursor, user, ids, vals, context=context)
 
+    @Cache('account_tax.sort_taxes')
     def sort_taxes(self, cursor, user, ids, context=None):
         '''
         Return a list of taxe ids sorted
@@ -799,8 +800,6 @@ class Tax(ModelSQL, ModelView):
         return self.search(cursor, user, [
             ('id', 'in', ids),
             ], order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)
-
-    sort_taxes = Cache('account_tax.sort_taxes')(sort_taxes)
 
     def compute(self, cursor, user, ids, price_unit, quantity, context=None):
         '''
