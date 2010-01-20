@@ -1,6 +1,7 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level
-#of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
+from trytond.pyson import Eval, Not, Equal, Or, Bool
 import copy
 
 
@@ -8,25 +9,22 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     _name = 'sale.sale'
 
     price_list = fields.Many2One('product.price_list', 'Price List',
-            domain=["('company', '=', company)"],
+            domain=[('company', '=', Eval('company'))],
             states={
-                'readonly': "state != 'draft' or bool(lines)",
+                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                    Bool(Eval('lines'))),
             })
 
     def __init__(self):
         super(Sale, self).__init__()
-        if 'bool(lines)' not in self.party.states['readonly']:
-            self.party = copy.copy(self.party)
-            self.party.states = copy.copy(self.party.states)
-            self.party.states['readonly'] = \
-                    '(' + self.party.states['readonly'] + ') ' \
-                    'or bool(lines)'
-        if 'not bool(party)' not in self.lines.states['readonly']:
-            self.lines = copy.copy(self.lines)
-            self.lines.states = copy.copy(self.lines.states)
-            self.lines.states['readonly'] = \
-                    '(' + self.lines.states['readonly'] + ') ' \
-                    'or not bool(party)'
+        self.party = copy.copy(self.party)
+        self.party.states = copy.copy(self.party.states)
+        self.party.states['readonly'] = Or(self.party.states['readonly'],
+                Bool(Eval('lines')))
+        self.lines = copy.copy(self.lines)
+        self.lines.states = copy.copy(self.lines.states)
+        self.lines.states['readonly'] = Or(self.lines.states['readonly'],
+                Not(Bool(Eval('party'))))
         self._reset_columns()
 
     def on_change_party(self, cursor, user, ids, values, context=None):
