@@ -6,6 +6,7 @@ from trytond.report import Report
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler, FIELDS
 from trytond.pyson import In, If, Get, Eval, Not, Equal, Bool, Or, And
+from trytond.tools import reduce_ids
 from decimal import Decimal
 import base64
 
@@ -26,6 +27,8 @@ _TYPE2JOURNAL = {
     'out_credit_note': 'revenue',
     'in_credit_note': 'expense',
 }
+
+_ZERO = Decimal('0.0')
 
 
 class Invoice(ModelWorkflow, ModelSQL, ModelView):
@@ -421,7 +424,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
-            res.setdefault(invoice.id, Decimal('0.0'))
+            res.setdefault(invoice.id, _ZERO)
             for line in invoice.lines:
                 if line.type != 'line':
                     continue
@@ -434,11 +437,12 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         type_name = FIELDS[self.tax_amount._type].sql_type(self.tax_amount)[0]
+        red_sql, red_ids = reduce_ids('invoice', ids)
         cursor.execute('SELECT invoice, ' \
                     'CAST(COALESCE(SUM(amount), 0) AS ' + type_name + ') ' \
                 'FROM account_invoice_tax ' \
-                'WHERE invoice IN (' + ','.join(('%s',) * len(ids)) + ') ' \
-                'GROUP BY invoice', ids)
+                'WHERE ' + red_sql + ' ' \
+                'GROUP BY invoice', red_ids)
         for invoice_id, sum in cursor.fetchall():
             # SQLite uses float for SUM
             if not isinstance(sum, Decimal):
@@ -490,10 +494,15 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         currency_obj = self.pool.get('currency.currency')
         date_obj = self.pool.get('ir.date')
 
-        res = {}
-        for invoice in self.browse(cursor, user, ids, context=context):
-            amount = Decimal('0.0')
-            amount_currency = Decimal('0.0')
+        compute_ids = self.search(cursor, user, [
+            ('id', 'in', ids),
+            ('state', '=', 'open'),
+            ], context=context)
+
+        res = dict((x, _ZERO) for x in ids)
+        for invoice in self.browse(cursor, user, compute_ids, context=context):
+            amount = _ZERO
+            amount_currency = _ZERO
             for line in invoice.lines_to_pay:
                 if line.reconciliation:
                     continue
@@ -502,7 +511,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                                 context=context):
                     continue
                 if line.second_currency.id == invoice.currency.id:
-                    if line.debit - line.credit > Decimal('0.0'):
+                    if line.debit - line.credit > _ZERO:
                         amount_currency += abs(line.amount_second_currency)
                     else:
                         amount_currency -= abs(line.amount_second_currency)
@@ -512,7 +521,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 if line.reconciliation:
                     continue
                 if line.second_currency.id == invoice.currency.id:
-                    if line.debit - line.credit > Decimal('0.0'):
+                    if line.debit - line.credit > _ZERO:
                         amount_currency += abs(line.amount_second_currency)
                     else:
                         amount_currency -= abs(line.amount_second_currency)
@@ -521,12 +530,12 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             if invoice.type in ('in_invoice', 'out_credit_note'):
                 amount = - amount
                 amount_currency = - amount_currency
-            if amount != Decimal('0.0'):
+            if amount != _ZERO:
                 amount_currency += currency_obj.compute(cursor, user,
                         invoice.company.currency, amount, invoice.currency,
                         context=context)
-            if amount_currency < Decimal('0.0'):
-                amount_currency = Decimal('0.0')
+            if amount_currency < _ZERO:
+                amount_currency = _ZERO
             res[invoice.id] = amount_currency
         return res
 
@@ -1538,7 +1547,7 @@ class InvoiceLine(ModelSQL, ModelView):
                 res[line.id] = currency_obj.round(cursor, user, currency,
                         Decimal(str(line.quantity)) * line.unit_price)
             elif line.type == 'subtotal':
-                res[line.id] = Decimal('0.0')
+                res[line.id] = _ZERO
                 for line2 in line.invoice.lines:
                     if line2.type == 'line':
                         res[line.id] += currency_obj.round(cursor, user,
@@ -1547,9 +1556,9 @@ class InvoiceLine(ModelSQL, ModelView):
                     elif line2.type == 'subtotal':
                         if line.id == line2.id:
                             break
-                        res[line.id] = Decimal('0.0')
+                        res[line.id] = _ZERO
             else:
-                res[line.id] = Decimal('0.0')
+                res[line.id] = _ZERO
         return res
 
     def get_invoice_taxes(self, cursor, user, ids, name, arg, context=None):
