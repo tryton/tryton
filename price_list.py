@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.tools import safe_eval
+from trytond.pyson import If, In, Eval, Get
 from decimal import Decimal
 import re
 
@@ -14,8 +15,10 @@ class PriceList(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', required=True, translate=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-            select=1, domain=["('id', 'company' in context and '=' or '!=', " \
-                    "context.get('company', 0))"])
+            select=1, domain=[
+                ('id', If(In('company', Eval('context', {})), '=', '!='),
+                    Get(Eval('context', {}), 'company', 0)),
+            ])
     lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines')
 
     def default_company(self, cursor, user, context=None):
@@ -114,7 +117,7 @@ class PriceListLine(ModelSQL, ModelView):
             required=True, ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product')
     sequence = fields.Integer('Sequence')
-    quantity = fields.Float('Quantity', digits="(16, unit_digits)",
+    quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
             depends=['unit_digits'])
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits', on_change_with=['product'])
