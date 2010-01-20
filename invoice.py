@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 "Invoice"
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import Not, Equal, Eval
 
 
 class InvoiceLine(ModelSQL, ModelView):
@@ -10,7 +11,7 @@ class InvoiceLine(ModelSQL, ModelView):
     analytic_accounts = fields.Many2One('analytic_account.account.selection',
             'Analytic Accounts',
             states={
-                'invisible': "type != 'line'",
+                'invisible': Not(Equal(Eval('type'), 'line')),
             })
 
     def _view_look_dom_arch(self, cursor, user, tree, type, context=None):
