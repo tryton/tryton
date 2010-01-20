@@ -2,10 +2,11 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.modelstorage import OPERATORS
+from trytond.pyson import Not, Bool, Eval
 from decimal import Decimal
 
 STATES = {
-    'readonly': "(active == False)",
+    'readonly': Not(Bool(Eval('active'))),
 }
 
 class UomCategory(ModelSQL, ModelView):
