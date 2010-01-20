@@ -1,9 +1,10 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level
-#of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Timesheet Line"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import FIELDS
+from trytond.pyson import Eval, PYSONEncoder, Date
 
 
 class Line(ModelSQL, ModelView):
@@ -12,7 +13,7 @@ class Line(ModelSQL, ModelView):
     _description = __doc__
 
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-            select=1, domain=["('company', '=', company)"])
+            select=1, domain=[('company', '=', Eval('company'))])
     date = fields.Date('Date', required=True, select=1)
     hours = fields.Float('Hours', digits=(16, 2), required=True)
     work = fields.Many2One('timesheet.work', 'Work',
@@ -71,7 +72,7 @@ class EnterLinesInit(ModelView):
     _name = 'timesheet.enter_lines.init'
     _description = __doc__
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-            domain=["('company', '=', company)"])
+            domain=[('company', '=', Eval('company'))])
     date = fields.Date('Date', required=True)
 
     def default_employee(self, cursor, user, context=None):
@@ -121,13 +122,15 @@ class EnterLines(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['domain'] = str([
+        date = data['form']['date']
+        date = Date(date.year, date.month, date.day)
+        res['pyson_domain'] = PYSONEncoder().encode([
             ('employee', '=', data['form']['employee']),
-            ('date', '=', data['form']['date']),
+            ('date', '=', date),
             ])
-        res['context'] = str({
+        res['pyson_context'] = PYSONEncoder().encode({
             'employee': data['form']['employee'],
-            'date': data['form']['date'],
+            'date': date,
             })
 
         if data['form']['employee']:
@@ -219,7 +222,7 @@ class OpenHoursEmployee(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['context'] = str({
+        res['pyson_context'] = PYSONEncoder().encode({
             'start_date': data['form']['start_date'],
             'end_date': data['form']['end_date'],
             })

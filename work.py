@@ -3,6 +3,7 @@
 "Work"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import PYSONEncoder
 
 
 class Work(ModelSQL, ModelView):
@@ -175,7 +176,7 @@ class OpenWork(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['context'] = str({
+        res['pyson_context'] = PYSONEncoder().encode({
             'from_date': data['form']['from_date'],
             'to_date': data['form']['to_date'],
             })
@@ -199,7 +200,7 @@ class OpenWork2(OpenWork):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['context'] = str({
+        res['pyson_context'] = PYSONEncoder().encode({
             'from_date': data['form']['from_date'],
             'to_date': data['form']['to_date'],
             })
