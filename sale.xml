@@ -83,26 +83,26 @@ this repository contains the full copyright notices and license terms. -->
                                 <field name="state"/>
                                 <group col="6" colspan="2" id="buttons">
                                     <button name="cancel" string="Cancel"
-                                        states="{'invisible': '''state == 'cancel' or not ((state in ('draft', 'quotation')) or (invoice_state == 'exception') or (shipment_state == 'exception'))''', 'readonly': '''%(group_sale)d not in groups'''}"
+                                        states="{'invisible': Or(Equal(Eval('state'), 'cancel'), Not(In(Eval('state'), ['draft', 'quotation'])), Equal(Eval('invoice_state'), 'exception'), Equal(Eval('shipment_state'), 'exception')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
                                         icon="tryton-cancel"/>
                                     <button name="draft" string="Draft"
-                                        states="{'invisible': '''state != 'quotation' ''', 'readonly': '''%(group_sale)d not in groups'''}"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'quotation')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
                                         icon="tryton-go-previous"/>
                                     <button name="quotation" string="Quotation"
-                                        states="{'invisible': '''state != 'draft' ''', 'readonly': '''(not bool(lines)) or %(group_sale)d not in groups'''}"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Or(Not(Bool(Eval('lines'))), Not(In(%(group_sale)d, Eval('groups', []))))}"
                                         icon="tryton-go-next"/>
                                     <button name="%(wizard_invoice_handle_exception)d"
                                             string="Handle Invoice Exception"
                                             type="action"
-                                            states="{'invisible': '''invoice_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_sale)d not in groups'''}"
+                                            states="{'invisible': Or(Not(Equal(Eval('invoice_state'), 'exception')), Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
                                             icon="tryton-go-next"/>
                                     <button name="%(wizard_shipment_handle_exception)d"
                                             type="action"
                                             string="Handle Shipment Exception"
-                                            states="{'invisible': '''shipment_state != 'exception' or state == 'cancel' ''', 'readonly': '''%(group_sale)d not in groups'''}"
+                                            states="{'invisible': Or(Not(Equal(Eval('shipment_state'), 'exception')), Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
                                             icon="tryton-go-next"/>
                                     <button name="confirm" string="Confirm"
-                                        states="{'invisible': '''state != 'quotation' ''', 'readonly': '''%(group_sale)d not in groups'''}"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'quotation')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
                                         icon="tryton-go-next"/>
                                 </group>
                             </group>
@@ -116,7 +116,7 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="shipment_method"/>
                             <field name="shipment_method"/>
                             <separator name="comment" colspan="4"/>
-                            <field name="comment" colspan="4" spell="party_lang"/>
+                            <field name="comment" colspan="4" spell="Eval('party_lang')"/>
                         </page>
                         <page string="Invoices" id="invoices">
                             <separator name="invoices" colspan="4"/>
@@ -224,7 +224,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Shipments</field>
             <field name="res_model">stock.shipment.out</field>
             <field name="view_type">form</field>
-            <field name="domain">[("id", "in", shipments)]</field>
+            <field name="domain">[("id", "in", Eval('shipments'))]</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_shipment_keyword1">
@@ -236,7 +236,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
-            <field name="domain">[("id", "in", invoices)]</field>
+            <field name="domain">[("id", "in", Eval('invoices'))]</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_invoice_keyword1">
@@ -809,7 +809,7 @@ this repository contains the full copyright notices and license terms. -->
                             <newline/>
                             <label name="description"/>
                             <field name="description" colspan="3"
-                                spell="_parent_sale.party_lang"/>
+                                spell="Get(Eval('_parent_sale', {}), 'party_lang')"/>
                             <label name="quantity"/>
                             <field name="quantity"/>
                             <label name="unit"/>
@@ -824,7 +824,7 @@ this repository contains the full copyright notices and license terms. -->
                         <page string="Notes" id="notes">
                             <separator name="note" colspan="4"/>
                             <field name="note" colspan="4"
-                                spell="_parent_sale.party_lang"/>
+                                spell="Get(Eval('_parent_sale', {}), 'party_lang')"/>
                         </page>
                     </notebook>
                     <field name="unit_digits" invisible="1" colspan="4"/>
@@ -883,7 +883,7 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
                         <page string="Customers"
-                            states="{'invisible': '''not salable'''}"
+                            states="{'invisible': Not(Bool(Eval('salable')))}"
                             id="customers">
                             <label name="salable"/>
                             <field name="salable"/>
