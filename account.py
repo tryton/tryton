@@ -3,6 +3,7 @@
 "Account"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import Equal, Eval, Not, PYSONEncoder
 from decimal import Decimal
 import copy
 
@@ -27,22 +28,22 @@ class Account(ModelSQL, ModelView):
     root = fields.Many2One('analytic_account.account', 'Root', select=2,
             domain=[('parent', '=', False)],
             states={
-                'invisible': "type == 'root'",
-                'required': "type != 'root'",
+                'invisible': Equal(Eval('type'), 'root'),
+                'required': Not(Equal(Eval('type'), 'root')),
             })
     parent = fields.Many2One('analytic_account.account', 'Parent', select=2,
-            domain=["('parent', 'child_of', root)"],
+            domain=[('parent', 'child_of', Eval('root'))],
             states={
-                'invisible': "type == 'root'",
-                'required': "type != 'root'",
+                'invisible': Equal(Eval('type'), 'root'),
+                'required': Not(Equal(Eval('type'), 'root')),
             })
     childs = fields.One2Many('analytic_account.account', 'parent', 'Children')
-    balance = fields.Function('get_balance', digits="(16, currency_digits)",
-            string='Balance')
-    credit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
-            string='Credit')
-    debit = fields.Function('get_credit_debit', digits="(16, currency_digits)",
-            string='Debit')
+    balance = fields.Function('get_balance',
+            digits=(16, Eval('currency_digits', 1)), string='Balance')
+    credit = fields.Function('get_credit_debit',
+            digits=(16, Eval('currency_digits', 2)), string='Credit')
+    debit = fields.Function('get_credit_debit',
+            digits=(16, Eval('currency_digits', 2)), string='Debit')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('opened', 'Opened'),
@@ -54,7 +55,7 @@ class Account(ModelSQL, ModelView):
         ('credit-debit', 'Credit - Debit'),
         ], 'Display Balance', required=True)
     mandatory = fields.Boolean('Mandatory', states={
-        'invisible': "type != 'root'",
+        'invisible': Not(Equal(Eval('type'), 'root')),
         })
 
     def __init__(self):
@@ -353,9 +354,9 @@ class OpenChartAccount(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['context'] = str({
+        res['pyson_context'] = PYSONEncoder().encode({
             'start_date': data['form']['start_date'],
-            'end_date': data['form']['end_date']
+            'end_date': data['form']['end_date'],
             })
         return res
 

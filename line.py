@@ -1,9 +1,10 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level
-#of this repository contains the full copyright notices and license terms.
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
 "Line"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
+from trytond.pyson import Eval, PYSONEncoder
 import time
 
 
@@ -13,9 +14,9 @@ class Line(ModelSQL, ModelView):
     _description = __doc__
 
     name = fields.Char('Name', required=True)
-    debit = fields.Numeric('Debit', digits="(16, currency_digits)",
+    debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
-    credit = fields.Numeric('Credit', digits="(16, currency_digits)",
+    credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
     currency = fields.Function('get_currency', type='many2one',
             relation='currency.currency', string='Currency',
@@ -161,15 +162,15 @@ class OpenAccount(Wizard):
         model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
                 context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
-        res['domain'] = [
+        res['pyson_domain'] = [
             ('account', '=', data['id']),
         ]
 
         if context.get('start_date'):
-            res['domain'].append(('date', '>=', context['start_date']))
+            res['pyson_domain'].append(('date', '>=', context['start_date']))
         if context.get('end_date'):
-            res['domain'].append(('date', '<=', context['end_date']))
-        res['domain'] = str(res['domain'])
+            res['pyson_domain'].append(('date', '<=', context['end_date']))
+        res['pyson_domain'] = PYSONEncoder().encode(res['pyson_domain'])
         return res
 
 OpenAccount()
