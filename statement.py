@@ -2,9 +2,10 @@
 #this repository contains the full copyright notices and license terms.
 "Statement"
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
+from trytond.pyson import Not, Equal, Eval, Or, Bool, Get, If
 from decimal import Decimal
 
-_STATES = {'readonly': 'state != "draft"'}
+_STATES = {'readonly': Not(Equal(Eval('state'), 'draft'))}
 
 
 class Statement(ModelWorkflow, ModelSQL, ModelView):
@@ -14,18 +15,22 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
 
     journal = fields.Many2One('account.statement.journal', 'Journal', required=True,
             states={
-                'readonly': "(state != 'draft') or (bool(lines))",
+                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                    Bool(Eval('lines'))),
             }, on_change=['journal'], select=1)
     currency_digits = fields.Function('get_currency_digits', type='integer',
             string='Currency Digits', on_change_with=['journal'])
     date = fields.Date('Date', required=True, states=_STATES, select=1)
-    start_balance = fields.Numeric('Start Balance', digits="(16, currency_digits)",
+    start_balance = fields.Numeric('Start Balance',
+            digits=(16, Eval('currency_digits', 2)),
             states=_STATES, depends=['currency_digits'])
-    end_balance = fields.Numeric('End Balance', digits="(16, currency_digits)",
+    end_balance = fields.Numeric('End Balance',
+            digits=(16, Eval('currency_digits', 2)),
             states=_STATES, depends=['currency_digits'])
     lines = fields.One2Many('account.statement.line', 'statement',
             'Transactions', states={
-                'readonly': "(state != 'draft') or (not bool(journal))",
+                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                    Not(Bool(Eval('journal')))),
             }, on_change=['lines', 'journal'])
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -281,7 +286,8 @@ class Line(ModelSQL, ModelView):
             required=True, ondelete='CASCADE')
     date = fields.Date('Date', required=True)
     amount = fields.Numeric('Amount', required=True,
-            digits="(16, _parent_statement.currency_digits)",
+            digits=(16, Get(Eval('_parent_statement', {}),
+                'currency_digits', 2)),
             on_change=['amount', 'party', 'account', 'invoice',
                 '_parent_statement.journal'])
     party = fields.Many2One('party.party', 'Party',
@@ -291,11 +297,14 @@ class Line(ModelSQL, ModelView):
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
-            domain=["('party', '=', party)", "('account', '=', account)",
-                "('state', '=', _parent_statement.state == 'draft' and " \
-                        "'open' or False)"],
+            domain=[
+                ('party', '=', Eval('party')),
+                ('account', '=', Eval('account')),
+                ('state', '=', If(Equal(Get(Eval('_parent_statement', {}),
+                    'state'), 'draft'), 'open', '')),
+            ],
             states={
-                'readonly': "not bool(amount)",
+                'readonly': Not(Bool(Eval('amount'))),
             })
 
     def __init__(self):

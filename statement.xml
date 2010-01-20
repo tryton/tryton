@@ -40,14 +40,14 @@ this repository contains the full copyright notices and license terms. -->
                               <label name="state"/>
                               <field name="state"/>
                               <button string="Validate" name="validated"
-                                      states="{'invisible': '''state != 'draft' '''}"/>
+                                      states="{'invisible': Not(Equal(Eval('state'), 'draft'))}"/>
                               <button string="Cancel" name="cancel"
-                                      states="{'invisible': '''state != 'validated' '''}"/>
+                                      states="{'invisible': Not(Equal(Eval('state'), 'validated'))}"/>
                               <button string="Post" name="posted"
-                                      states="{'invisible': '''state != 'validated' '''}"/>
+                                      states="{'invisible': Not(Equal(Eval('state'), 'validated'))}"/>
                               <button string="Reset to Draft" name="draft_workflow"
                                       type="object"
-                                      states="{'invisible': '''state != 'cancel' '''}"/>
+                                      states="{'invisible': Not(Equal(Eval('state'), 'cancel'))}"/>
                             </group>
                         </page>
                         <page string="Move Lines" col="1" id="move_lines">
