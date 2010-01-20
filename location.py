@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import If, Eval, Bool
 
 
 class ProductLocation(ModelSQL, ModelView):
@@ -16,8 +17,11 @@ class ProductLocation(ModelSQL, ModelView):
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
             domain=[('type', '=', 'warehouse')])
     location = fields.Many2One('stock.location', 'Storage Location',
-            required=True, domain=[('type', '=', 'storage'),
-                "('parent', 'child_of', warehouse and [warehouse] or [])"])
+            required=True, domain=[
+                ('type', '=', 'storage'),
+                ('parent', 'child_of', If(Bool(Eval('warehouse')),
+                    [Eval('warehouse')], [])),
+            ])
     sequence = fields.Integer('Sequence')
 
     def __init__(self):
