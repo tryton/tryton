@@ -2,12 +2,13 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelWorkflow, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import Not, Equal, Eval, Or, Bool
 import datetime
 import time
 from dateutil.relativedelta import relativedelta
 
 STATES = {
-    'readonly': "state != 'draft'",
+    'readonly': Not(Equal(Eval('state'), 'draft')),
 }
 
 
@@ -20,7 +21,8 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'storage')], states={
-            'readonly': "state != 'draft' or bool(lines)",
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Bool(Eval('lines'))),
         })
     destination = fields.Many2One(
         'stock.location', 'Destination', required=True,
@@ -31,7 +33,8 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
         'stock.forecast.line', 'forecast', 'Lines', states=STATES)
     company = fields.Many2One(
         'company.company', 'Company', required=True, states={
-            'readonly': "state != 'draft' or bool(lines)",
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Bool(Eval('lines'))),
         })
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -166,12 +169,16 @@ class ForecastLine(ModelSQL, ModelView):
             domain=[('type', '=', 'stockable')], on_change=['product'])
     uom = fields.Many2One(
         'product.uom', 'UOM', required=True,
-        domain=["('category', '=', (product, 'product.default_uom.category'))"])
+        domain=[
+            ('category', '=',
+                (Eval('product'), 'product.default_uom.category')),
+        ])
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits')
-    quantity = fields.Float('Quantity', digits="(16, unit_digits)", required=True)
-    minimal_quantity = fields.Float(
-        'Minimal Qty', digits="(16, unit_digits)", required=True)
+    quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
+            required=True)
+    minimal_quantity = fields.Float('Minimal Qty',
+            digits=(16, Eval('unit_digits', 2)), required=True)
     moves = fields.Many2Many('stock.forecast.line-stock.move',
             'line', 'move','Moves', readonly=True)
     forecast = fields.Many2One(
