@@ -3,6 +3,7 @@
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
+from trytond.pyson import Eval, Not, Equal
 from datetime import datetime, timedelta
 from collections import deque, defaultdict
 from heapq import heappop, heappush
@@ -16,23 +17,21 @@ class Work(ModelSQL, ModelView):
 
     predecessors = fields.Many2Many('project.predecessor_successor',
             'successor', 'predecessor', 'Predecessors',
-            domain=[\
-                "('parent', '=', parent)",
-                "('id', '!=', active_id)",
-                ],
-            )
+            domain=[
+                ('parent', '=', Eval('parent')),
+                ('id', '!=', Eval('active_id')),
+            ])
     successors = fields.Many2Many('project.predecessor_successor',
             'predecessor', 'successor', 'Successors',
-            domain=[\
-                "('parent', '=', parent)",
-                "('id', '!=', active_id)",
-                ],
-            )
+            domain=[
+                ('parent', '=', Eval('parent')),
+                ('id', '!=', Eval('active_id')),
+            ])
     leveling_delay = fields.Float("Leveling Delay")
     back_leveling_delay = fields.Float("Leveling Delay")
     allocations = fields.One2Many('project.allocation', 'work', 'Allocations',
             states={
-                'invisible': "type != 'task'"
+                'invisible': Not(Equal(Eval('type'), 'task')),
             }, depends=['type'])
     duration = fields.Function('get_function_fields', string='Duration')
     early_start_time = fields.DateTime("Early Start Time", readonly=True)
