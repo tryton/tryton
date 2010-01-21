@@ -1278,9 +1278,9 @@ class PurchaseLine(ModelSQL, ModelView):
         ctx['user'] = user
         move_id = move_obj.create(cursor, 0, vals, context=ctx)
 
-        self.write(cursor, user, line.id, {
+        self.write(cursor, 0, line.id, {
             'moves': [('add', move_id)],
-        }, context=context)
+        }, context=ctx)
         return move_id
 
 PurchaseLine()
