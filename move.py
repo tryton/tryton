@@ -1451,14 +1451,9 @@ class OpenJournal(Wizard):
                 'period': period.id,
                 }, context=context)
 
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_move_line_form'),
-            ('module', '=', 'account'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'account',
+                'act_move_line_form', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         # Remove name to use the one from view_header_get
         del res['name']
         res['pyson_domain'] = PYSONEncoder().encode([
@@ -1507,14 +1502,9 @@ class OpenAccount(Wizard):
             for period in fiscalyear.periods:
                 period_ids.append(period.id)
 
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_move_line_form'),
-            ('module', '=', 'account'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'account',
+                'act_move_line_form', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['pyson_domain'] = [
             ('period', 'in', period_ids),
             ('account', '=', data['id']),
@@ -1692,15 +1682,9 @@ class OpenReconcileLines(Wizard):
     def _action_open_reconcile_lines(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_move_line_form'),
-            ('module', '=', 'account'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'account',
+                'act_move_line_form', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['pyson_domain'] = PYSONEncoder().encode([
             ('account', '=', data['form']['account']),
             ('reconciliation', '=', False),

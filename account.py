@@ -1125,15 +1125,9 @@ class OpenChartAccount(Wizard):
     def _action_open_chart(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_account_tree2'),
-            ('module', '=', 'account'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'account',
+                'act_account_tree2', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['pyson_context'] = PYSONEncoder().encode({
             'fiscalyear': data['form']['fiscalyear'],
             'posted': data['form']['posted'],
@@ -1598,14 +1592,9 @@ class OpenBalanceSheet(Wizard):
 
         date = lang_obj.strftime(datas['form']['date'], lang.code, lang.date)
 
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_account_balance_sheet_tree'),
-            ('module', '=', 'account'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'account',
+                'act_account_balance_sheet_tree', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['pyson_context'] = PYSONEncoder().encode({
             'date': Date(datas['form']['date'].year,
                 datas['form']['date'].month,
@@ -1728,13 +1717,8 @@ class OpenIncomeStatement(Wizard):
             end_period_ids = list(set(end_period_ids).difference(
                 set(start_period_ids)))
 
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_account_income_statement_tree'),
-            ('module', '=', 'account'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'account',
+                'act_account_income_statement_tree', context=context)
         res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
         res['pyson_context'] = PYSONEncoder().encode({
             'periods': end_period_ids,

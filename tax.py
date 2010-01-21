@@ -366,16 +366,9 @@ class OpenChartCode(Wizard):
     def _action_open_chart(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_tax_code_tree2'),
-            ('module', '=', 'account'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id,
-                context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'account',
+                'act_tax_code_tree2', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         if data['form']['method'] == 'fiscalyear':
             res['pyson_context'] = PYSONEncoder().encode({
                 'fiscalyear': data['form']['fiscalyear'],
@@ -1399,15 +1392,9 @@ class OpenCode(Wizard):
         else:
             period_ids = context['periods']
 
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_tax_line_form'),
-            ('module', '=', 'account'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id,
-                context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'account',
+                'act_tax_line_form', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['pyson_domain'] = PYSONEncoder().encode([
             ('move_line.period', 'in', period_ids),
             ('code', '=', data['id']),
