@@ -169,15 +169,9 @@ class Work(ModelSQL, ModelView):
         if vals.get('party'):
             ctx2['customer'] = vals['party']
 
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'uom_hour'),
-            ('module', '=', 'product'),
-            ('model', '=', 'product.uom'),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+        uom_id = model_data_obj.get_id(cursor, user, 'product', 'uom_hour',
                 context=context)
-        hour_uom = uom_obj.browse(cursor, user, model_data.db_id,
-                context=context)
+        hour_uom = uom_obj.browse(cursor, user, uom_id, context=context)
 
         list_price = uom_obj.compute_price(cursor, user,
                 product.default_uom, product.list_price, hour_uom,
