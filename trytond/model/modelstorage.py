@@ -561,7 +561,7 @@ class ModelStorage(Model):
                                 module, xml_id = word.rsplit('.', 1)
                                 ir_model_data_obj = \
                                         self.pool.get('ir.model.data')
-                                new_id = ir_model_data_obj._get_id(cursor,
+                                new_id = ir_model_data_obj.get_id(cursor,
                                         user, module, xml_id)
                                 res_id2 = ir_model_data_obj.read(cursor, user,
                                         [new_id], ['res_id'])[0]['res_id']
@@ -572,7 +572,7 @@ class ModelStorage(Model):
                         else:
                             module, xml_id = line[i].rsplit('.', 1)
                             ir_model_data_obj = self.pool.get('ir.model.data')
-                            new_id = ir_model_data_obj._get_id(cursor, user,
+                            new_id = ir_model_data_obj.get_id(cursor, user,
                                     module, xml_id)
                             res_id = ir_model_data_obj.read(cursor, user,
                                     [new_id], ['res_id'])[0]['res_id']
