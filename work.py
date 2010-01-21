@@ -167,15 +167,9 @@ class OpenWork(Wizard):
     def _action_open_work(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_work_tree2'),
-            ('module', '=', 'timesheet'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'timesheet',
+                'act_work_tree2', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['pyson_context'] = PYSONEncoder().encode({
             'from_date': data['form']['from_date'],
             'to_date': data['form']['to_date'],
@@ -191,15 +185,9 @@ class OpenWork2(OpenWork):
     def _action_open_work(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_work_form2'),
-            ('module', '=', 'timesheet'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'timesheet',
+                'act_work_form2', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['pyson_context'] = PYSONEncoder().encode({
             'from_date': data['form']['from_date'],
             'to_date': data['form']['to_date'],
@@ -229,14 +217,9 @@ class OpenWorkGraph(Wizard):
         if context is None:
             context = {}
 
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_work_form3'),
-            ('module', '=', 'timesheet'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'timesheet',
+                'act_work_form3', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         if 'active_id' in context:
             work = work_obj.browse(cursor, user, context['active_id'],
                     context=context)

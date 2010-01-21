@@ -113,15 +113,9 @@ class EnterLines(Wizard):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         employee_obj = self.pool.get('company.employee')
-
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_line_form'),
-            ('module', '=', 'timesheet'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'timesheet',
+                'act_line_form', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         date = data['form']['date']
         date = Date(date.year, date.month, date.day)
         res['pyson_domain'] = PYSONEncoder().encode([
@@ -213,15 +207,9 @@ class OpenHoursEmployee(Wizard):
     def _action_open(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_hours_employee_form'),
-            ('module', '=', 'timesheet'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'timesheet',
+                'act_hours_employee_form', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['pyson_context'] = PYSONEncoder().encode({
             'start_date': data['form']['start_date'],
             'end_date': data['form']['end_date'],
