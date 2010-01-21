@@ -890,9 +890,9 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             vals = moves[line_id]
             vals['shipment_out'] = shipment_id
             move_id = move_obj.create(cursor, 0, vals, context=ctx)
-            sale_line_obj.write(cursor, user, line_id, {
+            sale_line_obj.write(cursor, 0, line_id, {
                 'moves': [('add', move_id)],
-                }, context=context)
+                }, context=ctx)
         shipment_obj.workflow_trigger_validate(cursor, 0, shipment_id,
                 'waiting', context=ctx)
         return shipment_id
