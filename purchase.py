@@ -1974,16 +1974,9 @@ class OpenSupplier(Wizard):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         wizard_obj = self.pool.get('ir.action.wizard')
-
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_party_form'),
-            ('module', '=', 'party'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id,
-                context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'party',
+                'act_party_form', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         cursor.execute("SELECT DISTINCT(party) FROM purchase_purchase")
         supplier_ids = [line[0] for line in cursor.fetchall()]
         res['pyson_domain'] = PYSONEncoder().encode(
