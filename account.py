@@ -345,15 +345,9 @@ class OpenChartAccount(Wizard):
     def _action_open_chart(self, cursor, user, data, context=None):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_account_tree2'),
-            ('module', '=', 'analytic_account'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'analytic_account',
+                'act_account_tree2', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['pyson_context'] = PYSONEncoder().encode({
             'start_date': data['form']['start_date'],
             'end_date': data['form']['end_date'],
