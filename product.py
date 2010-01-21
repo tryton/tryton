@@ -56,15 +56,10 @@ class OpenProductCostHistory(Wizard):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         product_obj = self.pool.get('product.product')
-
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_product_cost_history_form'),
-            ('module', '=', 'product_cost_history'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
+        act_window_id = model_data_obj.get_id(cursor, user,
+                'product_cost_history', 'act_product_cost_history_form',
                 context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
 
         if not data['id'] or data['id'] < 0:
             res['pyson_domain'] = PYSONEncoder().encode([
