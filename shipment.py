@@ -1724,14 +1724,9 @@ class CreateShipmentOutReturn(Wizard):
                     context=context)
                 )
 
-        model_data_ids = model_data_obj.search(cursor, user, [
-            ('fs_id', '=', 'act_shipment_out_return_form'),
-            ('module', '=', 'stock'),
-            ('inherit', '=', False),
-            ], limit=1, context=context)
-        model_data = model_data_obj.browse(cursor, user, model_data_ids[0],
-                context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        act_window_id = model_data_obj.get_id(cursor, user, 'stock',
+                'act_shipment_out_return_form', context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['res_id'] = shipment_out_return_ids
         if len(shipment_out_return_ids) == 1:
             res['views'].reverse()
