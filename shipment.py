@@ -1289,15 +1289,15 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
 ShipmentOutReturn()
 
 
-class AssignShipmentOutAskForce(ModelView):
-    'Assign Shipment Out Ask Force'
-    _name = 'stock.shipment.out.assign.ask_force'
+class AssignShipmentOutAssignFailed(ModelView):
+    'Assign Shipment Out Assign Failed'
+    _name = 'stock.shipment.out.assign.assign_failed'
     _description = __doc__
 
     inventory_moves = fields.Many2Many('stock.move', None, None,
             'Inventory Moves', readonly=True)
 
-AssignShipmentOutAskForce()
+AssignShipmentOutAssignFailed()
 
 
 class AssignShipmentOut(Wizard):
@@ -1310,11 +1310,21 @@ class AssignShipmentOut(Wizard):
                 'next_state': '_choice',
             },
         },
+        'assign_failed': {
+            'actions': ['_moves'],
+            'result': {
+                'type': 'form',
+                'object': 'stock.shipment.out.assign.assign_failed',
+                'state': [
+                    ('end', 'Ok', 'tryton-ok', True),
+                ],
+            },
+        },
         'ask_force': {
             'actions': ['_moves'],
             'result': {
                 'type': 'form',
-                'object': 'stock.shipment.out.assign.ask_force',
+                'object': 'stock.shipment.out.assign.assign_failed',
                 'state': [
                     ('force', 'Force Assign', 'tryton-go-next'),
                     ('end', 'Ok', 'tryton-ok', True),
@@ -1332,6 +1342,9 @@ class AssignShipmentOut(Wizard):
 
     def _choice(self, cursor, user, data, context=None):
         shipment_out_obj = self.pool.get('stock.shipment.out')
+        user_group_obj = self.pool.get('res.user-res.group')
+        model_data_obj = self.pool.get('ir.model.data')
+        transition_obj = self.pool.get('workflow.transition')
 
         shipment_out_obj.workflow_trigger_validate(cursor, user, data['id'],
                 'assign', context=context)
@@ -1340,7 +1353,16 @@ class AssignShipmentOut(Wizard):
         if not [x.id for x in shipment.inventory_moves if x.state == 'draft']:
             return 'end'
         else:
-            return 'ask_force'
+            trans_id = model_data_obj.get_id(cursor, user, 'stock',
+                    'shipmentout_trans_waiting_assigned_force', context=context)
+            trans = transition_obj.read(cursor, user, trans_id, context=context)
+            user_in_group = user_group_obj.search(cursor, user, [
+                    ('uid', '=', user),
+                    ('gid', '=', trans['group']),
+                    ], limit=1, context=context)
+            if user_in_group:
+                return 'ask_force'
+            return 'assign_failed'
 
     def _moves(self, cursor, user, data, context=None):
         shipment_out_obj = self.pool.get('stock.shipment.out')
@@ -1527,15 +1549,15 @@ class Address(ModelSQL, ModelView):
 Address()
 
 
-class AssignShipmentInternalAskForce(ModelView):
-    'Assign Shipment Internal Ask Force'
-    _name = 'stock.shipment.internal.assign.ask_force'
+class AssignShipmentInternalAssignFailed(ModelView):
+    'Assign Shipment Internal Assign Failed'
+    _name = 'stock.shipment.internal.assign.assign_failed'
     _description = __doc__
 
     moves = fields.Many2Many('stock.move', None, None, 'Moves',
             readonly=True)
 
-AssignShipmentInternalAskForce()
+AssignShipmentInternalAssignFailed()
 
 
 class AssignShipmentInternal(Wizard):
@@ -1548,11 +1570,21 @@ class AssignShipmentInternal(Wizard):
                 'next_state': '_choice',
             },
         },
+        'assign_failed': {
+            'actions': ['_moves'],
+            'result': {
+                'type': 'form',
+                'object': 'stock.shipment.internal.assign.assign_failed',
+                'state': [
+                    ('end', 'Ok', 'tryton-ok', True),
+                ],
+            },
+        },
         'ask_force': {
             'actions': ['_moves'],
             'result': {
                 'type': 'form',
-                'object': 'stock.shipment.internal.assign.ask_force',
+                'object': 'stock.shipment.internal.assign.assign_failed',
                 'state': [
                     ('force', 'Force Assign', 'tryton-go-next'),
                     ('end', 'Ok', 'tryton-ok', True),
@@ -1570,6 +1602,9 @@ class AssignShipmentInternal(Wizard):
 
     def _choice(self, cursor, user, data, context=None):
         shipment_internal_obj = self.pool.get('stock.shipment.internal')
+        user_group_obj = self.pool.get('res.user-res.group')
+        model_data_obj = self.pool.get('ir.model.data')
+        transition_obj = self.pool.get('workflow.transition')
 
         shipment_internal_obj.workflow_trigger_validate(cursor, user,
                 data['id'], 'assign', context=context)
@@ -1578,7 +1613,18 @@ class AssignShipmentInternal(Wizard):
         if not [x.id for x in shipment.moves if x.state == 'draft']:
             return 'end'
         else:
-            return 'ask_force'
+            trans_id = model_data_obj.get_id(cursor, user, 'stock',
+                    'shipmentinternal_trans_waiting_assigned_force',
+                    context=context)
+            trans = transition_obj.read(cursor, user, trans_id,
+                    context=context)
+            user_in_group = user_group_obj.search(cursor, user, [
+                    ('uid', '=', user),
+                    ('gid', '=', trans['group']),
+                    ], limit=1, context=context)
+            if user_in_group:
+                return 'ask_force'
+            return 'assign_failed'
 
     def _moves(self, cursor, user, data, context=None):
         shipment_internal_obj = self.pool.get('stock.shipment.internal')
@@ -1596,15 +1642,15 @@ class AssignShipmentInternal(Wizard):
 AssignShipmentInternal()
 
 
-class AssignShipmentInReturnAskForce(ModelView):
-    'Assign Supplier Return Shipment Ask Force'
-    _name = 'stock.shipment.in.return.assign.ask_force'
+class AssignShipmentInReturnAssignFailed(ModelView):
+    'Assign Supplier Return Shipment Assign Failed'
+    _name = 'stock.shipment.in.return.assign.assign_failed'
     _description = __doc__
 
     moves = fields.Many2Many('stock.move', None, None, 'Moves',
             readonly=True)
 
-AssignShipmentInReturnAskForce()
+AssignShipmentInReturnAssignFailed()
 
 
 class AssignShipmentInReturn(Wizard):
@@ -1617,11 +1663,21 @@ class AssignShipmentInReturn(Wizard):
                 'next_state': '_choice',
             },
         },
+        'assign_failed': {
+            'actions': ['_moves'],
+            'result': {
+                'type': 'form',
+                'object': 'stock.shipment.in.return.assign.assign_failed',
+                'state': [
+                    ('end', 'Ok', 'tryton-ok', True),
+                ],
+            },
+        },
         'ask_force': {
             'actions': ['_moves'],
             'result': {
                 'type': 'form',
-                'object': 'stock.shipment.in.return.assign.ask_force',
+                'object': 'stock.shipment.in.return.assign.assign_failed',
                 'state': [
                     ('force', 'Force Assign', 'tryton-go-next'),
                     ('end', 'Ok', 'tryton-ok', True),
@@ -1639,6 +1695,9 @@ class AssignShipmentInReturn(Wizard):
 
     def _choice(self, cursor, user, data, context=None):
         shipment_internal_obj = self.pool.get('stock.shipment.in.return')
+        user_group_obj = self.pool.get('res.user-res.group')
+        model_data_obj = self.pool.get('ir.model.data')
+        transition_obj = self.pool.get('workflow.transition')
 
         shipment_internal_obj.workflow_trigger_validate(cursor, user,
                 data['id'], 'assign', context=context)
@@ -1647,7 +1706,17 @@ class AssignShipmentInReturn(Wizard):
         if not [x.id for x in shipment.moves if x.state == 'draft']:
             return 'end'
         else:
-            return 'ask_force'
+            trans_id = model_data_obj.get_id(cursor, user, 'stock',
+                    'shipment_in_return_trans_waiting_assigned_force',
+                    context=context)
+            trans = transition_obj.read(cursor, user, trans_id, context=context)
+            user_in_group = user_group_obj.search(cursor, user, [
+                    ('uid', '=', user),
+                    ('gid', '=', trans['group']),
+                    ], limit=1, context=context)
+            if user_in_group:
+                return 'ask_force'
+            return 'assign_failed'
 
     def _moves(self, cursor, user, data, context=None):
         shipment_internal_obj = self.pool.get('stock.shipment.in.return')

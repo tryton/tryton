@@ -87,7 +87,7 @@ field,"stock.shipment.in,moves",0,Moves,Movimientos,0
 field,"stock.shipment.in,planned_date",0,Planned Date,Fecha Planeada,0
 field,"stock.shipment.in,rec_name",0,Name,Nombre,0
 field,"stock.shipment.in,reference",0,Reference,Referencia,0
-field,"stock.shipment.in.return.assign.ask_force,moves",0,Moves,Movimientos,0
+field,"stock.shipment.in.return.assign.assign_failed,moves",0,Moves,Movimientos,0
 field,"stock.shipment.in.return,code",0,Code,Código,0
 field,"stock.shipment.in.return,effective_date",0,Effective Date,Fecha Efectiva,0
 field,"stock.shipment.in.return,from_location",0,From Location,Lugar Inicial,0
@@ -99,7 +99,7 @@ field,"stock.shipment.in.return,state",0,State,Estado,0
 field,"stock.shipment.in.return,to_location",0,To Location,Al Lugar:,0
 field,"stock.shipment.in,state",0,State,Estado,0
 field,"stock.shipment.in,supplier",0,Supplier,Proveedor,0
-field,"stock.shipment.internal.assign.ask_force,moves",0,Moves,Movimientos,0
+field,"stock.shipment.internal.assign.assign_failed,moves",0,Moves,Movimientos,0
 field,"stock.shipment.internal,code",0,Code,Código,0
 field,"stock.shipment.internal,effective_date",0,Effective Date,Fecha Efectiva,0
 field,"stock.shipment.internal,from_location",0,From Location,Lugar Inicial,0
@@ -110,7 +110,7 @@ field,"stock.shipment.internal,reference",0,Reference,Referencia,0
 field,"stock.shipment.internal,state",0,State,Estado,0
 field,"stock.shipment.internal,to_location",0,To Location,Al Lugar:,0
 field,"stock.shipment.in,warehouse",0,Warehouse,Depósito,0
-field,"stock.shipment.out.assign.ask_force,inventory_moves",0,Inventory Moves,Movimientos de Inventario,0
+field,"stock.shipment.out.assign.assign_failed,inventory_moves",0,Inventory Moves,Movimientos de Inventario,0
 field,"stock.shipment.out,code",0,Code,Código,0
 field,"stock.shipment.out,customer",0,Customer,Cliente,0
 field,"stock.shipment.out,delivery_address",0,Delivery Address,Dirección de Envío,0
@@ -239,11 +239,11 @@ model,"stock.location_stock_date.init,name",0,Compute stock quantities,Calcule c
 model,"stock.move,name",0,Stock Move,Movimiento de Existencias,0
 model,"stock.product_stock_date.init,name",0,Compute stock quantities,Calcule cantidad de existencia,0
 model,"stock.shipment.in,name",0,Supplier Shipment,Envío del Proveedor,0
-model,"stock.shipment.in.return.assign.ask_force,name",0,Assign Supplier Return Shipment Ask Force,Fuerce Pregunta de Asigne Devolución a Proveedor,0
+model,"stock.shipment.in.return.assign.assign_failed,name",0,Assign Supplier Return Shipment Ask Force,Fuerce Pregunta de Asigne Devolución a Proveedor,0
 model,"stock.shipment.in.return,name",0,Supplier Return Shipment,Devolución a Proveedor,0
-model,"stock.shipment.internal.assign.ask_force,name",0,Assign Shipment Internal Ask Force,Fuerce Pregunta de Asigne Envío Interno,0
+model,"stock.shipment.internal.assign.assign_failed,name",0,Assign Shipment Internal Ask Force,Fuerce Pregunta de Asigne Envío Interno,0
 model,"stock.shipment.internal,name",0,Internal Shipment,Envío Interno,0
-model,"stock.shipment.out.assign.ask_force,name",0,Assign Shipment Out Ask Force,Fuerce Pregunta de Asigne Envío,0
+model,"stock.shipment.out.assign.assign_failed,name",0,Assign Shipment Out Ask Force,Fuerce Pregunta de Asigne Envío,0
 model,"stock.shipment.out,name",0,Customer Shipment,Envío de Cliente,0
 model,"stock.shipment.out.return,name",0,Customer Return Shipment,Devolución a Cliente,0
 model,"workflow.activity,name",shipmentout_act_assigned,Assigned,Asignado,0
@@ -420,9 +420,9 @@ view,stock.shipment.in.return,0,Reset to Draft,Revertir a Borrador,0
 view,stock.shipment.in.return,0,Supplier Return Shipment,Devolución de Proveedor,0
 view,stock.shipment.in.return,0,Supplier Return Shipments,Devoluciones de Proveedor,0
 view,stock.shipment.in.return,0,Waiting,En Espera,0
-view,stock.shipment.in.return.assign.ask_force,0,Moves,Movimientos,0
-view,stock.shipment.in.return.assign.ask_force,0,Unable to Assign,No es posible asignar,0
-view,stock.shipment.in.return.assign.ask_force,0,Unable to assign those products:,No es posible asignar esos productos:,0
+view,stock.shipment.in.return.assign.assign_failed,0,Moves,Movimientos,0
+view,stock.shipment.in.return.assign.assign_failed,0,Unable to Assign,No es posible asignar,0
+view,stock.shipment.in.return.assign.assign_failed,0,Unable to assign those products:,No es posible asignar esos productos:,0
 view,stock.shipment.internal,0,Assign,Asignar,0
 view,stock.shipment.internal,0,Cancel,Cancelar,0
 view,stock.shipment.internal,0,Done,Hecho,0
@@ -434,9 +434,9 @@ view,stock.shipment.internal,0,Reset to Draft,Revertir a Borrador,0
 view,stock.shipment.internal,0,Set Done,Marcar como Hecho,0
 view,stock.shipment.internal,0,Set Waiting,Colocar en Espera,0
 view,stock.shipment.internal,0,Waiting,En espera,0
-view,stock.shipment.internal.assign.ask_force,0,Moves,Movimientos,0
-view,stock.shipment.internal.assign.ask_force,0,Unable to Assign,No es posible asignar,0
-view,stock.shipment.internal.assign.ask_force,0,Unable to assign those products:,No es posible asignar esos productos:,0
+view,stock.shipment.internal.assign.assign_failed,0,Moves,Movimientos,0
+view,stock.shipment.internal.assign.assign_failed,0,Unable to Assign,No es posible asignar,0
+view,stock.shipment.internal.assign.assign_failed,0,Unable to assign those products:,No es posible asignar esos productos:,0
 view,stock.shipment.out,0,Assign,Asignar,0
 view,stock.shipment.out,0,Cancel,Cancelar,0
 view,stock.shipment.out,0,Customer Shipment,Envío de Cliente,0
@@ -452,9 +452,9 @@ view,stock.shipment.out,0,Set Done,Marcar como Hecho,0
 view,stock.shipment.out,0,Set Waiting,Colocar en Espera,0
 view,stock.shipment.out,0,Unpack,Sin empaque,0
 view,stock.shipment.out,0,Waiting,En espera,0
-view,stock.shipment.out.assign.ask_force,0,Inventory Moves,Movimientos de Inventario,0
-view,stock.shipment.out.assign.ask_force,0,Unable to Assign,No es posible asignar,0
-view,stock.shipment.out.assign.ask_force,0,Unable to assign those products:,No es posible asignar esos productos:,0
+view,stock.shipment.out.assign.assign_failed,0,Inventory Moves,Movimientos de Inventario,0
+view,stock.shipment.out.assign.assign_failed,0,Unable to Assign,No es posible asignar,0
+view,stock.shipment.out.assign.assign_failed,0,Unable to assign those products:,No es posible asignar esos productos:,0
 view,stock.shipment.out.return,0,Cancel,Cancelar,0
 view,stock.shipment.out.return,0,Customer Return Shipment,Devolución a Cliente,0
 view,stock.shipment.out.return,0,Customer Return Shipments,Devolución a Cliente,0
@@ -470,7 +470,10 @@ wizard_button,"stock.product.open,init,end",0,Cancel,Cancelar,0
 wizard_button,"stock.product.open,init,open",0,Open,Abrir,0
 wizard_button,"stock.shipment.in.return.assign,ask_force,end",0,Ok,Aceptar,0
 wizard_button,"stock.shipment.in.return.assign,ask_force,force",0,Force Assign,Forzar Asignación,0
+wizard_button,"stock.shipment.in.return.assign,assign_failed,end",0,Ok,Aceptar,0
 wizard_button,"stock.shipment.internal.assign,ask_force,end",0,Ok,Aceptar,0
 wizard_button,"stock.shipment.internal.assign,ask_force,force",0,Force Assign,Forzar Asignación,0
+wizard_button,"stock.shipment.internal.assign,assign_failed,end",0,Ok,Aceptar,0
 wizard_button,"stock.shipment.out.assign,ask_force,end",0,Ok,Aceptar,0
 wizard_button,"stock.shipment.out.assign,ask_force,force",0,Force Assign,Forzar Asignación,0
+wizard_button,"stock.shipment.out.assign,assign_failed,end",0,Ok,Aceptar,0

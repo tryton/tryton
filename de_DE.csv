@@ -99,7 +99,7 @@ field,"stock.shipment.in.return,state",0,State,Status,0
 field,"stock.shipment.in.return,to_location",0,To Location,Zu Lagerort,0
 field,"stock.shipment.in,state",0,State,Status,0
 field,"stock.shipment.in,supplier",0,Supplier,Lieferant,0
-field,"stock.shipment.internal.assign.ask_force,moves",0,Moves,Bewegungen,0
+field,"stock.shipment.internal.assign.assign_failed,moves",0,Moves,Bewegungen,0
 field,"stock.shipment.internal,code",0,Code,Code,0
 field,"stock.shipment.internal,effective_date",0,Effective Date,Effektives Datum,0
 field,"stock.shipment.internal,from_location",0,From Location,Von Lagerort,0
@@ -110,7 +110,7 @@ field,"stock.shipment.internal,reference",0,Reference,Referenz,0
 field,"stock.shipment.internal,state",0,State,Status,0
 field,"stock.shipment.internal,to_location",0,To Location,Zu Lagerort,0
 field,"stock.shipment.in,warehouse",0,Warehouse,Warenlager,0
-field,"stock.shipment.out.assign.ask_force,inventory_moves",0,Inventory Moves,Bestandsänderungen,0
+field,"stock.shipment.out.assign.assign_failed,inventory_moves",0,Inventory Moves,Bestandsänderungen,0
 field,"stock.shipment.out,code",0,Code,Code,0
 field,"stock.shipment.out,customer",0,Customer,Kunde,0
 field,"stock.shipment.out,delivery_address",0,Delivery Address,Lieferadresse,0
@@ -241,11 +241,11 @@ model,"stock.location_stock_date.init,name",0,Compute stock quantities,Berechnun
 model,"stock.move,name",0,Stock Move,Lager Bewegung,0
 model,"stock.product_stock_date.init,name",0,Compute stock quantities,Berechnung Lagerbestände,0
 model,"stock.shipment.in,name",0,Supplier Shipment,Lieferant Lieferposten,0
-model,"stock.shipment.in.return.assign.ask_force,name",0,Assign Supplier Return Shipment Ask Force,Zuweisung Lieferposten Warenrückgabe Erzwungen,0
+model,"stock.shipment.in.return.assign.assign_failed,name",0,Assign Supplier Return Shipment Ask Force,Zuweisung Lieferposten Warenrückgabe Erzwungen,0
 model,"stock.shipment.in.return,name",0,Supplier Return Shipment,Warenrückgabe Lieferant,0
-model,"stock.shipment.internal.assign.ask_force,name",0,Assign Shipment Internal Ask Force,Zuweisung Lieferposten Intern Erzwungen,0
+model,"stock.shipment.internal.assign.assign_failed,name",0,Assign Shipment Internal Ask Force,Zuweisung Lieferposten Intern Erzwungen,0
 model,"stock.shipment.internal,name",0,Internal Shipment,Interner Lieferposten,0
-model,"stock.shipment.out.assign.ask_force,name",0,Assign Shipment Out Ask Force,Zuweisung Lieferposten Ausgehend Erzwungen,0
+model,"stock.shipment.out.assign.assign_failed,name",0,Assign Shipment Out Ask Force,Zuweisung Lieferposten Ausgehend Erzwungen,0
 model,"stock.shipment.out,name",0,Customer Shipment,Lieferposten Kunde,0
 model,"stock.shipment.out.return,name",0,Customer Return Shipment,Warenrücknahme Kunde,0
 model,"workflow.activity,name",shipmentout_act_assigned,Assigned,Zugewiesen,0
@@ -422,9 +422,9 @@ view,stock.shipment.in.return,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,stock.shipment.in.return,0,Supplier Return Shipment,Warenrückgabe Lieferant,0
 view,stock.shipment.in.return,0,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
 view,stock.shipment.in.return,0,Waiting,Wartend,0
-view,stock.shipment.in.return.assign.ask_force,0,Moves,Bewegungen,0
-view,stock.shipment.in.return.assign.ask_force,0,Unable to Assign,Fehlmenge Zuweisung,0
-view,stock.shipment.in.return.assign.ask_force,0,Unable to assign those products:,Folgende Artikel können nicht zugewiesen werden:,0
+view,stock.shipment.in.return.assign.assign_failed,0,Moves,Bewegungen,0
+view,stock.shipment.in.return.assign.assign_failed,0,Unable to Assign,Fehlmenge Zuweisung,0
+view,stock.shipment.in.return.assign.assign_failed,0,Unable to assign those products:,Folgende Artikel können nicht zugewiesen werden:,0
 view,stock.shipment.internal,0,Assign,Zuweisen,0
 view,stock.shipment.internal,0,Cancel,Annullieren,0
 view,stock.shipment.internal,0,Done,Erledigt,0
@@ -436,9 +436,9 @@ view,stock.shipment.internal,0,Reset to Draft,Auf Entwurf zurücksetzen,0
 view,stock.shipment.internal,0,Set Done,Auf Erledigt setzen,0
 view,stock.shipment.internal,0,Set Waiting,Auf Wartend setzen,0
 view,stock.shipment.internal,0,Waiting,Wartend,0
-view,stock.shipment.internal.assign.ask_force,0,Moves,Bewegungen,0
-view,stock.shipment.internal.assign.ask_force,0,Unable to Assign,Fehlmenge Zuweisung,0
-view,stock.shipment.internal.assign.ask_force,0,Unable to assign those products:,Folgende Artikel können nicht zugewiesen werden:,0
+view,stock.shipment.internal.assign.assign_failed,0,Moves,Bewegungen,0
+view,stock.shipment.internal.assign.assign_failed,0,Unable to Assign,Fehlmenge Zuweisung,0
+view,stock.shipment.internal.assign.assign_failed,0,Unable to assign those products:,Folgende Artikel können nicht zugewiesen werden:,0
 view,stock.shipment.out,0,Are you sure to force assignation?,Zuweisung wirklich erzwingen?,0
 view,stock.shipment.out,0,Assign,Zuweisen,0
 view,stock.shipment.out,0,Cancel,Annullieren,0
@@ -455,9 +455,9 @@ view,stock.shipment.out,0,Set Done,Auf Erledigt setzen,0
 view,stock.shipment.out,0,Set Waiting,Auf Wartend setzen,0
 view,stock.shipment.out,0,Unpack,Entpackt,0
 view,stock.shipment.out,0,Waiting,Wartend,0
-view,stock.shipment.out.assign.ask_force,0,Inventory Moves,Bestandsänderungen,0
-view,stock.shipment.out.assign.ask_force,0,Unable to Assign,Fehlmenge Zuweisung,0
-view,stock.shipment.out.assign.ask_force,0,Unable to assign those products:,Folgende Artikel können nicht zugewiesen werden:,0
+view,stock.shipment.out.assign.assign_failed,0,Inventory Moves,Bestandsänderungen,0
+view,stock.shipment.out.assign.assign_failed,0,Unable to Assign,Fehlmenge Zuweisung,0
+view,stock.shipment.out.assign.assign_failed,0,Unable to assign those products:,Folgende Artikel können nicht zugewiesen werden:,0
 view,stock.shipment.out.return,0,Cancel,Annullieren,0
 view,stock.shipment.out.return,0,Customer Return Shipment,Warenrücknahme Kunde,0
 view,stock.shipment.out.return,0,Customer Return Shipments,Warenrücknahmen (von Kunden),0
@@ -473,7 +473,10 @@ wizard_button,"stock.product.open,init,end",0,Cancel,Abbrechen,0
 wizard_button,"stock.product.open,init,open",0,Open,Öffnen,0
 wizard_button,"stock.shipment.in.return.assign,ask_force,end",0,Ok,OK,0
 wizard_button,"stock.shipment.in.return.assign,ask_force,force",0,Force Assign,Zuweisung erzwingen,0
+wizard_button,"stock.shipment.in.return.assign,assign_failed,end",0,Ok,OK,0
 wizard_button,"stock.shipment.internal.assign,ask_force,end",0,Ok,OK,0
 wizard_button,"stock.shipment.internal.assign,ask_force,force",0,Force Assign,Zuweisung erzwingen,0
+wizard_button,"stock.shipment.internal.assign,assign_failed,end",0,Ok,OK,0
 wizard_button,"stock.shipment.out.assign,ask_force,end",0,Ok,OK,0
 wizard_button,"stock.shipment.out.assign,ask_force,force",0,Force Assign,Zuweisung erzwingen,0
+wizard_button,"stock.shipment.out.assign,assign_failed,end",0,Ok,OK,0
