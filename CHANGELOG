@@ -1,3 +1,4 @@
+* Add default search value on invoice
 * Remove egenix-mx-base and replace it by python-dateutil
 
 Version 1.4.0 - 2009-10-19

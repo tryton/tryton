@@ -166,6 +166,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         # Migration from 1.2 invoice_date is no more required
         table.not_null_action('invoice_date', action='remove')
 
+        # Add index on create_date
+        table.index_action('create_date', action='add')
+
     def default_type(self, cursor, user, context=None):
         if context is None:
             context = {}
