@@ -80,6 +80,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="supplier" select="2"/>
                         <field name="contact_address" select="2"/>
                         <field name="state" select="1"/>
+                        <field name="create_date" tree_invisible="1" select="2"/>
                     </tree>
                 ]]>
             </field>
@@ -88,6 +89,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Supplier Shipments</field>
             <field name="res_model">stock.shipment.in</field>
             <field name="view_type">form</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_in_form_view1">
@@ -213,6 +215,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="from_location" select="2"/>
                         <field name="to_location" select="2"/>
                         <field name="state" select="1"/>
+                        <field name="create_date" tree_invisible="1" select="2"/>
                     </tree>
                 ]]>
             </field>
@@ -221,6 +224,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Supplier Return Shipments</field>
             <field name="res_model">stock.shipment.in.return</field>
             <field name="view_type">form</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_in_return_form_view1">
@@ -363,6 +367,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="customer"/>
                         <field name="delivery_address"/>
                         <field name="state" select="1"/>
+                        <field name="create_date" tree_invisible="1" select="2"/>
                     </tree>
                 ]]>
             </field>
@@ -383,6 +388,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Customer Shipments</field>
             <field name="res_model">stock.shipment.out</field>
             <field name="view_type">form</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_out_form_view1">
@@ -556,6 +562,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="from_location" select="2"/>
                         <field name="to_location" select="2"/>
                         <field name="state" select="1"/>
+                        <field name="create_date" tree_invisible="1" select="2"/>
                     </tree>
                 ]]>
             </field>
@@ -564,6 +571,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Internal Shipments</field>
             <field name="res_model">stock.shipment.internal</field>
             <field name="view_type">form</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_internal_form_view1">
@@ -768,6 +776,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="effective_date" select="2"/>
                         <field name="customer" select="2"/>
                         <field name="delivery_address" select="2"/>
+                        <field name="create_date" tree_invisible="1" select="2"/>
                     </tree>
                 ]]>
             </field>
@@ -777,6 +786,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Customer Return Shipments</field>
             <field name="res_model">stock.shipment.out.return</field>
             <field name="view_type">form</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_out_return_form_view1">

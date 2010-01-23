@@ -129,6 +129,10 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
 
         super(ShipmentIn, self).init(cursor, module_name)
 
+        # Add index on create_date
+        table = TableHandler(cursor, self, module_name)
+        table.index_action('create_date', action='add')
+
     def default_state(self, cursor, user, context=None):
         return 'draft'
 
@@ -427,6 +431,10 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
 
         super(ShipmentInReturn, self).init(cursor, module_name)
 
+        # Add index on create_date
+        table = TableHandler(cursor, self, module_name)
+        table.index_action('create_date', action='add')
+
     def __init__(self):
         super(ShipmentInReturn, self).__init__()
         self._rpc.update({
@@ -637,6 +645,9 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         # Migration from 1.0 customer_location is no more used
         table = TableHandler(cursor, self, module_name)
         table.drop_column('customer_location', exception=True)
+
+        # Add index on create_date
+        table.index_action('create_date', action='add')
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
@@ -1066,6 +1077,10 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
 
         super(ShipmentOutReturn, self).init(cursor, module_name)
 
+        # Add index on create_date
+        table = TableHandler(cursor, self, module_name)
+        table.index_action('create_date', action='add')
+
     def default_state(self, cursor, user, context=None):
         return 'draft'
 
@@ -1456,6 +1471,10 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
             table.index_action(field, action='remove', table=old_table)
 
         super(ShipmentInternal, self).init(cursor, module_name)
+
+        # Add index on create_date
+        table = TableHandler(cursor, self, module_name)
+        table.index_action('create_date', action='add')
 
     def default_state(self, cursor, user, context=None):
         return 'draft'

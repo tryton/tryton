@@ -4,6 +4,7 @@
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Not, Equal, Eval, Or, Bool
+from trytond.backend import TableHandler
 
 STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -45,6 +46,13 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
     def __init__(self):
         super(Inventory, self).__init__()
         self._order.insert(0, ('date', 'DESC'))
+
+    def init(self, cursor, module_name):
+        super(Inventory, self).init(cursor, module_name)
+
+        # Add index on create_date
+        table = TableHandler(cursor, self, module_name)
+        table.index_action('create_date', action='add')
 
     def default_state(self, cursor, user, context=None):
         return 'draft'

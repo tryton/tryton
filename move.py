@@ -134,6 +134,9 @@ class Move(ModelSQL, ModelView):
         table  = TableHandler(cursor, self, module_name)
         table.drop_constraint('check_packing_in_out')
 
+        # Add index on create_date
+        table.index_action('create_date', action='add')
+
     def default_planned_date(self, cursor, user, context=None):
         if context and context.get('planned_date'):
             return context.get('planned_date')
