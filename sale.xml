@@ -180,6 +180,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="shipment_state" select="2"/>
                     <field name="description" select="2"/>
                     <field name="currency_digits" tree_invisible="1"/>
+                    <field name="create_date" tree_invisible="1" select="2"/>
                 </tree>
                 ]]>
             </field>
@@ -249,6 +250,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Sales</field>
             <field name="res_model">sale.sale</field>
             <field name="view_type">form</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_sale_form_view1">
             <field name="sequence" eval="10"/>

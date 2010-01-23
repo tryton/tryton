@@ -164,6 +164,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 "SET invoice_method = 'shipment' "\
                 "WHERE invoice_method = 'packing'")
 
+        # Add index on create_date
+        table = TableHandler(cursor, self, module_name)
+        table.index_action('create_date', action='add')
+
     def default_payment_term(self, cursor, user, context=None):
         payment_term_obj = self.pool.get('account.invoice.payment_term')
         payment_term_ids = payment_term_obj.search(cursor, user,
