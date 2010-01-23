@@ -80,9 +80,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="category_view_form"/>
             <field name="act_window" ref="act_category_form"/>
         </record>
-        <menuitem name="Edit Categories" parent="menu_category_tree"
+        <menuitem name="Categories" parent="menu_category_tree"
             sequence="2" id="menu_category_form"
             action="act_category_form"/>
+
+        <record model="ir.action.act_window" id="act_category_form2">
+            <field name="name">Product Categories</field>
+            <field name="res_model">product.category</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="category_view_form"/>
+            <field name="act_window" ref="act_category_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_category_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="category_view_tree"/>
+            <field name="act_window" ref="act_category_form2"/>
+        </record>
+        <menuitem name="New Category" parent="menu_category_form"
+            sequence="10" id="menu_category_form_new"
+            action="act_category_form2"/>
 
         <record model="ir.model.access" id="access_product_category">
             <field name="model" search="[('model', '=', 'product.category')]"/>

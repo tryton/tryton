@@ -126,6 +126,24 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_uom_category_form"
             action="act_uom_category_form"/>
 
+        <record model="ir.action.act_window" id="act_uom_category_form2">
+            <field name="name">Categories of Unit of Measure</field>
+            <field name="res_model">product.uom.category</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_uom_category_form2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="uom_category_view_form"/>
+            <field name="act_window" ref="act_uom_category_form2"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_uom_category_form2_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="uom_category_view_tree"/>
+            <field name="act_window" ref="act_uom_category_form2"/>
+        </record>
+        <menuitem name="New Category" parent="menu_uom_category_form" sequence="10"
+            id="menu_uom_category_form_new"
+            action="act_uom_category_form2"/>
 
         <record model="product.uom.category" id="uom_cat_unit">
             <field name="name">Units</field>
