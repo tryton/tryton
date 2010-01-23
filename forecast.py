@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelWorkflow, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Not, Equal, Eval, Or, Bool
+from trytond.backend import TableHandler
 import datetime
 import time
 from dateutil.relativedelta import relativedelta
@@ -61,6 +62,13 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
                 })
         self._order.insert(0, ('from_date', 'DESC'))
         self._order.insert(1, ('location', 'ASC'))
+
+    def init(self, cursor, module_name):
+        super(Forecast, self).init(cursor, module_name)
+
+        # Add index on create_date
+        table = TableHandler(cursor, self, module_name)
+        table.index_action('create_date', action='add')
 
     def default_state(self, cursor, user, context=None):
         return 'draft'
