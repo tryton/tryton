@@ -86,6 +86,9 @@ class Move(ModelSQL, ModelView):
         table = TableHandler(cursor, self, module_name)
         table.index_action(['journal', 'period'], 'add')
 
+        # Add index on create_date
+        table.index_action('create_date', action='add')
+
     def default_period(self, cursor, user, context=None):
         period_obj = self.pool.get('account.period')
         if context is None:

@@ -47,6 +47,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="date" select="2"/>
                     <field name="post_date" select="2"/>
                     <field name="state" select="2"/>
+                    <field name="create_date" tree_invisible="1" select="2"/>
                 </tree>
                 ]]>
             </field>
@@ -56,6 +57,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.move</field>
             <field name="view_type">form</field>
             <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_view1">
             <field name="sequence" eval="10"/>
