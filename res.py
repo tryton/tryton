@@ -71,13 +71,13 @@ class User(ModelSQL, ModelView):
                     context=context)
 
     def create(self, cursor, user, vals, context=None):
-        if 'password' in vals and 'login' in vals:
+        if vals.get('password') and 'login' in vals:
             self._check_passwd_ldap_user(cursor, user, [vals['login']],
                     context=context)
         return super(User, self).create(cursor, user, vals, context=context)
 
     def write(self, cursor, user, ids, vals, context=None):
-        if 'password' in vals:
+        if vals.get('password'):
             if isinstance(ids, (int, long)):
                 ids2 = [ids]
             else:
