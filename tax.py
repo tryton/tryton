@@ -18,11 +18,12 @@ class Group(ModelSQL, ModelView):
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None, required=True)
 
-    def __init__(self):
-        super(Group, self).__init__()
-        self._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'The code must be unique!'),
-        ]
+    def init(self, cursor, module_name):
+        super(Group, self).init(cursor, module_name)
+        table = TableHandler(cursor, self, module_name)
+
+        # Migration from 1.4 drop code_uniq constraint
+        table.drop_constraint('code_uniq')
 
 Group()
 
