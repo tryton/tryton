@@ -481,7 +481,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Taxes</field>
             <field name="res_model">account.tax</field>
             <field name="view_type">form</field>
-            <field name="domain">[('company', '=', locals().get('company', False)), ('parent', '=', False)]</field>
+            <field name="domain">[('company', '=', Eval('company')), ('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_form_view1">
             <field name="sequence" eval="10"/>
@@ -500,7 +500,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Taxes</field>
             <field name="res_model">account.tax</field>
             <field name="view_type">form</field>
-            <field name="domain">[('company', '=', locals().get('company', False)), ('parent', '=', False)]</field>
+            <field name="domain">[('company', '=', Eval('company')), ('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_form2_view1">
             <field name="sequence" eval="10"/>
@@ -520,7 +520,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Taxes</field>
             <field name="res_model">account.tax</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('company', '=', locals().get('company', False)), ('parent', '=', False)]</field>
+            <field name="domain">[('company', '=', Eval('company')), ('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_tree_view1">
             <field name="sequence" eval="10"/>
@@ -719,7 +719,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Tax Rules</field>
             <field name="res_model">account.tax.rule</field>
             <field name="view_type">form</field>
-            <field name="domain">[('company', '=', locals().get('company', False))]</field>
+            <field name="domain">[('company', '=', Eval('company'))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_rule_form_view1">
             <field name="sequence" eval="10"/>
@@ -738,7 +738,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Tax Rules</field>
             <field name="res_model">account.tax.rule</field>
             <field name="view_type">form</field>
-            <field name="domain">[('company', '=', locals().get('company', False))]</field>
+            <field name="domain">[('company', '=', Eval('company'))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_rule_form2_view1">
             <field name="sequence" eval="10"/>
