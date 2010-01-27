@@ -164,7 +164,7 @@ class Screen(SignalEvent):
 
     def models_set(self, models):
         if self.models:
-            self.models.signal_unconnect(self.models)
+            self.models.signal_unconnect(self)
         self.models = models
         self.parent = models.parent
         self.parent_name = models.parent_name
