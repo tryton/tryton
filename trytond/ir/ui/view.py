@@ -122,9 +122,9 @@ class View(ModelSQL, ModelView):
                     if seqmatch.ratio() > 0.6:
                         cursor.execute('UPDATE ir_translation ' \
                             'SET src = %s, ' \
-                                'fuzzy = True ' \
+                                'fuzzy = %s ' \
                             'WHERE id = %s ',
-                            (string, trans_views[string_trans]['id']))
+                            (string, True, trans_views[string_trans]['id']))
                         del trans_views[string_trans]
                         done = True
                         break
