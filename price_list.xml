@@ -43,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Price Lists</field>
             <field name="res_model">product.price_list</field>
             <field name="view_type">form</field>
-            <field name="domain">[('company', '=', locals().get('company', False))]</field>
+            <field name="domain">[('company', '=', Eval('company'))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_price_list_form_view1">
             <field name="sequence" eval="10"/>
@@ -63,7 +63,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Price Lists</field>
             <field name="res_model">product.price_list</field>
             <field name="view_type">form</field>
-            <field name="domain">[('company', '=', locals().get('company', False))]</field>
+            <field name="domain">[('company', '=', Eval('company'))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_price_list_form2_view1">
             <field name="sequence" eval="10"/>
