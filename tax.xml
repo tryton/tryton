@@ -244,7 +244,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Tax Codes</field>
             <field name="res_model">account.tax.code</field>
             <field name="view_type">tree</field>
-            <field name="domain">[('company', '=', locals().get('company', False)), ('parent', '=', False)]</field>
+            <field name="domain">[('company', '=', Eval('company')), ('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_code_tree2_view1">
             <field name="sequence" eval="10"/>
