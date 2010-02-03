@@ -1,3 +1,4 @@
+* Add tax field on account.tax.line
 * Remove unique constraint on tax group code column
 * Add default search value on account move
 * Remove egenix-mx-base and replace it by python-dateutil

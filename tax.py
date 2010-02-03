@@ -941,6 +941,8 @@ class Line(ModelSQL, ModelView):
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
     code = fields.Many2One('account.tax.code', 'Code', select=1, required=True)
+    tax = fields.Many2One('account.tax', 'Tax', select=1, ondelete='RESTRICT',
+            on_change=['tax'])
     move_line = fields.Many2One('account.move.line', 'Move Line',
             required=True, select=1, ondelete='CASCADE')
 
@@ -957,6 +959,12 @@ class Line(ModelSQL, ModelView):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             res[line.id] = line.move_line.currency_digits
+        return res
+
+    def on_change_tax(self, cursor, user, ids, vals, context=None):
+        res = {
+            'code': False,
+            }
         return res
 
 Line()

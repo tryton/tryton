@@ -563,10 +563,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Account Tax Line">
-                    <label name="amount"/>
-                    <field name="amount"/>
+                    <label name="tax"/>
+                    <field name="tax"/>
                     <label name="code"/>
                     <field name="code"/>
+                    <label name="amount"/>
+                    <field name="amount"/>
                 </form>
                 ]]>
             </field>
@@ -577,8 +579,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Tax Lines" editable="bottom">
-                    <field name="amount" select="1"/>
+                    <field name="tax" select="1"/>
                     <field name="code" select="1"/>
+                    <field name="amount" select="1"/>
                 </tree>
                 ]]>
             </field>

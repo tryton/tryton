@@ -634,16 +634,17 @@ class Line(ModelSQL, ModelView):
                             code_id = tax.credit_note_tax_code.id
                             account_id = tax.credit_note_account.id
                     if base_id in line_code_taxes or not base_id:
-                        taxes.setdefault((account_id, code_id), False)
+                        taxes.setdefault((account_id, code_id, tax.id), False)
                 for tax_line in line.tax_lines:
-                    taxes[(line.account.id, tax_line.code.id)] = True
+                    taxes[(line.account.id, tax_line.code.id,
+                            tax_line.tax.id)] = True
                 if not line.tax_lines and line.account.taxes:
                     if line.account.id in no_code_taxes:
-                        taxes[(line.account.id, False)] = True
+                        taxes[(line.account.id, False, False)] = True
                     else:
                         no_code_taxes.append(line.account.id)
                 elif not line.tax_lines:
-                    taxes[(line.account.id, False)] = True
+                    taxes[(line.account.id, False, False)] = True
 
         if 'account' in fields:
             if total >= Decimal('0.0'):
@@ -658,8 +659,8 @@ class Line(ModelSQL, ModelView):
             values.setdefault('credit', total > 0 and total or False)
 
         if move.journal.type in ('expense', 'revenue'):
-            for account_id, code_id in taxes:
-                if taxes[(account_id, code_id)]:
+            for account_id, code_id, tax_id in taxes:
+                if taxes[(account_id, code_id, tax_id)]:
                     continue
                 for line in move.lines:
                     if move.journal.type == 'revenue':
@@ -679,8 +680,9 @@ class Line(ModelSQL, ModelView):
                             line.debit or line.credit, 1, context=context):
                         if (tax_line['tax'][key + '_account'].id \
                                 or line.account.id) == account_id \
-                            and tax_line['tax'][key + '_tax_code'].id \
-                                    == code_id:
+                                and tax_line['tax'][key + '_tax_code'].id \
+                                    == code_id \
+                                and tax_line['tax'].id == tax_id:
                             if line.debit:
                                 line_amount += tax_line['amount']
                             else:
@@ -709,6 +711,9 @@ class Line(ModelSQL, ModelView):
                                 'code': code_id,
                                 'code.rec_name': tax_code_obj.browse(cursor,
                                     user, code_id, context=context).rec_name,
+                                'tax': tax_id,
+                                'tax.rec_name': tax_obj.browse(cursor, user,
+                                    tax_id, context=context).rec_name
                             },
                         ]
         return values
@@ -820,18 +825,22 @@ class Line(ModelSQL, ModelView):
                         [x.id for x in account.taxes],
                         debit or credit, 1, context=context):
                     code_id = tax_line['tax'][key + '_base_code'].id
-                    base_amounts.setdefault(code_id, Decimal('0.0'))
-                    base_amounts[code_id] += tax_line['base'] * \
+                    tax_id = tax_line['tax'].id
+                    base_amounts.setdefault((code_id, tax_id), Decimal('0.0'))
+                    base_amounts[code_id, tax_id] += tax_line['base'] * \
                             tax_line['tax'][key + '_tax_sign']
-                for code_id in base_amounts:
-                    if not code_id:
+                for code_id, tax_id in base_amounts:
+                    if not base_amounts[code_id, tax_id]:
                         continue
                     res.setdefault('add', []).append({
-                        'amount': base_amounts[code_id],
+                        'amount': base_amounts[code_id, tax_id],
                         'currency_digits': account.currency_digits,
                         'code': code_id,
                         'code.rec_name': tax_code_obj.browse(cursor, user,
-                            code_id, context=context).rec_name,
+                                code_id, context=context).rec_name,
+                        'tax': tax_id,
+                        'tax.rec_name': tax_obj.browse(cursor, user,
+                                tax_id, context=context).rec_name
                     })
         return res
 
