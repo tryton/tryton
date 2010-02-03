@@ -81,6 +81,7 @@ Avec la possibilité:
     ],
     'xml': [
         'purchase.xml',
+        'configuration.xml',
         'party.xml',
     ],
     'translation': [

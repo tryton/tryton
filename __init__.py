@@ -2,3 +2,4 @@
 #this repository contains the full copyright notices and license terms.
 
 from purchase import *
+from configuration import *

@@ -18,7 +18,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem name="Configuration" parent="menu_purchase"
             id="menu_configuration" groups="group_purchase_admin"
-            sequence="0" icon="tryton-preferences" active="0"/>
+            sequence="0" icon="tryton-preferences"/>
 
         <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
             <field name="name">Handle Shipment Exception</field>

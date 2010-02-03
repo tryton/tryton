@@ -663,14 +663,16 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
 
     def set_reference(self, cursor, user, purchase_id, context=None):
         sequence_obj = self.pool.get('ir.sequence')
+        config_obj = self.pool.get('purchase.configuration')
 
         purchase = self.browse(cursor, user, purchase_id, context=context)
 
         if purchase.reference:
             return True
 
-        reference = sequence_obj.get(cursor, user, 'purchase.purchase',
-                context=context)
+        config = config_obj.browse(cursor, user, 1, context=context)
+        reference = sequence_obj.get_id(cursor, user,
+                config.purchase_sequence.id, context=context)
         self.write(cursor, user, purchase_id, {
             'reference': reference,
             }, context=context)
