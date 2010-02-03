@@ -16,9 +16,10 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('add', ref('group_purchase')), ('add', ref('group_purchase_admin'))]"/>
         </record>
 
+        <!-- set active for 1.4 migration -->
         <menuitem name="Configuration" parent="menu_purchase"
             id="menu_configuration" groups="group_purchase_admin"
-            sequence="0" icon="tryton-preferences"/>
+            sequence="0" icon="tryton-preferences" active="1"/>
 
         <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
             <field name="name">Handle Shipment Exception</field>
