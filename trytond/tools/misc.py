@@ -62,10 +62,8 @@ def exec_pg_command_pipe(name, *args):
     child_env = dict(os.environ)
     if CONFIG['db_password']:
         child_env['PGPASSWORD'] = CONFIG['db_password']
-    pipe = subprocess.Popen(cmd, shell=True,
-                            stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-                            close_fds=True,
-                            env=child_env)
+    pipe = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE, env=child_env)
     return pipe
 
 def exec_command_pipe(name, *args):
