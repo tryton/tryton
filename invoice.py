@@ -1811,6 +1811,7 @@ class InvoiceLine(ModelSQL, ModelView):
                 res.append({
                     'code': base_code_id,
                     'amount': amount,
+                    'tax': tax['tax'].id
                 })
         return res
 
@@ -2054,6 +2055,7 @@ class InvoiceTax(ModelSQL, ModelView):
             res['tax_lines'] = [('create', {
                 'code': tax.tax_code.id,
                 'amount': amount * tax.tax_sign,
+                'tax': tax.tax and tax.tax.id or False
             })]
         return res
 
