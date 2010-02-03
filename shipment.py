@@ -306,9 +306,13 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
             }, context=context)
 
     def create(self, cursor, user, values, context=None):
+        sequence_obj = self.pool.get('ir.sequence')
+        config_obj = self.pool.get('stock.configuration')
+
         values = values.copy()
-        values['code'] = self.pool.get('ir.sequence').get(
-            cursor, user, 'stock.shipment.in', context=context)
+        config = config_obj.browse(cursor, user, 1, context=context)
+        values['code'] = sequence_obj.get_id(cursor, user,
+                config.shipment_in_sequence.id, context=context)
         return super(ShipmentIn, self).create(
             cursor, user, values, context=context)
 
@@ -443,9 +447,13 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         self._order[0] = ('id', 'DESC')
 
     def create(self, cursor, user, values, context=None):
+        sequence_obj = self.pool.get('ir.sequence')
+        config_obj = self.pool.get('stock.configuration')
+
         values = values.copy()
-        values['code'] = self.pool.get('ir.sequence').get(
-            cursor, user, 'stock.shipment.in.return', context=context)
+        config = config_obj.browse(cursor, user, 1, context=context)
+        values['code'] = sequence_obj.get_id(cursor, user,
+                config.shipment_in_return_sequence.id, context=context)
         return super(ShipmentInReturn, self).create(
             cursor, user, values, context=context)
 
@@ -929,9 +937,13 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     }, context=context)
 
     def create(self, cursor, user, values, context=None):
+        sequence_obj = self.pool.get('ir.sequence')
+        config_obj = self.pool.get('stock.configuration')
+
         values = values.copy()
-        values['code'] = self.pool.get('ir.sequence').get(
-            cursor, user, 'stock.shipment.out', context=context)
+        config = config_obj.browse(cursor, user, 1, context=context)
+        values['code'] = sequence_obj.get_id(cursor, user,
+                config.shipment_out_sequence.id, context=context)
         return super(ShipmentOut, self).create(cursor, user, values,
                 context=context)
 
@@ -1204,9 +1216,13 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
             }, context=context)
 
     def create(self, cursor, user, values, context=None):
+        sequence_obj = self.pool.get('ir.sequence')
+        config_obj = self.pool.get('stock.configuration')
+
         values = values.copy()
-        values['code'] = self.pool.get('ir.sequence').get(
-            cursor, user, 'stock.shipment.out.return', context=context)
+        config = config_obj.browse(cursor, user, 1, context=context)
+        values['code'] = sequence_obj.get_id(cursor, user,
+                config.shipment_out_return_sequence.id, context=context)
         return super(ShipmentOutReturn, self).create(cursor, user, values,
                 context=context)
 
@@ -1491,9 +1507,13 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
         self._order[0] = ('id', 'DESC')
 
     def create(self, cursor, user, values, context=None):
+        sequence_obj = self.pool.get('ir.sequence')
+        config_obj = self.pool.get('stock.configuration')
+
         values = values.copy()
-        values['code'] = self.pool.get('ir.sequence').get(
-            cursor, user, 'stock.shipment.internal', context=context)
+        config = config_obj.browse(cursor, user, 1, context=context)
+        values['code'] = sequence_obj.get_id(cursor, user,
+                config.shipment_internal_sequence.id, context=context)
         return super(ShipmentInternal, self).create(
             cursor, user, values, context=context)
 

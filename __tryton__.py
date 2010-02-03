@@ -84,6 +84,7 @@ Et les rapports:
         'move.xml',
         'inventory.xml',
         'party.xml',
+        'configuration.xml',
     ],
     'translation': [
         'de_DE.csv',

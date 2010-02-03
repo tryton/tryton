@@ -1,3 +1,4 @@
+* Use model singleton to define shipment sequences
 * Add default search value on inventory, move and shipments
 
 Version 1.4.0 - 2009-10-19

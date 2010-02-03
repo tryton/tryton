@@ -6,3 +6,4 @@ from shipment import *
 from move import *
 from product import *
 from inventory import *
+from configuration import *
