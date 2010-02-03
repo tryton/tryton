@@ -61,7 +61,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_category_form"/>
         </record>
         <menuitem parent="menu_configuration"
-            action="act_category_form" id="menu_category_form"/>
+            action="act_category_form" id="menu_category_form" sequence="10"/>
         <record model="ir.action.act_window" id="act_category_form2">
             <field name="name">Categories</field>
             <field name="res_model">party.category</field>

@@ -26,6 +26,7 @@
         'category.xml',
         'address.xml',
         'contact_mechanism.xml',
+        'configuration.xml',
     ],
     'translation': [
         'de_DE.csv',

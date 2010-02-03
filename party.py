@@ -126,10 +126,15 @@ class Party(ModelSQL, ModelView):
         return res
 
     def create(self, cursor, user, values, context=None):
+        sequence_obj = self.pool.get('ir.sequence')
+        config_obj = self.pool.get('party.configuration')
+
         values = values.copy()
         if not values.get('code'):
-            values['code'] = self.pool.get('ir.sequence').get(
-                    cursor, user, 'party.party', context=context)
+            config = config_obj.browse(cursor, user, 1, context=context)
+            values['code'] = sequence_obj.get_id(cursor, user,
+                config.party_sequence.id, context=context)
+
         values['code_length'] = len(values['code'])
         return super(Party, self).create(cursor, user, values, context=context)
 
