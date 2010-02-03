@@ -263,7 +263,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_sale_form"/>
         </record>
         <menuitem parent="menu_sale" action="act_sale_form"
-            id="menu_sale_form"/>
+            id="menu_sale_form" sequence="10"/>
 
         <record model="ir.action.act_window" id="act_sale_form_new">
             <field name="name">New Sale</field>

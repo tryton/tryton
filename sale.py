@@ -719,13 +719,15 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         :return: True if succeed
         '''
         sequence_obj = self.pool.get('ir.sequence')
+        config_obj = self.pool.get('sale.configuration')
 
         sale = self.browse(cursor, user, sale_id, context=context)
 
         if sale.reference:
             return True
 
-        reference = sequence_obj.get(cursor, user, 'sale.sale',
+        config = config_obj.browse(cursor, user, 1, context=context)
+        reference = sequence_obj.get_id(cursor, user, config.sale_sequence.id,
                 context=context)
         self.write(cursor, user, sale_id, {
             'reference': reference,

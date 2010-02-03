@@ -99,6 +99,7 @@ Avec la possibilité:
     ],
     'xml': [
         'sale.xml',
+        'configuration.xml',
         'party.xml',
     ],
     'translation': [
