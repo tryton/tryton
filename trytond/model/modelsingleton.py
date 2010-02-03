@@ -29,9 +29,11 @@ class ModelSingleton(ModelStorage):
         if not singleton_id:
             res = self.default_get(cursor, user, fields_names, context=context,
                     with_rec_name=False)
-            res['id'] = 1
             if not isinstance(ids, (int, long)):
+                res['id'] = ids[0]
                 res = [res]
+            else:
+                res['id'] = ids
             return res
         if isinstance(ids, (int, long)):
             ids2 = singleton_id
