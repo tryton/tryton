@@ -279,7 +279,7 @@ class EvalEnvironment(dict):
             return self.__getitem__(item)
         except:
             pass
-        return super(EvalEnvironment, self).get(item, default=default)
+        return super(EvalEnvironment, self).get(item, default)
 
     def __nonzero__(self):
         return bool(self._record)
