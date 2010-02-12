@@ -8,27 +8,29 @@ class Party(ModelSQL, ModelView):
     _name = 'party.party'
     account_payable = fields.Property(type='many2one',
             relation='account.account', string='Account Payable',
-            domain="[('kind', '=', 'payable'), ('company', '=', company)]",
+            domain="[('kind', '=', 'payable'), " \
+                    "('company', '=', globals().get('company', 0))]",
             states={
                 'required': "globals().get('company') and bool(company)",
                 'invisible': "not globals().get('company') or not bool(company)",
             })
     account_receivable = fields.Property(type='many2one',
             relation='account.account', string='Account Receivable',
-            domain="[('kind', '=', 'receivable'), ('company', '=', company)]",
+            domain="[('kind', '=', 'receivable'), " \
+                    "('company', '=', globals().get('company', 0))]",
             states={
                 'required': "globals().get('company') and bool(company)",
                 'invisible': "not globals().get('company') or not bool(company)",
             })
     customer_tax_rule = fields.Property(type='many2one',
             relation='account.tax.rule', string='Customer Tax Rule',
-            domain="[('company', '=', company)]",
+            domain="[('company', '=', globals().get('company', 0))]",
             states={
                 'invisible': "not globals().get('company') or not bool(company)",
             }, help='Apply this rule on taxes when party is customer.')
     supplier_tax_rule = fields.Property(type='many2one',
             relation='account.tax.rule', string='Supplier Tax Rule',
-            domain="[('company', '=', company)]",
+            domain="[('company', '=', globals().get('company', 0))]",
             states={
                 'invisible': "not globals().get('company') or not bool(company)",
             }, help='Apply this rule on taxes when party is supplier.')
