@@ -9,28 +9,32 @@ class Party(OSV):
     _name = 'party.party'
     account_payable = fields.Property(type='many2one',
             relation='account.account', string='Account Payable',
-            domain="[('kind', '=', 'payable'), ('company', '=', company)]",
+            domain="[('kind', '=', 'payable'), " \
+                    "('company', '=', globals().get('company', 0))]",
             states={
                 'required': "globals().get('company') and bool(company)",
                 'invisible': "not globals().get('company') or not bool(company)",
             })
     account_receivable = fields.Property(type='many2one',
             relation='account.account', string='Account Receivable',
-            domain="[('kind', '=', 'receivable'), ('company', '=', company)]",
+            domain="[('kind', '=', 'receivable'), " \
+                    "('company', '=', globals().get('company', 0))]",
             states={
                 'required': "globals().get('company') and bool(company)",
                 'invisible': "not globals().get('company') or not bool(company)",
             })
     vat = fields.Property(type='many2one',
             relation='account.tax', string='VAT',
-            domain="[('group.code', '=', 'vat'), ('company', '=', company), " \
+            domain="[('group.code', '=', 'vat'), " \
+                    "('company', '=', globals().get('company', 0)), " \
                     "('parent', '=', False)]",
             states={
                 'invisible': "not globals().get('company') or not bool(company)",
             }, help='This tax will be used, instead of the default VAT.')
     supplier_vat = fields.Property(type='many2one',
             relation='account.tax', string='Supplier VAT',
-            domain="[('group.code', '=', 'vat'), ('company', '=', company), " \
+            domain="[('group.code', '=', 'vat'), " \
+                    "('company', '=', globals().get('company', 0)), " \
                     "('parent', '=', False)]",
             states={
                 'invisible': "not globals().get('company') or not bool(company)",
