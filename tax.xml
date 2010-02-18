@@ -99,7 +99,14 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="account"/>
                     <label name="parent"/>
                     <field name="parent"/>
-                    <field name="childs" colspan="4"/>
+                    <notebook colspan="4">
+                        <page string="Children" id="children">
+                            <field name="childs" colspan="4"/>
+                        </page>
+                        <page string="Description" id="description">
+                            <field name="description" colspan="4"/>
+                        </page>
+                    </notebook>
                 </form>
                 ]]>
             </field>
@@ -156,7 +163,14 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="company"/>
                     <label name="parent"/>
                     <field name="parent"/>
-                    <field name="childs" colspan="6"/>
+                    <notebook colspan="6">
+                        <page string="Children" id="children">
+                            <field name="childs" colspan="6"/>
+                        </page>
+                        <page string="Description" id="description">
+                            <field name="description" colspan="6"/>
+                        </page>
+                    </notebook>
                 </form>
                 ]]>
             </field>

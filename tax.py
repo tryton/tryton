@@ -39,6 +39,7 @@ class CodeTemplate(ModelSQL, ModelView):
     childs = fields.One2Many('account.tax.code.template', 'parent', 'Children')
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', False)], required=True)
+    description = fields.Text('Description', translate=True)
 
     def __init__(self):
         super(CodeTemplate, self).__init__()
@@ -68,6 +69,8 @@ class CodeTemplate(ModelSQL, ModelView):
             res['name'] = template.name
         if not code or code.code != template.code:
             res['code'] = template.code
+        if not code or code.description != template.description:
+            res['description'] = template.description
         if not code or code.template.id != template.id:
             res['template'] = template.id
         return res
@@ -156,6 +159,7 @@ class Code(ModelSQL, ModelView):
     sum = fields.Function('get_sum', digits=(16, Eval('currency_digits', 2)),
             string='Sum', depends=['currency_digits'])
     template = fields.Many2One('account.tax.code.template', 'Template')
+    description = fields.Text('Description', translate=True)
 
     def __init__(self):
         super(Code, self).__init__()
