@@ -5,7 +5,7 @@
     'name_de_DE': 'Buchhaltung',
     'name_fr_FR': 'Comptabilité',
     'name_es_ES': 'Contabilidad',
-    'version': '1.0.7',
+    'version': '1.0.8',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
