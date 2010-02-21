@@ -23,6 +23,10 @@ class Category(ModelSQL, ModelView):
 
     def __init__(self):
         super(Category, self).__init__()
+        self._sql_constraints = [
+            ('name_parent_uniq', 'UNIQUE(name, parent)',
+                'The name of a party category must be unique by parent!'),
+        ]
         self._constraints += [
             ('check_recursion', 'recursive_categories'),
             ('check_name', 'wrong_name'),
