@@ -5,7 +5,7 @@
 from setuptools import setup
 import re
 
-info = eval(file('__tryton__.py').read())
+info = eval(open('__tryton__.py').read())
 major_version, minor_version, _ = info.get('version', '0.0.1').split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
