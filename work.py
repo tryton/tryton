@@ -4,9 +4,9 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Eval, Not, Equal
-from datetime import datetime, timedelta
 from collections import deque, defaultdict
 from heapq import heappop, heappush
+import datetime
 
 def intfloor(x):
     return int(round(x, 4))
@@ -224,7 +224,9 @@ class Work(ModelSQL, ModelView):
                      'constraint_start_time', 'constraint_finish_time')
         for fun_field, db_field in zip(fun_fields, db_fields):
             if fun_field == name:
-                self.write(cursor, user, id, {db_field: value}, context=context)
+                self.write(cursor, user, id, {
+                        db_field: datetime.datetime.combine(value, datetime.time()),
+                        }, context=context)
                 break
 
     def add_minutes(self, cursor, user, company, date, minutes, context=None):
@@ -238,7 +240,7 @@ class Work(ModelSQL, ModelView):
 
         minutes = minutes % 60
 
-        date = datetime(
+        date = datetime.datetime(
             date.year,
             date.month,
             date.day,
@@ -266,7 +268,7 @@ class Work(ModelSQL, ModelView):
 
             hours = hours % company.hours_per_work_day
 
-            date = datetime(
+            date = datetime.datetime(
                 date.year,
                 date.month,
                 date.day,
@@ -297,7 +299,7 @@ class Work(ModelSQL, ModelView):
                 date = self.add_weeks(cursor, user, company, date, weeks,
                         context=context)
 
-            date += timedelta(days= -date.weekday() + intfloor(days))
+            date += datetime.timedelta(days= -date.weekday() + intfloor(days))
 
             days = days - intfloor(days)
 
@@ -312,7 +314,7 @@ class Work(ModelSQL, ModelView):
                 date = self.add_days(cursor, user, company, date, days,
                         context=context)
 
-        date += timedelta(days= 7 * intfloor(weeks))
+        date += datetime.timedelta(days= 7 * intfloor(weeks))
 
         return date
 
