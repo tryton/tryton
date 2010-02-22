@@ -363,7 +363,7 @@ class Product(ModelSQL, ModelView):
         if with_childs:
             query, args = location_obj.search(cursor, user, [
                 ('parent', 'child_of', location_ids),
-                ], context=context, query_string=True)
+                ], context=context, query_string=True, order=[])
             where_clause = " IN (" + query + ") "
             where_vals = args
         else:
@@ -405,6 +405,10 @@ class Product(ModelSQL, ModelView):
             dest_clause_from = dest_clause_to =""
             dest_vals = []
 
+        # The main select clause is a union between two similar
+        # subqueries. One that sums incoming moves towards locations
+        # and on that sums outgoing moves. UNION ALL is used because
+        # we already know that there will be no duplicates.
         select_clause = \
                 "SELECT location, product, uom, sum(quantity) AS quantity "\
                 "FROM ( "\
@@ -414,7 +418,7 @@ class Product(ModelSQL, ModelView):
                     "WHERE (%s) " \
                         "AND to_location %s "\
                     "GROUP BY to_location, product ,uom "\
-                    "UNION  "\
+                    "UNION ALL "\
                     "SELECT from_location AS location, product, uom, "\
                         "-sum(quantity) AS quantity "\
                     "FROM stock_move " + product_template_join + \
