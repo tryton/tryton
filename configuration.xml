@@ -28,7 +28,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_configuration"
             action="act_purchase_configuration_form"
-            id="menu_purchase_configuration"/>
+            id="menu_purchase_configuration" icon="tryton-list"/>
 
         <record model="ir.property" id="property_purchase_sequence">
             <field name="name">purchase_sequence</field>
