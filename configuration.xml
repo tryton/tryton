@@ -32,7 +32,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_configuration"
             action="act_sale_configuration_form"
-            id="menu_sale_configuration"/>
+            id="menu_sale_configuration" icon="tryton-list"/>
 
         <record model="ir.property" id="property_sale_sequence">
             <field name="name">sale_sequence</field>
