@@ -461,9 +461,9 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <form string="Create Chart of Account" col="2">
                     <label name="company"/>
-                    <field name="company"/>
+                    <field name="company" widget="selection"/>
                     <label name="account_template"/>
-                    <field name="account_template"/>
+                    <field name="account_template" widget="selection"/>
                 </form>
                 ]]>
             </field>

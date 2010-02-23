@@ -1746,6 +1746,13 @@ class CreateChartAccountAccount(ModelView):
     account_template = fields.Many2One('account.account.template',
             'Account Template', required=True, domain=[('parent', '=', False)])
 
+    def default_company(self, cursor, user, context=None):
+        if context is None:
+            context = {}
+        if context.get('company'):
+            return context['company']
+        return False
+
 CreateChartAccountAccount()
 
 
