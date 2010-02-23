@@ -36,7 +36,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_configuration"
             action="act_stock_configuration_form"
-            id="menu_stock_configuration"/>
+            id="menu_stock_configuration" icon="tryton-list"/>
 
         <record model="ir.property" id="property_shipment_in_sequence">
             <field name="name">shipment_in_sequence</field>
