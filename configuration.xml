@@ -29,7 +29,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_configuration"
             action="act_party_configuration_form"
             id="menu_party_configuration"
-            sequence="0"/>
+            sequence="0" icon="tryton-list"/>
 
         <record model="ir.property" id="property_party_sequence">
             <field name="name">party_sequence</field>
