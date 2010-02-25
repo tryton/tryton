@@ -1,3 +1,6 @@
+* Use pycountry to generate currency datas
+* Add ISO4217 numeric code to currency
+
 Version 1.4.0 - 2009-10-19
 * Bug fixes (see mercurial logs for details)
 * Add rounding option to currency round

@@ -15,6 +15,7 @@ class Currency(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
     symbol = fields.Char('Symbol', size=10, required=True)
     code = fields.Char('Code', size=3, required=True)
+    numeric_code = fields.Char('Numeric Code', size=3)
     rate = fields.Function('get_rate', type='numeric', string='Current rate',
             digits=(12, 6), on_change_with=['rates'])
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates')
@@ -112,10 +113,16 @@ class Currency(ModelSQL, ModelView):
         args2 = []
         i = 0
         while i < len(args):
-            ids = self.search(cursor, user, [('code', args[i][1], args[i][2])],
-                    limit=1, context=context)
+            ids = []
+            field = None
+            for field in ('code', 'numeric_code'):
+                ids = self.search(cursor, user,
+                        [(field, args[i][1], args[i][2])],
+                        limit=1, context=context)
+                if len(ids):
+                    break
             if len(ids):
-                args2.append(('code', args[i][1], args[i][2]))
+                args2.append((field, args[i][1], args[i][2]))
             else:
                 args2.append((self._rec_name, args[i][1], args[i][2]))
             i += 1
