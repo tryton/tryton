@@ -78,6 +78,9 @@ def date_trunc(_type, date):
 def split_part(text, delimiter, count):
     return (text.split(delimiter) + [''] * (count - 1))[count - 1]
 
+def replace(text, pattern, replacement):
+    return str(text).replace(pattern, replacement)
+
 
 class Database(DatabaseInterface):
 
@@ -109,6 +112,8 @@ class Database(DatabaseInterface):
         self._conn.create_function('extract', 2, extract)
         self._conn.create_function('date_trunc', 2, date_trunc)
         self._conn.create_function('split_part', 3, split_part)
+        if sqlite.sqlite_version_info < (3, 3, 14):
+            self._conn.create_function('replace', 3, replace)
         return self
 
     def cursor(self, autocommit=False):
