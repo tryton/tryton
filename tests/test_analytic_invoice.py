@@ -2,6 +2,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
+import logging
+logging.basicConfig(level=logging.FATAL)
+
 import sys, os
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', '..', '..', '..', 'trytond')))
@@ -10,7 +13,7 @@ if os.path.isdir(DIR):
 
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import RPCProxy, CONTEXT, SOCK, test_view
+from trytond.tests.test_tryton import test_view
 
 
 class AnalyticInvoiceTestCase(unittest.TestCase):
@@ -28,11 +31,10 @@ class AnalyticInvoiceTestCase(unittest.TestCase):
         self.assertRaises(Exception, test_view('analytic_invoice'))
 
 def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(AnalyticInvoiceTestCase)
+    suite = trytond.tests.test_tryton.suite()
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+        AnalyticInvoiceTestCase))
+    return suite
 
 if __name__ == '__main__':
-    suiteTrytond = trytond.tests.test_tryton.suite()
-    suiteAnalyticInvoice = suite()
-    alltests = unittest.TestSuite([suiteTrytond, suiteAnalyticInvoice])
-    unittest.TextTestRunner(verbosity=2).run(alltests)
-    SOCK.disconnect()
+    unittest.TextTestRunner(verbosity=2).run(suite())
