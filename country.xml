@@ -81,6 +81,9 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
+    </data>
+    <data skiptest="1">
+
         <!--
         Output of scripts/countries.py
         -->
@@ -34230,6 +34233,9 @@ this repository contains the full copyright notices and license terms. -->
         <!--
         End of Output of scripts/countries.py
         -->
+
+    </data>
+    <data>
 
         <record model="ir.model.access" id="access_country">
             <field name="model" search="[('model', '=', 'country.country')]"/>
