@@ -10,7 +10,13 @@
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
-    'description': 'Add SIRET/SIREN number on party',
+    'description': '''
+Add SIRET/SIREN number fields on party.
+    These numbers are used in France, for geographical identification of
+    enterprises:
+    - SIREN (Système d’Identification du Répertoire des ENtreprises)
+    - SIRET (Système d’Identification du Répertoire des ETablissements)
+''',
     'description_de_DE' : '''
 Fügt ein Feld für die SIRET/SIREN-Nummer bei Parteien hinzu.
     Diese Nummern dienen in Frankreich der Identifikation und geographischen
@@ -25,7 +31,13 @@ Añade campos para los números SIRET/SIREN en Terceros.
     - SIREN (Système d’Identification du Répertoire des ENtreprises)
     - SIRET (Système d’Identification du Répertoire des ETablissements)
 ''',
-    'description_fr_FR': 'Ajoute le numéro SIRET/SIREN sur les tiers',
+    'description_fr_FR': '''
+Ajoute les champs numéro SIRET/SIREN sur les tiers.
+    Ces numéros sont utilisés en France, pour l'identification géographique des
+    entreprises :
+    - SIREN (Système d’Identification du Répertoire des ENtreprises)
+    - SIRET (Système d’Identification du Répertoire des ETablissements)
+''',
     'depends' : [
         'ir',
         'party',
