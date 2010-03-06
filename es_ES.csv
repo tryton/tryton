@@ -1,0 +1,20 @@
+type,name,res_id,src,value,fuzzy
+field,"dashboard.action,act_window",0,Action,Acción,0
+field,"dashboard.action,rec_name",0,Name,Nombre,0
+field,"dashboard.action,sequence",0,Sequence,Secuencia,0
+field,"dashboard.action,user",0,User,Usuario,0
+field,"res.user,dashboard_actions",0,Dashboard Actions,Acciones del escritorio,0
+field,"res.user,dashboard_layout",0,Dashboard Layout,Organización del escritorio,0
+model,"dashboard.action,name",0,dashboard.action,dashboard.action,0
+model,"ir.action,name",act_dashboard,Dashboard,Escritorio,0
+selection,"res.user,dashboard_layout",0,Square,Ajustado,0
+selection,"res.user,dashboard_layout",0,Stack Bottom,De arriba a abajo,0
+selection,"res.user,dashboard_layout",0,Stack Left,De derecha a izquierda,0
+selection,"res.user,dashboard_layout",0,Stack Right,De izquierda a derecha,0
+selection,"res.user,dashboard_layout",0,Stack Top,De abajo a arriba,0
+view,dashboard.action,0,Dashboard,Escritorio,0
+view,dashboard.action,0,Dashboard Action,Acción del escritorio,0
+view,dashboard.action,0,Dashboard Actions,Acciones del escritorio,0
+view,res.user,0,Dashboard,Escritorio,0
+view,res.user,0,Dashboard Action,Acción del escritorio,0
+view,res.user,0,Dashboard Actions,Acciones del escritorio,0
