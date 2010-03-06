@@ -1,0 +1,6 @@
+type,name,res_id,src,value,fuzzy
+error,party.address,0,Invalid SIRET number!,El número SIRET no es válido,0
+error,party.party,0,Invalid SIREN number!,El número SIREN no es válido,0
+field,"party.address,siret",0,SIRET,SIRET,0
+field,"party.address,siret_nic",0,SIRET NIC,SIRET NIC,0
+field,"party.party,siren",0,SIREN,SIREN,0
