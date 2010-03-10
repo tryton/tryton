@@ -103,7 +103,7 @@ class Dialog(object):
         self.dia.set_title(self.screen.current_view.title)
         self.dia.show()
         self.screen.new(default=False)
-        self.screen.current_model.set(val)
+        self.screen.current_model.set_default(val)
         self.screen.current_view.set_cursor()
 
     def run(self, datas=None):
