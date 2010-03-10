@@ -1,0 +1,20 @@
+type,name,res_id,src,value,fuzzy
+field,"dashboard.action,act_window",0,Action,Acción,1
+field,"dashboard.action,rec_name",0,Name,Nombre de Contacto,1
+field,"dashboard.action,sequence",0,Sequence,Secuencia,1
+field,"dashboard.action,user",0,User,Usuario,1
+field,"res.user,dashboard_actions",0,Dashboard Actions,Acciones del Panel,0
+field,"res.user,dashboard_layout",0,Dashboard Layout,Panel de Diseño,0
+model,"dashboard.action,name",0,dashboard.action,,0
+model,"ir.action,name",act_dashboard,Dashboard,Panel,0
+selection,"res.user,dashboard_layout",0,Square,Cuadro,0
+selection,"res.user,dashboard_layout",0,Stack Bottom,Fondo de Pila,0
+selection,"res.user,dashboard_layout",0,Stack Left,Izquierda de Pila,0
+selection,"res.user,dashboard_layout",0,Stack Right,Derecha de Pila,0
+selection,"res.user,dashboard_layout",0,Stack Top,Cima de Pila,0
+view,dashboard.action,0,Dashboard,Panel,0
+view,dashboard.action,0,Dashboard Action,Acción del Panel,0
+view,dashboard.action,0,Dashboard Actions,Acción del Panel,0
+view,res.user,0,Dashboard,Panel,0
+view,res.user,0,Dashboard Action,Acción del Panel,0
+view,res.user,0,Dashboard Actions,Acción del Panel,0
