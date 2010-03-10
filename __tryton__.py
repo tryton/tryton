@@ -4,6 +4,7 @@
 {
     'name' : 'Party - Siret',
     'name_de_DE' : 'Parteien - SIRET',
+    'name_es_CO' : 'Terceros - SIRET',
     'name_es_ES': 'Terceros - SIRET',
     'name_fr_FR': 'Tiers - Siret',
     'version' : '0.0.1',
@@ -21,6 +22,13 @@ Add SIRET/SIREN number fields on party.
 Fügt ein Feld für die SIRET/SIREN-Nummer bei Parteien hinzu.
     Diese Nummern dienen in Frankreich der Identifikation und geographischen
     Zuordnung von Unternehmen:
+    - SIREN (Système d’Identification du Répertoire des ENtreprises)
+    - SIRET (Système d’Identification du Répertoire des ETablissements)
+''',
+    'description_es_CO' : '''
+Añade campos para los números SIRET/SIREN en Terceros.
+    Estos números son utilizados en Francia, para la identificación de
+    empresas (SIREN) así como su ubicación geográfica (SIRET).
     - SIREN (Système d’Identification du Répertoire des ENtreprises)
     - SIRET (Système d’Identification du Répertoire des ETablissements)
 ''',
@@ -48,6 +56,7 @@ Ajoute les champs numéro SIRET/SIREN sur les tiers.
     ],
     'translation': [
         'de_DE.csv',
+        'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
     ],
