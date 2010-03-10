@@ -3,6 +3,7 @@
 {
     'name': 'Dashboard',
     'name_de_DE': 'Dashboard',
+    'name_es_CO': 'Escritorio',
     'name_es_ES': 'Escritorio',
     'name_fr_FR': 'Tableau de bord',
     'version': '0.0.1',
@@ -14,6 +15,9 @@
 ''',
     'description_de_DE': '''Dashboard:
     - Ermöglicht die Einrichtung einer personalisierten Startseite.
+''',
+    'description_es_CO': '''Escritorio:
+    - Permite la creación de una página de inicio personalizada.
 ''',
     'description_es_ES': '''Escritorio:
     - Permite la creación de una página de inicio personalizada.
