@@ -12,11 +12,9 @@ Address()
 
 class Party(ModelSQL, ModelView):
     _name = 'party.party'
-    payment_term = fields.Property(type='many2one',
-            relation='account.invoice.payment_term',
-            string='Invoice Payment Term')
-    supplier_payment_term = fields.Property(type='many2one',
-            relation='account.invoice.payment_term',
-            string='Supplier Payment Term')
+    payment_term = fields.Property(fields.Many2One(
+        'account.invoice.payment_term', string='Invoice Payment Term'))
+    supplier_payment_term = fields.Property(fields.Many2One(
+        'account.invoice.payment_term', string='Supplier Payment Term'))
 
 Party()

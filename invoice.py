@@ -47,7 +47,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     Bool(Get(Eval('context', {}), 'type')),
                     And(Bool(Eval('lines')), Bool(Eval('type')))),
             })
-    type_name = fields.Function('get_type_name', type='char', string='Type')
+    type_name = fields.Function(fields.Char('Type'), 'get_type_name')
     number = fields.Char('Number', size=None, readonly=True, select=1)
     reference = fields.Char('Reference', size=None)
     description = fields.Char('Description', size=None, states=_STATES)
@@ -67,8 +67,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', change_default=True,
         required=True, states=_STATES, on_change=['party', 'payment_term',
             'type', 'company'])
-    party_lang = fields.Function('get_party_language', type='char',
-            string='Party Language', on_change_with=['party'])
+    party_lang = fields.Function(fields.Char('Party Language',
+        on_change_with=['party']), 'get_party_language')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         required=True, states=_STATES, domain=[('party', '=', Eval('party'))])
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
@@ -76,8 +76,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 And(Bool(Eval('lines')), Bool(Eval('currency')))),
         })
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['currency'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['currency']), 'get_currency_digits')
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states=_STATES, domain=[('centralised', '=', False)])
     move = fields.Many2One('account.move', 'Move', readonly=True)
@@ -94,27 +94,25 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     taxes = fields.One2Many('account.invoice.tax', 'invoice', 'Tax Lines',
         states=_STATES, on_change=['lines', 'taxes', 'currency', 'party', 'type'])
     comment = fields.Text('Comment')
-    untaxed_amount = fields.Function('get_untaxed_amount', type='numeric',
-            digits=(16, Eval('currency_digits', 2)), string='Untaxed',
-            fnct_search='search_untaxed_amount')
-    tax_amount = fields.Function('get_tax_amount', type='numeric',
-            digits=(16, Eval('currency_digits', 2)), string='Tax',
-            fnct_search='search_tax_amount')
-    total_amount = fields.Function('get_total_amount', type='numeric',
-            digits=(16, Eval('currency_digits', 2)), string='Total',
-            fnct_search='search_total_amount')
-    reconciled = fields.Function('get_reconciled', type='boolean',
-            string='Reconciled')
-    lines_to_pay = fields.Function('get_lines_to_pay', type='one2many',
-            relation='account.move.line', string='Lines to Pay')
+    untaxed_amount = fields.Function(fields.Numeric('Untaxed',
+            digits=(16, Eval('currency_digits', 2))), 'get_untaxed_amount',
+            searcher='search_untaxed_amount')
+    tax_amount = fields.Function(fields.Numeric('Tax',
+        digits=(16, Eval('currency_digits', 2))), 'get_tax_amount',
+        searcher='search_tax_amount')
+    total_amount = fields.Function(fields.Numeric('Total',
+        digits=(16, Eval('currency_digits', 2))), 'get_total_amount',
+        searcher='search_total_amount')
+    reconciled = fields.Function(fields.Boolean('Reconciled'),
+            'get_reconciled')
+    lines_to_pay = fields.Function(fields.One2Many('account.move.line', None,
+        'Lines to Pay'), 'get_lines_to_pay')
     payment_lines = fields.Many2Many('account.invoice-account.move.line',
             'invoice', 'line', readonly=True, string='Payment Lines')
-    amount_to_pay_today = fields.Function('get_amount_to_pay',
-            type='numeric', digits=(16, Eval('currency_digits', 2)),
-            string='Amount to Pay Today')
-    amount_to_pay = fields.Function('get_amount_to_pay',
-            type='numeric', digits=(16, Eval('currency_digits', 2)),
-            string='Amount to Pay')
+    amount_to_pay_today = fields.Function(fields.Numeric('Amount to Pay Today',
+        digits=(16, Eval('currency_digits', 2))), 'get_amount_to_pay')
+    amount_to_pay = fields.Function(fields.Numeric('Amount to Pay',
+        digits=(16, Eval('currency_digits', 2)),), 'get_amount_to_pay')
     invoice_report = fields.Binary('Invoice Report', readonly=True)
     invoice_report_format = fields.Char('Invoice Report Format', readonly=True)
 
@@ -279,7 +277,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             return currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
             res[invoice.id] = invoice.currency.digits
@@ -294,13 +292,14 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 return party.lang.code
         return 'en_US'
 
-    def get_party_language(self, cursor, user, ids, name, arg, context=None):
+    def get_party_language(self, cursor, user, ids, name, context=None):
         '''
         Return the language code of the party of each invoice
 
         :param cursor: the database cursor
         :param user: the user id
         :param ids: the ids of the invoices
+        :param name: the field name
         :param context: the context
         :return: a dictionary with invoice id as key and
             language code as value
@@ -313,7 +312,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 res[invoice.id] = 'en_US'
         return res
 
-    def get_type_name(self, cursor, user, ids, name, arg, context=None):
+    def get_type_name(self, cursor, user, ids, name, context=None):
         res = {}
         type2name = {}
         for type, name in self.fields_get(cursor, user, fields_names=['type'],
@@ -423,7 +422,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     res['total_amount'])
         return res
 
-    def get_untaxed_amount(self, cursor, user, ids, name, arg, context=None):
+    def get_untaxed_amount(self, cursor, user, ids, name, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
@@ -436,7 +435,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     res[invoice.id])
         return res
 
-    def get_tax_amount(self, cursor, user, ids, name, arg, context=None):
+    def get_tax_amount(self, cursor, user, ids, name, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         type_name = FIELDS[self.tax_amount._type].sql_type(self.tax_amount)[0]
@@ -458,7 +457,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     res[invoice.id])
         return res
 
-    def get_total_amount(self, cursor, user, ids, name, arg, context=None):
+    def get_total_amount(self, cursor, user, ids, name, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
@@ -466,7 +465,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     invoice.untaxed_amount + invoice.tax_amount)
         return res
 
-    def get_reconciled(self, cursor, user, ids, name, arg, context=None):
+    def get_reconciled(self, cursor, user, ids, name, context=None):
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
             res[invoice.id] = True
@@ -479,7 +478,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     break
         return res
 
-    def get_lines_to_pay(self, cursor, user, ids, name, args, context=None):
+    def get_lines_to_pay(self, cursor, user, ids, name, context=None):
         res = {}
         for invoice in self.browse(cursor, user, ids, context=context):
             lines = []
@@ -492,8 +491,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             res[invoice.id] = [x.id for x in lines]
         return res
 
-    def get_amount_to_pay(self, cursor, user, ids, name, arg,
-            context=None):
+    def get_amount_to_pay(self, cursor, user, ids, name, context=None):
         currency_obj = self.pool.get('currency.currency')
         date_obj = self.pool.get('ir.date')
 
@@ -910,7 +908,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                         context=context)
         return
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}
@@ -1302,14 +1300,14 @@ class InvoiceLine(ModelSQL, ModelView):
             states={
                 'required': Not(Bool(Eval('invoice'))),
             })
-    party_lang = fields.Function('get_party_language', type='char',
-            string='Party Language', on_change_with=['party'])
+    party_lang = fields.Function(fields.Char('Party Language',
+        on_change_with=['party']), 'get_party_language')
     currency = fields.Many2One('currency.currency', 'Currency',
             states={
                 'required': Not(Bool(Eval('invoice'))),
             })
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['currency'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['currency']), 'get_currency_digits')
     company = fields.Many2One('company.company', 'Company',
             states={
                 'required': Not(Bool(Eval('invoice'))),
@@ -1347,8 +1345,8 @@ class InvoiceLine(ModelSQL, ModelView):
             context={
                 'category': (Eval('product'), 'product.default_uom.category'),
             })
-    unit_digits = fields.Function('get_unit_digits', type='integer',
-            string='Unit Digits', on_change_with=['unit'])
+    unit_digits = fields.Function(fields.Integer('Unit Digits',
+        on_change_with=['unit']), 'get_unit_digits')
     product = fields.Many2One('product.product', 'Product',
             states={
                 'invisible': Not(Equal(Eval('type'), 'line')),
@@ -1371,13 +1369,13 @@ class InvoiceLine(ModelSQL, ModelView):
                 'invisible': Not(Equal(Eval('type'), 'line')),
                 'required': Equal(Eval('type'), 'line'),
             })
-    amount = fields.Function('get_amount', type='numeric', string='Amount',
-            digits=(16, Get(Eval('_parent_invoice', {}), 'currency_digits',
-                Eval('currency_digits', 2))),
-            states={
-                'invisible': Not(In(Eval('type'), ['line', 'subtotal'])),
-            }, on_change_with=['type', 'quantity', 'unit_price',
-                '_parent_invoice.currency', 'currency'])
+    amount = fields.Function(fields.Numeric('Amount',
+        digits=(16, Get(Eval('_parent_invoice', {}), 'currency_digits',
+            Eval('currency_digits', 2))),
+        states={
+            'invisible': Not(In(Eval('type'), ['line', 'subtotal'])),
+        }, on_change_with=['type', 'quantity', 'unit_price',
+            '_parent_invoice.currency', 'currency']), 'get_amount')
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
     taxes = fields.Many2Many('account.invoice.line-account.tax',
@@ -1385,8 +1383,8 @@ class InvoiceLine(ModelSQL, ModelView):
             states={
                 'invisible': Not(Equal(Eval('type'), 'line')),
             })
-    invoice_taxes = fields.Function('get_invoice_taxes', type='many2many',
-            relation='account.invoice.tax', string='Invoice Taxes')
+    invoice_taxes = fields.Function(fields.One2Many('account.invoice.tax',
+        None, 'Invoice Taxes'), 'get_invoice_taxes')
 
     def __init__(self):
         super(InvoiceLine, self).__init__()
@@ -1474,13 +1472,14 @@ class InvoiceLine(ModelSQL, ModelView):
                 return party.lang.code
         return 'en_US'
 
-    def get_party_language(self, cursor, user, ids, name, arg, context=None):
+    def get_party_language(self, cursor, user, ids, name, context=None):
         '''
         Return the language code of the party of each line
 
         :param cursor: the database cursor
         :param user: the user id
         :param ids: the ids of the account.invoice.line
+        :param name: the field name
         :param context: the context
         :return: a dictionary with account.invoice.line id as key and
             language code as value
@@ -1516,7 +1515,7 @@ class InvoiceLine(ModelSQL, ModelView):
             return uom.digits
         return 2
 
-    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_unit_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             if line.unit:
@@ -1534,13 +1533,13 @@ class InvoiceLine(ModelSQL, ModelView):
             return currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             res[line.id] = line.currency and line.currency.digits or 2
         return res
 
-    def get_amount(self, cursor, user, ids, name, arg, context=None):
+    def get_amount(self, cursor, user, ids, name, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
@@ -1564,7 +1563,7 @@ class InvoiceLine(ModelSQL, ModelView):
                 res[line.id] = _ZERO
         return res
 
-    def get_invoice_taxes(self, cursor, user, ids, name, arg, context=None):
+    def get_invoice_taxes(self, cursor, user, ids, name, context=None):
         tax_obj = self.pool.get('account.tax')
         invoice_obj = self.pool.get('account.invoice')
 
@@ -1903,8 +1902,8 @@ class InvoiceTax(ModelSQL, ModelView):
             select=1)
     description = fields.Char('Description', size=None, required=True)
     sequence = fields.Integer('Sequence')
-    sequence_number = fields.Function('get_sequence_number', type='integer',
-            string='Sequence Number')
+    sequence_number = fields.Function(fields.Integer('Sequence Number'),
+            'get_sequence_number')
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[
                 ('kind', '!=', 'view'),
@@ -1967,7 +1966,7 @@ class InvoiceTax(ModelSQL, ModelView):
                         context=context)
         return
 
-    def get_sequence_number(self, cursor, user, ids, name, arg, context=None):
+    def get_sequence_number(self, cursor, user, ids, name, context=None):
         res = {}
         for tax in self.browse(cursor, user, ids, context=context):
             res[tax.id] = 0

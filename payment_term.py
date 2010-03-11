@@ -146,8 +146,8 @@ class PaymentTermLine(ModelSQL, ModelView):
                 'invisible': Not(Equal(Eval('type'), 'fixed')),
                 'required': Equal(Eval('type'), 'fixed'),
             })
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['currency'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['currency']), 'get_currency_digits')
     days = fields.Integer('Number of Days')
     delay = fields.Selection('get_delay', 'Condition', required=True)
 
@@ -204,7 +204,7 @@ class PaymentTermLine(ModelSQL, ModelView):
             return currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             if line.currency:
