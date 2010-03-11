@@ -15,8 +15,8 @@
 Add SIRET/SIREN number fields on party.
     These numbers are used in France, for geographical identification of
     enterprises:
-    - SIREN (Système d’Identification du Répertoire des ENtreprises)
-    - SIRET (Système d’Identification du Répertoire des ETablissements)
+    - SIREN (Systeme d'Identification du Repertoire des ENtreprises)
+    - SIRET (Systeme d'Identification du Repertoire des ETablissements)
 ''',
     'description_de_DE' : '''
 Fügt ein Feld für die SIRET/SIREN-Nummer bei Parteien hinzu.
