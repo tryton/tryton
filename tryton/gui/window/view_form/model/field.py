@@ -108,7 +108,7 @@ class CharField(object):
             model.signal('record-changed', model)
 
     def get_client(self, model):
-        return model.value[self.name] or False
+        return model.value.get(self.name) or False
 
     def set_default(self, model, value):
         res = self.set(model, value)
@@ -270,7 +270,7 @@ class IntegerField(CharField):
         return model.value.get(self.name, 0) or 0
 
     def get_client(self, model):
-        return model.value[self.name] or 0
+        return model.value.get(self.name) or 0
 
 class BooleanField(CharField):
 
@@ -294,7 +294,7 @@ class BooleanField(CharField):
         return bool(model.value.get(self.name, False))
 
     def get_client(self, model):
-        return bool(model.value[self.name])
+        return bool(model.value.get(self.name))
 
 
 class M2OField(CharField):
@@ -316,7 +316,7 @@ class M2OField(CharField):
 
     def get_client(self, model):
         #model._check_load()
-        if model.value[self.name]:
+        if model.value.get(self.name):
             if isinstance(model.value[self.name], (int, basestring, long)):
                 self.set(model, model.value[self.name])
             if isinstance(model.value[self.name], (int, basestring, long)):
@@ -395,7 +395,7 @@ class M2MField(CharField):
                 modified=False)[0][1]
 
     def get_client(self, model):
-        return model.value[self.name] or []
+        return model.value.get(self.name) or []
 
     def set(self, model, value, modified=False):
         model.value[self.name] = value or []
@@ -457,7 +457,7 @@ class O2MField(CharField):
         model.parent.signal('record-changed', model.parent)
 
     def get_client(self, model):
-        return model.value[self.name]
+        return model.value.get(self.name)
 
     def get(self, model, check_load=True, readonly=True, modified=False):
         if not model.value[self.name]:
@@ -626,7 +626,7 @@ class O2MField(CharField):
 class ReferenceField(CharField):
 
     def get_client(self, model):
-        if model.value[self.name]:
+        if model.value.get(self.name):
             return model.value[self.name]
         return False
 
