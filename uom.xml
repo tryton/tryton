@@ -179,22 +179,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Carat</field>
             <field name="symbol">c</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="rate" eval="0.0002"/>
             <field name="factor" eval="5000"/>
+            <field name="rate" eval="0.0002"/>
         </record>
         <record model="product.uom" id="uom_pound">
             <field name="name">Pound</field>
             <field name="symbol">lbs</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="factor" eval="0.453592"/>
-            <field name="rate" eval="2.20462262"/>
+            <field name="factor" eval="0.45359237"/>
+            <field name="rate" eval="round(1.0 / 0.45359237, 12)"/>
         </record>
         <record model="product.uom" id="uom_once">
             <field name="name">Ounce</field>
             <field name="symbol">oz</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="factor" eval="0.0283495"/>
-            <field name="rate" eval="35.2739619"/>
+            <field name="factor" eval="0.028349523125"/>
+            <field name="rate" eval="round(1.0 / 0.028349523125, 12)"/>
         </record>
 
         <record model="product.uom.category" id="uom_cat_time">
@@ -204,36 +204,36 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Second</field>
             <field name="symbol">s</field>
             <field name="category" ref="uom_cat_time"/>
+            <field name="factor" eval="round(1.0 / 3600, 12)"/>
             <field name="rate" eval="3600"/>
-            <field name="factor" eval="1.0/3600"/>
         </record>
         <record model="product.uom" id="uom_minute">
             <field name="name">Minute</field>
             <field name="symbol">min</field>
             <field name="category" ref="uom_cat_time"/>
+            <field name="factor" eval="round(1.0 / 60, 12)"/>
             <field name="rate" eval="60"/>
-            <field name="factor" eval="1.0/60"/>
         </record>
         <record model="product.uom" id="uom_hour">
             <field name="name">Hour</field>
             <field name="symbol">h</field>
             <field name="category" ref="uom_cat_time"/>
-            <field name="rate" eval="1"/>
             <field name="factor" eval="1"/>
+            <field name="rate" eval="1"/>
         </record>
         <record model="product.uom" id="uom_work_day">
             <field name="name">Work Day</field>
             <field name="symbol">wd</field>
             <field name="category" ref="uom_cat_time"/>
-            <field name="rate" eval="1.0/8"/>
             <field name="factor" eval="8"/>
+            <field name="rate" eval="0.125"/>
         </record>
         <record model="product.uom" id="uom_day">
             <field name="name">Day</field>
             <field name="symbol">d</field>
             <field name="category" ref="uom_cat_time"/>
-            <field name="rate" eval="1.0/24"/>
             <field name="factor" eval="24"/>
+            <field name="rate" eval="round(1.0 / 24, 12)"/>
         </record>
 
 
@@ -244,8 +244,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Meter</field>
             <field name="symbol">m</field>
             <field name="category" ref="uom_cat_length"/>
-            <field name="rate" eval="1"/>
             <field name="factor" eval="1"/>
+            <field name="rate" eval="1"/>
         </record>
         <record model="product.uom" id="uom_kilometer">
             <field name="name">Kilometer</field>
@@ -258,8 +258,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">centimeter</field>
             <field name="symbol">cm</field>
             <field name="category" ref="uom_cat_length"/>
-            <field name="rate" eval="100"/>
             <field name="factor" eval="0.01"/>
+            <field name="rate" eval="100"/>
         </record>
         <record model="product.uom" id="uom_millimeter">
             <field name="name">Millimeter</field>
@@ -272,29 +272,29 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Foot</field>
             <field name="symbol">ft</field>
             <field name="category" ref="uom_cat_length"/>
-            <field name="rate" eval="3.28084"/>
-            <field name="factor" eval="0.304800"/>
+            <field name="factor" eval="0.3048"/>
+            <field name="rate" eval="round(1.0 / 0.3048, 12)"/>
         </record>
         <record model="product.uom" id="uom_yard">
             <field name="name">Yard</field>
             <field name="symbol">yd</field>
             <field name="category" ref="uom_cat_length"/>
-            <field name="factor" eval="0.914400"/>
-            <field name="rate" eval="1.093613"/>
+            <field name="factor" eval="0.9144"/>
+            <field name="rate" eval="round(1.0/ 0.9144, 12)"/>
         </record>
         <record model="product.uom" id="uom_inch">
             <field name="name">Inch</field>
             <field name="symbol">in</field>
             <field name="category" ref="uom_cat_length"/>
-            <field name="factor" eval="0.02540"/>
-            <field name="rate" eval="39.3701"/>
+            <field name="factor" eval="0.0254"/>
+            <field name="rate" eval="round(1.0 / 0.0254, 12)"/>
         </record>
         <record model="product.uom" id="uom_mile">
             <field name="name">Mile</field>
             <field name="symbol">mi</field>
             <field name="category" ref="uom_cat_length"/>
             <field name="factor" eval="1609.344"/>
-            <field name="rate" eval="0.000621"/>
+            <field name="rate" eval="round(1.0 / 1609.344, 12)"/>
         </record>
 
         <record model="product.uom.category" id="uom_cat_volume">
@@ -325,22 +325,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cubic inch</field>
             <field name="symbol">in³</field>
             <field name="category" ref="uom_cat_volume"/>
-            <field name="factor" eval="0.016387"/>
-            <field name="rate" eval="61.023744"/>
+            <field name="factor" eval="0.016387064"/>
+            <field name="rate" eval="round(1.0 / 0.016387064, 12)"/>
         </record>
         <record model="product.uom" id="uom_cubic_foot">
             <field name="name">Cubic foot</field>
             <field name="symbol">ft³</field>
             <field name="category" ref="uom_cat_volume"/>
-            <field name="factor" eval="28.316847"/>
-            <field name="rate" eval="0.035315"/>
+            <field name="factor" eval="28.316846592"/>
+            <field name="rate" eval="round(1.0 / 28.316846592, 12)"/>
         </record>
         <record model="product.uom" id="uom_gallon">
             <field name="name">Gallon</field>
             <field name="symbol">gal</field>
             <field name="category" ref="uom_cat_volume"/>
-            <field name="factor" eval="3.785412"/>
-            <field name="rate" eval="0.264172"/>
+            <field name="factor" eval="3.785411784"/>
+            <field name="rate" eval="round(1.0 / 3.785411784, 12)"/>
         </record>
 
         <record model="product.uom.category" id="uom_cat_surface">
@@ -378,22 +378,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Square inch</field>
             <field name="symbol">in²</field>
             <field name="category" ref="uom_cat_surface"/>
-            <field name="factor" eval="0.000645"/>
-            <field name="rate" eval="1550.0"/>
+            <field name="factor" eval="0.00064516"/>
+            <field name="rate" eval="round(1.0 / 0.00064516, 12)"/>
         </record>
         <record model="product.uom" id="uom_square_foot">
             <field name="name">Square foot</field>
             <field name="symbol">ft²</field>
             <field name="category" ref="uom_cat_surface"/>
-            <field name="factor" eval="0.092903"/>
-            <field name="rate" eval="10.7639"/>
+            <field name="factor" eval="0.09290304"/>
+            <field name="rate" eval="round(1.0 / 0.09290304, 12)"/>
         </record>
         <record model="product.uom" id="uom_square_yard">
             <field name="name">Square yard</field>
             <field name="symbol">yd²</field>
             <field name="category" ref="uom_cat_surface"/>
-            <field name="factor" eval="0.836127"/>
-            <field name="rate" eval="1.19599"/>
+            <field name="factor" eval="0.83612736"/>
+            <field name="rate" eval="round(1.0 / 0.83612736, 12)"/>
         </record>
 
 

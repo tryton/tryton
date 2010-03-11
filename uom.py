@@ -33,15 +33,15 @@ class Uom(ModelSQL, ModelView):
             translate=True)
     category = fields.Many2One('product.uom.category', 'UOM Category',
             required=True, ondelete='RESTRICT', states=STATES)
-    rate = fields.Float('Rate', digits=(12, 6), required=True,
+    rate = fields.Float('Rate', digits=(12, 12), required=True,
             on_change=['rate'], states=STATES,
             help='The coefficient for the formula:\n' \
                     '1 (base unit) = coef (this unit)')
-    factor = fields.Float('Factor', digits=(12, 6), states=STATES,
+    factor = fields.Float('Factor', digits=(12, 12), states=STATES,
             on_change=['factor'], required=True,
             help='The coefficient for the formula:\n' \
                     'coef (base unit) = 1 (this unit)')
-    rounding = fields.Float('Rounding Precision', digits=(12, 6),
+    rounding = fields.Float('Rounding Precision', digits=(12, 12),
             required=True, states=STATES)
     digits = fields.Integer('Display Digits')
     active = fields.Boolean('Active')
@@ -52,12 +52,17 @@ class Uom(ModelSQL, ModelView):
             ('non_zero_rate_factor', 'CHECK((rate != 0.0) or (factor != 0.0))',
                 'Rate and factor can not be both equal to zero.')
         ]
+        self._constraints += [
+            ('check_factor_and_rate', 'invalid_factor_and_rate'),
+        ]
         self._order.insert(0, ('name', 'ASC'))
         self._error_messages.update({
-                'change_uom_rate_title':'You cannot change Rate, Factor or '\
+                'change_uom_rate_title': 'You cannot change Rate, Factor or '
                     'Category on a Unit of Measure. ',
-                'change_uom_rate': 'If the UOM is still not used, you can '\
-                    'delete it ortherwise you can deactivate it and create a new one.'
+                'change_uom_rate': 'If the UOM is still not used, you can '
+                    'delete it ortherwise you can deactivate it ' 
+                    'and create a new one.',
+                'invalid_factor_and_rate': 'Invalid Factor and Rate values!',
             })
 
     def check_xml_record(self, cursor, user, ids, values, context=None):
@@ -105,12 +110,12 @@ class Uom(ModelSQL, ModelView):
     def on_change_factor(self, cursor, user, ids, value, context=None):
         if value.get('factor', 0.0) == 0.0:
             return {'rate': 0.0}
-        return {'rate': round(1.0/value['factor'], 6)}
+        return {'rate': round(1.0 / value['factor'], self.rate.digits[1])}
 
     def on_change_rate(self, cursor, user, ids, value, context=None):
         if value.get('rate', 0.0) == 0.0:
             return {'factor': 0.0}
-        return {'factor': round(1.0/value['rate'], 6)}
+        return {'factor': round(1.0 / value['rate'], self.factor.digits[1])}
 
     def search_rec_name(self, cursor, user, name, args, context=None):
         args2 = []
@@ -128,26 +133,18 @@ class Uom(ModelSQL, ModelView):
     def round(number, precision=1.0):
         return round(number / precision) * precision
 
-    @staticmethod
-    def check_factor_and_rate(values):
-
-        if values.get('factor', 0.0) == values.get('rate', 0.0) == 0.0:
-            return values
-
-        if abs(values.get('factor', 0.0)) > abs(values.get('rate', 0.0)):
-            values['rate'] = 1.0 / values['factor']
-        else:
-            values['factor'] = 1.0 / values['rate']
-
-        return values
-
-    def create(self, cursor, user, values, context=None):
-        values = self.check_factor_and_rate(values)
-        return super(Uom, self).create(cursor, user, values, context)
+    def check_factor_and_rate(self, cursor, user, ids):
+        "Check coherence between factor and rate"
+        for uom in self.browse(cursor, user, ids):
+            if uom.rate == uom.factor == 0.0:
+                continue
+            if uom.rate != round(1.0 / uom.factor, self.rate.digits[1]) and \
+                    uom.factor != round(1.0 / uom.rate, self.factor.digits[1]):
+                return False
+        return True
 
     def write(self, cursor, user, ids, values, context=None):
         if user == 0:
-            values = self.check_factor_and_rate(values)
             return super(Uom, self).write(cursor, user, ids, values, context)
         if 'rate' not in values and 'factor' not in values \
                 and 'category' not in values:
@@ -160,7 +157,6 @@ class Uom(ModelSQL, ModelView):
         old_uom = dict((uom.id, (uom.factor, uom.rate, uom.category.id)) \
                            for uom in uoms)
 
-        values = self.check_factor_and_rate(values)
         res = super(Uom, self).write(cursor, user, ids, values, context)
         uoms = self.browse(cursor, user, ids, context=context)
 
@@ -173,22 +169,52 @@ class Uom(ModelSQL, ModelView):
                         error_description='change_uom_rate', context=context)
         return res
 
-    def compute_qty(self, cursor, user, from_uom, qty, to_uom=False,
-                    round=True, context=None):
+    def select_accurate_field(self, uom):
         """
-        Convert quantity for given uom's. from_uom and to_uom should
-        be browse records.
+        Select the more accurate field.
+        It chooses the field that has the least decimal.
+
+        :param uom: a BrowseRecord of UOM.
+        :return: 'factor' or 'rate'.
+        """
+        lengths = {}
+        for field in ('rate', 'factor'):
+            format = '%%.%df' % getattr(self, field).digits[1]
+            lengths[field] = len((format % getattr(uom,
+                field)).split('.')[1].rstrip('0'))
+        if lengths['rate'] < lengths['factor']:
+            return 'rate'
+        elif lengths['factor'] < lengths['rate']:
+            return 'factor'
+        elif uom.factor >= 1.0:
+            return 'factor'
+        else:
+            return 'rate'
+
+    def compute_qty(self, cursor, user, from_uom, qty, to_uom=None,
+            round=True, context=None):
+        """
+        Convert quantity for given uom's.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param from_uom: a BrowseRecord of product.uom
+        :param qty: an int or long or float value
+        :param to_uom: a BrowseRecord of product.uom
+        :param round: a boolean to round or not the result
+        :param context: the context
+        :return: the converted quantity
         """
         if not from_uom or not qty or not to_uom:
             return qty
-        if from_uom.category.id <> to_uom.category.id:
+        if from_uom.category.id != to_uom.category.id:
             return qty
-        if from_uom.factor >= 1.0: # Choose the more precise field.
+        if self.select_accurate_field(from_uom) == 'factor':
             amount = qty * from_uom.factor
         else:
             amount = qty / from_uom.rate
-        if to_uom:
-            if to_uom.factor >= 1.0:
+        if to_uom is not None:
+            if self.select_accurate_field(to_uom) == 'factor':
                 amount = amount / to_uom.factor
             else:
                 amount = amount * to_uom.rate
@@ -197,25 +223,34 @@ class Uom(ModelSQL, ModelView):
         return amount
 
     def compute_price(self, cursor, user, from_uom, price, to_uom=False,
-                      context=None):
+            context=None):
         """
-        Convert price for given uom's. from_uom and to_uom should be
-        browse records.
+        Convert price for given uom's.
+
+        :param cursor: the database cursor
+        :param user: the user id
+        :param from_uom: a BrowseRecord of product.uom
+        :param price: a Decimal value
+        :param to_uom: a BrowseRecord of product.uom
+        :param context: the context
+        :return: the converted price
         """
         if not from_uom or not price or not to_uom:
             return price
-        if from_uom.category.id <> to_uom.category.id:
+        if from_uom.category.id != to_uom.category.id:
             return price
+        factor_format = '%%.%df' % self.factor.digits[1]
+        rate_format = '%%.%df' % self.rate.digits[1]
 
-        if from_uom.factor >= 1.0:
-            new_price = price / Decimal(str(from_uom.factor))
+        if self.select_accurate_field(from_uom) == 'factor':
+            new_price = price / Decimal(factor_format % from_uom.factor)
         else:
-            new_price = price * Decimal(str(from_uom.rate))
+            new_price = price * Decimal(rate_format % from_uom.rate)
 
-        if to_uom.factor >= 1.0:
-            new_price = new_price * Decimal(str(to_uom.factor))
+        if self.select_accurate_field(to_uom) == 'factor':
+            new_price = new_price * Decimal(factor_format % to_uom.factor)
         else:
-            new_price = new_price / Decimal(str(to_uom.rate))
+            new_price = new_price / Decimal(rate_format % to_uom.rate)
 
         return new_price
 
