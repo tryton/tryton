@@ -49,8 +49,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             required=True, states={
                 'readonly': Not(Equal(Eval('state'), 'draft')),
             }, on_change=['party', 'payment_term'])
-    party_lang = fields.Function('get_function_fields', type='char',
-            string='Party Language', on_change_with=['party'])
+    party_lang = fields.Function(fields.Char('Party Language',
+        on_change_with=['party']), 'get_function_fields')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
             domain=[('party', '=', Eval('party'))], states={
                 'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -68,18 +68,18 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 And(Bool(Eval('lines')), Bool(Eval('currency')))),
         })
-    currency_digits = fields.Function('get_function_fields', type='integer',
-            string='Currency Digits', on_change_with=['currency'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['currency']), 'get_function_fields')
     lines = fields.One2Many('sale.line', 'sale', 'Lines', states={
         'readonly': Not(Equal(Eval('state'), 'draft')),
         }, on_change=['lines', 'currency', 'party'])
     comment = fields.Text('Comment')
-    untaxed_amount = fields.Function('get_function_fields', type='numeric',
-            digits=(16, Eval('currency_digits', 2)), string='Untaxed')
-    tax_amount = fields.Function('get_function_fields', type='numeric',
-            digits=(16, Eval('currency_digits', 2)), string='Tax')
-    total_amount = fields.Function('get_function_fields', type='numeric',
-            digits=(16, Eval('currency_digits', 2)), string='Total')
+    untaxed_amount = fields.Function(fields.Numeric('Untaxed',
+        digits=(16, Eval('currency_digits', 2))), 'get_function_fields')
+    tax_amount = fields.Function(fields.Numeric('Tax',
+        digits=(16, Eval('currency_digits', 2))), 'get_function_fields')
+    total_amount = fields.Function(fields.Numeric('Total',
+        digits=(16, Eval('currency_digits', 2))), 'get_function_fields')
     invoice_method = fields.Selection([
         ('manual', 'Manual'),
         ('order', 'On Order Confirmed'),
@@ -99,10 +99,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'sale', 'invoice', 'Ignored Invoices', readonly=True)
     invoices_recreated = fields.Many2Many('sale.sale-recreated-account.invoice',
             'sale', 'invoice', 'Recreated Invoices', readonly=True)
-    invoice_paid = fields.Function('get_function_fields', type='boolean',
-            string='Invoices Paid')
-    invoice_exception = fields.Function('get_function_fields', type='boolean',
-            string='Invoices Exception')
+    invoice_paid = fields.Function(fields.Boolean('Invoices Paid'),
+            'get_function_fields')
+    invoice_exception = fields.Function(fields.Boolean('Invoices Exception'),
+            'get_function_fields')
     shipment_method = fields.Selection([
         ('manual', 'Manual'),
         ('order', 'On Order Confirmed'),
@@ -116,14 +116,14 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         ('sent', 'Sent'),
         ('exception', 'Exception'),
     ], 'Shipment State', readonly=True, required=True)
-    shipments = fields.Function('get_function_fields', type='many2many',
-            relation='stock.shipment.out', string='Shipments')
-    moves = fields.Function('get_function_fields', type='many2many',
-            relation='stock.move', string='Moves')
-    shipment_done = fields.Function('get_function_fields', type='boolean',
-            string='Shipment Done')
-    shipment_exception = fields.Function('get_function_fields', type='boolean',
-            string='Shipments Exception')
+    shipments = fields.Function(fields.One2Many('stock.shipment.out', None,
+        'Shipments'), 'get_function_fields')
+    moves = fields.Function(fields.One2Many('stock.move', None, 'Moves'),
+            'get_function_fields')
+    shipment_done = fields.Function(fields.Boolean('Shipment Done'),
+            'get_function_fields')
+    shipment_exception = fields.Function(fields.Boolean('Shipments Exception'),
+            'get_function_fields')
 
     def __init__(self):
         super(Sale, self).__init__()
@@ -388,7 +388,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                     res['total_amount'])
         return res
 
-    def get_function_fields(self, cursor, user, ids, names, args, context=None):
+    def get_function_fields(self, cursor, user, ids, names, context=None):
         '''
         Function to compute function fields for sale ids
 
@@ -396,7 +396,6 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         :param user: the user id
         :param ids: the ids of the sales
         :param names: the list of field name to compute
-        :param args: optional argument
         :param context: the context
         :return: a dictionary with all field names as key and
             a dictionary as value with id as key
@@ -668,7 +667,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 return False
         return True
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return []
         res = {}
@@ -981,8 +980,8 @@ class SaleLine(ModelSQL, ModelView):
             },
             on_change=['product', 'quantity', 'unit', '_parent_sale.currency',
                 '_parent_sale.party'])
-    unit_digits = fields.Function('get_unit_digits', type='integer',
-            string='Unit Digits', on_change_with=['unit'])
+    unit_digits = fields.Function(fields.Integer('Unit Digits',
+        on_change_with=['unit']), 'get_unit_digits')
     product = fields.Many2One('product.product', 'Product',
             domain=[('salable', '=', True)],
             states={
@@ -1004,13 +1003,13 @@ class SaleLine(ModelSQL, ModelView):
                 'invisible': Not(Equal(Eval('type'), 'line')),
                 'required': Equal(Eval('type'), 'line'),
             })
-    amount = fields.Function('get_amount', type='numeric', string='Amount',
-            digits=(16, Get(Eval('_parent_sale', {}), 'currency_digits', 2)),
-            states={
-                'invisible': Not(In(Eval('type'), ['line', 'subtotal'])),
-                'readonly': Not(Bool(Eval('_parent_sale'))),
-            }, on_change_with=['type', 'quantity', 'unit_price',
-                '_parent_sale.currency'])
+    amount = fields.Function(fields.Numeric('Amount',
+        digits=(16, Get(Eval('_parent_sale', {}), 'currency_digits', 2)),
+        states={
+            'invisible': Not(In(Eval('type'), ['line', 'subtotal'])),
+            'readonly': Not(Bool(Eval('_parent_sale'))),
+        }, on_change_with=['type', 'quantity', 'unit_price',
+            '_parent_sale.currency']), 'get_amount')
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
     taxes = fields.Many2Many('sale.line-account.tax', 'line', 'tax', 'Taxes',
@@ -1025,10 +1024,9 @@ class SaleLine(ModelSQL, ModelView):
             'sale_line', 'move', 'Ignored Moves', readonly=True)
     moves_recreated = fields.Many2Many('sale.line-recreated-stock.move',
             'sale_line', 'move', 'Recreated Moves', readonly=True)
-    move_done = fields.Function('get_move_done', type='boolean',
-            string='Moves Done')
-    move_exception = fields.Function('get_move_exception', type='boolean',
-            string='Moves Exception')
+    move_done = fields.Function(fields.Boolean('Moves Done'), 'get_move_done')
+    move_exception = fields.Function(fields.Boolean('Moves Exception'),
+            'get_move_exception')
 
     def __init__(self):
         super(SaleLine, self).__init__()
@@ -1069,7 +1067,7 @@ class SaleLine(ModelSQL, ModelView):
             return uom.digits
         return 2
 
-    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_unit_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             if line.unit:
@@ -1078,7 +1076,7 @@ class SaleLine(ModelSQL, ModelView):
                 res[line.id] = 2
         return res
 
-    def get_move_done(self, cursor, user, ids, name, args, context=None):
+    def get_move_done(self, cursor, user, ids, name, context=None):
         uom_obj = self.pool.get('product.uom')
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
@@ -1105,7 +1103,7 @@ class SaleLine(ModelSQL, ModelView):
             res[line.id] = val
         return res
 
-    def get_move_exception(self, cursor, user, ids, name, args, context=None):
+    def get_move_exception(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             val = False
@@ -1249,7 +1247,7 @@ class SaleLine(ModelSQL, ModelView):
             return amount
         return Decimal('0.0')
 
-    def get_amount(self, cursor, user, ids, name, arg, context=None):
+    def get_amount(self, cursor, user, ids, name, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
@@ -1633,17 +1631,15 @@ class Move(ModelSQL, ModelView):
             states={
                 'readonly': Not(Equal(Eval('state'), 'draft')),
             })
-    sale = fields.Function('get_sale', type='many2one',
-            relation='sale.sale', string='Sale',
-            fnct_search='search_sale', select=1)
-    sale_exception_state = fields.Function('get_sale_exception_state',
-            type='selection',
-            selection=[('', ''),
-                       ('ignored', 'Ignored'),
-                       ('recreated', 'Recreated')],
-            string='Exception State')
+    sale = fields.Function(fields.Many2One('sale.sale', 'Sale', select=1),
+            'get_sale', searcher='search_sale')
+    sale_exception_state = fields.Function(fields.Selection([
+        ('', ''),
+        ('ignored', 'Ignored'),
+        ('recreated', 'Recreated'),
+        ], 'Exception State'), 'get_sale_exception_state')
 
-    def get_sale(self, cursor, user, ids, name, arg, context=None):
+    def get_sale(self, cursor, user, ids, name, context=None):
         sale_obj = self.pool.get('sale.sale')
 
         res = {}
@@ -1662,8 +1658,7 @@ class Move(ModelSQL, ModelView):
             i += 1
         return args2
 
-    def get_sale_exception_state(self, cursor, user, ids, name, arg,
-                                 context=None):
+    def get_sale_exception_state(self, cursor, user, ids, name, context=None):
         res = {}.fromkeys(ids, '')
         for move in self.browse(cursor, user, ids, context=context):
             if not move.sale_line:
@@ -1725,12 +1720,11 @@ Move()
 class Invoice(ModelSQL, ModelView):
     _name = 'account.invoice'
 
-    sale_exception_state = fields.Function('get_sale_exception_state',
-            type='selection',
-            selection=[('', ''),
-                       ('ignored', 'Ignored'),
-                       ('recreated', 'Recreated')],
-            string='Exception State')
+    sale_exception_state = fields.Function(fields.Selection([
+        ('', ''),
+        ('ignored', 'Ignored'),
+        ('recreated', 'Recreated'),
+        ], 'Exception State'), 'get_sale_exception_state')
 
     def __init__(self):
         super(Invoice, self).__init__()
@@ -1752,8 +1746,7 @@ class Invoice(ModelSQL, ModelView):
         return super(Invoice, self).button_draft(
             cursor, user, ids, context=context)
 
-    def get_sale_exception_state(self, cursor, user, ids, name, arg,
-                                 context=None):
+    def get_sale_exception_state(self, cursor, user, ids, name, context=None):
         sale_obj = self.pool.get('sale.sale')
         sale_ids = sale_obj.search(
             cursor, user, [('invoices', 'in', ids)], context=context)

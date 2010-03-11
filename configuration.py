@@ -7,11 +7,10 @@ from trytond.pyson import Eval
 class Configuration(ModelSingleton, ModelSQL, ModelView):
     _name = 'sale.configuration'
 
-    sale_sequence = fields.Property(type='many2one',
-            relation='ir.sequence', string='Sale Reference Sequence',
-            domain=[
-                ('company', 'in', [Eval('company'), False]),
-                ('code', '=', 'sale.sale'),
-            ], required=True)
+    sale_sequence = fields.Property(fields.Many2One('ir.sequence',
+        'Sale Reference Sequence', domain=[
+            ('company', 'in', [Eval('company'), False]),
+            ('code', '=', 'sale.sale'),
+        ], required=True))
 
 Configuration()
