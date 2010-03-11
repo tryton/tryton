@@ -9,16 +9,15 @@ from trytond.pyson import Eval
 class Employee(ModelSQL, ModelView, Cacheable):
     _name = 'company.employee'
 
-    cost_price = fields.Function('get_cost_price', string='Cost Price',
-            type='numeric', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'],
-            help="Hourly cost price for this Employee")
+    cost_price = fields.Function(fields.Numeric('Cost Price',
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'],
+        help="Hourly cost price for this Employee"), 'get_cost_price')
     cost_prices = fields.One2Many('company.employee_cost_price', 'employee',
             'Cost Prices', help="List of hourly cost price over time")
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['company'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['company']), 'get_currency_digits')
 
-    def get_cost_price(self, cursor, user, ids, name, arg, context=None):
+    def get_cost_price(self, cursor, user, ids, name, context=None):
         '''
         Return the cost price at the date given in the context or the
         current date
@@ -65,7 +64,7 @@ class Employee(ModelSQL, ModelView, Cacheable):
                     break
         return cost
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for employee in self.browse(cursor, user, ids, context=context):
             res[employee.id] = employee.company.currency.digits
@@ -105,8 +104,8 @@ class EmployeeCostPrice(ModelSQL, ModelView):
             required=True, depends=['currency_digits'],
             help="Hourly cost price")
     employee = fields.Many2One('company.employee', 'Employee')
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['employee'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['employee']), 'get_currency_digits')
 
     def __init__(self):
         super(EmployeeCostPrice, self).__init__()
@@ -135,7 +134,7 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         return super(EmployeeCostPrice , self).write(cursor, user, ids, vals,
                 context=context)
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for costprice in self.browse(cursor, user, ids, context=context):
             res[costprice.id] = costprice.employee.company.currency.digits

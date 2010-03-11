@@ -42,19 +42,18 @@ class Work(ModelSQL, ModelView):
             states={
                 'invisible': Not(Equal(Eval('type'), 'task')),
             }, depends=['type', 'currency_digits'])
-    revenue = fields.Function('get_revenue', type='numeric',
-            string='Revenue',
-            digits=(16, Eval('currency_digits', 2)),
-            states={
-                'invisible': Not(Equal(Eval('type'), 'project')),
-            }, depends=['type', 'currency_digits'])
-    cost = fields.Function('get_cost', string='Cost', type='numeric',
-            digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['company'])
+    revenue = fields.Function(fields.Numeric('Revenue',
+        digits=(16, Eval('currency_digits', 2)),
+        states={
+            'invisible': Not(Equal(Eval('type'), 'project')),
+        }, depends=['type', 'currency_digits']), 'get_revenue')
+    cost = fields.Function(fields.Numeric('Cost',
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+        'get_cost')
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['company']), 'get_currency_digits')
 
-    def get_cost(self, cursor, user, ids, name, arg, context=None):
+    def get_cost(self, cursor, user, ids, name, context=None):
         timesheet_line_obj = self.pool.get('timesheet.line')
         all_ids = self.search(cursor, user, [
                 ('parent', 'child_of', ids),
@@ -90,7 +89,7 @@ class Work(ModelSQL, ModelView):
 
         return res
 
-    def get_revenue(self, cursor, user, ids, name, arg, context=None):
+    def get_revenue(self, cursor, user, ids, name, context=None):
         all_ids = self.search(cursor, user, [
                 ('parent', 'child_of', ids),
                 ('active', '=', True)], context=context) + ids
@@ -125,7 +124,7 @@ class Work(ModelSQL, ModelView):
 
         return res
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for work in self.browse(cursor, user, ids, context=context):
             res[work.id] = work.company.currency.digits
