@@ -18,8 +18,8 @@ class Work(ModelSQL, ModelView):
     left = fields.Integer('Left', required=True, select=1)
     right = fields.Integer('Right', required=True, select=1)
     children = fields.One2Many('timesheet.work', 'parent', 'Children')
-    hours = fields.Function('get_hours', digits=(16, 2),
-            string='Timesheet Hours', help="Total time spent on this work")
+    hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
+        help="Total time spent on this work"), 'get_hours')
     timesheet_available = fields.Boolean('Available on timesheets',
             help="Allow to fill in timesheets with this work")
     company = fields.Many2One('company.company', 'Company', required=True)
@@ -71,7 +71,7 @@ class Work(ModelSQL, ModelView):
                 to_compute[h] = False
         return res
 
-    def get_hours(self, cursor, user, ids, name, arg, context=None):
+    def get_hours(self, cursor, user, ids, name, context=None):
         all_ids = self.search(cursor, user, [
                 ('parent', 'child_of', ids)
                 ], context=context)
@@ -102,7 +102,7 @@ class Work(ModelSQL, ModelView):
         self._tree_qty(hours_by_wt, children, ids, to_compute)
         return hours_by_wt
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}
