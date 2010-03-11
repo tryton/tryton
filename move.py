@@ -30,8 +30,8 @@ class Move(ModelSQL, ModelView):
             },
             on_change=['product', 'currency', 'uom', 'company',
                 'from_location', 'to_location'])
-    unit_digits = fields.Function('get_unit_digits', type='integer',
-            string='Unit Digits', on_change_with=['uom'])
+    unit_digits = fields.Function(fields.Integer('Unit Digits',
+        on_change_with=['uom']), 'get_unit_digits')
     quantity = fields.Float("Quantity", required=True,
             digits=(16, Eval('unit_digits', 2)), states=STATES)
     from_location = fields.Many2One("stock.location", "From Location", select=1,
@@ -80,9 +80,9 @@ class Move(ModelSQL, ModelView):
                 'required': Not(Bool(Eval('unit_price_required'))),
                 'readonly': Not(Equal(Eval('state'), 'draft')),
             })
-    unit_price_required = fields.Function('get_unit_price_required',
-            type='boolean', string='Unit Price Required',
-            on_change_with=['from_location', 'to_location'])
+    unit_price_required = fields.Function(fields.Boolean('Unit Price Required',
+        on_change_with=['from_location', 'to_location']),
+        'get_unit_price_required')
 
     def __init__(self):
         super(Move, self).__init__()
@@ -240,7 +240,7 @@ class Move(ModelSQL, ModelView):
             return uom.digits
         return 2
 
-    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_unit_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for move in self.browse(cursor, user, ids, context=context):
             res[move.id] = move.uom.digits
@@ -354,8 +354,7 @@ class Move(ModelSQL, ModelView):
                 return True
         return False
 
-    def get_unit_price_required(self, cursor, user, ids, name, arg,
-            context=None):
+    def get_unit_price_required(self, cursor, user, ids, name, context=None):
         res = {}
         for move in self.browse(cursor, user, ids, context=context):
             res[move.id] = False
@@ -371,7 +370,7 @@ class Move(ModelSQL, ModelView):
                 return False
         return True
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}

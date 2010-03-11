@@ -206,10 +206,9 @@ class InventoryLine(ModelSQL, ModelView):
 
     product = fields.Many2One('product.product', 'Product', required=True,
             domain=[('type', '=', 'stockable')], on_change=['product'])
-    uom = fields.Function('get_uom', type='many2one', relation='product.uom',
-            string='UOM')
-    unit_digits = fields.Function('get_unit_digits', type='integer',
-            string='Unit Digits')
+    uom = fields.Function(fields.Many2One('product.uom', 'UOM'), 'get_uom')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+            'get_unit_digits')
     expected_quantity = fields.Float('Expected Quantity',
             digits=(16, Eval('unit_digits', 2)), readonly=True)
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)))
@@ -243,13 +242,13 @@ class InventoryLine(ModelSQL, ModelView):
             res['unit_digits'] = product.default_uom.digits
         return res
 
-    def get_uom(self, cursor, user, ids, name, arg, context=None):
+    def get_uom(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             res[line.id] = line.product.default_uom.id
         return res
 
-    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_unit_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             res[line.id] = line.product.default_uom.digits

@@ -41,32 +41,28 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
                 'readonly': Or(In(Eval('state'), ['cancel', 'done']),
                     Bool(Eval('incoming_moves'))),
             })
-    incoming_moves = fields.Function('get_incoming_moves', type='one2many',
-            relation='stock.move', string='Incoming Moves',
-            fnct_inv='set_incoming_moves', add_remove=[
-                ('shipment_in', '=', False),
-                ('from_location.type', '=', 'supplier'),
-                ('state', '=', 'draft'),
-                ('to_location_warehouse', '=', Eval('warehouse')),
-            ],
-            states={
-                'readonly': Or(In(Eval('state'),
-                    ['received', 'done', 'cancel']),
-                    Not(Bool(Eval('warehouse')))),
-            }, context={
-                'warehouse': Eval('warehouse'),
-                'type': 'incoming',
-                'supplier': Eval('supplier'),
-            })
-    inventory_moves = fields.Function('get_inventory_moves', type='one2many',
-            relation='stock.move', string='Inventory Moves',
-            fnct_inv='set_inventory_moves',
-            states={
-                'readonly': In(Eval('state'), ['draft', 'done', 'cancel']),
-            }, context={
-                'warehouse': Eval('warehouse'),
-                'type': 'inventory_in',
-            })
+    incoming_moves = fields.Function(fields.One2Many('stock.move', None,
+        'Incoming Moves', add_remove=[
+            ('shipment_in', '=', False),
+            ('from_location.type', '=', 'supplier'),
+            ('state', '=', 'draft'),
+            ('to_location_warehouse', '=', Eval('warehouse')),
+        ],
+        states={
+            'readonly': Or(In(Eval('state'), ['received', 'done', 'cancel']),
+                Not(Bool(Eval('warehouse')))),
+        }, context={
+            'warehouse': Eval('warehouse'),
+            'type': 'incoming',
+            'supplier': Eval('supplier'),
+        }), 'get_incoming_moves', setter='set_incoming_moves')
+    inventory_moves = fields.Function(fields.One2Many('stock.move', None,
+        'Inventory Moves', states={
+            'readonly': In(Eval('state'), ['draft', 'done', 'cancel']),
+        }, context={
+            'warehouse': Eval('warehouse'),
+            'type': 'inventory_in',
+        }), 'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_in', 'Moves',
             readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True)
@@ -152,7 +148,7 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
                                           context=context)
         return {'contact_address': address_id}
 
-    def get_incoming_moves(self, cursor, user, ids, name, arg, context=None):
+    def get_incoming_moves(self, cursor, user, ids, name, context=None):
         res = {}
         for shipment in self.browse(cursor, user, ids, context=context):
             res[shipment.id] = []
@@ -161,28 +157,31 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
                     res[shipment.id].append(move.id)
         return res
 
-    def set_incoming_moves(self, cursor, user, shipment_id, name, value, arg,
-            context=None):
+    def set_incoming_moves(self, cursor, user, ids, name, value, context=None):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+        shipments = self.browse(cursor, user, ids, context=context)
         move_ids = []
         for act in value:
             if act[0] == 'create':
                 if 'to_location' in act[1]:
-                    if act[1]['to_location'] != \
-                            shipment.warehouse.input_location.id:
-                        self.raise_user_error(cursor,
-                                'incoming_move_input_dest', context=context)
+                    for shipment in shipments:
+                        if act[1]['to_location'] != \
+                                shipment.warehouse.input_location.id:
+                            self.raise_user_error(cursor,
+                                    'incoming_move_input_dest',
+                                    context=context)
             elif act[0] == 'write':
                 if 'to_location' in act[2]:
-                    if act[2]['to_location'] != \
-                            shipment.warehouse.input_location.id:
-                        self.raise_user_error(cursor,
-                                'incoming_move_input_dest', context=context)
+                    for shipment in shipments:
+                        if act[2]['to_location'] != \
+                                shipment.warehouse.input_location.id:
+                            self.raise_user_error(cursor,
+                                    'incoming_move_input_dest',
+                                    context=context)
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -193,16 +192,17 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
 
         moves = move_obj.browse(cursor, user, move_ids, context=context)
         for move in moves:
-            if move.to_location.id != \
-                    shipment.warehouse.input_location.id:
-                self.raise_user_error(cursor,
-                        'incoming_move_input_dest', context=context)
+            for shipment in shipments:
+                if move.to_location.id != \
+                        shipment.warehouse.input_location.id:
+                    self.raise_user_error(cursor, 'incoming_move_input_dest',
+                            context=context)
 
-        self.write(cursor, user, shipment_id, {
+        self.write(cursor, user, ids, {
             'moves': value,
             }, context=context)
 
-    def get_inventory_moves(self, cursor, user, ids, name, arg, context=None):
+    def get_inventory_moves(self, cursor, user, ids, name, context=None):
         res = {}
         for shipment in self.browse(cursor, user, ids, context=context):
             res[shipment.id] = []
@@ -211,28 +211,32 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
                     res[shipment.id].append(move.id)
         return res
 
-    def set_inventory_moves(self, cursor, user, shipment_id, name, value, arg,
+    def set_inventory_moves(self, cursor, user, ids, name, value,
             context=None):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+        shipments = self.browse(cursor, user, ids, context=context)
         move_ids = []
         for act in value:
             if act[0] == 'create':
                 if 'from_location' in act[1]:
-                    if act[1]['from_location'] != \
-                            shipment.warehouse.input_location.id:
-                        self.raise_user_error(cursor,
-                                'inventory_move_input_source', context=context)
+                    for shipment in shipments:
+                        if act[1]['from_location'] != \
+                                shipment.warehouse.input_location.id:
+                            self.raise_user_error(cursor,
+                                    'inventory_move_input_source',
+                                    context=context)
             elif act[0] == 'write':
                 if 'from_location' in act[2]:
-                    if act[2]['from_location'] != \
-                            shipment.warehouse.input_location.id:
-                        self.raise_user_error(cursor,
-                                'inventory_move_input_source', context=context)
+                    for shipment in shipments:
+                        if act[2]['from_location'] != \
+                                shipment.warehouse.input_location.id:
+                            self.raise_user_error(cursor,
+                                    'inventory_move_input_source',
+                                    context=context)
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -243,12 +247,13 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
 
         moves = move_obj.browse(cursor, user, move_ids, context=context)
         for move in moves:
-            if move.from_location.id != \
-                    shipment.warehouse.input_location.id:
-                self.raise_user_error(cursor,
-                        'inventory_move_input_source', context=context)
+            for shipment in shipments:
+                if move.from_location.id != \
+                        shipment.warehouse.input_location.id:
+                    self.raise_user_error(cursor,
+                            'inventory_move_input_source', context=context)
 
-        self.write(cursor, user, shipment_id, {
+        self.write(cursor, user, ids, {
             'moves': value,
             }, context=context)
 
@@ -586,26 +591,22 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                 'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                     Bool(Eval('outgoing_moves'))),
             }, domain=[('type', '=', 'warehouse')])
-    outgoing_moves = fields.Function('get_outgoing_moves', type='one2many',
-            relation='stock.move', string='Outgoing Moves',
-            fnct_inv='set_outgoing_moves',
-            states={
-                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                    Not(Bool(Eval('warehouse')))),
-            }, context={
-                'warehouse': Eval('warehouse'),
-                'type': 'outgoing',
-                'customer': Eval('customer'),
-            })
-    inventory_moves = fields.Function('get_inventory_moves', type='one2many',
-            relation='stock.move', string='Inventory Moves',
-            fnct_inv='set_inventory_moves',
-            states={
-                'readonly': In(Eval('state'), ['draft', 'packed', 'done']),
-            }, context={
-                'warehouse': Eval('warehouse'),
-                'type': 'inventory_out',
-            })
+    outgoing_moves = fields.Function(fields.One2Many('stock.move', None,
+        'Outgoing Moves', states={
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Not(Bool(Eval('warehouse')))),
+        }, context={
+            'warehouse': Eval('warehouse'),
+            'type': 'outgoing',
+            'customer': Eval('customer'),
+        }), 'get_outgoing_moves', setter='set_outgoing_moves')
+    inventory_moves = fields.Function(fields.One2Many('stock.move', None,
+        'Inventory Moves', states={
+            'readonly': In(Eval('state'), ['draft', 'packed', 'done']),
+        }, context={
+            'warehouse': Eval('warehouse'),
+            'type': 'inventory_out',
+        }), 'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_out', 'Moves',
             readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True)
@@ -677,7 +678,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         return {
                 'delivery_address': address_id}
 
-    def get_outgoing_moves(self, cursor, user, ids, name, arg, context=None):
+    def get_outgoing_moves(self, cursor, user, ids, name, context=None):
         res = {}
         for shipment in self.browse(cursor, user, ids, context=context):
             res[shipment.id] = []
@@ -687,28 +688,31 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     res[shipment.id].append(move.id)
         return res
 
-    def set_outgoing_moves(self, cursor, user, shipment_id, name, value, arg,
-            context=None):
+    def set_outgoing_moves(self, cursor, user, ids, name, value, context=None):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+        shipments = self.browse(cursor, user, ids, context=context)
         move_ids = []
         for act in value:
             if act[0] == 'create':
                 if 'from_location' in act[1]:
-                    if act[1]['from_location'] != \
-                            shipment.warehouse.output_location.id:
-                        self.raise_user_error(cursor,
-                                'outgoing_move_output_source', context=context)
+                    for shipment in shipments:
+                        if act[1]['from_location'] != \
+                                shipment.warehouse.output_location.id:
+                            self.raise_user_error(cursor,
+                                    'outgoing_move_output_source',
+                                    context=context)
             elif act[0] == 'write':
                 if 'from_location' in act[2]:
-                    if act[2]['from_location'] != \
-                            shipment.warehouse.output_location.id:
-                        self.raise_user_error(cursor,
-                                'outgoing_move_output_source', context=context)
+                    for shipment in shipments:
+                        if act[2]['from_location'] != \
+                                shipment.warehouse.output_location.id:
+                            self.raise_user_error(cursor,
+                                    'outgoing_move_output_source',
+                                    context=context)
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -719,15 +723,16 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
 
         moves = move_obj.browse(cursor, user, move_ids, context=context)
         for move in moves:
-            if move.from_location.id != \
-                    shipment.warehouse.output_location.id:
-                self.raise_user_error(cursor,
-                        'outgoing_move_output_source', context=context)
-        self.write(cursor, user, shipment_id, {
+            for shipment in shipments:
+                if move.from_location.id != \
+                        shipment.warehouse.output_location.id:
+                    self.raise_user_error(cursor,
+                            'outgoing_move_output_source', context=context)
+        self.write(cursor, user, ids, {
             'moves': value,
             }, context=context)
 
-    def get_inventory_moves(self, cursor, user, ids, name, arg, context=None):
+    def get_inventory_moves(self, cursor, user, ids, name, context=None):
         res = {}
         for shipment in self.browse(cursor, user, ids, context=context):
             res[shipment.id] = []
@@ -737,28 +742,32 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     res[shipment.id].append(move.id)
         return res
 
-    def set_inventory_moves(self, cursor, user, shipment_id, name, value, arg,
+    def set_inventory_moves(self, cursor, user, ids, name, value,
             context=None):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+        shipments = self.browse(cursor, user, ids, context=context)
         move_ids = []
         for act in value:
             if act[0] == 'create':
                 if 'to_location' in act[1]:
-                    if act[1]['to_location'] != \
-                            shipment.warehouse.output_location.id:
-                        self.raise_user_error(cursor,
-                                'inventory_move_output_dest', context=context)
+                    for shipment in shipments:
+                        if act[1]['to_location'] != \
+                                shipment.warehouse.output_location.id:
+                            self.raise_user_error(cursor,
+                                    'inventory_move_output_dest',
+                                    context=context)
             elif act[0] == 'write':
                 if 'to_location' in act[2]:
-                    if act[2]['to_location'] != \
-                            shipment.warehouse.output_location.id:
-                        self.raise_user_error(cursor,
-                                'inventory_move_output_dest', context=context)
+                    for shipment in shipments:
+                        if act[2]['to_location'] != \
+                                shipment.warehouse.output_location.id:
+                            self.raise_user_error(cursor,
+                                    'inventory_move_output_dest',
+                                    context=context)
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -769,11 +778,12 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
 
         moves = move_obj.browse(cursor, user, move_ids, context=context)
         for move in moves:
-            if move.to_location.id != \
-                    shipment.warehouse.output_location.id:
-                self.raise_user_error(cursor,
-                        'inventory_move_output_dest', context=context)
-        self.write(cursor, user, shipment_id, {
+            for shipment in shipments:
+                if move.to_location.id != \
+                        shipment.warehouse.output_location.id:
+                    self.raise_user_error(cursor, 'inventory_move_output_dest',
+                            context=context)
+        self.write(cursor, user, ids, {
             'moves': value,
             }, context=context)
 
@@ -1022,25 +1032,21 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                 'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                     Bool(Eval('incoming_moves'))),
             }, domain=[('type', '=', 'warehouse')])
-    incoming_moves = fields.Function('get_incoming_moves', type='one2many',
-            relation='stock.move', string='Incoming Moves',
-            fnct_inv='set_incoming_moves',
-            states={
-                'readonly': Not(Equal(Eval('state'), 'draft')),
-            }, context={
-                'warehouse': Eval('warehouse'),
-                'type': 'incoming',
-                'customer': Eval('customer'),
-            })
-    inventory_moves = fields.Function('get_inventory_moves', type='one2many',
-            relation='stock.move', string='Inventory Moves',
-            fnct_inv='set_inventory_moves',
-            states={
-                'readonly': In(Eval('state'), ['draft', 'cancel', 'done']),
-            }, context={
-                'warehouse': Eval('warehouse'),
-                'type': 'inventory_out',
-            })
+    incoming_moves = fields.Function(fields.One2Many('stock.move', None,
+        'Incoming Moves', states={
+            'readonly': Not(Equal(Eval('state'), 'draft')),
+        }, context={
+            'warehouse': Eval('warehouse'),
+            'type': 'incoming',
+            'customer': Eval('customer'),
+        }), 'get_incoming_moves', setter='set_incoming_moves')
+    inventory_moves = fields.Function(fields.One2Many('stock.move', None,
+        'Inventory Moves', states={
+            'readonly': In(Eval('state'), ['draft', 'cancel', 'done']),
+        }, context={
+            'warehouse': Eval('warehouse'),
+            'type': 'inventory_out',
+        }), 'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_out_return', 'Moves',
             readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True)
@@ -1115,7 +1121,7 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                 'delivery_address': address_id,
             }
 
-    def get_incoming_moves(self, cursor, user, ids, name, arg, context=None):
+    def get_incoming_moves(self, cursor, user, ids, name, context=None):
         res = {}
         for shipment in self.browse(cursor, user, ids, context=context):
             res[shipment.id] = []
@@ -1125,28 +1131,31 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                     res[shipment.id].append(move.id)
         return res
 
-    def set_incoming_moves(self, cursor, user, shipment_id, name, value, arg,
-            context=None):
+    def set_incoming_moves(self, cursor, user, ids, name, value, context=None):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+        shipments = self.browse(cursor, user, ids, context=context)
         move_ids = []
         for act in value:
             if act[0] == 'create':
                 if 'to_location' in act[1]:
-                    if act[1]['to_location'] != \
-                            shipment.warehouse.input_location.id:
-                        self.raise_user_error(cursor,
-                                'incoming_move_input_dest', context=context)
+                    for shipment in shipments:
+                        if act[1]['to_location'] != \
+                                shipment.warehouse.input_location.id:
+                            self.raise_user_error(cursor,
+                                    'incoming_move_input_dest',
+                                    context=context)
             elif act[0] == 'write':
                 if 'to_location' in act[2]:
-                    if act[2]['to_location'] != \
-                            shipment.warehouse.input_location.id:
-                        self.raise_user_error(cursor,
-                                'incoming_move_input_dest', context=context)
+                    for shipment in shipments:
+                        if act[2]['to_location'] != \
+                                shipment.warehouse.input_location.id:
+                            self.raise_user_error(cursor,
+                                    'incoming_move_input_dest',
+                                    context=context)
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -1157,15 +1166,17 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
 
         moves = move_obj.browse(cursor, user, move_ids, context=context)
         for move in moves:
-            if move.to_location.id != \
-                    shipment.warehouse.input_location.id:
-                self.raise_user_error(cursor,
-                        'incoming_move_input_dest', context=context)
-        self.write(cursor, user, shipment_id, {
+            for shipment in shipments:
+                if move.to_location.id != \
+                        shipment.warehouse.input_location.id:
+                    self.raise_user_error(cursor, 'incoming_move_input_dest',
+                            context=context)
+
+        self.write(cursor, user, ids, {
             'moves': value,
             }, context=context)
 
-    def get_inventory_moves(self, cursor, user, ids, name, arg, context=None):
+    def get_inventory_moves(self, cursor, user, ids, name, context=None):
         res = {}
         for shipment in self.browse(cursor, user, ids, context=context):
             res[shipment.id] = []
@@ -1175,28 +1186,32 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                     res[shipment.id].append(move.id)
         return res
 
-    def set_inventory_moves(self, cursor, user, shipment_id, name, value, arg,
+    def set_inventory_moves(self, cursor, user, ids, name, value,
             context=None):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+        shipments = self.browse(cursor, user, ids, context=context)
         move_ids = []
         for act in value:
             if act[0] == 'create':
                 if 'from_location' in act[1]:
-                    if act[1]['from_location'] != \
-                            shipment.warehouse.input_location.id:
-                        self.raise_user_error(cursor,
-                                'inventory_move_input_source', context=context)
+                    for shipment in shipments:
+                        if act[1]['from_location'] != \
+                                shipment.warehouse.input_location.id:
+                            self.raise_user_error(cursor,
+                                    'inventory_move_input_source',
+                                    context=context)
             elif act[0] == 'write':
                 if 'from_location' in act[2]:
-                    if act[2]['from_location'] != \
-                            shipment.warehouse.input_location.id:
-                        self.raise_user_error(cursor,
-                                'inventory_move_input_source', context=context)
+                    for shipment in shipments:
+                        if act[2]['from_location'] != \
+                                shipment.warehouse.input_location.id:
+                            self.raise_user_error(cursor,
+                                    'inventory_move_input_source',
+                                    context=context)
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -1207,11 +1222,13 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
 
         moves = move_obj.browse(cursor, user, move_ids, context=context)
         for move in moves:
-            if move.from_location.id != \
-                    shipment.warehouse.input_location.id:
-                self.raise_user_error(cursor,
-                        'inventory_move_input_source', context=context)
-        self.write(cursor, user, shipment_id, {
+            for shipment in shipments:
+                if move.from_location.id != \
+                        shipment.warehouse.input_location.id:
+                    self.raise_user_error(cursor,
+                            'inventory_move_input_source', context=context)
+
+        self.write(cursor, user, ids, {
             'moves': value,
             }, context=context)
 

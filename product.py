@@ -9,11 +9,11 @@ import datetime
 class Template(ModelSQL, ModelView):
     _name = "product.template"
 
-    quantity = fields.Function('get_quantity', type='float', string='Quantity')
-    forecast_quantity = fields.Function('get_quantity', type='float',
-            string='Forecast Quantity')
+    quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
+    forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
+            'get_quantity')
 
-    def get_quantity(self, cursor, user, ids, name, args, context=None):
+    def get_quantity(self, cursor, user, ids, name, context=None):
         res = {}
         if name not in ('quantity', 'forecast_quantity'):
             raise Exception('Bad argument')
@@ -61,12 +61,12 @@ Template()
 class Product(ModelSQL, ModelView):
     _name = "product.product"
 
-    quantity = fields.Function('get_quantity', type='float', string='Quantity',
-            fnct_search='search_quantity')
-    forecast_quantity = fields.Function('get_quantity', type='float',
-            string='Forecast Quantity', fnct_search='search_quantity')
+    quantity = fields.Function(fields.Float('Quantity'), 'get_quantity',
+            searcher='search_quantity')
+    forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
+            'get_quantity', searcher='search_quantity')
 
-    def get_quantity(self, cursor, user, ids, name, args, context=None):
+    def get_quantity(self, cursor, user, ids, name, context=None):
         date_obj = self.pool.get('ir.date')
 
         if not (context and context.get('locations')):

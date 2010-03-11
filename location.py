@@ -72,9 +72,9 @@ class Location(ModelSQL, ModelView):
             ['OR',
                 ('parent', 'child_of', [Eval('active_id')]),
                 ('parent', '=', False)]])
-    quantity = fields.Function('get_quantity', type='float', string='Quantity')
-    forecast_quantity = fields.Function('get_quantity', type='float',
-                                        string='Forecast Quantity')
+    quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
+    forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
+            'get_quantity')
 
     def __init__(self):
         super(Location, self).__init__()
@@ -136,7 +136,7 @@ class Location(ModelSQL, ModelView):
             i += 1
         return args2
 
-    def get_quantity(self, cursor, user, ids, name, arg, context=None):
+    def get_quantity(self, cursor, user, ids, name, context=None):
         product_obj = self.pool.get('product.product')
         date_obj = self.pool.get('ir.date')
 
@@ -320,16 +320,14 @@ Location()
 
 class Party(ModelSQL, ModelView):
     _name = 'party.party'
-    supplier_location = fields.Property(type='many2one',
-            relation='stock.location', string='Supplier Location',
-            domain=[('type', '=', 'supplier')],
-            help='The default source location ' \
-                    'when receiving products from the party.')
-    customer_location = fields.Property(type='many2one',
-            relation='stock.location', string='Customer Location',
-            domain=[('type', '=', 'customer')],
-            help='The default destination location ' \
-                    'when sending products to the party.')
+    supplier_location = fields.Property(fields.Many2One('stock.location',
+        'Supplier Location', domain=[('type', '=', 'supplier')],
+        help='The default source location when receiving products from the '
+        'party.'))
+    customer_location = fields.Property(fields.Many2One('stock.location',
+        'Customer Location', domain=[('type', '=', 'customer')],
+        help='The default destination location when sending products to the '
+        'party.'))
 
 Party()
 
