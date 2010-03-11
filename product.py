@@ -22,18 +22,18 @@ class Template(ModelSQL, ModelView):
         ], 'Type', required=True, states=STATES)
     category = fields.Many2One('product.category','Category', required=True,
             states=STATES)
-    list_price = fields.Property(type='numeric', string='List Price',
-            states=STATES, digits=(16, 4))
-    list_price_uom = fields.Function('get_price_uom', string='List Price',
-            type="numeric", digits=(16, 4))
-    cost_price = fields.Property(type='numeric', string='Cost Price',
-            states=STATES, digits=(16, 4))
-    cost_price_uom = fields.Function('get_price_uom', string='Cost Price',
-            type="numeric", digits=(16, 4), states=STATES)
-    cost_price_method = fields.Property(type='selection', selection=[
+    list_price = fields.Property(fields.Numeric('List Price', states=STATES,
+        digits=(16, 4)))
+    list_price_uom = fields.Function(fields.Numeric('List Price',
+        digits=(16, 4)), 'get_price_uom')
+    cost_price = fields.Property(fields.Numeric('Cost Price',
+            states=STATES, digits=(16, 4)))
+    cost_price_uom = fields.Function(fields.Numeric('Cost Price',
+        digits=(16, 4)), 'get_price_uom')
+    cost_price_method = fields.Property(fields.Selection([
         ("fixed", "Fixed"),
         ("average", "Average")
-        ], string="Cost Method", required=True, states=STATES)
+        ], 'Cost Method', required=True, states=STATES))
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
             states=STATES)
     active = fields.Boolean('Active', select=1)
@@ -89,7 +89,7 @@ class Product(ModelSQL, ModelView):
     code = fields.Char("Code", size=None, select=1)
     description = fields.Text("Description", translate=True)
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}

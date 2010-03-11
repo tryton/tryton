@@ -17,7 +17,7 @@ class Category(ModelSQL, ModelView):
         super(Category, self).__init__()
         self._order.insert(0, ('name', 'ASC'))
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}
