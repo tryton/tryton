@@ -35,36 +35,36 @@ class ContactMechanism(ModelSQL, ModelView):
             ondelete='CASCADE', states=STATES, select=1)
     active = fields.Boolean('Active', select=1)
     sequence = fields.Integer('Sequence')
-    email = fields.Function('get_value', fnct_inv='set_value', type='char',
-            string="E-Mail", states={
-                'invisible': Not(Equal(Eval('type'), 'email')),
-                'required': Equal(Eval('type'), 'email'),
-                'readonly': Not(Bool(Eval('active'))),
-            }, on_change=['email'], depends=['value', 'type', 'active'])
-    website = fields.Function('get_value', fnct_inv='set_value', type='char',
-            string="Website", states={
-                'invisible': Not(Equal(Eval('type'), 'website')),
-                'required': Equal(Eval('type'), 'website'),
-                'readonly': Not(Bool(Eval('active'))),
-            }, on_change=['website'], depends=['value', 'type', 'active'])
-    skype = fields.Function('get_value', fnct_inv='set_value', type='char',
-            string="Skype", states={
-                'invisible': Not(Equal(Eval('type'), 'skype')),
-                'required': Equal(Eval('type'), 'skype'),
-                'readonly': Not(Bool(Eval('active'))),
-            }, on_change=['skype'], depends=['value', 'type', 'active'])
-    sip = fields.Function('get_value', fnct_inv='set_value', type='char',
-            string="SIP", states={
-                'invisible': Not(Equal(Eval('type'), 'sip')),
-                'required': Equal(Eval('type'), 'sip'),
-                'readonly': Not(Bool(Eval('active'))),
-            }, on_change=['sip'], depends=['value', 'type', 'active'])
-    other_value = fields.Function('get_value', fnct_inv='set_value',
-            type='char', string='Value', states={
-                'invisible': In(Eval('type'), ['email', 'website', 'skype', 'sip']),
-                'required': Not(In(Eval('type'), ['email', 'website'])),
-                'readonly': Not(Bool(Eval('active'))),
-            }, on_change=['other_value'], depends=['value', 'type', 'active'])
+    email = fields.Function(fields.Char('E-Mail', states={
+        'invisible': Not(Equal(Eval('type'), 'email')),
+        'required': Equal(Eval('type'), 'email'),
+        'readonly': Not(Bool(Eval('active'))),
+        }, on_change=['email'], depends=['value', 'type', 'active']),
+        'get_value', setter='set_value')
+    website = fields.Function(fields.Char('Website', states={
+        'invisible': Not(Equal(Eval('type'), 'website')),
+        'required': Equal(Eval('type'), 'website'),
+        'readonly': Not(Bool(Eval('active'))),
+        }, on_change=['website'], depends=['value', 'type', 'active']),
+        'get_value', setter='set_value')
+    skype = fields.Function(fields.Char('Skype',states={
+        'invisible': Not(Equal(Eval('type'), 'skype')),
+        'required': Equal(Eval('type'), 'skype'),
+        'readonly': Not(Bool(Eval('active'))),
+        }, on_change=['skype'], depends=['value', 'type', 'active']),
+        'get_value', setter='set_value')
+    sip = fields.Function(fields.Char('SIP', states={
+        'invisible': Not(Equal(Eval('type'), 'sip')),
+        'required': Equal(Eval('type'), 'sip'),
+        'readonly': Not(Bool(Eval('active'))),
+        }, on_change=['sip'], depends=['value', 'type', 'active']),
+        'get_value', setter='set_value')
+    other_value = fields.Function(fields.Char('Value', states={
+        'invisible': In(Eval('type'), ['email', 'website', 'skype', 'sip']),
+        'required': Not(In(Eval('type'), ['email', 'website'])),
+        'readonly': Not(Bool(Eval('active'))),
+        }, on_change=['other_value'], depends=['value', 'type', 'active']),
+        'get_value', setter='set_value')
 
     def __init__(self):
         super(ContactMechanism, self).__init__()
@@ -81,7 +81,7 @@ class ContactMechanism(ModelSQL, ModelView):
     def default_active(self, cursor, user, context=None):
         return True
 
-    def get_value(self, cursor, user, ids, names, arg, context=None):
+    def get_value(self, cursor, user, ids, names, context=None):
         res = {}
         for name in names:
             res[name] = {}
@@ -90,8 +90,8 @@ class ContactMechanism(ModelSQL, ModelView):
                 res[name][mechanism.id] = mechanism.value
         return res
 
-    def set_value(self, cursor, user, obj_id, name, value, arg, context=None):
-        self.write(cursor, user, obj_id, {
+    def set_value(self, cursor, user, ids, name, value, context=None):
+        self.write(cursor, user, ids, {
             'value': value,
             }, context=context)
 

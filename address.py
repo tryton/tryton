@@ -31,7 +31,8 @@ class Address(ModelSQL, ModelView):
             states=STATES)
     active = fields.Boolean('Active')
     sequence = fields.Integer("Sequence")
-    full_address = fields.Function('get_full_address', type='text')
+    full_address = fields.Function(fields.Text('Full Address'),
+            'get_full_address')
 
     def __init__(self):
         super(Address, self).__init__()
@@ -44,7 +45,7 @@ class Address(ModelSQL, ModelView):
     def default_active(self, cursor, user, context=None):
         return True
 
-    def get_full_address(self, cursor, user, ids, name, arg, context=None):
+    def get_full_address(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}
@@ -80,7 +81,7 @@ class Address(ModelSQL, ModelView):
                     res[address.id] += address.country.name
         return res
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}

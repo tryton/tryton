@@ -46,7 +46,7 @@ class Category(ModelSQL, ModelView):
                 return False
         return True
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}

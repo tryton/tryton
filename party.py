@@ -38,8 +38,8 @@ class Party(ModelSQL, ModelView):
     vat_country = fields.Selection(VAT_COUNTRIES, 'VAT Country', states=STATES,
         help="Setting VAT country will enable validation of the VAT number.",
         translate=False)
-    vat_code = fields.Function('get_vat_code', type='char', string="VAT Code",
-            fnct_search='search_vat_code')
+    vat_code = fields.Function(fields.Char('VAT Code'), 'get_vat_code',
+            searcher='search_vat_code')
     addresses = fields.One2Many('party.address', 'party',
            'Addresses', states=STATES)
     contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
@@ -47,17 +47,12 @@ class Party(ModelSQL, ModelView):
     categories = fields.Many2Many('party.party-party.category',
             'party', 'category', 'Categories', states=STATES)
     active = fields.Boolean('Active', select=1)
-    full_name = fields.Function('get_full_name', type='char')
-    phone = fields.Function('get_mechanism', arg='phone', type='char',
-            string='Phone')
-    mobile = fields.Function('get_mechanism', arg='mobile', type='char',
-            string='Mobile')
-    fax = fields.Function('get_mechanism', arg='fax', type='char',
-            string='Fax')
-    email = fields.Function('get_mechanism', arg='email', type='char',
-            string='E-Mail')
-    website = fields.Function('get_mechanism', arg='website', type='char',
-            string='Website')
+    full_name = fields.Function(fields.Char('Full Name'), 'get_full_name')
+    phone = fields.Function(fields.Char('Phone'), 'get_mechanism')
+    mobile = fields.Function(fields.Char('Mobile'), 'get_mechanism')
+    fax = fields.Function(fields.Char('Fax'), 'get_mechanism')
+    email = fields.Function(fields.Char('E-Mail'), 'get_mechanism')
+    website = fields.Function(fields.Char('Website'), 'get_mechanism')
 
     def __init__(self):
         super(Party, self).__init__()
@@ -81,7 +76,7 @@ class Party(ModelSQL, ModelView):
             context = {}
         return context.get('categories', [])
 
-    def get_vat_code(self, cursor, user, ids, name, arg, context=None):
+    def get_vat_code(self, cursor, user, ids, name, context=None):
         if not ids:
             return []
         res = {}
@@ -105,7 +100,7 @@ class Party(ModelSQL, ModelView):
             i += 1
         return args2
 
-    def get_full_name(self, cursor, user, ids, name, arg, context=None):
+    def get_full_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return []
         res = {}
@@ -113,14 +108,14 @@ class Party(ModelSQL, ModelView):
             res[party.id] = party.name
         return res
 
-    def get_mechanism(self, cursor, user, ids, name, arg, context=None):
+    def get_mechanism(self, cursor, user, ids, name, context=None):
         if not ids:
             return []
         res = {}
         for party in self.browse(cursor, user, ids, context=context):
             res[party.id] = ''
             for mechanism in party.contact_mechanisms:
-                if mechanism.type == arg:
+                if mechanism.type == name:
                     res[party.id] = mechanism.value
                     break
         return res
