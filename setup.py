@@ -53,9 +53,6 @@ setup(name='trytond_party_siret',
     ],
     license='GPL-3',
     install_requires=requires,
-    extras_require={
-        'VAT': ['vatnumber'],
-    },
     zip_safe=False,
     entry_points="""
     [trytond.modules]
