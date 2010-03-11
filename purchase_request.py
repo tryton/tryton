@@ -27,9 +27,8 @@ class PurchaseRequest(ModelSQL, ModelView):
         domain=[('type', '=', 'warehouse')], readonly=True)
     purchase_line = fields.Many2One(
         'purchase.line', 'Purchase Line',readonly=True)
-    purchase = fields.Function(
-        'get_purchase', type='many2one', relation='purchase.purchase',
-        string='Purchase')
+    purchase = fields.Function(fields.Many2One('purchase.purchase',
+        'Purchase'), 'get_purchase')
     company = fields.Many2One('company.company', 'Company', required=True,
             readonly=True, domain=[
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
@@ -37,13 +36,12 @@ class PurchaseRequest(ModelSQL, ModelView):
             ])
     origin = fields.Reference('Origin', selection='origin_get', readonly=True,
             required=True)
-    state = fields.Function(
-        'get_state', type='selection',
-        selection=[("purchased", "Purchased"),
-                   ("done", "Done"),
-                   ("draft", "Draft"),
-                   ("cancel", "Cancel")],
-        string="State", readonly=True)
+    state = fields.Function(fields.Selection([
+        ('purchased', 'Purchased'),
+        ('done', 'Done'),
+        ('draft', 'Draft'),
+        ('cancel', 'Cancel'),
+        ], 'State'), 'get_state')
 
     def __init__(self):
         super(PurchaseRequest, self).__init__()
@@ -52,7 +50,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             'create_request': 'Purchase requests are only created by the system.',
             })
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if isinstance(ids, (int, long)):
             ids = [ids]
         res = {}
@@ -78,7 +76,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             return context['company']
         return False
 
-    def get_purchase(self, cursor, user, ids, name, args, context=None):
+    def get_purchase(self, cursor, user, ids, name, context=None):
         res = {}
 
         requests = self.browse(cursor, user, ids, context=context)
@@ -89,7 +87,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                 res[request.id] = False
         return res
 
-    def get_state(self, cursor, user, ids, name, args, context=None):
+    def get_state(self, cursor, user, ids, name, context=None):
         res = {}.fromkeys(ids, 'draft')
         for request in self.browse(cursor, user, ids, context=context):
             if request.purchase_line:

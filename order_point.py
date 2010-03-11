@@ -36,9 +36,8 @@ class OrderPoint(ModelSQL, ModelView):
             'invisible': Not(Equal(Eval('type'), 'internal')),
             'required': Equal(Eval('type'), 'internal'),
         })
-    location = fields.Function(
-        'get_location', type='many2one', relation='stock.location',
-        fnct_search='search_location', string='Location')
+    location = fields.Function(fields.Many2One('stock.location', 'Location'),
+            'get_location', searcher='search_location')
     provisioning_location = fields.Many2One(
         'stock.location', 'Provisioning Location',
         domain=[('type', '=', 'storage')],
@@ -59,10 +58,9 @@ class OrderPoint(ModelSQL, ModelView):
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
                     Get(Eval('context', {}), 'company', 0)),
             ])
-    unit = fields.Function('get_unit', type='many2one', relation='product.uom',
-            string='Unit')
-    unit_digits = fields.Function('get_unit_digits', type='integer',
-            string='Unit Digits')
+    unit = fields.Function(fields.Many2One('product.uom', 'Unit'), 'get_unit')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+            'get_unit_digits')
 
     def __init__(self):
         super(OrderPoint, self).__init__()
@@ -99,13 +97,13 @@ class OrderPoint(ModelSQL, ModelView):
             res['unit_digits'] = product.default_uom.digits
         return res
 
-    def get_unit(self, cursor, user, ids, name, arg, context=None):
+    def get_unit(self, cursor, user, ids, name, context=None):
         res = {}
         for order in self.browse(cursor, user, ids, context=context):
             res[order.id] = order.product.default_uom.id
         return res
 
-    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_unit_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for order in self.browse(cursor, user, ids, context=context):
             res[order.id] = order.product.default_uom.digits
@@ -159,7 +157,7 @@ class OrderPoint(ModelSQL, ModelView):
         ids = self.search(cursor, user, query)
         return not bool(ids)
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         if isinstance(ids, (int, long)):
@@ -180,7 +178,7 @@ class OrderPoint(ModelSQL, ModelView):
             i += 1
         return args2
 
-    def get_location(self, cursor, user, ids, name, args, context=None):
+    def get_location(self, cursor, user, ids, name, context=None):
         location_obj = self.pool.get('stock.location')
         res = {}
         for op in self.browse(cursor, user, ids, context=context):
