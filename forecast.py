@@ -181,8 +181,8 @@ class ForecastLine(ModelSQL, ModelView):
             ('category', '=',
                 (Eval('product'), 'product.default_uom.category')),
         ])
-    unit_digits = fields.Function('get_unit_digits', type='integer',
-            string='Unit Digits')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+            'get_unit_digits')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
             required=True)
     minimal_quantity = fields.Float('Minimal Qty',
@@ -223,7 +223,7 @@ class ForecastLine(ModelSQL, ModelView):
             res['unit_digits'] = product.default_uom.digits
         return res
 
-    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_unit_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             res[line.id] = line.product.default_uom.digits
