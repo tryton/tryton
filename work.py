@@ -60,13 +60,12 @@ class Work(ModelSQL, ModelView):
             states={
                 'invisible': Not(Equal(Eval('type'), 'task')),
             }, depends=['type'], help="Estimated Effort for this work")
-    total_effort = fields.Function('get_total_effort', type='float',
-            string='Total Effort',
-            help="Estimated total effort for this work and the sub-works")
+    total_effort = fields.Function(fields.Float('Total Effort',
+        help="Estimated total effort for this work and the sub-works"),
+        'get_total_effort')
     comment = fields.Text('Comment')
-    parent = fields.Function('get_parent', fnct_inv='set_parent',
-            fnct_search='search_parent', string='Parent',
-            relation='project.work', type="many2one")
+    parent = fields.Function(fields.Many2One('project.work', 'Parent'),
+            'get_parent', setter='set_parent', searcher='search_parent')
     children = fields.One2Many('project.work', 'parent', 'Children')
     state = fields.Selection([
             ('opened', 'Opened'),
@@ -103,7 +102,7 @@ class Work(ModelSQL, ModelView):
 
             self._inherit_fields['company'] = company_field
 
-    def get_parent(self, cursor, user, ids, name, arg, context=None):
+    def get_parent(self, cursor, user, ids, name, context=None):
         res = dict.fromkeys(ids, None)
         project_works = self.browse(cursor, user, ids, context=context)
 
@@ -130,19 +129,19 @@ class Work(ModelSQL, ModelView):
 
         return res
 
-    def set_parent(self, cursor, user, id, name, value, arg, context=None):
+    def set_parent(self, cursor, user, ids, name, value, context=None):
         timesheet_work_obj = self.pool.get('timesheet.work')
         if value:
-            child_project_work, parent_project_work = self.browse(
-                cursor, user, [id, value], context=context)
-            child_timesheet_work_id = child_project_work.work.id
-            parent_timesheet_work_id = parent_project_work.work.id
+            project_works = self.browse( cursor, user, ids + [value],
+                    context=context)
+            child_timesheet_work_ids = [x.work.id for x in project_works[:-1]]
+            parent_timesheet_work_id = project_works[-1].work.id
         else:
-            child_project_work = self.browse( cursor, user, id, context=context)
-            child_timesheet_work_id = child_project_work.work.id
+            child_project_works = self.browse( cursor, user, ids, context=context)
+            child_timesheet_work_ids = [x.work.id for x in child_project_works]
             parent_timesheet_work_id = False
 
-        timesheet_work_obj.write(cursor, user, child_timesheet_work_id, {
+        timesheet_work_obj.write(cursor, user, child_timesheet_work_ids, {
                 'parent': parent_timesheet_work_id
                 },
                 context=context)
@@ -203,7 +202,7 @@ class Work(ModelSQL, ModelView):
 
         return [('work', 'in', tw_ids)]
 
-    def get_total_effort(self, cursor, user, ids, name, arg, context=None):
+    def get_total_effort(self, cursor, user, ids, name, context=None):
 
         all_ids = self.search(cursor, user, [
                 ('parent', 'child_of', ids),
