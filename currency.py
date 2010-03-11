@@ -16,8 +16,8 @@ class Currency(ModelSQL, ModelView):
     symbol = fields.Char('Symbol', size=10, required=True)
     code = fields.Char('Code', size=3, required=True)
     numeric_code = fields.Char('Numeric Code', size=3)
-    rate = fields.Function('get_rate', type='numeric', string='Current rate',
-            digits=(12, 6), on_change_with=['rates'])
+    rate = fields.Function(fields.Numeric('Current rate', digits=(12, 6),
+        on_change_with=['rates']), 'get_rate')
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates')
     rounding = fields.Numeric('Rounding factor', digits=(12, 6), required=True)
     digits = fields.Integer('Display Digits')
@@ -140,7 +140,7 @@ class Currency(ModelSQL, ModelView):
                 closer = rate['date']
         return res
 
-    def get_rate(self, cursor, user, ids, name, arg, context=None):
+    def get_rate(self, cursor, user, ids, name, context=None):
         '''
         Return the rate at the date from the context or the current date
         '''
