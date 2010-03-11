@@ -93,7 +93,7 @@ class CurrencyTestCase(unittest.TestCase):
         self.assert_(rate1_id)
 
         rate2_id = self.rate.create(self.cursor, USER, {
-            'rate': 1,
+            'rate': Decimal("1"),
             'currency': cu2_id,
             }, CONTEXT)
         self.assert_(rate2_id)
@@ -115,13 +115,13 @@ class CurrencyTestCase(unittest.TestCase):
             }, CONTEXT)
 
         rate1_id = self.rate.create(cursor, USER, {
-            'rate': 1.3,
+            'rate': Decimal("1.3"),
             'currency': cu_id,
             'date': today,
             }, CONTEXT)
 
         self.assertRaises(Exception, self.rate.create, cursor, USER, {
-                'rate': 1.3,
+                'rate': Decimal("1.3"),
                 'currency': cu_id,
                 'date': today,
                 }, CONTEXT)
@@ -203,7 +203,7 @@ class CurrencyTestCase(unittest.TestCase):
                 ('currency', '=', cu1_id),
                 ], 0, 1, None, CONTEXT)
         self.rate.write(cursor, USER, rate_ids, {
-                'rate': 0,
+                'rate': Decimal("0"),
                 }, CONTEXT)
         amount = Decimal("10")
         self.assertRaises(Exception, self.currency.compute,

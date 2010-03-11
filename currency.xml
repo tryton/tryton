@@ -371,7 +371,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">CHF</field>
             <field name="numeric_code">756</field>
             <field name="symbol">CHF</field>
-            <field name="rounding" eval="0.01"/>
+            <field name="rounding" eval="Decimal('0.01')"/>
             <field name="digits" eval="2"/>
             <field name="p_cs_precedes" eval="False"/>
             <field name="n_cs_precedes" eval="False"/>
@@ -524,7 +524,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">EUR</field>
             <field name="numeric_code">978</field>
             <field name="symbol">€</field>
-            <field name="rounding" eval="0.01"/>
+            <field name="rounding" eval="Decimal('0.01')"/>
             <field name="digits" eval="2"/>
             <field name="p_cs_precedes" eval="False"/>
             <field name="n_cs_precedes" eval="False"/>
@@ -558,7 +558,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">GBP</field>
             <field name="numeric_code">826</field>
             <field name="symbol">£</field>
-            <field name="rounding" eval="0.01"/>
+            <field name="rounding" eval="Decimal('0.01')"/>
             <field name="digits" eval="2"/>
             <field name="p_cs_precedes" eval="True"/>
             <field name="n_cs_precedes" eval="True"/>
@@ -1271,7 +1271,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">USD</field>
             <field name="numeric_code">840</field>
             <field name="symbol">$</field>
-            <field name="rounding" eval="0.01"/>
+            <field name="rounding" eval="Decimal('0.01')"/>
             <field name="digits" eval="2"/>
             <field name="p_cs_precedes" eval="True"/>
             <field name="n_cs_precedes" eval="True"/>
@@ -1502,7 +1502,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="currency.currency.rate" id="eur_rate">
             <field name="date" eval="time.strftime('%Y-01-01')"/>
-            <field name="rate" eval="1.0"/>
+            <field name="rate" eval="Decimal('1.0')"/>
             <field name="currency" ref="eur"/>
         </record>
 
