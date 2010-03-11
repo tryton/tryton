@@ -83,8 +83,8 @@ class User(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Current Company',
             domain=[('parent', 'child_of', [Eval('main_company')], 'parent')],
             depends=['main_company'])
-    companies = fields.Function('get_companies', type='many2many',
-            relation='company.company', string='Current Companies')
+    companies = fields.Function(fields.One2Many('company.company', None,
+        'Current Companies'), 'get_companies')
     employee = fields.Many2One('company.employee', 'Employee',
             domain=[('company', 'child_of', [Eval('main_company')], 'parent')])
 
@@ -109,7 +109,7 @@ class User(ModelSQL, ModelView):
     def default_company(self, cursor, user, context=None):
         return self.default_main_company(cursor, user, context=context)
 
-    def get_companies(self, cursor, user_id, ids, name, arg, context=None):
+    def get_companies(self, cursor, user_id, ids, name, context=None):
         company_obj = self.pool.get('company.company')
         res = {}
         company_childs = {}
@@ -132,8 +132,8 @@ class User(ModelSQL, ModelView):
                     res[user.id].extend(company_ids)
         return res
 
-    def get_status_bar(self, cursor, user_id, ids, name, arg, context=None):
-        res = super(User, self).get_status_bar(cursor, user_id, ids, name, arg,
+    def get_status_bar(self, cursor, user_id, ids, name, context=None):
+        res = super(User, self).get_status_bar(cursor, user_id, ids, name,
                 context=context)
         for user in self.browse(cursor, user_id, ids, context=context):
             if user.company:
