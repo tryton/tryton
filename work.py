@@ -33,7 +33,7 @@ class Work(ModelSQL, ModelView):
             states={
                 'invisible': Not(Equal(Eval('type'), 'task')),
             }, depends=['type'])
-    duration = fields.Function('get_function_fields', string='Duration')
+    duration = fields.Function(fields.Float('Duration'), 'get_function_fields')
     early_start_time = fields.DateTime("Early Start Time", readonly=True)
     late_start_time = fields.DateTime("Late Start Time", readonly=True)
     early_finish_time = fields.DateTime("Early Finish Time", readonly=True)
@@ -42,27 +42,26 @@ class Work(ModelSQL, ModelView):
     actual_finish_time = fields.DateTime("Actual Finish Time")
     constraint_start_time = fields.DateTime("Constraint Start Time")
     constraint_finish_time = fields.DateTime("Constraint  Finish Time")
-    early_start_date = fields.Function('get_function_fields',
-            type='date', string='Early Start')
-    late_start_date = fields.Function('get_function_fields',
-            type='date', string='Late Start')
-    early_finish_date = fields.Function('get_function_fields',
-            type='date', string='Early Finish')
-    late_finish_date = fields.Function('get_function_fields',
-            type='date', string='Late Finish')
-    actual_start_date = fields.Function('get_function_fields',
-            type='date', string='Actual Start', fnct_inv='set_function_fields')
-    actual_finish_date = fields.Function('get_function_fields',
-            type='date', string='Actual Finish', fnct_inv='set_function_fields')
-    constraint_start_date = fields.Function('get_function_fields',
-            type='date', string='Constraint Start', depends=[ 'type'],
-            fnct_inv='set_function_fields')
-    constraint_finish_date = fields.Function('get_function_fields',
-            type='date', string='Constraint Finish', depends=[ 'type'],
-            fnct_inv='set_function_fields')
-    requests = fields.Function('get_function_fields', type='many2many',
-            string='Requests', fnct_inv='set_function_fields',
-            relation='res.request')
+    early_start_date = fields.Function(fields.Date('Early Start'),
+            'get_function_fields')
+    late_start_date = fields.Function(fields.Date('Late Start'),
+            'get_function_fields')
+    early_finish_date = fields.Function(fields.Date('Early Finish'),
+            'get_function_fields')
+    late_finish_date = fields.Function(fields.Date('Late Finish'),
+            'get_function_fields')
+    actual_start_date = fields.Function(fields.Date('Actual Start'),
+            'get_function_fields', setter='set_function_fields')
+    actual_finish_date = fields.Function(fields.Date('Actual Finish'),
+            'get_function_fields', setter='set_function_fields')
+    constraint_start_date = fields.Function(fields.Date('Constraint Start',
+        depends=['type']), 'get_function_fields',
+        setter='set_function_fields')
+    constraint_finish_date = fields.Function(fields.Date('Constraint Finish',
+        depends=['type']), 'get_function_fields',
+        setter='set_function_fields')
+    requests = fields.Function(fields.One2Many('res.request', None,
+        'Requests'), 'get_function_fields', setter='set_function_fields')
 
     def __init__(self):
         super(Work, self).__init__()
@@ -78,7 +77,7 @@ class Work(ModelSQL, ModelView):
         return super(Work, self).check_recursion(cursor, user, ids,
                 parent='successors')
 
-    def get_function_fields(self, cursor, user, ids, names, args, context=None):
+    def get_function_fields(self, cursor, user, ids, names, context=None):
         '''
         Function to compute function fields
 
@@ -174,31 +173,36 @@ class Work(ModelSQL, ModelView):
 
         return res
 
-    def set_function_fields(self, cursor, user, id, name, value, arg,
+    def set_function_fields(self, cursor, user, ids, name, value,
             context=None):
         request_obj = self.pool.get('res.request')
         req_ref_obj = self.pool.get('res.request.reference')
 
         if name == 'requests':
-            work = self.browse(cursor, user, id, context=context)
-            currents = dict((req.id, req) for req in work.requests)
+            works = self.browse(cursor, user, ids, context=context)
+            currents = dict((req.id, req) for work in works for req in
+                    work.requests)
             for v in value:
                 to_unlink = []
                 to_link = []
                 operator = v[0]
 
-                ids = len(v) > 1 and v[1] or []
+                target_ids = len(v) > 1 and v[1] or []
                 if operator == 'set':
-                    to_link.extend((i for i in ids if i not in currents))
-                    to_unlink.extend((i for i in currents if i not in ids))
+                    to_link.extend((i for i in target_ids
+                        if i not in currents))
+                    to_unlink.extend((i for i in currents
+                        if i not in target_ids))
                 elif operator == 'add':
-                    to_link.extend((i for i in ids if i not in currents))
+                    to_link.extend((i for i in target_ids if i not in
+                        currents))
                 elif operator == 'unlink':
-                    to_unlink.extend((i for i in ids if i in currents))
+                    to_unlink.extend((i for i in target_ids if i in currents))
                 elif operator == 'unlink_all':
                     to_unlink.extend(currents)
                 elif operator == 'delete':
-                    request_obj.delete(cursor, user, to_delete, context=context)
+                    request_obj.delete(cursor, user, to_delete,
+                            context=context)
                 else:
                     raise Exception('Operation not supported')
 
@@ -206,16 +210,17 @@ class Work(ModelSQL, ModelView):
                 for i in to_unlink:
                     request = currents[i]
                     for ref in request.references:
-                        if int(ref.reference.split(',')[1]) == id:
+                        if int(ref.reference.split(',')[1]) in ids:
                             req_ref_ids.append(ref.id)
                 req_ref_obj.delete(cursor, user, req_ref_ids,
                         context=context)
 
                 for i in to_link:
-                    req_ref_obj.create(cursor, user, {
-                            'request': i,
-                            'reference': 'project.work,%s' % id,
-                            }, context=context)
+                    for record_id in ids:
+                        req_ref_obj.create(cursor, user, {
+                                'request': i,
+                                'reference': 'project.work,%s' % record_id,
+                                }, context=context)
             return
 
         fun_fields = ('actual_start_date', 'actual_finish_date',
@@ -224,7 +229,7 @@ class Work(ModelSQL, ModelView):
                      'constraint_start_time', 'constraint_finish_time')
         for fun_field, db_field in zip(fun_fields, db_fields):
             if fun_field == name:
-                self.write(cursor, user, id, {
+                self.write(cursor, user, ids, {
                         db_field: datetime.datetime.combine(value, datetime.time()),
                         }, context=context)
                 break
