@@ -11,7 +11,7 @@ class Address(Model):
     siret_nic = fields.Char('SIRET NIC', select=1, states={
         'readonly': Not(Bool(Eval('active'))),
         }, size=5)
-    siret = fields.Function('get_siret', type='char', string='SIRET')
+    siret = fields.Function(fields.Char('SIRET'), 'get_siret')
 
     def __init__(self):
         super(Address, self).__init__()
@@ -22,7 +22,7 @@ class Address(Model):
             'invalid_siret': 'Invalid SIRET number!',
         })
 
-    def get_siret(self, cursor, user, ids, name, arg, context=None):
+    def get_siret(self, cursor, user, ids, name, context=None):
         res = {}
         for address in self.browse(cursor, user, ids, context=context):
             if address.party.siren and address.siret_nic:
