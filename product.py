@@ -7,24 +7,22 @@ from trytond.pyson import Not, Eval, Bool, Or
 class Category(ModelSQL, ModelView):
     _name = 'product.category'
 
-    account_expense = fields.Property(type='many2one',
-            relation='account.account', string='Account Expense',
-            domain=[
-                ('kind', '=', 'expense'),
-                ('company', '=', Eval('company')),
-            ],
-            states={
-                'invisible': Not(Bool(Eval('company'))),
-            })
-    account_revenue = fields.Property(type='many2one',
-            relation='account.account', string='Account Revenue',
-            domain=[
-                ('kind', '=', 'revenue'),
-                ('company', '=', Eval('company')),
-            ],
-            states={
-                'invisible': Not(Bool(Eval('company'))),
-            })
+    account_expense = fields.Property(fields.Many2One('account.account',
+        'Account Expense', domain=[
+            ('kind', '=', 'expense'),
+            ('company', '=', Eval('company')),
+        ],
+        states={
+            'invisible': Not(Bool(Eval('company'))),
+        }))
+    account_revenue = fields.Property(fields.Many2One( 'account.account',
+        'Account Revenue', domain=[
+            ('kind', '=', 'revenue'),
+            ('company', '=', Eval('company')),
+        ],
+        states={
+            'invisible': Not(Bool(Eval('company'))),
+        }))
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
             'product', 'tax', 'Customer Taxes', domain=[('parent', '=', False)])
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
@@ -64,32 +62,30 @@ class Template(ModelSQL, ModelView):
 
     account_category = fields.Boolean('Use Category\'s accounts',
             help='Use the accounts defined on the category')
-    account_expense = fields.Property(type='many2one',
-            string='Account Expense', relation='account.account',
-            domain=[
-                ('kind', '=', 'expense'),
-                ('company', '=', Eval('company')),
-            ],
-            states={
-                'invisible': Or(Not(Bool(Eval('company'))),
-                    Bool(Eval('account_category'))),
-            }, help='This account will be used instead of the one defined ' \
-                    'on the category.', depends=['account_category'])
-    account_revenue = fields.Property(type='many2one',
-            string='Account Revenue', relation='account.account',
-            domain=[
-                ('kind', '=', 'revenue'),
-                ('company', '=', Eval('company')),
-            ],
-            states={
-                'invisible': Or(Not(Bool(Eval('company'))),
-                    Bool(Eval('account_category'))),
-            }, help='This account will be used instead of the one defined ' \
-                    'on the category.', depends=['account_category'])
-    account_expense_used = fields.Function('get_account', type='many2one',
-            relation='account.account', string='Account Expense Used')
-    account_revenue_used = fields.Function('get_account', type='many2one',
-            relation='account.account', string='Account Revenue Used')
+    account_expense = fields.Property(fields.Many2One('account.account',
+        'Account Expense', domain=[
+            ('kind', '=', 'expense'),
+            ('company', '=', Eval('company')),
+        ],
+        states={
+            'invisible': Or(Not(Bool(Eval('company'))),
+                Bool(Eval('account_category'))),
+        }, help='This account will be used instead of the one defined ' \
+                'on the category.', depends=['account_category']))
+    account_revenue = fields.Property(fields.Many2One('account.account',
+        'Account Revenue', domain=[
+            ('kind', '=', 'revenue'),
+            ('company', '=', Eval('company')),
+        ],
+        states={
+            'invisible': Or(Not(Bool(Eval('company'))),
+                Bool(Eval('account_category'))),
+        }, help='This account will be used instead of the one defined ' \
+                'on the category.', depends=['account_category']))
+    account_expense_used = fields.Function(fields.Many2One('account.account',
+        'Account Expense Used'), 'get_account')
+    account_revenue_used = fields.Function(fields.Many2One('account.account',
+        'Account Revenue Used'), 'get_account')
     taxes_category = fields.Boolean('Use Category\'s Taxes', help='Use the taxes ' \
             'defined on the category')
     customer_taxes = fields.Many2Many('product.template-customer-account.tax',
@@ -104,10 +100,10 @@ class Template(ModelSQL, ModelView):
                 'invisible': Or(Not(Bool(Eval('company'))),
                     Bool(Eval('taxes_category'))),
             }, depends=['taxes_category'])
-    customer_taxes_used = fields.Function('get_taxes', type='many2many',
-            relation='account.tax', string='Customer Taxes Used')
-    supplier_taxes_used = fields.Function('get_taxes', type='many2many',
-            relation='account.tax', string='Customer Taxes Used')
+    customer_taxes_used = fields.Function(fields.One2Many('account.tax', None,
+        'Customer Taxes Used'), 'get_taxes')
+    supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
+        'Customer Taxes Used'), 'get_taxes')
 
     def __init__(self):
         super(Template, self).__init__()
@@ -120,7 +116,7 @@ class Template(ModelSQL, ModelView):
     def default_taxes_category(self, cursor, user, context=None):
         return False
 
-    def get_account(self, cursor, user, ids, name, arg, context=None):
+    def get_account(self, cursor, user, ids, name, context=None):
         account_obj = self.pool.get('account.account')
         res = {}
         name = name[:-5]
@@ -135,7 +131,7 @@ class Template(ModelSQL, ModelView):
                             (product.name, product.id), context=context)
         return res
 
-    def get_taxes(self, cursor, user, ids, name, arg, context=None):
+    def get_taxes(self, cursor, user, ids, name, context=None):
         res = {}
         name = name[:-5]
         for product in self.browse(cursor, user, ids, context=context):
