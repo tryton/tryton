@@ -119,8 +119,8 @@ class PriceListLine(ModelSQL, ModelView):
     sequence = fields.Integer('Sequence')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
             depends=['unit_digits'])
-    unit_digits = fields.Function('get_unit_digits', type='integer',
-            string='Unit Digits', on_change_with=['product'])
+    unit_digits = fields.Function(fields.Integer('Unit Digits',
+        on_change_with=['product']), 'get_unit_digits')
     formula = fields.Char('Formula', required=True,
             help='Python expression that will be evaluated with:\n' \
                     '- unit_price: the original unit_price')
@@ -148,7 +148,7 @@ class PriceListLine(ModelSQL, ModelView):
             return product.default_uom.digits
         return 2
 
-    def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_unit_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             if line.product:
