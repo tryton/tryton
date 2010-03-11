@@ -41,7 +41,7 @@ class TypeTemplate(ModelSQL, ModelView):
     def default_display_balance(self, cursor, user, context=None):
         return 'debit-credit'
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}
@@ -153,11 +153,11 @@ class Type(ModelSQL, ModelView):
     childs = fields.One2Many('account.account.type', 'parent', 'Children')
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits')
-    amount = fields.Function('get_amount',
-            digits=(16, Eval('currency_digits', 2)),
-            string='Amount', depends=['currency_digits'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+            'get_currency_digits')
+    amount = fields.Function(fields.Numeric('Amount',
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+        'get_amount')
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
     display_balance = fields.Selection([
@@ -181,13 +181,13 @@ class Type(ModelSQL, ModelView):
     def default_display_balance(self, cursor, user, context=None):
         return 'debit-credit'
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for type in self.browse(cursor, user, ids, context=context):
             res[type.id] = type.company.currency.digits
         return res
 
-    def get_amount(self, cursor, user, ids, name, arg, context=None):
+    def get_amount(self, cursor, user, ids, name, context=None):
         account_obj = self.pool.get('account.account')
         currency_obj = self.pool.get('currency.currency')
 
@@ -225,7 +225,7 @@ class Type(ModelSQL, ModelView):
                 res[type.id] = - res[type.id]
         return res
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}
@@ -348,7 +348,7 @@ class AccountTemplate(ModelSQL, ModelView):
     def default_deferral(self, cursor, user, context=None):
         return True
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}
@@ -525,10 +525,10 @@ class Account(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
-    currency = fields.Function('get_currency', type='many2one',
-            relation='currency.currency', string='Currency')
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits')
+    currency = fields.Function(fields.Many2One('currency.currency',
+        'Currency'), 'get_currency')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+            'get_currency_digits')
     second_currency = fields.Many2One('currency.currency', 'Secondary currency',
             help='Force all moves for this account \n' \
                     'to have this secondary currency.', ondelete="RESTRICT")
@@ -542,15 +542,15 @@ class Account(ModelSQL, ModelView):
     left = fields.Integer('Left', required=True, select=1)
     right = fields.Integer('Right', required=True, select=1)
     childs = fields.One2Many('account.account', 'parent', 'Children')
-    balance = fields.Function('get_balance',
-            digits=(16, Eval('currency_digits', 2)),
-            string='Balance', depends=['currency_digits'])
-    credit = fields.Function('get_credit_debit',
-            digits=(16, Eval('currency_digits', 2)),
-            string='Credit', depends=['currency_digits'])
-    debit = fields.Function('get_credit_debit',
-            digits=(16, Eval('currency_digits', 2)),
-            string='Debit', depends=['currency_digits'])
+    balance = fields.Function(fields.Numeric('Balance',
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+        'get_balance')
+    credit = fields.Function(fields.Numeric('Credit',
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+        'get_credit_debit')
+    debit = fields.Function(fields.Numeric('Debit',
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+        'get_credit_debit')
     reconcile = fields.Boolean('Reconcile',
             help='Allow move lines of this account \n' \
                     'to be reconciled.',
@@ -617,20 +617,20 @@ class Account(ModelSQL, ModelView):
     def default_kind(self, cursor, user, context=None):
         return 'view'
 
-    def get_currency(self, cursor, user, ids, name, arg, context=None):
+    def get_currency(self, cursor, user, ids, name, context=None):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         for account in self.browse(cursor, user, ids, context=context):
             res[account.id] = account.company.currency.id
         return res
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for account in self.browse(cursor, user, ids, context=context):
             res[account.id] = account.company.currency.digits
         return res
 
-    def get_balance(self, cursor, user, ids, name, arg, context=None):
+    def get_balance(self, cursor, user, ids, name, context=None):
         res = {}
         company_obj = self.pool.get('company.company')
         currency_obj = self.pool.get('currency.currency')
@@ -737,7 +737,7 @@ class Account(ModelSQL, ModelView):
                     res[account_id])
         return res
 
-    def get_credit_debit(self, cursor, user, ids, names, arg, context=None):
+    def get_credit_debit(self, cursor, user, ids, names, context=None):
         '''
         Function to compute debit, credit for account ids.
 
@@ -853,7 +853,7 @@ class Account(ModelSQL, ModelView):
                         currency, res[name][account_id])
         return res
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}
@@ -1039,8 +1039,8 @@ class AccountDeferral(ModelSQL, ModelView):
             depends=['currency_digits'])
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+            'get_currency_digits')
 
     def __init__(self):
         super(AccountDeferral, self).__init__()
@@ -1052,13 +1052,13 @@ class AccountDeferral(ModelSQL, ModelView):
             'write_deferral': 'You can not modify Account Deferral records',
             })
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for deferral in self.browse(cursor, user, ids, context=context):
             res[deferral.id] = deferral.account.currency_digits
         return res
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}

@@ -7,48 +7,44 @@ from decimal import Decimal
 
 class Party(ModelSQL, ModelView):
     _name = 'party.party'
-    account_payable = fields.Property(type='many2one',
-            relation='account.account', string='Account Payable',
-            domain=[
-                ('kind', '=', 'payable'),
-                ('company', '=', Eval('company')),
-            ],
-            states={
-                'required': Bool(Eval('company')),
-                'invisible': Not(Bool(Eval('company'))),
-            })
-    account_receivable = fields.Property(type='many2one',
-            relation='account.account', string='Account Receivable',
-            domain=[
-                ('kind', '=', 'receivable'),
-                ('company', '=', Eval('company')),
-            ],
-            states={
-                'required': Bool(Eval('company')),
-                'invisible': Not(Bool(Eval('company'))),
-            })
-    customer_tax_rule = fields.Property(type='many2one',
-            relation='account.tax.rule', string='Customer Tax Rule',
-            domain=[('company', '=', Eval('company'))],
-            states={
-                'invisible': Not(Bool(Eval('company'))),
-            }, help='Apply this rule on taxes when party is customer.')
-    supplier_tax_rule = fields.Property(type='many2one',
-            relation='account.tax.rule', string='Supplier Tax Rule',
-            domain=[('company', '=', Eval('company'))],
-            states={
-                'invisible': Not(Bool(Eval('company'))),
-            }, help='Apply this rule on taxes when party is supplier.')
-    receivable = fields.Function('get_receivable_payable',
-            fnct_search='search_receivable_payable', string='Receivable')
-    payable = fields.Function('get_receivable_payable',
-            fnct_search='search_receivable_payable', string='Payable')
-    receivable_today = fields.Function('get_receivable_payable',
-            fnct_search='search_receivable_payable', string='Receivable Today')
-    payable_today = fields.Function('get_receivable_payable',
-            fnct_search='search_receivable_payable', string='Payable Today')
+    account_payable = fields.Property(fields.Many2One('account.account',
+        'Account Payable', domain=[
+            ('kind', '=', 'payable'),
+            ('company', '=', Eval('company')),
+        ],
+        states={
+            'required': Bool(Eval('company')),
+            'invisible': Not(Bool(Eval('company'))),
+        }))
+    account_receivable = fields.Property(fields.Many2One('account.account',
+        'Account Receivable', domain=[
+            ('kind', '=', 'receivable'),
+            ('company', '=', Eval('company')),
+        ],
+        states={
+            'required': Bool(Eval('company')),
+            'invisible': Not(Bool(Eval('company'))),
+        }))
+    customer_tax_rule = fields.Property(fields.Many2One('account.tax.rule',
+        'Customer Tax Rule', domain=[('company', '=', Eval('company'))],
+        states={
+            'invisible': Not(Bool(Eval('company'))),
+        }, help='Apply this rule on taxes when party is customer.'))
+    supplier_tax_rule = fields.Property(fields.Many2One('account.tax.rule',
+        'Supplier Tax Rule', domain=[('company', '=', Eval('company'))],
+        states={
+            'invisible': Not(Bool(Eval('company'))),
+        }, help='Apply this rule on taxes when party is supplier.'))
+    receivable = fields.Function(fields.Numeric('Receivable'),
+            'get_receivable_payable', searcher='search_receivable_payable')
+    payable = fields.Function(fields.Numeric('Payable'),
+            'get_receivable_payable', searcher='search_receivable_payable')
+    receivable_today = fields.Function(fields.Numeric('Receivable Today'),
+            'get_receivable_payable', searcher='search_receivable_payable')
+    payable_today = fields.Function(fields.Numeric('Payable Today'),
+            'get_receivable_payable', searcher='search_receivable_payable')
 
-    def get_receivable_payable(self, cursor, user_id, ids, names, arg,
+    def get_receivable_payable(self, cursor, user_id, ids, names,
             context=None):
         '''
         Function to compute receivable, payable (today or not) for party ids.

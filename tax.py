@@ -154,10 +154,11 @@ class Code(ModelSQL, ModelView):
             domain=[('company', '=', Eval('company', 0))], depends=['company'])
     childs = fields.One2Many('account.tax.code', 'parent', 'Children',
             domain=[('company', '=', Eval('company', 0))], depends=['company'])
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['company'])
-    sum = fields.Function('get_sum', digits=(16, Eval('currency_digits', 2)),
-            string='Sum', depends=['currency_digits'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['company']), 'get_currency_digits')
+    sum = fields.Function(fields.Numeric('Sum',
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+        'get_sum')
     template = fields.Many2One('account.tax.code.template', 'Template')
     description = fields.Text('Description', translate=True)
 
@@ -190,13 +191,13 @@ class Code(ModelSQL, ModelView):
             return company.currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for code in self.browse(cursor, user, ids, context=context):
             res[code.id] = code.company.currency.digits
         return res
 
-    def get_sum(self, cursor, user, ids, name, arg, context=None):
+    def get_sum(self, cursor, user, ids, name, context=None):
         res = {}
         move_line_obj = self.pool.get('account.move.line')
         currency_obj = self.pool.get('currency.currency')
@@ -237,7 +238,7 @@ class Code(ModelSQL, ModelView):
                     code.company.currency, res[code.id])
         return res
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}
@@ -601,8 +602,8 @@ class Tax(ModelSQL, ModelView):
     active = fields.Boolean('Active')
     sequence = fields.Integer('Sequence',
             help='Use to order the taxes')
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['company'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['company']), 'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
             states={
                 'invisible': Not(Equal(Eval('type'), 'fixed')),
@@ -736,7 +737,7 @@ class Tax(ModelSQL, ModelView):
             return company.currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for tax in self.browse(cursor, user, ids, context=context):
             res[tax.id] = tax.company.currency.digits
@@ -940,8 +941,8 @@ class Line(ModelSQL, ModelView):
     _description = __doc__
     _rec_name = 'amount'
 
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['move_line'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['move_line']), 'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
     code = fields.Many2One('account.tax.code', 'Code', select=1, required=True)
@@ -959,7 +960,7 @@ class Line(ModelSQL, ModelView):
             return move_line.currency_digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             res[line.id] = line.move_line.currency_digits

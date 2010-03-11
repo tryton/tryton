@@ -85,34 +85,34 @@ class Journal(ModelSQL, ModelView):
     view = fields.Many2One('account.journal.view', 'View')
     centralised = fields.Boolean('Centralised counterpart')
     update_posted = fields.Boolean('Allow cancelling moves')
-    sequence = fields.Property(type='many2one', relation='ir.sequence',
-            string='Sequence', required=True,
-            domain=[('code', '=', 'account.journal')],
-            context={'code': 'account.journal'})
-    credit_account = fields.Property(type='many2one',
-            relation='account.account', string='Default Credit Account',
-            domain=[
-                ('kind', '!=', 'view'),
-                ('company', '=', Get(Eval('context', {}), 'company', 0)),
-            ],
-            states={
-                'required': Or(Bool(Eval('centralised')),
-                    And(Equal(Eval('type'), 'cash'),
-                        Bool(Get(Eval('context', {}), 'company', 0)))),
-                'invisible': Not(Bool(Get(Eval('context', {}), 'company', 0))),
-            }, depends=['type', 'centralised'])
-    debit_account = fields.Property(type='many2one',
-            relation='account.account', string='Default Debit Account',
-            domain=[
-                ('kind', '!=', 'view'),
-                ('company', '=', Get(Eval('context', {}), 'company', 0)),
-            ],
-            states={
-                'required': Or(Bool(Eval('centralised')),
-                    And(Equal(Eval('type'), 'cash'),
-                        Bool(Get(Eval('context', {}), 'company', 0)))),
-                'invisible': Not(Bool(Get(Eval('context', {}), 'company', 0))),
-            }, depends=['type', 'centralised'])
+    sequence = fields.Property(fields.Many2One('ir.sequence', 'Sequence',
+        domain=[('code', '=', 'account.journal')],
+        context={'code': 'account.journal'},
+        states={
+            'required': Bool(Get(Eval('context', {}), 'company', 0)),
+        }))
+    credit_account = fields.Property(fields.Many2One('account.account',
+        'Default Credit Account', domain=[
+            ('kind', '!=', 'view'),
+            ('company', '=', Get(Eval('context', {}), 'company', 0)),
+        ],
+        states={
+            'required': Or(Bool(Eval('centralised')),
+                And(Equal(Eval('type'), 'cash'),
+                    Bool(Get(Eval('context', {}), 'company', 0)))),
+            'invisible': Not(Bool(Get(Eval('context', {}), 'company', 0))),
+        }, depends=['type', 'centralised']))
+    debit_account = fields.Property(fields.Many2One('account.account',
+        'Default Debit Account', domain=[
+            ('kind', '!=', 'view'),
+            ('company', '=', Get(Eval('context', {}), 'company', 0)),
+        ],
+        states={
+            'required': Or(Bool(Eval('centralised')),
+                And(Equal(Eval('type'), 'cash'),
+                    Bool(Get(Eval('context', {}), 'company', 0)))),
+            'invisible': Not(Bool(Get(Eval('context', {}), 'company', 0))),
+        }, depends=['type', 'centralised']))
 
     def __init__(self):
         super(Journal, self).__init__()
@@ -177,7 +177,7 @@ class Period(ModelSQL, ModelView):
             ondelete='CASCADE', states=STATES, depends=DEPENDS)
     period = fields.Many2One('account.period', 'Period', required=True,
             ondelete='CASCADE', states=STATES, depends=DEPENDS)
-    icon = fields.Function('get_icon', string='Icon', type='char')
+    icon = fields.Function(fields.Char('Icon'), 'get_icon')
     active = fields.Boolean('Active', select=2, states=STATES, depends=DEPENDS)
     state = fields.Selection([
         ('open', 'Open'),
@@ -206,7 +206,7 @@ class Period(ModelSQL, ModelView):
     def default_state(self, cursor, user, context=None):
         return 'open'
 
-    def get_icon(self, cursor, user, ids, name, arg, context=None):
+    def get_icon(self, cursor, user, ids, name, context=None):
         res = {}
         for period in self.browse(cursor, user, ids, context=context):
             res[period.id] = _ICONS.get(period.state, '')

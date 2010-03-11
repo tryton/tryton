@@ -456,15 +456,15 @@ class Line(ModelSQL, ModelView):
                 'journal', 'move'])
     move = fields.Many2One('account.move', 'Move', states=_LINE_STATES,
             select=1, required=True)
-    journal = fields.Function('get_move_field', fnct_inv='set_move_field',
-            type='many2one', relation='account.journal', string='Journal',
-            fnct_search='search_move_field')
-    period = fields.Function('get_move_field', fnct_inv='set_move_field',
-            type='many2one', relation='account.period', string='Period',
-            fnct_search='search_move_field')
-    date = fields.Function('get_move_field', fnct_inv='set_move_field',
-            type='date', string='Effective Date', required=True,
-            fnct_search='search_move_field')
+    journal = fields.Function(fields.Many2One('account.journal', 'Journal'),
+            'get_move_field', setter='set_move_field',
+            searcher='search_move_field')
+    period = fields.Function(fields.Many2One('account.period', 'Period'),
+            'get_move_field', setter='set_move_field',
+            searcher='search_move_field')
+    date = fields.Function(fields.Date('Effective Date', required=True),
+            'get_move_field', setter='set_move_field',
+            searcher='search_move_field')
     reference = fields.Char('Reference', size=None)
     amount_second_currency = fields.Numeric('Amount Second Currency',
             digits=(16, Eval('second_currency_digits', 2)),
@@ -487,15 +487,14 @@ class Line(ModelSQL, ModelView):
     reconciliation = fields.Many2One('account.move.reconciliation',
             'Reconciliation', readonly=True, ondelete='SET NULL', select=2)
     tax_lines = fields.One2Many('account.tax.line', 'move_line', 'Tax Lines')
-    move_state = fields.Function('get_move_field', type='selection',
-            selection=[
-                ('draft', 'Draft'),
-                ('posted', 'Posted'),
-            ], string='Move State', fnct_search='search_move_field')
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits')
-    second_currency_digits = fields.Function('get_currency_digits',
-            type='integer', string='Second Currency Digits')
+    move_state = fields.Function(fields.Selection([
+        ('draft', 'Draft'),
+        ('posted', 'Posted'),
+        ], 'Move State'), 'get_move_field', searcher='search_move_field')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+            'get_currency_digits')
+    second_currency_digits = fields.Function(fields.Integer(
+        'Second Currency Digits'), 'get_currency_digits')
 
     def __init__(self):
         super(Line, self).__init__()
@@ -718,7 +717,7 @@ class Line(ModelSQL, ModelView):
                         ]
         return values
 
-    def get_currency_digits(self, cursor, user, ids, names, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, names, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             for name in names:
@@ -936,7 +935,7 @@ class Line(ModelSQL, ModelView):
                     res['account.rec_name'] = party.account_payable.rec_name
         return res
 
-    def get_move_field(self, cursor, user, ids, name, arg, context=None):
+    def get_move_field(self, cursor, user, ids, name, context=None):
         if name == 'move_state':
             name = 'state'
         if name not in ('period', 'journal', 'date', 'state'):
@@ -949,7 +948,7 @@ class Line(ModelSQL, ModelView):
                 res[line.id] = line.move[name].id
         return res
 
-    def set_move_field(self, cursor, user, id, name, value, arg, context=None):
+    def set_move_field(self, cursor, user, ids, name, value, context=None):
         if name == 'move_state':
             name = 'state'
         if name not in ('period', 'journal', 'date', 'state'):
@@ -957,8 +956,8 @@ class Line(ModelSQL, ModelView):
         if not value:
             return
         move_obj = self.pool.get('account.move')
-        line = self.browse(cursor, user, id, context=context)
-        move_obj.write(cursor, user, line.move.id, {
+        lines = self.browse(cursor, user, ids, context=context)
+        move_obj.write(cursor, user, [line.move.id for line in lines], {
             name: value,
             }, context=context)
 
