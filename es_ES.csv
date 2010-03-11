@@ -1,5 +1,5 @@
 type,name,res_id,src,value,fuzzy
-error,product.uom,0,"If the UOM is still not used, you can delete it ortherwise you can deactivate it and create a new one.","Si no se ha usado la UdM, puede borrarla, en caso contrario, puede desactivarla y crear una nueva.",0
+error,product.uom,0,"If the UOM is still not used, you can delete it otherwise you can deactivate it and create a new one.","Si no se ha usado la UdM, puede borrarla, en caso contrario, puede desactivarla y crear una nueva.",0
 error,product.uom,0,Rate and factor can not be both equal to zero.,Conversión y factor no pueden ser cero simultáneamente.,0
 error,product.uom,0,"You cannot change Rate, Factor or Category on a Unit of Measure. ","No puede cambiar la conversión, el factor o la categoría de una unidad de medida.",0
 field,"product.category,childs",0,Children,Hijos,0

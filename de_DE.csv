@@ -1,6 +1,6 @@
 type,name,res_id,src,value,fuzzy
 error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,"Die Standardmaßeinheit kann nicht für einen Artikel geändert werden, der Lagerbewegungen zugeordnet ist.",0
-error,product.uom,0,"If the UOM is still not used, you can delete it ortherwise you can deactivate it and create a new one.","Wenn die Maßeinheit noch nicht verwendet wurde, kann sie gelöscht werden.
+error,product.uom,0,"If the UOM is still not used, you can delete it otherwise you can deactivate it and create a new one.","Wenn die Maßeinheit noch nicht verwendet wurde, kann sie gelöscht werden.
 Andernfalls kann sie nur deaktiviert und eine andere neue erstellt werden.",0
 error,product.uom,0,Rate and factor can not be both equal to zero.,Faktor und Kehrwert Faktor können beide nicht 0 sein,0
 error,product.uom,0,"You cannot change Rate, Factor or Category on a Unit of Measure. ","Faktor, Faktorkehrwert oder Kategorie einer Maßeinheit können nicht geändert werden.",0

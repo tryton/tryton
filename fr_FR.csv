@@ -1,6 +1,6 @@
 type,name,res_id,src,value,fuzzy
 error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,Vous ne pouvez pas changer l'UDM par défaut pour un produit qui a déjà fait l'objet de mouvements de stock,0
-error,product.uom,0,"If the UOM is still not used, you can delete it ortherwise you can deactivate it and create a new one.","Si l'UDM n'est pas utilisée, vous pouvez la supprimer, sinon vous pouvez la désactiver et en créer une nouvelle.",0
+error,product.uom,0,"If the UOM is still not used, you can delete it otherwise you can deactivate it and create a new one.","Si l'UDM n'est pas utilisée, vous pouvez la supprimer, sinon vous pouvez la désactiver et en créer une nouvelle.",0
 error,product.uom,0,Rate and factor can not be both equal to zero.,Le taux et le facteur ne peuvent pas être égaux à zéro.,0
 error,product.uom,0,"You cannot change Rate, Factor or Category on a Unit of Measure. ","Vous ne pouvez pas changer le taux, le facteur ou la catégorie d'une unité de mesure.",0
 field,"product.category,childs",0,Children,Enfants,0
