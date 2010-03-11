@@ -18,11 +18,10 @@ class Line(ModelSQL, ModelView):
             depends=['currency_digits'])
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
-    currency = fields.Function('get_currency', type='many2one',
-            relation='currency.currency', string='Currency',
-            on_change_with=['move_line'])
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['move_line'])
+    currency = fields.Function(fields.Many2One('currency.currency', 'Currency',
+        on_change_with=['move_line']), 'get_currency')
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['move_line']), 'get_currency_digits')
     account = fields.Many2One('analytic_account.account', 'Account',
             required=True, select=1, domain=[('type', '!=', 'view')])
     move_line = fields.Many2One('account.move.line', 'Account Move Line',
@@ -73,7 +72,7 @@ class Line(ModelSQL, ModelView):
             return move_line.account.company.currency.id
         return False
 
-    def get_currency(self, cursor, user, ids, name, arg, context=None):
+    def get_currency(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             res[line.id] = line.move_line.account.company.currency.id
@@ -88,7 +87,7 @@ class Line(ModelSQL, ModelView):
             return move_line.account.company.currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for line in self.browse(cursor, user, ids, context=context):
             res[line.id] = line.move_line.account.company.currency.digits

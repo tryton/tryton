@@ -18,8 +18,8 @@ class Account(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=2)
     company = fields.Many2One('company.company', 'Company')
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
-    currency_digits = fields.Function('get_currency_digits', type='integer',
-            string='Currency Digits', on_change_with=['currency'])
+    currency_digits = fields.Function(fields.Integer('Currency Digits',
+        on_change_with=['currency']), 'get_currency_digits')
     type = fields.Selection([
         ('root', 'Root'),
         ('view', 'View'),
@@ -38,12 +38,12 @@ class Account(ModelSQL, ModelView):
                 'required': Not(Equal(Eval('type'), 'root')),
             })
     childs = fields.One2Many('analytic_account.account', 'parent', 'Children')
-    balance = fields.Function('get_balance',
-            digits=(16, Eval('currency_digits', 1)), string='Balance')
-    credit = fields.Function('get_credit_debit',
-            digits=(16, Eval('currency_digits', 2)), string='Credit')
-    debit = fields.Function('get_credit_debit',
-            digits=(16, Eval('currency_digits', 2)), string='Debit')
+    balance = fields.Function(fields.Numeric('Balance',
+        digits=(16, Eval('currency_digits', 1))), 'get_balance')
+    credit = fields.Function(fields.Numeric('Credit',
+        digits=(16, Eval('currency_digits', 2))), 'get_credit_debit')
+    debit = fields.Function(fields.Numeric('Debit',
+        digits=(16, Eval('currency_digits', 2))), 'get_credit_debit')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('opened', 'Opened'),
@@ -110,13 +110,13 @@ class Account(ModelSQL, ModelView):
             return currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, arg, context=None):
+    def get_currency_digits(self, cursor, user, ids, name, context=None):
         res = {}
         for account in self.browse(cursor, user, ids, context=context):
             res[account.id] = account.currency.digits
         return res
 
-    def get_balance(self, cursor, user, ids, name, arg, context=None):
+    def get_balance(self, cursor, user, ids, name, context=None):
         res = {}
         line_obj = self.pool.get('analytic_account.line')
         currency_obj = self.pool.get('currency.currency')
@@ -185,7 +185,7 @@ class Account(ModelSQL, ModelView):
                 res[account_id] = - res[account_id]
         return res
 
-    def get_credit_debit(self, cursor, user, ids, name, arg, context=None):
+    def get_credit_debit(self, cursor, user, ids, name, context=None):
         res = {}
         line_obj = self.pool.get('analytic_account.line')
         currency_obj = self.pool.get('currency.currency')
@@ -237,7 +237,7 @@ class Account(ModelSQL, ModelView):
                         id2account[account_id].currency, sum)
         return res
 
-    def get_rec_name(self, cursor, user, ids, name, arg, context=None):
+    def get_rec_name(self, cursor, user, ids, name, context=None):
         if not ids:
             return {}
         res = {}
