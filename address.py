@@ -6,9 +6,9 @@ import urllib
 class Address(ModelSQL, ModelView):
     _name = 'party.address'
 
-    google_maps_url = fields.Function('get_google_maps_url', type="char",
-            string="Google Maps", on_change_with=['street', 'streetbis',
-                'zip', 'city', 'country', 'subdivision'])
+    google_maps_url = fields.Function(fields.Char('Google Maps',
+        on_change_with=['street', 'streetbis', 'zip', 'city', 'country',
+            'subdivision']), 'get_google_maps_url')
 
     def _get_url(self, cursor, user, vals, context=None):
         if context is None:
@@ -48,7 +48,7 @@ class Address(ModelSQL, ModelView):
 
         return self._get_url(cursor, user, vals, context=context)
 
-    def get_google_maps_url(self, cursor, user, ids, name, arg, context=None):
+    def get_google_maps_url(self, cursor, user, ids, name, context=None):
         res = {}
         for address in self.browse(cursor, user, ids, context=context):
             vals = {
