@@ -162,6 +162,20 @@ class ProductTestCase(unittest.TestCase):
                 qty, to_uom, False))
             self.assert_(rounded_result == self.uom.compute_qty(cursor, USER,
                 from_uom, qty, to_uom, True))
+
+        self.assert_(10 == self.uom.compute_qty(cursor, USER,
+            None, 10, to_uom))
+        self.assert_(10 == self.uom.compute_qty(cursor, USER,
+            None, 10, to_uom, True))
+        self.assert_(0 == self.uom.compute_qty(cursor, USER,
+            from_uom, 0, to_uom))
+        self.assert_(0 == self.uom.compute_qty(cursor, USER,
+            from_uom, 0, to_uom, True))
+        self.assert_(10 == self.uom.compute_qty(cursor, USER,
+            from_uom, 10, None))
+        self.assert_(10 == self.uom.compute_qty(cursor, USER,
+            from_uom, 10, None, True))
+
         cursor.close()
 
     def test0050uom_compute_price(self):
