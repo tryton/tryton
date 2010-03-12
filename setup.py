@@ -30,6 +30,7 @@ setup(name='trytond_company_work_time',
     package_dir={'trytond.modules.company_work_time': '.'},
     packages=[
         'trytond.modules.company_work_time',
+        'trytond.modules.company_work_time.tests',
     ],
     package_data={
         'trytond.modules.company_work_time': info.get('xml', []) \
@@ -57,4 +58,6 @@ setup(name='trytond_company_work_time',
     [trytond.modules]
     company_work_time = trytond.modules.company_work_time
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
