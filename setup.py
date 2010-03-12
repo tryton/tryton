@@ -30,6 +30,7 @@ setup(name='trytond_sale_price_list',
     package_dir={'trytond.modules.sale_price_list': '.'},
     packages=[
         'trytond.modules.sale_price_list',
+        'trytond.modules.sale_price_list.tests',
     ],
     package_data={
         'trytond.modules.sale_price_list': info.get('xml', []) \
@@ -58,4 +59,6 @@ setup(name='trytond_sale_price_list',
     [trytond.modules]
     sale_price_list = trytond.modules.sale_price_list
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
