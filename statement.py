@@ -157,7 +157,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
                     res[statement.id].append(move_line.id)
         return res
 
-    def get_end_balance(self, cursor, user, ids, name, arg, context=None):
+    def get_end_balance(self, cursor, user, ids, name, context=None):
         statements = self.browse(cursor, user, ids, context=context)
         res = {}
         for statement in statements:
