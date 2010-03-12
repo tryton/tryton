@@ -30,6 +30,7 @@ setup(name='trytond_stock_supply',
     package_dir={'trytond.modules.stock_supply': '.'},
     packages=[
         'trytond.modules.stock_supply',
+        'trytond.modules.stock_supply.tests',
     ],
     package_data={
         'trytond.modules.stock_supply': info.get('xml', []) \
@@ -58,4 +59,6 @@ setup(name='trytond_stock_supply',
     [trytond.modules]
     stock_supply = trytond.modules.stock_supply
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
