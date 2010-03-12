@@ -30,6 +30,7 @@ setup(name='trytond_party_siret',
     package_dir={'trytond.modules.party_siret': '.'},
     packages=[
         'trytond.modules.party_siret',
+        'trytond.modules.party_siret.tests',
     ],
     package_data={
         'trytond.modules.party_siret': info.get('xml', []) \
@@ -58,4 +59,6 @@ setup(name='trytond_party_siret',
     [trytond.modules]
     party_siret = trytond.modules.party_siret
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
