@@ -30,6 +30,7 @@ setup(name='trytond_currency',
     package_dir={'trytond.modules.currency': '.'},
     packages=[
         'trytond.modules.currency',
+        'trytond.modules.currency.tests',
     ],
     package_data={
         'trytond.modules.currency': info.get('xml', []) \
@@ -58,4 +59,6 @@ setup(name='trytond_currency',
     [trytond.modules]
     currency = trytond.modules.currency
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
