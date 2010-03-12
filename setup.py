@@ -30,6 +30,7 @@ setup(name='trytond_timesheet',
     package_dir={'trytond.modules.timesheet': '.'},
     packages=[
         'trytond.modules.timesheet',
+        'trytond.modules.timesheet.tests',
     ],
     package_data={
         'trytond.modules.timesheet': info.get('xml', []) \
@@ -56,4 +57,6 @@ setup(name='trytond_timesheet',
     [trytond.modules]
     timesheet = trytond.modules.timesheet
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
