@@ -30,6 +30,7 @@ setup(name='trytond_ldap_authentication',
     package_dir={'trytond.modules.ldap_authentication': '.'},
     packages=[
         'trytond.modules.ldap_authentication',
+        'trytond.modules.ldap_authentication.tests',
     ],
     package_data={
         'trytond.modules.ldap_authentication': info.get('xml', []) \
@@ -58,4 +59,6 @@ setup(name='trytond_ldap_authentication',
     [trytond.modules]
     ldap_authentication = trytond.modules.ldap_authentication
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
