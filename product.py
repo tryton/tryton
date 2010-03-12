@@ -49,7 +49,7 @@ class Template(ModelSQL, ModelView):
     def default_cost_price_method(self, cursor, user, context=None):
         return 'fixed'
 
-    def get_price_uom(self, cursor, user, ids, name, arg, context=None):
+    def get_price_uom(self, cursor, user, ids, name, context=None):
         product_uom_obj = self.pool.get('product.uom')
         res = {}
         if context is None:
