@@ -30,6 +30,7 @@ setup(name='trytond_product_cost_history',
     package_dir={'trytond.modules.product_cost_history': '.'},
     packages=[
         'trytond.modules.product_cost_history',
+        'trytond.modules.product_cost_history.tests',
     ],
     package_data={
         'trytond.modules.product_cost_history': info.get('xml', []) \
@@ -58,4 +59,6 @@ setup(name='trytond_product_cost_history',
     [trytond.modules]
     product_cost_history = trytond.modules.product_cost_history
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
