@@ -30,6 +30,7 @@ setup(name='trytond_google_maps',
     package_dir={'trytond.modules.google_maps': '.'},
     packages=[
         'trytond.modules.google_maps',
+        'trytond.modules.google_maps.tests',
     ],
     package_data={
         'trytond.modules.google_maps': info.get('xml', []) \
@@ -58,4 +59,6 @@ setup(name='trytond_google_maps',
     [trytond.modules]
     google_maps = trytond.modules.google_maps
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
