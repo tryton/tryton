@@ -30,6 +30,7 @@ setup(name='trytond_analytic_sale',
     package_dir={'trytond.modules.analytic_sale': '.'},
     packages=[
         'trytond.modules.analytic_sale',
+        'trytond.modules.analytic_sale.tests',
     ],
     package_data={
         'trytond.modules.analytic_sale': info.get('xml', []) \
@@ -58,4 +59,6 @@ setup(name='trytond_analytic_sale',
     [trytond.modules]
     analytic_sale = trytond.modules.analytic_sale
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
