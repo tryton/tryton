@@ -51,4 +51,9 @@ setup(name='trytond_stock_forecast',
     ],
     license='GPL-3',
     install_requires=requires,
+    zip_safe=False,
+    entry_points="""
+    [trytond.modules]
+    stock = trytond.modules.stock_forecast
+    """,
 )
