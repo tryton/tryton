@@ -30,6 +30,7 @@ setup(name='trytond_project_revenue',
     package_dir={'trytond.modules.project_revenue': '.'},
     packages=[
         'trytond.modules.project_revenue',
+        'trytond.modules.project_revenue.tests',
     ],
     package_data={
         'trytond.modules.project_revenue': info.get('xml', []) \
@@ -56,4 +57,6 @@ setup(name='trytond_project_revenue',
     [trytond.modules]
     project_revenue = trytond.modules.project_revenue
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
