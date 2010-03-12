@@ -1738,7 +1738,7 @@ class Move(ModelSQL, ModelView):
         ('recreated', 'Recreated'),
         ], 'Exception State'), 'get_purchase_exception_state')
 
-    def get_purchase(self, cursor, user, ids, name, arg, context=None):
+    def get_purchase(self, cursor, user, ids, name, context=None):
         res = {}
         for move in self.browse(cursor, user, ids, context=context):
             res[move.id] = False
