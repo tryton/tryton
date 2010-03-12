@@ -30,6 +30,7 @@ setup(name='trytond_account_statement',
     package_dir={'trytond.modules.account_statement': '.'},
     packages=[
         'trytond.modules.account_statement',
+        'trytond.modules.account_statement.tests',
     ],
     package_data={
         'trytond.modules.account_statement': info.get('xml', []) \
@@ -58,4 +59,6 @@ setup(name='trytond_account_statement',
     [trytond.modules]
     account_statement = trytond.modules.account_statement
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
