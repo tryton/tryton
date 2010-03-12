@@ -30,6 +30,7 @@ setup(name='trytond_analytic_invoice',
     package_dir={'trytond.modules.analytic_invoice': '.'},
     packages=[
         'trytond.modules.analytic_invoice',
+        'trytond.modules.analytic_invoice.tests',
     ],
     package_data={
         'trytond.modules.analytic_invoice': info.get('xml', []) \
@@ -58,4 +59,6 @@ setup(name='trytond_analytic_invoice',
     [trytond.modules]
     analytic_invoice = trytond.modules.analytic_invoice
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
