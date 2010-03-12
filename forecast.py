@@ -166,7 +166,8 @@ class ForecastLine(ModelSQL, ModelView):
             domain=[('type', '=', 'stockable')], on_change=['product'])
     uom = fields.Many2One(
         'product.uom', 'UOM', required=True,
-        domain="[('category', '=', (product, 'product.default_uom.category'))]")
+        domain="[('category', '=', (product, 'product.default_uom.category'))]",
+        on_change=['uom'])
     unit_digits = fields.Function('get_unit_digits', type='integer',
             string='Unit Digits')
     quantity = fields.Float('Quantity', digits="(16, unit_digits)", required=True)
@@ -206,6 +207,15 @@ class ForecastLine(ModelSQL, ModelView):
             res['uom'] = product.default_uom.id
             res['uom.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
+        return res
+
+    def on_change_uom(self, cursor, user, ids, vals, context=None):
+        uom_obj = self.pool.get('product.uom')
+        res = {}
+        res['unit_digits'] = 2
+        if vals.get('uom'):
+            uom = uom_obj.browse(cursor, user, vals['uom'], context=context)
+            res['unit_digits'] = uom.digits
         return res
 
     def get_unit_digits(self, cursor, user, ids, name, arg, context=None):
