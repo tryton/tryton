@@ -725,8 +725,7 @@ class Account(ModelSQL, ModelView):
                 ctx['fiscalyear'] = fiscalyear.id
                 if 'date' in context:
                     del context['date']
-                res2 = self.get_balance(cursor, user, ids, name, arg,
-                        context=ctx)
+                res2 = self.get_balance(cursor, user, ids, name, context=ctx)
                 for account_id in ids:
                     res[account_id] += res2[account_id]
 
@@ -745,7 +744,6 @@ class Account(ModelSQL, ModelView):
         :param user: the user id
         :param ids: the ids of the account
         :param names: the list of field name to compute
-        :param arg: optional argument
         :param context: the context
         :return: a dictionary with all field names as key and
             a dictionary as value with id as key
@@ -839,7 +837,7 @@ class Account(ModelSQL, ModelView):
                 ctx['fiscalyear'] = fiscalyear.id
                 if 'date' in ctx:
                     del ctx['date']
-                res2 = self.get_credit_debit(cursor, user, ids, names, arg,
+                res2 = self.get_credit_debit(cursor, user, ids, names,
                         context=ctx)
                 for account_id in ids:
                     for name in names:
