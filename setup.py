@@ -30,6 +30,7 @@ setup(name='trytond_purchase_invoice_line_standalone',
     package_dir={'trytond.modules.purchase_invoice_line_standalone': '.'},
     packages=[
         'trytond.modules.purchase_invoice_line_standalone',
+        'trytond.modules.purchase_invoice_line_standalone.tests',
     ],
     package_data={
         'trytond.modules.purchase_invoice_line_standalone': info.get('xml', []) \
@@ -57,4 +58,6 @@ setup(name='trytond_purchase_invoice_line_standalone',
     [trytond.modules]
     purchase_invoice_line_standalone = trytond.modules.purchase_invoice_line_standalone
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
