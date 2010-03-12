@@ -39,11 +39,14 @@ class Account(ModelSQL, ModelView):
             })
     childs = fields.One2Many('analytic_account.account', 'parent', 'Children')
     balance = fields.Function(fields.Numeric('Balance',
-        digits=(16, Eval('currency_digits', 1))), 'get_balance')
+        digits=(16, Eval('currency_digits', 1)), depends=['currency_digits']),
+        'get_balance')
     credit = fields.Function(fields.Numeric('Credit',
-        digits=(16, Eval('currency_digits', 2))), 'get_credit_debit')
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+        'get_credit_debit')
     debit = fields.Function(fields.Numeric('Debit',
-        digits=(16, Eval('currency_digits', 2))), 'get_credit_debit')
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
+        'get_credit_debit')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('opened', 'Opened'),

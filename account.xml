@@ -129,7 +129,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="credit"/>
                     <field name="balance"/>
                     <field name="currency"/>
-                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
