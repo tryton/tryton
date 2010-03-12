@@ -28,6 +28,7 @@ setup(name='trytond_stock_forecast',
     package_dir={'trytond.modules.stock_forecast': '.'},
     packages=[
         'trytond.modules.stock_forecast',
+        'trytond.modules.stock_forecast.tests',
     ],
     package_data={
         'trytond.modules.stock_forecast': info.get('xml', []) \
@@ -56,4 +57,6 @@ setup(name='trytond_stock_forecast',
     [trytond.modules]
     stock_forecast = trytond.modules.stock_forecast
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
