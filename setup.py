@@ -30,6 +30,7 @@ setup(name='trytond_account_invoice',
     package_dir={'trytond.modules.account_invoice': '.'},
     packages=[
         'trytond.modules.account_invoice',
+        'trytond.modules.account_invoice.tests',
     ],
     package_data={
         'trytond.modules.account_invoice': info.get('xml', []) \
@@ -59,4 +60,6 @@ setup(name='trytond_account_invoice',
     [trytond.modules]
     account_invoice = trytond.modules.account_invoice
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
