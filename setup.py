@@ -54,6 +54,6 @@ setup(name='trytond_stock_forecast',
     zip_safe=False,
     entry_points="""
     [trytond.modules]
-    stock = trytond.modules.stock_forecast
+    stock_forecast = trytond.modules.stock_forecast
     """,
 )
