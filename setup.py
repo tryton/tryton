@@ -30,6 +30,7 @@ setup(name='trytond_project_plan',
     package_dir={'trytond.modules.project_plan': '.'},
     packages=[
         'trytond.modules.project_plan',
+        'trytond.modules.project_plan.tests',
     ],
     package_data={
         'trytond.modules.project_plan': info.get('xml', []) \
@@ -56,4 +57,6 @@ setup(name='trytond_project_plan',
     [trytond.modules]
     project_plan = trytond.modules.project_plan
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
