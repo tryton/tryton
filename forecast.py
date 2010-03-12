@@ -180,7 +180,7 @@ class ForecastLine(ModelSQL, ModelView):
         domain=[
             ('category', '=',
                 (Eval('product'), 'product.default_uom.category')),
-        ])
+        ], on_change=['uom'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
@@ -221,6 +221,15 @@ class ForecastLine(ModelSQL, ModelView):
             res['uom'] = product.default_uom.id
             res['uom.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
+        return res
+
+    def on_change_uom(self, cursor, user, ids, vals, context=None):
+        uom_obj = self.pool.get('product.uom')
+        res = {}
+        res['unit_digits'] = 2
+        if vals.get('uom'):
+            uom = uom_obj.browse(cursor, user, vals['uom'], context=context)
+            res['unit_digits'] = uom.digits
         return res
 
     def get_unit_digits(self, cursor, user, ids, name, context=None):
