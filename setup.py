@@ -28,6 +28,7 @@ setup(name='trytond_country',
     package_dir={'trytond.modules.country': '.'},
     packages=[
         'trytond.modules.country',
+        'trytond.modules.country.tests',
     ],
     package_data={
         'trytond.modules.country': info.get('xml', []) \
@@ -56,4 +57,6 @@ setup(name='trytond_country',
     [trytond.modules]
     country = trytond.modules.country
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
