@@ -212,7 +212,6 @@ class ForecastLine(ModelSQL, ModelView):
 
     def on_change_product(self, cursor, user, ids, vals, context=None):
         product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
         res = {}
         res['unit_digits'] = 2
         if vals.get('product'):
