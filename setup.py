@@ -30,6 +30,7 @@ setup(name='trytond_stock_supply_day',
     package_dir={'trytond.modules.stock_supply_day': '.'},
     packages=[
         'trytond.modules.stock_supply_day',
+        'trytond.modules.stock_supply_day.tests',
     ],
     package_data={
         'trytond.modules.stock_supply_day': info.get('xml', []) \
@@ -57,4 +58,6 @@ setup(name='trytond_stock_supply_day',
     [trytond.modules]
     stock_supply_day = trytond.modules.stock_supply_day
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
