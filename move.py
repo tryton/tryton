@@ -525,6 +525,8 @@ class Line(ModelSQL, ModelView):
         super(Line, self).init(cursor, module_name)
 
         table = TableHandler(cursor, self, module_name)
+        # Index for General Ledger
+        table.index_action(['move', 'account'], 'add')
 
         # Migration from 1.2
         table.not_null_action('blocked', action='remove')

@@ -1285,23 +1285,20 @@ class GeneralLegder(Report):
         context['end_period'] = periods[-1]
 
         if not datas['form']['empty_account']:
-            to_remove = []
             account_id2lines = self.get_lines(cursor, user, account_ids,
                     end_period_ids, datas['form']['posted'], context)
-            for account_id in account_ids:
-                if account_id not in account_id2lines:
-                    to_remove.append(account_id)
-            for account_id in to_remove:
-                account_ids.remove(account_id)
+            account_ids = account_id2lines.keys()
+            account_id2lines = None
+
+        account_id2lines = self.lines(cursor, user, account_ids,
+                list(set(end_period_ids).difference(
+                set(start_period_ids))), datas['form']['posted'], context)
 
         context['accounts'] = account_obj.browse(cursor, user, account_ids,
                 context=context)
         context['id2start_account'] = id2start_account
         context['id2end_account'] = id2end_account
         context['digits'] = company.currency.digits
-        account_id2lines = self.lines(cursor, user, account_ids,
-                list(set(end_period_ids).difference(
-                set(start_period_ids))), datas['form']['posted'], context)
         context['lines'] = lambda account_id: account_id2lines[account_id]
         context['company'] = company
 
@@ -1329,7 +1326,7 @@ class GeneralLegder(Report):
     def lines(self, cursor, user, account_ids, period_ids, posted, context):
         move_line_obj = self.pool.get('account.move.line')
         move_obj = self.pool.get('account.move')
-        res = dict(((account_id, []) for account_id in account_ids))
+        res = dict((account_id, []) for account_id in account_ids)
         account_id2lines = self.get_lines(cursor, user, account_ids,
                 period_ids, posted, context)
 
