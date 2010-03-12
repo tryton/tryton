@@ -30,6 +30,7 @@ setup(name='trytond_dashboard',
     package_dir={'trytond.modules.dashboard': '.'},
     packages=[
         'trytond.modules.dashboard',
+        'trytond.modules.dashboard.tests',
     ],
     package_data={
         'trytond.modules.dashboard': info.get('xml', []) \
@@ -56,4 +57,6 @@ setup(name='trytond_dashboard',
     [trytond.modules]
     dashboard = trytond.modules.dashboard
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
