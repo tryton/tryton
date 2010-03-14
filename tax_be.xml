@@ -80,6 +80,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template"
+            id="tax_code_II_44">
+            <field name="name">Services intra-communautaires</field>
+            <field name="code">45</field>
+            <field name="parent" ref="tax_code_II"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.code.template"
             id="tax_code_II_C_45">
             <field name="name">C. Opérations pour lesquelles la T.V.A. est due par le cocontractant</field>
             <field name="code">45</field>
@@ -112,7 +120,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.tax.code.template"
             id="tax_code_II_F_48">
-            <field name="name">- relatif aux opérations inscrites en grille 46</field>
+            <field name="name">- relatif aux opérations inscrites en grille 44, 46</field>
             <field name="code">48</field>
             <field name="parent" ref="tax_code_II_F"/>
             <field name="account" ref="root"/>
@@ -204,6 +212,14 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template"
+            id="tax_code_III_88">
+            <field name="name">Acquisitions intra-communautaires de services</field>
+            <field name="code">88</field>
+            <field name="parent" ref="tax_code_III"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.code.template"
             id="tax_code_IV">
             <field name="name">IV. Taxes dues</field>
             <field name="code">XX</field>
@@ -228,7 +244,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.tax.code.template"
             id="tax_code_IV_A_55">
-            <field name="name">- grille 86</field>
+            <field name="name">- grille 86, 88</field>
             <field name="code">55</field>
             <field name="parent" ref="tax_code_IV_A"/>
             <field name="account" ref="root"/>
@@ -443,7 +459,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
-            <field name="invoice_base_code" ref="tax_code_II_D_46"/>
+            <field name="invoice_base_code" ref="tax_code_II_D_44"/>
             <field name="credit_note_base_code" ref="tax_code_II_F_48"/>
             <field name="account" ref="root"/>
         </record>
