@@ -459,7 +459,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
-            <field name="invoice_base_code" ref="tax_code_II_D_44"/>
+            <field name="invoice_base_code" ref="tax_code_II_44"/>
             <field name="credit_note_base_code" ref="tax_code_II_F_48"/>
             <field name="account" ref="root"/>
         </record>
