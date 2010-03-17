@@ -337,7 +337,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens co-contractants</field>
             <field name="description">T.V.A. co-contractants</field>
             <field name="group" ref="group_tva_vente_biens"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -351,7 +351,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens intracommunautaires 0%</field>
             <field name="description">T.V.A. 0%</field>
             <field name="group" ref="group_tva_vente_biens"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -365,7 +365,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens hors communauté 0%</field>
             <field name="description">T.V.A. 0%</field>
             <field name="group" ref="group_tva_vente_biens"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -379,7 +379,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens 0%</field>
             <field name="description">T.V.A. 0%</field>
             <field name="group" ref="group_tva_vente_biens"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -393,7 +393,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens 6%</field>
             <field name="description">T.V.A. 6%</field>
             <field name="group" ref="group_tva_vente_biens"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -409,7 +409,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens 12%</field>
             <field name="description">T.V.A. 12%</field>
             <field name="group" ref="group_tva_vente_biens"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -425,7 +425,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens 21%</field>
             <field name="description">T.V.A. 21%</field>
             <field name="group" ref="group_tva_vente_biens"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -441,7 +441,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de services co-contractants</field>
             <field name="description">T.V.A. co-contractants</field>
             <field name="group" ref="group_tva_vente_services"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -455,7 +455,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de services intracommunautaires 0%</field>
             <field name="description">T.V.A. 0%</field>
             <field name="group" ref="group_tva_vente_services"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -469,7 +469,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de services hors communauté 0%</field>
             <field name="description">T.V.A. 0%</field>
             <field name="group" ref="group_tva_vente_services"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -483,7 +483,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de services 6%</field>
             <field name="description">T.V.A. 6%</field>
             <field name="group" ref="group_tva_vente_services"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -499,7 +499,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de services 12%</field>
             <field name="description">T.V.A. 12%</field>
             <field name="group" ref="group_tva_vente_services"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -515,7 +515,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de services 21%</field>
             <field name="description">T.V.A. 21%</field>
             <field name="group" ref="group_tva_vente_services"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -540,7 +540,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires 0% (1)</field>
             <field name="description">T.V.A. 0%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_0"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -554,7 +554,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires 0% (2)</field>
             <field name="description">T.V.A. 0%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_0"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -578,7 +578,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de marchandises déductibles 6% (1)</field>
             <field name="description">T.V.A. co-contractants 6% (1)</field>
             <field name="parent" ref="tva_achat_marchandises_coco_6"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -594,7 +594,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de marchandises déductibles 6% (2)</field>
             <field name="description">T.V.A. co-contractants 6% (2)</field>
             <field name="parent" ref="tva_achat_marchandises_coco_6"/>
-            <field name="percentage">-6</field>
+            <field name="percentage" eval="Decimal('-6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -620,7 +620,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de marchandises déductibles 12% (1)</field>
             <field name="description">T.V.A. co-contractants 12% (1)</field>
             <field name="parent" ref="tva_achat_marchandises_coco_12"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -636,7 +636,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de marchandises déductibles 12% (2)</field>
             <field name="description">T.V.A. co-contractants 12% (2)</field>
             <field name="parent" ref="tva_achat_marchandises_coco_12"/>
-            <field name="percentage">-12</field>
+            <field name="percentage" eval="Decimal('-12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -662,7 +662,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de marchandises déductibles 21% (1)</field>
             <field name="description">T.V.A. co-contractants 21% (1)</field>
             <field name="parent" ref="tva_achat_marchandises_coco_21"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -678,7 +678,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de marchandises déductibles 21% (2)</field>
             <field name="description">T.V.A. co-contractants 21% (2)</field>
             <field name="parent" ref="tva_achat_marchandises_coco_21"/>
-            <field name="percentage">-21</field>
+            <field name="percentage" eval="Decimal('-21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -704,7 +704,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises déductibles 6% (1)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_marchandises_6"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -720,7 +720,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises déductibles 6% (2)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_marchandises_6"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -743,7 +743,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires déductibles 6% (1)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_6"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -759,7 +759,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires déductibles 6% (2)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_6"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -783,7 +783,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises déductibles 12% (1)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_marchandises_12"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -799,7 +799,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises déductibles 12% (2)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_marchandises_12"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -822,7 +822,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires déductibles 12% (1)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_12"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -838,7 +838,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires déductibles 12% (2)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_12"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -862,7 +862,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises déductibles 21% (1)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_marchandises_21"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -878,7 +878,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises déductibles 21% (2)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_marchandises_21"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -901,7 +901,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires déductibles 21% (1)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_21"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -917,7 +917,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires déductibles 21% (2)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_21"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -941,7 +941,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires 0% (1)</field>
             <field name="description">T.V.A. 0%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_0"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -955,7 +955,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires 0% (2)</field>
             <field name="description">T.V.A. 0%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_0"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -979,7 +979,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de services et biens divers déductibles 6% (1)</field>
             <field name="description">T.V.A. co-contractants 6% (1)</field>
             <field name="parent" ref="tva_achat_frais_biens_coco_6"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -995,7 +995,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de services et biens divers déductibles 6% (2)</field>
             <field name="description">T.V.A. co-contractants 6% (2)</field>
             <field name="parent" ref="tva_achat_frais_biens_coco_6"/>
-            <field name="percentage">-6</field>
+            <field name="percentage" eval="Decimal('-6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -1021,7 +1021,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de services et biens divers déductibles 12% (1)</field>
             <field name="description">T.V.A. co-contractants 12% (1)</field>
             <field name="parent" ref="tva_achat_frais_biens_coco_12"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1037,7 +1037,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de services et biens divers déductibles 12% (2)</field>
             <field name="description">T.V.A. co-contractants 12% (2)</field>
             <field name="parent" ref="tva_achat_frais_biens_coco_12"/>
-            <field name="percentage">-12</field>
+            <field name="percentage" eval="Decimal('-12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -1063,7 +1063,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de services et biens divers déductibles 21% (1)</field>
             <field name="description">T.V.A. co-contractants 21% (1)</field>
             <field name="parent" ref="tva_achat_frais_biens_coco_21"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1079,7 +1079,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de services et biens divers déductibles 21% (2)</field>
             <field name="description">T.V.A. co-contractants 21% (2)</field>
             <field name="parent" ref="tva_achat_frais_biens_coco_21"/>
-            <field name="percentage">-21</field>
+            <field name="percentage" eval="Decimal('-21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -1105,7 +1105,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers déductibles 6% (1)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_frais_biens_6"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1121,7 +1121,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers déductibles 6% (2)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_frais_biens_6"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1144,7 +1144,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires 6% déductibles (1)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_6"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1160,7 +1160,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires 6% déductibles (2)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_6"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1184,7 +1184,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers déductibles 12% (1)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_frais_biens_12"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1200,7 +1200,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers déductibles 12% (2)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_frais_biens_12"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1223,7 +1223,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires déductibles 12% (1)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_12"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1239,7 +1239,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires déductibles 12% (2)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_12"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1263,7 +1263,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers déductibles 21% (1)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_frais_biens_21"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1279,7 +1279,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers déductibles 21% (2)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_frais_biens_21"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1302,7 +1302,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires déductibles 21% (1)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_21"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1318,7 +1318,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires déductibles 21% (2)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_21"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1342,7 +1342,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires 0% (1)</field>
             <field name="description">T.V.A. 0%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_0"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1356,7 +1356,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires 0% (2)</field>
             <field name="description">T.V.A. 0%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_0"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1380,7 +1380,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de biens d'investissement déductibles 6% (1)</field>
             <field name="description">T.V.A. co-contractants 6% (1)</field>
             <field name="parent" ref="tva_achat_investissement_coco_6"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1396,7 +1396,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de biens d'investissement déductibles 6% (2)</field>
             <field name="description">T.V.A. co-contractants 6% (2)</field>
             <field name="parent" ref="tva_achat_investissement_coco_6"/>
-            <field name="percentage">-6</field>
+            <field name="percentage" eval="Decimal('-6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -1422,7 +1422,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de biens d'investissement déductibles 12% (1)</field>
             <field name="description">T.V.A. co-contractants 12% (1)</field>
             <field name="parent" ref="tva_achat_investissement_coco_12"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1438,7 +1438,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de biens d'investissement déductibles 12% (2)</field>
             <field name="description">T.V.A. co-contractants 12% (2)</field>
             <field name="parent" ref="tva_achat_investissement_coco_12"/>
-            <field name="percentage">-12</field>
+            <field name="percentage" eval="Decimal('-12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -1464,7 +1464,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de biens d'investissement déductibles 21% (1)</field>
             <field name="description">T.V.A. co-contractants 21% (1)</field>
             <field name="parent" ref="tva_achat_investissement_coco_21"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1480,7 +1480,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat co-contractants de biens d'investissement déductibles 21% (2)</field>
             <field name="description">T.V.A. co-contractants 21% (2)</field>
             <field name="parent" ref="tva_achat_investissement_coco_21"/>
-            <field name="percentage">-21</field>
+            <field name="percentage" eval="Decimal('-21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="451"/>
             <field name="credit_note_account" ref="451"/>
@@ -1506,7 +1506,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement déductibles 6% (1)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_investissement_6"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1522,7 +1522,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement déductibles 6% (2)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_investissement_6"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1545,7 +1545,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires déductibles 6% (1)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_6"/>
-            <field name="percentage">6</field>
+            <field name="percentage" eval="Decimal('6')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1561,7 +1561,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires déductibles 6% (2)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_6"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1585,7 +1585,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement déductibles 12% (1)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_investissement_12"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1601,7 +1601,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement déductibles 12% (2)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_investissement_12"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1624,7 +1624,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires déductibles 12% (1)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_12"/>
-            <field name="percentage">12</field>
+            <field name="percentage" eval="Decimal('12')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1640,7 +1640,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires déductibles 12% (2)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_12"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1664,7 +1664,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement déductibles 21% (1)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_investissement_21"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1680,7 +1680,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement déductibles 21% (2)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_investissement_21"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1703,7 +1703,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires déductibles 21% (1)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_21"/>
-            <field name="percentage">21</field>
+            <field name="percentage" eval="Decimal('21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
@@ -1719,7 +1719,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires déductibles 21% (2)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_21"/>
-            <field name="percentage">0</field>
+            <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="411"/>
             <field name="credit_note_account" ref="411"/>
