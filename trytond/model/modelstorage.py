@@ -256,10 +256,11 @@ class ModelStorage(Model):
             new_ids[data_id] = self.create(cursor, user, data, context=context)
             for field_name in data_o2m:
                 relation_model = self.pool.get(fields[field_name]['relation'])
-                relation_field = fields[field_name]['relation_field']
-                relation_model.copy(cursor, user, data_o2m[field_name],
-                        default={relation_field: new_ids[data_id]},
-                        context=context)
+                if 'relation_field' in fields[field_name]:
+                    relation_field = fields[field_name]['relation_field']
+                    relation_model.copy(cursor, user, data_o2m[field_name],
+                            default={relation_field: new_ids[data_id]},
+                            context=context)
 
         fields_translate = {}
         for field_name, field in fields.iteritems():
