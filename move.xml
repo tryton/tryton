@@ -220,7 +220,7 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="maturity_date"/>
                             <field name="maturity_date"/>
                             <label name="move"/>
-                            <field name="move" required="0"/>
+                            <field name="move"/>
                             <label name="move_state"/>
                             <field name="move_state"/>
                             <label id="empty" colspan="2"/>
@@ -240,7 +240,7 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Account Move Lines" editable="top"
                     on_write="on_write"
                     colors="If(Equal(Eval('state'), 'draft'), 'red', 'black')">
-                    <field name="move" select="1" required="0"/>
+                    <field name="move" select="1"/>
                     <field name="name" select="1"/>
                     <field name="reference" select="2"/>
                     <field name="date" select="1"/>

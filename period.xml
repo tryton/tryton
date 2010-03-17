@@ -24,7 +24,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="type"/>
                     <newline/>
                     <label name="post_move_sequence"/>
-                    <field name="post_move_sequence" required="0"/>
+                    <field name="post_move_sequence"/>
                     <newline/>
                     <label name="state"/>
                     <field name="state" colspan="3"/>

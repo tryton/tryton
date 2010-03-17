@@ -29,7 +29,9 @@ class Period(ModelSQL, ModelView):
         ], 'State', readonly=True, required=True)
     post_move_sequence =fields.Many2One('ir.sequence', 'Post Move Sequence',
             required=True, domain=[('code', '=', 'account.move')],
-            context={'code': 'account.move'})
+            context={'code': 'account.move'}, states={
+            'required': False,
+            })
     type = fields.Selection([
         ('standard', 'Standard'),
         ('adjustment', 'Adjustment'),
