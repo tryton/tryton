@@ -68,7 +68,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
             return company.currency.digits
         return 2
 
-    def on_change_journal(self, cursor, user, ids, value, context=None):
+    def on_change_journal(self, cursor, user, value, context=None):
         res = {}
         if not value.get('journal'):
             return res
@@ -85,8 +85,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         res['start_balance'] = statement.end_balance
         return res
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         journal_obj = self.pool.get('account.statement.journal')
         if vals.get('journal'):
             journal = journal_obj.browse(cursor, user, vals['journal'],
@@ -166,7 +165,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
                 res[statement.id] += line.amount
         return res
 
-    def on_change_lines(self, cursor, user, ids, values, context=None):
+    def on_change_lines(self, cursor, user, values, context=None):
         invoice_obj = self.pool.get('account.invoice')
         journal_obj = self.pool.get('account.statement.journal')
         currency_obj = self.pool.get('currency.currency')
@@ -318,7 +317,7 @@ class Line(ModelSQL, ModelView):
                     'the amount to pay of invoice!',
             })
 
-    def on_change_party(self, cursor, user, ids, value, context=None):
+    def on_change_party(self, cursor, user, value, context=None):
         party_obj = self.pool.get('party.party')
         account_obj = self.pool.get('account.account')
         invoice_obj = self.pool.get('account.invoice')
@@ -345,7 +344,7 @@ class Line(ModelSQL, ModelView):
                 res['invoice'] = False
         return res
 
-    def on_change_amount(self, cursor, user, ids, value, context=None):
+    def on_change_amount(self, cursor, user, value, context=None):
         party_obj = self.pool.get('party.party')
         account_obj = self.pool.get('account.account')
         invoice_obj = self.pool.get('account.invoice')
@@ -381,7 +380,7 @@ class Line(ModelSQL, ModelView):
                 res['invoice'] = False
         return res
 
-    def on_change_account(self, cursor, user, ids, value, context=None):
+    def on_change_account(self, cursor, user, value, context=None):
         invoice_obj = self.pool.get('account.invoice')
         res = {}
 
