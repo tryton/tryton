@@ -139,8 +139,7 @@ class PriceListLine(ModelSQL, ModelView):
     def default_formula(self, cursor, user, context=None):
         return 'unit_price'
 
-    def on_change_with_unit_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_unit_digits(self, cursor, user, vals, context=None):
         product_obj = self.pool.get('product.product')
         if vals.get('product'):
             product = product_obj.browse(cursor, user, vals['product'],
