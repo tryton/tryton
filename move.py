@@ -231,8 +231,7 @@ class Move(ModelSQL, ModelView):
             return company.currency.id
         return False
 
-    def on_change_with_unit_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_unit_digits(self, cursor, user, vals, context=None):
         uom_obj = self.pool.get('product.uom')
         if vals.get('uom'):
             uom = uom_obj.browse(cursor, user, vals['uom'],
@@ -246,7 +245,7 @@ class Move(ModelSQL, ModelView):
             res[move.id] = move.uom.digits
         return res
 
-    def on_change_product(self, cursor, user, ids, vals, context=None):
+    def on_change_product(self, cursor, user, vals, context=None):
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
         currency_obj = self.pool.get('currency.currency')
@@ -288,7 +287,7 @@ class Move(ModelSQL, ModelView):
                 res['unit_price'] = unit_price
         return res
 
-    def on_change_uom(self, cursor, user, ids, vals, context=None):
+    def on_change_uom(self, cursor, user, vals, context=None):
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
         currency_obj = self.pool.get('currency.currency')
@@ -339,7 +338,7 @@ class Move(ModelSQL, ModelView):
         return self.on_change_with_unit_price_required(cursor, user, [],
                 vals, context=context)
 
-    def on_change_with_unit_price_required(self, cursor, user, ids, vals,
+    def on_change_with_unit_price_required(self, cursor, user, vals,
             context=None):
         location_obj = self.pool.get('stock.location')
         if vals.get('from_location'):

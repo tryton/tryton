@@ -231,7 +231,7 @@ class InventoryLine(ModelSQL, ModelView):
     def default_unit_digits(self, cursor, user, context=None):
         return 2
 
-    def on_change_product(self, cursor, user, ids, vals, context=None):
+    def on_change_product(self, cursor, user, vals, context=None):
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
         res = {}

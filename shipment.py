@@ -140,7 +140,7 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
             return location_ids[0]
         return False
 
-    def on_change_supplier(self, cursor, user, ids, values, context=None):
+    def on_change_supplier(self, cursor, user, values, context=None):
         if not values.get('supplier'):
             return {'contact_address': False}
         party_obj = self.pool.get("party.party")
@@ -669,7 +669,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             return location_ids[0]
         return False
 
-    def on_change_customer(self, cursor, user, ids, values, context=None):
+    def on_change_customer(self, cursor, user, values, context=None):
         if not values.get('customer'):
             return {'delivery_address': False}
         party_obj = self.pool.get("party.party")
@@ -1110,7 +1110,7 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
             return location_ids[0]
         return False
 
-    def on_change_customer(self, cursor, user, ids, values, context=None):
+    def on_change_customer(self, cursor, user, values, context=None):
         if not values.get('customer'):
             return {'delivery_address': False}
         party_obj = self.pool.get("party.party")
