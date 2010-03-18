@@ -210,7 +210,7 @@ class ForecastLine(ModelSQL, ModelView):
     def default_minimal_quantity(self, cursor, user, context=None):
         return 1.0
 
-    def on_change_product(self, cursor, user, ids, vals, context=None):
+    def on_change_product(self, cursor, user, vals, context=None):
         product_obj = self.pool.get('product.product')
         res = {}
         res['unit_digits'] = 2
@@ -222,7 +222,7 @@ class ForecastLine(ModelSQL, ModelView):
             res['unit_digits'] = product.default_uom.digits
         return res
 
-    def on_change_uom(self, cursor, user, ids, vals, context=None):
+    def on_change_uom(self, cursor, user, vals, context=None):
         uom_obj = self.pool.get('product.uom')
         res = {}
         res['unit_digits'] = 2
