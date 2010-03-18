@@ -128,7 +128,7 @@ class Currency(ModelSQL, ModelView):
             i += 1
         return args2
 
-    def on_change_with_rate(self, cursor, user, ids, vals, context=None):
+    def on_change_with_rate(self, cursor, user, vals, context=None):
         now = datetime.date.today()
         closer = datetime.date.min
         res = Decimal('0.0')
