@@ -60,7 +60,14 @@ def db_exec(host, port, method, *args):
                 _SOCK.connect(host, port)
             args = (None, None, None, 'common', 'db', method) + args
             logging.getLogger('rpc.request').info(repr(args))
-            _SOCK.send(args)
+            try:
+                _SOCK.send(args)
+            except Exception, exception:
+                if exception[0] == 32:
+                    _SOCK.reconnect()
+                    _SOCK.send(args)
+                else:
+                    raise
             res = _SOCK.receive()
             SECURE = _SOCK.ssl
         finally:
