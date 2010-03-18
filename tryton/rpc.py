@@ -53,7 +53,14 @@ def db_exec(host, port, method, *args):
                 _SOCK= pysocket.PySocket()
             if not _SOCK.connected:
                 _SOCK.connect(host, port)
-            _SOCK.send(('db', method) + args)
+            try:
+                _SOCK.send(('db', method) + args)
+            except Exception, exception:
+                if exception[0] == 32:
+                    _SOCK.reconnect()
+                    _SOCK.send(('db', method) + args)
+                else:
+                    raise
             res = _SOCK.receive()
             SECURE = _SOCK.ssl
         finally:
