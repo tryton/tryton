@@ -105,27 +105,27 @@ class ContactMechanism(ModelSQL, ModelView):
             'other_value': value,
         }
 
-    def on_change_value(self, cursor, user, ids, vals, context=None):
+    def on_change_value(self, cursor, user, vals, context=None):
         return self._change_value(cursor, user, vals.get('value'),
                 context=context)
 
-    def on_change_website(self, cursor, user, ids, vals, context=None):
+    def on_change_website(self, cursor, user, vals, context=None):
         return self._change_value(cursor, user, vals.get('website'),
                 context=context)
 
-    def on_change_email(self, cursor, user, ids, vals, context=None):
+    def on_change_email(self, cursor, user, vals, context=None):
         return self._change_value(cursor, user, vals.get('email'),
                 context=context)
 
-    def on_change_skype(self, cursor, user, ids, vals, context=None):
+    def on_change_skype(self, cursor, user, vals, context=None):
         return self._change_value(cursor, user, vals.get('skype'),
                 context=context)
 
-    def on_change_sip(self, cursor, user, ids, vals, context=None):
+    def on_change_sip(self, cursor, user, vals, context=None):
         return self._change_value(cursor, user, vals.get('sip'),
                 context=context)
 
-    def on_change_other_value(self, cursor, user, ids, vals, context=None):
+    def on_change_other_value(self, cursor, user, vals, context=None):
         return self._change_value(cursor, user, vals.get('other_value'),
                 context=context)
 
