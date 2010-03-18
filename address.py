@@ -29,7 +29,7 @@ class Address(ModelSQL, ModelView):
             url = ''
         return url
 
-    def on_change_with_google_maps_url(self, cursor, user, ids, vals,
+    def on_change_with_google_maps_url(self, cursor, user, vals,
             context=None):
         country_obj = self.pool.get('country.country')
         subdivision_obj = self.pool.get('country.subdivision')
