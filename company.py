@@ -140,7 +140,7 @@ class User(ModelSQL, ModelView):
                 res[user.id] += ' ' + user.company.name
         return res
 
-    def on_change_main_company(self, cursor, user, ids, vals, context=None):
+    def on_change_main_company(self, cursor, user, vals, context=None):
         return {'company': vals.get('main_company', False)}
 
     def check_company(self, cursor, user_id, ids):
