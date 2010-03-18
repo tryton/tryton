@@ -27,10 +27,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 Not(Bool(Eval('party'))))
         self._reset_columns()
 
-    def on_change_party(self, cursor, user, ids, values, context=None):
+    def on_change_party(self, cursor, user, values, context=None):
         party_obj = self.pool.get('party.party')
         price_list_obj = self.pool.get('product.price_list')
-        res = super(Sale, self).on_change_party(cursor, user, ids, values,
+        res = super(Sale, self).on_change_party(cursor, user, values,
                 context=context)
         res['price_list'] = False
         if values.get('party'):
