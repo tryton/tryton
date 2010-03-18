@@ -107,12 +107,12 @@ class Uom(ModelSQL, ModelView):
                     return product.default_uom.category.id
         return False
 
-    def on_change_factor(self, cursor, user, ids, value, context=None):
+    def on_change_factor(self, cursor, user, value, context=None):
         if value.get('factor', 0.0) == 0.0:
             return {'rate': 0.0}
         return {'rate': round(1.0 / value['factor'], self.rate.digits[1])}
 
-    def on_change_rate(self, cursor, user, ids, value, context=None):
+    def on_change_rate(self, cursor, user, value, context=None):
         if value.get('rate', 0.0) == 0.0:
             return {'factor': 0.0}
         return {'factor': round(1.0 / value['rate'], self.factor.digits[1])}
