@@ -82,7 +82,7 @@ class OrderPoint(ModelSQL, ModelView):
     def default_type(self, cursor, user, context=None):
         return "purchase"
 
-    def on_change_product(self, cursor, user, ids, vals, context=None):
+    def on_change_product(self, cursor, user, vals, context=None):
         product_obj = self.pool.get('product.product')
         res = {
             'unit': False,
