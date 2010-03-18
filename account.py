@@ -104,8 +104,7 @@ class Account(ModelSQL, ModelView):
     def default_mandatory(self, cursor, user, context=None):
         return False
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(cursor, user, vals['currency'],

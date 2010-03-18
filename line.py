@@ -63,8 +63,7 @@ class Line(ModelSQL, ModelView):
     def default_active(self, cursor, user, context=None):
         return True
 
-    def on_change_with_currency(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency(self, cursor, user, vals, context=None):
         move_line_obj = self.pool.get('account.move.line')
         if vals.get('move_line'):
             move_line = move_line_obj.browse(cursor, user, vals['move_line'],
@@ -78,8 +77,7 @@ class Line(ModelSQL, ModelView):
             res[line.id] = line.move_line.account.company.currency.id
         return res
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         move_line_obj = self.pool.get('account.move.line')
         if vals.get('move_line'):
             move_line = move_line_obj.browse(cursor, user, vals['move_line'],
