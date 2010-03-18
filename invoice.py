@@ -211,7 +211,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             return payment_term_ids[0]
         return False
 
-    def on_change_type(self, cursor, user, ids, vals, context=None):
+    def on_change_type(self, cursor, user, vals, context=None):
         journal_obj = self.pool.get('account.journal')
         res = {}
         journal_ids = journal_obj.search(cursor, user, [
@@ -225,7 +225,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             res['journal.rec_name'] = journal.rec_name
         return res
 
-    def on_change_party(self, cursor, user, ids, vals, context=None):
+    def on_change_party(self, cursor, user, vals, context=None):
         party_obj = self.pool.get('party.party')
         address_obj = self.pool.get('party.address')
         account_obj = self.pool.get('account.account')
@@ -268,7 +268,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     res['payment_term'], context=context).rec_name
         return res
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
+    def on_change_with_currency_digits(self, cursor, user, vals,
             context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('currency'):
@@ -283,7 +283,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             res[invoice.id] = invoice.currency.digits
         return res
 
-    def on_change_with_party_lang(self, cursor, user, ids, vals, context=None):
+    def on_change_with_party_lang(self, cursor, user, vals, context=None):
         party_obj = self.pool.get('party.party')
         if vals.get('party'):
             party = party_obj.browse(cursor, user, vals['party'],
@@ -322,13 +322,13 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             res[invoice.id] = type2name[invoice.type]
         return res
 
-    def on_change_lines(self, cursor, user, ids, vals, context=None):
-        return self._on_change_lines_taxes(cursor, user, ids, vals, context=context)
+    def on_change_lines(self, cursor, user, vals, context=None):
+        return self._on_change_lines_taxes(cursor, user, vals, context=context)
 
-    def on_change_taxes(self, cursor, user, ids, vals, context=None):
-        return self._on_change_lines_taxes(cursor, user, ids, vals, context=context)
+    def on_change_taxes(self, cursor, user, vals, context=None):
+        return self._on_change_lines_taxes(cursor, user, vals, context=context)
 
-    def _on_change_lines_taxes(self, cursor, user, ids, vals, context=None):
+    def _on_change_lines_taxes(self, cursor, user, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         tax_obj = self.pool.get('account.tax')
         if context is None:
@@ -1463,7 +1463,7 @@ class InvoiceLine(ModelSQL, ModelView):
     def default_unit_price(self, cursor, user, context=None):
         return Decimal('0.0')
 
-    def on_change_with_party_lang(self, cursor, user, ids, vals, context=None):
+    def on_change_with_party_lang(self, cursor, user, vals, context=None):
         party_obj = self.pool.get('party.party')
         if vals.get('party'):
             party = party_obj.browse(cursor, user, vals['party'],
@@ -1492,7 +1492,7 @@ class InvoiceLine(ModelSQL, ModelView):
                 res[line.id] = 'en_US'
         return res
 
-    def on_change_with_amount(self, cursor, user, ids, vals, context=None):
+    def on_change_with_amount(self, cursor, user, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('type') == 'line':
             currency = vals.get('_parent_invoice.currency') or vals.get('currency')
@@ -1506,8 +1506,7 @@ class InvoiceLine(ModelSQL, ModelView):
             return amount
         return Decimal('0.0')
 
-    def on_change_with_unit_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_unit_digits(self, cursor, user, vals, context=None):
         uom_obj = self.pool.get('product.uom')
         if vals.get('unit'):
             uom = uom_obj.browse(cursor, user, vals['unit'],
@@ -1524,8 +1523,7 @@ class InvoiceLine(ModelSQL, ModelView):
                 res[line.id] = 2
         return res
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(cursor, user, vals['currency'],
@@ -1610,7 +1608,7 @@ class InvoiceLine(ModelSQL, ModelView):
         res = {}
         return res
 
-    def on_change_product(self, cursor, user, ids, vals, context=None):
+    def on_change_product(self, cursor, user, vals, context=None):
         product_obj = self.pool.get('product.product')
         party_obj = self.pool.get('party.party')
         account_obj = self.pool.get('account.account')
@@ -1724,8 +1722,8 @@ class InvoiceLine(ModelSQL, ModelView):
         vals = vals.copy()
         vals['unit_price'] = res['unit_price']
         vals['type'] = 'line'
-        res['amount'] = self.on_change_with_amount(cursor, user, ids,
-                vals, context=context)
+        res['amount'] = self.on_change_with_amount(cursor, user, vals,
+                context=context)
         return res
 
     def check_modify(self, cursor, user, ids, context=None):
@@ -2224,8 +2222,7 @@ class PayInvoiceInit(ModelView):
         date_obj = self.pool.get('ir.date')
         return date_obj.today(cursor, user, context=context)
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(cursor, user, vals['currency'],
@@ -2303,7 +2300,7 @@ class PayInvoiceAsk(ModelView):
     def default_type(self, cursor, user, context=None):
         return 'partial'
 
-    def on_change_lines(self, cursor, user, ids, vals, context=None):
+    def on_change_lines(self, cursor, user, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         line_obj = self.pool.get('account.move.line')
         invoice_obj = self.pool.get('account.invoice')

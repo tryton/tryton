@@ -184,7 +184,7 @@ class PaymentTermLine(ModelSQL, ModelView):
                 context=context)
         return [(x.code, x.name) for x in delays]
 
-    def on_change_type(self, cursor, user, ids, vals, context=None):
+    def on_change_type(self, cursor, user, vals, context=None):
         if not 'type' in vals:
             return {}
         res = {}
@@ -195,8 +195,7 @@ class PaymentTermLine(ModelSQL, ModelView):
             res['percentage'] =  Decimal('0.0')
         return res
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(cursor, user, vals['currency'],
