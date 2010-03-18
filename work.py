@@ -130,8 +130,7 @@ class Work(ModelSQL, ModelView):
             res[work.id] = work.company.currency.digits
         return res
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         company_obj = self.pool.get('company.company')
         if vals.get('company'):
             company = company_obj.browse(cursor, user, vals['company'],
@@ -150,7 +149,7 @@ class Work(ModelSQL, ModelView):
             return company.currency.digits
         return 2
 
-    def on_change_product(self, cursor, user, ids, vals, context=None):
+    def on_change_product(self, cursor, user, vals, context=None):
         product_obj = self.pool.get('product.product')
         user_obj = self.pool.get('res.user')
         company_obj = self.pool.get('company.company')
