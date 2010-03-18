@@ -1179,7 +1179,7 @@ class PrintGeneralLegderInit(ModelView):
     def default_empty_account(self, cursor, user, context=None):
         return False
 
-    def on_change_fiscalyear(self, cursor, user, ids, vals, context=None):
+    def on_change_fiscalyear(self, cursor, user, vals, context=None):
         return {
             'start_period': False,
             'end_period': False,
@@ -1398,7 +1398,7 @@ class PrintTrialBalanceInit(ModelView):
     def default_empty_account(self, cursor, user, context=None):
         return False
 
-    def on_change_fiscalyear(self, cursor, user, ids, vals, context=None):
+    def on_change_fiscalyear(self, cursor, user, vals, context=None):
         return {
             'start_period': False,
             'end_period': False,
@@ -1645,7 +1645,7 @@ class OpenIncomeStatementInit(ModelView):
     def default_posted(self, cursor, user, context=None):
         return False
 
-    def on_change_fiscalyear(self, cursor, user, ids, vals, context=None):
+    def on_change_fiscalyear(self, cursor, user, vals, context=None):
         return {
             'start_period': False,
             'end_period': False,

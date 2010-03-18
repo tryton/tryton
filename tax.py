@@ -182,8 +182,7 @@ class Code(ModelSQL, ModelView):
             return context['company']
         return False
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         company_obj = self.pool.get('company.company')
         if vals.get('company'):
             company = company_obj.browse(cursor, user, vals['company'],
@@ -728,8 +727,7 @@ class Tax(ModelSQL, ModelView):
             return context['company']
         return False
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         company_obj = self.pool.get('company.company')
         if vals.get('company'):
             company = company_obj.browse(cursor, user, vals['company'],
@@ -951,8 +949,7 @@ class Line(ModelSQL, ModelView):
     move_line = fields.Many2One('account.move.line', 'Move Line',
             required=True, select=1, ondelete='CASCADE')
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         move_line_obj = self.pool.get('account.move.line')
         if vals.get('move_line'):
             move_line = move_line_obj.browse(cursor, user, vals['move_line'],
@@ -966,7 +963,7 @@ class Line(ModelSQL, ModelView):
             res[line.id] = line.move_line.currency_digits
         return res
 
-    def on_change_tax(self, cursor, user, ids, vals, context=None):
+    def on_change_tax(self, cursor, user, vals, context=None):
         res = {
             'code': False,
             }

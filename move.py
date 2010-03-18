@@ -109,8 +109,7 @@ class Move(ModelSQL, ModelView):
             return period.start_date
         return date_obj.today(cursor, user, context=context)
 
-    def on_change_with_date(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_date(self, cursor, user, vals, context=None):
         line_obj = self.pool.get('account.move.line')
         period_obj = self.pool.get('account.period')
         res = vals['date']
@@ -735,7 +734,7 @@ class Line(ModelSQL, ModelView):
                         res[name][line.id] = line.account.second_currency.digits
         return res
 
-    def on_change_debit(self, cursor, user, ids, vals, context=None):
+    def on_change_debit(self, cursor, user, vals, context=None):
         res = {}
         if context is None:
             context = {}
@@ -746,14 +745,14 @@ class Line(ModelSQL, ModelView):
                     context=context)
             if journal.type in ('expense', 'revenue'):
                 res['tax_lines'] = self._compute_tax_lines(cursor, user,
-                        ids, vals, journal.type, context=context)
+                        vals, journal.type, context=context)
                 if not res['tax_lines']:
                     del res['tax_lines']
         if vals.get('debit'):
             res['credit'] = Decimal('0.0')
         return res
 
-    def on_change_credit(self, cursor, user, ids, vals, context=None):
+    def on_change_credit(self, cursor, user, vals, context=None):
         res = {}
         if context is None:
             context = {}
@@ -764,14 +763,14 @@ class Line(ModelSQL, ModelView):
                     context=context)
             if journal.type in ('expense', 'revenue'):
                 res['tax_lines'] = self._compute_tax_lines(cursor, user,
-                        ids, vals, journal.type, context=context)
+                        vals, journal.type, context=context)
                 if not res['tax_lines']:
                     del res['tax_lines']
         if vals.get('credit'):
             res['debit'] = Decimal('0.0')
         return res
 
-    def on_change_account(self, cursor, user, ids, vals, context=None):
+    def on_change_account(self, cursor, user, vals, context=None):
         account_obj = self.pool.get('account.account')
         journal_obj = self.pool.get('account.journal')
 
@@ -784,7 +783,7 @@ class Line(ModelSQL, ModelView):
                     context['journal'], context=context)
             if journal.type in ('expense', 'revenue'):
                 res['tax_lines'] = self._compute_tax_lines(cursor, user,
-                        ids, vals, journal.type, context=context)
+                        vals, journal.type, context=context)
                 if not res['tax_lines']:
                     del res['tax_lines']
 
@@ -796,7 +795,7 @@ class Line(ModelSQL, ModelView):
                 res['second_currency_digits'] = account.second_currency.digits
         return res
 
-    def _compute_tax_lines(self, cursor, user, ids, vals, journal_type,
+    def _compute_tax_lines(self, cursor, user, vals, journal_type,
             context=None):
         res = {}
         account_obj = self.pool.get('account.account')
@@ -848,7 +847,7 @@ class Line(ModelSQL, ModelView):
                     })
         return res
 
-    def on_change_party(self, cursor, user, ids, vals, context=None):
+    def on_change_party(self, cursor, user, vals, context=None):
         party_obj = self.pool.get('party.party')
         journal_obj = self.pool.get('account.journal')
         account_obj = self.pool.get('account.account')
