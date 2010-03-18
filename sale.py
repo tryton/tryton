@@ -233,7 +233,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     def default_shipment_state(self, cursor, user, context=None):
         return 'none'
 
-    def on_change_party(self, cursor, user, ids, vals, context=None):
+    def on_change_party(self, cursor, user, vals, context=None):
         party_obj = self.pool.get('party.party')
         address_obj = self.pool.get('party.address')
         payment_term_obj = self.pool.get('account.invoice.payment_term')
@@ -266,8 +266,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                     res['payment_term'], context=context).rec_name
         return res
 
-    def on_change_with_currency_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(cursor, user, vals['currency'],
@@ -305,7 +304,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 res['language'] = sale.party.lang.code
         return res
 
-    def on_change_with_party_lang(self, cursor, user, ids, vals,
+    def on_change_with_party_lang(self, cursor, user, vals,
             context=None):
         party_obj = self.pool.get('party.party')
         if vals.get('party'):
@@ -335,7 +334,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         return res
 
 
-    def on_change_lines(self, cursor, user, ids, vals, context=None):
+    def on_change_lines(self, cursor, user, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         tax_obj = self.pool.get('account.tax')
         invoice_obj = self.pool.get('account.invoice')
@@ -1058,8 +1057,7 @@ class SaleLine(ModelSQL, ModelView):
     def default_unit_price(self, cursor, user, context=None):
         return Decimal('0.0')
 
-    def on_change_with_unit_digits(self, cursor, user, ids, vals,
-            context=None):
+    def on_change_with_unit_digits(self, cursor, user, vals, context=None):
         uom_obj = self.pool.get('product.uom')
         if vals.get('unit'):
             uom = uom_obj.browse(cursor, user, vals['unit'],
@@ -1146,7 +1144,7 @@ class SaleLine(ModelSQL, ModelView):
             ctx2['uom'] = product.sale_uom.id
         return ctx2
 
-    def on_change_product(self, cursor, user, ids, vals, context=None):
+    def on_change_product(self, cursor, user, vals, context=None):
         party_obj = self.pool.get('party.party')
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
@@ -1206,11 +1204,11 @@ class SaleLine(ModelSQL, ModelView):
         vals = vals.copy()
         vals['unit_price'] = res['unit_price']
         vals['type'] = 'line'
-        res['amount'] = self.on_change_with_amount(cursor, user, ids,
-                vals, context=context)
+        res['amount'] = self.on_change_with_amount(cursor, user, vals,
+                context=context)
         return res
 
-    def on_change_quantity(self, cursor, user, ids, vals, context=None):
+    def on_change_quantity(self, cursor, user, vals, context=None):
         product_obj = self.pool.get('product.product')
 
         if context is None:
@@ -1229,10 +1227,10 @@ class SaleLine(ModelSQL, ModelView):
                 context=ctx2)[vals['product']]
         return res
 
-    def on_change_unit(self, cursor, user, ids, vals, context=None):
-        return self.on_change_quantity(cursor, user, ids, vals, context=context)
+    def on_change_unit(self, cursor, user, vals, context=None):
+        return self.on_change_quantity(cursor, user, vals, context=context)
 
-    def on_change_with_amount(self, cursor, user, ids, vals, context=None):
+    def on_change_with_amount(self, cursor, user, vals, context=None):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('type') == 'line':
             if isinstance(vals.get('_parent_sale.currency'), (int, long)):
@@ -1495,7 +1493,7 @@ class Template(ModelSQL, ModelView):
             return True
         return False
 
-    def on_change_with_sale_uom(self, cursor, user, ids, vals, context=None):
+    def on_change_with_sale_uom(self, cursor, user, vals, context=None):
         uom_obj = self.pool.get('product.uom')
         res = False
 
@@ -1519,9 +1517,9 @@ Template()
 class Product(ModelSQL, ModelView):
     _name = 'product.product'
 
-    def on_change_with_sale_uom(self, cursor, user, ids, vals, context=None):
+    def on_change_with_sale_uom(self, cursor, user, vals, context=None):
         template_obj = self.pool.get('product.template')
-        return template_obj.on_change_with_sale_uom(cursor, user, ids, vals,
+        return template_obj.on_change_with_sale_uom(cursor, user, vals,
                 context=context)
 
     def get_sale_price(self, cursor, user, ids, quantity=0, context=None):
