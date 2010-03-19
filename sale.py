@@ -1517,11 +1517,6 @@ Template()
 class Product(ModelSQL, ModelView):
     _name = 'product.product'
 
-    def on_change_with_sale_uom(self, cursor, user, vals, context=None):
-        template_obj = self.pool.get('product.template')
-        return template_obj.on_change_with_sale_uom(cursor, user, vals,
-                context=context)
-
     def get_sale_price(self, cursor, user, ids, quantity=0, context=None):
         '''
         Return the sale price for product ids.
