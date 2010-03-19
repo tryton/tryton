@@ -62,6 +62,7 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Companies">
                     <field name="name" select="1"/>
                     <field name="currency" select="1"/>
+                    <field name="vat_code" select="1"/>
                 </tree>
                 ]]>
             </field>
