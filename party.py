@@ -38,8 +38,9 @@ class Party(ModelSQL, ModelView):
     vat_country = fields.Selection(VAT_COUNTRIES, 'VAT Country', states=STATES,
         help="Setting VAT country will enable validation of the VAT number.",
         translate=False)
-    vat_code = fields.Function(fields.Char('VAT Code'), 'get_vat_code',
-            searcher='search_vat_code')
+    vat_code = fields.Function(fields.Char('VAT Code',
+        on_change_with=['vat_number', 'vat_country']), 'get_vat_code',
+        searcher='search_vat_code')
     addresses = fields.One2Many('party.address', 'party',
            'Addresses', states=STATES)
     contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
@@ -75,6 +76,9 @@ class Party(ModelSQL, ModelView):
         if context is None:
             context = {}
         return context.get('categories', [])
+
+    def on_change_with_vat_code(self, cursor, user, vals, context=None):
+        return (vals.get('vat_country') or '') + (vals.get('vat_number') or '')
 
     def get_vat_code(self, cursor, user, ids, name, context=None):
         if not ids:
