@@ -141,8 +141,8 @@ class Image(WidgetInterface):
 
         pixbuf = None
         for ftype in ('jpeg', 'gif', 'png', 'bmp'):
-            loader = gtk.gdk.PixbufLoader(ftype)
             try:
+                loader = gtk.gdk.PixbufLoader(ftype)
                 loader.write(data, len(data))
             except:
                 continue
