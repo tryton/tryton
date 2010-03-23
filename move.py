@@ -156,17 +156,12 @@ class Move(ModelSQL, ModelView):
                 return False
         return True
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = self.search(cursor, user, ['OR',
-                ('reference', args[i][1], args[i][2]),
-                (self._rec_name, args[i][1], args[i][2]),
-                ], context=context)
-            args2.append(('id', 'in', ids))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = self.search(cursor, user, ['OR',
+            ('reference',) + clause[1:],
+            (self._rec_name,) + clause[1:],
+            ], context=context)
+        return [('id', 'in', ids)]
 
     def write(self, cursor, user, ids, vals, context=None):
         res = super(Move, self).write(cursor, user, ids, vals, context=context)
@@ -965,16 +960,10 @@ class Line(ModelSQL, ModelView):
             name: value,
             }, context=context)
 
-    def search_move_field(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            field = args[i][0]
-            if args[i][0] == 'move_state':
-                field = 'state'
-            args2.append(('move.' + field, args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_move_field(self, cursor, user, name, clause, context=None):
+        if name == 'move_state':
+            name = 'state'
+        return [('move.' + name,) + clause[1:]]
 
     def query_get(self, cursor, user, obj='l', context=None):
         '''

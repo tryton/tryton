@@ -125,10 +125,8 @@ class Party(ModelSQL, ModelView):
                 res[name][party_id] = sum
         return res
 
-    def search_receivable_payable(self, cursor, user_id, name, args,
+    def search_receivable_payable(self, cursor, user_id, name, clause,
             context=None):
-        if not len(args):
-            return []
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
         user_obj = self.pool.get('res.user')
@@ -167,22 +165,21 @@ class Party(ModelSQL, ModelView):
 
         line_query, _ = move_line_obj.query_get(cursor, user_id, context=context)
 
-        cursor.execute('SELECT l.party ' \
-                'FROM account_move_line AS l, ' \
-                    'account_account AS a ' \
-                'WHERE a.id = l.account ' \
-                    'AND a.active ' \
-                    'AND a.kind = %s ' \
-                    'AND l.party IS NOT NULL ' \
-                    'AND l.reconciliation IS NULL ' \
+        cursor.execute('SELECT l.party '
+                'FROM account_move_line AS l, '
+                    'account_account AS a '
+                'WHERE a.id = l.account '
+                    'AND a.active '
+                    'AND a.kind = %s '
+                    'AND l.party IS NOT NULL '
+                    'AND l.reconciliation IS NULL '
                     'AND ' + line_query + ' ' \
                     + today_query + \
-                    'AND a.company = %s ' \
-                'GROUP BY l.party ' \
-                'HAVING ' + \
-                    'AND'.join('(SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
-                        + ' ' + x[1] + ' %s) ' for x in args),
-                    [code] + today_value + [company_id] + [x[2] for x in args])
+                    'AND a.company = %s '
+                'GROUP BY l.party '
+                'HAVING (SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
+                        + clause[1] + ' %s)',
+                    [code] + today_value + [company_id] + [clause[2]])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
 Party()

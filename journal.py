@@ -150,19 +150,13 @@ class Journal(ModelSQL, ModelView):
         types = type_obj.browse(cursor, user, type_ids, context=context)
         return [(x.code, x.name) for x in types]
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = self.search(cursor, user, [
-                ('code', args[i][1], args[i][2]),
-                ], limit=1, context=context)
-            if ids:
-                args2.append(('code', args[i][1], args[i][2]))
-            else:
-                args2.append((self._rec_name, args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = self.search(cursor, user, [
+            ('code',) + clause[1:],
+            ], limit=1, order=[], context=context)
+        if ids:
+            return [('code',) + clause[1:]]
+        return [(self._rec_name,) + clause[1:]]
 
 Journal()
 

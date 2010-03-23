@@ -359,19 +359,13 @@ class AccountTemplate(ModelSQL, ModelView):
                 res[template.id] = template.name
         return res
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = self.search(cursor, user, [
-                ('code', args[i][1], args[i][2]),
-                ], limit=1, context=context)
-            if ids:
-                args2.append(('code', args[i][1], args[i][2]))
-            else:
-                args2.append((self._rec_name, args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = self.search(cursor, user, [
+            ('code',) + clause[1:],
+            ], limit=1, context=context)
+        if ids:
+            return [('code',) + clause[1:]]
+        return [(self._rec_name,) + clause[1:]]
 
     def _get_account_value(self, cursor, user, template, context=None,
             account=None):
@@ -862,19 +856,13 @@ class Account(ModelSQL, ModelView):
                 res[account.id] = account.name
         return res
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = self.search(cursor, user, [
-                ('code', args[i][1], args[i][2]),
-                ], limit=1, context=context)
-            if ids:
-                args2.append(('code', args[i][1], args[i][2]))
-            else:
-                args2.append((self._rec_name, args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = self.search(cursor, user, [
+            ('code',) + clause[1:],
+            ], limit=1, context=context)
+        if ids:
+            return [('code',) + clause[1:]]
+        return [(self._rec_name,) + clause[1:]]
 
     def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
@@ -1065,17 +1053,12 @@ class AccountDeferral(ModelSQL, ModelView):
                     deferral.fiscalyear.rec_name
         return res
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = self.search(cursor, user, ['OR',
-                ('account.rec_name', args[i][1], args[i][2]),
-                ('fiscalyear.rec_name', args[i][1], args[i][2]),
-                ], context=context)
-            args2.append(('id', 'in', ids))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = self.search(cursor, user, ['OR',
+            ('account.rec_name',) + clause[1:],
+            ('fiscalyear.rec_name',) + clause[1:],
+            ], context=context)
+        return [('id', 'in', ids)]
 
     def write(self, cursor, user, ids, vals, context=None):
         self.raise_user_error(cursor, 'write_deferral', context=context)
