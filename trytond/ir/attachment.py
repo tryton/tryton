@@ -48,8 +48,11 @@ class Attachment(OSV):
                 filename = os.path.join(CONFIG['data_path'], db_name,
                         filename[0:2], filename[2:4], filename)
                 if name == 'datas_size':
-                    statinfo = os.stat(filename)
-                    value = statinfo.st_size
+                    try:
+                        statinfo = os.stat(filename)
+                        value = statinfo.st_size
+                    except OSError:
+                        pass
                 else:
                     try:
                         file_p = file(filename, 'rb')
