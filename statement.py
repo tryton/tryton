@@ -127,20 +127,14 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
                         grouping=True)
         return res
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = self.search(cursor, user, ['OR',
-                ('start_balance', args[i][1], args[i][2]),
-                ('end_balance', args[i][1], args[i][2]),
-                ], context=context)
-            if ids:
-                args2.append(('id', 'in', ids))
-            else:
-                args2.append(('journal', args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = self.search(cursor, user, ['OR',
+            ('start_balance',) + clause[1:],
+            ('end_balance',) + clause[1:],
+            ], context=context)
+        if ids:
+            return [('id', 'in', ids)]
+        return [('journal',) + clause[1:]]
 
     def get_move_lines(self, cursor, user, ids, name, context=None):
         '''
