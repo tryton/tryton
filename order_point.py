@@ -167,16 +167,13 @@ class OrderPoint(ModelSQL, ModelView):
             res[op.id] = "%s@%s" % (op.product.name, op.location.name)
         return res
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            names = args[i][2].split('@', 1)
-            args2.append(('product.template.name', args[i][1], names[0]))
-            if len(names) != 1 and names[1]:
-                args2.append(('location', args[i][1], names[1]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        res = []
+        names = clause[2].split('@', 1)
+        res.append(('product.template.name', clause[1], names[0]))
+        if len(names) != 1 and names[1]:
+            res.append(('location', clause[1], names[1]))
+        return res
 
     def get_location(self, cursor, user, ids, name, context=None):
         location_obj = self.pool.get('stock.location')
