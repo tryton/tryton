@@ -109,24 +109,17 @@ class Currency(ModelSQL, ModelView):
     def check_xml_record(self, cursor, user, ids, values, context=None):
         return True
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = []
-            field = None
-            for field in ('code', 'numeric_code'):
-                ids = self.search(cursor, user,
-                        [(field, args[i][1], args[i][2])],
-                        limit=1, context=context)
-                if len(ids):
-                    break
-            if len(ids):
-                args2.append((field, args[i][1], args[i][2]))
-            else:
-                args2.append((self._rec_name, args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = []
+        field = None
+        for field in ('code', 'numeric_code'):
+            ids = self.search(cursor, user, [(field,) + clause[1:]], limit=1,
+                    context=context)
+            if ids:
+                break
+        if ids:
+            return [(field,) + clause[1:]]
+        return [(self._rec_name,) + clause[1:]]
 
     def on_change_with_rate(self, cursor, user, vals, context=None):
         now = datetime.date.today()
