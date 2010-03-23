@@ -117,17 +117,12 @@ class Uom(ModelSQL, ModelView):
             return {'factor': 0.0}
         return {'factor': round(1.0 / value['rate'], self.factor.digits[1])}
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = self.search(cursor, user, ['OR',
-                (self._rec_name, args[i][1], args[i][2]),
-                ('symbol', args[i][1], args[i][2]),
-                ], context=context)
-            args2.append(('id', 'in', ids))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = self.search(cursor, user, ['OR',
+            (self._rec_name,) + clause[1:],
+            ('symbol',) + clause[1:],
+            ], order=[], context=context)
+        return [('id', 'in', ids)]
 
     @staticmethod
     def round(number, precision=1.0):

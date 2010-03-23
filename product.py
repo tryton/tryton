@@ -100,20 +100,14 @@ class Product(ModelSQL, ModelView):
             res[product.id] = name
         return res
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = self.search(cursor, user, [('code', args[i][1], args[i][2])],
-                    context=context)
-            if ids:
-                ids += self.search(cursor, user,
-                        [('name', args[i][1], args[i][2])], context=context)
-                args2.append(('id', 'in', ids))
-            else:
-                args2.append(('name', args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = self.search(cursor, user, [('code',) + clause[1:]],
+                order=[], context=context)
+        if ids:
+            ids += self.search(cursor, user, [('name',) + clause[1:]],
+                    order=[], context=context)
+            return [('id', 'in', ids)]
+        return [('name',) + clause]
 
     def delete(self, cursor, user, ids, context=None):
         template_obj = self.pool.get('product.template')
