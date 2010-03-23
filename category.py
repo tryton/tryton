@@ -61,24 +61,18 @@ class Category(ModelSQL, ModelView):
             res[category.id] = _name(category)
         return res
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            if isinstance(args[i][2], basestring):
-                values = args[i][2].split(SEPARATOR)
-                values.reverse()
-                domain = []
-                field = 'name'
-                for name in values:
-                    domain.append((field, args[i][1], name))
-                    field = 'parent.' + field
-                args2.append(('id', 'inselect', self.search(cursor, user,
-                    domain, order=[], context=context, query_string=True)))
-            #TODO Handle list
-            else:
-                args2.append(('name', args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        if isinstance(clause[2], basestring):
+            values = clause[2].split(SEPARATOR)
+            values.reverse()
+            domain = []
+            field = 'name'
+            for name in values:
+                domain.append((field, clause[1], name))
+                field = 'parent.' + field
+            ids = self.search(cursor, user, domain, order=[], context=context)
+            return [('id', 'in', ids)]
+        #TODO Handle list
+        return [('name',) + clause[1:]]
 
 Category()

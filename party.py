@@ -88,21 +88,18 @@ class Party(ModelSQL, ModelView):
             res[party.id] = (party.vat_country or '') + (party.vat_number or '')
         return res
 
-    def search_vat_code(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            value = args[i][2]
-            for country, _ in VAT_COUNTRIES:
-                if isinstance(value, basestring) \
-                        and country \
-                        and value.upper().startswith(country):
-                    args2.append(('vat_country', '=', country))
-                    value = value[len(country):]
-                    break
-            args2.append(('vat_number', args[i][1], value))
-            i += 1
-        return args2
+    def search_vat_code(self, cursor, user, name, clause, context=None):
+        res = []
+        value = clause[2]
+        for country, _ in VAT_COUNTRIES:
+            if isinstance(value, basestring) \
+                    and country \
+                    and value.upper().startswith(country):
+                res.append(('vat_country', '=', country))
+                value = value[len(country):]
+                break
+        res.append(('vat_number', clause[1], value))
+        return res
 
     def get_full_name(self, cursor, user, ids, name, context=None):
         if not ids:
@@ -170,20 +167,14 @@ class Party(ModelSQL, ModelView):
             return new_ids[0]
         return new_ids
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = self.search(cursor, user, [('code', args[i][1], args[i][2])],
-                    context=context)
-            if ids:
-                ids += self.search(cursor, user,
-                        [('name', args[i][1], args[i][2])], context=context)
-                args2.append(('id', 'in', ids))
-            else:
-                args2.append(('name', args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = self.search(cursor, user, [('code',) + clause[1:]],
+                order=[], context=context)
+        if ids:
+            ids += self.search(cursor, user, [('name',) + clause[1:]],
+                    order=[], context=context)
+            return [('id', 'in', ids)]
+        return [('name',) + clause[1:]]
 
     def address_get(self, cursor, user, party_id, type=None, context=None):
         """
