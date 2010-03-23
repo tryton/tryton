@@ -675,16 +675,12 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                     + ' - ' + sale.party.rec_name
         return res
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            names = args[i][2].split(' - ', 1)
-            args2.append(('reference', args[i][1], names[0]))
-            if len(names) != 1 and names[1]:
-                args2.append(('party', args[i][1], names[1]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        names = clause[2].split(' - ', 1)
+        res = [('reference', clause[1], names[0])]
+        if len(names) != 1 and names[1]:
+            res.append(('party', clause[1], names[1]))
+        return res
 
     def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
@@ -1642,14 +1638,8 @@ class Move(ModelSQL, ModelView):
                 res[move.id] = move.sale_line.sale.id
         return res
 
-    def search_sale(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            field = args[i][0]
-            args2.append(('sale_line.' + field, args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_sale(self, cursor, user, name, clause, context=None):
+        return [('sale_line.' + name,) + clause[1:]]
 
     def get_sale_exception_state(self, cursor, user, ids, name, context=None):
         res = {}.fromkeys(ids, '')
