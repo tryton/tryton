@@ -123,18 +123,12 @@ class Location(ModelSQL, ModelView):
     def check_xml_record(self, cursor, user, ids, values, context=None):
         return True
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            ids = self.search(cursor, user, [('code', '=', args[i][2])],
-                    context=context)
-            if ids:
-                args2.append(('id', 'in', ids))
-            else:
-                args2.append((self._rec_name, args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        ids = self.search(cursor, user, [('code', '=', clause[2])],
+                order=[], context=context)
+        if ids:
+            return [('id', 'in', ids)]
+        return [(self._rec_name,) + clause[1:]]
 
     def get_quantity(self, cursor, user, ids, name, context=None):
         product_obj = self.pool.get('product.product')

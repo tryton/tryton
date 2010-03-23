@@ -378,13 +378,8 @@ class Move(ModelSQL, ModelView):
             res[m.id] = "%s%s %s" % (m.quantity, m.uom.symbol, m.product.rec_name)
         return res
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            args2.append(('product', args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        return [('product',) + clause[1:]]
 
     def search(self, cursor, user, args, offset=0, limit=None, order=None,
             context=None, count=False, query_string=False):
