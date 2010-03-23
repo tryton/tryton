@@ -626,20 +626,16 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
                     + ' - ' + purchase.party.name
         return res
 
-    def search_rec_name(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            names = args[i][2].split(' - ', 1)
-            ids = self.search(cursor, user, ['OR',
-                ('reference', args[i][1], names[0]),
-                ('supplier_reference', args[i][1], names[0]),
-                ], context=context)
-            args2.append(('id', 'in', ids))
-            if len(names) != 1 and names[1]:
-                args2.append(('party', args[i][1], names[1]))
-            i += 1
-        return args2
+    def search_rec_name(self, cursor, user, name, clause, context=None):
+        names = clause[2].split(' - ', 1)
+        ids = self.search(cursor, user, ['OR',
+            ('reference', clause[1], names[0]),
+            ('supplier_reference', clause[1], names[0]),
+            ], order=[], context=context)
+        res = [('id', 'in', ids)]
+        if len(names) != 1 and names[1]:
+            res.append(('party', clause[1], names[1]))
+        return res
 
     def copy(self, cursor, user, ids, default=None, context=None):
         if default is None:
@@ -1750,14 +1746,8 @@ class Move(ModelSQL, ModelView):
                 res[move.id] = 'ignored'
         return res
 
-    def search_purchase(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            field = args[i][0]
-            args2.append(('purchase_line.' + field, args[i][1], args[i][2]))
-            i += 1
-        return args2
+    def search_purchase(self, cursor, user, name, clause, context=None):
+        return [('purchase_line.' + name,) + clause[1:]]
 
     def get_purchase_fields(self, cursor, user, ids, names, context=None):
         res = {}
@@ -1818,14 +1808,8 @@ class Move(ModelSQL, ModelView):
                 res[move.id] = move.purchase_line.purchase.party.id
         return res
 
-    def search_supplier(self, cursor, user, name, args, context=None):
-        args2 = []
-        i = 0
-        while i < len(args):
-            args2.append(('purchase_line.purchase.party', args[i][1],
-                args[i][2]))
-            i += 1
-        return args2
+    def search_supplier(self, cursor, user, name, clause, context=None):
+        return [('purchase_line.purchase.party',) + clause[1:]]
 
     def write(self, cursor, user, ids, vals, context=None):
         purchase_obj = self.pool.get('purchase.purchase')
