@@ -1689,12 +1689,12 @@ ShipmentIn()
 class Move(ModelSQL, ModelView):
     _name = 'stock.move'
 
-    purchase_line = fields.Many2One('purchase.line', select=1,
+    purchase_line = fields.Many2One('purchase.line', 'Purchase Line', select=1,
             states={
                 'readonly': Not(Equal(Eval('state'), 'draft')),
             })
-    purchase = fields.Function(fields.Many2One('purchase.purchase', None,
-        'Purchase', select=1, states={
+    purchase = fields.Function(fields.Many2One('purchase.purchase', 'Purchase',
+        select=1, states={
             'invisible': Not(Bool(Eval('purchase_visible'))),
         }, depends=['purchase_visible']), 'get_purchase',
         searcher='search_purchase')
@@ -1702,7 +1702,7 @@ class Move(ModelSQL, ModelView):
         digits=(16, Eval('unit_digits', 2)), states={
             'invisible': Not(Bool(Eval('purchase_visible'))),
         }, depends=['purchase_visible']), 'get_purchase_fields')
-    purchase_unit = fields.Function(fields.Many2One('product.uom', None,
+    purchase_unit = fields.Function(fields.Many2One('product.uom',
         'Purchase Unit', states={
             'invisible': Not(Bool(Eval('purchase_visible'))),
         }, depends=['purchase_visible']), 'get_purchase_fields')
@@ -1713,12 +1713,12 @@ class Move(ModelSQL, ModelView):
             'invisible': Not(Bool(Eval('purchase_visible'))),
         }, depends=['purchase_visible']), 'get_purchase_fields')
     purchase_currency = fields.Function(fields.Many2One('currency.currency',
-        None, 'Purchase Currency', states={
+        'Purchase Currency', states={
             'invisible': Not(Bool(Eval('purchase_visible'))),
         }, depends=['purchase_visible']), 'get_purchase_fields')
     purchase_visible = fields.Function(fields.Boolean('Purchase Visible',
         on_change_with=['from_location']), 'get_purchase_visible')
-    supplier = fields.Function(fields.Many2One('party.party', None, 'Supplier',
+    supplier = fields.Function(fields.Many2One('party.party', 'Supplier',
         select=1), 'get_supplier', searcher='search_supplier')
     purchase_exception_state = fields.Function(fields.Selection([
         ('', ''),
