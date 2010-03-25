@@ -39,7 +39,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         ('posted', 'Posted'),
         ], 'State', readonly=True, select=1)
     move_lines = fields.Function(fields.One2Many('account.move.line',
-        'Move Lines'), 'get_move_lines')
+        None, 'Move Lines'), 'get_move_lines')
 
     def __init__(self):
         super(Statement, self).__init__()
