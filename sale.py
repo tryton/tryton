@@ -1616,7 +1616,7 @@ ShipmentOut()
 class Move(ModelSQL, ModelView):
     _name = 'stock.move'
 
-    sale_line = fields.Many2One('sale.line', select=1,
+    sale_line = fields.Many2One('sale.line', 'Sale Line', select=1,
             states={
                 'readonly': Not(Equal(Eval('state'), 'draft')),
             })
