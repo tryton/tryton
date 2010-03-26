@@ -5,6 +5,7 @@ Prerequisites
 -------------
 
  * Python 2.4 or later (http://www.python.org/)
+ * lxml (http://codespeak.net/lxml/)
  * trytond (http://www.tryton.org/)
 
 Installation
