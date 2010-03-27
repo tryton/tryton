@@ -125,7 +125,7 @@ class TypeTemplate(ModelSQL, ModelView):
                 template.setLang(lang)
                 data = {}
                 for field in template._columns.keys():
-                    if template._columns[field].translate:
+                    if getattr(template._columns[field], 'translate', False):
                         data[field] = template[field]
                 if data:
                     type_obj.write(cursor, user, new_id, data, context=ctx)
@@ -446,7 +446,7 @@ class AccountTemplate(ModelSQL, ModelView):
                 template.setLang(lang)
                 data = {}
                 for field in template._columns.keys():
-                    if template._columns[field].translate:
+                    if getattr(template._columns[field], 'translate', False):
                         data[field] = template[field]
                 if data:
                     account_obj.write(cursor, user, new_id, data, context=ctx)

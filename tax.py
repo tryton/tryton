@@ -121,7 +121,7 @@ class CodeTemplate(ModelSQL, ModelView):
                 template.setLang(lang)
                 data = {}
                 for field in template._columns.keys():
-                    if template._columns[field].translate:
+                    if getattr(template._columns[field], 'translate', False):
                         data[field] = template[field]
                 if data:
                     tax_code_obj.write(cursor, user, new_id, data, context=ctx)
@@ -554,7 +554,7 @@ class TaxTemplate(ModelSQL, ModelView):
                 template.setLang(lang)
                 data = {}
                 for field in template._columns.keys():
-                    if template._columns[field].translate:
+                    if getattr(template._columns[field], 'translate', False):
                         data[field] = template[field]
                 if data:
                     tax_obj.write(cursor, user, new_id, data, context=ctx)
@@ -1036,7 +1036,7 @@ class RuleTemplate(ModelSQL, ModelView):
                 template.setLang(lang)
                 data = {}
                 for field in template._columns.keys():
-                    if template._columns[field].translate:
+                    if getattr(template._columns[field], 'translate', False):
                         data[field] = template[field]
                 if data:
                     rule_obj.write(cursor, user, new_id, data, context=ctx)
