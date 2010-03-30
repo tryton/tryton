@@ -23,11 +23,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Contact Mechanism">
+                <form string="Contact Mechanism" col="6">
                     <label name="party"/>
-                    <field name="party"/>
-                    <label name="active"/>
-                    <field name="active"/>
+                    <field name="party" colspan="5"/>
                     <label name="type"/>
                     <field name="type"/>
                     <group col="2" colspan="2" id="value">
@@ -42,8 +40,14 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="sip"/>
                         <field name="sip" widget="sip"/>
                     </group>
-                    <separator name="comment" colspan="4"/>
-                    <field name="comment" colspan="4"/>
+                    <group col="20" colspan="2" id="checkboxes">
+                        <label name="active"/>
+                        <field name="active" 
+                            xexpand="0" width="25"/>
+                        <!-- Add here some checkboxes ! -->
+                    </group>
+                    <separator name="comment" colspan="6"/>
+                    <field name="comment" colspan="6"/>
                 </form>
                 ]]>
             </field>
