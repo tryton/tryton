@@ -1,3 +1,4 @@
+* Don't allow empty vat_number if vat_country is set
 * Use model singleton to define which party sequence to use
 * Improve search_rec_name of category to take care of separator
 

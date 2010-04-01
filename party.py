@@ -34,7 +34,10 @@ class Party(ModelSQL, ModelView):
     code_length = fields.Integer('Code Length', select=1, readonly=True)
     lang = fields.Many2One("ir.lang", 'Language', states=STATES)
     vat_number = fields.Char('VAT Number', help="Value Added Tax number",
-            states=STATES)
+            states={
+                'readonly': Not(Bool(Eval('active'))),
+                'required': Bool(Eval('vat_country')),
+            })
     vat_country = fields.Selection(VAT_COUNTRIES, 'VAT Country', states=STATES,
         help="Setting VAT country will enable validation of the VAT number.",
         translate=False)
@@ -206,7 +209,7 @@ class Party(ModelSQL, ModelView):
         for party in self.browse(cursor, user, ids):
             vat_number = party.vat_number
 
-            if not (vat_number and party.vat_country):
+            if not party.vat_country:
                 continue
 
             if not getattr(vatnumber, 'check_vat_' + \
