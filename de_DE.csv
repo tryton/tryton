@@ -19,7 +19,7 @@ with account from a different invoice company!",Es können keine Rechnungen mit 
 error,account.invoice,0,"You can not modify an invoice that is opened, paid!",Fakturierte oder bezahlte Rechnungen können nicht geändert werden!,0
 error,account.invoice,0,You can not reset to draft an invoice that has move!,"Eine Rechnung, die Buchungen enthält, kann nicht auf Entwurf zurückgesetzt werden!",0
 error,account.invoice,0,"You can not use the same account
-as on invoice line!",Es kann nicht das selbe Konto verwendet werden!,0
+as on invoice line!",Es kann nicht das selbe Konto wie für die Rechnungszeile verwendet werden!,0
 error,account.invoice.credit_invoice,0,You can not credit with refund an invoice that is not opened!,Die Verrechnung von nicht fakturierten Rechnungen ist nicht möglich!,0
 error,account.invoice.credit_invoice,0,You can not credit with refund an invoice with payments!,"Die Verrechnung einer Rechnung ist nicht möglich, wenn bereits Zahlungen für diese gebucht sind!",0
 error,account.invoice.line,0,"Line with ""line"" type must have an account!","Eine Zeile vom Typ ""Position"" muss einem Konto zugeordnet sein!",0
@@ -30,7 +30,7 @@ with account with a different invoice company!","Eine Rechnungszeile kann sich n
 auf ein Konto eines anderen Unternehmens beziehen!",0
 error,account.invoice.line,0,"You can not modify line from an invoice that is opened, paid!",Positionen von fakturierten oder bezahlten Rechnungen können nicht geändert werden!,0
 error,account.invoice.line,0,"You can not use the same account
-as on the invoice!",Es kann nicht das selbe Konto wie das der Rechnung verwendet werden!,0
+as on the invoice!",Es kann nicht das selbe Konto wie für die Rechnung verwendet werden!,0
 error,account.invoice.pay_invoice,0,You can not create a partial payment with an amount greater then the amount to pay!,Ein Teilbetrag kann nicht größer als der Gesamtbetrag der Rechnung sein!,0
 error,account.invoice.payment_term,0,Invalid payment term line!,Ungültige Position in Zahlungsbedingung!,0
 error,account.invoice.payment_term,0,Payment term missing a remainder line!,In der Zahlungsbedingung fehlt eine Restbetragszeile!,0
@@ -141,7 +141,7 @@ field,"account.invoice.payment_term,name",0,Payment Term,Zahlungsbedingung,0
 field,"account.invoice.payment_term,rec_name",0,Name,Name,0
 field,"account.invoice,rec_name",0,Name,Name,0
 field,"account.invoice,reconciled",0,Reconciled,Abgestimmt,0
-field,"account.invoice,reference",0,Reference,Referenz,0
+field,"account.invoice,reference",0,Reference,Beleg,0
 field,"account.invoice,state",0,State,Status,0
 field,"account.invoice.tax,account",0,Account,Konto,0
 field,"account.invoice,tax_amount",0,Tax,Steuer,0
@@ -210,6 +210,7 @@ model,"ir.action,name",act_invoice_in_credit_note_form5,Opened Supplier Credit N
 model,"ir.action,name",act_invoice_in_invoice_form5,Opened Supplier Invoices,Fakturierte Lieferantenrechnungen,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Rechnung bezahlen,0
 model,"ir.action,name",act_payment_term_form,Payment Terms,Zahlungsbedingungen,0
+model,"ir.action,name",act_payment_term_form2,Payment Terms,Zahlungsbedingungen,0
 model,"ir.action,name",act_invoice_out_credit_note_form4,Pro Forma Credit Notes,Pro Forma Kundengutschriften,0
 model,"ir.action,name",act_invoice_out_invoice_form4,Pro Forma Invoices,Pro Forma Kundenrechnungen,0
 model,"ir.action,name",act_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Pro Forma Lieferantengutschriften,0
@@ -229,6 +230,7 @@ model,"ir.ui.menu,name",menu_invoices,Invoices,Rechnungen,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Rechnungsausgang,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Neue Gutschrift an Kunden,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form2,New Invoice,Neue Kundenrechnung,0
+model,"ir.ui.menu,name",menu_payment_term_form_new,New Payment Term,Neue Zahlungsbedingung,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form2,New Supplier Credit Note,Neue Gutschrift von Lieferant,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form2,New Supplier Invoice,Neue Lieferantenrechnung,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form5,Opened Credit Notes,Fakturierte Kundengutschriften,0
