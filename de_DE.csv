@@ -17,7 +17,7 @@ field,"account.statement.line,amount",0,Amount,Betrag,0
 field,"account.statement.line,date",0,Date,Datum,0
 field,"account.statement.line,description",0,Description,Beschreibung,0
 field,"account.statement.line,invoice",0,Invoice,Rechnung,0
-field,"account.statement.line,move",0,Account Move,Buchung,0
+field,"account.statement.line,move",0,Account Move,Buchungssatz,0
 field,"account.statement.line,party",0,Party,Partei,0
 field,"account.statement.line,rec_name",0,Name,Name,0
 field,"account.statement,lines",0,Transactions,Transaktionen,0
