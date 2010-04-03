@@ -23,7 +23,7 @@ field,"account.statement.line,amount",0,Amount,Betrag,0
 field,"account.statement.line,date",0,Date,Datum,0
 field,"account.statement.line,description",0,Description,Beschreibung,0
 field,"account.statement.line,invoice",0,Invoice,Rechnung,0
-field,"account.statement.line,move",0,Account Move,Buchung,0
+field,"account.statement.line,move",0,Account Move,Buchungssatz,0
 field,"account.statement.line,party",0,Party,Partei,0
 field,"account.statement.line,rec_name",0,Name,Name,0
 field,"account.statement,lines",0,Transactions,Transaktionen,0
@@ -69,7 +69,7 @@ field,"analytic_account.line,move_line",0,Account Move Line,Buchungszeile,0
 field,"analytic_account.line,name",0,Name,Name,0
 field,"analytic_account.line,party",0,Party,Partei,0
 field,"analytic_account.line,rec_name",0,Name,Name,0
-field,"analytic_account.line,reference",0,Reference,Verweis,0
+field,"analytic_account.line,reference",0,Reference,Beleg,0
 model,"account.statement.journal,name",0,Statement Journal,Journal Zahlungsverkehr,0
 model,"account.statement.line,name",0,Account Statement Line,Zahlungsverkehr Position,0
 model,"account.statement,name",0,Account Statement,Zahlungsverkehr,0
@@ -79,14 +79,16 @@ model,"analytic_account.account.open_chart_account.init,name",0,Open Chart Accou
 model,"analytic_account.account.selection,name",0,Analytic Account Selection,Kostenstelle Auswahl,0
 model,"analytic_account.line,name",0,Analytic Line,Kostenstelle Zeile,0
 model,"ir.action,name",act_account_form,Analytic Accounts,Kostenstellen,0
+model,"ir.action,name",act_account_form2,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_account_tree,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_account_tree2,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_line_form,Analytic Lines,Kostenstelle Zeilen,0
 model,"ir.action,name",act_open_account,Open Account,Konto öffnen,0
 model,"ir.action,name",act_open_chart_account,Open Chart of Analytic Accounts,Kostenstellenplan Öffnen,0
-model,"ir.ui.menu,name",menu_analytic_account_configuration,Analytic Account,Kostenstelle,0
+model,"ir.ui.menu,name",menu_analytic_account_configuration,Analytic Account,Kostenstellen,0
 model,"ir.ui.menu,name",menu_account_form,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_account_tree,Analytic Accounts,Kostenstellen,0
+model,"ir.ui.menu,name",menu_account_form_new,New Analytic Account,Neue Kostenstelle,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Analytic Accounts,Kostenstellenplan öffnen,0
 model,"res.group,name",group_analytic_admin,Analytic Administration,Kostenstellen Administration,0
 selection,"account.statement,state",0,Canceled,Annulliert,0
