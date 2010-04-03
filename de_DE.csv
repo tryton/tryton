@@ -7,6 +7,7 @@ field,"res.user,dashboard_actions",0,Dashboard Actions,Dashboard Aktionen,0
 field,"res.user,dashboard_layout",0,Dashboard Layout,Dashboard Anordnung,0
 model,"dashboard.action,name",0,dashboard.action,Dashboard Aktion,0
 model,"ir.action,name",act_dashboard,Dashboard,Dashboard,0
+model,"ir.ui.menu,name",menu_dashboard,Dashboard,Dashboard,0
 selection,"res.user,dashboard_layout",0,Square,Rechtecke,0
 selection,"res.user,dashboard_layout",0,Stack Bottom,Stapel unten,0
 selection,"res.user,dashboard_layout",0,Stack Left,Stapel links,0
