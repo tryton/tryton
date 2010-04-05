@@ -41,11 +41,15 @@ field,"stock.order_point,unit",0,Unit,Unidad,0
 field,"stock.order_point,unit_digits",0,Unit Digits,Dígitos de Unidad,0
 field,"stock.order_point,warehouse_location",0,Warehouse Location,Lugar de la bodega,0
 model,"ir.action,name",wizard_create_purchase,Create Purchase,Crear Compra,0
+model,"ir.action,name",act_purchase_request_form_draft,Draft Purchase Requests,Requisición de Prueba de Compras,0
 model,"ir.action,name",act_order_point_form,Order Points,Puntos de Orden,0
+model,"ir.action,name",act_order_point_form2,Order Points,Puntos de Orden,1
 model,"ir.action,name",act_purchase_request_form,Purchase Requests,Solicitudes de Compra,0
 model,"ir.action,name",act_purchase_form,Purchases,Compras,0
 model,"ir.cron,name",cron_shipment_iternal,Generate Internal Shipments,Genere Envío Interno,0
 model,"ir.cron,name",cron_generate_request,Generate Purchase Requests,Genere Requisito de Compra,0
+model,"ir.ui.menu,name",menu_purchase_request_form_draft,Draft Purchase Requests,Requisición de Prueba de Compras,0
+model,"ir.ui.menu,name",menu_order_point_form_new,New Order Point,Nuevo Punto de Orden,0
 model,"ir.ui.menu,name",menu_order_point_form,Order Points,Puntos de Orden,0
 model,"ir.ui.menu,name",menu_purchase_request_form,Purchase Requests,Solicitudes de Compra,0
 model,"purchase.request.create_purchase.ask_party,name",0,Create Purchase Ask Party,Crea Pregunta a Tercero de Compra,0
@@ -70,6 +74,7 @@ view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Suppl
 view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Crear Compra: Sin Término de Pago,0
 view,stock.order_point,0,Locations,Lugares,0
 view,stock.order_point,0,Order Point,Punto de Orden,0
+view,stock.order_point,0,Order Points,Puntos de Orden,1
 view,stock.order_point,0,Order Point Type,Tipo de Punto de Orden,0
 view,stock.order_point,0,Product Info,Información de Producto,0
 wizard_button,"purchase.request.create_purchase,ask_user_party,end",0,Cancel,Cancelar,0
