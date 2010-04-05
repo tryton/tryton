@@ -26,6 +26,12 @@ field,"product.product,forecast_quantity",0,Forecast Quantity,Cantidad Proyectad
 field,"product.product,quantity",0,Quantity,Cantidad,0
 field,"product.template,forecast_quantity",0,Forecast Quantity,Cantidad Proyectada,0
 field,"product.template,quantity",0,Quantity,Cantidad,0
+field,"stock.configuration,rec_name",0,Name,Nombre de Contacto,1
+field,"stock.configuration,shipment_in_return_sequence",0,Supplier Return Shipment Sequence,Secuencia de retorno de envío a proveedor,0
+field,"stock.configuration,shipment_in_sequence",0,Supplier Shipment Sequence,Secuencia de envío a proveedores,0
+field,"stock.configuration,shipment_internal_sequence",0,Internal Shipment Sequence,Secuencia de envío interno,0
+field,"stock.configuration,shipment_out_return_sequence",0,Customer Return Shipment Sequence,Secuencia de retorno de envío a cliente,0
+field,"stock.configuration,shipment_out_sequence",0,Customer Shipment Sequence,Secuencia de envío a cliente,0
 field,"stock.inventory,company",0,Company,Compañía,0
 field,"stock.inventory,date",0,Date,Fecha,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Cantidad Esperada,0
@@ -161,11 +167,13 @@ model,"ir.action,name",act_shipment_out_form_ready,Customer Shipments Ready for 
 model,"ir.action,name",act_shipment_out_form_waiting,Customer Shipments Waiting Assignation,Envíos de Cliente esperando Asignación,0
 model,"ir.action,name",report_shipment_out_delivery_note,Delivery Note,Nota de Envío,0
 model,"ir.action,name",act_shipment_internal_draft_form,Draft Internal Shipments,Envíos Internos en Borrador,0
+model,"ir.action,name",act_inventory_form_draft,Draft Inventories,Inventarios de pruebas,0
 model,"ir.action,name",act_location_form,Edit Locations,Editar Lugares,0
 model,"ir.action,name",report_shipment_internal,Internal Shipment,Envío Interno,0
 model,"ir.action,name",act_shipment_internal_form,Internal Shipments,Envíos Internos,0
 model,"ir.action,name",act_shipment_internal_waiting_form,Internal Shipments Waiting Assignation,Envíos Internos esperando Asignación,0
 model,"ir.action,name",act_inventory_form,Inventories,Inventarios,0
+model,"ir.action,name",act_inventory_form2,Inventories,Inventarios,1
 model,"ir.action,name",act_location_tree,Locations,Lugares,0
 model,"ir.action,name",act_move_form,Moves,Movimientos,0
 model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Movimientos de Proveedores,0
@@ -183,6 +191,7 @@ model,"ir.action,name",act_location_quantity_tree,Product Stock,Inventario de Pr
 model,"ir.action,name",act_shipment_in_form_received,Received Supplier shipments,Empaques de Proveedores recibidos,0
 model,"ir.action,name",report_shipment_in_restocking_list,Restocking List,Lista de Renovación de Inventario,0
 model,"ir.action,name",report_shipment_out_return_restocking_list,Restocking List,Lista de Renovación de Inventario,0
+model,"ir.action,name",act_stock_configuration_form,Stock Configuration,Configuración de Inventario,0
 model,"ir.action,name",act_shipment_in_return_form,Supplier Return Shipments,Devolución al Proveedor,0
 model,"ir.action,name",act_shipment_in_form,Supplier Shipments,Envíos del Proveedor,0
 model,"ir.action,name",act_shipment_out_form3,Supplier Shipments,Envíos del Proveedor,0
@@ -204,6 +213,7 @@ model,"ir.ui.menu,name",menu_shipment_out_form,Customer Shipments,Envíos al Cli
 model,"ir.ui.menu,name",menu_shipment_out_ready,Customer Shipments Ready for Shipping,Envíos de Cliente listos para Envío,0
 model,"ir.ui.menu,name",menu_shipment_out_waiting,Customer Shipments Waiting Assignation,Envíos de Cliente listos esperando Asignación,0
 model,"ir.ui.menu,name",menu_shipment_internal_draft_form,Draft Internal Shipments,Envíos Internos en Borrador,0
+model,"ir.ui.menu,name",menu_inventory_form_draft,Draft Inventories,Inventario de Pruebas,0
 model,"ir.ui.menu,name",menu_location_form,Edit Locations,Editar Lugares,0
 model,"ir.ui.menu,name",menu_shipment_internal_form,Internal Shipments,Envío Internos,0
 model,"ir.ui.menu,name",menu_shipment_internal_waiting_form,Internal Shipments Waiting Assignation,Envío Internos esperando Asignación,0
@@ -216,15 +226,18 @@ model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting
 model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Movimientos hacia Clientes,0
 model,"ir.ui.menu,name",menu_shipment_out_return_form2,New Customer Return Shipment,Nueva Devolución al Cliente,0
 model,"ir.ui.menu,name",menu_shipment_internal_new_form,New Internal Shipment,Nuevo Envío Interno,0
+model,"ir.ui.menu,name",menu_inventory_form_new,New Inventory,Neuvo inventario,0
 model,"ir.ui.menu,name",menu_shipment_in_return_new_form,New Supplier Return Shipment,Nueva Devolución al Proveedor,0
 model,"ir.ui.menu,name",menu_shipment_in_form2,New Supplier Shipment,Nuevo Envío de Proveedor,0
 model,"ir.ui.menu,name",menu_shipment_in_received,Received Supplier shipments,Empaques de Proveedores recibidos,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Reportes,0
+model,"ir.ui.menu,name",menu_stock_configuration,Stock Configuration,Configuración de Inventario,0
 model,"ir.ui.menu,name",menu_shipment_in_return_form,Supplier Return Shipments,Devolución al Proveedor,0
 model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Envío del Proveedor,0
 model,"res.group,name",group_stock,Stock,Stock,0
 model,"res.group,name",group_stock_admin,Stock Administration,Administración de existencia,0
 model,"res.group,name",group_stock_force_assignment,Stock Force Assignment,,0
+model,"stock.configuration,name",0,stock.configuration,,0
 model,"stock.inventory.line,name",0,Stock Inventory Line,Línea de existencia en Inventario ,0
 model,"stock.inventory,name",0,Stock Inventory,Inventario de Existencia,0
 model,"stock.location,name",location_customer,Customer,Cliente,0
@@ -239,11 +252,11 @@ model,"stock.location_stock_date.init,name",0,Compute stock quantities,Calcule c
 model,"stock.move,name",0,Stock Move,Movimiento de Existencias,0
 model,"stock.product_stock_date.init,name",0,Compute stock quantities,Calcule cantidad de existencia,0
 model,"stock.shipment.in,name",0,Supplier Shipment,Envío del Proveedor,0
-model,"stock.shipment.in.return.assign.assign_failed,name",0,Assign Supplier Return Shipment Ask Force,Fuerce Pregunta de Asigne Devolución a Proveedor,0
+model,"stock.shipment.in.return.assign.assign_failed,name",0,Assign Supplier Return Shipment Assign Failed,Fuerce Pregunta de Asigne Devolución a Proveedor,1
 model,"stock.shipment.in.return,name",0,Supplier Return Shipment,Devolución a Proveedor,0
-model,"stock.shipment.internal.assign.assign_failed,name",0,Assign Shipment Internal Ask Force,Fuerce Pregunta de Asigne Envío Interno,0
+model,"stock.shipment.internal.assign.assign_failed,name",0,Assign Shipment Internal Assign Failed,Fuerce Pregunta de Asigne Envío Interno,1
 model,"stock.shipment.internal,name",0,Internal Shipment,Envío Interno,0
-model,"stock.shipment.out.assign.assign_failed,name",0,Assign Shipment Out Ask Force,Fuerce Pregunta de Asigne Envío,0
+model,"stock.shipment.out.assign.assign_failed,name",0,Assign Shipment Out Assign Failed,Fuerce Pregunta de Asigne Envío,1
 model,"stock.shipment.out,name",0,Customer Shipment,Envío de Cliente,0
 model,"stock.shipment.out.return,name",0,Customer Return Shipment,Devolución a Cliente,0
 model,"workflow.activity,name",shipmentout_act_assigned,Assigned,Asignado,0
@@ -382,6 +395,7 @@ selection,"stock.shipment.out,state",0,Waiting,En Espera,0
 view,party.party,0,Stock,Stock,0
 view,party.party,0,_Stock,_Existencias,0
 view,product.product,0,Products,Productos,0
+view,stock.configuration,0,Stock Configuration,Configuración de Inventario,0
 view,stock.inventory,0,Add an inventory line for each missing products,Adicione una línea de inventario para cada producto faltante,0
 view,stock.inventory,0,All generated moves will be cancelled!,Se cancelarán todos los movimientos generados!,0
 view,stock.inventory,0,Cancel,Cancelar,0
