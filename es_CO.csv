@@ -12,6 +12,8 @@ field,"account.invoice,purchase_exception_state",0,Exception State,Estado Excepc
 field,"product.template,product_suppliers",0,Suppliers,Proveedores,0
 field,"product.template,purchasable",0,Purchasable,Comprable,0
 field,"product.template,purchase_uom",0,Purchase UOM,UdM de Compra,0
+field,"purchase.configuration,purchase_sequence",0,Purchase Reference Sequence,Secuencia de referencia de compra,0
+field,"purchase.configuration,rec_name",0,Name,Nombre de Contacto,1
 field,"purchase.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,Rango de facturas,0
 field,"purchase.handle.invoice.exception.ask,recreate_invoices",0,Recreate Invoices,Rehacer facturas,0
 field,"purchase.handle.shipment.exception.ask,domain_moves",0,Domain Moves,Rango de movimientos,0
@@ -103,7 +105,7 @@ field,"purchase.purchase,warehouse",0,Warehouse,Depósito,0
 field,"stock.move,purchase",0,Purchase,Compra,0
 field,"stock.move,purchase_currency",0,Purchase Currency,Moneda de Compra,0
 field,"stock.move,purchase_exception_state",0,Exception State,Estado Excepción,0
-field,"stock.move,purchase_line",0,,,0
+field,"stock.move,purchase_line",0,Purchase Line,Línea de Compra,1
 field,"stock.move,purchase_quantity",0,Purchase Quantity,Cantidad de Compra,0
 field,"stock.move,purchase_unit",0,Purchase Unit,Unidad de Compra,0
 field,"stock.move,purchase_unit_digits",0,Purchase Unit Digits,Dígitos de Unidad de Compra,0
@@ -122,6 +124,7 @@ model,"ir.action,name",act_invoice_form,Invoices,Facturas,0
 model,"ir.action,name",act_purchase_form_new,New Purchase,Nueva Compra,0
 model,"ir.action,name",act_open_supplier,Parties associated to Purchases,Terceros Asociados a Compras,0
 model,"ir.action,name",report_purchase,Purchase,Compra,0
+model,"ir.action,name",act_purchase_configuration_form,Purchase Configuration,Configuración de Compra,0
 model,"ir.action,name",act_purchase_form,Purchases,Compras,0
 model,"ir.action,name",act_purchase_form2,Purchases,Compras,0
 model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Cotizaciones de Compras,0
@@ -133,10 +136,12 @@ model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Compras
 model,"ir.ui.menu,name",menu_purchase_form_draft,Draft Purchases,Compras en Borrador,0
 model,"ir.ui.menu,name",menu_purchase_form_new,New Purchase,Nueva Compra,0
 model,"ir.ui.menu,name",menu_supplier,Parties associated to Purchases,Terceros Asociados a Compras,0
+model,"ir.ui.menu,name",menu_purchase_configuration,Purchase Configuration,Configuración de compra,0
 model,"ir.ui.menu,name",menu_purchase,Purchase Management,Gestión de Compras,0
 model,"ir.ui.menu,name",menu_purchase_form,Purchases,Compras,0
 model,"ir.ui.menu,name",menu_purchase_form_quotation,Purchases in Quotation,Cotizaciones de Compras,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Reportes,0
+model,"purchase.configuration,name",0,purchase.configuration,,0
 model,"purchase.handle.invoice.exception.ask,name",0,Invoice Exception Ask,Pregunta de Excepción de Factura,0
 model,"purchase.handle.shipment.exception.ask,name",0,Shipment Exception Ask,Preguntar Excepción de Envío,0
 model,"purchase.line-account.invoice.line,name",0,Purchase Line - Invoice Line,Línea de Compra - Línea de Factura,0
@@ -217,6 +222,7 @@ view,product.product,0,Products,Productos,0
 view,product.product,0,Suppliers,Proveedores,0
 view,product.template,0,Product Suppliers,Proveedores de Productos,0
 view,product.template,0,Suppliers,Proveedores,0
+view,purchase.configuration,0,Purchase Configuration,configuració de compra,0
 view,purchase.handle.invoice.exception.ask,0,Choose invoices to recreate,Escoja una factura a rehacer,0
 view,purchase.handle.invoice.exception.ask,0,Handle Invoice Exception,Manejar excepción de factura,0
 view,purchase.handle.shipment.exception.ask,0,Choose moves to recreate,Elegir movimientos a recrear,0
