@@ -49,6 +49,7 @@ model,"analytic_account.account.open_chart_account.init,name",0,Open Chart Accou
 model,"analytic_account.account.selection,name",0,Analytic Account Selection,Selección de Cuenta Analítica,0
 model,"analytic_account.line,name",0,Analytic Line,Línea Analítica,0
 model,"ir.action,name",act_account_form,Analytic Accounts,Cuentas Analíticas,0
+model,"ir.action,name",act_account_form2,Analytic Accounts,Cuentas Analíticas,1
 model,"ir.action,name",act_account_tree,Analytic Accounts,Cuentas Analíticas,0
 model,"ir.action,name",act_account_tree2,Analytic Accounts,Cuentas Analíticas,0
 model,"ir.action,name",act_line_form,Analytic Lines,Líneas Analíticas,0
@@ -57,6 +58,7 @@ model,"ir.action,name",act_open_chart_account,Open Chart of Analytic Accounts,Ab
 model,"ir.ui.menu,name",menu_analytic_account_configuration,Analytic Account,Cuenta Analítica,0
 model,"ir.ui.menu,name",menu_account_form,Analytic Accounts,Cuentas Analíticas,0
 model,"ir.ui.menu,name",menu_account_tree,Analytic Accounts,Cuentas Analíticas,0
+model,"ir.ui.menu,name",menu_account_form_new,New Analytic Account,Nueva Cuenta Analítica,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Analytic Accounts,Abrir Plan de Cuentas Analítico,0
 model,"res.group,name",group_analytic_admin,Analytic Administration,Administración Analítica,0
 selection,"analytic_account.account,display_balance",0,Credit - Debit,Crédito - Débito,0
