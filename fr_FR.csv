@@ -214,6 +214,7 @@ model,"ir.action,name",act_invoice_in_credit_note_form5,Opened Supplier Credit N
 model,"ir.action,name",act_invoice_in_invoice_form5,Opened Supplier Invoices,Factures fournisseurs ouvertes,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Payer facture,0
 model,"ir.action,name",act_payment_term_form,Payment Terms,Conditions de paiement,0
+model,"ir.action,name",act_payment_term_form2,Payment Terms,Conditions de paiement,0
 model,"ir.action,name",act_invoice_out_credit_note_form4,Pro Forma Credit Notes,Notes de crédit pro forma,0
 model,"ir.action,name",act_invoice_out_invoice_form4,Pro Forma Invoices,Factures pro forma,0
 model,"ir.action,name",act_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Notes de crédit fournisseurs pro forma,0
@@ -233,6 +234,7 @@ model,"ir.ui.menu,name",menu_invoices,Invoices,Factures,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Factures,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Nouvelle note de crédit,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form2,New Invoice,Nouvelle facture,0
+model,"ir.ui.menu,name",menu_payment_term_form_new,New Payment Term,Nouvelle condition de paiement,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form2,New Supplier Credit Note,Nouvelle note de crédit fournisseur,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form2,New Supplier Invoice,Nouvelle facture fournisseur,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form5,Opened Credit Notes,Notes de crédit ouvertes,0
