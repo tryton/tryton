@@ -52,7 +52,6 @@ error,account.period,0,You can not open a period from a closed fiscal year!,Vous
 error,account.period,0,You must have different post move sequences per fiscal year and in the same company!,Vous devez avoir des séquences de mouvement différentes par exercice et dans la même société !,0
 error,account.tax.code,0,You can not create recursive tax codes!,Vous ne pouvez pas créer des codes de taxe récursifs !,0
 error,account.tax.code.template,0,You can not create recursive tax codes!,Vous ne pouvez pas créer des codes de taxe récursifs !,0
-error,account.tax.group,0,The code must be unique!,Le code doit être unique !,0
 field,"account.account-account.tax,account",0,Account,Compte,0
 field,"account.account-account.tax,rec_name",0,Name,Nom,0
 field,"account.account-account.tax,tax",0,Tax,Taxe,0
@@ -206,10 +205,8 @@ field,"account.move,centralised_line",0,Centralised Line,Ligne centralisée,0
 field,"account.move,date",0,Effective Date,Date effective,0
 field,"account.move,journal",0,Journal,Journal,0
 field,"account.move.line,account",0,Account,Compte,0
-field,"account.move.line,account_kind",0,Account Kind,Genre de compte,0
 field,"account.move.line,active",0,Active,Actif,0
 field,"account.move.line,amount_second_currency",0,Amount Second Currency,Montant en devise secondaire,0
-field,"account.move.line,blocked",0,Litigation,Litiges,0
 field,"account.move.line,credit",0,Credit,Crédit,0
 field,"account.move.line,currency_digits",0,Currency Digits,Décimales de la devise,0
 field,"account.move.line,date",0,Effective Date,Date effective,0
@@ -265,6 +262,7 @@ field,"account.tax.code,childs",0,Children,Enfants,0
 field,"account.tax.code,code",0,Code,Code,0
 field,"account.tax.code,company",0,Company,Société,0
 field,"account.tax.code,currency_digits",0,Currency Digits,Décimal de la devise,0
+field,"account.tax.code,description",0,Description,Description,0
 field,"account.tax.code,name",0,Name,Nom,0
 field,"account.tax.code,parent",0,Parent,Parent,0
 field,"account.tax.code,rec_name",0,Name,Nom,0
@@ -273,6 +271,7 @@ field,"account.tax.code,template",0,Template,Modèle,0
 field,"account.tax.code.template,account",0,Account Template,Compte modèle,0
 field,"account.tax.code.template,childs",0,Children,Enfants,0
 field,"account.tax.code.template,code",0,Code,Code,0
+field,"account.tax.code.template,description",0,Description,Description,0
 field,"account.tax.code.template,name",0,Name,Nom,0
 field,"account.tax.code.template,parent",0,Parent,Parent,0
 field,"account.tax.code.template,rec_name",0,Name,Nom,0
@@ -298,6 +297,7 @@ field,"account.tax.line,code",0,Code,Code,0
 field,"account.tax.line,currency_digits",0,Currency Digits,Décimales de la devise,0
 field,"account.tax.line,move_line",0,Move Line,Ligne de mouvement,0
 field,"account.tax.line,rec_name",0,Name,Nom,0
+field,"account.tax.line,tax",0,Tax,Taxe,0
 field,"account.tax,name",0,Name,Nom,0
 field,"account.tax.open_chart_code.init,fiscalyear",0,Fiscal Year,Année fiscale,0
 field,"account.tax.open_chart_code.init,method",0,Method,Méthode,0
@@ -379,7 +379,6 @@ for journal types: ""expense"" and ""revenue""","Taxe par défaut pour les ligne
 pour le type de journal: ""charge"" et ""produit""",0
 help,"account.account.type,sequence",0,Use to order the account type,Utilisé pour trier les types de compte,0
 help,"account.move.line,amount_second_currency",0,The amount expressed in a second currency,Le montant exprimé dans la devise secondaire,0
-help,"account.move.line,blocked",0,Mark the line as litigation with the party.,Marque la ligne en litige avec le tiers.,0
 help,"account.move.line,maturity_date",0,"This field is used for payable and receivable lines. 
 You can put the limit date for the payment.","Ce champ est utilisé pour les lignes à payer et à recevoir.
 Vous pouvez mettre la date limite pour le paiement.",0
@@ -387,11 +386,9 @@ help,"account.move.line,second_currency",0,The second currency,La devise seconda
 help,"account.move.print_general_journal.init,posted",0,Show only posted move,Afficher seulement les mouvements postés,0
 help,"account.move,reference",0,Also known as Folio Number, ,0
 help,"account.tax,amount",0,In company's currency,Dans la devise de la société,0
-help,"account.tax,credit_note_account",0,Leave empty to use the default credit note account,Laisser vide pour utiliser le compte de note de crédit par défaut,0
 help,"account.tax,credit_note_base_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax,credit_note_tax_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax,description",0,The name that will be used in reports,Le nom qui sera utilisé dans les rapports,0
-help,"account.tax,invoice_account",0,Leave empty to use the default invoice account,Garder vide pour utiliser le compte par défaut de la facture,0
 help,"account.tax,invoice_base_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax,invoice_tax_sign",0,Usualy 1 or -1,Habituellement 1 ou -1,0
 help,"account.tax.open_chart_code.init,fiscalyear",0,Leave empty for all open fiscal year,Laisser vide pour toutes les années fiscales ouvertes,0
@@ -483,11 +480,14 @@ model,"account.tax.rule.template,name",0,Tax Rule Template,Modèle de règle de 
 model,"account.tax.template,name",0,Account Tax Template,Modèle de compte de taxe,0
 model,"ir.action,name",act_move_line_form,Account Move Lines,Lignes de mouvement comptable,0
 model,"ir.action,name",act_move_form,Account Moves,Mouvements comptables,0
+model,"ir.action,name",act_move_form2,Account Moves,Mouvements comptables,0
 model,"ir.action,name",act_account_form,Accounts,Comptes,0
+model,"ir.action,name",act_account_form2,Accounts,Comptes,0
 model,"ir.action,name",act_account_tree,Accounts,Comptes,0
 model,"ir.action,name",act_account_tree2,Accounts,Comptes,0
 model,"ir.action,name",act_account_template_tree,Account Templates,Modèles de compte,0
 model,"ir.action,name",act_account_type_form,Account Types,Types de compte,0
+model,"ir.action,name",act_account_type_form2,Account Types,Types de compte,0
 model,"ir.action,name",act_account_type_tree,Account Types,Types de compte,0
 model,"ir.action,name",act_account_type_template_tree,Account Type Templates,Modèles de types de comptes,0
 model,"ir.action,name",report_aged_balance,Aged Balance,Balance âgée,0
@@ -497,15 +497,19 @@ model,"ir.action,name",act_close_journal_period,Close Journals - Periods,Fermer 
 model,"ir.action,name",act_close_period,Close Periods,Fermer les périodes,0
 model,"ir.action,name",wizard_create_chart_account,Create Chart of Account from Template,Créer un plan comptable depuis un modèle,0
 model,"ir.action,name",act_fiscalyear_form,Fiscal Years,Années fiscales,0
+model,"ir.action,name",act_fiscalyear_form2,Fiscal Years,Années fiscales,0
 model,"ir.action,name",report_general_journal,General Journal,Journal général,0
 model,"ir.action,name",report_general_ledger,General Ledger,Grand livre,0
 model,"ir.action,name",act_account_income_statement_tree,Income Statement,Compte de résultats,0
 model,"ir.action,name",act_journal_form,Journals,Journaux,0
+model,"ir.action,name",act_journal_form2,Journals,Journaux,0
 model,"ir.action,name",act_journal_period_tree,Journals - Periods,Journaux - périodes,0
 model,"ir.action,name",act_journal_period_tree2,Journals - Periods,Journaux - périodes,0
 model,"ir.action,name",act_journal_period_form,Journals - Periods,Journaux - périodes,0
 model,"ir.action,name",act_journal_type_form,Journal Types,Types de journaux,0
+model,"ir.action,name",act_journal_type_form2,Journal Types,Types de journaux,0
 model,"ir.action,name",act_journal_view_form,Journal Views,Vues des journaux,0
+model,"ir.action,name",act_journal_view_form2,Journal Views,Vues des journaux,0
 model,"ir.action,name",wizard_open_aged_balance,Open Aged Balance,Ouvrir la balance âgée,0
 model,"ir.action,name",wizard_open_balance_sheet,Open Balance Sheet,Ouvrir le bilan,0
 model,"ir.action,name",act_open_chart_account,Open Chart of Accounts,Ouvrir le plan comptable,0
@@ -517,6 +521,7 @@ model,"ir.action,name",act_open_reconcile_lines,Open Reconcile Lines,Ouvrir les 
 model,"ir.action,name",act_open_tax_code,Open Tax Code,Ouvrir le code de taxe,0
 model,"ir.action,name",wizard_open_third_party_balance,Open Third Party Balance,Ouvrir la balance des tiers,0
 model,"ir.action,name",act_period_form,Periods,Périodes,0
+model,"ir.action,name",act_period_form3,Periods,Périodes,0
 model,"ir.action,name",act_period_form2,Periods,Périodes,0
 model,"ir.action,name",wizard_print_general_journal,Print General Journal,Imprimer le journal général,0
 model,"ir.action,name",wizard_print_general_ledger,Print General Legder,Imprimer Imprimer le grand livre,0
@@ -525,15 +530,19 @@ model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Lignes réconciliées
 model,"ir.action,name",act_reopen_journal_period,Re-Open Journals - Periods,Ré-ouvrir journaux - périodes,0
 model,"ir.action,name",act_reopen_period,Re-Open Periods,Ré-ouvrir périodes,0
 model,"ir.action,name",act_tax_code_form,Tax Codes,Codes de taxe,0
+model,"ir.action,name",act_tax_code_form2,Tax Codes,Codes de taxe,0
 model,"ir.action,name",act_tax_code_tree,Tax Codes,Codes de taxe,0
 model,"ir.action,name",act_tax_code_tree2,Tax Codes,Codes de taxe,0
 model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Modèles de codes de taxe,0
 model,"ir.action,name",act_tax_form,Taxes,Taxes,0
+model,"ir.action,name",act_tax_form2,Taxes,Taxes,0
 model,"ir.action,name",act_tax_tree,Taxes,Taxes,0
 model,"ir.action,name",act_tax_template_tree,Taxes Templates,Modèle de taxe,0
 model,"ir.action,name",act_tax_group_form,Tax Groups,Groupes de taxes,0
+model,"ir.action,name",act_tax_group_form2,Tax Groups,Groupes de taxes,0
 model,"ir.action,name",act_tax_line_form,Tax Lines,Lignes de taxe,0
 model,"ir.action,name",act_tax_rule_form,Tax Rules,Règles de taxe,0
+model,"ir.action,name",act_tax_rule_form2,Tax Rules,Règles de taxe,0
 model,"ir.action,name",act_tax_rule_template_form,Tax Rule Templates,Modèles de règle de taxe,0
 model,"ir.action,name",report_third_party_balance,Third Party Balance,Balance des tiers,0
 model,"ir.action,name",report_trial_balance,Trial Balance,Balance,0
@@ -571,6 +580,18 @@ model,"ir.ui.menu,name",menu_journal_period_tree,Journals - Periods,Journaux - p
 model,"ir.ui.menu,name",menu_journal_period_tree2,Journals - Periods,Journaux - périodes,0
 model,"ir.ui.menu,name",menu_journal_type_form,Journal Types,Types de journaux,0
 model,"ir.ui.menu,name",menu_journal_view_form,Journal Views,Vue des journaux,0
+model,"ir.ui.menu,name",menu_account_form_new,New Account,Nouveau compte,0
+model,"ir.ui.menu,name",menu_move_form_new,New Account Move,Nouveau mouvement comptable,0
+model,"ir.ui.menu,name",menu_account_type_form_new,New Account Type,Nouveau type de compte,0
+model,"ir.ui.menu,name",menu_fiscalyear_form_new,New Fiscal Year,Nouvelle année fiscale,0
+model,"ir.ui.menu,name",menu_journal_form_new,New Journal,Nouveau journal,0
+model,"ir.ui.menu,name",menu_journal_type_form_new,New Journal Type,Nouveau type de journal,0
+model,"ir.ui.menu,name",menu_journal_view_form_new,New Journal View,Nouvelle vue de journal,0
+model,"ir.ui.menu,name",menu_period_form_new,New Period,Nouvelle période,0
+model,"ir.ui.menu,name",menu_tax_form_new,New Tax,Nouvelle taxe,0
+model,"ir.ui.menu,name",menu_tax_code_form_new,New Tax Code,Nouveau code de taxe,0
+model,"ir.ui.menu,name",menu_tax_group_form_new,New Tax Group,Nouveau groupe de taxe,0
+model,"ir.ui.menu,name",menu_tax_rule_form_new,New Tax Rule,Nouvelle règle de taxe,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Accounts,Ouvrir le plan compatble,0
 model,"ir.ui.menu,name",menu_open_chart_code,Open Chart of Tax Codes,Ouvrir le plan de code de taxe,0
 model,"ir.ui.menu,name",menu_open_journal,Open Journal,Ouvrir les journaux,0
@@ -690,12 +711,6 @@ selection,"account.fiscalyear,state",0,Close,Clôturé,0
 selection,"account.fiscalyear,state",0,Open,Ouverte,0
 selection,"account.journal.period,state",0,Close,Clôturée,0
 selection,"account.journal.period,state",0,Open,Ouverte,0
-selection,"account.move.line,account_kind",0,Expense,Charge,0
-selection,"account.move.line,account_kind",0,Other,Autre,0
-selection,"account.move.line,account_kind",0,Payable,A payer,0
-selection,"account.move.line,account_kind",0,Receivable,A recevoir,0
-selection,"account.move.line,account_kind",0,Revenue,Revenu,0
-selection,"account.move.line,account_kind",0,View,Vue,0
 selection,"account.move.line,move_state",0,Draft,Brouillon,0
 selection,"account.move.line,move_state",0,Posted,Posté,0
 selection,"account.move.line,state",0,Draft,Brouillon,0
@@ -796,8 +811,12 @@ view,account.tax,0,Invoice,Facture,0
 view,account.tax,0,Refund,Note de crédit,0
 view,account.tax,0,Tax,Taxe,0
 view,account.tax,0,Taxes,Taxes,0
+view,account.tax.code,0,Children,Enfants,0
+view,account.tax.code,0,Description,Description,0
 view,account.tax.code,0,Tax Code,Code de taxe,0
 view,account.tax.code,0,Tax Codes,Codes de taxe,0
+view,account.tax.code.template,0,Children,Enfants,0
+view,account.tax.code.template,0,Description,Description,0
 view,account.tax.code.template,0,Tax Codes Templates,Modèles de codes de taxe,0
 view,account.tax.code.template,0,Tax Code Template,Modèle de code de taxe,0
 view,account.tax.group,0,Tax Group,Groupe de taxe,0
@@ -847,7 +866,6 @@ wizard_button,"account.account.print_trial_balance,init,end",0,Cancel,Annuler,0
 wizard_button,"account.account.print_trial_balance,init,print",0,Print,Imprimer,0
 wizard_button,"account.account.update_chart_account,init,end",0,Cancel,Annuler,0
 wizard_button,"account.account.update_chart_account,init,start",0,Ok,Ok,0
-wizard_button,"account.account.update_chart_account,init,update_account",0,Ok,Ok,0
 wizard_button,"account.account.update_chart_account,start,end",0,Ok,Ok,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,close",0,Close,Clôturer,0
 wizard_button,"account.fiscalyear.close_fiscalyear,init,end",0,Cancel,Annuler,0
