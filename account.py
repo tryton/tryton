@@ -56,6 +56,10 @@ class FiscalYear(ModelSQL, ModelView):
 
     def write(self, cursor, user, ids, vals, context=None):
         invoice_obj = self.pool.get('account.invoice')
+
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+
         for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
                 'out_credit_note_sequence', 'in_credit_note_sequence'):
             if vals.get(sequence):
