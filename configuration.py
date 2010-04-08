@@ -5,7 +5,9 @@ from trytond.pyson import Eval
 
 
 class Configuration(ModelSingleton, ModelSQL, ModelView):
+    'Sale Configuration'
     _name = 'sale.configuration'
+    _description = __doc__
 
     sale_sequence = fields.Property(fields.Many2One('ir.sequence',
         'Sale Reference Sequence', domain=[
