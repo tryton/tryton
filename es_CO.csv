@@ -210,7 +210,8 @@ model,"ir.action,name",act_invoice_out_invoice_form5,Opened Invoices,Factura Abi
 model,"ir.action,name",act_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Nota Crédito de Proveedor Abierta,0
 model,"ir.action,name",act_invoice_in_invoice_form5,Opened Supplier Invoices,Factura de Proveedor Abierta,0
 model,"ir.action,name",wizard_pay_invoice,Pay Invoice,Pagar Factura,0
-model,"ir.action,name",act_payment_term_form,Payment Terms,Términos de Pago,0
+model,"ir.action,name",act_payment_term_form,Payment Terms,Formas de Pago,0
+model,"ir.action,name",act_payment_term_form2,Payment Terms,Formas de Pago,1
 model,"ir.action,name",act_invoice_out_credit_note_form4,Pro Forma Credit Notes,Nota Crédito Proforma,0
 model,"ir.action,name",act_invoice_out_invoice_form4,Pro Forma Invoices,Factura Proforma,0
 model,"ir.action,name",act_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Nota Crédito de Proveedor Proforma,0
@@ -230,14 +231,15 @@ model,"ir.ui.menu,name",menu_invoices,Invoices,Facturas,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form,Invoices,Facturas,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form2,New Credit Note,Nueva Nota Crédito,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form2,New Invoice,Nueva Factura,0
+model,"ir.ui.menu,name",menu_payment_term_form_new,New Payment Term,,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form2,New Supplier Credit Note,Nueva Nota Crédito Proveedor,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form2,New Supplier Invoice,Factura Nuevo Proveedor,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form5,Opened Credit Notes,Nota Crédito Abierta,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form5,Opened Invoices,Factura Abierta,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form5,Opened Supplier Credit Notes,Nota Crédito Proveedor Abierta,0
 model,"ir.ui.menu,name",menu_invoice_in_invoice_form5,Opened Supplier Invoices,Factura Proveedor Abierta,0
-model,"ir.ui.menu,name",menu_payment_terms_configuration,Payment Terms,Términos de Pago,0
-model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Términos de Pago,0
+model,"ir.ui.menu,name",menu_payment_terms_configuration,Payment Terms,Formas de Pago,0
+model,"ir.ui.menu,name",menu_payment_term_form,Payment Terms,Formas de Pago,0
 model,"ir.ui.menu,name",menu_invoice_out_credit_note_form4,Pro Forma Credit Notes,Nota Crédito Proforma,0
 model,"ir.ui.menu,name",menu_invoice_out_invoice_form4,Pro Forma Invoices,Factura Proforma,0
 model,"ir.ui.menu,name",menu_invoice_in_credit_note_form4,Pro Forma Supplier Credit Notes,Nota Crédito Proveedor Proforma,0
@@ -331,7 +333,7 @@ view,account.invoice.pay_invoice.init,0,Pay Invoice,Pagar Factura,0
 view,account.invoice.payment_term,0,Payment Term,Término de Pago,0
 view,account.invoice.payment_term,0,Payment Term Line,Línea de Término de Pago,0
 view,account.invoice.payment_term,0,Payment Term Lines,Líneas de Término de Pago,0
-view,account.invoice.payment_term,0,Payment Terms,Términos de Pago,0
+view,account.invoice.payment_term,0,Payment Terms,Formas de Pago,0
 view,account.invoice.print_invoice_report.warning,0,<b>Warning!</b>,<b>Advertencia!</b>,0
 view,account.invoice.print_invoice_report.warning,0,Print Invoice,Imprimir Factura,0
 view,account.invoice.print_invoice_report.warning,0,The invoices will be sent <i>directly</i> to the printer.,Las facturas serán enviadas <i>directamente</i> a la impresora.,0
@@ -339,7 +341,7 @@ view,account.invoice.print_invoice_report.warning,0,You have selected more than 
 view,account.invoice.tax,0,Invoice Tax,Impuesto en Factura,0
 view,account.invoice.tax,0,Invoice Taxes,Impuestos de Facturas,0
 view,account.invoice.tax,0,Tax Code,Código de Impuesto,0
-view,party.party,0,Payment Terms,Términos de Pago,0
+view,party.party,0,Payment Terms,Formas de Pago,0
 wizard_button,"account.invoice.credit_invoice,init,credit",0,Credit,Crédito,0
 wizard_button,"account.invoice.credit_invoice,init,end",0,Cancel,Cancelar,0
 wizard_button,"account.invoice.pay_invoice,ask,end",0,Cancel,Cancelar,0
