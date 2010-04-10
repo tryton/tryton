@@ -52,7 +52,6 @@ error,account.period,0,You can not open a period from a closed fiscal year!,No p
 error,account.period,0,You must have different post move sequences per fiscal year and in the same company!,Debe tener una secuencia de envío de movimientos diferente por año fiscal y en la misma compañía!,0
 error,account.tax.code,0,You can not create recursive tax codes!,No puede crear códigos recursivos de impuestos!,0
 error,account.tax.code.template,0,You can not create recursive tax codes!,No puede crear códigos recursivos de impuestos!,0
-error,account.tax.group,0,The code must be unique!,¡El código debe ser único!,0
 field,"account.account-account.tax,account",0,Account,Cuenta,0
 field,"account.account-account.tax,rec_name",0,Name,Nombre,0
 field,"account.account-account.tax,tax",0,Tax,Impuesto,0
@@ -263,6 +262,7 @@ field,"account.tax.code,childs",0,Children,Hij@s,0
 field,"account.tax.code,code",0,Code,Código,0
 field,"account.tax.code,company",0,Company,Compañía,0
 field,"account.tax.code,currency_digits",0,Currency Digits,Dígitos de Moneda,0
+field,"account.tax.code,description",0,Description,Descripción,1
 field,"account.tax.code,name",0,Name,Nombre,0
 field,"account.tax.code,parent",0,Parent,Padre,0
 field,"account.tax.code,rec_name",0,Name,Nombre,0
@@ -271,6 +271,7 @@ field,"account.tax.code,template",0,Template,Plantilla,0
 field,"account.tax.code.template,account",0,Account Template,Plantilla de Cuenta,0
 field,"account.tax.code.template,childs",0,Children,Hij@s,0
 field,"account.tax.code.template,code",0,Code,Código,0
+field,"account.tax.code.template,description",0,Description,Descripción,1
 field,"account.tax.code.template,name",0,Name,Nombre,0
 field,"account.tax.code.template,parent",0,Parent,Padre,0
 field,"account.tax.code.template,rec_name",0,Name,Nombre,0
@@ -296,6 +297,7 @@ field,"account.tax.line,code",0,Code,Código,0
 field,"account.tax.line,currency_digits",0,Currency Digits,Dígitos de Moneda,0
 field,"account.tax.line,move_line",0,Move Line,Línea de Movimiento,0
 field,"account.tax.line,rec_name",0,Name,Nombre,0
+field,"account.tax.line,tax",0,Tax,Impuesto,1
 field,"account.tax,name",0,Name,Nombre,0
 field,"account.tax.open_chart_code.init,fiscalyear",0,Fiscal Year,Año Fiscal,0
 field,"account.tax.open_chart_code.init,method",0,Method,Método,0
@@ -477,11 +479,14 @@ model,"account.tax.rule.template,name",0,Tax Rule Template,Plantilla de Reglas d
 model,"account.tax.template,name",0,Account Tax Template,Plantilla de Cuenta de Impuesto,0
 model,"ir.action,name",act_move_line_form,Account Move Lines,Líneas de Movimiento de Cuenta,0
 model,"ir.action,name",act_move_form,Account Moves,Movimientos de Cuenta,0
+model,"ir.action,name",act_move_form2,Account Moves,Movimientos de Cuenta,1
 model,"ir.action,name",act_account_form,Accounts,Cuentas,0
+model,"ir.action,name",act_account_form2,Accounts,Cuentas,1
 model,"ir.action,name",act_account_tree,Accounts,Cuentas,0
 model,"ir.action,name",act_account_tree2,Accounts,Cuentas,0
 model,"ir.action,name",act_account_template_tree,Account Templates,Plantillas de Cuentas,0
 model,"ir.action,name",act_account_type_form,Account Types,Tipos de Cuenta,0
+model,"ir.action,name",act_account_type_form2,Account Types,Tipos de Cuenta,1
 model,"ir.action,name",act_account_type_tree,Account Types,Tipos de Cuenta,0
 model,"ir.action,name",act_account_type_template_tree,Account Type Templates,Plantilla de Tipo de Cuenta,0
 model,"ir.action,name",report_aged_balance,Aged Balance,Balance Antiguo,0
@@ -491,15 +496,19 @@ model,"ir.action,name",act_close_journal_period,Close Journals - Periods,Cerrar 
 model,"ir.action,name",act_close_period,Close Periods,Cerrar Períodos,0
 model,"ir.action,name",wizard_create_chart_account,Create Chart of Account from Template,Crear Plan Contable de una Plantilla,0
 model,"ir.action,name",act_fiscalyear_form,Fiscal Years,Años Fiscales,0
+model,"ir.action,name",act_fiscalyear_form2,Fiscal Years,Años Fiscales,1
 model,"ir.action,name",report_general_journal,General Journal,Libro General,0
 model,"ir.action,name",report_general_ledger,General Ledger,Diario General,0
 model,"ir.action,name",act_account_income_statement_tree,Income Statement,Estado de Cuenta de Ingresos,0
 model,"ir.action,name",act_journal_form,Journals,Diarios,0
+model,"ir.action,name",act_journal_form2,Journals,Diarios,1
 model,"ir.action,name",act_journal_period_tree,Journals - Periods,Diarios - Períodos,0
 model,"ir.action,name",act_journal_period_tree2,Journals - Periods,Diarios - Períodos,0
 model,"ir.action,name",act_journal_period_form,Journals - Periods,Diarios - Períodos,0
 model,"ir.action,name",act_journal_type_form,Journal Types,Tipos de Diarios,0
+model,"ir.action,name",act_journal_type_form2,Journal Types,Tipos de Diarios,1
 model,"ir.action,name",act_journal_view_form,Journal Views,Vistas de Diarios,0
+model,"ir.action,name",act_journal_view_form2,Journal Views,Vistas de Diarios,1
 model,"ir.action,name",wizard_open_aged_balance,Open Aged Balance,Abrir Balance Antiguo,0
 model,"ir.action,name",wizard_open_balance_sheet,Open Balance Sheet,Abrir Hoja de Balance,0
 model,"ir.action,name",act_open_chart_account,Open Chart of Accounts,Abrir Plan de Cuentas,0
@@ -511,6 +520,7 @@ model,"ir.action,name",act_open_reconcile_lines,Open Reconcile Lines,Abrir Líne
 model,"ir.action,name",act_open_tax_code,Open Tax Code,Abrir Código de Impuesto,0
 model,"ir.action,name",wizard_open_third_party_balance,Open Third Party Balance,Abrir Balance de un Tercero,0
 model,"ir.action,name",act_period_form,Periods,Períodos,0
+model,"ir.action,name",act_period_form3,Periods,Períodos,1
 model,"ir.action,name",act_period_form2,Periods,Períodos,0
 model,"ir.action,name",wizard_print_general_journal,Print General Journal,Imprimir Libro General,0
 model,"ir.action,name",wizard_print_general_ledger,Print General Legder,Imprimir Libro General,0
@@ -519,15 +529,19 @@ model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Líneas Conciliadas,0
 model,"ir.action,name",act_reopen_journal_period,Re-Open Journals - Periods,Re-abrir Libros - Períodos,0
 model,"ir.action,name",act_reopen_period,Re-Open Periods,Re-abrir Períodos,0
 model,"ir.action,name",act_tax_code_form,Tax Codes,Códigos de Impuesto,0
+model,"ir.action,name",act_tax_code_form2,Tax Codes,Códigos de Impuesto,1
 model,"ir.action,name",act_tax_code_tree,Tax Codes,Códigos de Impuesto,0
 model,"ir.action,name",act_tax_code_tree2,Tax Codes,Códigos de Impuesto,0
 model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Plantillas de Códigos de Impuesto,0
 model,"ir.action,name",act_tax_form,Taxes,Impuestos,0
+model,"ir.action,name",act_tax_form2,Taxes,Impuestos,1
 model,"ir.action,name",act_tax_tree,Taxes,Impuestos,0
 model,"ir.action,name",act_tax_template_tree,Taxes Templates,Plantillas de Impuestos,0
 model,"ir.action,name",act_tax_group_form,Tax Groups,Grupos de Impuestos,0
+model,"ir.action,name",act_tax_group_form2,Tax Groups,Grupos de Impuestos,1
 model,"ir.action,name",act_tax_line_form,Tax Lines,Líneas de Impuestos,0
 model,"ir.action,name",act_tax_rule_form,Tax Rules,Reglas de Impuestos,0
+model,"ir.action,name",act_tax_rule_form2,Tax Rules,Reglas de Impuestos,1
 model,"ir.action,name",act_tax_rule_template_form,Tax Rule Templates,Plantilla de Reglas de Impuestos,0
 model,"ir.action,name",report_third_party_balance,Third Party Balance,Balance de Tercero,0
 model,"ir.action,name",report_trial_balance,Trial Balance,Balance de Prueba,0
@@ -565,6 +579,18 @@ model,"ir.ui.menu,name",menu_journal_period_tree,Journals - Periods,Diarios - Pe
 model,"ir.ui.menu,name",menu_journal_period_tree2,Journals - Periods,Diarios - Períodos,0
 model,"ir.ui.menu,name",menu_journal_type_form,Journal Types,Tipos de Diarios,0
 model,"ir.ui.menu,name",menu_journal_view_form,Journal Views,Vistas de Diarios,0
+model,"ir.ui.menu,name",menu_account_form_new,New Account,Nueva Cuenta,0
+model,"ir.ui.menu,name",menu_move_form_new,New Account Move,Nuevo Movimiento de Cuenta,0
+model,"ir.ui.menu,name",menu_account_type_form_new,New Account Type,Nuevo Tipo de Cuenta,0
+model,"ir.ui.menu,name",menu_fiscalyear_form_new,New Fiscal Year,Nuevo Año Fiscal,0
+model,"ir.ui.menu,name",menu_journal_form_new,New Journal,Nuevo Diario,0
+model,"ir.ui.menu,name",menu_journal_type_form_new,New Journal Type,Nuevo Tipo de Diario,0
+model,"ir.ui.menu,name",menu_journal_view_form_new,New Journal View,Nueva Vista de Diario,0
+model,"ir.ui.menu,name",menu_period_form_new,New Period,Nuevo Período,0
+model,"ir.ui.menu,name",menu_tax_form_new,New Tax,Nuevo Impuesto,0
+model,"ir.ui.menu,name",menu_tax_code_form_new,New Tax Code,Nuevo Código de Impuesto,0
+model,"ir.ui.menu,name",menu_tax_group_form_new,New Tax Group,Nuevo Grupo de Impuestos,0
+model,"ir.ui.menu,name",menu_tax_rule_form_new,New Tax Rule,Nueva Regla de Impuestos,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Accounts,Abrir Plan de Cuentas,0
 model,"ir.ui.menu,name",menu_open_chart_code,Open Chart of Tax Codes,Abrir Tabla de Códigos de Impuestos,0
 model,"ir.ui.menu,name",menu_open_journal,Open Journal,Abrir Libro,0
@@ -784,8 +810,12 @@ view,account.tax,0,Invoice,Factura,0
 view,account.tax,0,Refund,Devolución,0
 view,account.tax,0,Tax,Impuesto,0
 view,account.tax,0,Taxes,Impuestos,0
+view,account.tax.code,0,Children,Hij@s,1
+view,account.tax.code,0,Description,Descripción,1
 view,account.tax.code,0,Tax Code,Código de Impuesto,0
 view,account.tax.code,0,Tax Codes,Códigos de Impuesto,0
+view,account.tax.code.template,0,Children,Hij@s,1
+view,account.tax.code.template,0,Description,Descripción,1
 view,account.tax.code.template,0,Tax Codes Templates,Plantillas de Códigos de Impuesto,0
 view,account.tax.code.template,0,Tax Code Template,Plantilla de Código de Impuesto,0
 view,account.tax.group,0,Tax Group,Grupo de Impuestos,0
