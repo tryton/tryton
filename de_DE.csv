@@ -88,7 +88,7 @@ model,"ir.action,name",report_label,Labels,Etiketten,0
 model,"ir.action,name",act_party_form,Parties,Parteien,0
 model,"ir.action,name",act_party_form2,Parties,Parteien,0
 model,"ir.action,name",act_party_by_category,Parties by Category,Parteien nach Kategorie,0
-model,"ir.action,name",act_party_configuration_form,Party Configuration,Konfiguration Partei,0
+model,"ir.action,name",act_party_configuration_form,Party Configuration,Einstellungen Partei,0
 model,"ir.sequence,name",sequence_party,Party,Partei,0
 model,"ir.sequence.type,name",sequence_type_party,Party,Partei,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adressen,0
@@ -99,13 +99,13 @@ model,"ir.ui.menu,name",menu_address_form2,New Address,Neue Adresse,0
 model,"ir.ui.menu,name",menu_category_form2,New category,Neue Parteikategorie,0
 model,"ir.ui.menu,name",menu_party_form2,New Party,Neue Partei,0
 model,"ir.ui.menu,name",menu_party_form,Parties,Parteien,0
-model,"ir.ui.menu,name",menu_party_configuration,Party Configuration,Konfiguration Partei,0
+model,"ir.ui.menu,name",menu_party_configuration,Party Configuration,Einstellungen Partei,0
 model,"ir.ui.menu,name",menu_party,Party Management,Parteien,0
 model,"party.address,name",0,Address,Adresse,0
 model,"party.category,name",0,Category,Kategorie,0
 model,"party.check_vies.check,name",0,Check VIES - Check,Überprüfung VIES - Durchführen,0
 model,"party.check_vies.no_check,name",0,Check VIES - No Check,Überprüfung VIES - Nicht durchführen,0
-model,"party.configuration,name",0,Party Configuration,Konfiguration Partei,0
+model,"party.configuration,name",0,Party Configuration,Einstellungen Partei,0
 model,"party.contact_mechanism,name",0,Contact Mechanism,Kontaktmöglichkeit,0
 model,"party.party,name",0,Party,Partei,0
 model,"party.party-party.category,name",0,Party - Category,Partei - Parteikategorie,0
@@ -161,7 +161,7 @@ view,party.check_vies.check,0,Parties Succeed,Parteien mit erfolgreicher Überpr
 view,party.check_vies.check,0,VAT Information Exchange System Results,Ergebnisse des Überprüfungssystems für USt-ID-Nummern (VIES),0
 view,party.check_vies.no_check,0,VAT Information Exchange System,Überprüfungssystem für USt-ID-Nummern (VIES),0
 view,party.check_vies.no_check,0,"You must have a recent version of ""vatnumber"" installed!","Es muss eine aktuelle Version des Python-Moduls ""vatnumber"" installiert sein!",0
-view,party.configuration,0,Party Configuration,Konfiguration Partei,0
+view,party.configuration,0,Party Configuration,Einstellungen Partei,0
 view,party.contact_mechanism,0,Contact Mechanism,Kontaktmöglichkeit,0
 view,party.contact_mechanism,0,Contact Mechanisms,Kontaktmöglichkeiten,0
 view,party.party,0,Account,Konten,0
