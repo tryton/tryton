@@ -1253,15 +1253,15 @@ class ModelSQL(ModelStorage):
             if self._history and context.get('_datetime') \
                     and not query_string:
                 select_fields2 += [select_fields[1]]
-            cursor.execute(cursor.limit_clause(
+            cursor.execute(
                 'SELECT * FROM (' + \
                     cursor.limit_clause(
                         'SELECT ' + ','.join(select_fields2) + ' FROM ' + \
                         ' '.join(tables) + (qu1 and ' WHERE ' + qu1 or '') + \
                         (order_by and ' ORDER BY ' + order_by or ''),
                         limit, offset) + ') AS "' + self._table + '"',
-                    None, cursor.IN_MAX), tables_args + qu2)
-            datas += cursor.dictfetchall()
+                    tables_args + qu2)
+            datas = cursor.dictfetchall()
 
         if self._history and context.get('_datetime'):
             res = []
