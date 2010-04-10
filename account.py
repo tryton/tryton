@@ -1721,7 +1721,7 @@ class OpenIncomeStatement(Wizard):
 
         act_window_id = model_data_obj.get_id(cursor, user, 'account',
                 'act_account_income_statement_tree', context=context)
-        res = act_window_obj.read(cursor, user, model_data.db_id, context=context)
+        res = act_window_obj.read(cursor, user, act_window_id, context=context)
         res['pyson_context'] = PYSONEncoder().encode({
             'periods': end_period_ids,
             'posted': datas['form']['posted'],
