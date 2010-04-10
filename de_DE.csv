@@ -26,6 +26,12 @@ field,"product.product,forecast_quantity",0,Forecast Quantity,Voraussichtliche A
 field,"product.product,quantity",0,Quantity,Anzahl,0
 field,"product.template,forecast_quantity",0,Forecast Quantity,Voraussichtliche Anzahl,0
 field,"product.template,quantity",0,Quantity,Anzahl,0
+field,"stock.configuration,rec_name",0,Name,Name,0
+field,"stock.configuration,shipment_in_return_sequence",0,Supplier Return Shipment Sequence,Nummernkreis Warenrückgabe,0
+field,"stock.configuration,shipment_in_sequence",0,Supplier Shipment Sequence,Nummernkreis Lieferposten von Lieferant,0
+field,"stock.configuration,shipment_internal_sequence",0,Internal Shipment Sequence,Nummernkreis Interne Lieferposten,0
+field,"stock.configuration,shipment_out_return_sequence",0,Customer Return Shipment Sequence,Nummernkreis Warenrücknahme,0
+field,"stock.configuration,shipment_out_sequence",0,Customer Shipment Sequence,Nummernkreis Lieferposten an Kunde,0
 field,"stock.inventory,company",0,Company,Unternehmen,0
 field,"stock.inventory,date",0,Date,Datum,0
 field,"stock.inventory.line,expected_quantity",0,Expected Quantity,Erwartete Anzahl,0
@@ -88,6 +94,7 @@ field,"stock.shipment.in,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.shipment.in,rec_name",0,Name,Name,0
 field,"stock.shipment.in,reference",0,Reference,Referenz,0
 field,"stock.shipment.in.return.assign.ask_force,moves",0,Moves,Bewegungen,0
+field,"stock.shipment.in.return.assign.assign_failed,moves",0,Moves,Lagerbewegungen,0
 field,"stock.shipment.in.return,code",0,Code,Code,0
 field,"stock.shipment.in.return,effective_date",0,Effective Date,Effektives Datum,0
 field,"stock.shipment.in.return,from_location",0,From Location,Von Lagerort,0
@@ -163,11 +170,13 @@ model,"ir.action,name",act_shipment_out_form_ready,Customer Shipments Ready for 
 model,"ir.action,name",act_shipment_out_form_waiting,Customer Shipments Waiting Assignation,Zuzuweisende Lieferposten an Kunden,0
 model,"ir.action,name",report_shipment_out_delivery_note,Delivery Note,Lieferschein,0
 model,"ir.action,name",act_shipment_internal_draft_form,Draft Internal Shipments,Entwürfe (Interne Lieferposten),0
+model,"ir.action,name",act_inventory_form_draft,Draft Inventories,Entwürfe Bestandskorrekturen,0
 model,"ir.action,name",act_location_form,Edit Locations,Lagerorte bearbeiten,0
 model,"ir.action,name",report_shipment_internal,Internal Shipment,Interner Lieferposten,0
 model,"ir.action,name",act_shipment_internal_form,Internal Shipments,Interne Lieferposten,0
 model,"ir.action,name",act_shipment_internal_waiting_form,Internal Shipments Waiting Assignation,Zuzuweisende Interne Lieferposten,0
 model,"ir.action,name",act_inventory_form,Inventories,Bestandskorrekturen,0
+model,"ir.action,name",act_inventory_form2,Inventories,Bestandskorrekturen,0
 model,"ir.action,name",act_location_tree,Locations,Lagerorte,0
 model,"ir.action,name",act_move_form,Moves,Lagerbewegungen,0
 model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Bewegungen von Lieferanten,0
@@ -185,6 +194,7 @@ model,"ir.action,name",act_location_quantity_tree,Product Stock,Lagerbestand,0
 model,"ir.action,name",act_shipment_in_form_received,Received Supplier shipments,Erhaltene Lieferposten von Lieferanten,0
 model,"ir.action,name",report_shipment_in_restocking_list,Restocking List,Einlagerungsliste,0
 model,"ir.action,name",report_shipment_out_return_restocking_list,Restocking List,Einlagerungsliste,0
+model,"ir.action,name",act_stock_configuration_form,Stock Configuration,Einstellungen Lager,0
 model,"ir.action,name",act_shipment_in_return_form,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
 model,"ir.action,name",act_shipment_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"ir.action,name",act_shipment_out_form3,Supplier Shipments,Lieferposten als Lieferant,0
@@ -206,6 +216,7 @@ model,"ir.ui.menu,name",menu_shipment_out_form,Customer Shipments,Lieferposten a
 model,"ir.ui.menu,name",menu_shipment_out_ready,Customer Shipments Ready for Shipping,Versandbereite Lieferposten an Kunden,0
 model,"ir.ui.menu,name",menu_shipment_out_waiting,Customer Shipments Waiting Assignation,Zuzuweisende Lieferposten an Kunden,0
 model,"ir.ui.menu,name",menu_shipment_internal_draft_form,Draft Internal Shipments,Entwürfe (Interne Lieferposten),0
+model,"ir.ui.menu,name",menu_inventory_form_draft,Draft Inventories,Entwürfe Bestandskorrekturen,0
 model,"ir.ui.menu,name",menu_location_form,Edit Locations,Lagerorte bearbeiten,0
 model,"ir.ui.menu,name",menu_shipment_internal_form,Internal Shipments,Interne Lieferposten,0
 model,"ir.ui.menu,name",menu_shipment_internal_waiting_form,Internal Shipments Waiting Assignation,Zuzuweisende Interne Lieferposten,0
@@ -218,15 +229,18 @@ model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting
 model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Bewegungen zu Kunden,0
 model,"ir.ui.menu,name",menu_shipment_out_return_form2,New Customer Return Shipment,Neue Warenrücknahme (von Kunde),0
 model,"ir.ui.menu,name",menu_shipment_internal_new_form,New Internal Shipment,Neuer Interner Lieferposten,0
+model,"ir.ui.menu,name",menu_inventory_form_new,New Inventory,Neue Bestandskorrektur,0
 model,"ir.ui.menu,name",menu_shipment_in_return_new_form,New Supplier Return Shipment,Neue Warenrückgabe (an Lieferant),0
 model,"ir.ui.menu,name",menu_shipment_in_form2,New Supplier Shipment,Neuer Lieferposten von Lieferant,0
 model,"ir.ui.menu,name",menu_shipment_in_received,Received Supplier shipments,Erhaltene Lieferposten von Lieferanten,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
+model,"ir.ui.menu,name",menu_stock_configuration,Stock Configuration,Einstellungen Lager,0
 model,"ir.ui.menu,name",menu_shipment_in_return_form,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
 model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"res.group,name",group_stock,Stock,Lager,0
 model,"res.group,name",group_stock_admin,Stock Administration,Lager Administration,0
 model,"res.group,name",group_stock_force_assignment,Stock Force Assignment,Lager Zuweisungserzwingung,0
+model,"stock.configuration,name",0,Stock Configuration,Einstellungen Lager,0
 model,"stock.inventory.line,name",0,Stock Inventory Line,Lager Lagerbestand Position,0
 model,"stock.inventory,name",0,Stock Inventory,Lager Lagerbestand,0
 model,"stock.location,name",location_customer,Customer,Kunde,0
@@ -241,11 +255,11 @@ model,"stock.location_stock_date.init,name",0,Compute stock quantities,Berechnun
 model,"stock.move,name",0,Stock Move,Lager Bewegung,0
 model,"stock.product_stock_date.init,name",0,Compute stock quantities,Berechnung Lagerbestände,0
 model,"stock.shipment.in,name",0,Supplier Shipment,Lieferant Lieferposten,0
-model,"stock.shipment.in.return.assign.assign_failed,name",0,Assign Supplier Return Shipment Ask Force,Zuweisung Lieferposten Warenrückgabe Erzwungen,0
+model,"stock.shipment.in.return.assign.assign_failed,name",0,Assign Supplier Return Shipment Assign Failed,Zuweisung Lieferposten Warenrückgabe Erzwungen,0
 model,"stock.shipment.in.return,name",0,Supplier Return Shipment,Warenrückgabe Lieferant,0
-model,"stock.shipment.internal.assign.assign_failed,name",0,Assign Shipment Internal Ask Force,Zuweisung Lieferposten Intern Erzwungen,0
+model,"stock.shipment.internal.assign.assign_failed,name",0,Assign Shipment Internal Assign Failed,Zuweisung Lieferposten Intern Erzwungen,0
 model,"stock.shipment.internal,name",0,Internal Shipment,Interner Lieferposten,0
-model,"stock.shipment.out.assign.assign_failed,name",0,Assign Shipment Out Ask Force,Zuweisung Lieferposten Ausgehend Erzwungen,0
+model,"stock.shipment.out.assign.assign_failed,name",0,Assign Shipment Out Assign Failed,Zuweisung Lieferposten Ausgehend Erzwungen,0
 model,"stock.shipment.out,name",0,Customer Shipment,Lieferposten Kunde,0
 model,"stock.shipment.out.return,name",0,Customer Return Shipment,Warenrücknahme Kunde,0
 model,"workflow.activity,name",shipmentout_act_assigned,Assigned,Zugewiesen,0
@@ -384,6 +398,7 @@ selection,"stock.shipment.out,state",0,Waiting,Wartend,0
 view,party.party,0,Stock,Lager,0
 view,party.party,0,_Stock,_Lager,0
 view,product.product,0,Products,Artikel,0
+view,stock.configuration,0,Stock Configuration,Einstellungen Lager,0
 view,stock.inventory,0,Add an inventory line for each missing products,Positionen für Bestandskorrektur um fehlende Artikel ergänzen,0
 view,stock.inventory,0,All generated moves will be cancelled!,Sämtliche erzeugten Bewegungen werden rückgängig gemacht!,0
 view,stock.inventory,0,Cancel,Annullieren,0
