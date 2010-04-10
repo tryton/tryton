@@ -13,6 +13,8 @@ field,"account.invoice,purchase_exception_state",0,Exception State,Status Vorbeh
 field,"product.template,product_suppliers",0,Suppliers,Lieferanten,0
 field,"product.template,purchasable",0,Purchasable,Käuflich,0
 field,"product.template,purchase_uom",0,Purchase UOM,Einheit Einkauf,0
+field,"purchase.configuration,purchase_sequence",0,Purchase Reference Sequence,Nummernkreis Einkauf,0
+field,"purchase.configuration,rec_name",0,Name,Name,0
 field,"purchase.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,Domain Rechnungen,0
 field,"purchase.handle.invoice.exception.ask,recreate_invoices",0,Recreate Invoices,Rechnungen nachbilden,0
 field,"purchase.handle.shipment.exception.ask,domain_moves",0,Domain Moves,Domain Bewegungen,0
@@ -104,7 +106,7 @@ field,"purchase.purchase,warehouse",0,Warehouse,Warenlager,0
 field,"stock.move,purchase",0,Purchase,Einkauf,0
 field,"stock.move,purchase_currency",0,Purchase Currency,Einkaufswährung,0
 field,"stock.move,purchase_exception_state",0,Exception State,Status Vorbehalt,0
-field,"stock.move,purchase_line",0,,,0
+field,"stock.move,purchase_line",0,Purchase Line,Position Einkauf,0
 field,"stock.move,purchase_quantity",0,Purchase Quantity,Anzahl Einkauf,0
 field,"stock.move,purchase_unit",0,Purchase Unit,Einheit Einkauf,0
 field,"stock.move,purchase_unit_digits",0,Purchase Unit Digits,Anzahl Stellen Einkauf,0
@@ -123,6 +125,7 @@ model,"ir.action,name",act_invoice_form,Invoices,Rechnungseingang,0
 model,"ir.action,name",act_purchase_form_new,New Purchase,Neuer Einkauf,0
 model,"ir.action,name",act_open_supplier,Parties associated to Purchases,Parteien: Einkäufen zugeordnet,0
 model,"ir.action,name",report_purchase,Purchase,Einkauf,0
+model,"ir.action,name",act_purchase_configuration_form,Purchase Configuration,Einstellungen Einkauf,0
 model,"ir.action,name",act_purchase_form,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_form2,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
@@ -134,10 +137,12 @@ model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Aufträ
 model,"ir.ui.menu,name",menu_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
 model,"ir.ui.menu,name",menu_purchase_form_new,New Purchase,Neuer Einkauf,0
 model,"ir.ui.menu,name",menu_supplier,Parties associated to Purchases,Parteien: Einkäufen zugeordnet,0
+model,"ir.ui.menu,name",menu_purchase_configuration,Purchase Configuration,Einstellungen Einkauf,0
 model,"ir.ui.menu,name",menu_purchase,Purchase Management,Einkauf,0
 model,"ir.ui.menu,name",menu_purchase_form,Purchases,Einkäufe,0
 model,"ir.ui.menu,name",menu_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
+model,"purchase.configuration,name",0,Purchase Configuration,Einstellungen Einkauf,0
 model,"purchase.handle.invoice.exception.ask,name",0,Invoice Exception Ask,Nachfrage Rechnungsvorbehalt,0
 model,"purchase.handle.shipment.exception.ask,name",0,Shipment Exception Ask,Nachfrage Liefervorbehalt,0
 model,"purchase.line-account.invoice.line,name",0,Purchase Line - Invoice Line,Position Einkauf - Rechnungszeile,0
@@ -218,6 +223,7 @@ view,product.product,0,Product Suppliers,Lieferanten,0
 view,product.product,0,Suppliers,Lieferanten,0
 view,product.template,0,Product Suppliers,Lieferanten,0
 view,product.template,0,Suppliers,Lieferanten,0
+view,purchase.configuration,0,Purchase Configuration,Einstellungen Einkauf,0
 view,purchase.handle.invoice.exception.ask,0,Choose invoices to duplicate,Auswahl Rechnungen für Duplizierung,0
 view,purchase.handle.invoice.exception.ask,0,Choose invoices to recreate,Rechnungen zum Nachbilden auswählen,0
 view,purchase.handle.invoice.exception.ask,0,Handle Invoice Exception,Rechnungsvorbehalt bearbeiten,0
