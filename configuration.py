@@ -8,7 +8,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
     _name = 'party.configuration'
 
     party_sequence = fields.Property(fields.Many2One('ir.sequence',
-        'Party Reference Sequence', domain=[
+        'Party Sequence', domain=[
             ('company', 'in', [Eval('company'), False]),
             ('code', '=', 'party.party'),
         ], required=True))
