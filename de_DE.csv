@@ -76,7 +76,7 @@ field,"sale.sale,rec_name",0,Name,Name,0
 field,"sale.sale-recreated-account.invoice,invoice",0,Invoice,Rechnung,0
 field,"sale.sale-recreated-account.invoice,rec_name",0,Name,Name,0
 field,"sale.sale-recreated-account.invoice,sale",0,Sale,Verkauf,0
-field,"sale.sale,reference",0,Reference,Referenz,0
+field,"sale.sale,reference",0,Reference,Beleg-Nr.,0
 field,"sale.sale,sale_date",0,Sale Date,Verkaufsdatum,0
 field,"sale.sale,shipment_address",0,Shipment Address,Lieferadresse,0
 field,"sale.sale,shipment_done",0,Shipment Done,Gepackt,0
