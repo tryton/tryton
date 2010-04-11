@@ -335,7 +335,7 @@ class Move(ModelSQL, ModelView):
             'from_location': from_location,
             'to_location': to_location,
             }
-        return self.on_change_with_unit_price_required(cursor, user, [],
+        return self.on_change_with_unit_price_required(cursor, user,
                 vals, context=context)
 
     def on_change_with_unit_price_required(self, cursor, user, vals,
