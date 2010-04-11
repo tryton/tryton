@@ -92,7 +92,7 @@ field,"stock.shipment.in,inventory_moves",0,Inventory Moves,Bestandsänderungen,
 field,"stock.shipment.in,moves",0,Moves,Bewegungen,0
 field,"stock.shipment.in,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.shipment.in,rec_name",0,Name,Name,0
-field,"stock.shipment.in,reference",0,Reference,Referenz,0
+field,"stock.shipment.in,reference",0,Reference,Beleg-Nr.,0
 field,"stock.shipment.in.return.assign.ask_force,moves",0,Moves,Bewegungen,0
 field,"stock.shipment.in.return.assign.assign_failed,moves",0,Moves,Lagerbewegungen,0
 field,"stock.shipment.in.return,code",0,Code,Code,0
@@ -101,7 +101,7 @@ field,"stock.shipment.in.return,from_location",0,From Location,Von Lagerort,0
 field,"stock.shipment.in.return,moves",0,Moves,Bewegungen,0
 field,"stock.shipment.in.return,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.shipment.in.return,rec_name",0,Name,Name,0
-field,"stock.shipment.in.return,reference",0,Reference,Referenz,0
+field,"stock.shipment.in.return,reference",0,Reference,Beleg-Nr.,0
 field,"stock.shipment.in.return,state",0,State,Status,0
 field,"stock.shipment.in.return,to_location",0,To Location,Zu Lagerort,0
 field,"stock.shipment.in,state",0,State,Status,0
@@ -113,7 +113,7 @@ field,"stock.shipment.internal,from_location",0,From Location,Von Lagerort,0
 field,"stock.shipment.internal,moves",0,Moves,Bewegungen,0
 field,"stock.shipment.internal,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.shipment.internal,rec_name",0,Name,Name,0
-field,"stock.shipment.internal,reference",0,Reference,Referenz,0
+field,"stock.shipment.internal,reference",0,Reference,Beleg-Nr.,0
 field,"stock.shipment.internal,state",0,State,Status,0
 field,"stock.shipment.internal,to_location",0,To Location,Zu Lagerort,0
 field,"stock.shipment.in,warehouse",0,Warehouse,Warenlager,0
@@ -127,7 +127,7 @@ field,"stock.shipment.out,moves",0,Moves,Bewegungen,0
 field,"stock.shipment.out,outgoing_moves",0,Outgoing Moves,Ausgehende Bewegungen,0
 field,"stock.shipment.out,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.shipment.out,rec_name",0,Name,Name,0
-field,"stock.shipment.out,reference",0,Reference,Referenz,0
+field,"stock.shipment.out,reference",0,Reference,Beleg-Nr.,0
 field,"stock.shipment.out.return,code",0,Code,Code,0
 field,"stock.shipment.out.return,customer",0,Customer,Kunde,0
 field,"stock.shipment.out.return,delivery_address",0,Delivery Address,Lieferadresse,0
@@ -137,7 +137,7 @@ field,"stock.shipment.out.return,inventory_moves",0,Inventory Moves,Bestandsänd
 field,"stock.shipment.out.return,moves",0,Moves,Bewegungen,0
 field,"stock.shipment.out.return,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.shipment.out.return,rec_name",0,Name,Name,0
-field,"stock.shipment.out.return,reference",0,Reference,Referenz,0
+field,"stock.shipment.out.return,reference",0,Reference,Beleg-Nr.,0
 field,"stock.shipment.out.return,state",0,State,Status,0
 field,"stock.shipment.out.return,warehouse",0,Warehouse,Warenlager,0
 field,"stock.shipment.out,state",0,State,Status,0
@@ -303,7 +303,7 @@ odt,stock.shipment.in.restocking_list,0,Phone:,Telefon:,0
 odt,stock.shipment.in.restocking_list,0,Planned Date:,Geplantes Datum:,0
 odt,stock.shipment.in.restocking_list,0,Product,Artikel,0
 odt,stock.shipment.in.restocking_list,0,Quantity,Anzahl,0
-odt,stock.shipment.in.restocking_list,0,Reference:,Referenz:,0
+odt,stock.shipment.in.restocking_list,0,Reference:,Beleg-Nr.:,0
 odt,stock.shipment.in.restocking_list,0,Restocking List,Einlagerungsliste,0
 odt,stock.shipment.in.restocking_list,0,Supplier:,Lieferant:,0
 odt,stock.shipment.in.restocking_list,0,To Location,Zu Lagerort,0
@@ -318,7 +318,7 @@ odt,stock.shipment.internal.report,0,Phone:,Telefon:,0
 odt,stock.shipment.internal.report,0,Planned Date:,Geplantes Datum:,0
 odt,stock.shipment.internal.report,0,Product,Artikel,0
 odt,stock.shipment.internal.report,0,Quantity,Anzahl,0
-odt,stock.shipment.internal.report,0,Reference:,Referenz:,0
+odt,stock.shipment.internal.report,0,Reference:,Beleg-Nr.:,0
 odt,stock.shipment.internal.report,0,To Location,Zu Lagerort,0
 odt,stock.shipment.internal.report,0,To Location:,Zu Lagerort:,0
 odt,stock.shipment.out.delivery_note,0,/,/,0
@@ -329,7 +329,7 @@ odt,stock.shipment.out.delivery_note,0,E-Mail:,E-Mail:,0
 odt,stock.shipment.out.delivery_note,0,Phone:,Telefon:,0
 odt,stock.shipment.out.delivery_note,0,Product,Artikel,0
 odt,stock.shipment.out.delivery_note,0,Quantity,Anzahl,0
-odt,stock.shipment.out.delivery_note,0,Reference:,Referenz:,0
+odt,stock.shipment.out.delivery_note,0,Reference:,Beleg-Nr.:,0
 odt,stock.shipment.out.delivery_note,0,Shipment Number:,Lieferposten Nr.:,0
 odt,stock.shipment.out.picking_list,0,/,/,0
 odt,stock.shipment.out.picking_list,0,Code:,Code:,0
@@ -341,7 +341,7 @@ odt,stock.shipment.out.picking_list,0,Picking List,Pick Liste,0
 odt,stock.shipment.out.picking_list,0,Planned Date:,Geplantes Datum:,0
 odt,stock.shipment.out.picking_list,0,Product,Artikel,0
 odt,stock.shipment.out.picking_list,0,Quantity,Anzahl,0
-odt,stock.shipment.out.picking_list,0,Reference:,Referenz:,0
+odt,stock.shipment.out.picking_list,0,Reference:,Beleg-Nr.:,0
 odt,stock.shipment.out.picking_list,0,To Location,Zu Lagerort,0
 odt,stock.shipment.out.picking_list,0,Warehouse:,Warenlager:,0
 odt,stock.shipment.out.return.restocking_list,0,/,/,0
@@ -352,7 +352,7 @@ odt,stock.shipment.out.return.restocking_list,0,Phone:,Telefon:,0
 odt,stock.shipment.out.return.restocking_list,0,Planned Date:,Geplantes Datum:,0
 odt,stock.shipment.out.return.restocking_list,0,Product,Artikel,0
 odt,stock.shipment.out.return.restocking_list,0,Quantity,Anzahl,0
-odt,stock.shipment.out.return.restocking_list,0,Reference:,Referenz:,0
+odt,stock.shipment.out.return.restocking_list,0,Reference:,Beleg-Nr.:,0
 odt,stock.shipment.out.return.restocking_list,0,Restocking List,Einlagerungsliste,0
 odt,stock.shipment.out.return.restocking_list,0,Supplier:,Lieferant:,0
 odt,stock.shipment.out.return.restocking_list,0,To Location,Zu Lagerort,0
