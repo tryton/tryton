@@ -25,7 +25,7 @@ field,"party.category,parent",0,Parent,Padre,0
 field,"party.category,rec_name",0,Name,Nombre,0
 field,"party.check_vies.check,parties_failed",0,Parties Failed,Los terceros fallaron,0
 field,"party.check_vies.check,parties_succeed",0,Parties Succeed,Terceros válidos,0
-field,"party.configuration,party_sequence",0,Party Reference Sequence,Secuencia de referencia de tercero,0
+field,"party.configuration,party_sequence",0,Party Sequence,Secuencia de tercero,0
 field,"party.configuration,rec_name",0,Name,Nombre de Contacto,1
 field,"party.contact_mechanism,active",0,Active,Activo,0
 field,"party.contact_mechanism,comment",0,Comment,Comentario,0
