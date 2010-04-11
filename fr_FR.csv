@@ -41,11 +41,15 @@ field,"stock.order_point,unit",0,Unit,Unité,0
 field,"stock.order_point,unit_digits",0,Unit Digits,Décimales de l'unité,0
 field,"stock.order_point,warehouse_location",0,Warehouse Location,Entrepôt,0
 model,"ir.action,name",wizard_create_purchase,Create Purchase,Créer achat,0
+model,"ir.action,name",act_purchase_request_form_draft,Draft Purchase Requests,Demandes d'achat en brouillon,0
 model,"ir.action,name",act_order_point_form,Order Points,Règles d'approvisionnement,0
+model,"ir.action,name",act_order_point_form2,Order Points,Règles d'approvisionnements,0
 model,"ir.action,name",act_purchase_request_form,Purchase Requests,Demandes d'achat,0
 model,"ir.action,name",act_purchase_form,Purchases,Achats,0
 model,"ir.cron,name",cron_shipment_iternal,Generate Internal Shipments,Générer les expéditions internes,0
 model,"ir.cron,name",cron_generate_request,Generate Purchase Requests,Générer les demandes d'achat,0
+model,"ir.ui.menu,name",menu_purchase_request_form_draft,Draft Purchase Requests,Demandes d'achat en brouillon,0
+model,"ir.ui.menu,name",menu_order_point_form_new,New Order Point,nouvelle règle d'approvisionnement,0
 model,"ir.ui.menu,name",menu_order_point_form,Order Points,Règles d'approvisionnement,0
 model,"ir.ui.menu,name",menu_purchase_request_form,Purchase Requests,Demandes d'achat,0
 model,"purchase.request.create_purchase.ask_party,name",0,Create Purchase Ask Party,Créer l'achat - Demande de tiers,0
@@ -70,6 +74,7 @@ view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Suppl
 view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Création de la commande: règle d'appro. absente,0
 view,stock.order_point,0,Locations,Emplacements,0
 view,stock.order_point,0,Order Point,Règle d'approvisionnement,0
+view,stock.order_point,0,Order Points,Règles d'approvisionnements,0
 view,stock.order_point,0,Order Point Type,Type de Règle d'approvisionnement,0
 view,stock.order_point,0,Product Info,Info produit,0
 wizard_button,"purchase.request.create_purchase,ask_user_party,end",0,Cancel,Annuler,0
