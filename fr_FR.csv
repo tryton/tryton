@@ -12,6 +12,8 @@ field,"account.invoice,purchase_exception_state",0,Exception State,État d'excep
 field,"product.template,product_suppliers",0,Suppliers,Fournisseurs,0
 field,"product.template,purchasable",0,Purchasable,Achetable,0
 field,"product.template,purchase_uom",0,Purchase UOM,UDM à l'achat,0
+field,"purchase.configuration,purchase_sequence",0,Purchase Reference Sequence,Séquence de référence d'achat,0
+field,"purchase.configuration,rec_name",0,Name,Nom,0
 field,"purchase.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,Domaine des factures,0
 field,"purchase.handle.invoice.exception.ask,recreate_invoices",0,Recreate Invoices,Recréer les factures,0
 field,"purchase.handle.shipment.exception.ask,domain_moves",0,Domain Moves,Domaine des mouvements,0
@@ -103,7 +105,7 @@ field,"purchase.purchase,warehouse",0,Warehouse,Entrepôt,0
 field,"stock.move,purchase",0,Purchase,Achat,0
 field,"stock.move,purchase_currency",0,Purchase Currency,Devise de l'achat,0
 field,"stock.move,purchase_exception_state",0,Exception State,État d'exception,0
-field,"stock.move,purchase_line",0,,,0
+field,"stock.move,purchase_line",0,Purchase Line,Ligne d'achat,0
 field,"stock.move,purchase_quantity",0,Purchase Quantity,Quantité d'achat,0
 field,"stock.move,purchase_unit",0,Purchase Unit,Unité d'achat,0
 field,"stock.move,purchase_unit_digits",0,Purchase Unit Digits,Décimales de l'unité d'achat,0
@@ -122,6 +124,7 @@ model,"ir.action,name",act_invoice_form,Invoices,Factures,0
 model,"ir.action,name",act_purchase_form_new,New Purchase,Nouvel achat,0
 model,"ir.action,name",act_open_supplier,Parties associated to Purchases,Tiers associés à des achats,0
 model,"ir.action,name",report_purchase,Purchase,Achat,0
+model,"ir.action,name",act_purchase_configuration_form,Purchase Configuration,Configuration des achats,0
 model,"ir.action,name",act_purchase_form,Purchases,Achats,0
 model,"ir.action,name",act_purchase_form2,Purchases,Achats,0
 model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Devis,0
@@ -133,10 +136,12 @@ model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Achats 
 model,"ir.ui.menu,name",menu_purchase_form_draft,Draft Purchases,Achats brouillons,0
 model,"ir.ui.menu,name",menu_purchase_form_new,New Purchase,Nouvel achat,0
 model,"ir.ui.menu,name",menu_supplier,Parties associated to Purchases,Tiers associés à des achats,0
+model,"ir.ui.menu,name",menu_purchase_configuration,Purchase Configuration,Configuration des achats,0
 model,"ir.ui.menu,name",menu_purchase,Purchase Management,Gestion des achats,0
 model,"ir.ui.menu,name",menu_purchase_form,Purchases,Achats,0
 model,"ir.ui.menu,name",menu_purchase_form_quotation,Purchases in Quotation,Devis,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Rapport,0
+model,"purchase.configuration,name",0,purchase.configuration,,0
 model,"purchase.handle.invoice.exception.ask,name",0,Invoice Exception Ask,Exception de facture - Demande,0
 model,"purchase.handle.shipment.exception.ask,name",0,Shipment Exception Ask,Exception d'expédition - Demande,0
 model,"purchase.line-account.invoice.line,name",0,Purchase Line - Invoice Line,Ligne d'achat - Ligne de facture,0
@@ -151,7 +156,7 @@ model,"purchase.purchase-ignored-account.invoice,name",0,Purchase - Ignored Invo
 model,"purchase.purchase,name",0,Purchase,Achat,0
 model,"purchase.purchase-recreated-account.invoice,name",0,Purchase - Recreated Invoice,Achat - Facture recréée,0
 model,"res.group,name",group_purchase,Purchase,Achat,0
-model,"res.group,name",group_purchase_admin,Purchase Administrator,Administrateur d'achat,0
+model,"res.group,name",group_purchase_admin,Purchase Administrator,Administrateur des achats,0
 model,"workflow.activity,name",purchase_activity_cancel,Canceled,Annulé,0
 model,"workflow.activity,name",purchase_activity_confirmed,Confirmed,Confirmé,0
 model,"workflow.activity,name",purchase_activity_done,Done,Fait,0
@@ -217,6 +222,7 @@ view,product.product,0,Product Suppliers,Fournisseurs,0
 view,product.product,0,Suppliers,Fournisseurs,0
 view,product.template,0,Product Suppliers,Produit Fournisseur,0
 view,product.template,0,Suppliers,Fournisseurs,0
+view,purchase.configuration,0,Purchase Configuration,Configuration des achats,0
 view,purchase.handle.invoice.exception.ask,0,Choose invoices to recreate,Choisir les factures à recréer,0
 view,purchase.handle.invoice.exception.ask,0,Handle Invoice Exception,Gérer l'exception de facture,0
 view,purchase.handle.shipment.exception.ask,0,Choose moves to recreate,Choisir les mouvements à recréer,0
