@@ -92,7 +92,7 @@ field,"purchase.purchase,rec_name",0,Name,Name,0
 field,"purchase.purchase-recreated-account.invoice,invoice",0,Invoice,Rechnung,0
 field,"purchase.purchase-recreated-account.invoice,purchase",0,Purchase,Einkauf,0
 field,"purchase.purchase-recreated-account.invoice,rec_name",0,Name,Name,0
-field,"purchase.purchase,reference",0,Reference,Referenz,0
+field,"purchase.purchase,reference",0,Reference,Beleg-Nr.,0
 field,"purchase.purchase,shipment_done",0,Shipment Done,Lieferposten erledigt,0
 field,"purchase.purchase,shipment_exception",0,Shipments Exception,Lieferungsvorbehalt,0
 field,"purchase.purchase,shipments",0,Shipments,Lieferposten,0
