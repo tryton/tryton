@@ -1,6 +1,7 @@
 type,name,res_id,src,value,fuzzy
 error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,Vous ne pouvez pas changer l'UDM par défaut pour un produit qui a déjà fait l'objet de mouvements de stock,0
 error,product.uom,0,"If the UOM is still not used, you can delete it otherwise you can deactivate it and create a new one.","Si l'UDM n'est pas utilisée, vous pouvez la supprimer, sinon vous pouvez la désactiver et en créer une nouvelle.",0
+error,product.uom,0,Invalid Factor and Rate values!,valeurs de facteur et de taux invalides !,0
 error,product.uom,0,Rate and factor can not be both equal to zero.,Le taux et le facteur ne peuvent pas être égaux à zéro.,0
 error,product.uom,0,"You cannot change Rate, Factor or Category on a Unit of Measure. ","Vous ne pouvez pas changer le taux, le facteur ou la catégorie d'une unité de mesure.",0
 field,"product.category,childs",0,Children,Enfants,0
@@ -43,15 +44,19 @@ help,"product.uom,rate",0,"The coefficient for the formula:
 1 (unité de base) = coef (cette unité)",0
 model,"ir.action,name",act_category_tree,Categories,Catégories,0
 model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Catégories d'unité de mesure,0
+model,"ir.action,name",act_uom_category_form2,Categories of Unit of Measure,Catégories d'Unité de mesure,0
 model,"ir.action,name",act_product_by_category,Product by Category,Produits par catégories,0
 model,"ir.action,name",act_category_form,Product Categories,Catégories de produit,0
+model,"ir.action,name",act_category_form2,Product Categories,Catégories de produit,0
 model,"ir.action,name",act_product_form,Products,Produits,0
 model,"ir.action,name",act_product_form2,Products,Produits,0
 model,"ir.action,name",act_uom_form,Units of Measure,Unités de mesure,0
 model,"ir.action,name",act_uom_form2,Units of Measure,Unités de mesure,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Catégories,0
+model,"ir.ui.menu,name",menu_category_form,Categories,Éditer les catégories,0
 model,"ir.ui.menu,name",menu_uom_category_form,Categories,Catégories,0
-model,"ir.ui.menu,name",menu_category_form,Edit Categories,Éditer les catégories,0
+model,"ir.ui.menu,name",menu_category_form_new,New Category,Nouvelle catégorie,0
+model,"ir.ui.menu,name",menu_uom_category_form_new,New Category,Nouvelle catégorie,0
 model,"ir.ui.menu,name",menu_product_product_new,New Product,Nouveau produit,0
 model,"ir.ui.menu,name",menu_uom_form2,New Unit of Measure,Nouvelle unité de mesure,0
 model,"ir.ui.menu,name",menu_main_product,Product,Produit,0
