@@ -69,7 +69,7 @@ field,"analytic_account.line,move_line",0,Account Move Line,Buchungszeile,0
 field,"analytic_account.line,name",0,Name,Name,0
 field,"analytic_account.line,party",0,Party,Partei,0
 field,"analytic_account.line,rec_name",0,Name,Name,0
-field,"analytic_account.line,reference",0,Reference,Beleg,0
+field,"analytic_account.line,reference",0,Reference,Interner Beleg,0
 model,"account.statement.journal,name",0,Statement Journal,Journal Zahlungsverkehr,0
 model,"account.statement.line,name",0,Account Statement Line,Zahlungsverkehr Position,0
 model,"account.statement,name",0,Account Statement,Zahlungsverkehr,0
