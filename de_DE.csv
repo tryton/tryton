@@ -141,7 +141,7 @@ field,"account.invoice.payment_term,name",0,Payment Term,Zahlungsbedingung,0
 field,"account.invoice.payment_term,rec_name",0,Name,Name,0
 field,"account.invoice,rec_name",0,Name,Name,0
 field,"account.invoice,reconciled",0,Reconciled,Abgestimmt,0
-field,"account.invoice,reference",0,Reference,Beleg,0
+field,"account.invoice,reference",0,Reference,Interner Beleg,0
 field,"account.invoice,state",0,State,Status,0
 field,"account.invoice.tax,account",0,Account,Konto,0
 field,"account.invoice,tax_amount",0,Tax,Steuer,0
