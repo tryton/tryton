@@ -1779,7 +1779,7 @@ class Move(ModelSQL, ModelView):
         vals = {
             'from_location': from_location,
         }
-        return self.on_change_with_purchase_visible(cursor, user, [], vals,
+        return self.on_change_with_purchase_visible(cursor, user, vals,
                 context=context)
 
     def on_change_with_purchase_visible(self, cursor, user, vals,
