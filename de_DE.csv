@@ -223,7 +223,7 @@ field,"account.move.line,party",0,Party,Partei,0
 field,"account.move.line,period",0,Period,Buchungszeitraum,0
 field,"account.move.line,rec_name",0,Name,Name,0
 field,"account.move.line,reconciliation",0,Reconciliation,Abstimmung,0
-field,"account.move.line,reference",0,Reference,Beleg,0
+field,"account.move.line,reference",0,Reference,Interner Beleg,0
 field,"account.move,lines",0,Lines,Zeilen,0
 field,"account.move.line,second_currency",0,Second Currency,Zweitwährung,0
 field,"account.move.line,second_currency_digits",0,Second Currency Digits,Stellen Zweitwährung,0
@@ -246,7 +246,7 @@ field,"account.move.reconcile_lines.writeoff,journal",0,Journal,Journal,0
 field,"account.move.reconciliation,lines",0,Lines,Zeilen,0
 field,"account.move.reconciliation,name",0,Name,Name,0
 field,"account.move.reconciliation,rec_name",0,Name,Name,0
-field,"account.move,reference",0,Reference,Beleg,0
+field,"account.move,reference",0,Reference,Interner Beleg,0
 field,"account.move,state",0,State,Status,0
 field,"account.period,code",0,Code,Code,0
 field,"account.period,end_date",0,Ending Date,Enddatum,0
@@ -685,7 +685,7 @@ odt,account.move.general_journal,0,Journal Entry:,Journal Eintrag:,0
 odt,account.move.general_journal,0,Name,Name,0
 odt,account.move.general_journal,0,Posted,Festgeschrieben,0
 odt,account.move.general_journal,0,Print Date:,Druckdatum:,0
-odt,account.move.general_journal,0,Reference:,Beleg:,0
+odt,account.move.general_journal,0,Reference:,Interner Beleg:,0
 odt,account.move.general_journal,0,To Date:,Bis:,0
 odt,account.move.general_journal,0,User:,Benutzer:,0
 selection,"account.account,kind",0,Expense,Aufwand,0
