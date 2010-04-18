@@ -107,7 +107,7 @@ class Product(ModelSQL, ModelView):
             ids += self.search(cursor, user, [('name',) + clause[1:]],
                     order=[], context=context)
             return [('id', 'in', ids)]
-        return [('name',) + clause]
+        return [('name',) + clause[1:]]
 
     def delete(self, cursor, user, ids, context=None):
         template_obj = self.pool.get('product.template')
