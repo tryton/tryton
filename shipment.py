@@ -625,6 +625,12 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             'button_draft': True,
         })
         self._order[0] = ('id', 'DESC')
+        self._error_messages.update({
+            'outgoing_move_output_source': 'Outgoing Moves must ' \
+                    'have the warehouse output location as source location!',
+            'inventory_move_output_dest': 'Inventory Moves must have the ' \
+                    'warehouse output location as destination location!',
+            })
 
     def init(self, cursor, module_name):
         # Migration from 1.2: packing renamed into shipment
