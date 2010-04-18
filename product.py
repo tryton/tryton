@@ -97,17 +97,15 @@ class Product(ModelSQL, ModelView):
         return res
 
     def _search_quantity_eval_domain(self, line, domain):
-        res = True
-        for field, operator, operand in domain:
-            value = line.get(field)
-            if value == None:
-                return False
-            if operator not in ("=", ">=", "<=", ">", "<", "!="):
-                return False
-            if operator == "=":
-                operator= "=="
-            res = res and (eval(str(value) + operator + str(operand)))
-        return res
+        field, operator, operand = domain
+        value = line.get(field)
+        if value == None:
+            return False
+        if operator not in ("=", ">=", "<=", ">", "<", "!="):
+            return False
+        if operator == "=":
+            operator= "=="
+        return (eval(str(value) + operator + str(operand)))
 
     def search_quantity(self, cursor, user, name, domain=None, context=None):
         date_obj = self.pool.get('ir.date')
