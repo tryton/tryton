@@ -151,13 +151,12 @@ class Work(ModelSQL, ModelView):
 
         project_work_domain = []
         timesheet_work_domain = []
-        for field, operator, operand in domain:
-            if field.startswith('parent.'):
-                project_work_domain.append(
-                    (field.replace('parent.', ''), operator, operand))
-            elif field == 'parent':
-                timesheet_work_domain.append(
-                    (field, operator, operand))
+        if domain[0].startswith('parent.'):
+            project_work_domain.append(
+                    (domain[0].replace('parent.', ''),)
+                    + domain[1:])
+        elif domain[0] == 'parent':
+            timesheet_work_domain.append(domain)
 
         # ids timesheet_work_domain in operand are project_work ids,
         # we need to convert them to timesheet_work ids
