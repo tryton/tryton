@@ -14,9 +14,11 @@ error,stock.move,0,You can not set state to draft!,"Status ""Entwurf"" kann nich
 error,stock.move,0,You can not use service products for a move!,Dienstleistungen können nicht in Warenbewegungen verwendet werden!,0
 error,stock.move,0,You can only delete draft or cancelled moves!,"Nur Bewegungen mit Status ""Entwurf"" oder ""Abgebrochen"" können gelöscht werden!",0
 error,stock.shipment.in,0,Incoming Moves must have the warehouse input location as destination location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Zielort haben!,0
-error,stock.shipment.in,0,Inventory Moves must have the warehouse input location as source location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Herkunftsort haben!,0
+error,stock.shipment.in,0,Inventory Moves must have the warehouse input location as source location!,Bestandsänderungen müssen den Eingangsbereich des Warenlagers als Herkunftsort haben!,0
+error,stock.shipment.out,0,Inventory Moves must have the warehouse output location as destination location!,Bestandsänderungen müssen den Ausgangsbereich des Warenlagers als Zielort haben!,0
+error,stock.shipment.out,0,Outgoing Moves must have the warehouse output location as source location!,Ausgehende Bewegungen müssen den Ausgangsbereich des Warenlagers als Herkunftsort haben!,0
 error,stock.shipment.out.return,0,Incoming Moves must have the warehouse input location as destination location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Zielort haben!,0
-error,stock.shipment.out.return,0,Inventory Moves must have the warehouse input location as source location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Herkunftsort haben!,0
+error,stock.shipment.out.return,0,Inventory Moves must have the warehouse input location as source location!,Bestandsänderungen müssen den Eingangsbereich des Warenlagers als Herkunftsort haben!,0
 error,stock.shipment.out.return.create,0,The shipment with code %s is not yet sent.,Der Lieferposten mit Code %s ist noch nicht erledigt.,0
 error,stock.shipment.out.return.create,0,You can not create return shipment,Warenrücknahme nicht möglich!,0
 field,"party.address,delivery",0,Delivery,Lieferadresse,0
@@ -93,7 +95,6 @@ field,"stock.shipment.in,moves",0,Moves,Bewegungen,0
 field,"stock.shipment.in,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.shipment.in,rec_name",0,Name,Name,0
 field,"stock.shipment.in,reference",0,Reference,Beleg-Nr.,0
-field,"stock.shipment.in.return.assign.ask_force,moves",0,Moves,Bewegungen,0
 field,"stock.shipment.in.return.assign.assign_failed,moves",0,Moves,Lagerbewegungen,0
 field,"stock.shipment.in.return,code",0,Code,Code,0
 field,"stock.shipment.in.return,effective_date",0,Effective Date,Effektives Datum,0
