@@ -16,7 +16,7 @@ error,stock.move,0,You can only delete draft or cancelled moves!,Vous pouvez  su
 error,stock.shipment.in,0,Incoming Moves must have the warehouse input location as destination location!,Les mouvements d'entrée doivent avoir l'emplacement d'entrée de l'entrepôt comme destination !,0
 error,stock.shipment.in,0,Inventory Moves must have the warehouse input location as source location!,Les mouvements d'inventaire doivent avoir l'emplacement d'entrée de l'entrepôt comme source !,0
 error,stock.shipment.out.return,0,Incoming Moves must have the warehouse input location as destination location!,Les mouvements d'entrée doivent avoir l'emplacement d'entrée de l'entrepôt comme destination !,0
-error,stock.shipment.out.return,0,Inventory Moves must have the warehouse input location as source location!,Les mouvements d'inventaire doivent avoir l'emplacement d'entrée de l'entrepôt comme source!,0
+error,stock.shipment.out.return,0,Inventory Moves must have the warehouse input location as source location!,Les mouvements d'inventaire doivent avoir l'emplacement d'entrée de l'entrepôt comme source !,0
 error,stock.shipment.out.return.create,0,The shipment with code %s is not yet sent.,L'emballage avec le code %s n'est pas encore envoyé.,0
 error,stock.shipment.out.return.create,0,You can not create return shipment,Vous ne pouvez pas créer d'expédition retour,0
 field,"party.address,delivery",0,Delivery,Livraison,0
