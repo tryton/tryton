@@ -13,9 +13,9 @@ field,"product.template,salable",0,Salable,Verkäuflich,0
 field,"product.template,sale_uom",0,Sale UOM,Einheit Verkauf,0
 field,"sale.configuration,rec_name",0,Name,Name,0
 field,"sale.configuration,sale_sequence",0,Sale Reference Sequence,Nummernkreis Verkauf,0
-field,"sale.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,Domain Rechnungen,0
+field,"sale.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,Wertebereich Rechnungen (Domain),0
 field,"sale.handle.invoice.exception.ask,recreate_invoices",0,Recreate Invoices,Rechnungen nachbilden,0
-field,"sale.handle.shipment.exception.ask,domain_moves",0,Domain Moves,Domain Bewegungen,0
+field,"sale.handle.shipment.exception.ask,domain_moves",0,Domain Moves,Wertebereich Bewegungen (Domain),0
 field,"sale.handle.shipment.exception.ask,recreate_moves",0,Recreate Moves,Bewegungen nachbilden,0
 field,"sale.line-account.invoice.line,invoice_line",0,Invoice Line,Rechnungsposition,0
 field,"sale.line-account.invoice.line,rec_name",0,Name,Name,0
