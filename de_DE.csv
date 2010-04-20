@@ -15,9 +15,9 @@ field,"product.template,purchasable",0,Purchasable,Käuflich,0
 field,"product.template,purchase_uom",0,Purchase UOM,Einheit Einkauf,0
 field,"purchase.configuration,purchase_sequence",0,Purchase Reference Sequence,Nummernkreis Einkauf,0
 field,"purchase.configuration,rec_name",0,Name,Name,0
-field,"purchase.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,Domain Rechnungen,0
+field,"purchase.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,Wertebereich Rechnungen (Domain),0
 field,"purchase.handle.invoice.exception.ask,recreate_invoices",0,Recreate Invoices,Rechnungen nachbilden,0
-field,"purchase.handle.shipment.exception.ask,domain_moves",0,Domain Moves,Domain Bewegungen,0
+field,"purchase.handle.shipment.exception.ask,domain_moves",0,Domain Moves,Wertebereich Bewegungen (Domain),0
 field,"purchase.handle.shipment.exception.ask,recreate_moves",0,Recreate Moves,Bewegungen nachbilden,0
 field,"purchase.line-account.invoice.line,invoice_line",0,Invoice Line,Rechnungsposition,0
 field,"purchase.line-account.invoice.line,purchase_line",0,Purchase Line,Position Einkauf,0
