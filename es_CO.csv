@@ -12,7 +12,7 @@ field,"account.invoice,sale_exception_state",0,Exception State,Estado de Excepci
 field,"product.template,salable",0,Salable,De fácil venta,0
 field,"product.template,sale_uom",0,Sale UOM,UdM de Venta,0
 field,"sale.configuration,rec_name",0,Name,Nombre de Contacto,1
-field,"sale.configuration,sale_sequence",0,Sale Reference Sequence,Secuencia de referencia de venta,0
+field,"sale.configuration,sale_sequence",0,Sale Reference Sequence,,0
 field,"sale.handle.invoice.exception.ask,domain_invoices",0,Domain Invoices,Rango de facturas,0
 field,"sale.handle.invoice.exception.ask,recreate_invoices",0,Recreate Invoices,Rehacer factura,0
 field,"sale.handle.shipment.exception.ask,domain_moves",0,Domain Moves,Rango de movimientos,0
@@ -91,7 +91,7 @@ field,"sale.sale,untaxed_amount",0,Untaxed,Sin Impuesto,0
 field,"sale.sale,warehouse",0,Warehouse,Depósito,0
 field,"stock.move,sale",0,Sale,Venta,0
 field,"stock.move,sale_exception_state",0,Exception State,Estado Excepción,0
-field,"stock.move,sale_line",0,Sale Line,Línea de Venta,1
+field,"stock.move,sale_line",0,,,0
 help,"sale.handle.invoice.exception.ask,recreate_invoices",0,The selected invoices will be recreated. The other ones will be ignored.,La factura seleccionada será recreada. Las otras serán ignoradas.,0
 model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Ventas Confirmadas,0
 model,"ir.action,name",act_sale_form_draft,Draft Sales,Ventas en Borrador,0
@@ -102,7 +102,7 @@ model,"ir.action,name",act_sale_form_new,New Sale,Nueva venta,0
 model,"ir.action,name",act_open_customer,Parties associated to Sales,Terceros asociados a Ventas,0
 model,"ir.action,name",act_sale_form_quotation,Quotation Sales,Ventas Cotizadas,0
 model,"ir.action,name",report_sale,Sale,Venta,0
-model,"ir.action,name",act_sale_configuration_form,Sale Configuration,Configuración de venta,0
+model,"ir.action,name",act_sale_configuration_form,Sale Configuration,,0
 model,"ir.action,name",act_sale_form,Sales,Ventas,0
 model,"ir.action,name",act_sale_form2,Sales,Ventas,0
 model,"ir.action,name",act_shipment_form,Shipments,Envíos,0
@@ -114,11 +114,11 @@ model,"ir.ui.menu,name",menu_sale_form_draft,Draft Sales,Ventas en Borrador,0
 model,"ir.ui.menu,name",menu_sale_form_new,New Sale,Nueva venta,0
 model,"ir.ui.menu,name",menu_customer,Parties associated to Sales,Terceros asociados a Ventas,0
 model,"ir.ui.menu,name",menu_sale_form_quotation,Quotation Sales,Ventas Cotizadas,0
-model,"ir.ui.menu,name",menu_sale_configuration,Sale Configuration,Configuración de venta,0
+model,"ir.ui.menu,name",menu_sale_configuration,Sale Configuration,,0
 model,"ir.ui.menu,name",menu_sale,Sale Management,Gestión de Ventas,0
 model,"ir.ui.menu,name",menu_sale_form,Sales,Ventas,0
 model,"res.group,name",group_sale,Sale,Venta,0
-model,"res.group,name",group_sale_admin,Sale Administrator,Administrador de Venta,0
+model,"res.group,name",group_sale_admin,Sale Administrator,,0
 model,"sale.configuration,name",0,sale.configuration,,0
 model,"sale.handle.invoice.exception.ask,name",0,Invoice Exception Ask,Pregunta de Excepción de Factura,0
 model,"sale.handle.shipment.exception.ask,name",0,Shipment Exception Ask,Pregunta de Excepción de Envío,0
@@ -174,7 +174,7 @@ odt,sale.sale,0,Taxes:,Impuestos:,0
 odt,sale.sale,0,Total:,Total:,0
 odt,sale.sale,0,Total (excl. taxes):,Total (sin impuestos):,0
 odt,sale.sale,0,Unit Price,Precio Unitario,0
-odt,sale.sale,0,VAT:,IVA:,0
+odt,sale.sale,0,VAT:,NIT:,0
 selection,"account.invoice,sale_exception_state",0,,,0
 selection,"account.invoice,sale_exception_state",0,Ignored,Ignorado,0
 selection,"account.invoice,sale_exception_state",0,Recreated,Rehecho,0
@@ -206,7 +206,7 @@ selection,"stock.move,sale_exception_state",0,Ignored,Ignore,0
 selection,"stock.move,sale_exception_state",0,Recreated,Rehacer,0
 view,product.product,0,Customers,Clientes,0
 view,product.template,0,Customers,Clientes,0
-view,sale.configuration,0,Sale Configuration,Configuración de venta,0
+view,sale.configuration,0,Sale Configuration,,0
 view,sale.handle.invoice.exception.ask,0,Choose invoices to recreate,Escoja una factura a rehacer,0
 view,sale.handle.invoice.exception.ask,0,Handle Invoice Exception,Tratar Excepción de factura,0
 view,sale.handle.shipment.exception.ask,0,Choose move to recreate,Escoja un movimiento a rehacer,0
