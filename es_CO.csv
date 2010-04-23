@@ -417,7 +417,7 @@ model,"account.account.template,name",account_template_cash,Main Cash,Efectivo P
 model,"account.account.template,name",account_template_expense,Main Expense,Gasto Principal,0
 model,"account.account.template,name",account_template_payable,Main Payable,Por Pagar Principal,0
 model,"account.account.template,name",account_template_receivable,Main Receivable,Por Cobrar Principal,0
-model,"account.account.template,name",account_template_revenue,Main Revenue,Ganancia Principal,0
+model,"account.account.template,name",account_template_revenue,Main Revenue,Ingreso Principal,0
 model,"account.account.template,name",account_template_tax,Main Tax,Principal de Impuestos,0
 model,"account.account.template,name",account_template_root,Minimal Account Chart,Plan de Cuentas Mínimo,0
 model,"account.account.type,name",0,Account Type,Tipo de Cuenta,0
@@ -436,7 +436,7 @@ model,"account.account.type.template,name",account_type_template_minimal,Minimal
 model,"account.account.type.template,name",account_type_template_off_balance,Off-Balance,Desbalance,0
 model,"account.account.type.template,name",account_type_template_liability_current_payable,Payable,Por Pagar,0
 model,"account.account.type.template,name",account_type_template_asset_current_receivable,Receivable,Por Cobrar,0
-model,"account.account.type.template,name",account_type_template_revenue,Revenue,Utilidad,0
+model,"account.account.type.template,name",account_type_template_revenue,Revenue,Ingreso,0
 model,"account.account.type.template,name",account_type_template_liability_current_tax,Tax,Impuesto,0
 model,"account.account.update_chart_account.init,name",0,Update Chart Account from Template Init,Actualizar Plan de Cuentas a partir de Inicio de Plantilla,0
 model,"account.account.update_chart_account.start,name",0,Update Chart Account from Template Start,,0
@@ -446,14 +446,14 @@ model,"account.fiscalyear,name",0,Fiscal Year,Año Fiscal,0
 model,"account.journal,name",journal_cash,Cash,Efectivo,0
 model,"account.journal,name",journal_expense,Expense,Gasto,0
 model,"account.journal,name",0,Journal,Diario,0
-model,"account.journal,name",journal_revenue,Revenue,Ganancia,0
+model,"account.journal,name",journal_revenue,Revenue,Ingreso,0
 model,"account.journal,name",journal_stock,Stock,Stock,0
 model,"account.journal.period,name",0,Journal - Period,Diario - Período,0
 model,"account.journal.type,name",journal_type_cash,Cash,Efectivo,0
 model,"account.journal.type,name",journal_type_expense,Expense,Gasto,0
 model,"account.journal.type,name",journal_type_general,General,General,0
 model,"account.journal.type,name",0,Journal Type,Tipo de Diario,0
-model,"account.journal.type,name",journal_type_revenue,Revenue,Ganancia,0
+model,"account.journal.type,name",journal_type_revenue,Revenue,Ingreso,0
 model,"account.journal.type,name",journal_type_situation,Situation,Situación,0
 model,"account.journal.view.column,name",0,Journal View Column,Columna de Vista de Diario,0
 model,"account.journal.view,name",0,Journal View,Vista de Diario,0
@@ -579,18 +579,18 @@ model,"ir.ui.menu,name",menu_journal_period_tree,Journals - Periods,Diarios - Pe
 model,"ir.ui.menu,name",menu_journal_period_tree2,Journals - Periods,Diarios - Períodos,0
 model,"ir.ui.menu,name",menu_journal_type_form,Journal Types,Tipos de Diarios,0
 model,"ir.ui.menu,name",menu_journal_view_form,Journal Views,Vistas de Diarios,0
-model,"ir.ui.menu,name",menu_account_form_new,New Account,Nueva Cuenta,0
-model,"ir.ui.menu,name",menu_move_form_new,New Account Move,Nuevo Movimiento de Cuenta,0
-model,"ir.ui.menu,name",menu_account_type_form_new,New Account Type,Nuevo Tipo de Cuenta,0
-model,"ir.ui.menu,name",menu_fiscalyear_form_new,New Fiscal Year,Nuevo Año Fiscal,0
-model,"ir.ui.menu,name",menu_journal_form_new,New Journal,Nuevo Diario,0
-model,"ir.ui.menu,name",menu_journal_type_form_new,New Journal Type,Nuevo Tipo de Diario,0
-model,"ir.ui.menu,name",menu_journal_view_form_new,New Journal View,Nueva Vista de Diario,0
-model,"ir.ui.menu,name",menu_period_form_new,New Period,Nuevo Período,0
-model,"ir.ui.menu,name",menu_tax_form_new,New Tax,Nuevo Impuesto,0
-model,"ir.ui.menu,name",menu_tax_code_form_new,New Tax Code,Nuevo Código de Impuesto,0
-model,"ir.ui.menu,name",menu_tax_group_form_new,New Tax Group,Nuevo Grupo de Impuestos,0
-model,"ir.ui.menu,name",menu_tax_rule_form_new,New Tax Rule,Nueva Regla de Impuestos,0
+model,"ir.ui.menu,name",menu_account_form_new,New Account,,0
+model,"ir.ui.menu,name",menu_move_form_new,New Account Move,,0
+model,"ir.ui.menu,name",menu_account_type_form_new,New Account Type,,0
+model,"ir.ui.menu,name",menu_fiscalyear_form_new,New Fiscal Year,,0
+model,"ir.ui.menu,name",menu_journal_form_new,New Journal,,0
+model,"ir.ui.menu,name",menu_journal_type_form_new,New Journal Type,,0
+model,"ir.ui.menu,name",menu_journal_view_form_new,New Journal View,,0
+model,"ir.ui.menu,name",menu_period_form_new,New Period,,0
+model,"ir.ui.menu,name",menu_tax_form_new,New Tax,,0
+model,"ir.ui.menu,name",menu_tax_code_form_new,New Tax Code,,0
+model,"ir.ui.menu,name",menu_tax_group_form_new,New Tax Group,,0
+model,"ir.ui.menu,name",menu_tax_rule_form_new,New Tax Rule,,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Accounts,Abrir Plan de Cuentas,0
 model,"ir.ui.menu,name",menu_open_chart_code,Open Chart of Tax Codes,Abrir Tabla de Códigos de Impuestos,0
 model,"ir.ui.menu,name",menu_open_journal,Open Journal,Abrir Libro,0
@@ -689,7 +689,7 @@ selection,"account.account,kind",0,Expense,Gastos,0
 selection,"account.account,kind",0,Other,Otro,0
 selection,"account.account,kind",0,Payable,Por Pagar,0
 selection,"account.account,kind",0,Receivable,Por Cobrar,0
-selection,"account.account,kind",0,Revenue,Utilidad,0
+selection,"account.account,kind",0,Revenue,Ingreso,0
 selection,"account.account,kind",0,View,Vista,0
 selection,"account.account.open_aged_balance.init,balance_type",0,Both,Ambos,0
 selection,"account.account.open_aged_balance.init,balance_type",0,Customer,Cliente,0
@@ -700,7 +700,7 @@ selection,"account.account.template,kind",0,Expense,Gastos,0
 selection,"account.account.template,kind",0,Other,Otro,0
 selection,"account.account.template,kind",0,Payable,Por Pagar,0
 selection,"account.account.template,kind",0,Receivable,Por Cobrar,0
-selection,"account.account.template,kind",0,Revenue,Utilidad,0
+selection,"account.account.template,kind",0,Revenue,Ingreso,0
 selection,"account.account.template,kind",0,View,Vista,0
 selection,"account.account.type,display_balance",0,Credit - Debit,Crédito - Débito,0
 selection,"account.account.type,display_balance",0,Debit - Credit,Débito - Crédito,0
