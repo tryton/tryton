@@ -82,7 +82,9 @@ class Move(ModelSQL, ModelView):
             cost_price = cost_price / Decimal(str(consumed_qty))
 
         if cost_price != Decimal("0"):
-            return cost_price
+            digits = self.cost_price.digits
+            return cost_price.quantize(
+                    Decimal(str(10.0**-digits[1])))
         else:
             return product.cost_price
 
