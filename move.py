@@ -427,6 +427,7 @@ class Move(ModelSQL, ModelView):
         """
         uom_obj = self.pool.get('product.uom')
         product_obj = self.pool.get('product.product')
+        product_template_obj = self.pool.get('product.template')
         location_obj = self.pool.get('stock.location')
         currency_obj = self.pool.get('currency.currency')
         company_obj = self.pool.get('company.company')
@@ -463,6 +464,13 @@ class Move(ModelSQL, ModelView):
                 ) / (product_qty + qty)
         else:
             new_cost_price = product.cost_price
+
+        if hasattr(product_obj, 'cost_price'):
+            digits = product_obj.cost_price.digits
+        else:
+            digits = product_template_obj.cost_price.digits
+        new_cost_price = new_cost_price.quantize(
+                Decimal(str(10.0**-digits[1])))
 
         ctx = context.copy()
         ctx['user'] = user
