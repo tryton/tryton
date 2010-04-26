@@ -579,18 +579,18 @@ model,"ir.ui.menu,name",menu_journal_period_tree,Journals - Periods,Diarios - Pe
 model,"ir.ui.menu,name",menu_journal_period_tree2,Journals - Periods,Diarios - Períodos,0
 model,"ir.ui.menu,name",menu_journal_type_form,Journal Types,Tipos de Diarios,0
 model,"ir.ui.menu,name",menu_journal_view_form,Journal Views,Vistas de Diarios,0
-model,"ir.ui.menu,name",menu_account_form_new,New Account,,0
-model,"ir.ui.menu,name",menu_move_form_new,New Account Move,,0
-model,"ir.ui.menu,name",menu_account_type_form_new,New Account Type,,0
-model,"ir.ui.menu,name",menu_fiscalyear_form_new,New Fiscal Year,,0
-model,"ir.ui.menu,name",menu_journal_form_new,New Journal,,0
-model,"ir.ui.menu,name",menu_journal_type_form_new,New Journal Type,,0
-model,"ir.ui.menu,name",menu_journal_view_form_new,New Journal View,,0
-model,"ir.ui.menu,name",menu_period_form_new,New Period,,0
-model,"ir.ui.menu,name",menu_tax_form_new,New Tax,,0
-model,"ir.ui.menu,name",menu_tax_code_form_new,New Tax Code,,0
-model,"ir.ui.menu,name",menu_tax_group_form_new,New Tax Group,,0
-model,"ir.ui.menu,name",menu_tax_rule_form_new,New Tax Rule,,0
+model,"ir.ui.menu,name",menu_account_form_new,New Account,Nueva Cuenta,0
+model,"ir.ui.menu,name",menu_move_form_new,New Account Move,Nuevo Movimiento de Cuenta,0
+model,"ir.ui.menu,name",menu_account_type_form_new,New Account Type,Nuevo Tipo de Cuenta,0
+model,"ir.ui.menu,name",menu_fiscalyear_form_new,New Fiscal Year,Nuevo Año Fiscal,0
+model,"ir.ui.menu,name",menu_journal_form_new,New Journal,Nuevo Diario,0
+model,"ir.ui.menu,name",menu_journal_type_form_new,New Journal Type,Nuevo Tipo de Diario,0
+model,"ir.ui.menu,name",menu_journal_view_form_new,New Journal View,Nueva Vista de Diario,0
+model,"ir.ui.menu,name",menu_period_form_new,New Period,Nuevo Período,0
+model,"ir.ui.menu,name",menu_tax_form_new,New Tax,Nuevo Impuesto,0
+model,"ir.ui.menu,name",menu_tax_code_form_new,New Tax Code,Nuevo Código de Impuesto,0
+model,"ir.ui.menu,name",menu_tax_group_form_new,New Tax Group,Nuevo Grupo de Impuesto,0
+model,"ir.ui.menu,name",menu_tax_rule_form_new,New Tax Rule,Nueva Regla de Impuesto,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Accounts,Abrir Plan de Cuentas,0
 model,"ir.ui.menu,name",menu_open_chart_code,Open Chart of Tax Codes,Abrir Tabla de Códigos de Impuestos,0
 model,"ir.ui.menu,name",menu_open_journal,Open Journal,Abrir Libro,0
