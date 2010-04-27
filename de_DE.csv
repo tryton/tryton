@@ -56,8 +56,8 @@ model,"purchase.request.create_purchase.ask_party,name",0,Create Purchase Ask Pa
 model,"purchase.request.create_purchase.ask_term,name",0,Create Purchase Ask Term,Verkauf Nachfrage Zahlungsbedingung,0
 model,"purchase.request,name",0,Purchase Request,Bestellvorschlag,0
 model,"res.group,name",group_purchase_request,Purchase Request,Bestellvorschlag,0
-model,"res.user,name",user_generate_shipment_internal,Cron Intenal Shipment,Cron Interne Lieferposten,0
-model,"res.user,name",user_generate_request,Cron Purchase Request,Cron Bestellvorschlag,0
+model,"res.user,name",user_generate_shipment_internal,Cron Intenal Shipment,Zeitplaner Interne Lieferposten,0
+model,"res.user,name",user_generate_request,Cron Purchase Request,Zeitplaner Bestellvorschläge,0
 model,"stock.order_point,name",0,Order Point,Bestellpunkt,0
 selection,"purchase.request,origin",0,Order Point,Bestellpunkt,0
 selection,"purchase.request,state",0,Cancel,Abgebrochen,0
