@@ -30,10 +30,10 @@ this repository contains the full copyright notices and license terms. -->
                         expr="/form/notebook/page[@id=&quot;accounting&quot;]/field[@name=&quot;vat_number&quot;]"
                         position="after">
                         <separator string="Account" colspan="4" id="account"/>
-                        <label name="account_payable"/>
-                        <field name="account_payable"/>
                         <label name="account_receivable"/>
                         <field name="account_receivable"/>
+                        <label name="account_payable"/>
+                        <field name="account_payable"/>
                         <newline/>
                         <label name="receivable_today"/>
                         <field name="receivable_today"/>
