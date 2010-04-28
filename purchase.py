@@ -61,7 +61,7 @@ class ProductSupplierDay(ModelSQL, ModelView):
     _description = __doc__
 
     product_supplier = fields.Many2One('purchase.product_supplier', 'Supplier',
-            required=True)
+            required=True, ondelete='CASCADE')
     weekday = fields.Selection([
         ('0', 'Monday'),
         ('1', 'Tuesday'),
