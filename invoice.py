@@ -49,7 +49,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             })
     type_name = fields.Function(fields.Char('Type'), 'get_type_name')
     number = fields.Char('Number', size=None, readonly=True, select=1)
-    reference = fields.Char('Reference', size=None)
+    reference = fields.Char('Reference', size=None, states=_STATES)
     description = fields.Char('Description', size=None, states=_STATES)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -93,7 +93,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         states=_STATES, on_change=['lines', 'taxes', 'currency', 'party', 'type'])
     taxes = fields.One2Many('account.invoice.tax', 'invoice', 'Tax Lines',
         states=_STATES, on_change=['lines', 'taxes', 'currency', 'party', 'type'])
-    comment = fields.Text('Comment')
+    comment = fields.Text('Comment', states=_STATES)
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
             digits=(16, Eval('currency_digits', 2))), 'get_untaxed_amount',
             searcher='search_untaxed_amount')
