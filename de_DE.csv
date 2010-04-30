@@ -60,7 +60,7 @@ model,"res.user,name",user_generate_shipment_internal,Cron Intenal Shipment,Zeit
 model,"res.user,name",user_generate_request,Cron Purchase Request,Zeitplaner Bestellvorschläge,0
 model,"stock.order_point,name",0,Order Point,Bestellpunkt,0
 selection,"purchase.request,origin",0,Order Point,Bestellpunkt,0
-selection,"purchase.request,state",0,Cancel,Abgebrochen,0
+selection,"purchase.request,state",0,Cancel,Annulliert,0
 selection,"purchase.request,state",0,Done,Erledigt,0
 selection,"purchase.request,state",0,Draft,Entwurf,0
 selection,"purchase.request,state",0,Purchased,Auftrag erstellt,0
