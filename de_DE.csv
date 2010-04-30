@@ -40,15 +40,15 @@ model,"stock.forecast.complete.choose,name",0,Forecast Complete Choose,Bedarfser
 model,"stock.forecast.line,name",0,Stock Forecast Line,Position Bedarfsermittlung Lagerhaltung,0
 model,"stock.forecast.line-stock.move,name",0,ForecastLine - Move,Position Bedarfsermittlung - Bewegung,0
 model,"stock.forecast,name",0,Stock Forecast,Bedarfsermittlung Lagerhaltung,0
-model,"workflow.activity,name",forecast_act_cancel,Cancel,Abbrechen,0
+model,"workflow.activity,name",forecast_act_cancel,Cancel,Annullieren,0
 model,"workflow.activity,name",forecast_act_done,Done,Erledigt,0
 model,"workflow.activity,name",forecast_act_draft,Draft,Entwurf,0
 model,"workflow,name",wkf_forecast,Forecast,Bedarfsermittlung,0
-selection,"stock.forecast,state",0,Cancel,Abbrechen,0
+selection,"stock.forecast,state",0,Cancel,Annulliert,0
 selection,"stock.forecast,state",0,Done,Erledigt,0
 selection,"stock.forecast,state",0,Draft,Entwurf,0
 view,stock.forecast,0,Add forecast line based on past data.,Erstelle Bedarfspositionen basierend auf den Werten aus der Vergangenheit,0
-view,stock.forecast,0,Cancel,Abbrechen,0
+view,stock.forecast,0,Cancel,Annullieren,0
 view,stock.forecast,0,Complete Forecast,Bedarfsermittlung durchführen,0
 view,stock.forecast,0,Confirm,Bestätigen,0
 view,stock.forecast,0,Forecast,Bedarfsermittlung,0
