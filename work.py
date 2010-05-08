@@ -230,7 +230,10 @@ class Work(ModelSQL, ModelView):
         for fun_field, db_field in zip(fun_fields, db_fields):
             if fun_field == name:
                 self.write(cursor, user, ids, {
-                        db_field: datetime.datetime.combine(value, datetime.time()),
+                        db_field: value \
+                                and datetime.datetime.combine(value,
+                                    datetime.time()) \
+                                or False,
                         }, context=context)
                 break
 
