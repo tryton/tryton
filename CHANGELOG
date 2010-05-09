@@ -1,3 +1,5 @@
+Version 1.6.0 - 2010-05-09
+* Bug fixes (see mercurial logs for details)
 * Use pycountry to generate currency datas
 * Add ISO4217 numeric code to currency
 
