@@ -6,7 +6,7 @@
     'name_es_CO': 'Autentificación LDAP',
     'name_es_ES': 'Autentificación LDAP',
     'name_fr_FR': 'Authentification LDAP',
-    'version': '1.6.0',
+    'version': '1.7.0',
     'author': 'B2CK, Josh Dukes & Udo Spallek',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
