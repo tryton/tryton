@@ -7,6 +7,5 @@ include LICENSE
 include *.xml
 include *.odt
 include *.csv
-include scripts/*
-include tests/*
+include scripts/*.py
 include doc/*
