@@ -1,3 +1,5 @@
+Version 1.6.0 - 2010-05-11
+* Bug fixes (see mercurial logs for details)
 * Add description field on account.tax.code.template and account.tax.code
 * Add tax field on account.tax.line
 * Remove unique constraint on tax group code column
