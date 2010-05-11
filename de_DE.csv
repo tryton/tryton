@@ -12,7 +12,7 @@ error,stock.move,0,You can not set state to assigned!,Status kann nicht auf Zuge
 error,stock.move,0,You can not set state to done!,Status kann nicht auf Erledigt gesetzt werden!,0
 error,stock.move,0,You can not set state to draft!,"Status ""Entwurf"" kann nicht gesetzt werden!",0
 error,stock.move,0,You can not use service products for a move!,Dienstleistungen können nicht in Warenbewegungen verwendet werden!,0
-error,stock.move,0,You can only delete draft or cancelled moves!,"Nur Bewegungen mit Status ""Entwurf"" oder ""Abgebrochen"" können gelöscht werden!",0
+error,stock.move,0,You can only delete draft or cancelled moves!,"Nur Bewegungen mit Status ""Entwurf"" oder ""Annulliert"" können gelöscht werden!",0
 error,stock.shipment.in,0,Incoming Moves must have the warehouse input location as destination location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Zielort haben!,0
 error,stock.shipment.in,0,Inventory Moves must have the warehouse input location as source location!,Bestandsänderungen müssen den Eingangsbereich des Warenlagers als Herkunftsort haben!,0
 error,stock.shipment.out,0,Inventory Moves must have the warehouse output location as destination location!,Bestandsänderungen müssen den Ausgangsbereich des Warenlagers als Zielort haben!,0
