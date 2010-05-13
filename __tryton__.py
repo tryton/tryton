@@ -6,7 +6,7 @@
     'name_es_CO': 'Planeación de Proyectos',
     'name_es_ES': 'Planificación de proyecto',
     'name_fr_FR': 'Planification de projet',
-    'version': '0.0.1',
+    'version': '1.6.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
