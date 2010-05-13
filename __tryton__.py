@@ -6,7 +6,7 @@
     "name_es_CO" : "Existencias por días de la semana",
     "name_es_ES" : "Suministro de existencias por días de la semana",
     "name_fr_FR" : "Approvisionnement par jours de semaine",
-    "version" : "1.6.0",
+    "version" : "1.7.0",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
