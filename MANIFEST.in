@@ -7,4 +7,3 @@ include LICENSE
 include *.xml
 include *.odt
 include *.csv
-include tests/*
