@@ -4,5 +4,4 @@ include TODO
 include *.xml
 include *.odt
 include *.csv
-include tests/*
 include doc/*
