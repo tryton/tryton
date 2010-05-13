@@ -7,7 +7,7 @@ import re
 
 info = eval(file('__tryton__.py').read())
 
-requires = ['egenix-mx-base']
+requires = []
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res|workflow|webdav)(\W|$)', dep):
         requires.append('trytond_' + dep)
