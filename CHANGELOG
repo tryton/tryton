@@ -1,3 +1,5 @@
+Version 1.6.0 - 2010-05-13
+* Bug fixes (see mercurial logs for details)
 * Add default search value on invoice
 * Remove egenix-mx-base and replace it by python-dateutil
 
