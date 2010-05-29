@@ -9,6 +9,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.user" id="res.user_admin">
             <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
         </record>
+        <record model="res.user" id="res.user_trigger">
+            <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
+        </record>
 
         <menuitem name="Timesheet Management" sequence="6" id="menu_timesheet"
             icon="tryton-clock"/>
