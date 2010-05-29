@@ -15,6 +15,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="groups"
                 eval="[('add', ref('group_purchase')), ('add', ref('group_purchase_admin'))]"/>
         </record>
+        <record model="res.user" id="res.user_trigger">
+            <field name="groups"
+                eval="[('add', ref('group_purchase')), ('add', ref('group_purchase_admin'))]"/>
+        </record>
 
         <!-- set active for 1.4 migration -->
         <menuitem name="Configuration" parent="menu_purchase"
