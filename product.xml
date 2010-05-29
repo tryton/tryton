@@ -10,6 +10,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.user" id="res.user_admin">
             <field name="groups" eval="[('add', ref('group_product_admin'))]"/>
         </record>
+        <record model="res.user" id="res.user_trigger">
+            <field name="groups" eval="[('add', ref('group_product_admin'))]"/>
+        </record>
 
         <menuitem name="Product" id="menu_main_product" sequence="1"
             icon="tryton-package"/>
