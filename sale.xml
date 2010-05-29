@@ -13,6 +13,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.user" id="res.user_admin">
             <field name="groups" eval="[('add', ref('group_sale')), ('add', ref('group_sale_admin'))]"/>
         </record>
+        <record model="res.user" id="res.user_trigger">
+            <field name="groups" eval="[('add', ref('group_sale')), ('add', ref('group_sale_admin'))]"/>
+        </record>
 
         <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
             <field name="name">Handle Shipment Exception</field>
