@@ -207,6 +207,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.user" id="res.user_admin">
             <field name="groups" eval="[('add', ref('group_purchase_request'))]"/>
         </record>
+        <record model="res.user" id="res.user_trigger">
+            <field name="groups" eval="[('add', ref('group_purchase_request'))]"/>
+        </record>
 
         <record model="res.user" id="user_generate_request">
             <field name="login">user_cron_purchase_request</field>
