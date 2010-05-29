@@ -1,4 +1,4 @@
-* Use required on states for dashboard_layout
+* Remove required on dashboard_layout to allow XML user creation
 
 Version 1.6.0 - 2010-05-09
 * Bug fixes (see mercurial logs for details)

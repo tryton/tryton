@@ -13,10 +13,7 @@ class User(Model):
         ('stack_left', 'Stack Left'),
         ('stack_top', 'Stack Top'),
         ('stack_bottom', 'Stack Bottom'),
-        ], string='Dashboard Layout',
-        states={
-            'required': True,
-        })
+        ], string='Dashboard Layout')
     dashboard_actions = fields.One2Many('dashboard.action', 'user',
             'Dashboard Actions')
 
