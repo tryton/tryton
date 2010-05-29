@@ -10,6 +10,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="groups"
                    eval="[('add', ref('group_stock_forecast'))]"/>
         </record>
+        <record model="res.user" id="res.user_trigger">
+            <field name="groups"
+                   eval="[('add', ref('group_stock_forecast'))]"/>
+        </record>
         <record model="ir.action.wizard" id="wizard_forecast_complete">
             <field name="name">Complete Forecast</field>
             <field name="wiz_name">stock.forecast.complete</field>
