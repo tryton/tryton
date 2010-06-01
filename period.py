@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 'Period'
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, OPERATORS
 from trytond.wizard import Wizard
 from trytond.pyson import Equal, Eval
 
@@ -169,9 +169,10 @@ class Period(ModelSQL, ModelView):
         def process_args(args):
             i = 0
             while i < len(args):
-                if isinstance(args[i], list):
-                    process_args(args[i])
-                if isinstance(args[i], tuple) \
+                # add test for xmlrpc and pyson that doesn't handle tuple
+                if (isinstance(args[i], tuple) \
+                        or (isinstance(args[i], list) and len(args[i]) > 2 \
+                        and args[i][1] in OPERATORS)) \
                         and args[i][0] in ('start_date', 'end_date') \
                         and isinstance(args[i][2], (list, tuple)):
                     if not args[i][2][0]:
@@ -180,6 +181,8 @@ class Period(ModelSQL, ModelView):
                         period = self.browse(cursor, user, args[i][2][0],
                                 context=context)
                         args[i] = (args[i][0], args[i][1], period[args[i][2][1]])
+                elif isinstance(args[i], list):
+                    process_args(args[i])
                 i += 1
         process_args(args)
         return super(Period, self).search(cursor, user, args, offset=offset,
