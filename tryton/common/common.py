@@ -997,10 +997,12 @@ class RPCProgress(object):
                     win.set_modal(True)
                     win.show_all()
                 progressbar.pulse()
-                gtk.main_iteration()
+                while gtk.events_pending():
+                    gtk.main_iteration()
         if win:
             win.destroy()
-            gtk.main_iteration()
+            while gtk.events_pending():
+                gtk.main_iteration()
         if self.exception:
             raise self.exception
         return self.res

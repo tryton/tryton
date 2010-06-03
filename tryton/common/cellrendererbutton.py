@@ -76,7 +76,8 @@ class CellRendererButton(gtk.GenericCellRenderer):
                     and event.keyval == gtk.keysyms.space)):
             self.clicking = True
             widget.queue_draw()
-            gtk.main_iteration()
+            while gtk.events_pending():
+                gtk.main_iteration()
             self.emit("clicked", path)
             def timeout(self, widget):
                 self.clicking = False
