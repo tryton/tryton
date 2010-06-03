@@ -335,7 +335,7 @@ class CheckVIES(Wizard):
                             or e.faultstring.find('SERVER_BUSY'):
                         self.raise_user_error(cursor, 'vies_unavailable',
                                 context=context)
-                raise e
+                raise
         return res
 
 CheckVIES()
