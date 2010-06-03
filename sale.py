@@ -57,6 +57,10 @@ class SaleLine(ModelSQL, ModelView):
             self.quantity = copy.copy(self.quantity)
             self.quantity.on_change = copy.copy(self.quantity.on_change)
             self.quantity.on_change.append('_parent_sale.price_list')
+        if '_parent_sale.price_list' not in self.unit.on_change:
+            self.unit = copy.copy(self.unit)
+            self.unit.on_change = copy.copy(self.unit.on_change)
+            self.unit.on_change.append('_parent_sale.price_list')
         if '_parent_sale.price_list' not in self.product.on_change:
             self.product = copy.copy(self.product)
             self.product.on_change = copy.copy(self.product.on_change)
