@@ -372,7 +372,9 @@ class ProtocolsDatatypeFloatTestCase(unittest.TestCase):
         '''
         Test float only method
         '''
-        self.assertEqual(Float('1.5').hex(), '0x1.8000000000000p+0')
+        # For Python < 2.6
+        if hasattr(float, 'hex'):
+            self.assertEqual(Float('1.5').hex(), '0x1.8000000000000p+0')
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ProtocolsDatatypeFloatTestCase)
