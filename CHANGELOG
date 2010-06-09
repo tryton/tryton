@@ -1,3 +1,5 @@
+* Make _timestamp numeric instead of datetime to work with XML-RPC and JSON-RPC
+
 Version 1.6.0 - 2010-05-08
 * Bug fixes (see mercurial logs for details)
 * Add symbol parameter to formatLang

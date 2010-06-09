@@ -481,7 +481,10 @@ class ModelSQL(ModelStorage):
         if self._history and context.get('_datetime') and not table_query:
             in_max = 1
             table_query = '"' + self._table + '__history" AS '
-            history_clause = ' AND (COALESCE(write_date, create_date) <= %s)'
+            history_clause = (' AND (CAST(EXTRACT(EPOCH FROM '
+                    'COALESCE(write_date, create_date)) AS ' + \
+                    FIELDS['numeric'].sql_type(self.create_date)[1] + \
+                    ') <= %s)')
             history_order = ' ORDER BY COALESCE(write_date, create_date) DESC'
             history_limit = cursor.limit_clause('', 1)
             history_args = [context['_datetime']]
@@ -490,8 +493,10 @@ class ModelSQL(ModelStorage):
                     if x != '_timestamp']
             if '_timestamp' in fields_pre:
                 if not self.table_query(context):
-                    fields_pre2 += ['(COALESCE(write_date, create_date)) ' \
-                            'AS _timestamp']
+                    fields_pre2 += ['CAST(EXTRACT(EPOCH FROM '
+                            '(COALESCE(write_date, create_date))) AS ' + \
+                            FIELDS['numeric'].sql_type(self.create_date)[1] + \
+                            ') AS _timestamp']
 
             for i in range(0, len(ids), in_max):
                 sub_ids = ids[i:i + in_max]
@@ -745,10 +750,11 @@ class ModelSQL(ModelStorage):
         if context.get('_timestamp', False):
             for i in range(0, len(ids), cursor.IN_MAX):
                 sub_ids = ids[i:i + cursor.IN_MAX]
-                clause = '(id = %s AND ' \
-                        '(CASE WHEN write_date IS NOT NULL ' \
-                        'THEN write_date ELSE create_date END) ' \
-                        ' > %s)'
+                clause = ('(id = %s AND '
+                        'CAST(EXTRACT(EPOCH FROM '
+                        'COALESCE(write_date, create_date)) AS ' + \
+                        FIELDS['numeric'].sql_type(self.create_date)[1] + \
+                        ') > %s)')
                 args = []
                 for i in sub_ids:
                     if context['_timestamp'].get(self._name + ',' + str(i)):
@@ -987,10 +993,11 @@ class ModelSQL(ModelStorage):
         if context.get('_timestamp', False):
             for i in range(0, len(ids), cursor.IN_MAX):
                 sub_ids = ids[i:i + cursor.IN_MAX]
-                clause = '(id = %s AND ' \
-                        '(CASE WHEN write_date IS NOT NULL ' \
-                        'THEN write_date ELSE create_date END) ' \
-                        ' > %s)'
+                clause = ('(id = %s AND '
+                        'CAST(EXTRACT(EPOCH FROM '
+                        'COALESCE(write_date, create_date)) AS ' + \
+                        FIELDS['numeric'].sql_type(self.create_date)[1] + \
+                        ') > %s)')
                 args = []
                 for i in sub_ids:
                     if context['_timestamp'].get(self._name + ',' + str(i)):
@@ -1212,9 +1219,11 @@ class ModelSQL(ModelStorage):
                     and (not getattr(x[1], 'translate', False) \
                         and x[1]._type not in ('text', 'binary'))]
             if not self.table_query(context):
-                select_fields += ['(COALESCE("' + self._table + '".write_date,'\
-                        '"' + self._table + '".create_date)) ' \
-                        'AS _timestamp']
+                select_fields += ['CAST(EXTRACT(EPOCH FROM '
+                        '(COALESCE("' + self._table + '".write_date, '
+                        '"' + self._table + '".create_date))) AS ' + \
+                        FIELDS['numeric'].sql_type(self.create_date)[1] + \
+                        ') AS _timestamp']
         query_str = cursor.limit_clause(
                 'SELECT ' + ','.join(select_fields) + ' FROM ' + \
                 ' '.join(tables) + (qu1 and ' WHERE ' + qu1 or '') + \
