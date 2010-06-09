@@ -99,10 +99,10 @@ class Date(Field):
 
         assert(isinstance(value, datetime.date))
         # Allow datetime with min time for XML-RPC
-        if value.time() != datetime.time():
-            # datetime must be tested separately because datetime is a
-            # subclass of date:
-            assert(not isinstance(value, datetime.datetime))
+        # datetime must be tested separately because datetime is a
+        # subclass of date
+        assert(not isinstance(value, datetime.datetime)
+                or value.time() == datetime.time())
         return value
 
 
