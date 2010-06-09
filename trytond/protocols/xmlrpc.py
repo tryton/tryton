@@ -16,6 +16,7 @@ import os
 import gzip
 import StringIO
 import base64
+import datetime
 
 # convert decimal to float before marshalling:
 from decimal import Decimal
@@ -23,11 +24,20 @@ xmlrpclib.Marshaller.dispatch[Decimal] = \
         lambda self, value, write: self.dump_double(float(value), write)
 xmlrpclib.Marshaller.dispatch[type(None)] = \
         lambda self, value, write: self.dump_bool(bool(value), write)
+xmlrpclib.Marshaller.dispatch[datetime.date] = \
+        lambda self, value, write: self.dump_datetime(
+                datetime.datetime.combine(value, datetime.time()), write)
 
 def _end_double(self, data):
     self.append(Float(data))
     self._value = 0
 xmlrpclib.Unmarshaller.dispatch["double"] = _end_double
+def _end_dateTime(self, data):
+    value = xmlrpclib.DateTime()
+    value.decode(data)
+    value = xmlrpclib._datetime_type(data)
+    self.append(value)
+xmlrpclib.Unmarshaller.dispatch["dateTime.iso8601"] = _end_dateTime
 
 
 class GenericXMLRPCRequestHandler:
