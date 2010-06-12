@@ -481,10 +481,7 @@ class ModelSQL(ModelStorage):
         if self._history and context.get('_datetime') and not table_query:
             in_max = 1
             table_query = '"' + self._table + '__history" AS '
-            history_clause = (' AND (CAST(EXTRACT(EPOCH FROM '
-                    'COALESCE(write_date, create_date)) AS ' + \
-                    FIELDS['numeric'].sql_type(self.create_date)[1] + \
-                    ') <= %s)')
+            history_clause = ' AND (COALESCE(write_date, create_date) <= %s)'
             history_order = ' ORDER BY COALESCE(write_date, create_date) DESC'
             history_limit = cursor.limit_clause('', 1)
             history_args = [context['_datetime']]
