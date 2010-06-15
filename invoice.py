@@ -64,6 +64,9 @@ class InvoiceLine(ModelSQL, ModelView):
                 id2record[record['id']] = record
             lines = self.browse(cursor, user, ids, context=context)
             for line in lines:
+                for root_id in root_ids:
+                    id2record[line.id]['analytic_account_' \
+                            + str(root_id)] = False
                 if line.type != 'line':
                     continue
                 if not line.analytic_accounts:
