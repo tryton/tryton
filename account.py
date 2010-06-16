@@ -299,8 +299,9 @@ class Account(ModelSQL, ModelView):
                 res[name]['required'] = account.mandatory
                 res[name]['string'] = account.name
                 res[name]['relation'] = self._name
-                res[name]['domain'] = [('root', '=', account.id),
-                        ('type', '=', 'normal')]
+                res[name]['domain'] = PYSONEncoder().encode([
+                    ('root', '=', account.id),
+                    ('type', '=', 'normal')])
         return res
 
 Account()
