@@ -109,7 +109,7 @@ symbols = {
 
 currencies = {
     'EUR': {
-        'rounding': '0.01',
+        'rounding': "Decimal('0.01')",
         'digits': '2',
         'p_cs_precedes': 'False',
         'n_cs_precedes': 'False',
@@ -124,7 +124,7 @@ currencies = {
         'positive_sign': '',
         },
     'GBP': {
-        'rounding': '0.01',
+        'rounding': "Decimal('0.01')",
         'digits': '2',
         'p_cs_precedes': 'True',
         'n_cs_precedes': 'True',
@@ -139,7 +139,7 @@ currencies = {
         'positive_sign': '',
         },
     'CHF': {
-        'rounding': '0.01',
+        'rounding': "Decimal('0.01')",
         'digits': '2',
         'p_cs_precedes': 'False',
         'n_cs_precedes': 'False',
@@ -154,7 +154,7 @@ currencies = {
         'positive_sign': '',
         },
     'USD': {
-        'rounding': '0.01',
+        'rounding': "Decimal('0.01')",
         'digits': '2',
         'p_cs_precedes': 'True',
         'n_cs_precedes': 'True',
