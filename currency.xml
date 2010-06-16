@@ -356,7 +356,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="currency.currency" id="cdf">
-            <field name="name">Franc Congolais</field>
+            <field name="name">Congolese Franc</field>
             <field name="code">CDF</field>
             <field name="numeric_code">976</field>
             <field name="symbol">CDF</field>
@@ -1136,13 +1136,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="symbol">£</field>
         </record>
 
-        <record model="currency.currency" id="skk">
-            <field name="name">Slovak Koruna</field>
-            <field name="code">SKK</field>
-            <field name="numeric_code">703</field>
-            <field name="symbol">SKK</field>
-        </record>
-
         <record model="currency.currency" id="sll">
             <field name="name">Leone</field>
             <field name="code">SLL</field>
@@ -1486,7 +1479,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="currency.currency" id="zmk">
-            <field name="name">Kwacha</field>
+            <field name="name">Zambian Kwacha</field>
             <field name="code">ZMK</field>
             <field name="numeric_code">894</field>
             <field name="symbol">ZMK</field>
