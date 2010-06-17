@@ -29,6 +29,12 @@ class TypeTemplate(ModelSQL, ModelView):
 
     def __init__(self):
         super(TypeTemplate, self).__init__()
+        self._constraints += [
+            ('check_recursion', 'recursive_types'),
+        ]
+        self._error_messages.update({
+            'recursive_types': 'You can not create recursive types!',
+        })
         self._order.insert(0, ('sequence', 'ASC'))
 
     def default_balance_sheet(self, cursor, user, context=None):
@@ -168,6 +174,12 @@ class Type(ModelSQL, ModelView):
 
     def __init__(self):
         super(Type, self).__init__()
+        self._constraints += [
+            ('check_recursion', 'recursive_types'),
+        ]
+        self._error_messages.update({
+            'recursive_types': 'You can not create recursive types!',
+        })
         self._order.insert(0, ('sequence', 'ASC'))
 
     def default_balance_sheet(self, cursor, user, context=None):
