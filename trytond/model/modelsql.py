@@ -1084,6 +1084,18 @@ class ModelSQL(ModelStorage):
                 if model_ids:
                     model.delete(cursor, user, model_ids, context=delete_ctx)
 
+            for model, field_name in foreign_keys_tocheck:
+                if model.search(cursor, 0, [
+                    (field_name, 'in', sub_ids),
+                    ], order=[], context=context):
+                    error_args = []
+                    error_args.append(self._get_error_args(cursor, user, 'id',
+                        context=context)[1])
+                    error_args.extend(list(model._get_error_args(cursor,
+                        user, field_name, context=context)))
+                    self.raise_user_error(cursor, 'foreign_model_exist',
+                            error_args=tuple(error_args), context=context)
+
             super(ModelSQL, self).delete(cursor, user, sub_ids, context=context)
 
             try:
@@ -1093,17 +1105,6 @@ class ModelSQL(ModelStorage):
                 database = Database(cursor.database_name).connect()
                 cursor2 = database.cursor()
                 try:
-                    for model, field_name in foreign_keys_tocheck:
-                        if model.search(cursor2, 0, [
-                            (field_name, 'in', sub_ids),
-                            ], order=[], context=context):
-                            error_args = []
-                            error_args.append(self._get_error_args(cursor2,
-                                user, 'id', context=context)[1])
-                            error_args.extend(list(model._get_error_args(cursor2,
-                                user, field_name, context=context)))
-                            self.raise_user_error(cursor2, 'foreign_model_exist',
-                                    error_args=tuple(error_args), context=context)
                     for name, _, error in self._sql_constraints:
                         if name in exception[0]:
                             self.raise_user_error(cursor2, error,
