@@ -80,6 +80,13 @@ class Party(ModelSQL, ModelView):
             context = {}
         return context.get('categories', [])
 
+    def default_addresses(self, cursor, user, context=None):
+        address_obj = self.pool.get('party.address')
+        fields_names = list(set(address_obj._columns.keys() \
+                + address_obj._inherit_fields.keys()))
+        return [address_obj.default_get(cursor, user, fields_names,
+            context=context)]
+
     def on_change_with_vat_code(self, cursor, user, vals, context=None):
         return (vals.get('vat_country') or '') + (vals.get('vat_number') or '')
 
