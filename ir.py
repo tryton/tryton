@@ -142,10 +142,10 @@ class View(Model):
             self.dashboard_id(cursor.dbname)
         if fields_names is None \
                 or 'arch' in fields_names:
-            if isinstance(ids, (int, long)) \
-                    and dashboard_id == ids:
-                res['arch'] = self.dashboard_view(cursor, user, res['arch'],
-                        context=context)
+            if isinstance(ids, (int, long)):
+                if dashboard_id == ids:
+                    res['arch'] = self.dashboard_view(cursor, user,
+                            res['arch'], context=context)
             elif dashboard_id in ids:
                 for res2 in res:
                     if res2['id'] == dashboard_id:
