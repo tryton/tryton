@@ -292,9 +292,9 @@ class Type(ModelSQL, ModelView):
 
             prev_lang = type._context.get('language') or 'en_US'
             prev_data = {}
-            for field_name, field in template._columns.iteritems():
+            for field_name, field in type.template._columns.iteritems():
                 if getattr(field, 'translate', False):
-                    prev_data[field_name] = template[field_name]
+                    prev_data[field_name] = type.template[field_name]
             ctx = context.copy()
             for lang in lang_obj.get_translatable_languages(cursor, user,
                     context=context):
@@ -303,10 +303,11 @@ class Type(ModelSQL, ModelView):
                 ctx['language'] = lang
                 type.setLang(lang)
                 data = {}
-                for field_name, field in template._columns.iteritems():
-                    if getattr(field, 'translate', False) \
-                            and template[field_name] != prev_data[field_name]:
-                        data[field_name] = template[field_name]
+                for field_name, field in type.template._columns.iteritems():
+                    if (getattr(field, 'translate', False)
+                            and type.template[field_name] !=
+                            prev_data[field_name]):
+                        data[field_name] = type.template[field_name]
                 if data:
                     self.write(cursor, user, type.id, data, context=ctx)
             type.setLang(prev_lang)
@@ -972,9 +973,9 @@ class Account(ModelSQL, ModelView):
 
             prev_lang = account._context.get('language') or 'en_US'
             prev_data = {}
-            for field_name, field in template._columns.iteritems():
+            for field_name, field in account.template._columns.iteritems():
                 if getattr(field, 'translate', False):
-                    prev_data[field_name] = template[field_name]
+                    prev_data[field_name] = account.template[field_name]
             ctx = context.copy()
             for lang in lang_obj.get_translatable_languages(cursor, user,
                     context=context):
@@ -983,10 +984,11 @@ class Account(ModelSQL, ModelView):
                 ctx['language'] = lang
                 account.setLang(lang)
                 data = {}
-                for field_name, field in template._columns.iteritems():
-                    if getattr(field, 'translate', False) \
-                            and template[field_name] != prev_data[field_name]:
-                        data[field_name] = template[field_name]
+                for field_name, field in account.template._columns.iteritems():
+                    if (getattr(field, 'translate', False)
+                            and account.template[field_name] !=
+                            prev_data[field_name]):
+                        data[field_name] = account.template[field_name]
                 if data:
                     self.write(cursor, user, account.id, data, context=ctx)
             account.setLang(prev_lang)
