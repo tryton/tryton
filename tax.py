@@ -299,9 +299,9 @@ class Code(ModelSQL, ModelView):
 
             prev_lang = code._context.get('language') or 'en_US'
             prev_data = {}
-            for field_name, field in template._columns.iteritems():
+            for field_name, field in code.template._columns.iteritems():
                 if getattr(field, 'translate', False):
-                    prev_data[field_name] = template[field_name]
+                    prev_data[field_name] = code.template[field_name]
             ctx = context.copy()
             for lang in lang_obj.get_translatable_languages(cursor, user,
                     context=context):
@@ -310,10 +310,11 @@ class Code(ModelSQL, ModelView):
                 ctx['language'] = lang
                 code.setLang(lang)
                 data = {}
-                for field_name, field in template._columns.iteritems():
-                    if getattr(field, 'translate', False) \
-                            and template[field_name] != prev_data[field_name]:
-                        data[field_name] = template[field_name]
+                for field_name, field in code.template._columns.iteritems():
+                    if (getattr(field, 'translate', False)
+                            and code.template[field_name] !=
+                            prev_data[field_name]):
+                        data[field_name] = code.template[field_name]
                 if data:
                     self.write(cursor, user, code.id, data, context=ctx)
             code.setLang(prev_lang)
@@ -924,9 +925,9 @@ class Tax(ModelSQL, ModelView):
 
             prev_lang = tax._context.get('language') or 'en_US'
             prev_data = {}
-            for field_name, field in template._columns.iteritems():
+            for field_name, field in tax.template._columns.iteritems():
                 if getattr(field, 'translate', False):
-                    prev_data[field_name] = template[field_name]
+                    prev_data[field_name] = tax.template[field_name]
             ctx = context.copy()
             for lang in lang_obj.get_translatable_languages(cursor, user,
                     context=context):
@@ -935,10 +936,11 @@ class Tax(ModelSQL, ModelView):
                 ctx['language'] = lang
                 tax.setLang(lang)
                 data = {}
-                for field_name, field in template._columns.iteritems():
-                    if getattr(field, 'translate', False) \
-                            and template[field_name] != prev_data[field_name]:
-                        data[field_name] = template[field_name]
+                for field_name, field in tax.template._columns.iteritems():
+                    if (getattr(field, 'translate', False)
+                            and tax.template[field_name] !=
+                            prev_data[field_name]):
+                        data[field_name] = tax.template[field_name]
                 if data:
                     self.write(cursor, user, tax.id, data, context=ctx)
             tax.setLang(prev_lang)
@@ -1153,9 +1155,9 @@ class Rule(ModelSQL, ModelView):
 
             prev_lang = rule._context.get('language') or 'en_US'
             prev_data = {}
-            for field_name, field in template._columns.iteritems():
+            for field_name, field in rule.template._columns.iteritems():
                 if getattr(field, 'translate', False):
-                    prev_data[field_name] = template[field_name]
+                    prev_data[field_name] = rule.template[field_name]
             ctx = context.copy()
             for lang in lang_obj.get_translatable_languages(cursor, user,
                     context=context):
@@ -1164,10 +1166,11 @@ class Rule(ModelSQL, ModelView):
                 ctx['language'] = lang
                 rule.setLang(lang)
                 data = {}
-                for field_name, field in template._columns.iteritems():
-                    if getattr(field, 'translate', False) \
-                            and template[field_name] != prev_data[field_name]:
-                        data[field_name] = template[field_name]
+                for field_name, field in rule.template._columns.iteritems():
+                    if (getattr(field, 'translate', False)
+                            and rule.template[field_name] !=
+                            prev_data[field_name]):
+                        data[field_name] = rule.template[field_name]
                 if data:
                     self.write(cursor, user, rule.id, data, context=ctx)
             rule.setLang(prev_lang)
