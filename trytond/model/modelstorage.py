@@ -1057,7 +1057,7 @@ class ModelStorage(Model):
                 else:
                     vals[field] = defaults[field]
             elif fld_def._type in ('one2many',):
-                obj = self.pool.get(self._columns[field].model_name)
+                obj = self.pool.get(fld_def.model_name)
                 vals[field] = []
                 for defaults2 in defaults[field]:
                     vals2 = obj._clean_defaults(defaults2)
