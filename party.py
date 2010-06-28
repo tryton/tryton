@@ -82,8 +82,10 @@ class Party(ModelSQL, ModelView):
 
     def default_addresses(self, cursor, user, context=None):
         address_obj = self.pool.get('party.address')
-        fields_names = list(set(address_obj._columns.keys() \
-                + address_obj._inherit_fields.keys()))
+        fields_names = list(x for x in set(address_obj._columns.keys()
+                + address_obj._inherit_fields.keys())
+                if x not in ['id', 'create_uid', 'create_date',
+                    'write_uid', 'write_date'])
         return [address_obj.default_get(cursor, user, fields_names,
             context=context)]
 
