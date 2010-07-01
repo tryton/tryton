@@ -149,7 +149,7 @@ class HoursEmployee(ModelSQL, ModelView):
         if context is None:
             context = {}
         clause = ' '
-        args = []
+        args = [True]
         if context.get('start_date'):
             clause += 'AND date >= %s '
             args.append(context['start_date'])
@@ -164,7 +164,7 @@ class HoursEmployee(ModelSQL, ModelView):
                     'employee, ' \
                     'SUM(COALESCE(hours, 0)) AS hours ' \
                 'FROM timesheet_line ' \
-                'WHERE True ' \
+                'WHERE %s ' \
                 + clause + \
                 'GROUP BY employee', args)
 
