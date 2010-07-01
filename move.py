@@ -986,8 +986,9 @@ class Line(ModelSQL, ModelView):
                 ('start_date', '<=', context['date']),
                 ('end_date', '>=', context['date']),
                 ], limit=1, context=context)
-            if not fiscalyear_ids:
-                fiscalyear_ids = [0]
+
+            fiscalyear_id = fiscalyear_ids and fiscalyear_ids[0] or 0
+
             if context.get('posted'):
                 return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
@@ -996,7 +997,7 @@ class Line(ModelSQL, ModelView):
                                 'account_period AS p ' \
                                 'WHERE m.period = p.id ' \
                                     'AND p.fiscalyear = ' + \
-                                        str(fiscalyear_ids[0]) + ' ' \
+                                        str(fiscalyear_id) + ' ' \
                                     'AND m.date <= date(\'' + \
                                         str(context['date']) + '\') ' \
                                     'AND m.state = \'posted\' ' \
@@ -1009,7 +1010,7 @@ class Line(ModelSQL, ModelView):
                                 'account_period AS p ' \
                                 'WHERE m.period = p.id ' \
                                     'AND p.fiscalyear = ' + \
-                                        str(fiscalyear_ids[0]) + ' ' \
+                                        str(fiscalyear_id) + ' ' \
                                     'AND m.date <= date(\'' + \
                                         str(context['date']) + '\')' \
                             ')', fiscalyear_ids)
