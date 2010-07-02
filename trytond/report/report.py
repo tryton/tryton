@@ -21,6 +21,10 @@ import warnings
 warnings.simplefilter("ignore")
 import relatorio.reporting
 warnings.resetwarnings()
+try:
+    from relatorio.templates.opendocument import Manifest, MANIFEST
+except ImportError:
+    Manifest = None
 
 import tempfile
 from genshi.filters import Translator
@@ -133,10 +137,14 @@ class Report(object):
 
         style_info = None
         style_xml = None
+        manifest = None
         for f in content_z.infolist():
             if f.filename == 'styles.xml' and report.style_content:
                 style_info = f
                 style_xml = content_z.read(f.filename)
+                continue
+            elif Manifest and f.filename == MANIFEST:
+                manifest = Manifest(content_z.read(f.filename))
                 continue
             outzip.writestr(f, content_z.read(f.filename))
 
@@ -155,6 +163,7 @@ class Report(object):
                 if file.startswith('Pictures'):
                     picture = style2_z.read(file)
                     pictures.append((file, picture))
+                    manifest.add_file_entry(file)
             style2_z.close()
             style2_io.close()
             dom_style2 = xml.dom.minidom.parseString(style2_xml)
@@ -174,6 +183,9 @@ class Report(object):
 
             for file, picture in pictures:
                 outzip.writestr(file, picture)
+
+        if manifest:
+            outzip.writestr(MANIFEST, str(manifest))
 
         content_z.close()
         content_io.close()
