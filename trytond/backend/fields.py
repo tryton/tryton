@@ -118,8 +118,7 @@ class DateTime(Field):
             hours, minutes, seconds = map(int, timepart.split(":"))
             return datetime.datetime(year, month, day, hours, minutes, seconds)
         assert(isinstance(value, datetime.datetime))
-        value.replace(microsecond=0)
-        return value
+        return value.replace(microsecond=0)
 
 
 class Timestamp(Field):

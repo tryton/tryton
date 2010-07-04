@@ -2114,6 +2114,14 @@ class FieldsTestCase(unittest.TestCase):
             }, CONTEXT)
         self.assert_(datetime8_id)
 
+        datetime9_id = self.datetime.create(cursor, USER, {
+            'datetime': today.replace(microsecond=1),
+            }, CONTEXT)
+        self.assert_(datetime9_id)
+        datetime9 = self.datetime.read(cursor, USER, datetime9_id,
+                ['datetime'], CONTEXT)
+        self.assert_(datetime9['datetime'] == today)
+
         cursor.rollback()
         cursor.close()
 
