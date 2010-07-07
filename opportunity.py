@@ -442,20 +442,25 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
         self._order.insert(0, ('date', 'DESC'))
 
     def _table_query_fields(self, context=None):
+        opportunity_obj = self.pool.get('sale.opportunity')
+        table = '%s__history' % opportunity_obj._table
         return [
-            'MIN(__id) AS id',
-            'id AS opportunity',
-            'MIN(COALESCE(write_date, create_date)) AS date',
-            'COALESCE(write_uid, create_uid) AS user',
-        ] + [name for name, field in self._columns.iteritems()
+            'MIN("%s".__id) AS id' % table,
+            '"%s".id AS opportunity' % table,
+            'MIN(COALESCE("%s".write_date, "%s".create_date)) AS date' % (table, table),
+            'COALESCE("%s".write_uid, "%s".create_uid) AS user' % (table, table),
+        ] + ['"%s"."%s"' % (table, name) for name, field in self._columns.iteritems()
                 if name not in ('id', 'opportunity', 'date', 'user')
                 and not hasattr(field, 'set')]
 
     def _table_query_group(self, context=None):
+        opportunity_obj = self.pool.get('sale.opportunity')
+        table = '%s__history' % opportunity_obj._table
         return [
-            'id',
-            'COALESCE(write_uid, create_uid)',
-        ] + [name for name, field in self._columns.iteritems()
+            '"%s".id' % table,
+            'COALESCE("%s".write_uid, "%s".create_uid)' % (table, table),
+        ] + ['"%s"."%s"' % (table, name)
+                for name, field in self._columns.iteritems()
                 if name not in ('id', 'opportunity', 'date', 'user')
                 and not hasattr(field, 'set')]
 
