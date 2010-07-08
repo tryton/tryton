@@ -28,14 +28,18 @@ def extract(lookup_type, date):
     if date is None:
         return None
     try:
-        datepart, timepart = date.split(" ")
-        year, month, day = map(int, datepart.split("-"))
-        timepart_full = timepart.split(".")
-        hours, minutes, seconds = map(int, timepart_full[0].split(":"))
-        if len(timepart_full) == 2:
-            microseconds = int(timepart_full[1])
-        date = datetime.datetime(year, month, day, hours, minutes, seconds,
-                microseconds)
+        if len(date) == 10:
+            year, month, day = map(int, date.split('-'))
+            date = datetime.date(year, month, day)
+        else:
+            datepart, timepart = date.split(" ")
+            year, month, day = map(int, datepart.split("-"))
+            timepart_full = timepart.split(".")
+            hours, minutes, seconds = map(int, timepart_full[0].split(":"))
+            if len(timepart_full) == 2:
+                microseconds = int(timepart_full[1])
+            date = datetime.datetime(year, month, day, hours, minutes, seconds,
+                    microseconds)
     except:
         return None
     if lookup_type.lower() == 'century':
@@ -58,7 +62,7 @@ def extract(lookup_type, date):
         return date.month / 4 + 1
     elif lookup_type.lower() == 'week':
         return date.isocalendar()[1]
-    return getattr(date, lookup_type)
+    return getattr(date, lookup_type.lower())
 
 def date_trunc(_type, date):
     if _type == 'second':
