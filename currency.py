@@ -102,7 +102,7 @@ class Currency(ModelSQL, ModelView):
                 for i in grouping:
                     if not isinstance(i, int):
                         return False
-            except:
+            except Exception:
                 return False
         return True
 
