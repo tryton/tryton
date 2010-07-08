@@ -442,20 +442,25 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
         self._order.insert(0, ('date', 'DESC'))
 
     def _table_query_fields(self, context=None):
+        opportunity_obj = self.pool.get('sale.opportunity')
+        table = '%s__history' % opportunity_obj._table
         return [
-            'MIN(__id) AS id',
-            'id AS opportunity',
-            'MIN(COALESCE(write_date, create_date)) AS date',
-            'COALESCE(write_uid, create_uid) AS user',
-        ] + [name for name, field in self._columns.iteritems()
+            'MIN("%s".__id) AS id' % table,
+            '"%s".id AS opportunity' % table,
+            'MIN(COALESCE("%s".write_date, "%s".create_date)) AS date' % (table, table),
+            'COALESCE("%s".write_uid, "%s".create_uid) AS user' % (table, table),
+        ] + ['"%s"."%s"' % (table, name) for name, field in self._columns.iteritems()
                 if name not in ('id', 'opportunity', 'date', 'user')
                 and not hasattr(field, 'set')]
 
     def _table_query_group(self, context=None):
+        opportunity_obj = self.pool.get('sale.opportunity')
+        table = '%s__history' % opportunity_obj._table
         return [
-            'id',
-            'COALESCE(write_uid, create_uid)',
-        ] + [name for name, field in self._columns.iteritems()
+            '"%s".id' % table,
+            'COALESCE("%s".write_uid, "%s".create_uid)' % (table, table),
+        ] + ['"%s"."%s"' % (table, name)
+                for name, field in self._columns.iteritems()
                 if name not in ('id', 'opportunity', 'date', 'user')
                 and not hasattr(field, 'set')]
 
@@ -670,10 +675,10 @@ class SaleOpportunityMonthly(ModelSQL, ModelView):
         opportunity_obj = self.pool.get('sale.opportunity')
         type_id = FIELDS[self.id._type].sql_type(self.id)[0]
         type_year = FIELDS[self.year._type].sql_type(self.year)[0]
-        return ('SELECT CAST(id AS ' + type_id + '), create_uid, create_date, '
-                    'write_uid, write_date, '
-                    'CAST(year AS ' + type_year + '), month, company, number, '
-                    'converted, lost, amount, converted_amount '
+        return ('SELECT CAST(id AS ' + type_id + ') AS id, create_uid, '
+                    'create_date, write_uid, write_date, '
+                    'CAST(year AS ' + type_year + ') AS year, month, company, '
+                    'number, converted, lost, amount, converted_amount '
                 'FROM ('
                     'SELECT EXTRACT(MONTH FROM start_date) + '
                             'EXTRACT(YEAR FROM start_date) * 100 AS id, '
@@ -781,10 +786,11 @@ class SaleOpportunityEmployeeMonthly(ModelSQL, ModelView):
         opportunity_obj = self.pool.get('sale.opportunity')
         type_id = FIELDS[self.id._type].sql_type(self.id)[0]
         type_year = FIELDS[self.year._type].sql_type(self.year)[0]
-        return ('SELECT CAST(id AS ' + type_id + '), create_uid, create_date, '
-                    'write_uid, write_date, '
-                    'CAST(year AS ' + type_year + '), month, employee, '
-                    'company, number, converted, lost, amount, converted_amount '
+        return ('SELECT CAST(id AS ' + type_id + ') AS id, create_uid, '
+                    'create_date, write_uid, write_date, '
+                    'CAST(year AS ' + type_year + ') AS year, month, '
+                    'employee, company, number, converted, lost, amount, '
+                    'converted_amount '
                 'FROM ('
                     'SELECT EXTRACT(MONTH FROM start_date) + '
                             'EXTRACT(YEAR FROM start_date) * 100 + '
