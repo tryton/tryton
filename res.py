@@ -64,7 +64,7 @@ class User(ModelSQL, ModelView):
                 if self.ldap_search_user(cursor, user, login,
                         con, connection, attrs=[], context=context):
                     find = True
-        except:
+        except Exception:
             pass
         if find:
             self.raise_user_error(cursor, 'set_passwd_ldap_user',
@@ -115,7 +115,7 @@ class User(ModelSQL, ModelView):
                 else:
                     self.raise_user_error(cursor, 'wrong_password',
                             context=context)
-            except:
+            except Exception:
                 pass
         return super(User, self).set_preferences(cursor, user_id, values,
                 old_password=old_password, context=context)
@@ -148,7 +148,7 @@ class User(ModelSQL, ModelView):
                         'login': login,
                         }, context=context)
                     return user_id
-        except:
+        except Exception:
             pass
         return super(User, self).get_login(cursor, user, login, password,
                 context=context)
