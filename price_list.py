@@ -167,7 +167,7 @@ class PriceListLine(ModelSQL, ModelView):
             try:
                 self.get_unit_price(cursor, user, line,
                         context=context)
-            except:
+            except Exception:
                 return False
         return True
 
