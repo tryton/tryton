@@ -1628,7 +1628,7 @@ class InvoiceLine(ModelSQL, ModelView):
             try:
                 res['account'] = product.account_expense_used.id
                 res['account.rec_name'] = product.account_expense_used.rec_name
-            except:
+            except Exception:
                 pass
             res['taxes'] = []
             pattern = self._get_tax_rule_pattern(cursor, user, party, vals,
@@ -1658,7 +1658,7 @@ class InvoiceLine(ModelSQL, ModelView):
             try:
                 res['account'] = product.account_revenue_used.id
                 res['account.rec_name'] = product.account_revenue_used.rec_name
-            except:
+            except Exception:
                 pass
             res['taxes'] = []
             pattern = self._get_tax_rule_pattern(cursor, user, party, vals,
