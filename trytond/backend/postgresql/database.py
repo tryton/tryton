@@ -359,8 +359,8 @@ class Cursor(CursorInterface):
                 "'wkf_workitem', "
                 "'wkf_witm_trans', "
                 "'ir_module_module', "
-                "'ir_module_module_dependency, '"
-                "'ir_translation, '"
+                "'ir_module_module_dependency', "
+                "'ir_translation', "
                 "'ir_lang'"
                 ")")
         return len(self.cursor.fetchall()) != 0
