@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Not, Eval, Bool, Or
+from trytond.backend import TableHandler
 
 
 class Category(ModelSQL, ModelView):
@@ -24,9 +25,9 @@ class Category(ModelSQL, ModelView):
             'invisible': Not(Bool(Eval('company'))),
         }))
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
-            'product', 'tax', 'Customer Taxes', domain=[('parent', '=', False)])
+            'category', 'tax', 'Customer Taxes', domain=[('parent', '=', False)])
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
-            'product', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)])
+            'category', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)])
 
 Category()
 
@@ -36,10 +37,19 @@ class CategoryCustomerTax(ModelSQL):
     _name = 'product.category-customer-account.tax'
     _table = 'product_category_customer_taxes_rel'
     _description = __doc__
-    product = fields.Many2One('product.category', 'Category',
+    category = fields.Many2One('product.category', 'Category',
             ondelete='CASCADE', select=1, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
+
+    def init(self, cursor, module_name):
+        # Migration from 1.6 product renamed into category
+        table = TableHandler(cursor, self)
+        if table.column_exist('product'):
+            table.index_action('product', action='remove')
+            table.drop_fk('product')
+            table.column_rename('product', 'category')
+        super(CategoryCustomerTax, self).init(cursor, module_name)
 
 CategoryCustomerTax()
 
@@ -49,10 +59,19 @@ class CategorySupplierTax(ModelSQL):
     _name = 'product.category-supplier-account.tax'
     _table = 'product_category_supplier_taxes_rel'
     _description = __doc__
-    product = fields.Many2One('product.category', 'Category',
+    category = fields.Many2One('product.category', 'Category',
             ondelete='CASCADE', select=1, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
+
+    def init(self, cursor, module_name):
+        # Migration from 1.6 product renamed into category
+        table = TableHandler(cursor, self)
+        if table.column_exist('product'):
+            table.index_action('product', action='remove')
+            table.drop_fk('product')
+            table.column_rename('product', 'category')
+        super(CategorySupplierTax, self).init(cursor, module_name)
 
 CategorySupplierTax()
 
