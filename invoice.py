@@ -544,6 +544,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         rule_obj = self.pool.get('ir.rule')
         line_obj = self.pool.get('account.invoice.line')
         tax_obj = self.pool.get('account.invoice.tax')
+        type_name = FIELDS[self.total_amount._type].sql_type(
+                self.total_amount)[0]
 
         invoice_query, invoice_val = rule_obj.domain_get(
             cursor, user, 'account.invoice', context=context)
@@ -568,14 +570,17 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     'GROUP BY invoice  '
                 ') AS u '
                 'GROUP BY u.invoice '
-                'HAVING (SUM(u.total_amount) ' + clause[1] + ' %s)',
-                invoice_val + invoice_val + [clause[2]])
+                'HAVING (CAST(SUM(u.total_amount) AS ' + type_name + ') '
+                    + clause[1] + ' %s)',
+                invoice_val + invoice_val + [str(clause[2])])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def search_untaxed_amount(self, cursor, user, name, clause, context=None):
         rule_obj = self.pool.get('ir.rule')
         line_obj = self.pool.get('account.invoice.line')
         tax_obj = self.pool.get('account.invoice.tax')
+        type_name = FIELDS[self.untaxed_amount._type].sql_type(
+                self.untaxed_amount)[0]
 
         invoice_query, invoice_val = rule_obj.domain_get(
             cursor, user, 'account.invoice', context=context)
@@ -586,15 +591,17 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                         '"' + line_obj._table + '".invoice) '
                 'WHERE ' + invoice_query + ' '
                 'GROUP BY invoice '
-                'HAVING (COALESCE(SUM(quantity * unit_price), 0) ' + \
-                        clause[1] + ' %s)',
-                invoice_val + [clause[2]])
+                'HAVING (CAST(COALESCE(SUM(quantity * unit_price), 0) '
+                    'AS ' + type_name + ') ' + clause[1] + ' %s)',
+                invoice_val + [str(clause[2])])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def search_tax_amount(self, cursor, user, name, clause, context=None):
         rule_obj = self.pool.get('ir.rule')
         line_obj = self.pool.get('account.invoice.line')
         tax_obj = self.pool.get('account.invoice.tax')
+        type_name = FIELDS[self.tax_amount._type].sql_type(
+                self.tax_amount)[0]
 
         invoice_query, invoice_val = rule_obj.domain_get(
             cursor, user, 'account.invoice', context=context)
@@ -605,8 +612,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                         '"' + tax_obj._table + '".invoice) '
                 'WHERE ' + invoice_query + ' '
                 'GROUP BY invoice '
-                'HAVING (COALESCE(SUM(amount), 0) ' + clause[1] + ' %s)',
-                invoice_val + [clause[2]])
+                'HAVING (CAST(COALESCE(SUM(amount), 0) '
+                    'AS ' + type_name + ') ' + clause[1] + ' %s)',
+                invoice_val + [str(clause[2])])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def button_draft(self, cursor, user, ids, context=None):
