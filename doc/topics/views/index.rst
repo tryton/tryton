@@ -253,11 +253,6 @@ child1, child2
 
 Contains the two childs of a hpaned or vpaned.
 
-properties
-^^^^^^^^^^
-
-Display a table of 4 columns with all the properties of the object.
-
 .. _example_form_view:
 
 Example
@@ -292,9 +287,6 @@ Example
               <field name="vat_country"/>
               <label name="vat_number"/>
               <field name="vat_number"/>
-          </page>
-          <page string="Properties">
-              <properties/>
           </page>
       </notebook>
   </form>
