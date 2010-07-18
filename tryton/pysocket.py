@@ -98,6 +98,7 @@ class PySocket:
         except:
             pass
         self.sock.settimeout(TIMEOUT)
+        fingerprint = None
         if self.ssl:
             if ssl:
                 self.ssl_sock = ssl.wrap_socket(self.sock,
@@ -105,17 +106,18 @@ class PySocket:
                             ssl.CERT_REQUIRED or ssl.CERT_NONE))
             elif hasattr(socket, 'ssl'):
                 self.ssl_sock = socket.ssl(self.sock, certfile=self.ca_certs)
-            peercert = self.ssl_sock.getpeercert(True)
+            try:
+                peercert = self.ssl_sock.getpeercert(True)
+            except Exception:
+                peercert = None
             def format_hash(value):
                 return reduce(lambda x, (i, y): x + y.upper() +
                         ((i % 2 and i + 1 < len(value)) and ':' or ''),
                         enumerate(value), '')
-            if hashlib:
+            if peercert and hashlib:
                 fingerprint = format_hash(hashlib.sha1(peercert).hexdigest())
-            else:
+            elif peercert:
                 fingerprint = format_hash(sha1.new(peercert).hexdigest())
-        else:
-            fingerprint = None
         self.host = host
         self.hostname = hostname
         self.port = port
