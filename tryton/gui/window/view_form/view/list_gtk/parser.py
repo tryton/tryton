@@ -100,8 +100,10 @@ class ParserTree(ParserInterface):
                 if fname not in fields:
                     continue
                 for attr_name in ('relation', 'domain', 'selection',
-                        'sort'):
-                    if attr_name in fields[fname].attrs:
+                        'relation_field', 'string', 'views', 'invisible',
+                        'add_remove', 'sort', 'context'):
+                    if attr_name in fields[fname].attrs and \
+                            not attr_name in node_attrs:
                         node_attrs[attr_name] = fields[fname].attrs[attr_name]
                 cell = CELLTYPES.get(node_attrs.get('widget',
                     fields[fname].attrs['type']))(fname, model_name,
