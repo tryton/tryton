@@ -129,7 +129,7 @@ class Dialog(object):
             if (width, height) != (self.widget_width, self.widget_height):
                 try:
                     rpc.execute('model', 'ir.action.wizard_size', 'set_size',
-                            self.action, self.screen.name, width, height,
+                            self.action, self.screen.model_name, width, height,
                             rpc.CONTEXT)
                 except:
                     pass
