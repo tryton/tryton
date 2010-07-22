@@ -27,7 +27,7 @@ class WinForm(object):
                 view_type not in self.screen.view_to_load:
             self.screen.add_view_id(False, view_type, display=True)
         else:
-            self.screen.switch_view(view_type=view_type)
+            self.screen.switch_view(view_type=view_type, context=context)
         if new and not switch_new:
             self.screen.new(context=self.context)
         self.win = gtk.Dialog(_('Link'), parent,

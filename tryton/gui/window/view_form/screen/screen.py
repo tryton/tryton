@@ -243,7 +243,7 @@ class Screen(SignalEvent):
         self.group.signal_unconnect(self)
         del self.views
 
-    def switch_view(self, view_type=None):
+    def switch_view(self, view_type=None, default=True, context=None):
         self.current_view.set_value()
         if self.current_record and self.current_record not in self.group:
             self.current_record = None
@@ -267,7 +267,7 @@ class Screen(SignalEvent):
             self.current_record.validate_set()
         else:
             if self.current_view.view_type == 'form':
-                self.new()
+                self.new(default=default, context=context)
         self.current_view.cancel()
         self.display(set_cursor=True)
 
