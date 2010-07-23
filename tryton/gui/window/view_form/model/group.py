@@ -100,7 +100,7 @@ class Group(SignalEvent, list):
     def __setitem__(self, i, value):
         super(Group, self).__setitem__(i, value)
         if not self.lock_signal:
-            self.signal('group-list-changed', ('record-changed', key))
+            self.signal('group-list-changed', ('record-changed', i))
 
     def __repr__(self):
         return '<Group %s at %s>' % (self.model_name, id(self))
