@@ -1,10 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Work"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import PYSONEncoder
-
+from trytond.transaction import Transaction
 
 class Work(ModelSQL, ModelView):
     'Work'
@@ -36,21 +35,17 @@ class Work(ModelSQL, ModelView):
                 'as it\'s parent work!',
         })
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def default_timesheet_available(self, cursor, user, context=None):
+    def default_timesheet_available(self):
         return True
 
-    def default_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        if context.get('company'):
-            return context['company']
-        return False
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
-    def check_parent_company(self, cursor, user, ids):
-        for work in self.browse(cursor, user, ids):
+    def check_parent_company(self, ids):
+        for work in self.browse(ids):
             if not work.parent:
                 continue
             if work.parent.company.id != work.company.id:
@@ -71,10 +66,10 @@ class Work(ModelSQL, ModelView):
                 to_compute[h] = False
         return res
 
-    def get_hours(self, cursor, user, ids, name, context=None):
-        all_ids = self.search(cursor, user, [
-                ('parent', 'child_of', ids)
-                ], context=context)
+    def get_hours(self, name):
+        all_ids = self.search([
+                ('parent', 'child_of', ids),
+                ])
         # force inactive ids to be in all_ids
         all_ids = all_ids + ids
         clause = "SELECT work, sum(hours) FROM timesheet_line "\
@@ -82,19 +77,20 @@ class Work(ModelSQL, ModelView):
                      % ",".join(('%s',) * len(all_ids))
         date_cond = ""
         args = []
-        if context.get('from_date'):
+        if Transaction().context.get('from_date'):
             date_cond = " AND date >= %s"
-            args.append(context['from_date'])
-        if context.get('to_date'):
+            args.append(Transaction().context['from_date'])
+        if Transaction().context.get('to_date'):
             date_cond += " AND date <= %s"
-            args.append(context['to_date'])
+            args.append(Transaction().context['to_date'])
         clause += date_cond + " GROUP BY work"
 
-        cursor.execute(clause, all_ids + args)
+        Transaction().cursor.execute(clause, all_ids + args)
 
-        hours_by_wt = dict([(i[0], i[1]) for i in cursor.fetchall()])
+        hours_by_wt = dict((i[0], i[1]) for i in 
+            Transaction().cursor.fetchall())
         to_compute = dict.fromkeys(all_ids, True)
-        works = self.browse(cursor, user, all_ids, context=context)
+        works = self.browse(all_ids)
         children = {}
         for work in works:
             if work.parent:
@@ -102,7 +98,7 @@ class Work(ModelSQL, ModelView):
         self._tree_qty(hours_by_wt, children, ids, to_compute)
         return hours_by_wt
 
-    def get_rec_name(self, cursor, user, ids, name, context=None):
+    def get_rec_name(self, name):
         if not ids:
             return {}
         res = {}
@@ -111,22 +107,21 @@ class Work(ModelSQL, ModelView):
                 return _name(work.parent) + '\\' + work.name
             else:
                 return work.name
-        for work in self.browse(cursor, user, ids, context=context):
+        for work in self.browse(ids):
             res[work.id] = _name(work)
         return res
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         child_ids = None
         if not vals.get('active', True):
-            child_ids = self.search(cursor, user, [
+            child_ids = self.search([
                 ('parent', 'child_of', ids),
-                ], context=context)
-        res = super(Work, self).write(cursor, user, ids, vals,
-                context=context)
+                ])
+        res = super(Work, self).write(ids, vals)
         if child_ids:
-            self.write(cursor, user, child_ids, {
+            self.write(child_ids, {
                 'active': False,
-                }, context=context)
+                })
         return res
 
 Work()
@@ -164,12 +159,11 @@ class OpenWork(Wizard):
         },
     }
 
-    def _action_open_work(self, cursor, user, data, context=None):
+    def _action_open_work(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id(cursor, user, 'timesheet',
-                'act_work_tree2', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('timesheet', 'act_work_tree2')
+        res = act_window_obj.read(act_window_id)
         res['pyson_context'] = PYSONEncoder().encode({
             'from_date': data['form']['from_date'],
             'to_date': data['form']['to_date'],
@@ -182,12 +176,11 @@ OpenWork()
 class OpenWork2(OpenWork):
     _name = 'timesheet.work.open2'
 
-    def _action_open_work(self, cursor, user, data, context=None):
+    def _action_open_work(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id(cursor, user, 'timesheet',
-                'act_work_form2', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('timesheet', 'act_work_form2')
+        res = act_window_obj.read(act_window_id)
         res['pyson_context'] = PYSONEncoder().encode({
             'from_date': data['form']['from_date'],
             'to_date': data['form']['to_date'],
@@ -209,20 +202,15 @@ class OpenWorkGraph(Wizard):
         },
     }
 
-    def _action_open_work(self, cursor, user, data, context=None):
+    def _action_open_work(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         work_obj = self.pool.get('timesheet.work')
 
-        if context is None:
-            context = {}
-
-        act_window_id = model_data_obj.get_id(cursor, user, 'timesheet',
-                'act_work_form3', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
-        if 'active_id' in context:
-            work = work_obj.browse(cursor, user, context['active_id'],
-                    context=context)
+        act_window_id = model_data_obj.get_id('timesheet', 'act_work_form3')
+        res = act_window_obj.read(act_window_id)
+        if 'active_id' in Transaction().context:
+            work = work_obj.browse(Transaction().context['active_id'])
             res['name'] = res['name'] + ' - ' + work.rec_name
         return res
 

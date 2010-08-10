@@ -1,11 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Timesheet Line"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import FIELDS
 from trytond.pyson import Eval, PYSONEncoder, Date
-
+from trytond.transaction import Transaction
 
 class Line(ModelSQL, ModelView):
     'Timesheet Line'
@@ -29,39 +28,31 @@ class Line(ModelSQL, ModelView):
              'CHECK(hours >= 0.0)', 'Hours field must be positive'),
             ]
 
-    def default_employee(self, cursor, user_id, context=None):
+    def default_employee(self):
         user_obj = self.pool.get('res.user')
         employee_obj = self.pool.get('company.employee')
 
-        if context is None:
-            context = {}
         employee_id = None
-        if context.get('employee'):
-            employee_id = context['employee']
+        if Transaction().context.get('employee'):
+            employee_id = Transaction().context['employee']
         else:
-            user = user_obj.browse(cursor, user_id, user_id, context=context)
+            user = user_obj.browse(Transaction().user)
             if user.employee:
                 employee_id = user.employee.id
         if employee_id:
             return employee_id
         return False
 
-    def default_date(self, cursor, user, context=None):
+    def default_date(self):
         date_obj = self.pool.get('ir.date')
 
-        if context is None:
-            context = {}
-        if context.get('date'):
-            return context['date']
-        return date_obj.today(cursor, user, context=context)
+        return Transaction().context.get('date') or date_obj.today()
 
-    def view_header_get(self, cursor, user, value, view_type='form',
-            context=None):
-        if not context.get('employee'):
+    def view_header_get(self, value, view_type='form'):
+        if not Transaction().context.get('employee'):
             return value
         employee_obj = self.pool.get('company.employee')
-        employee = employee_obj.browse(cursor, user, context['employee'],
-                                       context=context)
+        employee = employee_obj.browse(Transaction().context['employee'])
         return value + " (" + employee.name + ")"
 
 Line()
@@ -75,13 +66,13 @@ class EnterLinesInit(ModelView):
             domain=[('company', '=', Eval('company'))])
     date = fields.Date('Date', required=True)
 
-    def default_employee(self, cursor, user, context=None):
+    def default_employee(self):
         line_obj = self.pool.get('timesheet.line')
-        return line_obj.default_employee(cursor, user, context=context)
+        return line_obj.default_employee()
 
-    def default_date(self, cursor, user, context=None):
+    def default_date(self):
         line_obj = self.pool.get('timesheet.line')
-        return line_obj.default_date(cursor, user, context=context)
+        return line_obj.default_date()
 
 EnterLinesInit()
 
@@ -109,13 +100,12 @@ class EnterLines(Wizard):
         }
     }
 
-    def _action_enter_lines(self, cursor, user, data, context=None):
+    def _action_enter_lines(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         employee_obj = self.pool.get('company.employee')
-        act_window_id = model_data_obj.get_id(cursor, user, 'timesheet',
-                'act_line_form', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('timesheet', 'act_line_form')
+        res = act_window_obj.read(act_window_id)
         date = data['form']['date']
         date = Date(date.year, date.month, date.day)
         res['pyson_domain'] = PYSONEncoder().encode([
@@ -128,8 +118,7 @@ class EnterLines(Wizard):
             })
 
         if data['form']['employee']:
-            employee = employee_obj.browse(
-                cursor, user, data['form']['employee'], context=context)
+            employee = employee_obj.browse(data['form']['employee'])
             res['name'] += " - " + employee.rec_name
 
         return res
@@ -145,17 +134,15 @@ class HoursEmployee(ModelSQL, ModelView):
     employee = fields.Many2One('company.employee', 'Employee', select=1)
     hours = fields.Float('Hours', digits=(16, 2))
 
-    def table_query(self, context=None):
-        if context is None:
-            context = {}
+    def table_query(self):
         clause = ' '
         args = [True]
-        if context.get('start_date'):
+        if Transaction().context.get('start_date'):
             clause += 'AND date >= %s '
-            args.append(context['start_date'])
-        if context.get('end_date'):
+            args.append(Transaction().context['start_date'])
+        if Transaction().context.get('end_date'):
             clause += 'AND date <= %s '
-            args.append(context['end_date'])
+            args.append(Transaction().context['end_date'])
         return ('SELECT DISTINCT(employee) AS id, ' \
                     'MAX(create_uid) AS create_uid, ' \
                     'MAX(create_date) AS create_date, ' \
@@ -204,12 +191,12 @@ class OpenHoursEmployee(Wizard):
         },
     }
 
-    def _action_open(self, cursor, user, data, context=None):
+    def _action_open(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id(cursor, user, 'timesheet',
-                'act_hours_employee_form', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('timesheet',
+            'act_hours_employee_form')
+        res = act_window_obj.read(act_window_id)
         res['pyson_context'] = PYSONEncoder().encode({
             'start_date': data['form']['start_date'],
             'end_date': data['form']['end_date'],
@@ -235,7 +222,7 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
         self._order.insert(1, ('week', 'DESC'))
         self._order.insert(2, ('employee', 'ASC'))
 
-    def table_query(self, context=None):
+    def table_query(self):
         type_name = FIELDS[self.year._type].sql_type(self.year)[0]
         return ('SELECT id, create_uid, create_date, write_uid, write_date, ' \
                     'CAST(year AS ' + type_name + '), week, employee, hours ' \
@@ -272,7 +259,7 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
         self._order.insert(1, ('month', 'DESC'))
         self._order.insert(2, ('employee', 'ASC'))
 
-    def table_query(self, context=None):
+    def table_query(self):
         type_name = FIELDS[self.year._type].sql_type(self.year)[0]
         return ('SELECT id, create_uid, create_date, write_uid, write_date, ' \
                     'CAST(year AS ' + type_name + '), month, employee, hours ' \
