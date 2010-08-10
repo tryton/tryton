@@ -12,16 +12,16 @@ class Company(ModelSQL, ModelView):
     hours_per_work_month = fields.Float("Hours per Work Month", required=True)
     hours_per_work_year = fields.Float("Hours per Work Year", required=True)
 
-    def default_hours_per_work_day(self, cursor, user, context=None):
+    def default_hours_per_work_day(self):
         return 8
 
-    def default_hours_per_work_week(self, cursor, user, context=None):
+    def default_hours_per_work_week(self):
         return 40
 
-    def default_hours_per_work_month(self, cursor, user, context=None):
+    def default_hours_per_work_month(self):
         return 160
 
-    def default_hours_per_work_year(self, cursor, user, context=None):
+    def default_hours_per_work_year(self):
         return 1920
 
 Company()
