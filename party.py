@@ -1,9 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import logging
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Not, Bool, Eval
-import logging
+from trytond.transaction import Transaction
 
 HAS_VATNUMBER = False
 VAT_COUNTRIES = [('', '')]
@@ -72,35 +73,32 @@ class Party(ModelSQL, ModelView):
         })
         self._order.insert(0, ('name', 'ASC'))
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def default_categories(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        return context.get('categories', [])
+    def default_categories(self):
+        return Transaction().context.get('categories', [])
 
-    def default_addresses(self, cursor, user, context=None):
+    def default_addresses(self):
         address_obj = self.pool.get('party.address')
         fields_names = list(x for x in set(address_obj._columns.keys()
                 + address_obj._inherit_fields.keys())
                 if x not in ['id', 'create_uid', 'create_date',
                     'write_uid', 'write_date'])
-        return [address_obj.default_get(cursor, user, fields_names,
-            context=context)]
+        return [address_obj.default_get(fields_names)]
 
-    def on_change_with_vat_code(self, cursor, user, vals, context=None):
+    def on_change_with_vat_code(self, vals):
         return (vals.get('vat_country') or '') + (vals.get('vat_number') or '')
 
-    def get_vat_code(self, cursor, user, ids, name, context=None):
+    def get_vat_code(self, ids, name):
         if not ids:
             return []
         res = {}
-        for party in self.browse(cursor, user, ids, context=context):
+        for party in self.browse(ids):
             res[party.id] = (party.vat_country or '') + (party.vat_number or '')
         return res
 
-    def search_vat_code(self, cursor, user, name, clause, context=None):
+    def search_vat_code(self, name, clause):
         res = []
         value = clause[2]
         for country, _ in VAT_COUNTRIES:
@@ -113,19 +111,19 @@ class Party(ModelSQL, ModelView):
         res.append(('vat_number', clause[1], value))
         return res
 
-    def get_full_name(self, cursor, user, ids, name, context=None):
+    def get_full_name(self, ids, name):
         if not ids:
             return []
         res = {}
-        for party in self.browse(cursor, user, ids, context=context):
+        for party in self.browse(ids):
             res[party.id] = party.name
         return res
 
-    def get_mechanism(self, cursor, user, ids, name, context=None):
+    def get_mechanism(self, ids, name):
         if not ids:
             return []
         res = {}
-        for party in self.browse(cursor, user, ids, context=context):
+        for party in self.browse(ids):
             res[party.id] = ''
             for mechanism in party.contact_mechanisms:
                 if mechanism.type == name:
@@ -133,26 +131,25 @@ class Party(ModelSQL, ModelView):
                     break
         return res
 
-    def create(self, cursor, user, values, context=None):
+    def create(self, values):
         sequence_obj = self.pool.get('ir.sequence')
         config_obj = self.pool.get('party.configuration')
 
         values = values.copy()
         if not values.get('code'):
-            config = config_obj.browse(cursor, user, 1, context=context)
-            values['code'] = sequence_obj.get_id(cursor, user,
-                config.party_sequence.id, context=context)
+            config = config_obj.browse(1)
+            values['code'] = sequence_obj.get_id(config.party_sequence.id)
 
         values['code_length'] = len(values['code'])
-        return super(Party, self).create(cursor, user, values, context=context)
+        return super(Party, self).create(values)
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         if vals.get('code'):
             vals = vals.copy()
             vals['code_length'] = len(vals['code'])
-        return super(Party, self).write(cursor, user, ids, vals, context=context)
+        return super(Party, self).write(ids, vals)
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         address_obj = self.pool.get('party.address')
 
         int_id = False
@@ -166,56 +163,52 @@ class Party(ModelSQL, ModelView):
         default['code'] = False
         default['addresses'] = False
         new_ids = []
-        for party in self.browse(cursor, user, ids, context=context):
-            new_id = super(Party, self).copy(cursor, user, party.id,
-                    default=default, context=context)
-            address_obj.copy(cursor, user, [x.id for x in party.addresses],
+        for party in self.browse(ids):
+            new_id = super(Party, self).copy(party.id, default=default)
+            address_obj.copy([x.id for x in party.addresses],
                     default={
                         'party': new_id,
-                        }, context=context)
+                        })
             new_ids.append(new_id)
 
         if int_id:
             return new_ids[0]
         return new_ids
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, [('code',) + clause[1:]],
-                order=[], context=context)
+    def search_rec_name(self, name, clause):
+        ids = self.search([('code',) + clause[1:]], order=[]) 
         if ids:
-            ids += self.search(cursor, user, [('name',) + clause[1:]],
-                    order=[], context=context)
+            ids += self.search([('name',) + clause[1:]], order=[])
             return [('id', 'in', ids)]
         return [('name',) + clause[1:]]
 
-    def address_get(self, cursor, user, party_id, type=None, context=None):
+    def address_get(self, party_id, type=None):
         """
         Try to find an address for the given type, if no type match
         the first address is return.
         """
         address_obj = self.pool.get("party.address")
         address_ids = address_obj.search(
-            cursor, user, [("party", "=", party_id), ("active", "=", True)],
-            order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)
+            [("party", "=", party_id), ("active", "=", True)],
+            order=[('sequence', 'ASC'), ('id', 'ASC')])
         if not address_ids:
             return False
         default_address = address_ids[0]
         if not type:
             return default_address
-        for address in address_obj.browse(cursor, user, address_ids,
-                context=context):
+        for address in address_obj.browse(address_ids):
             if address[type]:
                     return address.id
         return default_address
 
-    def check_vat(self, cursor, user, ids):
+    def check_vat(self, ids):
         '''
         Check the VAT number depending of the country.
         http://sima-pc.com/nif.php
         '''
         if not HAS_VATNUMBER:
             return True
-        for party in self.browse(cursor, user, ids):
+        for party in self.browse(ids):
             vat_number = party.vat_number
 
             if not party.vat_country:
@@ -227,7 +220,7 @@ class Party(ModelSQL, ModelView):
                 #Check if user doesn't have put country code in number
                 if vat_number.startswith(party.vat_country):
                     vat_number = vat_number[len(party.vat_country):]
-                    self.write(cursor, user, party.id, {
+                    self.write(party.id, {
                         'vat_number': vat_number,
                         })
                 else:
@@ -312,18 +305,18 @@ class CheckVIES(Wizard):
                     'try again later.',
             })
 
-    def _choice(self, cursor, user, data, context=None):
+    def _choice(self, data):
         if not HAS_VATNUMBER or not hasattr(vatnumber, 'check_vies'):
             return 'no_check'
         return 'check'
 
-    def _check(self, cursor, user, data, context=None):
+    def _check(self, data):
         party_obj = self.pool.get('party.party')
         res = {
             'parties_succeed': [],
             'parties_failed': [],
         }
-        parties = party_obj.browse(cursor, user, data['ids'], context=context)
+        parties = party_obj.browse(data['ids'])
         for party in parties:
             if not party.vat_code:
                 continue
@@ -342,8 +335,7 @@ class CheckVIES(Wizard):
                             or e.faultstring.find('MS_UNAVAILABLE') \
                             or e.faultstring.find('TIMEOUT') \
                             or e.faultstring.find('SERVER_BUSY'):
-                        self.raise_user_error(cursor, 'vies_unavailable',
-                                context=context)
+                        self.raise_user_error('vies_unavailable')
                 raise
         return res
 

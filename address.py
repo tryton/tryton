@@ -42,14 +42,14 @@ class Address(ModelSQL, ModelView):
             'write_party': 'You can not modify the party of an address!',
             })
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def get_full_address(self, cursor, user, ids, name, context=None):
+    def get_full_address(self, ids, name):
         if not ids:
             return {}
         res = {}
-        for address in self.browse(cursor, user, ids, context=context):
+        for address in self.browse(ids):
             res[address.id] = ''
             if address.name:
                 res[address.id] += address.name
@@ -81,34 +81,32 @@ class Address(ModelSQL, ModelView):
                     res[address.id] += address.country.name
         return res
 
-    def get_rec_name(self, cursor, user, ids, name, context=None):
+    def get_rec_name(self, ids, name):
         if not ids:
             return {}
         res = {}
-        for address in self.browse(cursor, user, ids, context=context):
+        for address in self.browse(ids):
             res[address.id] = ", ".join(x for x in [address.name,
                 address.party.rec_name, address.zip, address.city] if x)
         return res
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, ['OR',
+    def search_rec_name(self, name, clause):
+        ids = self.search(['OR',
             ('zip',) + clause[1:],
             ('city',) + clause[1:],
             ('name',) + clause[1:],
-            ], order=[], context=context)
+            ], order=[])
         if ids:
             return [('id', 'in', ids)]
         return [('party',) + clause[1:]]
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         if 'party' in vals:
             if isinstance(ids, (int, long)):
                 ids = [ids]
-            for address in self.browse(cursor, user, ids, context=context):
+            for address in self.browse(ids):
                 if address.party.id != vals['party']:
-                    self.raise_user_error(cursor, 'write_party',
-                            context=context)
-        return super(Address, self).write(cursor, user, ids, vals,
-                context=context)
+                    self.raise_user_error('write_party')
+        return super(Address, self).write(ids, vals)
 
 Address()

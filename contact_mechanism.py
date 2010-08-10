@@ -75,27 +75,27 @@ class ContactMechanism(ModelSQL, ModelView):
                     'a contact mechanism!',
             })
 
-    def default_type(self, cursor, user, context=None):
+    def default_type(self):
         return 'phone'
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def get_value(self, cursor, user, ids, names, context=None):
+    def get_value(self, ids, names):
         res = {}
         for name in names:
             res[name] = {}
-        for mechanism in self.browse(cursor, user, ids, context=context):
+        for mechanism in self.browse(ids):
             for name in names:
                 res[name][mechanism.id] = mechanism.value
         return res
 
-    def set_value(self, cursor, user, ids, name, value, context=None):
-        self.write(cursor, user, ids, {
+    def set_value(self, ids, name, value):
+        self.write(ids, {
             'value': value,
-            }, context=context)
+            })
 
-    def _change_value(self, cursor, user, value, context=None):
+    def _change_value(self, value):
         return {
             'value': value,
             'website': value,
@@ -105,39 +105,31 @@ class ContactMechanism(ModelSQL, ModelView):
             'other_value': value,
         }
 
-    def on_change_value(self, cursor, user, vals, context=None):
-        return self._change_value(cursor, user, vals.get('value'),
-                context=context)
+    def on_change_value(self, vals):
+        return self._change_value(vals.get('value'))
 
-    def on_change_website(self, cursor, user, vals, context=None):
-        return self._change_value(cursor, user, vals.get('website'),
-                context=context)
+    def on_change_website(self, vals):
+        return self._change_value(vals.get('website'))
 
-    def on_change_email(self, cursor, user, vals, context=None):
-        return self._change_value(cursor, user, vals.get('email'),
-                context=context)
+    def on_change_email(self, vals):
+        return self._change_value(vals.get('email'))
 
-    def on_change_skype(self, cursor, user, vals, context=None):
-        return self._change_value(cursor, user, vals.get('skype'),
-                context=context)
+    def on_change_skype(self, vals):
+        return self._change_value(vals.get('skype'))
 
-    def on_change_sip(self, cursor, user, vals, context=None):
-        return self._change_value(cursor, user, vals.get('sip'),
-                context=context)
+    def on_change_sip(self, vals):
+        return self._change_value(vals.get('sip'))
 
-    def on_change_other_value(self, cursor, user, vals, context=None):
-        return self._change_value(cursor, user, vals.get('other_value'),
-                context=context)
+    def on_change_other_value(self, vals):
+        return self._change_value(vals.get('other_value'))
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         if 'party' in vals:
             if isinstance(ids, (int, long)):
                 ids = [ids]
-            for mechanism in self.browse(cursor, user, ids, context=context):
+            for mechanism in self.browse(ids):
                 if mechanism.party.id != vals['party']:
-                    self.raise_user_error(cursor, 'write_party',
-                            context=context)
-        return super(ContactMechanism, self).write(cursor, user, ids, vals,
-                context=context)
+                    self.raise_user_error('write_party')
+        return super(ContactMechanism, self).write(ids, vals)
 
 ContactMechanism()

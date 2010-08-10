@@ -37,16 +37,16 @@ class Category(ModelSQL, ModelView):
         })
         self._order.insert(1, ('name', 'ASC'))
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return 1
 
-    def check_name(self, cursor, user, ids):
-        for category in self.browse(cursor, user, ids):
+    def check_name(self, ids):
+        for category in self.browse(ids):
             if SEPARATOR in category.name:
                 return False
         return True
 
-    def get_rec_name(self, cursor, user, ids, name, context=None):
+    def get_rec_name(self, ids, name):
         if not ids:
             return {}
         res = {}
@@ -57,11 +57,11 @@ class Category(ModelSQL, ModelView):
                 return _name(category.parent) + SEPARATOR + category.name
             else:
                 return category.name
-        for category in self.browse(cursor, user, ids, context=context):
+        for category in self.browse(ids):
             res[category.id] = _name(category)
         return res
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
+    def search_rec_name(self, name, clause):
         if isinstance(clause[2], basestring):
             values = clause[2].split(SEPARATOR)
             values.reverse()
@@ -70,7 +70,7 @@ class Category(ModelSQL, ModelView):
             for name in values:
                 domain.append((field, clause[1], name))
                 field = 'parent.' + field
-            ids = self.search(cursor, user, domain, order=[], context=context)
+            ids = self.search(domain, order=[])
             return [('id', 'in', ids)]
         #TODO Handle list
         return [('name',) + clause[1:]]
