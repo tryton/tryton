@@ -1,11 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Company"
+from __future__ import with_statement
 import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
 from trytond.pyson import Eval, If, In, Get
+from trytond.transaction import Transaction
 
 
 class Company(ModelSQL, ModelView):
@@ -32,7 +33,7 @@ class Company(ModelSQL, ModelView):
             'recursive_companies': 'You can not create recursive companies!',
         })
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         party_obj = self.pool.get('party.party')
 
         int_id = False
@@ -43,22 +44,19 @@ class Company(ModelSQL, ModelView):
             default = {}
         default = default.copy()
         new_ids = []
-        for company in self.browse(cursor, user, ids, context=context):
-            default['party'] = party_obj.copy(cursor, user, company.party.id,
-                    context=context)
-            new_id = super(Company, self).copy(cursor, user, company.id,
-                    default=default, context=context)
+        for company in self.browse(ids):
+            default['party'] = party_obj.copy(company.party.id)
+            new_id = super(Company, self).copy(company.id, default=default)
             new_ids.append(new_id)
 
         if int_id:
             return new_ids[0]
         return new_ids
 
-    def write(self, cursor, user, ids, vals, context=None):
-        res = super(Company, self).write(cursor, user, ids, vals,
-                context=context)
+    def write(self, ids, vals):
+        res = super(Company, self).write(ids, vals)
         # Restart the cache on the domain_get method
-        self.pool.get('ir.rule').domain_get(cursor.dbname)
+        self.pool.get('ir.rule').domain_get.reset()
         return res
 
 Company()
@@ -99,21 +97,17 @@ class User(ModelSQL, ModelView):
                     'a child of your main company!',
         })
 
-    def default_main_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        if context.get('company'):
-            return context['company']
-        return False
+    def default_main_company(self):
+        return Transaction().context.get('company') or False
 
-    def default_company(self, cursor, user, context=None):
-        return self.default_main_company(cursor, user, context=context)
+    def default_company(self):
+        return self.default_main_company()
 
-    def get_companies(self, cursor, user_id, ids, name, context=None):
+    def get_companies(self, ids, name):
         company_obj = self.pool.get('company.company')
         res = {}
         company_childs = {}
-        for user in self.browse(cursor, user_id, ids, context=context):
+        for user in self.browse(ids):
             res[user.id] = []
             company_id = False
             if user.company:
@@ -124,30 +118,29 @@ class User(ModelSQL, ModelView):
                 if company_id in company_childs:
                     company_ids = company_childs[company_id]
                 else:
-                    company_ids = company_obj.search(cursor, user_id, [
+                    company_ids = company_obj.search([
                         ('parent', 'child_of', [company_id]),
-                        ], context=context)
+                        ])
                     company_childs[company_id] = company_ids
                 if company_ids:
                     res[user.id].extend(company_ids)
         return res
 
-    def get_status_bar(self, cursor, user_id, ids, name, context=None):
-        res = super(User, self).get_status_bar(cursor, user_id, ids, name,
-                context=context)
-        for user in self.browse(cursor, user_id, ids, context=context):
+    def get_status_bar(self, ids, name):
+        res = super(User, self).get_status_bar(ids, name)
+        for user in self.browse(ids):
             if user.company:
                 res[user.id] += ' ' + user.company.name
         return res
 
-    def on_change_main_company(self, cursor, user, vals, context=None):
+    def on_change_main_company(self, vals):
         return {'company': vals.get('main_company', False)}
 
-    def check_company(self, cursor, user_id, ids):
+    def check_company(self, ids):
         company_obj = self.pool.get('company.company')
-        for user in self.browse(cursor, user_id, ids):
+        for user in self.browse(ids):
             if user.main_company:
-                companies = company_obj.search(cursor, user_id, [
+                companies = company_obj.search([
                     ('parent', 'child_of', [user.main_company.id]),
                     ])
                 if user.company.id and (user.company.id not in companies):
@@ -156,23 +149,21 @@ class User(ModelSQL, ModelView):
                 return False
         return True
 
-    def _get_preferences(self, cursor, user_id, user, context_only=False,
-            context=None):
-        res = super(User, self)._get_preferences(cursor, user_id, user,
-                context_only=context_only, context=context)
+    def _get_preferences(self, user, context_only=False):
+        res = super(User, self)._get_preferences(user, 
+                context_only=context_only)
         if not context_only:
             res['main_company'] = user.main_company.id
         if user.employee:
             res['employee'] = user.employee.id
         return res
 
-    def get_preferences_fields_view(self, cursor, user_id, context=None):
+    def get_preferences_fields_view(self):
         company_obj = self.pool.get('company.company')
 
-        user = self.browse(cursor, user_id, user_id, context=context)
+        user = self.browse(Transaction().user)
 
-        res = super(User, self).get_preferences_fields_view(cursor, user_id,
-                context=context)
+        res = super(User, self).get_preferences_fields_view()
         res = copy.deepcopy(res)
         return res
 
@@ -187,22 +178,20 @@ class Property(ModelSQL, ModelView):
                     Get(Eval('context', {}), 'company', 0)),
             ])
 
-    def _set_values(self, cursor, user_id, name, model, res_id, val, field_id,
-            context=None):
+    def _set_values(self, name, model, res_id, val, field_id):
         user_obj = self.pool.get('res.user')
-        user = user_obj.browse(cursor, user_id, user_id, context=context)
-        res = super(Property, self)._set_values(cursor, user_id, name, model,
-                res_id, val, field_id, context=context)
-        if user_id:
+        user = user_obj.browse(Transaction().user)
+        res = super(Property, self)._set_values(name, model, res_id, val, 
+                field_id)
+        if user:
             res['company'] = user.company.id
         return res
 
-    def search(self, cursor, user, domain, offset=0, limit=None, order=None,
-            context=None, count=False):
-        if user == 0:
+    def search(self, domain, offset=0, limit=None, order=None, count=False):
+        if Transaction().user == 0:
             domain = ['AND', domain[:], ('company', '=', False)]
-        return super(Property, self).search(cursor, user, domain, offset=offset,
-                limit=limit, order=order, context=context, count=count)
+        return super(Property, self).search(domain, offset=offset,
+                limit=limit, order=order, count=count)
 
 Property()
 
@@ -219,12 +208,8 @@ class Sequence(ModelSQL, ModelView):
         super(Sequence, self).__init__()
         self._order.insert(0, ('company', 'ASC'))
 
-    def default_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        if context.get('company'):
-            return context['company']
-        return False
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
 Sequence()
 
@@ -276,19 +261,18 @@ class CompanyConfig(Wizard):
         },
     }
 
-    def _add(self, cursor, user, data, context=None):
+    def _add(self, data):
         company_obj = self.pool.get('company.company')
         user_obj = self.pool.get('res.user')
 
-        company_id = company_obj.create(cursor, user, data['form'],
-                context=context)
-        user_ids = user_obj.search(cursor, user, [
+        company_id = company_obj.create(data['form'])
+        user_ids = user_obj.search([
             ('main_company', '=', False),
-            ], context=context)
-        user_obj.write(cursor, user, user_ids, {
+            ])
+        user_obj.write(user_ids, {
             'main_company': company_id,
             'company': company_id,
-            }, context=context)
+            })
         return {}
 
 CompanyConfig()
@@ -296,32 +280,16 @@ CompanyConfig()
 
 class CompanyReport(Report):
 
-    def parse(self, cursor, user_id, report, objects, datas, context):
-        user_obj = self.pool.get('res.user')
-
-        user = user_obj.browse(cursor, user_id, user_id, context)
-        if context is None:
-            context = {}
-        context = context.copy()
-        context['company'] = user.company
-
-        return super(CompanyReport, self).parse(cursor, user_id, report,
-                objects, datas, context)
+    def parse(self, report, objects, datas, localcontext=None):
+        user = self.pool.get('res.user').browse(Transaction().user)
+        if localcontext is None:
+            localcontext = {}
+        localcontext['company'] = user.company.id
+        return super(CompanyReport, self).parse(report, objects, datas,
+                localcontext=localcontext)
 
 
 class LetterReport(CompanyReport):
     _name = 'party.letter'
-
-    def parse(self, cursor, user_id, report, objects, datas, context):
-        user_obj = self.pool.get('res.user')
-
-        user = user_obj.browse(cursor, user_id, user_id, context)
-        if context is None:
-            context = {}
-        context = context.copy()
-        context['user'] = user
-
-        return super(LetterReport, self).parse(cursor, user_id, report,
-                objects, datas, context)
 
 LetterReport()
