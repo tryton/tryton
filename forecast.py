@@ -1,12 +1,14 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from __future__ import with_statement
+import datetime
+import time
+from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelWorkflow, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond.backend import TableHandler
-import datetime
-import time
-from dateutil.relativedelta import relativedelta
+from trytond.transaction import Transaction
 
 STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -63,33 +65,31 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
         self._order.insert(0, ('from_date', 'DESC'))
         self._order.insert(1, ('location', 'ASC'))
 
-    def init(self, cursor, module_name):
-        super(Forecast, self).init(cursor, module_name)
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        super(Forecast, self).init(module_name)
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
         table.index_action('create_date', action='add')
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'draft'
 
-    def default_destination(self, cursor, user, context=None):
+    def default_destination(self):
         location_obj = self.pool.get('stock.location')
-        location_ids = location_obj.search(cursor, user,
-                self.destination.domain, context=context)
+        location_ids = location_obj.search(
+                self.destination.domain)
         if len(location_ids) == 1:
             return location_ids[0]
         return False
 
-    def default_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        if context.get('company'):
-            return context['company']
-        return False
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
-    def check_date_overlap(self, cursor, user, ids):
-        for forecast in self.browse(cursor, user, ids):
+    def check_date_overlap(self, ids):
+        cursor = Transaction().cursor
+        for forecast in self.browse(ids):
             if forecast.state != 'done':
                 continue
             cursor.execute('SELECT id ' \
@@ -110,34 +110,35 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
                 return False
         return True
 
-    def button_draft(self, cursor, user, ids, context=None):
-        self.workflow_trigger_create(cursor, user, ids, context=context)
+    def button_draft(self, ids):
+        self.workflow_trigger_create(ids)
         return True
 
-    def set_state_draft(self, cursor, user, forecast_id, context=None):
+    def set_state_draft(self, forecast_id):
         line_obj = self.pool.get("stock.forecast.line")
-        forecast = self.browse(cursor, user, forecast_id, context=context)
+        forecast = self.browse(forecast_id)
         if forecast.state == "done":
-            line_obj.cancel_moves(cursor, user, forecast.lines, context=context)
-        self.write(cursor, user, forecast_id, {
+            line_obj.cancel_moves(forecast.lines)
+        self.write(forecast_id, {
             'state': 'draft',
-            }, context=context)
+            })
 
-    def set_state_cancel(self, cursor, user, forecast_id, context=None):
-        self.write(cursor, user, forecast_id, {
+    def set_state_cancel(self, forecast_id):
+        self.write(forecast_id, {
             'state': 'cancel',
-            }, context=context)
+            })
 
-    def set_state_done(self, cursor, user, forecast_id, context=None):
+    def set_state_done(self, forecast_id):
         line_obj = self.pool.get('stock.forecast.line')
-        forecast = self.browse(cursor, user, forecast_id, context=context)
+        forecast = self.browse(forecast_id)
 
         for line in forecast.lines:
-            line_obj.create_moves(cursor, user, line, context=context)
-        self.write(
-            cursor, user, forecast_id, {'state': 'done',}, context=context)
+            line_obj.create_moves(line)
+        self.write(forecast_id, {
+            'state': 'done',
+            })
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         line_obj = self.pool.get('stock.forecast.line')
 
         int_id = False
@@ -151,13 +152,12 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
         default['lines'] = False
 
         new_ids = []
-        for forecast in self.browse(cursor, user, ids, context=context):
-            new_id = super(Forecast, self).copy(cursor, user, forecast.id,
-                    default=default, context=context)
-            line_obj.copy(cursor, user, [x.id for x in forecast.lines],
+        for forecast in self.browse(ids):
+            new_id = super(Forecast, self).copy(forecast.id, default=default)
+            line_obj.copy([x.id for x in forecast.lines],
                     default={
                         'forecast': new_id,
-                    }, context=context)
+                    })
             new_ids.append(new_id)
 
         if int_id:
@@ -204,91 +204,83 @@ class ForecastLine(ModelSQL, ModelView):
              'Product must be unique by forcast!'),
         ]
 
-    def default_unit_digits(self, cursor, user, context=None):
+    def default_unit_digits(self):
         return 2
 
-    def default_minimal_quantity(self, cursor, user, context=None):
+    def default_minimal_quantity(self):
         return 1.0
 
-    def on_change_product(self, cursor, user, vals, context=None):
+    def on_change_product(self, vals):
         product_obj = self.pool.get('product.product')
         res = {}
         res['unit_digits'] = 2
         if vals.get('product'):
-            product = product_obj.browse(cursor, user, vals['product'],
-                    context=context)
+            product = product_obj.browse(vals['product'])
             res['uom'] = product.default_uom.id
             res['uom.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
         return res
 
-    def on_change_uom(self, cursor, user, vals, context=None):
+    def on_change_uom(self, vals):
         uom_obj = self.pool.get('product.uom')
         res = {}
         res['unit_digits'] = 2
         if vals.get('uom'):
-            uom = uom_obj.browse(cursor, user, vals['uom'], context=context)
+            uom = uom_obj.browse(vals['uom'])
             res['unit_digits'] = uom.digits
         return res
 
-    def get_unit_digits(self, cursor, user, ids, name, context=None):
+    def get_unit_digits(self, ids, name):
         res = {}
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             res[line.id] = line.product.default_uom.digits
         return res
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         if default is None:
             default = {}
         default = default.copy()
         default['moves'] = False
-        return super(ForecastLine, self).copy(cursor, user, ids,
-                default=default, context=context)
+        return super(ForecastLine, self).copy(ids, default=default)
 
-    def create_moves(self, cursor, user, line, context=None):
+    def create_moves(self, line):
         move_obj = self.pool.get('stock.move')
         uom_obj = self.pool.get('product.uom')
         delta = line.forecast.to_date - line.forecast.from_date
         delta = delta.days + 1
         nb_packet = int(line.quantity/line.minimal_quantity)
-        distribution = self.distribute(
-            cursor, user, delta, nb_packet, context=context)
+        distribution = self.distribute(delta, nb_packet)
         unit_price = False
         if line.forecast.destination.type == 'customer':
             unit_price = line.product.list_price
-            unit_price = uom_obj.compute_price(
-                cursor, user, line.product.default_uom, unit_price, line.uom,
-                context=context)
+            unit_price = uom_obj.compute_price(line.product.default_uom, 
+                    unit_price, line.uom)
 
         moves = []
         for day, qty in distribution.iteritems():
             if qty == 0.0:
                 continue
-            mid = move_obj.create(
-                cursor, user,
-                {'from_location': line.forecast.location.id,
-                 'to_location': line.forecast.destination.id,
-                 'product': line.product.id,
-                 'uom': line.uom.id,
-                 'quantity': qty * line.minimal_quantity,
-                 'planned_date': line.forecast.from_date + datetime.timedelta(day),
-                 'company': line.forecast.company.id,
-                 'currency':line.forecast.company.currency,
-                 'unit_price': unit_price,
-                 },
-                context=context)
+            mid = move_obj.create({
+                'from_location': line.forecast.location.id,
+                'to_location': line.forecast.destination.id,
+                'product': line.product.id,
+                'uom': line.uom.id,
+                'quantity': qty * line.minimal_quantity,
+                'planned_date': line.forecast.from_date + datetime.timedelta(day),
+                'company': line.forecast.company.id,
+                'currency':line.forecast.company.currency,
+                'unit_price': unit_price,
+                })
             moves.append(('add',mid))
-        self.write(cursor, user, line.id, {'moves': moves}, context=context)
+        self.write(line.id, {'moves': moves})
 
-    def cancel_moves(self, cursor, user, lines, context=None):
+    def cancel_moves(self, lines):
         move_obj = self.pool.get('stock.move')
-        move_obj.write(
-            cursor, user, [m.id for l in lines for m in l.moves], {'state': 'cancel'},
-            context=context)
-        move_obj.delete(
-            cursor, user, [m.id for l in lines for m in l.moves], context=context)
+        move_obj.write([m.id for l in lines for m in l.moves], 
+                {'state': 'cancel'})
+        move_obj.delete([m.id for l in lines for m in l.moves])
 
-    def distribute(self, cursor, user, delta, qty, context=None):
+    def distribute(self, delta, qty):
         range_delta = range(delta)
         a = {}.fromkeys(range_delta, 0)
         while qty > 0:
@@ -394,39 +386,38 @@ class ForecastComplete(Wizard):
             })
 
 
-    def _set_default_dates(self, cursor, user, data, context=None):
+    def _set_default_dates(self, data):
         """
         Forecast dates shifted by one year.
         """
         forecast_obj = self.pool.get('stock.forecast')
-        forecast = forecast_obj.browse(cursor, user, data['id'], context=context)
+        forecast = forecast_obj.browse(data['id'])
 
         res = {}
         for field in ("to_date", "from_date"):
             res[field] = forecast[field] - relativedelta(years=1)
         return res
 
-    def _get_product_quantity(self, cursor, user, data, context=None):
+    def _get_product_quantity(self, data):
         forecast_obj = self.pool.get('stock.forecast')
         product_obj = self.pool.get('product.product')
-        forecast = forecast_obj.browse(cursor, user, data['id'], context=context)
+        forecast = forecast_obj.browse(data['id'])
         if data['form']['from_date'] > data['form']['to_date']:
-            self.raise_user_error(cursor, 'from_to_date', context=context)
-        local_context = context and context.copy() or {}
-        local_context['stock_destinations'] = [forecast.destination.id]
-        local_context['stock_date_start'] = data['form']['from_date']
-        local_context['stock_date_end'] = data['form']['to_date']
+            self.raise_user_error('from_to_date')
 
-        return product_obj.products_by_location(
-            cursor, user, [forecast.location.id], with_childs=True,
-            skip_zero=False, context=local_context)
+        with Transaction().set_context(
+                stock_destination=[forecast.destination.id],
+                stock_date_start=data['form']['from_date'],
+                stock_date_end=data['form']['to_date']):
+            return product_obj.products_by_location([forecast.location.id], 
+                    with_childs=True, skip_zero=False)
 
-    def _set_default_products(self, cursor, user, data, context=None):
+    def _set_default_products(self, data):
         """
         Collect products for which there is an outgoing stream between
         the given location and the destination.
         """
-        pbl = self._get_product_quantity(cursor, user, data, context=context)
+        pbl = self._get_product_quantity(data)
         products = []
         for (_, product), qty in pbl.iteritems():
             if qty < 0:
@@ -434,23 +425,22 @@ class ForecastComplete(Wizard):
         data['form'].update({'products': products})
         return data['form']
 
-    def _complete(self, cursor, user, data, context=None):
+    def _complete(self, data):
         forecast_obj = self.pool.get('stock.forecast')
         forecast_line_obj = self.pool.get('stock.forecast.line')
         product_obj = self.pool.get('product.product')
 
         prod2line = {}
-        forecast_line_ids = forecast_line_obj.search(
-            cursor, user, [('forecast', '=', data['id'])], context=context)
-        for forecast_line in forecast_line_obj.browse(
-            cursor, user, forecast_line_ids, context=context):
+        forecast_line_ids = forecast_line_obj.search([
+            ('forecast', '=', data['id']),
+            ])
+        for forecast_line in forecast_line_obj.browse(forecast_line_ids):
             prod2line[forecast_line.product.id] = forecast_line.id
 
-        pbl = self._get_product_quantity(cursor, user, data, context=context)
+        pbl = self._get_product_quantity(data)
         product_ids = [x[1] for x in pbl]
         prod2uom = {}
-        for product in product_obj.browse(cursor, user, product_ids,
-                                          context=context):
+        for product in product_obj.browse(product_ids):
             prod2uom[product.id] = product.default_uom.id
 
         if data['form'].get('products'):
@@ -464,25 +454,21 @@ class ForecastComplete(Wizard):
             if -qty <= 0:
                 continue
             if product in prod2line:
-                forecast_line_obj.write(
-                    cursor, user, prod2line[product],
-                    {'product': product,
-                     'quantity': -qty,
-                     'uom': prod2uom[product],
-                     'forecast': data['id'],
-                     'minimal_quantity': min(1, -qty),
-                     },
-                    context=context)
+                forecast_line_obj.write(prod2line[product],{
+                    'product': product,
+                    'quantity': -qty,
+                    'uom': prod2uom[product],
+                    'forecast': data['id'],
+                    'minimal_quantity': min(1, -qty),
+                    })
             else:
-                forecast_line_obj.create(
-                    cursor, user,
-                    {'product': product,
-                     'quantity': -qty,
-                     'uom': prod2uom[product],
-                     'forecast': data['id'],
-                     'minimal_quantity': min(1, -qty),
-                     },
-                    context=context)
+                forecast_line_obj.create({
+                    'product': product,
+                    'quantity': -qty,
+                    'uom': prod2uom[product],
+                    'forecast': data['id'],
+                    'minimal_quantity': min(1, -qty),
+                    })
         return {}
 
 ForecastComplete()
