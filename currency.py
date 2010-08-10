@@ -1,11 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
-"Currency"
+import time
+import datetime
+from decimal import Decimal, ROUND_HALF_EVEN
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.tools import safe_eval, datetime_strftime
-import time
-from decimal import Decimal, ROUND_HALF_EVEN
-import datetime
+from trytond.transaction import Transaction
 
 
 class Currency(ModelSQL, ModelView):
@@ -50,53 +50,53 @@ class Currency(ModelSQL, ModelView):
             'compute': False,
             })
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def default_rounding(self, cursor, user, context=None):
+    def default_rounding(self):
         return Decimal('0.01')
 
-    def default_digits(self, cursor, user, context=None):
+    def default_digits(self):
         return 2
 
-    def default_mon_grouping(self, cursor, user, context=None):
+    def default_mon_grouping(self):
         return '[]'
 
-    def default_mon_thousands_sep(self, cursor, user, context=None):
+    def default_mon_thousands_sep(self):
         return ','
 
-    def default_mon_decimal_point(self, cursor, user, context=None):
+    def default_mon_decimal_point(self):
         return '.'
 
-    def default_p_sign_posn(self, cursor, user, context=None):
+    def default_p_sign_posn(self):
         return 1
 
-    def default_n_sign_posn(self, cursor, user, context=None):
+    def default_n_sign_posn(self):
         return 1
 
-    def default_negative_sign(self, cursor, user, context=None):
+    def default_negative_sign(self):
         return '-'
 
-    def default_positive_sign(self, cursor, user, context=None):
+    def default_positive_sign(self):
         return ''
 
-    def default_p_cs_precedes(self, cursor, user, context=None):
+    def default_p_cs_precedes(self):
         return True
 
-    def default_n_cs_precedes(self, cursor, user, context=None):
+    def default_n_cs_precedes(self):
         return True
 
-    def default_p_sep_by_space(self, cursor, user, context=None):
+    def default_p_sep_by_space(self):
         return False
 
-    def default_n_sep_by_space(self, cursor, user, context=None):
+    def default_n_sep_by_space(self):
         return False
 
-    def check_mon_grouping(self, cursor, user, ids):
+    def check_mon_grouping(self, ids):
         '''
         Check if mon_grouping is list of numbers
         '''
-        for currency in self.browse(cursor, user, ids):
+        for currency in self.browse(ids):
             try:
                 grouping = safe_eval(currency.mon_grouping)
                 for i in grouping:
@@ -106,22 +106,21 @@ class Currency(ModelSQL, ModelView):
                 return False
         return True
 
-    def check_xml_record(self, cursor, user, ids, values, context=None):
+    def check_xml_record(self, ids, values):
         return True
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
+    def search_rec_name(self, name, clause):
         ids = []
         field = None
         for field in ('code', 'numeric_code'):
-            ids = self.search(cursor, user, [(field,) + clause[1:]], limit=1,
-                    context=context)
+            ids = self.search([(field,) + clause[1:]], limit=1)
             if ids:
                 break
         if ids:
             return [(field,) + clause[1:]]
         return [(self._rec_name,) + clause[1:]]
 
-    def on_change_with_rate(self, cursor, user, vals, context=None):
+    def on_change_with_rate(self, vals):
         now = datetime.date.today()
         closer = datetime.date.min
         res = Decimal('0.0')
@@ -133,7 +132,7 @@ class Currency(ModelSQL, ModelView):
                 closer = rate['date']
         return res
 
-    def get_rate(self, cursor, user, ids, name, context=None):
+    def get_rate(self, ids, name):
         '''
         Return the rate at the date from the context or the current date
         '''
@@ -141,12 +140,9 @@ class Currency(ModelSQL, ModelView):
         date_obj = self.pool.get('ir.date')
 
         res = {}
-        if context is None:
-            context = {}
-        date = context.get('date', date_obj.today(cursor, user,
-            context=context))
+        date = Transaction().context.get('date', date_obj.today())
         for currency_id in ids:
-            rate_ids = rate_obj.search(cursor, user, [
+            rate_ids = rate_obj.search([
                 ('currency', '=', currency_id),
                 ('date', '<=', date),
                 ], limit=1, order=[('date', 'DESC')])
@@ -155,7 +151,7 @@ class Currency(ModelSQL, ModelView):
             else:
                 res[currency_id] = 0.0
         rate_ids = [x for x in res.values() if x]
-        rates = rate_obj.browse(cursor, user, rate_ids, context=context)
+        rates = rate_obj.browse(rate_ids)
         id2rate = {}
         for rate in rates:
             id2rate[rate.id] = rate
@@ -164,7 +160,7 @@ class Currency(ModelSQL, ModelView):
                 res[currency_id] = id2rate[res[currency_id]].rate
         return res
 
-    def round(self, cursor, user, currency, amount, rounding=ROUND_HALF_EVEN):
+    def round(self, currency, amount, rounding=ROUND_HALF_EVEN):
         '''
         Round the amount depending of the currency
 
@@ -178,12 +174,11 @@ class Currency(ModelSQL, ModelView):
         return (amount / currency.rounding).quantize(Decimal('1.'),
                 rounding=rounding) * currency.rounding
 
-    def is_zero(self, cursor, user, currency, amount):
+    def is_zero(self, currency, amount):
         'Return True if the amount can be considered as zero for the currency'
-        return abs(self.round(cursor, user, currency, amount)) < currency.rounding
+        return abs(self.round(currency, amount)) < currency.rounding
 
-    def compute(self, cursor, user, from_currency, amount, to_currency,
-            round=True, context=None):
+    def compute(self, from_currency, amount, to_currency, round=True):
         '''
         Take a currency and an amount
         Return the amount to the new currency
@@ -192,37 +187,34 @@ class Currency(ModelSQL, ModelView):
         date_obj = self.pool.get('ir.date')
         lang_obj = self.pool.get('ir.lang')
 
-        if context is None:
-            context = {}
         if isinstance(from_currency, (int, long)):
-            from_currency = self.browse(cursor, user, from_currency, context=context)
+            from_currency = self.browse(from_currency)
         if isinstance(to_currency, (int, long)):
-            to_currency = self.browse(cursor, user, to_currency, context=context)
+            to_currency = self.browse(to_currency)
         if to_currency == from_currency:
             if round:
-                return self.round(cursor, user, to_currency, amount)
+                return self.round(to_currency, amount)
             else:
                 return amount
         if (not from_currency.rate) or (not to_currency.rate):
-            date = context.get('date', date_obj.today(cursor, user,
-                context=context))
+            date = Transaction().context.get('date', date_obj.today())
             if not from_currency.rate:
                 name = from_currency.name
             else:
                 name = to_currency.name
 
-            for code in [context.get('language', False) or 'en_US', 'en_US']:
-                lang_ids = lang_obj.search(cursor, user, [
+            for code in [Transaction().language, 'en_US']:
+                lang_ids = lang_obj.search([
                     ('code', '=', code),
-                    ], context=context)
+                    ])
                 if lang_ids:
                     break
-            lang = lang_obj.browse(cursor, user, lang_ids[0], context=context)
+            lang = lang_obj.browse(lang_ids[0])
 
-            self.raise_user_error(cursor, 'no_rate', (name,
-                datetime_strftime(date, str(lang.date))), context=context)
+            self.raise_user_error('no_rate', (name,
+                datetime_strftime(date, str(lang.date))))
         if round:
-            return self.round(cursor, user, to_currency,
+            return self.round(to_currency,
                     amount * to_currency.rate / from_currency.rate)
         else:
             return amount * to_currency.rate / from_currency.rate
@@ -248,11 +240,11 @@ class Rate(ModelSQL, ModelView):
         ]
         self._order.insert(0, ('date', 'DESC'))
 
-    def default_date(self, cursor, user, context=None):
+    def default_date(self):
         date_obj = self.pool.get('ir.date')
-        return date_obj.today(cursor, user, context=context)
+        return date_obj.today()
 
-    def check_xml_record(self, cursor, user, ids, values, context=None):
+    def check_xml_record(self, ids, values):
         return True
 
 Rate()
