@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard
+from trytond.transaction import Transaction
 
 
 class CreateInventoriesInit(ModelView):
@@ -17,18 +18,15 @@ class CreateInventoriesInit(ModelView):
     locations = fields.Many2Many('stock.location', None, None,
             'Locations', required=True, domain=[('type', '=', 'storage')])
 
-    def default_lost_found(self, cursor, user, context=None):
+    def default_lost_found(self):
         location_obj = self.pool.get('stock.location')
-        location_ids = location_obj.search(cursor, user,
-                self.lost_found.domain, context=context)
+        location_ids = location_obj.search(self.lost_found.domain)
         if len(location_ids) == 1:
             return location_ids[0]
         return False
 
-    def default_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        return context.get('company', False)
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
 CreateInventoriesInit()
 
@@ -56,7 +54,7 @@ class CreateInventories(Wizard):
         },
     }
 
-    def _action_create_inventory(self, cursor, user, data, context=None):
+    def _action_create_inventory(self, data):
         inventory_obj = self.pool.get('stock.inventory')
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
@@ -65,19 +63,17 @@ class CreateInventories(Wizard):
         location_ids = data['form']['locations'][0][1] or []
 
         for location_id in location_ids:
-            inventory_ids.append(inventory_obj.create(cursor, user, {
+            inventory_ids.append(inventory_obj.create({
                 'location': location_id,
                 'date': data['form']['date'],
                 'lost_found': data['form']['lost_found'],
                 'company': data['form']['company'],
-                }, context=context))
+                }))
 
-        inventory_obj.complete_lines(cursor, user, inventory_ids,
-                context=context)
+        inventory_obj.complete_lines(inventory_ids)
 
-        act_window_id = model_data_obj.get_id(cursor, user, 'stock',
-                'act_inventory_form', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('stock', 'act_inventory_form')
+        res = act_window_obj.read(act_window_id)
         res['res_id'] = inventory_ids
         return res
 
