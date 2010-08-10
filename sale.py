@@ -1,8 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import copy
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, Not, Equal, Or, Bool
-import copy
 
 
 class Sale(ModelWorkflow, ModelSQL, ModelView):
@@ -27,20 +27,18 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 Not(Bool(Eval('party'))))
         self._reset_columns()
 
-    def on_change_party(self, cursor, user, values, context=None):
+    def on_change_party(self, values):
         party_obj = self.pool.get('party.party')
         price_list_obj = self.pool.get('product.price_list')
-        res = super(Sale, self).on_change_party(cursor, user, values,
-                context=context)
+        res = super(Sale, self).on_change_party(values)
         res['price_list'] = False
         if values.get('party'):
-            party = party_obj.browse(cursor, user, values['party'],
-                    context=context)
+            party = party_obj.browse(values['party'])
             res['price_list'] = party.sale_price_list and \
                     party.sale_price_list.id or False
         if res['price_list']:
-            res['price_list.rec_name'] = price_list_obj.browse(cursor, user,
-                    res['price_list'], context=context).rec_name
+            res['price_list.rec_name'] = price_list_obj.browse(
+                    res['price_list']).rec_name
         return res
 
 Sale()
@@ -65,10 +63,8 @@ class SaleLine(ModelSQL, ModelView):
             self.product.on_change.append('_parent_sale.price_list')
         self._reset_columns()
 
-    def _get_context_sale_price(self, cursor, user, product, vals,
-            context=None):
-        res = super(SaleLine, self)._get_context_sale_price(cursor, user,
-                product, vals, context=context)
+    def _get_context_sale_price(self, product, vals):
+        res = super(SaleLine, self)._get_context_sale_price(product, vals)
         if vals.get('_parent_sale.price_list'):
             res['price_list'] = vals['_parent_sale.price_list']
         return res
