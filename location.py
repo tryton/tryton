@@ -34,9 +34,8 @@ ProductLocation()
 class ShipmentIn(ModelSQL, ModelView):
     _name = 'stock.shipment.in'
 
-    def _get_inventory_moves(self, cursor, user, incoming_move, context=None):
-        res = super(ShipmentIn, self)._get_inventory_moves(cursor, user,
-                incoming_move, context=context)
+    def _get_inventory_moves(self, incoming_move):
+        res = super(ShipmentIn, self)._get_inventory_moves(incoming_move)
         for product_location in incoming_move.product.locations:
             if product_location.warehouse.id != \
                     incoming_move.shipment_in.warehouse.id:
