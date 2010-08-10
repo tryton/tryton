@@ -1,9 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-STATES = {
-    'readonly': "active == False",
-}
+from trytond.transaction import Transaction
 
 
 class Country(ModelSQL, ModelView):
@@ -28,33 +26,33 @@ class Country(ModelSQL, ModelView):
         ]
         self._order.insert(0, ('code', 'ASC'))
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, [('code',) + clause[1:]], limit=1,
-                context=context)
+    def search_rec_name(self, name, clause):
+        ids = self.search([('code',) + clause[1:]], limit=1)
         if ids:
             return [('code',) + clause[1:]]
         return [(self._rec_name,) + clause[1:]]
 
-    def create(self, cursor, user, vals, context=None):
+    def create(self, vals):
         if 'code' in vals and vals['code']:
             vals = vals.copy()
             vals['code'] = vals['code'].upper()
-        new_id = super(Country, self).create(cursor, user, vals, context=context)
-        if 'module' in context:
+        new_id = super(Country, self).create(vals)
+        if 'module' in Transaction().context:
+            cursor = Transaction().cursor
             cursor.execute('INSERT INTO ir_translation ' \
                     '(name, lang, type, src, res_id, value, module, fuzzy) ' \
                     'VALUES (%s, %s, %s, %s, %s, %s, %s, %s)',
                     ('country.country,name', 'en_US', 'model',
-                        vals['name'], new_id, '', context.get('module'),
+                        vals['name'], new_id, '',
+                        Transaction().context.get('module'),
                         False))
         return new_id
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         if 'code' in vals and vals['code']:
             vals = vals.copy()
             vals['code'] = vals['code'].upper()
-        return super(Country, self).write(cursor, user, ids, vals,
-                context=context)
+        return super(Country, self).write(ids, vals)
 
 Country()
 
@@ -155,23 +153,20 @@ class Subdivision(ModelSQL, ModelView):
         super(Subdivision, self).__init__()
         self._order.insert(0, ('code', 'ASC'))
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, [('code',) + clause[1:]], limit=1,
-                context=context)
+    def search_rec_name(self, name, clause):
+        ids = self.search([('code',) + clause[1:]], limit=1)
         if ids:
             return [('code',) + clause[1:]]
         return [(self._rec_name,) + clause[1:]]
 
-    def create(self, cursor, user, vals, context=None):
+    def create(self, vals):
         if 'code' in vals and vals['code']:
             vals['code'] = vals['code'].upper()
-        return super(Subdivision, self).create(cursor, user, vals,
-                context=context)
+        return super(Subdivision, self).create(vals)
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         if 'code' in vals and vals['code']:
             vals['code'] = vals['code'].upper()
-        return super(Subdivision, self).write(cursor, user, ids, vals,
-                context=context)
+        return super(Subdivision, self).write(ids, vals)
 
 Subdivision()
