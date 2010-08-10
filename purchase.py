@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
 import datetime
+from trytond.model import ModelView, ModelSQL, fields
 
 
 class ProductSupplier(ModelSQL, ModelView):
@@ -9,10 +9,9 @@ class ProductSupplier(ModelSQL, ModelView):
     weekdays = fields.One2Many('purchase.product_supplier.day', 'product_supplier',
             'Week Days')
 
-    def compute_supply_date(self, cursor, user, product_supplier, date=None,
-            context=None):
-        res = super(ProductSupplier, self).compute_supply_date(cursor, user,
-                product_supplier, date=date, context=context)
+    def compute_supply_date(self, product_supplier, date=None):
+        res = super(ProductSupplier, self).compute_supply_date(
+                product_supplier, date=date)
         earlier_date = None
         date = res[0]
         next_date = res[1]
@@ -34,8 +33,7 @@ class ProductSupplier(ModelSQL, ModelView):
             res = (new_date, new_next_date)
         return res
 
-    def compute_purchase_date(self, cursor, user, product_supplier, date,
-            context=None):
+    def compute_purchase_date(self, product_supplier, date):
         earlier_date = None
         for day in product_supplier.weekdays:
             weekday = int(day.weekday)
@@ -48,8 +46,8 @@ class ProductSupplier(ModelSQL, ModelView):
             earlier_date = new_date
         if earlier_date:
             date = earlier_date
-        return super(ProductSupplier, self).compute_purchase_date(cursor, user,
-                product_supplier, date, context=context)
+        return super(ProductSupplier, self).compute_purchase_date(
+                product_supplier, date)
 
 ProductSupplier()
 
@@ -76,7 +74,7 @@ class ProductSupplierDay(ModelSQL, ModelView):
         super(ProductSupplierDay, self).__init__()
         self._order.insert(0, ('weekday', 'ASC'))
 
-    def default_weekday(self, cursor, user, context=None):
+    def default_weekday(self):
         return -1
 
 ProductSupplierDay()
