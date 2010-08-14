@@ -1,9 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.modelstorage import OPERATORS
 from trytond.pyson import Not, Bool, Eval
-from decimal import Decimal
+from trytond.transaction import Transaction
 
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
@@ -65,29 +66,28 @@ class Uom(ModelSQL, ModelView):
                 'invalid_factor_and_rate': 'Invalid Factor and Rate values!',
             })
 
-    def check_xml_record(self, cursor, user, ids, values, context=None):
+    def check_xml_record(self, ids, values):
         return True
 
-    def default_rate(self, cursor, user, context=None):
+    def default_rate(self):
         return 1.0
 
-    def default_factor(self, cursor, user, context=None):
+    def default_factor(self):
         return 1.0
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return 1
 
-    def default_rounding(self, cursor, user, context=None):
+    def default_rounding(self):
         return 0.01
 
-    def default_digits(self, cursor, user, context=None):
+    def default_digits(self):
         return 2
 
-    def default_category(self, cursor, user, context=None):
+    def default_category(self):
         category_obj = self.pool.get('product.uom.category')
         product_obj = self.pool.get('product.product')
-        if context is None:
-            context = {}
+        context = Transaction().context
         if 'category' in context:
             if isinstance(context['category'], (tuple, list)) \
                     and len(context['category']) > 1 \
@@ -96,41 +96,39 @@ class Uom(ModelSQL, ModelView):
                 if context['category'][1] == 'uom.category':
                     if not context['category'][0]:
                         return False
-                    uom  = self.browse(cursor, user, context['category'][0],
-                            context=context)
+                    uom = self.browse(context['category'][0])
                     return uom.category.id
                 else:
                     if not context['category'][0]:
                         return False
-                    product = product_obj.browse(cursor, user,
-                            context['category'][0], context=context)
+                    product = product_obj.browse(context['category'][0])
                     return product.default_uom.category.id
         return False
 
-    def on_change_factor(self, cursor, user, value, context=None):
+    def on_change_factor(self, value):
         if value.get('factor', 0.0) == 0.0:
             return {'rate': 0.0}
         return {'rate': round(1.0 / value['factor'], self.rate.digits[1])}
 
-    def on_change_rate(self, cursor, user, value, context=None):
+    def on_change_rate(self, value):
         if value.get('rate', 0.0) == 0.0:
             return {'factor': 0.0}
         return {'factor': round(1.0 / value['rate'], self.factor.digits[1])}
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, ['OR',
+    def search_rec_name(self, name, clause):
+        ids = self.search(['OR',
             (self._rec_name,) + clause[1:],
             ('symbol',) + clause[1:],
-            ], order=[], context=context)
+            ], order=[])
         return [('id', 'in', ids)]
 
     @staticmethod
     def round(number, precision=1.0):
         return round(number / precision) * precision
 
-    def check_factor_and_rate(self, cursor, user, ids):
+    def check_factor_and_rate(self, ids):
         "Check coherence between factor and rate"
-        for uom in self.browse(cursor, user, ids):
+        for uom in self.browse(ids):
             if uom.rate == uom.factor == 0.0:
                 continue
             if uom.rate != round(1.0 / uom.factor, self.rate.digits[1]) and \
@@ -138,30 +136,30 @@ class Uom(ModelSQL, ModelView):
                 return False
         return True
 
-    def write(self, cursor, user, ids, values, context=None):
-        if user == 0:
-            return super(Uom, self).write(cursor, user, ids, values, context)
+    def write(self, ids, values):
+        if Transaction().user == 0:
+            return super(Uom, self).write(ids, values)
         if 'rate' not in values and 'factor' not in values \
                 and 'category' not in values:
-            return super(Uom, self).write(cursor, user, ids, values, context)
+            return super(Uom, self).write(ids, values)
 
         if isinstance(ids, (int, long)):
             ids = [ids]
 
-        uoms = self.browse(cursor, user, ids, context=context)
+        uoms = self.browse(ids)
         old_uom = dict((uom.id, (uom.factor, uom.rate, uom.category.id)) \
                            for uom in uoms)
 
-        res = super(Uom, self).write(cursor, user, ids, values, context)
-        uoms = self.browse(cursor, user, ids, context=context)
+        res = super(Uom, self).write(ids, values)
+        uoms = self.browse(ids)
 
         for uom in uoms:
             if uom.factor != old_uom[uom.id][0] \
                     or uom.rate != old_uom[uom.id][1] \
                     or uom.category.id != old_uom[uom.id][2]:
 
-                self.raise_user_error(cursor, 'change_uom_rate_title',
-                        error_description='change_uom_rate', context=context)
+                self.raise_user_error('change_uom_rate_title',
+                        error_description='change_uom_rate')
         return res
 
     def select_accurate_field(self, uom):
@@ -186,18 +184,14 @@ class Uom(ModelSQL, ModelView):
         else:
             return 'rate'
 
-    def compute_qty(self, cursor, user, from_uom, qty, to_uom=None,
-            round=True, context=None):
+    def compute_qty(self, from_uom, qty, to_uom=None, round=True):
         """
         Convert quantity for given uom's.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param from_uom: a BrowseRecord of product.uom
         :param qty: an int or long or float value
         :param to_uom: a BrowseRecord of product.uom
         :param round: a boolean to round or not the result
-        :param context: the context
         :return: the converted quantity
         """
         if not from_uom or not qty or not to_uom:
@@ -217,17 +211,13 @@ class Uom(ModelSQL, ModelView):
                 amount = self.round(amount, to_uom.rounding)
         return amount
 
-    def compute_price(self, cursor, user, from_uom, price, to_uom=False,
-            context=None):
+    def compute_price(self, from_uom, price, to_uom=False):
         """
         Convert price for given uom's.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param from_uom: a BrowseRecord of product.uom
         :param price: a Decimal value
         :param to_uom: a BrowseRecord of product.uom
-        :param context: the context
         :return: the converted price
         """
         if not from_uom or not price or not to_uom:
@@ -249,8 +239,8 @@ class Uom(ModelSQL, ModelView):
 
         return new_price
 
-    def search(self, cursor, user, args, offset=0, limit=None, order=None,
-            context=None, count=False, query_string=False):
+    def search(self, args, offset=0, limit=None, order=None,
+            count=False, query_string=False):
         product_obj = self.pool.get('product.product')
         args = args[:]
         def process_args(args):
@@ -269,20 +259,18 @@ class Uom(ModelSQL, ModelView):
                         args[i] = ('id', '!=', '0')
                     else:
                         if args[i][2][1] == 'product.default_uom.category':
-                            product = product_obj.browse(cursor, user,
-                                    args[i][2][0], context=context)
+                            product = product_obj.browse(args[i][2][0])
                             category_id = product.default_uom.category.id
                         else:
-                            uom = self.browse(cursor, user, args[i][2][0],
-                                    context=context)
+                            uom = self.browse(args[i][2][0])
                             category_id = uom.category.id
                         args[i] = (args[i][0], args[i][1], category_id)
                 elif isinstance(args[i], list):
                     process_args(args[i])
                 i += 1
         process_args(args)
-        return super(Uom, self).search(cursor, user, args, offset=offset,
-                limit=limit, order=order, context=context, count=count,
+        return super(Uom, self).search(args, offset=offset, limit=limit, 
+                order=order, count=count,
                 query_string=query_string)
 
 Uom()

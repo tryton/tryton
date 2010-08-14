@@ -17,7 +17,7 @@ class Category(ModelSQL, ModelView):
         super(Category, self).__init__()
         self._order.insert(0, ('name', 'ASC'))
 
-    def get_rec_name(self, cursor, user, ids, name, context=None):
+    def get_rec_name(self, ids, name):
         if not ids:
             return {}
         res = {}
@@ -28,7 +28,7 @@ class Category(ModelSQL, ModelView):
                 return _name(category.parent) + ' / ' + category.name
             else:
                 return category.name
-        for category in self.browse(cursor, user, ids, context=context):
+        for category in self.browse(ids):
             res[category.id] = _name(category)
         return res
 
