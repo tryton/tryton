@@ -207,6 +207,7 @@ attlist.group &= [ a:defaultValue = "1" ] attribute fill { "0" | "1" }?
 attlist.group &= [ a:defaultValue = "1" ] attribute rowspan { text }?
 attlist.group &= [ a:defaultValue = "4" ] attribute col { text }?
 attlist.group &= ( attribute name { text } | attribute id { text } )
+attlist.group &= attribute states { text }?
 
 hpaned = element hpaned { attlist.paned, child1?, child2? }
 
