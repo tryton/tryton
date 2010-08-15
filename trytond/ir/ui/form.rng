@@ -757,6 +757,11 @@
       <attribute name="id"/>
     </choice>
   </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute name="states"/>
+    </optional>
+  </define>
   <define name="hpaned">
     <element name="hpaned">
       <ref name="attlist.paned"/>
