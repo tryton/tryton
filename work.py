@@ -1,12 +1,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
+import datetime
+from collections import deque, defaultdict
+from heapq import heappop, heappush
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Eval, Not, Equal
-from collections import deque, defaultdict
-from heapq import heappop, heappush
-import datetime
+from trytond.transaction import Transaction
+
 
 def intfloor(x):
     return int(round(x, 4))
@@ -73,24 +74,21 @@ class Work(ModelSQL, ModelView):
                         'dependencies!',
                 })
 
-    def check_recursion(self,cursor,  user, ids, parent='parent'):
-        return super(Work, self).check_recursion(cursor, user, ids,
-                parent='successors')
+    def check_recursion(self, ids, parent='parent'):
+        return super(Work, self).check_recursion(ids, parent='successors')
 
-    def get_function_fields(self, cursor, user, ids, names, context=None):
+    def get_function_fields(self, ids, names):
         '''
         Function to compute function fields
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param ids: the ids of the works
         :param names: the list of field name to compute
-        :param args: optional argument
-        :param context: the context
         :return: a dictionary with all field names as key and
             a dictionary as value with id as key
         '''
         req_ref_obj = self.pool.get('res.request.reference')
+
+        cursor = Transation().cursor
 
         res = {}
 
@@ -100,14 +98,13 @@ class Work(ModelSQL, ModelView):
             for i in range(0, len(ids), cursor.IN_MAX):
                 sub_ids = ids[i:i + cursor.IN_MAX]
 
-                req_ref_ids = req_ref_obj.search(cursor, user, [
+                req_ref_ids = req_ref_obj.search([
                         ('reference', 'in', [
                                 'project.work,%s' % i for i in sub_ids
                                 ]
                          ),
-                        ], context=context)
-                req_refs = req_ref_obj.browse(cursor, user, req_ref_ids,
-                        context=context)
+                        ])
+                req_refs = req_ref_obj.browse(req_ref_ids)
                 for req_ref in req_refs:
                     _, work_id = req_ref.reference.split(',')
                     requests[int(work_id)].append(req_ref.request.id)
@@ -115,12 +112,12 @@ class Work(ModelSQL, ModelView):
             res['requests'] = requests
 
         if 'duration' in names:
-            all_ids = self.search(cursor, user, [
+            all_ids = self.search([
                     ('parent', 'child_of', ids),
-                    ('active', '=', True)], context=context) + ids
+                    ('active', '=', True)]) + ids
             all_ids = list(set(all_ids))
 
-            works = self.browse(cursor, user, all_ids, context=context)
+            works = self.browse(all_ids)
 
             durations = {}
             id2work = {}
@@ -165,7 +162,7 @@ class Work(ModelSQL, ModelView):
             if fun_field in names:
                 values = {}
                 if works is None:
-                    works = self.browse(cursor, user, ids, context=context)
+                    works = self.browse(ids)
                 for work in works:
                     values[work.id] = work[db_field] \
                         and work[db_field].date() or None
@@ -173,13 +170,12 @@ class Work(ModelSQL, ModelView):
 
         return res
 
-    def set_function_fields(self, cursor, user, ids, name, value,
-            context=None):
+    def set_function_fields(self, ids, name, value):
         request_obj = self.pool.get('res.request')
         req_ref_obj = self.pool.get('res.request.reference')
 
         if name == 'requests':
-            works = self.browse(cursor, user, ids, context=context)
+            works = self.browse(ids)
             currents = dict((req.id, req) for work in works for req in
                     work.requests)
             for v in value:
@@ -201,8 +197,7 @@ class Work(ModelSQL, ModelView):
                 elif operator == 'unlink_all':
                     to_unlink.extend(currents)
                 elif operator == 'delete':
-                    request_obj.delete(cursor, user, to_delete,
-                            context=context)
+                    request_obj.delete(to_delete)
                 else:
                     raise Exception('Operation not supported')
 
@@ -212,15 +207,14 @@ class Work(ModelSQL, ModelView):
                     for ref in request.references:
                         if int(ref.reference.split(',')[1]) in ids:
                             req_ref_ids.append(ref.id)
-                req_ref_obj.delete(cursor, user, req_ref_ids,
-                        context=context)
+                req_ref_obj.delete(req_ref_ids)
 
                 for i in to_link:
                     for record_id in ids:
-                        req_ref_obj.create(cursor, user, {
+                        req_ref_obj.create({
                                 'request': i,
                                 'reference': 'project.work,%s' % record_id,
-                                }, context=context)
+                                })
             return
 
         fun_fields = ('actual_start_date', 'actual_finish_date',
@@ -229,22 +223,21 @@ class Work(ModelSQL, ModelView):
                      'constraint_start_time', 'constraint_finish_time')
         for fun_field, db_field in zip(fun_fields, db_fields):
             if fun_field == name:
-                self.write(cursor, user, ids, {
+                self.write(ids, {
                         db_field: value \
                                 and datetime.datetime.combine(value,
                                     datetime.time()) \
                                 or False,
-                        }, context=context)
+                        })
                 break
 
-    def add_minutes(self, cursor, user, company, date, minutes, context=None):
+    def add_minutes(self, company, date, minutes):
         minutes = int(round(minutes))
         minutes = date.minute + minutes
 
         hours = minutes // 60
         if hours:
-            date = self.add_hours(cursor, user, company, date, hours,
-                    context=context)
+            date = self.add_hours(company, date, hours)
 
         minutes = minutes % 60
 
@@ -258,21 +251,19 @@ class Work(ModelSQL, ModelView):
 
         return date
 
-    def add_hours(self, cursor, user, company, date, hours, context=None):
+    def add_hours(self, company, date, hours):
         day_per_week = company.hours_per_work_week / company.hours_per_work_day
 
         while hours:
             if hours !=  intfloor(hours):
                 minutes = (hours - intfloor(hours)) * 60
-                date = self.add_minutes(cursor, user, company, date, minutes,
-                        context=context)
+                date = self.add_minutes(company, date, minutes)
             hours = intfloor(hours)
 
             hours = date.hour + hours
             days = hours // company.hours_per_work_day
             if days:
-                date = self.add_days(cursor, user, company, date, days,
-                        context=context)
+                date = self.add_days(company, date, days)
 
             hours = hours % company.hours_per_work_day
 
@@ -288,14 +279,13 @@ class Work(ModelSQL, ModelView):
 
         return date
 
-    def add_days(self, cursor, user, company, date, days, context=None):
+    def add_days(self, company, date, days):
         day_per_week = company.hours_per_work_week / company.hours_per_work_day
 
         while days:
             if days !=  intfloor(days):
                 hours = (days - intfloor(days)) * company.hours_per_work_day
-                date = self.add_hours(cursor, user, company, date, hours,
-                        context=context)
+                date = self.add_hours(company, date, hours)
             days = intfloor(days)
 
             days = date.weekday() + days
@@ -304,8 +294,7 @@ class Work(ModelSQL, ModelView):
             days = days % day_per_week
 
             if weeks:
-                date = self.add_weeks(cursor, user, company, date, weeks,
-                        context=context)
+                date = self.add_weeks(company, date, weeks)
 
             date += datetime.timedelta(days= -date.weekday() + intfloor(days))
 
@@ -313,21 +302,20 @@ class Work(ModelSQL, ModelView):
 
         return date
 
-    def add_weeks(self, cursor, user, company, date, weeks, context=None):
+    def add_weeks(self, company, date, weeks):
         day_per_week = company.hours_per_work_week / company.hours_per_work_day
 
         if weeks !=  intfloor(weeks):
             days = (weeks - intfloor(weeks)) * day_per_week
             if days:
-                date = self.add_days(cursor, user, company, date, days,
-                        context=context)
+                date = self.add_days(company, date, days)
 
         date += datetime.timedelta(days= 7 * intfloor(weeks))
 
         return date
 
-    def compute_dates(self, cursor, user, work_id, context=None):
-        active_work = self.browse(cursor, user, work_id, context=context)
+    def compute_dates(self, work_id):
+        active_work = self.browse(work_id)
         values = {}
         get_early_finish = lambda work: values.get(work, {}).get(
             'early_finish_time', work['early_finish_time'])
@@ -363,9 +351,9 @@ class Work(ModelSQL, ModelView):
                 else:
                     early_finish_time = None
                     if values[work]['early_start_time']:
-                        early_finish_time = self.add_hours(cursor, user,
-                                work.company, values[work]['early_start_time'],
-                                work.duration, context=context)
+                        early_finish_time = self.add_hours(work.company,
+                                values[work]['early_start_time'],
+                                work.duration)
                 values[work]['early_finish_time'] = early_finish_time
 
                 # Propagate constraint_start on successors
@@ -397,9 +385,8 @@ class Work(ModelSQL, ModelView):
                                        work.constraint_start_time)
 
             if constraint_start:
-                early_start = self.add_hours(cursor, user,
-                        work.company, constraint_start, work.leveling_delay,
-                        context=context)
+                early_start = self.add_hours(work.company, constraint_start,
+                        work.leveling_delay)
             else:
                 early_start = None
 
@@ -444,9 +431,9 @@ class Work(ModelSQL, ModelView):
                 else:
                     late_start_time = None
                     if values[work]['late_finish_time']:
-                        late_start_time = self.add_hours(cursor, user,
-                                work.company, values[work]['late_finish_time'],
-                                -work.duration, context=context)
+                        late_start_time = self.add_hours(work.company,
+                                values[work]['late_finish_time'],
+                                -work.duration)
                 values[work]['late_start_time'] = late_start_time
 
                 # Propagate constraint_finish on predecessors
@@ -478,9 +465,8 @@ class Work(ModelSQL, ModelView):
                                         work.constraint_finish_time)
 
             if constraint_finish:
-                late_finish = self.add_hours(cursor, user, work.company,
-                        constraint_finish, -work.back_leveling_delay,
-                        context=context)
+                late_finish = self.add_hours(work.company, constraint_finish,
+                        -work.back_leveling_delay)
             else:
                 late_finish = None
 
@@ -511,19 +497,18 @@ class Work(ModelSQL, ModelView):
                     break
 
             if write_cond:
-                self.write(cursor, user, work.id, val, context=context)
+                self.write(work.id, val)
 
-    def reset_leveling(self, cursor, user, work_id, context=None):
+    def reset_leveling(self, work_id):
         get_key = lambda w: (set(p.id for p in w.predecessors),
                              set(s.id for s in w.successors))
 
-        work = self.browse(cursor, user, work_id, context=context)
+        work = self.browse(work_id)
         parent_id = work.parent and work.parent.id or False
-        sibling_ids = self.search(cursor, user, [
+        sibling_ids = self.search([
                 ('parent', '=', parent_id)
-                ], context=context)
-        siblings = self.browse(cursor, user, sibling_ids,
-                context=context)
+                ])
+        siblings = self.browse(sibling_ids)
         to_clean = []
 
         ref_key = get_key(work)
@@ -534,12 +519,12 @@ class Work(ModelSQL, ModelView):
                 to_clean.append(sibling.id)
 
         if to_clean:
-            self.write(cursor, user, to_clean, {
+            self.write(to_clean, {
                     'leveling_delay': 0,
                     'back_leveling_delay': 0,
-                    }, context=context)
+                    })
 
-    def create_leveling(self, cursor, user, work_id, context=None):
+    def create_leveling(self, work_id):
         # define some helper functions
         get_key = lambda w: (set(p.id for p in w.predecessors),
                              set(s.id for s in w.successors))
@@ -593,70 +578,65 @@ class Work(ModelSQL, ModelView):
 
                 yield sibling, delay
 
-        work = self.browse(cursor, user, work_id, context=context)
+        work = self.browse(work_id)
         parent_id = work.parent and work.parent.id or False
-        sibling_ids = self.search(cursor, user, [
+        sibling_ids = self.search([
                 ('parent', '=', parent_id)
-                ], context=context)
+                ])
 
         refkey = get_key(work)
-        siblings = [s for s in self.browse(cursor, user, sibling_ids,
-                context=context) if get_key(s) == refkey]
+        siblings = [s for s in self.browse(sibling_ids) if get_key(s) == refkey]
 
         for sibling, delay in compute_delays(siblings):
-            self.write(cursor, user, sibling.id, {
+            self.write(sibling.id, {
                     'leveling_delay': delay,
-                    }, context=context)
+                    })
 
         siblings.reverse()
         for sibling, delay in compute_delays(siblings):
-            self.write(cursor, user, sibling.id, {
+            self.write(sibling.id, {
                     'back_leveling_delay': delay,
-                    }, context=context)
+                    })
 
         if parent_id:
-            self.compute_dates(cursor, user, parent_id, context=context)
+            self.compute_dates(parent_id)
 
-    def write(self, cursor, user, ids, values, context=None):
-        res = super(Work, self).write(cursor, user, ids, values,
-                context=context)
+    def write(self, ids, values):
+        res = super(Work, self).write(ids, values)
         if isinstance(ids, (int, long)):
             ids = [ids]
 
         if 'effort' in values:
             for work_id in ids:
-                self.reset_leveling(cursor, user, work_id,
-                                   context=context)
+                self.reset_leveling(work_id)
         fields = ('constraint_start_time', 'constraint_finish_time',
                   'effort')
         if reduce(lambda x, y : x or y in values, fields, False):
             for work_id in ids:
-                self.compute_dates(cursor, user, work_id,
-                                   context=context)
+                self.compute_dates(work_id)
         return res
 
-    def create(self, cursor, user, values, context=None):
-        work_id = super(Work, self).create(cursor, user, values,
-                context=context)
-        self.reset_leveling(cursor, user, work_id, context=context)
-        self.compute_dates(cursor, user, work_id, context=context)
+    def create(self, values):
+        work_id = super(Work, self).create(values)
+        self.reset_leveling(work_id)
+        self.compute_dates(work_id)
         return work_id
 
-    def delete(self, cursor, user, ids, context=None):
+    def delete(self, ids):
         if isinstance(ids, (int, long)):
             ids = [ids]
-        works = self.browse(cursor, user, ids, context=context)
+        works = self.browse(ids)
         to_update = set()
         for work in works:
             if work.parent and work.parent.id not in ids:
                 to_update.add(work.parent.id)
                 to_update.update(c.id for c in work.parent.children \
                                      if c.id not in ids)
-        res = super(Work, self).delete(cursor, user, ids, context=context)
+        res = super(Work, self).delete(ids)
 
         for work_id in to_update:
-            self.reset_leveling(cursor, user, work_id, context=context)
-            self.compute_dates(cursor, user, work_id, context=context)
+            self.reset_leveling(work_id)
+            self.compute_dates(work_id)
 
         return res
 Work()
@@ -673,27 +653,24 @@ class PredecessorSuccessor(ModelSQL):
     successor = fields.Many2One('project.work', 'Successor',
             ondelete='CASCADE', required=True, select=1)
 
-    def write(self, cursor, user, ids, values, context=None):
+    def write(self, ids, values):
         work_obj = self.pool.get('project.work')
-        res = super(PredecessorSuccessor, self).write(cursor, user, ids, values,
-                context=context)
+        res = super(PredecessorSuccessor, self).write(ids, values)
 
         for work_id in values.itervalues():
-            work_obj.reset_leveling(cursor, user, work_id,
-                                context=context)
+            work_obj.reset_leveling(work_id)
         for work_id in values.itervalues():
-            work_obj.compute_dates(cursor, user, work_id,
-                               context=context)
+            work_obj.compute_dates(work_id)
         return res
 
-    def delete(self, cursor, user, ids, context=None):
+    def delete(self, ids):
         work_obj = self.pool.get('project.work')
         if isinstance(ids, (int, long)):
             ids = [ids]
 
         work_ids = set()
         parent_ids = set()
-        pred_succs = self.browse(cursor, user, ids, context=context)
+        pred_succs = self.browse(ids)
         for pred_succ in pred_succs:
             work_ids.update((pred_succ.predecessor.id,
                              pred_succ.successor.id))
@@ -701,31 +678,26 @@ class PredecessorSuccessor(ModelSQL):
             if pred_succ.predecessor.parent:
                 parent_ids.add(pred_succ.predecessor.parent.id)
 
-        res = super(PredecessorSuccessor, self).delete(cursor, user, ids,
-                context=context)
+        res = super(PredecessorSuccessor, self).delete(ids)
 
         for work_id in work_ids:
-            work_obj.reset_leveling(cursor, user, work_id, context=context)
+            work_obj.reset_leveling(work_id)
 
         for parent_id in parent_ids:
-            work_obj.compute_dates(cursor, user, parent_id, context=context)
+            work_obj.compute_dates(parent_id)
 
         return res
 
-    def create(self, cursor, user, values, context=None):
+    def create(self, values):
         work_obj = self.pool.get('project.work')
-        ps_id = super(PredecessorSuccessor, self).create(cursor, user, values,
-                context=context)
+        ps_id = super(PredecessorSuccessor, self).create(values)
 
-        pred_succ = self.browse(cursor, user, ps_id, context=context)
-        work_obj.reset_leveling(cursor, user, pred_succ.predecessor.id,
-                context=context)
-        work_obj.reset_leveling(cursor, user, pred_succ.successor.id,
-                context=context)
+        pred_succ = self.browse(ps_id)
+        work_obj.reset_leveling(pred_succ.predecessor.id)
+        work_obj.reset_leveling(pred_succ.successor.id)
 
         if pred_succ.predecessor.parent:
-            work_obj.compute_dates(cursor, user, pred_succ.predecessor.parent.id,
-                    context=context)
+            work_obj.compute_dates(pred_succ.predecessor.parent.id)
         return id
 
 PredecessorSuccessor()
@@ -745,9 +717,9 @@ class Leveling(Wizard):
             },
         }
 
-    def _leveling(self, cursor, user, data, context=None):
+    def _leveling(self, data):
         work_obj = self.pool.get('project.work')
-        work_obj.create_leveling(cursor, user, data['id'], context=context)
+        work_obj.create_leveling(data['id'])
         return {}
 
 Leveling()
