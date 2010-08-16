@@ -19,13 +19,13 @@ class Connection(ModelSingleton, ModelSQL, ModelView):
     auth_create_user = fields.Boolean('Create User',
             help='Create user if not in database')
 
-    def default_auth_uid(self, cursor, user, context=None):
+    def default_auth_uid(self):
         return 'uid'
 
-    def default_auth_scope(self, cursor, user, context=None):
+    def default_auth_scope(self):
         return 'base'
 
-    def default_auth_create_user(self, cursor, user, context=None):
+    def default_auth_create_user(self):
         return False
 
 Connection()
