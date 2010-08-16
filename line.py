@@ -1,11 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Line"
+import time
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from trytond.pyson import Eval, PYSONEncoder
-import time
+from trytond.transaction import Transaction
 
 
 class Line(ModelSQL, ModelView):
@@ -49,71 +49,67 @@ class Line(ModelSQL, ModelView):
         })
         self._order.insert(0, ('date', 'ASC'))
 
-    def init(self, cursor, module_name):
-        super(Line, self).init(cursor, module_name)
+    def init(self, module_name):
+        super(Line, self).init(module_name)
+        cursor = Transaction().cursor
         table = TableHandler(cursor, self, module_name)
 
         # Migration from 1.2 currency has been changed in function field
         table.not_null_action('currency', action='remove')
 
-    def default_date(self, cursor, user, context=None):
+    def default_date(self):
         date_obj = self.pool.get('ir.date')
-        return date_obj.today(cursor, user, context=context)
+        return date_obj.today()
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def on_change_with_currency(self, cursor, user, vals, context=None):
+    def on_change_with_currency(self, vals):
         move_line_obj = self.pool.get('account.move.line')
         if vals.get('move_line'):
-            move_line = move_line_obj.browse(cursor, user, vals['move_line'],
-                    context=context)
+            move_line = move_line_obj.browse(vals['move_line'])
             return move_line.account.company.currency.id
         return False
 
-    def get_currency(self, cursor, user, ids, name, context=None):
+    def get_currency(self, ids, name):
         res = {}
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             res[line.id] = line.move_line.account.company.currency.id
         return res
 
-    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
+    def on_change_with_currency_digits(self, vals):
         move_line_obj = self.pool.get('account.move.line')
         if vals.get('move_line'):
-            move_line = move_line_obj.browse(cursor, user, vals['move_line'],
-                    context=context)
+            move_line = move_line_obj.browse(vals['move_line'])
             return move_line.account.company.currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, context=None):
+    def get_currency_digits(self, ids, name):
         res = {}
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             res[line.id] = line.move_line.account.company.currency.digits
         return res
 
-    def query_get(self, cursor, user, obj='l', context=None):
+    def query_get(self, obj='l'):
         '''
         Return SQL clause for analytic line depending of the context.
         obj is the SQL alias of the analytic_account_line in the query.
         '''
-        if context is None:
-            context = {}
-
         res = obj + '.active'
-        if context.get('start_date'):
+        if Transaction().context.get('start_date'):
             # Check start_date
-            time.strptime(str(context['start_date']), '%Y-%m-%d')
+            time.strptime(str(Transaction().context['start_date']), '%Y-%m-%d')
             res += ' AND ' + obj + '.date >= date(\'' + \
-                    str(context['start_date']) + '\')'
-        if context.get('end_date'):
+                    str(Transaction().context['start_date']) + '\')'
+        if Transaction().context.get('end_date'):
             # Check end_date
-            time.strptime(str(context['end_date']), '%Y-%m-%d')
+            time.strptime(str(Transaction().context['end_date']), '%Y-%m-%d')
             res += ' AND ' + obj + '.date <= date(\'' + \
-                    str(context['end_date']) + '\')'
+                    str(Transaction().context['end_date']) + '\')'
         return res
 
-    def check_account(self, cursor, user, ids):
-        for line in self.browse(cursor, user, ids):
+    def check_account(self, ids):
+        for line in self.browse(ids):
             if line.account.type == 'view':
                 return False
             if not line.account.active:
@@ -144,24 +140,25 @@ class OpenAccount(Wizard):
         },
     }
 
-    def _action_open_account(self, cursor, user, data, context=None):
+    def _action_open_account(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
 
-        if context is None:
-            context = {}
-
-        act_window_id = model_data_obj.get_id(cursor, user, 'analytic_account',
-                'act_line_form', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('analytic_account',
+                'act_line_form')
+        res = act_window_obj.read(act_window_id)
         res['pyson_domain'] = [
             ('account', '=', data['id']),
         ]
 
-        if context.get('start_date'):
-            res['pyson_domain'].append(('date', '>=', context['start_date']))
-        if context.get('end_date'):
-            res['pyson_domain'].append(('date', '<=', context['end_date']))
+        if Transaction().context.get('start_date'):
+            res['pyson_domain'].append(
+                    ('date', '>=', Transaction().context['start_date'])
+                    )
+        if Transaction().context.get('end_date'):
+            res['pyson_domain'].append(
+                    ('date', '<=', Transaction().context['end_date'])
+                    )
         res['pyson_domain'] = PYSONEncoder().encode(res['pyson_domain'])
         return res
 

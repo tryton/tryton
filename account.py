@@ -1,11 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Account"
+from decimal import Decimal
+import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Equal, Eval, Not, PYSONEncoder
-from decimal import Decimal
-import copy
+from trytond.transaction import Transaction
 
 
 class Account(ModelSQL, ModelView):
@@ -71,68 +71,60 @@ class Account(ModelSQL, ModelView):
         })
         self._order.insert(0, ('code', 'ASC'))
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def default_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        if context.get('company'):
-            return context['company']
-        return False
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
-    def default_currency(self, cursor, user, context=None):
+    def default_currency(self):
         company_obj = self.pool.get('company.company')
         currency_obj = self.pool.get('currency.currency')
-        if context is None:
-            context = {}
-        if context.get('company'):
-            company = company_obj.browse(cursor, user, context['company'],
-                    context=context)
+        if Transaction().context.get('company'):
+            company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
         return False
 
-    def default_type(self, cursor, user, context=None):
+    def default_type(self):
         return 'normal'
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'draft'
 
-    def default_display_balance(self, cursor, user, context=None):
+    def default_display_balance(self):
         return 'credit-debit'
 
-    def default_mandatory(self, cursor, user, context=None):
+    def default_mandatory(self):
         return False
 
-    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
+    def on_change_with_currency_digits(self, vals):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('currency'):
-            currency = currency_obj.browse(cursor, user, vals['currency'],
-                    context=context)
+            currency = currency_obj.browse(vals['currency'])
             return currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, context=None):
+    def get_currency_digits(self, ids, name):
         res = {}
-        for account in self.browse(cursor, user, ids, context=context):
+        for account in self.browse(ids):
             res[account.id] = account.currency.digits
         return res
 
-    def get_balance(self, cursor, user, ids, name, context=None):
+    def get_balance(self, ids, name):
         res = {}
         line_obj = self.pool.get('analytic_account.line')
         currency_obj = self.pool.get('currency.currency')
+        cursor = Transaction().cursor
 
-        child_ids = self.search(cursor, user, [('parent', 'child_of', ids)],
-                context=context)
+        child_ids = self.search([('parent', 'child_of', ids)])
         all_ids = {}.fromkeys(ids + child_ids).keys()
 
         id2account = {}
-        accounts = self.browse(cursor, user, all_ids, context=context)
+        accounts = self.browse(all_ids)
         for account in accounts:
             id2account[account.id] = account
 
-        line_query = line_obj.query_get(cursor, user, context=context)
+        line_query = line_obj.query_get()
         cursor.execute('SELECT a.id, ' \
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))), ' \
                     'c.currency ' \
@@ -160,48 +152,46 @@ class Account(ModelSQL, ModelView):
                 if currency_id in id2currency:
                     currency = id2currency[currency_id]
                 else:
-                    currency = currency_obj.browse(cursor, user, currency_id,
-                            context=context)
+                    currency = currency_obj.browse(currency_id)
                     id2currency[currency.id] = currency
-                account_sum[account_id] += currency_obj.compute(cursor, user,
-                        currency, sum, id2account[account_id].currency,
-                        round=True, context=context)
+                account_sum[account_id] += currency_obj.compute(currency, sum,
+                        id2account[account_id].currency, round=True)
             else:
-                account_sum[account_id] += currency_obj.round(cursor, user,
+                account_sum[account_id] += currency_obj.round(
                         id2account[account_id].currency, sum)
 
         for account_id in ids:
             res.setdefault(account_id, Decimal('0.0'))
-            child_ids = self.search(cursor, user, [
+            child_ids = self.search([
                 ('parent', 'child_of', [account_id]),
-                ], context=context)
+                ])
             to_currency = id2account[account_id].currency
             for child_id in child_ids:
                 from_currency = id2account[child_id].currency
-                res[account_id] += currency_obj.compute(cursor, user,
-                        from_currency, account_sum.get(child_id, Decimal('0.0')),
-                        to_currency, round=True, context=context)
-            res[account_id] = currency_obj.round(cursor, user, to_currency,
-                    res[account_id])
+                res[account_id] += currency_obj.compute(from_currency,
+                        account_sum.get(child_id, Decimal('0.0')), to_currency,
+                        round=True)
+            res[account_id] = currency_obj.round(to_currency, res[account_id])
             if id2account[account_id].display_balance == 'credit-debit':
                 res[account_id] = - res[account_id]
         return res
 
-    def get_credit_debit(self, cursor, user, ids, name, context=None):
+    def get_credit_debit(self, ids, name):
         res = {}
         line_obj = self.pool.get('analytic_account.line')
         currency_obj = self.pool.get('currency.currency')
+        cursor = Transaction().cursor
 
         if name not in ('credit', 'debit'):
             raise Exception('Bad argument')
 
         id2account = {}
-        accounts = self.browse(cursor, user, ids, context=context)
+        accounts = self.browse(ids)
         for account in accounts:
             res[account.id] = Decimal('0.0')
             id2account[account.id] = account
 
-        line_query = line_obj.query_get(cursor, user, context=context)
+        line_query = line_obj.query_get()
         cursor.execute('SELECT a.id, ' \
                     'SUM(COALESCE(l.' + name + ', 0)), ' \
                     'c.currency ' \
@@ -228,45 +218,42 @@ class Account(ModelSQL, ModelView):
                 if currency_id in id2currency:
                     currency = id2currency[currency_id]
                 else:
-                    currency = currency_obj.browse(cursor, user, currency_id,
-                            context=context)
+                    currency = currency_obj.browse(currency_id)
                     id2currency[currency.id] = currency
-                res[account_id] += currency_obj.compute(cursor, user,
-                        currency, sum, id2account[account_id].currency,
-                        round=True, context=context)
+                res[account_id] += currency_obj.compute(currency, sum,
+                        id2account[account_id].currency, round=True)
             else:
-                res[account_id] += currency_obj.round(cursor, user,
+                res[account_id] += currency_obj.round(
                         id2account[account_id].currency, sum)
         return res
 
-    def get_rec_name(self, cursor, user, ids, name, context=None):
+    def get_rec_name(self, ids, name):
         if not ids:
             return {}
         res = {}
-        for account in self.browse(cursor, user, ids, context=context):
+        for account in self.browse(ids):
             if account.code:
                 res[account.id] = account.code + ' - ' + unicode(account.name)
             else:
                 res[account.id] = unicode(account.name)
         return res
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, [('code',) + clause[1:]], limit=1,
-                context=context)
+    def search_rec_name(self, name, clause):
+        ids = self.search([('code',) + clause[1:]], limit=1)
         if ids:
             return [('code',) + clause[1:]]
         else:
             return [(self._rec_name,) + clause[1:]]
 
-    def convert_view(self, cursor, user, tree, context=None):
+    def convert_view(self, tree):
         res = tree.xpath('//field[@name=\'analytic_accounts\']')
         if not res:
             return
         element_accounts = res[0]
 
-        root_account_ids = self.search(cursor, user, [
+        root_account_ids = self.search([
             ('parent', '=', False),
-            ], context=context)
+            ])
         if not root_account_ids:
             element_accounts.getparent().getparent().remove(
                     element_accounts.getparent())
@@ -282,17 +269,15 @@ class Account(ModelSQL, ModelView):
         parent = element_accounts.getparent()
         parent.remove(element_accounts)
 
-    def analytic_accounts_fields_get(self, cursor, user, field,
-            fields_names=None, context=None):
+    def analytic_accounts_fields_get(self, field, fields_names=None):
         res = {}
         if fields_names is None:
             fields_names = []
 
-        root_account_ids = self.search(cursor, user, [
+        root_account_ids = self.search([
             ('parent', '=', False),
-            ], context=context)
-        for account in self.browse(cursor, user, root_account_ids,
-                context=context):
+            ])
+        for account in self.browse(root_account_ids):
             name = 'analytic_account_' + str(account.id)
             if name in fields_names or not fields_names:
                 res[name] = field.copy()
@@ -340,12 +325,12 @@ class OpenChartAccount(Wizard):
         },
     }
 
-    def _action_open_chart(self, cursor, user, data, context=None):
+    def _action_open_chart(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id(cursor, user, 'analytic_account',
-                'act_account_tree2', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('analytic_account',
+                'act_account_tree2')
+        res = act_window_obj.read(act_window_id)
         res['pyson_context'] = PYSONEncoder().encode({
             'start_date': data['form']['start_date'],
             'end_date': data['form']['end_date'],
@@ -375,16 +360,16 @@ class AccountSelection(ModelSQL, ModelView):
                     'or a missing mandatory root account!',
         })
 
-    def check_root(self, cursor, user, ids):
+    def check_root(self, ids):
         "Check Root"
         account_obj = self.pool.get('analytic_account.account')
 
-        root_account_ids = account_obj.search(cursor, user, [
+        root_account_ids = account_obj.search([
             ('parent', '=', False),
             ])
-        root_accounts = account_obj.browse(cursor, user, root_account_ids)
+        root_accounts = account_obj.browse(root_account_ids)
 
-        selections = self.browse(cursor, user, ids)
+        selections = self.browse(ids)
         for selection in selections:
             roots = []
             for account in selection.accounts:
