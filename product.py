@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Not, Eval, Bool, Or
 from trytond.backend import TableHandler
+from trytond.transaction import Transaction
 
 
 class Category(ModelSQL, ModelView):
@@ -42,14 +43,15 @@ class CategoryCustomerTax(ModelSQL):
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
-    def init(self, cursor, module_name):
+    def init(self, module_name):
+        cursor = Transaction().cursor
         # Migration from 1.6 product renamed into category
         table = TableHandler(cursor, self)
         if table.column_exist('product'):
             table.index_action('product', action='remove')
             table.drop_fk('product')
             table.column_rename('product', 'category')
-        super(CategoryCustomerTax, self).init(cursor, module_name)
+        super(CategoryCustomerTax, self).init(module_name)
 
 CategoryCustomerTax()
 
@@ -64,14 +66,15 @@ class CategorySupplierTax(ModelSQL):
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
-    def init(self, cursor, module_name):
+    def init(self, module_name):
+        cursor = Transaction().cursor
         # Migration from 1.6 product renamed into category
         table = TableHandler(cursor, self)
         if table.column_exist('product'):
             table.index_action('product', action='remove')
             table.drop_fk('product')
             table.column_rename('product', 'category')
-        super(CategorySupplierTax, self).init(cursor, module_name)
+        super(CategorySupplierTax, self).init(module_name)
 
 CategorySupplierTax()
 
@@ -132,28 +135,28 @@ class Template(ModelSQL, ModelView):
                     '%s (%d)',
             })
 
-    def default_taxes_category(self, cursor, user, context=None):
+    def default_taxes_category(self):
         return False
 
-    def get_account(self, cursor, user, ids, name, context=None):
+    def get_account(self, ids, name):
         account_obj = self.pool.get('account.account')
         res = {}
         name = name[:-5]
-        for product in self.browse(cursor, user, ids, context=context):
+        for product in self.browse(ids):
             if product[name]:
                 res[product.id] = product[name].id
             else:
                 if product.category[name]:
                     res[product.id] = product.category[name].id
                 else:
-                    self.raise_user_error(cursor, 'missing_account',
-                            (product.name, product.id), context=context)
+                    self.raise_user_error('missing_account',
+                            (product.name, product.id))
         return res
 
-    def get_taxes(self, cursor, user, ids, name, context=None):
+    def get_taxes(self, ids, name):
         res = {}
         name = name[:-5]
-        for product in self.browse(cursor, user, ids, context=context):
+        for product in self.browse(ids):
             if product.taxes_category:
                 res[product.id] = [x.id for x in product.category[name]]
             else:
