@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Statement Journal"
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.transaction import Transaction
 
 
 class Journal(ModelSQL, ModelView):
@@ -15,18 +15,14 @@ class Journal(ModelSQL, ModelView):
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
 
-    def default_currency(self, cursor, user, context=None):
-        if context and context.get('company'):
+    def default_currency(self):
+        if Transaction().context.get('company'):
             company_obj = self.pool.get('company.company')
-            currency_obj = self.pool.get('currency.currency')
-            company = company_obj.browse(cursor, user, context['company'],
-                    context=context)
+            company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
         return False
 
-    def default_company(self, cursor, user, context=None):
-        if context and context.get('company'):
-            return context['company']
-        return False
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
 Journal()
