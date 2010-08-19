@@ -1,8 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
-import copy
+from trytond.transaction import Transaction
 
 
 class Invoice(ModelSQL, ModelView):
@@ -35,14 +36,11 @@ Invoice()
 class InvoiceLine(ModelSQL, ModelView):
     _name = 'account.invoice.line'
 
-    def _view_look_dom_arch(self, cursor, user, tree, type, context=None):
-        if context is None:
-            context = {}
-        if type == 'form' and context.get('standalone'):
+    def _view_look_dom_arch(self, tree, type):
+        if type == 'form' and Transaction().context.get('standalone'):
             tree_root = tree.getroottree().getroot()
             if tree_root.get('cursor') == 'product':
                 tree_root.set('cursor', 'party')
-        return super(InvoiceLine, self)._view_look_dom_arch(cursor, user, tree,
-                type, context=context)
+        return super(InvoiceLine, self)._view_look_dom_arch(tree, type)
 
 InvoiceLine()
