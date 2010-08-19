@@ -1,13 +1,14 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Tax"
+from __future__ import with_statement
+from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
-from decimal import Decimal
 from trytond.tools import Cache
 from trytond.backend import TableHandler
 from trytond.pyson import Eval, Not, Equal, If, In, Bool, Get, Or, And, \
         PYSONEncoder
+from trytond.transaction import Transaction
 
 
 class Group(ModelSQL, ModelView):
@@ -18,8 +19,9 @@ class Group(ModelSQL, ModelView):
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None, required=True)
 
-    def init(self, cursor, module_name):
-        super(Group, self).init(cursor, module_name)
+    def init(self, module_name):
+        super(Group, self).init(module_name)
+        cursor = Transaction().cursor
         table = TableHandler(cursor, self, module_name)
 
         # Migration from 1.4 drop code_uniq constraint
@@ -52,15 +54,11 @@ class CodeTemplate(ModelSQL, ModelView):
         self._order.insert(0, ('code', 'ASC'))
         self._order.insert(0, ('account', 'ASC'))
 
-    def _get_tax_code_value(self, cursor, user, template, context=None,
-            code=None):
+    def _get_tax_code_value(self, template, code=None):
         '''
         Set values for tax code creation.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param template: the BrowseRecord of the template
-        :param context: the context
         :param code: the BrowseRecord of the code to update
         :return: a dictionary with tax code fields as key and values as value
         '''
@@ -75,18 +73,15 @@ class CodeTemplate(ModelSQL, ModelView):
             res['template'] = template.id
         return res
 
-    def create_tax_code(self, cursor, user, template, company_id, context=None,
-            template2tax_code=None, parent_id=False):
+    def create_tax_code(self, template, company_id, template2tax_code=None,
+            parent_id=False):
         '''
         Create recursively tax codes based on template.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param template: the template id or the BrowseRecord of template
                 used for tax code creation
         :param company_id: the id of the company for which tax codes are
                 created
-        :param context: the context
         :param template2tax_code: a dictionary with tax code template id as key
                 and tax code id as value, used to convert template id into
                 tax code. The dictionary is filled with new tax codes
@@ -101,27 +96,23 @@ class CodeTemplate(ModelSQL, ModelView):
             template2tax_code = {}
 
         if isinstance(template, (int, long)):
-            template = self.browse(cursor, user, template, context=context)
+            template = self.browse(template)
 
         if template.id not in template2tax_code:
-            vals = self._get_tax_code_value(cursor, user, template,
-                    context=context)
+            vals = self._get_tax_code_value(template)
             vals['company'] = company_id
             vals['parent'] = parent_id
 
-            new_id = tax_code_obj.create(cursor, user, vals, context=context)
+            new_id = tax_code_obj.create(vals)
 
             prev_lang = template._context.get('language') or 'en_US'
             prev_data = {}
             for field_name, field in template._columns.iteritems():
                 if getattr(field, 'translate', False):
                     prev_data[field_name] = template[field_name]
-            ctx = context.copy()
-            for lang in lang_obj.get_translatable_languages(cursor, user,
-                    context=context):
+            for lang in lang_obj.get_translatable_languages():
                 if lang == prev_lang:
                     continue
-                ctx['language'] = lang
                 template.setLang(lang)
                 data = {}
                 for field_name, field in template._columns.iteritems():
@@ -129,7 +120,8 @@ class CodeTemplate(ModelSQL, ModelView):
                             and template[field_name] != prev_data[field_name]:
                         data[field_name] = template[field_name]
                 if data:
-                    tax_code_obj.write(cursor, user, new_id, data, context=ctx)
+                    with Transaction().set_context(language=lang):
+                        tax_code_obj.write(new_id, data)
             template.setLang(prev_lang)
             template2tax_code[template.id] = new_id
         else:
@@ -137,8 +129,7 @@ class CodeTemplate(ModelSQL, ModelView):
 
         new_childs = []
         for child in template.childs:
-            new_childs.append(self.create_tax_code(cursor, user, child,
-                company_id, context=context,
+            new_childs.append(self.create_tax_code(child, company_id,
                 template2tax_code=template2tax_code, parent_id=new_id))
         return new_id
 
@@ -177,39 +168,34 @@ class Code(ModelSQL, ModelView):
         })
         self._order.insert(0, ('code', 'ASC'))
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def default_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        if context.get('company'):
-            return context['company']
-        return False
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
-    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
+    def on_change_with_currency_digits(self, vals):
         company_obj = self.pool.get('company.company')
         if vals.get('company'):
-            company = company_obj.browse(cursor, user, vals['company'],
-                    context=context)
+            company = company_obj.browse(vals['company'])
             return company.currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, context=None):
+    def get_currency_digits(self, ids, name):
         res = {}
-        for code in self.browse(cursor, user, ids, context=context):
+        for code in self.browse(ids):
             res[code.id] = code.company.currency.digits
         return res
 
-    def get_sum(self, cursor, user, ids, name, context=None):
+    def get_sum(self, ids, name):
+        cursor = Transaction().cursor
         res = {}
         move_line_obj = self.pool.get('account.move.line')
         currency_obj = self.pool.get('currency.currency')
 
-        child_ids = self.search(cursor, user, [('parent', 'child_of', ids)],
-                context=context)
+        child_ids = self.search([('parent', 'child_of', ids)])
         all_ids = {}.fromkeys(ids + child_ids).keys()
-        line_query, _ = move_line_obj.query_get(cursor, user, context=context)
+        line_query, _ = move_line_obj.query_get()
         cursor.execute('SELECT c.id, ' \
                     'SUM(tl.amount) ' \
                 'FROM account_tax_code c, ' \
@@ -229,55 +215,48 @@ class Code(ModelSQL, ModelView):
                 sum = Decimal(str(sum))
             code_sum[code_id] = sum
 
-        for code in self.browse(cursor, user, ids, context=context):
+        for code in self.browse(ids):
             res.setdefault(code.id, Decimal('0.0'))
-            child_ids = self.search(cursor, user, [
+            child_ids = self.search([
                 ('parent', 'child_of', [code.id]),
-                ], context=context)
+                ])
             for child_id in child_ids:
-                res[code.id] += currency_obj.round(cursor, user,
-                        code.company.currency,
+                res[code.id] += currency_obj.round(code.company.currency,
                         code_sum.get(child_id, Decimal('0.0')))
-            res[code.id] = currency_obj.round(cursor, user,
-                    code.company.currency, res[code.id])
+            res[code.id] = currency_obj.round(code.company.currency,
+                    res[code.id])
         return res
 
-    def get_rec_name(self, cursor, user, ids, name, context=None):
+    def get_rec_name(self, ids, name):
         if not ids:
             return {}
         res = {}
-        for code in self.browse(cursor, user, ids, context=context):
+        for code in self.browse(ids):
             if code.code:
                 res[code.id] = code.code + ' - ' + code.name
             else:
                 res[code.id] = code.name
         return res
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, [('code',) + clause[1:]], limit=1,
-                order=[], context=context)
+    def search_rec_name(self, name, clause):
+        ids = self.search([('code',) + clause[1:]], limit=1, order=[])
         if ids:
             return [('code',) + clause[1:]]
         return [('name',) + clause[1:]]
 
-    def delete(self, cursor, user, ids, context=None):
+    def delete(self, ids):
         if isinstance(ids, (int, long)):
             ids = [ids]
-        code_ids = self.search(cursor, user, [
+        code_ids = self.search([
             ('parent', 'child_of', ids),
-            ], context=context)
-        return super(Code, self).delete(cursor, user, code_ids,
-                context=context)
+            ])
+        return super(Code, self).delete(code_ids)
 
-    def update_tax_code(self, cursor, user, code, context=None,
-            template2tax_code=None):
+    def update_tax_code(self, code, template2tax_code=None):
         '''
         Update recursively tax code based on template.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param code: a code id or the BrowseRecord of the code
-        :param context: the context
         :param template2tax_code: a dictionary with tax code template id as key
                 and tax code id as value, used to convert template id into
                 tax code. The dictionary is filled with new tax codes
@@ -289,25 +268,21 @@ class Code(ModelSQL, ModelView):
             template2tax_code = {}
 
         if isinstance(code, (int, long)):
-            code = self.browse(cursor, user, code, context=context)
+            code = self.browse(code)
 
         if code.template:
-            vals = template_obj._get_tax_code_value(cursor, user,
-                    code.template, context=context, code=code)
+            vals = template_obj._get_tax_code_value(code.template, code=code)
             if vals:
-                self.write(cursor, user, code.id, vals, context=context)
+                self.write(code.id, vals)
 
             prev_lang = code._context.get('language') or 'en_US'
             prev_data = {}
             for field_name, field in code.template._columns.iteritems():
                 if getattr(field, 'translate', False):
                     prev_data[field_name] = code.template[field_name]
-            ctx = context.copy()
-            for lang in lang_obj.get_translatable_languages(cursor, user,
-                    context=context):
+            for lang in lang_obj.get_translatable_languages():
                 if lang == prev_lang:
                     continue
-                ctx['language'] = lang
                 code.setLang(lang)
                 data = {}
                 for field_name, field in code.template._columns.iteritems():
@@ -316,13 +291,13 @@ class Code(ModelSQL, ModelView):
                             prev_data[field_name]):
                         data[field_name] = code.template[field_name]
                 if data:
-                    self.write(cursor, user, code.id, data, context=ctx)
+                    with Transaction().set_context(language=lang):
+                        self.write(code.id, data)
             code.setLang(prev_lang)
             template2tax_code[code.template.id] = code.id
 
         for child in code.childs:
-            self.update_tax_code(cursor, user, child, context=context,
-                    template2tax_code=template2tax_code)
+            self.update_tax_code(child, template2tax_code=template2tax_code)
 
 Code()
 
@@ -346,7 +321,7 @@ class OpenChartCodeInit(ModelView):
                 'invisible': Not(Equal(Eval('method'), 'periods')),
             }, depends=['method'])
 
-    def default_method(self, cursor, user, context=None):
+    def default_method(self):
         return 'periods'
 
 OpenChartCodeInit()
@@ -375,12 +350,11 @@ class OpenChartCode(Wizard):
         },
     }
 
-    def _action_open_chart(self, cursor, user, data, context=None):
+    def _action_open_chart(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id(cursor, user, 'account',
-                'act_tax_code_tree2', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('account', 'act_tax_code_tree2')
+        res = act_window_obj.read(act_window_id)
         if data['form']['method'] == 'fiscalyear':
             res['pyson_context'] = PYSONEncoder().encode({
                 'fiscalyear': data['form']['fiscalyear'],
@@ -436,40 +410,37 @@ class TaxTemplate(ModelSQL, ModelView):
         self._order.insert(0, ('sequence', 'ASC'))
         self._order.insert(0, ('account', 'ASC'))
 
-    def init(self, cursor, module_name):
-        super(TaxTemplate, self).init(cursor, module_name)
+    def init(self, module_name):
+        super(TaxTemplate, self).init(module_name)
+        cursor = Transaction().cursor
         table = TableHandler(cursor, self, module_name)
 
         # Migration from 1.0 group is no more required
         table.not_null_action('group', action='remove')
 
-    def default_type(self, cursor, user, context=None):
+    def default_type(self):
         return 'percentage'
 
-    def default_include_base_amount(self, cursor, user, context=None):
+    def default_include_base_amount(self):
         return False
 
-    def default_invoice_base_sign(self, cursor, user, context=None):
+    def default_invoice_base_sign(self):
         return Decimal('1')
 
-    def default_invoice_tax_sign(self, cursor, user, context=None):
+    def default_invoice_tax_sign(self):
         return Decimal('1')
 
-    def default_credit_note_base_sign(self, cursor, user, context=None):
+    def default_credit_note_base_sign(self):
         return Decimal('1')
 
-    def default_credit_note_tax_sign(self, cursor, user, context=None):
+    def default_credit_note_tax_sign(self):
         return Decimal('1')
 
-    def _get_tax_value(self, cursor, user, template, context=None,
-            tax=None):
+    def _get_tax_value(self, template, tax=None):
         '''
         Set values for tax creation.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param template: the BrowseRecord of the template
-        :param context: the context
         :param tax: the BrowseRecord of the tax to update
         :return: a dictionary with account fields as key and values as value
         '''
@@ -486,14 +457,11 @@ class TaxTemplate(ModelSQL, ModelView):
             res['template'] = template.id
         return res
 
-    def create_tax(self, cursor, user, template, company_id,
-            template2tax_code, template2account, context=None,
-            template2tax=None, parent_id=False):
+    def create_tax(self, template, company_id, template2tax_code,
+            template2account, template2tax=None, parent_id=False):
         '''
         Create recursively taxes based on template.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param template: the template id or the BrowseRecord of template
                 used for tax creation
         :param company_id: the id of the company for which taxes are created
@@ -503,7 +471,6 @@ class TaxTemplate(ModelSQL, ModelView):
         :param template2account: a dictionary with account template id as key
                 and account id as value, used to convert account template into
                 account code
-        :param context: the context
         :param template2tax: a dictionary with tax template id as key and
                 tax id as value, used to convert template id into tax.
                 The dictionary is filled with new taxes
@@ -518,10 +485,10 @@ class TaxTemplate(ModelSQL, ModelView):
             template2tax = {}
 
         if isinstance(template, (int, long)):
-            template = self.browse(cursor, user, template, context=context)
+            template = self.browse(template)
 
         if template.id not in template2tax:
-            vals = self._get_tax_value(cursor, user, template, context=context)
+            vals = self._get_tax_value(template)
             vals['company'] = company_id
             vals['parent'] = parent_id
             if template.invoice_account:
@@ -555,19 +522,16 @@ class TaxTemplate(ModelSQL, ModelView):
             else:
                 vals['credit_note_tax_code'] = False
 
-            new_id = tax_obj.create(cursor, user, vals, context=context)
+            new_id = tax_obj.create(vals)
 
             prev_lang = template._context.get('language') or 'en_US'
             prev_data = {}
             for field_name, field in template._columns.iteritems():
                 if getattr(field, 'translate', False):
                     prev_data[field_name] = template[field_name]
-            ctx = context.copy()
-            for lang in lang_obj.get_translatable_languages(cursor, user,
-                    context=context):
+            for lang in lang_obj.get_translatable_languages():
                 if lang == prev_lang:
                     continue
-                ctx['language'] = lang
                 template.setLang(lang)
                 data = {}
                 for field_name, field in template._columns.iteritems():
@@ -575,7 +539,8 @@ class TaxTemplate(ModelSQL, ModelView):
                             and template[field_name] != prev_data[field_name]:
                         data[field_name] = template[field_name]
                 if data:
-                    tax_obj.write(cursor, user, new_id, data, context=ctx)
+                    with Transaction().set_context(language=lang):
+                        tax_obj.write(new_id, data)
             template.setLang(prev_lang)
             template2tax[template.id] = new_id
         else:
@@ -583,9 +548,9 @@ class TaxTemplate(ModelSQL, ModelView):
 
         new_childs = []
         for child in template.childs:
-            new_childs.append(self.create_tax(cursor, user, child,
-                company_id, template2tax_code, template2account,
-                context=context, template2tax=template2tax, parent_id=new_id))
+            new_childs.append(self.create_tax(child, company_id,
+                template2tax_code, template2account, template2tax=template2tax,
+                parent_id=new_id))
         return new_id
 
 TaxTemplate()
@@ -704,56 +669,52 @@ class Tax(ModelSQL, ModelView):
         super(Tax, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
 
-    def init(self, cursor, module_name):
-        super(Tax, self).init(cursor, module_name)
+    def init(self, module_name):
+        super(Tax, self).init(module_name)
+        cursor = Transaction().cursor
         table = TableHandler(cursor, self, module_name)
 
         # Migration from 1.0 group is no more required
         table.not_null_action('group', action='remove')
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def default_type(self, cursor, user, context=None):
+    def default_type(self):
         return 'percentage'
 
-    def default_include_base_amount(self, cursor, user, context=None):
+    def default_include_base_amount(self):
         return False
 
-    def default_invoice_base_sign(self, cursor, user, context=None):
+    def default_invoice_base_sign(self):
         return Decimal('1')
 
-    def default_invoice_tax_sign(self, cursor, user, context=None):
+    def default_invoice_tax_sign(self):
         return Decimal('1')
 
-    def default_credit_note_base_sign(self, cursor, user, context=None):
+    def default_credit_note_base_sign(self):
         return Decimal('1')
 
-    def default_credit_note_tax_sign(self, cursor, user, context=None):
+    def default_credit_note_tax_sign(self):
         return Decimal('1')
 
-    def default_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        if context.get('company'):
-            return context['company']
-        return False
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
-    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
+    def on_change_with_currency_digits(self, vals):
         company_obj = self.pool.get('company.company')
         if vals.get('company'):
-            company = company_obj.browse(cursor, user, vals['company'],
-                    context=context)
+            company = company_obj.browse(vals['company'])
             return company.currency.digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, context=None):
+    def get_currency_digits(self, ids, name):
         res = {}
-        for tax in self.browse(cursor, user, ids, context=context):
+        for tax in self.browse(ids):
             res[tax.id] = tax.company.currency.digits
         return res
 
-    def _process_tax(self, cursor, user, tax, price_unit, context=None):
+    def _process_tax(self, tax, price_unit):
         if tax.type == 'percentage':
             amount = price_unit * tax.percentage / Decimal('100')
             return {
@@ -769,48 +730,43 @@ class Tax(ModelSQL, ModelView):
                 'tax': tax,
             }
 
-    def _unit_compute(self, cursor, user, taxes, price_unit, context=None):
+    def _unit_compute(self, taxes, price_unit):
         res = []
         for tax in taxes:
             if tax.type != 'none':
-                res.append(self._process_tax(cursor, user, tax, price_unit,
-                    context=context))
+                res.append(self._process_tax(tax, price_unit))
             if len(tax.childs):
-                res.extend(self._unit_compute(cursor, user, tax.childs,
-                    price_unit, context=context))
+                res.extend(self._unit_compute(tax.childs, price_unit))
         return res
 
-    def delete(self, cursor, user, ids, context=None):
+    def delete(self, ids):
         # Restart the cache
-        self.sort_taxes(cursor.dbname)
-        return super(Tax, self).delete(cursor, user, ids, context=context)
+        self.sort_taxes.reset()
+        return super(Tax, self).delete(ids)
 
-    def create(self, cursor, user, vals, context=None):
+    def create(self, vals):
         # Restart the cache
-        self.sort_taxes(cursor.dbname)
-        return super(Tax, self).create(cursor, user, vals, context=context)
+        self.sort_taxes.reset()
+        return super(Tax, self).create(vals)
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         # Restart the cache
-        self.sort_taxes(cursor.dbname)
-        return super(Tax, self).write(cursor, user, ids, vals, context=context)
+        self.sort_taxes.reset()
+        return super(Tax, self).write(ids, vals)
 
     @Cache('account_tax.sort_taxes')
-    def sort_taxes(self, cursor, user, ids, context=None):
+    def sort_taxes(self, ids):
         '''
         Return a list of taxe ids sorted
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param ids: a list of tax ids
-        :param context: the context
         :return: a list of tax ids sorted
         '''
-        return self.search(cursor, user, [
+        return self.search([
             ('id', 'in', ids),
-            ], order=[('sequence', 'ASC'), ('id', 'ASC')], context=context)
+            ], order=[('sequence', 'ASC'), ('id', 'ASC')])
 
-    def compute(self, cursor, user, ids, price_unit, quantity, context=None):
+    def compute(self, ids, price_unit, quantity):
         '''
         Compute taxes for price_unit and quantity.
         Return list of dict for each taxes and their childs with:
@@ -818,23 +774,20 @@ class Tax(ModelSQL, ModelView):
             amount
             tax
         '''
-        ids = self.sort_taxes(cursor, user, ids, context=context)
-        taxes = self.browse(cursor, user, ids, context=context)
-        res = self._unit_compute(cursor, user, taxes, price_unit,
-                context=context)
+        ids = self.sort_taxes(ids)
+        taxes = self.browse(ids)
+        res = self._unit_compute(taxes, price_unit)
         quantity = Decimal(str(quantity or 0.0))
         for row in res:
             row['base'] *= quantity
             row['amount'] *= quantity
         return res
 
-    def update_tax(self, cursor, user, tax, template2tax_code,
-            template2account, context=None, template2tax=None):
+    def update_tax(self, tax, template2tax_code, template2account,
+            template2tax=None):
         '''
         Update recursively taxes based on template.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param tax: a tax id or the BrowseRecord of the tax
         :param template2tax_code: a dictionary with tax code template id as key
                 and tax code id as value, used to convert tax code template into
@@ -842,7 +795,6 @@ class Tax(ModelSQL, ModelView):
         :param template2account: a dictionary with account template id as key
                 and account id as value, used to convert account template into
                 account code
-        :param context: the context
         :param template2tax: a dictionary with tax template id as key and
                 tax id as value, used to convert template id into tax.
                 The dictionary is filled with new taxes
@@ -854,11 +806,10 @@ class Tax(ModelSQL, ModelView):
             template2tax = {}
 
         if isinstance(tax, (int, long)):
-            tax = self.browse(cursor, user, tax, context=context)
+            tax = self.browse(tax)
 
         if tax.template:
-            vals = template_obj._get_tax_value(cursor, user, tax.template,
-                    context=context, tax=tax)
+            vals = template_obj._get_tax_value(tax.template, tax=tax)
             if tax.template.invoice_account \
                     and tax.invoice_account.id != \
                     template2account.get(tax.template.invoice_account.id,
@@ -921,19 +872,16 @@ class Tax(ModelSQL, ModelView):
                 vals['credit_note_tax_code'] = False
 
             if vals:
-                self.write(cursor, user, tax.id, vals, context=context)
+                self.write(tax.id, vals)
 
             prev_lang = tax._context.get('language') or 'en_US'
             prev_data = {}
             for field_name, field in tax.template._columns.iteritems():
                 if getattr(field, 'translate', False):
                     prev_data[field_name] = tax.template[field_name]
-            ctx = context.copy()
-            for lang in lang_obj.get_translatable_languages(cursor, user,
-                    context=context):
+            for lang in lang_obj.get_translatable_languages():
                 if lang == prev_lang:
                     continue
-                ctx['language'] = lang
                 tax.setLang(lang)
                 data = {}
                 for field_name, field in tax.template._columns.iteritems():
@@ -942,13 +890,14 @@ class Tax(ModelSQL, ModelView):
                             prev_data[field_name]):
                         data[field_name] = tax.template[field_name]
                 if data:
-                    self.write(cursor, user, tax.id, data, context=ctx)
+                    with Transaction().set_context(language=lang):
+                        self.write(tax.id, data)
             tax.setLang(prev_lang)
             template2tax[tax.template.id] = tax.id
 
         for child in tax.childs:
-            self.update_tax(cursor, user, child, template2tax_code,
-                    template2account, context=context, template2tax=template2tax)
+            self.update_tax(child, template2tax_code, template2account,
+                    template2tax=template2tax)
 
 Tax()
 
@@ -969,21 +918,20 @@ class Line(ModelSQL, ModelView):
     move_line = fields.Many2One('account.move.line', 'Move Line',
             required=True, select=1, ondelete='CASCADE')
 
-    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
+    def on_change_with_currency_digits(self, vals):
         move_line_obj = self.pool.get('account.move.line')
         if vals.get('move_line'):
-            move_line = move_line_obj.browse(cursor, user, vals['move_line'],
-                    context=context)
+            move_line = move_line_obj.browse(vals['move_line'])
             return move_line.currency_digits
         return 2
 
-    def get_currency_digits(self, cursor, user, ids, name, context=None):
+    def get_currency_digits(self, ids, name):
         res = {}
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             res[line.id] = line.move_line.currency_digits
         return res
 
-    def on_change_tax(self, cursor, user, vals, context=None):
+    def on_change_tax(self, vals):
         res = {
             'code': False,
             }
@@ -1001,15 +949,11 @@ class RuleTemplate(ModelSQL, ModelView):
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', False)], required=True)
 
-    def _get_tax_rule_value(self, cursor, user, template, context=None,
-            rule=None):
+    def _get_tax_rule_value(self, template, rule=None):
         '''
         Set values for tax rule creation.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param template: the BrowseRecord of the template
-        :param context: the context
         :param rule: the BrowseRecord of the rule to update
         :return: a dictionary with rule fields as key and values as value
         '''
@@ -1020,18 +964,14 @@ class RuleTemplate(ModelSQL, ModelView):
             res['template'] = template.id
         return res
 
-    def create_rule(self, cursor, user, template, company_id, context=None,
-            template2rule=None):
+    def create_rule(self, template, company_id, template2rule=None):
         '''
         Create tax rule based on template.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param template: the template id or the BrowseRecord of template
                 used for tax rule creation
         :param company_id: the id of the company for which tax rules are
                 created
-        :param context: the context
         :param template2rule: a dictionary with tax rule template id as key
                 and tax rule id as value, used to convert template id into
                 tax rule. The dictionary is filled with new tax rules
@@ -1044,25 +984,21 @@ class RuleTemplate(ModelSQL, ModelView):
             template2rule = {}
 
         if isinstance(template, (int, long)):
-            template = self.browse(cursor, user, template, context=context)
+            template = self.browse(template)
 
         if template.id not in template2rule:
-            vals = self._get_tax_rule_value(cursor, user, template,
-                    context=context)
+            vals = self._get_tax_rule_value(template)
             vals['company'] = company_id
-            new_id = rule_obj.create(cursor, user, vals, context=context)
+            new_id = rule_obj.create(vals)
 
             prev_lang = template._context.get('language') or 'en_US'
             prev_data = {}
             for field_name, field in template._columns.iteritems():
                 if getattr(field, 'translate', False):
                     prev_data[field_name] = template[field_name]
-            ctx = context.copy()
-            for lang in lang_obj.get_translatable_languages(cursor, user,
-                    context=context):
+            for lang in lang_obj.get_translatable_languages():
                 if lang == prev_lang:
                     continue
-                ctx['language'] = lang
                 template.setLang(lang)
                 data = {}
                 for field_name, field in template._columns.iteritems():
@@ -1070,7 +1006,8 @@ class RuleTemplate(ModelSQL, ModelView):
                             and template[field_name] != prev_data[field_name]:
                         data[field_name] = template[field_name]
                 if data:
-                    rule_obj.write(cursor, user, new_id, data, context=ctx)
+                    with Transaction().set_context(language=lang):
+                        rule_obj.write(new_id, data)
             template.setLang(prev_lang)
             template2rule[template.id] = new_id
         else:
@@ -1093,47 +1030,39 @@ class Rule(ModelSQL, ModelView):
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
     template = fields.Many2One('account.tax.rule.template', 'Template')
 
-    def apply(self, cursor, user, rule, tax, pattern, context=None):
+    def apply(self, rule, tax, pattern):
         '''
         Apply rule on tax
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param rule: a rule id or the BrowseRecord of the rule
         :param tax: a tax id or the BrowseRecord of the tax
         :param pattern: a dictonary with rule line field as key
                 and match value as value
-        :param context: the context
         :return: a list of the tax id to use or False
         '''
         tax_obj = self.pool.get('account.tax')
         rule_line_obj = self.pool.get('account.tax.rule.line')
 
         if isinstance(rule, (int, long)) and rule:
-            rule = self.browse(cursor, user, rule, context=context)
+            rule = self.browse(rule)
 
         if isinstance(tax, (int, long)) and tax:
-            tax = tax_obj.browse(cursor, user, tax, context=context)
+            tax = tax_obj.browse(tax)
 
         pattern = pattern.copy()
         pattern['group'] = tax and tax.group.id or False
         pattern['origin_tax'] = tax and tax.id or False
 
         for line in rule.lines:
-            if rule_line_obj.match(cursor, user, line, pattern,
-                    context=context):
-                return rule_line_obj.get_taxes(cursor, user, line,
-                        context=context)
+            if rule_line_obj.match(line, pattern):
+                return rule_line_obj.get_taxes(line)
         return tax and [tax.id] or False
 
-    def update_rule(self, cursor, user, rule, context=None, template2rule=None):
+    def update_rule(self, rule, template2rule=None):
         '''
         Update tax rule based on template.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param rule: a rule id or the BrowseRecord of the rule
-        :param context: the context
         :param template2rule: a dictionary with tax rule template id as key
                 and tax rule id as value, used to convert template id into
                 tax rule. The dictionary is filled with new tax rules
@@ -1145,25 +1074,21 @@ class Rule(ModelSQL, ModelView):
             template2rule = {}
 
         if isinstance(rule, (int, long)):
-            rule = self.browse(cursor, user, rule, context=context)
+            rule = self.browse(rule)
 
         if rule.template:
-            vals = template_obj._get_tax_rule_value(cursor, user,
-                    rule.template, context=context, rule=rule)
+            vals = template_obj._get_tax_rule_value(rule.template, rule=rule)
             if vals:
-                self.write(cursor, user, rule.id, vals, context=context)
+                self.write(rule.id, vals)
 
             prev_lang = rule._context.get('language') or 'en_US'
             prev_data = {}
             for field_name, field in rule.template._columns.iteritems():
                 if getattr(field, 'translate', False):
                     prev_data[field_name] = rule.template[field_name]
-            ctx = context.copy()
-            for lang in lang_obj.get_translatable_languages(cursor, user,
-                    context=context):
+            for lang in lang_obj.get_translatable_languages():
                 if lang == prev_lang:
                     continue
-                ctx['language'] = lang
                 rule.setLang(lang)
                 data = {}
                 for field_name, field in rule.template._columns.iteritems():
@@ -1172,7 +1097,8 @@ class Rule(ModelSQL, ModelView):
                             prev_data[field_name]):
                         data[field_name] = rule.template[field_name]
                 if data:
-                    self.write(cursor, user, rule.id, data, context=ctx)
+                    with Transaction().set_context(language=lang):
+                        self.write(rule.id, data)
             rule.setLang(prev_lang)
             template2rule[rule.template.id] = rule.id
 
@@ -1205,15 +1131,11 @@ class RuleLineTemplate(ModelSQL, ModelView):
         self._order.insert(0, ('rule', 'ASC'))
         self._order.insert(0, ('sequence', 'ASC'))
 
-    def _get_tax_rule_line_value(self, cursor, user, template, context=None,
-            rule_line=None):
+    def _get_tax_rule_line_value(self, template, rule_line=None):
         '''
         Set values for tax rule line creation.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param template: the BrowseRecord of the template
-        :param context: the context
         :param rule_line: the BrowseRecord of the rule line to update
         :return: a dictionary with rule line fields as key and values as value
         '''
@@ -1228,13 +1150,11 @@ class RuleLineTemplate(ModelSQL, ModelView):
             res['template'] = template.id
         return res
 
-    def create_rule_line(self, cursor, user, template, template2tax,
-            template2rule, context=None, template2rule_line=None):
+    def create_rule_line(self, template, template2tax, template2rule,
+            template2rule_line=None):
         '''
         Create tax rule line based on template.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param template: the template id or the BrowseRecord of template
                 used for tax rule line creation
         :param template2tax: a dictionary with tax template id as key
@@ -1243,7 +1163,6 @@ class RuleLineTemplate(ModelSQL, ModelView):
         :param template2rule: a dictionary with tax rule template id as key
                 and tax rule id as value, used to convert template id into
                 tax rule.
-        :param context: the context
         :param template2rule_line: a dictionary with tax rule line template id
                 as key and tax rule line id as value, used to convert template
                 id into tax rule line. The dictionary is filled with new
@@ -1256,11 +1175,10 @@ class RuleLineTemplate(ModelSQL, ModelView):
             template2rule_line = {}
 
         if isinstance(template, (int, long)):
-            template = self.browse(cursor, user, template, context=context)
+            template = self.browse(template)
 
         if template.id not in template2rule_line:
-            vals = self._get_tax_rule_line_value(cursor, user, template,
-                    context=context)
+            vals = self._get_tax_rule_line_value(template)
             vals['rule'] = template2rule[template.rule.id]
             if template.origin_tax:
                 vals['origin_tax'] = template2tax[template.origin_tax.id]
@@ -1270,7 +1188,7 @@ class RuleLineTemplate(ModelSQL, ModelView):
                 vals['tax'] = template2tax[template.tax.id]
             else:
                 vals['tax'] = False
-            new_id = rule_line_obj.create(cursor, user, vals, context=context)
+            new_id = rule_line_obj.create(vals)
             template2rule_line[template.id] = new_id
         else:
             new_id = template2rule_line[template.id]
@@ -1307,16 +1225,13 @@ class RuleLine(ModelSQL, ModelView):
         self._order.insert(0, ('rule', 'ASC'))
         self._order.insert(0, ('sequence', 'ASC'))
 
-    def match(self, cursor, user, line, pattern, context=None):
+    def match(self, line, pattern):
         '''
         Match line on pattern
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param line: a BrowseRecord of rule line
         :param pattern: a dictonary with rule line field as key
                 and match value as value
-        :param context: the context
         :return: a boolean
         '''
         res = True
@@ -1335,27 +1250,22 @@ class RuleLine(ModelSQL, ModelView):
                     break
         return res
 
-    def get_taxes(self, cursor, user, line, context=None):
+    def get_taxes(self, line):
         '''
         Return list of taxes for a line
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param line: a BrowseRecord of rule line
-        :param context: the context
         :return: a list of tax id
         '''
         if line.tax:
             return [line.tax.id]
         return False
 
-    def update_rule_line(self, cursor, user, rule_line, template2tax,
-            template2rule, context=None, template2rule_line=None):
+    def update_rule_line(self, rule_line, template2tax, template2rule,
+            template2rule_line=None):
         '''
         Update tax rule line based on template.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param rule_line: a rule line id or the BrowseRecord of the rule line
         :param template2tax: a dictionary with tax template id as key
                 and tax id as value, used to convert template id into
@@ -1363,7 +1273,6 @@ class RuleLine(ModelSQL, ModelView):
         :param template2rule: a dictionary with tax rule template id as key
                 and tax rule id as value, used to convert template id into
                 tax rule.
-        :param context: the context
         :param template2rule_line: a dictionary with tax rule line template id
                 as key and tax rule line id as value, used to convert template
                 id into tax rule line. The dictionary is filled with new
@@ -1375,11 +1284,11 @@ class RuleLine(ModelSQL, ModelView):
             template2rule_line = {}
 
         if isinstance(rule_line, (int, long)):
-            rule_line = self.browse(cursor, user, rule_line, context=context)
+            rule_line = self.browse(rule_line)
 
         if rule_line.template:
-            vals = template_obj._get_tax_rule_line_value(cursor, user,
-                    rule_line.template, context=context, rule_line=rule_line)
+            vals = template_obj._get_tax_rule_line_value(rule_line.template,
+                    rule_line=rule_line)
             if rule_line.rule.id != template2rule[rule_line.template.rule.id]:
                 vals['rule'] = template2rule[rule_line.template.rule.id]
             if rule_line.origin_tax:
@@ -1394,7 +1303,7 @@ class RuleLine(ModelSQL, ModelView):
                             template2tax[rule_line.template.tax.id]:
                         vals['tax'] = template2tax[rule_line.template.tax.id]
             if vals:
-                self.write(cursor, user, rule_line.id, vals, context=context)
+                self.write(rule_line.id, vals)
             template2rule_line[rule_line.template.id] = rule_line.id
 
 RuleLine()
@@ -1413,39 +1322,36 @@ class OpenCode(Wizard):
         },
     }
 
-    def _action_open_code(self, cursor, user, data, context=None):
-        if context is None:
-            context = {}
+    def _action_open_code(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         fiscalyear_obj = self.pool.get('account.fiscalyear')
         period_obj = self.pool.get('account.period')
 
-        if not context.get('fiscalyear'):
-            fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
+        if not Transaction().context.get('fiscalyear'):
+            fiscalyear_ids = fiscalyear_obj.search([
                 ('state', '=', 'open'),
-                ], context=context)
+                ])
         else:
-            fiscalyear_ids = [context['fiscalyear']]
+            fiscalyear_ids = [Transaction().context['fiscalyear']]
 
         period_ids = []
-        if not context.get('periods'):
-            period_ids = period_obj.search(cursor, user, [
+        if not Transaction().context.get('periods'):
+            period_ids = period_obj.search([
                 ('fiscalyear', 'in', fiscalyear_ids),
-                ], context=context)
+                ])
         else:
-            period_ids = context['periods']
+            period_ids = Transaction().context['periods']
 
-        act_window_id = model_data_obj.get_id(cursor, user, 'account',
-                'act_tax_line_form', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('account', 'act_tax_line_form')
+        res = act_window_obj.read(act_window_id)
         res['pyson_domain'] = PYSONEncoder().encode([
             ('move_line.period', 'in', period_ids),
             ('code', '=', data['id']),
             ])
-        if context.get('fiscalyear'):
+        if Transaction().context.get('fiscalyear'):
             res['pyson_context'] = PYSONEncoder().encode({
-                'fiscalyear': context['fiscalyear'],
+                'fiscalyear': Transaction().context['fiscalyear'],
             })
         else:
             res['pyson_context'] = PYSONEncoder().encode({

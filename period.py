@@ -1,9 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-'Period'
 from trytond.model import ModelView, ModelSQL, fields, OPERATORS
 from trytond.wizard import Wizard
 from trytond.pyson import Equal, Eval
+from trytond.transaction import Transaction
 
 _STATES = {
     'readonly': Equal(Eval('state'), 'close'),
@@ -66,14 +66,15 @@ class Period(ModelSQL, ModelView):
                     'the fiscal year dates',
             })
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'open'
 
-    def default_type(self, cursor, user, context=None):
+    def default_type(self):
         return 'standard'
 
-    def check_dates(self, cursor, user, ids):
-        for period in self.browse(cursor, user, ids):
+    def check_dates(self, ids):
+        cursor = Transaction().cursor
+        for period in self.browse(ids):
             if period.type != 'standard':
                 continue
             cursor.execute('SELECT id ' \
@@ -92,16 +93,16 @@ class Period(ModelSQL, ModelView):
                 return False
         return True
 
-    def check_fiscalyear_dates(self, cursor, user, ids):
-        for period in self.browse(cursor, user, ids):
+    def check_fiscalyear_dates(self, ids):
+        for period in self.browse(ids):
             if period.start_date < period.fiscalyear.start_date \
                     or period.end_date > period.fiscalyear.end_date:
                 return False
         return True
 
-    def check_post_move_sequence(self, cursor, user, ids):
-        for period in self.browse(cursor, user, ids):
-            if self.search(cursor, user, [
+    def check_post_move_sequence(self, ids):
+        for period in self.browse(ids):
+            if self.search([
                 ('post_move_sequence', '=', period.post_move_sequence.id),
                 ('fiscalyear', '!=', period.fiscalyear.id),
                 ]):
@@ -112,27 +113,23 @@ class Period(ModelSQL, ModelView):
                 return False
         return True
 
-    def find(self, cursor, user, company_id, date=None, exception=True,
-            test_state=True, context=None):
+    def find(self, company_id, date=None, exception=True, test_state=True):
         '''
         Return the period for the company_id
             at the date or the current date.
         If exception is set the function will raise an exception
             if any period is found.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param company_id: the company id
         :param date: the date searched
         :param exception: a boolean to raise or not an exception
         :param test_state: a boolean if true will search on non-closed periods
-        :param context: the context
         :return: the period id found or False
         '''
         date_obj = self.pool.get('ir.date')
 
         if not date:
-            date = date_obj.today(cursor, user, context=context)
+            date = date_obj.today()
         clause = [
             ('start_date', '<=', date),
             ('end_date', '>=', date),
@@ -141,30 +138,27 @@ class Period(ModelSQL, ModelView):
             ]
         if test_state:
             clause.append(('state', '!=', 'close'))
-        ids = self.search(cursor, user, clause, order=[('start_date', 'DESC')],
-                limit=1, context=context)
+        ids = self.search(clause, order=[('start_date', 'DESC')], limit=1)
         if not ids:
             if exception:
-                self.raise_user_error(cursor, 'no_period_date',
-                        context=context)
+                self.raise_user_error('no_period_date')
             else:
                 return False
         return ids[0]
 
-    def _check(self, cursor, user, ids, context=None):
+    def _check(self, ids):
         move_obj = self.pool.get('account.move')
         if isinstance(ids, (int, long)):
             ids = [ids]
-        move_ids = move_obj.search(cursor, user, [
+        move_ids = move_obj.search([
             ('period', 'in', ids),
-            ], limit=1, context=context)
+            ], limit=1)
         if move_ids:
-            self.raise_user_error(cursor, 'modify_del_period_moves',
-                    context=context)
+            self.raise_user_error('modify_del_period_moves')
         return
 
-    def search(self, cursor, user, args, offset=0, limit=None, order=None,
-            context=None, count=False, query_string=False):
+    def search(self, args, offset=0, limit=None, order=None, count=False,
+            query_string=False):
         args = args[:]
         def process_args(args):
             i = 0
@@ -178,85 +172,73 @@ class Period(ModelSQL, ModelView):
                     if not args[i][2][0]:
                         args[i] = ('id', '!=', '0')
                     else:
-                        period = self.browse(cursor, user, args[i][2][0],
-                                context=context)
+                        period = self.browse(args[i][2][0])
                         args[i] = (args[i][0], args[i][1], period[args[i][2][1]])
                 elif isinstance(args[i], list):
                     process_args(args[i])
                 i += 1
         process_args(args)
-        return super(Period, self).search(cursor, user, args, offset=offset,
-                limit=limit, order=order, context=context, count=count,
-                query_string=query_string)
+        return super(Period, self).search(args, offset=offset, limit=limit,
+                order=order, count=count, query_string=query_string)
 
-    def create(self, cursor, user, vals, context=None):
+    def create(self, vals):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
         vals = vals.copy()
         if vals.get('fiscalyear'):
-            fiscalyear = fiscalyear_obj.browse(cursor, user, vals['fiscalyear'],
-                    context=context)
+            fiscalyear = fiscalyear_obj.browse(vals['fiscalyear'])
             if fiscalyear.state == 'close':
-                self.raise_user_error(cursor,
-                        'create_period_closed_fiscalyear', context=context)
+                self.raise_user_error('create_period_closed_fiscalyear')
             if not vals.get('post_move_sequence'):
                 vals['post_move_sequence'] = fiscalyear.post_move_sequence.id
-        return super(Period, self).create(cursor, user, vals, context=context)
+        return super(Period, self).create(vals)
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         move_obj = self.pool.get('account.move')
         for key in vals.keys():
             if key in ('start_date', 'end_date', 'fiscalyear'):
-                self._check(cursor, user, ids, context=context)
+                self._check(ids)
                 break
         if vals.get('state') == 'open':
-            for period in self.browse(cursor, user, ids,
-                    context=context):
+            for period in self.browse(ids):
                 if period.fiscalyear.state == 'close':
-                    self.raise_user_error(cursor,
-                            'open_period_closed_fiscalyear', context=context)
+                    self.raise_user_error('open_period_closed_fiscalyear')
         if vals.get('post_move_sequence'):
-            for period in self.browse(cursor, user, ids, context=context):
+            for period in self.browse(ids):
                 if period.post_move_sequence and \
                         period.post_move_sequence.id != \
                         vals['post_move_sequence']:
-                    if move_obj.search(cursor, user, [
+                    if move_obj.search([
                         ('period', '=', period.id),
                         ('state', '=', 'posted'),
-                        ], context=context):
-                        self.raise_user_error(cursor,
-                                'change_post_move_sequence', context=context)
-        return super(Period, self).write(cursor, user, ids, vals,
-                context=context)
+                        ]):
+                        self.raise_user_error('change_post_move_sequence')
+        return super(Period, self).write(ids, vals)
 
-    def delete(self, cursor, user, ids, context=None):
-        self._check(cursor, user, ids, context=context)
-        return super(Period, self).delete(cursor, user, ids,
-                context=context)
+    def delete(self, ids):
+        self._check(ids)
+        return super(Period, self).delete(ids)
 
-    def close(self, cursor, user, ids, context=None):
+    def close(self, ids):
         journal_period_obj = self.pool.get('account.journal.period')
         move_obj = self.pool.get('account.move')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
 
-        if move_obj.search(cursor, user, [
+        if move_obj.search([
             ('period', 'in', ids),
             ('state', '!=', 'posted'),
-            ], context=context):
-            self.raise_user_error(cursor, 'close_period_non_posted_move',
-                    context=context)
+            ]):
+            self.raise_user_error('close_period_non_posted_move')
         #First close the period to be sure
         #it will not have new journal.period created between.
-        self.write(cursor, user, ids, {
+        self.write(ids, {
             'state': 'close',
-            }, context=context)
-        journal_period_ids = journal_period_obj.search(cursor, user, [
+            })
+        journal_period_ids = journal_period_obj.search([
             ('period', 'in', ids),
-            ], context=context)
-        journal_period_obj.close(cursor, user, journal_period_ids,
-                context=context)
-        return
+            ])
+        journal_period_obj.close(journal_period_ids)
 
 Period()
 
@@ -274,9 +256,9 @@ class ClosePeriod(Wizard):
         },
     }
 
-    def _close(self, cursor, user, data, context=None):
+    def _close(self, data):
         period_obj = self.pool.get('account.period')
-        period_obj.close(cursor, user, data['ids'], context=context)
+        period_obj.close(data['ids'])
         return {}
 
 ClosePeriod()
@@ -295,11 +277,11 @@ class ReOpenPeriod(Wizard):
         },
     }
 
-    def _reopen(self, cursor, user, data, context=None):
+    def _reopen(self, data):
         period_obj = self.pool.get('account.period')
-        period_obj.write(cursor, user, data['ids'], {
+        period_obj.write(data['ids'], {
             'state': 'open',
-            }, context=context)
+            })
         return {}
 
 ReOpenPeriod()

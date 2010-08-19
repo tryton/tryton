@@ -1,8 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Get, Eval, And, Bool, Not, Or
-from decimal import Decimal
+from trytond.transaction import Transaction
 
 
 class Party(ModelSQL, ModelView):
@@ -44,17 +45,12 @@ class Party(ModelSQL, ModelView):
     payable_today = fields.Function(fields.Numeric('Payable Today'),
             'get_receivable_payable', searcher='search_receivable_payable')
 
-    def get_receivable_payable(self, cursor, user_id, ids, names,
-            context=None):
+    def get_receivable_payable(self, ids, names):
         '''
         Function to compute receivable, payable (today or not) for party ids.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param ids: the ids of the party
         :param names: the list of field name to compute
-        :param arg: optional argument
-        :param context: the context
         :return: a dictionary with all field names as key and
             a dictionary as value with id as key
         '''
@@ -63,9 +59,7 @@ class Party(ModelSQL, ModelView):
         company_obj = self.pool.get('company.company')
         user_obj = self.pool.get('res.user')
         date_obj = self.pool.get('ir.date')
-
-        if context is None:
-            context = {}
+        cursor = Transaction().cursor
 
         for name in names:
             if name not in ('receivable', 'payable',
@@ -77,13 +71,13 @@ class Party(ModelSQL, ModelView):
             return {}
 
         company_id = None
-        user = user_obj.browse(cursor, user_id, user_id, context=context)
-        if context.get('company'):
-            child_company_ids = company_obj.search(cursor, user_id, [
+        user = user_obj.browse(Transaction().user)
+        if Transaction().context.get('company'):
+            child_company_ids = company_obj.search([
                 ('parent', 'child_of', [user.main_company.id]),
-                ], order=[], context=context)
-            if context['company'] in child_company_ids:
-                company_id = context['company']
+                ], order=[])
+            if Transaction().context['company'] in child_company_ids:
+                company_id = Transaction().context['company']
 
         if not company_id:
             company_id = user.company.id or user.main_company.id
@@ -91,7 +85,7 @@ class Party(ModelSQL, ModelView):
         if not company_id:
             return res
 
-        line_query, _ = move_line_obj.query_get(cursor, user_id, context=context)
+        line_query, _ = move_line_obj.query_get()
 
         for name in names:
             code = name
@@ -101,7 +95,7 @@ class Party(ModelSQL, ModelView):
                 code = name[:-6]
                 today_query = 'AND (l.maturity_date <= %s ' \
                         'OR l.maturity_date IS NULL) '
-                today_value = [date_obj.today(cursor, user, context=context)]
+                today_value = [date_obj.today()]
 
             cursor.execute('SELECT l.party, ' \
                         'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
@@ -125,28 +119,25 @@ class Party(ModelSQL, ModelView):
                 res[name][party_id] = sum
         return res
 
-    def search_receivable_payable(self, cursor, user_id, name, clause,
-            context=None):
+    def search_receivable_payable(self, name, clause):
         move_line_obj = self.pool.get('account.move.line')
         company_obj = self.pool.get('company.company')
         user_obj = self.pool.get('res.user')
         date_obj = self.pool.get('ir.date')
-
-        if context is None:
-            context = {}
+        cursor = Transaction().cursor
 
         if name not in ('receivable', 'payable',
                 'receivable_today', 'payable_today'):
             raise Exception('Bad argument')
 
         company_id = None
-        user = user_obj.browse(cursor, user_id, user_id, context=context)
-        if context.get('company'):
-            child_company_ids = company_obj.search(cursor, user_id, [
+        user = user_obj.browse(Transaction().user)
+        if Transaction().context.get('company'):
+            child_company_ids = company_obj.search([
                 ('parent', 'child_of', [user.main_company.id]),
-                ], context=context)
-            if context['company'] in child_company_ids:
-                company_id = context['company']
+                ])
+            if Transaction().context['company'] in child_company_ids:
+                company_id = Transaction().context['company']
 
         if not company_id:
             company_id = user.company.id or user.main_company.id
@@ -161,9 +152,9 @@ class Party(ModelSQL, ModelView):
             code = name[:-6]
             today_query = 'AND (l.maturity_date <= %s ' \
                     'OR l.maturity_date IS NULL) '
-            today_value = [date_obj.today(cursor, user, context=context)]
+            today_value = [date_obj.today()]
 
-        line_query, _ = move_line_obj.query_get(cursor, user_id, context=context)
+        line_query, _ = move_line_obj.query_get()
 
         cursor.execute('SELECT l.party '
                 'FROM account_move_line AS l, '

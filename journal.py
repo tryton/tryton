@@ -1,10 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Journal"
+from __future__ import with_statement
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from trytond.pyson import Equal, Eval, Not, Get, Or, And, Bool
+from trytond.transaction import Transaction
 
 STATES = {
     'readonly': Equal(Eval('state'), 'close'),
@@ -64,10 +65,10 @@ class Column(ModelSQL, ModelView):
         super(Column, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
 
-    def default_required(self, cursor, user, context=None):
+    def default_required(self):
         return False
 
-    def default_readonly(self, cursor, user, context=None):
+    def default_readonly(self):
         return False
 
 Column()
@@ -118,42 +119,44 @@ class Journal(ModelSQL, ModelView):
         super(Journal, self).__init__()
         self._order.insert(0, ('name', 'ASC'))
 
-    def init(self, cursor, module_name):
-        super(Journal, self).init(cursor, module_name)
+    def init(self, module_name):
+        super(Journal, self).init(module_name)
+        cursor = Transaction().cursor
         table = TableHandler(cursor, self, module_name)
 
         # Migration from 1.0 sequence Many2One change into Property
         if table.column_exist('sequence'):
             property_obj = self.pool.get('ir.property')
             cursor.execute('SELECT id, sequence FROM "' + self._table +'"')
-            for journal_id, sequence_id in cursor.fetchall():
-                property_obj.set(cursor, 0, 'sequence', self._name,
-                        journal_id, (sequence_id and \
+            with Transaction().set_user(0):
+                for journal_id, sequence_id in cursor.fetchall():
+                    property_obj.set('sequence', self._name,
+                            journal_id, (sequence_id and
                                 'ir.sequence,' + str(sequence_id) or False))
             table.drop_column('sequence', exception=True)
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def default_centralised(self, cursor, user, context=None):
+    def default_centralised(self):
         return False
 
-    def default_update_posted(self, cursor, user, context=None):
+    def default_update_posted(self):
         return False
 
-    def default_sequence(self, cursor, user, context=None):
+    def default_sequence(self):
         return False
 
-    def get_types(self, cursor, user, context=None):
+    def get_types(self):
         type_obj = self.pool.get('account.journal.type')
-        type_ids = type_obj.search(cursor, user, [], context=context)
-        types = type_obj.browse(cursor, user, type_ids, context=context)
+        type_ids = type_obj.search([])
+        types = type_obj.browse(type_ids)
         return [(x.code, x.name) for x in types]
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, [
+    def search_rec_name(self, name, clause):
+        ids = self.search([
             ('code',) + clause[1:],
-            ], limit=1, order=[], context=context)
+            ], limit=1, order=[])
         if ids:
             return [('code',) + clause[1:]]
         return [(self._rec_name,) + clause[1:]]
@@ -194,69 +197,60 @@ class Period(ModelSQL, ModelView):
                     'a journal - period from a closed period!',
             })
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'open'
 
-    def get_icon(self, cursor, user, ids, name, context=None):
+    def get_icon(self, ids, name):
         res = {}
-        for period in self.browse(cursor, user, ids, context=context):
+        for period in self.browse(ids):
             res[period.id] = _ICONS.get(period.state, '')
         return res
 
-    def _check(self, cursor, user, ids, context=None):
+    def _check(self, ids):
         move_obj = self.pool.get('account.move')
-        for period in self.browse(cursor, user, ids, context=context):
-            move_ids = move_obj.search(cursor, user, [
+        for period in self.browse(ids):
+            move_ids = move_obj.search([
                 ('journal', '=', period.journal.id),
                 ('period', '=', period.period.id),
-                ], limit=1, context=context)
+                ], limit=1)
             if move_ids:
-                self.raise_user_error(cursor, 'modify_del_journal_period',
-                        context=context)
+                self.raise_user_error('modify_del_journal_period')
         return
 
-    def create(self, cursor, user, vals, context=None):
+    def create(self, vals):
         period_obj = self.pool.get('account.period')
         if vals.get('period'):
-            period = period_obj.browse(cursor, user, vals['period'],
-                    context=context)
+            period = period_obj.browse(vals['period'])
             if period.state == 'close':
-                self.raise_user_error(cursor, 'create_journal_period',
-                        context=context)
-        return super(Period, self).create(cursor, user, vals, context=context)
+                self.raise_user_error('create_journal_period')
+        return super(Period, self).create(vals)
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         if vals != {'state': 'close'} \
                 and vals != {'state': 'open'}:
-            self._check(cursor, user, ids, context=context)
+            self._check(ids)
         if vals.get('state') == 'open':
-            for journal_period in self.browse(cursor, user, ids,
-                    context=context):
+            for journal_period in self.browse(ids):
                 if journal_period.period.state == 'close':
-                    self.raise_user_error(cursor, 'open_journal_period',
-                            context=context)
-        return super(Period, self).write(cursor, user, ids, vals,
-                context=context)
+                    self.raise_user_error('open_journal_period')
+        return super(Period, self).write(ids, vals)
 
-    def delete(self, cursor, user, ids, context=None):
-        self._check(cursor, user, ids, context=context)
-        return super(Period, self).delete(cursor, user, ids, context=context)
+    def delete(self, ids):
+        self._check(ids)
+        return super(Period, self).delete(ids)
 
-    def close(self, cursor, user, ids, context=None):
+    def close(self, ids):
         '''
         Close journal - period
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param ids: the journal - period ids
-        :param context: the context
         '''
-        self.write(cursor, user, ids, {
+        self.write(ids, {
             'state': 'close',
-            }, context=context)
+            })
 
 Period()
 
@@ -274,10 +268,9 @@ class ClosePeriod(Wizard):
         },
     }
 
-    def _close(self, cursor, user, data, context=None):
+    def _close(self, data):
         journal_period_obj = self.pool.get('account.journal.period')
-        journal_period_obj.close(cursor, user, data['ids'],
-                context=context)
+        journal_period_obj.close(data['ids'])
         return {}
 
 ClosePeriod()
@@ -296,11 +289,11 @@ class ReOpenPeriod(Wizard):
         },
     }
 
-    def _reopen(self, cursor, user, data, context=None):
+    def _reopen(self, data):
         journal_period_obj = self.pool.get('account.journal.period')
-        journal_period_obj.write(cursor, user, data['ids'], {
+        journal_period_obj.write(data['ids'], {
             'state': 'open',
-            }, context=context)
+            })
         return {}
 
 ReOpenPeriod()

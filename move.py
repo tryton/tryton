@@ -1,11 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-'Move'
-from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
-from trytond.report import Report
-from trytond.backend import TableHandler, FIELDS
-from trytond.pyson import Equal, Eval, Get, PYSONEncoder
+from __future__ import with_statement
 from decimal import Decimal
 import datetime
 import time
@@ -14,6 +9,12 @@ try:
 except ImportError:
     hashlib = None
     import md5
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.wizard import Wizard
+from trytond.report import Report
+from trytond.backend import TableHandler, FIELDS
+from trytond.pyson import Equal, Eval, Get, PYSONEncoder
+from trytond.transaction import Transaction
 
 _MOVE_STATES = {
     'readonly': Equal(Eval('state'), 'posted'),
@@ -80,56 +81,53 @@ class Move(ModelSQL, ModelView):
                     'with a date outside the period!',
             })
 
-    def init(self, cursor, module_name):
-        super(Move, self).init(cursor, module_name)
+    def init(self, module_name):
+        super(Move, self).init(module_name)
 
+        cursor = Transaction().cursor
         table = TableHandler(cursor, self, module_name)
         table.index_action(['journal', 'period'], 'add')
 
         # Add index on create_date
         table.index_action('create_date', action='add')
 
-    def default_period(self, cursor, user, context=None):
+    def default_period(self):
         period_obj = self.pool.get('account.period')
-        if context is None:
-            context = {}
-        return period_obj.find(cursor, user, context.get('company', False),
-                exception=False, context=context)
+        return period_obj.find(Transaction().context.get('company') or False,
+                exception=False)
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'draft'
 
-    def default_date(self, cursor, user, context=None):
+    def default_date(self):
         period_obj = self.pool.get('account.period')
         date_obj = self.pool.get('ir.date')
-        period_id = self.default_period(cursor, user, context=context)
+        period_id = self.default_period()
         if period_id:
-            period = period_obj.browse(cursor, user, period_id,
-                    context=context)
+            period = period_obj.browse(period_id)
             return period.start_date
-        return date_obj.today(cursor, user, context=context)
+        return date_obj.today()
 
-    def on_change_with_date(self, cursor, user, vals, context=None):
+    def on_change_with_date(self, vals):
         line_obj = self.pool.get('account.move.line')
         period_obj = self.pool.get('account.period')
         res = vals['date']
-        line_ids = line_obj.search(cursor, user, [
+        line_ids = line_obj.search([
             ('journal', '=', vals.get('journal', False)),
             ('period', '=', vals.get('period', False)),
-            ], order=[('id', 'DESC')], limit=1, context=context)
+            ], order=[('id', 'DESC')], limit=1)
         if line_ids:
-            line = line_obj.browse(cursor, user, line_ids[0], context=context)
+            line = line_obj.browse(line_ids[0])
             res = line.date
         elif vals.get('period'):
-            period = period_obj.browse(cursor, user, vals['period'],
-                    context=context)
+            period = period_obj.browse(vals['period'])
             res = period.start_date
         return res
 
-    def check_centralisation(self, cursor, user, ids):
-        for move in self.browse(cursor, user, ids):
+    def check_centralisation(self, ids):
+        for move in self.browse(ids):
             if move.journal.centralised:
-                move_ids = self.search(cursor, user, [
+                move_ids = self.search([
                     ('period', '=', move.period.id),
                     ('journal', '=', move.journal.id),
                     ('state', '!=', 'posted'),
@@ -138,8 +136,8 @@ class Move(ModelSQL, ModelView):
                     return False
         return True
 
-    def check_company(self, cursor, user, ids):
-        for move in self.browse(cursor, user, ids):
+    def check_company(self, ids):
+        for move in self.browse(ids):
             company_id = -1
             for line in move.lines:
                 if company_id < 0:
@@ -148,73 +146,67 @@ class Move(ModelSQL, ModelView):
                     return False
         return True
 
-    def check_date(self, cursor, user, ids):
-        for move in self.browse(cursor, user, ids):
+    def check_date(self, ids):
+        for move in self.browse(ids):
             if move.date < move.period.start_date:
                 return False
             if move.date > move.period.end_date:
                 return False
         return True
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, ['OR',
+    def search_rec_name(self, name, clause):
+        ids = self.search(['OR',
             ('reference',) + clause[1:],
             (self._rec_name,) + clause[1:],
-            ], context=context)
+            ])
         return [('id', 'in', ids)]
 
-    def write(self, cursor, user, ids, vals, context=None):
-        res = super(Move, self).write(cursor, user, ids, vals, context=context)
-        self.validate(cursor, user, ids, context=context)
+    def write(self, ids, vals):
+        res = super(Move, self).write(ids, vals)
+        self.validate(ids)
         return res
 
-    def create(self, cursor, user, vals, context=None):
+    def create(self, vals):
         move_line_obj = self.pool.get('account.move.line')
         sequence_obj = self.pool.get('ir.sequence')
         journal_obj = self.pool.get('account.journal')
 
-        if context is None:
-            context = {}
-
         if not vals.get('name'):
-            journal_id = vals.get('journal') or context.get('journal')
+            journal_id = (vals.get('journal')
+                    or Transaction().context.get('journal'))
             if journal_id:
                 vals = vals.copy()
-                journal = journal_obj.browse(cursor, user, journal_id,
-                        context=context)
-                vals['name'] = sequence_obj.get_id(cursor, user,
-                        journal.sequence.id, context=context)
+                journal = journal_obj.browse(journal_id)
+                vals['name'] = sequence_obj.get_id(journal.sequence.id)
 
-        res = super(Move, self).create(cursor, user, vals, context=context)
-        move = self.browse(cursor, user, res, context=context)
+        res = super(Move, self).create(vals)
+        move = self.browse(res)
         if move.journal.centralised:
-            line_id = move_line_obj.create(cursor, user, {
+            line_id = move_line_obj.create({
                 'account': move.journal.credit_account.id,
                 'move': move.id,
                 'name': 'Centralised Counterpart',
-                }, context=context)
-            self.write(cursor, user, move.id, {
+                })
+            self.write(move.id, {
                 'centralised_line': line_id,
-                }, context=context)
+                })
         if 'lines' in vals:
-            self.validate(cursor, user, [res], context=context)
+            self.validate([res])
         return res
 
-    def delete(self, cursor, user, ids, context=None):
+    def delete(self, ids):
         if isinstance(ids, (int, long)):
             ids = [ids]
         move_line_obj = self.pool.get('account.move.line')
-        for move in self.browse(cursor, user, ids, context=context):
+        for move in self.browse(ids):
             if move.state == 'posted':
-                self.raise_user_error(cursor, 'del_posted_move',
-                        context=context)
+                self.raise_user_error('del_posted_move')
             if move.lines:
                 move_line_ids = [x.id for x in move.lines]
-                move_line_obj.delete(cursor, user, move_line_ids,
-                        context=context)
-        return super(Move, self).delete(cursor, user, ids, context=context)
+                move_line_obj.delete(move_line_ids)
+        return super(Move, self).delete(ids)
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         line_obj = self.pool.get('account.move.line')
 
         int_id = False
@@ -226,24 +218,23 @@ class Move(ModelSQL, ModelView):
             default = {}
         default = default.copy()
         default['reference'] = False
-        default['state'] = self.default_state(cursor, user, context=context)
+        default['state'] = self.default_state()
         default['post_date'] = False
         default['lines'] = False
 
         new_ids = []
-        for move in self.browse(cursor, user, ids, context=context):
-            new_id = super(Move, self).copy(cursor, user, move.id,
-                    default=default, context=context)
-            line_obj.copy(cursor, user, [x.id for x in move.lines], default={
+        for move in self.browse(ids):
+            new_id = super(Move, self).copy(move.id, default=default)
+            line_obj.copy([x.id for x in move.lines], default={
                 'move': new_id,
-                }, context=context)
+                })
             new_ids.append(new_id)
 
         if int_id:
             return new_ids[0]
         return new_ids
 
-    def validate(self, cursor, user, ids, context=None):
+    def validate(self, ids):
         '''
         Validate balanced move and centralise it if in centralised journal
         '''
@@ -251,7 +242,7 @@ class Move(ModelSQL, ModelView):
         move_line_obj = self.pool.get('account.move.line')
         if isinstance(ids, (int, long)):
             ids = [ids]
-        for move in self.browse(cursor, user, ids, context=context):
+        for move in self.browse(ids):
             if not move.lines:
                 continue
             amount = Decimal('0.0')
@@ -263,12 +254,12 @@ class Move(ModelSQL, ModelView):
                     company = line.account.company
                 if line.state == 'draft':
                     draft_lines.append(line)
-            if not currency_obj.is_zero(cursor, user, company.currency, amount):
+            if not currency_obj.is_zero(company.currency, amount):
                 if not move.journal.centralised:
-                    move_line_obj.write(cursor, user,
+                    move_line_obj.write(
                             [x.id for x in move.lines if x.state != 'draft'], {
                                 'state': 'draft',
-                                }, context=context)
+                                })
                 else:
                     if not move.centralised_line:
                         centralised_amount = - amount
@@ -285,34 +276,31 @@ class Move(ModelSQL, ModelView):
                         credit = - centralised_amount
                         account_id = move.journal.credit_account.id
                     if not move.centralised_line:
-                        centralised_line_id = move_line_obj.create(cursor,
-                                user, {
-                                    'debit': debit,
-                                    'credit': credit,
-                                    'account': account_id,
-                                    'move': move.id,
-                                    'name': 'Centralised Counterpart',
-                                    }, context=context)
-                        self.write(cursor, user, move.id, {
+                        centralised_line_id = move_line_obj.create({
+                            'debit': debit,
+                            'credit': credit,
+                            'account': account_id,
+                            'move': move.id,
+                            'name': 'Centralised Counterpart',
+                            })
+                        self.write(move.id, {
                             'centralised_line': centralised_line_id,
-                            }, context=context)
+                            })
                     else:
-                        move_line_obj.write(cursor, user,
-                                move.centralised_line.id, {
-                                    'debit': debit,
-                                    'credit': credit,
-                                    'account': account_id,
-                                }, context=context)
+                        move_line_obj.write( move.centralised_line.id, {
+                            'debit': debit,
+                            'credit': credit,
+                            'account': account_id,
+                            })
                 continue
             if not draft_lines:
                 continue
-            move_line_obj.write(cursor, user,
-                    [x.id for x in draft_lines], {
-                        'state': 'valid',
-                        }, context=context)
+            move_line_obj.write( [x.id for x in draft_lines], {
+                'state': 'valid',
+                })
         return
 
-    def post(self, cursor, user, ids, context=None):
+    def post(self, ids):
         currency_obj = self.pool.get('currency.currency')
         sequence_obj = self.pool.get('ir.sequence')
         date_obj = self.pool.get('ir.date')
@@ -320,44 +308,40 @@ class Move(ModelSQL, ModelView):
         if isinstance(ids, (int, long)):
             ids = [ids]
 
-        moves = self.browse(cursor, user, ids, context=context)
+        moves = self.browse(ids)
         for move in moves:
             amount = Decimal('0.0')
             if not move.lines:
-                self.raise_user_error(cursor, 'post_empty_move',
-                        context=context)
+                self.raise_user_error('post_empty_move')
             company = None
             for line in move.lines:
                 amount += line.debit - line.credit
                 if not company:
                     company = line.account.company
-            if not currency_obj.is_zero(cursor, user, company.currency, amount):
-                self.raise_user_error(cursor, 'post_unbalanced_move',
-                        context=context)
+            if not currency_obj.is_zero(company.currency, amount):
+                self.raise_user_error('post_unbalanced_move')
         for move in moves:
-            reference = sequence_obj.get_id(cursor, user,
-                    move.period.post_move_sequence.id, context=context)
-            self.write(cursor, user, move.id, {
+            reference = sequence_obj.get_id(move.period.post_move_sequence.id)
+            self.write(move.id, {
                 'reference': reference,
                 'state': 'posted',
-                'post_date': date_obj.today(cursor, user, context=context),
-                }, context=context)
+                'post_date': date_obj.today(),
+                })
         return
 
-    def draft(self, cursor, user, ids, context=None):
-        for move in self.browse(cursor, user, ids, context=context):
+    def draft(self, ids):
+        for move in self.browse(ids):
             if not move.journal.update_posted:
-                self.raise_user_error(cursor, 'modify_posted_move',
-                        context=context)
-        return self.write(cursor, user, ids, {
+                self.raise_user_error('modify_posted_move')
+        return self.write(ids, {
             'state': 'draft',
-            }, context=context)
+            })
 
-    def button_post(self, cursor, user, ids, context=None):
-        return self.post(cursor, user, ids, context=None)
+    def button_post(self, ids):
+        return self.post(ids)
 
-    def button_draft(self, cursor, user, ids, context=None):
-        return self.draft(cursor, user, ids, context=context)
+    def button_draft(self, ids):
+        return self.draft(ids)
 
 Move()
 
@@ -384,26 +368,25 @@ class Reconciliation(ModelSQL, ModelView):
                     'nor from the same party!',
             })
 
-    def default_name(self, cursor, user, context=None):
+    def default_name(self):
         sequence_obj = self.pool.get('ir.sequence')
-        return sequence_obj.get(cursor, user, 'account.move.reconciliation',
-                context=context)
+        return sequence_obj.get('account.move.reconciliation')
 
-    def create(self, cursor, user, vals, context=None):
+    def create(self, vals):
         move_line_obj = self.pool.get('account.move.line')
-        res = super(Reconciliation, self).create(cursor, user, vals, context=context)
-        reconciliation = self.browse(cursor, user, res, context=context)
+        res = super(Reconciliation, self).create(vals)
+        reconciliation = self.browse(res)
 
-        move_line_obj.workflow_trigger_trigger(cursor, user,
-                [x.id for x in reconciliation.lines], context=context)
+        move_line_obj.workflow_trigger_trigger(
+                [x.id for x in reconciliation.lines])
         return res
 
-    def write(self, cursor, user, ids, vals, context=None):
-        self.raise_user_error(cursor, 'modify', context=context)
+    def write(self, ids, vals):
+        self.raise_user_error('modify')
 
-    def check_lines(self, cursor, user, ids):
+    def check_lines(self, ids):
         currency_obj = self.pool.get('currency.currency')
-        for reconciliation in self.browse(cursor, user, ids):
+        for reconciliation in self.browse(ids):
             amount = Decimal('0.0')
             account = None
             party = None
@@ -421,8 +404,7 @@ class Reconciliation(ModelSQL, ModelView):
                     party = line.party
                 elif line.party and party.id != line.party.id:
                     return False
-            if not currency_obj.is_zero(cursor, user, account.company.currency,
-                    amount):
+            if not currency_obj.is_zero(account.company.currency, amount):
                 return False
         return True
 
@@ -518,9 +500,10 @@ class Line(ModelSQL, ModelView):
             'already_reconciled': 'Line "%s" (%d) already reconciled!',
             })
 
-    def init(self, cursor, module_name):
-        super(Line, self).init(cursor, module_name)
+    def init(self, module_name):
+        super(Line, self).init(module_name)
 
+        cursor = Transaction().cursor
         table = TableHandler(cursor, self, module_name)
         # Index for General Ledger
         table.index_action(['move', 'account'], 'add')
@@ -528,7 +511,7 @@ class Line(ModelSQL, ModelView):
         # Migration from 1.2
         table.not_null_action('blocked', action='remove')
 
-    def default_date(self, cursor, user, context=None):
+    def default_date(self):
         '''
         Return the date of the last line for journal, period
         or the starting date of the period
@@ -537,44 +520,38 @@ class Line(ModelSQL, ModelView):
         period_obj = self.pool.get('account.period')
         date_obj = self.pool.get('ir.date')
 
-        if context is None:
-            context = {}
-        res = date_obj.today(cursor, user, context=context)
-        line_ids = self.search(cursor, user, [
-            ('journal', '=', context.get('journal', False)),
-            ('period', '=', context.get('period', False)),
-            ], order=[('id', 'DESC')], limit=1, context=context)
+        res = date_obj.today()
+        line_ids = self.search([
+            ('journal', '=', Transaction().context.get('journal', False)),
+            ('period', '=', Transaction().context.get('period', False)),
+            ], order=[('id', 'DESC')], limit=1)
         if line_ids:
-            line = self.browse(cursor, user, line_ids[0], context=context)
+            line = self.browse(line_ids[0])
             res = line.date
-        elif context.get('period'):
-            period = period_obj.browse(cursor, user, context['period'],
-                    context=context)
+        elif Transaction().context.get('period'):
+            period = period_obj.browse(Transaction().context['period'])
             res = period.start_date
-        if context.get('date'):
-            res = context['date']
+        if Transaction().context.get('date'):
+            res = Transaction().context['date']
         return res
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'draft'
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def default_currency_digits(self, cursor, user, context=None):
+    def default_currency_digits(self):
         return 2
 
-    def default_get(self, cursor, user, fields, context=None,
-            with_rec_name=True):
-        if context is None:
-            context = {}
+    def default_get(self, fields, with_rec_name=True):
         move_obj = self.pool.get('account.move')
         tax_obj = self.pool.get('account.tax')
         account_obj = self.pool.get('account.account')
         tax_code_obj = self.pool.get('account.tax.code')
         currency_obj = self.pool.get('currency.currency')
-        values = super(Line, self).default_get(cursor, user, fields,
-                context=context, with_rec_name=with_rec_name)
+        values = super(Line, self).default_get(fields,
+                with_rec_name=with_rec_name)
 
         if 'move' not in fields:
             #Not manual entry
@@ -583,22 +560,23 @@ class Line(ModelSQL, ModelView):
                 del values['date']
             return values
 
-        if context.get('journal') and context.get('period'):
-            line_ids = self.search(cursor, user, [
-                ('move.journal', '=', context['journal']),
-                ('move.period', '=', context['period']),
+        if (Transaction().context.get('journal')
+                and Transaction().context.get('period')):
+            line_ids = self.search([
+                ('move.journal', '=', Transaction().context['journal']),
+                ('move.period', '=', Transaction().context['period']),
                 ('create_uid', '=', user),
                 ('state', '=', 'draft'),
-                ], order=[('id', 'DESC')], limit=1, context=context)
+                ], order=[('id', 'DESC')], limit=1)
             if not line_ids:
                 return values
-            line = self.browse(cursor, user, line_ids[0], context=context)
+            line = self.browse(line_ids[0])
             values['move'] = line.move.id
 
         if 'move' not in values:
             return values
 
-        move = move_obj.browse(cursor, user, values['move'], context=context)
+        move = move_obj.browse(values['move'])
         total = Decimal('0.0')
         taxes = {}
         no_code_taxes = []
@@ -673,9 +651,9 @@ class Line(ModelSQL, ModelView):
                             key = 'credit_note'
                     line_amount = Decimal('0.0')
                     tax_amount = Decimal('0.0')
-                    for tax_line in tax_obj.compute(cursor, user,
+                    for tax_line in tax_obj.compute(
                             [x.id for x in line.account.taxes],
-                            line.debit or line.credit, 1, context=context):
+                            line.debit or line.credit, 1):
                         if (tax_line['tax'][key + '_account'].id \
                                 or line.account.id) == account_id \
                                 and tax_line['tax'][key + '_tax_code'].id \
@@ -687,9 +665,9 @@ class Line(ModelSQL, ModelView):
                                 line_amount -= tax_line['amount']
                             tax_amount += tax_line['amount'] * \
                                     tax_line['tax'][key + '_tax_sign']
-                    line_amount = currency_obj.round(cursor, user,
+                    line_amount = currency_obj.round(
                             line.account.company.currency, line_amount)
-                    tax_amount = currency_obj.round(cursor, user,
+                    tax_amount = currency_obj.round(
                             line.account.company.currency, tax_amount)
                     if ('debit' in fields):
                         values['debit'] = line_amount > Decimal('0.0') \
@@ -699,26 +677,25 @@ class Line(ModelSQL, ModelView):
                                 and - line_amount or Decimal('0.0')
                     if 'account' in fields:
                         values['account'] = account_id
-                        values['account.rec_name'] = account_obj.browse(cursor,
-                                user, account_id, context=context).rec_name
+                        values['account.rec_name'] = account_obj.browse(
+                                account_id).rec_name
                     if 'tax_lines' in fields and code_id:
                         values['tax_lines'] = [
                             {
                                 'amount': tax_amount,
                                 'currency_digits': line.currency_digits,
                                 'code': code_id,
-                                'code.rec_name': tax_code_obj.browse(cursor,
-                                    user, code_id, context=context).rec_name,
+                                'code.rec_name': tax_code_obj.browse(
+                                    code_id).rec_name,
                                 'tax': tax_id,
-                                'tax.rec_name': tax_obj.browse(cursor, user,
-                                    tax_id, context=context).rec_name
+                                'tax.rec_name': tax_obj.browse(tax_id).rec_name
                             },
                         ]
         return values
 
-    def get_currency_digits(self, cursor, user, ids, names, context=None):
+    def get_currency_digits(self, ids, names):
         res = {}
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             for name in names:
                 res.setdefault(name, {})
                 res[name].setdefault(line.id, 2)
@@ -729,69 +706,55 @@ class Line(ModelSQL, ModelView):
                         res[name][line.id] = line.account.second_currency.digits
         return res
 
-    def on_change_debit(self, cursor, user, vals, context=None):
+    def on_change_debit(self, vals):
         res = {}
-        if context is None:
-            context = {}
         journal_obj = self.pool.get('account.journal')
-        if vals.get('journal') or context.get('journal'):
-            journal = journal_obj.browse(cursor, user,
-                    vals.get('journal') or context.get('journal'),
-                    context=context)
+        if vals.get('journal') or Transaction().context.get('journal'):
+            journal = journal_obj.browse(vals.get('journal')
+                    or Transaction().context.get('journal'))
             if journal.type in ('expense', 'revenue'):
-                res['tax_lines'] = self._compute_tax_lines(cursor, user,
-                        vals, journal.type, context=context)
+                res['tax_lines'] = self._compute_tax_lines(vals, journal.type)
                 if not res['tax_lines']:
                     del res['tax_lines']
         if vals.get('debit'):
             res['credit'] = Decimal('0.0')
         return res
 
-    def on_change_credit(self, cursor, user, vals, context=None):
+    def on_change_credit(self, vals):
         res = {}
-        if context is None:
-            context = {}
         journal_obj = self.pool.get('account.journal')
-        if vals.get('journal') or context.get('journal'):
-            journal = journal_obj.browse(cursor, user,
-                    vals.get('journal') or context.get('journal'),
-                    context=context)
+        if vals.get('journal') or Transaction().context.get('journal'):
+            journal = journal_obj.browse(vals.get('journal')
+                    or Transaction().context.get('journal'))
             if journal.type in ('expense', 'revenue'):
-                res['tax_lines'] = self._compute_tax_lines(cursor, user,
-                        vals, journal.type, context=context)
+                res['tax_lines'] = self._compute_tax_lines(
+                        vals, journal.type)
                 if not res['tax_lines']:
                     del res['tax_lines']
         if vals.get('credit'):
             res['debit'] = Decimal('0.0')
         return res
 
-    def on_change_account(self, cursor, user, vals, context=None):
+    def on_change_account(self, vals):
         account_obj = self.pool.get('account.account')
         journal_obj = self.pool.get('account.journal')
 
         res = {}
-        if context is None:
-            context = {}
-
-        if context.get('journal'):
-            journal = journal_obj.browse(cursor, user,
-                    context['journal'], context=context)
+        if Transaction().context.get('journal'):
+            journal = journal_obj.browse(Transaction().context['journal'])
             if journal.type in ('expense', 'revenue'):
-                res['tax_lines'] = self._compute_tax_lines(cursor, user,
-                        vals, journal.type, context=context)
+                res['tax_lines'] = self._compute_tax_lines(vals, journal.type)
                 if not res['tax_lines']:
                     del res['tax_lines']
 
         if vals.get('account'):
-            account = account_obj.browse(cursor, user, vals['account'],
-                    context=context)
+            account = account_obj.browse(vals['account'])
             res['currency_digits'] = account.currency_digits
             if account.second_currency:
                 res['second_currency_digits'] = account.second_currency.digits
         return res
 
-    def _compute_tax_lines(self, cursor, user, vals, journal_type,
-            context=None):
+    def _compute_tax_lines(self, vals, journal_type):
         res = {}
         account_obj = self.pool.get('account.account')
         tax_code_obj = self.pool.get('account.tax.code')
@@ -803,8 +766,7 @@ class Line(ModelSQL, ModelView):
         if vals.get('tax_lines'):
             res['remove'] = [x['id'] for x in vals['tax_lines']]
         if vals.get('account'):
-            account = account_obj.browse(cursor, user, vals['account'],
-                    context=context)
+            account = account_obj.browse(vals['account'])
             debit = vals.get('debit', Decimal('0.0'))
             credit = vals.get('credit', Decimal('0.0'))
             for tax in account.taxes:
@@ -819,9 +781,9 @@ class Line(ModelSQL, ModelView):
                     else:
                         key = 'credit_note'
                 base_amounts = {}
-                for tax_line in tax_obj.compute(cursor, user,
+                for tax_line in tax_obj.compute(
                         [x.id for x in account.taxes],
-                        debit or credit, 1, context=context):
+                        debit or credit, 1):
                     code_id = tax_line['tax'][key + '_base_code'].id
                     tax_id = tax_line['tax'].id
                     base_amounts.setdefault((code_id, tax_id), Decimal('0.0'))
@@ -834,24 +796,22 @@ class Line(ModelSQL, ModelView):
                         'amount': base_amounts[code_id, tax_id],
                         'currency_digits': account.currency_digits,
                         'code': code_id,
-                        'code.rec_name': tax_code_obj.browse(cursor, user,
-                                code_id, context=context).rec_name,
+                        'code.rec_name': tax_code_obj.browse(code_id).rec_name,
                         'tax': tax_id,
-                        'tax.rec_name': tax_obj.browse(cursor, user,
-                                tax_id, context=context).rec_name
+                        'tax.rec_name': tax_obj.browse(tax_id).rec_name,
                     })
         return res
 
-    def on_change_party(self, cursor, user, vals, context=None):
+    def on_change_party(self, vals):
         party_obj = self.pool.get('party.party')
         journal_obj = self.pool.get('account.journal')
         account_obj = self.pool.get('account.account')
         currency_obj = self.pool.get('currency.currency')
+        cursor = Transaction().cursor
         res = {}
         if (not vals.get('party')) or vals.get('account'):
             return res
-        party = party_obj.browse(cursor, user, vals.get('party'),
-                context=context)
+        party = party_obj.browse(vals.get('party'))
 
         if not party.account_receivable \
                 or not party.account_payable:
@@ -872,30 +832,30 @@ class Line(ModelSQL, ModelView):
             # SQLite uses float for SUM
             if not isinstance(amount, Decimal):
                 amout = Decimal(str(amount))
-            if not currency_obj.is_zero(cursor, user,
-                    party.account_receivable.currency, amount):
+            if not currency_obj.is_zero( party.account_receivable.currency,
+                    amount):
                 if amount > Decimal('0.0'):
-                    res['credit'] = currency_obj.round(cursor, user,
+                    res['credit'] = currency_obj.round(
                             party.account_receivable.currency, amount)
                     res['debit'] = Decimal('0.0')
                 else:
                     res['credit'] = Decimal('0.0')
-                    res['debit'] = - currency_obj.round(cursor, user,
+                    res['debit'] = - currency_obj.round(
                             party.account_receivable.currency, amount)
                 res['account'] = party.account_receivable.id
                 res['account.rec_name'] = party.account_receivable.rec_name
             else:
                 cursor.execute(query, (party.id, party.account_payable.id))
                 amount = cursor.fetchone()[0]
-                if not currency_obj.is_zero(cursor, user,
-                        party.account_payable.currency, amount):
+                if not currency_obj.is_zero( party.account_payable.currency,
+                        amount):
                     if amount > Decimal('0.0'):
-                        res['credit'] = currency_obj.round(cursor, user,
+                        res['credit'] = currency_obj.round(
                                 party.account_payable.currency, amount)
                         res['debit'] = Decimal('0.0')
                     else:
                         res['credit'] = Decimal('0.0')
-                        res['debit'] = - currency_obj.round(cursor, user,
+                        res['debit'] = - currency_obj.round(
                                 party.account_payable.currency, amount)
                     res['account'] = party.account_payable.id
                     res['account.rec_name'] = party.account_payable.rec_name
@@ -920,10 +880,10 @@ class Line(ModelSQL, ModelView):
                     res['account'] = party.account_receivable.id
                     res['account.rec_name'] = party.account_receivable.rec_name
 
-        journal_id = vals.get('journal') or context.get('journal')
+        journal_id = (vals.get('journal')
+                or Transaction().context.get('journal'))
         if journal_id and party:
-            journal = journal_obj.browse(cursor, user, journal_id,
-                    context=context)
+            journal = journal_obj.browse(journal_id)
             if journal.type == 'revenue':
                 if 'account' not in res:
                     res['account'] = party.account_receivable.id
@@ -934,20 +894,20 @@ class Line(ModelSQL, ModelView):
                     res['account.rec_name'] = party.account_payable.rec_name
         return res
 
-    def get_move_field(self, cursor, user, ids, name, context=None):
+    def get_move_field(self, ids, name):
         if name == 'move_state':
             name = 'state'
         if name not in ('period', 'journal', 'date', 'state'):
             raise Exception('Invalid name')
         res = {}
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             if name in ('date', 'state'):
                 res[line.id] = line.move[name]
             else:
                 res[line.id] = line.move[name].id
         return res
 
-    def set_move_field(self, cursor, user, ids, name, value, context=None):
+    def set_move_field(self, ids, name, value):
         if name == 'move_state':
             name = 'state'
         if name not in ('period', 'journal', 'date', 'state'):
@@ -955,41 +915,36 @@ class Line(ModelSQL, ModelView):
         if not value:
             return
         move_obj = self.pool.get('account.move')
-        lines = self.browse(cursor, user, ids, context=context)
-        move_obj.write(cursor, user, [line.move.id for line in lines], {
+        lines = self.browse(ids)
+        move_obj.write([line.move.id for line in lines], {
             name: value,
-            }, context=context)
+            })
 
-    def search_move_field(self, cursor, user, name, clause, context=None):
+    def search_move_field(self, name, clause):
         if name == 'move_state':
             name = 'state'
         return [('move.' + name,) + clause[1:]]
 
-    def query_get(self, cursor, user, obj='l', context=None):
+    def query_get(self, obj='l'):
         '''
         Return SQL clause and fiscal years for account move line
         depending of the context.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param obj: the SQL alias of account_move_line in the query
-        :param context: the context
         :return: a tuple with the SQL clause and the fiscalyear ids
         '''
         fiscalyear_obj = self.pool.get('account.fiscalyear')
-        if context is None:
-            context = {}
 
-        if context.get('date'):
-            time.strptime(str(context['date']), '%Y-%m-%d')
-            fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
-                ('start_date', '<=', context['date']),
-                ('end_date', '>=', context['date']),
-                ], limit=1, context=context)
+        if Transaction().context.get('date'):
+            time.strptime(str(Transaction().context['date']), '%Y-%m-%d')
+            fiscalyear_ids = fiscalyear_obj.search([
+                ('start_date', '<=', Transaction().context['date']),
+                ('end_date', '>=', Transaction().context['date']),
+                ], limit=1)
 
             fiscalyear_id = fiscalyear_ids and fiscalyear_ids[0] or 0
 
-            if context.get('posted'):
+            if Transaction().context.get('posted'):
                 return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
@@ -999,7 +954,8 @@ class Line(ModelSQL, ModelView):
                                     'AND p.fiscalyear = ' + \
                                         str(fiscalyear_id) + ' ' \
                                     'AND m.date <= date(\'' + \
-                                        str(context['date']) + '\') ' \
+                                        str(Transaction().context['date']) + \
+                                        '\') ' \
                                     'AND m.state = \'posted\' ' \
                             ')', fiscalyear_ids)
             else:
@@ -1012,21 +968,24 @@ class Line(ModelSQL, ModelView):
                                     'AND p.fiscalyear = ' + \
                                         str(fiscalyear_id) + ' ' \
                                     'AND m.date <= date(\'' + \
-                                        str(context['date']) + '\')' \
+                                        str(Transaction().context['date']) + \
+                                        '\')' \
                             ')', fiscalyear_ids)
 
-        if not context.get('fiscalyear', False):
-            fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
+        if not Transaction().context.get('fiscalyear'):
+            fiscalyear_ids = fiscalyear_obj.search([
                 ('state', '=', 'open'),
-                ], context=context)
+                ])
             fiscalyear_clause = (','.join(map(str, fiscalyear_ids))) or '0'
         else:
-            fiscalyear_ids = [int(context.get('fiscalyear'))]
-            fiscalyear_clause = '%s' % int(context.get('fiscalyear'))
+            fiscalyear_ids = [int(Transaction().context.get('fiscalyear'))]
+            fiscalyear_clause = '%s' % int(
+                    Transaction().context.get('fiscalyear'))
 
-        if context.get('periods', False):
-            ids = ','.join(str(int(x)) for x in context['periods'])
-            if context.get('posted'):
+        if Transaction().context.get('periods'):
+            ids = ','.join(
+                    str(int(x)) for x in Transaction().context['periods'])
+            if Transaction().context.get('posted'):
                 return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
@@ -1042,7 +1001,7 @@ class Line(ModelSQL, ModelView):
                                 'WHERE period IN (' + ids + ')' \
                             ')', [])
         else:
-            if context.get('posted'):
+            if Transaction().context.get('posted'):
                 return (obj + '.active ' \
                         'AND ' + obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
@@ -1064,23 +1023,22 @@ class Line(ModelSQL, ModelView):
                                 ')' \
                             ')', fiscalyear_ids)
 
-    def on_write(self, cursor, user, ids, context=None):
-        lines = self.browse(cursor, user, ids, context)
+    def on_write(self, ids):
+        lines = self.browse(ids)
         res = []
         for line in lines:
             res.extend([x.id for x in line.move.lines])
         return list({}.fromkeys(res))
 
-    def check_account(self, cursor, user, ids):
-        for line in self.browse(cursor, user, ids):
+    def check_account(self, ids):
+        for line in self.browse(ids):
             if line.account.kind in ('view',):
                 return False
             if not line.account.active:
                 return False
         return True
 
-    def check_journal_period_modify(self, cursor, user, period_id,
-            journal_id, context=None):
+    def check_journal_period_modify(self, period_id, journal_id):
         '''
         Check if the lines can be modified or created for the journal - period
         and if there is no journal - period, create it
@@ -1088,159 +1046,136 @@ class Line(ModelSQL, ModelView):
         journal_period_obj = self.pool.get('account.journal.period')
         journal_obj = self.pool.get('account.journal')
         period_obj = self.pool.get('account.period')
-        journal_period_ids = journal_period_obj.search(cursor, user, [
+        journal_period_ids = journal_period_obj.search([
             ('journal', '=', journal_id),
             ('period', '=', period_id),
-            ], limit=1, context=context)
+            ], limit=1)
         if journal_period_ids:
-            journal_period = journal_period_obj.browse(cursor, user,
-                    journal_period_ids[0], context=context)
+            journal_period = journal_period_obj.browse(journal_period_ids[0])
             if journal_period.state == 'close':
-                self.raise_user_error(cursor,
-                        'add_modify_closed_journal_period', context=context)
+                self.raise_user_error('add_modify_closed_journal_period')
         else:
-            journal = journal_obj.browse(cursor, user, journal_id,
-                    context=context)
-            period = period_obj.browse(cursor, user, period_id,
-                    context=context)
-            journal_period_obj.create(cursor, user, {
+            journal = journal_obj.browse(journal_id)
+            period = period_obj.browse(period_id)
+            journal_period_obj.create({
                 'name': journal.name + ' - ' + period.name,
                 'journal': journal.id,
                 'period': period.id,
-                }, context=context)
+                })
         return
 
-    def check_modify(self, cursor, user, ids, context=None):
+    def check_modify(self, ids):
         '''
         Check if the lines can be modified
         '''
         journal_period_done = []
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             if line.move.state == 'posted':
-                self.raise_user_error(cursor, 'modify_posted_move',
-                        context=context)
+                self.raise_user_error('modify_posted_move')
             if line.reconciliation:
-                self.raise_user_error(cursor, 'modify_reconciled',
-                        context=context)
+                self.raise_user_error('modify_reconciled')
             journal_period = (line.journal.id, line.period.id)
             if journal_period not in journal_period_done:
-                self.check_journal_period_modify(cursor, user, line.period.id,
-                        line.journal.id, context=context)
+                self.check_journal_period_modify(line.period.id,
+                        line.journal.id)
                 journal_period_done.append(journal_period)
         return
 
-    def delete(self, cursor, user, ids, context=None):
+    def delete(self, ids):
         move_obj = self.pool.get('account.move')
         if isinstance(ids, (int, long)):
             ids = [ids]
-        self.check_modify(cursor, user, ids, context=context)
-        lines = self.browse(cursor, user, ids, context=context)
+        self.check_modify(ids)
+        lines = self.browse(ids)
         move_ids = [x.move.id for x in lines]
-        res = super(Line, self).delete(cursor, user, ids, context=context)
-        move_obj.validate(cursor, user, move_ids, context=context)
+        res = super(Line, self).delete(ids)
+        move_obj.validate(move_ids)
         return res
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         move_obj = self.pool.get('account.move')
-
-        if context is None:
-            context = {}
 
         if isinstance(ids, (int, long)):
             ids = [ids]
 
         if len(vals) > 1 or 'reconciliation' not in vals:
-            self.check_modify(cursor, user, ids, context=context)
-        lines = self.browse(cursor, user, ids, context=context)
+            self.check_modify(ids)
+        lines = self.browse(ids)
         move_ids = [x.move.id for x in lines]
-        res = super(Line, self).write(cursor, user, ids, vals, context=context)
+        res = super(Line, self).write(ids, vals)
 
-        if context.get('_timestamp'):
-            context = context.copy()
-            del context['_timestamp']
+        Transaction().timestamp = {}
 
-        lines = self.browse(cursor, user, ids, context=context)
+        lines = self.browse(ids)
         for line in lines:
             if line.move.id not in move_ids:
                 move_ids.append(line.move.id)
-        move_obj.validate(cursor, user, move_ids, context=context)
+        move_obj.validate(move_ids)
         return res
 
-    def create(self, cursor, user, vals, context=None):
-        if context is None:
-            context = {}
+    def create(self, vals):
         journal_obj = self.pool.get('account.journal')
         move_obj = self.pool.get('account.move')
         vals = vals.copy()
         if not vals.get('move'):
-            journal_id = vals.get('journal') or context.get('journal')
+            journal_id = (vals.get('journal')
+                    or Transaction().context.get('journal'))
             if not journal_id:
-                self.raise_user_error(cursor, 'no_journal',
-                        context=context)
-            journal = journal_obj.browse(cursor, user, journal_id,
-                    context=context)
+                self.raise_user_error('no_journal')
+            journal = journal_obj.browse(journal_id)
             if journal.centralised:
-                move_ids = move_obj.search(cursor, user, [
-                    ('period', '=',
-                        vals.get('period') or context.get('period')),
+                move_ids = move_obj.search([
+                    ('period', '=', vals.get('period')
+                        or Transaction().context.get('period')),
                     ('journal', '=', journal_id),
                     ('state', '!=', 'posted'),
-                    ], limit=1, context=context)
+                    ], limit=1)
                 if move_ids:
                     vals['move'] = move_ids[0]
             if not vals.get('move'):
-                vals['move'] = move_obj.create(cursor, user, {
-                    'period': vals.get('period') or context.get('period'),
+                vals['move'] = move_obj.create({
+                    'period': (vals.get('period')
+                        or Transaction().context.get('period')),
                     'journal': journal_id,
                     'date': vals.get('date', False),
-                    }, context=context)
-        res = super(Line, self).create(cursor, user, vals, context=context)
-        line = self.browse(cursor, user, res, context=context)
-        self.check_journal_period_modify(cursor, user, line.period.id,
-                line.journal.id, context=context)
-        move_obj.validate(cursor, user, [vals['move']], context=context)
+                    })
+        res = super(Line, self).create(vals)
+        line = self.browse(res)
+        self.check_journal_period_modify(line.period.id, line.journal.id)
+        move_obj.validate([vals['move']])
         return res
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         if default is None:
             default = {}
         if 'move' not in default:
             default['move'] = False
         if 'reconciliation' not in default:
             default['reconciliation'] = False
-        return super(Line, self).copy(cursor, user, ids, default=default,
-                context=context)
+        return super(Line, self).copy(ids, default=default)
 
-    def view_header_get(self, cursor, user, value, view_type='form',
-            context=None):
+    def view_header_get(self, value, view_type='form'):
         journal_period_obj = self.pool.get('account.journal.period')
-        if context is None:
-            context = {}
-        if not context.get('journal') or not context.get('period'):
+        if (not Transaction().context.get('journal')
+                or not Transaction().context.get('period')):
             return value
-        journal_period_ids = journal_period_obj.search(cursor, user, [
-            ('journal', '=', context['journal']),
-            ('period', '=', context['period']),
-            ], context=context, limit=1)
+        journal_period_ids = journal_period_obj.search([
+            ('journal', '=', Transaction().context['journal']),
+            ('period', '=', Transaction().context['period']),
+            ], limit=1)
         if not journal_period_ids:
             return value
-        journal_period = journal_period_obj.browse(cursor, user,
-                journal_period_ids[0], context=context)
+        journal_period = journal_period_obj.browse(journal_period_ids[0])
         return value + ': ' + journal_period.rec_name
 
-    def fields_view_get(self, cursor, user, view_id=None, view_type='form',
-            context=None, toolbar=False, hexmd5=None):
-        if context is None:
-            context = {}
+    def fields_view_get(self, view_id=None, view_type='form', toolbar=False,
+            hexmd5=None):
         journal_obj = self.pool.get('account.journal')
-        result = super(Line, self).fields_view_get(cursor, user,
-                view_id=view_id, view_type=view_type, context=context,
-                toolbar=toolbar, hexmd5=hexmd5)
-        if view_type == 'tree' and 'journal' in context:
-            title = self.view_header_get(cursor, user, '',
-                    view_type=view_type, context=context)
-            journal = journal_obj.browse(cursor, user, context['journal'],
-                    context=context)
+        result = super(Line, self).fields_view_get(view_id=view_id,
+                view_type=view_type, toolbar=toolbar, hexmd5=hexmd5)
+        if view_type == 'tree' and 'journal' in Transaction().context:
+            title = self.view_header_get('', view_type=view_type)
+            journal = journal_obj.browse(Transaction().context['journal'])
 
             if not journal.view:
                 return result
@@ -1268,8 +1203,7 @@ class Line(ModelSQL, ModelView):
             fields.add('state')
             xml += '</tree>'
             result['arch'] = xml
-            result['fields'] = self.fields_get(cursor, user,
-                    fields_names=list(fields), context=context)
+            result['fields'] = self.fields_get(fields_names=list(fields))
             del result['md5']
             if hashlib:
                 result['md5'] = hashlib.md5(str(result)).hexdigest()
@@ -1279,8 +1213,7 @@ class Line(ModelSQL, ModelView):
                 return True
         return result
 
-    def reconcile(self, cursor, user, ids, journal_id=False, date=False,
-            account_id=False, context=None):
+    def reconcile(self, ids, journal_id=False, date=False, account_id=False):
         move_obj = self.pool.get('account.move')
         currency_obj = self.pool.get('currency.currency')
         reconciliation_obj = self.pool.get('account.move.reconciliation')
@@ -1288,31 +1221,30 @@ class Line(ModelSQL, ModelView):
         date_obj = self.pool.get('ir.date')
         translation_obj = self.pool.get('ir.translation')
 
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             if line.reconciliation:
-                self.raise_user_error(cursor, 'already_reconciled',
-                        error_args=(line.name, line.id,), context=context)
+                self.raise_user_error('already_reconciled',
+                        error_args=(line.name, line.id,))
 
         ids = ids[:]
         if journal_id and account_id:
             if not date:
-                date = date_obj.today(cursor, user, context=context)
+                date = date_obj.today()
             account = None
             amount = Decimal('0.0')
-            for line in self.browse(cursor, user, ids, context=context):
+            for line in self.browse(ids):
                 amount += line.debit - line.credit
                 if not account:
                     account = line.account
-            amount = currency_obj.round(cursor, user, account.currency, amount)
-            period_id = period_obj.find(cursor, user, account.company.id,
-                    date=date, context=context)
+            amount = currency_obj.round(account.currency, amount)
+            period_id = period_obj.find(account.company.id, date=date)
             lang_code = 'en_US'
             if account.company.lang:
                 lang_code = account.company.lang.code
-            writeoff = translation_obj._get_source(cursor,
-                    'account.move.reconcile_lines.writeoff', 'view',
-                    lang_code, 'Write-Off') or 'Write-Off'
-            move_id = move_obj.create(cursor, user, {
+            writeoff = translation_obj._get_source(
+                    'account.move.reconcile_lines.writeoff', 'view', lang_code,
+                    'Write-Off') or 'Write-Off'
+            move_id = move_obj.create({
                 'journal': journal_id,
                 'period': period_id,
                 'date': date,
@@ -1334,18 +1266,18 @@ class Line(ModelSQL, ModelView):
                                 or Decimal('0.0'),
                     }),
                 ],
-                }, context=context)
-            ids += self.search(cursor, user, [
+                })
+            ids += self.search([
                 ('move', '=', move_id),
                 ('account', '=', account.id),
                 ('debit', '=', amount < Decimal('0.0') and - amount \
                         or Decimal('0.0')),
                 ('credit', '=', amount > Decimal('0.0') and amount \
                         or Decimal('0.0')),
-                ], limit=1, context=context)
-        return reconciliation_obj.create(cursor, user, {
+                ], limit=1)
+        return reconciliation_obj.create({
             'lines': [('add', x) for x in ids],
-            }, context=context)
+            })
 
 Line()
 
@@ -1370,12 +1302,10 @@ class OpenJournalAsk(ModelView):
                     Get(Eval('context', {}), 'company', 0)),
             ])
 
-    def default_period(self, cursor, user, context=None):
+    def default_period(self):
         period_obj = self.pool.get('account.period')
-        if context is None:
-            context = {}
-        return period_obj.find(cursor, user, context.get('company', False),
-                exception=False, context=context)
+        return period_obj.find(Transaction().context.get('company') or False,
+                exception=False)
 
 OpenJournalAsk()
 
@@ -1409,25 +1339,24 @@ class OpenJournal(Wizard):
         },
     }
 
-    def _next(self, cursor, user, data, context=None):
+    def _next(self, data):
         if data.get('model', '') == 'account.journal.period' \
                 and data.get('id'):
             return 'open'
         return 'ask'
 
-    def _get_journal_period(self, cursor, user, data, context=None):
+    def _get_journal_period(self, data):
         journal_period_obj = self.pool.get('account.journal.period')
         if data.get('model', '') == 'account.journal.period' \
                 and data.get('id'):
-            journal_period = journal_period_obj.browse(cursor, user,
-                    data['id'], context=context)
+            journal_period = journal_period_obj.browse(data['id'])
             return {
                 'journal': journal_period.journal.id,
                 'period': journal_period.period.id,
             }
         return {}
 
-    def _action_open_journal(self, cursor, user, data, context=None):
+    def _action_open_journal(self, data):
         journal_period_obj = self.pool.get('account.journal.period')
         journal_obj = self.pool.get('account.journal')
         period_obj = self.pool.get('account.period')
@@ -1435,30 +1364,26 @@ class OpenJournal(Wizard):
         act_window_obj = self.pool.get('ir.action.act_window')
         if data.get('model', '') == 'account.journal.period' \
                 and data.get('id'):
-            journal_period = journal_period_obj.browse(cursor, user,
-                    data['id'], context=context)
+            journal_period = journal_period_obj.browse(data['id'])
             journal_id = journal_period.journal.id
             period_id = journal_period.period.id
         else:
             journal_id = data['form']['journal']
             period_id = data['form']['period']
-        if not journal_period_obj.search(cursor, user, [
+        if not journal_period_obj.search([
             ('journal', '=', journal_id),
             ('period', '=', period_id),
-            ], context=context):
-            journal = journal_obj.browse(cursor, user, journal_id,
-                    context=context)
-            period = period_obj.browse(cursor, user, period_id,
-                    context=context)
-            journal_period_obj.create(cursor, user, {
+            ]):
+            journal = journal_obj.browse(journal_id)
+            period = period_obj.browse(period_id)
+            journal_period_obj.create({
                 'name': journal.name + ' - ' + period.name,
                 'journal': journal.id,
                 'period': period.id,
-                }, context=context)
+                })
 
-        act_window_id = model_data_obj.get_id(cursor, user, 'account',
-                'act_move_line_form', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('account', 'act_move_line_form')
+        res = act_window_obj.read(act_window_id)
         # Remove name to use the one from view_header_get
         del res['name']
         res['pyson_domain'] = PYSONEncoder().encode([
@@ -1487,38 +1412,34 @@ class OpenAccount(Wizard):
         },
     }
 
-    def _action_open_account(self, cursor, user, data, context=None):
-        if context is None:
-            context = {}
+    def _action_open_account(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         fiscalyear_obj = self.pool.get('account.fiscalyear')
 
-        if not context.get('fiscalyear'):
-            fiscalyear_ids = fiscalyear_obj.search(cursor, user, [
+        if not Transaction().context.get('fiscalyear'):
+            fiscalyear_ids = fiscalyear_obj.search([
                 ('state', '=', 'open'),
-                ], context=context)
+                ])
         else:
-            fiscalyear_ids = [context['fiscalyear']]
+            fiscalyear_ids = [Transaction().context['fiscalyear']]
 
         period_ids = []
-        for fiscalyear in fiscalyear_obj.browse(cursor, user, fiscalyear_ids,
-                context=context):
+        for fiscalyear in fiscalyear_obj.browse(fiscalyear_ids):
             for period in fiscalyear.periods:
                 period_ids.append(period.id)
 
-        act_window_id = model_data_obj.get_id(cursor, user, 'account',
-                'act_move_line_form', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('account', 'act_move_line_form')
+        res = act_window_obj.read(act_window_id)
         res['pyson_domain'] = [
             ('period', 'in', period_ids),
             ('account', '=', data['id']),
             ]
-        if context.get('posted'):
+        if Transaction().context.get('posted'):
             res['pyson_domain'].append(('move.state', '=', 'posted'))
         res['pyson_domain'] = PYSONEncoder().encode(res['pyson_domain'])
         res['pyson_context'] = PYSONEncoder().encode({
-            'fiscalyear': context.get('fiscalyear'),
+            'fiscalyear': Transaction().context.get('fiscalyear'),
         })
         return res
 
@@ -1534,9 +1455,9 @@ class ReconcileLinesWriteOff(ModelView):
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('kind', '!=', 'view')])
 
-    def default_date(self, cursor, user, context=None):
+    def default_date(self):
         date_obj = self.pool.get('ir.date')
-        return date_obj.today(cursor, user, context=context)
+        return date_obj.today()
 
 ReconcileLinesWriteOff()
 
@@ -1570,24 +1491,23 @@ class ReconcileLines(Wizard):
         },
     }
 
-    def _check_writeoff(self, cursor, user, data, context=None):
+    def _check_writeoff(self, data):
         line_obj = self.pool.get('account.move.line')
         currency_obj = self.pool.get('currency.currency')
 
         company = None
         amount = Decimal('0.0')
-        for line in line_obj.browse(cursor, user, data['ids'],
-                context=context):
+        for line in line_obj.browse(data['ids']):
             amount += line.debit - line.credit
             if not company:
                 company = line.account.company
         if not company:
             return 'end'
-        if currency_obj.is_zero(cursor, user, company.currency, amount):
+        if currency_obj.is_zero(company.currency, amount):
             return 'reconcile'
         return 'writeoff'
 
-    def _reconcile(self, cursor, user, data, context=None):
+    def _reconcile(self, data):
         line_obj = self.pool.get('account.move.line')
 
         if data['form']:
@@ -1598,8 +1518,7 @@ class ReconcileLines(Wizard):
             journal_id = False
             date = False
             account_id = False
-        line_obj.reconcile(cursor, user, data['ids'], journal_id, date,
-                account_id, context=context)
+        line_obj.reconcile(data['ids'], journal_id, date, account_id)
         return {}
 
 ReconcileLines()
@@ -1636,16 +1555,15 @@ class UnreconcileLines(Wizard):
         },
     }
 
-    def _unreconcile(self, cursor, user, data, context=None):
+    def _unreconcile(self, data):
         line_obj = self.pool.get('account.move.line')
         reconciliation_obj = self.pool.get('account.move.reconciliation')
 
-        lines = line_obj.browse(cursor, user, data['ids'], context=context)
+        lines = line_obj.browse(data['ids'])
         reconciliation_ids = [x.reconciliation.id for x in lines \
                 if x.reconciliation]
         if reconciliation_ids:
-            reconciliation_obj.delete(cursor, user, reconciliation_ids,
-                    context=context)
+            reconciliation_obj.delete(reconciliation_ids)
         return {}
 
 UnreconcileLines()
@@ -1684,12 +1602,11 @@ class OpenReconcileLines(Wizard):
         },
     }
 
-    def _action_open_reconcile_lines(self, cursor, user, data, context=None):
+    def _action_open_reconcile_lines(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id(cursor, user, 'account',
-                'act_move_line_form', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('account', 'act_move_line_form')
+        res = act_window_obj.read(act_window_id)
         res['pyson_domain'] = PYSONEncoder().encode([
             ('account', '=', data['form']['account']),
             ('reconciliation', '=', False),
@@ -1729,23 +1646,18 @@ class PrintGeneralJournalInit(ModelView):
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
-    def default_from_date(self, cursor, user, context=None):
+    def default_from_date(self):
         date_obj = self.pool.get('ir.date')
-        return datetime.date(
-                date_obj.today(cursor, user, context=context).year, 1, 1)
+        return datetime.date(date_obj.today().year, 1, 1)
 
-    def default_to_date(self, cursor, user, context=None):
+    def default_to_date(self):
         date_obj = self.pool.get('ir.date')
-        return date_obj.today(cursor, user, context=context)
+        return date_obj.today()
 
-    def default_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        if context.get('company'):
-            return context['company']
-        return False
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
-    def default_posted(self, cursor, user, context=None):
+    def default_posted(self):
         return False
 
 PrintGeneralJournalInit()
@@ -1780,7 +1692,7 @@ PrintGeneralJournal()
 class GeneralJournal(Report):
     _name = 'account.move.general_journal'
 
-    def _get_objects(self, cursor, user, ids, model, datas, context):
+    def _get_objects(self, ids, model, datas):
         move_obj = self.pool.get('account.move')
 
         clause = [
@@ -1789,26 +1701,21 @@ class GeneralJournal(Report):
             ]
         if datas['form']['posted']:
             clause.append(('state', '=', 'posted'))
-        move_ids = move_obj.search(cursor, user, clause,
-                order=[('date', 'ASC'), ('reference', 'ASC'), ('id', 'ASC')],
-                context=context)
-        return move_obj.browse(cursor, user, move_ids, context=context)
+        move_ids = move_obj.search(clause,
+                order=[('date', 'ASC'), ('reference', 'ASC'), ('id', 'ASC')])
+        return move_obj.browse(move_ids)
 
-    def parse(self, cursor, user, report, objects, datas, context):
-        if context is None:
-            context = {}
+    def parse(self, report, objects, datas, localcontext):
         company_obj = self.pool.get('company.company')
-        context = context.copy()
 
-        company = company_obj.browse(cursor, user,
-                datas['form']['company'], context=context)
+        company = company_obj.browse(datas['form']['company'])
 
-        context['company'] = company
-        context['digits'] = company.currency.digits
-        context['from_date'] = datas['form']['from_date']
-        context['to_date'] = datas['form']['to_date']
+        localcontext['company'] = company
+        localcontext['digits'] = company.currency.digits
+        localcontext['from_date'] = datas['form']['from_date']
+        localcontext['to_date'] = datas['form']['to_date']
 
-        return super(GeneralJournal, self).parse(cursor, user, report,
-                objects, datas, context)
+        return super(GeneralJournal, self).parse(report, objects, datas,
+                localcontext)
 
 GeneralJournal()
