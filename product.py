@@ -1,8 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from __future__ import with_statement
 import copy
 import datetime
+from trytond.model import ModelView, ModelSQL, fields
 
 
 class Template(ModelSQL, ModelView):
@@ -16,19 +17,15 @@ class Template(ModelSQL, ModelView):
             self.cost_price_method.selection.append(new_sel)
             self._reset_columns()
 
-    def get_fifo_move(self, cursor, user, template_id, quantity=0.0,
-            context=None):
+    def get_fifo_move(self, template_id, quantity=0.0):
         '''
         Return a list of (move, qty) where move is the move to be
         consumed and qty is the quantity (in the product default uom)
         to be consumed on this move. The list contains the "first in"
         moves for the given quantity.
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param template_id: the product template id
         :param quantity: the quantity to be removed from the stock
-        :param context: the context
         :return: list of (move, qty) where move is a browse record,
         qty is a float
         '''
@@ -36,35 +33,34 @@ class Template(ModelSQL, ModelView):
         uom_obj = self.pool.get('product.uom')
         location_obj = self.pool.get('stock.location')
 
-        ctx = context and context.copy() or {}
-        ctx['locations'] = location_obj.search(cursor, user, [
+        locations = location_obj.search([
             ('type', '=', 'storage'),
-            ], context=context)
-        ctx['stock_date_end'] = datetime.date.today()
+            ])
+        stock_date_end = datetime.date.today()
 
-        template = self.browse(cursor, user, template_id, context=ctx)
+        with Transaction().set_context(locations=locations,
+                stock_date_end=stock_date_end):
+            template = self.browse(template_id)
         offset = 0
-        limit = cursor.IN_MAX
+        limit = Transaction().cursor.IN_MAX
         avail_qty = template.quantity
         fifo_moves = []
 
         while avail_qty > 0.0:
-            move_ids = move_obj.search(cursor, user, [
+            move_ids = move_obj.search([
                 ('product.template.id', '=', template.id),
                 ('state', '=', 'done'),
                 ('from_location.type', '=', 'supplier'),
                 ], offset=offset, limit=limit,
-                order=[('effective_date', 'DESC'), ('id', 'DESC')],
-                context=context)
+                order=[('effective_date', 'DESC'), ('id', 'DESC')])
             if not move_ids:
                 break
             offset += limit
 
-            for move in move_obj.browse(cursor, user, move_ids,
-                    context=context):
-                qty = uom_obj.compute_qty(cursor, user, move.uom,
+            for move in move_obj.browse(move_ids):
+                qty = uom_obj.compute_qty(move.uom,
                         move.quantity - move.fifo_quantity,
-                        template.default_uom, round=False, context=context)
+                        template.default_uom, round=False)
                 avail_qty -= qty
 
                 if avail_qty <= quantity:
