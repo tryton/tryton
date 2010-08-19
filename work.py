@@ -1,10 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Project"
+from __future__ import with_statement
+import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.modelstorage import OPERATORS
 from trytond.pyson import Not, Bool, Eval, Get, Equal
-import copy
+from trytond.transaction import Transaction
 
 
 class TimesheetWork(ModelSQL, ModelView):
@@ -76,12 +77,12 @@ class Work(ModelSQL, ModelView):
                 'required': Equal(Eval('type'), 'task'),
             }, select=1, depends=['type'])
 
-    def default_type(self, cursor, user, context=None):
+    def default_type(self):
         if context.get('type') == 'project':
             return 'project'
         return 'task'
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'opened'
 
     def __init__(self):
@@ -102,9 +103,9 @@ class Work(ModelSQL, ModelView):
 
             self._inherit_fields['company'] = company_field
 
-    def get_parent(self, cursor, user, ids, name, context=None):
+    def get_parent(self, ids, name):
         res = dict.fromkeys(ids, None)
-        project_works = self.browse(cursor, user, ids, context=context)
+        project_works = self.browse(ids)
 
         # ptw2pw is "parent timesheet work to project works":
         ptw2pw = {}
@@ -114,13 +115,11 @@ class Work(ModelSQL, ModelView):
             else:
                 ptw2pw[project_work.work.parent.id] = [project_work.id]
 
-        ctx = context and context.copy() or {}
-        ctx['active_test'] = False
-        parent_project_ids = self.search(cursor, user, [
-                ('work', 'in', ptw2pw.keys()),
-                ], context=ctx)
-        parent_projects = self.browse(cursor, user, parent_project_ids,
-                context=context)
+        with Transaction().set_context(active_test=False):
+            parent_project_ids = self.search([
+                    ('work', 'in', ptw2pw.keys()),
+                    ])
+        parent_projects = self.browse(parent_project_ids)
         for parent_project in parent_projects:
             if parent_project.work.id in ptw2pw:
                 child_projects = ptw2pw[parent_project.work.id]
@@ -129,24 +128,22 @@ class Work(ModelSQL, ModelView):
 
         return res
 
-    def set_parent(self, cursor, user, ids, name, value, context=None):
+    def set_parent(self, ids, name, value):
         timesheet_work_obj = self.pool.get('timesheet.work')
         if value:
-            project_works = self.browse( cursor, user, ids + [value],
-                    context=context)
+            project_works = self.browse(ids + [value])
             child_timesheet_work_ids = [x.work.id for x in project_works[:-1]]
             parent_timesheet_work_id = project_works[-1].work.id
         else:
-            child_project_works = self.browse( cursor, user, ids, context=context)
+            child_project_works = self.browse(ids)
             child_timesheet_work_ids = [x.work.id for x in child_project_works]
             parent_timesheet_work_id = False
 
-        timesheet_work_obj.write(cursor, user, child_timesheet_work_ids, {
+        timesheet_work_obj.write(child_timesheet_work_ids, {
                 'parent': parent_timesheet_work_id
-                },
-                context=context)
+                })
 
-    def search_parent(self, cursor, user, name, domain=None, context=None):
+    def search_parent(self, name, domain=None):
         timesheet_work_obj = self.pool.get('timesheet.work')
 
         project_work_domain = []
@@ -172,11 +169,11 @@ class Work(ModelSQL, ModelView):
         if operands:
             operands = list(operands)
             # filter out non-existing ids:
-            operands = self.search(cursor, user, [
+            operands = self.search([
                     ('id', 'in', operands)
-                    ], context=context)
+                    ])
             # create project_work > timesheet_work mapping
-            for pw in self.browse(cursor, user, operands, context=context):
+            for pw in self.browse(operands):
                 pw2tw[pw.id] = pw.work.id
 
             for i, d in enumerate(timesheet_work_domain):
@@ -190,25 +187,24 @@ class Work(ModelSQL, ModelView):
                 timesheet_work_domain[i] = (d[0], d[1], new_d2)
 
         if project_work_domain:
-            pw_ids = self.search(
-                cursor, user, project_work_domain, context=context)
-            project_works = self.browse(cursor, user, pw_ids, context=context)
+            pw_ids = self.search(project_work_domain)
+            project_works = self.browse(pw_ids)
             timesheet_work_domain.append(
                 ('id', 'in', [pw.work.id for pw in project_works]))
 
-        tw_ids = timesheet_work_obj.search(
-            cursor, user, timesheet_work_domain, context=context)
+        tw_ids = timesheet_work_obj.search(timesheet_work_domain)
 
         return [('work', 'in', tw_ids)]
 
-    def get_total_effort(self, cursor, user, ids, name, context=None):
+    def get_total_effort(self, ids, name):
 
-        all_ids = self.search(cursor, user, [
+        all_ids = self.search([
                 ('parent', 'child_of', ids),
-                ('active', '=', True)], context=context) + ids
+                ('active', '=', True),
+                ]) + ids
         all_ids = list(set(all_ids))
 
-        works = self.browse(cursor, user, all_ids, context=context)
+        works = self.browse(all_ids)
 
         res = {}
         id2work = {}
@@ -233,20 +229,19 @@ class Work(ModelSQL, ModelView):
         return res
 
 
-    def delete(self, cursor, user, ids, context=None):
+    def delete(self, ids):
         timesheet_work_obj = self.pool.get('timesheet.work')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
 
         # Get the timesheet works linked to the project works
-        project_works = self.browse(cursor, user, ids, context=context)
+        project_works = self.browse(ids)
         timesheet_work_ids = [pw.work.id for pw in project_works]
 
-        res = super(Work, self).delete(cursor, user, ids, context=context)
+        res = super(Work, self).delete(ids)
 
-        timesheet_work_obj.delete(
-            cursor, user, timesheet_work_ids, context=context)
+        timesheet_work_obj.delete(timesheet_work_ids)
         return res
 
 
