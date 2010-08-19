@@ -52,21 +52,20 @@ class OpenProductCostHistory(Wizard):
         },
     }
 
-    def _open(self, cursor, user, data, context=None):
+    def _open(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         product_obj = self.pool.get('product.product')
-        act_window_id = model_data_obj.get_id(cursor, user,
-                'product_cost_history', 'act_product_cost_history_form',
-                context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('product_cost_history',
+                'act_product_cost_history_form')
+        res = act_window_obj.read(act_window_id)
 
         if not data['id'] or data['id'] < 0:
             res['pyson_domain'] = PYSONEncoder().encode([
                 ('template', '=', False),
             ])
         else:
-            product = product_obj.browse(cursor, user, data['id'], context=context)
+            product = product_obj.browse(data['id'])
             res['pyson_domain'] = PYSONEncoder().encode([
                 ('template', '=', product.template.id),
             ])
