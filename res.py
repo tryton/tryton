@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import Model, fields
 from trytond.backend import TableHandler
+from trytond.transaction import Transaction
 
 
 class User(Model):
@@ -24,14 +25,15 @@ class User(Model):
             'dashboard_actions',
         ]
 
-    def init(self, cursor, module_name):
-        super(User, self).init(cursor, module_name)
+    def init(self, module_name):
+        super(User, self).init(module_name)
+        cursor = Transaction().cursor
         table = TableHandler(cursor, self, module_name)
 
         # Migration from 1.6
         table.not_null_action('dashboard_layout', action='remove')
 
-    def default_dashboard_layout(self, cursor, user, context=None):
+    def default_dashboard_layout(self):
         return 'square'
 
 User()
