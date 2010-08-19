@@ -1,9 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Service"
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.cacheable import Cacheable
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class Employee(ModelSQL, ModelView, Cacheable):
@@ -17,44 +17,39 @@ class Employee(ModelSQL, ModelView, Cacheable):
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['company']), 'get_currency_digits')
 
-    def get_cost_price(self, cursor, user, ids, name, context=None):
+    def get_cost_price(self, ids, name):
         '''
         Return the cost price at the date given in the context or the
         current date
         '''
 
         res = {}
-        if context is None:
-            context = {}
-        ctx_date = context.get('date', None)
+        ctx_date = Transaction().context.get('date', None)
 
         for employee_id in ids:
-            res[employee_id] = self.compute_cost_price(cursor, user,
-                    employee_id, ctx_date, context=context)
+            res[employee_id] = self.compute_cost_price(employee_id, ctx_date)
         return res
 
-    def compute_cost_price(self, cursor, user, employee_id, date=None,
-            context=None):
+    def compute_cost_price(self, employee_id, date=None):
         date_obj = self.pool.get('ir.date')
         cost_price_obj = self.pool.get('company.employee_cost_price')
 
         # Get from cache employee costs or fetch them from the db
-        employee_costs = self.get(cursor, employee_id)
+        employee_costs = self.get(employee_id)
         if employee_costs is None:
-            cost_price_ids = cost_price_obj.search(cursor, user, [
+            cost_price_ids = cost_price_obj.search([
                     ('employee', '=', employee_id),
                     ], order=[('date', 'ASC')])
-            cost_prices = cost_price_obj.browse(
-                cursor, user, cost_price_ids, context=context)
+            cost_prices = cost_price_obj.browse(cost_price_ids)
 
             employee_costs = []
             for cost_price in cost_prices:
                 employee_costs.append(
                     (cost_price.date, cost_price.cost_price))
-            self.add(cursor, employee_id, employee_costs)
+            self.add(employee_id, employee_costs)
 
         if date is None:
-            date = date_obj.today(cursor, user, context=context)
+            date = date_obj.today()
         # compute the cost price for the given date
         cost = 0
         if employee_costs and date >= employee_costs[0][0]:
@@ -64,28 +59,24 @@ class Employee(ModelSQL, ModelView, Cacheable):
                     break
         return cost
 
-    def get_currency_digits(self, cursor, user, ids, name, context=None):
+    def get_currency_digits(self, ids, name):
         res = {}
-        for employee in self.browse(cursor, user, ids, context=context):
+        for employee in self.browse(ids):
             res[employee.id] = employee.company.currency.digits
         return res
 
-    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
+    def on_change_with_currency_digits(self, vals):
         company_obj = self.pool.get('company.company')
         if vals.get('company'):
-            company = company_obj.browse(cursor, user, vals['company'],
-                    context=context)
+            company = company_obj.browse(vals['company'])
             return company.currency.digits
         return 2
 
-    def default_currency_digits(self, cursor, user, context=None):
+    def default_currency_digits(self):
         company_obj = self.pool.get('company.company')
-        if context is None:
-            context = {}
-        company = None
-        if context.get('company'):
-            company = company_obj.browse(cursor, user, context['company'],
-                    context=context)
+        company = Transaction().context.get('company')
+        if company:
+            company = company_obj.browse(company)
             return company.currency.digits
         return 2
 
@@ -114,47 +105,40 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         ]
         self._order.insert(0, ('date', 'DESC'))
 
-    def default_date(self, cursor, user, context=None):
+    def default_date(self):
         date_obj = self.pool.get('ir.date')
-        return date_obj.today(cursor, user, context=context)
+        return date_obj.today()
 
-    def delete(self, cursor, user, ids, context=None):
-        self.pool.get('company.employee').clear(cursor)
-        return super(EmployeeCostPrice , self).delete(cursor, user, ids,
-                context=context)
+    def delete(self, ids):
+        self.pool.get('company.employee').clear.reset()
+        return super(EmployeeCostPrice , self).delete(ids)
 
-    def create(self, cursor, user, vals, context=None):
-        self.pool.get('company.employee').clear(cursor)
-        return super(EmployeeCostPrice , self).create(cursor, user, vals,
-                context=context)
+    def create(self, vals):
+        self.pool.get('company.employee').clear.reset()
+        return super(EmployeeCostPrice , self).create(vals)
 
-    def write(self, cursor, user, ids, vals, context=None):
-        self.pool.get('company.employee').clear(cursor)
-        return super(EmployeeCostPrice , self).write(cursor, user, ids, vals,
-                context=context)
+    def write(self, ids, vals):
+        self.pool.get('company.employee').clear.reset()
+        return super(EmployeeCostPrice , self).write(ids, vals)
 
-    def get_currency_digits(self, cursor, user, ids, name, context=None):
+    def get_currency_digits(self, ids, name):
         res = {}
-        for costprice in self.browse(cursor, user, ids, context=context):
+        for costprice in self.browse(ids):
             res[costprice.id] = costprice.employee.company.currency.digits
         return res
 
-    def on_change_with_currency_digits(self, cursor, user, vals, context=None):
+    def on_change_with_currency_digits(self, vals):
         company_obj = self.pool.get('company.employee')
         if vals.get('employee'):
-            employee = employee_obj.browse(cursor, user, vals['employee'],
-                    context=context)
+            employee = employee_obj.browse(vals['employee'])
             return employee.company.currency.digits
         return 2
 
-    def default_currency_digits(self, cursor, user, context=None):
+    def default_currency_digits(self):
         company_obj = self.pool.get('company.company')
-        if context is None:
-            context = {}
-        company = None
-        if context.get('company'):
-            company = company_obj.browse(cursor, user, context['company'],
-                    context=context)
+        company = Transaction().context.get('company')
+        if company:
+            company = company_obj.browse(company)
             return company.currency.digits
         return 2
 
