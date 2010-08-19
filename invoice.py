@@ -1,8 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 import datetime
 import copy
+from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 
 
 class Invoice(ModelWorkflow, ModelSQL, ModelView):
@@ -30,22 +30,18 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             self.payment_term.depends.append('open_date')
         self._reset_columns()
 
-    def set_number(self, cursor, user, invoice_id, context=None):
-        res = super(Invoice, self).set_number(cursor, user, invoice_id,
-                context=context)
-        self.write(cursor, user, invoice_id, {
+    def set_number(self, invoice_id):
+        res = super(Invoice, self).set_number(invoice_id)
+        self.write(invoice_id, {
             'open_date': datetime.datetime.now(),
-            }, context=context)
+            })
         return res
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         if default is None:
             default = {}
-
         default = default.copy()
         default['open_date'] = False
-
-        return super(Invoice, self).copy(cursor, user, ids, default=default,
-                context=context)
+        return super(Invoice, self).copy(ids, default=default)
 
 Invoice()
