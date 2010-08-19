@@ -1,10 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from __future__ import with_statement
+import re
+from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.tools import safe_eval
 from trytond.pyson import If, In, Eval, Get
-from decimal import Decimal
-import re
+from trytond.transaction import Transaction
 
 _RE_DECIMAL = re.compile('([\.0-9]+(\.[0-9]+)?)')
 
@@ -21,40 +23,31 @@ class PriceList(ModelSQL, ModelView):
             ])
     lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines')
 
-    def default_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        if context.get('company'):
-            return context['company']
-        return False
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
-    def _get_context_price_list_line(self, cursor, user, party,
-            product, unit_price, quantity, uom, context=None):
+    def _get_context_price_list_line(self, party, product, unit_price,
+            quantity, uom):
         '''
         Get price list context for unit price
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param party: the BrowseRecord of the party.party
         :param product: the BrowseRecord of the product.product
         :param unit_price: a Decimal for the default unit price in the
             company's currency and default uom of the product
         :param quantity: the quantity of product
         :param uom: the BrowseRecord of the product.uom
-        :param context: the context
         :return: a dictionary
         '''
         return {
             'unit_price': unit_price,
         }
 
-    def compute(self, cursor, user, price_list, party, product, unit_price,
-            quantity, uom, pattern=None, context=None):
+    def compute(self, price_list, party, product, unit_price, quantity, uom,
+            pattern=None):
         '''
         Compute price based on price list of party
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param price_list: the price list id or the BrowseRecord of the
             product.price_list
         :param party: the party id or the BrowseRecord of the party.party
@@ -66,7 +59,6 @@ class PriceList(ModelSQL, ModelView):
         :param uom: the UOM id or the BrowseRecord of the product.uom
         :param pattern: a dictionary with price list field as key
             and match value as value
-        :param context: the context
         :return: the computed unit price
         '''
         party_obj = self.pool.get('party.party')
@@ -78,32 +70,31 @@ class PriceList(ModelSQL, ModelView):
             return unit_price
 
         if isinstance(price_list, (int, long)):
-            price_list = self.browse(cursor, user, price_list, context=context)
+            price_list = self.browse(price_list)
 
         if isinstance(party, (int, long)):
-            party = party_obj.browse(cursor, user, party, context=context)
+            party = party_obj.browse(party)
 
         if isinstance(product, (int, long)):
-            product = party_obj.browse(cursor, user, product, context=context)
+            product = party_obj.browse(product)
 
         if isinstance(uom, (int, long)):
-            uom = uom_obj.browse(cursor, user, uom, context=context)
+            uom = uom_obj.browse(uom)
 
         if pattern is None:
             pattern = {}
 
         pattern = pattern.copy()
         pattern['product'] = product and product.id or False
-        pattern['quantity'] = uom_obj.compute_qty(cursor, user, uom,
-                quantity, product.default_uom, round=False, context=context)
+        pattern['quantity'] = uom_obj.compute_qty(uom, quantity,
+                product.default_uom, round=False)
 
         for line in price_list.lines:
-            if price_list_line_obj.match(cursor, user, line, pattern,
-                    context=context):
-                return price_list_line_obj.get_unit_price(cursor, user, line,
-                        context=self._get_context_price_list_line(
-                            cursor, user, party, product, unit_price,
-                            quantity, uom, context=context))
+            if price_list_line_obj.match(line, pattern):
+                with Transaction().set_context(
+                        self._get_context_price_list_line(party, product,
+                            unit_price, quantity, uom)):
+                    return price_list_line_obj.get_unit_price(line)
         return unit_price
 
 PriceList()
@@ -136,51 +127,46 @@ class PriceListLine(ModelSQL, ModelView):
             'invalid_formula': 'Invalid formula!',
         })
 
-    def default_formula(self, cursor, user, context=None):
+    def default_formula(self):
         return 'unit_price'
 
-    def on_change_with_unit_digits(self, cursor, user, vals, context=None):
+    def on_change_with_unit_digits(self, vals):
         product_obj = self.pool.get('product.product')
         if vals.get('product'):
-            product = product_obj.browse(cursor, user, vals['product'],
-                    context=context)
+            product = product_obj.browse(vals['product'])
             return product.default_uom.digits
         return 2
 
-    def get_unit_digits(self, cursor, user, ids, name, context=None):
+    def get_unit_digits(self, ids, name):
         res = {}
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             if line.product:
                 res[line.id] = line.product.default_uom.digits
             else:
                 res[line.id] = 2
         return res
 
-    def check_formula(self, cursor, user, ids):
+    def check_formula(self, ids):
         '''
         Check formula
         '''
         price_list_obj = self.pool.get('product.price_list')
-        context = price_list_obj._get_context_price_list_line(cursor, user,
-                None, None, Decimal('0.0'), 0, None)
-        for line in self.browse(cursor, user, ids):
+        context = price_list_obj._get_context_price_list_line(None, None,
+                Decimal('0.0'), 0, None)
+        for line in self.browse(ids):
             try:
-                self.get_unit_price(cursor, user, line,
-                        context=context)
+                self.get_unit_price(line)
             except Exception:
                 return False
         return True
 
-    def match(self, cursor, user, line, pattern, context=None):
+    def match(self, line, pattern):
         '''
         Match line on pattern
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param line: a BrowseRecord of price list line
         :param pattern: a dictonary with price list line field as key
                 and match value as value
-        :param context: the context
         :return: a boolean
         '''
         res = True
@@ -203,21 +189,16 @@ class PriceListLine(ModelSQL, ModelView):
                     break
         return res
 
-    def get_unit_price(self, cursor, user, line, context=None):
+    def get_unit_price(self, line):
         '''
         Return unit price for a line
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param line: a BrowseRecord of price list line
-        :param context: the context
         :return: a Decimal
         '''
-        if context is None:
-            context = {}
-        ctx = context.copy()
-        ctx['Decimal'] = Decimal
+        context = Transaction().context.copy()
+        context['Decimal'] = Decimal
         return safe_eval(_RE_DECIMAL.sub(lambda m: "Decimal('%s')" % m.group(1),
-            line.formula), ctx)
+            line.formula), context)
 
 PriceListLine()
