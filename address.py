@@ -22,20 +22,20 @@ class Address(Model):
             'invalid_siret': 'Invalid SIRET number!',
         })
 
-    def get_siret(self, cursor, user, ids, name, context=None):
+    def get_siret(self, ids, name):
         res = {}
-        for address in self.browse(cursor, user, ids, context=context):
+        for address in self.browse(ids):
             if address.party.siren and address.siret_nic:
                 res[address.id] = address.party.siren + address.siret_nic
             else:
                 res[address.id] = ''
         return res
 
-    def check_siret(self, cursor, user, ids):
+    def check_siret(self, ids):
         '''
         Check validity of SIRET
         '''
-        for address in self.browse(cursor, user, ids):
+        for address in self.browse(ids):
             if address.siret and not luhn.validate(address.siret):
                 return False
         return True

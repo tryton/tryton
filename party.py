@@ -21,11 +21,11 @@ class Party(Model):
             'invalid_siren': 'Invalid SIREN number!',
         })
 
-    def check_siren(self, cursor, user, ids):
+    def check_siren(self, ids):
         '''
         Check validity of SIREN
         '''
-        for party in self.browse(cursor, user, ids):
+        for party in self.browse(ids):
             if party.siren and not luhn.validate(party.siren):
                 return False
         return True
