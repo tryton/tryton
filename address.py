@@ -1,7 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
 import urllib
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.transaction import Transaction
+
 
 class Address(ModelSQL, ModelView):
     _name = 'party.address'
@@ -10,10 +12,8 @@ class Address(ModelSQL, ModelView):
         on_change_with=['street', 'streetbis', 'zip', 'city', 'country',
             'subdivision']), 'get_google_maps_url')
 
-    def _get_url(self, cursor, user, vals, context=None):
-        if context is None:
-            context = {}
-        lang = context.get('language', 'en_US')[:2]
+    def _get_url(self, vals):
+        lang = Transaction().language[:2]
         url = ''
         for i in ['street', 'streetbis', 'zip', 'city',
                 'country', 'subdivision']:
@@ -29,28 +29,25 @@ class Address(ModelSQL, ModelView):
             url = ''
         return url
 
-    def on_change_with_google_maps_url(self, cursor, user, vals,
-            context=None):
+    def on_change_with_google_maps_url(self, vals):
         country_obj = self.pool.get('country.country')
         subdivision_obj = self.pool.get('country.subdivision')
 
         vals = vals.copy()
 
         if vals.get('country'):
-            country = country_obj.browse(cursor, user, vals['country'],
-                    context=context)
+            country = country_obj.browse(vals['country'])
             vals['country'] = country.name
 
         if vals.get('subdivision'):
-            subdivision = subdivision_obj.browse(cursor, user,
-                    vals['subdivision'], context=context)
+            subdivision = subdivision_obj.browse(vals['subdivision'])
             vals['subdivision'] = subdivision.name
 
-        return self._get_url(cursor, user, vals, context=context)
+        return self._get_url(vals)
 
-    def get_google_maps_url(self, cursor, user, ids, name, context=None):
+    def get_google_maps_url(self, ids, name):
         res = {}
-        for address in self.browse(cursor, user, ids, context=context):
+        for address in self.browse(ids):
             vals = {
                 'street': address.street,
                 'streetbis': address.streetbis,
@@ -60,8 +57,7 @@ class Address(ModelSQL, ModelView):
                 'subdivision': address.subdivision and \
                         address.subdivision.name or False,
             }
-            res[address.id] = self._get_url(cursor, user, vals,
-                    context=context)
+            res[address.id] = self._get_url(vals)
         return res
 
 Address()
