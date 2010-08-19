@@ -72,18 +72,18 @@ class FiscalYear(ModelSQL, ModelView):
                     'invoice sequences per fiscal year!',
             })
 
-    def check_invoice_sequences(self, cursor, user, ids):
-        for fiscalyear in self.browse(cursor, user, ids):
+    def check_invoice_sequences(self, ids):
+        for fiscalyear in self.browse(ids):
             for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
                     'out_credit_note_sequence', 'in_credit_note_sequence'):
-                if self.search(cursor, user, [
+                if self.search([
                     (sequence, '=', fiscalyear[sequence].id),
                     ('id', '!=', fiscalyear.id),
                     ]):
                     return False
         return True
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         invoice_obj = self.pool.get('account.invoice')
 
         if isinstance(ids, (int, long)):
@@ -92,21 +92,18 @@ class FiscalYear(ModelSQL, ModelView):
         for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
                 'out_credit_note_sequence', 'in_credit_note_sequence'):
             if vals.get(sequence):
-                for fiscalyear in self.browse(cursor, user, ids,
-                        context=context):
+                for fiscalyear in self.browse(ids):
                     if fiscalyear[sequence] and \
                             fiscalyear[sequence].id != \
                             vals[sequence]:
-                        if invoice_obj.search(cursor, user, [
+                        if invoice_obj.search([
                             ('invoice_date', '>=', fiscalyear.start_date),
                             ('invoice_date', '<=', fiscalyear.end_date),
                             ('number', '!=', False),
                             ('type', '=', sequence[:-9]),
-                            ], context=context):
-                            self.raise_user_error(cursor,
-                                    'change_invoice_sequence', context=context)
-        return super(FiscalYear, self).write(cursor, user, ids, vals,
-                context=context)
+                            ]):
+                            self.raise_user_error('change_invoice_sequence')
+        return super(FiscalYear, self).write(ids, vals)
 
 FiscalYear()
 
@@ -160,11 +157,11 @@ class Period(ModelSQL, ModelView):
                     'in the same company!',
             })
 
-    def check_invoice_sequences(self, cursor, user, ids):
-        for period in self.browse(cursor, user, ids):
+    def check_invoice_sequences(self, ids):
+        for period in self.browse(ids):
             for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
                     'out_credit_note_sequence', 'in_credit_note_sequence'):
-                if self.search(cursor, user, [
+                if self.search([
                     (sequence, '=', period[sequence].id),
                     ('fiscalyear', '!=', period.fiscalyear.id),
                     ]):
@@ -175,19 +172,18 @@ class Period(ModelSQL, ModelView):
                     return False
         return True
 
-    def create(self, cursor, user, vals, context=None):
+    def create(self, vals):
         fiscalyear_obj = self.pool.get('account.fiscalyear')
         vals = vals.copy()
         if vals.get('fiscalyear'):
-            fiscalyear = fiscalyear_obj.browse(cursor, user, vals['fiscalyear'],
-                    context=context)
+            fiscalyear = fiscalyear_obj.browse(vals['fiscalyear'])
             for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
                     'out_credit_note_sequence', 'in_credit_note_sequence'):
                 if not vals.get(sequence):
                     vals[sequence] = fiscalyear[sequence].id
-        return super(Period, self).create(cursor, user, vals, context=context)
+        return super(Period, self).create(vals)
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         invoice_obj = self.pool.get('account.invoice')
 
         if isinstance(ids, (int, long)):
@@ -196,19 +192,17 @@ class Period(ModelSQL, ModelView):
         for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
                 'out_credit_note_sequence', 'in_credit_note_sequence'):
             if vals.get(sequence):
-                for period in self.browse(cursor, user, ids, context=context):
+                for period in self.browse(ids):
                     if period[sequence] and \
                             period[sequence].id != \
                             vals[sequence]:
-                        if invoice_obj.search(cursor, user, [
+                        if invoice_obj.search([
                             ('invoice_date', '>=', period.start_date),
                             ('invoice_date', '<=', period.end_date),
                             ('number', '!=', False),
                             ('type', '=', sequence[:-9]),
-                            ], context=context):
-                            self.raise_user_error(cursor,
-                                    'change_invoice_sequence', context=context)
-        return super(Period, self).write(cursor, user, ids, vals,
-                context=context)
+                            ]):
+                            self.raise_user_error('change_invoice_sequence')
+        return super(Period, self).write(ids, vals)
 
 Period()
