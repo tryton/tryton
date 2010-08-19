@@ -1,9 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from __future__ import with_statement
+import datetime
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import PYSONEncoder
-import datetime
+from trytond.transaction import Transaction
 
 
 class Template(ModelSQL, ModelView):
@@ -13,12 +15,12 @@ class Template(ModelSQL, ModelView):
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
             'get_quantity')
 
-    def get_quantity(self, cursor, user, ids, name, context=None):
+    def get_quantity(self, ids, name):
         res = {}
         if name not in ('quantity', 'forecast_quantity'):
             raise Exception('Bad argument')
 
-        for template in self.browse(cursor, user, ids, context=context):
+        for template in self.browse(ids):
             res[template.id] = 0.0
             for product in template.products:
                 res[template.id] += product[name]
@@ -31,29 +33,27 @@ class Template(ModelSQL, ModelView):
                     'a product which is associated to stock moves.',
             })
 
-    def write(self, cursor, user, ids, vals, context=None):
+    def write(self, ids, vals):
         move_obj = self.pool.get('stock.move')
+        cursor = Transaction().cursor
         if not  vals.get("default_uom"):
-            return super(Template, self).write(cursor, user, ids, vals,
-                    context=context)
+            return super(Template, self).write(ids, vals)
 
         for i in range(0, len(ids), cursor.IN_MAX):
             sub_ids = ids[i:i + cursor.IN_MAX]
-            res = self.search(cursor, user, [
+            res = self.search([
                     ('id', 'in', sub_ids),
                     ('default_uom', '!=', vals['default_uom']),
-                    ], context=context)
+                    ])
 
             if res:
-                res = move_obj.search(cursor, user, [
+                res = move_obj.search([
                         ('product.template', 'in', res),
-                        ], limit=1, context=context)
+                        ], limit=1)
                 if res:
-                    self.raise_user_error(cursor, 'change_default_uom',
-                            context=context)
+                    self.raise_user_error('change_default_uom')
 
-        return super(Template, self).write(cursor, user, ids, vals,
-                context=context)
+        return super(Template, self).write(ids, vals)
 
 
 Template()
@@ -66,32 +66,30 @@ class Product(ModelSQL, ModelView):
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
             'get_quantity', searcher='search_quantity')
 
-    def get_quantity(self, cursor, user, ids, name, context=None):
+    def get_quantity(self, ids, name):
         date_obj = self.pool.get('ir.date')
 
-        if not (context and context.get('locations')):
-            return dict([(id, 0.0) for id in ids])
+        if not Transaction().context.get('locations'):
+            return dict((id, 0.0) for id in ids)
 
-        if name == 'quantity' and \
-                context.get('stock_date_end') and \
-                context.get('stock_date_end') > \
-                date_obj.today(cursor, user, context=context):
-
-            context = context.copy()
-            context['stock_date_end'] = date_obj.today(
-                cursor, user, context=context)
+        context = {}
+        if (name == 'quantity'
+                and Transaction().context.get('stock_date_end')
+                and Transaction().context.get('stock_date_end') >
+                date_obj.today()):
+            context['stock_date_end'] = date_obj.today()
 
         if name == 'forecast_quantity':
-            context = context.copy()
             context['forecast'] = True
-            if not context.get('stock_date_end'):
+            if not Transaction().context.get('stock_date_end'):
                 context['stock_date_end'] = datetime.date.max
-        pbl = self.products_by_location(cursor, user,
-                location_ids=context['locations'], product_ids=ids,
-                with_childs=True, context=context)
+        with Transaction().set_context(context):
+            pbl = self.products_by_location(
+                    location_ids=Transaction().context['locations'],
+                    product_ids=ids, with_childs=True)
 
         res = {}.fromkeys(ids, 0.0)
-        for location in context['locations']:
+        for location in Transaction().context['locations']:
             for product in ids:
                 res[product] += pbl.get((location, product), 0.0)
         return res
@@ -107,30 +105,28 @@ class Product(ModelSQL, ModelView):
             operator= "=="
         return (eval(str(value) + operator + str(operand)))
 
-    def search_quantity(self, cursor, user, name, domain=None, context=None):
+    def search_quantity(self, name, domain=None):
         date_obj = self.pool.get('ir.date')
 
-        if not (context and context.get('locations') and domain):
+        if not (Transaction().context.get('locations') and domain):
             return []
 
-        if name == 'quantity' and \
-                context.get('stock_date_end') and \
-                context.get('stock_date_end') > \
-                date_obj.today(cursor, user, context=context):
-
-            context = context.copy()
-            context['stock_date_end'] = date_obj.today(
-                cursor, user, context=context)
+        context = {}
+        if (name == 'quantity'
+                and Transaction().context.get('stock_date_end')
+                and Transaction().context.get('stock_date_end') >
+                date_obj.today()):
+            context['stock_date_end'] = date_obj.today()
 
         if name == 'forecast_quantity':
-            context = context.copy()
             context['forecast'] = True
-            if not context.get('stock_date_end'):
+            if not Transaction().context.get('stock_date_end'):
                 context['stock_date_end'] = datetime.date.max
 
-        pbl = self.products_by_location(
-            cursor, user, location_ids=context['locations'], with_childs=True,
-            skip_zero=False, context=context).iteritems()
+        with Transaction().set_context(context):
+            pbl = self.products_by_location(
+                    location_ids=Transaction().context['locations'],
+                    with_childs=True, skip_zero=False).iteritems()
 
         processed_lines = []
         for (location, product), quantity in pbl:
@@ -144,20 +140,13 @@ class Product(ModelSQL, ModelView):
 
 
 
-    def products_by_location(self, cursor, user, location_ids,
-            product_ids=None, with_childs=False, skip_zero=True, context=None):
+    def products_by_location(self, location_ids, product_ids=None,
+            with_childs=False, skip_zero=True):
         """
         Compute for each location and product the stock quantity in the default
         uom of the product.
 
-        :param cursor: the database cursor
-        :param user: the user id
-        :param location_ids: the ids of locations
-        :param product_ids: the ids of the products
-                if None all products are used
-        :param with_childs: a boolean to compute also for child locations
-        :param skip_zero: a boolean to list also items with zero quantity
-        :param context: the context with keys:
+        The context with keys:
                 stock_date_end: if set the date of the stock computation.
                 stock_date_start: if set return the delta of the stock
                     between the two dates, (ignored if stock_date_end is
@@ -169,6 +158,12 @@ class Product(ModelSQL, ModelView):
                 stock_skip_warehouse: if set, quantities on a warehouse are no
                     more quantities of all child locations but quantities of the
                     storage zone.
+
+        :param location_ids: the ids of locations
+        :param product_ids: the ids of the products
+                if None all products are used
+        :param with_childs: a boolean to compute also for child locations
+        :param skip_zero: a boolean to list also items with zero quantity
         :return: a dictionary with (location id, product id) as key
                 and quantity as value
         """
@@ -178,22 +173,21 @@ class Product(ModelSQL, ModelView):
         location_obj = self.pool.get('stock.location')
         date_obj = self.pool.get('ir.date')
 
-        today = date_obj.today(cursor, user, context=context)
+        today = date_obj.today()
 
         if not location_ids:
             return {}
-        if context is None:
-            context= {}
+        cursor = Transaction().cursor
+        context = Transaction().context.copy()
         # Skip warehouse location in favor of their storage location
         # to compute quantities. Keep track of which ids to remove
         # and to add after the query.
         location_ids = set(location_ids)
         storage_to_remove = set()
         wh_to_add = {}
-        for location in location_obj.browse(
-            cursor, user, location_ids, context=context):
-            if location.type == 'warehouse' \
-                    and context.get('stock_skip_warehouse'):
+        for location in location_obj.browse(location_ids):
+            if (location.type == 'warehouse'
+                    and Transaction().context.get('stock_skip_warehouse')):
                 location_ids.remove(location.id)
                 if location.storage_location.id not in location_ids:
                     storage_to_remove.add(location.storage_location.id)
@@ -201,17 +195,15 @@ class Product(ModelSQL, ModelView):
                 wh_to_add[location.id] = location.storage_location.id
         location_ids = list(location_ids)
 
-        move_query, move_val = rule_obj.domain_get(cursor, user, 'stock.move',
-                context=context)
+        move_query, move_val = rule_obj.domain_get('stock.move')
 
         if not context.get('stock_date_end'):
-            context = context.copy()
             context['stock_date_end'] = datetime.date.max
 
         # date end in the past or today: filter on state done
-        if context['stock_date_end'] < today or \
-                (context['stock_date_end'] == today \
-                and not context.get('forecast')):
+        if (context['stock_date_end'] < today
+                or (context['stock_date_end'] == today
+                    and not context.get('forecast'))):
             state_date_clause = \
                 '('\
                     '(state in (%s, %s)) '\
@@ -359,9 +351,9 @@ class Product(ModelSQL, ModelView):
                     ])
 
         if with_childs:
-            query, args = location_obj.search(cursor, user, [
+            query, args = location_obj.search([
                 ('parent', 'child_of', location_ids),
-                ], context=context, query_string=True, order=[])
+                ], query_string=True, order=[])
             where_clause = " IN (" + query + ") "
             where_vals = args
         else:
@@ -442,27 +434,24 @@ class Product(ModelSQL, ModelView):
                 if line[position] not in id_list:
                     id_list.append(line[position])
 
-        uom_by_id = dict([(x.id, x) for x in uom_obj.browse(
-                cursor, user, uom_ids, context=context)])
+        uom_by_id = dict((x.id, x) for x in uom_obj.browse(uom_ids))
         default_uom = dict((x.id, x.default_uom) for x in product_obj.browse(
-                cursor, user, product_ids or res_product_ids, context=context))
+            product_ids or res_product_ids))
 
         for line in raw_lines:
             location, product, uom, quantity = line
             key = (location, product)
             res.setdefault(key, 0.0)
-            res[key] += uom_obj.compute_qty(cursor, user, uom_by_id[uom],
-                    quantity, default_uom[product], round=False,
-                    context=context)
+            res[key] += uom_obj.compute_qty(uom_by_id[uom], quantity,
+                    default_uom[product], round=False)
 
         # Propagate quantities on from child locations to their parents
         if with_childs:
             # Fetch all child locations
-            all_location_ids = location_obj.search(
-                cursor, user, [('parent', 'child_of', location_ids)],
-                context=context)
-            locations = location_obj.browse(cursor, user, all_location_ids,
-                                            context=context)
+            all_location_ids = location_obj.search([
+                ('parent', 'child_of', location_ids),
+                ])
+            locations = location_obj.browse(all_location_ids)
             # Generate a set of locations without childs and a dict
             # giving the parent of each location.
             leafs = set(all_location_ids)
@@ -492,9 +481,8 @@ class Product(ModelSQL, ModelView):
         # Round quantities
         for location, product in res:
             key = (location, product)
-            res[key] = uom_obj.compute_qty(cursor, user, default_uom[product],
-                    res[key], default_uom[product], round=True,
-                    context=context)
+            res[key] = uom_obj.compute_qty(default_uom[product], res[key],
+                    default_uom[product], round=True)
 
         # Complete result with missing products if asked
         if not skip_zero:
@@ -502,8 +490,7 @@ class Product(ModelSQL, ModelView):
             if product_ids:
                 all_product_ids = product_ids
             else:
-                all_product_ids = self.pool.get("product.product").search(
-                    cursor, user, [], context=context)
+                all_product_ids = self.pool.get("product.product").search([])
             keys = ((l,p) for l in location_ids for p in all_product_ids)
             for location_id, product_id in keys:
                 if (location_id, product_id) not in res:
@@ -519,13 +506,11 @@ class Product(ModelSQL, ModelView):
 
         return res
 
-    def view_header_get(self, cursor, user, value, view_type='form',
-            context=None):
-        if not context.get('locations'):
+    def view_header_get(self, value, view_type='form'):
+        if not Transaction().context.get('locations'):
             return value
         location_obj = self.pool.get('stock.location')
-        locations = location_obj.browse(cursor, user, context.get('locations'),
-                                        context=context)
+        locations = location_obj.browse(Transaction().context.get('locations'))
         return value + " (" + ",".join(l.name for l in locations) + ")"
 
 Product()
@@ -540,9 +525,9 @@ class ChooseStockDateInit(ModelView):
             '* An empty value is an infinite date in the future.\n'\
             '* A date in the past will provide historical values.')
 
-    def default_forecast_date(self, cursor, user, context=None):
+    def default_forecast_date(self):
         date_obj = self.pool.get('ir.date')
-        return date_obj.today(cursor, user, context=context)
+        return date_obj.today()
 
 ChooseStockDateInit()
 
@@ -569,20 +554,20 @@ class OpenLocation(Wizard):
         },
     }
 
-    def _action_open_location(self, cursor, user, data, context=None):
+    def _action_open_location(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id(cursor, user, 'stock',
-                'act_location_quantity_tree', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('stock',
+                'act_location_quantity_tree')
+        res = act_window_obj.read(act_window_id)
 
-        ctx = {}
-        ctx['product'] = data['id']
+        context = {}
+        context['product'] = data['id']
         if data['form']['forecast_date']:
-            ctx['stock_date_end'] = data['form']['forecast_date']
+            context['stock_date_end'] = data['form']['forecast_date']
         else:
-            ctx['stock_date_end'] = datetime.date.max
-        res['pyson_context'] = PYSONEncoder().encode(ctx)
+            context['stock_date_end'] = datetime.date.max
+        res['pyson_context'] = PYSONEncoder().encode(context)
 
         return res
 

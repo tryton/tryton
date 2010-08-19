@@ -1,10 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
-'Inventory'
+from __future__ import with_statement
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond.backend import TableHandler
+from trytond.transaction import Transaction
 
 STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -47,60 +48,56 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
         super(Inventory, self).__init__()
         self._order.insert(0, ('date', 'DESC'))
 
-    def init(self, cursor, module_name):
-        super(Inventory, self).init(cursor, module_name)
+    def init(self, module_name):
+        super(Inventory, self).init(module_name)
+        cursor = Transaction().cursor
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
         table.index_action('create_date', action='add')
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'draft'
 
-    def default_date(self, cursor, user, context=None):
+    def default_date(self):
         date_obj = self.pool.get('ir.date')
-        return date_obj.today(cursor, user, context=context)
+        return date_obj.today()
 
-    def default_company(self, cursor, user, context=None):
-        if context is None:
-            context = {}
-        if context.get('company'):
-            return context['company']
-        return False
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
-    def default_lost_found(self, cursor, user, context=None):
+    def default_lost_found(self):
         location_obj = self.pool.get('stock.location')
-        location_ids = location_obj.search(cursor, user,
-                self.lost_found.domain, context=context)
+        location_ids = location_obj.search(self.lost_found.domain)
         if len(location_ids) == 1:
             return location_ids[0]
         return False
 
-    def set_state_draft(self, cursor, user, inventory_id, context=None):
-        self.write(cursor, user, inventory_id, {
+    def set_state_draft(self, inventory_id):
+        self.write(inventory_id, {
             'state': 'draft',
-            }, context=context)
+            })
 
-    def set_state_cancel(self, cursor, user, inventory_id, context=None):
+    def set_state_cancel(self, inventory_id):
         line_obj = self.pool.get("stock.inventory.line")
-        inventory = self.browse(cursor, user, inventory_id, context=context)
-        line_obj.cancel_move(cursor, user, inventory.lines, context=context)
-        self.write(cursor, user, inventory_id, {
+        inventory = self.browse(inventory_id)
+        line_obj.cancel_move(inventory.lines)
+        self.write(inventory_id, {
             'state': 'cancel',
-            }, context=context)
+            })
 
-    def set_state_done(self, cursor, user, inventory_id, context=None):
+    def set_state_done(self, inventory_id):
         date_obj = self.pool.get('ir.date')
         line_obj = self.pool.get('stock.inventory.line')
-        inventory = self.browse(cursor, user, inventory_id, context=context)
+        inventory = self.browse(inventory_id)
 
         for line in inventory.lines:
-            line_obj.create_move(cursor, user, line, context=context)
-        self.write(cursor, user, inventory_id, {
+            line_obj.create_move(line)
+        self.write(inventory_id, {
             'state': 'done',
-            }, context=context)
+            })
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         date_obj = self.pool.get('ir.date')
         line_obj = self.pool.get('stock.inventory.line')
 
@@ -112,31 +109,28 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['date'] = date_obj.today(cursor, user, context=context)
+        default['date'] = date_obj.today()
         default['lines'] = False
 
         new_ids = []
-        for inventory in self.browse(cursor, user, ids, context=context):
-            new_id = super(Inventory, self).copy(cursor, user, inventory.id,
-                    default=default, context=context)
-            line_obj.copy(cursor, user, [x.id for x in inventory.lines],
+        for inventory in self.browse(ids):
+            new_id = super(Inventory, self).copy(inventory.id, default=default)
+            line_obj.copy([x.id for x in inventory.lines],
                     default={
                         'inventory': new_id,
                         'move': False,
-                        }, context=context)
-            self.complete_lines(cursor, user, new_id, context=context)
+                        })
+            self.complete_lines(new_id)
             new_ids.append(new_id)
 
         if int_id:
             return new_ids[0]
         return new_ids
 
-    def complete_lines(self, cursor, user, ids, context=None):
+    def complete_lines(self, ids):
         '''
         Complete or update the inventories
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param ids: the ids of stock.inventory
         :param context: the context
         '''
@@ -147,22 +141,18 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
         if isinstance(ids, (int, long)):
             ids = [ids]
 
-        inventories = self.browse(cursor, user, ids,
-                context=context)
-        context = context and context.copy() or {}
+        inventories = self.browse(ids)
 
         for inventory in inventories:
             # Compute product quantities
-            ctx = context and context.copy() or {}
-            ctx['stock_date_end'] = inventory.date
-            pbl = product_obj.products_by_location(
-                cursor, user, [inventory.location.id], context=ctx)
+            with Transaction().set_context(stock_date_end=inventory.date):
+                pbl = product_obj.products_by_location(
+                        [inventory.location.id])
 
             # Index some data
             product2uom = {}
             product2type = {}
-            for product in product_obj.browse(cursor, user,
-                    [line[1] for line in pbl], context=context):
+            for product in product_obj.browse([line[1] for line in pbl]):
                 product2uom[product.id] = product.default_uom.id
                 product2type[product.id] = product.type
 
@@ -174,7 +164,7 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             for line in inventory.lines:
                 if not (line.product.active and
                         line.product.type == 'stockable'):
-                    line_obj.delete(cursor, user, line.id, context=context)
+                    line_obj.delete(line.id)
                     continue
                 if line.product.id in product_qty:
                     quantity, uom_id = product_qty.pop(line.product.id)
@@ -182,21 +172,18 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
                     quantity, uom_id = 0.0, product2uom[line.product.id]
                 else:
                     quantity, uom_id = 0.0, line.product.default_uom.id
-                values = line_obj.update_values4complete(cursor, user,
-                        line, quantity, uom_id, context=context)
+                values = line_obj.update_values4complete(line, quantity, uom_id)
                 if values:
-                    line_obj.write(cursor, user, line.id, values,
-                            context=context)
+                    line_obj.write(line.id, values)
 
             # Create lines if needed
             for product_id in product_qty:
                 if product2type[product_id] != 'stockable':
                     continue
                 quantity, uom_id = product_qty[product_id]
-                values = line_obj.create_values4complete(cursor, user,
-                        product_id, inventory, quantity, uom_id,
-                        context=context)
-                line_obj.create(cursor, user, values, context=context)
+                values = line_obj.create_values4complete(product_id, inventory,
+                        quantity, uom_id)
+                line_obj.create(values)
 
 Inventory()
 
@@ -231,53 +218,48 @@ class InventoryLine(ModelSQL, ModelView):
         ]
         self._order.insert(0, ('product', 'ASC'))
 
-    def default_unit_digits(self, cursor, user, context=None):
+    def default_unit_digits(self):
         return 2
 
-    def on_change_product(self, cursor, user, vals, context=None):
+    def on_change_product(self, vals):
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
         res = {}
         res['unit_digits'] = 2
         if vals.get('product'):
-            product = product_obj.browse(cursor, user, vals['product'],
-                    context=context)
+            product = product_obj.browse(vals['product'])
             res['uom'] = product.default_uom.id
             res['uom.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
         return res
 
-    def get_uom(self, cursor, user, ids, name, context=None):
+    def get_uom(self, ids, name):
         res = {}
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             res[line.id] = line.product.default_uom.id
         return res
 
-    def get_unit_digits(self, cursor, user, ids, name, context=None):
+    def get_unit_digits(self, ids, name):
         res = {}
-        for line in self.browse(cursor, user, ids, context=context):
+        for line in self.browse(ids):
             res[line.id] = line.product.default_uom.digits
         return res
 
-    def cancel_move(self, cursor, user, lines, context=None):
+    def cancel_move(self, lines):
         move_obj = self.pool.get('stock.move')
-        move_obj.write(
-            cursor, user, [l.move.id for l in lines if l.move], {'state': 'cancel'},
-            context=context)
-        move_obj.delete(
-            cursor, user, [l.move.id for l in lines if l.move], context=context)
-        self.write(
-            cursor, user, [l.id for l in lines if l.move], {'move': False},
-            context=context)
+        move_obj.write( [l.move.id for l in lines if l.move], {
+            'state': 'cancel',
+            })
+        move_obj.delete([l.move.id for l in lines if l.move])
+        self.write([l.id for l in lines if l.move], {
+            'move': False,
+            })
 
-    def create_move(self, cursor, user, line, context=None):
+    def create_move(self, line):
         '''
         Create move for an inventory line
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param line: a BrowseRecord of inventory.line
-        :param context: the context
         :return: the stock.move id or None
         '''
         move_obj = self.pool.get('stock.move')
@@ -290,7 +272,7 @@ class InventoryLine(ModelSQL, ModelView):
             (from_location, to_location, delta_qty) = \
                 (to_location, from_location, -delta_qty)
 
-        move_id = move_obj.create(cursor, user, {
+        move_id = move_obj.create({
             'from_location': from_location,
             'to_location': to_location,
             'quantity': delta_qty,
@@ -299,21 +281,19 @@ class InventoryLine(ModelSQL, ModelView):
             'company': line.inventory.company.id,
             'state': 'done',
             'effective_date': line.inventory.date,
-            }, context=context)
-        self.write(cursor, user, line.id, {'move': move_id}, context=context)
+            })
+        self.write(line.id, {
+            'move': move_id,
+            })
         return move_id
 
-    def update_values4complete(self, cursor, user, line, quantity, uom_id,
-            context=None):
+    def update_values4complete(self, line, quantity, uom_id):
         '''
         Return update values to complete inventory
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param line: a BrowseRecord of inventory.line
         :param quantity: the actual product quantity for the inventory location
         :param uom_id: the UoM id of the product line
-        :param context: the context
         :return: a dictionary
         '''
         res = {}
@@ -328,18 +308,14 @@ class InventoryLine(ModelSQL, ModelView):
             res['quantity'] = max(quantity, 0.0)
         return res
 
-    def create_values4complete(self, cursor, user, product_id, inventory,
-            quantity, uom_id, context=None):
+    def create_values4complete(self, product_id, inventory, quantity, uom_id):
         '''
         Return create values to complete inventory
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param product_id: the product.product id
         :param inventory: a BrowseRecord of inventory.inventory
         :param quantity: the actual product quantity for the inventory location
         :param uom_id: the UoM id of the product_id
-        :param context: the context
         :return: a dictionary
         '''
         return {
@@ -366,9 +342,9 @@ class CompleteInventory(Wizard):
             },
         }
 
-    def _complete(self, cursor, user, data, context=None):
+    def _complete(self, data):
         inventory_obj = self.pool.get('stock.inventory')
-        inventory_obj.complete_lines(cursor, user, data['ids'], context=context)
+        inventory_obj.complete_lines(data['ids'])
 
         return {}
 

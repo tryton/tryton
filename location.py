@@ -1,11 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Wharehouse"
+from __future__ import with_statement
+import datetime
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from trytond.pyson import Not, Bool, Eval, Equal, PYSONEncoder, Date
-import datetime
+from trytond.transaction import Transaction
 
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
@@ -90,110 +91,101 @@ class Location(ModelSQL, ModelView):
             'child_of_warehouse': 'Location "%s" must be a child of warehouse "%s"!',
         })
 
-    def init(self, cursor, module_name):
-        super(Location, self).init(cursor, module_name)
+    def init(self, module_name):
+        super(Location, self).init(module_name)
+        cursor = Transaction().cursor
 
         table = TableHandler(cursor, self, module_name)
         table.index_action(['left', 'right'], 'add')
 
-    def check_type_for_moves(self, cursor, user, ids):
+    def check_type_for_moves(self, ids):
         """ Check locations with moves have types compatible with moves. """
         invalid_move_types = ['warehouse', 'view']
         move_obj = self.pool.get('stock.move')
-        for location in self.browse(cursor, user, ids):
+        for location in self.browse(ids):
             if location.type in invalid_move_types and \
-                move_obj.search(cursor, user, ['OR',
+                move_obj.search(['OR',
                     ('to_location', '=', location.id),
-                    ('from_location', '=', location.id)]):
+                    ('from_location', '=', location.id),
+                    ]):
                 return False
         return True
 
-    def default_active(self, cursor, user, context=None):
+    def default_active(self):
         return True
 
-    def default_left(self, cursor, user, context=None):
+    def default_left(self):
         return 0
 
-    def default_right(self, cursor, user, context=None):
+    def default_right(self):
         return 0
 
-    def default_type(self, cursor, user, context=None):
+    def default_type(self):
         return 'storage'
 
-    def check_xml_record(self, cursor, user, ids, values, context=None):
+    def check_xml_record(self, ids, values):
         return True
 
-    def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, [('code', '=', clause[2])],
-                order=[], context=context)
+    def search_rec_name(self, name, clause):
+        ids = self.search([
+            ('code', '=', clause[2]),
+            ], order=[])
         if ids:
             return [('id', 'in', ids)]
         return [(self._rec_name,) + clause[1:]]
 
-    def get_quantity(self, cursor, user, ids, name, context=None):
+    def get_quantity(self, ids, name):
         product_obj = self.pool.get('product.product')
         date_obj = self.pool.get('ir.date')
 
-        if not context:
-            context = {}
-
-        if (not context.get('product')) \
-                or not (isinstance(context['product'], (int, long))):
+        if (not Transaction().context.get('product')) \
+                or not (isinstance(Transaction().context['product'],
+                    (int, long))):
             return dict([(i, 0) for i in ids])
 
-        ctx = context.copy()
-        ctx['active_test'] = False
-        if not product_obj.search(cursor, user, [
-            ('id', '=', context['product']),
-            ], context=ctx):
-            return dict([(i, 0) for i in ids])
+        with Transaction().set_context(active_test=False):
+            if not product_obj.search([
+                ('id', '=', Transaction().context['product']),
+                ]):
+                return dict([(i, 0) for i in ids])
 
-        if name == 'quantity' and \
-                context.get('stock_date_end') > \
-                date_obj.today(cursor, user, context=context):
-
-            context = context.copy()
-            context['stock_date_end'] = date_obj.today(
-                cursor, user, context=context)
+        context = {}
+        if (name == 'quantity'
+                and Transaction().context.get('stock_date_end') >
+                date_obj.today()):
+            context['stock_date_end'] = date_obj.today()
 
         if name == 'forecast_quantity':
-            context = context.copy()
             context['forecast'] = True
-            if not context.get('stock_date_end'):
+            if not Transaction().context.get('stock_date_end'):
                 context['stock_date_end'] = datetime.date.max
 
-        pbl = product_obj.products_by_location(cursor, user, location_ids=ids,
-            product_ids=[context['product']], with_childs=True, skip_zero=False,
-            context=context).iteritems()
+        with Transaction().set_context(context):
+            pbl = product_obj.products_by_location(location_ids=ids,
+                    product_ids=[Transaction().context['product']],
+                    with_childs=True, skip_zero=False).iteritems()
 
         return dict([(loc,qty) for (loc,prod), qty in pbl])
 
-    def view_header_get(self, cursor, user, value, view_type='form',
-            context=None):
+    def view_header_get(self, value, view_type='form'):
         product_obj = self.pool.get('product.product')
-        if context is None:
-            context = {}
-        ctx = context.copy()
-        ctx['active_test'] = False
-        if context.get('product') \
-                and isinstance(context['product'], (int, long)) \
-                and product_obj.search(cursor, user, [
-                    ('id', '=', context['product']),
-                    ], context=ctx):
-            product = product_obj.browse(cursor, user, context['product'],
-                    context=context)
-            return value + ': ' + product.rec_name + \
-                    ' (' + product.default_uom.rec_name + ')'
+        if (Transaction().context.get('product')
+                and isinstance(Transaction().context['product'], (int, long))):
+            with Transaction().set_context(active_test=False):
+                product_ids = product_obj.search([
+                    ('id', '=', Transaction().context['product']),
+                    ], limit=1)
+            if product_ids:
+                product = product_obj.browse(product_ids[0])
+                return value + ': ' + product.rec_name + \
+                        ' (' + product.default_uom.rec_name + ')'
         return value
 
-    def _set_warehouse_parent(self, cursor, user, locations, context=None):
+    def _set_warehouse_parent(self, locations):
         '''
         Set the parent of child location of warehouse if not set
 
-        :param cursor: the database cursor
-        :param user: the user id
         :param locations: a BrowseRecordList of locations
-        :param context: the context
         :return: a list with updated location ids
         '''
         location_ids = set()
@@ -207,35 +199,32 @@ class Location(ModelSQL, ModelView):
                     location_ids.add(location.storage_location.id)
         location_ids = list(location_ids)
         if location_ids:
-            self.write(cursor, user, location_ids, {
+            self.write(location_ids, {
                 'parent': location.id,
-                }, context=context)
+                })
 
-    def create(self, cursor, user, vals, context=None):
-        res = super(Location, self).create(cursor, user, vals, context=context)
-        locations = self.browse(cursor, user, [res], context=context)
-        self._set_warehouse_parent(cursor, user, locations, context=context)
+    def create(self, vals):
+        res = super(Location, self).create(vals)
+        locations = self.browse([res])
+        self._set_warehouse_parent(locations)
         return res
 
-    def write(self, cursor, user, ids, vals, context=None):
-        res = super(Location, self).write(cursor, user, ids, vals,
-                context=context)
+    def write(self, ids, vals):
+        res = super(Location, self).write(ids, vals)
         if isinstance(ids, (int, long)):
             ids = [ids]
-        locations = self.browse(cursor, user, ids, context=context)
-        self._set_warehouse_parent(cursor, user, locations, context=context)
+        locations = self.browse(ids)
+        self._set_warehouse_parent(locations)
 
-        check_wh = self.search(
-            cursor, user,
-            [('type', '=', 'warehouse'),
-             ['OR',
-              ('storage_location', 'in', ids),
-              ('input_location', 'in', ids),
-              ('output_location', 'in', ids)
-              ]],
-            context=context)
+        check_wh = self.search([
+            ('type', '=', 'warehouse'),
+            ['OR',
+                ('storage_location', 'in', ids),
+                ('input_location', 'in', ids),
+                ('output_location', 'in', ids),
+            ]])
 
-        warehouses = self.browse(cursor, user, check_wh, context=context)
+        warehouses = self.browse(check_wh)
         fields = ('storage_location', 'input_location', 'output_location')
         wh2childs = {}
         for warehouse in warehouses:
@@ -243,19 +232,16 @@ class Location(ModelSQL, ModelView):
             for location in locations:
                 if location.id not in in_out_sto:
                     continue
-                childs = wh2childs.setdefault(
-                    warehouse.id,
-                    self.search(
-                        cursor, user, [('parent', 'child_of', warehouse.id)],
-                        context=context))
+                childs = wh2childs.setdefault(warehouse.id, self.search([
+                    ('parent', 'child_of', warehouse.id),
+                    ]))
                 if location.id not in childs:
-                    self.raise_user_error(
-                        cursor, 'child_of_warehouse',
-                        (location.name, warehouse.name), context=context)
+                    self.raise_user_error('child_of_warehouse',
+                        (location.name, warehouse.name))
 
         return res
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         if default is None:
             default = {}
         int_id = False
@@ -267,7 +253,7 @@ class Location(ModelSQL, ModelView):
         default['right'] = 0
 
         res = []
-        locations = self.browse(cursor, user, ids, context=context)
+        locations = self.browse(ids)
         for location in locations:
             if location.type == 'warehouse':
 
@@ -278,32 +264,31 @@ class Location(ModelSQL, ModelView):
                 wh_default['storage_location'] = False
                 wh_default['childs'] = False
 
-                new_id = super(Location, self).copy(
-                    cursor, user, location.id, default=wh_default,
-                    context=context)
+                new_id = super(Location, self).copy(location.id,
+                        default=wh_default)
 
-                child_context = context and context.copy() or {}
-                child_context['cp_warehouse_locations'] = {
-                    'input_location': location.input_location.id,
-                    'output_location': location.output_location.id,
-                    'storage_location': location.storage_location.id}
-                child_context['cp_warehouse_id'] = new_id
-
-                self.copy(
-                    cursor, user, [c.id for c in location.childs],
-                    default={'parent':new_id}, context=child_context)
-                self.write(
-                    cursor, user, new_id, {'type': 'warehouse'}, context=context)
+                with Transaction().set_context(
+                        cp_warehouse_locations={
+                            'input_location': location.input_location.id,
+                            'output_location': location.output_location.id,
+                            'storage_location': location.storage_location.id,
+                            },
+                        cp_warehouse_id=new_id):
+                    self.copy([c.id for c in location.childs],
+                            default={'parent': new_id})
+                self.write(new_id, {
+                    'type': 'warehouse',
+                    })
             else:
-                new_id = super(Location, self).copy(
-                    cursor, user, location.id, default=default, context=context)
-                warehouse_locations = context.get('cp_warehouse_locations', {})
+                new_id = super(Location, self).copy(location.id,
+                        default=default)
+                warehouse_locations = Transaction().context.get(
+                        'cp_warehouse_locations') or {}
                 if location.id in warehouse_locations.values():
                     for field, loc_id in warehouse_locations.iteritems():
                         if loc_id == location.id:
-                            self.write(
-                                cursor, user, context['cp_warehouse_id'],
-                                {field: new_id}, context=context)
+                            self.write(Transaction().context['cp_warehouse_id'],
+                                    {field: new_id})
 
             res.append(new_id)
 
@@ -335,9 +320,9 @@ class ChooseStockDateInit(ModelView):
             '* An empty value is an infinite date in the future.\n'\
             '* A date in the past will provide historical values.')
 
-    def default_forecast_date(self, cursor, user, context=None):
+    def default_forecast_date(self):
         date_obj = self.pool.get('ir.date')
-        return date_obj.today(cursor, user, context=context)
+        return date_obj.today()
 
 ChooseStockDateInit()
 
@@ -365,21 +350,21 @@ class OpenProduct(Wizard):
         },
     }
 
-    def _action_open_product(self, cursor, user, data, context=None):
+    def _action_open_product(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id(cursor, user, 'stock',
-                'act_product_by_location', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('stock',
+                'act_product_by_location')
+        res = act_window_obj.read(act_window_id)
 
-        ctx = {}
-        ctx['locations'] = data['ids']
+        context = {}
+        context['locations'] = data['ids']
         if data['form']['forecast_date']:
             date = data['form']['forecast_date']
         else:
             date = datetime.date.max
-        ctx['stock_date_end'] = Date(date.year, date.month, date.day)
-        res['pyson_context'] = PYSONEncoder().encode(ctx)
+        context['stock_date_end'] = Date(date.year, date.month, date.day)
+        res['pyson_context'] = PYSONEncoder().encode(context)
 
         return res
 

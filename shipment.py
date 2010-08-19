@@ -1,11 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Shipment"
+from __future__ import with_statement
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from trytond.pyson import Eval, Not, Equal, If, Or, And, Bool, In
+from trytond.transaction import Transaction
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -86,7 +87,8 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
                     'have the warehouse input location as source location!',
             })
 
-    def init(self, cursor, module_name):
+    def init(self, module_name):
+        cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE ir_model_data "\
                 "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "\
@@ -123,47 +125,45 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
         for field in ('code', 'reference'):
             table.index_action(field, action='remove', table=old_table)
 
-        super(ShipmentIn, self).init(cursor, module_name)
+        super(ShipmentIn, self).init(module_name)
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
         table.index_action('create_date', action='add')
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'draft'
 
-    def default_warehouse(self, cursor, user, context=None):
+    def default_warehouse(self):
         location_obj = self.pool.get('stock.location')
-        location_ids = location_obj.search(cursor, user,
-                self.warehouse.domain, context=context)
+        location_ids = location_obj.search(self.warehouse.domain)
         if len(location_ids) == 1:
             return location_ids[0]
         return False
 
-    def on_change_supplier(self, cursor, user, values, context=None):
+    def on_change_supplier(self, values):
         if not values.get('supplier'):
             return {'contact_address': False}
         party_obj = self.pool.get("party.party")
-        address_id = party_obj.address_get(cursor, user, values['supplier'],
-                                          context=context)
+        address_id = party_obj.address_get(values['supplier'])
         return {'contact_address': address_id}
 
-    def get_incoming_moves(self, cursor, user, ids, name, context=None):
+    def get_incoming_moves(self, ids, name):
         res = {}
-        for shipment in self.browse(cursor, user, ids, context=context):
+        for shipment in self.browse(ids):
             res[shipment.id] = []
             for move in shipment.moves:
                 if move.to_location.id == shipment.warehouse.input_location.id:
                     res[shipment.id].append(move.id)
         return res
 
-    def set_incoming_moves(self, cursor, user, ids, name, value, context=None):
+    def set_incoming_moves(self, ids, name, value):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipments = self.browse(cursor, user, ids, context=context)
+        shipments = self.browse(ids)
         move_ids = []
         for act in value:
             if act[0] == 'create':
@@ -171,17 +171,13 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
                     for shipment in shipments:
                         if act[1]['to_location'] != \
                                 shipment.warehouse.input_location.id:
-                            self.raise_user_error(cursor,
-                                    'incoming_move_input_dest',
-                                    context=context)
+                            self.raise_user_error('incoming_move_input_dest')
             elif act[0] == 'write':
                 if 'to_location' in act[2]:
                     for shipment in shipments:
                         if act[2]['to_location'] != \
                                 shipment.warehouse.input_location.id:
-                            self.raise_user_error(cursor,
-                                    'incoming_move_input_dest',
-                                    context=context)
+                            self.raise_user_error('incoming_move_input_dest')
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -190,35 +186,33 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
-        moves = move_obj.browse(cursor, user, move_ids, context=context)
+        moves = move_obj.browse(move_ids)
         for move in moves:
             for shipment in shipments:
                 if move.to_location.id != \
                         shipment.warehouse.input_location.id:
-                    self.raise_user_error(cursor, 'incoming_move_input_dest',
-                            context=context)
+                    self.raise_user_error('incoming_move_input_dest')
 
-        self.write(cursor, user, ids, {
+        self.write(ids, {
             'moves': value,
-            }, context=context)
+            })
 
-    def get_inventory_moves(self, cursor, user, ids, name, context=None):
+    def get_inventory_moves(self, ids, name):
         res = {}
-        for shipment in self.browse(cursor, user, ids, context=context):
+        for shipment in self.browse(ids):
             res[shipment.id] = []
             for move in shipment.moves:
                 if move.from_location.id == shipment.warehouse.input_location.id:
                     res[shipment.id].append(move.id)
         return res
 
-    def set_inventory_moves(self, cursor, user, ids, name, value,
-            context=None):
+    def set_inventory_moves(self, ids, name, value):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipments = self.browse(cursor, user, ids, context=context)
+        shipments = self.browse(ids)
         move_ids = []
         for act in value:
             if act[0] == 'create':
@@ -226,17 +220,13 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
                     for shipment in shipments:
                         if act[1]['from_location'] != \
                                 shipment.warehouse.input_location.id:
-                            self.raise_user_error(cursor,
-                                    'inventory_move_input_source',
-                                    context=context)
+                            self.raise_user_error('inventory_move_input_source')
             elif act[0] == 'write':
                 if 'from_location' in act[2]:
                     for shipment in shipments:
                         if act[2]['from_location'] != \
                                 shipment.warehouse.input_location.id:
-                            self.raise_user_error(cursor,
-                                    'inventory_move_input_source',
-                                    context=context)
+                            self.raise_user_error('inventory_move_input_source')
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -245,92 +235,85 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
-        moves = move_obj.browse(cursor, user, move_ids, context=context)
+        moves = move_obj.browse(move_ids)
         for move in moves:
             for shipment in shipments:
                 if move.from_location.id != \
                         shipment.warehouse.input_location.id:
-                    self.raise_user_error(cursor,
-                            'inventory_move_input_source', context=context)
+                    self.raise_user_error('inventory_move_input_source')
 
-        self.write(cursor, user, ids, {
+        self.write(ids, {
             'moves': value,
-            }, context=context)
+            })
 
-    def set_state_done(self, cursor, user, shipment_id, context=None):
+    def set_state_done(self, shipment_id):
         move_obj = self.pool.get('stock.move')
         date_obj = self.pool.get('ir.date')
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in shipment.inventory_moves \
-                 if m.state not in ('done', 'cancel')],
-            {'state': 'done'}, context)
-        self.write(cursor, user, shipment_id,{
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.inventory_moves
+            if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+        self.write(shipment_id,{
             'state': 'done',
-            'effective_date': date_obj.today(cursor, user, context=context),
-            }, context=context)
+            'effective_date': date_obj.today(),
+            })
 
-    def set_state_cancel(self, cursor, user, shipment_id, context=None):
+    def set_state_cancel(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in shipment.incoming_moves \
-                 if m.state != 'cancel'] +\
-            [m.id for m in shipment.inventory_moves \
-                 if m.state != 'cancel'],
-            {'state': 'cancel'}, context)
-        self.write(cursor, user, shipment_id, {'state': 'cancel'},
-                   context=context)
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.incoming_moves
+            if m.state != 'cancel'] +
+            [m.id for m in shipment.inventory_moves
+                if m.state != 'cancel'], {
+                    'state': 'cancel',
+                    })
+        self.write(shipment_id, {
+            'state': 'cancel',
+            })
 
-    def set_state_received(self, cursor, user, shipment_id, context=None):
+    def set_state_received(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in shipment.incoming_moves \
-                 if m.state not in ('done', 'cancel')],
-            {'state': 'done'}, context=context)
-        self.write(cursor, user, shipment_id, {
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.incoming_moves
+            if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+            })
+        self.write(shipment_id, {
             'state': 'received'
-            }, context=context)
+            })
 
-    def set_state_draft(self, cursor, user, shipment_id, context=None):
+    def set_state_draft(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(cursor, user, [m.id for m in shipment.incoming_moves
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.incoming_moves
             if m.state != 'draft'], {
             'state': 'draft',
-            }, context=context)
-        move_obj.delete(cursor, user,
-                [m.id for m in shipment.inventory_moves], context=context)
-        self.write(cursor, user, shipment_id, {
+            })
+        move_obj.delete([m.id for m in shipment.inventory_moves])
+        self.write(shipment_id, {
             'state': 'draft',
-            }, context=context)
+            })
 
-    def create(self, cursor, user, values, context=None):
+    def create(self, values):
         sequence_obj = self.pool.get('ir.sequence')
         config_obj = self.pool.get('stock.configuration')
 
         values = values.copy()
-        config = config_obj.browse(cursor, user, 1, context=context)
-        values['code'] = sequence_obj.get_id(cursor, user,
-                config.shipment_in_sequence.id, context=context)
-        return super(ShipmentIn, self).create(
-            cursor, user, values, context=context)
+        config = config_obj.browse(1)
+        values['code'] = sequence_obj.get_id(config.shipment_in_sequence.id)
+        return super(ShipmentIn, self).create(values)
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         if default is None:
             default = {}
         default = default.copy()
         default['inventory_moves']= False
         default['incoming_moves']= False
-        return super(ShipmentIn, self).copy(cursor, user, ids,
-                default=default, context=context)
+        return super(ShipmentIn, self).copy(ids, default=default)
 
-    def _get_inventory_moves(self, cursor, user, incoming_move, context=None):
+    def _get_inventory_moves(self, incoming_move):
         res = {}
         if incoming_move.quantity <= 0.0:
             return None
@@ -347,18 +330,17 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
         res['company'] = incoming_move.company.id
         return res
 
-    def create_inventory_moves(self, cursor, user, shipment_id, context=None):
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+    def create_inventory_moves(self, shipment_id):
+        shipment = self.browse(shipment_id)
         for incoming_move in shipment.incoming_moves:
-            vals = self._get_inventory_moves(cursor, user, incoming_move,
-                    context=context)
+            vals = self._get_inventory_moves(incoming_move)
             if vals:
-                self.write(cursor, user, shipment.id, {
-                    'inventory_moves': [('create', vals)]
-                    }, context=context)
+                self.write(shipment.id, {
+                    'inventory_moves': [('create', vals)],
+                    })
 
-    def button_draft(self, cursor, user, ids, context=None):
-        self.workflow_trigger_create(cursor, user, ids, context=context)
+    def button_draft(self, ids):
+        self.workflow_trigger_create(ids)
         return True
 
 ShipmentIn()
@@ -409,14 +391,15 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         ('done', 'Done'),
         ], 'State', readonly=True)
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'draft'
 
-    def button_draft(self, cursor, user, ids, context=None):
-        self.workflow_trigger_create(cursor, user, ids, context=context)
+    def button_draft(self, ids):
+        self.workflow_trigger_create(ids)
         return True
 
-    def init(self, cursor, module_name):
+    def init(self, module_name):
+        cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE wkf "\
                 "SET model = 'stock.shipment.in.return' "\
@@ -438,7 +421,7 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         for field in ('code', 'reference'):
             table.index_action(field, action='remove', table=old_table)
 
-        super(ShipmentInReturn, self).init(cursor, module_name)
+        super(ShipmentInReturn, self).init(module_name)
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
@@ -451,93 +434,93 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         })
         self._order[0] = ('id', 'DESC')
 
-    def create(self, cursor, user, values, context=None):
+    def create(self, values):
         sequence_obj = self.pool.get('ir.sequence')
         config_obj = self.pool.get('stock.configuration')
 
         values = values.copy()
-        config = config_obj.browse(cursor, user, 1, context=context)
-        values['code'] = sequence_obj.get_id(cursor, user,
-                config.shipment_in_return_sequence.id, context=context)
-        return super(ShipmentInReturn, self).create(
-            cursor, user, values, context=context)
+        config = config_obj.browse(1)
+        values['code'] = sequence_obj.get_id(
+                config.shipment_in_return_sequence.id)
+        return super(ShipmentInReturn, self).create(values)
 
-    def set_state_draft(self, cursor, user, shipment_id, context=None):
+    def set_state_draft(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        self.write(
-            cursor, user, shipment_id, {'state': 'draft'}, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in shipment.moves if m.state != 'draft'],
-            {'state': 'draft'}, context=context)
+        shipment = self.browse(shipment_id)
+        self.write(shipment_id, {
+            'state': 'draft',
+            })
+        move_obj.write([m.id for m in shipment.moves if m.state != 'draft'], {
+            'state': 'draft',
+            })
 
-    def set_state_waiting(self, cursor, user, shipment_id, context=None):
+    def set_state_waiting(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in shipment.moves if m.state not in ('cancel', 'draft')],
-            {'state': 'draft', 'planned_date': shipment.planned_date,},
-            context=context)
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.moves
+            if m.state not in ('cancel', 'draft')], {
+                'state': 'draft',
+                'planned_date': shipment.planned_date,
+                })
 
-        self.write(
-            cursor, user, shipment_id, {'state': 'waiting'}, context=context)
+        self.write(shipment_id, {
+            'state': 'waiting',
+            })
 
-    def set_state_assigned(self, cursor, user, shipment_id, context=None):
-        self.write(
-            cursor, user, shipment_id, {'state': 'assigned'}, context=context)
+    def set_state_assigned(self, shipment_id):
+        self.write(shipment_id, {
+            'state': 'assigned',
+            })
 
-    def set_state_done(self, cursor, user, shipment_id, context=None):
+    def set_state_done(self, shipment_id):
         move_obj = self.pool.get('stock.move')
         date_obj = self.pool.get('ir.date')
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in shipment.moves if m.state not in ('done', 'cancel')],
-            {'state': 'done'}, context=context)
-        self.write(cursor, user, shipment_id, {
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.moves
+            if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+        self.write(shipment_id, {
             'state': 'done',
-            'effective_date': date_obj.today(cursor, user, context=context),
-            }, context=context)
+            'effective_date': date_obj.today(),
+            })
 
-    def set_state_cancel(self, cursor, user, shipment_id, context=None):
+    def set_state_cancel(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in shipment.moves if m.state != 'cancel'],
-            {'state': 'cancel'}, context=context)
-        self.write(
-            cursor, user, shipment_id, {'state': 'cancel'}, context=context)
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.moves if m.state != 'cancel'], {
+            'state': 'cancel',
+            })
+        self.write(shipment_id, {
+            'state': 'cancel',
+            })
 
-    def assign_try(self, cursor, user, shipment_id, context=None):
+    def assign_try(self, shipment_id):
         product_obj = self.pool.get('product.product')
         uom_obj = self.pool.get('product.uom')
         date_obj = self.pool.get('ir.date')
         move_obj = self.pool.get('stock.move')
+        cursor = Transaction().cursor
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+        shipment = self.browse(shipment_id)
 
         cursor.execute('LOCK TABLE stock_move')
 
-        local_ctx = context and context.copy() or {}
-        local_ctx['stock_date_end'] = date_obj.today(cursor, user,
-                context=context)
-        local_ctx['stock_assign'] = True
         location_ids = [m.from_location.id for m in shipment.moves]
-        pbl = product_obj.products_by_location(cursor, user,
-            location_ids=location_ids,
-            product_ids=[m.product.id for m in shipment.moves],
-            context=local_ctx)
+        with Transaction().set_context(
+                stock_date_end=date_obj.today(),
+                stock_assign=True):
+            pbl = product_obj.products_by_location(location_ids=location_ids,
+                    product_ids=[m.product.id for m in shipment.moves])
 
         for move in shipment.moves:
             if move.state != 'draft':
                 continue
             if (move.from_location.id, move.product.id) in pbl:
                 qty_default_uom = pbl[(move.from_location.id, move.product.id)]
-                qty = uom_obj.compute_qty(
-                    cursor, user, move.product.default_uom, qty_default_uom,
-                    move.uom, round=False, context=context)
+                qty = uom_obj.compute_qty(move.product.default_uom,
+                        qty_default_uom, move.uom, round=False)
                 if qty < move.quantity:
                     return False
                 pbl[(move.from_location.id, move.product.id)] = \
@@ -545,16 +528,17 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
             else:
                 return False
 
-        move_obj.write(cursor, user, [m.id for m in shipment.moves],
-                       {'state': 'assigned'}, context=context)
+        move_obj.write([m.id for m in shipment.moves], {
+            'state': 'assigned',
+            })
         return True
 
-    def assign_force(self, cursor, user, shipment_id, context=None):
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+    def assign_force(self, shipment_id):
+        shipment = self.browse(shipment_id)
         move_obj = self.pool.get('stock.move')
-        move_obj.write(cursor, user, [m.id for m in shipment.moves], {
+        move_obj.write([m.id for m in shipment.moves], {
             'state': 'assigned',
-            }, context=context)
+            })
         return True
 
 
@@ -632,7 +616,8 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     'warehouse output location as destination location!',
             })
 
-    def init(self, cursor, module_name):
+    def init(self, module_name):
+        cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE wkf "\
                 "SET model = 'stock.shipment.out' "\
@@ -655,7 +640,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         for field in ('code', 'reference'):
             table.index_action(field, action='remove', table=old_table)
 
-        super(ShipmentOut, self).init(cursor, module_name)
+        super(ShipmentOut, self).init(module_name)
 
         # Migration from 1.0 customer_location is no more used
         table = TableHandler(cursor, self, module_name)
@@ -664,29 +649,26 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         # Add index on create_date
         table.index_action('create_date', action='add')
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'draft'
 
-    def default_warehouse(self, cursor, user, context=None):
+    def default_warehouse(self):
         location_obj = self.pool.get('stock.location')
-        location_ids = location_obj.search(cursor, user,
-                self.warehouse.domain, context=context)
+        location_ids = location_obj.search(self.warehouse.domain)
         if len(location_ids) == 1:
             return location_ids[0]
         return False
 
-    def on_change_customer(self, cursor, user, values, context=None):
+    def on_change_customer(self, values):
         if not values.get('customer'):
             return {'delivery_address': False}
         party_obj = self.pool.get("party.party")
-        address_id = party_obj.address_get(cursor, user, values['customer'],
-                type='delivery', context=context)
-        return {
-                'delivery_address': address_id}
+        address_id = party_obj.address_get(values['customer'], type='delivery')
+        return {'delivery_address': address_id}
 
-    def get_outgoing_moves(self, cursor, user, ids, name, context=None):
+    def get_outgoing_moves(self, ids, name):
         res = {}
-        for shipment in self.browse(cursor, user, ids, context=context):
+        for shipment in self.browse(ids):
             res[shipment.id] = []
             for move in shipment.moves:
                 if move.from_location.id == \
@@ -694,13 +676,13 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     res[shipment.id].append(move.id)
         return res
 
-    def set_outgoing_moves(self, cursor, user, ids, name, value, context=None):
+    def set_outgoing_moves(self, ids, name, value):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipments = self.browse(cursor, user, ids, context=context)
+        shipments = self.browse(ids)
         move_ids = []
         for act in value:
             if act[0] == 'create':
@@ -708,17 +690,15 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     for shipment in shipments:
                         if act[1]['from_location'] != \
                                 shipment.warehouse.output_location.id:
-                            self.raise_user_error(cursor,
-                                    'outgoing_move_output_source',
-                                    context=context)
+                            self.raise_user_error(
+                                    'outgoing_move_output_source')
             elif act[0] == 'write':
                 if 'from_location' in act[2]:
                     for shipment in shipments:
                         if act[2]['from_location'] != \
                                 shipment.warehouse.output_location.id:
-                            self.raise_user_error(cursor,
-                                    'outgoing_move_output_source',
-                                    context=context)
+                            self.raise_user_error(
+                                    'outgoing_move_output_source')
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -727,20 +707,19 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
-        moves = move_obj.browse(cursor, user, move_ids, context=context)
+        moves = move_obj.browse(move_ids)
         for move in moves:
             for shipment in shipments:
                 if move.from_location.id != \
                         shipment.warehouse.output_location.id:
-                    self.raise_user_error(cursor,
-                            'outgoing_move_output_source', context=context)
-        self.write(cursor, user, ids, {
+                    self.raise_user_error('outgoing_move_output_source')
+        self.write(ids, {
             'moves': value,
-            }, context=context)
+            })
 
-    def get_inventory_moves(self, cursor, user, ids, name, context=None):
+    def get_inventory_moves(self, ids, name):
         res = {}
-        for shipment in self.browse(cursor, user, ids, context=context):
+        for shipment in self.browse(ids):
             res[shipment.id] = []
             for move in shipment.moves:
                 if move.to_location.id == \
@@ -748,14 +727,13 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     res[shipment.id].append(move.id)
         return res
 
-    def set_inventory_moves(self, cursor, user, ids, name, value,
-            context=None):
+    def set_inventory_moves(self, ids, name, value):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipments = self.browse(cursor, user, ids, context=context)
+        shipments = self.browse(ids)
         move_ids = []
         for act in value:
             if act[0] == 'create':
@@ -763,17 +741,15 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     for shipment in shipments:
                         if act[1]['to_location'] != \
                                 shipment.warehouse.output_location.id:
-                            self.raise_user_error(cursor,
-                                    'inventory_move_output_dest',
-                                    context=context)
+                            self.raise_user_error(
+                                    'inventory_move_output_dest')
             elif act[0] == 'write':
                 if 'to_location' in act[2]:
                     for shipment in shipments:
                         if act[2]['to_location'] != \
                                 shipment.warehouse.output_location.id:
-                            self.raise_user_error(cursor,
-                                    'inventory_move_output_dest',
-                                    context=context)
+                            self.raise_user_error(
+                                    'inventory_move_output_dest')
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -782,71 +758,71 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
-        moves = move_obj.browse(cursor, user, move_ids, context=context)
+        moves = move_obj.browse(move_ids)
         for move in moves:
             for shipment in shipments:
                 if move.to_location.id != \
                         shipment.warehouse.output_location.id:
-                    self.raise_user_error(cursor, 'inventory_move_output_dest',
-                            context=context)
-        self.write(cursor, user, ids, {
+                    self.raise_user_error('inventory_move_output_dest')
+        self.write(ids, {
             'moves': value,
-            }, context=context)
+            })
 
-    def set_state_assigned(self, cursor, user, shipment_id, context=None):
-        self.write(cursor, user, shipment_id, {'state': 'assigned'},
-                   context=context)
+    def set_state_assigned(self, shipment_id):
+        self.write(shipment_id, {
+            'state': 'assigned',
+            })
 
-    def set_state_draft(self, cursor, user, shipment_id, context=None):
+    def set_state_draft(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        self.write(
-            cursor, user, shipment_id, {'state': 'draft'}, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in shipment.inventory_moves + shipment.outgoing_moves \
-                 if m.state != 'draft'],
-            {'state': 'draft'}, context=context)
+        shipment = self.browse(shipment_id)
+        self.write(shipment_id, {
+            'state': 'draft',
+            })
+        move_obj.write([m.id for m in
+            shipment.inventory_moves + shipment.outgoing_moves
+            if m.state != 'draft'], {
+                'state': 'draft',
+                })
 
-    def set_state_done(self, cursor, user, shipment_id, context=None):
+    def set_state_done(self, shipment_id):
         move_obj = self.pool.get('stock.move')
         date_obj = self.pool.get('ir.date')
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in shipment.outgoing_moves \
-                               if m.state not in ('done', 'cancel')],
-            {'state': 'done'}, context=context)
-        self.write(cursor, user, shipment_id, {
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.outgoing_moves
+            if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+        self.write(shipment_id, {
             'state': 'done',
-            'effective_date': date_obj.today(cursor, user, context=context),
-            }, context=context)
+            'effective_date': date_obj.today(),
+            })
 
-    def set_state_packed(self, cursor, user, shipment_id, context=None):
+    def set_state_packed(self, shipment_id):
         move_obj = self.pool.get('stock.move')
         uom_obj = self.pool.get('product.uom')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in shipment.inventory_moves \
-                               if m.state not in ('done', 'cancel')],
-            {'state': 'done'}, context=context)
-        self.write(cursor, user, shipment_id, {'state': 'packed'},
-                   context=context)
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.inventory_moves
+            if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+        self.write(shipment_id, {
+            'state': 'packed',
+            })
         # Sum all outgoing quantities
         outgoing_qty = {}
         for move in shipment.outgoing_moves:
             if move.state == 'cancel': continue
-            quantity = uom_obj.compute_qty(
-                cursor, user, move.uom, move.quantity, move.product.default_uom,
-                round=False, context=context)
+            quantity = uom_obj.compute_qty(move.uom, move.quantity,
+                    move.product.default_uom, round=False)
             outgoing_qty.setdefault(move.product.id, 0.0)
             outgoing_qty[move.product.id] += quantity
 
         for move in shipment.inventory_moves:
             if move.state == 'cancel': continue
-            qty_default_uom = uom_obj.compute_qty(
-                cursor, user, move.uom, move.quantity, move.product.default_uom,
-                round=False, context=context)
+            qty_default_uom = uom_obj.compute_qty(move.uom, move.quantity,
+                    move.product.default_uom, round=False)
             # Check if the outgoing move doesn't exist already
             if outgoing_qty.get(move.product.id):
                 # If it exist, decrease the sum
@@ -857,16 +833,14 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                 else:
                     out_quantity = qty_default_uom - outgoing_qty[move.product.id]
                     out_quantity = uom_obj.compute_qty(
-                        cursor, user, move.product.default_uom, out_quantity,
-                        move.uom, context=context)
+                            move.product.default_uom, out_quantity, move.uom)
                     outgoing_qty[move.product.id] = 0.0
             else:
                 out_quantity = move.quantity
 
-            unit_price = uom_obj.compute_price(
-                cursor, user, move.product.default_uom, move.product.list_price,
-                move.uom, context=context)
-            move_obj.create(cursor, user, {
+            unit_price = uom_obj.compute_price(move.product.default_uom,
+                    move.product.list_price, move.uom)
+            move_obj.create({
                     'from_location': move.to_location.id,
                     'to_location': shipment.customer.customer_location.id,
                     'product': move.product.id,
@@ -878,69 +852,67 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     'company': move.company.id,
                     'currency': move.company.currency.id,
                     'unit_price': unit_price,
-                    }, context=context)
+                    })
 
         #Re-read the shipment and remove exceeding quantities
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+        shipment = self.browse(shipment_id)
         for move in shipment.outgoing_moves:
             if move.state == 'cancel': continue
             if outgoing_qty.get(move.product.id, 0.0) > 0.0:
-                exc_qty = uom_obj.compute_qty(
-                    cursor, user, move.product.default_uom,
-                    outgoing_qty[move.product.id], move.uom, context=context)
-                move_obj.write(cursor, user, move.id,{
+                exc_qty = uom_obj.compute_qty(move.product.default_uom,
+                        outgoing_qty[move.product.id], move.uom)
+                move_obj.write(move.id,{
                     'quantity': max(0.0, move.quantity-exc_qty),
-                    }, context=context)
-                removed_qty = uom_obj.compute_qty(
-                    cursor, user, move.uom, min(exc_qty, move.quantity),
-                    move.product.default_uom, round=False, context=context)
+                    })
+                removed_qty = uom_obj.compute_qty(move.uom,
+                        min(exc_qty, move.quantity), move.product.default_uom,
+                        round=False)
                 outgoing_qty[move.product.id] -= removed_qty
 
-        move_obj.write(cursor, user, [x.id for x in shipment.outgoing_moves
+        move_obj.write([x.id for x in shipment.outgoing_moves
             if x.state != 'cancel'], {
                 'state': 'assigned',
-                }, context=context)
+                })
 
-    def set_state_cancel(self, cursor, user, shipment_id, context=None):
+    def set_state_cancel(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in shipment.outgoing_moves + shipment.inventory_moves \
-                 if m.state != 'cancel'],
-            {'state': 'cancel'}, context=context)
-        self.write(cursor, user, shipment_id, {'state': 'cancel'},
-                   context=context)
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in
+            shipment.outgoing_moves + shipment.inventory_moves
+            if m.state != 'cancel'], {
+                'state': 'cancel',
+                })
+        self.write(shipment_id, {
+            'state': 'cancel',
+            })
 
-    def set_state_waiting(self, cursor, user, shipment_id, context=None):
+    def set_state_waiting(self, shipment_id):
         """
         Complete inventory moves to match the products and quantities
         that are in the outgoing moves.
         """
         move_obj = self.pool.get('stock.move')
         uom_obj = self.pool.get('product.uom')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        self.write(
-            cursor, user, shipment_id, {'state': 'waiting'}, context=context)
+        shipment = self.browse(shipment_id)
+        self.write(shipment_id, {
+            'state': 'waiting',
+            })
 
         if shipment.inventory_moves:
-            move_obj.write(cursor, user,
-                    [x.id for x in shipment.inventory_moves], {
-                        'state': 'draft',
-                        }, context=context)
-            move_obj.delete(cursor, user,
-                    [x.id for x in shipment.inventory_moves], context=context)
+            move_obj.write( [x.id for x in shipment.inventory_moves], {
+                'state': 'draft',
+                })
+            move_obj.delete([x.id for x in shipment.inventory_moves])
 
             # Re-Browse because moves have been deleted
-            shipment = self.browse(cursor, user, shipment_id, context=context)
+            shipment = self.browse(shipment_id)
 
         for move in shipment.outgoing_moves:
             if move.state in ('cancel', 'done'):
                 continue
-            qty_default_uom = uom_obj.compute_qty(
-                cursor, user, move.uom, move.quantity, move.product.default_uom,
-                context=context)
-            move_obj.create(cursor, user, {
+            qty_default_uom = uom_obj.compute_qty(move.uom, move.quantity,
+                    move.product.default_uom)
+            move_obj.create({
                     'from_location': move.shipment_out.warehouse.storage_location.id,
                     'to_location': move.from_location.id,
                     'product': move.product.id,
@@ -950,31 +922,27 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     'planned_date': move.planned_date,
                     'state': 'draft',
                     'company': move.company.id,
-                    }, context=context)
+                    })
 
-    def create(self, cursor, user, values, context=None):
+    def create(self, values):
         sequence_obj = self.pool.get('ir.sequence')
         config_obj = self.pool.get('stock.configuration')
 
         values = values.copy()
-        config = config_obj.browse(cursor, user, 1, context=context)
-        values['code'] = sequence_obj.get_id(cursor, user,
-                config.shipment_out_sequence.id, context=context)
-        return super(ShipmentOut, self).create(cursor, user, values,
-                context=context)
+        config = config_obj.browse(1)
+        values['code'] = sequence_obj.get_id(config.shipment_out_sequence.id)
+        return super(ShipmentOut, self).create(values)
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         if default is None:
             default = {}
         default = default.copy()
         default['inventory_moves']= False
         default['outgoing_moves']= False
-        return super(ShipmentOut, self).copy(cursor, user, ids,
-                default=default, context=context)
+        return super(ShipmentOut, self).copy(ids, default=default)
 
 
-    def _location_amount(self, cursor, user, target_uom,
-            qty_uom, uom_index, context=None):
+    def _location_amount(self, target_uom, qty_uom, uom_index):
         """
         Take a raw list of quantities and uom and convert it to
         the target uom.
@@ -982,27 +950,25 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         uom_obj = self.pool.get('product.uom')
         res = 0
         for uom, qty in qty_uom:
-            res += uom_obj.compute_qty(
-                cursor, user, uom_index[uom], qty, uom_index[target_uom],
-                context=context)
+            res += uom_obj.compute_qty(uom_index[uom], qty,
+                    uom_index[target_uom])
         return res
 
-    def assign_try(self, cursor, user, shipment_id, context=None):
+    def assign_try(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        return move_obj.assign_try(
-            cursor, user, shipment.inventory_moves, context=context)
+        shipment = self.browse(shipment_id)
+        return move_obj.assign_try(shipment.inventory_moves)
 
-    def assign_force(self, cursor, user, shipment_id, context=None):
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+    def assign_force(self, shipment_id):
+        shipment = self.browse(shipment_id)
         move_obj = self.pool.get('stock.move')
-        move_obj.write(
-            cursor, user, [m.id for m in shipment.inventory_moves],
-            {'state': 'assigned'})
+        move_obj.write([m.id for m in shipment.inventory_moves], {
+            'state': 'assigned',
+            })
         return True
 
-    def button_draft(self, cursor, user, ids, context=None):
-        self.workflow_trigger_create(cursor, user, ids, context=context)
+    def button_draft(self, ids):
+        self.workflow_trigger_create(ids)
 
 ShipmentOut()
 
@@ -1076,7 +1042,8 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                     'have the warehouse input location as source location!',
             })
 
-    def init(self, cursor, module_name):
+    def init(self, module_name):
+        cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE wkf "\
                 "SET model = 'stock.shipment.out.return' "\
@@ -1099,37 +1066,35 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
         for field in ('code', 'reference'):
             table.index_action(field, action='remove', table=old_table)
 
-        super(ShipmentOutReturn, self).init(cursor, module_name)
+        super(ShipmentOutReturn, self).init(module_name)
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
         table.index_action('create_date', action='add')
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'draft'
 
-    def default_warehouse(self, cursor, user, context=None):
+    def default_warehouse(self):
         location_obj = self.pool.get('stock.location')
-        location_ids = location_obj.search(cursor, user,
-                self.warehouse.domain, context=context)
+        location_ids = location_obj.search(self.warehouse.domain)
         if len(location_ids) == 1:
             return location_ids[0]
         return False
 
-    def on_change_customer(self, cursor, user, values, context=None):
+    def on_change_customer(self, values):
         if not values.get('customer'):
             return {'delivery_address': False}
         party_obj = self.pool.get("party.party")
-        address_id = party_obj.address_get(cursor, user, values['customer'],
-                type='delivery', context=context)
-        party = party_obj.browse(cursor, user, values['customer'], context=context)
+        address_id = party_obj.address_get(values['customer'], type='delivery')
+        party = party_obj.browse(values['customer'])
         return {
                 'delivery_address': address_id,
             }
 
-    def get_incoming_moves(self, cursor, user, ids, name, context=None):
+    def get_incoming_moves(self, ids, name):
         res = {}
-        for shipment in self.browse(cursor, user, ids, context=context):
+        for shipment in self.browse(ids):
             res[shipment.id] = []
             for move in shipment.moves:
                 if move.to_location.id == \
@@ -1137,13 +1102,13 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                     res[shipment.id].append(move.id)
         return res
 
-    def set_incoming_moves(self, cursor, user, ids, name, value, context=None):
+    def set_incoming_moves(self, ids, name, value):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipments = self.browse(cursor, user, ids, context=context)
+        shipments = self.browse(ids)
         move_ids = []
         for act in value:
             if act[0] == 'create':
@@ -1151,17 +1116,13 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                     for shipment in shipments:
                         if act[1]['to_location'] != \
                                 shipment.warehouse.input_location.id:
-                            self.raise_user_error(cursor,
-                                    'incoming_move_input_dest',
-                                    context=context)
+                            self.raise_user_error('incoming_move_input_dest')
             elif act[0] == 'write':
                 if 'to_location' in act[2]:
                     for shipment in shipments:
                         if act[2]['to_location'] != \
                                 shipment.warehouse.input_location.id:
-                            self.raise_user_error(cursor,
-                                    'incoming_move_input_dest',
-                                    context=context)
+                            self.raise_user_error('incoming_move_input_dest')
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -1170,21 +1131,20 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
-        moves = move_obj.browse(cursor, user, move_ids, context=context)
+        moves = move_obj.browse(move_ids)
         for move in moves:
             for shipment in shipments:
                 if move.to_location.id != \
                         shipment.warehouse.input_location.id:
-                    self.raise_user_error(cursor, 'incoming_move_input_dest',
-                            context=context)
+                    self.raise_user_error('incoming_move_input_dest')
 
-        self.write(cursor, user, ids, {
+        self.write(ids, {
             'moves': value,
-            }, context=context)
+            })
 
-    def get_inventory_moves(self, cursor, user, ids, name, context=None):
+    def get_inventory_moves(self, ids, name):
         res = {}
-        for shipment in self.browse(cursor, user, ids, context=context):
+        for shipment in self.browse(ids):
             res[shipment.id] = []
             for move in shipment.moves:
                 if move.from_location.id == \
@@ -1192,14 +1152,13 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                     res[shipment.id].append(move.id)
         return res
 
-    def set_inventory_moves(self, cursor, user, ids, name, value,
-            context=None):
+    def set_inventory_moves(self, ids, name, value):
         move_obj = self.pool.get('stock.move')
 
         if not value:
             return
 
-        shipments = self.browse(cursor, user, ids, context=context)
+        shipments = self.browse(ids)
         move_ids = []
         for act in value:
             if act[0] == 'create':
@@ -1207,17 +1166,15 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                     for shipment in shipments:
                         if act[1]['from_location'] != \
                                 shipment.warehouse.input_location.id:
-                            self.raise_user_error(cursor,
-                                    'inventory_move_input_source',
-                                    context=context)
+                            self.raise_user_error(
+                                    'inventory_move_input_source')
             elif act[0] == 'write':
                 if 'from_location' in act[2]:
                     for shipment in shipments:
                         if act[2]['from_location'] != \
                                 shipment.warehouse.input_location.id:
-                            self.raise_user_error(cursor,
-                                    'inventory_move_input_source',
-                                    context=context)
+                            self.raise_user_error(
+                                    'inventory_move_input_source')
             elif act[0] == 'add':
                 if isinstance(act[1], (int, long)):
                     move_ids.append(act[1])
@@ -1226,94 +1183,89 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
             elif act[0] == 'set':
                 move_ids.extend(act[1])
 
-        moves = move_obj.browse(cursor, user, move_ids, context=context)
+        moves = move_obj.browse(move_ids)
         for move in moves:
             for shipment in shipments:
                 if move.from_location.id != \
                         shipment.warehouse.input_location.id:
-                    self.raise_user_error(cursor,
-                            'inventory_move_input_source', context=context)
+                    self.raise_user_error('inventory_move_input_source')
 
-        self.write(cursor, user, ids, {
+        self.write(ids, {
             'moves': value,
-            }, context=context)
+            })
 
-    def create(self, cursor, user, values, context=None):
+    def create(self, values):
         sequence_obj = self.pool.get('ir.sequence')
         config_obj = self.pool.get('stock.configuration')
 
         values = values.copy()
-        config = config_obj.browse(cursor, user, 1, context=context)
-        values['code'] = sequence_obj.get_id(cursor, user,
-                config.shipment_out_return_sequence.id, context=context)
-        return super(ShipmentOutReturn, self).create(cursor, user, values,
-                context=context)
+        config = config_obj.browse(1)
+        values['code'] = sequence_obj.get_id(
+                config.shipment_out_return_sequence.id)
+        return super(ShipmentOutReturn, self).create(values)
 
-    def copy(self, cursor, user, ids, default=None, context=None):
+    def copy(self, ids, default=None):
         if default is None:
             default = {}
         default = default.copy()
         default['inventory_moves']= False
         default['incoming_moves']= False
-        return super(ShipmentOutReturn, self).copy(cursor, user, ids,
-                default=default, context=context)
+        return super(ShipmentOutReturn, self).copy(ids, default=default)
 
 
-    def button_draft(self, cursor, user, ids, context=None):
-        self.workflow_trigger_create(cursor, user, ids, context=context)
+    def button_draft(self, ids):
+        self.workflow_trigger_create(ids)
 
-    def set_state_done(self, cursor, user, shipment_id, context=None):
+    def set_state_done(self, shipment_id):
         move_obj = self.pool.get('stock.move')
         date_obj = self.pool.get('ir.date')
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in shipment.inventory_moves \
-                 if m.state not in ('done', 'cancel')],
-            {'state': 'done'}, context)
-        self.write(cursor, user, shipment_id,{
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.inventory_moves
+            if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+        self.write(shipment_id,{
             'state': 'done',
-            'effective_date': date_obj.today(cursor, user, context=context),
-            }, context=context)
+            'effective_date': date_obj.today(),
+            })
 
-    def set_state_cancel(self, cursor, user, shipment_id, context=None):
+    def set_state_cancel(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in shipment.incoming_moves + shipment.inventory_moves \
-                 if m.state != 'cancel'],
-            {'state': 'cancel'}, context)
-        self.write(cursor, user, shipment_id, {'state': 'cancel'},
-                   context=context)
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in
+            shipment.incoming_moves + shipment.inventory_moves
+            if m.state != 'cancel'], {
+                'state': 'cancel',
+                })
+        self.write(shipment_id, {
+            'state': 'cancel',
+            })
 
-    def set_state_received(self, cursor, user, shipment_id, context=None):
+    def set_state_received(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user,
-            [m.id for m in shipment.incoming_moves \
-                 if m.state not in ('done', 'cancel')],
-            {'state': 'done'}, context=context)
-        self.write(cursor, user, shipment_id, {
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.incoming_moves
+            if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+        self.write(shipment_id, {
             'state': 'received'
-            }, context=context)
+            })
 
-    def set_state_draft(self, cursor, user, shipment_id, context=None):
+    def set_state_draft(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(cursor, user, [m.id for m in shipment.incoming_moves
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.incoming_moves
             if m.state != 'draft'], {
             'state': 'draft',
-            }, context=context)
-        move_obj.delete(cursor, user,
-                [m.id for m in shipment.inventory_moves], context=context)
-        self.write(cursor, user, shipment_id, {
+            })
+        move_obj.delete([m.id for m in shipment.inventory_moves])
+        self.write(shipment_id, {
             'state': 'draft',
-            }, context=context)
+            })
 
-    def _get_inventory_moves(self, cursor, user, incoming_move, context=None):
+    def _get_inventory_moves(self, incoming_move):
         res = {}
         if incoming_move.quantity <= 0.0:
             return None
@@ -1330,15 +1282,14 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
         res['company'] = incoming_move.company.id
         return res
 
-    def create_inventory_moves(self, cursor, user, shipment_id, context=None):
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+    def create_inventory_moves(self, shipment_id):
+        shipment = self.browse(shipment_id)
         for incoming_move in shipment.incoming_moves:
-            vals = self._get_inventory_moves(cursor, user, incoming_move,
-                    context=context)
+            vals = self._get_inventory_moves(incoming_move)
             if vals:
-                self.write(cursor, user, shipment.id, {
-                    'inventory_moves': [('create', vals)]
-                    }, context=context)
+                self.write(shipment.id, {
+                    'inventory_moves': [('create', vals)],
+                    })
 
 ShipmentOutReturn()
 
@@ -1394,42 +1345,38 @@ class AssignShipmentOut(Wizard):
         },
     }
 
-    def _choice(self, cursor, user, data, context=None):
+    def _choice(self, data):
         shipment_out_obj = self.pool.get('stock.shipment.out')
         user_group_obj = self.pool.get('res.user-res.group')
         model_data_obj = self.pool.get('ir.model.data')
         transition_obj = self.pool.get('workflow.transition')
 
-        shipment_out_obj.workflow_trigger_validate(cursor, user, data['id'],
-                'assign', context=context)
-        shipment = shipment_out_obj.browse(cursor, user, data['id'],
-                context=context)
+        shipment_out_obj.workflow_trigger_validate(data['id'], 'assign')
+        shipment = shipment_out_obj.browse(data['id'])
         if not [x.id for x in shipment.inventory_moves if x.state == 'draft']:
             return 'end'
         else:
-            trans_id = model_data_obj.get_id(cursor, user, 'stock',
-                    'shipmentout_trans_waiting_assigned_force', context=context)
-            trans = transition_obj.read(cursor, user, trans_id, context=context)
-            user_in_group = user_group_obj.search(cursor, user, [
-                    ('uid', '=', user),
+            trans_id = model_data_obj.get_id('stock',
+                    'shipmentout_trans_waiting_assigned_force')
+            trans = transition_obj.read(trans_id)
+            user_in_group = user_group_obj.search([
+                    ('uid', '=', Transaction().user),
                     ('gid', '=', trans['group']),
-                    ], limit=1, context=context)
+                    ], limit=1)
             if user_in_group:
                 return 'ask_force'
             return 'assign_failed'
 
-    def _moves(self, cursor, user, data, context=None):
+    def _moves(self, data):
         shipment_out_obj = self.pool.get('stock.shipment.out')
-        shipment = shipment_out_obj.browse(cursor, user, data['id'],
-                context=context)
+        shipment = shipment_out_obj.browse(data['id'])
         return {'inventory_moves': [x.id for x in shipment.inventory_moves
             if x.state == 'draft']}
 
-    def _force(self, cursor, user, data, context=None):
+    def _force(self, data):
         shipment_out_obj = self.pool.get('stock.shipment.out')
 
-        shipment_out_obj.workflow_trigger_validate(cursor, user, data['id'],
-                'force_assign', context=context)
+        shipment_out_obj.workflow_trigger_validate(data['id'], 'force_assign')
         return {}
 
 AssignShipmentOut()
@@ -1487,7 +1434,8 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
         ('done', 'Done'),
         ], 'State', readonly=True)
 
-    def init(self, cursor, module_name):
+    def init(self, module_name):
+        cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE wkf "\
                 "SET model = 'stock.shipment.internal' "\
@@ -1509,17 +1457,17 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
         for field in ('code', 'reference'):
             table.index_action(field, action='remove', table=old_table)
 
-        super(ShipmentInternal, self).init(cursor, module_name)
+        super(ShipmentInternal, self).init(module_name)
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
         table.index_action('create_date', action='add')
 
-    def default_state(self, cursor, user, context=None):
+    def default_state(self):
         return 'draft'
 
-    def button_draft(self, cursor, user, ids, context=None):
-        self.workflow_trigger_create(cursor, user, ids, context=context)
+    def button_draft(self, ids):
+        self.workflow_trigger_create(ids)
         return True
 
     def __init__(self):
@@ -1529,76 +1477,78 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
         })
         self._order[0] = ('id', 'DESC')
 
-    def create(self, cursor, user, values, context=None):
+    def create(self, values):
         sequence_obj = self.pool.get('ir.sequence')
         config_obj = self.pool.get('stock.configuration')
 
         values = values.copy()
-        config = config_obj.browse(cursor, user, 1, context=context)
-        values['code'] = sequence_obj.get_id(cursor, user,
-                config.shipment_internal_sequence.id, context=context)
-        return super(ShipmentInternal, self).create(
-            cursor, user, values, context=context)
+        config = config_obj.browse(1)
+        values['code'] = sequence_obj.get_id(
+                config.shipment_internal_sequence.id)
+        return super(ShipmentInternal, self).create(values)
 
-    def set_state_draft(self, cursor, user, shipment_id, context=None):
+    def set_state_draft(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        self.write(
-            cursor, user, shipment_id, {'state': 'draft'}, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in shipment.moves], {'state': 'draft'},
-            context=context)
+        shipment = self.browse(shipment_id)
+        self.write(shipment_id, {
+            'state': 'draft',
+            })
+        move_obj.write([m.id for m in shipment.moves], {
+            'state': 'draft',
+            })
 
-    def set_state_waiting(self, cursor, user, shipment_id, context=None):
+    def set_state_waiting(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(cursor, user, [m.id for m in shipment.moves], {
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.moves], {
             'from_location': shipment.from_location.id,
             'to_location': shipment.to_location.id,
             'state': 'draft',
             'planned_date': shipment.planned_date,
-            }, context=context)
-        self.write(
-            cursor, user, shipment_id, {'state': 'waiting'}, context=context)
+            })
+        self.write(shipment_id, {
+            'state': 'waiting',
+            })
 
-    def set_state_assigned(self, cursor, user, shipment_id, context=None):
-        self.write(
-            cursor, user, shipment_id, {'state': 'assigned'}, context=context)
+    def set_state_assigned(self, shipment_id):
+        self.write(shipment_id, {
+            'state': 'assigned',
+            })
 
-    def set_state_done(self, cursor, user, shipment_id, context=None):
+    def set_state_done(self, shipment_id):
         move_obj = self.pool.get('stock.move')
         date_obj = self.pool.get('ir.date')
 
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in shipment.moves], {'state': 'done'},
-            context=context)
-        self.write(cursor, user, shipment_id, {
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.moves], {
             'state': 'done',
-            'effective_date': date_obj.today(cursor, user, context=context),
-            }, context=context)
+            })
+        self.write(shipment_id, {
+            'state': 'done',
+            'effective_date': date_obj.today(),
+            })
 
-    def set_state_cancel(self, cursor, user, shipment_id, context=None):
+    def set_state_cancel(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        move_obj.write(
-            cursor, user, [m.id for m in shipment.moves], {'state': 'cancel'},
-            context=context)
-        self.write(
-            cursor, user, shipment_id, {'state': 'cancel'}, context=context)
+        shipment = self.browse(shipment_id)
+        move_obj.write([m.id for m in shipment.moves], {
+            'state': 'cancel',
+            })
+        self.write(shipment_id, {
+            'state': 'cancel',
+            })
 
-    def assign_try(self, cursor, user, shipment_id, context=None):
+    def assign_try(self, shipment_id):
         move_obj = self.pool.get('stock.move')
-        shipment = self.browse(cursor, user, shipment_id, context=context)
-        return move_obj.assign_try(
-            cursor, user, shipment.moves, context=context)
+        shipment = self.browse(shipment_id)
+        return move_obj.assign_try(shipment.moves)
 
-    def assign_force(self, cursor, user, shipment_id, context=None):
-        shipment = self.browse(cursor, user, shipment_id, context=context)
+    def assign_force(self, shipment_id):
+        shipment = self.browse(shipment_id)
         move_obj = self.pool.get('stock.move')
-        move_obj.write(cursor, user, [m.id for m in shipment.moves], {
+        move_obj.write([m.id for m in shipment.moves], {
             'state': 'assigned',
-            }, context=context)
+            })
         return True
 
 ShipmentInternal()
@@ -1662,43 +1612,38 @@ class AssignShipmentInternal(Wizard):
         },
     }
 
-    def _choice(self, cursor, user, data, context=None):
+    def _choice(self, data):
         shipment_internal_obj = self.pool.get('stock.shipment.internal')
         user_group_obj = self.pool.get('res.user-res.group')
         model_data_obj = self.pool.get('ir.model.data')
         transition_obj = self.pool.get('workflow.transition')
 
-        shipment_internal_obj.workflow_trigger_validate(cursor, user,
-                data['id'], 'assign', context=context)
-        shipment = shipment_internal_obj.browse(cursor, user, data['id'],
-                context=context)
+        shipment_internal_obj.workflow_trigger_validate(data['id'], 'assign')
+        shipment = shipment_internal_obj.browse(data['id'])
         if not [x.id for x in shipment.moves if x.state == 'draft']:
             return 'end'
         else:
-            trans_id = model_data_obj.get_id(cursor, user, 'stock',
-                    'shipmentinternal_trans_waiting_assigned_force',
-                    context=context)
-            trans = transition_obj.read(cursor, user, trans_id,
-                    context=context)
-            user_in_group = user_group_obj.search(cursor, user, [
+            trans_id = model_data_obj.get_id('stock',
+                    'shipmentinternal_trans_waiting_assigned_force')
+            trans = transition_obj.read(trans_id)
+            user_in_group = user_group_obj.search([
                     ('uid', '=', user),
                     ('gid', '=', trans['group']),
-                    ], limit=1, context=context)
+                    ], limit=1)
             if user_in_group:
                 return 'ask_force'
             return 'assign_failed'
 
-    def _moves(self, cursor, user, data, context=None):
+    def _moves(self, data):
         shipment_internal_obj = self.pool.get('stock.shipment.internal')
-        shipment = shipment_internal_obj.browse(cursor, user, data['id'],
-                context=context)
+        shipment = shipment_internal_obj.browse(data['id'])
         return {'moves': [x.id for x in shipment.moves if x.state == 'draft']}
 
-    def _force(self, cursor, user, data, context=None):
+    def _force(self, data):
         shipment_internal_obj = self.pool.get('stock.shipment.internal')
 
-        shipment_internal_obj.workflow_trigger_validate(cursor, user,
-                data['id'], 'force_assign', context=context)
+        shipment_internal_obj.workflow_trigger_validate(data['id'],
+                'force_assign')
         return {}
 
 AssignShipmentInternal()
@@ -1755,42 +1700,38 @@ class AssignShipmentInReturn(Wizard):
         },
     }
 
-    def _choice(self, cursor, user, data, context=None):
+    def _choice(self, data):
         shipment_internal_obj = self.pool.get('stock.shipment.in.return')
         user_group_obj = self.pool.get('res.user-res.group')
         model_data_obj = self.pool.get('ir.model.data')
         transition_obj = self.pool.get('workflow.transition')
 
-        shipment_internal_obj.workflow_trigger_validate(cursor, user,
-                data['id'], 'assign', context=context)
-        shipment = shipment_internal_obj.browse(cursor, user, data['id'],
-                context=context)
+        shipment_internal_obj.workflow_trigger_validate(data['id'], 'assign')
+        shipment = shipment_internal_obj.browse(data['id'])
         if not [x.id for x in shipment.moves if x.state == 'draft']:
             return 'end'
         else:
-            trans_id = model_data_obj.get_id(cursor, user, 'stock',
-                    'shipment_in_return_trans_waiting_assigned_force',
-                    context=context)
-            trans = transition_obj.read(cursor, user, trans_id, context=context)
-            user_in_group = user_group_obj.search(cursor, user, [
+            trans_id = model_data_obj.get_id('stock',
+                    'shipment_in_return_trans_waiting_assigned_force')
+            trans = transition_obj.read(trans_id)
+            user_in_group = user_group_obj.search([
                     ('uid', '=', user),
                     ('gid', '=', trans['group']),
-                    ], limit=1, context=context)
+                    ], limit=1)
             if user_in_group:
                 return 'ask_force'
             return 'assign_failed'
 
-    def _moves(self, cursor, user, data, context=None):
+    def _moves(self, data):
         shipment_internal_obj = self.pool.get('stock.shipment.in.return')
-        shipment = shipment_internal_obj.browse(cursor, user, data['id'],
-                context=context)
+        shipment = shipment_internal_obj.browse(data['id'])
         return {'moves': [x.id for x in shipment.moves if x.state == 'draft']}
 
-    def _force(self, cursor, user, data, context=None):
+    def _force(self, data):
         shipment_internal_obj = self.pool.get('stock.shipment.in.return')
 
-        shipment_internal_obj.workflow_trigger_validate(cursor, user,
-                data['id'], 'force_assign', context=context)
+        shipment_internal_obj.workflow_trigger_validate(data['id'],
+                'force_assign')
         return {}
 
 AssignShipmentInReturn()
@@ -1816,23 +1757,20 @@ class CreateShipmentOutReturn(Wizard):
             })
 
 
-    def _create(self, cursor, user, data, context=None):
+    def _create(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
         shipment_out_obj = self.pool.get('stock.shipment.out')
         shipment_out_return_obj = self.pool.get('stock.shipment.out.return')
 
-        shipment_outs = shipment_out_obj.browse(
-            cursor, user, data['ids'], context=context)
+        shipment_outs = shipment_out_obj.browse(data['ids'])
 
         shipment_out_return_ids = []
         for shipment_out in shipment_outs:
             if shipment_out.state != 'done':
-                self.raise_user_error(
-                    cursor, 'shipment_done_title',
-                    error_description='shipment_done_msg',
-                    error_description_args=shipment_out.code,
-                    context=context)
+                self.raise_user_error('shipment_done_title',
+                        error_description='shipment_done_msg',
+                        error_description_args=shipment_out.code)
 
             incoming_moves = []
             for move in shipment_out.outgoing_moves:
@@ -1845,19 +1783,17 @@ class CreateShipmentOutReturn(Wizard):
                             'company': move.company.id,
                             }))
             shipment_out_return_ids.append(
-                shipment_out_return_obj.create(
-                    cursor, user,
-                    {'customer': shipment_out.customer.id,
-                     'delivery_address': shipment_out.delivery_address.id,
-                     'warehouse': shipment_out.warehouse.id,
-                     'incoming_moves': incoming_moves,
-                     },
-                    context=context)
+                shipment_out_return_obj.create({
+                    'customer': shipment_out.customer.id,
+                    'delivery_address': shipment_out.delivery_address.id,
+                    'warehouse': shipment_out.warehouse.id,
+                    'incoming_moves': incoming_moves,
+                    })
                 )
 
-        act_window_id = model_data_obj.get_id(cursor, user, 'stock',
-                'act_shipment_out_return_form', context=context)
-        res = act_window_obj.read(cursor, user, act_window_id, context=context)
+        act_window_id = model_data_obj.get_id('stock',
+                'act_shipment_out_return_form')
+        res = act_window_obj.read(act_window_id)
         res['res_id'] = shipment_out_return_ids
         if len(shipment_out_return_ids) == 1:
             res['views'].reverse()
@@ -1870,22 +1806,16 @@ CreateShipmentOutReturn()
 class DeliveryNote(CompanyReport):
     _name = 'stock.shipment.out.delivery_note'
 
-    def parse(self, cursor, user, report, objects, datas, context):
-        if context is None:
-            context = {}
-        context = context.copy()
-        context['product_name'] = lambda product_id, language: \
-                self.product_name(cursor, user, product_id, language,
-                        context)
-        return super(DeliveryNote, self).parse(cursor, user, report,
-                objects, datas, context)
+    def parse(self, report, objects, datas, localcontext):
+        localcontext['product_name'] = lambda product_id, language: \
+                self.product_name(product_id, language)
+        return super(DeliveryNote, self).parse(report, objects, datas,
+                localcontext)
 
-    def product_name(self, cursor, user, product_id, language, context):
+    def product_name(self, product_id, language):
         product_obj = self.pool.get('product.product')
-        ctx = context.copy()
-        ctx['language'] = language
-        return product_obj.browse(cursor, user, product_id,
-                context=ctx).rec_name
+        with Transaction().set_context(language=language):
+            return product_obj.browse(product_id).rec_name
 
 DeliveryNote()
 
@@ -1893,12 +1823,11 @@ DeliveryNote()
 class PickingList(CompanyReport):
     _name = 'stock.shipment.out.picking_list'
 
-    def parse(self, cursor, user, report, objects, datas, context):
+    def parse(self, report, objects, datas, localcontext):
         move_obj = self.pool.get('stock.move')
         shipment_out_obj = self.pool.get('stock.shipment.out')
 
-        compare_context = self.get_compare_context(
-            cursor, user, report, objects, datas, context)
+        compare_context = self.get_compare_context(report, objects, datas)
 
         sorted_moves = {}
         for shipment in objects:
@@ -1908,12 +1837,12 @@ class PickingList(CompanyReport):
                                 self.get_compare_key(y, compare_context))
                 )
 
-        context['moves'] = sorted_moves
+        localcontext['moves'] = sorted_moves
 
-        return super(PickingList, self).parse(cursor, user, report,
-                objects, datas, context)
+        return super(PickingList, self).parse(report, objects, datas,
+                localcontext)
 
-    def get_compare_context(self, cursor, user, report, objects, datas, context):
+    def get_compare_context(self, report, objects, datas):
         location_obj = self.pool.get('stock.location')
         from_location_ids = set()
         to_location_ids = set()
@@ -1922,10 +1851,8 @@ class PickingList(CompanyReport):
                 from_location_ids.add(move.from_location.id)
                 to_location_ids.add(move.to_location.id)
 
-        from_location_ids = location_obj.search(
-            cursor, user, list(from_location_ids), context=context)
-        to_location_ids = location_obj.search(
-            cursor, user, list(to_location_ids), context=context)
+        from_location_ids = location_obj.search(list(from_location_ids))
+        to_location_ids = location_obj.search(list(to_location_ids))
 
         return {'from_location_ids' : from_location_ids,
                 'to_location_ids' : to_location_ids}
@@ -1943,12 +1870,11 @@ PickingList()
 class SupplierRestockingList(CompanyReport):
     _name = 'stock.shipment.in.restocking_list'
 
-    def parse(self, cursor, user, report, objects, datas, context):
+    def parse(self, report, objects, datas, localcontext):
         move_obj = self.pool.get('stock.move')
         shipment_in_obj = self.pool.get('stock.shipment.in')
 
-        compare_context = self.get_compare_context(
-            cursor, user, report, objects, datas, context)
+        compare_context = self.get_compare_context(report, objects, datas)
 
         sorted_moves = {}
         for shipment in objects:
@@ -1958,12 +1884,12 @@ class SupplierRestockingList(CompanyReport):
                                 self.get_compare_key(y, compare_context))
                 )
 
-        context['moves'] = sorted_moves
+        localcontext['moves'] = sorted_moves
 
-        return super(SupplierRestockingList, self).parse(cursor, user, report,
-                objects, datas, context)
+        return super(SupplierRestockingList, self).parse(report, objects,
+                datas, localcontext)
 
-    def get_compare_context(self, cursor, user, report, objects, datas, context):
+    def get_compare_context(self, report, objects, datas):
         location_obj = self.pool.get('stock.location')
         from_location_ids = set()
         to_location_ids = set()
@@ -1972,10 +1898,8 @@ class SupplierRestockingList(CompanyReport):
                 from_location_ids.add(move.from_location.id)
                 to_location_ids.add(move.to_location.id)
 
-        from_location_ids = location_obj.search(
-            cursor, user, list(from_location_ids), context=context)
-        to_location_ids = location_obj.search(
-            cursor, user, list(to_location_ids), context=context)
+        from_location_ids = location_obj.search(list(from_location_ids))
+        to_location_ids = location_obj.search(list(to_location_ids))
 
         return {'from_location_ids' : from_location_ids,
                 'to_location_ids' : to_location_ids}
@@ -1993,12 +1917,11 @@ SupplierRestockingList()
 class CustomerReturnRestockingList(CompanyReport):
     _name = 'stock.shipment.out.return.restocking_list'
 
-    def parse(self, cursor, user, report, objects, datas, context):
+    def parse(self, report, objects, datas, localcontext):
         move_obj = self.pool.get('stock.move')
         shipment_in_obj = self.pool.get('stock.shipment.out.return')
 
-        compare_context = self.get_compare_context(
-            cursor, user, report, objects, datas, context)
+        compare_context = self.get_compare_context(report, objects, datas)
 
         sorted_moves = {}
         for shipment in objects:
@@ -2008,12 +1931,12 @@ class CustomerReturnRestockingList(CompanyReport):
                                 self.get_compare_key(y, compare_context))
                 )
 
-        context['moves'] = sorted_moves
+        localcontext['moves'] = sorted_moves
 
-        return super(CustomerReturnRestockingList, self).parse(
-            cursor, user, report, objects, datas, context)
+        return super(CustomerReturnRestockingList, self).parse(report,
+                objects, datas, localcontext)
 
-    def get_compare_context(self, cursor, user, report, objects, datas, context):
+    def get_compare_context(self, report, objects, datas):
         location_obj = self.pool.get('stock.location')
         from_location_ids = set()
         to_location_ids = set()
@@ -2022,10 +1945,8 @@ class CustomerReturnRestockingList(CompanyReport):
                 from_location_ids.add(move.from_location.id)
                 to_location_ids.add(move.to_location.id)
 
-        from_location_ids = location_obj.search(
-            cursor, user, list(from_location_ids), context=context)
-        to_location_ids = location_obj.search(
-            cursor, user, list(to_location_ids), context=context)
+        from_location_ids = location_obj.search(list(from_location_ids))
+        to_location_ids = location_obj.search(list(to_location_ids))
 
         return {'from_location_ids' : from_location_ids,
                 'to_location_ids' : to_location_ids}
@@ -2043,12 +1964,11 @@ CustomerReturnRestockingList()
 class InteralShipmentReport(CompanyReport):
     _name = 'stock.shipment.internal.report'
 
-    def parse(self, cursor, user, report, objects, datas, context):
+    def parse(self, report, objects, datas, localcontext=None):
         move_obj = self.pool.get('stock.move')
         shipment_in_obj = self.pool.get('stock.shipment.internal')
 
-        compare_context = self.get_compare_context(
-            cursor, user, report, objects, datas, context)
+        compare_context = self.get_compare_context(report, objects, datas)
 
         sorted_moves = {}
         for shipment in objects:
@@ -2058,12 +1978,12 @@ class InteralShipmentReport(CompanyReport):
                                 self.get_compare_key(y, compare_context))
                 )
 
-        context['moves'] = sorted_moves
+        localcontext['moves'] = sorted_moves
 
-        return super(InteralShipmentReport, self).parse(
-            cursor, user, report, objects, datas, context)
+        return super(InteralShipmentReport, self).parse(report, objects,
+                datas, localcontext)
 
-    def get_compare_context(self, cursor, user, report, objects, datas, context):
+    def get_compare_context(self, report, objects, datas):
         location_obj = self.pool.get('stock.location')
         from_location_ids = set()
         to_location_ids = set()
@@ -2072,10 +1992,8 @@ class InteralShipmentReport(CompanyReport):
                 from_location_ids.add(move.from_location.id)
                 to_location_ids.add(move.to_location.id)
 
-        from_location_ids = location_obj.search(
-            cursor, user, list(from_location_ids), context=context)
-        to_location_ids = location_obj.search(
-            cursor, user, list(to_location_ids), context=context)
+        from_location_ids = location_obj.search(list(from_location_ids))
+        to_location_ids = location_obj.search(list(to_location_ids))
 
         return {'from_location_ids' : from_location_ids,
                 'to_location_ids' : to_location_ids}
