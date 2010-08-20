@@ -35,11 +35,11 @@ class CompanyTestCase(unittest.TestCase):
         '''
         Create company.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:        
+        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
             currency1_id = self.currency.search([
                 ('code', '=', 'cu1'),
                 ], 0, 1, None)[0]
-    
+
             company1_id = self.company.create({
                 'name': 'B2CK',
                 'currency': currency1_id,
@@ -55,18 +55,18 @@ class CompanyTestCase(unittest.TestCase):
             currency1_id = self.currency.search([
                 ('code', '=', 'cu1'),
                 ], 0, 1, None)[0]
-    
+
             company1_id = self.company.search([
                 ('name', '=', 'B2CK'),
                 ], 0, 1, None)[0]
-    
+
             company2_id = self.company.create({
                 'name': 'B2CK Branch',
                 'parent': company1_id,
                 'currency': currency1_id,
                 })
             self.assert_(company2_id)
-    
+
             self.failUnlessRaises(Exception, self.company.write,
                     company1_id, {
                         'parent': company2_id,
@@ -81,7 +81,7 @@ class CompanyTestCase(unittest.TestCase):
             company1_id = self.company.search([
                 ('name', '=', 'B2CK'),
                 ], 0, 1, None)[0]
-    
+
             employee1_id = self.employee.create({
                 'name': 'Employee1',
                 'company': company1_id,
