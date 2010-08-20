@@ -50,13 +50,13 @@ class PartyTestCase(unittest.TestCase):
             category1_id = self.category.search([
                 ('name', '=', 'Category 1'),
                 ], limit=1)[0]
-    
+
             category2_id = self.category.create({
                 'name': 'Category 2',
                 'parent': category1_id,
                 })
             self.assert_(category2_id)
-    
+
             self.failUnlessRaises(Exception, self.category.write, 
                     category1_id, {
                         'parent': category2_id,
