@@ -413,7 +413,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             res = product_obj.products_by_location(
                 cursor, user, [location_id],
                 [product_id], with_childs=True, skip_zero=False,
-                context=context)
+                context=local_context)
             for qty in res.itervalues():
                 current_qty += qty
             if current_date == datetime.date.max:
