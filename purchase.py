@@ -277,7 +277,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
 
                 for tax in tax_obj.compute(cursor, user, line.get('taxes', []),
                         line.get('unit_price', Decimal('0.0')),
-                        line.get('quantity', 0.0), context=context):
+                        line.get('quantity', 0.0), context=ctx):
                     key, val = invoice_obj._compute_tax(cursor, user, tax,
                             'in_invoice', context=context)
                     if not key in taxes:
