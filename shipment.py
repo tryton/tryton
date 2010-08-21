@@ -501,11 +501,10 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         uom_obj = self.pool.get('product.uom')
         date_obj = self.pool.get('ir.date')
         move_obj = self.pool.get('stock.move')
-        cursor = Transaction().cursor
 
         shipment = self.browse(shipment_id)
 
-        cursor.execute('LOCK TABLE stock_move')
+        Transaction().cursor.lock(move_obj._table)
 
         location_ids = [m.from_location.id for m in shipment.moves]
         with Transaction().set_context(
