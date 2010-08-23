@@ -101,33 +101,30 @@ class Model(object):
                     self._rpc[on_change_with] = False
 
     def __getattr__(self, name):
-        try:
-            super(Model, self).__getattr__(name)
-        except AttributeError:
-            # Search if a function exists in inherits parents
-            for model_name, field_name in self._inherits.iteritems():
-                model_obj = self.pool.get(model_name)
-                if hasattr(model_obj, name) and \
-                        callable(getattr(model_obj, name)):
-                    def func(cursor, user, *args, **kwargs):
-                        if args:
-                            ids = args[0]
-                            int_id = False
-                            if isinstance(ids, (int, long)):
-                                int_id = True
-                                ids = [ids]
-                            if reduce(lambda x, y: x and
-                                    isinstance(y, (int, long)), ids, True):
-                                # Replace ids by the parent ids
-                                ids = [getattr(x, field_name).id for x in
-                                        self.browse(cursor, user, ids)]
-                            if int_id:
-                                ids = ids[0]
-                            args = tuple([ids] + list(args[1:]))
-                        return getattr(model_obj, name)(cursor, user, *args,
-                                **kwargs)
-                    return func
-            raise
+        # Search if a function exists in inherits parents
+        for model_name, field_name in self._inherits.iteritems():
+            model_obj = self.pool.get(model_name)
+            if hasattr(model_obj, name) and \
+                    callable(getattr(model_obj, name)):
+                def func(cursor, user, *args, **kwargs):
+                    if args:
+                        ids = args[0]
+                        int_id = False
+                        if isinstance(ids, (int, long)):
+                            int_id = True
+                            ids = [ids]
+                        if reduce(lambda x, y: x and
+                                isinstance(y, (int, long)), ids, True):
+                            # Replace ids by the parent ids
+                            ids = [getattr(x, field_name).id for x in
+                                    self.browse(cursor, user, ids)]
+                        if int_id:
+                            ids = ids[0]
+                        args = tuple([ids] + list(args[1:]))
+                    return getattr(model_obj, name)(cursor, user, *args,
+                            **kwargs)
+                return func
+        raise AttributeError
 
     def _inherits_reload(self):
         """
