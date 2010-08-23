@@ -1018,6 +1018,8 @@ class ModelSQL(ModelStorage):
             if hasattr(model, 'table_query') \
                     and model.table_query(context):
                 continue
+            if not isinstance(model, ModelStorage):
+                continue
             for field_name, field in model._columns.iteritems():
                 if isinstance(field, fields.Many2One) \
                         and field.model_name == self._name:
