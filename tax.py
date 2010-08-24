@@ -4,11 +4,11 @@ from __future__ import with_statement
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
-from trytond.tools import Cache
 from trytond.backend import TableHandler
 from trytond.pyson import Eval, Not, Equal, If, In, Bool, Get, Or, And, \
         PYSONEncoder
 from trytond.transaction import Transaction
+from trytond.cache import Cache
 
 
 class Group(ModelSQL, ModelView):
