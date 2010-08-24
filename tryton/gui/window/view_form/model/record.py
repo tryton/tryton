@@ -260,8 +260,9 @@ class Record(SignalEvent):
             self.signal('record-changed')
         return change
 
-    def validate(self):
-        self._check_load()
+    def validate(self, check_load=True):
+        if check_load:
+            self._check_load()
         res = True
         for field in self.group.fields.itervalues():
             if not field.validate(self):
@@ -342,7 +343,7 @@ class Record(SignalEvent):
         if self.id < 0:
             return
         self['*']
-        self.validate()
+        self.validate(check_load=False)
 
     def expr_eval(self, expr, check_load=False):
         if not isinstance(expr, basestring):
