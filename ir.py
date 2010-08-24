@@ -3,8 +3,8 @@
 import math
 from lxml import etree
 from trytond.model import Model, fields
-from trytond.tools import Cache
 from trytond.transaction import Transaction
+from trytond.cache import Cache
 
 
 class View(Model):
