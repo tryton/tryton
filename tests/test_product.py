@@ -66,13 +66,13 @@ class ProductTestCase(unittest.TestCase):
                 'factor': 0.0,
                 })
             transaction.cursor.rollback()
-    
+
             self.failUnlessRaises(Exception, self.uom.write, {
                 'rate': 0.0,
                 'factor': 0.0,
                 })
             transaction.cursor.rollback()
-    
+
     def test0020uom_check_factor_and_rate(self):
         '''
         Test uom check_factor_and_rate constraint.
@@ -90,17 +90,17 @@ class ProductTestCase(unittest.TestCase):
                 'factor': 2,
                 })
             transaction.cursor.rollback()
-    
+
             uom_id = self.uom.search([
                 ('name', '=', 'Test'),
                 ], limit=1)[0]
-    
+
             self.failUnlessRaises(Exception, self.uom.write, uom_id,
                     {
                         'rate': 2.0,
                         })
             transaction.cursor.rollback()
-    
+
             self.failUnlessRaises(Exception, self.uom.write, uom_id,
                     {
                         'factor': 2.0,
@@ -151,14 +151,14 @@ class ProductTestCase(unittest.TestCase):
                     qty, to_uom, False))
                 self.assert_(rounded_result == self.uom.compute_qty(
                     from_uom, qty, to_uom, True))
-    
+
             self.assert_(10 == self.uom.compute_qty(None, 10, to_uom))
             self.assert_(10 == self.uom.compute_qty(None, 10, to_uom, True))
             self.assert_(0 == self.uom.compute_qty(from_uom, 0, to_uom))
             self.assert_(0 == self.uom.compute_qty(from_uom, 0, to_uom, True))
             self.assert_(10 == self.uom.compute_qty(from_uom, 10, None))
             self.assert_(10 == self.uom.compute_qty(from_uom, 10, None, True))
-    
+
     def test0050uom_compute_price(self):
         '''
         Test uom compute_price function.
