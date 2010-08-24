@@ -227,8 +227,9 @@ class ModelRecord(SignalEvent):
             self.signal('record-changed')
         return change
 
-    def validate(self):
-        self._check_load()
+    def validate(self, check_load=True):
+        if check_load:
+            self._check_load()
         res = True
         for fname in self.mgroup.mfields:
             if not self.mgroup.mfields[fname].validate(self):
@@ -327,7 +328,7 @@ class ModelRecord(SignalEvent):
             value = res[0]
             self.read_time = time.time()
             self.set(value)
-            self.validate()
+            self.validate(check_load=False)
 
     def expr_eval(self, dom, check_load=False):
         if not isinstance(dom, basestring):
