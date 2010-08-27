@@ -29,7 +29,7 @@ class CompanyTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('company'))
+        test_view('company')
 
     def test0010company(self):
         '''
