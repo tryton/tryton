@@ -29,7 +29,7 @@ class ProductTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('product'))
+        test_view('product')
 
     def test0010uom_non_zero_rate_factor(self):
         '''
