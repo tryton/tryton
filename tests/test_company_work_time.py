@@ -25,7 +25,7 @@ class CompanyWorkTimeTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('company_work_time'))
+        test_view('company_work_time')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
