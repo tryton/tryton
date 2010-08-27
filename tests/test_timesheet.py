@@ -25,7 +25,7 @@ class TimesheetTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('timesheet'))
+        test_view('timesheet')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
