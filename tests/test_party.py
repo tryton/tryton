@@ -29,7 +29,7 @@ class PartyTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('party'))
+        test_view('party')
 
     def test0010category(self):
         '''
