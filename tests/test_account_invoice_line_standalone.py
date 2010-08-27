@@ -26,8 +26,7 @@ class AccountInvoiceLineStandaloneTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view(
-            'account_invoice_line_standalone'))
+        test_view('account_invoice_line_standalone')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
