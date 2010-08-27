@@ -25,7 +25,7 @@ class DashboardTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('dashboard'))
+        test_view('dashboard')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
