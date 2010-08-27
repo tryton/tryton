@@ -25,7 +25,7 @@ class GoogleMapsTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('google_maps'))
+        test_view('google_maps')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
