@@ -25,7 +25,7 @@ class LDAPAuthenticationTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('ldap_authentication'))
+        test_view('ldap_authentication')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
