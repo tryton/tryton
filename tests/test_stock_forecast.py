@@ -25,7 +25,7 @@ class StockForecastTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('stock_forecast'))
+        test_view('stock_forecast')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
