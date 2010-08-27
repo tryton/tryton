@@ -25,7 +25,7 @@ class StockInventoryLocationTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('stock_inventory_location'))
+        test_view('stock_inventory_location')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
