@@ -25,7 +25,7 @@ class ProjectTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('project'))
+        test_view('project')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
