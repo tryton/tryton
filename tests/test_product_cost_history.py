@@ -25,7 +25,7 @@ class ProductCostHistoryTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('product_cost_history'))
+        test_view('product_cost_history')
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
