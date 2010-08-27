@@ -26,7 +26,7 @@ class PartySiretTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('party_siret'))
+        test_view('party_siret')
 
     def test0010luhn(self):
         '''
