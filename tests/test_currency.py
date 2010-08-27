@@ -35,7 +35,7 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Test views.
         '''
-        self.assertRaises(Exception, test_view('currency'))
+        test_view('currency')
 
     def test0010currencies(self):
         '''
