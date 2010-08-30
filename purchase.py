@@ -232,7 +232,6 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         Return the number of digits of the currency for each purchases
 
         :param purchases: a BrowseRecordList of purchases
-        :param context: the context
         :return: a dictionary with purchase id as key and
             number of digits as value
         '''
@@ -378,7 +377,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
                     res[purchase.id])
         return res
 
-    def get_tax_amount(self, purchases, context=None):
+    def get_tax_amount(self, purchases):
         '''
         Return the tax amount for each purchases
 
@@ -390,8 +389,6 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         tax_obj = self.pool.get('account.tax')
         invoice_obj = self.pool.get('account.invoice')
 
-        if context is None:
-            context = {}
         res = {}
         for purchase in purchases:
             context = self.get_tax_context(purchase)
@@ -604,7 +601,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
 
         self.write(purchase_id, {
             'purchase_date': date_obj.today(),
-            }, context=context)
+            })
         return True
 
     def _get_invoice_line_purchase_line(self, purchase):
@@ -1365,7 +1362,7 @@ class Product(ModelSQL, ModelView):
             default_uom = product.default_uom
             if not uom:
                 uom = default_uom
-            if context.get('supplier') and product.product_suppliers:
+            if Transaction().context.get('supplier') and product.product_suppliers:
                 supplier_id = context['supplier']
                 for product_supplier in product.product_suppliers:
                     if product_supplier.party.id == supplier_id:
@@ -1836,7 +1833,7 @@ class HandleShipmentExceptionAsk(ModelView):
 
     def default_domain_moves(self):
         purchase_line_obj = self.pool.get('purchase.line')
-        active_id = context and context.get('active_id')
+        active_id = Transaction().context.get('active_id')
         if not active_id:
             return []
 
@@ -1935,7 +1932,7 @@ class HandleInvoiceExceptionAsk(ModelView):
 
     def default_domain_invoices(self):
         purchase_obj = self.pool.get('purchase.purchase')
-        active_id = context and context.get('active_id')
+        active_id = Transaction().context.get('active_id')
         if not active_id:
             return []
 
