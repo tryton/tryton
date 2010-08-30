@@ -78,7 +78,7 @@ class Work(ModelSQL, ModelView):
             }, select=1, depends=['type'])
 
     def default_type(self):
-        if context.get('type') == 'project':
+        if Transaction().context.get('type') == 'project':
             return 'project'
         return 'task'
 
