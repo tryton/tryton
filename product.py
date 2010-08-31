@@ -4,6 +4,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import PYSONEncoder
 import datetime
+from trytond.tools import safe_eval
 
 
 class Template(ModelSQL, ModelView):
@@ -105,7 +106,7 @@ class Product(ModelSQL, ModelView):
             return False
         if operator == "=":
             operator= "=="
-        return (eval(str(value) + operator + str(operand)))
+        return (safe_eval(str(value) + operator + str(operand)))
 
     def search_quantity(self, cursor, user, name, domain=None, context=None):
         date_obj = self.pool.get('ir.date')
