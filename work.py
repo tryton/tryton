@@ -66,7 +66,7 @@ class Work(ModelSQL, ModelView):
                 to_compute[h] = False
         return res
 
-    def get_hours(self, name):
+    def get_hours(self, ids, name):
         all_ids = self.search([
                 ('parent', 'child_of', ids),
                 ])
@@ -98,7 +98,7 @@ class Work(ModelSQL, ModelView):
         self._tree_qty(hours_by_wt, children, ids, to_compute)
         return hours_by_wt
 
-    def get_rec_name(self, name):
+    def get_rec_name(self, ids, name):
         if not ids:
             return {}
         res = {}
