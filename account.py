@@ -376,7 +376,7 @@ class AccountSelection(ModelSQL, ModelView):
                 if account.root.id in roots:
                     return False
                 roots.append(account.root.id)
-            if user: #Root can by pass
+            if Transaction().user: #Root can by pass
                 for account in root_accounts:
                     if account.mandatory:
                         if not account.id in roots:
