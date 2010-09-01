@@ -3,7 +3,6 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 import datetime
-from trytond.tools import safe_eval
 
 
 class Template(ModelSQL, ModelView):
@@ -106,7 +105,7 @@ class Product(ModelSQL, ModelView):
                 return False
             if operator == "=":
                 operator= "=="
-            res = res and (safe_eval(str(value) + operator + str(operand)))
+            res = res and (eval(str(value) + operator + str(operand)))
         return res
 
     def search_quantity(self, cursor, user, name, domain=None, context=None):
