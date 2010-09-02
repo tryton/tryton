@@ -416,8 +416,8 @@ class Model(object):
     def _default_get(self):
         'Set default values'
         fields = self._fields.keys()
-        self._default_set(self._proxy.default_get(fields, self._config.context,
-            False))
+        self._default_set(self._proxy.default_get(fields, False,
+            self._config.context))
 
     def _default_set(self, values):
         for field, value in values.iteritems():

@@ -3,6 +3,7 @@
 """
 Configuration functions for the proteus package for Tryton.
 """
+from __future__ import with_statement
 import xmlrpclib
 import threading
 from decimal import Decimal
@@ -44,21 +45,25 @@ class _TrytondMethod(object):
         self._config = config
 
     def __call__(self, *args):
-        from trytond.tools import Cache
+        from trytond.cache import Cache
+        from trytond.transaction import Transaction
 
         assert self._name in self._model._rpc
 
-        Cache.clean(self._config.database.database_name)
-        cursor = self._config.database.cursor()
-        try:
-            res = getattr(self._model, self._name)(cursor, self._config.user,
-                    *args)
+        with Transaction().start(self._config.database_name,
+                self._config.user) as transaction:
+            Cache.clean(self._config.database_name)
+            args = list(args)
+            context = args.pop()
+            if '_timestamp' in context:
+                transaction.timestamp = context['_timestamp']
+                del context['_timestamp']
+            transaction.context = context
+            res = getattr(self._model, self._name)(*args)
             if self._model._rpc[self._name]:
-                cursor.commit()
-            return res
-        finally:
-            cursor.close()
-            Cache.resets(self._config.database.database_name)
+                transaction.cursor.commit()
+        Cache.resets(self._config.database_name)
+        return res
 
 class TrytondProxy(object):
     'Proxy for function call for trytond'
@@ -87,7 +92,8 @@ class TrytondConfig(Config):
         from trytond.pool import Pool
         from trytond.backend import Database
         from trytond.protocols.dispatcher import create
-        from trytond.tools import Cache
+        from trytond.cache import Cache
+        from trytond.transaction import Transaction
         self.database_name = database_name
         self._user = user
         self.database_type = database_type
@@ -103,24 +109,20 @@ class TrytondConfig(Config):
         if database_name not in databases:
             create(database_name, CONFIG['admin_passwd'], language, password)
 
-        self.database = Database(database_name).connect()
         database_list = Pool.database_list()
         self.pool = Pool(database_name)
         if database_name not in database_list:
             self.pool.init()
 
-        Cache.clean(database_name)
-        user_obj = self.pool.get('res.user')
-        cursor = self.database.cursor()
-        try:
-            self.user = user_obj.search(cursor, 0, [
+        with Transaction().start(self.database_name, 0) as transaction:
+            Cache.clean(database_name)
+            user_obj = self.pool.get('res.user')
+            transaction.context = self.context
+            self.user = user_obj.search([
                 ('login', '=', user),
-                ], context=self.context, limit=1)[0]
-            self._context = user_obj.get_preferences(cursor, self.user,
-                    context_only=True, context=self.context)
-        finally:
-            cursor.close()
-            Cache.resets(database_name)
+                ], limit=1)[0]
+            self._context = user_obj.get_preferences(context_only=True)
+        Cache.resets(database_name)
     __init__.__doc__ = object.__init__.__doc__
 
     def __repr__(self):

@@ -16,7 +16,7 @@ class TestModel(TestCase):
 
     def test_class_method(self):
         User = Model.get('res.user')
-        self.assert_(len(User.search([('login', '=', 'admin')])))
+        self.assert_(len(User.search([('login', '=', 'admin')], {})))
 
     def test_find(self):
         User = Model.get('res.user')
