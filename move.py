@@ -565,7 +565,7 @@ class Line(ModelSQL, ModelView):
             line_ids = self.search([
                 ('move.journal', '=', Transaction().context['journal']),
                 ('move.period', '=', Transaction().context['period']),
-                ('create_uid', '=', user),
+                ('create_uid', '=', Transaction().user),
                 ('state', '=', 'draft'),
                 ], order=[('id', 'DESC')], limit=1)
             if not line_ids:
