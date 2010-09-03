@@ -88,7 +88,7 @@ class Work(ModelSQL, ModelView):
         '''
         req_ref_obj = self.pool.get('res.request.reference')
 
-        cursor = Transation().cursor
+        cursor = Transaction().cursor
 
         res = {}
 
