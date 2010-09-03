@@ -1526,35 +1526,29 @@ class ModelSQL(ModelStorage):
                             domain[i] = ('id', 'not in', ids2 + _rec_get(ids2,
                                 table, domain[i][0]))
                 else:
-                    if isinstance(domain[i][2], basestring):
-                        res_ids = target_obj.search(cursor, user, [
-                            ('rec_name', domain[i][1], domain[i][2]),
-                            ], order=[], context=context)
-                    elif isinstance(domain[i][2], (int, long)) \
-                            and not isinstance(domain[i][2], bool):
-                        res_ids = [domain[i][2]]
-                    else:
-                        res_ids = domain[i][2]
-                    if res_ids == True or res_ids == False:
+                    if isinstance(domain[i][2], bool):
                         relation_obj = self.pool.get(field.relation_name)
                         query1 = 'SELECT "' + field.origin + '" ' \
                                 'FROM "' + relation_obj._table + '" '\
                                 'WHERE "' + field.origin + '" IS NOT NULL'
                         query2 = []
                         clause = 'inselect'
-                        if res_ids == False:
+                        if domain[i][2] == False:
                             clause = 'notinselect'
                         domain[i] = ('id', clause, (query1, query2))
-                    elif not res_ids:
-                        domain[i] = ('id', '=', '0')
                     else:
+                        if isinstance(domain[i][2], basestring):
+                            target_field = 'rec_name'
+                        else:
+                            target_field = 'id'
                         relation_obj = self.pool.get(field.relation_name)
-                        red_sql, red_ids = reduce_ids('"' + field.target + '"',
-                                res_ids)
-                        query1 = 'SELECT "' + field.origin + '" ' \
-                                'FROM "' + relation_obj._table + '" ' \
-                                'WHERE ' + red_sql
-                        query2 = red_ids
+
+                        query1, query2 = target_obj.search([
+                                    (target_field, domain[i][1], domain[i][2]),
+                                    ], order=[], query_string=True)
+                        query1 = ('SELECT "%s" FROM "%s" WHERE "%s" IN (%s)' %
+                                (field.origin, relation_obj._table,
+                                    field.target, query1))
                         domain[i] = ('id', 'inselect', (query1, query2))
                 i += 1
 
