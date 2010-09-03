@@ -1410,10 +1410,9 @@ class ModelSQL(ModelStorage):
                                 table, domain[i][0]))
                 else:
                     if isinstance(domain[i][2], basestring):
-                        res_ids = [x[0] for x in target_obj.search(cursor, user,
-                            [
-                                ('rec_name', domain[i][1], domain[i][2]),
-                            ], context=context)]
+                        res_ids = target_obj.search(cursor, user, [
+                            ('rec_name', domain[i][1], domain[i][2]),
+                            ], context=context)
                     else:
                         res_ids = domain[i][2]
                     if res_ids == True or res_ids == False:
