@@ -20,7 +20,13 @@
     - die Umwandlung von Chancen zu Verkäufen
     - die Verfolgung von Interessentenverlusten
 ''',
-
+    'description_fr_FR': '''Fourni :
+- Contacts commerciaux
+- Conversion des contacts commerciaux en opportunités
+- Gestion des conversions
+- Enregistrement des contacts commerciaux perdus
+- Conversion des opportunités en ordres de ventes.
+''',
     'depends': [
         'party',
         'company',
@@ -36,5 +42,6 @@
     ],
     'translation': [
         'de_DE.csv',
+        'fr_FR.csv',
     ],
 }
