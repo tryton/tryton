@@ -148,6 +148,11 @@ class Rule(ModelSQL, ModelView):
         assert mode in ['read', 'write', 'create', 'delete'], \
                 'Invalid domain mode for security'
 
+        # Fix for issue1661
+        if (model_name in ('ir.sequence', 'ir.sequence.strict')
+                and mode == 'read'):
+            return '', []
+
         # root user above constraint
         if user == 0:
             if not context.get('user'):
