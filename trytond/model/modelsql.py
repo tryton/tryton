@@ -1543,9 +1543,10 @@ class ModelSQL(ModelStorage):
                             target_field = 'id'
                         relation_obj = self.pool.get(field.relation_name)
 
-                        query1, query2 = target_obj.search([
+                        query1, query2 = target_obj.search(cursor, user, [
                                     (target_field, domain[i][1], domain[i][2]),
-                                    ], order=[], query_string=True)
+                                    ], order=[], query_string=True,
+                                    context=context)
                         query1 = ('SELECT "%s" FROM "%s" WHERE "%s" IN (%s)' %
                                 (field.origin, relation_obj._table,
                                     field.target, query1))
