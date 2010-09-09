@@ -3,6 +3,7 @@
 {
     'name': 'Sales Leads and Opportunities',
     'name_de_DE': 'Verkauf Interessenten und Chancen',
+    'name_fr_FR': 'Contacts commerciaux et opportunités de ventes',
     'version': '1.6.1',
     'author': 'Sharoon Thomas, Openlabs',
     'email': 'info@openlabs.co.in',
