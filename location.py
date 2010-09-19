@@ -173,6 +173,8 @@ class Location(ModelSQL, ModelView):
         product_obj = self.pool.get('product.product')
         if context is None:
             context = {}
+        value = super(Location, self).view_header_get(cursor, user, value,
+                view_type=view_type, context=context)
         ctx = context.copy()
         ctx['active_test'] = False
         if context.get('product') \
