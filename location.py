@@ -169,6 +169,8 @@ class Location(ModelSQL, ModelView):
 
     def view_header_get(self, value, view_type='form'):
         product_obj = self.pool.get('product.product')
+        value = super(Location, self).view_header_get(value,
+                view_type=view_type)
         if (Transaction().context.get('product')
                 and isinstance(Transaction().context['product'], (int, long))):
             with Transaction().set_context(active_test=False):

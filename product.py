@@ -508,6 +508,8 @@ class Product(ModelSQL, ModelView):
         return res
 
     def view_header_get(self, value, view_type='form'):
+        value = super(Product, self).view_header_get(value,
+                view_type=view_type)
         if not Transaction().context.get('locations'):
             return value
         location_obj = self.pool.get('stock.location')
