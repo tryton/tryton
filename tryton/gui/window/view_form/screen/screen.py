@@ -506,7 +506,7 @@ class Screen(SignalEvent):
                 context.update(rpc.CONTEXT)
                 context.update(self.context)
                 context['_timestamp'] = self.current_record.get_timestamp()
-                reload_ids = self.group.on_write_ids(record_id)
+                reload_ids = self.group.on_write_ids([record_id])
                 if reload_ids and record_id in reload_ids:
                     reload_ids.remove(record_id)
                 args = ('model', self.model_name, 'delete', [record_id],
