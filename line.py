@@ -238,7 +238,8 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
     def table_query(self, context=None):
         type_name = FIELDS[self.year._type].sql_type(self.year)[0]
         return ('SELECT id, create_uid, create_date, write_uid, write_date, ' \
-                    'CAST(year AS ' + type_name + '), week, employee, hours ' \
+                    'CAST(year AS ' + type_name + ') AS year, week, ' \
+                    'employee, hours ' \
                     'FROM ('
                         'SELECT EXTRACT(WEEK FROM date) + ' \
                             'EXTRACT(YEAR FROM date) * 100 + ' \
@@ -275,7 +276,8 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
     def table_query(self, context=None):
         type_name = FIELDS[self.year._type].sql_type(self.year)[0]
         return ('SELECT id, create_uid, create_date, write_uid, write_date, ' \
-                    'CAST(year AS ' + type_name + '), month, employee, hours ' \
+                    'CAST(year AS ' + type_name + ') AS year, month, ' \
+                    'employee, hours ' \
                     'FROM ('
                         'SELECT EXTRACT(MONTH FROM date) + ' \
                             'EXTRACT(YEAR FROM date) * 100 + ' \
