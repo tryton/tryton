@@ -293,35 +293,6 @@ class ViewTreeModel(gtk.GenericTreeModel, gtk.TreeSortable):
             return None
         return node[:-1]
 
-    def cus_refresh(self):
-        tree = self.tree
-        tree[0][2] = None
-
-    def _cus_row_find(self, ids_res):
-        tree = self.tree
-        try:
-            ids = ids_res[:]
-            while len(ids)>0:
-                if ids[-1] in self.roots:
-                    ids.pop()
-                    break
-                ids.pop()
-            path = []
-            while ids != []:
-                path.append(0)
-                val = ids.pop()
-                i = iter(tree)
-                while True:
-                    node = i.next()
-                    if node[0] == val:
-                        break
-                    path[-1] += 1
-                if (node[2] is None) and (ids != []):
-                    return None
-                tree = node[2]
-            return (tuple(path), node)
-        except:
-            return None
 
 class ViewTree(object):
     "View tree"
