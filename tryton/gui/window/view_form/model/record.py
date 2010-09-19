@@ -19,7 +19,7 @@ class EvalEnvironment(object):
 
     def __getattr__(self, item):
         if item == '_parent_' + self.parent.parent_name and self.parent.parent:
-            return EvalEnvironment(self.parent.parent)
+            return EvalEnvironment(self.parent.parent, self.check_load)
         return self.parent.get_eval(check_load=self.check_load)[item]
 
 
