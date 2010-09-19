@@ -504,7 +504,7 @@ class Screen(SignalEvent):
                 context.update(self.context)
                 context['_timestamp'] = self.current_model.get_timestamp()
                 try:
-                    reload_ids = self.models.on_write_ids(obj_id)
+                    reload_ids = self.models.on_write_ids([obj_id])
                     if reload_ids and obj_id in reload_ids:
                         reload_ids.remove(obj_id)
                     if not self.rpc.delete([obj_id], context):
