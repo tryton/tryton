@@ -180,7 +180,8 @@ class Report(object):
                 if file.startswith('Pictures'):
                     picture = style2_z.read(file)
                     pictures.append((file, picture))
-                    manifest.add_file_entry(file)
+                    if manifest:
+                        manifest.add_file_entry(file)
             style2_z.close()
             style2_io.close()
             dom_style2 = xml.dom.minidom.parseString(style2_xml)
