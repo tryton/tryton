@@ -519,6 +519,10 @@ class Product(ModelSQL, ModelView):
 
     def view_header_get(self, cursor, user, value, view_type='form',
             context=None):
+        if context is None:
+            context = {}
+        value = super(Product, self).view_header_get(cursor, user, value,
+                view_type=view_type, context=context)
         if not context.get('locations'):
             return value
         location_obj = self.pool.get('stock.location')
