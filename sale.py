@@ -46,7 +46,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 'readonly': Not(Equal(Eval('state'), 'draft')),
             })
     party = fields.Many2One('party.party', 'Party', change_default=True,
-            required=True, states={
+            required=True, select=1, states={
                 'readonly': Not(Equal(Eval('state'), 'draft')),
             }, on_change=['party', 'payment_term'])
     party_lang = fields.Function(fields.Char('Party Language',
