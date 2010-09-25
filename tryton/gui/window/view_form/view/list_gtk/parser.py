@@ -400,6 +400,7 @@ class Datetime(Date):
         super(Datetime, self).__init__(field_name, model,
                 treeview=treeview, attrs=attrs, window=window)
         self.display_format = date_format() + ' ' + HM_FORMAT
+        self.renderer.format = self.display_format
 
     def get_textual_value(self, model):
         value = model[self.field_name].get_client(model)
