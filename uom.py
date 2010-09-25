@@ -47,6 +47,14 @@ class Uom(ModelSQL, ModelView):
     digits = fields.Integer('Display Digits')
     active = fields.Boolean('Active')
 
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        # Migration from 1.6: corrected misspelling of ounce (was once)
+        cursor.execute("UPDATE ir_model_data "\
+                "SET fs_id = REPLACE(fs_id, 'uom_once', 'uom_ounce') "\
+                "WHERE fs_id = 'uom_once' AND module = 'product'")
+        super(Uom, self).init(module_name)
+
     def __init__(self):
         super(Uom, self).__init__()
         self._sql_constraints += [

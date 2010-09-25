@@ -93,7 +93,7 @@ model,"product.uom,name",uom_meter,Meter,Mètre,0
 model,"product.uom,name",uom_mile,Mile,Mille,0
 model,"product.uom,name",uom_millimeter,Millimeter,Millimètre,0
 model,"product.uom,name",uom_minute,Minute,Minute,0
-model,"product.uom,name",uom_once,Ounce,Once,0
+model,"product.uom,name",uom_ounce,Ounce,Once,0
 model,"product.uom,name",uom_pound,Pound,Livre,0
 model,"product.uom,name",uom_second,Second,Seconde,0
 model,"product.uom,name",uom_square_centimeter,Square centimeter,Centimètre carré,0
@@ -131,7 +131,7 @@ model,"product.uom,symbol",uom_cubic_meter,m³,m³,0
 model,"product.uom,symbol",uom_mile,mi,mi,0
 model,"product.uom,symbol",uom_minute,min,min,0
 model,"product.uom,symbol",uom_millimeter,mm,mm,0
-model,"product.uom,symbol",uom_once,oz,oz,0
+model,"product.uom,symbol",uom_ounce,oz,oz,0
 model,"product.uom,symbol",uom_second,s,s,0
 model,"product.uom,symbol",uom_unit,u,u,0
 model,"product.uom,symbol",uom_work_day,wd,wd,0

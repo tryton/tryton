@@ -189,7 +189,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="factor" eval="0.45359237"/>
             <field name="rate" eval="round(1.0 / 0.45359237, 12)"/>
         </record>
-        <record model="product.uom" id="uom_once">
+        <record model="product.uom" id="uom_ounce">
             <field name="name">Ounce</field>
             <field name="symbol">oz</field>
             <field name="category" ref="uom_cat_weight"/>
