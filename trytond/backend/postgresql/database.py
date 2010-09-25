@@ -9,7 +9,7 @@ from psycopg2.extensions import cursor as PsycopgCursor
 from psycopg2.extensions import ISOLATION_LEVEL_SERIALIZABLE
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from psycopg2.extensions import register_type, register_adapter
-from psycopg2.extensions import UNICODE, AsIs
+from psycopg2.extensions import UNICODE, AsIs, PYDATE, PYDATETIME, PYTIME
 from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
 import time
@@ -395,6 +395,9 @@ class Cursor(CursorInterface):
         return select
 
 register_type(UNICODE)
+register_type(PYDATE)
+register_type(PYDATETIME)
+register_type(PYTIME)
 register_adapter(Session, AsIs)
 register_adapter(float, lambda value: AsIs(repr(value)))
 register_adapter(Decimal, lambda value: AsIs(str(value)))
