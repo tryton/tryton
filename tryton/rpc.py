@@ -6,7 +6,7 @@ import socket
 from threading import Semaphore
 
 _SOCK = None
-_USER = 0
+_USER = None
 _USERNAME = ''
 _SESSION = ''
 _DATABASE = ''
@@ -133,11 +133,11 @@ def login(username, password, host, port, database):
             _SOCK.reconnect()
         except (socket.error, RuntimeError):
             pass
-        _USER = 0
+        _USER = None
         _SESSION = ''
         return -1
     if not res:
-        _USER = 0
+        _USER = None
         _SESSION = ''
         return -2
     _USER = res[0]
@@ -153,7 +153,7 @@ def logout():
     if _SOCK:
         _SOCK.disconnect()
         _SOCK = None
-    _USER = 0
+    _USER = None
     _USERNAME = ''
     _SESSION = ''
     _DATABASE = ''
