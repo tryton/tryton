@@ -1133,7 +1133,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             if not tax.manual:
                 continue
             value = invoice_tax_obj._credit(tax)
-            res[taxes].append(('create', value))
+            res['taxes'].append(('create', value))
         return res
 
     def credit(self, ids, refund=False):
