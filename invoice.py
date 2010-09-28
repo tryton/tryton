@@ -1207,7 +1207,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 continue
             value = invoice_tax_obj._credit(cursor, user, tax,
                     context=context)
-            res[taxes].append(('create', value))
+            res['taxes'].append(('create', value))
         return res
 
     def credit(self, cursor, user, ids, refund=False, context=None):
