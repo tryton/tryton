@@ -2454,8 +2454,6 @@ class PayInvoice(Wizard):
                 line_ids = data['form']['lines'][0][1] + \
                         [x.id for x in invoice.payment_lines
                                 if not x.reconciliation]
-                if line_id:
-                    line_ids += [line_id]
                 if line_ids:
                     move_line_obj.reconcile(cursor, user, line_ids,
                             journal_id=data['form']['journal_writeoff'],
