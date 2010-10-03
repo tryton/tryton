@@ -23,6 +23,7 @@ import os
 if os.name == 'posix':
     import pwd
 from decimal import Decimal
+from trytond.protocols.datatype import Float
 
 RE_FROM = re.compile('.* from "?([a-zA-Z_0-9]+)"?.*$')
 RE_INTO = re.compile('.* into "?([a-zA-Z_0-9]+)"?.*$')
@@ -407,4 +408,5 @@ if PYTIME:
     register_type(PYTIME)
 register_adapter(Session, AsIs)
 register_adapter(float, lambda value: AsIs(repr(value)))
+register_adapter(Float, lambda value: AsIs(repr(value)))
 register_adapter(Decimal, lambda value: AsIs(str(value)))
