@@ -19,3 +19,11 @@ class TestConfig(TestCase):
     def test_proxy_methods(self):
         config = proteus.config.get_config()
         self.assert_('search' in config.get_proxy_methods('res.user'))
+
+    def test_trytond_config_eq(self):
+        config1 = proteus.config.get_config()
+        proteus.config.set_trytond(':memory:', database_type='sqlite')
+        config2 = proteus.config.get_config()
+        self.assertEqual(config1, config2)
+
+        self.assertEqual(config1.__eq__(None), NotImplemented)

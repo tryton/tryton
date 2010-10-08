@@ -40,6 +40,12 @@ class Config(object):
     def get_proxy_methods(self, name):
         raise NotImplementedError
 
+    def __eq__(self, other):
+        if isinstance(other, Config):
+            return repr(self) == repr(other)
+        return NotImplemented
+
+
 class _TrytondMethod(object):
 
     def __init__(self, name, model, config):
