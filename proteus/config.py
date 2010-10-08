@@ -10,8 +10,12 @@ from decimal import Decimal
 from types import NoneType
 import datetime
 
-xmlrpclib.Marshaller.dispatch[Decimal] = \
-        lambda self, value, write: self.dump_double(float(value), write)
+def dump_decimal(self, value, write):
+    write("<value><double>")
+    write(str(value))
+    write("</double></value>\n")
+
+xmlrpclib.Marshaller.dispatch[Decimal] = dump_decimal
 xmlrpclib.Marshaller.dispatch[datetime.date] = \
         lambda self, value, write: self.dump_datetime(
                 datetime.datetime.combine(value, datetime.time()), write)
