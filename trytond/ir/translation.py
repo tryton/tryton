@@ -686,9 +686,9 @@ class ReportTranslationSet(Wizard):
                 if not done:
                     cursor.execute('INSERT INTO ir_translation ' \
                             '(name, lang, type, src, value, module, fuzzy)' \
-                            'VALUES (%s, %s, %s, %s, %s, %s, False)',
+                            'VALUES (%s, %s, %s, %s, %s, %s, %s)',
                             (report.report_name, 'en_US', 'odt', string, '',
-                                report.module))
+                                report.module, False))
             if strings:
                 cursor.execute('DELETE FROM ir_translation ' \
                         'WHERE name = %s ' \
