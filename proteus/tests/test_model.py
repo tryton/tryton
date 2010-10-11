@@ -256,4 +256,13 @@ class TestModel(TestCase):
         test.save()
         self.assert_(test.delete())
 
-    # TODO test on_change
+    def test_on_change(self):
+        Trigger = Model.get('ir.trigger')
+
+        trigger = Trigger()
+
+        trigger.on_time = True
+        self.assertEqual(trigger.on_create, False)
+
+        trigger.on_create = True
+        self.assertEqual(trigger.on_time, False)
