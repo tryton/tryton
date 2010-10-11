@@ -443,17 +443,6 @@ class Model(object):
         for field, definition in self._fields.iteritems():
             if definition['type'] in ('one2many', 'many2many'):
                 values[field] = [x.id for x in getattr(self, field) or []]
-            else:
-                values[field] = getattr(self, field)
-        values['id'] = self.id
-        return values
-
-    def _on_change_args(self, args):
-        res = {}
-        values = {}
-        for field, definition in self._fields.iteritems():
-            if definition['type'] in ('one2many', 'many2many'):
-                values[field] = [x._get_eval() for x in getattr(self, field)]
             elif definition['type'] == 'many2one':
                 if getattr(self, field):
                     values[field] = getattr(self, field).id
@@ -468,6 +457,16 @@ class Model(object):
                     values[field] = getattr(self, field) or False
             else:
                 values[field] = getattr(self, field)
+        values['id'] = self.id
+        return values
+
+    def _on_change_args(self, args):
+        res = {}
+        values = self._get_eval()
+        del values['id']
+        for field, definition in self._fields.iteritems():
+            if definition['type'] in ('one2many', 'many2many'):
+                values[field] = [x._get_eval() for x in getattr(self, field)]
         if self._parent:
             values['_parent_%s' % self._parent_field_name] = \
                     _EvalEnvironment(self._parent)
