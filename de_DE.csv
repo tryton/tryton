@@ -1,12 +1,11 @@
 type,name,res_id,src,value,fuzzy
 error,party.address,0,You can not modify the party of an address!,Die Partei einer Adresse kann nicht geändert werden!,0
 error,party.category,0,The name of a party category must be unique by parent!,Der Name einer Parteikategorie kann pro Übergeordneter Partei nur einmal vergeben werden!,0
-error,party.category,0,You can not create recursive categories!,Kategorien dürfen nicht rekursiv sein,0
+error,party.category,0,You can not create recursive categories!,Kategorien können nicht rekursiv angelegt werden!,0
 error,party.category,0,"You can not use "" / "" in name field!","In dem Namensfeld kann "" / "" nicht verwendet werden!",0
 error,party.check_vies,0,"The VIES service is unavailable, try again later.","VIES Dienst nicht erreichbar, bitte versuchen Sie es später noch einmal!",0
 error,party.contact_mechanism,0,You can not modify the party of a contact mechanism!,Die Partei einer Kontaktmöglichkeit kann nicht geändert werden!,0
 error,party.party,0,Invalid VAT number!,Ungültige USt-ID-Nummer!,0
-error,party.party,0,The code of the party must be unique!,Der Code für eine Partei kann nur einmal vergeben werden!,0
 field,"party.address,active",0,Active,Aktiv,0
 field,"party.address,city",0,City,Stadt,0
 field,"party.address,country",0,Country,Staat,0
@@ -65,9 +64,6 @@ field,"party.party,id",0,ID,ID,0
 field,"party.party,lang",0,Language,Sprache,0
 field,"party.party,mobile",0,Mobile,Mobiltelefon,0
 field,"party.party,name",0,Name,Name,0
-field,"party.party-party.category,category",0,Category,Kategorie,0
-field,"party.party-party.category,party",0,Party,Partei,0
-field,"party.party-party.category,rec_name",0,Name,Name,0
 field,"party.party,phone",0,Phone,Telefon,0
 field,"party.party,rec_name",0,Name,Name,0
 field,"party.party,vat_code",0,VAT Code,USt-ID-Nr.,0
@@ -76,31 +72,34 @@ field,"party.party,vat_number",0,VAT Number,USt-ID-Nr.,0
 field,"party.party,website",0,Website,Website,0
 field,"party.party,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"party.party,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"party.party-party.category,category",0,Category,Kategorie,0
+field,"party.party-party.category,party",0,Party,Partei,0
+field,"party.party-party.category,rec_name",0,Name,Name,0
 help,"party.party,vat_country",0,Setting VAT country will enable validation of the VAT number.,Ein Eintrag in USt-ID-Präfix aktiviert die Überprüfung der USt-ID-Nr.,0
 help,"party.party,vat_number",0,Value Added Tax number,Umsatzsteueridentifikationsnummer,0
 model,"ir.action,name",act_address_form,Addresses,Adressen,0
 model,"ir.action,name",act_address_form2,Addresses,Adressen,0
-model,"ir.action,name",act_category_tree,Categories,Kategorien,0
 model,"ir.action,name",act_category_form,Categories,Kategorien,0
 model,"ir.action,name",act_category_form2,Categories,Kategorien,0
-model,"ir.action,name",wizard_check_vies,Check VIES,USt-ID-Nr. per VIES überprüfen,0
-model,"ir.action,name",report_label,Labels,Etiketten,0
-model,"ir.action,name",act_party_form,Parties,Parteien,0
-model,"ir.action,name",act_party_form2,Parties,Parteien,0
+model,"ir.action,name",act_category_tree,Categories,Kategorien,0
 model,"ir.action,name",act_party_by_category,Parties by Category,Parteien nach Kategorie,0
 model,"ir.action,name",act_party_configuration_form,Party Configuration,Einstellungen Partei,0
+model,"ir.action,name",act_party_form,Parties,Parteien,0
+model,"ir.action,name",act_party_form2,Parties,Parteien,0
+model,"ir.action,name",report_label,Labels,Etiketten,0
+model,"ir.action,name",wizard_check_vies,Check VIES,USt-ID-Nr. per VIES überprüfen,0
 model,"ir.sequence,name",sequence_party,Party,Partei,0
 model,"ir.sequence.type,name",sequence_type_party,Party,Partei,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adressen,0
-model,"ir.ui.menu,name",menu_category_tree,Categories,Parteikategorien,0
-model,"ir.ui.menu,name",menu_category_form,Categories,Parteikategorien,0
-model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_address_form2,New Address,Neue Adresse,0
+model,"ir.ui.menu,name",menu_category_form,Categories,Parteikategorien,0
 model,"ir.ui.menu,name",menu_category_form2,New category,Neue Parteikategorie,0
-model,"ir.ui.menu,name",menu_party_form2,New Party,Neue Partei,0
-model,"ir.ui.menu,name",menu_party_form,Parties,Parteien,0
-model,"ir.ui.menu,name",menu_party_configuration,Party Configuration,Einstellungen Partei,0
+model,"ir.ui.menu,name",menu_category_tree,Categories,Parteikategorien,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_party,Party Management,Parteien,0
+model,"ir.ui.menu,name",menu_party_configuration,Party Configuration,Einstellungen Partei,0
+model,"ir.ui.menu,name",menu_party_form,Parties,Parteien,0
+model,"ir.ui.menu,name",menu_party_form2,New Party,Neue Partei,0
 model,"party.address,name",0,Address,Adresse,0
 model,"party.category,name",0,Category,Kategorie,0
 model,"party.check_vies.check,name",0,Check VIES - Check,Überprüfung VIES - Durchführen,0
@@ -166,15 +165,15 @@ view,party.contact_mechanism,0,Contact Mechanism,Kontaktmöglichkeit,0
 view,party.contact_mechanism,0,Contact Mechanisms,Kontaktmöglichkeiten,0
 view,party.party,0,Account,Konten,0
 view,party.party,0,Accounting,Buchhaltung,0
-view,party.party,0,_Accounting,_Buchhaltung,0
 view,party.party,0,Addresses,Adressen,0
 view,party.party,0,Categories,Kategorien,0
 view,party.party,0,Contact Mechanism,Kontaktmöglichkeit,0
 view,party.party,0,Contact Mechanisms,Kontaktmöglichkeiten,0
 view,party.party,0,General,Allgemein,0
-view,party.party,0,_General,_Allgemein,0
 view,party.party,0,Parties,Parteien,0
 view,party.party,0,Party,Partei,0
 view,party.party,0,VAT,USt,0
+view,party.party,0,_Accounting,_Buchhaltung,0
+view,party.party,0,_General,_Allgemein,0
 wizard_button,"party.check_vies,check,end",0,Ok,OK,0
 wizard_button,"party.check_vies,no_check,end",0,Ok,OK,0
