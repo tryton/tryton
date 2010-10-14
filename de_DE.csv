@@ -42,14 +42,6 @@ field,"product.template,write_date",0,Last modification date,Zuletzt geändert a
 field,"product.template,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"product.uom,active",0,Active,Aktiv,0
 field,"product.uom,category",0,UOM Category,Kategorie Maßeinheit,0
-field,"product.uom.category,create_date",0,Creation date,Erstellungsdatum,0
-field,"product.uom.category,create_uid",0,Creation user,Ersteller,0
-field,"product.uom.category,id",0,ID,ID,0
-field,"product.uom.category,name",0,Name,Name,0
-field,"product.uom.category,rec_name",0,Name,Name,0
-field,"product.uom.category,uoms",0,Unit of Measures,Maßeinheiten,0
-field,"product.uom.category,write_date",0,Last modification date,Zuletzt geändert am,0
-field,"product.uom.category,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"product.uom,create_date",0,Creation date,Erstellungsdatum,0
 field,"product.uom,create_uid",0,Creation user,Ersteller,0
 field,"product.uom,digits",0,Display Digits,Angezeigte Stellen,0
@@ -62,6 +54,14 @@ field,"product.uom,rounding",0,Rounding Precision,Rundungsgenauigkeit,0
 field,"product.uom,symbol",0,Symbol,Symbol,0
 field,"product.uom,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"product.uom,write_uid",0,Last modification by,Zuletzt geändert von,0
+field,"product.uom.category,create_date",0,Creation date,Erstellungsdatum,0
+field,"product.uom.category,create_uid",0,Creation user,Ersteller,0
+field,"product.uom.category,id",0,ID,ID,0
+field,"product.uom.category,name",0,Name,Name,0
+field,"product.uom.category,rec_name",0,Name,Name,0
+field,"product.uom.category,uoms",0,Unit of Measures,Maßeinheiten,0
+field,"product.uom.category,write_date",0,Last modification date,Zuletzt geändert am,0
+field,"product.uom.category,write_uid",0,Last modification by,Zuletzt geändert von,0
 help,"product.uom,factor",0,"The coefficient for the formula:
 coef (base unit) = 1 (this unit)","Der Faktor der Basiseinheit für eine Maßeinheit ist immer 1.
 Formel: diese Einheit = Faktor * Basiseinheit
@@ -70,36 +70,30 @@ help,"product.uom,rate",0,"The coefficient for the formula:
 1 (base unit) = coef (this unit)","Der Kehrwert des Faktors der Basiseinheit für eine Maßeinheit ist immer 1.
 Formel: Basiseinheit = Kehrwert * diese Einheit
 Das Feld Faktor wird automatisch aus dem hier eingetragenen Wert ermittelt.",0
-model,"ir.action,name",act_category_tree,Categories,Artikelkategorien,0
-model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Kategorien Maßeinheiten,0
-model,"ir.action,name",act_uom_category_form2,Categories of Unit of Measure,Kategorien Maßeinheiten,0
-model,"ir.action,name",act_product_by_category,Product by Category,Artikel nach Kategorie,0
 model,"ir.action,name",act_category_form,Product Categories,Artikelkategorien,0
 model,"ir.action,name",act_category_form2,Product Categories,Artikelkategorien,0
+model,"ir.action,name",act_category_tree,Categories,Artikelkategorien,0
+model,"ir.action,name",act_product_by_category,Product by Category,Artikel nach Kategorie,0
 model,"ir.action,name",act_product_form,Products,Artikel,0
 model,"ir.action,name",act_product_form2,Products,Artikel,0
+model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Kategorien Maßeinheiten,0
+model,"ir.action,name",act_uom_category_form2,Categories of Unit of Measure,Kategorien Maßeinheiten,0
 model,"ir.action,name",act_uom_form,Units of Measure,Maßeinheiten,0
 model,"ir.action,name",act_uom_form2,Units of Measure,Maßeinheiten,0
-model,"ir.ui.menu,name",menu_category_tree,Categories,Artikelkategorien,0
 model,"ir.ui.menu,name",menu_category_form,Categories,Artikelkategorien,0
-model,"ir.ui.menu,name",menu_uom_category_form,Categories,Kategorien für Maßeinheiten,0
 model,"ir.ui.menu,name",menu_category_form_new,New Category,Neue Artikelkategorie,0
-model,"ir.ui.menu,name",menu_uom_category_form_new,New Category,Neue Kategorie für Maßeinheit,0
-model,"ir.ui.menu,name",menu_product_product_new,New Product,Neuer Artikel,0
-model,"ir.ui.menu,name",menu_uom_form2,New Unit of Measure,Neue Maßeinheit,0
+model,"ir.ui.menu,name",menu_category_tree,Categories,Artikelkategorien,0
 model,"ir.ui.menu,name",menu_main_product,Product,Artikel,0
 model,"ir.ui.menu,name",menu_product_product,Products,Artikel,0
+model,"ir.ui.menu,name",menu_product_product_new,New Product,Neuer Artikel,0
+model,"ir.ui.menu,name",menu_uom_category_form,Categories,Kategorien für Maßeinheiten,0
+model,"ir.ui.menu,name",menu_uom_category_form_new,New Category,Neue Kategorie für Maßeinheit,0
 model,"ir.ui.menu,name",menu_uom_form,Units of Measure,Maßeinheiten,0
+model,"ir.ui.menu,name",menu_uom_form2,New Unit of Measure,Neue Maßeinheit,0
 model,"product.category,name",0,Product Category,Artikel Kategorie,0
 model,"product.product,name",0,Product,Artikel,0
 model,"product.template,name",0,Product Template,Artikel Vorlage,0
-model,"product.uom.category,name",uom_cat_length,Length,Länge,0
-model,"product.uom.category,name",0,Product uom category,Artikel Maßeinheit Kategorie,0
-model,"product.uom.category,name",uom_cat_surface,Surface,Fläche,0
-model,"product.uom.category,name",uom_cat_time,Time,Zeit,0
-model,"product.uom.category,name",uom_cat_unit,Units,Stückzahl,0
-model,"product.uom.category,name",uom_cat_volume,Volume,Volumen,0
-model,"product.uom.category,name",uom_cat_weight,Weight,Gewicht,0
+model,"product.uom,name",0,Unit of measure,Maßeinheit,0
 model,"product.uom,name",uom_are,Are,Ar,0
 model,"product.uom,name",uom_carat,Carat,Karat,0
 model,"product.uom,name",uom_centimeter,centimeter,Zentimeter,0
@@ -130,41 +124,47 @@ model,"product.uom,name",uom_square_inch,Square inch,Quadratzoll,0
 model,"product.uom,name",uom_square_meter,Square meter,Quadratmeter,0
 model,"product.uom,name",uom_square_yard,Square yard,Quadratyard(s),0
 model,"product.uom,name",uom_unit,Unit,Stück,0
-model,"product.uom,name",0,Unit of measure,Maßeinheit,0
 model,"product.uom,name",uom_work_day,Work Day,Personentag(e),0
 model,"product.uom,name",uom_yard,Yard,Yard(s),0
 model,"product.uom,symbol",uom_are,a,a,0
 model,"product.uom,symbol",uom_carat,c,c,0
 model,"product.uom,symbol",uom_centimeter,cm,cm,0
-model,"product.uom,symbol",uom_square_centimeter,cm²,cm²,0
 model,"product.uom,symbol",uom_cubic_centimeter,cm³,cm³,0
+model,"product.uom,symbol",uom_cubic_foot,ft³,ft³,0
+model,"product.uom,symbol",uom_cubic_inch,in³,in³,0
+model,"product.uom,symbol",uom_cubic_meter,m³,m³,0
 model,"product.uom,symbol",uom_day,d,d,0
 model,"product.uom,symbol",uom_foot,ft,ft,0
-model,"product.uom,symbol",uom_square_foot,ft²,ft²,0
-model,"product.uom,symbol",uom_cubic_foot,ft³,ft³,0
-model,"product.uom,symbol",uom_gram,g,g,0
 model,"product.uom,symbol",uom_gallon,gal,gal,0
-model,"product.uom,symbol",uom_hour,h,h,0
+model,"product.uom,symbol",uom_gram,g,g,0
 model,"product.uom,symbol",uom_hectare,ha,ha,0
+model,"product.uom,symbol",uom_hour,h,h,0
 model,"product.uom,symbol",uom_inch,in,in,0
-model,"product.uom,symbol",uom_square_inch,in²,in²,0
-model,"product.uom,symbol",uom_cubic_inch,in³,in³,0
 model,"product.uom,symbol",uom_kilogram,kg,kg,0
 model,"product.uom,symbol",uom_kilometer,km,km,0
 model,"product.uom,symbol",uom_liter,l,l,0
-model,"product.uom,symbol",uom_pound,lbs,lbs,0
 model,"product.uom,symbol",uom_meter,m,m,0
-model,"product.uom,symbol",uom_square_meter,m²,m²,0
-model,"product.uom,symbol",uom_cubic_meter,m³,m³,0
 model,"product.uom,symbol",uom_mile,mi,mi,0
-model,"product.uom,symbol",uom_minute,min,min,0
 model,"product.uom,symbol",uom_millimeter,mm,mm,0
+model,"product.uom,symbol",uom_minute,min,min,0
 model,"product.uom,symbol",uom_ounce,oz,oz,0
+model,"product.uom,symbol",uom_pound,lbs,lbs,0
 model,"product.uom,symbol",uom_second,s,s,0
+model,"product.uom,symbol",uom_square_centimeter,cm²,cm²,0
+model,"product.uom,symbol",uom_square_foot,ft²,ft²,0
+model,"product.uom,symbol",uom_square_inch,in²,in²,0
+model,"product.uom,symbol",uom_square_meter,m²,m²,0
+model,"product.uom,symbol",uom_square_yard,yd²,yd²,0
 model,"product.uom,symbol",uom_unit,u,St.,0
 model,"product.uom,symbol",uom_work_day,wd,PT,0
 model,"product.uom,symbol",uom_yard,yd,yd,0
-model,"product.uom,symbol",uom_square_yard,yd²,yd²,0
+model,"product.uom.category,name",0,Product uom category,Artikel Maßeinheit Kategorie,0
+model,"product.uom.category,name",uom_cat_length,Length,Länge,0
+model,"product.uom.category,name",uom_cat_surface,Surface,Fläche,0
+model,"product.uom.category,name",uom_cat_time,Time,Zeit,0
+model,"product.uom.category,name",uom_cat_unit,Units,Stückzahl,0
+model,"product.uom.category,name",uom_cat_volume,Volume,Volumen,0
+model,"product.uom.category,name",uom_cat_weight,Weight,Gewicht,0
 model,"res.group,name",group_product_admin,Product Administration,Artikel Administration,0
 selection,"product.template,cost_price_method",0,Average,Durchschnitt,0
 selection,"product.template,cost_price_method",0,Fixed,Fix,0
@@ -176,13 +176,13 @@ view,product.category,0,Product Categories,Artikelkategorien,0
 view,product.category,0,Product Category,Artikelkategorie,0
 view,product.product,0,General,Allgemein,0
 view,product.product,0,Product,Artikel,0
-view,product.product,0,Products,Artikel,0
 view,product.product,0,Product Suppliers,Lieferanten,0
+view,product.product,0,Products,Artikel,0
 view,product.template,0,General,Allgemein,0
 view,product.template,0,Product,Artikel,0
-view,product.template,0,Products,Artikel,0
 view,product.template,0,Product Template,Artikelvorlage,0
 view,product.template,0,Product Templates,Artikelvorlagen,0
+view,product.template,0,Products,Artikel,0
 view,product.uom,0,Unit of Measure,Maßeinheit,0
 view,product.uom,0,Units of Measure,Maßeinheiten,0
 view,product.uom.category,0,Categories of Unit of Measure,Kategorien Maßeinheiten,0
