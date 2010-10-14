@@ -13,6 +13,11 @@ field,"account.statement,currency_digits",0,Currency Digits,Stellen Währung,0
 field,"account.statement,date",0,Date,Datum,0
 field,"account.statement,end_balance",0,End Balance,Endsaldo,0
 field,"account.statement,journal",0,Journal,Journal,0
+field,"account.statement,lines",0,Transactions,Transaktionen,0
+field,"account.statement,move_lines",0,Move Lines,Buchungsposten,0
+field,"account.statement,rec_name",0,Name,Name,0
+field,"account.statement,start_balance",0,Start Balance,Anfangssaldo,0
+field,"account.statement,state",0,State,Status,0
 field,"account.statement.journal,company",0,Company,Unternehmen,0
 field,"account.statement.journal,currency",0,Currency,Währung,0
 field,"account.statement.journal,journal",0,Journal,Journal,0
@@ -26,16 +31,8 @@ field,"account.statement.line,invoice",0,Invoice,Rechnung,0
 field,"account.statement.line,move",0,Account Move,Buchungssatz,0
 field,"account.statement.line,party",0,Party,Partei,0
 field,"account.statement.line,rec_name",0,Name,Name,0
-field,"account.statement,lines",0,Transactions,Transaktionen,0
 field,"account.statement.line,statement",0,Statement,Zahlung,0
-field,"account.statement,move_lines",0,Move Lines,Buchungsposten,0
-field,"account.statement,rec_name",0,Name,Name,0
-field,"account.statement,start_balance",0,Start Balance,Anfangssaldo,0
-field,"account.statement,state",0,State,Status,0
 field,"analytic_account.account,active",0,Active,Aktiv,0
-field,"analytic_account.account-analytic_account.account.selection,account",0,Account,Konto,0
-field,"analytic_account.account-analytic_account.account.selection,rec_name",0,Name,Name,0
-field,"analytic_account.account-analytic_account.account.selection,selection",0,Selection,Auswahl,0
 field,"analytic_account.account,balance",0,Balance,Saldo,0
 field,"analytic_account.account,childs",0,Children,Untergeordnet (Kostenstellen),0
 field,"analytic_account.account,code",0,Code,Code,0
@@ -48,15 +45,18 @@ field,"analytic_account.account,display_balance",0,Display Balance,Ansicht Bilan
 field,"analytic_account.account,mandatory",0,Mandatory,Erforderlich,0
 field,"analytic_account.account,name",0,Name,Name,0
 field,"analytic_account.account,note",0,Note,Notiz,0
-field,"analytic_account.account.open_chart_account.init,end_date",0,End Date,Enddatum,0
-field,"analytic_account.account.open_chart_account.init,start_date",0,Start Date,Anfangsdatum,0
 field,"analytic_account.account,parent",0,Parent,Übergeordnet (Kostenstelle),0
 field,"analytic_account.account,rec_name",0,Name,Name,0
 field,"analytic_account.account,root",0,Root,Wurzel,0
-field,"analytic_account.account.selection,accounts",0,Accounts,Konten,0
-field,"analytic_account.account.selection,rec_name",0,Name,Name,0
 field,"analytic_account.account,state",0,State,Status,0
 field,"analytic_account.account,type",0,Type,Typ,0
+field,"analytic_account.account-analytic_account.account.selection,account",0,Account,Konto,0
+field,"analytic_account.account-analytic_account.account.selection,rec_name",0,Name,Name,0
+field,"analytic_account.account-analytic_account.account.selection,selection",0,Selection,Auswahl,0
+field,"analytic_account.account.open_chart_account.init,end_date",0,End Date,Enddatum,0
+field,"analytic_account.account.open_chart_account.init,start_date",0,Start Date,Anfangsdatum,0
+field,"analytic_account.account.selection,accounts",0,Accounts,Konten,0
+field,"analytic_account.account.selection,rec_name",0,Name,Name,0
 field,"analytic_account.line,account",0,Account,Konto,0
 field,"analytic_account.line,active",0,Active,Aktiv,0
 field,"analytic_account.line,credit",0,Credit,Haben,0
@@ -70,11 +70,11 @@ field,"analytic_account.line,name",0,Name,Name,0
 field,"analytic_account.line,party",0,Party,Partei,0
 field,"analytic_account.line,rec_name",0,Name,Name,0
 field,"analytic_account.line,reference",0,Reference,Interner Beleg,0
+model,"account.statement,name",0,Account Statement,Zahlungsverkehr,0
 model,"account.statement.journal,name",0,Statement Journal,Journal Zahlungsverkehr,0
 model,"account.statement.line,name",0,Account Statement Line,Zahlungsverkehr Position,0
-model,"account.statement,name",0,Account Statement,Zahlungsverkehr,0
-model,"analytic_account.account-analytic_account.account.selection,name",0,Analytic Account - Analytic Account Selection,Kostenstelle - Kostenstelle Auswahl,0
 model,"analytic_account.account,name",0,Analytic Account,Kostenstelle,0
+model,"analytic_account.account-analytic_account.account.selection,name",0,Analytic Account - Analytic Account Selection,Kostenstelle - Kostenstelle Auswahl,0
 model,"analytic_account.account.open_chart_account.init,name",0,Open Chart Account Init,Kontenplan Öffnen Init,0
 model,"analytic_account.account.selection,name",0,Analytic Account Selection,Kostenstelle Auswahl,0
 model,"analytic_account.line,name",0,Analytic Line,Kostenstelle Zeile,0
@@ -85,10 +85,10 @@ model,"ir.action,name",act_account_tree2,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_line_form,Analytic Lines,Kostenstelle Zeilen,0
 model,"ir.action,name",act_open_account,Open Account,Konto öffnen,0
 model,"ir.action,name",act_open_chart_account,Open Chart of Analytic Accounts,Kostenstellenplan Öffnen,0
-model,"ir.ui.menu,name",menu_analytic_account_configuration,Analytic Account,Kostenstellen,0
 model,"ir.ui.menu,name",menu_account_form,Analytic Accounts,Kostenstellen,0
-model,"ir.ui.menu,name",menu_account_tree,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_account_form_new,New Analytic Account,Neue Kostenstelle,0
+model,"ir.ui.menu,name",menu_account_tree,Analytic Accounts,Kostenstellen,0
+model,"ir.ui.menu,name",menu_analytic_account_configuration,Analytic Account,Kostenstellen,0
 model,"ir.ui.menu,name",menu_open_chart_account,Open Chart of Analytic Accounts,Kostenstellenplan öffnen,0
 model,"res.group,name",group_analytic_admin,Analytic Administration,Kostenstellen Administration,0
 selection,"account.statement,state",0,Canceled,Annulliert,0
