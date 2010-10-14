@@ -284,7 +284,7 @@ class CompanyReport(Report):
         user = self.pool.get('res.user').browse(Transaction().user)
         if localcontext is None:
             localcontext = {}
-        localcontext['company'] = user.company.id
+        localcontext['company'] = user.company
         return super(CompanyReport, self).parse(report, objects, datas,
                 localcontext=localcontext)
 
