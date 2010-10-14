@@ -1363,7 +1363,7 @@ class Product(ModelSQL, ModelView):
             if not uom:
                 uom = default_uom
             if Transaction().context.get('supplier') and product.product_suppliers:
-                supplier_id = context['supplier']
+                supplier_id = Transaction().context['supplier']
                 for product_supplier in product.product_suppliers:
                     if product_supplier.party.id == supplier_id:
                         for price in product_supplier.prices:
