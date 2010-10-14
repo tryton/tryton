@@ -1,5 +1,5 @@
 type,name,res_id,src,value,fuzzy
-error,project.work,0,There should be only one timesheet work by task/project!,Es sollte nur eine Arbeit pro Aufgabe oder Projekt geben!,0
+error,project.work,0,There should be only one timesheet work by task/project!,Es kann nur ein Zeiterfassungsblatt pro Aufgabe oder Projekt geben!,0
 field,"project.work,children",0,Children,Untergeordnet (Arbeiten),0
 field,"project.work,comment",0,Comment,Kommentar,0
 field,"project.work,create_date",0,Creation date,Erstellungsdatum,0
@@ -18,23 +18,23 @@ field,"project.work,write_date",0,Last modification date,Zuletzt geändert am,0
 field,"project.work,write_uid",0,Last modification by,Zuletzt geändert von,0
 field,"timesheet.work,sequence",0,Sequence,Reihenfolge,0
 field,"timesheet.work,timesheet_lines",0,Timesheet Lines,Zeitpositionen,0
-help,"project.work,effort",0,Estimated Effort for this work,Geschätzter Aufwand für diese Arbeit,0
-help,"project.work,total_effort",0,Estimated total effort for this work and the sub-works,Geschätzter Gesamtaufwand für diese Arbeit inkl. untergeordnete Arbeiten,0
+help,"project.work,effort",0,Estimated Effort for this work,Geschätzter Aufwand für diese Arbeit in Stunden,0
+help,"project.work,total_effort",0,Estimated total effort for this work and the sub-works,Geschätzter Gesamtaufwand für diese Arbeit inkl. aller untergeordneten Arbeiten in Stunden,0
+model,"ir.action,name",act_open_child_work,Tasks,Aufgaben,0
 model,"ir.action,name",act_project_form,Projects,Projekte,0
 model,"ir.action,name",act_task_form,Tasks,Aufgaben,0
-model,"ir.action,name",act_open_child_work,Tasks,Aufgaben,0
-model,"ir.action,name",act_work_tree,Works,Arbeiten,0
 model,"ir.action,name",act_work_form,Works Efforts,Arbeiten Aufwände,0
+model,"ir.action,name",act_work_tree,Works,Arbeiten,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_project,Project Management,Projekte,0
-model,"ir.ui.menu,name",menu_project_tree,Projects,Projekte,0
 model,"ir.ui.menu,name",menu_project_form,Projects,Projekte,0
+model,"ir.ui.menu,name",menu_project_tree,Projects,Projekte,0
 model,"ir.ui.menu,name",menu_task_form,Tasks,Aufgaben,0
 model,"ir.ui.menu,name",menu_work_form,Works Efforts,Arbeiten Aufwände,0
 model,"project.work,name",0,Work Effort,Arbeit Aufwand,0
 model,"res.group,name",group_project_admin,Project Administration,Projekte Administration,0
 selection,"project.work,state",0,Done,Erledigt,0
-selection,"project.work,state",0,Opened,Geöffnet,0
+selection,"project.work,state",0,Opened,Offen,0
 selection,"project.work,type",0,Project,Projekt,0
 selection,"project.work,type",0,Task,Aufgabe,0
 view,project.work,0,Children,Untergeordnet (Arbeiten),0
