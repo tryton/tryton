@@ -25,5 +25,6 @@
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'ru_RU.csv',
    ],
 }
