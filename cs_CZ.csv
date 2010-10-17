@@ -1,0 +1,350 @@
+type,name,res_id,src,value,fuzzy
+error,country.country,0,The code of the country must be unique!,,0
+error,country.country,0,The name of the country must be unique!,,0
+field,"country.country,code",0,Code,,0
+field,"country.country,name",0,Name,,0
+field,"country.country,rec_name",0,Name,,0
+field,"country.country,subdivisions",0,Subdivisions,,0
+field,"country.subdivision,code",0,Code,,0
+field,"country.subdivision,country",0,Country,,0
+field,"country.subdivision,name",0,Name,,0
+field,"country.subdivision,parent",0,Parent,,0
+field,"country.subdivision,rec_name",0,Name,,0
+field,"country.subdivision,type",0,Type,,0
+help,"country.country,code",0,"The ISO country code in two chars.
+You can use this field for quick search.",,0
+help,"country.country,name",0,The full name of the country.,,0
+model,"country.country,name",0,Country,,0
+model,"country.country,name",ad,Andorra,Andorra,0
+model,"country.country,name",ae,United Arab Emirates,Spojené arabské emiráty,0
+model,"country.country,name",af,Afghanistan,Afghánistán,0
+model,"country.country,name",ag,Antigua and Barbuda,Antigua a Barbuda,0
+model,"country.country,name",ai,Anguilla,Anguilla,0
+model,"country.country,name",al,Albania,Albánie,0
+model,"country.country,name",am,Armenia,Arménie,0
+model,"country.country,name",an,Netherlands Antilles,Nizozemské Antily,0
+model,"country.country,name",ao,Angola,Angola,0
+model,"country.country,name",aq,Antarctica,Antarktida,0
+model,"country.country,name",ar,Argentina,Argentina,0
+model,"country.country,name",as,American Samoa,Americká Samoa,0
+model,"country.country,name",at,Austria,Rakousko,0
+model,"country.country,name",au,Australia,Austrálie,0
+model,"country.country,name",aw,Aruba,Aruba,0
+model,"country.country,name",ax,Åland Islands,Ålandské ostrovy,0
+model,"country.country,name",az,Azerbaijan,Ázerbájdžán,0
+model,"country.country,name",ba,Bosnia and Herzegovina,Bosna a Hercegovina,0
+model,"country.country,name",bb,Barbados,Barbados,0
+model,"country.country,name",bd,Bangladesh,Bangladéš,0
+model,"country.country,name",be,Belgium,Belgie,0
+model,"country.country,name",bf,Burkina Faso,Burkina Faso,0
+model,"country.country,name",bg,Bulgaria,Bulharsko,0
+model,"country.country,name",bh,Bahrain,Bahrajn,0
+model,"country.country,name",bi,Burundi,Burundi,0
+model,"country.country,name",bj,Benin,Benin,0
+model,"country.country,name",bl,Saint Barthélemy,Svatý Bartoloměj,0
+model,"country.country,name",bm,Bermuda,Bermudy,0
+model,"country.country,name",bn,Brunei Darussalam,Brunej,0
+model,"country.country,name",bo,Bolivia,"Bolívie, mnohonárodnostní stát",0
+model,"country.country,name",br,Brazil,Brazílie,0
+model,"country.country,name",bs,Bahamas,Bahamy,0
+model,"country.country,name",bt,Bhutan,Bhútán,0
+model,"country.country,name",bv,Bouvet Island,Bouvetův ostrov,0
+model,"country.country,name",bw,Botswana,Botswana,0
+model,"country.country,name",by,Belarus,Bělorusko,0
+model,"country.country,name",bz,Belize,Belize,0
+model,"country.country,name",ca,Canada,Kanada,0
+model,"country.country,name",cc,Cocos (Keeling) Islands,Kokosové ostrovy,0
+model,"country.country,name",cd,"Congo, The Democratic Republic of the",Konžská demokratická republika,0
+model,"country.country,name",cf,Central African Republic,Středoafrická republika,0
+model,"country.country,name",cg,Congo,Kongo,0
+model,"country.country,name",ch,Switzerland,Švýcarsko,0
+model,"country.country,name",ci,Côte d'Ivoire,Pobřeží slonoviny,0
+model,"country.country,name",ck,Cook Islands,Cookovy ostrovy,0
+model,"country.country,name",cl,Chile,Chile,0
+model,"country.country,name",cm,Cameroon,Kamerun,0
+model,"country.country,name",cn,China,Čína,0
+model,"country.country,name",co,Colombia,Kolumbie,0
+model,"country.country,name",cr,Costa Rica,Kostarika,0
+model,"country.country,name",cu,Cuba,Kuba,0
+model,"country.country,name",cv,Cape Verde,Kapverdské ostrovy,0
+model,"country.country,name",cx,Christmas Island,Vánoční ostrov,0
+model,"country.country,name",cy,Cyprus,Kypr,0
+model,"country.country,name",cz,Czech Republic,Česká republika,0
+model,"country.country,name",de,Germany,Německo,0
+model,"country.country,name",dj,Djibouti,Džibutsko,0
+model,"country.country,name",dk,Denmark,Dánsko,0
+model,"country.country,name",dm,Dominica,Dominika,0
+model,"country.country,name",do,Dominican Republic,Dominikánská republika,0
+model,"country.country,name",dz,Algeria,Alžírsko,0
+model,"country.country,name",ec,Ecuador,Ekvádor,0
+model,"country.country,name",ee,Estonia,Estonsko,0
+model,"country.country,name",eg,Egypt,Egypt,0
+model,"country.country,name",eh,Western Sahara,Západní Sahara,0
+model,"country.country,name",er,Eritrea,Eritrea,0
+model,"country.country,name",es,Spain,Španělsko,0
+model,"country.country,name",et,Ethiopia,Etiopie,0
+model,"country.country,name",fi,Finland,Finsko,0
+model,"country.country,name",fj,Fiji,Fidži,0
+model,"country.country,name",fk,Falkland Islands (Malvinas),Falkandské ostrovy (Malvíny),0
+model,"country.country,name",fm,"Micronesia, Federated States of","Mikronésie, federativní státy",0
+model,"country.country,name",fo,Faroe Islands,Faerské ostrovy,0
+model,"country.country,name",fr,France,Francie,0
+model,"country.country,name",ga,Gabon,Gabon,0
+model,"country.country,name",gb,United Kingdom,Spojené království,0
+model,"country.country,name",gd,Grenada,Grenada,0
+model,"country.country,name",ge,Georgia,Gruzie,0
+model,"country.country,name",gf,French Guiana,Francouzská Guayana,0
+model,"country.country,name",gg,Guernsey,Guernsey,0
+model,"country.country,name",gh,Ghana,Ghana,0
+model,"country.country,name",gi,Gibraltar,Gibraltar,0
+model,"country.country,name",gl,Greenland,Grónsko,0
+model,"country.country,name",gm,Gambia,Gambie,0
+model,"country.country,name",gn,Guinea,Guinea,0
+model,"country.country,name",gp,Guadeloupe,Guadeloupe,0
+model,"country.country,name",gq,Equatorial Guinea,Rovníková Guinea,0
+model,"country.country,name",gr,Greece,Řecko,0
+model,"country.country,name",gs,South Georgia and the South Sandwich Islands,Jižní Georgie a Jižní Sandwichovy ostrovy,0
+model,"country.country,name",gt,Guatemala,Guatemala,0
+model,"country.country,name",gu,Guam,Guam,0
+model,"country.country,name",gw,Guinea-Bissau,Guinea-Bissau,0
+model,"country.country,name",gy,Guyana,Guyana,0
+model,"country.country,name",hk,Hong Kong,Hongkong,0
+model,"country.country,name",hm,Heard Island and McDonald Islands,Heardův a McDonaldovy ostrovy,0
+model,"country.country,name",hn,Honduras,Honduras,0
+model,"country.country,name",hr,Croatia,Chorvatsko,0
+model,"country.country,name",ht,Haiti,Haiti,0
+model,"country.country,name",hu,Hungary,Maďarsko,0
+model,"country.country,name",id,Indonesia,Indonésie,0
+model,"country.country,name",ie,Ireland,Irsko,0
+model,"country.country,name",il,Israel,Izrael,0
+model,"country.country,name",im,Isle of Man,Ostrov Man,0
+model,"country.country,name",in,India,Indie,0
+model,"country.country,name",io,British Indian Ocean Territory,Britské indickooceánské území,0
+model,"country.country,name",iq,Iraq,Irák,0
+model,"country.country,name",ir,"Iran, Islamic Republic of","Írán, islámská republika",0
+model,"country.country,name",is,Iceland,Island,0
+model,"country.country,name",it,Italy,Itálie,0
+model,"country.country,name",je,Jersey,Jersey,0
+model,"country.country,name",jm,Jamaica,Jamajka,0
+model,"country.country,name",jo,Jordan,Jordánsko,0
+model,"country.country,name",jp,Japan,Japonsko,0
+model,"country.country,name",ke,Kenya,Keňa,0
+model,"country.country,name",kg,Kyrgyzstan,Kyrgyzstán,0
+model,"country.country,name",kh,Cambodia,Kambodža,0
+model,"country.country,name",ki,Kiribati,Kiribati,0
+model,"country.country,name",km,Comoros,Komory,0
+model,"country.country,name",kn,Saint Kitts and Nevis,Svatý Kryštof a Nevis,0
+model,"country.country,name",kp,"Korea, Democratic People's Republic of","Korea, lidově demokratická republika",0
+model,"country.country,name",kr,"Korea, Republic of","Korea, republika",0
+model,"country.country,name",kw,Kuwait,Kuvajt,0
+model,"country.country,name",ky,Cayman Islands,Kajmanské ostrovy,0
+model,"country.country,name",kz,Kazakhstan,Kazachstán,0
+model,"country.country,name",la,Lao People's Democratic Republic,Laoská lidově demokratická republika,0
+model,"country.country,name",lb,Lebanon,Libanon,0
+model,"country.country,name",lc,Saint Lucia,Svatá Lucie,0
+model,"country.country,name",li,Liechtenstein,Lichtenštejnsko,0
+model,"country.country,name",lk,Sri Lanka,Srí Lanka,0
+model,"country.country,name",lr,Liberia,Libérie,0
+model,"country.country,name",ls,Lesotho,Lesotho,0
+model,"country.country,name",lt,Lithuania,Litva,0
+model,"country.country,name",lu,Luxembourg,Lucembursko,0
+model,"country.country,name",lv,Latvia,Lotyšsko,0
+model,"country.country,name",ly,Libyan Arab Jamahiriya,Libyjská arabská džamáhíríja,0
+model,"country.country,name",ma,Morocco,Maroko,0
+model,"country.country,name",mc,Monaco,Monako,0
+model,"country.country,name",md,Moldova,"Moldavsko, republika",0
+model,"country.country,name",me,Montenegro,Černá Hora,0
+model,"country.country,name",mf,Saint Martin (French part),Svatý Martin (francouzská část),0
+model,"country.country,name",mg,Madagascar,Madagaskar,0
+model,"country.country,name",mh,Marshall Islands,Marshallovy ostrovy,0
+model,"country.country,name",mk,"Macedonia, Republic of","Makedonie, republika",0
+model,"country.country,name",ml,Mali,Mali,0
+model,"country.country,name",mm,Myanmar,Myanmar,0
+model,"country.country,name",mn,Mongolia,Mongolsko,0
+model,"country.country,name",mo,Macao,Macao,0
+model,"country.country,name",mp,Northern Mariana Islands,Severní Mariany,0
+model,"country.country,name",mq,Martinique,Martinik,0
+model,"country.country,name",mr,Mauritania,Mauritánie,0
+model,"country.country,name",ms,Montserrat,Montserrat,0
+model,"country.country,name",mt,Malta,Malta,0
+model,"country.country,name",mu,Mauritius,Mauricius,0
+model,"country.country,name",mv,Maldives,Maledivy,0
+model,"country.country,name",mw,Malawi,Malawi,0
+model,"country.country,name",mx,Mexico,Mexiko,0
+model,"country.country,name",my,Malaysia,Malajsie,0
+model,"country.country,name",mz,Mozambique,Mosambik,0
+model,"country.country,name",na,Namibia,Namibie,0
+model,"country.country,name",nc,New Caledonia,Nová Kaledonie,0
+model,"country.country,name",ne,Niger,Niger,0
+model,"country.country,name",nf,Norfolk Island,Norfolkský ostrov,0
+model,"country.country,name",ng,Nigeria,Nigérie,0
+model,"country.country,name",ni,Nicaragua,Nikaragua,0
+model,"country.country,name",nl,Netherlands,Nizozemsko,0
+model,"country.country,name",no,Norway,Norsko,0
+model,"country.country,name",np,Nepal,Nepál,0
+model,"country.country,name",nr,Nauru,Nauru,0
+model,"country.country,name",nu,Niue,Niue,0
+model,"country.country,name",nz,New Zealand,Nový Zéland,0
+model,"country.country,name",om,Oman,Omán,0
+model,"country.country,name",pa,Panama,Panama,0
+model,"country.country,name",pe,Peru,Peru,0
+model,"country.country,name",pf,French Polynesia,Francouzská Polynésie,0
+model,"country.country,name",pg,Papua New Guinea,Papua Nová Guinea,0
+model,"country.country,name",ph,Philippines,Filipíny,0
+model,"country.country,name",pk,Pakistan,Pákistán,0
+model,"country.country,name",pl,Poland,Polsko,0
+model,"country.country,name",pm,Saint Pierre and Miquelon,Svatý Pierre a Miquelon,0
+model,"country.country,name",pn,Pitcairn,Pitcairnovy ostrovy,0
+model,"country.country,name",pr,Puerto Rico,Portoriko,0
+model,"country.country,name",ps,"Palestinian Territory, Occupied","Palestinské území, okupované",0
+model,"country.country,name",pt,Portugal,Portugalsko,0
+model,"country.country,name",pw,Palau,Palau,0
+model,"country.country,name",py,Paraguay,Paraguay,0
+model,"country.country,name",qa,Qatar,Katar,0
+model,"country.country,name",re,Reunion,Réunion,0
+model,"country.country,name",ro,Romania,Rumunsko,0
+model,"country.country,name",rs,Serbia,Srbsko,0
+model,"country.country,name",ru,Russian Federation,Ruská federace,0
+model,"country.country,name",rw,Rwanda,Rwanda,0
+model,"country.country,name",sa,Saudi Arabia,Saúdská Arábie,0
+model,"country.country,name",sb,Solomon Islands,Šalamounovy ostrovy,0
+model,"country.country,name",sc,Seychelles,Seychely,0
+model,"country.country,name",sd,Sudan,Súdán,0
+model,"country.country,name",se,Sweden,Švédsko,0
+model,"country.country,name",sg,Singapore,Singapur,0
+model,"country.country,name",sh,Saint Helena,"Svatá Helena, Ascension a Tristan da Cunha",0
+model,"country.country,name",si,Slovenia,Slovinsko,0
+model,"country.country,name",sj,Svalbard and Jan Mayen,Svalbard a Jan Mayen,0
+model,"country.country,name",sk,Slovakia,Slovensko,0
+model,"country.country,name",sl,Sierra Leone,Sierra Leone,0
+model,"country.country,name",sm,San Marino,San Marino,0
+model,"country.country,name",sn,Senegal,Senegal,0
+model,"country.country,name",so,Somalia,Somálsko,0
+model,"country.country,name",sr,Suriname,Surinam,0
+model,"country.country,name",st,Sao Tome and Principe,Svatý Tomáš a Princův ostrov,0
+model,"country.country,name",sv,El Salvador,Salvador,0
+model,"country.country,name",sy,Syrian Arab Republic,Syrská arabská republika,0
+model,"country.country,name",sz,Swaziland,Svazijsko,0
+model,"country.country,name",tc,Turks and Caicos Islands,Turks a Caicos,0
+model,"country.country,name",td,Chad,Čad,0
+model,"country.country,name",tf,French Southern Territories,Francouzská jižní území,0
+model,"country.country,name",tg,Togo,Togo,0
+model,"country.country,name",th,Thailand,Thajsko,0
+model,"country.country,name",tj,Tajikistan,Tádžikistán,0
+model,"country.country,name",tk,Tokelau,Tokelau,0
+model,"country.country,name",tl,Timor-Leste,Východní Timor,0
+model,"country.country,name",tm,Turkmenistan,Turkmenistán,0
+model,"country.country,name",tn,Tunisia,Tunisko,0
+model,"country.country,name",to,Tonga,Tonga,0
+model,"country.country,name",tr,Turkey,Turecko,0
+model,"country.country,name",tt,Trinidad and Tobago,Trinidad a Tobago,0
+model,"country.country,name",tv,Tuvalu,Tuvalu,0
+model,"country.country,name",tw,"Taiwan, Province of China","Tchaj-wan, provincie Číny",0
+model,"country.country,name",tz,"Tanzania, United Republic of","Tanzanie, sjednocená republika",0
+model,"country.country,name",ua,Ukraine,Ukrajina,0
+model,"country.country,name",ug,Uganda,Uganda,0
+model,"country.country,name",um,United States Minor Outlying Islands,Menší odlehlé ostrovy Spojených států,0
+model,"country.country,name",us,United States,Spojené státy,0
+model,"country.country,name",uy,Uruguay,Uruguay,0
+model,"country.country,name",uz,Uzbekistan,Uzbekistán,0
+model,"country.country,name",va,Holy See (Vatican City State),Svatý stolec (Vatikánský městský stát),0
+model,"country.country,name",vc,Saint Vincent and the Grenadines,Svatý Vincenc a Grenadiny,0
+model,"country.country,name",ve,Venezuela,"Venezuela, bolívarovská republika",0
+model,"country.country,name",vg,"Virgin Islands, British","Panenské ostrovy, britské",0
+model,"country.country,name",vi,"Virgin Islands, U.S.","Panenské ostrovy, americké",0
+model,"country.country,name",vn,Viet Nam,Vietnam,0
+model,"country.country,name",vu,Vanuatu,Vanuatu,0
+model,"country.country,name",wf,Wallis and Futuna,Wallis a Futuna,0
+model,"country.country,name",ws,Samoa,Samoa,0
+model,"country.country,name",ye,Yemen,Jemen,0
+model,"country.country,name",yt,Mayotte,Mayotte,0
+model,"country.country,name",za,South Africa,Jihoafrická republika,0
+model,"country.country,name",zm,Zambia,Zambie,0
+model,"country.country,name",zw,Zimbabwe,Zimbabwe,0
+model,"country.subdivision,name",0,Subdivision,,0
+model,"ir.action,name",act_country_form,Countries,,0
+model,"ir.ui.menu,name",menu_country_form,Countries,,0
+selection,"country.subdivision,type",0,Administration,,0
+selection,"country.subdivision,type",0,Administrative Region,,0
+selection,"country.subdivision,type",0,Administrative Territory,,0
+selection,"country.subdivision,type",0,Administrative area,,0
+selection,"country.subdivision,type",0,Area,,0
+selection,"country.subdivision,type",0,Atoll,,0
+selection,"country.subdivision,type",0,Autonomous City,,0
+selection,"country.subdivision,type",0,Autonomous Commune,,0
+selection,"country.subdivision,type",0,Autonomous District,,0
+selection,"country.subdivision,type",0,Autonomous Province,,0
+selection,"country.subdivision,type",0,Autonomous Region,,0
+selection,"country.subdivision,type",0,Autonomous communities,,0
+selection,"country.subdivision,type",0,Autonomous island,,0
+selection,"country.subdivision,type",0,Autonomous monastic state,,0
+selection,"country.subdivision,type",0,Autonomous municipality,,0
+selection,"country.subdivision,type",0,Autonomous republic,,0
+selection,"country.subdivision,type",0,Autonomous sector,,0
+selection,"country.subdivision,type",0,Autonomous territory,,0
+selection,"country.subdivision,type",0,Borough,,0
+selection,"country.subdivision,type",0,Canton,,0
+selection,"country.subdivision,type",0,Capital District,,0
+selection,"country.subdivision,type",0,Capital Metropolitan City,,0
+selection,"country.subdivision,type",0,Capital Territory,,0
+selection,"country.subdivision,type",0,Capital city,,0
+selection,"country.subdivision,type",0,City,,0
+selection,"country.subdivision,type",0,City corporation,,0
+selection,"country.subdivision,type",0,City with county rights,,0
+selection,"country.subdivision,type",0,Commune,,0
+selection,"country.subdivision,type",0,Country,,0
+selection,"country.subdivision,type",0,County,,0
+selection,"country.subdivision,type",0,Department,,0
+selection,"country.subdivision,type",0,Dependency,,0
+selection,"country.subdivision,type",0,District,,0
+selection,"country.subdivision,type",0,Division,,0
+selection,"country.subdivision,type",0,Economic Prefecture,,0
+selection,"country.subdivision,type",0,Economic region,,0
+selection,"country.subdivision,type",0,Emirate,,0
+selection,"country.subdivision,type",0,Entity,,0
+selection,"country.subdivision,type",0,Federal Dependency,,0
+selection,"country.subdivision,type",0,Federal District,,0
+selection,"country.subdivision,type",0,Federal Territories,,0
+selection,"country.subdivision,type",0,Geographical region,,0
+selection,"country.subdivision,type",0,Geographical unit,,0
+selection,"country.subdivision,type",0,Governorate,,0
+selection,"country.subdivision,type",0,Included for completeness,,0
+selection,"country.subdivision,type",0,Island council,,0
+selection,"country.subdivision,type",0,Island group,,0
+selection,"country.subdivision,type",0,Local council,,0
+selection,"country.subdivision,type",0,London borough,,0
+selection,"country.subdivision,type",0,Metropolitan cities,,0
+selection,"country.subdivision,type",0,Metropolitan department,,0
+selection,"country.subdivision,type",0,Metropolitan district,,0
+selection,"country.subdivision,type",0,Metropolitan region,,0
+selection,"country.subdivision,type",0,Municipalities,,0
+selection,"country.subdivision,type",0,Municipality,,0
+selection,"country.subdivision,type",0,Oblast,,0
+selection,"country.subdivision,type",0,Outlying area,,0
+selection,"country.subdivision,type",0,Overseas region/department,,0
+selection,"country.subdivision,type",0,Overseas territorial collectivity,,0
+selection,"country.subdivision,type",0,Parish,,0
+selection,"country.subdivision,type",0,Prefecture,,0
+selection,"country.subdivision,type",0,Principality,,0
+selection,"country.subdivision,type",0,Province,,0
+selection,"country.subdivision,type",0,Rayon,,0
+selection,"country.subdivision,type",0,Region,,0
+selection,"country.subdivision,type",0,Regional council,,0
+selection,"country.subdivision,type",0,Republic,,0
+selection,"country.subdivision,type",0,Special District,,0
+selection,"country.subdivision,type",0,Special Municipality,,0
+selection,"country.subdivision,type",0,Special Region,,0
+selection,"country.subdivision,type",0,Special administrative region,,0
+selection,"country.subdivision,type",0,Special city,,0
+selection,"country.subdivision,type",0,Special zone,,0
+selection,"country.subdivision,type",0,State,,0
+selection,"country.subdivision,type",0,Territorial unit,,0
+selection,"country.subdivision,type",0,Territory,,0
+selection,"country.subdivision,type",0,Town council,,0
+selection,"country.subdivision,type",0,Two-tier county,,0
+selection,"country.subdivision,type",0,Union territory,,0
+selection,"country.subdivision,type",0,Unitary authority,,0
+view,country.country,0,Countries,,0
+view,country.country,0,Country,,0
+view,country.subdivision,0,Subdivision,,0
+view,country.subdivision,0,Subdivisions,,0

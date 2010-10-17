@@ -20,6 +20,7 @@
         'country.xml',
     ],
     'translation': [
+        'cs_CZ.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
