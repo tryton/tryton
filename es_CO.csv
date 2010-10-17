@@ -8,213 +8,212 @@ field,"currency.currency,digits",0,Display Digits,Mostrar Dígitos,0
 field,"currency.currency,mon_decimal_point",0,Decimal Separator,Separador Decimal,0
 field,"currency.currency,mon_grouping",0,Grouping,Agrupación,0
 field,"currency.currency,mon_thousands_sep",0,Thousands Separator,Separador de Miles,0
-field,"currency.currency,name",0,Name,Nombre,0
 field,"currency.currency,n_cs_precedes",0,Negative Currency Symbol Precedes,El Signo Negativo Precede,0
-field,"currency.currency,negative_sign",0,Negative Sign,Signo Negativo,0
 field,"currency.currency,n_sep_by_space",0,Negative Separate by Space,Signo Negativo Separado por Espacio,0
 field,"currency.currency,n_sign_posn",0,Negative Sign Position,Posición de Signo Negativo,0
+field,"currency.currency,name",0,Name,Nombre,0
+field,"currency.currency,negative_sign",0,Negative Sign,Signo Negativo,0
 field,"currency.currency,numeric_code",0,Numeric Code,Código Numérico,0
 field,"currency.currency,p_cs_precedes",0,Positive Currency Symbol Precedes,El signo Positivo Precede,0
-field,"currency.currency,positive_sign",0,Positive Sign,Signo Positivo,0
 field,"currency.currency,p_sep_by_space",0,Positive Separate by Space,Signo Positivo Separado por Espacio,0
 field,"currency.currency,p_sign_posn",0,Positive Sign Position,Posición del Signo Positivo,0
+field,"currency.currency,positive_sign",0,Positive Sign,Signo Positivo,0
 field,"currency.currency,rate",0,Current rate,Moneda Actual,0
-field,"currency.currency.rate,currency",0,Currency,Moneda,0
-field,"currency.currency.rate,date",0,Date,Fecha,0
-field,"currency.currency.rate,rate",0,Rate,Tasa de Cambio,0
-field,"currency.currency.rate,rec_name",0,Name,Nombre,0
 field,"currency.currency,rates",0,Rates,Tasas de Cambio,0
 field,"currency.currency,rec_name",0,Name,Nombre,0
 field,"currency.currency,rounding",0,Rounding factor,Factor de Redondeo,0
 field,"currency.currency,symbol",0,Symbol,Símbolo,0
-model,"currency.currency,name",afn,Afghani,Afghani,0
-model,"currency.currency,name",dzd,Algerian Dinar,Dinar algerino,0
-model,"currency.currency,name",ars,Argentine Peso,Peso Argentino,0
-model,"currency.currency,name",amd,Armenian Dram,Dram armenio,0
-model,"currency.currency,name",awg,Aruban Guilder,Aruban Guilder,0
-model,"currency.currency,name",aud,Australian Dollar,Dólar australiano ,0
-model,"currency.currency,name",azn,Azerbaijanian Manat,Manat Azerbaijano,0
-model,"currency.currency,name",bsd,Bahamian Dollar,Dólar de Bahamas,0
-model,"currency.currency,name",bhd,Bahraini Dinar,Dinar bahreiní,0
-model,"currency.currency,name",thb,Baht,Baht,0
-model,"currency.currency,name",pab,Balboa,Balboa,0
-model,"currency.currency,name",bbd,Barbados Dollar,Dólar de Barbados,0
-model,"currency.currency,name",byr,Belarussian Ruble,Rublo de Bielorusia,0
-model,"currency.currency,name",bzd,Belize Dollar,Dólar de Bélize,0
-model,"currency.currency,name",bmd,Bermudian Dollar,Dólar de Bermuda,1
-model,"currency.currency,name",vef,Bolivar Fuerte,Bolívar Fuerte,0
-model,"currency.currency,name",bob,Boliviano,Boliviano,0
-model,"currency.currency,name",brl,Brazilian Real,Real Brasilero,0
-model,"currency.currency,name",bnd,Brunei Dollar,Dólar de Brunei,0
-model,"currency.currency,name",bgn,Bulgarian Lev,Lev de Bulgaria,0
-model,"currency.currency,name",bif,Burundi Franc,Franco burundés,0
-model,"currency.currency,name",cad,Canadian Dollar,Dólar Canadiense,0
-model,"currency.currency,name",cve,Cape Verde Escudo,Escudo caboverdiano,0
-model,"currency.currency,name",kyd,Cayman Islands Dollar,Dólar de Islas Caimán,0
-model,"currency.currency,name",xof,CFA Franc BCEAO,Franco CFA Occidental,0
-model,"currency.currency,name",xaf,CFA Franc BEAC,Franco CFA,0
-model,"currency.currency,name",xpf,CFP Franc,Franco CFP,0
-model,"currency.currency,name",clp,Chilean Peso,Peso Chileno,0
-model,"currency.currency,name",xts,Code for testing purposes,Código para propósitos de prueba,0
-model,"currency.currency,name",cop,Colombian Peso,Peso Colombiano,0
-model,"currency.currency,name",kmf,Comoro Franc,Franco comoriano,0
-model,"currency.currency,name",bam,Convertible Marks,Marcas Convertibles,0
-model,"currency.currency,name",nio,Cordoba Oro,Córdoba Oro,0
-model,"currency.currency,name",crc,Costa Rican Colon,Colón Costaricense,0
-model,"currency.currency,name",hrk,Croatian Kuna,Kuna Croata,0
-model,"currency.currency,name",cup,Cuban Peso,Peso Cubano,0
+field,"currency.currency.rate,currency",0,Currency,Moneda,0
+field,"currency.currency.rate,date",0,Date,Fecha,0
+field,"currency.currency.rate,rate",0,Rate,Tasa de Cambio,0
+field,"currency.currency.rate,rec_name",0,Name,Nombre,0
 model,"currency.currency,name",0,Currency,Moneda,0
+model,"currency.currency,name",aed,UAE Dirham,Dirham de los Emiratos Árabes Unidos,0
+model,"currency.currency,name",afn,Afghani,Afganí,0
+model,"currency.currency,name",all,Lek,Lek,0
+model,"currency.currency,name",amd,Armenian Dram,Dram armenio,0
+model,"currency.currency,name",ang,Netherlands Antillian Guilder,Florín de las Antillas Neerlandesas,0
+model,"currency.currency,name",aoa,Kwanza,Kwanza,0
+model,"currency.currency,name",ars,Argentine Peso,Peso argentino,0
+model,"currency.currency,name",aud,Australian Dollar,Dólar australiano,0
+model,"currency.currency,name",awg,Aruban Guilder,Florín de Aruba,0
+model,"currency.currency,name",azn,Azerbaijanian Manat,Manat de Azerbayán,0
+model,"currency.currency,name",bam,Convertible Marks,Marcos convertibles,0
+model,"currency.currency,name",bbd,Barbados Dollar,Dólar de Barbados,0
+model,"currency.currency,name",bdt,Taka,Taka,0
+model,"currency.currency,name",bgn,Bulgarian Lev,Lev búlgaro,0
+model,"currency.currency,name",bhd,Bahraini Dinar,Dinar bahreiní,0
+model,"currency.currency,name",bif,Burundi Franc,Franco de Burundi,0
+model,"currency.currency,name",bmd,Bermudian Dollar,Dólar de Bermudas,0
+model,"currency.currency,name",bnd,Brunei Dollar,Dólar de Brunei,0
+model,"currency.currency,name",bob,Boliviano,Boliviano,0
+model,"currency.currency,name",bov,Mvdol,Mvdol,0
+model,"currency.currency,name",brl,Brazilian Real,Real brasileño,0
+model,"currency.currency,name",bsd,Bahamian Dollar,Dólar de las Bahamas,0
+model,"currency.currency,name",btn,Ngultrum,Ngultrum,0
+model,"currency.currency,name",bwp,Pula,Pula,0
+model,"currency.currency,name",byr,Belarussian Ruble,Rubla bielorrusa,0
+model,"currency.currency,name",bzd,Belize Dollar,Dólar de Belize,0
+model,"currency.currency,name",cad,Canadian Dollar,Dólar canadiense,0
+model,"currency.currency,name",cdf,Franc Congolais,Congolese Franc,0
+model,"currency.currency,name",che,WIR Euro,Euro WIR,0
+model,"currency.currency,name",chf,Swiss Franc,Franco suizo,0
+model,"currency.currency,name",chw,WIR Franc,Franco WIR,0
+model,"currency.currency,name",clf,Unidades de fomento,Unidades de fomento,0
+model,"currency.currency,name",clp,Chilean Peso,Peso chileno,0
+model,"currency.currency,name",cny,Yuan Renminbi,Yuan renminbi,0
+model,"currency.currency,name",cop,Colombian Peso,Peso colombiano,0
+model,"currency.currency,name",cou,Unidad de Valor Real,Unidad de Valor Real,0
+model,"currency.currency,name",crc,Costa Rican Colon,Colón costarricense,0
+model,"currency.currency,name",cup,Cuban Peso,Peso cubano,0
+model,"currency.currency,name",cve,Cape Verde Escudo,Escudo de Cabo Verde,0
 model,"currency.currency,name",cyp,Cyprus Pound,Libra chipriota,0
-model,"currency.currency,name",czk,Czech Koruna,Corona Checa,0
-model,"currency.currency,name",gmd,Dalasi,Dalasi,0
-model,"currency.currency,name",dkk,Danish Krone,Corona Danesa,0
-model,"currency.currency,name",mkd,Denar,Denario,0
-model,"currency.currency,name",djf,Djibouti Franc,Franco yibutiano,0
-model,"currency.currency,name",std,Dobra,Dobra,0
-model,"currency.currency,name",dop,Dominican Peso,Peso Dominicano,0
-model,"currency.currency,name",vnd,Dong,Dong,0
-model,"currency.currency,name",xcd,East Caribbean Dollar,Dólar Caribeño del Este,0
-model,"currency.currency,name",egp,Egyptian Pound,Libra Egipcia,0
-model,"currency.currency,name",svc,El Salvador Colon,,0
-model,"currency.currency,name",etb,Ethiopian Birr,Birr etíope,0
+model,"currency.currency,name",czk,Czech Koruna,Corona checa,0
+model,"currency.currency,name",djf,Djibouti Franc,Franco de Djibouti,0
+model,"currency.currency,name",dkk,Danish Krone,Corona danesa,0
+model,"currency.currency,name",dop,Dominican Peso,Peso dominicano,0
+model,"currency.currency,name",dzd,Algerian Dinar,Dinar argelino,0
+model,"currency.currency,name",eek,Kroon,Corona estonia,0
+model,"currency.currency,name",egp,Egyptian Pound,Libra egipcia,0
+model,"currency.currency,name",ern,Nakfa,Nakfa,0
+model,"currency.currency,name",etb,Ethiopian Birr,Birr de etíope,0
 model,"currency.currency,name",eur,Euro,Euro,0
-model,"currency.currency,name",xba,European Composite Unit (EURCO),,0
-model,"currency.currency,name",xbb,European Monetary Unit (E.M.U.-6),,0
-model,"currency.currency,name",xbd,European Unit of Account 17 (E.U.A.-17),,0
-model,"currency.currency,name",xbc,European Unit of Account 9 (E.U.A.-9),,0
-model,"currency.currency,name",fkp,Falkland Islands Pound,Libra malvinense,0
-model,"currency.currency,name",fjd,Fiji Dollar,Dólar Fuji,0
-model,"currency.currency,name",huf,Forint,Forint,0
-model,"currency.currency,name",cdf,Franc Congolais,,0
+model,"currency.currency,name",fjd,Fiji Dollar,Dólar de las Islas Fiji,0
+model,"currency.currency,name",fkp,Falkland Islands Pound,Libra de las Islas Malvinas,0
+model,"currency.currency,name",gbp,Pound Sterling,Libra esterlina,0
+model,"currency.currency,name",gel,Lari,Lari,0
 model,"currency.currency,name",ghs,Ghana Cedi,Cedi ghanés,0
 model,"currency.currency,name",gip,Gibraltar Pound,Libra de Gibraltar,0
-model,"currency.currency,name",xau,Gold,Oro,0
-model,"currency.currency,name",xfo,Gold-Franc,Franco de oro,0
-model,"currency.currency,name",htg,Gourde,Gourde,0
-model,"currency.currency,name",pyg,Guarani,Guaraní,0
+model,"currency.currency,name",gmd,Dalasi,Dalasi,0
 model,"currency.currency,name",gnf,Guinea Franc,Franco guineano,0
-model,"currency.currency,name",gyd,Guyana Dollar,Dólar de Guyana,0
-model,"currency.currency,name",hkd,Hong Kong Dollar,Dólar de Hong Kong,0
-model,"currency.currency,name",uah,Hryvnia,Hryvnia,0
-model,"currency.currency,name",isk,Iceland Krona,Corona de Islandia,0
-model,"currency.currency,name",inr,Indian Rupee,Rupia de la India,0
-model,"currency.currency,name",irr,Iranian Rial,Real Iraní,0
-model,"currency.currency,name",iqd,Iraqi Dinar,Dinar iraquí,0
-model,"currency.currency,name",jmd,Jamaican Dollar,Dólar Jamaiquino,0
-model,"currency.currency,name",jod,Jordanian Dinar,Dinar jordano,0
-model,"currency.currency,name",kes,Kenyan Shilling,Chelín keniata,0
-model,"currency.currency,name",pgk,Kina,Kina,0
-model,"currency.currency,name",lak,Kip,Kip,0
-model,"currency.currency,name",eek,Kroon,Corona,0
-model,"currency.currency,name",kwd,Kuwaiti Dinar,Dinar kuwaití,0
-model,"currency.currency,name",mwk,Kwacha,,0
-model,"currency.currency,name",zmk,Kwacha,,0
-model,"currency.currency,name",aoa,Kwanza,Kwanza,0
-model,"currency.currency,name",mmk,Kyat,Kyat,0
-model,"currency.currency,name",gel,Lari,Lari,0
-model,"currency.currency,name",lvl,Latvian Lats,Lat letón,0
-model,"currency.currency,name",lbp,Lebanese Pound,Libra Libanesa,0
-model,"currency.currency,name",all,Lek,Lek,0
-model,"currency.currency,name",hnl,Lempira,Lempira,0
-model,"currency.currency,name",sll,Leone,Leone,0
-model,"currency.currency,name",lrd,Liberian Dollar,Dólar Liberiano,0
-model,"currency.currency,name",lyd,Libyan Dinar,Dinar libio,0
-model,"currency.currency,name",szl,Lilangeni,Lilangeni,0
-model,"currency.currency,name",ltl,Lithuanian Litas,Litas Lituanas,0
-model,"currency.currency,name",lsl,Loti,Loti,0
-model,"currency.currency,name",mga,Malagasy Ariary,Ariary malgache,0
-model,"currency.currency,name",myr,Malaysian Ringgit,Ringgit Malayo,0
-model,"currency.currency,name",mtl,Maltese Lira,Lira maltesa,0
-model,"currency.currency,name",tmm,Manat,,0
-model,"currency.currency,name",mur,Mauritius Rupee,Rupia de Mauricius,0
-model,"currency.currency,name",mzn,Metical,Metical,0
-model,"currency.currency,name",mxn,Mexican Peso,Peso mexicano,0
-model,"currency.currency,name",mxv,Mexican Unidad de Inversion (UDI),Unidad de Inversión (UDI) mexicana,0
-model,"currency.currency,name",mdl,Moldovan Leu,Leu moldavo,0
-model,"currency.currency,name",mad,Moroccan Dirham,Dirham marroquí,0
-model,"currency.currency,name",bov,Mvdol,Mvdol,0
-model,"currency.currency,name",ngn,Naira,Naira,0
-model,"currency.currency,name",ern,Nakfa,Nakfa,0
-model,"currency.currency,name",nad,Namibia Dollar,Dólar de Namibia,0
-model,"currency.currency,name",npr,Nepalese Rupee,Rupia Nepalí,0
-model,"currency.currency,name",ang,Netherlands Antillian Guilder,Guilder de las Antillas Holandesas,0
-model,"currency.currency,name",ils,New Israeli Sheqel,Shequel Nueva de Israel,0
-model,"currency.currency,name",ron,New Leu,Nuea Leu,0
-model,"currency.currency,name",twd,New Taiwan Dollar,Dólar de Nuevo Taiwán,0
-model,"currency.currency,name",try,New Turkish Lira,Nueva Lira de Turquía,0
-model,"currency.currency,name",nzd,New Zealand Dollar,Dólar Neo Zelandés,0
-model,"currency.currency,name",btn,Ngultrum,Ngultrum,0
-model,"currency.currency,name",xxx,No currency,Sin moneda,0
-model,"currency.currency,name",kpw,North Korean Won,Corea del Norte Won,0
-model,"currency.currency,name",nok,Norwegian Krone,Corona Noruega,0
-model,"currency.currency,name",pen,Nuevo Sol,Nuevo Sol,0
-model,"currency.currency,name",mro,Ouguiya,Ouguiya,0
-model,"currency.currency,name",top,Pa'anga,Pa'anga,0
-model,"currency.currency,name",pkr,Pakistan Rupee,Rupia Paquistaní,0
-model,"currency.currency,name",xpd,Palladium,Paladio,0
-model,"currency.currency,name",mop,Pataca,Pataca,0
-model,"currency.currency,name",uyu,Peso Uruguayo,Peso Uruguayo,0
-model,"currency.currency,name",php,Philippine Peso,Peso Filipino,0
-model,"currency.currency,name",xpt,Platinum,Platino,0
-model,"currency.currency,name",gbp,Pound Sterling,Libra Esterlina,1
-model,"currency.currency,name",bwp,Pula,Pula,0
-model,"currency.currency,name",qar,Qatari Rial,Katar Real,0
 model,"currency.currency,name",gtq,Quetzal,Quetzal,0
-model,"currency.currency,name",zar,Rand,Rand,0
-model,"currency.currency,name",omr,Rial Omani,Omani Real,0
-model,"currency.currency,name",khr,Riel,Real,0
-model,"currency.currency,name",mvr,Rufiyaa,Rufiyaa,0
-model,"currency.currency,name",idr,Rupiah,Rupia,0
-model,"currency.currency,name",rub,Russian Ruble,Rublo Ruso,0
-model,"currency.currency,name",rwf,Rwanda Franc,Franco ruandés,0
-model,"currency.currency,name",shp,Saint Helena Pound,Libra de Santa Helena,0
-model,"currency.currency,name",sar,Saudi Riyal,Real Saudí,0
-model,"currency.currency,name",rsd,Serbian Dinar,Denario Serbo,0
-model,"currency.currency,name",scr,Seychelles Rupee,Rupia de Seychelles,0
-model,"currency.currency,name",xag,Silver,Plata,0
-model,"currency.currency,name",sgd,Singapore Dollar,Dólar de Singapur,0
-model,"currency.currency,name",skk,Slovak Koruna,Corona eslovaca,0
-model,"currency.currency,name",sbd,Solomon Islands Dollar,Dolar de las Islas Solomón,0
-model,"currency.currency,name",kgs,Som,Som,0
-model,"currency.currency,name",sos,Somali Shilling,Somalí Shilling,0
-model,"currency.currency,name",tjs,Somoni,Somoni,0
-model,"currency.currency,name",xdr,Special Drawing Rights,,0
-model,"currency.currency,name",lkr,Sri Lanka Rupee,Rupia de Sri Lanka,0
-model,"currency.currency,name",sdg,Sudanese Pound,Libra sudanesa,0
-model,"currency.currency,name",srd,Surinam Dollar,Dólar de Surinam,0
-model,"currency.currency,name",sek,Swedish Krona,Coronoa Sueca,0
-model,"currency.currency,name",chf,Swiss Franc,Franco Suizo,0
-model,"currency.currency,name",syp,Syrian Pound,Lira siria,0
-model,"currency.currency,name",bdt,Taka,Taka,0
-model,"currency.currency,name",wst,Tala,Tala,0
-model,"currency.currency,name",tzs,Tanzanian Shilling,Chelín tanzano,0
-model,"currency.currency,name",kzt,Tenge,Tenge,0
-model,"currency.currency,name",ttd,Trinidad and Tobago Dollar,Dólar de Trinidad y Tobago,0
-model,"currency.currency,name",mnt,Tugrik,Tugrik,0
-model,"currency.currency,name",tnd,Tunisian Dinar,Dinar de Túnez,0
-model,"currency.currency,name",aed,UAE Dirham,Dirham de EAU,0
-model,"currency.currency,name",ugx,Uganda Shilling,Chelín Ugandés,0
-model,"currency.currency,name",xfu,UIC-Franc,Franco UIC,0
-model,"currency.currency,name",cou,Unidad de Valor Real,,0
-model,"currency.currency,name",clf,Unidades de fomento,,0
-model,"currency.currency,name",uyi,Uruguay Peso en Unidades Indexadas,,0
-model,"currency.currency,name",usd,US Dollar,Dólar Americano,0
-model,"currency.currency,name",usn,US Dollar (Next day),Dólar USA (Próximo día),0
-model,"currency.currency,name",uss,US Dollar (Same day),Dólar USA (Mismo día),0
-model,"currency.currency,name",uzs,Uzbekistan Sum,Suma Uzbequistán,0
-model,"currency.currency,name",vuv,Vatu,Vatu,0
-model,"currency.currency,name",che,WIR Euro,,0
-model,"currency.currency,name",chw,WIR Franc,,0
-model,"currency.currency,name",krw,Won,,0
-model,"currency.currency,name",yer,Yemeni Rial,Real de Yemén,0
+model,"currency.currency,name",gyd,Guyana Dollar,Dólar guayanés,0
+model,"currency.currency,name",hkd,Hong Kong Dollar,Dólar de Hong Kong,0
+model,"currency.currency,name",hnl,Lempira,Lempira hondureño,0
+model,"currency.currency,name",hrk,Croatian Kuna,Kuna croata,0
+model,"currency.currency,name",htg,Gourde,Gourde haitiano,0
+model,"currency.currency,name",huf,Forint,Forint húngaro,0
+model,"currency.currency,name",idr,Rupiah,Rupia indonesia,0
+model,"currency.currency,name",ils,New Israeli Sheqel,Nuevo sheqel israelí,0
+model,"currency.currency,name",inr,Indian Rupee,Rupia india,0
+model,"currency.currency,name",iqd,Iraqi Dinar,Dinar iraquí,0
+model,"currency.currency,name",irr,Iranian Rial,Rial iraní,0
+model,"currency.currency,name",isk,Iceland Krona,Corona islandesa,0
+model,"currency.currency,name",jmd,Jamaican Dollar,Dólar jamaiqueño,0
+model,"currency.currency,name",jod,Jordanian Dinar,Dinar jordano,0
 model,"currency.currency,name",jpy,Yen,Yen,0
-model,"currency.currency,name",cny,Yuan Renminbi,Yuan Renminbi,0
-model,"currency.currency,name",zwd,Zimbabwe Dollar,Dólar de Zimbawe,0
+model,"currency.currency,name",kes,Kenyan Shilling,Chelín keniata,0
+model,"currency.currency,name",kgs,Som,Som,0
+model,"currency.currency,name",khr,Riel,Riel camboyano,0
+model,"currency.currency,name",kmf,Comoro Franc,Franco comoriano,0
+model,"currency.currency,name",kpw,North Korean Won,Won norcoreano,0
+model,"currency.currency,name",krw,Won,Won surcoreano,0
+model,"currency.currency,name",kwd,Kuwaiti Dinar,Dinar kuwaití,0
+model,"currency.currency,name",kyd,Cayman Islands Dollar,Dólar de las Islas Caimán,0
+model,"currency.currency,name",kzt,Tenge,Tenge,0
+model,"currency.currency,name",lak,Kip,Kip laosiano,0
+model,"currency.currency,name",lbp,Lebanese Pound,Libra libanesa,0
+model,"currency.currency,name",lkr,Sri Lanka Rupee,Rupia de Sri Lanka,0
+model,"currency.currency,name",lrd,Liberian Dollar,Dóla liberiano,0
+model,"currency.currency,name",lsl,Loti,Loti lesothense,0
+model,"currency.currency,name",ltl,Lithuanian Litas,Litas lituano,0
+model,"currency.currency,name",lvl,Latvian Lats,Lat letón,0
+model,"currency.currency,name",lyd,Libyan Dinar,Dinar libio,0
+model,"currency.currency,name",mad,Moroccan Dirham,Dirham marroquí,0
+model,"currency.currency,name",mdl,Moldovan Leu,Leu moldavo,0
+model,"currency.currency,name",mga,Malagasy Ariary,Ariary malgache,0
+model,"currency.currency,name",mkd,Denar,Denar,0
+model,"currency.currency,name",mmk,Kyat,Kyat,0
+model,"currency.currency,name",mnt,Tugrik,Tugrik,0
+model,"currency.currency,name",mop,Pataca,Pataca,0
+model,"currency.currency,name",mro,Ouguiya,Uquiya,0
+model,"currency.currency,name",mtl,Maltese Lira,Lira maltesa,0
+model,"currency.currency,name",mur,Mauritius Rupee,Rupia mauricia,0
+model,"currency.currency,name",mvr,Rufiyaa,Rufiyaa,0
+model,"currency.currency,name",mwk,Kwacha,Kwacha malawiano,0
+model,"currency.currency,name",mxn,Mexican Peso,Peso mexicano,0
+model,"currency.currency,name",mxv,Mexican Unidad de Inversion (UDI),Unidad de Inversión Mexicana (UDI),0
+model,"currency.currency,name",myr,Malaysian Ringgit,Ringgit malasio,0
+model,"currency.currency,name",mzn,Metical,Metical mozambiqueño,0
+model,"currency.currency,name",nad,Namibia Dollar,Dóla namibio,0
+model,"currency.currency,name",ngn,Naira,Naira,0
+model,"currency.currency,name",nio,Cordoba Oro,Córdoba,0
+model,"currency.currency,name",nok,Norwegian Krone,Corona noruega,0
+model,"currency.currency,name",npr,Nepalese Rupee,Rupia nepalesa,0
+model,"currency.currency,name",nzd,New Zealand Dollar,Dólar neozelandés,0
+model,"currency.currency,name",omr,Rial Omani,Rial omaní,0
+model,"currency.currency,name",pab,Balboa,Balboa,0
+model,"currency.currency,name",pen,Nuevo Sol,Nuevo Sol,0
+model,"currency.currency,name",pgk,Kina,Kina,0
+model,"currency.currency,name",php,Philippine Peso,Peso filipino,0
+model,"currency.currency,name",pkr,Pakistan Rupee,Rupia pakistaní,0
 model,"currency.currency,name",pln,Zloty,Zloty,0
+model,"currency.currency,name",pyg,Guarani,Guaraní,0
+model,"currency.currency,name",qar,Qatari Rial,Rial de Qatar,0
+model,"currency.currency,name",ron,New Leu,Leu,0
+model,"currency.currency,name",rsd,Serbian Dinar,Dinar serbio,0
+model,"currency.currency,name",rub,Russian Ruble,Rublo ruso,0
+model,"currency.currency,name",rwf,Rwanda Franc,Franco ruandés,0
+model,"currency.currency,name",sar,Saudi Riyal,Rial saudí,0
+model,"currency.currency,name",sbd,Solomon Islands Dollar,Dólar de las Islas Solomón,0
+model,"currency.currency,name",scr,Seychelles Rupee,Rupia de Seychelles,0
+model,"currency.currency,name",sdg,Sudanese Pound,Libra sudanesa,0
+model,"currency.currency,name",sek,Swedish Krona,Corona sueca,0
+model,"currency.currency,name",sgd,Singapore Dollar,Dólar de Singapur,0
+model,"currency.currency,name",shp,Saint Helena Pound,Libra de Santa Helena,0
+model,"currency.currency,name",sll,Leone,Leone,0
+model,"currency.currency,name",sos,Somali Shilling,Chelín somalí,0
+model,"currency.currency,name",srd,Surinam Dollar,Dólar surinamés,0
+model,"currency.currency,name",std,Dobra,Dobra,0
+model,"currency.currency,name",svc,El Salvador Colon,Colón salvadoreño,0
+model,"currency.currency,name",syp,Syrian Pound,Libra siria,0
+model,"currency.currency,name",szl,Lilangeni,Lilangeni suazi,0
+model,"currency.currency,name",thb,Baht,Baht,0
+model,"currency.currency,name",tjs,Somoni,Somoni,0
+model,"currency.currency,name",tmm,Manat,Manat,0
+model,"currency.currency,name",tnd,Tunisian Dinar,Dinar tunecino,0
+model,"currency.currency,name",top,Pa'anga,Pa'anga,0
+model,"currency.currency,name",try,New Turkish Lira,Nueva lira turca,0
+model,"currency.currency,name",ttd,Trinidad and Tobago Dollar,Dólar de Trinidad y Tobago,0
+model,"currency.currency,name",twd,New Taiwan Dollar,nuevo Dólar taiwanés,0
+model,"currency.currency,name",tzs,Tanzanian Shilling,Chelín tanzano,0
+model,"currency.currency,name",uah,Hryvnia,Grivnia,0
+model,"currency.currency,name",ugx,Uganda Shilling,Chelín ugandés,0
+model,"currency.currency,name",usd,US Dollar,Dólar estadounidense,0
+model,"currency.currency,name",usn,US Dollar (Next day),Dólar estadounidense (dia siguiente),0
+model,"currency.currency,name",uss,US Dollar (Same day),Dólar estadounidense (mismo dia),0
+model,"currency.currency,name",uyi,Uruguay Peso en Unidades Indexadas,Uruguay Peso en Unidades Indexadas,0
+model,"currency.currency,name",uyu,Peso Uruguayo,Peso uruguayo,0
+model,"currency.currency,name",uzs,Uzbekistan Sum,Som uzbeco,0
+model,"currency.currency,name",vef,Bolivar Fuerte,Bolivar Fuerte,0
+model,"currency.currency,name",vnd,Dong,Dong,0
+model,"currency.currency,name",vuv,Vatu,Vatu,0
+model,"currency.currency,name",wst,Tala,Tala,0
+model,"currency.currency,name",xaf,CFA Franc BEAC,franco CFA BEAC,0
+model,"currency.currency,name",xag,Silver,Plata,0
+model,"currency.currency,name",xau,Gold,Oro,0
+model,"currency.currency,name",xba,European Composite Unit (EURCO),Unidad Compuesta Europea (EURCO),0
+model,"currency.currency,name",xbb,European Monetary Unit (E.M.U.-6),Unidad Monetaria Europea (E.U.M.-6),0
+model,"currency.currency,name",xbc,European Unit of Account 9 (E.U.A.-9),Unidad de cuenta europea 9 (E.U.A.-9),0
+model,"currency.currency,name",xbd,European Unit of Account 17 (E.U.A.-17),Unidad de cuenta europea 17 (E.U.A.-17),0
+model,"currency.currency,name",xcd,East Caribbean Dollar,Dólar del Caribe oriental,0
+model,"currency.currency,name",xdr,Special Drawing Rights,Special Drawing Rights,0
+model,"currency.currency,name",xfo,Gold-Franc,Franco de oro,0
+model,"currency.currency,name",xfu,UIC-Franc,Franco UIC,0
+model,"currency.currency,name",xof,CFA Franc BCEAO,franco CFA BCEAO,0
+model,"currency.currency,name",xpd,Palladium,Paladio,0
+model,"currency.currency,name",xpf,CFP Franc,Franco CFP,0
+model,"currency.currency,name",xpt,Platinum,Platino,0
+model,"currency.currency,name",xts,Code for testing purposes,Código reservado para pruebas,0
+model,"currency.currency,name",xxx,No currency,Sin divisa,0
+model,"currency.currency,name",yer,Yemeni Rial,Rial yemení,0
+model,"currency.currency,name",zar,Rand,Rand,0
+model,"currency.currency,name",zmk,Kwacha,Zambian Kwacha,0
+model,"currency.currency,name",zwd,Zimbabwe Dollar,Dólar zimbabuense,0
 model,"currency.currency.rate,name",0,Rate,Tasa de Cambio,0
 model,"ir.action,name",act_currency_form,Currencies,Monedas,0
-model,"ir.ui.menu,name",menu_currency_form,Currencies,Monedas,0
 model,"ir.ui.menu,name",menu_currency,Currency Management,Gestión de Monedas,0
+model,"ir.ui.menu,name",menu_currency_form,Currencies,Monedas,0
 model,"res.group,name",group_currency_admin,Currency Administration,Administrar Monedas,0
 view,currency.currency,0,Currencies,Monedas,0
 view,currency.currency,0,Currency,Moneda,0
