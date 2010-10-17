@@ -33,6 +33,7 @@ Permet de formater les montants en fonction de la devise.
         'currency.xml',
     ],
     'translation': [
+        'cs_CZ.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
