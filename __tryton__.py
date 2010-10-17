@@ -38,5 +38,6 @@ Permet de formater les montants en fonction de la devise.
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'ru_RU.csv',
     ]
 }
