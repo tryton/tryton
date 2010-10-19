@@ -88,6 +88,7 @@ def _setmethod(name, definition):
             if value:
                 assert value.id > 0 and not value._changed
                 assert value._config == self._config
+                assert value.__class__.__name__ == definition['relation']
         elif definition['type'] == 'datetime':
             assert isinstance(value, datetime.datetime)
         elif definition['type'] == 'date':
