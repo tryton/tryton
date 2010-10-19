@@ -51,14 +51,14 @@ class _TrytondMethod(object):
     def __init__(self, name, model, config):
         super(_TrytondMethod, self).__init__()
         self._name = name
-        self._model = model
+        self._object = model
         self._config = config
 
     def __call__(self, *args):
         from trytond.cache import Cache
         from trytond.transaction import Transaction
 
-        assert self._name in self._model._rpc
+        assert self._name in self._object._rpc
 
         with Transaction().start(self._config.database_name,
                 self._config.user) as transaction:
@@ -69,8 +69,8 @@ class _TrytondMethod(object):
                 transaction.timestamp = context['_timestamp']
                 del context['_timestamp']
             transaction.context = context
-            res = getattr(self._model, self._name)(*args)
-            if self._model._rpc[self._name]:
+            res = getattr(self._object, self._name)(*args)
+            if self._object._rpc[self._name]:
                 transaction.cursor.commit()
         Cache.resets(self._config.database_name)
         return res
@@ -78,15 +78,15 @@ class _TrytondMethod(object):
 class TrytondProxy(object):
     'Proxy for function call for trytond'
 
-    def __init__(self, name, config):
+    def __init__(self, name, config, type='model'):
         super(TrytondProxy, self).__init__()
         self._config = config
-        self._model = config.pool.get(name)
+        self._object = config.pool.get(name, type=type)
     __init__.__doc__ = object.__init__.__doc__
 
     def __getattr__(self, name):
         'Return attribute value'
-        return _TrytondMethod(name, self._model, self._config)
+        return _TrytondMethod(name, self._object, self._config)
 
 
 class TrytondConfig(Config):
@@ -140,14 +140,14 @@ class TrytondConfig(Config):
                 self.database_name, self._user, self.database_type)
     __repr__.__doc__ = object.__repr__.__doc__
 
-    def get_proxy(self, name):
+    def get_proxy(self, name, type='model'):
         'Return Proxy class'
-        return TrytondProxy(name, self)
+        return TrytondProxy(name, self, type=type)
 
-    def get_proxy_methods(self, name):
+    def get_proxy_methods(self, name, type='model'):
         'Return list of methods'
-        proxy = self.get_proxy(name)
-        return [x for x in proxy._model._rpc]
+        proxy = self.get_proxy(name, type=type)
+        return [x for x in proxy._object._rpc]
 
 def set_trytond(database_name, user='admin', database_type='postgresql',
         language='en_US', password=''):
@@ -160,15 +160,15 @@ def set_trytond(database_name, user='admin', database_type='postgresql',
 class XmlrpcProxy(object):
     'Proxy for function call for XML-RPC'
 
-    def __init__(self, name, config):
+    def __init__(self, name, config, type='model'):
         super(XmlrpcProxy, self).__init__()
         self._config = config
-        self._model = getattr(config.server, 'model.%s' % name)
+        self._object = getattr(config.server, '%s.%s' % (type, name))
     __init__.__doc__ = object.__init__.__doc__
 
     def __getattr__(self, name):
         'Return attribute value'
-        return getattr(self._model, name)
+        return getattr(self._object, name)
 
 class XmlrpcConfig(Config):
     'Configuration for XML-RPC'
@@ -185,16 +185,17 @@ class XmlrpcConfig(Config):
         return "proteus.config.XmlrpcConfig('%s')" % self.url
     __repr__.__doc__ = object.__repr__.__doc__
 
-    def get_proxy(self, name):
+    def get_proxy(self, name, type='model'):
         'Return Proxy class'
-        return XmlrpcProxy(name, self)
+        return XmlrpcProxy(name, self, type=type)
 
-    def get_proxy_methods(self, name):
+    def get_proxy_methods(self, name, type='model'):
         'Return list of methods'
-        return [x[len('model.%s' % name) + 1:]
+        object_ = '%s.%s' % (type, name)
+        return [x[len(object_) + 1:]
                 for x in self.server.system.listMethods()
-                if x.startswith('model.%s' % name)
-                and '.' not in x[len('model.%s' % name) + 1:]]
+                if x.startswith(object_)
+                and '.' not in x[len(object_) + 1:]]
 
 def set_xmlrpc(url):
     'Set XML-RPC as backend'

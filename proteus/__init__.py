@@ -552,3 +552,71 @@ class Model(object):
             res = getattr(self._proxy, 'on_change_with_%s' % field)(args,
                     context)
             self._set_on_change(field, res)
+
+
+class Wizard(object):
+    'Wizard class for Tryton wizards'
+
+    def __init__(self, name, models=None, config=None, context=None):
+        if models:
+            assert isinstance(models, ModelList)
+
+        super(Wizard, self).__init__()
+        self.name = name
+        self.state = None
+        self.states = ['init']
+        self.form = None
+        self._config = config or proteus.config.get_config()
+        self._context = context or {}
+        self._proxy = self._config.get_proxy(name, type='wizard')
+        self.id = self._proxy.create(self._config.context)
+        if models:
+            self.datas = {
+                    'model': models[0].__class__.__name__,
+                    'id': models[0].id,
+                    'ids': [model.id for model in models]
+                    }
+        else:
+            self.datas = {}
+        self.execute('init')
+
+    def execute(self, state):
+        assert state in self.states
+
+        if 'form' not in self.datas:
+            self.datas['form'] = {}
+
+        if self.form:
+            self.datas['form'].update(self.form._get_values())
+
+        self.state = state
+        while self.state != 'end':
+            ctx = self._context.copy()
+            ctx.update(self._config.context)
+            ctx['active_id'] = self.datas.get('id')
+            ctx['active_ids'] = self.datas.get('ids')
+
+            res = self._proxy.execute(self.id, self.datas, self.state, ctx)
+            if not res:
+                break
+
+            if 'datas' in res:
+                self.datas['form'] = res['datas']
+            elif res['type'] == 'form':
+                self.datas['form'] = {}
+
+            if res['type'] == 'form':
+                self.states = [x[0] for x in res['state']]
+                # XXX set context
+                self.form = Model.get(res['object'])()
+                self.form._default_set(self.datas['form'])
+                return
+            elif res['type'] == 'action':
+                # TODO run action
+                self.state = res['state']
+            elif res['type'] == 'print':
+                # TODO run print
+                self.state = res['state']
+
+        if self.state == 'end':
+            self._proxy.delete(self.id, self._config.context)
