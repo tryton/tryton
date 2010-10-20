@@ -278,73 +278,73 @@ selection,"country.subdivision,type",0,Autonomous Province,Province autonome,0
 selection,"country.subdivision,type",0,Autonomous Region,Région autonome,0
 selection,"country.subdivision,type",0,Autonomous communities,Communauté autonome,0
 selection,"country.subdivision,type",0,Autonomous island,île autonome,0
-selection,"country.subdivision,type",0,Autonomous monastic state,,0
+selection,"country.subdivision,type",0,Autonomous monastic state,État monastique autonome,0
 selection,"country.subdivision,type",0,Autonomous municipality,Municipalité autonome,0
 selection,"country.subdivision,type",0,Autonomous republic,République autonome,0
 selection,"country.subdivision,type",0,Autonomous sector,Secteur autonome,0
 selection,"country.subdivision,type",0,Autonomous territory,Territoire autonome,0
 selection,"country.subdivision,type",0,Borough,Municipal,0
 selection,"country.subdivision,type",0,Canton,Canton,0
-selection,"country.subdivision,type",0,Capital District,,0
-selection,"country.subdivision,type",0,Capital Metropolitan City,,0
-selection,"country.subdivision,type",0,Capital Territory,,0
-selection,"country.subdivision,type",0,Capital city,,0
+selection,"country.subdivision,type",0,Capital District,District de la capitale,0
+selection,"country.subdivision,type",0,Capital Metropolitan City,Cité métropolitaine capitale,0
+selection,"country.subdivision,type",0,Capital Territory,Territoire de la capitale,0
+selection,"country.subdivision,type",0,Capital city,Cité capitale,0
 selection,"country.subdivision,type",0,City,Ville,0
-selection,"country.subdivision,type",0,City corporation,,0
-selection,"country.subdivision,type",0,City with county rights,,0
-selection,"country.subdivision,type",0,Commune,,0
+selection,"country.subdivision,type",0,City corporation,Cité-corporation,0
+selection,"country.subdivision,type",0,City with county rights,Cité avec droit de comté,0
+selection,"country.subdivision,type",0,Commune,Commune,0
 selection,"country.subdivision,type",0,Country,Pays,0
-selection,"country.subdivision,type",0,County,,0
+selection,"country.subdivision,type",0,County,Comté,0
 selection,"country.subdivision,type",0,Department,Département,0
 selection,"country.subdivision,type",0,Dependency,Dépendance,0
 selection,"country.subdivision,type",0,District,District,0
 selection,"country.subdivision,type",0,Division,Division,0
-selection,"country.subdivision,type",0,Economic Prefecture,,0
-selection,"country.subdivision,type",0,Economic region,,0
-selection,"country.subdivision,type",0,Emirate,,0
-selection,"country.subdivision,type",0,Entity,,0
-selection,"country.subdivision,type",0,Federal Dependency,,0
-selection,"country.subdivision,type",0,Federal District,,0
-selection,"country.subdivision,type",0,Federal Territories,,0
-selection,"country.subdivision,type",0,Geographical region,,0
-selection,"country.subdivision,type",0,Geographical unit,,0
-selection,"country.subdivision,type",0,Governorate,,0
-selection,"country.subdivision,type",0,Included for completeness,,0
-selection,"country.subdivision,type",0,Island council,,0
-selection,"country.subdivision,type",0,Island group,,0
-selection,"country.subdivision,type",0,Local council,,0
-selection,"country.subdivision,type",0,London borough,,0
-selection,"country.subdivision,type",0,Metropolitan cities,,0
-selection,"country.subdivision,type",0,Metropolitan department,,0
-selection,"country.subdivision,type",0,Metropolitan district,,0
-selection,"country.subdivision,type",0,Metropolitan region,,0
+selection,"country.subdivision,type",0,Economic Prefecture,Préfecture économique,0
+selection,"country.subdivision,type",0,Economic region,Région économique,0
+selection,"country.subdivision,type",0,Emirate,Émirat,0
+selection,"country.subdivision,type",0,Entity,Entité,0
+selection,"country.subdivision,type",0,Federal Dependency,Dépendance fédérale,0
+selection,"country.subdivision,type",0,Federal District,District fédéral,0
+selection,"country.subdivision,type",0,Federal Territories,Territoires fédéraux,0
+selection,"country.subdivision,type",0,Geographical region,Région géographique,0
+selection,"country.subdivision,type",0,Geographical unit,Unité géographique,0
+selection,"country.subdivision,type",0,Governorate,Gouvernorat,0
+selection,"country.subdivision,type",0,Included for completeness,Inclus pour complétude,0
+selection,"country.subdivision,type",0,Island council,Conseil insulaire,0
+selection,"country.subdivision,type",0,Island group,Groupes d'îles,0
+selection,"country.subdivision,type",0,Local council,Conseil local,0
+selection,"country.subdivision,type",0,London borough,Borough londoniens ,0
+selection,"country.subdivision,type",0,Metropolitan cities,Cités métropolitaines,0
+selection,"country.subdivision,type",0,Metropolitan department,Département métropolitain,0
+selection,"country.subdivision,type",0,Metropolitan district,District métropolitain,0
+selection,"country.subdivision,type",0,Metropolitan region,Région métropolitaine,0
 selection,"country.subdivision,type",0,Municipalities,Municipalités,0
 selection,"country.subdivision,type",0,Municipality,Municipalité,0
-selection,"country.subdivision,type",0,Oblast,,0
-selection,"country.subdivision,type",0,Outlying area,,0
-selection,"country.subdivision,type",0,Overseas region/department,,0
-selection,"country.subdivision,type",0,Overseas territorial collectivity,,0
-selection,"country.subdivision,type",0,Parish,,0
+selection,"country.subdivision,type",0,Oblast,Oblast,0
+selection,"country.subdivision,type",0,Outlying area,Quartier,0
+selection,"country.subdivision,type",0,Overseas region/department,Région/département d'outre-mer,0
+selection,"country.subdivision,type",0,Overseas territorial collectivity,Collectivité territoriale d'outre-mer,0
+selection,"country.subdivision,type",0,Parish,Paroisse,0
 selection,"country.subdivision,type",0,Prefecture,Préfecture,0
 selection,"country.subdivision,type",0,Principality,Principauté,0
 selection,"country.subdivision,type",0,Province,Province,0
-selection,"country.subdivision,type",0,Rayon,,0
+selection,"country.subdivision,type",0,Rayon,Rayon,0
 selection,"country.subdivision,type",0,Region,Région,0
-selection,"country.subdivision,type",0,Regional council,,0
+selection,"country.subdivision,type",0,Regional council,Conseil régional,0
 selection,"country.subdivision,type",0,Republic,République,0
-selection,"country.subdivision,type",0,Special District,,0
-selection,"country.subdivision,type",0,Special Municipality,,0
-selection,"country.subdivision,type",0,Special Region,,0
-selection,"country.subdivision,type",0,Special administrative region,,0
-selection,"country.subdivision,type",0,Special city,,0
-selection,"country.subdivision,type",0,Special zone,,0
+selection,"country.subdivision,type",0,Special District,District spécial,0
+selection,"country.subdivision,type",0,Special Municipality,Municipalité spéciale,0
+selection,"country.subdivision,type",0,Special Region,Région spéciale,0
+selection,"country.subdivision,type",0,Special administrative region,Région administrative spéciale,0
+selection,"country.subdivision,type",0,Special city,Cité spéciale,0
+selection,"country.subdivision,type",0,Special zone,Zone spéciale,0
 selection,"country.subdivision,type",0,State,Etat,0
-selection,"country.subdivision,type",0,Territorial unit,,0
+selection,"country.subdivision,type",0,Territorial unit,Unité territoriale,0
 selection,"country.subdivision,type",0,Territory,Territoire,0
-selection,"country.subdivision,type",0,Town council,,0
-selection,"country.subdivision,type",0,Two-tier county,,0
-selection,"country.subdivision,type",0,Union territory,,0
-selection,"country.subdivision,type",0,Unitary authority,,0
+selection,"country.subdivision,type",0,Town council,Conseil municipal,0
+selection,"country.subdivision,type",0,Two-tier county,Comté deux-tiers,0
+selection,"country.subdivision,type",0,Union territory,Territoire d'union,0
+selection,"country.subdivision,type",0,Unitary authority,Autorité unitaire,0
 view,country.country,0,Countries,Pays,0
 view,country.country,0,Country,Pays,0
 view,country.country,0,State,État,0
