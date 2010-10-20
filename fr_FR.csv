@@ -24,25 +24,26 @@ field,"res.user,company",0,Current Company,Société courante,0
 field,"res.user,employee",0,Employee,Employé,0
 field,"res.user,main_company",0,Main Company,Société principale,0
 help,"ir.cron,companies",0,Companies registered for this cron,Sociétés enregistrées pour ce planificateur,0
-model,"company.company.config.init,name",0,Company Config Init,Société config - Init,0
 model,"company.company,name",0,Company,Société,0
+model,"company.company.config.init,name",0,Company Config Init,Société config - Init,0
 model,"company.employee,name",0,Employee,Employé,0
-model,"ir.action,name",act_company_tree,Companies,Sociétés,0
 model,"ir.action,name",act_company_form,Companies,Sociétés,0
 model,"ir.action,name",act_company_form2,Companies,Sociétés,0
+model,"ir.action,name",act_company_tree,Companies,Sociétés,0
 model,"ir.action,name",act_employee_form,Employees,Employés,0
 model,"ir.action,name",report_letter,Letter,Lettre,0
 model,"ir.cron-company.company,name",0,ir.cron-company.company,,0
-model,"ir.ui.menu,name",menu_company_tree,Companies,Sociétés,0
 model,"ir.ui.menu,name",menu_company_form,Edit Companies,Éditer les sociétés,0
-model,"ir.ui.menu,name",menu_employee_form,Employees,Employés,0
 model,"ir.ui.menu,name",menu_company_form2,New Company,Nouvelle société,0
+model,"ir.ui.menu,name",menu_company_tree,Companies,Sociétés,0
+model,"ir.ui.menu,name",menu_employee_form,Employees,Employés,0
 odt,party.letter,0,"Best Regards,","Bien cordialement,",0
 odt,party.letter,0,Date:,Date :,0
 odt,party.letter,0,"Dear Madams and Sirs,","Chère madame, cher monsieur,",0
 odt,party.letter,0,E-Mail:,E-Mail :,0
 odt,party.letter,0,Phone:,Téléphone,0
 odt,party.letter,0,Subject:,Sujet :,0
+odt,party.letter,0,VAT Number:,Numéro TVA :,0
 view,company.company,0,Addresses,Adresses,0
 view,company.company,0,Companies,Sociétés,0
 view,company.company,0,Company,Société,0
