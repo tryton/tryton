@@ -7,6 +7,7 @@ field,"res.user,dashboard_actions",0,Dashboard Actions,Actions tableau de bord,0
 field,"res.user,dashboard_layout",0,Dashboard Layout,Mise en page de tableau de bord,0
 model,"dashboard.action,name",0,dashboard.action,Action tableau de bord,0
 model,"ir.action,name",act_dashboard,Dashboard,Tableau de bord,0
+model,"ir.ui.menu,name",menu_dashboard,Dashboard,Tableau de bord,0
 selection,"res.user,dashboard_layout",0,Square,Carré,0
 selection,"res.user,dashboard_layout",0,Stack Bottom,Pile bas,0
 selection,"res.user,dashboard_layout",0,Stack Left,Pile gauche,0
