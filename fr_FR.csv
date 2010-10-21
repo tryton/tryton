@@ -52,45 +52,45 @@ field,"party.party,full_name",0,Full Name,Nom complet,0
 field,"party.party,lang",0,Language,Langue,0
 field,"party.party,mobile",0,Mobile,Mobile,0
 field,"party.party,name",0,Name,Nom,0
-field,"party.party-party.category,category",0,Category,Catégorie,0
-field,"party.party-party.category,party",0,Party,Tiers,0
-field,"party.party-party.category,rec_name",0,Name,Nom,0
 field,"party.party,phone",0,Phone,Téléphone,0
 field,"party.party,rec_name",0,Name,Nom,0
 field,"party.party,vat_code",0,VAT Code,Code TVA,0
 field,"party.party,vat_country",0,VAT Country,Code Pays TVA,0
 field,"party.party,vat_number",0,VAT Number,Numéro de TVA,0
 field,"party.party,website",0,Website,Site web,0
+field,"party.party-party.category,category",0,Category,Catégorie,0
+field,"party.party-party.category,party",0,Party,Tiers,0
+field,"party.party-party.category,rec_name",0,Name,Nom,0
 help,"party.party,vat_country",0,Setting VAT country will enable validation of the VAT number.,Ajouter un code pays TVA activera la vérification du numéro de TVA.,0
 help,"party.party,vat_number",0,Value Added Tax number,Numéro de taxe sur la valeur ajoutée,0
 model,"ir.action,name",act_address_form,Addresses,Adresses,0
 model,"ir.action,name",act_address_form2,Addresses,Adresses,0
-model,"ir.action,name",act_category_tree,Categories,Catégories,0
 model,"ir.action,name",act_category_form,Categories,Catégories,0
 model,"ir.action,name",act_category_form2,Categories,Catégories,0
-model,"ir.action,name",wizard_check_vies,Check VIES,Validation VIES,0
-model,"ir.action,name",report_label,Labels,Étiquettes,0
-model,"ir.action,name",act_party_form,Parties,Tiers,0
-model,"ir.action,name",act_party_form2,Parties,Tiers,0
+model,"ir.action,name",act_category_tree,Categories,Catégories,0
 model,"ir.action,name",act_party_by_category,Parties by Category,Tiers par catégorie,0
 model,"ir.action,name",act_party_configuration_form,Party Configuration,Configuration des relations,0
+model,"ir.action,name",act_party_form,Parties,Tiers,0
+model,"ir.action,name",act_party_form2,Parties,Tiers,0
+model,"ir.action,name",report_label,Labels,Étiquettes,0
+model,"ir.action,name",wizard_check_vies,Check VIES,Validation VIES,0
 model,"ir.sequence,name",sequence_party,Party,Tiers,0
 model,"ir.sequence.type,name",sequence_type_party,Party,Tiers,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adresses,0
-model,"ir.ui.menu,name",menu_category_tree,Categories,Catégories,0
-model,"ir.ui.menu,name",menu_category_form,Categories,Editer les catégories,0
-model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
 model,"ir.ui.menu,name",menu_address_form2,New Address,Nouvelle adresse,0
+model,"ir.ui.menu,name",menu_category_form,Categories,Editer les catégories,0
 model,"ir.ui.menu,name",menu_category_form2,New category,Nouvelle catégorie,0
-model,"ir.ui.menu,name",menu_party_form2,New Party,Nouveau tiers,0
-model,"ir.ui.menu,name",menu_party_form,Parties,Tiers,0
-model,"ir.ui.menu,name",menu_party_configuration,Party Configuration,Configuration des relations,0
+model,"ir.ui.menu,name",menu_category_tree,Categories,Catégories,0
+model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
 model,"ir.ui.menu,name",menu_party,Party Management,Gestion des relations,0
+model,"ir.ui.menu,name",menu_party_configuration,Party Configuration,Configuration des relations,0
+model,"ir.ui.menu,name",menu_party_form,Parties,Tiers,0
+model,"ir.ui.menu,name",menu_party_form2,New Party,Nouveau tiers,0
 model,"party.address,name",0,Address,Adresse,0
 model,"party.category,name",0,Category,Catégorie,0
 model,"party.check_vies.check,name",0,Check VIES - Check,Validation VIES - Validé,0
 model,"party.check_vies.no_check,name",0,Check VIES - No Check,Validation VIES - Non validé,0
-model,"party.configuration,name",0,party.configuration,,0
+model,"party.configuration,name",0,Party Configuration,Configuration des relations,0
 model,"party.contact_mechanism,name",0,Contact Mechanism,Moyen de contact,0
 model,"party.party,name",0,Party,Tiers,0
 model,"party.party-party.category,name",0,Party - Category,Tiers - Catégorie,0
@@ -118,15 +118,15 @@ view,party.configuration,0,Party Configuration,Configuration des relations,0
 view,party.contact_mechanism,0,Contact Mechanism,Moyen de contact,0
 view,party.contact_mechanism,0,Contact Mechanisms,Moyens de contact,0
 view,party.party,0,Accounting,Comptabilité,0
-view,party.party,0,_Accounting,Compt_abilité,0
 view,party.party,0,Addresses,Adresses,0
 view,party.party,0,Categories,Catégories,0
 view,party.party,0,Contact Mechanisms,Moyens de contact,0
 view,party.party,0,General,Général,0
-view,party.party,0,_General,_Général,0
 view,party.party,0,Parties,Tiers,0
 view,party.party,0,Party,Tiers,0
 view,party.party,0,Properties,Propriétés,0
 view,party.party,0,VAT,TVA,0
+view,party.party,0,_Accounting,Compt_abilité,0
+view,party.party,0,_General,_Général,0
 wizard_button,"party.check_vies,check,end",0,Ok,Ok,0
 wizard_button,"party.check_vies,no_check,end",0,Ok,Ok,0
