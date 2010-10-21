@@ -15,15 +15,15 @@ field,"timesheet.work,sequence",0,Sequence,Séquence,0
 field,"timesheet.work,timesheet_lines",0,Timesheet Lines,Lignes de feuille de présence,0
 help,"project.work,effort",0,Estimated Effort for this work,Effort estimé pour cette activité,0
 help,"project.work,total_effort",0,Estimated total effort for this work and the sub-works,Effort total estimé pour cette activité et ses sous-activités,0
+model,"ir.action,name",act_open_child_work,Tasks,Tâches,0
 model,"ir.action,name",act_project_form,Projects,Projets,0
 model,"ir.action,name",act_task_form,Tasks,Tâches,0
-model,"ir.action,name",act_open_child_work,Tasks,Tâches,0
-model,"ir.action,name",act_work_tree,Works,Activités,0
 model,"ir.action,name",act_work_form,Works Efforts,Activités,0
+model,"ir.action,name",act_work_tree,Works,Activités,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
 model,"ir.ui.menu,name",menu_project,Project Management,Gestion de projet,0
-model,"ir.ui.menu,name",menu_project_tree,Projects,Projets,0
 model,"ir.ui.menu,name",menu_project_form,Projects,Projets,0
+model,"ir.ui.menu,name",menu_project_tree,Projects,Projets,0
 model,"ir.ui.menu,name",menu_task_form,Tasks,Tâches,0
 model,"ir.ui.menu,name",menu_work_form,Works Efforts,Activités,0
 model,"project.work,name",0,Work Effort,Tâche,0
