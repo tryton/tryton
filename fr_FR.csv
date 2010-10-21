@@ -197,7 +197,7 @@ model,"currency.currency,name",xbb,European Monetary Unit (E.M.U.-6),Unité mon�
 model,"currency.currency,name",xbc,European Unit of Account 9 (E.U.A.-9),Unité de compte 9 ((U.E.C.-9 monnaie),0
 model,"currency.currency,name",xbd,European Unit of Account 17 (E.U.A.-17),Unité de compte 17 (U.E.C.-17 monnaie),0
 model,"currency.currency,name",xcd,East Caribbean Dollar,Dollar des Caraïbes orientales,0
-model,"currency.currency,name",xdr,Special Drawing Rights,Droit de tirage spécial (D.T.S.),0
+model,"currency.currency,name",xdr,Special Drawing Rights,Droits de tirage spéciaux,0
 model,"currency.currency,name",xfo,Gold-Franc,Franc Or,0
 model,"currency.currency,name",xfu,UIC-Franc,Franc UIC,0
 model,"currency.currency,name",xof,CFA Franc BCEAO,CFA Franc BCEAO,0
