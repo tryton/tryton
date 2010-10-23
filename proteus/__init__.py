@@ -258,6 +258,8 @@ class Model(object):
 
     def __init__(self, id=None, **kwargs):
         super(Model, self).__init__()
+        if id:
+            assert not kwargs
         self.__id = id or Model.__counter
         if self.__id < 0:
             Model.__counter -= 1
@@ -271,8 +273,15 @@ class Model(object):
         for field_name, value in kwargs.iteritems():
             definition = self._fields[field_name]
             if definition['type'] in ('one2many', 'many2many'):
+                relation = Model.get(definition['relation'])
+                value = [isinstance(x, (int, long)) and relation(x) or x
+                        for x in value]
                 getattr(self, field_name).extend(value)
             else:
+                if (definition['type'] == 'many2one'
+                        and isinstance(value, (int, long))):
+                    relation = Model.get(definition['relation'])
+                    value = relation(value)
                 setattr(self, field_name, value)
     __init__.__doc__ = object.__init__.__doc__
 
@@ -481,7 +490,7 @@ class Model(object):
             res[arg] = scope
         return res
 
-    def _set_on_change(self, field, value):
+    def _on_change_set(self, field, value):
         if self._fields[field]['type'] in ('one2many', 'many2many'):
             if isinstance(value, (list, tuple)):
                 self._values[field] = value
@@ -501,13 +510,13 @@ class Model(object):
                     relation = Model.get(self._fields[field]['relation'],
                             self._config)
                     # append without signal
-                    list.append(getattr(self, field), relation(*vals))
+                    list.append(getattr(self, field), relation(**vals))
                 for vals in value.get('update', []):
                     if 'id' not in vals:
                         continue
                     for record in getattr(self, field):
                         if record.id == vals['id']:
-                            for i, j in vals.iteritems:
+                            for i, j in vals.iteritems():
                                 record._values[i] = j
                                 record._changed.add(i)
         else:
@@ -531,9 +540,9 @@ class Model(object):
                 if self._fields[field]['type'] in ('one2many', 'many2many'):
                     later[field] = value
                     continue
-                self._set_on_change(field, value)
+                self._on_change_set(field, value)
             for field, value in later.iteritems():
-                self._set_on_change(field, value)
+                self._on_change_set(field, value)
             if self._parent:
                 self._parent._changed.add(self._parent_field_name)
         if definition.get('change_default'):
@@ -552,7 +561,7 @@ class Model(object):
             context = self._config.context
             res = getattr(self._proxy, 'on_change_with_%s' % field)(args,
                     context)
-            self._set_on_change(field, res)
+            self._on_change_set(field, res)
 
 
 class Wizard(object):

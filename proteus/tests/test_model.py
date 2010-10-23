@@ -79,6 +79,22 @@ class TestModel(TestCase):
         self.assert_(test2.id < 0)
         self.assertNotEqual(test1.id, test2.id)
 
+    def test_init(self):
+        User = Model.get('res.user')
+        self.assertEqual(User(1).id, 1)
+        self.assertEqual(User(name='Foo').name, 'Foo')
+
+        Lang = Model.get('ir.lang')
+        en_US = Lang.find([('code', '=', 'en_US')])[0]
+        self.assertEqual(User(language=en_US).language, en_US)
+        self.assertEqual(User(language=en_US.id).language, en_US)
+
+        Group = Model.get('res.group')
+        groups = Group.find()
+        self.assertEqual(len(User(groups=groups).groups), len(groups))
+        self.assertEqual(len(User(groups=[x.id for x in groups]).groups),
+                len(groups))
+
     def test_save(self):
         User = Model.get('res.user')
         test = User()
@@ -266,3 +282,30 @@ class TestModel(TestCase):
 
         trigger.on_create = True
         self.assertEqual(trigger.on_time, False)
+
+    def test_on_change_set(self):
+        User = Model.get('res.user')
+        Group = Model.get('res.group')
+
+        test = User()
+        test._on_change_set('name', 'Test')
+        self.assertEqual(test.name, 'Test')
+        group_ids = [x.id for x in Group.find()]
+        test._on_change_set('groups', group_ids)
+        self.assertEqual([x.id for x in test.groups], group_ids)
+
+        test._on_change_set('groups', {'remove': [group_ids[0]]})
+        self.assertEqual([x.id for x in test.groups], group_ids[1:])
+
+        test._on_change_set('groups', {'add': [{
+            'name': 'Bar',
+            }]})
+        self.assert_([x for x in test.groups if x.name == 'Bar'])
+
+        test.groups.extend(Group.find())
+        group = test.groups[0]
+        test._on_change_set('groups', {'update': [{
+            'id': group.id,
+            'name': 'Foo',
+            }]})
+        self.assert_([x for x in test.groups if x.name == 'Foo'])
