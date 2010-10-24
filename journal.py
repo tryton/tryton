@@ -98,9 +98,9 @@ class Journal(ModelSQL, ModelView):
             ('company', '=', Get(Eval('context', {}), 'company', 0)),
         ],
         states={
-            'required': Or(Bool(Eval('centralised')),
-                And(Equal(Eval('type'), 'cash'),
-                    Bool(Get(Eval('context', {}), 'company', 0)))),
+            'required': And(Or(Bool(Eval('centralised')),
+                Equal(Eval('type'), 'cash')),
+                Bool(Get(Eval('context', {}), 'company', 0))),
             'invisible': Not(Bool(Get(Eval('context', {}), 'company', 0))),
         }, depends=['type', 'centralised']))
     debit_account = fields.Property(fields.Many2One('account.account',
@@ -109,9 +109,9 @@ class Journal(ModelSQL, ModelView):
             ('company', '=', Get(Eval('context', {}), 'company', 0)),
         ],
         states={
-            'required': Or(Bool(Eval('centralised')),
-                And(Equal(Eval('type'), 'cash'),
-                    Bool(Get(Eval('context', {}), 'company', 0)))),
+            'required': And(Or(Bool(Eval('centralised')),
+                Equal(Eval('type'), 'cash')),
+                Bool(Get(Eval('context', {}), 'company', 0))),
             'invisible': Not(Bool(Get(Eval('context', {}), 'company', 0))),
         }, depends=['type', 'centralised']))
 
