@@ -1626,7 +1626,7 @@ class AssignShipmentInternal(Wizard):
                     'shipmentinternal_trans_waiting_assigned_force')
             trans = transition_obj.read(trans_id)
             user_in_group = user_group_obj.search([
-                    ('uid', '=', user),
+                    ('uid', '=', Transaction().user),
                     ('gid', '=', trans['group']),
                     ], limit=1)
             if user_in_group:
@@ -1714,7 +1714,7 @@ class AssignShipmentInReturn(Wizard):
                     'shipment_in_return_trans_waiting_assigned_force')
             trans = transition_obj.read(trans_id)
             user_in_group = user_group_obj.search([
-                    ('uid', '=', user),
+                    ('uid', '=', Transaction().user),
                     ('gid', '=', trans['group']),
                     ], limit=1)
             if user_in_group:
