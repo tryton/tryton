@@ -1,3 +1,6 @@
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
+
 Version 1.6.0 - 2010-05-09
 * Bug fixes (see mercurial logs for details)
 * Use pycountry to generate currency datas
