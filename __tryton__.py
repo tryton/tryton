@@ -6,7 +6,7 @@
     'name_es_CO': 'Secuencia de Sitio del Stock',
     'name_es_ES': 'Secuencia de ubicación de existencias',
     'name_fr_FR': 'Séquence emplacement',
-    'version': '1.7.0',
+    'version': '1.8.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
