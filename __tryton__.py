@@ -6,7 +6,7 @@
     'name_es_CO': 'Mapas de Google',
     'name_es_ES': 'Mapas de Google',
     'name_fr_FR': 'Cartes Google',
-    'version' : '1.8.0',
+    'version' : '1.9.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
