@@ -6,7 +6,7 @@
     'name_es_CO': 'Estado de Cuentas',
     'name_es_ES': 'Estado de cuentas',
     'name_fr_FR': 'Relevé comptable',
-    'version': '1.7.0',
+    'version': '1.8.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
