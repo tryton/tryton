@@ -1,3 +1,5 @@
+Version 1.8.0 - 2010-11-01
+* Bug fixes (see mercurial logs for details)
 * Rename product field into category for product.category-customer-account.tax
   and product.category-supplier-account.tax
 
