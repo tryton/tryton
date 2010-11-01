@@ -6,7 +6,7 @@
     'name_es_CO': 'Escritorio',
     'name_es_ES': 'Escritorio',
     'name_fr_FR': 'Tableau de bord',
-    'version': '1.8.0',
+    'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
