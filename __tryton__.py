@@ -6,7 +6,7 @@
     'name_es_CO': 'Proyectos',
     'name_es_ES': 'Proyecto',
     'name_fr_FR': 'Projet',
-    'version': '1.7.0',
+    'version': '1.8.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
