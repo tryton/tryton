@@ -6,7 +6,7 @@
     "name_es_CO" : "Ubicación de existencias de producto",
     "name_es_ES" : "Ubicación de existencias de producto",
     "name_fr_FR" : "Emplacement de produit",
-    "version" : "1.8.0",
+    "version" : "1.8.1",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
