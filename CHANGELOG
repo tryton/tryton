@@ -1,3 +1,6 @@
+Version 1.6.2 - 2010-11-02
+* Bug fixes (see mercurial logs for details)
+
 Version 1.6.1 - 2010-07-29
 * Bug fixes (see mercurial logs for details)
 * Make _timestamp numeric instead of datetime to work with XML-RPC and JSON-RPC
