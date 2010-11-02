@@ -3,7 +3,7 @@
 {
     'name': 'Account Belgium',
     'name_fr_FR': 'Comptabilité belge',
-    'version': '1.8.0',
+    'version': '1.8.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
