@@ -6,7 +6,7 @@
     "name_es_CO" : "Línea de factura autónoma",
     "name_es_ES" : "Línea de factura independiente",
     "name_fr_FR" : "Ligne de facture autonome",
-    "version" : "1.8.0",
+    "version" : "1.8.1",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
