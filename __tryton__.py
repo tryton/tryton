@@ -6,7 +6,7 @@
     'name_es_CO': 'Ventas Analíticas',
     'name_es_ES': 'Ventas Analíticas',
     'name_fr_FR': 'Vente analytique',
-    'version': '1.2.1',
+    'version': '1.2.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
