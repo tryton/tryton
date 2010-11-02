@@ -4,7 +4,7 @@
     'name': 'Stock Location Sequence',
     'name_de_DE': 'Lagerverwaltung Lagerortsequenz',
     'name_fr_FR': 'Séquence emplacement',
-    'version': '1.2.1',
+    'version': '1.2.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
