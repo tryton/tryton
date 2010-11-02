@@ -6,7 +6,7 @@
     'name_es_CO': 'Moneda',
     'name_es_ES': 'Moneda',
     'name_fr_FR': 'Devise',
-    'version': '1.2.1',
+    'version': '1.2.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
