@@ -1,3 +1,6 @@
+Version 1.2.1 - 2010-11-02
+* Bug fixes (see mercurial logs for details)
+
 Version 1.2.0 - 2009-04-20
 * Bug fixes (see mercurial logs for details)
 * Allow egg installation
