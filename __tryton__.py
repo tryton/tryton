@@ -3,7 +3,7 @@
 {
     'name': 'German Chart of Accounts SKR03',
     'name_de_DE': 'Deutscher Kontenrahmen SKR03',
-    'version': '1.2.1',
+    'version': '1.2.2',
     'author': 'virtual things',
     'email': 'info@virtual-things.biz',
     'website': 'http://www.virtual-things.biz/',
