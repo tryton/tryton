@@ -6,7 +6,7 @@
     'name_fr_FR': 'Facturation',
     'name_es_CO': 'Facturación',
     'name_es_ES': 'Facturación',
-    'version': '1.2.4',
+    'version': '1.2.5',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
