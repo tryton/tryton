@@ -4,7 +4,7 @@
     'name' : 'Google Maps',
     'name_de_DE': 'Google Maps',
     'name_fr_FR': 'Cartes Google',
-    'version' : '1.2.1',
+    'version': '1.2.2',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
