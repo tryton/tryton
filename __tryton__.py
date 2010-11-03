@@ -7,7 +7,7 @@
     'name_es_CO': 'Terceros',
     'name_es_ES': 'Terceros',
     'name_fr_FR': 'Tiers',
-    'version' : '1.4.2',
+    'version': '1.4.3',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
