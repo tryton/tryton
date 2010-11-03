@@ -6,7 +6,7 @@
     'name_es_CO': 'Productos',
     'name_es_ES': 'Producto',
     'name_fr_FR': 'Produit',
-    'version' : '1.6.1',
+    'version': '1.6.2',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
