@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 from setuptools import setup, find_packages
 import sys
+import os
 import proteus
 
 major_version, minor_version, _ = proteus.__version__.split('.', 2)
@@ -13,9 +14,13 @@ SIMPLEJSON = []
 if sys.version_info < (2, 6):
     SIMPLEJSON = ['simplejson']
 
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
 setup(name='proteus',
     version=proteus.__version__,
     description='Library to access Tryton server as a client',
+    long_description=read('README'),
     author='B2CK',
     author_email='info@b2ck.com',
     url='http://www.tryton.org/',
