@@ -723,7 +723,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         res = []
         for tax in invoice.taxes:
             val = tax_obj.get_move_line(tax)
-            res.append(val)
+            if val:
+                res.append(val)
         return res
 
     def _get_move_line(self, invoice, date, amount):
@@ -1866,6 +1867,8 @@ class InvoiceTax(ModelSQL, ModelView):
         '''
         currency_obj = self.pool.get('currency.currency')
         res = {}
+        if not tax.amount:
+            return res
         res['name'] = tax.description
         if tax.invoice.currency.id != tax.invoice.company.currency.id:
             amount = currency_obj.compute(tax.invoice.currency, tax.amount,
