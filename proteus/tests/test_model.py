@@ -14,6 +14,10 @@ class TestModel(TestCase):
         User2 = Model.get('res.user')
         self.assertEqual(id(User1), id(User2))
 
+        Model.reset()
+        User3 = Model.get('res.user')
+        self.assertNotEqual(id(User1), id(User3))
+
     def test_class_method(self):
         User = Model.get('res.user')
         self.assert_(len(User.search([('login', '=', 'admin')], {})))

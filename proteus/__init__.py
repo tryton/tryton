@@ -292,6 +292,18 @@ class Model(object):
             __metaclass__ = MetaModelFactory(name, config=config)()
         return Spam
 
+    @classmethod
+    def reset(cls, config=None, *names):
+        'Reset class definition for Models named'
+        config = config or proteus.config.get_config()
+        models_key = 'c%s' % id(config)
+        if not names:
+            setattr(_MODELS, models_key, {})
+        else:
+            models = getattr(_MODELS, models_key, {})
+            for name in names:
+                del models[name]
+
     def __str__(self):
         return '<%s(%d)>' % (self.__class__.__name__, self.id)
     __str__.__doc__ = object.__str__.__doc__
