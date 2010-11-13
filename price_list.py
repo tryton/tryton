@@ -153,11 +153,13 @@ class PriceListLine(ModelSQL, ModelView):
         price_list_obj = self.pool.get('product.price_list')
         context = price_list_obj._get_context_price_list_line(None, None,
                 Decimal('0.0'), 0, None)
-        for line in self.browse(ids):
-            try:
-                self.get_unit_price(line)
-            except Exception:
-                return False
+        lines = self.browse(ids)
+        with Transaction().set_context(**context):
+            for line in lines:
+                try:
+                    self.get_unit_price(line)
+                except Exception:
+                    return False
         return True
 
     def match(self, line, pattern):
