@@ -1101,10 +1101,9 @@ class SaleLine(ModelSQL, ModelView):
     def on_change_with_amount(self, vals):
         currency_obj = self.pool.get('currency.currency')
         if vals.get('type') == 'line':
-            if isinstance(vals.get('_parent_sale.currency'), (int, long)):
+            currency = vals.get('_parent_sale.currency')
+            if currency and isinstance(currency, (int, long)):
                 currency = currency_obj.browse(vals['_parent_sale.currency'])
-            else:
-                currency = vals['_parent_sale.currency']
             amount = Decimal(str(vals.get('quantity') or '0.0')) * \
                     (vals.get('unit_price') or Decimal('0.0'))
             if currency:
