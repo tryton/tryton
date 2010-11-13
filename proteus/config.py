@@ -131,7 +131,8 @@ class TrytondConfig(Config):
             self.user = user_obj.search([
                 ('login', '=', user),
                 ], limit=1)[0]
-            self._context = user_obj.get_preferences(context_only=True)
+            with transaction.set_user(self.user):
+                self._context = user_obj.get_preferences(context_only=True)
         Cache.resets(database_name)
     __init__.__doc__ = object.__init__.__doc__
 
