@@ -639,6 +639,8 @@ class Wizard(object):
             elif res['type'] == 'print':
                 # TODO run print
                 self.state = res['state']
+            elif res['type'] == 'state':
+                self.state = res['state']
 
         if self.state == 'end':
             self._proxy.delete(self.id, self._config.context)
