@@ -48,7 +48,7 @@ class TestModel(TestCase):
         try:
             administration.model_access = []
             self.fail()
-        except AssertionError:
+        except AttributeError:
             pass
 
     def test_many2many(self):
@@ -60,7 +60,7 @@ class TestModel(TestCase):
         try:
             admin.groups = []
             self.fail()
-        except AssertionError:
+        except AttributeError:
             pass
 
     # TODO test date

@@ -20,7 +20,7 @@ class _EvalEnvironment(dict):
         self.parent = parent
 
     def __getitem__(self, item):
-        if item == '_parent_' + self.parent.parent_field_name \
+        if item == '_parent_' + self.parent._parent_field_name \
                 and self.parent.parent:
             return _EvalEnvironment(self.parent.parent)
         return self.parent._get_eval()[item]
@@ -46,84 +46,269 @@ class _EvalEnvironment(dict):
     def __contains__(self, item):
         return item in self.parent._fields
 
-def _getmethod(name, definition):
-    def getmethod(self):
-        if self.id > 0 and name not in self._values:
-            self._read(name)
-        if definition['type'] == 'many2one':
-            if isinstance(self._values.get(name), (int, long)) \
-                    and self._values.get(name) is not False:
-                relation = Model.get(definition['relation'], self._config)
-                self._values[name] = relation(self._values.get(name))
-            elif not self._values.get(name):
-                self._values[name] = None
-        elif definition['type'] in ('one2many', 'many2many'):
-            relation = Model.get(definition['relation'], self._config)
-            if not isinstance(self._values.get(name), ModelList):
-                self._values[name] = ModelList((relation(id) for id
-                        in self._values.get(name) or []), self, name)
-                for record in self._values[name]:
-                    record._parent = self
-                    record._parent_field_name = name
-        elif definition['type'] == 'date':
-            if isinstance(self._values.get(name), datetime.datetime):
-                self._values[name] = self._values.get(name).date()
-        elif definition['type'] == 'reference':
-            if isinstance(self._values.get(name), basestring):
-                ref_model, ref_id = self._values[name].split(',', 1)
-                if ref_model:
-                    relation = Model.get(ref_model, self._config)
-                    self._values[name] = relation(int(ref_id))
-            elif not self._values.get(name):
-                self._values[name] = None
-        return self._values.get(name)
-    return getmethod
 
-def _setmethod(name, definition):
-    def set_method(self, value):
-        assert definition['type'] not in ('one2many', 'many2many')
+class FieldDescriptor(object):
+    default = None
 
-        if definition['type'] in ('many2one'):
-            assert isinstance(value, (Model, NoneType))
-            if value:
-                assert value.id > 0 and not value._changed
-                assert value._config == self._config
-                assert value.__class__.__name__ == definition['relation']
-        elif definition['type'] == 'datetime':
-            assert isinstance(value, datetime.datetime)
-        elif definition['type'] == 'date':
-            assert isinstance(value, datetime.date)
-        elif definition['type'] == 'reference':
-            assert isinstance(value, (Model, NoneType, basestring))
-            if isinstance(value, basestring):
-                assert value.startswith(',')
-            elif isinstance(value, Model):
-                assert value.id > 0 and not value._changed
-                assert value._config == self._config
-        elif definition['type'] in ('char', 'sha', 'selection'):
-            assert isinstance(value, basestring)
-        elif definition['type'] in ('float_time', 'float'):
-            assert isinstance(value, float)
-        elif definition['type'] in ('integer', 'biginteger'):
-            assert isinstance(value, (int, long))
-        elif definition['type'] == 'numeric':
-            assert isinstance(value, Decimal)
-        elif definition['type'] == 'boolean':
-            assert isinstance(value, bool)
+    def __init__(self, name, definition):
+        super(FieldDescriptor, self).__init__()
+        self.name = name
+        self.definition = definition
 
-        if self.id > 0 and name not in self._values:
-            self._read(name)
-        previous = getattr(self, name)
-        self._values[name] = value
-        if previous != getattr(self, name):
-            self._changed.add(name)
-            self._on_change(name)
-            if self._parent:
-                self._parent._changed.add(self._parent_field_name)
-                self._parent._on_change(self._parent_field_name)
-    return set_method
+    def __get__(self, instance, owner):
+        if instance.id > 0 and self.name not in instance._values:
+            instance._read(self.name)
+        return instance._values.get(self.name, self.default)
+
+    def __set__(self, instance, value):
+        if instance.id > 0 and self.name not in instance._values:
+            instance._read(self.name)
+        previous = getattr(instance, self.name)
+        instance._values[self.name] = value
+        if previous != getattr(instance, self.name):
+            instance._changed.add(self.name)
+            instance._on_change(self.name)
+            if instance._parent:
+                instance._parent._changed.add(instance._parent_field_name)
+                instance._parent._on_change(instance._parent_field_name)
+
+
+class BooleanDescriptor(FieldDescriptor):
+    default = False
+
+    def __set__(self, instance, value):
+        assert isinstance(value, bool)
+        super(BooleanDescriptor, self).__set__(instance, value)
+
+
+class CharDescriptor(FieldDescriptor):
+    default = None
+
+    def __set__(self, instance, value):
+        assert isinstance(value, basestring)
+        super(CharDescriptor, self).__set__(instance, value)
+
+
+class IntegerDescriptor(FieldDescriptor):
+    default = 0
+
+    def __set__(self, instance, value):
+        assert isinstance(value, (int, long))
+        super(IntegerDescriptor, self).__set__(instance, value)
+
+
+class FloatDescriptor(FieldDescriptor):
+    default = 0.0
+
+    def __set__(self, instance, value):
+        assert isinstance(value, float)
+        super(FloatDescriptor, self).__set__(instance, value)
+
+
+class NumericDescriptor(FieldDescriptor):
+    default = Decimal('0.0')
+
+    def __set__(self, instance, value):
+        assert isinstance(value, Decimal)
+        # TODO add digits validation
+        super(NumericDescriptor, self).__set__(instance, value)
+
+
+class ReferenceDescriptor(FieldDescriptor):
+    def __get__(self, instance, owner):
+        value = super(ReferenceDescriptor, self).__get__(instance, owner)
+        if isinstance(value, basestring):
+            model_name, id = value.split(',', 1)
+            if model_name:
+                relation = Model.get(model_name, instance._config)
+                value = relation(int(id))
+                instance._values[self.name] = value
+        return value
+
+    def __set__(self, instance, value):
+        assert isinstance(value, (Model, NoneType, basestring))
+        if isinstance(value, basestring):
+            assert value.startswith(',')
+        elif isinstance(value, Model):
+            assert value.id > 0 and not value._changed
+            assert value._config == instance._config
+        super(ReferenceDescriptor, self).__set__(instance, value)
+
+
+class DateDescriptor(FieldDescriptor):
+    def __get__(self, instance, owner):
+        value = super(DateDescriptor, self).__get__(instance, owner)
+        if isinstance(value, datetime.datetime):
+            value = value.date()
+            instance._values[self.name] = value
+        return value
+
+    def __set__(self, instance, value):
+        assert isinstance(value, datetime.date)
+        super(DateDescriptor, self).__set__(instance, value)
+
+
+class DateTimeDescriptor(FieldDescriptor):
+    def __set__(self, instance, value):
+        assert isinstance(value, datetime.datetime)
+        super(DateTimeDescriptor, self).__set_(instance, value)
+
+
+class Many2OneDescriptor(FieldDescriptor):
+    def __get__(self, instance, owner):
+        relation = Model.get(self.definition['relation'], instance._config)
+        value = super(Many2OneDescriptor, self).__get__(instance, owner)
+        if isinstance(value, (int, long)) and value is not False:
+            value = relation(value)
+        elif not value:
+            value = None
+        instance._values[self.name] = value
+        return value
+
+    def __set__(self, instance, value):
+        assert isinstance(value, (Model, NoneType))
+        if value:
+            assert value.id > 0 and not value._changed
+            assert value._config == instance._config
+        super(Many2OneDescriptor, self).__set__(instance, value)
+
+
+class One2ManyDescriptor(FieldDescriptor):
+    default = []
+
+    def __get__(self, instance, owner):
+        relation = Model.get(self.definition['relation'], instance._config)
+        value = super(One2ManyDescriptor, self).__get__(instance, owner)
+        if not isinstance(value, ModelList):
+            value = ModelList((relation(id)
+                for id in value or []), instance, self.name,
+                self.definition.get('relation_field'))
+            instance._values[self.name] = value
+        return value
+
+    def __set__(self, instance, value):
+        raise AttributeError
+
+
+class Many2ManyDescriptor(One2ManyDescriptor):
+    pass
+
+
+class ValueDescriptor(object):
+    def __init__(self, name, definition):
+        super(ValueDescriptor, self).__init__()
+        self.name = name
+        self.definition = definition
+
+    def __get__(self, instance, owner):
+        return getattr(instance, self.name)
+
+
+class ReferenceValueDescriptor(ValueDescriptor):
+    def __get__(self, instance, owner):
+        value = super(ReferenceValueDescriptor, self).__get__(instance, owner)
+        if isinstance(value, Model):
+            value = '%s,%s' % (value.__class__.__name__, value.id)
+        return value or False
+
+
+class Many2OneValueDescriptor(ValueDescriptor):
+    def __get__(self, instance, owner):
+        value = super(Many2OneValueDescriptor, self).__get__(instance, owner)
+        return value and value.id or False
+
+
+class One2ManyValueDescriptor(ValueDescriptor):
+    def __get__(self, instance, owner):
+        value = [('add', [])]
+        value_list = getattr(instance, self.name)
+        for record in value_list:
+            if record.id > 0:
+                if record._changed:
+                    value.append(('write', record.id, record._get_values()))
+                else:
+                    value[0][1].append(record.id)
+            else:
+                value.append(('create', record._get_values()))
+        if value_list.record_removed:
+            value.append(('unlink', [x.id for x in value_list.record_removed]))
+        if value_list.record_deleted:
+            value.append(('delete', [x.id for x in value_list.record_deleted]))
+        return value
+
+
+class Many2ManyValueDescriptor(One2ManyValueDescriptor):
+    pass
+
+
+class EvalDescriptor(object):
+    def __init__(self, name, definition):
+        super(EvalDescriptor, self).__init__()
+        self.name = name
+        self.definition = definition
+
+    def __get__(self, instance, owner):
+        return getattr(instance, self.name)
+
+
+class ReferenceEvalDescriptor(EvalDescriptor):
+    def __get__(self, instance, owner):
+        value = super(ReferenceEvalDescriptor, self).__get__(instance, owner)
+        if isinstance(value, Model):
+            value = '%s,%s' % (value.__class__.__name__, value.id)
+        return value or False
+
+
+class Many2OneEvalDescriptor(EvalDescriptor):
+    def __get__(self, instance, owner):
+        value = super(Many2OneEvalDescriptor, self).__get__(instance, owner)
+        if value:
+            return value.id
+        return False
+
+
+class One2ManyEvalDescriptor(EvalDescriptor):
+    def __get__(self, instance, owner):
+        return [x.id for x in getattr(instance, self.name)]
+
+
+class Many2ManyEvalDescriptor(One2ManyEvalDescriptor):
+    pass
+
 
 class MetaModelFactory(object):
+    descriptors = {
+        'boolean': BooleanDescriptor,
+        'char': CharDescriptor,
+        'text': CharDescriptor,
+        'sha': CharDescriptor,
+        'binary': CharDescriptor,
+        'selection': CharDescriptor, # TODO implement its own descriptor
+        'integer': IntegerDescriptor,
+        'biginteger': IntegerDescriptor,
+        'float': FloatDescriptor,
+        'float_time': FloatDescriptor,
+        'numeric': NumericDescriptor,
+        'reference': ReferenceDescriptor,
+        'date': DateDescriptor,
+        'datetime': DateTimeDescriptor,
+        'many2one': Many2OneDescriptor,
+        'one2many': One2ManyDescriptor,
+        'many2many': Many2ManyDescriptor,
+    }
+    value_descriptors = {
+        'reference': ReferenceValueDescriptor,
+        'many2one': Many2OneValueDescriptor,
+        'one2many': One2ManyValueDescriptor,
+        'many2many': Many2ManyValueDescriptor,
+    }
+    eval_descriptors = {
+        'reference': ReferenceEvalDescriptor,
+        'many2one': Many2OneEvalDescriptor,
+        'one2many': One2ManyEvalDescriptor,
+        'many2many': Many2ManyEvalDescriptor,
+    }
+
     def __init__(self, model_name, config=None):
         super(MetaModelFactory, self).__init__()
         self.model_name = model_name
@@ -147,8 +332,16 @@ class MetaModelFactory(object):
                 for field_name, definition in dict['_fields'].iteritems():
                     if field_name == 'id':
                         continue
-                    dict[field_name] = property(_getmethod(field_name,
-                        definition), _setmethod(field_name, definition))
+                    Descriptor = self.descriptors[definition['type']]
+                    dict[field_name] = Descriptor(field_name, definition)
+                    VDescriptor = self.value_descriptors.get(
+                            definition['type'], ValueDescriptor)
+                    dict['__%s_value' % field_name] = VDescriptor(
+                            field_name, definition)
+                    EDescriptor = self.eval_descriptors.get(
+                            definition['type'], EvalDescriptor)
+                    dict['__%s_eval' % field_name] = EDescriptor(
+                            field_name, definition)
                 for method in self.config.get_proxy_methods(self.model_name):
                     setattr(mcs, method, getattr(proxy, method))
                 res = type.__new__(mcs, name, bases, dict)
@@ -161,16 +354,23 @@ class MetaModelFactory(object):
 class ModelList(list):
     'List for Model'
 
-    def __init__(self, sequence=None, parent=None, parent_field_name=None):
+    def __init__(self, sequence=None, parent=None, parent_field_name='',
+            parent_name=''):
         if sequence is None:
             sequence = []
         self.parent = parent
-        self.parent_field_name = parent_field_name
         if parent:
             assert parent_field_name
+        self.parent_field_name = parent_field_name
+        self.parent_name = parent_name
         self.record_removed = set()
         self.record_deleted = set()
-        return super(ModelList, self).__init__(sequence)
+        result = super(ModelList, self).__init__(sequence)
+        for record in self:
+            record._parent = parent
+            record._parent_field_name = parent_field_name
+            record._parent_name = parent_name
+        return result
     __init__.__doc__ = list.__init__.__doc__
 
     def _changed(self):
@@ -186,9 +386,11 @@ class ModelList(list):
         elif self:
             assert record._config == self[0]._config
         assert record._parent is None
-        assert record._parent_field_name is None
+        assert not record._parent_field_name
+        assert not record._parent_name
         record._parent = self.parent
         record._parent_field_name = self.parent_field_name
+        record._parent_name = self.parent_name
         res = super(ModelList, self).append(record)
         self._changed()
         return res
@@ -209,9 +411,11 @@ class ModelList(list):
                 config = record._config
         for record in iterable:
             assert record._parent is None
-            assert record._parent_field_name is None
+            assert not record._parent_field_name
+            assert not record._parent_name
             record._parent = self.parent
             record._parent_field_name = self.parent_field_name
+            record._parent_name = self.parent_name
         res = super(ModelList, self).extend(iterable)
         self._changed()
         return res
@@ -225,6 +429,7 @@ class ModelList(list):
         self.record_removed.add(self[index])
         self[index]._parent = None
         self[index]._parent_field_name = None
+        self[index]._parent_name = None
         res = super(ModelList, self).pop(index)
         self._changed()
         return res
@@ -234,6 +439,7 @@ class ModelList(list):
         self.record_deleted.add(record)
         record._parent = None
         record._parent_field_name = None
+        record._parent_name = None
         res = super(ModelList, self).remove(record)
         self._changed()
         return res
@@ -266,7 +472,8 @@ class Model(object):
         self._values = {} # store the values of fields
         self._changed = set() # store the changed fields
         self._parent = None # store the parent record
-        self._parent_field_name = None # store the field name in parent record
+        self._parent_field_name = '' # store the field name in parent record
+        self._parent_name = '' # store the field name to parent record
         if self.id < 0:
             self._default_get()
 
@@ -370,42 +577,8 @@ class Model(object):
         'Return dictionary values'
         if fields is None:
             fields = self._values.keys()
-        values = {}
-        for field_name in fields:
-            if field_name == '_timestamp':
-                continue
-            definition = self._fields[field_name]
-            if definition['type'] == 'many2one':
-                if getattr(self, field_name):
-                    values[field_name] = getattr(self, field_name).id
-                else:
-                    values[field_name] = False
-            elif definition['type'] in ('one2many', 'many2many'):
-                values[field_name] = [('add', [])]
-                for record in getattr(self, field_name):
-                    if record.id > 0:
-                        if record._changed:
-                            values[field_name].append(('write', record.id,
-                                record._get_values()))
-                        else:
-                            values[field_name][0][1].append(record.id)
-                    else:
-                        values[field_name].append(('create',
-                            record._get_values()))
-                if getattr(self, field_name).record_removed:
-                    values[field_name].append(('unlink', [x.id for x
-                        in getattr(self, field_name).record_removed]))
-                if getattr(self, field_name).record_deleted:
-                    values[field_name].append(('delete', [x.id for x
-                        in getattr(self, field_name).record_deleted]))
-            elif definition['type'] == 'reference' \
-                    and isinstance(getattr(self, field_name), Model):
-                record = getattr(self, field_name)
-                values[field_name] = '%s,%s' % (record.__class__.__name__,
-                        record.id)
-            else:
-                values[field_name] = getattr(self, field_name)
-        return values
+        return dict((x, getattr(self, '__%s_value' % x)) for x in fields
+                if x not in ('id', '_timestamp'))
 
     @property
     def _timestamp(self):
@@ -453,32 +626,15 @@ class Model(object):
                 for vals in (value or []):
                     record = relation()
                     record._default_set(vals)
-                    record._parent = self
-                    record._parent_field_name = field
                     records.append(record)
-                self._values[field] = ModelList(records, self, field)
+                self._values[field] = ModelList(records, self, field,
+                        definition.get('relation_field', ''))
             else:
                 self._values[field] = value
 
     def _get_eval(self):
-        values = {}
-        for field, definition in self._fields.iteritems():
-            if definition['type'] in ('one2many', 'many2many'):
-                values[field] = [x.id for x in getattr(self, field) or []]
-            elif definition['type'] == 'many2one':
-                if getattr(self, field):
-                    values[field] = getattr(self, field).id
-                else:
-                    values[field] = False
-            elif definition['type'] == 'reference':
-                if isinstance(getattr(self, field), Model):
-                    record = getattr(self, field)
-                    values[field] = '%s,%s' % (record.__class__.__name__,
-                            record.id)
-                else:
-                    values[field] = getattr(self, field) or False
-            else:
-                values[field] = getattr(self, field)
+        values = dict((x, getattr(self, '__%s_eval' % x))
+                for x in self._fields if x != 'id')
         values['id'] = self.id
         return values
 
@@ -490,7 +646,7 @@ class Model(object):
             if definition['type'] in ('one2many', 'many2many'):
                 values[field] = [x._get_eval() for x in getattr(self, field)]
         if self._parent:
-            values['_parent_%s' % self._parent_field_name] = \
+            values['_parent_%s' % self._parent_name] = \
                     _EvalEnvironment(self._parent)
         for arg in args:
             scope = values
