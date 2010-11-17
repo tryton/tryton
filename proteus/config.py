@@ -4,6 +4,7 @@
 Configuration functions for the proteus package for Tryton.
 """
 from __future__ import with_statement
+__all__ = ['set_trytond', 'set_xmlrpc', 'get_config']
 import xmlrpclib
 import threading
 from decimal import Decimal
