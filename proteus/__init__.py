@@ -737,8 +737,7 @@ class Wizard(object):
 
     def __init__(self, name, models=None, config=None, context=None):
         if models:
-            assert isinstance(models, ModelList)
-
+            assert len(set(type(x) for x in models)) == 1
         super(Wizard, self).__init__()
         self.name = name
         self.state = None
