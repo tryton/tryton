@@ -538,11 +538,11 @@ class Model(object):
         return self.__id
 
     @classmethod
-    def find(cls, condition=None):
+    def find(cls, condition=None, offset=0, limit=None, order=None):
         'Return records matching condition'
         if condition is None:
             condition = []
-        ids = cls._proxy.search(condition, 0, None, None,
+        ids = cls._proxy.search(condition, offset, limit, order,
                 cls._config.context)
         return [cls(id) for id in ids]
 
