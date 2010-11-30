@@ -110,15 +110,15 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         return date_obj.today()
 
     def delete(self, ids):
-        self.pool.get('company.employee').clear.reset()
+        self.pool.get('company.employee').clear()
         return super(EmployeeCostPrice , self).delete(ids)
 
     def create(self, vals):
-        self.pool.get('company.employee').clear.reset()
+        self.pool.get('company.employee').clear()
         return super(EmployeeCostPrice , self).create(vals)
 
     def write(self, ids, vals):
-        self.pool.get('company.employee').clear.reset()
+        self.pool.get('company.employee').clear()
         return super(EmployeeCostPrice , self).write(ids, vals)
 
     def get_currency_digits(self, ids, name):
