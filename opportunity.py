@@ -352,6 +352,12 @@ class SaleOpportunityLine(ModelSQL, ModelView):
             '_parent_sale.party': line.opportunity.party.id,
             '_parent_sale.currency': line.opportunity.company.currency.id,
             }))
+        for field_name, field in sale_line_obj._columns.iteritems():
+            if field._type not in ('one2many', 'many2many'):
+                continue
+            if field_name not in res:
+                continue
+            res[field_name] = [('add', res[field_name])]
         return res
 
 SaleOpportunityLine()
