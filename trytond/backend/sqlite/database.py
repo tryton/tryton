@@ -150,7 +150,7 @@ class Database(DatabaseInterface):
         conn.close()
 
     def drop(self, cursor, database_name):
-        if database_name == ':memory':
+        if database_name == ':memory:':
             self._conn = None
             return
         if os.sep in database_name:
