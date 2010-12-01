@@ -98,7 +98,7 @@ dictionary ``{}``. ``Get()`` checks the former resulting dictionary
 and returns the value of the key ``'company'``, otherwise it returns
 the number ``0``. A similar expression in Python looks like this::
 
-    'context' in locals() and context.get('company', 0)
+    'context' in locals() and context.get('company', 0) or 0
 
 
 
