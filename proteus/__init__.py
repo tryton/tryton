@@ -226,11 +226,12 @@ class One2ManyValueDescriptor(ValueDescriptor):
         for record in value_list:
             if record.id > 0:
                 if record._changed:
-                    value.append(('write', record.id, record._get_values()))
-                else:
-                    value[0][1].append(record.id)
+                    value.append(('write', record.id, record._get_values(
+                        fields=record._changed)))
+                value[0][1].append(record.id)
             else:
-                value.append(('create', record._get_values()))
+                value.append(('create', record._get_values(
+                    fields=record._changed)))
         if value_list.record_removed:
             value.append(('unlink', [x.id for x in value_list.record_removed]))
         if value_list.record_deleted:
@@ -555,7 +556,7 @@ class Model(object):
         'Save the record'
         context = self._config.context
         if self.id < 0:
-            values = self._get_values()
+            values = self._get_values(fields=self._changed)
             self.__id = self._proxy.create(values, context)
         else:
             if not self._changed:
