@@ -15,7 +15,7 @@ class BrowseRecordList(list):
         super(BrowseRecordList, self).__init__(lst)
 
     def get_eval(self):
-        return [record.get_eval() for record in self]
+        return [record.id for record in self]
 
 
 class BrowseRecordNull(object):
