@@ -13,7 +13,7 @@ class BrowseRecordList(list):
         self.context = context
 
     def get_eval(self):
-        return [record.get_eval() for record in self]
+        return [record.id for record in self]
 
 
 class BrowseRecordNull(object):
