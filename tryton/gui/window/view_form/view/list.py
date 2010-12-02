@@ -368,8 +368,9 @@ class ViewList(ParserView):
             info, etime):
         treeview.emit_stop_by_name('drag-data-received')
         if treeview.sequence:
+            field = self.screen.group.fields[treeview.sequence]
             for record in self.screen.group:
-                if record[treeview.sequence].get_state_attrs(
+                if field.get_state_attrs(
                         record).get('readonly', False):
                     return
         if not selection.data:
