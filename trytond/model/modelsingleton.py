@@ -36,6 +36,12 @@ class ModelSingleton(ModelStorage):
         if not singleton_id:
             res = self.default_get(cursor, user, fields_names, context=context,
                     with_rec_name=False)
+            if not fields_names:
+                fields_names = (set(self._columns.keys()
+                    + self._inherit_fields.keys()))
+            for field_name in fields_names:
+                if field_name not in res:
+                    res[field_name] = False
             if not isinstance(ids, (int, long)):
                 res['id'] = ids[0]
                 res = [res]
