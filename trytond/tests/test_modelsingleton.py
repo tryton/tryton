@@ -4,6 +4,7 @@
 #this repository contains the full copyright notices and license terms.
 from __future__ import with_statement
 import unittest
+from datetime import datetime
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
         install_module
 from trytond.transaction import Transaction
@@ -30,6 +31,17 @@ class ModelSingletonTestCase(unittest.TestCase):
             singleton = self.singleton.read([1], ['name'])[0]
             self.assert_(singleton['name'] == 'test')
             self.assert_(singleton['id'] == 1)
+
+            singleton = self.singleton.read(1, [
+                'create_uid',
+                'create_date',
+                'write_uid',
+                'write_date',
+                ])
+            self.assertEqual(singleton['create_uid'], USER)
+            self.assert_(isinstance(singleton['create_date'], datetime))
+            self.assertEqual(singleton['write_uid'], False)
+            self.assertEqual(singleton['write_date'], False)
 
             transaction.cursor.rollback()
 
