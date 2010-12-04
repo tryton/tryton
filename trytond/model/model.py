@@ -525,7 +525,8 @@ class Model(object):
         # get the default values defined in the object
         for field in fields_names:
             if field in self._defaults:
-                value[field] = self._defaults[field](cursor, user, context)
+                value[field] = self._defaults[field](cursor, user,
+                        context=context)
             if field in self._columns:
                 if self._columns[field]._type == 'boolean' and \
                         not field in value:
