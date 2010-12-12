@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Statement',
+    'name_bg_BG': 'Отчет на сметка',
     'name_de_DE': 'Buchhaltung Bankauszüge',
     'name_es_CO': 'Estado de Cuentas',
     'name_es_ES': 'Estado de cuentas',
@@ -13,6 +14,10 @@
     'description': '''Financial and Accounting Module with:
     - Statement
     - Statement journal
+''',
+    'description_bg_BG': '''Финансов и счетоводен модул с:
+    - Отчети
+    - Дневник на отчети
 ''',
     'description_de_DE': '''Modul für Buchhaltung und Bankauszüge mit
     - Abstimmung von Bankauszügen und Rechnungen
@@ -42,6 +47,7 @@
         'invoice.xml',
         ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
