@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Sale Pricelist',
+    'name_bg_BG': 'Ценова листа',
     'name_de_DE': 'Verkauf Preislisten',
     'name_es_CO': 'Lista de Precios de Venta',
     'name_es_ES': 'Lista de precios de venta',
@@ -11,6 +12,8 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Define price list on party and sale order.
+''',
+    'description_bg_BG': '''Задаване на ценова листа за партньор и поръчка за продажба
 ''',
     'description_de_DE': '''Preislisten für Verkauf
     - Ermöglicht die Definition von Preislisten per Partei und Verkauf.
@@ -34,6 +37,7 @@
         'sale.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
