@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Sales Leads and Opportunities',
+    'name_bg_BG': 'Инициативи и възможности за продажба',
     'name_de_DE': 'Verkauf Interessenten und Chancen',
     'name_fr_FR': 'Contacts commerciaux et opportunités de ventes',
     'version': '1.9.0',
@@ -14,6 +15,12 @@
     - Conversion Management
     - Record of lost leads
     - Opportunities to sale orders
+''',
+    'description_bg_BG': '''Дава възможност за:
+    - Инициативи
+    - Превръшане на инициативи във възможности
+    - Запис на неосъществени инициативи
+    - Превръщане на възможности в поръчки за продажба
 ''',
     'description_de_DE': '''Ermöglicht:
     - die Anlage von Interessenten (Leads)
@@ -42,6 +49,7 @@
         'party.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'fr_FR.csv',
     ],
