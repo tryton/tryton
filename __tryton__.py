@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Purchase',
+    'name_bg_BG': 'Покупки',
     'name_de_DE': 'Einkauf',
     'name_es_CO': 'Compras',
     'name_es_ES': 'Compras',
@@ -20,6 +21,17 @@ With the possibilities:
         - Manual
         - Based On Order
         - Based On Shipment
+''',
+    'description_bg_BG': ''' Задаване на поръчки за покупки.
+ - Добавяне на доставчици на продукти и информация за покупки.
+ - Задаване на цената на покупка като цена на доствчик или фабричната цена.
+
+Със следните възможности:
+    - проследяване на фактури и състоянията на доставката от поръчка за покупка
+    - задаване на начини на фактуриране:
+        - Ръчно
+        - Въз основа на поръчка
+        - Въз основа на доставка
 ''',
     'description_de_DE': ''' - Dient der Erstellung von Einkaufsvorgängen (Entwurf, Angebot, Auftrag).
  - Fügt den Artikeln Lieferanten und Einkaufsinformationen hinzu.
@@ -85,6 +97,7 @@ Avec la possibilité:
         'party.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
