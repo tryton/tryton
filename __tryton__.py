@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account',
+    'name_bg_BG': 'Фактури',
     'name_de_DE': 'Buchhaltung',
     'name_es_CO': 'Contabilidad',
     'name_es_ES': 'Contabilidad',
@@ -25,6 +26,22 @@ And with reports:
     - Third party balance
     - Aged balance
     - General journal
+''',
+    'description_bg_BG': '''Модул за сечоводтсво с:
+    - Общо счетоводство
+    - Управление на финансови години
+    - Управление на данъци
+    - Записи в дневници
+    - Съгласуване
+
+Прилежащи справки:
+    - Основен дневник
+    - Временен баланс
+    - Баланс
+    - Управление на приходи
+    - Баланс на външен партньор
+    - Хронологичен баланс
+    - Общ дневник
 ''',
     'description_de_DE': '''Buchhaltungsmodul mit:
     - Allgemeiner Buchhaltung
@@ -107,6 +124,7 @@ Et les rapports:
         'party.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
