@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Analytic Invoice',
+    'name_bg_BG': 'Аналитична фактура',
     'name_de_DE': 'Kostenstellen Rechnungsstellung',
     'name_es_CO': 'Facturación Analítica',
     'name_es_ES': 'Facturación analítica',
@@ -11,6 +12,8 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add analytic account on invoice lines and generate analytic lines on the moves of invoice.
+''',
+    'description_bg_BG': ''' - Добавя аналитична сметна за редове на фактури и генерира аналитични редове за движения от фактура
 ''',
     'description_de_DE': ''' - Fügt Kostenstellen zu Rechnungszeilen hinzu
  - Erstellt Positionen für Kostenstellen bei Buchung von Rechnungen
@@ -32,6 +35,7 @@
         'invoice.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
