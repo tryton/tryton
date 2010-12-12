@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Stock Forecast',
+    'name_bg_BG': 'Прогнозиране на наличност',
     'name_de_DE': 'Lagerverwaltung Bedarfsermittlung',
     'name_es_CO': 'Previsión de existencias',
     'name_es_ES': 'Previsión de existencias',
@@ -17,6 +18,13 @@ compute the expected quantities with respect to a period in the
 past. Once the form confirmed, the corresponding moves are created and
 spread homogeneously across the period. Those moves will allow other
 process to take forecasts into account.
+''',
+    'description_bg_BG':'''Предоставя модел за "прогнозиране" при управление на инвентазирация
+    - Формата за "Прогноза" позволява да се зададат очакваните движения на наличност 
+      към клиенти в бъдещ период. Помощник позволява да се изчислят очакваните
+      количества отчитайки периоди в миналто. След потвърждаване на формата, съответните
+      движения биват създадени и разпределени равномерно за периода. Тези движения
+      позволяват на други процеси да вземат предвид тези прогнози.
 ''',
     'description_de_DE':'''Bedarfsermittlung für die Lagerverwaltung
     - Fügt das Modell "Vorhersage" zur Lagerverwaltung hinzu.
@@ -67,6 +75,7 @@ prévisions.
         'forecast.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
