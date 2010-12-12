@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Stock Inventory for many locations',
+    'name_bg_BG': 'Инвентаризация на наличност за много местонахождения',
     'name_de_DE': 'Lagerverwaltung Bestandskorrektur für mehrere Lagerorte',
     'name_es_CO': 'Inventario de existencias para muchas ubicaciones',
     'name_es_ES': 'Inventario de existencias para muchas ubicaciones',
@@ -12,6 +13,9 @@
     'website': 'http://www.tryton.org/',
     'description': '''Add a wizard that allows to create automatically inventories for a
 given list of locations.
+''',
+    'description_bg_BG': '''Добавя помощник, който позволява създаване на автоматични
+      инвентаризации за зададен списък от местонахождения
 ''',
     'description_de_DE': '''Bestandskorrektur für mehrere Lagerorte
     - Fügt einen Wizard hinzu, der automatisch die Lagerbestände für eine Liste
@@ -36,6 +40,7 @@ pour une liste donnée d'emplacements.
         'inventory.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
