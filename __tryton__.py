@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Analytic Account',
+    'name_bg_BG': 'Аналитична сметка',
     'name_de_DE': 'Kostenstellen',
     'name_es_CO': 'Contabilidad Analítica',
     'name_es_ES': 'Contabilidad analítica',
@@ -15,6 +16,12 @@
 
 And with report:
     - Analytic account balance
+''',
+    'description_bg_BG': '''Финансов и счетоводен модул с:
+    - Аналитично счетоводство с произволен брой аналитични графики
+
+Прилежащи справки:
+    - Баланс на аналитична сметка
 ''',
     'description_de_DE': '''Modul für Buchhhaltung mit:
     - Kostenstellen mit einer beliebigen Anzahl von Tabellen
@@ -54,6 +61,7 @@ Et le rapport:
         'line.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',

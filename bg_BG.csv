@@ -1,0 +1,2 @@
+type,name,res_id,src,value,fuzzy
+field,"account.invoice.line,analytic_accounts",0,Analytic Accounts,Аналитични сметки,0
