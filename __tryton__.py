@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Company',
+    'name_bg_BG': 'Фирма',
     'name_de_DE': 'Unternehmen',
     'name_es_CO': 'Compañía',
     'name_es_ES': 'Empresa',
@@ -16,6 +17,13 @@ Add company on properties.
 Define new report parser for report with company header.
 Add letter template on party.
 Make the scheduler run on each companies.
+''',
+    'description_bg_BG': ''' - Задаване на фирма и служители
+ - Добавяне на основна и текуща фирма според предпочитания на потребителите
+ - Добавяне на фирма при предпочитания
+ - Задаване на нов анализатор на справки с фирмен горен колонтитул
+ - Добавяне на шаблон на писмо за партньор
+ - Възможност планировщика да работи на всяка фирма
 ''',
     'description_de_DE': ''' - Ermöglicht die Eingabe von Umternehmen und Mitarbeitern.
  - Fügt Haupt- und aktuelles Unternehmen zu den Benutzereinstellungen hinzu.
@@ -56,6 +64,7 @@ Lance les planificateurs sur chaque société.
         'cron.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
