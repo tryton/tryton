@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Product',
+    'name_bg_BG': 'Сметка за продукт',
     'name_de_DE': 'Buchhaltung Artikel',
     'name_es_CO': 'Contabilidad de Inventarios',
     'name_es_ES': 'Contabilidad de productos',
@@ -13,6 +14,10 @@
     'description': '''Add accounting properties on product and category like:
     - account for expense / revenue
     - taxes for customer / supplier
+''',
+    'description_bg_BG': '''Добавя счетоводни свойства на продукт и категория като:
+    - сметка за разходи / приходу
+    - данъци за клиент / доставчик
 ''',
     'description_de_DE': '''Fügt Eigenschaften für die Buchhaltung zu Artikeln und Artikelkategorien hinzu:
     - Aufwands- und Ertragskonto
@@ -40,6 +45,7 @@
         'product.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
