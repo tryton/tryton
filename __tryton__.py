@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Project',
+    'name_bg_BG': 'Проект',
     'name_de_DE': 'Projekte',
     'name_es_CO': 'Proyectos',
     'name_es_ES': 'Proyecto',
@@ -12,6 +13,9 @@
     'website': 'http://www.tryton.org/',
     'description': '''Project Module with:
     - Project management
+''',
+    'description_bg_BG': '''Модул за проекти с:
+    - Управление на проекти
 ''',
     'description_de_DE': '''Projektmodul für:
     - Projektverwaltung
@@ -36,6 +40,7 @@
         'work.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
