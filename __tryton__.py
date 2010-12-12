@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Currency',
+    'name_bg_BG': 'Валута',
     'name_de_DE': 'Währung',
     'name_es_CO': 'Moneda',
     'name_es_ES': 'Divisa',
@@ -12,6 +13,9 @@
     'website': 'http://www.tryton.org/',
     'description': '''Define currencies and exchange rate.
 Allow to customize the formatting of the currency amount.
+''',
+    'description_bg_BG': '''Задаване на валути и обменни курсове.
+ Позволява настройване на форматиране на сумата на валута.
 ''',
     'description_de_DE': ''' - Ermöglicht die Eingabe von Währungen und Wechselkursen.
  - Erlaubt die beliebige Formatierung von Währungsbeträgen.
@@ -33,6 +37,7 @@ Permet de formater les montants en fonction de la devise.
         'currency.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'cs_CZ.csv',
         'de_DE.csv',
         'es_CO.csv',
