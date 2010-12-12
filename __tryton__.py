@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Invoice',
+    'name_bg_BG': 'Фактуриране',
     'name_de_DE': 'Fakturierung',
     'name_es_CO': 'Facturación',
     'name_es_ES': 'Facturación',
@@ -19,6 +20,16 @@ With the possibilities:
     - to follow the payment of the invoices.
     - to define invoice sequences on fiscal year or period.
     - to credit any invoice.
+''',
+    'description_bg_BG': '''Финансов и счетоводен модул с:
+    - Условия за плащане
+    - Фактура / Кредитно известие
+    - Фактура за доставчик / Кредитно известие за доставчик
+
+Има следните възможности:
+    - проследяване на плащания на фактури
+    - задаване на последователности на фактура за финансова година или период
+    - кредитиране на всяка фактура
 ''',
     'description_de_DE': '''Modul für Buchhaltung und Fakturierung mit:
     - Definition von Zahlungsbedingungen
@@ -78,6 +89,7 @@ Avec la possibilité:
         'account.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
