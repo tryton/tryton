@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Stock Supply Management',
+    'name_bg_BG': 'Управление на доставка на наличност',
     'name_de_DE': 'Lagerverwaltung Bestellwesen',
     'name_es_CO': 'Gestión de pedidos de inventario',
     'name_es_ES': 'Gestión de suministro de existencias',
@@ -17,6 +18,14 @@
 With schedulers:
     - to generate purchase requests based on order points
     - to generate internal shipments based on order points
+''',
+    'description_bg_BG': '''Модул за управление на доставка на наличност с:
+    - Пренареждане
+    - Заявка за покупка
+
+С планировщици:
+    - за генериране на заявки за покупка въз основа на пренареждания
+    - за генериране на вътрешни пратки въз основа на пренареждания
 ''',
     'description_de_DE': '''Modul für das Bestellwesen mit:
     - Bestellpunkten
@@ -66,6 +75,7 @@ sur base des règles d'approvisionnement
         'shipment.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',

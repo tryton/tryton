@@ -1,0 +1,81 @@
+type,name,res_id,src,value,fuzzy
+error,purchase.request,0,Purchase requests are only created by the system.,Заявките за покупка се създават само от системата,0
+error,purchase.request.create_purchase,0,Purchase price is missing for product: %s (id: %s)!,Липсва покупната цена за продукт: %s (id: %s)!,0
+error,purchase.request.create_purchase,0,This price is necessary for creating purchase.,Цената е необходима при създаване на покупка,0
+error,stock.order_point,0,Maximal quantity must be bigger than Minimal quantity,Максималното количество трябва да е по-голямо от Минималното количество,0
+error,stock.order_point,0,Only one order point is allowed for each product-location pair.,Разрешено е само едно пренареждане за всяка двойка продукт-местонахождение.,0
+error,stock.order_point,0,You can not define two order points on the same product with opposite locations.,Не може да зададете две пренареждания на един и същи продукт с противоположни местонахождения,0
+field,"product.product,order_points",0,Order Points,Пренареждания,0
+field,"purchase.request,company",0,Company,Фирма,0
+field,"purchase.request,computed_quantity",0,Computed Quantity,Изчислено количество,0
+field,"purchase.request,computed_uom",0,Computed UOM,Изчислена мер. ед.,0
+field,"purchase.request,origin",0,Origin,Източник,0
+field,"purchase.request,party",0,Party,Партньор,0
+field,"purchase.request,product",0,Product,Продукт,0
+field,"purchase.request,purchase",0,Purchase,Покупка,0
+field,"purchase.request,purchase_date",0,Best Purchase Date,Най-добра дата за покупка,0
+field,"purchase.request,purchase_line",0,Purchase Line,Ред от покупка,0
+field,"purchase.request,quantity",0,Quantity,Количество,0
+field,"purchase.request,rec_name",0,Name,Име,0
+field,"purchase.request,state",0,State,Състояние,0
+field,"purchase.request,stock_level",0,Stock at Supply Date,Наличност към дата на доставка,0
+field,"purchase.request,supply_date",0,Expected Supply Date,Очаквана дата на доставка,0
+field,"purchase.request,uom",0,UOM,Мер. ед.,0
+field,"purchase.request,warehouse",0,Warehouse,Склад,0
+field,"purchase.request.create_purchase.ask_party,company",0,Company,Фирма,0
+field,"purchase.request.create_purchase.ask_party,party",0,Supplier,Доставчик,0
+field,"purchase.request.create_purchase.ask_party,product",0,Product,Продукт,0
+field,"purchase.request.create_purchase.ask_term,company",0,Company,Фирма,0
+field,"purchase.request.create_purchase.ask_term,party",0,Supplier,Доставчик,0
+field,"purchase.request.create_purchase.ask_term,payment_term",0,Payment Term,Условие за плащане,0
+field,"stock.order_point,company",0,Company,Фирма,0
+field,"stock.order_point,location",0,Location,Местоположение,0
+field,"stock.order_point,max_quantity",0,Maximal Quantity,Максимално количество,0
+field,"stock.order_point,min_quantity",0,Minimal Quantity,Минимално количество,0
+field,"stock.order_point,product",0,Product,Продукт,0
+field,"stock.order_point,provisioning_location",0,Provisioning Location,Местонахождение на провизии,0
+field,"stock.order_point,rec_name",0,Name,Име,0
+field,"stock.order_point,storage_location",0,Storage Location,Местонахождение на съхранение,0
+field,"stock.order_point,type",0,Type,Вид,0
+field,"stock.order_point,unit",0,Unit,Единица,0
+field,"stock.order_point,unit_digits",0,Unit Digits,Десетични единици,0
+field,"stock.order_point,warehouse_location",0,Warehouse Location,Местонахождение на склад,0
+model,"ir.action,name",act_order_point_form,Order Points,Пренареждания,0
+model,"ir.action,name",act_order_point_form2,Order Points,Пренареждания,0
+model,"ir.action,name",act_purchase_form,Purchases,Покупки,0
+model,"ir.action,name",act_purchase_request_form,Purchase Requests,Заявки за покупка,0
+model,"ir.action,name",act_purchase_request_form_draft,Draft Purchase Requests,Проект на заявка за покупка,0
+model,"ir.action,name",wizard_create_purchase,Create Purchase,Създаване на покупка,0
+model,"ir.cron,name",cron_generate_request,Generate Purchase Requests,Генериране на заявки за покупка,0
+model,"ir.cron,name",cron_shipment_iternal,Generate Internal Shipments,Генериране на вътрешна пратка,0
+model,"ir.ui.menu,name",menu_order_point_form,Order Points,Пренареждания,0
+model,"ir.ui.menu,name",menu_order_point_form_new,New Order Point,Ново пренареждане,0
+model,"ir.ui.menu,name",menu_purchase_request_form,Purchase Requests,Заявки за покупки,0
+model,"ir.ui.menu,name",menu_purchase_request_form_draft,Draft Purchase Requests,Проект на заявки за покупка,0
+model,"purchase.request,name",0,Purchase Request,Заявка за покупка,0
+model,"purchase.request.create_purchase.ask_party,name",0,Create Purchase Ask Party,Създаване на покупка - питане на партньор,0
+model,"purchase.request.create_purchase.ask_term,name",0,Create Purchase Ask Term,Запитване за създаване на условие за плащане,0
+model,"res.group,name",group_purchase_request,Purchase Request,Заявка за покупка,0
+model,"res.user,name",user_generate_request,Cron Purchase Request,Планиране на заявка за покупка,0
+model,"res.user,name",user_generate_shipment_internal,Cron Intenal Shipment,Планиране на вътрешена пратка,0
+model,"stock.order_point,name",0,Order Point,Пренареждане,0
+selection,"purchase.request,state",0,Cancel,Отказ,0
+selection,"purchase.request,state",0,Done,Приключен,0
+selection,"purchase.request,state",0,Draft,Проект,0
+selection,"purchase.request,state",0,Purchased,Поръчан,0
+selection,"stock.order_point,type",0,Internal,Вътрешно,0
+selection,"stock.order_point,type",0,Purchase,Покупка,0
+view,purchase.request,0,Product Info,Информация за продукт,0
+view,purchase.request,0,Purchase Request,Заявка за покупка,0
+view,purchase.request,0,Purchase Requests,Заявки за покупка,0
+view,purchase.request,0,Supply Info,Информация за доставчик,0
+view,purchase.request.create_purchase.ask_party,0,Create Purchase: Missing Supplier,Създаване на покупка; липсва доставчик,0
+view,purchase.request.create_purchase.ask_term,0,Create Purchase: Missing Payment Term,Създаване на покупка: Липсва условие за плащане,0
+view,stock.order_point,0,Order Point,Пренареждане,0
+view,stock.order_point,0,Order Point Type,Вид пренареждане,0
+view,stock.order_point,0,Order Points,Пренареждания,0
+view,stock.order_point,0,Product Info,Информация за продукт,0
+wizard_button,"purchase.request.create_purchase,ask_user_party,end",0,Cancel,Отказ,0
+wizard_button,"purchase.request.create_purchase,ask_user_party,init",0,Continue,Продължаване,0
+wizard_button,"purchase.request.create_purchase,ask_user_term,end",0,Cancel,Отказ,0
+wizard_button,"purchase.request.create_purchase,ask_user_term,init",0,Continue,Продължаване,0
