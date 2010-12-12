@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Stock Management',
+    'name_bg_BG': 'Управление на наличности',
     'name_de_DE': 'Lagerverwaltung',
     'name_es_CO': 'Inventarios',
     'name_es_ES': 'Gestión de existencias',
@@ -21,6 +22,18 @@ And with reports:
     - Picking List
     - Restocking List (on Supplier Shipment and Customer Return Shipment)
     - Products by Locations
+''',
+    'description_bg_BG': '''Управление на наличности и контрол на инвентаризация с:
+    - Задаване на местонахождения
+    - Движения на наличност
+    - Пратки за клиент, от доставчик, вътрешни пратки. Върнати пратки от клиент и за доставчик.
+    - Инвентаризация на наличност
+
+Със следните справки:
+    - Бележка за доставка
+    - Опаковъчен лист
+    - Преизчисляване на инвентарен опис (при пратка на доставчик и пратка върната от клиент)
+    - Продукти по местонахождение
 ''',
     'description_de_DE': '''Lagerverwaltung und Bestandskontrolle mit:
     - Definition von Lagerorten
@@ -87,6 +100,7 @@ Et les rapports:
         'configuration.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
