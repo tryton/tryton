@@ -22,8 +22,8 @@ class Move(ModelSQL, ModelView):
                     'for FIFO cost price!',
             })
 
-    def default_fifo_quantity(self):
-        return Decimal('0.0')
+    def default_fifo_quantity_out(self):
+        return 0.0
 
     def _update_fifo_out_product_cost_price(self, product, quantity, uom):
         '''
