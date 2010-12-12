@@ -1,0 +1,351 @@
+type,name,res_id,src,value,fuzzy
+error,country.country,0,The code of the country must be unique!,Кода на държавата трябва да е уникален!,0
+error,country.country,0,The name of the country must be unique!,Името на държавата трябва да е уникално!,0
+field,"country.country,code",0,Code,Код,0
+field,"country.country,name",0,Name,Име,0
+field,"country.country,rec_name",0,Name,Име,0
+field,"country.country,subdivisions",0,Subdivisions,Подразделения,0
+field,"country.subdivision,code",0,Code,Код,0
+field,"country.subdivision,country",0,Country,Държава,0
+field,"country.subdivision,name",0,Name,Име,0
+field,"country.subdivision,parent",0,Parent,Родител,0
+field,"country.subdivision,rec_name",0,Name,Име,0
+field,"country.subdivision,type",0,Type,Вид,0
+help,"country.country,code",0,"The ISO country code in two chars.
+You can use this field for quick search.","ISO кода на държавата в два символа.
+Може да използвате полета за бързо търсене.",0
+help,"country.country,name",0,The full name of the country.,Пълно име на държавата,0
+model,"country.country,name",0,Country,Държава,0
+model,"country.country,name",ad,Andorra,Андора,0
+model,"country.country,name",ae,United Arab Emirates,Обединени арабски емирства,0
+model,"country.country,name",af,Afghanistan,Афганистан,0
+model,"country.country,name",ag,Antigua and Barbuda,Антигуа и Барбуда,0
+model,"country.country,name",ai,Anguilla,Ангуѝла,0
+model,"country.country,name",al,Albania,Албания,0
+model,"country.country,name",am,Armenia,Армения,0
+model,"country.country,name",an,Netherlands Antilles,Холандски Антили,0
+model,"country.country,name",ao,Angola,Ангола,0
+model,"country.country,name",aq,Antarctica,Антарктида,0
+model,"country.country,name",ar,Argentina,Аржентина,0
+model,"country.country,name",as,American Samoa,Американска Самоа,0
+model,"country.country,name",at,Austria,Австрия,0
+model,"country.country,name",au,Australia,Австралия,0
+model,"country.country,name",aw,Aruba,Аруба,0
+model,"country.country,name",ax,Åland Islands,о-ви Оланд,0
+model,"country.country,name",az,Azerbaijan,Азербайджан,0
+model,"country.country,name",ba,Bosnia and Herzegovina,Босна и Херцеговина,0
+model,"country.country,name",bb,Barbados,Барбадос,0
+model,"country.country,name",bd,Bangladesh,Бангладеш,0
+model,"country.country,name",be,Belgium,Белгия,0
+model,"country.country,name",bf,Burkina Faso,Буркина Фасо,0
+model,"country.country,name",bg,Bulgaria,България,0
+model,"country.country,name",bh,Bahrain,Бахрейн,0
+model,"country.country,name",bi,Burundi,Бурунди,0
+model,"country.country,name",bj,Benin,Бенин,0
+model,"country.country,name",bl,Saint Barthélemy,Сен Бартелми,0
+model,"country.country,name",bm,Bermuda,Бермудски острови,0
+model,"country.country,name",bn,Brunei Darussalam,Бруней Даруссалам,0
+model,"country.country,name",bo,Bolivia,Боливия,0
+model,"country.country,name",br,Brazil,Бразилия,0
+model,"country.country,name",bs,Bahamas,Бахамски о-ви,0
+model,"country.country,name",bt,Bhutan,Бутан,0
+model,"country.country,name",bv,Bouvet Island,Буве,0
+model,"country.country,name",bw,Botswana,Бутсвана,0
+model,"country.country,name",by,Belarus,Беларус,0
+model,"country.country,name",bz,Belize,Белиз,0
+model,"country.country,name",ca,Canada,Канада,0
+model,"country.country,name",cc,Cocos (Keeling) Islands,Кокосови острови,0
+model,"country.country,name",cd,"Congo, The Democratic Republic of the","Конго, Демократична република",0
+model,"country.country,name",cf,Central African Republic,Централноафриканската република,0
+model,"country.country,name",cg,Congo,Конго,0
+model,"country.country,name",ch,Switzerland,Швейцария,0
+model,"country.country,name",ci,Côte d'Ivoire,Кот д'Ивоар,0
+model,"country.country,name",ck,Cook Islands,о-ви Кук,0
+model,"country.country,name",cl,Chile,Чили,0
+model,"country.country,name",cm,Cameroon,Камерун,0
+model,"country.country,name",cn,China,Китай,0
+model,"country.country,name",co,Colombia,Колумбия,0
+model,"country.country,name",cr,Costa Rica,Коста Рика,0
+model,"country.country,name",cu,Cuba,Куба,0
+model,"country.country,name",cv,Cape Verde,Кабо Верде,0
+model,"country.country,name",cx,Christmas Island,о-в Рождество,0
+model,"country.country,name",cy,Cyprus,Кипър,0
+model,"country.country,name",cz,Czech Republic,Чешката република,0
+model,"country.country,name",de,Germany,Германия,0
+model,"country.country,name",dj,Djibouti,Джибути,0
+model,"country.country,name",dk,Denmark,Дания,0
+model,"country.country,name",dm,Dominica,Доминика,0
+model,"country.country,name",do,Dominican Republic,Доминикана,0
+model,"country.country,name",dz,Algeria,Алжир,0
+model,"country.country,name",ec,Ecuador,Еквадор,0
+model,"country.country,name",ee,Estonia,Естония,0
+model,"country.country,name",eg,Egypt,Египет,0
+model,"country.country,name",eh,Western Sahara,Западна Сахара,0
+model,"country.country,name",er,Eritrea,Еритрея,0
+model,"country.country,name",es,Spain,Испания,0
+model,"country.country,name",et,Ethiopia,Етиопия,0
+model,"country.country,name",fi,Finland,Финландия,0
+model,"country.country,name",fj,Fiji,Фиджи,0
+model,"country.country,name",fk,Falkland Islands (Malvinas),Фолклендкси острови (Малвини),0
+model,"country.country,name",fm,"Micronesia, Federated States of",Микронезия,0
+model,"country.country,name",fo,Faroe Islands,о-ви Фарьор,0
+model,"country.country,name",fr,France,Франция,0
+model,"country.country,name",ga,Gabon,Габон,0
+model,"country.country,name",gb,United Kingdom,Обединено кралство,0
+model,"country.country,name",gd,Grenada,Гренада,0
+model,"country.country,name",ge,Georgia,Грузия,0
+model,"country.country,name",gf,French Guiana,Френска Гвиана,0
+model,"country.country,name",gg,Guernsey,Гърнси,0
+model,"country.country,name",gh,Ghana,Гана,0
+model,"country.country,name",gi,Gibraltar,Гибралтар,0
+model,"country.country,name",gl,Greenland,Гренландия,0
+model,"country.country,name",gm,Gambia,Гамбия,0
+model,"country.country,name",gn,Guinea,Гвинея,0
+model,"country.country,name",gp,Guadeloupe,Гваделупа,0
+model,"country.country,name",gq,Equatorial Guinea,Екваториална Гвинея,0
+model,"country.country,name",gr,Greece,Гърция,0
+model,"country.country,name",gs,South Georgia and the South Sandwich Islands,Южна Джорджия и Южни Сандвичеви острови,0
+model,"country.country,name",gt,Guatemala,Гватемала,0
+model,"country.country,name",gu,Guam,Гуам,0
+model,"country.country,name",gw,Guinea-Bissau,Гвинея-Бисау,0
+model,"country.country,name",gy,Guyana,Гаяна,0
+model,"country.country,name",hk,Hong Kong,Хонг Конг,0
+model,"country.country,name",hm,Heard Island and McDonald Islands,Хърд и Макдоналд,0
+model,"country.country,name",hn,Honduras,Хондурас,0
+model,"country.country,name",hr,Croatia,Хърватска,0
+model,"country.country,name",ht,Haiti,Хаити,0
+model,"country.country,name",hu,Hungary,Унгария,0
+model,"country.country,name",id,Indonesia,Индонезия,0
+model,"country.country,name",ie,Ireland,Ирландия,0
+model,"country.country,name",il,Israel,Израел,0
+model,"country.country,name",im,Isle of Man,о-в Ман,0
+model,"country.country,name",in,India,Индия,0
+model,"country.country,name",io,British Indian Ocean Territory,Британската индоокеанска територия,0
+model,"country.country,name",iq,Iraq,Ирак,0
+model,"country.country,name",ir,"Iran, Islamic Republic of",Иран,0
+model,"country.country,name",is,Iceland,Исландия,0
+model,"country.country,name",it,Italy,Италия,0
+model,"country.country,name",je,Jersey,Джърси,0
+model,"country.country,name",jm,Jamaica,Ямайка,0
+model,"country.country,name",jo,Jordan,Йордания,0
+model,"country.country,name",jp,Japan,Япония,0
+model,"country.country,name",ke,Kenya,Кения,0
+model,"country.country,name",kg,Kyrgyzstan,Киргизстан,0
+model,"country.country,name",kh,Cambodia,Камбоджа,0
+model,"country.country,name",ki,Kiribati,Кирибати,0
+model,"country.country,name",km,Comoros,Коморски о-ви,0
+model,"country.country,name",kn,Saint Kitts and Nevis,Сейнт Китс и Невис,0
+model,"country.country,name",kp,"Korea, Democratic People's Republic of","Корея, Народнодемократична република",0
+model,"country.country,name",kr,"Korea, Republic of","Корея, Република",0
+model,"country.country,name",kw,Kuwait,Кувейт,0
+model,"country.country,name",ky,Cayman Islands,Кайманови острови,0
+model,"country.country,name",kz,Kazakhstan,Казахстан,0
+model,"country.country,name",la,Lao People's Democratic Republic,Лаос,0
+model,"country.country,name",lb,Lebanon,Ливан,0
+model,"country.country,name",lc,Saint Lucia,Сейнт Лусия,0
+model,"country.country,name",li,Liechtenstein,Лихтенщайн,0
+model,"country.country,name",lk,Sri Lanka,Шри Ланка,0
+model,"country.country,name",lr,Liberia,Либерия,0
+model,"country.country,name",ls,Lesotho,Лесото,0
+model,"country.country,name",lt,Lithuania,Литва,0
+model,"country.country,name",lu,Luxembourg,Люксембург,0
+model,"country.country,name",lv,Latvia,Латвия,0
+model,"country.country,name",ly,Libyan Arab Jamahiriya,Либия,0
+model,"country.country,name",ma,Morocco,Мароко,0
+model,"country.country,name",mc,Monaco,Монако,0
+model,"country.country,name",md,Moldova,Молдова,0
+model,"country.country,name",me,Montenegro,Черна гора,0
+model,"country.country,name",mf,Saint Martin (French part),Сен Мартен (френски),0
+model,"country.country,name",mg,Madagascar,Мадагаскар,0
+model,"country.country,name",mh,Marshall Islands,Маршалови острови,0
+model,"country.country,name",mk,"Macedonia, Republic of",Македония,0
+model,"country.country,name",ml,Mali,Мали,0
+model,"country.country,name",mm,Myanmar,Мианмар,0
+model,"country.country,name",mn,Mongolia,Монголия,0
+model,"country.country,name",mo,Macao,Макао,0
+model,"country.country,name",mp,Northern Mariana Islands,Северни Мариански острови,0
+model,"country.country,name",mq,Martinique,Мартиника,0
+model,"country.country,name",mr,Mauritania,Мавритания,0
+model,"country.country,name",ms,Montserrat,Монсерат,0
+model,"country.country,name",mt,Malta,Малта,0
+model,"country.country,name",mu,Mauritius,Мавриций,0
+model,"country.country,name",mv,Maldives,Малдиви,0
+model,"country.country,name",mw,Malawi,Малави,0
+model,"country.country,name",mx,Mexico,Мексико,0
+model,"country.country,name",my,Malaysia,Малайзия,0
+model,"country.country,name",mz,Mozambique,Мозамбик,0
+model,"country.country,name",na,Namibia,Намибия,0
+model,"country.country,name",nc,New Caledonia,Нова Каледония,0
+model,"country.country,name",ne,Niger,Нигер,0
+model,"country.country,name",nf,Norfolk Island,Норфолк,0
+model,"country.country,name",ng,Nigeria,Нигерия,0
+model,"country.country,name",ni,Nicaragua,Никарагуа,0
+model,"country.country,name",nl,Netherlands,Нидерландия,0
+model,"country.country,name",no,Norway,Норвегия,0
+model,"country.country,name",np,Nepal,Непал,0
+model,"country.country,name",nr,Nauru,Науру,0
+model,"country.country,name",nu,Niue,Ниуе,0
+model,"country.country,name",nz,New Zealand,Нова Зеландия,0
+model,"country.country,name",om,Oman,Оман,0
+model,"country.country,name",pa,Panama,Панама,0
+model,"country.country,name",pe,Peru,Перу,0
+model,"country.country,name",pf,French Polynesia,Френска Полинезия,0
+model,"country.country,name",pg,Papua New Guinea,Папуа - Нова Гвинея,0
+model,"country.country,name",ph,Philippines,Филипини,0
+model,"country.country,name",pk,Pakistan,Пакистан,0
+model,"country.country,name",pl,Poland,Полша,0
+model,"country.country,name",pm,Saint Pierre and Miquelon,Сен Пиер и Микелон,0
+model,"country.country,name",pn,Pitcairn,Питкерн,0
+model,"country.country,name",pr,Puerto Rico,Пуерто Рико,0
+model,"country.country,name",ps,"Palestinian Territory, Occupied",Палестински територии,0
+model,"country.country,name",pt,Portugal,Португалия,0
+model,"country.country,name",pw,Palau,Палау,0
+model,"country.country,name",py,Paraguay,Парагвай,0
+model,"country.country,name",qa,Qatar,Катар,0
+model,"country.country,name",re,Reunion,Реюнион,0
+model,"country.country,name",ro,Romania,Румъния,0
+model,"country.country,name",rs,Serbia,Сърбия,0
+model,"country.country,name",ru,Russian Federation,Русия,0
+model,"country.country,name",rw,Rwanda,Руанда,0
+model,"country.country,name",sa,Saudi Arabia,Саудитска Арабия,0
+model,"country.country,name",sb,Solomon Islands,Соломоновите острови,0
+model,"country.country,name",sc,Seychelles,Сейшели,0
+model,"country.country,name",sd,Sudan,Судан,0
+model,"country.country,name",se,Sweden,Швеция,0
+model,"country.country,name",sg,Singapore,Сингапур,0
+model,"country.country,name",sh,Saint Helena,Света Елена,0
+model,"country.country,name",si,Slovenia,Словения,0
+model,"country.country,name",sj,Svalbard and Jan Mayen,Свалбард и Ян Майен,0
+model,"country.country,name",sk,Slovakia,Словакия,0
+model,"country.country,name",sl,Sierra Leone,Сиера Леоне,0
+model,"country.country,name",sm,San Marino,Сан Марино,0
+model,"country.country,name",sn,Senegal,Сенегал,0
+model,"country.country,name",so,Somalia,Сомалия,0
+model,"country.country,name",sr,Suriname,Суринам,0
+model,"country.country,name",st,Sao Tome and Principe,Сао Томе и Принсипи,0
+model,"country.country,name",sv,El Salvador,Салвадор,0
+model,"country.country,name",sy,Syrian Arab Republic,Сирийската арабска република,0
+model,"country.country,name",sz,Swaziland,Свазиленд,0
+model,"country.country,name",tc,Turks and Caicos Islands,о-ви Търкс и Кайкос,0
+model,"country.country,name",td,Chad,Чад,0
+model,"country.country,name",tf,French Southern Territories,Френските южноантарктически територии,0
+model,"country.country,name",tg,Togo,Того,0
+model,"country.country,name",th,Thailand,Тайланд,0
+model,"country.country,name",tj,Tajikistan,Таджикистан,0
+model,"country.country,name",tk,Tokelau,Токелау,0
+model,"country.country,name",tl,Timor-Leste,Източен Тимор,0
+model,"country.country,name",tm,Turkmenistan,Туркменистан,0
+model,"country.country,name",tn,Tunisia,Тунис,0
+model,"country.country,name",to,Tonga,Тонга,0
+model,"country.country,name",tr,Turkey,Турция,0
+model,"country.country,name",tt,Trinidad and Tobago,Тринидад и Тобаго,0
+model,"country.country,name",tv,Tuvalu,Тувалу,0
+model,"country.country,name",tw,"Taiwan, Province of China",Тайван,0
+model,"country.country,name",tz,"Tanzania, United Republic of",Танзания,0
+model,"country.country,name",ua,Ukraine,Украйна,0
+model,"country.country,name",ug,Uganda,Уганда,0
+model,"country.country,name",um,United States Minor Outlying Islands,Малки далечни острови на САЩ,0
+model,"country.country,name",us,United States,САЩ,0
+model,"country.country,name",uy,Uruguay,Уругвай,0
+model,"country.country,name",uz,Uzbekistan,Узбекистан,0
+model,"country.country,name",va,Holy See (Vatican City State),Ватиканът,0
+model,"country.country,name",vc,Saint Vincent and the Grenadines,Сейнт Винсент и Гренадини,0
+model,"country.country,name",ve,Venezuela,Венецуела,0
+model,"country.country,name",vg,"Virgin Islands, British",Британските Вирджински острови,0
+model,"country.country,name",vi,"Virgin Islands, U.S.",Американските Вирджински острови,0
+model,"country.country,name",vn,Viet Nam,Виетнам,0
+model,"country.country,name",vu,Vanuatu,Вануату,0
+model,"country.country,name",wf,Wallis and Futuna,Уолис и Футуна,0
+model,"country.country,name",ws,Samoa,Самоа,0
+model,"country.country,name",ye,Yemen,Йемен,0
+model,"country.country,name",yt,Mayotte,Майот,0
+model,"country.country,name",za,South Africa,Южна Африка (ЮАР),0
+model,"country.country,name",zm,Zambia,Замбия,0
+model,"country.country,name",zw,Zimbabwe,Зимбабве,0
+model,"country.subdivision,name",0,Subdivision,Подразделение,0
+model,"ir.action,name",act_country_form,Countries,Държави,0
+model,"ir.ui.menu,name",menu_country_form,Countries,Държави,0
+selection,"country.subdivision,type",0,Administration,Администрация,0
+selection,"country.subdivision,type",0,Administrative Region,Административен район,0
+selection,"country.subdivision,type",0,Administrative Territory,Административна територия,0
+selection,"country.subdivision,type",0,Administrative area,Административна област,0
+selection,"country.subdivision,type",0,Area,Област,0
+selection,"country.subdivision,type",0,Atoll,Атол,0
+selection,"country.subdivision,type",0,Autonomous City,Автономен град,0
+selection,"country.subdivision,type",0,Autonomous Commune,Автономна комуна,0
+selection,"country.subdivision,type",0,Autonomous District,Автономен окръг,0
+selection,"country.subdivision,type",0,Autonomous Province,Автономна провинция,0
+selection,"country.subdivision,type",0,Autonomous Region,Автономен район,0
+selection,"country.subdivision,type",0,Autonomous communities,Автономна общност,0
+selection,"country.subdivision,type",0,Autonomous island,Автономен остров,0
+selection,"country.subdivision,type",0,Autonomous monastic state,,0
+selection,"country.subdivision,type",0,Autonomous municipality,Автоновма общност,0
+selection,"country.subdivision,type",0,Autonomous republic,Автономна република,0
+selection,"country.subdivision,type",0,Autonomous sector,Автономен сектор,0
+selection,"country.subdivision,type",0,Autonomous territory,Автономна територия,0
+selection,"country.subdivision,type",0,Borough,Квартал,0
+selection,"country.subdivision,type",0,Canton,Кантон,0
+selection,"country.subdivision,type",0,Capital District,,0
+selection,"country.subdivision,type",0,Capital Metropolitan City,,0
+selection,"country.subdivision,type",0,Capital Territory,Столична територия,0
+selection,"country.subdivision,type",0,Capital city,,0
+selection,"country.subdivision,type",0,City,Град,0
+selection,"country.subdivision,type",0,City corporation,Градска корпорация,0
+selection,"country.subdivision,type",0,City with county rights,Град с правомощия на държава,0
+selection,"country.subdivision,type",0,Commune,Комуна,0
+selection,"country.subdivision,type",0,Country,Държава,0
+selection,"country.subdivision,type",0,County,Държава,0
+selection,"country.subdivision,type",0,Department,Отдел,0
+selection,"country.subdivision,type",0,Dependency,Колония,0
+selection,"country.subdivision,type",0,District,Окръг,0
+selection,"country.subdivision,type",0,Division,Отдел,0
+selection,"country.subdivision,type",0,Economic Prefecture,Икономическа префектутра,0
+selection,"country.subdivision,type",0,Economic region,Икономически район,0
+selection,"country.subdivision,type",0,Emirate,Емиратство,0
+selection,"country.subdivision,type",0,Entity,Единица,0
+selection,"country.subdivision,type",0,Federal Dependency,,0
+selection,"country.subdivision,type",0,Federal District,Федерален окръг,0
+selection,"country.subdivision,type",0,Federal Territories,Федерални територии,0
+selection,"country.subdivision,type",0,Geographical region,Географски регион,0
+selection,"country.subdivision,type",0,Geographical unit,Географска единица,0
+selection,"country.subdivision,type",0,Governorate,Губернаторство,0
+selection,"country.subdivision,type",0,Included for completeness,Включен за пълнота,0
+selection,"country.subdivision,type",0,Island council,Островен съвет,0
+selection,"country.subdivision,type",0,Island group,Островна група,0
+selection,"country.subdivision,type",0,Local council,Местен съвет,0
+selection,"country.subdivision,type",0,London borough,Квартал на Лондон,0
+selection,"country.subdivision,type",0,Metropolitan cities,,0
+selection,"country.subdivision,type",0,Metropolitan department,,0
+selection,"country.subdivision,type",0,Metropolitan district,,0
+selection,"country.subdivision,type",0,Metropolitan region,,0
+selection,"country.subdivision,type",0,Municipalities,Общини,0
+selection,"country.subdivision,type",0,Municipality,Община,0
+selection,"country.subdivision,type",0,Oblast,Област,0
+selection,"country.subdivision,type",0,Outlying area,Външни територии,0
+selection,"country.subdivision,type",0,Overseas region/department,Презокеански регион/отдел,0
+selection,"country.subdivision,type",0,Overseas territorial collectivity,,0
+selection,"country.subdivision,type",0,Parish,Енория,0
+selection,"country.subdivision,type",0,Prefecture,Префектура,0
+selection,"country.subdivision,type",0,Principality,Княжество,0
+selection,"country.subdivision,type",0,Province,Провинция,0
+selection,"country.subdivision,type",0,Rayon,Район,0
+selection,"country.subdivision,type",0,Region,Област,0
+selection,"country.subdivision,type",0,Regional council,Регионален съвет,0
+selection,"country.subdivision,type",0,Republic,Република,0
+selection,"country.subdivision,type",0,Special District,Специален окръг,0
+selection,"country.subdivision,type",0,Special Municipality,Специална община,0
+selection,"country.subdivision,type",0,Special Region,Специален регион,0
+selection,"country.subdivision,type",0,Special administrative region,Специален административен район,0
+selection,"country.subdivision,type",0,Special city,Специален град,0
+selection,"country.subdivision,type",0,Special zone,Специална зона,0
+selection,"country.subdivision,type",0,State,Щат,0
+selection,"country.subdivision,type",0,Territorial unit,Териториална единица,0
+selection,"country.subdivision,type",0,Territory,Територия,0
+selection,"country.subdivision,type",0,Town council,Градски съвет,0
+selection,"country.subdivision,type",0,Two-tier county,Дустепенен окръг,0
+selection,"country.subdivision,type",0,Union territory,,0
+selection,"country.subdivision,type",0,Unitary authority,Унитарни единици,0
+view,country.country,0,Countries,Държави,0
+view,country.country,0,Country,Държава,0
+view,country.subdivision,0,Subdivision,Подразделение,0
+view,country.subdivision,0,Subdivisions,Подразделения,0

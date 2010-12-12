@@ -3,6 +3,7 @@
 {
     'name' : 'Country',
     'name_de_DE': 'Länder',
+    'name_bg_BG': 'Държави',
     'name_es_CO': 'País',
     'name_es_ES': 'País',
     'name_fr_FR': 'Pays',
@@ -11,6 +12,7 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Define all countries and subdivisions.',
+    'description_bg_BG': 'Задаване на държави и административни единици.',
     'description_de_DE': 'Stellt sämtliche Länder und ihre subnationalen Einheiten zur Verfügung.',
     'description_es_CO': 'Define todos los países y sus subdivisiones.',
     'description_es_ES': 'Define todos los países y sus subdivisiones.',
@@ -20,6 +22,7 @@
         'country.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'cs_CZ.csv',
         'de_DE.csv',
         'es_CO.csv',
