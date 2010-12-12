@@ -1,0 +1,21 @@
+type,name,res_id,src,value,fuzzy
+field,"dashboard.action,act_window",0,Action,Действие,0
+field,"dashboard.action,rec_name",0,Name,Име,0
+field,"dashboard.action,sequence",0,Sequence,Последователност,0
+field,"dashboard.action,user",0,User,Потребител,0
+field,"res.user,dashboard_actions",0,Dashboard Actions,Действия на табло,0
+field,"res.user,dashboard_layout",0,Dashboard Layout,Подреждане на табло,0
+model,"dashboard.action,name",0,dashboard.action,,0
+model,"ir.action,name",act_dashboard,Dashboard,Табло,0
+model,"ir.ui.menu,name",menu_dashboard,Dashboard,Табло,0
+selection,"res.user,dashboard_layout",0,Square,Каре,0
+selection,"res.user,dashboard_layout",0,Stack Bottom,Подравнени отдолу,0
+selection,"res.user,dashboard_layout",0,Stack Left,Подарнение отляво,0
+selection,"res.user,dashboard_layout",0,Stack Right,Подравнение отдясно,0
+selection,"res.user,dashboard_layout",0,Stack Top,Подравнени отгоре,0
+view,dashboard.action,0,Dashboard,Табло,0
+view,dashboard.action,0,Dashboard Action,Действие на таблото,0
+view,dashboard.action,0,Dashboard Actions,Действия на табло,0
+view,res.user,0,Dashboard,Табло,0
+view,res.user,0,Dashboard Action,Действие на таблото,0
+view,res.user,0,Dashboard Actions,Действия на табло,0

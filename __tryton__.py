@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Dashboard',
+    'name_bg_BG': 'Табло',
     'name_de_DE': 'Dashboard',
     'name_es_CO': 'Escritorio',
     'name_es_ES': 'Escritorio',
@@ -12,6 +13,9 @@
     'website': 'http://www.tryton.org/',
     'description': '''Dashboard:
     - Allow to create a personalized dashboard.
+''',
+    'description_bg_BG': '''Табло:
+    - Позволява създаване на перосонализирани табла.
 ''',
     'description_de_DE': '''Dashboard:
     - Ermöglicht die Einrichtung einer personalisierten Startseite.
@@ -35,6 +39,7 @@
         'ir.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
