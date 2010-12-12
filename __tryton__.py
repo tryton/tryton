@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     "name" : "Stock Supply with Week Days",
+    "name_bg_BG" : "Доставка на налиност с дни от седмицата",
     "name_de_DE" : "Lagerverwaltung Bestellwesen nach Wochentagen",
     "name_es_CO" : "Existencias por días de la semana",
     "name_es_ES" : "Suministro de existencias por días de la semana",
@@ -13,6 +14,9 @@
     "description": '''Define the delivery days of the week by suppliers.
 Impact supply dates computations.
 ''',
+    "description_bg_BG": '''Задаване на дните за доставка в седмицата по доставчици
+    - Оказва влияние върху изчисляването на датите
+ ''',
     "description_de_DE": '''Bestellwesen nach Wochentagen
     - Ermöglicht die Definition von Liefertagen pro Lieferant.
     - Wirkt sich auf die Berechnung von Lieferzeitpunkten aus.
@@ -34,6 +38,7 @@ Impacte les calculs de dates de livraisons.
         "purchase.xml",
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
