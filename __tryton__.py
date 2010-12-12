@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     "name" : "Stock Product Location",
+    "name_bg_BG" : "Местонахождение на наличност на продукт",
     "name_de_DE" : "Lagerverwaltung Artikel Lagerort",
     "name_es_CO" : "Ubicación de existencias de producto",
     "name_es_ES" : "Ubicación de existencias de producto",
@@ -13,6 +14,10 @@
     "description": '''Define default storage location by warehouse on product.
 Theses locations will be used by the supplier shipment for generating
 inventory moves.
+''',
+    "description_bg_BG": '''Задаване на местонахождение по подрабиране на
+    на продукт по склад. Тези местонахождения ще бъдат използвани при пратки 
+    от доставчик за генериране на движения за инвентаризация.
 ''',
     "description_de_DE": '''Standardlagerorte für Artikel
     - Ermöglicht die Definition von Standardlagerorten für Artikel in einem Warenlager
@@ -41,6 +46,7 @@ générer les mouvements internes.
         "product.xml",
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
