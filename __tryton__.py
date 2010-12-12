@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Product Price List',
+    'name_bg_BG' : 'Ценова листа на продукт',
     'name_de_DE' : 'Artikel Preisliste',
     'name_es_CO': 'Lista de precios de producto',
     'name_es_ES': 'Lista de precios de producto',
@@ -11,6 +12,7 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Define price list rules by parties.''',
+    'description_bg_BG': 'Задаване на правила на ценова листа по партньор.',
     'description_de_DE' : '''Preislisten für Artikel
     - Ermöglicht die Definition von Preislisten für Parteien.
 ''',
@@ -28,6 +30,7 @@
         'party.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
