@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Product Cost FIFO',
+    'name_bg_BG': 'FIFO цена на продукт',
     'name_de_DE': 'Artikel Kostenpreisermittlung FIFO',
     'name_es_CO': 'Costo FIFO de producto',
     'name_es_ES': 'Coste FIFO de producto',
@@ -14,6 +15,13 @@
 Once installed, the price of the stock moves from a supplier or to a
 customer will update automatically the cost price of the related
 product (if the cost price method is FIFO)
+''',
+    'description_bg_BG':'''Добавя FIFO начин на остойностяване в формата на продукт
+    - Добавя FIFO (първи влязъл първи излязъл) като начин на изчисляване на
+      цената на продукт.
+    - След инсталиране на този модул цената на даден продукт (ако е избран този
+      начин на остойностяване) се изчислява автоматично при всяко движение на 
+      наличност от доставчик или към клиент 
 ''',
     'description_de_DE':'''Kostenpreisermittlung für Artikel nach Methode 'FIFO'
     - Fügt 'FIFO' (First In - First Out) zu den Methoden für die
@@ -45,6 +53,7 @@ prix de revient du produit concerné (si la méthode de coût est FIFO).
     'xml': [
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
