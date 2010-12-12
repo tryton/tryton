@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Invoice History',
+    'name_bg_BG': 'Хронология на фактуриране',
     'name_de_DE': 'Fakturierung Historisierung',
     'name_es_CO': 'Histórico de Facturación',
     'name_es_ES': 'Histórico de facturación',
@@ -11,6 +12,8 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add historization for Invoice fields.
+''',
+    'description_bg_BG': '''Добавя хронология към полетата на фактура
 ''',
     'description_de_DE': '''Fügt Historisierung zu den Rechnungsfeldern hinzu
 ''',
@@ -26,6 +29,7 @@
     'xml': [
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
