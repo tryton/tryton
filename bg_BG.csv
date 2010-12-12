@@ -1,0 +1,3 @@
+type,name,res_id,src,value,fuzzy
+error,purchase.purchase,0,"Analytic account is required on line ""%s"" (%d)!","Аналитична сметка е необходима за ред ""%s"" (%d)!",0
+field,"purchase.line,analytic_accounts",0,Analytic Accounts,Аналитични сметки,0

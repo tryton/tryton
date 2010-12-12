@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Analytic Purchase',
+    'name_bg_BG': 'Аналитични покупки',
     'name_de_DE': 'Kostenstellen Einkauf',
     'name_es_CO': 'Compra Analítica',
     'name_es_ES': 'Compra analítica',
@@ -11,6 +12,8 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add analytic account on purchase lines.
+''',
+    'description_bg_BG': '''Добавя аналитична сметка към редовете на покупка
 ''',
     'description_de_DE': '''Fügt kostenstellen zu Einkaufspositionen hinzu
 ''',
@@ -27,6 +30,7 @@
         'purchase.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
