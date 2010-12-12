@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Timesheet',
+    'name_bg_BG': 'График',
     'name_de_DE': 'Zeiterfassung',
     'name_es_CO': 'Hoja de Asistencia',
     'name_es_ES': 'Partes de trabajo',
@@ -18,6 +19,15 @@ And with reports:
     - Hours per work
     - Hours per employee per week
     - Hours per employee per month
+''',
+    'description_bg_BG': '''Модул за график с:
+    - Задачи
+    - Редове от график
+
+Прилежащи справки:
+    - Часове за задача
+    - Часове по служител за седмица
+    - Часове по служител за месец
 ''',
     'description_de_DE': '''Zeiterfassungsmodul mit:
     - Aufgaben
@@ -67,6 +77,7 @@ Et les rapports:
         'line.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
