@@ -1,0 +1,6 @@
+type,name,res_id,src,value,fuzzy
+field,"company.company,hours_per_work_day",0,Hours per Work Day,Работни часове за ден,0
+field,"company.company,hours_per_work_month",0,Hours per Work Month,Работни часове за месец,0
+field,"company.company,hours_per_work_week",0,Hours per Work Week,Часове по работна седмица,0
+field,"company.company,hours_per_work_year",0,Hours per Work Year,Работни часове за година,0
+view,company.company,0,Work Time,Работно време,0
