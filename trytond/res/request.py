@@ -125,6 +125,7 @@ class Request(ModelSQL, ModelView):
         return True
 
     def request_reply(self, ids):
+        user = Transaction().user
         for request in self.browse(ids):
             self.write(request.id, {
                 'state': 'chatting',
