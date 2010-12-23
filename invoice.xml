@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="invoice_line_view_form">
             <field name="model">account.invoice.line</field>
             <field name="inherit" ref="account_invoice.invoice_line_view_form"/>
-            <field name="domain">context.get('standalone', False)</field>
+            <field name="domain">Get(Eval('context', {}), 'standalone', False)</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
@@ -29,7 +29,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="invoice_line_view_tree">
             <field name="model">account.invoice.line</field>
             <field name="inherit" ref="account_invoice.invoice_line_view_tree"/>
-            <field name="domain">context.get('standalone', False)</field>
+            <field name="domain">Get(Eval('context', {}), 'standalone', False)</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
