@@ -45,4 +45,6 @@ setup(name='proteus',
             (major_version, minor_version, major_version, minor_version + 1)],
     },
     test_suite='proteus.tests',
+    tests_require=('trytond >= %s.%s, < %s.%s' %
+        (major_version, minor_version, major_version, minor_version + 1))
 )
