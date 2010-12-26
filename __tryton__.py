@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Product Cost History',
+    'name_bg_BG': 'История за цена на продукт',
     'name_de_DE': 'Artikel Kostenpreis Historisierung',
     'name_es_CO': 'Histórico del costo para productos',
     'name_es_ES': 'Histórico del precio de coste de producto',
@@ -13,6 +14,10 @@
     'description': '''Historize the product cost.
 This module add a button on the product form which open the list of
 all the past value of the cost price of the current product.
+''',
+    'description_bg_BG': '''История на цена на продукт.
+    - Този модул добавя бутон към формата за продукт който отваря списък
+      с себестойността във времето на текущия продукт.
 ''',
     'description_de_DE': '''Historisierung für Kostenpreise von Artikeln
     - Fügt einen Knopf auf dem Artikelformular hinzu, der eine Liste mit sämtlichen
@@ -38,6 +43,7 @@ toutes les valeurs passées du prix de revient du produit.
         'product.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
