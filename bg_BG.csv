@@ -1,0 +1,41 @@
+type,name,res_id,src,value,fuzzy
+error,project.work,0,You can not create recursive dependencies!,Не може да създавате взаимно вложени зависимости!,0
+field,"project.allocation,employee",0,Employee,Служител,0
+field,"project.allocation,percentage",0,Percentage,Процент,0
+field,"project.allocation,rec_name",0,Name,Име,0
+field,"project.allocation,work",0,Work,Задача,0
+field,"project.predecessor_successor,predecessor",0,Predecessor,Предшественик,0
+field,"project.predecessor_successor,rec_name",0,Name,Име,0
+field,"project.predecessor_successor,successor",0,Successor,Наследник,0
+field,"project.work,actual_finish_date",0,Actual Finish,Действително завършване,0
+field,"project.work,actual_finish_time",0,Actual Finish Time,Време на действително завършване,0
+field,"project.work,actual_start_date",0,Actual Start,Дейсъвително започване,0
+field,"project.work,actual_start_time",0,Actual Start Time,Време на действително започване,0
+field,"project.work,allocations",0,Allocations,Разпределения,0
+field,"project.work,back_leveling_delay",0,Leveling Delay,Изравняване на закъснение,0
+field,"project.work,constraint_finish_date",0,Constraint Finish,Ограничение за край,0
+field,"project.work,constraint_finish_time",0,Constraint  Finish Time,Ограничение за време на завършване,0
+field,"project.work,constraint_start_date",0,Constraint Start,Ограничение за начало,0
+field,"project.work,constraint_start_time",0,Constraint Start Time,Ограничение за начално време,0
+field,"project.work,duration",0,Duration,Продължителност,0
+field,"project.work,early_finish_date",0,Early Finish,По-рано завършване,0
+field,"project.work,early_finish_time",0,Early Finish Time,Време на по-рано приключване,0
+field,"project.work,early_start_date",0,Early Start,По-рано начало,0
+field,"project.work,early_start_time",0,Early Start Time,По-ранно време на започване,0
+field,"project.work,late_finish_date",0,Late Finish,По-късно завършване,0
+field,"project.work,late_finish_time",0,Late Finish Time,Време на по-късно завършване,0
+field,"project.work,late_start_date",0,Late Start,По-късно начало ,0
+field,"project.work,late_start_time",0,Late Start Time,Време на по-късно начало,0
+field,"project.work,leveling_delay",0,Leveling Delay,Изравняване на закъснение,0
+field,"project.work,predecessors",0,Predecessors,Предшественици,0
+field,"project.work,requests",0,Requests,Заявки,0
+field,"project.work,successors",0,Successors,Наследници,0
+model,"ir.action,name",wizard_leveling,Tasks Leveling,Изравняване на задачи,0
+model,"project.allocation,name",0,Allocation,Разпределние,0
+model,"project.predecessor_successor,name",0,Predecessor - Successor,Предшественик - Наследник,0
+model,"res.request.link,name",request_link_work,Work,Задача,0
+view,project.allocation,0,Allocation,Разпределение,0
+view,project.allocation,0,Allocations,Разпределения,0
+view,project.work,0,Allocations,Разпределения,0
+view,project.work,0,Plan,План,0
+view,project.work,0,Requests,Заявки,0

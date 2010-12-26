@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Project Plan',
+    'name_bg_BG': 'Планиране на проекти',
     'name_de_DE': 'Projekte Planung',
     'name_es_CO': 'Planeación de Proyectos',
     'name_es_ES': 'Planificación de proyecto',
@@ -11,6 +12,8 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add planning capabilities on projects.
+''',
+    'description_bg_BG': '''Добавя възможност за планиране на проекти
 ''',
     'description_de_DE': '''Projektmodul Planung:
     - Fügt Planungsmöglichkeiten für Projekte hinzu
@@ -31,6 +34,7 @@
         'allocation.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
