@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     "name" : "Account Invoice Line Standalone",
+    "name_bg_BG" : "Ред от независима фактура към сметка",
     "name_de_DE" : "Fakturierung ungebundene Rechnungsposition",
     "name_es_CO" : "Línea de factura autónoma",
     "name_es_ES" : "Línea de factura independiente",
@@ -13,6 +14,9 @@
     "description": '''Allow to create standalone invoice lines and add them later to a draft
 invoice. The invoice will only accept invoice lines with the same
 type, company, currency and party.
+''',
+    "description_bg_BG": '''Позволява създаване на редове от независими фактури и по-късното им добавяне
+    към проект на фактура. Фактурата приема редове само с едни и същи вид, фирма, валута и партньор.
 ''',
     "description_de_DE": '''Fakturierung mit ungebundenen Rechnungspositionen
     - Ermöglicht die Erstellung ungebundener Rechnungspositionen, die später zu
@@ -40,6 +44,7 @@ que des lignes qui ont les même type, société, devis et tiers.
         "invoice.xml",
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
