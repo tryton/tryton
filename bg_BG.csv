@@ -1,0 +1,12 @@
+type,name,res_id,src,value,fuzzy
+error,account.invoice.line,0,You can not delete invoice lines that comes from a purchase!,Не може да изтривате редове от фактура която идва от покупка!,0
+field,"purchase.purchase,invoice_lines",0,Invoice Lines,Редове от фактура,0
+field,"purchase.purchase,invoice_lines_ignored",0,Invoice Lines Ignored,Игнорирани редове от фактура,0
+field,"purchase.purchase-account.invoice.line,line",0,Invoice Line,Ред от фактура,0
+field,"purchase.purchase-account.invoice.line,purchase",0,Purchase,Покупки,0
+field,"purchase.purchase-account.invoice.line,rec_name",0,Name,Име,0
+field,"purchase.purchase-ignored-account.invoice.line,invoice",0,Invoice Line,Ред от фактура,0
+field,"purchase.purchase-ignored-account.invoice.line,purchase",0,Purchase,Покупки,0
+field,"purchase.purchase-ignored-account.invoice.line,rec_name",0,Name,Име,0
+model,"purchase.purchase-account.invoice.line,name",0,Purchase - Invoice Line,Покупка - Ред от фактура,0
+model,"purchase.purchase-ignored-account.invoice.line,name",0,Purchase - Ignored Invoice Line,Покупка - Игнорирани редове от фактура,0

@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     "name" : "Purchase Invoice Line Standalone",
+    "name_bg_BG" : "Ред от независима фактура към покупка",
     "name_de_DE" : "Einkauf ungebundene Rechnungsposition",
     "name_es_CO" : "Línea de Factura autónoma en Compras",
     "name_es_ES" : "Línea de factura de compra independiente",
@@ -14,6 +15,11 @@
 Change the purchase order behaviour to create standalone invoice lines instead of a
 complete invoice. This allow to compose invoices with lines originating
 from differents purchases.
+''',
+    "description_bg_BG": '''Покупка с независима фактура
+    - Промяна на поведението при поръчка за покупка като вместо пълна фактура 
+      създава редове с независими фактури.
+    - Позволява създаване на фактури с редове от различни покупки.
 ''',
     "description_de_DE": '''Einkäufe mit ungebundenen Rechnungspositionen
     - Ändert das Verhalten im Einkaufsvorgang, indem unabhängige Rechnungspositionen
@@ -43,6 +49,7 @@ composer des factures avec des lignes provenant de différents achats.
         "purchase.xml",
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
