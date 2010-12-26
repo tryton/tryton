@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Project Revenue',
+    'name_bg_BG': 'Приходи на проект',
     'name_de_DE': 'Projekte Ertrag',
     'name_es_CO': 'Ingresos por proyectos',
     'name_es_ES': 'Beneficio de proyecto',
@@ -12,6 +13,10 @@
     'website': 'http://www.tryton.org/',
     'description': '''Add product on timesheet lines.
 Define allowed services for each employees.
+''',
+    'description_bg_BG': '''Модул Приходи на проект:
+    - Позволява добавяне на продукт към редове от график.
+    - Позволява задаване на позволените за всеки служител услуги.
 ''',
     'description_de_DE': '''Projektmodul Ertrag:
     - Ermöglicht das Hinzufügen von Artikeln zu Zeitpositionen.
@@ -39,6 +44,7 @@ Défini par employé quels services sont autorisés.
         'work.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
