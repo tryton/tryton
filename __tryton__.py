@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name' : 'Party - Siret',
+    'name_bg_BG' : 'Партньор - SIRET',
     'name_de_DE' : 'Parteien - SIRET',
     'name_es_CO' : 'Terceros - SIRET',
     'name_es_ES': 'Terceros - SIRET',
@@ -17,6 +18,13 @@ Add SIRET/SIREN number fields on party.
     enterprises:
     - SIREN (Systeme d'Identification du Repertoire des ENtreprises)
     - SIRET (Systeme d'Identification du Repertoire des ETablissements)
+''',
+    'description_bg_BG' : '''
+Добавя SIRET/SIREN полета към партньор.
+    SIRET/SIREN са френски еквивалент на БУЛСТАТ и служат географско
+    идентифициране на фирма:
+    - SIREN (Système d’Identification du Répertoire des ENtreprises)
+    - SIRET (Système d’Identification du Répertoire des ETablissements)
 ''',
     'description_de_DE' : '''
 Fügt ein Feld für die SIRET/SIREN-Nummer bei Parteien hinzu.
@@ -55,6 +63,7 @@ Ajoute les champs numéro SIRET/SIREN sur les tiers.
         'address.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
