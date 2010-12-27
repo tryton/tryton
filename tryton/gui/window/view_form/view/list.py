@@ -281,7 +281,8 @@ class ViewList(ParserView):
             'ids': obj_ids,
         }
         value = Action._exec_action(act, self.window, data, {})
-        self.screen.reload(writen=True)
+        if self.screen:
+            self.screen.reload(writen=True)
         return value
 
 
