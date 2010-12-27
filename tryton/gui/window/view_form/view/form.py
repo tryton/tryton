@@ -183,7 +183,8 @@ class ViewForm(ParserView):
         }
         value = Action._exec_action(act, self.window, data, {})
         if atype in ('print', 'action'):
-            self.screen.reload(writen=True)
+            if self.screen:
+                self.screen.reload(writen=True)
         return value
 
     def __getitem__(self, name):
