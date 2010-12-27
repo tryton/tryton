@@ -165,8 +165,9 @@ class PriceListLine(ModelSQL, ModelView):
                 None, None, Decimal('0.0'), 0, None)
         for line in self.browse(cursor, user, ids):
             try:
-                self.get_unit_price(cursor, user, line,
-                        context=context)
+                if not isinstance(self.get_unit_price(cursor, user, line,
+                    context=context), Decimal):
+                    return False
             except:
                 return False
         return True
