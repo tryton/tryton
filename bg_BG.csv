@@ -1,0 +1,14 @@
+type,name,res_id,src,value,fuzzy
+error,res.user,0,You can not set a password to a ldap user!,Не може да зададете парола на LDAP потребител!,0
+field,"ldap.connection,auth_base_dn",0,Base DN,Base DN,0
+field,"ldap.connection,auth_create_user",0,Create User,Създаване на потребител,0
+field,"ldap.connection,auth_require_filter",0,Require Filter,Допълнителен филтър,0
+field,"ldap.connection,auth_scope",0,Scope,Обсег,0
+field,"ldap.connection,auth_uid",0,UID,UID,0
+help,"ldap.connection,auth_base_dn",0,Base DN for authentication,Base DN за проверка,0
+help,"ldap.connection,auth_create_user",0,Create user if not in database,Създаване на потребител ако го няма в базата данни,0
+help,"ldap.connection,auth_uid",0,UID Attribute for authentication,UID атрибут за проверка,0
+selection,"ldap.connection,auth_scope",0,Base,Основа,0
+selection,"ldap.connection,auth_scope",0,OneLevel,Едно ниво,0
+selection,"ldap.connection,auth_scope",0,Subtree,Поддърво,0
+view,ldap.connection,0,Authentication,Проверка,0
