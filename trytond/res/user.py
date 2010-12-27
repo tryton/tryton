@@ -93,9 +93,11 @@ class User(ModelSQL, ModelView):
         # Migration from 1.6
 
         # For module dashboard
+        table.module_name = 'dashboard'
         table.not_null_action('dashboard_layout', action='remove')
 
         # For module calendar_scheduling
+        table.module_name = 'calendar_scheduling'
         for field in ('calendar_email_notification_new',
                 'calendar_email_notification_update',
                 'calendar_email_notification_cancel',
