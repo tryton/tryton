@@ -13,6 +13,7 @@ import sys
 import os
 import gzip
 import StringIO
+from types import DictType
 
 # convert decimal to float before marshalling:
 from decimal import Decimal
@@ -20,6 +21,18 @@ xmlrpclib.Marshaller.dispatch[Decimal] = \
         lambda self, value, write: self.dump_double(float(value), write)
 xmlrpclib.Marshaller.dispatch[type(None)] = \
         lambda self, value, write: self.dump_bool(bool(value), write)
+
+def dump_struct(self, value, write, escape=xmlrpclib.escape):
+    converted_value = {}
+    for k, v in value.items():
+        if type(k) in (int, long):
+            k = str(int(k))
+        elif type(k) == float:
+            k = repr(k)
+        converted_value[k] = v
+    return self.dump_struct(converted_value, write, escape=escape)
+
+xmlrpclib.Marshaller.dispatch[DictType] = dump_struct
 
 
 class GenericXMLRPCRequestHandler:
