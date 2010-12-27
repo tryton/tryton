@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Stock Location Sequence',
+    'name_bg_BG': 'Последователност за местонахождение на наличност',
     'name_de_DE': 'Lagerverwaltung Lagerortsequenz',
     'name_es_CO': 'Secuencia de Sitio del Stock',
     'name_es_ES': 'Secuencia de ubicación de existencias',
@@ -11,6 +12,8 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add sequence on location object
+''',
+    'description_bg_BG': '''Добавя последователност към местонахождение на обект
 ''',
     'description_de_DE': '''Fügt dem Objekt Lagerort eine Sequenz hinzu
 ''',
@@ -27,6 +30,7 @@
         'stock.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
