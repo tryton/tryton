@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Analytic Sale',
+    'name_bg_BG': 'Аналитична продажба',
     'name_de_DE': 'Kostenstellen Verkauf',
     'name_es_CO': 'Ventas Analíticas',
     'name_es_ES': 'Venta analítica',
@@ -11,6 +12,8 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add analytic account on sale lines.
+''',
+    'description_bg_BG': '''Добавя аналитична сметка към редове от продажба
 ''',
     'description_de_DE': '''Fügt Kostenstellen zu den Verkaufspositionen hinzu
 ''',
@@ -27,6 +30,7 @@
         'sale.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
