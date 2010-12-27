@@ -157,7 +157,8 @@ class PriceListLine(ModelSQL, ModelView):
         with Transaction().set_context(**context):
             for line in lines:
                 try:
-                    self.get_unit_price(line)
+                    if not isinstance(self.get_unit_price(line), Decimal):
+                        return False
                 except Exception:
                     return False
         return True
