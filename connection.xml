@@ -13,7 +13,7 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath
                         expr="/form/separator[@id=&quot;buttons&quot;]"
                         position="before">
-                        <separator string="Authentification" id="authentication"
+                        <separator string="Authentication" id="authentication"
                             colspan="6"/>
                         <label name="auth_uid"/>
                         <field name="auth_uid"/>

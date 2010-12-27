@@ -11,4 +11,4 @@ help,"ldap.connection,auth_uid",0,UID Attribute for authentication,Atributo UID 
 selection,"ldap.connection,auth_scope",0,Base,Base,0
 selection,"ldap.connection,auth_scope",0,OneLevel,UnNivel,0
 selection,"ldap.connection,auth_scope",0,Subtree,Subárbol,0
-view,ldap.connection,0,Authentification,Autentificación,0
+view,ldap.connection,0,Authentication,Autentificación,0
