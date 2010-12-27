@@ -17,6 +17,7 @@ import gzip
 import StringIO
 import base64
 import datetime
+from types import DictType
 
 # convert decimal to float before marshalling:
 from decimal import Decimal
@@ -32,6 +33,19 @@ xmlrpclib.Marshaller.dispatch[type(None)] = \
 xmlrpclib.Marshaller.dispatch[datetime.date] = \
         lambda self, value, write: self.dump_datetime(
                 datetime.datetime.combine(value, datetime.time()), write)
+
+def dump_struct(self, value, write, escape=xmlrpclib.escape):
+    converted_value = {}
+    for k, v in value.items():
+        if type(k) in (int, long):
+            k = str(int(k))
+        elif type(k) == float:
+            k = repr(k)
+        converted_value[k] = v
+    return self.dump_struct(converted_value, write, escape=escape)
+
+xmlrpclib.Marshaller.dispatch[DictType] = dump_struct
+
 
 def _end_double(self, data):
     self.append(Float(data))
