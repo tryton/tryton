@@ -1794,6 +1794,7 @@ class ModelSQL(ModelStorage):
                             tables_args[tables[i]] = args
                     if table_join not in tables:
                         tables.insert(0, table_join)
+                        tables_args[table_join] = []
 
                     table_join2 = 'LEFT JOIN "' + table_name2 + '" AS ' \
                             '"' + table_name2 + '.' + link_field2 + '" ON ' \
@@ -1804,7 +1805,7 @@ class ModelSQL(ModelStorage):
                         if table_name2 in order_by[i]:
                             order_by[i] = order_by[i].replace(table_name2,
                                     table_name2 + '.' + link_field2)
-                    for i in range(len(tables)):
+                    for i in range(1, len(tables)):
                         if table_name2 in tables[i]:
                             args = tables_args[tables[i]]
                             del tables_args[tables[i]]
@@ -1813,6 +1814,7 @@ class ModelSQL(ModelStorage):
                             tables_args[tables[i]] = args
                     if table_join2 not in tables:
                         tables.insert(1, table_join2)
+                        tables_args[table_join2] = []
                     return order_by, tables, tables_args
 
             if field_name in self._columns \
