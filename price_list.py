@@ -76,7 +76,7 @@ class PriceList(ModelSQL, ModelView):
             party = party_obj.browse(party)
 
         if isinstance(product, (int, long)):
-            product = party_obj.browse(product)
+            product = product_obj.browse(product)
 
         if isinstance(uom, (int, long)):
             uom = uom_obj.browse(uom)
