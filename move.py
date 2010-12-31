@@ -614,13 +614,15 @@ class Line(ModelSQL, ModelView):
                 for tax_line in line.tax_lines:
                     taxes[(line.account.id, tax_line.code.id,
                             tax_line.tax.id)] = True
-                if not line.tax_lines and line.account.taxes:
-                    if line.account.id in no_code_taxes:
-                        taxes[(line.account.id, False, False)] = True
-                    else:
-                        no_code_taxes.append(line.account.id)
-                elif not line.tax_lines:
-                    taxes[(line.account.id, False, False)] = True
+                if not line.tax_lines:
+                    no_code_taxes.append(line.account.id)
+        for no_code_account_id in no_code_taxes:
+            for (account_id, code_id, tax_id), test in \
+                    taxes.iteritems():
+                if (not test
+                        and not code_id
+                        and no_code_account_id == account_id):
+                    taxes[(account_id, code_id, tax_id)] = True
 
         if 'account' in fields:
             if total >= Decimal('0.0'):
@@ -785,6 +787,8 @@ class Line(ModelSQL, ModelView):
                         [x.id for x in account.taxes],
                         debit or credit, 1):
                     code_id = tax_line['tax'][key + '_base_code'].id
+                    if not code_id:
+                        continue
                     tax_id = tax_line['tax'].id
                     base_amounts.setdefault((code_id, tax_id), Decimal('0.0'))
                     base_amounts[code_id, tax_id] += tax_line['base'] * \
