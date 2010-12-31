@@ -11,11 +11,11 @@ class Product(ModelSQL, ModelView):
         price_list_obj = self.pool.get('product.price_list')
 
         res = super(Product, self).get_sale_price(ids, quantity=quantity)
-        if (Transaction().context.get('price_list') 
+        if (Transaction().context.get('price_list')
                 and Transaction().context.get('customer')):
             for product in self.browse(ids):
                 res[product.id] = price_list_obj.compute(
-                        Transaction().context['price_list'], 
+                        Transaction().context['price_list'],
                         Transaction().context['customer'],
                         product, res[product.id], quantity,
                         Transaction().context.get('uom', product.default_uom))
