@@ -2366,7 +2366,7 @@ class AgedBalance(Report):
                     datetime.timedelta(days=term*coef),)
             else:
                 term_query = '(l.maturity_date <= %s '\
-                    'AND l.maturity_date >= %s) '
+                    'AND l.maturity_date > %s) '
                 term_args = (
                     date_obj.today(cursor, user, context=context) + \
                         datetime.timedelta(days=term*coef),
