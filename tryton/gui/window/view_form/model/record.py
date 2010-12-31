@@ -108,8 +108,6 @@ class Record(SignalEvent):
             except Exception, exception:
                 values = common.process_exception(exception, self.window, *args)
                 if not values:
-                    log = logging.getLogger('record')
-                    log.error('%s' % exception.args[-1])
                     values = [{'id': x} for x in ids]
             id2value = dict((value['id'], value) for value in values)
             if ids != [self.id]:

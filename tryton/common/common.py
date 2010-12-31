@@ -31,6 +31,7 @@ try:
 except ImportError:
     ssl = None
 import dis
+from threading import Lock
 
 _ = gettext.gettext
 
@@ -799,6 +800,8 @@ This record has been modified while you were editing it.
                 parent, context, ['form', 'tree'])
     return False
 
+PLOCK = Lock()
+
 def process_exception(exception, parent, *args):
     global _USERNAME, _DATABASE, _SOCK
     if str(exception.args[0]) == 'BadFingerprint':
@@ -813,28 +816,33 @@ def process_exception(exception, parent, *args):
             message(_('Connection error!\n' \
                     'Unable to connect to the server!'), parent)
             return False
+        if not PLOCK.acquire(False):
+            return False
         hostname = rpc._SOCK.hostname
         port = rpc._SOCK.port
-        while True:
-            password = ask(_('Password:'), parent, visibility=False)
-            if password is None:
-                raise Exception('NotLogged')
-            res = rpc.login(rpc._USERNAME, password, hostname, port,
-                    rpc._DATABASE)
-            from tryton.gui.main import Main
-            Main.get_main().refresh_ssl()
-            if res == -1:
-                message(_('Connection error!\n' \
-                        'Unable to connect to the server!'), parent)
-                return False
-            if res < 0:
-                continue
-            if args:
-                try:
-                    return rpc.execute(*args)
-                except Exception, exception:
-                    return process_exception(exception, parent, *args)
-            return True
+        try:
+            while True:
+                password = ask(_('Password:'), parent, visibility=False)
+                if password is None:
+                    raise Exception('NotLogged')
+                res = rpc.login(rpc._USERNAME, password, hostname, port,
+                        rpc._DATABASE)
+                from tryton.gui.main import Main
+                Main.get_main().refresh_ssl()
+                if res == -1:
+                    message(_('Connection error!\n' \
+                            'Unable to connect to the server!'), parent)
+                    return False
+                if res < 0:
+                    continue
+                if args:
+                    try:
+                        return rpc.execute(*args)
+                    except Exception, exception:
+                        return process_exception(exception, parent, *args)
+                return True
+        finally:
+            PLOCK.release()
 
     if exception.args[0] == 'ConcurrencyException':
         if len(args) >= 6:
