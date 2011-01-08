@@ -431,6 +431,7 @@ class Warning(ModelSQL, ModelView):
     always = fields.Boolean('Always')
 
     def check(self, warning_name):
+        user = Transaction().user
         if not user:
             return False
         warning_ids = self.search([
