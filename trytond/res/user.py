@@ -234,7 +234,6 @@ class User(ModelSQL, ModelView):
         default['password'] = ''
 
         new_ids = []
-        user_id = user
         for user in self.browse(ids):
             default['login'] = user.login + ' (copy)'
             new_id = super(User, self).copy(user.id, default)
