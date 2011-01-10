@@ -577,6 +577,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Account Tax Line">
+                    <label name="move_line"/>
+                    <field name="move_line" colspan="3"/>
                     <label name="tax"/>
                     <field name="tax"/>
                     <label name="code"/>
@@ -596,6 +598,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="tax" select="1"/>
                     <field name="code" select="1"/>
                     <field name="amount" select="1"/>
+                    <field name="move_line" select="2"/>
                 </tree>
                 ]]>
             </field>
