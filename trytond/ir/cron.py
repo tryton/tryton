@@ -99,7 +99,8 @@ class Cron(ModelSQL, ModelView):
             if not obj and hasattr(obj, cron['function']):
                 return False
             fct = getattr(obj, cron['function'])
-            fct(cron['user'], *args)
+            with Transaction().set_user(cron['user']):
+                fct(*args)
         except Exception, error:
             Transaction().cursor.rollback()
 
@@ -119,8 +120,10 @@ class Cron(ModelSQL, ModelView):
             try:
                 user_obj = self.pool.get('res.user')
                 req_user = user_obj.browse(cron['request_user'])
+                language = (req_user.language.code if req_user.language
+                        else 'en_US')
                 with contextlib.nested(Transaction().set_user(cron['user']),
-                        Transaction().set_context(language=req_user.language)):
+                        Transaction().set_context(language=language)):
                     rid = request_obj.create({
                         'name': self.raise_user_error('request_title',
                             raise_exception=False),
