@@ -18,7 +18,7 @@ class ProductCostHistory(ModelSQL, ModelView):
         super(ProductCostHistory, self).__init__()
         self._order.insert(0, ('date', 'DESC'))
 
-    def table_query(self, context=None):
+    def table_query(self):
         property_obj = self.pool.get('ir.property')
         return ('SELECT ' \
                     'MAX(__id) AS id, ' \
