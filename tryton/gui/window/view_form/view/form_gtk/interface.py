@@ -108,7 +108,8 @@ class WidgetInterface(object):
         if self.field.get_state_attrs(self.record).get('readonly', False):
             return False
         model_name = self.field.parent.model_name
-        args = ('model', model_name, 'default_get', [self.attrs['name']])
+        args = ('model', model_name, 'default_get', [self.attrs['name']],
+                rpc.CONTEXT)
         try:
             res = rpc.execute(*args)
         except Exception, exception:
