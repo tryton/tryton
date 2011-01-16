@@ -1,0 +1,27 @@
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
+{
+    'name': 'Account Stock Anglo-Saxon',
+    'version': '0.0.1',
+    'author': 'B2CK',
+    'email': 'info@b2ck.com',
+    'website': 'http://www.tryton.org/',
+    'description': '''Add anglo-saxon stock accounting for real-time stock valuation.
+''',
+    'depends': [
+        'ir',
+        'res',
+        'account',
+        'account_invoice',
+        'account_product',
+        'account_stock_continental',
+        'purchase',
+        'sale',
+    ],
+    'xml': [
+        'product.xml',
+        'account.xml',
+    ],
+    'translation': [
+    ],
+}
