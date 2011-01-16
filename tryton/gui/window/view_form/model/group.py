@@ -341,7 +341,7 @@ class Group(SignalEvent, list):
         self.parent = None
         for field in self.fields.itervalues():
             field.destroy()
-        self.fields = None
+        self.fields = {}
         self.record_removed = None
         self.record_deleted = None
         self.__id2record = None
