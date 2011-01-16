@@ -3,3 +3,4 @@
 
 from purchase import *
 from configuration import *
+from invoice import *
