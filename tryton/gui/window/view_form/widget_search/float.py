@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import locale
+from decimal import Decimal
 from integer import Integer
 import gettext
 
@@ -66,3 +67,23 @@ class Float(Integer):
                 widget.stop_emission('insert-text')
         except Exception:
             widget.stop_emission('insert-text')
+
+
+class Numeric(Float):
+
+    def _value_get(self):
+        try:
+            value1 = Decimal(str(locale.atof(self.entry1.get_text())))
+        except Exception:
+            value1 = False
+        try:
+            value2 = Decimal(str(locale.atof(self.entry2.get_text())))
+        except Exception:
+            value2 = False
+        res = self._get_clause(value1, value2)
+        return res
+
+    def _value_set(self, value):
+        super(Numeric, self)._value_set(value)
+
+    value = property(_value_get, _value_set)

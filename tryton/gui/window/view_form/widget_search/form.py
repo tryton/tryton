@@ -298,7 +298,7 @@ WIDGETS_TYPE = {
     'date': (calendar.Calendar, 2),
     'datetime': (calendar.Calendar, 2),
     'float': (float.Float, 2),
-    'numeric': (float.Float, 2),
+    'numeric': (float.Numeric, 2),
     'integer': (integer.Integer, 2),
     'biginteger': (integer.Integer, 2),
     'selection': (selection.Selection, 2),
