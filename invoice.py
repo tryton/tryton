@@ -712,7 +712,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         for line in invoice.lines:
             val = line_obj.get_move_line(line)
             if val:
-                res.append(val)
+                res.extend(val)
         return res
 
     def _get_move_line_invoice_tax(self, invoice):
@@ -724,7 +724,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         for tax in invoice.taxes:
             val = tax_obj.get_move_line(tax)
             if val:
-                res.append(val)
+                res.extend(val)
         return res
 
     def _get_move_line(self, invoice, date, amount):
@@ -1669,12 +1669,12 @@ class InvoiceLine(ModelSQL, ModelView):
 
     def get_move_line(self, line):
         '''
-        Return move line value for invoice line
+        Return a list of move lines values for invoice line
         '''
         currency_obj = self.pool.get('currency.currency')
         res = {}
         if line.type != 'line':
-            return res
+            return []
         res['name'] = line.description
         if line.invoice.currency.id != line.invoice.company.currency.id:
             amount = currency_obj.compute(line.invoice.currency, line.amount,
@@ -1707,7 +1707,7 @@ class InvoiceLine(ModelSQL, ModelView):
         for tax in computed_taxes:
             res.setdefault('tax_lines', [])
             res['tax_lines'].append(('create', tax))
-        return res
+        return [res]
 
     def _credit(self, line):
         '''
@@ -1863,12 +1863,12 @@ class InvoiceTax(ModelSQL, ModelView):
 
     def get_move_line(self, tax):
         '''
-        Return move line value for invoice tax
+        Return a list of move lines values for invoice tax
         '''
         currency_obj = self.pool.get('currency.currency')
         res = {}
         if not tax.amount:
-            return res
+            return []
         res['name'] = tax.description
         if tax.invoice.currency.id != tax.invoice.company.currency.id:
             amount = currency_obj.compute(tax.invoice.currency, tax.amount,
@@ -1903,7 +1903,7 @@ class InvoiceTax(ModelSQL, ModelView):
                 'amount': amount * tax.tax_sign,
                 'tax': tax.tax and tax.tax.id or False
             })]
-        return res
+        return [res]
 
     def _credit(self, tax):
         '''

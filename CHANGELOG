@@ -1,3 +1,6 @@
+* Change get_move_line on Invoice Line and Tax to return a list of values
+  instead of values
+
 Version 1.8.0 - 2010-11-01
 * Bug fixes (see mercurial logs for details)
 
