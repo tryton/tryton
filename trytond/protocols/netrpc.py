@@ -30,7 +30,10 @@ class NetRPCClientThread(threading.Thread):
             return False
         timeout = 0
         while self.running:
-            (rlist, _, _) = select.select([self.sock], [], [], 1)
+            try:
+                rlist, _, _ = select.select([self.sock], [], [], 1)
+            except select.error:
+                continue
             if not rlist:
                 timeout += 1
                 if timeout > 600:
@@ -103,7 +106,10 @@ class NetRPCServerThread(threading.Thread):
             while self.running:
                 if not int(CONFIG['max_thread']) \
                         or len(self.threads) < int(CONFIG['max_thread']):
-                    (rlist, _, _) = select.select([self.socket], [], [], 1)
+                    try:
+                        rlist, _, _ = select.select([self.socket], [], [], 1)
+                    except select.error:
+                        continue
                     if not rlist:
                         continue
                     (clientsocket, _) = self.socket.accept()
