@@ -178,21 +178,22 @@ class InvoiceLine(ModelSQL, ModelView):
         return new_ids
 
     def get_move_line(self, line):
-        res = super(InvoiceLine, self).get_move_line(line)
+        values = super(InvoiceLine, self).get_move_line(line)
         if line.analytic_accounts and line.analytic_accounts.accounts:
-            res['analytic_lines'] = []
-            for account in line.analytic_accounts.accounts:
-                vals = {}
-                vals['name'] = line.description
-                vals['debit'] = res['debit']
-                vals['credit'] = res['credit']
-                vals['account'] = account.id
-                vals['journal'] = line.invoice.journal.id
-                vals['date'] = line.invoice.invoice_date
-                vals['reference'] = line.invoice.reference
-                vals['party'] = line.invoice.party.id
-                res['analytic_lines'].append(('create', vals))
-        return res
+            for value in values:
+                value['analytic_lines'] = []
+                for account in line.analytic_accounts.accounts:
+                    vals = {}
+                    vals['name'] = line.description
+                    vals['debit'] = value['debit']
+                    vals['credit'] = value['credit']
+                    vals['account'] = account.id
+                    vals['journal'] = line.invoice.journal.id
+                    vals['date'] = line.invoice.invoice_date
+                    vals['reference'] = line.invoice.reference
+                    vals['party'] = line.invoice.party.id
+                    value['analytic_lines'].append(('create', vals))
+        return values
 
 InvoiceLine()
 
