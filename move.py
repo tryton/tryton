@@ -4,7 +4,7 @@ from __future__ import with_statement
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields, OPERATORS
 from trytond.backend import TableHandler
-from trytond.pyson import In, Eval, Not, In, Equal, If, Get, Bool
+from trytond.pyson import In, Eval, Not, Equal, If, Get, Bool
 from trytond.transaction import Transaction
 
 STATES = {
