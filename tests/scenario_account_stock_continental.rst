@@ -203,11 +203,13 @@ Receive 4 products::
     >>> shipment.state
     u'done'
     >>> stock_supplier.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit)
-    (Decimal('0.00'), Decimal('20.00'))
+    >>> (stock_supplier.debit, stock_supplier.credit) == \
+    ... (Decimal('0.00'), Decimal('20.00'))
+    True
     >>> stock.reload()
-    >>> (stock.debit, stock.credit)
-    (Decimal('20.00'), Decimal('0.00'))
+    >>> (stock.debit, stock.credit) == \
+    ... (Decimal('20.00'), Decimal('0.00'))
+    True
 
 Open supplier invoice::
 
@@ -221,11 +223,13 @@ Open supplier invoice::
     >>> invoice.state
     u'open'
     >>> payable.reload()
-    >>> (payable.debit, payable.credit)
-    (Decimal('0.00'), Decimal('24.00'))
+    >>> (payable.debit, payable.credit) == \
+    ... (Decimal('0.00'), Decimal('24.00'))
+    True
     >>> expense.reload()
-    >>> (expense.debit, expense.credit)
-    (Decimal('24.00'), Decimal('0.00'))
+    >>> (expense.debit, expense.credit) == \
+    ... (Decimal('24.00'), Decimal('0.00'))
+    True
 
 Update cost price of product::
 
@@ -269,11 +273,13 @@ Send 2 products::
     >>> shipment.state
     u'done'
     >>> stock_customer.reload()
-    >>> (stock_customer.debit, stock_customer.credit)
-    (Decimal('12.00'), Decimal('0.00'))
+    >>> (stock_customer.debit, stock_customer.credit) == \
+    ... (Decimal('12.00'), Decimal('0.00'))
+    True
     >>> stock.reload()
-    >>> (stock.debit, stock.credit)
-    (Decimal('20.00'), Decimal('12.00'))
+    >>> (stock.debit, stock.credit) == \
+    ... (Decimal('20.00'), Decimal('12.00'))
+    True
 
 Open customer invoice::
 
@@ -283,11 +289,13 @@ Open customer invoice::
     >>> invoice.state
     u'open'
     >>> receivable.reload()
-    >>> (receivable.debit, receivable.credit)
-    (Decimal('20.00'), Decimal('0.00'))
+    >>> (receivable.debit, receivable.credit) == \
+    ... (Decimal('20.00'), Decimal('0.00'))
+    True
     >>> revenue.reload()
-    >>> (revenue.debit, revenue.credit)
-    (Decimal('0.00'), Decimal('20.00'))
+    >>> (revenue.debit, revenue.credit) == \
+    ... (Decimal('0.00'), Decimal('20.00'))
+    True
 
 Create an Inventory::
 
@@ -307,8 +315,10 @@ Create an Inventory::
     >>> inventory.state
     u'done'
     >>> stock_lost_found.reload()
-    >>> (stock_lost_found.debit, stock_lost_found.credit)
-    (Decimal('6.00'), Decimal('0.00'))
+    >>> (stock_lost_found.debit, stock_lost_found.credit) == \
+    ... (Decimal('6.00'), Decimal('0.00'))
+    True
     >>> stock.reload()
-    >>> (stock.debit, stock.credit)
-    (Decimal('20.00'), Decimal('18.00'))
+    >>> (stock.debit, stock.credit) == \
+    ... (Decimal('20.00'), Decimal('18.00'))
+    True
