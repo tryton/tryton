@@ -823,7 +823,7 @@ class ProgressBar(object):
 
 class Button(object):
 
-    def __init__(self, treeview, windown, screen, attrs=None):
+    def __init__(self, treeview, window, screen, attrs=None):
         super(Button, self).__init__()
         self.attrs = attrs or {}
         self.renderer = CellRendererButton(attrs.get('string', _('Unknown')))
