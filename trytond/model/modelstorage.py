@@ -6,7 +6,7 @@ from trytond.model import fields
 from trytond.model.browse import BrowseRecordList, BrowseRecord, \
         BrowseRecordNull
 from trytond.model.browse import EvalEnvironment
-from trytond.tools import safe_eval
+from trytond.tools import safe_eval, reduce_domain
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 import datetime
@@ -394,6 +394,8 @@ class ModelStorage(Model):
             context = {}
 
         domain = domain[:]
+        # reduce_domain return a new instance so we can safety modify domain
+        domain = reduce_domain(domain)
         # if the object has a field named 'active', filter out all inactive
         # records unless they were explicitely asked for
         if not (('active' in self._columns or \

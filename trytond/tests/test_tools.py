@@ -5,7 +5,8 @@
 
 import unittest
 import datetime
-from trytond.tools import reduce_ids, safe_eval, datetime_strftime
+from trytond.tools import reduce_ids, safe_eval, datetime_strftime, \
+        reduce_domain
 
 
 class ToolsTestCase(unittest.TestCase):
@@ -93,6 +94,34 @@ class ToolsTestCase(unittest.TestCase):
             '%Y-%m-%d'), '2005-03-02')
         self.assert_(datetime_strftime(datetime.date(1805, 3, 2),
             '%Y-%m-%d'), '1805-03-02')
+
+    def test_reduce_domain(self):
+        '''
+        Test reduce_domain
+        '''
+        clause = ('x', '=', 'x')
+        tests = (
+            ([clause], ['AND', clause]),
+            ([clause, [clause]], ['AND', clause, clause]),
+            (['AND', clause, [clause]], ['AND', clause, clause]),
+            ([clause, ['AND', clause]], ['AND', clause, clause]),
+            ([clause, ['AND', clause, clause]],
+                ['AND', clause, clause, clause]),
+            (['AND', clause, ['AND', clause]], ['AND', clause, clause]),
+            ([[[clause]]], ['AND', clause]),
+            (['OR', clause], ['OR', clause]),
+            (['OR', clause, [clause]], ['OR', clause, ['AND', clause]]),
+            (['OR', clause, [clause, clause]],
+                ['OR', clause, ['AND', clause, clause]]),
+            (['OR', clause, ['OR', clause]], ['OR', clause, clause]),
+            (['OR', clause, [clause, ['OR', clause, clause]]],
+                ['OR', clause, ['AND', clause, ['OR', clause, clause]]]),
+            (['OR', [clause]], ['OR', ['AND', clause]]),
+            ([], []),
+        )
+        for i, j in tests:
+            self.assertEqual(reduce_domain(i), j,
+                    '%s -> %s != %s' % (i, reduce_domain(i), j))
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ToolsTestCase)

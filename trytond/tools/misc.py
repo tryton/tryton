@@ -19,6 +19,7 @@ except ImportError:
 import dis
 import datetime
 from decimal import Decimal
+from trytond.const import OPERATORS
 
 def find_in_path(name):
     if os.name == "nt":
@@ -603,3 +604,31 @@ def safe_eval(source, data=None):
         'round': round,
         'Decimal': Decimal,
         }}, data)
+
+def reduce_domain(domain):
+    '''
+    Reduce domain
+    '''
+    if not domain:
+        return []
+    operator = 'AND'
+    if isinstance(domain[0], basestring):
+        operator = domain[0]
+        domain = domain[1:]
+    result = [operator]
+    for arg in domain:
+        if (isinstance(arg, tuple) or
+                (isinstance(arg, list) and
+                    len(arg) > 2 and
+                    arg[1] in OPERATORS)):
+            #clause
+            result.append(arg)
+        elif isinstance(arg, list) and arg:
+            #sub-domain
+            sub_domain = reduce_domain(arg)
+            sub_operator = sub_domain[0]
+            if sub_operator == operator:
+                result.extend(sub_domain[1:])
+            else:
+                result.append(sub_domain)
+    return result
