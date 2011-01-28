@@ -136,7 +136,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'wrong_method': 'Wrong combination of method!',
             'addresses_required': 'Invoice and Shipment addresses must be '
             'defined for the quotation.',
-            'missing_account_receivable': 'It misses ' 
+            'missing_account_receivable': 'It misses '
                     'an "Account Receivable" on the party "%s"!',
         })
 
@@ -231,9 +231,9 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         }
         if vals.get('party'):
             party = party_obj.browse(vals['party'])
-            res['invoice_address'] = party_obj.address_get(party.id, 
+            res['invoice_address'] = party_obj.address_get(party.id,
                     type='invoice')
-            res['shipment_address'] = party_obj.address_get(party.id, 
+            res['shipment_address'] = party_obj.address_get(party.id,
                     type='delivery')
             if party.payment_term:
                 res['payment_term'] = party.payment_term.id
@@ -343,7 +343,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                         taxes[key] += val['amount']
             if currency:
                 for key in taxes:
-                    res['tax_amount'] += currency_obj.round(currency, 
+                    res['tax_amount'] += currency_obj.round(currency,
                             taxes[key])
         if currency:
             res['untaxed_amount'] = currency_obj.round(currency,
@@ -979,7 +979,7 @@ class SaleLine(ModelSQL, ModelView):
                         and move.id not in skip_ids:
                     val = False
                     break
-                quantity -= uom_obj.compute_qty(move.uom, move.quantity, 
+                quantity -= uom_obj.compute_qty(move.uom, move.quantity,
                         line.unit)
             if val:
                 if quantity > 0.0:
@@ -1045,20 +1045,20 @@ class SaleLine(ModelSQL, ModelView):
 
         with Transaction().set_context(
                 self._get_context_sale_price(product,vals)):
-            res['unit_price'] = product_obj.get_sale_price([product.id], 
+            res['unit_price'] = product_obj.get_sale_price([product.id],
                     vals.get('quantity', 0))[product.id]
         res['taxes'] = []
         pattern = self._get_tax_rule_pattern(party, vals)
         for tax in product.customer_taxes_used:
             if party and party.customer_tax_rule:
-                tax_ids = tax_rule_obj.apply(party.customer_tax_rule, tax, 
+                tax_ids = tax_rule_obj.apply(party.customer_tax_rule, tax,
                         pattern)
                 if tax_ids:
                     res['taxes'].extend(tax_ids)
                 continue
             res['taxes'].append(tax.id)
         if party and party.customer_tax_rule:
-            tax_ids = tax_rule_obj.apply(party.customer_tax_rule, False, 
+            tax_ids = tax_rule_obj.apply(party.customer_tax_rule, False,
                     pattern)
             if tax_ids:
                 res['taxes'].extend(tax_ids)
@@ -1091,7 +1091,7 @@ class SaleLine(ModelSQL, ModelView):
 
         with Transaction().set_context(
                 self._get_context_sale_price(product, vals)):
-            res['unit_price'] = product_obj.get_sale_price([vals['product']], 
+            res['unit_price'] = product_obj.get_sale_price([vals['product']],
                     vals.get('quantity', 0))[vals['product']]
         return res
 
@@ -1123,7 +1123,7 @@ class SaleLine(ModelSQL, ModelView):
                 for line2 in line.sale.lines:
                     if line2.type == 'line':
                         res[line.id] += currency_obj.round(line2.sale.currency,
-                                Decimal(str(line2.quantity)) * 
+                                Decimal(str(line2.quantity)) *
                                         line2.unit_price)
                     elif line2.type == 'subtotal':
                         if line.id == line2.id:
@@ -1158,7 +1158,7 @@ class SaleLine(ModelSQL, ModelView):
             quantity = 0.0
             for move in line.moves:
                 if move.state == 'done':
-                    quantity += uom_obj.compute_qty(move.uom, move.quantity, 
+                    quantity += uom_obj.compute_qty(move.uom, move.quantity,
                             line.unit)
 
         ignored_ids = set(
@@ -1166,7 +1166,7 @@ class SaleLine(ModelSQL, ModelView):
         for invoice_line in line.invoice_lines:
             if invoice_line.invoice.state != 'cancel' or \
                     invoice_line.id in ignored_ids:
-                quantity -= uom_obj.compute_qty(invoice_line.unit, 
+                quantity -= uom_obj.compute_qty(invoice_line.unit,
                         invoice_line.quantity, line.unit)
         res['quantity'] = quantity
 
@@ -1590,7 +1590,7 @@ class Invoice(ModelSQL, ModelView):
             return True
         if isinstance(ids, (int, long)):
             ids = [ids]
-        Transaction().cursor.execute('SELECT id FROM sale_invoices_rel ' 
+        Transaction().cursor.execute('SELECT id FROM sale_invoices_rel '
                 'WHERE invoice IN (' + ','.join(('%s',) * len(ids)) + ')',
                 ids)
         if Transaction().cursor.fetchone():
