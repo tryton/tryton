@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Sale',
+    'name_bg_BG': 'Продажби',
     'name_de_DE': 'Verkauf',
     'name_es_CO': 'Ventas',
     'name_es_ES': 'Venta',
@@ -24,6 +25,21 @@ With the possibilities:
         - Manual
         - On Order Confirmed
         - On Invoice Paid
+''',
+    'description_bg_BG': ''' Задаване на поръчка за продажба.
+ - Добавяне на информация за продажба на продукт.
+ - Задаване на продажна цена като ценова листа.
+
+Със следните възможности:
+    - проследяване на състоянията на фактура и доставка от поръчката за продажба
+    - задаване на начини на фактуриране:
+        - Ръчно
+        - При потвърждаване на поръчката
+        - При изпращане
+    - задаване на начина на доставка:
+        - Ръчно
+        - При потвърждаване на поръчката
+        - При плащане на фактурата
 ''',
     'description_de_DE': ''' - Dient der Erstellung von Verkaufsvorgängen (Entwurf, Angebot, Auftrag).
  - Fügt den Artikeln Einkaufsinformationen hinzu.
@@ -103,6 +119,7 @@ Avec la possibilité:
         'party.xml',
     ],
     'translation': [
+        'bg_BG.csv',
         'de_DE.csv',
         'es_CO.csv',
         'es_ES.csv',
