@@ -126,7 +126,7 @@ class UIMenu(ModelSQL, ModelView):
     def search(self, cursor, user, domain, offset=0, limit=None, order=None,
             context=None, count=False, query_string=False):
         res = super(UIMenu, self).search(cursor, user, domain, offset=offset,
-                limit=limit, order=order, context=context, count=count,
+                limit=limit, order=order, context=context, count=False,
                 query_string=query_string)
         if query_string:
             return res
@@ -144,6 +144,8 @@ class UIMenu(ModelSQL, ModelView):
                     if (x.parent.id in parent_ids) or not x.parent]
 
         res = check_menu(res)
+        if count:
+            return len(res)
         return res
 
     def get_action(self, cursor, user, ids, name, arg, context=None):
