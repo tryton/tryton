@@ -192,9 +192,10 @@ class Form(SignalEvent):
         win.show_all()
 
         response = win.run()
-        win.destroy()
         if response == gtk.RESPONSE_OK:
             self.screen.display(locale.atoi(entry.get_text()), set_cursor=True)
+        win.destroy()
+        self.window.present()
 
     def destroy(self):
         self.screen.signal_unconnect(self)
