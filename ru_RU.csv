@@ -1,20 +1,20 @@
 type,name,res_id,src,value,fuzzy
-error,country.country,0,The code of the country must be unique!,,0
-error,country.country,0,The name of the country must be unique!,,0
-field,"country.country,code",0,Code,,0
-field,"country.country,name",0,Name,,0
-field,"country.country,rec_name",0,Name,,0
-field,"country.country,subdivisions",0,Subdivisions,,0
-field,"country.subdivision,code",0,Code,,0
-field,"country.subdivision,country",0,Country,,0
-field,"country.subdivision,name",0,Name,,0
-field,"country.subdivision,parent",0,Parent,,0
-field,"country.subdivision,rec_name",0,Name,,0
-field,"country.subdivision,type",0,Type,,0
+error,country.country,0,The code of the country must be unique!,Код страны должен быть уникальный!,0
+error,country.country,0,The name of the country must be unique!,Наименование страны должно быть уникальным!,0
+field,"country.country,code",0,Code,Код страны,0
+field,"country.country,name",0,Name,Наименование,0
+field,"country.country,rec_name",0,Name,Наименование,0
+field,"country.country,subdivisions",0,Subdivisions,Области,0
+field,"country.subdivision,code",0,Code,Код,0
+field,"country.subdivision,country",0,Country,Страны мира,0
+field,"country.subdivision,name",0,Name,Наименование,0
+field,"country.subdivision,parent",0,Parent,Основной,0
+field,"country.subdivision,rec_name",0,Name,Наименование,0
+field,"country.subdivision,type",0,Type,Тип,0
 help,"country.country,code",0,"The ISO country code in two chars.
 You can use this field for quick search.",,0
 help,"country.country,name",0,The full name of the country.,,0
-model,"country.country,name",0,Country,,0
+model,"country.country,name",0,Country,Страны мира,0
 model,"country.country,name",ad,Andorra,Андорра,0
 model,"country.country,name",ae,United Arab Emirates,Объединённые Арабские Эмираты,0
 model,"country.country,name",af,Afghanistan,Афганистан,0
@@ -261,20 +261,20 @@ model,"country.country,name",yt,Mayotte,Майот,0
 model,"country.country,name",za,South Africa,Южная Африка,0
 model,"country.country,name",zm,Zambia,Замбия,0
 model,"country.country,name",zw,Zimbabwe,Зимбабве,0
-model,"country.subdivision,name",0,Subdivision,,0
-model,"ir.action,name",act_country_form,Countries,,0
-model,"ir.ui.menu,name",menu_country_form,Countries,,0
-selection,"country.subdivision,type",0,Administration,,0
-selection,"country.subdivision,type",0,Administrative Region,,0
-selection,"country.subdivision,type",0,Administrative Territory,,0
-selection,"country.subdivision,type",0,Administrative area,,0
-selection,"country.subdivision,type",0,Area,,0
-selection,"country.subdivision,type",0,Atoll,,0
-selection,"country.subdivision,type",0,Autonomous City,,0
+model,"country.subdivision,name",0,Subdivision,Административный округ,0
+model,"ir.action,name",act_country_form,Countries,Страны,0
+model,"ir.ui.menu,name",menu_country_form,Countries,Страны,0
+selection,"country.subdivision,type",0,Administration,группа Управление,0
+selection,"country.subdivision,type",0,Administrative Region,Административный регион,0
+selection,"country.subdivision,type",0,Administrative Territory,Административная территория,0
+selection,"country.subdivision,type",0,Administrative area,Административная область,0
+selection,"country.subdivision,type",0,Area,Область,0
+selection,"country.subdivision,type",0,Atoll,Атол,0
+selection,"country.subdivision,type",0,Autonomous City,Автономные города,0
 selection,"country.subdivision,type",0,Autonomous Commune,,0
 selection,"country.subdivision,type",0,Autonomous District,,0
 selection,"country.subdivision,type",0,Autonomous Province,,0
-selection,"country.subdivision,type",0,Autonomous Region,,0
+selection,"country.subdivision,type",0,Autonomous Region,Автономный регион,0
 selection,"country.subdivision,type",0,Autonomous communities,,0
 selection,"country.subdivision,type",0,Autonomous island,,0
 selection,"country.subdivision,type",0,Autonomous monastic state,,0
@@ -283,29 +283,29 @@ selection,"country.subdivision,type",0,Autonomous republic,,0
 selection,"country.subdivision,type",0,Autonomous sector,,0
 selection,"country.subdivision,type",0,Autonomous territory,,0
 selection,"country.subdivision,type",0,Borough,,0
-selection,"country.subdivision,type",0,Canton,,0
+selection,"country.subdivision,type",0,Canton,Гуанчжоу,0
 selection,"country.subdivision,type",0,Capital District,,0
 selection,"country.subdivision,type",0,Capital Metropolitan City,,0
 selection,"country.subdivision,type",0,Capital Territory,,0
 selection,"country.subdivision,type",0,Capital city,,0
-selection,"country.subdivision,type",0,City,,0
+selection,"country.subdivision,type",0,City,Город,0
 selection,"country.subdivision,type",0,City corporation,,0
-selection,"country.subdivision,type",0,City with county rights,,0
+selection,"country.subdivision,type",0,City with county rights,Город-Государство,0
 selection,"country.subdivision,type",0,Commune,,0
-selection,"country.subdivision,type",0,Country,,0
-selection,"country.subdivision,type",0,County,,0
-selection,"country.subdivision,type",0,Department,,0
-selection,"country.subdivision,type",0,Dependency,,0
+selection,"country.subdivision,type",0,Country,Страны мира,0
+selection,"country.subdivision,type",0,County,Страна,0
+selection,"country.subdivision,type",0,Department,Департамент,0
+selection,"country.subdivision,type",0,Dependency,Зависимость,0
 selection,"country.subdivision,type",0,District,,0
-selection,"country.subdivision,type",0,Division,,0
-selection,"country.subdivision,type",0,Economic Prefecture,,0
-selection,"country.subdivision,type",0,Economic region,,0
+selection,"country.subdivision,type",0,Division,Область,0
+selection,"country.subdivision,type",0,Economic Prefecture,Экономический префектуры,0
+selection,"country.subdivision,type",0,Economic region,Экономический регион,0
 selection,"country.subdivision,type",0,Emirate,,0
 selection,"country.subdivision,type",0,Entity,,0
 selection,"country.subdivision,type",0,Federal Dependency,,0
 selection,"country.subdivision,type",0,Federal District,,0
 selection,"country.subdivision,type",0,Federal Territories,,0
-selection,"country.subdivision,type",0,Geographical region,,0
+selection,"country.subdivision,type",0,Geographical region,Географический регион,0
 selection,"country.subdivision,type",0,Geographical unit,,0
 selection,"country.subdivision,type",0,Governorate,,0
 selection,"country.subdivision,type",0,Included for completeness,,0
@@ -319,32 +319,32 @@ selection,"country.subdivision,type",0,Metropolitan district,,0
 selection,"country.subdivision,type",0,Metropolitan region,,0
 selection,"country.subdivision,type",0,Municipalities,,0
 selection,"country.subdivision,type",0,Municipality,,0
-selection,"country.subdivision,type",0,Oblast,,0
+selection,"country.subdivision,type",0,Oblast,Область,0
 selection,"country.subdivision,type",0,Outlying area,,0
 selection,"country.subdivision,type",0,Overseas region/department,,0
 selection,"country.subdivision,type",0,Overseas territorial collectivity,,0
 selection,"country.subdivision,type",0,Parish,,0
-selection,"country.subdivision,type",0,Prefecture,,0
+selection,"country.subdivision,type",0,Prefecture,Префектура,0
 selection,"country.subdivision,type",0,Principality,,0
-selection,"country.subdivision,type",0,Province,,0
-selection,"country.subdivision,type",0,Rayon,,0
-selection,"country.subdivision,type",0,Region,,0
+selection,"country.subdivision,type",0,Province,Провинция,0
+selection,"country.subdivision,type",0,Rayon,Район,0
+selection,"country.subdivision,type",0,Region,Регион,0
 selection,"country.subdivision,type",0,Regional council,,0
-selection,"country.subdivision,type",0,Republic,,0
+selection,"country.subdivision,type",0,Republic,Республика,0
 selection,"country.subdivision,type",0,Special District,,0
 selection,"country.subdivision,type",0,Special Municipality,,0
-selection,"country.subdivision,type",0,Special Region,,0
+selection,"country.subdivision,type",0,Special Region,Специальный регион,0
 selection,"country.subdivision,type",0,Special administrative region,,0
-selection,"country.subdivision,type",0,Special city,,0
-selection,"country.subdivision,type",0,Special zone,,0
-selection,"country.subdivision,type",0,State,,0
-selection,"country.subdivision,type",0,Territorial unit,,0
-selection,"country.subdivision,type",0,Territory,,0
+selection,"country.subdivision,type",0,Special city,Специальный город,0
+selection,"country.subdivision,type",0,Special zone,Специальная зона,0
+selection,"country.subdivision,type",0,State,Статус,0
+selection,"country.subdivision,type",0,Territorial unit,Территориальная единица,0
+selection,"country.subdivision,type",0,Territory,Территория,0
 selection,"country.subdivision,type",0,Town council,,0
 selection,"country.subdivision,type",0,Two-tier county,,0
-selection,"country.subdivision,type",0,Union territory,,0
+selection,"country.subdivision,type",0,Union territory,Объединеные территории,0
 selection,"country.subdivision,type",0,Unitary authority,,0
-view,country.country,0,Countries,,0
-view,country.country,0,Country,,0
-view,country.subdivision,0,Subdivision,,0
-view,country.subdivision,0,Subdivisions,,0
+view,country.country,0,Countries,Страны,0
+view,country.country,0,Country,Страны мира,0
+view,country.subdivision,0,Subdivision,Подраздел,0
+view,country.subdivision,0,Subdivisions,Области,0

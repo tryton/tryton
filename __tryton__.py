@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
@@ -7,6 +8,7 @@
     'name_es_CO': 'País',
     'name_es_ES': 'País',
     'name_fr_FR': 'Pays',
+    'name_ru_RU': 'Страны',
     'version' : '1.9.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
@@ -17,6 +19,7 @@
     'description_es_CO': 'Define todos los países y sus subdivisiones.',
     'description_es_ES': 'Define todos los países y sus subdivisiones.',
     'description_fr_FR': 'Défini tous les pays ainsi que leurs subdivisions.',
+    'description_ru_RU': 'Определение всех стран и административных единиц',
     'depends' : ['ir', 'res'],
     'xml' : [
         'country.xml',
