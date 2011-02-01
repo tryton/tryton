@@ -1196,8 +1196,9 @@ class PurchaseLine(ModelSQL, ModelView):
         else:
             ignored_ids = ()
         for invoice_line in line.invoice_lines:
-            if invoice_line.invoice.state != 'cancel' or \
-                    invoice_line.id in ignored_ids:
+            if ((invoice_line.invoice and
+                    invoice_line.invoice.state != 'cancel') or
+                invoice_line.id in ignored_ids):
                 quantity -= uom_obj.compute_qty(
                     cursor, user, invoice_line.unit, invoice_line.quantity,
                     line.unit, context=context)
