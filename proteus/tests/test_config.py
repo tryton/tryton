@@ -7,7 +7,7 @@ import proteus.config
 class TestConfig(TestCase):
 
     def setUp(self):
-        proteus.config.set_trytond(':memory:', database_type='sqlite')
+        proteus.config.set_trytond(database_type='sqlite')
 
     def test_proxy(self):
         config = proteus.config.get_config()
@@ -22,7 +22,7 @@ class TestConfig(TestCase):
 
     def test_trytond_config_eq(self):
         config1 = proteus.config.get_config()
-        proteus.config.set_trytond(':memory:', database_type='sqlite')
+        proteus.config.set_trytond(database_type='sqlite')
         config2 = proteus.config.get_config()
         self.assertEqual(config1, config2)
 

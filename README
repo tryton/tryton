@@ -21,6 +21,8 @@ Configuration to connect to a sqlite memory database using trytond as module.
     >>> config = config.set_trytond(':memory:', database_type='sqlite')
 
 When connecting to a database that doesn't exist, Proteus will create it.
+If no database name was given, then Proteus will generate one. It will choose
+':memory': for 'sqlite' type otherwise `'test_%' % int(time.time())`.
 
 Installing a module
 ~~~~~~~~~~~~~~~~~~~

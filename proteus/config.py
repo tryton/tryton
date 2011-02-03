@@ -10,6 +10,7 @@ import threading
 from decimal import Decimal
 from types import NoneType
 import datetime
+import time
 
 def dump_decimal(self, value, write):
     write("<value><double>")
@@ -93,21 +94,27 @@ class TrytondProxy(object):
 class TrytondConfig(Config):
     'Configuration for trytond'
 
-    def __init__(self, database_name, user, database_type, language='en_US',
-            password=''):
+    def __init__(self, database_name=None, user='admin', database_type=None,
+            language='en_US', password=''):
         super(TrytondConfig, self).__init__()
         from trytond.config import CONFIG
-        CONFIG['db_type'] = database_type
         CONFIG.parse()
+        if database_type is not None:
+            CONFIG['db_type'] = database_type
         from trytond.modules import register_classes
         from trytond.pool import Pool
         from trytond.backend import Database
         from trytond.protocols.dispatcher import create
         from trytond.cache import Cache
         from trytond.transaction import Transaction
+        self.database_type = CONFIG['db_type']
+        if database_name is None:
+            if self.database_type == 'sqlite':
+                database_name = ':memory:'
+            else:
+                database_name = 'test_%s' % int(time.time())
         self.database_name = database_name
         self._user = user
-        self.database_type = database_type
 
         register_classes()
 
@@ -151,7 +158,7 @@ class TrytondConfig(Config):
         proxy = self.get_proxy(name, type=type)
         return [x for x in proxy._object._rpc]
 
-def set_trytond(database_name, user='admin', database_type='postgresql',
+def set_trytond(database_name=None, user='admin', database_type=None,
         language='en_US', password=''):
     'Set trytond package as backend'
     _CONFIG.current = TrytondConfig(database_name, user, database_type,

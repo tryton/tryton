@@ -7,7 +7,7 @@ from proteus import config, Model
 class TestModel(TestCase):
 
     def setUp(self):
-        config.set_trytond(':memory:', database_type='sqlite')
+        config.set_trytond(database_type='sqlite')
 
     def test_class_cache(self):
         User1 = Model.get('res.user')

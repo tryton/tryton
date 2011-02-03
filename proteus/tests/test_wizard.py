@@ -7,7 +7,7 @@ from proteus import config, Wizard, Model
 class TestWizard(TestCase):
 
     def setUp(self):
-        config.set_trytond(':memory:', database_type='sqlite')
+        config.set_trytond(database_type='sqlite')
 
     def test_translation_clean(self):
         translation_clean = Wizard('ir.translation.clean')
