@@ -16,7 +16,7 @@ Imports::
 
 Create database::
 
-    >>> config = config.set_trytond(':memory:', database_type='sqlite')
+    >>> config = config.set_trytond()
 
 Install account_stock_continental, sale and purchase::
 
