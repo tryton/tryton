@@ -119,6 +119,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(Invoice, self).__init__()
+        self._check_modify_exclude = ['state', 'payment_lines',
+                'invoice_report', 'invoice_report_format']
         self._rpc.update({
             'button_draft': True,
         })
@@ -869,8 +871,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         if isinstance(ids, (int, long)):
             ids = [ids]
         keys = vals.keys()
-        for key in ('state', 'payment_lines',
-                'invoice_report', 'invoice_report_format'):
+        for key in self._check_modify_exclude:
             if key in keys:
                 keys.remove(key)
         if len(keys):
