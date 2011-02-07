@@ -613,6 +613,9 @@ class ReferenceField(CharField):
         if not value:
             record.value[self.name] = False
             return
+        if isinstance(value, basestring):
+            model, ref_id = value.split(',')
+            value = model, (ref_id, record.value.get(self.name + '.rec_name'))
         ref_model, (ref_id, ref_str) = value
         if ref_model:
             ref_id = int(ref_id)
