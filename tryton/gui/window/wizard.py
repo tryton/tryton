@@ -48,7 +48,7 @@ class Wizard(SignalEvent):
         self.context = context
         if not 'form' in datas:
             datas['form'] = {}
-        args = ('wizard', action, 'create', rpc.CONTEXT)
+        args = ('wizard', action, 'create')
         try:
             self.wiz_id = rpc.execute(*args)
         except Exception, exception:
