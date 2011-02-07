@@ -1,14 +1,44 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from __future__ import with_statement
-import re
 from decimal import Decimal
+import tokenize
+from StringIO import StringIO
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.tools import safe_eval
 from trytond.pyson import If, In, Eval, Get
 from trytond.transaction import Transaction
 
-_RE_DECIMAL = re.compile('([\.0-9]+(\.[0-9]+)?)')
+
+# code snippet taken from http://docs.python.org/library/tokenize.html
+def decistmt(s):
+    """Substitute Decimals for floats in a string of statements.
+
+    >>> from decimal import Decimal
+    >>> s = 'print +21.3e-5*-.1234/81.7'
+    >>> decistmt(s)
+    "print +Decimal ('21.3e-5')*-Decimal ('.1234')/Decimal ('81.7')"
+
+    >>> exec(s)
+    -3.21716034272e-007
+    >>> exec(decistmt(s))
+    -3.217160342717258261933904529E-7
+    """
+    result = []
+    # tokenize the string
+    g = tokenize.generate_tokens(StringIO(s).readline)
+    for toknum, tokval, _, _, _  in g:
+        # replace NUMBER tokens
+        if toknum == tokenize.NUMBER and '.' in tokval:
+            result.extend([
+                (tokenize.NAME, 'Decimal'),
+                (tokenize.OP, '('),
+                (tokenize.STRING, repr(tokval)),
+                (tokenize.OP, ')')
+            ])
+        else:
+            result.append((toknum, tokval))
+    return tokenize.untokenize(result)
 
 
 class PriceList(ModelSQL, ModelView):
@@ -201,7 +231,6 @@ class PriceListLine(ModelSQL, ModelView):
         '''
         context = Transaction().context.copy()
         context['Decimal'] = Decimal
-        return safe_eval(_RE_DECIMAL.sub(lambda m: "Decimal('%s')" % m.group(1),
-            line.formula), context)
+        return safe_eval(decistmt(line.formula), context)
 
 PriceListLine()
