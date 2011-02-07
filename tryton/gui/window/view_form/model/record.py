@@ -399,7 +399,7 @@ class Record(SignalEvent):
             elif isinstance(self.group.fields[fieldname],
                     field.ReferenceField):
                 if value:
-                    ref_mode, ref_id = value.split(',', 1)
+                    ref_model, ref_id = value.split(',', 1)
                     if fieldname + '.rec_name' in res:
                         value = ref_model, (ref_id,
                                 res[fieldname + '.rec_name'])
