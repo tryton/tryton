@@ -152,7 +152,7 @@ class DateDescriptor(FieldDescriptor):
 class DateTimeDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
         assert isinstance(value, datetime.datetime)
-        super(DateTimeDescriptor, self).__set_(instance, value)
+        super(DateTimeDescriptor, self).__set__(instance, value)
 
 
 class Many2OneDescriptor(FieldDescriptor):
