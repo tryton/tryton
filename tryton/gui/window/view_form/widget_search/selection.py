@@ -6,6 +6,7 @@ import tryton.rpc as rpc
 import tryton.common as common
 import gobject
 import gettext
+from tryton.pyson import PYSONDecoder
 
 _ = gettext.gettext
 
@@ -37,11 +38,14 @@ class Selection(Interface):
         self._selection = {}
         selection = self.attrs.get('selection', [])
         if 'relation' in self.attrs:
+            if not self.attrs.get('domain'):
+                domain = []
+            else:
+                domain = PYSONDecoder(rpc.CONTEXT).decode(self.attrs['domain'])
             try:
-                result = rpc.execute('model',
-                        self.attrs['relation'], 'search_read',
-                        self.attrs.get('domain', []),
-                        0, None, None, rpc.CONTEXT, ['rec_name'])
+                result = rpc.execute('model', self.attrs['relation'],
+                        'search_read', domain 0, None, None,
+                        rpc.CONTEXT, ['rec_name'])
                 selection = [(x['id'], x['rec_name']) for x in result]
             except Exception, exception:
                 common.process_exception(exception, parent)

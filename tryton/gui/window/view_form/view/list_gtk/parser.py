@@ -677,9 +677,13 @@ class Selection(Char):
         selection_data = gtk.ListStore(str, str)
         selection = self.attrs.get('selection', [])[:]
         self.selection = selection[:]
+        if not self.attrs.get('domain'):
+            domain = []
+        else:
+            domain = PYSONDecoder(rpc.CONTEXT).decode(self.attrs['domain'])
         if 'relation' in self.attrs:
             args = ('model', self.attrs['relation'], 'search_read',
-                    self.attrs.get('domain', []), 0, None, None, rpc.CONTEXT,
+                    domain, 0, None, None, rpc.CONTEXT,
                     ['rec_name'])
             try:
                 result = rpc.execute(*args)
@@ -699,7 +703,7 @@ class Selection(Char):
                     selection = []
                 self.selection = selection[:]
 
-            for dom in common.filter_domain(self.attrs.get('domain', [])):
+            for dom in common.filter_domain(domain):
                 if dom[1] in ('=', '!='):
                     todel = []
                     for i in xrange(len(selection)):
