@@ -570,7 +570,7 @@ class CreatePurchase(Wizard):
         # Create all
         for purchase in purchases.itervalues():
             lines = purchase.pop('lines')
-            with Transaction().set_user(0, with_context=True):
+            with Transaction().set_user(0, set_context=True):
                 purchase_id = purchase_obj.create(purchase)
             for line in lines:
                 request_id = line.pop('request')
