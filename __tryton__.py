@@ -6,7 +6,7 @@
     'name_es_CO': 'Contabilidad',
     'name_es_ES': 'Contabilidad',
     'name_fr_FR': 'Comptabilité',
-    'version': '1.6.2',
+    'version': '1.6.3',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
