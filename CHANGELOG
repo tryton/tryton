@@ -1,3 +1,6 @@
+Version 1.8.2 - 2011-02-13
+* Bug fixes (see mercurial logs for details)
+
 Version 1.8.1 - 2010-11-07
 * Bug fixes (see mercurial logs for details)
 * Add AUTOINCREMENT to sqlite primary key
