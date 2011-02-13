@@ -6,7 +6,7 @@
     'name_de_DE': 'Artikel Kostenpreisermittlung FIFO',
     'name_es_ES': 'Coste FIFO de producto',
     'name_es_CO': 'Costo FIFO de producto',
-    'version': '1.2.2',
+    'version': '1.2.3',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
