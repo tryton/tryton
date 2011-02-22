@@ -1,0 +1,21 @@
+type,name,res_id,src,value,fuzzy
+field,"dashboard.action,act_window",0,Action,Действие,0
+field,"dashboard.action,rec_name",0,Name,Наименование,0
+field,"dashboard.action,sequence",0,Sequence,Последовательность,0
+field,"dashboard.action,user",0,User,Пользователь,0
+field,"res.user,dashboard_actions",0,Dashboard Actions,Панель действий,0
+field,"res.user,dashboard_layout",0,Dashboard Layout,Расположение на панели,0
+model,"dashboard.action,name",0,dashboard.action,Панель действий,0
+model,"ir.action,name",act_dashboard,Dashboard,Информационная панель,0
+model,"ir.ui.menu,name",menu_dashboard,Dashboard,Информационная панель,0
+selection,"res.user,dashboard_layout",0,Square,Квадрат,0
+selection,"res.user,dashboard_layout",0,Stack Bottom,Стек Нижний,0
+selection,"res.user,dashboard_layout",0,Stack Left,Стек слева,0
+selection,"res.user,dashboard_layout",0,Stack Right,Стек справа,0
+selection,"res.user,dashboard_layout",0,Stack Top,Стек сверху,0
+view,dashboard.action,0,Dashboard,Информационная панель,0
+view,dashboard.action,0,Dashboard Action,Панель действия,0
+view,dashboard.action,0,Dashboard Actions,Панель действий,0
+view,res.user,0,Dashboard,Информационная панель,0
+view,res.user,0,Dashboard Action,Действия панели,0
+view,res.user,0,Dashboard Actions,Действия панели,0

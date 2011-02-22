@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
@@ -7,6 +8,7 @@
     'name_es_CO': 'Escritorio',
     'name_es_ES': 'Escritorio',
     'name_fr_FR': 'Tableau de bord',
+    'name_ru_RU': 'Информационная панель',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -29,6 +31,9 @@
     'description_fr_FR': '''Tableau de bord
     - Permet de créer un tableau de bord personalisé.
 ''',
+    'description_ru_RU': '''Информационная панель:
+    - позволяет создавать персональные панели.
+''',
     'depends': [
         'ir',
         'res',
@@ -44,5 +49,6 @@
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'ru_RU.csv',
     ],
 }
