@@ -44,7 +44,7 @@ class Selection(Interface):
                 domain = PYSONDecoder(rpc.CONTEXT).decode(self.attrs['domain'])
             try:
                 result = rpc.execute('model', self.attrs['relation'],
-                        'search_read', domain 0, None, None,
+                        'search_read', domain, 0, None, None,
                         rpc.CONTEXT, ['rec_name'])
                 selection = [(x['id'], x['rec_name']) for x in result]
             except Exception, exception:
