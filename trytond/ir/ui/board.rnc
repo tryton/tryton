@@ -157,6 +157,7 @@ attlist.xpath &= attribute expr { text }
 attlist.xpath &=
   [ a:defaultValue = "inside" ]
   attribute position { "inside" | "replace" | "replace_attributes" | "after" | "before" }?
-action |= notAllowed
+action = element action { attlist.action, empty }
+attlist.action &= attribute name { text }
 label |= notAllowed
 start = data | board | label

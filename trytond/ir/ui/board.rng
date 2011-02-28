@@ -463,8 +463,14 @@
       </attribute>
     </optional>
   </define>
-  <define name="action" combine="choice">
-    <notAllowed/>
+  <define name="action">
+    <element name="action">
+      <ref name="attlist.action"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.action" combine="interleave">
+    <attribute name="name"/>
   </define>
   <define name="label" combine="choice">
     <notAllowed/>
