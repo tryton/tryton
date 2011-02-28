@@ -23,9 +23,29 @@ class Group(ModelSQL, ModelView):
             ('name_uniq', 'unique (name)', 'The name of the group must be unique!')
         ]
 
+    def create(self, cursor, user, values, context=None):
+        res = super(Group, self).create(cursor, user, values, context=context)
+        # Restart the cache on the domain_get method
+        self.pool.get('ir.rule').domain_get(cursor.dbname)
+        # Restart the cache for get_groups
+        self.pool.get('res.user').get_groups(cursor.dbname)
+        # Restart the cache for get_preferences
+        self.pool.get('res.user').get_preferences(cursor.dbname)
+        return res
+
     def write(self, cursor, user, ids, vals, context=None):
         res = super(Group, self).write(cursor, user, ids, vals,
                 context=context)
+        # Restart the cache on the domain_get method
+        self.pool.get('ir.rule').domain_get(cursor.dbname)
+        # Restart the cache for get_groups
+        self.pool.get('res.user').get_groups(cursor.dbname)
+        # Restart the cache for get_preferences
+        self.pool.get('res.user').get_preferences(cursor.dbname)
+        return res
+
+    def delete(self, cursor, user, ids, context=None):
+        res = super(Group, self).delete(cursor, user, ids, context=context)
         # Restart the cache on the domain_get method
         self.pool.get('ir.rule').domain_get(cursor.dbname)
         # Restart the cache for get_groups
