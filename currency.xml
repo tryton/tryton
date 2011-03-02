@@ -12,6 +12,10 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.user" id="res.user_trigger">
             <field name="groups" eval="[('add', ref('group_currency_admin'))]"/>
         </record>
+        <record model="ir.ui.icon" id="currency_icon">
+            <field name="name">tryton-currency</field>
+            <field name="path">icons/tryton-currency.svg</field>
+        </record>
         <menuitem name="Currency Management" id="menu_currency" sequence="3"
             groups="group_currency_admin" icon="tryton-currency"/>
 
