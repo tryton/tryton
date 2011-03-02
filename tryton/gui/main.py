@@ -1131,7 +1131,8 @@ class Main(object):
             return ([], [])
 
     def sig_login(self, widget=None, dbname=False, res=None):
-        self.sig_logout(widget, disconnect=False)
+        if not self.sig_logout(widget, disconnect=False):
+            return
         if not res:
             try:
                 dblogin = DBLogin(self.window)
