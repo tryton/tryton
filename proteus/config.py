@@ -23,6 +23,7 @@ xmlrpclib.Marshaller.dispatch[datetime.date] = \
                 datetime.datetime.combine(value, datetime.time()), write)
 
 _CONFIG = threading.local()
+_CONFIG.current = None
 
 
 class Config(object):
@@ -212,5 +213,4 @@ def set_xmlrpc(url):
     return _CONFIG.current
 
 def get_config():
-    # TODO raise exception if not set
     return _CONFIG.current
