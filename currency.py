@@ -182,7 +182,8 @@ class Currency(ModelSQL, ModelView):
         '''
         Take a currency and an amount
         Return the amount to the new currency
-        Use the rate of the date of the context or the current date
+        Use the rate of the date of the context or the current date if ids are
+        given
         '''
         date_obj = self.pool.get('ir.date')
         lang_obj = self.pool.get('ir.lang')
