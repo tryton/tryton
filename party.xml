@@ -13,12 +13,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="groups" eval="[('add', ref('group_party_admin'))]"/>
         </record>
 
-        <record model="ir.ui.icon" id="users_icon">
-            <field name="name">tryton-users</field>
-            <field name="path">icons/tryton-users.svg</field>
+        <record model="ir.ui.icon" id="party_icon">
+            <field name="name">tryton-party</field>
+            <field name="path">icons/tryton-party.svg</field>
         </record>
         <menuitem name="Party Management" sequence="0" id="menu_party"
-            icon="tryton-users"/>
+            icon="tryton-party"/>
 
         <menuitem name="Configuration" parent="menu_party"
             id="menu_configuration" groups="group_party_admin"
