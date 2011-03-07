@@ -19,8 +19,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="groups" eval="[('add', ref('group_stock_admin')), ('add', ref('group_stock')), ('add', ref('group_stock_force_assignment'))]"/>
         </record>
 
+        <record model="ir.ui.icon" id="inventory_icon">
+            <field name="name">tryton-inventory</field>
+            <field name="path">icons/tryton-inventory.svg</field>
+        </record>
         <menuitem name="Inventory Management" sequence="3" id="menu_stock"
-            icon="tryton-package"/>
+            icon="tryton-inventory"/>
         <menuitem name="Configuration" parent="menu_stock"
             id="menu_configuration" groups="group_stock_admin"
             sequence="0" icon="tryton-preferences"/>
