@@ -18,13 +18,13 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('add', ref('group_account')), ('add', ref('group_account_admin'))]"/>
         </record>
 
-        <record model="ir.ui.icon" id="calculator_icon">
-            <field name="name">tryton-calculator</field>
-            <field name="path">icons/tryton-calculator.svg</field>
+        <record model="ir.ui.icon" id="financial_icon">
+            <field name="name">tryton-financial</field>
+            <field name="path">icons/tryton-financial.svg</field>
         </record>
         <menuitem name="Financial Management" id="menu_account" sequence="2"
             groups="group_account,group_account_admin"
-            icon="tryton-calculator"/>
+            icon="tryton-financial"/>
         <menuitem name="Configuration" parent="menu_account"
             id="menu_account_configuration" groups="group_account_admin"
             sequence="10" icon="tryton-preferences"/>
