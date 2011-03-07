@@ -14,12 +14,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="groups" eval="[('add', ref('group_product_admin'))]"/>
         </record>
 
-        <record model="ir.ui.icon" id="package_icon">
-            <field name="name">tryton-package</field>
-            <field name="path">icons/tryton-package.svg</field>
+        <record model="ir.ui.icon" id="product_icon">
+            <field name="name">tryton-product</field>
+            <field name="path">icons/tryton-product.svg</field>
         </record>
         <menuitem name="Product" id="menu_main_product" sequence="1"
-            icon="tryton-package"/>
+            icon="tryton-product"/>
 
         <record model="ir.ui.view" id="template_view_tree">
             <field name="model">product.template</field>
