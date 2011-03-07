@@ -13,12 +13,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="groups" eval="[('add', ref('group_project_admin'))]"/>
         </record>
 
-        <record model="ir.ui.icon" id="development_icon">
-            <field name="name">tryton-development</field>
-            <field name="path">icons/tryton-development.svg</field>
+        <record model="ir.ui.icon" id="project_icon">
+            <field name="name">tryton-project</field>
+            <field name="path">icons/tryton-project.svg</field>
         </record>
         <menuitem name="Project Management" sequence="7" id="menu_project"
-            icon="tryton-development"/>
+            icon="tryton-project"/>
         <menuitem name="Configuration" parent="menu_project"
             id="menu_configuration" groups="group_project_admin"
             sequence="10" icon="tryton-preferences"/>
