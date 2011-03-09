@@ -71,7 +71,6 @@ class CompanyTestCase(unittest.TestCase):
                     company1_id, {
                         'parent': company2_id,
                     })
-            transaction.cursor.commit()
 
     def test0030employe(self):
         '''
