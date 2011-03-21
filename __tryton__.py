@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
@@ -7,6 +8,7 @@
     'name_es_CO': 'Histórico del costo para productos',
     'name_es_ES': 'Histórico del precio de coste de producto',
     'name_fr_FR': 'Historique prix de revient produit',
+    'name_ru_RU': 'История цен ТМЦ',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -35,6 +37,10 @@ todos los valores pasados del precio de coste del producto actual.
 Ce module ajoute un bouton sur la fiche produit qui ouvre la liste de
 toutes les valeurs passées du prix de revient du produit.
 ''',
+    'description_ru_RU': '''История цен ТМЦ. 
+Этот модуль добавляет кнопку для ТМЦ c помощью которой открывается список
+всех предыдущих значений цен на текущий ТМЦ.
+''',
     'depends': [
         'ir',
         'product',
@@ -48,5 +54,6 @@ toutes les valeurs passées du prix de revient du produit.
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'ru_RU.csv',
     ],
 }
