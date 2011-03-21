@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
@@ -7,6 +8,7 @@
     'name_es_CO': 'Productos',
     'name_es_ES': 'Producto',
     'name_fr_FR': 'Produit',
+    'name_ru_RU': 'ТМЦ',
     'version' : '1.9.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
@@ -23,6 +25,7 @@
  - Unité de mesure
  - Catégorie d'unité de mesure
 ''',
+    'description_ru_RU': 'Определение ТМЦ, категорий ТМЦ, единиц измерения, категорий единиц измерения.',
     'depends' : [
         'ir',
         'res',
@@ -38,6 +41,7 @@
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'ru_RU.csv',
     ]
 }
 
