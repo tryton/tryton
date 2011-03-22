@@ -188,7 +188,8 @@ class ActionKeyword(ModelSQL, ModelView):
                     del res[-1]['report_content_data']
                     del res[-1]['report_content']
                     del res[-1]['style_content']
-                    res[-1]['email'] = encoder.encode(res[-1]['email'])
+                    res[-1]['email'] = encoder.encode(safe_eval(res[-1]['email']
+                        or '{}', CONTEXT))
                 elif action_keyword.action.type == 'ir.action.act_window':
                     for field in ('domain', 'context', 'search_value'):
                         del res[-1][field]
