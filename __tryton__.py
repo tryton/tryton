@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
@@ -53,6 +54,13 @@ Défini un nouveau moteur de rapport gérant une entête par société.
 Ajoute un canva de lettre par tiers.
 Lance les planificateurs sur chaque société.
 ''',
+    'description_ru_RU': '''Учет организаций и сотрудников.
+ - Добавление основной и дочерних организаций
+ - Добавление учетных организаций и свойств
+ - Настройка отчетов для печати на фирменных бланках.
+ - Добавление шаблона письма.
+ - Устанавливает планировщика на работу с каждой учетной организацией.
+''',
     'depends': [
         'ir',
         'res',
@@ -69,5 +77,6 @@ Lance les planificateurs sur chaque société.
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'ru_RU.csv',
     ]
 }
