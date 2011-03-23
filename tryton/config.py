@@ -192,7 +192,7 @@ if not os.path.isdir(PIXMAPS_DIR):
         PIXMAPS_DIR = os.path.join(PREFIX, 'share', 'pixmaps', 'tryton')
 
 TRYTON_ICON = gtk.gdk.pixbuf_new_from_file(
-        os.path.join(PIXMAPS_DIR, '..', 'tryton-icon.png'))
+        os.path.join(PIXMAPS_DIR, '..', 'tryton-icon.png').encode('utf-8'))
 
 def _data_dir():
     data_dir = os.path.join(CURRENT_DIR, 'share', 'tryton')
