@@ -22,6 +22,24 @@ class UIMenuGroup(ModelSQL):
                 self._table + '_id_seq')
         super(UIMenuGroup, self).init(module_name)
 
+    def create(self, vals):
+        res = super(UIMenuGroup, self).create(vals)
+        # Restart the cache on the domain_get method
+        self.pool.get('ir.rule').domain_get.reset()
+        return res
+
+    def write(self, ids, vals):
+        res = super(UIMenuGroup, self).write(ids, vals)
+        # Restart the cache on the domain_get method
+        self.pool.get('ir.rule').domain_get.reset()
+        return res
+
+    def delete(self, ids):
+        res = super(UIMenuGroup, self).delete(ids)
+        # Restart the cache on the domain_get method
+        self.pool.get('ir.rule').domain_get.reset()
+        return res
+
 UIMenuGroup()
 
 
@@ -41,6 +59,24 @@ class ActionGroup(ModelSQL):
         TableHandler.sequence_rename(cursor, 'ir_action_group_rel_id_seq',
                 self._table + '_id_seq')
         super(ActionGroup, self).init(module_name)
+
+    def create(self, vals):
+        res = super(ActionGroup, self).create(vals)
+        # Restart the cache on the domain_get method
+        self.pool.get('ir.rule').domain_get.reset()
+        return res
+
+    def write(self, ids, vals):
+        res = super(ActionGroup, self).write(ids, vals)
+        # Restart the cache on the domain_get method
+        self.pool.get('ir.rule').domain_get.reset()
+        return res
+
+    def delete(self, ids):
+        res = super(ActionGroup, self).delete(ids)
+        # Restart the cache on the domain_get method
+        self.pool.get('ir.rule').domain_get.reset()
+        return res
 
 ActionGroup()
 
