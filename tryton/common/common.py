@@ -239,7 +239,8 @@ def file_selection(title, filename='', parent=None,
     def update_preview_cb(win, img):
         filename = win.get_preview_filename()
         try:
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(filename, 128, 128)
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(filename.encode('utf-8'),
+                    128, 128)
             img.set_from_pixbuf(pixbuf)
             have_preview = True
         except:
