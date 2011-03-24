@@ -12,8 +12,9 @@ field,"country.subdivision,parent",0,Parent,Основной,0
 field,"country.subdivision,rec_name",0,Name,Наименование,0
 field,"country.subdivision,type",0,Type,Тип,0
 help,"country.country,code",0,"The ISO country code in two chars.
-You can use this field for quick search.",,0
-help,"country.country,name",0,The full name of the country.,,0
+You can use this field for quick search.","ISO-код страны из двух симовлов.
+Вы можете использовать это поле для быстрого поиска.",0
+help,"country.country,name",0,The full name of the country.,Полное название страны.,0
 model,"country.country,name",0,Country,Страны мира,0
 model,"country.country,name",ad,Andorra,Андорра,0
 model,"country.country,name",ae,United Arab Emirates,Объединённые Арабские Эмираты,0
