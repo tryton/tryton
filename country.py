@@ -36,17 +36,7 @@ class Country(ModelSQL, ModelView):
         if 'code' in vals and vals['code']:
             vals = vals.copy()
             vals['code'] = vals['code'].upper()
-        new_id = super(Country, self).create(vals)
-        if 'module' in Transaction().context:
-            cursor = Transaction().cursor
-            cursor.execute('INSERT INTO ir_translation ' \
-                    '(name, lang, type, src, res_id, value, module, fuzzy) ' \
-                    'VALUES (%s, %s, %s, %s, %s, %s, %s, %s)',
-                    ('country.country,name', 'en_US', 'model',
-                        vals['name'], new_id, '',
-                        Transaction().context.get('module'),
-                        False))
-        return new_id
+        return super(Country, self).create(vals)
 
     def write(self, ids, vals):
         if 'code' in vals and vals['code']:
