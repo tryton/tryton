@@ -487,10 +487,12 @@ class Model(object):
                         for x in value]
                 getattr(self, field_name).extend(value)
             else:
-                if (definition['type'] == 'many2one'
-                        and isinstance(value, (int, long))):
-                    relation = Model.get(definition['relation'])
-                    value = relation(value)
+                if definition['type'] == 'many2one':
+                    if (isinstance(value, (int, long)) and value is not False):
+                        relation = Model.get(definition['relation'])
+                        value = relation(value)
+                    elif value is False:
+                        value = None
                 setattr(self, field_name, value)
     __init__.__doc__ = object.__init__.__doc__
 
