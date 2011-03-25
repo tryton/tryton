@@ -23,6 +23,8 @@ from types import DictType
 from decimal import Decimal
 xmlrpclib.Marshaller.dispatch[Decimal] = \
         lambda self, value, write: self.dump_double(float(value), write)
+xmlrpclib.Marshaller.dispatch[Float] = \
+        lambda self, value, write: self.dump_double(float(value), write)
 xmlrpclib.Marshaller.dispatch[type(None)] = \
         lambda self, value, write: self.dump_bool(bool(value), write)
 xmlrpclib.Marshaller.dispatch[datetime.date] = \
