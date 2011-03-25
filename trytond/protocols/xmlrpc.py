@@ -28,6 +28,7 @@ def dump_decimal(self, value, write):
     write("</double></value>\n")
 
 xmlrpclib.Marshaller.dispatch[Decimal] = dump_decimal
+xmlrpclib.Marshaller.dispatch[Float] = dump_decimal
 xmlrpclib.Marshaller.dispatch[type(None)] = \
         lambda self, value, write: self.dump_bool(bool(value), write)
 xmlrpclib.Marshaller.dispatch[datetime.date] = \
