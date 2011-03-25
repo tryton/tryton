@@ -145,7 +145,7 @@ class User(ModelSQL, ModelView):
         transaction = Transaction()
         for user_id in ids:
             res[user_id] = get_connections(transaction.cursor.database_name,
-                    transaction.user)
+                    user_id)
         return res
 
     def _convert_vals(self, vals):
