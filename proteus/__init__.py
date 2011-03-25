@@ -102,8 +102,7 @@ class FloatDescriptor(FieldDescriptor):
     default = 0.0
 
     def __set__(self, instance, value):
-        assert isinstance(value, float)
-        super(FloatDescriptor, self).__set__(instance, value)
+        super(FloatDescriptor, self).__set__(instance, float(value))
 
 
 class NumericDescriptor(FieldDescriptor):
@@ -609,6 +608,12 @@ class Model(object):
         fields.append(name)
         self._values.update(self._proxy.read(self.id, fields,
             self._config.context))
+        for field in fields:
+            if (field in self._fields
+                    and self._fields[field]['type'] == 'float'
+                    and isinstance(self._values[field], Decimal)):
+                # XML-RPC return Decimal for double
+                self._values[field] = float(self._values[field])
 
     def _default_get(self):
         'Set default values'
