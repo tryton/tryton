@@ -22,7 +22,13 @@ xmlrpclib.Marshaller.dispatch[datetime.date] = \
         lambda self, value, write: self.dump_datetime(
                 datetime.datetime.combine(value, datetime.time()), write)
 
+def _end_double(self, data):
+    self.append(Decimal(data))
+    self._value = 0
+xmlrpclib.Unmarshaller.dispatch["double"] = _end_double
+
 _CONFIG = threading.local()
+_CONFIG.current = None
 
 
 class Config(object):
@@ -212,5 +218,4 @@ def set_xmlrpc(url):
     return _CONFIG.current
 
 def get_config():
-    # TODO raise exception if not set
     return _CONFIG.current
