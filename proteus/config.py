@@ -28,6 +28,7 @@ def _end_double(self, data):
 xmlrpclib.Unmarshaller.dispatch["double"] = _end_double
 
 _CONFIG = threading.local()
+_CONFIG.current = None
 
 
 class Config(object):
@@ -217,5 +218,4 @@ def set_xmlrpc(url):
     return _CONFIG.current
 
 def get_config():
-    # TODO raise exception if not set
     return _CONFIG.current
