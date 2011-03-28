@@ -8,7 +8,7 @@ from trytond.pyson import In, Eval, Not, Equal, If, Get, Bool
 from trytond.transaction import Transaction
 
 STATES = {
-    'readonly': In(Eval('state'), ['cancel', 'done']),
+    'readonly': In(Eval('state'), ['cancel', 'assigned', 'done']),
 }
 
 
@@ -116,6 +116,8 @@ class Move(ModelSQL, ModelView):
             'set_state_done': 'You can not set state to done!',
             'del_draft_cancel': 'You can only delete draft or cancelled moves!',
             'service_product': 'You can not use service products for a move!',
+            'modify_assigned_done_cancel': ('You can not modify a move '
+                'in the state: "Assigned", "Done" or "Cancel"'),
             })
 
     def init(self, module_name):
@@ -464,8 +466,9 @@ class Move(ModelSQL, ModelView):
         if isinstance(ids, (int, long)):
             ids = [ids]
 
+        moves = self.browse(ids)
         if 'state' in vals:
-            for move in self.browse(ids):
+            for move in moves:
                 if vals['state'] == 'cancel':
                     vals['effective_date'] = False
                     if move.from_location.type == 'supplier' \
@@ -505,6 +508,19 @@ class Move(ModelSQL, ModelView):
                         self._update_product_cost_price( move.product.id,
                                 -move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company)
+
+        if reduce(lambda x, y: x or y in vals, ('product', 'uom', 'quantity',
+                'from_location', 'to_location', 'company', 'unit_price',
+                'currency'), False):
+            for move in moves:
+                if move.state in ('assigned', 'done', 'cancel'):
+                    self.raise_user_error('modify_assigned_done_cancel')
+        if reduce(lambda x, y: x or y in vals,
+                ('planned_date', 'effective_date'), False):
+            for move in moves:
+                if move.state in ('done', 'cancel'):
+                    self.raise_user_error('modify_assigned_done_cancel')
+
         res = super(Move, self).write(ids, vals)
 
         if vals.get('state', '') == 'done':
