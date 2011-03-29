@@ -228,6 +228,27 @@ class Work(ModelSQL, ModelView):
 
         return res
 
+    def copy(self, ids, default=None):
+        timesheet_work_obj = self.pool.get('timesheet.work')
+
+        int_id = isinstance(ids, (int, long))
+        if int_id:
+            ids = [ids]
+
+        if default is None:
+            default = {}
+
+        new_ids = []
+        for project_work in self.browse(ids):
+            timesheet_work_id = timesheet_work_obj.copy(project_work.work.id,
+                default=default)
+            pwdefault = default.copy()
+            pwdefault['work'] = timesheet_work_id
+            new_ids.append(super(Work, self).copy(project_work.id,
+                default=pwdefault))
+        if int_id:
+            return new_ids[0]
+        return new_ids
 
     def delete(self, ids):
         timesheet_work_obj = self.pool.get('timesheet.work')
