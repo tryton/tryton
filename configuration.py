@@ -14,5 +14,8 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
             ('company', 'in', [Eval('company'), False]),
             ('code', '=', 'party.party'),
         ], required=True))
+    party_lang = fields.Property(fields.Many2One("ir.lang", 'Party Language',
+        help=('The value set on this field will preset the language on new '
+            'parties')))
 
 Configuration()

@@ -87,6 +87,11 @@ class Party(ModelSQL, ModelView):
                     'write_uid', 'write_date'])
         return [address_obj.default_get(fields_names)]
 
+    def default_lang(self):
+        config_obj = self.pool.get('party.configuration')
+        config = config_obj.browse(1)
+        return config.party_lang.id
+
     def on_change_with_vat_code(self, vals):
         return (vals.get('vat_country') or '') + (vals.get('vat_number') or '')
 
