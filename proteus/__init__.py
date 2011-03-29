@@ -86,7 +86,7 @@ class CharDescriptor(FieldDescriptor):
     default = None
 
     def __set__(self, instance, value):
-        assert isinstance(value, basestring)
+        assert isinstance(value, basestring) or value in (None, False)
         super(CharDescriptor, self).__set__(instance, value)
 
 
@@ -144,13 +144,13 @@ class DateDescriptor(FieldDescriptor):
         return value
 
     def __set__(self, instance, value):
-        assert isinstance(value, datetime.date)
+        assert isinstance(value, datetime.date) or value in (None, False)
         super(DateDescriptor, self).__set__(instance, value)
 
 
 class DateTimeDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
-        assert isinstance(value, datetime.datetime)
+        assert isinstance(value, datetime.datetime) or value in (None, False)
         super(DateTimeDescriptor, self).__set__(instance, value)
 
 
