@@ -187,7 +187,9 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         return 2
 
     def default_invoice_method(self):
-        return 'order'
+        configuration_obj = self.pool.get('purchase.configuration')
+        configuration = configuration_obj.browse(1)
+        return configuration.purchase_invoice_method
 
     def default_invoice_state(self):
         return 'none'

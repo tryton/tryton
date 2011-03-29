@@ -11,6 +11,8 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Purchase Configuration">
                     <label name="purchase_sequence"/>
                     <field name="purchase_sequence"/>
+                    <label name="purchase_invoice_method" />
+                    <field name="purchase_invoice_method" />
                 </form>
                 ]]>
             </field>
@@ -35,6 +37,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="field"
                 search="[('model.model', '=', 'purchase.configuration'), ('name', '=', 'purchase_sequence')]"/>
             <field name="value" eval="'ir.sequence,' + str(ref('sequence_purchase'))"/>
+        </record>
+        <record model="ir.property"
+            id="property_purchase_invoice_method">
+            <field name="name">purchase_invoice_method</field>
+            <field name="field"
+               search="[('model.model', '=', 'purchase.configuration'), ('name', '=', 'purchase_invoice_method')]" />
+           <field name="value">,order</field>
         </record>
     </data>
 </tryton>
