@@ -15,6 +15,11 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Sale Configuration">
                     <label name="sale_sequence"/>
                     <field name="sale_sequence"/>
+                    <newline />
+                    <label name="sale_invoice_method" />
+                    <field name="sale_invoice_method" />
+                    <label name="sale_shipment_method" />
+                    <field name="sale_shipment_method" />
                 </form>
                 ]]>
             </field>
@@ -39,6 +44,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="field"
                 search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_sequence')]"/>
             <field name="value" eval="'ir.sequence,' + str(ref('sequence_sale'))"/>
+        </record>
+        <record model="ir.property" id="property_sale_invoice_method">
+            <field name="name">sale_invoice_method</field>
+            <field name="field"
+                search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_invoice_method')]" />
+            <field name="value">,order</field>
+        </record>
+        <record model="ir.property" id="property_sale_shipment_method">
+            <field name="name">sale_shipment_method</field>
+            <field name="field"
+                search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_shipment_method')]" />
+            <field name="value">,order</field>
         </record>
     </data>
 </tryton>

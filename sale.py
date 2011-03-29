@@ -209,13 +209,17 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         return 2
 
     def default_invoice_method(self):
-        return 'order'
+        config_obj = self.pool.get('sale.configuration')
+        config = config_obj.browse(1)
+        return config.sale_invoice_method
 
     def default_invoice_state(self):
         return 'none'
 
     def default_shipment_method(self):
-        return 'order'
+        config_obj = self.pool.get('sale.configuration')
+        config = config_obj.browse(1)
+        return config.sale_shipment_method
 
     def default_shipment_state(self):
         return 'none'
