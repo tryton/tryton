@@ -25,7 +25,7 @@ class Address(ModelSQL, ModelView):
             states=STATES)
     city = fields.Char('City', states=STATES)
     country = fields.Many2One('country.country', 'Country',
-            states=STATES)
+        on_change=['country', 'subdivision'], states=STATES)
     subdivision = fields.Many2One("country.subdivision",
             'Subdivision', domain=[('country', '=', Eval('country'))],
             states=STATES)
@@ -108,5 +108,15 @@ class Address(ModelSQL, ModelView):
                 if address.party.id != vals['party']:
                     self.raise_user_error('write_party')
         return super(Address, self).write(ids, vals)
+
+    def on_change_country(self, vals):
+        subdivision_obj = self.pool.get('country.subdivision')
+        result = dict((k, vals.get(k, False))
+            for k in ('country', 'subdivision'))
+        if vals['subdivision']:
+            subdivision = subdivision_obj.browse(vals['subdivision'])
+            if subdivision.country.id != vals['country']:
+                result['subdivision'] = False
+        return result
 
 Address()
