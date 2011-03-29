@@ -50,9 +50,9 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="city"/>
                     <newline/>
                     <label name="country"/>
-                    <field name="country" completion="1"/>
+                    <field name="country" widget="selection"/>
                     <label name="subdivision"/>
-                    <field name="subdivision"/>
+                    <field name="subdivision" widget="selection"/>
                 </form>
                 ]]>
             </field>
