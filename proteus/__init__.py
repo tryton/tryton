@@ -86,7 +86,7 @@ class CharDescriptor(FieldDescriptor):
     default = None
 
     def __set__(self, instance, value):
-        assert isinstance(value, basestring)
+        assert isinstance(value, basestring) or value in (None, False)
         super(CharDescriptor, self).__set__(instance, value)
 
 
@@ -102,8 +102,7 @@ class FloatDescriptor(FieldDescriptor):
     default = 0.0
 
     def __set__(self, instance, value):
-        assert isinstance(value, float)
-        super(FloatDescriptor, self).__set__(instance, value)
+        super(FloatDescriptor, self).__set__(instance, float(value))
 
 
 class NumericDescriptor(FieldDescriptor):
@@ -145,13 +144,13 @@ class DateDescriptor(FieldDescriptor):
         return value
 
     def __set__(self, instance, value):
-        assert isinstance(value, datetime.date)
+        assert isinstance(value, datetime.date) or value in (None, False)
         super(DateDescriptor, self).__set__(instance, value)
 
 
 class DateTimeDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
-        assert isinstance(value, datetime.datetime)
+        assert isinstance(value, datetime.datetime) or value in (None, False)
         super(DateTimeDescriptor, self).__set__(instance, value)
 
 
@@ -487,10 +486,12 @@ class Model(object):
                         for x in value]
                 getattr(self, field_name).extend(value)
             else:
-                if (definition['type'] == 'many2one'
-                        and isinstance(value, (int, long))):
-                    relation = Model.get(definition['relation'])
-                    value = relation(value)
+                if definition['type'] == 'many2one':
+                    if (isinstance(value, (int, long)) and value is not False):
+                        relation = Model.get(definition['relation'])
+                        value = relation(value)
+                    elif value is False:
+                        value = None
                 setattr(self, field_name, value)
     __init__.__doc__ = object.__init__.__doc__
 
@@ -609,6 +610,12 @@ class Model(object):
         fields.append(name)
         self._values.update(self._proxy.read(self.id, fields,
             self._config.context))
+        for field in fields:
+            if (field in self._fields
+                    and self._fields[field]['type'] == 'float'
+                    and isinstance(self._values[field], Decimal)):
+                # XML-RPC return Decimal for double
+                self._values[field] = float(self._values[field])
 
     def _default_get(self):
         'Set default values'
