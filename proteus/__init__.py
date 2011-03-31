@@ -715,11 +715,6 @@ class Model(object):
                 self._on_change_set(field, value)
             if self._parent:
                 self._parent._changed.add(self._parent_field_name)
-        if definition.get('change_default'):
-            context = self._config.context
-            default = Model.get('ir.default', config=self._config)
-            self._default_set(default.get_default(self.__class__.__name__,
-                '%s=%s' % (name, self._get_values([name])[name]), context))
         for field, definition in self._fields.iteritems():
             if not definition.get('on_change_with'):
                 continue
