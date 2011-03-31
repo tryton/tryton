@@ -16,7 +16,7 @@ class TimesheetWork(ModelSQL, ModelView):
             depends=['timesheet_available', 'active'],
             states={
                 'invisible': Not(Bool(Eval('timesheet_available'))),
-                'readonly': Not(Bool(Eval('not active'))),
+                'readonly': Not(Bool(Eval('active'))),
             })
     sequence = fields.Integer('Sequence')
 
