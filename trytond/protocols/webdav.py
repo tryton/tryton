@@ -82,7 +82,10 @@ class BaseThreadedHTTPServer(SocketServer.ThreadingMixIn,
 
     def server_bind(self):
         # Python < 2.6 doesn't handle self.timeout
-        self.socket.settimeout(1)
+        if sys.version_info < (2, 6):
+            # breaks the socket under BSD, see http://bugs.python.org/issue7995
+            self.socket.settimeout(1)
+
         self.socket.setsockopt(socket.SOL_SOCKET,
                 socket.SO_REUSEADDR, 1)
         BaseHTTPServer.HTTPServer.server_bind(self)
