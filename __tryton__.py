@@ -7,6 +7,7 @@
     'name_es_CO': 'Inventarios',
     'name_es_ES': 'Gestión de existencias',
     'name_fr_FR': 'Gestion des stocks',
+    'name_ru_RU': 'Управление складами',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -81,6 +82,18 @@ Et les rapports:
     - Liste de restockage (sur l'expédition fournisseur et le retour d'expédition client)
     - Quantités de produit par location
 ''',
+    'description_ru_RU': '''Управление складами и запасами:
+    - Определение мест хранения
+    - Складские перемещения
+    - Приход, отгрузки, внутренние перемещения. Возвраты поставщикам и от заказчиков.
+    - Складской учет
+
+И с отчетами:
+    - Доставка
+    - Упаковка
+    - Инвентаризация (на приход от поставщиков и возвраты клиентов)
+    - ТМЦ по местам хранения
+''',
     'depends': [
         'ir',
         'workflow',
@@ -105,5 +118,6 @@ Et les rapports:
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'ru_RU.csv',
     ],
 }
