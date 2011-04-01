@@ -26,7 +26,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="parent"/>
                     </xpath>
                     <xpath
-                        expr="/form/field[@name=&quot;active&quot;]"
+                        expr="/form/group[@id=&quot;checkboxes&quot;]"
                         position="after">
                         <label name="currency"/>
                         <field name="currency"/>
