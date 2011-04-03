@@ -20,7 +20,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_purchase_configuration_form">
             <field name="name">Purchase Configuration</field>
             <field name="res_model">purchase.configuration</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_purchase_configuration_view1">
