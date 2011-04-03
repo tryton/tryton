@@ -110,7 +110,6 @@
         <record model="ir.action.act_window" id="act_opportunity_form">
             <field name="name">Leads and Opportunities</field>
             <field name="res_model">sale.opportunity</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_opportunity_form_view1">
             <field name="sequence" eval="10"/>
@@ -128,7 +127,6 @@
         <record model="ir.action.act_window" id="act_opportunity_form_new">
             <field name="name">New Lead</field>
             <field name="res_model">sale.opportunity</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_opportunity_form_new_view1">
             <field name="sequence" eval="10"/>
@@ -146,7 +144,6 @@
         <record model="ir.action.act_window" id="act_opportunity_form_lead">
             <field name="name">Opened Leads</field>
             <field name="res_model">sale.opportunity</field>
-            <field name="view_type">form</field>
             <field name="domain">[("state", "=", "lead")]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_opportunity_form_lead_view1">
@@ -165,7 +162,6 @@
         <record model="ir.action.act_window" id="act_opportunity_form_opportunity">
             <field name="name">Opportunities</field>
             <field name="res_model">sale.opportunity</field>
-            <field name="view_type">form</field>
             <field name="domain">[("state", "=", "opportunity")]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_opportunity_form_opportunity_view1">
@@ -184,7 +180,6 @@
         <record model="ir.action.act_window" id="act_opportunity_form_converted">
             <field name="name">Converted Opportunities</field>
             <field name="res_model">sale.opportunity</field>
-            <field name="view_type">form</field>
             <field name="domain">[("state", "=", "converted")]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_opportunity_form_converted_view1">
@@ -203,7 +198,6 @@
         <record model="ir.action.act_window" id="act_opportunity_form_cancelled">
             <field name="name">Cancelled Leads and Opportunities</field>
             <field name="res_model">sale.opportunity</field>
-            <field name="view_type">form</field>
             <field name="domain">[("state", "=", "cancelled")]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_opportunity_form_cancelled_view1">
@@ -222,7 +216,6 @@
         <record model="ir.action.act_window" id="act_opportunity_form_lost">
             <field name="name">Lost Leads and Opportunities</field>
             <field name="res_model">sale.opportunity</field>
-            <field name="view_type">form</field>
             <field name="domain">[("state", "=", "lost")]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_opportunity_form_lost_view1">
@@ -563,7 +556,6 @@ create_sale()</field>
         <record model="ir.action.act_window" id="act_opportunity_employee_form">
             <field name="name">Opportunities per Employee</field>
             <field name="res_model">sale.opportunity_employee</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_opportunity_employee_form_view1">
@@ -678,7 +670,6 @@ create_sale()</field>
         <record model="ir.action.act_window" id="act_opportunity_monthly_form">
             <field name="name">Opportunities per Month</field>
             <field name="res_model">sale.opportunity_monthly</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_opportunity_monthly_form_view1">
@@ -738,7 +729,6 @@ create_sale()</field>
         <record model="ir.action.act_window" id="act_opportunity_employee_monthly_form">
             <field name="name">Opportunities per Employee per Month</field>
             <field name="res_model">sale.opportunity_employee_monthly</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_opportunity_employee_monthly_form_view1">
