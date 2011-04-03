@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.ui.view" id="category_view_tree">
+        <record model="ir.ui.view" id="category_view_list">
             <field name="model">product.category</field>
             <field name="type">tree</field>
             <field name="priority">10</field>
@@ -16,7 +16,7 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="category_view_tree2">
+        <record model="ir.ui.view" id="category_view_tree">
             <field name="model">product.category</field>
             <field name="type">tree</field>
             <field name="priority">20</field>
@@ -25,6 +25,8 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Product Categories">
                     <field name="name"/>
+                    <field name="parent" tree_invisible="1"/>
+                    <field name="childs" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -54,54 +56,39 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_category_tree">
             <field name="name">Categories</field>
             <field name="res_model">product.category</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_category_tree_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="category_view_tree2"/>
+            <field name="view" ref="category_view_tree"/>
             <field name="act_window" ref="act_category_tree"/>
         </record>
+        <record model="ir.action.act_window.view" id="act_category_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="category_view_form"/>
+            <field name="act_window" ref="act_category_tree"/>
+        </record>
+
         <menuitem parent="menu_main_product" sequence="2"
             action="act_category_tree" id="menu_category_tree"/>
 
         <record model="ir.action.act_window" id="act_category_form">
             <field name="name">Product Categories</field>
             <field name="res_model">product.category</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_category_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="category_view_tree"/>
+            <field name="view" ref="category_view_form"/>
             <field name="act_window" ref="act_category_form"/>
         </record>
         <record model="ir.action.act_window.view" id="act_category_form_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="category_view_form"/>
+            <field name="view" ref="category_view_list"/>
             <field name="act_window" ref="act_category_form"/>
         </record>
-        <menuitem name="Categories" parent="menu_category_tree"
-            sequence="2" id="menu_category_form"
-            action="act_category_form"/>
-
-        <record model="ir.action.act_window" id="act_category_form2">
-            <field name="name">Product Categories</field>
-            <field name="res_model">product.category</field>
-            <field name="view_type">form</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_category_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="category_view_form"/>
-            <field name="act_window" ref="act_category_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_category_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="category_view_tree"/>
-            <field name="act_window" ref="act_category_form2"/>
-        </record>
-        <menuitem name="New Category" parent="menu_category_form"
+        <menuitem name="New Category" parent="menu_category_tree"
             sequence="10" id="menu_category_form_new"
-            action="act_category_form2"/>
+            action="act_category_form"/>
 
         <record model="ir.model.access" id="access_product_category">
             <field name="model" search="[('model', '=', 'product.category')]"/>
