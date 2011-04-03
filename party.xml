@@ -100,7 +100,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_party_form">
             <field name="name">Parties</field>
             <field name="res_model">party.party</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_party_form_view1">
             <field name="sequence" eval="10"/>
@@ -117,7 +116,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_party_form2">
             <field name="name">Parties</field>
             <field name="res_model">party.party</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_party_form2_view1">
             <field name="sequence" eval="10"/>
@@ -134,7 +132,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_party_by_category">
             <field name="name">Parties by Category</field>
             <field name="res_model">party.party</field>
-            <field name="view_type">form</field>
             <field name="context">{'categories': [Eval('active_id')]}</field>
             <field name="domain">[('categories', 'child_of', [Eval('active_id')], 'parent')]</field>
         </record>
