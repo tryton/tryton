@@ -8,6 +8,7 @@
     'name_es_CO': 'Terceros',
     'name_es_ES': 'Terceros',
     'name_fr_FR': 'Tiers',
+    'name_nl_NL': 'Relaties',
     'name_ru_RU': 'Контрагенты',
     'version' : '1.9.0',
     'author' : 'B2CK',
@@ -19,6 +20,7 @@
     'description_es_CO': 'Definición de terceros, direcciones, etc.',
     'description_es_ES': 'Define terceros, direcciones, etc...',
     'description_fr_FR': 'Définit des tiers, des adresses, etc.',
+    'description_nl_NL': 'Definieert relaties, adressen en bedrijven.',
     'description_ru_RU': 'Определение контрагентов, адресов и тп.',
     'depends' : [
         'ir',
@@ -38,6 +40,7 @@
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'nl_NL.csv',
         'ru_RU.csv',
     ],
 }
