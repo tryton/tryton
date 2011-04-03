@@ -66,9 +66,9 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="work_view_tree2">
+        <record model="ir.ui.view" id="work_view_list2">
             <field name="model">project.work</field>
-            <field name="inherit" ref="project.work_view_tree2"/>
+            <field name="inherit" ref="project.work_view_list2"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
@@ -82,9 +82,9 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="work_view_tree3">
+        <record model="ir.ui.view" id="work_view_list3">
             <field name="model">project.work</field>
-            <field name="inherit" ref="project.work_view_tree3"/>
+            <field name="inherit" ref="project.work_view_list3"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
