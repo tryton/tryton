@@ -43,7 +43,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_line_form">
             <field name="name">Timesheet Lines</field>
             <field name="res_model">timesheet.line</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_line_form_view1">
@@ -133,7 +132,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_hours_employee_form">
             <field name="name">Hours per Employee</field>
             <field name="res_model">timesheet.hours_employee</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_hours_employee_form_view1">
@@ -205,7 +203,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_hours_employee_weekly_form">
             <field name="name">Hours per Employee per Week</field>
             <field name="res_model">timesheet.hours_employee_weekly</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_hours_employee_weekly_form_view1">
@@ -234,7 +231,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_hours_employee_monthly_form">
             <field name="name">Hours per Employee per Month</field>
             <field name="res_model">timesheet.hours_employee_monthly</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_hours_employee_monthly_form_view1">

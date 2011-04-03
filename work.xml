@@ -23,7 +23,7 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.ui.view" id="work_view_tree">
+        <record model="ir.ui.view" id="work_view_list">
             <field name="model">timesheet.work</field>
             <field name="type">tree</field>
             <field name="priority" eval="8"/>
@@ -37,26 +37,7 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_work_form">
-            <field name="name">Works</field>
-            <field name="res_model">timesheet.work</field>
-            <field name="view_type">form</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_work_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_tree"/>
-            <field name="act_window" ref="act_work_form"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_work_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="work_view_form"/>
-            <field name="act_window" ref="act_work_form"/>
-        </record>
-        <menuitem parent="menu_configuration" action="act_work_form"
-            id="menu_work_form"/>
-        <record model="ir.ui.view" id="work_view_tree2">
+        <record model="ir.ui.view" id="work_view_tree">
             <field name="model">timesheet.work</field>
             <field name="type">tree</field>
             <field name="priority" eval="16"/>
@@ -66,26 +47,53 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Works">
                     <field name="name" select="1"/>
                     <field name="timesheet_available" select="1"/>
+                    <field name="parent" tree_invisible="1"/>
+                    <field name="children" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
         </record>
+
         <record model="ir.action.act_window" id="act_work_tree">
             <field name="name">Works</field>
             <field name="res_model">timesheet.work</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_work_tree_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_tree2"/>
+            <field name="view" ref="work_view_tree"/>
             <field name="act_window" ref="act_work_tree"/>
         </record>
-        <menuitem parent="menu_work_form" action="act_work_tree"
+        <record model="ir.action.act_window.view"
+            id="act_work_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_work_tree"/>
+        </record>
+        <menuitem parent="menu_configuration" action="act_work_tree"
             id="menu_work_tree"/>
 
-        <record model="ir.ui.view" id="work_view_tree3">
+        <record model="ir.action.act_window" id="act_work_form">
+            <field name="name">Works</field>
+            <field name="res_model">timesheet.work</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_work_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_list"/>
+            <field name="act_window" ref="act_work_form"/>
+        </record>
+        <menuitem name="New Work" parent="menu_work_tree"
+            action="act_work_form" id="menu_work_form"/>
+
+        <record model="ir.ui.view" id="work_view_tree2">
             <field name="model">timesheet.work</field>
             <field name="type">tree</field>
             <field name="priority" eval="16"/>
@@ -103,13 +111,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_work_tree2">
             <field name="name">Works</field>
             <field name="res_model">timesheet.work</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view"
-            id="act_work_tree_view2">
+            id="act_work_tree2_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_tree3"/>
+            <field name="view" ref="work_view_tree2"/>
             <field name="act_window" ref="act_work_tree2"/>
         </record>
         <record model="ir.action.wizard" id="act_open_work">
@@ -139,7 +146,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_work_form2">
             <field name="name">Hours per Work</field>
             <field name="res_model">timesheet.work</field>
-            <field name="view_type">form</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -172,7 +178,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_work_form3">
             <field name="name">Hours per Work</field>
             <field name="res_model">timesheet.work</field>
-            <field name="view_type">form</field>
             <field name="domain">[('parent', 'in', Eval('active_ids'))]</field>
         </record>
         <record model="ir.action.act_window.view"
