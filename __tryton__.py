@@ -7,6 +7,7 @@
     'name_es_CO': 'Contabilidad',
     'name_es_ES': 'Contabilidad',
     'name_fr_FR': 'Comptabilité',
+    'name_nl_NL': 'Boekhouden',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -107,6 +108,22 @@ Et les rapports:
     - Balance agée
     - Journal général
 ''',
+    'description_nl_NL': '''Financiële administratie met:
+    - Boekhouding
+    - Boekjaren beheer
+    - Belastingen
+    - Dagboeken
+    - Afletteren
+
+Met bijbehorende rapporten:
+    - Grootboek
+    - Proefbalans
+    - Balans
+    - Verlies- & winstrekening
+    - Openstaande posten
+    - Ouderdomsanalyse facturen
+    - Algemeen dagboek
+''',
     'depends': [
         'ir',
         'res',
@@ -129,5 +146,6 @@ Et les rapports:
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'nl_NL.csv',
     ],
 }
