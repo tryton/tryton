@@ -118,7 +118,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_currency_form">
             <field name="name">Currencies</field>
             <field name="res_model">currency.currency</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_currency_form_view1">
             <field name="sequence" eval="10"/>
