@@ -73,7 +73,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_purchase_request_form">
             <field name="name">Purchase Requests</field>
             <field name="res_model">purchase.request</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_purchase_request_form_view1">
             <field name="sequence" eval="10"/>
@@ -92,7 +91,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_purchase_request_form_draft">
             <field name="name">Draft Purchase Requests</field>
             <field name="res_model">purchase.request</field>
-            <field name="view_type">form</field>
             <field name="domain">[('purchase_line', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_purchase_request_form_draft_view1">
@@ -156,7 +154,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_purchase_form">
             <field name="name">Purchases</field>
             <field name="res_model">purchase.purchase</field>
-            <field name="view_type">form</field>
             <field name="domain">[("id", "=", Eval('purchase'))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_purchase_form_view1">
