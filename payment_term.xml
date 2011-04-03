@@ -64,7 +64,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_payment_term_form">
             <field name="name">Payment Terms</field>
             <field name="res_model">account.invoice.payment_term</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_payment_term_form_view1">
             <field name="sequence" eval="10"/>
@@ -82,7 +81,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_payment_term_form2">
             <field name="name">Payment Terms</field>
             <field name="res_model">account.invoice.payment_term</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_payment_term_form2_view1">
             <field name="sequence" eval="10"/>

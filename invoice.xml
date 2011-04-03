@@ -180,7 +180,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_form">
             <field name="name">All Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_form_view1">
@@ -199,7 +198,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_out_invoice_form">
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_invoice')]</field>
             <field name="context">{'type': 'out_invoice'}</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
@@ -220,7 +218,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_out_invoice_form2">
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_invoice')]</field>
             <field name="context">{'type': 'out_invoice'}</field>
         </record>
@@ -241,7 +238,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_out_invoice_form3">
             <field name="name">Draft Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_invoice'), ('state', '=', 'draft')]</field>
             <field name="context">{'type': 'out_invoice'}</field>
         </record>
@@ -261,7 +257,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_out_invoice_form4">
             <field name="name">Pro Forma Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_invoice'), ('state', '=', 'proforma')]</field>
             <field name="context">{'type': 'out_invoice'}</field>
         </record>
@@ -281,7 +276,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_out_invoice_form5">
             <field name="name">Opened Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_invoice'), ('state', '=', 'open')]</field>
             <field name="context">{'type': 'out_invoice'}</field>
         </record>
@@ -301,7 +295,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_out_credit_note_form">
             <field name="name">Credit Notes</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_credit_note')]</field>
             <field name="context">{'type': 'out_credit_note'}</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
@@ -322,7 +315,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_out_credit_note_form2">
             <field name="name">Credit Notes</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_credit_note')]</field>
             <field name="context">{'type': 'out_credit_note'}</field>
         </record>
@@ -343,7 +335,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_out_credit_note_form3">
             <field name="name">Draft Credit Notes</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'draft')]</field>
             <field name="context">{'type': 'out_credit_note'}</field>
         </record>
@@ -363,7 +354,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_out_credit_note_form4">
             <field name="name">Pro Forma Credit Notes</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'proforma')]</field>
             <field name="context">{'type': 'out_credit_note'}</field>
         </record>
@@ -383,7 +373,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_out_credit_note_form5">
             <field name="name">Opened Credit Notes</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'open')]</field>
             <field name="context">{'type': 'out_credit_note'}</field>
         </record>
@@ -403,7 +392,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_in_invoice_form">
             <field name="name">Supplier Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_invoice')]</field>
             <field name="context">{'type': 'in_invoice'}</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
@@ -424,7 +412,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_in_invoice_form2">
             <field name="name">Supplier Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_invoice')]</field>
             <field name="context">{'type': 'in_invoice'}</field>
         </record>
@@ -445,7 +432,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_in_invoice_form3">
             <field name="name">Draft Supplier Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_invoice'), ('state', '=', 'draft')]</field>
             <field name="context">{'type': 'in_invoice'}</field>
         </record>
@@ -465,7 +451,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_in_invoice_form4">
             <field name="name">Pro Forma Supplier Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_invoice'), ('state', '=', 'proforma')]</field>
             <field name="context">{'type': 'in_invoice'}</field>
         </record>
@@ -485,7 +470,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_in_invoice_form5">
             <field name="name">Opened Supplier Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_invoice'), ('state', '=', 'open')]</field>
             <field name="context">{'type': 'in_invoice'}</field>
         </record>
@@ -505,7 +489,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_in_credit_note_form">
             <field name="name">Supplier Credit Notes</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_credit_note')]</field>
             <field name="context">{'type': 'in_credit_note'}</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
@@ -526,7 +509,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_in_credit_note_form2">
             <field name="name">Supplier Credit Notes</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_credit_note')]</field>
             <field name="context">{'type': 'in_credit_note'}</field>
         </record>
@@ -547,7 +529,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_in_credit_note_form3">
             <field name="name">Draft Supplier Credit Notes</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_credit_note'), ('state', '=', 'draft')]</field>
             <field name="context">{'type': 'in_credit_note'}</field>
         </record>
@@ -567,7 +548,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_in_credit_note_form4">
             <field name="name">Pro Forma Supplier Credit Notes</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_credit_note'), ('state', '=', 'proforma')]</field>
             <field name="context">{'type': 'in_credit_note'}</field>
         </record>
@@ -587,7 +567,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_in_credit_note_form5">
             <field name="name">Opened Supplier Credit Notes</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'in_credit_note'), ('state', '=', 'open')]</field>
             <field name="context">{'type': 'in_credit_note'}</field>
         </record>

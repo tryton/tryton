@@ -57,7 +57,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_form2">
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="view_type">form</field>
             <field name="domain">[("party", "=", Eval('active_id'))]</field>
         </record>
         <record model="ir.action.keyword"
