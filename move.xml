@@ -59,7 +59,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_form">
             <field name="name">Moves</field>
             <field name="res_model">stock.move</field>
-            <field name="view_type">form</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_view1">
@@ -79,7 +78,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_form_supp">
             <field name="name">Moves from Suppliers</field>
             <field name="res_model">stock.move</field>
-            <field name="view_type">form</field>
             <field name="domain">[('from_location.type', '=', 'supplier')]</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
@@ -100,7 +98,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_form_supp_proceed">
             <field name="name">Moves from Suppliers Waiting Arrival</field>
             <field name="res_model">stock.move</field>
-            <field name="view_type">form</field>
             <field name="domain">[('from_location.type', '=', 'supplier'), ('state', '=', 'draft'), ('shipment_in', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -122,7 +119,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_form_cust">
             <field name="name">Moves to Customers</field>
             <field name="res_model">stock.move</field>
-            <field name="view_type">form</field>
             <field name="domain">[('to_location.type', '=', 'customer')]</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>

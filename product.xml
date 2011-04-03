@@ -33,14 +33,16 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="name"/>
                         <field name="quantity"/>
                         <field name="forecast_quantity"/>
+                        <field name="parent" tree_invisible="1"/>
+                        <field name="childs" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
         </record>
+
         <record model="ir.action.act_window" id="act_location_quantity_tree">
             <field name="name">Product Stock</field>
             <field name="res_model">stock.location</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
             <field name="window_name" eval="False"/>
         </record>

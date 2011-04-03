@@ -26,7 +26,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_stock_configuration_form">
             <field name="name">Stock Configuration</field>
             <field name="res_model">stock.configuration</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_stock_configuration_view1">

@@ -88,7 +88,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_in_form">
             <field name="name">Supplier Shipments</field>
             <field name="res_model">stock.shipment.in</field>
-            <field name="view_type">form</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -109,7 +108,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_in_form2">
             <field name="name">New Supplier Shipment</field>
             <field name="res_model">stock.shipment.in</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_in_form2_view1">
@@ -129,7 +127,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_in_form_received">
             <field name="name">Received Supplier shipments</field>
             <field name="res_model">stock.shipment.in</field>
-            <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'received')]</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -223,7 +220,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_in_return_form">
             <field name="name">Supplier Return Shipments</field>
             <field name="res_model">stock.shipment.in.return</field>
-            <field name="view_type">form</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -245,7 +241,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_in_return_new_form">
             <field name="name">New Supplier Return Shipment</field>
             <field name="res_model">stock.shipment.in.return</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_in_return_new_form_view1">
@@ -387,7 +382,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_out_form">
             <field name="name">Customer Shipments</field>
             <field name="res_model">stock.shipment.out</field>
-            <field name="view_type">form</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -408,7 +402,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_out_form_waiting">
             <field name="name">Customer Shipments Waiting Assignation</field>
             <field name="res_model">stock.shipment.out</field>
-            <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'waiting')]</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -431,7 +424,6 @@ this repository contains the full copyright notices and license terms. -->
                   id="act_shipment_out_form_assigned">
             <field name="name">Assigned Customer Shipments</field>
             <field name="res_model">stock.shipment.out</field>
-            <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'assigned')]</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -453,7 +445,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_out_form_ready">
             <field name="name">Customer Shipments Ready for Shipping</field>
             <field name="res_model">stock.shipment.out</field>
-            <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'packed')]</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -570,7 +561,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_internal_form">
             <field name="name">Internal Shipments</field>
             <field name="res_model">stock.shipment.internal</field>
-            <field name="view_type">form</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -592,7 +582,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_internal_new_form">
             <field name="name">New Internal Shipment</field>
             <field name="res_model">stock.shipment.internal</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_internal_new_form_view1">
@@ -613,7 +602,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_internal_draft_form">
             <field name="name">Draft Internal Shipments</field>
             <field name="res_model">stock.shipment.internal</field>
-            <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'draft')]</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -635,7 +623,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_internal_waiting_form">
             <field name="name">Internal Shipments Waiting Assignation</field>
             <field name="res_model">stock.shipment.internal</field>
-            <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'waiting')]</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -657,7 +644,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_internal_assigned_form">
             <field name="name">Assigned Internal Shipments</field>
             <field name="res_model">stock.shipment.internal</field>
-            <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'assigned')]</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -785,7 +771,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_out_return_form">
             <field name="name">Customer Return Shipments</field>
             <field name="res_model">stock.shipment.out.return</field>
-            <field name="view_type">form</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -807,7 +792,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_out_return_form2">
             <field name="name">New Customer Return Shipment</field>
             <field name="res_model">stock.shipment.out.return</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_out_return_form2_view1">

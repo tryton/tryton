@@ -46,6 +46,22 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="code" select="2"/>
                         <field name="type" select="1"/>
                         <field name="active" select="2" tree_invisible="1"/>
+                        <field name="parent" tree_invisible="1"/>
+                        <field name="childs" tree_invisible="1"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="location_view_list">
+            <field name="model">stock.location</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Locations">
+                        <field name="name" select="1"/>
+                        <field name="code" select="2"/>
+                        <field name="type" select="1"/>
+                        <field name="active" select="2" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
@@ -54,30 +70,33 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_location_tree">
             <field name="name">Locations</field>
             <field name="res_model">stock.location</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_location_tree_view">
+        <record model="ir.action.act_window.view" id="act_location_tree_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="location_view_tree"/>
+            <field name="act_window" ref="act_location_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="location_view_form"/>
             <field name="act_window" ref="act_location_tree"/>
         </record>
         <menuitem parent="menu_stock" sequence="10"
             action="act_location_tree" id="menu_location_tree"/>
 
         <record model="ir.action.act_window" id="act_location_form">
-            <field name="name">Edit Locations</field>
+            <field name="name">Locations</field>
             <field name="res_model">stock.location</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_location_form_view1">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="location_view_tree"/>
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_view_form"/>
             <field name="act_window" ref="act_location_form"/>
         </record>
         <record model="ir.action.act_window.view" id="act_location_form_view2">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="location_view_form"/>
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="location_view_list"/>
             <field name="act_window" ref="act_location_form"/>
         </record>
         <menuitem parent="menu_configuration" sequence="10"
@@ -86,10 +105,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_product_by_location">
             <field name="name">Products by Locations</field>
             <field name="res_model">product.product</field>
-            <field name="view_type">form</field>
             <field name="window_name" eval="False"/>
             <field name="domain">['OR', ('quantity', '!=', 0.0), ('forecast_quantity', '!=', 0.0)]</field>
         </record>
+        <record model="ir.action.act_window.view" id="act_product_form_view2">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_view_tree_qty"/>
+            <field name="act_window" ref="act_product_by_location"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product.product_view_form"/>
+            <field name="act_window" ref="act_product_by_location"/>
+        </record>
+
         <record model="ir.action.wizard" id="wizard_product_open">
             <field name="name">Product Quantities</field>
             <field name="wiz_name">stock.product.open</field>
@@ -100,16 +129,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="keyword">tree_open</field>
             <field name="model">stock.location,0</field>
             <field name="action" ref="wizard_product_open"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_product_form_view">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="product.product_view_form"/>
-            <field name="act_window" ref="act_product_by_location"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_product_form_view2">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="product_view_tree_qty"/>
-            <field name="act_window" ref="act_product_by_location"/>
         </record>
 
         <record model="ir.model.access" id="access_location">

@@ -67,7 +67,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_inventory_form">
             <field name="name">Inventories</field>
             <field name="res_model">stock.inventory</field>
-            <field name="view_type">form</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
         <record model="ir.action.act_window.view"
@@ -88,7 +87,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_inventory_form2">
             <field name="name">Inventories</field>
             <field name="res_model">stock.inventory</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_inventory_form2_view1">
@@ -109,7 +107,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_inventory_form_draft">
             <field name="name">Draft Inventories</field>
             <field name="res_model">stock.inventory</field>
-            <field name="view_type">form</field>
             <field name="domain">[('state', '=', 'draft')]</field>
         </record>
         <record model="ir.action.act_window.view"
