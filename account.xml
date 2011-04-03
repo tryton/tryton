@@ -79,13 +79,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_type_template_tree">
             <field name="name">Account Type Templates</field>
             <field name="res_model">account.account.type.template</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_account_type_template_tree_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="account_type_template_view_tree"/>
+            <field name="act_window" ref="act_account_type_template_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_account_type_template_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_type_template_view_form"/>
             <field name="act_window" ref="act_account_type_template_tree"/>
         </record>
         <menuitem parent="menu_general_account_configuration"
@@ -233,47 +238,21 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_account_type_form">
-            <field name="name">Account Types</field>
-            <field name="res_model">account.account.type</field>
-            <field name="view_type">form</field>
+        <record model="ir.ui.view" id="account_type_view_list">
+            <field name="model">account.account.type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Types">
+                    <field name="name" select="1"/>
+                </tree>
+                ]]>
+            </field>
         </record>
-        <record model="ir.action.act_window.view" id="act_account_type_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="account_type_view_tree"/>
-            <field name="act_window" ref="act_account_type_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_account_type_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="account_type_view_form"/>
-            <field name="act_window" ref="act_account_type_form"/>
-        </record>
-        <menuitem parent="menu_general_account_configuration"
-            action="act_account_type_form" id="menu_account_type_form"/>
-
-        <record model="ir.action.act_window" id="act_account_type_form2">
-            <field name="name">Account Types</field>
-            <field name="res_model">account.account.type</field>
-            <field name="view_type">form</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_account_type_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="account_type_view_form"/>
-            <field name="act_window" ref="act_account_type_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_account_type_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="account_type_view_tree"/>
-            <field name="act_window" ref="act_account_type_form2"/>
-        </record>
-        <menuitem name="New Account Type" parent="menu_account_type_form"
-            action="act_account_type_form2" id="menu_account_type_form_new"
-            sequence="10"/>
 
         <record model="ir.action.act_window" id="act_account_type_tree">
             <field name="name">Account Types</field>
             <field name="res_model">account.account.type</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_type_tree_view1">
@@ -281,9 +260,31 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_type_view_tree"/>
             <field name="act_window" ref="act_account_type_tree"/>
         </record>
-        <menuitem parent="menu_account_type_form"
-            action="act_account_type_tree" id="menu_account_type_tree"
-            sequence="20"/>
+        <record model="ir.action.act_window.view" id="act_account_type_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_type_view_form"/>
+            <field name="act_window" ref="act_account_type_tree"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_account_type_tree" id="menu_account_type_tree"/>
+
+        <record model="ir.action.act_window" id="act_account_type_form">
+            <field name="name">Account Types</field>
+            <field name="res_model">account.account.type</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_type_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_type_view_form"/>
+            <field name="act_window" ref="act_account_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_type_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_type_view_list"/>
+            <field name="act_window" ref="act_account_type_form"/>
+        </record>
+        <menuitem name="New Account Type" parent="menu_account_type_tree"
+            action="act_account_type_form" id="menu_account_type_form"
+            sequence="10"/>
 
         <record model="ir.model.access" id="access_account_type">
             <field name="model" search="[('model', '=', 'account.account.type')]"/>
@@ -344,12 +345,16 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_template_tree">
             <field name="name">Account Templates</field>
             <field name="res_model">account.account.template</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_template_tree_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="account_template_view_tree"/>
+            <field name="act_window" ref="act_account_template_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_template_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_template_view_form"/>
             <field name="act_window" ref="act_account_template_tree"/>
         </record>
         <menuitem parent="menu_general_account_configuration"
@@ -590,51 +595,15 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="rec_name" select="1"/>
                     <field name="company" select="1"/>
                     <field name="type" select="1"/>
+                    <field name="parent" tree_invisible="1"/>
+                    <field name="childs" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_account_form">
-            <field name="name">Accounts</field>
-            <field name="res_model">account.account</field>
-            <field name="view_type">form</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_account_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="account_view_tree"/>
-            <field name="act_window" ref="act_account_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_account_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="account_view_form"/>
-            <field name="act_window" ref="act_account_form"/>
-        </record>
-        <menuitem parent="menu_general_account_configuration"
-            action="act_account_form" id="menu_account_form"/>
-
-        <record model="ir.action.act_window" id="act_account_form2">
-            <field name="name">Accounts</field>
-            <field name="res_model">account.account</field>
-            <field name="view_type">form</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_account_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="account_view_form"/>
-            <field name="act_window" ref="act_account_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_account_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="account_view_tree"/>
-            <field name="act_window" ref="act_account_form2"/>
-        </record>
-        <menuitem name="New Account" parent="menu_account_form"
-            action="act_account_form2" id="menu_account_form_new"
-            sequence="10"/>
-
         <record model="ir.action.act_window" id="act_account_tree">
             <field name="name">Accounts</field>
             <field name="res_model">account.account</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_tree_view1">
@@ -642,9 +611,31 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_view_tree"/>
             <field name="act_window" ref="act_account_tree"/>
         </record>
-        <menuitem parent="menu_account_form"
-            action="act_account_tree" id="menu_account_tree"
-            sequence="20"/>
+        <record model="ir.action.act_window.view" id="act_account_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_tree"/>
+        </record>
+        <menuitem parent="menu_general_account_configuration"
+            action="act_account_tree" id="menu_account_tree"/>
+
+        <record model="ir.action.act_window" id="act_account_form">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_tree"/>
+            <field name="act_window" ref="act_account_form"/>
+        </record>
+        <menuitem name="New Account" parent="menu_account_tree"
+            action="act_account_form" id="menu_account_form"
+            sequence="10"/>
 
         <record model="ir.ui.view" id="account_view_tree2">
             <field name="model">account.account</field>
@@ -667,7 +658,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_tree2">
             <field name="name">Accounts</field>
             <field name="res_model">account.account</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_tree2_view1">
@@ -830,7 +820,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_balance_sheet_tree">
             <field name="name">Balance Sheet</field>
             <field name="res_model">account.account.type</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('balance_sheet', '=', True)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_balance_sheet_view1">
@@ -885,7 +874,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_income_statement_tree">
             <field name="name">Income Statement</field>
             <field name="res_model">account.account.type</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('income_statement', '=', True)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_income_statement_view1">

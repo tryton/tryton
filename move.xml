@@ -55,7 +55,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_form">
             <field name="name">Account Moves</field>
             <field name="res_model">account.move</field>
-            <field name="view_type">form</field>
             <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
             <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
         </record>
@@ -75,7 +74,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_form2">
             <field name="name">Account Moves</field>
             <field name="res_model">account.move</field>
-            <field name="view_type">form</field>
             <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form2_view1">
@@ -259,7 +257,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_line_form">
             <field name="name">Account Move Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_line_form_view1">
             <field name="sequence" eval="10"/>

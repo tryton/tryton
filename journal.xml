@@ -34,7 +34,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_type_form">
             <field name="name">Journal Types</field>
             <field name="res_model">account.journal.type</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_type_form_view1">
             <field name="sequence" eval="10"/>
@@ -52,7 +51,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_type_form2">
             <field name="name">Journal Types</field>
             <field name="res_model">account.journal.type</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_type_form2_view1">
             <field name="sequence" eval="10"/>
@@ -151,7 +149,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_view_form">
             <field name="name">Journal Views</field>
             <field name="res_model">account.journal.view</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_view_form_view1">
             <field name="sequence" eval="10"/>
@@ -169,7 +166,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_view_form2">
             <field name="name">Journal Views</field>
             <field name="res_model">account.journal.view</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_view_form2_view1">
             <field name="sequence" eval="10"/>
@@ -254,7 +250,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_form">
             <field name="name">Journals</field>
             <field name="res_model">account.journal</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_form_view1">
             <field name="sequence" eval="10"/>
@@ -272,7 +267,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_form2">
             <field name="name">Journals</field>
             <field name="res_model">account.journal</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_form2_view1">
             <field name="sequence" eval="10"/>
@@ -375,7 +369,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_period_tree">
             <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_period_tree_view1">
@@ -388,7 +381,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_period_tree2">
             <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('state', '!=', 'close'), ('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_period_tree2_view1">
@@ -424,7 +416,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_period_form">
             <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
-            <field name="view_type">form</field>
             <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_period_form_view1">
