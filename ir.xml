@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <data>
 
         <record model="ir.ui.view" id="view_dashboard">
-            <field name="model">dashboard.action</field>
+            <field name="model"></field>
             <field name="type">board</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -16,9 +16,8 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.act_window" id="act_dashboard">
             <field name="name">Dashboard</field>
-            <field name="res_model">dashboard.action</field>
+            <field name="res_model"></field>
             <field name="type">ir.action.act_window</field>
-            <field name="view_type">board</field>
         </record>
         <record model="ir.action.act_window.view" id="act_dashboard_view1">
             <field name="sequence" eval="1"/>
