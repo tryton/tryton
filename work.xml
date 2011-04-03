@@ -17,12 +17,32 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="type" select="1"/>
                     <field name="state" select="1"/>
                     <field name="active" select="2" tree_invisible="1"/>
+                    <field name="parent" tree_invisible="1"/>
+                    <field name="children" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
         </record>
-        <!-- tree view for tasks (wihtout type field) -->
-        <record model="ir.ui.view" id="work_view_tree2">
+
+        <record model="ir.ui.view" id="work_view_list">
+            <field name="model">project.work</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Works Efforts">
+                    <field name="name" select="1"/>
+                    <field name="hours" widget="float_time" float_time="company_work_time"/>
+                    <field name="total_effort" widget="float_time" float_time="company_work_time"/>
+                    <field name="type" select="1"/>
+                    <field name="state" select="1"/>
+                    <field name="active" select="2" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <!-- list view for tasks (wihtout type field) -->
+        <record model="ir.ui.view" id="work_view_list2">
             <field name="model">project.work</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
@@ -37,8 +57,8 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <!-- tree view for projects (wihtout type and state fields) -->
-        <record model="ir.ui.view" id="work_view_tree3">
+        <!-- list view for projects (wihtout type and state fields) -->
+        <record model="ir.ui.view" id="work_view_list3">
             <field name="model">project.work</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
@@ -57,7 +77,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Work Efforts" col="8">
+                <form string="Works Efforts" col="8">
                         <label name="name"/>
                         <field name="name" colspan="3"/>
                         <label name="parent"/>
@@ -112,34 +132,52 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_work_form">
+        <record model="ir.action.act_window" id="act_work_tree">
             <field name="name">Works Efforts</field>
             <field name="res_model">project.work</field>
-            <field name="view_type">form</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_work_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_tree"/>
-            <field name="act_window" ref="act_work_form"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_work_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="work_view_form"/>
-            <field name="act_window" ref="act_work_form"/>
-        </record>
-        <menuitem parent="menu_configuration" action="act_work_form"
-            id="menu_work_form"/>
-
-        <record model="ir.action.act_window" id="act_work_tree">
-            <field name="name">Works</field>
-            <field name="res_model">project.work</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_work_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_tree"/>
+            <field name="act_window" ref="act_work_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_work_tree"/>
+        </record>
+        <menuitem parent="menu_configuration" action="act_work_tree"
+            id="menu_work_tree"/>
+
+        <record model="ir.action.act_window" id="act_work_form_new">
+            <field name="name">Works Efforts</field>
+            <field name="res_model">project.work</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_form_new_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_work_form_new"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_form_new_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_list"/>
+            <field name="act_window" ref="act_work_form_new"/>
+        </record>
+        <menuitem name="New Work Effort" parent="menu_work_tree"
+            action="act_work_form_new" id="menu_work_form_new"/>
+
+        <record model="ir.action.act_window" id="act_work_form">
+            <field name="name">Works</field>
+            <field name="res_model">project.work</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_form_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="work_view_tree"/>
             <field name="act_window" ref="act_work_tree"/>
@@ -150,14 +188,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_project_form">
             <field name="name">Projects</field>
             <field name="res_model">project.work</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'project')]</field>
             <field name="context">{'type': 'project'}</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_project_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_tree3"/>
+            <field name="view" ref="work_view_list3"/>
             <field name="act_window" ref="act_project_form"/>
         </record>
         <record model="ir.action.act_window.view"
@@ -172,14 +209,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_task_form">
             <field name="name">Tasks</field>
             <field name="res_model">project.work</field>
-            <field name="view_type">form</field>
             <field name="domain">[('type', '=', 'task')]</field>
             <field name="context">{'type': 'task'}</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_task_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_tree2"/>
+            <field name="view" ref="work_view_list2"/>
             <field name="act_window" ref="act_task_form"/>
         </record>
         <record model="ir.action.act_window.view"
@@ -194,7 +230,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_open_child_work">
             <field name="name">Tasks</field>
             <field name="res_model">project.work</field>
-            <field name="view_type">form</field>
             <field name="context">{'type': 'task'}</field>
             <field name="domain">[('parent', '=', Eval('active_id')), ('type', '=', 'task')]</field>
         </record>
@@ -207,7 +242,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view"
             id="act_open_project_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_tree2"/>
+            <field name="view" ref="work_view_list2"/>
             <field name="act_window" ref="act_open_child_work"/>
         </record>
         <record model="ir.action.act_window.view"
