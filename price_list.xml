@@ -42,7 +42,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_price_list_form">
             <field name="name">Price Lists</field>
             <field name="res_model">product.price_list</field>
-            <field name="view_type">form</field>
             <field name="domain">[('company', '=', Eval('company'))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_price_list_form_view1">
@@ -62,7 +61,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_price_list_form2">
             <field name="name">Price Lists</field>
             <field name="res_model">product.price_list</field>
-            <field name="view_type">form</field>
             <field name="domain">[('company', '=', Eval('company'))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_price_list_form2_view1">
