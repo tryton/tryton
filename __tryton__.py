@@ -7,6 +7,7 @@
     'name_es_CO': 'Facturación',
     'name_es_ES': 'Facturación',
     'name_fr_FR': 'Facturation',
+    'name_nl_NL': 'Facturatie',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -70,6 +71,18 @@ Avec la possibilité:
     - de suivre le paiment des factures
     - de définir les numérotations de facture par période ou par année fiscale
     - de créditer n'importe quelle facture
+    
+''',
+    'description_nl_NL': '''Module voor facturering met:
+    - Betalingstermijnen
+    - Verkoopfacturen / Credit verkoopnota's
+    - Inkoopfacturen / Credit inkoopnota's
+
+Met de mogelijkheid tot:
+    - het volgen van betalingen.
+    - het definiëren van factuurreeksen per boekjaar.
+    - het crediteren van een factuur.
+    
 ''',
     'depends': [
         'ir',
@@ -94,5 +107,6 @@ Avec la possibilité:
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'nl_NL.csv',
     ]
 }
