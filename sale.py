@@ -15,10 +15,11 @@ class SaleLine(ModelSQL, ModelView):
                 'invisible': Not(Equal(Eval('type'), 'line')),
             })
 
-    def _view_look_dom_arch(self, tree, type):
+    def _view_look_dom_arch(self, tree, type, field_children=None):
         analytic_account_obj = self.pool.get('analytic_account.account')
         analytic_account_obj.convert_view(tree)
-        arch, fields, = super(SaleLine, self)._view_look_dom_arch(tree, type)
+        arch, fields, = super(SaleLine, self)._view_look_dom_arch(tree, type,
+            field_children=field_children)
         return arch, fields
 
     def fields_get(self, fields_names=None):
