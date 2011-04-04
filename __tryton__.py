@@ -8,6 +8,7 @@
     'name_es_CO': 'Compañía',
     'name_es_ES': 'Empresa',
     'name_fr_FR': 'Société',
+    'name_nl_NL': 'Bedrijf'
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -54,6 +55,13 @@ Défini un nouveau moteur de rapport gérant une entête par société.
 Ajoute un canva de lettre par tiers.
 Lance les planificateurs sur chaque société.
 ''',
+    'description_nl_NL': ''' - Definieert bedrijf en werknemers.
+ - Voegt moederbedrijf en huidig bedrijf toe aan gebruikers voorkeuren.
+ - Voegt bedrijf toe aan eigenschappen.
+ - Definieert nieuwe rapport routine voor een rapport met 'bedrijfskop'.
+ - Voegt briefsjabloon toe aan relatie.
+ - Initieert automatisch herhalende taken voor elk bedrijf.
+''',
     'description_ru_RU': '''Учет организаций и сотрудников.
  - Добавление основной и дочерних организаций
  - Добавление учетных организаций и свойств
@@ -77,6 +85,7 @@ Lance les planificateurs sur chaque société.
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'nl_NL.csv',
         'ru_RU.csv',
     ]
 }

@@ -1,0 +1,58 @@
+type,name,res_id,src,value,fuzzy
+error,company.company,0,You can not create recursive companies!,U kunt geen bedrijven aanmaken die naar zichzelf verwijzen!,0
+error,res.user,0,You can not set a company that is not a child of your main company!,U kunt geen bedrijf kiezen dat geen onderdeel uitmaakt van het moederbedrijf!,0
+field,"company.company,childs",0,Children,Onderliggende niveaus,0
+field,"company.company,currency",0,Currency,Valuta,0
+field,"company.company,employees",0,Employees,Werknemers,0
+field,"company.company,footer",0,Footer,Werknemers,0
+field,"company.company,header",0,Header,Werknemers,0
+field,"company.company,parent",0,Parent,Bovenliggend niveau,0
+field,"company.company,party",0,Party,Relatie,0
+field,"company.company,rec_name",0,Name,Naam,0
+field,"company.employee,company",0,Company,Bedrijf,0
+field,"company.employee,party",0,Party,Relatie,0
+field,"company.employee,rec_name",0,Name,Naam,0
+field,"ir.cron,companies",0,Companies,Bedrijven,0
+field,"ir.cron-company.company,company",0,Company,Bedrijf,0
+field,"ir.cron-company.company,cron",0,Cron,Cyclische opdracht,0
+field,"ir.cron-company.company,rec_name",0,Name,Naam,0
+field,"ir.property,company",0,Company,Bedrijf,0
+field,"ir.sequence,company",0,Company,Bedrijf,0
+field,"ir.sequence.strict,company",0,Company,Bedrijf,0
+field,"res.user,companies",0,Current Companies,Huidige bedrijven,0
+field,"res.user,company",0,Current Company,Huidig bedrijf,0
+field,"res.user,employee",0,Employee,Werknemer,0
+field,"res.user,main_company",0,Main Company,Moederbedrijf,0
+help,"ir.cron,companies",0,Companies registered for this cron,Bedrijven aangesloten op deze cyclische opdracht,0
+model,"company.company,name",0,Company,Bedrijf,0
+model,"company.company.config.init,name",0,Company Config Init,Bedrijfsinstellingen gaan maken,0
+model,"company.employee,name",0,Employee,Werknemer,0
+model,"ir.action,name",act_company_form,Companies,Bedrijven,0
+model,"ir.action,name",act_company_form2,Companies,Bedrijven,0
+model,"ir.action,name",act_company_tree,Companies,Bedrijven,0
+model,"ir.action,name",act_employee_form,Employees,Werknemers,0
+model,"ir.action,name",report_letter,Letter,Brief,0
+model,"ir.cron-company.company,name",0,ir.cron-company.company,,0
+model,"ir.ui.menu,name",menu_company_form,Edit Companies,Bedrijven aanpassen,0
+model,"ir.ui.menu,name",menu_company_form2,New Company,Nieuw bedrijf,0
+model,"ir.ui.menu,name",menu_company_tree,Companies,Bedrijven,0
+model,"ir.ui.menu,name",menu_employee_form,Employees,Werknemers,0
+odt,party.letter,0,"Best Regards,","Met vriendelijke groet,",0
+odt,party.letter,0,Date:,Datum:,0
+odt,party.letter,0,"Dear Madams and Sirs,","Geachte heer/mevrouw,",0
+odt,party.letter,0,E-Mail:,E-mail:,0
+odt,party.letter,0,Phone:,Telefoon:,0
+odt,party.letter,0,Subject:,Betreft:,0
+odt,party.letter,0,VAT Number:,BTW-nummer:,0
+view,company.company,0,Companies,Bedrijven,0
+view,company.company,0,Company,Bedrijf,0
+view,company.company,0,Employees,Werknemers,0
+view,company.company,0,Reports,Rapportage,0
+view,company.company.config.init,0,Create Company,Bedrijf aanmaken,0
+view,company.company.config.init,0,You can now add your company into the system.,U kunt nu uw eigen bedrijf toevoegen aan het systeem.,0
+view,company.employee,0,Employee,Werknemer,0
+view,company.employee,0,Employees,Werknemers,0
+wizard_button,"company.company.config,company,add",0,Add,Toevoegen,0
+wizard_button,"company.company.config,company,end",0,Cancel,Annuleren,0
+wizard_button,"company.company.config,init,company",0,Ok,Oké,0
+wizard_button,"company.company.config,init,end",0,Cancel,Annuleren,0
