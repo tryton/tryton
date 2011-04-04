@@ -116,7 +116,7 @@ class EditableTreeView(gtk.TreeView):
     def set_value(self):
         path, column = self.get_cursor()
         store = self.get_model()
-        if not path or not column:
+        if not path or not column or not column.name:
             return True
         model = store.get_value(store.get_iter(path), 0)
         modelfield = model[column.name]
