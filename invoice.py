@@ -36,11 +36,12 @@ Invoice()
 class InvoiceLine(ModelSQL, ModelView):
     _name = 'account.invoice.line'
 
-    def _view_look_dom_arch(self, tree, type):
+    def _view_look_dom_arch(self, tree, type, field_children=None):
         if type == 'form' and Transaction().context.get('standalone'):
             tree_root = tree.getroottree().getroot()
             if tree_root.get('cursor') == 'product':
                 tree_root.set('cursor', 'party')
-        return super(InvoiceLine, self)._view_look_dom_arch(tree, type)
+        return super(InvoiceLine, self)._view_look_dom_arch(tree, type,
+            field_children=field_children)
 
 InvoiceLine()
