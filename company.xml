@@ -67,16 +67,32 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+        <record model="ir.ui.view" id="company_view_list">
+            <field name="model">company.company</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Companies">
+                    <field name="name" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
         <record model="ir.action.act_window" id="act_company_tree">
             <field name="name">Companies</field>
             <field name="res_model">company.company</field>
-            <field name="view_type">tree</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_company_tree_view1">
-            <field name="sequence" eval="1"/>
+            <field name="sequence" eval="10"/>
             <field name="view" ref="company_view_tree"/>
+            <field name="act_window" ref="act_company_tree"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="company_view_form"/>
             <field name="act_window" ref="act_company_tree"/>
         </record>
         <menuitem parent="party.menu_configuration" action="act_company_tree"
@@ -85,42 +101,21 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_company_form">
             <field name="name">Companies</field>
             <field name="res_model">company.company</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_company_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="company_view_tree"/>
+            <field name="view" ref="company_view_form"/>
             <field name="act_window" ref="act_company_form"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_company_form_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="company_view_form"/>
+            <field name="view" ref="company_view_list"/>
             <field name="act_window" ref="act_company_form"/>
         </record>
         <menuitem parent="menu_company_tree" action="act_company_form"
-            id="menu_company_form" name="Edit Companies"/>
-
-        <record model="ir.action.act_window" id="act_company_form2">
-            <field name="name">Companies</field>
-            <field name="res_model">company.company</field>
-            <field name="view_type">form</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_company_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="company_view_form"/>
-            <field name="act_window" ref="act_company_form2"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_company_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="company_view_tree"/>
-            <field name="act_window" ref="act_company_form2"/>
-        </record>
-        <menuitem parent="menu_company_tree" action="act_company_form2"
-            id="menu_company_form2" name="New Company"/>
+            id="menu_company_form" name="New Company"/>
 
         <record model="ir.model.access" id="access_company">
             <field name="model" search="[('model', '=', 'company.company')]"/>
@@ -351,7 +346,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_employee_form">
             <field name="name">Employees</field>
             <field name="res_model">company.employee</field>
-            <field name="view_type">form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_employee_form_view1">
             <field name="sequence" eval="10"/>
