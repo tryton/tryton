@@ -1221,7 +1221,11 @@ class GeneralLegder(Report):
         if not datas['form']['empty_account']:
             account_id2lines = self.get_lines(account_ids,
                     end_period_ids, datas['form']['posted'])
-            account_ids = account_id2lines.keys()
+            set_account_ids = set(account_ids)
+            set_account_id2lines = set(account_id2lines)
+            set_account_ids_remove = set_account_id2lines - set_account_ids
+            for account_id in set_account_ids_remove:
+                account_ids.remove(account_id)
             account_id2lines = None
 
         account_id2lines = self.lines(account_ids,
