@@ -7,6 +7,7 @@
     'name_es_CO': 'Hoja de Asistencia',
     'name_es_ES': 'Partes de trabajo',
     'name_fr_FR': 'Feuille de présence',
+    'name_nl_NL': 'Tijdregistratie',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -65,6 +66,15 @@ Et les rapports:
     - Heures par employé par semaine
     - Heures par employé par mois
 ''',
+    'description_nl_NL': '''Tijdverantwoordingmodule met:
+    - Werken
+    - Tijdboekingen
+
+Bijbehorende rapporten:
+    - Uren per werk
+    - Uren per werknemer per week
+    - Uren per werknemer per maand
+''',
     'depends': [
         'ir',
         'res',
@@ -82,5 +92,6 @@ Et les rapports:
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'nl_NL.csv',
     ],
 }
