@@ -11,7 +11,7 @@ class DashboardAction(ModelSQL, ModelView):
             select=1)
     sequence = fields.Integer('Sequence')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
-            required=True)
+            required=True, ondelete='CASCADE')
 
     def __init__(self):
         super(DashboardAction, self).__init__()
