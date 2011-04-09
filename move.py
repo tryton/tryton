@@ -35,6 +35,8 @@ class Move(ModelSQL, ModelView):
         on_change_with=['uom']), 'get_unit_digits')
     quantity = fields.Float("Quantity", required=True,
             digits=(16, Eval('unit_digits', 2)), states=STATES)
+    internal_quantity = fields.Float('Internal Quantity', readonly=True,
+        required=True)
     from_location = fields.Many2One("stock.location", "From Location", select=1,
             required=True, states=STATES,
             domain=[('type', 'not in', ('warehouse', 'view'))])
@@ -90,6 +92,9 @@ class Move(ModelSQL, ModelView):
         self._sql_constraints += [
             ('check_move_qty_pos',
                 'CHECK(quantity >= 0.0)', 'Move quantity must be positive'),
+            ('check_move_internal_qty_pos',
+                'CHECK(internal_quantity >= 0.0)',
+                'Internal move quantity must be positive'),
             ('check_from_to_locations',
                 'CHECK(from_location != to_location)',
                 'Source and destination location must be different'),
@@ -108,6 +113,7 @@ class Move(ModelSQL, ModelView):
         ]
         self._constraints += [
             ('check_product_type', 'service_product'),
+            ('check_period_closed', 'period_closed'),
         ]
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
@@ -116,6 +122,7 @@ class Move(ModelSQL, ModelView):
             'set_state_done': 'You can not set state to done!',
             'del_draft_cancel': 'You can only delete draft or cancelled moves!',
             'service_product': 'You can not use service products for a move!',
+            'period_closed': 'You can not modify move in closed period!',
             'modify_assigned_done_cancel': ('You can not modify a move '
                 'in the state: "Assigned", "Done" or "Cancel"'),
             })
@@ -132,7 +139,28 @@ class Move(ModelSQL, ModelView):
                 table.index_action(old_column, action='remove')
             table.drop_fk(old_column)
             table.column_rename(old_column, new_column)
+
+        # Migration from 1.8: new field internal_quantity
+        internal_quantity_exist = table.column_exist('internal_quantity')
+
         super(Move, self).init(module_name)
+
+        # Migration from 1.8: fill new field internal_quantity
+        if not internal_quantity_exist:
+            offset = 0
+            limit = cursor.IN_MAX
+            move_ids = True
+            while move_ids:
+                move_ids = self.search([], offset=offset, limit=limit)
+                offset += limit
+                for move in self.browse(move_ids):
+                    internal_quantity = self._get_internal_quantity(
+                            move.quantity, move.uom, move.product)
+                    self.write(move.id, {
+                        'internal_quantity': internal_quantity,
+                        })
+            table = TableHandler(cursor, self, module_name)
+            table.not_null_action('internal_quantity', action='add')
 
         # Migration from 1.0 check_packing_in_out has been removed
         table  = TableHandler(cursor, self, module_name)
@@ -327,6 +355,20 @@ class Move(ModelSQL, ModelView):
                 return False
         return True
 
+    def check_period_closed(self, ids):
+        period_obj = self.pool.get('stock.period')
+        period_ids = period_obj.search([
+            ('state', '=', 'closed'),
+        ], order=[('date', 'DESC')], limit=1)
+        if period_ids:
+            period, = period_obj.browse(period_ids)
+            for move in self.browse(ids):
+                date = (move.effective_date if move.effective_date
+                    else move.planned_date)
+                if date and date < period.date:
+                    return False
+        return True
+
     def get_rec_name(self, ids, name):
         if not ids:
             return {}
@@ -427,19 +469,27 @@ class Move(ModelSQL, ModelView):
                 'cost_price': new_cost_price,
                 })
 
+    def _get_internal_quantity(self, quantity, uom, product):
+        uom_obj = self.pool.get('product.uom')
+        internal_quantity = uom_obj.compute_qty(uom, quantity,
+                product.default_uom, round=True)
+        return internal_quantity
+
+
     def create(self, vals):
         location_obj = self.pool.get('stock.location')
         product_obj = self.pool.get('product.product')
+        uom_obj = self.pool.get('product.uom')
         date_obj = self.pool.get('ir.date')
 
         vals = vals.copy()
 
+        product = product_obj.browse(vals['product'])
         if vals.get('state') == 'done':
             if not vals.get('effective_date'):
                 vals['effective_date'] = date_obj.today()
             from_location = location_obj.browse(vals['from_location'])
             to_location = location_obj.browse(vals['to_location'])
-            product = product_obj.browse(vals['product'])
             if from_location.type == 'supplier' \
                     and product.cost_price_method == 'average':
                 self._update_product_cost_price(vals['product'],
@@ -458,6 +508,11 @@ class Move(ModelSQL, ModelView):
         elif vals.get('state') == 'assigned':
             if not vals.get('effective_date'):
                 vals['effective_date'] = date_obj.today()
+
+        uom = uom_obj.browse(vals['uom'])
+        internal_quantity = self._get_internal_quantity(vals['quantity'],
+                uom, product)
+        vals['internal_quantity'] = internal_quantity
         return super(Move, self).create(vals)
 
     def write(self, ids, vals):
@@ -530,6 +585,15 @@ class Move(ModelSQL, ModelView):
                     self.write(move.id, {
                         'cost_price': move.product.cost_price,
                         })
+
+        for move in self.browse(ids):
+            internal_quantity = self._get_internal_quantity(move.quantity,
+                    move.uom, move.product)
+            if internal_quantity != move.internal_quantity:
+                # Use super to avoid infinite loop
+                super(Move, self).write(move.id, {
+                    'internal_quantity': internal_quantity,
+                    })
         return res
 
     def delete(self, ids):

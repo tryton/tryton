@@ -173,6 +173,7 @@ class Product(ModelSQL, ModelView):
         rule_obj = self.pool.get('ir.rule')
         location_obj = self.pool.get('stock.location')
         date_obj = self.pool.get('ir.date')
+        period_obj = self.pool.get('stock.period')
 
         today = date_obj.today()
 
@@ -196,7 +197,9 @@ class Product(ModelSQL, ModelView):
                 wh_to_add[location.id] = location.storage_location.id
         location_ids = list(location_ids)
 
-        move_query, move_val = rule_obj.domain_get('stock.move')
+        move_rule_query, move_rule_val = rule_obj.domain_get('stock.move')
+
+        period_clause, period_vals = 'period = %s', [0]
 
         if not context.get('stock_date_end'):
             context['stock_date_end'] = datetime.date.max
@@ -350,6 +353,17 @@ class Product(ModelSQL, ModelView):
                     context['stock_date_start'], today,
                     context['stock_date_start'], today,
                     ])
+        else:
+            period_ids = period_obj.search([
+                ('date', '<', context['stock_date_end']),
+            ], order=[('date', 'DESC')], limit=1)
+            if period_ids:
+                period_id, = period_ids
+                period = period_obj.browse(period_id)
+                state_date_clause += (' AND '
+                    '(COALESCE(effective_date, planned_date) > %s)')
+                state_date_vals.append(period.date)
+                period_vals[0] = period.id
 
         if with_childs:
             query, args = location_obj.search([
@@ -362,11 +376,11 @@ class Product(ModelSQL, ModelView):
                 ",".join(('%s',) * len(location_ids)) + ") "
             where_vals = location_ids[:]
 
-        if move_query:
-            where_clause += " AND " + move_query + " "
-            where_vals += move_val
+        if move_rule_query:
+            move_rule_query = " AND " + move_rule_query + " "
 
         product_template_join = ""
+        product_template_join_period = ""
         if product_ids:
             where_clause += "AND product in (" + \
                 ",".join(('%s',) * len(product_ids)) + ")"
@@ -379,7 +393,12 @@ class Product(ModelSQL, ModelView):
                         "ON (stock_move.product = product_product.id) "\
                     "JOIN product_template "\
                         "ON (product_product.template = "\
-                            "product_template.id) "\
+                            "product_template.id) "
+            product_template_join_period = (
+                "JOIN product_product "
+                    "ON (stock_period_cache.product = product_product.id) "
+                "JOIN product_template "
+                    "ON (product_product.template = product_template.id) ")
 
 
         if context.get('stock_destinations'):
@@ -392,59 +411,55 @@ class Product(ModelSQL, ModelView):
             dest_clause_to += ") "
             dest_vals = destinations
 
+            dest_clause_period = (' AND location IN ('
+                + ','.join(('%s',) * len(destinations)) + ') ')
+
         else:
-            dest_clause_from = dest_clause_to =""
+            dest_clause_from = dest_clause_to = dest_clause_period = ""
             dest_vals = []
 
-        # The main select clause is a union between two similar
-        # subqueries. One that sums incoming moves towards locations
-        # and on that sums outgoing moves. UNION ALL is used because
-        # we already know that there will be no duplicates.
-        select_clause = \
-                "SELECT location, product, uom, sum(quantity) AS quantity "\
-                "FROM ( "\
-                    "SELECT to_location AS location, product, uom, "\
-                        "sum(quantity) AS quantity "\
-                    "FROM stock_move " + product_template_join + \
-                    "WHERE (%s) " \
-                        "AND to_location %s "\
-                    "GROUP BY to_location, product ,uom "\
-                    "UNION ALL "\
-                    "SELECT from_location AS location, product, uom, "\
-                        "-sum(quantity) AS quantity "\
-                    "FROM stock_move " + product_template_join + \
-                    "WHERE (%s) " \
-                        "AND from_location %s "\
-                    "GROUP BY from_location, product, uom "\
-                ") AS T GROUP BY T.location, T.product, T.uom"
+        # The main select clause is a union between three similar subqueries.
+        # One that sums incoming moves towards locations, one that sums
+        # outgoing moves and one for the period cache.  UNION ALL is used
+        # because we already know that there will be no duplicates.
+        select_clause = (
+                "SELECT location, product, sum(quantity) AS quantity "
+                "FROM ( "
+                    "SELECT to_location AS location, product, "
+                        "SUM(internal_quantity) AS quantity "
+                    "FROM stock_move " + product_template_join + " "
+                    "WHERE (%s) "
+                        "AND to_location %s "
+                    "GROUP BY to_location, product "
+                    "UNION ALL "
+                    "SELECT from_location AS location, product, "
+                        "-SUM(internal_quantity) AS quantity "
+                    "FROM stock_move " + product_template_join + " "
+                    "WHERE (%s) "
+                        "AND from_location %s "
+                    "GROUP BY from_location, product, uom "
+                    "UNION ALL "
+                    "SELECT location, product, internal_quantity AS quantity "
+                    "FROM stock_period_cache "
+                        + product_template_join_period + " "
+                    "WHERE (%s) "
+                        "AND location %s "
+                ") AS T GROUP BY T.location, T.product")
 
         cursor.execute(select_clause % (
-                state_date_clause, where_clause + dest_clause_from,
-                state_date_clause, where_clause + dest_clause_to),
-                    state_date_vals + where_vals + dest_vals + \
-                    state_date_vals + where_vals + dest_vals)
+            state_date_clause,
+            where_clause + move_rule_query + dest_clause_from,
+            state_date_clause,
+            where_clause + move_rule_query + dest_clause_to,
+            period_clause, where_clause + dest_clause_period),
+            state_date_vals + where_vals + move_rule_val + dest_vals + \
+            state_date_vals + where_vals + move_rule_val + dest_vals + \
+            period_vals + where_vals + dest_vals)
         raw_lines = cursor.fetchall()
 
-        res = {}
-        res_location_ids = []
-        uom_ids = []
-        res_product_ids = []
-        for line in raw_lines:
-            for id_list, position in ((res_location_ids, 0), (uom_ids, 2),
-                                      (res_product_ids, 1)):
-                if line[position] not in id_list:
-                    id_list.append(line[position])
-
-        uom_by_id = dict((x.id, x) for x in uom_obj.browse(uom_ids))
-        default_uom = dict((x.id, x.default_uom) for x in product_obj.browse(
-            product_ids or res_product_ids))
-
-        for line in raw_lines:
-            location, product, uom, quantity = line
-            key = (location, product)
-            res.setdefault(key, 0.0)
-            res[key] += uom_obj.compute_qty(uom_by_id[uom], quantity,
-                    default_uom[product], round=False)
+        res_product_ids = set(product for _, product, _ in raw_lines)
+        res = dict(((location, product), quantity)
+                for location, product, quantity in raw_lines)
 
         # Propagate quantities on from child locations to their parents
         if with_childs:
@@ -478,12 +493,6 @@ class Product(ModelSQL, ModelView):
             for location, product in res.keys():
                 if location not in location_ids:
                     del res[(location, product)]
-
-        # Round quantities
-        for location, product in res:
-            key = (location, product)
-            res[key] = uom_obj.compute_qty(default_uom[product], res[key],
-                    default_uom[product], round=True)
 
         # Complete result with missing products if asked
         if not skip_zero:

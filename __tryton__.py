@@ -111,6 +111,7 @@ Et les rapports:
         'inventory.xml',
         'party.xml',
         'configuration.xml',
+        'period.xml',
     ],
     'translation': [
         'bg_BG.csv',
