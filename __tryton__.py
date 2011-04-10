@@ -8,6 +8,7 @@
     'name_es_CO': 'Escritorio',
     'name_es_ES': 'Escritorio',
     'name_fr_FR': 'Tableau de bord',
+    'name_nl_NL': 'Prikbord',
     'name_ru_RU': 'Информационная панель',
     'version': '1.9.0',
     'author': 'B2CK',
@@ -31,6 +32,9 @@
     'description_fr_FR': '''Tableau de bord
     - Permet de créer un tableau de bord personalisé.
 ''',
+    'description_nl_NL': '''Prikbord:
+    - Maakt een persoonlijk prikbord mogelijk.
+''',
     'description_ru_RU': '''Информационная панель:
     - позволяет создавать персональные панели.
 ''',
@@ -49,6 +53,7 @@
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'nl_NL.csv',
         'ru_RU.csv',
     ],
 }
