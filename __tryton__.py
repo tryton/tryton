@@ -8,6 +8,7 @@
     'name_es_CO': 'Productos',
     'name_es_ES': 'Producto',
     'name_fr_FR': 'Produit',
+    'name_nl_NL': 'Producten',
     'name_ru_RU': 'ТМЦ',
     'version' : '1.9.0',
     'author' : 'B2CK',
@@ -25,6 +26,7 @@
  - Unité de mesure
  - Catégorie d'unité de mesure
 ''',
+	'description_nl_NL': 'Definieert producten, productcategorieën, meeteenheden en categorieën van meeteenheden.',
     'description_ru_RU': 'Определение ТМЦ, категорий ТМЦ, единиц измерения, категорий единиц измерения.',
     'depends' : [
         'ir',
@@ -41,6 +43,7 @@
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'nl_NL.csv',
         'ru_RU.csv',
     ]
 }
