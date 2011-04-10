@@ -1,0 +1,68 @@
+type,name,res_id,src,value,fuzzy
+error,account.statement,0,End Balance must be %s!,Eindbalans moet %s zijn!,0
+error,account.statement.line,0,Amount (%s) greater than the amount to pay of invoice!,Het bedrag (%s) is hoger dan het bedrag op de factuur!,0
+error,account.statement.line,0,Credit or debit account on journal is the same than the statement line account!,Credit of debit rekening van het dagboek is dezelfde als van het bankafschrift!,0
+error,account.statement.line,0,Please provide debit and credit account on statement journal.,Geef een debit en een credit rekening op voor het dagboek  bankafschriften.,0
+field,"account.statement,currency_digits",0,Currency Digits,Valuta decimalen,0
+field,"account.statement,date",0,Date,Datum,0
+field,"account.statement,end_balance",0,End Balance,Eindbalans,0
+field,"account.statement,journal",0,Journal,Dagboek,0
+field,"account.statement,lines",0,Transactions,Transacties,0
+field,"account.statement,move_lines",0,Move Lines,Boekingsregels,0
+field,"account.statement,rec_name",0,Name,Naam,0
+field,"account.statement,start_balance",0,Start Balance,Begin bedrag,0
+field,"account.statement,state",0,State,Status,0
+field,"account.statement.journal,company",0,Company,Bedrijf,0
+field,"account.statement.journal,currency",0,Currency,Valuta,0
+field,"account.statement.journal,journal",0,Journal,Dagboek,0
+field,"account.statement.journal,name",0,Name,Naam,0
+field,"account.statement.journal,rec_name",0,Name,Naam,0
+field,"account.statement.line,account",0,Account,Rekening,0
+field,"account.statement.line,amount",0,Amount,Bedrag,0
+field,"account.statement.line,date",0,Date,Datum,0
+field,"account.statement.line,description",0,Description,Specificatie,0
+field,"account.statement.line,invoice",0,Invoice,Verkoopfactuur,0
+field,"account.statement.line,move",0,Account Move,Boeking,0
+field,"account.statement.line,party",0,Party,Relatie,0
+field,"account.statement.line,rec_name",0,Name,Naam,0
+field,"account.statement.line,statement",0,Statement,Bankafschrift,0
+model,"account.journal.type,name",journal_type_statement,Statement,Bankafschrift,0
+model,"account.statement,name",0,Account Statement,Rekeningafschrift,0
+model,"account.statement.journal,name",0,Statement Journal,Dagboek bankafschriften,0
+model,"account.statement.line,name",0,Account Statement Line,Rekeningafschriftregel,0
+model,"ir.action,name",act_draft_statement_form,Draft Statements,Concept bankafschriften,0
+model,"ir.action,name",act_new_statement_form,New Statement,Nieuw bankafschrift,0
+model,"ir.action,name",act_posted_statement_form,Posted Statements,Geboekte bankafschriften,0
+model,"ir.action,name",act_statement_form,All Statement,Alle bankafschriften,0
+model,"ir.action,name",act_statement_journal_form,Statement Journals,Dagboeken bankafschriften,0
+model,"ir.action,name",act_validated_statement_form,Validated Statement,Goedgekeurde bankafschriften,0
+model,"ir.ui.menu,name",menu_draft_statement_form,Draft Statements,Concept bankafschriften,0
+model,"ir.ui.menu,name",menu_new_statement_form,New Statement,Nieuw bankafschrift,0
+model,"ir.ui.menu,name",menu_posted_statement_form,Posted Statements,Geboekte bankafschriften,0
+model,"ir.ui.menu,name",menu_statement_configuration,Statements,Bankafschriften,0
+model,"ir.ui.menu,name",menu_statement_form,All Statement,Alle bankafschriften,0
+model,"ir.ui.menu,name",menu_statement_journal_form,Statement Journals,Dagboeken bankafschriften,0
+model,"ir.ui.menu,name",menu_statements,Statements,Bankafschriften,0
+model,"ir.ui.menu,name",menu_validated_statement_form,Validated Statement,Goedgekeurde bankafschriften,0
+model,"res.group,name",group_statement,Statement,Bankafschrift,0
+model,"workflow,name",wkf_statement,Statement,Bankafschrift,0
+model,"workflow.activity,name",statement_act_cancel,Canceled,Geannuleerd,0
+model,"workflow.activity,name",statement_act_draft,Draft,Concept,0
+model,"workflow.activity,name",statement_act_posted,Posted,Geboekt,0
+model,"workflow.activity,name",statement_act_validated,Validated,Goedgekeurd,0
+selection,"account.statement,state",0,Canceled,Geannuleerd,0
+selection,"account.statement,state",0,Draft,Concept,0
+selection,"account.statement,state",0,Posted,Geboekt,0
+selection,"account.statement,state",0,Validated,Goedgekeurd,0
+view,account.statement,0,Cancel,Annuleren,0
+view,account.statement,0,Move Lines,Boekingen,0
+view,account.statement,0,Post,Boeken,0
+view,account.statement,0,Reset to Draft,Terug naar concept,0
+view,account.statement,0,Statement,Bankafschrift,0
+view,account.statement,0,Statement Lines,Bankafschriftregels,0
+view,account.statement,0,Statements,Bankafschriften,0
+view,account.statement,0,Validate,Goedkeuren,0
+view,account.statement.journal,0,Statement Journal,Dagboek bankafschriften,0
+view,account.statement.journal,0,Statement Journals,Dagboeken bankafschriften,0
+view,account.statement.line,0,Statement Line,Bankafschriftregel,0
+view,account.statement.line,0,Statement Lines,Bankafschriftregels,0

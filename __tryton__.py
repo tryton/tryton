@@ -7,6 +7,7 @@
     'name_es_CO': 'Estado de Cuentas',
     'name_es_ES': 'Estado de cuentas',
     'name_fr_FR': 'Relevé comptable',
+    'name_nl_NL': 'Bankafschriften',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -34,6 +35,10 @@
     - Relevé
     - Journal de relevés
     ''',
+    'description_nl_NL': '''Module voor het verwerken van bankafschriften met:
+    - bankboeken
+    - afletteren van rekeningen
+''',
     'depends': [
         'account',
         'company',
@@ -52,5 +57,6 @@
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'nl_NL.csv',
     ],
 }
