@@ -7,6 +7,7 @@
     'name_es_CO': 'Contabilidad de Inventarios',
     'name_es_ES': 'Contabilidad de productos',
     'name_fr_FR': 'Compte produit',
+    'name_nl_NL': 'Boekhouding voor producten',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -35,6 +36,10 @@
     - comptes de charge et revenu
     - taxes client et fournisseur
 ''',
+    'description_nl_NL': '''Voegt boekhouding eigenschappen toe aan product en categorie als:
+    - rekening voor kosten / opbrengsten
+    - belastingregels voor klanten en leveranciers
+''',
     'depends': [
         'ir',
         'account',
@@ -50,5 +55,6 @@
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'nl_NL.csv',
     ]
 }
