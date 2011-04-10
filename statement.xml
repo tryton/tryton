@@ -50,8 +50,10 @@ this repository contains the full copyright notices and license terms. -->
                                       states="{'invisible': Not(Equal(Eval('state'), 'cancel'))}"/>
                             </group>
                         </page>
-                        <page string="Move Lines" col="1" id="move_lines">
-                            <field name="move_lines"/>
+                        <page string="Other Info" id="info">
+                            <label name="company"/>
+                            <field name="company"/>
+                            <field name="move_lines" colspan="4"/>
                         </page>
                     </notebook>
                     <field name="currency_digits" colspan="4" invisible="1"/>
@@ -162,6 +164,17 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_statements" sequence="5"
             action="act_statement_form" id="menu_statement_form"/>
+
+        <record model="ir.rule.group" id="rule_group_statement">
+            <field name="model" search="[('model', '=', 'account.statement')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_statement1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.statement')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_statement"/>
+        </record>
 
         <record model="ir.ui.view" id="statement_line_view_form">
             <field name="model">account.statement.line</field>

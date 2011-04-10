@@ -2,8 +2,9 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
-from trytond.pyson import Not, Equal, Eval, Or, Bool, Get, If
+from trytond.pyson import Not, Equal, Eval, Or, Bool, Get, If, In
 from trytond.transaction import Transaction
+from trytond.backend import TableHandler
 
 _STATES = {'readonly': Not(Equal(Eval('state'), 'draft'))}
 
@@ -13,13 +14,21 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
     _name = 'account.statement'
     _description = __doc__
 
+    company = fields.Many2One('company.company', 'Company', required=True,
+        select=1, states=_STATES, domain=[
+            ('id', If(In('company', Eval('context', {})), '=', '!='),
+                Get(Eval('context', {}), 'company', 0)),
+        ])
     journal = fields.Many2One('account.statement.journal', 'Journal', required=True,
-            states={
-                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                    Bool(Eval('lines'))),
-            }, on_change=['journal'], select=1)
+        domain=[
+            ('company', '=', Eval('company')),
+        ],
+        states={
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Bool(Eval('lines'))),
+        }, on_change=['journal'], select=1)
     currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['journal']), 'get_currency_digits')
+        on_change_with=['company']), 'get_currency_digits')
     date = fields.Date('Date', required=True, states=_STATES, select=1)
     start_balance = fields.Numeric('Start Balance',
             digits=(16, Eval('currency_digits', 2)),
@@ -30,8 +39,8 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
     lines = fields.One2Many('account.statement.line', 'statement',
             'Transactions', states={
                 'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                    Not(Bool(Eval('journal')))),
-            }, on_change=['lines', 'journal'])
+                    Not(Bool(Eval('company')))),
+            }, on_change=['lines', 'company'])
     state = fields.Selection([
         ('draft', 'Draft'),
         ('validated', 'Validated'),
@@ -50,6 +59,33 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         self._error_messages.update({
             'wrong_end_balance': 'End Balance must be %s!',
             })
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+
+        # Migration from 1.8: new field company
+        table = TableHandler(cursor, self, module_name)
+        company_exist = table.column_exist('company')
+
+        super(Statement, self).init(module_name)
+
+        # Migration from 1.8: fill new field company
+        if not company_exist:
+            offset = 0
+            limit = cursor.IN_MAX
+            statement_ids = True
+            while statement_ids:
+                statement_ids = self.search([], offset=offset, limit=limit)
+                offset += limit
+                for statement in self.browse(statement_ids):
+                    self.write(statement.id, {
+                        'company': statement.journal.company.id,
+                    })
+            table = TableHandler(cursor, self, module_name)
+            table.not_null_action('company', action='add')
+
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
     def default_state(self):
         return 'draft'
@@ -83,16 +119,16 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_with_currency_digits(self, vals):
-        journal_obj = self.pool.get('account.statement.journal')
-        if vals.get('journal'):
-            journal = journal_obj.browse(vals['journal'])
-            return journal.currency.digits
+        company_obj = self.pool.get('company.company')
+        if vals.get('company'):
+            company = company_obj.browse(vals['company'])
+            return company.currency.digits
         return 2
 
     def get_currency_digits(self, ids, name):
         res = {}
         for statement in self.browse(ids):
-            res[statement.id] = statement.journal.currency.digits
+            res[statement.id] = statement.company.currency.digits
         return res
 
     def get_rec_name(self, ids, name):
@@ -113,10 +149,10 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         for statement in self.browse(ids):
             res[statement.id] = statement.journal.name + ' ' + \
                     lang.currency(lang, statement.start_balance,
-                        statement.journal.currency, symbol=False,
+                        statement.company.currency, symbol=False,
                         grouping=True) + \
                     lang.currency(lang, statement.end_balance,
-                        statement.journal.currency, symbol=False,
+                        statement.company.currency, symbol=False,
                         grouping=True)
         return res
 
@@ -154,13 +190,13 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
 
     def on_change_lines(self, values):
         invoice_obj = self.pool.get('account.invoice')
-        journal_obj = self.pool.get('account.statement.journal')
+        company_obj = self.pool.get('company.company')
         currency_obj = self.pool.get('currency.currency')
         res = {
             'lines': {},
         }
-        if values.get('journal') and values.get('lines'):
-            journal = journal_obj.browse(values['journal'])
+        if values.get('company') and values.get('lines'):
+            company = company_obj.browse(values['company'])
             invoice_ids = set()
             for line in values['lines']:
                 if line['invoice']:
@@ -169,14 +205,14 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
             for invoice in invoice_obj.browse(invoice_ids):
                 invoice_id2amount_to_pay[invoice.id] = currency_obj.compute(
                         invoice.currency, invoice.amount_to_pay,
-                        journal.currency)
+                        company.currency)
 
             for line in values['lines']:
                 if line['invoice'] and line['id']:
                     amount_to_pay = invoice_id2amount_to_pay[line['invoice']]
                     if abs(line['amount']) > amount_to_pay:
                         res['lines'].setdefault('update', [])
-                        if currency_obj.is_zero(journal.currency,
+                        if currency_obj.is_zero(company.currency,
                                 amount_to_pay):
                             res['lines']['update'].append({
                                 'id': line['id'],
@@ -218,7 +254,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
             lang = lang_obj.browse(lang_ids[0])
 
             amount = lang_obj.format(lang,
-                    '%.' + str(statement.journal.currency.digits) + 'f',
+                    '%.' + str(statement.company.currency.digits) + 'f',
                     computed_end_balance, True)
             self.raise_user_error('wrong_end_balance', error_args=(amount,))
         for line in statement.lines:
@@ -267,11 +303,14 @@ class Line(ModelSQL, ModelView):
             digits=(16, Get(Eval('_parent_statement', {}),
                 'currency_digits', 2)),
             on_change=['amount', 'party', 'account', 'invoice',
-                '_parent_statement.journal'])
+                '_parent_statement.company'])
     party = fields.Many2One('party.party', 'Party',
             on_change=['amount', 'party', 'invoice'])
     account = fields.Many2One('account.account', 'Account', required=True,
-            on_change=['account', 'invoice'], domain=[('kind', '!=', 'view')])
+            on_change=['account', 'invoice'], domain=[
+                ('kind', '!=', 'view'),
+                ('company', '=', Get(Eval('_parent_statement', {}), 'company')),
+            ])
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
@@ -323,7 +362,7 @@ class Line(ModelSQL, ModelView):
     def on_change_amount(self, value):
         party_obj = self.pool.get('party.party')
         invoice_obj = self.pool.get('account.invoice')
-        journal_obj = self.pool.get('account.statement.journal')
+        company_obj = self.pool.get('company.company')
         currency_obj = self.pool.get('currency.currency')
         res = {}
 
@@ -341,11 +380,11 @@ class Line(ModelSQL, ModelView):
                 res['account'] = account.id
                 res['account.rec_name'] = account.rec_name
         if value.get('invoice'):
-            if value.get('amount') and value.get('_parent_statement.journal'):
+            if value.get('amount') and value.get('_parent_statement.company'):
                 invoice = invoice_obj.browse(value['invoice'])
-                journal = journal_obj.browse(value['_parent_statement.journal'])
+                company = company_obj.browse(value['_parent_statement.company'])
                 amount_to_pay = currency_obj.compute(invoice.currency,
-                        invoice.amount_to_pay, journal.currency)
+                        invoice.amount_to_pay, company.currency)
                 if abs(value['amount']) > amount_to_pay:
                     res['invoice'] = False
             else:
@@ -379,7 +418,7 @@ class Line(ModelSQL, ModelView):
         move_line_obj = self.pool.get('account.move.line')
         lang_obj = self.pool.get('ir.lang')
 
-        period_id = period_obj.find(line.statement.journal.company.id,
+        period_id = period_obj.find(line.statement.company.id,
                 date=line.date)
 
         move_lines = self._get_move_lines(line)
@@ -398,7 +437,7 @@ class Line(ModelSQL, ModelView):
         if line.invoice:
 
             amount_to_pay = currency_obj.compute(line.invoice.currency,
-                    line.invoice.amount_to_pay, line.statement.journal.currency)
+                    line.invoice.amount_to_pay, line.statement.company.currency)
             if amount_to_pay < abs(line.amount):
                 for code in [Transaction().language, 'en_US']:
                     lang_ids = lang_obj.search([
@@ -409,13 +448,13 @@ class Line(ModelSQL, ModelView):
                 lang = lang_obj.browse(lang_ids[0])
 
                 amount = lang_obj.format(lang,
-                        '%.' + str(line.statement.journal.currency.digits) + 'f',
+                        '%.' + str(line.statement.company.currency.digits) + 'f',
                         line.amount, True)
                 self.raise_user_error('amount_greater_invoice_amount_to_pay',
                         error_args=(amount,))
 
-            amount = currency_obj.compute(line.statement.journal.currency,
-                    line.amount, line.statement.journal.company.currency)
+            amount = currency_obj.compute(line.statement.company.currency,
+                    line.amount, line.statement.company.currency)
 
             reconcile_lines = invoice_obj.get_reconcile_lines_for_amount(
                     line.invoice, abs(amount))
@@ -452,11 +491,11 @@ class Line(ModelSQL, ModelView):
         currency_obj = self.pool.get('currency.currency')
         zero = Decimal("0.0")
         amount = currency_obj.compute(
-            statement_line.statement.journal.currency, statement_line.amount,
-            statement_line.statement.journal.company.currency)
-        if statement_line.statement.journal.currency.id != \
-                statement_line.statement.journal.company.currency.id:
-            second_currency = statement_line.statement.journal.currency.id
+            statement_line.statement.company.currency, statement_line.amount,
+            statement_line.statement.company.currency)
+        if statement_line.statement.company.currency.id != \
+                statement_line.statement.company.currency.id:
+            second_currency = statement_line.statement.company.currency.id
             amount_second_currency = abs(statement_line.amount)
         else:
             amount_second_currency = False
