@@ -79,6 +79,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         })
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['currency']), 'get_currency_digits')
+    currency_date = fields.Function(fields.Date('Currency Date',
+        on_change_with=['invoice_date']), 'get_currency_date',)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states=_STATES, domain=[('centralised', '=', False)])
     move = fields.Many2One('account.move', 'Move', readonly=True)
@@ -91,7 +93,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES)
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
-        states=_STATES, on_change=['lines', 'taxes', 'currency', 'party', 'type'])
+        states=_STATES, on_change=[
+            'lines', 'taxes', 'currency', 'party', 'type'
+        ], depends=['currency_date'])
     taxes = fields.One2Many('account.invoice.tax', 'invoice', 'Tax Lines',
         states=_STATES, on_change=['lines', 'taxes', 'currency', 'party', 'type'])
     comment = fields.Text('Comment', states=_STATES)
@@ -267,6 +271,20 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         res = {}
         for invoice in self.browse(ids):
             res[invoice.id] = invoice.currency.digits
+        return res
+
+    def on_change_with_currency_date(self, vals):
+        date_obj = self.pool.get('ir.date')
+        today = date_obj.today()
+        date = vals.get('invoice_date') or today
+        return date
+
+    def get_currency_date(self, ids, name):
+        date_obj = self.pool.get('ir.date')
+        res = {}
+        today = date_obj.today()
+        for invoice in self.browse(ids):
+            res[invoice.id] = invoice.invoice_date or today
         return res
 
     def on_change_with_party_lang(self, vals):
@@ -509,8 +527,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 amount = - amount
                 amount_currency = - amount_currency
             if amount != _ZERO:
-                amount_currency += currency_obj.compute(
-                        invoice.company.currency, amount, invoice.currency)
+                with Transaction().set_context(date=invoice.currency_date):
+                    amount_currency += currency_obj.compute(
+                    invoice.company.currency.id, amount, invoice.currency.id)
             if amount_currency < _ZERO:
                 amount_currency = _ZERO
             res[invoice.id] = amount_currency
@@ -736,8 +755,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         currency_obj = self.pool.get('currency.currency')
         res = {}
         if invoice.currency.id != invoice.company.currency.id:
-            res['amount_second_currency'] = currency_obj.compute(
-                    invoice.company.currency, amount, invoice.currency)
+            with Transaction().set_context(date=invoice.currency_date):
+                res['amount_second_currency'] = currency_obj.compute(
+                    invoice.company.currency.id, amount, invoice.currency.id)
             res['amount_second_currency'] = abs(res['amount_second_currency'])
             res['second_currency'] = invoice.currency.id
         else:
@@ -1255,7 +1275,8 @@ class InvoiceLine(ModelSQL, ModelView):
                 'invisible': Not(Equal(Eval('type'), 'line')),
             }, on_change=['product', 'unit', 'quantity', 'description',
                 '_parent_invoice.type', '_parent_invoice.party',
-                '_parent_invoice.currency', 'party', 'currency'])
+                '_parent_invoice.currency', '_parent_invoice.currency_date',
+                'party', 'currency', 'invoice'])
     account = fields.Many2One('account.account', 'Account',
             domain=[
                 ('kind', '!=', 'view'),
@@ -1494,6 +1515,8 @@ class InvoiceLine(ModelSQL, ModelView):
         company_obj = self.pool.get('company.company')
         currency_obj = self.pool.get('currency.currency')
         tax_rule_obj = self.pool.get('account.tax.rule')
+        invoice_obj = self.pool.get('account.invoice')
+        date_obj = self.pool.get('ir.date')
 
         if not vals.get('product'):
             return {}
@@ -1513,6 +1536,12 @@ class InvoiceLine(ModelSQL, ModelView):
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
         currency = None
+        currency_date = date_obj.today()
+        if vals.get('_parent_invoice.currency_date'):
+            currency_date = vals['_parent_invoice.currency_date']
+        elif vals.get('invoice'):
+            invoice = invoice_obj.browse(vals['invoice'])
+            currency_date = invoice.currency_date
         if vals.get('_parent_invoice.currency') or vals.get('currency'):
             #TODO check if today date is correct
             currency = currency_obj.browse(
@@ -1522,8 +1551,10 @@ class InvoiceLine(ModelSQL, ModelView):
         if (vals.get('_parent_invoice.type') or vals.get('invoice_type')) \
                 in ('in_invoice', 'in_credit_note'):
             if company and currency:
-                res['unit_price'] = currency_obj.compute(company.currency,
-                        product.cost_price, currency, round=False)
+                with Transaction().set_context(date=currency_date):
+                    res['unit_price'] = currency_obj.compute(
+                            company.currency.id, product.cost_price,
+                            currency.id, round=False)
             else:
                 res['unit_price'] = product.cost_price
             try:
@@ -1548,8 +1579,10 @@ class InvoiceLine(ModelSQL, ModelView):
                     res['taxes'].extend(tax_ids)
         else:
             if company and currency:
-                res['unit_price'] = currency_obj.compute(company.currency,
-                        product.list_price, currency, round=False)
+                with Transaction().set_context(date=currency_date):
+                    res['unit_price'] = currency_obj.compute(
+                            company.currency.id, product.list_price,
+                            currency.id, round=False)
             else:
                 res['unit_price'] = product.list_price
             try:
@@ -1659,8 +1692,10 @@ class InvoiceLine(ModelSQL, ModelView):
                 base_code_id = tax['tax'].credit_note_base_code.id
                 amount = tax['base'] * tax['tax'].credit_note_base_sign
             if base_code_id:
-                amount = currency_obj.compute(line.invoice.currency, amount,
-                        line.invoice.company.currency)
+                with Transaction().set_context(
+                        date=line.invoice.currency_date):
+                    amount = currency_obj.compute(line.invoice.currency.id,
+                            amount, line.invoice.company.currency.id)
                 res.append({
                     'code': base_code_id,
                     'amount': amount,
@@ -1678,8 +1713,9 @@ class InvoiceLine(ModelSQL, ModelView):
             return []
         res['name'] = line.description
         if line.invoice.currency.id != line.invoice.company.currency.id:
-            amount = currency_obj.compute(line.invoice.currency, line.amount,
-                    line.invoice.company.currency)
+            with Transaction().set_context(date=line.invoice.currency_date):
+                amount = currency_obj.compute(line.invoice.currency.id,
+                        line.amount, line.invoice.company.currency.id)
             res['amount_second_currency'] = line.amount
             res['second_currency'] = line.invoice.currency.id
         else:
@@ -1872,8 +1908,9 @@ class InvoiceTax(ModelSQL, ModelView):
             return []
         res['name'] = tax.description
         if tax.invoice.currency.id != tax.invoice.company.currency.id:
-            amount = currency_obj.compute(tax.invoice.currency, tax.amount,
-                    tax.invoice.company.currency)
+            with Transaction().set_context(date=tax.invoice.currency_date):
+                amount = currency_obj.compute(tax.invoice.currency.id,
+                        tax.amount, tax.invoice.company.currency.id)
             res['amount_second_currency'] = tax.amount
             res['second_currency'] = tax.invoice.currency.id
         else:
@@ -2145,8 +2182,9 @@ class PayInvoiceAsk(ModelView):
 
         res = {}
         invoice = invoice_obj.browse(vals['invoice'])
-        amount = currency_obj.compute(vals['currency'], vals['amount'],
-                vals['currency_writeoff'])
+        with Transaction().set_context(date=invoice.currency_date):
+            amount = currency_obj.compute(vals['currency'], vals['amount'],
+                    vals['currency_writeoff'])
 
         res['amount_writeoff'] = Decimal('0.0')
         for line in line_obj.browse(vals['lines']):
@@ -2226,7 +2264,7 @@ class PayInvoice(Wizard):
 
         with Transaction().set_context(date=data['form']['date']):
             amount = currency_obj.compute(data['form']['currency'],
-                    data['form']['amount'], invoice.company.currency)
+                    data['form']['amount'], invoice.company.currency.id)
         res = invoice_obj.get_reconcile_lines_for_amount(invoice, amount)
         if res[1] == Decimal('0.0') and amount <= invoice.amount_to_pay:
             return 'pay'
@@ -2250,8 +2288,9 @@ class PayInvoice(Wizard):
         res['date'] = data['form']['date']
         res['company'] = invoice.company.id
 
-        amount = currency_obj.compute(data['form']['currency'],
-                data['form']['amount'], invoice.company.currency)
+        with Transaction().set_context(date=data['form']['date']):
+            amount = currency_obj.compute(data['form']['currency'],
+                data['form']['amount'], invoice.company.currency.id)
 
         if currency_obj.is_zero(invoice.company.currency, amount):
             res['lines'] = [x.id for x in invoice.lines_to_pay]
@@ -2292,7 +2331,7 @@ class PayInvoice(Wizard):
 
         with Transaction().set_context(date=data['form']['date']):
             amount = currency_obj.compute(data['form']['currency'],
-                    data['form']['amount'], invoice.company.currency)
+                    data['form']['amount'], invoice.company.currency.id)
 
         reconcile_lines = invoice_obj.get_reconcile_lines_for_amount(invoice,
                 amount)
