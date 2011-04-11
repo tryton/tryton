@@ -152,8 +152,13 @@ class Type(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, translate=True)
     parent = fields.Many2One('account.account.type', 'Parent',
-            ondelete="RESTRICT")
-    childs = fields.One2Many('account.account.type', 'parent', 'Children')
+            ondelete="RESTRICT", domain=[
+                ('company', '=', Eval('company')),
+            ])
+    childs = fields.One2Many('account.account.type', 'parent', 'Children',
+        domain=[
+            ('company', '=', Eval('company')),
+        ])
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
