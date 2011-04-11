@@ -2073,7 +2073,8 @@ class ThirdPartyBalance(Report):
         localcontext['company'] = company
         localcontext['digits'] = company.currency.digits
         localcontext['fiscalyear'] = datas['form']['fiscalyear']
-        line_query, _ = move_line_obj.query_get()
+        with Transaction().set_context(context=localcontext):
+            line_query, _ = move_line_obj.query_get()
         if datas['form']['posted']:
             posted_clause = "AND m.state = 'posted' "
         else:
@@ -2221,7 +2222,8 @@ class AgedBalance(Report):
         localcontext['digits'] = company.currency.digits
         localcontext['fiscalyear'] = datas['form']['fiscalyear']
         localcontext['posted'] = datas['form']['posted']
-        line_query, _ = move_line_obj.query_get()
+        with Transaction().set_context(context=localcontext):
+            line_query, _ = move_line_obj.query_get()
 
         terms = (datas['form']['term1'],
                   datas['form']['term2'],
