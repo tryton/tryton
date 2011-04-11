@@ -12,6 +12,7 @@ import unittest
 import doctest
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import test_view
+from trytond.backend.sqlite.database import Database as SQLiteDatabase
 
 
 class AccountStatementTestCase(unittest.TestCase):
