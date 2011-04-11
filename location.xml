@@ -41,7 +41,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Locations">
+                    <tree string="Locations" keyword_open="1">
                         <field name="name" select="1"/>
                         <field name="code" select="2"/>
                         <field name="type" select="1"/>
