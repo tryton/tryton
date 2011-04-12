@@ -535,7 +535,9 @@ class Account(ModelSQL, ModelView):
             states={
                 'invisible': Equal(Eval('kind'), 'view'),
                 'required': Not(Equal(Eval('kind'), 'view')),
-            }, depends=['kind'])
+            }, domain=[
+                ('company', '=', Eval('company')),
+            ], depends=['kind', 'company'])
     parent = fields.Many2One('account.account', 'Parent', select=1,
             left="left", right="right", ondelete="RESTRICT")
     left = fields.Integer('Left', required=True, select=1)
