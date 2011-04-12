@@ -63,6 +63,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name" select="1"/>
                     <field name="currency" select="1"/>
                     <field name="vat_code" select="1"/>
+                    <field name="parent" tree_invisible="1"/>
+                    <field name="childs" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
