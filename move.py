@@ -545,11 +545,13 @@ class Move(ModelSQL, ModelView):
                 elif vals['state'] == 'assigned':
                     if move.state in ('cancel', 'done'):
                         self.raise_user_error('set_state_assigned')
-                    vals['effective_date'] = date_obj.today()
+                    if not vals.get('effective_date'):
+                        vals['effective_date'] = date_obj.today()
                 elif vals['state'] == 'done':
                     if move.state in ('cancel'):
                         self.raise_user_error('set_state_done')
-                    vals['effective_date'] = date_obj.today()
+                    if not vals.get('effective_date'):
+                        vals['effective_date'] = date_obj.today()
 
                     if move.from_location.type == 'supplier' \
                             and move.state != 'done' \
