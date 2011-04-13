@@ -960,6 +960,8 @@ class PurchaseLine(ModelSQL, ModelView):
             context2['uom'] = vals['unit']
         else:
             context2['uom'] = product.purchase_uom.id
+        if vals.get('_parent_purchase.purchase_date'):
+            context2['purchase_date'] = vals['_parent_purchase.purchase_date']
         with Transaction().set_context(context2):
             res['unit_price'] = product_obj.get_purchase_price([product.id],
                     vals.get('quantity', 0))[product.id]
@@ -1010,6 +1012,8 @@ class PurchaseLine(ModelSQL, ModelView):
             context['currency'] = vals['_parent_purchase.currency']
         if vals.get('_parent_purchase.party'):
             context['supplier'] = vals['_parent_purchase.party']
+        if vals.get('_parent_purchase.purchase_date'):
+            context['purchase_date'] = vals['_parent_purchase.purchase_date']
         if vals.get('unit'):
             context['uom'] = vals['unit']
         with Transaction().set_context(context):
@@ -1346,7 +1350,9 @@ class Product(ModelSQL, ModelView):
         uom_obj = self.pool.get('product.uom')
         user_obj = self.pool.get('res.user')
         currency_obj = self.pool.get('currency.currency')
+        date_obj = self.pool.get('ir.date')
 
+        today = date_obj.today()
         res = {}
 
         uom = None
@@ -1378,8 +1384,11 @@ class Product(ModelSQL, ModelView):
                     res[product.id], uom)
             if currency and user.company:
                 if user.company.currency.id != currency.id:
-                    res[product.id] = currency_obj.compute(
-                            user.company.currency, res[product.id], currency)
+                    date = Transaction().context.get('purchase_date') or today
+                    with Transaction().set_context(date=date):
+                        res[product.id] = currency_obj.compute(
+                            user.company.currency.id, res[product.id],
+                            currency.id)
         return res
 
 Product()
