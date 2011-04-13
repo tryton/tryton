@@ -2072,10 +2072,12 @@ class InvoiceReport(Report):
         #If the invoice is open or paid and the report not saved in invoice_report
         #there was an error somewhere. So we save it now in invoice_report
         if invoice.state in ('open', 'paid'):
-            invoice_obj.write(invoice.id, {
-                'invoice_report_format': res[0],
-                'invoice_report': base64.encodestring(res[1]),
-                })
+            with Transaction().new_cursor() as transaction:
+                invoice_obj.write(invoice.id, {
+                    'invoice_report_format': res[0],
+                    'invoice_report': base64.encodestring(res[1]),
+                    })
+                transaction.cursor.commit()
         return res
 
 InvoiceReport()
