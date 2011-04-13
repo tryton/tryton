@@ -21,9 +21,9 @@ class TimesheetLine(ModelSQL, ModelView):
         work_company = line.work.company
         if line_company.id != work_company.id and\
                 line_company.currency.id != work_company.currency.id:
-
-            cost_price = currency_obj.compute(line_company.currency,
-                    cost_price, work_company.currency)
+            with Transaction().set_context(date=line.date):
+                cost_price = currency_obj.compute(line_company.currency.id,
+                    cost_price, work_company.currency.id)
 
         return Decimal(str(line.hours)) * cost_price
 
