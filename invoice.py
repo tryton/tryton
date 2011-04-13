@@ -1537,8 +1537,9 @@ class InvoiceLine(ModelSQL, ModelView):
             company = company_obj.browse(Transaction().context['company'])
         currency = None
         currency_date = date_obj.today()
-        if vals.get('_parent_invoice.currency_date'):
-            currency_date = vals['_parent_invoice.currency_date']
+        if '_parent_invoice.currency_date' in vals:
+            if vals['_parent_invoice.currency_date']:
+                currency_date = vals['_parent_invoice.currency_date']
         elif vals.get('invoice'):
             invoice = invoice_obj.browse(vals['invoice'])
             currency_date = invoice.currency_date
