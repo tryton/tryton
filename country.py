@@ -24,7 +24,7 @@ class Country(ModelSQL, ModelView):
             ('code_uniq', 'UNIQUE(code)',
              'The code of the country must be unique!'),
         ]
-        self._order.insert(0, ('code', 'ASC'))
+        self._order.insert(0, ('name', 'ASC'))
 
     def search_rec_name(self, name, clause):
         ids = self.search([('code',) + clause[1:]], limit=1)
