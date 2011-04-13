@@ -408,7 +408,7 @@ class Move(ModelSQL, ModelView):
                 order=order, count=count, query_string=query_string)
 
     def _update_product_cost_price(self, product_id, quantity, uom, unit_price,
-            currency, company):
+            currency, company, date):
         """
         Update the cost price on the given product
 
@@ -419,6 +419,7 @@ class Move(ModelSQL, ModelView):
         :param unit_price: the unit price of the product
         :param currency: the currency of the unit price
         :param company: the company id ot a BrowseRecord of the company
+        :param date: the date for the currency rate calculation
         """
         uom_obj = self.pool.get('product.uom')
         product_obj = self.pool.get('product.product')
@@ -445,8 +446,9 @@ class Move(ModelSQL, ModelView):
         qty = Decimal(str(qty))
         product_qty = Decimal(str(product.template.quantity))
         # convert wrt currency
-        unit_price = currency_obj.compute(currency, unit_price,
-                company.currency, round=False)
+        with Transaction().set_context(date=date):
+            unit_price = currency_obj.compute(currency.id, unit_price,
+                    company.currency.id, round=False)
         # convert wrt to the uom
         unit_price = uom_obj.compute_price(uom, unit_price,
                 product.default_uom)
@@ -482,32 +484,32 @@ class Move(ModelSQL, ModelView):
         uom_obj = self.pool.get('product.uom')
         date_obj = self.pool.get('ir.date')
 
+        today = date_obj.today()
         vals = vals.copy()
+        effective_date = vals.get('effective_date') or today
 
         product = product_obj.browse(vals['product'])
         if vals.get('state') == 'done':
-            if not vals.get('effective_date'):
-                vals['effective_date'] = date_obj.today()
+            vals['effective_date'] = effective_date
             from_location = location_obj.browse(vals['from_location'])
             to_location = location_obj.browse(vals['to_location'])
             if from_location.type == 'supplier' \
                     and product.cost_price_method == 'average':
                 self._update_product_cost_price(vals['product'],
                         vals['quantity'], vals['uom'], vals['unit_price'],
-                        vals['currency'], vals['company'])
+                        vals['currency'], vals['company'], effective_date)
             if to_location.type == 'supplier' \
                     and product.cost_price_method == 'average':
                 self._update_product_cost_price(vals['product'],
                         -vals['quantity'], vals['uom'], vals['unit_price'],
-                        vals['currency'], vals['company'])
+                        vals['currency'], vals['company'], effective_date)
             if not vals.get('cost_price'):
                 # Re-read product to get the updated cost_price
                 product = product_obj.browse(vals['product'])
                 vals['cost_price'] = product.cost_price
 
         elif vals.get('state') == 'assigned':
-            if not vals.get('effective_date'):
-                vals['effective_date'] = date_obj.today()
+            vals['effective_date'] = effective_date
 
         uom = uom_obj.browse(vals['uom'])
         internal_quantity = self._get_internal_quantity(vals['quantity'],
@@ -520,6 +522,8 @@ class Move(ModelSQL, ModelView):
 
         if isinstance(ids, (int, long)):
             ids = [ids]
+        today = date_obj.today()
+        effective_date = vals.get('effective_date') or today
 
         moves = self.browse(ids)
         if 'state' in vals:
@@ -531,13 +535,13 @@ class Move(ModelSQL, ModelView):
                             and move.product.cost_price_method == 'average':
                         self._update_product_cost_price(move.product.id,
                                 -move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company)
+                                move.currency, move.company, today)
                     if move.to_location.type == 'supplier' \
                             and move.state != 'cancel' \
                             and move.product.cost_price_method == 'average':
                         self._update_product_cost_price(move.product.id,
                                 move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company)
+                                move.currency, move.company, today)
 
                 elif vals['state'] == 'draft':
                     if move.state == 'done':
@@ -545,26 +549,24 @@ class Move(ModelSQL, ModelView):
                 elif vals['state'] == 'assigned':
                     if move.state in ('cancel', 'done'):
                         self.raise_user_error('set_state_assigned')
-                    if not vals.get('effective_date'):
-                        vals['effective_date'] = date_obj.today()
+                    vals['effective_date'] = effective_date
                 elif vals['state'] == 'done':
                     if move.state in ('cancel'):
                         self.raise_user_error('set_state_done')
-                    if not vals.get('effective_date'):
-                        vals['effective_date'] = date_obj.today()
+                    vals['effective_date'] = effective_date
 
                     if move.from_location.type == 'supplier' \
                             and move.state != 'done' \
                             and move.product.cost_price_method == 'average':
                         self._update_product_cost_price(move.product.id,
                                 move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company)
+                                move.currency, move.company, effective_date)
                     if move.to_location.type == 'supplier' \
                             and move.state != 'done' \
                             and move.product.cost_price_method == 'average':
                         self._update_product_cost_price( move.product.id,
                                 -move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company)
+                                move.currency, move.company, effective_date)
 
         if reduce(lambda x, y: x or y in vals, ('product', 'uom', 'quantity',
                 'from_location', 'to_location', 'company', 'unit_price',
