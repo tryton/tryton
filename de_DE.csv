@@ -1,0 +1,8 @@
+type,name,res_id,src,value,fuzzy
+error,stock.move,0,Anglo-Saxon quantity can not be greater than quantity!,Anzahl nach angelsächsicher Bewertung kann nicht größer als Anzahl sein!,0
+field,"product.category,account_cogs",0,Account Cost of Goods Sold,Konto Kosten der verkauften Waren,0
+field,"product.template,account_cogs",0,Account Cost of Good Sold,Konto Kosten der verkauften Waren,0
+field,"product.template,account_cogs_used",0,Account Cost of Goods Sold Used,Verwendetes Konto Kosten verkaufte Waren,0
+field,"stock.move,anglo_saxon_quantity",0,Anglo-Saxon Quantity,Anzahl (Angelsächsische Bewertung),0
+help,"product.template,account_cogs",0,This account will be used instead of the one defined on the category.,Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt ist.,0
+model,"account.account.template,name",account_template_cogs,COGS,Kosten der verkauften Waren (COGS),0

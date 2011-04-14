@@ -2,11 +2,15 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Stock Anglo-Saxon',
+    'name_de_DE': 'Buchhaltung Lagerbewertung Angelsächsische Methode',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': '''Add anglo-saxon stock accounting for real-time stock valuation.
+''',
+    'description_de_DE': '''
+    - Fügt die angelsächsische Methode der Lagerbewertung in Echt-Zeit hinzu.
 ''',
     'depends': [
         'ir',
@@ -23,5 +27,6 @@
         'account.xml',
     ],
     'translation': [
+        'de_DE.csv',
     ],
 }
