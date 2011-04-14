@@ -1022,6 +1022,8 @@ class SaleLine(ModelSQL, ModelView):
             context['currency'] = vals['_parent_sale.currency']
         if vals.get('_parent_sale.party'):
             context['customer'] = vals['_parent_sale.party']
+        if vals.get('_parent_sale.sale_date'):
+            context['sale_date'] = vals['_parent_sale.sale_date']
         if vals.get('unit'):
             context['uom'] = vals['unit']
         else:
@@ -1383,7 +1385,9 @@ class Product(ModelSQL, ModelView):
         uom_obj = self.pool.get('product.uom')
         user_obj = self.pool.get('res.user')
         currency_obj = self.pool.get('currency.currency')
+        date_obj = self.pool.get('ir.date')
 
+        today = date_obj.today()
         res = {}
 
         uom = None
@@ -1404,8 +1408,11 @@ class Product(ModelSQL, ModelView):
                         product.default_uom, res[product.id], uom)
             if currency and user2.company:
                 if user2.company.currency.id != currency.id:
-                    res[product.id] = currency_obj.compute(
-                            user2.company.currency, res[product.id], currency)
+                    date = Transaction().context.get('sale_date') or today
+                    with Transaction().set_context(date=date):
+                        res[product.id] = currency_obj.compute(
+                                user2.company.currency.id, res[product.id],
+                                currency.id)
         return res
 
 Product()
