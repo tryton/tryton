@@ -178,8 +178,8 @@ field,"account.fiscalyear.close_fiscalyear.init,close_fiscalyear",0,Fiscal Year 
 field,"account.journal,active",0,Active,Aktiv,0
 field,"account.journal,centralised",0,Centralised counterpart,Abschlussbuchung auf Gegenkonto,0
 field,"account.journal,code",0,Code,Code,0
-field,"account.journal,credit_account",0,Default Credit Account,Standard Habenkonto,0
-field,"account.journal,debit_account",0,Default Debit Account,Standard Sollkonto,0
+field,"account.journal,credit_account",0,Default Credit Account,Habenkonto,0
+field,"account.journal,debit_account",0,Default Debit Account,Sollkonto,0
 field,"account.journal,name",0,Name,Name,0
 field,"account.journal,rec_name",0,Name,Name,0
 field,"account.journal,sequence",0,Sequence,Nummernkreis,0
@@ -484,13 +484,11 @@ model,"account.tax.rule.template,name",0,Tax Rule Template,Vorlage Steuerregel,0
 model,"account.tax.template,name",0,Account Tax Template,Konto Steuervorlage,0
 model,"ir.action,name",act_account_balance_sheet_tree,Balance Sheet,Bilanzbogen,0
 model,"ir.action,name",act_account_form,Accounts,Konten,0
-model,"ir.action,name",act_account_form2,Accounts,Konten,0
 model,"ir.action,name",act_account_income_statement_tree,Income Statement,Gewinn- und Verlustrechnung,0
 model,"ir.action,name",act_account_template_tree,Account Templates,Kontenplanvorlagen,0
 model,"ir.action,name",act_account_tree,Accounts,Konten,0
 model,"ir.action,name",act_account_tree2,Accounts,Konten,0
 model,"ir.action,name",act_account_type_form,Account Types,Kontentypen,0
-model,"ir.action,name",act_account_type_form2,Account Types,Kontentypen,0
 model,"ir.action,name",act_account_type_template_tree,Account Type Templates,Vorlagen für Kontentypen,0
 model,"ir.action,name",act_account_type_tree,Account Types,Kontentypen,0
 model,"ir.action,name",act_close_fiscalyear,Close Fiscal Year,Geschäftsjahr abschließen,0
@@ -523,12 +521,10 @@ model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Buchungszeilen abstim
 model,"ir.action,name",act_reopen_journal_period,Re-Open Journals - Periods,Journale - Buchungszeiträume wiedereröffnen,0
 model,"ir.action,name",act_reopen_period,Re-Open Periods,Buchungszeiträume wiedereröffnen,0
 model,"ir.action,name",act_tax_code_form,Tax Codes,Steuerkennziffern,0
-model,"ir.action,name",act_tax_code_form2,Tax Codes,Steuerkennziffern,0
 model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Vorlagen für Steuerkennziffern,0
 model,"ir.action,name",act_tax_code_tree,Tax Codes,Steuerkennziffern,0
 model,"ir.action,name",act_tax_code_tree2,Tax Codes,Steuerkennziffern,0
 model,"ir.action,name",act_tax_form,Taxes,Steuern,0
-model,"ir.action,name",act_tax_form2,Taxes,Steuern,0
 model,"ir.action,name",act_tax_group_form,Tax Groups,Steuergruppen,0
 model,"ir.action,name",act_tax_group_form2,Tax Groups,Steuergruppen,0
 model,"ir.action,name",act_tax_line_form,Tax Lines,Steuerpositionen,0
@@ -559,12 +555,10 @@ model,"ir.sequence.type,name",sequence_type_account_move,Account Move,Buchungssa
 model,"ir.sequence.type,name",sequence_type_account_move_reconciliation,Account Move Reconciliation,Buchungssatz Abstimmung,0
 model,"ir.ui.menu,name",menu_account,Financial Management,Buchhaltung,0
 model,"ir.ui.menu,name",menu_account_configuration,Configuration,Einstellungen,0
-model,"ir.ui.menu,name",menu_account_form,Accounts,Konten,0
-model,"ir.ui.menu,name",menu_account_form_new,New Account,Neues Konto,0
+model,"ir.ui.menu,name",menu_account_form,New Account,Neues Konto,0
 model,"ir.ui.menu,name",menu_account_template_tree,Account Templates,Kontenplanvorlagen,0
 model,"ir.ui.menu,name",menu_account_tree,Accounts,Konten,0
-model,"ir.ui.menu,name",menu_account_type_form,Account Types,Kontentypen,0
-model,"ir.ui.menu,name",menu_account_type_form_new,New Account Type,Neuer Kontentyp,0
+model,"ir.ui.menu,name",menu_account_type_form,New Account Type,Neuer Kontentyp,0
 model,"ir.ui.menu,name",menu_account_type_template_tree,Account Type Templates,Vorlagen für Kontentypen,0
 model,"ir.ui.menu,name",menu_account_type_tree,Account Types,Kontentypen,0
 model,"ir.ui.menu,name",menu_aged_balance,Aged Balance,Fälligkeitsliste drucken,0
@@ -602,8 +596,7 @@ model,"ir.ui.menu,name",menu_print_general_ledger,Print General Legder,Kontenbl�
 model,"ir.ui.menu,name",menu_print_trial_balance,Print Trial Balance,Summen- und Saldenliste drucken,0
 model,"ir.ui.menu,name",menu_processing,Processing,Abschlussarbeiten,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Auswertungen,0
-model,"ir.ui.menu,name",menu_tax_code_form,Tax Codes,Steuerkennziffern,0
-model,"ir.ui.menu,name",menu_tax_code_form_new,New Tax Code,Neue Steuerkennziffer,0
+model,"ir.ui.menu,name",menu_tax_code_form,New Tax Code,Neue Steuerkennziffer,0
 model,"ir.ui.menu,name",menu_tax_code_template_tree,Tax Codes Templates,Vorlagen für Steuerkennziffern,0
 model,"ir.ui.menu,name",menu_tax_code_tree,Tax Codes,Steuerkennziffern,0
 model,"ir.ui.menu,name",menu_tax_form,Taxes,Steuern,0
@@ -614,7 +607,6 @@ model,"ir.ui.menu,name",menu_tax_rule_form,Tax Rules,Steuerregeln,0
 model,"ir.ui.menu,name",menu_tax_rule_form_new,New Tax Rule,Neue Steuerregel,0
 model,"ir.ui.menu,name",menu_tax_rule_template_form,Tax Rule Templates,Vorlagen Steuerregeln,0
 model,"ir.ui.menu,name",menu_tax_template_tree,Taxes Templates,Steuervorlagen,0
-model,"ir.ui.menu,name",menu_tax_tree,Taxes,Steuern,0
 model,"ir.ui.menu,name",menu_taxes,Taxes,Steuern,0
 model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Offene Posten drucken,0
 model,"ir.ui.menu,name",menu_update_chart_account,Update Chart of Account from Template,Kontenplan von Vorlage aktualisieren,0
@@ -789,8 +781,14 @@ view,account.journal.view,0,Journal Views,Journal Ansichten,0
 view,account.journal.view,0,View Column,Spaltenansicht,0
 view,account.journal.view,0,View Columns,Spaltenansichten,0
 view,account.move,0,Account Move,Buchungssatz,0
+view,account.move,0,Account Move Line,Buchungszeile,0
+view,account.move,0,Account Move Lines,Buchungszeilen,0
 view,account.move,0,Account Moves,Buchungssätze,0
+view,account.move,0,Credit,Haben,0
+view,account.move,0,Debit,Soll,0
 view,account.move,0,Draft,Entwurf,0
+view,account.move,0,General Information,Allgemein,0
+view,account.move,0,Optional Information,Zusatzinfo,0
 view,account.move,0,Post,Festschreiben,0
 view,account.move.line,0,Account Move Line,Buchungszeile,0
 view,account.move.line,0,Account Move Lines,Buchungszeilen,0
