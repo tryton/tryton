@@ -38,13 +38,11 @@ model,"company.company,name",0,Company,Unternehmen,0
 model,"company.company.config.init,name",0,Company Config Init,Unternehmen Konfiguration Init,0
 model,"company.employee,name",0,Employee,Mitarbeiter,0
 model,"ir.action,name",act_company_form,Companies,Unternehmen,0
-model,"ir.action,name",act_company_form2,Companies,Unternehmen,0
 model,"ir.action,name",act_company_tree,Companies,Unternehmen,0
 model,"ir.action,name",act_employee_form,Employees,Mitarbeiter,0
 model,"ir.action,name",report_letter,Letter,Brief,0
 model,"ir.cron-company.company,name",0,ir.cron-company.company,ir.cron-company.company,0
-model,"ir.ui.menu,name",menu_company_form,Edit Companies,Unternehmen bearbeiten,0
-model,"ir.ui.menu,name",menu_company_form2,New Company,Neues Unternehmen,0
+model,"ir.ui.menu,name",menu_company_form,New Company,Neues Unternehmen,0
 model,"ir.ui.menu,name",menu_company_tree,Companies,Unternehmen,0
 model,"ir.ui.menu,name",menu_employee_form,Employees,Mitarbeiter,0
 odt,party.letter,0,"Best Regards,","Mit freundlichen Grüßen,",0
