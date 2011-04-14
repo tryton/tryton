@@ -1,5 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from __future__ import with_statement
 from decimal import Decimal
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.pyson import Not, Equal, Eval, Or, Bool, Get, If, In
@@ -203,9 +204,10 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
                     invoice_ids.add(line['invoice'])
             invoice_id2amount_to_pay = {}
             for invoice in invoice_obj.browse(invoice_ids):
-                invoice_id2amount_to_pay[invoice.id] = currency_obj.compute(
-                        invoice.currency, invoice.amount_to_pay,
-                        journal.currency)
+                with Transaction().set_context(date=invoice.currency_date):
+                    invoice_id2amount_to_pay[invoice.id] = currency_obj.compute(
+                        invoice.currency.id, invoice.amount_to_pay,
+                        journal.currency.id)
 
             for line in values['lines']:
                 if line['invoice'] and line['id']:
@@ -383,8 +385,9 @@ class Line(ModelSQL, ModelView):
             if value.get('amount') and value.get('_parent_statement.journal'):
                 invoice = invoice_obj.browse(value['invoice'])
                 journal = journal_obj.browse(value['_parent_statement.journal'])
-                amount_to_pay = currency_obj.compute(invoice.currency,
-                        invoice.amount_to_pay, journal.currency)
+                with Transaction().set_context(date=invoice.currency_date):
+                    amount_to_pay = currency_obj.compute(invoice.currency.id,
+                        invoice.amount_to_pay, journal.currency.id)
                 if abs(value['amount']) > amount_to_pay:
                     res['invoice'] = False
             else:
@@ -435,9 +438,10 @@ class Line(ModelSQL, ModelView):
             })
 
         if line.invoice:
-
-            amount_to_pay = currency_obj.compute(line.invoice.currency,
-                    line.invoice.amount_to_pay, line.statement.journal.currency)
+            with Transaction().set_context(date=line.invoice.currency_date):
+                amount_to_pay = currency_obj.compute(line.invoice.currency.id,
+                        line.invoice.amount_to_pay,
+                        line.statement.journal.currency.id)
             if amount_to_pay < abs(line.amount):
                 for code in [Transaction().language, 'en_US']:
                     lang_ids = lang_obj.search([
@@ -453,8 +457,10 @@ class Line(ModelSQL, ModelView):
                 self.raise_user_error('amount_greater_invoice_amount_to_pay',
                         error_args=(amount,))
 
-            amount = currency_obj.compute(line.statement.journal.currency,
-                    line.amount, line.statement.company.currency)
+            with Transaction().set_context(date=line.invoice.currency_date):
+                amount = currency_obj.compute(
+                        line.statement.journal.currency.id, line.amount,
+                        line.statement.company.currency.id)
 
             reconcile_lines = invoice_obj.get_reconcile_lines_for_amount(
                     line.invoice, abs(amount))
