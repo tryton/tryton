@@ -71,7 +71,6 @@ help,"product.uom,rate",0,"The coefficient for the formula:
 Formel: Basiseinheit = Kehrwert * diese Einheit
 Das Feld Faktor wird automatisch aus dem hier eingetragenen Wert ermittelt.",0
 model,"ir.action,name",act_category_form,Product Categories,Artikelkategorien,0
-model,"ir.action,name",act_category_form2,Product Categories,Artikelkategorien,0
 model,"ir.action,name",act_category_tree,Categories,Artikelkategorien,0
 model,"ir.action,name",act_product_by_category,Product by Category,Artikel nach Kategorie,0
 model,"ir.action,name",act_product_form,Products,Artikel,0
@@ -80,7 +79,6 @@ model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Kateg
 model,"ir.action,name",act_uom_category_form2,Categories of Unit of Measure,Kategorien Maßeinheiten,0
 model,"ir.action,name",act_uom_form,Units of Measure,Maßeinheiten,0
 model,"ir.action,name",act_uom_form2,Units of Measure,Maßeinheiten,0
-model,"ir.ui.menu,name",menu_category_form,Categories,Artikelkategorien,0
 model,"ir.ui.menu,name",menu_category_form_new,New Category,Neue Artikelkategorie,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Artikelkategorien,0
 model,"ir.ui.menu,name",menu_main_product,Product,Artikel,0
