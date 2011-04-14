@@ -79,13 +79,11 @@ model,"analytic_account.account.open_chart_account.init,name",0,Open Chart Accou
 model,"analytic_account.account.selection,name",0,Analytic Account Selection,Kostenstelle Auswahl,0
 model,"analytic_account.line,name",0,Analytic Line,Kostenstelle Zeile,0
 model,"ir.action,name",act_account_form,Analytic Accounts,Kostenstellen,0
-model,"ir.action,name",act_account_form2,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_account_tree,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_account_tree2,Analytic Accounts,Kostenstellen,0
 model,"ir.action,name",act_line_form,Analytic Lines,Kostenstelle Zeilen,0
 model,"ir.action,name",act_open_account,Open Account,Konto öffnen,0
 model,"ir.action,name",act_open_chart_account,Open Chart of Analytic Accounts,Kostenstellenplan Öffnen,0
-model,"ir.ui.menu,name",menu_account_form,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_account_form_new,New Analytic Account,Neue Kostenstelle,0
 model,"ir.ui.menu,name",menu_account_tree,Analytic Accounts,Kostenstellen,0
 model,"ir.ui.menu,name",menu_analytic_account_configuration,Analytic Account,Kostenstellen,0
@@ -103,6 +101,7 @@ selection,"analytic_account.account,state",0,Opened,Geöffnet,0
 selection,"analytic_account.account,type",0,Normal,Normal,0
 selection,"analytic_account.account,type",0,Root,Wurzel,0
 selection,"analytic_account.account,type",0,View,Sicht,0
+view,account.move,0,Analytic,Kostenstelle,0
 view,account.move.line,0,Analytic,Kostenstelle,0
 view,account.statement,0,Bank Statement,Bankauszug,0
 view,account.statement,0,Bank Statement Lines,Posten Bankauszüge,0
