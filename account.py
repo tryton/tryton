@@ -152,8 +152,13 @@ class Type(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, translate=True)
     parent = fields.Many2One('account.account.type', 'Parent',
-            ondelete="RESTRICT")
-    childs = fields.One2Many('account.account.type', 'parent', 'Children')
+            ondelete="RESTRICT", domain=[
+                ('company', '=', Eval('company')),
+            ])
+    childs = fields.One2Many('account.account.type', 'parent', 'Children',
+        domain=[
+            ('company', '=', Eval('company')),
+        ], depends=['company'])
     sequence = fields.Integer('Sequence', required=True,
             help='Use to order the account type')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
@@ -530,7 +535,9 @@ class Account(ModelSQL, ModelView):
             states={
                 'invisible': Equal(Eval('kind'), 'view'),
                 'required': Not(Equal(Eval('kind'), 'view')),
-            }, depends=['kind'])
+            }, domain=[
+                ('company', '=', Eval('company')),
+            ], depends=['kind', 'company'])
     parent = fields.Many2One('account.account', 'Parent', select=1,
             left="left", right="right", ondelete="RESTRICT")
     left = fields.Integer('Left', required=True, select=1)
@@ -1221,7 +1228,8 @@ class GeneralLegder(Report):
         if not datas['form']['empty_account']:
             account_id2lines = self.get_lines(account_ids,
                     end_period_ids, datas['form']['posted'])
-            account_ids = account_id2lines.keys()
+            for account_id in (set(account_ids) - set(account_id2lines)):
+                account_ids.remove(account_id)
             account_id2lines = None
 
         account_id2lines = self.lines(account_ids,
@@ -2069,7 +2077,8 @@ class ThirdPartyBalance(Report):
         localcontext['company'] = company
         localcontext['digits'] = company.currency.digits
         localcontext['fiscalyear'] = datas['form']['fiscalyear']
-        line_query, _ = move_line_obj.query_get()
+        with Transaction().set_context(context=localcontext):
+            line_query, _ = move_line_obj.query_get()
         if datas['form']['posted']:
             posted_clause = "AND m.state = 'posted' "
         else:
@@ -2217,7 +2226,8 @@ class AgedBalance(Report):
         localcontext['digits'] = company.currency.digits
         localcontext['fiscalyear'] = datas['form']['fiscalyear']
         localcontext['posted'] = datas['form']['posted']
-        line_query, _ = move_line_obj.query_get()
+        with Transaction().set_context(context=localcontext):
+            line_query, _ = move_line_obj.query_get()
 
         terms = (datas['form']['term1'],
                   datas['form']['term2'],
