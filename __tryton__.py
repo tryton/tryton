@@ -8,7 +8,7 @@
     'name_es_CO': 'Compañía',
     'name_es_ES': 'Empresa',
     'name_fr_FR': 'Société',
-    'name_nl_NL': 'Bedrijf'
+    'name_nl_NL': 'Bedrijf',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
