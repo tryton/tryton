@@ -24,7 +24,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Product Categories" keyword_open="1">
-                    <field name="name"/>
+                    <field name="name" select="1"/>
                     <field name="parent" tree_invisible="1"/>
                     <field name="childs" tree_invisible="1"/>
                 </tree>
