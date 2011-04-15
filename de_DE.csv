@@ -5,14 +5,19 @@ error,stock.inventory.line,0,Product must be unique by inventory!,Ein Artikel ka
 error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,"Ein Lagerort mit zugordneten Bewegungen kann nicht zu einem Typ geändert werden, der keine Bewegungen unterstützt.",0
 error,stock.location,0,"Location ""%s"" must be a child of warehouse ""%s""!","Lagerort ""%s"" muss untergeordnet zu Warenlager ""%s"" sein!",0
 error,stock.location,0,You can not create recursive locations!,Lagerorte können nicht rekursiv angelegt werden!,0
+error,stock.move,0,Internal move quantity must be positive,Interne Anzahl von Bewegungen muss positiv sein!,0
 error,stock.move,0,Move can be on only one Shipment,Eine Bewegung kann nur auf einem Lieferposten erfolgen!,0
 error,stock.move,0,Move quantity must be positive,Zu bewegende Anzahl muss positiv sein,0
 error,stock.move,0,Source and destination location must be different,Herkunfts- und Bestimmungsort müssen unterschiedlich sein,0
+error,stock.move,0,"You can not modify a move in the state: ""Assigned"", ""Done"" or ""Cancel""","Eine Bewegung in Status ""Zugewiesen"", ""Erledigt"" oder ""Annulliert"" kann nicht geändert werden!",0
+error,stock.move,0,You can not modify move in closed period!,Eine Bewegung in einer geschlossenen Periode kann nicht geändert werden!,0
 error,stock.move,0,You can not set state to assigned!,Status kann nicht auf Zugewiesen gesetzt werden!,0
 error,stock.move,0,You can not set state to done!,Status kann nicht auf Erledigt gesetzt werden!,0
 error,stock.move,0,You can not set state to draft!,"Status ""Entwurf"" kann nicht gesetzt werden!",0
 error,stock.move,0,You can not use service products for a move!,Dienstleistungen können nicht in Warenbewegungen verwendet werden!,0
 error,stock.move,0,You can only delete draft or cancelled moves!,"Nur Bewegungen mit Status ""Entwurf"" oder ""Annulliert"" können gelöscht werden!",0
+error,stock.period,0,You can not close a period in the future or today!,Eine Periode kann nicht am heutigen Tag (oder später) geschlossen werden!,0
+error,stock.period,0,You can not close a period when there is still assigned moves!,"Eine Periode, die noch zugewiesene Bewegungen enthält, kann nicht geschlossen werden!",0
 error,stock.shipment.in,0,Incoming Moves must have the warehouse input location as destination location!,Eingehende Bewegungen müssen den Eingangsbereich des Warenlagers als Zielort haben!,0
 error,stock.shipment.in,0,Inventory Moves must have the warehouse input location as source location!,Bestandsänderungen müssen den Eingangsbereich des Warenlagers als Herkunftsort haben!,0
 error,stock.shipment.out,0,Inventory Moves must have the warehouse output location as destination location!,Bestandsänderungen müssen den Ausgangsbereich des Warenlagers als Zielort haben!,0
@@ -70,6 +75,7 @@ field,"stock.move,cost_price",0,Cost Price,Einkaufspreis,0
 field,"stock.move,currency",0,Currency,Währung,0
 field,"stock.move,effective_date",0,Effective Date,Effektives Datum,0
 field,"stock.move,from_location",0,From Location,Von Lagerort,0
+field,"stock.move,internal_quantity",0,Internal Quantity,Anzahl Intern,0
 field,"stock.move,planned_date",0,Planned Date,Geplantes Datum,0
 field,"stock.move,product",0,Product,Artikel,0
 field,"stock.move,quantity",0,Quantity,Anzahl,0
@@ -85,6 +91,16 @@ field,"stock.move,unit_digits",0,Unit Digits,Anzahl Stellen,0
 field,"stock.move,unit_price",0,Unit Price,Einzelpreis,0
 field,"stock.move,unit_price_required",0,Unit Price Required,Einzelpreis erforderlich,0
 field,"stock.move,uom",0,Uom,Einheit,0
+field,"stock.period,caches",0,Caches,Cache-Speicher,0
+field,"stock.period,company",0,Company,Unternehmen,0
+field,"stock.period,date",0,Date,Datum,0
+field,"stock.period,rec_name",0,Name,Name,0
+field,"stock.period,state",0,State,Status,0
+field,"stock.period.cache,internal_quantity",0,Internal Quantity,Anzahl Intern,0
+field,"stock.period.cache,location",0,Location,Lagerort,0
+field,"stock.period.cache,period",0,Period,Periode,0
+field,"stock.period.cache,product",0,Product,Artikel,0
+field,"stock.period.cache,rec_name",0,Name,Name,0
 field,"stock.product_stock_date.init,forecast_date",0,At Date,Zum,0
 field,"stock.shipment.in,code",0,Code,Code,0
 field,"stock.shipment.in,contact_address",0,Contact Address,Kontaktadresse,0
@@ -160,13 +176,14 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 model,"ir.action,name",act_inventory_form,Inventories,Bestandskorrekturen,0
 model,"ir.action,name",act_inventory_form2,Inventories,Bestandskorrekturen,0
 model,"ir.action,name",act_inventory_form_draft,Draft Inventories,Entwürfe Bestandskorrekturen,0
-model,"ir.action,name",act_location_form,Edit Locations,Lagerorte bearbeiten,0
+model,"ir.action,name",act_location_form,Locations,Neuer Lagerort,0
 model,"ir.action,name",act_location_quantity_tree,Product Stock,Lagerbestand,0
 model,"ir.action,name",act_location_tree,Locations,Lagerorte,0
 model,"ir.action,name",act_move_form,Moves,Lagerbewegungen,0
 model,"ir.action,name",act_move_form_cust,Moves to Customers,Bewegungen zu Kunden,0
 model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Bewegungen von Lieferanten,0
 model,"ir.action,name",act_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Erwartete Bewegungen von Lieferanten,0
+model,"ir.action,name",act_period_list,Periods,Lagerperioden,0
 model,"ir.action,name",act_product_by_location,Products by Locations,Artikel nach Lagerort,0
 model,"ir.action,name",act_shipment_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"ir.action,name",act_shipment_in_form2,New Supplier Shipment,Neuer Lieferposten von Lieferant,0
@@ -174,16 +191,16 @@ model,"ir.action,name",act_shipment_in_form_received,Received Supplier shipments
 model,"ir.action,name",act_shipment_in_return_form,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
 model,"ir.action,name",act_shipment_in_return_new_form,New Supplier Return Shipment,Neue Warenrückgabe (an Lieferant),0
 model,"ir.action,name",act_shipment_internal_assigned_form,Assigned Internal Shipments,Zugewiesene Interne Lieferposten,0
-model,"ir.action,name",act_shipment_internal_draft_form,Draft Internal Shipments,Entwürfe (Interne Lieferposten),0
+model,"ir.action,name",act_shipment_internal_draft_form,Draft Internal Shipments,Entwürfe Interne Lieferposten,0
 model,"ir.action,name",act_shipment_internal_form,Internal Shipments,Interne Lieferposten,0
 model,"ir.action,name",act_shipment_internal_new_form,New Internal Shipment,Neuer Interner Lieferposten,0
-model,"ir.action,name",act_shipment_internal_waiting_form,Internal Shipments Waiting Assignation,Zuzuweisende Interne Lieferposten,0
+model,"ir.action,name",act_shipment_internal_waiting_form,Internal Shipments Waiting Assignation,Wartende Interne Lieferposten,0
 model,"ir.action,name",act_shipment_out_form,Customer Shipments,Lieferposten an Kunden,0
 model,"ir.action,name",act_shipment_out_form2,Customer Shipments,Lieferposten als Kunde,0
 model,"ir.action,name",act_shipment_out_form3,Supplier Shipments,Lieferposten als Lieferant,0
 model,"ir.action,name",act_shipment_out_form_assigned,Assigned Customer Shipments,Zugewiesene Lieferposten an Kunden,0
 model,"ir.action,name",act_shipment_out_form_ready,Customer Shipments Ready for Shipping,Versandbereite Lieferposten an Kunden,0
-model,"ir.action,name",act_shipment_out_form_waiting,Customer Shipments Waiting Assignation,Zuzuweisende Lieferposten an Kunden,0
+model,"ir.action,name",act_shipment_out_form_waiting,Customer Shipments Waiting Assignation,Wartende Lieferposten an Kunden,0
 model,"ir.action,name",act_shipment_out_return_form,Customer Return Shipments,Warenrücknahmen (von Kunden),0
 model,"ir.action,name",act_shipment_out_return_form2,New Customer Return Shipment,Neue Warenrücknahme (von Kunde),0
 model,"ir.action,name",act_stock_configuration_form,Stock Configuration,Einstellungen Lager,0
@@ -213,12 +230,13 @@ model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_inventory_form,Inventories,Bestandskorrektur,0
 model,"ir.ui.menu,name",menu_inventory_form_draft,Draft Inventories,Entwürfe Bestandskorrekturen,0
 model,"ir.ui.menu,name",menu_inventory_form_new,New Inventory,Neue Bestandskorrektur,0
-model,"ir.ui.menu,name",menu_location_form,Edit Locations,Lagerorte bearbeiten,0
+model,"ir.ui.menu,name",menu_location_form,Locations,Neuer Lagerort,0
 model,"ir.ui.menu,name",menu_location_tree,Locations,Lagerorte,0
 model,"ir.ui.menu,name",menu_move_form,Moves,Bewegungen,0
 model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Bewegungen zu Kunden,0
 model,"ir.ui.menu,name",menu_move_form_supp,Moves from Suppliers,Bewegungen von Lieferanten,0
 model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Erwartete Bewegungen von Lieferanten,0
+model,"ir.ui.menu,name",menu_period_list,Periods,Lagerperioden,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
 model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"ir.ui.menu,name",menu_shipment_in_form2,New Supplier Shipment,Neuer Lieferposten von Lieferant,0
@@ -226,16 +244,16 @@ model,"ir.ui.menu,name",menu_shipment_in_received,Received Supplier shipments,Er
 model,"ir.ui.menu,name",menu_shipment_in_return_form,Supplier Return Shipments,Warenrückgaben (an Lieferanten),0
 model,"ir.ui.menu,name",menu_shipment_in_return_new_form,New Supplier Return Shipment,Neue Warenrückgabe (an Lieferant),0
 model,"ir.ui.menu,name",menu_shipment_internal_assigned_form,Assigned Internal Shipments,Zugewiesene Interne Lieferposten,0
-model,"ir.ui.menu,name",menu_shipment_internal_draft_form,Draft Internal Shipments,Entwürfe (Interne Lieferposten),0
+model,"ir.ui.menu,name",menu_shipment_internal_draft_form,Draft Internal Shipments,Entwürfe Interne Lieferposten,0
 model,"ir.ui.menu,name",menu_shipment_internal_form,Internal Shipments,Interne Lieferposten,0
 model,"ir.ui.menu,name",menu_shipment_internal_new_form,New Internal Shipment,Neuer Interner Lieferposten,0
-model,"ir.ui.menu,name",menu_shipment_internal_waiting_form,Internal Shipments Waiting Assignation,Zuzuweisende Interne Lieferposten,0
+model,"ir.ui.menu,name",menu_shipment_internal_waiting_form,Internal Shipments Waiting Assignation,Wartende Interne Lieferposten,0
 model,"ir.ui.menu,name",menu_shipment_out_assigned,Assigned Customer Shipments,Zugewiesene Lieferposten an Kunden,0
 model,"ir.ui.menu,name",menu_shipment_out_form,Customer Shipments,Lieferposten an Kunden,0
 model,"ir.ui.menu,name",menu_shipment_out_ready,Customer Shipments Ready for Shipping,Versandbereite Lieferposten an Kunden,0
 model,"ir.ui.menu,name",menu_shipment_out_return_form,Customer Return Shipments,Warenrücknahmen (von Kunden),0
 model,"ir.ui.menu,name",menu_shipment_out_return_form2,New Customer Return Shipment,Neue Warenrücknahme (von Kunde),0
-model,"ir.ui.menu,name",menu_shipment_out_waiting,Customer Shipments Waiting Assignation,Zuzuweisende Lieferposten an Kunden,0
+model,"ir.ui.menu,name",menu_shipment_out_waiting,Customer Shipments Waiting Assignation,Wartende Lieferposten an Kunden,0
 model,"ir.ui.menu,name",menu_stock,Inventory Management,Lager,0
 model,"ir.ui.menu,name",menu_stock_configuration,Stock Configuration,Einstellungen Lager,0
 model,"res.group,name",group_stock,Stock,Lager,0
@@ -254,6 +272,15 @@ model,"stock.location,name",location_supplier,Supplier,Lieferant,0
 model,"stock.location,name",location_warehouse,Warehouse,Warenlager,0
 model,"stock.location_stock_date.init,name",0,Compute stock quantities,Berechnung Lagerbestände,0
 model,"stock.move,name",0,Stock Move,Lager Bewegung,0
+model,"stock.period,name",0,Stock Period,Lager Periode,0
+model,"stock.period.cache,name",0,"
+    Stock Period Cache
+
+    It is used to store cached computation of stock quantities.
+    ","
+   Perioden Cache-Speicher
+
+   Dient der Pufferspeicherung von berechneten Lagerbeständen.",0
 model,"stock.product_stock_date.init,name",0,Compute stock quantities,Berechnung Lagerbestände,0
 model,"stock.shipment.in,name",0,Supplier Shipment,Lieferant Lieferposten,0
 model,"stock.shipment.in.return,name",0,Supplier Return Shipment,Warenrückgabe Lieferant,0
@@ -377,6 +404,8 @@ selection,"stock.move,state",0,Assigned,Zugewiesen,0
 selection,"stock.move,state",0,Canceled,Annulliert,0
 selection,"stock.move,state",0,Done,Erledigt,0
 selection,"stock.move,state",0,Draft,Entwurf,0
+selection,"stock.period,state",0,Closed,Geschlossen,0
+selection,"stock.period,state",0,Draft,Entwurf,0
 selection,"stock.shipment.in,state",0,Canceled,Annulliert,0
 selection,"stock.shipment.in,state",0,Done,Erledigt,0
 selection,"stock.shipment.in,state",0,Draft,Entwurf,0
@@ -424,6 +453,12 @@ view,stock.move,0,Move,Bewegung,0
 view,stock.move,0,Moves,Bewegungen,0
 view,stock.move,0,Set Done,Auf Erledigt setzen,0
 view,stock.move,0,Set Draft,Auf Entwurf setzen,0
+view,stock.period,0,Close,Schließen,0
+view,stock.period,0,Draft,Entwurf,0
+view,stock.period,0,Period,Periode,0
+view,stock.period,0,Periods,Lagerperioden,0
+view,stock.period.cache,0,Period Cache,Perioden Cache-Speicher,0
+view,stock.period.cache,0,Period Caches,Perioden Cache-Speicher,0
 view,stock.product_stock_date.init,0,Product Quantity.,Artikel Mengen,0
 view,stock.shipment.in,0,Cancel,Annullieren,0
 view,stock.shipment.in,0,Done,Erledigt,0
