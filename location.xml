@@ -91,12 +91,12 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.act_window.view" id="act_location_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="location_view_form"/>
+            <field name="view" ref="location_view_list"/>
             <field name="act_window" ref="act_location_form"/>
         </record>
         <record model="ir.action.act_window.view" id="act_location_form_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="location_view_list"/>
+            <field name="view" ref="location_view_form"/>
             <field name="act_window" ref="act_location_form"/>
         </record>
         <menuitem parent="menu_configuration" sequence="10"
