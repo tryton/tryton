@@ -16,6 +16,13 @@ class Category(ModelSQL, ModelView):
     def __init__(self):
         super(Category, self).__init__()
         self._order.insert(0, ('name', 'ASC'))
+        
+        self._constraints += [
+            ('check_recursion', 'recursive_categories'),
+        ]
+        self._error_messages.update({
+            'recursive_categories': 'You can not create recursive categories!',
+        })
 
     def get_rec_name(self, ids, name):
         if not ids:
