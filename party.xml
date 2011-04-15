@@ -48,8 +48,11 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name" xexpand="1"/>
                     <label name="code"/>
                     <field name="code"/>
-                    <label name="active"/>
-                    <field name="active" xexpand="0" width="100"/>
+                    <group col="20" colspan="2" id="checkboxes">
+                        <label name="active"/>
+                        <field name="active" xexpand="0" width="25"/>
+                        <!-- Add here some checkboxes ! -->
+                    </group>
                     <notebook colspan="6">
                         <page string="General" id="general">
                             <field name="addresses" mode="form,tree" colspan="4">
