@@ -72,6 +72,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="company_view_list">
             <field name="model">company.company</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Companies">
@@ -99,6 +100,25 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="party.menu_configuration" action="act_company_tree"
             id="menu_company_tree"/>
+
+        <record model="ir.action.act_window" id="act_company_list">
+            <field name="name">Companies</field>
+            <field name="res_model">company.company</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="company_view_list"/>
+            <field name="act_window" ref="act_company_list"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_company_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="company_view_form"/>
+            <field name="act_window" ref="act_company_list"/>
+        </record>
+        <menuitem parent="menu_company_tree" action="act_company_list"
+            id="menu_company_list"/>
 
         <record model="ir.action.act_window" id="act_company_form">
             <field name="name">Companies</field>
