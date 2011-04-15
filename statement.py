@@ -1,9 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from __future__ import with_statement
 from decimal import Decimal
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
-from trytond.pyson import Not, Equal, Eval, Or, Bool, Get, If
+from trytond.pyson import Not, Equal, Eval, Or, Bool, Get, If, In
 from trytond.transaction import Transaction
+from trytond.backend import TableHandler
 
 _STATES = {'readonly': Not(Equal(Eval('state'), 'draft'))}
 
@@ -13,11 +15,19 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
     _name = 'account.statement'
     _description = __doc__
 
+    company = fields.Many2One('company.company', 'Company', required=True,
+        select=1, states=_STATES, domain=[
+            ('id', If(In('company', Eval('context', {})), '=', '!='),
+                Get(Eval('context', {}), 'company', 0)),
+        ])
     journal = fields.Many2One('account.statement.journal', 'Journal', required=True,
-            states={
-                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                    Bool(Eval('lines'))),
-            }, on_change=['journal'], select=1)
+        domain=[
+            ('company', '=', Eval('company')),
+        ],
+        states={
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Bool(Eval('lines'))),
+        }, on_change=['journal'], select=1)
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['journal']), 'get_currency_digits')
     date = fields.Date('Date', required=True, states=_STATES, select=1)
@@ -50,6 +60,33 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         self._error_messages.update({
             'wrong_end_balance': 'End Balance must be %s!',
             })
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+
+        # Migration from 1.8: new field company
+        table = TableHandler(cursor, self, module_name)
+        company_exist = table.column_exist('company')
+
+        super(Statement, self).init(module_name)
+
+        # Migration from 1.8: fill new field company
+        if not company_exist:
+            offset = 0
+            limit = cursor.IN_MAX
+            statement_ids = True
+            while statement_ids:
+                statement_ids = self.search([], offset=offset, limit=limit)
+                offset += limit
+                for statement in self.browse(statement_ids):
+                    self.write(statement.id, {
+                        'company': statement.journal.company.id,
+                    })
+            table = TableHandler(cursor, self, module_name)
+            table.not_null_action('company', action='add')
+
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
     def default_state(self):
         return 'draft'
@@ -167,9 +204,10 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
                     invoice_ids.add(line['invoice'])
             invoice_id2amount_to_pay = {}
             for invoice in invoice_obj.browse(invoice_ids):
-                invoice_id2amount_to_pay[invoice.id] = currency_obj.compute(
-                        invoice.currency, invoice.amount_to_pay,
-                        journal.currency)
+                with Transaction().set_context(date=invoice.currency_date):
+                    invoice_id2amount_to_pay[invoice.id] = currency_obj.compute(
+                        invoice.currency.id, invoice.amount_to_pay,
+                        journal.currency.id)
 
             for line in values['lines']:
                 if line['invoice'] and line['id']:
@@ -271,7 +309,10 @@ class Line(ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party',
             on_change=['amount', 'party', 'invoice'])
     account = fields.Many2One('account.account', 'Account', required=True,
-            on_change=['account', 'invoice'], domain=[('kind', '!=', 'view')])
+            on_change=['account', 'invoice'], domain=[
+                ('kind', '!=', 'view'),
+                ('company', '=', Get(Eval('_parent_statement', {}), 'company')),
+            ])
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
@@ -344,8 +385,9 @@ class Line(ModelSQL, ModelView):
             if value.get('amount') and value.get('_parent_statement.journal'):
                 invoice = invoice_obj.browse(value['invoice'])
                 journal = journal_obj.browse(value['_parent_statement.journal'])
-                amount_to_pay = currency_obj.compute(invoice.currency,
-                        invoice.amount_to_pay, journal.currency)
+                with Transaction().set_context(date=invoice.currency_date):
+                    amount_to_pay = currency_obj.compute(invoice.currency.id,
+                        invoice.amount_to_pay, journal.currency.id)
                 if abs(value['amount']) > amount_to_pay:
                     res['invoice'] = False
             else:
@@ -379,7 +421,7 @@ class Line(ModelSQL, ModelView):
         move_line_obj = self.pool.get('account.move.line')
         lang_obj = self.pool.get('ir.lang')
 
-        period_id = period_obj.find(line.statement.journal.company.id,
+        period_id = period_obj.find(line.statement.company.id,
                 date=line.date)
 
         move_lines = self._get_move_lines(line)
@@ -396,9 +438,10 @@ class Line(ModelSQL, ModelView):
             })
 
         if line.invoice:
-
-            amount_to_pay = currency_obj.compute(line.invoice.currency,
-                    line.invoice.amount_to_pay, line.statement.journal.currency)
+            with Transaction().set_context(date=line.invoice.currency_date):
+                amount_to_pay = currency_obj.compute(line.invoice.currency.id,
+                        line.invoice.amount_to_pay,
+                        line.statement.journal.currency.id)
             if amount_to_pay < abs(line.amount):
                 for code in [Transaction().language, 'en_US']:
                     lang_ids = lang_obj.search([
@@ -414,8 +457,10 @@ class Line(ModelSQL, ModelView):
                 self.raise_user_error('amount_greater_invoice_amount_to_pay',
                         error_args=(amount,))
 
-            amount = currency_obj.compute(line.statement.journal.currency,
-                    line.amount, line.statement.journal.company.currency)
+            with Transaction().set_context(date=line.invoice.currency_date):
+                amount = currency_obj.compute(
+                        line.statement.journal.currency.id, line.amount,
+                        line.statement.company.currency.id)
 
             reconcile_lines = invoice_obj.get_reconcile_lines_for_amount(
                     line.invoice, abs(amount))
@@ -453,9 +498,9 @@ class Line(ModelSQL, ModelView):
         zero = Decimal("0.0")
         amount = currency_obj.compute(
             statement_line.statement.journal.currency, statement_line.amount,
-            statement_line.statement.journal.company.currency)
+            statement_line.statement.company.currency)
         if statement_line.statement.journal.currency.id != \
-                statement_line.statement.journal.company.currency.id:
+                statement_line.statement.company.currency.id:
             second_currency = statement_line.statement.journal.currency.id
             amount_second_currency = abs(statement_line.amount)
         else:
