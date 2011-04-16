@@ -1269,6 +1269,8 @@ class Main(object):
 
     def sig_plugin_execute(self, widget):
         page = self.notebook.get_current_page()
+        if page == -1:
+            return
         datas = {
                 'model': self.pages[page].model,
                 'ids': self.pages[page].ids_get(),
