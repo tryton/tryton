@@ -7,6 +7,7 @@
     'name_es_CO': 'Ventas',
     'name_es_ES': 'Venta',
     'name_fr_FR': 'Vente',
+    'name_nl_NL': 'Verkoop',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -100,6 +101,21 @@ Avec la possibilité:
         - Sur confirmation de la commande
         - Au paiement de la facture
 ''',
+	'description_nl_NL': '''Verkoopmodule.
+Voegt verkoopinformatie toe aan producten.
+Zet de catalogusprijs als verkoopprijs.
+
+Biedt mogelijkheden tot:
+    - het volgen van de factuur en de aflevering vanuit de offerte.
+    - het instellen van de factuurafhandeling:
+        - Handmatig
+        - Bij opdrachtbevestiging
+        - Bij aflevering
+    - het instellen van de aflevering:
+        - Handmatig
+        - Bij opdrachtbevestiging
+        - Na betaling
+''',
     'depends': [
         'company',
         'party',
@@ -124,5 +140,6 @@ Avec la possibilité:
         'es_CO.csv',
         'es_ES.csv',
         'fr_FR.csv',
+        'nl_NL.csv',
     ],
 }
