@@ -28,7 +28,6 @@ field,"currency.currency.rate,currency",0,Currency,Валута,0
 field,"currency.currency.rate,date",0,Date,Дата,0
 field,"currency.currency.rate,rate",0,Rate,Отношение,0
 field,"currency.currency.rate,rec_name",0,Name,Име,0
-model,"currency.currency,name",,Slovak Koruna,Словашка крона,0
 model,"currency.currency,name",0,Currency,Валута,0
 model,"currency.currency,name",aed,UAE Dirham,Арабска дхама,0
 model,"currency.currency,name",afn,Afghani,Афган,0
