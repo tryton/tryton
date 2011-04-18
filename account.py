@@ -5,6 +5,7 @@ from decimal import Decimal
 import datetime
 import time
 import os
+import operator
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
@@ -1423,7 +1424,9 @@ class TrialBalance(Report):
         periods = period_obj.browse(end_period_ids)
 
         localcontext['accounts'] = accounts
+        periods.sort(key=operator.attrgetter('start_date'))
         localcontext['start_period'] = periods[0]
+        periods.sort(key=operator.attrgetter('end_date'))
         localcontext['end_period'] = periods[-1]
         localcontext['company'] = company
         localcontext['digits'] = company.currency.digits
