@@ -61,7 +61,7 @@ model,"ir.ui.menu,name",menu_open_hours_employee_monthly,Hours per Employee per 
 model,"ir.ui.menu,name",menu_open_hours_employee_weekly,Hours per Employee per Week,Часове на служител за седмица,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Справки,0
 model,"ir.ui.menu,name",menu_timesheet,Timesheet Management,Управление на графици,0
-model,"ir.ui.menu,name",menu_work_form,Works,Задачи,0
+model,"ir.ui.menu,name",menu_work_form,New Work,Нова задача,0
 model,"ir.ui.menu,name",menu_work_form2,Hours per Work,Часове за работа,0
 model,"ir.ui.menu,name",menu_work_tree,Works,Задачи,0
 model,"ir.ui.menu,name",menu_work_tree2,Hours per Work,Часове за работа,0
