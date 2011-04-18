@@ -41,8 +41,8 @@ coef (base unit) = 1 (this unit)","Коефициент в тази формул
 help,"product.uom,rate",0,"The coefficient for the formula:
 1 (base unit) = coef (this unit)","Коефициент в тази формула:
 1 (баз. единица) = коеф. (тази единица)",0
+model,"ir.action,name",,Product Categories,Категории продукти,0
 model,"ir.action,name",act_category_form,Product Categories,Категории продукти,0
-model,"ir.action,name",act_category_form2,Product Categories,Категории продукти,0
 model,"ir.action,name",act_category_tree,Categories,Категории,0
 model,"ir.action,name",act_product_by_category,Product by Category,Продукт по категория,0
 model,"ir.action,name",act_product_form,Products,Продукти,0
@@ -51,7 +51,7 @@ model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Ка�
 model,"ir.action,name",act_uom_category_form2,Categories of Unit of Measure,Категории мер. ед.,0
 model,"ir.action,name",act_uom_form,Units of Measure,Мерни едниници,0
 model,"ir.action,name",act_uom_form2,Units of Measure,Мерни едниници,0
-model,"ir.ui.menu,name",menu_category_form,Categories,Категории,0
+model,"ir.ui.menu,name",,Categories,Категории,0
 model,"ir.ui.menu,name",menu_category_form_new,New Category,Нова категория,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Категории,0
 model,"ir.ui.menu,name",menu_main_product,Product,Продукт,0
