@@ -622,11 +622,11 @@ class ModelSQL(ModelStorage):
                 for record in res:
                     record[field] = res2[field][record['id']]
 
-        to_del = []
+        to_del = set()
         fields_related2values = {}
         for field in fields_related.keys() + datetime_fields:
             if field not in fields_names:
-                to_del.append(field)
+                to_del.add(field)
             if field not in self._columns:
                 continue
             if field not in fields_related.keys():
