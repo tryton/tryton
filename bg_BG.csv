@@ -55,6 +55,7 @@ field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Сума за 
 field,"account.invoice,comment",0,Comment,Коментар,0
 field,"account.invoice,company",0,Company,Фирма,0
 field,"account.invoice,currency",0,Currency,Валута,0
+field,"account.invoice,currency_date",0,Currency Date,Текуща дата,0
 field,"account.invoice,currency_digits",0,Currency Digits,Цифри за валута,0
 field,"account.invoice,description",0,Description,Описание,0
 field,"account.invoice,invoice_address",0,Invoice Address,Адрес за фактура,0
