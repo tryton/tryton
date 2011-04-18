@@ -5,14 +5,19 @@ error,stock.inventory.line,0,Product must be unique by inventory!,Продукт
 error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,Местонахождение със същетсвуващи движения не може да бъде променено с такова което не поддържа движения,0
 error,stock.location,0,"Location ""%s"" must be a child of warehouse ""%s""!","Местонахождение ""%s"" трябва да е подчинен на склад ""%s"" !",0
 error,stock.location,0,You can not create recursive locations!,Не може да създавате взаимновложени местонахождения!,0
+error,stock.move,0,Internal move quantity must be positive,Количествата на движение трябва да са положително число,0
 error,stock.move,0,Move can be on only one Shipment,Движението трябва да само върху едно изпращане,0
 error,stock.move,0,Move quantity must be positive,Количеството на движение трябва да е положително число,0
 error,stock.move,0,Source and destination location must be different,Източника и целта на местонахождението трябва да са различни,0
+error,stock.move,0,"You can not modify a move in the state: ""Assigned"", ""Done"" or ""Cancel""","Не може да променяте движение в състояние: ""Назначен"", ""Приключен"" или ""Отказ""",0
+error,stock.move,0,You can not modify move in closed period!,Не може да променяте затворен период!,0
 error,stock.move,0,You can not set state to assigned!,Не може да промените състоянието в назначен!,0
 error,stock.move,0,You can not set state to done!,Не може да прехвърлите в състояние Готов!,0
 error,stock.move,0,You can not set state to draft!,Не може да пратите статуса в проект!,0
 error,stock.move,0,You can not use service products for a move!,В движение не може да използвате продукти които са услуги! ,0
 error,stock.move,0,You can only delete draft or cancelled moves!,Не може да изтривате движения в статус проект или отказан!,0
+error,stock.period,0,You can not close a period in the future or today!,Не може да затваряте период от днес или в бедещето!,0
+error,stock.period,0,You can not close a period when there is still assigned moves!,Не може да затваряте период когато съдържа назначени движения!,0
 error,stock.shipment.in,0,Incoming Moves must have the warehouse input location as destination location!,Входящите движения трябва да имат местонахождение-вход на склад като местонахождение-цел!,0
 error,stock.shipment.in,0,Inventory Moves must have the warehouse input location as source location!,Движение на инвентаризация трябва да имат местонахождение-вход на склад като местонахождение-източник!,0
 error,stock.shipment.out,0,Inventory Moves must have the warehouse output location as destination location!,Движение на инвентаризация трябва да имат местонахождение-изход на склад като местонахождение-цел!,0
@@ -70,6 +75,7 @@ field,"stock.move,cost_price",0,Cost Price,Фабрична цена,0
 field,"stock.move,currency",0,Currency,Валута,0
 field,"stock.move,effective_date",0,Effective Date,Ефективна дата,0
 field,"stock.move,from_location",0,From Location,От местонахождение,0
+field,"stock.move,internal_quantity",0,Internal Quantity,Вътрешно количество,0
 field,"stock.move,planned_date",0,Planned Date,Планирана дата,0
 field,"stock.move,product",0,Product,Продукт,0
 field,"stock.move,quantity",0,Quantity,Количество,0
@@ -85,6 +91,16 @@ field,"stock.move,unit_digits",0,Unit Digits,Десетични единици,0
 field,"stock.move,unit_price",0,Unit Price,Единична цена,0
 field,"stock.move,unit_price_required",0,Unit Price Required,Единичната цена е задължителна,0
 field,"stock.move,uom",0,Uom,Мер. ед.,0
+field,"stock.period,caches",0,Caches,Пари в наличност,0
+field,"stock.period,company",0,Company,Фирма,0
+field,"stock.period,date",0,Date,Дата,0
+field,"stock.period,rec_name",0,Name,Име на прикачен файл,0
+field,"stock.period,state",0,State,Щат,0
+field,"stock.period.cache,internal_quantity",0,Internal Quantity,Вътрешно количество,0
+field,"stock.period.cache,location",0,Location,Местоположение,0
+field,"stock.period.cache,period",0,Period,Период,0
+field,"stock.period.cache,product",0,Product,Продукт,0
+field,"stock.period.cache,rec_name",0,Name,Име на прикачен файл,0
 field,"stock.product_stock_date.init,forecast_date",0,At Date,На дата,0
 field,"stock.shipment.in,code",0,Code,Код,0
 field,"stock.shipment.in,contact_address",0,Contact Address,Адрес за контакт,0
@@ -158,7 +174,7 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 model,"ir.action,name",act_inventory_form,Inventories,Инвентаризации,0
 model,"ir.action,name",act_inventory_form2,Inventories,Инвентаризации,0
 model,"ir.action,name",act_inventory_form_draft,Draft Inventories,Проект на инвентаризация,0
-model,"ir.action,name",act_location_form,Edit Locations,Редактиране на местоположения,0
+model,"ir.action,name",act_location_form,Locations,Местонахождения,0
 model,"ir.action,name",act_location_quantity_tree,Product Stock,Наличност на продукт,0
 model,"ir.action,name",act_location_tree,Locations,Местонахождения,0
 model,"ir.action,name",act_move_form,Moves,Движения,0
@@ -211,7 +227,7 @@ model,"ir.ui.menu,name",menu_configuration,Configuration,Конфигураци�
 model,"ir.ui.menu,name",menu_inventory_form,Inventories,Инвентаризации,0
 model,"ir.ui.menu,name",menu_inventory_form_draft,Draft Inventories,Проект на инвентаризация,0
 model,"ir.ui.menu,name",menu_inventory_form_new,New Inventory,Нова нвентаризация,0
-model,"ir.ui.menu,name",menu_location_form,Edit Locations,Редактиране на местоположения,0
+model,"ir.ui.menu,name",menu_location_form,Locations,Местонахождения,0
 model,"ir.ui.menu,name",menu_location_tree,Locations,Местонахождения,0
 model,"ir.ui.menu,name",menu_move_form,Moves,Движения,0
 model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Движения към клиенти,0
@@ -252,6 +268,15 @@ model,"stock.location,name",location_supplier,Supplier,Доставчик,0
 model,"stock.location,name",location_warehouse,Warehouse,Склад,0
 model,"stock.location_stock_date.init,name",0,Compute stock quantities,Изчисляване на количества на наличност,0
 model,"stock.move,name",0,Stock Move,Движение на наличност,0
+model,"stock.period,name",0,Stock Period,Период на наличност,0
+model,"stock.period.cache,name",0,"
+    Stock Period Cache
+
+    It is used to store cached computation of stock quantities.
+    ","
+    Период на наличност в пари в брой
+
+    Използва се за запис на изчислените пари в брой на наличните количества.",0
 model,"stock.product_stock_date.init,name",0,Compute stock quantities,Изчисляване на количества на наличност,0
 model,"stock.shipment.in,name",0,Supplier Shipment,Пратка на доставчик,0
 model,"stock.shipment.in.return,name",0,Supplier Return Shipment,Пратка върната от доставчик',0
@@ -370,6 +395,8 @@ selection,"stock.move,state",0,Assigned,Назначен,0
 selection,"stock.move,state",0,Canceled,Отказан,0
 selection,"stock.move,state",0,Done,Приключен,0
 selection,"stock.move,state",0,Draft,Проект,0
+selection,"stock.period,state",0,Closed,Приключен,0
+selection,"stock.period,state",0,Draft,Проект,0
 selection,"stock.shipment.in,state",0,Canceled,Отказан,0
 selection,"stock.shipment.in,state",0,Done,Приключен,0
 selection,"stock.shipment.in,state",0,Draft,Проект,0
