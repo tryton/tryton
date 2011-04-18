@@ -1112,11 +1112,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         Generate invoice report and store it in invoice_report field.
         '''
         invoice_report = self.pool.get('account.invoice', type='report')
-        val = invoice_report.execute([invoice_id], {'id': invoice_id})
-        self.write(invoice_id, {
-            'invoice_report_format': val[0],
-            'invoice_report': val[1],
-            })
+        invoice_report.execute([invoice_id], {'id': invoice_id})
         return
 
     def _credit(self, invoice):
@@ -2038,6 +2034,10 @@ PrintInvoiceReport()
 class InvoiceReport(Report):
     _name = 'account.invoice'
 
+    def __init__(self):
+        super(InvoiceReport, self).__init__()
+        self._rpc['execute'] = True
+
     def execute(self, ids, datas):
         invoice_obj = self.pool.get('account.invoice')
 
@@ -2073,12 +2073,10 @@ class InvoiceReport(Report):
         #If the invoice is open or paid and the report not saved in invoice_report
         #there was an error somewhere. So we save it now in invoice_report
         if invoice.state in ('open', 'paid'):
-            with Transaction().new_cursor() as transaction:
-                invoice_obj.write(invoice.id, {
-                    'invoice_report_format': res[0],
-                    'invoice_report': base64.encodestring(res[1]),
-                    })
-                transaction.cursor.commit()
+            invoice_obj.write(invoice.id, {
+                'invoice_report_format': res[0],
+                'invoice_report': base64.encodestring(res[1]),
+                })
         return res
 
 InvoiceReport()
