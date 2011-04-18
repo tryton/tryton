@@ -3,6 +3,7 @@ error,account.statement,0,End Balance must be %s!,Крайния баланс т
 error,account.statement.line,0,Amount (%s) greater than the amount to pay of invoice!,Сумата (%s) е по-голяма от сумата за плащане по фактурата!,0
 error,account.statement.line,0,Credit or debit account on journal is the same than the statement line account!,Кредитната/дебитната сметка на дневника е същата сметката като на ред от отчета!,0
 error,account.statement.line,0,Please provide debit and credit account on statement journal.,Моля укажете дебитна и кредитна сметка за дневника за отчети.,0
+field,"account.statement,company",0,Company,Фирма,0
 field,"account.statement,currency_digits",0,Currency Digits,Цифри за валута,0
 field,"account.statement,date",0,Date,Дата,0
 field,"account.statement,end_balance",0,End Balance,Краен баланс,0
@@ -56,6 +57,7 @@ selection,"account.statement,state",0,Posted,Публикуван,0
 selection,"account.statement,state",0,Validated,Проверен,0
 view,account.statement,0,Cancel,Отказ,0
 view,account.statement,0,Move Lines,Редове от движение,0
+view,account.statement,0,Other Info,Друга информация,0
 view,account.statement,0,Post,Публикуван,0
 view,account.statement,0,Reset to Draft,Изпращане в проект,0
 view,account.statement,0,Statement,Отчет,0
