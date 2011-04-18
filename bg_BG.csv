@@ -27,14 +27,14 @@ help,"ir.cron,companies",0,Companies registered for this cron,Фирми рег�
 model,"company.company,name",0,Company,Фирма,0
 model,"company.company.config.init,name",0,Company Config Init,Начално инициализиране на фирма,0
 model,"company.employee,name",0,Employee,Служител,0
+model,"ir.action,name",,Companies,Фирми,0
 model,"ir.action,name",act_company_form,Companies,Фирми,0
-model,"ir.action,name",act_company_form2,Companies,Фирми,0
 model,"ir.action,name",act_company_tree,Companies,Фирми,0
 model,"ir.action,name",act_employee_form,Employees,Служители,0
 model,"ir.action,name",report_letter,Letter,Писмо,0
 model,"ir.cron-company.company,name",0,ir.cron-company.company,,0
-model,"ir.ui.menu,name",menu_company_form,Edit Companies,Редактиране на фирми,0
-model,"ir.ui.menu,name",menu_company_form2,New Company,Нова фирма,0
+model,"ir.ui.menu,name",,New Company,Нова фирма,0
+model,"ir.ui.menu,name",menu_company_form,New Company,Нова фирма,0
 model,"ir.ui.menu,name",menu_company_tree,Companies,Фирми,0
 model,"ir.ui.menu,name",menu_employee_form,Employees,Служители,0
 odt,party.letter,0,"Best Regards,","С уважение,",0
