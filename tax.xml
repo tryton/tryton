@@ -221,6 +221,24 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_taxes" action="act_tax_code_tree"
             id="menu_tax_code_tree"/>
 
+        <record model="ir.action.act_window" id="act_tax_code_list">
+            <field name="name">Tax Codes</field>
+            <field name="res_model">account.tax.code</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_code_view_list"/>
+            <field name="act_window" ref="act_tax_code_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_code_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_code_view_form"/>
+            <field name="act_window" ref="act_tax_code_list"/>
+        </record>
+        <menuitem parent="menu_tax_code_tree"
+            action="act_tax_code_list" id="menu_tax_code_list"
+            sequence="10"/>
+
         <record model="ir.action.act_window" id="act_tax_code_form">
             <field name="name">Tax Codes</field>
             <field name="res_model">account.tax.code</field>
@@ -237,7 +255,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem name="New Tax Code" parent="menu_tax_code_tree"
             action="act_tax_code_form" id="menu_tax_code_form"
-            sequence="10"/>
+            sequence="20"/>
 
         <record model="ir.ui.view" id="tax_code_view_tree2">
             <field name="model">account.tax.code</field>
@@ -527,7 +545,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_tax_tree"/>
         </record>
         <menuitem parent="menu_taxes" action="act_tax_tree"
-            id="menu_tax_form"/>
+            id="menu_tax_tree"/>
+
+        <record model="ir.action.act_window" id="act_tax_list">
+            <field name="name">Taxes</field>
+            <field name="res_model">account.tax</field>
+            <field name="domain">[('company', '=', Eval('company')), ('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="tax_view_list"/>
+            <field name="act_window" ref="act_tax_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_tax_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="tax_view_form"/>
+            <field name="act_window" ref="act_tax_list"/>
+        </record>
+        <menuitem parent="menu_tax_tree"
+            action="act_tax_list" id="menu_tax_list"
+            sequence="10"/>
 
         <record model="ir.action.act_window" id="act_tax_form">
             <field name="name">Taxes</field>
@@ -544,9 +581,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="tax_view_list"/>
             <field name="act_window" ref="act_tax_form"/>
         </record>
-        <menuitem name="New Tax" parent="menu_tax_form"
+        <menuitem name="New Tax" parent="menu_tax_tree"
             action="act_tax_form" id="menu_tax_form_new"
-            sequence="10"/>
+            sequence="20"/>
 
         <record model="ir.model.access" id="access_tax">
             <field name="model" search="[('model', '=', 'account.tax')]"/>
