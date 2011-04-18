@@ -38,7 +38,8 @@ error,account.move.line,0,No journal defined!,Не е зададен дневн�
 error,account.move.line,0,Wrong credit/debit values!,Грешни стойности за кредит/дебит!,0
 error,account.move.line,0,You can not add/modify lines in a closed journal period!,Не мое да добавяте/променяте редове в затворен период от дневник!,0
 error,account.move.line,0,"You can not create move lines
-on view/inactive accounts!",Не може да създадете ред на движение,0
+on view/inactive accounts!","Не може да създадете редове от движение
+за изглед/неактивни сметки!",0
 error,account.move.line,0,You can not modify lines of a posted move!,Не може да променяте редове от публикувано движение!,0
 error,account.move.line,0,You can not modify reconciled lines!,Не може да променяте съгласувани редове!,0
 error,account.move.reconciliation,0,"You can not create reconciliation where lines are not balanced, nor valid, nor in the same account, nor in account to reconcile, nor from the same party!","Не може да създавате съгласуване където редовете не са балансирани, невалидни,нито в същата сметка, нито в сметка за съгласуване, нито от същия партньор!",0
@@ -481,15 +482,17 @@ model,"account.tax.rule.line,name",0,Tax Rule Line,Ред от правило н
 model,"account.tax.rule.line.template,name",0,Tax Rule Line Template,Шаблон на ред от правило на данък,0
 model,"account.tax.rule.template,name",0,Tax Rule Template,Шаблон на правило за данък,0
 model,"account.tax.template,name",0,Account Tax Template,Шаблон на данък на сметка,0
+model,"ir.action,name",,Account Types,Видове сметки,0
+model,"ir.action,name",,Accounts,Сметки,0
+model,"ir.action,name",,Tax Codes,Кодове на данъци,0
+model,"ir.action,name",,Taxes,Данъци,0
 model,"ir.action,name",act_account_balance_sheet_tree,Balance Sheet,Дата на баланс,0
 model,"ir.action,name",act_account_form,Accounts,Сметки,0
-model,"ir.action,name",act_account_form2,Accounts,Сметки,0
 model,"ir.action,name",act_account_income_statement_tree,Income Statement,Отчет за приходи,0
 model,"ir.action,name",act_account_template_tree,Account Templates,Шаблони на сметка,0
 model,"ir.action,name",act_account_tree,Accounts,Сметки,0
 model,"ir.action,name",act_account_tree2,Accounts,Сметки,0
 model,"ir.action,name",act_account_type_form,Account Types,Видове сметки,0
-model,"ir.action,name",act_account_type_form2,Account Types,Видове сметки,0
 model,"ir.action,name",act_account_type_template_tree,Account Type Templates,Шаблони на вид сметка,0
 model,"ir.action,name",act_account_type_tree,Account Types,Видове сметки,0
 model,"ir.action,name",act_close_fiscalyear,Close Fiscal Year,Затваряне на финансова година,0
@@ -522,12 +525,10 @@ model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Съгласуван�
 model,"ir.action,name",act_reopen_journal_period,Re-Open Journals - Periods,Наново отваряне на дневници - Периоди,0
 model,"ir.action,name",act_reopen_period,Re-Open Periods,Наново отваряне на периоди,0
 model,"ir.action,name",act_tax_code_form,Tax Codes,Кодове на данъци,0
-model,"ir.action,name",act_tax_code_form2,Tax Codes,Кодове на данъци,0
 model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Шаблони на кодове на данъци,0
 model,"ir.action,name",act_tax_code_tree,Tax Codes,Кодове на данъци,0
 model,"ir.action,name",act_tax_code_tree2,Tax Codes,Кодове на данъци,0
 model,"ir.action,name",act_tax_form,Taxes,Данъци,0
-model,"ir.action,name",act_tax_form2,Taxes,Данъци,0
 model,"ir.action,name",act_tax_group_form,Tax Groups,Група данъци,0
 model,"ir.action,name",act_tax_group_form2,Tax Groups,Група данъци,0
 model,"ir.action,name",act_tax_line_form,Tax Lines,Ред на данъци,0
@@ -556,14 +557,16 @@ model,"ir.sequence,name",sequence_account_move_reconciliation,Default Account Mo
 model,"ir.sequence.type,name",sequence_type_account_journal,Account Journal,Дневник на сметка,0
 model,"ir.sequence.type,name",sequence_type_account_move,Account Move,Движение по сметка,0
 model,"ir.sequence.type,name",sequence_type_account_move_reconciliation,Account Move Reconciliation,Съгласуване на движение по сметка,0
+model,"ir.ui.menu,name",,New Account,Нова сметка,0
+model,"ir.ui.menu,name",,New Account Type,Нов вид сметка,0
+model,"ir.ui.menu,name",,New Tax Code,Нов код на данък,0
+model,"ir.ui.menu,name",,Taxes,Данъци,0
 model,"ir.ui.menu,name",menu_account,Financial Management,Управление на финанси,0
 model,"ir.ui.menu,name",menu_account_configuration,Configuration,Конфигурация,0
-model,"ir.ui.menu,name",menu_account_form,Accounts,Сметки,0
-model,"ir.ui.menu,name",menu_account_form_new,New Account,Нова сметка,0
+model,"ir.ui.menu,name",menu_account_form,New Account,Сметки,1
 model,"ir.ui.menu,name",menu_account_template_tree,Account Templates,Шаблони на сметка,0
 model,"ir.ui.menu,name",menu_account_tree,Accounts,Сметки,0
-model,"ir.ui.menu,name",menu_account_type_form,Account Types,Видове сметки,0
-model,"ir.ui.menu,name",menu_account_type_form_new,New Account Type,Нов вид сметка,0
+model,"ir.ui.menu,name",menu_account_type_form,New Account Type,Видове сметки,1
 model,"ir.ui.menu,name",menu_account_type_template_tree,Account Type Templates,Шаблони на вид сметка,0
 model,"ir.ui.menu,name",menu_account_type_tree,Account Types,Видове сметки,0
 model,"ir.ui.menu,name",menu_aged_balance,Aged Balance,Хронологичен баланс,0
@@ -601,8 +604,7 @@ model,"ir.ui.menu,name",menu_print_general_ledger,Print General Legder,Отпе�
 model,"ir.ui.menu,name",menu_print_trial_balance,Print Trial Balance,Отпечатване на пробен баланс,0
 model,"ir.ui.menu,name",menu_processing,Processing,Обработване,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Справки,0
-model,"ir.ui.menu,name",menu_tax_code_form,Tax Codes,Кодове на данъци,0
-model,"ir.ui.menu,name",menu_tax_code_form_new,New Tax Code,Нов код на данък,0
+model,"ir.ui.menu,name",menu_tax_code_form,New Tax Code,Кодове на данъци,1
 model,"ir.ui.menu,name",menu_tax_code_template_tree,Tax Codes Templates,Шаблони на кодове на данъци,0
 model,"ir.ui.menu,name",menu_tax_code_tree,Tax Codes,Кодове на данъци,0
 model,"ir.ui.menu,name",menu_tax_form,Taxes,Данъци,0
@@ -613,7 +615,6 @@ model,"ir.ui.menu,name",menu_tax_rule_form,Tax Rules,Правила за дан�
 model,"ir.ui.menu,name",menu_tax_rule_form_new,New Tax Rule,Ново правило за данък,0
 model,"ir.ui.menu,name",menu_tax_rule_template_form,Tax Rule Templates,Шаблони за правило на данък,0
 model,"ir.ui.menu,name",menu_tax_template_tree,Taxes Templates,Шаблони на данъци,0
-model,"ir.ui.menu,name",menu_tax_tree,Taxes,Данъци,0
 model,"ir.ui.menu,name",menu_taxes,Taxes,Данъци,0
 model,"ir.ui.menu,name",menu_third_party_balance,Third Party Balance,Баланс на външен партньор,0
 model,"ir.ui.menu,name",menu_update_chart_account,Update Chart of Account from Template,Обновяване на сметкоплан от шаблон,0
@@ -785,8 +786,14 @@ view,account.journal.view,0,Journal Views,Изгледи на дневник,0
 view,account.journal.view,0,View Column,Изглед на колона,0
 view,account.journal.view,0,View Columns,Показване на колони,0
 view,account.move,0,Account Move,Движение по сметка,0
+view,account.move,0,Account Move Line,Ред от движение по сметка,1
+view,account.move,0,Account Move Lines,Редове от движение на сметка,1
 view,account.move,0,Account Moves,Движения по сметка,0
+view,account.move,0,Credit,Кредит,1
+view,account.move,0,Debit,Дебит,1
 view,account.move,0,Draft,Проект,0
+view,account.move,0,General Information,Обща информация,1
+view,account.move,0,Optional Information,Незадължителна информация,1
 view,account.move,0,Post,Публикуван,0
 view,account.move.line,0,Account Move Line,Ред от движение по сметка,0
 view,account.move.line,0,Account Move Lines,Редове от движение на сметка,0
