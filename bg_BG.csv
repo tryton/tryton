@@ -18,14 +18,17 @@ help,"project.work,total_effort",0,Estimated total effort for this work and the 
 model,"ir.action,name",act_open_child_work,Tasks,Задачи,0
 model,"ir.action,name",act_project_form,Projects,Проекти,0
 model,"ir.action,name",act_task_form,Tasks,Задачи,0
-model,"ir.action,name",act_work_form,Works Efforts,Дейности,0
-model,"ir.action,name",act_work_tree,Works,Задачи,0
+model,"ir.action,name",act_work_form,Works,Дейности,0
+model,"ir.action,name",act_work_form_new,Works Efforts,Задачи,0
+model,"ir.action,name",act_work_tree,Works Efforts,Задачи,0
+model,"ir.ui.menu,name",,Works Efforts,Дейности,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Конфигурация,0
 model,"ir.ui.menu,name",menu_project,Project Management,Управление на проекти,0
 model,"ir.ui.menu,name",menu_project_form,Projects,Проекти,0
 model,"ir.ui.menu,name",menu_project_tree,Projects,Проекти,0
 model,"ir.ui.menu,name",menu_task_form,Tasks,Задачи,0
-model,"ir.ui.menu,name",menu_work_form,Works Efforts,Дейности,0
+model,"ir.ui.menu,name",menu_work_form_new,New Work Effort,Нова дейност,0
+model,"ir.ui.menu,name",menu_work_tree,Works Efforts,Задачи,0
 model,"project.work,name",0,Work Effort,Дейност,0
 model,"res.group,name",group_project_admin,Project Administration,Управление на проекти,0
 selection,"project.work,state",0,Done,Приключен,0
