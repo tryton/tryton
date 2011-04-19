@@ -28,13 +28,13 @@ model,"company.company,name",0,Company,Société,0
 model,"company.company.config.init,name",0,Company Config Init,Société config - Init,0
 model,"company.employee,name",0,Employee,Employé,0
 model,"ir.action,name",act_company_form,Companies,Sociétés,0
-model,"ir.action,name",act_company_form2,Companies,Sociétés,0
+model,"ir.action,name",act_company_list,Companies,Sociétés,1
 model,"ir.action,name",act_company_tree,Companies,Sociétés,0
 model,"ir.action,name",act_employee_form,Employees,Employés,0
 model,"ir.action,name",report_letter,Letter,Lettre,0
 model,"ir.cron-company.company,name",0,ir.cron-company.company,,0
-model,"ir.ui.menu,name",menu_company_form,Edit Companies,Éditer les sociétés,0
-model,"ir.ui.menu,name",menu_company_form2,New Company,Nouvelle société,0
+model,"ir.ui.menu,name",menu_company_form,New Company,Éditer les sociétés,0
+model,"ir.ui.menu,name",menu_company_list,Companies,Sociétés,1
 model,"ir.ui.menu,name",menu_company_tree,Companies,Sociétés,0
 model,"ir.ui.menu,name",menu_employee_form,Employees,Employés,0
 odt,party.letter,0,"Best Regards,","Bien cordialement,",0
