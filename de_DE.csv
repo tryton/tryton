@@ -76,6 +76,7 @@ model,"ir.action,name",act_open_work_graph,Hours per Work,Stunden pro Aufgabe,0
 model,"ir.action,name",act_work_form,Works,Aufgaben,0
 model,"ir.action,name",act_work_form2,Hours per Work,Stunden pro Aufgabe,0
 model,"ir.action,name",act_work_form3,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.action,name",act_work_list,Works,Aufgaben,0
 model,"ir.action,name",act_work_tree,Works,Aufgaben,0
 model,"ir.action,name",act_work_tree2,Works,Aufgaben,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
@@ -84,10 +85,11 @@ model,"ir.ui.menu,name",menu_line_form,Timesheet Lines,Zeitpositionen,0
 model,"ir.ui.menu,name",menu_open_hours_employee,Hours per Employee,Stunden pro Mitarbeiter,0
 model,"ir.ui.menu,name",menu_open_hours_employee_monthly,Hours per Employee per Month,Stunden pro Mitarbeiter pro Monat,0
 model,"ir.ui.menu,name",menu_open_hours_employee_weekly,Hours per Employee per Week,Stunden pro Mitarbeiter pro Woche,0
-model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Auswertungen,0
 model,"ir.ui.menu,name",menu_timesheet,Timesheet Management,Zeiterfassung,0
 model,"ir.ui.menu,name",menu_work_form,New Work,Neue Aufgabe,0
 model,"ir.ui.menu,name",menu_work_form2,Hours per Work,Stunden pro Aufgabe,0
+model,"ir.ui.menu,name",menu_work_list,Works,Aufgaben,0
 model,"ir.ui.menu,name",menu_work_tree,Works,Aufgaben,0
 model,"ir.ui.menu,name",menu_work_tree2,Hours per Work,Stunden pro Aufgabe,0
 model,"res.group,name",group_timesheet_admin,Timesheet Administration,Zeiterfassung Administration,0
