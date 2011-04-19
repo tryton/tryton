@@ -1,4 +1,5 @@
 type,name,res_id,src,value,fuzzy
+error,product.category,0,You can not create recursive categories!,Vous ne pouvez pas créer des catégories récursives !,1
 error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,Vous ne pouvez pas changer l'UDM par défaut pour un produit qui a déjà fait l'objet de mouvements de stock,0
 error,product.uom,0,"If the UOM is still not used, you can delete it otherwise you can deactivate it and create a new one.","Si l'UDM n'est pas utilisée, vous pouvez la supprimer, sinon vous pouvez la désactiver et en créer une nouvelle.",0
 error,product.uom,0,Invalid Factor and Rate values!,valeurs de facteur et de taux invalides !,0
@@ -43,7 +44,7 @@ help,"product.uom,rate",0,"The coefficient for the formula:
 1 (base unit) = coef (this unit)","Le coefficient pour la formule:
 1 (unité de base) = coef (cette unité)",0
 model,"ir.action,name",act_category_form,Product Categories,Catégories de produit,0
-model,"ir.action,name",act_category_form2,Product Categories,Catégories de produit,0
+model,"ir.action,name",act_category_list,Categories,Catégories,1
 model,"ir.action,name",act_category_tree,Categories,Catégories,0
 model,"ir.action,name",act_product_by_category,Product by Category,Produits par catégories,0
 model,"ir.action,name",act_product_form,Products,Produits,0
@@ -52,8 +53,8 @@ model,"ir.action,name",act_uom_category_form,Categories of Unit of Measure,Caté
 model,"ir.action,name",act_uom_category_form2,Categories of Unit of Measure,Catégories d'Unité de mesure,0
 model,"ir.action,name",act_uom_form,Units of Measure,Unités de mesure,0
 model,"ir.action,name",act_uom_form2,Units of Measure,Unités de mesure,0
-model,"ir.ui.menu,name",menu_category_form,Categories,Éditer les catégories,0
 model,"ir.ui.menu,name",menu_category_form_new,New Category,Nouvelle catégorie,0
+model,"ir.ui.menu,name",menu_category_list,Categories,Catégories,1
 model,"ir.ui.menu,name",menu_category_tree,Categories,Catégories,0
 model,"ir.ui.menu,name",menu_main_product,Product,Produit,0
 model,"ir.ui.menu,name",menu_product_product,Products,Produits,0
