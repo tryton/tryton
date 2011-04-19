@@ -44,7 +44,7 @@ model,"ir.action,name",act_order_point_form,Order Points,Bestellpunkte,0
 model,"ir.action,name",act_order_point_form2,Order Points,Bestellpunkte,0
 model,"ir.action,name",act_purchase_form,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_request_form,Purchase Requests,Bestellvorschläge,0
-model,"ir.action,name",act_purchase_request_form_draft,Draft Purchase Requests,Entwürfe (Bestellvorschläge),0
+model,"ir.action,name",act_purchase_request_form_draft,Draft Purchase Requests,Entwürfe Bestellvorschläge,0
 model,"ir.action,name",wizard_create_purchase,Create Purchase,Auftrag erstellen,0
 model,"ir.cron,name",cron_generate_request,Generate Purchase Requests,Erstellung von Bestellvorschlägen,0
 model,"ir.cron,name",cron_shipment_iternal,Generate Internal Shipments,Erstellung von Internen Lieferposten,0
