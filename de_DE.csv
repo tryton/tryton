@@ -25,6 +25,7 @@ model,"ir.action,name",act_project_form,Projects,Projekte,0
 model,"ir.action,name",act_task_form,Tasks,Aufgaben,0
 model,"ir.action,name",act_work_form,Works,Arbeiten,0
 model,"ir.action,name",act_work_form_new,Works Efforts,Arbeitsaufwände,0
+model,"ir.action,name",act_work_list,Works Efforts,Arbeitsaufwände,0
 model,"ir.action,name",act_work_tree,Works Efforts,Arbeitsaufwände,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_project,Project Management,Projekte,0
@@ -32,6 +33,7 @@ model,"ir.ui.menu,name",menu_project_form,Projects,Projekte,0
 model,"ir.ui.menu,name",menu_project_tree,Projects,Projekte,0
 model,"ir.ui.menu,name",menu_task_form,Tasks,Aufgaben,0
 model,"ir.ui.menu,name",menu_work_form_new,New Work Effort,Neuer Arbeitsaufwand,0
+model,"ir.ui.menu,name",menu_work_list,Works Efforts,Arbeitsaufwände,0
 model,"ir.ui.menu,name",menu_work_tree,Works Efforts,Arbeitsaufwände,0
 model,"project.work,name",0,Work Effort,Arbeitsaufwand,0
 model,"res.group,name",group_project_admin,Project Administration,Projekte Administration,0
