@@ -482,13 +482,13 @@ model,"account.tax.rule.template,name",0,Tax Rule Template,Modèle de règle de 
 model,"account.tax.template,name",0,Account Tax Template,Modèle de compte de taxe,0
 model,"ir.action,name",act_account_balance_sheet_tree,Balance Sheet,Bilan,0
 model,"ir.action,name",act_account_form,Accounts,Comptes,0
-model,"ir.action,name",act_account_form2,Accounts,Comptes,0
 model,"ir.action,name",act_account_income_statement_tree,Income Statement,Compte de résultats,0
+model,"ir.action,name",act_account_list,Accounts,Comptes,1
 model,"ir.action,name",act_account_template_tree,Account Templates,Modèles de compte,0
 model,"ir.action,name",act_account_tree,Accounts,Comptes,0
 model,"ir.action,name",act_account_tree2,Accounts,Comptes,0
 model,"ir.action,name",act_account_type_form,Account Types,Types de compte,0
-model,"ir.action,name",act_account_type_form2,Account Types,Types de compte,0
+model,"ir.action,name",act_account_type_list,Account Types,Types de compte,1
 model,"ir.action,name",act_account_type_template_tree,Account Type Templates,Modèles de types de comptes,0
 model,"ir.action,name",act_account_type_tree,Account Types,Types de compte,0
 model,"ir.action,name",act_close_fiscalyear,Close Fiscal Year,Fermer l'année fiscale,0
@@ -521,15 +521,15 @@ model,"ir.action,name",act_reconcile_lines,Reconcile Lines,Lignes réconciliées
 model,"ir.action,name",act_reopen_journal_period,Re-Open Journals - Periods,Ré-ouvrir journaux - périodes,0
 model,"ir.action,name",act_reopen_period,Re-Open Periods,Ré-ouvrir périodes,0
 model,"ir.action,name",act_tax_code_form,Tax Codes,Codes de taxe,0
-model,"ir.action,name",act_tax_code_form2,Tax Codes,Codes de taxe,0
+model,"ir.action,name",act_tax_code_list,Tax Codes,Codes de taxe,1
 model,"ir.action,name",act_tax_code_template_tree,Tax Codes Templates,Modèles de codes de taxe,0
 model,"ir.action,name",act_tax_code_tree,Tax Codes,Codes de taxe,0
 model,"ir.action,name",act_tax_code_tree2,Tax Codes,Codes de taxe,0
 model,"ir.action,name",act_tax_form,Taxes,Taxes,0
-model,"ir.action,name",act_tax_form2,Taxes,Taxes,0
 model,"ir.action,name",act_tax_group_form,Tax Groups,Groupes de taxes,0
 model,"ir.action,name",act_tax_group_form2,Tax Groups,Groupes de taxes,0
 model,"ir.action,name",act_tax_line_form,Tax Lines,Lignes de taxe,0
+model,"ir.action,name",act_tax_list,Taxes,Taxes,1
 model,"ir.action,name",act_tax_rule_form,Tax Rules,Règles de taxe,0
 model,"ir.action,name",act_tax_rule_form2,Tax Rules,Règles de taxe,0
 model,"ir.action,name",act_tax_rule_template_form,Tax Rule Templates,Modèles de règle de taxe,0
@@ -557,12 +557,12 @@ model,"ir.sequence.type,name",sequence_type_account_move,Account Move,Mouvement 
 model,"ir.sequence.type,name",sequence_type_account_move_reconciliation,Account Move Reconciliation,Réconciliation de mouvements comptables,0
 model,"ir.ui.menu,name",menu_account,Financial Management,Gestion financière,0
 model,"ir.ui.menu,name",menu_account_configuration,Configuration,Configuration,0
-model,"ir.ui.menu,name",menu_account_form,Accounts,Comptes,0
-model,"ir.ui.menu,name",menu_account_form_new,New Account,Nouveau compte,0
+model,"ir.ui.menu,name",menu_account_form,New Account,Comptes,0
+model,"ir.ui.menu,name",menu_account_list,Accounts,Comptes,1
 model,"ir.ui.menu,name",menu_account_template_tree,Account Templates,Modèles de compte,0
 model,"ir.ui.menu,name",menu_account_tree,Accounts,Comptes,0
-model,"ir.ui.menu,name",menu_account_type_form,Account Types,Types de compte,0
-model,"ir.ui.menu,name",menu_account_type_form_new,New Account Type,Nouveau type de compte,0
+model,"ir.ui.menu,name",menu_account_type_form,New Account Type,Types de compte,0
+model,"ir.ui.menu,name",menu_account_type_list,Account Types,Types de compte,1
 model,"ir.ui.menu,name",menu_account_type_template_tree,Account Type Templates,Modèles de types de comptes,0
 model,"ir.ui.menu,name",menu_account_type_tree,Account Types,Types de compte,0
 model,"ir.ui.menu,name",menu_aged_balance,Aged Balance,Balance âgée,0
@@ -600,14 +600,14 @@ model,"ir.ui.menu,name",menu_print_general_ledger,Print General Legder,Imprimer 
 model,"ir.ui.menu,name",menu_print_trial_balance,Print Trial Balance,Imprimer la balance,0
 model,"ir.ui.menu,name",menu_processing,Processing,Traitement,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Rapports,0
-model,"ir.ui.menu,name",menu_tax_code_form,Tax Codes,Codes de taxe,0
-model,"ir.ui.menu,name",menu_tax_code_form_new,New Tax Code,Nouveau code de taxe,0
+model,"ir.ui.menu,name",menu_tax_code_form,New Tax Code,Codes de taxe,0
+model,"ir.ui.menu,name",menu_tax_code_list,Tax Codes,Codes de taxe,1
 model,"ir.ui.menu,name",menu_tax_code_template_tree,Tax Codes Templates,Modèles de codes de taxe,0
 model,"ir.ui.menu,name",menu_tax_code_tree,Tax Codes,Codes de taxe,0
-model,"ir.ui.menu,name",menu_tax_form,Taxes,Taxes,0
 model,"ir.ui.menu,name",menu_tax_form_new,New Tax,Nouvelle taxe,0
 model,"ir.ui.menu,name",menu_tax_group_form,Tax Groups,Groupes de taxes,0
 model,"ir.ui.menu,name",menu_tax_group_form_new,New Tax Group,Nouveau groupe de taxe,0
+model,"ir.ui.menu,name",menu_tax_list,Taxes,Taxes,1
 model,"ir.ui.menu,name",menu_tax_rule_form,Tax Rules,Règles de taxe,0
 model,"ir.ui.menu,name",menu_tax_rule_form_new,New Tax Rule,Nouvelle règle de taxe,0
 model,"ir.ui.menu,name",menu_tax_rule_template_form,Tax Rule Templates,Modèles de règle de taxe,0
@@ -787,8 +787,14 @@ view,account.journal.view,0,Journal Views,Vues des journaux,0
 view,account.journal.view,0,View Column,Colonne de la vue,0
 view,account.journal.view,0,View Columns,Colonnes de la vue,0
 view,account.move,0,Account Move,Mouvement comptable,0
+view,account.move,0,Account Move Line,Ligne de mouvement comptable,1
+view,account.move,0,Account Move Lines,Lignes de mouvement comptable,1
 view,account.move,0,Account Moves,Mouvements comptables,0
+view,account.move,0,Credit,Créditer,1
+view,account.move,0,Debit,Débit :,1
 view,account.move,0,Draft,Brouillon,0
+view,account.move,0,General Information,Informations générales,1
+view,account.move,0,Optional Information,Information optionnelle,1
 view,account.move,0,Post,Posté,0
 view,account.move.line,0,Account Move Line,Ligne de mouvement comptable,0
 view,account.move.line,0,Account Move Lines,Lignes de mouvement comptable,0
