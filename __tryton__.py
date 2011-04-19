@@ -3,6 +3,7 @@
 {
     'name': 'Account Stock Continental',
     'name_de_DE': 'Buchhaltung Lagerbewertung Kontinentale Methode',
+    'name_fr_FR': 'Gestion de stock continentale',
     'version': '1.9.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -11,6 +12,9 @@
 ''',
     'description_de_DE': '''
     - Fügt die kontinentale Methode der Lagerbewertung in Echt-Zeit hinzu.
+''',
+    'description_fr_FR': '''
+    Ajoute la gestion de stock continentale pour l'évaluation en temps réel de la valeur du stock
 ''',
     'depends': [
         'ir',
@@ -25,5 +29,6 @@
     ],
     'translation': [
         'de_DE.csv',
+        'fr_FR.csv',
     ],
 }

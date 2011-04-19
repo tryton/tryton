@@ -1,0 +1,35 @@
+type,name,res_id,src,value,fuzzy
+field,"product.category,account_journal_stock_customer",0,Journal Stock Customer,Journal du stock client,0
+field,"product.category,account_journal_stock_lost_found",0,Journal Stock Lost and Found,"Journal de stock ""pertes et profits""",1
+field,"product.category,account_journal_stock_supplier",0,Journal Stock Supplier,Journal de stock fournisseur,0
+field,"product.category,account_stock",0,Account Stock,Compte de stock,0
+field,"product.category,account_stock_customer",0,Account Stock Customer,Compte de stock client,0
+field,"product.category,account_stock_lost_found",0,Account Stock Lost and Found,"Compte de stock ""pertes et profits""",1
+field,"product.category,account_stock_supplier",0,Account Stock Supplier,Compte de stock fournisseur,0
+field,"product.template,account_journal_stock_customer",0,Account Journal Stock Customer,Journal du compte stock client,0
+field,"product.template,account_journal_stock_customer_used",0,Journal Stock Customer,Journal du stock client,0
+field,"product.template,account_journal_stock_lost_found",0,Account Journal Stock Lost and Found,"Journa du compte de stock ""pertes et profits""",0
+field,"product.template,account_journal_stock_lost_found_used",0,Journal Stock Lost and Found,"Journal de stock ""pertes et profits""",0
+field,"product.template,account_journal_stock_supplier",0,Account Journal Stock Supplier,Journal du compte stock fournisseur,0
+field,"product.template,account_journal_stock_supplier_used",0,Journal Stock Supplier,Journal de stock fournisseur,0
+field,"product.template,account_stock",0,Account Stock,Compte de stock,0
+field,"product.template,account_stock_customer",0,Account Stock Customer,Compte de stock client,0
+field,"product.template,account_stock_customer_used",0,Account Stock Customer Used,Compte de stock client utilisé,0
+field,"product.template,account_stock_lost_found",0,Account Stock Lost and Found,"Compte de stock ""pertes et profits""",0
+field,"product.template,account_stock_lost_found_used",0,Account Stock Lost and Found,"Compte de stock ""pertes et profits""",1
+field,"product.template,account_stock_supplier",0,Account Stock Supplier,Compte de stock fournisseur,0
+field,"product.template,account_stock_supplier_used",0,Account Stock Supplier Used,Compte de stock fournisseur utilisé,0
+field,"product.template,account_stock_used",0,Account Stock Used,Compte de stock utilisé,0
+field,"stock.move,account_move",0,Account Move,Mouvement comptable,1
+help,"product.template,account_journal_stock_customer",0,This journal will be used instead of the one defined on the category.,Ce journal sera utilisé à la place de celui définit sur la catégorie,0
+help,"product.template,account_journal_stock_lost_found",0,This journal will be used instead of the one defined on the category.,Ce journal sera utilisé à la place de celui définit sur la catégorie,0
+help,"product.template,account_journal_stock_supplier",0,This journal will be used instead of the one defined on the category.,Ce journal sera utilisé à la place de celui définit sur la catégorie.,0
+help,"product.template,account_stock",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,1
+help,"product.template,account_stock_customer",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,1
+help,"product.template,account_stock_lost_found",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,1
+help,"product.template,account_stock_supplier",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,1
+model,"account.account.template,name",account_template_stock,Stock,Stock,1
+model,"account.account.template,name",account_template_stock_customer,Stock Customer,Stock client,0
+model,"account.account.template,name",account_template_stock_lost_found,Stock Lost and Found,"Stock ""pertes et profits""",0
+model,"account.account.template,name",account_template_stock_supplier,Stock Supplier,Stock fournisseur,0
+model,"account.account.type.template,name",account_type_template_asset_current_inventories,Inventories,Inventaires,1
