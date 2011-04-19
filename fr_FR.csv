@@ -26,6 +26,7 @@ field,"party.category,parent",0,Parent,Parent,0
 field,"party.category,rec_name",0,Name,Nom,0
 field,"party.check_vies.check,parties_failed",0,Parties Failed,Tiers non validés,0
 field,"party.check_vies.check,parties_succeed",0,Parties Succeed,Tiers validés,0
+field,"party.configuration,party_lang",0,Party Language,Langue du tiers,1
 field,"party.configuration,party_sequence",0,Party Sequence,Séquence des tiers,0
 field,"party.configuration,rec_name",0,Name,Nom,0
 field,"party.contact_mechanism,active",0,Active,Actif,0
@@ -61,12 +62,13 @@ field,"party.party,website",0,Website,Site web,0
 field,"party.party-party.category,category",0,Category,Catégorie,0
 field,"party.party-party.category,party",0,Party,Tiers,0
 field,"party.party-party.category,rec_name",0,Name,Nom,0
+help,"party.configuration,party_lang",0,The value set on this field will preset the language on new parties,La valeur de ce champs sera la valeur par défaut pour la langue des nouveaux tiers,0
 help,"party.party,vat_country",0,Setting VAT country will enable validation of the VAT number.,Ajouter un code pays TVA activera la vérification du numéro de TVA.,0
 help,"party.party,vat_number",0,Value Added Tax number,Numéro de taxe sur la valeur ajoutée,0
 model,"ir.action,name",act_address_form,Addresses,Adresses,0
 model,"ir.action,name",act_address_form2,Addresses,Adresses,0
 model,"ir.action,name",act_category_form,Categories,Catégories,0
-model,"ir.action,name",act_category_form2,Categories,Catégories,0
+model,"ir.action,name",act_category_list,Categories,Catégories,1
 model,"ir.action,name",act_category_tree,Categories,Catégories,0
 model,"ir.action,name",act_party_by_category,Parties by Category,Tiers par catégorie,0
 model,"ir.action,name",act_party_configuration_form,Party Configuration,Configuration des relations,0
@@ -78,8 +80,8 @@ model,"ir.sequence,name",sequence_party,Party,Tiers,0
 model,"ir.sequence.type,name",sequence_type_party,Party,Tiers,0
 model,"ir.ui.menu,name",menu_address_form,Addresses,Adresses,0
 model,"ir.ui.menu,name",menu_address_form2,New Address,Nouvelle adresse,0
-model,"ir.ui.menu,name",menu_category_form,Categories,Editer les catégories,0
-model,"ir.ui.menu,name",menu_category_form2,New category,Nouvelle catégorie,0
+model,"ir.ui.menu,name",menu_category_form,New Category,Editer les catégories,0
+model,"ir.ui.menu,name",menu_category_list,Categories,Catégories,1
 model,"ir.ui.menu,name",menu_category_tree,Categories,Catégories,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
 model,"ir.ui.menu,name",menu_party,Party Management,Gestion des relations,0
