@@ -125,10 +125,10 @@ model,"ir.action,name",act_open_supplier,Parties associated to Purchases,Parteie
 model,"ir.action,name",act_purchase_configuration_form,Purchase Configuration,Einstellungen Einkauf,0
 model,"ir.action,name",act_purchase_form,Purchases,Einkäufe,0
 model,"ir.action,name",act_purchase_form2,Purchases,Einkäufe,0
-model,"ir.action,name",act_purchase_form_confirmed,Confirmed Purchases,Aufträge (Einkäufe),0
-model,"ir.action,name",act_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
+model,"ir.action,name",act_purchase_form_confirmed,Confirmed Purchases,Aufträge Einkäufe,0
+model,"ir.action,name",act_purchase_form_draft,Draft Purchases,Entwürfe Einkäufe,0
 model,"ir.action,name",act_purchase_form_new,New Purchase,Neuer Einkauf,0
-model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
+model,"ir.action,name",act_purchase_form_quotation,Purchases in Quotation,Angebote Einkäufe,0
 model,"ir.action,name",act_shipment_form,Shipments,Lieferposten,0
 model,"ir.action,name",report_purchase,Purchase,Einkauf,0
 model,"ir.action,name",wizard_invoice_handle_exception,Handle Invoice Exception,Rechnungsvorbehalt bearbeiten,0
@@ -143,7 +143,7 @@ model,"ir.ui.menu,name",menu_purchase_form_confirmed,Confirmed Purchases,Aufträ
 model,"ir.ui.menu,name",menu_purchase_form_draft,Draft Purchases,Entwürfe (Einkäufe),0
 model,"ir.ui.menu,name",menu_purchase_form_new,New Purchase,Neuer Einkauf,0
 model,"ir.ui.menu,name",menu_purchase_form_quotation,Purchases in Quotation,Angebote (Einkäufe),0
-model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Auswertungen,0
 model,"ir.ui.menu,name",menu_supplier,Parties associated to Purchases,Parteien: Einkäufen zugeordnet,0
 model,"purchase.configuration,name",0,Purchase Configuration,Einstellungen Einkauf,0
 model,"purchase.handle.invoice.exception.ask,name",0,Invoice Exception Ask,Nachfrage Rechnungsvorbehalt,0
@@ -200,14 +200,14 @@ odt,purchase.purchase,0,VAT:,USt.:,0
 selection,"account.invoice,purchase_exception_state",0,,,0
 selection,"account.invoice,purchase_exception_state",0,Ignored,Ignoriert,0
 selection,"account.invoice,purchase_exception_state",0,Recreated,Nachgebildet,0
-selection,"purchase.configuration,purchase_invoice_method",0,Based On Order,Bei Auftrag,0
+selection,"purchase.configuration,purchase_invoice_method",0,Based On Order,Bei Beauftragung,0
 selection,"purchase.configuration,purchase_invoice_method",0,Based On Shipment,Bei Lieferung,0
 selection,"purchase.configuration,purchase_invoice_method",0,Manual,Manuell,0
 selection,"purchase.line,type",0,Comment,Kommentar,0
 selection,"purchase.line,type",0,Line,Position,0
 selection,"purchase.line,type",0,Subtotal,Zwischensumme,0
 selection,"purchase.line,type",0,Title,Überschrift,0
-selection,"purchase.purchase,invoice_method",0,Based On Order,Bei Auftrag,0
+selection,"purchase.purchase,invoice_method",0,Based On Order,Bei Beauftragung,0
 selection,"purchase.purchase,invoice_method",0,Based On Shipment,Bei Lieferung,0
 selection,"purchase.purchase,invoice_method",0,Manual,Manuell,0
 selection,"purchase.purchase,invoice_state",0,Exception,Vorbehalt,0
