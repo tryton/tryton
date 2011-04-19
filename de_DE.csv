@@ -102,10 +102,10 @@ model,"ir.action,name",act_open_customer,Parties associated to Sales,Parteien: V
 model,"ir.action,name",act_sale_configuration_form,Sale Configuration,Einstellungen Verkauf,0
 model,"ir.action,name",act_sale_form,Sales,Verkäufe,0
 model,"ir.action,name",act_sale_form2,Sales,Verkäufe,0
-model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Aufträge (Verkäufe),0
-model,"ir.action,name",act_sale_form_draft,Draft Sales,Entwürfe (Verkäufe),0
+model,"ir.action,name",act_sale_form_confirmed,Confirmed Sales,Aufträge Verkäufe,0
+model,"ir.action,name",act_sale_form_draft,Draft Sales,Entwürfe Verkäufe,0
 model,"ir.action,name",act_sale_form_new,New Sale,Neuer Verkauf,0
-model,"ir.action,name",act_sale_form_quotation,Quotation Sales,Angebote (Verkäufe),0
+model,"ir.action,name",act_sale_form_quotation,Quotation Sales,Angebote Verkäufe,0
 model,"ir.action,name",act_shipment_form,Shipments,Lieferposten,0
 model,"ir.action,name",report_sale,Sale,Verkauf,0
 model,"ir.action,name",wizard_invoice_handle_exception,Handle Invoice Exception,Rechnungsvorbehalt bearbeiten,0
