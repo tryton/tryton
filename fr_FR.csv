@@ -51,6 +51,7 @@ model,"ir.action,name",act_open_work_graph,Hours per Work,Heures par activité,0
 model,"ir.action,name",act_work_form,Works,Activités,0
 model,"ir.action,name",act_work_form2,Hours per Work,Heures par activité,0
 model,"ir.action,name",act_work_form3,Hours per Work,Heures par activité,0
+model,"ir.action,name",act_work_list,Works,Activités,1
 model,"ir.action,name",act_work_tree,Works,Activités,0
 model,"ir.action,name",act_work_tree2,Works,Activités,0
 model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
@@ -61,8 +62,9 @@ model,"ir.ui.menu,name",menu_open_hours_employee_monthly,Hours per Employee per 
 model,"ir.ui.menu,name",menu_open_hours_employee_weekly,Hours per Employee per Week,Nombre d'heures par employé par semaine,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Rapports,0
 model,"ir.ui.menu,name",menu_timesheet,Timesheet Management,Feuilles de présence,0
-model,"ir.ui.menu,name",menu_work_form,Works,Activités,0
+model,"ir.ui.menu,name",menu_work_form,New Work,Activités,0
 model,"ir.ui.menu,name",menu_work_form2,Hours per Work,Heures par activité,0
+model,"ir.ui.menu,name",menu_work_list,Works,Activités,1
 model,"ir.ui.menu,name",menu_work_tree,Works,Activités,0
 model,"ir.ui.menu,name",menu_work_tree2,Hours per Work,Heures par activité,0
 model,"res.group,name",group_timesheet_admin,Timesheet Administration,Administration feuille de présence,0
