@@ -1,0 +1,8 @@
+type,name,res_id,src,value,fuzzy
+error,stock.move,0,Anglo-Saxon quantity can not be greater than quantity!,"La quantité ""anglo-saxonne"" ne peut être supérieur à la quantité !",1
+field,"product.category,account_cogs",0,Account Cost of Goods Sold,"Compte ""prix du bien vendu""",1
+field,"product.template,account_cogs",0,Account Cost of Good Sold,"Compte ""prix du bien vendu""",1
+field,"product.template,account_cogs_used",0,Account Cost of Goods Sold Used,"Compte ""prix du bien vendu"" utilisé",1
+field,"stock.move,anglo_saxon_quantity",0,Anglo-Saxon Quantity,"Quantité ""anglo-saxonne""",1
+help,"product.template,account_cogs",0,This account will be used instead of the one defined on the category.,Ce compte sera utilisé au lieu de celui défini sur la catégorie.,1
+model,"account.account.template,name",account_template_cogs,COGS,Prix du bien vendu,0

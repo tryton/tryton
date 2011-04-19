@@ -3,6 +3,7 @@
 {
     'name': 'Account Stock Anglo-Saxon',
     'name_de_DE': 'Buchhaltung Lagerbewertung Angelsächsische Methode',
+    'name_fr_FR': 'Gestion de stock anglo-saxonne',
     'version': '0.0.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -11,6 +12,9 @@
 ''',
     'description_de_DE': '''
     - Fügt die angelsächsische Methode der Lagerbewertung in Echt-Zeit hinzu.
+''',
+    'description_fr_FR': '''
+    Ajoute la gestion de stock anglo-saxonne pour une évaluation en temps réel de la valeur du stock
 ''',
     'depends': [
         'ir',
@@ -28,5 +32,6 @@
     ],
     'translation': [
         'de_DE.csv',
+        'fr_FR.csv',
     ],
 }
