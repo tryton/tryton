@@ -5,14 +5,19 @@ error,stock.inventory.line,0,Product must be unique by inventory!,Chaque produit
 error,stock.location,0,A location with existing moves cannot be changed to a type that does not support moves.,Un emplacement avec des mouvements ne peut pas être changé en un type qui ne supporte pas les mouvements.,0
 error,stock.location,0,"Location ""%s"" must be a child of warehouse ""%s""!","L'emplacement ""%s"" doit être un sous-emplacement de l'entrepôt ""%s"" !",0
 error,stock.location,0,You can not create recursive locations!,Vous ne pouvez pas créer des emplacements récursifs !,0
+error,stock.move,0,Internal move quantity must be positive,La quantité interne doit être positive,0
 error,stock.move,0,Move can be on only one Shipment,Un mouvement ne peut être que sur une seule expédition,0
 error,stock.move,0,Move quantity must be positive,La quantité sur le mouvement doit être positive.,0
 error,stock.move,0,Source and destination location must be different,Les emplacements d'origine et de destination doivent être distincts,0
+error,stock.move,0,"You can not modify a move in the state: ""Assigned"", ""Done"" or ""Cancel""","Vous ne pouvez modifier un mouvement dans un des états : ""Assigné"", ""Terminé"" ou ""Annulé""",0
+error,stock.move,0,You can not modify move in closed period!,Vous ne pouvez modifier un mouvement d'une période fermée !,0
 error,stock.move,0,You can not set state to assigned!,Vous ne pouvez pas mettre l'état à assigné !,0
 error,stock.move,0,You can not set state to done!,Vous ne pouvez pas mettre l'état à fait !,0
 error,stock.move,0,You can not set state to draft!,Vous ne pouvez pas mettre l'état à brouillon !,0
 error,stock.move,0,You can not use service products for a move!,Vous ne pouvez pas utiliser un produit de type service sur un mouvement !,0
 error,stock.move,0,You can only delete draft or cancelled moves!,Vous pouvez  supprimer que des mouvements qui sont  annulés ou a l'état de brouillon !,0
+error,stock.period,0,You can not close a period in the future or today!,Vous ne pouvez fermer une période qui se termine aujourd'hui ou dans le futur !,0
+error,stock.period,0,You can not close a period when there is still assigned moves!,Vous ne pouvez fermer une période alors que des mouvements sont toujours assignés !,0
 error,stock.shipment.in,0,Incoming Moves must have the warehouse input location as destination location!,Les mouvements d'entrée doivent avoir l'emplacement d'entrée de l'entrepôt comme destination !,0
 error,stock.shipment.in,0,Inventory Moves must have the warehouse input location as source location!,Les mouvements d'inventaire doivent avoir l'emplacement d'entrée de l'entrepôt comme source !,0
 error,stock.shipment.out,0,Inventory Moves must have the warehouse output location as destination location!,Les mouvements d'inventaires doivent avoir une sortie d'entrepôt comme location de destination.,0
@@ -70,6 +75,7 @@ field,"stock.move,cost_price",0,Cost Price,Prix de revient,0
 field,"stock.move,currency",0,Currency,Devise,0
 field,"stock.move,effective_date",0,Effective Date,Date effective,0
 field,"stock.move,from_location",0,From Location,Emplacement d'origine,0
+field,"stock.move,internal_quantity",0,Internal Quantity,Quantité interne,0
 field,"stock.move,planned_date",0,Planned Date,Date planifiée,0
 field,"stock.move,product",0,Product,Produit,0
 field,"stock.move,quantity",0,Quantity,Quantité,0
@@ -85,6 +91,16 @@ field,"stock.move,unit_digits",0,Unit Digits,Décimales de l'unité,0
 field,"stock.move,unit_price",0,Unit Price,Prix unitaire,0
 field,"stock.move,unit_price_required",0,Unit Price Required,Prix unitaire requis,0
 field,"stock.move,uom",0,Uom,UDM,0
+field,"stock.period,caches",0,Caches,,0
+field,"stock.period,company",0,Company,Société,1
+field,"stock.period,date",0,Date,date,1
+field,"stock.period,rec_name",0,Name,Nom de la pièce jointe,1
+field,"stock.period,state",0,State,État,1
+field,"stock.period.cache,internal_quantity",0,Internal Quantity,Quantité interne,0
+field,"stock.period.cache,location",0,Location,Emplacement,1
+field,"stock.period.cache,period",0,Period,Période,1
+field,"stock.period.cache,product",0,Product,Produit,1
+field,"stock.period.cache,rec_name",0,Name,Nom de la pièce jointe,1
 field,"stock.product_stock_date.init,forecast_date",0,At Date,À la date,0
 field,"stock.shipment.in,code",0,Code,Code,0
 field,"stock.shipment.in,contact_address",0,Contact Address,Adresse de contact,0
@@ -158,13 +174,14 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 model,"ir.action,name",act_inventory_form,Inventories,Inventaires,0
 model,"ir.action,name",act_inventory_form2,Inventories,Inventaires,0
 model,"ir.action,name",act_inventory_form_draft,Draft Inventories,Inventaires brouillons,0
-model,"ir.action,name",act_location_form,Edit Locations,Éditer les emplacements,0
+model,"ir.action,name",act_location_form,Locations,Éditer les emplacements,0
 model,"ir.action,name",act_location_quantity_tree,Product Stock,Quantités en stock,0
 model,"ir.action,name",act_location_tree,Locations,Emplacements,0
 model,"ir.action,name",act_move_form,Moves,Mouvements,0
 model,"ir.action,name",act_move_form_cust,Moves to Customers,Mouvements clients,0
 model,"ir.action,name",act_move_form_supp,Moves from Suppliers,Mouvements fournisseurs,0
 model,"ir.action,name",act_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Mouvement fournisseur en attente de réception,0
+model,"ir.action,name",act_period_list,Periods,Périodes,1
 model,"ir.action,name",act_product_by_location,Products by Locations,Produits par emplacements,0
 model,"ir.action,name",act_shipment_in_form,Supplier Shipments,Expéditions fournisseur,0
 model,"ir.action,name",act_shipment_in_form2,New Supplier Shipment,Nouvelle expédition fournisseur,0
@@ -211,12 +228,13 @@ model,"ir.ui.menu,name",menu_configuration,Configuration,Configuration,0
 model,"ir.ui.menu,name",menu_inventory_form,Inventories,Inventaires,0
 model,"ir.ui.menu,name",menu_inventory_form_draft,Draft Inventories,Inventaires brouillons,0
 model,"ir.ui.menu,name",menu_inventory_form_new,New Inventory,Nouvel inventaire,0
-model,"ir.ui.menu,name",menu_location_form,Edit Locations,Éditer les emplacements,0
+model,"ir.ui.menu,name",menu_location_form,Locations,Éditer les emplacements,0
 model,"ir.ui.menu,name",menu_location_tree,Locations,Emplacements,0
 model,"ir.ui.menu,name",menu_move_form,Moves,Mouvements,0
 model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Mouvements clients,0
 model,"ir.ui.menu,name",menu_move_form_supp,Moves from Suppliers,Mouvements fournisseurs,0
 model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Mouvements fournisseur en attente de réception,0
+model,"ir.ui.menu,name",menu_period_list,Periods,Périodes,1
 model,"ir.ui.menu,name",menu_reporting,Reporting,Rapports,0
 model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Expéditions fournisseur,0
 model,"ir.ui.menu,name",menu_shipment_in_form2,New Supplier Shipment,Nouvelle expédition fournisseur,0
@@ -243,15 +261,21 @@ model,"stock.configuration,name",0,Stock Configuration,Configuration des stocks,
 model,"stock.inventory,name",0,Stock Inventory,Inventaire du stock,0
 model,"stock.inventory.line,name",0,Stock Inventory Line,Ligne d'inventaire de stock,0
 model,"stock.location,name",0,Stock Location,Lieu de Stockage,0
-model,"stock.location,name",location_customer,Customer,Client,0
+model,"stock.location,name",location_customer,Customer,Client,1
 model,"stock.location,name",location_input,Input Zone,Zone d'entrée,0
-model,"stock.location,name",location_lost_found,Lost and Found,Pertes et surplus,0
+model,"stock.location,name",location_lost_found,Lost and Found,Pertes et surplus,1
 model,"stock.location,name",location_output,Output Zone,Zone de sortie,0
-model,"stock.location,name",location_storage,Storage Zone,Zone rangement,0
-model,"stock.location,name",location_supplier,Supplier,Fournisseur,0
-model,"stock.location,name",location_warehouse,Warehouse,Entrepôt,0
+model,"stock.location,name",location_storage,Storage Zone,Zone de stockage,0
+model,"stock.location,name",location_supplier,Supplier,Fournisseur,1
+model,"stock.location,name",location_warehouse,Warehouse,Entrepôt,1
 model,"stock.location_stock_date.init,name",0,Compute stock quantities,Quantité de stock calculées,0
 model,"stock.move,name",0,Stock Move,Mouvement de stock,0
+model,"stock.period,name",0,Stock Period,Période de stock,0
+model,"stock.period.cache,name",0,"
+    Stock Period Cache
+
+    It is used to store cached computation of stock quantities.
+    ",,0
 model,"stock.product_stock_date.init,name",0,Compute stock quantities,Quantités de stock calculées,0
 model,"stock.shipment.in,name",0,Supplier Shipment,Expédition fournisseur,0
 model,"stock.shipment.in.return,name",0,Supplier Return Shipment,Retour d'expédition fournisseur,0
@@ -375,6 +399,8 @@ selection,"stock.move,state",0,Assigned,Assigné,0
 selection,"stock.move,state",0,Canceled,Annulé,0
 selection,"stock.move,state",0,Done,Fait,0
 selection,"stock.move,state",0,Draft,Brouillon,0
+selection,"stock.period,state",0,Closed,Fermé,1
+selection,"stock.period,state",0,Draft,Brouillon,1
 selection,"stock.shipment.in,state",0,Canceled,Annulé,0
 selection,"stock.shipment.in,state",0,Done,Fait,0
 selection,"stock.shipment.in,state",0,Draft,Brouillon,0
@@ -419,6 +445,12 @@ view,stock.location,0,Product Stock,Quantités en stock,0
 view,stock.location_stock_date.init,0,Product Quantity.,Quantité de produit,0
 view,stock.move,0,Move,Mouvement,0
 view,stock.move,0,Moves,Mouvements,0
+view,stock.period,0,Close,Fermer,1
+view,stock.period,0,Draft,Brouillon,1
+view,stock.period,0,Period,Période,1
+view,stock.period,0,Periods,Périodes,1
+view,stock.period.cache,0,Period Cache,Cache de la période,0
+view,stock.period.cache,0,Period Caches,Caches des périodes,0
 view,stock.product_stock_date.init,0,Product Quantity.,Quantité Produit :,0
 view,stock.shipment.in,0,Cancel,Annuler,0
 view,stock.shipment.in,0,Done,Fait,0
