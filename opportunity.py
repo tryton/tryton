@@ -363,18 +363,6 @@ class SaleOpportunityLine(ModelSQL, ModelView):
 SaleOpportunityLine()
 
 
-class One2ManyHistory(fields.One2Many):
-
-    def get(self, ids, model, name, values=None):
-        opportunity2id = {}
-        histories = model.browse(ids)
-        opportunity2id = dict((history.opportunity.id, history.id) for
-                history in histories)
-        res = super(One2ManyHistory, self).get(opportunity2id.keys(), model,
-                name, values=values)
-        return dict((opportunity2id[i], j) for i, j in res.iteritems())
-
-
 class SaleOpportunityHistory(ModelSQL, ModelView):
     'Sale Opportunity History'
     _name = 'sale.opportunity.history'
@@ -397,8 +385,8 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
     }, depends=['state'])
     description = fields.Char('Description')
     comment = fields.Text('Comment')
-    lines = One2ManyHistory('sale.opportunity.line', 'opportunity', 'Lines',
-            datetime_field='date')
+    lines = fields.Function(fields.One2Many('sale.opportunity.line', None, 'Lines',
+            datetime_field='date'), 'get_lines')
     state = fields.Selection(STATES, 'State')
     probability = fields.Integer('Conversion Probability')
     lost_reason = fields.Text('Reason for loss', states={
@@ -441,6 +429,18 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
                 'GROUP BY ' + \
                 (', '.join(self._table_query_group()))) % \
                 opportunity_obj._table, [])
+
+    def get_lines(self, ids, name):
+        line_obj = self.pool.get('sale.opportunity.line')
+        histories = self.browse(ids)
+        result = {}
+        # We will always have only one id per call due to datetime_field
+        for history in histories:
+            result[history.id] = line_obj.search([
+                ('opportunity', '=', history.opportunity.id),
+            ])
+        return result
+
 
     def read(self, ids, fields_names=None):
         res = super(SaleOpportunityHistory, self).read(ids,
