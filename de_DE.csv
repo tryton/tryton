@@ -1,4 +1,5 @@
 type,name,res_id,src,value,fuzzy
+error,product.category,0,You can not create recursive categories!,Kategorien können nicht rekursiv angelegt werden!,0
 error,product.template,0,You cannot change the default uom for a product which is associated to stock moves.,"Die Standardmaßeinheit kann nicht für einen Artikel geändert werden, der Lagerbewegungen zugeordnet ist.",0
 error,product.uom,0,"If the UOM is still not used, you can delete it otherwise you can deactivate it and create a new one.","Wenn die Maßeinheit noch nicht verwendet wurde, kann sie gelöscht werden.
 Andernfalls kann sie nur deaktiviert und eine andere neue erstellt werden.",0
@@ -71,6 +72,7 @@ help,"product.uom,rate",0,"The coefficient for the formula:
 Formel: Basiseinheit = Kehrwert * diese Einheit
 Das Feld Faktor wird automatisch aus dem hier eingetragenen Wert ermittelt.",0
 model,"ir.action,name",act_category_form,Product Categories,Artikelkategorien,0
+model,"ir.action,name",act_category_list,Categories,Kategorien,0
 model,"ir.action,name",act_category_tree,Categories,Artikelkategorien,0
 model,"ir.action,name",act_product_by_category,Product by Category,Artikel nach Kategorie,0
 model,"ir.action,name",act_product_form,Products,Artikel,0
@@ -80,6 +82,7 @@ model,"ir.action,name",act_uom_category_form2,Categories of Unit of Measure,Kate
 model,"ir.action,name",act_uom_form,Units of Measure,Maßeinheiten,0
 model,"ir.action,name",act_uom_form2,Units of Measure,Maßeinheiten,0
 model,"ir.ui.menu,name",menu_category_form_new,New Category,Neue Artikelkategorie,0
+model,"ir.ui.menu,name",menu_category_list,Categories,Kategorien,0
 model,"ir.ui.menu,name",menu_category_tree,Categories,Artikelkategorien,0
 model,"ir.ui.menu,name",menu_main_product,Product,Artikel,0
 model,"ir.ui.menu,name",menu_product_product,Products,Artikel,0
