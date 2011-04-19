@@ -116,7 +116,7 @@ model,"ir.ui.menu,name",menu_opportunity_form_lost,Lost Leads and Opportunities,
 model,"ir.ui.menu,name",menu_opportunity_form_new,New Lead,Neuer Interessent,0
 model,"ir.ui.menu,name",menu_opportunity_form_opportunity,Opportunities,Verkaufschancen,0
 model,"ir.ui.menu,name",menu_opportunity_monthly_form,Opportunities per Month,Verkaufschancen pro Monat,0
-model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Auswertungen,0
 model,"res.group,name",group_opportunity,Sale Opportunity,Verkaufschance,0
 model,"sale.open_opportunity_employee.init,name",0,Open Sale Opportunity per Employee Init,Verkaufschancen pro Mitarbeiter Öffnen,0
 model,"sale.opportunity,name",0,Sale Opportunity,Verkaufschance,0
