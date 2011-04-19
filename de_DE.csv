@@ -176,7 +176,7 @@ help,"stock.product_stock_date.init,forecast_date",0,"Allow to compute expected 
 model,"ir.action,name",act_inventory_form,Inventories,Bestandskorrekturen,0
 model,"ir.action,name",act_inventory_form2,Inventories,Bestandskorrekturen,0
 model,"ir.action,name",act_inventory_form_draft,Draft Inventories,Entwürfe Bestandskorrekturen,0
-model,"ir.action,name",act_location_form,Locations,Neuer Lagerort,0
+model,"ir.action,name",act_location_form,Locations,Lagerorte,0
 model,"ir.action,name",act_location_quantity_tree,Product Stock,Lagerbestand,0
 model,"ir.action,name",act_location_tree,Locations,Lagerorte,0
 model,"ir.action,name",act_move_form,Moves,Lagerbewegungen,0
@@ -230,14 +230,14 @@ model,"ir.ui.menu,name",menu_configuration,Configuration,Einstellungen,0
 model,"ir.ui.menu,name",menu_inventory_form,Inventories,Bestandskorrektur,0
 model,"ir.ui.menu,name",menu_inventory_form_draft,Draft Inventories,Entwürfe Bestandskorrekturen,0
 model,"ir.ui.menu,name",menu_inventory_form_new,New Inventory,Neue Bestandskorrektur,0
-model,"ir.ui.menu,name",menu_location_form,Locations,Neuer Lagerort,0
+model,"ir.ui.menu,name",menu_location_form,Locations,Lagerorte,0
 model,"ir.ui.menu,name",menu_location_tree,Locations,Lagerorte,0
 model,"ir.ui.menu,name",menu_move_form,Moves,Bewegungen,0
 model,"ir.ui.menu,name",menu_move_form_cust,Moves to Customers,Bewegungen zu Kunden,0
 model,"ir.ui.menu,name",menu_move_form_supp,Moves from Suppliers,Bewegungen von Lieferanten,0
 model,"ir.ui.menu,name",menu_move_form_supp_proceed,Moves from Suppliers Waiting Arrival,Erwartete Bewegungen von Lieferanten,0
 model,"ir.ui.menu,name",menu_period_list,Periods,Lagerperioden,0
-model,"ir.ui.menu,name",menu_reporting,Reporting,Berichte,0
+model,"ir.ui.menu,name",menu_reporting,Reporting,Auswertungen,0
 model,"ir.ui.menu,name",menu_shipment_in_form,Supplier Shipments,Lieferposten von Lieferanten,0
 model,"ir.ui.menu,name",menu_shipment_in_form2,New Supplier Shipment,Neuer Lieferposten von Lieferant,0
 model,"ir.ui.menu,name",menu_shipment_in_received,Received Supplier shipments,Erhaltene Lieferposten von Lieferanten,0
