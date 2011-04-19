@@ -55,6 +55,7 @@ field,"account.invoice,amount_to_pay_today",0,Amount to Pay Today,Montant à pay
 field,"account.invoice,comment",0,Comment,Commentaire,0
 field,"account.invoice,company",0,Company,Société,0
 field,"account.invoice,currency",0,Currency,Devise,0
+field,"account.invoice,currency_date",0,Currency Date,Date du taux de change,0
 field,"account.invoice,currency_digits",0,Currency Digits,Décimales de la devise,0
 field,"account.invoice,description",0,Description,Description,0
 field,"account.invoice,invoice_address",0,Invoice Address,Adresse de facturation,0
