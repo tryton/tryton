@@ -7,6 +7,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="work_view_tree">
             <field name="model">project.work</field>
             <field name="type">tree</field>
+            <field name="priority" eval="20"/>
             <field name="field_childs">children</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -27,6 +28,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="work_view_list">
             <field name="model">project.work</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Works Efforts">
