@@ -100,6 +100,9 @@ class ModelSingleton(ModelStorage):
 
     def default_get(self, cursor, user, fields_names, context=None,
             with_rec_name=True):
+        if '_timestamp' in fields_names:
+            fields_names = list(fields_names)
+            fields_names.remove('_timestamp')
         res = super(ModelSingleton, self).default_get(cursor, user,
                 fields_names, context=context, with_rec_name=with_rec_name)
         singleton_id = self.get_singleton_id(cursor, user, context=context)
