@@ -77,6 +77,6 @@ class ProductSupplierDay(ModelSQL, ModelView):
         self._order.insert(0, ('weekday', 'ASC'))
 
     def default_weekday(self, cursor, user, context=None):
-        return -1
+        return '0'
 
 ProductSupplierDay()
