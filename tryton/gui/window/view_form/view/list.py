@@ -265,7 +265,7 @@ class ViewList(ParserView):
         act = action.copy()
         obj_ids = self.screen.sel_ids_get()
         obj_id = self.screen.id_get()
-        if not obj_ids and not obj_id:
+        if not obj_ids or not obj_id:
             message(_('No record selected!'), self.window)
             return False
         email = {}
