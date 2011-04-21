@@ -66,9 +66,26 @@ class TableHandler(TableHandlerInterface):
     def column_rename(self, old_name, new_name, exception=False):
         if self.column_exist(old_name) and \
                 not self.column_exist(new_name):
-            self.cursor.execute('ALTER TABLE "%s" ' \
-                    'RENAME COLUMN "%s" TO "%s"' %
-                    (self.table_name, old_name, new_name))
+            temp_table = '_temp_%s' % self.table_name
+            TableHandler.table_rename(self.cursor, self.table_name,
+                temp_table)
+            new_table = TableHandler(self.cursor, self._model,
+                history=self.history)
+            for column, (notnull, hasdef, size, typname) \
+                    in self._columns.iteritems():
+                if column == old_name:
+                    column = new_name
+                new_table.add_raw_column(column, typname, False,
+                    field_size=size)
+            new_columns = new_table._columns.keys()
+            old_columns = [x if x != old_name else new_name
+                for x in new_columns]
+            self.cursor.execute(('INSERT INTO "%s" (' + \
+                ','.join('"%s"' % x for x in new_columns) + \
+                ') SELECT ' + \
+                ','.join('"%s"' % x for x in old_columns) + ' ' + \
+                'FROM "%s"') % (self.table_name, temp_table))
+            self.cursor.execute('DROP TABLE "%s"' % temp_table)
         elif exception and self.column_exist(new_name):
             raise Exception('Unable to rename column %s.%s to %s.%s: ' \
                     '%s.%s already exist!' % \
