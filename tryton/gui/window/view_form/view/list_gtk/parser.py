@@ -270,7 +270,7 @@ class Char(object):
         else:
             align = 0
 
-        states = ('invisible')
+        states = ('invisible',)
         if hasattr(self.treeview, 'editable') \
                 and self.treeview.editable:
             states = ('readonly', 'required', 'invisible')
