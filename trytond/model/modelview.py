@@ -135,7 +135,7 @@ class ModelView(Model):
                 cursor.execute('SELECT arch, field_childs, id, type, ' \
                         'inherit, model ' \
                         'FROM ir_ui_view ' \
-                        'WHERE model = %s AND type = %s' \
+                        'WHERE model = %s AND type = %s ' \
                         'ORDER BY inherit DESC, priority ASC, id ASC',
                         (self._name, view_type))
             sql_res = cursor.fetchone()
