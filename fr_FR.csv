@@ -62,7 +62,7 @@ model,"ir.ui.menu,name",menu_open_hours_employee_monthly,Hours per Employee per 
 model,"ir.ui.menu,name",menu_open_hours_employee_weekly,Hours per Employee per Week,Nombre d'heures par employé par semaine,0
 model,"ir.ui.menu,name",menu_reporting,Reporting,Rapports,0
 model,"ir.ui.menu,name",menu_timesheet,Timesheet Management,Feuilles de présence,0
-model,"ir.ui.menu,name",menu_work_form,New Work,Activités,0
+model,"ir.ui.menu,name",menu_work_form,New Work,Nouvelle activité,0
 model,"ir.ui.menu,name",menu_work_form2,Hours per Work,Heures par activité,0
 model,"ir.ui.menu,name",menu_work_list,Works,Activités,1
 model,"ir.ui.menu,name",menu_work_tree,Works,Activités,0
