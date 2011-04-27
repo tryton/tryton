@@ -30,7 +30,7 @@ setup(name='trytond_account_stock_anglo_saxon',
     package_dir={'trytond.modules.account_stock_anglo_saxon': '.'},
     packages=[
         'trytond.modules.account_stock_anglo_saxon',
-        'trytond.modules.account.tests',
+        'trytond.modules.account_stock_anglo_saxon.tests',
     ],
     package_data={
         'trytond.modules.account_stock_anglo_saxon': info.get('xml', []) \
