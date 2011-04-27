@@ -31,6 +31,7 @@ setup(name='trytond_account',
     packages=[
         'trytond.modules.account',
         'trytond.modules.account.tests',
+        'trytond.modules.account.icons',
     ],
     package_data={
         'trytond.modules.account': info.get('xml', []) \
@@ -38,6 +39,7 @@ setup(name='trytond_account',
                 + ['aged_balance.odt', 'general_journal.odt',
                 'general_ledger.odt', 'third_party_balance.odt',
                 'trial_balance.odt'],
+        'trytond.modules.account.icons': ['tryton-financial.svg'],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
