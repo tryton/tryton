@@ -7,7 +7,7 @@
     'name_es_CO': 'Costo FIFO de producto',
     'name_es_ES': 'Coste FIFO de producto',
     'name_fr_FR': 'Prix de revient produit FIFO',
-    'version': '1.9.0',
+    'version': '2.0.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
