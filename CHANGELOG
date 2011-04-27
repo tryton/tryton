@@ -1,3 +1,5 @@
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
 * Add period to reduce data computation
 * Add internal_quantity on move to speedup computation
 
