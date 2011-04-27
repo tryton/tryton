@@ -1,3 +1,5 @@
+Version 2.0.0 - 2011-04-27
+* Bug fixes (see mercurial logs for details)
 * Add field currency_date to set the date for the rate calculation
 * Change get_move_line on Invoice Line and Tax to return a list of values
   instead of values
