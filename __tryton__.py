@@ -7,7 +7,7 @@
     'name_es_CO': 'Contabilidad Analítica',
     'name_es_ES': 'Contabilidad analítica',
     'name_fr_FR': 'Comptabilité analytique',
-    'version': '1.9.0',
+    'version': '2.0.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
