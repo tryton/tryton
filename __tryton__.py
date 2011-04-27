@@ -8,7 +8,7 @@
     'name_es_CO' : 'Terceros - SIRET',
     'name_es_ES': 'Terceros - SIRET',
     'name_fr_FR': 'Tiers - Siret',
-    'version' : '1.9.0',
+    'version' : '2.0.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
