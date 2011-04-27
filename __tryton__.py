@@ -7,7 +7,7 @@
     'name_es_CO': 'Tiempo de Trabajo en la Compañía',
     'name_es_ES': 'Tiempo de trabajo en la empresa',
     'name_fr_FR': 'Temps de travail dans la société',
-    'version': '1.9.0',
+    'version': '2.0.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
