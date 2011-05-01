@@ -4,6 +4,7 @@ from __future__ import with_statement
 import copy
 import datetime
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.transaction import Transaction
 
 
 class Template(ModelSQL, ModelView):
