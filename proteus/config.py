@@ -101,10 +101,10 @@ class TrytondConfig(Config):
     'Configuration for trytond'
 
     def __init__(self, database_name=None, user='admin', database_type=None,
-            language='en_US', password=''):
+            language='en_US', password='', config_file=None):
         super(TrytondConfig, self).__init__()
         from trytond.config import CONFIG
-        CONFIG.parse()
+        CONFIG.update_etc(config_file)
         if database_type is not None:
             CONFIG['db_type'] = database_type
         from trytond.modules import register_classes
