@@ -165,10 +165,10 @@ class TrytondConfig(Config):
         return [x for x in proxy._object._rpc]
 
 def set_trytond(database_name=None, user='admin', database_type=None,
-        language='en_US', password=''):
+        language='en_US', password='', config_file=None):
     'Set trytond package as backend'
     _CONFIG.current = TrytondConfig(database_name, user, database_type,
-            language=language, password=password)
+            language=language, password=password, config_file=config_file)
     return _CONFIG.current
 
 
