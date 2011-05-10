@@ -909,8 +909,6 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         for move in shipment.outgoing_moves:
             if move.state in ('cancel', 'done'):
                 continue
-            qty_default_uom = uom_obj.compute_qty(move.uom, move.quantity,
-                    move.product.default_uom)
             move_obj.create({
                     'from_location': move.shipment_out.warehouse.storage_location.id,
                     'to_location': move.from_location.id,
