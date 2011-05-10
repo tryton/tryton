@@ -229,8 +229,7 @@ class One2ManyValueDescriptor(ValueDescriptor):
                         fields=record._changed)))
                 value[0][1].append(record.id)
             else:
-                value.append(('create', record._get_values(
-                    fields=record._changed)))
+                value.append(('create', record._get_values()))
         if value_list.record_removed:
             value.append(('unlink', [x.id for x in value_list.record_removed]))
         if value_list.record_deleted:
