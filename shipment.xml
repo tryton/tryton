@@ -359,8 +359,8 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="reference" select="1"/>
                         <field name="planned_date" select="2"/>
                         <field name="effective_date" select="2"/>
-                        <field name="customer"/>
-                        <field name="delivery_address"/>
+                        <field name="customer" select="2"/>
+                        <field name="delivery_address" select="2"/>
                         <field name="state" select="1"/>
                         <field name="create_date" tree_invisible="1" select="2"/>
                     </tree>
