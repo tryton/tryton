@@ -281,7 +281,11 @@ class InventoryLine(ModelSQL, ModelView):
         :return: the stock.move id or None
         '''
         move_obj = self.pool.get('stock.move')
-        delta_qty = line.expected_quantity - line.quantity
+        uom_obj = self.pool.get('product.uom')
+
+        delta_qty = uom_obj.compute_qty(line.uom,
+            line.expected_quantity - line.quantity,
+            line.uom)
         if delta_qty == 0.0:
             return
         from_location = line.inventory.location.id
