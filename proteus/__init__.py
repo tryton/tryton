@@ -55,6 +55,7 @@ class FieldDescriptor(object):
         super(FieldDescriptor, self).__init__()
         self.name = name
         self.definition = definition
+        self.__doc__ = definition['string']
 
     def __get__(self, instance, owner):
         if instance.id > 0 and self.name not in instance._values:
