@@ -910,7 +910,8 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             if move.state in ('cancel', 'done'):
                 continue
             move_obj.create({
-                    'from_location': move.shipment_out.warehouse.storage_location.id,
+                    'from_location': \
+                        move.shipment_out.warehouse.storage_location.id,
                     'to_location': move.from_location.id,
                     'product': move.product.id,
                     'uom': move.uom.id,
