@@ -950,6 +950,8 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     'planned_date': move.planned_date,
                     'state': 'draft',
                     'company': move.company.id,
+                    'currency': move.currency.id,
+                    'unit_price': move.unit_price,
                     }, context=context)
 
     def create(self, cursor, user, values, context=None):
