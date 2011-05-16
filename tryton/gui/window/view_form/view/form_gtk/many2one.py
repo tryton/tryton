@@ -36,7 +36,7 @@ class Many2One(WidgetInterface):
         self.wid_text.connect('populate-popup', self._populate_popup)
         self.wid_text.connect_after('changed', self.sig_changed)
         self.changed = True
-        self.wid_text.connect_after('activate', self.sig_activate)
+        self.wid_text.connect('activate', self.sig_activate)
         self.wid_text.connect_after('focus-out-event',
                         self.sig_activate)
         self.focus_out = True
@@ -127,6 +127,8 @@ class Many2One(WidgetInterface):
 
         self.focus_out = False
         if not value:
+            if not key_press and not event:
+                widget.emit_stop_by_name('activate')
             if not self._readonly and (self.wid_text.get_text() or \
                     (self.field.get_state_attrs(
                         self.record)['required']) and key_press):
