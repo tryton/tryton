@@ -71,8 +71,10 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
             database = Database().connect()
             try:
                 cursor = database.cursor()
-                res = database.list(cursor)
-                cursor.close(close=True)
+                try:
+                    res = database.list(cursor)
+                finally:
+                    cursor.close(close=True)
             except Exception:
                 res = []
             return res

@@ -170,12 +170,11 @@ class TrytonDAVInterface(iface.dav_interface):
         dbname, dburi = self._get_dburi(uri)
         if not dbname:
             database = Database().connect()
+            cursor = database.cursor()
             try:
-                try:
-                    cursor = database.cursor()
-                    lists = database.list(cursor)
-                except Exception:
-                    lists = []
+                lists = database.list(cursor)
+            except Exception:
+                lists = []
             finally:
                 cursor.close()
             for dbname in lists:

@@ -86,26 +86,30 @@ class TrytonServer(object):
             database = Database(db_name).connect()
             cursor = database.cursor()
 
-            if CONFIG['init']:
-                if not cursor.test():
-                    self.logger.info("init db")
-                    Database.init(cursor)
-                    init[db_name] = True
-                cursor.commit()
+            try:
+                if CONFIG['init']:
+                    if not cursor.test():
+                        self.logger.info("init db")
+                        Database.init(cursor)
+                        init[db_name] = True
+                    cursor.commit()
+                elif not cursor.test():
+                    raise Exception("'%s' is not a Tryton database!" % db_name)
+            finally:
                 cursor.close()
-            elif not cursor.test():
-                raise Exception("'%s' is not a Tryton database!" % db_name)
 
         Pool.start()
 
         for db_name in CONFIG["db_name"]:
             cursor = Database(db_name).connect().cursor()
-            if not cursor.test():
-                raise Exception("'%s' is not a Tryton database!" % db_name)
-            cursor.execute('SELECT code FROM ir_lang ' \
-                    'WHERE translatable')
-            lang = [x[0] for x in cursor.fetchall()]
-            cursor.close()
+            try:
+                if not cursor.test():
+                    raise Exception("'%s' is not a Tryton database!" % db_name)
+                cursor.execute('SELECT code FROM ir_lang ' \
+                        'WHERE translatable')
+                lang = [x[0] for x in cursor.fetchall()]
+            finally:
+                cursor.close()
             update = bool(CONFIG['init'] or CONFIG['update'])
             Pool(db_name).init(update=update, lang=lang)
 
@@ -128,17 +132,20 @@ class TrytonServer(object):
 
                 database = Database(db_name).connect()
                 cursor = database.cursor()
-                salt = ''.join(random.sample(string.letters + string.digits, 8))
-                password += salt
-                if hashlib:
-                    password = hashlib.sha1(password).hexdigest()
-                else:
-                    password = sha.new(password).hexdigest()
-                cursor.execute('UPDATE res_user ' \
-                        'SET password = %s, salt = %s ' \
-                        'WHERE login = \'admin\'', (password, salt))
-                cursor.commit()
-                cursor.close()
+                try:
+                    salt = ''.join(random.sample(
+                        string.letters + string.digits, 8))
+                    password += salt
+                    if hashlib:
+                        password = hashlib.sha1(password).hexdigest()
+                    else:
+                        password = sha.new(password).hexdigest()
+                    cursor.execute('UPDATE res_user ' \
+                            'SET password = %s, salt = %s ' \
+                            'WHERE login = \'admin\'', (password, salt))
+                    cursor.commit()
+                finally:
+                    cursor.close()
 
         if update:
             self.logger.info('Update/Init succeed!')
