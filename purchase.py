@@ -609,8 +609,8 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         Return invoice line values for each purchase lines
 
         :param purchase: a BrowseRecord of the purchase
-        :return: a dictionary with line id as key and a list
-            of invoice line values as value
+        :return: a dictionary with invoiced purchase line id as key
+            and a list of invoice line values as value
         '''
         line_obj = self.pool.get('purchase.line')
         res = {}
@@ -675,12 +675,14 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         with Transaction().set_user(0, set_context=True):
             invoice_id = invoice_obj.create(vals)
 
-        for line_id in invoice_lines:
-            for vals in invoice_lines[line_id]:
+        for line in purchase.lines:
+            if line.id not in invoice_lines:
+                continue
+            for vals in invoice_lines[line.id]:
                 vals['invoice'] = invoice_id
                 with Transaction().set_user(0, set_context=True):
                     invoice_line_id = invoice_line_obj.create(vals)
-                purchase_line_obj.write(line_id, {
+                purchase_line_obj.write(line.id, {
                     'invoice_lines': [('add', invoice_line_id)],
                     })
 
