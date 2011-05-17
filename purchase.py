@@ -722,12 +722,14 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             'payment_term': purchase.payment_term.id,
         }, context=ctx)
 
-        for line_id in invoice_lines:
-            for vals in invoice_lines[line_id]:
+        for line in purchase.lines:
+            if line.id not in invoice_lines:
+                continue
+            for vals in invoice_lines[line.id]:
                 vals['invoice'] = invoice_id
                 invoice_line_id = invoice_line_obj.create(cursor, 0, vals,
                         context=ctx)
-                purchase_line_obj.write(cursor, user, line_id, {
+                purchase_line_obj.write(cursor, user, line.id, {
                     'invoice_lines': [('add', invoice_line_id)],
                     }, context=context)
 
