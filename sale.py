@@ -730,7 +730,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         :param sale: the BrowseRecord of the sale
         :param context: the context
 
-        :return: a dictionary with invoice line as key
+        :return: a dictionary with invoiced sale line id as key
             and a list of invoice lines values as value
         '''
         line_obj = self.pool.get('sale.line')
@@ -810,12 +810,14 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         vals = self._get_invoice_sale(cursor, user, sale, context=context)
         invoice_id = invoice_obj.create(cursor, 0, vals, context=ctx)
 
-        for line_id in invoice_lines:
-            for vals in invoice_lines[line_id]:
+        for line in sale.lines:
+            if line.id not in invoice_lines:
+                continue
+            for vals in invoice_lines[line.id]:
                 vals['invoice'] = invoice_id
                 invoice_line_id = invoice_line_obj.create(cursor, 0, vals,
                         context=ctx)
-                sale_line_obj.write(cursor, user, line_id, {
+                sale_line_obj.write(cursor, user, line.id, {
                     'invoice_lines': [('add', invoice_line_id)],
                     }, context=context)
 
