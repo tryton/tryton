@@ -122,6 +122,8 @@ def file_open(name, mode="r", subdir='modules'):
     name2 = False
     while True:
         head, tail = os.path.split(head)
+        if head == root_path:
+            break
         if not tail:
             break
         if zipname:
