@@ -927,7 +927,7 @@ class Line(ModelSQL, ModelView):
     def search_move_field(self, name, clause):
         if name == 'move_state':
             name = 'state'
-        return [('move.' + name,) + clause[1:]]
+        return [('move.' + name,) + tuple(clause[1:])]
 
     def query_get(self, obj='l'):
         '''
