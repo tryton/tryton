@@ -165,9 +165,9 @@ this repository contains the full copyright notices and license terms. -->
                             expr="/form/notebook/page/separator[@name=&quot;signature&quot;]"
                             position="before">
                             <label name="main_company"/>
-                            <field name="main_company"/>
+                            <field name="main_company" widget="selection"/>
                             <label name="company"/>
-                            <field name="company"/>
+                            <field name="company" widget="selection"/>
                             <label name="employee"/>
                             <field name="employee"/>
                         </xpath>
@@ -185,7 +185,7 @@ this repository contains the full copyright notices and license terms. -->
                             expr="/form/notebook/page/separator[@name=&quot;signature&quot;]"
                             position="before">
                             <label name="company"/>
-                            <field name="company"/>
+                            <field name="company" widget="selection"/>
                         </xpath>
                     </data>
                 ]]>
