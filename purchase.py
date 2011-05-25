@@ -1104,7 +1104,7 @@ class PurchaseLine(ModelSQL, ModelView):
 
 
         if res['quantity'] <= 0.0:
-            return None
+            return []
         res['unit'] = line.unit.id
         res['product'] = line.product.id
         res['unit_price'] = line.unit_price
