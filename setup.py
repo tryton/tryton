@@ -31,6 +31,7 @@ setup(name=PACKAGE,
         'trytond.res': ['*.xml', '*.csv'],
         'trytond.webdav': ['*.xml', '*.csv'],
         'trytond.workflow': ['*.xml', '*.csv'],
+        'trytond.test': ['*.xml'],
     },
     scripts=['bin/trytond'],
     classifiers=[
