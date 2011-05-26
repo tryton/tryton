@@ -191,8 +191,11 @@ class Rule(ModelSQL, ModelView):
         with contextlib.nested(Transaction().set_user(0),
                 Transaction().set_context(user=0)):
             for rule in self.browse(ids):
+                operator = rule.operator
+                if operator == '<>':
+                    operator = '!='
                 dom = safe_eval("[('%s', '%s', %s)]" % \
-                        (rule.field.name, rule.operator,
+                        (rule.field.name, operator,
                             operand2query[rule.operand]), {
                                 'user': self.pool.get('res.user').browse(user),
                                 'time': time,
