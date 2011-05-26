@@ -162,7 +162,7 @@ class OpenWork(Wizard):
     def _action_open_work(self, data):
         model_data_obj = self.pool.get('ir.model.data')
         act_window_obj = self.pool.get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('timesheet', 'act_work_tree2')
+        act_window_id = model_data_obj.get_id('timesheet', 'act_work_hours_board')
         res = act_window_obj.read(act_window_id)
         res['pyson_context'] = PYSONEncoder().encode({
             'from_date': data['form']['from_date'],

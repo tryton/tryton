@@ -138,12 +138,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_tree2"/>
             <field name="act_window" ref="act_work_tree2"/>
         </record>
-        <record model="ir.action.wizard" id="act_open_work">
-            <field name="name">Hours per Work</field>
-            <field name="wiz_name">timesheet.work.open</field>
-        </record>
-        <menuitem parent="menu_reporting" action="act_open_work"
-            id="menu_work_tree2" icon="tryton-tree"/>
 
         <record model="ir.ui.view" id="work_view_graph">
             <field name="model">timesheet.work</field>
@@ -165,7 +159,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_work_form2">
             <field name="name">Hours per Work</field>
             <field name="res_model">timesheet.work</field>
-            <field name="domain">[('parent', '=', False)]</field>
+            <field name="domain" eval="'[(\'parent\', \'=\', Get(Eval(\'_active_%s\', {}), \'id\', False))]' % ref('act_work_tree2')"/>
         </record>
         <record model="ir.action.act_window.view"
             id="act_work_form2_view1">
@@ -173,10 +167,35 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_graph"/>
             <field name="act_window" ref="act_work_form2"/>
         </record>
-        <record model="ir.action.wizard" id="act_open_work2">
-            <field name="name">Hours per Work</field>
-            <field name="wiz_name">timesheet.work.open2</field>
+
+        <record model="ir.ui.view" id="work_hours_board">
+            <field name="type">board</field>
+            <field name="model"></field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <board string="Hours per Work">
+                    <hpaned id="hours_per_work">
+                        <child id="tree">
+                            <action name="%(act_work_tree2)s"/>
+                        </child>
+                        <child id="graph">
+                            <action name="%(act_work_form2)s"/>
+                        </child>
+                    </hpaned>
+                </board>
+                ]]>
+            </field>
         </record>
+        <record model="ir.action.act_window" id="act_work_hours_board">
+            <field name="name">Hours per Work</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_work_hours_board_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="work_hours_board"/>
+            <field name="act_window" ref="act_work_hours_board"/>
+        </record>
+
         <record model="ir.ui.view" id="work_open_init_view_form">
             <field name="model">timesheet.work.open.init</field>
             <field name="type">form</field>
@@ -191,8 +210,14 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <menuitem parent="menu_work_tree2" action="act_open_work2"
-            id="menu_work_form2" icon="tryton-graph"/>
+
+        <record model="ir.action.wizard" id="act_open_work">
+            <field name="name">Hours per Work</field>
+            <field name="wiz_name">timesheet.work.open</field>
+        </record>
+        <menuitem parent="menu_reporting" action="act_open_work"
+            id="menu_work_tree2" icon="tryton-graph"/>
+
 
         <record model="ir.action.act_window" id="act_work_form3">
             <field name="name">Hours per Work</field>
