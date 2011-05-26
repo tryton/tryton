@@ -195,8 +195,11 @@ class Rule(ModelSQL, ModelView):
                 recur=['many2one'], root_tech='user', root='User')
         # Use root user without context to prevent recursion
         for rule in self.browse(cursor, 0, ids):
+            operator = rule.operator
+            if operator == '<>':
+                operator = '!='
             dom = safe_eval("[('%s', '%s', %s)]" % \
-                    (rule.field.name, rule.operator,
+                    (rule.field.name, operator,
                         operand2query[rule.operand]),
                     {'user': self.pool.get('res.user').browse(cursor, 0,
                         user), 'time': time})
