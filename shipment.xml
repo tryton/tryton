@@ -265,18 +265,17 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <form string="Unable to Assign" col="2">
                     <image name="tryton-dialog-information"/>
-                    <group col="1" id="labels">
-                        <separator string="Unable to assign those products:"
-                            id="unable"/>
-                        <field name="moves">
-                            <tree string="Moves"  fill="1">
-                                <field name="product"/>
-                                <field name="quantity"/>
-                                <field name="uom"/>
-                                <field name="unit_digits" tree_invisible="1"/>
-                            </tree>
-                        </field>
-                    </group>
+                    <separator string="Unable to assign those products:"
+                        id="unable"/>
+                    <label id="empty"/>
+                    <field name="moves">
+                        <tree string="Moves" fill="1">
+                            <field name="product"/>
+                            <field name="quantity"/>
+                            <field name="uom"/>
+                            <field name="unit_digits" tree_invisible="1"/>
+                        </tree>
+                    </field>
                 </form>
                 ]]>
             </field>
@@ -469,18 +468,17 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <form string="Unable to Assign" col="2">
                     <image name="tryton-dialog-information"/>
-                    <group col="1" id="labels">
-                        <separator string="Unable to assign those products:"
-                            id="unable"/>
-                        <field name="inventory_moves">
-                            <tree string="Inventory Moves"  fill="1">
-                                <field name="product"/>
-                                <field name="quantity"/>
-                                <field name="uom"/>
-                                <field name="unit_digits" tree_invisible="1"/>
-                            </tree>
-                        </field>
-                    </group>
+                    <separator string="Unable to assign those products:"
+                        id="unable"/>
+                    <label id="empty"/>
+                    <field name="inventory_moves">
+                        <tree string="Inventory Moves" fill="1">
+                            <field name="product"/>
+                            <field name="quantity"/>
+                            <field name="uom"/>
+                            <field name="unit_digits" tree_invisible="1"/>
+                        </tree>
+                    </field>
                 </form>
                 ]]>
             </field>
@@ -669,18 +667,17 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <form string="Unable to Assign" col="2">
                     <image name="tryton-dialog-information"/>
-                    <group col="1" id="labels">
-                        <separator string="Unable to assign those products:"
-                            id="unable"/>
-                        <field name="moves">
-                            <tree string="Moves"  fill="1">
-                                <field name="product"/>
-                                <field name="quantity"/>
-                                <field name="uom"/>
-                                <field name="unit_digits" tree_invisible="1"/>
-                            </tree>
-                        </field>
-                    </group>
+                    <separator string="Unable to assign those products:"
+                        id="unable"/>
+                    <label id="empty"/>
+                    <field name="moves">
+                        <tree string="Moves"  fill="1">
+                            <field name="product"/>
+                            <field name="quantity"/>
+                            <field name="uom"/>
+                            <field name="unit_digits" tree_invisible="1"/>
+                        </tree>
+                    </field>
                 </form>
                 ]]>
             </field>
