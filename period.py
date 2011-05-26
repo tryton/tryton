@@ -36,6 +36,8 @@ class Period(ModelSQL, ModelView):
         ('standard', 'Standard'),
         ('adjustment', 'Adjustment'),
         ], 'Type', required=True, states=_STATES, select=1)
+    company = fields.Function(fields.Many2One('company.company', 'Company',),
+        'get_company', searcher='search_company')
 
     def __init__(self):
         super(Period, self).__init__()
@@ -71,6 +73,15 @@ class Period(ModelSQL, ModelView):
 
     def default_type(self):
         return 'standard'
+
+    def get_company(self, ids, name):
+        result = {}
+        for period in self.browse(ids):
+            result[period.id] = period.fiscalyear.company.id
+        return result
+
+    def search_company(self, name, clause):
+        return [('fiscalyear.%s' % name,) + tuple(clause[1:])]
 
     def check_dates(self, ids):
         cursor = Transaction().cursor

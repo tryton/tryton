@@ -128,12 +128,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="operand">User/Current Company</field>
             <field name="rule_group" ref="rule_group_fiscalyear"/>
         </record>
-        <record model="ir.rule" id="rule_fiscalyear2">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.fiscalyear')]"/>
-            <field name="operator">=</field>
-            <field name="operand">False</field>
-            <field name="rule_group" ref="rule_group_fiscalyear"/>
-        </record>
 
         <record model="ir.ui.view" id="fiscalyear_close_fiscalyear_init_view_form">
             <field name="model">account.fiscalyear.close_fiscalyear.init</field>

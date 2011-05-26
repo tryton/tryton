@@ -137,5 +137,16 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_processing" action="act_period_form2"
             id="menu_period_form2" name="Close Periods"/>
+
+        <record model="ir.rule.group" id="rule_group_period">
+            <field name="model" search="[('model', '=', 'account.period')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_period1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.period')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_period"/>
+        </record>
     </data>
 </tryton>
