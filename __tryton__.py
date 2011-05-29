@@ -6,7 +6,7 @@
     "name_de_DE" : "Lagerverwaltung Bestellwesen nach Wochentagen",
     "name_es_ES" : "Existencias por días de la semana",
     "name_es_CO" : "Existencias por días de la semana",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "author" : "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
