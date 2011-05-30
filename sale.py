@@ -1160,7 +1160,9 @@ class SaleLine(ModelSQL, ModelView):
         if line.type != 'line':
             return [res]
 
-        if line.sale.invoice_method == 'order':
+        if (line.sale.invoice_method == 'order'
+                or not line.product
+                or line.product.type == 'service'):
             quantity = line.quantity
         else:
             quantity = 0.0
