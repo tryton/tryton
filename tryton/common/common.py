@@ -1149,17 +1149,13 @@ def float_time_to_text(val, conv=None):
     val = val - hours
     mins = int((val% 1 + 0.01) / conv['m'])
     if years:
-        value += ' ' + locale.format('%d' + FLOAT_TIME_SEPS['Y'],
-                years, True)
+        value += ' ' + locale.format('%d', years, True) + FLOAT_TIME_SEPS['Y']
     if months:
-        value += ' ' + locale.format('%d' + FLOAT_TIME_SEPS['M'],
-                months, True)
+        value += ' ' + locale.format('%d', months, True) + FLOAT_TIME_SEPS['M']
     if weeks:
-        value += ' ' + locale.format('%d' + FLOAT_TIME_SEPS['w'],
-                weeks, True)
+        value += ' ' + locale.format('%d', weeks, True) + FLOAT_TIME_SEPS['w']
     if days:
-        value += ' ' + locale.format('%d' + FLOAT_TIME_SEPS['d'],
-                days, True)
+        value += ' ' + locale.format('%d', days, True) + FLOAT_TIME_SEPS['d']
     if hours or mins:
         value += ' %02d:%02d' % (hours, mins)
     value = value.strip()
