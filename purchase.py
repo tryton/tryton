@@ -1075,7 +1075,9 @@ class PurchaseLine(ModelSQL, ModelView):
         res['note'] = line.note
         if line.type != 'line':
             return [res]
-        if line.purchase.invoice_method == 'order':
+        if (line.purchase.invoice_method == 'order'
+                and not line.product
+                or line.product.type == 'service'):
             quantity = line.quantity
         else:
             quantity = 0.0
