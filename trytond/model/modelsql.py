@@ -239,8 +239,9 @@ class ModelSQL(ModelStorage):
                             'write_uid', 'write_date'):
                 default.append(i)
         for i in self._inherit_fields.keys():
-            if (not i in values) \
-                    and (not self._inherit_fields[i][0] in avoid_table):
+            if ((not i in values)
+                    and (not self._inherit_fields[i][0] in avoid_table)
+                    and i in self._defaults):
                 default.append(i)
 
         if len(default):
