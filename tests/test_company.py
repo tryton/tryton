@@ -24,6 +24,7 @@ class CompanyTestCase(unittest.TestCase):
         self.company = POOL.get('company.company')
         self.employee = POOL.get('company.employee')
         self.currency = POOL.get('currency.currency')
+        self.user = POOL.get('res.user')
 
     def test0005views(self):
         '''
@@ -86,6 +87,63 @@ class CompanyTestCase(unittest.TestCase):
                 'company': company1_id,
                 })
             transaction.cursor.commit()
+
+    def test0040user(self):
+        '''
+        Test user company
+        '''
+        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+            currency1_id = self.currency.search([
+                ('code', '=', 'cu1'),
+                ], 0, 1, None)[0]
+
+            company1_id = self.company.search([
+                ('name', '=', 'B2CK'),
+                ], 0, 1, None)[0]
+
+            company2_id = self.company.create({
+                'name': 'B2CK Branch',
+                'parent': company1_id,
+                'currency': currency1_id,
+                })
+            user1_id = self.user.create({
+                'name': 'Test 1',
+                'login': 'test1',
+                'main_company': company1_id,
+                'company': company1_id,
+            })
+            user2_id = self.user.create({
+                'name': 'Test 2',
+                'login': 'test2',
+                'main_company': company2_id,
+                'company': company2_id,
+            })
+            self.assert_(user1_id)
+
+            with transaction.set_user(user1_id):
+                company_id = self.user.read(user1_id, ['company'])['company']
+                self.assertEqual(company_id, company1_id)
+
+                user1, user2 = self.user.browse([user1_id, user2_id])
+                self.assertEqual(user1.company.id, company1_id)
+                self.assertEqual(user2.company.id, company2_id)
+
+                with transaction.set_context({'company': company2_id}):
+                    company_id = self.user.read(user1_id, ['company'])['company']
+                    self.assertEqual(company_id, company2_id)
+
+                    user1, user2 = self.user.browse([user1_id, user2_id])
+                    self.assertEqual(user1.company.id, company2_id)
+                    self.assertEqual(user2.company.id, company2_id)
+
+                with transaction.set_context({'company': False}):
+                    company_id = self.user.read(user1_id, ['company'])['company']
+                    self.assertEqual(company_id, False)
+
+                    user1, user2 = self.user.browse([user1_id, user2_id])
+                    self.assertEqual(user1.company.id, False)
+                    self.assertEqual(user2.company.id, company2_id)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

@@ -167,6 +167,33 @@ class User(ModelSQL, ModelView):
         res = copy.deepcopy(res)
         return res
 
+    def read(self, ids, fields_names=None):
+        user_id = Transaction().user
+        if user_id == 0 and 'user' in Transaction().context:
+            user_id = Transaction().context['user']
+        result = super(User, self).read(ids, fields_names=fields_names)
+        if (fields_names
+                and 'company' in fields_names
+                and 'company' in Transaction().context):
+            values = None
+            if isinstance(ids, (int, long)):
+                if int(user_id) == ids:
+                    values = result
+            else:
+                if int(user_id) in ids:
+                    for vals in result:
+                        if vals['id'] == int(user_id):
+                            values = vals
+                            break
+            if values:
+                with Transaction().reset_context():
+                    companies = self.read(user_id, ['companies'])['companies']
+                company_id = Transaction().context['company']
+                if ((company_id and company_id in companies)
+                        or not company_id):
+                    values['company'] = company_id
+        return result
+
 User()
 
 
