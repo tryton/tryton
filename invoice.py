@@ -1279,7 +1279,7 @@ class InvoiceLine(ModelSQL, ModelView):
                 ('company', '=', Get(Eval('_parent_invoice', {}), 'company',
                     Eval('company'))),
                 ('id', '!=', Get(Eval('_parent_invoice', {}), 'account', 0)),
-            ],
+            ], on_change=['account', 'product'],
             states={
                 'invisible': Not(Equal(Eval('type'), 'line')),
                 'required': Equal(Eval('type'), 'line'),
@@ -1619,6 +1619,19 @@ class InvoiceLine(ModelSQL, ModelView):
         vals['type'] = 'line'
         res['amount'] = self.on_change_with_amount(vals)
         return res
+
+    def on_change_account(self, values):
+        account_obj = self.pool.get('account.account')
+        if values.get('product'):
+            return {}
+        taxes = []
+        result = {
+            'taxes': taxes,
+        }
+        if values.get('account'):
+            account = account_obj.browse(values['account'])
+            taxes.extend(tax.id for tax in account.taxes)
+        return result
 
     def check_modify(self, ids):
         '''
