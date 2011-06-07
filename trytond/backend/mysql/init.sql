@@ -120,7 +120,7 @@ CREATE TABLE wkf_transition (
     act_to BIGINT,
     `condition` VARCHAR(255),
     trigger_expr_id VARCHAR(255),
-    signal VARCHAR(255),
+    `signal` VARCHAR(255),
     `group` BIGINT,
     PRIMARY KEY(id),
     CONSTRAINT wkf_transition_act_from_fkey FOREIGN KEY (act_from) REFERENCES wkf_activity (id) ON DELETE CASCADE,
