@@ -472,6 +472,11 @@
   <define name="attlist.action" combine="interleave">
     <attribute name="name"/>
   </define>
+  <define name="attlist.action" combine="interleave">
+    <optional>
+      <attribute name="colspan" a:defaultValue="1"/>
+    </optional>
+  </define>
   <define name="label" combine="choice">
     <notAllowed/>
   </define>
