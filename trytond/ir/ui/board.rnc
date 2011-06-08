@@ -159,5 +159,6 @@ attlist.xpath &=
   attribute position { "inside" | "replace" | "replace_attributes" | "after" | "before" }?
 action = element action { attlist.action, empty }
 attlist.action &= attribute name { text }
+attlist.action &= [ a:defaultValue = "1" ] attribute colspan { text }?
 label |= notAllowed
 start = data | board | label
