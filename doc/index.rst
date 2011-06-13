@@ -6,7 +6,7 @@ basis for simple project management.
 
 
 Work
-####
+****
 
 The Work model from the Timesheet module is extended and is used for
 creating both projects and tasks. This allows for instance to
