@@ -6,7 +6,7 @@ module.
 
 
 Allocation
-##########
+**********
 
 An allocation links together an employee, a task and a percentage. It
 defines which part of his time the employee should dedicate to this
@@ -14,7 +14,7 @@ task.
 
 
 Work
-####
+****
 
 The Work model is extended to support planning features:
 
