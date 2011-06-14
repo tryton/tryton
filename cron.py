@@ -10,17 +10,20 @@ class Cron(ModelSQL, ModelView):
             'Companies', help='Companies registered for this cron')
 
     def _callback(self, cron):
-        cursor = Transaction().cursor
-        cursor.execute("SELECT company from cron_company_rel "
-                       "WHERE cron = %s", (cron['id'],))
-        for company, in cursor.fetchall():
-            cursor.execute(
-                "UPDATE res_user SET company = %s, main_company = %s "
-                "WHERE id = %s", (company, company, cron['user']))
+        user_obj = self.pool.get('res.user')
+        if not cron.companies:
+            return super(Cron, self)._callback(cron)
+        # TODO replace with context
+        for company in cron.companies:
+            user_obj.write(cron.user.id, {
+                'company': company.id,
+                'main_company': company.id,
+            })
             super(Cron, self)._callback(cron)
-        cursor.execute(
-            "UPDATE res_user SET company = NULL, main_company = NULL "
-            "WHERE id = %s", (cron['user'],))
+        user_obj.write(cron.user.id, {
+            'company': False,
+            'main_company': False,
+        })
 
     def default_companies(self):
         company_obj = self.pool.get('company.company')

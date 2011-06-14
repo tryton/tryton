@@ -13,8 +13,8 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath
                        expr="/form/field[@name=&quot;args&quot;]"
                        position="after">
-                      <separator name="companies" colspan="6"/>
-                      <field name="companies" colspan="6"/>
+                      <separator name="companies" colspan="4"/>
+                      <field name="companies" colspan="4"/>
                     </xpath>
                 </data>
                 ]]>
