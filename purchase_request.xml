@@ -213,6 +213,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Cron Purchase Request</field>
             <field name="groups" eval="[('add', ref('group_purchase_request'))]"/>
             <field name="signature"></field>
+            <field name="active" eval="False"/>
         </record>
 
         <record model="ir.cron" id="cron_generate_request">
@@ -222,11 +223,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="active" eval="True"/>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
-            <field name="numbercall">-1</field>
-            <field name="doall" eval="False"/>
+            <field name="number_calls">-1</field>
+            <field name="repeat_missed" eval="False"/>
             <field name="model">purchase.request</field>
             <field name="function">generate_requests</field>
-            <field name="priority">5</field>
         </record>
 
     </data>
