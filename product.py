@@ -13,7 +13,7 @@ class Category(ModelSQL, ModelView):
         'Account Expense', domain=[
             ('kind', '=', 'expense'),
             ('company', '=', Eval('company')),
-        ],
+        ], on_change=['account_expense'],
         states={
             'invisible': Not(Bool(Eval('company'))),
         }))
@@ -21,7 +21,7 @@ class Category(ModelSQL, ModelView):
         'Account Revenue', domain=[
             ('kind', '=', 'revenue'),
             ('company', '=', Eval('company')),
-        ],
+        ], on_change=['account_revenue'],
         states={
             'invisible': Not(Bool(Eval('company'))),
         }))
@@ -29,6 +29,28 @@ class Category(ModelSQL, ModelView):
             'category', 'tax', 'Customer Taxes', domain=[('parent', '=', False)])
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
             'category', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)])
+
+    def on_change_account_expense(self, values):
+        account_obj = self.pool.get('account.account')
+        supplier_taxes = []
+        result = {
+            'supplier_taxes': supplier_taxes,
+        }
+        if values.get('account_expense'):
+            account = account_obj.browse(values['account_expense'])
+            supplier_taxes.extend(tax.id for tax in account.taxes)
+        return result
+
+    def on_change_account_revenue(self, values):
+        account_obj = self.pool.get('account.account')
+        customer_taxes = []
+        result = {
+            'customer_taxes': customer_taxes,
+        }
+        if values.get('account_revenue'):
+            account = account_obj.browse(values['account_revenue'])
+            customer_taxes.extend(tax.id for tax in account.taxes)
+        return result
 
 Category()
 
@@ -88,7 +110,7 @@ class Template(ModelSQL, ModelView):
         'Account Expense', domain=[
             ('kind', '=', 'expense'),
             ('company', '=', Eval('company')),
-        ],
+        ], on_change=['account_expense'],
         states={
             'invisible': Or(Not(Bool(Eval('company'))),
                 Bool(Eval('account_category'))),
@@ -98,7 +120,7 @@ class Template(ModelSQL, ModelView):
         'Account Revenue', domain=[
             ('kind', '=', 'revenue'),
             ('company', '=', Eval('company')),
-        ],
+        ], on_change=['account_revenue'],
         states={
             'invisible': Or(Not(Bool(Eval('company'))),
                 Bool(Eval('account_category'))),
@@ -162,6 +184,28 @@ class Template(ModelSQL, ModelView):
             else:
                 res[product.id] = [x.id for x in product[name]]
         return res
+
+    def on_change_account_expense(self, values):
+        account_obj = self.pool.get('account.account')
+        supplier_taxes = []
+        result = {
+            'supplier_taxes': supplier_taxes,
+        }
+        if values.get('account_expense'):
+            account = account_obj.browse(values['account_expense'])
+            supplier_taxes.extend(tax.id for tax in account.taxes)
+        return result
+
+    def on_change_account_revenue(self, values):
+        account_obj = self.pool.get('account.account')
+        customer_taxes = []
+        result = {
+            'customer_taxes': customer_taxes,
+        }
+        if values.get('account_revenue'):
+            account = account_obj.browse(values['account_revenue'])
+            customer_taxes.extend(tax.id for tax in account.taxes)
+        return result
 
 Template()
 
