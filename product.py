@@ -187,7 +187,7 @@ class Product(ModelSQL, ModelView):
         location_ids = set(location_ids)
         storage_to_remove = set()
         wh_to_add = {}
-        for location in location_obj.browse(location_ids):
+        for location in location_obj.browse(list(location_ids)):
             if (location.type == 'warehouse'
                     and Transaction().context.get('stock_skip_warehouse')):
                 location_ids.remove(location.id)
