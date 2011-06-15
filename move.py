@@ -16,6 +16,7 @@ class Move(ModelSQL, ModelView):
     "Stock Move"
     _name = 'stock.move'
     _description = __doc__
+    _order_name = 'product'
     product = fields.Many2One("product.product", "Product", required=True,
             select=1, states=STATES,
             on_change=['product', 'currency', 'uom', 'company',
