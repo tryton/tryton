@@ -203,7 +203,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
                 if line['invoice']:
                     invoice_ids.add(line['invoice'])
             invoice_id2amount_to_pay = {}
-            for invoice in invoice_obj.browse(invoice_ids):
+            for invoice in invoice_obj.browse(list(invoice_ids)):
                 with Transaction().set_context(date=invoice.currency_date):
                     invoice_id2amount_to_pay[invoice.id] = currency_obj.compute(
                         invoice.currency.id, invoice.amount_to_pay,
