@@ -20,6 +20,7 @@ _STATES = {
 class Purchase(ModelWorkflow, ModelSQL, ModelView):
     'Purchase'
     _name = 'purchase.purchase'
+    _rec_name = 'reference'
     _description = __doc__
 
     company = fields.Many2One('company.company', 'Company', required=True,
