@@ -184,11 +184,10 @@ class Product(ModelSQL, ModelView):
         # Skip warehouse location in favor of their storage location
         # to compute quantities. Keep track of which ids to remove
         # and to add after the query.
-        locations = location_obj.browse(location_ids)
         location_ids = set(location_ids)
         storage_to_remove = set()
         wh_to_add = {}
-        for location in locations:
+        for location in location_obj.browse(location_ids):
             if (location.type == 'warehouse'
                     and Transaction().context.get('stock_skip_warehouse')):
                 location_ids.remove(location.id)
