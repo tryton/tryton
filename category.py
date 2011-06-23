@@ -73,6 +73,6 @@ class Category(ModelSQL, ModelView):
             ids = self.search(cursor, user, domain, order=[], context=context)
             return [('id', 'in', ids)]
         #TODO Handle list
-        return [('name',) + clause[1:]]
+        return [('name',) + tuple(clause[1:])]
 
 Category()
