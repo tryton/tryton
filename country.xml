@@ -13,7 +13,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name"/>
                     <label name="code"/>
                     <field name="code"/>
-                    <separator name="subdivisions" colspan="4"/>
                     <field name="subdivisions" colspan="4"/>
                 </form>
                 ]]>
