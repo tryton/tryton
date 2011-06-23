@@ -79,14 +79,11 @@ this repository contains the full copyright notices and license terms. -->
                                     <field name="comment"/>
                                 </tree>
                             </field>
-                            <group col="1" colspan="2" id="categories">
-                                <separator string="Categories" id="categories"/>
-                                <field name="categories">
-                                    <tree string="Categories" fill="1">
-                                        <field name="rec_name" select="1"/>
-                                    </tree>
-                                </field>
-                            </group>
+                            <field name="categories" colspan="2">
+                                <tree string="Categories" fill="1">
+                                    <field name="rec_name" select="1"/>
+                                </tree>
+                            </field>
                         </page>
                         <page string="Accounting" id="accounting">
                             <separator string="VAT" colspan="4" id="vat"/>
@@ -195,7 +192,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="VAT Information Exchange System Results" col="1">
-                    <separator name="parties_succeed"/>
                     <field name="parties_succeed">
                         <tree string="Parties Succeed" fill="1">
                             <field name="code"/>
@@ -203,7 +199,6 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="vat_code"/>
                         </tree>
                     </field>
-                    <separator name="parties_failed"/>
                     <field name="parties_failed">
                         <tree string="Parties Failed" fill="1">
                             <field name="code"/>
