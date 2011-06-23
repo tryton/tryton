@@ -12,7 +12,6 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath
                         expr="/form/notebook/page/field[@name=&quot;invoices&quot;]"
                         position="after">
-                        <separator name="invoice_lines" colspan="4"/>
                         <field name="invoice_lines" colspan="4"/>
                     </xpath>
                 </data>
