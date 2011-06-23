@@ -110,7 +110,6 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
                         <page string="Analytic" col="1" id="analytic">
-                            <separator name="analytic_lines"/>
                             <field name="analytic_lines"/>
                         </page>
                     </xpath>
@@ -128,7 +127,6 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath expr="/form/field[@name='lines']/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
                         <page string="Analytic" col="1" id="analytic">
-                            <separator name="analytic_lines"/>
                             <field name="analytic_lines"/>
                         </page>
                     </xpath>
