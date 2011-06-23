@@ -18,10 +18,8 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="account_revenue"/>
                             <label name="account_expense"/>
                             <field name="account_expense"/>
-                            <separator name="customer_taxes" colspan="4"/>
-                            <field name="customer_taxes" colspan="4"/>
-                            <separator name="supplier_taxes" colspan="4"/>
-                            <field name="supplier_taxes" colspan="4"/>
+                            <field name="customer_taxes" colspan="2"/>
+                            <field name="supplier_taxes" colspan="2"/>
                         </page>
                     </xpath>
                 </data>
@@ -51,8 +49,6 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="taxes_category"/>
                             <field name="taxes_category"/>
                             <newline/>
-                            <separator name="customer_taxes" colspan="2"/>
-                            <separator name="supplier_taxes" colspan="2"/>
                             <field name="customer_taxes" colspan="2"/>
                             <field name="supplier_taxes" colspan="2"/>
                         </page>
