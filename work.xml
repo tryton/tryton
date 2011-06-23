@@ -32,14 +32,11 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="duration"/>
                             <field name="duration" widget="float_time" float_time="company_work_time"/>
                             <newline/>
-                            <separator name="predecessors" colspan="2"/>
-                            <separator name="successors" colspan="2"/>
                             <field name="predecessors" colspan="2"/>
                             <field name="successors" colspan="2"/>
                         </page>
                         <page string="Allocations" id="allocations"
                             states="{'invisible': Not(Equal(Eval('type'), 'task'))}" >
-                            <separator name="allocations" colspan="4"/>
                             <field name="allocations" colspan="4"/>
                         </page>
                         <page string="Requests" id="requests">
