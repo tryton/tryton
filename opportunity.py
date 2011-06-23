@@ -3,6 +3,7 @@
 "Sales extension for managing leads and opportunities"
 from __future__ import with_statement
 import datetime
+import time
 from trytond.model import ModelView, ModelSQL, ModelWorkflow, fields
 from trytond.wizard import Wizard
 from trytond.backend import FIELDS
@@ -449,6 +450,10 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
         # Remove microsecond from timestamp
         for values in res:
             if 'date' in values:
+                if isinstance(values['date'], basestring):
+                    values['date'] = datetime.datetime(
+                        *time.strptime(values['date'],
+                            '%Y-%m-%d %H:%M:%S.%f')[:6])
                 values['date'] = values['date'].replace(microsecond=0)
         return res
 
