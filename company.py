@@ -180,7 +180,10 @@ class Property(ModelSQL, ModelView):
 
     def _set_values(self, name, model, res_id, val, field_id):
         user_obj = self.pool.get('res.user')
-        user = user_obj.browse(Transaction().user)
+        user_id = Transaction().user
+        if user_id == 0:
+            user_id = Transaction().context.get('user', user_id)
+        user = user_obj.browse(user_id)
         res = super(Property, self)._set_values(name, model, res_id, val, 
                 field_id)
         if user:
