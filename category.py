@@ -14,7 +14,7 @@ class Category(ModelSQL, ModelView):
     "Category"
     _name = "party.category"
     _description = __doc__
-    name = fields.Char('Name', required=True, states=STATES)
+    name = fields.Char('Name', required=True, states=STATES, translate=True)
     parent = fields.Many2One('party.category', 'Parent',
            select=1, states=STATES)
     childs = fields.One2Many('party.category', 'parent',
