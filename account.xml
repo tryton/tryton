@@ -343,7 +343,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="deferral"/>
                     <label name="reconcile"/>
                     <field name="reconcile"/>
-                    <separator name="taxes" colspan="6"/>
                     <field name="taxes" colspan="6"/>
                 </form>
                 ]]>
@@ -591,7 +590,6 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="currency"/>
                             <label name="second_currency"/>
                             <field name="second_currency"/>
-                            <separator name="taxes" colspan="4"/>
                             <field name="taxes" colspan="4"/>
                         </page>
                         <page string="Deferrals" id="deferrals">
