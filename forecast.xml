@@ -158,7 +158,6 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="minimal_quantity"/>
                         <label name="uom"/>
                         <field name="uom"/>
-                        <separator name="moves" colspan="4"/>
                         <field name="moves" colspan="4"/>
                         <field name="unit_digits" invisible="1" colspan="4"/>
                     </form>
@@ -244,7 +243,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Choose products" col="1" >
-                    <separator name="products"/>
                     <field name="products" width="600" height="300"/>
                 </form>
                 ]]>
