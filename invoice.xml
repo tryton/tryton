@@ -132,7 +132,6 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="amount_to_pay_today"/>
                             <label name="amount_to_pay"/>
                             <field name="amount_to_pay"/>
-                            <separator name="payment_lines" colspan="4"/>
                             <field name="payment_lines" colspan="4">
                                 <tree string="Payment Lines">
                                     <field name="date"/>
@@ -730,7 +729,6 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="unit_price"/>
                             <label name="amount"/>
                             <field name="amount"/>
-                            <separator name="taxes" colspan="4"/>
                             <field name="taxes" colspan="4"/>
                         </page>
                         <page string="Notes" id="notes">
@@ -894,7 +892,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="account_writeoff"/>
                     <label name="journal_writeoff"/>
                     <field name="journal_writeoff"/>
-                    <separator name="lines" colspan="4"/>
                     <field name="lines" colspan="4">
                         <tree string="Lines to Pay" fill="1">
                             <field name="maturity_date"/>
@@ -906,7 +903,6 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="second_currency_digits" tree_invisible="1"/>
                         </tree>
                     </field>
-                    <separator name="payment_lines" colspan="4"/>
                     <field name="payment_lines" colspan="4">
                         <tree string="Payment Lines" fill="1">
                             <field name="date"/>
