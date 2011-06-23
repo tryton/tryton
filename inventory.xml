@@ -23,7 +23,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="company"/>
                     <label name="date"/>
                     <field name="date"/>
-                    <separator name="locations" colspan="4"/>
                     <field name="locations" colspan="4">
                         <tree string="Locations" fill="1">
                             <field name="name" select="1"/>
