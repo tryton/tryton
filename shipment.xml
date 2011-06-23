@@ -170,7 +170,6 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
-                        <separator name="moves" colspan="4"/>
                         <field name="moves"  colspan="4"/>
                         <label name="state"/>
                         <field name="state"/>
@@ -509,7 +508,6 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
-                        <separator name="moves" colspan="4"/>
                         <field name="moves"  colspan="4"/>
                         <label name="state"/>
                         <field name="state"/>
