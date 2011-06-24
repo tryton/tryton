@@ -236,6 +236,7 @@ class WinForm(object):
         self.wid_text.grab_focus()
 
     def _sig_add(self, *args):
+        from tryton.gui.window.win_search import WinSearch
         domain = []
         context = rpc.CONTEXT.copy()
 
