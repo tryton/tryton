@@ -1579,7 +1579,7 @@ class ModelSQL(ModelStorage):
                     if isinstance(domain[i][2], basestring):
                         field_obj = self.pool.get(field.model_name)
                         res_ids = field_obj.search([
-                            (field_obj._rec_name, domain[i][1], domain[i][2]),
+                            ('rec_name', domain[i][1], domain[i][2]),
                             ], order=[])
                         domain[i] = (domain[i][0], 'in', res_ids, table)
                     else:
