@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <data>
                     <xpath
-                        expr="/form/separator[@id=&quot;buttons&quot;]"
+                        expr="/form/group[@id=&quot;buttons&quot;]"
                         position="before">
                         <separator string="Authentication" id="authentication"
                             colspan="6"/>
