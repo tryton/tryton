@@ -76,7 +76,7 @@ class ModelRecordGroup(SignalEvent):
         super(ModelRecordGroup, self).__init__()
         self.window = window
         self.parent = parent
-        self.parent_name = parent_name
+        self.parent_name = parent_name or ''
         self._context = context or {}
         self.resource = resource
         self.rpc = RPCProxy(resource)
