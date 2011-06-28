@@ -78,7 +78,7 @@ class ModelRecordGroup(SignalEvent):
         super(ModelRecordGroup, self).__init__()
         self.window = window
         self.parent = parent
-        self.parent_name = parent_name
+        self.parent_name = parent_name or ''
         self.parent_datetime_field = parent_datetime_field
         self._context = context or {}
         self.resource = resource
