@@ -357,7 +357,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Journals - Periods">
+                <tree string="Journals - Periods" keyword_open="1">
                     <field name="name" icon="icon" select="1"/>
                     <field name="period" select="1"/>
                     <field name="journal" select="1"/>
