@@ -87,7 +87,7 @@ class CharDescriptor(FieldDescriptor):
 
     def __set__(self, instance, value):
         assert isinstance(value, basestring) or value in (None, False)
-        super(CharDescriptor, self).__set__(instance, value)
+        super(CharDescriptor, self).__set__(instance, value or '')
 
 
 class IntegerDescriptor(FieldDescriptor):
