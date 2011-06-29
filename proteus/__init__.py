@@ -174,6 +174,10 @@ class Many2OneDescriptor(FieldDescriptor):
         super(Many2OneDescriptor, self).__set__(instance, value)
 
 
+class One2OneDescriptor(Many2OneDescriptor):
+    pass
+
+
 class One2ManyDescriptor(FieldDescriptor):
     default = []
 
@@ -217,6 +221,10 @@ class Many2OneValueDescriptor(ValueDescriptor):
     def __get__(self, instance, owner):
         value = super(Many2OneValueDescriptor, self).__get__(instance, owner)
         return value and value.id or False
+
+
+class One2OneValueDescriptor(Many2OneValueDescriptor):
+    pass
 
 
 class One2ManyValueDescriptor(ValueDescriptor):
@@ -268,6 +276,10 @@ class Many2OneEvalDescriptor(EvalDescriptor):
         return False
 
 
+class One2OneEvalDescriptor(Many2OneEvalDescriptor):
+    pass
+
+
 class One2ManyEvalDescriptor(EvalDescriptor):
     def __get__(self, instance, owner):
         return [x.id for x in getattr(instance, self.name)]
@@ -296,18 +308,21 @@ class MetaModelFactory(object):
         'many2one': Many2OneDescriptor,
         'one2many': One2ManyDescriptor,
         'many2many': Many2ManyDescriptor,
+        'one2one': One2OneDescriptor,
     }
     value_descriptors = {
         'reference': ReferenceValueDescriptor,
         'many2one': Many2OneValueDescriptor,
         'one2many': One2ManyValueDescriptor,
         'many2many': Many2ManyValueDescriptor,
+        'one2one': One2OneValueDescriptor,
     }
     eval_descriptors = {
         'reference': ReferenceEvalDescriptor,
         'many2one': Many2OneEvalDescriptor,
         'one2many': One2ManyEvalDescriptor,
         'many2many': Many2ManyEvalDescriptor,
+        'one2one': One2OneEvalDescriptor,
     }
 
     def __init__(self, model_name, config=None):
