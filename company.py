@@ -168,6 +168,7 @@ class User(ModelSQL, ModelView):
         return res
 
     def read(self, ids, fields_names=None):
+        company_obj = self.pool.get('company.company')
         user_id = Transaction().user
         if user_id == 0 and 'user' in Transaction().context:
             user_id = Transaction().context['user']
@@ -186,8 +187,13 @@ class User(ModelSQL, ModelView):
                             values = vals
                             break
             if values:
-                with Transaction().reset_context():
-                    companies = self.read(user_id, ['companies'])['companies']
+                main_company_id = values.get('main_company')
+                if not main_company_id:
+                    main_company_id = self.read(user_id,
+                        ['main_company'])['main_company']
+                companies = company_obj.search([
+                    ('parent', 'child_of', [main_company_id]),
+                ])
                 company_id = Transaction().context['company']
                 if ((company_id and company_id in companies)
                         or not company_id):
