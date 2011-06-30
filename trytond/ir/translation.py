@@ -652,6 +652,7 @@ class ReportTranslationSet(Wizard):
 
     def _set_report_translation(self, data):
         report_obj = self.pool.get('ir.action.report')
+        translation_obj = self.pool.get('ir.translation')
 
         with Transaction().set_context(active_test=False):
             report_ids = report_obj.search([])
@@ -713,7 +714,7 @@ class ReportTranslationSet(Wizard):
                 strings += self._translate_report(document.documentElement)
 
             for string in {}.fromkeys(strings).keys():
-                src_md5 = self.get_src_md5(string)
+                src_md5 = translation_obj.get_src_md5(string)
                 done = False
                 if string in trans_reports:
                     del trans_reports[string]
