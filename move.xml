@@ -167,8 +167,16 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_account_move">
             <field name="name">Account Move</field>
             <field name="code">account.move</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('group_account_admin'))]"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_group_admin">
+            <field name="sequence_type" ref="sequence_type_account_move"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_account_move"/>
+            <field name="group" ref="group_account_admin"/>
         </record>
 
         <record model="ir.ui.view" id="move_reconciliation_view_form">
@@ -221,9 +229,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_account_move_reconciliation">
             <field name="name">Account Move Reconciliation</field>
             <field name="code">account.move.reconciliation</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('group_account_admin'))]"/>
         </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_reconciliation_group_admin">
+            <field name="sequence_type" ref="sequence_type_account_move_reconciliation"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_move_reconciliation_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_account_move_reconciliation"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+
         <record model="ir.sequence" id="sequence_account_move_reconciliation">
             <field name="name">Default Account Move Reconciliation</field>
             <field name="code">account.move.reconciliation</field>
