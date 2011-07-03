@@ -11,19 +11,33 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_purchase">
             <field name="name">Purchase</field>
         </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups"
-                eval="[('add', ref('group_purchase')), ('add', ref('group_purchase_admin'))]"/>
+        <record model="res.user-res.group" id="user_admin_group_purchase">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase"/>
         </record>
-        <record model="res.user" id="res.user_trigger">
-            <field name="groups"
-                eval="[('add', ref('group_purchase')), ('add', ref('group_purchase_admin'))]"/>
+        <record model="res.user-res.group" id="user_admin_group_purchase_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
+
+        <record model="res.user-res.group" id="user_trigger_group_purchase">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_purchase_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_purchase_admin"/>
         </record>
 
         <!-- set active for 1.4 migration -->
         <menuitem name="Configuration" parent="menu_purchase"
-            id="menu_configuration" groups="group_purchase_admin"
-            sequence="0" icon="tryton-preferences" active="1"/>
+            id="menu_configuration" sequence="0" icon="tryton-preferences"
+            active="1"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_configuration_group_purchase_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
 
         <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
             <field name="name">Handle Shipment Exception</field>
@@ -361,9 +375,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_purchase">
             <field name="name">Purchase</field>
             <field name="code">purchase.purchase</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('group_purchase_admin'))]"/>
         </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_purchase_group_admin">
+            <field name="sequence_type" ref="sequence_type_purchase"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_purchase_group_purchase_admin">
+            <field name="sequence_type" ref="sequence_type_purchase"/>
+            <field name="group" ref="group_purchase_admin"/>
+        </record>
+
         <record model="ir.sequence" id="sequence_purchase">
             <field name="name">Purchase</field>
             <field name="code">purchase.purchase</field>
