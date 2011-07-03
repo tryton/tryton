@@ -4,6 +4,7 @@ from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Get, Eval, And, Bool, Not, Or
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Party(ModelSQL, ModelView):
@@ -55,10 +56,11 @@ class Party(ModelSQL, ModelView):
             a dictionary as value with id as key
         '''
         res = {}
-        move_line_obj = self.pool.get('account.move.line')
-        company_obj = self.pool.get('company.company')
-        user_obj = self.pool.get('res.user')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        move_line_obj = pool.get('account.move.line')
+        company_obj = pool.get('company.company')
+        user_obj = pool.get('res.user')
+        date_obj = pool.get('ir.date')
         cursor = Transaction().cursor
 
         for name in names:
@@ -120,10 +122,11 @@ class Party(ModelSQL, ModelView):
         return res
 
     def search_receivable_payable(self, name, clause):
-        move_line_obj = self.pool.get('account.move.line')
-        company_obj = self.pool.get('company.company')
-        user_obj = self.pool.get('res.user')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        move_line_obj = pool.get('account.move.line')
+        company_obj = pool.get('company.company')
+        user_obj = pool.get('res.user')
+        date_obj = pool.get('ir.date')
         cursor = Transaction().cursor
 
         if name not in ('receivable', 'payable',

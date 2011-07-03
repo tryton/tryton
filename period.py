@@ -4,6 +4,7 @@ from trytond.model import ModelView, ModelSQL, fields, OPERATORS
 from trytond.wizard import Wizard
 from trytond.pyson import Equal, Eval
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 _STATES = {
     'readonly': Equal(Eval('state'), 'close'),
@@ -137,7 +138,7 @@ class Period(ModelSQL, ModelView):
         :param test_state: a boolean if true will search on non-closed periods
         :return: the period id found or False
         '''
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
 
         if not date:
             date = date_obj.today()
@@ -158,7 +159,7 @@ class Period(ModelSQL, ModelView):
         return ids[0]
 
     def _check(self, ids):
-        move_obj = self.pool.get('account.move')
+        move_obj = Pool().get('account.move')
         if isinstance(ids, (int, long)):
             ids = [ids]
         move_ids = move_obj.search([
@@ -193,7 +194,7 @@ class Period(ModelSQL, ModelView):
                 order=order, count=count, query_string=query_string)
 
     def create(self, vals):
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_obj = Pool().get('account.fiscalyear')
         vals = vals.copy()
         if vals.get('fiscalyear'):
             fiscalyear = fiscalyear_obj.browse(vals['fiscalyear'])
@@ -204,7 +205,7 @@ class Period(ModelSQL, ModelView):
         return super(Period, self).create(vals)
 
     def write(self, ids, vals):
-        move_obj = self.pool.get('account.move')
+        move_obj = Pool().get('account.move')
         for key in vals.keys():
             if key in ('start_date', 'end_date', 'fiscalyear'):
                 self._check(ids)
@@ -230,8 +231,8 @@ class Period(ModelSQL, ModelView):
         return super(Period, self).delete(ids)
 
     def close(self, ids):
-        journal_period_obj = self.pool.get('account.journal.period')
-        move_obj = self.pool.get('account.move')
+        journal_period_obj = Pool().get('account.journal.period')
+        move_obj = Pool().get('account.move')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -268,7 +269,7 @@ class ClosePeriod(Wizard):
     }
 
     def _close(self, data):
-        period_obj = self.pool.get('account.period')
+        period_obj = Pool().get('account.period')
         period_obj.close(data['ids'])
         return {}
 
@@ -289,7 +290,7 @@ class ReOpenPeriod(Wizard):
     }
 
     def _reopen(self, data):
-        period_obj = self.pool.get('account.period')
+        period_obj = Pool().get('account.period')
         period_obj.write(data['ids'], {
             'state': 'open',
             })

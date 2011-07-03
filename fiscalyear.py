@@ -9,6 +9,7 @@ from trytond.wizard import Wizard
 from trytond.tools import datetime_strftime
 from trytond.pyson import Equal, Eval, If, In, Get
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 STATES = {
     'readonly': Equal(Eval('state'), 'close'),
@@ -113,7 +114,7 @@ class FiscalYear(ModelSQL, ModelView):
         return True
 
     def write(self, ids, vals):
-        move_obj = self.pool.get('account.move')
+        move_obj = Pool().get('account.move')
         if vals.get('post_move_sequence'):
             for fiscalyear in self.browse(ids):
                 if fiscalyear.post_move_sequence and \
@@ -129,7 +130,7 @@ class FiscalYear(ModelSQL, ModelView):
         return super(FiscalYear, self).write(ids, vals)
 
     def delete(self, ids):
-        period_obj = self.pool.get('account.period')
+        period_obj = Pool().get('account.period')
 
         period_ids = []
         for fiscalyear in self.browse(ids):
@@ -141,7 +142,7 @@ class FiscalYear(ModelSQL, ModelView):
         '''
         Create periods for the fiscal years with month interval
         '''
-        period_obj = self.pool.get('account.period')
+        period_obj = Pool().get('account.period')
         for fiscalyear in self.browse(ids):
             period_start_date = fiscalyear.start_date
             while period_start_date < fiscalyear.end_date:
@@ -177,7 +178,7 @@ class FiscalYear(ModelSQL, ModelView):
         If exception is set the function will raise an exception
             if any fiscal year is found.
         '''
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
 
         if not date:
             date = date_obj.today()
@@ -200,8 +201,8 @@ class FiscalYear(ModelSQL, ModelView):
         :param account: a BrowseRecord of the account
         :param fiscalyear: a BrowseRecord of the fiscal year closed
         '''
-        currency_obj = self.pool.get('currency.currency')
-        deferral_obj = self.pool.get('account.account.deferral')
+        currency_obj = Pool().get('currency.currency')
+        deferral_obj = Pool().get('account.account.deferral')
 
         if account.kind == 'view':
             return
@@ -224,8 +225,8 @@ class FiscalYear(ModelSQL, ModelView):
 
         :param fiscalyear_id: the fiscal year id
         '''
-        period_obj = self.pool.get('account.period')
-        account_obj = self.pool.get('account.account')
+        period_obj = Pool().get('account.period')
+        account_obj = Pool().get('account.account')
 
         if isinstance(fiscalyear_id, list):
             fiscalyear_id = fiscalyear_id[0]
@@ -264,7 +265,7 @@ class FiscalYear(ModelSQL, ModelView):
 
         :param fiscalyear_id: the fiscal year id
         '''
-        deferral_obj = self.pool.get('account.account.deferral')
+        deferral_obj = Pool().get('account.account.deferral')
 
         if isinstance(fiscalyear_id, list):
             fiscalyear_id = fiscalyear_id[0]
@@ -325,7 +326,7 @@ class CloseFiscalYear(Wizard):
     }
 
     def _close(self, data):
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_obj = Pool().get('account.fiscalyear')
 
         fiscalyear_obj.close(data['form']['close_fiscalyear'])
         return {}

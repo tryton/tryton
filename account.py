@@ -12,6 +12,7 @@ from trytond.report import Report
 from trytond.tools import reduce_ids
 from trytond.pyson import Equal, Eval, Not, PYSONEncoder, Date
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class TypeTemplate(ModelSQL, ModelView):
@@ -100,8 +101,8 @@ class TypeTemplate(ModelSQL, ModelView):
                 be created
         :return: id of the type created
         '''
-        type_obj = self.pool.get('account.account.type')
-        lang_obj = self.pool.get('ir.lang')
+        type_obj = Pool().get('account.account.type')
+        lang_obj = Pool().get('ir.lang')
 
         if template2type is None:
             template2type = {}
@@ -203,8 +204,8 @@ class Type(ModelSQL, ModelView):
         return res
 
     def get_amount(self, ids, name):
-        account_obj = self.pool.get('account.account')
-        currency_obj = self.pool.get('currency.currency')
+        account_obj = Pool().get('account.account')
+        currency_obj = Pool().get('currency.currency')
 
         res = {}
         for type_id in ids:
@@ -267,8 +268,8 @@ class Type(ModelSQL, ModelView):
                 and type id as value, used to convert template id
                 into type. The dictionary is filled with new types
         '''
-        template_obj = self.pool.get('account.account.type.template')
-        lang_obj = self.pool.get('ir.lang')
+        template_obj = Pool().get('account.account.type.template')
+        lang_obj = Pool().get('ir.lang')
 
         if template2type is None:
             template2type = {}
@@ -422,8 +423,8 @@ class AccountTemplate(ModelSQL, ModelView):
                 that must be created
         :return: id of the account created
         '''
-        account_obj = self.pool.get('account.account')
-        lang_obj = self.pool.get('ir.lang')
+        account_obj = Pool().get('account.account')
+        lang_obj = Pool().get('ir.lang')
 
         if template2account is None:
             template2account = {}
@@ -487,7 +488,7 @@ class AccountTemplate(ModelSQL, ModelView):
         :param template_done: a list of template id already updated.
             The list is filled.
         '''
-        account_obj = self.pool.get('account.account')
+        account_obj = Pool().get('account.account')
 
         if template2account is None:
             template2account = {}
@@ -616,7 +617,7 @@ class Account(ModelSQL, ModelView):
         return 'view'
 
     def get_currency(self, ids, name):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         res = {}
         for account in self.browse(ids):
             res[account.id] = account.company.currency.id
@@ -630,11 +631,12 @@ class Account(ModelSQL, ModelView):
 
     def get_balance(self, ids, name):
         res = {}
-        company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('currency.currency')
-        move_line_obj = self.pool.get('account.move.line')
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
-        deferral_obj = self.pool.get('account.account.deferral')
+        pool = Pool()
+        company_obj = pool.get('company.company')
+        currency_obj = pool.get('currency.currency')
+        move_line_obj = pool.get('account.move.line')
+        fiscalyear_obj = pool.get('account.fiscalyear')
+        deferral_obj = pool.get('account.account.deferral')
         cursor = Transaction().cursor
 
         query_ids, args_ids = self.search([
@@ -734,11 +736,12 @@ class Account(ModelSQL, ModelView):
             a dictionary as value with id as key
         '''
         res = {}
-        move_line_obj = self.pool.get('account.move.line')
-        company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('currency.currency')
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
-        deferral_obj = self.pool.get('account.account.deferral')
+        pool = Pool()
+        move_line_obj = pool.get('account.move.line')
+        company_obj = pool.get('company.company')
+        currency_obj = pool.get('currency.currency')
+        fiscalyear_obj = pool.get('account.fiscalyear')
+        deferral_obj = pool.get('account.account.deferral')
         cursor = Transaction().cursor
 
         for name in names:
@@ -857,7 +860,7 @@ class Account(ModelSQL, ModelView):
 
     def write(self, ids, vals):
         if not vals.get('active', True):
-            move_line_obj = self.pool.get('account.move.line')
+            move_line_obj = Pool().get('account.move.line')
             account_ids = self.search([
                 ('parent', 'child_of', ids),
                 ])
@@ -869,7 +872,7 @@ class Account(ModelSQL, ModelView):
         return super(Account, self).write(ids, vals)
 
     def delete(self, ids):
-        move_line_obj = self.pool.get('account.move.line')
+        move_line_obj = Pool().get('account.move.line')
         if isinstance(ids, (int, long)):
             ids = [ids]
         account_ids = self.search([
@@ -894,8 +897,8 @@ class Account(ModelSQL, ModelView):
                 and type id as value, used to convert type template id
                 into type.
         '''
-        template_obj = self.pool.get('account.account.template')
-        lang_obj = self.pool.get('ir.lang')
+        template_obj = Pool().get('account.account.template')
+        lang_obj = Pool().get('ir.lang')
 
         if template2account is None:
             template2account = {}
@@ -1079,8 +1082,8 @@ class OpenChartAccount(Wizard):
     }
 
     def _action_open_chart(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        model_data_obj = Pool().get('ir.model.data')
+        act_window_obj = Pool().get('ir.action.act_window')
         act_window_id = model_data_obj.get_id('account', 'act_account_tree2')
         res = act_window_obj.read(act_window_id)
         res['pyson_context'] = PYSONEncoder().encode({
@@ -1114,7 +1117,7 @@ class PrintGeneralLegderInit(ModelView):
             help='With account without move')
 
     def default_fiscalyear(self):
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
                 Transaction().context.get('company', False), exception=False)
         if fiscalyear_id:
@@ -1169,9 +1172,10 @@ class GeneralLegder(Report):
     _name = 'account.account.general_ledger'
 
     def parse(self, report, objects, datas, localcontext):
-        account_obj = self.pool.get('account.account')
-        period_obj = self.pool.get('account.period')
-        company_obj = self.pool.get('company.company')
+        pool = Pool()
+        account_obj = pool.get('account.account')
+        period_obj = pool.get('account.period')
+        company_obj = pool.get('company.company')
 
         company = company_obj.browse(datas['form']['company'])
 
@@ -1248,7 +1252,7 @@ class GeneralLegder(Report):
                 localcontext)
 
     def get_lines(self, account_ids, period_ids, posted):
-        move_line_obj = self.pool.get('account.move.line')
+        move_line_obj = Pool().get('account.move.line')
         clause = [
             ('account', 'in', account_ids),
             ('period', 'in', period_ids),
@@ -1263,8 +1267,8 @@ class GeneralLegder(Report):
         return res
 
     def lines(self, account_ids, period_ids, posted):
-        move_line_obj = self.pool.get('account.move.line')
-        move_obj = self.pool.get('account.move')
+        move_line_obj = Pool().get('account.move.line')
+        move_obj = Pool().get('account.move')
         res = dict((account_id, []) for account_id in account_ids)
         account_id2lines = self.get_lines(account_ids, period_ids, posted)
 
@@ -1314,7 +1318,7 @@ class PrintTrialBalanceInit(ModelView):
             help='With account without move')
 
     def default_fiscalyear(self):
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
                 Transaction().context.get('company') or False, exception=False)
         if fiscalyear_id:
@@ -1369,9 +1373,10 @@ class TrialBalance(Report):
     _name = 'account.account.trial_balance'
 
     def parse(self, report, objects, datas, localcontext):
-        account_obj = self.pool.get('account.account')
-        period_obj = self.pool.get('account.period')
-        company_obj = self.pool.get('company.company')
+        pool = Pool()
+        account_obj = pool.get('account.account')
+        period_obj = pool.get('account.period')
+        company_obj = pool.get('company.company')
 
         company = company_obj.browse(datas['form']['company'])
 
@@ -1453,7 +1458,7 @@ class OpenBalanceSheetInit(ModelView):
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
     def default_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
     def default_company(self):
@@ -1489,10 +1494,11 @@ class OpenBalanceSheet(Wizard):
     }
 
     def _action_open(self, datas):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
-        company_obj = self.pool.get('company.company')
-        lang_obj = self.pool.get('ir.lang')
+        pool = Pool()
+        model_data_obj = pool.get('ir.model.data')
+        act_window_obj = pool.get('ir.action.act_window')
+        company_obj = pool.get('company.company')
+        lang_obj = pool.get('ir.lang')
 
         company = company_obj.browse(datas['form']['company'])
         for code in [Transaction().language, 'en_US']:
@@ -1544,7 +1550,7 @@ class OpenIncomeStatementInit(ModelView):
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
     def default_fiscalyear(self):
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
                 Transaction().context.get('company') or False, exception=False)
         if fiscalyear_id:
@@ -1590,9 +1596,10 @@ class OpenIncomeStatement(Wizard):
     }
 
     def _action_open(self, datas):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
-        period_obj = self.pool.get('account.period')
+        pool = Pool()
+        model_data_obj = pool.get('ir.model.data')
+        act_window_obj = pool.get('ir.action.act_window')
+        period_obj = pool.get('account.period')
 
         start_period_ids = [0]
         if datas['form']['start_period']:
@@ -1723,14 +1730,15 @@ class CreateChartAccount(Wizard):
     }
 
     def _action_create_account(self, datas):
+        pool = Pool()
         account_type_template_obj = \
-                self.pool.get('account.account.type.template')
-        account_template_obj = self.pool.get('account.account.template')
-        tax_code_template_obj = self.pool.get('account.tax.code.template')
-        tax_template_obj = self.pool.get('account.tax.template')
-        tax_rule_template_obj = self.pool.get('account.tax.rule.template')
+                pool.get('account.account.type.template')
+        account_template_obj = pool.get('account.account.template')
+        tax_code_template_obj = pool.get('account.tax.code.template')
+        tax_template_obj = pool.get('account.tax.template')
+        tax_rule_template_obj = pool.get('account.tax.rule.template')
         tax_rule_line_template_obj = \
-                self.pool.get('account.tax.rule.line.template')
+                pool.get('account.tax.rule.line.template')
 
         with Transaction().set_context(language='en_US'):
             account_template = account_template_obj.browse(
@@ -1801,8 +1809,8 @@ class CreateChartAccount(Wizard):
         return {'company': datas['form']['company']}
 
     def _action_create_properties(self, datas):
-        property_obj = self.pool.get('ir.property')
-        model_field_obj = self.pool.get('ir.model.field')
+        property_obj = Pool().get('ir.property')
+        model_field_obj = Pool().get('ir.model.field')
 
         account_receivable_field_id = model_field_obj.search([
             ('model.model', '=', 'party.party'),
@@ -1891,20 +1899,21 @@ class UpdateChartAccount(Wizard):
     }
 
     def _action_update_account(self, datas):
-        account_type_obj = self.pool.get('account.account.type')
+        pool = Pool()
+        account_type_obj = pool.get('account.account.type')
         account_type_template_obj = \
-                self.pool.get('account.account.type.template')
-        account_obj = self.pool.get('account.account')
-        account_template_obj = self.pool.get('account.account.template')
-        tax_code_obj = self.pool.get('account.tax.code')
-        tax_code_template_obj = self.pool.get('account.tax.code.template')
-        tax_obj = self.pool.get('account.tax')
-        tax_template_obj = self.pool.get('account.tax.template')
-        tax_rule_obj = self.pool.get('account.tax.rule')
-        tax_rule_template_obj = self.pool.get('account.tax.rule.template')
-        tax_rule_line_obj = self.pool.get('account.tax.rule.line')
+                pool.get('account.account.type.template')
+        account_obj = pool.get('account.account')
+        account_template_obj = pool.get('account.account.template')
+        tax_code_obj = pool.get('account.tax.code')
+        tax_code_template_obj = pool.get('account.tax.code.template')
+        tax_obj = pool.get('account.tax')
+        tax_template_obj = pool.get('account.tax.template')
+        tax_rule_obj = pool.get('account.tax.rule')
+        tax_rule_template_obj = pool.get('account.tax.rule.template')
+        tax_rule_line_obj = pool.get('account.tax.rule.line')
         tax_rule_line_template_obj = \
-                self.pool.get('account.tax.rule.line.template')
+                pool.get('account.tax.rule.line.template')
 
         account = account_obj.browse(datas['form']['account'])
 
@@ -2024,7 +2033,7 @@ class OpenThirdPartyBalanceInit(ModelView):
 
 
     def default_fiscalyear(self):
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
                 Transaction().context.get('company') or False, exception=False)
         if fiscalyear_id:
@@ -2070,10 +2079,11 @@ class ThirdPartyBalance(Report):
     _name = 'account.account.third_party_balance'
 
     def parse(self, report, objects, datas, localcontext):
-        party_obj = self.pool.get('party.party')
-        move_line_obj = self.pool.get('account.move.line')
-        company_obj = self.pool.get('company.company')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        move_line_obj = pool.get('account.move.line')
+        company_obj = pool.get('company.company')
+        date_obj = pool.get('ir.date')
         cursor = Transaction().cursor
 
         company = company_obj.browse(datas['form']['company'])
@@ -2143,7 +2153,7 @@ class OpenAgedBalanceInit(ModelView):
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
     def default_fiscalyear(self):
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
                 Transaction().context.get('company') or False, exception=False)
         if fiscalyear_id:
@@ -2219,10 +2229,11 @@ class AgedBalance(Report):
     _name = 'account.account.aged_balance'
 
     def parse(self, report, objects, datas, localcontext):
-        party_obj = self.pool.get('party.party')
-        move_line_obj = self.pool.get('account.move.line')
-        company_obj = self.pool.get('company.company')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        move_line_obj = pool.get('account.move.line')
+        company_obj = pool.get('company.company')
+        date_obj = pool.get('ir.date')
         cursor = Transaction().cursor
 
         company = company_obj.browse(datas['form']['company'])

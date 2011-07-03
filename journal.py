@@ -6,6 +6,7 @@ from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from trytond.pyson import Equal, Eval, Not, Get, Or, And, Bool
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 STATES = {
     'readonly': Equal(Eval('state'), 'close'),
@@ -126,7 +127,7 @@ class Journal(ModelSQL, ModelView):
 
         # Migration from 1.0 sequence Many2One change into Property
         if table.column_exist('sequence'):
-            property_obj = self.pool.get('ir.property')
+            property_obj = Pool().get('ir.property')
             cursor.execute('SELECT id, sequence FROM "' + self._table +'"')
             with Transaction().set_user(0):
                 for journal_id, sequence_id in cursor.fetchall():
@@ -148,7 +149,7 @@ class Journal(ModelSQL, ModelView):
         return False
 
     def get_types(self):
-        type_obj = self.pool.get('account.journal.type')
+        type_obj = Pool().get('account.journal.type')
         type_ids = type_obj.search([])
         types = type_obj.browse(type_ids)
         return [(x.code, x.name) for x in types]
@@ -210,7 +211,7 @@ class Period(ModelSQL, ModelView):
         return res
 
     def _check(self, ids):
-        move_obj = self.pool.get('account.move')
+        move_obj = Pool().get('account.move')
         for period in self.browse(ids):
             move_ids = move_obj.search([
                 ('journal', '=', period.journal.id),
@@ -221,7 +222,7 @@ class Period(ModelSQL, ModelView):
         return
 
     def create(self, vals):
-        period_obj = self.pool.get('account.period')
+        period_obj = Pool().get('account.period')
         if vals.get('period'):
             period = period_obj.browse(vals['period'])
             if period.state == 'close':
@@ -269,7 +270,7 @@ class ClosePeriod(Wizard):
     }
 
     def _close(self, data):
-        journal_period_obj = self.pool.get('account.journal.period')
+        journal_period_obj = Pool().get('account.journal.period')
         journal_period_obj.close(data['ids'])
         return {}
 
@@ -290,7 +291,7 @@ class ReOpenPeriod(Wizard):
     }
 
     def _reopen(self, data):
-        journal_period_obj = self.pool.get('account.journal.period')
+        journal_period_obj = Pool().get('account.journal.period')
         journal_period_obj.write(data['ids'], {
             'state': 'open',
             })

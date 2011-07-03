@@ -9,6 +9,7 @@ from trytond.pyson import Eval, Not, Equal, If, In, Bool, Get, Or, And, \
         PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.cache import Cache
+from trytond.pool import Pool
 
 
 class Group(ModelSQL, ModelView):
@@ -89,8 +90,8 @@ class CodeTemplate(ModelSQL, ModelView):
                 must be created
         :return: id of the tax code created
         '''
-        tax_code_obj = self.pool.get('account.tax.code')
-        lang_obj = self.pool.get('ir.lang')
+        tax_code_obj = Pool().get('account.tax.code')
+        lang_obj = Pool().get('ir.lang')
 
         if template2tax_code is None:
             template2tax_code = {}
@@ -175,7 +176,7 @@ class Code(ModelSQL, ModelView):
         return Transaction().context.get('company') or False
 
     def on_change_with_currency_digits(self, vals):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         if vals.get('company'):
             company = company_obj.browse(vals['company'])
             return company.currency.digits
@@ -190,8 +191,8 @@ class Code(ModelSQL, ModelView):
     def get_sum(self, ids, name):
         cursor = Transaction().cursor
         res = {}
-        move_line_obj = self.pool.get('account.move.line')
-        currency_obj = self.pool.get('currency.currency')
+        move_line_obj = Pool().get('account.move.line')
+        currency_obj = Pool().get('currency.currency')
 
         child_ids = self.search([('parent', 'child_of', ids)])
         all_ids = {}.fromkeys(ids + child_ids).keys()
@@ -261,8 +262,8 @@ class Code(ModelSQL, ModelView):
                 and tax code id as value, used to convert template id into
                 tax code. The dictionary is filled with new tax codes
         '''
-        template_obj = self.pool.get('account.tax.code.template')
-        lang_obj = self.pool.get('ir.lang')
+        template_obj = Pool().get('account.tax.code.template')
+        lang_obj = Pool().get('ir.lang')
 
         if template2tax_code is None:
             template2tax_code = {}
@@ -351,8 +352,8 @@ class OpenChartCode(Wizard):
     }
 
     def _action_open_chart(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        model_data_obj = Pool().get('ir.model.data')
+        act_window_obj = Pool().get('ir.action.act_window')
         act_window_id = model_data_obj.get_id('account', 'act_tax_code_tree2')
         res = act_window_obj.read(act_window_id)
         if data['form']['method'] == 'fiscalyear':
@@ -478,8 +479,8 @@ class TaxTemplate(ModelSQL, ModelView):
                 created
         :return: id of the tax created
         '''
-        tax_obj = self.pool.get('account.tax')
-        lang_obj = self.pool.get('ir.lang')
+        tax_obj = Pool().get('account.tax')
+        lang_obj = Pool().get('ir.lang')
 
         if template2tax is None:
             template2tax = {}
@@ -702,7 +703,7 @@ class Tax(ModelSQL, ModelView):
         return Transaction().context.get('company') or False
 
     def on_change_with_currency_digits(self, vals):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         if vals.get('company'):
             company = company_obj.browse(vals['company'])
             return company.currency.digits
@@ -799,8 +800,8 @@ class Tax(ModelSQL, ModelView):
                 tax id as value, used to convert template id into tax.
                 The dictionary is filled with new taxes
         '''
-        template_obj = self.pool.get('account.tax.template')
-        lang_obj = self.pool.get('ir.lang')
+        template_obj = Pool().get('account.tax.template')
+        lang_obj = Pool().get('ir.lang')
 
         if template2tax is None:
             template2tax = {}
@@ -919,7 +920,7 @@ class Line(ModelSQL, ModelView):
             required=True, select=1, ondelete='CASCADE')
 
     def on_change_with_currency_digits(self, vals):
-        move_line_obj = self.pool.get('account.move.line')
+        move_line_obj = Pool().get('account.move.line')
         if vals.get('move_line'):
             move_line = move_line_obj.browse(vals['move_line'])
             return move_line.currency_digits
@@ -977,8 +978,8 @@ class RuleTemplate(ModelSQL, ModelView):
                 tax rule. The dictionary is filled with new tax rules
         :return: id of the tax rule created
         '''
-        rule_obj = self.pool.get('account.tax.rule')
-        lang_obj = self.pool.get('ir.lang')
+        rule_obj = Pool().get('account.tax.rule')
+        lang_obj = Pool().get('ir.lang')
 
         if template2rule is None:
             template2rule = {}
@@ -1040,8 +1041,8 @@ class Rule(ModelSQL, ModelView):
                 and match value as value
         :return: a list of the tax id to use or False
         '''
-        tax_obj = self.pool.get('account.tax')
-        rule_line_obj = self.pool.get('account.tax.rule.line')
+        tax_obj = Pool().get('account.tax')
+        rule_line_obj = Pool().get('account.tax.rule.line')
 
         if isinstance(rule, (int, long)) and rule:
             rule = self.browse(rule)
@@ -1067,8 +1068,8 @@ class Rule(ModelSQL, ModelView):
                 and tax rule id as value, used to convert template id into
                 tax rule. The dictionary is filled with new tax rules
         '''
-        template_obj = self.pool.get('account.tax.rule.template')
-        lang_obj = self.pool.get('ir.lang')
+        template_obj = Pool().get('account.tax.rule.template')
+        lang_obj = Pool().get('ir.lang')
 
         if template2rule is None:
             template2rule = {}
@@ -1169,7 +1170,7 @@ class RuleLineTemplate(ModelSQL, ModelView):
                 tax rule lines
         :return: id of the tax rule line created
         '''
-        rule_line_obj = self.pool.get('account.tax.rule.line')
+        rule_line_obj = Pool().get('account.tax.rule.line')
 
         if template2rule_line is None:
             template2rule_line = {}
@@ -1278,7 +1279,7 @@ class RuleLine(ModelSQL, ModelView):
                 id into tax rule line. The dictionary is filled with new
                 tax rule lines
         '''
-        template_obj = self.pool.get('account.tax.rule.line.template')
+        template_obj = Pool().get('account.tax.rule.line.template')
 
         if template2rule_line is None:
             template2rule_line = {}
@@ -1323,10 +1324,11 @@ class OpenCode(Wizard):
     }
 
     def _action_open_code(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
-        period_obj = self.pool.get('account.period')
+        pool = Pool()
+        model_data_obj = pool.get('ir.model.data')
+        act_window_obj = pool.get('ir.action.act_window')
+        fiscalyear_obj = pool.get('account.fiscalyear')
+        period_obj = pool.get('account.period')
 
         if not Transaction().context.get('fiscalyear'):
             fiscalyear_ids = fiscalyear_obj.search([
