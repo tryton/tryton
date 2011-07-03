@@ -3,6 +3,7 @@
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class CreateInventoriesInit(ModelView):
@@ -19,7 +20,7 @@ class CreateInventoriesInit(ModelView):
             'Locations', required=True, domain=[('type', '=', 'storage')])
 
     def default_lost_found(self):
-        location_obj = self.pool.get('stock.location')
+        location_obj = Pool().get('stock.location')
         location_ids = location_obj.search(self.lost_found.domain)
         if len(location_ids) == 1:
             return location_ids[0]
@@ -55,9 +56,10 @@ class CreateInventories(Wizard):
     }
 
     def _action_create_inventory(self, data):
-        inventory_obj = self.pool.get('stock.inventory')
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        pool = Pool()
+        inventory_obj = pool.get('stock.inventory')
+        model_data_obj = pool.get('ir.model.data')
+        act_window_obj = pool.get('ir.action.act_window')
 
         inventory_ids = []
         location_ids = data['form']['locations'][0][1] or []
