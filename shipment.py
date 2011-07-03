@@ -3,6 +3,7 @@
 from __future__ import with_statement
 from trytond.model import ModelView, ModelSQL
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class ShipmentInternal(ModelSQL, ModelView):
@@ -26,11 +27,12 @@ class ShipmentInternal(ModelSQL, ModelView):
         Generate internal shipments to meet order points defined on
         non-warehouse location.
         """
-        order_point_obj = self.pool.get('stock.order_point')
-        uom_obj = self.pool.get('product.uom')
-        product_obj = self.pool.get('product.product')
-        date_obj = self.pool.get('ir.date')
-        user_obj = self.pool.get('res.user')
+        pool = Pool()
+        order_point_obj = pool.get('stock.order_point')
+        uom_obj = pool.get('product.uom')
+        product_obj = pool.get('product.product')
+        date_obj = pool.get('ir.date')
+        user_obj = pool.get('res.user')
         user_record = user_obj.browse(Transaction().user)
         today = date_obj.today()
         # fetch quantities on order points

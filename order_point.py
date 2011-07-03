@@ -4,6 +4,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import If, Equal, Eval, Not, In, Get
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class OrderPoint(ModelSQL, ModelView):
@@ -84,7 +85,7 @@ class OrderPoint(ModelSQL, ModelView):
         return "purchase"
 
     def on_change_product(self, vals):
-        product_obj = self.pool.get('product.product')
+        product_obj = Pool().get('product.product')
         res = {
             'unit': False,
             'unit.rec_name': '',
@@ -178,7 +179,7 @@ class OrderPoint(ModelSQL, ModelView):
         return res
 
     def get_location(self, ids, name):
-        location_obj = self.pool.get('stock.location')
+        location_obj = Pool().get('stock.location')
         res = {}
         for op in self.browse(ids):
             if op.type == 'purchase':

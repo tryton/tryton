@@ -6,6 +6,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import If, In, Eval, Get
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class PurchaseRequest(ModelSQL, ModelView):
@@ -95,7 +96,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         return res
 
     def origin_get(self):
-        model_obj = self.pool.get('ir.model')
+        model_obj = Pool().get('ir.model')
         res = []
         model_ids = model_obj.search([
             ('model', '=', 'stock.order_point'),
@@ -109,11 +110,12 @@ class PurchaseRequest(ModelSQL, ModelView):
         For each product compute the purchase request that must be
         create today to meet product outputs.
         """
-        order_point_obj = self.pool.get('stock.order_point')
-        purchase_request_obj = self.pool.get('purchase.request')
-        product_obj = self.pool.get('product.product')
-        location_obj = self.pool.get('stock.location')
-        user_obj = self.pool.get('res.user')
+        pool = Pool()
+        order_point_obj = pool.get('stock.order_point')
+        purchase_request_obj = pool.get('purchase.request')
+        product_obj = pool.get('product.product')
+        location_obj = pool.get('stock.location')
+        user_obj = pool.get('res.user')
         company = user_obj.browse(Transaction().user).company
 
         # fetch warehouses:
@@ -173,7 +175,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         return {}
 
     def create_requests(self, new_requests):
-        request_obj = self.pool.get('purchase.request')
+        request_obj = Pool().get('purchase.request')
 
         for new_req in new_requests:
             if new_req['supply_date'] == datetime.date.max:
@@ -193,9 +195,10 @@ class PurchaseRequest(ModelSQL, ModelView):
         to re-create existing requests.
         """
         # delete purchase request without a purchase line
-        uom_obj = self.pool.get('product.uom')
-        request_obj = self.pool.get('purchase.request')
-        product_supplier_obj = self.pool.get('purchase.product_supplier')
+        pool = Pool()
+        uom_obj = pool.get('product.uom')
+        request_obj = pool.get('purchase.request')
+        product_supplier_obj = pool.get('purchase.product_supplier')
         req_ids = request_obj.search([
             ('purchase_line', '=', False),
             ('origin', 'like', 'stock.order_point,%'),
@@ -261,8 +264,8 @@ class PurchaseRequest(ModelSQL, ModelView):
         :param product: a BrowseRecord of the Product
         :return: a tuple with the two dates
         """
-        product_supplier_obj = self.pool.get('purchase.product_supplier')
-        date_obj = self.pool.get('ir.date')
+        product_supplier_obj = Pool().get('purchase.product_supplier')
+        date_obj = Pool().get('ir.date')
 
         min_date = None
         max_date = None
@@ -294,9 +297,10 @@ class PurchaseRequest(ModelSQL, ModelView):
         purchase date, the expected supply date and the prefered
         supplier.
         """
-        uom_obj = self.pool.get('product.uom')
-        product_supplier_obj = self.pool.get('purchase.product_supplier')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        uom_obj = pool.get('product.uom')
+        product_supplier_obj = pool.get('purchase.product_supplier')
+        date_obj = pool.get('ir.date')
 
         supplier = None
         timedelta = datetime.timedelta.max
@@ -363,7 +367,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         :param order_point: a BrowseRecord of the Order Point
         :return: a tuple with the date and the quantity
         """
-        product_obj = self.pool.get('product.product')
+        product_obj = Pool().get('product.product')
 
         res_date = None
         res_qty = None
@@ -470,7 +474,7 @@ class CreatePurchase(Wizard):
 
     def _set_default_party(self, data):
 
-        request_obj = self.pool.get('purchase.request')
+        request_obj = Pool().get('purchase.request')
         requests = request_obj.browse(data['ids'])
         for request in requests:
             if request.purchase_line:
@@ -482,7 +486,7 @@ class CreatePurchase(Wizard):
 
     def _set_default_term(self, data):
 
-        request_obj = self.pool.get('purchase.request')
+        request_obj = Pool().get('purchase.request')
         requests = request_obj.browse(data['ids'])
         for request in requests:
             if (not request.party) or request.purchase_line:
@@ -493,12 +497,13 @@ class CreatePurchase(Wizard):
         return {'party': request.party.id,'company': request.company.id}
 
     def _create_purchase(self, data):
-        request_obj = self.pool.get('purchase.request')
-        party_obj = self.pool.get('party.party')
-        purchase_obj = self.pool.get('purchase.purchase')
-        product_obj = self.pool.get('product.product')
-        line_obj = self.pool.get('purchase.line')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        request_obj = pool.get('purchase.request')
+        party_obj = pool.get('party.party')
+        purchase_obj = pool.get('purchase.purchase')
+        product_obj = pool.get('product.product')
+        line_obj = pool.get('purchase.line')
+        date_obj = pool.get('ir.date')
 
         form = data['form']
         if form.get('product') and form.get('party') and \
@@ -592,9 +597,10 @@ class CreatePurchase(Wizard):
         return res
 
     def compute_purchase_line(self, request):
-        party_obj = self.pool.get('party.party')
-        product_obj = self.pool.get('product.product')
-        tax_rule_obj = self.pool.get('account.tax.rule')
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        product_obj = pool.get('product.product')
+        tax_rule_obj = pool.get('account.tax.rule')
 
         line = {
             'product': request.product.id,
