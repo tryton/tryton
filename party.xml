@@ -6,11 +6,15 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_party_admin">
             <field name="name">Party Administration</field>
         </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_party_admin'))]"/>
+        <record model="res.user-res.group"
+            id="user_admin_group_party_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_party_admin"/>
         </record>
-        <record model="res.user" id="res.user_trigger">
-            <field name="groups" eval="[('add', ref('group_party_admin'))]"/>
+        <record model="res.user-res.group"
+            id="user_trigger_group_party_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_party_admin"/>
         </record>
 
         <record model="ir.ui.icon" id="party_icon">
@@ -21,8 +25,12 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-party"/>
 
         <menuitem name="Configuration" parent="menu_party"
-            id="menu_configuration" groups="group_party_admin"
-            sequence="0" icon="tryton-preferences"/>
+            id="menu_configuration" sequence="0" icon="tryton-preferences"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_party_group_party_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_party_admin"/>
+        </record>
 
         <record model="ir.ui.view" id="party_view_tree">
             <field name="model">party.party</field>
@@ -155,9 +163,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_party">
             <field name="name">Party</field>
             <field name="code">party.party</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('group_party_admin'))]"/>
         </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_party_group_admin">
+            <field name="sequence_type" ref="sequence_type_party"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_party_group_party_admin">
+            <field name="sequence_type" ref="sequence_type_party"/>
+            <field name="group" ref="group_party_admin"/>
+        </record>
+
         <record model="ir.sequence" id="sequence_party">
             <field name="name">Party</field>
             <field name="code">party.party</field>
