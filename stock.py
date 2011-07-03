@@ -1,7 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
 from decimal import Decimal
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.pool import Pool
 
 
 class Move(ModelSQL, ModelView):
@@ -14,8 +15,8 @@ class Move(ModelSQL, ModelView):
         '''
         Return move line values for stock move
         '''
-        uom_obj = self.pool.get('product.uom')
-        currency_obj = self.pool.get('currency.currency')
+        uom_obj = Pool().get('product.uom')
+        currency_obj = Pool().get('currency.currency')
         assert type_.startswith('in_') or type_.startswith('out_'), 'wrong type'
 
         move_line = {
@@ -63,8 +64,8 @@ class Move(ModelSQL, ModelView):
         '''
         Return account move value for stock move
         '''
-        date_obj = self.pool.get('ir.date')
-        period_obj = self.pool.get('account.period')
+        date_obj = Pool().get('ir.date')
+        period_obj = Pool().get('account.period')
         assert type_.startswith('in_') or type_.startswith('out_'), 'wrong type'
 
         date = move.effective_date or date_obj.today()
@@ -107,7 +108,7 @@ class Move(ModelSQL, ModelView):
         '''
         Create account move for stock move
         '''
-        account_move_obj = self.pool.get('account.move')
+        account_move_obj = Pool().get('account.move')
         type_ = self._get_account_stock_move_type(move)
         if not type_:
             return
