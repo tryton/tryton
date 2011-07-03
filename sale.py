@@ -3,6 +3,7 @@
 import copy
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, Not, Equal, Or, Bool
+from trytond.pool import Pool
 
 
 class Sale(ModelWorkflow, ModelSQL, ModelView):
@@ -28,8 +29,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         self._reset_columns()
 
     def on_change_party(self, values):
-        party_obj = self.pool.get('party.party')
-        price_list_obj = self.pool.get('product.price_list')
+        party_obj = Pool().get('party.party')
+        price_list_obj = Pool().get('product.price_list')
         res = super(Sale, self).on_change_party(values)
         res['price_list'] = False
         if values.get('party'):
