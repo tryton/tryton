@@ -5,6 +5,8 @@ from trytond.wizard import Wizard
 from trytond.backend import FIELDS
 from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
 
 class Line(ModelSQL, ModelView):
     'Timesheet Line'
@@ -29,8 +31,8 @@ class Line(ModelSQL, ModelView):
             ]
 
     def default_employee(self):
-        user_obj = self.pool.get('res.user')
-        employee_obj = self.pool.get('company.employee')
+        user_obj = Pool().get('res.user')
+        employee_obj = Pool().get('company.employee')
 
         employee_id = None
         if Transaction().context.get('employee'):
@@ -44,14 +46,14 @@ class Line(ModelSQL, ModelView):
         return False
 
     def default_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
 
         return Transaction().context.get('date') or date_obj.today()
 
     def view_header_get(self, value, view_type='form'):
         if not Transaction().context.get('employee'):
             return value
-        employee_obj = self.pool.get('company.employee')
+        employee_obj = Pool().get('company.employee')
         employee = employee_obj.browse(Transaction().context['employee'])
         return value + " (" + employee.name + ")"
 
@@ -67,11 +69,11 @@ class EnterLinesInit(ModelView):
     date = fields.Date('Date', required=True)
 
     def default_employee(self):
-        line_obj = self.pool.get('timesheet.line')
+        line_obj = Pool().get('timesheet.line')
         return line_obj.default_employee()
 
     def default_date(self):
-        line_obj = self.pool.get('timesheet.line')
+        line_obj = Pool().get('timesheet.line')
         return line_obj.default_date()
 
 EnterLinesInit()
@@ -101,9 +103,10 @@ class EnterLines(Wizard):
     }
 
     def _action_enter_lines(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
-        employee_obj = self.pool.get('company.employee')
+        pool = Pool()
+        model_data_obj = pool.get('ir.model.data')
+        act_window_obj = pool.get('ir.action.act_window')
+        employee_obj = pool.get('company.employee')
         act_window_id = model_data_obj.get_id('timesheet', 'act_line_form')
         res = act_window_obj.read(act_window_id)
         date = data['form']['date']
@@ -192,8 +195,8 @@ class OpenHoursEmployee(Wizard):
     }
 
     def _action_open(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        model_data_obj = Pool().get('ir.model.data')
+        act_window_obj = Pool().get('ir.action.act_window')
         act_window_id = model_data_obj.get_id('timesheet',
             'act_hours_employee_form')
         res = act_window_obj.read(act_window_id)

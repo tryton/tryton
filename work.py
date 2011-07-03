@@ -4,6 +4,8 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import PYSONEncoder
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
 
 class Work(ModelSQL, ModelView):
     'Work'
@@ -160,8 +162,8 @@ class OpenWork(Wizard):
     }
 
     def _action_open_work(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        model_data_obj = Pool().get('ir.model.data')
+        act_window_obj = Pool().get('ir.action.act_window')
         act_window_id = model_data_obj.get_id('timesheet', 'act_work_hours_board')
         res = act_window_obj.read(act_window_id)
         res['pyson_context'] = PYSONEncoder().encode({
@@ -177,8 +179,8 @@ class OpenWork2(OpenWork):
     _name = 'timesheet.work.open2'
 
     def _action_open_work(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        model_data_obj = Pool().get('ir.model.data')
+        act_window_obj = Pool().get('ir.action.act_window')
         act_window_id = model_data_obj.get_id('timesheet', 'act_work_form2')
         res = act_window_obj.read(act_window_id)
         res['pyson_context'] = PYSONEncoder().encode({
@@ -203,9 +205,10 @@ class OpenWorkGraph(Wizard):
     }
 
     def _action_open_work(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
-        work_obj = self.pool.get('timesheet.work')
+        pool = Pool()
+        model_data_obj = pool.get('ir.model.data')
+        act_window_obj = pool.get('ir.action.act_window')
+        work_obj = pool.get('timesheet.work')
 
         act_window_id = model_data_obj.get_id('timesheet', 'act_work_form3')
         res = act_window_obj.read(act_window_id)
