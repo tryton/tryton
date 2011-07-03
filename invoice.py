@@ -10,6 +10,7 @@ from trytond.backend import TableHandler, FIELDS
 from trytond.pyson import In, If, Get, Eval, Not, Equal, Bool, Or, And
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 _STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -182,15 +183,15 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return 'draft'
 
     def default_currency(self):
-        company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('currency.currency')
+        company_obj = Pool().get('company.company')
+        currency_obj = Pool().get('currency.currency')
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
         return False
 
     def default_currency_digits(self):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.digits
@@ -200,14 +201,14 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return Transaction().context.get('company') or False
 
     def default_payment_term(self):
-        payment_term_obj = self.pool.get('account.invoice.payment_term')
+        payment_term_obj = Pool().get('account.invoice.payment_term')
         payment_term_ids = payment_term_obj.search(self.payment_term.domain)
         if len(payment_term_ids) == 1:
             return payment_term_ids[0]
         return False
 
     def on_change_type(self, vals):
-        journal_obj = self.pool.get('account.journal')
+        journal_obj = Pool().get('account.journal')
         res = {}
         journal_ids = journal_obj.search([
             ('type', '=', _TYPE2JOURNAL.get(vals.get('type', 'out_invoice'),
@@ -220,11 +221,12 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_party(self, vals):
-        party_obj = self.pool.get('party.party')
-        address_obj = self.pool.get('party.address')
-        account_obj = self.pool.get('account.account')
-        payment_term_obj = self.pool.get('account.invoice.payment_term')
-        company_obj = self.pool.get('company.company')
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        address_obj = pool.get('party.address')
+        account_obj = pool.get('account.account')
+        payment_term_obj = pool.get('account.invoice.payment_term')
+        company_obj = pool.get('company.company')
         res = {
             'invoice_address': False,
             'account': False,
@@ -261,7 +263,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_with_currency_digits(self, vals):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(vals['currency'])
             return currency.digits
@@ -274,13 +276,13 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_with_currency_date(self, vals):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         today = date_obj.today()
         date = vals.get('invoice_date') or today
         return date
 
     def get_currency_date(self, ids, name):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         res = {}
         today = date_obj.today()
         for invoice in self.browse(ids):
@@ -288,7 +290,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_with_party_lang(self, vals):
-        party_obj = self.pool.get('party.party')
+        party_obj = Pool().get('party.party')
         if vals.get('party'):
             party = party_obj.browse(vals['party'])
             if party.lang:
@@ -329,8 +331,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return self._on_change_lines_taxes(vals)
 
     def _on_change_lines_taxes(self, vals):
-        currency_obj = self.pool.get('currency.currency')
-        tax_obj = self.pool.get('account.tax')
+        currency_obj = Pool().get('currency.currency')
+        tax_obj = Pool().get('account.tax')
         res = {
             'untaxed_amount': Decimal('0.0'),
             'tax_amount': Decimal('0.0'),
@@ -418,7 +420,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def get_untaxed_amount(self, ids, name):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         res = {}
         for invoice in self.browse(ids):
             res.setdefault(invoice.id, _ZERO)
@@ -431,7 +433,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def get_tax_amount(self, ids, name):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         cursor = Transaction().cursor
         res = {}
         type_name = FIELDS[self.tax_amount._type].sql_type(self.tax_amount)[0]
@@ -454,7 +456,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def get_total_amount(self, ids, name):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         res = {}
         for invoice in self.browse(ids):
             res[invoice.id] = currency_obj.round(invoice.currency,
@@ -488,8 +490,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def get_amount_to_pay(self, ids, name):
-        currency_obj = self.pool.get('currency.currency')
-        date_obj = self.pool.get('ir.date')
+        currency_obj = Pool().get('currency.currency')
+        date_obj = Pool().get('ir.date')
 
         compute_ids = self.search([
             ('id', 'in', ids),
@@ -536,9 +538,10 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def search_total_amount(self, name, clause):
-        rule_obj = self.pool.get('ir.rule')
-        line_obj = self.pool.get('account.invoice.line')
-        tax_obj = self.pool.get('account.invoice.tax')
+        pool = Pool()
+        rule_obj = pool.get('ir.rule')
+        line_obj = pool.get('account.invoice.line')
+        tax_obj = pool.get('account.invoice.tax')
         type_name = FIELDS[self.total_amount._type].sql_type(
                 self.total_amount)[0]
         cursor = Transaction().cursor
@@ -571,9 +574,10 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def search_untaxed_amount(self, name, clause):
-        rule_obj = self.pool.get('ir.rule')
-        line_obj = self.pool.get('account.invoice.line')
-        tax_obj = self.pool.get('account.invoice.tax')
+        pool = Pool()
+        rule_obj = pool.get('ir.rule')
+        line_obj = pool.get('account.invoice.line')
+        tax_obj = pool.get('account.invoice.tax')
         type_name = FIELDS[self.untaxed_amount._type].sql_type(
                 self.untaxed_amount)[0]
         cursor = Transaction().cursor
@@ -592,9 +596,10 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
     def search_tax_amount(self, name, clause):
-        rule_obj = self.pool.get('ir.rule')
-        line_obj = self.pool.get('account.invoice.line')
-        tax_obj = self.pool.get('account.invoice.tax')
+        pool = Pool()
+        rule_obj = pool.get('ir.rule')
+        line_obj = pool.get('account.invoice.line')
+        tax_obj = pool.get('account.invoice.tax')
         type_name = FIELDS[self.tax_amount._type].sql_type(
                 self.tax_amount)[0]
         cursor = Transaction().cursor
@@ -622,7 +627,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return True
 
     def get_tax_context(self, invoice):
-        party_obj = self.pool.get('party.party')
+        party_obj = Pool().get('party.party')
         res = {}
         if isinstance(invoice, dict):
             if invoice.get('party'):
@@ -660,8 +665,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return key, val
 
     def _compute_taxes(self, invoice):
-        tax_obj = self.pool.get('account.tax')
-        currency_obj = self.pool.get('currency.currency')
+        tax_obj = Pool().get('account.tax')
+        currency_obj = Pool().get('currency.currency')
 
         context = self.get_tax_context(invoice)
 
@@ -689,8 +694,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def update_taxes(self, ids, exception=False):
-        tax_obj = self.pool.get('account.invoice.tax')
-        currency_obj = self.pool.get('currency.currency')
+        tax_obj = Pool().get('account.invoice.tax')
+        currency_obj = Pool().get('currency.currency')
         for invoice in self.browse(ids):
             if invoice.state in ('open', 'paid', 'cancel'):
                 continue
@@ -728,7 +733,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         '''
         Return list of move line values for each invoice lines
         '''
-        line_obj = self.pool.get('account.invoice.line')
+        line_obj = Pool().get('account.invoice.line')
         res = []
         for line in invoice.lines:
             val = line_obj.get_move_line(line)
@@ -740,7 +745,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         '''
         Return list of move line values for each invoice taxes
         '''
-        tax_obj = self.pool.get('account.invoice.tax')
+        tax_obj = Pool().get('account.invoice.tax')
         res = []
         for tax in invoice.taxes:
             val = tax_obj.get_move_line(tax)
@@ -752,7 +757,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         '''
         Return move line
         '''
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         res = {}
         if invoice.currency.id != invoice.company.currency.id:
             with Transaction().set_context(date=invoice.currency_date):
@@ -777,11 +782,12 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def create_move(self, invoice_id):
-        tax_obj = self.pool.get('account.invoice.tax')
-        payment_term_obj = self.pool.get('account.invoice.payment_term')
-        currency_obj = self.pool.get('currency.currency')
-        move_obj = self.pool.get('account.move')
-        period_obj = self.pool.get('account.period')
+        pool = Pool()
+        tax_obj = pool.get('account.invoice.tax')
+        payment_term_obj = pool.get('account.invoice.payment_term')
+        currency_obj = pool.get('currency.currency')
+        move_obj = pool.get('account.move')
+        period_obj = pool.get('account.period')
 
         invoice = self.browse(invoice_id)
         if invoice.move:
@@ -823,9 +829,10 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return move_id
 
     def set_number(self, invoice_id):
-        period_obj = self.pool.get('account.period')
-        sequence_obj = self.pool.get('ir.sequence.strict')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        period_obj = pool.get('account.period')
+        sequence_obj = pool.get('ir.sequence.strict')
+        date_obj = pool.get('ir.date')
 
         invoice = self.browse(invoice_id)
 
@@ -905,9 +912,10 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def copy(self, ids, default=None):
-        line_obj = self.pool.get('account.invoice.line')
-        tax_obj = self.pool.get('account.invoice.tax')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        line_obj = pool.get('account.invoice.line')
+        tax_obj = pool.get('account.invoice.tax')
+        date_obj = pool.get('ir.date')
 
         int_id = False
         if isinstance(ids, (int, long)):
@@ -963,7 +971,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         '''
         Return list of line ids and the remainder to make reconciliation.
         '''
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
 
         if exclude_ids is None:
             exclude_ids = []
@@ -1033,9 +1041,10 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         :param second_currency: the id of the second currency
         :return: the id of the payment line
         '''
-        journal_obj = self.pool.get('account.journal')
-        move_obj = self.pool.get('account.move')
-        period_obj = self.pool.get('account.period')
+        pool = Pool()
+        journal_obj = pool.get('account.journal')
+        move_obj = pool.get('account.move')
+        period_obj = pool.get('account.period')
 
         lines = []
         invoice = self.browse(invoice_id)
@@ -1111,7 +1120,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         '''
         Generate invoice report and store it in invoice_report field.
         '''
-        invoice_report = self.pool.get('account.invoice', type='report')
+        invoice_report = Pool().get('account.invoice', type='report')
         invoice_report.execute([invoice_id], {'id': invoice_id})
         return
 
@@ -1119,8 +1128,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         '''
         Return values to credit invoice.
         '''
-        invoice_line_obj = self.pool.get('account.invoice.line')
-        invoice_tax_obj = self.pool.get('account.invoice.tax')
+        invoice_line_obj = Pool().get('account.invoice.line')
+        invoice_tax_obj = Pool().get('account.invoice.tax')
 
         res = {}
         if invoice.type == 'out_invoice':
@@ -1162,7 +1171,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         :param refund: a boolean to specify the refund
         :return: the list of new invoice id
         '''
-        move_line_obj = self.pool.get('account.move.line')
+        move_line_obj = Pool().get('account.move.line')
 
         new_ids = []
         for invoice in self.browse(ids):
@@ -1346,15 +1355,15 @@ class InvoiceLine(ModelSQL, ModelView):
         return Transaction().context.get('invoice_type', 'out_invoice')
 
     def default_currency(self):
-        company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('currency.currency')
+        company_obj = Pool().get('company.company')
+        currency_obj = Pool().get('currency.currency')
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
         return False
 
     def default_currency_digits(self):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.digits
@@ -1373,7 +1382,7 @@ class InvoiceLine(ModelSQL, ModelView):
         return Decimal('0.0')
 
     def on_change_with_party_lang(self, vals):
-        party_obj = self.pool.get('party.party')
+        party_obj = Pool().get('party.party')
         if vals.get('party'):
             party = party_obj.browse(vals['party'])
             if party.lang:
@@ -1398,7 +1407,7 @@ class InvoiceLine(ModelSQL, ModelView):
         return res
 
     def on_change_with_amount(self, vals):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         if vals.get('type') == 'line':
             currency = vals.get('_parent_invoice.currency') or vals.get('currency')
             if isinstance(currency, (int, long)) and currency:
@@ -1411,7 +1420,7 @@ class InvoiceLine(ModelSQL, ModelView):
         return Decimal('0.0')
 
     def on_change_with_unit_digits(self, vals):
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
         if vals.get('unit'):
             uom = uom_obj.browse(vals['unit'])
             return uom.digits
@@ -1427,7 +1436,7 @@ class InvoiceLine(ModelSQL, ModelView):
         return res
 
     def on_change_with_currency_digits(self, vals):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(vals['currency'])
             return currency.digits
@@ -1440,7 +1449,7 @@ class InvoiceLine(ModelSQL, ModelView):
         return res
 
     def get_amount(self, ids, name):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         res = {}
         for line in self.browse(ids):
             if line.type == 'line':
@@ -1464,8 +1473,8 @@ class InvoiceLine(ModelSQL, ModelView):
         return res
 
     def get_invoice_taxes(self, ids, name):
-        tax_obj = self.pool.get('account.tax')
-        invoice_obj = self.pool.get('account.invoice')
+        tax_obj = Pool().get('account.tax')
+        invoice_obj = Pool().get('account.invoice')
 
         res = {}
         for line in self.browse(ids):
@@ -1504,15 +1513,16 @@ class InvoiceLine(ModelSQL, ModelView):
         return res
 
     def on_change_product(self, vals):
-        product_obj = self.pool.get('product.product')
-        party_obj = self.pool.get('party.party')
-        account_obj = self.pool.get('account.account')
-        uom_obj = self.pool.get('product.uom')
-        company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('currency.currency')
-        tax_rule_obj = self.pool.get('account.tax.rule')
-        invoice_obj = self.pool.get('account.invoice')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        party_obj = pool.get('party.party')
+        account_obj = pool.get('account.account')
+        uom_obj = pool.get('product.uom')
+        company_obj = pool.get('company.company')
+        currency_obj = pool.get('currency.currency')
+        tax_rule_obj = pool.get('account.tax.rule')
+        invoice_obj = pool.get('account.invoice')
+        date_obj = pool.get('ir.date')
 
         if not vals.get('product'):
             return {}
@@ -1621,7 +1631,7 @@ class InvoiceLine(ModelSQL, ModelView):
         return res
 
     def on_change_account(self, values):
-        account_obj = self.pool.get('account.account')
+        account_obj = Pool().get('account.account')
         if values.get('product'):
             return {}
         taxes = []
@@ -1656,7 +1666,7 @@ class InvoiceLine(ModelSQL, ModelView):
         return super(InvoiceLine, self).write(ids, vals)
 
     def create(self, vals):
-        invoice_obj = self.pool.get('account.invoice')
+        invoice_obj = Pool().get('account.invoice')
         if vals.get('invoice'):
             invoice = invoice_obj.browse(vals['invoice'])
             if invoice.state in ('open', 'paid', 'cancel'):
@@ -1683,9 +1693,10 @@ class InvoiceLine(ModelSQL, ModelView):
         return True
 
     def _compute_taxes(self, line):
-        tax_obj = self.pool.get('account.tax')
-        currency_obj = self.pool.get('currency.currency')
-        invoice_obj = self.pool.get('account.invoice')
+        pool = Pool()
+        tax_obj = pool.get('account.tax')
+        currency_obj = pool.get('currency.currency')
+        invoice_obj = pool.get('account.invoice')
 
         context = invoice_obj.get_tax_context(line.invoice)
         res = []
@@ -1717,7 +1728,7 @@ class InvoiceLine(ModelSQL, ModelView):
         '''
         Return a list of move lines values for invoice line
         '''
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         res = {}
         if line.type != 'line':
             return []
@@ -1888,7 +1899,7 @@ class InvoiceTax(ModelSQL, ModelView):
         return super(InvoiceTax, self).write(ids, vals)
 
     def create(self, vals):
-        invoice_obj = self.pool.get('account.invoice')
+        invoice_obj = Pool().get('account.invoice')
         if vals.get('invoice'):
             invoice = invoice_obj.browse(vals['invoice'])
             if invoice.state in ('open', 'paid', 'cancel'):
@@ -1912,7 +1923,7 @@ class InvoiceTax(ModelSQL, ModelView):
         '''
         Return a list of move lines values for invoice tax
         '''
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         res = {}
         if not tax.amount:
             return []
@@ -2052,7 +2063,7 @@ class InvoiceReport(Report):
         self._rpc['execute'] = True
 
     def execute(self, ids, datas):
-        invoice_obj = self.pool.get('account.invoice')
+        invoice_obj = Pool().get('account.invoice')
 
         res = super(InvoiceReport, self).execute(ids, datas)
         if len(ids) > 1 or datas['id'] != ids[0]:
@@ -2064,14 +2075,14 @@ class InvoiceReport(Report):
         return res
 
     def _get_objects(self, ids, model, datas):
-        invoice_obj = self.pool.get('account.invoice')
+        invoice_obj = Pool().get('account.invoice')
 
         with Transaction().set_context(language=False):
             return invoice_obj.browse([ids[0]])
 
     def parse(self, report, objects, datas, localcontext):
-        user_obj = self.pool.get('res.user')
-        invoice_obj = self.pool.get('account.invoice')
+        user_obj = Pool().get('res.user')
+        invoice_obj = Pool().get('account.invoice')
 
         invoice = objects[0]
 
@@ -2109,11 +2120,11 @@ class PayInvoiceInit(ModelView):
     date = fields.Date('Date', required=True)
 
     def default_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
     def on_change_with_currency_digits(self, vals):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(vals['currency'])
             return currency.digits
@@ -2190,9 +2201,10 @@ class PayInvoiceAsk(ModelView):
         return 'partial'
 
     def on_change_lines(self, vals):
-        currency_obj = self.pool.get('currency.currency')
-        line_obj = self.pool.get('account.move.line')
-        invoice_obj = self.pool.get('account.invoice')
+        pool = Pool()
+        currency_obj = pool.get('currency.currency')
+        line_obj = pool.get('account.move.line')
+        invoice_obj = pool.get('account.invoice')
 
         res = {}
         invoice = invoice_obj.browse(vals['invoice'])
@@ -2261,7 +2273,7 @@ class PayInvoice(Wizard):
             })
 
     def _init(self, data):
-        invoice_obj = self.pool.get('account.invoice')
+        invoice_obj = Pool().get('account.invoice')
         res = {}
         invoice = invoice_obj.browse(data['id'])
         res['currency'] = invoice.currency.id
@@ -2271,8 +2283,8 @@ class PayInvoice(Wizard):
         return res
 
     def _choice(self, data):
-        invoice_obj = self.pool.get('account.invoice')
-        currency_obj = self.pool.get('currency.currency')
+        invoice_obj = Pool().get('account.invoice')
+        currency_obj = Pool().get('currency.currency')
 
         invoice = invoice_obj.browse(data['id'])
 
@@ -2285,9 +2297,10 @@ class PayInvoice(Wizard):
         return 'ask'
 
     def _ask(self, data):
-        invoice_obj = self.pool.get('account.invoice')
-        currency_obj = self.pool.get('currency.currency')
-        line_obj = self.pool.get('account.move.line')
+        pool = Pool()
+        invoice_obj = pool.get('account.invoice')
+        currency_obj = pool.get('currency.currency')
+        line_obj = pool.get('account.move.line')
 
         res = {}
         invoice = invoice_obj.browse(data['id'])
@@ -2337,9 +2350,10 @@ class PayInvoice(Wizard):
         return res
 
     def _action_pay(self, data):
-        invoice_obj = self.pool.get('account.invoice')
-        currency_obj = self.pool.get('currency.currency')
-        move_line_obj = self.pool.get('account.move.line')
+        pool = Pool()
+        invoice_obj = pool.get('account.invoice')
+        currency_obj = pool.get('currency.currency')
+        move_line_obj = pool.get('account.move.line')
 
         invoice = invoice_obj.browse(data['id'])
 
@@ -2432,7 +2446,7 @@ class CreditInvoice(Wizard):
             })
 
     def _init(self, data):
-        invoice_obj = self.pool.get('account.invoice')
+        invoice_obj = Pool().get('account.invoice')
         res = {
             'with_refund': True,
         }
@@ -2443,9 +2457,10 @@ class CreditInvoice(Wizard):
         return res
 
     def _action_credit(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
-        invoice_obj = self.pool.get('account.invoice')
+        pool = Pool()
+        model_data_obj = pool.get('ir.model.data')
+        act_window_obj = pool.get('ir.action.act_window')
+        invoice_obj = pool.get('account.invoice')
 
         refund = data['form']['with_refund']
 

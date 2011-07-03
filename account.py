@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval, Not, Equal
+from trytond.pool import Pool
 
 
 class FiscalYear(ModelSQL, ModelView):
@@ -84,7 +85,7 @@ class FiscalYear(ModelSQL, ModelView):
         return True
 
     def write(self, ids, vals):
-        invoice_obj = self.pool.get('account.invoice')
+        invoice_obj = Pool().get('account.invoice')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -173,7 +174,7 @@ class Period(ModelSQL, ModelView):
         return True
 
     def create(self, vals):
-        fiscalyear_obj = self.pool.get('account.fiscalyear')
+        fiscalyear_obj = Pool().get('account.fiscalyear')
         vals = vals.copy()
         if vals.get('fiscalyear'):
             fiscalyear = fiscalyear_obj.browse(vals['fiscalyear'])
@@ -184,7 +185,7 @@ class Period(ModelSQL, ModelView):
         return super(Period, self).create(vals)
 
     def write(self, ids, vals):
-        invoice_obj = self.pool.get('account.invoice')
+        invoice_obj = Pool().get('account.invoice')
 
         if isinstance(ids, (int, long)):
             ids = [ids]

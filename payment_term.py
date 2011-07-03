@@ -8,6 +8,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
 from trytond.pyson import Not, Equal, Eval
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class PaymentTerm(ModelSQL, ModelView):
@@ -37,11 +38,12 @@ class PaymentTerm(ModelSQL, ModelView):
         '''
         #TODO implement business_days
         # http://pypi.python.org/pypi/BusinessHours/
-        type_obj = self.pool.get('account.invoice.payment_term.line.type')
-        delay_obj = self.pool.get(
+        pool = Pool()
+        type_obj = pool.get('account.invoice.payment_term.line.type')
+        delay_obj = pool.get(
                 'account.invoice.payment_term.line.delay')
-        currency_obj = self.pool.get('currency.currency')
-        date_obj = self.pool.get('ir.date')
+        currency_obj = pool.get('currency.currency')
+        date_obj = pool.get('ir.date')
 
         res = []
         if date is None:
@@ -79,7 +81,7 @@ class PaymentTermLineType(ModelSQL, ModelView):
         self._order.insert(0, ('name', 'ASC'))
 
     def get_value(self, line, amount, currency):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         if line.type == 'fixed':
             return currency_obj.compute(line.currency, line.amount, currency)
         elif line.type == 'percent':
@@ -169,13 +171,13 @@ class PaymentTermLine(ModelSQL, ModelView):
         return 'net_days'
 
     def get_type(self):
-        type_obj = self.pool.get('account.invoice.payment_term.line.type')
+        type_obj = Pool().get('account.invoice.payment_term.line.type')
         type_ids = type_obj.search([])
         types = type_obj.browse(type_ids)
         return [(x.code, x.name) for x in types]
 
     def get_delay(self):
-        delay_obj = self.pool.get('account.invoice.payment_term.line.delay')
+        delay_obj = Pool().get('account.invoice.payment_term.line.delay')
         delay_ids = delay_obj.search([])
         delays = delay_obj.browse(delay_ids)
         return [(x.code, x.name) for x in delays]
@@ -192,7 +194,7 @@ class PaymentTermLine(ModelSQL, ModelView):
         return res
 
     def on_change_with_currency_digits(self, vals):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(vals['currency'])
             return currency.digits
