@@ -8,6 +8,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.tools import safe_eval
 from trytond.pyson import If, In, Eval, Get
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 # code snippet taken from http://docs.python.org/library/tokenize.html
@@ -91,10 +92,11 @@ class PriceList(ModelSQL, ModelView):
             and match value as value
         :return: the computed unit price
         '''
-        party_obj = self.pool.get('party.party')
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
-        price_list_line_obj = self.pool.get('product.price_list.line')
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        product_obj = pool.get('product.product')
+        uom_obj = pool.get('product.uom')
+        price_list_line_obj = pool.get('product.price_list.line')
 
         if not price_list:
             return unit_price
@@ -161,7 +163,7 @@ class PriceListLine(ModelSQL, ModelView):
         return 'unit_price'
 
     def on_change_with_unit_digits(self, vals):
-        product_obj = self.pool.get('product.product')
+        product_obj = Pool().get('product.product')
         if vals.get('product'):
             product = product_obj.browse(vals['product'])
             return product.default_uom.digits
@@ -180,7 +182,7 @@ class PriceListLine(ModelSQL, ModelView):
         '''
         Check formula
         '''
-        price_list_obj = self.pool.get('product.price_list')
+        price_list_obj = Pool().get('product.price_list')
         context = price_list_obj._get_context_price_list_line(None, None,
                 Decimal('0.0'), 0, None)
         lines = self.browse(ids)
