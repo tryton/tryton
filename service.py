@@ -4,6 +4,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.cacheable import Cacheable
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Employee(ModelSQL, ModelView, Cacheable):
@@ -31,8 +32,8 @@ class Employee(ModelSQL, ModelView, Cacheable):
         return res
 
     def compute_cost_price(self, employee_id, date=None):
-        date_obj = self.pool.get('ir.date')
-        cost_price_obj = self.pool.get('company.employee_cost_price')
+        date_obj = Pool().get('ir.date')
+        cost_price_obj = Pool().get('company.employee_cost_price')
 
         # Get from cache employee costs or fetch them from the db
         employee_costs = self.get(employee_id)
@@ -66,14 +67,14 @@ class Employee(ModelSQL, ModelView, Cacheable):
         return res
 
     def on_change_with_currency_digits(self, vals):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         if vals.get('company'):
             company = company_obj.browse(vals['company'])
             return company.currency.digits
         return 2
 
     def default_currency_digits(self):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
             company = company_obj.browse(company)
@@ -106,19 +107,19 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         self._order.insert(0, ('date', 'DESC'))
 
     def default_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
     def delete(self, ids):
-        self.pool.get('company.employee').clear()
+        Pool().get('company.employee').clear()
         return super(EmployeeCostPrice , self).delete(ids)
 
     def create(self, vals):
-        self.pool.get('company.employee').clear()
+        Pool().get('company.employee').clear()
         return super(EmployeeCostPrice , self).create(vals)
 
     def write(self, ids, vals):
-        self.pool.get('company.employee').clear()
+        Pool().get('company.employee').clear()
         return super(EmployeeCostPrice , self).write(ids, vals)
 
     def get_currency_digits(self, ids, name):
@@ -128,14 +129,14 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         return res
 
     def on_change_with_currency_digits(self, vals):
-        company_obj = self.pool.get('company.employee')
+        company_obj = Pool().get('company.employee')
         if vals.get('employee'):
             employee = employee_obj.browse(vals['employee'])
             return employee.company.currency.digits
         return 2
 
     def default_currency_digits(self):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
             company = company_obj.browse(company)

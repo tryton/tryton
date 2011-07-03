@@ -5,14 +5,15 @@ from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Not, Equal, Eval
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class TimesheetLine(ModelSQL, ModelView):
     _name = 'timesheet.line'
 
     def compute_cost(self, line):
-        employee_obj = self.pool.get('company.employee')
-        currency_obj = self.pool.get('currency.currency')
+        employee_obj = Pool().get('company.employee')
+        currency_obj = Pool().get('currency.currency')
 
         cost_price = employee_obj.compute_cost_price(line.employee.id,
                 date=line.date)
@@ -55,7 +56,7 @@ class Work(ModelSQL, ModelView):
         on_change_with=['company']), 'get_currency_digits')
 
     def get_cost(self, ids, name):
-        timesheet_line_obj = self.pool.get('timesheet.line')
+        timesheet_line_obj = Pool().get('timesheet.line')
         all_ids = self.search([
                 ('parent', 'child_of', ids),
                 ('active', '=', True)]) + ids
@@ -131,14 +132,14 @@ class Work(ModelSQL, ModelView):
         return res
 
     def on_change_with_currency_digits(self, vals):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         if vals.get('company'):
             company = company_obj.browse(vals['company'])
             return company.currency.digits
         return 2
 
     def default_currency_digits(self):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
             company = company_obj.browse(company)
@@ -146,11 +147,12 @@ class Work(ModelSQL, ModelView):
         return 2
 
     def on_change_product(self, vals):
-        product_obj = self.pool.get('product.product')
-        user_obj = self.pool.get('res.user')
-        company_obj = self.pool.get('company.company')
-        model_data_obj = self.pool.get('ir.model.data')
-        uom_obj = self.pool.get('product.uom')
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        user_obj = pool.get('res.user')
+        company_obj = pool.get('company.company')
+        model_data_obj = pool.get('ir.model.data')
+        uom_obj = pool.get('product.uom')
 
         if not vals.get('product'):
             return {}
