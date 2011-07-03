@@ -4,6 +4,7 @@ from __future__ import with_statement
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Not, Equal, Eval
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Purchase(ModelSQL, ModelView):
@@ -17,9 +18,9 @@ class Purchase(ModelSQL, ModelView):
             })
 
     def check_for_quotation(self, purchase_id):
-        account_selection_obj = self.pool.get(
+        account_selection_obj = Pool().get(
                 'analytic_account.account.selection')
-        purchase_line_obj = self.pool.get('purchase.line')
+        purchase_line_obj = Pool().get('purchase.line')
 
         res = super(Purchase, self).check_for_quotation(purchase_id)
 
@@ -49,14 +50,14 @@ class PurchaseLine(ModelSQL, ModelView):
             })
 
     def _view_look_dom_arch(self, tree, type, field_children=None):
-        analytic_account_obj = self.pool.get('analytic_account.account')
+        analytic_account_obj = Pool().get('analytic_account.account')
         analytic_account_obj.convert_view(tree)
         arch, fields = super(PurchaseLine, self)._view_look_dom_arch(tree, type,
             field_children=field_children)
         return arch, fields
 
     def fields_get(self, fields_names=None):
-        analytic_account_obj = self.pool.get('analytic_account.account')
+        analytic_account_obj = Pool().get('analytic_account.account')
 
         res = super(PurchaseLine, self).fields_get(fields_names)
 
@@ -68,7 +69,7 @@ class PurchaseLine(ModelSQL, ModelView):
         return res
 
     def read(self, ids, fields_names=None):
-        selection_obj = self.pool.get('analytic_account.account.selection')
+        selection_obj = Pool().get('analytic_account.account.selection')
 
         int_id = False
         if isinstance(ids, (int, long)):
@@ -118,7 +119,7 @@ class PurchaseLine(ModelSQL, ModelView):
         return res
 
     def create(self, vals):
-        selection_obj = self.pool.get('analytic_account.account.selection')
+        selection_obj = Pool().get('analytic_account.account.selection')
         vals = vals.copy()
         selection_vals = {}
         for field in vals.keys():
@@ -135,7 +136,7 @@ class PurchaseLine(ModelSQL, ModelView):
         return super(PurchaseLine, self).create(vals)
 
     def write(self, ids, vals):
-        selection_obj = self.pool.get('analytic_account.account.selection')
+        selection_obj = Pool().get('analytic_account.account.selection')
         vals = vals.copy()
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -176,7 +177,7 @@ class PurchaseLine(ModelSQL, ModelView):
         return super(PurchaseLine, self).write(ids, vals)
 
     def delete(self, ids):
-        selection_obj = self.pool.get('analytic_account.account.selection')
+        selection_obj = Pool().get('analytic_account.account.selection')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -191,7 +192,7 @@ class PurchaseLine(ModelSQL, ModelView):
         return res
 
     def copy(self, ids, default=None):
-        selection_obj = self.pool.get('analytic_account.account.selection')
+        selection_obj = Pool().get('analytic_account.account.selection')
 
         new_ids = super(PurchaseLine, self).copy(ids, default=default)
 
@@ -212,7 +213,7 @@ class PurchaseLine(ModelSQL, ModelView):
         return new_ids
 
     def get_invoice_line(self, line):
-        account_selection_obj = self.pool.get('analytic_account.account.selection')
+        account_selection_obj = Pool().get('analytic_account.account.selection')
 
         res = super(PurchaseLine, self).get_invoice_line(line)
         if not res:
@@ -232,21 +233,21 @@ class Account(ModelSQL, ModelView):
     _name = 'analytic_account.account'
 
     def delete(self, ids):
-        purchase_line_obj = self.pool.get('purchase.line')
+        purchase_line_obj = Pool().get('purchase.line')
         res = super(Account, self).delete(ids)
         # Restart the cache on the fields_view_get method of purchase.line
         purchase_line_obj.fields_view_get.reset()
         return res
 
     def create(self, vals):
-        purchase_line_obj = self.pool.get('purchase.line')
+        purchase_line_obj = Pool().get('purchase.line')
         res = super(Account, self).create(vals)
         # Restart the cache on the fields_view_get method of purchase.line
         purchase_line_obj.fields_view_get.reset()
         return res
 
     def write(self, ids, vals):
-        purchase_line_obj = self.pool.get('purchase.line')
+        purchase_line_obj = Pool().get('purchase.line')
         res = super(Account, self).write(ids, vals)
         # Restart the cache on the fields_view_get method of purchase.line
         purchase_line_obj.fields_view_get.reset()
