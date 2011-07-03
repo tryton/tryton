@@ -3,6 +3,7 @@
 'Address'
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Not, Bool, Eval, If, Greater
+from trytond.pool import Pool
 
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
@@ -110,7 +111,7 @@ class Address(ModelSQL, ModelView):
         return super(Address, self).write(ids, vals)
 
     def on_change_country(self, vals):
-        subdivision_obj = self.pool.get('country.subdivision')
+        subdivision_obj = Pool().get('country.subdivision')
         result = dict((k, vals.get(k, False))
             for k in ('country', 'subdivision'))
         if vals['subdivision']:

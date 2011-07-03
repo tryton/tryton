@@ -5,6 +5,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Not, Bool, Eval
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 HAS_VATNUMBER = False
 VAT_COUNTRIES = [('', '')]
@@ -80,7 +81,7 @@ class Party(ModelSQL, ModelView):
         return Transaction().context.get('categories', [])
 
     def default_addresses(self):
-        address_obj = self.pool.get('party.address')
+        address_obj = Pool().get('party.address')
         fields_names = list(x for x in set(address_obj._columns.keys()
                 + address_obj._inherit_fields.keys())
                 if x not in ['id', 'create_uid', 'create_date',
@@ -88,7 +89,7 @@ class Party(ModelSQL, ModelView):
         return [address_obj.default_get(fields_names)]
 
     def default_lang(self):
-        config_obj = self.pool.get('party.configuration')
+        config_obj = Pool().get('party.configuration')
         config = config_obj.browse(1)
         return config.party_lang.id
 
@@ -137,8 +138,8 @@ class Party(ModelSQL, ModelView):
         return res
 
     def create(self, values):
-        sequence_obj = self.pool.get('ir.sequence')
-        config_obj = self.pool.get('party.configuration')
+        sequence_obj = Pool().get('ir.sequence')
+        config_obj = Pool().get('party.configuration')
 
         values = values.copy()
         if not values.get('code'):
@@ -155,7 +156,7 @@ class Party(ModelSQL, ModelView):
         return super(Party, self).write(ids, vals)
 
     def copy(self, ids, default=None):
-        address_obj = self.pool.get('party.address')
+        address_obj = Pool().get('party.address')
 
         int_id = False
         if isinstance(ids, (int, long)):
@@ -192,7 +193,7 @@ class Party(ModelSQL, ModelView):
         Try to find an address for the given type, if no type match
         the first address is return.
         """
-        address_obj = self.pool.get("party.address")
+        address_obj = Pool().get("party.address")
         address_ids = address_obj.search(
             [("party", "=", party_id), ("active", "=", True)],
             order=[('sequence', 'ASC'), ('id', 'ASC')])
@@ -316,7 +317,7 @@ class CheckVIES(Wizard):
         return 'check'
 
     def _check(self, data):
-        party_obj = self.pool.get('party.party')
+        party_obj = Pool().get('party.party')
         res = {
             'parties_succeed': [],
             'parties_failed': [],
