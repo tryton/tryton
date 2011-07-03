@@ -10,11 +10,22 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_sale_admin">
             <field name="name">Sale Administrator</field>
         </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_sale')), ('add', ref('group_sale_admin'))]"/>
+        <record model="res.user-res.group" id="user_admin_group_sale">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_sale"/>
         </record>
-        <record model="res.user" id="res.user_trigger">
-            <field name="groups" eval="[('add', ref('group_sale')), ('add', ref('group_sale_admin'))]"/>
+        <record model="res.user-res.group" id="user_admin_group_sale_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_sale_admin"/>
+        </record>
+
+        <record model="res.user-res.group" id="user_trigger_group_sale">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_sale_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_sale_admin"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
@@ -352,9 +363,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_sale">
             <field name="name">Sale</field>
             <field name="code">sale.sale</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('group_sale_admin'))]"/>
         </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_sale_group_admin">
+            <field name="sequence_type" ref="sequence_type_sale"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_sale_group_sale_admin">
+            <field name="sequence_type" ref="sequence_type_sale"/>
+            <field name="group" ref="group_sale_admin"/>
+        </record>
+
         <record model="ir.sequence" id="sequence_sale">
             <field name="name">Sale</field>
             <field name="code">sale.sale</field>
