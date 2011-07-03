@@ -143,8 +143,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Create Purchase</field>
             <field name="wiz_name">purchase.request.create_purchase</field>
             <field name="model">purchase.request</field>
-            <field name="groups" eval="[('add', ref('group_purchase_request'))]"/>
         </record>
+        <record model="ir.action-res.group"
+            id="wizard_create_purchase_group_purchase_request">
+            <field name="action" ref="wizard_create_purchase"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+
         <record model="ir.action.keyword" id="create_purchase_keyword">
             <field name="keyword">form_action</field>
             <field name="model">purchase.request,0</field>
@@ -201,19 +206,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_purchase_request'))]"/>
+        <record model="res.user-res.group"
+            id="user_admin_group_purchase_request">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_purchase_request"/>
         </record>
-        <record model="res.user" id="res.user_trigger">
-            <field name="groups" eval="[('add', ref('group_purchase_request'))]"/>
+        <record model="res.user-res.group"
+            id="user_trigger_group_purchase_request">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_purchase_request"/>
         </record>
 
         <record model="res.user" id="user_generate_request">
             <field name="login">user_cron_purchase_request</field>
             <field name="name">Cron Purchase Request</field>
-            <field name="groups" eval="[('add', ref('group_purchase_request'))]"/>
             <field name="signature"></field>
             <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_generate_request_group_purchase_request">
+            <field name="user" ref="user_generate_request"/>
+            <field name="group" ref="group_purchase_request"/>
         </record>
 
         <record model="ir.cron" id="cron_generate_request">
