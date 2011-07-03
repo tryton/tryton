@@ -5,6 +5,7 @@ from lxml import etree
 from trytond.model import Model, fields
 from trytond.transaction import Transaction
 from trytond.cache import Cache
+from trytond.pool import Pool
 
 
 class View(Model):
@@ -17,7 +18,7 @@ class View(Model):
         :param user: the user id
         :return: an integer
         '''
-        model_data_obj = self.pool.get('ir.model.data')
+        model_data_obj = Pool().get('ir.model.data')
         model_data_ids = model_data_obj.search([
             ('fs_id', '=', 'view_dashboard'),
             ('module', '=', 'dashboard'),
@@ -48,7 +49,7 @@ class View(Model):
         :param arch: a string with the xml arch of dashboard
         :return: a string with the new xml arch
         '''
-        user_obj = self.pool.get('res.user')
+        user_obj = Pool().get('res.user')
         tree = etree.fromstring(arch)
         root = tree.getroottree().getroot()
         user = user_obj.browse(Transaction().user)
