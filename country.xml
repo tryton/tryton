@@ -45,7 +45,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_country_form"/>
         </record>
         <menuitem parent="ir.menu_administration" action="act_country_form"
-            id="menu_country_form" groups="res.group_admin"/>
+            id="menu_country_form"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_country_form_group_admin">
+            <field name="menu" ref="menu_country_form"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
 
         <record model="ir.ui.view" id="subdivision_view_form">
             <field name="model">country.subdivision</field>
