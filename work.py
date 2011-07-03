@@ -7,6 +7,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Eval, Not, Equal
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 def intfloor(x):
@@ -86,7 +87,7 @@ class Work(ModelSQL, ModelView):
         :return: a dictionary with all field names as key and
             a dictionary as value with id as key
         '''
-        req_ref_obj = self.pool.get('res.request.reference')
+        req_ref_obj = Pool().get('res.request.reference')
 
         cursor = Transaction().cursor
 
@@ -171,8 +172,8 @@ class Work(ModelSQL, ModelView):
         return res
 
     def set_function_fields(self, ids, name, value):
-        request_obj = self.pool.get('res.request')
-        req_ref_obj = self.pool.get('res.request.reference')
+        request_obj = Pool().get('res.request')
+        req_ref_obj = Pool().get('res.request.reference')
 
         if name == 'requests':
             works = self.browse(ids)
@@ -654,7 +655,7 @@ class PredecessorSuccessor(ModelSQL):
             ondelete='CASCADE', required=True, select=1)
 
     def write(self, ids, values):
-        work_obj = self.pool.get('project.work')
+        work_obj = Pool().get('project.work')
         res = super(PredecessorSuccessor, self).write(ids, values)
 
         for work_id in values.itervalues():
@@ -664,7 +665,7 @@ class PredecessorSuccessor(ModelSQL):
         return res
 
     def delete(self, ids):
-        work_obj = self.pool.get('project.work')
+        work_obj = Pool().get('project.work')
         if isinstance(ids, (int, long)):
             ids = [ids]
 
@@ -689,7 +690,7 @@ class PredecessorSuccessor(ModelSQL):
         return res
 
     def create(self, values):
-        work_obj = self.pool.get('project.work')
+        work_obj = Pool().get('project.work')
         ps_id = super(PredecessorSuccessor, self).create(values)
 
         pred_succ = self.browse(ps_id)
@@ -718,7 +719,7 @@ class Leveling(Wizard):
         }
 
     def _leveling(self, data):
-        work_obj = self.pool.get('project.work')
+        work_obj = Pool().get('project.work')
         work_obj.create_leveling(data['id'])
         return {}
 

@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pool import Pool
 
 
 class Allocation(ModelSQL, ModelView):
@@ -19,7 +20,7 @@ class Allocation(ModelSQL, ModelView):
         return 100
 
     def write(self, ids, values):
-        work_obj = self.pool.get('project.work')
+        work_obj = Pool().get('project.work')
         res = super(Allocation, self).write(ids, values)
 
         if isinstance(ids, (int, long)):
@@ -36,14 +37,14 @@ class Allocation(ModelSQL, ModelView):
         return res
 
     def create(self, values):
-        work_obj = self.pool.get('project.work')
+        work_obj = Pool().get('project.work')
         allocation_id = super(Allocation, self).create(values)
         allocation = self.browse(allocation_id)
         work_obj.reset_leveling(allocation.work.id)
         work_obj.compute_dates(allocation.work.id)
 
     def delete(self, ids):
-        work_obj = self.pool.get('project.work')
+        work_obj = Pool().get('project.work')
         allocations = self.browse(ids)
         work_ids = [a.work.id for a in allocations]
         res = super(Allocation, self).delete(ids)
