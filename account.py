@@ -6,6 +6,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Equal, Eval, Not, PYSONEncoder
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Account(ModelSQL, ModelView):
@@ -78,8 +79,8 @@ class Account(ModelSQL, ModelView):
         return Transaction().context.get('company') or False
 
     def default_currency(self):
-        company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('currency.currency')
+        company_obj = Pool().get('company.company')
+        currency_obj = Pool().get('currency.currency')
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
@@ -98,7 +99,7 @@ class Account(ModelSQL, ModelView):
         return False
 
     def on_change_with_currency_digits(self, vals):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(vals['currency'])
             return currency.digits
@@ -112,8 +113,8 @@ class Account(ModelSQL, ModelView):
 
     def get_balance(self, ids, name):
         res = {}
-        line_obj = self.pool.get('analytic_account.line')
-        currency_obj = self.pool.get('currency.currency')
+        line_obj = Pool().get('analytic_account.line')
+        currency_obj = Pool().get('currency.currency')
         cursor = Transaction().cursor
 
         child_ids = self.search([('parent', 'child_of', ids)])
@@ -178,8 +179,8 @@ class Account(ModelSQL, ModelView):
 
     def get_credit_debit(self, ids, name):
         res = {}
-        line_obj = self.pool.get('analytic_account.line')
-        currency_obj = self.pool.get('currency.currency')
+        line_obj = Pool().get('analytic_account.line')
+        currency_obj = Pool().get('currency.currency')
         cursor = Transaction().cursor
 
         if name not in ('credit', 'debit'):
@@ -326,8 +327,8 @@ class OpenChartAccount(Wizard):
     }
 
     def _action_open_chart(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        model_data_obj = Pool().get('ir.model.data')
+        act_window_obj = Pool().get('ir.action.act_window')
         act_window_id = model_data_obj.get_id('analytic_account',
                 'act_account_tree2')
         res = act_window_obj.read(act_window_id)
@@ -362,7 +363,7 @@ class AccountSelection(ModelSQL, ModelView):
 
     def check_root(self, ids):
         "Check Root"
-        account_obj = self.pool.get('analytic_account.account')
+        account_obj = Pool().get('analytic_account.account')
 
         root_account_ids = account_obj.search([
             ('parent', '=', False),

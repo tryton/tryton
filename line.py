@@ -6,6 +6,7 @@ from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Line(ModelSQL, ModelView):
@@ -58,14 +59,14 @@ class Line(ModelSQL, ModelView):
         table.not_null_action('currency', action='remove')
 
     def default_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
     def default_active(self):
         return True
 
     def on_change_with_currency(self, vals):
-        move_line_obj = self.pool.get('account.move.line')
+        move_line_obj = Pool().get('account.move.line')
         if vals.get('move_line'):
             move_line = move_line_obj.browse(vals['move_line'])
             return move_line.account.company.currency.id
@@ -78,7 +79,7 @@ class Line(ModelSQL, ModelView):
         return res
 
     def on_change_with_currency_digits(self, vals):
-        move_line_obj = self.pool.get('account.move.line')
+        move_line_obj = Pool().get('account.move.line')
         if vals.get('move_line'):
             move_line = move_line_obj.browse(vals['move_line'])
             return move_line.account.company.currency.digits
@@ -141,8 +142,8 @@ class OpenAccount(Wizard):
     }
 
     def _action_open_account(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        model_data_obj = Pool().get('ir.model.data')
+        act_window_obj = Pool().get('ir.action.act_window')
 
         act_window_id = model_data_obj.get_id('analytic_account',
                 'act_line_form')
