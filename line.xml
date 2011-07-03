@@ -74,7 +74,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model" search="[('model', '=', 'timesheet.line')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
-            <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_line_admin_group_timesheet_admin">
+            <field name="rule_group" ref="rule_group_line_admin"/>
+            <field name="group" ref="group_timesheet_admin"/>
         </record>
 
         <record model="ir.ui.view" id="enter_lines_init_view_form">
@@ -161,7 +165,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
-            <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_hours_employee_admin_group_timesheet_admin">
+            <field name="rule_group" ref="rule_group_hours_employee_admin"/>
+            <field name="group" ref="group_timesheet_admin"/>
         </record>
 
         <record model="ir.ui.view" id="open_hours_employee_init_view_form">

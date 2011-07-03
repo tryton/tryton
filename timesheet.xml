@@ -6,18 +6,26 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_timesheet_admin">
             <field name="name">Timesheet Administration</field>
         </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
+        <record model="res.user-res.group"
+            id="user_admin_group_timesheet_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_timesheet_admin"/>
         </record>
-        <record model="res.user" id="res.user_trigger">
-            <field name="groups" eval="[('add', ref('group_timesheet_admin'))]"/>
+        <record model="res.user-res.group"
+            id="user_trigger_group_timesheet_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_timesheet_admin"/>
         </record>
 
         <menuitem name="Timesheet Management" sequence="6" id="menu_timesheet"
             icon="tryton-clock"/>
         <menuitem name="Configuration" parent="menu_timesheet"
-            id="menu_configuration" groups="group_timesheet_admin"
-            sequence="10" icon="tryton-preferences"/>
+            id="menu_configuration" sequence="10" icon="tryton-preferences"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_configuration_group_timesheet_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_timesheet_admin"/>
+        </record>
         <menuitem name="Reporting" parent="menu_timesheet"
             id="menu_reporting" sequence="100"/>
     </data>
