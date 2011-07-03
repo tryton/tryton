@@ -5,6 +5,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.modelstorage import OPERATORS
 from trytond.pyson import Not, Bool, Eval
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
@@ -93,8 +94,8 @@ class Uom(ModelSQL, ModelView):
         return 2
 
     def default_category(self):
-        category_obj = self.pool.get('product.uom.category')
-        product_obj = self.pool.get('product.product')
+        category_obj = Pool().get('product.uom.category')
+        product_obj = Pool().get('product.product')
         context = Transaction().context
         if 'category' in context:
             if isinstance(context['category'], (tuple, list)) \
@@ -249,7 +250,7 @@ class Uom(ModelSQL, ModelView):
 
     def search(self, args, offset=0, limit=None, order=None,
             count=False, query_string=False):
-        product_obj = self.pool.get('product.product')
+        product_obj = Pool().get('product.product')
         args = args[:]
         def process_args(args):
             i = 0

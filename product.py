@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Not, Bool, Eval
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
@@ -51,11 +52,11 @@ class Template(ModelSQL, ModelView):
         return 'fixed'
 
     def get_price_uom(self, ids, name):
-        product_uom_obj = self.pool.get('product.uom')
+        product_uom_obj = Pool().get('product.uom')
         res = {}
         field = name[:-4]
         if Transaction().context.get('uom'):
-            to_uom = self.pool.get('product.uom').browse(
+            to_uom = product_uom_obj.browse(
                 Transaction().context['uom'])
             for product in self.browse(ids):
                 res[product.id] = product_uom_obj.compute_price(
@@ -105,7 +106,7 @@ class Product(ModelSQL, ModelView):
         return [('name',) + clause[1:]]
 
     def delete(self, ids):
-        template_obj = self.pool.get('product.template')
+        template_obj = Pool().get('product.template')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -126,7 +127,7 @@ class Product(ModelSQL, ModelView):
         return res
 
     def copy(self, ids, default=None):
-        template_obj = self.pool.get('product.template')
+        template_obj = Pool().get('product.template')
 
         int_id = False
         if isinstance(ids, (int, long)):
