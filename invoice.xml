@@ -607,9 +607,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_account_invoice">
             <field name="name">Invoice</field>
             <field name="code">account.invoice</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('account.group_account_admin'))]"/>
         </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_invoice_group_admin">
+            <field name="sequence_type" ref="sequence_type_account_invoice"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_account_invoice_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_account_invoice"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+
         <record model="workflow" id="invoice_workflow">
             <field name="name">Invoice workflow</field>
             <field name="model">account.invoice</field>
