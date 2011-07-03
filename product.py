@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import PYSONEncoder
+from trytond.pool import Pool
 
 
 class ProductCostHistory(ModelSQL, ModelView):
@@ -19,7 +20,7 @@ class ProductCostHistory(ModelSQL, ModelView):
         self._order.insert(0, ('date', 'DESC'))
 
     def table_query(self):
-        property_obj = self.pool.get('ir.property')
+        property_obj = Pool().get('ir.property')
         return ('SELECT ' \
                     'MAX(__id) AS id, ' \
                     'MAX(create_uid) AS create_uid, ' \
@@ -53,9 +54,10 @@ class OpenProductCostHistory(Wizard):
     }
 
     def _open(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
-        product_obj = self.pool.get('product.product')
+        pool = Pool()
+        model_data_obj = pool.get('ir.model.data')
+        act_window_obj = pool.get('ir.action.act_window')
+        product_obj = pool.get('product.product')
         act_window_id = model_data_obj.get_id('product_cost_history',
                 'act_product_cost_history_form')
         res = act_window_obj.read(act_window_id)
