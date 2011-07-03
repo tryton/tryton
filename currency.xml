@@ -6,18 +6,24 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_currency_admin">
             <field name="name">Currency Administration</field>
         </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_currency_admin'))]"/>
+        <record model="res.user-res.group" id="user_admin_group_currency_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_currency_admin"/>
         </record>
-        <record model="res.user" id="res.user_trigger">
-            <field name="groups" eval="[('add', ref('group_currency_admin'))]"/>
+        <record model="res.user-res.group" id="user_trigger_group_currency_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_currency_admin"/>
         </record>
         <record model="ir.ui.icon" id="currency_icon">
             <field name="name">tryton-currency</field>
             <field name="path">icons/tryton-currency.svg</field>
         </record>
         <menuitem name="Currency Management" id="menu_currency" sequence="3"
-            groups="group_currency_admin" icon="tryton-currency"/>
+            icon="tryton-currency"/>
+        <record model="ir.ui.menu-res.group" id="menu_currency_group_currency_admin">
+            <field name="menu" ref="menu_currency"/>
+            <field name="group" ref="group_currency_admin"/>
+        </record>
 
         <record model="ir.ui.view" id="currency_view_form">
             <field name="model">currency.currency</field>
