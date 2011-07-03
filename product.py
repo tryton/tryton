@@ -4,6 +4,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Not, Eval, Bool, Or
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Category(ModelSQL, ModelView):
@@ -31,7 +32,7 @@ class Category(ModelSQL, ModelView):
             'category', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)])
 
     def on_change_account_expense(self, values):
-        account_obj = self.pool.get('account.account')
+        account_obj = Pool().get('account.account')
         supplier_taxes = []
         result = {
             'supplier_taxes': supplier_taxes,
@@ -42,7 +43,7 @@ class Category(ModelSQL, ModelView):
         return result
 
     def on_change_account_revenue(self, values):
-        account_obj = self.pool.get('account.account')
+        account_obj = Pool().get('account.account')
         customer_taxes = []
         result = {
             'customer_taxes': customer_taxes,
@@ -161,7 +162,7 @@ class Template(ModelSQL, ModelView):
         return False
 
     def get_account(self, ids, name):
-        account_obj = self.pool.get('account.account')
+        account_obj = Pool().get('account.account')
         res = {}
         name = name[:-5]
         for product in self.browse(ids):
@@ -186,7 +187,7 @@ class Template(ModelSQL, ModelView):
         return res
 
     def on_change_account_expense(self, values):
-        account_obj = self.pool.get('account.account')
+        account_obj = Pool().get('account.account')
         supplier_taxes = []
         result = {
             'supplier_taxes': supplier_taxes,
@@ -197,7 +198,7 @@ class Template(ModelSQL, ModelView):
         return result
 
     def on_change_account_revenue(self, values):
-        account_obj = self.pool.get('account.account')
+        account_obj = Pool().get('account.account')
         customer_taxes = []
         result = {
             'customer_taxes': customer_taxes,
