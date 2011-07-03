@@ -3,6 +3,8 @@
 from __future__ import with_statement
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
 
 class Purchase(ModelSQL, ModelView):
     _name = 'purchase.purchase'
@@ -24,8 +26,8 @@ class Purchase(ModelSQL, ModelView):
         super(Purchase, self).init(module_name)
 
     def create_invoice(self, purchase_id):
-        invoice_obj = self.pool.get('account.invoice')
-        invoice_line_obj = self.pool.get('account.invoice.line')
+        invoice_obj = Pool().get('account.invoice')
+        invoice_line_obj = Pool().get('account.invoice.line')
 
         res = super(Purchase, self).create_invoice(purchase_id)
 

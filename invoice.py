@@ -2,14 +2,15 @@
 #of this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Invoice(ModelSQL, ModelView):
     _name = 'account.invoice'
 
     def write(self, ids, vals):
-        invoice_line_obj = self.pool.get('account.invoice.line')
-        purchase_obj = self.pool.get('purchase.purchase')
+        invoice_line_obj = Pool().get('account.invoice.line')
+        purchase_obj = Pool().get('purchase.purchase')
         res = super(Invoice, self).write(ids, vals)
         if 'state' in vals and vals['state'] in ('paid', 'cancel'):
             if isinstance(ids, (int, long)):
@@ -36,7 +37,7 @@ class InvoiceLine(ModelSQL, ModelView):
             })
 
     def write(self, ids, vals):
-        purchase_obj = self.pool.get('purchase.purchase')
+        purchase_obj = Pool().get('purchase.purchase')
 
         if 'invoice' in vals:
             if isinstance(ids, (int, long)):
