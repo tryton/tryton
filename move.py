@@ -3,6 +3,7 @@
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
+from trytond.pool import Pool
 
 
 class Move(ModelSQL, ModelView):
@@ -38,8 +39,8 @@ class Move(ModelSQL, ModelView):
         :return: cost_price (of type decimal)
         '''
 
-        template_obj = self.pool.get('product.template')
-        uom_obj = self.pool.get('product.uom')
+        template_obj = Pool().get('product.template')
+        uom_obj = Pool().get('product.uom')
 
         if isinstance(uom, (int, long)):
             uom = uom_obj.browse(uom)
@@ -81,10 +82,11 @@ class Move(ModelSQL, ModelView):
             return product.cost_price
 
     def create(self, vals):
-        location_obj = self.pool.get('stock.location')
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        location_obj = pool.get('stock.location')
+        product_obj = pool.get('product.product')
+        uom_obj = pool.get('product.uom')
+        date_obj = pool.get('ir.date')
 
         today = date_obj.today()
         effective_date = vals.get('effective_date') or today
@@ -115,7 +117,7 @@ class Move(ModelSQL, ModelView):
         return super(Move, self).create(vals)
 
     def write(self, ids, vals):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
 
         if isinstance(ids, (int, long)):
             ids = [ids]

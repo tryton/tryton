@@ -5,6 +5,7 @@ import copy
 import datetime
 from trytond.model import ModelView, ModelSQL
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Template(ModelSQL, ModelView):
@@ -30,9 +31,10 @@ class Template(ModelSQL, ModelView):
         :return: list of (move, qty) where move is a browse record,
         qty is a float
         '''
-        move_obj = self.pool.get('stock.move')
-        uom_obj = self.pool.get('product.uom')
-        location_obj = self.pool.get('stock.location')
+        pool = Pool()
+        move_obj = pool.get('stock.move')
+        uom_obj = pool.get('product.uom')
+        location_obj = pool.get('stock.location')
 
         locations = location_obj.search([
             ('type', '=', 'storage'),
