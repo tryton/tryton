@@ -7,8 +7,9 @@
         <record model="res.group" id="group_opportunity">
             <field name="name">Sale Opportunity</field>
         </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_opportunity'))]"/>
+        <record model="res.user-res.group" id="user_admin_group_opportunity">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_opportunity"/>
         </record>
 
         <record model="ir.ui.view" id="opportunity_view_form">
