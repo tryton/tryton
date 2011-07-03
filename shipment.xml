@@ -1363,9 +1363,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_shipment_out">
             <field name="name">Customer Shipment</field>
             <field name="code">stock.shipment.out</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('group_stock_admin'))]"/>
         </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_out_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_out"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_out_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_out"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
         <record model="ir.sequence" id="sequence_shipment_out">
                 <field name="name">Customer Shipment</field>
                 <field name="code">stock.shipment.out</field>
@@ -1375,9 +1384,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_shipment_in">
             <field name="name">Supplier Shipment</field>
             <field name="code">stock.shipment.in</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('group_stock_admin'))]"/>
         </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_in_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_in"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_in_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_in"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
         <record model="ir.sequence" id="sequence_shipment_in">
                 <field name="name">Supplier Shipment</field>
                 <field name="code">stock.shipment.in</field>
@@ -1387,9 +1405,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_shipment_internal">
             <field name="name">Internal Shipment</field>
             <field name="code">stock.shipment.internal</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('group_stock_admin'))]"/>
         </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_internal_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_internal"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_internal_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_internal"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
         <record model="ir.sequence" id="sequence_shipment_internal">
                 <field name="name">Internal Shipment</field>
                 <field name="code">stock.shipment.internal</field>
@@ -1399,9 +1426,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_shipment_out_return">
             <field name="name">Customer Return Shipment</field>
             <field name="code">stock.shipment.out.return</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('group_stock_admin'))]"/>
         </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_out_return_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_out_return"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_out_return_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_out_return"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
         <record model="ir.sequence" id="sequence_shipment_out_return">
                 <field name="name">Customer Return Shipment</field>
                 <field name="code">stock.shipment.out.return</field>
@@ -1411,9 +1447,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_shipment_in_return">
                 <field name="name">Supplier Return Shipment</field>
                 <field name="code">stock.shipment.in.return</field>
-            <field name="groups"
-                eval="[('add', ref('res.group_admin')), ('add', ref('group_stock_admin'))]"/>
         </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_in_return_group_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_in_return"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_shipment_in_return_group_stock_admin">
+            <field name="sequence_type" ref="sequence_type_shipment_in_return"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
         <record model="ir.sequence" id="sequence_shipment_in_return">
                 <field name="name">Supplier Return Shipment</field>
                 <field name="code">stock.shipment.in.return</field>

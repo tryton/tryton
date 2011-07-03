@@ -7,7 +7,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Complete Inventory</field>
             <field name="wiz_name">stock.inventory.complete</field>
             <field name="model">stock.inventory</field>
-            <field name="groups" eval="[('add', ref('group_stock'))]"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_complete_inventory_group_stock">
+            <field name="action" ref="wizard_complete_inventory"/>
+            <field name="group" ref="group_stock"/>
         </record>
 
         <record model="ir.ui.view" id="inventory_view_form">

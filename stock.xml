@@ -12,11 +12,36 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_stock_force_assignment">
             <field name="name">Stock Force Assignment</field>
         </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_stock_admin')), ('add', ref('group_stock')), ('add', ref('group_stock_force_assignment'))]"/>
+        <record model="res.user-res.group"
+            id="user_admin_group_stock_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock_admin"/>
         </record>
-        <record model="res.user" id="res.user_trigger">
-            <field name="groups" eval="[('add', ref('group_stock_admin')), ('add', ref('group_stock')), ('add', ref('group_stock_force_assignment'))]"/>
+        <record model="res.user-res.group"
+            id="user_admin_group_stock">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_stock_force_assignment">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock_force_assignment"/>
+        </record>
+
+        <record model="res.user-res.group"
+            id="user_trigger_group_stock_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_stock">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_stock_force_assignment">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_stock_force_assignment"/>
         </record>
 
         <record model="ir.ui.icon" id="inventory_icon">
@@ -26,8 +51,12 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem name="Inventory Management" sequence="3" id="menu_stock"
             icon="tryton-inventory"/>
         <menuitem name="Configuration" parent="menu_stock"
-            id="menu_configuration" groups="group_stock_admin"
-            sequence="0" icon="tryton-preferences"/>
+            id="menu_configuration" sequence="0" icon="tryton-preferences"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_configuration_group_stock_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
 
         <menuitem name="Reporting" parent="menu_stock"
             id="menu_reporting" sequence="100" active="0"/>
