@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pool import Pool
 
 
 class InvoiceLine(ModelSQL, ModelView):
@@ -42,10 +43,11 @@ class InvoiceLine(ModelSQL, ModelView):
         return result
 
     def get_move_line(self, line):
-        purchase_line_invoice_line_obj = self.pool.get(
+        pool = Pool()
+        purchase_line_invoice_line_obj = pool.get(
                 'purchase.line-account.invoice.line')
-        move_obj = self.pool.get('stock.move')
-        currency_obj = self.pool.get('currency.currency')
+        move_obj = pool.get('stock.move')
+        currency_obj = pool.get('currency.currency')
 
         result = super(InvoiceLine, self).get_move_line(line)
 

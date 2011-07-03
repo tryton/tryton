@@ -3,6 +3,7 @@
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
+from trytond.pool import Pool
 
 
 class Move(ModelSQL, ModelView):
@@ -27,7 +28,7 @@ class Move(ModelSQL, ModelView):
         is the quantity (in the product default uom) to be consumed on this
         move.
         '''
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
 
         consumed_qty = 0.0
         for move in moves:
@@ -48,7 +49,7 @@ class Move(ModelSQL, ModelView):
         Return the cost for quantity based on lines.
         Update anglo_saxon_quantity on the concerned moves.
         '''
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
 
         for move in moves:
             assert move.product == product, 'wrong product'
