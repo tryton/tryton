@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
 
 class Cron(ModelSQL, ModelView):
     "Cron"
@@ -10,7 +12,7 @@ class Cron(ModelSQL, ModelView):
             'Companies', help='Companies registered for this cron')
 
     def _callback(self, cron):
-        user_obj = self.pool.get('res.user')
+        user_obj = Pool().get('res.user')
         if not cron.companies:
             return super(Cron, self)._callback(cron)
         # TODO replace with context
@@ -26,7 +28,7 @@ class Cron(ModelSQL, ModelView):
         })
 
     def default_companies(self):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         return company_obj.search([])
 
 Cron()

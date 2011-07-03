@@ -7,6 +7,7 @@ from trytond.wizard import Wizard
 from trytond.report import Report
 from trytond.pyson import Eval, If, In, Get
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Company(ModelSQL, ModelView):
@@ -34,7 +35,7 @@ class Company(ModelSQL, ModelView):
         })
 
     def copy(self, ids, default=None):
-        party_obj = self.pool.get('party.party')
+        party_obj = Pool().get('party.party')
 
         int_id = False
         if isinstance(ids, (int, long)):
@@ -56,7 +57,7 @@ class Company(ModelSQL, ModelView):
     def write(self, ids, vals):
         res = super(Company, self).write(ids, vals)
         # Restart the cache on the domain_get method
-        self.pool.get('ir.rule').domain_get.reset()
+        Pool().get('ir.rule').domain_get.reset()
         return res
 
 Company()
@@ -104,7 +105,7 @@ class User(ModelSQL, ModelView):
         return self.default_main_company()
 
     def get_companies(self, ids, name):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         res = {}
         company_childs = {}
         for user in self.browse(ids):
@@ -137,7 +138,7 @@ class User(ModelSQL, ModelView):
         return {'company': vals.get('main_company', False)}
 
     def check_company(self, ids):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         for user in self.browse(ids):
             if user.main_company:
                 companies = company_obj.search([
@@ -159,7 +160,7 @@ class User(ModelSQL, ModelView):
         return res
 
     def get_preferences_fields_view(self):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
 
         user = self.browse(Transaction().user)
 
@@ -168,7 +169,7 @@ class User(ModelSQL, ModelView):
         return res
 
     def read(self, ids, fields_names=None):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         user_id = Transaction().user
         if user_id == 0 and 'user' in Transaction().context:
             user_id = Transaction().context['user']
@@ -212,7 +213,7 @@ class Property(ModelSQL, ModelView):
             ])
 
     def _set_values(self, name, model, res_id, val, field_id):
-        user_obj = self.pool.get('res.user')
+        user_obj = Pool().get('res.user')
         user_id = Transaction().user
         if user_id == 0:
             user_id = Transaction().context.get('user', user_id)
@@ -298,8 +299,8 @@ class CompanyConfig(Wizard):
     }
 
     def _add(self, data):
-        company_obj = self.pool.get('company.company')
-        user_obj = self.pool.get('res.user')
+        company_obj = Pool().get('company.company')
+        user_obj = Pool().get('res.user')
 
         company_id = company_obj.create(data['form'])
         user_ids = user_obj.search([
@@ -317,7 +318,7 @@ CompanyConfig()
 class CompanyReport(Report):
 
     def parse(self, report, objects, datas, localcontext=None):
-        user = self.pool.get('res.user').browse(Transaction().user)
+        user = Pool().get('res.user').browse(Transaction().user)
         if localcontext is None:
             localcontext = {}
         localcontext['company'] = user.company
