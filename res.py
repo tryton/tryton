@@ -4,6 +4,8 @@ from __future__ import with_statement
 import ldap
 from trytond.model import ModelView, ModelSQL
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
 
 class User(ModelSQL, ModelView):
     _name = 'res.user'
@@ -43,7 +45,7 @@ class User(ModelSQL, ModelView):
         return result
 
     def _check_passwd_ldap_user(self, logins):
-        connection_obj = self.pool.get('ldap.connection')
+        connection_obj = Pool().get('ldap.connection')
         connection_ids = connection_obj.search([], limit=1)
         with Transaction().set_user(0):
             connection = connection_obj.browse(connection_ids[0])
@@ -81,7 +83,7 @@ class User(ModelSQL, ModelView):
         return super(User, self).write(ids, vals)
 
     def set_preferences(self, values, old_password=False):
-        connection_obj = self.pool.get('ldap.connection')
+        connection_obj = Pool().get('ldap.connection')
         if 'password' in values:
             connection_ids = connection_obj.search([], limit=1)
             with Transaction().set_user(0):
@@ -109,7 +111,7 @@ class User(ModelSQL, ModelView):
                 old_password=old_password)
 
     def get_login(self, login, password):
-        connection_obj = self.pool.get('ldap.connection')
+        connection_obj = Pool().get('ldap.connection')
         connection_ids = connection_obj.search([], limit=1)
         with Transaction().set_user(0):
             connection = connection_obj.browse(connection_ids[0])
