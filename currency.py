@@ -6,6 +6,7 @@ from decimal import Decimal, ROUND_HALF_EVEN
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.tools import safe_eval, datetime_strftime
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Currency(ModelSQL, ModelView):
@@ -136,8 +137,8 @@ class Currency(ModelSQL, ModelView):
         '''
         Return the rate at the date from the context or the current date
         '''
-        rate_obj = self.pool.get('currency.currency.rate')
-        date_obj = self.pool.get('ir.date')
+        rate_obj = Pool().get('currency.currency.rate')
+        date_obj = Pool().get('ir.date')
 
         res = {}
         date = Transaction().context.get('date', date_obj.today())
@@ -185,8 +186,8 @@ class Currency(ModelSQL, ModelView):
         Use the rate of the date of the context or the current date if ids are
         given
         '''
-        date_obj = self.pool.get('ir.date')
-        lang_obj = self.pool.get('ir.lang')
+        date_obj = Pool().get('ir.date')
+        lang_obj = Pool().get('ir.lang')
 
         if isinstance(from_currency, (int, long)):
             from_currency = self.browse(from_currency)
@@ -242,7 +243,7 @@ class Rate(ModelSQL, ModelView):
         self._order.insert(0, ('date', 'DESC'))
 
     def default_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
     def check_xml_record(self, ids, values):
