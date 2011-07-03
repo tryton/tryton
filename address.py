@@ -3,6 +3,7 @@
 import urllib
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Address(ModelSQL, ModelView):
@@ -30,8 +31,8 @@ class Address(ModelSQL, ModelView):
         return url
 
     def on_change_with_google_maps_url(self, vals):
-        country_obj = self.pool.get('country.country')
-        subdivision_obj = self.pool.get('country.subdivision')
+        country_obj = Pool().get('country.country')
+        subdivision_obj = Pool().get('country.subdivision')
 
         vals = vals.copy()
 
