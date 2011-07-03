@@ -6,14 +6,17 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_stock_forecast">
             <field name="name">Stock Forecast</field>
         </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups"
-                   eval="[('add', ref('group_stock_forecast'))]"/>
+        <record model="res.user-res.group"
+            id="user_admin_group_stock_forecast">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock_forecast"/>
         </record>
-        <record model="res.user" id="res.user_trigger">
-            <field name="groups"
-                   eval="[('add', ref('group_stock_forecast'))]"/>
+        <record model="res.user-res.group"
+            id="user_trigger_group_stock_forecast">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_stock_forecast"/>
         </record>
+
         <record model="ir.action.wizard" id="wizard_forecast_complete">
             <field name="name">Complete Forecast</field>
             <field name="wiz_name">stock.forecast.complete</field>
