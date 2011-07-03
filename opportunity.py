@@ -9,6 +9,7 @@ from trytond.wizard import Wizard
 from trytond.backend import FIELDS
 from trytond.pyson import Equal, Eval, Not, In, If, Get, PYSONEncoder
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 STATES = [
     ('lead', 'Lead'),
@@ -106,7 +107,7 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         return 'lead'
 
     def default_start_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
     def default_probability(self):
@@ -116,8 +117,8 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         return Transaction().context.get('company') or False
 
     def default_employee(self):
-        user_obj = self.pool.get('res.user')
-        employee_obj = self.pool.get('company.employee')
+        user_obj = Pool().get('res.user')
+        employee_obj = Pool().get('company.employee')
 
         employee_id = False
         if Transaction().context.get('employee'):
@@ -129,14 +130,14 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         return employee_id
 
     def default_payment_term(self):
-        payment_term_obj = self.pool.get('account.invoice.payment_term')
+        payment_term_obj = Pool().get('account.invoice.payment_term')
         payment_term_ids = payment_term_obj.search(self.payment_term.domain)
         if len(payment_term_ids) == 1:
             return payment_term_ids[0]
         return False
 
     def default_warehouse(self):
-        location_obj = self.pool.get('stock.location')
+        location_obj = Pool().get('stock.location')
         location_ids = location_obj.search(self.warehouse.domain)
         if len(location_ids) == 1:
             return location_ids[0]
@@ -155,7 +156,7 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_company(self, values):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
 
         res = {}
         if values.get('company'):
@@ -166,8 +167,8 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_party(self, values):
-        party_obj = self.pool.get('party.party')
-        payment_term_obj = self.pool.get('account.invoice.payment_term')
+        party_obj = Pool().get('party.party')
+        payment_term_obj = Pool().get('account.invoice.payment_term')
 
         res = {
             'payment_term': False,
@@ -190,7 +191,7 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         :param opportunity_id: the id of the opportunity
         :param state: the target state
         """
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         self.write(opportunity_id, {
             'end_date': date_obj.today(),
             'state': state,
@@ -209,7 +210,7 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         :return: a dictionary with opportunity line id as key
             and a dictionary of sale line values as value
         '''
-        line_obj = self.pool.get('sale.opportunity.line')
+        line_obj = Pool().get('sale.opportunity.line')
         res = {}
         for line in opportunity.lines:
             val = line_obj.get_sale_line(line)
@@ -244,9 +245,10 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
 
         :param opportunity_id: the id of the opportunity
         '''
-        sale_obj = self.pool.get('sale.sale')
-        sale_line_obj = self.pool.get('sale.line')
-        line_obj = self.pool.get('sale.opportunity.line')
+        pool = Pool()
+        sale_obj = pool.get('sale.sale')
+        sale_line_obj = pool.get('sale.line')
+        line_obj = pool.get('sale.opportunity.line')
 
         opportunity = self.browse(opportunity_id)
 
@@ -299,7 +301,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
         self._order.insert(0, ('sequence', 'ASC'))
 
     def on_change_with_unit_digits(self, vals):
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
         if vals.get('unit'):
             uom = uom_obj.browse(vals['unit'])
             return uom.digits
@@ -315,7 +317,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
         return res
 
     def on_change_product(self, vals):
-        product_obj = self.pool.get('product.product')
+        product_obj = Pool().get('product.product')
 
         if not vals.get('product'):
             return {}
@@ -339,7 +341,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
         :return: a dictionary with sale line fields as key
             and sale line values as value
         '''
-        sale_line_obj = self.pool.get('sale.line')
+        sale_line_obj = Pool().get('sale.line')
         res = {
             'type': 'line',
             'quantity': line.quantity,
@@ -400,7 +402,7 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
         self._order.insert(0, ('date', 'DESC'))
 
     def _table_query_fields(self):
-        opportunity_obj = self.pool.get('sale.opportunity')
+        opportunity_obj = Pool().get('sale.opportunity')
         table = '%s__history' % opportunity_obj._table
         return [
             'MIN("%s".__id) AS id' % table,
@@ -412,7 +414,7 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
                 and not hasattr(field, 'set')]
 
     def _table_query_group(self):
-        opportunity_obj = self.pool.get('sale.opportunity')
+        opportunity_obj = Pool().get('sale.opportunity')
         table = '%s__history' % opportunity_obj._table
         return [
             '"%s".id' % table,
@@ -423,7 +425,7 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
                 and not hasattr(field, 'set')]
 
     def table_query(self):
-        opportunity_obj = self.pool.get('sale.opportunity')
+        opportunity_obj = Pool().get('sale.opportunity')
         return (('SELECT ' + \
                 (', '.join(self._table_query_fields())) + \
                 ' FROM "%s__history" '
@@ -432,7 +434,7 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
                 opportunity_obj._table, [])
 
     def get_lines(self, ids, name):
-        line_obj = self.pool.get('sale.opportunity.line')
+        line_obj = Pool().get('sale.opportunity.line')
         histories = self.browse(ids)
         result = {}
         # We will always have only one id per call due to datetime_field
@@ -491,7 +493,7 @@ class SaleOpportunityEmployee(ModelSQL, ModelView):
         return ['lost']
 
     def table_query(self):
-        opportunity_obj = self.pool.get('sale.opportunity')
+        opportunity_obj = Pool().get('sale.opportunity')
         clause = ' '
         args = [True]
         if Transaction().context.get('start_date'):
@@ -591,8 +593,8 @@ class OpenSaleOpportunityEmployee(Wizard):
     }
 
     def _action_open(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        model_data_obj = Pool().get('ir.model.data')
+        act_window_obj = Pool().get('ir.action.act_window')
         act_window_id = model_data_obj.get_id('sale_opportunity',
                 'act_opportunity_employee_form')
         res = act_window_obj.read(act_window_id)
@@ -644,7 +646,7 @@ class SaleOpportunityMonthly(ModelSQL, ModelView):
         return ['lost']
 
     def table_query(self):
-        opportunity_obj = self.pool.get('sale.opportunity')
+        opportunity_obj = Pool().get('sale.opportunity')
         type_id = FIELDS[self.id._type].sql_type(self.id)[0]
         type_year = FIELDS[self.year._type].sql_type(self.year)[0]
         return ('SELECT CAST(id AS ' + type_id + ') AS id, create_uid, '
@@ -755,7 +757,7 @@ class SaleOpportunityEmployeeMonthly(ModelSQL, ModelView):
         return ['lost']
 
     def table_query(self):
-        opportunity_obj = self.pool.get('sale.opportunity')
+        opportunity_obj = Pool().get('sale.opportunity')
         type_id = FIELDS[self.id._type].sql_type(self.id)[0]
         type_year = FIELDS[self.year._type].sql_type(self.year)[0]
         return ('SELECT CAST(id AS ' + type_id + ') AS id, create_uid, '
