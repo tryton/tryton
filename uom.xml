@@ -77,8 +77,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_uom_form2"/>
         </record>
         <menuitem name="New Unit of Measure" id="menu_uom_form2"
-              parent="menu_uom_form" sequence="1" action="act_uom_form2"
-              groups="group_product_admin"/>
+            parent="menu_uom_form" sequence="1" action="act_uom_form2"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_uom_form2_group_product_admin">
+            <field name="menu" ref="menu_uom_form2"/>
+            <field name="group" ref="group_product_admin"/>
+        </record>
 
         <record model="ir.ui.view" id="uom_category_view_tree">
             <field name="model">product.uom.category</field>

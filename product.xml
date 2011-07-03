@@ -7,11 +7,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_product_admin">
             <field name="name">Product Administration</field>
         </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_product_admin'))]"/>
+        <record model="res.user-res.group" id="user_admin_group_product_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_product_admin"/>
         </record>
-        <record model="res.user" id="res.user_trigger">
-            <field name="groups" eval="[('add', ref('group_product_admin'))]"/>
+        <record model="res.user-res.group" id="user_trigger_group_product_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_product_admin"/>
         </record>
 
         <record model="ir.ui.icon" id="product_icon">
@@ -164,7 +166,12 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem name="New Product" parent="menu_product_product"
                   sequence="1" id="menu_product_product_new"
-                  action="act_product_form2" groups="group_product_admin"/>
+                  action="act_product_form2"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_product_product_new_group_product_admin">
+            <field name="menu" ref="menu_product_product_new"/>
+            <field name="group" ref="group_product_admin"/>
+        </record>
 
         <record model="ir.action.act_window" id="act_product_by_category">
             <field name="name">Product by Category</field>
