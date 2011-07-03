@@ -7,6 +7,7 @@ from trytond.wizard import Wizard
 from trytond.pyson import PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.tools import safe_eval
+from trytond.pool import Pool
 
 
 class Template(ModelSQL, ModelView):
@@ -35,7 +36,7 @@ class Template(ModelSQL, ModelView):
             })
 
     def write(self, ids, vals):
-        move_obj = self.pool.get('stock.move')
+        move_obj = Pool().get('stock.move')
         cursor = Transaction().cursor
         if not  vals.get("default_uom"):
             return super(Template, self).write(ids, vals)
@@ -68,7 +69,7 @@ class Product(ModelSQL, ModelView):
             'get_quantity', searcher='search_quantity')
 
     def get_quantity(self, ids, name):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
 
         if not Transaction().context.get('locations'):
             return dict((id, 0.0) for id in ids)
@@ -107,7 +108,7 @@ class Product(ModelSQL, ModelView):
         return (safe_eval(str(value) + operator + str(operand)))
 
     def search_quantity(self, name, domain=None):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
 
         if not (Transaction().context.get('locations') and domain):
             return []
@@ -168,12 +169,13 @@ class Product(ModelSQL, ModelView):
         :return: a dictionary with (location id, product id) as key
                 and quantity as value
         """
-        uom_obj = self.pool.get("product.uom")
-        product_obj = self.pool.get("product.product")
-        rule_obj = self.pool.get('ir.rule')
-        location_obj = self.pool.get('stock.location')
-        date_obj = self.pool.get('ir.date')
-        period_obj = self.pool.get('stock.period')
+        pool = Pool()
+        uom_obj = pool.get("product.uom")
+        product_obj = pool.get("product.product")
+        rule_obj = pool.get('ir.rule')
+        location_obj = pool.get('stock.location')
+        date_obj = pool.get('ir.date')
+        period_obj = pool.get('stock.period')
 
         today = date_obj.today()
 
@@ -500,7 +502,7 @@ class Product(ModelSQL, ModelView):
             if product_ids:
                 all_product_ids = product_ids
             else:
-                all_product_ids = self.pool.get("product.product").search([])
+                all_product_ids = Pool().get("product.product").search([])
             keys = ((l,p) for l in location_ids for p in all_product_ids)
             for location_id, product_id in keys:
                 if (location_id, product_id) not in res:
@@ -521,7 +523,7 @@ class Product(ModelSQL, ModelView):
                 view_type=view_type)
         if not Transaction().context.get('locations'):
             return value
-        location_obj = self.pool.get('stock.location')
+        location_obj = Pool().get('stock.location')
         locations = location_obj.browse(Transaction().context.get('locations'))
         return value + " (" + ",".join(l.name for l in locations) + ")"
 
@@ -538,7 +540,7 @@ class ChooseStockDateInit(ModelView):
             '* A date in the past will provide historical values.')
 
     def default_forecast_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
 ChooseStockDateInit()
@@ -567,8 +569,8 @@ class OpenLocation(Wizard):
     }
 
     def _action_open_location(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        model_data_obj = Pool().get('ir.model.data')
+        act_window_obj = Pool().get('ir.action.act_window')
         act_window_id = model_data_obj.get_id('stock',
                 'act_location_quantity_tree')
         res = act_window_obj.read(act_window_id)

@@ -7,6 +7,7 @@ from trytond.wizard import Wizard
 from trytond.backend import TableHandler
 from trytond.pyson import Not, Bool, Eval, Equal, PYSONEncoder, Date
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
@@ -101,7 +102,7 @@ class Location(ModelSQL, ModelView):
     def check_type_for_moves(self, ids):
         """ Check locations with moves have types compatible with moves. """
         invalid_move_types = ['warehouse', 'view']
-        move_obj = self.pool.get('stock.move')
+        move_obj = Pool().get('stock.move')
         for location in self.browse(ids):
             if location.type in invalid_move_types and \
                 move_obj.search(['OR',
@@ -135,8 +136,8 @@ class Location(ModelSQL, ModelView):
         return [(self._rec_name,) + clause[1:]]
 
     def get_quantity(self, ids, name):
-        product_obj = self.pool.get('product.product')
-        date_obj = self.pool.get('ir.date')
+        product_obj = Pool().get('product.product')
+        date_obj = Pool().get('ir.date')
 
         if (not Transaction().context.get('product')) \
                 or not (isinstance(Transaction().context['product'],
@@ -168,7 +169,7 @@ class Location(ModelSQL, ModelView):
         return dict([(loc,qty) for (loc,prod), qty in pbl])
 
     def view_header_get(self, value, view_type='form'):
-        product_obj = self.pool.get('product.product')
+        product_obj = Pool().get('product.product')
         value = super(Location, self).view_header_get(value,
                 view_type=view_type)
         if (Transaction().context.get('product')
@@ -323,7 +324,7 @@ class ChooseStockDateInit(ModelView):
             '* A date in the past will provide historical values.')
 
     def default_forecast_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
 ChooseStockDateInit()
@@ -353,8 +354,8 @@ class OpenProduct(Wizard):
     }
 
     def _action_open_product(self, data):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
+        model_data_obj = Pool().get('ir.model.data')
+        act_window_obj = Pool().get('ir.action.act_window')
         act_window_id = model_data_obj.get_id('stock',
                 'act_product_by_location')
         res = act_window_obj.read(act_window_id)

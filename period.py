@@ -5,6 +5,7 @@ from itertools import chain
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Equal, Eval, If, In, Get
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Period(ModelSQL, ModelView):
@@ -40,7 +41,7 @@ class Period(ModelSQL, ModelView):
         })
 
     def button_draft(self, ids):
-        cache_obj = self.pool.get('stock.period.cache')
+        cache_obj = Pool().get('stock.period.cache')
         cache_ids = []
         for i in xrange(0, len(ids), Transaction().cursor.IN_MAX):
             cache_ids.append(cache_obj.search([
@@ -53,11 +54,12 @@ class Period(ModelSQL, ModelView):
         return True
 
     def button_close(self, ids):
-        product_obj = self.pool.get('product.product')
-        location_obj = self.pool.get('stock.location')
-        cache_obj = self.pool.get('stock.period.cache')
-        move_obj = self.pool.get('stock.move')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        location_obj = pool.get('stock.location')
+        cache_obj = pool.get('stock.period.cache')
+        move_obj = pool.get('stock.move')
+        date_obj = pool.get('ir.date')
 
         location_ids = location_obj.search([
             ('type', 'not in', ['warehouse', 'view']),

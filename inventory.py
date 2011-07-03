@@ -6,6 +6,7 @@ from trytond.wizard import Wizard
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -60,14 +61,14 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
         return 'draft'
 
     def default_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
     def default_company(self):
         return Transaction().context.get('company') or False
 
     def default_lost_found(self):
-        location_obj = self.pool.get('stock.location')
+        location_obj = Pool().get('stock.location')
         location_ids = location_obj.search(self.lost_found.domain)
         if len(location_ids) == 1:
             return location_ids[0]
@@ -79,7 +80,7 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             })
 
     def set_state_cancel(self, inventory_id):
-        line_obj = self.pool.get("stock.inventory.line")
+        line_obj = Pool().get("stock.inventory.line")
         inventory = self.browse(inventory_id)
         line_obj.cancel_move(inventory.lines)
         self.write(inventory_id, {
@@ -87,8 +88,8 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             })
 
     def set_state_done(self, inventory_id):
-        date_obj = self.pool.get('ir.date')
-        line_obj = self.pool.get('stock.inventory.line')
+        date_obj = Pool().get('ir.date')
+        line_obj = Pool().get('stock.inventory.line')
         inventory = self.browse(inventory_id)
 
         for line in inventory.lines:
@@ -98,8 +99,8 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             })
 
     def copy(self, ids, default=None):
-        date_obj = self.pool.get('ir.date')
-        line_obj = self.pool.get('stock.inventory.line')
+        date_obj = Pool().get('ir.date')
+        line_obj = Pool().get('stock.inventory.line')
 
         int_id = False
         if isinstance(ids, (int, long)):
@@ -134,9 +135,10 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
         :param ids: the ids of stock.inventory
         :param context: the context
         '''
-        line_obj = self.pool.get('stock.inventory.line')
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
+        pool = Pool()
+        line_obj = pool.get('stock.inventory.line')
+        product_obj = pool.get('product.product')
+        uom_obj = pool.get('product.uom')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -222,8 +224,8 @@ class InventoryLine(ModelSQL, ModelView):
         return 2
 
     def on_change_product(self, vals):
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
+        product_obj = Pool().get('product.product')
+        uom_obj = Pool().get('product.uom')
         res = {}
         res['unit_digits'] = 2
         if vals.get('product'):
@@ -246,7 +248,7 @@ class InventoryLine(ModelSQL, ModelView):
         return res
 
     def cancel_move(self, lines):
-        move_obj = self.pool.get('stock.move')
+        move_obj = Pool().get('stock.move')
         move_obj.write( [l.move.id for l in lines if l.move], {
             'state': 'cancel',
             })
@@ -262,8 +264,8 @@ class InventoryLine(ModelSQL, ModelView):
         :param line: a BrowseRecord of inventory.line
         :return: the stock.move id or None
         '''
-        move_obj = self.pool.get('stock.move')
-        uom_obj = self.pool.get('product.uom')
+        move_obj = Pool().get('stock.move')
+        uom_obj = Pool().get('product.uom')
 
         delta_qty = uom_obj.compute_qty(line.uom,
             line.expected_quantity - line.quantity,
@@ -347,7 +349,7 @@ class CompleteInventory(Wizard):
         }
 
     def _complete(self, data):
-        inventory_obj = self.pool.get('stock.inventory')
+        inventory_obj = Pool().get('stock.inventory')
         inventory_obj.complete_lines(data['ids'])
 
         return {}

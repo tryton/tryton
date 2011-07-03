@@ -6,6 +6,7 @@ from trytond.model import ModelView, ModelSQL, fields, OPERATORS
 from trytond.backend import TableHandler
 from trytond.pyson import In, Eval, Not, Equal, If, Get, Bool
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 STATES = {
     'readonly': In(Eval('state'), ['cancel', 'assigned', 'done']),
@@ -174,8 +175,8 @@ class Move(ModelSQL, ModelView):
         return Transaction().context.get('planned_date') or False
 
     def default_to_location(self):
-        location_obj = self.pool.get('stock.location')
-        party_obj = self.pool.get('party.party')
+        location_obj = Pool().get('stock.location')
+        party_obj = Pool().get('party.party')
         res = False
 
         warehouse = None
@@ -201,8 +202,8 @@ class Move(ModelSQL, ModelView):
         return res
 
     def default_from_location(self):
-        location_obj = self.pool.get('stock.location')
-        party_obj = self.pool.get('party.party')
+        location_obj = Pool().get('stock.location')
+        party_obj = Pool().get('party.party')
         res = False
 
         warehouse = None
@@ -237,8 +238,8 @@ class Move(ModelSQL, ModelView):
         return Transaction().context.get('company') or False
 
     def default_currency(self):
-        company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('currency.currency')
+        company_obj = Pool().get('company.company')
+        currency_obj = Pool().get('currency.currency')
         company = Transaction().context.get('company')
         if company:
             company = company_obj.browse(company)
@@ -246,7 +247,7 @@ class Move(ModelSQL, ModelView):
         return False
 
     def on_change_with_unit_digits(self, vals):
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
         if vals.get('uom'):
             uom = uom_obj.browse(vals['uom'])
             return uom.digits
@@ -259,11 +260,12 @@ class Move(ModelSQL, ModelView):
         return res
 
     def on_change_product(self, vals):
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
-        currency_obj = self.pool.get('currency.currency')
-        company_obj = self.pool.get('company.company')
-        location_obj = self.pool.get('stock.location')
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        uom_obj = pool.get('product.uom')
+        currency_obj = pool.get('currency.currency')
+        company_obj = pool.get('company.company')
+        location_obj = pool.get('stock.location')
 
         res = {
             'unit_price': Decimal('0.0'),
@@ -291,11 +293,12 @@ class Move(ModelSQL, ModelView):
         return res
 
     def on_change_uom(self, vals):
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
-        currency_obj = self.pool.get('currency.currency')
-        company_obj = self.pool.get('company.company')
-        location_obj = self.pool.get('stock.location')
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        uom_obj = pool.get('product.uom')
+        currency_obj = pool.get('currency.currency')
+        company_obj = pool.get('company.company')
+        location_obj = pool.get('stock.location')
 
         res = {
             'unit_price': Decimal('0.0'),
@@ -329,7 +332,7 @@ class Move(ModelSQL, ModelView):
         return self.on_change_with_unit_price_required(vals)
 
     def on_change_with_unit_price_required(self, vals):
-        location_obj = self.pool.get('stock.location')
+        location_obj = Pool().get('stock.location')
         if vals.get('from_location'):
             from_location = location_obj.browse(vals['from_location'])
             if from_location.type == 'supplier':
@@ -357,7 +360,7 @@ class Move(ModelSQL, ModelView):
         return True
 
     def check_period_closed(self, ids):
-        period_obj = self.pool.get('stock.period')
+        period_obj = Pool().get('stock.period')
         period_ids = period_obj.search([
             ('state', '=', 'closed'),
         ], order=[('date', 'DESC')], limit=1)
@@ -384,7 +387,7 @@ class Move(ModelSQL, ModelView):
 
     def search(self, args, offset=0, limit=None, order=None, count=False,
             query_string=False):
-        location_obj = self.pool.get('stock.location')
+        location_obj = Pool().get('stock.location')
 
         args = args[:]
         def process_args(args):
@@ -422,13 +425,14 @@ class Move(ModelSQL, ModelView):
         :param company: the company id ot a BrowseRecord of the company
         :param date: the date for the currency rate calculation
         """
-        uom_obj = self.pool.get('product.uom')
-        product_obj = self.pool.get('product.product')
-        product_template_obj = self.pool.get('product.template')
-        location_obj = self.pool.get('stock.location')
-        currency_obj = self.pool.get('currency.currency')
-        company_obj = self.pool.get('company.company')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        uom_obj = pool.get('product.uom')
+        product_obj = pool.get('product.product')
+        product_template_obj = pool.get('product.template')
+        location_obj = pool.get('stock.location')
+        currency_obj = pool.get('currency.currency')
+        company_obj = pool.get('company.company')
+        date_obj = pool.get('ir.date')
 
         if isinstance(uom, (int, long)):
             uom = uom_obj.browse(uom)
@@ -473,17 +477,18 @@ class Move(ModelSQL, ModelView):
                 })
 
     def _get_internal_quantity(self, quantity, uom, product):
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
         internal_quantity = uom_obj.compute_qty(uom, quantity,
                 product.default_uom, round=True)
         return internal_quantity
 
 
     def create(self, vals):
-        location_obj = self.pool.get('stock.location')
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        location_obj = pool.get('stock.location')
+        product_obj = pool.get('product.product')
+        uom_obj = pool.get('product.uom')
+        date_obj = pool.get('ir.date')
 
         today = date_obj.today()
         vals = vals.copy()
@@ -519,7 +524,7 @@ class Move(ModelSQL, ModelView):
         return super(Move, self).create(vals)
 
     def write(self, ids, vals):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -643,10 +648,11 @@ class Move(ModelSQL, ModelView):
         :param moves: a BrowseRecordList of stock.move to assign
         :return: True if succeed or False if not
         '''
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
-        date_obj = self.pool.get('ir.date')
-        location_obj = self.pool.get('stock.location')
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        uom_obj = pool.get('product.uom')
+        date_obj = pool.get('ir.date')
+        location_obj = pool.get('stock.location')
 
         Transaction().cursor.lock(self._table)
 
