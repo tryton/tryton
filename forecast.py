@@ -9,6 +9,7 @@ from trytond.wizard import Wizard
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -77,7 +78,7 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
         return 'draft'
 
     def default_destination(self):
-        location_obj = self.pool.get('stock.location')
+        location_obj = Pool().get('stock.location')
         location_ids = location_obj.search(
                 self.destination.domain)
         if len(location_ids) == 1:
@@ -115,7 +116,7 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
         return True
 
     def set_state_draft(self, forecast_id):
-        line_obj = self.pool.get("stock.forecast.line")
+        line_obj = Pool().get("stock.forecast.line")
         forecast = self.browse(forecast_id)
         if forecast.state == "done":
             line_obj.cancel_moves(forecast.lines)
@@ -129,7 +130,7 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
             })
 
     def set_state_done(self, forecast_id):
-        line_obj = self.pool.get('stock.forecast.line')
+        line_obj = Pool().get('stock.forecast.line')
         forecast = self.browse(forecast_id)
 
         for line in forecast.lines:
@@ -139,7 +140,7 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
             })
 
     def copy(self, ids, default=None):
-        line_obj = self.pool.get('stock.forecast.line')
+        line_obj = Pool().get('stock.forecast.line')
 
         int_id = False
         if isinstance(ids, (int, long)):
@@ -211,7 +212,7 @@ class ForecastLine(ModelSQL, ModelView):
         return 1.0
 
     def on_change_product(self, vals):
-        product_obj = self.pool.get('product.product')
+        product_obj = Pool().get('product.product')
         res = {}
         res['unit_digits'] = 2
         if vals.get('product'):
@@ -222,7 +223,7 @@ class ForecastLine(ModelSQL, ModelView):
         return res
 
     def on_change_uom(self, vals):
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
         res = {}
         res['unit_digits'] = 2
         if vals.get('uom'):
@@ -244,8 +245,8 @@ class ForecastLine(ModelSQL, ModelView):
         return super(ForecastLine, self).copy(ids, default=default)
 
     def create_moves(self, line):
-        move_obj = self.pool.get('stock.move')
-        uom_obj = self.pool.get('product.uom')
+        move_obj = Pool().get('stock.move')
+        uom_obj = Pool().get('product.uom')
         delta = line.forecast.to_date - line.forecast.from_date
         delta = delta.days + 1
         nb_packet = int(line.quantity/line.minimal_quantity)
@@ -275,7 +276,7 @@ class ForecastLine(ModelSQL, ModelView):
         self.write(line.id, {'moves': moves})
 
     def cancel_moves(self, lines):
-        move_obj = self.pool.get('stock.move')
+        move_obj = Pool().get('stock.move')
         move_obj.write([m.id for l in lines for m in l.moves], 
                 {'state': 'cancel'})
         move_obj.delete([m.id for l in lines for m in l.moves])
@@ -390,7 +391,7 @@ class ForecastComplete(Wizard):
         """
         Forecast dates shifted by one year.
         """
-        forecast_obj = self.pool.get('stock.forecast')
+        forecast_obj = Pool().get('stock.forecast')
         forecast = forecast_obj.browse(data['id'])
 
         res = {}
@@ -399,8 +400,8 @@ class ForecastComplete(Wizard):
         return res
 
     def _get_product_quantity(self, data):
-        forecast_obj = self.pool.get('stock.forecast')
-        product_obj = self.pool.get('product.product')
+        forecast_obj = Pool().get('stock.forecast')
+        product_obj = Pool().get('product.product')
         forecast = forecast_obj.browse(data['id'])
         if data['form']['from_date'] > data['form']['to_date']:
             self.raise_user_error('from_to_date')
@@ -426,9 +427,10 @@ class ForecastComplete(Wizard):
         return data['form']
 
     def _complete(self, data):
-        forecast_obj = self.pool.get('stock.forecast')
-        forecast_line_obj = self.pool.get('stock.forecast.line')
-        product_obj = self.pool.get('product.product')
+        pool = Pool()
+        forecast_obj = pool.get('stock.forecast')
+        forecast_line_obj = pool.get('stock.forecast.line')
+        product_obj = pool.get('product.product')
 
         prod2line = {}
         forecast_line_ids = forecast_line_obj.search([
