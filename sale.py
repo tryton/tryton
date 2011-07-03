@@ -10,6 +10,8 @@ from trytond.backend import TableHandler
 from trytond.pyson import If, In, Eval, Get, Or, Not, Equal, Bool, And, \
         PYSONEncoder
 from trytond.transaction import Transaction
+from trytond.pool import Pool
+
 
 class Sale(ModelWorkflow, ModelSQL, ModelView):
     'Sale'
@@ -170,14 +172,14 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         table.index_action('create_date', action='add')
 
     def default_payment_term(self):
-        payment_term_obj = self.pool.get('account.invoice.payment_term')
+        payment_term_obj = Pool().get('account.invoice.payment_term')
         payment_term_ids = payment_term_obj.search(self.payment_term.domain)
         if len(payment_term_ids) == 1:
             return payment_term_ids[0]
         return False
 
     def default_warehouse(self):
-        location_obj = self.pool.get('stock.location')
+        location_obj = Pool().get('stock.location')
         location_ids = location_obj.search(self.warehouse.domain)
         if len(location_ids) == 1:
             return location_ids[0]
@@ -190,26 +192,26 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         return 'draft'
 
     def default_sale_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
     def default_currency(self):
-        company_obj = self.pool.get('company.company')
-        currency_obj = self.pool.get('currency.currency')
+        company_obj = Pool().get('company.company')
+        currency_obj = Pool().get('currency.currency')
         company = Transaction().context.get('company')
         if company:
             return company_obj.browse(company).currency.id
         return False
 
     def default_currency_digits(self):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
             return company_obj.browse(company).currency.digits
         return 2
 
     def default_invoice_method(self):
-        config_obj = self.pool.get('sale.configuration')
+        config_obj = Pool().get('sale.configuration')
         config = config_obj.browse(1)
         return config.sale_invoice_method
 
@@ -217,7 +219,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         return 'none'
 
     def default_shipment_method(self):
-        config_obj = self.pool.get('sale.configuration')
+        config_obj = Pool().get('sale.configuration')
         config = config_obj.browse(1)
         return config.sale_shipment_method
 
@@ -225,9 +227,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         return 'none'
 
     def on_change_party(self, vals):
-        party_obj = self.pool.get('party.party')
-        address_obj = self.pool.get('party.address')
-        payment_term_obj = self.pool.get('account.invoice.payment_term')
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        address_obj = pool.get('party.address')
+        payment_term_obj = pool.get('account.invoice.payment_term')
         res = {
             'invoice_address': False,
             'shipment_address': False,
@@ -256,7 +259,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_with_currency_digits(self, vals):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         if vals.get('currency'):
             currency = currency_obj.browse(vals['currency'])
             return currency.digits
@@ -276,7 +279,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def get_tax_context(self, sale):
-        party_obj = self.pool.get('party.party')
+        party_obj = Pool().get('party.party')
         res = {}
         if isinstance(sale, dict):
             if sale.get('party'):
@@ -289,7 +292,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_with_party_lang(self, vals):
-        party_obj = self.pool.get('party.party')
+        party_obj = Pool().get('party.party')
         if vals.get('party'):
             party = party_obj.browse(vals['party'])
             if party.lang:
@@ -314,9 +317,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
 
     def on_change_lines(self, vals):
-        currency_obj = self.pool.get('currency.currency')
-        tax_obj = self.pool.get('account.tax')
-        invoice_obj = self.pool.get('account.invoice')
+        pool = Pool()
+        currency_obj = pool.get('currency.currency')
+        tax_obj = pool.get('account.tax')
+        invoice_obj = pool.get('account.invoice')
 
         res = {
             'untaxed_amount': Decimal('0.0'),
@@ -403,7 +407,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         :return: a dictionary with sale id as key and
             untaxed amount as value
         '''
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         res = {}
         for sale in sales:
             res.setdefault(sale.id, Decimal('0.0'))
@@ -422,9 +426,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         :return: a dictionary with sale id as key and
             tax amount as value
         '''
-        currency_obj = self.pool.get('currency.currency')
-        tax_obj = self.pool.get('account.tax')
-        invoice_obj = self.pool.get('account.invoice')
+        pool = Pool()
+        currency_obj = pool.get('currency.currency')
+        tax_obj = pool.get('account.tax')
+        invoice_obj = pool.get('account.invoice')
 
         res = {}
         for sale in sales:
@@ -458,7 +463,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         :return: a dictionary with sale id as key and
             total amount as value
         '''
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         res = {}
         untaxed_amounts = self.get_untaxed_amount(sales)
         tax_amounts = self.get_tax_amount(sales)
@@ -633,8 +638,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
         :return: True if succeed
         '''
-        sequence_obj = self.pool.get('ir.sequence')
-        config_obj = self.pool.get('sale.configuration')
+        sequence_obj = Pool().get('ir.sequence')
+        config_obj = Pool().get('sale.configuration')
 
         sale = self.browse(sale_id)
 
@@ -657,7 +662,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         :return: a dictionary with invoiced sale line id as key
             and a list of invoice lines values as value
         '''
-        line_obj = self.pool.get('sale.line')
+        line_obj = Pool().get('sale.line')
         res = {}
         for line in sale.lines:
             val = line_obj.get_invoice_line(line)
@@ -674,7 +679,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         :return: a dictionary with invoice fields as key and
             invoice values as value
         '''
-        journal_obj = self.pool.get('account.journal')
+        journal_obj = Pool().get('account.journal')
 
         journal_id = journal_obj.search([
             ('type', '=', 'revenue'),
@@ -703,9 +708,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
         :return: the created invoice id or None
         '''
-        invoice_obj = self.pool.get('account.invoice')
-        invoice_line_obj = self.pool.get('account.invoice.line')
-        sale_line_obj = self.pool.get('sale.line')
+        pool = Pool()
+        invoice_obj = pool.get('account.invoice')
+        invoice_line_obj = pool.get('account.invoice.line')
+        sale_line_obj = pool.get('sale.line')
 
         sale = self.browse(sale_id)
 
@@ -749,7 +755,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
         :return: a dictionary with move as key and move values as value
         '''
-        line_obj = self.pool.get('sale.line')
+        line_obj = Pool().get('sale.line')
         res = {}
         for line in sale.lines:
             val = line_obj.get_move(line)
@@ -765,9 +771,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
         :return: the created shipment id or None
         '''
-        shipment_obj = self.pool.get('stock.shipment.out')
-        move_obj = self.pool.get('stock.move')
-        sale_line_obj = self.pool.get('sale.line')
+        pool = Pool()
+        shipment_obj = pool.get('stock.shipment.out')
+        move_obj = pool.get('stock.move')
+        sale_line_obj = pool.get('sale.line')
 
         sale = self.browse(sale_id)
 
@@ -951,7 +958,7 @@ class SaleLine(ModelSQL, ModelView):
         return Decimal('0.0')
 
     def on_change_with_unit_digits(self, vals):
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
         if vals.get('unit'):
             uom = uom_obj.browse(vals['unit'])
             return uom.digits
@@ -967,7 +974,7 @@ class SaleLine(ModelSQL, ModelView):
         return res
 
     def get_move_done(self, ids, name):
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
         res = {}
         for line in self.browse(ids):
             val = True
@@ -1033,10 +1040,11 @@ class SaleLine(ModelSQL, ModelView):
         return context
 
     def on_change_product(self, vals):
-        party_obj = self.pool.get('party.party')
-        product_obj = self.pool.get('product.product')
-        uom_obj = self.pool.get('product.uom')
-        tax_rule_obj = self.pool.get('account.tax.rule')
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        product_obj = pool.get('product.product')
+        uom_obj = pool.get('product.uom')
+        tax_rule_obj = pool.get('account.tax.rule')
 
         if not vals.get('product'):
             return {}
@@ -1089,7 +1097,7 @@ class SaleLine(ModelSQL, ModelView):
         return res
 
     def on_change_quantity(self, vals):
-        product_obj = self.pool.get('product.product')
+        product_obj = Pool().get('product.product')
 
         if not vals.get('product'):
             return {}
@@ -1107,7 +1115,7 @@ class SaleLine(ModelSQL, ModelView):
         return self.on_change_quantity(vals)
 
     def on_change_with_amount(self, vals):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         if vals.get('type') == 'line':
             currency = vals.get('_parent_sale.currency')
             if currency and isinstance(currency, (int, long)):
@@ -1120,7 +1128,7 @@ class SaleLine(ModelSQL, ModelView):
         return Decimal('0.0')
 
     def get_amount(self, ids, name):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         res = {}
         for line in self.browse(ids):
             if line.type == 'line':
@@ -1149,8 +1157,8 @@ class SaleLine(ModelSQL, ModelView):
 
         :return: a list of invoice line values
         '''
-        uom_obj = self.pool.get('product.uom')
-        property_obj = self.pool.get('ir.property')
+        uom_obj = Pool().get('product.uom')
+        property_obj = Pool().get('ir.property')
 
         res = {}
         res['sequence'] = line.sequence
@@ -1219,7 +1227,7 @@ class SaleLine(ModelSQL, ModelView):
 
         :return: a dictionary of values of move
         '''
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
 
         res = {}
         if line.type != 'line':
@@ -1355,7 +1363,7 @@ class Template(ModelSQL, ModelView):
         return True if Transaction().context.get('salable') else False
 
     def on_change_with_sale_uom(self, vals):
-        uom_obj = self.pool.get('product.uom')
+        uom_obj = Pool().get('product.uom')
         res = False
 
         if vals.get('default_uom'):
@@ -1386,10 +1394,11 @@ class Product(ModelSQL, ModelView):
             currency: the currency id for the returned price
         :return: a dictionary with for each product ids keys the computed price
         '''
-        uom_obj = self.pool.get('product.uom')
-        user_obj = self.pool.get('res.user')
-        currency_obj = self.pool.get('currency.currency')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        uom_obj = pool.get('product.uom')
+        user_obj = pool.get('res.user')
+        currency_obj = pool.get('currency.currency')
+        date_obj = pool.get('ir.date')
 
         today = date_obj.today()
         res = {}
@@ -1433,8 +1442,8 @@ class ShipmentOut(ModelSQL, ModelView):
             })
 
     def write(self, ids, vals):
-        sale_obj = self.pool.get('sale.sale')
-        sale_line_obj = self.pool.get('sale.line')
+        sale_obj = Pool().get('sale.sale')
+        sale_line_obj = Pool().get('sale.line')
 
         res = super(ShipmentOut, self).write(ids, vals)
 
@@ -1484,7 +1493,7 @@ class Move(ModelSQL, ModelView):
         ], 'Exception State'), 'get_sale_exception_state')
 
     def get_sale(self, ids, name):
-        sale_obj = self.pool.get('sale.sale')
+        sale_obj = Pool().get('sale.sale')
 
         res = {}
         for move in self.browse(ids):
@@ -1508,8 +1517,8 @@ class Move(ModelSQL, ModelView):
         return res
 
     def write(self, ids, vals):
-        sale_obj = self.pool.get('sale.sale')
-        sale_line_obj = self.pool.get('sale.line')
+        sale_obj = Pool().get('sale.sale')
+        sale_line_obj = Pool().get('sale.line')
 
         res = super(Move, self).write(ids, vals)
         if 'state' in vals and vals['state'] in ('cancel',):
@@ -1528,8 +1537,8 @@ class Move(ModelSQL, ModelView):
         return res
 
     def delete(self, ids):
-        sale_obj = self.pool.get('sale.sale')
-        sale_line_obj = self.pool.get('sale.line')
+        sale_obj = Pool().get('sale.sale')
+        sale_line_obj = Pool().get('sale.line')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -1571,7 +1580,7 @@ class Invoice(ModelSQL, ModelView):
             })
 
     def button_draft(self, ids):
-        sale_obj = self.pool.get('sale.sale')
+        sale_obj = Pool().get('sale.sale')
         sale_ids = sale_obj.search([
             ('invoices', 'in', ids),
             ])
@@ -1582,7 +1591,7 @@ class Invoice(ModelSQL, ModelView):
         return super(Invoice, self).button_draft(ids)
 
     def get_sale_exception_state(self, ids, name):
-        sale_obj = self.pool.get('sale.sale')
+        sale_obj = Pool().get('sale.sale')
         sale_ids = sale_obj.search([
             ('invoices', 'in', ids),
             ])
@@ -1630,9 +1639,10 @@ class OpenCustomer(Wizard):
     }
 
     def _action_open(self, datas):
-        model_data_obj = self.pool.get('ir.model.data')
-        act_window_obj = self.pool.get('ir.action.act_window')
-        wizard_obj = self.pool.get('ir.action.wizard')
+        pool = Pool()
+        model_data_obj = pool.get('ir.model.data')
+        act_window_obj = pool.get('ir.action.act_window')
+        wizard_obj = pool.get('ir.action.wizard')
         act_window_id = model_data_obj.get_id('party', 'act_party_form')
         res = act_window_obj.read(act_window_id)
         Transaction().cursor.execute("SELECT DISTINCT(party) FROM sale_sale")
@@ -1678,7 +1688,7 @@ class HandleShipmentExceptionAsk(ModelView):
         return self.default_domain_moves()
 
     def default_domain_moves(self):
-        sale_line_obj = self.pool.get('sale.line')
+        sale_line_obj = Pool().get('sale.line')
         active_id = Transaction().context.get('active_id')
         if not active_id:
             return []
@@ -1725,10 +1735,11 @@ class HandleShipmentException(Wizard):
     }
 
     def _handle_moves(self, data):
-        sale_obj = self.pool.get('sale.sale')
-        sale_line_obj = self.pool.get('sale.line')
-        move_obj = self.pool.get('stock.move')
-        shipment_obj = self.pool.get('stock.shipment.out')
+        pool = Pool()
+        sale_obj = pool.get('sale.sale')
+        sale_line_obj = pool.get('sale.line')
+        move_obj = pool.get('stock.move')
+        shipment_obj = pool.get('stock.shipment.out')
         to_recreate = data['form']['recreate_moves'][0][1]
         domain_moves = data['form']['domain_moves'][0][1]
 
@@ -1775,7 +1786,7 @@ class HandleInvoiceExceptionAsk(ModelView):
         return self.default_domain_invoices()
 
     def default_domain_invoices(self):
-        sale_obj = self.pool.get('sale.sale')
+        sale_obj = Pool().get('sale.sale')
         active_id = Transaction().context.get('active_id')
         if not active_id:
             return []
@@ -1818,8 +1829,8 @@ class HandleInvoiceException(Wizard):
     }
 
     def _handle_invoices(self, data):
-        sale_obj = self.pool.get('sale.sale')
-        invoice_obj = self.pool.get('account.invoice')
+        sale_obj = Pool().get('sale.sale')
+        invoice_obj = Pool().get('account.invoice')
         to_recreate = data['form']['recreate_invoices'][0][1]
         domain_invoices = data['form']['domain_invoices'][0][1]
 
