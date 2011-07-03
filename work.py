@@ -6,6 +6,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.modelstorage import OPERATORS
 from trytond.pyson import Not, Bool, Eval, Get, Equal
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class TimesheetWork(ModelSQL, ModelView):
@@ -129,7 +130,7 @@ class Work(ModelSQL, ModelView):
         return res
 
     def set_parent(self, ids, name, value):
-        timesheet_work_obj = self.pool.get('timesheet.work')
+        timesheet_work_obj = Pool().get('timesheet.work')
         if value:
             project_works = self.browse(ids + [value])
             child_timesheet_work_ids = [x.work.id for x in project_works[:-1]]
@@ -144,7 +145,7 @@ class Work(ModelSQL, ModelView):
                 })
 
     def search_parent(self, name, domain=None):
-        timesheet_work_obj = self.pool.get('timesheet.work')
+        timesheet_work_obj = Pool().get('timesheet.work')
 
         project_work_domain = []
         timesheet_work_domain = []
@@ -229,7 +230,7 @@ class Work(ModelSQL, ModelView):
         return res
 
     def copy(self, ids, default=None):
-        timesheet_work_obj = self.pool.get('timesheet.work')
+        timesheet_work_obj = Pool().get('timesheet.work')
 
         int_id = isinstance(ids, (int, long))
         if int_id:
@@ -251,7 +252,7 @@ class Work(ModelSQL, ModelView):
         return new_ids
 
     def delete(self, ids):
-        timesheet_work_obj = self.pool.get('timesheet.work')
+        timesheet_work_obj = Pool().get('timesheet.work')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
