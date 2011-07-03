@@ -6,11 +6,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_project_admin">
             <field name="name">Project Administration</field>
         </record>
-        <record model="res.user" id="res.user_admin">
-            <field name="groups" eval="[('add', ref('group_project_admin'))]"/>
+        <record model="res.user-res.group" id="user_admin_group_project_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_project_admin"/>
         </record>
-        <record model="res.user" id="res.user_trigger">
-            <field name="groups" eval="[('add', ref('group_project_admin'))]"/>
+        <record model="res.user-res.group" id="user_trigger_group_project_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_project_admin"/>
         </record>
 
         <record model="ir.ui.icon" id="project_icon">
@@ -20,7 +22,11 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem name="Project Management" sequence="7" id="menu_project"
             icon="tryton-project"/>
         <menuitem name="Configuration" parent="menu_project"
-            id="menu_configuration" groups="group_project_admin"
-            sequence="10" icon="tryton-preferences"/>
+            id="menu_configuration" sequence="10" icon="tryton-preferences"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_configuration_group_project_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_project_admin"/>
+        </record>
     </data>
 </tryton>
