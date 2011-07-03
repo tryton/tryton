@@ -6,6 +6,7 @@ from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.pyson import Not, Equal, Eval, Or, Bool, Get, If, In
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
+from trytond.pool import Pool
 
 _STATES = {'readonly': Not(Equal(Eval('state'), 'draft'))}
 
@@ -92,11 +93,11 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         return 'draft'
 
     def default_date(self):
-        date_obj = self.pool.get('ir.date')
+        date_obj = Pool().get('ir.date')
         return date_obj.today()
 
     def default_currency_digits(self):
-        company_obj = self.pool.get('company.company')
+        company_obj = Pool().get('company.company')
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.digits
@@ -120,7 +121,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_with_currency_digits(self, vals):
-        journal_obj = self.pool.get('account.statement.journal')
+        journal_obj = Pool().get('account.statement.journal')
         if vals.get('journal'):
             journal = journal_obj.browse(vals['journal'])
             return journal.currency.digits
@@ -133,7 +134,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def get_rec_name(self, ids, name):
-        lang_obj = self.pool.get('ir.lang')
+        lang_obj = Pool().get('ir.lang')
 
         if not ids:
             return {}
@@ -190,9 +191,10 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def on_change_lines(self, values):
-        invoice_obj = self.pool.get('account.invoice')
-        journal_obj = self.pool.get('account.statement.journal')
-        currency_obj = self.pool.get('currency.currency')
+        pool = Pool()
+        invoice_obj = pool.get('account.invoice')
+        journal_obj = pool.get('account.statement.journal')
+        currency_obj = pool.get('currency.currency')
         res = {
             'lines': {},
         }
@@ -238,8 +240,8 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         return res
 
     def set_state_validated(self, statement_id):
-        statement_line_obj = self.pool.get('account.statement.line')
-        lang_obj = self.pool.get('ir.lang')
+        statement_line_obj = Pool().get('account.statement.line')
+        lang_obj = Pool().get('ir.lang')
 
         statement = self.browse(statement_id)
 
@@ -266,7 +268,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
             })
 
     def set_state_posted(self, statement_id):
-        statement_line_obj = self.pool.get('account.statement.line')
+        statement_line_obj = Pool().get('account.statement.line')
 
         statement = self.browse(statement_id)
         statement_line_obj.post_move(statement.lines)
@@ -275,7 +277,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
             })
 
     def set_state_cancel(self, statement_id):
-        statement_line_obj = self.pool.get('account.statement.line')
+        statement_line_obj = Pool().get('account.statement.line')
 
         statement = self.browse(statement_id)
         statement_line_obj.delete_move(statement.lines)
@@ -338,8 +340,8 @@ class Line(ModelSQL, ModelView):
             })
 
     def on_change_party(self, value):
-        party_obj = self.pool.get('party.party')
-        invoice_obj = self.pool.get('account.invoice')
+        party_obj = Pool().get('party.party')
+        invoice_obj = Pool().get('account.invoice')
         res = {}
 
         if value.get('party'):
@@ -362,10 +364,11 @@ class Line(ModelSQL, ModelView):
         return res
 
     def on_change_amount(self, value):
-        party_obj = self.pool.get('party.party')
-        invoice_obj = self.pool.get('account.invoice')
-        journal_obj = self.pool.get('account.statement.journal')
-        currency_obj = self.pool.get('currency.currency')
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        invoice_obj = pool.get('account.invoice')
+        journal_obj = pool.get('account.statement.journal')
+        currency_obj = pool.get('currency.currency')
         res = {}
 
         if value.get('party'):
@@ -395,7 +398,7 @@ class Line(ModelSQL, ModelView):
         return res
 
     def on_change_account(self, value):
-        invoice_obj = self.pool.get('account.invoice')
+        invoice_obj = Pool().get('account.invoice')
         res = {}
 
         if value.get('invoice'):
@@ -414,12 +417,13 @@ class Line(ModelSQL, ModelView):
         :param line: a BrowseRecord of the line
         :return: the move id
         '''
-        move_obj = self.pool.get('account.move')
-        period_obj = self.pool.get('account.period')
-        invoice_obj = self.pool.get('account.invoice')
-        currency_obj = self.pool.get('currency.currency')
-        move_line_obj = self.pool.get('account.move.line')
-        lang_obj = self.pool.get('ir.lang')
+        pool = Pool()
+        move_obj = pool.get('account.move')
+        period_obj = pool.get('account.period')
+        invoice_obj = pool.get('account.invoice')
+        currency_obj = pool.get('currency.currency')
+        move_line_obj = pool.get('account.move.line')
+        lang_obj = pool.get('ir.lang')
 
         period_id = period_obj.find(line.statement.company.id,
                 date=line.date)
@@ -480,11 +484,11 @@ class Line(ModelSQL, ModelView):
         return move_id
 
     def post_move(self, lines):
-        move_obj = self.pool.get('account.move')
+        move_obj = Pool().get('account.move')
         move_obj.post([l.move.id for l in lines if l.move])
 
     def delete_move(self, lines):
-        move_obj = self.pool.get('account.move')
+        move_obj = Pool().get('account.move')
         move_obj.delete([l.move.id for l in lines if l.move])
 
     def _get_move_lines(self, statement_line):
@@ -494,7 +498,7 @@ class Line(ModelSQL, ModelView):
         :param statement_line: a BrowseRecord of the statement line
         :return: a list of dictionary of move line values
         '''
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         zero = Decimal("0.0")
         amount = currency_obj.compute(
             statement_line.statement.journal.currency, statement_line.amount,

@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Journal(ModelSQL, ModelView):
@@ -17,7 +18,7 @@ class Journal(ModelSQL, ModelView):
 
     def default_currency(self):
         if Transaction().context.get('company'):
-            company_obj = self.pool.get('company.company')
+            company_obj = Pool().get('company.company')
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
         return False
