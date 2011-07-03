@@ -73,9 +73,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="price_list_view_tree"/>
             <field name="act_window" ref="act_price_list_form2"/>
         </record>
-        <menuitem name="New Price List" parent="menu_price_list"
-            sequence="10" id="menu_price_list_new"
-            action="act_price_list_form2" groups="product.group_product_admin"/>
+        <menuitem name="New Price List" parent="menu_price_list" sequence="10"
+            id="menu_price_list_new" action="act_price_list_form2"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_price_list_new_group_product_admin">
+            <field name="menu" ref="menu_price_list_new"/>
+            <field name="group" ref="product.group_product_admin"/>
+        </record>
 
         <record model="ir.model.access" id="access_price_list">
             <field name="model" search="[('model', '=', 'product.price_list')]"/>
