@@ -1274,7 +1274,7 @@ class ModelSQL(ModelStorage):
                     table_query = '(' + table_query + ') AS '
                 table_join = 'LEFT JOIN ' + table_query + \
                         '"' + itable._table + '" ON ' \
-                        '"%s".id = "%s".%s' % (itable._table, self._table,
+                        '"%s".id = "%s"."%s"' % (itable._table, self._table,
                                 self._inherits[itable._name])
                 if table_join not in tables:
                     tables.append(table_join)
@@ -1744,7 +1744,7 @@ class ModelSQL(ModelStorage):
                             user, field_name, otype, context=context)
                     table_join = 'LEFT JOIN "' + table_name + '" AS ' \
                             '"' + table_name + '.' + link_field + '" ON ' \
-                            '"%s.%s".id = "%s".%s' % (table_name, link_field,
+                            '"%s.%s".id = "%s"."%s"' % (table_name, link_field,
                                     self._table, link_field)
                     for i in range(len(order_by)):
                         if table_name in order_by[i]:
@@ -1780,7 +1780,7 @@ class ModelSQL(ModelStorage):
 
                     table_join = 'LEFT JOIN "' + table_name + '" AS ' \
                             '"' + table_name + '.' + link_field + '" ON ' \
-                            '"%s.%s".id = "%s".%s' % \
+                            '"%s.%s".id = "%s"."%s"' % \
                             (table_name, link_field, self._table, link_field)
                     for i in range(len(order_by)):
                         if table_name in order_by[i]:
@@ -1799,7 +1799,7 @@ class ModelSQL(ModelStorage):
 
                     table_join2 = 'LEFT JOIN "' + table_name2 + '" AS ' \
                             '"' + table_name2 + '.' + link_field2 + '" ON ' \
-                            '"%s.%s".id = "%s.%s".%s' % \
+                            '"%s.%s".id = "%s.%s"."%s"' % \
                             (table_name2, link_field2, table_name, link_field,
                                     link_field2)
                     for i in range(len(order_by)):
@@ -1905,7 +1905,7 @@ class ModelSQL(ModelStorage):
             order_by, tables, tables_args = obj._order_calc(cursor, user, field,
                     otype, context=context)
             table_join = 'LEFT JOIN "' + table_name + '" ON ' \
-                    '"%s".id = "%s".%s' % \
+                    '"%s".id = "%s"."%s"' % \
                     (table_name, self._table, link_field)
             if table_join not in tables:
                 tables.insert(0, table_join)
