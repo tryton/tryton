@@ -29,6 +29,14 @@ class TimesheetWork(ModelSQL, ModelView):
         self.parent.context['type'] = Eval('type')
         self._reset_columns()
 
+    def copy(self, ids, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        if 'timesheet_lines' not in default:
+            default['timesheet_lines'] = False
+        return super(TimesheetWork, self).copy(ids, default=default)
+
 TimesheetWork()
 
 
