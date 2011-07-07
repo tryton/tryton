@@ -5,6 +5,7 @@ import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.modelstorage import OPERATORS
 from trytond.pyson import Not, Bool, Eval, Get, Equal
+from trytond.backend import TableHandler
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -12,31 +13,13 @@ from trytond.pool import Pool
 class TimesheetWork(ModelSQL, ModelView):
     _name = 'timesheet.work'
 
-    timesheet_lines = fields.One2Many('timesheet.line', 'work',
-            'Timesheet Lines',
-            depends=['timesheet_available', 'active'],
-            states={
-                'invisible': Not(Bool(Eval('timesheet_available'))),
-                'readonly': Not(Bool(Eval('active'))),
-            })
-    sequence = fields.Integer('Sequence')
-
     def __init__(self):
         super(TimesheetWork, self).__init__()
-        self._order.insert(0, ('sequence', 'ASC'))
 
         self.parent = copy.copy(self.parent)
         self.parent.context = copy.copy(self.parent.context)
         self.parent.context['type'] = Eval('type')
         self._reset_columns()
-
-    def copy(self, ids, default=None):
-        if default is None:
-            default = {}
-        default = default.copy()
-        if 'timesheet_lines' not in default:
-            default['timesheet_lines'] = False
-        return super(TimesheetWork, self).copy(ids, default=default)
 
 TimesheetWork()
 
@@ -85,6 +68,7 @@ class Work(ModelSQL, ModelView):
                 'invisible': Not(Equal(Eval('type'), 'task')),
                 'required': Equal(Eval('type'), 'task'),
             }, select=1, depends=['type'])
+    sequence = fields.Integer('Sequence')
 
     def default_type(self):
         if Transaction().context.get('type') == 'project':
@@ -93,6 +77,25 @@ class Work(ModelSQL, ModelView):
 
     def default_state(self):
         return 'opened'
+
+    def init(self, module_name):
+        timesheet_work_obj = Pool().get('timesheet.work')
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+        sequence_column_exist = table.column_exist('sequence')
+        super(Work, self).init(module_name)
+        # Migration from 2.0: copy sequence from timesheet to project
+        if not sequence_column_exist:
+            cursor.execute(
+                'SELECT t.sequence, t.id '
+                'FROM "%s" AS t '
+                'JOIN "%s" AS p ON (p.work = t.id)' % (
+                    timesheet_work_obj._table, self._table))
+            for sequence, id_ in cursor.fetchall():
+                sql = ('UPDATE "%s" '
+                        'SET sequence = %%s '
+                        'WHERE work = %%s' % self._table)
+                cursor.execute(sql, (sequence, id_))
 
     def __init__(self):
         super(Work, self).__init__()
