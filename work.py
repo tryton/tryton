@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
-from trytond.pyson import PYSONEncoder
+from trytond.pyson import PYSONEncoder, Not, Bool, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -24,6 +24,13 @@ class Work(ModelSQL, ModelView):
     timesheet_available = fields.Boolean('Available on timesheets',
             help="Allow to fill in timesheets with this work")
     company = fields.Many2One('company.company', 'Company', required=True)
+    timesheet_lines = fields.One2Many('timesheet.line', 'work',
+            'Timesheet Lines',
+            depends=['timesheet_available', 'active'],
+            states={
+                'invisible': Not(Bool(Eval('timesheet_available'))),
+                'readonly': Not(Bool(Eval('active'))),
+            })
 
     def __init__(self):
         super(Work, self).__init__()
@@ -112,6 +119,14 @@ class Work(ModelSQL, ModelView):
         for work in self.browse(ids):
             res[work.id] = _name(work)
         return res
+
+    def copy(self, ids, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        if 'timesheet_lines' not in default:
+            default['timesheet_lines'] = False
+        return super(Work, self).copy(ids, default=default)
 
     def write(self, ids, vals):
         child_ids = None
