@@ -81,11 +81,16 @@ class Work(ModelSQL, ModelView):
     def init(self, module_name):
         timesheet_work_obj = Pool().get('timesheet.work')
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
-        sequence_column_exist = table.column_exist('sequence')
+        table_project_work = TableHandler(cursor, self, module_name)
+        table_timesheet_work = TableHandler(cursor, timesheet_work_obj,
+            module_name)
+        migrate_sequence = (not table_project_work.column_exist('sequence')
+            and table_timesheet_work.column_exist('sequence'))
+
         super(Work, self).init(module_name)
+
         # Migration from 2.0: copy sequence from timesheet to project
-        if not sequence_column_exist:
+        if migrate_sequence:
             cursor.execute(
                 'SELECT t.sequence, t.id '
                 'FROM "%s" AS t '
