@@ -108,7 +108,7 @@ this repository contains the full copyright notices and license terms. -->
                                 <field name="state"/>
                                 <group col="6" colspan="2" id="buttons">
                                     <button name="cancel" string="Cancel"
-                                        states="{'invisible': Or(Equal(Eval('state'), 'cancel'), Not(In(Eval('state'), ['draft', 'quotation'])), Equal(Eval('invoice_state'), 'exception'), Equal(Eval('shipment_state'), 'exception')), 'readonly': Not(In(%(group_purchase)d, Eval('groups', [])))}"
+                                        states="{'invisible': Or(Equal(Eval('state'), 'cancel'), And(Not(In(Eval('state'), ['draft', 'quotation'])), Not(Equal(Eval('invoice_state'), 'exception')), Not(Equal(Eval('shipment_state'), 'exception')))), 'readonly': Not(In(%(group_purchase)d, Eval('groups', [])))}"
                                         icon="tryton-cancel"/>
                                     <button name="draft" string="Draft"
                                         states="{'invisible': Not(Equal(Eval('state'), 'quotation')), 'readonly': Not(In(%(group_purchase)d, Eval('groups', [])))}"
