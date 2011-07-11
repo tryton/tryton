@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+import operator
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
 
@@ -77,7 +78,7 @@ class InvoiceLine(ModelSQL, ModelView):
         elif line.invoice.type == 'out_credit_note':
             type_ = 'in_customer'
 
-        moves.sort(lambda x, y: cmp(x.effective_date, y.effective_date))
+        moves.sort(key=operator.attrgetter('effective_date'))
         cost = move_obj.update_anglo_saxon_quantity_product_cost(
                 line.product, moves, line.quantity, line.unit, type_)
         cost = currency_obj.round(line.invoice.currency, cost)
