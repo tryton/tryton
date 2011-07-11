@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from __future__ import with_statement
 import datetime
+import operator
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import If, In, Eval, Get
@@ -240,7 +240,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             i.sort(lambda r,s: cmp(r['supply_date'],s['supply_date']))
 
         # Update new requests to take existing requests into account
-        new_requests.sort(lambda r,s: cmp(r['supply_date'],s['supply_date']))
+        new_requests.sort(key=operator.attrgetter('supply_date'))
         for new_req in new_requests:
             for old_req in existing_req.get((new_req['product'].id,
                                              new_req['warehouse']), []):
