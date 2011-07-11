@@ -10,10 +10,6 @@ major_version, minor_version, _ = proteus.__version__.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
 
-SIMPLEJSON = []
-if sys.version_info < (2, 6):
-    SIMPLEJSON = ['simplejson']
-
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
@@ -35,7 +31,8 @@ setup(name='proteus',
         'Intended Audience :: Legal Industry',
         'License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)',
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
         'Topic :: Office/Business',
     ],
     license='LGPL-3',

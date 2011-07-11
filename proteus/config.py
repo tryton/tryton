@@ -48,11 +48,6 @@ class Config(object):
     def get_proxy_methods(self, name):
         raise NotImplementedError
 
-    def __eq__(self, other):
-        if isinstance(other, Config):
-            return repr(self) == repr(other)
-        return NotImplemented
-
 
 class _TrytondMethod(object):
 
@@ -121,6 +116,7 @@ class TrytondConfig(Config):
                 database_name = 'test_%s' % int(time.time())
         self.database_name = database_name
         self._user = user
+        self.config_file = config_file
 
         register_classes()
 
@@ -151,9 +147,22 @@ class TrytondConfig(Config):
     __init__.__doc__ = object.__init__.__doc__
 
     def __repr__(self):
-        return "proteus.config.TrytondConfig('%s', '%s', '%s')" % (
-                self.database_name, self._user, self.database_type)
+        return "proteus.config.TrytondConfig('%s', '%s', '%s', config_file=%s)"\
+                % (self.database_name, self._user, self.database_type,
+                self.config_file)
     __repr__.__doc__ = object.__repr__.__doc__
+
+    def __eq__(self, other):
+        if not isinstance(other, TrytondConfig):
+            raise NotImplemented
+        return (self.database_name == other.database_name
+            and self._user == other._user
+            and self.database_type == other.database_type
+            and self.config_file == other.config_file)
+
+    def __hash__(self):
+        return hash((self.database_name, self._user,
+            self.database_type, self.config_file))
 
     def get_proxy(self, name, type='model'):
         'Return Proxy class'
@@ -199,6 +208,14 @@ class XmlrpcConfig(Config):
     def __repr__(self):
         return "proteus.config.XmlrpcConfig('%s')" % self.url
     __repr__.__doc__ = object.__repr__.__doc__
+
+    def __eq__(self, other):
+        if not isinstance(other, XmlrpcConfig):
+            raise NotImplemented
+        return self.url == other.url
+
+    def __hash__(self):
+        return hash(self.url)
 
     def get_proxy(self, name, type='model'):
         'Return Proxy class'

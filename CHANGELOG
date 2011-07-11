@@ -1,5 +1,7 @@
 * Change license to LGPL-3
 
+* Drop support of Python 2.5
+
 Version 2.0.0 - 2011-04-28
 * Bug fixes (see mercurial logs for details)
 * Manage default values of trytond configuration
