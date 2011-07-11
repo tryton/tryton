@@ -118,6 +118,8 @@ class ToolsTestCase(unittest.TestCase):
                 ['OR', clause, ['AND', clause, ['OR', clause, clause]]]),
             (['OR', [clause]], ['OR', ['AND', clause]]),
             ([], []),
+            (['OR', clause, []], ['OR', clause, []]),
+            (['AND', clause, []], ['AND', clause, []]),
         )
         for i, j in tests:
             self.assertEqual(reduce_domain(i), j,
