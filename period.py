@@ -1,6 +1,5 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from __future__ import with_statement
 from itertools import chain
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Equal, Eval, If, In, Get
