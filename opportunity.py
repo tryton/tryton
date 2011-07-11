@@ -1,7 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 "Sales extension for managing leads and opportunities"
-from __future__ import with_statement
 import datetime
 import time
 from trytond.model import ModelView, ModelSQL, ModelWorkflow, fields
