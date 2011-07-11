@@ -1,8 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from __future__ import with_statement
 from decimal import Decimal
 import base64
+import operator
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.report import Report
 from trytond.wizard import Wizard
@@ -485,7 +485,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     if line.account.id == invoice.account.id \
                             and line.maturity_date:
                         lines.append(line)
-            lines.sort(lambda x, y: cmp(x.maturity_date, y.maturity_date))
+            lines.sort(key=operator.attrgetter('maturity_date'))
             res[invoice.id] = [x.id for x in lines]
         return res
 
