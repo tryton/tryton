@@ -42,7 +42,7 @@ class Action(object):
             self.action['view_mode'] = attrs['view_mode']
 
         self.action.setdefault('domain', '[]')
-        self.context = {'active_id': False, 'active_ids': []}
+        self.context = {}
         self.context.update(common.safe_eval(self.action.get('context', '{}'),
             self.context.copy()))
 
