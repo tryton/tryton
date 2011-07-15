@@ -211,14 +211,14 @@ class Image(WidgetInterface):
             except Exception:
                 continue
             pixbuf = loader.get_pixbuf()
+            loader.close()
             if pixbuf:
                 break
         if not pixbuf:
             loader = gtk.gdk.PixbufLoader('png')
             loader.write(NOIMAGE, len(NOIMAGE))
             pixbuf = loader.get_pixbuf()
-
-        loader.close()
+            loader.close()
 
         img_height = pixbuf.get_height()
         if img_height > self.height:
