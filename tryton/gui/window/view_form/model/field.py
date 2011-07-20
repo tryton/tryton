@@ -574,6 +574,9 @@ class O2MField(CharField):
             fields = group.fields
         elif record.model_name == self.attrs['relation']:
             fields = record.group.fields
+        if fields:
+            fields = dict((fname, field.attrs)
+                for fname, field in fields.iteritems())
 
         # value is a list of dict
         fields_dict = {}
