@@ -1178,11 +1178,10 @@ class Line(ModelSQL, ModelView):
         journal_period = journal_period_obj.browse(journal_period_ids[0])
         return value + ': ' + journal_period.rec_name
 
-    def fields_view_get(self, view_id=None, view_type='form', toolbar=False,
-            hexmd5=None):
+    def fields_view_get(self, view_id=None, view_type='form', hexmd5=None):
         journal_obj = Pool().get('account.journal')
         result = super(Line, self).fields_view_get(view_id=view_id,
-                view_type=view_type, toolbar=toolbar, hexmd5=hexmd5)
+            view_type=view_type, hexmd5=hexmd5)
         if view_type == 'tree' and 'journal' in Transaction().context:
             title = self.view_header_get('', view_type=view_type)
             journal = journal_obj.browse(Transaction().context['journal'])
