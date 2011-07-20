@@ -42,7 +42,7 @@ class CharField(object):
         record.autocomplete_with(self.name)
 
     def domains_get(self, record):
-        screen_domain = domain_inversion(record.group.domain,
+        screen_domain = domain_inversion(record.group.domain4inversion,
             self.name, EvalEnvironment(record, False))
         if isinstance(screen_domain, bool) and not screen_domain:
             screen_domain = [('id', '=', False)]
