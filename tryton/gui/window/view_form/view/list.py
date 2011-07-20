@@ -721,7 +721,7 @@ class ViewList(ParserView):
             if last_col and last_col.name in fields:
                 del fields[last_col.name]
 
-            if fields:
+            if fields and any(fields.itervalues()):
                 try:
                     rpc.execute('model', 'ir.ui.view_tree_width', 'set_width',
                             self.screen.model_name, fields, rpc.CONTEXT)
