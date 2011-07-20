@@ -71,7 +71,10 @@ class Party(ModelSQL, ModelView):
             return {}
 
         company_id = None
-        user = user_obj.browse(Transaction().user)
+        user_id = Transaction().user
+        if user_id == 0 and 'user' in Transaction().context:
+            user_id = Transaction().context['user']
+        user = user_obj.browse(user_id)
         if Transaction().context.get('company'):
             child_company_ids = company_obj.search([
                 ('parent', 'child_of', [user.main_company.id]),
@@ -131,7 +134,10 @@ class Party(ModelSQL, ModelView):
             raise Exception('Bad argument')
 
         company_id = None
-        user = user_obj.browse(Transaction().user)
+        user_id = Transaction().user
+        if user_id == 0 and 'user' in Transaction().context:
+            user_id = Transaction().context['user']
+        user = user_obj.browse(user_id)
         if Transaction().context.get('company'):
             child_company_ids = company_obj.search([
                 ('parent', 'child_of', [user.main_company.id]),
