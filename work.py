@@ -254,10 +254,14 @@ class Work(ModelSQL, ModelView):
         if default is None:
             default = {}
 
+        timesheet_default = default.copy()
+        for key in timesheet_default.keys():
+            if key in self._columns:
+                del timesheet_default[key]
         new_ids = []
         for project_work in self.browse(ids):
             timesheet_work_id = timesheet_work_obj.copy(project_work.work.id,
-                default=default)
+                default=timesheet_default)
             pwdefault = default.copy()
             pwdefault['work'] = timesheet_work_id
             new_ids.append(super(Work, self).copy(project_work.id,
