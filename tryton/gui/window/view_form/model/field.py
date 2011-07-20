@@ -482,8 +482,12 @@ class O2MField(CharField):
     def get(self, record, check_load=True, readonly=True, modified=False):
         if record.value.get(self.name) is None:
             return []
+        record_removed = record.value[self.name].record_removed
+        record_deleted = record.value[self.name].record_deleted
         result = [('add', [])]
         for record2 in record.value[self.name]:
+            if record2 in record_removed or record2 in record_deleted:
+                continue
             if record2.id > 0:
                 values = record2.get(check_load=check_load,
                     get_readonly=readonly, get_modifiedonly=modified)
@@ -493,12 +497,10 @@ class O2MField(CharField):
             else:
                 result.append(('create',
                     record2.get(check_load=check_load, get_readonly=readonly)))
-        if record.value[self.name].record_removed:
-            result.append(('unlink', [x.id for x in \
-                record.value[self.name].record_removed]))
-        if record.value[self.name].record_deleted:
-            result.append(('delete', [x.id for x in \
-                record.value[self.name].record_deleted]))
+        if record_removed:
+            result.append(('unlink', [x.id for x in record_removed]))
+        if record_deleted:
+            result.append(('delete', [x.id for x in record_deleted]))
         return result
 
     def get_timestamp(self, record):
