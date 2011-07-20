@@ -203,7 +203,7 @@ class Property(ModelSQL, ModelView):
 
     def search(self, cursor, user, domain, offset=0, limit=None, order=None,
             context=None, count=False):
-        if user == 0:
+        if user == 0 and not 'user' in (context or {}):
             domain = ['AND', domain[:], ('company', '=', False)]
         return super(Property, self).search(cursor, user, domain, offset=offset,
                 limit=limit, order=order, context=context, count=count)
