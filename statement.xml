@@ -20,16 +20,20 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="journal"/>
                     <label name="date"/>
                     <field name="date"/>
-                    <label name="start_balance"/>
-                    <field name="start_balance"/>
-                    <label name="end_balance"/>
-                    <field name="end_balance"/>
+                    <group col="6" colspan="4" id="balance">
+                        <label name="start_balance"/>
+                        <field name="start_balance"/>
+                        <label name="end_balance"/>
+                        <field name="end_balance"/>
+                        <label name="balance" />
+                        <field name="balance" />
+                    </group>
                     <notebook colspan="4">
                         <page string="Statement Lines" col="4" id="statement_lines">
                             <field name="lines" colspan="4">
                                 <tree string="Statement Lines" editable="bottom">
                                     <field name="date"/>
-                                    <field name="amount"/>
+                                    <field name="amount" sum="Amount"/>
                                     <field name="party"/>
                                     <field name="account"/>
                                     <field name="invoice"/>

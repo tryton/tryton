@@ -37,6 +37,12 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
     end_balance = fields.Numeric('End Balance',
             digits=(16, Eval('currency_digits', 2)),
             states=_STATES, depends=['currency_digits'])
+    balance = fields.Function(
+        fields.Numeric('Balance',
+            digits=(16, Eval('currency_digits', 2)),
+            on_change_with=['start_balance', 'end_balance'],
+            depends=['currency_digits']),
+        'get_balance')
     lines = fields.One2Many('account.statement.line', 'statement',
             'Transactions', states={
                 'readonly': Or(Not(Equal(Eval('state'), 'draft')),
@@ -188,6 +194,16 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
             for line in statement.lines:
                 res[statement.id] += line.amount
         return res
+
+    def get_balance(self, ids, name):
+        return dict((s.id, s.end_balance - s.start_balance)
+            for s in self.browse(ids))
+
+    def on_change_with_balance(self, values):
+        if not set(('end_balance', 'start_balance')) <= set(values):
+            return 0
+        else:
+            return values['end_balance'] - values['start_balance']
 
     def on_change_lines(self, values):
         pool = Pool()
