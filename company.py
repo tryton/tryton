@@ -191,7 +191,7 @@ class Property(ModelSQL, ModelView):
         return res
 
     def search(self, domain, offset=0, limit=None, order=None, count=False):
-        if Transaction().user == 0:
+        if Transaction().user == 0 and not 'user' in Transaction().context:
             domain = ['AND', domain[:], ('company', '=', False)]
         return super(Property, self).search(domain, offset=offset,
                 limit=limit, order=order, count=count)
