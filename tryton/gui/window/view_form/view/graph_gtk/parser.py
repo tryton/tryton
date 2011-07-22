@@ -77,7 +77,7 @@ def save(widget, graph, window):
             filename = filename.decode('utf-8')
             try:
                 CONFIG['client.default_path'] = \
-                       os.path.dirname(filepath)
+                       os.path.dirname(filename)
                 CONFIG.save()
             except Exception:
                 pass
