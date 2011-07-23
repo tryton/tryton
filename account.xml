@@ -101,22 +101,22 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_analytic_account_configuration"
             action="act_account_tree" id="menu_account_tree"/>
 
-        <record model="ir.action.act_window" id="act_account_form">
+        <record model="ir.action.act_window" id="act_account_list">
             <field name="name">Analytic Accounts</field>
             <field name="res_model">analytic_account.account</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_account_form_view1">
+        <record model="ir.action.act_window.view" id="act_account_list_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="account_view_form"/>
-            <field name="act_window" ref="act_account_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_account_form_view2">
-            <field name="sequence" eval="20"/>
             <field name="view" ref="account_view_list"/>
-            <field name="act_window" ref="act_account_form"/>
+            <field name="act_window" ref="act_account_list"/>
         </record>
-        <menuitem name="New Analytic Account" parent="menu_account_tree"
-            action="act_account_form" id="menu_account_form_new"
+        <record model="ir.action.act_window.view" id="act_account_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_view_form"/>
+            <field name="act_window" ref="act_account_list"/>
+        </record>
+        <menuitem parent="menu_account_tree"
+            action="act_account_list" id="menu_account_list"
             sequence="10"/>
 
         <record model="ir.ui.view" id="account_view_tree2">
