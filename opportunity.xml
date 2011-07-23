@@ -125,23 +125,6 @@
         <menuitem parent="sale.menu_sale" action="act_opportunity_form"
             id="menu_opportunity_form" sequence="5"/>
 
-        <record model="ir.action.act_window" id="act_opportunity_form_new">
-            <field name="name">New Lead</field>
-            <field name="res_model">sale.opportunity</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_new_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="opportunity_view_form"/>
-            <field name="act_window" ref="act_opportunity_form_new"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_new_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="opportunity_view_tree"/>
-            <field name="act_window" ref="act_opportunity_form_new"/>
-        </record>
-        <menuitem parent="menu_opportunity_form" action="act_opportunity_form_new"
-            id="menu_opportunity_form_new" sequence="10"/>
-
         <record model="ir.action.act_window" id="act_opportunity_form_lead">
             <field name="name">Opened Leads</field>
             <field name="res_model">sale.opportunity</field>
