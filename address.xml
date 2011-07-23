@@ -74,22 +74,5 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem name="Addresses" parent="menu_party"
               sequence="2" action="act_address_form"
               id="menu_address_form"/>
-        <record model="ir.action.act_window" id="act_address_form2">
-            <field name="name">Addresses</field>
-            <field name="res_model">party.address</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_address_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="address_view_form"/>
-            <field name="act_window" ref="act_address_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_address_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="address_view_tree"/>
-            <field name="act_window" ref="act_address_form2"/>
-        </record>
-        <menuitem name="New Address" parent="menu_address_form"
-              action="act_address_form2"
-              id="menu_address_form2"/>
     </data>
 </tryton>

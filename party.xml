@@ -21,7 +21,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-party</field>
             <field name="path">icons/tryton-party.svg</field>
         </record>
-        <menuitem name="Party Management" sequence="0" id="menu_party"
+        <menuitem name="Party" sequence="0" id="menu_party"
             icon="tryton-party"/>
 
         <menuitem name="Configuration" parent="menu_party"
@@ -121,22 +121,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_party" sequence="1"
             action="act_party_form" id="menu_party_form"/>
-        <record model="ir.action.act_window" id="act_party_form2">
-            <field name="name">Parties</field>
-            <field name="res_model">party.party</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_party_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="party_view_form"/>
-            <field name="act_window" ref="act_party_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_party_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="party_view_tree"/>
-            <field name="act_window" ref="act_party_form2"/>
-        </record>
-        <menuitem name="New Party" parent="menu_party_form" sequence="1"
-            action="act_party_form2" id="menu_party_form2"/>
+
         <record model="ir.action.act_window" id="act_party_by_category">
             <field name="name">Parties by Category</field>
             <field name="res_model">party.party</field>
