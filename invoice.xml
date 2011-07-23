@@ -70,26 +70,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_invoice_line_out_invoice_form"
             id="menu_invoice_line_out_invoice_form" sequence="5"/>
 
-        <record model="ir.action.act_window" id="act_invoice_line_out_invoice_form2">
-            <field name="name">Invoice Lines</field>
-            <field name="res_model">account.invoice.line</field>
-            <field name="domain">[('invoice_type', '=', 'out_invoice'), ('invoice', '=', False)]</field>
-            <field name="context">{'invoice_type': 'out_invoice', 'standalone': True}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_line_out_invoice_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="account_invoice.invoice_line_view_form"/>
-            <field name="act_window" ref="act_invoice_line_out_invoice_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_line_out_invoice_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="account_invoice.invoice_line_view_tree"/>
-            <field name="act_window" ref="act_invoice_line_out_invoice_form2"/>
-        </record>
-        <menuitem name="New Invoice Line" parent="menu_invoice_line_out_invoice_form"
-            action="act_invoice_line_out_invoice_form2"
-            id="menu_invoice_line_out_invoice_form2" sequence="1"/>
-
         <record model="ir.action.act_window" id="act_invoice_line_out_credit_note_form">
             <field name="name">Credit Note Lines</field>
             <field name="res_model">account.invoice.line</field>
@@ -109,26 +89,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="account_invoice.menu_invoice_out_credit_note_form"
             action="act_invoice_line_out_credit_note_form"
             id="menu_invoice_line_out_credit_note_form" sequence="5"/>
-
-        <record model="ir.action.act_window" id="act_invoice_line_out_credit_note_form2">
-            <field name="name">Credit Note Lines</field>
-            <field name="res_model">account.invoice.line</field>
-            <field name="domain">[('invoice_type', '=', 'out_credit_note'), ('invoice', '=', False)]</field>
-            <field name="context">{'invoice_type': 'out_credit_note', 'standalone': True}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_line_out_credit_note_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="account_invoice.invoice_line_view_form"/>
-            <field name="act_window" ref="act_invoice_line_out_credit_note_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_line_out_credit_note_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="account_invoice.invoice_line_view_tree"/>
-            <field name="act_window" ref="act_invoice_line_out_credit_note_form2"/>
-        </record>
-        <menuitem name="New Credit Note Line" parent="menu_invoice_line_out_credit_note_form"
-            action="act_invoice_line_out_credit_note_form2"
-            id="menu_invoice_line_out_credit_note_form2" sequence="1"/>
 
         <record model="ir.action.act_window" id="act_invoice_line_in_invoice_form">
             <field name="name">Supplier Invoice Lines</field>
@@ -150,26 +110,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_invoice_line_in_invoice_form"
             id="menu_invoice_line_in_invoice_form" sequence="5"/>
 
-        <record model="ir.action.act_window" id="act_invoice_line_in_invoice_form2">
-            <field name="name">Supplier Invoice Lines</field>
-            <field name="res_model">account.invoice.line</field>
-            <field name="domain">[('invoice_type', '=', 'in_invoice'), ('invoice', '=', False)]</field>
-            <field name="context">{'invoice_type': 'in_invoice', 'standalone': True}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_line_in_invoice_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="account_invoice.invoice_line_view_form"/>
-            <field name="act_window" ref="act_invoice_line_in_invoice_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_line_in_invoice_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="account_invoice.invoice_line_view_tree"/>
-            <field name="act_window" ref="act_invoice_line_in_invoice_form2"/>
-        </record>
-        <menuitem name="New Supplier Invoice Line" parent="menu_invoice_line_in_invoice_form"
-            action="act_invoice_line_in_invoice_form2"
-            id="menu_invoice_line_in_invoice_form2" sequence="1"/>
-
         <record model="ir.action.act_window" id="act_invoice_line_in_credit_note_form">
             <field name="name">Supplier Credit Note Lines</field>
             <field name="res_model">account.invoice.line</field>
@@ -189,26 +129,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="account_invoice.menu_invoice_in_credit_note_form"
             action="act_invoice_line_in_credit_note_form"
             id="menu_invoice_line_in_credit_note_form" sequence="5"/>
-
-        <record model="ir.action.act_window" id="act_invoice_line_in_credit_note_form2">
-            <field name="name">Supplier Credit Note Lines</field>
-            <field name="res_model">account.invoice.line</field>
-            <field name="domain">[('invoice_type', '=', 'in_credit_note'), ('invoice', '=', False)]</field>
-            <field name="context">{'invoice_type': 'in_credit_note', 'standalone': True}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_line_in_credit_note_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="account_invoice.invoice_line_view_form"/>
-            <field name="act_window" ref="act_invoice_line_in_credit_note_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_line_in_credit_note_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="account_invoice.invoice_line_view_tree"/>
-            <field name="act_window" ref="act_invoice_line_in_credit_note_form2"/>
-        </record>
-        <menuitem name="New Supplier Credit Note Line" parent="menu_invoice_line_in_credit_note_form"
-            action="act_invoice_line_in_credit_note_form2"
-            id="menu_invoice_line_in_credit_note_form2" sequence="1"/>
 
     </data>
 </tryton>
