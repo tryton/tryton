@@ -58,29 +58,6 @@ this repository contains the full copyright notices and license terms. -->
             sequence="20" id="menu_price_list"
             action="act_price_list_form"/>
 
-        <record model="ir.action.act_window" id="act_price_list_form2">
-            <field name="name">Price Lists</field>
-            <field name="res_model">product.price_list</field>
-            <field name="domain">[('company', '=', Eval('company'))]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_price_list_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="price_list_view_form"/>
-            <field name="act_window" ref="act_price_list_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_price_list_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="price_list_view_tree"/>
-            <field name="act_window" ref="act_price_list_form2"/>
-        </record>
-        <menuitem name="New Price List" parent="menu_price_list" sequence="10"
-            id="menu_price_list_new" action="act_price_list_form2"/>
-        <record model="ir.ui.menu-res.group"
-            id="menu_price_list_new_group_product_admin">
-            <field name="menu" ref="menu_price_list_new"/>
-            <field name="group" ref="product.group_product_admin"/>
-        </record>
-
         <record model="ir.model.access" id="access_price_list">
             <field name="model" search="[('model', '=', 'product.price_list')]"/>
             <field name="perm_read" eval="True"/>
