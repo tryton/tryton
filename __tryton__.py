@@ -10,7 +10,7 @@
     'website': 'http://www.tryton.org/',
     'description': '''Define an account chart template for Belgium.
 Usefull to create a Belgium account chart with the wizard in
-"Financial Management>Configuration>General Account>Create Chart of Account from Template".
+"Financial>Configuration>General Account>Create Chart of Account from Template".
 ''',
     'description_de_DE': '''
     - Enthält den Kontenplan für Belgien.
