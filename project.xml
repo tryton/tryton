@@ -19,7 +19,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-project</field>
             <field name="path">icons/tryton-project.svg</field>
         </record>
-        <menuitem name="Project Management" sequence="7" id="menu_project"
+        <menuitem name="Project" sequence="7" id="menu_project"
             icon="tryton-project"/>
         <menuitem name="Configuration" parent="menu_project"
             id="menu_configuration" sequence="10" icon="tryton-preferences"/>

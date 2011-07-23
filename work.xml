@@ -173,25 +173,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_work_tree"
             action="act_work_list" id="menu_work_list"/>
 
-        <record model="ir.action.act_window" id="act_work_form_new">
-            <field name="name">Works Efforts</field>
-            <field name="res_model">project.work</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_work_form_new_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_form"/>
-            <field name="act_window" ref="act_work_form_new"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_work_form_new_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="work_view_list"/>
-            <field name="act_window" ref="act_work_form_new"/>
-        </record>
-        <menuitem name="New Work Effort" parent="menu_work_tree"
-            action="act_work_form_new" id="menu_work_form_new"/>
-
         <record model="ir.action.act_window" id="act_work_form">
             <field name="name">Works</field>
             <field name="res_model">project.work</field>
