@@ -147,32 +147,6 @@ this repository contains the full copyright notices and license terms. -->
                   sequence="1" id="menu_product_product"
                   action="act_product_form"/>
 
-        <record model="ir.action.act_window" id="act_product_form2">
-            <field name="name">Products</field>
-            <field name="res_model">product.product</field>
-        </record>
-
-        <record model="ir.action.act_window.view" id="act_product_list_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="product_view_tree"/>
-            <field name="act_window" ref="act_product_form2"/>
-        </record>
-
-        <record model="ir.action.act_window.view" id="act_product_form_view2">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="product_view_form"/>
-            <field name="act_window" ref="act_product_form2"/>
-        </record>
-
-        <menuitem name="New Product" parent="menu_product_product"
-                  sequence="1" id="menu_product_product_new"
-                  action="act_product_form2"/>
-        <record model="ir.ui.menu-res.group"
-            id="menu_product_product_new_group_product_admin">
-            <field name="menu" ref="menu_product_product_new"/>
-            <field name="group" ref="group_product_admin"/>
-        </record>
-
         <record model="ir.action.act_window" id="act_product_by_category">
             <field name="name">Product by Category</field>
             <field name="res_model">product.product</field>

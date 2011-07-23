@@ -62,27 +62,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem name="Units of Measure" parent="menu_main_product"
             sequence="3" id="menu_uom_form" action="act_uom_form"/>
-        <record model="ir.action.act_window" id="act_uom_form2">
-            <field name="name">Units of Measure</field>
-            <field name="res_model">product.uom</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_uom_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="uom_view_form"/>
-            <field name="act_window" ref="act_uom_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_uom_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="uom_view_tree"/>
-            <field name="act_window" ref="act_uom_form2"/>
-        </record>
-        <menuitem name="New Unit of Measure" id="menu_uom_form2"
-            parent="menu_uom_form" sequence="1" action="act_uom_form2"/>
-        <record model="ir.ui.menu-res.group"
-            id="menu_uom_form2_group_product_admin">
-            <field name="menu" ref="menu_uom_form2"/>
-            <field name="group" ref="group_product_admin"/>
-        </record>
 
         <record model="ir.ui.view" id="uom_category_view_tree">
             <field name="model">product.uom.category</field>
@@ -126,24 +105,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem name="Categories" parent="menu_uom_form" sequence="2"
             id="menu_uom_category_form"
             action="act_uom_category_form"/>
-
-        <record model="ir.action.act_window" id="act_uom_category_form2">
-            <field name="name">Categories of Unit of Measure</field>
-            <field name="res_model">product.uom.category</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_uom_category_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="uom_category_view_form"/>
-            <field name="act_window" ref="act_uom_category_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_uom_category_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="uom_category_view_tree"/>
-            <field name="act_window" ref="act_uom_category_form2"/>
-        </record>
-        <menuitem name="New Category" parent="menu_uom_category_form" sequence="10"
-            id="menu_uom_category_form_new"
-            action="act_uom_category_form2"/>
 
         <record model="product.uom.category" id="uom_cat_unit">
             <field name="name">Units</field>
