@@ -119,25 +119,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_company_tree" action="act_company_list"
             id="menu_company_list"/>
 
-        <record model="ir.action.act_window" id="act_company_form">
-            <field name="name">Companies</field>
-            <field name="res_model">company.company</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_company_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="company_view_form"/>
-            <field name="act_window" ref="act_company_form"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_company_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="company_view_list"/>
-            <field name="act_window" ref="act_company_form"/>
-        </record>
-        <menuitem parent="menu_company_tree" action="act_company_form"
-            id="menu_company_form" name="New Company"/>
-
         <record model="ir.model.access" id="access_company">
             <field name="model" search="[('model', '=', 'company.company')]"/>
             <field name="perm_read" eval="True"/>
