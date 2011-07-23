@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_timesheet_admin"/>
         </record>
 
-        <menuitem name="Timesheet Management" sequence="6" id="menu_timesheet"
+        <menuitem name="Timesheet" sequence="6" id="menu_timesheet"
             icon="tryton-clock"/>
         <menuitem name="Configuration" parent="menu_timesheet"
             id="menu_configuration" sequence="10" icon="tryton-preferences"/>
