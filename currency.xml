@@ -18,7 +18,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-currency</field>
             <field name="path">icons/tryton-currency.svg</field>
         </record>
-        <menuitem name="Currency Management" id="menu_currency" sequence="3"
+        <menuitem name="Currency" id="menu_currency" sequence="3"
             icon="tryton-currency"/>
         <record model="ir.ui.menu-res.group" id="menu_currency_group_currency_admin">
             <field name="menu" ref="menu_currency"/>
