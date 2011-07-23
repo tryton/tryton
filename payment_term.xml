@@ -78,24 +78,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_payment_terms_configuration"
             action="act_payment_term_form" id="menu_payment_term_form"/>
 
-        <record model="ir.action.act_window" id="act_payment_term_form2">
-            <field name="name">Payment Terms</field>
-            <field name="res_model">account.invoice.payment_term</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_payment_term_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="payment_term_view_form"/>
-            <field name="act_window" ref="act_payment_term_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_payment_term_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="payment_term_view_tree"/>
-            <field name="act_window" ref="act_payment_term_form2"/>
-        </record>
-        <menuitem name="New Payment Term" parent="menu_payment_term_form"
-            action="act_payment_term_form2" id="menu_payment_term_form_new"
-            sequence="10"/>
-
         <record model="ir.model.access" id="access_payment_term">
             <field name="model" search="[('model', '=', 'account.invoice.payment_term')]"/>
             <field name="perm_read" eval="True"/>
