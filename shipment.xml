@@ -105,24 +105,24 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_stock" sequence="20"
             action="act_shipment_in_form" id="menu_shipment_in_form"/>
 
-        <record model="ir.action.act_window" id="act_shipment_in_form2">
-            <field name="name">New Supplier Shipment</field>
+        <record model="ir.action.act_window" id="act_shipment_in_draft">
+            <field name="name">Draft Supplier Shipment</field>
             <field name="res_model">stock.shipment.in</field>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_shipment_in_form2_view1">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_in_view_form"/>
-            <field name="act_window" ref="act_shipment_in_form2"/>
+                id="act_shipment_in_draft_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="shipment_in_view_tree"/>
+            <field name="act_window" ref="act_shipment_in_draft"/>
         </record>
         <record model="ir.action.act_window.view"
-                id="act_shipment_in_form2_view2">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_in_view_tree"/>
-            <field name="act_window" ref="act_shipment_in_form2"/>
+                id="act_shipment_in_draft_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="shipment_in_view_form"/>
+            <field name="act_window" ref="act_shipment_in_draft"/>
         </record>
         <menuitem parent="menu_shipment_in_form" sequence="10"
-            action="act_shipment_in_form2" id="menu_shipment_in_form2"/>
+            action="act_shipment_in_draft" id="menu_shipment_in_draft"/>
 
         <record model="ir.action.act_window" id="act_shipment_in_form_received">
             <field name="name">Received Supplier shipments</field>
@@ -236,26 +236,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_shipment_in_form" sequence="40"
                   action="act_shipment_in_return_form"
                   id="menu_shipment_in_return_form"/>
-
-        <record model="ir.action.act_window" id="act_shipment_in_return_new_form">
-            <field name="name">New Supplier Return Shipment</field>
-            <field name="res_model">stock.shipment.in.return</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_in_return_new_form_view1">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_in_return_view_tree"/>
-            <field name="act_window" ref="act_shipment_in_return_new_form"/>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_in_return_new_form_view2">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_in_return_view_form"/>
-            <field name="act_window" ref="act_shipment_in_return_new_form"/>
-        </record>
-        <menuitem parent="menu_shipment_in_return_form" sequence="10"
-                  action="act_shipment_in_return_new_form"
-                  id="menu_shipment_in_return_new_form"/>
 
         <record model="ir.ui.view" id="shipment_in_return_assign_assign_failed_view_form">
             <field name="model">stock.shipment.in.return.assign.assign_failed</field>
@@ -575,26 +555,6 @@ this repository contains the full copyright notices and license terms. -->
                   action="act_shipment_internal_form"
                   id="menu_shipment_internal_form"/>
 
-        <record model="ir.action.act_window" id="act_shipment_internal_new_form">
-            <field name="name">New Internal Shipment</field>
-            <field name="res_model">stock.shipment.internal</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_internal_new_form_view1">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_internal_view_tree"/>
-            <field name="act_window" ref="act_shipment_internal_new_form"/>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_internal_new_form_view2">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_internal_view_form"/>
-            <field name="act_window" ref="act_shipment_internal_new_form"/>
-        </record>
-        <menuitem parent="menu_shipment_internal_form" sequence="10"
-                  action="act_shipment_internal_new_form"
-                  id="menu_shipment_internal_new_form"/>
-
         <record model="ir.action.act_window" id="act_shipment_internal_draft_form">
             <field name="name">Draft Internal Shipments</field>
             <field name="res_model">stock.shipment.internal</field>
@@ -783,25 +743,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_shipment_out_form" sequence="40"
                   action="act_shipment_out_return_form"
                   id="menu_shipment_out_return_form"/>
-
-        <record model="ir.action.act_window" id="act_shipment_out_return_form2">
-            <field name="name">New Customer Return Shipment</field>
-            <field name="res_model">stock.shipment.out.return</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_out_return_form2_view1">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_out_return_view_form"/>
-            <field name="act_window" ref="act_shipment_out_return_form2"/>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_out_return_form2_view2">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_out_return_view_tree"/>
-            <field name="act_window" ref="act_shipment_out_return_form2"/>
-        </record>
-        <menuitem parent="menu_shipment_out_return_form" sequence="10"
-            action="act_shipment_out_return_form2" id="menu_shipment_out_return_form2"/>
 
         <!-- Workflow shipment in -->
         <record model="workflow" id="wkf_shipmentin">
