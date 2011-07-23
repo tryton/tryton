@@ -48,24 +48,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_journal_configuration"
             action="act_journal_type_form" id="menu_journal_type_form"/>
 
-        <record model="ir.action.act_window" id="act_journal_type_form2">
-            <field name="name">Journal Types</field>
-            <field name="res_model">account.journal.type</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_journal_type_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="journal_type_form"/>
-            <field name="act_window" ref="act_journal_type_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_journal_type_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="journal_type_tree"/>
-            <field name="act_window" ref="act_journal_type_form2"/>
-        </record>
-        <menuitem name="New Journal Type" parent="menu_journal_type_form"
-            action="act_journal_type_form2" id="menu_journal_type_form_new"
-            sequence="10"/>
-
         <record model="ir.model.access" id="access_journal_type">
             <field name="model" search="[('model', '=', 'account.journal.type')]"/>
             <field name="perm_read" eval="True"/>
@@ -163,24 +145,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_journal_configuration"
             action="act_journal_view_form" id="menu_journal_view_form"/>
 
-        <record model="ir.action.act_window" id="act_journal_view_form2">
-            <field name="name">Journal Views</field>
-            <field name="res_model">account.journal.view</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_journal_view_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="journal_view_view_form"/>
-            <field name="act_window" ref="act_journal_view_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_journal_view_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="journal_view_view_tree"/>
-            <field name="act_window" ref="act_journal_view_form2"/>
-        </record>
-        <menuitem name="New Journal View" parent="menu_journal_view_form"
-            action="act_journal_view_form2" id="menu_journal_view_form_new"
-            sequence="10"/>
-
         <record model="ir.model.access" id="access_journal_view">
             <field name="model" search="[('model', '=', 'account.journal.view')]"/>
             <field name="perm_read" eval="True"/>
@@ -263,24 +227,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_journal_configuration"
             action="act_journal_form" id="menu_journal_form"/>
-
-        <record model="ir.action.act_window" id="act_journal_form2">
-            <field name="name">Journals</field>
-            <field name="res_model">account.journal</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_journal_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="journal_view_form"/>
-            <field name="act_window" ref="act_journal_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_journal_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="journal_view_tree"/>
-            <field name="act_window" ref="act_journal_form2"/>
-        </record>
-        <menuitem name="New Journal" parent="menu_journal_form"
-            action="act_journal_form2" id="menu_journal_form_new"
-            sequence="10"/>
 
         <record model="ir.model.access" id="access_journal">
             <field name="model" search="[('model', '=', 'account.journal')]"/>

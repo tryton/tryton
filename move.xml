@@ -122,25 +122,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_entries" action="act_move_form"
             id="menu_move_form"/>
 
-        <record model="ir.action.act_window" id="act_move_form2">
-            <field name="name">Account Moves</field>
-            <field name="res_model">account.move</field>
-            <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_move_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="move_view_form"/>
-            <field name="act_window" ref="act_move_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_move_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="move_view_tree"/>
-            <field name="act_window" ref="act_move_form2"/>
-        </record>
-        <menuitem name="New Account Move" parent="menu_move_form"
-            action="act_move_form2" id="menu_move_form_new"
-            sequence="10"/>
-
         <record model="ir.model.access" id="access_move">
             <field name="model" search="[('model', '=', 'account.move')]"/>
             <field name="perm_read" eval="False"/>

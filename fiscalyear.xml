@@ -84,24 +84,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_fiscalyear_configuration"
             action="act_fiscalyear_form" id="menu_fiscalyear_form"/>
 
-        <record model="ir.action.act_window" id="act_fiscalyear_form2">
-            <field name="name">Fiscal Years</field>
-            <field name="res_model">account.fiscalyear</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_fiscalyear_form2_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="fiscalyear_view_form"/>
-            <field name="act_window" ref="act_fiscalyear_form2"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_fiscalyear_form2_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="fiscalyear_view_tree"/>
-            <field name="act_window" ref="act_fiscalyear_form2"/>
-        </record>
-        <menuitem name="New Fiscal Year" parent="menu_fiscalyear_form"
-            action="act_fiscalyear_form2" id="menu_fiscalyear_form_new"
-            sequence="10"/>
-
         <record model="ir.model.access" id="access_fiscalyear">
             <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
             <field name="perm_read" eval="True"/>
