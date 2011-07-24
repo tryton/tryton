@@ -53,7 +53,7 @@ class Subdivision(ModelSQL, ModelView):
     _description = __doc__
     country = fields.Many2One('country.country', 'Country',
             required=True, select=1)
-    name = fields.Char('Name', required=True, select=1)
+    name = fields.Char('Name', required=True, select=1, translate=True)
     code = fields.Char('Code', required=True, select=1)
     type = fields.Selection([
         ('administration', 'Administration'),
