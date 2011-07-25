@@ -273,7 +273,7 @@ class ForecastLine(ModelSQL, ModelView):
                  'quantity': qty * line.minimal_quantity,
                  'planned_date': line.forecast.from_date + datetime.timedelta(day),
                  'company': line.forecast.company.id,
-                 'currency':line.forecast.company.currency,
+                 'currency':line.forecast.company.currency.id,
                  'unit_price': unit_price,
                  },
                 context=context)
