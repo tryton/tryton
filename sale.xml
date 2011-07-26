@@ -3,12 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Sale" id="menu_sale" sequence="5"/>
+        <menuitem name="Sales" id="menu_sale" sequence="5"/>
         <record model="res.group" id="group_sale">
-            <field name="name">Sale</field>
+            <field name="name">Sales</field>
         </record>
         <record model="res.group" id="group_sale_admin">
-            <field name="name">Sale Administrator</field>
+            <field name="name">Sales Administrator</field>
         </record>
         <record model="res.user-res.group" id="user_admin_group_sale">
             <field name="user" ref="res.user_admin"/>
