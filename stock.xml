@@ -48,7 +48,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-inventory</field>
             <field name="path">icons/tryton-inventory.svg</field>
         </record>
-        <menuitem name="Inventory &amp; Inventory" sequence="3" id="menu_stock"
+        <menuitem name="Inventory &amp; Stock" sequence="3" id="menu_stock"
             icon="tryton-inventory"/>
         <menuitem name="Configuration" parent="menu_stock"
             id="menu_configuration" sequence="0" icon="tryton-preferences"/>
