@@ -240,7 +240,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             i.sort(lambda r,s: cmp(r['supply_date'],s['supply_date']))
 
         # Update new requests to take existing requests into account
-        new_requests.sort(key=operator.attrgetter('supply_date'))
+        new_requests.sort(key=operator.itemgetter('supply_date'))
         for new_req in new_requests:
             for old_req in existing_req.get((new_req['product'].id,
                                              new_req['warehouse']), []):
