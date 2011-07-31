@@ -453,7 +453,8 @@ class ForecastComplete(Wizard):
         else:
             products = None
 
-        for (_, product), qty in pbl.iteritems():
+        for key, qty in pbl.iteritems():
+            _, product = key
             if products and product not in products:
                 continue
             if -qty <= 0:
