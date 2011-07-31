@@ -89,12 +89,13 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
                         'AND location = %s ' \
                         'AND destination = %s ' \
                         'AND state = \'done\' ' \
+                        'AND company = %s '
                         'AND id != %s',
                     (forecast.from_date, forecast.from_date,
                      forecast.to_date, forecast.to_date,
                      forecast.from_date, forecast.to_date,
                      forecast.location.id, forecast.destination.id,
-                     forecast.id))
+                     forecast.company.id, forecast.id))
             rowcount = cursor.rowcount
             if rowcount == -1 or rowcount is None:
                 rowcount = len(cursor.fetchall())
