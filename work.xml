@@ -94,17 +94,19 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="state"/>
                         <label name="timesheet_available"/>
                         <field name="timesheet_available" xexpand="0"/>
-                            <label name="company"/>
-                            <field name="company" />
+                        <label name="company"/>
+                        <field name="company"/>
                     <notebook colspan="8">
                         <page string="General" id="general">
-                            <label name="party"/>
-                            <field name="party"/>
-                            <label name="party_address"/>
-                            <field name="party_address"/>
-                            <label name="hours"/>
-                            <field name="hours" widget="float_time" float_time="company_work_time"/>
-                            <group colspan="2" col="4" id="effort">
+                            <group colspan="2" col="2" id="left">
+                                <label name="party"/>
+                                <field name="party"/>
+                                <label name="hours"/>
+                                <field name="hours" widget="float_time" float_time="company_work_time"/>
+                            </group>
+                            <group colspan="2" col="2" id="right">
+                                <label name="party_address"/>
+                                <field name="party_address"/>
                                 <label name="effort"/>
                                 <field name="effort" widget="float_time" float_time="company_work_time"/>
                                 <label name="total_effort"/>
