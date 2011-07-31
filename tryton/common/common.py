@@ -524,9 +524,9 @@ message = MessageDialog()
 
 class WarningDialog(UniqueDialog):
 
-    def build_dialog(self, message, parent, title):
+    def build_dialog(self, message, parent, title, buttons=gtk.BUTTONS_OK):
         dialog = gtk.MessageDialog(parent, gtk.DIALOG_DESTROY_WITH_PARENT,
-            gtk.MESSAGE_WARNING, gtk.BUTTONS_OK)
+            gtk.MESSAGE_WARNING, buttons)
         if hasattr(dialog, 'format_secondary_markup'):
             dialog.set_markup('<b>%s</b>' % (to_xml(title)))
             dialog.format_secondary_markup(to_xml(message))
@@ -548,7 +548,7 @@ class UserWarningDialog(WarningDialog):
 
     def build_dialog(self, message, parent, title):
         dialog = super(UserWarningDialog, self).build_dialog(message, parent,
-            title)
+            title, gtk.BUTTONS_OK_CANCEL)
         check = gtk.CheckButton(_('Always ignore this warning.'))
         check.connect_after('toggled', self._set_always)
         alignment = gtk.Alignment(1, 0.5)
