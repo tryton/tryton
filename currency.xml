@@ -63,7 +63,7 @@ this repository contains the full copyright notices and license terms. -->
                                         <field name="date"/>
                                     </x>
                                     <y>
-                                        <field name="rate" fill="1" empty="0"/>
+                                        <field name="rate" yfill="1" empty="0"/>
                                     </y>
                                 </graph>
                             </field>
