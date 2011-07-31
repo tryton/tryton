@@ -76,20 +76,22 @@ this repository contains the full copyright notices and license terms. -->
                                         </tree>
                                     </field>
                                 </group>
-                                <group col="2" colspan="1" id="amount_state_buttons">
-                                    <label name="untaxed_amount"/>
-                                    <field name="untaxed_amount"/>
-                                    <label name="tax_amount"/>
-                                    <field name="tax_amount"/>
-                                    <label name="total_amount"/>
-                                    <field name="total_amount"/>
-                                    <group col="4" colspan="2" id="reconciled_state">
+                                <group col="4" colspan="1" id="amount_state_buttons">
+                                    <group col="2" colspan="2" id="reconciled_state">
                                         <label name="reconciled"/>
                                         <field name="reconciled" xexpand="0"/>
                                         <label name="state"/>
                                         <field name="state"/>
                                     </group>
-                                    <group col="5" colspan="2" id="buttons">
+                                    <group col="2" colspan="2" id="amount">
+                                        <label name="untaxed_amount" xalign="1.0" xexpand="1"/>
+                                        <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
+                                        <label name="tax_amount" xalign="1.0" xexpand="1"/>
+                                        <field name="tax_amount" xalign="1.0" xexpand="0"/>
+                                        <label name="total_amount" xalign="1.0" xexpand="1"/>
+                                        <field name="total_amount" xalign="1.0" xexpand="0"/>
+                                    </group>
+                                    <group col="5" colspan="4" id="buttons">
                                         <button name="cancel" string="_Cancel"
                                             states="{'invisible': Not(In(Eval('state'), ['draft', 'proforma'])), 'readonly': Not(In(%(account.group_account)d, Eval('groups', [])))}"
                                             icon="tryton-cancel"/>
@@ -860,13 +862,13 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <form string="Print Invoice" col="2">
                     <separator string="&lt;b&gt;Warning!&lt;/b&gt;" colspan="2"
-                        align="0.5" id="warning"/>
+                        xalign="0.5" id="warning"/>
                     <image name="tryton-dialog-information"/>
                     <group col="1" id="labels">
                         <label string="You have selected more than one invoice to print."
-                            align="0.0" id="selected"/>
+                            xalign="0.0" id="selected"/>
                         <label string="The invoices will be sent &lt;i&gt;directly&lt;/i&gt; to the printer."
-                            align="0.0" id="printer"/>
+                            xalign="0.0" id="printer"/>
                     </group>
                 </form>
                 ]]>
@@ -893,7 +895,7 @@ this repository contains the full copyright notices and license terms. -->
                     <image name="tryton-dialog-information"/>
                     <group col="2" id="credit_refund">
                         <label string="Are you sure to credit those/this invoice(s)?"
-                            align="0.0" id="credit" colspan="2"/>
+                            xalign="0.0" id="credit" colspan="2"/>
                         <label name="with_refund"/>
                         <field name="with_refund"/>
                     </group>
