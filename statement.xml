@@ -20,14 +20,10 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="journal"/>
                     <label name="date"/>
                     <field name="date"/>
-                    <group col="6" colspan="4" id="balance">
-                        <label name="start_balance"/>
-                        <field name="start_balance"/>
-                        <label name="end_balance"/>
-                        <field name="end_balance"/>
-                        <label name="balance" />
-                        <field name="balance" />
-                    </group>
+                    <label name="start_balance"/>
+                    <field name="start_balance"/>
+                    <label name="end_balance"/>
+                    <field name="end_balance"/>
                     <notebook colspan="4">
                         <page string="Statement Lines" col="4" id="statement_lines">
                             <field name="lines" colspan="4">
@@ -41,6 +37,8 @@ this repository contains the full copyright notices and license terms. -->
                                 </tree>
                             </field>
                             <group col="6" colspan="4" id="state_buttons">
+                              <label name="balance"/>
+                              <field name="balance"/>
                               <label name="state"/>
                               <field name="state"/>
                               <button string="Validate" name="validated"
