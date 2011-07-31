@@ -95,7 +95,10 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
                      forecast.from_date, forecast.to_date,
                      forecast.location.id, forecast.destination.id,
                      forecast.id))
-            if cursor.rowcount:
+            rowcount = cursor.rowcount
+            if rowcount == -1 or rowcount is None:
+                rowcount = len(cursor.fetchall())
+            if rowcount:
                 return False
         return True
 
