@@ -483,9 +483,9 @@ this repository contains the full copyright notices and license terms. -->
                     <image name="tryton-dialog-information"/>
                     <group col="1" id="labels">
                         <label string="You can now create a chart of account for your company"
-                            align="0.0" id="create"/>
+                            yalign="0.0" id="create"/>
                         <label string="by selecting a chart of account template."
-                            align="0.0" id="selecting"/>
+                            yalign="0.0" id="selecting"/>
                     </group>
                 </form>
                 ]]>
