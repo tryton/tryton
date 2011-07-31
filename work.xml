@@ -10,35 +10,24 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/label[@name=&quot;hours&quot;]" position="replace"/>
-
-                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/field[@name=&quot;hours&quot;]" position="replace">
-                        <group colspan="2" col="2" id="cost">
-                            <separator string="Cost" id="cost" colspan="2"/>
-                            <label name="cost"/>
-                            <field name="cost"/>
-                            <label name="hours"/>
-                            <field name="hours" widget="float_time" float_time="company_work_time"/>
-                        </group>
+                    <xpath expr="/form/notebook/page[@id='general']/group[@id='left']"
+                        position="inside">
+                        <label name="cost"/>
+                        <field name="cost"/>
                     </xpath>
 
-                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/group[@id=&quot;effort&quot;]" position="replace">
-                        <group colspan="2" col="2" id="revenue">
-                            <separator string="Revenue" id="revenue" colspan="2"/>
+                    <xpath expr="/form/notebook/page[@id='general']/group[@id='right']"
+                        position="inside">
                             <label name="revenue"/>
                             <field name="revenue"/>
                             <label name="product"/>
                             <field name="product"/>
                             <label name="list_price"/>
                             <field name="list_price"/>
-                            <label name="effort"/>
-                            <field name="effort" widget="float_time" float_time="company_work_time"/>
-                            <label name="total_effort"/>
-                            <field name="total_effort" widget="float_time" float_time="company_work_time"/>
-                        </group>
                     </xpath>
 
-                    <xpath expr="/form/notebook/page[@id=&quot;children&quot;]/field[@name=&quot;children&quot;]/tree/field[@name=&quot;total_effort&quot;]" position="after">
+                    <xpath expr="/form/notebook/page[@id='children']/field[@name='children']/tree/field[@name='total_effort']"
+                        position="after">
                         <field name="product"/>
                         <field name="list_price"/>
                         <field name="revenue"/>
@@ -55,7 +44,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/tree/field[@name=&quot;total_effort&quot;]" position="after">
+                    <xpath expr="/tree/field[@name='total_effort']" position="after">
                         <field name="product"/>
                         <field name="list_price"/>
                         <field name="revenue"/>
@@ -72,7 +61,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/tree/field[@name=&quot;total_effort&quot;]" position="after">
+                    <xpath expr="/tree/field[@name='total_effort']" position="after">
                         <field name="product"/>
                         <field name="list_price"/>
                         <field name="cost"/>
@@ -88,7 +77,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/tree/field[@name=&quot;total_effort&quot;]" position="after">
+                    <xpath expr="/tree/field[@name='total_effort']" position="after">
                         <field name="revenue"/>
                         <field name="cost"/>
                     </xpath>
