@@ -18,6 +18,7 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="account_revenue"/>
                             <label name="account_expense"/>
                             <field name="account_expense"/>
+                            <separator string="Taxes" id="taxes" colspan="4"/>
                             <field name="customer_taxes" colspan="2"/>
                             <field name="supplier_taxes" colspan="2"/>
                         </page>
