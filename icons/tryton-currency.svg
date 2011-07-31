@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
-   xmlns:ns="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
@@ -14,10 +14,10 @@
    height="64px"
    id="svg3471"
    sodipodi:version="0.32"
-   inkscape:version="0.45.1"
-   sodipodi:docname="tryton_currency.svg"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="tryton-currency.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   sodipodi:docbase="/home/kp/Desktop">
+   version="1.1">
   <defs
      id="defs3473">
     <linearGradient
@@ -92,19 +92,28 @@
      showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
-     inkscape:window-width="1590"
-     inkscape:window-height="1027"
+     inkscape:window-width="1280"
+     inkscape:window-height="1024"
      inkscape:window-x="0"
-     inkscape:window-y="25" />
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata3476">
     <rdf:RDF>
-      <ns:Work
+      <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </ns:Work>
+        <dc:title></dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Bertrand Chenal</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="" />
+      </cc:Work>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
@@ -127,7 +136,7 @@
          id="path3176"
          style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#edd400;fill-opacity:1;stroke:#c4a000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Standard Symbols L"
          xlink:href="#path3174"
-         inkscape:original="M 296.75 483.96875 C 285.66202 483.96874 276.24275 491.31551 273.21875 502.1875 L 267.53125 502.1875 L 265.8125 506.28125 L 272.5625 506.28125 C 272.4185 507.36125 272.4375 507.746 272.4375 508.25 C 272.43751 508.68201 272.4185 509.17 272.5625 510.25 L 267.59375 510.25 L 265.875 514.34375 L 273.21875 514.34375 C 276.24274 525.21575 285.66201 532.5625 296.75 532.5625 C 302.36601 532.56251 307.35401 530.78474 312.25 526.96875 L 312.25 521.1875 C 308.29001 525.86748 302.7355 528.46875 296.6875 528.46875 C 287.97551 528.46877 279.91675 522.55174 277.46875 514.34375 L 304.3125 514.34375 L 306.0625 510.25 L 276.59375 510.25 C 276.52176 509.16999 276.53125 508.754 276.53125 508.25 C 276.53126 507.74601 276.52175 507.28924 276.59375 506.28125 L 307.71875 506.28125 L 309.375 502.1875 L 303.96875 502.1875 L 277.46875 502.1875 C 280.06075 493.83549 287.89401 488.0625 296.75 488.0625 C 302.79801 488.06249 308.14601 490.59175 312.25 495.34375 L 313.96875 491.25 C 309.00076 486.35399 303.22999 483.96875 296.75 483.96875 z "
+         inkscape:original="M 296.75 483.96875 C 285.66201 483.96875 276.24275 491.31551 273.21875 502.1875 L 267.53125 502.1875 L 265.8125 506.28125 L 272.5625 506.28125 C 272.4185 507.36124 272.4375 507.746 272.4375 508.25 C 272.4375 508.682 272.4185 509.17 272.5625 510.25 L 267.59375 510.25 L 265.875 514.34375 L 273.21875 514.34375 C 276.24275 525.21573 285.66201 532.5625 296.75 532.5625 C 302.366 532.5625 307.35401 530.78474 312.25 526.96875 L 312.25 521.1875 C 308.29001 525.86749 302.7355 528.46875 296.6875 528.46875 C 287.97551 528.46875 279.91675 522.55174 277.46875 514.34375 L 304.3125 514.34375 L 306.0625 510.25 L 276.59375 510.25 C 276.52175 509.17 276.53125 508.754 276.53125 508.25 C 276.53125 507.746 276.52175 507.28924 276.59375 506.28125 L 307.71875 506.28125 L 309.375 502.1875 L 303.96875 502.1875 L 277.46875 502.1875 C 280.06075 493.8355 287.89401 488.0625 296.75 488.0625 C 302.798 488.0625 308.14601 490.59175 312.25 495.34375 L 313.96875 491.25 C 309.00076 486.354 303.22999 483.96875 296.75 483.96875 z "
          inkscape:radius="0.89809996"
          sodipodi:type="inkscape:offset" />
       <path
