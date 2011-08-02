@@ -522,7 +522,13 @@ class ModelStorage(Model):
                     break
                 field_name = fields_tree[i]
                 model_obj = self.pool.get(value._model_name)
-                field = model_obj._columns[field_name]
+                if field_name in model_obj._columns:
+                    field = model_obj._columns[field_name]
+                elif field_name in model_obj._inherit_fields:
+                    field = model_obj._inherit_fields[field_name][2]
+                else:
+                    raise Exception('Field %s not available on object "%s"'
+                        % (field_name, model_obj._name))
                 if field.states and 'invisible' in field.states:
                     pyson_invisible = PYSONEncoder().encode(
                             field.states['invisible'])
