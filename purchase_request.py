@@ -404,6 +404,55 @@ class PurchaseRequest(ModelSQL, ModelView):
 PurchaseRequest()
 
 
+class CreatePurchaseRequestInit(ModelView):
+    'Create Purchase Request Init'
+    _name = 'purchase.request.create_purchase_request.init'
+    _description = __doc__
+
+CreatePurchaseRequestInit()
+
+
+class CreatePurchaseRequest(Wizard):
+    'Create Purchase Request'
+    _name = 'purchase.request.create_purchase_request'
+
+    states = {
+        'init': {
+            'result': {
+                'type': 'form',
+                'object': 'purchase.request.create_purchase_request.init',
+                'state': [
+                    ('end', 'Cancel', 'tryton-cancel'),
+                    ('create', 'Create', 'tryton-ok', True),
+                    ],
+                },
+            },
+        'create': {
+            'actions': ['_create_purchase_request'],
+            'result': {
+                'type': 'action',
+                'action': '_open',
+                'state': 'end',
+                },
+            },
+        }
+
+    def _create_purchase_request(self, data):
+        purchase_request_obj = Pool().get('purchase.request')
+        purchase_request_obj.generate_requests()
+        return {}
+
+    def _open(self, data):
+        pool = Pool()
+        model_data_obj = pool.get('ir.model.data')
+        act_window_obj = pool.get('ir.action.act_window')
+        act_window_id = model_data_obj.get_id('stock_supply',
+            'act_purchase_request_form_draft')
+        return act_window_obj.read(act_window_id)
+
+CreatePurchaseRequest()
+
+
 class CreatePurchaseAskTerm(ModelView):
     'Create Purchase Ask Term'
     _name = 'purchase.request.create_purchase.ask_term'

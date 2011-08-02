@@ -104,8 +104,34 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_purchase_request_form_draft"/>
         </record>
 
-        <menuitem parent="menu_purchase_request_form" sequence="10"
+        <menuitem parent="menu_purchase_request_form" sequence="20"
             action="act_purchase_request_form_draft" id="menu_purchase_request_form_draft"/>
+
+        <record model="ir.action.wizard" id="act_purchase_request_create_purchase_request">
+            <field name="name">Create Purchase Requests</field>
+            <field name="wiz_name">purchase.request.create_purchase_request</field>
+        </record>
+
+        <record model="ir.ui.view" id="create_purchase_request_init_view_form">
+            <field name="model">purchase.request.create_purchase_request.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Create Purchase Request" col="2">
+                    <image name="tryton-dialog-information"/>
+                    <group col="1" id="labels">
+                        <label align="0.0"
+                            string="Create Purchase Request?"
+                            id="create"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <menuitem parent="menu_purchase_request_form" sequence="10"
+            action="act_purchase_request_create_purchase_request"
+            id="menu_create_purchase_request"/>
 
         <record model="ir.ui.view" id="purchase_request_create_purchase_ask_view_form">
             <field name="model">purchase.request.create_purchase.ask_term</field>
