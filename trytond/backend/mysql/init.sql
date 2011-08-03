@@ -75,6 +75,7 @@ ALTER TABLE res_user ADD CONSTRAINT res_user_login_uniq UNIQUE (login);
 
 INSERT INTO res_user (id, login, password, name, active) VALUES (0, 'root', NULL, 'Root', False);
 UPDATE res_user set id = 0;
+ALTER TABLE res_user AUTO_INCREMENT = 1;
 
 CREATE TABLE res_group (
     id BIGINT AUTO_INCREMENT NOT NULL,
