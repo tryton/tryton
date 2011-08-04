@@ -3,7 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import FIELDS
-from trytond.pyson import Eval, PYSONEncoder, Date
+from trytond.pyson import Eval, PYSONEncoder, Date, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -14,7 +14,7 @@ class Line(ModelSQL, ModelView):
     _description = __doc__
 
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-            select=1, domain=[('company', '=', Eval('company'))])
+        select=1, domain=[('company', '=', Get(Eval('context', {}), 'company'))])
     date = fields.Date('Date', required=True, select=1)
     hours = fields.Float('Hours', digits=(16, 2), required=True)
     work = fields.Many2One('timesheet.work', 'Work',
@@ -65,7 +65,7 @@ class EnterLinesInit(ModelView):
     _name = 'timesheet.enter_lines.init'
     _description = __doc__
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-            domain=[('company', '=', Eval('company'))])
+            domain=[('company', '=', Get(Eval('context', {}), 'company'))])
     date = fields.Date('Date', required=True)
 
     def default_employee(self):
