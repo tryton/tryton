@@ -8,8 +8,9 @@ class Location(ModelSQL, ModelView):
     "Stock Location"
     _name = 'stock.location'
     sequence = fields.Integer('Sequence', states={
-        'readonly': Not(Bool(Eval('active'))),
-        })
+            'readonly': Not(Bool(Eval('active'))),
+            },
+        depends=['active'])
 
     def __init__(self):
         super(Location, self).__init__()
