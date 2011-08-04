@@ -9,7 +9,8 @@ if os.path.isdir(DIR):
 
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view
+from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
+    test_depends
 from trytond.transaction import Transaction
 
 
@@ -29,6 +30,12 @@ class PartyTestCase(unittest.TestCase):
         Test views.
         '''
         test_view('party')
+
+    def test0006depends(self):
+        '''
+        Test depends.
+        '''
+        test_depends()
 
     def test0010category(self):
         '''

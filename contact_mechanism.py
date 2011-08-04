@@ -6,6 +6,7 @@ from trytond.pyson import Not, Bool, Eval, Equal, In
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
 }
+DEPENDS = ['active']
 
 _TYPES = [
     ('phone', 'Phone'),
@@ -28,11 +29,12 @@ class ContactMechanism(ModelSQL, ModelView):
     _rec_name = 'value'
 
     type = fields.Selection(_TYPES, 'Type', required=True, states=STATES,
-            sort=False)
-    value = fields.Char('Value', select=1, states=STATES, on_change=['value'])
-    comment = fields.Text('Comment', states=STATES)
+        sort=False, depends=DEPENDS)
+    value = fields.Char('Value', select=1, states=STATES, on_change=['value'],
+        depends=DEPENDS)
+    comment = fields.Text('Comment', states=STATES, depends=DEPENDS)
     party = fields.Many2One('party.party', 'Party', required=True,
-            ondelete='CASCADE', states=STATES, select=1)
+        ondelete='CASCADE', states=STATES, select=1, depends=DEPENDS)
     active = fields.Boolean('Active', select=1)
     sequence = fields.Integer('Sequence')
     email = fields.Function(fields.Char('E-Mail', states={

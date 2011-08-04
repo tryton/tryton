@@ -8,6 +8,7 @@ from trytond.pool import Pool
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
 }
+DEPENDS = ['active']
 
 
 class Address(ModelSQL, ModelView):
@@ -15,21 +16,22 @@ class Address(ModelSQL, ModelView):
     _name = 'party.address'
     _description = __doc__
     party = fields.Many2One('party.party', 'Party', required=True,
-            ondelete='CASCADE', select=1,  states={
-                'readonly': If(Not(Bool(Eval('active'))),
-                    True, Greater(Eval('active_id', 0), 0)),
-            })
-    name = fields.Char('Name', states=STATES)
-    street = fields.Char('Street', states=STATES)
-    streetbis = fields.Char('Street (bis)', states=STATES)
+        ondelete='CASCADE', select=1,  states={
+            'readonly': If(Not(Bool(Eval('active'))),
+                True, Greater(Eval('id', 0), 0)),
+            },
+        depends=['active', 'id'])
+    name = fields.Char('Name', states=STATES, depends=DEPENDS)
+    street = fields.Char('Street', states=STATES, depends=DEPENDS)
+    streetbis = fields.Char('Street (bis)', states=STATES, depends=DEPENDS)
     zip = fields.Char('Zip', change_default=True,
-            states=STATES)
-    city = fields.Char('City', states=STATES)
+        states=STATES, depends=DEPENDS)
+    city = fields.Char('City', states=STATES, depends=DEPENDS)
     country = fields.Many2One('country.country', 'Country',
-        on_change=['country', 'subdivision'], states=STATES)
+        on_change=['country', 'subdivision'], states=STATES, depends=DEPENDS)
     subdivision = fields.Many2One("country.subdivision",
             'Subdivision', domain=[('country', '=', Eval('country'))],
-            states=STATES)
+            states=STATES, depends=['active', 'country'])
     active = fields.Boolean('Active')
     sequence = fields.Integer("Sequence")
     full_address = fields.Function(fields.Text('Full Address'),

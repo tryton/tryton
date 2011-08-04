@@ -21,6 +21,7 @@ except ImportError:
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
 }
+DEPENDS = ['active']
 
 
 class Party(ModelSQL, ModelView):
@@ -29,29 +30,32 @@ class Party(ModelSQL, ModelView):
     _name = "party.party"
 
     name = fields.Char('Name', required=True, select=1,
-           states=STATES)
+        states=STATES, depends=DEPENDS)
     code = fields.Char('Code', required=True, select=1,
             readonly=True, order_field="%(table)s.code_length %(order)s, " \
                     "%(table)s.code %(order)s")
     code_length = fields.Integer('Code Length', select=1, readonly=True)
-    lang = fields.Many2One("ir.lang", 'Language', states=STATES)
+    lang = fields.Many2One("ir.lang", 'Language', states=STATES,
+        depends=DEPENDS)
     vat_number = fields.Char('VAT Number', help="Value Added Tax number",
-            states={
-                'readonly': Not(Bool(Eval('active'))),
-                'required': Bool(Eval('vat_country')),
-            })
+        states={
+            'readonly': Not(Bool(Eval('active'))),
+            'required': Bool(Eval('vat_country')),
+            },
+        depends=['active', 'vat_country'])
     vat_country = fields.Selection(VAT_COUNTRIES, 'VAT Country', states=STATES,
+        depends=DEPENDS,
         help="Setting VAT country will enable validation of the VAT number.",
         translate=False)
     vat_code = fields.Function(fields.Char('VAT Code',
         on_change_with=['vat_number', 'vat_country']), 'get_vat_code',
         searcher='search_vat_code')
     addresses = fields.One2Many('party.address', 'party',
-           'Addresses', states=STATES)
+        'Addresses', states=STATES, depends=DEPENDS)
     contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
-            'Contact Mechanisms', states=STATES)
+        'Contact Mechanisms', states=STATES, depends=DEPENDS)
     categories = fields.Many2Many('party.party-party.category',
-            'party', 'category', 'Categories', states=STATES)
+        'party', 'category', 'Categories', states=STATES, depends=DEPENDS)
     active = fields.Boolean('Active', select=1)
     full_name = fields.Function(fields.Char('Full Name'), 'get_full_name')
     phone = fields.Function(fields.Char('Phone'), 'get_mechanism')

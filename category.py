@@ -6,6 +6,7 @@ from trytond.pyson import Not, Bool, Eval
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
 }
+DEPENDS = ['active']
 
 SEPARATOR = ' / '
 
@@ -14,11 +15,12 @@ class Category(ModelSQL, ModelView):
     "Category"
     _name = "party.category"
     _description = __doc__
-    name = fields.Char('Name', required=True, states=STATES, translate=True)
+    name = fields.Char('Name', required=True, states=STATES, translate=True,
+        depends=DEPENDS)
     parent = fields.Many2One('party.category', 'Parent',
-           select=1, states=STATES)
+        select=1, states=STATES, depends=DEPENDS)
     childs = fields.One2Many('party.category', 'parent',
-       'Children', states=STATES)
+       'Children', states=STATES, depends=DEPENDS)
     active = fields.Boolean('Active')
 
     def __init__(self):
