@@ -601,28 +601,29 @@ class Tax(ModelSQL, ModelView):
                     Get(Eval('context', {}), 'company', 0)),
             ])
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
-            domain=[
-                ('company', '=', Eval('company')),
-                ('kind', '!=', 'view'),
+        domain=[
+            ('company', '=', Eval('company')),
+            ('kind', '!=', 'view'),
             ],
-            states={
-                'readonly': Or(Equal(Eval('type'), 'none'),
-                    Not(Bool(Eval('company')))),
-                'required': And(Not(Equal(Eval('type'), 'none')),
-                    Bool(Eval('company'))),
-            }, depends=['company'])
+        states={
+            'readonly': Or(Equal(Eval('type'), 'none'),
+                Not(Bool(Eval('company')))),
+            'required': And(Not(Equal(Eval('type'), 'none')),
+                Bool(Eval('company'))),
+            },
+        depends=['company', 'type'])
     credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
-            domain=[
-                ('company', '=', Eval('company')),
-                ('kind', '!=', 'view'),
+        domain=[
+            ('company', '=', Eval('company')),
+            ('kind', '!=', 'view'),
             ],
-            states={
-                'readonly': Or(Equal(Eval('type'), 'none'),
-                    Not(Bool(Eval('company')))),
-                'required': And(Not(Equal(Eval('type'), 'none')),
-                    Bool(Eval('company'))),
-            }, depends=['company', 'type'])
-
+        states={
+            'readonly': Or(Equal(Eval('type'), 'none'),
+                Not(Bool(Eval('company')))),
+            'required': And(Not(Equal(Eval('type'), 'none')),
+                Bool(Eval('company'))),
+            },
+        depends=['company', 'type'])
     invoice_base_code = fields.Many2One('account.tax.code',
             'Invoice Base Code',
             states={
@@ -1113,17 +1114,19 @@ class RuleLineTemplate(ModelSQL, ModelView):
             ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
     origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
-            domain=[
-                ('account', '=', Get(Eval('_parent_rule', {}), 'account')),
-                ('group', '=', Eval('group'))
+        domain=[
+            ('account', '=', Get(Eval('_parent_rule', {}), 'account')),
+            ('group', '=', Eval('group'))
             ],
-            help='If the original tax template is filled, the rule will be ' \
-                    'applied only for this tax template.')
+        help='If the original tax template is filled, the rule will be ' \
+            'applied only for this tax template.',
+        depends=['group'])
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
-            domain=[
-                ('account', '=', Get(Eval('_parent_rule', {}), 'account')),
-                ('group', '=', Eval('group')),
-            ])
+        domain=[
+            ('account', '=', Get(Eval('_parent_rule', {}), 'account')),
+            ('group', '=', Eval('group')),
+            ],
+        depends=['group'])
     sequence = fields.Integer('Sequence')
 
     def __init__(self):
@@ -1206,17 +1209,19 @@ class RuleLine(ModelSQL, ModelView):
             select=1, ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
     origin_tax = fields.Many2One('account.tax', 'Original Tax',
-            domain=[
-                ('company', '=', Get(Eval('_parent_rule', {}), 'company')),
-                ('group', '=', Eval('group')),
+        domain=[
+            ('company', '=', Get(Eval('_parent_rule', {}), 'company')),
+            ('group', '=', Eval('group')),
             ],
-            help='If the original tax is filled, the rule will be applied ' \
-                    'only for this tax.')
+        help='If the original tax is filled, the rule will be applied ' \
+            'only for this tax.',
+        depends=['group'])
     tax = fields.Many2One('account.tax', 'Substitution Tax',
-            domain=[
-                ('company', '=', Get(Eval('_parent_rule', {}), 'company')),
-                ('group', '=', Eval('group')),
-            ])
+        domain=[
+            ('company', '=', Get(Eval('_parent_rule', {}), 'company')),
+            ('group', '=', Eval('group')),
+            ],
+        depends=['group'])
     sequence = fields.Integer('Sequence')
     template = fields.Many2One('account.tax.rule.line.template', 'Template')
 

@@ -9,6 +9,7 @@ from trytond.pool import Pool
 _STATES = {
     'readonly': Equal(Eval('state'), 'close'),
 }
+_DEPENDS = ['state']
 
 
 class Period(ModelSQL, ModelView):
@@ -19,11 +20,11 @@ class Period(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     code = fields.Char('Code')
     start_date = fields.Date('Starting Date', required=True, states=_STATES,
-            select=1)
+        depends=_DEPENDS, select=1)
     end_date = fields.Date('Ending Date', required=True, states=_STATES,
-            select=1)
+        depends=_DEPENDS, select=1)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True, states=_STATES, select=1)
+        required=True, states=_STATES, depends=_DEPENDS, select=1)
     state = fields.Selection([
         ('open', 'Open'),
         ('close', 'Close'),
@@ -34,9 +35,10 @@ class Period(ModelSQL, ModelView):
             'required': False,
             })
     type = fields.Selection([
-        ('standard', 'Standard'),
-        ('adjustment', 'Adjustment'),
-        ], 'Type', required=True, states=_STATES, select=1)
+            ('standard', 'Standard'),
+            ('adjustment', 'Adjustment'),
+            ], 'Type', required=True,
+        states=_STATES, depends=_DEPENDS, select=1)
     company = fields.Function(fields.Many2One('company.company', 'Company',),
         'get_company', searcher='search_company')
 

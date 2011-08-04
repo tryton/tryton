@@ -433,10 +433,11 @@ class Line(ModelSQL, ModelView):
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'])
     move = fields.Many2One('account.move', 'Move', select=1, required=True,
-            states={
-                'required': False,
-                'readonly': Equal(Eval('state'), 'valid'),
-            })
+        states={
+            'required': False,
+            'readonly': Equal(Eval('state'), 'valid'),
+            },
+        depends=['state'])
     journal = fields.Function(fields.Many2One('account.journal', 'Journal'),
             'get_move_field', setter='set_move_field',
             searcher='search_move_field')

@@ -9,7 +9,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
 from trytond.tools import reduce_ids
-from trytond.pyson import Equal, Eval, Not, PYSONEncoder, Date
+from trytond.pyson import Equal, Eval, Not, PYSONEncoder, Date, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -153,8 +153,8 @@ class Type(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, translate=True)
     parent = fields.Many2One('account.account.type', 'Parent',
-            ondelete="RESTRICT", domain=[
-                ('company', '=', Eval('company')),
+        ondelete="RESTRICT", domain=[
+            ('company', '=', Get(Eval('context', {}), 'company')),
             ])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
         domain=[
@@ -1101,15 +1101,16 @@ class PrintGeneralLegderInit(ModelView):
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'])
     start_period = fields.Many2One('account.period', 'Start Period',
-            domain=[
-                ('fiscalyear', '=', Eval('fiscalyear')),
-                ('start_date', '<=', (Eval('end_period'), 'start_date')),
-            ])
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('start_date', '<=', (Eval('end_period'), 'start_date')),
+            ], depends=['fiscalyear', 'end_period'])
     end_period = fields.Many2One('account.period', 'End Period',
-            domain=[
-                ('fiscalyear', '=', Eval('fiscalyear')),
-                ('start_date', '>=', (Eval('start_period'), 'start_date'))
-            ])
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('start_date', '>=', (Eval('start_period'), 'start_date'))
+            ],
+        depends=['fiscalyear', 'start_period'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
     empty_account = fields.Boolean('Empty Account',
@@ -1300,17 +1301,17 @@ class PrintTrialBalanceInit(ModelView):
             required=True, on_change=['fiscalyear'],
             depends=['start_period', 'end_period'])
     start_period = fields.Many2One('account.period', 'Start Period',
-            domain=[
-                ('fiscalyear', '=', Eval('fiscalyear')),
-                ('start_date', '<=', (Eval('end_period'), 'start_date'))
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('start_date', '<=', (Eval('end_period'), 'start_date'))
             ],
-            depends=['end_period'])
+        depends=['end_period', 'fiscalyear'])
     end_period = fields.Many2One('account.period', 'End Period',
-            domain=[
-                ('fiscalyear', '=', Eval('fiscalyear')),
-                ('start_date', '>=', (Eval('start_period'), 'start_date'))
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('start_date', '>=', (Eval('start_period'), 'start_date'))
             ],
-            depends=['start_period'])
+        depends=['start_period', 'fiscalyear'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
     empty_account = fields.Boolean('Empty Account',
@@ -1534,17 +1535,17 @@ class OpenIncomeStatementInit(ModelView):
             required=True, on_change=['fiscalyear'],
             depends=['start_period', 'end_period'])
     start_period = fields.Many2One('account.period', 'Start Period',
-            domain=[
-                ('fiscalyear', '=', Eval('fiscalyear')),
-                ('start_date', '<=', (Eval('end_period'), 'start_date'))
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('start_date', '<=', (Eval('end_period'), 'start_date'))
             ],
-            depends=['end_period'])
+        depends=['end_period', 'fiscalyear'])
     end_period = fields.Many2One('account.period', 'End Period',
-            domain=[
-                ('fiscalyear', '=', Eval('fiscalyear')),
-                ('start_date', '>=', (Eval('start_period'), 'start_date')),
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('start_date', '>=', (Eval('start_period'), 'start_date')),
             ],
-            depends=['start_period'])
+        depends=['start_period', 'fiscalyear'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 

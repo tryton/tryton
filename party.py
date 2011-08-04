@@ -10,33 +10,35 @@ from trytond.pool import Pool
 class Party(ModelSQL, ModelView):
     _name = 'party.party'
     account_payable = fields.Property(fields.Many2One('account.account',
-        'Account Payable', domain=[
-            ('kind', '=', 'payable'),
-            ('company', '=', Eval('company')),
-        ],
-        states={
-            'required': Bool(Eval('company')),
-            'invisible': Not(Bool(Eval('company'))),
-        }))
+            'Account Payable', domain=[
+                ('kind', '=', 'payable'),
+                ('company', '=', Get(Eval('context', {}), 'company')),
+                ],
+            states={
+                'required': Bool(Get(Eval('context', {}), 'company')),
+                'invisible': Not(Bool(Get(Eval('context', {}), 'company'))),
+                }))
     account_receivable = fields.Property(fields.Many2One('account.account',
-        'Account Receivable', domain=[
-            ('kind', '=', 'receivable'),
-            ('company', '=', Eval('company')),
-        ],
-        states={
-            'required': Bool(Eval('company')),
-            'invisible': Not(Bool(Eval('company'))),
-        }))
+            'Account Receivable', domain=[
+                ('kind', '=', 'receivable'),
+                ('company', '=', Get(Eval('context', {}), 'company')),
+                ],
+            states={
+                'required': Bool(Get(Eval('context', {}), 'company')),
+                'invisible': Not(Bool(Get(Eval('context', {}), 'company'))),
+                }))
     customer_tax_rule = fields.Property(fields.Many2One('account.tax.rule',
-        'Customer Tax Rule', domain=[('company', '=', Eval('company'))],
-        states={
-            'invisible': Not(Bool(Eval('company'))),
-        }, help='Apply this rule on taxes when party is customer.'))
+            'Customer Tax Rule',
+            domain=[('company', '=', Get(Eval('context', {}), 'company'))],
+            states={
+                'invisible': Not(Bool(Get(Eval('context', {}), 'company'))),
+                }, help='Apply this rule on taxes when party is customer.'))
     supplier_tax_rule = fields.Property(fields.Many2One('account.tax.rule',
-        'Supplier Tax Rule', domain=[('company', '=', Eval('company'))],
-        states={
-            'invisible': Not(Bool(Eval('company'))),
-        }, help='Apply this rule on taxes when party is supplier.'))
+            'Supplier Tax Rule',
+            domain=[('company', '=', Get(Eval('context', {}), 'company'))],
+            states={
+                'invisible': Not(Bool(Get(Eval('context', {}), 'company'))),
+                }, help='Apply this rule on taxes when party is supplier.'))
     receivable = fields.Function(fields.Numeric('Receivable'),
             'get_receivable_payable', searcher='search_receivable_payable')
     payable = fields.Function(fields.Numeric('Payable'),
