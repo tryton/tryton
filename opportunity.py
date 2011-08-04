@@ -20,9 +20,11 @@ STATES = [
 _STATES_START = {
     'readonly': Not(Equal(Eval('state'), 'lead')),
 }
+_DEPENDS_START = ['state']
 _STATES_STOP = {
     'readonly': In(Eval('state'), ['converted', 'lost', 'cancelled']),
 }
+_DEPENDS_STOP = ['state']
 
 
 class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
@@ -33,16 +35,16 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
     _rec_name = 'description'
 
     party = fields.Many2One('party.party', 'Party', required=True, select=1,
-            states=_STATES_STOP, depends=['state'])
+            states=_STATES_STOP, depends=_DEPENDS_STOP)
     address = fields.Many2One('party.address', 'Address',
-            domain=[('party', '=', Eval('party'))],
-            select=2, depends=['party', 'state'],
-            states=_STATES_STOP)
+        domain=[('party', '=', Eval('party'))],
+        select=2, depends=['party', 'state'],
+        states=_STATES_STOP)
     company = fields.Many2One('company.company', 'Company', required=True,
-            select=1, states=_STATES_STOP, domain=[
-                ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
-            ], on_change=['company'], depends=['state'])
+        select=1, states=_STATES_STOP, domain=[
+            ('id', If(In('company', Eval('context', {})), '=', '!='),
+                Get(Eval('context', {}), 'company', 0)),
+            ], on_change=['company'], depends=_DEPENDS_STOP)
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
@@ -50,31 +52,34 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'], help='Estimated revenue amount')
     warehouse = fields.Many2One('stock.location', 'Warehouse',
-            domain=[('type', '=', 'warehouse')], states={
-                'required': Equal(Eval('state'), 'converted'),
-                'readonly': In(Eval('state'),
-                    ['converted', 'lost', 'cancelled']),
-            })
+        domain=[('type', '=', 'warehouse')], states={
+            'required': Equal(Eval('state'), 'converted'),
+            'readonly': In(Eval('state'),
+                ['converted', 'lost', 'cancelled']),
+            },
+        depends=['state'])
     payment_term = fields.Many2One('account.invoice.payment_term',
-            'Payment Term', states={
-                'required': Equal(Eval('state'), 'converted'),
-                'readonly': In(Eval('state'),
-                    ['converted', 'lost', 'cancelled']),
-            })
+        'Payment Term', states={
+            'required': Equal(Eval('state'), 'converted'),
+            'readonly': In(Eval('state'),
+                ['converted', 'lost', 'cancelled']),
+            },
+        depends=['state'])
     employee = fields.Many2One('company.employee', 'Employee', required=True,
             states=_STATES_STOP, depends=['state', 'company'],
             domain=[('company', '=', Eval('company'))])
     start_date = fields.Date('Start Date', required=True, select=1,
-            states=_STATES_START, depends=['state'])
+        states=_STATES_START, depends=_DEPENDS_START)
     end_date = fields.Date('End Date', select=2, readonly=True, states={
         'invisible': Not(In(Eval('state'),
             ['converted', 'cancelled', 'lost'])),
     }, depends=['state'])
     description = fields.Char('Description', required=True,
-            states=_STATES_STOP, depends=['state'])
-    comment = fields.Text('Comment', states=_STATES_STOP)
+        states=_STATES_STOP, depends=_DEPENDS_STOP)
+    comment = fields.Text('Comment', states=_STATES_STOP,
+        depends=_DEPENDS_STOP)
     lines = fields.One2Many('sale.opportunity.line', 'opportunity', 'Lines',
-            states=_STATES_STOP, depends=['state'])
+        states=_STATES_STOP, depends=_DEPENDS_STOP)
     state = fields.Selection(STATES, 'State', required=True, select=1,
             sort=False, readonly=True)
     probability = fields.Integer('Conversion Probability',
