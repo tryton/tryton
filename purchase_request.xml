@@ -120,7 +120,7 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Create Purchase Request" col="2">
                     <image name="tryton-dialog-information"/>
                     <group col="1" id="labels">
-                        <label align="0.0"
+                        <label xalign="0.0"
                             string="Create Purchase Request?"
                             id="create"/>
                     </group>
