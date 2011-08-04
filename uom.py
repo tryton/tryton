@@ -10,6 +10,7 @@ from trytond.pool import Pool
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
 }
+DEPENDS = ['active']
 
 class UomCategory(ModelSQL, ModelView):
     'Product uom category'
@@ -30,21 +31,21 @@ class Uom(ModelSQL, ModelView):
     _name = 'product.uom'
     _description = __doc__
     name = fields.Char('Name', size=None, required=True, states=STATES,
-            translate=True)
+        translate=True, depends=DEPENDS)
     symbol = fields.Char('Symbol', size=10, required=True, states=STATES,
-            translate=True)
+        translate=True, depends=DEPENDS)
     category = fields.Many2One('product.uom.category', 'UOM Category',
-            required=True, ondelete='RESTRICT', states=STATES)
+        required=True, ondelete='RESTRICT', states=STATES, depends=DEPENDS)
     rate = fields.Float('Rate', digits=(12, 12), required=True,
-            on_change=['rate'], states=STATES,
-            help='The coefficient for the formula:\n' \
-                    '1 (base unit) = coef (this unit)')
+        on_change=['rate'], states=STATES, depends=DEPENDS,
+        help='The coefficient for the formula:\n' \
+            '1 (base unit) = coef (this unit)')
     factor = fields.Float('Factor', digits=(12, 12), states=STATES,
-            on_change=['factor'], required=True,
-            help='The coefficient for the formula:\n' \
-                    'coef (base unit) = 1 (this unit)')
+        on_change=['factor'], required=True, depends=DEPENDS,
+        help='The coefficient for the formula:\n' \
+            'coef (base unit) = 1 (this unit)')
     rounding = fields.Float('Rounding Precision', digits=(12, 12),
-            required=True, states=STATES)
+        required=True, states=STATES, depends=DEPENDS)
     digits = fields.Integer('Display Digits')
     active = fields.Boolean('Active')
 

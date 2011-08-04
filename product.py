@@ -8,6 +8,7 @@ from trytond.pool import Pool
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
 }
+DEPENDS = ['active']
 
 
 class Template(ModelSQL, ModelView):
@@ -16,31 +17,32 @@ class Template(ModelSQL, ModelView):
     _description = __doc__
 
     name = fields.Char('Name', size=None, required=True, translate=True,
-            select=1, states=STATES)
+        select=1, states=STATES, depends=DEPENDS)
     type = fields.Selection([
-        ('stockable', 'Stockable'),
-        ('consumable', 'Consumable'),
-        ('service', 'Service')
-        ], 'Type', required=True, states=STATES)
+            ('stockable', 'Stockable'),
+            ('consumable', 'Consumable'),
+            ('service', 'Service')
+            ], 'Type', required=True, states=STATES, depends=DEPENDS)
     category = fields.Many2One('product.category', 'Category', required=True,
-            states=STATES)
+        states=STATES, depends=DEPENDS)
     list_price = fields.Property(fields.Numeric('List Price', states=STATES,
-        digits=(16, 4)))
+            digits=(16, 4), depends=DEPENDS))
     list_price_uom = fields.Function(fields.Numeric('List Price',
         digits=(16, 4)), 'get_price_uom')
     cost_price = fields.Property(fields.Numeric('Cost Price',
-            states=STATES, digits=(16, 4)))
+            states=STATES, digits=(16, 4), depends=DEPENDS))
     cost_price_uom = fields.Function(fields.Numeric('Cost Price',
         digits=(16, 4)), 'get_price_uom')
     cost_price_method = fields.Property(fields.Selection([
-        ("fixed", "Fixed"),
-        ("average", "Average")
-        ], 'Cost Method', required=True, states=STATES))
+                ("fixed", "Fixed"),
+                ("average", "Average")
+                ], 'Cost Method', required=True, states=STATES,
+            depends=DEPENDS))
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
-            states=STATES)
+        states=STATES, depends=DEPENDS)
     active = fields.Boolean('Active', select=1)
     products = fields.One2Many('product.product', 'template', 'Products',
-            states=STATES)
+        states=STATES, depends=DEPENDS)
 
     def default_active(self):
         return True
