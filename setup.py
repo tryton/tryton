@@ -60,4 +60,6 @@ setup(name='trytond_product_cost_fifo',
     [trytond.modules]
     product_cost_fifo = trytond.modules.product_cost_fifo
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )

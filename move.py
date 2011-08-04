@@ -9,7 +9,8 @@ from trytond.pool import Pool
 class Move(ModelSQL, ModelView):
     _name = 'stock.move'
     fifo_quantity = fields.Float('FIFO Quantity',
-            digits=(16, Eval('unit_digits', 2)))
+        digits=(16, Eval('unit_digits', 2)),
+        depends=['unit_digits'])
 
     def __init__(self):
         super(Move, self).__init__()
