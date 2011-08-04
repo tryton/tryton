@@ -14,7 +14,7 @@ class Period(ModelSQL, ModelView):
     _rec_name = 'date'
     date = fields.Date('Date', required=True, states={
         'readonly': Equal(Eval('state'), 'closed'),
-        })
+        }, depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),

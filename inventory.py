@@ -10,6 +10,7 @@ from trytond.pool import Pool
 STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
 }
+DEPENDS = ['state']
 
 
 class Inventory(ModelWorkflow, ModelSQL, ModelView):
@@ -23,21 +24,25 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
         domain=[('type', '=', 'storage')], states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines'))),
-        })
+            },
+        depends=['state', 'lines'])
     date = fields.Date('Date', required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines'))),
-        })
+            },
+        depends=['state', 'lines'])
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
-        domain=[('type', '=', 'lost_found')], states=STATES)
+        domain=[('type', '=', 'lost_found')], states=STATES, depends=DEPENDS)
     lines = fields.One2Many(
-        'stock.inventory.line', 'inventory', 'Lines', states=STATES)
+        'stock.inventory.line', 'inventory', 'Lines', states=STATES,
+        depends=DEPENDS)
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines'))),
-        })
+            },
+        depends=['state', 'lines'])
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),

@@ -11,6 +11,7 @@ from trytond.pool import Pool
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
 }
+DEPENDS = ['active']
 
 
 class Location(ModelSQL, ModelView):
@@ -18,14 +19,16 @@ class Location(ModelSQL, ModelView):
     _name = 'stock.location'
     _description = __doc__
     name = fields.Char("Name", size=None, required=True, states=STATES,
-            translate=True)
-    code = fields.Char("Code", size=None, states=STATES, select=1)
+        depends=DEPENDS, translate=True)
+    code = fields.Char("Code", size=None, states=STATES, depends=DEPENDS,
+        select=1)
     active = fields.Boolean('Active', select=1)
     address = fields.Many2One("party.address", "Address",
-            states={
-                'invisible': Not(Equal(Eval('type'), 'warehouse')),
-                'readonly': Not(Bool(Eval('active'))),
-            })
+        states={
+            'invisible': Not(Equal(Eval('type'), 'warehouse')),
+            'readonly': Not(Bool(Eval('active'))),
+            },
+        depends=['type', 'active'])
     type = fields.Selection([
         ('supplier', 'Supplier'),
         ('customer', 'Customer'),
@@ -34,7 +37,7 @@ class Location(ModelSQL, ModelView):
         ('storage', 'Storage'),
         ('production', 'Production'),
         ('view', 'View'),
-        ], 'Location type', states=STATES)
+        ], 'Location type', states=STATES, depends=DEPENDS)
     parent = fields.Many2One("stock.location", "Parent", select=1,
             left="left", right="right")
     left = fields.Integer('Left', required=True, select=1)
@@ -45,14 +48,15 @@ class Location(ModelSQL, ModelView):
             'invisible': Not(Equal(Eval('type'), 'warehouse')),
             'readonly': Not(Bool(Eval('active'))),
             'required': Equal(Eval('type'), 'warehouse'),
-        },
+            },
         domain=[
             ('type','=','storage'),
             ['OR',
-                ('parent', 'child_of', [Eval('active_id')]),
+                ('parent', 'child_of', [Eval('id')]),
                 ('parent', '=', False),
+                ],
             ],
-        ])
+        depends=['type', 'active', 'id'])
     output_location = fields.Many2One(
         "stock.location", "Output", states={
             'invisible': Not(Equal(Eval('type'), 'warehouse')),
@@ -61,8 +65,9 @@ class Location(ModelSQL, ModelView):
         },
         domain=[('type','=','storage'),
             ['OR',
-                ('parent', 'child_of', [Eval('active_id')]),
-                ('parent', '=', False)]])
+                ('parent', 'child_of', [Eval('id')]),
+                ('parent', '=', False)]],
+        depends=['type', 'active', 'id'])
     storage_location = fields.Many2One(
         "stock.location", "Storage", states={
             'invisible': Not(Equal(Eval('type'), 'warehouse')),
@@ -71,8 +76,9 @@ class Location(ModelSQL, ModelView):
         },
         domain=[('type','=','storage'),
             ['OR',
-                ('parent', 'child_of', [Eval('active_id')]),
-                ('parent', '=', False)]])
+                ('parent', 'child_of', [Eval('id')]),
+                ('parent', '=', False)]],
+        depends=['type', 'active', 'id'])
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
             'get_quantity')
