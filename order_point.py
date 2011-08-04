@@ -16,28 +16,31 @@ class OrderPoint(ModelSQL, ModelView):
     _name = 'stock.order_point'
     _description = "Order Point"
 
-    product = fields.Many2One(
-        'product.product', 'Product', required=True, select=1,
+    product = fields.Many2One('product.product', 'Product', required=True,
+        select=1,
         domain=[
             ('type', '=', 'stockable'),
             ('purchasable', 'in', If(Equal(Eval('type'), 'purchase'),
-                [True], [True, False])),
-        ],
+                    [True], [True, False])),
+            ],
+        depends=['type'],
         on_change=['product'])
-    warehouse_location = fields.Many2One(
-        'stock.location', 'Warehouse Location', select=1,
+    warehouse_location = fields.Many2One('stock.location',
+        'Warehouse Location', select=1,
         domain=[('type', '=', 'warehouse')],
         states={
             'invisible': Not(Equal(Eval('type'), 'purchase')),
             'required': Equal(Eval('type'), 'purchase'),
-        })
-    storage_location = fields.Many2One(
-        'stock.location', 'Storage Location', select=1,
+            },
+        depends=['type'])
+    storage_location = fields.Many2One('stock.location', 'Storage Location',
+        select=1,
         domain=[('type', '=', 'storage')],
         states={
             'invisible': Not(Equal(Eval('type'), 'internal')),
             'required': Equal(Eval('type'), 'internal'),
-        })
+        },
+        depends=['type'])
     location = fields.Function(fields.Many2One('stock.location', 'Location'),
             'get_location', searcher='search_location')
     provisioning_location = fields.Many2One(
@@ -46,7 +49,8 @@ class OrderPoint(ModelSQL, ModelView):
         states={
             'invisible': Not(Equal(Eval('type'), 'internal')),
             'required': Equal(Eval('type'), 'internal'),
-        })
+        },
+        depends=['type'])
     type = fields.Selection(
         [('internal', 'Internal'),
          ('purchase', 'Purchase')],
