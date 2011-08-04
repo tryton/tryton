@@ -11,7 +11,7 @@ if os.path.isdir(DIR):
 import unittest
 import doctest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view
+from trytond.tests.test_tryton import test_view, test_depends
 from trytond.backend.sqlite.database import Database as SQLiteDatabase
 
 
@@ -28,6 +28,12 @@ class AccountStatementTestCase(unittest.TestCase):
         Test views.
         '''
         test_view('account_statement')
+
+    def test0006depends(self):
+        '''
+        Test depends.
+        '''
+        test_depends()
 
 def doctest_dropdb(test):
     '''

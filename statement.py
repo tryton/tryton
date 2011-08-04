@@ -8,6 +8,7 @@ from trytond.backend import TableHandler
 from trytond.pool import Pool
 
 _STATES = {'readonly': Not(Equal(Eval('state'), 'draft'))}
+_DEPENDS = ['state']
 
 
 class Statement(ModelWorkflow, ModelSQL, ModelView):
@@ -19,24 +20,28 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         select=1, states=_STATES, domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
                 Get(Eval('context', {}), 'company', 0)),
-        ])
+            ],
+        depends=_DEPENDS)
     journal = fields.Many2One('account.statement.journal', 'Journal', required=True,
         domain=[
-            ('company', '=', Eval('company')),
-        ],
+            ('company', '=', Get(Eval('context', {}), 'company')),
+            ],
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines'))),
-        }, on_change=['journal'], select=1)
+            },
+        on_change=['journal', 'state', 'lines'], select=1,
+        depends=['state', 'lines'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['journal']), 'get_currency_digits')
-    date = fields.Date('Date', required=True, states=_STATES, select=1)
+    date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS,
+        select=1)
     start_balance = fields.Numeric('Start Balance',
-            digits=(16, Eval('currency_digits', 2)),
-            states=_STATES, depends=['currency_digits'])
+        digits=(16, Eval('currency_digits', 2)),
+        states=_STATES, depends=['state', 'currency_digits'])
     end_balance = fields.Numeric('End Balance',
-            digits=(16, Eval('currency_digits', 2)),
-            states=_STATES, depends=['currency_digits'])
+        digits=(16, Eval('currency_digits', 2)),
+        states=_STATES, depends=['state', 'currency_digits'])
     balance = fields.Function(
         fields.Numeric('Balance',
             digits=(16, Eval('currency_digits', 2)),
@@ -44,10 +49,11 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
             depends=['currency_digits']),
         'get_balance')
     lines = fields.One2Many('account.statement.line', 'statement',
-            'Transactions', states={
-                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                    Not(Bool(Eval('journal')))),
-            }, on_change=['lines', 'journal'])
+        'Transactions', states={
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Not(Bool(Eval('journal')))),
+            }, on_change=['lines', 'journal'],
+        depends=['state', 'journal'])
     state = fields.Selection([
         ('draft', 'Draft'),
         ('validated', 'Validated'),
@@ -333,15 +339,16 @@ class Line(ModelSQL, ModelView):
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
-            domain=[
-                ('party', '=', Eval('party')),
-                ('account', '=', Eval('account')),
-                ('state', '=', If(Equal(Get(Eval('_parent_statement', {}),
-                    'state'), 'draft'), 'open', '')),
+        domain=[
+            ('party', '=', Eval('party')),
+            ('account', '=', Eval('account')),
+            ('state', '=', If(Equal(Get(Eval('_parent_statement', {}),
+                            'state'), 'draft'), 'open', '')),
             ],
-            states={
-                'readonly': Not(Bool(Eval('amount'))),
-            })
+        states={
+            'readonly': Not(Bool(Eval('amount'))),
+            },
+        depends=['party', 'account', 'amount'])
 
     def __init__(self):
         super(Line, self).__init__()
