@@ -84,7 +84,8 @@ class User(ModelSQL, ModelView):
     companies = fields.Function(fields.One2Many('company.company', None,
         'Current Companies'), 'get_companies')
     employee = fields.Many2One('company.employee', 'Employee',
-            domain=[('company', 'child_of', [Eval('main_company')], 'parent')])
+        domain=[('company', 'child_of', [Eval('main_company')], 'parent')],
+        depends=['main_company'])
 
     def __init__(self):
         super(User, self).__init__()
