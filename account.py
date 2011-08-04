@@ -8,57 +8,59 @@ from trytond.pool import Pool
 class FiscalYear(ModelSQL, ModelView):
     _name = 'account.fiscalyear'
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
-            'Customer Invoice Sequence', required=True,
-            domain=[
-                ('code', '=', 'account.invoice'),
-                ['OR',
-                    ('company', '=', Eval('company')),
-                    ('company', '=', False),
+        'Customer Invoice Sequence', required=True,
+        domain=[
+            ('code', '=', 'account.invoice'),
+            ['OR',
+                ('company', '=', Eval('company')),
+                ('company', '=', False),
                 ],
             ],
-            context={
-                'code': 'account.invoice',
-                'company': Eval('company'),
-            })
+        context={
+            'code': 'account.invoice',
+            'company': Eval('company'),
+            },
+        depends=['company'])
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
-            'Supplier Invoice Sequence', required=True,
-            domain=[
-                ('code', '=', 'account.invoice'),
-                ['OR',
-                    ('company', '=', Eval('company')),
-                    ('company', '=', False),
+        'Supplier Invoice Sequence', required=True,
+        domain=[
+            ('code', '=', 'account.invoice'),
+            ['OR',
+                ('company', '=', Eval('company')),
+                ('company', '=', False),
                 ],
             ],
-            context={
-                'code': 'account.invoice',
-                'company': Eval('company'),
-            })
+        context={
+            'code': 'account.invoice',
+            'company': Eval('company'),
+            },
+        depends=['company'])
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
-            'Customer Credit Note Sequence', required=True,
-            domain=[
-                ('code', '=', 'account.invoice'),
-                ['OR',
-                    ('company', '=', Eval('company')),
-                    ('company', '=', False),
+        'Customer Credit Note Sequence', required=True,
+        domain=[
+            ('code', '=', 'account.invoice'),
+            ['OR',
+                ('company', '=', Eval('company')),
+                ('company', '=', False),
                 ],
             ],
-            context={
-                'code': 'account.invoice',
-                'company': Eval('company'),
-            })
+        context={
+            'code': 'account.invoice',
+            'company': Eval('company'),
+            }, depends=['company'])
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
-            'Supplier Credit Note Sequence', required=True,
-            domain=[
-                ('code', '=', 'account.invoice'),
-                ['OR',
-                    ('company', '=', Eval('company')),
-                    ('company', '=', False),
+        'Supplier Credit Note Sequence', required=True,
+        domain=[
+            ('code', '=', 'account.invoice'),
+            ['OR',
+                ('company', '=', Eval('company')),
+                ('company', '=', False),
                 ],
             ],
-            context={
-                'code': 'account.invoice',
-                'company': Eval('company'),
-            })
+        context={
+            'code': 'account.invoice',
+            'company': Eval('company'),
+            }, depends=['company'])
 
     def __init__(self):
         super(FiscalYear, self).__init__()
@@ -112,37 +114,41 @@ FiscalYear()
 class Period(ModelSQL, ModelView):
     _name = 'account.period'
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
-            'Customer Invoice Sequence',
-            domain=[('code', '=', 'account.invoice')],
-            context={'code': 'account.invoice'},
-            states={
-                'required': Equal(Eval('type'), 'standard'),
-                'invisible': Not(Equal(Eval('type'), 'standard')),
-            })
+        'Customer Invoice Sequence',
+        domain=[('code', '=', 'account.invoice')],
+        context={'code': 'account.invoice'},
+        states={
+            'required': Equal(Eval('type'), 'standard'),
+            'invisible': Not(Equal(Eval('type'), 'standard')),
+            },
+        depends=['type'])
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
-            'Supplier Invoice Sequence',
-            domain=[('code', '=', 'account.invoice')],
-            context={'code': 'account.invoice'},
-            states={
-                'required': Equal(Eval('type'), 'standard'),
-                'invisible': Not(Equal(Eval('type'), 'standard')),
-            })
+        'Supplier Invoice Sequence',
+        domain=[('code', '=', 'account.invoice')],
+        context={'code': 'account.invoice'},
+        states={
+            'required': Equal(Eval('type'), 'standard'),
+            'invisible': Not(Equal(Eval('type'), 'standard')),
+            },
+        depends=['type'])
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
-            'Customer Credit Note Sequence',
-            domain=[('code', '=', 'account.invoice')],
-            context={'code': 'account.invoice'},
-            states={
-                'required': Equal(Eval('type'), 'standard'),
-                'invisible': Not(Equal(Eval('type'), 'standard')),
-            })
+        'Customer Credit Note Sequence',
+        domain=[('code', '=', 'account.invoice')],
+        context={'code': 'account.invoice'},
+        states={
+            'required': Equal(Eval('type'), 'standard'),
+            'invisible': Not(Equal(Eval('type'), 'standard')),
+            },
+        depends=['type'])
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
-            'Supplier Credit Note Sequence',
-            domain=[('code', '=', 'account.invoice')],
-            context={'code': 'account.invoice'},
-            states={
-                'required': Equal(Eval('type'), 'standard'),
-                'invisible': Not(Equal(Eval('type'), 'standard')),
-            })
+        'Supplier Credit Note Sequence',
+        domain=[('code', '=', 'account.invoice')],
+        context={'code': 'account.invoice'},
+        states={
+            'required': Equal(Eval('type'), 'standard'),
+            'invisible': Not(Equal(Eval('type'), 'standard')),
+            },
+        depends=['type'])
 
     def __init__(self):
         super(Period, self).__init__()

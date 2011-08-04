@@ -130,20 +130,20 @@ class PaymentTermLine(ModelSQL, ModelView):
     type = fields.Selection('get_type', 'Type', required=True,
             on_change=['type'])
     percentage = fields.Numeric('Percentage', digits=(16, 8),
-            states={
-                'invisible': Not(Equal(Eval('type'), 'percent')),
-                'required': Equal(Eval('type'), 'percent'),
-            }, help='In %')
+        states={
+            'invisible': Not(Equal(Eval('type'), 'percent')),
+            'required': Equal(Eval('type'), 'percent'),
+            }, depends=['type'], help='In %')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-            states={
-                'invisible': Not(Equal(Eval('type'), 'fixed')),
-                'required': Equal(Eval('type'), 'fixed'),
-            })
+        states={
+            'invisible': Not(Equal(Eval('type'), 'fixed')),
+            'required': Equal(Eval('type'), 'fixed'),
+            }, depends=['type', 'currency_digits'])
     currency = fields.Many2One('currency.currency', 'Currency',
-            states={
-                'invisible': Not(Equal(Eval('type'), 'fixed')),
-                'required': Equal(Eval('type'), 'fixed'),
-            })
+        states={
+            'invisible': Not(Equal(Eval('type'), 'fixed')),
+            'required': Equal(Eval('type'), 'fixed'),
+            }, depends=['type'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['currency']), 'get_currency_digits')
     days = fields.Integer('Number of Days')
