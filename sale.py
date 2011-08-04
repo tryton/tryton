@@ -10,11 +10,12 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     _name = 'sale.sale'
 
     price_list = fields.Many2One('product.price_list', 'Price List',
-            domain=[('company', '=', Eval('company'))],
-            states={
-                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                    Bool(Eval('lines'))),
-            })
+        domain=[('company', '=', Eval('company'))],
+        states={
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Bool(Eval('lines'))),
+            },
+        depends=['state', 'company', 'lines'])
 
     def __init__(self):
         super(Sale, self).__init__()
@@ -22,10 +23,16 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         self.party.states = copy.copy(self.party.states)
         self.party.states['readonly'] = Or(self.party.states['readonly'],
                 Bool(Eval('lines')))
+        if 'lines' not in self.party.depends:
+            self.party.depends = copy.copy(self.party.depends)
+            self.party.depends.append('lines')
         self.lines = copy.copy(self.lines)
         self.lines.states = copy.copy(self.lines.states)
         self.lines.states['readonly'] = Or(self.lines.states['readonly'],
                 Not(Bool(Eval('party'))))
+        if 'party' not in self.lines.depends:
+            self.lines.depends = copy.copy(self.lines.depends)
+            self.lines.depends.append('party')
         self._reset_columns()
 
     def on_change_party(self, values):
