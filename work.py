@@ -18,17 +18,19 @@ class Work(ModelSQL, ModelView):
     _name = 'project.work'
 
     predecessors = fields.Many2Many('project.predecessor_successor',
-            'successor', 'predecessor', 'Predecessors',
-            domain=[
-                ('parent', '=', Eval('parent')),
-                ('id', '!=', Eval('active_id')),
-            ])
+        'successor', 'predecessor', 'Predecessors',
+        domain=[
+            ('parent', '=', Eval('parent')),
+            ('id', '!=', Eval('id')),
+            ],
+        depends=['parent', 'id'])
     successors = fields.Many2Many('project.predecessor_successor',
-            'predecessor', 'successor', 'Successors',
-            domain=[
-                ('parent', '=', Eval('parent')),
-                ('id', '!=', Eval('active_id')),
-            ])
+        'predecessor', 'successor', 'Successors',
+        domain=[
+            ('parent', '=', Eval('parent')),
+            ('id', '!=', Eval('id')),
+            ],
+        depends=['parent', 'id'])
     leveling_delay = fields.Float("Leveling Delay")
     back_leveling_delay = fields.Float("Leveling Delay")
     allocations = fields.One2Many('project.allocation', 'work', 'Allocations',
