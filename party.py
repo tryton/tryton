@@ -9,8 +9,8 @@ class Party(Model):
     _name = 'party.party'
 
     siren = fields.Char('SIREN', select=1, states={
-        'readonly': Not(Bool(Eval('active'))),
-        }, size=9)
+            'readonly': Not(Bool(Eval('active'))),
+            }, size=9, depends=['active'])
 
     def __init__(self):
         super(Party, self).__init__()

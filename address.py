@@ -9,8 +9,8 @@ class Address(Model):
     _name = 'party.address'
 
     siret_nic = fields.Char('SIRET NIC', select=1, states={
-        'readonly': Not(Bool(Eval('active'))),
-        }, size=5)
+            'readonly': Not(Bool(Eval('active'))),
+            }, size=5, depends=['active'])
     siret = fields.Function(fields.Char('SIRET'), 'get_siret')
 
     def __init__(self):
