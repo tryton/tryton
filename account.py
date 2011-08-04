@@ -27,17 +27,19 @@ class Account(ModelSQL, ModelView):
         ('normal', 'Normal'),
         ], 'Type', required=True)
     root = fields.Many2One('analytic_account.account', 'Root', select=2,
-            domain=[('parent', '=', False)],
-            states={
-                'invisible': Equal(Eval('type'), 'root'),
-                'required': Not(Equal(Eval('type'), 'root')),
-            })
+        domain=[('parent', '=', False)],
+        states={
+            'invisible': Equal(Eval('type'), 'root'),
+            'required': Not(Equal(Eval('type'), 'root')),
+            },
+        depends=['type'])
     parent = fields.Many2One('analytic_account.account', 'Parent', select=2,
-            domain=[('parent', 'child_of', Eval('root'))],
-            states={
-                'invisible': Equal(Eval('type'), 'root'),
-                'required': Not(Equal(Eval('type'), 'root')),
-            })
+        domain=[('parent', 'child_of', Eval('root'))],
+        states={
+            'invisible': Equal(Eval('type'), 'root'),
+            'required': Not(Equal(Eval('type'), 'root')),
+            },
+        depends=['root', 'type'])
     childs = fields.One2Many('analytic_account.account', 'parent', 'Children')
     balance = fields.Function(fields.Numeric('Balance',
         digits=(16, Eval('currency_digits', 1)), depends=['currency_digits']),
@@ -59,8 +61,9 @@ class Account(ModelSQL, ModelView):
         ('credit-debit', 'Credit - Debit'),
         ], 'Display Balance', required=True)
     mandatory = fields.Boolean('Mandatory', states={
-        'invisible': Not(Equal(Eval('type'), 'root')),
-        })
+            'invisible': Not(Equal(Eval('type'), 'root')),
+            },
+        depends=['type'])
 
     def __init__(self):
         super(Account, self).__init__()
