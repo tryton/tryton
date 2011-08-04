@@ -10,10 +10,11 @@ class InvoiceLine(ModelSQL, ModelView):
     _name = 'account.invoice.line'
 
     analytic_accounts = fields.Many2One('analytic_account.account.selection',
-            'Analytic Accounts',
-            states={
-                'invisible': Not(Equal(Eval('type'), 'line')),
-            })
+        'Analytic Accounts',
+        states={
+            'invisible': Not(Equal(Eval('type'), 'line')),
+            },
+        depends=['type'])
 
     def _view_look_dom_arch(self, tree, type, field_children=None):
         analytic_account_obj = Pool().get('analytic_account.account')
