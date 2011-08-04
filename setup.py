@@ -59,4 +59,6 @@ setup(name='trytond_product_price_list',
     [trytond.modules]
     product_price_list = trytond.modules.product_price_list
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
 )
