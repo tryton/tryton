@@ -15,6 +15,7 @@ from trytond.pool import Pool
 _STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
 }
+_DEPENDS = ['state']
 
 
 class Purchase(ModelWorkflow, ModelSQL, ModelView):
@@ -24,16 +25,18 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
     _description = __doc__
 
     company = fields.Many2One('company.company', 'Company', required=True,
-            states={
-                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                    Bool(Eval('lines'))),
+        states={
+            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
+                Bool(Eval('lines'))),
             }, domain=[
-                ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
-            ])
+            ('id', If(In('company', Eval('context', {})), '=', '!='),
+                Get(Eval('context', {}), 'company', 0)),
+            ],
+        depends=['state', 'lines'])
     reference = fields.Char('Reference', size=None, readonly=True, select=1)
     supplier_reference = fields.Char('Supplier Reference', select=1)
-    description = fields.Char('Description', size=None, states=_STATES)
+    description = fields.Char('Description', size=None, states=_STATES,
+        depends=_DEPENDS)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('quotation', 'Quotation'),
@@ -41,39 +44,48 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         ('done', 'Done'),
         ('cancel', 'Canceled'),
     ], 'State', readonly=True, required=True)
-    purchase_date = fields.Date('Purchase Date', required=True, states=_STATES)
+    purchase_date = fields.Date('Purchase Date', required=True, states=_STATES,
+        depends=_DEPENDS)
     payment_term = fields.Many2One('account.invoice.payment_term',
-        'Payment Term', required=True, states=_STATES)
+        'Payment Term', required=True, states=_STATES, depends=_DEPENDS)
     party = fields.Many2One('party.party', 'Party', change_default=True,
             required=True, states=_STATES, on_change=['party', 'payment_term'],
-            select=1)
+            select=1, depends=_DEPENDS)
     party_lang = fields.Function(fields.Char('Party Language',
         on_change_with=['party']), 'get_function_fields')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
-            domain=[('party', '=', Eval('party'))], states=_STATES)
+        domain=[('party', '=', Eval('party'))], states=_STATES,
+        depends=['state', 'party'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
-            domain=[('type', '=', 'warehouse')], required=True, states=_STATES)
+        domain=[('type', '=', 'warehouse')], required=True, states=_STATES,
+        depends=_DEPENDS)
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 And(Bool(Eval('lines')), Bool(Eval('currency')))),
-        })
+            },
+        depends=['state', 'lines'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['currency']), 'get_function_fields')
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
-            states=_STATES, on_change=['lines', 'currency', 'party'])
+        states=_STATES, on_change=['lines', 'currency', 'party'],
+        depends=_DEPENDS)
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
-        digits=(16, Eval('currency_digits', 2))), 'get_function_fields')
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']), 'get_function_fields')
     tax_amount = fields.Function(fields.Numeric('Tax',
-        digits=(16, Eval('currency_digits', 2))), 'get_function_fields')
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']), 'get_function_fields')
     total_amount = fields.Function(fields.Numeric('Total',
-        digits=(16, Eval('currency_digits', 2))), 'get_function_fields')
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']), 'get_function_fields')
     invoice_method = fields.Selection([
-        ('manual', 'Manual'),
-        ('order', 'Based On Order'),
-        ('shipment', 'Based On Shipment'),
-    ], 'Invoice Method', required=True, states=_STATES)
+            ('manual', 'Manual'),
+            ('order', 'Based On Order'),
+            ('shipment', 'Based On Shipment'),
+            ], 'Invoice Method', required=True, states=_STATES,
+        depends=_DEPENDS)
     invoice_state = fields.Selection([
         ('none', 'None'),
         ('waiting', 'Waiting'),
@@ -769,65 +781,68 @@ class PurchaseLine(ModelSQL, ModelView):
         ('comment', 'Comment'),
         ], 'Type', select=1, required=True)
     quantity = fields.Float('Quantity',
-            digits=(16, Eval('unit_digits', 2)),
-            states={
-                'invisible': Not(Equal(Eval('type'), 'line')),
-                'required': Equal(Eval('type'), 'line'),
-                'readonly': Not(Bool(Eval('_parent_purchase'))),
+        digits=(16, Eval('unit_digits', 2)),
+        states={
+            'invisible': Not(Equal(Eval('type'), 'line')),
+            'required': Equal(Eval('type'), 'line'),
+            'readonly': Not(Bool(Eval('_parent_purchase'))),
             }, on_change=['product', 'quantity', 'unit',
-                '_parent_purchase.currency', '_parent_purchase.party'])
+            '_parent_purchase.currency', '_parent_purchase.party'],
+        depends=['unit_digits', 'type'])
     unit = fields.Many2One('product.uom', 'Unit',
-            states={
-                'required': Bool(Eval('product')),
-                'invisible': Not(Equal(Eval('type'), 'line')),
-                'readonly': Not(Bool(Eval('_parent_purchase'))),
+        states={
+            'required': Bool(Eval('product')),
+            'invisible': Not(Equal(Eval('type'), 'line')),
+            'readonly': Not(Bool(Eval('_parent_purchase'))),
             }, domain=[
-                ('category', '=',
-                    (Eval('product'), 'product.default_uom.category')),
+            ('category', '=',
+                (Eval('product'), 'product.default_uom.category')),
             ],
-            context={
-                'category': (Eval('product'), 'product.default_uom.category'),
+        context={
+            'category': (Eval('product'), 'product.default_uom.category'),
             },
-            on_change=['product', 'quantity', 'unit', '_parent_purchase.currency',
-                '_parent_purchase.party'])
+        on_change=['product', 'quantity', 'unit', '_parent_purchase.currency',
+            '_parent_purchase.party'],
+        depends=['product', 'type'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
         on_change_with=['unit']), 'get_unit_digits')
     product = fields.Many2One('product.product', 'Product',
-            domain=[('purchasable', '=', True)],
-            states={
-                'invisible': Not(Equal(Eval('type'), 'line')),
-                'readonly': Not(Bool(Eval('_parent_purchase'))),
-            }, on_change=['product', 'unit', 'quantity', 'description',
-                '_parent_purchase.party', '_parent_purchase.currency'],
-            context={
-                'locations': If(Bool(Get(Eval('_parent_purchase', {}),
-                    'warehouse')),
-                    [Get(Eval('_parent_purchase', {}), 'warehouse')],
-                    []),
-                'stock_date_end': Get(Eval('_parent_purchase', {}),
-                    'purchase_date'),
-                'purchasable': True,
-                'stock_skip_warehouse': True,
-            })
-    unit_price = fields.Numeric('Unit Price', digits=(16, 4),
-            states={
-                'invisible': Not(Equal(Eval('type'), 'line')),
-                'required': Equal(Eval('type'), 'line'),
-            })
-    amount = fields.Function(fields.Numeric('Amount',
-        digits=(16, Get(Eval('_parent_purchase', {}), 'currency_digits', 2)),
+        domain=[('purchasable', '=', True)],
         states={
-            'invisible': Not(In(Eval('type'), ['line', 'subtotal'])),
+            'invisible': Not(Equal(Eval('type'), 'line')),
             'readonly': Not(Bool(Eval('_parent_purchase'))),
-        }, on_change_with=['type', 'quantity', 'unit_price',
-            '_parent_purchase.currency']), 'get_amount')
+            }, on_change=['product', 'unit', 'quantity', 'description',
+            '_parent_purchase.party', '_parent_purchase.currency'],
+        context={
+            'locations': If(Bool(Get(Eval('_parent_purchase', {}),
+                        'warehouse')),
+                [Get(Eval('_parent_purchase', {}), 'warehouse')],
+                []),
+            'stock_date_end': Get(Eval('_parent_purchase', {}),
+                'purchase_date'),
+            'purchasable': True,
+            'stock_skip_warehouse': True,
+            }, depends=['type'])
+    unit_price = fields.Numeric('Unit Price', digits=(16, 4),
+        states={
+            'invisible': Not(Equal(Eval('type'), 'line')),
+            'required': Equal(Eval('type'), 'line'),
+            }, depends=['type'])
+    amount = fields.Function(fields.Numeric('Amount',
+            digits=(16, Get(Eval('_parent_purchase', {}), 'currency_digits', 2)),
+            states={
+                'invisible': Not(In(Eval('type'), ['line', 'subtotal'])),
+                'readonly': Not(Bool(Eval('_parent_purchase'))),
+                }, on_change_with=['type', 'quantity', 'unit_price',
+                '_parent_purchase.currency'],
+            depends=['type']), 'get_amount')
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
     taxes = fields.Many2Many('purchase.line-account.tax',
-            'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
-            states={
-                'invisible': Not(Equal(Eval('type'), 'line')),
-            })
+        'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
+        states={
+            'invisible': Not(Equal(Eval('type'), 'line')),
+            }, depends=['type'])
     invoice_lines = fields.Many2Many('purchase.line-account.invoice.line',
             'purchase_line', 'invoice_line', 'Invoice Lines', readonly=True)
     moves = fields.One2Many('stock.move', 'purchase_line', 'Moves',
@@ -1260,21 +1275,23 @@ class Template(ModelSQL, ModelView):
     _name = "product.template"
 
     purchasable = fields.Boolean('Purchasable', states={
-        'readonly': Not(Bool(Eval('active'))),
-        })
+            'readonly': Not(Bool(Eval('active'))),
+            }, depends=['active'])
     product_suppliers = fields.One2Many('purchase.product_supplier',
-            'product', 'Suppliers', states={
-                'readonly': Not(Bool(Eval('active'))),
-                'invisible': Or(Not(Bool(Eval('purchasable'))),
-                    Not(Bool(Eval('company')))),
-            })
+        'product', 'Suppliers', states={
+            'readonly': Not(Bool(Eval('active'))),
+            'invisible': Or(Not(Bool(Eval('purchasable'))),
+                Not(Bool(Get(Eval('context', {}), 'company')))),
+            }, depends=['active', 'purchasable'])
     purchase_uom = fields.Many2One('product.uom', 'Purchase UOM', states={
-        'readonly': Not(Bool(Eval('active'))),
-        'invisible': Not(Bool(Eval('purchasable'))),
-        'required': Bool(Eval('purchasable')),
-        }, domain=[('category', '=', (Eval('default_uom'), 'uom.category'))],
+            'readonly': Not(Bool(Eval('active'))),
+            'invisible': Not(Bool(Eval('purchasable'))),
+            'required': Bool(Eval('purchasable')),
+            },
+        domain=[('category', '=', (Eval('default_uom'), 'uom.category'))],
         context={'category': (Eval('default_uom'), 'uom.category')},
-        on_change_with=['default_uom', 'purchase_uom', 'purchasable'])
+        on_change_with=['default_uom', 'purchase_uom', 'purchasable'],
+        depends=['active', 'default_uom', 'purchasable'])
 
     def __init__(self):
         super(Template, self).__init__()
@@ -1563,18 +1580,22 @@ class Move(ModelSQL, ModelView):
     _name = 'stock.move'
 
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line', select=1,
-            states={
-                'readonly': Not(Equal(Eval('state'), 'draft')),
-            })
+        states={
+            'readonly': Not(Equal(Eval('state'), 'draft')),
+            },
+        depends=['state'])
     purchase = fields.Function(fields.Many2One('purchase.purchase', 'Purchase',
         select=1, states={
             'invisible': Not(Bool(Eval('purchase_visible'))),
         }, depends=['purchase_visible']), 'get_purchase',
         searcher='search_purchase')
     purchase_quantity = fields.Function(fields.Float('Purchase Quantity',
-        digits=(16, Eval('unit_digits', 2)), states={
-            'invisible': Not(Bool(Eval('purchase_visible'))),
-        }, depends=['purchase_visible']), 'get_purchase_fields')
+            digits=(16, Eval('unit_digits', 2)),
+            states={
+                'invisible': Not(Bool(Eval('purchase_visible'))),
+                },
+            depends=['purchase_visible', 'unit_digits']),
+        'get_purchase_fields')
     purchase_unit = fields.Function(fields.Many2One('product.uom',
         'Purchase Unit', states={
             'invisible': Not(Bool(Eval('purchase_visible'))),
