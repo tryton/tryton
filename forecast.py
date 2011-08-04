@@ -257,7 +257,7 @@ class ForecastLine(ModelSQL, ModelView):
         unit_price = False
         if line.forecast.destination.type == 'customer':
             unit_price = line.product.list_price
-            unit_price = uom_obj.compute_price(line.product.default_uom, 
+            unit_price = uom_obj.compute_price(line.product.default_uom,
                     unit_price, line.uom)
 
         moves = []
@@ -280,7 +280,7 @@ class ForecastLine(ModelSQL, ModelView):
 
     def cancel_moves(self, lines):
         move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for l in lines for m in l.moves], 
+        move_obj.write([m.id for l in lines for m in l.moves],
                 {'state': 'cancel'})
         move_obj.delete([m.id for l in lines for m in l.moves])
 
@@ -413,7 +413,7 @@ class ForecastComplete(Wizard):
                 stock_destination=[forecast.destination.id],
                 stock_date_start=data['form']['from_date'],
                 stock_date_end=data['form']['to_date']):
-            return product_obj.products_by_location([forecast.location.id], 
+            return product_obj.products_by_location([forecast.location.id],
                     with_childs=True, skip_zero=False)
 
     def _set_default_products(self, data):
