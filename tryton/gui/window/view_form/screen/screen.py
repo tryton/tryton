@@ -571,20 +571,21 @@ class Screen(SignalEvent):
             res = True
         if self.current_view.view_type == 'tree':
             records = self.current_view.selected_records()
-            if delete and records:
+            saved_records = [r for r in records if r.id >= 0]
+            if delete and saved_records:
                 context = {}
                 context.update(rpc.CONTEXT)
                 context.update(self.context)
                 context['_timestamp'] = {}
-                for record in records:
+                for record in saved_records:
                     context['_timestamp'].update(record.get_timestamp())
-                reload_ids = self.group.on_write_ids([x.id for x in records])
+                reload_ids = self.group.on_write_ids([x.id for x in saved_records])
                 if reload_ids:
-                    for record in records:
+                    for record in saved_records:
                         if record.id in reload_ids:
                             reload_ids.remove(record.id)
                 args = ('model', self.model_name, 'delete',
-                        [x.id for x in records], context)
+                        [x.id for x in saved_records], context)
                 try:
                     res = rpc.execute(*args)
                 except Exception, exception:

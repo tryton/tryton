@@ -212,16 +212,10 @@ class EditableTreeView(gtk.TreeView):
                     self.on_editing_done)
         elif event.keyval == gtk.keysyms.Escape:
             if record.id < 0:
-                model.remove(model.get_iter(path))
-                self.screen.current_record = False
-            if not path[0]:
-                self.screen.current_record = False
-            if path[0] == len(self.screen.group) \
-                    and path[0]:
-                path = (path[0] - 1,)
-            self.screen.display()
-            if len(self.screen.group):
-                self.set_cursor(path, column, False)
+                self.screen.remove(delete=False, remove=True,
+                    force_remove=True)
+            else:
+                return False
         elif event.keyval in (gtk.keysyms.F3, gtk.keysyms.F2):
             if isinstance(entry, gtk.Entry):
                 value = entry.get_text()
