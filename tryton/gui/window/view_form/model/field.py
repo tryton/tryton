@@ -460,10 +460,12 @@ class O2MField(CharField):
         record.parent.signal('record-changed')
 
     def _group_list_changed(self, group, signal):
-        group.parent.group.signal('group-list-changed', signal)
+        if group.model_name == group.parent.model_name:
+            group.parent.group.signal('group-list-changed', signal)
 
     def _group_cleared(self, group, signal):
-        group.parent.signal('group-cleared')
+        if group.model_name == group.parent.model_name:
+            group.parent.signal('group-cleared')
 
     def _set_default_value(self, record):
         if record.value.get(self.name) is not None:
