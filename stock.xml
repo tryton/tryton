@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="shipment_out_view_form">
+            <field name="model">stock.shipment.out</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="stock.shipment_out_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook"
+                        position="after">
+                        <label name="carrier"/>
+                        <field name="carrier"/>
+                        <label name="cost"/>
+                        <group col="2" id="cost">
+                            <field name="cost"/>
+                            <field name="cost_currency"/>
+                        </group>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="sale_configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="sale.sale_configuration_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/field[@name='sale_shipment_method']"
+                        position="after">
+                        <label name="sale_carrier"/>
+                        <field name="sale_carrier"/>
+                        <label name="sale_shipment_cost_method"/>
+                        <field name="sale_shipment_cost_method"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.property" id="property_sale_shipment_cost_method">
+            <field name="name">sale_shipment_cost_method</field>
+            <field name="field"
+                search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_shipment_cost_method')]" />
+            <field name="value">,order</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/notebook/page[@id='sale']/field[@name='currency']"
+                        position="after">
+                        <label name="carrier"/>
+                        <field name="carrier"/>
+                    </xpath>
+                    <xpath expr="/form/notebook/page[@id='sale']/field[@name='lines']/tree"
+                        position='inside'>
+                        <field name="shipment_cost" tree_invisible="1"/>
+                    </xpath>
+                    <xpath
+                        expr="/form/notebook/page[@id='other']/field[@name='shipment_method']"
+                        position="after">
+                        <label name="shipment_cost_method"/>
+                        <field name="shipment_cost_method"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
