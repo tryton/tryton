@@ -26,4 +26,4 @@ class TestConfig(TestCase):
         config2 = proteus.config.get_config()
         self.assertEqual(config1, config2)
 
-        self.assertEqual(config1.__eq__(None), NotImplemented)
+        self.assertRaises(NotImplementedError, config1.__eq__, None)

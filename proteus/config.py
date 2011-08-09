@@ -154,7 +154,7 @@ class TrytondConfig(Config):
 
     def __eq__(self, other):
         if not isinstance(other, TrytondConfig):
-            raise NotImplemented
+            raise NotImplementedError
         return (self.database_name == other.database_name
             and self._user == other._user
             and self.database_type == other.database_type
@@ -211,7 +211,7 @@ class XmlrpcConfig(Config):
 
     def __eq__(self, other):
         if not isinstance(other, XmlrpcConfig):
-            raise NotImplemented
+            raise NotImplementedError
         return self.url == other.url
 
     def __hash__(self):
