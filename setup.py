@@ -36,7 +36,6 @@ setup(name='proteus',
         'Topic :: Office/Business',
     ],
     license='LGPL-3',
-    install_requires=SIMPLEJSON,
     extras_require={
         'trytond': ['trytond >= %s.%s, < %s.%s' %
             (major_version, minor_version, major_version, minor_version + 1)],
