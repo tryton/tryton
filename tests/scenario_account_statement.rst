@@ -17,6 +17,7 @@ Imports::
 Create database::
 
     >>> config = config.set_trytond()
+    >>> config.pool.test = True
 
 Install account_statement and account_invoice::
 
