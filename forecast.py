@@ -13,6 +13,7 @@ from trytond.pool import Pool
 STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
 }
+DEPENDS = ['state']
 
 
 class Forecast(ModelWorkflow, ModelSQL, ModelView):
@@ -26,19 +27,24 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
         domain=[('type', '=', 'storage')], states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines'))),
-        })
+            },
+        depends=['state', 'lines'])
     destination = fields.Many2One(
         'stock.location', 'Destination', required=True,
-        domain=[('type', '=', 'customer')], states=STATES)
-    from_date = fields.Date('From Date', required=True, states=STATES)
-    to_date = fields.Date('To Date', required=True, states=STATES)
+        domain=[('type', '=', 'customer')], states=STATES, depends=DEPENDS)
+    from_date = fields.Date('From Date', required=True, states=STATES,
+        depends=DEPENDS)
+    to_date = fields.Date('To Date', required=True, states=STATES,
+        depends=DEPENDS)
     lines = fields.One2Many(
-        'stock.forecast.line', 'forecast', 'Lines', states=STATES)
+        'stock.forecast.line', 'forecast', 'Lines', states=STATES,
+        depends=DEPENDS)
     company = fields.Many2One(
         'company.company', 'Company', required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines'))),
-        })
+            },
+        depends=['state', 'lines'])
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -176,18 +182,18 @@ class ForecastLine(ModelSQL, ModelView):
 
     product = fields.Many2One('product.product', 'Product', required=True,
             domain=[('type', '=', 'stockable')], on_change=['product'])
-    uom = fields.Many2One(
-        'product.uom', 'UOM', required=True,
+    uom = fields.Many2One('product.uom', 'UOM', required=True,
         domain=[
             ('category', '=',
                 (Eval('product'), 'product.default_uom.category')),
-        ], on_change=['uom'])
+            ], on_change=['uom'], depends=['product'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-            required=True)
+        required=True, depends=['unit_digits'])
     minimal_quantity = fields.Float('Minimal Qty',
-            digits=(16, Eval('unit_digits', 2)), required=True)
+        digits=(16, Eval('unit_digits', 2)), required=True,
+        depends=['unit_digits'])
     moves = fields.Many2Many('stock.forecast.line-stock.move',
             'line', 'move','Moves', readonly=True)
     forecast = fields.Many2One(

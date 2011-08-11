@@ -10,7 +10,7 @@ if os.path.isdir(DIR):
 
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view
+from trytond.tests.test_tryton import test_view, test_depends
 
 
 class StockForecastTestCase(unittest.TestCase):
@@ -26,6 +26,12 @@ class StockForecastTestCase(unittest.TestCase):
         Test views.
         '''
         test_view('stock_forecast')
+
+    def test0006depends(self):
+        '''
+        Test depends.
+        '''
+        test_depends()
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
