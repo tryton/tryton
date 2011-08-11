@@ -1200,6 +1200,30 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     move_line_obj.reconcile(line_ids)
         return new_ids
 
+    def wkf_draft(self, invoice):
+        self.write(invoice.id, {'state': 'draft'})
+
+    def wkf_proforma(self, invoice):
+        self.write(invoice.id, {'state': 'proforma'})
+
+    def wkf_open(self, invoice):
+        self.set_number(invoice.id)
+        self.create_move(invoice.id)
+        self.write(invoice.id, {'state': 'open'})
+        self.print_invoice(invoice.id)
+
+    def wkf_paid(self, invoice):
+        self.write(invoice.id, {'state': 'paid'})
+
+    def wkf_cancel(self, invoice):
+        self.write(invoice.id, {'state': 'cancel'})
+
+    def wkf_triggered_moves(self, invoice):
+        return [x.id for x in invoice.lines_to_pay]
+
+    def wkf_open2paid(self, invoice):
+        return invoice.reconciled
+
 Invoice()
 
 
