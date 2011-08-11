@@ -188,19 +188,6 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
                     res['payment_term']).rec_name
         return res
 
-    def set_end_date(self, opportunity_id, state):
-        """
-        This will fill the end_date for a lead/opportunity and change the state
-
-        :param opportunity_id: the id of the opportunity
-        :param state: the target state
-        """
-        date_obj = Pool().get('ir.date')
-        self.write(opportunity_id, {
-            'end_date': date_obj.today(),
-            'state': state,
-            })
-
     def button_lead(self, ids):
         self.workflow_trigger_create(ids)
         return True
@@ -274,6 +261,34 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
             'sale': sale_id,
             })
         return sale_id
+
+    def wkf_lead(self, opportunity):
+        self.write(opportunity.id, {'state': 'lead'})
+
+    def wkf_opportunity(self, opportunity):
+        self.write(opportunity.id, {'state': 'opportunity'})
+
+    def wkf_converted(self, opportunity):
+        date_obj = Pool().get('ir.date')
+        self.write(opportunity.id, {
+                'end_date': date_obj.today(),
+                'state': 'converted',
+                })
+        self.create_sale(opportunity.id)
+
+    def wkf_cancelled(self, opportunity):
+        date_obj = Pool().get('ir.date')
+        self.write(opportunity.id, {
+                'end_date': date_obj.today(),
+                'state': 'cancelled',
+                })
+
+    def wkf_lost(self, opportunity):
+        date_obj = Pool().get('ir.date')
+        self.write(opportunity.id, {
+                'end_date': date_obj.today(),
+                'state': 'lost',
+                })
 
 SaleOpportunity()
 

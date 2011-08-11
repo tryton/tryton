@@ -251,36 +251,30 @@
         <record model="workflow.activity" id="opportunity_activity_lead">
             <field name="name">Lead</field>
             <field name="workflow" ref="opportunity_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'state': 'lead'})</field>
+            <field name="method">wkf_lead</field>
             <field name="flow_start" eval="True"/>
         </record>
         <record model="workflow.activity" id="opportunity_activity_opportunity">
             <field name="name">Opportunity</field>
             <field name="workflow" ref="opportunity_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'state': 'opportunity'})</field>
+            <field name="method">wkf_opportunity</field>
         </record>
         <record model="workflow.activity" id="opportunity_activity_converted">
             <field name="name">Converted</field>
             <field name="workflow" ref="opportunity_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">set_end_date('converted')
-create_sale()</field>
+            <field name="method">wkf_converted</field>
             <field name="flow_stop" eval="True"/>
         </record>
         <record model="workflow.activity" id="opportunity_activity_cancelled">
             <field name="name">Cancelled</field>
             <field name="workflow" ref="opportunity_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">set_end_date('cancelled')</field>
+            <field name="method">wkf_cancelled</field>
             <field name="flow_stop" eval="True"/>
         </record>
         <record model="workflow.activity" id="opportunity_activity_lost">
             <field name="name">Lost</field>
             <field name="workflow" ref="opportunity_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">set_end_date('lost')</field>
+            <field name="method">wkf_lost</field>
             <field name="flow_stop" eval="True"/>
         </record>
 
