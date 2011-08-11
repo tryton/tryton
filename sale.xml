@@ -371,22 +371,19 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="sale_activity_draft">
             <field name="name">Draft</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'state': 'draft'})</field>
+            <field name="method">wkf_draft</field>
             <field name="flow_start" eval="True"/>
         </record>
         <record model="workflow.activity" id="sale_activity_quotation">
             <field name="name">Quotation</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">check_for_quotation()&#10;set_reference()&#10;write({'state': 'quotation'})</field>
+            <field name="method">wkf_quotation</field>
         </record>
         <record model="workflow.activity" id="sale_activity_confirmed">
             <field name="name">Confirmed</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="split_mode">AND</field>
-            <field name="kind">function</field>
-            <field name="action">write({'state': 'confirmed'})</field>
+            <field name="method">wkf_confirmed</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_method">
             <field name="name">Invoice Method</field>
@@ -396,20 +393,17 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="sale_activity_waiting_invoice_sale">
             <field name="name">Waiting Invoice</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">create_invoice()&#10;write({'invoice_state': 'waiting'})</field>
+            <field name="method">wkf_waiting_invoice_sale</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_sale_exception">
             <field name="name">Invoice Exception</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'invoice_state': 'exception'})</field>
+            <field name="method">wkf_invoice_sale_exception</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_sale_done">
             <field name="name">Invoice Done</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'invoice_state': 'paid'})</field>
+            <field name="method">wkf_invoice_sale_done</field>
         </record>
         <record model="workflow.activity" id="sale_activity_shipment_invoice_method">
             <field name="name">Shipment Invoice Method</field>
@@ -419,26 +413,22 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="sale_activity_shipment_invoice">
             <field name="name">Shipment Invoice</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">create_shipment()</field>
+            <field name="method">wkf_shipment_invoice</field>
         </record>
         <record model="workflow.activity" id="sale_activity_waiting_shipment_invoice">
             <field name="name">Waiting Shipment Invoice</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'shipment_state': 'waiting'})&#10;create_shipment()</field>
+            <field name="method">wkf_waiting_shipment_invoice</field>
         </record>
         <record model="workflow.activity" id="sale_activity_shipment_invoice_exception">
             <field name="name">Shipment Invoice Exception</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'shipment_state': 'exception'})</field>
+            <field name="method">wkf_shipment_invoice_exception</field>
         </record>
         <record model="workflow.activity" id="sale_activity_shipment_invoice_done">
             <field name="name">Shipment Invoice Done</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'shipment_state': 'sent'})</field>
+            <field name="method">wkf_shipment_invoice_done</field>
         </record>
         <record model="workflow.activity" id="sale_activity_shipment_invoice_method_done">
             <field name="name">Shipment Invoice Method Done</field>
@@ -455,20 +445,17 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="sale_activity_shipment">
             <field name="name">Shipment</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">create_shipment()</field>
+            <field name="method">wkf_shipment</field>
         </record>
         <record model="workflow.activity" id="sale_activity_waiting_shipment">
             <field name="name">Waiting Shipment</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'shipment_state': 'waiting'})&#10;create_shipment()</field>
+            <field name="method">wkf_waiting_shipment</field>
         </record>
         <record model="workflow.activity" id="sale_activity_shipment_exception">
             <field name="name">Shipment Exception</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'shipment_state': 'exception'})</field>
+            <field name="method">wkf_shipment_exception</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_shipment_method">
             <field name="name">Invoice Shipment Method</field>
@@ -478,32 +465,27 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="sale_activity_invoice_shipment">
             <field name="name">Invoice Shipment</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">create_invoice()&#10;write({'invoice_state': 'waiting'})</field>
+            <field name="method">wkf_invoice_shipment</field>
         </record>
         <record model="workflow.activity" id="sale_activity_waiting_invoice_shipment">
             <field name="name">Waiting Invoice Shipment</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'invoice_state': 'waiting', 'shipment_state': 'sent'})</field>
+            <field name="method">wkf_waiting_invoice_shipment</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_shipment_exception">
             <field name="name">Invoice Shipment Exception</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'invoice_state': 'exception'})</field>
+            <field name="method">wkf_invoice_shipment_exception</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_shipment_done">
             <field name="name">Invoice Shipment Done</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'invoice_state': 'paid'})</field>
+            <field name="method">wkf_invoice_shipment_done</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_shipment_method_done">
             <field name="name">Invoice Shipment Method Done</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'shipment_state': 'sent'})</field>
+            <field name="method">wkf_invoice_shipment_method_done</field>
         </record>
         <record model="workflow.activity" id="sale_activity_shipment_method_done">
             <field name="name">Shipment Method Done</field>
@@ -513,22 +495,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Done</field>
             <field name="workflow" ref="sale_workflow"/>
             <field name="join_mode">AND</field>
-            <field name="kind">function</field>
-            <field name="action">write({'state': 'done'})</field>
+            <field name="method">wkf_done</field>
             <field name="flow_stop" eval="True"/>
         </record>
         <record model="workflow.activity" id="sale_activity_cancel">
             <field name="name">Canceled</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="kind">function</field>
-            <field name="action">write({'state': 'cancel'})</field>
+            <field name="method">wkf_cancel</field>
             <field name="flow_stop" eval="True"/>
         </record>
 
         <record model="workflow.transition" id="sale_transition_draft_quotation">
             <field name="act_from" ref="sale_activity_draft"/>
             <field name="act_to" ref="sale_activity_quotation"/>
-            <field name="condition">bool(lines)</field>
+            <field name="condition">wkf_draft2quotation</field>
             <field name="signal">quotation</field>
             <field name="group" ref="group_sale"/>
         </record>
@@ -564,19 +544,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.transition" id="sale_transition_invoice_method_waiting_invoice_sale">
             <field name="act_from" ref="sale_activity_invoice_method"/>
             <field name="act_to" ref="sale_activity_waiting_invoice_sale"/>
-            <field name="condition">invoice_method == 'order'</field>
+            <field name="condition">wkf_invoice_method2waiting_invoice_sale</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_method_invoice_method_done">
             <field name="act_from" ref="sale_activity_invoice_method"/>
             <field name="act_to" ref="sale_activity_invoice_method_done"/>
-            <field name="condition">invoice_method != 'order'</field>
+            <field name="condition">wkf_invoice_method2invoice_method_done</field>
         </record>
         <record model="workflow.transition" id="sale_transition_waiting_invoice_sale_invoice_sale_exception">
             <field name="act_from" ref="sale_activity_waiting_invoice_sale"/>
             <field name="act_to" ref="sale_activity_invoice_sale_exception"/>
             <field name="trigger_model">account.invoice</field>
-            <field name="trigger_expr_id">[x.id for x in invoices]</field>
-            <field name="condition">invoice_exception</field>
+            <field name="trigger_ids">wkf_triggered_invoices</field>
+            <field
+                name="condition">wkf_waiting_invoice_sale2invoice_sale_exception</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_sale_exception_invoice_sale">
             <field name="act_from" ref="sale_activity_invoice_sale_exception"/>
@@ -594,8 +575,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_from" ref="sale_activity_waiting_invoice_sale"/>
             <field name="act_to" ref="sale_activity_invoice_sale_done"/>
             <field name="trigger_model">account.invoice</field>
-            <field name="trigger_expr_id">[x.id for x in invoices]</field>
-            <field name="condition">invoice_paid</field>
+            <field name="trigger_ids">wkf_triggered_invoices</field>
+            <field name="condition">wkf_waiting_invoice_sale2invoice_sale_done</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_sale_done">
             <field name="act_from" ref="sale_activity_invoice_sale_done"/>
@@ -604,12 +585,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.transition" id="sale_transition_shipment_invoice_method_shipment_invoice_method_done">
             <field name="act_from" ref="sale_activity_shipment_invoice_method"/>
             <field name="act_to" ref="sale_activity_shipment_invoice_method_done"/>
-            <field name="condition">shipment_method != 'invoice'</field>
+            <field
+                name="condition">wkf_shipment_invoice_method2shipment_invoice_method_done</field>
         </record>
         <record model="workflow.transition" id="sale_transition_shipment_invoice_method_shipment_invoice">
             <field name="act_from" ref="sale_activity_shipment_invoice_method"/>
             <field name="act_to" ref="sale_activity_shipment_invoice"/>
-            <field name="condition">shipment_method == 'invoice'</field>
+            <field
+                name="condition">wkf_shipment_invoice_method2shipment_invoice</field>
         </record>
         <record model="workflow.transition" id="sale_transition_shipment_invoice_waiting_shipment_invoice">
             <field name="act_from" ref="sale_activity_shipment_invoice"/>
@@ -619,8 +602,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_from" ref="sale_activity_waiting_shipment_invoice"/>
             <field name="act_to" ref="sale_activity_shipment_invoice_exception"/>
             <field name="trigger_model">stock.shipment.out</field>
-            <field name="trigger_expr_id">[x.id for x in shipments]</field>
-            <field name="condition">shipment_exception</field>
+            <field name="trigger_ids">wkf_triggered_shipments</field>
+            <field
+                name="condition">wkf_waiting_shipment_invoice2shipment_invoice_exception</field>
         </record>
         <record model="workflow.transition" id="sale_transition_shipment_invoice_exception_cancel">
             <field name="act_from" ref="sale_activity_shipment_invoice_exception"/>
@@ -638,8 +622,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_from" ref="sale_activity_waiting_shipment_invoice"/>
             <field name="act_to" ref="sale_activity_shipment_invoice_done"/>
             <field name="trigger_model">stock.shipment.out</field>
-            <field name="trigger_expr_id">[x.id for x in shipments]</field>
-            <field name="condition">shipment_done</field>
+            <field name="trigger_ids">wkf_triggered_shipments</field>
+            <field
+                name="condition">wkf_waiting_shipment_invoice2shipment_invoice_done</field>
         </record>
         <record model="workflow.transition" id="sale_transition_shipment_invoice_done_shipment_invoice_method_done">
             <field name="act_from" ref="sale_activity_shipment_invoice_done"/>
@@ -660,12 +645,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.transition" id="sale_transition_shipment_method_shipment_method_done">
             <field name="act_from" ref="sale_activity_shipment_method"/>
             <field name="act_to" ref="sale_activity_shipment_method_done"/>
-            <field name="condition">shipment_method != 'order'</field>
+            <field name="condition">wkf_shipment_method2shipment_method_done</field>
         </record>
         <record model="workflow.transition" id="sale_transition_shipment_method_shipment">
             <field name="act_from" ref="sale_activity_shipment_method"/>
             <field name="act_to" ref="sale_activity_shipment"/>
-            <field name="condition">shipment_method == 'order'</field>
+            <field name="condition">wkf_shipment_method2shipment</field>
         </record>
         <record model="workflow.transition" id="sale_transition_shipment_waiting_shipment">
             <field name="act_from" ref="sale_activity_shipment"/>
@@ -675,7 +660,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_from" ref="sale_activity_waiting_shipment"/>
             <field name="act_to" ref="sale_activity_shipment_exception"/>
             <field name="signal">shipment_update</field>
-            <field name="condition">shipment_exception</field>
+            <field name="condition">wkf_waiting_shipment2shipment_exception</field>
         </record>
         <record model="workflow.transition" id="sale_transition_shipment_exception_cancel">
             <field name="act_from" ref="sale_activity_shipment_exception"/>
@@ -693,44 +678,51 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_from" ref="sale_activity_waiting_shipment"/>
             <field name="act_to" ref="sale_activity_invoice_shipment_method"/>
             <field name="signal">shipment_update</field>
-            <field name="condition">not shipment_exception</field>
+            <field
+                name="condition">wkf_waiting_shipment2invoice_shipment_method</field>
         </record>
         <record model="workflow.transition" id="sale_transition_waiting_shipment_invoice_shipment_method2">
             <field name="act_from" ref="sale_activity_waiting_shipment"/>
             <field name="act_to" ref="sale_activity_invoice_shipment_method"/>
-            <field name="condition">shipment_done</field>
+            <field
+                name="condition">wkf_waiting_shipment2invoice_shipment_method_nosignal</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_shipment_method_invoice_shipment">
             <field name="act_from" ref="sale_activity_invoice_shipment_method"/>
             <field name="act_to" ref="sale_activity_invoice_shipment"/>
-            <field name="condition">invoice_method == 'shipment'</field>
+            <field
+                name="condition">wkf_invoice_shipment_method2invoice_shipment</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_shipment_method_invoice_shipment_method_done">
             <field name="act_from" ref="sale_activity_invoice_shipment_method"/>
             <field name="act_to" ref="sale_activity_invoice_shipment_method_done"/>
-            <field name="condition">invoice_method != 'shipment' and shipment_done</field>
+            <field
+                name="condition">wkf_invoice_shipment_method2invoice_shipment_method_done</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_shipment_method_waiting_shipment">
             <field name="act_from" ref="sale_activity_invoice_shipment_method"/>
             <field name="act_to" ref="sale_activity_waiting_shipment"/>
-            <field name="condition">invoice_method != 'shipment' and not shipment_done</field>
+            <field
+                name="condition">wkf_invoice_shipment_method2waiting_shipment</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_shipment_waiting_shipment">
             <field name="act_from" ref="sale_activity_invoice_shipment"/>
             <field name="act_to" ref="sale_activity_waiting_shipment"/>
-            <field name="condition">not shipment_done</field>
+            <field name="condition">wkf_invoice_shipment2waiting_shipment</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_shipment_waiting_invoice_shipment">
             <field name="act_from" ref="sale_activity_invoice_shipment"/>
             <field name="act_to" ref="sale_activity_waiting_invoice_shipment"/>
-            <field name="condition">shipment_done</field>
+            <field
+                name="condition">wkf_invoice_shipment2waiting_invoice_shipment</field>
         </record>
         <record model="workflow.transition" id="sale_transition_waiting_invoice_shipment_invoice_shipment_exception">
             <field name="act_from" ref="sale_activity_waiting_invoice_shipment"/>
             <field name="act_to" ref="sale_activity_invoice_shipment_exception"/>
             <field name="trigger_model">account.invoice</field>
-            <field name="trigger_expr_id">[x.id for x in invoices]</field>
-            <field name="condition">invoice_exception</field>
+            <field name="trigger_ids">wkf_triggered_invoices</field>
+            <field
+                name="condition">wkf_waiting_invoice_shipment2invoice_shipment_exception</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_shipment_exception_cancel">
             <field name="act_from" ref="sale_activity_invoice_shipment_exception"/>
@@ -748,8 +740,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_from" ref="sale_activity_waiting_invoice_shipment"/>
             <field name="act_to" ref="sale_activity_invoice_shipment_done"/>
             <field name="trigger_model">account.invoice</field>
-            <field name="trigger_expr_id">[x.id for x in invoices]</field>
-            <field name="condition">invoice_paid</field>
+            <field name="trigger_ids">wkf_triggered_invoices</field>
+            <field
+                name="condition">wkf_waiting_invoice_shipment2invoice_shipment_done</field>
         </record>
         <record model="workflow.transition" id="sale_transition_invoice_shipment_done_invoice_shipment_method_done">
             <field name="act_from" ref="sale_activity_invoice_shipment_done"/>

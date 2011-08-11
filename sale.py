@@ -817,6 +817,142 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 shipment_obj.workflow_trigger_validate(shipment_id, 'waiting')
             return shipment_id
 
+    def wkf_draft(self, sale):
+        self.write(sale.id, {'state': 'draft'})
+
+    def wkf_quotation(self, sale):
+        self.check_for_quotation(sale.id)
+        self.set_reference(sale.id)
+        self.write(sale.id, {'state': 'quotation'})
+
+    def wkf_confirmed(self, sale):
+        self.write(sale.id, {'state': 'confirmed'})
+
+    def wkf_waiting_invoice_sale(self, sale):
+        self.create_invoice(sale.id)
+        self.write(sale.id, {'invoice_state': 'waiting'})
+
+    def wkf_invoice_sale_exception(self, sale):
+        self.write(sale.id, {'invoice_state': 'exception'})
+
+    def wkf_invoice_sale_done(self, sale):
+        self.write(sale.id, {'invoice_state': 'paid'})
+
+    def wkf_shipment_invoice(self, sale):
+        self.create_shipment(sale.id)
+
+    def wkf_waiting_shipment_invoice(self, sale):
+        self.write(sale.id, {'shipment_state': 'waiting'})
+        self.create_shipment(sale.id)
+
+    def wkf_shipment_invoice_exception(self, sale):
+        self.write(sale.id, {'shipment_state': 'exception'})
+
+    def wkf_shipment_invoice_done(self, sale):
+        self.write(sale.id, {'shipment_state': 'sent'})
+
+    def wkf_shipment(self, sale):
+        self.create_shipment(sale.id)
+
+    def wkf_waiting_shipment(self, sale):
+        self.write(sale.id, {'shipment_state': 'waiting'})
+        self.create_shipment(sale.id)
+
+    def wkf_shipment_exception(self, sale):
+        self.write(sale.id, {'shipment_state': 'exception'})
+
+    def wkf_invoice_shipment(self, sale):
+        self.create_invoice(sale.id)
+        self.write(sale.id, {'invoice_state': 'waiting'})
+
+    def wkf_waiting_invoice_shipment(self, sale):
+        self.write(sale.id,
+            {'invoice_state': 'waiting', 'shipment_state': 'sent'})
+
+    def wkf_invoice_shipment_exception(self, sale):
+        self.write(sale.id, {'invoice_state': 'exception'})
+
+    def wkf_invoice_shipment_done(self, sale):
+        self.write(sale.id, {'invoice_state': 'paid'})
+
+    def wkf_invoice_shipment_method_done(self, sale):
+        self.write(sale.id, {'shipment_state': 'sent'})
+
+    def wkf_done(self, sale):
+        self.write(sale.id, {'state': 'done'})
+
+    def wkf_cancel(self, sale):
+        self.write(sale.id, {'state': 'cancel'})
+
+    def wkf_draft2quotation(self, sale):
+        return bool(sale.lines)
+
+    def wkf_invoice_method2waiting_invoice_sale(self, sale):
+        return sale.invoice_method == 'order'
+
+    def wkf_invoice_method2invoice_method_done(self, sale):
+        return sale.invoice_method != 'order'
+
+    def wkf_triggered_invoices(self, sale):
+        return [x.id for x in sale.invoices]
+
+    def wkf_waiting_invoice_sale2invoice_sale_exception(self, sale):
+        return sale.invoice_exception
+
+    def wkf_waiting_invoice_sale2invoice_sale_done(self, sale):
+        return sale.invoice_paid
+
+    def wkf_shipment_invoice_method2shipment_invoice_method_done(self, sale):
+        return sale.shipment_method != 'invoice'
+
+    def wkf_shipment_invoice_method2shipment_invoice(self, sale):
+        return self.shipment_method == 'invoice'
+
+    def wkf_triggered_shipments(self, sale):
+        return [x.id for x in sale.shipments]
+
+    def wkf_waiting_shipment_invoice2shipment_invoice_exception(self, sale):
+        return sale.shipment_exception
+
+    def wkf_waiting_shipment_invoice2shipment_invoice_done(self, sale):
+        return sale.shipment_done
+
+    def wkf_shipment_method2shipment_method_done(self, sale):
+        return sale.shipment_method != 'order'
+
+    def wkf_shipment_method2shipment(self, sale):
+        return sale.shipment_method == 'order'
+
+    def wkf_waiting_shipment2shipment_exception(self, sale):
+        return sale.shipment_exception
+
+    def wkf_waiting_shipment2invoice_shipment_method(self, sale):
+        return not sale.shipment_exception
+
+    def wkf_waiting_shipment2invoice_shipment_method_nosignal(self, sale):
+        return sale.shipment_done
+
+    def wkf_invoice_shipment_method2invoice_shipment(self, sale):
+        return sale.invoice_method == 'shipment'
+
+    def wkf_invoice_shipment_method2invoice_shipment_method_done(self, sale):
+        return sale.invoice_method != 'shipment' and sale.shipment_done
+
+    def wkf_invoice_shipment_method2waiting_shipment(self, sale):
+        return sale.invoice_method != 'shipment' and not sale.shipment_done
+
+    def wkf_invoice_shipment2waiting_shipment(self, sale):
+        return not sale.shipment_done
+
+    def wkf_invoice_shipment2waiting_invoice_shipment(self, sale):
+        return sale.shipment_done
+
+    def wkf_waiting_invoice_shipment2invoice_shipment_exception(self, sale):
+        return sale.invoice_exception
+
+    def wkf_waiting_invoice_shipment2invoice_shipment_done(self, sale):
+        return sale.invoice_paid
+
 Sale()
 
 
