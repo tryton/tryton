@@ -723,6 +723,108 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         for line in purchase.lines:
             line_obj.create_move(line)
 
+    def wkf_draft(self, purchase):
+        self.write(purchase.id, {'state': 'draft'})
+
+    def wkf_quotation(self, purchase):
+        self.check_for_quotation(purchase.id)
+        self.set_reference(purchase.id)
+        self.write(purchase.id, {'state': 'quotation'})
+
+    def wkf_confirmed(self, purchase):
+        self.set_purchase_date(purchase.id)
+        self.write(purchase.id, {'state': 'confirmed'})
+
+    def wkf_invoice_waiting(self, purchase):
+        self.create_invoice(purchase.id)
+        self.write(purchase.id, {'invoice_state': 'waiting'})
+
+    def wkf_invoice_exception(self, purchase):
+        self.write(purchase.id, {'invoice_state': 'exception'})
+
+    def wkf_invoice_done(self, purchase):
+        self.write(purchase.id, {'invoice_state': 'paid'})
+
+    def wkf_shipment_waiting(self, purchase):
+        self.write(purchase.id, {'shipment_state': 'waiting'})
+        self.create_move(purchase.id)
+
+    def wkf_shipment_exception(self, purchase):
+        self.write(purchase.id, {'shipment_state': 'exception'})
+
+    def wkf_invoice_shipment(self, purchase):
+        self.create_invoice(purchase.id)
+        self.write(purchase.id, {'invoice_state': 'waiting'})
+
+    def wkf_invoice_shipment_waiting(self, purchase):
+        self.write(purchase.id,
+            {'invoice_state': 'waiting', 'shipment_state': 'received'})
+
+    def wkf_invoice_shipment_exception(self, purchase):
+        self.write(purchase.id, {'invoice_state': 'exception'})
+
+    def wkf_invoice_shipment_done(self, purchase):
+        self.write(purchase.id, {'invoice_state': 'paid'})
+
+    def wkf_invoice_shipment_method_done(self, purchase):
+        self.write(purchase.id, {'shipment_state': 'received'})
+
+    def wkf_done(self, purchase):
+        self.write(purchase.id, {'state': 'done'})
+
+    def wkf_cancel(self, purchase):
+        self.write(purchase.id, {'state': 'cancel'})
+
+    def wkf_draft2quotation(self, purchase):
+        return bool(purchase.lines)
+
+    def wkf_invoice_method2invoice_waiting(self, purchase):
+        return purchase.invoice_method == 'order'
+
+    def wkf_invoice_method2invoice_done(self, purchase):
+        return purchase.invoice_method != 'order'
+
+    def wkf_triggered_invoices(self, purchase):
+        return [x.id for x in purchase.invoices]
+
+    def wkf_invoice_waiting2invoice_purchase_exception(self, purchase):
+        return purchase.invoice_exception
+
+    def wkf_invoice_waiting2invoice_done(self, purchase):
+        return purchase.invoice_paid
+
+    def wkf_shipment_waiting2shipment_exception(self, purchase):
+        return purchase.shipment_exception
+
+    def wkf_shipment_waiting2invoice_shipment_method(self, purchase):
+        return not purchase.shipment_exception
+
+    def wkf_shipment_waiting2invoice_shipment_method_nosignal(self, purchase):
+        return purchase.shipment_done
+
+    def wkf_invoice_shipment_method2invoice_shipment(self, purchase):
+        return purchase.invoice_method == 'shipment'
+
+    def wkf_invoice_shipment_method2inv_shipment_method_done(self, purchase):
+        return purchase.invoice_method != 'shipment' and purchase.shipment_done
+
+    def wkf_invoice_shipment_method2shipment_waiting(self, purchase):
+        return (purchase.invoice_method != 'shipment'
+            and not purchase.shipment_done)
+
+    def wkf_invoice_shipment2shipment_waiting(self, purchase):
+        return not purchase.shipment_done
+
+    def wkf_invoice_shipment2waiting_invoice_shipment(self, purchase):
+        return purchase.shipment_done
+
+    def wkf_waiting_invoice_shipment2invoice_shipment_exception(self,
+            purchase):
+        return purchase.invoice_exception
+
+    def wkf_waiting_invoice_shipment2invoice_shipment_done(self, purchase):
+        return purchase.invoice_paid
+
 Purchase()
 
 
