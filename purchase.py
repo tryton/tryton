@@ -103,6 +103,9 @@ class Purchase(ModelSQL, ModelView):
                 'invoice_lines_ignored': [('add', x) for x in invoice_line_ids],
                 })
 
+    def wkf_triggered_invoice_lines(self, purchase):
+        return [x.id for x in purchase.invoice_lines]
+
 Purchase()
 
 

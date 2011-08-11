@@ -26,7 +26,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_to"
                 ref="purchase.purchase_activity_invoice_done"/>
             <field name="trigger_model">account.invoice.line</field>
-            <field name="trigger_expr_id">[x.id for x in invoice_lines]</field>
+            <field name="trigger_ids">wkf_triggered_invoice_lines</field>
             <field name="condition">invoice_paid</field>
         </record>
 
@@ -37,7 +37,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_to"
                 ref="purchase.purchase_activity_invoice_shipment_done"/>
             <field name="trigger_model">account.invoice.line</field>
-            <field name="trigger_expr_id">[x.id for x in invoice_lines]</field>
+            <field name="trigger_ids">wkf_triggered_invoice_lines</field>
             <field name="condition">invoice_paid</field>
         </record>
 
