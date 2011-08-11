@@ -118,27 +118,24 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
         self.workflow_trigger_create(ids)
         return True
 
-    def set_state_draft(self, forecast_id):
-        line_obj = Pool().get("stock.forecast.line")
-        forecast = self.browse(forecast_id)
+    def wkf_draft(self, forecast):
+        line_obj = Pool().get('stock.forecast.line')
         if forecast.state == "done":
             line_obj.cancel_moves(forecast.lines)
-        self.write(forecast_id, {
+        self.write(forecast.id, {
             'state': 'draft',
             })
 
-    def set_state_cancel(self, forecast_id):
-        self.write(forecast_id, {
+    def wkf_cancel(self, forecast):
+        self.write(forecast.id, {
             'state': 'cancel',
             })
 
-    def set_state_done(self, forecast_id):
+    def wkf_done(self, forecast):
         line_obj = Pool().get('stock.forecast.line')
-        forecast = self.browse(forecast_id)
-
         for line in forecast.lines:
             line_obj.create_moves(line)
-        self.write(forecast_id, {
+        self.write(forecast.id, {
             'state': 'done',
             })
 

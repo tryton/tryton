@@ -173,23 +173,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="forecast_act_draft">
             <field name="workflow" ref="wkf_forecast"/>
             <field name="flow_start">True</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_draft()</field>
+            <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="forecast_act_cancel">
             <field name="workflow" ref="wkf_forecast"/>
             <field name="flow_stop">True</field>
             <field name="name">Cancel</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_cancel()</field>
+            <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="forecast_act_done">
             <field name="workflow" ref="wkf_forecast"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_done()</field>
+            <field name="method">wkf_done</field>
         </record>
         <record model="workflow.transition"
                 id="forecast_trans_draft_cancel">
