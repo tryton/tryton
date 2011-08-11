@@ -260,11 +260,9 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
                             amount_to_pay - abs(line['amount'])
         return res
 
-    def set_state_validated(self, statement_id):
+    def wkf_validated(self, statement):
         statement_line_obj = Pool().get('account.statement.line')
         lang_obj = Pool().get('ir.lang')
-
-        statement = self.browse(statement_id)
 
         computed_end_balance = statement.start_balance
         for line in statement.lines:
@@ -284,25 +282,23 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
             self.raise_user_error('wrong_end_balance', error_args=(amount,))
         for line in statement.lines:
             statement_line_obj.create_move(line)
-        self.write(statement_id, {
+        self.write(statement.id, {
             'state':'validated',
             })
 
-    def set_state_posted(self, statement_id):
+    def wkf_posted(self, statement):
         statement_line_obj = Pool().get('account.statement.line')
 
-        statement = self.browse(statement_id)
         statement_line_obj.post_move(statement.lines)
-        self.write(statement_id, {
+        self.write(statement.id, {
             'state':'posted',
             })
 
-    def set_state_cancel(self, statement_id):
+    def wkf_cancel(self, statement):
         statement_line_obj = Pool().get('account.statement.line')
 
-        statement = self.browse(statement_id)
         statement_line_obj.delete_move(statement.lines)
-        self.write(statement_id, {
+        self.write(statement.id, {
             'state':'cancel',
             })
 
