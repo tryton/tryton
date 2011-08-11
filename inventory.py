@@ -78,27 +78,25 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             return location_ids[0]
         return False
 
-    def set_state_draft(self, inventory_id):
-        self.write(inventory_id, {
+    def wkf_draft(self, inventory):
+        self.write(inventory.id, {
             'state': 'draft',
             })
 
-    def set_state_cancel(self, inventory_id):
+    def wkf_cancel(self, inventory):
         line_obj = Pool().get("stock.inventory.line")
-        inventory = self.browse(inventory_id)
         line_obj.cancel_move(inventory.lines)
-        self.write(inventory_id, {
+        self.write(inventory.id, {
             'state': 'cancel',
             })
 
-    def set_state_done(self, inventory_id):
+    def wkf_done(self, inventory):
         date_obj = Pool().get('ir.date')
         line_obj = Pool().get('stock.inventory.line')
-        inventory = self.browse(inventory_id)
 
         for line in inventory.lines:
             line_obj.create_move(line)
-        self.write(inventory_id, {
+        self.write(inventory.id, {
             'state': 'done',
             })
 

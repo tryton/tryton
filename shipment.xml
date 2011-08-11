@@ -753,29 +753,25 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="shipmentin_act_draft">
             <field name="workflow" ref="wkf_shipmentin"/>
             <field name="flow_start">True</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_draft()</field>
+            <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="shipmentin_act_cancel">
             <field name="workflow" ref="wkf_shipmentin"/>
             <field name="flow_stop">True</field>
             <field name="name">Canceled</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_cancel()</field>
+            <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="shipmentin_act_done">
             <field name="workflow" ref="wkf_shipmentin"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_done()</field>
+            <field name="method">wkf_done</field>
         </record>
         <record model="workflow.activity" id="shipmentin_act_received">
             <field name="name">Received</field>
-            <field name="kind">function</field>
             <field name="workflow" ref="wkf_shipmentin"/>
-            <field name="action">set_state_received()&#10;create_inventory_moves()</field>
+            <field name="method">wkf_received</field>
         </record>
 
         <record model="workflow.transition"
@@ -823,40 +819,34 @@ this repository contains the full copyright notices and license terms. -->
             <field name="workflow" ref="wkf_shipmentout"/>
             <field name="flow_start">True</field>
             <field name="name">Draft</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_draft()</field>
+            <field name="method">wkf_draft</field>
         </record>
         <record model="workflow.activity" id="shipmentout_act_cancel">
             <field name="workflow" ref="wkf_shipmentout"/>
             <field name="flow_stop">True</field>
             <field name="name">Canceled</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_cancel()</field>
+            <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="shipmentout_act_done">
             <field name="workflow" ref="wkf_shipmentout"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_done()</field>
+            <field name="method">wkf_done</field>
         </record>
         <record model="workflow.activity" id="shipmentout_act_waiting">
             <field name="name">Waiting</field>
-            <field name="kind">function</field>
             <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="action">set_state_waiting()</field>
+            <field name="method">wkf_waiting</field>
         </record>
         <record model="workflow.activity" id="shipmentout_act_assigned">
             <field name="name">Assigned</field>
-            <field name="kind">function</field>
             <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="action">set_state_assigned()</field>
+            <field name="method">wkf_assigned</field>
         </record>
         <record model="workflow.activity" id="shipmentout_act_packed">
             <field name="name">Packed</field>
-            <field name="kind">function</field>
             <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="action">set_state_packed()</field>
+            <field name="method">wkf_packed</field>
         </record>
 
         <record model="workflow.transition"
@@ -865,7 +855,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_to" ref="shipmentout_act_assigned"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">assign</field>
-            <field name="condition">assign_try()</field>
+            <field name="condition">wkf_assign_try</field>
         </record>
         <record model="workflow.transition"
                 id="shipmentout_trans_assigned_waiting">
@@ -887,7 +877,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_to" ref="shipmentout_act_assigned"/>
             <field name="group" ref="group_stock_force_assignment"/>
             <field name="signal">force_assign</field>
-            <field name="condition">assign_force()</field>
+            <field name="condition">wkf_assign_force</field>
         </record>
         <record model="workflow.transition"
                 id="shipmentout_trans_draft_waiting">
@@ -1026,35 +1016,30 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="shipmentinternal_act_draft">
             <field name="workflow" ref="wkf_shipmentinternal"/>
             <field name="flow_start">True</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_draft()</field>
+            <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="shipmentinternal_act_cancel">
             <field name="workflow" ref="wkf_shipmentinternal"/>
             <field name="flow_stop">True</field>
             <field name="name">Canceled</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_cancel()</field>
+            <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="shipmentinternal_act_done">
             <field name="workflow" ref="wkf_shipmentinternal"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_done()</field>
+            <field name="method">wkf_done</field>
         </record>
         <record model="workflow.activity" id="shipmentinternal_act_waiting">
             <field name="name">Waiting</field>
-            <field name="kind">function</field>
             <field name="workflow" ref="wkf_shipmentinternal"/>
-            <field name="action">set_state_waiting()</field>
+            <field name="method">wkf_waiting</field>
         </record>
         <record model="workflow.activity" id="shipmentinternal_act_assigned">
             <field name="name">Assigned</field>
-            <field name="kind">function</field>
             <field name="workflow" ref="wkf_shipmentinternal"/>
-            <field name="action">set_state_assigned()</field>
+            <field name="method">wkf_assigned</field>
         </record>
 
         <record model="workflow.transition"
@@ -1084,7 +1069,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_to" ref="shipmentinternal_act_assigned"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">assign</field>
-            <field name="condition">assign_try()</field>
+            <field name="condition">wkf_assign_try</field>
         </record>
         <record model="workflow.transition"
                 id="shipmentinternal_trans_assigned_waiting">
@@ -1099,7 +1084,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_to" ref="shipmentinternal_act_assigned"/>
             <field name="group" ref="group_stock_force_assignment"/>
             <field name="signal">force_assign</field>
-            <field name="condition">assign_force()</field>
+            <field name="condition">wkf_assign_force</field>
         </record>
         <record model="workflow.transition" id="shipmentinternal_trans_assigned_done">
             <field name="act_from" ref="shipmentinternal_act_assigned"/>
@@ -1137,29 +1122,25 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="shipment_out_return_act_draft">
             <field name="workflow" ref="wkf_shipment_out_return"/>
             <field name="flow_start">True</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_draft()</field>
+            <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="shipment_out_return_act_cancel">
             <field name="workflow" ref="wkf_shipment_out_return"/>
             <field name="flow_stop">True</field>
             <field name="name">Canceled</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_cancel()</field>
+            <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="shipment_out_return_act_done">
             <field name="workflow" ref="wkf_shipment_out_return"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_done()</field>
+            <field name="method">wkf_done</field>
         </record>
         <record model="workflow.activity" id="shipment_out_return_act_received">
             <field name="name">Received</field>
-            <field name="kind">function</field>
             <field name="workflow" ref="wkf_shipment_out_return"/>
-            <field name="action">set_state_received()&#10;create_inventory_moves()</field>
+            <field name="method">wkf_received</field>
         </record>
 
         <record model="workflow.transition"
@@ -1205,35 +1186,30 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="shipment_in_return_act_draft">
             <field name="workflow" ref="wkf_shipment_in_return"/>
             <field name="flow_start">True</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_draft()</field>
+            <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="shipment_in_return_act_cancel">
             <field name="workflow" ref="wkf_shipment_in_return"/>
             <field name="flow_stop">True</field>
             <field name="name">Canceled</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_cancel()</field>
+            <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="shipment_in_return_act_done">
             <field name="workflow" ref="wkf_shipment_in_return"/>
             <field name="flow_stop">True</field>
             <field name="name">Done</field>
-            <field name="kind">function</field>
-            <field name="action">set_state_done()</field>
+            <field name="method">wkf_done</field>
         </record>
         <record model="workflow.activity" id="shipment_in_return_act_waiting">
             <field name="name">Waiting</field>
-            <field name="kind">function</field>
             <field name="workflow" ref="wkf_shipment_in_return"/>
-            <field name="action">set_state_waiting()</field>
+            <field name="method">wkf_waiting</field>
         </record>
         <record model="workflow.activity" id="shipment_in_return_act_assigned">
             <field name="name">Assigned</field>
-            <field name="kind">function</field>
             <field name="workflow" ref="wkf_shipment_in_return"/>
-            <field name="action">set_state_assigned()</field>
+            <field name="method">wkf_assigned</field>
         </record>
 
         <record model="workflow.transition"
@@ -1256,7 +1232,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_to" ref="shipment_in_return_act_assigned"/>
             <field name="group" ref="group_stock"/>
             <field name="signal">assign</field>
-            <field name="condition">assign_try()</field>
+            <field name="condition">wkf_assign_try</field>
         </record>
         <record model="workflow.transition"
                 id="shipment_in_return_trans_assigned_waiting">
@@ -1271,7 +1247,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_to" ref="shipment_in_return_act_assigned"/>
             <field name="group" ref="group_stock_force_assignment"/>
             <field name="signal">force_assign</field>
-            <field name="condition">assign_force()</field>
+            <field name="condition">wkf_assign_force</field>
         </record>
         <record model="workflow.transition" id="shipment_in_return_trans_assigned_done">
             <field name="act_from" ref="shipment_in_return_act_assigned"/>
