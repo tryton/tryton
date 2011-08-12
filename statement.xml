@@ -216,21 +216,18 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="workflow.activity" id="statement_act_validated">
             <field name="workflow" ref="wkf_statement"/>
-            <field name="kind">function</field>
-            <field name="action">set_state_validated()</field>
+            <field name="method">wkf_validated</field>
             <field name="name">Validated</field>
         </record>
         <record model="workflow.activity" id="statement_act_posted">
             <field name="workflow" ref="wkf_statement"/>
-            <field name="kind">function</field>
-            <field name="action">set_state_posted()</field>
+            <field name="method">wkf_posted</field>
             <field name="name">Posted</field>
             <field name="flow_stop" eval="True"/>
         </record>
         <record model="workflow.activity" id="statement_act_cancel">
             <field name="workflow" ref="wkf_statement"/>
-            <field name="kind">function</field>
-            <field name="action">set_state_cancel()</field>
+            <field name="method">wkf_cancel</field>
             <field name="name">Canceled</field>
             <field name="flow_stop" eval="True"/>
         </record>
