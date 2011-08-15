@@ -311,8 +311,8 @@ class SaleOpportunityLine(ModelSQL, ModelView):
         on_change_with=['unit']), 'get_unit_digits')
     sale_line = fields.Many2One('sale.line', 'Sale Line', readonly=True,
             states={
-                'invisible': Not(Equal(Eval('_parent_opportunity.state'),
-                    'converted')),
+                'invisible': Not(Equal(Get(Eval('_parent_opportunity', {}),
+                        'state'), 'converted')),
             })
 
     def __init__(self):
