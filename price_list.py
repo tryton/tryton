@@ -5,7 +5,7 @@ import tokenize
 from StringIO import StringIO
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.tools import safe_eval
-from trytond.pyson import If, In, Eval, Get
+from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -47,9 +47,9 @@ class PriceList(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', required=True, translate=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-            select=1, domain=[
-                ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
+        select=1, domain=[
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
+                Eval('context', {}).get('company', 0)),
             ])
     lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines')
 
