@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Not, Eval, Bool, Or, Get
+from trytond.pyson import Eval
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -11,21 +11,21 @@ class Category(ModelSQL, ModelView):
     _name = 'product.category'
 
     account_expense = fields.Property(fields.Many2One('account.account',
-        'Account Expense', domain=[
-            ('kind', '=', 'expense'),
-            ('company', '=', Get(Eval('context', {}), 'company')),
-        ], on_change=['account_expense'],
-        states={
-            'invisible': Not(Bool(Get(Eval('context', {}), 'company'))),
-        }))
+            'Account Expense', domain=[
+                ('kind', '=', 'expense'),
+                ('company', '=', Eval('context', {}).get('company', 0)),
+                ], on_change=['account_expense'],
+            states={
+                'invisible': ~Eval('context', {}).get('company'),
+                }))
     account_revenue = fields.Property(fields.Many2One( 'account.account',
-        'Account Revenue', domain=[
-            ('kind', '=', 'revenue'),
-            ('company', '=', Get(Eval('context', {}), 'company')),
-        ], on_change=['account_revenue'],
-        states={
-            'invisible': Not(Bool(Get(Eval('context', {}), 'company'))),
-        }))
+            'Account Revenue', domain=[
+                ('kind', '=', 'revenue'),
+                ('company', '=', Eval('context', {}).get('company', 0)),
+                ], on_change=['account_revenue'],
+            states={
+                'invisible': ~Eval('context', {}).get('company'),
+                }))
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
             'category', 'tax', 'Customer Taxes', domain=[('parent', '=', False)])
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
@@ -108,42 +108,43 @@ class Template(ModelSQL, ModelView):
     account_category = fields.Boolean('Use Category\'s accounts',
             help='Use the accounts defined on the category')
     account_expense = fields.Property(fields.Many2One('account.account',
-        'Account Expense', domain=[
-            ('kind', '=', 'expense'),
-            ('company', '=', Get(Eval('context', {}), 'company')),
-        ], on_change=['account_expense'],
-        states={
-            'invisible': Or(Not(Bool(Get(Eval('context', {}), 'company'))),
-                Bool(Eval('account_category'))),
-        }, help='This account will be used instead of the one defined ' \
-                'on the category.', depends=['account_category']))
+            'Account Expense', domain=[
+                ('kind', '=', 'expense'),
+                ('company', '=', Eval('context', {}).get('company', 0)),
+                ], on_change=['account_expense'],
+            states={
+                'invisible': (~Eval('context', {}).get('company')
+                    | Eval('account_category')),
+                }, help='This account will be used instead of the one defined'\
+                    ' on the category.', depends=['account_category']))
     account_revenue = fields.Property(fields.Many2One('account.account',
-        'Account Revenue', domain=[
-            ('kind', '=', 'revenue'),
-            ('company', '=', Get(Eval('context', {}), 'company')),
-        ], on_change=['account_revenue'],
-        states={
-            'invisible': Or(Not(Bool(Get(Eval('context', {}), 'company'))),
-                Bool(Eval('account_category'))),
-        }, help='This account will be used instead of the one defined ' \
-                'on the category.', depends=['account_category']))
+                'Account Revenue', domain=[
+                    ('kind', '=', 'revenue'),
+                    ('company', '=', Eval('context', {}).get('company', 0)),
+                    ], on_change=['account_revenue'],
+                states={
+                    'invisible': (~Eval('context', {}).get('company')
+                        | Eval('account_category')),
+                    },
+                help='This account will be used instead of the one defined'\
+                    ' on the category.', depends=['account_category']))
     account_expense_used = fields.Function(fields.Many2One('account.account',
         'Account Expense Used'), 'get_account')
     account_revenue_used = fields.Function(fields.Many2One('account.account',
         'Account Revenue Used'), 'get_account')
-    taxes_category = fields.Boolean('Use Category\'s Taxes', help='Use the taxes ' \
-            'defined on the category')
+    taxes_category = fields.Boolean('Use Category\'s Taxes',
+            help='Use the taxes defined on the category')
     customer_taxes = fields.Many2Many('product.template-customer-account.tax',
-            'product', 'tax', 'Customer Taxes', domain=[('parent', '=', False)],
-            states={
-                'invisible': Or(Not(Bool(Get(Eval('context', {}), 'company'))),
-                    Bool(Eval('taxes_category'))),
+        'product', 'tax', 'Customer Taxes', domain=[('parent', '=', False)],
+        states={
+            'invisible': (~Eval('context', {}).get('company')
+                | Eval('taxes_category')),
             }, depends=['taxes_category'])
     supplier_taxes = fields.Many2Many('product.template-supplier-account.tax',
-            'product', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)],
-            states={
-                'invisible': Or(Not(Bool(Get(Eval('context', {}), 'company'))),
-                    Bool(Eval('taxes_category'))),
+        'product', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)],
+        states={
+            'invisible': (~Eval('context', {}).get('company')
+                | Eval('taxes_category')),
             }, depends=['taxes_category'])
     customer_taxes_used = fields.Function(fields.One2Many('account.tax', None,
         'Customer Taxes Used'), 'get_taxes')
