@@ -2,12 +2,12 @@
 #this repository contains the full copyright notices and license terms.
 'Address'
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Not, Bool, Eval, If, Greater
+from trytond.pyson import Eval, If
 from trytond.pool import Pool
 
 STATES = {
-    'readonly': Not(Bool(Eval('active'))),
-}
+    'readonly': ~Eval('active'),
+    }
 DEPENDS = ['active']
 
 
@@ -17,8 +17,7 @@ class Address(ModelSQL, ModelView):
     _description = __doc__
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', select=1,  states={
-            'readonly': If(Not(Bool(Eval('active'))),
-                True, Greater(Eval('id', 0), 0)),
+            'readonly': If(~Eval('active'), True, Eval('id', 0) > 0),
             },
         depends=['active', 'id'])
     name = fields.Char('Name', states=STATES, depends=DEPENDS)

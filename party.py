@@ -3,7 +3,7 @@
 import logging
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
-from trytond.pyson import Not, Bool, Eval
+from trytond.pyson import Bool, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -19,7 +19,7 @@ except ImportError:
             'Unable to import vatnumber. VAT number validation disabled.')
 
 STATES = {
-    'readonly': Not(Bool(Eval('active'))),
+    'readonly': ~Eval('active', True),
 }
 DEPENDS = ['active']
 
@@ -39,7 +39,7 @@ class Party(ModelSQL, ModelView):
         depends=DEPENDS)
     vat_number = fields.Char('VAT Number', help="Value Added Tax number",
         states={
-            'readonly': Not(Bool(Eval('active'))),
+            'readonly': ~Eval('active', True),
             'required': Bool(Eval('vat_country')),
             },
         depends=['active', 'vat_country'])
@@ -266,13 +266,13 @@ class CheckVIESCheck(ModelView):
     _name = 'party.check_vies.check'
     _description = __doc__
     parties_succeed = fields.Many2Many('party.party', None, None,
-            'Parties Succeed', readonly=True, states={
-                'invisible': Not(Bool(Eval('parties_succeed'))),
-                })
+        'Parties Succeed', readonly=True, states={
+            'invisible': ~Eval('parties_succeed'),
+            })
     parties_failed = fields.Many2Many('party.party', None, None,
-            'Parties Failed', readonly=True, states={
-                'invisible': Not(Bool(Eval('parties_failed'))),
-                })
+        'Parties Failed', readonly=True, states={
+            'invisible': ~Eval('parties_failed'),
+            })
 
 CheckVIESCheck()
 

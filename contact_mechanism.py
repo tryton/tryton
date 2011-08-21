@@ -1,11 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Not, Bool, Eval, Equal, In
+from trytond.pyson import Eval
 
 STATES = {
-    'readonly': Not(Bool(Eval('active'))),
-}
+    'readonly': ~Eval('active'),
+    }
 DEPENDS = ['active']
 
 _TYPES = [
@@ -38,33 +38,33 @@ class ContactMechanism(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=1)
     sequence = fields.Integer('Sequence')
     email = fields.Function(fields.Char('E-Mail', states={
-        'invisible': Not(Equal(Eval('type'), 'email')),
-        'required': Equal(Eval('type'), 'email'),
-        'readonly': Not(Bool(Eval('active'))),
+        'invisible': Eval('type') != 'email',
+        'required': Eval('type') == 'email',
+        'readonly': ~Eval('active', True),
         }, on_change=['email'], depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     website = fields.Function(fields.Char('Website', states={
-        'invisible': Not(Equal(Eval('type'), 'website')),
-        'required': Equal(Eval('type'), 'website'),
-        'readonly': Not(Bool(Eval('active'))),
+        'invisible': Eval('type') != 'website',
+        'required': Eval('type') == 'website',
+        'readonly': ~Eval('active', True),
         }, on_change=['website'], depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     skype = fields.Function(fields.Char('Skype',states={
-        'invisible': Not(Equal(Eval('type'), 'skype')),
-        'required': Equal(Eval('type'), 'skype'),
-        'readonly': Not(Bool(Eval('active'))),
+        'invisible': Eval('type') != 'skype',
+        'required': Eval('type') == 'skype',
+        'readonly': ~Eval('active', True),
         }, on_change=['skype'], depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     sip = fields.Function(fields.Char('SIP', states={
-        'invisible': Not(Equal(Eval('type'), 'sip')),
-        'required': Equal(Eval('type'), 'sip'),
-        'readonly': Not(Bool(Eval('active'))),
+        'invisible': Eval('type') != 'sip',
+        'required': Eval('type') == 'sip',
+        'readonly': ~Eval('active', True),
         }, on_change=['sip'], depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     other_value = fields.Function(fields.Char('Value', states={
-        'invisible': In(Eval('type'), ['email', 'website', 'skype', 'sip']),
-        'required': Not(In(Eval('type'), ['email', 'website'])),
-        'readonly': Not(Bool(Eval('active'))),
+        'invisible': Eval('type').in_(['email', 'website', 'skype', 'sip']),
+        'required': ~Eval('type').in_(['email', 'website']),
+        'readonly': ~Eval('active', True),
         }, on_change=['other_value'], depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
 
