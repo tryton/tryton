@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Eval, Not, Equal
+from trytond.pyson import Eval
 from trytond.pool import Pool
 
 
@@ -118,8 +118,8 @@ class Period(ModelSQL, ModelView):
         domain=[('code', '=', 'account.invoice')],
         context={'code': 'account.invoice'},
         states={
-            'required': Equal(Eval('type'), 'standard'),
-            'invisible': Not(Equal(Eval('type'), 'standard')),
+            'required': Eval('type') == 'standard',
+            'invisible': Eval('type') != 'standard',
             },
         depends=['type'])
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
@@ -127,8 +127,8 @@ class Period(ModelSQL, ModelView):
         domain=[('code', '=', 'account.invoice')],
         context={'code': 'account.invoice'},
         states={
-            'required': Equal(Eval('type'), 'standard'),
-            'invisible': Not(Equal(Eval('type'), 'standard')),
+            'required': Eval('type') == 'standard',
+            'invisible': Eval('type') != 'standard',
             },
         depends=['type'])
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
@@ -136,8 +136,8 @@ class Period(ModelSQL, ModelView):
         domain=[('code', '=', 'account.invoice')],
         context={'code': 'account.invoice'},
         states={
-            'required': Equal(Eval('type'), 'standard'),
-            'invisible': Not(Equal(Eval('type'), 'standard')),
+            'required': Eval('type') == 'standard',
+            'invisible': Eval('type') != 'standard',
             },
         depends=['type'])
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
@@ -145,8 +145,8 @@ class Period(ModelSQL, ModelView):
         domain=[('code', '=', 'account.invoice')],
         context={'code': 'account.invoice'},
         states={
-            'required': Equal(Eval('type'), 'standard'),
-            'invisible': Not(Equal(Eval('type'), 'standard')),
+            'required': Eval('type') == 'standard',
+            'invisible': Eval('type') != 'standard',
             },
         depends=['type'])
 

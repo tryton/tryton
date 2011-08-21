@@ -6,7 +6,7 @@ import time
 from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
-from trytond.pyson import Not, Equal, Eval
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -131,18 +131,18 @@ class PaymentTermLine(ModelSQL, ModelView):
             on_change=['type'])
     percentage = fields.Numeric('Percentage', digits=(16, 8),
         states={
-            'invisible': Not(Equal(Eval('type'), 'percent')),
-            'required': Equal(Eval('type'), 'percent'),
+            'invisible': Eval('type') != 'percent',
+            'required': Eval('type') == 'percent',
             }, depends=['type'], help='In %')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         states={
-            'invisible': Not(Equal(Eval('type'), 'fixed')),
-            'required': Equal(Eval('type'), 'fixed'),
+            'invisible': Eval('type') != 'fixed',
+            'required': Eval('type') == 'fixed',
             }, depends=['type', 'currency_digits'])
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
-            'invisible': Not(Equal(Eval('type'), 'fixed')),
-            'required': Equal(Eval('type'), 'fixed'),
+            'invisible': Eval('type') != 'fixed',
+            'required': Eval('type') == 'fixed',
             }, depends=['type'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['currency']), 'get_currency_digits')
