@@ -147,8 +147,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         for min_date in date2products:
             product_ids = [x[0].id for x in date2products[min_date]]
             with Transaction().set_context(forecast=True,
-                    stock_date_end=min_date or datetime.date.max,
-                    stock_skip_warehouse=True):
+                    stock_date_end=min_date or datetime.date.max):
                 pbl = product_obj.products_by_location(warehouse_ids,
                     product_ids, with_childs=True, skip_zero=False)
             for product, max_date in date2products[min_date]:
