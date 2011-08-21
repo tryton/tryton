@@ -4,7 +4,7 @@ from decimal import Decimal
 import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
-from trytond.pyson import Equal, Eval, Not, PYSONEncoder
+from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -29,15 +29,15 @@ class Account(ModelSQL, ModelView):
     root = fields.Many2One('analytic_account.account', 'Root', select=2,
         domain=[('parent', '=', False)],
         states={
-            'invisible': Equal(Eval('type'), 'root'),
-            'required': Not(Equal(Eval('type'), 'root')),
+            'invisible': Eval('type') == 'root',
+            'required': Eval('type') != 'root',
             },
         depends=['type'])
     parent = fields.Many2One('analytic_account.account', 'Parent', select=2,
         domain=[('parent', 'child_of', Eval('root'))],
         states={
-            'invisible': Equal(Eval('type'), 'root'),
-            'required': Not(Equal(Eval('type'), 'root')),
+            'invisible': Eval('type') == 'root',
+            'required': Eval('type') != 'root',
             },
         depends=['root', 'type'])
     childs = fields.One2Many('analytic_account.account', 'parent', 'Children')
@@ -61,7 +61,7 @@ class Account(ModelSQL, ModelView):
         ('credit-debit', 'Credit - Debit'),
         ], 'Display Balance', required=True)
     mandatory = fields.Boolean('Mandatory', states={
-            'invisible': Not(Equal(Eval('type'), 'root')),
+            'invisible': Eval('type') != 'root',
             },
         depends=['type'])
 
