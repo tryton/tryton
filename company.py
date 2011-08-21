@@ -4,7 +4,7 @@ import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
-from trytond.pyson import Eval, If, In, Get
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -207,9 +207,9 @@ User()
 class Property(ModelSQL, ModelView):
     _name = 'ir.property'
     company = fields.Many2One('company.company', 'Company',
-            domain=[
-                ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
+        domain=[
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
+                Eval('context', {}).get('company', 0)),
             ])
 
     def _set_values(self, name, model, res_id, val, field_id):
@@ -236,9 +236,9 @@ Property()
 class Sequence(ModelSQL, ModelView):
     _name = 'ir.sequence'
     company = fields.Many2One('company.company', 'Company',
-            domain=[
-                ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
+        domain=[
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
+                Eval('context', {}).get('company', 0)),
             ])
 
     def __init__(self):
