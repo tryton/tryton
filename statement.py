@@ -2,12 +2,12 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
-from trytond.pyson import Not, Equal, Eval, Or, Bool, Get, If, In
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
 from trytond.pool import Pool
 
-_STATES = {'readonly': Not(Equal(Eval('state'), 'draft'))}
+_STATES = {'readonly': Eval('state') != 'draft'}
 _DEPENDS = ['state']
 
 
@@ -18,17 +18,16 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
 
     company = fields.Many2One('company.company', 'Company', required=True,
         select=1, states=_STATES, domain=[
-            ('id', If(In('company', Eval('context', {})), '=', '!='),
-                Get(Eval('context', {}), 'company', 0)),
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
+                Eval('context', {}).get('company', 0)),
             ],
         depends=_DEPENDS)
     journal = fields.Many2One('account.statement.journal', 'Journal', required=True,
         domain=[
-            ('company', '=', Get(Eval('context', {}), 'company')),
+            ('company', '=', Eval('context', {}).get('company', 0)),
             ],
         states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines'))),
+            'readonly': (Eval('state') != 'draft') | Eval('lines'),
             },
         on_change=['journal', 'state', 'lines'], select=1,
         depends=['state', 'lines'])
@@ -50,8 +49,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         'get_balance')
     lines = fields.One2Many('account.statement.line', 'statement',
         'Transactions', states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Not(Bool(Eval('journal')))),
+            'readonly': (Eval('state') != 'draft') | ~Eval('journal'),
             }, on_change=['lines', 'journal'],
         depends=['state', 'journal'])
     state = fields.Selection([
@@ -321,16 +319,15 @@ class Line(ModelSQL, ModelView):
             required=True, ondelete='CASCADE')
     date = fields.Date('Date', required=True)
     amount = fields.Numeric('Amount', required=True,
-            digits=(16, Get(Eval('_parent_statement', {}),
-                'currency_digits', 2)),
-            on_change=['amount', 'party', 'account', 'invoice',
-                '_parent_statement.journal'])
+        digits=(16, Eval('_parent_statement', {}).get( 'currency_digits', 2)),
+        on_change=['amount', 'party', 'account', 'invoice',
+            '_parent_statement.journal'])
     party = fields.Many2One('party.party', 'Party',
             on_change=['amount', 'party', 'invoice'])
     account = fields.Many2One('account.account', 'Account', required=True,
-            on_change=['account', 'invoice'], domain=[
-                ('kind', '!=', 'view'),
-                ('company', '=', Get(Eval('_parent_statement', {}), 'company')),
+        on_change=['account', 'invoice'], domain=[
+            ('kind', '!=', 'view'),
+            ('company', '=', Eval('_parent_statement', {}).get('company', 0)),
             ])
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
@@ -338,11 +335,11 @@ class Line(ModelSQL, ModelView):
         domain=[
             ('party', '=', Eval('party')),
             ('account', '=', Eval('account')),
-            ('state', '=', If(Equal(Get(Eval('_parent_statement', {}),
-                            'state'), 'draft'), 'open', '')),
+            ('state', '=', If(Eval('_parent_statement', {}).get('state')
+                    == 'draft', 'open', '')),
             ],
         states={
-            'readonly': Not(Bool(Eval('amount'))),
+            'readonly': ~Eval('amount'),
             },
         depends=['party', 'account', 'amount'])
 
