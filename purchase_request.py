@@ -157,8 +157,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         for min_date in date2products:
             product_ids = [x[0].id for x in date2products[min_date]]
             local_context.update(
-                {'stock_date_end': min_date or datetime.date.max,
-                 'stock_skip_warehouse': True})
+                {'stock_date_end': min_date or datetime.date.max})
             pbl = product_obj.products_by_location(
                 cursor, user, warehouse_ids, product_ids, with_childs=True,
                 skip_zero=False, context=local_context)
