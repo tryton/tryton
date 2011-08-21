@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Not, Equal, Eval
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -34,20 +34,20 @@ class Work(ModelSQL, ModelView):
     _name = 'project.work'
 
     product = fields.Many2One('product.product', 'Product',
-            states={
-                'invisible': Not(Equal(Eval('type'), 'task')),
+        states={
+            'invisible': Eval('type') != 'task',
             }, on_change=['product', 'party', 'hours', 'company'],
             depends=['type', 'party', 'hours', 'company'])
     list_price = fields.Numeric('List Price',
-            digits=(16, Eval('currency_digits', 2)),
-            states={
-                'invisible': Not(Equal(Eval('type'), 'task')),
-            }, depends=['type', 'currency_digits'])
-    revenue = fields.Function(fields.Numeric('Revenue',
         digits=(16, Eval('currency_digits', 2)),
         states={
-            'invisible': Not(Equal(Eval('type'), 'project')),
-        }, depends=['type', 'currency_digits']), 'get_revenue')
+            'invisible': Eval('type') != 'task',
+            }, depends=['type', 'currency_digits'])
+    revenue = fields.Function(fields.Numeric('Revenue',
+            digits=(16, Eval('currency_digits', 2)),
+            states={
+                'invisible': Eval('type') != 'project',
+                }, depends=['type', 'currency_digits']), 'get_revenue')
     cost = fields.Function(fields.Numeric('Cost',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_cost')
