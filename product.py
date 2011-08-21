@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Not, Eval, Bool, Or, In, And, Get
+from trytond.pyson import Eval
 
 
 class Category(ModelSQL, ModelView):
@@ -10,10 +10,10 @@ class Category(ModelSQL, ModelView):
     account_cogs = fields.Property(fields.Many2One('account.account',
             'Account Cost of Goods Sold', domain=[
                 ('kind', '!=', 'view'),
-                ('company', '=', Get(Eval('context', {}), 'company')),
+                ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
-                'invisible': Not(Bool(Get(Eval('context', {}, ), 'company'))),
+                'invisible': ~Eval('context', {}, ).get('company'),
                 }))
 
 Category()
@@ -25,14 +25,14 @@ class Template(ModelSQL, ModelView):
     account_cogs = fields.Property(fields.Many2One('account.account',
             'Account Cost of Good Sold', domain=[
                 ('kind', '!=', 'view'),
-                ('company', '=', Get(Eval('context', {}), 'company')),
+                ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
-                'invisible': Or(Not(Bool(Get(Eval('context', {}), 'company'))),
-                    Bool(Eval('account_category'))),
-                'required': And(In(Eval('type'), ['stockable', 'consumable']),
-                    Bool(Get(Eval('context', {}), 'company')),
-                    Not(Bool(Eval('account_category')))),
+                'invisible': ((~Eval('context', {}).get('company'))
+                    | Eval('account_category')),
+                'required': (Eval('type').in_(['stockable', 'consumable'])
+                    & Eval('context', {}).get('company')
+                    & ~Eval('account_category')),
                 },
             help='This account will be used instead of the one defined '
             'on the category.',
