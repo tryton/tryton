@@ -18,8 +18,8 @@ STATES = [
     ('lost', 'Lost'),
 ]
 _STATES_START = {
-    'readonly': Not(Equal(Eval('state'), 'lead')),
-}
+    'readonly': Eval('state') != 'lead',
+    }
 _DEPENDS_START = ['state']
 _STATES_STOP = {
     'readonly': In(Eval('state'), ['converted', 'lost', 'cancelled']),
@@ -53,14 +53,14 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
             depends=['currency_digits'], help='Estimated revenue amount')
     warehouse = fields.Many2One('stock.location', 'Warehouse',
         domain=[('type', '=', 'warehouse')], states={
-            'required': Equal(Eval('state'), 'converted'),
+            'required': Eval('state') == 'converted',
             'readonly': In(Eval('state'),
                 ['converted', 'lost', 'cancelled']),
             },
         depends=['state'])
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states={
-            'required': Equal(Eval('state'), 'converted'),
+            'required': Eval('state') == 'converted',
             'readonly': In(Eval('state'),
                 ['converted', 'lost', 'cancelled']),
             },
@@ -89,11 +89,11 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
     history = fields.One2Many('sale.opportunity.history', 'opportunity',
             'History', readonly=True)
     lost_reason = fields.Text('Reason for loss', states={
-        'invisible': Not(Equal(Eval('state'), 'lost')),
-    }, depends=['state'])
+            'invisible': Eval('state') != 'lost',
+            }, depends=['state'])
     sale = fields.Many2One('sale.sale', 'Sale', readonly=True, states={
-        'invisible': Not(Equal(Eval('state'), 'converted')),
-        }, depends=['state'])
+            'invisible': Eval('state') != 'converted',
+            }, depends=['state'])
 
     def __init__(self):
         super(SaleOpportunity, self).__init__()
@@ -310,9 +310,9 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits',
         on_change_with=['unit']), 'get_unit_digits')
     sale_line = fields.Many2One('sale.line', 'Sale Line', readonly=True,
-            states={
-                'invisible': Not(Equal(Get(Eval('_parent_opportunity', {}),
-                        'state'), 'converted')),
+        states={
+            'invisible': (Eval('_parent_opportunity', {}).get( 'state')
+                != 'converted'),
             })
 
     def __init__(self):
