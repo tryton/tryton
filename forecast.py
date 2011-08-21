@@ -3,12 +3,14 @@
 import datetime
 import time
 from dateutil.relativedelta import relativedelta
+import itertools
 from trytond.model import ModelView, ModelWorkflow, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.tools import reduce_ids
 
 STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -20,18 +22,19 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
     "Stock Forecast"
     _name = "stock.forecast"
     _description = __doc__
-    _rec_name = 'location'
+    _rec_name = 'warehouse'
 
-    location = fields.Many2One(
+    warehouse = fields.Many2One(
         'stock.location', 'Location', required=True,
-        domain=[('type', '=', 'storage')], states={
+        domain=[('type', '=', 'warehouse')], states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines'))),
             },
         depends=['state', 'lines'])
     destination = fields.Many2One(
         'stock.location', 'Destination', required=True,
-        domain=[('type', '=', 'customer')], states=STATES, depends=DEPENDS)
+        domain=[('type', 'in', ['customer', 'production'])], states=STATES,
+        depends=DEPENDS)
     from_date = fields.Date('From Date', required=True, states=STATES,
         depends=DEPENDS)
     to_date = fields.Date('To Date', required=True, states=STATES,
@@ -69,15 +72,47 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
                 'locations with overlapping dates'
                 })
         self._order.insert(0, ('from_date', 'DESC'))
-        self._order.insert(1, ('location', 'ASC'))
+        self._order.insert(1, ('warehouse', 'ASC'))
 
     def init(self, module_name):
+        location_obj = Pool().get('stock.location')
         cursor = Transaction().cursor
+
+        table = TableHandler(cursor, self, module_name)
+        migrate_warehouse = (not table.column_exist('warehouse')
+            and table.column_exist('location'))
+
         super(Forecast, self).init(module_name)
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
         table.index_action('create_date', action='add')
+
+        if migrate_warehouse:
+            location2warehouse = {}
+            def find_warehouse(location):
+                if location.type == 'warehouse':
+                    return location.id
+                elif location.parent:
+                    return find_warehouse(location.parent)
+            cursor.execute('SELECT id, location FROM "%s"' % self._table)
+            for forecast_id, location_id in cursor.fetchall():
+                warehouse_id = location_id # default fallback
+                if location_id in location2warehouse:
+                    warehouse_id = location2warehouse[location_id]
+                else:
+                    location = location_obj.browse(location_id)
+                    warehouse_id = find_warehouse(location) or location_id
+                    location2warehouse[location_id] = warehouse_id
+                cursor.execute('UPDATE "%s" SET warehouse = %%s '
+                    'WHERE id = %%s' % self._table, (warehouse_id, forecast_id))
+            table.not_null_action('warehouse',
+                action=self.warehouse.required and 'add' or 'remove')
+            table.drop_column('location', True)
+
+        # Migration from 2.0 delete stock moves
+        forecast_ids = self.search([])
+        self.delete_moves(forecast_ids)
 
     def default_state(self):
         return 'draft'
@@ -103,7 +138,7 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
                     'WHERE ((from_date <= %s AND to_date >= %s) ' \
                             'OR (from_date <= %s AND to_date >= %s) ' \
                             'OR (from_date >= %s AND to_date <= %s)) ' \
-                        'AND location = %s ' \
+                        'AND warehouse = %s ' \
                         'AND destination = %s ' \
                         'AND state = \'done\' ' \
                         'AND company = %s '
@@ -111,7 +146,7 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
                     (forecast.from_date, forecast.from_date,
                      forecast.to_date, forecast.to_date,
                      forecast.from_date, forecast.to_date,
-                     forecast.location.id, forecast.destination.id,
+                     forecast.warehouse.id, forecast.destination.id,
                      forecast.company.id, forecast.id))
             rowcount = cursor.rowcount
             if rowcount == -1 or rowcount is None:
@@ -125,9 +160,6 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
         return True
 
     def wkf_draft(self, forecast):
-        line_obj = Pool().get('stock.forecast.line')
-        if forecast.state == "done":
-            line_obj.cancel_moves(forecast.lines)
         self.write(forecast.id, {
             'state': 'draft',
             })
@@ -138,12 +170,28 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
             })
 
     def wkf_done(self, forecast):
-        line_obj = Pool().get('stock.forecast.line')
-        for line in forecast.lines:
-            line_obj.create_moves(line)
         self.write(forecast.id, {
             'state': 'done',
             })
+
+    def create_moves(self, forecast_ids):
+        'Create stock moves for the forecast ids'
+        line_obj = Pool().get('stock.forecast.line')
+
+        forecasts = self.browse(forecast_ids)
+        for forecast in forecasts:
+            if forecast.state == 'done':
+                for line in forecast.lines:
+                    line_obj.create_moves(line)
+
+    def delete_moves(self, forecast_ids):
+        'Delete stock moves for the forecast ids'
+        line_obj = Pool().get('stock.forecast.line')
+
+        forecasts = self.browse(forecast_ids)
+        for forecast in forecasts:
+            for line in forecast.lines:
+                line_obj.delete_moves(line)
 
     def copy(self, ids, default=None):
         line_obj = Pool().get('stock.forecast.line')
@@ -197,7 +245,10 @@ class ForecastLine(ModelSQL, ModelView):
     moves = fields.Many2Many('stock.forecast.line-stock.move',
             'line', 'move','Moves', readonly=True)
     forecast = fields.Many2One(
-        'stock.forecast', 'Forecast', required=True, ondelete='CASCADE',)
+        'stock.forecast', 'Forecast', required=True, ondelete='CASCADE')
+    quantity_executed = fields.Function(fields.Float('Quantity Executed',
+            digits=(16, Eval('unit_digits', 2)), depends=['unit_digits']),
+        'get_quantity_executed')
 
     def __init__(self):
         super(ForecastLine, self).__init__()
@@ -243,6 +294,51 @@ class ForecastLine(ModelSQL, ModelView):
             res[line.id] = line.product.default_uom.digits
         return res
 
+    def get_quantity_executed(self, ids, name):
+        cursor = Transaction().cursor
+        move_obj = Pool().get('stock.move')
+        location_obj = Pool().get('stock.location')
+        uom_obj = Pool().get('product.uom')
+        forecast_obj = Pool().get('stock.forecast')
+        line_move_obj = Pool().get('stock.forecast.line-stock.move')
+
+        result = dict((x, 0) for x in ids)
+        lines = self.browse(ids)
+        key = lambda line: line.forecast.id
+        lines.sort(key=key)
+        for forecast_id, lines in itertools.groupby(lines, key):
+            forecast = forecast_obj.browse(forecast_id)
+            product2line = dict((line.product.id, line) for line in lines)
+            product_ids = product2line.keys()
+            for i in range(0, len(product_ids), cursor.IN_MAX):
+                sub_ids = product_ids[i:i + cursor.IN_MAX]
+                red_sql, red_ids = reduce_ids('product', sub_ids)
+                cursor.execute('SELECT m.product, '
+                        'SUM(m.internal_quantity) AS quantity '
+                    'FROM "' + move_obj._table + '" AS m '
+                        'JOIN "' + location_obj._table + '" AS fl '
+                            'ON m.from_location = fl.id '
+                        'JOIN "' + location_obj._table + '" AS tl '
+                            'ON m.to_location = tl.id '
+                        'LEFT JOIN "' + line_move_obj._table + '" AS lm '
+                            'ON m.id = lm.move '
+                    'WHERE ' + red_sql + ' '
+                        'AND fl.left >= %s AND fl.right <= %s '
+                        'AND tl.left >= %s AND tl.right <= %s '
+                        'AND m.state != %s '
+                        'AND COALESCE(m.effective_date, m.planned_date) >= %s '
+                        'AND COALESCE(m.effective_date, m.planned_date) <= %s '
+                        'AND lm.id IS NULL '
+                    'GROUP BY m.product',
+                    red_ids + [forecast.warehouse.left, forecast.warehouse.right,
+                        forecast.destination.left, forecast.destination.right,
+                        'cancel', forecast.from_date, forecast.to_date])
+                for product_id, quantity in cursor.fetchall():
+                    line = product2line[product_id]
+                    result[line.id] = uom_obj.compute_qty(
+                        line.product.default_uom, quantity, line.uom)
+        return result
+
     def copy(self, ids, default=None):
         if default is None:
             default = {}
@@ -251,11 +347,25 @@ class ForecastLine(ModelSQL, ModelView):
         return super(ForecastLine, self).copy(ids, default=default)
 
     def create_moves(self, line):
+        'Create stock moves for the forecast line'
         move_obj = Pool().get('stock.move')
         uom_obj = Pool().get('product.uom')
-        delta = line.forecast.to_date - line.forecast.from_date
+        date_obj = Pool().get('ir.date')
+
+        assert not line.moves
+
+        today = date_obj.today()
+        from_date = line.forecast.from_date
+        if from_date < today:
+            from_date = today
+        to_date = line.forecast.to_date
+        if to_date < today:
+            return
+
+        delta = to_date - from_date
         delta = delta.days + 1
-        nb_packet = int(line.quantity/line.minimal_quantity)
+        nb_packet = int((line.quantity - line.quantity_executed)
+            / line.minimal_quantity)
         distribution = self.distribute(delta, nb_packet)
         unit_price = False
         if line.forecast.destination.type == 'customer':
@@ -268,26 +378,27 @@ class ForecastLine(ModelSQL, ModelView):
             if qty == 0.0:
                 continue
             mid = move_obj.create({
-                'from_location': line.forecast.location.id,
+                'from_location': line.forecast.warehouse.storage_location.id,
                 'to_location': line.forecast.destination.id,
                 'product': line.product.id,
                 'uom': line.uom.id,
                 'quantity': qty * line.minimal_quantity,
-                'planned_date': line.forecast.from_date + datetime.timedelta(day),
+                'planned_date': (line.forecast.from_date
+                        + datetime.timedelta(day)),
                 'company': line.forecast.company.id,
                 'currency':line.forecast.company.currency.id,
                 'unit_price': unit_price,
                 })
-            moves.append(('add',mid))
-        self.write(line.id, {'moves': moves})
+            moves.append(mid)
+        self.write(line.id, {'moves': [('set', moves)]})
 
-    def cancel_moves(self, lines):
+    def delete_moves(self, line):
+        'Delete stock moves of the forecast line'
         move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for l in lines for m in l.moves],
-                {'state': 'cancel'})
-        move_obj.delete([m.id for l in lines for m in l.moves])
+        move_obj.delete([m.id for m in line.moves])
 
     def distribute(self, delta, qty):
+        'Distribute qty over delta'
         range_delta = range(delta)
         a = {}.fromkeys(range_delta, 0)
         while qty > 0:
@@ -416,7 +527,7 @@ class ForecastComplete(Wizard):
                 stock_destination=[forecast.destination.id],
                 stock_date_start=data['form']['from_date'],
                 stock_date_end=data['form']['to_date']):
-            return product_obj.products_by_location([forecast.location.id],
+            return product_obj.products_by_location([forecast.warehouse.id],
                     with_childs=True, skip_zero=False)
 
     def _set_default_products(self, data):

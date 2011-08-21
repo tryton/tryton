@@ -29,8 +29,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <form string="Forecast" col="4">
-                        <label name="location"/>
-                        <field name="location"/>
+                        <label name="warehouse"/>
+                        <field name="warehouse"/>
                         <label name="destination"/>
                         <field name="destination"/>
                         <label name="from_date"/>
@@ -74,7 +74,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Forecasts">
-                        <field name="location" select="1"/>
+                        <field name="warehouse" select="1"/>
                         <field name="state" select="1"/>
                         <field name="from_date"/>
                         <field name="to_date"/>
@@ -141,6 +141,8 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="minimal_quantity"/>
                         <label name="uom"/>
                         <field name="uom"/>
+                        <label name="quantity_executed"/>
+                        <field name="quantity_executed"/>
                         <field name="moves" colspan="4"/>
                         <field name="unit_digits" invisible="1" colspan="4"/>
                     </form>
@@ -157,6 +159,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="quantity" select="1"/>
                         <field name="minimal_quantity" select="2"/>
                         <field name="uom" select="1"/>
+                        <field name="quantity_executed"/>
                         <field name="forecast" select="2"/>
                         <field name="unit_digits" tree_invisible="1"/>
                     </tree>
