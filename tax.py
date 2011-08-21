@@ -4,8 +4,7 @@ from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
-from trytond.pyson import Eval, Not, Equal, If, In, Bool, Get, Or, And, \
-        PYSONEncoder
+from trytond.pyson import Eval, If, Bool, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.pool import Pool
@@ -311,14 +310,14 @@ class OpenChartCodeInit(ModelView):
         ('periods', 'By Periods'),
         ], 'Method', required=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            help='Leave empty for all open fiscal year',
-            states={
-                'invisible': Not(Equal(Eval('method'), 'fiscalyear')),
+        help='Leave empty for all open fiscal year',
+        states={
+            'invisible': Eval('method') != 'fiscalyear',
             }, depends=['method'])
     periods = fields.Many2Many('account.period', None, None, 'Periods',
-            help='Leave empty for all periods of all open fiscal year',
-            states={
-                'invisible': Not(Equal(Eval('method'), 'periods')),
+        help='Leave empty for all periods of all open fiscal year',
+        states={
+            'invisible': Eval('method') != 'periods',
             }, depends=['method'])
 
     def default_method(self):
@@ -581,12 +580,13 @@ class Tax(ModelSQL, ModelView):
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['company']), 'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-            states={
-                'invisible': Not(Equal(Eval('type'), 'fixed')),
-            }, help='In company\'s currency', depends=['type', 'currency_digits'])
+        states={
+            'invisible': Eval('type') != 'fixed',
+            }, help='In company\'s currency',
+        depends=['type', 'currency_digits'])
     percentage = fields.Numeric('Percentage', digits=(16, 8),
-            states={
-                'invisible': Not(Equal(Eval('type'), 'percentage')),
+        states={
+            'invisible': Eval('type') != 'percentage',
             }, help='In %', depends=['type'])
     type = fields.Selection([
         ('percentage', 'Percentage'),
@@ -596,9 +596,9 @@ class Tax(ModelSQL, ModelView):
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE')
     childs = fields.One2Many('account.tax', 'parent', 'Children')
     company = fields.Many2One('company.company', 'Company', required=True,
-            domain=[
-                ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
+        domain=[
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
+                Eval('context', {}).get('company', 0)),
             ])
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
         domain=[
@@ -606,10 +606,8 @@ class Tax(ModelSQL, ModelView):
             ('kind', '!=', 'view'),
             ],
         states={
-            'readonly': Or(Equal(Eval('type'), 'none'),
-                Not(Bool(Eval('company')))),
-            'required': And(Not(Equal(Eval('type'), 'none')),
-                Bool(Eval('company'))),
+            'readonly': (Eval('type') == 'none') | ~Eval('company'),
+            'required': (Eval('type') != 'none') & Eval('company'),
             },
         depends=['company', 'type'])
     credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
@@ -618,51 +616,49 @@ class Tax(ModelSQL, ModelView):
             ('kind', '!=', 'view'),
             ],
         states={
-            'readonly': Or(Equal(Eval('type'), 'none'),
-                Not(Bool(Eval('company')))),
-            'required': And(Not(Equal(Eval('type'), 'none')),
-                Bool(Eval('company'))),
+            'readonly': (Eval('type') == 'none') | ~Eval('company'),
+            'required': (Eval('type') != 'none') & Eval('company'),
             },
         depends=['company', 'type'])
     invoice_base_code = fields.Many2One('account.tax.code',
-            'Invoice Base Code',
-            states={
-                'readonly': Equal(Eval('type'), 'none'),
+        'Invoice Base Code',
+        states={
+            'readonly': Eval('type') == 'none',
             }, depends=['type'])
     invoice_base_sign = fields.Numeric('Invoice Base Sign', digits=(2, 0),
-            help='Usualy 1 or -1',
-            states={
-                'readonly': Equal(Eval('type'), 'none'),
+        help='Usualy 1 or -1',
+        states={
+            'readonly': Eval('type') == 'none',
             }, depends=['type'])
     invoice_tax_code = fields.Many2One('account.tax.code',
-            'Invoice Tax Code',
-            states={
-                'readonly': Equal(Eval('type'), 'none'),
+        'Invoice Tax Code',
+        states={
+            'readonly': Eval('type') == 'none',
             }, depends=['type'])
     invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0),
-            help='Usualy 1 or -1',
-            states={
-                'readonly': Equal(Eval('type'), 'none'),
+        help='Usualy 1 or -1',
+        states={
+            'readonly': Eval('type') == 'none',
             }, depends=['type'])
     credit_note_base_code = fields.Many2One('account.tax.code',
-            'Credit Note Base Code',
-            states={
-                'readonly': Equal(Eval('type'), 'none'),
+        'Credit Note Base Code',
+        states={
+            'readonly': Eval('type') == 'none',
             }, depends=['type'])
     credit_note_base_sign = fields.Numeric('Credit Note Base Sign', digits=(2, 0),
-            help='Usualy 1 or -1',
-            states={
-                'readonly': Equal(Eval('type'), 'none'),
+        help='Usualy 1 or -1',
+        states={
+            'readonly': Eval('type') == 'none',
             }, depends=['type'])
     credit_note_tax_code = fields.Many2One('account.tax.code',
-            'Credit Note Tax Code',
-            states={
-                'readonly': Equal(Eval('type'), 'none'),
+        'Credit Note Tax Code',
+        states={
+            'readonly': Eval('type') == 'none',
             }, depends=['type'])
     credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign', digits=(2, 0),
-            help='Usualy 1 or -1',
-            states={
-                'readonly': Equal(Eval('type'), 'none'),
+        help='Usualy 1 or -1',
+        states={
+            'readonly': Eval('type') == 'none',
             }, depends=['type'])
     template = fields.Many2One('account.tax.template', 'Template')
 
@@ -1024,9 +1020,9 @@ class Rule(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', required=True, translate=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-            select=1, domain=[
-                ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
+        select=1, domain=[
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
+                Eval('context', {}).get('company', 0)),
             ])
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
     template = fields.Many2One('account.tax.rule.template', 'Template')
@@ -1115,7 +1111,7 @@ class RuleLineTemplate(ModelSQL, ModelView):
     group = fields.Many2One('account.tax.group', 'Tax Group')
     origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
         domain=[
-            ('account', '=', Get(Eval('_parent_rule', {}), 'account')),
+            ('account', '=', Eval('_parent_rule', {}).get('account', 0)),
             ('group', '=', Eval('group'))
             ],
         help='If the original tax template is filled, the rule will be ' \
@@ -1123,7 +1119,7 @@ class RuleLineTemplate(ModelSQL, ModelView):
         depends=['group'])
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
         domain=[
-            ('account', '=', Get(Eval('_parent_rule', {}), 'account')),
+            ('account', '=', Eval('_parent_rule', {}).get('account', 0)),
             ('group', '=', Eval('group')),
             ],
         depends=['group'])
@@ -1210,7 +1206,7 @@ class RuleLine(ModelSQL, ModelView):
     group = fields.Many2One('account.tax.group', 'Tax Group')
     origin_tax = fields.Many2One('account.tax', 'Original Tax',
         domain=[
-            ('company', '=', Get(Eval('_parent_rule', {}), 'company')),
+            ('company', '=', Eval('_parent_rule', {}).get('company')),
             ('group', '=', Eval('group')),
             ],
         help='If the original tax is filled, the rule will be applied ' \
@@ -1218,7 +1214,7 @@ class RuleLine(ModelSQL, ModelView):
         depends=['group'])
     tax = fields.Many2One('account.tax', 'Substitution Tax',
         domain=[
-            ('company', '=', Get(Eval('_parent_rule', {}), 'company')),
+            ('company', '=', Eval('_parent_rule', {}).get('company')),
             ('group', '=', Eval('group')),
             ],
         depends=['group'])

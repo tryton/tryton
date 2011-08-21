@@ -12,17 +12,17 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
 from trytond.backend import TableHandler, FIELDS
-from trytond.pyson import Equal, Eval, Get, PYSONEncoder
+from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 _MOVE_STATES = {
-    'readonly': Equal(Eval('state'), 'posted'),
-}
+    'readonly': Eval('state') == 'posted',
+    }
 _MOVE_DEPENDS = ['state']
 _LINE_STATES = {
-    'readonly': Equal(Eval('state'), 'valid'),
-}
+    'readonly': Eval('state') == 'valid',
+    }
 _LINE_DEPENDS = ['state']
 
 
@@ -435,7 +435,7 @@ class Line(ModelSQL, ModelView):
     move = fields.Many2One('account.move', 'Move', select=1, required=True,
         states={
             'required': False,
-            'readonly': Equal(Eval('state'), 'valid'),
+            'readonly': Eval('state') == 'valid',
             },
         depends=['state'])
     journal = fields.Function(fields.Many2One('account.journal', 'Journal'),
@@ -1307,10 +1307,10 @@ class OpenJournalAsk(ModelView):
     _description = __doc__
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     period = fields.Many2One('account.period', 'Period', required=True,
-            domain=[
-                ('state', '!=', 'close'),
-                ('fiscalyear.company.id', '=',
-                    Get(Eval('context', {}), 'company', 0)),
+        domain=[
+            ('state', '!=', 'close'),
+            ('fiscalyear.company.id', '=',
+                Eval('context', {}).get('company', 0)),
             ])
 
     def default_period(self):

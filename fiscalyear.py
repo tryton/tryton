@@ -6,12 +6,12 @@ from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.tools import datetime_strftime
-from trytond.pyson import Equal, Eval, If, In, Get
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 STATES = {
-    'readonly': Equal(Eval('state'), 'close'),
+    'readonly': Eval('state') == 'close',
 }
 DEPENDS = ['state']
 
@@ -45,9 +45,9 @@ class FiscalYear(ModelSQL, ModelView):
             },
             depends=['company'])
     company = fields.Many2One('company.company', 'Company', required=True,
-            domain=[
-                ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
+        domain=[
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
+                Eval('context', {}).get('company', 0)),
             ])
 
     def __init__(self):

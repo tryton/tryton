@@ -3,12 +3,12 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
-from trytond.pyson import Equal, Eval, Not, Get, Or, And, Bool
+from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 STATES = {
-    'readonly': Equal(Eval('state'), 'close'),
+    'readonly': Eval('state') == 'close',
 }
 DEPENDS = ['state']
 
@@ -87,33 +87,33 @@ class Journal(ModelSQL, ModelView):
     centralised = fields.Boolean('Centralised counterpart')
     update_posted = fields.Boolean('Allow cancelling moves')
     sequence = fields.Property(fields.Many2One('ir.sequence', 'Sequence',
-        domain=[('code', '=', 'account.journal')],
-        context={'code': 'account.journal'},
-        states={
-            'required': Bool(Get(Eval('context', {}), 'company', 0)),
-        }))
+            domain=[('code', '=', 'account.journal')],
+            context={'code': 'account.journal'},
+            states={
+                'required': Bool(Eval('context', {}).get('company', 0)),
+                }))
     credit_account = fields.Property(fields.Many2One('account.account',
-        'Default Credit Account', domain=[
-            ('kind', '!=', 'view'),
-            ('company', '=', Get(Eval('context', {}), 'company', 0)),
-        ],
-        states={
-            'required': And(Or(Bool(Eval('centralised')),
-                Equal(Eval('type'), 'cash')),
-                Bool(Get(Eval('context', {}), 'company', 0))),
-            'invisible': Not(Bool(Get(Eval('context', {}), 'company', 0))),
-        }, depends=['type', 'centralised']))
+            'Default Credit Account', domain=[
+                ('kind', '!=', 'view'),
+                ('company', '=', Eval('context', {}).get('company', 0)),
+                ],
+            states={
+                'required': ((Eval('centralised', False)
+                        | (Eval('type') == 'cash'))
+                    & Bool(Eval('context', {}).get('company', 0))),
+                'invisible': ~Eval('context', {}).get('company', 0),
+                }, depends=['type', 'centralised']))
     debit_account = fields.Property(fields.Many2One('account.account',
-        'Default Debit Account', domain=[
-            ('kind', '!=', 'view'),
-            ('company', '=', Get(Eval('context', {}), 'company', 0)),
-        ],
-        states={
-            'required': And(Or(Bool(Eval('centralised')),
-                Equal(Eval('type'), 'cash')),
-                Bool(Get(Eval('context', {}), 'company', 0))),
-            'invisible': Not(Bool(Get(Eval('context', {}), 'company', 0))),
-        }, depends=['type', 'centralised']))
+            'Default Debit Account', domain=[
+                ('kind', '!=', 'view'),
+                ('company', '=', Eval('context', {}).get('company', 0)),
+                ],
+            states={
+                'required': ((Eval('centralised', False)
+                        | (Eval('type') == 'cash'))
+                    & Bool(Eval('context', {}).get('company', 0))),
+                'invisible': ~Eval('context', {}).get('company', 0),
+                }, depends=['type', 'centralised']))
 
     def __init__(self):
         super(Journal, self).__init__()

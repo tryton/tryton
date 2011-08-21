@@ -2,12 +2,12 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields, OPERATORS
 from trytond.wizard import Wizard
-from trytond.pyson import Equal, Eval
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 _STATES = {
-    'readonly': Equal(Eval('state'), 'close'),
+    'readonly': Eval('state') == 'close',
 }
 _DEPENDS = ['state']
 

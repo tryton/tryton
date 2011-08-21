@@ -9,7 +9,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.report import Report
 from trytond.tools import reduce_ids
-from trytond.pyson import Equal, Eval, Not, PYSONEncoder, Date, Get
+from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -154,7 +154,7 @@ class Type(ModelSQL, ModelView):
     name = fields.Char('Name', size=None, required=True, translate=True)
     parent = fields.Many2One('account.account.type', 'Parent',
         ondelete="RESTRICT", domain=[
-            ('company', '=', Get(Eval('context', {}), 'company')),
+            ('company', '=', Eval('context', {}).get('company')),
             ])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
         domain=[
@@ -317,17 +317,17 @@ class AccountTemplate(ModelSQL, ModelView):
             select=1)
     code = fields.Char('Code', size=None, select=1)
     type = fields.Many2One('account.account.type.template', 'Type',
-            ondelete="RESTRICT",
-            states={
-                'invisible': Equal(Eval('kind'), 'view'),
-                'required': Not(Equal(Eval('kind'), 'view')),
+        ondelete="RESTRICT",
+        states={
+            'invisible': Eval('kind') == 'view',
+            'required': Eval('kind') != 'view',
             }, depends=['kind'])
     parent = fields.Many2One('account.account.template', 'Parent', select=1,
             ondelete="RESTRICT")
     childs = fields.One2Many('account.account.template', 'parent', 'Children')
     reconcile = fields.Boolean('Reconcile',
-            states={
-                'invisible': Equal(Eval('kind'), 'view'),
+        states={
+            'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
     kind = fields.Selection([
         ('other', 'Other'),
@@ -338,8 +338,8 @@ class AccountTemplate(ModelSQL, ModelView):
         ('view', 'View'),
         ], 'Kind', required=True)
     deferral = fields.Boolean('Deferral', states={
-        'invisible': Equal(Eval('kind'), 'view'),
-        }, depends=['kind'])
+            'invisible': Eval('kind') == 'view',
+            }, depends=['kind'])
 
     def __init__(self):
         super(AccountTemplate, self).__init__()
@@ -533,11 +533,12 @@ class Account(ModelSQL, ModelView):
             help='Force all moves for this account \n' \
                     'to have this secondary currency.', ondelete="RESTRICT")
     type = fields.Many2One('account.account.type', 'Type', ondelete="RESTRICT",
-            states={
-                'invisible': Equal(Eval('kind'), 'view'),
-                'required': Not(Equal(Eval('kind'), 'view')),
-            }, domain=[
-                ('company', '=', Eval('company')),
+        states={
+            'invisible': Eval('kind') == 'view',
+            'required': Eval('kind') == 'view',
+            },
+        domain=[
+            ('company', '=', Eval('company')),
             ], depends=['kind', 'company'])
     parent = fields.Many2One('account.account', 'Parent', select=1,
             left="left", right="right", ondelete="RESTRICT")
@@ -554,10 +555,10 @@ class Account(ModelSQL, ModelView):
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_credit_debit')
     reconcile = fields.Boolean('Reconcile',
-            help='Allow move lines of this account \n' \
-                    'to be reconciled.',
-            states={
-                'invisible': Equal(Eval('kind'), 'view'),
+        help='Allow move lines of this account \n' \
+            'to be reconciled.',
+        states={
+            'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
     note = fields.Text('Note')
     kind = fields.Selection([
@@ -569,11 +570,11 @@ class Account(ModelSQL, ModelView):
         ('view', 'View'),
         ], 'Kind', required=True)
     deferral = fields.Boolean('Deferral', states={
-        'invisible': Equal(Eval('kind'), 'view'),
-        }, depends=['kind'])
+            'invisible': Eval('kind') == 'view',
+            }, depends=['kind'])
     deferrals = fields.One2Many('account.account.deferral', 'account',
-            'Deferrals', readonly=True, states={
-                'invisible': Equal(Eval('kind'), 'view'),
+        'Deferrals', readonly=True, states={
+            'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
     template = fields.Many2One('account.account.template', 'Template')
 
