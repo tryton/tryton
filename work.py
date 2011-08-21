@@ -3,7 +3,7 @@
 import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.modelstorage import OPERATORS
-from trytond.pyson import Not, Bool, Eval, Get, Equal
+from trytond.pyson import Eval
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -35,22 +35,22 @@ class Work(ModelSQL, ModelView):
             ('project', 'Project'),
             ('task', 'Task')
             ],
-            'Type', required=True, select=1,
-            states={
-                'invisible': Get(Eval('context', {}), 'type', False),
+        'Type', required=True, select=1,
+        states={
+            'invisible': Eval('context', {}).get('type', False),
             })
     party = fields.Many2One('party.party', 'Party',
-            states={
-                'invisible': Not(Equal(Eval('type'), 'project')),
+        states={
+            'invisible': Eval('type') != 'project',
             }, depends=['type'])
     party_address = fields.Many2One('party.address', 'Contact Address',
-            domain=[('party', '=', Eval('party'))],
-            states={
-                'invisible': Not(Equal(Eval('type'), 'project')),
+        domain=[('party', '=', Eval('party'))],
+        states={
+            'invisible': Eval('type') != 'project',
             }, depends=['party', 'type'])
     effort = fields.Float("Effort",
-            states={
-                'invisible': Not(Equal(Eval('type'), 'task')),
+        states={
+            'invisible': Eval('type') != 'task',
             }, depends=['type'], help="Estimated Effort for this work")
     total_effort = fields.Function(fields.Float('Total Effort',
         help="Estimated total effort for this work and the sub-works"),
@@ -63,9 +63,9 @@ class Work(ModelSQL, ModelView):
             ('opened', 'Opened'),
             ('done', 'Done'),
             ], 'State',
-            states={
-                'invisible': Not(Equal(Eval('type'), 'task')),
-                'required': Equal(Eval('type'), 'task'),
+        states={
+            'invisible': Eval('type') != 'task',
+            'required': Eval('type') == 'task',
             }, select=1, depends=['type'])
     sequence = fields.Integer('Sequence')
 
