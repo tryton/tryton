@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import Model, fields
-from trytond.pyson import Not, Bool, Eval
+from trytond.pyson import Eval
 import luhn
 
 
@@ -9,7 +9,7 @@ class Address(Model):
     _name = 'party.address'
 
     siret_nic = fields.Char('SIRET NIC', select=1, states={
-            'readonly': Not(Bool(Eval('active'))),
+            'readonly': ~Eval('active', True),
             }, size=5, depends=['active'])
     siret = fields.Function(fields.Char('SIRET'), 'get_siret')
 
