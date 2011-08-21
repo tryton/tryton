@@ -3,13 +3,13 @@
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.modelstorage import OPERATORS
-from trytond.pyson import Not, Bool, Eval
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 STATES = {
-    'readonly': Not(Bool(Eval('active'))),
-}
+    'readonly': ~Eval('active', True),
+    }
 DEPENDS = ['active']
 
 class UomCategory(ModelSQL, ModelView):
