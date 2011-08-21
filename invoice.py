@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Not, Equal, Eval
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -12,7 +12,7 @@ class InvoiceLine(ModelSQL, ModelView):
     analytic_accounts = fields.Many2One('analytic_account.account.selection',
         'Analytic Accounts',
         states={
-            'invisible': Not(Equal(Eval('type'), 'line')),
+            'invisible': Eval('type') != 'line',
             },
         depends=['type'])
 
