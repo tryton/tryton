@@ -238,7 +238,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_tax_code_tree2">
             <field name="name">Tax Codes</field>
             <field name="res_model">account.tax.code</field>
-            <field name="domain">[('company', '=', Eval('company')), ('parent', '=', False)]</field>
+            <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_code_tree2_view1">
             <field name="sequence" eval="10"/>
@@ -279,6 +279,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_tax_code">
+            <field name="model" search="[('model', '=', 'account.tax.code')]" />
+            <field name="global_p" eval="True" />
+        </record>
+        <record model="ir.rule" id="rule_tax_code1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.tax.code')]" />
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_tax_code" />
         </record>
 
 
