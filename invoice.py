@@ -34,6 +34,11 @@ class InvoiceLine(ModelSQL, ModelView):
             analytic_accounts_field, fields_names))
         return res
 
+    def default_get(self, fields, with_rec_name=True):
+        fields = [x for x in fields if not x.startswith('analytic_account_')]
+        return super(InvoiceLine, self).default_get(fields,
+            with_rec_name=with_rec_name)
+
     def read(self, ids, fields_names=None):
         selection_obj = self.pool.get('analytic_account.account.selection')
 
