@@ -112,6 +112,8 @@ class CursorInterface(object):
         :param context: the context
         :return: the cache dictionary
         '''
+        from trytond.transaction import Transaction
+        user = Transaction().user
         if context is None:
             context = {}
         cache_ctx = context.copy()
@@ -119,7 +121,7 @@ class CursorInterface(object):
                 '_delete_records'):
             if i in cache_ctx:
                 del cache_ctx[i]
-        return self.cache.setdefault(repr(cache_ctx), {})
+        return self.cache.setdefault((user, repr(cache_ctx)), {})
 
     def execute(self, sql, params=None):
         '''
