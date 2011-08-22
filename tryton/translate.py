@@ -171,11 +171,13 @@ def setlang(lang=None, locale_dict=None):
             elif os.name == 'mac' or \
                     (hasattr(os, 'uname') and os.uname()[0] == 'Darwin'):
                 encoding = 'UTF-8'
+            # ensure environment variable are str
+            lang, lang2, encoding = str(lang), str(lang2), str(encoding)
             os.environ['LANGUAGE'] = lang
             os.environ['LC_ALL'] = lang2 + '.' + encoding
             os.environ['LC_MESSAGES'] = lang2 + '.' + encoding
             os.environ['LANG'] = lang + '.' + encoding
-            locale.setlocale(locale.LC_ALL, str(lang2 + '.' + encoding))
+            locale.setlocale(locale.LC_ALL, lang2 + '.' + encoding)
         except:
             logging.getLogger('translate').info(
                     _('Unable to set locale %s') % lang2 + '.' + encoding)
