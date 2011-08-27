@@ -9,6 +9,7 @@ from trytond.model.browse import EvalEnvironment
 from trytond.tools import safe_eval, reduce_domain
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
+from trytond.config import CONFIG
 import datetime
 import time
 from decimal import Decimal
@@ -1080,7 +1081,8 @@ class ModelStorage(Model):
                                 context=context)
 
             # validate digits
-            if hasattr(field, 'digits') and field.digits:
+            if (hasattr(field, 'digits') and field.digits
+                    and CONFIG.options['db_type'] != 'mysql'):
                 if is_pyson(field.digits):
                     pyson_digits = PYSONEncoder().encode(field.digits)
                     ctx = context.copy()
