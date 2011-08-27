@@ -21,6 +21,7 @@ from trytond.tools import safe_eval, reduce_domain
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 from trytond.transaction import Transaction
+from trytond.config import CONFIG
 
 
 class ModelStorage(Model):
@@ -1071,7 +1072,8 @@ class ModelStorage(Model):
                                     error_args=self._get_error_args(field_name))
 
                 # validate digits
-                if hasattr(field, 'digits') and field.digits:
+                if (hasattr(field, 'digits') and field.digits
+                        and CONFIG.options['db_type'] != 'mysql'):
                     if is_pyson(field.digits):
                         pyson_digits = PYSONEncoder().encode(field.digits)
                         for record in records:
