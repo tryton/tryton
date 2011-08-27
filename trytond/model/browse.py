@@ -167,7 +167,9 @@ class BrowseRecord(object):
                             isinstance(x, (list, tuple)) and x[0] or x, model,
                             local_cache=self._local_cache,
                             context=ctx) for x in data[i]], ctx)
-                    if isinstance(j, fields.Function):
+                    if (isinstance(j, fields.Function)
+                            or isinstance(data[i], (BrowseRecord,
+                                    BrowseRecordList))):
                         self._local_data.setdefault(data['id'], {})[i] = data[i]
                         del data[i]
                 self._data[data['id']].update(data)
