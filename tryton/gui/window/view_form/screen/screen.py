@@ -458,7 +458,7 @@ class Screen(SignalEvent):
 
     def save_current(self):
         if not self.current_record:
-            if self.current_view == 'tree' and len(self.group):
+            if self.current_view.view_type == 'tree' and len(self.group):
                 self.current_record = self.group[0]
             else:
                 return True
