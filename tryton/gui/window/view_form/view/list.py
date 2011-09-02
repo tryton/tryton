@@ -114,14 +114,6 @@ class AdaptModelGroup(gtk.GenericTreeModel):
             record.modified_fields.setdefault(record.parent_name or 'id')
         group.move(record, 0)
 
-    def move_end(self, record):
-        group = self.group
-        if group != record.group:
-            record.group.remove(record, remove=True)
-            group.add(record)
-            record.modified_fields.setdefault(record.parent_name or 'id')
-        group.move(record, -1)
-
     def sort(self, ids):
         ids2pos = {}
         pos = 0
@@ -593,7 +585,7 @@ class ViewList(ParserView):
             elif self.children_field:
                 store.move_into(record, path)
         else:
-            store.move_end(record)
+            store.move_after(record, (len(store) - 1,))
         context.drop_finish(False, etime)
         if treeview.sequence:
             record.group.set_sequence(field=treeview.sequence)
