@@ -114,12 +114,12 @@ class BrowseRecord(object):
                 ffields = {name: col}
 
             # add datetime_field
-            for field in ffields:
+            for field in ffields.values():
                 if hasattr(field, 'datetime_field') and field.datetime_field:
                     if field.datetime_field in self._model._columns:
-                        date_field = self._model._columns[field.datetime_field]
+                        datetime_field = self._model._columns[field.datetime_field]
                     else:
-                        date_field = self._model._inherit_fields[
+                        datetime_field = self._model._inherit_fields[
                                 field.datetime_field][2]
                     ffields[field.datetime_field] = datetime_field
 
