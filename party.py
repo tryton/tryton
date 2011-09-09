@@ -10,7 +10,7 @@ class Configuration(Model):
     _name = 'party.configuration'
 
     def __init__(self):
-        super(PartyConfiguration, self).__init__()
+        super(Configuration, self).__init__()
 
         self.party_sequence = copy.copy(self.party_sequence)
         self.party_sequence.domain = copy.copy(self.party_sequence.domain)
