@@ -131,7 +131,8 @@ class User(ModelSQL, ModelView):
         res = super(User, self).get_status_bar(ids, name)
         for user in self.browse(ids):
             if user.company:
-                res[user.id] += ' ' + user.company.name
+                res[user.id] += ' - %s [%s]' % (user.company.name,
+                    user.company.currency.name)
         return res
 
     def on_change_main_company(self, vals):
