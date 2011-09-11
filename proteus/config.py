@@ -51,7 +51,7 @@ class Config(object):
     def __eq__(self, other):
         if isinstance(other, Config):
             return repr(self) == repr(other)
-        return NotImplementedError
+        raise NotImplementedError
 
 
 class _TrytondMethod(object):
