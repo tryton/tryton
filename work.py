@@ -181,6 +181,8 @@ class Work(ModelSQL, ModelView):
             works = self.browse(ids)
             currents = dict((req.id, req) for work in works for req in
                     work.requests)
+            if not value:
+                return
             for v in value:
                 to_unlink = []
                 to_link = []
