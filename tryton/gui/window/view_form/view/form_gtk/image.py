@@ -208,10 +208,10 @@ class Image(WidgetInterface):
             try:
                 loader = gtk.gdk.PixbufLoader(ftype)
                 loader.write(data, len(data))
+                pixbuf = loader.get_pixbuf()
+                loader.close()
             except Exception:
                 continue
-            pixbuf = loader.get_pixbuf()
-            loader.close()
             if pixbuf:
                 break
         if not pixbuf:
