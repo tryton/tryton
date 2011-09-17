@@ -130,13 +130,13 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     amount_to_pay = fields.Function(fields.Numeric('Amount to Pay',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_amount_to_pay')
-    invoice_report = fields.Binary('Invoice Report', readonly=True)
+    invoice_report_cache = fields.Binary('Invoice Report', readonly=True)
     invoice_report_format = fields.Char('Invoice Report Format', readonly=True)
 
     def __init__(self):
         super(Invoice, self).__init__()
         self._check_modify_exclude = ['state', 'payment_lines',
-                'invoice_report', 'invoice_report_format']
+                'invoice_report_cache', 'invoice_report_format']
         self._rpc.update({
             'button_draft': True,
         })
@@ -183,6 +183,21 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
 
         # Migration from 1.2 invoice_date is no more required
         table.not_null_action('invoice_date', action='remove')
+
+        # Migration from 2.0 invoice_report renamed into invoice_report_cache
+        # to remove base64 encoding
+
+        if (table.column_exist('invoice_report')
+                and table.column_exist('invoice_report_cache')):
+            cursor.execute('SELECT id, invoice_report '
+                'FROM "' + self._table + '"')
+            for invoice_id, report in cursor.fetchall():
+                if report:
+                    report = base64.decodestring(report)
+                    cursor.execute('UPDATE "' + self._table + '" '
+                        'SET invoice_report_cache = %s '
+                        'WHERE id = %s', (invoice_id, report))
+                table.drop_column('invoice_report')
 
         # Add index on create_date
         table.index_action('create_date', action='add')
@@ -939,7 +954,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         default['state'] = 'draft'
         default['number'] = False
         default['move'] = False
-        default['invoice_report'] = False
+        default['invoice_report_cache'] = False
         default['invoice_report_format'] = False
         default['payment_lines'] = False
         default['lines'] = False
@@ -2134,20 +2149,21 @@ class InvoiceReport(Report):
 
         invoice = objects[0]
 
-        if invoice.invoice_report:
+        if invoice.invoice_report_cache:
             return (invoice.invoice_report_format,
-                    base64.decodestring(invoice.invoice_report))
+                invoice.invoice_report_cache)
 
         user = user_obj.browse(Transaction().user)
         localcontext['company'] = user.company
         res = super(InvoiceReport, self).parse(report, objects, datas,
                 localcontext)
-        #If the invoice is open or paid and the report not saved in invoice_report
-        #there was an error somewhere. So we save it now in invoice_report
+        # If the invoice is open or paid and the report not saved in
+        # invoice_report_cache there was an error somewhere. So we save it now
+        # in invoice_report_cache
         if invoice.state in ('open', 'paid'):
             invoice_obj.write(invoice.id, {
                 'invoice_report_format': res[0],
-                'invoice_report': base64.encodestring(res[1]),
+                'invoice_report_cache': res[1],
                 })
         return res
 
