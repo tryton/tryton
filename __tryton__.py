@@ -3,12 +3,16 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name' : 'Sale Shipment Cost',
+    'name_de_DE': 'Verkauf Lieferposten Kosten',
     'version' : '0.0.1',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Add sale shipment cost',
-    'depends' : [
+    'description_de_DE': '''
+    - Fügt den Verkäufen die Verwaltung von Kosten für Lieferposten hinzu.
+    ''',
+     'depends' : [
         'ir',
         'res',
         'carrier',
@@ -21,5 +25,6 @@
         'stock.xml',
     ],
     'translation': [
+        'de_DE.csv',
     ],
 }
