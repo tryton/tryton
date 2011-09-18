@@ -1,0 +1,16 @@
+type,name,res_id,src,value,fuzzy
+field,"carrier,carrier_cost_method",0,Carrier Cost Method,Frachtführer Kostenmethode,0
+field,"carrier,carrier_product",0,Carrier Product,Frachtführer Artikel,0
+field,"carrier,party",0,Party,Partei,0
+field,"carrier,rec_name",0,Name,Name,0
+help,"carrier,carrier_cost_method",0,Method to compute carrier cost,Methode für die Berechnung der Frachtkosten,0
+model,"carrier,name",0,carrier,Frachtführer,0
+model,"ir.action,name",act_carrier_form,Carriers,Frachtführer,0
+model,"ir.action,name",act_carrier_form2,Carrier,Frachtführer,0
+model,"ir.ui.menu,name",menu_carrier,Carrier Management,Frachtführer,0
+model,"ir.ui.menu,name",menu_carrier_form,Carriers,Frachtführer,0
+model,"ir.ui.menu,name",menu_carrier_form2,New Carrier,Neuer Frachtführer,0
+model,"res.group,name",group_carrier_admin,Carrier Administration,Frachtführer Administration,0
+selection,"carrier,carrier_cost_method",0,Product Price,Artikelpreis,0
+view,carrier,0,Carrier,Frachtführer,0
+view,carrier,0,Carriers,Frachtführer,0
