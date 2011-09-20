@@ -260,6 +260,8 @@ class ModelSQL(ModelStorage):
                 if field in ('create_uid', 'create_date',
                         'write_uid', 'write_date'):
                     del defaults[field]
+                if field in values:
+                    del defaults[field]
             values.update(self._clean_defaults(defaults))
 
         (upd0, upd1, upd2) = ('', '', [])
