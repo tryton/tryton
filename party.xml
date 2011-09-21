@@ -62,7 +62,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
                 id="act_open_invoice_keyword1">
             <field name="keyword">form_relate</field>
-            <field name="model">party.party,0</field>
+            <field name="model">party.party,-1</field>
             <field name="action" ref="act_invoice_form2"/>
         </record>
 

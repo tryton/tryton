@@ -877,7 +877,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="print_invoice_report_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">account.invoice,0</field>
+            <field name="model">account.invoice,-1</field>
             <field name="action" ref="print_invoice_report"/>
         </record>
 
@@ -906,7 +906,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="credit_invoice_keyword">
             <field name="keyword">form_action</field>
-            <field name="model">account.invoice,0</field>
+            <field name="model">account.invoice,-1</field>
             <field name="action" ref="credit_invoice"/>
         </record>
 
