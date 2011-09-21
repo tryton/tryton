@@ -240,7 +240,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
                 id="act_open_project_work_keyword1">
             <field name="keyword">form_relate</field>
-            <field name="model">project.work,0</field>
+            <field name="model">project.work,-1</field>
             <field name="action" ref="act_open_child_work"/>
         </record>
         <record model="ir.action.act_window.view"
