@@ -240,7 +240,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
                 id="act_open_shipment_keyword1">
             <field name="keyword">form_relate</field>
-            <field name="model">sale.sale,0</field>
+            <field name="model">sale.sale,-1</field>
             <field name="action" ref="act_shipment_form"/>
         </record>
         <record model="ir.action.act_window" id="act_invoice_form">
@@ -251,7 +251,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
                 id="act_open_invoice_keyword1">
             <field name="keyword">form_relate</field>
-            <field name="model">sale.sale,0</field>
+            <field name="model">sale.sale,-1</field>
             <field name="action" ref="act_invoice_form"/>
         </record>
 
@@ -766,7 +766,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="report_sale_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">sale.sale,0</field>
+            <field name="model">sale.sale,-1</field>
             <field name="action" ref="report_sale"/>
         </record>
 
