@@ -88,7 +88,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_close_period_keyword">
             <field name="keyword">form_action</field>
-            <field name="model">account.period,0</field>
+            <field name="model">account.period,-1</field>
             <field name="action" ref="act_close_period"/>
         </record>
         <record model="ir.action.wizard" id="act_reopen_period">
@@ -98,7 +98,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_reopen_period_keyword">
             <field name="keyword">form_action</field>
-            <field name="model">account.period,0</field>
+            <field name="model">account.period,-1</field>
             <field name="action" ref="act_reopen_period"/>
         </record>
         <record model="ir.action.act_window" id="act_period_form2">

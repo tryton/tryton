@@ -353,7 +353,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_close_journal_period_keyword">
             <field name="keyword">form_action</field>
-            <field name="model">account.journal.period,0</field>
+            <field name="model">account.journal.period,-1</field>
             <field name="action" ref="act_close_journal_period"/>
         </record>
 
@@ -364,7 +364,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_reopen_journal_period_keyword">
             <field name="keyword">form_action</field>
-            <field name="model">account.journal.period,0</field>
+            <field name="model">account.journal.period,-1</field>
             <field name="action" ref="act_reopen_journal_period"/>
         </record>
 
