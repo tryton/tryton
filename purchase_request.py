@@ -53,6 +53,15 @@ class PurchaseRequest(ModelSQL, ModelView):
             'create_request': 'Purchase requests are only created by the system.',
             })
 
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        super(PurchaseRequest, self).init(module_name)
+
+        # Migration from 2.0: empty order point origin is -1 instead of 0
+        cursor.execute('UPDATE "%s" '
+            'SET origin = %%s WHERE origin = %%s' % self._table,
+            ('stock.order_point,-1', 'stock.order_point,0'))
+
     def get_rec_name(self, ids, name):
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -333,7 +342,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         if order_point:
             origin = 'stock.order_point,%s'%order_point.id
         else:
-            origin = 'stock.order_point,0'
+            origin = 'stock.order_point,-1'
         return {'product': product,
                 'party': supplier and supplier or None,
                 'quantity': quantity,
