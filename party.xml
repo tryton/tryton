@@ -130,7 +130,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_party_by_category_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model">party.category,0</field>
+            <field name="model">party.category,-1</field>
             <field name="action" ref="act_party_by_category"/>
         </record>
         <record model="ir.action.report" id="report_label">
@@ -141,7 +141,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="report_label_party">
             <field name="keyword">form_print</field>
-            <field name="model">party.party,0</field>
+            <field name="model">party.party,-1</field>
             <field name="action" ref="report_label"/>
         </record>
 
@@ -172,7 +172,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="check_vies_keyword">
             <field name="keyword">form_action</field>
-            <field name="model">party.party,0</field>
+            <field name="model">party.party,-1</field>
             <field name="action" ref="wizard_check_vies"/>
         </record>
 
