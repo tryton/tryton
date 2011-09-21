@@ -353,7 +353,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="create_shipment_out_return_keyword">
             <field name="keyword">form_action</field>
-            <field name="model">stock.shipment.out,0</field>
+            <field name="model">stock.shipment.out,-1</field>
             <field name="action" ref="create_shipment_out_return"/>
         </record>
 
@@ -947,7 +947,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
          id="report_shipment_out_delivery_note_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">stock.shipment.out,0</field>
+            <field name="model">stock.shipment.out,-1</field>
             <field name="action" ref="report_shipment_out_delivery_note"/>
         </record>
 
@@ -961,7 +961,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
          id="report_shipment_out_picking_list_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">stock.shipment.out,0</field>
+            <field name="model">stock.shipment.out,-1</field>
             <field name="action" ref="report_shipment_out_picking_list"/>
         </record>
 
@@ -975,7 +975,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
          id="report_shipment_in_restocking_list_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">stock.shipment.in,0</field>
+            <field name="model">stock.shipment.in,-1</field>
             <field name="action" ref="report_shipment_in_restocking_list"/>
         </record>
 
@@ -989,7 +989,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
          id="report_shipment_out_return_restocking_list_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">stock.shipment.out.return,0</field>
+            <field name="model">stock.shipment.out.return,-1</field>
             <field name="action" ref="report_shipment_out_return_restocking_list"/>
         </record>
 
@@ -1003,7 +1003,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
          id="report_shipment_internal_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">stock.shipment.internal,0</field>
+            <field name="model">stock.shipment.internal,-1</field>
             <field name="action" ref="report_shipment_internal"/>
         </record>
 

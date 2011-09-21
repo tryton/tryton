@@ -59,7 +59,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
                 id="act_location_quantity_keyword1">
             <field name="keyword">form_relate</field>
-            <field name="model">product.product,0</field>
+            <field name="model">product.product,-1</field>
             <field name="action" ref="wizard_location_open"/>
         </record>
 

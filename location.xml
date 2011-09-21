@@ -129,7 +129,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.keyword"
                 id="act_product_by_location_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model">stock.location,0</field>
+            <field name="model">stock.location,-1</field>
             <field name="action" ref="wizard_product_open"/>
         </record>
 
