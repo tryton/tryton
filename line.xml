@@ -97,7 +97,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_open_account_keyword">
             <field name="keyword">tree_open</field>
-            <field name="model">analytic_account.account,0</field>
+            <field name="model">analytic_account.account,-1</field>
             <field name="action" ref="act_open_account"/>
         </record>
 
