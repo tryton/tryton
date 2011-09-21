@@ -387,7 +387,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="report_letter_party">
             <field name="keyword">form_print</field>
-            <field name="model">party.party,0</field>
+            <field name="model">party.party,-1</field>
             <field name="action" ref="report_letter"/>
         </record>
     </data>
