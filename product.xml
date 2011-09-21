@@ -165,7 +165,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.keyword" id="act_product_by_category_keyword1">
             <field name="keyword">tree_open</field>
-            <field name="model">product.category,0</field>
+            <field name="model">product.category,-1</field>
             <field name="action" ref="act_product_by_category"/>
         </record>
 
