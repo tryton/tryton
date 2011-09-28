@@ -45,7 +45,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 Eval('context', {}).get('company', 0)),
             ],
         depends=_DEPENDS)
-    type = fields.Selection(_TYPE, 'Type', select=1, on_change=['type'],
+    type = fields.Selection(_TYPE, 'Type', select=1, on_change=['type',
+            'party', 'company'],
         required=True, states={
             'readonly': ((Eval('state') != 'draft')
                 | Eval('context', {}).get('type')
@@ -233,6 +234,43 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             return payment_term_ids[0]
         return False
 
+    def __get_account_payment_term(self, type_, party_id, company_id):
+        '''
+        Return default account and payment term
+        '''
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        company_obj = pool.get('company.company')
+        account_obj = pool.get('account.account')
+        payment_term_obj = pool.get('account.invoice.payment_term')
+
+        result = {
+            'account': False,
+            }
+        if party_id:
+            party = party_obj.browse(party_id)
+            if type_ in ('out_invoice', 'out_credit_note'):
+                result['account'] = party.account_receivable.id
+                if type_ == 'out_invoice' and party.payment_term:
+                    result['payment_term'] = party.payment_term.id
+            elif type_ in ('in_invoice', 'in_credit_note'):
+                result['account'] = party.account_payable.id
+                if type_ == 'in_invoice' and party.supplier_payment_term:
+                    result['payment_term'] = party.supplier_payment_term.id
+        if company_id and type_ in ('out_credit_note', 'in_credit_note'):
+            company = company_obj.browse(company_id)
+            if type_ == 'out_credit_note':
+                result['payment_term'] = company.payment_term.id
+            else:
+                result['payment_term'] = company.supplier_payment_term.id
+        if result['account']:
+            result['account.rec_name'] = account_obj.browse(
+                    result['account']).rec_name
+        if result.get('payment_term'):
+            result['payment_term.rec_name'] = payment_term_obj.browse(
+                    result['payment_term']).rec_name
+        return result
+
     def on_change_type(self, vals):
         journal_obj = Pool().get('account.journal')
         res = {}
@@ -244,48 +282,27 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             journal = journal_obj.browse(journal_ids[0])
             res['journal'] = journal.id
             res['journal.rec_name'] = journal.rec_name
+        res.update(self.__get_account_payment_term(vals.get('type'),
+                vals.get('party'), vals.get('company')))
         return res
 
     def on_change_party(self, vals):
         pool = Pool()
         party_obj = pool.get('party.party')
         address_obj = pool.get('party.address')
-        account_obj = pool.get('account.account')
-        payment_term_obj = pool.get('account.invoice.payment_term')
-        company_obj = pool.get('company.company')
         res = {
             'invoice_address': False,
-            'account': False,
         }
+        res.update(self.__get_account_payment_term(vals.get('type'),
+                vals.get('party'), vals.get('company')))
+
         if vals.get('party'):
             party = party_obj.browse(vals['party'])
             res['invoice_address'] = party_obj.address_get(party.id,
                     type='invoice')
-            if vals.get('type') in ('out_invoice', 'out_credit_note'):
-                res['account'] = party.account_receivable.id
-                if vals['type'] == 'out_invoice' and party.payment_term:
-                    res['payment_term'] = party.payment_term.id
-            elif vals.get('type') in ('in_invoice', 'in_credit_note'):
-                res['account'] = party.account_payable.id
-                if vals['type'] == 'in_invoice' and party.supplier_payment_term:
-                    res['payment_term'] = party.supplier_payment_term.id
-
-        if vals.get('company'):
-            company = company_obj.browse(vals['company'])
-            if vals.get('type') == 'out_credit_note':
-                res['payment_term'] = company.payment_term.id
-            elif vals.get('type') == 'in_credit_note':
-                res['payment_term'] = company.supplier_payment_term.id
-
         if res['invoice_address']:
             res['invoice_address.rec_name'] = address_obj.browse(
                     res['invoice_address']).rec_name
-        if res['account']:
-            res['account.rec_name'] = account_obj.browse(
-                    res['account']).rec_name
-        if res.get('payment_term'):
-            res['payment_term.rec_name'] = payment_term_obj.browse(
-                    res['payment_term']).rec_name
         return res
 
     def on_change_with_currency_digits(self, vals):
