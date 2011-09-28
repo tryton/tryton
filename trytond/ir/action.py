@@ -174,7 +174,8 @@ class ActionKeyword(ModelSQL, ModelView):
             ('model', '=', model + ',0'),
             ]))
         encoder = PYSONEncoder()
-        for action_keyword in self.browse(action_keyword_ids):
+        for action_keyword_id in action_keyword_ids:
+            action_keyword = self.browse(action_keyword_id)
             try:
                 action_obj = self.pool.get(action_keyword.action.type)
             except Exception:
