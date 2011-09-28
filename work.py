@@ -189,20 +189,34 @@ class Work(ModelSQL, ModelView):
                 operator = v[0]
 
                 target_ids = len(v) > 1 and v[1] or []
-                if operator == 'set':
+                if operator == 'create':
+                    to_link.append(request_obj.create(v[1]))
+                elif operator == 'write':
+                    request_obj.write(v[1], v[2])
+                elif operator == 'delete':
+                    request_obj.delete(v[1])
+                elif operator == 'delete_all':
+                    target_ids = []
+                    for record_id in ids:
+                        ref_ids = req_ref_obj.search([
+                                ('reference', '=',
+                                    'project.work,%s' % record_id),
+                                ])
+                        refs = req_ref_obj.browse(ref_ids)
+                        target_ids.extend(ref.request.id for ref in refs)
+                    request_obj.delete(target_ids)
+                elif operator == 'unlink':
+                    to_unlink.extend((i for i in target_ids if i in currents))
+                elif operator == 'add':
+                    to_link.extend((i for i in target_ids if i not in
+                        currents))
+                elif operator == 'unlink_all':
+                    to_unlink.extend(currents)
+                elif operator == 'set':
                     to_link.extend((i for i in target_ids
                         if i not in currents))
                     to_unlink.extend((i for i in currents
                         if i not in target_ids))
-                elif operator == 'add':
-                    to_link.extend((i for i in target_ids if i not in
-                        currents))
-                elif operator == 'unlink':
-                    to_unlink.extend((i for i in target_ids if i in currents))
-                elif operator == 'unlink_all':
-                    to_unlink.extend(currents)
-                elif operator == 'delete':
-                    request_obj.delete(to_delete)
                 else:
                     raise Exception('Operation not supported')
 
