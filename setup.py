@@ -31,12 +31,11 @@ setup(name='trytond_currency',
     packages=[
         'trytond.modules.currency',
         'trytond.modules.currency.tests',
-        'trytond.modules.currency.icons',
     ],
     package_data={
         'trytond.modules.currency': info.get('xml', []) \
-                + info.get('translation', []),
-        'trytond.modules.currency.icons': ['tryton-currency.svg'],
+                + info.get('translation', []) \
+                + ['icons/*.svg'],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
