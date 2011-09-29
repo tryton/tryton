@@ -31,13 +31,11 @@ setup(name='trytond_party',
     packages=[
         'trytond.modules.party',
         'trytond.modules.party.tests',
-        'trytond.modules.party.icons',
     ],
     package_data={
         'trytond.modules.party': info.get('xml', []) \
                 + info.get('translation', []) \
-                + ['label.odt'],
-        'trytond.modules.party.icons': ['tryton-party.svg'],
+                + ['*.odt', 'icons/*.svg'],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
