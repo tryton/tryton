@@ -40,6 +40,7 @@ setup(name='trytond_stock_product_location',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
+        'Framework :: Tryton',
         'Intended Audience :: Developers',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
