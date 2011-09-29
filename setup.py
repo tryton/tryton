@@ -31,17 +31,11 @@ setup(name='trytond_stock',
     packages=[
         'trytond.modules.stock',
         'trytond.modules.stock.tests',
-        'trytond.modules.stock.icons',
     ],
     package_data={
         'trytond.modules.stock': info.get('xml', []) \
                 + info.get('translation', []) \
-                + ['customer_return_restocking_list.odt',
-                    'delivery_note.odt',
-                    'internal_shipment.odt',
-                    'picking_list.odt',
-                    'supplier_restocking_list.odt'],
-        'trytond.modules.stock.icons': ['tryton-inventory.svg'],
+                + ['*.odt', 'icons/*.svg'],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
