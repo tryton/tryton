@@ -39,6 +39,7 @@ setup(name='trytond_purchase_invoice_line_standalone',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
+        'Framework :: Tryton',
         'Intended Audience :: Developers',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
