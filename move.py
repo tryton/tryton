@@ -61,7 +61,13 @@ class Move(ModelSQL, ModelView):
             ondelete='CASCADE')
     shipment_internal = fields.Many2One('stock.shipment.internal',
             'Internal Shipment', readonly=True, select=1, ondelete='CASCADE')
-    planned_date = fields.Date("Planned Date", states=STATES, depends=DEPENDS,
+    planned_date = fields.Date("Planned Date", states={
+            'readonly': (In(Eval('state'), ['cancel', 'assigned', 'done'])
+                | Eval('shipment_in') | Eval('shipment_out')
+                | Eval('shipment_in_return') | Eval('shipment_out_return')
+                | Eval('shipment_internal'))
+            }, depends=['state', 'shipment_in', 'shipment_out',
+            'shipment_in_return', 'shipment_out_return', 'shipment_internal'],
         select=2)
     effective_date = fields.Date("Effective Date", readonly=True, select=2)
     state = fields.Selection([

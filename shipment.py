@@ -297,6 +297,31 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
             'state': 'draft',
             })
 
+    def _get_move_planned_date(self, shipment):
+        '''
+        Return the planned date for incoming moves and inventory_moves
+        '''
+        return shipment.planned_date, shipment.planned_date
+
+    def _set_move_planned_date(self, shipment_ids):
+        '''
+        Set planned date of moves for the shipments
+        '''
+        move_obj = Pool().get('stock.move')
+        if isinstance(shipment_ids, (int, long)):
+            shipment_ids = [shipment_ids]
+        for shipment in self.browse(shipment_ids):
+            dates = self._get_move_planned_date(shipment)
+            incoming_date, inventory_date = dates
+            move_obj.write([x.id for x in shipment.incoming_moves
+                    if x.state not in ('assigned', 'done', 'cancel')], {
+                    'planned_date': incoming_date,
+                    })
+            move_obj.write([x.id for x in shipment.inventory_moves
+                    if x.state not in ('assigned', 'done', 'cancel')], {
+                    'planned_date': inventory_date,
+                    })
+
     def create(self, values):
         sequence_obj = Pool().get('ir.sequence')
         config_obj = Pool().get('stock.configuration')
@@ -304,7 +329,14 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
         values = values.copy()
         config = config_obj.browse(1)
         values['code'] = sequence_obj.get_id(config.shipment_in_sequence.id)
-        return super(ShipmentIn, self).create(values)
+        shipment_id = super(ShipmentIn, self).create(values)
+        self._set_move_planned_date(shipment_id)
+        return shipment_id
+
+    def write(self, ids, values):
+        result = super(ShipmentIn, self).write(ids, values)
+        self._set_move_planned_date(ids)
+        return result
 
     def copy(self, ids, default=None):
         if default is None:
@@ -437,6 +469,26 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         })
         self._order[0] = ('id', 'DESC')
 
+    def _get_move_planned_date(self, shipment):
+        '''
+        Return the planned date for the moves
+        '''
+        return shipment.planned_date
+
+    def _set_move_planned_date(self, shipment_ids):
+        '''
+        Set planned date of moves for the shipments
+        '''
+        move_obj = Pool().get('stock.move')
+        if isinstance(shipment_ids, (int, long)):
+            shipment_ids = [shipment_ids]
+        for shipment in self.browse(shipment_ids):
+            date = self._get_move_planned_date(shipment)
+            move_obj.write([x.id for x in shipment.moves
+                    if x.state not in ('assigned', 'done', 'cancel')], {
+                    'planned_date': date,
+                    })
+
     def create(self, values):
         sequence_obj = Pool().get('ir.sequence')
         config_obj = Pool().get('stock.configuration')
@@ -445,7 +497,14 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         config = config_obj.browse(1)
         values['code'] = sequence_obj.get_id(
                 config.shipment_in_return_sequence.id)
-        return super(ShipmentInReturn, self).create(values)
+        shipment_id = super(ShipmentInReturn, self).create(values)
+        self._set_move_planned_date(shipment_id)
+        return shipment_id
+
+    def write(self, ids, values):
+        result = super(ShipmentInReturn, self).write(ids, values)
+        self._set_move_planned_date(ids)
+        return result
 
     def wkf_draft(self, shipment):
         move_obj = Pool().get('stock.move')
@@ -920,6 +979,31 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     'unit_price': move.unit_price,
                     })
 
+    def _get_move_planned_date(self, shipment):
+        '''
+        Return the planned date for outgoing moves and inventory moves
+        '''
+        return shipment.planned_date, shipment.planned_date
+
+    def _set_move_planned_date(self, shipment_ids):
+        '''
+        Set planned date of moves for the shipments
+        '''
+        move_obj = Pool().get('stock.move')
+        if isinstance(shipment_ids, (int, long)):
+            shipment_ids = [shipment_ids]
+        for shipment in self.browse(shipment_ids):
+            dates = self._get_move_planned_date(shipment)
+            outgoing_date, inventory_date = dates
+            move_obj.write([x.id for x in shipment.outgoing_moves
+                    if x.state not in ('assigned', 'done', 'cancel')], {
+                    'planned_date': outgoing_date,
+                    })
+            move_obj.write([x.id for x in shipment.inventory_moves
+                    if x.state not in ('assigned', 'done', 'cancel')], {
+                    'planned_date': inventory_date,
+                    })
+
     def create(self, values):
         sequence_obj = Pool().get('ir.sequence')
         config_obj = Pool().get('stock.configuration')
@@ -927,7 +1011,14 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         values = values.copy()
         config = config_obj.browse(1)
         values['code'] = sequence_obj.get_id(config.shipment_out_sequence.id)
-        return super(ShipmentOut, self).create(values)
+        shipment_id = super(ShipmentOut, self).create(values)
+        self._set_move_planned_date(shipment_id)
+        return shipment_id
+
+    def write(self, ids, values):
+        result = super(ShipmentOut, self).write(ids, values)
+        self._set_move_planned_date(ids)
+        return result
 
     def copy(self, ids, default=None):
         if default is None:
@@ -1193,6 +1284,30 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
             'moves': value,
             })
 
+    def _get_move_planned_date(self, shipment):
+        '''
+        Return the planned date for incoming moves and inventory moves
+        '''
+        return shipment.planned_date, shipment.planned_date
+
+    def _set_move_planned_date(self, shipment_ids):
+        '''
+        Set planned date of moves for the shipments
+        '''
+        move_obj = Pool().get('stock.move')
+        if isinstance(shipment_ids, (int, long)):
+            shipment_ids = [shipment_ids]
+        for shipment in self.browse(shipment_ids):
+            dates = self._get_move_planned_date(shipment)
+            incoming_date, inventory_date = dates
+            move_obj.write([x.id for x in shipment.incoming_moves
+                    if x.state not in ('assigned', 'done', 'cancel')], {
+                    'planned_date': incoming_date,
+                    })
+            move_obj.write([x.id for x in shipment.inventory_moves], {
+                    'planned_date': inventory_date,
+                    })
+
     def create(self, values):
         sequence_obj = Pool().get('ir.sequence')
         config_obj = Pool().get('stock.configuration')
@@ -1201,7 +1316,14 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
         config = config_obj.browse(1)
         values['code'] = sequence_obj.get_id(
                 config.shipment_out_return_sequence.id)
-        return super(ShipmentOutReturn, self).create(values)
+        shipment_id = super(ShipmentOutReturn, self).create(values)
+        self._set_move_planned_date(shipment_id)
+        return shipment_id
+
+    def write(self, ids, values):
+        result = super(ShipmentOutReturn, self).write(ids, values)
+        self._set_move_planned_date(ids)
+        return result
 
     def copy(self, ids, default=None):
         if default is None:
