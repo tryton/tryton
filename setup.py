@@ -39,6 +39,7 @@ setup(name='trytond_dashboard',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
+        'Framework :: Tryton',
         'Intended Audience :: Developers',
         'Intended Audience :: Legal Industry',
         'License :: OSI Approved :: GNU General Public License (GPL)',
