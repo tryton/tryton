@@ -2,6 +2,10 @@
 #this repository contains the full copyright notices and license terms.
 import copy
 from decimal import Decimal
+import datetime
+from itertools import groupby
+from functools import partial
+from operator import itemgetter
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard
@@ -667,6 +671,14 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             })
         return True
 
+    def set_sale_date(self, sale_id):
+        date_obj = Pool().get('ir.date')
+
+        self.write(sale_id, {
+                'sale_date': date_obj.today(),
+                })
+        return True
+
     def _get_invoice_line_sale_line(self, sale):
         '''
         Return invoice line values for each sale lines
@@ -777,13 +789,25 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 res[line.id] = val
         return res
 
+    def _group_shipment_key(self, moves, move):
+        '''
+        The key to group moves by shipments
+
+        :param moves: a list of moves values
+        :param move: a tuple of line id and a dictionary of the move values
+
+        :return: a list of key-value as tuples of the shipment
+        '''
+        planned_date = max(m['planned_date'] for m in moves)
+        return (('planned_date', planned_date),)
+
     def create_shipment(self, sale_id):
         '''
         Create a shipment for the sale
 
         :param sale_id: the sale id
 
-        :return: the created shipment id or None
+        :return: the list of created shipment id or None
         '''
         pool = Pool()
         shipment_obj = pool.get('stock.shipment.out')
@@ -795,25 +819,30 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         moves = self._get_move_sale_line(sale)
         if not moves:
             return
+        keyfunc = partial(self._group_shipment_key, moves.values())
+        moves = moves.items()
+        moves = sorted(moves, key=keyfunc)
 
+        shipments = []
         with Transaction().set_user(0, set_context=True):
-            shipment_id = shipment_obj.create({
-                'planned_date': sale.sale_date,
-                'customer': sale.party.id,
-                'delivery_address': sale.shipment_address.id,
-                'reference': sale.reference,
-                'warehouse': sale.warehouse.id,
-            })
-
-            for line_id in moves:
-                vals = moves[line_id]
-                vals['shipment_out'] = shipment_id
-                move_id = move_obj.create(vals)
-                sale_line_obj.write(line_id, {
-                    'moves': [('add', move_id)],
-                })
+            for key, grouped_moves in groupby(moves, key=keyfunc):
+                values = {
+                    'customer': sale.party.id,
+                    'delivery_address': sale.shipment_address.id,
+                    'reference': sale.reference,
+                    'warehouse': sale.warehouse.id,
+                    }
+                values.update(dict(key))
+                shipment_id = shipment_obj.create(values)
+                shipments.append(shipment_id)
+                for line_id, values in grouped_moves:
+                    values['shipment_out'] = shipment_id
+                    move_id = move_obj.create(values)
+                    sale_line_obj.write(line_id, {
+                        'moves': [('add', move_id)],
+                    })
                 shipment_obj.workflow_trigger_validate(shipment_id, 'waiting')
-            return shipment_id
+        return shipments
 
     def wkf_draft(self, sale):
         self.write(sale.id, {'state': 'draft'})
@@ -824,6 +853,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         self.write(sale.id, {'state': 'quotation'})
 
     def wkf_confirmed(self, sale):
+        self.set_sale_date(sale.id)
         self.write(sale.id, {'state': 'confirmed'})
 
     def wkf_waiting_invoice_sale(self, sale):
@@ -1380,6 +1410,7 @@ class SaleLine(ModelSQL, ModelView):
         :return: a dictionary of values of move
         '''
         uom_obj = Pool().get('product.uom')
+        product_obj = Pool().get('product.product')
 
         res = {}
         if line.type != 'line':
@@ -1407,7 +1438,8 @@ class SaleLine(ModelSQL, ModelView):
         res['company'] = line.sale.company.id
         res['unit_price'] = line.unit_price
         res['currency'] = line.sale.currency.id
-        res['planned_date'] = line.sale.sale_date
+        res['planned_date'] = product_obj.compute_delivery_date(
+            line.product)
         return res
 
 SaleLine()
@@ -1488,6 +1520,12 @@ class Template(ModelSQL, ModelView):
         context={'category': (Eval('default_uom'), 'uom.category')},
         on_change_with=['default_uom', 'sale_uom', 'salable'],
         depends=['active', 'salable', 'default_uom'])
+    delivery_time = fields.Integer('Delivery Time', states={
+            'readonly': ~Eval('active', True),
+            'invisible': ~Eval('salable', False),
+            },
+        depends=['active', 'salable'],
+        help='In number of days')
 
     def __init__(self):
         super(Template, self).__init__()
@@ -1579,6 +1617,16 @@ class Product(ModelSQL, ModelView):
                                 user2.company.currency.id, res[product.id],
                                 currency.id)
         return res
+
+    def compute_delivery_date(self, product, date=None):
+        '''
+        Compute the delivery date for the Product at a the given date
+        '''
+        date_obj = Pool().get('ir.date')
+
+        if not date:
+            date = date_obj.today()
+        return date + datetime.timedelta(product.delivery_time)
 
 Product()
 
