@@ -31,12 +31,11 @@ setup(name='trytond_product',
     packages=[
         'trytond.modules.product',
         'trytond.modules.product.tests',
-        'trytond.modules.product.icons',
     ],
     package_data={
         'trytond.modules.product': info.get('xml', []) \
-                + info.get('translation', []),
-        'trytond.modules.product.icons': ['tryton-product.svg'],
+                + info.get('translation', []) \
+                + ['icons/*.svg'],
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
