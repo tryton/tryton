@@ -297,27 +297,21 @@ class PurchaseRequest(ModelSQL, ModelView):
 
         return (min_date, max_date)
 
-    def compute_request(self, product, location_id, shortage_date,
-            product_quantity, company, order_point=None):
-        """
-        Return the value of the purchase request which will answer to
-        the needed quantity at the given date. I.e: the latest
-        purchase date, the expected supply date and the prefered
-        supplier.
-        """
+    def find_best_supplier(self, product, date):
+        '''
+        Return the best supplier and purchase_date for the product.
+        '''
         pool = Pool()
-        uom_obj = pool.get('product.uom')
-        product_supplier_obj = pool.get('purchase.product_supplier')
         date_obj = pool.get('ir.date')
+        product_supplier_obj = pool.get('purchase.product_supplier')
 
         supplier = None
         timedelta = datetime.timedelta.max
         today = date_obj.today()
-        max_quantity = order_point and order_point.max_quantity or 0.0
         for product_supplier in product.product_suppliers:
             supply_date = product_supplier_obj.compute_supply_date(
                     product_supplier, date=today)[0]
-            sup_timedelta = shortage_date - supply_date
+            sup_timedelta = date - supply_date
             if not supplier:
                 supplier = product_supplier.party
                 timedelta = sup_timedelta
@@ -331,10 +325,26 @@ class PurchaseRequest(ModelSQL, ModelView):
 
         if supplier:
             purchase_date = product_supplier_obj.compute_purchase_date(
-                    product_supplier, shortage_date)
+                    product_supplier, date)
         else:
             purchase_date = today
+        return supplier, purchase_date
 
+    def compute_request(self, product, location_id, shortage_date,
+            product_quantity, company, order_point=None):
+        """
+        Return the value of the purchase request which will answer to
+        the needed quantity at the given date. I.e: the latest
+        purchase date, the expected supply date and the prefered
+        supplier.
+        """
+        pool = Pool()
+        uom_obj = pool.get('product.uom')
+
+        supplier, purchase_date = self.find_best_supplier(product,
+            shortage_date)
+
+        max_quantity = order_point and order_point.max_quantity or 0.0
         quantity = uom_obj.compute_qty(product.default_uom,
                 max_quantity - product_quantity,
                 product.purchase_uom or product.default_uom)
