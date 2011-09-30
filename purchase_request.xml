@@ -85,6 +85,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_purchase_request_form"/>
         </record>
 
+        <record model="ir.ui.menu-res.group" id="menu_purchase_group_purchase_request">
+            <field name="menu" ref="purchase.menu_purchase"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+
         <menuitem parent="purchase.menu_purchase" sequence="20"
             action="act_purchase_request_form" id="menu_purchase_request_form"/>
 
@@ -218,6 +223,14 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_purchase_request">
             <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_purchase_request_sale">
+            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+            <field name="group" ref="purchase.group_purchase"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
