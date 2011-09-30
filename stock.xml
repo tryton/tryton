@@ -50,6 +50,12 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem name="Inventory &amp; Stock" sequence="3" id="menu_stock"
             icon="tryton-inventory"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_stock_group_stock">
+            <field name="menu" ref="menu_stock"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
         <menuitem name="Configuration" parent="menu_stock"
             id="menu_configuration" sequence="0" icon="tryton-preferences"/>
         <record model="ir.ui.menu-res.group"

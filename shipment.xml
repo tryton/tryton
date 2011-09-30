@@ -1415,7 +1415,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- Model Access -->
         <record model="ir.model.access" id="access_shipment_in">
             <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
@@ -1439,7 +1439,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_shipment_out">
             <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
@@ -1463,7 +1463,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_shipment_internal">
             <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
@@ -1487,7 +1487,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_shipment_out_return">
             <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
@@ -1511,7 +1511,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_shipment_in_return">
             <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>

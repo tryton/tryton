@@ -14,6 +14,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">party.party,-1</field>
             <field name="action" ref="act_shipment_out_form2"/>
         </record>
+        <record model="ir.action-res.group"
+            id="act_shipment_out_form2-group_stock">
+            <field name="action" ref="act_shipment_out_form2"/>
+            <field name="group" ref="group_stock"/>
+        </record>
 
         <record model="ir.action.act_window" id="act_shipment_out_form3">
             <field name="name">Supplier Shipments</field>
@@ -25,6 +30,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="keyword">form_relate</field>
             <field name="model">party.party,-1</field>
             <field name="action" ref="act_shipment_out_form3"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_shipment_out_form3-group_stock">
+            <field name="action" ref="act_shipment_out_form3"/>
+            <field name="group" ref="group_stock"/>
         </record>
 
     </data>

@@ -189,7 +189,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_inventory">
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
@@ -205,7 +205,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_inventory_line">
             <field name="model" search="[('model', '=', 'stock.inventory.line')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>

@@ -62,6 +62,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">product.product,-1</field>
             <field name="action" ref="wizard_location_open"/>
         </record>
+        <record model="ir.action-res.group"
+            id="wizard_location_open-group_stock">
+            <field name="action" ref="wizard_location_open"/>
+            <field name="group" ref="group_stock"/>
+        </record>
 
         <record model="ir.ui.view" id="product_stock_date_init_view_form">
             <field name="model">stock.product_stock_date.init</field>
