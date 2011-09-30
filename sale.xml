@@ -3,7 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Sales" id="menu_sale" sequence="5"/>
         <record model="res.group" id="group_sale">
             <field name="name">Sales</field>
         </record>
@@ -26,6 +25,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.user-res.group" id="user_trigger_group_sale_admin">
             <field name="user" ref="res.user_trigger"/>
             <field name="group" ref="group_sale_admin"/>
+        </record>
+
+        <menuitem name="Sales" id="menu_sale" sequence="5"/>
+        <record model="ir.ui.menu-res.group" id="menu_sale_group_sale">
+            <field name="menu" ref="menu_sale"/>
+            <field name="group" ref="group_sale"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
@@ -272,6 +277,10 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_sale" action="act_sale_form"
             id="menu_sale_form" sequence="10"/>
+        <record model="ir.ui.menu-res.group" id="menu_sale_form_group_sale">
+            <field name="menu" ref="menu_sale_form"/>
+            <field name="group" ref="group_sale"/>
+        </record>
 
         <record model="ir.action.act_window" id="act_sale_form_draft">
             <field name="name">Draft Sales</field>
@@ -329,7 +338,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_sale">
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
@@ -845,7 +854,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_sale_line">
             <field name="model" search="[('model', '=', 'sale.line')]"/>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
@@ -921,6 +930,42 @@ this repository contains the full copyright notices and license terms. -->
             <field name="operator">=</field>
             <field name="operand">User/Current Company</field>
             <field name="rule_group" ref="rule_group_sale"/>
+        </record>
+
+        <record model="ir.model.access" id="access_invoice_sale">
+            <field name="model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_invoice_line_sale">
+            <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_move_group_sale">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_shipment_out_group_sale">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
 
     </data>

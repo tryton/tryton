@@ -14,6 +14,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">party.party,-1</field>
             <field name="action" ref="act_sale_form2"/>
         </record>
+        <record model="ir.action-res.group"
+            id="act_sale_form2-group_sale">
+            <field name="action" ref="act_sale_form2"/>
+            <field name="group" ref="group_sale"/>
+        </record>
 
     </data>
 </tryton>
