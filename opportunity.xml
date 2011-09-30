@@ -217,6 +217,14 @@
 
         <record model="ir.model.access" id="access_opportunity">
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_opportunity_sale">
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+            <field name="group" ref="sale.group_sale"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -367,10 +375,18 @@
 
         <record model="ir.model.access" id="access_opportunity_line">
             <field name="model" search="[('model', '=', 'sale.opportunity.line')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_opportunity_line_sale">
+            <field name="model" search="[('model', '=', 'sale.opportunity.line')]"/>
+            <field name="group" ref="sale.group_sale"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_opportunity_line_opportunity">
             <field name="model" search="[('model', '=', 'sale.opportunity.line')]"/>
@@ -449,10 +465,18 @@
 
         <record model="ir.model.access" id="access_opportunity_history">
             <field name="model" search="[('model', '=', 'sale.opportunity.history')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_opportunity_history_sale">
+            <field name="model" search="[('model', '=', 'sale.opportunity.history')]"/>
+            <field name="group" ref="sale.group_sale"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_opportunity_history_opportunity">
             <field name="model" search="[('model', '=', 'sale.opportunity.history')]"/>
