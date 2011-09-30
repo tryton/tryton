@@ -56,7 +56,7 @@ def inverse_leaf(domain):
             if len(domain) == 3:
                 return domain
             else:
-                return [domain[3]] + domain[1:]
+                return [domain[3]] + list(domain[1:])
         return domain
     else:
         return map(inverse_leaf, domain)
@@ -86,8 +86,8 @@ def localize_domain(domain, field_name=None):
             if len(domain) == 3:
                 return domain
             else:
-                return [domain[3]] + domain[1:-1]
-        return [locale_part(domain[0], field_name)] + domain[1:]
+                return [domain[3]] + list(domain[1:-1])
+        return [locale_part(domain[0], field_name)] + list(domain[1:])
     else:
         return [localize_domain(part, field_name) for part in domain]
 
@@ -95,7 +95,7 @@ def unlocalize_domain(domain, fieldname):
     if domain in ('AND', 'OR', True, False):
         return domain
     elif is_leaf(domain):
-        return ['%s.%s' % (fieldname, domain[0])] + domain[1:]
+        return ['%s.%s' % (fieldname, domain[0])] + list(domain[1:])
     else:
         return [unlocalize_domain(part, fieldname) for part in domain]
 
