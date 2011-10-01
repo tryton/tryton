@@ -6,7 +6,7 @@
     'name_de_DE': 'Lagerverwaltung Bedarfsermittlung',
     'name_es_ES': 'Previsión de existencias',
     'name_es_CO': 'Previsión de existencias',
-    'version': '1.2.2',
+    'version': '1.2.3',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
