@@ -1,3 +1,6 @@
+Version 1.6.1 - 2011-10-01
+* Bug fixes (see mercurial logs for details)
+
 Version 1.6.0 - 2010-05-10
 * Bug fixes (see mercurial logs for details)
 * Don't allow empty vat_number if vat_country is set
