@@ -74,12 +74,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Forecasts">
-                        <field name="warehouse" select="1"/>
-                        <field name="state" select="1"/>
+                        <field name="warehouse"/>
+                        <field name="state"/>
                         <field name="from_date"/>
                         <field name="to_date"/>
-                        <field name="company" select="2"/>
-                        <field name="create_date" tree_invisible="1" select="2"/>
+                        <field name="company"/>
+                        <field name="create_date" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
@@ -87,7 +87,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_forecast_form">
             <field name="name">Forecasts</field>
             <field name="res_model">stock.forecast</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-2)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-2))]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_forecast_form_view1">
@@ -155,12 +155,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Forecast Lines" editable="bottom">
-                        <field name="product" select="1"/>
-                        <field name="quantity" select="1"/>
-                        <field name="minimal_quantity" select="2"/>
-                        <field name="uom" select="1"/>
+                        <field name="product"/>
+                        <field name="quantity"/>
+                        <field name="minimal_quantity"/>
+                        <field name="uom"/>
                         <field name="quantity_executed"/>
-                        <field name="forecast" select="2"/>
+                        <field name="forecast"/>
                         <field name="unit_digits" tree_invisible="1"/>
                     </tree>
                 ]]>
