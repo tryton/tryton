@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath
                         expr="/tree/field[@name=&quot;vat_code&quot;]"
                         position="after">
-                        <field name="siren" select="2"/>
+                        <field name="siren"/>
                     </xpath>
                 </data>
                 ]]>
