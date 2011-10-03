@@ -27,10 +27,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Statement Journals">
-                    <field name="name" select="1"/>
-                    <field name="journal" select="2"/>
-                    <field name="currency" select="2"/>
-                    <field name="company" select="1"/>
+                    <field name="name"/>
+                    <field name="journal"/>
+                    <field name="currency"/>
+                    <field name="company"/>
                 </tree>
                 ]]>
             </field>
