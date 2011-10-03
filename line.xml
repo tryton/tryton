@@ -45,16 +45,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Analytic Lines" editable="top">
-                    <field name="move_line" select="1"/>
-                    <field name="journal" select="2"/>
-                    <field name="name" select="1"/>
-                    <field name="reference" select="2"/>
-                    <field name="date" select="1"/>
-                    <field name="party" select="2"/>
-                    <field name="account" select="2"/>
-                    <field name="debit" select="2"/>
-                    <field name="credit" select="2"/>
-                    <field name="currency" select="2"/>
+                    <field name="move_line"/>
+                    <field name="journal"/>
+                    <field name="name"/>
+                    <field name="reference"/>
+                    <field name="date"/>
+                    <field name="party"/>
+                    <field name="account"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
+                    <field name="currency"/>
                 </tree>
                 ]]>
             </field>
