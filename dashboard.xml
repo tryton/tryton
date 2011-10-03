@@ -27,9 +27,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Dashboard Actions">
-                    <field name="user" select="1"/>
+                    <field name="user"/>
                     <field name="sequence"/>
-                    <field name="act_window" select="1"/>
+                    <field name="act_window"/>
                 </tree>
                 ]]>
             </field>

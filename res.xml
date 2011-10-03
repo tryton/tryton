@@ -18,7 +18,7 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="dashboard_actions" colspan="2">
                                 <tree string="Dashboard Actions"
                                     sequence="sequence" fill="1">
-                                    <field name="act_window" select="1"/>
+                                    <field name="act_window"/>
                                 </tree>
                                 <form string="Dashboard Action">
                                     <label name="act_window"/>
@@ -46,7 +46,7 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="dashboard_actions" colspan="2">
                                 <tree string="Dashboard Actions"
                                     sequence="sequence" fill="1">
-                                    <field name="act_window" select="1"/>
+                                    <field name="act_window"/>
                                 </tree>
                                 <form string="Dashboard Action">
                                     <label name="act_window"/>
