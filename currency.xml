@@ -111,12 +111,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Currencies">
-                    <field name="name" select="1"/>
+                    <field name="name"/>
                     <field name="symbol"/>
-                    <field name="code" select="1"/>
-                    <field name="numeric_code" select="1"/>
+                    <field name="code"/>
+                    <field name="numeric_code"/>
                     <field name="rate"/>
-                    <field name="active" tree_invisible="1" select="2"/>
+                    <field name="active" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
