@@ -25,8 +25,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Journal Types">
-                    <field name="name" select="1"/>
-                    <field name="code" select="1"/>
+                    <field name="name"/>
+                    <field name="code"/>
                 </tree>
                 ]]>
             </field>
@@ -123,7 +123,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Journal Views">
-                    <field name="name" select="1"/>
+                    <field name="name"/>
                 </tree>
                 ]]>
             </field>
@@ -204,9 +204,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Journals">
-                    <field name="name" select="1"/>
-                    <field name="code" select="1"/>
-                    <field name="type" select="1"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type"/>
                 </tree>
                 ]]>
             </field>
@@ -313,10 +313,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Journals - Periods" keyword_open="1">
-                    <field name="name" icon="icon" select="1"/>
-                    <field name="period" select="1"/>
-                    <field name="journal" select="1"/>
-                    <field name="state" select="2"/>
+                    <field name="name" icon="icon"/>
+                    <field name="period"/>
+                    <field name="journal"/>
+                    <field name="state"/>
                 </tree>
                 ]]>
             </field>

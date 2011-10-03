@@ -23,15 +23,15 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="post_date"/>
                     <field name="lines" colspan="4">
                         <tree string="Account Move Lines" editable="top">
-                            <field name="move" select="1"/>
-                            <field name="name" select="1"/>
-                            <field name="reference" select="2"/>
-                            <field name="party" select="2"/>
-                            <field name="account" select="2"/>
-                            <field name="debit" select="2" sum="Debit"/>
-                            <field name="credit" select="2" sum="Credit"/>
+                            <field name="move"/>
+                            <field name="name"/>
+                            <field name="reference"/>
+                            <field name="party"/>
+                            <field name="account"/>
+                            <field name="debit" sum="Debit"/>
+                            <field name="credit" sum="Credit"/>
                             <field name="tax_lines"/>
-                            <field name="reconciliation" select="2"/>
+                            <field name="reconciliation"/>
                         </tree>
                         <form string="Account Move Line">
                             <label name="name"/>
@@ -91,14 +91,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Moves">
-                    <field name="name" select="1"/>
-                    <field name="reference" select="1"/>
-                    <field name="period" select="1"/>
-                    <field name="journal" select="2"/>
-                    <field name="date" select="2"/>
-                    <field name="post_date" select="2"/>
-                    <field name="state" select="2"/>
-                    <field name="create_date" tree_invisible="1" select="2"/>
+                    <field name="name"/>
+                    <field name="reference"/>
+                    <field name="period"/>
+                    <field name="journal"/>
+                    <field name="date"/>
+                    <field name="post_date"/>
+                    <field name="state"/>
+                    <field name="create_date" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -107,7 +107,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Account Moves</field>
             <field name="res_model">account.move</field>
             <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_view1">
             <field name="sequence" eval="10"/>
@@ -179,7 +179,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Reconciliations">
-                    <field name="name" select="1"/>
+                    <field name="name"/>
                 </tree>
                 ]]>
             </field>
@@ -287,18 +287,18 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Account Move Lines" editable="top"
                     on_write="on_write"
                     colors="If(Equal(Eval('state'), 'draft'), 'red', 'black')">
-                    <field name="move" select="1"/>
-                    <field name="name" select="1"/>
-                    <field name="reference" select="2"/>
-                    <field name="date" select="1"/>
-                    <field name="party" select="2"/>
-                    <field name="account" select="2"/>
-                    <field name="debit" select="2" sum="Debit"/>
-                    <field name="credit" select="2" sum="Credit"/>
+                    <field name="move"/>
+                    <field name="name"/>
+                    <field name="reference"/>
+                    <field name="date"/>
+                    <field name="party"/>
+                    <field name="account"/>
+                    <field name="debit" sum="Debit"/>
+                    <field name="credit" sum="Credit"/>
                     <field name="tax_lines"/>
-                    <field name="reconciliation" select="2"/>
-                    <field name="state" select="2"/>
-                    <field name="move_state" select="2"/>
+                    <field name="reconciliation"/>
+                    <field name="state"/>
+                    <field name="move_state"/>
                 </tree>
                 ]]>
             </field>

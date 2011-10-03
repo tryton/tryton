@@ -60,9 +60,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Fiscal Years">
-                    <field name="name" select="1"/>
-                    <field name="code" select="1"/>
-                    <field name="state" select="1"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="state"/>
                 </tree>
                 ]]>
             </field>

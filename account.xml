@@ -94,7 +94,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Types Templates">
-                    <field name="name" select="1"/>
+                    <field name="name"/>
                 </tree>
                 ]]>
             </field>
@@ -256,7 +256,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Types">
-                    <field name="name" select="1"/>
+                    <field name="name"/>
                     <field name="parent" tree_invisible="1"/>
                     <field name="childs" tree_invisible="1"/>
                 </tree>
@@ -269,7 +269,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Types">
-                    <field name="name" select="1"/>
+                    <field name="name"/>
                 </tree>
                 ]]>
             </field>
@@ -360,8 +360,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Templates">
-                    <field name="rec_name" select="1"/>
-                    <field name="type" select="1"/>
+                    <field name="rec_name"/>
+                    <field name="type"/>
                 </tree>
                 ]]>
             </field>
@@ -465,8 +465,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Deferrals">
-                    <field name="account" select="1"/>
-                    <field name="fiscalyear" select="1"/>
+                    <field name="account"/>
+                    <field name="fiscalyear"/>
                     <field name="debit"/>
                     <field name="credit"/>
                 </tree>
@@ -615,9 +615,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Accounts">
-                    <field name="rec_name" select="1"/>
-                    <field name="company" select="1"/>
-                    <field name="type" select="1"/>
+                    <field name="rec_name"/>
+                    <field name="company"/>
+                    <field name="type"/>
                     <field name="parent" tree_invisible="1"/>
                     <field name="childs" tree_invisible="1"/>
                 </tree>
@@ -630,9 +630,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Accounts">
-                    <field name="rec_name" select="1"/>
-                    <field name="company" select="1"/>
-                    <field name="type" select="1"/>
+                    <field name="rec_name"/>
+                    <field name="company"/>
+                    <field name="type"/>
                 </tree>
                 ]]>
             </field>
