@@ -31,8 +31,8 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Works">
                     <field name="rec_name"/>
-                    <field name="name" select="1" tree_invisible="1"/>
-                    <field name="active" select="1" tree_invisible="1"/>
+                    <field name="name" tree_invisible="1"/>
+                    <field name="active" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -45,8 +45,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Works">
-                    <field name="name" select="1"/>
-                    <field name="timesheet_available" select="1"/>
+                    <field name="name"/>
+                    <field name="timesheet_available"/>
                     <field name="parent" tree_invisible="1"/>
                     <field name="children" tree_invisible="1"/>
                 </tree>
@@ -101,7 +101,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Works">
-                    <field name="name" select="1"/>
+                    <field name="name"/>
                     <field name="hours" widget="float_time"
                         float_time="company_work_time"/>
                 </tree>

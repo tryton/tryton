@@ -30,11 +30,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Timesheet Lines" editable="bottom">
-                    <field name="employee" select="1"/>
-                    <field name="date" select="1"/>
+                    <field name="employee"/>
+                    <field name="date"/>
                     <field name="hours" widget="float_time"
                         float_time="company_work_time" sum="Hours"/>
-                    <field name="work" select="1" width="300"/>
+                    <field name="work" width="300"/>
                     <field name="description"/>
                 </tree>
                 ]]>
@@ -199,10 +199,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Hours per Employee per Week">
-                    <field name="year" select="1"/>
-                    <field name="week" select="1"/>
-                    <field name="employee" select="1"/>
-                    <field name="hours" select="1" widget="float_time"
+                    <field name="year"/>
+                    <field name="week"/>
+                    <field name="employee"/>
+                    <field name="hours" widget="float_time"
                         float_time="company_work_time"/>
                 </tree>
                 ]]>
@@ -227,10 +227,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Hours per Employee per Month">
-                    <field name="year" select="1"/>
-                    <field name="month" select="1"/>
-                    <field name="employee" select="1"/>
-                    <field name="hours" select="1" widget="float_time"
+                    <field name="year"/>
+                    <field name="month"/>
+                    <field name="employee"/>
+                    <field name="hours" widget="float_time"
                         float_time="company_work_time"/>
                 </tree>
                 ]]>
