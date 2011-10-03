@@ -182,6 +182,16 @@ class InvoiceLine(ModelSQL, ModelView):
             return new_ids[0]
         return new_ids
 
+    def _credit(self, line):
+        selection_obj = Pool().get('analytic_account.account.selection')
+
+        result = super(InvoiceLine, self)._credit(line)
+
+        if line.analytic_accounts:
+            selection_id = selection_obj.copy(line.analytic_accounts.id)
+            result['analytic_accounts'] = selection_id
+        return result
+
     def get_move_line(self, line):
         res = super(InvoiceLine, self).get_move_line(line)
         if line.analytic_accounts and line.analytic_accounts.accounts:
