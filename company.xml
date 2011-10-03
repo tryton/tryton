@@ -59,9 +59,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Companies">
-                    <field name="name" select="1"/>
-                    <field name="currency" select="1"/>
-                    <field name="vat_code" select="1"/>
+                    <field name="name"/>
+                    <field name="currency"/>
+                    <field name="vat_code"/>
                     <field name="parent" tree_invisible="1"/>
                     <field name="childs" tree_invisible="1"/>
                 </tree>
@@ -75,7 +75,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Companies">
-                    <field name="name" select="1"/>
+                    <field name="name"/>
                 </tree>
                 ]]>
             </field>
@@ -196,7 +196,7 @@ this repository contains the full copyright notices and license terms. -->
                         <xpath
                             expr="/tree/field[@name=&quot;name&quot;]"
                             position="after">
-                            <field name="company" select="1"/>
+                            <field name="company"/>
                         </xpath>
                     </data>
                 ]]>
@@ -245,7 +245,7 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath
                         expr="/tree/field[@name=&quot;code&quot;]"
                         position="after">
-                        <field name="company" select="2"/>
+                        <field name="company"/>
                     </xpath>
                 </data>
                 ]]>
@@ -338,8 +338,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Employees">
-                    <field name="name" select="1"/>
-                    <field name="company" select="1"/>
+                    <field name="name"/>
+                    <field name="company"/>
                 </tree>
                 ]]>
             </field>
