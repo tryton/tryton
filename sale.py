@@ -1100,7 +1100,7 @@ class SaleLine(ModelSQL, ModelView):
     invoice_lines = fields.Many2Many('sale.line-account.invoice.line',
             'sale_line', 'invoice_line', 'Invoice Lines', readonly=True)
     moves = fields.One2Many('stock.move', 'sale_line', 'Moves',
-            readonly=True, select=1)
+            readonly=True)
     moves_ignored = fields.Many2Many('sale.line-ignored-stock.move',
             'sale_line', 'move', 'Ignored Moves', readonly=True)
     moves_recreated = fields.Many2Many('sale.line-recreated-stock.move',
