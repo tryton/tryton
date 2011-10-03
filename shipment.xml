@@ -29,13 +29,13 @@ this repository contains the full copyright notices and license terms. -->
                             <page string="Incoming Moves" id="incoming_moves">
                                 <field name="incoming_moves" colspan="4">
                                     <tree string="Moves">
-                                        <field name="product" select="1"/>
-                                        <field name="from_location" select="2"/>
-                                        <field name="to_location" select="2"/>
-                                        <field name="quantity" select="1"/>
-                                        <field name="uom" select="1"/>
-                                        <field name="planned_date" select="1"/>
-                                        <field name="state" select="2"/>
+                                        <field name="product"/>
+                                        <field name="from_location"/>
+                                        <field name="to_location"/>
+                                        <field name="quantity"/>
+                                        <field name="uom"/>
+                                        <field name="planned_date"/>
+                                        <field name="state"/>
                                         <field name="unit_digits" tree_invisible="1"/>
                                     </tree>
                                 </field>
@@ -73,14 +73,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Supplier Shipments">
-                        <field name="code" select="1"/>
-                        <field name="reference" select="1"/>
-                        <field name="planned_date" select="2"/>
-                        <field name="effective_date" select="2"/>
-                        <field name="supplier" select="2"/>
-                        <field name="contact_address" select="2"/>
-                        <field name="state" select="1"/>
-                        <field name="create_date" tree_invisible="1" select="2"/>
+                        <field name="code"/>
+                        <field name="reference"/>
+                        <field name="planned_date"/>
+                        <field name="effective_date"/>
+                        <field name="supplier"/>
+                        <field name="contact_address"/>
+                        <field name="state"/>
+                        <field name="create_date" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
@@ -88,7 +88,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_in_form">
             <field name="name">Supplier Shipments</field>
             <field name="res_model">stock.shipment.in</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_in_form_view1">
@@ -204,14 +204,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Supplier Return Shipments">
-                        <field name="code" select="1"/>
-                        <field name="reference" select="2"/>
-                        <field name="planned_date" select="2"/>
-                        <field name="effective_date" select="2"/>
-                        <field name="from_location" select="2"/>
-                        <field name="to_location" select="2"/>
-                        <field name="state" select="1"/>
-                        <field name="create_date" tree_invisible="1" select="2"/>
+                        <field name="code"/>
+                        <field name="reference"/>
+                        <field name="planned_date"/>
+                        <field name="effective_date"/>
+                        <field name="from_location"/>
+                        <field name="to_location"/>
+                        <field name="state"/>
+                        <field name="create_date" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
@@ -219,7 +219,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_in_return_form">
             <field name="name">Supplier Return Shipments</field>
             <field name="res_model">stock.shipment.in.return</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_in_return_form_view1">
@@ -333,14 +333,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Customer Shipments">
-                        <field name="code" select="1"/>
-                        <field name="reference" select="1"/>
-                        <field name="planned_date" select="2"/>
-                        <field name="effective_date" select="2"/>
-                        <field name="customer" select="2"/>
-                        <field name="delivery_address" select="2"/>
-                        <field name="state" select="1"/>
-                        <field name="create_date" tree_invisible="1" select="2"/>
+                        <field name="code"/>
+                        <field name="reference"/>
+                        <field name="planned_date"/>
+                        <field name="effective_date"/>
+                        <field name="customer"/>
+                        <field name="delivery_address"/>
+                        <field name="state"/>
+                        <field name="create_date" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
@@ -360,7 +360,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_out_form">
             <field name="name">Customer Shipments</field>
             <field name="res_model">stock.shipment.out</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_out_form_view1">
@@ -522,14 +522,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Internal Shipments">
-                        <field name="code" select="1"/>
-                        <field name="reference" select="2"/>
-                        <field name="planned_date" select="2"/>
-                        <field name="effective_date" select="2"/>
-                        <field name="from_location" select="2"/>
-                        <field name="to_location" select="2"/>
-                        <field name="state" select="1"/>
-                        <field name="create_date" tree_invisible="1" select="2"/>
+                        <field name="code"/>
+                        <field name="reference"/>
+                        <field name="planned_date"/>
+                        <field name="effective_date"/>
+                        <field name="from_location"/>
+                        <field name="to_location"/>
+                        <field name="state"/>
+                        <field name="create_date" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
@@ -537,7 +537,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_internal_form">
             <field name="name">Internal Shipments</field>
             <field name="res_model">stock.shipment.internal</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_internal_form_view1">
@@ -666,13 +666,13 @@ this repository contains the full copyright notices and license terms. -->
                             <page string="Incoming Moves" id="incoming_moves">
                                 <field name="incoming_moves" colspan="4">
                                     <tree string="Moves">
-                                        <field name="product" select="1"/>
-                                        <field name="from_location" select="2"/>
-                                        <field name="to_location" select="2"/>
-                                        <field name="quantity" select="1"/>
-                                        <field name="uom" select="1"/>
-                                        <field name="planned_date" select="1"/>
-                                        <field name="state" select="2"/>
+                                        <field name="product"/>
+                                        <field name="from_location"/>
+                                        <field name="to_location"/>
+                                        <field name="quantity"/>
+                                        <field name="uom"/>
+                                        <field name="planned_date"/>
+                                        <field name="state"/>
                                         <field name="unit_digits" tree_invisible="1"/>
                                     </tree>
                                 </field>
@@ -710,14 +710,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Customer Return Shipments">
-                        <field name="code" select="1"/>
-                        <field name="reference" select="1"/>
-                        <field name="state" select="1"/>
-                        <field name="planned_date" select="2"/>
-                        <field name="effective_date" select="2"/>
-                        <field name="customer" select="2"/>
-                        <field name="delivery_address" select="2"/>
-                        <field name="create_date" tree_invisible="1" select="2"/>
+                        <field name="code"/>
+                        <field name="reference"/>
+                        <field name="state"/>
+                        <field name="planned_date"/>
+                        <field name="effective_date"/>
+                        <field name="customer"/>
+                        <field name="delivery_address"/>
+                        <field name="create_date" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
@@ -726,7 +726,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_out_return_form">
             <field name="name">Customer Return Shipments</field>
             <field name="res_model">stock.shipment.out.return</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_out_return_form_view1">
@@ -1390,7 +1390,7 @@ this repository contains the full copyright notices and license terms. -->
                 <data>
                     <xpath
                         expr="/tree/field[@name=&quot;active&quot;]" position="after">
-                        <field name="delivery" select="2"/>
+                        <field name="delivery"/>
                     </xpath>
                 </data>
                 ]]>

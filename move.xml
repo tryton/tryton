@@ -44,14 +44,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Moves">
-                        <field name="product" select="1"/>
-                        <field name="from_location" select="1"/>
-                        <field name="to_location" select="1"/>
-                        <field name="quantity" select="2"/>
-                        <field name="uom" select="2"/>
-                        <field name="state" select="2"/>
+                        <field name="product"/>
+                        <field name="from_location"/>
+                        <field name="to_location"/>
+                        <field name="quantity"/>
+                        <field name="uom"/>
+                        <field name="state"/>
                         <field name="unit_digits" tree_invisible="1"/>
-                        <field name="create_date" tree_invisible="1" select="2"/>
+                        <field name="create_date" tree_invisible="1"/>
                     </tree>
                 ]]>
             </field>
@@ -59,7 +59,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_form">
             <field name="name">Moves</field>
             <field name="res_model">stock.move</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_view1">
             <field name="sequence" eval="1"/>
@@ -79,7 +79,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Moves from Suppliers</field>
             <field name="res_model">stock.move</field>
             <field name="domain">[('from_location.type', '=', 'supplier')]</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_supp_view1">
             <field name="sequence" eval="1"/>
@@ -120,7 +120,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Moves to Customers</field>
             <field name="res_model">stock.move</field>
             <field name="domain">[('to_location.type', '=', 'customer')]</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_move_form_cust_view1">

@@ -10,13 +10,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Products">
-                        <field name="name" select="1"/>
-                        <field name="code" select="1"/>
-                        <field name="quantity" select="2"/>
-                        <field name="forecast_quantity" select="2"/>
-                        <field name="default_uom" select="2"/>
-                        <field name="type" select="1"/>
-                        <field name="active" select="2"/>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="quantity"/>
+                        <field name="forecast_quantity"/>
+                        <field name="default_uom"/>
+                        <field name="type"/>
+                        <field name="active"/>
                     </tree>
                 ]]>
             </field>
