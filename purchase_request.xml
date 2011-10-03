@@ -56,14 +56,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Purchase Requests">
-                        <field name="product" select="1"/>
-                        <field name="quantity" select="2"/>
-                        <field name="uom" select="2"/>
-                        <field name="warehouse" select="1"/>
-                        <field name="party" select="1"/>
-                        <field name="purchase_date" select="2"/>
+                        <field name="product"/>
+                        <field name="quantity"/>
+                        <field name="uom"/>
+                        <field name="warehouse"/>
+                        <field name="party"/>
+                        <field name="purchase_date"/>
                         <field name="stock_level"/>
-                        <field name="company" select="2"/>
+                        <field name="company"/>
                         <field name="state"/>
                     </tree>
                 ]]>

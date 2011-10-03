@@ -44,12 +44,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Order Points">
-                        <field name="product" select="1"/>
-                        <field name="location" select="1"/>
-                        <field name="type" select="1"/>
+                        <field name="product"/>
+                        <field name="location"/>
+                        <field name="type"/>
                         <field name="company"/>
-                        <field name="min_quantity" select="2"/>
-                        <field name="max_quantity" select="2"/>
+                        <field name="min_quantity"/>
+                        <field name="max_quantity"/>
                         <field name="unit"/>
                     </tree>
                 ]]>
