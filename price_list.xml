@@ -17,8 +17,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="lines" colspan="4">
                         <tree string="Price List Lines"
                             sequence="sequence">
-                            <field name="product" select="1"/>
-                            <field name="quantity" select="1"/>
+                            <field name="product"/>
+                            <field name="quantity"/>
                             <field name="formula"/>
                         </tree>
                     </field>
@@ -33,7 +33,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Price Lists">
-                    <field name="name" select="1"/>
+                    <field name="name"/>
                 </tree>
                 ]]>
             </field>
@@ -114,10 +114,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Price List Lines">
-                    <field name="price_list" select="1"/>
-                    <field name="sequence" select="2"/>
-                    <field name="product" select="1"/>
-                    <field name="quantity" select="1"/>
+                    <field name="price_list"/>
+                    <field name="sequence"/>
+                    <field name="product"/>
+                    <field name="quantity"/>
                     <field name="formula"/>
                 </tree>
                 ]]>
