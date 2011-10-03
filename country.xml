@@ -24,8 +24,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Countries">
-                    <field name="name" select="1"/>
-                    <field name="code" select="1"/>
+                    <field name="name"/>
+                    <field name="code"/>
                 </tree>
                 ]]>
             </field>
@@ -76,9 +76,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Subdivisions">
-                    <field name="name" select="1"/>
-                    <field name="code" select="1"/>
-                    <field name="type" select="1"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type"/>
                 </tree>
                 ]]>
             </field>
