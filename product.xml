@@ -29,13 +29,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Product Templates">
-                        <field name="name" select="1"/>
-                        <field name="list_price_uom" select="2"/>
-                        <field name="cost_price_uom" select="2"/>
-                        <field name="type" select="2"/>
-                        <field name="category" select="1"/>
-                        <field name="default_uom" select="2"/>
-                        <field name="active" select="2" tree_invisible="1"/>
+                        <field name="name"/>
+                        <field name="list_price_uom"/>
+                        <field name="cost_price_uom"/>
+                        <field name="type"/>
+                        <field name="category"/>
+                        <field name="default_uom"/>
+                        <field name="active" tree_invisible="1"/>
                     </tree>
                     ]]>
             </field>
@@ -89,7 +89,7 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath
                         expr="/tree/field[@name=&quot;name&quot;]"
                         position="after">
-                        <field name="code" select="1"/>
+                        <field name="code"/>
                     </xpath>
                 </data>
                 ]]>

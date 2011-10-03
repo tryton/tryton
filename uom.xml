@@ -9,13 +9,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Units of Measure">
-                    <field name="name" select="1"/>
-                    <field name="symbol" select="2"/>
-                    <field name="category" select="1"/>
-                    <field name="factor" select="2"/>
-                    <field name="rate" select="2"/>
-                    <field name="rounding" select="2"/>
-                    <field name="active" select="2" tree_invisible="1"/>
+                    <field name="name"/>
+                    <field name="symbol"/>
+                    <field name="category"/>
+                    <field name="factor"/>
+                    <field name="rate"/>
+                    <field name="rounding"/>
+                    <field name="active" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -69,7 +69,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
               <![CDATA[
               <tree string="Categories of Unit of Measure">
-                    <field name="name" select="1"/>
+                    <field name="name"/>
               </tree>
               ]]>
             </field>
