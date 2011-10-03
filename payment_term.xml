@@ -55,8 +55,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Payment Terms">
-                    <field name="name" select="1"/>
-                    <field name="active" select="1"/>
+                    <field name="name"/>
+                    <field name="active"/>
                 </tree>
                 ]]>
             </field>

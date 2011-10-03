@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
                 <data>
                     <xpath
                         expr="/tree/field[@name=&quot;active&quot;]" position="after">
-                        <field name="invoice" select="2"/>
+                        <field name="invoice"/>
                     </xpath>
                 </data>
                 ]]>

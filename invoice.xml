@@ -46,12 +46,12 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="lines" colspan="6">
                                 <tree string="Lines" sequence="sequence" fill="1">
                                     <field name="type"/>
-                                    <field name="product" select="1"/>
+                                    <field name="product"/>
                                     <field name="account" tree_invisible="1"/>
                                     <field name="description"/>
-                                    <field name="quantity" select="1"/>
-                                    <field name="unit" select="2"/>
-                                    <field name="unit_price" select="2"/>
+                                    <field name="quantity"/>
+                                    <field name="unit"/>
+                                    <field name="unit_price"/>
                                     <field name="taxes"/>
                                     <field name="amount"/>
                                     <field name="sequence" tree_invisible="1"/>
@@ -160,20 +160,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Invoices">
-                    <field name="type" select="2"/>
-                    <field name="number" select="1"/>
-                    <field name="reference" select="1"/>
-                    <field name="invoice_date" select="2"/>
-                    <field name="party" select="1"/>
-                    <field name="currency" select="2"/>
-                    <field name="untaxed_amount" select="2"/>
-                    <field name="tax_amount" select="2"/>
-                    <field name="total_amount" select="2"/>
-                    <field name="state" select="2"/>
+                    <field name="type"/>
+                    <field name="number"/>
+                    <field name="reference"/>
+                    <field name="invoice_date"/>
+                    <field name="party"/>
+                    <field name="currency"/>
+                    <field name="untaxed_amount"/>
+                    <field name="tax_amount"/>
+                    <field name="total_amount"/>
+                    <field name="state"/>
                     <field name="amount_to_pay_today"/>
-                    <field name="description" select="2"/>
+                    <field name="description"/>
                     <field name="currency_digits" tree_invisible="1"/>
-                    <field name="create_date" tree_invisible="1" select="2"/>
+                    <field name="create_date" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -181,7 +181,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_form">
             <field name="name">All Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_form_view1">
             <field name="sequence" eval="10"/>
@@ -201,7 +201,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.invoice</field>
             <field name="domain">[('type', '=', 'out_invoice')]</field>
             <field name="context">{'type': 'out_invoice'}</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form_view1">
             <field name="sequence" eval="10"/>
@@ -278,7 +278,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.invoice</field>
             <field name="domain">[('type', '=', 'out_credit_note')]</field>
             <field name="context">{'type': 'out_credit_note'}</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form_view1">
             <field name="sequence" eval="10"/>
@@ -355,7 +355,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.invoice</field>
             <field name="domain">[('type', '=', 'in_invoice')]</field>
             <field name="context">{'type': 'in_invoice'}</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form_view1">
             <field name="sequence" eval="10"/>
@@ -432,7 +432,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.invoice</field>
             <field name="domain">[('type', '=', 'in_credit_note')]</field>
             <field name="context">{'type': 'in_credit_note'}</field>
-            <field name="search_value">{'create_date': ['between', Date(delta_years=-1)]}</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form_view1">
             <field name="sequence" eval="10"/>
@@ -633,12 +633,12 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="product"/>
                             <field name="product">
                                 <tree string="Products">
-                                    <field name="name" select="1"/>
-                                    <field name="code" select="1"/>
-                                    <field name="list_price_uom" select="2"/>
-                                    <field name="cost_price_uom" select="2"/>
-                                    <field name="default_uom" select="2"/>
-                                    <field name="active" select="2"/>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="list_price_uom"/>
+                                    <field name="cost_price_uom"/>
+                                    <field name="default_uom"/>
+                                    <field name="active"/>
                                 </tree>
                             </field>
                             <label name="account"/>
@@ -676,14 +676,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Invoice Lines">
-                    <field name="invoice" select="1"/>
-                    <field name="type" select="1"/>
-                    <field name="product" select="1"/>
-                    <field name="account" select="2"/>
-                    <field name="description" select="1"/>
-                    <field name="quantity" select="2"/>
-                    <field name="unit" select="2"/>
-                    <field name="unit_price" select="2"/>
+                    <field name="invoice"/>
+                    <field name="type"/>
+                    <field name="product"/>
+                    <field name="account"/>
+                    <field name="description"/>
+                    <field name="quantity"/>
+                    <field name="unit"/>
+                    <field name="unit_price"/>
                     <field name="taxes"/>
                     <field name="amount"/>
                     <field name="unit_digits" tree_invisible="1"/>
@@ -749,10 +749,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Invoice Taxes">
-                    <field name="invoice" select="1"/>
-                    <field name="description" select="1"/>
-                    <field name="account" select="1"/>
-                    <field name="manual" select="2"/>
+                    <field name="invoice"/>
+                    <field name="description"/>
+                    <field name="account"/>
+                    <field name="manual"/>
                     <field name="base"/>
                     <field name="amount"/>
                     <field name="tax" tree_invisible="1"/>
