@@ -35,8 +35,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="date"/>
                     <field name="locations" colspan="4">
                         <tree string="Locations" fill="1">
-                            <field name="name" select="1"/>
-                            <field name="code" select="1"/>
+                            <field name="name"/>
+                            <field name="code"/>
                         </tree>
                     </field>
                 </form>
