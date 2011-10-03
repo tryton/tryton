@@ -10,9 +10,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Product Cost History">
-                    <field name="template" select="1"/>
-                    <field name="date" select="1"/>
-                    <field name="cost_price" select="1"/>
+                    <field name="template"/>
+                    <field name="date"/>
+                    <field name="cost_price"/>
                 </tree>
                 ]]>
             </field>
