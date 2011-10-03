@@ -10,9 +10,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Contact Mechanisms">
-                    <field name="party" select="1"/>
-                    <field name="type" select="1"/>
-                    <field name="value" select="1"/>
+                    <field name="party"/>
+                    <field name="type"/>
+                    <field name="value"/>
                 </tree>
                 ]]>
             </field>

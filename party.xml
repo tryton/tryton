@@ -38,10 +38,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Parties">
-                    <field name="code" select="1"/>
-                    <field name="name" select="1"/>
-                    <field name="lang" select="2"/>
-                    <field name="vat_code" select="1"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="lang"/>
+                    <field name="vat_code"/>
                 </tree>
                 ]]>
             </field>
@@ -89,7 +89,7 @@ this repository contains the full copyright notices and license terms. -->
                             </field>
                             <field name="categories" colspan="2">
                                 <tree string="Categories" fill="1">
-                                    <field name="rec_name" select="1"/>
+                                    <field name="rec_name"/>
                                 </tree>
                             </field>
                         </page>
