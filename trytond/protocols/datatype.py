@@ -1,6 +1,16 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import decimal
 from decimal import Decimal
+
+_convert_other = decimal._convert_other
+
+def _convert_Float(other, *args, **kwargs):
+    if isinstance(other, Float):
+        return other.decimal
+    return _convert_other(other, *args, **kwargs)
+decimal._convert_other = _convert_Float
+
 
 class Float(float):
     def __init__(self, value):
