@@ -6,5 +6,5 @@ include CHANGELOG
 include LICENSE
 include *.xml
 include *.odt
-include *.csv
+include locale/*.po
 include doc/*
