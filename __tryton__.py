@@ -26,6 +26,6 @@
         'account_de.xml',
     ],
     'translation': [
-        'de_DE.csv',
+        'locale/de_DE.po',
     ],
 }
