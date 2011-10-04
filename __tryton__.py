@@ -18,7 +18,7 @@
     'description_de_DE': ''' - Fügt Kostenstellen zu Rechnungszeilen hinzu
  - Erstellt Positionen für Kostenstellen bei Buchung von Rechnungen
 ''',
-    'description_es_CO': ''' - Adición de contabilidad analítica a las líneas de facturación 
+    'description_es_CO': ''' - Adición de contabilidad analítica a las líneas de facturación
  -  Generación de líneas analíticas en la factura.
 ''',
     'description_es_ES': '''Añade una cuenta analítica en las líneas de '''
@@ -35,10 +35,10 @@
         'invoice.xml',
     ],
     'translation': [
-        'bg_BG.csv',
-        'de_DE.csv',
-        'es_CO.csv',
-        'es_ES.csv',
-        'fr_FR.csv',
+        'locale/bg_BG.po',
+        'locale/de_DE.po',
+        'locale/es_CO.po',
+        'locale/es_ES.po',
+        'locale/fr_FR.po',
     ],
 }
