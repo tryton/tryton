@@ -77,9 +77,11 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="state"/>
                     <group col="2" colspan="2" id="buttons">
                         <button string="Post" name="button_post" type="object"
-                            states="{'invisible': Equal(Eval('state'), 'posted')}"/>
+                            states="{'invisible': Equal(Eval('state'), 'posted')}"
+                            icon="tryton-ok"/>
                         <button string="Draft" name="button_draft" type="object"
-                            states="{'invisible': Equal(Eval('state'), 'draft')}"/>
+                            states="{'invisible': Equal(Eval('state'), 'draft')}"
+                            icon="tryton-clear"/>
                     </group>
                 </form>
                 ]]>
@@ -403,9 +405,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Unreconcile" col="2">
-                    <image name="tryton-dialog-information"/>
+                    <image name="tryton-dialog-information" xexpand="0"
+                        xfill="0"/>
                     <label string="If you unreconcile lines, the workflows, on those lines, will not be canceled."
-                        id="workflows"/>
+                        id="workflows"
+                        yalign="0.0" xalign="0.0" xexpand="1"/>
                 </form>
                 ]]>
             </field>

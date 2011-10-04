@@ -250,10 +250,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Open Chart Of Tax Codes" col="1">
+                <form string="Open Chart Of Tax Codes" col="2">
+                    <label name="method"/>
                     <field name="method"/>
+                    <label name="fiscalyear"/>
                     <field name="fiscalyear"/>
-                    <field name="periods"/>
+                    <field name="periods" colspan="2"/>
                 </form>
                 ]]>
             </field>

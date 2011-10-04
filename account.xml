@@ -480,13 +480,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Create Chart of Account" col="2">
-                    <image name="tryton-dialog-information"/>
-                    <group col="1" id="labels">
-                        <label string="You can now create a chart of account for your company"
-                            yalign="0.0" id="create"/>
-                        <label string="by selecting a chart of account template."
-                            yalign="0.0" id="selecting"/>
-                    </group>
+                    <image name="tryton-dialog-information" xexpand="0"
+                        xfill="0"/>
+                    <label string="You can now create a chart of account for your company by selecting a chart of account template."
+                        id="create"
+                        yalign="0.0" xalign="0.0" xexpand="1"/>
                 </form>
                 ]]>
             </field>
@@ -552,7 +550,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Update Chart of Account">
-                    <label string="Update Chart of Account Succeed!" id="succeed"/>
+                    <image name="tryton-dialog-information" xexpand="0" xfill="0"/>
+                    <label string="Update Chart of Account Succeed!" id="succeed"
+                        yalign="0.0" xalign="0.0" xexpand="1"/>
                 </form>
                 ]]>
             </field>
@@ -977,14 +977,14 @@ this repository contains the full copyright notices and license terms. -->
                     <separator string="Terms" colspan="4" id="terms"/>
                     <label name="term1"/>
                     <field name="term1"/>
+                    <label name="unit"/>
+                    <field name="unit"/>
                     <newline/>
                     <label name="term2"/>
                     <field name="term2"/>
                     <newline/>
                     <label name="term3"/>
                     <field name="term3"/>
-                    <label name="unit"/>
-                    <field name="unit"/>
                 </form>
                 ]]>
             </field>
