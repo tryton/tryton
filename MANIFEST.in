@@ -6,6 +6,6 @@ include COPYRIGHT
 include LICENSE
 include *.xml
 include *.odt
-include *.csv
+include locale/*.po
 include doc/*
 include icons/*

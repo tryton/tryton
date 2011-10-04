@@ -37,12 +37,12 @@ Permet de formater les montants en fonction de la devise.
         'currency.xml',
     ],
     'translation': [
-        'bg_BG.csv',
-        'cs_CZ.csv',
-        'de_DE.csv',
-        'es_CO.csv',
-        'es_ES.csv',
-        'fr_FR.csv',
-        'ru_RU.csv',
+        'locale/bg_BG.po',
+        'locale/cs_CZ.po',
+        'locale/de_DE.po',
+        'locale/es_CO.po',
+        'locale/es_ES.po',
+        'locale/fr_FR.po',
+        'locale/ru_RU.po',
     ]
 }
