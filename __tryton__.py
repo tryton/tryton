@@ -20,8 +20,8 @@ product (if the cost price method is FIFO)
     - Добавя FIFO (първи влязъл първи излязъл) като начин на изчисляване на
       цената на продукт.
     - След инсталиране на този модул цената на даден продукт (ако е избран този
-      начин на остойностяване) се изчислява автоматично при всяко движение на 
-      наличност от доставчик или към клиент 
+      начин на остойностяване) се изчислява автоматично при всяко движение на
+      наличност от доставчик или към клиент
 ''',
     'description_de_DE':'''Kostenpreisermittlung für Artikel nach Methode 'FIFO'
     - Fügt 'FIFO' (First In - First Out) zu den Methoden für die
@@ -53,10 +53,10 @@ prix de revient du produit concerné (si la méthode de coût est FIFO).
     'xml': [
     ],
     'translation': [
-        'bg_BG.csv',
-        'de_DE.csv',
-        'es_CO.csv',
-        'es_ES.csv',
-        'fr_FR.csv',
+        'locale/bg_BG.po',
+        'locale/de_DE.po',
+        'locale/es_CO.po',
+        'locale/es_ES.po',
+        'locale/fr_FR.po',
     ],
 }
