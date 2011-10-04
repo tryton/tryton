@@ -1,0 +1,99 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.price_list.line:0"
+msgid "Invalid formula!"
+msgstr "Невалидна формула!"
+
+msgctxt "field:product.price_list,company:0"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:product.price_list,lines:0"
+msgid "Lines"
+msgstr "Редове"
+
+msgctxt "field:product.price_list,name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.price_list,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.price_list.line,formula:0"
+msgid "Formula"
+msgstr "Формула"
+
+msgctxt "field:product.price_list.line,price_list:0"
+msgid "Price List"
+msgstr "Ценова листа"
+
+msgctxt "field:product.price_list.line,product:0"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "field:product.price_list.line,quantity:0"
+msgid "Quantity"
+msgstr "Количество"
+
+msgctxt "field:product.price_list.line,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:product.price_list.line,sequence:0"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:product.price_list.line,unit_digits:0"
+msgid "Unit Digits"
+msgstr "Десетични единици"
+
+msgctxt "help:product.price_list.line,formula:0"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+"Израз на python който ще се изпълни с:\n"
+"- unit_price: оригиналната единична цена"
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr "Ценови листи"
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr "Ценови листи"
+
+msgctxt "model:product.price_list,name:0"
+msgid "Price List"
+msgstr "Ценова листа"
+
+msgctxt "model:product.price_list.line,name:0"
+msgid "Price List Line"
+msgstr "Ред от ценова листа"
+
+msgctxt "view:party.party:0"
+msgid "Price List"
+msgstr "Ценова листа"
+
+msgctxt "view:product.price_list.line:0"
+msgid "Price List Line"
+msgstr "Ред от ценова листа"
+
+msgctxt "view:product.price_list.line:0"
+msgid "Price List Lines"
+msgstr "Редове от ценова листа"
+
+msgctxt "view:product.price_list:0"
+msgid "Price List"
+msgstr "Ценова листа"
+
+msgctxt "view:product.price_list:0"
+msgid "Price List Lines"
+msgstr "Редове от ценова листа"
+
+msgctxt "view:product.price_list:0"
+msgid "Price Lists"
+msgstr "Ценови листи"
