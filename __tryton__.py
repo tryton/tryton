@@ -37,7 +37,7 @@ todos los valores pasados del precio de coste del producto actual.
 Ce module ajoute un bouton sur la fiche produit qui ouvre la liste de
 toutes les valeurs passées du prix de revient du produit.
 ''',
-    'description_ru_RU': '''История цен ТМЦ. 
+    'description_ru_RU': '''История цен ТМЦ.
 Этот модуль добавляет кнопку для ТМЦ c помощью которой открывается список
 всех предыдущих значений цен на текущий ТМЦ.
 ''',
@@ -49,11 +49,11 @@ toutes les valeurs passées du prix de revient du produit.
         'product.xml',
     ],
     'translation': [
-        'bg_BG.csv',
-        'de_DE.csv',
-        'es_CO.csv',
-        'es_ES.csv',
-        'fr_FR.csv',
-        'ru_RU.csv',
+        'locale/bg_BG.po',
+        'locale/de_DE.po',
+        'locale/es_CO.po',
+        'locale/es_ES.po',
+        'locale/fr_FR.po',
+        'locale/ru_RU.po',
     ],
 }
