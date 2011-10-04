@@ -404,7 +404,7 @@
                 <![CDATA[
                 <form string="History">
                     <label name="opportunity"/>
-                    <field name="opportunity" colspan="4"/>
+                    <field name="opportunity" colspan="3"/>
                     <label name="user"/>
                     <field name="user"/>
                     <label name="date"/>
