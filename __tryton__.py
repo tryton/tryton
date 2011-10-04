@@ -61,10 +61,10 @@ Et le rapport:
         'line.xml',
     ],
     'translation': [
-        'bg_BG.csv',
-        'de_DE.csv',
-        'es_CO.csv',
-        'es_ES.csv',
-        'fr_FR.csv',
+        'locale/bg_BG.po',
+        'locale/de_DE.po',
+        'locale/es_CO.po',
+        'locale/es_ES.po',
+        'locale/fr_FR.po',
     ],
 }
