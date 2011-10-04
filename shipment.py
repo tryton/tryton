@@ -1,10 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import operator
+import itertools
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard
 from trytond.backend import TableHandler
-from trytond.pyson import Eval, Not, Equal, If, Or, And, Bool, In
+from trytond.pyson import Eval, Not, Equal, If, Or, And, Bool, In, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -23,6 +25,15 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
     planned_date = fields.Date('Planned Date', states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
+    company = fields.Many2One('company.company', 'Company', required=True,
+        states={
+            'readonly': Not(Equal(Eval('state'), 'draft')),
+            },
+        domain=[
+            ('id', If(In('company', Eval('context', {})), '=', '!='),
+                Get(Eval('context', {}), 'company', 0)),
+            ],
+        depends=['state'])
     reference = fields.Char("Reference", size=None, select=1,
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -69,7 +80,8 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
         }, depends=['state', 'warehouse']),
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_in', 'Moves',
-            readonly=True)
+        domain=[('company', '=', Eval('company'))], readonly=True,
+        depends=['company'])
     code = fields.Char("Code", size=None, select=1, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -129,7 +141,25 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
         for field in ('code', 'reference'):
             table.index_action(field, action='remove', table=old_table)
 
+        # Migration from 2.0:
+        created_company = table.column_exist('company')
+
         super(ShipmentIn, self).init(module_name)
+
+        # Migration from 2.0:
+        move_obj = Pool().get('stock.move')
+        if (not created_company
+                and TableHandler.table_exist(cursor, move_obj._table)):
+            cursor.execute('SELECT shipment.id, MAX(move.company) '
+                'FROM "%s" AS shipment '
+                'INNER JOIN "%s" AS move ON shipment.id = move.shipment_in '
+                'GROUP BY shipment.id '
+                'ORDER BY MAX(move.company)'
+                % (self._table, move_obj._table))
+            for company_id, shipment_ids in itertools.groupby(cursor.fetchall(),
+                    operator.itemgetter(1)):
+                self.write(list(shipment_ids), {'company': company_id})
+            table.not_null_action('company', action='add')
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
@@ -144,6 +174,9 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
         if len(location_ids) == 1:
             return location_ids[0]
         return False
+
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
     def on_change_supplier(self, values):
         if not values.get('supplier'):
@@ -390,6 +423,15 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
+    company = fields.Many2One('company.company', 'Company', required=True,
+        states={
+            'readonly': Not(Equal(Eval('state'), 'draft')),
+            },
+        domain=[
+            ('id', If(In('company', Eval('context', {})), '=', '!='),
+                Get(Eval('context', {}), 'company', 0)),
+            ],
+        depends=['state'])
     code = fields.Char("Code", size=None, select=1, readonly=True)
     reference = fields.Char("Reference", size=None, select=1,
         states={
@@ -413,11 +455,13 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
                     Not(Bool(Eval('from_location')))),
                 Bool(Eval('to_location'))),
             },
+        domain=[('company', '=', Eval('company'))],
         context={
             'from_location': Eval('from_location'),
             'to_location': Eval('to_location'),
             'planned_date': Eval('planned_date'),
-            }, depends=['state', 'from_location', 'to_location'])
+            },
+        depends=['state', 'from_location', 'to_location', 'company'])
     state = fields.Selection([
         ('draft', 'Draft'),
         ('cancel', 'Canceled'),
@@ -456,7 +500,26 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         for field in ('code', 'reference'):
             table.index_action(field, action='remove', table=old_table)
 
+        # Migration from 2.0:
+        created_company = table.column_exist('company')
+
         super(ShipmentInReturn, self).init(module_name)
+
+        # Migration from 2.0:
+        move_obj = Pool().get('stock.move')
+        if (not created_company
+                and TableHandler.table_exist(cursor, move_obj._table)):
+            cursor.execute('SELECT shipment.id, MAX(move.company) '
+                'FROM "%s" AS shipment '
+                'INNER JOIN "%s" AS move '
+                'ON shipment.id = move.shipment_in_return '
+                'GROUP BY shipment.id '
+                'ORDER BY MAX(move.company)'
+                % (self._table, move_obj._table))
+            for company_id, shipment_ids in itertools.groupby(cursor.fetchall(),
+                    operator.itemgetter(1)):
+                self.write(list(shipment_ids), {'company': company_id})
+            table.not_null_action('company', action='add')
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
@@ -505,6 +568,9 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         result = super(ShipmentInReturn, self).write(ids, values)
         self._set_move_planned_date(ids)
         return result
+
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
     def wkf_draft(self, shipment):
         move_obj = Pool().get('stock.move')
@@ -611,6 +677,15 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
+    company = fields.Many2One('company.company', 'Company', required=True,
+        states={
+            'readonly': Not(Equal(Eval('state'), 'draft')),
+            },
+        domain=[
+            ('id', If(In('company', Eval('context', {})), '=', '!='),
+                Get(Eval('context', {}), 'company', 0)),
+            ],
+        depends=['state'])
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
@@ -652,7 +727,8 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                 }, depends=['state', 'warehouse']),
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_out', 'Moves',
-            readonly=True)
+        domain=[('company', '=', Eval('company'))], depends=['company'],
+        readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -700,7 +776,26 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         for field in ('code', 'reference'):
             table.index_action(field, action='remove', table=old_table)
 
+        # Migration from 2.0:
+        created_company = table.column_exist('company')
+
         super(ShipmentOut, self).init(module_name)
+
+        # Migration from 2.0:
+        move_obj = Pool().get('stock.move')
+        if (not created_company
+                and TableHandler.table_exist(cursor, move_obj._table)):
+            move_obj = Pool().get('stock.move')
+            cursor.execute('SELECT shipment.id, MAX(move.company) '
+                'FROM "%s" AS shipment '
+                'INNER JOIN "%s" AS move ON shipment.id = move.shipment_out '
+                'GROUP BY shipment.id '
+                'ORDER BY MAX(move.company)'
+                % (self._table, move_obj._table))
+            for company_id, shipment_ids in itertools.groupby(cursor.fetchall(),
+                    operator.itemgetter(1)):
+                self.write(list(shipment_ids), {'company': company_id})
+            table.not_null_action('company', action='add')
 
         # Migration from 1.0 customer_location is no more used
         table = TableHandler(cursor, self, module_name)
@@ -718,6 +813,9 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         if len(location_ids) == 1:
             return location_ids[0]
         return False
+
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
     def on_change_customer(self, values):
         if not values.get('customer'):
@@ -1070,6 +1168,15 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
+    company = fields.Many2One('company.company', 'Company', required=True,
+        states={
+            'readonly': Not(Equal(Eval('state'), 'draft')),
+            },
+        domain=[
+            ('id', If(In('company', Eval('context', {})), '=', '!='),
+                Get(Eval('context', {}), 'company', 0)),
+            ],
+        depends=['state'])
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
@@ -1110,7 +1217,8 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                 }, depends=['state', 'warehouse']),
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_out_return', 'Moves',
-            readonly=True)
+        domain=[('company', '=', Eval('company'))], depends=['company'],
+        readonly=True)
     code = fields.Char("Code", size=None, select=1, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -1156,7 +1264,26 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
         for field in ('code', 'reference'):
             table.index_action(field, action='remove', table=old_table)
 
+        # Migration from 2.0:
+        created_company = table.column_exist('company')
+
         super(ShipmentOutReturn, self).init(module_name)
+
+        # Migration from 2.0:
+        move_obj = Pool().get('stock.move')
+        if (not created_company
+                and TableHandler.table_exist(cursor, move_obj._table)):
+            cursor.execute('SELECT shipment.id, MAX(move.company) '
+                'FROM "%s" AS shipment '
+                'INNER JOIN "%s" AS move '
+                'ON shipment.id = move.shipment_out_return '
+                'GROUP BY shipment.id '
+                'ORDER BY MAX(move.company)'
+                % (self._table, move_obj._table))
+            for company_id, shipment_ids in itertools.groupby(cursor.fetchall(),
+                    operator.itemgetter(1)):
+                self.write(list(shipment_ids), {'company': company_id})
+            table.not_null_action('company', action='add')
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
@@ -1171,6 +1298,9 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
         if len(location_ids) == 1:
             return location_ids[0]
         return False
+
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
     def on_change_customer(self, values):
         if not values.get('customer'):
@@ -1512,6 +1642,15 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
+    company = fields.Many2One('company.company', 'Company', required=True,
+        states={
+            'readonly': Not(Equal(Eval('state'), 'draft')),
+            },
+        domain=[
+            ('id', If(In('company', Eval('context', {})), '=', '!='),
+                Get(Eval('context', {}), 'company', 0)),
+            ],
+        depends=['state'])
     code = fields.Char("Code", size=None, select=1, readonly=True)
     reference = fields.Char("Reference", size=None, select=1,
         states={
@@ -1540,11 +1679,14 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
                     Not(Bool(Eval('from_location')))),
                 Bool(Eval('to_location'))),
             },
+        domain=[('company', '=', Eval('company'))],
         context={
             'from_location': Eval('from_location'),
             'to_location': Eval('to_location'),
             'planned_date': Eval('planned_date'),
-        }, depends=['state', 'from_location', 'to_location', 'planned_date'])
+            },
+        depends=['state', 'from_location', 'to_location', 'planned_date',
+            'company'])
     state = fields.Selection([
         ('draft', 'Draft'),
         ('cancel', 'Canceled'),
@@ -1576,7 +1718,26 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
         for field in ('code', 'reference'):
             table.index_action(field, action='remove', table=old_table)
 
+        # Migration from 2.0:
+        created_company = table.column_exist('company')
+
         super(ShipmentInternal, self).init(module_name)
+
+        # Migration from 2.0:
+        move_obj = Pool().get('stock.move')
+        if (not created_company
+                and TableHandler.table_exist(cursor, move_obj._table)):
+            cursor.execute('SELECT shipment.id, MAX(move.company) '
+                'FROM "%s" AS shipment '
+                'INNER JOIN "%s" AS move '
+                'ON shipment.id = move.shipment_internal '
+                'GROUP BY shipment.id '
+                'ORDER BY MAX(move.company)'
+                % (self._table, move_obj._table))
+            for company_id, shipment_ids in itertools.groupby(cursor.fetchall(),
+                    operator.itemgetter(1)):
+                self.write(list(shipment_ids), {'company': company_id})
+            table.not_null_action('company', action='add')
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
@@ -1584,6 +1745,9 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
 
     def default_state(self):
         return 'draft'
+
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
     def button_draft(self, ids):
         self.workflow_trigger_create(ids)

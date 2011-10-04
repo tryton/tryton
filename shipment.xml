@@ -23,6 +23,8 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
+                        <label name="company"/>
+                        <field name="company"/>
                         <label name="warehouse"/>
                         <field name="warehouse"/>
                         <notebook colspan="6">
@@ -285,6 +287,8 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
+                        <label name="company"/>
+                        <field name="company"/>
                         <label name="warehouse"/>
                         <field name="warehouse"/>
                         <notebook colspan="4">
@@ -488,6 +492,8 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
+                        <label name="company"/>
+                        <field name="company"/>
                         <field name="moves"  colspan="4"/>
                         <label name="state"/>
                         <field name="state"/>
@@ -660,6 +666,8 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="planned_date"/>
                         <label name="effective_date"/>
                         <field name="effective_date"/>
+                        <label name="company"/>
+                        <field name="company"/>
                         <label name="warehouse"/>
                         <field name="warehouse"/>
                         <notebook colspan="6">
@@ -1531,6 +1539,58 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <!-- Rule definition -->
+        <record model="ir.rule.group" id="rule_group_shipment_in">
+            <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_shipment_in">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'stock.shipment.in')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_shipment_in"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_shipment_in_return">
+            <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_shipment_in_return">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'stock.shipment.in.return')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_shipment_in_return"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_shipment_out">
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_shipment_out">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'stock.shipment.out')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_shipment_out"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_shipment_out_return">
+            <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_shipment_out_return">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'stock.shipment.out.return')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_shipment_out_return"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_shipment_internal">
+            <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_shipment_internal">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'stock.shipment.internal')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_shipment_internal"/>
         </record>
     </data>
 </tryton>

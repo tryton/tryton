@@ -50,17 +50,22 @@ class Move(ModelSQL, ModelView):
         required=True, states=STATES, depends=DEPENDS,
         domain=[('type', 'not in', ('warehouse', 'view'))])
     shipment_in = fields.Many2One('stock.shipment.in', 'Supplier Shipment',
-            readonly=True, select=1, ondelete='CASCADE')
+        domain=[('company', '=', Eval('company'))], depends=['company'],
+        readonly=True, select=1, ondelete='CASCADE')
     shipment_out = fields.Many2One('stock.shipment.out', 'Customer Shipment',
-            readonly=True, select=1, ondelete='CASCADE')
+        domain=[('company', '=', Eval('company'))], depends=['company'],
+        readonly=True, select=1, ondelete='CASCADE')
     shipment_out_return = fields.Many2One('stock.shipment.out.return',
-            'Customer Return Shipment', readonly=True, select=1,
-            ondelete='CASCADE')
+        'Customer Return Shipment', readonly=True, select=1,
+        domain=[('company', '=', Eval('company'))], depends=['company'],
+        ondelete='CASCADE')
     shipment_in_return = fields.Many2One('stock.shipment.in.return',
-            'Supplier Return Shipment', readonly=True, select=1,
-            ondelete='CASCADE')
+        'Supplier Return Shipment', readonly=True, select=1,
+        domain=[('company', '=', Eval('company'))], depends=['company'],
+        ondelete='CASCADE')
     shipment_internal = fields.Many2One('stock.shipment.internal',
-            'Internal Shipment', readonly=True, select=1, ondelete='CASCADE')
+        'Internal Shipment', readonly=True, select=1, ondelete='CASCADE',
+        domain=[('company', '=', Eval('company'))], depends=['company'])
     planned_date = fields.Date("Planned Date", states={
             'readonly': (In(Eval('state'), ['cancel', 'assigned', 'done'])
                 | Eval('shipment_in') | Eval('shipment_out')
