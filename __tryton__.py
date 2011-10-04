@@ -16,7 +16,7 @@ Theses locations will be used by the supplier shipment for generating
 inventory moves.
 ''',
     "description_bg_BG": '''Задаване на местонахождение по подрабиране на
-    на продукт по склад. Тези местонахождения ще бъдат използвани при пратки 
+    на продукт по склад. Тези местонахождения ще бъдат използвани при пратки
     от доставчик за генериране на движения за инвентаризация.
 ''',
     "description_de_DE": '''Standardlagerorte für Artikel
@@ -46,10 +46,10 @@ générer les mouvements internes.
         "product.xml",
     ],
     'translation': [
-        'bg_BG.csv',
-        'de_DE.csv',
-        'es_CO.csv',
-        'es_ES.csv',
-        'fr_FR.csv',
+        'locale/bg_BG.po',
+        'locale/de_DE.po',
+        'locale/es_CO.po',
+        'locale/es_ES.po',
+        'locale/fr_FR.po',
     ],
 }

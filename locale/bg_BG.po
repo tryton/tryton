@@ -1,0 +1,51 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,locations:0"
+msgid "Default Locations"
+msgstr "Местонахождения по подразбиране"
+
+msgctxt "field:stock.product.location,location:0"
+msgid "Storage Location"
+msgstr "Местонахождение на съхранение"
+
+msgctxt "field:stock.product.location,product:0"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "field:stock.product.location,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:stock.product.location,sequence:0"
+msgid "Sequence"
+msgstr "Последователност"
+
+msgctxt "field:stock.product.location,warehouse:0"
+msgid "Warehouse"
+msgstr "Склад"
+
+msgctxt "model:stock.product.location,name:0"
+msgid "Product Location"
+msgstr "Местонахождение на продукт"
+
+msgctxt "view:product.product:0"
+msgid "Default Locations"
+msgstr "Местонахождения по подразбиране"
+
+msgctxt "view:product.product:0"
+msgid "Product Location"
+msgstr "Местонахождение на продукт"
+
+msgctxt "view:product.product:0"
+msgid "Product Locations"
+msgstr "Местонахождения на продукт"
+
+msgctxt "view:stock.product.location:0"
+msgid "Product Location"
+msgstr "Местонахождение на продукт"
+
+msgctxt "view:stock.product.location:0"
+msgid "Product Locations"
+msgstr "Местонахождения на продукт"
