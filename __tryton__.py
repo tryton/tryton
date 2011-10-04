@@ -20,7 +20,7 @@ spread homogeneously across the period. Those moves will allow other
 process to take forecasts into account.
 ''',
     'description_bg_BG':'''Предоставя модел за "прогнозиране" при управление на инвентазирация
-    - Формата за "Прогноза" позволява да се зададат очакваните движения на наличност 
+    - Формата за "Прогноза" позволява да се зададат очакваните движения на наличност
       към клиенти в бъдещ период. Помощник позволява да се изчислят очакваните
       количества отчитайки периоди в миналто. След потвърждаване на формата, съответните
       движения биват създадени и разпределени равномерно за периода. Тези движения
@@ -75,10 +75,10 @@ prévisions.
         'forecast.xml',
     ],
     'translation': [
-        'bg_BG.csv',
-        'de_DE.csv',
-        'es_CO.csv',
-        'es_ES.csv',
-        'fr_FR.csv',
+        'locale/bg_BG.po',
+        'locale/de_DE.po',
+        'locale/es_CO.po',
+        'locale/es_ES.po',
+        'locale/fr_FR.po',
     ],
 }
