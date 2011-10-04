@@ -1,0 +1,1425 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:country.country:0"
+msgid "The code of the country must be unique!"
+msgstr "Der Ländercode kann nicht mehrfach vergeben werden!"
+
+msgctxt "error:country.country:0"
+msgid "The name of the country must be unique!"
+msgstr "Der Name des Landes kann nicht mehrfach vergeben werden!"
+
+msgctxt "field:country.country,code:0"
+msgid "Code"
+msgstr "Länderkürzel"
+
+msgctxt "field:country.country,create_date:0"
+msgid "Creation date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:country.country,create_uid:0"
+msgid "Creation user"
+msgstr "Ersteller"
+
+msgctxt "field:country.country,id:0"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:country.country,name:0"
+msgid "Name"
+msgstr "Name Staat"
+
+msgctxt "field:country.country,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:country.country,subdivisions:0"
+msgid "Subdivisions"
+msgstr "Subnationale Einheiten"
+
+msgctxt "field:country.country,write_date:0"
+msgid "Last modification date"
+msgstr "Zuletzt geändert am"
+
+msgctxt "field:country.country,write_uid:0"
+msgid "Last modification by"
+msgstr "Zuletzt geändert von"
+
+msgctxt "field:country.subdivision,code:0"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:country.subdivision,country:0"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:country.subdivision,name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:country.subdivision,parent:0"
+msgid "Parent"
+msgstr "Übergeordnet (Subnationale Einheit)"
+
+msgctxt "field:country.subdivision,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:country.subdivision,type:0"
+msgid "Type"
+msgstr "Typ"
+
+msgctxt "help:country.country,code:0"
+msgid ""
+"The ISO country code in two chars.\n"
+"You can use this field for quick search."
+msgstr "Staatenkürzel (2 Zeichen)"
+
+msgctxt "help:country.country,name:0"
+msgid "The full name of the country."
+msgstr "Voller Ländername"
+
+msgctxt "model:country.country,name:0"
+msgid "Country"
+msgstr "Staat"
+
+msgctxt "model:country.country,name:ad"
+msgid "Andorra"
+msgstr "Andorra"
+
+msgctxt "model:country.country,name:ae"
+msgid "United Arab Emirates"
+msgstr "Vereinigte Arabische Emirate"
+
+msgctxt "model:country.country,name:af"
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+msgctxt "model:country.country,name:ag"
+msgid "Antigua and Barbuda"
+msgstr "Antigua und Barbuda"
+
+msgctxt "model:country.country,name:ai"
+msgid "Anguilla"
+msgstr "Anguilla"
+
+msgctxt "model:country.country,name:al"
+msgid "Albania"
+msgstr "Albanien"
+
+msgctxt "model:country.country,name:am"
+msgid "Armenia"
+msgstr "Armenien"
+
+msgctxt "model:country.country,name:an"
+msgid "Netherlands Antilles"
+msgstr "Niederländische Antillen"
+
+msgctxt "model:country.country,name:ao"
+msgid "Angola"
+msgstr "Angola"
+
+msgctxt "model:country.country,name:aq"
+msgid "Antarctica"
+msgstr "Antarktis"
+
+msgctxt "model:country.country,name:ar"
+msgid "Argentina"
+msgstr "Argentinien"
+
+msgctxt "model:country.country,name:as"
+msgid "American Samoa"
+msgstr "Samoa"
+
+msgctxt "model:country.country,name:at"
+msgid "Austria"
+msgstr "Österreich"
+
+msgctxt "model:country.country,name:au"
+msgid "Australia"
+msgstr "Australien"
+
+msgctxt "model:country.country,name:aw"
+msgid "Aruba"
+msgstr "Aruba"
+
+msgctxt "model:country.country,name:ax"
+msgid "Åland Islands"
+msgstr "Åland-Inseln"
+
+msgctxt "model:country.country,name:az"
+msgid "Azerbaijan"
+msgstr "Aserbaidschan"
+
+msgctxt "model:country.country,name:ba"
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnien und Herzegowina"
+
+msgctxt "model:country.country,name:bb"
+msgid "Barbados"
+msgstr "Barbados"
+
+msgctxt "model:country.country,name:bd"
+msgid "Bangladesh"
+msgstr "Bangladesch"
+
+msgctxt "model:country.country,name:be"
+msgid "Belgium"
+msgstr "Belgien"
+
+msgctxt "model:country.country,name:bf"
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+msgctxt "model:country.country,name:bg"
+msgid "Bulgaria"
+msgstr "Bulgarien"
+
+msgctxt "model:country.country,name:bh"
+msgid "Bahrain"
+msgstr "Bahrain"
+
+msgctxt "model:country.country,name:bi"
+msgid "Burundi"
+msgstr "Burundi"
+
+msgctxt "model:country.country,name:bj"
+msgid "Benin"
+msgstr "Benin"
+
+msgctxt "model:country.country,name:bl"
+msgid "Saint Barthélemy"
+msgstr "Saint-Barthélemy"
+
+msgctxt "model:country.country,name:bm"
+msgid "Bermuda"
+msgstr "Bermuda"
+
+msgctxt "model:country.country,name:bn"
+msgid "Brunei Darussalam"
+msgstr "Brunei Darussalam"
+
+msgctxt "model:country.country,name:bo"
+msgid "Bolivia"
+msgstr "Bolivien, Plurinationaler Staat"
+
+msgctxt "model:country.country,name:br"
+msgid "Brazil"
+msgstr "Brasilien"
+
+msgctxt "model:country.country,name:bs"
+msgid "Bahamas"
+msgstr "Bahamas"
+
+msgctxt "model:country.country,name:bt"
+msgid "Bhutan"
+msgstr "Bhutan"
+
+msgctxt "model:country.country,name:bv"
+msgid "Bouvet Island"
+msgstr "Bouvet-Insel"
+
+msgctxt "model:country.country,name:bw"
+msgid "Botswana"
+msgstr "Botsuana"
+
+msgctxt "model:country.country,name:by"
+msgid "Belarus"
+msgstr "Weißrussland"
+
+msgctxt "model:country.country,name:bz"
+msgid "Belize"
+msgstr "Belize"
+
+msgctxt "model:country.country,name:ca"
+msgid "Canada"
+msgstr "Kanada"
+
+msgctxt "model:country.country,name:cc"
+msgid "Cocos (Keeling) Islands"
+msgstr "Kokos-(Keeling-)Inseln"
+
+msgctxt "model:country.country,name:cd"
+msgid "Congo, The Democratic Republic of the"
+msgstr "Demokratische Republik Kongo"
+
+msgctxt "model:country.country,name:cf"
+msgid "Central African Republic"
+msgstr "Zentralafrikanische Republik"
+
+msgctxt "model:country.country,name:cg"
+msgid "Congo"
+msgstr "Kongo"
+
+msgctxt "model:country.country,name:ch"
+msgid "Switzerland"
+msgstr "Schweiz"
+
+msgctxt "model:country.country,name:ci"
+msgid "Côte d'Ivoire"
+msgstr "Côte d'Ivoire"
+
+msgctxt "model:country.country,name:ck"
+msgid "Cook Islands"
+msgstr "Cookinseln"
+
+msgctxt "model:country.country,name:cl"
+msgid "Chile"
+msgstr "Chile"
+
+msgctxt "model:country.country,name:cm"
+msgid "Cameroon"
+msgstr "Kamerun"
+
+msgctxt "model:country.country,name:cn"
+msgid "China"
+msgstr "China"
+
+msgctxt "model:country.country,name:co"
+msgid "Colombia"
+msgstr "Kolumbien"
+
+msgctxt "model:country.country,name:cr"
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+msgctxt "model:country.country,name:cu"
+msgid "Cuba"
+msgstr "Kuba"
+
+msgctxt "model:country.country,name:cv"
+msgid "Cape Verde"
+msgstr "Kap Verde"
+
+msgctxt "model:country.country,name:cx"
+msgid "Christmas Island"
+msgstr "Weihnachtsinseln"
+
+msgctxt "model:country.country,name:cy"
+msgid "Cyprus"
+msgstr "Zypern"
+
+msgctxt "model:country.country,name:cz"
+msgid "Czech Republic"
+msgstr "Tschechische Republik"
+
+msgctxt "model:country.country,name:de"
+msgid "Germany"
+msgstr "Deutschland"
+
+msgctxt "model:country.country,name:dj"
+msgid "Djibouti"
+msgstr "Dschibuti"
+
+msgctxt "model:country.country,name:dk"
+msgid "Denmark"
+msgstr "Dänemark"
+
+msgctxt "model:country.country,name:dm"
+msgid "Dominica"
+msgstr "Dominica"
+
+msgctxt "model:country.country,name:do"
+msgid "Dominican Republic"
+msgstr "Dominikanische Republik"
+
+msgctxt "model:country.country,name:dz"
+msgid "Algeria"
+msgstr "Algerien"
+
+msgctxt "model:country.country,name:ec"
+msgid "Ecuador"
+msgstr "Ecuador"
+
+msgctxt "model:country.country,name:ee"
+msgid "Estonia"
+msgstr "Estland"
+
+msgctxt "model:country.country,name:eg"
+msgid "Egypt"
+msgstr "Ägypten"
+
+msgctxt "model:country.country,name:eh"
+msgid "Western Sahara"
+msgstr "Westsahara"
+
+msgctxt "model:country.country,name:er"
+msgid "Eritrea"
+msgstr "Eritrea"
+
+msgctxt "model:country.country,name:es"
+msgid "Spain"
+msgstr "Spanien"
+
+msgctxt "model:country.country,name:et"
+msgid "Ethiopia"
+msgstr "Äthiopien"
+
+msgctxt "model:country.country,name:fi"
+msgid "Finland"
+msgstr "Finnland"
+
+msgctxt "model:country.country,name:fj"
+msgid "Fiji"
+msgstr "Fidschi"
+
+msgctxt "model:country.country,name:fk"
+msgid "Falkland Islands (Malvinas)"
+msgstr "Falklandinseln (Malwinen)"
+
+msgctxt "model:country.country,name:fm"
+msgid "Micronesia, Federated States of"
+msgstr "Mikronesien, Föderierte Staaten von"
+
+msgctxt "model:country.country,name:fo"
+msgid "Faroe Islands"
+msgstr "Färöer-Inseln"
+
+msgctxt "model:country.country,name:fr"
+msgid "France"
+msgstr "Frankreich"
+
+msgctxt "model:country.country,name:ga"
+msgid "Gabon"
+msgstr "Gabun"
+
+msgctxt "model:country.country,name:gb"
+msgid "United Kingdom"
+msgstr "Vereinigtes Königreich"
+
+msgctxt "model:country.country,name:gd"
+msgid "Grenada"
+msgstr "Grenada"
+
+msgctxt "model:country.country,name:ge"
+msgid "Georgia"
+msgstr "Georgien"
+
+msgctxt "model:country.country,name:gf"
+msgid "French Guiana"
+msgstr "Französisch-Guyana"
+
+msgctxt "model:country.country,name:gg"
+msgid "Guernsey"
+msgstr "Guernsey"
+
+msgctxt "model:country.country,name:gh"
+msgid "Ghana"
+msgstr "Ghana"
+
+msgctxt "model:country.country,name:gi"
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+msgctxt "model:country.country,name:gl"
+msgid "Greenland"
+msgstr "Grönland"
+
+msgctxt "model:country.country,name:gm"
+msgid "Gambia"
+msgstr "Gambia"
+
+msgctxt "model:country.country,name:gn"
+msgid "Guinea"
+msgstr "Guinea"
+
+msgctxt "model:country.country,name:gp"
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+msgctxt "model:country.country,name:gq"
+msgid "Equatorial Guinea"
+msgstr "Äquatorialguinea"
+
+msgctxt "model:country.country,name:gr"
+msgid "Greece"
+msgstr "Griechenland"
+
+msgctxt "model:country.country,name:gs"
+msgid "South Georgia and the South Sandwich Islands"
+msgstr "South Georgia und die Südlichen Sandwichinseln"
+
+msgctxt "model:country.country,name:gt"
+msgid "Guatemala"
+msgstr "Guatemala"
+
+msgctxt "model:country.country,name:gu"
+msgid "Guam"
+msgstr "Guam"
+
+msgctxt "model:country.country,name:gw"
+msgid "Guinea-Bissau"
+msgstr "Guinea-Bissau"
+
+msgctxt "model:country.country,name:gy"
+msgid "Guyana"
+msgstr "Guyana"
+
+msgctxt "model:country.country,name:hk"
+msgid "Hong Kong"
+msgstr "Hongkong"
+
+msgctxt "model:country.country,name:hm"
+msgid "Heard Island and McDonald Islands"
+msgstr "Heard und McDonaldinseln"
+
+msgctxt "model:country.country,name:hn"
+msgid "Honduras"
+msgstr "Honduras"
+
+msgctxt "model:country.country,name:hr"
+msgid "Croatia"
+msgstr "Kroatien"
+
+msgctxt "model:country.country,name:ht"
+msgid "Haiti"
+msgstr "Haiti"
+
+msgctxt "model:country.country,name:hu"
+msgid "Hungary"
+msgstr "Ungarn"
+
+msgctxt "model:country.country,name:id"
+msgid "Indonesia"
+msgstr "Indonesien"
+
+msgctxt "model:country.country,name:ie"
+msgid "Ireland"
+msgstr "Irland"
+
+msgctxt "model:country.country,name:il"
+msgid "Israel"
+msgstr "Israel"
+
+msgctxt "model:country.country,name:im"
+msgid "Isle of Man"
+msgstr "Insel Man"
+
+msgctxt "model:country.country,name:in"
+msgid "India"
+msgstr "Indien"
+
+msgctxt "model:country.country,name:io"
+msgid "British Indian Ocean Territory"
+msgstr "Britisches Territorium im Indischen Ozean"
+
+msgctxt "model:country.country,name:iq"
+msgid "Iraq"
+msgstr "Irak"
+
+msgctxt "model:country.country,name:ir"
+msgid "Iran, Islamic Republic of"
+msgstr "Iran, Islamische Republik"
+
+msgctxt "model:country.country,name:is"
+msgid "Iceland"
+msgstr "Island"
+
+msgctxt "model:country.country,name:it"
+msgid "Italy"
+msgstr "Italien"
+
+msgctxt "model:country.country,name:je"
+msgid "Jersey"
+msgstr "Jersey"
+
+msgctxt "model:country.country,name:jm"
+msgid "Jamaica"
+msgstr "Jamaika"
+
+msgctxt "model:country.country,name:jo"
+msgid "Jordan"
+msgstr "Jordanien"
+
+msgctxt "model:country.country,name:jp"
+msgid "Japan"
+msgstr "Japan"
+
+msgctxt "model:country.country,name:ke"
+msgid "Kenya"
+msgstr "Kenia"
+
+msgctxt "model:country.country,name:kg"
+msgid "Kyrgyzstan"
+msgstr "Kirgisistan"
+
+msgctxt "model:country.country,name:kh"
+msgid "Cambodia"
+msgstr "Kambodscha"
+
+msgctxt "model:country.country,name:ki"
+msgid "Kiribati"
+msgstr "Kiribati"
+
+msgctxt "model:country.country,name:km"
+msgid "Comoros"
+msgstr "Komoren"
+
+msgctxt "model:country.country,name:kn"
+msgid "Saint Kitts and Nevis"
+msgstr "St. Kitts und Nevis"
+
+msgctxt "model:country.country,name:kp"
+msgid "Korea, Democratic People's Republic of"
+msgstr "Korea, Demokratische Volksrepublik"
+
+msgctxt "model:country.country,name:kr"
+msgid "Korea, Republic of"
+msgstr "Korea, Republik"
+
+msgctxt "model:country.country,name:kw"
+msgid "Kuwait"
+msgstr "Kuwait"
+
+msgctxt "model:country.country,name:ky"
+msgid "Cayman Islands"
+msgstr "Cayman-Inseln"
+
+msgctxt "model:country.country,name:kz"
+msgid "Kazakhstan"
+msgstr "Kasachstan"
+
+msgctxt "model:country.country,name:la"
+msgid "Lao People's Democratic Republic"
+msgstr "Laos, Demokratische Volksrepublik"
+
+msgctxt "model:country.country,name:lb"
+msgid "Lebanon"
+msgstr "Libanon"
+
+msgctxt "model:country.country,name:lc"
+msgid "Saint Lucia"
+msgstr "St. Lucia"
+
+msgctxt "model:country.country,name:li"
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+msgctxt "model:country.country,name:lk"
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+msgctxt "model:country.country,name:lr"
+msgid "Liberia"
+msgstr "Liberia"
+
+msgctxt "model:country.country,name:ls"
+msgid "Lesotho"
+msgstr "Lesotho"
+
+msgctxt "model:country.country,name:lt"
+msgid "Lithuania"
+msgstr "Litauen"
+
+msgctxt "model:country.country,name:lu"
+msgid "Luxembourg"
+msgstr "Luxemburg"
+
+msgctxt "model:country.country,name:lv"
+msgid "Latvia"
+msgstr "Lettland"
+
+msgctxt "model:country.country,name:ly"
+msgid "Libyan Arab Jamahiriya"
+msgstr "Libysch-Arabische Dschamahirija"
+
+msgctxt "model:country.country,name:ma"
+msgid "Morocco"
+msgstr "Marokko"
+
+msgctxt "model:country.country,name:mc"
+msgid "Monaco"
+msgstr "Monaco"
+
+msgctxt "model:country.country,name:md"
+msgid "Moldova"
+msgstr "Moldau, Republik"
+
+msgctxt "model:country.country,name:me"
+msgid "Montenegro"
+msgstr "Montenegro"
+
+msgctxt "model:country.country,name:mf"
+msgid "Saint Martin (French part)"
+msgstr "Saint Martin (Französischer Teil)"
+
+msgctxt "model:country.country,name:mg"
+msgid "Madagascar"
+msgstr "Madagaskar"
+
+msgctxt "model:country.country,name:mh"
+msgid "Marshall Islands"
+msgstr "Marshallinseln"
+
+msgctxt "model:country.country,name:mk"
+msgid "Macedonia, Republic of"
+msgstr "Mazedonien, ehemalige jugoslawische Republik"
+
+msgctxt "model:country.country,name:ml"
+msgid "Mali"
+msgstr "Mali"
+
+msgctxt "model:country.country,name:mm"
+msgid "Myanmar"
+msgstr "Myanmar"
+
+msgctxt "model:country.country,name:mn"
+msgid "Mongolia"
+msgstr "Mongolei"
+
+msgctxt "model:country.country,name:mo"
+msgid "Macao"
+msgstr "Macao"
+
+msgctxt "model:country.country,name:mp"
+msgid "Northern Mariana Islands"
+msgstr "Nördliche Mariana-Inseln"
+
+msgctxt "model:country.country,name:mq"
+msgid "Martinique"
+msgstr "Martinique"
+
+msgctxt "model:country.country,name:mr"
+msgid "Mauritania"
+msgstr "Mauretanien"
+
+msgctxt "model:country.country,name:ms"
+msgid "Montserrat"
+msgstr "Montserrat"
+
+msgctxt "model:country.country,name:mt"
+msgid "Malta"
+msgstr "Malta"
+
+msgctxt "model:country.country,name:mu"
+msgid "Mauritius"
+msgstr "Mauritius"
+
+msgctxt "model:country.country,name:mv"
+msgid "Maldives"
+msgstr "Malediven"
+
+msgctxt "model:country.country,name:mw"
+msgid "Malawi"
+msgstr "Malawi"
+
+msgctxt "model:country.country,name:mx"
+msgid "Mexico"
+msgstr "Mexiko"
+
+msgctxt "model:country.country,name:my"
+msgid "Malaysia"
+msgstr "Malaysia"
+
+msgctxt "model:country.country,name:mz"
+msgid "Mozambique"
+msgstr "Mosambik"
+
+msgctxt "model:country.country,name:na"
+msgid "Namibia"
+msgstr "Namibia"
+
+msgctxt "model:country.country,name:nc"
+msgid "New Caledonia"
+msgstr "Neukaledonien"
+
+msgctxt "model:country.country,name:ne"
+msgid "Niger"
+msgstr "Niger"
+
+msgctxt "model:country.country,name:nf"
+msgid "Norfolk Island"
+msgstr "Norfolkinsel"
+
+msgctxt "model:country.country,name:ng"
+msgid "Nigeria"
+msgstr "Nigeria"
+
+msgctxt "model:country.country,name:ni"
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+msgctxt "model:country.country,name:nl"
+msgid "Netherlands"
+msgstr "Niederlande"
+
+msgctxt "model:country.country,name:no"
+msgid "Norway"
+msgstr "Norwegen"
+
+msgctxt "model:country.country,name:np"
+msgid "Nepal"
+msgstr "Nepal"
+
+msgctxt "model:country.country,name:nr"
+msgid "Nauru"
+msgstr "Nauru"
+
+msgctxt "model:country.country,name:nu"
+msgid "Niue"
+msgstr "Niue"
+
+msgctxt "model:country.country,name:nz"
+msgid "New Zealand"
+msgstr "Neuseeland"
+
+msgctxt "model:country.country,name:om"
+msgid "Oman"
+msgstr "Oman"
+
+msgctxt "model:country.country,name:pa"
+msgid "Panama"
+msgstr "Panama"
+
+msgctxt "model:country.country,name:pe"
+msgid "Peru"
+msgstr "Peru"
+
+msgctxt "model:country.country,name:pf"
+msgid "French Polynesia"
+msgstr "Französisch-Polynesien"
+
+msgctxt "model:country.country,name:pg"
+msgid "Papua New Guinea"
+msgstr "Papua-Neuguinea"
+
+msgctxt "model:country.country,name:ph"
+msgid "Philippines"
+msgstr "Philippinen"
+
+msgctxt "model:country.country,name:pk"
+msgid "Pakistan"
+msgstr "Pakistan"
+
+msgctxt "model:country.country,name:pl"
+msgid "Poland"
+msgstr "Polen"
+
+msgctxt "model:country.country,name:pm"
+msgid "Saint Pierre and Miquelon"
+msgstr "St. Pierre und Miquelon"
+
+msgctxt "model:country.country,name:pn"
+msgid "Pitcairn"
+msgstr "Pitcairn"
+
+msgctxt "model:country.country,name:pr"
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+msgctxt "model:country.country,name:ps"
+msgid "Palestinian Territory, Occupied"
+msgstr "Palästinensische Autonomiegebiete"
+
+msgctxt "model:country.country,name:pt"
+msgid "Portugal"
+msgstr "Portugal"
+
+msgctxt "model:country.country,name:pw"
+msgid "Palau"
+msgstr "Palau"
+
+msgctxt "model:country.country,name:py"
+msgid "Paraguay"
+msgstr "Paraguay"
+
+msgctxt "model:country.country,name:qa"
+msgid "Qatar"
+msgstr "Katar"
+
+msgctxt "model:country.country,name:re"
+msgid "Reunion"
+msgstr "Réunion"
+
+msgctxt "model:country.country,name:ro"
+msgid "Romania"
+msgstr "Rumänien"
+
+msgctxt "model:country.country,name:rs"
+msgid "Serbia"
+msgstr "Serbien"
+
+msgctxt "model:country.country,name:ru"
+msgid "Russian Federation"
+msgstr "Russische Föderation"
+
+msgctxt "model:country.country,name:rw"
+msgid "Rwanda"
+msgstr "Ruanda"
+
+msgctxt "model:country.country,name:sa"
+msgid "Saudi Arabia"
+msgstr "Saudi-Arabien"
+
+msgctxt "model:country.country,name:sb"
+msgid "Solomon Islands"
+msgstr "Salomoninseln"
+
+msgctxt "model:country.country,name:sc"
+msgid "Seychelles"
+msgstr "Seychellen"
+
+msgctxt "model:country.country,name:sd"
+msgid "Sudan"
+msgstr "Sudan"
+
+msgctxt "model:country.country,name:se"
+msgid "Sweden"
+msgstr "Schweden"
+
+msgctxt "model:country.country,name:sg"
+msgid "Singapore"
+msgstr "Singapur"
+
+msgctxt "model:country.country,name:sh"
+msgid "Saint Helena"
+msgstr "St. Helena, Ascension und Tristan da Cunha"
+
+msgctxt "model:country.country,name:si"
+msgid "Slovenia"
+msgstr "Slowenien"
+
+msgctxt "model:country.country,name:sj"
+msgid "Svalbard and Jan Mayen"
+msgstr "Svalbard und Jan Mayen"
+
+msgctxt "model:country.country,name:sk"
+msgid "Slovakia"
+msgstr "Slowakei"
+
+msgctxt "model:country.country,name:sl"
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+msgctxt "model:country.country,name:sm"
+msgid "San Marino"
+msgstr "San Marino"
+
+msgctxt "model:country.country,name:sn"
+msgid "Senegal"
+msgstr "Senegal"
+
+msgctxt "model:country.country,name:so"
+msgid "Somalia"
+msgstr "Somalia"
+
+msgctxt "model:country.country,name:sr"
+msgid "Suriname"
+msgstr "Suriname"
+
+msgctxt "model:country.country,name:st"
+msgid "Sao Tome and Principe"
+msgstr "São Tomé und Príncipe"
+
+msgctxt "model:country.country,name:sv"
+msgid "El Salvador"
+msgstr "El Salvador"
+
+msgctxt "model:country.country,name:sy"
+msgid "Syrian Arab Republic"
+msgstr "Syrien, Arabische Republik"
+
+msgctxt "model:country.country,name:sz"
+msgid "Swaziland"
+msgstr "Swasiland"
+
+msgctxt "model:country.country,name:tc"
+msgid "Turks and Caicos Islands"
+msgstr "Turks- und Caicosinseln"
+
+msgctxt "model:country.country,name:td"
+msgid "Chad"
+msgstr "Tschad"
+
+msgctxt "model:country.country,name:tf"
+msgid "French Southern Territories"
+msgstr "Französische Süd- und Antarktisgebiete"
+
+msgctxt "model:country.country,name:tg"
+msgid "Togo"
+msgstr "Togo"
+
+msgctxt "model:country.country,name:th"
+msgid "Thailand"
+msgstr "Thailand"
+
+msgctxt "model:country.country,name:tj"
+msgid "Tajikistan"
+msgstr "Tadschikistan"
+
+msgctxt "model:country.country,name:tk"
+msgid "Tokelau"
+msgstr "Tokelau"
+
+msgctxt "model:country.country,name:tl"
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+msgctxt "model:country.country,name:tm"
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+msgctxt "model:country.country,name:tn"
+msgid "Tunisia"
+msgstr "Tunesien"
+
+msgctxt "model:country.country,name:to"
+msgid "Tonga"
+msgstr "Tonga"
+
+msgctxt "model:country.country,name:tr"
+msgid "Turkey"
+msgstr "Türkei"
+
+msgctxt "model:country.country,name:tt"
+msgid "Trinidad and Tobago"
+msgstr "Trinidad und Tobago"
+
+msgctxt "model:country.country,name:tv"
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+msgctxt "model:country.country,name:tw"
+msgid "Taiwan, Province of China"
+msgstr "Taiwan, Chinesische Provinz"
+
+msgctxt "model:country.country,name:tz"
+msgid "Tanzania, United Republic of"
+msgstr "Tansania, Vereinigte Republik"
+
+msgctxt "model:country.country,name:ua"
+msgid "Ukraine"
+msgstr "Ukraine"
+
+msgctxt "model:country.country,name:ug"
+msgid "Uganda"
+msgstr "Uganda"
+
+msgctxt "model:country.country,name:um"
+msgid "United States Minor Outlying Islands"
+msgstr "United States Minor Outlying Islands"
+
+msgctxt "model:country.country,name:us"
+msgid "United States"
+msgstr "Vereinigte Staaten"
+
+msgctxt "model:country.country,name:uy"
+msgid "Uruguay"
+msgstr "Uruguay"
+
+msgctxt "model:country.country,name:uz"
+msgid "Uzbekistan"
+msgstr "Usbekistan"
+
+msgctxt "model:country.country,name:va"
+msgid "Holy See (Vatican City State)"
+msgstr "Heiliger Stuhl (Staat Vatikanstadt)"
+
+msgctxt "model:country.country,name:vc"
+msgid "Saint Vincent and the Grenadines"
+msgstr "St. Vincent und die Grenadinen"
+
+msgctxt "model:country.country,name:ve"
+msgid "Venezuela"
+msgstr "Venezuela, Bolivarische Republik"
+
+msgctxt "model:country.country,name:vg"
+msgid "Virgin Islands, British"
+msgstr "Britische Jungferninseln"
+
+msgctxt "model:country.country,name:vi"
+msgid "Virgin Islands, U.S."
+msgstr "Amerikanische Jungferninseln"
+
+msgctxt "model:country.country,name:vn"
+msgid "Viet Nam"
+msgstr "Vietnam"
+
+msgctxt "model:country.country,name:vu"
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+msgctxt "model:country.country,name:wf"
+msgid "Wallis and Futuna"
+msgstr "Wallis und Futuna"
+
+msgctxt "model:country.country,name:ws"
+msgid "Samoa"
+msgstr "Samoa"
+
+msgctxt "model:country.country,name:ye"
+msgid "Yemen"
+msgstr "Jemen"
+
+msgctxt "model:country.country,name:yt"
+msgid "Mayotte"
+msgstr "Mayotte"
+
+msgctxt "model:country.country,name:za"
+msgid "South Africa"
+msgstr "Südafrika"
+
+msgctxt "model:country.country,name:zm"
+msgid "Zambia"
+msgstr "Sambia"
+
+msgctxt "model:country.country,name:zw"
+msgid "Zimbabwe"
+msgstr "Simbabwe"
+
+msgctxt "model:country.subdivision,name:0"
+msgid "Subdivision"
+msgstr "Subnationale Einheit"
+
+msgctxt "model:ir.action,name:act_country_form"
+msgid "Countries"
+msgstr "Staaten"
+
+msgctxt "model:ir.ui.menu,name:menu_country_form"
+msgid "Countries"
+msgstr "Staaten"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Administration"
+msgstr "Verwaltung"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Administrative Region"
+msgstr "Regierungsbezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Administrative Territory"
+msgstr "Verwaltungsbezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Administrative area"
+msgstr "Verwaltungsbezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Area"
+msgstr "Bezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Atoll"
+msgstr "Atoll"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous City"
+msgstr "Autonome Stadt"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous Commune"
+msgstr "Autonome Gemeinde"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous District"
+msgstr "Autonomer Distrikt"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous Province"
+msgstr "Autonome Provinz"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous Region"
+msgstr "Autonome Region"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous communities"
+msgstr "Autonome Gemeinden"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous island"
+msgstr "Autonome Insel"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous monastic state"
+msgstr "Autonomer Kirchenstaat"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous municipality"
+msgstr "Autonomer Verwaltungsbezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous republic"
+msgstr "Autonome Republik"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous sector"
+msgstr "Autonomer Bereich"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Autonomous territory"
+msgstr "Autonomes Gebiet"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Borough"
+msgstr "Stadtbezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Canton"
+msgstr "Kanton"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Capital District"
+msgstr "Bezirksstadt"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Capital Metropolitan City"
+msgstr "Capital Metropolitan City"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Capital Territory"
+msgstr "Hauptstadtterritorium"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Capital city"
+msgstr "Capital city"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "City"
+msgstr "Stadt"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "City corporation"
+msgstr "Stadtverwaltung"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "City with county rights"
+msgstr "Stadt mit Kreisverwaltungsrechten"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Commune"
+msgstr "Gemeinde"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "County"
+msgstr "Landkreis"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Department"
+msgstr "Gebiet"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Dependency"
+msgstr "Schutzgebiet"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "District"
+msgstr "Distrikt"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Division"
+msgstr "Untereinheit"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Economic Prefecture"
+msgstr "Wirtschaftspräfektur"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Economic region"
+msgstr "Wirtschaftsgebiet"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Emirate"
+msgstr "Emirat"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Entity"
+msgstr "Einheit"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Federal Dependency"
+msgstr "Bundesstaatliche Kolonie"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Federal District"
+msgstr "Bundesgebiet"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Federal Territories"
+msgstr "Bundesländer"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Geographical region"
+msgstr "Geographische Region"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Geographical unit"
+msgstr "Geographische Einheit"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Governorate"
+msgstr "Regierungsbezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Included for completeness"
+msgstr "Der Vollständigkeit halber hinzugefügt"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Island council"
+msgstr "Inselrat"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Island group"
+msgstr "Inselgruppe"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Local council"
+msgstr "Gemeinderat"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "London borough"
+msgstr "Stadtbezirk London"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Metropolitan cities"
+msgstr "Metropolstädte"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Metropolitan department"
+msgstr "Metropoldepartement"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Metropolitan district"
+msgstr "Metropolbezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Metropolitan region"
+msgstr "Metropolregion"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Municipalities"
+msgstr "Stadtverwaltungen"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Municipality"
+msgstr "Stadtverwaltung"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Oblast"
+msgstr "Gebiet"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Outlying area"
+msgstr "Randbezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Overseas region/department"
+msgstr "Region Übersee/Departement"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Overseas territorial collectivity"
+msgstr "Territoriale Gemeinschaft Übersee"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Parish"
+msgstr "Gemeinde"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Prefecture"
+msgstr "Präfektur"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Principality"
+msgstr "Fürstentum"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Province"
+msgstr "Provinz"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Rayon"
+msgstr "Bezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Region"
+msgstr "Region"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Regional council"
+msgstr "Regionalrat"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Republic"
+msgstr "Republik"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Special District"
+msgstr "Special District"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Special Municipality"
+msgstr "Sonderstadtverwaltung"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Special Region"
+msgstr "Sonderverwaltungsgebiet"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Special administrative region"
+msgstr "Sonderverwaltungszone"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Special city"
+msgstr "Special city"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Special zone"
+msgstr "Sonderwirtschaftszone"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "State"
+msgstr "Staat"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Territorial unit"
+msgstr "Territoriale Einheit"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Territory"
+msgstr "Gebiet"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Town council"
+msgstr "Stadtrat"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Two-tier county"
+msgstr "Zweistufenbezirk"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Union territory"
+msgstr "Gemeinschaftsgebiet"
+
+msgctxt "selection:country.subdivision,type:0"
+msgid "Unitary authority"
+msgstr "Einheitliche Behörde"
+
+msgctxt "view:country.country:0"
+msgid "Countries"
+msgstr "Staaten"
+
+msgctxt "view:country.country:0"
+msgid "Country"
+msgstr "Staat"
+
+msgctxt "view:country.country:0"
+msgid "Subdivision"
+msgstr "Subnationale Einheit"
+
+msgctxt "view:country.country:0"
+msgid "Subdivisions"
+msgstr "Subnationale Einheiten"
+
+msgctxt "view:country.subdivision:0"
+msgid "Subdivision"
+msgstr "Subnationale Einheit"
+
+msgctxt "view:country.subdivision:0"
+msgid "Subdivisions"
+msgstr "Subnationale Einheiten"
