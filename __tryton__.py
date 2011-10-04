@@ -17,7 +17,7 @@ complete invoice. This allow to compose invoices with lines originating
 from differents purchases.
 ''',
     "description_bg_BG": '''Покупка с независима фактура
-    - Промяна на поведението при поръчка за покупка като вместо пълна фактура 
+    - Промяна на поведението при поръчка за покупка като вместо пълна фактура
       създава редове с независими фактури.
     - Позволява създаване на фактури с редове от различни покупки.
 ''',
@@ -49,10 +49,10 @@ composer des factures avec des lignes provenant de différents achats.
         "purchase.xml",
     ],
     'translation': [
-        'bg_BG.csv',
-        'de_DE.csv',
-        'es_CO.csv',
-        'es_ES.csv',
-        'fr_FR.csv',
+        'locale/bg_BG.po',
+        'locale/de_DE.po',
+        'locale/es_CO.po',
+        'locale/es_ES.po',
+        'locale/fr_FR.po',
     ],
 }

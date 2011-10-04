@@ -1,0 +1,49 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice.line:0"
+msgid "You can not delete invoice lines that comes from a purchase!"
+msgstr ""
+"Aus einem Einkauf stammende Rechnungspositionen können nicht gelöscht "
+"werden!"
+
+msgctxt "field:purchase.purchase,invoice_lines:0"
+msgid "Invoice Lines"
+msgstr "Rechnungspositionen Kunden"
+
+msgctxt "field:purchase.purchase,invoice_lines_ignored:0"
+msgid "Invoice Lines Ignored"
+msgstr "Ignorierte Rechnungspositionen"
+
+msgctxt "field:purchase.purchase-account.invoice.line,line:0"
+msgid "Invoice Line"
+msgstr "Rechnungsposition Kunde"
+
+msgctxt "field:purchase.purchase-account.invoice.line,purchase:0"
+msgid "Purchase"
+msgstr "Einkauf"
+
+msgctxt "field:purchase.purchase-account.invoice.line,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:0"
+msgid "Invoice Line"
+msgstr "Rechnungsposition Kunde"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:0"
+msgid "Purchase"
+msgstr "Einkauf"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "model:purchase.purchase-account.invoice.line,name:0"
+msgid "Purchase - Invoice Line"
+msgstr "Einkauf - Rechnungsposition"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:0"
+msgid "Purchase - Ignored Invoice Line"
+msgstr "Einkauf - Ignorierte Rechnungsposition"

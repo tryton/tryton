@@ -1,0 +1,47 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice.line:0"
+msgid "You can not delete invoice lines that comes from a purchase!"
+msgstr "Не може да изтривате редове от фактура която идва от покупка!"
+
+msgctxt "field:purchase.purchase,invoice_lines:0"
+msgid "Invoice Lines"
+msgstr "Редове от фактура"
+
+msgctxt "field:purchase.purchase,invoice_lines_ignored:0"
+msgid "Invoice Lines Ignored"
+msgstr "Игнорирани редове от фактура"
+
+msgctxt "field:purchase.purchase-account.invoice.line,line:0"
+msgid "Invoice Line"
+msgstr "Ред от фактура"
+
+msgctxt "field:purchase.purchase-account.invoice.line,purchase:0"
+msgid "Purchase"
+msgstr "Покупки"
+
+msgctxt "field:purchase.purchase-account.invoice.line,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:0"
+msgid "Invoice Line"
+msgstr "Ред от фактура"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:0"
+msgid "Purchase"
+msgstr "Покупки"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:0"
+msgid "Name"
+msgstr "Име"
+
+msgctxt "model:purchase.purchase-account.invoice.line,name:0"
+msgid "Purchase - Invoice Line"
+msgstr "Покупка - Ред от фактура"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:0"
+msgid "Purchase - Ignored Invoice Line"
+msgstr "Покупка - Игнорирани редове от фактура"

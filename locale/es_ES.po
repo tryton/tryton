@@ -1,0 +1,47 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice.line:0"
+msgid "You can not delete invoice lines that comes from a purchase!"
+msgstr "No puede borrar líneas que vienen de una compra"
+
+msgctxt "field:purchase.purchase,invoice_lines:0"
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+msgctxt "field:purchase.purchase,invoice_lines_ignored:0"
+msgid "Invoice Lines Ignored"
+msgstr "Líneas de factura ignoradas"
+
+msgctxt "field:purchase.purchase-account.invoice.line,line:0"
+msgid "Invoice Line"
+msgstr "Línea de factura"
+
+msgctxt "field:purchase.purchase-account.invoice.line,purchase:0"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "field:purchase.purchase-account.invoice.line,rec_name:0"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:0"
+msgid "Invoice Line"
+msgstr "Línea de factura"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:0"
+msgid "Purchase"
+msgstr "Compra"
+
+msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:0"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "model:purchase.purchase-account.invoice.line,name:0"
+msgid "Purchase - Invoice Line"
+msgstr "Compra - Línea de factura"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:0"
+msgid "Purchase - Ignored Invoice Line"
+msgstr "Compra - Línea de factura ignorada"
