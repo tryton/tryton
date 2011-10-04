@@ -1,0 +1,1595 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.template:0"
+msgid ""
+"You cannot change the default uom for a product which is associated to stock"
+" moves."
+msgstr ""
+"Вы не можете изменить единицу измерения по умолчанию для продукта, который "
+"связан со складом перемещения."
+
+msgctxt "error:stock.inventory.line:0"
+msgid "Line quantity must be positive!"
+msgstr "Кол-во должно быть положительным"
+
+msgctxt "error:stock.inventory.line:0"
+msgid "Product must be unique by inventory!"
+msgstr "ТМЦ должен быть уникальным по инвентаризации!"
+
+msgctxt "error:stock.location:0"
+msgid ""
+"A location with existing moves cannot be changed to a type that does not "
+"support moves."
+msgstr ""
+
+msgctxt "error:stock.location:0"
+msgid "Location \"%s\" must be a child of warehouse \"%s\"!"
+msgstr "Место \"%s\" должно быть на складе \"%s\"!"
+
+msgctxt "error:stock.location:0"
+msgid "You can not create recursive locations!"
+msgstr "Вы не можете создавать рекурсивные места!"
+
+msgctxt "error:stock.move:0"
+msgid "Move can be on only one Shipment"
+msgstr "Перемещение может иметь только одну отгрузку"
+
+msgctxt "error:stock.move:0"
+msgid "Move quantity must be positive"
+msgstr "Кол-во должно быть положительным"
+
+msgctxt "error:stock.move:0"
+msgid "Source and destination location must be different"
+msgstr "Источник и место назначения должны быть разными"
+
+msgctxt "error:stock.move:0"
+msgid "You can not set state to assigned!"
+msgstr "Вы не можете установить состояние 'передан'!"
+
+msgctxt "error:stock.move:0"
+msgid "You can not set state to done!"
+msgstr "Вы не можете установить состояние 'готово'!"
+
+msgctxt "error:stock.move:0"
+msgid "You can not set state to draft!"
+msgstr "Вы не можете установить состояние 'черновик'!"
+
+msgctxt "error:stock.move:0"
+msgid "You can not use service products for a move!"
+msgstr "Вы не можете выбрать услугу для перемещения"
+
+msgctxt "error:stock.move:0"
+msgid "You can only delete draft or cancelled moves!"
+msgstr "Вы можете удалять только отмененные перемещения и черновики"
+
+msgctxt "error:stock.shipment.in:0"
+msgid ""
+"Incoming Moves must have the warehouse input location as destination "
+"location!"
+msgstr "В поступлениях должен быть указан местом назначения товарный склад"
+
+msgctxt "error:stock.shipment.in:0"
+msgid ""
+"Inventory Moves must have the warehouse input location as source location!"
+msgstr ""
+
+msgctxt "error:stock.shipment.out.return.create:0"
+msgid "The shipment with code %s is not yet sent."
+msgstr "Отгрузка с кодом %s еще не отправлена."
+
+msgctxt "error:stock.shipment.out.return.create:0"
+msgid "You can not create return shipment"
+msgstr "Вы не можете создать возврат"
+
+msgctxt "error:stock.shipment.out.return:0"
+msgid ""
+"Incoming Moves must have the warehouse input location as destination "
+"location!"
+msgstr ""
+"В возвратах от заказчиков должен быть указан местом назначения товарный "
+"склад"
+
+msgctxt "error:stock.shipment.out.return:0"
+msgid ""
+"Inventory Moves must have the warehouse input location as source location!"
+msgstr ""
+
+msgctxt "field:party.address,delivery:0"
+msgid "Delivery"
+msgstr "Доставка"
+
+msgctxt "field:party.party,customer_location:0"
+msgid "Customer Location"
+msgstr "Место хранения заказчика"
+
+msgctxt "field:party.party,supplier_location:0"
+msgid "Supplier Location"
+msgstr "Место хранения поставщика"
+
+msgctxt "field:product.product,forecast_quantity:0"
+msgid "Forecast Quantity"
+msgstr "Прогноз Количество"
+
+msgctxt "field:product.product,quantity:0"
+msgid "Quantity"
+msgstr "Кол-во"
+
+msgctxt "field:product.template,forecast_quantity:0"
+msgid "Forecast Quantity"
+msgstr "Прогноз Количество"
+
+msgctxt "field:product.template,quantity:0"
+msgid "Quantity"
+msgstr "Кол-во"
+
+msgctxt "field:stock.configuration,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.configuration,shipment_in_return_sequence:0"
+msgid "Supplier Return Shipment Sequence"
+msgstr "Возврат поставщику последовательность"
+
+msgctxt "field:stock.configuration,shipment_in_sequence:0"
+msgid "Supplier Shipment Sequence"
+msgstr "Приход от поставщика последовательность"
+
+msgctxt "field:stock.configuration,shipment_internal_sequence:0"
+msgid "Internal Shipment Sequence"
+msgstr "Внутренние перемещение последовательность"
+
+msgctxt "field:stock.configuration,shipment_out_return_sequence:0"
+msgid "Customer Return Shipment Sequence"
+msgstr "Возврат от заказчика последовательность"
+
+msgctxt "field:stock.configuration,shipment_out_sequence:0"
+msgid "Customer Shipment Sequence"
+msgstr "Отгрузка заказчику последовательность"
+
+msgctxt "field:stock.inventory,company:0"
+msgid "Company"
+msgstr "Компания"
+
+msgctxt "field:stock.inventory,date:0"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:stock.inventory,lines:0"
+msgid "Lines"
+msgstr "Строки"
+
+msgctxt "field:stock.inventory,location:0"
+msgid "Location"
+msgstr "Место"
+
+msgctxt "field:stock.inventory,lost_found:0"
+msgid "Lost and Found"
+msgstr "Утраченный и обретенный"
+
+msgctxt "field:stock.inventory,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.inventory,state:0"
+msgid "State"
+msgstr "Состояние"
+
+msgctxt "field:stock.inventory.line,expected_quantity:0"
+msgid "Expected Quantity"
+msgstr "Ожидаемое количество"
+
+msgctxt "field:stock.inventory.line,inventory:0"
+msgid "Inventory"
+msgstr "Инвентаризация"
+
+msgctxt "field:stock.inventory.line,move:0"
+msgid "Move"
+msgstr "Перемещение"
+
+msgctxt "field:stock.inventory.line,product:0"
+msgid "Product"
+msgstr "ТМЦ"
+
+msgctxt "field:stock.inventory.line,quantity:0"
+msgid "Quantity"
+msgstr "Кол-во"
+
+msgctxt "field:stock.inventory.line,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.inventory.line,unit_digits:0"
+msgid "Unit Digits"
+msgstr "Группа цифр"
+
+msgctxt "field:stock.inventory.line,uom:0"
+msgid "UOM"
+msgstr "Ед.изм."
+
+msgctxt "field:stock.location,active:0"
+msgid "Active"
+msgstr "Действительнный"
+
+msgctxt "field:stock.location,address:0"
+msgid "Address"
+msgstr "Адрес"
+
+msgctxt "field:stock.location,childs:0"
+msgid "Children"
+msgstr "Подчиненый"
+
+msgctxt "field:stock.location,code:0"
+msgid "Code"
+msgstr "Код локации"
+
+msgctxt "field:stock.location,forecast_quantity:0"
+msgid "Forecast Quantity"
+msgstr "Прогноз Количество"
+
+msgctxt "field:stock.location,input_location:0"
+msgid "Input"
+msgstr "Входящий"
+
+msgctxt "field:stock.location,left:0"
+msgid "Left"
+msgstr "Левая сторона"
+
+msgctxt "field:stock.location,name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.location,output_location:0"
+msgid "Output"
+msgstr "Исходящий"
+
+msgctxt "field:stock.location,parent:0"
+msgid "Parent"
+msgstr "Основной"
+
+msgctxt "field:stock.location,quantity:0"
+msgid "Quantity"
+msgstr "Кол-во"
+
+msgctxt "field:stock.location,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.location,right:0"
+msgid "Right"
+msgstr "Правая сторона"
+
+msgctxt "field:stock.location,storage_location:0"
+msgid "Storage"
+msgstr "Хранилище"
+
+msgctxt "field:stock.location,type:0"
+msgid "Location type"
+msgstr "Тип расположение"
+
+msgctxt "field:stock.location_stock_date.init,forecast_date:0"
+msgid "At Date"
+msgstr "По дате"
+
+msgctxt "field:stock.move,company:0"
+msgid "Company"
+msgstr "Компания"
+
+msgctxt "field:stock.move,cost_price:0"
+msgid "Cost Price"
+msgstr "Себестоимость"
+
+msgctxt "field:stock.move,currency:0"
+msgid "Currency"
+msgstr "Валюта"
+
+msgctxt "field:stock.move,effective_date:0"
+msgid "Effective Date"
+msgstr "Учетная дата"
+
+msgctxt "field:stock.move,from_location:0"
+msgid "From Location"
+msgstr "Из места"
+
+msgctxt "field:stock.move,planned_date:0"
+msgid "Planned Date"
+msgstr "Плановая дата"
+
+msgctxt "field:stock.move,product:0"
+msgid "Product"
+msgstr "ТМЦ"
+
+msgctxt "field:stock.move,quantity:0"
+msgid "Quantity"
+msgstr "Кол-во"
+
+msgctxt "field:stock.move,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.move,shipment_in:0"
+msgid "Supplier Shipment"
+msgstr "Приход от поставщика"
+
+msgctxt "field:stock.move,shipment_in_return:0"
+msgid "Supplier Return Shipment"
+msgstr "Возврат поставщику"
+
+msgctxt "field:stock.move,shipment_internal:0"
+msgid "Internal Shipment"
+msgstr "Внутреннее перемещение"
+
+msgctxt "field:stock.move,shipment_out:0"
+msgid "Customer Shipment"
+msgstr "Отгрузка заказчику"
+
+msgctxt "field:stock.move,shipment_out_return:0"
+msgid "Customer Return Shipment"
+msgstr "Возврат от заказчика"
+
+msgctxt "field:stock.move,state:0"
+msgid "State"
+msgstr "Состояние"
+
+msgctxt "field:stock.move,to_location:0"
+msgid "To Location"
+msgstr "В место"
+
+msgctxt "field:stock.move,unit_digits:0"
+msgid "Unit Digits"
+msgstr "Группа цифр"
+
+msgctxt "field:stock.move,unit_price:0"
+msgid "Unit Price"
+msgstr "Цена за единицу"
+
+msgctxt "field:stock.move,unit_price_required:0"
+msgid "Unit Price Required"
+msgstr "Требуется цена за единицу"
+
+msgctxt "field:stock.move,uom:0"
+msgid "Uom"
+msgstr "Ед.изм."
+
+msgctxt "field:stock.product_stock_date.init,forecast_date:0"
+msgid "At Date"
+msgstr "По дате"
+
+msgctxt "field:stock.shipment.in,code:0"
+msgid "Code"
+msgstr "Код отгрузки"
+
+msgctxt "field:stock.shipment.in,contact_address:0"
+msgid "Contact Address"
+msgstr "Контактный адрес"
+
+msgctxt "field:stock.shipment.in,effective_date:0"
+msgid "Effective Date"
+msgstr "Учетная дата"
+
+msgctxt "field:stock.shipment.in,incoming_moves:0"
+msgid "Incoming Moves"
+msgstr "Входящая поставка"
+
+msgctxt "field:stock.shipment.in,inventory_moves:0"
+msgid "Inventory Moves"
+msgstr "Учет перемещений"
+
+msgctxt "field:stock.shipment.in,moves:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "field:stock.shipment.in,planned_date:0"
+msgid "Planned Date"
+msgstr "Плановая дата"
+
+msgctxt "field:stock.shipment.in,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.shipment.in,reference:0"
+msgid "Reference"
+msgstr "Ссылка"
+
+msgctxt "field:stock.shipment.in,state:0"
+msgid "State"
+msgstr "Состояние"
+
+msgctxt "field:stock.shipment.in,supplier:0"
+msgid "Supplier"
+msgstr "Поставщик"
+
+msgctxt "field:stock.shipment.in,warehouse:0"
+msgid "Warehouse"
+msgstr "Товарный склад"
+
+msgctxt "field:stock.shipment.in.return,code:0"
+msgid "Code"
+msgstr "Код возврата отгрузки"
+
+msgctxt "field:stock.shipment.in.return,effective_date:0"
+msgid "Effective Date"
+msgstr "Учетная дата"
+
+msgctxt "field:stock.shipment.in.return,from_location:0"
+msgid "From Location"
+msgstr "Из места"
+
+msgctxt "field:stock.shipment.in.return,moves:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "field:stock.shipment.in.return,planned_date:0"
+msgid "Planned Date"
+msgstr "Плановая дата"
+
+msgctxt "field:stock.shipment.in.return,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.shipment.in.return,reference:0"
+msgid "Reference"
+msgstr "Ссылка"
+
+msgctxt "field:stock.shipment.in.return,state:0"
+msgid "State"
+msgstr "Состояние"
+
+msgctxt "field:stock.shipment.in.return,to_location:0"
+msgid "To Location"
+msgstr "В место"
+
+msgctxt "field:stock.shipment.in.return.assign.ask_force,moves:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "field:stock.shipment.internal,code:0"
+msgid "Code"
+msgstr "Код внутренней отгрузки"
+
+msgctxt "field:stock.shipment.internal,effective_date:0"
+msgid "Effective Date"
+msgstr "Учетная дата"
+
+msgctxt "field:stock.shipment.internal,from_location:0"
+msgid "From Location"
+msgstr "Из места"
+
+msgctxt "field:stock.shipment.internal,moves:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "field:stock.shipment.internal,planned_date:0"
+msgid "Planned Date"
+msgstr "Плановая дата"
+
+msgctxt "field:stock.shipment.internal,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.shipment.internal,reference:0"
+msgid "Reference"
+msgstr "Ссылка"
+
+msgctxt "field:stock.shipment.internal,state:0"
+msgid "State"
+msgstr "Состояние"
+
+msgctxt "field:stock.shipment.internal,to_location:0"
+msgid "To Location"
+msgstr "В место"
+
+msgctxt "field:stock.shipment.internal.assign.ask_force,moves:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "field:stock.shipment.out,code:0"
+msgid "Code"
+msgstr "Код исходящей отгрузки"
+
+msgctxt "field:stock.shipment.out,customer:0"
+msgid "Customer"
+msgstr "Заказчик"
+
+msgctxt "field:stock.shipment.out,delivery_address:0"
+msgid "Delivery Address"
+msgstr "Адрес доставки"
+
+msgctxt "field:stock.shipment.out,effective_date:0"
+msgid "Effective Date"
+msgstr "Учетная дата"
+
+msgctxt "field:stock.shipment.out,inventory_moves:0"
+msgid "Inventory Moves"
+msgstr "Учет перемещений"
+
+msgctxt "field:stock.shipment.out,moves:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "field:stock.shipment.out,outgoing_moves:0"
+msgid "Outgoing Moves"
+msgstr "Внешнее перемещение"
+
+msgctxt "field:stock.shipment.out,planned_date:0"
+msgid "Planned Date"
+msgstr "Плановая дата"
+
+msgctxt "field:stock.shipment.out,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.shipment.out,reference:0"
+msgid "Reference"
+msgstr "Ссылка"
+
+msgctxt "field:stock.shipment.out,state:0"
+msgid "State"
+msgstr "Состояние"
+
+msgctxt "field:stock.shipment.out,warehouse:0"
+msgid "Warehouse"
+msgstr "Товарный склад"
+
+msgctxt "field:stock.shipment.out.assign.ask_force,inventory_moves:0"
+msgid "Inventory Moves"
+msgstr "Учет перемещений"
+
+msgctxt "field:stock.shipment.out.return,code:0"
+msgid "Code"
+msgstr "Код возврата отгрузки"
+
+msgctxt "field:stock.shipment.out.return,customer:0"
+msgid "Customer"
+msgstr "Заказчик"
+
+msgctxt "field:stock.shipment.out.return,delivery_address:0"
+msgid "Delivery Address"
+msgstr "Адрес доставки"
+
+msgctxt "field:stock.shipment.out.return,effective_date:0"
+msgid "Effective Date"
+msgstr "Учетная дата"
+
+msgctxt "field:stock.shipment.out.return,incoming_moves:0"
+msgid "Incoming Moves"
+msgstr "Входящая поставка"
+
+msgctxt "field:stock.shipment.out.return,inventory_moves:0"
+msgid "Inventory Moves"
+msgstr "Учет перемещений"
+
+msgctxt "field:stock.shipment.out.return,moves:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "field:stock.shipment.out.return,planned_date:0"
+msgid "Planned Date"
+msgstr "Плановая дата"
+
+msgctxt "field:stock.shipment.out.return,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:stock.shipment.out.return,reference:0"
+msgid "Reference"
+msgstr "Ссылка"
+
+msgctxt "field:stock.shipment.out.return,state:0"
+msgid "State"
+msgstr "Состояние"
+
+msgctxt "field:stock.shipment.out.return,warehouse:0"
+msgid "Warehouse"
+msgstr "Товарный склад"
+
+msgctxt "help:party.party,customer_location:0"
+msgid "The default destination location when sending products to the party."
+msgstr "Место назначения по умолчанию при отправке продукции контрагенту."
+
+msgctxt "help:party.party,supplier_location:0"
+msgid "The default source location when receiving products from the party."
+msgstr "По умолчанию, местоположение при получении продукции от контрагента."
+
+msgctxt "help:stock.location_stock_date.init,forecast_date:0"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+
+msgctxt "help:stock.product_stock_date.init,forecast_date:0"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_inventory_form"
+msgid "Inventories"
+msgstr "Инвентаризация"
+
+msgctxt "model:ir.action,name:act_location_form"
+msgid "Edit Locations"
+msgstr "Изменить места хранения"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Product Stock"
+msgstr "Хранилище ТМЦ"
+
+msgctxt "model:ir.action,name:act_location_tree"
+msgid "Locations"
+msgstr "Места"
+
+msgctxt "model:ir.action,name:act_move_form"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "model:ir.action,name:act_move_form_cust"
+msgid "Moves to Customers"
+msgstr "Отгрузка заказчикам"
+
+msgctxt "model:ir.action,name:act_move_form_supp"
+msgid "Moves from Suppliers"
+msgstr "Поставки от поставщиков"
+
+msgctxt "model:ir.action,name:act_move_form_supp_proceed"
+msgid "Moves from Suppliers Waiting Arrival"
+msgstr "Ожидающийся приход от поставщика"
+
+msgctxt "model:ir.action,name:act_product_by_location"
+msgid "Products by Locations"
+msgstr "ТМЦ по местонахождениям"
+
+msgctxt "model:ir.action,name:act_shipment_in_form"
+msgid "Supplier Shipments"
+msgstr "Приход от поставщиков"
+
+msgctxt "model:ir.action,name:act_shipment_in_form_received"
+msgid "Received Supplier shipments"
+msgstr "Поступления от поставщика"
+
+msgctxt "model:ir.action,name:act_shipment_in_return_form"
+msgid "Supplier Return Shipments"
+msgstr "Возвраты поставщику"
+
+msgctxt "model:ir.action,name:act_shipment_internal_assigned_form"
+msgid "Assigned Internal Shipments"
+msgstr "Выполненные внутренние перемещения"
+
+msgctxt "model:ir.action,name:act_shipment_internal_draft_form"
+msgid "Draft Internal Shipments"
+msgstr "Черновик внутренних перемещений"
+
+msgctxt "model:ir.action,name:act_shipment_internal_form"
+msgid "Internal Shipments"
+msgstr "Внутренние перемещения"
+
+msgctxt "model:ir.action,name:act_shipment_internal_waiting_form"
+msgid "Internal Shipments Waiting Assignation"
+msgstr "Внутренние перемещения в ожидании"
+
+msgctxt "model:ir.action,name:act_shipment_out_form"
+msgid "Customer Shipments"
+msgstr "Отгрузки заказчику"
+
+msgctxt "model:ir.action,name:act_shipment_out_form2"
+msgid "Customer Shipments"
+msgstr "Отгрузки заказчику"
+
+msgctxt "model:ir.action,name:act_shipment_out_form3"
+msgid "Supplier Shipments"
+msgstr "Приход от поставщиков"
+
+msgctxt "model:ir.action,name:act_shipment_out_form_assigned"
+msgid "Assigned Customer Shipments"
+msgstr "Грузы переданные заказчику"
+
+msgctxt "model:ir.action,name:act_shipment_out_form_ready"
+msgid "Customer Shipments Ready for Shipping"
+msgstr "Груз заказчика готовый к отгрузке"
+
+msgctxt "model:ir.action,name:act_shipment_out_form_waiting"
+msgid "Customer Shipments Waiting Assignation"
+msgstr "Клиентский груз ожидающий назначения"
+
+msgctxt "model:ir.action,name:act_shipment_out_return_form"
+msgid "Customer Return Shipments"
+msgstr "Возвраты от заказчика"
+
+msgctxt "model:ir.action,name:create_shipment_out_return"
+msgid "Create Return Shipment"
+msgstr "Создание обратной отправки"
+
+msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
+msgid "Restocking List"
+msgstr "Список пополнения"
+
+msgctxt "model:ir.action,name:report_shipment_internal"
+msgid "Internal Shipment"
+msgstr "Внутреннее перемещение"
+
+msgctxt "model:ir.action,name:report_shipment_out_delivery_note"
+msgid "Delivery Note"
+msgstr "Накладной"
+
+msgctxt "model:ir.action,name:report_shipment_out_picking_list"
+msgid "Picking List"
+msgstr "Сбор Список"
+
+msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
+msgid "Restocking List"
+msgstr "Список пополнения"
+
+msgctxt "model:ir.action,name:wizard_complete_inventory"
+msgid "Complete Inventory"
+msgstr "Полная инвентаризация"
+
+msgctxt "model:ir.action,name:wizard_location_open"
+msgid "Product by Location"
+msgstr "ТМЦ по местонахождению"
+
+msgctxt "model:ir.action,name:wizard_product_open"
+msgid "Product Quantities"
+msgstr "Количества Товара"
+
+msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
+msgid "Assign Purchase Return Shipment"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_shipment_internal_assign"
+msgid "Assign Shipment Internal"
+msgstr "Внутренние назначение поставки "
+
+msgctxt "model:ir.action,name:wizard_shipment_out_assign"
+msgid "Assign Shipment Out"
+msgstr "Внешнее назначение груза"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_in"
+msgid "Supplier Shipment"
+msgstr "Приход от поставщика"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
+msgid "Supplier Return Shipment"
+msgstr "Возврат поставщику"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_internal"
+msgid "Internal Shipment"
+msgstr "Внутреннее перемещение"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_out"
+msgid "Customer Shipment"
+msgstr "Отгрузка заказчику"
+
+msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
+msgid "Customer Return Shipment"
+msgstr "Возврат от заказчика"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
+msgid "Supplier Shipment"
+msgstr "Приход от поставщика"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in_return"
+msgid "Supplier Return Shipment"
+msgstr "Возврат поставщику"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_internal"
+msgid "Internal Shipment"
+msgstr "Внутреннее перемещение"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out"
+msgid "Customer Shipment"
+msgstr "Отгрузка заказчику"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out_return"
+msgid "Customer Return Shipment"
+msgstr "Возврат от заказчика"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Конфигурация"
+
+msgctxt "model:ir.ui.menu,name:menu_inventory_form"
+msgid "Inventories"
+msgstr "Инвентаризации"
+
+msgctxt "model:ir.ui.menu,name:menu_inventory_form_draft"
+msgid "Draft Inventories"
+msgstr "Черновики инвентаризаций"
+
+msgctxt "model:ir.ui.menu,name:menu_location_form"
+msgid "Edit Locations"
+msgstr "Изменить места хранения"
+
+msgctxt "model:ir.ui.menu,name:menu_location_tree"
+msgid "Locations"
+msgstr "Места хранения"
+
+msgctxt "model:ir.ui.menu,name:menu_move_form"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "model:ir.ui.menu,name:menu_move_form_cust"
+msgid "Moves to Customers"
+msgstr "Отгрузки заказчикам"
+
+msgctxt "model:ir.ui.menu,name:menu_move_form_supp"
+msgid "Moves from Suppliers"
+msgstr "Поставки от поставщиков"
+
+msgctxt "model:ir.ui.menu,name:menu_move_form_supp_proceed"
+msgid "Moves from Suppliers Waiting Arrival"
+msgstr "Ожидающийся приход от поставщика"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Отчетность"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
+msgid "Supplier Shipments"
+msgstr "Приход от поставщиков"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_in_received"
+msgid "Received Supplier shipments"
+msgstr "Поступления от поставщика"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
+msgid "Supplier Return Shipments"
+msgstr "Возвраты поставщику"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_internal_assigned_form"
+msgid "Assigned Internal Shipments"
+msgstr "Выполненные внутренние перемещения"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_internal_draft_form"
+msgid "Draft Internal Shipments"
+msgstr "Черновик внутренних перемещений"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
+msgid "Internal Shipments"
+msgstr "Внутренние перемещения"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_internal_waiting_form"
+msgid "Internal Shipments Waiting Assignation"
+msgstr "Внутренние перемещения в ожидании"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_out_assigned"
+msgid "Assigned Customer Shipments"
+msgstr "Подтвержденные отгрузки заказчикам"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
+msgid "Customer Shipments"
+msgstr "Отгрузки заказчикам"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_out_ready"
+msgid "Customer Shipments Ready for Shipping"
+msgstr "Отгрузки заказчикам готовые к отправке"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
+msgid "Customer Return Shipments"
+msgstr "Возвраты от заказчика"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_out_waiting"
+msgid "Customer Shipments Waiting Assignation"
+msgstr "Отгрузки заказчикам в ожидании"
+
+msgctxt "model:ir.ui.menu,name:menu_stock"
+msgid "Inventory Management"
+msgstr "Управление складами"
+
+msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
+msgid "Stock Configuration"
+msgstr "Конфигурация склада"
+
+msgctxt "model:res.group,name:group_stock"
+msgid "Stock"
+msgstr "Хранилище"
+
+msgctxt "model:res.group,name:group_stock_admin"
+msgid "Stock Administration"
+msgstr "Хранилище Администрирование"
+
+msgctxt "model:res.group,name:group_stock_force_assignment"
+msgid "Stock Force Assignment"
+msgstr "Склад ускоренной погрузки"
+
+msgctxt "model:stock.configuration,name:0"
+msgid "Stock Configuration"
+msgstr "Конфигурация склада"
+
+msgctxt "model:stock.inventory,name:0"
+msgid "Stock Inventory"
+msgstr "Хранилище опись"
+
+msgctxt "model:stock.inventory.line,name:0"
+msgid "Stock Inventory Line"
+msgstr "Хранилище строка описи"
+
+msgctxt "model:stock.location,name:0"
+msgid "Stock Location"
+msgstr "Местонахождение хранилища"
+
+msgctxt "model:stock.location,name:location_customer"
+msgid "Customer"
+msgstr "Заказчик"
+
+msgctxt "model:stock.location,name:location_input"
+msgid "Input Zone"
+msgstr "Зона поставки"
+
+msgctxt "model:stock.location,name:location_lost_found"
+msgid "Lost and Found"
+msgstr "Утраченный и обретенный"
+
+msgctxt "model:stock.location,name:location_output"
+msgid "Output Zone"
+msgstr "Зона отгрузки"
+
+msgctxt "model:stock.location,name:location_storage"
+msgid "Storage Zone"
+msgstr "Зона хранения"
+
+msgctxt "model:stock.location,name:location_supplier"
+msgid "Supplier"
+msgstr "Поставщик"
+
+msgctxt "model:stock.location,name:location_warehouse"
+msgid "Warehouse"
+msgstr "Товарный склад"
+
+msgctxt "model:stock.location_stock_date.init,name:0"
+msgid "Compute stock quantities"
+msgstr "Вычисление количество на складе"
+
+msgctxt "model:stock.move,name:0"
+msgid "Stock Move"
+msgstr "Хранилище перемещение товара"
+
+msgctxt "model:stock.product_stock_date.init,name:0"
+msgid "Compute stock quantities"
+msgstr "Вычисление количество на складе"
+
+msgctxt "model:stock.shipment.in,name:0"
+msgid "Supplier Shipment"
+msgstr "Приход от поставщика"
+
+msgctxt "model:stock.shipment.in.return,name:0"
+msgid "Supplier Return Shipment"
+msgstr "Возврат поставщику"
+
+msgctxt "model:stock.shipment.in.return.assign.ask_force,name:0"
+msgid "Assign Supplier Return Shipment Ask Force"
+msgstr ""
+
+msgctxt "model:stock.shipment.internal,name:0"
+msgid "Internal Shipment"
+msgstr "Внутреннее перемещение"
+
+msgctxt "model:stock.shipment.internal.assign.ask_force,name:0"
+msgid "Assign Shipment Internal Ask Force"
+msgstr "Внутренние назначение поставки (Ускоренный)"
+
+msgctxt "model:stock.shipment.out,name:0"
+msgid "Customer Shipment"
+msgstr "Отгрузка заказчику"
+
+msgctxt "model:stock.shipment.out.assign.ask_force,name:0"
+msgid "Assign Shipment Out Ask Force"
+msgstr "Внешнее назначение груза (Ускоренный)"
+
+msgctxt "model:stock.shipment.out.return,name:0"
+msgid "Customer Return Shipment"
+msgstr "Возврат от заказчика"
+
+msgctxt "model:workflow,name:wkf_inventory"
+msgid "Inventory"
+msgstr "Инвентаризация"
+
+msgctxt "model:workflow,name:wkf_shipment_in_return"
+msgid "Supplier Return Shipment"
+msgstr "Возврат поставщику"
+
+msgctxt "model:workflow,name:wkf_shipment_out_return"
+msgid "Customer Return Shipment"
+msgstr "Возврат от заказчика"
+
+msgctxt "model:workflow,name:wkf_shipmentin"
+msgid "Supplier Shipment"
+msgstr "Приход от поставщика"
+
+msgctxt "model:workflow,name:wkf_shipmentinternal"
+msgid "Internal Shipment"
+msgstr "Внутреннее перемещение"
+
+msgctxt "model:workflow,name:wkf_shipmentout"
+msgid "Customer Shipment"
+msgstr "Отгрузка заказчику"
+
+msgctxt "model:workflow.activity,name:inventory_act_cancel"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "model:workflow.activity,name:inventory_act_done"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "model:workflow.activity,name:inventory_act_draft"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "model:workflow.activity,name:shipment_in_return_act_assigned"
+msgid "Assigned"
+msgstr "Переданный"
+
+msgctxt "model:workflow.activity,name:shipment_in_return_act_cancel"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "model:workflow.activity,name:shipment_in_return_act_done"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "model:workflow.activity,name:shipment_in_return_act_draft"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "model:workflow.activity,name:shipment_in_return_act_waiting"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "model:workflow.activity,name:shipment_out_return_act_cancel"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "model:workflow.activity,name:shipment_out_return_act_done"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "model:workflow.activity,name:shipment_out_return_act_draft"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "model:workflow.activity,name:shipment_out_return_act_received"
+msgid "Received"
+msgstr "Поступило"
+
+msgctxt "model:workflow.activity,name:shipmentin_act_cancel"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "model:workflow.activity,name:shipmentin_act_done"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "model:workflow.activity,name:shipmentin_act_draft"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "model:workflow.activity,name:shipmentin_act_received"
+msgid "Received"
+msgstr "Поступило"
+
+msgctxt "model:workflow.activity,name:shipmentinternal_act_assigned"
+msgid "Assigned"
+msgstr "Переданный"
+
+msgctxt "model:workflow.activity,name:shipmentinternal_act_cancel"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "model:workflow.activity,name:shipmentinternal_act_done"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "model:workflow.activity,name:shipmentinternal_act_draft"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "model:workflow.activity,name:shipmentinternal_act_waiting"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "model:workflow.activity,name:shipmentout_act_assigned"
+msgid "Assigned"
+msgstr "Переданный"
+
+msgctxt "model:workflow.activity,name:shipmentout_act_cancel"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "model:workflow.activity,name:shipmentout_act_done"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "model:workflow.activity,name:shipmentout_act_draft"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "model:workflow.activity,name:shipmentout_act_packed"
+msgid "Packed"
+msgstr "Упакованный"
+
+msgctxt "model:workflow.activity,name:shipmentout_act_waiting"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "selection:stock.inventory,state:0"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "selection:stock.inventory,state:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "selection:stock.inventory,state:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:stock.location,type:0"
+msgid "Customer"
+msgstr "Заказчик"
+
+msgctxt "selection:stock.location,type:0"
+msgid "Lost and Found"
+msgstr "Утраченный и обретенный"
+
+msgctxt "selection:stock.location,type:0"
+msgid "Production"
+msgstr "Производство"
+
+msgctxt "selection:stock.location,type:0"
+msgid "Storage"
+msgstr "Хранилище"
+
+msgctxt "selection:stock.location,type:0"
+msgid "Supplier"
+msgstr "Поставщик"
+
+msgctxt "selection:stock.location,type:0"
+msgid "View"
+msgstr "Просмотр"
+
+msgctxt "selection:stock.location,type:0"
+msgid "Warehouse"
+msgstr "Товарный склад"
+
+msgctxt "selection:stock.move,state:0"
+msgid "Assigned"
+msgstr "Переданный"
+
+msgctxt "selection:stock.move,state:0"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "selection:stock.move,state:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "selection:stock.move,state:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:stock.shipment.in,state:0"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "selection:stock.shipment.in,state:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "selection:stock.shipment.in,state:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:stock.shipment.in,state:0"
+msgid "Received"
+msgstr "Поступило"
+
+msgctxt "selection:stock.shipment.in.return,state:0"
+msgid "Assigned"
+msgstr "Переданный"
+
+msgctxt "selection:stock.shipment.in.return,state:0"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "selection:stock.shipment.in.return,state:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "selection:stock.shipment.in.return,state:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:stock.shipment.in.return,state:0"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "selection:stock.shipment.internal,state:0"
+msgid "Assigned"
+msgstr "Переданный"
+
+msgctxt "selection:stock.shipment.internal,state:0"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "selection:stock.shipment.internal,state:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "selection:stock.shipment.internal,state:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:stock.shipment.internal,state:0"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "selection:stock.shipment.out,state:0"
+msgid "Assigned"
+msgstr "Переданный"
+
+msgctxt "selection:stock.shipment.out,state:0"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "selection:stock.shipment.out,state:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "selection:stock.shipment.out,state:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:stock.shipment.out,state:0"
+msgid "Packed"
+msgstr "Упакованный"
+
+msgctxt "selection:stock.shipment.out,state:0"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "selection:stock.shipment.out.return,state:0"
+msgid "Canceled"
+msgstr "Отменено"
+
+msgctxt "selection:stock.shipment.out.return,state:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "selection:stock.shipment.out.return,state:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "selection:stock.shipment.out.return,state:0"
+msgid "Received"
+msgstr "Поступило"
+
+msgctxt "view:party.party:0"
+msgid "Stock"
+msgstr "Хранилище"
+
+msgctxt "view:product.product:0"
+msgid "Products"
+msgstr "ТМЦ"
+
+msgctxt "view:stock.configuration:0"
+msgid "Stock Configuration"
+msgstr "Конфигурация склада"
+
+msgctxt "view:stock.inventory.line:0"
+msgid "Inventory Line"
+msgstr "Строка инвентаризации"
+
+msgctxt "view:stock.inventory.line:0"
+msgid "Inventory Lines"
+msgstr "Строки инвентаризации"
+
+msgctxt "view:stock.inventory:0"
+msgid "Add an inventory line for each missing products"
+msgstr "Добавить строку в список для каждого отсутствующего товара"
+
+msgctxt "view:stock.inventory:0"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "view:stock.inventory:0"
+msgid "Complete Inventory"
+msgstr "Полная инвентаризация"
+
+msgctxt "view:stock.inventory:0"
+msgid "Confirm"
+msgstr "Подтверждать"
+
+msgctxt "view:stock.inventory:0"
+msgid "Inventories"
+msgstr "Инвентаризация"
+
+msgctxt "view:stock.inventory:0"
+msgid "Inventory"
+msgstr "Инвентаризация"
+
+msgctxt "view:stock.location:0"
+msgid "Location"
+msgstr "Место"
+
+msgctxt "view:stock.location:0"
+msgid "Locations"
+msgstr "Места хранения"
+
+msgctxt "view:stock.location:0"
+msgid "Product Stock"
+msgstr "Хранилище ТМЦ"
+
+msgctxt "view:stock.location_stock_date.init:0"
+msgid "Product Quantity."
+msgstr "Количество Товаров."
+
+msgctxt "view:stock.move:0"
+msgid "Move"
+msgstr "Перемещение"
+
+msgctxt "view:stock.move:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "view:stock.product_stock_date.init:0"
+msgid "Product Quantity."
+msgstr "Количество Товаров."
+
+msgctxt "view:stock.shipment.in.return.assign.ask_force:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "view:stock.shipment.in.return.assign.ask_force:0"
+msgid "Unable to Assign"
+msgstr "Невозможно Назначение"
+
+msgctxt "view:stock.shipment.in.return.assign.ask_force:0"
+msgid "Unable to assign those products:"
+msgstr "Невозможно назначить эти товары:"
+
+msgctxt "view:stock.shipment.in.return:0"
+msgid "Assign"
+msgstr "Назначение"
+
+msgctxt "view:stock.shipment.in.return:0"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "view:stock.shipment.in.return:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "view:stock.shipment.in.return:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "view:stock.shipment.in.return:0"
+msgid "Reset to Draft"
+msgstr "Сброс в черновик"
+
+msgctxt "view:stock.shipment.in.return:0"
+msgid "Supplier Return Shipment"
+msgstr "Возврат поставщику"
+
+msgctxt "view:stock.shipment.in.return:0"
+msgid "Supplier Return Shipments"
+msgstr "Возвраты поставщику"
+
+msgctxt "view:stock.shipment.in.return:0"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "view:stock.shipment.in:0"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "view:stock.shipment.in:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "view:stock.shipment.in:0"
+msgid "Incoming Moves"
+msgstr "Входящий груз"
+
+msgctxt "view:stock.shipment.in:0"
+msgid "Inventory Moves"
+msgstr "Учет перемещений"
+
+msgctxt "view:stock.shipment.in:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "view:stock.shipment.in:0"
+msgid "Received"
+msgstr "Поступило"
+
+msgctxt "view:stock.shipment.in:0"
+msgid "Reset to Draft"
+msgstr "Сброс в черновик"
+
+msgctxt "view:stock.shipment.in:0"
+msgid "Supplier Shipment"
+msgstr "Приход от поставщика"
+
+msgctxt "view:stock.shipment.in:0"
+msgid "Supplier Shipments"
+msgstr "Приход от поставщиков"
+
+msgctxt "view:stock.shipment.internal.assign.ask_force:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "view:stock.shipment.internal.assign.ask_force:0"
+msgid "Unable to Assign"
+msgstr "Невозможно Назначение"
+
+msgctxt "view:stock.shipment.internal.assign.ask_force:0"
+msgid "Unable to assign those products:"
+msgstr "Невозможно назначить эти товары:"
+
+msgctxt "view:stock.shipment.internal:0"
+msgid "Assign"
+msgstr "Назначение"
+
+msgctxt "view:stock.shipment.internal:0"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "view:stock.shipment.internal:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "view:stock.shipment.internal:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "view:stock.shipment.internal:0"
+msgid "Internal Shipment"
+msgstr "Внутреннее перемещение"
+
+msgctxt "view:stock.shipment.internal:0"
+msgid "Internal Shipments"
+msgstr "Внутренние перемещения"
+
+msgctxt "view:stock.shipment.internal:0"
+msgid "Reset to Draft"
+msgstr "Сброс в черновик"
+
+msgctxt "view:stock.shipment.internal:0"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "view:stock.shipment.out.assign.ask_force:0"
+msgid "Inventory Moves"
+msgstr "Учет перемещений"
+
+msgctxt "view:stock.shipment.out.assign.ask_force:0"
+msgid "Unable to Assign"
+msgstr "Невозможно Назначение"
+
+msgctxt "view:stock.shipment.out.assign.ask_force:0"
+msgid "Unable to assign those products:"
+msgstr "Невозможно назначить эти товары:"
+
+msgctxt "view:stock.shipment.out.return:0"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "view:stock.shipment.out.return:0"
+msgid "Customer Return Shipment"
+msgstr "Возврат от заказчика"
+
+msgctxt "view:stock.shipment.out.return:0"
+msgid "Customer Return Shipments"
+msgstr "Возвраты от заказчиков"
+
+msgctxt "view:stock.shipment.out.return:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "view:stock.shipment.out.return:0"
+msgid "Incoming Moves"
+msgstr "Входящий груз"
+
+msgctxt "view:stock.shipment.out.return:0"
+msgid "Inventory Moves"
+msgstr "Учет перемещений"
+
+msgctxt "view:stock.shipment.out.return:0"
+msgid "Moves"
+msgstr "Перемещения"
+
+msgctxt "view:stock.shipment.out.return:0"
+msgid "Received"
+msgstr "Поступило"
+
+msgctxt "view:stock.shipment.out.return:0"
+msgid "Reset to Draft"
+msgstr "Сброс в черновики"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Assign"
+msgstr "Назначение"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Customer Shipment"
+msgstr "Отгрузка заказчику"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Customer Shipments"
+msgstr "Отгрузки заказчикам"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Done"
+msgstr "Выполнено"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Draft"
+msgstr "Черновик"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Inventory Moves"
+msgstr "Учет перемещений"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Make shipment"
+msgstr "Сделать отгрузку"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Outgoing Moves"
+msgstr "Внешнее перемещение"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Reset to Draft"
+msgstr "Сброс в черновик"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Waiting"
+msgstr "Ожидание"
+
+msgctxt "wizard_button:stock.location.open,init,end:0"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:stock.location.open,init,open:0"
+msgid "Open"
+msgstr "Открыть"
+
+msgctxt "wizard_button:stock.product.open,init,end:0"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:stock.product.open,init,open:0"
+msgid "Open"
+msgstr "Открыть"
+
+msgctxt "wizard_button:stock.shipment.in.return.assign,ask_force,end:0"
+msgid "Ok"
+msgstr "Да"
+
+msgctxt "wizard_button:stock.shipment.in.return.assign,ask_force,force:0"
+msgid "Force Assign"
+msgstr "Ускоренная отгрузка"
+
+msgctxt "wizard_button:stock.shipment.internal.assign,ask_force,end:0"
+msgid "Ok"
+msgstr "Да"
+
+msgctxt "wizard_button:stock.shipment.internal.assign,ask_force,force:0"
+msgid "Force Assign"
+msgstr "Ускоренная передача"
+
+msgctxt "wizard_button:stock.shipment.out.assign,ask_force,end:0"
+msgid "Ok"
+msgstr "Да"
+
+msgctxt "wizard_button:stock.shipment.out.assign,ask_force,force:0"
+msgid "Force Assign"
+msgstr "Ускоренная отгрузка"
