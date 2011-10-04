@@ -31,7 +31,7 @@
         'account.xml',
     ],
     'translation': [
-        'de_DE.csv',
-        'fr_FR.csv',
+        'locale/de_DE.po',
+        'locale/fr_FR.po',
     ],
 }
