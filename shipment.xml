@@ -243,11 +243,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Unable to Assign" col="2">
-                    <image name="tryton-dialog-information"/>
+                    <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
                     <separator string="Unable to assign those products:"
                         id="unable"/>
-                    <label id="empty"/>
-                    <field name="moves">
+                    <field name="moves" colspan="2">
                         <tree string="Moves" fill="1">
                             <field name="product"/>
                             <field name="quantity"/>
@@ -446,11 +445,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Unable to Assign" col="2">
-                    <image name="tryton-dialog-information"/>
+                    <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
                     <separator string="Unable to assign those products:"
                         id="unable"/>
-                    <label id="empty"/>
-                    <field name="inventory_moves">
+                    <field name="inventory_moves" colspan="2">
                         <tree string="Inventory Moves" fill="1">
                             <field name="product"/>
                             <field name="quantity"/>
@@ -624,11 +622,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Unable to Assign" col="2">
-                    <image name="tryton-dialog-information"/>
+                    <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
                     <separator string="Unable to assign those products:"
                         id="unable"/>
-                    <label id="empty"/>
-                    <field name="moves">
+                    <field name="moves" colspan="2">
                         <tree string="Moves"  fill="1">
                             <field name="product"/>
                             <field name="quantity"/>

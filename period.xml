@@ -17,9 +17,11 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="state"/>
                     <group col="2" colspan="2" id="buttons">
                         <button name="button_draft" type="object" string="Draft"
-                            states="{'invisible': Equal(Eval('state'), 'draft'), 'readonly': Not(In(%(group_stock_admin)d, Eval('groups', [])))}"/>
+                            states="{'invisible': Equal(Eval('state'), 'draft'), 'readonly': Not(In(%(group_stock_admin)d, Eval('groups', [])))}"
+                            icon="tryton-clear"/>
                         <button name="button_close" type="object" string="Close"
-                            states="{'invisible': Equal(Eval('state'), 'closed'), 'readonly': Not(In(%(group_stock_admin)d, Eval('groups', [])))}"/>
+                            states="{'invisible': Equal(Eval('state'), 'closed'), 'readonly': Not(In(%(group_stock_admin)d, Eval('groups', [])))}"
+                            icon="tryton-ok"/>
                     </group>
                 </form>
                 ]]>

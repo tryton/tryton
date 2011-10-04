@@ -42,11 +42,11 @@ this repository contains the full copyright notices and license terms. -->
                                 <button string="Cancel"
                                     name="cancel"
                                     states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="'tryton-cancel'" />
+                                    icon="tryton-cancel" />
                                 <button string="Confirm"
                                     name="done"
                                     states="{'invisible': In(Eval('state'), ['done','cancel']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="'tryton-ok'"/>
+                                    icon="tryton-ok"/>
                             </group>
                         </group>
                     </form>
