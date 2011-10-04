@@ -211,7 +211,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Choose dates" col="2">
+                <form string="Choose dates">
                     <label name="from_date"/>
                     <field name="from_date"/>
                     <label name="to_date"/>
@@ -226,7 +226,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Choose products" col="1" >
-                    <field name="products" width="600" height="300"/>
+                    <field name="products"/>
                 </form>
                 ]]>
             </field>
