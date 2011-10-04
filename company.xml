@@ -292,11 +292,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Create Company" col="2">
-                    <image name="tryton-dialog-information"/>
-                    <group col="1" id="labels">
-                        <label string="You can now add your company into the system."
-                            xalign="0.0" id="add"/>
-                    </group>
+                    <image name="tryton-dialog-information" xexpand="0"
+                        xfill="0"/>
+                    <label string="You can now add your company into the system." id="add"
+                        yalign="0.0" xalign="0.0" xexpand="1"/>
                 </form>
                 ]]>
             </field>
