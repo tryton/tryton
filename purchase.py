@@ -1090,6 +1090,9 @@ class PurchaseLine(ModelSQL, ModelView):
         with Transaction().set_context(context2):
             res['unit_price'] = product_obj.get_purchase_price([product.id],
                     vals.get('quantity', 0))[product.id]
+            if res['unit_price']:
+                res['unit_price'] = res['unit_price'].quantize(
+                    Decimal(1) / 10 ** self.unit_price.digits[1])
         res['taxes'] = []
         pattern = self._get_tax_rule_pattern(party, vals)
         for tax in product.supplier_taxes_used:
@@ -1145,6 +1148,9 @@ class PurchaseLine(ModelSQL, ModelView):
             res['unit_price'] = product_obj.get_purchase_price(
                     [vals['product']], vals.get('quantity', 0)
                     )[vals['product']]
+            if res['unit_price']:
+                res['unit_price'] = res['unit_price'].quantize(
+                    Decimal(1) / 10 ** self.unit_price.digits[1])
         return res
 
     def on_change_unit(self, vals):
@@ -1517,7 +1523,7 @@ class Product(ModelSQL, ModelView):
                     with Transaction().set_context(date=date):
                         res[product.id] = currency_obj.compute(
                             user.company.currency.id, res[product.id],
-                            currency.id)
+                            currency.id, round=False)
         return res
 
 Product()
