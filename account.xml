@@ -190,7 +190,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Open Chart of Analytic Accounts" col="2">
+                <form string="Open Chart of Analytic Accounts">
                     <label name="start_date"/>
                     <field name="start_date"/>
                     <label name="end_date"/>
