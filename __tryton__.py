@@ -49,8 +49,8 @@
         'party.xml',
     ],
     'translation': [
-        'bg_BG.csv',
-        'de_DE.csv',
-        'fr_FR.csv',
+        'locale/bg_BG.po',
+        'locale/de_DE.po',
+        'locale/fr_FR.po',
     ],
 }
