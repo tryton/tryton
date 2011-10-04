@@ -207,17 +207,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Handle shipment Exception" col="1">
-                        <separator string="Choose move to recreate"
-                                   id="choose"/>
-                        <field name="recreate_moves">
-                          <tree string="Recreate Moves" fill="1">
-                              <field name="product"/>
-                              <field name="quantity"/>
-                              <field name="uom"/>
-                              <field name="unit_digits" tree_invisible="1"/>
-                          </tree>
-                        </field>
+                <form string="Handle shipment Exception" col="2">
+                    <image name="tryton-dialog-information" xexpand="0"
+                        xfill="0"/>
+                    <label string="Choose move to recreate"
+                        id="choose"
+                        yalign="0.0" xalign="0.0" xexpand="1"/>
+                    <field name="recreate_moves" colspan="2">
+                        <tree string="Recreate Moves" fill="1">
+                            <field name="product"/>
+                            <field name="quantity"/>
+                            <field name="uom"/>
+                            <field name="unit_digits" tree_invisible="1"/>
+                        </tree>
+                    </field>
                 </form>
                 ]]>
             </field>
@@ -228,10 +231,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Handle Invoice Exception" col="1">
-                    <separator string="Choose invoices to recreate"
-                               id="choose"/>
-                    <field name="recreate_invoices"/>
+                <form string="Handle Invoice Exception" col="2">
+                    <image name="tryton-dialog-information" xexpand="0"
+                        xfill="0"/>
+                    <label string="Choose invoices to recreate"
+                        id="choose"
+                        yalign="0.0" xalign="0.0" xexpand="1"/>
+                    <field name="recreate_invoices" colspan="2"/>
                 </form>
                 ]]>
             </field>
