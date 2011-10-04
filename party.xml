@@ -182,7 +182,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="VAT Information Exchange System">
-                    <label string="You must have a recent version of &quot;vatnumber&quot; installed!" id="vatnumber"/>
+                    <image name="tryton-dialog-information" xexpand="0" xfill="0"/>
+                    <label string="You must have a recent version of &quot;vatnumber&quot; installed!"
+                        id="vatnumber"
+                        yalign="0.0" xalign="0.0" xexpand="1"/>
                 </form>
                 ]]>
             </field>
