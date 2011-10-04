@@ -1,3 +1,0 @@
-type,name,res_id,src,value,fuzzy
-field,"party.party,sale_price_list",0,Sale Price List,,0
-field,"sale.sale,price_list",0,Price List,,0
