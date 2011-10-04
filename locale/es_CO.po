@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:res.user:0"
+msgid "You can not set a password to a ldap user!"
+msgstr "¡No puede establecer la contraseña de un usuario LDAP"
+
+msgctxt "field:ldap.connection,auth_base_dn:0"
+msgid "Base DN"
+msgstr "DN base"
+
+msgctxt "field:ldap.connection,auth_create_user:0"
+msgid "Create User"
+msgstr "Crear usuario"
+
+msgctxt "field:ldap.connection,auth_require_filter:0"
+msgid "Require Filter"
+msgstr "Filtro requerido"
+
+msgctxt "field:ldap.connection,auth_scope:0"
+msgid "Scope"
+msgstr "Ámbito"
+
+msgctxt "field:ldap.connection,auth_uid:0"
+msgid "UID"
+msgstr "UID"
+
+msgctxt "help:ldap.connection,auth_base_dn:0"
+msgid "Base DN for authentication"
+msgstr "DN base para la autenticación"
+
+msgctxt "help:ldap.connection,auth_create_user:0"
+msgid "Create user if not in database"
+msgstr "Crea el usuario si no existe en la base de datos"
+
+msgctxt "help:ldap.connection,auth_uid:0"
+msgid "UID Attribute for authentication"
+msgstr "Atributo UID para la autenticación"
+
+msgctxt "selection:ldap.connection,auth_scope:0"
+msgid "Base"
+msgstr "Base"
+
+msgctxt "selection:ldap.connection,auth_scope:0"
+msgid "OneLevel"
+msgstr "UnNivel"
+
+msgctxt "selection:ldap.connection,auth_scope:0"
+msgid "Subtree"
+msgstr "Subárbol"
+
+msgctxt "view:ldap.connection:0"
+msgid "Authentication"
+msgstr "Autenticación"
