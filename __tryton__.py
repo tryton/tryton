@@ -71,7 +71,7 @@ Avec la possibilité:
     - de suivre le paiment des factures
     - de définir les numérotations de facture par période ou par année fiscale
     - de créditer n'importe quelle facture
-    
+
 ''',
     'description_nl_NL': '''Module voor facturering met:
     - Betalingstermijnen
@@ -82,7 +82,7 @@ Met de mogelijkheid tot:
     - het volgen van betalingen.
     - het definiëren van factuurreeksen per boekjaar.
     - het crediteren van een factuur.
-    
+
 ''',
     'depends': [
         'ir',
@@ -102,11 +102,11 @@ Met de mogelijkheid tot:
         'account.xml',
     ],
     'translation': [
-        'bg_BG.csv',
-        'de_DE.csv',
-        'es_CO.csv',
-        'es_ES.csv',
-        'fr_FR.csv',
-        'nl_NL.csv',
+        'locale/bg_BG.po',
+        'locale/de_DE.po',
+        'locale/es_CO.po',
+        'locale/es_ES.po',
+        'locale/fr_FR.po',
+        'locale/nl_NL.po',
     ]
 }
