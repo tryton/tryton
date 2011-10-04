@@ -1,0 +1,35 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.action,name:act_invoice_line_in_credit_note_form"
+msgid "Supplier Credit Note Lines"
+msgstr "Редове от кредитно известие на доставчик"
+
+msgctxt "model:ir.action,name:act_invoice_line_in_invoice_form"
+msgid "Supplier Invoice Lines"
+msgstr "Редове от фактура на доставчик"
+
+msgctxt "model:ir.action,name:act_invoice_line_out_credit_note_form"
+msgid "Credit Note Lines"
+msgstr "Редове от кредитно известие"
+
+msgctxt "model:ir.action,name:act_invoice_line_out_invoice_form"
+msgid "Invoice Lines"
+msgstr "Редове от фактура"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_credit_note_form"
+msgid "Supplier Credit Note Lines"
+msgstr "Редове от кредитно известие на доставчик"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_invoice_form"
+msgid "Supplier Invoice Lines"
+msgstr "Редове от фактура на доставчик"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_credit_note_form"
+msgid "Credit Note Lines"
+msgstr "Редове от кредитно известие"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_invoice_form"
+msgid "Invoice Lines"
+msgstr "Редове от фактура"

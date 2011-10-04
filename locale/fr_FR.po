@@ -1,0 +1,35 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.action,name:act_invoice_line_in_credit_note_form"
+msgid "Supplier Credit Note Lines"
+msgstr "Ligne de note de crédit fournisseur"
+
+msgctxt "model:ir.action,name:act_invoice_line_in_invoice_form"
+msgid "Supplier Invoice Lines"
+msgstr "Ligne de facture fournisseur"
+
+msgctxt "model:ir.action,name:act_invoice_line_out_credit_note_form"
+msgid "Credit Note Lines"
+msgstr "Lignes de note de crédit"
+
+msgctxt "model:ir.action,name:act_invoice_line_out_invoice_form"
+msgid "Invoice Lines"
+msgstr "Lignes de factures"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_credit_note_form"
+msgid "Supplier Credit Note Lines"
+msgstr "Lignes de note de crédit fournisseur"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_invoice_form"
+msgid "Supplier Invoice Lines"
+msgstr "Lignes de facture fournisseur"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_credit_note_form"
+msgid "Credit Note Lines"
+msgstr "Lignes de note de crédit"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_invoice_form"
+msgid "Invoice Lines"
+msgstr "Lignes de factures"
