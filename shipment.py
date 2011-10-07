@@ -156,9 +156,10 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
                 'GROUP BY shipment.id '
                 'ORDER BY MAX(move.company)'
                 % (self._table, move_obj._table))
-            for company_id, shipment_ids in itertools.groupby(cursor.fetchall(),
+            for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
-                self.write(list(shipment_ids), {'company': company_id})
+                shipment_ids = [x[0] for x in values]
+                self.write(shipment_ids, {'company': company_id})
             table.not_null_action('company', action='add')
 
         # Add index on create_date
@@ -516,9 +517,10 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
                 'GROUP BY shipment.id '
                 'ORDER BY MAX(move.company)'
                 % (self._table, move_obj._table))
-            for company_id, shipment_ids in itertools.groupby(cursor.fetchall(),
+            for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
-                self.write(list(shipment_ids), {'company': company_id})
+                shipment_ids = [x[0] for x in values]
+                self.write(shipment_ids, {'company': company_id})
             table.not_null_action('company', action='add')
 
         # Add index on create_date
@@ -792,9 +794,10 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                 'GROUP BY shipment.id '
                 'ORDER BY MAX(move.company)'
                 % (self._table, move_obj._table))
-            for company_id, shipment_ids in itertools.groupby(cursor.fetchall(),
+            for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
-                self.write(list(shipment_ids), {'company': company_id})
+                shipment_ids = [x[0] for x in values]
+                self.write(shipment_ids, {'company': company_id})
             table.not_null_action('company', action='add')
 
         # Migration from 1.0 customer_location is no more used
@@ -1280,9 +1283,10 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                 'GROUP BY shipment.id '
                 'ORDER BY MAX(move.company)'
                 % (self._table, move_obj._table))
-            for company_id, shipment_ids in itertools.groupby(cursor.fetchall(),
+            for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
-                self.write(list(shipment_ids), {'company': company_id})
+                shipment_ids = [x[0] for x in values]
+                self.write(shipment_ids, {'company': company_id})
             table.not_null_action('company', action='add')
 
         # Add index on create_date
@@ -1734,9 +1738,10 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
                 'GROUP BY shipment.id '
                 'ORDER BY MAX(move.company)'
                 % (self._table, move_obj._table))
-            for company_id, shipment_ids in itertools.groupby(cursor.fetchall(),
+            for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
-                self.write(list(shipment_ids), {'company': company_id})
+                shipment_ids = [x[0] for x in values]
+                self.write(shipment_ids, {'company': company_id})
             table.not_null_action('company', action='add')
 
         # Add index on create_date
