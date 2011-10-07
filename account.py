@@ -535,7 +535,7 @@ class Account(ModelSQL, ModelView):
     type = fields.Many2One('account.account.type', 'Type', ondelete="RESTRICT",
         states={
             'invisible': Eval('kind') == 'view',
-            'required': Eval('kind') == 'view',
+            'required': Eval('kind') != 'view',
             },
         domain=[
             ('company', '=', Eval('company')),
