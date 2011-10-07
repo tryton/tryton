@@ -96,7 +96,7 @@ class Module(ModelSQL, ModelView):
 
     def on_write(self, cursor, user, ids, context=None):
         if not ids:
-            return
+            return []
         res = []
         graph, packages, later = create_graph(get_module_list())
         for module in self.browse(cursor, user, ids, context=context):
