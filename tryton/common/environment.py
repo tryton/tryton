@@ -17,7 +17,8 @@ class EvalEnvironment(dict):
         if self.eval_type == 'eval':
             return self.parent.get_eval(check_load=self.check_load)[item]
         else:
-            return self.parent._get_on_change_args([item])[item]
+            return self.parent.group.fields[item].get_on_change_value(self.parent,
+                check_load=self.check_load)
 
     def __getattr__(self, item):
         return self.__getitem__(item)

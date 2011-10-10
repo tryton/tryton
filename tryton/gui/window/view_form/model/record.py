@@ -436,12 +436,7 @@ class Record(SignalEvent):
 
     def _get_on_change_args(self, args):
         res = {}
-        values = {}
-        for name, field in self.group.fields.iteritems():
-            values[name] = field.get_on_change_value(self, check_load=False)
-        if self.parent and self.parent_name:
-            values['_parent_' + self.parent_name] = \
-                    common.EvalEnvironment(self.parent, False, 'on_change')
+        values = common.EvalEnvironment(self, True, 'on_change')
         for arg in args:
             scope = values
             for i in arg.split('.'):
