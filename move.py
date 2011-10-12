@@ -370,12 +370,14 @@ class Reconciliation(ModelSQL, ModelView):
                     'nor from the same party!',
             })
 
-    def default_name(self):
-        sequence_obj = Pool().get('ir.sequence')
-        return sequence_obj.get('account.move.reconciliation')
-
     def create(self, vals):
         move_line_obj = Pool().get('account.move.line')
+        sequence_obj = Pool().get('ir.sequence')
+
+        if 'name' not in vals:
+            vals = vals.copy()
+            vals['name'] = sequence_obj.get('account.move.reconciliation')
+
         res = super(Reconciliation, self).create(vals)
         reconciliation = self.browse(res)
 
