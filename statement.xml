@@ -46,19 +46,21 @@ this repository contains the full copyright notices and license terms. -->
                                 </tree>
                             </field>
                             <group col="6" colspan="4" id="state_buttons">
-                              <label name="balance"/>
-                              <field name="balance"/>
-                              <label name="state"/>
-                              <field name="state"/>
-                              <button string="Validate" name="validated"
-                                      states="{'invisible': Not(Equal(Eval('state'), 'draft'))}"/>
-                              <button string="Cancel" name="cancel"
-                                      states="{'invisible': Not(Equal(Eval('state'), 'validated'))}"/>
-                              <button string="Post" name="posted"
-                                      states="{'invisible': Not(Equal(Eval('state'), 'validated'))}"/>
-                              <button string="Reset to Draft" name="draft_workflow"
-                                      type="object"
-                                      states="{'invisible': Not(Equal(Eval('state'), 'cancel'))}"/>
+                                <label name="balance"/>
+                                <field name="balance"/>
+                                <label name="state"/>
+                                <field name="state"/>
+                                <group col="4" colspan="2" id="buttons">
+                                    <button string="Validate" name="validated"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'draft'))}"/>
+                                    <button string="Cancel" name="cancel"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'validated'))}"/>
+                                    <button string="Post" name="posted"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'validated'))}"/>
+                                    <button string="Reset to Draft" name="draft_workflow"
+                                        type="object"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'cancel'))}"/>
+                                </group>
                             </group>
                         </page>
                         <page string="Other Info" id="info">
