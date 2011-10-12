@@ -30,7 +30,7 @@ class TableHandler(TableHandlerInterface):
             if not self.history:
                 self.cursor.execute('ALTER TABLE "%s" ' \
                         'ADD COLUMN id INTEGER ' \
-                            'DEFAULT nextval(\'%s\') NOT NULL' % \
+                            'DEFAULT nextval(\'"%s"\') NOT NULL' % \
                             (self.table_name, self.sequence_name))
                 self.cursor.execute('ALTER TABLE "%s" ' \
                         'ADD PRIMARY KEY(id)' % self.table_name)
@@ -41,17 +41,17 @@ class TableHandler(TableHandlerInterface):
         if self.history and not '__id' in self._columns:
             self.cursor.execute('ALTER TABLE "%s" ' \
                     'ADD COLUMN __id INTEGER ' \
-                        'DEFAULT nextval(\'%s\') NOT NULL' % \
+                        'DEFAULT nextval(\'"%s"\') NOT NULL' % \
                         (self.table_name, self.sequence_name))
             self.cursor.execute('ALTER TABLE "%s" ' \
                     'ADD PRIMARY KEY(__id)' % self.table_name)
         if self.history:
             self.cursor.execute('ALTER TABLE "%s" ' \
-                    'ALTER __id SET DEFAULT nextval(\'%s\')' % (self.table_name,
+                    'ALTER __id SET DEFAULT nextval(\'"%s"\')' % (self.table_name,
                         self.sequence_name))
         else:
             self.cursor.execute('ALTER TABLE "%s" ' \
-                    'ALTER id SET DEFAULT nextval(\'%s\')' % (self.table_name,
+                    'ALTER id SET DEFAULT nextval(\'"%s"\')' % (self.table_name,
                         self.sequence_name))
         self._update_definitions()
 
