@@ -110,6 +110,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_in_draft">
             <field name="name">Draft Supplier Shipment</field>
             <field name="res_model">stock.shipment.in</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_in_draft_view1">
