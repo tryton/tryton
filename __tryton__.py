@@ -4,6 +4,7 @@
 {
     'name' : 'Carrier',
     'name_de_DE': 'Frachtführer',
+    'name_fr_FR': 'Transporteur',
     'version' : '0.0.1',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
@@ -12,6 +13,7 @@
     'description_de_DE': '''
     - Ermöglicht die Definition von Frachtführern.
     ''',
+    'description_fr_FR': 'Définit des transporteurs.',
     'depends' : [
         'ir',
         'res',
@@ -23,5 +25,6 @@
     ],
     'translation': [
         'de_DE.csv',
+        'fr_FR.csv',
     ],
 }

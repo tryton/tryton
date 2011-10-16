@@ -1,0 +1,16 @@
+type,name,res_id,src,value,fuzzy
+field,"carrier,carrier_cost_method",0,Carrier Cost Method,Méthode de coût de transport,0
+field,"carrier,carrier_product",0,Carrier Product,Produit de transport,0
+field,"carrier,party",0,Party,Tiers,0
+field,"carrier,rec_name",0,Name,Nom,0
+help,"carrier,carrier_cost_method",0,Method to compute carrier cost,Méthode de calcul de coût de transport,0
+model,"carrier,name",0,carrier,transporteur,0
+model,"ir.action,name",act_carrier_form,Carriers,Transporteurs,0
+model,"ir.action,name",act_carrier_form2,Carrier,Transporteur,0
+model,"ir.ui.menu,name",menu_carrier,Carrier Management,Gestion des transporteurs,0
+model,"ir.ui.menu,name",menu_carrier_form,Carriers,Transporteurs,0
+model,"ir.ui.menu,name",menu_carrier_form2,New Carrier,Nouveau transporteur,0
+model,"res.group,name",group_carrier_admin,Carrier Administration,Administration des transporteurs,0
+selection,"carrier,carrier_cost_method",0,Product Price,Prix du produit,0
+view,carrier,0,Carrier,Transporteur,0
+view,carrier,0,Carriers,Transporteurs,0
