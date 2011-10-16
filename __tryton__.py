@@ -4,6 +4,7 @@
 {
     'name' : 'Sale Shipment Cost',
     'name_de_DE': 'Verkauf Lieferposten Kosten',
+    'name_fr_FR': "Coût d'expédition de vente",
     'version' : '0.0.1',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
@@ -12,6 +13,7 @@
     'description_de_DE': '''
     - Fügt den Verkäufen die Verwaltung von Kosten für Lieferposten hinzu.
     ''',
+    'description_fr_FR': "Ajoute le coût d'expédition sur les ventes",
      'depends' : [
         'ir',
         'res',

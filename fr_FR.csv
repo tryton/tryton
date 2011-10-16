@@ -1,0 +1,16 @@
+type,name,res_id,src,value,fuzzy
+error,stock.shipment.out,0,"It misses an ""Account Revenue"" on product ""%s""!","Il manque un ""Compte de produit"" sur le produit ""%s"" !",0
+field,"sale.configuration,sale_carrier",0,Carrier,Transporteur,0
+field,"sale.configuration,sale_shipment_cost_method",0,Sale Shipment Cost Method,Méthode de coût de l'expédition de vente,0
+field,"sale.line,shipment_cost",0,Shipment Cost,Coût d'expédition,0
+field,"sale.sale,carrier",0,Carrier,Transporteur,0
+field,"sale.sale,shipment_cost_method",0,Shipment Cost Method,Méthode de coût d'expédition,0
+field,"stock.shipment.out,carrier",0,Carrier,Transporteur,0
+field,"stock.shipment.out,cost",0,Cost,Coût,0
+field,"stock.shipment.out,cost_currency",0,Cost Currency,Devise du coût,0
+field,"stock.shipment.out,cost_currency_digits",0,Cost Currency Digits,Décimales de la devise du coût,0
+field,"stock.shipment.out,cost_invoice_line",0,Cost Invoice Line,Ligne de facture du coût,0
+selection,"sale.configuration,sale_shipment_cost_method",0,On Order,À la commande,0
+selection,"sale.configuration,sale_shipment_cost_method",0,On Shipment,À l'expédition,0
+selection,"sale.sale,shipment_cost_method",0,On Order,À la commande,0
+selection,"sale.sale,shipment_cost_method",0,On Shipment,À l'expédition,0
