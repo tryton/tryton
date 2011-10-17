@@ -4,6 +4,7 @@
 {
     'name' : 'Sale Shipment Cost',
     'name_de_DE': 'Verkauf Lieferposten Kosten',
+    'name_es_ES': 'Costo del método de envio',
     'name_fr_FR': "Coût d'expédition de vente",
     'version' : '0.0.1',
     'author' : 'B2CK',
@@ -14,6 +15,7 @@
     - Fügt den Verkäufen die Verwaltung von Kosten für Lieferposten hinzu.
     ''',
     'description_fr_FR': "Ajoute le coût d'expédition sur les ventes",
+    'description_es_ES': "Agrega un costo al método de envio.",
      'depends' : [
         'ir',
         'res',
@@ -28,5 +30,7 @@
     ],
     'translation': [
         'de_DE.csv',
+        'es_ES.csv',
+        'fr_FR.csv',
     ],
 }

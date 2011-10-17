@@ -1,0 +1,16 @@
+type,name,res_id,src,value,fuzzy
+error,stock.shipment.out,0,"It misses an ""Account Revenue"" on product ""%s""!",Falta una «cuenta de ingresos» en el producto «%s»,0
+field,"sale.configuration,sale_carrier",0,Carrier,Transportista,0
+field,"sale.configuration,sale_shipment_cost_method",0,Sale Shipment Cost Method,Método de costo de la venta,0
+field,"sale.line,shipment_cost",0,Shipment Cost,Costo de envió,0
+field,"sale.sale,carrier",0,Carrier,Transportista,0
+field,"sale.sale,shipment_cost_method",0,Shipment Cost Method,Método de costo de envió,0
+field,"stock.shipment.out,carrier",0,Carrier,Transportista,0
+field,"stock.shipment.out,cost",0,Cost,Costo,0
+field,"stock.shipment.out,cost_currency",0,Cost Currency,Moneda del costo,0
+field,"stock.shipment.out,cost_currency_digits",0,Cost Currency Digits,Dígitos del costo,0
+field,"stock.shipment.out,cost_invoice_line",0,Cost Invoice Line,Costo de la linea de factura,0
+selection,"sale.configuration,sale_shipment_cost_method",0,On Order,Al ordenar,0
+selection,"sale.configuration,sale_shipment_cost_method",0,On Shipment,Al enviar,0
+selection,"sale.sale,shipment_cost_method",0,On Order,Al ordenar,0
+selection,"sale.sale,shipment_cost_method",0,On Shipment,Al enviar,0
