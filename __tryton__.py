@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name' : 'Carrier',
+    'name_es_ES' : 'Transportista',
     'name_de_DE': 'Frachtführer',
     'name_fr_FR': 'Transporteur',
     'version' : '0.0.1',
@@ -10,6 +11,7 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Define carriers.',
+    'description_es_ES': 'Define transportistas.',
     'description_de_DE': '''
     - Ermöglicht die Definition von Frachtführern.
     ''',
@@ -24,6 +26,7 @@
         'carrier.xml',
     ],
     'translation': [
+        'es_ES.csv',
         'de_DE.csv',
         'fr_FR.csv',
     ],
