@@ -6,7 +6,7 @@
     'name_es_ES' : 'Transportista',
     'name_de_DE': 'Frachtführer',
     'name_fr_FR': 'Transporteur',
-    'version' : '2.0.0',
+    'version' : '2.0.1',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
