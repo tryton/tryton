@@ -78,7 +78,7 @@ class Move(ModelSQL, ModelView):
     currency = fields.Many2One('currency.currency', 'Currency',
             states={
                 'invisible': Not(Bool(Eval('unit_price_required'))),
-                'required': Not(Bool(Eval('unit_price_required'))),
+                'required': Bool(Eval('unit_price_required')),
                 'readonly': Not(Equal(Eval('state'), 'draft')),
             })
     unit_price_required = fields.Function(fields.Boolean('Unit Price Required',
