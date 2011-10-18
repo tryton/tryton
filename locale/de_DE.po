@@ -240,6 +240,10 @@ msgctxt "field:timesheet.work,timesheet_available:0"
 msgid "Available on timesheets"
 msgstr "Verfügbar für Zeiterfassung"
 
+msgctxt "field:timesheet.work,timesheet_lines:0"
+msgid ""
+msgstr ""
+
 msgctxt "field:timesheet.work,write_date:0"
 msgid "Last modification date"
 msgstr "Zuletzt geändert am"
@@ -304,6 +308,10 @@ msgctxt "model:ir.action,name:act_work_form3"
 msgid "Hours per Work"
 msgstr "Stunden pro Aufgabe"
 
+msgctxt "model:ir.action,name:act_work_hours_board"
+msgid "Hours per Work"
+msgstr "Stunden pro Aufgabe"
+
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
 msgstr "Aufgaben"
@@ -345,7 +353,7 @@ msgid "Reporting"
 msgstr "Auswertungen"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
-msgid "Timesheet Management"
+msgid "Timesheet"
 msgstr "Zeiterfassung"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
@@ -454,7 +462,7 @@ msgstr "Abbrechen"
 
 msgctxt "wizard_button:timesheet.enter_lines,init,enter:0"
 msgid "Enter"
-msgstr "Eingabe"
+msgstr "Zur Eingabe"
 
 msgctxt "wizard_button:timesheet.open_hours_employee,init,end:0"
 msgid "Cancel"
