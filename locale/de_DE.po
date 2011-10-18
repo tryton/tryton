@@ -46,6 +46,10 @@ msgctxt "field:project.work,rec_name:0"
 msgid "Name"
 msgstr "Name"
 
+msgctxt "field:project.work,sequence:0"
+msgid "Sequence"
+msgstr "Reihenfolge"
+
 msgctxt "field:project.work,state:0"
 msgid "State"
 msgstr "Status"
@@ -69,10 +73,6 @@ msgstr "Zuletzt geändert am"
 msgctxt "field:project.work,write_uid:0"
 msgid "Last modification by"
 msgstr "Zuletzt geändert von"
-
-msgctxt "field:timesheet.work,sequence:0"
-msgid "Sequence"
-msgstr "Reihenfolge"
 
 msgctxt "field:timesheet.work,timesheet_lines:0"
 msgid "Timesheet Lines"
@@ -119,7 +119,7 @@ msgid "Configuration"
 msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
-msgid "Project Management"
+msgid "Project"
 msgstr "Projekte"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
