@@ -56,7 +56,7 @@ msgid ""
 "- unit_price: the original unit_price"
 msgstr ""
 "Ein Pythonausdruck, der ausgewertet wird mit:\n"
-"- unit_price: originaler unit_price (Preis pro Einheit)"
+"unit_price: originaler unit_price (Preis pro Einheit)"
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
