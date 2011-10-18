@@ -22,6 +22,10 @@ msgctxt "error:account.statement:0"
 msgid "End Balance must be %s!"
 msgstr "Endsaldo muss %s sein!"
 
+msgctxt "field:account.statement,balance:0"
+msgid "Balance"
+msgstr "Saldo"
+
 msgctxt "field:account.statement,company:0"
 msgid "Company"
 msgstr "Unternehmen"
@@ -289,3 +293,7 @@ msgstr "Kontoauszüge"
 msgctxt "view:account.statement:0"
 msgid "Validate"
 msgstr "Prüfen"
+
+msgctxt "view:account.statement:0"
+msgid "Amount"
+msgstr "Betrag"
