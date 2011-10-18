@@ -7,18 +7,18 @@ msgid "You can not modify the party of an address!"
 msgstr "Die Partei einer Adresse kann nicht geändert werden!"
 
 msgctxt "error:party.category:0"
-msgid "The name of a party category must be unique by parent!"
-msgstr ""
-"Der Name einer Parteikategorie kann pro Übergeordneter Partei nur einmal "
-"vergeben werden!"
-
-msgctxt "error:party.category:0"
 msgid "You can not create recursive categories!"
 msgstr "Kategorien können nicht rekursiv angelegt werden!"
 
 msgctxt "error:party.category:0"
 msgid "You can not use \" / \" in name field!"
 msgstr "In dem Namensfeld kann \" / \" nicht verwendet werden!"
+
+msgctxt "error:party.category:0"
+msgid "The name of a party category must be unique by parent!"
+msgstr ""
+"Der Name einer Parteikategorie kann pro übergeordneter Kategorie nur einmal "
+"vergeben werden!"
 
 msgctxt "error:party.check_vies:0"
 msgid "The VIES service is unavailable, try again later."
@@ -287,7 +287,7 @@ msgstr "USt-ID-Nr."
 
 msgctxt "field:party.party,vat_country:0"
 msgid "VAT Country"
-msgstr "USt-ID Präfix"
+msgstr "USt-ID-Präfix"
 
 msgctxt "field:party.party,vat_number:0"
 msgid "VAT Number"
@@ -388,7 +388,7 @@ msgid "Configuration"
 msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party Management"
+msgid "Party"
 msgstr "Parteien"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -478,10 +478,6 @@ msgstr "Homepage"
 msgctxt "selection:party.party,vat_country:0"
 msgid "MT"
 msgstr "MT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid ""
-msgstr ""
 
 msgctxt "selection:party.party,vat_country:0"
 msgid "AL"
@@ -606,6 +602,10 @@ msgstr "UA"
 msgctxt "selection:party.party,vat_country:0"
 msgid "UK"
 msgstr "UK"
+
+msgctxt "selection:party.party,vat_country:0"
+msgid ""
+msgstr ""
 
 msgctxt "view:party.address:0"
 msgid "Addresses"
