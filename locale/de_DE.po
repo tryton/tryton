@@ -329,6 +329,10 @@ msgctxt "model:analytic_account.line,name:0"
 msgid "Analytic Line"
 msgstr "Kostenstelle Zeile"
 
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr "Kostenstellen"
+
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Analytic Accounts"
 msgstr "Kostenstellen"
@@ -348,6 +352,10 @@ msgstr "Konto öffnen"
 msgctxt "model:ir.action,name:act_open_chart_account"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Kostenstellenplan Öffnen"
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr "Kostenstellen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Analytic Accounts"
