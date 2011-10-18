@@ -24,7 +24,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         'Cost Currency Digits', on_change_with=['currency']),
         'get_cost_currency_digits')
     cost = fields.Numeric('Cost',
-            digits=(16, Eval('currency_digits', 2)), states={
+            digits=(16, Eval('cost_currency_digits', 2)), states={
             'invisible': Not(Bool(Eval('carrier'))),
             'readonly': Not(In(Eval('state'),
                 ['draft', 'assigned', 'packed'])),
