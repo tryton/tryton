@@ -178,6 +178,10 @@ msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
 msgstr "Einkäufe"
 
+msgctxt "model:ir.action,name:act_purchase_request_create_purchase_request"
+msgid "Create Purchase Requests"
+msgstr "Bestellvorschläge erstellen"
+
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Bestellvorschläge"
@@ -197,6 +201,10 @@ msgstr "Erstellung von Bestellvorschlägen"
 msgctxt "model:ir.cron,name:cron_shipment_iternal"
 msgid "Generate Internal Shipments"
 msgstr "Erstellung von Internen Lieferposten"
+
+msgctxt "model:ir.ui.menu,name:menu_create_purchase_request"
+msgid "Create Purchase Requests"
+msgstr "Bestellvorschläge erstellen"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
@@ -221,6 +229,10 @@ msgstr "Verkauf Nachfrage Partei"
 msgctxt "model:purchase.request.create_purchase.ask_term,name:0"
 msgid "Create Purchase Ask Term"
 msgstr "Verkauf Nachfrage Zahlungsbedingung"
+
+msgctxt "model:purchase.request.create_purchase_request.init,name:0"
+msgid "Create Purchase Request Init"
+msgstr "Bestellvorschläge erstellen Init"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -267,16 +279,24 @@ msgid "Purchase"
 msgstr "Bestellvorschlag"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:0"
-msgid ""
-msgstr ""
-
-msgctxt "view:purchase.request.create_purchase.ask_party:0"
 msgid "Create Purchase: Missing Supplier"
 msgstr "Auftragerstellung: Fehlender Lieferant"
+
+msgctxt "view:purchase.request.create_purchase.ask_party:0"
+msgid ""
+msgstr ""
 
 msgctxt "view:purchase.request.create_purchase.ask_term:0"
 msgid "Create Purchase: Missing Payment Term"
 msgstr "Auftragerstellung: Fehlende Zahlungsbedingung"
+
+msgctxt "view:purchase.request.create_purchase_request.init:0"
+msgid "Create Purchase Request"
+msgstr "Bestellvorschlag erstellen"
+
+msgctxt "view:purchase.request.create_purchase_request.init:0"
+msgid "Create Purchase Request?"
+msgstr "Bestellvorschlag erstellen?"
 
 msgctxt "view:purchase.request:0"
 msgid "Product Info"
@@ -333,3 +353,11 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:purchase.request.create_purchase,ask_user_term,init:0"
 msgid "Continue"
 msgstr "Fortfahren"
+
+msgctxt "wizard_button:purchase.request.create_purchase_request,init,create:0"
+msgid "Create"
+msgstr "Erstellen"
+
+msgctxt "wizard_button:purchase.request.create_purchase_request,init,end:0"
+msgid "Cancel"
+msgstr "Abbrechen"
