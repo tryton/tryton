@@ -556,7 +556,7 @@ msgid "Configuration"
 msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase"
-msgid "Purchase Management"
+msgid "Purchase"
 msgstr "Einkauf"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
@@ -605,7 +605,7 @@ msgstr "Einkauf Position"
 
 msgctxt "model:purchase.line-account.invoice.line,name:0"
 msgid "Purchase Line - Invoice Line"
-msgstr "Position Einkauf - Rechnungszeile"
+msgstr "Position Einkauf - Rechnungsposition"
 
 msgctxt "model:purchase.line-account.tax,name:0"
 msgid "Purchase Line - Tax"
@@ -734,6 +734,10 @@ msgid "Waiting Shipment"
 msgstr "Lieferposten Wartend"
 
 msgctxt "odt:purchase.purchase:0"
+msgid "Unit Price"
+msgstr "Einzelpreis"
+
+msgctxt "odt:purchase.purchase:0"
 msgid "Amount"
 msgstr "Betrag"
 
@@ -790,10 +794,6 @@ msgid "Total:"
 msgstr "Gesamt:"
 
 msgctxt "odt:purchase.purchase:0"
-msgid "Unit Price"
-msgstr "Einzelpreis"
-
-msgctxt "odt:purchase.purchase:0"
 msgid "VAT Number:"
 msgstr "USt-ID-Nr.:"
 
@@ -802,16 +802,16 @@ msgid "VAT:"
 msgstr "USt.:"
 
 msgctxt "selection:account.invoice,purchase_exception_state:0"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.invoice,purchase_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoriert"
 
 msgctxt "selection:account.invoice,purchase_exception_state:0"
 msgid "Recreated"
 msgstr "Nachgebildet"
+
+msgctxt "selection:account.invoice,purchase_exception_state:0"
+msgid ""
+msgstr ""
 
 msgctxt "selection:purchase.configuration,purchase_invoice_method:0"
 msgid "Based On Order"
@@ -906,16 +906,16 @@ msgid "Quotation"
 msgstr "Angebot"
 
 msgctxt "selection:stock.move,purchase_exception_state:0"
-msgid ""
-msgstr ""
-
-msgctxt "selection:stock.move,purchase_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoriert"
 
 msgctxt "selection:stock.move,purchase_exception_state:0"
 msgid "Recreated"
 msgstr "Nachgebildet"
+
+msgctxt "selection:stock.move,purchase_exception_state:0"
+msgid ""
+msgstr ""
 
 msgctxt "view:product.product:0"
 msgid "Product Suppliers"
