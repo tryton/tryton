@@ -3,6 +3,7 @@
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class Carrier(ModelSQL, ModelView):
@@ -25,7 +26,7 @@ class Carrier(ModelSQL, ModelView):
         return 'product'
 
     def copy(self, ids, default=None):
-        party_obj = self.pool.get('party.party')
+        party_obj = Pool().get('party.party')
 
         int_id = False
         if isinstance(ids, (int, long)):
@@ -45,7 +46,7 @@ class Carrier(ModelSQL, ModelView):
 
     def get_sale_price(self, carrier):
         'Compute carrier sale price with currency'
-        user_obj = self.pool.get('res.user')
+        user_obj = Pool().get('res.user')
         if carrier.carrier_cost_method == 'product':
             user = user_obj.browse(Transaction().user)
             return carrier.carrier_product.list_price, user.company.currency.id
@@ -53,7 +54,7 @@ class Carrier(ModelSQL, ModelView):
 
     def get_purchase_price(self, carrier):
         'Compute carrier purchase price with currency'
-        user_obj = self.pool.get('res.user')
+        user_obj = Pool().get('res.user')
         if carrier.carrier_cost_method == 'product':
             user = user_obj.browse(Transaction().user)
             return carrier.carrier_product.cost_price, user.company.currency.id
