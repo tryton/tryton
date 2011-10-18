@@ -10,6 +10,7 @@ import re
 import mx.DateTime
 from decimal import Decimal
 import datetime
+import threading
 
 _FIX_ROWCOUNT = False
 try:
@@ -88,19 +89,20 @@ def replace(text, pattern, replacement):
 
 class Database(DatabaseInterface):
 
-    _memory_database = None
+    _local = threading.local()
     _conn = None
 
     def __new__(cls, database_name=':memory:'):
-        if database_name == ':memory:' \
-                and cls._memory_database:
-            return cls._memory_database
+        if (database_name == ':memory:'
+                and hasattr(cls._local, 'memory_database')
+                and cls._local.memory_database):
+            return cls._local.memory_database
         return DatabaseInterface.__new__(cls, database_name=database_name)
 
     def __init__(self, database_name=':memory:'):
         super(Database, self).__init__(database_name=database_name)
         if database_name == ':memory:':
-            Database._memory_database = self
+            Database._local.memory_database = self
 
     def connect(self):
         if self.database_name == ':memory:':
