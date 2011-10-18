@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from __future__ import with_statement
 import sys, os
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', '..', '..', '..', 'trytond')))
@@ -11,7 +10,7 @@ if os.path.isdir(DIR):
 import unittest
 import doctest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view
+from trytond.tests.test_tryton import test_view, test_depends
 from trytond.backend.sqlite.database import Database as SQLiteDatabase
 
 
@@ -28,6 +27,12 @@ class SaleShipmentCostTestCase(unittest.TestCase):
         Test views.
         '''
         test_view('sale_shipment_cost')
+
+    def test0006depends(self):
+        '''
+        Test depends.
+        '''
+        test_depends()
 
 def doctest_dropdb(test):
     '''

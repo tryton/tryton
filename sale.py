@@ -1,10 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from __future__ import with_statement
 import copy
 from trytond.model import Model, fields
 from trytond.transaction import Transaction
 from trytond.pyson import Not, Equal, Eval, Bool, Get
+from trytond.pool import Pool
 
 
 class Configuration(Model):
@@ -14,11 +14,13 @@ class Configuration(Model):
         domain=[('carrier_product.salable', '=', True)],
     ))
     sale_shipment_cost_method = fields.Property(fields.Selection([
-        ('order', 'On Order'),
-        ('shipment', 'On Shipment'),
-    ], 'Sale Shipment Cost Method', states={
-        'required': Bool(Eval('company')),
-    }))
+                ('order', 'On Order'),
+                ('shipment', 'On Shipment'),
+                ], 'Sale Shipment Cost Method',
+            states={
+                'required': Bool(Eval('context', {}).get('company', 0)),
+                },
+            depends=['company']))
 
     def default_sale_shipment_cost_method(self):
         return 'shipment'
@@ -34,13 +36,14 @@ class Sale(Model):
         domain=[('carrier_product.salable', '=', True)],
         on_change=['carrier', 'party', 'currency', 'sale_date'],
         states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
-        })
+            'readonly': Eval('state') != 'draft',
+        },
+        depends=['state'])
     shipment_cost_method = fields.Selection([
         ('order', 'On Order'),
         ('shipment', 'On Shipment'),
         ], 'Shipment Cost Method', required=True, states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
+            'readonly': Eval('state') != 'draft',
             }, depends=['state'])
 
     def __init__(self):
@@ -60,12 +63,12 @@ class Sale(Model):
         self._reset_columns()
 
     def default_carrier(self):
-        config_obj = self.pool.get('sale.configuration')
+        config_obj = Pool().get('sale.configuration')
         config = config_obj.browse(1)
         return config.sale_carrier.id
 
     def default_shipment_cost_method(self):
-        config_obj = self.pool.get('sale.configuration')
+        config_obj = Pool().get('sale.configuration')
         config = config_obj.browse(1)
         return config.sale_shipment_cost_method
 
@@ -76,13 +79,14 @@ class Sale(Model):
         return self.on_change_lines(values)
 
     def on_change_lines(self, values):
-        carrier_obj = self.pool.get('carrier')
-        party_obj = self.pool.get('party.party')
-        product_obj = self.pool.get('product.product')
-        currency_obj = self.pool.get('currency.currency')
-        sale_line_obj = self.pool.get('sale.line')
-        tax_rule_obj = self.pool.get('account.tax.rule')
-        date_obj = self.pool.get('ir.date')
+        pool = Pool()
+        carrier_obj = pool.get('carrier')
+        party_obj = pool.get('party.party')
+        product_obj = pool.get('product.product')
+        currency_obj = pool.get('currency.currency')
+        sale_line_obj = pool.get('sale.line')
+        tax_rule_obj = pool.get('account.tax.rule')
+        date_obj = pool.get('ir.date')
 
         today = date_obj.today()
 
@@ -174,8 +178,9 @@ class Sale(Model):
         return result
 
     def create_shipment(self, sale_id):
-        shipment_obj = self.pool.get('stock.shipment.out')
-        carrier_obj = self.pool.get('carrier')
+        pool = Pool()
+        shipment_obj = pool.get('stock.shipment.out')
+        carrier_obj = pool.get('carrier')
 
         shipment_id = super(Sale, self).create_shipment(sale_id)
         sale = self.browse(sale_id)
@@ -201,9 +206,10 @@ class Sale(Model):
         return result
 
     def create_invoice(self, sale_id):
-        invoice_obj = self.pool.get('account.invoice')
-        invoice_line_obj = self.pool.get('account.invoice.line')
-        shipment_obj = self.pool.get('stock.shipment.out')
+        pool = Pool()
+        invoice_obj = pool.get('account.invoice')
+        invoice_line_obj = pool.get('account.invoice.line')
+        shipment_obj = pool.get('stock.shipment.out')
 
         invoice_id = super(Sale, self).create_invoice(sale_id)
         sale = self.browse(sale_id)
@@ -237,6 +243,6 @@ class SaleLine(Model):
     _name = 'sale.line'
 
     shipment_cost = fields.Numeric('Shipment Cost',
-        digits=(16, Get(Eval('_parent_sale', {}), 'currency_digits', 2)))
+        digits=(16, Eval('_parent_sale', {}).get('currency_digits', 2)))
 
 SaleLine()

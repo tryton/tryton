@@ -3,31 +3,31 @@
 from decimal import Decimal
 import copy
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
-from trytond.pyson import Eval, Not, Bool, Equal, In
+from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
+from trytond.pool import Pool
 
 
 class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
     _name = 'stock.shipment.out'
 
     carrier = fields.Many2One('carrier', 'Carrier', states={
-            'readonly': Not(Equal(Eval('state'), 'draft')),
-            }, on_change=['carrier'])
+            'readonly': Eval('state') != 'draft',
+            }, on_change=['carrier'],
+        depends=['state'])
     cost_currency = fields.Many2One('currency.currency',
             'Cost Currency', states={
-            'invisible': Not(Bool(Eval('carrier'))),
+            'invisible': ~Eval('carrier'),
             'required': Bool(Eval('carrier')),
-            'readonly': Not(In(Eval('state'),
-                ['draft', 'assigned', 'packed'])),
+            'readonly': ~Eval('state').in_(['draft', 'assigned', 'packed']),
             }, depends=['carrier', 'state'])
     cost_currency_digits = fields.Function(fields.Integer(
         'Cost Currency Digits', on_change_with=['currency']),
         'get_cost_currency_digits')
     cost = fields.Numeric('Cost',
             digits=(16, Eval('cost_currency_digits', 2)), states={
-            'invisible': Not(Bool(Eval('carrier'))),
-            'readonly': Not(In(Eval('state'),
-                ['draft', 'assigned', 'packed'])),
+            'invisible': ~Eval('carrier'),
+            'readonly': ~Eval('state').in_(['draft', 'assigned', 'packed']),
             }, depends=['carrier', 'state', 'cost_currency_digits'])
     cost_invoice_line = fields.Many2One('account.invoice.line',
             'Cost Invoice Line', readonly=True)
@@ -56,7 +56,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         self._reset_columns()
 
     def on_change_with_cost_currency_digits(self, values):
-        currency_obj = self.pool.get('currency.currency')
+        currency_obj = Pool().get('currency.currency')
         if values.get('currency'):
             currency = currency_obj.browse(values['currency'])
             return currency.digits
@@ -86,8 +86,9 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         return self.on_change_inventory_moves(values)
 
     def on_change_inventory_moves(self, values):
-        carrier_obj = self.pool.get('carrier')
-        currency_obj = self.pool.get('currency.currency')
+        pool = Pool()
+        carrier_obj = pool.get('carrier')
+        currency_obj = pool.get('currency.currency')
 
         try:
             result = super(ShipmentOut, self).on_change_lines(value)
@@ -108,8 +109,9 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         return {}
 
     def get_cost_invoice_line(self, shipment, invoice):
-        product_obj = self.pool.get('product.product')
-        tax_rule_obj = self.pool.get('account.tax.rule')
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        tax_rule_obj = pool.get('account.tax.rule')
 
         if not shipment.cost:
             return {}
