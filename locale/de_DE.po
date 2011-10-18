@@ -222,7 +222,7 @@ msgstr "Unternehmen anlegen"
 
 msgctxt "view:company.company.config.init:0"
 msgid "You can now add your company into the system."
-msgstr "Sie können nun Ihr Unternehmen dem System hinzufügen!"
+msgstr "Sie können nun Ihr Unternehmen dem System hinzufügen."
 
 msgctxt "view:company.company:0"
 msgid "Companies"
