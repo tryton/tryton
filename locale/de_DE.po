@@ -55,6 +55,10 @@ msgctxt "field:account.invoice.line,sale_lines:0"
 msgid "Sale Lines"
 msgstr "Positionen Verkauf"
 
+msgctxt "field:product.template,delivery_time:0"
+msgid "Delivery Time"
+msgstr "Lieferfrist"
+
 msgctxt "field:product.template,salable:0"
 msgid "Salable"
 msgstr "Verkäuflich"
@@ -395,6 +399,10 @@ msgctxt "field:stock.move,sale_line:0"
 msgid "Sale Line"
 msgstr "Verkauf Position"
 
+msgctxt "help:product.template,delivery_time:0"
+msgid "In number of days"
+msgstr "In Anzahl von Tagen"
+
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:0"
 msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
@@ -411,7 +419,7 @@ msgid "Parties associated to Sales"
 msgstr "Parteien: Verkäufen zugeordnet"
 
 msgctxt "model:ir.action,name:act_sale_configuration_form"
-msgid "Sale Configuration"
+msgid "Sales Configuration"
 msgstr "Einstellungen Verkauf"
 
 msgctxt "model:ir.action,name:act_sale_form"
@@ -467,11 +475,11 @@ msgid "Parties associated to Sales"
 msgstr "Parteien: Verkäufen zugeordnet"
 
 msgctxt "model:ir.ui.menu,name:menu_sale"
-msgid "Sale Management"
+msgid "Sales"
 msgstr "Verkauf"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
-msgid "Sale Configuration"
+msgid "Sales Configuration"
 msgstr "Einstellungen Verkauf"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
@@ -491,11 +499,11 @@ msgid "Quotation Sales"
 msgstr "Angebote (Verkäufe)"
 
 msgctxt "model:res.group,name:group_sale"
-msgid "Sale"
+msgid "Sales"
 msgstr "Verkauf"
 
 msgctxt "model:res.group,name:group_sale_admin"
-msgid "Sale Administrator"
+msgid "Sales Administrator"
 msgstr "Verkauf Administration"
 
 msgctxt "model:sale.configuration,name:0"
@@ -516,7 +524,7 @@ msgstr "Verkauf Position"
 
 msgctxt "model:sale.line-account.invoice.line,name:0"
 msgid "Sale Line - Invoice Line"
-msgstr "Verkauf Position - Rechnung Zeile"
+msgstr "Verkauf Position - Rechnungsposition"
 
 msgctxt "model:sale.line-account.tax,name:0"
 msgid "Sale Line - Tax"
@@ -663,6 +671,14 @@ msgid "Waiting Shipment Invoice"
 msgstr "Lieferposten Rechnung Wartend"
 
 msgctxt "odt:sale.sale:0"
+msgid "Taxes"
+msgstr "Steuern"
+
+msgctxt "odt:sale.sale:0"
+msgid "Taxes:"
+msgstr "Steuern:"
+
+msgctxt "odt:sale.sale:0"
 msgid "Amount"
 msgstr "Betrag"
 
@@ -703,14 +719,6 @@ msgid "Sale Order N°:"
 msgstr "Auftrag Nr.:"
 
 msgctxt "odt:sale.sale:0"
-msgid "Taxes"
-msgstr "Steuern"
-
-msgctxt "odt:sale.sale:0"
-msgid "Taxes:"
-msgstr "Steuern:"
-
-msgctxt "odt:sale.sale:0"
 msgid "Total (excl. taxes):"
 msgstr "Netto:"
 
@@ -731,16 +739,16 @@ msgid "VAT:"
 msgstr "USt:"
 
 msgctxt "selection:account.invoice,sale_exception_state:0"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.invoice,sale_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoriert"
 
 msgctxt "selection:account.invoice,sale_exception_state:0"
 msgid "Recreated"
 msgstr "Nachgebildet"
+
+msgctxt "selection:account.invoice,sale_exception_state:0"
+msgid ""
+msgstr ""
 
 msgctxt "selection:sale.configuration,sale_invoice_method:0"
 msgid "Manual"
@@ -859,16 +867,16 @@ msgid "Quotation"
 msgstr "Angebot"
 
 msgctxt "selection:stock.move,sale_exception_state:0"
-msgid ""
-msgstr ""
-
-msgctxt "selection:stock.move,sale_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoriert"
 
 msgctxt "selection:stock.move,sale_exception_state:0"
 msgid "Recreated"
 msgstr "Nachgebildet"
+
+msgctxt "selection:stock.move,sale_exception_state:0"
+msgid ""
+msgstr ""
 
 msgctxt "view:product.product:0"
 msgid "Customers"
