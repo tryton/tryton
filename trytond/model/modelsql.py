@@ -1664,7 +1664,7 @@ class ModelSQL(ModelStorage):
                                 'ON (ir_translation.name = ' \
                                         'ir_model.model||\',\'||%s.name ' \
                                     'AND ir_translation.res_id = 0 ' \
-                                    'AND ir_translation = %%s ' \
+                                    'AND ir_translation.lang = %%s ' \
                                     'AND ir_translation.type = \'%s\' ' \
                                     'AND ir_translation.fuzzy = %s)' % \
                                 (table._table, ttype,
