@@ -141,14 +141,7 @@ class DateEntry(gtk.Entry):
 
     def date_set(self, dt):
         if dt:
-            format = self.format
-            if dt.year < 10:
-                format = format.replace('%Y', '000%Y')
-            elif dt.year < 100:
-                format = format.replace('%Y', '00%Y')
-            elif dt.year < 1000:
-                format = format.replace('%Y', '0%Y')
-            self.set_text(datetime_strftime(dt, format))
+            self.set_text(datetime_strftime(dt, self.format))
         else:
             if self.is_focus():
                 self.set_text(self.initial_value)
