@@ -5,7 +5,6 @@ from decimal import Decimal
 import datetime
 from itertools import groupby
 from functools import partial
-from operator import itemgetter
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard
