@@ -26,8 +26,8 @@
         'carrier.xml',
     ],
     'translation': [
-        'es_ES.csv',
-        'de_DE.csv',
-        'fr_FR.csv',
+        'locale/es_ES.po',
+        'locale/de_DE.po',
+        'locale/fr_FR.po',
     ],
 }

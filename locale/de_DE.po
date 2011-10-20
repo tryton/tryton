@@ -1,0 +1,63 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:0"
+msgid "Carrier Cost Method"
+msgstr "Frachtführer Kostenmethode"
+
+msgctxt "field:carrier,carrier_product:0"
+msgid "Carrier Product"
+msgstr "Frachtführer Artikel"
+
+msgctxt "field:carrier,party:0"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:carrier,rec_name:0"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "help:carrier,carrier_cost_method:0"
+msgid "Method to compute carrier cost"
+msgstr "Methode für die Berechnung der Frachtkosten"
+
+msgctxt "model:carrier,name:0"
+msgid "carrier"
+msgstr "Frachtführer"
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr "Frachtführer"
+
+msgctxt "model:ir.action,name:act_carrier_form2"
+msgid "Carrier"
+msgstr "Frachtführer"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier Management"
+msgstr "Frachtführer"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr "Frachtführer"
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form2"
+msgid "New Carrier"
+msgstr "Neuer Frachtführer"
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr "Frachtführer Administration"
+
+msgctxt "selection:carrier,carrier_cost_method:0"
+msgid "Product Price"
+msgstr "Artikelpreis"
+
+msgctxt "view:carrier:0"
+msgid "Carrier"
+msgstr "Frachtführer"
+
+msgctxt "view:carrier:0"
+msgid "Carriers"
+msgstr "Frachtführer"
