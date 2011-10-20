@@ -29,8 +29,8 @@
         'stock.xml',
     ],
     'translation': [
-        'de_DE.csv',
-        'es_ES.csv',
-        'fr_FR.csv',
+        'locale/de_DE.po',
+        'locale/es_ES.po',
+        'locale/fr_FR.po',
     ],
 }
