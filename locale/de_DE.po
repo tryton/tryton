@@ -12,7 +12,7 @@ msgstr "Frachtführer"
 
 msgctxt "field:sale.configuration,sale_shipment_cost_method:0"
 msgid "Sale Shipment Cost Method"
-msgstr "Verkauf Lieferposten Kostenmethode"
+msgstr "Lieferposten Kostenmethode Verkauf"
 
 msgctxt "field:sale.line,shipment_cost:0"
 msgid "Shipment Cost"
@@ -24,7 +24,7 @@ msgstr "Frachtführer"
 
 msgctxt "field:sale.sale,shipment_cost_method:0"
 msgid "Shipment Cost Method"
-msgstr "Verkauf Kostenmethode"
+msgstr "Lieferposten Kostenmethode"
 
 msgctxt "field:stock.shipment.out,carrier:0"
 msgid "Carrier"
