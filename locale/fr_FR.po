@@ -97,7 +97,7 @@ msgstr "Nom"
 
 msgctxt "field:timesheet.line,work:0"
 msgid "Work"
-msgstr "Activité"
+msgstr "Travail"
 
 msgctxt "field:timesheet.open_hours_employee.init,end_date:0"
 msgid "End Date"
@@ -146,6 +146,10 @@ msgstr "Droite"
 msgctxt "field:timesheet.work,timesheet_available:0"
 msgid "Available on timesheets"
 msgstr "Disponible sur les feuilles de présence"
+
+msgctxt "field:timesheet.work,timesheet_lines:0"
+msgid ""
+msgstr ""
 
 msgctxt "field:timesheet.work.open.init,from_date:0"
 msgid "From Date"
@@ -203,18 +207,21 @@ msgctxt "model:ir.action,name:act_work_form3"
 msgid "Hours per Work"
 msgstr "Heures par activité"
 
-#, fuzzy
+msgctxt "model:ir.action,name:act_work_hours_board"
+msgid "Hours per Work"
+msgstr "Heures par activité"
+
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Activités"
+msgstr "Travaux"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works"
-msgstr "Activités"
+msgstr "Travaux"
 
 msgctxt "model:ir.action,name:act_work_tree2"
 msgid "Works"
-msgstr "Activités"
+msgstr "Travaux"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -245,17 +252,16 @@ msgid "Reporting"
 msgstr "Rapports"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
-msgid "Timesheet Management"
+msgid "Timesheet"
 msgstr "Feuilles de présence"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Activités"
+msgstr "Travaux"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works"
-msgstr "Activités"
+msgstr "Travaux"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree2"
 msgid "Hours per Work"
@@ -291,7 +297,7 @@ msgstr "Heures d'ouverture des employés - Init"
 
 msgctxt "model:timesheet.work,name:0"
 msgid "Work"
-msgstr "Activité"
+msgstr "Travail"
 
 msgctxt "model:timesheet.work.open.init,name:0"
 msgid "Open Work Init"
@@ -342,12 +348,12 @@ msgid "Hours per Work"
 msgstr "Heures par activité"
 
 msgctxt "view:timesheet.work:0"
-msgid "Work"
-msgstr "Activité"
+msgid "Works"
+msgstr "Travaux"
 
 msgctxt "view:timesheet.work:0"
-msgid "Works"
-msgstr "Activités"
+msgid "Work"
+msgstr "Travail"
 
 msgctxt "wizard_button:timesheet.enter_lines,init,end:0"
 msgid "Cancel"
