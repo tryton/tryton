@@ -759,10 +759,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires déductibles 6% (2)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_6"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="percentage" eval="-Decimal('6')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81"/>
             <field name="credit_note_base_sign" eval="-1"/>
@@ -838,10 +838,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires déductibles 12% (2)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_12"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="percentage" eval="-Decimal('12')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81"/>
             <field name="credit_note_base_sign" eval="-1"/>
@@ -917,10 +917,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de marchandises intracommunautaires déductibles 21% (2)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_marchandises_intracommunautaires_21"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="percentage" eval="-Decimal('21')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_81"/>
             <field name="credit_note_base_sign" eval="-1"/>
@@ -957,8 +957,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_0"/>
             <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82"/>
             <field name="credit_note_base_sign" eval="-1"/>
@@ -1160,10 +1160,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires 6% déductibles (2)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_6"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="percentage" eval="-Decimal('6')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82"/>
             <field name="credit_note_base_sign" eval="-1"/>
@@ -1239,10 +1239,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires déductibles 12% (2)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_12"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="percentage" eval="-Decimal('12')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82"/>
             <field name="credit_note_base_sign" eval="-1"/>
@@ -1318,10 +1318,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services et biens divers intracommunautaires déductibles 21% (2)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_frais_biens_intracommunautaires_21"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="percentage" eval="-Decimal('21')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_82"/>
             <field name="credit_note_base_sign" eval="-1"/>
@@ -1358,8 +1358,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_0"/>
             <field name="percentage" eval="Decimal('0')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83"/>
             <field name="credit_note_base_sign" eval="-1"/>
@@ -1561,10 +1561,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires déductibles 6% (2)</field>
             <field name="description">T.V.A. 6%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_6"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="percentage" eval="-Decimal('6')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83"/>
             <field name="credit_note_base_sign" eval="-1"/>
@@ -1640,10 +1640,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires déductibles 12% (2)</field>
             <field name="description">T.V.A. 12%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_12"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="percentage" eval="-Decimal('12')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83"/>
             <field name="credit_note_base_sign" eval="-1"/>
@@ -1719,10 +1719,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens d'investissement intracommunautaires déductibles 21% (2)</field>
             <field name="description">T.V.A. 21%</field>
             <field name="parent" ref="tva_achat_investissement_intracommunautaires_21"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="percentage" eval="-Decimal('21')"/>
             <field name="type">percentage</field>
-            <field name="invoice_account" ref="411"/>
-            <field name="credit_note_account" ref="411"/>
+            <field name="invoice_account" ref="451"/>
+            <field name="credit_note_account" ref="451"/>
             <field name="invoice_base_code" ref="tax_code_III_C_86"/>
             <field name="credit_note_base_code" ref="tax_code_III_A_83"/>
             <field name="credit_note_base_sign" eval="-1"/>
