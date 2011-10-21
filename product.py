@@ -8,6 +8,7 @@ class ProductCostHistory(ModelSQL, ModelView):
     'History of Product Cost'
     _name = 'product.product.cost_history'
     _description = __doc__
+    _rec_name = 'date'
 
     template = fields.Many2One('product.template', 'Product')
     date = fields.DateTime('Date')
