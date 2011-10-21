@@ -72,7 +72,7 @@ msgstr "Einheit Einkauf"
 
 msgctxt "field:purchase.configuration,purchase_invoice_method:0"
 msgid "Invoice Method"
-msgstr "Rechnungsstellung"
+msgstr "Rechnungsstellung Einkauf"
 
 msgctxt "field:purchase.configuration,purchase_sequence:0"
 msgid "Purchase Reference Sequence"
