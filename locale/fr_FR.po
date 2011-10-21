@@ -45,10 +45,6 @@ msgctxt "field:stock.forecast,lines:0"
 msgid "Lines"
 msgstr "Lignes"
 
-msgctxt "field:stock.forecast,location:0"
-msgid "Location"
-msgstr "Emplacement"
-
 msgctxt "field:stock.forecast,rec_name:0"
 msgid "Name"
 msgstr "Nom"
@@ -60,6 +56,10 @@ msgstr "État"
 msgctxt "field:stock.forecast,to_date:0"
 msgid "To Date"
 msgstr "Date de fin"
+
+msgctxt "field:stock.forecast,warehouse:0"
+msgid "Location"
+msgstr "Emplacement"
 
 msgctxt "field:stock.forecast.complete.ask,from_date:0"
 msgid "From Date"
@@ -92,6 +92,10 @@ msgstr "Produit"
 msgctxt "field:stock.forecast.line,quantity:0"
 msgid "Quantity"
 msgstr "Quantité"
+
+msgctxt "field:stock.forecast.line,quantity_executed:0"
+msgid "Quantity Executed"
+msgstr "Quantité exécutée"
 
 msgctxt "field:stock.forecast.line,rec_name:0"
 msgid "Name"
