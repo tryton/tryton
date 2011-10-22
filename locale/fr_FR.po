@@ -250,9 +250,9 @@ msgctxt "field:account.invoice,invoice_date:0"
 msgid "Invoice Date"
 msgstr "Date de facturation"
 
-msgctxt "field:account.invoice,invoice_report:0"
+msgctxt "field:account.invoice,invoice_report_cache:0"
 msgid "Invoice Report"
-msgstr "Rapport de facturation"
+msgstr "Rapport de facture"
 
 msgctxt "field:account.invoice,invoice_report_format:0"
 msgid "Invoice Report Format"
