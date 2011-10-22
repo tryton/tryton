@@ -2,7 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:product.category:0"
 msgid "You can not create recursive categories!"
 msgstr "Vous ne pouvez pas créer des catégories récursives !"
@@ -16,16 +15,16 @@ msgstr ""
 "l'objet de mouvements de stock"
 
 msgctxt "error:product.uom:0"
+msgid "Invalid Factor and Rate values!"
+msgstr "Valeurs de facteur et de taux invalides !"
+
+msgctxt "error:product.uom:0"
 msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
 " it and create a new one."
 msgstr ""
 "Si l'UDM n'est pas utilisée, vous pouvez la supprimer, sinon vous pouvez la "
 "désactiver et en créer une nouvelle."
-
-msgctxt "error:product.uom:0"
-msgid "Invalid Factor and Rate values!"
-msgstr "valeurs de facteur et de taux invalides !"
 
 msgctxt "error:product.uom:0"
 msgid "Rate and factor can not be both equal to zero."
@@ -181,7 +180,6 @@ msgstr ""
 "Le coefficient pour la formule:\n"
 "1 (unité de base) = coef (cette unité)"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Catégories"
@@ -206,7 +204,6 @@ msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Unités de mesure"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Catégories"
