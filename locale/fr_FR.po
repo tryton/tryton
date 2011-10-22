@@ -2,32 +2,26 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:stock.move:0"
 msgid "Anglo-Saxon quantity can not be greater than quantity!"
 msgstr "La quantité \"anglo-saxonne\" ne peut être supérieur à la quantité !"
 
-#, fuzzy
 msgctxt "field:product.category,account_cogs:0"
 msgid "Account Cost of Goods Sold"
-msgstr "Compte \"prix du bien vendu\""
+msgstr "Compte \"coût des marchandises vendues\""
 
-#, fuzzy
 msgctxt "field:product.template,account_cogs:0"
 msgid "Account Cost of Good Sold"
-msgstr "Compte \"prix du bien vendu\""
+msgstr "Compte \"coût des marchandises vendues\""
 
-#, fuzzy
 msgctxt "field:product.template,account_cogs_used:0"
 msgid "Account Cost of Goods Sold Used"
-msgstr "Compte \"prix du bien vendu\" utilisé"
+msgstr "Compte \"coût des marchandises vendues\" utilisé"
 
-#, fuzzy
 msgctxt "field:stock.move,anglo_saxon_quantity:0"
 msgid "Anglo-Saxon Quantity"
 msgstr "Quantité \"anglo-saxonne\""
 
-#, fuzzy
 msgctxt "help:product.template,account_cogs:0"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
