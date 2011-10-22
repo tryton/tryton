@@ -43,15 +43,17 @@ msgctxt "field:account.invoice,sale_exception_state:0"
 msgid "Exception State"
 msgstr "État d'exception"
 
-#, fuzzy
 msgctxt "field:account.invoice,sales:0"
 msgid "Sales"
 msgstr "Ventes"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,sale_lines:0"
 msgid "Sale Lines"
 msgstr "Lignes de vente"
+
+msgctxt "field:product.template,delivery_time:0"
+msgid "Delivery Time"
+msgstr "Délai de livraison"
 
 msgctxt "field:product.template,salable:0"
 msgid "Salable"
@@ -393,6 +395,10 @@ msgctxt "field:stock.move,sale_line:0"
 msgid "Sale Line"
 msgstr "Ligne de vente"
 
+msgctxt "help:product.template,delivery_time:0"
+msgid "In number of days"
+msgstr "En nombre de jours"
+
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:0"
 msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
@@ -408,7 +414,7 @@ msgid "Parties associated to Sales"
 msgstr "Tiers associés à des ventes"
 
 msgctxt "model:ir.action,name:act_sale_configuration_form"
-msgid "Sale Configuration"
+msgid "Sales Configuration"
 msgstr "Configuration des ventes"
 
 msgctxt "model:ir.action,name:act_sale_form"
@@ -464,11 +470,11 @@ msgid "Parties associated to Sales"
 msgstr "Tiers associés à des ventes"
 
 msgctxt "model:ir.ui.menu,name:menu_sale"
-msgid "Sale Management"
-msgstr "Gestion des ventes"
+msgid "Sales"
+msgstr "Ventes"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
-msgid "Sale Configuration"
+msgid "Sales Configuration"
 msgstr "Configuration des ventes"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
@@ -488,11 +494,11 @@ msgid "Quotation Sales"
 msgstr "Devis"
 
 msgctxt "model:res.group,name:group_sale"
-msgid "Sale"
+msgid "Sales"
 msgstr "Vente"
 
 msgctxt "model:res.group,name:group_sale_admin"
-msgid "Sale Administrator"
+msgid "Sales Administrator"
 msgstr "Administrateur des ventes"
 
 msgctxt "model:sale.configuration,name:0"
@@ -728,10 +734,6 @@ msgid "VAT:"
 msgstr "TVA :"
 
 msgctxt "selection:account.invoice,sale_exception_state:0"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.invoice,sale_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoré"
 
@@ -739,35 +741,33 @@ msgctxt "selection:account.invoice,sale_exception_state:0"
 msgid "Recreated"
 msgstr "Recréé"
 
-#, fuzzy
+msgctxt "selection:account.invoice,sale_exception_state:0"
+msgid ""
+msgstr ""
+
 msgctxt "selection:sale.configuration,sale_invoice_method:0"
 msgid "Manual"
 msgstr "Manuel"
 
-#, fuzzy
-msgctxt "selection:sale.configuration,sale_invoice_method:0"
-msgid "On Order Confirmed"
-msgstr "À la confirmation de la commande"
-
-#, fuzzy
 msgctxt "selection:sale.configuration,sale_invoice_method:0"
 msgid "On Shipment Sent"
 msgstr "À la livraison"
 
-#, fuzzy
+msgctxt "selection:sale.configuration,sale_invoice_method:0"
+msgid "On Order Confirmed"
+msgstr "À la confirmation"
+
+msgctxt "selection:sale.configuration,sale_shipment_method:0"
+msgid "On Order Confirmed"
+msgstr "À la confirmation"
+
 msgctxt "selection:sale.configuration,sale_shipment_method:0"
 msgid "Manual"
 msgstr "Manuel"
 
-#, fuzzy
 msgctxt "selection:sale.configuration,sale_shipment_method:0"
 msgid "On Invoice Paid"
-msgstr "Au paiement de la facture"
-
-#, fuzzy
-msgctxt "selection:sale.configuration,sale_shipment_method:0"
-msgid "On Order Confirmed"
-msgstr "À la confirmation de la commande"
+msgstr "Au paiement"
 
 msgctxt "selection:sale.line,type:0"
 msgid "Comment"
@@ -786,16 +786,16 @@ msgid "Title"
 msgstr "Titre"
 
 msgctxt "selection:sale.sale,invoice_method:0"
-msgid "Manual"
-msgstr "Manuel"
+msgid "On Shipment Sent"
+msgstr "À la livraison"
 
 msgctxt "selection:sale.sale,invoice_method:0"
 msgid "On Order Confirmed"
-msgstr "A la confirmation de la commande"
+msgstr "A la confirmation"
 
 msgctxt "selection:sale.sale,invoice_method:0"
-msgid "On Shipment Sent"
-msgstr "À la livraison"
+msgid "Manual"
+msgstr "Manuel"
 
 msgctxt "selection:sale.sale,invoice_state:0"
 msgid "Exception"
@@ -814,16 +814,16 @@ msgid "Waiting"
 msgstr "En attente"
 
 msgctxt "selection:sale.sale,shipment_method:0"
-msgid "Manual"
-msgstr "Manuel"
+msgid "On Order Confirmed"
+msgstr "À la confirmation"
 
 msgctxt "selection:sale.sale,shipment_method:0"
 msgid "On Invoice Paid"
-msgstr "Au paiement de la facture"
+msgstr "Au paiement"
 
 msgctxt "selection:sale.sale,shipment_method:0"
-msgid "On Order Confirmed"
-msgstr "À la confirmation de la commande"
+msgid "Manual"
+msgstr "Manuel"
 
 msgctxt "selection:sale.sale,shipment_state:0"
 msgid "Exception"
@@ -862,16 +862,16 @@ msgid "Quotation"
 msgstr "Devis"
 
 msgctxt "selection:stock.move,sale_exception_state:0"
-msgid ""
-msgstr ""
-
-msgctxt "selection:stock.move,sale_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoré"
 
 msgctxt "selection:stock.move,sale_exception_state:0"
 msgid "Recreated"
 msgstr "Recréé"
+
+msgctxt "selection:stock.move,sale_exception_state:0"
+msgid ""
+msgstr ""
 
 msgctxt "view:product.product:0"
 msgid "Customers"
@@ -958,10 +958,6 @@ msgid "Moves"
 msgstr "Mouvements"
 
 msgctxt "view:sale.sale:0"
-msgid "Other Info"
-msgstr "Autre informations"
-
-msgctxt "view:sale.sale:0"
 msgid "Quotation"
 msgstr "Devis"
 
@@ -984,6 +980,10 @@ msgstr "Ignorer l'exception de facturation "
 msgctxt "view:sale.sale:0"
 msgid "Ignore Shipment Exception"
 msgstr "Ignorer l'exception de livraison"
+
+msgctxt "view:sale.sale:0"
+msgid "Other Info"
+msgstr "Autre information"
 
 msgctxt "wizard_button:sale.handle.invoice.exception,init,end:0"
 msgid "Cancel"
