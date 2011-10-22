@@ -1022,6 +1022,10 @@ msgctxt "field:account.period,code:0"
 msgid "Code"
 msgstr "Code"
 
+msgctxt "field:account.period,company:0"
+msgid "Company"
+msgstr "Société"
+
 msgctxt "field:account.period,end_date:0"
 msgid "Ending Date"
 msgstr "Date de Fin"
@@ -1542,7 +1546,7 @@ msgstr "Utilisé pour trier les types de compte"
 
 msgctxt "help:account.move,reference:0"
 msgid "Also known as Folio Number"
-msgstr " "
+msgstr "Aussi connu comme numéro de folio"
 
 msgctxt "help:account.move.line,amount_second_currency:0"
 msgid "The amount expressed in a second currency"
@@ -1967,7 +1971,6 @@ msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
 msgstr "Compte de résultats"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
 msgstr "Comptes"
@@ -1984,7 +1987,6 @@ msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Accounts"
 msgstr "Comptes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
 msgstr "Types de compte"
@@ -2089,7 +2091,6 @@ msgctxt "model:ir.action,name:act_reopen_period"
 msgid "Re-Open Periods"
 msgstr "Ré-ouvrir périodes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Tax Codes"
 msgstr "Codes de taxe"
@@ -2114,7 +2115,6 @@ msgctxt "model:ir.action,name:act_tax_line_form"
 msgid "Tax Lines"
 msgstr "Lignes de taxe"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tax_list"
 msgid "Taxes"
 msgstr "Taxes"
@@ -2217,14 +2217,13 @@ msgid "Account Move Reconciliation"
 msgstr "Réconciliation de mouvements comptables"
 
 msgctxt "model:ir.ui.menu,name:menu_account"
-msgid "Financial Management"
-msgstr "Gestion financière"
+msgid "Financial"
+msgstr "Financier"
 
 msgctxt "model:ir.ui.menu,name:menu_account_configuration"
 msgid "Configuration"
 msgstr "Configuration"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
 msgstr "Comptes"
@@ -2237,7 +2236,6 @@ msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
 msgstr "Comptes"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
 msgstr "Types de compte"
@@ -2366,7 +2364,6 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Rapports"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Tax Codes"
 msgstr "Codes de taxe"
@@ -2383,7 +2380,6 @@ msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Tax Groups"
 msgstr "Groupes de taxes"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_list"
 msgid "Taxes"
 msgstr "Taxes"
@@ -2892,6 +2888,14 @@ msgctxt "view:account.account.create_chart_account.init:0"
 msgid "by selecting a chart of account template."
 msgstr "en selectionant un modèle de plan comptable."
 
+msgctxt "view:account.account.create_chart_account.init:0"
+msgid ""
+"You can now create a chart of account for your company by selecting a chart "
+"of account template."
+msgstr ""
+"Vous pouvez maintenant créer un plan comptable pour votre société en "
+"selection un modèle de plan."
+
 msgctxt "view:account.account.create_chart_account.properties:0"
 msgid "Create Default Properties"
 msgstr "Créer les propriétés par défaut"
@@ -3164,12 +3168,6 @@ msgctxt "view:account.move:0"
 msgid "Account Move"
 msgstr "Mouvement comptable"
 
-#, fuzzy
-msgctxt "view:account.move:0"
-msgid "Account Move Line"
-msgstr "Ligne de mouvement comptable"
-
-#, fuzzy
 msgctxt "view:account.move:0"
 msgid "Account Move Lines"
 msgstr "Lignes de mouvement comptable"
@@ -3178,29 +3176,29 @@ msgctxt "view:account.move:0"
 msgid "Account Moves"
 msgstr "Mouvements comptables"
 
-#, fuzzy
-msgctxt "view:account.move:0"
-msgid "Credit"
-msgstr "Créditer"
-
-#, fuzzy
-msgctxt "view:account.move:0"
-msgid "Debit"
-msgstr "Débit :"
-
-#, fuzzy
-msgctxt "view:account.move:0"
-msgid "General Information"
-msgstr "Informations générales"
-
-#, fuzzy
-msgctxt "view:account.move:0"
-msgid "Optional Information"
-msgstr "Information optionnelle"
-
 msgctxt "view:account.move:0"
 msgid "Post"
 msgstr "Posté"
+
+msgctxt "view:account.move:0"
+msgid "Account Move Line"
+msgstr "Ligne de mouvement comptable"
+
+msgctxt "view:account.move:0"
+msgid "Debit"
+msgstr "Débit"
+
+msgctxt "view:account.move:0"
+msgid "General Information"
+msgstr "Information générale"
+
+msgctxt "view:account.move:0"
+msgid "Credit"
+msgstr "Crédit"
+
+msgctxt "view:account.move:0"
+msgid "Optional Information"
+msgstr "Information optionnelle"
 
 msgctxt "view:account.period:0"
 msgid "Period"
