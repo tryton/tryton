@@ -147,6 +147,10 @@ msgctxt "view:product.category:0"
 msgid "Accounting"
 msgstr "Comptabilité"
 
+msgctxt "view:product.category:0"
+msgid "Taxes"
+msgstr "Taxes"
+
 msgctxt "view:product.product:0"
 msgid "Accounting"
 msgstr "Comptabilité"
