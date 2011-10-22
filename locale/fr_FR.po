@@ -6,31 +6,26 @@ msgctxt "error:project.work:0"
 msgid "You can not create recursive dependencies!"
 msgstr "Vous ne pouvez pas créer des dépendances récursives !"
 
-#, fuzzy
 msgctxt "field:project.allocation,employee:0"
 msgid "Employee"
 msgstr "Employé"
 
-#, fuzzy
 msgctxt "field:project.allocation,percentage:0"
 msgid "Percentage"
 msgstr "Pourcentage"
 
-#, fuzzy
 msgctxt "field:project.allocation,rec_name:0"
 msgid "Name"
 msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:project.allocation,work:0"
 msgid "Work"
-msgstr "Tâche"
+msgstr "Travail"
 
 msgctxt "field:project.predecessor_successor,predecessor:0"
 msgid "Predecessor"
 msgstr "Prédécesseur"
 
-#, fuzzy
 msgctxt "field:project.predecessor_successor,rec_name:0"
 msgid "Name"
 msgstr "Nom"
@@ -123,7 +118,6 @@ msgctxt "field:project.work,predecessors:0"
 msgid "Predecessors"
 msgstr "Prédécesseurs"
 
-#, fuzzy
 msgctxt "field:project.work,requests:0"
 msgid "Requests"
 msgstr "Demandes"
@@ -144,10 +138,9 @@ msgctxt "model:project.predecessor_successor,name:0"
 msgid "Predecessor - Successor"
 msgstr "Prédécesseur - Successeur"
 
-#, fuzzy
 msgctxt "model:res.request.link,name:request_link_work"
 msgid "Work"
-msgstr "Tâche"
+msgstr "Travail"
 
 msgctxt "view:project.allocation:0"
 msgid "Allocation"
@@ -165,7 +158,6 @@ msgctxt "view:project.work:0"
 msgid "Plan"
 msgstr "Planification"
 
-#, fuzzy
 msgctxt "view:project.work:0"
 msgid "Requests"
 msgstr "Demandes"
