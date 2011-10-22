@@ -207,6 +207,10 @@ msgctxt "model:analytic_account.line,name:0"
 msgid "Analytic Line"
 msgstr "Ligne analytique"
 
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Analytic Accounts"
+msgstr "Comptes analytiques"
+
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Analytic Accounts"
 msgstr "Comptes analytiques"
@@ -226,6 +230,10 @@ msgstr "Ouvrir le compte"
 msgctxt "model:ir.action,name:act_open_chart_account"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Ouvrir le plan comptable analytique"
+
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Analytic Accounts"
+msgstr "Comptes analytiques"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Analytic Accounts"
@@ -279,7 +287,6 @@ msgctxt "view:account.move.line:0"
 msgid "Analytic"
 msgstr "Analytique"
 
-#, fuzzy
 msgctxt "view:account.move:0"
 msgid "Analytic"
 msgstr "Analytique"
@@ -293,16 +300,16 @@ msgid "Open Chart of Analytic Accounts"
 msgstr "Ouvrir le plan comptable analytique"
 
 msgctxt "view:analytic_account.account:0"
+msgid "General Information"
+msgstr "Information générale"
+
+msgctxt "view:analytic_account.account:0"
 msgid "Analytic Account"
 msgstr "Compte analytique"
 
 msgctxt "view:analytic_account.account:0"
 msgid "Analytic Accounts"
 msgstr "Comptes analytiques"
-
-msgctxt "view:analytic_account.account:0"
-msgid "General Information"
-msgstr "Informations générales"
 
 msgctxt "view:analytic_account.account:0"
 msgid "Notes"
@@ -318,7 +325,7 @@ msgstr "Lignes analytiques"
 
 msgctxt "view:analytic_account.line:0"
 msgid "General Information"
-msgstr "Informations générales"
+msgstr "Information générale"
 
 msgctxt "wizard_button:analytic_account.account.open_chart_account,init,end:0"
 msgid "Cancel"
