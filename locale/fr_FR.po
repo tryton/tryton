@@ -35,6 +35,10 @@ msgctxt "field:project.work,rec_name:0"
 msgid "Name"
 msgstr "Nom"
 
+msgctxt "field:project.work,sequence:0"
+msgid "Sequence"
+msgstr "Séquence"
+
 msgctxt "field:project.work,state:0"
 msgid "State"
 msgstr "État"
@@ -49,11 +53,7 @@ msgstr "Type"
 
 msgctxt "field:project.work,work:0"
 msgid "Work"
-msgstr "Activité"
-
-msgctxt "field:timesheet.work,sequence:0"
-msgid "Sequence"
-msgstr "Séquence"
+msgstr "Travail"
 
 msgctxt "field:timesheet.work,timesheet_lines:0"
 msgid "Timesheet Lines"
@@ -81,24 +81,23 @@ msgstr "Tâches"
 
 msgctxt "model:ir.action,name:act_work_form"
 msgid "Works"
-msgstr "Activités"
+msgstr "Travaux"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Activités"
+msgstr "Efforts de travail"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Activités"
+msgstr "Efforts de travail"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuration"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
-msgid "Project Management"
-msgstr "Gestion de projet"
+msgid "Project"
+msgstr "Projets"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
@@ -112,15 +111,13 @@ msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
 msgstr "Tâches"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Activités"
+msgstr "Efforts de travail"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Activités"
+msgstr "Efforts de travail"
 
 msgctxt "model:project.work,name:0"
 msgid "Work Effort"
@@ -147,6 +144,10 @@ msgid "Task"
 msgstr "Tâche"
 
 msgctxt "view:project.work:0"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "view:project.work:0"
 msgid "Children"
 msgstr "Enfants"
 
@@ -167,21 +168,17 @@ msgid "Timesheet"
 msgstr "Feuille de présence"
 
 msgctxt "view:project.work:0"
-msgid "Works Efforts"
-msgstr "Activités"
-
-msgctxt "view:project.work:0"
-msgid "Other Info"
-msgstr "Autre info"
-
-msgctxt "view:project.work:0"
-msgid "Work"
-msgstr "Activités"
-
-msgctxt "view:project.work:0"
 msgid "Work Efforts"
 msgstr "Activités"
 
 msgctxt "view:project.work:0"
 msgid "Works"
-msgstr "Activités"
+msgstr "Travaux"
+
+msgctxt "view:project.work:0"
+msgid "Works Efforts"
+msgstr "Efforts de travail"
+
+msgctxt "view:project.work:0"
+msgid "Work"
+msgstr "Travail"
