@@ -410,24 +410,20 @@ msgstr "UDM"
 
 msgctxt "field:stock.period,caches:0"
 msgid "Caches"
-msgstr ""
+msgstr "Caches"
 
-#, fuzzy
 msgctxt "field:stock.period,company:0"
 msgid "Company"
 msgstr "Société"
 
-#, fuzzy
 msgctxt "field:stock.period,date:0"
 msgid "Date"
-msgstr "date"
+msgstr "Date"
 
-#, fuzzy
 msgctxt "field:stock.period,rec_name:0"
 msgid "Name"
-msgstr "Nom de la pièce jointe"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:stock.period,state:0"
 msgid "State"
 msgstr "État"
@@ -436,25 +432,21 @@ msgctxt "field:stock.period.cache,internal_quantity:0"
 msgid "Internal Quantity"
 msgstr "Quantité interne"
 
-#, fuzzy
 msgctxt "field:stock.period.cache,location:0"
 msgid "Location"
 msgstr "Emplacement"
 
-#, fuzzy
 msgctxt "field:stock.period.cache,period:0"
 msgid "Period"
 msgstr "Période"
 
-#, fuzzy
 msgctxt "field:stock.period.cache,product:0"
 msgid "Product"
 msgstr "Produit"
 
-#, fuzzy
 msgctxt "field:stock.period.cache,rec_name:0"
 msgid "Name"
-msgstr "Nom de la pièce jointe"
+msgstr "Nom"
 
 msgctxt "field:stock.product_stock_date.init,forecast_date:0"
 msgid "At Date"
@@ -463,6 +455,10 @@ msgstr "À la date"
 msgctxt "field:stock.shipment.in,code:0"
 msgid "Code"
 msgstr "Code"
+
+msgctxt "field:stock.shipment.in,company:0"
+msgid "Company"
+msgstr "Société"
 
 msgctxt "field:stock.shipment.in,contact_address:0"
 msgid "Contact Address"
@@ -512,6 +508,10 @@ msgctxt "field:stock.shipment.in.return,code:0"
 msgid "Code"
 msgstr "Code"
 
+msgctxt "field:stock.shipment.in.return,company:0"
+msgid "Company"
+msgstr "Société"
+
 msgctxt "field:stock.shipment.in.return,effective_date:0"
 msgid "Effective Date"
 msgstr "Date effective"
@@ -552,6 +552,10 @@ msgctxt "field:stock.shipment.internal,code:0"
 msgid "Code"
 msgstr "Code"
 
+msgctxt "field:stock.shipment.internal,company:0"
+msgid "Company"
+msgstr "Société"
+
 msgctxt "field:stock.shipment.internal,effective_date:0"
 msgid "Effective Date"
 msgstr "Date effective"
@@ -591,6 +595,10 @@ msgstr "Mouvements"
 msgctxt "field:stock.shipment.out,code:0"
 msgid "Code"
 msgstr "Code"
+
+msgctxt "field:stock.shipment.out,company:0"
+msgid "Company"
+msgstr "Société"
 
 msgctxt "field:stock.shipment.out,customer:0"
 msgid "Customer"
@@ -643,6 +651,10 @@ msgstr "Mouvements internes"
 msgctxt "field:stock.shipment.out.return,code:0"
 msgid "Code"
 msgstr "Code"
+
+msgctxt "field:stock.shipment.out.return,company:0"
+msgid "Company"
+msgstr "Société"
 
 msgctxt "field:stock.shipment.out.return,customer:0"
 msgid "Customer"
@@ -756,7 +768,6 @@ msgctxt "model:ir.action,name:act_move_form_supp_proceed"
 msgid "Moves from Suppliers Waiting Arrival"
 msgstr "Mouvement fournisseur en attente de réception"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
 msgstr "Périodes"
@@ -764,6 +775,10 @@ msgstr "Périodes"
 msgctxt "model:ir.action,name:act_product_by_location"
 msgid "Products by Locations"
 msgstr "Produits par emplacements"
+
+msgctxt "model:ir.action,name:act_shipment_in_draft"
+msgid "Draft Supplier Shipment"
+msgstr "Expédition fournisseur en brouillon"
 
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
@@ -949,7 +964,6 @@ msgctxt "model:ir.ui.menu,name:menu_move_form_supp_proceed"
 msgid "Moves from Suppliers Waiting Arrival"
 msgstr "Mouvements fournisseur en attente de réception"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
 msgstr "Périodes"
@@ -957,6 +971,10 @@ msgstr "Périodes"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Rapports"
+
+msgctxt "model:ir.ui.menu,name:menu_shipment_in_draft"
+msgid "Draft Supplier Shipment"
+msgstr "Expédition fournisseur en brouillon"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
@@ -1007,8 +1025,8 @@ msgid "Customer Shipments Waiting Assignation"
 msgstr "Expéditions client en attente d'assignation"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
-msgid "Inventory Management"
-msgstr "Gestion des stocks"
+msgid "Inventory & Stock"
+msgstr "Stocks & inventaires"
 
 msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Stock Configuration"
@@ -1042,7 +1060,6 @@ msgctxt "model:stock.location,name:0"
 msgid "Stock Location"
 msgstr "Lieu de Stockage"
 
-#, fuzzy
 msgctxt "model:stock.location,name:location_customer"
 msgid "Customer"
 msgstr "Client"
@@ -1051,7 +1068,6 @@ msgctxt "model:stock.location,name:location_input"
 msgid "Input Zone"
 msgstr "Zone d'entrée"
 
-#, fuzzy
 msgctxt "model:stock.location,name:location_lost_found"
 msgid "Lost and Found"
 msgstr "Pertes et surplus"
@@ -1064,12 +1080,10 @@ msgctxt "model:stock.location,name:location_storage"
 msgid "Storage Zone"
 msgstr "Zone de stockage"
 
-#, fuzzy
 msgctxt "model:stock.location,name:location_supplier"
 msgid "Supplier"
 msgstr "Fournisseur"
 
-#, fuzzy
 msgctxt "model:stock.location,name:location_warehouse"
 msgid "Warehouse"
 msgstr "Entrepôt"
@@ -1094,6 +1108,10 @@ msgid ""
 "    It is used to store cached computation of stock quantities.\n"
 "    "
 msgstr ""
+"\n"
+"Cache de période de stock\n"
+"\n"
+"C'est utilisé pour stocker en cache les calculs de quantités de stock."
 
 msgctxt "model:stock.product_stock_date.init,name:0"
 msgid "Compute stock quantities"
@@ -1587,12 +1605,10 @@ msgctxt "selection:stock.move,state:0"
 msgid "Draft"
 msgstr "Brouillon"
 
-#, fuzzy
 msgctxt "selection:stock.period,state:0"
 msgid "Closed"
 msgstr "Fermé"
 
-#, fuzzy
 msgctxt "selection:stock.period,state:0"
 msgid "Draft"
 msgstr "Brouillon"
@@ -1781,22 +1797,18 @@ msgctxt "view:stock.period.cache:0"
 msgid "Period Caches"
 msgstr "Caches des périodes"
 
-#, fuzzy
 msgctxt "view:stock.period:0"
 msgid "Close"
 msgstr "Fermer"
 
-#, fuzzy
 msgctxt "view:stock.period:0"
 msgid "Draft"
 msgstr "Brouillon"
 
-#, fuzzy
 msgctxt "view:stock.period:0"
 msgid "Period"
 msgstr "Période"
 
-#, fuzzy
 msgctxt "view:stock.period:0"
 msgid "Periods"
 msgstr "Périodes"
