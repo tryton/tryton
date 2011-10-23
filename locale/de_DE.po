@@ -671,14 +671,6 @@ msgid "Waiting Shipment Invoice"
 msgstr "Lieferposten Rechnung Wartend"
 
 msgctxt "odt:sale.sale:0"
-msgid "Taxes"
-msgstr "Steuern"
-
-msgctxt "odt:sale.sale:0"
-msgid "Taxes:"
-msgstr "Steuern:"
-
-msgctxt "odt:sale.sale:0"
 msgid "Amount"
 msgstr "Betrag"
 
@@ -719,6 +711,14 @@ msgid "Sale Order N°:"
 msgstr "Auftrag Nr.:"
 
 msgctxt "odt:sale.sale:0"
+msgid "Taxes"
+msgstr "Steuern"
+
+msgctxt "odt:sale.sale:0"
+msgid "Taxes:"
+msgstr "Steuern:"
+
+msgctxt "odt:sale.sale:0"
 msgid "Total (excl. taxes):"
 msgstr "Netto:"
 
@@ -739,16 +739,16 @@ msgid "VAT:"
 msgstr "USt:"
 
 msgctxt "selection:account.invoice,sale_exception_state:0"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.invoice,sale_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoriert"
 
 msgctxt "selection:account.invoice,sale_exception_state:0"
 msgid "Recreated"
 msgstr "Nachgebildet"
-
-msgctxt "selection:account.invoice,sale_exception_state:0"
-msgid ""
-msgstr ""
 
 msgctxt "selection:sale.configuration,sale_invoice_method:0"
 msgid "Manual"
@@ -867,16 +867,16 @@ msgid "Quotation"
 msgstr "Angebot"
 
 msgctxt "selection:stock.move,sale_exception_state:0"
+msgid ""
+msgstr ""
+
+msgctxt "selection:stock.move,sale_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoriert"
 
 msgctxt "selection:stock.move,sale_exception_state:0"
 msgid "Recreated"
 msgstr "Nachgebildet"
-
-msgctxt "selection:stock.move,sale_exception_state:0"
-msgid ""
-msgstr ""
 
 msgctxt "view:product.product:0"
 msgid "Customers"
@@ -963,6 +963,10 @@ msgid "Handle Shipment Exception"
 msgstr "Liefervorbehalt bearbeiten"
 
 msgctxt "view:sale.sale:0"
+msgid "Ignore Invoice Exception"
+msgstr "Rechnungsvorbehalt ignorieren"
+
+msgctxt "view:sale.sale:0"
 msgid "Invoices"
 msgstr "Rechnungen"
 
@@ -993,10 +997,6 @@ msgstr "Verkäufe"
 msgctxt "view:sale.sale:0"
 msgid "Shipments"
 msgstr "Lieferposten"
-
-msgctxt "view:sale.sale:0"
-msgid "Ignore Invoice Exception"
-msgstr "Rechnungsvorbehalt ignorieren"
 
 msgctxt "wizard_button:sale.handle.invoice.exception,init,end:0"
 msgid "Cancel"
