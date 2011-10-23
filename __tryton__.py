@@ -54,9 +54,12 @@ prix de revient du produit concerné (si la méthode de coût est FIFO).
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
+        'locale/nl_NL.po',
+        'locale/ru_RU.po',
     ],
 }
