@@ -31,16 +31,16 @@ msgid "Create Inventories Init"
 msgstr "Inicio de Creación de Inventarios"
 
 msgctxt "view:stock.inventory.create.init:0"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "view:stock.inventory.create.init:0"
 msgid "Create Inventories"
 msgstr "Crear Inventarios"
 
 msgctxt "view:stock.inventory.create.init:0"
 msgid "Locations"
 msgstr "Lugares"
-
-msgctxt "view:stock.inventory.create.init:0"
-msgid "Categories"
-msgstr "Categorías"
 
 msgctxt "view:stock.inventory.create.init:0"
 msgid "Products"

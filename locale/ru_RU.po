@@ -2,54 +2,52 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:stock.inventory.create.init,company:0"
 msgid "Company"
-msgstr "Société"
+msgstr "Учет.орг."
 
+#, fuzzy
 msgctxt "field:stock.inventory.create.init,date:0"
 msgid "Date"
-msgstr "Date"
+msgstr "Дата"
 
+#, fuzzy
 msgctxt "field:stock.inventory.create.init,locations:0"
 msgid "Locations"
-msgstr "Emplacements"
+msgstr "Местоположения"
 
+#, fuzzy
 msgctxt "field:stock.inventory.create.init,lost_found:0"
 msgid "Lost and Found"
-msgstr "Pertes et surplus"
+msgstr "Утраченный и обретенный"
 
 msgctxt "model:ir.action,name:wizard_create_inventory"
 msgid "Create Inventories"
-msgstr "Créer des inventaires"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
-msgstr "Créer des inventaires"
+msgstr ""
 
 msgctxt "model:stock.inventory.create.init,name:0"
 msgid "Create Inventories Init"
-msgstr "Créer les inventaires - Init"
-
-msgctxt "view:stock.inventory.create.init:0"
-msgid "Categories"
-msgstr "Catégories"
+msgstr ""
 
 msgctxt "view:stock.inventory.create.init:0"
 msgid "Create Inventories"
-msgstr "Créer des inventaires"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.inventory.create.init:0"
 msgid "Locations"
-msgstr "Emplacements"
-
-msgctxt "view:stock.inventory.create.init:0"
-msgid "Products"
-msgstr "Produits"
+msgstr "Местоположения"
 
 msgctxt "wizard_button:stock.inventory.create,init,create:0"
 msgid "Create"
-msgstr "Créer"
+msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:stock.inventory.create,init,end:0"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Отменить"
