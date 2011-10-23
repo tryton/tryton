@@ -270,6 +270,11 @@ msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Адреси"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Категории"
+
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Категории"
@@ -306,6 +311,11 @@ msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr "Адреси"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Категории"
+
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Категории"
@@ -314,8 +324,9 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Конфигурация"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party Management"
+msgid "Party"
 msgstr "Управление на партньор"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"

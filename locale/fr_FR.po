@@ -7,10 +7,6 @@ msgid "You can not modify the party of an address!"
 msgstr "Vous ne pouvez pas modifier le tiers d'une addresse !"
 
 msgctxt "error:party.category:0"
-msgid "You can not use \" / \" in name field!"
-msgstr "Vous ne pouvez pas utiliser \" / \" dans le champ nom !"
-
-msgctxt "error:party.category:0"
 msgid "The name of a party category must be unique by parent!"
 msgstr ""
 "Le nom d'une catégorie de tiers doit être unique pour un même parent !"
@@ -18,6 +14,10 @@ msgstr ""
 msgctxt "error:party.category:0"
 msgid "You can not create recursive categories!"
 msgstr "Vous ne pouvez pas créer des catégories récursives !"
+
+msgctxt "error:party.category:0"
+msgid "You can not use \" / \" in name field!"
+msgstr "Vous ne pouvez pas utiliser \" / \" dans le champ nom !"
 
 msgctxt "error:party.check_vies:0"
 msgid "The VIES service is unavailable, try again later."
@@ -486,12 +486,12 @@ msgid "Party"
 msgstr "Tiers"
 
 msgctxt "view:party.party:0"
-msgid "VAT"
-msgstr "TVA"
-
-msgctxt "view:party.party:0"
 msgid "Properties"
 msgstr "Propriétés"
+
+msgctxt "view:party.party:0"
+msgid "VAT"
+msgstr "TVA"
 
 msgctxt "view:party.party:0"
 msgid "_Accounting"

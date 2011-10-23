@@ -110,6 +110,11 @@ msgctxt "field:party.check_vies.check,parties_succeed:0"
 msgid "Parties Succeed"
 msgstr "Controle relatie gelukt"
 
+#, fuzzy
+msgctxt "field:party.configuration,party_lang:0"
+msgid "Party Language"
+msgstr "Taal relatie"
+
 msgctxt "field:party.configuration,party_sequence:0"
 msgid "Party Sequence"
 msgstr "Relatiecode"
@@ -250,6 +255,10 @@ msgctxt "field:party.party-party.category,rec_name:0"
 msgid "Name"
 msgstr "Naam"
 
+msgctxt "help:party.configuration,party_lang:0"
+msgid "The value set on this field will preset the language on new parties"
+msgstr ""
+
 msgctxt "help:party.party,vat_country:0"
 msgid "Setting VAT country will enable validation of the VAT number."
 msgstr "De keuze van een BTW land maakt controle van het BTW nummer mogelijk."
@@ -261,6 +270,11 @@ msgstr "Nummer omzetbelasting"
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Adressen"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorieën"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
@@ -298,6 +312,11 @@ msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr "Adressen"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorieën"
+
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Categorieën"
@@ -306,8 +325,9 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Instellingen"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party Management"
+msgid "Party"
 msgstr "Relatiebeheer"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"

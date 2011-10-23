@@ -7,8 +7,16 @@ msgid "You can not modify the party of an address!"
 msgstr "No puede modificar el tercero de una dirección"
 
 msgctxt "error:party.category:0"
+msgid "The name of a party category must be unique by parent!"
+msgstr ""
+
+msgctxt "error:party.category:0"
 msgid "You can not create recursive categories!"
 msgstr "No puede crear categorías recursivas"
+
+msgctxt "error:party.category:0"
+msgid "You can not use \" / \" in name field!"
+msgstr ""
 
 msgctxt "error:party.check_vies:0"
 msgid "The VIES service is unavailable, try again later."
@@ -39,7 +47,7 @@ msgid "Country"
 msgstr "País"
 
 msgctxt "field:party.address,full_address:0"
-msgid ""
+msgid "Full Address"
 msgstr ""
 
 msgctxt "field:party.address,name:0"
@@ -101,6 +109,20 @@ msgstr "Terceros rechazados"
 msgctxt "field:party.check_vies.check,parties_succeed:0"
 msgid "Parties Succeed"
 msgstr "Terceros aceptados"
+
+#, fuzzy
+msgctxt "field:party.configuration,party_lang:0"
+msgid "Party Language"
+msgstr "Idioma del tercero"
+
+msgctxt "field:party.configuration,party_sequence:0"
+msgid "Party Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.configuration,rec_name:0"
+msgid "Name"
+msgstr "Nombre del campo"
 
 msgctxt "field:party.contact_mechanism,active:0"
 msgid "Active"
@@ -183,7 +205,7 @@ msgid "Fax"
 msgstr "Fax"
 
 msgctxt "field:party.party,full_name:0"
-msgid ""
+msgid "Full Name"
 msgstr ""
 
 msgctxt "field:party.party,lang:0"
@@ -234,6 +256,10 @@ msgctxt "field:party.party-party.category,rec_name:0"
 msgid "Name"
 msgstr "Nombre"
 
+msgctxt "help:party.configuration,party_lang:0"
+msgid "The value set on this field will preset the language on new parties"
+msgstr ""
+
 msgctxt "help:party.party,vat_country:0"
 msgid "Setting VAT country will enable validation of the VAT number."
 msgstr ""
@@ -248,6 +274,11 @@ msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Direcciones"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorías"
+
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorías"
@@ -255,6 +286,10 @@ msgstr "Categorías"
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Terceros por categoría"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Party Configuration"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
@@ -280,6 +315,11 @@ msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr "Direcciones"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorías"
+
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Categorías"
@@ -288,9 +328,14 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuración"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party Management"
+msgid "Party"
 msgstr "Gestión de terceros"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Party Configuration"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
@@ -311,6 +356,10 @@ msgstr "Comprobación VIES - Comprobar"
 msgctxt "model:party.check_vies.no_check,name:0"
 msgid "Check VIES - No Check"
 msgstr "Comprobación VIES - No comprobar"
+
+msgctxt "model:party.configuration,name:0"
+msgid "Party Configuration"
+msgstr ""
 
 msgctxt "model:party.contact_mechanism,name:0"
 msgid "Contact Mechanism"
@@ -368,134 +417,6 @@ msgctxt "selection:party.contact_mechanism,type:0"
 msgid "Website"
 msgstr "Sitio Web"
 
-msgctxt "selection:party.party,vat_country:0"
-msgid "AL"
-msgstr "AL"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "AT"
-msgstr "AT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "BE"
-msgstr "BE"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "BG"
-msgstr "BG"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "CY"
-msgstr "CY"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "CZ"
-msgstr "CZ"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "DE"
-msgstr "DE"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "DK"
-msgstr "DK"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "EE"
-msgstr "EE"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "EL"
-msgstr "EL"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "ES"
-msgstr "ES"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "FI"
-msgstr "FI"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "FR"
-msgstr "FR"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "GB"
-msgstr "GB"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "GR"
-msgstr "GR"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "HU"
-msgstr "HU"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "IE"
-msgstr "IE"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "IT"
-msgstr "IT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "LT"
-msgstr "LT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "LU"
-msgstr "LU"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "LV"
-msgstr "LV"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "MT"
-msgstr "MT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "NL"
-msgstr "NL"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "PL"
-msgstr "PL"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "PT"
-msgstr "PT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "RO"
-msgstr "RO"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SE"
-msgstr "SE"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SI"
-msgstr "SI"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SK"
-msgstr "SK"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SM"
-msgstr "SM"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "UA"
-msgstr "UA"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "UK"
-msgstr "UK"
-
 msgctxt "view:party.address:0"
 msgid "Addresses"
 msgstr "Direcciones"
@@ -528,6 +449,10 @@ msgctxt "view:party.check_vies.no_check:0"
 msgid "You must have a recent version of \"vatnumber\" installed!"
 msgstr "Necesita instalar una versión más actualizada de «vatnumber»"
 
+msgctxt "view:party.configuration:0"
+msgid "Party Configuration"
+msgstr ""
+
 msgctxt "view:party.contact_mechanism:0"
 msgid "Contact Mechanism"
 msgstr "Médio de contacto"
@@ -535,6 +460,10 @@ msgstr "Médio de contacto"
 msgctxt "view:party.contact_mechanism:0"
 msgid "Contact Mechanisms"
 msgstr "Médios de contacto"
+
+msgctxt "view:party.party:0"
+msgid "Account"
+msgstr "Cuenta"
 
 msgctxt "view:party.party:0"
 msgid "Accounting"
@@ -567,10 +496,6 @@ msgstr "Tercero"
 msgctxt "view:party.party:0"
 msgid "VAT"
 msgstr "NIF"
-
-msgctxt "view:party.party:0"
-msgid "Account"
-msgstr "Cuenta"
 
 msgctxt "view:party.party:0"
 msgid "_General"

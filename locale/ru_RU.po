@@ -7,8 +7,16 @@ msgid "You can not modify the party of an address!"
 msgstr ""
 
 msgctxt "error:party.category:0"
+msgid "The name of a party category must be unique by parent!"
+msgstr ""
+
+msgctxt "error:party.category:0"
 msgid "You can not create recursive categories!"
 msgstr "Вы не можете создавать рекурсивные категории!"
+
+msgctxt "error:party.category:0"
+msgid "You can not use \" / \" in name field!"
+msgstr ""
 
 msgctxt "error:party.check_vies:0"
 msgid "The VIES service is unavailable, try again later."
@@ -23,24 +31,12 @@ msgid "Invalid VAT number!"
 msgstr "Ошибка в номере ИНН"
 
 msgctxt "error:party.party:0"
-msgid "The INN of the party must be unique!"
-msgstr "ИНН должно быть уникальным"
-
-msgctxt "error:party.party:0"
-msgid "The Name of the party must be unique!"
-msgstr ""
-
-msgctxt "error:party.party:0"
 msgid "The code of the party must be unique!"
 msgstr "Код контрагента должен быть уникальным"
 
 msgctxt "field:party.address,active:0"
 msgid "Active"
 msgstr "Активный"
-
-msgctxt "field:party.address,area_residence:0"
-msgid "Area of residence"
-msgstr "Район проживания"
 
 msgctxt "field:party.address,city:0"
 msgid "City"
@@ -50,12 +46,9 @@ msgctxt "field:party.address,country:0"
 msgid "Country"
 msgstr "Страна"
 
-msgctxt "field:party.address,date_end:0"
-msgid "Date End"
-msgstr "Дата окончания"
-
+#, fuzzy
 msgctxt "field:party.address,full_address:0"
-msgid "Full address"
+msgid "Full Address"
 msgstr "Полный адрес"
 
 msgctxt "field:party.address,name:0"
@@ -118,6 +111,10 @@ msgctxt "field:party.check_vies.check,parties_succeed:0"
 msgid "Parties Succeed"
 msgstr ""
 
+msgctxt "field:party.configuration,party_lang:0"
+msgid "Party Language"
+msgstr ""
+
 msgctxt "field:party.configuration,party_sequence:0"
 msgid "Party Sequence"
 msgstr ""
@@ -155,7 +152,7 @@ msgid "Sequence"
 msgstr "Последовательность"
 
 msgctxt "field:party.contact_mechanism,sip:0"
-msgid "Sip phone"
+msgid "SIP"
 msgstr ""
 
 msgctxt "field:party.contact_mechanism,skype:0"
@@ -182,14 +179,6 @@ msgctxt "field:party.party,addresses:0"
 msgid "Addresses"
 msgstr "Адреса"
 
-msgctxt "field:party.party,banks:0"
-msgid "Accounts in Banks"
-msgstr "Счета в Банках"
-
-msgctxt "field:party.party,birthday:0"
-msgid "Birthday"
-msgstr "День рождения"
-
 msgctxt "field:party.party,categories:0"
 msgid "Categories"
 msgstr "Категория"
@@ -206,18 +195,6 @@ msgctxt "field:party.party,contact_mechanisms:0"
 msgid "Contact Mechanisms"
 msgstr "Контактный способы"
 
-msgctxt "field:party.party,contacts:0"
-msgid "Contact"
-msgstr "Контактое лицо"
-
-msgctxt "field:party.party,customer:0"
-msgid "Customer"
-msgstr "Заказчик"
-
-msgctxt "field:party.party,document:0"
-msgid "Legal Documents"
-msgstr "Рег.документ"
-
 msgctxt "field:party.party,email:0"
 msgid "E-Mail"
 msgstr "Эл.почта"
@@ -230,77 +207,26 @@ msgctxt "field:party.party,full_name:0"
 msgid "Full Name"
 msgstr "Полное наименование"
 
-msgctxt "field:party.party,id_1c:0"
-msgid "ID import from 1C"
-msgstr ""
-
-msgctxt "field:party.party,individual:0"
-msgid "Individual"
-msgstr "Физ.лицо"
-
-msgctxt "field:party.party,kpp_number:0"
-msgid "Reason code setting"
-msgstr "КПП"
-
 msgctxt "field:party.party,lang:0"
 msgid "Language"
 msgstr "Язык"
-
-msgctxt "field:party.party,legal_form:0"
-msgid "Legal Form"
-msgstr ""
 
 msgctxt "field:party.party,mobile:0"
 msgid "Mobile"
 msgstr "сот.телефон"
 
+#, fuzzy
 msgctxt "field:party.party,name:0"
-msgid "Full Name"
+msgid "Name"
 msgstr "Наименование"
-
-msgctxt "field:party.party,note:0"
-msgid "Notes"
-msgstr "Комментарии"
-
-msgctxt "field:party.party,ogrn_number:0"
-msgid "OGRN registration number"
-msgstr "ОГРН"
-
-msgctxt "field:party.party,okpo_number:0"
-msgid "OKPO registration number"
-msgstr "ОКПО"
-
-msgctxt "field:party.party,okved_number:0"
-msgid "OKVED registration number"
-msgstr "ОКВЭД"
 
 msgctxt "field:party.party,phone:0"
 msgid "Phone"
 msgstr "Телефон"
 
-msgctxt "field:party.party,photo:0"
-msgid "Person Photo or Logo"
-msgstr "Фотография или Логотип"
-
-msgctxt "field:party.party,photo_file:0"
-msgid "Person Photo or Logo"
-msgstr "Фотография или Логотип"
-
 msgctxt "field:party.party,rec_name:0"
 msgid "Name"
 msgstr "Наименование"
-
-msgctxt "field:party.party,shortcut:0"
-msgid "ShortCut"
-msgstr "Кратко"
-
-msgctxt "field:party.party,shortname:0"
-msgid "Short Name"
-msgstr "Кратко"
-
-msgctxt "field:party.party,supplier:0"
-msgid "Supplier"
-msgstr "Поставщик"
 
 msgctxt "field:party.party,vat_code:0"
 msgid "VAT Code"
@@ -330,29 +256,9 @@ msgctxt "field:party.party-party.category,rec_name:0"
 msgid "Name"
 msgstr "Наименование"
 
-msgctxt "field:party.person,birthday:0"
-msgid "Birthday"
-msgstr "День рождения"
-
-msgctxt "field:party.person,party:0"
-msgid "Party"
-msgstr "Контрагент"
-
-msgctxt "field:party.person,rec_name:0"
-msgid "Name"
-msgstr "Наименование"
-
-msgctxt "help:party.party,customer:0"
-msgid "Check this box if the party is a Cusmomer."
-msgstr "Отметьте, если это заказчик"
-
-msgctxt "help:party.party,individual:0"
-msgid "Check this box if the party is a Individual."
-msgstr "Отметьте, если это физические лицо"
-
-msgctxt "help:party.party,supplier:0"
-msgid "Check this box if the party is a Supplier."
-msgstr "Отметьте, если это поставщик"
+msgctxt "help:party.configuration,party_lang:0"
+msgid "The value set on this field will preset the language on new parties"
+msgstr ""
 
 msgctxt "help:party.party,vat_country:0"
 msgid "Setting VAT country will enable validation of the VAT number."
@@ -365,6 +271,11 @@ msgstr "ИНН"
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Адреса"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Категория"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
@@ -402,6 +313,11 @@ msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr "Адреса"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Категория"
+
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Категория"
@@ -410,8 +326,9 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Конфигурация"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party Management"
+msgid "Party"
 msgstr "Организации"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -442,6 +359,11 @@ msgctxt "model:party.configuration,name:0"
 msgid "Party Configuration"
 msgstr "Настройка контрагентов"
 
+#, fuzzy
+msgctxt "model:party.contact_mechanism,name:0"
+msgid "Contact Mechanism"
+msgstr "Контактный способ"
+
 msgctxt "model:party.party,name:0"
 msgid "Party"
 msgstr "Контрагент"
@@ -461,10 +383,6 @@ msgstr "Эл.почта"
 msgctxt "selection:party.contact_mechanism,type:0"
 msgid "Fax"
 msgstr "Факс"
-
-msgctxt "selection:party.contact_mechanism,type:0"
-msgid "Home Phone"
-msgstr "Домашний телефон"
 
 msgctxt "selection:party.contact_mechanism,type:0"
 msgid "IRC"
@@ -497,154 +415,6 @@ msgstr ""
 msgctxt "selection:party.contact_mechanism,type:0"
 msgid "Website"
 msgstr "Сайт"
-
-msgctxt "selection:party.contact_mechanism,type:0"
-msgid "Work Phone"
-msgstr "Рабочий телефон"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid ""
-msgstr "Резервный счет"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "AL"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "AT"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "BE"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "BG"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "CL"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "CO"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "CY"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "CZ"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "DE"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "DK"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "EE"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "EL"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "ES"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "FI"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "FR"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "GB"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "GR"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "HU"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "IE"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "IT"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "LT"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "LU"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "LV"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "MT"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "NL"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "PL"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "PT"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "RO"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "RU"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SE"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SI"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SK"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SM"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "UA"
-msgstr ""
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "UK"
-msgstr ""
 
 msgctxt "view:party.address:0"
 msgid "Addresses"
@@ -699,8 +469,16 @@ msgid "Contact Mechanisms"
 msgstr "Контактный способы"
 
 msgctxt "view:party.party:0"
+msgid "Account in Bank"
+msgstr "Счет в банке"
+
+msgctxt "view:party.party:0"
 msgid "Accounting"
 msgstr "Регистрационные данные"
+
+msgctxt "view:party.party:0"
+msgid "Accounts in Banks"
+msgstr "Счета в банках"
 
 msgctxt "view:party.party:0"
 msgid "Addresses"
@@ -715,8 +493,20 @@ msgid "Contact Mechanisms"
 msgstr "Контактный способы"
 
 msgctxt "view:party.party:0"
+msgid "Contacts"
+msgstr "Контактные лица"
+
+msgctxt "view:party.party:0"
+msgid "Document"
+msgstr "Документ"
+
+msgctxt "view:party.party:0"
 msgid "General"
 msgstr "Основной"
+
+msgctxt "view:party.party:0"
+msgid "Legal Document"
+msgstr "Регистрационный документ"
 
 msgctxt "view:party.party:0"
 msgid "Parties"
@@ -729,26 +519,6 @@ msgstr "Контрагент"
 msgctxt "view:party.party:0"
 msgid "VAT"
 msgstr "ИНН"
-
-msgctxt "view:party.party:0"
-msgid "Account in Bank"
-msgstr "Счет в банке"
-
-msgctxt "view:party.party:0"
-msgid "Accounts in Banks"
-msgstr "Счета в банках"
-
-msgctxt "view:party.party:0"
-msgid "Contacts"
-msgstr "Контактные лица"
-
-msgctxt "view:party.party:0"
-msgid "Document"
-msgstr "Документ"
-
-msgctxt "view:party.party:0"
-msgid "Legal Document"
-msgstr "Регистрационный документ"
 
 msgctxt "wizard_button:party.check_vies,check,end:0"
 msgid "Ok"

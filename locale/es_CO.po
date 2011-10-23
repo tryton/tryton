@@ -30,6 +30,10 @@ msgctxt "error:party.party:0"
 msgid "Invalid VAT number!"
 msgstr "¡Número inválido!"
 
+msgctxt "error:party.party:0"
+msgid "The code of the party must be unique!"
+msgstr ""
+
 msgctxt "field:party.address,active:0"
 msgid "Active"
 msgstr "Activo"
@@ -43,7 +47,7 @@ msgid "Country"
 msgstr "País"
 
 msgctxt "field:party.address,full_address:0"
-msgid ""
+msgid "Full Address"
 msgstr ""
 
 msgctxt "field:party.address,name:0"
@@ -106,8 +110,13 @@ msgctxt "field:party.check_vies.check,parties_succeed:0"
 msgid "Parties Succeed"
 msgstr "Terceros válidos"
 
+#, fuzzy
+msgctxt "field:party.configuration,party_lang:0"
+msgid "Party Language"
+msgstr "Idioma del Tercero"
+
 msgctxt "field:party.configuration,party_sequence:0"
-msgid "Party Reference Sequence"
+msgid "Party Sequence"
 msgstr ""
 
 #, fuzzy
@@ -196,7 +205,7 @@ msgid "Fax"
 msgstr "Fax"
 
 msgctxt "field:party.party,full_name:0"
-msgid ""
+msgid "Full Name"
 msgstr ""
 
 msgctxt "field:party.party,lang:0"
@@ -247,6 +256,10 @@ msgctxt "field:party.party-party.category,rec_name:0"
 msgid "Name"
 msgstr "Nombre"
 
+msgctxt "help:party.configuration,party_lang:0"
+msgid "The value set on this field will preset the language on new parties"
+msgstr ""
+
 msgctxt "help:party.party,vat_country:0"
 msgid "Setting VAT country will enable validation of the VAT number."
 msgstr "Al especificar el país se habilitará la verificación del NIT."
@@ -258,6 +271,11 @@ msgstr "Número de Impuesto de Valor Agregado"
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Direcciones"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorías"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
@@ -295,6 +313,11 @@ msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr "Direcciones"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorías"
+
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Categorías"
@@ -303,8 +326,9 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuración"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party Management"
+msgid "Party"
 msgstr "Gestión de Terceros"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
@@ -332,7 +356,7 @@ msgid "Check VIES - No Check"
 msgstr "Revisar VIES - NO revisar"
 
 msgctxt "model:party.configuration,name:0"
-msgid "party.configuration"
+msgid "Party Configuration"
 msgstr ""
 
 msgctxt "model:party.contact_mechanism,name:0"
@@ -391,10 +415,6 @@ msgctxt "selection:party.contact_mechanism,type:0"
 msgid "Website"
 msgstr "Sitio Web"
 
-msgctxt "selection:party.party,vat_country:0"
-msgid ""
-msgstr ""
-
 msgctxt "view:party.address:0"
 msgid "Addresses"
 msgstr "Direcciones"
@@ -440,6 +460,10 @@ msgid "Contact Mechanisms"
 msgstr "Mecanismos de contacto"
 
 msgctxt "view:party.party:0"
+msgid "Account"
+msgstr "Cuenta"
+
+msgctxt "view:party.party:0"
 msgid "Accounting"
 msgstr "Contabilidad"
 
@@ -450,6 +474,10 @@ msgstr "Direcciones"
 msgctxt "view:party.party:0"
 msgid "Categories"
 msgstr "Categorías"
+
+msgctxt "view:party.party:0"
+msgid "Contact Mechanism"
+msgstr "Mecanismo de contacto"
 
 msgctxt "view:party.party:0"
 msgid "Contact Mechanisms"
@@ -470,14 +498,6 @@ msgstr "Tercero"
 msgctxt "view:party.party:0"
 msgid "VAT"
 msgstr "IVA"
-
-msgctxt "view:party.party:0"
-msgid "Account"
-msgstr "Cuenta"
-
-msgctxt "view:party.party:0"
-msgid "Contact Mechanism"
-msgstr "Mecanismo de contacto"
 
 msgctxt "view:party.party:0"
 msgid "_General"
