@@ -549,8 +549,9 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Конфигурация"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
-msgid "Purchase Management"
+msgid "Purchase"
 msgstr "Управление на покупки"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
@@ -788,6 +789,10 @@ msgid "Unit Price"
 msgstr "Единична цена"
 
 msgctxt "odt:purchase.purchase:0"
+msgid "VAT Number:"
+msgstr ""
+
+msgctxt "odt:purchase.purchase:0"
 msgid "VAT:"
 msgstr "ДДС:"
 
@@ -926,6 +931,11 @@ msgstr "Избор на фактури за ново създаване"
 msgctxt "view:purchase.handle.invoice.exception.ask:0"
 msgid "Handle Invoice Exception"
 msgstr "Обработка на грешка към фактура"
+
+#, fuzzy
+msgctxt "view:purchase.handle.shipment.exception.ask:0"
+msgid "Choose move to recreate"
+msgstr "Избор на движение за ново създаване"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:0"
 msgid "Choose moves to recreate"

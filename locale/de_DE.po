@@ -734,10 +734,6 @@ msgid "Waiting Shipment"
 msgstr "Lieferposten Wartend"
 
 msgctxt "odt:purchase.purchase:0"
-msgid "Unit Price"
-msgstr "Einzelpreis"
-
-msgctxt "odt:purchase.purchase:0"
 msgid "Amount"
 msgstr "Betrag"
 
@@ -794,6 +790,10 @@ msgid "Total:"
 msgstr "Gesamt:"
 
 msgctxt "odt:purchase.purchase:0"
+msgid "Unit Price"
+msgstr "Einzelpreis"
+
+msgctxt "odt:purchase.purchase:0"
 msgid "VAT Number:"
 msgstr "USt-ID-Nr.:"
 
@@ -802,16 +802,16 @@ msgid "VAT:"
 msgstr "USt.:"
 
 msgctxt "selection:account.invoice,purchase_exception_state:0"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.invoice,purchase_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoriert"
 
 msgctxt "selection:account.invoice,purchase_exception_state:0"
 msgid "Recreated"
 msgstr "Nachgebildet"
-
-msgctxt "selection:account.invoice,purchase_exception_state:0"
-msgid ""
-msgstr ""
 
 msgctxt "selection:purchase.configuration,purchase_invoice_method:0"
 msgid "Based On Order"
@@ -906,16 +906,16 @@ msgid "Quotation"
 msgstr "Angebot"
 
 msgctxt "selection:stock.move,purchase_exception_state:0"
+msgid ""
+msgstr ""
+
+msgctxt "selection:stock.move,purchase_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoriert"
 
 msgctxt "selection:stock.move,purchase_exception_state:0"
 msgid "Recreated"
 msgstr "Nachgebildet"
-
-msgctxt "selection:stock.move,purchase_exception_state:0"
-msgid ""
-msgstr ""
 
 msgctxt "view:product.product:0"
 msgid "Product Suppliers"
@@ -1030,6 +1030,10 @@ msgid "Handle Shipment Exception"
 msgstr "Liefervorbehalt bearbeiten"
 
 msgctxt "view:purchase.purchase:0"
+msgid "Ignore Invoice Exception"
+msgstr "Rechnungsvorbehalt ignorieren"
+
+msgctxt "view:purchase.purchase:0"
 msgid "Invoices"
 msgstr "Rechnungen"
 
@@ -1060,10 +1064,6 @@ msgstr "Angebot"
 msgctxt "view:purchase.purchase:0"
 msgid "Shipments"
 msgstr "Lieferposten"
-
-msgctxt "view:purchase.purchase:0"
-msgid "Ignore Invoice Exception"
-msgstr "Rechnungsvorbehalt ignorieren"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,init,end:0"
 msgid "Cancel"

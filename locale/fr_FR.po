@@ -795,6 +795,10 @@ msgid "VAT:"
 msgstr "TVA:"
 
 msgctxt "selection:account.invoice,purchase_exception_state:0"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.invoice,purchase_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoré"
 
@@ -802,21 +806,17 @@ msgctxt "selection:account.invoice,purchase_exception_state:0"
 msgid "Recreated"
 msgstr "Recréé"
 
-msgctxt "selection:account.invoice,purchase_exception_state:0"
-msgid ""
-msgstr ""
-
 msgctxt "selection:purchase.configuration,purchase_invoice_method:0"
 msgid "Based On Order"
 msgstr "Basé sur la commande"
 
 msgctxt "selection:purchase.configuration,purchase_invoice_method:0"
-msgid "Manual"
-msgstr "Manuel"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:0"
 msgid "Based On Shipment"
 msgstr "Basé sur la livraison"
+
+msgctxt "selection:purchase.configuration,purchase_invoice_method:0"
+msgid "Manual"
+msgstr "Manuel"
 
 msgctxt "selection:purchase.line,type:0"
 msgid "Comment"
@@ -835,12 +835,12 @@ msgid "Title"
 msgstr "Titre"
 
 msgctxt "selection:purchase.purchase,invoice_method:0"
-msgid "Based On Shipment"
-msgstr "Basé sur la livraison"
-
-msgctxt "selection:purchase.purchase,invoice_method:0"
 msgid "Based On Order"
 msgstr "Basé sur la commande"
+
+msgctxt "selection:purchase.purchase,invoice_method:0"
+msgid "Based On Shipment"
+msgstr "Basé sur la livraison"
 
 msgctxt "selection:purchase.purchase,invoice_method:0"
 msgid "Manual"
@@ -899,16 +899,16 @@ msgid "Quotation"
 msgstr "Devis"
 
 msgctxt "selection:stock.move,purchase_exception_state:0"
+msgid ""
+msgstr ""
+
+msgctxt "selection:stock.move,purchase_exception_state:0"
 msgid "Ignored"
 msgstr "Ignoré"
 
 msgctxt "selection:stock.move,purchase_exception_state:0"
 msgid "Recreated"
 msgstr "Recréé"
-
-msgctxt "selection:stock.move,purchase_exception_state:0"
-msgid ""
-msgstr ""
 
 msgctxt "view:product.product:0"
 msgid "Product Suppliers"
@@ -939,6 +939,10 @@ msgid "Handle Invoice Exception"
 msgstr "Gérer l'exception de facture"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:0"
+msgid "Choose move to recreate"
+msgstr "Choisir le mouvement à recréer"
+
+msgctxt "view:purchase.handle.shipment.exception.ask:0"
 msgid "Choose moves to recreate"
 msgstr "Choisir les mouvements à recréer"
 
@@ -949,10 +953,6 @@ msgstr "Gérer l'exception d'expédition"
 msgctxt "view:purchase.handle.shipment.exception.ask:0"
 msgid "Recreated Moves"
 msgstr "Mouvements recréés"
-
-msgctxt "view:purchase.handle.shipment.exception.ask:0"
-msgid "Choose move to recreate"
-msgstr "Choisir le mouvement à recréer"
 
 msgctxt "view:purchase.line:0"
 msgid "General"
@@ -1011,6 +1011,14 @@ msgid "Handle Shipment Exception"
 msgstr "Gérer l'exception d'expédition"
 
 msgctxt "view:purchase.purchase:0"
+msgid "Ignore Invoice Exception"
+msgstr "Ignorer l'exception de facturation"
+
+msgctxt "view:purchase.purchase:0"
+msgid "Ignore Shipment Exception"
+msgstr "Ignorer l'exception d'expédition"
+
+msgctxt "view:purchase.purchase:0"
 msgid "Invoices"
 msgstr "Factures"
 
@@ -1021,6 +1029,10 @@ msgstr "Lignes"
 msgctxt "view:purchase.purchase:0"
 msgid "Moves"
 msgstr "Mouvements"
+
+msgctxt "view:purchase.purchase:0"
+msgid "Other Info"
+msgstr "Autre information"
 
 msgctxt "view:purchase.purchase:0"
 msgid "Purchase"
@@ -1037,18 +1049,6 @@ msgstr "Devis"
 msgctxt "view:purchase.purchase:0"
 msgid "Shipments"
 msgstr "Expéditions"
-
-msgctxt "view:purchase.purchase:0"
-msgid "Ignore Invoice Exception"
-msgstr "Ignorer l'exception de facturation"
-
-msgctxt "view:purchase.purchase:0"
-msgid "Ignore Shipment Exception"
-msgstr "Ignorer l'exception d'expédition"
-
-msgctxt "view:purchase.purchase:0"
-msgid "Other Info"
-msgstr "Autre information"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,init,end:0"
 msgid "Cancel"
