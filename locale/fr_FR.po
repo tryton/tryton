@@ -300,16 +300,16 @@ msgid "Open Chart of Analytic Accounts"
 msgstr "Ouvrir le plan comptable analytique"
 
 msgctxt "view:analytic_account.account:0"
-msgid "General Information"
-msgstr "Information générale"
-
-msgctxt "view:analytic_account.account:0"
 msgid "Analytic Account"
 msgstr "Compte analytique"
 
 msgctxt "view:analytic_account.account:0"
 msgid "Analytic Accounts"
 msgstr "Comptes analytiques"
+
+msgctxt "view:analytic_account.account:0"
+msgid "General Information"
+msgstr "Information générale"
 
 msgctxt "view:analytic_account.account:0"
 msgid "Notes"
