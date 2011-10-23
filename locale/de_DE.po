@@ -140,10 +140,6 @@ msgid "You can not modify reconciled lines!"
 msgstr "Abgestimmte Buchungszeilen sind nicht änderbar!"
 
 msgctxt "error:account.move.reconciliation:0"
-msgid "You can not modify a reconciliation!"
-msgstr "Eine Abstimmung kann nicht geändert werden!"
-
-msgctxt "error:account.move.reconciliation:0"
 msgid ""
 "You can not create reconciliation where lines are not balanced, nor valid, "
 "nor in the same account, nor in account to reconcile, nor from the same "
@@ -155,6 +151,10 @@ msgstr ""
 "- oder sich auf das selbe Konto beziehen\n"
 "- oder sich nicht auf ein abstimmungsfähiges Konto beziehen\n"
 "- oder nicht zur selben Partei gehören!"
+
+msgctxt "error:account.move.reconciliation:0"
+msgid "You can not modify a reconciliation!"
+msgstr "Eine Abstimmung kann nicht geändert werden!"
 
 msgctxt "error:account.move:0"
 msgid ""
@@ -2881,20 +2881,20 @@ msgid "Create Chart of Account"
 msgstr "Kontenplan erstellen"
 
 msgctxt "view:account.account.create_chart_account.init:0"
-msgid ""
-"You can now create a chart of account for your company by selecting a chart "
-"of account template."
-msgstr ""
-"Sie können nun einen Kontenplan für Ihr Unternehmen anlegen, indem Sie eine "
-"Kontenplanvorlage auswählen."
-
-msgctxt "view:account.account.create_chart_account.init:0"
 msgid "Create Chart of Account"
 msgstr "Kontenplan erstellen"
 
 msgctxt "view:account.account.create_chart_account.init:0"
 msgid "You can now create a chart of account for your company"
 msgstr "Es kann jetzt ein Kontenplan für das Unternehmen erstellt werden"
+
+msgctxt "view:account.account.create_chart_account.init:0"
+msgid ""
+"You can now create a chart of account for your company by selecting a chart "
+"of account template."
+msgstr ""
+"Sie können nun einen Kontenplan für Ihr Unternehmen anlegen, indem Sie eine "
+"Kontenplanvorlage auswählen."
 
 msgctxt "view:account.account.create_chart_account.init:0"
 msgid "by selecting a chart of account template."
@@ -3021,6 +3021,10 @@ msgid "Are you sure to close fiscal year?"
 msgstr "Wollen Sie das Geschäftsjahr wirklich abschließen?"
 
 msgctxt "view:account.fiscalyear:0"
+msgid "Close"
+msgstr "Geschäftsjahr abschließen"
+
+msgctxt "view:account.fiscalyear:0"
 msgid "Close Fiscal Year"
 msgstr "Geschäftsjahr abschließen"
 
@@ -3045,20 +3049,16 @@ msgid "Periods"
 msgstr "Buchungszeiträume"
 
 msgctxt "view:account.fiscalyear:0"
+msgid "Re-Open"
+msgstr "Wiedereröffnen"
+
+msgctxt "view:account.fiscalyear:0"
 msgid "Re-Open Fiscal Year"
 msgstr "Geschäftsjahr wiedereröffnen"
 
 msgctxt "view:account.fiscalyear:0"
 msgid "Sequences"
 msgstr "Nummernkreise"
-
-msgctxt "view:account.fiscalyear:0"
-msgid "Close"
-msgstr "Geschäftsjahr abschließen"
-
-msgctxt "view:account.fiscalyear:0"
-msgid "Re-Open"
-msgstr "Wiedereröffnen"
 
 msgctxt "view:account.journal.period:0"
 msgid "Journal - Period"
@@ -3357,12 +3357,12 @@ msgid "Taxes"
 msgstr "Steuern"
 
 msgctxt "view:party.party:0"
-msgid "Taxes"
-msgstr "Steuern"
-
-msgctxt "view:party.party:0"
 msgid "Account"
 msgstr "Konten"
+
+msgctxt "view:party.party:0"
+msgid "Taxes"
+msgstr "Steuern"
 
 msgctxt ""
 "wizard_button:account.account.create_chart_account,account,create_account:0"

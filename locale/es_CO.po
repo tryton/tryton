@@ -22,6 +22,14 @@ msgctxt "error:account.account.template:0"
 msgid "You can not create recursive accounts!"
 msgstr "No puede crear cuentas recursivas!"
 
+msgctxt "error:account.account.type.template:0"
+msgid "You can not create recursive types!"
+msgstr ""
+
+msgctxt "error:account.account.type:0"
+msgid "You can not create recursive types!"
+msgstr ""
+
 msgctxt "error:account.account:0"
 msgid "You can not create recursive accounts!"
 msgstr "No puede crear cuentas recursivas!"
@@ -1002,6 +1010,11 @@ msgctxt "field:account.period,code:0"
 msgid "Code"
 msgstr "Código"
 
+#, fuzzy
+msgctxt "field:account.period,company:0"
+msgid "Company"
+msgstr "Compañía"
+
 msgctxt "field:account.period,end_date:0"
 msgid "Ending Date"
 msgstr "Fecha de Finalización"
@@ -1944,6 +1957,11 @@ msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
 msgstr "Estado de Cuenta de Ingresos"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Accounts"
+msgstr "Cuentas"
+
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Account Templates"
 msgstr "Plantillas de Cuentas"
@@ -1955,6 +1973,11 @@ msgstr "Cuentas"
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Accounts"
 msgstr "Cuentas"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_type_list"
+msgid "Account Types"
+msgstr "Tipos de Cuenta"
 
 msgctxt "model:ir.action,name:act_account_type_template_tree"
 msgid "Account Type Templates"
@@ -2056,6 +2079,11 @@ msgctxt "model:ir.action,name:act_reopen_period"
 msgid "Re-Open Periods"
 msgstr "Re-abrir Períodos"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_list"
+msgid "Tax Codes"
+msgstr "Códigos de Impuesto"
+
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
 msgid "Tax Codes Templates"
 msgstr "Plantillas de Códigos de Impuesto"
@@ -2075,6 +2103,11 @@ msgstr "Grupos de Impuestos"
 msgctxt "model:ir.action,name:act_tax_line_form"
 msgid "Tax Lines"
 msgstr "Líneas de Impuestos"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_list"
+msgid "Taxes"
+msgstr "Impuestos"
 
 msgctxt "model:ir.action,name:act_tax_rule_form"
 msgid "Tax Rules"
@@ -2173,13 +2206,19 @@ msgctxt ""
 msgid "Account Move Reconciliation"
 msgstr "Reconciliación de Movimiento de Cuenta"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account"
-msgid "Financial Management"
+msgid "Financial"
 msgstr "Gestión Financiera"
 
 msgctxt "model:ir.ui.menu,name:menu_account_configuration"
 msgid "Configuration"
 msgstr "Configuración"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Accounts"
+msgstr "Cuentas"
 
 msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
 msgid "Account Templates"
@@ -2188,6 +2227,11 @@ msgstr "Plantillas de Cuentas"
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
 msgstr "Cuentas"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_type_list"
+msgid "Account Types"
+msgstr "Tipos de Cuenta"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
 msgid "Account Type Templates"
@@ -2313,6 +2357,11 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Reportes"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
+msgid "Tax Codes"
+msgstr "Códigos de Impuesto"
+
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
 msgid "Tax Codes Templates"
 msgstr "Plantillas de Códigos de Impuesto"
@@ -2324,6 +2373,11 @@ msgstr "Códigos de Impuesto"
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Tax Groups"
 msgstr "Grupos de Impuestos"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_list"
+msgid "Taxes"
+msgstr "Impuestos"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
 msgid "Tax Rules"
@@ -2378,10 +2432,6 @@ msgid "Aged Balance for Suppliers and Customers"
 msgstr "Balance Antiguo de Proveedores y Clientes"
 
 msgctxt "odt:account.account.aged_balance:0"
-msgid "at"
-msgstr "a"
-
-msgctxt "odt:account.account.aged_balance:0"
 msgid "Company:"
 msgstr "Compañía:"
 
@@ -2417,17 +2467,13 @@ msgctxt "odt:account.account.aged_balance:0"
 msgid "User:"
 msgstr "Usuario:"
 
-msgctxt "odt:account.account.general_ledger:0"
-msgid "State"
-msgstr "Estado"
+msgctxt "odt:account.account.aged_balance:0"
+msgid "at"
+msgstr "a"
 
 msgctxt "odt:account.account.general_ledger:0"
 msgid "/"
 msgstr "/"
-
-msgctxt "odt:account.account.general_ledger:0"
-msgid "at"
-msgstr "a"
 
 msgctxt "odt:account.account.general_ledger:0"
 msgid "Balance"
@@ -2470,6 +2516,10 @@ msgid "Print Date:"
 msgstr "Fecha de Impresión:"
 
 msgctxt "odt:account.account.general_ledger:0"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "odt:account.account.general_ledger:0"
 msgid "To Period:"
 msgstr "Al período:"
 
@@ -2481,13 +2531,13 @@ msgctxt "odt:account.account.general_ledger:0"
 msgid "User:"
 msgstr "Usuario:"
 
+msgctxt "odt:account.account.general_ledger:0"
+msgid "at"
+msgstr "a"
+
 msgctxt "odt:account.account.third_party_balance:0"
 msgid "/"
 msgstr "/"
-
-msgctxt "odt:account.account.third_party_balance:0"
-msgid "at"
-msgstr "a"
 
 msgctxt "odt:account.account.third_party_balance:0"
 msgid "Balance"
@@ -2525,6 +2575,10 @@ msgctxt "odt:account.account.third_party_balance:0"
 msgid "User:"
 msgstr "Usuario:"
 
+msgctxt "odt:account.account.third_party_balance:0"
+msgid "at"
+msgstr "a"
+
 msgctxt "odt:account.account.trial_balance:0"
 msgid "/"
 msgstr "/"
@@ -2532,10 +2586,6 @@ msgstr "/"
 msgctxt "odt:account.account.trial_balance:0"
 msgid "Account"
 msgstr "Cuenta"
-
-msgctxt "odt:account.account.trial_balance:0"
-msgid "at"
-msgstr "a"
 
 msgctxt "odt:account.account.trial_balance:0"
 msgid "Company:"
@@ -2573,6 +2623,10 @@ msgctxt "odt:account.account.trial_balance:0"
 msgid "User:"
 msgstr "Usuario:"
 
+msgctxt "odt:account.account.trial_balance:0"
+msgid "at"
+msgstr "a"
+
 msgctxt "odt:account.move.general_journal:0"
 msgid "/"
 msgstr "/"
@@ -2580,10 +2634,6 @@ msgstr "/"
 msgctxt "odt:account.move.general_journal:0"
 msgid "Account"
 msgstr "Cuenta"
-
-msgctxt "odt:account.move.general_journal:0"
-msgid "at"
-msgstr "a"
 
 msgctxt "odt:account.move.general_journal:0"
 msgid "Company:"
@@ -2640,6 +2690,10 @@ msgstr "A la Fecha:"
 msgctxt "odt:account.move.general_journal:0"
 msgid "User:"
 msgstr "Usuario:"
+
+msgctxt "odt:account.move.general_journal:0"
+msgid "at"
+msgstr "a"
 
 msgctxt "selection:account.account,kind:0"
 msgid "Expense"
@@ -2818,16 +2872,22 @@ msgid "Create Chart of Account"
 msgstr "Crear Plan Contable"
 
 msgctxt "view:account.account.create_chart_account.init:0"
-msgid "by selecting a chart of account template."
-msgstr "al seleccionar una plantilla de cuentas contables."
-
-msgctxt "view:account.account.create_chart_account.init:0"
 msgid "Create Chart of Account"
 msgstr "Crear Plan Contable"
 
 msgctxt "view:account.account.create_chart_account.init:0"
 msgid "You can now create a chart of account for your company"
 msgstr "Ahora puede crear un plan contable para su compañía"
+
+msgctxt "view:account.account.create_chart_account.init:0"
+msgid ""
+"You can now create a chart of account for your company by selecting a chart "
+"of account template."
+msgstr ""
+
+msgctxt "view:account.account.create_chart_account.init:0"
+msgid "by selecting a chart of account template."
+msgstr "al seleccionar una plantilla de cuentas contables."
 
 msgctxt "view:account.account.create_chart_account.properties:0"
 msgid "Create Default Properties"
@@ -2886,12 +2946,12 @@ msgid "Account Templates"
 msgstr "Plantillas de Cuenta"
 
 msgctxt "view:account.account.type.template:0"
-msgid "Account Types Templates"
-msgstr "Plantillas de Tipo de Cuenta"
-
-msgctxt "view:account.account.type.template:0"
 msgid "Account Type Template"
 msgstr "Plantilla de Tipo de Cuenta"
+
+msgctxt "view:account.account.type.template:0"
+msgid "Account Types Templates"
+msgstr "Plantillas de Tipo de Cuenta"
 
 msgctxt "view:account.account.type:0"
 msgid "Account Type"
@@ -2950,6 +3010,10 @@ msgid "Are you sure to close fiscal year?"
 msgstr "Está seguro de cerrar el año fiscal?"
 
 msgctxt "view:account.fiscalyear:0"
+msgid "Close"
+msgstr "Cerrar"
+
+msgctxt "view:account.fiscalyear:0"
 msgid "Close Fiscal Year"
 msgstr "Cerrar Año Fiscal"
 
@@ -2974,20 +3038,16 @@ msgid "Periods"
 msgstr "Períodos"
 
 msgctxt "view:account.fiscalyear:0"
+msgid "Re-Open"
+msgstr "Re-abrir"
+
+msgctxt "view:account.fiscalyear:0"
 msgid "Re-Open Fiscal Year"
 msgstr "Re abrir Año Fiscal"
 
 msgctxt "view:account.fiscalyear:0"
 msgid "Sequences"
 msgstr "Secuencias"
-
-msgctxt "view:account.fiscalyear:0"
-msgid "Close"
-msgstr "Cerrar"
-
-msgctxt "view:account.fiscalyear:0"
-msgid "Re-Open"
-msgstr "Re-abrir"
 
 msgctxt "view:account.journal.period:0"
 msgid "Journal - Period"
@@ -3097,13 +3157,43 @@ msgctxt "view:account.move:0"
 msgid "Account Move"
 msgstr "Movimiento de Cuenta"
 
+#, fuzzy
+msgctxt "view:account.move:0"
+msgid "Account Move Line"
+msgstr "Movimiento de Línea de Cuenta"
+
+#, fuzzy
+msgctxt "view:account.move:0"
+msgid "Account Move Lines"
+msgstr "Líneas de Movimiento de Cuenta"
+
 msgctxt "view:account.move:0"
 msgid "Account Moves"
 msgstr "Movimientos de Cuenta"
 
+#, fuzzy
+msgctxt "view:account.move:0"
+msgid "Credit"
+msgstr "Crédito"
+
+#, fuzzy
+msgctxt "view:account.move:0"
+msgid "Debit"
+msgstr "Débito"
+
 msgctxt "view:account.move:0"
 msgid "Draft"
 msgstr "Borrador"
+
+#, fuzzy
+msgctxt "view:account.move:0"
+msgid "General Information"
+msgstr "Información General"
+
+#, fuzzy
+msgctxt "view:account.move:0"
+msgid "Optional Information"
+msgstr "Información Opcional"
 
 msgctxt "view:account.move:0"
 msgid "Post"
@@ -3128,12 +3218,12 @@ msgid "Description"
 msgstr "Descripción"
 
 msgctxt "view:account.tax.code.template:0"
-msgid "Tax Codes Templates"
-msgstr "Plantillas de Códigos de Impuesto"
-
-msgctxt "view:account.tax.code.template:0"
 msgid "Tax Code Template"
 msgstr "Plantilla de Código de Impuesto"
+
+msgctxt "view:account.tax.code.template:0"
+msgid "Tax Codes Templates"
+msgstr "Plantillas de Códigos de Impuesto"
 
 #, fuzzy
 msgctxt "view:account.tax.code:0"
@@ -3194,12 +3284,12 @@ msgid "Tax Rule Lines"
 msgstr "Línea de Regla de Impuesto"
 
 msgctxt "view:account.tax.rule.template:0"
-msgid "Tax Rules"
-msgstr "Reglas de Impuestos"
-
-msgctxt "view:account.tax.rule.template:0"
 msgid "Tax Rule Template"
 msgstr "Plantilla de Reglas de Impuestos"
+
+msgctxt "view:account.tax.rule.template:0"
+msgid "Tax Rules"
+msgstr "Reglas de Impuestos"
 
 msgctxt "view:account.tax.rule:0"
 msgid "Tax Rule"
@@ -3230,20 +3320,20 @@ msgid "Invoice"
 msgstr "Factura"
 
 msgctxt "view:account.tax.template:0"
-msgid "Taxes"
-msgstr "Impuestos"
-
-msgctxt "view:account.tax.template:0"
-msgid "Taxes Templates"
-msgstr "Plantillas de Impuestos"
+msgid "Refund"
+msgstr "Devolución"
 
 msgctxt "view:account.tax.template:0"
 msgid "Tax Template"
 msgstr "Plantilla de Impuesto"
 
 msgctxt "view:account.tax.template:0"
-msgid "Refund"
-msgstr "Devolución"
+msgid "Taxes"
+msgstr "Impuestos"
+
+msgctxt "view:account.tax.template:0"
+msgid "Taxes Templates"
+msgstr "Plantillas de Impuestos"
 
 msgctxt "view:account.tax:0"
 msgid "Code"
@@ -3262,16 +3352,16 @@ msgid "Invoice"
 msgstr "Factura"
 
 msgctxt "view:account.tax:0"
+msgid "Refund"
+msgstr "Devolución"
+
+msgctxt "view:account.tax:0"
 msgid "Tax"
 msgstr "Impuesto"
 
 msgctxt "view:account.tax:0"
 msgid "Taxes"
 msgstr "Impuestos"
-
-msgctxt "view:account.tax:0"
-msgid "Refund"
-msgstr "Devolución"
 
 msgctxt "view:party.party:0"
 msgid "Account"

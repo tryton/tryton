@@ -2541,10 +2541,6 @@ msgid "at"
 msgstr "à"
 
 msgctxt "odt:account.account.third_party_balance:0"
-msgid "Party"
-msgstr "Tiers"
-
-msgctxt "odt:account.account.third_party_balance:0"
 msgid "/"
 msgstr "/"
 
@@ -2563,6 +2559,10 @@ msgstr "Crédit"
 msgctxt "odt:account.account.third_party_balance:0"
 msgid "Debit"
 msgstr "Débit"
+
+msgctxt "odt:account.account.third_party_balance:0"
+msgid "Party"
+msgstr "Tiers"
 
 msgctxt "odt:account.account.third_party_balance:0"
 msgid "Print Date:"
@@ -2885,16 +2885,16 @@ msgid "You can now create a chart of account for your company"
 msgstr "Vous pouvez maintenant créer un plan comptable pour votre société"
 
 msgctxt "view:account.account.create_chart_account.init:0"
-msgid "by selecting a chart of account template."
-msgstr "en selectionant un modèle de plan comptable."
-
-msgctxt "view:account.account.create_chart_account.init:0"
 msgid ""
 "You can now create a chart of account for your company by selecting a chart "
 "of account template."
 msgstr ""
 "Vous pouvez maintenant créer un plan comptable pour votre société en "
 "selection un modèle de plan."
+
+msgctxt "view:account.account.create_chart_account.init:0"
+msgid "by selecting a chart of account template."
+msgstr "en selectionant un modèle de plan comptable."
 
 msgctxt "view:account.account.create_chart_account.properties:0"
 msgid "Create Default Properties"
@@ -3017,6 +3017,10 @@ msgid "Are you sure to close fiscal year?"
 msgstr "Etes-vous sûr de clôturer l'année fiscale?"
 
 msgctxt "view:account.fiscalyear:0"
+msgid "Close"
+msgstr "Fermer"
+
+msgctxt "view:account.fiscalyear:0"
 msgid "Close Fiscal Year"
 msgstr "Fermer l'année fiscale"
 
@@ -3041,20 +3045,16 @@ msgid "Periods"
 msgstr "Périodes"
 
 msgctxt "view:account.fiscalyear:0"
+msgid "Re-Open"
+msgstr "Réouvrir"
+
+msgctxt "view:account.fiscalyear:0"
 msgid "Re-Open Fiscal Year"
 msgstr "Ré-ouvrir l'année fiscale"
 
 msgctxt "view:account.fiscalyear:0"
 msgid "Sequences"
 msgstr "Séquences"
-
-msgctxt "view:account.fiscalyear:0"
-msgid "Close"
-msgstr "Fermer"
-
-msgctxt "view:account.fiscalyear:0"
-msgid "Re-Open"
-msgstr "Réouvrir"
 
 msgctxt "view:account.journal.period:0"
 msgid "Journal - Period"
@@ -3161,12 +3161,12 @@ msgid "Unreconcile"
 msgstr "Dé-réconcilier"
 
 msgctxt "view:account.move:0"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:account.move:0"
 msgid "Account Move"
 msgstr "Mouvement comptable"
+
+msgctxt "view:account.move:0"
+msgid "Account Move Line"
+msgstr "Ligne de mouvement comptable"
 
 msgctxt "view:account.move:0"
 msgid "Account Move Lines"
@@ -3177,28 +3177,28 @@ msgid "Account Moves"
 msgstr "Mouvements comptables"
 
 msgctxt "view:account.move:0"
-msgid "Post"
-msgstr "Posté"
-
-msgctxt "view:account.move:0"
-msgid "Account Move Line"
-msgstr "Ligne de mouvement comptable"
+msgid "Credit"
+msgstr "Crédit"
 
 msgctxt "view:account.move:0"
 msgid "Debit"
 msgstr "Débit"
 
 msgctxt "view:account.move:0"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:account.move:0"
 msgid "General Information"
 msgstr "Information générale"
 
 msgctxt "view:account.move:0"
-msgid "Credit"
-msgstr "Crédit"
-
-msgctxt "view:account.move:0"
 msgid "Optional Information"
 msgstr "Information optionnelle"
+
+msgctxt "view:account.move:0"
+msgid "Post"
+msgstr "Posté"
 
 msgctxt "view:account.period:0"
 msgid "Period"
@@ -3317,6 +3317,10 @@ msgid "Invoice"
 msgstr "Facture"
 
 msgctxt "view:account.tax.template:0"
+msgid "Refund"
+msgstr "Note de crédit"
+
+msgctxt "view:account.tax.template:0"
 msgid "Tax Template"
 msgstr "Modèle de taxe"
 
@@ -3327,10 +3331,6 @@ msgstr "Taxes"
 msgctxt "view:account.tax.template:0"
 msgid "Taxes Templates"
 msgstr "Modèles de taxes"
-
-msgctxt "view:account.tax.template:0"
-msgid "Refund"
-msgstr "Note de crédit"
 
 msgctxt "view:account.tax:0"
 msgid "Code"
@@ -3349,16 +3349,16 @@ msgid "Invoice"
 msgstr "Facture"
 
 msgctxt "view:account.tax:0"
+msgid "Refund"
+msgstr "Note de crédit"
+
+msgctxt "view:account.tax:0"
 msgid "Tax"
 msgstr "Taxe"
 
 msgctxt "view:account.tax:0"
 msgid "Taxes"
 msgstr "Taxes"
-
-msgctxt "view:account.tax:0"
-msgid "Refund"
-msgstr "Note de crédit"
 
 msgctxt "view:party.party:0"
 msgid "Account"

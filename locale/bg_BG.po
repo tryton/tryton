@@ -1010,6 +1010,11 @@ msgctxt "field:account.period,code:0"
 msgid "Code"
 msgstr "Код"
 
+#, fuzzy
+msgctxt "field:account.period,company:0"
+msgid "Company"
+msgstr "Фирма"
+
 msgctxt "field:account.period,end_date:0"
 msgid "Ending Date"
 msgstr "Крайна дата"
@@ -1956,6 +1961,11 @@ msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
 msgstr "Отчет за приходи"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_list"
+msgid "Accounts"
+msgstr "Сметки"
+
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Account Templates"
 msgstr "Шаблони на сметка"
@@ -1967,6 +1977,11 @@ msgstr "Сметки"
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Accounts"
 msgstr "Сметки"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_type_list"
+msgid "Account Types"
+msgstr "Видове сметки"
 
 msgctxt "model:ir.action,name:act_account_type_template_tree"
 msgid "Account Type Templates"
@@ -2068,6 +2083,11 @@ msgctxt "model:ir.action,name:act_reopen_period"
 msgid "Re-Open Periods"
 msgstr "Наново отваряне на периоди"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_code_list"
+msgid "Tax Codes"
+msgstr "Кодове на данъци"
+
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
 msgid "Tax Codes Templates"
 msgstr "Шаблони на кодове на данъци"
@@ -2087,6 +2107,11 @@ msgstr "Група данъци"
 msgctxt "model:ir.action,name:act_tax_line_form"
 msgid "Tax Lines"
 msgstr "Ред на данъци"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_tax_list"
+msgid "Taxes"
+msgstr "Данъци"
 
 msgctxt "model:ir.action,name:act_tax_rule_form"
 msgid "Tax Rules"
@@ -2185,13 +2210,19 @@ msgctxt ""
 msgid "Account Move Reconciliation"
 msgstr "Съгласуване на движение по сметка"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account"
-msgid "Financial Management"
+msgid "Financial"
 msgstr "Управление на финанси"
 
 msgctxt "model:ir.ui.menu,name:menu_account_configuration"
 msgid "Configuration"
 msgstr "Конфигурация"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_list"
+msgid "Accounts"
+msgstr "Сметки"
 
 msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
 msgid "Account Templates"
@@ -2200,6 +2231,11 @@ msgstr "Шаблони на сметка"
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
 msgstr "Сметки"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_account_type_list"
+msgid "Account Types"
+msgstr "Видове сметки"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
 msgid "Account Type Templates"
@@ -2325,6 +2361,11 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Справки"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
+msgid "Tax Codes"
+msgstr "Кодове на данъци"
+
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
 msgid "Tax Codes Templates"
 msgstr "Шаблони на кодове на данъци"
@@ -2337,6 +2378,11 @@ msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Tax Groups"
 msgstr "Група данъци"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_list"
+msgid "Taxes"
+msgstr "Данъци"
+
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
 msgid "Tax Rules"
 msgstr "Правила за данък"
@@ -2348,6 +2394,11 @@ msgstr "Шаблони за правило на данък"
 msgctxt "model:ir.ui.menu,name:menu_tax_template_tree"
 msgid "Taxes Templates"
 msgstr "Шаблони на данъци"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_tax_tree"
+msgid "Taxes"
+msgstr "Данъци"
 
 msgctxt "model:ir.ui.menu,name:menu_taxes"
 msgid "Taxes"
@@ -2534,10 +2585,6 @@ msgid "at"
 msgstr "на"
 
 msgctxt "odt:account.account.trial_balance:0"
-msgid "Trial Balance"
-msgstr "Временен баланс"
-
-msgctxt "odt:account.account.trial_balance:0"
 msgid "/"
 msgstr "/"
 
@@ -2572,6 +2619,10 @@ msgstr "До период:"
 msgctxt "odt:account.account.trial_balance:0"
 msgid "Total"
 msgstr "Общо"
+
+msgctxt "odt:account.account.trial_balance:0"
+msgid "Trial Balance"
+msgstr "Временен баланс"
 
 msgctxt "odt:account.account.trial_balance:0"
 msgid "User:"
@@ -2832,6 +2883,12 @@ msgstr "Създаване на сметкоплан"
 msgctxt "view:account.account.create_chart_account.init:0"
 msgid "You can now create a chart of account for your company"
 msgstr "Не може да създадете сметкоплана за фирмата си"
+
+msgctxt "view:account.account.create_chart_account.init:0"
+msgid ""
+"You can now create a chart of account for your company by selecting a chart "
+"of account template."
+msgstr ""
 
 msgctxt "view:account.account.create_chart_account.init:0"
 msgid "by selecting a chart of account template."
