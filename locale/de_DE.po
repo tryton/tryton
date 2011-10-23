@@ -1734,6 +1734,10 @@ msgid "Add an inventory line for each missing products"
 msgstr "Positionen für Bestandskorrektur um fehlende Artikel ergänzen"
 
 msgctxt "view:stock.inventory:0"
+msgid "All generated moves will be cancelled!"
+msgstr "Sämtliche erzeugten Bewegungen werden rückgängig gemacht!"
+
+msgctxt "view:stock.inventory:0"
 msgid "Cancel"
 msgstr "Annullieren"
 
@@ -1752,10 +1756,6 @@ msgstr "Bestandskorrekturen"
 msgctxt "view:stock.inventory:0"
 msgid "Inventory"
 msgstr "Lagerbestand"
-
-msgctxt "view:stock.inventory:0"
-msgid "All generated moves will be cancelled!"
-msgstr "Sämtliche erzeugten Bewegungen werden rückgängig gemacht!"
 
 msgctxt "view:stock.inventory:0"
 msgid "Re-Open"
@@ -1778,16 +1778,16 @@ msgid "Product Quantity."
 msgstr "Artikel Mengen"
 
 msgctxt "view:stock.move:0"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "view:stock.move:0"
 msgid "Move"
 msgstr "Bewegung"
 
 msgctxt "view:stock.move:0"
 msgid "Moves"
 msgstr "Bewegungen"
-
-msgctxt "view:stock.move:0"
-msgid "Cancel"
-msgstr "Annullieren"
 
 msgctxt "view:stock.move:0"
 msgid "Set Done"
@@ -1878,6 +1878,10 @@ msgid "Done"
 msgstr "Erledigt"
 
 msgctxt "view:stock.shipment.in:0"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "view:stock.shipment.in:0"
 msgid "Incoming Moves"
 msgstr "Eingehende Bewegungen"
 
@@ -1904,10 +1908,6 @@ msgstr "Lieferposten von Lieferant"
 msgctxt "view:stock.shipment.in:0"
 msgid "Supplier Shipments"
 msgstr "Lieferposten von Lieferanten"
-
-msgctxt "view:stock.shipment.in:0"
-msgid "Draft"
-msgstr "Entwurf"
 
 msgctxt "view:stock.shipment.internal.assign.assign_failed:0"
 msgid "Moves"
@@ -1938,6 +1938,10 @@ msgid "Draft"
 msgstr "Entwurf"
 
 msgctxt "view:stock.shipment.internal:0"
+msgid "Force Assign"
+msgstr "Zuweisung erzwingen"
+
+msgctxt "view:stock.shipment.internal:0"
 msgid "Internal Shipment"
 msgstr "Interner Lieferposten"
 
@@ -1950,20 +1954,16 @@ msgid "Reset to Draft"
 msgstr "Auf Entwurf zurücksetzen"
 
 msgctxt "view:stock.shipment.internal:0"
-msgid "Waiting"
-msgstr "Wartend"
-
-msgctxt "view:stock.shipment.internal:0"
-msgid "Force Assign"
-msgstr "Zuweisung erzwingen"
-
-msgctxt "view:stock.shipment.internal:0"
 msgid "Set Done"
 msgstr "Auf Erledigt setzen"
 
 msgctxt "view:stock.shipment.internal:0"
 msgid "Set Waiting"
 msgstr "Auf Wartend setzen"
+
+msgctxt "view:stock.shipment.internal:0"
+msgid "Waiting"
+msgstr "Wartend"
 
 msgctxt "view:stock.shipment.out.assign.assign_failed:0"
 msgid "Inventory Moves"
@@ -2014,6 +2014,10 @@ msgid "Reset to Draft"
 msgstr "Auf Entwurf zurücksetzen"
 
 msgctxt "view:stock.shipment.out:0"
+msgid "Are you sure to force assignation?"
+msgstr "Zuweisung wirklich erzwingen?"
+
+msgctxt "view:stock.shipment.out:0"
 msgid "Assign"
 msgstr "Zuweisen"
 
@@ -2038,6 +2042,10 @@ msgid "Draft"
 msgstr "Entwurf"
 
 msgctxt "view:stock.shipment.out:0"
+msgid "Force Assign"
+msgstr "Zuweisung erzwingen"
+
+msgctxt "view:stock.shipment.out:0"
 msgid "Inventory Moves"
 msgstr "Bestandsänderungen"
 
@@ -2054,18 +2062,6 @@ msgid "Reset to Draft"
 msgstr "Auf Entwurf zurücksetzen"
 
 msgctxt "view:stock.shipment.out:0"
-msgid "Waiting"
-msgstr "Wartend"
-
-msgctxt "view:stock.shipment.out:0"
-msgid "Are you sure to force assignation?"
-msgstr "Zuweisung wirklich erzwingen?"
-
-msgctxt "view:stock.shipment.out:0"
-msgid "Force Assign"
-msgstr "Zuweisung erzwingen"
-
-msgctxt "view:stock.shipment.out:0"
 msgid "Set Done"
 msgstr "Auf Erledigt setzen"
 
@@ -2076,6 +2072,10 @@ msgstr "Auf Wartend setzen"
 msgctxt "view:stock.shipment.out:0"
 msgid "Unpack"
 msgstr "Entpackt"
+
+msgctxt "view:stock.shipment.out:0"
+msgid "Waiting"
+msgstr "Wartend"
 
 msgctxt "wizard_button:stock.location.open,init,end:0"
 msgid "Cancel"

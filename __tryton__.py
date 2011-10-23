@@ -114,11 +114,13 @@ Et les rapports:
         'period.xml',
     ],
     'translation': [
+        'locale/cs_CZ.po',
         'locale/bg_BG.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
+        'locale/nl_NL.po',
         'locale/ru_RU.po',
     ],
 }
