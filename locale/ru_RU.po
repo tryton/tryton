@@ -1,0 +1,70 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:purchase.product_supplier,weekdays:0"
+msgid "Week Days"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.day,product_supplier:0"
+msgid "Supplier"
+msgstr "Поставщик"
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.day,rec_name:0"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.day,weekday:0"
+msgid "Week Day"
+msgstr "День недели"
+
+msgctxt "model:purchase.product_supplier.day,name:0"
+msgid "Product Supplier Day"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Friday"
+msgstr "Пятница"
+
+#, fuzzy
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Monday"
+msgstr "Понедельник"
+
+#, fuzzy
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Saturday"
+msgstr "Суббота"
+
+#, fuzzy
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Sunday"
+msgstr "Воскресенье"
+
+#, fuzzy
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Thursday"
+msgstr "Четверг"
+
+#, fuzzy
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Tuesday"
+msgstr "Вторник"
+
+#, fuzzy
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Wednesday"
+msgstr "Среда"
+
+#, fuzzy
+msgctxt "view:purchase.product_supplier.day:0"
+msgid "Week Day"
+msgstr "День недели"
+
+msgctxt "view:purchase.product_supplier:0"
+msgid "Week Days"
+msgstr ""
