@@ -15,16 +15,16 @@ msgstr ""
 "l'objet de mouvements de stock"
 
 msgctxt "error:product.uom:0"
-msgid "Invalid Factor and Rate values!"
-msgstr "Valeurs de facteur et de taux invalides !"
-
-msgctxt "error:product.uom:0"
 msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
 " it and create a new one."
 msgstr ""
 "Si l'UDM n'est pas utilisée, vous pouvez la supprimer, sinon vous pouvez la "
 "désactiver et en créer une nouvelle."
+
+msgctxt "error:product.uom:0"
+msgid "Invalid Factor and Rate values!"
+msgstr "Valeurs de facteur et de taux invalides !"
 
 msgctxt "error:product.uom:0"
 msgid "Rate and factor can not be both equal to zero."
@@ -569,16 +569,16 @@ msgid "Properties"
 msgstr "Propriétés"
 
 msgctxt "view:product.product:0"
-msgid "Products"
-msgstr "Produits"
-
-msgctxt "view:product.product:0"
 msgid "General"
 msgstr "Général"
 
 msgctxt "view:product.product:0"
 msgid "Product"
 msgstr "Produit"
+
+msgctxt "view:product.product:0"
+msgid "Products"
+msgstr "Produits"
 
 msgctxt "view:product.product:0"
 msgid "Properties"

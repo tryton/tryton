@@ -2,13 +2,16 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "error:product.category:0"
+msgid "You can not create recursive categories!"
+msgstr "Вы не можете создавать рекурсивные категории!"
+
 msgctxt "error:product.uom:0"
 msgid ""
-"If the UOM is still not used, you can delete it ortherwise you can "
-"deactivate it and create a new one."
+"If the UOM is still not used, you can delete it otherwise you can deactivate"
+" it and create a new one."
 msgstr ""
-"Если Ед.измерения еще не используется, его можно удалить или вы можете "
-"отключить его и создать новую."
 
 msgctxt "error:product.uom:0"
 msgid "Invalid Factor and Rate values!"
@@ -167,6 +170,11 @@ msgstr ""
 "Коэффициент по формуле:\n"
 "1 (базовая единица) = коэффициенту (этой ед.измерения)"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Категория"
+
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Категория"
@@ -186,6 +194,11 @@ msgstr "Категория ед.измерения"
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Единицы измерения"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Категория"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"

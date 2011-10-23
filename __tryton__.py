@@ -39,6 +39,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',

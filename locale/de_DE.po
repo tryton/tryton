@@ -667,10 +667,6 @@ msgid "Product Category"
 msgstr "Artikelkategorie"
 
 msgctxt "view:product.product:0"
-msgid "Products"
-msgstr "Artikel"
-
-msgctxt "view:product.product:0"
 msgid "General"
 msgstr "Allgemein"
 
@@ -682,9 +678,17 @@ msgctxt "view:product.product:0"
 msgid "Product Suppliers"
 msgstr "Lieferanten"
 
+msgctxt "view:product.product:0"
+msgid "Products"
+msgstr "Artikel"
+
 msgctxt "view:product.template:0"
 msgid "General"
 msgstr "Allgemein"
+
+msgctxt "view:product.template:0"
+msgid "Product"
+msgstr "Artikel"
 
 msgctxt "view:product.template:0"
 msgid "Product Template"
@@ -693,10 +697,6 @@ msgstr "Artikelvorlage"
 msgctxt "view:product.template:0"
 msgid "Product Templates"
 msgstr "Artikelvorlagen"
-
-msgctxt "view:product.template:0"
-msgid "Product"
-msgstr "Artikel"
 
 msgctxt "view:product.template:0"
 msgid "Products"

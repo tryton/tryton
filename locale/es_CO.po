@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "error:product.category:0"
+msgid "You can not create recursive categories!"
+msgstr "No puede crear categorías recursivas!"
+
 msgctxt "error:product.template:0"
 msgid ""
 "You cannot change the default uom for a product which is associated to stock"
@@ -171,6 +176,11 @@ msgid ""
 "1 (base unit) = coef (this unit)"
 msgstr "El coeficiente para la fórmula:"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorías"
+
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorías"
@@ -190,6 +200,11 @@ msgstr "Categorías de Unidad de Medida"
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Unidades de Medida"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorías"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
@@ -552,10 +567,6 @@ msgid "Product Category"
 msgstr "Categoría de Producto"
 
 msgctxt "view:product.product:0"
-msgid "Products"
-msgstr "Productos"
-
-msgctxt "view:product.product:0"
 msgid "General"
 msgstr "General"
 
@@ -566,6 +577,10 @@ msgstr "Producto"
 msgctxt "view:product.product:0"
 msgid "Product Suppliers"
 msgstr "Proveedores de Productos"
+
+msgctxt "view:product.product:0"
+msgid "Products"
+msgstr "Productos"
 
 msgctxt "view:product.template:0"
 msgid "General"

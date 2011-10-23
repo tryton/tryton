@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "error:product.category:0"
+msgid "You can not create recursive categories!"
+msgstr "No puede crear categorías recursivas"
+
 msgctxt "error:product.uom:0"
 msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
@@ -9,6 +14,10 @@ msgid ""
 msgstr ""
 "Si no se ha usado la UdM, puede borrarla, en caso contrario, puede "
 "desactivarla y crear una nueva."
+
+msgctxt "error:product.uom:0"
+msgid "Invalid Factor and Rate values!"
+msgstr ""
 
 msgctxt "error:product.uom:0"
 msgid "Rate and factor can not be both equal to zero."
@@ -164,6 +173,11 @@ msgstr ""
 "El coeficiente de la fórmula:\n"
 "1 (unidad base) = coeficiente (esta unidad)"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorías"
+
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorías"
@@ -183,6 +197,11 @@ msgstr "Categorías de la unidad de medida"
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Unidades de medida"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorías"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
@@ -541,10 +560,6 @@ msgid "Product Category"
 msgstr "Categoría de producto"
 
 msgctxt "view:product.product:0"
-msgid "Products"
-msgstr "Productos"
-
-msgctxt "view:product.product:0"
 msgid "General"
 msgstr "General"
 
@@ -555,6 +570,10 @@ msgstr "Producto"
 msgctxt "view:product.product:0"
 msgid "Product Suppliers"
 msgstr "Proveedores de productos"
+
+msgctxt "view:product.product:0"
+msgid "Products"
+msgstr "Productos"
 
 msgctxt "view:product.template:0"
 msgid "General"

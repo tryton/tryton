@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "error:product.category:0"
+msgid "You can not create recursive categories!"
+msgstr "U kunt geen recursieve categorieën aanmaken!"
+
 msgctxt "error:product.template:0"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr ""
@@ -294,6 +299,11 @@ msgstr ""
 "De coëfficiënt voor deze formule:\n"
 "1(basiseenheid) = coëf (deze eenheid)"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categorieën"
+
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorieën"
@@ -313,6 +323,11 @@ msgstr "Categorieën van meeteenheden"
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Meeteenheden"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categorieën"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
@@ -691,6 +706,14 @@ msgid "Products"
 msgstr "Producten"
 
 msgctxt "view:product.template:0"
+msgid "Accounting"
+msgstr "Boekhouden"
+
+msgctxt "view:product.template:0"
+msgid "Accounts"
+msgstr "Rekeningen"
+
+msgctxt "view:product.template:0"
 msgid "General"
 msgstr "Algemeen"
 
@@ -701,14 +724,6 @@ msgstr "Productsjabloon"
 msgctxt "view:product.template:0"
 msgid "Product Templates"
 msgstr "Productsjabloon"
-
-msgctxt "view:product.template:0"
-msgid "Accounting"
-msgstr "Boekhouden"
-
-msgctxt "view:product.template:0"
-msgid "Accounts"
-msgstr "Rekeningen"
 
 msgctxt "view:product.template:0"
 msgid "Taxes"
