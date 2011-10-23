@@ -34,6 +34,11 @@ msgctxt "field:project.work,rec_name:0"
 msgid "Name"
 msgstr "Име"
 
+#, fuzzy
+msgctxt "field:project.work,sequence:0"
+msgid "Sequence"
+msgstr "Последователност"
+
 msgctxt "field:project.work,state:0"
 msgid "State"
 msgstr "Състояние"
@@ -49,10 +54,6 @@ msgstr "Вид"
 msgctxt "field:project.work,work:0"
 msgid "Work"
 msgstr "Задача"
-
-msgctxt "field:timesheet.work,sequence:0"
-msgid "Sequence"
-msgstr "Последователност"
 
 msgctxt "field:timesheet.work,timesheet_lines:0"
 msgid "Timesheet Lines"
@@ -82,6 +83,11 @@ msgctxt "model:ir.action,name:act_work_form"
 msgid "Works"
 msgstr "Дейности"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works Efforts"
+msgstr "Задачи"
+
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
 msgstr "Задачи"
@@ -90,8 +96,9 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Конфигурация"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project"
-msgid "Project Management"
+msgid "Project"
 msgstr "Управление на проекти"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
@@ -104,6 +111,11 @@ msgstr "Проекти"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
+msgstr "Задачи"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works Efforts"
 msgstr "Задачи"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
@@ -155,9 +167,9 @@ msgid "Timesheet"
 msgstr "График"
 
 msgctxt "view:project.work:0"
-msgid "Works Efforts"
+msgid "Work Efforts"
 msgstr "Дейности"
 
 msgctxt "view:project.work:0"
-msgid "Work Efforts"
+msgid "Works Efforts"
 msgstr "Дейности"

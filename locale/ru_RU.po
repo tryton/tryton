@@ -4,204 +4,173 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:0"
 msgid "There should be only one timesheet work by task/project!"
-msgstr "Es kann nur ein Zeiterfassungsblatt pro Aufgabe oder Projekt geben!"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,children:0"
 msgid "Children"
-msgstr "Untergeordnet (Arbeiten)"
+msgstr "Подчиненый"
 
+#, fuzzy
 msgctxt "field:project.work,comment:0"
 msgid "Comment"
-msgstr "Kommentar"
-
-msgctxt "field:project.work,create_date:0"
-msgid "Creation date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:project.work,create_uid:0"
-msgid "Creation user"
-msgstr "Ersteller"
+msgstr "Комментарии"
 
 msgctxt "field:project.work,effort:0"
 msgid "Effort"
-msgstr "Aufwand (Personenstunden)"
+msgstr ""
 
-msgctxt "field:project.work,id:0"
-msgid "ID"
-msgstr "ID"
-
+#, fuzzy
 msgctxt "field:project.work,parent:0"
 msgid "Parent"
-msgstr "Übergeordnet (Arbeit)"
+msgstr "Основной"
 
+#, fuzzy
 msgctxt "field:project.work,party:0"
 msgid "Party"
-msgstr "Partei"
+msgstr "Организации"
 
+#, fuzzy
 msgctxt "field:project.work,party_address:0"
 msgid "Contact Address"
-msgstr "Kontaktadresse"
+msgstr "Контактный адрес"
 
+#, fuzzy
 msgctxt "field:project.work,rec_name:0"
 msgid "Name"
-msgstr "Name"
+msgstr "Наименование"
 
+#, fuzzy
 msgctxt "field:project.work,sequence:0"
 msgid "Sequence"
-msgstr "Reihenfolge"
+msgstr "Последовательность"
 
+#, fuzzy
 msgctxt "field:project.work,state:0"
 msgid "State"
-msgstr "Status"
+msgstr "Статус"
 
 msgctxt "field:project.work,total_effort:0"
 msgid "Total Effort"
-msgstr "Gesamtaufwand (Personenstunden)"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,type:0"
 msgid "Type"
-msgstr "Typ"
+msgstr "Тип"
 
 msgctxt "field:project.work,work:0"
 msgid "Work"
-msgstr "Arbeit"
-
-msgctxt "field:project.work,write_date:0"
-msgid "Last modification date"
-msgstr "Zuletzt geändert am"
-
-msgctxt "field:project.work,write_uid:0"
-msgid "Last modification by"
-msgstr "Zuletzt geändert von"
-
-msgctxt "field:timesheet.work,timesheet_lines:0"
-msgid "Timesheet Lines"
-msgstr "Zeitpositionen"
+msgstr ""
 
 msgctxt "help:project.work,effort:0"
 msgid "Estimated Effort for this work"
 msgstr ""
-"Geschätzter Aufwand für diese Arbeit in Stunden (Format: Personenstunden, "
-"-tage, -wochen)"
 
 msgctxt "help:project.work,total_effort:0"
 msgid "Estimated total effort for this work and the sub-works"
 msgstr ""
-"Geschätzter Gesamtaufwand für diese Arbeit inkl. aller untergeordneten "
-"Arbeiten in Stunden (Format: Personenstunden, -tage, -wochen)"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr "Aufgaben"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr "Projekte"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr "Aufgaben"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_form"
 msgid "Works"
-msgstr "Arbeiten"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Arbeitsaufwände"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Arbeitsaufwände"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Einstellungen"
+msgstr "Конфигурация"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Projekte"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr "Projekte"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr "Projekte"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr "Aufgaben"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Arbeitsaufwände"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Arbeitsaufwände"
+msgstr ""
 
 msgctxt "model:project.work,name:0"
 msgid "Work Effort"
-msgstr "Arbeitsaufwand"
+msgstr ""
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Projekte Administration"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:project.work,state:0"
 msgid "Done"
-msgstr "Erledigt"
+msgstr "Выполнено"
 
 msgctxt "selection:project.work,state:0"
 msgid "Opened"
-msgstr "Offen"
+msgstr ""
 
 msgctxt "selection:project.work,type:0"
 msgid "Project"
-msgstr "Projekt"
+msgstr ""
 
 msgctxt "selection:project.work,type:0"
 msgid "Task"
-msgstr "Aufgabe"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:project.work:0"
 msgid "Children"
-msgstr "Untergeordnet (Arbeiten)"
+msgstr "Подчиненый"
 
+#, fuzzy
 msgctxt "view:project.work:0"
 msgid "General"
-msgstr "Allgemein"
-
-msgctxt "view:project.work:0"
-msgid "Other Info"
-msgstr "Sonstiges"
+msgstr "Основной"
 
 msgctxt "view:project.work:0"
 msgid "Projects"
-msgstr "Projekte"
+msgstr ""
 
 msgctxt "view:project.work:0"
 msgid "Tasks"
-msgstr "Aufgaben"
+msgstr ""
 
 msgctxt "view:project.work:0"
 msgid "Timesheet"
-msgstr "Zeiterfassungsblatt"
-
-msgctxt "view:project.work:0"
-msgid "Work"
-msgstr "Arbeit"
-
-msgctxt "view:project.work:0"
-msgid "Work Efforts"
-msgstr "Arbeitsaufwände"
-
-msgctxt "view:project.work:0"
-msgid "Works"
-msgstr "Arbeiten"
+msgstr ""
 
 msgctxt "view:project.work:0"
 msgid "Works Efforts"
-msgstr "Arbeiten Aufwände"
+msgstr ""

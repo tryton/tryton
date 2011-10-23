@@ -144,16 +144,16 @@ msgid "Task"
 msgstr "Tâche"
 
 msgctxt "view:project.work:0"
-msgid "Other Info"
-msgstr "Autre information"
-
-msgctxt "view:project.work:0"
 msgid "Children"
 msgstr "Enfants"
 
 msgctxt "view:project.work:0"
 msgid "General"
 msgstr "General"
+
+msgctxt "view:project.work:0"
+msgid "Other Info"
+msgstr "Autre information"
 
 msgctxt "view:project.work:0"
 msgid "Projects"
@@ -168,6 +168,10 @@ msgid "Timesheet"
 msgstr "Feuille de présence"
 
 msgctxt "view:project.work:0"
+msgid "Work"
+msgstr "Travail"
+
+msgctxt "view:project.work:0"
 msgid "Work Efforts"
 msgstr "Activités"
 
@@ -178,7 +182,3 @@ msgstr "Travaux"
 msgctxt "view:project.work:0"
 msgid "Works Efforts"
 msgstr "Efforts de travail"
-
-msgctxt "view:project.work:0"
-msgid "Work"
-msgstr "Travail"
