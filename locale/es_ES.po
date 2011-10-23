@@ -218,6 +218,10 @@ msgctxt "field:account.invoice,currency:0"
 msgid "Currency"
 msgstr "Divisa"
 
+msgctxt "field:account.invoice,currency_date:0"
+msgid "Currency Date"
+msgstr ""
+
 msgctxt "field:account.invoice,currency_digits:0"
 msgid "Currency Digits"
 msgstr "Decimales de la divisa"
@@ -234,9 +238,9 @@ msgctxt "field:account.invoice,invoice_date:0"
 msgid "Invoice Date"
 msgstr "Fecha de factura"
 
-msgctxt "field:account.invoice,invoice_report:0"
+msgctxt "field:account.invoice,invoice_report_cache:0"
 msgid "Invoice Report"
-msgstr "Informe de facturación"
+msgstr ""
 
 msgctxt "field:account.invoice,invoice_report_format:0"
 msgid "Invoice Report Format"
@@ -1084,28 +1088,32 @@ msgid "Taxes:"
 msgstr "Impuestos:"
 
 msgctxt "odt:account.invoice:0"
-msgid "Total:"
-msgstr "Total:"
-
-msgctxt "odt:account.invoice:0"
 msgid "Total (excl. taxes):"
 msgstr "Total (sin impuestos):"
+
+msgctxt "odt:account.invoice:0"
+msgid "Total:"
+msgstr "Total:"
 
 msgctxt "odt:account.invoice:0"
 msgid "Unit Price"
 msgstr "Precio"
 
 msgctxt "odt:account.invoice:0"
+msgid "VAT Number:"
+msgstr ""
+
+msgctxt "odt:account.invoice:0"
 msgid "VAT:"
 msgstr "NIF:"
 
 msgctxt "selection:account.invoice,state:0"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "selection:account.invoice,state:0"
 msgid "Canceled"
 msgstr "Cancelada"
+
+msgctxt "selection:account.invoice,state:0"
+msgid "Draft"
+msgstr "Borrador"
 
 msgctxt "selection:account.invoice,state:0"
 msgid "Opened"
@@ -1280,20 +1288,12 @@ msgid "Amount Second Currency"
 msgstr "Cantidad en la divisa secundaria"
 
 msgctxt "view:account.invoice:0"
-msgid "_Cancel"
-msgstr "_Cancelar"
-
-msgctxt "view:account.invoice:0"
 msgid "Credit"
 msgstr "Haber"
 
 msgctxt "view:account.invoice:0"
 msgid "Debit"
 msgstr "Debe"
-
-msgctxt "view:account.invoice:0"
-msgid "_Draft"
-msgstr "_Borrador"
 
 msgctxt "view:account.invoice:0"
 msgid "Invoice"
@@ -1308,16 +1308,8 @@ msgid "Lines"
 msgstr "Líneas"
 
 msgctxt "view:account.invoice:0"
-msgid "_Open"
-msgstr "_Abrir"
-
-msgctxt "view:account.invoice:0"
 msgid "Other Info"
 msgstr "Información adicional"
-
-msgctxt "view:account.invoice:0"
-msgid "_Pay"
-msgstr "_Pagar"
 
 msgctxt "view:account.invoice:0"
 msgid "Payment"
@@ -1332,12 +1324,28 @@ msgid "Pro For_ma"
 msgstr "Pro for_ma"
 
 msgctxt "view:account.invoice:0"
-msgid "_Reset to Draft"
-msgstr "_Restablecer a borrador"
-
-msgctxt "view:account.invoice:0"
 msgid "Taxes"
 msgstr "Impuestos"
+
+msgctxt "view:account.invoice:0"
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+msgctxt "view:account.invoice:0"
+msgid "_Draft"
+msgstr "_Borrador"
+
+msgctxt "view:account.invoice:0"
+msgid "_Open"
+msgstr "_Abrir"
+
+msgctxt "view:account.invoice:0"
+msgid "_Pay"
+msgstr "_Pagar"
+
+msgctxt "view:account.invoice:0"
+msgid "_Reset to Draft"
+msgstr "_Restablecer a borrador"
 
 msgctxt "view:party.party:0"
 msgid "Payment Terms"

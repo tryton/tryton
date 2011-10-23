@@ -222,6 +222,10 @@ msgctxt "field:account.invoice,currency:0"
 msgid "Currency"
 msgstr "Valuta"
 
+msgctxt "field:account.invoice,currency_date:0"
+msgid "Currency Date"
+msgstr ""
+
 msgctxt "field:account.invoice,currency_digits:0"
 msgid "Currency Digits"
 msgstr "Valuta decimalen"
@@ -238,9 +242,9 @@ msgctxt "field:account.invoice,invoice_date:0"
 msgid "Invoice Date"
 msgstr "Factuurdatum"
 
-msgctxt "field:account.invoice,invoice_report:0"
+msgctxt "field:account.invoice,invoice_report_cache:0"
 msgid "Invoice Report"
-msgstr "Factuuroverzicht"
+msgstr ""
 
 msgctxt "field:account.invoice,invoice_report_format:0"
 msgid "Invoice Report Format"

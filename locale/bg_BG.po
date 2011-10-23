@@ -237,9 +237,9 @@ msgctxt "field:account.invoice,invoice_date:0"
 msgid "Invoice Date"
 msgstr "Дата на фактура"
 
-msgctxt "field:account.invoice,invoice_report:0"
+msgctxt "field:account.invoice,invoice_report_cache:0"
 msgid "Invoice Report"
-msgstr "Справка за фактура"
+msgstr ""
 
 msgctxt "field:account.invoice,invoice_report_format:0"
 msgid "Invoice Report Format"
@@ -1099,6 +1099,10 @@ msgid "Unit Price"
 msgstr "Единична цена"
 
 msgctxt "odt:account.invoice:0"
+msgid "VAT Number:"
+msgstr ""
+
+msgctxt "odt:account.invoice:0"
 msgid "VAT:"
 msgstr "ДДС:"
 
@@ -1137,10 +1141,6 @@ msgstr "Кредитно известие на доставчик"
 msgctxt "selection:account.invoice,type:0"
 msgid "Supplier Invoice"
 msgstr "Фактура за доставчик"
-
-msgctxt "selection:account.invoice.line,invoice_type:0"
-msgid "Access Permissions"
-msgstr "Фактура"
 
 msgctxt "selection:account.invoice.line,invoice_type:0"
 msgid "Credit Note"
