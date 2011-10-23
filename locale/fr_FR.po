@@ -210,10 +210,6 @@ msgid "Forecast Lines"
 msgstr "Lignes de prévision"
 
 msgctxt "view:stock.forecast:0"
-msgid "Forecast"
-msgstr "Prévision"
-
-msgctxt "view:stock.forecast:0"
 msgid "Add forecast line based on past data."
 msgstr "Ajouter la ligne des prévisions fondées sur des données historiques."
 
@@ -228,6 +224,10 @@ msgstr "Completer la prévision"
 msgctxt "view:stock.forecast:0"
 msgid "Confirm"
 msgstr "Confirmer"
+
+msgctxt "view:stock.forecast:0"
+msgid "Forecast"
+msgstr "Prévision"
 
 msgctxt "view:stock.forecast:0"
 msgid "Forecasts"
