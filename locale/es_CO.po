@@ -22,7 +22,8 @@ msgctxt "field:product.category,supplier_taxes:0"
 msgid "Supplier Taxes"
 msgstr "Impuestos a Proveedores"
 
-msgctxt "field:product.category-customer-account.tax,product:0"
+#, fuzzy
+msgctxt "field:product.category-customer-account.tax,category:0"
 msgid "Category"
 msgstr "Categoría"
 
@@ -34,7 +35,8 @@ msgctxt "field:product.category-customer-account.tax,tax:0"
 msgid "Tax"
 msgstr "Impuesto"
 
-msgctxt "field:product.category-supplier-account.tax,product:0"
+#, fuzzy
+msgctxt "field:product.category-supplier-account.tax,category:0"
 msgid "Category"
 msgstr "Categoría"
 

@@ -149,6 +149,11 @@ msgctxt "view:product.category:0"
 msgid "Accounting"
 msgstr "Boekhouden"
 
+#, fuzzy
+msgctxt "view:product.category:0"
+msgid "Taxes"
+msgstr "Belastingen"
+
 msgctxt "view:product.template:0"
 msgid "Accounting"
 msgstr "Boekhouden"

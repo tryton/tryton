@@ -4,161 +4,160 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.template:0"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
-msgstr "Няма зададен сметка за разходи/приходи за продукт %s (%d)"
+msgstr ""
 
 msgctxt "field:product.category,account_expense:0"
 msgid "Account Expense"
-msgstr "Разходи за сметка"
+msgstr ""
 
 msgctxt "field:product.category,account_revenue:0"
 msgid "Account Revenue"
-msgstr "Приход по сметка"
+msgstr ""
 
 msgctxt "field:product.category,customer_taxes:0"
 msgid "Customer Taxes"
-msgstr "Данъци на клиенти"
+msgstr ""
 
 msgctxt "field:product.category,supplier_taxes:0"
 msgid "Supplier Taxes"
-msgstr "Данъци на доставчик"
+msgstr ""
 
 msgctxt "field:product.category-customer-account.tax,category:0"
 msgid "Category"
-msgstr "Категория"
+msgstr ""
 
 msgctxt "field:product.category-customer-account.tax,rec_name:0"
 msgid "Name"
-msgstr "Име"
+msgstr ""
 
 msgctxt "field:product.category-customer-account.tax,tax:0"
 msgid "Tax"
-msgstr "Данък"
+msgstr ""
 
 msgctxt "field:product.category-supplier-account.tax,category:0"
 msgid "Category"
-msgstr "Категория"
+msgstr ""
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:0"
 msgid "Name"
-msgstr "Име"
+msgstr ""
 
 msgctxt "field:product.category-supplier-account.tax,tax:0"
 msgid "Tax"
-msgstr "Данък"
+msgstr ""
 
 msgctxt "field:product.template,account_category:0"
 msgid "Use Category's accounts"
-msgstr "Използване на сметките за категорията"
+msgstr ""
 
 msgctxt "field:product.template,account_expense:0"
 msgid "Account Expense"
-msgstr "Разходи за сметка"
+msgstr ""
 
 msgctxt "field:product.template,account_expense_used:0"
 msgid "Account Expense Used"
-msgstr "Използвани разходи по сметка"
+msgstr ""
 
 msgctxt "field:product.template,account_revenue:0"
 msgid "Account Revenue"
-msgstr "Приход по сметка"
+msgstr ""
 
 msgctxt "field:product.template,account_revenue_used:0"
 msgid "Account Revenue Used"
-msgstr "Използвани разходи по сметка"
+msgstr ""
 
 msgctxt "field:product.template,customer_taxes:0"
 msgid "Customer Taxes"
-msgstr "Данъци на клиенти"
+msgstr ""
 
 msgctxt "field:product.template,customer_taxes_used:0"
 msgid "Customer Taxes Used"
-msgstr "Използвани данъци на клиенти"
+msgstr ""
 
 msgctxt "field:product.template,supplier_taxes:0"
 msgid "Supplier Taxes"
-msgstr "Данъци на доставчик"
+msgstr ""
 
 msgctxt "field:product.template,supplier_taxes_used:0"
 msgid "Customer Taxes Used"
-msgstr "Използвани данъци на клиенти"
+msgstr ""
 
 msgctxt "field:product.template,taxes_category:0"
 msgid "Use Category's Taxes"
-msgstr "Използване на данъците за категорията"
+msgstr ""
 
 msgctxt "field:product.template-customer-account.tax,product:0"
 msgid "Product Template"
-msgstr "Щаблон за продукт"
+msgstr ""
 
 msgctxt "field:product.template-customer-account.tax,rec_name:0"
 msgid "Name"
-msgstr "Име"
+msgstr ""
 
 msgctxt "field:product.template-customer-account.tax,tax:0"
 msgid "Tax"
-msgstr "Данък"
+msgstr ""
 
 msgctxt "field:product.template-supplier-account.tax,product:0"
 msgid "Product Template"
-msgstr "Щаблон за продукт"
+msgstr ""
 
 msgctxt "field:product.template-supplier-account.tax,rec_name:0"
 msgid "Name"
-msgstr "Име"
+msgstr ""
 
 msgctxt "field:product.template-supplier-account.tax,tax:0"
 msgid "Tax"
-msgstr "Данък"
+msgstr ""
 
 msgctxt "help:product.template,account_category:0"
 msgid "Use the accounts defined on the category"
-msgstr "Използване на сметките зададени за категорията"
+msgstr ""
 
 msgctxt "help:product.template,account_expense:0"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
+msgstr ""
 
 msgctxt "help:product.template,account_revenue:0"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
+msgstr ""
 
 msgctxt "help:product.template,taxes_category:0"
 msgid "Use the taxes defined on the category"
-msgstr "Използване на данъците зададени за категорията"
+msgstr ""
 
 msgctxt "model:product.category-customer-account.tax,name:0"
 msgid "Category - Customer Tax"
-msgstr "Категория - Данък на клиент"
+msgstr ""
 
 msgctxt "model:product.category-supplier-account.tax,name:0"
 msgid "Category - Supplier Tax"
-msgstr "Категория - Данъци на доставчик"
+msgstr ""
 
 msgctxt "model:product.template-customer-account.tax,name:0"
 msgid "Product Template - Customer Tax"
-msgstr "Шаблон на продукт - Данък на клиент"
+msgstr ""
 
 msgctxt "model:product.template-supplier-account.tax,name:0"
 msgid "Product Template - Supplier Tax"
-msgstr "Шаблон на продукт - Данък на доставчик"
+msgstr ""
 
 msgctxt "view:product.category:0"
 msgid "Accounting"
-msgstr "Счетоводство"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:product.category:0"
 msgid "Taxes"
-msgstr "Данъци"
+msgstr ""
 
 msgctxt "view:product.template:0"
 msgid "Accounting"
-msgstr "Счетоводство"
+msgstr ""
 
 msgctxt "view:product.template:0"
 msgid "Accounts"
-msgstr "Сметки"
+msgstr ""
 
 msgctxt "view:product.template:0"
 msgid "Taxes"
-msgstr "Данъци"
+msgstr ""
