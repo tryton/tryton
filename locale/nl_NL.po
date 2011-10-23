@@ -1,0 +1,106 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.price_list.line:0"
+msgid "Invalid formula!"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.price_list,company:0"
+msgid "Company"
+msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:product.price_list,lines:0"
+msgid "Lines"
+msgstr "Regels"
+
+#, fuzzy
+msgctxt "field:product.price_list,name:0"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:product.price_list,rec_name:0"
+msgid "Name"
+msgstr "Naam bijlage"
+
+msgctxt "field:product.price_list.line,formula:0"
+msgid "Formula"
+msgstr ""
+
+msgctxt "field:product.price_list.line,price_list:0"
+msgid "Price List"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.price_list.line,product:0"
+msgid "Product"
+msgstr "Producten"
+
+#, fuzzy
+msgctxt "field:product.price_list.line,quantity:0"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+#, fuzzy
+msgctxt "field:product.price_list.line,rec_name:0"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:product.price_list.line,sequence:0"
+msgid "Sequence"
+msgstr "Reeks"
+
+#, fuzzy
+msgctxt "field:product.price_list.line,unit_digits:0"
+msgid "Unit Digits"
+msgstr "Decimalen eenheid"
+
+msgctxt "help:product.price_list.line,formula:0"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr ""
+
+msgctxt "model:product.price_list,name:0"
+msgid "Price List"
+msgstr ""
+
+msgctxt "model:product.price_list.line,name:0"
+msgid "Price List Line"
+msgstr ""
+
+msgctxt "view:party.party:0"
+msgid "Price List"
+msgstr ""
+
+msgctxt "view:product.price_list.line:0"
+msgid "Price List Line"
+msgstr ""
+
+msgctxt "view:product.price_list.line:0"
+msgid "Price List Lines"
+msgstr ""
+
+msgctxt "view:product.price_list:0"
+msgid "Price List"
+msgstr ""
+
+msgctxt "view:product.price_list:0"
+msgid "Price List Lines"
+msgstr ""
+
+msgctxt "view:product.price_list:0"
+msgid "Price Lists"
+msgstr ""
