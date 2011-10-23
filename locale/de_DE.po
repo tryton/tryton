@@ -202,7 +202,7 @@ msgstr "Brunei Darussalam"
 
 msgctxt "model:country.country,name:bo"
 msgid "Bolivia"
-msgstr "Bolivien, Plurinationaler Staat"
+msgstr "Bolivien"
 
 msgctxt "model:country.country,name:br"
 msgid "Brazil"
@@ -634,7 +634,7 @@ msgstr "Monaco"
 
 msgctxt "model:country.country,name:md"
 msgid "Moldova"
-msgstr "Moldau, Republik"
+msgstr "Moldau"
 
 msgctxt "model:country.country,name:me"
 msgid "Montenegro"
@@ -874,7 +874,7 @@ msgstr "Singapur"
 
 msgctxt "model:country.country,name:sh"
 msgid "Saint Helena"
-msgstr "St. Helena, Ascension und Tristan da Cunha"
+msgstr "Saint Helena"
 
 msgctxt "model:country.country,name:si"
 msgid "Slovenia"
@@ -1022,7 +1022,7 @@ msgstr "St. Vincent und die Grenadinen"
 
 msgctxt "model:country.country,name:ve"
 msgid "Venezuela"
-msgstr "Venezuela, Bolivarische Republik"
+msgstr "Venezuela"
 
 msgctxt "model:country.country,name:vg"
 msgid "Virgin Islands, British"
