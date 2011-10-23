@@ -22,6 +22,11 @@ msgctxt "error:account.statement:0"
 msgid "End Balance must be %s!"
 msgstr "Крайния баланс трябва да е %s!"
 
+#, fuzzy
+msgctxt "field:account.statement,balance:0"
+msgid "Balance"
+msgstr "Баланс"
+
 msgctxt "field:account.statement,company:0"
 msgid "Company"
 msgstr "Фирма"
@@ -237,6 +242,11 @@ msgstr "Ред от отчет"
 msgctxt "view:account.statement.line:0"
 msgid "Statement Lines"
 msgstr "Редове от отчет"
+
+#, fuzzy
+msgctxt "view:account.statement:0"
+msgid "Amount"
+msgstr "Сума"
 
 msgctxt "view:account.statement:0"
 msgid "Cancel"

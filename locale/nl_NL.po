@@ -23,6 +23,16 @@ msgctxt "error:account.statement:0"
 msgid "End Balance must be %s!"
 msgstr "Eindbalans moet %s zijn!"
 
+#, fuzzy
+msgctxt "field:account.statement,balance:0"
+msgid "Balance"
+msgstr "Balans"
+
+#, fuzzy
+msgctxt "field:account.statement,company:0"
+msgid "Company"
+msgstr "Bedrijf"
+
 msgctxt "field:account.statement,currency_digits:0"
 msgid "Currency Digits"
 msgstr "Valuta decimalen"
@@ -235,6 +245,11 @@ msgctxt "view:account.statement.line:0"
 msgid "Statement Lines"
 msgstr "Bankafschriftregels"
 
+#, fuzzy
+msgctxt "view:account.statement:0"
+msgid "Amount"
+msgstr "Bedrag"
+
 msgctxt "view:account.statement:0"
 msgid "Cancel"
 msgstr "Annuleren"
@@ -242,6 +257,11 @@ msgstr "Annuleren"
 msgctxt "view:account.statement:0"
 msgid "Move Lines"
 msgstr "Boekingen"
+
+#, fuzzy
+msgctxt "view:account.statement:0"
+msgid "Other Info"
+msgstr "Aanvullende informatie"
 
 msgctxt "view:account.statement:0"
 msgid "Post"

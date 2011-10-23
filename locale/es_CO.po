@@ -24,6 +24,16 @@ msgctxt "error:account.statement:0"
 msgid "End Balance must be %s!"
 msgstr "El Balance debe ser %s!"
 
+#, fuzzy
+msgctxt "field:account.statement,balance:0"
+msgid "Balance"
+msgstr "Balance"
+
+#, fuzzy
+msgctxt "field:account.statement,company:0"
+msgid "Company"
+msgstr "Compañía"
+
 msgctxt "field:account.statement,currency_digits:0"
 msgid "Currency Digits"
 msgstr "Dígitos de Moneda"
@@ -240,6 +250,11 @@ msgctxt "view:account.statement.line:0"
 msgid "Statement Lines"
 msgstr "Líneas de Estado de Cuenta"
 
+#, fuzzy
+msgctxt "view:account.statement:0"
+msgid "Amount"
+msgstr "Cantidad"
+
 msgctxt "view:account.statement:0"
 msgid "Bank Statement"
 msgstr "Extractos Bancarios"
@@ -259,6 +274,11 @@ msgstr "Cancelar"
 msgctxt "view:account.statement:0"
 msgid "Move Lines"
 msgstr "Líneas de Movimiento"
+
+#, fuzzy
+msgctxt "view:account.statement:0"
+msgid "Other Info"
+msgstr "Información Adicional"
 
 msgctxt "view:account.statement:0"
 msgid "Post"

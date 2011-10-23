@@ -247,6 +247,10 @@ msgid "Statement Lines"
 msgstr "Kontoauszug Positionen"
 
 msgctxt "view:account.statement:0"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "view:account.statement:0"
 msgid "Bank Statement"
 msgstr "Kontoauszug"
 
@@ -293,7 +297,3 @@ msgstr "Kontoauszüge"
 msgctxt "view:account.statement:0"
 msgid "Validate"
 msgstr "Prüfen"
-
-msgctxt "view:account.statement:0"
-msgid "Amount"
-msgstr "Betrag"

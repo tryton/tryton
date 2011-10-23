@@ -4,281 +4,292 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:0"
 msgid "Amount (%s) greater than the amount to pay of invoice!"
-msgstr "Le montant (%s) est plus grand que le montant à payer de la facture !"
+msgstr ""
 
 msgctxt "error:account.statement.line:0"
 msgid ""
 "Credit or debit account on journal is the same than the statement line "
 "account!"
 msgstr ""
-"Le compte de crédit ou débit sur le journal est le même que celui de la "
-"ligne de relevé !"
 
 msgctxt "error:account.statement.line:0"
 msgid "Please provide debit and credit account on statement journal."
 msgstr ""
-"Veuillez fournir un compte de débit et de crédit pour le journal de relevés."
 
 msgctxt "error:account.statement:0"
 msgid "End Balance must be %s!"
-msgstr "Le solde final doit être %s !"
+msgstr ""
 
 msgctxt "field:account.statement,balance:0"
 msgid "Balance"
-msgstr "Balance"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,company:0"
 msgid "Company"
-msgstr "Société"
+msgstr "Учет.орг."
 
 msgctxt "field:account.statement,currency_digits:0"
 msgid "Currency Digits"
-msgstr "Décimales de la devise"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,date:0"
 msgid "Date"
-msgstr "Date"
+msgstr "Дата"
 
 msgctxt "field:account.statement,end_balance:0"
 msgid "End Balance"
-msgstr "Solde final"
+msgstr ""
 
 msgctxt "field:account.statement,journal:0"
 msgid "Journal"
-msgstr "Journal"
+msgstr ""
 
 msgctxt "field:account.statement,lines:0"
 msgid "Transactions"
-msgstr "Transactions"
+msgstr ""
 
 msgctxt "field:account.statement,move_lines:0"
 msgid "Move Lines"
-msgstr "Lignes de mouvement comptable"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,rec_name:0"
 msgid "Name"
-msgstr "Nom"
+msgstr "Наименование"
 
 msgctxt "field:account.statement,start_balance:0"
 msgid "Start Balance"
-msgstr "Solde de départ"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,state:0"
 msgid "State"
-msgstr "État"
+msgstr "Статус"
 
+#, fuzzy
 msgctxt "field:account.statement.journal,company:0"
 msgid "Company"
-msgstr "Société"
+msgstr "Учет.орг."
 
+#, fuzzy
 msgctxt "field:account.statement.journal,currency:0"
 msgid "Currency"
-msgstr "Devise"
+msgstr "Валюты"
 
 msgctxt "field:account.statement.journal,journal:0"
 msgid "Journal"
-msgstr "Journal"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.journal,name:0"
 msgid "Name"
-msgstr "Nom"
+msgstr "Наименование"
 
+#, fuzzy
 msgctxt "field:account.statement.journal,rec_name:0"
 msgid "Name"
-msgstr "Nom"
+msgstr "Наименование"
 
 msgctxt "field:account.statement.line,account:0"
 msgid "Account"
-msgstr "Compte"
+msgstr ""
 
 msgctxt "field:account.statement.line,amount:0"
 msgid "Amount"
-msgstr "Montant"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line,date:0"
 msgid "Date"
-msgstr "Date"
+msgstr "Дата"
 
+#, fuzzy
 msgctxt "field:account.statement.line,description:0"
 msgid "Description"
-msgstr "Description"
+msgstr "Описание"
 
 msgctxt "field:account.statement.line,invoice:0"
 msgid "Invoice"
-msgstr "Facture"
+msgstr ""
 
 msgctxt "field:account.statement.line,move:0"
 msgid "Account Move"
-msgstr "Mouvement comptable"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line,party:0"
 msgid "Party"
-msgstr "Tiers"
+msgstr "Организации"
 
+#, fuzzy
 msgctxt "field:account.statement.line,rec_name:0"
 msgid "Name"
-msgstr "Nom"
+msgstr "Наименование"
 
 msgctxt "field:account.statement.line,statement:0"
 msgid "Statement"
-msgstr "Relevé"
+msgstr ""
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
-msgstr "Relevé"
+msgstr ""
 
 msgctxt "model:account.statement,name:0"
 msgid "Account Statement"
-msgstr "Relevé comptable"
+msgstr ""
 
 msgctxt "model:account.statement.journal,name:0"
 msgid "Statement Journal"
-msgstr "Journal de relevés"
+msgstr ""
 
 msgctxt "model:account.statement.line,name:0"
 msgid "Account Statement Line"
-msgstr "Ligne de relevé comptable"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_draft_statement_form"
 msgid "Draft Statements"
-msgstr "Relevés brouillons"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_posted_statement_form"
 msgid "Posted Statements"
-msgstr "Relevés postés"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "All Statement"
-msgstr "Tous les relevés"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Journaux de relevés"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_validated_statement_form"
 msgid "Validated Statement"
-msgstr "Relevés validés"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
 msgid "Draft Statements"
-msgstr "Relevés brouillons"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
 msgid "Posted Statements"
-msgstr "Relevés postés"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr "Relevés"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "All Statement"
-msgstr "Tous les relevés"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Journaux de relevés"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr "Relevés"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
 msgid "Validated Statement"
-msgstr "Relevés validés"
+msgstr ""
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr "Relevé"
+msgstr ""
 
 msgctxt "model:workflow,name:wkf_statement"
 msgid "Statement"
-msgstr "Relevé"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:workflow.activity,name:statement_act_cancel"
 msgid "Canceled"
-msgstr "Annulé"
+msgstr "Отменено"
 
+#, fuzzy
 msgctxt "model:workflow.activity,name:statement_act_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Черновик"
 
 msgctxt "model:workflow.activity,name:statement_act_posted"
 msgid "Posted"
-msgstr "Posté"
+msgstr ""
 
 msgctxt "model:workflow.activity,name:statement_act_validated"
 msgid "Validated"
-msgstr "Validé"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.statement,state:0"
 msgid "Canceled"
-msgstr "Annulé"
+msgstr "Отменено"
 
+#, fuzzy
 msgctxt "selection:account.statement,state:0"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Черновик"
 
 msgctxt "selection:account.statement,state:0"
 msgid "Posted"
-msgstr "Posté"
+msgstr ""
 
 msgctxt "selection:account.statement,state:0"
 msgid "Validated"
-msgstr "Validé"
+msgstr ""
 
 msgctxt "view:account.statement.journal:0"
 msgid "Statement Journal"
-msgstr "Journal de relevés"
+msgstr ""
 
 msgctxt "view:account.statement.journal:0"
 msgid "Statement Journals"
-msgstr "Journaux de relevés"
+msgstr ""
 
 msgctxt "view:account.statement.line:0"
 msgid "Statement Line"
-msgstr "Ligne de relevé"
+msgstr ""
 
 msgctxt "view:account.statement.line:0"
 msgid "Statement Lines"
-msgstr "Lignes de relevé"
+msgstr ""
 
 msgctxt "view:account.statement:0"
 msgid "Amount"
-msgstr "Montant"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:account.statement:0"
 msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:account.statement:0"
-msgid "Move Lines"
-msgstr "Lignes de mouvement comptable"
+msgstr "Отменить"
 
 msgctxt "view:account.statement:0"
 msgid "Other Info"
-msgstr "Autre information"
+msgstr ""
 
 msgctxt "view:account.statement:0"
 msgid "Post"
-msgstr "Poster"
+msgstr ""
 
+#, fuzzy
 msgctxt "view:account.statement:0"
 msgid "Reset to Draft"
-msgstr "Remetter en brouillon"
+msgstr "Сброс в черновики"
 
 msgctxt "view:account.statement:0"
 msgid "Statement"
-msgstr "Relevé"
+msgstr ""
 
 msgctxt "view:account.statement:0"
 msgid "Statement Lines"
-msgstr "Lignes de relevé"
+msgstr ""
 
 msgctxt "view:account.statement:0"
 msgid "Statements"
-msgstr "Relevés"
+msgstr ""
 
 msgctxt "view:account.statement:0"
 msgid "Validate"
-msgstr "Valider"
+msgstr ""
