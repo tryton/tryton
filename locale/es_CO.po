@@ -1,0 +1,65 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_method:0"
+msgid "Carrier Cost Method"
+msgstr ""
+
+msgctxt "field:carrier,carrier_product:0"
+msgid "Carrier Product"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:carrier,party:0"
+msgid "Party"
+msgstr "Terceros"
+
+#, fuzzy
+msgctxt "field:carrier,rec_name:0"
+msgid "Name"
+msgstr "Nombre de Contacto"
+
+msgctxt "help:carrier,carrier_cost_method:0"
+msgid "Method to compute carrier cost"
+msgstr ""
+
+msgctxt "model:carrier,name:0"
+msgid "carrier"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_carrier_form"
+msgid "Carriers"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_carrier_form2"
+msgid "Carrier"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_carrier"
+msgid "Carrier Management"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form"
+msgid "Carriers"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_carrier_form2"
+msgid "New Carrier"
+msgstr ""
+
+msgctxt "model:res.group,name:group_carrier_admin"
+msgid "Carrier Administration"
+msgstr ""
+
+msgctxt "selection:carrier,carrier_cost_method:0"
+msgid "Product Price"
+msgstr ""
+
+msgctxt "view:carrier:0"
+msgid "Carrier"
+msgstr ""
+
+msgctxt "view:carrier:0"
+msgid "Carriers"
+msgstr ""
