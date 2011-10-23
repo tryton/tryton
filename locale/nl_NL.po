@@ -116,6 +116,11 @@ msgctxt "model:company.employee,name:0"
 msgid "Employee"
 msgstr "Werknemer"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Bedrijven"
+
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
 msgstr "Bedrijven"
@@ -131,6 +136,11 @@ msgstr "Brief"
 msgctxt "model:ir.cron-company.company,name:0"
 msgid "ir.cron-company.company"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Bedrijven"
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"

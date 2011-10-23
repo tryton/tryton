@@ -116,6 +116,11 @@ msgctxt "model:company.employee,name:0"
 msgid "Employee"
 msgstr "Сотрудник"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Организация"
+
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
 msgstr "Организация"
@@ -131,6 +136,11 @@ msgstr "Письмо"
 msgctxt "model:ir.cron-company.company,name:0"
 msgid "ir.cron-company.company"
 msgstr "Планировщик"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Организация"
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
@@ -164,6 +174,10 @@ msgctxt "odt:party.letter:0"
 msgid "Subject:"
 msgstr "Тема:"
 
+msgctxt "odt:party.letter:0"
+msgid "VAT Number:"
+msgstr ""
+
 msgctxt "view:company.company.config.init:0"
 msgid "Create Company"
 msgstr "Создать организацию"
@@ -191,6 +205,11 @@ msgstr "Отчеты"
 msgctxt "view:company.employee:0"
 msgid "Employee"
 msgstr "Сотрудник"
+
+#, fuzzy
+msgctxt "view:company.employee:0"
+msgid "Employees"
+msgstr "Сотрудники"
 
 msgctxt "view:company.employee:0"
 msgid "Employess"

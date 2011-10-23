@@ -115,6 +115,11 @@ msgctxt "model:company.employee,name:0"
 msgid "Employee"
 msgstr "Empleado"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_company_list"
+msgid "Companies"
+msgstr "Compañías"
+
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
 msgstr "Compañías"
@@ -130,6 +135,11 @@ msgstr "Carta"
 msgctxt "model:ir.cron-company.company,name:0"
 msgid "ir.cron-company.company"
 msgstr "ir.cron-company.company"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company_list"
+msgid "Companies"
+msgstr "Compañías"
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
@@ -163,6 +173,10 @@ msgctxt "odt:party.letter:0"
 msgid "Subject:"
 msgstr "Título:"
 
+msgctxt "odt:party.letter:0"
+msgid "VAT Number:"
+msgstr ""
+
 msgctxt "view:company.company.config.init:0"
 msgid "Create Company"
 msgstr "Crear Compañía"
@@ -170,6 +184,10 @@ msgstr "Crear Compañía"
 msgctxt "view:company.company.config.init:0"
 msgid "You can now add your company into the system."
 msgstr "Ahora puede añadir su compañía al sistema."
+
+msgctxt "view:company.company:0"
+msgid "Addresses"
+msgstr "Direcciones"
 
 msgctxt "view:company.company:0"
 msgid "Companies"
@@ -184,16 +202,16 @@ msgid "Employees"
 msgstr "Empleados"
 
 msgctxt "view:company.company:0"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:company.company:0"
 msgid "Reports"
 msgstr "Reportes"
 
-msgctxt "view:company.company:0"
+msgctxt "view:company.employee:0"
 msgid "Addresses"
 msgstr "Direcciones"
-
-msgctxt "view:company.company:0"
-msgid "General"
-msgstr "General"
 
 msgctxt "view:company.employee:0"
 msgid "Employee"
@@ -202,10 +220,6 @@ msgstr "Empleado"
 msgctxt "view:company.employee:0"
 msgid "Employees"
 msgstr "Empleados"
-
-msgctxt "view:company.employee:0"
-msgid "Addresses"
-msgstr "Direcciones"
 
 msgctxt "view:company.employee:0"
 msgid "General"

@@ -185,6 +185,10 @@ msgid "You can now add your company into the system."
 msgstr "Vous pouvez maintenant ajouter votre société dans le système."
 
 msgctxt "view:company.company:0"
+msgid "Addresses"
+msgstr "Adresses"
+
+msgctxt "view:company.company:0"
 msgid "Companies"
 msgstr "Sociétés"
 
@@ -197,16 +201,16 @@ msgid "Employees"
 msgstr "Employés"
 
 msgctxt "view:company.company:0"
+msgid "General"
+msgstr "Général"
+
+msgctxt "view:company.company:0"
 msgid "Reports"
 msgstr "Rapports"
 
-msgctxt "view:company.company:0"
+msgctxt "view:company.employee:0"
 msgid "Addresses"
 msgstr "Adresses"
-
-msgctxt "view:company.company:0"
-msgid "General"
-msgstr "Général"
 
 msgctxt "view:company.employee:0"
 msgid "Employee"
@@ -215,10 +219,6 @@ msgstr "Employé"
 msgctxt "view:company.employee:0"
 msgid "Employees"
 msgstr "Employés"
-
-msgctxt "view:company.employee:0"
-msgid "Addresses"
-msgstr "Adresses"
 
 msgctxt "view:company.employee:0"
 msgid "General"
