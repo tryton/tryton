@@ -855,7 +855,7 @@ msgid "Currencies"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency Management"
+msgid "Currency"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"

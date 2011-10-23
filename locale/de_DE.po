@@ -268,7 +268,7 @@ msgstr "Kanadischer Dollar"
 
 msgctxt "model:currency.currency,name:cdf"
 msgid "Congolese Franc"
-msgstr "Kongo-Franc"
+msgstr "Congolese Franc"
 
 msgctxt "model:currency.currency,name:che"
 msgid "WIR Euro"
@@ -880,7 +880,7 @@ msgstr "Rand"
 
 msgctxt "model:currency.currency,name:zmk"
 msgid "Zambian Kwacha"
-msgstr "Sambischer Kwacha"
+msgstr "Zambian Kwacha"
 
 msgctxt "model:currency.currency,name:zwd"
 msgid "Zimbabwe Dollar"

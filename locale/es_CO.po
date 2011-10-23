@@ -227,7 +227,7 @@ msgid "Canadian Dollar"
 msgstr "Dólar canadiense"
 
 msgctxt "model:currency.currency,name:cdf"
-msgid "Franc Congolais"
+msgid "Congolese Franc"
 msgstr "Congolese Franc"
 
 msgctxt "model:currency.currency,name:che"
@@ -839,7 +839,7 @@ msgid "Rand"
 msgstr "Rand"
 
 msgctxt "model:currency.currency,name:zmk"
-msgid "Kwacha"
+msgid "Zambian Kwacha"
 msgstr "Zambian Kwacha"
 
 msgctxt "model:currency.currency,name:zwd"
@@ -854,8 +854,9 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Monedas"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency Management"
+msgid "Currency"
 msgstr "Gestión de Monedas"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"

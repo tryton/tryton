@@ -11,10 +11,6 @@ msgid "Invalid Grouping!"
 msgstr "Невалидно групиране!"
 
 msgctxt "error:currency.currency:0"
-msgid "Nigeria"
-msgstr "Нигерия"
-
-msgctxt "error:currency.currency:0"
 msgid "No rate found for the currency: %s at the date: %s"
 msgstr "Не е намерен курс за валута: %s за дата: %s"
 
@@ -858,8 +854,9 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Валути"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
-msgid "Currency Management"
+msgid "Currency"
 msgstr "Управление на валути"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"

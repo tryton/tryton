@@ -43,6 +43,7 @@ Permet de formater les montants en fonction de la devise.
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
+        'locale/nl_NL.po',
         'locale/ru_RU.po',
     ]
 }
