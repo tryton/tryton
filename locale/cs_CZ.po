@@ -2,101 +2,78 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:dashboard.action,act_window:0"
 msgid "Action"
-msgstr "Acción"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:dashboard.action,rec_name:0"
 msgid "Name"
-msgstr "Nombre de Contacto"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:dashboard.action,sequence:0"
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:dashboard.action,user:0"
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user,dashboard_actions:0"
 msgid "Dashboard Actions"
-msgstr "Acciones del Escritorio"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user,dashboard_layout:0"
 msgid "Dashboard Layout"
-msgstr "Diseño del Escritorio"
+msgstr ""
 
 msgctxt "model:dashboard.action,name:0"
 msgid "dashboard.action"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr "Escritorio"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr "Escritorio"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:res.user,dashboard_layout:0"
 msgid "Square"
-msgstr "Cuadrado"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:res.user,dashboard_layout:0"
 msgid "Stack Bottom"
-msgstr "Al Fondo"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:res.user,dashboard_layout:0"
 msgid "Stack Left"
-msgstr "A la Izquierda"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:res.user,dashboard_layout:0"
 msgid "Stack Right"
-msgstr "A la Derecha"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:res.user,dashboard_layout:0"
 msgid "Stack Top"
-msgstr "A la Cima"
+msgstr ""
 
-#, fuzzy
-msgctxt "view:dashboard.action:0"
-msgid "Dashboard"
-msgstr "Escritorio"
-
-#, fuzzy
 msgctxt "view:dashboard.action:0"
 msgid "Dashboard Action"
-msgstr "Acción del Escritorio"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:dashboard.action:0"
 msgid "Dashboard Actions"
-msgstr "Acción del Escritorio"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:res.user:0"
 msgid "Dashboard"
-msgstr "Escritorio"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:res.user:0"
 msgid "Dashboard Action"
-msgstr "Acción del Escritorio"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:res.user:0"
 msgid "Dashboard Actions"
-msgstr "Acción del Escritorio"
+msgstr ""

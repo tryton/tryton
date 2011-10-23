@@ -59,16 +59,16 @@ msgid "Stack Top"
 msgstr "Подравнени отгоре"
 
 msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Табло"
+
+msgctxt "view:dashboard.action:0"
 msgid "Dashboard Action"
 msgstr "Действие на таблото"
 
 msgctxt "view:dashboard.action:0"
 msgid "Dashboard Actions"
 msgstr "Действия на табло"
-
-msgctxt "view:dashboard.action:0"
-msgid "Dashboard"
-msgstr "Табло"
 
 msgctxt "view:res.user:0"
 msgid "Dashboard"

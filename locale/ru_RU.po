@@ -59,16 +59,16 @@ msgid "Stack Top"
 msgstr "Стек сверху"
 
 msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Информационная панель"
+
+msgctxt "view:dashboard.action:0"
 msgid "Dashboard Action"
 msgstr "Панель действия"
 
 msgctxt "view:dashboard.action:0"
 msgid "Dashboard Actions"
 msgstr "Панель действий"
-
-msgctxt "view:dashboard.action:0"
-msgid "Dashboard"
-msgstr "Информационная панель"
 
 msgctxt "view:res.user:0"
 msgid "Dashboard"

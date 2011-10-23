@@ -59,16 +59,16 @@ msgid "Stack Top"
 msgstr "Stapel boven"
 
 msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Prikbord"
+
+msgctxt "view:dashboard.action:0"
 msgid "Dashboard Action"
 msgstr "Prikbord actie"
 
 msgctxt "view:dashboard.action:0"
 msgid "Dashboard Actions"
 msgstr "Prikbord acties"
-
-msgctxt "view:dashboard.action:0"
-msgid "Dashboard"
-msgstr "Prikbord"
 
 msgctxt "view:res.user:0"
 msgid "Dashboard"

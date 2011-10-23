@@ -34,6 +34,11 @@ msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
 msgstr "Escritorio"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_dashboard"
+msgid "Dashboard"
+msgstr "Escritorio"
+
 msgctxt "selection:res.user,dashboard_layout:0"
 msgid "Square"
 msgstr "Ajustado"
@@ -55,16 +60,16 @@ msgid "Stack Top"
 msgstr "De abajo a arriba"
 
 msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Escritorio"
+
+msgctxt "view:dashboard.action:0"
 msgid "Dashboard Action"
 msgstr "Acción del escritorio"
 
 msgctxt "view:dashboard.action:0"
 msgid "Dashboard Actions"
 msgstr "Acciones del escritorio"
-
-msgctxt "view:dashboard.action:0"
-msgid "Dashboard"
-msgstr "Escritorio"
 
 msgctxt "view:res.user:0"
 msgid "Dashboard"
