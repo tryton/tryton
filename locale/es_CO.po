@@ -238,22 +238,6 @@ msgctxt "field:purchase.purchase,moves:0"
 msgid "Moves"
 msgstr "Movimientos"
 
-msgctxt "field:purchase.purchase,packing_done:0"
-msgid "Shipment Done"
-msgstr "Envío Finalizado"
-
-msgctxt "field:purchase.purchase,packing_exception:0"
-msgid "Shipments Exception"
-msgstr "Excepción de Envíos"
-
-msgctxt "field:purchase.purchase,packing_state:0"
-msgid "Shipment State"
-msgstr "Estado de Envío"
-
-msgctxt "field:purchase.purchase,packings:0"
-msgid "Shipments"
-msgstr "Envíos"
-
 msgctxt "field:purchase.purchase,party:0"
 msgid "Party"
 msgstr "Tercero"
@@ -387,22 +371,6 @@ msgid "Paid"
 msgstr "Pagado"
 
 msgctxt "selection:purchase.purchase,invoice_state:0"
-msgid "Waiting"
-msgstr "En Espera"
-
-msgctxt "selection:purchase.purchase,packing_state:0"
-msgid "Exception"
-msgstr "Excepción"
-
-msgctxt "selection:purchase.purchase,packing_state:0"
-msgid "None"
-msgstr "Ninguno"
-
-msgctxt "selection:purchase.purchase,packing_state:0"
-msgid "Received"
-msgstr "Recibido"
-
-msgctxt "selection:purchase.purchase,packing_state:0"
 msgid "Waiting"
 msgstr "En Espera"
 
