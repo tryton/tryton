@@ -180,6 +180,10 @@ msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
 msgstr "Покупки"
 
+msgctxt "model:ir.action,name:act_purchase_request_create_purchase_request"
+msgid "Create Purchase Requests"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Заявки за покупка"
@@ -199,6 +203,10 @@ msgstr "Генериране на заявки за покупка"
 msgctxt "model:ir.cron,name:cron_shipment_iternal"
 msgid "Generate Internal Shipments"
 msgstr "Генериране на вътрешна пратка"
+
+msgctxt "model:ir.ui.menu,name:menu_create_purchase_request"
+msgid "Create Purchase Requests"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
@@ -223,6 +231,10 @@ msgstr "Създаване на покупка - питане на партнь�
 msgctxt "model:purchase.request.create_purchase.ask_term,name:0"
 msgid "Create Purchase Ask Term"
 msgstr "Запитване за създаване на условие за плащане"
+
+msgctxt "model:purchase.request.create_purchase_request.init,name:0"
+msgid "Create Purchase Request Init"
+msgstr ""
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -272,6 +284,14 @@ msgctxt "view:purchase.request.create_purchase.ask_term:0"
 msgid "Create Purchase: Missing Payment Term"
 msgstr "Създаване на покупка: Липсва условие за плащане"
 
+msgctxt "view:purchase.request.create_purchase_request.init:0"
+msgid "Create Purchase Request"
+msgstr ""
+
+msgctxt "view:purchase.request.create_purchase_request.init:0"
+msgid "Create Purchase Request?"
+msgstr ""
+
 msgctxt "view:purchase.request:0"
 msgid "Product Info"
 msgstr "Информация за продукт"
@@ -319,3 +339,13 @@ msgstr "Отказ"
 msgctxt "wizard_button:purchase.request.create_purchase,ask_user_term,init:0"
 msgid "Continue"
 msgstr "Продължаване"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.request.create_purchase_request,init,create:0"
+msgid "Create"
+msgstr "Създаване"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.request.create_purchase_request,init,end:0"
+msgid "Cancel"
+msgstr "Отказ"

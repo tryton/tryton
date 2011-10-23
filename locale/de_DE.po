@@ -279,12 +279,12 @@ msgid "Purchase"
 msgstr "Bestellvorschlag"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:0"
-msgid "Create Purchase: Missing Supplier"
-msgstr "Auftragerstellung: Fehlender Lieferant"
-
-msgctxt "view:purchase.request.create_purchase.ask_party:0"
 msgid ""
 msgstr ""
+
+msgctxt "view:purchase.request.create_purchase.ask_party:0"
+msgid "Create Purchase: Missing Supplier"
+msgstr "Auftragerstellung: Fehlender Lieferant"
 
 msgctxt "view:purchase.request.create_purchase.ask_term:0"
 msgid "Create Purchase: Missing Payment Term"
@@ -319,6 +319,10 @@ msgid "supply Info"
 msgstr "Info Lieferant"
 
 msgctxt "view:stock.order_point:0"
+msgid "Locations"
+msgstr "Lagerorte"
+
+msgctxt "view:stock.order_point:0"
 msgid "Order Point"
 msgstr "Bestellpunkt"
 
@@ -333,10 +337,6 @@ msgstr "Bestellpunkte"
 msgctxt "view:stock.order_point:0"
 msgid "Product Info"
 msgstr "Artikelinfo"
-
-msgctxt "view:stock.order_point:0"
-msgid "Locations"
-msgstr "Lagerorte"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_user_party,end:0"
 msgid "Cancel"
