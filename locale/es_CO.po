@@ -148,6 +148,10 @@ msgctxt "field:timesheet.work,timesheet_available:0"
 msgid "Available on timesheets"
 msgstr "Disponibilidad en las hojas de tiempos"
 
+msgctxt "field:timesheet.work,timesheet_lines:0"
+msgid ""
+msgstr ""
+
 msgctxt "field:timesheet.work.open.init,from_date:0"
 msgid "From Date"
 msgstr "Fecha Inicial"
@@ -204,6 +208,16 @@ msgctxt "model:ir.action,name:act_work_form3"
 msgid "Hours per Work"
 msgstr "Horas por Trabajo"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_hours_board"
+msgid "Hours per Work"
+msgstr "Horas por Trabajo"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Trabajos"
+
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works"
 msgstr "Trabajos"
@@ -240,9 +254,15 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Reportes"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
-msgid "Timesheet Management"
+msgid "Timesheet"
 msgstr "Hoja de Tiempo"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Trabajos"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works"

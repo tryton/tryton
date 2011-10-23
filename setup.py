@@ -46,9 +46,13 @@ setup(name='trytond_timesheet',
         'Intended Audience :: Manufacturing',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Natural Language :: Bulgarian',
+        'Natural Language :: Czech',
         'Natural Language :: Dutch',
         'Natural Language :: English',
+        'Natural Language :: French'
         'Natural Language :: German',
+        'Natural Language :: Russian'
+        'Natural Language :: Spanish',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',

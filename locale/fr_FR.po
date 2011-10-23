@@ -348,12 +348,12 @@ msgid "Hours per Work"
 msgstr "Heures par activité"
 
 msgctxt "view:timesheet.work:0"
-msgid "Works"
-msgstr "Travaux"
-
-msgctxt "view:timesheet.work:0"
 msgid "Work"
 msgstr "Travail"
+
+msgctxt "view:timesheet.work:0"
+msgid "Works"
+msgstr "Travaux"
 
 msgctxt "wizard_button:timesheet.enter_lines,init,end:0"
 msgid "Cancel"
