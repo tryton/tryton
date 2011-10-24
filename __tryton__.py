@@ -7,7 +7,7 @@
     'name_es_CO': 'Compra Analítica',
     'name_es_ES': 'Compra analítica',
     'name_fr_FR': 'Achat analytique',
-    'version': '2.2.0',
+    'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
