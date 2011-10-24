@@ -10,7 +10,7 @@
     'name_fr_FR': 'Tiers',
     'name_nl_NL': 'Relaties',
     'name_ru_RU': 'Контрагенты',
-    'version' : '2.1.0',
+    'version' : '2.2.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
