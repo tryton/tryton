@@ -7,7 +7,7 @@
     'name_es_CO': 'Lista de precios de producto',
     'name_es_ES': 'Lista de precios de producto',
     'name_fr_FR' : 'Liste de prix produit',
-    'version': '2.2.0',
+    'version': '2.2.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
