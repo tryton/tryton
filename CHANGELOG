@@ -1,3 +1,5 @@
+Version 2.2.0 - 2011-10-24
+* Bug fixes (see mercurial logs for details)
 * Add currency name in status bar
 * Allow to change user company with context
 
