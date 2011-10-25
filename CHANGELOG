@@ -1,3 +1,5 @@
+Version 2.2.0 - 2011-10-25
+* Bug fixes (see mercurial logs for details)
 * Forecast creates draft moves only on demand
 * Forecast works at warehouse level
 * Allow 'production' as destination
