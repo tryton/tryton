@@ -4,7 +4,7 @@
     'name': 'Stock Supply Forecast',
     'name_de_DE': 'Lagerverwaltung Bestellwesen Bedarfsermittlung',
     'name_fr_FR': 'Prévisions et approvisionnemenets de stock',
-    'version': '2.2.0',
+    'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
