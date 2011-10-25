@@ -6,7 +6,7 @@
     'name_de_DE': 'Verkauf Lieferposten Kosten',
     'name_es_ES': 'Costo del método de envio',
     'name_fr_FR': "Coût d'expédition de vente",
-    'version' : '2.1.0',
+    'version' : '2.2.0',
     'author' : 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
