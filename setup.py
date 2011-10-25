@@ -49,9 +49,9 @@ setup(name='trytond_timesheet',
         'Natural Language :: Czech',
         'Natural Language :: Dutch',
         'Natural Language :: English',
-        'Natural Language :: French'
+        'Natural Language :: French',
         'Natural Language :: German',
-        'Natural Language :: Russian'
+        'Natural Language :: Russian',
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.6',
