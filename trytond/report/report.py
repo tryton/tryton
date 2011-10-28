@@ -21,7 +21,7 @@ warnings.resetwarnings()
 try:
     from relatorio.templates.opendocument import Manifest, MANIFEST
 except ImportError:
-    Manifest = None
+    Manifest, MANIFEST = None, None
 from genshi.filters import Translator
 import lxml.etree
 from trytond.config import CONFIG
