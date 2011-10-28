@@ -72,16 +72,16 @@ class CurrencyTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
             cu1_id = self.get_currency('cu1')
 
-            self.assertRaises(Exception, self.currency.write, cu1_id, 
+            self.assertRaises(Exception, self.currency.write, cu1_id,
                 {'mon_grouping': ''})
 
-            self.assertRaises(Exception, self.currency.write, cu1_id, 
+            self.assertRaises(Exception, self.currency.write, cu1_id,
                 {'mon_grouping': '[a]'})
 
-            self.assertRaises(Exception, self.currency.write, cu1_id, 
+            self.assertRaises(Exception, self.currency.write, cu1_id,
                 {'mon_grouping': '[1,"a"]'})
 
-            self.assertRaises(Exception, self.currency.write, cu1_id, 
+            self.assertRaises(Exception, self.currency.write, cu1_id,
                 {'mon_grouping': '[1,"1"]'})
 
     def test0030rate(self):
@@ -105,7 +105,7 @@ class CurrencyTestCase(unittest.TestCase):
                 })
             self.assert_(rate2_id)
 
-            self.assertEqual(rate1, self.currency.read(cu1_id, 
+            self.assertEqual(rate1, self.currency.read(cu1_id,
                 ['rate'])['rate'])
 
             transaction.cursor.commit()
@@ -187,7 +187,7 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
             cu1_id = self.get_currency('cu1')
-    
+
             amount = Decimal("10")
             converted_amount = self.currency.compute(
                     cu1_id, amount, cu1_id, True)
@@ -214,7 +214,7 @@ class CurrencyTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
             cu1_id = self.get_currency('cu1')
             cu2_id = self.get_currency('cu2')
-    
+
             rate_ids = self.rate.search([
                     ('currency', '=', cu1_id),
                     ], 0, 1, None)
@@ -240,13 +240,13 @@ class CurrencyTestCase(unittest.TestCase):
                 'symbol': 'cu3',
                 'code': 'cu3'
                 })
-    
+
             amount = Decimal("10")
             self.assertRaises(Exception, self.currency.compute,
                     cu3_id, amount, cu1_id, True)
-            self.assertRaises(Exception, self.currency.compute, 
+            self.assertRaises(Exception, self.currency.compute,
                     cu1_id, amount, cu3_id, True)
-    
+
             transaction.cursor.rollback()
 
     def test0120compute_bothmissingrate(self):
@@ -264,11 +264,11 @@ class CurrencyTestCase(unittest.TestCase):
                 'symbol': 'cu4',
                 'code': 'cu4'
                 })
-    
+
             amount = Decimal("10")
             self.assertRaises(Exception, self.currency.compute,
                     cu3_id, amount, cu4_id, True)
-    
+
             transaction.cursor.rollback()
 
     def test0130delete_cascade(self):
@@ -279,12 +279,12 @@ class CurrencyTestCase(unittest.TestCase):
             codes = ['cu%s' % (i + 1) for i in range(2)]
             currency_ids = [self.get_currency(i) for i in codes]
             self.currency.delete(currency_ids)
-    
+
             rate_ids = self.rate.search([(
                     'currency', 'in', currency_ids,
                     )], 0, None, None)
             self.assertFalse(rate_ids)
-    
+
             transaction.cursor.rollback()
 
 
