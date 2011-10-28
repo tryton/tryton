@@ -24,7 +24,7 @@ warnings.resetwarnings()
 try:
     from relatorio.templates.opendocument import Manifest, MANIFEST
 except ImportError:
-    Manifest = None
+    Manifest, MANIFEST = None, None
 
 import tempfile
 from genshi.filters import Translator
