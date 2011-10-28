@@ -141,7 +141,7 @@ class EmployeeCostPrice(ModelSQL, ModelView):
 
     def on_change_with_currency_digits(self, cursor, user, ids, vals,
             context=None):
-        company_obj = self.pool.get('company.employee')
+        employee_obj = self.pool.get('company.employee')
         if vals.get('employee'):
             employee = employee_obj.browse(cursor, user, vals['employee'],
                     context=context)
