@@ -1109,7 +1109,7 @@ class ModelSQL(ModelStorage):
             try:
                 cursor.execute('DELETE FROM "'+self._table+'" ' \
                         'WHERE ' + red_sql, red_ids)
-            except DatabaseIntegrityError:
+            except DatabaseIntegrityError, exception:
                 database = Database(cursor.database_name).connect()
                 cursor2 = database.cursor()
                 try:
