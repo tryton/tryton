@@ -91,7 +91,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         currency_obj = pool.get('currency.currency')
 
         try:
-            result = super(ShipmentOut, self).on_change_lines(value)
+            result = super(ShipmentOut, self).on_change_lines(values)
         except AttributeError:
             result = {}
         carrier = carrier_obj.browse(values['carrier'])
