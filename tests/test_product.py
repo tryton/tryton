@@ -186,7 +186,7 @@ class ProductTestCase(unittest.TestCase):
                     [
                         ('name', '=', to_name),
                     ], limit=1)[0])
-                self.assert_(result == self.uom.compute_price(from_uom, 
+                self.assert_(result == self.uom.compute_price(from_uom,
                     price, to_uom))
 
 def suite():

@@ -279,7 +279,7 @@ class Uom(ModelSQL, ModelView):
                     process_args(args[i])
                 i += 1
         process_args(args)
-        return super(Uom, self).search(args, offset=offset, limit=limit, 
+        return super(Uom, self).search(args, offset=offset, limit=limit,
                 order=order, count=count,
                 query_string=query_string)
 
