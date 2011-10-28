@@ -152,7 +152,7 @@ class User(ModelSQL, ModelView):
         return True
 
     def _get_preferences(self, user, context_only=False):
-        res = super(User, self)._get_preferences(user, 
+        res = super(User, self)._get_preferences(user,
                 context_only=context_only)
         if not context_only:
             res['main_company'] = user.main_company.id
@@ -219,7 +219,7 @@ class Property(ModelSQL, ModelView):
         if user_id == 0:
             user_id = Transaction().context.get('user', user_id)
         user = user_obj.browse(user_id)
-        res = super(Property, self)._set_values(name, model, res_id, val, 
+        res = super(Property, self)._set_values(name, model, res_id, val,
                 field_id)
         if user:
             res['company'] = user.company.id
