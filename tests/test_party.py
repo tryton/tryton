@@ -63,7 +63,7 @@ class PartyTestCase(unittest.TestCase):
                 })
             self.assert_(category2_id)
 
-            self.failUnlessRaises(Exception, self.category.write, 
+            self.failUnlessRaises(Exception, self.category.write,
                     category1_id, {
                         'parent': category2_id,
                     })
@@ -92,7 +92,7 @@ class PartyTestCase(unittest.TestCase):
                 'name': 'Party 2',
                 })
 
-            self.failUnlessRaises(Exception, self.party.write, 
+            self.failUnlessRaises(Exception, self.party.write,
                     party2_id, {
                         'code': code,
                     })
