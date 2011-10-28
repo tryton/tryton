@@ -843,7 +843,7 @@ class Line(ModelSQL, ModelView):
             amount = cursor.fetchone()[0]
             # SQLite uses float for SUM
             if not isinstance(amount, Decimal):
-                amout = Decimal(str(amount))
+                amount = Decimal(str(amount))
             if not currency_obj.is_zero( party.account_receivable.currency,
                     amount):
                 if amount > Decimal('0.0'):
