@@ -687,7 +687,7 @@ class ReportTranslationSet(Wizard):
                 content_io = StringIO.StringIO(content)
                 try:
                     content_z = zipfile.ZipFile(content_io, mode='r')
-                except BadZipfile:
+                except zipfile.BadZipfile:
                     continue
 
                 content_xml = content_z.read('content.xml')
