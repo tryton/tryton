@@ -26,7 +26,7 @@ warnings.resetwarnings()
 try:
     from relatorio.templates.opendocument import Manifest, MANIFEST
 except ImportError:
-    Manifest = None
+    Manifest, MANIFEST = None, None
 from genshi.filters import Translator
 from trytond.config import CONFIG
 from trytond.backend import DatabaseIntegrityError
