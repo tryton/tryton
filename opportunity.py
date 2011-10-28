@@ -178,8 +178,8 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         res = {
             'payment_term': False,
         }
-        if vals.get('party'):
-            party = party_obj.browse(cursor, user, vals['party'],
+        if values.get('party'):
+            party = party_obj.browse(cursor, user, values['party'],
                     context=context)
             if party.payment_term:
                 res['payment_term'] = party.payment_term.id
