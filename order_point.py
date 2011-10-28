@@ -121,7 +121,7 @@ class OrderPoint(ModelSQL, ModelView):
         same product and same company.
         """
         internal_ids = self.search([
-            ('id', 'in', ids), 
+            ('id', 'in', ids),
             ('type', '=', 'internal'),
             ])
         if not internal_ids:
