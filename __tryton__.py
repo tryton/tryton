@@ -3,6 +3,7 @@
 {
     'name': 'Purchase',
     'name_bg_BG': 'Покупки',
+    'name_ca_ES': 'Compres',
     'name_de_DE': 'Einkauf',
     'name_es_CO': 'Compras',
     'name_es_ES': 'Compras',
@@ -32,6 +33,18 @@ With the possibilities:
         - Ръчно
         - Въз основа на поръчка
         - Въз основа на доставка
+''',
+    'description_ca_ES': '''Defineix comandes de compra.
+- Afegeix informació de proveïdor i de compra d'un producte.
+- Es defineix el preu de compra amb el preu de proveïdor o cost.
+
+Amb la possibilitat de:
+
+- Seguir l'estat de facturació i enviament des de la comanda de compra.
+- Definir el mètode de facturació:
+    - Manual
+    - Basat en la comanda de compra
+    - Basat en l'albarà de sortida
 ''',
     'description_de_DE': ''' - Dient der Erstellung von Einkaufsvorgängen (Entwurf, Angebot, Auftrag).
  - Fügt den Artikeln Lieferanten und Einkaufsinformationen hinzu.
@@ -98,6 +111,7 @@ Avec la possibilité:
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
