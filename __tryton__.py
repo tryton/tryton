@@ -3,6 +3,7 @@
 {
     "name" : "Purchase Invoice Line Standalone",
     "name_bg_BG" : "Ред от независима фактура към покупка",
+    'name_ca_ES': 'Línia de factura de compres independents',
     "name_de_DE" : "Einkauf ungebundene Rechnungsposition",
     "name_es_CO" : "Línea de Factura autónoma en Compras",
     "name_es_ES" : "Línea de factura de compra independiente",
@@ -20,6 +21,10 @@ from differents purchases.
     - Промяна на поведението при поръчка за покупка като вместо пълна фактура
       създава редове с независими фактури.
     - Позволява създаване на фактури с редове от различни покупки.
+''',
+    'description_ca_ES': '''Modifica el comportament de les comandes de compra
+perquè crei línies de factura enlloc d'una factura completa. Això permet crear 
+factures amb línies provinents de diferents compres.
 ''',
     "description_de_DE": '''Einkäufe mit ungebundenen Rechnungspositionen
     - Ändert das Verhalten im Einkaufsvorgang, indem unabhängige Rechnungspositionen
@@ -50,6 +55,7 @@ composer des factures avec des lignes provenant de différents achats.
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
