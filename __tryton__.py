@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Stock Continental',
+    'name_ca_ES': 'Gestió d''estocs continental',
     'name_de_DE': 'Buchhaltung Lagerbewertung Kontinentale Methode',
     'name_fr_FR': 'Gestion de stock continentale',
     'version': '2.3.0',
@@ -10,6 +11,8 @@
     'website': 'http://www.tryton.org/',
     'description': '''Add continental stock accounting for real-time stock valuation.
 ''',
+    'description_ca_ES': '''Afegeix comptabilitat d'estocs continental per 
+la aloració d'estocs en temps real.''',
     'description_de_DE': '''
     - Fügt die kontinentale Methode der Lagerbewertung in Echt-Zeit hinzu.
 ''',
