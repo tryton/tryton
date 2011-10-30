@@ -4,6 +4,7 @@
 {
     'name' : 'Party',
     'name_bg_BG': 'Партньор',
+    'name_ca_ES': 'Tercers',
     'name_de_DE': 'Parteien',
     'name_es_CO': 'Terceros',
     'name_es_ES': 'Terceros',
@@ -16,6 +17,7 @@
     'website': 'http://www.tryton.org/',
     'description': 'Define parties, addresses and co.',
     'description_bg_BG': 'Задаване на партньори, адреси и тн.',
+    'description_ca_ES': 'Defineix tercers, direccions, etc.',
     'description_de_DE': 'Ermöglicht die Erstellung von Parteien, Adressen, etc.',
     'description_es_CO': 'Definición de terceros, direcciones, etc.',
     'description_es_ES': 'Define terceros, direcciones, etc...',
@@ -36,6 +38,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
