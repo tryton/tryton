@@ -38,35 +38,30 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_stock_configuration" icon="tryton-list"/>
 
         <record model="ir.property" id="property_shipment_in_sequence">
-            <field name="name">shipment_in_sequence</field>
             <field name="field"
                 search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'shipment_in_sequence')]"/>
             <field name="value" eval="'ir.sequence,' + str(ref('sequence_shipment_in'))"/>
         </record>
 
         <record model="ir.property" id="property_shipment_in_return_sequence">
-            <field name="name">shipment_int_return_sequence</field>
             <field name="field"
                 search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'shipment_in_return_sequence')]"/>
             <field name="value" eval="'ir.sequence,' + str(ref('sequence_shipment_in_return'))"/>
         </record>
 
         <record model="ir.property" id="property_shipment_out_sequence">
-            <field name="name">shipment_out_sequence</field>
             <field name="field"
                 search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'shipment_out_sequence')]"/>
             <field name="value" eval="'ir.sequence,' + str(ref('sequence_shipment_out'))"/>
         </record>
 
         <record model="ir.property" id="property_shipment_out_return_sequence">
-            <field name="name">shipment_out_return_sequence</field>
             <field name="field"
                 search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'shipment_out_return_sequence')]"/>
             <field name="value" eval="'ir.sequence,' + str(ref('sequence_shipment_out_return'))"/>
         </record>
 
         <record model="ir.property" id="property_shipment_internal_sequence">
-            <field name="name">shipment_internal_sequence</field>
             <field name="field"
                 search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'shipment_internal_sequence')]"/>
             <field name="value" eval="'ir.sequence,' + str(ref('sequence_shipment_internal'))"/>

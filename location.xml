@@ -225,14 +225,12 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.property" id="property_supplier_location">
-            <field name="name">supplier_location</field>
             <field name="field"
                    search="[('model.model', '=', 'party.party'),
                            ('name', '=', 'supplier_location')]"/>
             <field name="value" eval="'stock.location,' + str(ref('location_supplier'))"/>
         </record>
         <record model="ir.property" id="property_customer_location">
-            <field name="name">customer_location</field>
             <field name="field"
                    search="[('model.model', '=', 'party.party'),
                            ('name', '=', 'customer_location')]"/>
