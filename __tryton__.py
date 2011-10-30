@@ -3,6 +3,7 @@
 {
     'name': 'Account Statement',
     'name_bg_BG': 'Отчет на сметка',
+    'name_ca_ES': 'Estat de comptes',
     'name_de_DE': 'Buchhaltung Bankauszüge',
     'name_es_CO': 'Estado de Cuentas',
     'name_es_ES': 'Estado de cuentas',
@@ -19,6 +20,10 @@
     'description_bg_BG': '''Финансов и счетоводен модул с:
     - Отчети
     - Дневник на отчети
+''',
+    'description_ca_ES': '''Mòdul financer i comptable amb:
+    - Estat de comptes
+    - Diari de l'estat de comptes
 ''',
     'description_de_DE': '''Modul für Buchhaltung und Bankauszüge mit
     - Abstimmung von Bankauszügen und Rechnungen
@@ -53,6 +58,7 @@
         ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
