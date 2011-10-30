@@ -3,6 +3,7 @@
 {
     'name': 'Analytic Sale',
     'name_bg_BG': 'Аналитична продажба',
+    'name_ca_ES': 'Vendes analítiques',
     'name_de_DE': 'Kostenstellen Verkauf',
     'name_es_CO': 'Ventas Analíticas',
     'name_es_ES': 'Venta analítica',
@@ -15,6 +16,8 @@
 ''',
     'description_bg_BG': '''Добавя аналитична сметка към редове от продажба
 ''',
+    'description_ca_ES': '''Afegeix un compte analític a les línies de les
+comandes de venda.''',
     'description_de_DE': '''Fügt Kostenstellen zu den Verkaufspositionen hinzu
 ''',
     'description_es_CO': '''Añade cuentas analíticas a las líneas de ventas.
@@ -31,6 +34,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
