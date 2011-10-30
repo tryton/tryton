@@ -3,6 +3,7 @@
 {
     'name': 'Stock Management',
     'name_bg_BG': 'Управление на наличности',
+    'name_ca_ES': 'Estocs',
     'name_de_DE': 'Lagerverwaltung',
     'name_es_CO': 'Inventarios',
     'name_es_ES': 'Gestión de existencias',
@@ -35,6 +36,17 @@ And with reports:
     - Опаковъчен лист
     - Преизчисляване на инвентарен опис (при пратка на доставчик и пратка върната от клиент)
     - Продукти по местонахождение
+''',
+    'description_ca_ES': '''Gestió d'estocs i control d'inventaris amb:
+- Definició d'ubicacions
+- Moviments d'estoc
+- Albarans de proveïdors, clients i interns. Albarans de devolució a client i proveïdor.
+
+Amb informes:
+- Nota d'entrega
+- Albarà intern o de picking
+- Llista de realcul d'estocs (en recepcions de proveïdors i de devolucions de clients)
+- Productes per ubiació
 ''',
     'description_de_DE': '''Lagerverwaltung und Bestandskontrolle mit:
     - Definition von Lagerorten
@@ -116,6 +128,7 @@ Et les rapports:
     'translation': [
         'locale/cs_CZ.po',
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
