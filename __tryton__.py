@@ -3,6 +3,7 @@
 {
     "name" : "Stock Product Location",
     "name_bg_BG" : "Местонахождение на наличност на продукт",
+    'name_ca_ES': 'Ubicació d''estoc de producte',
     "name_de_DE" : "Lagerverwaltung Artikel Lagerort",
     "name_es_CO" : "Ubicación de existencias de producto",
     "name_es_ES" : "Ubicación de existencias de producto",
@@ -18,6 +19,10 @@ inventory moves.
     "description_bg_BG": '''Задаване на местонахождение по подрабиране на
     на продукт по склад. Тези местонахождения ще бъдат използвани при пратки
     от доставчик за генериране на движения за инвентаризация.
+''',
+    'description_ca_ES': '''Defineix la ubicació del magatzem predeterminat pel 
+dipòsit i producte. Aquestes ubicacions s'utilitzaran en l'enviament de proveïdor 
+per generar moviments d'inventari.
 ''',
     "description_de_DE": '''Standardlagerorte für Artikel
     - Ermöglicht die Definition von Standardlagerorten für Artikel in einem Warenlager
@@ -48,6 +53,7 @@ générer les mouvements internes.
     'translation': [
         'locale/cs_CZ.po',
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
