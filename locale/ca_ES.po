@@ -1,0 +1,163 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:project.work:0"
+msgid "You can not create recursive dependencies!"
+msgstr "No pot crear dependències recursives"
+
+msgctxt "field:project.allocation,employee:0"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:project.allocation,percentage:0"
+msgid "Percentage"
+msgstr "Percentatge"
+
+msgctxt "field:project.allocation,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:project.allocation,work:0"
+msgid "Work"
+msgstr "Activitat"
+
+msgctxt "field:project.predecessor_successor,predecessor:0"
+msgid "Predecessor"
+msgstr "Predecessor"
+
+msgctxt "field:project.predecessor_successor,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:project.predecessor_successor,successor:0"
+msgid "Successor"
+msgstr "Successor"
+
+msgctxt "field:project.work,actual_finish_date:0"
+msgid "Actual Finish"
+msgstr "Finalització real"
+
+msgctxt "field:project.work,actual_finish_time:0"
+msgid "Actual Finish Time"
+msgstr "Hora de finalització real"
+
+msgctxt "field:project.work,actual_start_date:0"
+msgid "Actual Start"
+msgstr "Inici real"
+
+msgctxt "field:project.work,actual_start_time:0"
+msgid "Actual Start Time"
+msgstr "Hora d'inici real"
+
+msgctxt "field:project.work,allocations:0"
+msgid "Allocations"
+msgstr "Assignacions"
+
+msgctxt "field:project.work,back_leveling_delay:0"
+msgid "Leveling Delay"
+msgstr "Retard de l'anivellació"
+
+msgctxt "field:project.work,constraint_finish_date:0"
+msgid "Constraint Finish"
+msgstr "Restricció de finalització"
+
+msgctxt "field:project.work,constraint_finish_time:0"
+msgid "Constraint  Finish Time"
+msgstr "Restricció d'hora de finalització"
+
+msgctxt "field:project.work,constraint_start_date:0"
+msgid "Constraint Start"
+msgstr "Restricció d'inici"
+
+msgctxt "field:project.work,constraint_start_time:0"
+msgid "Constraint Start Time"
+msgstr "Restricció de temps d'inici"
+
+msgctxt "field:project.work,duration:0"
+msgid "Duration"
+msgstr "Durada"
+
+msgctxt "field:project.work,early_finish_date:0"
+msgid "Early Finish"
+msgstr "Finalització prematura"
+
+msgctxt "field:project.work,early_finish_time:0"
+msgid "Early Finish Time"
+msgstr "Hora de finalització prematura"
+
+msgctxt "field:project.work,early_start_date:0"
+msgid "Early Start"
+msgstr "Inici prematur"
+
+msgctxt "field:project.work,early_start_time:0"
+msgid "Early Start Time"
+msgstr "Temps d'inici prematur"
+
+msgctxt "field:project.work,late_finish_date:0"
+msgid "Late Finish"
+msgstr ""
+
+msgctxt "field:project.work,late_finish_time:0"
+msgid "Late Finish Time"
+msgstr "Hora de finalització tardana"
+
+msgctxt "field:project.work,late_start_date:0"
+msgid "Late Start"
+msgstr "Inici tardà"
+
+msgctxt "field:project.work,late_start_time:0"
+msgid "Late Start Time"
+msgstr "Hora d'inici tardana"
+
+msgctxt "field:project.work,leveling_delay:0"
+msgid "Leveling Delay"
+msgstr "Retard d'anivellació"
+
+msgctxt "field:project.work,predecessors:0"
+msgid "Predecessors"
+msgstr "Predecessors"
+
+msgctxt "field:project.work,requests:0"
+msgid "Requests"
+msgstr "Sol·licituds"
+
+msgctxt "field:project.work,successors:0"
+msgid "Successors"
+msgstr "Successors"
+
+msgctxt "model:ir.action,name:wizard_leveling"
+msgid "Tasks Leveling"
+msgstr "Anivellació de tasques"
+
+msgctxt "model:project.allocation,name:0"
+msgid "Allocation"
+msgstr "Assignació"
+
+msgctxt "model:project.predecessor_successor,name:0"
+msgid "Predecessor - Successor"
+msgstr "Predecessor - Successor"
+
+msgctxt "model:res.request.link,name:request_link_work"
+msgid "Work"
+msgstr "Activitat"
+
+msgctxt "view:project.allocation:0"
+msgid "Allocation"
+msgstr "Assignació"
+
+msgctxt "view:project.allocation:0"
+msgid "Allocations"
+msgstr "Assignacions"
+
+msgctxt "view:project.work:0"
+msgid "Allocations"
+msgstr "Assignacions"
+
+msgctxt "view:project.work:0"
+msgid "Plan"
+msgstr "Pla"
+
+msgctxt "view:project.work:0"
+msgid "Requests"
+msgstr "Sol·licituds"

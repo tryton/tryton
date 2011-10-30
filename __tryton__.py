@@ -3,6 +3,7 @@
 {
     'name': 'Project Plan',
     'name_bg_BG': 'Планиране на проекти',
+    'name_ca_ES': 'Planificació de projectes',
     'name_de_DE': 'Projekte Planung',
     'name_es_CO': 'Planeación de Proyectos',
     'name_es_ES': 'Planificación de proyecto',
@@ -15,6 +16,8 @@
 ''',
     'description_bg_BG': '''Добавя възможност за планиране на проекти
 ''',
+    'description_ca_ES': '''Afegeix la capacitat de planificació de 
+projectes.''',
     'description_de_DE': '''Projektmodul Planung:
     - Fügt Planungsmöglichkeiten für Projekte hinzu
 ''',
@@ -36,6 +39,7 @@
     'translation': [
         'locale/cs_CZ.po',
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
