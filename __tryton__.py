@@ -3,6 +3,7 @@
 {
     'name': 'Analytic Invoice',
     'name_bg_BG': 'Аналитична фактура',
+    'name_ca_ES': 'Facturació analítica',
     'name_de_DE': 'Kostenstellen Rechnungsstellung',
     'name_es_CO': 'Facturación Analítica',
     'name_es_ES': 'Facturación analítica',
@@ -14,6 +15,9 @@
     'description': '''Add analytic account on invoice lines and generate analytic lines on the moves of invoice.
 ''',
     'description_bg_BG': ''' - Добавя аналитична сметна за редове на фактури и генерира аналитични редове за движения от фактура
+''',
+    'description_ca_ES': '''Afegeix un compte analític a les línies de factura
+i genera línies analítiques pels assentaments de la factura.
 ''',
     'description_de_DE': ''' - Fügt Kostenstellen zu Rechnungszeilen hinzu
  - Erstellt Positionen für Kostenstellen bei Buchung von Rechnungen
@@ -36,6 +40,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
