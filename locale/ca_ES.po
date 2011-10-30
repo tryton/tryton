@@ -1,0 +1,90 @@
+#
+# Albert Cervera i Areny <albert@nan-tic.com>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: Albert Cervera i Areny <albert@nan-tic.com>\n"
+"PO-Revision-Date: 2011-10-22 12:57+0200\n"
+"Project-Id-Version: \n"
+"Language-Team: Catalan <>\n"
+"Language: ca\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgctxt "field:dashboard.action,act_window:0"
+msgid "Action"
+msgstr "Acció"
+
+msgctxt "field:dashboard.action,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:dashboard.action,sequence:0"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:dashboard.action,user:0"
+msgid "User"
+msgstr "Usuari"
+
+msgctxt "field:res.user,dashboard_actions:0"
+msgid "Dashboard Actions"
+msgstr "Accions de l'escriptori"
+
+msgctxt "field:res.user,dashboard_layout:0"
+msgid "Dashboard Layout"
+msgstr "Organització de l'escriptori"
+
+msgctxt "model:dashboard.action,name:0"
+msgid "dashboard.action"
+msgstr "dashboard.action"
+
+msgctxt "model:ir.action,name:act_dashboard"
+msgid "Dashboard"
+msgstr "Escriptori"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Square"
+msgstr "Ajustat"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Bottom"
+msgstr "De dalt a baix"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Left"
+msgstr "De dreta a esquerra"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Right"
+msgstr "D'esquerra a dreta"
+
+msgctxt "selection:res.user,dashboard_layout:0"
+msgid "Stack Top"
+msgstr "De baix a dalt"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Action"
+msgstr "Acció de l'escriptori"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard Actions"
+msgstr "Accions de l'escriptori"
+
+msgctxt "view:dashboard.action:0"
+msgid "Dashboard"
+msgstr "Escriptori"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard"
+msgstr "Escriptori"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Action"
+msgstr "Acció de l'escriptori"
+
+msgctxt "view:res.user:0"
+msgid "Dashboard Actions"
+msgstr "Accions de l'escriptori"

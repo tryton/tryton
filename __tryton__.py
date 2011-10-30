@@ -4,6 +4,7 @@
 {
     'name': 'Dashboard',
     'name_bg_BG': 'Табло',
+    'name_ca_ES': 'Escriptori',
     'name_de_DE': 'Dashboard',
     'name_es_CO': 'Escritorio',
     'name_es_ES': 'Escritorio',
@@ -19,6 +20,9 @@
 ''',
     'description_bg_BG': '''Табло:
     - Позволява създаване на перосонализирани табла.
+''',
+    'description_ca_ES': '''Escriptori:
+    - Permet la creació d'una pàgina d'inici personalitzada per usuari.
 ''',
     'description_de_DE': '''Dashboard:
     - Ermöglicht die Einrichtung einer personalisierten Startseite.
@@ -49,6 +53,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
