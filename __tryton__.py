@@ -3,6 +3,7 @@
 {
     'name': 'Stock Inventory for many locations',
     'name_bg_BG': 'Инвентаризация на наличност за много местонахождения',
+    'name_ca_ES': 'Inventari de moltes ubicacions',
     'name_de_DE': 'Lagerverwaltung Bestandskorrektur für mehrere Lagerorte',
     'name_es_CO': 'Inventario de existencias para muchas ubicaciones',
     'name_es_ES': 'Inventario de existencias para muchas ubicaciones',
@@ -17,6 +18,8 @@ given list of locations.
     'description_bg_BG': '''Добавя помощник, който позволява създаване на автоматични
       инвентаризации за зададен списък от местонахождения
 ''',
+    'description_ca_ES': '''Afegeix un assitent per permetre crear inventaris
+automàtics per a una llista d'ubicacions donada.''',
     'description_de_DE': '''Bestandskorrektur für mehrere Lagerorte
     - Fügt einen Wizard hinzu, der automatisch die Lagerbestände für eine Liste
       von Lagerorten erzeugt.
@@ -42,6 +45,7 @@ pour une liste donnée d'emplacements.
     'translation': [
         'locale/cs_CZ.po',
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
