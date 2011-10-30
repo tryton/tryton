@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Stock Supply Forecast',
+    'name_ca_ES': 'Previsió de subministre d''estoc',
     'name_de_DE': 'Lagerverwaltung Bestellwesen Bedarfsermittlung',
     'name_fr_FR': 'Prévisions et approvisionnemenets de stock',
     'version': '2.3.0',
@@ -10,6 +11,9 @@
     'website': 'http://www.tryton.org/',
     'description': '''Take care of forecast when generating purchase requests.
 ''',
+    'description_ca_ES': '''Té en compte les previsions quan es generen 
+peticions de compra.
+''',   
     'description_de_DE': '''Bestellwesen mit Bedarfsermittlung
     - Berücksichtigt die Vorhersagen der Bedarfsermittlung im Bestellwesen
 ''',
