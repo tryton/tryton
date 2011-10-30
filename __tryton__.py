@@ -3,6 +3,7 @@
 {
     'name': 'Product Cost FIFO',
     'name_bg_BG': 'FIFO цена на продукт',
+    'name_ca_ES': 'Cost FIFO de productes',
     'name_de_DE': 'Artikel Kostenpreisermittlung FIFO',
     'name_es_CO': 'Costo FIFO de producto',
     'name_es_ES': 'Coste FIFO de producto',
@@ -22,6 +23,11 @@ product (if the cost price method is FIFO)
     - След инсталиране на този модул цената на даден продукт (ако е избран този
       начин на остойностяване) се изчислява автоматично при всяко движение на
       наличност от доставчик или към клиент
+''',
+    'description_ca_ES': '''Afegeix el mètode de cost FIFO al formulari de producte.
+Un cop instal·lat, el preu dels moviments d'estoc des d'un proveïdor o un client, 
+actualitzarà automàticament el preu de cost del producte relacionat (si el mètode
+de càlcul del preu de cost és FIFO).
 ''',
     'description_de_DE':'''Kostenpreisermittlung für Artikel nach Methode 'FIFO'
     - Fügt 'FIFO' (First In - First Out) zu den Methoden für die
@@ -54,6 +60,7 @@ prix de revient du produit concerné (si la méthode de coût est FIFO).
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
