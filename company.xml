@@ -178,7 +178,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                     <data>
                         <xpath
-                            expr="/form/field[@name=&quot;name&quot;]"
+                            expr="/form/field[@name='field']"
                             position="after">
                             <label name="company"/>
                             <field name="company" colspan="3"/>
@@ -194,7 +194,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                     <data>
                         <xpath
-                            expr="/tree/field[@name=&quot;name&quot;]"
+                            expr="/tree/field[@name='field']"
                             position="after">
                             <field name="company"/>
                         </xpath>
