@@ -3,6 +3,7 @@
 {
     'name': 'Stock Forecast',
     'name_bg_BG': 'Прогнозиране на наличност',
+    'name_ca_ES': 'Previsió d''estocs',
     'name_de_DE': 'Lagerverwaltung Bedarfsermittlung',
     'name_es_CO': 'Previsión de existencias',
     'name_es_ES': 'Previsión de existencias',
@@ -25,6 +26,14 @@ process to take forecasts into account.
       количества отчитайки периоди в миналто. След потвърждаване на формата, съответните
       движения биват създадени и разпределени равномерно за периода. Тези движения
       позволяват на други процеси да вземат предвид тези прогнози.
+''',
+    'description_ca_ES': '''Proveeix el model de «Previsió» en la gestió d'inventaris.
+El formulari de previsió permet definir els moviments d'estoc previstos
+cap a clients en el futur. Un assistent permet calcular les quantitats previstes
+respecte a un període en el passat. Una vegada el formulari es confirma, els 
+moviments corresponents es creen i es distribueixen homogèniament al llarg del 
+període. Aquests moviments permetran a altres processos tenir en compte les 
+previsions.
 ''',
     'description_de_DE':'''Bedarfsermittlung für die Lagerverwaltung
     - Fügt das Modell "Vorhersage" zur Lagerverwaltung hinzu.
@@ -77,6 +86,7 @@ prévisions.
     'translation': [
         'locale/cs_CZ.po',
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
