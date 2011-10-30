@@ -4,6 +4,7 @@
 {
     'name': 'Company',
     'name_bg_BG': 'Фирма',
+    'name_ca_ES': 'Companyia',
     'name_de_DE': 'Unternehmen',
     'name_es_CO': 'Compañía',
     'name_es_ES': 'Empresa',
@@ -26,6 +27,13 @@ Make the scheduler run on each companies.
  - Задаване на нов анализатор на справки с фирмен горен колонтитул
  - Добавяне на шаблон на писмо за партньор
  - Възможност планировщика да работи на всяка фирма
+''',
+    'description_ca_ES': '''- Defineix companyia i empleats.
+- Afegeix l'empresa principal i predeterminada en les preferències dels usuaris.
+- Afegeix l'empresa a les propietats.
+- Defineix un nou analitzador pels informes amb l'encapçalament de la companyia.
+- Afegeix una plantilla de carta a tercers.
+- Fa que el planificador de tasques s'executi per companyia.
 ''',
     'description_de_DE': ''' - Ermöglicht die Eingabe von Umternehmen und Mitarbeitern.
  - Fügt Haupt- und aktuelles Unternehmen zu den Benutzereinstellungen hinzu.
@@ -81,6 +89,7 @@ Lance les planificateurs sur chaque société.
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',

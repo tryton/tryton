@@ -1,0 +1,239 @@
+#
+# Albert Cervera i Areny <albert@nan-tic.com>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: Albert Cervera i Areny <albert@nan-tic.com>\n"
+"PO-Revision-Date: 2011-10-22 12:28+0200\n"
+"Project-Id-Version: \n"
+"Language-Team: Catalan <>\n"
+"Language: ca\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgctxt "error:company.company:0"
+msgid "You can not create recursive companies!"
+msgstr "No pot crear empreses recursives"
+
+msgctxt "error:res.user:0"
+msgid "You can not set a company that is not a child of your main company!"
+msgstr ""
+"No pot establir una empresa que no és filla de la seva empresa principal"
+
+msgctxt "field:company.company,childs:0"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:company.company,currency:0"
+msgid "Currency"
+msgstr "Divisa"
+
+msgctxt "field:company.company,employees:0"
+msgid "Employees"
+msgstr "Empleats"
+
+msgctxt "field:company.company,footer:0"
+msgid "Footer"
+msgstr "Peu de pàgina"
+
+msgctxt "field:company.company,header:0"
+msgid "Header"
+msgstr "Encapçalat"
+
+msgctxt "field:company.company,parent:0"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:company.company,party:0"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:company.company,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:company.employee,company:0"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:company.employee,party:0"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:company.employee,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.cron,companies:0"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "field:ir.cron-company.company,company:0"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:ir.cron-company.company,cron:0"
+msgid "Cron"
+msgstr "Programador de tasques"
+
+msgctxt "field:ir.cron-company.company,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.property,company:0"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:ir.sequence,company:0"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:ir.sequence.strict,company:0"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:res.user,companies:0"
+msgid "Current Companies"
+msgstr "Empreses actuals"
+
+msgctxt "field:res.user,company:0"
+msgid "Current Company"
+msgstr "Empresa actual"
+
+msgctxt "field:res.user,employee:0"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:res.user,main_company:0"
+msgid "Main Company"
+msgstr "Empresa principal"
+
+msgctxt "help:ir.cron,companies:0"
+msgid "Companies registered for this cron"
+msgstr "Empreses registrades en aquest programador de tasques"
+
+msgctxt "model:company.company,name:0"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "model:company.company.config.init,name:0"
+msgid "Company Config Init"
+msgstr "Inicialització de la configuració de l'empresa"
+
+msgctxt "model:company.employee,name:0"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "model:ir.action,name:act_company_tree"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "model:ir.action,name:act_employee_form"
+msgid "Employees"
+msgstr "Empleats"
+
+msgctxt "model:ir.action,name:report_letter"
+msgid "Letter"
+msgstr "Carta"
+
+msgctxt "model:ir.cron-company.company,name:0"
+msgid "ir.cron-company.company"
+msgstr "ir.cron-company.company"
+
+msgctxt "model:ir.ui.menu,name:menu_company_tree"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "model:ir.ui.menu,name:menu_employee_form"
+msgid "Employees"
+msgstr "Empleats"
+
+msgctxt "odt:party.letter:0"
+msgid "Best Regards,"
+msgstr "Atentament,"
+
+msgctxt "odt:party.letter:0"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "odt:party.letter:0"
+msgid "Dear Madams and Sirs,"
+msgstr "Estimats senyors i senyores,"
+
+msgctxt "odt:party.letter:0"
+msgid "E-Mail:"
+msgstr "Correu electrònic:"
+
+msgctxt "odt:party.letter:0"
+msgid "Phone:"
+msgstr "Telèfon:"
+
+msgctxt "odt:party.letter:0"
+msgid "Subject:"
+msgstr "Assumpte:"
+
+msgctxt "view:company.company.config.init:0"
+msgid "Create Company"
+msgstr "Crear empresa"
+
+msgctxt "view:company.company.config.init:0"
+msgid "You can now add your company into the system."
+msgstr "Ara pot afegir la seva empresa al sistema."
+
+msgctxt "view:company.company:0"
+msgid "Companies"
+msgstr "Empreses"
+
+msgctxt "view:company.company:0"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "view:company.company:0"
+msgid "Employees"
+msgstr "Empleats"
+
+msgctxt "view:company.company:0"
+msgid "Reports"
+msgstr "Informes"
+
+msgctxt "view:company.company:0"
+msgid "Addresses"
+msgstr "Adreces"
+
+msgctxt "view:company.company:0"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:company.employee:0"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "view:company.employee:0"
+msgid "Employees"
+msgstr "Empleats"
+
+msgctxt "view:company.employee:0"
+msgid "Addresses"
+msgstr "Adreces"
+
+msgctxt "view:company.employee:0"
+msgid "General"
+msgstr "General"
+
+msgctxt "wizard_button:company.company.config,company,add:0"
+msgid "Add"
+msgstr "Afegir"
+
+msgctxt "wizard_button:company.company.config,company,end:0"
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+msgctxt "wizard_button:company.company.config,init,company:0"
+msgid "Ok"
+msgstr "Acceptar"
+
+msgctxt "wizard_button:company.company.config,init,end:0"
+msgid "Cancel"
+msgstr "Cancel·lar"
