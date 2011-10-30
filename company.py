@@ -213,13 +213,13 @@ class Property(ModelSQL, ModelView):
                 Eval('context', {}).get('company', 0)),
             ])
 
-    def _set_values(self, name, model, res_id, val, field_id):
+    def _set_values(self, model, res_id, val, field_id):
         user_obj = Pool().get('res.user')
         user_id = Transaction().user
         if user_id == 0:
             user_id = Transaction().context.get('user', user_id)
         user = user_obj.browse(user_id)
-        res = super(Property, self)._set_values(name, model, res_id, val, 
+        res = super(Property, self)._set_values(model, res_id, val, 
                 field_id)
         if user:
             res['company'] = user.company.id
