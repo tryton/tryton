@@ -202,7 +202,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.property" id="property_product_cost_price_method">
-            <field name="name">cost_price_method</field>
             <field name="field"
                 search="[('model.model', '=', 'product.template'), ('name', '=', 'cost_price_method')]"/>
             <field name="value">,fixed</field>
