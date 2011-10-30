@@ -3,6 +3,7 @@
 {
     'name': 'Company Work Time',
     'name_bg_BG': 'Работно време на фирма',
+    'name_ca_ES': 'Hores de treball a la companyia',
     'name_de_DE': 'Unternehmen Arbeitszeit',
     'name_es_CO': 'Tiempo de Trabajo en la Compañía',
     'name_es_ES': 'Tiempo de trabajo en la empresa',
@@ -13,6 +14,9 @@
     'website': 'http://www.tryton.org/',
     'description': '''
 ''',
+    'description_ca_ES': '''Afegeix les hores de treball al dia, setmana, mes i 
+any per companyia.
+'''
     'depends': [
         'ir',
         'company',
@@ -22,6 +26,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
