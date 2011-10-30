@@ -3,6 +3,7 @@
 {
     'name': 'Stock Location Sequence',
     'name_bg_BG': 'Последователност за местонахождение на наличност',
+    'name_ca_ES': 'Seqüència per les ubicacions d''estoc',
     'name_de_DE': 'Lagerverwaltung Lagerortsequenz',
     'name_es_CO': 'Secuencia de Sitio del Stock',
     'name_es_ES': 'Secuencia de ubicación de existencias',
@@ -15,6 +16,7 @@
 ''',
     'description_bg_BG': '''Добавя последователност към местонахождение на обект
 ''',
+    'description_ca_ES': '''Afegeix una seqüència a l'objecte d'ubicacions.''',
     'description_de_DE': '''Fügt dem Objekt Lagerort eine Sequenz hinzu
 ''',
     'description_es_CO': '''Añade una secuencia e sitio a un objeto
@@ -32,6 +34,7 @@
     'translation': [
         'locale/cs_CZ.po',
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
