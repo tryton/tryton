@@ -3,6 +3,7 @@
 {
     'name': 'Timesheet',
     'name_bg_BG': 'График',
+    'name_ca_ES': 'Fulls de treball',
     'name_de_DE': 'Zeiterfassung',
     'name_es_CO': 'Hoja de Asistencia',
     'name_es_ES': 'Partes de trabajo',
@@ -29,6 +30,15 @@ And with reports:
     - Часове за задача
     - Часове по служител за седмица
     - Часове по служител за месец
+''',
+    'description_ca_ES': '''Mòdul de fulls de treball amb:
+- Feines o tasques
+- Línies de fulls de treball
+
+I els informes:
+- Hores per tasca
+- Hores per empleat per setmana
+- Hores per empleat per mes
 ''',
     'description_de_DE': '''Zeiterfassungsmodul mit:
     - Aufgaben
@@ -89,6 +99,7 @@ Bijbehorende rapporten:
     'translation': [
         'locale/cs_CZ.po',
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
