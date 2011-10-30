@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'German Chart of Accounts SKR03',
+    'name_ca_ES': 'Pla de comptes alemany',
     'name_de_DE': 'Deutscher Kontenrahmen SKR03',
     'version': '2.3.0',
     'author': 'virtual things',
