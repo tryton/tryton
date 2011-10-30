@@ -4,6 +4,7 @@
 {
     'name' : 'Product',
     'name_bg_BG': 'Продукт',
+    'name_ca_ES': 'Productes',
     'name_de_DE': 'Artikel',
     'name_es_CO': 'Productos',
     'name_es_ES': 'Producto',
@@ -17,6 +18,8 @@
     'description': 'Define products, categories of product, units ' \
         'of measure, categories of units of measure.',
     'description_bg_BG': 'Задаване на продукти, категории продукти, мерни единици, категории мерни единици.',
+    'description_ca_ES': '''Defineix productes, categories de producte, unitats
+de mesura, categories d'unitats de mesura.''',
     'description_de_DE': 'Dient der Erstellung von Artikeln, Artikelkategorien, Maßeinheiten und Kategorien für Maßeinheiten.',
     'description_es_CO': 'Definición de productos, categorías de producto unidades de medida y categorías de unidades de medida',
     'description_es_ES': 'Define productos, categorías de producto, unidades de medida y categorías de unidades de medida',
@@ -39,6 +42,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
