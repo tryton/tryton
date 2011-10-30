@@ -1,0 +1,70 @@
+#
+# Albert Cervera i Areny <albert@nan-tic.com>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: Albert Cervera i Areny <albert@nan-tic.com>\n"
+"PO-Revision-Date: 2011-10-22 13:41+0200\n"
+"Project-Id-Version: \n"
+"Language-Team: Catalan <>\n"
+"Language: ca\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgctxt "field:purchase.product_supplier,weekdays:0"
+msgid "Week Days"
+msgstr "Dies de la setmana"
+
+msgctxt "field:purchase.product_supplier.day,product_supplier:0"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "field:purchase.product_supplier.day,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:purchase.product_supplier.day,weekday:0"
+msgid "Week Day"
+msgstr "Dia de la setmana"
+
+msgctxt "model:purchase.product_supplier.day,name:0"
+msgid "Product Supplier Day"
+msgstr "Dia del proveïdor del producte"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Friday"
+msgstr "Divendres"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Monday"
+msgstr "Dilluns"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Saturday"
+msgstr "Dissabte"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Sunday"
+msgstr "Diumenge"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Thursday"
+msgstr "Dijous"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Tuesday"
+msgstr "Dimarts"
+
+msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgid "Wednesday"
+msgstr "Dimecres"
+
+msgctxt "view:purchase.product_supplier.day:0"
+msgid "Week Day"
+msgstr "Dia de la setmana"
+
+msgctxt "view:purchase.product_supplier:0"
+msgid "Week Days"
+msgstr "Dies de la setmana"
