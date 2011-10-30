@@ -3,6 +3,7 @@
 {
     'name': 'Sales Leads and Opportunities',
     'name_bg_BG': 'Инициативи и възможности за продажба',
+    'name_ca_ES': 'Iniciatives i oportunitats comercials',
     'name_de_DE': 'Verkauf Interessenten und Chancen',
     'name_fr_FR': 'Contacts commerciaux et opportunités de ventes',
     'version': '2.3.0',
@@ -21,6 +22,12 @@
     - Превръшане на инициативи във възможности
     - Запис на неосъществени инициативи
     - Превръщане на възможности в поръчки за продажба
+''',
+    'description_ca_ES': '''Aquest mòdul permet la gestió de:
+    - Iniciatives comercials
+    - La conversió d'iniciatives a oportunitats
+    - Registre d'iniciatives perdudes
+    - Oportunitats a comandes de venda
 ''',
     'description_de_DE': '''Ermöglicht:
     - die Anlage von Interessenten (Leads)
