@@ -3,6 +3,7 @@
 {
     'name': 'Stock Supply Management',
     'name_bg_BG': 'Управление на доставка на наличност',
+    'name_ca_ES': 'Gestió de subministre d''estocs',
     'name_de_DE': 'Lagerverwaltung Bestellwesen',
     'name_es_CO': 'Gestión de pedidos de inventario',
     'name_es_ES': 'Gestión de suministro de existencias',
@@ -26,6 +27,14 @@ With schedulers:
 С планировщици:
     - за генериране на заявки за покупка въз основа на пренареждания
     - за генериране на вътрешни пратки въз основа на пренареждания
+''',
+    'description_ca_ES': '''Mòdul per la gestió del subministre d'estocs amb:
+- Estocs mínims
+- Peticions de compra
+
+I planificadors:
+- Per generar peticions de compra basades en estocs mínims
+- Per generar albarans interns basats en estocs mínims
 ''',
     'description_de_DE': '''Modul für das Bestellwesen mit:
     - Bestellpunkten
@@ -77,6 +86,7 @@ sur base des règles d'approvisionnement
     'translation': [
         'locale/cs_CZ.po',
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
