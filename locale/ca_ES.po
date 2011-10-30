@@ -1,0 +1,330 @@
+#
+# Albert Cervera i Areny <albert@nan-tic.com>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: Albert Cervera i Areny <albert@nan-tic.com>\n"
+"PO-Revision-Date: 2011-10-22 12:19+0200\n"
+"Project-Id-Version: \n"
+"Language-Team: Catalan <>\n"
+"Language: ca\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgctxt "error:analytic_account.account.selection:0"
+msgid ""
+"Can not have many accounts with the same root or a missing mandatory root "
+"account!"
+msgstr ""
+"No pot tenir varis comptes amb el mateix compte arrel o falta un compte "
+"arrel obligatòri"
+
+msgctxt "error:analytic_account.account:0"
+msgid "You can not create recursive accounts!"
+msgstr "No pot crear comptes recursius"
+
+msgctxt "error:analytic_account.line:0"
+msgid "Wrong credit/debit values!"
+msgstr "Els valors deure\\/haver són incorrectes"
+
+msgctxt "error:analytic_account.line:0"
+msgid ""
+"You can not create move line\n"
+"on view/inactive account!"
+msgstr ""
+"No pot crear una apunt en un\n"
+"compte vista o inactiu"
+
+msgctxt "field:account.move.line,analytic_lines:0"
+msgid "Analytic Lines"
+msgstr "Línies analítiques"
+
+msgctxt "field:analytic_account.account,active:0"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:analytic_account.account,balance:0"
+msgid "Balance"
+msgstr "Balanç"
+
+msgctxt "field:analytic_account.account,childs:0"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:analytic_account.account,code:0"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:analytic_account.account,company:0"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.account,credit:0"
+msgid "Credit"
+msgstr "Haver"
+
+msgctxt "field:analytic_account.account,currency:0"
+msgid "Currency"
+msgstr "Divisa"
+
+msgctxt "field:analytic_account.account,currency_digits:0"
+msgid "Currency Digits"
+msgstr "Decimals de la divisa"
+
+msgctxt "field:analytic_account.account,debit:0"
+msgid "Debit"
+msgstr "Deure"
+
+msgctxt "field:analytic_account.account,display_balance:0"
+msgid "Display Balance"
+msgstr "Mostrar balanç"
+
+msgctxt "field:analytic_account.account,mandatory:0"
+msgid "Mandatory"
+msgstr "Obligatori"
+
+msgctxt "field:analytic_account.account,name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.account,note:0"
+msgid "Note"
+msgstr "Nota"
+
+msgctxt "field:analytic_account.account,parent:0"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:analytic_account.account,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.account,root:0"
+msgid "Root"
+msgstr "Arrel"
+
+msgctxt "field:analytic_account.account,state:0"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:analytic_account.account,type:0"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt ""
+"field:analytic_account.account-analytic_account.account.selection,account:0"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt ""
+"field:analytic_account.account-analytic_account.account.selection,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt ""
+"field:analytic_account.account-analytic_account.account.selection,selection:0"
+msgid "Selection"
+msgstr "Selecció"
+
+msgctxt "field:analytic_account.account.open_chart_account.init,end_date:0"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:analytic_account.account.open_chart_account.init,start_date:0"
+msgid "Start Date"
+msgstr "Data d'inici"
+
+msgctxt "field:analytic_account.account.selection,accounts:0"
+msgid "Accounts"
+msgstr "Comptes"
+
+msgctxt "field:analytic_account.account.selection,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.line,account:0"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:analytic_account.line,active:0"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:analytic_account.line,credit:0"
+msgid "Credit"
+msgstr "Haver"
+
+msgctxt "field:analytic_account.line,currency:0"
+msgid "Currency"
+msgstr "Divisa"
+
+msgctxt "field:analytic_account.line,currency_digits:0"
+msgid "Currency Digits"
+msgstr "Decimals de la divisa"
+
+msgctxt "field:analytic_account.line,date:0"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:analytic_account.line,debit:0"
+msgid "Debit"
+msgstr "Deure"
+
+msgctxt "field:analytic_account.line,journal:0"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:analytic_account.line,move_line:0"
+msgid "Account Move Line"
+msgstr "Apunt comptable"
+
+msgctxt "field:analytic_account.line,name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.line,party:0"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:analytic_account.line,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.line,reference:0"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "model:analytic_account.account,name:0"
+msgid "Analytic Account"
+msgstr "Compte analític"
+
+msgctxt ""
+"model:analytic_account.account-analytic_account.account.selection,name:0"
+msgid "Analytic Account - Analytic Account Selection"
+msgstr "Compte analític - Selecció de compte analític"
+
+msgctxt "model:analytic_account.account.open_chart_account.init,name:0"
+msgid "Open Chart Account Init"
+msgstr "Inicialitza l'obertura del pla de comptes"
+
+msgctxt "model:analytic_account.account.selection,name:0"
+msgid "Analytic Account Selection"
+msgstr "Selecció de compte analític"
+
+msgctxt "model:analytic_account.line,name:0"
+msgid "Analytic Line"
+msgstr "Línia analítica"
+
+msgctxt "model:ir.action,name:act_account_tree"
+msgid "Analytic Accounts"
+msgstr "Comptes analítics"
+
+msgctxt "model:ir.action,name:act_account_tree2"
+msgid "Analytic Accounts"
+msgstr "Comptes analítics"
+
+msgctxt "model:ir.action,name:act_line_form"
+msgid "Analytic Lines"
+msgstr "Línies analítiques"
+
+msgctxt "model:ir.action,name:act_open_account"
+msgid "Open Account"
+msgstr "Obrir compte"
+
+msgctxt "model:ir.action,name:act_open_chart_account"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Obrir pla de comptables analític"
+
+msgctxt "model:ir.ui.menu,name:menu_account_tree"
+msgid "Analytic Accounts"
+msgstr "Comptes analítics"
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
+msgid "Analytic Account"
+msgstr "Compte analític"
+
+msgctxt "model:ir.ui.menu,name:menu_open_chart_account"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Obrir pla comptables analític"
+
+msgctxt "model:res.group,name:group_analytic_admin"
+msgid "Analytic Administration"
+msgstr "Administració analítica"
+
+msgctxt "selection:analytic_account.account,display_balance:0"
+msgid "Credit - Debit"
+msgstr "Haver - Deure"
+
+msgctxt "selection:analytic_account.account,display_balance:0"
+msgid "Debit - Credit"
+msgstr "Deure - Haver"
+
+msgctxt "selection:analytic_account.account,state:0"
+msgid "Closed"
+msgstr "Tancada"
+
+msgctxt "selection:analytic_account.account,state:0"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:analytic_account.account,state:0"
+msgid "Opened"
+msgstr "Oberta"
+
+msgctxt "selection:analytic_account.account,type:0"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "selection:analytic_account.account,type:0"
+msgid "Root"
+msgstr "Arrel"
+
+msgctxt "selection:analytic_account.account,type:0"
+msgid "View"
+msgstr "Vista"
+
+msgctxt "view:account.move.line:0"
+msgid "Analytic"
+msgstr "Analítica"
+
+msgctxt "view:analytic_account.account.open_chart_account.init:0"
+msgid "Open Chart of Analytic Accounts"
+msgstr "Obrir pla de comptes analític"
+
+msgctxt "view:analytic_account.account:0"
+msgid "Analytic Account"
+msgstr "Compte analític"
+
+msgctxt "view:analytic_account.account:0"
+msgid "Analytic Accounts"
+msgstr "Comptes analítics"
+
+msgctxt "view:analytic_account.account:0"
+msgid "General Information"
+msgstr "Informació general"
+
+msgctxt "view:analytic_account.account:0"
+msgid "Notes"
+msgstr "Notes"
+
+msgctxt "view:analytic_account.line:0"
+msgid "Analytic Line"
+msgstr "Línia analítica"
+
+msgctxt "view:analytic_account.line:0"
+msgid "Analytic Lines"
+msgstr "Línies analítiques"
+
+msgctxt "view:analytic_account.line:0"
+msgid "General Information"
+msgstr "Informació general"
+
+msgctxt "wizard_button:analytic_account.account.open_chart_account,init,end:0"
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+msgctxt "wizard_button:analytic_account.account.open_chart_account,init,open:0"
+msgid "Open"
+msgstr "Obrir"

@@ -3,6 +3,7 @@
 {
     'name': 'Analytic Account',
     'name_bg_BG': 'Аналитична сметка',
+    'name_ca_ES': 'Comptabilitat analítica',
     'name_de_DE': 'Kostenstellen',
     'name_es_CO': 'Contabilidad Analítica',
     'name_es_ES': 'Contabilidad analítica',
@@ -22,6 +23,12 @@ And with report:
 
 Прилежащи справки:
     - Баланс на аналитична сметка
+''',
+    'description_ca_ES': '''Mòdul financer i de comptabilitat amb:
+    - Comptabilitat analítica amb plans analítics il·limitats
+    
+I amb informes:
+    - Balanc comptable analític
 ''',
     'description_de_DE': '''Modul für Buchhhaltung mit:
     - Kostenstellen mit einer beliebigen Anzahl von Tabellen
@@ -62,6 +69,7 @@ Et le rapport:
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
