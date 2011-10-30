@@ -3,6 +3,7 @@
 {
     'name': 'Sale',
     'name_bg_BG': 'Продажби',
+    'name_ca_ES': 'Vendes',
     'name_de_DE': 'Verkauf',
     'name_es_CO': 'Ventas',
     'name_es_ES': 'Venta',
@@ -41,6 +42,21 @@ With the possibilities:
         - Ръчно
         - При потвърждаване на поръчката
         - При плащане на фактурата
+''',
+   'description_ca_ES': '''
+- Afegeix informació de vendes als productes.
+- Defineix el preu de venda com el preu de la llista.
+
+- Amb la possibilitat de:
+    - Seguir els estats de facturació i enviament des de la comanda de venda.
+    - Definir el mètode de facturació:
+        - Manual
+	- A la confirmació de la comanda
+	- A l'enviar-la
+    - Definir el mètode d'enviament:
+        - Manual
+        - A la confirmació de la comanda
+        - Al cobrar la factura
 ''',
     'description_de_DE': ''' - Dient der Erstellung von Verkaufsvorgängen (Entwurf, Angebot, Auftrag).
  - Fügt den Artikeln Einkaufsinformationen hinzu.
@@ -136,6 +152,7 @@ Biedt mogelijkheden tot:
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
