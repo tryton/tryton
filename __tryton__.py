@@ -3,6 +3,7 @@
 {
     'name': 'Analytic Purchase',
     'name_bg_BG': 'Аналитични покупки',
+    'name_ca_ES': 'Compra analítica',
     'name_de_DE': 'Kostenstellen Einkauf',
     'name_es_CO': 'Compra Analítica',
     'name_es_ES': 'Compra analítica',
@@ -14,6 +15,9 @@
     'description': '''Add analytic account on purchase lines.
 ''',
     'description_bg_BG': '''Добавя аналитична сметка към редовете на покупка
+''',
+    'description_ca_ES': '''Afegeix comptabilitat analítica a les línies de les
+comandes de compra.
 ''',
     'description_de_DE': '''Fügt kostenstellen zu Einkaufspositionen hinzu
 ''',
@@ -31,6 +35,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
