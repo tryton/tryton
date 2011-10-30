@@ -1,0 +1,182 @@
+#
+# Albert Cervera i Areny <albert@nan-tic.com>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: Albert Cervera i Areny <albert@nan-tic.com>\n"
+"PO-Revision-Date: 2011-10-22 13:08+0200\n"
+"Project-Id-Version: \n"
+"Language-Team: Catalan <>\n"
+"Language: ca\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgctxt "error:project.work:0"
+msgid "There should be only one timesheet work by task/project!"
+msgstr "Només ha d'haver-hi un full de treball per tasca/projecte"
+
+msgctxt "field:project.work,children:0"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:project.work,comment:0"
+msgid "Comment"
+msgstr "Comentari"
+
+msgctxt "field:project.work,effort:0"
+msgid "Effort"
+msgstr "Esforç"
+
+msgctxt "field:project.work,parent:0"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:project.work,party:0"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:project.work,party_address:0"
+msgid "Contact Address"
+msgstr "Adreça de contacte"
+
+msgctxt "field:project.work,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:project.work,state:0"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:project.work,total_effort:0"
+msgid "Total Effort"
+msgstr "Esforç total"
+
+msgctxt "field:project.work,type:0"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:project.work,work:0"
+msgid "Work"
+msgstr "Activitat"
+
+msgctxt "field:timesheet.work,sequence:0"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:timesheet.work,timesheet_lines:0"
+msgid "Timesheet Lines"
+msgstr "Línies de full de treball"
+
+msgctxt "help:project.work,effort:0"
+msgid "Estimated Effort for this work"
+msgstr "L'esforç estimat per a aquesta activitat"
+
+msgctxt "help:project.work,total_effort:0"
+msgid "Estimated total effort for this work and the sub-works"
+msgstr "Esforç total estimat per a aquesta activitat i les seves subactivitats"
+
+msgctxt "model:ir.action,name:act_open_child_work"
+msgid "Tasks"
+msgstr "Tasques"
+
+msgctxt "model:ir.action,name:act_project_form"
+msgid "Projects"
+msgstr "Projectes"
+
+msgctxt "model:ir.action,name:act_task_form"
+msgid "Tasks"
+msgstr "Tasques"
+
+msgctxt "model:ir.action,name:act_work_form"
+msgid "Works Efforts"
+msgstr "Activitats"
+
+msgctxt "model:ir.action,name:act_work_tree"
+msgid "Works"
+msgstr "Activitats"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuració"
+
+msgctxt "model:ir.ui.menu,name:menu_project"
+msgid "Project Management"
+msgstr "Gestió de projecte"
+
+msgctxt "model:ir.ui.menu,name:menu_project_form"
+msgid "Projects"
+msgstr "Projectes"
+
+msgctxt "model:ir.ui.menu,name:menu_project_tree"
+msgid "Projects"
+msgstr "Projectes"
+
+msgctxt "model:ir.ui.menu,name:menu_task_form"
+msgid "Tasks"
+msgstr "Tasques"
+
+msgctxt "model:project.work,name:0"
+msgid "Work Effort"
+msgstr "Activitats"
+
+msgctxt "model:res.group,name:group_project_admin"
+msgid "Project Administration"
+msgstr "Administració de projecte"
+
+msgctxt "selection:project.work,state:0"
+msgid "Done"
+msgstr "Acabada"
+
+msgctxt "selection:project.work,state:0"
+msgid "Opened"
+msgstr "Obert"
+
+msgctxt "selection:project.work,type:0"
+msgid "Project"
+msgstr "Projecte"
+
+msgctxt "selection:project.work,type:0"
+msgid "Task"
+msgstr "Tasca"
+
+msgctxt "view:project.work:0"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "view:project.work:0"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:project.work:0"
+msgid "Projects"
+msgstr "Projectes"
+
+msgctxt "view:project.work:0"
+msgid "Tasks"
+msgstr "Tasques"
+
+msgctxt "view:project.work:0"
+msgid "Timesheet"
+msgstr "Full de treball"
+
+msgctxt "view:project.work:0"
+msgid "Works Efforts"
+msgstr "Activitats"
+
+msgctxt "view:project.work:0"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:project.work:0"
+msgid "Work"
+msgstr "Activitat"
+
+msgctxt "view:project.work:0"
+msgid "Work Efforts"
+msgstr "Activitats"
+
+msgctxt "view:project.work:0"
+msgid "Works"
+msgstr "Activitats"

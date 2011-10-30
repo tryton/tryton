@@ -3,6 +3,7 @@
 {
     'name': 'Project',
     'name_bg_BG': 'Проект',
+    'name_ca_ES': 'Projectes',
     'name_de_DE': 'Projekte',
     'name_es_CO': 'Proyectos',
     'name_es_ES': 'Proyecto',
@@ -17,6 +18,7 @@
     'description_bg_BG': '''Модул за проекти с:
     - Управление на проекти
 ''',
+    'description_ca_ES': '''Mòdul per la gestió de projectes.''',
     'description_de_DE': '''Projektmodul für:
     - Projektverwaltung
 ''',
@@ -41,6 +43,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
