@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account Belgium',
+    'name_ca_ES': 'Comptabilitat Belga',
     'name_de_DE': 'Buchhaltung Belgien',
     'name_fr_FR': 'Comptabilité belge',
     'version': '2.3.0',
