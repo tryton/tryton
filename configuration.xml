@@ -43,19 +43,16 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_sale_configuration" icon="tryton-list"/>
 
         <record model="ir.property" id="property_sale_sequence">
-            <field name="name">sale_sequence</field>
             <field name="field"
                 search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_sequence')]"/>
             <field name="value" eval="'ir.sequence,' + str(ref('sequence_sale'))"/>
         </record>
         <record model="ir.property" id="property_sale_invoice_method">
-            <field name="name">sale_invoice_method</field>
             <field name="field"
                 search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_invoice_method')]" />
             <field name="value">,order</field>
         </record>
         <record model="ir.property" id="property_sale_shipment_method">
-            <field name="name">sale_shipment_method</field>
             <field name="field"
                 search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_shipment_method')]" />
             <field name="value">,order</field>
