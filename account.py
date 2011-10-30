@@ -1825,7 +1825,6 @@ class CreateChartAccount(Wizard):
         with Transaction().set_user(0):
             property_obj.delete(property_ids)
             property_obj.create({
-                'name': 'account_receivable',
                 'field': account_receivable_field_id,
                 'value': 'account.account,' + \
                         str(datas['form']['account_receivable']),
@@ -1844,7 +1843,6 @@ class CreateChartAccount(Wizard):
         with Transaction().set_user(0):
             property_obj.delete(property_ids)
             property_obj.create({
-                'name': 'account_payable',
                 'field': account_payable_field_id,
                 'value': 'account.account,' + \
                         str(datas['form']['account_payable']),
