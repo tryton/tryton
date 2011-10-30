@@ -3,6 +3,7 @@
 {
     "name" : "Account Invoice Line Standalone",
     "name_bg_BG" : "Ред от независима фактура към сметка",
+    "name_ca_ES" : "Línia de factura independent",
     "name_de_DE" : "Fakturierung ungebundene Rechnungsposition",
     "name_es_CO" : "Línea de factura autónoma",
     "name_es_ES" : "Línea de factura independiente",
@@ -17,6 +18,10 @@ type, company, currency and party.
 ''',
     "description_bg_BG": '''Позволява създаване на редове от независими фактури и по-късното им добавяне
     към проект на фактура. Фактурата приема редове само с едни и същи вид, фирма, валута и партньор.
+''',
+    "description_ca_ES": '''Permet crear línies de factura independents i
+afegir-les a una factura esborrany. La factura només acceptarà línies de factura amb
+el mateix tipus, empresa i tercer.
 ''',
     "description_de_DE": '''Fakturierung mit ungebundenen Rechnungspositionen
     - Ermöglicht die Erstellung ungebundener Rechnungspositionen, die später zu
@@ -45,6 +50,7 @@ que des lignes qui ont les même type, société, devis et tiers.
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
