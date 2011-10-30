@@ -5,6 +5,7 @@
     'name' : 'Country',
     'name_de_DE': 'Länder',
     'name_bg_BG': 'Държави',
+    'name_ca_ES': 'País',
     'name_es_CO': 'País',
     'name_es_ES': 'País',
     'name_fr_FR': 'Pays',
@@ -15,6 +16,7 @@
     'website': 'http://www.tryton.org/',
     'description': 'Define all countries and subdivisions.',
     'description_bg_BG': 'Задаване на държави и административни единици.',
+    'description_ca_ES': 'Defineix tots els països i les seves subdivisions.',
     'description_de_DE': 'Stellt sämtliche Länder und ihre subnationalen Einheiten zur Verfügung.',
     'description_es_CO': 'Define todos los países y sus subdivisiones.',
     'description_es_ES': 'Define todos los países y sus subdivisiones.',
@@ -26,6 +28,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
