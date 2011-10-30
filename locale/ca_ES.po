@@ -1,0 +1,110 @@
+#
+# Albert Cervera i Areny <albert@nan-tic.com>, 2011.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: Albert Cervera i Areny <albert@nan-tic.com>\n"
+"PO-Revision-Date: 2011-10-22 13:07+0200\n"
+"Project-Id-Version: \n"
+"Language-Team: Catalan <>\n"
+"Language: ca\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.2\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgctxt "error:product.price_list.line:0"
+msgid "Invalid formula!"
+msgstr "Fórmula invàlida"
+
+msgctxt "field:product.price_list,company:0"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:product.price_list,lines:0"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:product.price_list,name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.price_list,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.price_list.line,formula:0"
+msgid "Formula"
+msgstr "Fórmula"
+
+msgctxt "field:product.price_list.line,price_list:0"
+msgid "Price List"
+msgstr "Llista de preus"
+
+msgctxt "field:product.price_list.line,product:0"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:product.price_list.line,quantity:0"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:product.price_list.line,rec_name:0"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.price_list.line,sequence:0"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:product.price_list.line,unit_digits:0"
+msgid "Unit Digits"
+msgstr "Decimals de la unitat"
+
+msgctxt "help:product.price_list.line,formula:0"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- unit_price: the original unit_price"
+msgstr ""
+"Expressió de Python que s'avaluarà amb:\n"
+"- unit_price: El preu per unitat original"
+
+msgctxt "model:ir.action,name:act_price_list_form"
+msgid "Price Lists"
+msgstr "Llistes de preus"
+
+msgctxt "model:ir.ui.menu,name:menu_price_list"
+msgid "Price Lists"
+msgstr "Llistes de preus"
+
+msgctxt "model:product.price_list,name:0"
+msgid "Price List"
+msgstr "Llista de preus"
+
+msgctxt "model:product.price_list.line,name:0"
+msgid "Price List Line"
+msgstr "Línia de llista de preus"
+
+msgctxt "view:party.party:0"
+msgid "Price List"
+msgstr "Llista de preus"
+
+msgctxt "view:product.price_list.line:0"
+msgid "Price List Line"
+msgstr "Línia de llista de preus"
+
+msgctxt "view:product.price_list.line:0"
+msgid "Price List Lines"
+msgstr "Línies de llista de preus"
+
+msgctxt "view:product.price_list:0"
+msgid "Price List"
+msgstr "Llista de preus"
+
+msgctxt "view:product.price_list:0"
+msgid "Price List Lines"
+msgstr "Línies de llista de preus"
+
+msgctxt "view:product.price_list:0"
+msgid "Price Lists"
+msgstr "Llistes de preus"

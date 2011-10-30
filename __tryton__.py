@@ -3,6 +3,7 @@
 {
     'name': 'Product Price List',
     'name_bg_BG' : 'Ценова листа на продукт',
+    'name_ca_ES': 'Llista de preus de producte',
     'name_de_DE' : 'Artikel Preisliste',
     'name_es_CO': 'Lista de precios de producto',
     'name_es_ES': 'Lista de precios de producto',
@@ -13,6 +14,7 @@
     'website': 'http://www.tryton.org/',
     'description': '''Define price list rules by parties.''',
     'description_bg_BG': 'Задаване на правила на ценова листа по партньор.',
+    'description_ca_ES': '''Defineix regles de llista de preus per tercer.''',
     'description_de_DE' : '''Preislisten für Artikel
     - Ermöglicht die Definition von Preislisten für Parteien.
 ''',
@@ -31,6 +33,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
