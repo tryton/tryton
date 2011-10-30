@@ -3,6 +3,7 @@
 {
     'name': 'Project Revenue',
     'name_bg_BG': 'Приходи на проект',
+    'name_ca_ES': 'Beneficis per projecte',
     'name_de_DE': 'Projekte Ertrag',
     'name_es_CO': 'Ingresos por proyectos',
     'name_es_ES': 'Beneficio de proyecto',
@@ -17,6 +18,10 @@ Define allowed services for each employees.
     'description_bg_BG': '''Модул Приходи на проект:
     - Позволява добавяне на продукт към редове от график.
     - Позволява задаване на позволените за всеки служител услуги.
+''',
+    'description_ca_ES': '''
+- Afegeix productes a les línies de les ordres de treball.
+- Defineix serveis permesos per cada empleat.
 ''',
     'description_de_DE': '''Projektmodul Ertrag:
     - Ermöglicht das Hinzufügen von Artikeln zu Zeitpositionen.
@@ -45,6 +50,7 @@ Défini par employé quels services sont autorisés.
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
