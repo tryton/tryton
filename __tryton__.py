@@ -3,6 +3,7 @@
 {
     'name': 'LDAP Authentication',
     'name_bg_BG' : 'LDAP Проверка',
+    'name_ca_ES': 'Autenticació LDAP',
     'name_de_DE' : 'LDAP Authentifizierung',
     'name_es_CO': 'Autentificación LDAP',
     'name_es_ES': 'Autentificación LDAP',
@@ -13,6 +14,7 @@
     'website': 'http://www.tryton.org/',
     'description': '''Authenticate users with LDAP server.''',
     'description_bg_BG': 'Проверка на потребители чрез LDAP сървър.',
+    'description_ca_ES': '''Autentica els usuaris contra un servidor LDAP.''',
     'description_de_DE' : '''Authentifizierung über LDAP
     - Fügt Unterstützung für Authentifizierung über einen LDAP-Server hinzu.
 ''',
@@ -29,6 +31,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
