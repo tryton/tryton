@@ -3,6 +3,7 @@
 {
     'name': 'Account Invoice',
     'name_bg_BG': 'Фактуриране',
+    'name_ca_ES': 'Facturació',
     'name_de_DE': 'Fakturierung',
     'name_es_CO': 'Facturación',
     'name_es_ES': 'Facturación',
@@ -31,6 +32,16 @@ With the possibilities:
     - проследяване на плащания на фактури
     - задаване на последователности на фактура за финансова година или период
     - кредитиране на всяка фактура
+''',
+    'description_ca_ES': '''Mòdul financer i de comptabilitat amb:
+    - Terminis de pagament
+    - Factura / Abonament
+    - Factura de proveedor / Abonament de proveedor
+
+Amb les possibilitats de:
+    - fer el seguiment del pagament de factures.
+    - definir seqüències de factures per exercici fiscal o període.
+    - pagar qualsevol factura.
 ''',
     'description_de_DE': '''Modul für Buchhaltung und Fakturierung mit:
     - Definition von Zahlungsbedingungen
@@ -103,6 +114,7 @@ Met de mogelijkheid tot:
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
