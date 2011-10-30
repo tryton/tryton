@@ -3,6 +3,7 @@
 {
     'name': 'Currency',
     'name_bg_BG': 'Валута',
+    'name_ca_ES': 'Divisa',
     'name_de_DE': 'Währung',
     'name_es_CO': 'Moneda',
     'name_es_ES': 'Divisa',
@@ -16,6 +17,9 @@ Allow to customize the formatting of the currency amount.
 ''',
     'description_bg_BG': '''Задаване на валути и обменни курсове.
  Позволява настройване на форматиране на сумата на валута.
+''',
+    'description_ca_ES': '''Defineix les monedes i la taxa de conversió.
+Permet personalitzar el format de visualització de la divisa.
 ''',
     'description_de_DE': ''' - Ermöglicht die Eingabe von Währungen und Wechselkursen.
  - Erlaubt die beliebige Formatierung von Währungsbeträgen.
@@ -39,6 +43,7 @@ Permet de formater les montants en fonction de la devise.
     'translation': [
         'locale/bg_BG.po',
         'locale/cs_CZ.po',
+        'locale/ca_ES.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
