@@ -133,6 +133,7 @@ Met bijbehorende rapporten:
     ],
     'xml': [
         'account.xml',
+        'configuration.xml',
         'fiscalyear.xml',
         'period.xml',
         'journal.xml',

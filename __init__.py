@@ -3,6 +3,7 @@
 
 from fiscalyear import *
 from account import *
+from configuration import *
 from period import *
 from journal import *
 from move import *
