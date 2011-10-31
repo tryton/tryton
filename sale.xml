@@ -23,7 +23,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.property" id="property_sale_shipment_cost_method">
-            <field name="name">sale_shipment_cost_method</field>
             <field name="field"
                 search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_shipment_cost_method')]" />
             <field name="value">,order</field>
