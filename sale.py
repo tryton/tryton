@@ -830,6 +830,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                     'delivery_address': sale.shipment_address.id,
                     'reference': sale.reference,
                     'warehouse': sale.warehouse.id,
+                    'company': sale.company.id,
                     }
                 values.update(dict(key))
                 shipment_id = shipment_obj.create(values)
