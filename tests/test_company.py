@@ -58,7 +58,7 @@ class CompanyTestCase(unittest.TestCase):
         '''
         Test company recursion.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             currency1_id = self.currency.search([
                 ('code', '=', 'cu1'),
                 ], 0, 1, None)[0]
@@ -88,7 +88,7 @@ class CompanyTestCase(unittest.TestCase):
                 ('name', '=', 'B2CK'),
                 ], 0, 1, None)[0]
 
-            employee1_id = self.employee.create({
+            self.employee.create({
                 'name': 'Employee1',
                 'company': company1_id,
                 })

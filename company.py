@@ -161,10 +161,6 @@ class User(ModelSQL, ModelView):
         return res
 
     def get_preferences_fields_view(self):
-        company_obj = Pool().get('company.company')
-
-        user = self.browse(Transaction().user)
-
         res = super(User, self).get_preferences_fields_view()
         res = copy.deepcopy(res)
         return res
