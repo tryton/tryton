@@ -271,8 +271,6 @@ class Work(ModelSQL, ModelView):
         return date
 
     def add_hours(self, company, date, hours):
-        day_per_week = company.hours_per_work_week / company.hours_per_work_day
-
         while hours:
             if hours !=  intfloor(hours):
                 minutes = (hours - intfloor(hours)) * 60
