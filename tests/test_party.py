@@ -52,7 +52,7 @@ class PartyTestCase(unittest.TestCase):
         '''
         Test category recursion.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             category1_id = self.category.search([
                 ('name', '=', 'Category 1'),
                 ], limit=1)[0]
@@ -83,7 +83,7 @@ class PartyTestCase(unittest.TestCase):
         '''
         Test party code constraint.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             party1_id = self.party.search([], limit=1)[0]
 
             code = self.party.read(party1_id, ['code'])['code']
@@ -101,10 +101,10 @@ class PartyTestCase(unittest.TestCase):
         '''
         Create address.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             party1_id = self.party.search([], limit=1)[0]
 
-            address1_id = self.address.create({
+            self.address.create({
                 'party': party1_id,
                 'street': 'St sample, 15',
                 'city': 'City',
