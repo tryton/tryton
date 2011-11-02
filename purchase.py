@@ -19,7 +19,6 @@ class Purchase(ModelSQL, ModelView):
     def check_for_quotation(self, purchase_id):
         account_selection_obj = Pool().get(
                 'analytic_account.account.selection')
-        purchase_line_obj = Pool().get('purchase.line')
 
         res = super(Purchase, self).check_for_quotation(purchase_id)
 
@@ -73,8 +72,6 @@ class PurchaseLine(ModelSQL, ModelView):
             with_rec_name=with_rec_name)
 
     def read(self, ids, fields_names=None):
-        selection_obj = Pool().get('analytic_account.account.selection')
-
         int_id = False
         if isinstance(ids, (int, long)):
             int_id = True
