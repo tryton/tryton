@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import operator
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL
 from trytond.pool import Pool
 
 
@@ -45,8 +45,6 @@ class InvoiceLine(ModelSQL, ModelView):
 
     def get_move_line(self, line):
         pool = Pool()
-        purchase_line_invoice_line_obj = pool.get(
-                'purchase.line-account.invoice.line')
         move_obj = pool.get('stock.move')
         currency_obj = pool.get('currency.currency')
 
