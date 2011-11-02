@@ -2,8 +2,6 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import datetime
-import time
-import os
 import operator
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
@@ -617,7 +615,6 @@ class Account(ModelSQL, ModelView):
         return 'view'
 
     def get_currency(self, ids, name):
-        currency_obj = Pool().get('currency.currency')
         res = {}
         for account in self.browse(ids):
             res[account.id] = account.company.currency.id
@@ -632,7 +629,6 @@ class Account(ModelSQL, ModelView):
     def get_balance(self, ids, name):
         res = {}
         pool = Pool()
-        company_obj = pool.get('company.company')
         currency_obj = pool.get('currency.currency')
         move_line_obj = pool.get('account.move.line')
         fiscalyear_obj = pool.get('account.fiscalyear')
@@ -738,7 +734,6 @@ class Account(ModelSQL, ModelView):
         res = {}
         pool = Pool()
         move_line_obj = pool.get('account.move.line')
-        company_obj = pool.get('company.company')
         currency_obj = pool.get('currency.currency')
         fiscalyear_obj = pool.get('account.fiscalyear')
         deferral_obj = pool.get('account.account.deferral')
@@ -1268,7 +1263,6 @@ class GeneralLegder(Report):
         return res
 
     def lines(self, account_ids, period_ids, posted):
-        move_line_obj = Pool().get('account.move.line')
         move_obj = Pool().get('account.move')
         res = dict((account_id, []) for account_id in account_ids)
         account_id2lines = self.get_lines(account_ids, period_ids, posted)

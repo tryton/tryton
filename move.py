@@ -768,7 +768,6 @@ class Line(ModelSQL, ModelView):
         account_obj = pool.get('account.account')
         tax_code_obj = pool.get('account.tax.code')
         tax_obj = pool.get('account.tax')
-        move_obj = pool.get('account.move')
         if vals.get('move'):
             #Only for first line
             return res
@@ -817,7 +816,6 @@ class Line(ModelSQL, ModelView):
         pool = Pool()
         party_obj = pool.get('party.party')
         journal_obj = pool.get('account.journal')
-        account_obj = pool.get('account.account')
         currency_obj = pool.get('currency.currency')
         cursor = Transaction().cursor
         res = {}

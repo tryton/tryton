@@ -1,7 +1,5 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import datetime
-import time
 from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
@@ -113,7 +111,6 @@ class FiscalYear(ModelSQL, ModelView):
         return True
 
     def write(self, ids, vals):
-        move_obj = Pool().get('account.move')
         if vals.get('post_move_sequence'):
             for fiscalyear in self.browse(ids):
                 if fiscalyear.post_move_sequence and \
