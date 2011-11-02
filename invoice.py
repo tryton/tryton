@@ -211,7 +211,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
-        currency_obj = Pool().get('currency.currency')
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
@@ -620,7 +619,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         pool = Pool()
         rule_obj = pool.get('ir.rule')
         line_obj = pool.get('account.invoice.line')
-        tax_obj = pool.get('account.invoice.tax')
         type_name = FIELDS[self.untaxed_amount._type].sql_type(
                 self.untaxed_amount)[0]
         cursor = Transaction().cursor
@@ -641,7 +639,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     def search_tax_amount(self, name, clause):
         pool = Pool()
         rule_obj = pool.get('ir.rule')
-        line_obj = pool.get('account.invoice.line')
         tax_obj = pool.get('account.invoice.tax')
         type_name = FIELDS[self.tax_amount._type].sql_type(
                 self.tax_amount)[0]
@@ -826,7 +823,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
 
     def create_move(self, invoice_id):
         pool = Pool()
-        tax_obj = pool.get('account.invoice.tax')
         payment_term_obj = pool.get('account.invoice.payment_term')
         currency_obj = pool.get('currency.currency')
         move_obj = pool.get('account.move')
@@ -958,7 +954,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         pool = Pool()
         line_obj = pool.get('account.invoice.line')
         tax_obj = pool.get('account.invoice.tax')
-        date_obj = pool.get('ir.date')
 
         int_id = False
         if isinstance(ids, (int, long)):
@@ -1436,7 +1431,6 @@ class InvoiceLine(ModelSQL, ModelView):
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
-        currency_obj = Pool().get('currency.currency')
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
@@ -1596,8 +1590,6 @@ class InvoiceLine(ModelSQL, ModelView):
         pool = Pool()
         product_obj = pool.get('product.product')
         party_obj = pool.get('party.party')
-        account_obj = pool.get('account.account')
-        uom_obj = pool.get('product.uom')
         company_obj = pool.get('company.company')
         currency_obj = pool.get('currency.currency')
         tax_rule_obj = pool.get('account.tax.rule')
