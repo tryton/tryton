@@ -121,7 +121,6 @@ class PurchaseRequest(ModelSQL, ModelView):
         """
         pool = Pool()
         order_point_obj = pool.get('stock.order_point')
-        purchase_request_obj = pool.get('purchase.request')
         product_obj = pool.get('product.product')
         location_obj = pool.get('stock.location')
         user_obj = pool.get('res.user')
@@ -206,7 +205,6 @@ class PurchaseRequest(ModelSQL, ModelView):
         pool = Pool()
         uom_obj = pool.get('product.uom')
         request_obj = pool.get('purchase.request')
-        product_supplier_obj = pool.get('purchase.product_supplier')
         req_ids = request_obj.search([
             ('purchase_line', '=', False),
             ('origin', 'like', 'stock.order_point,%'),
@@ -568,7 +566,6 @@ class CreatePurchase(Wizard):
         request_obj = pool.get('purchase.request')
         party_obj = pool.get('party.party')
         purchase_obj = pool.get('purchase.purchase')
-        product_obj = pool.get('product.product')
         line_obj = pool.get('purchase.line')
         date_obj = pool.get('ir.date')
 
@@ -665,7 +662,6 @@ class CreatePurchase(Wizard):
 
     def compute_purchase_line(self, request):
         pool = Pool()
-        party_obj = pool.get('party.party')
         product_obj = pool.get('product.product')
         tax_rule_obj = pool.get('account.tax.rule')
 
